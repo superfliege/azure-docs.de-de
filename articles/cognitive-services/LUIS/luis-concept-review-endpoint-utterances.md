@@ -1,23 +1,24 @@
 ---
-title: Überprüfen von Endpunktäußerungen für die Verwendung des aktiven Lernens in Language Understanding (LUIS) – Azure | Microsoft-Dokumentation
-description: Verwenden Sie das Feature zum Überprüfen von Endpunktäußerungen für das aktive Lernen zur Verbesserung der Leistung und Geschwindigkeit von Vorhersagen.
+title: Überprüfen von Endpunktäußerungen für die Verwendung des aktiven Lernens in Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Aktives Lernen ist eine von drei Strategien zur Verbesserung der Vorhersagegenauigkeit. Von diesen ist sie am einfachsten zu implementieren. Mit aktivem Lernen überprüfen Sie Endpunktäußerungen auf die Richtigkeit von Absicht und Entität. LUIS wählt Endpunktäußerungen aus, bei denen es nicht sicher ist.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 05b3404d318359c6966df44bfab9baff3ded980f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 78cc2a8a2b9295654d0c6264cbf4a4d634b16544
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222612"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038169"
 ---
 # <a name="enable-active-learning-by-reviewing-endpoint-utterances"></a>Aktivieren des aktiven Lernens durch Überprüfen von Endpunktäußerungen
-Aktives Lernen ist eine von drei Strategien zur Verbesserung der Vorhersagegenauigkeit. Von diesen ist sie am einfachsten zu implementieren. 
+Aktives Lernen ist eine von drei Strategien zur Verbesserung der Vorhersagegenauigkeit. Von diesen ist sie am einfachsten zu implementieren. Mit aktivem Lernen überprüfen Sie Endpunktäußerungen auf die Richtigkeit von Absicht und Entität. LUIS wählt Endpunktäußerungen aus, bei denen es nicht sicher ist.
 
 ## <a name="what-is-active-learning"></a>Was ist aktives Lernen?
 Aktives Lernen ist ein zweistufiger Prozess. LUIS wählt zunächst die am App-Endpunkt empfangenen Äußerungen aus, die validiert werden müssen. Der zweite Schritt wird vom App Besitzer oder Projektmitarbeiter ausgeführt. Dabei werden die ausgewählten Äußerungen [überprüft](luis-how-to-review-endoint-utt.md), um auch z.B. die richtige Absicht und eventuelle Entitäten in die Absicht zu validieren. Nach dem Überprüfen der Äußerungen trainieren und veröffentlichen Sie die App erneut. 

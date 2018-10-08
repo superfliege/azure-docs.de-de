@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
-ms.openlocfilehash: 89518d30b862e18fb7c989c95144ffa7f1c294fc
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 087dcda5826d96ad064c472fc897be7e61133387
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40024720"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392513"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Tutorial: Verbesserung der Websitereaktion mit Traffic Manager 
 
@@ -63,7 +63,7 @@ In diesem Abschnitt erstellen Sie die beiden virtuellen Computer *myIISVMEastUS*
     |---|---|
     |NAME|myIISVMEastUS|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
-    |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Ressourcengruppe| Klicken Sie auf **Neu**, und geben Sie *myResourceGroupTM1* ein.|
     |Standort| Wählen Sie **USA, Osten** aus.|
     |||
@@ -137,7 +137,7 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*mVMEastUS* und 
     |---|---|
     |NAME|myVMEastUS|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
-    |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Ressourcengruppe| Wählen Sie **Vorhandene** und dann *myResourceGroupTM1* aus.|
     |||
 
@@ -171,7 +171,7 @@ Erstellen Sie ein Traffic Manager-Profil, das den Benutzerdatenverkehr weiterlei
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | NAME                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
-    | Routingmethode          | Wählen Sie die Routingmethode **Priorität** aus.                                       |
+    | Routingmethode          | Wählen Sie die Routingmethode für **Leistungsdatenverkehr** aus.                                       |
     | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
     | Ressourcengruppe          | Klicken Sie auf **Neue erstellen**, und geben Sie *myResourceGroupTM1* ein. |
     | Standort                | Wählen Sie **USA, Osten** aus.  Diese Einstellung bezieht sich auf den Speicherort der Ressourcengruppe und hat keine Auswirkungen auf das Traffic Manager-Profil, das global bereitgestellt wird.                              |

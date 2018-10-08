@@ -1,80 +1,70 @@
 ---
-title: Tutorial zur Verwendung von Musterrollen zur Verbesserung von LUIS-Vorhersagen – Azure | Microsoft-Dokumentation
-titleSuffix: Cognitive Services
-description: In diesem Tutorial erfahren Sie, wie mithilfe von Musterrollen für kontextabhängige Entitäten LUIS-Vorhersagen verbessert werden.
+title: 'Tutorial 4: Musterrollen für zum gleichen Kontext gehörige Daten'
+titleSuffix: Azure Cognitive Services
+description: Verwenden Sie ein Muster, um Daten aus einer wohlgeformten Vorlagenäußerung zu extrahieren. Die Vorlagenäußerung verwendet eine einfache Entität und Rollen zum Extrahieren aufeinander bezogener Daten, wie etwa einen Ursprungsort und einen Zielort.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 6f3e7c9db7bbdb6bc24d123208355fc7a1d8e7e8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2c3705d28d6496c3d20999231de98572bc26e3be
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161933"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160246"
 ---
-# <a name="tutorial-improve-app-with-pattern-roles"></a>Tutorial: Verbessern der App mit Musterrollen
+# <a name="tutorial-4-extract-contextually-related-patterns"></a>Tutorial 4: Extrahieren kontextbezogener Muster
 
-In diesem Tutorial erfahren Sie, wie Sie eine einfache Entität mit Rollen verwenden, die mit Mustern kombiniert werden, um die Absichts- und Entitätsvorhersage zu erhöhen.  Bei der Verwendung von Mustern sind weniger Beispieläußerungen für die Absicht erforderlich.
+In diesem Tutorial verwenden Sie ein Muster, um Daten aus einer wohlgeformten Vorlagenäußerung zu extrahieren. Die Vorlagenäußerung verwendet eine einfache Entität und Rollen zum Extrahieren aufeinander bezogener Daten, wie etwa einen Ursprungsort und einen Zielort.  Bei der Verwendung von Mustern sind weniger Beispieläußerungen für die Absicht erforderlich.
 
-> [!div class="checklist"]
-* Grundlegendes zu Musterrollen
-* Verwenden von einfachen Entitäten mit Rollen 
-* Erstellen von Mustern für Äußerungen mithilfe von einfachen Entitäten mit Rollen
-* Überprüfen der Verbesserungen bei Vorhersagen durch Muster
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personalabteilungs-App aus dem Tutorial [Muster](luis-tutorial-pattern.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-patterns-HumanResources-v2.json).
-
-Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `roles`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
-
-## <a name="the-purpose-of-roles"></a>Der Zweck der Rollen
 Der Zweck der Rollen besteht darin, kontextabhängige Entitäten in einer Äußerung zu extrahieren. In der Äußerung `Move new employee Robert Williams from Sacramento and San Francisco` sind die Werte für den Ursprungs- und Zielort miteinander verknüpft, und sie verwenden eine gemeinsame Sprache zur Bezeichnung der einzelnen Standorte. 
 
-Bei der Verwendung von Mustern müssen alle Entitäten im Muster erkannt werden. _Erst dann_ stimmt die Äußerung mit dem Muster überein. 
 
-Wenn Sie ein Muster erstellen, besteht der erste Schritt darin, die Absicht für das Muster auszuwählen. Durch Auswählen der Absicht wird die richtige Absicht immer mit einem hohem Ergebnis (in der Regel zwischen 99 und 100 %) zurückgegeben, wenn eine Musterübereinstimmung gefunden wird. 
-
-### <a name="compare-hierarchical-entity-to-simple-entity-with-roles"></a>Vergleichen der hierarchischen Entität mit der einfachen Entität mit Rollen
-
-Im [Tutorial: Hinzufügen einer hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md) hat die Absicht **MoveEmployee** erkannt, wann ein bestehender Mitarbeiter von einem Gebäude oder Büro in ein anderes verlegt werden soll. Die Beispieläußerungen wiesen zwar Ursprungs- und Zielorte auf, jedoch keine Rollen. Stattdessen waren Ursprung und Ziel untergeordnete Elemente der hierarchischen Entität. 
-
-In diesem Tutorial erkennt die Personalabteilungs-App Äußerungen zur Verlegung neuer Mitarbeiter von einem Ort in einen anderen. Diese beiden Arten von Äußerungen sind ähnlich, werden jedoch mit unterschiedlichen LUIS-Funktionen gelöst.
-
-|Tutorial|Beispieläußerung|Ursprungs- und Zielorte|
-|--|--|--|
-|[Tutorial: Hinzufügen einer hierarchischen Entität (ohne Rollen)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298**|a-2349, b-1298|
-|Dieses Tutorial (mit Rollen)|Move Billy Patterson from **Yuma** to **Denver**.|Yuma, Denver|
-
-Die hierarchische Entität kann nicht im Muster verwendet werden, da in Mustern nur hierarchisch übergeordnete Elemente verwendet werden. Um die benannten Standorte des Ursprungs und des Ziels zurückzugeben, müssen Sie ein Muster verwenden.
-
-### <a name="simple-entity-for-new-employee-name"></a>Einfache Entität für den Namen eines neuen Mitarbeiters
 Der Name des neuen Mitarbeiters, Billy Patterson, ist noch nicht Teil der Listenentität **Employee**. Der Name des neuen Mitarbeiters wird zuerst extrahiert, um den Namen für die Erstellung der Unternehmensanmeldeinformationen an ein externes System zu senden. Nachdem die Unternehmensanmeldeinformationen erstellt wurden, werden die Mitarbeiteranmeldeinformationen der Listenentität **Employee** hinzugefügt.
 
-Die Liste **Employee** wurde im [Tutorial: Hinzufügen einer Listenentität](luis-quickstart-intent-and-list-entity.md) erstellt.
-
-Die Entität **NewEmployee** ist eine einfache Entität ohne Rollen. 
-
-### <a name="simple-entity-with-roles-for-relocation-cities"></a>Einfache Entität mit Rollen für die Ortsverlagerung
 Der neue Mitarbeiter und seine Familie müssen von dem aktuellen Ort in den Ort verlegt werden, in dem das fiktive Unternehmen ansässig ist. Da ein neuer Mitarbeiter von einem beliebigen Ort herkommen kann, müssen die Standorte ermittelt werden. Eine festgelegte Liste wie eine Listenentität würde nicht funktionieren, da nur die Orte in der Liste extrahiert werden würden.
 
-Die den Ursprungs- und Zielorten zugeordneten Rollennamen müssen für alle Entitäten eindeutig sein. Eine einfache Möglichkeit, sicherzustellen, dass die Rollen eindeutig sind, besteht darin, diese mittels einer Benennungsstrategie der enthaltenen Entität zuzuordnen. Die Entität **NewEmployeeRelocation** ist eine einfache Entität mit zwei Rollen: **NewEmployeeReloOrigin** und **NewEmployeeReloDestination**.
+Die den Ursprungs- und Zielorten zugeordneten Rollennamen müssen für alle Entitäten eindeutig sein. Eine einfache Möglichkeit, sicherzustellen, dass die Rollen eindeutig sind, besteht darin, diese mittels einer Benennungsstrategie der enthaltenen Entität zuzuordnen. Die Entität **NewEmployeeRelocation** ist eine einfache Entität mit zwei Rollen: **NewEmployeeReloOrigin** und **NewEmployeeReloDestination**. Relo ist die Kurzform für „Relocation“ (Verlegung).
 
-### <a name="simple-entities-need-enough-examples-to-be-detected"></a>Erkennung von einfachen Entitäten nur durch Bereitstellung ausreichender Beispiele
 Da die Beispieläußerung `Move new employee Robert Williams from Sacramento and San Francisco` nur über per Machine Learning trainierte Entitäten verfügt, ist es wichtig, genügend Beispieläußerungen für die Absicht bereitzustellen, damit die Entitäten erkannt werden.  
 
 **Muster ermöglichen Ihnen, weniger Beispieläußerungen bereitzustellen. Doch wenn die Entitäten nicht erkannt werden, stimmt das Muster nicht überein.**
 
 Wenn Sie Schwierigkeiten mit der Erkennung einfacher Entitäten haben, da es um einen Namen wie den eines Orts geht, sollten Sie eventuell eine Liste von Ausdrücken mit ähnlichen Werten hinzufügen. Dadurch wird die Erkennung des Ortsnamens verbessert, da der LUIS-App ein zusätzlicher Hinweis für den jeweiligen Wort- oder Ausdruckstyp zur Verfügung gestellt wird. Ausdruckslisten sind für Muster nur im Hinblick auf die Entitätserkennung nützlich, die für die Musterübereinstimmung erforderlich ist. 
 
+**In diesem Tutorial lernen Sie Folgendes:**
+
+> [!div class="checklist"]
+> * Verwenden der vorhandenen Tutorial-App
+> * Erstellen von neuen Entitäten
+> * Erstellen einer neuen Absicht
+> * Trainieren
+> * Veröffentlichen
+> * Abrufen von Absichten und Entitäten vom Endpunkt
+> * Erstellen von Mustern mit Rollen
+> * Erstellen von Ausdruckslisten von Städten
+> * Abrufen von Absichten und Entitäten vom Endpunkt
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
+
+Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json) herunter, und speichern Sie sie.
+
+2. Importieren Sie den JSON-Code in eine neue App.
+
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `roles`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+
 ## <a name="create-new-entities"></a>Erstellen von neuen Entitäten
-1. Wählen Sie oben im Menü **Erstellen** aus.
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie im linken Navigationsmenü die Option **Entitäten** aus. 
 
@@ -124,15 +114,15 @@ Die Bezeichnung der Entitäten in den folgenden Schritten ist möglicherweise ei
 
     Wenn Sie die keyPhrase-Entität entfernt haben, fügen Sie sie nun wieder der App hinzu.
 
-## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
+## <a name="train"></a>Trainieren
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
+## <a name="publish"></a>Veröffentlichen
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-without-pattern"></a>Abfragen des Endpunkts ohne Muster
+## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -224,9 +214,12 @@ Die Bezeichnung der Entitäten in den folgenden Schritten ist möglicherweise ei
 
 Das Ergebnis der Absichtsvorhersage beträgt nur etwa 50 %. Wenn für Ihre Clientanwendung eine höhere Zahl erforderlich ist, müssen Sie dies korrigieren. Die beiden Entitäten wurden nicht vorhergesagt.
 
+Einer der Orte wurde extrahiert, der andere jedoch nicht. 
+
 Muster sind für das Vorhersageergebnis zwar hilfreich, allerdings müssen die Entitäten korrekt vorhergesagt werden, damit das Muster mit der Äußerung übereinstimmt. 
 
-## <a name="add-a-pattern-that-uses-roles"></a>Hinzufügen eines Musters, das Rollen verwendet
+## <a name="pattern-with-roles"></a>Muster mit Rollen
+
 1. Wählen Sie in der oberen Navigationsleiste **Erstellen** aus.
 
 2. Wählen Sie im linken Navigationsbereich **Muster** aus.
@@ -237,8 +230,8 @@ Muster sind für das Vorhersageergebnis zwar hilfreich, allerdings müssen die E
 
     Wenn Sie den Endpunkt trainieren, veröffentlichen und abfragen, werden Sie möglicherweise enttäuscht sein, wenn die Entitäten nicht gefunden werden, und daraus den Schluss ziehen, dass das Muster nicht übereinstimmt und die Vorhersage nicht verbessert wurde. Dies ist darauf zurückzuführen, dass nicht genügend Beispieläußerungen mit bezeichneten Entitäten vorhanden sind. Um dieses Problem zu beheben, fügen Sie statt weiteren Beispielen eine Liste von Ausdrücken hinzu.
 
-## <a name="create-a-phrase-list-for-cities"></a>Erstellen einer Liste von Ausdrücken für Orte
-Ortsnamen sind wie Namen von Personen schwierig, da sie eine beliebige Kombination von Wörtern und Interpunktion aufweisen können. Die Orte in der Region und auf der Welt sind jedoch bekannt, sodass die LUIS-App für den Einstieg in das Training lediglich eine Liste von Orten benötigt. 
+## <a name="cities-phrase-list"></a>Städte-Ausdrucksliste
+Ortsnamen sind wie Namen von Personen schwierig, da sie eine beliebige Kombination von Wörtern und Interpunktion aufweisen können. Die Orte in der Region und auf der Welt sind bekannt, sodass LUIS für den Einstieg in das Training eine Ausdrucksliste mit Orten benötigt. 
 
 1. Wählen Sie im Menü auf der linken Seite im Abschnitt **App-Leistung verbessern** die Option **Liste von Ausdrücken** aus. 
 
@@ -255,16 +248,13 @@ Ortsnamen sind wie Namen von Personen schwierig, da sie eine beliebige Kombinati
     |Miami|
     |Dallas|
 
-    Fügen Sie nicht jeden Ort auf der Welt oder sogar jeden Ort in der Region hinzu. Die LUIS-App muss generalisieren können, welcher Ort aus der Liste stammt. 
-
-    Achten Sie darauf, dass die Option **Diese Werte sind austauschbar** aktiviert bleibt. Diese Einstellung bedeutet, dass die Wörter in der Liste als Synonyme behandelt werden. Genau so sollten diese im Muster behandelt werden.
-
-    Denken Sie an die [Tutorialreihe, in der eine Liste von Ausdrücken erstellt wurde](luis-quickstart-primary-and-secondary-data.md). Auch dabei sollte die Entitätserkennung einer einfachen Entität verbessert werden.  
+    Fügen Sie nicht jeden Ort auf der Welt oder sogar jeden Ort in der Region hinzu. Die LUIS-App muss generalisieren können, welcher Ort aus der Liste stammt. Achten Sie darauf, dass die Option **Diese Werte sind austauschbar** aktiviert bleibt. Diese Einstellung bedeutet, dass die Wörter in der Liste als Synonyme behandelt werden. 
 
 3. Trainieren und veröffentlichen Sie die App.
 
-## <a name="query-endpoint-for-pattern"></a>Abfrageendpunkt für Muster
-1. Wählen Sie unten auf der Seite **Publish** (Veröffentlichen) den Link **endpoint** (Endpunkt) aus. Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
+## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `Move wayne berry from miami to mount vernon` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
@@ -380,11 +370,24 @@ Ortsnamen sind wie Namen von Personen schwierig, da sie eine beliebige Kombinati
 
 Das Absichtsergebnis fällt nun sehr viel höher aus, und die Rollennamen sind Teil der Entitätsantwort.
 
+## <a name="hierarchical-entities-versus-roles"></a>Hierarchische Entitäten im Vergleich zu Rollen
+
+Im [Tutorial: Hinzufügen einer hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md) hat die Absicht **MoveEmployee** erkannt, wann ein bestehender Mitarbeiter von einem Gebäude oder Büro in ein anderes verlegt werden soll. Die Beispieläußerungen wiesen zwar Ursprungs- und Zielorte auf, jedoch keine Rollen. Stattdessen waren Ursprung und Ziel untergeordnete Elemente der hierarchischen Entität. 
+
+In diesem Tutorial erkennt die Personalabteilungs-App Äußerungen zur Verlegung neuer Mitarbeiter von einem Ort in einen anderen. Diese beiden Arten von Äußerungen sind gleich, werden jedoch mit unterschiedlichen LUIS-Funktionen gelöst.
+
+|Tutorial|Beispieläußerung|Ursprungs- und Zielorte|
+|--|--|--|
+|[Tutorial: Hinzufügen einer hierarchischen Entität (ohne Rollen)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298**|a-2349, b-1298|
+|Dieses Tutorial (mit Rollen)|Move Billy Patterson from **Yuma** to **Denver**.|Yuma, Denver|
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Tutorial wurden eine Entität mit Rollen und eine Absicht mit Beispieläußerungen hinzugefügt. Die erste Endpunktvorhersage mit ordnungsgemäßer Verwendung der Entität führte zu einer richtigen Vorhersage der Absicht, jedoch mit einer niedrigen Zuverlässigkeitsbewertung. Nur eine der beiden Entitäten wurde erkannt. Als Nächstes fügte das Tutorial ein Muster, das die Entitätsrollen verwendete, und eine Ausdrucksliste hinzu, um den Wert der Städtenamen in den Äußerungen zu verstärken. Die zweite Endpunktvorhersage gab eine hohe Zuverlässigkeitsbewertung zurück, und beide Entitätsrollen wurden gefunden. 
 
 > [!div class="nextstepaction"]
 > [Best Practices für LUIS-Apps kennenlernen](luis-concept-best-practices.md)

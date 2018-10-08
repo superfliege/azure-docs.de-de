@@ -1,26 +1,24 @@
 ---
-title: Verwenden des Speech C# SDKs mit LUIS – Azure | Microsoft-Dokumentation
-titleSuffix: Azure
-description: Verwenden Sie das Speech C# SDK-Beispiel, um von LUIS Absichts- und Entitätenvorhersagen zu erhalten, wenn Sie in das Mikrofon sprechen.
+title: Verwenden des C#-Spracherkennungs-SDKs mit LUIS
+titleSuffix: Azure Cognitive Services
+description: Der Spracherkennungsdienst ermöglicht Ihnen, mit einer einzigen Anforderung Audio zu empfangen und JSON-Objekte der LUIS-Vorhersage zurückgeben zu lassen. In diesem Artikel laden Sie ein C#-Projekt herunter und verwenden es in Visual Studio, um eine Äußerung in ein Mikrofon zu sprechen und von LUIS Vorhersageinformationen zu empfangen. Das Projekt verwendet das NuGet-Spracherkennungspaket, das bereits als Referenz enthalten ist.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aadca428fa076d697cc0f893673672850ddc27d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 14956fd716a6939d5e7dd9d670cc78b58adf7f45
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124395"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042073"
 ---
 # <a name="integrate-speech-service"></a>Integrieren des Spracherkennungsdiensts
-Der [Spracherkennungsdienst](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) ermöglicht Ihnen, mit einer einzigen Anforderung Audio zu empfangen und JSON-Objekte der LUIS-Vorhersage zurückgeben zu lassen.
-
-In diesem Artikel laden Sie ein C#-Projekt herunter und verwenden es in Visual Studio, um eine Äußerung in ein Mikrofon zu sprechen und von LUIS Vorhersageinformationen zu empfangen. Das Projekt verwendet das Spracherkennungspaket [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), das bereits als Referenz enthalten ist. 
+Der [Spracherkennungsdienst](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) ermöglicht Ihnen, mit einer einzigen Anforderung Audio zu empfangen und JSON-Objekte der LUIS-Vorhersage zurückgeben zu lassen. In diesem Artikel laden Sie ein C#-Projekt herunter und verwenden es in Visual Studio, um eine Äußerung in ein Mikrofon zu sprechen und von LUIS Vorhersageinformationen zu empfangen. Das Projekt verwendet das Spracherkennungspaket [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), das bereits als Referenz enthalten ist. 
 
 Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Websitekonto, um die Anwendung zu importieren.
 
@@ -32,12 +30,13 @@ Die Absichten und Äußerungen für diesen Artikel stammen aus der LUIS-App „P
 
 Diese App enthält Absichten, Entitäten und Äußerungen aus dem Bereich „Personalwesen“. Hier sehen Sie einige einfache Beispieläußerungen:
 
-```
-Who is John Smith's manager?
-Who does John Smith manage?
-Where is Form 123456?
-Do I have any paid time off?
-```
+|Beispiele für Äußerungen|
+|--|
+|Who is John W. Smith's manager? (Wer ist der Vorgesetzte von John Smith?)|
+|Who does John Smith manage? (Von wem ist John Smith der Vorgesetzte?)|
+|Where is Form 123456? (Wo befindet sich Formular 123456?)|
+|Do I have any paid time off? (Habe ich irgendwelche bezahlte Freizeit?)|
+
 
 ## <a name="add-keyphrase-prebuilt-entity"></a>Hinzufügen einer vordefinierten Add KeyPhrase-Entität
 Nach dem Importieren der App wählen Sie **Entitäten** und dann **Vordefinierte Entitäten verwalten** aus. Fügen Sie die **KeyPhrase**-Entität hinzu. Die KeyPhrase-Entität extrahiert wichtige fachliche Inhalte aus der Äußerung.
@@ -45,19 +44,18 @@ Nach dem Importieren der App wählen Sie **Entitäten** und dann **Vordefinierte
 ## <a name="train-and-publish-the-app"></a>Trainieren und Veröffentlichen der App
 1. Wählen Sie in der oberen, rechten Navigationsleiste die Schaltfläche **Trainieren** aus, um die LUIS-App zu trainieren.
 
-2. Wählen Sie **Veröffentlichen** aus, um zur Seite „Veröffentlichen“ zu wechseln. 
+2. Wählen Sie in der oberen Leiste **Verwalten** und dann im linken Navigationsbereich **Schlüssel und Endpunkte** aus. 
 
-3. Fügen Sie am unteren Rand der Seite **Veröffentlichen** den im Abschnitt [Erstellen eines LUIS-Endpunktschlüssels](#create-luis-endpoint-key) erstellten LUIS Schlüssel hinzu.
+3. Weisen Sie auf der Seite **Schlüssel und Endpunkte** den im Abschnitt [Erstellen eines LUIS-Endpunktschlüssels](#create-luis-endpoint-key) erstellten LUIS-Schlüssel zu.
 
-4. Veröffentlichen Sie die LUIS-App, indem Sie die Schaltfläche **Veröffentlichen** rechts neben den Slot „Veröffentlichen“ auswählen. 
-
-  Erfassen Sie auf der Seite **Veröffentlichen** die App-ID, die Veröffentlichungsregion und die Abonnement-ID des im Abschnitt [Erstellen eines LUIS-Endpunktschlüssels](#create-luis-endpoint-key) erstellten LUIS Schlüssels. Sie müssen den Code später in diesem Artikel entsprechend mit diesen Werten ändern. 
-
-  Diese Werte sind alle in der Endpunkt-URL unten auf der Seite **Veröffentlichen** für den erstellten Schlüssel enthalten. 
+  Erfassen Sie auf dieser Seite die App-ID, die Veröffentlichungsregion und die Abonnement-ID des im Abschnitt [Erstellen eines LUIS-Endpunktschlüssels](#create-luis-endpoint-key) erstellten LUIS Schlüssels. Sie müssen den Code später in diesem Artikel entsprechend mit diesen Werten ändern. 
   
   Verwenden Sie **nicht** den kostenlosen Starterschlüssel für diese Übung. Nur ein im Azure-Portal erstellter **Sprachverständnis**-Schlüssel funktioniert für diese Übung. 
 
   https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**?subscription-key=**LUISKEY**&q=
+
+
+4. Veröffentlichen Sie die LUIS-App, indem Sie die Schaltfläche **Veröffentlichen** in der Leiste rechts oben auswählen. 
 
 ## <a name="audio-device"></a>Audiogerät
 In diesem Artikel wird das Audiogerät Ihres Computers verwendet. Das kann ein Headset mit Mikrofon oder ein eingebautes Audiogerät sein. Überprüfen Sie anhand der Audioeingangspegel, ob Sie lauter sprechen sollten, als Sie es normalerweise tun würden, damit Ihre Sprache vom Audiogerät erkannt wird. 

@@ -2,19 +2,22 @@
 title: 'Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbankanwendungen mithilfe von Batchverarbeitung'
 description: Dieses Thema belegt, dass die Verwendung der Batchverarbeitung bei Datenbankvorgängen erheblich zur Verbesserung der Geschwindigkeit und Skalierbarkeit Ihrer Azure SQL-Datenbankanwendungen beiträgt. Die Batchverarbeitungstechniken können zwar für jede beliebige SQL Server-Datenbank verwendet werden, der Artikel konzentriert sich jedoch auf Azure.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: c0e1ff3cf018e185ae2dfb329e2aa56766cc247c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: genemi
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 21dc28658f7f6f31bc7536df739a70238a3bcb8f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649780"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160807"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung
 Mit Batchvorgängen für Azure SQL-Datenbank können Sie die Leistung und Skalierbarkeit Ihrer Anwendungen erheblich verbessern. Zur Veranschaulichung der Vorteile werden im ersten Teil dieses Artikels zunächst beispielhaft einige Testergebnisse behandelt, die sequenzielle und batchbasierte SQL-Datenbankanforderungen miteinander vergleichen. Der Rest des Artikels geht auf Techniken, Szenarien und Überlegungen ein, die Sie bei der erfolgreichen Verwendung der Batchverarbeitung in Ihrer Azure-Anwendung unterstützen.
@@ -104,9 +107,7 @@ Die folgende Tabelle zeigt einige Ad-hoc-Testergebnisse. Bei den Tests wurden je
 | 1000 |21479 |2756 |
 
 > [!NOTE]
-> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
-> 
-> 
+> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Artikels](#note-about-timing-results-in-this-article).
 
 Wie Sie den Testergebnissen entnehmen können, verschlechtert sich die Leistung sogar, wenn ein einzelner Vorgang in eine Transaktion eingeschlossen wird. Wenn Sie aber die Anzahl der Vorgänge in einer einzelnen Transaktion erhöhen, ergibt sich eine Verbesserung der Leistung. Der Leistungsunterschied ist außerdem ausgeprägter, wenn alle Vorgänge innerhalb des gleichen Microsoft Azure-Datencenters abgewickelt werden. Die höhere Latenz bei Verwendung von SQL-Datenbank außerhalb des Microsoft Azure-Datencenters beeinträchtigt den Leistungszuwachs, der sich durch die Verwendung von Transaktionen erzielen lässt.
 
@@ -186,7 +187,7 @@ Die folgende Tabelle zeigt Ad-hoc-Testergebnisse für die Verwendung von Tabelle
 | 10000 |23830 |3586 |
 
 > [!NOTE]
-> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
+> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Artikels](#note-about-timing-results-in-this-article).
 > 
 > 
 
@@ -223,7 +224,7 @@ Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung der Batchverarbeitung mi
 | 10000 |21605 |2737 |
 
 > [!NOTE]
-> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
+> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Artikels](#note-about-timing-results-in-this-article).
 > 
 > 
 
@@ -264,7 +265,7 @@ Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung dieser Art von insert-An
 | 100 |33 |51 |
 
 > [!NOTE]
-> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
+> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Artikels](#note-about-timing-results-in-this-article).
 > 
 > 
 
@@ -306,7 +307,7 @@ In unseren Tests hatte die Aufspaltung großer Batches in kleinere Blöcke in de
 | 50 |20 |630 |
 
 > [!NOTE]
-> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
+> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Artikels](#note-about-timing-results-in-this-article).
 > 
 > 
 
@@ -327,7 +328,7 @@ Was, wenn Sie die Batchgröße verringern, aber mehrere Threads verwenden, um di
 | 100 [10] |488 |439 |391 |
 
 > [!NOTE]
-> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
+> Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Artikels](#note-about-timing-results-in-this-article).
 > 
 > 
 

@@ -1,76 +1,73 @@
 ---
-title: 'Tutorial: Erstellen einer LUIS-App zum Abrufen von Standortdaten – Azure | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie eine einfache LUIS-App erstellen, in der Absichten und eine hierarchische Entität zum Extrahieren von Daten verwendet werden.
+title: 'Tutorial 5: Überordnungs-/Unterordnungsbeziehungen – Hierarchische LUIS-Entität für im Kontextbezug gelernte Daten'
+titleSuffix: Azure Cognitive Services
+description: Kontextbasiertes Finden aufeinander bezogener Teildaten. Beispielsweise sind der Ausgangsort und der Zielort für eine physische Verlegung aus einem Gebäude und Büro in ein anderes Gebäude und Büro aufeinander bezogen.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 65c7aabb984ad0a6b3e77d0f98003803821e06cc
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 92b6327cbb97ed871cd4b10977bcd73a81494e20
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158618"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042124"
 ---
-# <a name="tutorial-5-add-hierarchical-entity"></a>Tutorial: 5. Hinzufügen einer Entität vom Typ „Hierarchisch“
-In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie anhand des Kontexts nach zusammengehörenden Datenelementen suchen. 
+# <a name="tutorial-5-extract-contextually-related-data"></a>Tutorial 5: Extrahieren kontextbezogener Daten
+In diesem Tutorial wird das kontextbasierte Finden aufeinander bezogener Teildaten behandelt. Beispielsweise sind der Ausgangsort und der Zielort für eine physische Verlegung aus einem Gebäude und Büro in ein anderes Gebäude und Büro aufeinander bezogen. Zum Erstellen eines Arbeitsauftrags sind möglicherweise beide Teilinformationen erforderlich, und sie sind aufeinander bezogen.  
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Grundlegendes zu hierarchischen Entitäten und aus dem Kontext erschlossenen Unterelementen 
-> * Verwenden der LUIS-App im Personalbereich 
-> * Hinzufügen einer hierarchischen Standortentität mit Unterelementen zu Abflug- und Zielort
-> * Trainieren und Veröffentlichen der App
-> * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort, einschließlich hierarchischer untergeordneter Elemente 
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem [Tutorial zu Listenentitäten](luis-quickstart-intent-and-list-entity.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json).
-
-Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `hier`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
-
-## <a name="purpose-of-the-app-with-this-entity"></a>Zweck der App mit dieser Entität
-Mit dieser App wird ermittelt, wie ein Mitarbeiter vom Ursprungsort (Gebäude und Büro) an den Zielort (Gebäude und Büro) verschoben wird. Hierbei wird die hierarchische Entität verwendet, um die Orte in der Äußerung zu ermitteln. 
+Mit dieser App wird ermittelt, wie ein Mitarbeiter vom Ursprungsort (Gebäude und Büro) an den Zielort (Gebäude und Büro) verschoben wird. Hierbei wird die hierarchische Entität verwendet, um die Orte in der Äußerung zu ermitteln. Der Zweck der Entität **hierarchical** (Hierarchisch) besteht darin, in der Äußerung anhand des Kontexts nach zusammengehörenden Daten zu suchen. 
 
 Die hierarchische Entität ist eine gute Wahl für diese Art von Daten, da für die beiden Datentypen Folgendes gilt:
 
+* Es sind einfache Entitäten.
 * Sie sind im Kontext der Äußerung miteinander verknüpft.
 * Es werden bestimmte Wörter gewählt, um die einzelnen Orte zu nennen. Beispiele für diese Wörter sind: von/nach, Verlassen/Ziel.
 * Beide Standorte sind häufig Teil derselben Äußerung. 
+* Müssen gruppiert und von einer Client-App als eine Informationseinheit verarbeitet werden.
 
-Der Zweck der Entität **hierarchical** (Hierarchisch) besteht darin, in der Äußerung anhand des Kontexts nach zusammengehörenden Daten zu suchen. Wir verwenden als Beispiel die folgende Äußerung:
+**In diesem Tutorial lernen Sie Folgendes:**
 
-```JSON
-mv Jill Jones from a-2349 to b-1298
-```
-In der Äußerung werden zwei Orte angegeben: `a-2349` und `b-1298`. Gehen Sie davon aus, dass der Buchstabe für einen Gebäudenamen und die Zahl für ein Büro in diesem Gebäude steht. Es ist sinnvoll, dass beide Elemente als untergeordnete Elemente einer hierarchischen Entität (`Locations`) gruppiert sind, da beide Datenelemente aus der Äußerung extrahiert werden müssen und miteinander verwandt sind. 
- 
-Wenn nur ein untergeordnetes Element (Abflug oder Ziel) einer hierarchischen Entität vorhanden ist, wird es trotzdem extrahiert. Es müssen nicht alle untergeordneten Elemente gefunden werden, um nur ein bzw. einige Elemente extrahieren zu können. 
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Verwenden der vorhandenen Tutorial-App
+> * Hinzufügen einer Absicht 
+> * Hinzufügen einer hierarchischen Standortentität mit Unterelementen zu Abflug- und Zielort
+> * Trainieren
+> * Veröffentlichen
+> * Abrufen von Absichten und Entitäten von einem Endpunkt
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **Personalwesen** fort. 
+
+Wenn Sie nicht über die Personalwesen-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-list-HumanResources.json) herunter, und speichern Sie sie.
+
+2. Importieren Sie den JSON-Code in eine neue App.
+
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und benennen Sie sie `hier`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf der Name keine Zeichen enthalten, die in einer URL ungültig sind. 
 
 ## <a name="remove-prebuilt-number-entity-from-app"></a>Entfernen der vordefinierten Zahlenentität aus der App
 Entfernen Sie die vordefinierte Zahlenentität vorübergehend, um die gesamte Äußerung anzuzeigen und die untergeordneten Elemente der Hierarchie zu kennzeichnen.
 
-1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste **Build** auswählen. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie im linken Menü die Option **Entitäten**.
 
 3. Wählen Sie die Auslassungspunkte (***...***) rechts von der Zahlenentität in der Liste aus. Klicken Sie auf **Löschen**. 
-
-    [ ![Screenshot: LUIS-App auf der Seite mit den Entitäten mit Hervorhebung der Löschschaltfläche für die vordefinierte Zahlenentität](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
-
 
 ## <a name="add-utterances-to-moveemployee-intent"></a>Hinzufügen von Äußerungen zur MoveEmployee-Absicht
 
 1. Wählen Sie im linken Menü die Option **Intents** (Absichten) aus.
 
 2. Wählen Sie in der Liste mit den Absichten die Option **MoveEmployee**.
-
-    [ ![Screenshot: LUIS-App mit Hervorhebung der MoveEmployee-Absicht im linken Menü](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
 
 3. Fügen Sie die folgenden Beispieläußerungen hinzu:
 
@@ -84,10 +81,22 @@ Entfernen Sie die vordefinierte Zahlenentität vorübergehend, um die gesamte Ä
 
     [![Screenshot: LUIS mit neuen Äußerungen in der MoveEmployee-Absicht](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
 
-    Im Tutorial zur [Listenentität](luis-quickstart-intent-and-list-entity.md) kann ein Mitarbeiter anhand von Name, E-Mail-Adresse, Durchwahl, Mobiltelefonnummer oder US-Sozialversicherungsnummer bezeichnet werden. Diese Mitarbeiternummern werden in den Äußerungen verwendet. Die obigen Beispieläußerungen enthalten unterschiedliche Möglichkeiten zum Notieren der Ursprungs- und Zielorte (fett markiert). Zwei Äußerungen verfügen absichtlich nur über ein Ziel. So kann LUIS besser verstehen, wo diese Orte in der Äußerung angeordnet sind, wenn der Ursprungsort nicht enthalten ist.     
+    Im Tutorial zur [Listenentität](luis-quickstart-intent-and-list-entity.md) wird ein Mitarbeiter anhand von Name, E-Mail-Adresse, Durchwahl, Mobiltelefonnummer oder US-Sozialversicherungsnummer bezeichnet. Diese Mitarbeiternummern werden in den Äußerungen verwendet. Die obigen Beispieläußerungen enthalten unterschiedliche Möglichkeiten zum Notieren der Ursprungs- und Zielorte (fett markiert). Zwei Äußerungen verfügen absichtlich nur über ein Ziel. So kann LUIS besser verstehen, wo diese Orte in der Äußerung angeordnet sind, wenn der Ursprungsort nicht enthalten ist.     
+
+    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="create-a-location-entity"></a>Erstellen einer Entität für den Ort
 LUIS muss verstehen, was ein Ort ist, indem der Ursprung und das Ziel in den Äußerungen gekennzeichnet werden. Wenn Sie die Äußerung in der Tokenansicht (unformatiert) anzeigen möchten, können Sie den Umschalter in der Liste oberhalb der Äußerungen mit der Bezeichnung **Entities View** (Entitätsansicht) wählen. Nach dem Umschalten hat das Steuerelement die Bezeichnung **Tokens View** (Tokenansicht).
+
+Wir verwenden als Beispiel die folgende Äußerung:
+
+```JSON
+mv Jill Jones from a-2349 to b-1298
+```
+
+In der Äußerung werden zwei Orte angegeben: `a-2349` und `b-1298`. Gehen Sie davon aus, dass der Buchstabe für einen Gebäudenamen und die Zahl für ein Büro in diesem Gebäude steht. Es ist sinnvoll, dass beide Elemente als untergeordnete Elemente einer hierarchischen Entität (`Locations`) gruppiert sind, da beide Datenelemente aus der Äußerung extrahiert werden müssen, um die Anforderung in der Clientanwendung abzuschließen, und miteinander verwandt sind. 
+ 
+Wenn nur ein untergeordnetes Element (Abflug oder Ziel) einer hierarchischen Entität vorhanden ist, wird es trotzdem extrahiert. Es müssen nicht alle untergeordneten Elemente gefunden werden, um nur ein bzw. einige Elemente extrahieren zu können. 
 
 1. Wählen Sie in der Äußerung `Displace 425-555-0000 away from g-2323 toward hh-2345` das Wort `g-2323` aus. Ein Dropdownmenü mit einem darüber angeordneten Textfeld wird angezeigt. Geben Sie den Entitätsnamen `Locations` in das Textfeld ein, und wählen Sie dann im Dropdownmenü die Option **Create new entity** (Neue Entität erstellen). 
 
@@ -112,8 +121,6 @@ Fügen Sie die vordefinierte Zahlenentität wieder der Anwendung hinzu.
 
 2. Wählen Sie die Schaltfläche **Manage prebuilt entities** (Vordefinierte Entitäten verwalten) aus.
 
-    [![Screenshot: Liste mit Entitäten mit hervorgehobener Option „Manage prebuilt entities“ (Vordefinierte Entitäten verwalten)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png#lightbox)
-
 3. Wählen Sie in der Liste mit den vordefinierten Entitäten die Option **number** und dann **Fertig**.
 
     ![Screenshot: Auswahl von „number“ im Dialogfeld mit den vordefinierten Entitäten](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
@@ -133,124 +140,117 @@ Fügen Sie die vordefinierte Zahlenentität wieder der Anwendung hinzu.
 
 2. Geben Sie in der Adressleiste am Ende der URL `Please relocation jill-jones@mycompany.com from x-2345 to g-23456` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `MoveEmployee` mit der extrahierten hierarchischen Entität zurückgeben.
 
-  ```JSON
-  {
-    "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
-    "topScoringIntent": {
-      "intent": "MoveEmployee",
-      "score": 0.9966052
-    },
-    "intents": [
-      {
+    ```JSON
+    {
+      "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
+      "topScoringIntent": {
         "intent": "MoveEmployee",
         "score": 0.9966052
       },
-      {
-        "intent": "Utilities.Stop",
-        "score": 0.0325253047
-      },
-      {
-        "intent": "FindForm",
-        "score": 0.006137873
-      },
-      {
-        "intent": "GetJobInformation",
-        "score": 0.00462633232
-      },
-      {
-        "intent": "Utilities.StartOver",
-        "score": 0.00415637763
-      },
-      {
-        "intent": "ApplyForJob",
-        "score": 0.00382325822
-      },
-      {
-        "intent": "Utilities.Help",
-        "score": 0.00249120337
-      },
-      {
-        "intent": "None",
-        "score": 0.00130756292
-      },
-      {
-        "intent": "Utilities.Cancel",
-        "score": 0.00119622645
-      },
-      {
-        "intent": "Utilities.Confirm",
-        "score": 1.26910036E-05
-      }
-    ],
-    "entities": [
-      {
-        "entity": "jill - jones @ mycompany . com",
-        "type": "Employee",
-        "startIndex": 18,
-        "endIndex": 41,
-        "resolution": {
-          "values": [
-            "Employee-45612"
-          ]
+      "intents": [
+        {
+          "intent": "MoveEmployee",
+          "score": 0.9966052
+        },
+        {
+          "intent": "Utilities.Stop",
+          "score": 0.0325253047
+        },
+        {
+          "intent": "FindForm",
+          "score": 0.006137873
+        },
+        {
+          "intent": "GetJobInformation",
+          "score": 0.00462633232
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00415637763
+        },
+        {
+          "intent": "ApplyForJob",
+          "score": 0.00382325822
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.00249120337
+        },
+        {
+          "intent": "None",
+          "score": 0.00130756292
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.00119622645
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 1.26910036E-05
         }
-      },
-      {
-        "entity": "x - 2345",
-        "type": "Locations::Origin",
-        "startIndex": 48,
-        "endIndex": 53,
-        "score": 0.8520272
-      },
-      {
-        "entity": "g - 23456",
-        "type": "Locations::Destination",
-        "startIndex": 58,
-        "endIndex": 64,
-        "score": 0.974032
-      },
-      {
-        "entity": "-2345",
-        "type": "builtin.number",
-        "startIndex": 49,
-        "endIndex": 53,
-        "resolution": {
-          "value": "-2345"
+      ],
+      "entities": [
+        {
+          "entity": "jill - jones @ mycompany . com",
+          "type": "Employee",
+          "startIndex": 18,
+          "endIndex": 41,
+          "resolution": {
+            "values": [
+              "Employee-45612"
+            ]
+          }
+        },
+        {
+          "entity": "x - 2345",
+          "type": "Locations::Origin",
+          "startIndex": 48,
+          "endIndex": 53,
+          "score": 0.8520272
+        },
+        {
+          "entity": "g - 23456",
+          "type": "Locations::Destination",
+          "startIndex": 58,
+          "endIndex": 64,
+          "score": 0.974032
+        },
+        {
+          "entity": "-2345",
+          "type": "builtin.number",
+          "startIndex": 49,
+          "endIndex": 53,
+          "resolution": {
+            "value": "-2345"
+          }
+        },
+        {
+          "entity": "-23456",
+          "type": "builtin.number",
+          "startIndex": 59,
+          "endIndex": 64,
+          "resolution": {
+            "value": "-23456"
+          }
         }
-      },
-      {
-        "entity": "-23456",
-        "type": "builtin.number",
-        "startIndex": 59,
-        "endIndex": 64,
-        "resolution": {
-          "value": "-23456"
-        }
-      }
-    ]
-  }
-  ```
+      ]
+    }
+    ```
+    
+    Die richtige Absicht wird vorhergesagt, und das Entitätenarray weist sowohl den Ursprungs- als auch den Zielwert in der entsprechenden **Entitätseigenschaft** auf.
+    
 
 ## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>Kann auch ein regulärer Ausdruck für jeden Ort verwendet werden?
-Ja. Erstellen Sie den regulären Ausdruck mit Ursprungs- und Zielrolle, und verwenden Sie ihn in einem Muster.
+Ja. Erstellen Sie die reguläre Ausdrucksentität mit Ursprungs- und Zielrolle, und verwenden Sie sie in einem Muster.
 
-Für die Orte in diesem Beispiel, z.B. `a-1234`, wird ein bestimmtes Format mit einem oder mehreren Buchstaben, einem Bindestrich und dann vier oder fünf Zahlen verwendet. Diese Daten können als Entität vom Typ „Regulärer Ausdruck“ mit einer Rolle für jeden Ort beschrieben werden. Rollen sind für Muster verfügbar. Sie können basierend auf diesen Äußerungen Muster erstellen und dann einen regulären Ausdruck für das Ortsformat erstellen und ihn den Mustern hinzufügen. <!-- Go to this tutorial to see how that is done -->
-
-## <a name="patterns-with-roles"></a>Muster mit Rollen
-
-[!INCLUDE [LUIS Compare hierarchical entities to patterns with roles](../../../includes/cognitive-services-luis-hier-roles.md)]
-
-## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
-Diese App mit einigen Absichten und einer hierarchischen Entität hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die extrahierten Daten zurückgegeben. 
-
-Ihr Chatbot verfügt jetzt über genügend Informationen, um die Hauptaktion `MoveEmployee` und die in der Äußerung enthaltenen Informationen zum Standort zu ermitteln. 
-
-## <a name="where-is-this-luis-data-used"></a>Wo werden diese LUIS-Daten verwendet? 
-LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (z.B. ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
+Für die Orte in diesem Beispiel, z.B. `a-1234`, wird ein bestimmtes Format mit einem oder mehreren Buchstaben, einem Bindestrich und dann vier oder fünf Zahlen verwendet. Diese Daten können als Entität vom Typ „Regulärer Ausdruck“ mit einer Rolle für jeden Ort beschrieben werden. Rollen sind nur für Muster verfügbar. Sie können basierend auf diesen Äußerungen Muster erstellen und dann einen regulären Ausdruck für das Ortsformat erstellen und ihn den Mustern hinzufügen. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+In diesem Tutorial wurden eine neue Absicht erstellt und Beispieläußerungen für die im Kontext gelernten Daten von Ursprungs- und Zielort hinzugefügt. Nachdem die App trainiert und veröffentlicht ist, kann eine Clientanwendung diese Informationen für einen Verlegungsauftrag mit den relevanten Informationen verwenden.
+
 > [!div class="nextstepaction"] 
 > [Hinzufügen einer zusammengesetzten Entität](luis-tutorial-composite-entity.md) 

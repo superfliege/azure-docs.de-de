@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: jroth
-ms.openlocfilehash: 56a0629249cdb5f0f098d2b7b6d36b3fbb215009
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e8297892c533f3b0126f925f81d3e9bc429828ef
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30190867"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039954"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Linux-Computern in Azure
 
@@ -78,7 +78,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Kann ich einen virtuellen Linux-Computer mit SQL Server mithilfe von SQL Server Management Studio (SSMS) verwalten?**
 
-   Ja, SSMS ist derzeit jedoch ein Tool nur für Windows. Sie müssen eine Remoteverbindung über einen Windows-Computer herstellen, um SSMS für virtuelle Linux-Computer mit SQL Server zu verwenden. Mit dem neuen Tool [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) können lokal unter Linux zahlreiche administrative Aufgaben durchgeführt werden. Die Vorschauversion eines plattformübergreifenden Datenbankverwaltungstools finden Sie unter [SQL Server Operations Studio (Vorschauversion)](https://docs.microsoft.com/sql/sql-operations-studio/what-is).
+   Ja, SSMS ist derzeit jedoch ein Tool nur für Windows. Sie müssen eine Remoteverbindung über einen Windows-Computer herstellen, um SSMS für virtuelle Linux-Computer mit SQL Server zu verwenden. Mit dem neuen Tool [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) können lokal unter Linux zahlreiche administrative Aufgaben durchgeführt werden. Ein plattformübergreifendes Tool für die Datenbankverwaltung finden Sie unter [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
 
 1. **Kann ich SQL Server vollständig von einer SQL-VM entfernen?**
 
@@ -96,7 +96,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
    Derzeit leider nicht. Für AlwaysOn-Verfügbarkeitsgruppen und Failoverclustering wird eine Clusteringlösung unter Linux benötigt, z.B. Pacemaker. Die unterstützten Linux-Distributionen für SQL Server unterstützen keine Add-Ons für Hochverfügbarkeit in der Cloud.
 
-## <a name="resources"></a>angeben
+## <a name="resources"></a>Ressourcen
 
 **Virtuelle Linux-Computer:**
 

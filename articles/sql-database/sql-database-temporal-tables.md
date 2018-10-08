@@ -2,19 +2,22 @@
 title: Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank | Microsoft Docs
 description: Lernen Sie die ersten Schritte mit temporalen Tabellen in der Azure SQL-Datenbank.
 services: sql-database
-author: bonova
-ms.date: 03/21/2018
-manager: craigg
 ms.service: sql-database
-ms.custom: develop databases
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: 140d2c9f6c334cec7d2761d05d7b20eb7106b9fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 03/21/2018
+ms.openlocfilehash: d18630f9b4cea28bd19b2ac24e7b8c3d1822e17c
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649039"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166417"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank
 Temporale Tabellen sind eine neue Programmierfunktion der Azure SQL-Datenbank, mit der Sie den vollständigen Verlauf von Änderungen in Ihren Daten ohne benutzerdefinierte Codierung nachverfolgen und analysieren können. Temporale Tabellen enthalten Daten, die eng mit dem zeitlichen Kontext verbunden sind, sodass gespeicherte Fakten nur im angegebenen Zeitraum als gültig interpretiert werden können. Diese Eigenschaft von temporalen Tabellen ermöglicht eine effiziente zeitbasierte Analyse und Einblicke in die Datenentwicklung.
@@ -22,7 +25,7 @@ Temporale Tabellen sind eine neue Programmierfunktion der Azure SQL-Datenbank, m
 ## <a name="temporal-scenario"></a>Temporales Szenario
 Dieser Artikel beschreibt die Schritte zur Nutzung temporaler Tabellen in einem Anwendungsszenario. Stellen Sie sich vor, Sie möchten die Benutzeraktivität auf einer neuen Website nachverfolgen, die von Grund auf neu entwickelt wird, oder auf einer vorhandenen Website, die Sie mit der Benutzeraktivitätsanalyse erweitern möchten. In diesem vereinfachten Beispiel setzen wir voraus, dass die Anzahl der besuchten Webseiten während einer Zeitspanne ein Indikator ist, der in der Websitedatenbank aufgezeichnet und überwacht werden muss, die in der Azure SQL-Datenbank gehostet wird. Die Verlaufsanalyse der Benutzeraktivität soll Anregungen zum Neuentwurf der Website und bessere Erkenntnisse über die Besucher liefern.
 
-Das Datenbankmodell für dieses Szenario ist sehr einfach – die Metrik der Benutzeraktivität wird nur mit dem Ganzzahlfeld **PageVisited** dargestellt und zusammen mit grundlegenden Informationen im Benutzerprofil erfasst. Außerdem verwalten Sie für die zeitbasierte Analyse eine Reihe von Zeilen für jeden Benutzer, wobei jede Zeile die Anzahl der Seiten darstellt, die ein bestimmter Benutzer innerhalb einer bestimmten Zeitspanne besucht.
+Das Datenbankmodell für dieses Szenario ist sehr einfach – die Metrik der Benutzeraktivität wird nur mit dem Ganzzahlfeld **PageVisited** dargestellt und zusammen mit grundlegenden Informationen im Benutzerprofil erfasst. Außerdem verwalten Sie für die zeitbasierte Analyse eine Reihe von Zeilen für jeden Benutzer, wobei jede Zeile die Anzahl von Seiten darstellt, die ein bestimmter Benutzer innerhalb einer bestimmten Zeitspanne besucht.
 
 ![Schema](./media/sql-database-temporal-tables/AzureTemporal1.png)
 
@@ -41,7 +44,7 @@ Verwenden Sie das Kontextmenüelement „Neue Tabelle mit Systemversionsverwaltu
 
 ![SSMSNewTable](./media/sql-database-temporal-tables/AzureTemporal2.png)
 
-Wählen Sie in SSDT beim Hinzufügen von neuen Elementen zum Datenbankprojekt die Vorlage „Temporale Tabelle (mit Systemversionsverwaltung)“. Damit öffnen Sie den Tabellen-Designer, sodass Sie mühelos das Tabellenlayout festlegen können:
+Wählen Sie in SSDT beim Hinzufügen von neuen Elementen zum Datenbankprojekt die Vorlage „Temporale Tabelle (mit Systemversionsverwaltung)“ aus. Damit öffnen Sie den Tabellen-Designer, sodass Sie mühelos das Tabellenlayout festlegen können:
 
 ![SSDTNewTable](./media/sql-database-temporal-tables/AzureTemporal3.png)
 

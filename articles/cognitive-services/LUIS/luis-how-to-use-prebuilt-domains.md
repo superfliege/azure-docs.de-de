@@ -1,20 +1,21 @@
 ---
-title: Verwenden von vordefinierten Domänen in LUIS-Apps in Azure | Microsoft-Dokumentation
-description: Erfahren Sie etwas über die Verwendung von vordefinierten Domänen in LUIS-Anwendungen (Language Understanding Intelligent Service).
+title: Verwenden von vordefinierten Domänen zum schnelleren Erstellen von Apps in LUIS-Apps
+titleSuffix: Azure Cognitive Services
+description: Language Understanding Intelligent Service (LUIS) bietet vordefinierte Domänen. Dabei handelt es sich um vordefinierte Sätze von Absichten und Entitäten, die für Domänen oder allgemeine Kategorien von Clientanwendungen zusammenarbeiten. Die vordefinierten Domänen wurden bereits trainiert und können direkt Ihrer LUIS-App hinzugefügt werden.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: df57f9adf5bf7f5f652a77ddeafe950463c6a9fc
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1aa7e1bf9c1a584803a60a5061b4ae4cc8664ff4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224176"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037370"
 ---
 # <a name="use-prebuilt-domains-in-luis-apps"></a>Verwenden von vordefinierten Domänen in LUIS-Apps  
 

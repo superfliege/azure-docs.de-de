@@ -1,20 +1,21 @@
 ---
-title: Grundlegendes zur Zusammenarbeit bei LUIS-Apps – Azure | Microsoft-Dokumentation
+title: Zusammenarbeit an LUIS-Apps – Language Understanding
+titleSuffix: Azure Cognitive Services
 description: LUIS-Apps erfordern einen einzelnen Besitzer und optionale Projektmitarbeiter.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fe5e35c2dcb08cdff9d92142558cf8d7ec81c36c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 38fc33a6fb823e0435a9c96979c5a9a4539cd6ba
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399570"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038772"
 ---
 # <a name="collaborating"></a>Zusammenarbeiten
 
@@ -30,6 +31,11 @@ Unter [Azure Active Directory-Mandantenbenutzer](luis-how-to-collaborate.md#azur
 ## <a name="luis-app-owner"></a>LUIS-App-Besitzer
 Das Konto, das eine App erstellt, ist der Besitzer. Jede App weist genau einen Besitzer auf. Der Besitzer wird in den **[Einstellungen](luis-how-to-collaborate.md)** der App aufgeführt. Dies ist das Konto, das die App löschen kann. Dies ist auch das Konto, das eine E-Mail empfängt, wenn das Endpunktkontingent 75 % des monatliches Limits erreicht. 
 
+## <a name="authorization-roles"></a>Autorisierungsrollen
+LUIS unterstützt mit einer Ausnahme keine unterschiedlichen Rollen für Besitzer und Projektmitarbeiter. Der Besitzer ist das einzige Konto, das die App löschen kann.
+
+Wenn Ihrerseits ein Interesse besteht, den Zugriff auf das Modell zu kontrollieren, erwägen Sie, das Modell auf kleinere LUIS-Apps aufzuteilen, wobei jede der kleineren Apps einen stärker eingeschränkten Kreis von Projektmitarbeitern aufweist. Verwenden Sie [Dispatch](https://aka.ms/dispatch-tool) (Disponieren), um einer übergeordneten LUIS-App das Verwalten der Koordination zwischen über- und untergeordneten Apps zu erlauben.
+
 ## <a name="transfer-ownership"></a>Übertragen des Besitzes
 LUIS erlaubt nicht das Übertragen des Besitzers, Projektmitarbeiter können jedoch die App exportieren und dann eine App durch Importieren erstellen. Beachten Sie, dass die neue App eine andere App-ID aufweist. Die neue App muss trainiert und veröffentlicht werden, und es muss ein neuer Endpunkt verwendet werden.
 
@@ -41,7 +47,7 @@ Wenn Sie mehrere Apps mit Projektmitarbeitern gemeinsam bearbeiten möchten, mü
 ## <a name="managing-multiple-authors"></a>Verwalten mehrerer Ersteller
 Die [LUIS](luis-reference-regions.md#luis-website)-Website erlaubt derzeit keine Erstellung auf Transaktionsebene. Sie können Erstellern die Arbeit an unabhängigen Versionen einer Basisversion ermöglichen. In den folgenden Abschnitten werden zwei unterschiedliche Methoden beschrieben.
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>Verwalten mehrerer Versionen in derselben App
+## <a name="manage-multiple-versions-inside-the-same-app"></a>Verwalten mehrerer Versionen in derselben App
 Zunächst [klonen](luis-how-to-manage-versions.md#clone-a-version) Sie für jeden Ersteller eine Version aus einer Basisversion. 
 
 Jeder Ersteller ändert seine eigene Version der App. Sobald jeder Ersteller mit seinem Modell zufrieden ist, werden die neuen Versionen in JSON-Dateien exportiert.  
@@ -50,7 +56,7 @@ Die exportierten Apps sind JSON-formatierte Dateien, die auf Änderungen verglic
 
 Diese Methode erlaubt eine aktive Version, eine Stagingversion und eine veröffentlichte Version. Im interaktiven Testbereich können Sie die Ergebnisse der drei Versionen vergleichen.
 
-### <a name="manage-multiple-versions-as-apps"></a>Verwalten mehrerer Versionen als Apps
+## <a name="manage-multiple-versions-as-apps"></a>Verwalten mehrerer Versionen als Apps
 [Exportieren](luis-how-to-manage-versions.md#export-version) Sie die Basisversion. Jeder Ersteller importiert die Version. Die Person, die die App importiert, ist auch der Besitzer dieser Version. Wenn sie das Bearbeiten der App abgeschlossen hat, exportiert sie ihre Version. 
 
 Die exportierten Apps sind JSON-formatierte Dateien, die mit dem Basisexport auf Änderungen verglichen werden können. Kombinieren Sie die Dateien, um eine einzelne JSON-Datei der neuen Version zu erstellen. Ändern Sie die **versionId**-Eigenschaft in der JSON-Datei, um die neue zusammengeführte Version zu kennzeichnen. Importieren Sie diese Version in die ursprüngliche App.

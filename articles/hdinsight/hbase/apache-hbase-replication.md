@@ -3,18 +3,18 @@ title: Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 description: Erfahren Sie, wie Sie die HBase-Replikation zwischen HDInsight-Versionen für Lastenausgleich, Hochverfügbarkeit, Migration und Updates ohne Ausfallzeit und Notfallwiederherstellung einrichten.
 services: hdinsight,virtual-network
 author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/11/2018
-ms.author: jasonh
-ms.openlocfilehash: 624165f5ee1140ade9b9ce03c5249d297c8d83f1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/15/2018
+ms.openlocfilehash: 51f5f3b9742de45b1b72104c8cf08079d0719763
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047482"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224378"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -109,6 +109,7 @@ Um Bind zu installieren, müssen Sie die öffentliche IP-Adresse der beiden virt
 2. Öffnen Sie den virtuellen DNS-Computer, indem Sie **Ressourcengruppen > [Ressourcengruppenname] > [vnet1DNS]** wählen.  Der Ressourcengruppenname ist derjenige, den Sie in der vorherigen Prozedur erstellt haben. Die Standardnamen der DNS-VMs lauten *vnet1DNS* und *vnet2DNS*.
 3. Wählen Sie **Eigenschaften** aus, um die Eigenschaftenseite des virtuellen Netzwerks zu öffnen.
 4. Notieren Sie sich die **öffentliche IP-Adresse**, und überprüfen Sie außerdem die **private IP-Adresse**.  Die private IP-Adresse soll **10.1.0.4** für vnet1DNS und **10.2.0.4** für vnet2DNS sein.  
+5. Ändern Sie die DNS-Server für beide virtuelle Netzwerke in die Standard-DNS-Server (von Azure bereitgestellt), um eingehenden und ausgehenden Zugriff auf Downloadpakete zum Installieren von Bind in den folgenden Schritten zuzulassen.
 
 Gehen Sie zur Installation von Bind wie folgt vor:
 
@@ -135,7 +136,7 @@ Gehen Sie zur Installation von Bind wie folgt vor:
     sudo apt-get install bind9 -y
     ```
 
-3. Um Bind zur Weiterleitung von Anforderungen zur Namensauflösung an Ihren lokalen DNS-Server zu konfigurieren, verwenden Sie den folgenden Text als Inhalt der Datei `/etc/bind/named.conf.options`:
+3. Konfigurieren Sie Bind, um Namensauflösungsanforderungen an Ihren lokalen DNS-Server weiterzuleiten. Verwenden Sie hierfür als Inhalt der Datei `/etc/bind/named.conf.options` den folgenden Text:
 
     ```
     acl goodclients {
@@ -151,7 +152,7 @@ Gehen Sie zur Installation von Bind wie folgt vor:
         allow-query { goodclients; };
 
         forwarders {
-            168.63.129.16 #This is the Azure DNS server
+            168.63.129.16; #This is the Azure DNS server
         };
 
         dnssec-validation auto;
@@ -217,7 +218,7 @@ Gehen Sie zur Installation von Bind wie folgt vor:
 
     ```bash
     sudo apt install dnsutils
-    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net 10.2.0.4
+    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
     > [!IMPORTANT]
@@ -277,7 +278,7 @@ Wenn Sie eine Tabelle namens [Kontakte](apache-hbase-tutorial-get-started-linux.
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
-Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azure-Portal aufrufen. Informationen zum Ausführen einer Skriptaktion mithilfe von Azure PowerShell und dem Azure CLI-Tool (Azure-Befehlszeilenschnittstellentool, Azure CLI) finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md).
+Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azure-Portal aufrufen. Informationen zum Ausführen einer Skriptaktion mithilfe von Azure PowerShell und der klassischen Azure CLI finden Sie unter [Anpassen von Linux-basierten HDInsight-Clustern mithilfe von Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md).
 
 **So aktivieren Sie die HBase-Replikation über das Azure-Portal**
 

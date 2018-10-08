@@ -1,22 +1,23 @@
 ---
-title: Testen der LUIS-App in Batches – Azure | Microsoft-Dokumentation
-description: Verwenden Sie LUIS-Batchtests (Language Understanding Intelligent Service), um Äußerungen mit falschen Absichten und Entitäten zu suchen.
+title: Batchtest mit 1000 Beispieläußerungen
+titleSuffix: Azure Cognitive Services
+description: Verwenden Sie LUIS-Batchtestsets (Language Understanding), um Äußerungen mit falschen Absichten und Entitäten zu suchen.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 07c38aa5f66fc8c38392c5407449ec6911e80d47
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: b4c58a13c8b66add8ebd7e535ecac9d7b0f1075b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888625"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032120"
 ---
-# <a name="batch-testing"></a>Testen in Batches
+# <a name="batch-testing-with-a-set-of-example-utterances"></a>Batchtests mit einem Satz von Beispieläußerungen
  Batchtests sind umfassende Tests Ihres aktuellen trainierten Modells zum Messen seiner Leistung in LUIS. 
 
 <a name="batch-testing"></a>
@@ -27,8 +28,6 @@ ms.locfileid: "42888625"
     ![Link zum Testen in Batches](./media/luis-how-to-batch-test/batch-testing-link.png)
 
 2. Wählen Sie **Dataset importieren** aus. Das Dialogfeld **Import new dataset** (Neues Dataset importieren) wird angezeigt. Wählen Sie **Datei auswählen** aus, und suchen Sie eine JSON-Datei mit dem richtigen [JSON-Format](luis-concept-batch-test.md#batch-file-format), die *höchstens 1.000* zu testende Äußerungen enthält.
-
-    ![Importieren einer Datasetdatei](./media/luis-how-to-batch-test/batchtest-importset.png)
 
     Fehler beim Importieren werden auf einer roten Benachrichtigungsleiste am oberen Rand des Browsers gemeldet. Wenn ein Import Fehler aufweist, wird kein Dataset erstellt. Weitere Informationen finden Sie unter [Häufige Fehler](luis-concept-batch-test.md#common-errors-importing-a-batch).
 
@@ -49,7 +48,7 @@ Um den Test auszuführen, wählen Sie den Namen des Datasets aus. Wenn der Test 
 
 Das herunterladbare Dataset ist dieselbe Datei, die für die Batchtests hochgeladen wurde.
 
-|State (Zustand)|Bedeutung|
+|Zustand|Bedeutung|
 |--|--|
 |![Symbol mit grünem Kreis für erfolgreichen Test](./media/luis-how-to-batch-test/batch-test-result-green.png)|Alle Äußerungen sind erfolgreich.|
 |![Symbol mit rotem x für Fehler beim Test](./media/luis-how-to-batch-test/batch-test-result-red.png)|Mindestens eine Absicht einer Äußerung entsprach nicht der Vorhersage.|

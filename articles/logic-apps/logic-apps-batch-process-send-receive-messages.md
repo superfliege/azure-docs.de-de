@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: ee1df77dc18350a64082cb62c297a53700cad223
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bd31de8f60fff5630141f708714083fe76220d11
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128744"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410152"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Azure Logic Apps
 
@@ -56,11 +56,11 @@ Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als
 
 3. Legen Sie die Eigenschaften für den Batchempfang fest: 
 
-   | Eigenschaft | BESCHREIBUNG | 
+   | Eigenschaft | Beschreibung | 
    |----------|-------------|
    | **Batchmodus** | - **Inline**: Zum Definieren von Freigabekriterien im Batchtrigger <br>- **Integrationskonto**: Zum Definieren mehrerer Konfigurationen für Freigabekriterien über ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Mit einem Integrationskonto können Sie diese Konfigurationen an zentraler Stelle statt in separaten Logik-Apps verwalten. | 
    | **Batchname** | Der Name für Ihren Batch (in diesem Beispiel „TestBatch“). Er gilt nur für den Batchmodus **Inline**. |  
-   | **Freigabekriterien** | Diese Eigenschaft gilt nur für den Batchmodus **Inline** und gibt die Kriterien an, die vor der Verarbeitung der einzelnen Batches erfüllt sein müssen: <p>- **Basierend auf der Nachrichtenanzahl**: Die Anzahl von Nachrichten, die im Batch gesammelt werden sollen, z.B. 10 Nachrichten <br>- **Basierend auf Größe**: Die maximale Batchgröße in Bytes, z.B. 100 MB <br>- **Basierend auf dem Zeitplan**: Intervall und Häufigkeit zwischen Batchfreigaben, z.B. 10 Minuten. Sie können auch ein Datum und eine Uhrzeit für den Start angeben. <br>- **Alle auswählen**: Verwenden Sie alle angegebenen Kriterien. | 
+   | **Freigabekriterien** | Diese Eigenschaft gilt nur für den Batchmodus **Inline** und gibt die Kriterien an, die vor der Verarbeitung der einzelnen Batches erfüllt sein müssen: <p>- **Basierend auf der Nachrichtenanzahl**: Die Anzahl von Nachrichten, die im Batch gesammelt werden sollen, z.B. 10 Nachrichten <br>- **Basierend auf Größe**: Die maximale Batchgröße in Bytes, z.B. 100 MB <br>- **Basierend auf dem Zeitplan**: Intervall und Häufigkeit zwischen Batchfreigaben, z.B. 10 Minuten. Der Mindestwert für die Wiederholungen beträgt 60 Sekunden bzw. 1 Minute. Minutenbruchteile werden auf 1 Minute aufgerundet. Um ein Startdatum und eine Startuhrzeit anzugeben, wählen Sie **Erweiterte Optionen anzeigen** aus. <br>- **Alle auswählen**: Verwenden Sie alle angegebenen Kriterien. | 
    ||| 
    
    In diesem Beispiel werden alle Kriterien ausgewählt:
@@ -107,9 +107,7 @@ Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als
 
    * Wählen Sie im Feld **Text** in der angezeigten Liste mit dynamischem Inhalt das Feld **Nachrichten-ID** aus. 
 
-     Da diese Aktion ein Array als Eingabe akzeptiert, fügt der Logic Apps-Designer die Aktion „E-Mail senden“ automatisch in eine Schleife vom Typ „For each“ ein. 
-     Diese Schleife sendet eine E-Mail für jede Nachricht im Batch. 
-     Wenn der Batchtrigger auf 10 Nachrichten festgelegt ist, erhalten Sie daher bei jeder Triggerauslösung 10 E-Mails.
+     Der Logic Apps-Designer fügt automatisch eine For Each-Schleife zur Aktion zum Senden von E-Mails hinzu, da diese Aktion die Ausgabe der vorherigen Aktion nicht als Batch, sondern als Sammlung behandelt. 
 
      ![Auswählen von „Nachrichten-ID“ unter „Text“](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
@@ -164,7 +162,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachri
 
 3. Legen Sie die Eigenschaften für den Batchversand fest.
 
-   | Eigenschaft | BESCHREIBUNG | 
+   | Eigenschaft | Beschreibung | 
    |----------|-------------| 
    | **Batchname** | Der in der Logik-App für den Empfang definierte Batchname, in diesem Beispiel „TestBatch“. <p>**Wichtig:** Der Batchname wird zur Laufzeit überprüft und muss mit dem in der Logik-App für den Empfang angegebenen Namen übereinstimmen. Wenn Sie den Batchnamen ändern, funktioniert die Logik-App für den Batchversand nicht. | 
    | **Nachrichteninhalt** | Der Inhalt für die Nachricht, die Sie senden möchten | 
@@ -182,7 +180,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachri
 
 4. Richten Sie nun eine Partition für den Batch ein. Wählen Sie in der Aktion „BatchReceiver“ die Option **Erweiterte Optionen anzeigen** aus, und legen Sie die folgenden Eigenschaften fest:
 
-   | Eigenschaft | BESCHREIBUNG | 
+   | Eigenschaft | Beschreibung | 
    |----------|-------------| 
    | **Partitionsname** | Ein optionaler eindeutiger Partitionsschlüssel, der es ermöglicht, den Zielbatch in logische Untergruppen aufzuteilen und Nachrichten auf der Grundlage dieses Schlüssels zu sammeln | 
    | **Nachrichten-ID** | Eine optionale Nachrichten-ID, bei der es sich um einen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) handelt, wenn nichts angegeben wird | 
@@ -216,6 +214,7 @@ Die Logik-App für den Batchversand wird einmal pro Minute ausgeführt. Sie gene
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Zusammenfassen von EDI-Nachrichten als Batch und Senden der Nachrichten](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [Erstellen von Workflowdefinitionen für Logik-Apps per JSON-Code](../logic-apps/logic-apps-author-definitions.md)
 * [Erstellen einer serverlosen App mit Azure Logic Apps und Functions](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [Ausnahmebehandlung und Fehlerprotokollierung für Logik-Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)

@@ -3,10 +3,8 @@ title: Excel-Add-In für Machine Learning-Webdienste | Microsoft Docs
 description: Hier wird erläutert, wie Sie Azure Machine Learning-Webdienste direkt in Excel ohne Erstellung von Code verwenden.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
-editor: cgronlun
+author: marthalc
+ms.author: marthalc
 ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
 ms.service: machine-learning
 ms.component: studio
@@ -15,26 +13,30 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 68e2f72dfd8cc58d42263f4b6378d89304aaaa4d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8fade171095ff6a9f4c10925089452d8925e11fe
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834191"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095807"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-web-services"></a>Excel-Add-In für Azure Machine Learning-Webdienste
+# <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Excel-Add-In für Azure Machine Learning Studio-Webdienste
 Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne dafür Code erstellen zu müssen.
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Schritte zum Verwenden eines vorhandenen Webdiensts in einer Arbeitsmappe
 
-1. Öffnen Sie die [Excel-Beispieldatei](http://aka.ms/amlexcel-sample-2), die das Excel-Add-In und Daten zu den Passagieren auf der Titanic enthält.
+1. Öffnen Sie die [Excel-Beispieldatei](http://aka.ms/amlexcel-sample-2), die das Excel-Add-In und Daten zu den Passagieren auf der Titanic enthält. 
+ 
+> [!NOTE]
+> Es wird eine Liste der Webdienste angezeigt, die der Datei zugeordnet sind, und unten ein Kontrollkästchen für die automatische Vorhersage. Wenn Sie die automatische Vorhersage aktivieren, werden die Vorhersagen **aller** Ihrer Dienste bei jeder Änderung bei den Eingaben aktualisiert. Wenn die Option nicht aktiviert ist, müssen Sie zum Aktualisieren auf "Predict All" (Alle vorhersagen) klicken. Informationen zum Aktivieren der automatischen Vorhersage auf Dienstebene finden Sie unter Schritt 6.
+
 2. Wählen Sie den Webdienst aus, indem Sie darauf klicken – in diesem Beispiel ist das „Titanic Survivor Predictor (Excel-Add-In-Beispiel) [Ergebnis]“.
    
     ![Webdienst auswählen][01]
 3. Dadurch gelangen Sie zum Abschnitt **Predict**.  Diese Arbeitsmappe enthält bereits Beispieldaten. In einer leeren Arbeitsmappe können Sie jedoch auch eine Zelle in Excel auswählen und auf **Use sample data** klicken.
 4. Wählen Sie die Daten mit Überschriften aus, und klicken Sie auf das Symbol für den Eingabedatenbereich.  Stellen Sie sicher, dass das Kontrollkästchen „Daten haben Überschriften“ aktiviert ist.
 5. Geben Sie unter **Ausgabe** die Zellennummer ein, in der die Ausgabe erfolgen soll. Bei diesem Beispiel „H1“.
-6. Klicken Sie auf **Vorhersagen**.
+6. Klicken Sie auf **Vorhersagen**. Wenn Sie das Kontrollkästchen "auto-predict" (automatische Vorhersage) aktivieren, löst jede Änderung in den ausgewählten Bereichen (denen, die als Eingabe festgelegt sind), eine Anforderung und eine Aktualisierung der Ausgabezellen aus, ohne dass Sie auf die Vorhersageschaltfläche klicken müssten.
    
     ![Abschnitt „Predict“][02]
 

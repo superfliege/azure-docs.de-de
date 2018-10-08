@@ -1,20 +1,21 @@
 ---
-title: Bezeichnen von vorgeschlagenen Äußerungen mit LUIS | Microsoft-Dokumentation
-description: Verwenden Sie Language Understanding Intelligent Service (LUIS), um vorgeschlagene Äußerungen zu bezeichnen und das aktive maschinelle Lernen zu verbessern.
+title: Überprüfen von Endpunktäußerungen für Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Das wesentliche Feature von LUIS ist das Konzept des aktiven Lernens. Sobald Ihr LUIS über Endpunktabfragen verfügt, verbessert aktives Lernen die Qualität der Ergebnisse, indem LUIS Äußerungen auswählt, bei denen es unsicher ist. Wenn Sie diese Äußerungen bezeichnen, trainieren und veröffentlichen, kann LUIS Äußerungen genauer identifizieren.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 5e195b8ef5aeb35b73c22438980fe2b2e3856977
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a5e0dabe251d14389923df3efe41f6ba80f41bdd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224550"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030794"
 ---
 # <a name="review-endpoint-utterances"></a>Überprüfen von Endpunktäußerungen
 
@@ -24,8 +25,6 @@ Das wesentliche Feature von LUIS ist das [Konzept](luis-concept-review-endpoint-
 1. Öffnen Sie Ihre App (z.B. TravelAgent), indem Sie ihren Namen auf der Seite **Meine Apps** und dann auf der oberen Leiste **Erstellen** auswählen.
 
 2. Wählen Sie unter **Improve app performance** (App-Leistung verbessern) die Option **Review endpoint utterances** (Endpunktäußerungen überprüfen) aus.
-
-    ![Überprüfen von Äußerungen](./media/label-suggested-utterances/review.png)
 
 3. Wählen Sie auf der Seite **Review endpoint utterances** (Endpunktäußerungen überprüfen) das Textfeld **Filter list by intent or entity** (Liste nach Absicht oder Entität filtern) aus. Diese Dropdownliste enthält alle Absichten unter **INTENTS** und alle Entitäten unter **ENTITIES**.
 

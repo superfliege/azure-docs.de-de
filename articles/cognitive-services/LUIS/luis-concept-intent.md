@@ -1,20 +1,21 @@
 ---
-title: Grundlegendes zu Absichten in LUIS-Apps in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, welche Absichten in LUIS-Apps (Language Understanding Intelligent Service) verwendet werden.
+title: Grundlegendes zu Absichten in LUIS-Apps
+titleSuffix: Azure Cognitive Services
+description: Eine Absicht stellt eine Aufgabe oder Aktion dar, die der Benutzer ausführen möchte. Sie ist ein Zweck oder Ziel, das in einer Äußerung des Benutzers ausgedrückt wurde. Definieren Sie einen Satz von Absichten, die Aktionen entsprechen, die Benutzer in Ihrer Anwendung ausführen möchten.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 456f28191161c9a2fac223bf2a31e62e54ae28ae
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cfad122b44944cfb637d8ef98931410d60c81ab8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225787"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041165"
 ---
 # <a name="intents-in-luis"></a>Absichten in LUIS
 

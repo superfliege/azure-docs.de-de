@@ -1,20 +1,21 @@
 ---
-title: Grundlegendes zur Verwendung von Rollen in musterbasierten Entitäten – Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Rollen in einer musterbasierten Entität verwendet werden, um einen kontextabhängigen Entitätsuntertyp zu benennen.
+title: Grundlegendes zur Verwendung von Rollen in musterbasierten Entitäten
+titleSuffix: Azure Cognitive Services
+description: Rollen sind benannte, kontextabhängige Untertypen einer Entität, die nur in Mustern verwendet wird. In der Äußerung „Kaufe ein Ticket von New York nach London“ sind beispielsweise sowohl „New York“ als auch „London“ Städte, die aber jeweils eine andere Bedeutung in dem Satz haben. „New York“ ist die Ausgangsstadt „London“ ist die Zielstadt.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d2692cdce9da7428bd7b30c4feaf7347792618f5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 033e5e5e054b0a29961ad60e72b1466b51d1df0c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222702"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035197"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entitätsrollen in Mustern sind kontextabhängige Untertypen
 Rollen sind benannte, kontextabhängige Untertypen einer Entität, die nur in [Mustern](luis-concept-patterns.md) verwendet wird.
@@ -31,9 +32,10 @@ Rollen benennen diese Unterschiede:
 ## <a name="how-are-roles-used-in-patterns"></a>Wie werden Rollen in Mustern verwendet?
 In der Äußerungsvorlage eines Musters werden Rollen innerhalb der Äußerung verwendet: 
 
-```
-buy a ticket from {Location:origin} to {Location:destination}
-```
+|Muster mit Entitätsrollen|
+|--|
+|`buy a ticket from {Location:origin} to {Location:destination}`|
+
 
 ## <a name="role-syntax-in-patterns"></a>Rollensyntax in Mustern
 Die Entität und die Rolle werden in Klammern `{}` eingeschlossen. Die Entität und die Rolle werden durch einen Doppelpunkt voneinander getrennt. 

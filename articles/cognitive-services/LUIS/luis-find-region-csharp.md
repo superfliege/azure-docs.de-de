@@ -1,22 +1,23 @@
 ---
-title: Suchen von LUIS-Regionen mit C# in den LUIS-Einschränkungen (Language Understanding Intelligent Service) | Microsoft-Dokumentation
+title: Suchen der Endpunktregion mit C# in LUIS
+titleSuffix: Azure Cognitive Services
 description: Suchen Sie programmgesteuert mit einem Endpunktschlüssel und einer Anwendungs-ID für LUIS nach Veröffentlichungsregionen.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6f2688e492dbba718dc55825de164c189a9b46c9
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 53c3d1abb24ae0d5b33a2a100dda07fd20ae92d1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225107"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039631"
 ---
-# <a name="region-can-be-determined-from-api-call"></a>Die Region kann über einen API-Aufruf ermittelt werden. 
+# <a name="find-endpoint-region-with-c"></a>Suchen der Endpunktregion mit C# 
 Wenn Ihnen die LUIS-App-ID und die LUIS-Abonnement-ID bekannt sind, können Sie herausfinden, welche Region Sie für Endpunktabfragen verwenden müssen.
 
 > [!NOTE] 

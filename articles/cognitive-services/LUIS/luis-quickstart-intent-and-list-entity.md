@@ -1,75 +1,63 @@
 ---
-title: 'Tutorial: Erstellen einer LUIS-App zum Abrufen von Textdaten, die genau mit Daten in einer Liste übereinstimmen – Azure | Microsoft-Dokumentation'
-description: In diesem Tutorial wird im Rahmen einer Schnellstartanleitung beschrieben, wie Sie eine einfache LUIS-App mit Absichten und Listenentitäten erstellen, um Daten zu extrahieren.
+title: 'Tutorial 4: Genaue Textübereinstimmungen – LUIS-Listenentität'
+titleSuffix: Azure Cognitive Services
+description: Abrufen von Daten, die mit einer vordefinierten Liste von Elementen übereinstimmen. Jedes Element auf der Liste kann Synonyme aufweisen, die ebenfalls exakt übereinstimmen
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 04411f415b7cfe07d893c43e758bd2a4a226472a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b4fdf094653a4b16dead6397fe8e1a9f1a0258b9
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162197"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162082"
 ---
-# <a name="tutorial-4-add-list-entity"></a>Tutorial: 4. Hinzufügen einer Entität vom Typ „Liste“
-In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie Daten abrufen, die mit Angaben in einer vordefinierten Liste übereinstimmen. 
+# <a name="tutorial-4-extract-exact-text-matches"></a>Tutorial 4: Extrahieren genauer Textübereinstimmungen
+In diesem Tutorial lernen Sie, wie Daten abgerufen werden, die mit einer vordefinierten Liste von Elementen übereinstimmen. Jedes Element auf der Liste kann eine Liste mit Synonymen enthalten. Für die Personalwesen-App kann ein Mitarbeiter anhand verschiedener Schlüsselinformationen, wie Name, E-Mail, Telefonnummer und Steuernummer identifiziert werden. 
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Verstehen von Listenentitäten 
-> * Erstellen einer neuen LUIS-App für den Personalbereich mit MoveEmployee-Absicht
-> * Hinzufügen einer Listenentität zum Extrahieren des Mitarbeiters aus einer Äußerung
-> * Trainieren und Veröffentlichen der App
-> * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort
+Die Personalwesen-App muss bestimmen, welcher Mitarbeiter von einem Gebäude in ein anderes Gebäude verlegt wird. Für eine Äußerung über eine Mitarbeiterverlegung bestimmt LUIS die Absicht und extrahiert den Mitarbeiter, damit von der Clientanwendung ein Standardauftrag zum Verlegen des Mitarbeiters erstellt werden kann.
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem Tutorial zur [RegEx](luis-quickstart-intents-regex-entity.md)-Entität verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json).
-
-Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `list`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
-
-## <a name="purpose-of-the-list-entity"></a>Zweck der Listenentität
-Mit dieser App werden Äußerungen zur Verschiebung eines Mitarbeiters von einem Gebäude in ein anderes vorhergesagt. Diese App nutzt eine Listenentität zum Extrahieren eines Mitarbeiters. Auf den Mitarbeiter kann per Name, Telefonnummer, E-Mail-Adresse oder US-Sozialversicherungsnummer verwiesen werden. 
-
-Eine Listenentität kann viele Elemente mit Synonymen für die einzelnen Elemente enthalten. Für kleine oder mittelgroße Unternehmen wird die Listenentität zum Extrahieren der Mitarbeiterinformationen genutzt. 
-
-Der kanonische Name für die einzelnen Elemente ist die Mitarbeiternummer. Für diese Domäne lauten Beispiele für die Synonyme wie folgt: 
-
-|Zweck des Synonyms|Wert des Synonyms|
-|--|--|
-|NAME|John W. Smith|
-|E-Mail-Adresse|john.w.smith@mycompany.com|
-|Durchwahl|x12345|
-|Persönliche Mobiltelefonnummer|425-555-1212|
-|US-Sozialversicherungsnummer|123-45-6789|
+Diese App verwendet eine Listenentität, um den Mitarbeiter zu extrahieren. Auf den Mitarbeiter kann über den Namen, die Telefondurchwahl, die Mobiltelefonnummer, die E-Mail-Adresse oder die Steuernummer Bezug genommen werden. 
 
 Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes gilt:
 
 * Bei den Datenwerten handelt es sich um einen bekannten Satz.
 * Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
-* Der Text in der Äußerung ist eine genaue Übereinstimmung mit einem Synonym. 
+* Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. 
 
-Bei LUIS wird der Mitarbeiter so extrahiert, dass von der Clientanwendung eine Standardreihenfolge zum Verschieben des Mitarbeiters erstellt werden kann.
-<!--
-## Example utterances
-Simple example utterances for a `MoveEmployee` inent:
+**In diesem Tutorial lernen Sie Folgendes:**
 
-```
-move John W. Smith from B-1234 to H-4452
-mv john.w.smith@mycompany from office b-1234 to office h-4452
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Verwenden der vorhandenen Tutorial-App
+> * Hinzufügen einer MoveEmployee-Absicht
+> * Hinzufügen einer Entität vom Typ „Liste“ 
+> * Trainieren 
+> * Veröffentlichen
+> * Abrufen von Absichten und Entitäten von einem Endpunkt
 
-```
--->
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="add-moveemployee-intent"></a>Hinzufügen einer MoveEmployee-Absicht
+## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **Personalwesen** fort. 
 
-1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste **Build** auswählen. 
+Wenn Sie nicht über die Personalwesen-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-regex-HumanResources.json) herunter, und speichern Sie sie.
+
+2. Importieren Sie den JSON-Code in eine neue App.
+
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und benennen Sie sie `list`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf der Name keine Zeichen enthalten, die in einer URL ungültig sind. 
+
+
+## <a name="moveemployee-intent"></a>MoveEmployee-Absicht
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. 
 
@@ -94,8 +82,23 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
 
     [ ![Screenshot: Seite „Intents“ (Absichten) mit hervorgehobenen neuen Äußerungen](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
 
-## <a name="create-an-employee-list-entity"></a>Erstellen einer Mitarbeiterlistenentität
-Nachdem die Absicht **MoveEmployee** jetzt über Äußerungen verfügt, muss LUIS verstehen, was ein Mitarbeiter ist. 
+    Beachten Sie, dass „Zahl“ und „datetimeV2“ in einem vorhergehenden Tutorial hinzugefügt wurden und automatisch bezeichnet werden, wenn sie in Beispieläußerungen gefunden werden.
+
+    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+
+## <a name="employee-list-entity"></a>Mitarbeiter-Listenentität
+Nachdem die Absicht **MoveEmployee** jetzt über Beispieläußerungen verfügt, muss LUIS verstehen, was ein Mitarbeiter ist. 
+
+Der primäre, _kanonische_ Name für die einzelnen Elemente ist die Mitarbeiternummer. Für diese Domäne lauten Beispiele für die Synonyme der einzelnen kanonischen Namen wie folgt: 
+
+|Zweck des Synonyms|Wert des Synonyms|
+|--|--|
+|NAME|John W. Smith|
+|E-Mail-Adresse|john.w.smith@mycompany.com|
+|Durchwahl|x12345|
+|Persönliche Mobiltelefonnummer|425-555-1212|
+|US-Sozialversicherungsnummer|123-45-6789|
+
 
 1. Klicken Sie im linken Bereich auf **Entitäten**.
 
@@ -133,15 +136,15 @@ Nachdem die Absicht **MoveEmployee** jetzt über Äußerungen verfügt, muss LUI
     |Persönliche Mobiltelefonnummer|425-555-0000|
     |US-Sozialversicherungsnummer|234-56-7891|
 
-## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
+## <a name="train"></a>Trainieren
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
+## <a name="publish"></a>Veröffentlichen
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
+## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -259,22 +262,12 @@ Nachdem die Absicht **MoveEmployee** jetzt über Äußerungen verfügt, muss LUI
 
   Der Mitarbeiter wurde gefunden und mit dem Typ `Employee` mit dem Auflösungswert `Employee-24612` zurückgegeben.
 
-## <a name="where-is-the-natural-language-processing-in-the-list-entity"></a>Wo wird für die Listenentität die Verarbeitung natürlicher Sprache durchgeführt? 
-Da für die Listenentität eine genaue Textübereinstimmung erforderlich ist, wird keine Verarbeitung von natürlicher Sprache durchgeführt (und auch kein maschinelles Lernen). Die Verarbeitung natürlicher Sprache (bzw. maschinelles Lernen) wird für LUIS verwendet, um die richtige Absicht mit der höchsten Bewertung auszuwählen. Darüber hinaus kann eine Äußerung eine Mischung von mehr als einer Entität oder sogar mehr als einem Entitätstyp sein. Jede Äußerung wird für alle Entitäten der App verarbeitet, einschließlich der Entitäten, die auf der Verarbeitung natürlicher Sprache (oder maschinellem Lernen) basieren.
-
-## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
-Mit dieser App wurde basierend auf einer Listenentität der richtige Mitarbeiter extrahiert. 
-
-Ihr Chatbot verfügt nun über genügend Informationen, um die primäre Aktion (`MoveEmployee`) und den Mitarbeiter für den Verschiebevorgang zu ermitteln. 
-
-## <a name="where-is-this-luis-data-used"></a>Wo werden diese LUIS-Daten verwendet? 
-LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (z.B. ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+In diesem Tutorial wurden eine neue Absicht erstellt, Beispieläußerungen hinzugefügt und dann eine Listenentität erstellt, um exakte Textübereinstimmungen aus Äußerungen zu extrahieren. Nach dem Trainieren und Veröffentlichen der App hat eine Abfrage des Endpunkts die Absicht identifiziert und die extrahierten Daten zurückgegeben.
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md)

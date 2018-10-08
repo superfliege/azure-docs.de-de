@@ -1,23 +1,24 @@
 ---
-title: Grundlegende Konzepte der Datenänderung in LUIS – Azure | Microsoft-Dokumentation
+title: Konzepte zur Datenänderung in LUIS – Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Daten vor der Vorhersage in Language Understanding Intelligent Service (LUIS) geändert werden können.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d8421114bb5a7416ad2523fe9b0353f03f672619
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1aad540086764b1e2315d3b3e195c55ba5931e07
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223982"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036053"
 ---
 # <a name="data-alterations"></a>Datenänderungen
-LUIS bietet Möglichkeiten zum Bearbeiten einer Äußerung vor oder während der Vorhersage. 
+LUIS bietet Möglichkeiten zum Bearbeiten einer Äußerung vor oder während der Vorhersage. Dazu gehören eine Korrektur der Rechtschreibung und das Beheben von Zeitzonenproblemen für Prebuild-datetimeV2. 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Korrigieren von Rechtschreibfehlern in Äußerungen
 LUIS verwendet die [Bing-Rechtschreibprüfungs-API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) um Rechtschreibfehler in Äußerungen zu korrigieren. LUIS benötigt den diesem Dienst zugewiesenen Schlüssel. Erstellen Sie den Schlüssel, und fügen Sie den Schlüssel dann als Parameter der Abfragezeichenfolge an den [Endpunkt](https://aka.ms/luis-endpoint-apis) hinzu. 
@@ -47,6 +48,9 @@ Wenn die [Bing-Rechtschreibprüfungs-API V7](https://azure.microsoft.com/service
 }
 ```
  
+### <a name="whitelist-words"></a>Whitelistwörter
+Die in LUIS verwendete Bing-Rechtschreibprüfungs-API unterstützt keine Whitelist mit Wörtern, die bei den Änderungen durch die Rechtschreibprüfung ignoriert werden sollen. Wenn Sie eine Whitelist für Wörter oder Akronyme benötigen, verarbeiten Sie die Äußerung im Client mithilfe einer Whitelist, bevor Sie die Äußerung zur Absichtsvorhersage an LUIS senden.
+
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Ändern der Zeitzone von vordefinierten datetimeV2-Entitäten
 Wenn eine LUIS-App eine vordefinierte datetimeV2-Entität verwendet, kann ein datetime-Wert in der Vorhersageantwort zurückgegeben werden. Der richtige datetime-Wert für die Rückgaben wird anhand der Zeitzone der Anforderung bestimmt. Wenn die Anforderung von einem Bot oder einer anderen zentralen Anwendung vor dem Empfang durch LUIS stammt, korrigieren Sie die von LUIS verwendete Zeitzone. 
 

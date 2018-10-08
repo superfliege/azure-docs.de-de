@@ -1,22 +1,23 @@
 ---
-title: Grundlegendes zu bewährten Methoden bei LUIS – Azure | Microsoft-Dokumentation
+title: Bewährte Methoden zum Erstellen von Apps mit LUIS – Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie mit bewährten Methoden bei LUIS die besten Ergebnisse erzielen.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 81a2523f37cac926d9f498953a831c2d877a7528
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 511e6c732613cc577644365e38b271135659f2d3
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224006"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042243"
 ---
-# <a name="best-practices"></a>Bewährte Methoden
+# <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bewährte Methoden zum Erstellen einer Sprachverständnis-App mit Cognitive Services
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App. 
 
 * Erstellen des Sprachmodells
@@ -54,7 +55,7 @@ Book a flight
 Book a hotel
 ```
 
-„Book a flight“ und „Book a hotel“ verwenden das gleiche Vokabular „Book a “. Dies stellt eine Überlappung dar. Aus diesem Grund sollte nur eine Absicht verwendet werden. Extrahieren Sie die unterschiedlichen Wörter „einen Flug“ und „ein Hotelzimmer“ in Entitäten. 
+„Buche einen Flug“ und „Buche ein Hotelzimmer“ verwenden das gleiche Vokabular „Buche“. Dies stellt eine Überlappung dar. Aus diesem Grund sollte nur eine Absicht verwendet werden. Extrahieren Sie die unterschiedlichen Wörter „einen Flug“ und „ein Hotelzimmer“ in Entitäten. 
 
 ## <a name="do-find-sweet-spot-for-intents"></a>Streben Sie eine Balance zwischen Absichten an
 Verwenden Sie die Vorhersagedaten von LUIS, um zu bestimmen, ob die Absichten überlappen. Überlappende Absichten verwirren LUIS. Im Ergebnis ist die Absicht mit der höchsten Bewertung zu nah an einer anderen Absicht. Da LUIS nicht bei jedem Training genau denselben Pfad durch die Daten anwendet, kann eine überlappende Absicht beim Training den ersten oder zweiten Platz erreichen. Damit dieser Fall nicht eintritt, sollten Sie das Ergebnis der Äußerung für jede Absicht weiter voneinander trennen. Bei einer guten Unterscheidung der Absichten sollte das Ergebnis jedes Mal die erwartete bestbewertete Absicht sein. 
@@ -93,9 +94,9 @@ LUIS erwartet Variationen in den Äußerungen zu einer Absicht. Die Äußerungen
 
 |Verwenden Sie nicht dasselbe Format.|Verwenden Sie unterschiedliche Formate.|
 |--|--|
-|Kaufe ein Ticket nach Seattle<br>Kaufe ein Ticket nach Paris<br>Kaufe ein Ticket nach Orlando|Kaufe 1 Ticket nach Seattle<br>Reserviere zwei Plätze im Nachtflug nach Paris nächsten Montag<br>Ich möchte 3 Tickets nach Orlando in den Frühjahrsferien buchen|
+|Buy a ticket to Seattle<br>Kaufe ein Ticket nach Paris<br>Kaufe ein Ticket nach Orlando|Kaufe 1 Ticket nach Seattle<br>Reserviere zwei Plätze im Nachtflug nach Paris nächsten Montag<br>Ich möchte 3 Tickets nach Orlando in den Frühjahrsferien buchen|
 
-In der zweiten Spalte werden verschiedene Verben (kaufen, reservieren, buchen), verschiedene Mengenangaben (1, zwei, 3) und unterschiedliche Wortanordnungen verwendet, alle enthalten jedoch dieselbe Absicht: Flugtickets für eine Reise zu erwerben. 
+In der zweiten Spalte werden verschiedene Verben (buy, reserve, book), verschiedene Mengenangaben (1, two, 3) und unterschiedliche Wortanordnungen verwendet, alle enthalten jedoch dieselbe Absicht: Flugtickets für eine Reise zu erwerben. 
 
 ## <a name="dont-mix-the-definition-of-intents-and-entities"></a>Trennen Sie die Definitionen von Absichten und Entitäten
 Erstellen Sie eine Absicht für jede Aktion, die Ihr Bot akzeptieren soll. Verwenden Sie Entitäten als Parameter, die diese Aktionen möglich machen. 

@@ -1,0 +1,50 @@
+---
+title: Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank
+description: Erfahren Sie mehr über die Ausgabe von Daten aus Azure Stream Analytics in SQL Azure, und erzielen Sie höhere Durchsatzraten für Schreibvorgänge.
+services: stream-analytics
+author: chetang
+ms.author: chetang
+manager: katicad
+ms.reviewer: mamccrea
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 09/21/2018
+ms.openlocfilehash: 623d03c96866392ef245fb924cbf6600e7850ffe
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47057815"
+---
+# <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank
+
+In diesem Artikel werden Tipps zum Erzielen einer höheren Durchsatzleistung bei Schreibvorgängen erörtert, wenn Sie Daten mit Azure Stream Analytics in SQL Azure-Datenbank laden.
+
+Bei der SQL-Ausgabe in Azure Stream Analytics werden parallele Schreibvorgänge als Option unterstützt. Diese Option ermöglicht [vollständig parallele](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) Auftragstopologien, in denen mehrere Ausgabepartitionen gleichzeitig in die Zieltabelle schreiben. Allerdings reicht das Aktivieren dieser Option in Azure Stream Analytics möglicherweise nicht aus, um einen höheren Durchsatz zu erzielen, weil sie erheblich von Ihrer SQL Azure-Datenbank-Konfiguration und vom Tabellenschema abhängt. Die Auswahl von Indizes, Gruppierungsschlüssel, Indexfüllfaktor und Komprimierung besitzt Auswirkungen auf die Dauer von Tabellenladevorgängen. Weitere Informationen zum Optimieren der SQL Azure-Datenbank, um die Abfrage- und Ladeleistung basierend auf internen Benchmarks zu verbessern, finden Sie unter [Optimieren der Leistung bei Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance).
+
+Hier sind einige Konfigurationen innerhalb der einzelnen Dienste aufgeführt, mit denen Sie den Durchsatz Ihrer Lösung insgesamt verbessern können.
+
+## <a name="azure-stream-analytics"></a>Azure Stream Analytics
+
+- **Partitionierung erben** – Diese Konfigurationsoption für die SQL-Ausgabe ermöglicht das Erben des Partitionierungsschemas des vorherigen Abfrageschritts oder der vorherigen Eingabe. Wenn diese Option aktiviert ist, sind beim Schreiben in eine datenträgerbasierte Tabelle und beim Verwenden einer [vollständig parallelen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) Topologie für Ihren Auftrag bessere Durchsatzwerte zu erwarten. Diese Partitionierung erfolgt für viele weitere [Ausgaben](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks) bereits automatisch. Die Tabellensperre (TABLOCK) wird für mit dieser Option durchgeführte Masseneinfügungen ebenfalls deaktiviert.
+
+> [!NOTE] 
+> Wenn mehr als acht Eingabepartitionen vorliegen, ist das Erben des Eingabepartitionierungsschemas möglicherweise keine geeignete Option. Die Obergrenze wurde für eine Tabelle mit einer einzigen Identitätsspalte und einem gruppierten Index festgestellt. Basierend auf Ihrem Schema und Ihrer Auswahl von Indizes können Ihre Beobachtungen abweichen.
+
+- **Batchgröße**: In der SQL-Ausgabekonfiguration können Sie die maximale Batchgröße in einer Azure Stream Analytics-SQL-Ausgabe basierend auf der Natur Ihrer Zieltabelle/Arbeitsauslastung angeben. Die Batchgröße ist die maximale Anzahl von Datensätzen, die bei jeder Masseneinfügungstransaktion gesendet werden. In gruppierten Columnstore-Indizes ermöglichen Batchgrößen von etwa [100.000](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) eine weitere Parallelisierung, minimale Protokollierung sowie Sperroptimierungen. In datenträgerbasierten Tabellen ist möglicherweise ein Wert von höchstens 10.000 (Standard) für Ihre Lösung optimal, weil durch höhere Batchgrößen eine Sperrenausweitung bei Masseneinfügungen ausgelöst werden kann.
+
+- **Optimierung von Eingabemeldungen**: Wenn Sie eine Optimierung mit Partitionierungsvererbung und Batchgrößen durchgeführt haben, können Sie den Schreibdurchsatz durch Erhöhen der Anzahl von Eingabeereignissen pro Meldung pro Partition noch weiter steigern. Die Optimierung von Eingabemeldungen ermöglicht innerhalb von Azure Stream Analytics Batchgrößen bis hin zur angegebenen Batchgröße, was zu einem verbesserten Durchsatz führt. Dies lässt sich mithilfe von [Komprimierung](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) oder größeren Meldungen erreichen, die in der EventHub Premium-SKU verfügbar sind.
+
+## <a name="sql-azure"></a>SQL Azure
+
+- **Partitionierte Tabelle und Indizes**: Konflikte zwischen Partitionen während Schreibvorgängen können über eine [partitionierte](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL-Tabelle und partitionierte Indizes in der Tabelle mit derselben Spalte wie der Partitionsschlüssel (z.B. "PartitionId") erheblich reduziert werden. Für eine partitionierte Tabelle müssen Sie in der PRIMARY-Dateigruppe eine [Partitionsfunktion](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) und ein [Partitionsschema](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) erstellen. Dadurch erhöht sich auch die Verfügbarkeit der vorhandenen Daten, während neue Daten geladen werden. Das Protokoll-E/A-Limit wird möglicherweise aufgrund der Anzahl von Partitionen erreicht. Es kann jedoch durch ein Upgrade der SKU erhöht werden.
+
+- **Verstöße gegen eindeutige Schlüssel vermeiden**: Wenn Sie im Azure Stream Analytics-Aktivitätsprotokoll [mehrere Warnmeldungen zu Schlüsselverstößen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-common-troubleshooting-issues#handle-duplicate-records-in-azure-sql-database-output) erhalten, stellen Sie sicher, dass Ihr Auftrag nicht durch Verstöße gegen die Unique-Einschränkung beeinträchtigt wird, die üblicherweise in Wiederherstellungsfällen auftreten. Dies lässt sich durch Festlegen der Option [IGNORE\_DUP\_KEY](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-common-troubleshooting-issues#handle-duplicate-records-in-azure-sql-database-output) für Ihre Indizes vermeiden.
+
+## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory und In-Memory-Tabellen
+
+- **In-Memory-Tabelle als temporäre Tabelle**: [In-Memory-Tabellen](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) ermöglichen Datenladevorgänge in sehr hoher Geschwindigkeit. Die Daten müssen jedoch in den Arbeitsspeicher passen. Benchmarks zeigen, dass das Massenladen aus einer In-Memory-Tabelle in eine datenträgerbasierte Tabelle ungefähr 10-mal schneller verläuft als eine direkte Masseneinfügung über einen einzigen Writer in die datenträgerbasierte Tabelle mit einer Identitätsspalte und einem gruppierten Index. Um diese Masseneinfügungsleistung zu nutzen, richten Sie einen [Kopierauftrag mithilfe von Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database) ein, bei dem Daten aus der In-Memory-Tabelle in die datenträgerbasierte Tabelle kopiert werden.
+
+## <a name="summary"></a>Zusammenfassung
+
+Das Feature der partitionierten Ausgabe in Azure Stream Analytics für die SQL-Ausgabe sollte zusammen mit der an einer partitionierten Tabelle in SQL Azure ausgerichteten Parallelisierung Ihres Auftrags enorme Durchsatzverbesserungen erzielen. Indem Sie Azure Data Factory zur Orchestrierung von Datenverschiebungen aus einer In-Memory-Tabelle in datenträgerbasierte Tabellen nutzen, können Sie den Durchsatz erheblich steigern. Sofern dies möglich ist, kann auch die Verbesserung der Meldungsdichte einen entscheidenden Faktor bei der Verbesserung des Gesamtdurchsatzes darstellen.

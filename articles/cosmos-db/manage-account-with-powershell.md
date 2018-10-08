@@ -2,7 +2,7 @@
 title: Azure Cosmos DB-Automatisierung – Verwaltung mit PowerShell | Microsoft-Dokumentation
 description: Verwenden von Azure PowerShell zum Verwalten Ihrer Azure Cosmos DB-Konten.
 services: cosmos-db
-author: dmakwana
+author: SnehaGunda
 manager: kfile
 editor: ''
 tags: azure-resource-manager
@@ -10,17 +10,17 @@ ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/21/2017
-ms.author: dimakwan
-ms.openlocfilehash: 90de671d8e57244765f1da439649e57485814533
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.author: sngun
+ms.openlocfilehash: 82ab30ebab1b69d5ae636702b3b56d3792c09010
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051662"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394572"
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Erstellen eines Azure Cosmos DB-Kontos mithilfe von PowerShell
 
-Der folgende Leitfaden erläutert die Befehle zum Automatisieren der Verwaltung Ihrer Azure Cosmos DB-Datenbankkonten mithilfe von Azure PowerShell. Er enthält auch Befehle zum Verwalten von Kontoschlüsseln und Failoverprioritäten in [Datenbankkonten in mehreren Regionen][scaling-globally]. Wenn Sie Ihr Datenbankkonto aktualisieren, können Sie Konsistenzrichtlinien ändern und Regionen hinzufügen bzw. entfernen. Zur plattformübergreifenden Verwaltung Ihres Azure Cosmos DB-Kontos können Sie die [Azure-Befehlszeilenschnittstelle](cli-samples.md), die [Ressourcenanbieter-REST-API][rp-rest-api] oder das [Azure-Portal](create-sql-api-dotnet.md#create-account) verwenden.
+Der folgende Leitfaden erläutert die Befehle zum Automatisieren der Verwaltung Ihrer Azure Cosmos DB-Datenbankkonten mithilfe von Azure PowerShell. Er enthält auch Befehle zum Verwalten von Kontoschlüsseln und Failoverprioritäten in [Datenbankkonten in mehreren Regionen][distribute-data-globally.md]. Wenn Sie Ihr Datenbankkonto aktualisieren, können Sie Konsistenzrichtlinien ändern und Regionen hinzufügen bzw. entfernen. Zur plattformübergreifenden Verwaltung Ihres Azure Cosmos DB-Kontos können Sie die [Azure-Befehlszeilenschnittstelle](cli-samples.md), die [Ressourcenanbieter-REST-API][rp-rest-api] oder das [Azure-Portal](create-sql-api-dotnet.md#create-account) verwenden.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -33,7 +33,7 @@ Befolgen Sie die Anweisungen unter [Installieren und Konfigurieren von Azure Pow
 
 ## <a id="create-documentdb-account-powershell"></a> Erstellen eines Azure Cosmos DB-Kontos
 
-Mit diesem Befehl können Sie ein Azure Cosmos DB-Datenbankkonto erstellen. Konfigurieren Sie das neue Datenbankkonto entweder mit einer einzelnen Region oder mit [mehreren Regionen][scaling-globally] mit einer bestimmten [Konsistenzrichtlinie](consistency-levels.md).
+Mit diesem Befehl können Sie ein Azure Cosmos DB-Datenbankkonto erstellen. Konfigurieren Sie das neue Datenbankkonto entweder mit einer einzelnen Region oder mit [mehreren Regionen][distribute-data-globally.md] mit einer bestimmten [Konsistenzrichtlinie](consistency-levels.md).
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -60,7 +60,7 @@ Beispiel:
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>Notizen
-* Das oben stehende Beispiel erstellt ein Datenbankkonto mit zwei Regionen. Es ist auch möglich, ein Datenbankkonto mit einer Region (die als Schreibregion festgelegt ist und den Failoverprioritätswert 0 aufweist) oder mit mehr als zwei Regionen zu erstellen. Weitere Informationen finden Sie unter [ Datenbankkonten für mehrere Regionen][scaling-globally].
+* Das oben stehende Beispiel erstellt ein Datenbankkonto mit zwei Regionen. Es ist auch möglich, ein Datenbankkonto mit einer Region (die als Schreibregion festgelegt ist und den Failoverprioritätswert 0 aufweist) oder mit mehr als zwei Regionen zu erstellen. Weitere Informationen finden Sie unter [Datenbankkonten für mehrere Regionen][distribute-data-globally.md].
 * Die Standorte müssen Regionen entsprechen, in denen Azure Cosmos DB allgemein verfügbar ist. Die aktuelle Liste der Regionen finden Sie auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services).
 
 ## <a id="update-documentdb-account-powershell"></a> Aktualisieren eines Azure Cosmos DB-Datenbankkontos

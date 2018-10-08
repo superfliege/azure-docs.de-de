@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 09/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 97bf33cb882d5a121b9811a8e36a1d26f9a954f8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 1cac4e4cee408e5208d2d5d84f81b8ad7a89f03b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715368"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033990"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals
 
@@ -109,9 +109,9 @@ Bei der Zugriffsverwaltung möchten Sie die zugriffsberechtigten Benutzer sowie 
 
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
-In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Gehen Sie wie folgt vor, um Zugriff auf verschiedene Bereiche zu gewähren.
+In RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Gehen Sie wie folgt vor, um Zugriff auf verschiedene Bereiche zu gewähren.
 
-### <a name="create-a-role-assignment-at-a-resource-group-scope"></a>Erstellen einer Rollenzuweisung in einem Ressourcengruppenbereich
+### <a name="assign-a-role-at-a-resource-group-scope"></a>Zuweisen einer Rolle in einem Ressourcengruppenbereich
 
 1. Wählen Sie in der Navigationsliste die Option **Ressourcengruppen** aus.
 
@@ -131,11 +131,11 @@ In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Gehen Sie
 
 1. Wählen Sie in der Liste **Auswählen** einen Benutzer, eine Gruppe oder eine Anwendung aus. Wird der Sicherheitsprinzipal in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
 
-1. Wählen Sie **Speichern** aus, um die Rollenzuweisung zu erstellen.
+1. Wählen Sie zum Zuweisen einer Rolle **Speichern** aus.
 
    Nach einigen Augenblicken wird der Sicherheitsprinzipal der Rolle im Ressourcengruppenbereich zugewiesen.
 
-### <a name="create-a-role-assignment-at-a-subscription-scope"></a>Erstellen einer Rollenzuweisung im Abonnementbereich
+### <a name="assign-a-role-at-a-subscription-scope"></a>Zuweisen einer Rolle in einem Abonnementbereich
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste** und anschließend auf **Abonnements**.
 
@@ -155,11 +155,37 @@ In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Gehen Sie
 
 1. Wählen Sie in der Liste **Auswählen** einen Benutzer, eine Gruppe oder eine Anwendung aus. Wird der Sicherheitsprinzipal in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
 
-1. Wählen Sie **Speichern** aus, um die Rollenzuweisung zu erstellen.
+1. Wählen Sie zum Zuweisen einer Rolle **Speichern** aus.
 
    Nach einigen Augenblicken wird der Sicherheitsprinzipal der Rolle im Abonnementbereich zugewiesen.
 
-### <a name="create-a-role-assignment-at-a-management-group-scope"></a>Erstellen einer Rollenzuweisung in einem Verwaltungsgruppenbereich
+### <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Zuweisen eines Benutzers als Administrator eines Abonnements
+
+Um einen Benutzer zum Administrator eines Azure-Abonnements zu machen, weisen Sie ihm die Rolle [Besitzer](built-in-roles.md#owner) im Abonnementbereich zu. Durch die Rolle „Besitzer“ erhält der Benutzer vollständigen Zugriff auf alle Ressourcen im Abonnement, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. Diese Schritte sind identisch mit allen anderen Rollenzuweisungen.
+
+1. Klicken Sie im Azure-Portal auf **Alle Dienste** und anschließend auf **Abonnements**.
+
+1. Wählen Sie Ihr Abonnement aus.
+
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**, um die aktuelle Liste von Rollenzuweisungen im Abonnementbereich anzuzeigen.
+
+   ![Blatt „Zugriffssteuerung (IAM)“ für ein Abonnement](./media/role-assignments-portal/grant-subscription-access-control.png)
+
+1. Klicken Sie auf **Hinzufügen**, um den Bereich **Berechtigungen hinzufügen** zu öffnen.
+
+   Falls Sie nicht über Berechtigungen zum Zuweisen von Rollen verfügen, wird die Option **Hinzufügen** nicht angezeigt.
+
+   ![Bereich „Berechtigungen hinzufügen“](./media/role-assignments-portal/add-permissions.png)
+
+1. Wählen Sie in der Dropdownliste **Rolle** die Option **Besitzer** aus.
+
+1. Wählen Sie in der Liste **Auswählen** einen Benutzer aus. Wird der Benutzer in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Suchbegriff eingeben, um das Verzeichnis nach Anzeigenamen und E-Mail-Adressen zu durchsuchen.
+
+1. Wählen Sie zum Zuweisen einer Rolle **Speichern** aus.
+
+   Nach einigen Augenblicken wird dem Benutzer im Abonnementbereich die Rolle „Besitzer“ zugewiesen.
+
+### <a name="assign-a-role-at-a-management-group-scope"></a>Zuweisen einer Rolle in einem Verwaltungsgruppenbereich
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** und dann **Verwaltungsgruppen** aus.
 
@@ -181,11 +207,11 @@ In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Gehen Sie
 
 1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Verwaltungsgruppenmitwirkender**.
 
-    Weitere Informationen zu den unterstützten Aktionen für verschiedene Rollen in Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md#management-group-access).
+    Weitere Informationen zu den unterstützten Aktionen für verschiedene Rollen in Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/index.md#management-group-access).
 
 1. Wählen Sie in der Liste **Auswählen** einen Benutzer, eine Gruppe oder eine Anwendung aus. Wird der Sicherheitsprinzipal in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
 
-1. Wählen Sie **Speichern** aus, um die Rollenzuweisung zu erstellen.
+1. Wählen Sie zum Zuweisen einer Rolle **Speichern** aus.
 
    Nach einigen Augenblicken wird der Sicherheitsprinzipal der Rolle im Verwaltungsgruppenbereich zugewiesen.
 

@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ddc07db4e101bb16321478d17d84ffe0d30f0afd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f4afad753da4a314ade3fb7433c6be3e489e05b0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946220"
+ms.locfileid: "47033684"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte (Vorschau)
 
@@ -28,19 +28,19 @@ Wenn ein IoT Edge-Gerät in den Offlinemodus wechselt, übernimmt der Edge Hub d
 
 Das folgende Beispiel veranschaulicht ein IoT Edge-Szenario im Offlinemodus:
 
-1. Konfigurieren Sie ein IoT Edge-Gerät. 
+1. **Konfigurieren Sie ein IoT Edge-Gerät.**
 
    Für IoT Edge-Geräte werden automatisch Offlinefunktionen aktiviert. Um diese Funktionen auf andere IoT-Geräte auszuweiten, müssen Sie eine Beziehung über- und untergeordneter Elemente zwischen den Geräten in IoT Hub deklarieren. 
 
-2. Führen Sie die Synchronisierung mit IoT Hub aus.
+2. **Führen Sie die Synchronisierung mit IoT Hub aus.**
 
    Mindestens einmal nach der Installation der IoT Edge-Runtime muss das IoT Edge-Gerät online sein, damit die Synchronisierung mit IoT Hub ausgeführt wird. Bei dieser Synchronisierung empfängt das IoT Edge-Gerät Details zu allen zugewiesenen untergeordneten Geräten. Das IoT Edge-Gerät aktualisiert zudem auf sichere Weise seinen lokalen Cache, um Offlinevorgänge zu aktivieren und ruft Einstellungen für das lokale Speichern von Telemetrienachrichten. 
 
-3. Wechseln Sie in den Offlinemodus. 
+3. **Wechseln Sie in den Offlinemodus.**
 
    Während sie von IoT Hub getrennt sind, können das IoT Edge-Gerät, seine bereitgestellten Module und alle untergeordneten IoT-Geräte ohne zeitliche Beschränkung betrieben werden. Module und untergeordneten Geräte gestartet und neu gestartet werden, indem im Offlinemodus die Authentifizierung mit dem Edge Hub durchgeführt wird. Telemetriedaten für die Upstreamübermittlung an IoT Hub werden lokal gespeichert. Die Kommunikation zwischen Modulen und untergeordneten IoT-Geräten wird durch direkte Methoden oder Nachrichten aufrechterhalten. 
 
-4. Stellen Sie erneut eine Verbindung her, und für Sie erneut die Synchronisierung mit IoT Hub aus.
+4. **Stellen Sie erneut eine Verbindung her, und führen Sie erneut die Synchronisierung mit IoT Hub aus.**
 
    Nach dem Wiederherstellen der Verbindung mit IoT Hub wird die Synchronisierung des IoT Edge-Geräts wieder ausgeführt. Lokal gespeicherte Nachrichten werden in der Reihenfolge übermittelt, in der sie gespeichert wurden. Unterschiede zwischen den gewünschten und gemeldeten Eigenschaften der Module und Geräte werden ausgeglichen. Das IoT Edge-Gerät aktualisiert seine Gruppe von zugewiesenen untergeordneten IoT-Geräten mit den Änderungen.
 
@@ -69,17 +69,19 @@ Im Azure-Portal können Sie auf die Moduldefinitionen von Edge Hub und Edge-Agen
 In der JSON-Bereitstellungsvorlage werden Umgebungsvariablen wie im folgenden Beispiel deklariert: 
 
 ```json
-"edgeAgent": {
+"edgeHub": {
     "type": "docker",
     "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
-        "createOptions": ""
+        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+        "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
     },
     "env": {
         "UpstreamProtocol": {
             "value": "MQTT"
         }
     },
+    "status": "running",
+    "restartPolicy": "always"
 }
 ```
 

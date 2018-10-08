@@ -1,20 +1,21 @@
 ---
-title: Verwenden von Microsoft Azure Traffic Manager zum Erhöhen des Endpunktkontingents in Language Understanding Intelligent Service (LUIS) – Azure | Microsoft-Dokumentation
-description: Verwenden Sie Microsoft Azure Traffic Manager, um das Endpunktkontingent in Language Understanding Intelligent Service (LUIS) über mehrere Abonnements zu verteilen und es zu erhöhen.
+title: Verwenden von Microsoft Azure Traffic Manager zum Erhöhen des Endpunktkontingents in Language Understanding Intelligent Service (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen.
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 909c32452db216f79633b94c31f39350b7a6ee20
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 28fc0d0061d1826f0e17c26325ea227e001dccda
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248627"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042175"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Verwenden von Microsoft Azure Traffic Manager zum Verwalten von Endpunktkontingenten über mehrere Schlüssel
 Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen. 
@@ -44,9 +45,7 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Screenshot des Azure-Portals mit zwei LUIS-Schlüsseln in der Ressourcengruppe luis-traffic-manager](./media/traffic-manager/luis-keys.png)
 
-2. Fügen Sie auf der [LUIS][LUIS]-Website auf der Seite **Veröffentlichen** der App Schlüssel hinzu, und veröffentlichen Sie die App erneut. 
-
-    ![Screenshot des LUIS-Portals mit zwei LUIS-Schlüsseln auf der Seite „Veröffentlichen“](./media/traffic-manager/luis-keys-in-luis.png)
+2. Weisen Sie der App auf der [LUIS][LUIS]-Website auf der Seite **Schlüssel und Endpunkte** im Abschnitt **Verwalten** Schlüssel zu, und veröffentlichen Sie die App erneut, indem Sie im Menü rechts oben die Schaltfläche **Veröffentlichen** auswählen. 
 
     In der Beispiel-URL in der Spalte **Endpunkt** wird eine GET-Anforderung mit dem Endpunktschlüssel als Abfrageparameter verwendet. Kopieren Sie die Endpunkt-URLs der beiden neuen Schlüssel. Sie werden im Rahmen der Traffic Manager-Konfiguration weiter unten in diesem Artikel verwendet.
 
@@ -350,7 +349,7 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 
 Die erfolgreiche Antwort mit dem LUIS-Endpunkt lautet:
 
-```cmd
+```json
 [
     {
         value: 'westus.api.cognitive.microsoft.com', 
@@ -364,7 +363,7 @@ Damit Datenverkehr endpunktübergreifend verwaltet werden kann, müssen Sie eine
 
 
 ## <a name="clean-up"></a>Bereinigen
-Entfernen Sie die beiden LUIS-Endpunktschlüssel, die drei Traffic Manager-Profile und die Ressourcengruppe, die die fünf Ressourcen enthielt. Dies erfolgt im Azure-Portal. Löschen Sie zuerst die fünf Ressourcen aus der Ressourcenliste. Löschen Sie dann die Ressourcengruppe. 
+Entfernen Sie die beiden LUIS-Endpunktschlüssel, die drei Traffic Manager-Profile und die Ressourcengruppe, die die fünf Ressourcen enthalten hat. Dies erfolgt im Azure-Portal. Löschen Sie zuerst die fünf Ressourcen aus der Ressourcenliste. Löschen Sie dann die Ressourcengruppe. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

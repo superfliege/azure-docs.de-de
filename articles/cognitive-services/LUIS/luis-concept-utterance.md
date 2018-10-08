@@ -1,20 +1,21 @@
 ---
-title: Äußerungen in LUIS-Apps in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Äußerungen in LUIS-Apps (Language Understanding Intelligent Service) hinzufügen können.
+title: Äußerungen in LUIS-Apps
+titleSuffix: Azure Cognitive Services
+description: Äußerungen sind Eingaben vom Benutzer, die Ihre App interpretieren muss. Sammeln Sie Ausdrücke, die Benutzer möglicherweise eingeben. Fügen Sie Äußerungen ein, die dieselbe Bedeutung haben, aber andere Wortlängen oder einen anderen Satzbau aufweisen.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6f962d0aaf631051c841be29d2854a89bf58ac25
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 39c99cc35f4c2549efc9c20af0680b77483325c5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224414"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038934"
 ---
 # <a name="utterances-in-luis"></a>Äußerungen in LUIS
 
@@ -35,12 +36,14 @@ Beachten Sie bei der Auswahl der Äußerungen, dass das, was Sie als allgemeinen
 Auch wenn Sie sich bemühen, variierende Satzstrukturen zu verwenden, werden Sie feststellen, dass Sie einiges an Vokabular wiederholen müssen.
 
 Sehen Sie sich diese Beispieläußerungen an:
-```
-how do I get a computer?
-Where do I get a computer?
-I want to get a computer, how do I go about it?
-When can I have a computer? 
-```
+
+|Beispiele für Äußerungen|
+|--|
+|Wie bekomme ich einen Computer?|
+|Wo bekomme ich einen Computer?|
+|Ich möchte einen Computer bekommen, wie gehe ich dazu vor?|
+|Wann kann ich einen Computer bekommen?| 
+
 Der grundlegende Begriff ist „computer“. Dieser Begriff variiert nicht. Man könnte auch die Begriffe „desktop computer“, „laptop“, „workstation“ oder sogar „machine“ verwenden. LUIS kann diese Synonyme auf intelligente Weise vom Kontext ableiten. Wenn Sie jedoch Äußerungen zum Trainieren erstellen, ist es besser, diese zu variieren.
 
 ## <a name="example-utterances-in-each-intent"></a>Beispieläußerungen mit jeder Absicht

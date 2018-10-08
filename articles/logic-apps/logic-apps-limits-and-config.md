@@ -3,19 +3,18 @@ title: Grenzwerte und Konfiguration – Azure Logic Apps | Microsoft-Dokumentati
 description: Dienstlimits und Konfigurationswerte für Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 08/10/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 49b8efe6b5d56c3edaf8b311ff3c6667a8952536
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.topic: article
+ms.date: 09/26/2018
+ms.openlocfilehash: c557c3e34fc4588b8bf13d69159a144d059b039e
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140363"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452450"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -305,8 +304,13 @@ Für alle Logik-Apps in einer Region werden dieselben Bereiche von IP-Adressen v
 Um die Aufrufe zu unterstützen, die [Connectors](../connectors/apis-list.md) durchführen, richten Sie Ihre Firewallkonfigurationen so ein, dass sie je nachdem, in welchen Regionen sich Ihre Logik-Apps befinden, diese ausgehenden IP-Adressen enthalten.
 
 > [!IMPORTANT]
->
 > Aktualisieren Sie ggf. vorhandene Konfigurationen **so bald wie möglich vor dem 1. September 2018**, damit sie die IP-Adressen in dieser Liste für die Regionen, in denen sich Ihre Logik-Apps befinden, enthalten und mit ihnen übereinstimmen. 
+> 
+> Logic Apps unterstützt keine direkte Verbindung mit Azure-Speicherkonten über Firewalls. Um auf diese Speicherkonten zuzugreifen, nutzen Sie eine der folgenden Optionen: 
+>
+> * Erstellen Sie eine [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), die eine Verbindung mit Ressourcen in einem virtuellen Azure-Netzwerk herstellen kann. 
+> 
+> * Wenn Sie API Management bereits verwenden, können Sie diesen Dienst für das Szenario nutzen. Weitere Informationen finden Sie unter [Einfache Unternehmensintegrationsarchitektur](http://aka.ms/aisarch).
 
 | Logic Apps-Bereich | Ausgehende IP-Adresse | 
 |-------------------|-------------|  

@@ -1,20 +1,21 @@
 ---
-title: 'Schnellstart: Ändern des Modells und Trainieren der LUIS-App mit Node.js – Azure Cognitive Services | Microsoft-Dokumentation'
+title: 'Node.js-Schnellstartanleitung: Ändern des Modells und Trainieren einer LUIS-App'
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung für Node.js fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App. Bei Beispieläußerungen handelt es sich um Konversationstext von Benutzern, der einer Absicht zugeordnet ist. Indem Sie Beispieläußerungen für Absichten bereitstellen, teilen Sie LUIS mit, welche Arten des vom Benutzer angegebenen Texts zu welcher Absicht gehören.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fbd8b467fa3894d9cf58e1c8cb78ee00ebd0965e
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: a487f44e164830928367d9f6ea737e793e38c0a8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44156852"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036149"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>Schnellstart: Ändern des Modells mit Node.js
 

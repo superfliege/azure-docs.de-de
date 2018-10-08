@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 355f80479ba7c6d6399bb25f7ba1511c6b18599b
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 7067a71eea3ffbfadf006a102ee926fb15347f63
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285226"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423645"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -35,10 +35,7 @@ ms.locfileid: "43285226"
 </tr>
 </table>
   
-Der Azure Cosmos DB-Emulator stellt eine lokale Umgebung bereit, die zu Entwicklungszwecken den Azure Cosmos DB-Dienst emuliert. Bei Verwendung des Azure Cosmos DB-Emulators können Sie die Anwendung lokal entwickeln und testen, ohne ein Azure-Abonnement zu erstellen oder sonstige Kosten zu verursachen. Wenn Sie mit der Funktion der Anwendung im Azure Cosmos DB-Emulator zufrieden sind, können Sie zur Verwendung eines Azure Cosmos DB-Kontos in der Cloud wechseln.
-
-> [!NOTE]
-> Zum aktuellen Zeitpunkt bietet der Daten-Explorer im Emulator nur für SQL-API-Sammlungen und MongoDB-Sammlungen vollständige Unterstützung. Table-, Graph- und Cassandra-Container werden nicht vollständig unterstützt. 
+Der Azure Cosmos DB-Emulator stellt eine lokale Umgebung bereit, die zu Entwicklungszwecken den Azure Cosmos DB-Dienst emuliert. Bei Verwendung des Azure Cosmos DB-Emulators können Sie die Anwendung lokal entwickeln und testen, ohne ein Azure-Abonnement zu erstellen oder sonstige Kosten zu verursachen. Wenn Sie mit der Funktion der Anwendung im Azure Cosmos DB-Emulator zufrieden sind, können Sie zur Verwendung eines Azure Cosmos DB-Kontos in der Cloud wechseln. Sie können den Azure Cosmos DB-Emulator mit allen APIs verwenden: SQL, MongoDB, Cassandra, Gremlin und Table.
 
 In diesem Artikel werden die folgenden Aufgaben behandelt: 
 
@@ -48,15 +45,15 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 > * Verwenden des Daten-Explorers im Emulator
 > * Exportieren von SSL-Zertifikaten
 > * Aufrufen des Emulators über die Befehlszeile
-> * Ausführen des Emulators unter Docker für Windows
+> * Ausführen des Emulators in Docker für Windows
 > * Sammeln von Ablaufverfolgungsdateien
 > * Problembehandlung
 
 ## <a name="how-the-emulator-works"></a>Funktionsweise des Emulators
 
-Der Azure Cosmos DB-Emulator stellt eine High-Fidelity-Emulation des Azure Cosmos DB-Diensts bereit. Er unterstützt die gleichen Funktionen wie Azure Cosmos DB, z.B. Erstellen und Abfragen von JSON-Dokumenten, Bereitstellen und Skalieren von Sammlungen und Ausführen von gespeicherten Prozeduren und Triggern. Sie können Anwendungen mit dem Azure Cosmos DB-Emulator entwickeln und testen und diese in Azure auf globaler Ebene bereitstellen, indem Sie nur eine einzige Konfigurationsänderung am Verbindungsendpunkt für Azure Cosmos DB vornehmen.
+Der Azure Cosmos DB-Emulator stellt eine High-Fidelity-Emulation des Azure Cosmos DB-Diensts bereit. Er unterstützt die gleichen Funktionen wie Azure Cosmos DB, z.B. Erstellen und Abfragen von JSON-Dokumenten, Bereitstellen und Skalieren von Sammlungen und Ausführen von gespeicherten Prozeduren und Triggern. Sie können Anwendungen mit dem Azure Cosmos DB-Emulator entwickeln und testen und sie auf globaler Ebene in Azure bereitstellen, indem Sie nur eine einzige Konfigurationsänderung am Verbindungsendpunkt für Azure Cosmos DB vornehmen.
 
-Die Emulation des Azure Cosmos DB-Diensts unterscheidet sich nicht, obwohl sich die Implementierung des Emulators vom Dienst unterscheidet. Der Emulator verwendet Standardkomponenten des Betriebssystems, wie z.B. das lokale Dateisystem für Persistenz und den HTTPS-Protokollstapel für Verbindungen. Funktionen, die die Azure-Infrastruktur benötigen, sind über den DocumentDB-Emulator nicht verfügbar. Hierzu gehören beispielsweise die globale Replikation, Lese-/Schreibvorgänge mit Latenz im einstelligen Millisekundenbereich und optimierbare Konsistenzebenen.
+Die Emulation des Azure Cosmos DB-Diensts entspricht exakt dem Dienst, die Implementierung des Emulators weist allerdings einige Unterschiede zum Dienst auf. Der Emulator verwendet Standardkomponenten des Betriebssystems, wie z.B. das lokale Dateisystem für Persistenz und den HTTPS-Protokollstapel für Konnektivität. Funktionen, die die Azure-Infrastruktur benötigen, sind über den DocumentDB-Emulator nicht verfügbar. Hierzu gehören beispielsweise die globale Replikation, Lese-/Schreibvorgänge mit Latenz im einstelligen Millisekundenbereich und optimierbare Konsistenzebenen.
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Unterschiede zwischen dem Emulator und dem Dienst 
 Da der Azure Cosmos DB-Emulator eine emulierte Umgebung bereitstellt, die auf einer lokalen Entwicklerarbeitsstation ausgeführt wird, gibt es einige funktionelle Unterschiede zwischen dem Emulator und einem Azure Cosmos DB-Konto in der Cloud:
@@ -79,7 +76,7 @@ Für den Azure Cosmos DB-Emulator gelten folgende Hardware- und Softwareanforder
   * 10 GB verfügbarer Speicherplatz
 
 ## <a name="installation"></a>Installation
-Sie können den Azure Cosmos DB-Emulator aus dem [Microsoft Download Center](https://aka.ms/cosmosdb-emulator) herunterladen und installieren. Alternativ können Sie den Emulator auch unter Docker für Windows ausführen. Anweisungen zum Verwenden des Emulators unter Docker für Windows finden Sie unter [Ausführen unter Docker](#running-on-docker). 
+Sie können den Azure Cosmos DB-Emulator aus dem [Microsoft Download Center](https://aka.ms/cosmosdb-emulator) herunterladen und installieren. Alternativ können Sie den Emulator auch unter Docker für Windows ausführen. Anweisungen zum Verwenden des Emulators in Docker für Windows finden Sie unter [Ausführen unter Docker](#running-on-docker). 
 
 > [!NOTE]
 > Zum Installieren, Konfigurieren und Ausführen des Azure Cosmos DB-Emulators benötigen Sie Administratorrechte auf dem Computer.
@@ -129,7 +126,7 @@ Sie können den Emulator in einem lokalen Netzwerk ausführen. Um Netzwerkzugrif
 Wenn der Netzwerkzugriff zum ersten Mal bereitgestellt wird, sollte der Benutzer den Emulator herunterfahren und das Datenverzeichnis des Emulators (C:\Benutzer\benutzername\AppData\Local\CosmosDBEmulator) löschen.
 
 ## <a name="developing-with-the-emulator"></a>Entwickeln mit dem Emulator
-Wenn der Azure Cosmos DB-Emulator auf Ihrem Desktop ausgeführt wird, können Sie ein unterstütztes [Azure Cosmos DB-SDK](sql-api-sdk-dotnet.md) oder die [Azure Cosmos DB-REST-API](/rest/api/cosmos-db/) für die Interaktion mit dem Emulator verwenden. Der Azure Cosmos DB-Emulator enthält auch einen integrierten Daten-Explorer, mit dem Sie Sammlungen für die SQL- und MongoDB-APIs erstellen sowie Dokumente anzeigen und bearbeiten können, ohne Code schreiben zu müssen.   
+Sobald der Azure Cosmos DB-Emulator auf Ihrem Desktop ausgeführt wird, können Sie jedes unterstützte [Azure Cosmos DB-SDK](sql-api-sdk-dotnet.md) oder die [Azure Cosmos DB-REST-API](/rest/api/cosmos-db/) für die Interaktion mit dem Emulator verwenden. Der Azure Cosmos DB-Emulator enthält auch einen integrierten Daten-Explorer, mit dem Sie Sammlungen für die SQL- und MongoDB-APIs erstellen sowie Dokumente anzeigen und bearbeiten können, ohne Code schreiben zu müssen.   
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(
@@ -145,7 +142,7 @@ Sie können vorhandene Tools wie [Azure DocumentDB Studio](https://github.com/mi
 > [!NOTE] 
 > Wenn Sie den Emulator mit der Option „/Key“ gestartet haben, verwenden Sie den generierten Schlüssel anstelle von „C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==“.
 
-Mithilfe des Azure Cosmos DB-Emulators können Sie standardmäßig bis zu 25 Sammlungen mit einer einzelnen Partition oder eine partitionierte Sammlung erstellen. Weitere Informationen zum Ändern dieses Werts finden Sie unter [Festlegen des PartitionCount-Werts](#set-partitioncount).
+Mithilfe des Azure Cosmos DB-Emulators können Sie standardmäßig bis zu 25 Sammlungen mit jeweils einer Einzelpartition oder eine einzelne partitionierte Sammlung erstellen. Weitere Informationen zum Ändern dieses Werts finden Sie unter [Festlegen des PartitionCount-Werts](#set-partitioncount).
 
 ## <a name="export-the-ssl-certificate"></a>Exportieren des SSL-Zertifikats
 
@@ -298,7 +295,7 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `Cosmos
 
 ## <a id="set-partitioncount"></a>Ändern der Anzahl von Sammlungen
 
-Mithilfe des Azure Cosmos DB-Emulators können Sie standardmäßig bis zu 25 Sammlungen mit einer einzelnen Partition oder eine partitionierte Sammlung erstellen. Wenn Sie den Wert **PartitionCount** ändern, können Sie bis zu 250 Sammlungen mit nur einer Partition oder 10 partitionierte Sammlungen oder eine Kombination aus beidem erstellen, bei der insgesamt maximal 250 einzelne Partitionen vorhanden sind (dabei gilt: 1 partitionierte Sammlung = 25 Sammlungen mit einer Partition).
+Mithilfe des Azure Cosmos DB-Emulators können Sie standardmäßig bis zu 25 Sammlungen mit jeweils einer Einzelpartition oder eine einzelne partitionierte Sammlung erstellen. Wenn Sie den Wert **PartitionCount** ändern, können Sie bis zu 250 Sammlungen mit nur einer Partition oder 10 partitionierte Sammlungen oder eine Kombination aus beidem erstellen, bei der insgesamt maximal 250 einzelne Partitionen vorhanden sind (dabei gilt: 1 partitionierte Sammlung = 25 Sammlungen mit einer Partition).
 
 Wenn Sie versuchen, eine Sammlung zu erstellen, wenn die aktuelle Anzahl von Partitionen überschritten wurde, löst der Emulator eine ServiceUnavailable-Ausnahme mit der folgenden Meldung aus.
 
@@ -314,11 +311,11 @@ Gehen Sie wie folgt vor, um die Anzahl von Sammlungen zu ändern, die für den A
 2. Löschen Sie alle Emulatordaten in diesem Ordner: „C:\Benutzer\Benutzername\AppData\Local\CosmosDBEmulator“.
 3. Schließen Sie alle geöffneten Instanzen, indem Sie mit der rechten Maustaste auf der Taskleiste auf das Symbol **Azure Cosmos DB-Emulator** klicken, und klicken Sie anschließend auf **Beenden**. Bis alle Instanzen beendet wurden, kann unter Umständen eine Minute vergehen.
 4. Installieren Sie die neueste Version des [Azure Cosmos DB-Emulators](https://aka.ms/cosmosdb-emulator).
-5. Starten Sie den Emulator mit dem PartitionCount-Flag, indem Sie einen Wert <= 250 festlegen. Beispiel: `C:\Program Files\Azure CosmosDB Emulator>CosmosDB.Emulator.exe /PartitionCount=100`.
+5. Starten Sie den Emulator mit dem PartitionCount-Flag, indem Sie einen Wert <= 250 festlegen. Beispiel: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`.
 
 ## <a name="controlling-the-emulator"></a>Steuern des Emulators
 
-Der Emulator bietet ein PowerShell-Modul für das Starten, Beenden, Deinstallieren und Abrufen des Status des Diensts. Gehen Sie zur Verwendung wie folgt vor:
+Der Emulator bietet ein PowerShell-Modul zum Starten, Beenden und Deinstallieren des Diensts und zum Abrufen des Dienststatus. Gehen Sie zur Verwendung wie folgt vor:
 
 ```powershell
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
@@ -376,11 +373,11 @@ Das Cmdlet stellt sicher, dass der Emulator vor der Deinstallation beendet wird.
 
 ## <a name="running-on-docker"></a>Ausführen unter Docker
 
-Der Azure Cosmos DB-Emulator kann unter Docker für Windows ausgeführt werden. Der Emulator funktioniert nicht unter Docker für Oracle Linux.
+Der Azure Cosmos DB-Emulator kann unter Docker für Windows ausgeführt werden. Der Emulator funktioniert nicht in Docker für Oracle Linux.
 
 Nachdem [Docker für Windows](https://www.docker.com/docker-windows) installiert ist, wechseln Sie zu den Windows-Containern, indem Sie mit der rechten Maustaste auf der Symbolleiste auf das Docker-Symbol klicken und **Switch to Windows containers** (Zu Windows-Containern wechseln) auswählen.
 
-Führen Sie als Nächstes einen Pullvorgang für das Emulator-Image im Docker-Hub aus, indem Sie in Ihrer bevorzugten Shell den folgenden Befehl ausführen.
+Rufen Sie als Nächstes das Emulator-Image per Pullvorgang aus dem Docker-Hub ab, indem Sie in Ihrer bevorzugten Shell den folgenden Befehl ausführen.
 
 ```     
 docker pull microsoft/azure-cosmosdb-emulator 
@@ -402,7 +399,7 @@ docker run -v $env:LOCALAPPDATA\CosmosDBEmulatorCert:C:\CosmosDB.Emulator\Cosmos
 Die Antwort kann wie folgt aussehen:
 
 ```
-Starting Emulator
+Starting emulator
 Emulator Endpoint: https://172.20.229.193:8081/
 Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 Exporting SSL Certificate
@@ -436,17 +433,19 @@ Navigieren Sie in Ihrem Browser zu folgender URL, um den Daten-Explorer zu öffn
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Verwenden Sie die folgenden Tipps zum Behandeln von Problemen, die für den Azure Cosmos DB-Emulator auftreten:
+Verwenden Sie die folgenden Tipps zum Behandeln von Problemen mit dem Azure Cosmos DB-Emulator:
 
 - Wenn Sie eine neue Version des Emulators installiert haben und Fehler auftreten, setzen Sie Ihre Daten zurück. Klicken Sie hierzu mit der rechten Maustaste auf der Taskleiste auf das Symbol „Azure Cosmos DB-Emulator“ und anschließend auf „Daten zurücksetzen“. Wenn die Fehler hierdurch nicht behoben werden, kann die App nicht deinstalliert und neu installiert werden. Anweisungen finden Sie unter [Deinstallieren des lokalen Emulators](#uninstall).
 
-- Bei einem Absturz des Azure Cosmos DB-Emulators sammeln Sie Dumpdateien aus dem Ordner „C:\Benutzer\<Benutzername>\AppData\Lokal\CrashDumps“, komprimieren sie und fügen sie einer E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) als Anlage hinzu.
+- Bei einem Absturz des Azure Cosmos DB-Emulators erfassen Sie Dumpdateien aus dem Ordner „C:\Benutzer\<Benutzername>\AppData\Lokal\CrashDumps“, komprimieren sie und fügen sie einer E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) als Anlage hinzu.
 
 - Wenn Abstürze von „CosmosDB.StartupEntryPoint.exe“ auftreten, führen Sie den folgenden Befehl an einer Administratoreingabeaufforderung aus: `lodctr /R` 
 
 - Wenn ein Verbindungsproblem auftritt, [sammeln Sie Ablaufverfolgungsdateien](#trace-files), komprimieren sie und fügen sie einer E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) als Anhang hinzu.
 
 - Wenn die Meldung **Dienst nicht verfügbar** angezeigt wird, bedeutet das, dass der Emulator den Netzwerkstapel möglicherweise nicht initialisieren kann. Überprüfen Sie, ob Sie den sicheren Pulse-Client oder den Juniper Networks-Client installiert haben. Die zugehörigen Treiber für Netzwerkfilter könnten das Problem verursachen. Durch Deinstallieren der Netzwerkfiltertreiber von Drittanbietern wird das Problem in der Regel behoben.
+
+- Wenn Ihr Computer während der Ausführung des Emulators in den Ruhezustand versetzt wird oder Betriebssystemupdates ausführt, wird möglicherweise die Meldung **Der Dienst ist zurzeit nicht verfügbar** angezeigt. Setzen Sie den Emulator zurück, indem Sie mit der rechten Maustaste auf das Symbol klicken, das im Windows-Infobereich angezeigt wird und **Daten zurücksetzen** auswählen.
 
 ### <a id="trace-files"></a>Sammeln von Ablaufverfolgungsdateien
 
@@ -463,10 +462,10 @@ Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an ein
 
 ### <a id="uninstall"></a>Deinstallieren des lokalen Emulators
 
-1. Schließen Sie alle geöffneten Instanzen des lokalen Emulators, indem Sie mit der rechten Maustaste auf der Taskleiste auf das Symbol „Azure Cosmos DB-Emulator“ klicken, und klicken Sie anschließend auf „Beenden“. Bis alle Instanzen beendet wurden, kann unter Umständen eine Minute vergehen.
+1. Schließen Sie alle geöffneten Instanzen des lokalen Emulators, indem Sie mit der rechten Maustaste auf der Taskleiste auf das Symbol für den Azure Cosmos DB-Emulator klicken und anschließend auf „Beenden“ klicken. Bis alle Instanzen beendet wurden, kann unter Umständen eine Minute vergehen.
 2. Geben Sie in das Windows-Suchfeld **Apps & Features** ein, und klicken Sie auf das Ergebnis **Apps & Features (Systemeinstellungen)**.
 3. Scrollen Sie in der Liste der Apps zu **Azure Cosmos DB-Emulator**, wählen ihn aus, und klicken Sie auf **Deinstallieren**. Bestätigen Sie den Vorgang, und klicken Sie erneut auf **Deinstallieren**.
-4. Wenn die App deinstalliert wird, navigieren Sie zu „C:\Users\<Benutzer > \AppData\Local\CosmosDBEmulator“, und löschen Sie den Ordner. 
+4. Wenn die App deinstalliert ist, navigieren Sie zu `C:\Users\<user>\AppData\Local\CosmosDBEmulator` und löschen den Ordner. 
 
 ## <a name="change-list"></a>Änderungsliste
 
@@ -474,11 +473,11 @@ Sie können die Versionsnummer überprüfen, indem Sie mit der rechten Maustaste
 
 ### <a name="1220-released-on-april-20-2018"></a>1.22.0. Veröffentlicht am 20. April 2018
 
-Zusätzlich zum Aktualisieren von Emulatordiensten für die Parität mit Cosmos DB-Clouddiensten haben wir eine verbesserte PowerShell-Dokumentation und verschiedene Fehlerbehebungen mit einbezogen.
+Wir haben nicht nur die Emulatordienste für die Parität mit Cosmos DB-Clouddiensten aktualisiert, sondern stellen auch eine verbesserte PowerShell-Dokumentation und verschiedene Fehlerbehebungen bereit.
 
 ### <a name="12106-released-on-march-27-2018"></a>1.21.0.6, veröffentlicht am 27. März 2018
 
-Zusätzlich zum Aktualisieren von Emulatordiensten für die Parität mit Cosmos DB-Clouddiensten haben wir ein neues Feature und zwei Fehlerbehebungen in diesem Release mit einbezogen.
+Wir haben in diesem Release nicht nur die Emulatordienste für die Parität mit Cosmos DB-Clouddiensten aktualisiert, sondern stellen auch ein neues Feature und zwei Fehlerbehebungen bereit.
 
 #### <a name="features"></a>Features
 
@@ -510,7 +509,7 @@ In dieser Version gibt es ein neues Feature und zwei Fehlerbehebungen. Vielen Da
 
 #### <a name="features"></a>Features
 
-Viele der befragten Kunden gaben an, dass es von Vorteil wäre, wenn der Emulator skriptfähig wäre. Daher haben wir in dieser Version einige Skriptfunktionen hinzugefügt. Der Emulator enthält nun ein PowerShell-Modul zum Starten, Beenden und Abrufen des Status sowie, um sich selbst zu deinstallieren: `Microsoft.Azure.CosmosDB.Emulator`. 
+Viele der befragten Kunden gaben an, dass es von Vorteil wäre, wenn der Emulator skriptfähig wäre. Daher haben wir in dieser Version einige Skriptfunktionen hinzugefügt. Der Emulator enthält nun ein PowerShell-Modul zum Starten, Beenden und Abrufen des Status. Mit diesem Modul kann sich der Emulator auch selbst deinstallieren: `Microsoft.Azure.CosmosDB.Emulator`. 
 
 ### <a name="120911-released-on-january-26-2018"></a>1.20.91.1, veröffentlicht am 26. Januar 2018
 

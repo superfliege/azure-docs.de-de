@@ -2,24 +2,26 @@
 title: Verwaltete Azure SQL-Datenbank-Instanz – VNET-Konfiguration | Microsoft-Dokumentation
 description: In diesem Thema werden die Konfigurationsoptionen für ein virtuelles Netzwerk (VNET) mit einer verwalteten Azure SQL-Datenbank-Instanz beschrieben.
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/21/2018
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 748489785241c0eab6022e3585164974f330d6f9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 9d3f867dad40017e8e97ec4f5e370533b018263c
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049672"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181171"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurieren eines VNET für eine verwaltete Azure SQL-Datenbank-Instanz
 
-In einem [virtuellen Azure-Netzwerk (VNET)](../virtual-network/virtual-networks-overview.md) muss eine verwaltete Azure SQL-Datenbank-Instanz (Vorschauversion) bereitgestellt werden. Diese Bereitstellung ermöglicht die folgenden Szenarien: 
+In einem [virtuellen Azure-Netzwerk (VNET)](../virtual-network/virtual-networks-overview.md) muss eine verwaltete Azure SQL-Datenbank-Instanz bereitgestellt werden. Diese Bereitstellung ermöglicht die folgenden Szenarien: 
 - Direktes Herstellen einer Verbindung mit einer verwalteten Instanz von einem lokalen Netzwerk 
 - Herstellen einer Verbindung zwischen einer verwalteten Instanz und einem Verbindungsserver oder einem anderen lokalen Datenspeicher 
 - Herstellen einer Verbindung zwischen einer verwalteten Instanz und Azure-Ressourcen  
@@ -34,35 +36,35 @@ Planen Sie die Bereitstellung einer verwalteten Instanz im virtuellen Netzwerk, 
 
    Wenn Sie die Verwendung eines vorhandenen virtuellen Netzwerks beabsichtigen, müssen Sie diese Netzwerkkonfiguration ändern, um Ihre verwaltete Instanz einzubeziehen. Weitere Informationen finden Sie unter [Ändern eines vorhandenen virtuellen Netzwerks für die verwaltete Instanz](#modify-an-existing-virtual-network-for-managed-instances). 
 
-   Wenn Sie vorhaben, ein neues virtuelles Netzwerk zu erstellen, lesen Sie [Erstellen eines neuen virtuellen Netzwerks für die verwaltete Instanz](#create-a-new-virtual-network-for-managed-instances).
+   Wenn Sie vorhaben, ein neues virtuelles Netzwerk zu erstellen, lesen Sie [Erstellen eines neuen virtuellen Netzwerks für die verwaltete Instanz](#create-a-new-virtual-network-for-a-managed-instance).
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
-Für die Erstellung einer verwalteten Azure SQL-Datenbank-Instanz benötigen Sie ein dediziertes Subnetz innerhalb des virtuellen Netzwerks, das den folgenden Anforderungen entspricht:
-- **Dediziertes Subnetz:** Das Subnetz darf keinem anderen Clouddienst zugeordnet sein und kein Gatewaysubnetz sein. Sie können keine verwalteten Instanzen im Subnetz erstellen, die andere Ressourcen als verwaltete Instanzen enthält, oder zu einem späteren Zeitpunkt Ressourcen innerhalb des Subnetzes hinzufügen.
-- **Keine NSG**: Dem Subnetz darf keine Netzwerksicherheitsgruppe zugeordnet sein. 
-- **Spezielle Routingtabelle**: Das Subnetz muss eine benutzerdefinierte Routentabelle (User Route Table, UDR) mit dem nächsten Hop 0.0.0.0/0 als einzige ihr zugewiesene Route aufweisen. Weitere Informationen finden Sie unter [Erstellen und Zuweisen der erforderlichen Routingtabelle](#create-the-required-route-table-and-associate-it).
-3. **Optionales benutzerdefiniertes DNS**: Wenn ein benutzerdefiniertes DNS für das VNET angegeben ist, muss die IP-Adresse des rekursiven Azure-Konfliktlösers (z.B. 168.63.129.16) zur Liste hinzugefügt werden. Weitere Informationen finden Sie unter [Konfigurieren des benutzerdefinierten DNS](sql-database-managed-instance-custom-dns.md).
-4. **Kein Dienstendpunkt:** Dem Subnetz darf kein Dienstendpunkt zugeordnet sein. Stellen Sie sicher, dass die Option „Dienstendpunkte“ bei der Erstellung des VNET auf „Deaktiviert“ festgelegt ist.
-5. **Ausreichende IP-Adressen:** Das Subnetz muss mindestens 16 IP-Adressen aufweisen (empfohlen werden mindestens 32 IP-Adressen). Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für verwaltete Instanzen](#determine-the-size-of-subnet-for-managed-instances).
-
-> [!IMPORTANT]
-> Wenn das Zielsubnetz nicht sämtliche der zuvor genannten Voraussetzungen erfüllt, können Sie keine neue verwaltete Instanz bereitstellen. Das Ziel-VNET und das Subnetz müssen diese Anforderungen an verwaltete Instanzen (vor und nach der Bereitstellung) erfüllen, da es anderenfalls dazu führen kann, dass die Instanz in einen fehlerhaften Zustand wechselt und nicht mehr verfügbar ist. Um diesen Zustand zu verlassen, müssen Sie eine neue Instanz in einem VNET mit den entsprechenden Netzwerkrichtlinien erstellen, Daten auf Instanzebene neu erstellen und Ihre Datenbanken wiederherstellen. Dies führt zu beträchtlichen Ausfallzeiten bei Ihren Anwendungen.
-
-Mit Einführung der _Netzwerkabsichtsrichtlinie_ können Sie eine Netzwerksicherheitsgruppe (NSG) in einem Subnetz für die verwaltete Instanz hinzufügen, nachdem die verwaltete Instanz erstellt wurde.
-
-Sie können nun eine NSG verwenden, um die IP-Adressbereiche einzugrenzen, aus denen Anwendungen und Benutzer Abfragen durchführen können. Sie verwalten die Daten durch Filtern des Netzwerkdatenverkehrs, der an Port 1433 geleitet wird. 
+Um eine verwaltete Instanz zu erstellen, erstellen Sie ein dediziertes Subnetz (das Subnetz der verwalteten Instanz) innerhalb des virtuellen Netzwerks, das den folgenden Anforderungen entspricht:
+- **Dediziertes Subnetz:** Das Subnetz der verwalteten Instanz darf mit keinem anderen Clouddienst verknüpft und kein Gatewaysubnetz sein. Sie können weder eine verwaltete Instanz in einem Subnetz erstellen, das andere Ressourcen als die verwaltete Instanz enthält, noch zu einem späteren Zeitpunkt Ressourcen im Subnetz hinzufügen.
+- **Kompatible Netzwerksicherheitsgruppe (NSG)**: Eine NSG, die mit einem Subnetz einer verwalteten Instanz verbunden ist, muss Regeln in den folgenden Tabellen („Obligatorische Eingangssicherheitsregeln“ und „Obligatorische Ausgangssicherheitsregeln“) den Vorrang vor anderen Regeln geben. Mit NSGs können Sie den Zugriff auf den Datenendpunkt der verwalteten Instanz vollständig steuern, indem Sie den Datenverkehr über Port 1433 filtern. 
+- **Kompatible benutzerdefinierte Routingtabelle**: Das Subnetz der verwalteten Instanz benötigt eine benutzerdefinierte Routingtabelle, der **0.0.0.0.0.0/0 mit dem nächsten Hop zum Internet** als obligatorische benutzerdefinierte Route zugewiesen ist. Darüber hinaus können Sie eine benutzerdefinierte Route hinzufügen, die Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über ein virtuelles Netzwerkgateway oder ein virtuelles Netzwerkgerät leitet. 
+- **Optionales benutzerdefiniertes DNS**: Wenn ein benutzerdefiniertes DNS im virtuellen Netzwerk angegeben ist, muss die IP-Adresse des rekursiven Azure-Resolvers (z.B. 168.63.129.16) der Liste hinzugefügt werden. Weitere Informationen finden Sie unter [Konfigurieren des benutzerdefinierten DNS](sql-database-managed-instance-custom-dns.md). Der benutzerdefinierte DNS-Server muss Hostnamen in den folgenden Domänen und deren Subdomänen auflösen können: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com* und *microsoftonline-p.com*. 
+- **Kein Dienstendpunkte**: Dem Subnetz der verwalteten Instanz darf kein Dienstendpunkt zugeordnet sein. Überprüfen Sie, ob die Option „Dienstendpunkte“ beim Erstellen des virtuellen Netzwerks auf „Deaktiviert“ festgelegt ist.
+- **Ausreichende IP-Adressen**: Das Subnetz der verwalteten Instanz muss mindestens 16 IP-Adressen aufweisen. Die empfohlene Mindestanzahl sind 32 IP-Adressen. Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für verwaltete Instanzen](#determine-the-size-of-subnet-for-managed-instances).
 
 > [!IMPORTANT]
-> Wenn Sie die NSG-Regeln konfigurieren, die den Zugriff auf Port 1433 einschränken, müssen Sie auch die Regeln mit der höchsten Priorität für eingehende Datenverkehr in der folgenden Tabelle einfügen. Andernfalls blockiert die Netzwerkabsichtsrichtlinie die Änderung als nicht konform.
+> Wenn das Zielsubnetz nicht alle genannten Anforderungen erfüllt, können Sie keine neue verwaltete Instanz bereitstellen. Wenn eine verwaltete Instanz erstellt wird, wird eine *Netzwerkabsichtsrichtlinie* auf das Subnetz angewendet, um nicht konforme Änderungen an der Netzwerkkonfiguration zu verhindern. Nachdem die letzte Instanz aus dem Subnetz entfernt wurde, wird auch die *Netzwerkabsichtsrichtlinie* entfernt.
+
+### <a name="mandatory-inbound-security-rules"></a>Obligatorische Eingangssicherheitsregeln 
 
 | NAME       |PORT                        |PROTOKOLL|QUELLE           |ZIEL|AKTION|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|management  |9000, 9003, 1438, 1440, 1452|Beliebig     |Beliebig              |Beliebig        |ZULASSEN |
+|management  |9000, 9003, 1438, 1440, 1452|TCP     |Beliebig              |Beliebig        |ZULASSEN |
 |mi_subnet   |Beliebig                         |Beliebig     |MI-SUBNETZ        |Beliebig        |ZULASSEN |
 |health_probe|Beliebig                         |Beliebig     |AzureLoadBalancer|Beliebig        |ZULASSEN |
 
-Die Routingbehandlung wurde ebenfalls verbessert, sodass Sie nun zusätzlich zur Internetroute 0.0.0.0/0 für den nächsten Hop benutzerdefinierte Routen hinzufügen können, um Datenverkehr über das Gateway oder die Appliance für das virtuelle Netzwerk (NVA) an Ihre lokalen privaten IP-Adressbereiche weiterleiten zu können.
+### <a name="mandatory-outbound-security-rules"></a>Obligatorische Ausgangssicherheitsregeln 
+
+| NAME       |PORT          |PROTOKOLL|QUELLE           |ZIEL|AKTION|
+|------------|--------------|--------|-----------------|-----------|------|
+|management  |80, 443, 12000|TCP     |Beliebig              |Beliebig        |ZULASSEN |
+|mi_subnet   |Beliebig           |Beliebig     |Beliebig              |MI-SUBNETZ  |ZULASSEN |
 
 ##  <a name="determine-the-size-of-subnet-for-managed-instances"></a>Ermitteln der Größe des Subnetzes für verwaltete Instanzen
 
@@ -84,7 +86,7 @@ Wenn Sie mehrere verwaltete Instanzen innerhalb des Subnetzes bereitstellen möc
 > [!IMPORTANT]
 > Die oben gezeigte Berechnung wird mit weiteren Verbesserungen demnächst veralten. 
 
-## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>Erstellen eines neuen virtuellen Netzwerks für die verwaltete Instanz unter Verwendung der Azure Resource Manager-Bereitstellung
+## <a name="create-a-new-virtual-network-for-a-managed-instance"></a>Erstellen eines neuen virtuellen Netzwerks für eine verwaltete Instanz
 
 Die einfachste Möglichkeit zum Erstellen und Konfigurieren eines virtuellen Netzwerks ist die Verwendung der Azure Resource Manager-Bereitstellungsvorlage.
 
@@ -101,7 +103,7 @@ Die einfachste Möglichkeit zum Erstellen und Konfigurieren eines virtuellen Net
 
 3. Konfigurieren Sie die Netzwerkumgebung. Im folgenden Formular können Sie Parameter für Ihre Netzwerkumgebung konfigurieren:
 
-![Azure-Netzwerk konfigurieren](./media/sql-database-managed-instance-get-started/create-mi-network-arm.png)
+![Azure-Netzwerk konfigurieren](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
 
 Sie können die Namen des VNETs und der Subnetze ändern und die Ihren Netzwerkressourcen zugeordneten IP-Adressbereiche anpassen. Sobald Sie auf die Schaltfläche „Kaufen“ klicken, erstellt und konfiguriert dieses Formular Ihre Umgebung. Wenn Sie keine zwei Subnetze benötigen, können Sie das Subnetz „Standard“ löschen. 
 
@@ -143,8 +145,6 @@ Die Subnetzvorbereitung erfolgt in drei einfachen Schritten:
 **Haben Sie einen benutzerdefinierten DNS-Server konfiguriert?** 
 
 Falls ja, lesen Sie den Artikel [Konfigurieren eines benutzerdefinierten DNS](sql-database-managed-instance-custom-dns.md). 
-
-- Erstellen Sie die erforderliche Routingtabelle, und weisen Sie sie zu. Informationen hierzu finden Sie unter [Erstellen und Zuweisen der erforderlichen Routingtabelle](#create-the-required-route-table-and-associate-it).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

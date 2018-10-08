@@ -2,24 +2,26 @@
 title: Verwaltete Azure SQL-Datenbank-Instanz – T-SQL-Unterschiede | Microsoft-Dokumentation
 description: In diesem Artikel werden die T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server beschrieben.
 services: sql-database
-author: jovanpop-msft
-ms.reviewer: carlrab, bonova
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 0813/2018
+author: jovanpop-msft
 ms.author: jovanpop
+ms.reviewer: carlrab, bonova
 manager: craigg
-ms.openlocfilehash: 57c6b52df3e8f6c47eb794cda4b47bfa2d7de374
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 08/13/2018
+ms.openlocfilehash: 2f512c666555ca8bee58305b76573459f6e631e2
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051237"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166502"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server 
 
-Verwaltete Azure SQL-Datenbank-Instanzen (Vorschau) bieten umfassende Kompatibilität mit einer lokalen SQL Server-Datenbank-Engine. Die meisten Features der SQL Server-Datenbank-Engine werden in verwalteten Instanzen unterstützt. Es bestehen dennoch einige Unterschiede in der Syntax und im Verhalten. Diese Unterschiede werden in diesem Artikel zusammengefasst und erläutert.
+Die verwaltete Azure SQL-Datenbank-Instanz bietet umfassende Kompatibilität mit einer lokalen SQL Server-Datenbank-Engine. Die meisten Features der SQL Server-Datenbank-Engine werden in verwalteten Instanzen unterstützt. Es bestehen dennoch einige Unterschiede in der Syntax und im Verhalten. Diese Unterschiede werden in diesem Artikel zusammengefasst und erläutert.
  - [T-SQL-Unterschiede und nicht unterstützte Features](#Differences)
  - [Features mit abweichendem Verhalten in verwalteten Instanzen](#Changes)
  - [Temporäre Einschränkungen und bekannte Probleme](#Issues)
@@ -267,7 +269,7 @@ Externe Tabellen, die auf die Dateien in HDFS oder Azure Blob Storage verweisen,
 
 ### <a name="replication"></a>Replikation 
  
-Die Replikation wird in der verwalteten Instanz unterstützt. Informationen zur Replikation finden Sie unter [SQL Server-Replikation](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+Die Replikation ist für die Public Preview der verwalteten Instanz verfügbar. Informationen zur Replikation finden Sie unter [SQL Server-Replikation](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
  
 ### <a name="restore-statement"></a>RESTORE-Anweisung 
  
@@ -335,23 +337,24 @@ Weitere Informationen zu Restore-Anweisungen finden Sie unter [RESTORE-Anweisung
 - `sp_attach_db`, `sp_attach_single_file_db` und `sp_detach_db` werden nicht unterstützt. Siehe [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) und [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 - `sp_renamedb` wird nicht unterstützt. Siehe [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
-### <a name="sql-server-agent"></a>SQL Server-Agent 
- 
+### <a name="sql-server-agent"></a>SQL Server-Agent
+
 - SQL-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in einer verwalteten Instanz nicht unterstützt.  
-- Aufträge: Derzeit werden nur T-SQL-Auftragsschritte unterstützt (weitere Schritte werden in der Public Preview-Phase hinzugefügt).
- - SSIS wird noch nicht unterstützt. 
- - Die Replikation wird noch nicht unterstützt.  
-  - Der Transaktionsprotokollleser wird noch nicht unterstützt.  
-  - Die Momentaufnahme wird noch nicht unterstützt.  
-  - Der Verteiler wird noch nicht unterstützt.  
-  - Das Zusammenführen wird nicht unterstützt.  
+- Aufträge: Derzeit werden T-SQL-Auftragsschritte unterstützt.
+- Andere Arten von Auftragsschritten werden zurzeit nicht unterstützt (der Public Preview werden weitere Schritttypen hinzugefügt).
+  - Nicht unterstützte Replikationsaufträge umfassen:
+    - Transaktionsprotokollleser  
+    - Momentaufnahme
+    - Verteiler  
+    - Merge  
+  - SSIS wird noch nicht unterstützt. 
   - Der Warteschlangenleser wird nicht unterstützt.  
- - Die Befehlsshell wird noch nicht unterstützt. 
+  - Die Befehlsshell wird noch nicht unterstützt. 
   - Eine verwaltete Instanz kann nicht auf externe Ressourcen zugreifen (z.B. Netzwerkfreigaben über Robocopy).  
- - PowerShell wird noch nicht unterstützt.
- - Analysis Services wird nicht unterstützt.  
+  - PowerShell wird noch nicht unterstützt.
+  - Analysis Services wird nicht unterstützt.  
 - Benachrichtigungen werden teilweise unterstützt.
- - Die E-Mail-Benachrichtigung wird unterstützt. Dazu muss ein Datenbank-E-Mail-Profil konfiguriert werden. Es kann nur ein Datenbank-E-Mail-Profil festgelegt werden, für das in der Public Preview-Phase der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss (temporäre Einschränkung).  
+- Die E-Mail-Benachrichtigung wird unterstützt. Dazu muss ein Datenbank-E-Mail-Profil konfiguriert werden. Es kann nur ein Datenbank-E-Mail-Profil festgelegt werden, für das in der Public Preview-Phase der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss (temporäre Einschränkung).  
  - Der Pager wird nicht unterstützt.  
  - NetSend wird nicht unterstützt. 
  - Warnungen werden noch nicht unterstützt.
@@ -414,15 +417,58 @@ Entfernen Sie das vorangestellte `?` aus dem über das Azure-Portal erstellten S
 
 In SQL Server Management Studio und SQL Server Data Tools treten beim Zugriff auf eine verwaltete Instanz möglicherweise Probleme auf. Alle Probleme mit Tools werden vor der allgemeinen Verfügbarkeit behoben.
 
-### <a name="incorrect-database-names"></a>Falsche Datenbanknamen
+### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Falsche Datenbanknamen in einigen Ansichten, Protokollen und Meldungen
 
-In einer verwalteten Instanz wird bei der Wiederherstellung oder in einigen Fehlermeldungen möglicherweise anstelle des Datenbanknamens der GUID-Wert angezeigt. Diese Probleme werden vor der allgemeinen Verfügbarkeit behoben.
+Mehrere Systemansichten, Leistungsindikatoren, Fehlermeldungen, XEvents und Fehlerprotokolleinträge zeigen GUID-Datenbankbezeichner anstelle der eigentlichen Datenbanknamen an. Verlassen Sie sich nicht auf diese GUID-Bezeichner, da sie in Zukunft durch tatsächliche Datenbanknamen ersetzt werden.
 
 ### <a name="database-mail-profile"></a>Datenbank-E-Mail-Profil
 Es kann nur ein Datenbank-E-Mail-Profil festgelegt werden, für das der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss. Dabei handelt es sich um eine temporäre Einschränkung, die bald entfällt.
+
+### <a name="error-logs-are-not-persisted"></a>Fehlerprotokolle sind nicht persistent
+Fehlerprotokolle, die in einer verwalteten Instanz verfügbar sind, sind nicht persistent und ihre Größe wird nicht in der maximalen Speicherbegrenzung berücksichtigt. Fehlerprotokolle werden im Falle eines Failovers ggf. automatisch gelöscht.
+
+### <a name="error-logs-are-verbose"></a>Protokolle sind nicht ausführlich
+Die verwaltete SQL-Datenbank-Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung, von denen viele nicht relevant sind. Die Informationsmenge in Fehlerprotokollen wird in Zukunft reduziert.
+
+**Problemumgehung**: Verwenden Sie eine benutzerdefinierte Prozedur zum Lesen von Fehlerprotokollen, die einige nicht relevante Einträge herausfiltern. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+
+### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>Der gleiche Transaktionsbereich wird auf zwei Datenbanken in derselben Instanz nicht unterstützt
+Die `TransactionScope`-Klasse in .Net funktioniert nicht, wenn zwei Abfragen an zwei Datenbanken in derselben Instanz unter dem gleichen Transaktionsbereich gesendet werden:
+
+```C#
+using (var scope = new TransactionScope())
+{
+    using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn1.Open();
+        SqlCommand cmd1 = conn1.CreateCommand();
+        cmd1.CommandText = string.Format("insert into T1 values(1)");
+        cmd1.ExecuteNonQuery();
+    }
+
+    using (var conn2 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn2.Open();
+        var cmd2 = conn2.CreateCommand();
+        cmd2.CommandText = string.Format("insert into b.dbo.T2 values(2)");        cmd2.ExecuteNonQuery();
+    }
+
+    scope.Complete();
+}
+
+```
+
+Obwohl dieser Code mit Daten innerhalb derselben Instanz funktioniert, erforderte er MS DTC.
+
+**Problemumgehung**: Verwenden Sie [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase), um eine andere Datenbank im Verbindungskontext zu verwenden – anstelle von zwei Verbindungen.
+
+### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR-Module und Verbindungsserver können manchmal nicht auf lokale IP-Adressen verweisen
+CLR-Module, die in einer verwalteten Instanz bereitgestellt werden, und Verbindungsserver/verteilte Abfragen, die auf die aktuelle Instanz verweisen, können manchmal nicht die IP-Adresse der lokalen Instanz auflösen. Dies ist ein vorübergehender Fehler.
+
+**Problemumgehung**: Verwenden Sie Kontextverbindungen im CLR-Modul, sofern möglich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Ausführliche Informationen zur verwalteten Instanz finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md).
 - Eine Liste der Features und einen Funktionsvergleich finden Sie unter [Allgemeine SQL-Features](sql-database-features.md).
-- Ein Tutorial, in dem die Erstellung einer neuen verwalteten Instanz gezeigt wird, finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md).
+- Eine Schnellstartanleitung zum Erstellen einer neuen verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md).

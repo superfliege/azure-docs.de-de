@@ -1,22 +1,23 @@
 ---
-title: Analysieren von Text in natürlicher Sprache in Language Understanding (LUIS) mit Ruby – Cognitive Services – Azure Cognitive Services | Microsoft-Dokumentation
+title: 'Ruby-Schnellstartanleitung: Absichtsvorhersage – LUIS'
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung bestimmen Sie mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers. Mithilfe von Ruby senden Sie die Absicht des Benutzers als Text an den HTTP-Vorhersageendpunkt der öffentlichen App. Auf dem Endpunkt wendet LUIS das Modell der öffentlichen App an, um den Text in natürlicher Sprache im Hinblick auf seine Bedeutung zu analysieren. Dabei werden die allgemeine Absicht bestimmt und relevante Daten für die Antragstellerdomäne der App extrahiert.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0909c1dd056570a275b3042674d251c637413cae
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b8ef763a0b2379115150c88becc2ad43ba9cde89
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157700"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030930"
 ---
-# <a name="quickstart-analyze-text-using-ruby"></a>Schnellstart: Analysieren von Text mit Ruby
+# <a name="quickstart-get-intent-using-ruby"></a>Schnellstartanleitung: Abrufen der Absicht mit Ruby
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -35,11 +36,11 @@ ms.locfileid: "44157700"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>Analysieren von Text mit dem Browser
+## <a name="get-intent-with-browser"></a>Abrufen der Absicht im Browser
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-ruby"></a>Analysieren von Text mit Ruby 
+## <a name="get-intent-programmatically"></a>Programmgesteuertes Abrufen der Absicht
 
 Sie können mit Ruby auf die gleichen Ergebnisse zugreifen, die im vorherigen Schritt im Browserfenster angezeigt wurden. 
 

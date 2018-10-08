@@ -9,19 +9,19 @@ ms.author: estfan
 ms.topic: article
 ms.reviewer: klam, deli, LADocs
 ms.suite: integration
-ms.date: 09/24/2018
-ms.openlocfilehash: fd92b093b70dba2df3ec645b3ecb77233d3ebd5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 36e8161eb8be16b75d843a2b7a65fc3dd70d9c02
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958355"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405287"
 ---
 # <a name="create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Erstellen und Verwalten automatisierter Logik-App-Workflows – Visual Studio Code
 
 Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und Visual Studio Code lassen sich Logik-Apps erstellen und verwalten, mit denen Sie Aufgaben, Workflows und Prozessen zum Integrieren von Apps, Daten, Systemen und Diensten in Unternehmen und Organisationen automatisieren können. In diesem Artikel wird gezeigt, wie Sie Workflowdefinitionen für Logik-Apps in einer codebasierte Umgebung erstellen und bearbeiten. Sie können auch in Logik-Apps arbeiten, die bereits für <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> in der Cloud bereitgestellt wurden. 
 
-Obwohl Sie dieselben Aufgaben im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> und in Visual Studio ausführen können, können Sie in Visual Studio Code schneller starten, wenn Sie direkt im Code arbeiten möchten. Sie haben beispielsweise auch die Möglichkeit, bereits erstellte Logik-Apps zu deaktivieren, zu aktivieren, zu löschen und zu aktualisieren.
+Obwohl Sie dieselben Aufgaben im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> und in Visual Studio ausführen können, können Sie in Visual Studio Code schneller starten, wenn Sie direkt im Code arbeiten möchten. Sie haben beispielsweise auch die Möglichkeit, bereits erstellte Logik-Apps zu deaktivieren, zu aktivieren, zu löschen und zu aktualisieren. Sie können zudem auf jeder Entwicklungsplattform, auf der Visual Studio Code ausgeführt wird – z.B. Linux, Windows und Mach, an Logik-Apps und Integrationskonten arbeiten.
 
 Im Rahmen dieses Artikels können Sie die gleiche Logik-App erstellen wie im [Schnellstart zum Erstellen einer Logik-App im Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), die sich mehr auf die grundlegenden Konzepte konzentriert. In Visual Studio Code sieht die Logik-App wie in diesem Beispiel aus:
 
@@ -43,7 +43,7 @@ Bevor Sie anfangen, müssen Sie die folgenden Voraussetzungen erfüllen:
 
   * Visual Studio Code-Erweiterung für Azure Logic Apps
 
-    Sie können diese Erweiterung aus Visual Studio Code heraus installieren. 
+    Sie können diese Erweiterung vom [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) oder direkt aus Visual Studio Code installieren. 
     Laden Sie Visual Studio Code nach der Installation unbedingt neu. 
 
     ![Suche nach „Visual Studio Code-Erweiterung für Azure Logic Apps“](./media/create-logic-apps-visual-studio-code/find-install-logic-apps-extension.png)
@@ -52,7 +52,7 @@ Bevor Sie anfangen, müssen Sie die folgenden Voraussetzungen erfüllen:
 
     ![Erweiterung wurde installiert](./media/create-logic-apps-visual-studio-code/installed-extension.png)
 
-    Weitere Informationen finden Sie im <a href="https://code.visualstudio.com/docs/editor/extension-gallery" target="_blank">Marketplace für Erweiterungen</a>. 
+    Weitere Informationen finden Sie im <a href="https://code.visualstudio.com/docs/editor/extension-gallery" target="_blank">Marketplace für Erweiterungen</a>. Unter [Azure Logic Apps-Erweiterung für Visual Studio Code auf GitHub](https://github.com/Microsoft/vscode-azurelogicapps) können Sie Beiträge zur Open Source-Version dieser Erweiterung anzeigen oder selbst einreichen. 
 
 <a name="sign-in-azure"></a>
 

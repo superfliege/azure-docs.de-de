@@ -1,20 +1,21 @@
 ---
-title: Erstellen Ihrer ersten LUIS-App (Language Understanding) in zehn Minuten– Cognitive Services LUIS | Microsoft-Dokumentation
-description: In dieser Schnellstartanleitung erstellen Sie eine LUIS-App, die die vordefinierte Domäne `HomeAutomation` zum Ein- und Ausschalten von Beleuchtungen und Haushaltsgeräten verwendet. Diese vordefinierte Domäne bietet Absichten, Entitäten und Beispieläußerungen, die Sie nutzen können. Am Ende dieser Schnellstartanleitung verfügen Sie über einen LUIS-Endpunkt in der Cloud.
+title: In 10 Minuten zu Ihrer ersten LUIS-App
+titleSuffix: Azure Cognitive Services
+description: Erstellen Sie eine LUIS-App, die die vordefinierte Domäne `HomeAutomation` zum Ein- und Ausschalten von Beleuchtungen und Haushaltsgeräten verwendet. Diese vordefinierte Domäne bietet Absichten, Entitäten und Beispieläußerungen, die Sie nutzen können. Am Ende dieser Schnellstartanleitung verfügen Sie über einen LUIS-Endpunkt in der Cloud.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 457f23936dec0cf85e9aebbf3e54bba37c2f3ca3
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 12a660b49d1a81865c34ceda38f041de9be31eb1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "43769942"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037472"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Schnellstart: Verwenden der vordefinierten Home Automation-App
 
@@ -54,11 +55,7 @@ Wenn die Domäne erfolgreich hinzugefügt wurde, enthält das Feld für die vord
 
 ## <a name="intents-and-entities"></a>Absichten und Entitäten
 
-Klicken Sie im linken Navigationsbereich auf **Intents** (Absichten), um die Absichten der Domäne „HomeAutomation“ zu überprüfen. 
-
-[![](media/luis-quickstart-new-app/home-automation-intents.png "Screenshot der Liste „Intents“ (Absichten) mit hervorgehobenen Namen der Absichten in der Tabelle")](media/luis-quickstart-new-app/home-automation-intents.png)
-
-Für jede Absicht sind Beispieläußerungen verfügbar.
+Klicken Sie im linken Navigationsbereich auf **Intents** (Absichten), um die Absichten der Domäne „HomeAutomation“ zu überprüfen. Für jede Absicht sind Beispieläußerungen verfügbar.
 
 > [!NOTE]
 > **None** (Keine) ist eine Absicht, die von allen LUIS-Apps bereitgestellt wird. Diese Absicht verwenden Sie zum Behandeln von Äußerungen, die keiner Funktionalität Ihrer App entsprechen. 
@@ -67,11 +64,9 @@ Wählen Sie die Absicht **HomeAutomation.TurnOff** aus. Wie Sie sehen, enthält 
 
 [![](media/luis-quickstart-new-app/home-automation-turnon.png "Screenshot der Absicht „HomeAutomation.TurnOff“")](media/luis-quickstart-new-app/home-automation-turnon.png)
 
-## <a name="train-your-app"></a>Trainieren Ihrer App
+## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 
-Klicken Sie auf der oberen Navigationsleiste auf **Train** (Trainieren).
-
-[![](media/luis-quickstart-new-app/trained.png "Screenshot der Absicht „HomeAutomation.TurnOff“ mit grüner Erfolgsmeldung")](media/luis-quickstart-new-app/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-your-app"></a>Testen Ihrer App
 Nachdem Sie Ihre App trainiert haben, können Sie sie testen. Klicken Sie auf der oberen Navigationsleiste auf **Test** (Testen). Geben Sie eine Testäußerung wie „Turn off the lights“ (Mach das Licht aus) in den Bereich für interaktive Tests ein, und drücken Sie die EINGABETASTE. 
@@ -89,29 +84,23 @@ In diesem Beispiel wurde „Turn off the lights“ korrekt als Absicht mit der h
 
 Klicken Sie erneut auf **Test** (Testen), um den Testbereich zuzuklappen. 
 
-## <a name="publish-your-app"></a>Veröffentlichen der App
-Klicken Sie auf der oberen Navigationsleiste auf **Publish** (Veröffentlichen). 
+<a name="publish-your-app"></a>
 
-[![](media/luis-quickstart-new-app/publish.png "Screenshot der App mit hervorgehobener Schaltfläche „Publish“ (Veröffentlichen)")](media/luis-quickstart-new-app/publish.png)
+## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
 
-Wählen Sie den Produktionsslot und dann die Schaltfläche **Publish** (Veröffentlichen) aus.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-Die grüne Benachrichtigungsleiste im oberen Bereich zeigt an, dass die App erfolgreich veröffentlicht wurde.
+## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
 
-[![](media/luis-quickstart-new-app/published.png "Screenshot der App nach erfolgreicher Veröffentlichung")](media/luis-quickstart-new-app/published.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-Nach der erfolgreichen Veröffentlichung können Sie die auf der Seite **Publish app** (App veröffentlichen) angezeigte Endpunkt-URL verwenden.
+2. Gehen Sie in der Adresse an das Ende der URL, geben Sie `turn off the living room light` ein, und drücken Sie dann die EINGABETASTE. Der Browser zeigt die JSON-Antwort Ihres HTTP-Endpunkts an.
 
-[![](media/luis-quickstart-new-app/endpoint.png "Screenshot der Seite „Publish app“ (App veröffentlichen) mit hervorgehobener Endpunkt-URL")](media/luis-quickstart-new-app/endpoint.png)
-
-## <a name="use-your-app"></a>Verwenden der App
-Sie können Ihren veröffentlichten Endpunkt mithilfe der generierten URL in einem Browser testen. Öffnen Sie diese URL in Ihrem Browser, und legen Sie den URL-Parameter für Ihre Testabfrage auf „&1q“ fest. Fügen Sie beispielsweise `turn off the living room light` am Ende Ihrer URL hinzu, und drücken Sie dann die EINGABETASTE. Der Browser zeigt die JSON-Antwort Ihres HTTP-Endpunkts an.
-
-
-[![](media/luis-quickstart-new-app/turn-off-living-room.png "Screenshot des Browsers mit dem JSON-Ergebnis für die erkannte Absicht „TurnOff“")](media/luis-quickstart-new-app/turn-off-living-room.png)
-
+    [![](media/luis-quickstart-new-app/turn-off-living-room.png "Screenshot des Browsers mit dem JSON-Ergebnis für die erkannte Absicht „TurnOff“")](media/luis-quickstart-new-app/turn-off-living-room.png)
+    
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie dazu in der Liste rechts vom App-Namen die Auslassungspunkte (***...***) und dann **Delete** (Löschen) aus. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

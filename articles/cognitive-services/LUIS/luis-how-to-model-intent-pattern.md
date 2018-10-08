@@ -1,21 +1,21 @@
 ---
-title: Hinzufügen von Mustervorlagen in LUIS-Apps | Microsoft-Dokumentation
-titleSuffix: Azure
+title: Hinzufügen von Mustervorlagen anstelle weiterer Äußerungen in LUIS-Apps
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Mustervorlagen in LUIS-Anwendungen (Language Understanding Intelligent Service) hinzufügen, um die Vorhersagegenauigkeit zu verbessern.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 8926ce48a8426aa667787f7bbe104e27e1a68669
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c97092385cdc28ba6e4d916ae8039f065f97d31d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124683"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030813"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Hinzufügen von Mustern zum Verbessern der Vorhersagegenauigkeit
 Nachdem eine LUIS-App Endpunktäußerungen empfängt, verbessern Sie mithilfe des [Konzepts](luis-concept-patterns.md) von Mustern die Vorhersagegenauigkeit für Äußerungen, die ein Muster in der Wortreihenfolge und Wortwahl zeigen. Muster verwenden [Entitäten](luis-concept-entity-types.md) und deren Rollen zum Extrahieren von Daten mithilfe einer spezifischen Mustersyntax. 

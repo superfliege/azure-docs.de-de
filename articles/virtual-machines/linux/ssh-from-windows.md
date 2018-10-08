@@ -1,5 +1,5 @@
 ---
-title: Verwenden von SSH-Schlüsseln mit Windows für virtuelle Linux-Computer | Microsoft Docs
+title: Verwenden von SSH-Schlüsseln mit Windows für virtuelle Linux-Computer | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie SSH-Schlüssel auf einem Windows-Computer erstellen und verwenden, um Verbindungen mit virtuellen Linux-Computern in Azure herzustellen.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 09/12/2018
 ms.author: danlep
-ms.openlocfilehash: fc245d38af90e0c395389e24b14d061fcfe0c10c
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: abb0ba6eace2e837ea2f74a0d919097f8801101e
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142794"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407415"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Verwenden von SSH-Schlüsseln mit Windows in Azure
 
-In diesem Artikel werden Möglichkeiten zum Generieren und Verwenden von Secure Shell-Schlüsseln (SSH) auf einem Windows-Computer zum Erstellen eines virtuellen Linux-Computers (VM) in Azure und Herstellen einer Verbindung damit vorgestellt. Wie Sie die SSH-Schlüssel von einem Linux- oder macOS-Client verwenden, erfahren Sie in der [Schnellanleitung](mac-create-ssh-keys.md) oder [ausführlichen](create-ssh-keys-detailed.md) Anleitung.
+In diesem Artikel werden Möglichkeiten zum Generieren und Verwenden von *Secure Shell*-Schlüsseln (SSH) auf einem Windows-Computer beschrieben, um einen virtuellen Linux-Computer in Azure zu erstellen und eine Verbindung damit herzustellen. Wie Sie die SSH-Schlüssel von einem Linux- oder macOS-Client verwenden, erfahren Sie in der [Schnellanleitung](mac-create-ssh-keys.md) oder [ausführlichen](create-ssh-keys-detailed.md) Anleitung.
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
@@ -35,30 +35,30 @@ Die Verbindungsherstellung mit virtuellen Linux-Computern in Azure sowie deren V
 
 Auf Windows-Computern sind nicht immer vergleichbare SSH-Befehle installiert. Neuere Versionen von Windows 10 bieten [OpenSSH-Clientbefehle](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) zum Erstellen und Verwalten von SSH-Schlüsseln und SSH-Verbindungen über eine Eingabeaufforderung. Bei aktuellen Windows 10-Versionen mit dem [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/about) können Sie direkt aus einer Bash-Shell auf Hilfsprogramme, z.B. einen SSH-Client, zugreifen und diese ausführen. 
 
-Wenn Sie ein anderes SSH-Tool für Windows verwenden möchten, finden Sie in den folgenden Paketen gängige Windows SSH-Clients, die Sie lokal installieren können:
+Andere gängige Windows-SSH-Clients, die Sie lokal installieren können, sind in den folgenden Paketen enthalten:
 
 * [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git für Windows](https://git-for-windows.github.io/)
 * [MobaXterm](http://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
-Eine andere Möglichkeit ist die Verwendung der SSH-Hilfsprogramme, die in der [Azure Cloud Shell](../../cloud-shell/overview.md) in Bash zur Verfügung stehen. 
+Sie können auch die SSH-Hilfsprogramme verwenden, die in der [Azure Cloud Shell](../../cloud-shell/overview.md) in Bash zur Verfügung stehen. 
 
 * Greifen Sie in Ihrem Webbrowser unter [https://shell.azure.com](https://shell.azure.com) oder im [Azure-Portal](https://portal.azure.com) auf Cloud Shell zu. 
 * Greifen Sie aus VS Code heraus auf Cloud Shell als Terminal zu, indem Sie die [Erweiterung „Azure Account“](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) installieren.
 
 ## <a name="create-an-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
-In diesem Abschnitt lernen Sie zwei Optionen zum Erstellen eines SSH-Schlüsselpaars unter Windows kennen.
+In den folgenden Abschnitten werden zwei Optionen zum Erstellen eines SSH-Schlüsselpaars unter Windows beschrieben. Sie können einen Shell-Befehl (`ssh-keygen`) oder ein GUI-Tool (PuTTYgen) verwenden.
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>Erstellen von SSH-Schlüsseln mit „ssh-keygen“
 
-Wenn Sie unter Windows eine Befehlsshell ausführen, die SSH-Clienttools unterstützt (oder wenn Sie Azure Cloud Shell verwenden), erstellen Sie mit dem Befehl `ssh-keygen` ein SSH-Schlüsselpaar. Geben Sie den folgenden Befehl ein, und beantworten Sie die Eingabeaufforderungen. Wenn am aktuellen Speicherort bereits ein SSH-Schlüsselpaar vorhanden ist, werden diese Dateien überschrieben. 
+Wenn Sie unter Windows eine Befehlsshell ausführen, die SSH-Clienttools unterstützt (oder wenn Sie Azure Cloud Shell verwenden), erstellen Sie mit dem Befehl `ssh-keygen` ein SSH-Schlüsselpaar. Geben Sie den folgenden Befehl ein, und beantworten Sie die Eingabeaufforderungen. Wenn im ausgewählten Speicherort bereits ein SSH-Schlüsselpaar vorhanden ist, werden diese Dateien überschrieben. 
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-Weitere Hintergrundinformationen und Sonstiges finden Sie in den Beschreibungen der [schnellen](mac-create-ssh-keys.md) bzw. [ausführlichen](create-ssh-keys-detailed.md) Schritte zum Erstellen der Schlüssel mit `ssh-keygen`.
+Weitere Hintergrundinformationen finden Sie in den Beschreibungen der [schnellen](mac-create-ssh-keys.md) bzw. [ausführlichen](create-ssh-keys-detailed.md) Schritte zum Erstellen von SSH-Schlüsseln mit `ssh-keygen`.
 
 ### <a name="create-ssh-keys-with-puttygen"></a>Erstellen von SSH-Schlüsseln mit PuTTYgen
 
@@ -70,32 +70,32 @@ So erstellen Sie ein SSH-RSA-Schlüsselpaar mit PuTTYgen:
 
 2. Klicken Sie auf **Generate (Generieren)**. PuTTYgen generiert standardmäßig einen 2048-Bit-SSH-2-RSA-Schlüssel.
 
-4. Bewegen Sie die Maus auf den leeren Bereich, damit der Schlüssel nach dem Zufälligkeitsprinzip generiert wird.
+4. Bewegen Sie die Maus über den leeren Bereich, um Zufälligkeit für den Schlüssel zu erzeugen.
 
-5. Nach dem Generieren des öffentlichen Schlüssels können Sie optional eine Passphrase eingeben und bestätigen. Wenn Sie sich mit Ihrem SSH-Schlüssel bei dem virtuellen Computer authentifizieren, werden Sie zur Eingabe der Passphrase aufgefordert. Ohne Passphrase kann sich jeder, der über Ihren privaten Schlüssel verfügt, bei den virtuellen Computern oder Diensten anmelden, die diesen Schlüssel verwenden. Daher empfiehlt es sich, eine Passphrase zu erstellen. Wenn Sie die Passphrase vergessen, besteht jedoch keine Möglichkeit, diese wiederherzustellen.
+5. Nach dem Generieren des öffentlichen Schlüssels können Sie optional eine Passphrase eingeben und bestätigen. Wenn Sie sich mit Ihrem privaten SSH-Schlüssel bei dem virtuellen Computer authentifizieren, werden Sie zur Eingabe der Passphrase aufgefordert. Ohne Passphrase kann sich jeder, der über Ihren privaten Schlüssel verfügt, bei den virtuellen Computern oder Diensten anmelden, die diesen Schlüssel verwenden. Daher empfiehlt es sich, eine Passphrase zu erstellen. Wenn Sie die Passphrase vergessen, besteht jedoch keine Möglichkeit, diese wiederherzustellen.
 
-6. Der öffentliche Schlüssel wird am oberen Rand des Fensters angezeigt. Dieser öffentliche Schlüssel im einzeiligen Format muss beim Erstellen eines virtuellen Linux-Computers kopiert und in das Azure-Portal oder eine Azure Resource Manager-Vorlage eingefügt werden. Sie können auch auf die Option zum **Speichern des öffentlichen Schlüssels** klicken, um eine Kopie auf Ihrem Computer zu speichern:
+6. Der öffentliche Schlüssel wird am oberen Rand des Fensters angezeigt. Sie können diesen gesamten öffentlichen Schlüssel kopieren und dann beim Erstellen eines virtuellen Linux-Computers in das Azure-Portal oder eine Azure Resource Manager-Vorlage einfügen. Sie können auch auf **Öffentlichen Schlüssel speichern** klicken, um eine Kopie auf Ihrem Computer zu speichern:
 
     ![Speichern der Datei mit dem öffentlichen PuTTY-Schlüssel](./media/ssh-from-windows/save-public-key.png)
 
-7. Um den privaten Schlüssel optional im PuTTy-Format für private Schlüssel (PPK-Datei) zu speichern, klicken Sie auf **Save private key (Privaten Schlüssel speichern)**. Sie benötigen die PPK-Datei, wenn Sie PuTTY später verwenden möchten, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen.
+7. Optional können Sie auch auf **Privaten Schlüssel speichern** klicken, um den privaten Schlüssel im privaten PuTTY-Schlüsselformat (PPK-Datei) zu speichern. Sie benötigen die PPK-Datei später, wenn Sie PuTTY verwenden möchten, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen.
 
     ![Speichern der PuTTY-Datei mit dem privaten Schlüssel](./media/ssh-from-windows/save-ppk-file.png)
 
-    Wenn Sie den privaten Schlüssel im OpenSSH-Format speichern möchten, klicken Sie auf das von vielen SSH-Clients verwendete Format für private Schlüssel, und klicken Sie auf **Conversions (Konvertierungen)** > **Export OpenSSH key (OpenSSH-Schlüssel exportieren)**.
+    Wenn Sie den privaten Schlüssel im OpenSSH-Format speichern möchten, klicken Sie auf das von vielen SSH-Clients verwendete Format für private Schlüssel, und klicken Sie auf **Konvertierungen** > **OpenSSH-Schlüssel exportieren**.
 
-## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>Bereitstellen des öffentlichen SSH-Schlüssels beim Bereitstellen eines virtuellen Computers
+## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Angeben des öffentlichen SSH-Schlüssels beim Bereitstellen eines virtuellen Computers
 
 Um eine Linux-VM zu erstellen, die SSH-Schlüssel zur Authentifizierung verwendet, geben Sie Ihren öffentlichen SSH-Schlüssel beim Erstellen des virtuellen Computers im Azure-Portal oder mit anderen Methoden ein.
 
-Das folgende Beispiel zeigt, wie Sie diesen öffentlichen Schlüssel beim Erstellen eines virtuellen Linux-Computers kopieren und in das Azure-Portal einfügen. Der öffentliche Schlüssel wird dann in der Regel auf Ihrem neuen virtuellen Computer unter `~/.ssh/authorized_keys` gespeichert.
+Das folgende Beispiel zeigt, wie Sie diesen öffentlichen Schlüssel beim Erstellen eines virtuellen Linux-Computers kopieren und in das Azure-Portal einfügen. Der öffentliche Schlüssel wird dann in der Regel auf Ihrem neuen virtuellen Computer im Verzeichnis „~/.ssh/authorized_key“ gespeichert.
 
    ![Verwenden des öffentlichen Schlüssels beim Erstellen eines virtuellen Computers im Azure-Portal](./media/ssh-from-windows/use-public-key-azure-portal.png)
 
 
 ## <a name="connect-to-your-vm"></a>Herstellen einer Verbindung mit Ihrer VM
 
-Eine Möglichkeit, eine SSH-Verbindung mit Ihrer Linux-VM von Windows aus herzustellen, ist die Verwendung eines SSH-Clients. Dies ist die bevorzugte Methode, wenn ein SSH-Client auf Ihrem Windows-System installiert ist, oder wenn Sie in Azure Cloud Shell SSH-Tools in Bash verwenden. Wenn Sie ein GUI-basiertes Tool bevorzugen, können Sie die Verbindung mit PuTTY herstellen.  
+Eine Möglichkeit, eine SSH-Verbindung mit Ihrer Linux-VM von Windows aus herzustellen, ist die Verwendung eines SSH-Clients. Dies ist die bevorzugte Methode, wenn ein SSH-Client auf Ihrem Windows-System installiert ist oder wenn Sie die SSH-Tools in Bash in Azure Cloud Shell verwenden. Wenn Sie ein GUI-basiertes Tool bevorzugen, können Sie die Verbindung mit PuTTY herstellen.  
 
 ### <a name="use-an-ssh-client"></a>Verwenden eines SSH-Clients
 Stellen Sie mit dem auf Ihrer Azure-VM bereitgestellten öffentlichen Schlüssel und dem privaten Schlüssel auf Ihrem lokalen System mithilfe der IP-Adresse oder dem DNS-Namen Ihres virtuellen Computers eine SSH-Verbindung mit Ihrem virtuellen Computer her. Ersetzen Sie *azureuser* und *myvm.westus.cloudapp.azure.com* im folgenden Befehl mit dem Benutzernamen des Administrators und dem vollständig qualifizierten Domänennamen (oder der IP-Adresse):
@@ -108,7 +108,7 @@ Falls Sie beim Erstellen des Schlüsselpaars eine Passphrase konfiguriert haben,
 
 ### <a name="connect-with-putty"></a>Herstellen der Verbindung mit PuTTY
 
-Wenn Sie das [PuTTY-Downloadpaket](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) installiert und zuvor eine PuTTY-Datei für private Schlüssel (PPK-Datei) generiert haben, können Sie die Verbindung mit der Linux-VM mit PuTTY herstellen.
+Wenn Sie das [PuTTY-Downloadpaket](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) installiert und zuvor eine PuTTY-Datei für private Schlüssel (PPK-Datei) generiert haben, können Sie mit PuTTY eine Verbindung mit einer Linux-VM herstellen.
 
 1. Starten Sie PuTTY.
 
@@ -116,7 +116,7 @@ Wenn Sie das [PuTTY-Downloadpaket](http://www.chiark.greenend.org.uk/~sgtatham/p
 
     ![Herstellen einer neuen PuTTY-Verbindung](./media/ssh-from-windows/putty-new-connection.png)
 
-3. Wählen Sie zunächst **Verbindung** > **SSH** > **Authentifizierung** und anschließend **Öffnen** aus. Navigieren Sie zu Ihrer PuTTY-Datei für private Schlüssel (PPK-Datei), und wählen Sie sie aus:
+3. Wählen Sie die Kategorie **Verbindung** > **SSH** > **Auth** aus. Navigieren Sie zu Ihrer PuTTY-Datei für private Schlüssel (PPK-Datei), und wählen Sie sie aus:
 
     ![Auswählen Ihrer PuTTY-Datei für private Schlüssel für die Authentifizierung](./media/ssh-from-windows/putty-auth-dialog.png)
 
@@ -124,7 +124,7 @@ Wenn Sie das [PuTTY-Downloadpaket](http://www.chiark.greenend.org.uk/~sgtatham/p
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ausführliche Schrittbeschreibungen, Optionen und komplexere Beispiele zum Arbeiten mit SSH-Schlüsseln finden Sie unter [Ausführliche exemplarische Vorgehensweise zum Erstellen eines SSH-Schlüsselpaars mit zusätzlichen Zertifikaten für einen virtuellen Linux-Computer in Azure](create-ssh-keys-detailed.md).
+* Ausführliche Schrittbeschreibungen, Optionen und komplexere Beispiele zum Arbeiten mit SSH-Schlüsseln finden Sie unter [Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure](create-ssh-keys-detailed.md).
 
 * Sie können auch PowerShell in Azure Cloud Shell zum Generieren von SSH-Schlüsseln und Herstellen von SSH-Verbindungen mit virtuellen Linux-Computern verwenden. Siehe [PowerShell – Schnellstart](../../cloud-shell/quickstart-powershell.md#ssh).
 

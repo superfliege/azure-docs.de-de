@@ -1,42 +1,29 @@
 ---
-title: Tutorial zur Verwendung der pattern.any-Entität zur Verbesserung von LUIS-Vorhersagen – Azure | Microsoft-Dokumentation
-titleSuffix: Cognitive Services
-description: In diesem Tutorial verwenden Sie die pattern.any-Entität, um die Vorhersagen von LUIS zu Absichten und Entitäten zu verbessern.
+title: 'Tutorial 5: Entität „Pattern.any“ für Freiformtext'
+titleSuffix: Azure Cognitive Services
+description: Verwenden Sie die Entität „pattern.any“, um Daten aus Äußerungen zu extrahieren, in denen die Äußerungen wohlgeformt sind und das Ende der Daten leicht mit den verbleibenden Wörtern der Äußerung zu verwechseln ist.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 43f169ae11191c2e98c4538189bce781821de980
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4ff4a7085a8caeedebe2a734014afb1cb46d9fbf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157853"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164394"
 ---
-# <a name="tutorial-improve-app-with-patternany-entity"></a>Tutorial: Verbessern der App mit der pattern.any-Entität
+# <a name="tutorial-5-extract-free-form-data"></a>Tutorial 5: Extrahieren von Freiformdaten
 
-In diesem Tutorial verwenden Sie die pattern.any-Entität, um die Vorhersagen zu Absichten und Entitäten zu verbessern.  
+In diesem Tutorial verwenden Sie die Entität „pattern.any“, um Daten aus Äußerungen zu extrahieren, in denen die Äußerungen wohlgeformt sind und das Ende der Daten leicht mit den verbleibenden Wörtern der Äußerung zu verwechseln ist. 
 
-> [!div class="checklist"]
-* Erfahren Sie, wann und wie Sie pattern.any verwenden
-* Erstellen eines Muster, das pattern.any verwendet
-* Überprüfen der Verbesserungen bei Vorhersagen
+Mit der Entität „pattern.any“ können Sie Freiformdaten finden, bei denen die Formulierung der Entität erschwert, das Ende der Entität vom Rest der Äußerung zu unterscheiden. 
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personalabteilungs-App aus dem [Musterrollen](luis-tutorial-pattern-roles.md)-Tutorial verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json).
-
-Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `patt-any`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
-
-## <a name="the-purpose-of-patternany"></a>Der Zweck von pattern.any
-Mit der Entität pattern.any können Sie Freiformdaten finden, bei denen die Formulierung der Entität erschwert, das Ende der Entität vom Rest der Äußerung zu unterscheiden. 
-
-Diese Human Resources-App hilft Mitarbeitern, Unternehmensformulare zu finden. Die Formulare wurden im [Tutorial zu regulären Ausdrücken](luis-quickstart-intents-regex-entity.md) hinzugefügt. Die Formularnamen aus diesem Tutorial verwendeten einen regulären Ausdruck, um einen korrekt formatierten Formularnamen zu extrahieren, z.B. den Formularnamen in Fettdruck in der folgenden Äußerungentabelle:
+Diese Human Resources-App hilft Mitarbeitern, Unternehmensformulare zu finden. 
 
 |Äußerung|
 |--|
@@ -54,11 +41,38 @@ Jedes Formular verfügt jedoch sowohl über einen formatierten Name, der in der 
 |Wer hat **Request relocation from employee new to the company 2018 version 5** erstellt?|
 |Wurde **Request relocation from employee new to the company 2018 version 5** in Französisch veröffentlicht?|
 
-Die unterschiedlichen Längen enthalten Ausdrücke, die LUIS erschweren, das Ende von Entitäten zu erkennen. Mit einer Pattern.any-Entität in einem Muster können Sie den Anfang und das Ende des Formularnamens angeben, damit LUIS diesen ordnungsgemäß extrahiert.
+Die unterschiedlichen Längen enthalten Wörter, die es LUIS erschweren, das Ende von Entitäten zu erkennen. Mit einer Pattern.any-Entität in einem Muster können Sie den Anfang und das Ende des Formularnamens angeben, damit LUIS diesen ordnungsgemäß extrahiert.
 
-**Muster ermöglichen Ihnen, weniger Beispieläußerungen bereitzustellen. Doch wenn die Entitäten nicht erkannt werden, stimmt das Muster nicht überein.**
+|Beispiel für eine Vorlagenäußerung|
+|--|
+|Wo ist {FormName}[?]|
+|Wer hat {FormName} erstellt[?]|
+|Wurde {FormName} in Französisch veröffentlicht[?]|
 
-## <a name="add-example-utterances-to-the-existing-intent-findform"></a>Hinzufügen von Beispieläußerungen zu der vorhandenen Absicht-FindForm 
+**In diesem Tutorial lernen Sie Folgendes:**
+
+> [!div class="checklist"]
+> * Verwenden der vorhandenen Tutorial-App
+> * Hinzufügen von Beispieläußerungen zu einer vorhandenen Entität
+> * Erstellen einer Pattern.any-Entität
+> * Erstellen eines Musters
+> * Trainieren
+> * Testen des neuen Musters
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
+
+Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json) herunter, und speichern Sie sie.
+
+2. Importieren Sie den JSON-Code in eine neue App.
+
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `patt-any`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+
+## <a name="add-example-utterances"></a>Hinzufügen von Beispieläußerungen 
 Entfernen Sie die vordefinierte keyPhrase-Entität, wenn es schwierig ist, die FormName-Entität zu erstellen und zu bezeichnen. 
 
 1. Wählen Sie **Erstellen** im oberen Navigationsbereich und dann **Absichten** im linken Navigationsbereich aus.
@@ -128,6 +142,8 @@ Die Pattern.any-Entität extrahiert Entitäten unterschiedlicher Länge. Sie fun
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Tutorial wurden einer vorhandenen Absicht Beispieläußerungen hinzugefügt und dann eine neue Pattern.any für den Formularnamen erstellt. Anschließend erstellte das Tutorial ein Muster für die vorhandene Absicht mit den neuen Beispieläußerungen und der Entität. Durch interaktives Testen wurde gezeigt, dass das Muster und seine Absicht vorhergesagt wurden, weil die Entität gefunden wurde. 
 
 > [!div class="nextstepaction"]
 > [Verwenden von Rollen mit einem Muster](luis-tutorial-pattern-roles.md)

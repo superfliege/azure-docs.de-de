@@ -1,24 +1,24 @@
 ---
-title: Erfahren Sie mehr über das Verbessern der Vorhersagegenauigkeit mit Mustern | Microsoft Docs
-titleSuffix: Azure
-description: Erfahren Sie, wie Muster entworfen werden, um die Vorhersagegenauigkeit der Absichtsbewertung zu verbessern und Entitäten zu finden.
+title: Erfahren Sie mehr über das Verbessern der Vorhersagegenauigkeit mit Mustern
+titleSuffix: Azure Cognitive Services
+description: Muster werden entworfen, um die Genauigkeit zu erhöhen, wenn mehrere Äußerungen sehr ähnlich sind. Ein Muster ermöglicht es Ihnen, größere Genauigkeit für eine Absicht zu erreichen, ohne viele weitere Äußerungen anzugeben.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c08419e3fb5b25284121a0eac30c38c8ba7570f1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 5ade15b3f80d725af4ece31a36ea0b670f5f5147
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225216"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031542"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Verbessern der Vorhersagegenauigkeit mit Mustern
-Muster werden entworfen, um die Genauigkeit zu erhöhen, wenn mehrere Äußerungen sehr ähnlich sind. Durch Bereitstellen eines Musters für die Äußerung kann LUIS große Vertrauenswürdigkeit bei der Vorhersage bieten. 
+Muster werden entworfen, um die Genauigkeit zu erhöhen, wenn mehrere Äußerungen sehr ähnlich sind.  Ein Muster ermöglicht es Ihnen, größere Genauigkeit für eine Absicht zu erreichen, ohne viele weitere Äußerungen anzugeben. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Muster als Weg bei wenig vertrauenswürdigen Absichten
 Stellen Sie sich eine Personalwesen-App vor, die das Organigramm bezogen auf einen Mitarbeiter auswertet. Bei Angabe des Namens und der Beziehungen eines Mitarbeiters gibt LUIS die beteiligten Mitarbeiter zurück. Sehen wir uns einen Mitarbeiter Tom mit einer Vorgesetzten Alice und einem Team von ihm Unterstellten mit den Namen Michael, Rebekka und Karl an.
@@ -60,25 +60,25 @@ Entitäten in Mustern sind in geschweifte Klammern, `{}`, eingeschlossen. Muster
 ### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntax zum Hinzufügen einer Entität zu einer Mustervorlage
 Um der Mustervorlage eine Entität hinzuzufügen, schließen Sie den Namen der Entität in geschweiften Klammern ein, wie hier: `Who does {Employee} manage?`. 
 
-```
-Who does {Employee} manage?
-```
+|Muster mit Entität|
+|--|
+|`Who does {Employee} manage?`|
 
 ### <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Syntax zum Hinzufügen einer Entität und einer Rolle zu einer Mustervorlage
 Eine Entitätsrolle wird als `{entity:role}` notiert, wobei ein Doppelpunkt und dann der Name der Rolle auf den Namen der Entität folgen. Um der Mustervorlage eine Entität mit einer Rolle hinzuzufügen, schließen Sie den Namen der Entität und den Namen der Rolle in geschweiften Klammern ein, wie hier: `Book a ticket from {Location:Origin} to {Location:Destination}`. 
 
-```
-Book a ticket from {Location:Origin} to {Location:Destination}
-```
+|Muster mit Entitätsrollen|
+|--|
+|`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
 ### <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Syntax zum Hinzufügen eines „pattern.any“ zu einer Mustervorlage
 Die Pattern.any-Entität ermöglicht Ihnen das Hinzufügen einer Entität mit variabler Länge zum Muster. Sofern die Mustervorlage befolgt wird, kann „pattern.any“ jede beliebige Länge aufweisen. 
 
 Um der Mustervorlage eine **Pattern.any**-Entität hinzuzufügen, schließen Sie die Pattern.any-Entität in geschweifte Klammern ein, wie hier: `How much does {Booktitle} cost and what format is it available in?`.  
 
-```
-How much does {Booktitle} cost and what format is it available in?
-```
+|Muster mit Entität „Pattern.any“|
+|--|
+|`How much does {Booktitle} cost and what format is it available in?`|
 
 |Buchtitel im Muster|
 |--|
@@ -107,9 +107,9 @@ Um diese Ausnahme im Muster zu beheben, fügen Sie mithilfe der [Verfasser-API f
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntax zum Kennzeichnen von optionalem Text in einer Vorlagenäußerung
 Kennzeichnen Sie optionalen Text in der Äußerung mithilfe der Syntax für eckige Klammern in regulären Ausdrücken, `[]`. In optionalem Text können eckige Klammern nur bis zu einer Tiefe von zwei Klammern verschachtelt werden.
 
-```
-[find] email about {subject} [from {person}]
-```
+|Muster mit optionalem Text|
+|--|
+|`[find] email about {subject} [from {person}]`|
 
 Interpunktionszeichen wie `.`, `!` und `?` können mithilfe der eckigen Klammern ignoriert werden. Um diese Kennzeichnungen zu ignorieren, muss sich jede Kennzeichnung in einem separaten Muster befinden. Die optionale Syntax unterstützt derzeit das Ignorieren eines Elements in einer Liste aus mehreren Elementen nicht.
 

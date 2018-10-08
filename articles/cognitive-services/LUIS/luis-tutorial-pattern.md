@@ -1,76 +1,56 @@
 ---
-title: Tutorial zur Verwendung von Mustern zur Verbesserung der LUIS Vorhersagen – Azure | Microsoft-Dokumentation
-titleSuffix: Cognitive Services
-description: In diesem Tutorial verwenden Sie Muster für Absichten, um die Vorhersagen von LUIS zu Absichten und Entitäten zu verbessern.
+title: 'Tutorial 3: Muster zur Verbesserung von LUIS-Vorhersagen'
+titleSuffix: Azure Cognitive Services
+description: Verwenden Sie Muster, um die Vorhersage von Absichten und Entitäten zu verbessern und zugleich weniger Beispieläußerungen anzugeben. Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 9c14f2121cd83cec802f4fd4a92661d58eb7efb3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f4b267dda3c05d490d91fe02fbcfde4e49674603
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159570"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166400"
 ---
-# <a name="tutorial-improve-app-with-patterns"></a>Tutorial: Verbessern der App mit Mustern
+# <a name="tutorial-3-add-common-utterance-formats"></a>Tutorial 3: Hinzufügen allgemeiner Formate für Äußerungen
 
-In diesem Tutorial verwenden Sie Muster, um die Vorhersagen von LUIS für Absichten und Entitäten zu verbessern.  
+In diesem Tutorial verwenden Sie Muster, um die Vorhersage von Absichten und Entitäten zu verbessern und zugleich weniger Beispieläußerungen anzugeben. Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält. Ein Muster ist eine Kombination aus der Suche nach Übereinstimmungen mit Ausdrücken und maschinellem Lernen.  Das Beispiel für Vorlagenäußerungen und die Äußerungen der Absicht vermitteln LUIS ein besseres Verständnis dafür, welche Äußerungen zur Absicht passen. 
+
+**In diesem Tutorial lernen Sie Folgendes:**
 
 > [!div class="checklist"]
-* Ermitteln, ob ein Muster für eine App hilfreich wäre
-* Erstellen eines Musters
-* Überprüfen der Verbesserungen bei Vorhersagen durch Muster
+> * Verwenden der vorhandenen Tutorial-App 
+> * Erstellen einer Absicht
+> * Trainieren
+> * Veröffentlichen
+> * Abrufen von Absichten und Entitäten vom Endpunkt
+> * Erstellen eines Musters
+> * Überprüfen der Verbesserungen bei Vorhersagen durch Muster
+> * Kennzeichnen von Text als ignorierbar und Verschachteln innerhalb von Mustern
+> * Verwenden des Testpanels zum Überprüfen des Erfolgs der Muster
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="use-existing-app"></a>Verwenden der vorhandenen App
 
-Falls Sie die Personal-App aus dem Tutorial zu [Batchtests](luis-tutorial-batch-testing.md) nicht haben, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App auf der [LUIS-Website](luis-reference-regions.md#luis-website). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-batchtest-HumanResources.json).
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
 
-Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `patterns`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
+Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
 
-## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>Über Muster erlernt LUIS allgemeine Äußerungen mit weniger Beispielen
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json) herunter, und speichern Sie sie.
 
-Im Themenbereich Personalwesen gibt es einige häufig verwendete Methoden, um Mitarbeiterbeziehungen in Organisationen zu erfragen. Beispiel: 
+2. Importieren Sie den JSON-Code in eine neue App.
 
-|Äußerungen|
-|--|
-|Who does Jill Jones report to?|
-|Who reports to Jill Jones?|
-
-Diese Äußerungen sind zu ähnlich, um jeweils ihre kontextbezogene Eindeutigkeit zu ermitteln, ohne zahlreiche Beispieläußerungen anzugeben. Durch Hinzufügen eines Musters für eine Absicht lernt LUIS häufige Muster von Äußerungen für eine Absicht, ohne dass dafür viele Beispieläußerungen angegeben werden müssen. 
-
-Beispiele für Vorlagenäußerungen zu dieser Absicht sind:
-
-|Beispielhafte Vorlagenäußerungen|
-|--|
-|Who does {Employee} report to?|
-|Who reports to {Employee}?|
-
-Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält. Ein Muster ist eine Kombination aus der Suche nach Übereinstimmungen mit regulären Ausdrücken und maschinellem Lernen.  Das Beispiel für Vorlagenäußerungen und die Äußerungen der Absicht vermitteln LUIS ein besseres Verständnis dafür, welche Äußerungen zur Absicht passen.
-
-Damit ein Muster mit einer Äußerung übereinstimmt, müssen die Entitäten innerhalb der Äußerung zuerst mit den Entitäten in der Vorlagenäußerung übereinstimmen. Allerdings hilft die Vorlage nicht dabei, Entitäten vorherzusagen, sondern nur Absichten. 
-
-**Muster ermöglichen Ihnen, weniger Beispieläußerungen bereitzustellen. Doch wenn die Entitäten nicht erkannt werden, stimmt das Muster nicht überein.**
-
-Das [Tutorial zum Entitätstyp „Liste“](luis-quickstart-intent-and-list-entity.md) zeigt, wie Mitarbeiter erstellt werden.
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `patterns`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Erstellen neuer Absichten samt Äußerungen
 
-Hinzufügen Sie die beiden neuen Absichten `OrgChart-Manager` und `OrgChart-Reports` hinzu. Sobald LUIS eine Vorhersage an die Clientanwendung zurückgibt, kann der Name der Absicht als Funktionsname in der Clientanwendung und die Entität „Employee“ als Parameter für diese Funktion verwendet werden.
-
-```Javascript
-OrgChart-Manager(employee){
-    ///
-}
-```
-
-1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste **Build** auswählen. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie auf der Seite **Absichten** die Option **Create new intent** (Neue Absicht erstellen). 
 
@@ -110,17 +90,17 @@ OrgChart-Manager(employee){
 
 ## <a name="caution-about-example-utterance-quantity"></a>Wichtiger Hinweis zur Menge der Beispieläußerungen
 
-Die Menge der Beispieläußerungen in diesen Absichten reicht nicht aus, um LUIS richtig zu trainieren. In einer realen App sollte jede Absicht mindestens 15 Äußerungen mit einer vielfältigen Wortauswahl und unterschiedlicher Äußerungslänge beinhalten. Diese wenigen Äußerungen wurden speziell ausgewählt, um Muster hervorzuheben. 
+[!include[Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
 
-## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
+## <a name="train"></a>Trainieren
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
+## <a name="publish"></a>Veröffentlichen
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
+## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -215,13 +195,53 @@ Verwenden Sie Muster, um die Bewertung der richtigen Absicht deutlich zu erhöhe
 
 Lassen Sie das zweite Browserfenster geöffnet. Sie verwenden es später im Tutorial. 
 
-## <a name="add-the-template-utterances"></a>Hinzufügen der Vorlagenäußerungen
+## <a name="template-utterances"></a>Vorlagenäußerungen
+Im Themenbereich Personalwesen gibt es einige häufig verwendete Methoden, um Mitarbeiterbeziehungen in Organisationen zu erfragen. Beispiel: 
+
+|Äußerungen|
+|--|
+|Who does Jill Jones report to?|
+|Who reports to Jill Jones?|
+
+Diese Äußerungen sind zu ähnlich, um jeweils ihre kontextbezogene Eindeutigkeit zu ermitteln, ohne zahlreiche Beispieläußerungen anzugeben. Durch Hinzufügen eines Musters für eine Absicht lernt LUIS häufige Muster von Äußerungen für eine Absicht, ohne dass dafür viele Beispieläußerungen angegeben werden müssen. 
+
+Zu den Beispielen für Vorlagenäußerungen zu dieser Absicht gehören:
+
+|Beispiele für Vorlagenäußerungen|Bedeutung der Syntax|
+|--|--|
+|Who does {Employee} report to[?]|austauschbar {Employee}, ignorieren [?]}|
+|Who reports to {Employee}[?]|austauschbar {Employee}, ignorieren [?]}|
+
+Die Syntax `{Employee}` markiert die Position der Entität innerhalb der Vorlagenäußerung sowie die Entität selbst. Die optionale Syntax (`[?]`) markiert Wörter oder Satzzeichen, die optional sind. LUIS gleicht die Äußerung ab und ignoriert dabei den optionalen Text in den Klammern.
+
+Zwar sieht die Syntax nach regulären Ausdrücken aus, es handelt sich aber nicht um reguläre Ausdrücke. Es wird nur die Syntax mit geschweiften `{}` und eckigen `[]` Klammern unterstützt. Sie können bis zu zwei Ebenen tief geschachtelt werden.
+
+Damit ein Muster mit einer Äußerung übereinstimmt, müssen die Entitäten innerhalb der Äußerung zuerst mit den Entitäten in der Vorlagenäußerung übereinstimmen. Allerdings hilft die Vorlage nicht dabei, Entitäten vorherzusagen, sondern nur Absichten. 
+
+**Muster ermöglichen Ihnen, weniger Beispieläußerungen bereitzustellen. Doch wenn die Entitäten nicht erkannt werden, stimmt das Muster nicht überein.**
+
+In diesem Tutorial fügen Sie zwei neue Absichten hinzu: `OrgChart-Manager` und `OrgChart-Reports`. 
+
+|Absicht|Äußerung|
+|--|--|
+|OrgChart-Manager|Who does Jill Jones report to?|
+|OrgChart-Reports|Who reports to Jill Jones?|
+
+Sobald LUIS eine Vorhersage an die Clientanwendung zurückgibt, kann der Name der Absicht als Funktionsname in der Clientanwendung und die Entität „Employee“ als Parameter für diese Funktion verwendet werden.
+
+```Javascript
+OrgChartManager(employee){
+    ///
+}
+```
+
+Das [Tutorial zum Entitätstyp „Liste“](luis-quickstart-intent-and-list-entity.md) zeigt, wie Mitarbeiter erstellt werden.
 
 1. Wählen Sie oben im Menü **Erstellen** aus.
 
 2. Wählen Sie im linken Navigationsbereich unter **Improve app performance** (App-Leistung verbessern) die Option **Muster** aus.
 
-3. Wählen Sie die Absicht **OrgChart-Manager** aus, geben Sie dann die folgenden Vorlagenäußerungen einzeln ein, und drücken Sie nach jeder Vorlagenäußerung die Eingabetaste:
+3. Wählen Sie die Absicht **OrgChart-Manager** aus, und geben Sie dann die folgende Vorlagenäußerung ein:
 
     |Vorlagenäußerungen|
     |:--|
@@ -232,17 +252,13 @@ Lassen Sie das zweite Browserfenster geöffnet. Sie verwenden es später im Tuto
     |Who is {Employee}['s] supervisor[?]|
     |Who is the boss of {Employee}[?]|
 
-    Die Syntax `{Employee}` markiert die Position der Entität innerhalb der Vorlagenäußerung sowie die Entität selbst. 
-
     Entitäten mit Rollen verwenden eine Syntax, die den Rollennamen enthält. Sie werden in einem [separaten Tutorial für Rollen](luis-tutorial-pattern-roles.md) behandelt. 
-
-    Die optionale Syntax (`[]`) markiert Wörter oder Satzzeichen, die optional sind. LUIS gleicht die Äußerung ab und ignoriert dabei den optionalen Text in den Klammern.
 
     Bei der Eingabe der Vorlagenäußerung hilft LUIS Ihnen, die Entität auszufüllen, wenn Sie die linke geschweifte Klammer `{` verwenden.
 
     [![Screenshot der Eingabe von Vorlagenäußerungen für eine Absicht](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. Wählen Sie die Absicht **OrgChart-Reports** aus, geben Sie dann die folgenden Vorlagenäußerungen einzeln ein, und drücken Sie nach jeder Vorlagenäußerung die Eingabetaste:
+4. Wählen Sie die Absicht **OrgChart-Reports** aus, und geben Sie dann die folgende Vorlagenäußerung ein:
 
     |Vorlagenäußerungen|
     |:--|
@@ -427,6 +443,8 @@ Alle diese Äußerungen beinhalten Entitäten, daher entsprechen sie dem gleiche
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Tutorial werden zwei Absichten für Äußerungen hinzugefügt, die ohne Vorliegen vieler Beispieläußerungen schwer mit hoher Genauigkeit vorherzusagen waren. Das Hinzufügen von Mustern zu diesen ermöglichte es LUIS, die Absicht mit einer erheblich höheren Punktzahl besser vorherzusagen. Das Kennzeichnen von Entitäten und ignorierbarem Text ermöglichte LUIS die Anwendung des Musters auf eine größere Vielfalt von Äußerungen.
 
 > [!div class="nextstepaction"]
 > [Verwenden von Rollen mit einem Muster](luis-tutorial-pattern-roles.md)

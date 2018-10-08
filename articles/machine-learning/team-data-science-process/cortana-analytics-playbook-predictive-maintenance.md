@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 816ba560ccb9b06414dff8ffaea054e88d216b10
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7802aa8ea9798b18d5424c2342ba63c01406b25a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972382"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221705"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -232,12 +232,12 @@ Die bisher beschriebenen Schritte zur Datenaufbereitung sollten ergeben, dass di
 
 | Asset-ID | Zeit | <Feature Columns> | Bezeichnung |
 | ---- | ---- | --- | --- |
-| A123 |Tag 1 | zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten. | zu erstellen und zu verwalten. |
-| A123 |Tag 2 | zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten. | zu erstellen und zu verwalten. |
-| ...  |...   | zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten. | zu erstellen und zu verwalten. |
-| B234 |Tag 1 | zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten. | zu erstellen und zu verwalten. |
-| B234 |Tag 2 | zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten. | zu erstellen und zu verwalten. |
-| ...  |...   | zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten. | zu erstellen und zu verwalten. |
+| A123 |Tag 1 | . . . | . |
+| A123 |Tag 2 | . . . | . |
+| ...  |...   | . . . | . |
+| B234 |Tag 1 | . . . | . |
+| B234 |Tag 2 | . . . | . |
+| ...  |...   | . . . | . |
 
 Der letzte Schritt der Featureentwicklung ist die **Bezeichnung** der Zielvariablen. Dieser Prozess richtet sich nach dem Modellierungsverfahren. Das Modellierungsverfahren ist wiederum vom Geschäftsproblem und von der Art der verfügbaren Daten abhängig. Der Prozess der Bezeichnung wird im nächsten Abschnitt beschrieben.
 
@@ -426,19 +426,19 @@ Der letzte Abschnitt dieses Leitfadens enthält eine Liste mit den PdM-Lösungsv
 
 ## <a name="training-resources-for-predictive-maintenance"></a>Schulungsressourcen für Predictive Maintenance
 
-Der [Azure AI-Lernpfad für Predictive Maintenance](https://github.com/Azure/AI-PredictiveMaintenance/blob/master/docs/azure-ai-learning-path-for-predictive-maintenance.md) enthält das Schulungsmaterial zum tieferen Verständnis der Konzepte und Mathematik hinter den Algorithmen und Verfahren, die für PdM-Probleme verwendet werden. 
-
-Für Microsoft Azure werden kostenlose Inhalte und Schulungen zu allgemeinen AI-Konzepten und praktischen Vorgehensweisen angeboten.
+Microsoft Azure bietet Lernpfade für die grundlegenden Konzepte, die hinter PdM-Techniken stehen, außerdem Inhalte, Schulungen und Übungen zu allgemeinen KI-Konzepten.
 
 | Schulungsressource  | Verfügbarkeit |
 |:-------------------|--------------|
+| [Lernpfad für PdM mithilfe von Trees und Random Forest](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Öffentlich | 
+| [Lernpfad für PdM mithilfe von Deep Learning](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Öffentlich |
 | [AI Developer in Azure](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Öffentlich |
 | [Microsoft AI School](http://aischool.microsoft.com/learning-paths) | Öffentlich |
 | [Azure AI-Lernmaterial auf GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Öffentlich |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | Öffentlich |
 | [Microsoft AI – YouTube-Webinars](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Öffentlich |
 | [Microsoft AI-Show](http://channel9.msdn.com/Shows/AI-Show) | Öffentlich |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | Für Microsoft-Partner |
-| [Microsoft Partner Network](http://learningportal.microsoft.com) | Für Microsoft-Partner |
+| [LearnAI@MS](http://learnanalytics.microsoft.com) | Partner |
+| [Microsoft Partner Network](http://learningportal.microsoft.com) | Partner |
 
 Zusätzlich werden kostenlose MOOCs (Massive Open Online Courses) zu AI von akademischen Institutionen wie Stanford und MIT sowie anderen Bildungseinrichtungen angeboten.

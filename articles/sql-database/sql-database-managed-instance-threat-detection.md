@@ -1,25 +1,27 @@
 ---
 title: Bedrohungserkennung – Verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
-description: Die Bedrohungserkennung erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten.
+description: Die Bedrohungserkennung identifiziert anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank in der verwalteten Instanz hinweisen.
 services: sql-database
-author: rmatchoro
-manager: craigg
 ms.service: sql-database
-ms.custom: security, managed instance
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/07/2018
+author: rmatchoro
 ms.author: ronmat
-ms.reviewer: carlrab
-ms.openlocfilehash: 14ef907717045e2e0cf297694d92468a65e57e4d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 7f05bd6c96a8e22b1e039c3edcec491b7c079d54
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650076"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162408"
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Bedrohungserkennung für eine verwaltete Azure SQL-Datenbank-Instanz
 
-Die SQL-Bedrohungserkennung erkennt anomale Aktivitäten, die auf ungewöhnliche und möglicherweise schädliche Versuche hinweisen, bei denen auf Datenbanken in einer verwalteten Azure SQL-Datenbank-Instanz (Vorschauversion) zugegriffen oder diese missbraucht werden sollen.
+Die SQL-Bedrohungserkennung identifiziert anomale Aktivitäten, die auf ungewöhnliche und möglicherweise schädliche Versuche hinweisen, auf Datenbanken in einer verwalteten Azure SQL-Datenbank-Instanz zuzugreifen oder diese missbräuchlich zu verwenden.
 
 ## <a name="overview"></a>Übersicht
 
@@ -33,7 +35,7 @@ Durch die SQL-Bedrohungserkennung werden Warnungen in [Azure Security Center](ht
 1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
 2. Navigieren Sie zur Konfigurationsseite der verwalteten Instanz, die geschützt werden soll. Wählen Sie auf der Seite **Einstellungen** die Option **Bedrohungserkennung** aus. 
 3. Auf der Konfigurationsseite für die Bedrohungserkennung 
-   - Aktivieren **Sie** die Bedrohungserkennung.
+   - **Aktivieren Sie** die Bedrohungserkennung.
    - Konfigurieren Sie die **Liste der E-Mail-Empfänger**, die bei Erkennung anomaler Datenbankaktivitäten Sicherheitswarnungen erhalten sollen.
    - Wählen Sie das **Azure Storage-Konto** aus, in dem Überwachungsdatensätze zu anomalen Bedrohungen gespeichert werden. 
 4.  Klicken Sie auf **Speichern**, um die neue oder aktualisierte Richtlinie für die Bedrohungserkennung zu speichern.

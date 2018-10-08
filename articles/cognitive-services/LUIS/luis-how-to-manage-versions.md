@@ -1,108 +1,66 @@
 ---
-title: Versionsverwaltung in LUIS-Apps in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Versionen in LUIS-Anwendungen (Language Understanding Intelligent Service) verwalten.
+title: Verwalten von Versionen in LUIS-Apps
+titleSuffix: Azure Cognitive Services
+description: Mithilfe von Versionen können Sie verschiedene Modelle erstellen und veröffentlichen. Es ist eine bewährte Methode, das aktuell aktive Modell in eine andere Version der App zu klonen, bevor Änderungen am Modell vorgenommen werden.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 4941cf533f1b860ead07a416d5af6f62a1978305
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: db461191b70aabc322e570ecc814a076c21206f2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226593"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033786"
 ---
 # <a name="manage-versions"></a>Verwalten von Versionen
 
-Jedes Mal, wenn Sie am Modell Änderungen vorgenommen haben, wird eine neue [Version](luis-concept-version.md) der App erstellt. 
+Mithilfe von Versionen können Sie verschiedene Modelle erstellen und veröffentlichen. Es ist eine bewährte Methode, das aktuell aktive Modell in eine andere [Version](luis-concept-version.md) der App zu klonen, bevor Änderungen am Modell vorgenommen werden. 
 
-## <a name="set-active-version"></a>Festlegen der aktiven Version
-Öffnen Sie zum Arbeiten mit Versionen Ihre App, indem Sie den jeweiligen Namen auf der Seite **Meine Apps** und in der oberen Leiste dann **Einstellungen** auswählen.
+Öffnen Sie zum Arbeiten mit Versionen Ihre App, indem Sie den jeweiligen Namen auf der Seite **Meine Apps**, dann in der oberen Leiste **Verwalten** und anschließend im linken Navigationsbereich **Versionen** auswählen. 
 
-![Seite „Versionen“](./media/luis-how-to-manage-versions/settings.png)
+Aus der Liste der Versionen geht hervor, welche Versionen veröffentlicht wurden, wo sie veröffentlicht wurden und welche Version aktuell aktiv ist. 
 
-Auf der Seite **Einstellungen** können Sie Einstellungen für die gesamte App konfigurieren, einschließlich der Versionen und Projektmitarbeiter. 
+[![](./media/luis-how-to-manage-versions/versions-import.png "Abschnitt „Verwalten“, Seite „Versionen“")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>Klonen einer Version
-1. Suchen Sie auf der Seite **Einstellungen** unter den Abschnitten „App-Einstellungen“ > „Projektmitarbeiter“ die Zeile mit der Version, die geklont werden soll. Wählen Sie die Auslassungspunkte (***...*** ) ganz rechts aus. 
 
-    ![Versionszeileneigenschaften](./media/luis-how-to-manage-versions/version-section.png)
+1. Wählen Sie die Version aus, die Sie klonen möchten, und wählen Sie dann auf der Symbolleiste **Klonen** aus. 
 
-2. Wählen Sie ihn in der Liste **Klonen** aus.
-
-    ![Auswahl der Versionszeileneigenschaften](./media/luis-how-to-manage-versions/version-three-dots-modal.png)
-
-3. Geben Sie im Dialogfeld **Version klonen** einen Namen für die neue Version ein, z.B. „0.2“.
+2. Geben Sie im Dialogfeld **Version klonen** einen Namen für die neue Version ein, z.B. „0.2“.
 
    ![Dialogfeld „Version klonen“](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
  
- > [!NOTE]
- > Die Versions-ID darf nur Zeichen, Ziffern oder „.“ enthalten und nicht länger als 10 Zeichen sein.
+     > [!NOTE]
+     > Die Versions-ID darf nur Zeichen, Ziffern oder „.“ enthalten und nicht länger als 10 Zeichen sein.
  
  Eine neue Version mit dem angegebenen Namen wird erstellt und als aktive Version festgelegt.
- 
-  ![Erstellte und zur Liste hinzugefügte Version](./media/luis-how-to-manage-versions/new-version.png)
-
- > [!NOTE]
- > Wie in der vorhergehenden Abbildung zu sehen ist, ist eine veröffentlichte Version mit einer farbigen Markierung versehen, die den Typ des Slots angibt, in dem sie veröffentlicht wurde: Produktion (grün), Staging (rot) und beides (schwarz). Für jede veröffentlichte Version werden die Trainings- und Veröffentlichungsdaten angezeigt.
 
 ## <a name="set-active-version"></a>Festlegen der aktiven Version
-1. Wählen Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts die Auslassungspunkte (***...***) aus.
 
-2. Wählen Sie in der Popupliste **Als aktiv festlegen** aus.
+Wählen Sie in der Liste eine Version und dann auf der Symbolleiste **Aktivieren** aus. 
 
-    ![Festlegen der aktiven Version](./media/luis-how-to-manage-versions/set-active-version.png)
-
-    Die aktive Version wird durch eine hellblaue Farbe hervorgehoben, wie im folgenden Screenshot dargestellt wird:
-
-    ![Die aktive Version](./media/luis-how-to-manage-versions/set-active-version-done.png) 
-
+[![](./media/luis-how-to-manage-versions/versions-other.png "Abschnitt „Verwalten“, Seite „Versionen“")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Importversion
-Eine Version kann aus einer JSON-Datei importiert werden. Nachdem Sie eine Version importiert haben, wird die neue Version die aktive Version.
 
-**So importieren Sie eine Version**
+1. Wählen Sie auf der Symbolleiste **Version importieren** aus. 
 
-1. Klicken Sie auf der Seite **Einstellungen** auf die Schaltfläche **Neue Version importieren**.
+2. Geben Sie im Popupfenster **Neue Version importieren** den neuen, aus zehn Zeichen bestehenden Namen der Version ein. Wenn die Version in der JSON-Datei in der App bereits vorhanden ist, müssen Sie lediglich eine Versions-ID festlegen.
 
-    ![Schaltfläche „Importieren“](./media/luis-how-to-manage-versions/import-version.png)
+    ![Abschnitt „Verwalten“, Seite „Versionen“](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
-2. Klicken Sie auf **Durchsuchen**, und wählen Sie die JSON-Datei.
+    Nachdem Sie eine Version importiert haben, wird die neue Version die aktive Version.
 
-    ![Dialogfeld „Neue Version importieren“](./media/luis-how-to-manage-versions/import-version-dialog.png)
+<a name = "export-version"></a>
 
-Wenn die Version in der JSON-Datei in der App bereits vorhanden ist, müssen Sie lediglich eine Versions-ID festlegen.
+## <a name="other-actions"></a>Andere Aktionen
 
-## <a name="export-version"></a>Exportieren einer Version
-Sie können eine Version in eine JSON-Datei exportieren.
+* Um eine Version zu **löschen**, wählen Sie eine Version in der Liste und dann auf der Symbolleiste **Löschen** aus. Klicken Sie auf **OK**. 
+* Um eine Version **umzubenennen**, wählen Sie eine Version in der Liste und dann auf der Symbolleiste **Umbenennen** aus. Geben Sie den neuen Namen ein, und wählen Sie **Fertig** aus. 
+* Um eine Version zu **exportieren**, wählen Sie eine Version in der Liste und dann auf der Symbolleiste **Exportieren** aus. Die Datei wird auf Ihren lokalen Computer heruntergeladen. 
 
-**So exportieren Sie eine Version**
-
-1. Wählen Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts die Auslassungspunkte (***...***) aus.
-
-2. Wählen Sie in der Popupliste der Aktionen **Exportieren** und dann den Speicherort aus, an dem die Datei gespeichert werden soll.
-
-## <a name="delete-a-version"></a>Löschen einer Version
-Versionen können gelöscht werden, allerdings muss mindestens eine Version der App vorhanden sein. Sie können alle Versionen außer der aktiven Version löschen. 
-
-1. Wählen Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts die Auslassungspunkte (***...***) aus.
-
-2. Wählen Sie in der Popupliste der Aktionen **Löschen** und dann den Speicherort aus, an dem die Datei gespeichert werden soll.
-
-    ![Bestätigung bezüglich der Löschung einer Version](./media/luis-how-to-manage-versions/delete-menu.png) 
-
-
-## <a name="rename-a-version"></a>Umbenennen einer Version
-Versionen können umbenannt werden, sofern der Versionsname noch nicht verwendet wird.  
-
-1. Wählen Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts die Auslassungspunkte (***...***) aus.
-
-2. Wählen Sie in der Popupliste der Aktionen **Umbenennen** aus.
-
-3. Geben Sie den neuen Versionsnamen ein, und klicken Sie auf **Fertig**.
-
-    ![Bestätigung bezüglich der Umbenennung einer Version](./media/luis-how-to-manage-versions/rename-popup.png) 

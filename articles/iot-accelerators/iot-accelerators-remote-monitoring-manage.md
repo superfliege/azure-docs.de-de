@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b1e12ad837def690e55fc501c67d8b2ed5e3cd4d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6e92ef276d270fcc4c351fb89c699c8addd74632
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284610"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222148"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Tutorial: Konfigurieren und Verwalten von Geräten, die mit der Überwachungslösung verbunden sind
 
@@ -144,7 +144,7 @@ Der Contoso-Bediener kann Geräte jetzt basierend auf dem Betriebsteam abfragen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde veranschaulicht, wie Sie die Geräte konfigurieren und verwalten, die mit dem Solution Accelerator für die Remoteüberwachung verbunden sind. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Solution Accelerator zum Identifizieren und Beheben von Problemen mit Ihren verbundenen Geräten verwenden.
+In diesem Tutorial wurde veranschaulicht, wie Sie die Geräte konfigurieren und verwalten, die mit dem Solution Accelerator für die Remoteüberwachung verbunden sind. Um zu erfahren, wie Sie mit dem Solution Accelerator eine Ursachenanalyse für eine unerwartete Warnung durchführen, fahren Sie mit dem nächsten Tutorial fort.
 
 > [!div class="nextstepaction"]
-> [Verwenden von Gerätewarnungen zum Identifizieren und Beheben von Problemen mit Geräten, die mit Ihrer Überwachungslösung verbunden sind](iot-accelerators-remote-monitoring-maintain.md)
+> [Ausführen einer Ursachenanalyse für eine Warnung](iot-accelerators-remote-monitoring-root-cause-analysis.md)

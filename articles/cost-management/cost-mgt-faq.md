@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 2126875a18d4a6581629ea1c8362236242a666a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4984332e1a149ae838bc76a24abec90364f5699e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961024"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221977"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Häufig gestellte Fragen zu Cloudyn
 
@@ -145,7 +145,7 @@ Wenn Clouddienstanbieter aktualisierte Abrechnungsdateien senden, kann dies zu K
 
 Alle Abrechnungsdateien, die von Ihrem Clouddienstanbieter im Laufe des Monats gesendet werden, stellen eine Schätzung Ihrer täglichen Kosten dar. In einigen Fällen werden Daten häufig aktualisiert, mitunter mehrmals täglich. Updates kommen bei AWS häufiger vor als bei Azure. Die Gesamtkosten sollten stabil bleiben, wenn die Abrechnung für den vorherigen Monat abgeschlossen ist und die endgültige Abrechnungsdatei empfangen wurde. Stichtag hierbei ist in der Regel der 10. des Monats.
 
-Änderungen kommen vor, wenn Kostenanpassungen seitens Ihres Clouddienstanbieters vorgenommen werden. Ein Beispiel hierfür ist die Zuteilung von Guthaben. Änderungen können Monate nach dem betreffenden Monat, in dem die Abrechnung abgeschlossen wurde, vorkommen. Änderungen werden immer dann angezeigt, wenn eine Neuberechnung seitens Ihres Clouddienstanbieters vorgenommen wurde. Cloudyn aktualisiert seine Verlaufsdaten, um sicherzustellen, dass alle Anpassungen neu berechnet werden. Darüber hinaus wird überprüft, ob diese Kosten korrekt in den jeweiligen Berichten aufgeführt werden.
+Änderungen kommen vor, wenn Kostenanpassungen seitens Ihres Clouddienstanbieters vorgenommen werden. Ein Beispiel hierfür ist die Zuteilung von Guthaben. Änderungen können Monate nach dem betreffenden Monat, in dem die Abrechnung abgeschlossen wurde, vorkommen. Änderungen werden immer dann angezeigt, wenn eine Neuberechnung seitens Ihres Clouddienstanbieters vorgenommen wurde. Cloudyn aktualisiert seine Verlaufsdaten, um sicherzustellen, dass alle Anpassungen neu berechnet werden. Darüber hinaus wird überprüft, ob die Kosten korrekt in den jeweiligen Berichten aufgeführt werden.
 
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Wie kann ein direkter Cloudlösungsanbieter (CSP) den Cloudyn-Zugriff für Kunden oder Partner eines indirekten CSP konfigurieren?
 

@@ -1,5 +1,5 @@
 ---
-title: Einrichtung von Treibern für die Azure N-Serie unter Windows | Microsoft-Dokumentation
+title: Einrichtung von GPU-Treibern für die Azure N-Serie unter Windows | Microsoft-Dokumentation
 description: Einrichten von NVIDIA-GPU-Treibern für virtuelle Computer der N-Serie unter Windows Server oder Windows in Azure
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50d9ea88afc0e7d96d71b2ab26c8a8489ae41fee
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a4d259c7f9a139b3c31d96e75d588c7be162189c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719648"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033256"
 ---
-# <a name="set-up-gpu-drivers-for-n-series-vms-running-windows"></a>Einrichten von GPU-Treibern für virtuelle Computer der N-Serie unter Windows 
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Windows 
+
 Um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie unter Windows nutzen zu können, müssen NVIDIA-GPU-Treiber installiert werden. Mit der [NVIDIA-GPU-Treibererweiterung](../extensions/hpccompute-gpu-windows.md) werden entsprechende NVIDIA-CUDA- oder GRID-Treiber auf einem virtuellen Computer der N-Serie installiert. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie Azure PowerShell oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Betriebssystemen und Bereitstellungsschritten finden Sie in der [Dokumentation zur NVIDIA-GPU-Treibererweiterung](../extensions/hpccompute-gpu-windows.md).
 
 Wenn Sie GPU-Treiber manuell installieren möchten, finden Sie in diesem Artikel Informationen zu unterstützten Betriebssystemen und Treibern sowie Schritte zur Installation und Überprüfung. Informationen zur manuellen Einrichtung von Treibern stehen auch für [Linux-VMs](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zur Verfügung.
@@ -38,7 +39,7 @@ Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details
 
 2. Laden Sie den unterstützten Treiber für Ihr Windows-Betriebssystem herunter, entpacken und installieren Sie ihn.
 
-Auf virtuellen Azure NV-Computern ist nach der Treiberinstallation ein Neustart erforderlich. Für virtuelle NC-Computer ist kein Neustart erforderlich.
+Nach der GRID-Treiberinstallation auf einer VM ist ein Neustart erforderlich. Nach der CUDA-Treiberinstallation ist kein Neustart erforderlich.
 
 ## <a name="verify-driver-installation"></a>Überprüfen der Treiberinstallation
 
@@ -64,7 +65,7 @@ So installieren Sie die neueste Version (1.1) der HpcVMDrivers-Erweiterung auf e
   ```
   Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer für Windows](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Das RDMA-Netzwerk unterstützt Message Passing Interface-Datenverkehr (MPI) für Anwendungen mit [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) oder Intel MPI 5.x. 
+Das RDMA-Netzwerk unterstützt Message Passing Interface-Datenverkehr (MPI) für Anwendungen mit [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) oder Intel MPI 5.x. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

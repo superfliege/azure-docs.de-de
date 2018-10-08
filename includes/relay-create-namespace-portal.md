@@ -1,5 +1,5 @@
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
-2. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen**. Klicken Sie anschließend auf **Unternehmensintegration** > **Relay**.
+2. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen**. Wählen Sie dann **Integration** > **Relay** aus. Wenn **Relay** in der Liste nicht angezeigt wird, klicken Sie in der oberen rechten Ecke auf **Alle anzeigen**. 
 3. Geben Sie unter **Namespace erstellen** einen Namespacenamen ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
 4. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
 5. Wählen Sie im Feld [Ressourcengruppe](../articles/azure-resource-manager/resource-group-portal.md) eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.  

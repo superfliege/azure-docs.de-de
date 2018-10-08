@@ -1,20 +1,21 @@
 ---
-title: Grundlegendes zu den Features in LUIS-Apps in Azure | Microsoft-Dokumentation
-description: Erfahren Sie etwas über die Features zur Verbesserung der Leistung von LUIS-Apps. Zu den Features gehören Ausdruckslisten und Muster für die Erkennung regulärer Ausdrücke.
+title: Features in LUIS-Apps in Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
+description: Fügen Sie einem Sprachmodell Features hinzu, um Hinweise zur Erkennung von Eingaben, die Sie bezeichnen oder klassifizieren möchten, bereitzustellen. Features helfen LUIS bei der Erkennung von Absichten und Entitäten.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8d3f006f27d1d728f89458deba27e1c1a63b6de5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 015679b6020e9d2a4d702f9d6e723ecd9499d8dc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224927"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034466"
 ---
 # <a name="phrase-list-features-in-luis"></a>Features für Ausdruckslisten in LUIS
 

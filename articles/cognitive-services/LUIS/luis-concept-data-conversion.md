@@ -1,23 +1,24 @@
 ---
-title: Grundlagen der Konzepte zur Datenkonvertierung in LUIS – Azure | Microsoft Docs
+title: Konzepte zur Datenkonvertierung in LUIS – Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Äußerungen vor der Vorhersage in Language Understanding (LUIS) geändert werden können.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 05a02191af171936dd9f5c4bf469b9c84aa144a3
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3862a0dbd94b5764cf506b05201d8dc60430fc7d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223700"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038968"
 ---
 # <a name="data-conversion-concepts-in-luis"></a>Konzepte zur Datenkonvertierung in LUIS
-LUIS stellt ein Verfahren zum Konvertieren von Äußerungen vor der Vorhersage aus gesprochenen Äußerungen in Textäußerungen zur Verfügung. 
+LUIS verwendet den Cognitive Services-Sprachdienst zum Konvertieren von Äußerungen aus gesprochenen Äußerungen in Textäußerungen vor der Vorhersage. 
 
 ## <a name="speech-to-intent-conversion-concepts"></a>Konzepte zur Sprache-Absichts-Umsetzung
 Die Sprache-Absichts-Umsetzung in LUIS ermöglicht es Ihnen, gesprochene Äußerungen an einen Endpunkt zu senden und als Antwort eine LUIS-Vorhersage zu erhalten. Dieser Vorgang stellt eine Integration des [Sprachverständnis](https://docs.microsoft.com/azure/cognitive-services/Speech)-Diensts in LUIS dar. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: f2b6ba4b7faaeb7092c24d964d32c69946264906
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 229f3dd11a90c4f6d65c9cae2a5dd3447eedf83e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023292"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225258"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -299,7 +299,7 @@ subscriptionId | Azure-Abonnement für den virtuellen Computer | 2017-08-01
 tags | [Tags](../../azure-resource-manager/resource-group-using-tags.md) für den virtuellen Computer  | 2017-08-01
 resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01
 placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
-Tarif | [Tarif] (https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#plan) für einen virtuellen Computer im Azure Marketplace-Image, enthält Name, Produkt und Herausgeber) | 2017-04-02
+Tarif | [Tarif] (https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#plan) für einen virtuellen Computer im Azure Marketplace-Image, enthält Name, Produkt und Herausgeber | 2017-04-02
 publicKeys | Sammlung von öffentlichen Schlüsseln [https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#sshpublickey], dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2017-04-02
 vmScaleSetName | [Name der VM-Skalierungsgruppe] (../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) Ihrer VM-Skalierungsgruppe | 2017-12-01
 Zone | [Verfügbarkeitszone](../../availability-zones/az-overview.md) Ihres virtuellen Computers | 2017-12-01 
@@ -380,9 +380,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 }
 ```
 
-### <a name="getting-azure-environment-where-the-vm-is-running"></a>Abrufen der Azure-Umgebung, in welcher der virtuelle Computer ausgeführt wird 
+### <a name="getting-azure-environment-where-the-vm-is-running"></a>Abrufen der Azure-Umgebung, in der die VM ausgeführt wird 
 
-Azure verfügt über verschiedene Sovereign Clouds wie [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Daher müssen Sie in einigen Fällen die Azure-Umgebung auswählen, um bestimmte Laufzeitentscheidungen zu treffen. Im folgenden Beispiel wird gezeigt, wie Sie dies erreichen können.
+Azure verfügt über verschiedene Sovereign Clouds wie [Azure Government](https://azure.microsoft.com/overview/clouds/government/). In manchen Fällen muss die Azure-Umgebung gewisse Laufzeitentscheidungen treffen. Im folgenden Beispiel wird gezeigt, wie Sie dies erreichen können.
 
 **Anforderung**
 
@@ -448,7 +448,7 @@ Puppet | https://github.com/keirans/azuremetadata
 9. Ich erhalte ein Anforderungstimeout für den Aufruf des Diensts.
    * Metadatenaufrufe müssen von der primären IP-Adresse erfolgen, die der Netzwerkkarte des virtuellen Computers zugewiesen ist. Wenn Sie außerdem Ihre Routen geändert haben, muss eine Route für die Adresse 169.254.0.0/16 von Ihrer Netzwerkkarte aus vorhanden sein.
 10. Ich habe meine Tags in der Skalierungsgruppe für virtuelle Computer aktualisiert, aber sie werden im Gegensatz zu VMs nicht in den Instanzen angezeigt.
-   * Derzeit werden Skalierungsgruppen Tags dem virtuellen Computer nur nach einem Neustart, einer Neuerstellung des Images oder der Änderung eines Datenträgers für die Instanz angezeigt. 
+   * Derzeit werden Skalierungsgruppen Tags zu dem virtuellen Computer nur nach einem Neustart, einer Neuerstellung des Images oder der Änderung eines Datenträgers für die Instanz angezeigt. 
 
    ![Instanzmetadatenunterstützung](./media/instance-metadata-service/InstanceMetadata-support.png)
     

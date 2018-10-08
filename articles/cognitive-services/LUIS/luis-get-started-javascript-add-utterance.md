@@ -1,20 +1,21 @@
 ---
-title: 'Schnellstart: Hinzufügen von Äußerungen zu einer LUIS-App mit JavaScript – Azure Cognitive Services | Microsoft-Dokumentation'
+title: 'JavaScript-Schnellstartanleitung: Ändern des Modells und Trainieren einer LUIS-App'
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine LUIS-App mithilfe von JavaScript aufrufen.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0920a194d3e9c93883b88b7131f7e81dc8fb3302
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 38e25b0634b53f4fcc0507091e78ab49b29c8d38
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159689"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033395"
 ---
 # <a name="quickstart-change-model-using-javascript"></a>Schnellstart: Ändern des Modells mit JavaScript
 

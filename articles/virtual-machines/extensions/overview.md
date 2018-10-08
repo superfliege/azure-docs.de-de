@@ -3,7 +3,7 @@ title: Erweiterungen und Features für virtuelle Azure-Computer | Microsoft-Doku
 description: Es wird beschrieben, was Erweiterungen für virtuelle Azure-Computer sind und wie Sie sie mit virtuellen Azure-Computern verwenden.
 services: virtual-machines-linux
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: ec201f7f82aea97b9927b85a6b185fad51f6081d
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 38f885cc230df6e0edb1e5b5254faf0cd519847a
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412599"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451442"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Erweiterungen und Features für virtuelle Azure-Computer
 Erweiterungen für virtuelle Azure-Computer sind kleine Anwendungen, mit denen die Erfüllung von Aufgaben zur Konfiguration und Automatisierung nach der Bereitstellung auf virtuellen Azure-Computern ermöglicht wird. Sie können vorhandene Bilder verwenden und diese dann als Teil Ihrer Bereitstellungen anpassen, sodass Sie keine benutzerdefinierten Images mehr erstellen müssen.
@@ -41,7 +41,7 @@ Erweiterungen können mit einer neuen VM-Bereitstellung gebündelt werden. Beisp
 Sie können verfügbare Erweiterungen im Portal auf dem Blatt der VM unter „Erweiterungen“ anzeigen. Dies ist aber nur ein kleiner Ausschnitt. Sie können die vollständige Liste anzeigen, indem Sie die CLI-Tools verwenden (siehe [VM-Erweiterungen und -Features für Linux](features-linux.md) und [VM-Erweiterungen und -Features für Windows](features-windows.md)).
 
 ## <a name="how-can-i-install-an-extension"></a>Wie kann ich eine Erweiterung installieren?
-Azure VM-Erweiterungen können per Azure CLI 2.0, Azure PowerShell, Azure Resource Manager-Vorlage und Azure-Portal verwaltet werden. Zum Ausprobieren einer Erweiterung können Sie im Azure-Portal die Erweiterung „Benutzerdefiniertes Skript“ auswählen, einen Befehl bzw. ein Skript übergeben und die Erweiterungen ausführen.
+Azure VM-Erweiterungen können über Azure PowerShell, Azure Resource Manager-Vorlagen, die Azure CLI und das Azure-Portal verwaltet werden. Zum Ausprobieren einer Erweiterung können Sie im Azure-Portal die Erweiterung „Benutzerdefiniertes Skript“ auswählen, einen Befehl bzw. ein Skript übergeben und die Erweiterungen ausführen.
 
 Wenn Sie dieselbe Erweiterung, die Sie im Portal hinzugefügt haben, für die CLI oder eine Resource Manager-Vorlage verwenden möchten, hilft Ihnen beispielsweise die Dokumentation zu Erweiterungen unter [Custom Script Extension for Windows](custom-script-windows.md) (Erweiterung „Benutzerdefiniertes Skript“ für Windows) und [Use the Azure Custom Script Extension Version 2 with Linux virtual machines](custom-script-linux.md) (Verwenden der Azure-Erweiterung „Benutzerdefiniertes Skript“ Version 2 mit virtuellen Linux-Computern) weiter.
 

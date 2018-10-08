@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 4af2e570b498e496e80b6aeee2b8aeae23c582cc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952408"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452301"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Auswählen und Verwenden eines Computeziels zum Trainieren Ihres Modells
 
@@ -90,6 +90,8 @@ run_config_user_managed.environment.python.user_managed_dependencies = True
 # You can choose a specific Python environment by pointing to a Python path 
 #run_config.environment.python.interpreter_path = '/home/ninghai/miniconda3/envs/sdk2/bin/python'
 ```
+
+Ein Jupyter-Notebook, das das Training in einer vom Benutzer verwalteten Umgebung veranschaulicht, finden Sie unter [https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb).
   
 ### <a name="system-managed-environment"></a>Vom System verwaltete Umgebung
 
@@ -110,6 +112,9 @@ run_config_system_managed.prepare_environment = True
 
 run_config_system_managed.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 ```
+
+Ein Jupyter-Notebook, das das Training in einer vom System verwalteten Umgebung veranschaulicht, finden Sie unter [https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb).
+
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
 Der lokale Computer verfügt möglicherweise nicht über die Compute- oder GPU-Ressourcen, die zum Trainieren des Modells erforderlich sind. In diesem Fall können Sie den Trainingsprozess hoch- oder herunterskalieren, indem Sie zusätzliche Computeziele wie etwa Data Science Virtual Machines (DSVM) hinzufügen.
@@ -190,6 +195,8 @@ Die folgenden Schritte verwenden das SDK zum Konfigurieren einer Data Science Vi
     dsvm_compute.delete()
     ```
 
+Ein Jupyter-Notebook, das das Training auf einer Data Science-VM veranschaulicht, finden Sie unter [https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb).
+
 ## <a id="batch"></a>Azure Batch AI
 
 Wenn das Trainieren Ihres Modells einen langen Zeitraum in Anspruch nimmt, können Sie Azure Batch AI zum Verteilen des Trainings in einem Cluster von Computeressourcen in der Cloud verwenden. Batch AI kann auch zum Aktivieren einer GPU-Ressource konfiguriert werden.
@@ -232,7 +239,7 @@ if not found:
     print(compute_target.status.serialize())
 ```
 
-Zum Anfügen eines vorhandenen Batch AI-Clusters als Computeziel müssen Sie die Azure-Ressourcen-ID angeben. Zum Abrufen der Ressourcen-ID im Azure-Portal, müssen Sie folgende Schritte ausführen:
+Zum Anfügen eines vorhandenen Batch AI-Clusters als Computeziel müssen Sie die Azure-Ressourcen-ID angeben. Führen Sie zum Abrufen der Ressourcen-ID beim Azure-Portal die folgenden Schritte aus:
 1. Suchen Sie nach dem Dienst `Batch AI` unter **Alle Dienste**
 1. Klicken Sie auf den Namen des Arbeitsbereichs, zu dem Ihr Cluster gehört.
 1. Wählen Sie den Cluster aus.
@@ -254,6 +261,8 @@ Sie können den Batch AI-Cluster und den Auftragsstatus mithilfe der folgenden A
 - Überprüfen Sie den Auftragsstatus. Mithilfe von `az batchai job list` können Sie anzeigen, wie viele Aufträge ausgeführt werden.
 
 Das Erstellen des Batch AI-Clusters dauert ca. fünf Minuten.
+
+Ein Jupyter-Notebook, das das Training in einem Batch AI-Cluster veranschaulicht, finden Sie unter [https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb).
 
 ## <a name='aci'></a>Azure Container Instance (ACI)
 
@@ -296,6 +305,8 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
 ```
 
 Das Erstellen eines ACI-Computeziels dauert zwischen einigen Sekunden bis zu einigen Minuten.
+
+Ein Jupyter-Notebook, das das Training in einer Azure Container Instance veranschaulicht, finden Sie unter [https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb).
 
 ## <a id="hdinsight"></a>Anfügen eines HDInsight-Clusters 
 
@@ -352,6 +363,8 @@ run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
+Ein Jupyter-Notebook, das das Training mit Spark auf HDInsight veranschaulicht, finden Sie unter [https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb).
+
 ## <a name="view-and-set-up-compute-using-the-azure-portal"></a>Computeanzeige und -einrichtung mithilfe des Azure-Portals
 
 Sie können anzeigen, welche Computeziele Ihrem Arbeitsbereich aus dem Azure-Portal zugeordnet sind. Führen Sie die folgenden Schritte aus, um die Liste abzurufen:
@@ -403,6 +416,7 @@ Führen Sie die oben genannten Schritte aus, um eine Liste von Computezielen anz
 Die folgenden Notebooks verdeutlichen die Konzepte in diesem Artikel:
 * `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
 * `01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb`
+* `01.getting-started/03.train-on-aci/03.train-on-aci.ipynb`
 * `01.getting-started/05.train-in-spark/05.train-in-spark.ipynb`
 * `01.getting-started/07.hyperdrive-with-sklearn/07.hyperdrive-with-sklearn.ipynb`
 

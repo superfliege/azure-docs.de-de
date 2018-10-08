@@ -1,25 +1,26 @@
 ---
-title: Hinzufügen von Absichten in LUIS-Anwendungen | Microsoft-Dokumentation
-description: Verwenden Sie Language Understanding Intelligent Service (LUIS) zum Hinzufügen von Absichten, mit denen Apps Benutzeranforderungen besser verstehen und ordnungsgemäß auf sie reagieren können.
+title: Hinzufügen von Absichten in LUIS-Anwendungen
+titleSuffix: Azure Cognitive Services
+description: Fügen Sie Ihrer LUIS-App Absichten hinzu, um Gruppen von Fragen oder Befehlen zu identifizieren, die den gleichen Zweck verfolgen.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0ebf15ea49467674ab3c56aa7983131593cf5c9a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 9b7207a16a89e48ad64b2dbc48a5293d0cf8aa25
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225885"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036081"
 ---
 # <a name="manage-intents"></a>Verwalten von Absichten 
 Fügen Sie Ihrer LUIS-App [Absichten](luis-concept-intent.md) hinzu, um Gruppen von Fragen oder Befehlen zu identifizieren, die den gleichen Zweck verfolgen. 
 
-Sie verwalten Ihre Absichten auf der Seite **Intents** (Absichten), die über **Intents** im linken Bereich von LUIS verfügbar ist, und fügen sie auch dort hinzu. 
+Absichten werden im Abschnitt **Erstellen** in der oberen Symbolleiste verwaltet. Sie verwalten Ihre Absichten auf der Seite **Intents** (Absichten), auf die Sie über das linke Panel zugreifen können. 
 
 Das folgende Verfahren veranschaulicht, wie Sie die Absicht „BookFlight“ in der TravelAgent-App hinzufügen.
 
@@ -28,7 +29,6 @@ Das folgende Verfahren veranschaulicht, wie Sie die Absicht „BookFlight“ in 
 1. Öffnen Sie die App (z.B. TravelAgent), indem Sie auf der Seite **Meine Apps** auf ihren Namen klicken, und klicken Sie dann im linken Bereich auf **Intents** (Absichten). 
 2. Klicken Sie auf der Seite **Intents** (Absichten) auf **Create new Intent** (Neue Absicht erstellen).
 
-    ![Liste der Absichten](./media/luis-how-to-add-intents/IntentsList.png)
 3. Geben Sie im Dialogfeld **Create new Intent** (Neue Absicht erstellen) den Namen „BookFlight“ für die Absicht ein, und klicken Sie auf **Fertig**.
 
     ![Hinzufügen einer Absicht](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
@@ -105,7 +105,7 @@ So löschen Sie mehrere Äußerungen
 2. Wählen Sie im Popupdialogfeld **Delete utterances?** (Äußerungen löschen?) die Option **Fertig** aus.
 
 ## <a name="search-in-utterances-on-intent-page"></a>Suchen in Äußerungen auf der Seite der Absicht
-Sie können in einer Absicht nach Äußerungen suchen, die Text (Wörter oder Ausdrücke) enthalten. Beispielsweise fällt Ihnen möglicherweise ein Fehler im Zusammenhang mit einem bestimmten Wort auf, und Sie möchten alle Beispiele suchen, die dieses Wort enthalten. 
+Sie können innerhalb der Äußerungsliste einer Absicht nach Äußerungen suchen, die Text (Wörter oder Ausdrücke) enthalten. Beispielsweise fällt Ihnen möglicherweise ein Fehler im Zusammenhang mit einem bestimmten Wort auf, und Sie möchten alle Beispiele suchen, die dieses Wort enthalten. 
 
 1. Wählen Sie auf der Symbolleiste das Lupensymbol aus.
 

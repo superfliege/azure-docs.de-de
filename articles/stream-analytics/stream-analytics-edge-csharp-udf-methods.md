@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9aa61e95eb808c38646fa9b8cefd4004f5477ee6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2b6dfe7c8f8ac8d7207659b848abecd04f56c232
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974662"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181441"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics-Edge-Aufträge (Vorschau)
 
@@ -31,7 +31,7 @@ Zum Implementieren von UDFs stehen drei Methoden zur Auswahl:
 
 ## <a name="package-path"></a>Paketpfad
 
-Der Pfad aller UDF-Pakete hat das Format `/UserCustomCode/CLR/*`. Dynamic Link Libraries (DLLs) und Ressourcen werden in den Ordner `/UserCustomCode/CLR/*` kopiert. Damit werden die Benutzer-DLLs von den System- und Azure Stream Analytics-DLLs isoliert.
+Der Pfad aller UDF-Pakete hat das Format `/UserCustomCode/CLR/*`. Dynamic Link Libraries (DLLs) und Ressourcen werden in den Ordner `/UserCustomCode/CLR/*` kopiert. Damit werden die Benutzer-DLLs von den System- und Azure Stream Analytics-DLLs isoliert. Dieser Paketpfad wird für alle Funktionen genutzt, unabhängig davon, mit welcher Methode sie verwendet werden.
 
 ## <a name="supported-types-and-mapping"></a>Unterstützte Typen und Zuordnungen
 
@@ -59,10 +59,10 @@ So verweisen Sie auf ein lokales Projekt
 
 1. Erstellen Sie eine neue Klassenbibliothek in Ihrer Projektmappe.
 2. Schreiben Sie Code in Ihrer Klasse. Beachten Sie, dass die Klassen als *öffentlich* und die Objekte als *statisch öffentlich* definiert werden müssen. 
-3. Erstellen Sie Ihr Projekt.
+3. Erstellen Sie Ihr Projekt. Die Tools verpacken alle Artefakte im Papierkorbordner als ZIP-Datei und laden die ZIP-Datei im Speicherkonto hoch. Verwenden Sie für externe Referenzen die Assemblyreferenz anstelle des NuGet-Pakets.
 4. Verweisen Sie in Ihrem Azure Stream Analytics-Projekt auf die neue Klasse.
 5. Fügen Sie in Ihrem Azure Stream Analytics-Projekt eine neue Funktion hinzu.
-6. Konfigurieren Sie den Pfad der Assembly in der Konfigurationsdatei des Auftrags (`EdgeJobConfig.json`).
+6. Konfigurieren Sie den Pfad der Assembly in der Konfigurationsdatei des Auftrags (`JobConfig.json`). Legen Sie den Assemblypfad auf **Verweis auf lokales Projekt oder CodeBehind** fest.
 7. Erstellen Sie sowohl das Funktionsprojekt als auch das Azure Stream Analytics-Projekt neu.  
 
 ### <a name="example"></a>Beispiel
@@ -109,19 +109,19 @@ Sie können .NET Standard-UDFs in einer IDE Ihrer Wahl erstellen und sie dann ü
 
 Nachdem die ZIP-Pakete der Assembly in Ihr Azure Storage-Konto hochgeladen wurden, können Sie die Funktionen in Azure Stream Analytics-Abfragen verwenden. Sie müssen lediglich die Storage-Informationen in der Konfiguration des Stream Analytics-Edge-Auftrags einfügen. Sie können die Funktion mit dieser Option nicht lokal testen, da Ihr Paket von den Visual Studio-Tools nicht herunterladen wird. Der Paketpfad wird vom Dienst analysiert. 
 
-So konfigurieren Sie den Pfad der Assembly in der Konfigurationsdatei des Auftrags („EdgeJobConfig.json“)
+Konfigurieren Sie den Assemblypfad in der Konfigurationsdatei des Auftrags (`JobConfig.json`).
 
 Erweitern Sie den Abschnitt mit der **benutzerdefinierten Codekonfiguration**, und geben Sie die folgenden vorgeschlagenen Werte für die Konfiguration an:
 
  |**Einstellung**  |**Empfohlener Wert**  |
  |---------|---------|
- |Assemblyquelle  |  Lokaler Projektverweis oder CodeBehind   |
+ |Assemblyquelle  | Vorhandene Assemblypakete aus der Cloud.    |
  |Ressource  |  Wählen Sie Daten aus dem aktuellem Konto aus.   |
  |Abonnement  |  Wählen Sie Ihr Abonnement aus.   |
  |Speicherkonto  |  Wählen Sie Ihr Speicherkonto aus.   |
  |Container  |  Wählen Sie den Container aus, den Sie in Ihrem Speicherkonto erstellt haben.   |
 
-    ![Azure Stream Analytics Edge job configuration in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
+![Auftragskonfiguration für Azure Stream Analytics auf IoT Edge in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
 
 ## <a name="limitations"></a>Einschränkungen
 Für die Vorschauversion für benutzerdefinierte Funktionen gelten derzeit folgende Einschränkungen:

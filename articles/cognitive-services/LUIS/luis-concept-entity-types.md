@@ -1,20 +1,21 @@
 ---
-title: Grundlegendes zu den Entitätstypen in LUIS-Apps in Azure | Microsoft-Dokumentation
+title: Entitätstypen in LUIS-Apps – Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Hinzufügen von Entitäten (Schlüsseldaten in Ihrer Anwendungsdomäne) in LUIS-Apps (Language Understanding Intelligent Service)
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b0b5852a223a77e33a288bb8061c1ce374018ec1
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 3ed10ac428b7ce2e528ccf46e34c1d394523bdec
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282278"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042447"
 ---
 # <a name="entities-in-luis"></a>Entitäten in LUIS
 
@@ -45,10 +46,10 @@ Wenn die Wortauswahl oder die Anordnung der Wörter identisch ist, sie aber nich
 
 In den folgenden Äußerungen ist das Wort `fair` ein Homograph. Die Schreibweise ist identisch, aber die Bedeutung ist eine andere:
 
-```
-What kind of county fairs are happening in the Seattle area this summer?
-Is the current rating for the Seattle review fair?
-```
+|Äußerung|
+|--|
+|Welche Arten von Jahrmärkten finden in diesem Sommer in der Region Seattle statt?|
+|Ist die aktuelle Bewertung für die Seattle-Rezension fair?|
 
 Wenn Sie mit einer Veranstaltungsentität alle Veranstaltungsdaten suchen möchten, bezeichnen Sie das Wort `fair` in der ersten Äußerung, aber nicht in der zweiten.
 

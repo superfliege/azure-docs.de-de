@@ -3,18 +3,22 @@ title: Includedatei
 description: Includedatei
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 07/26/2018
+ms.date: 08/06/2018
 ms.author: diberry
-ms.openlocfilehash: 3aefde0185ad29d9735d3dde6d04423e7425b583
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: a7d8deda7674cfb44c2e268a32d78f04b53580a2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163770"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47105811"
 ---
-Wählen Sie unten auf der Seite **Publish** (Veröffentlichen) den Link **endpoint** (Endpunkt) aus. Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
+Wählen Sie auf der Seite **Schlüssel und Endpunkte** (linkes Menü) im Abschnitt **Verwalten** (Menü oben rechts) die **Endpunkt-URL** unten auf der Seite aus. Hierdurch wird eine weitere Browserregisterkarte mit der Endpunkt-URL in der Adressleiste geöffnet. 
+
+Die Endpunkt-URL sieht etwa so aus: `https://<region>.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<YOUR_KEY>&<optional-name-value-pairs>&q=<user-utterance-text>`.
+
+ 

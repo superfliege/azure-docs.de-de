@@ -1,20 +1,21 @@
 ---
-title: Grundlegendes zur iterativen Erstellung von LUIS-Apps – Azure | Microsoft-Dokumentation
-description: LUIS-Apps erfordern den Entwurf von Iterationen zum Trainieren von LUIS für eine optimale Datenextraktion.
+title: Iterative App-Entwicklung in Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: LUIS lernt am besten in einem iterativen Zyklus aus Modelländerungen, Äußerungsbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen.  LUIS-Apps erfordern den Entwurf von Iterationen zum Trainieren von LUIS für eine optimale Datenextraktion.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 947350a1d0dcfb0caaca654768c3660fc1b146e1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 05f5ceb5a0f3529d7635f7aae0c3c41c19f0b1ad
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225440"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031950"
 ---
 # <a name="authoring-cycle"></a>Erstellungszyklus
 LUIS lernt am besten in einem iterativen Zyklus aus Modelländerungen, Äußerungsbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen. 
@@ -32,15 +33,12 @@ Das Modell enthält die Absicht und Entitäten.
 LUIS benötigt Beispieläußerungen in Absichten. Für die Beispiele sind ausreichend viele Variationen bei der Wortauswahl und Wortreihenfolge erforderlich, um die Absicht der Äußerung zu bestimmen. Bei sämtlichen Beispieläußerung müssen alle erforderlichen Daten als Entitäten bezeichnet sein. 
 
 Sie weisen LUIS an, Äußerungen zu ignorieren, die für Ihre App-Domäne nicht relevant sind, indem Sie die Äußerung der Absicht **None** zuweisen. Alle Wörter oder Ausdrücke, die nicht aus einer Äußerung gepullt werden sollen, müssen nicht bezeichnet werden. Es sind keine Bezeichnungen für Wörter oder Ausdrücke erforderlich, die ignoriert werden sollen. 
-<!--
-## Not just yet
-Do not add features such as a [phrase list](luis-concept-feature.md) feature in your first cycle. Phrase lists are phrases that would be specific to your app's subject area.  
--->
+
 ## <a name="train-and-publish-the-app"></a>Trainieren und Veröffentlichen der App
-Wenn Sie zu jeder Absicht 10 bis 15 Äußerungen haben und die erforderlichen Entitäten mit Bezeichnungen versehen sind, trainieren Sie LUIS und führen dann die Veröffentlichung durch, um Ihre Endpunkte zu erhalten. Stellen Sie sicher, dass Ihre App erstellt und veröffentlicht wurde, damit sie in den [Endpunktregionen](luis-reference-regions.md) verfügbar ist. 
+Wenn Sie zu jeder Absicht 10 bis 15 verschiedene Äußerungen haben und die erforderlichen Entitäten mit Bezeichnungen versehen sind, können Sie trainieren und veröffentlichen. Verwenden Sie den Link aus der Veröffentlichungsbenachrichtigung, um zu Ihren Endpunkten zu gelangen. Stellen Sie sicher, dass Ihre App erstellt und veröffentlicht wurde, damit sie in den [Endpunktregionen](luis-reference-regions.md) verfügbar ist. 
 
 ## <a name="https-endpoint-testing"></a>HTTPS-Tests an Endpunkten
-Sie können Ihre LUIS-App von dem auf der Seite **[Veröffentlichen](luis-how-to-publish-app.md)** aufgeführten HTTPS-Endpunkt aus testen. Durch Tests vom Endpunkt kann LUIS alle Äußerungen mit niedrigen Zuverlässigkeitswerten zur Überprüfung auswählen.  
+Sie können Ihre LUIS-App von dem HTTPS-Endpunkt aus testen. Durch Tests vom Endpunkt kann LUIS alle Äußerungen mit niedrigen Zuverlässigkeitswerten zur Überprüfung auswählen.  
 
 ## <a name="recycle"></a>Recyceln
 Wenn Sie einen Erstellungszyklus abgeschlossen haben, können Sie erneut beginnen. Starten Sie mit dem Überprüfen der Endpunktäußerungen, die LUIS mit niedrigen Zuverlässigkeitswerten gekennzeichnet hat. Überprüfen Sie diese Äußerungen auf Absichten und Entitäten. Nach dem Überprüfen der Äußerungen sollte die Prüfliste leer sein.  

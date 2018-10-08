@@ -1,24 +1,24 @@
 ---
 title: 'Tutorial: Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning'
-description: Erfahren Sie, wie Sie ein scikit-learn-Bildklassifizierungsmodell mit einem Python Jupyter Notebook trainieren. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe.
-author: hning86
-ms.author: haining
-ms.topic: conceptual
+description: Dieses Tutorial zeigt, wie Sie mit Azure Machine Learning Service ein Bildklassifizierungsmodell mit scikit-learn in einem Python Jupyter Notebook trainieren. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
+ms.topic: tutorial
+author: hning86
+ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: bed4abcce3019607715416b5194a2ddecc89b76a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6fbca5e83d8ab4b3c34c6448c7a2303697da623b
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966610"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181397"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning"></a>Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning
 
-In diesem Tutorial wird ein Machine Learning-Modell sowohl lokal als auch auf Remotecomputeressourcen traininert. Hierbei wird der Trainings- und Bereitstellungsworkflow für den Azure Machine Learning-Dienst in einem Python Jupyter Notebook verwendet.  Anschließend können Sie das Notebook als Vorlage verwenden, um Ihr eigenes Machine Learning-Modell mit Ihren eigenen Daten zu trainieren. Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**.  
+In diesem Tutorial wird ein Machine Learning-Modell sowohl lokal als auch auf Remotecomputeressourcen traininert. Hierbei wird der Trainings- und Bereitstellungsworkflow für Azure Machine Learning Service (Vorschau) in einem Python Jupyter Notebook verwendet.  Anschließend können Sie das Notebook als Vorlage verwenden, um Ihr eigenes Machine Learning-Modell mit Ihren eigenen Daten zu trainieren. Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**.  
 
 In diesem Tutorial wird eine einfache logistische Regression anhand des [MNIST](http://yann.lecun.com/exdb/mnist/)-Datasets und [scikit-learn](http://scikit-learn.org) mit Azure Machine Learning trainiert.  MNIST ist ein populäres Dataset, das aus 70.000 Graustufenbildern besteht. Jedes Bild ist eine handgeschriebene Ziffer von 0 bis 9 im Format von 28 × 28 Pixeln. Das Ziel besteht darin, einen Multiklassen-Klassifizierer zu erstellen, um die in einem bestimmten Bild dargestellte Ziffer zu erkennen. 
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="get-the-notebook"></a>Abrufen des Notebooks
 
-Dieses Tutorial steht Ihnen auch als Jupyter Notebook zur Verfügung. Verwenden Sie eine dieser Methoden zum Ausführen des `tutorials/01.train-models.ipynb` Notebooks:
+Dieses Tutorial steht Ihnen auch als Jupyter Notebook zur Verfügung. Verwenden Sie eine der beiden folgenden Methoden, um die [Machine Learning-Beispielnotebooks im GitHub-Repository](https://github.com/Azure/MachineLearningNotebooks) zu klonen und das Notebook `tutorials/01.train-models.ipynb` auszuführen:
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -79,7 +79,7 @@ print(ws.name, ws.location, ws.resource_group, ws.location, sep = '\t')
 
 ### <a name="create-experiment"></a>Erstellen eines Experiments
 
-Erstellen Sie ein Experiment, um alle Ausführungen in Ihrem Arbeitsbereich zu verfolgen.  
+Erstellen Sie ein Experiment, um die Ausführungen in Ihrem Arbeitsbereich nachzuverfolgen. Ein Arbeitsbereich kann über mehrere Experimente verfügen. 
 
 ```python
 experiment_name = 'sklearn-mnist'
@@ -105,7 +105,7 @@ batchai_cluster_name = "traincluster"
 try:
     # look for the existing cluster by name
     compute_target = ComputeTarget(workspace=ws, name=batchai_cluster_name)
-    if compute_target is BatchAiCompute:
+    if type(compute_target) is BatchAiCompute:
         print('found compute target {}, just use it.'.format(batchai_cluster_name))
     else:
         print('{} exists but it is not a Batch AI cluster. Please choose a different name.'.format(batchai_cluster_name))
@@ -157,7 +157,7 @@ urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ub
 
 ### <a name="display-some-sample-images"></a>Anzeigen einiger Beispielbilder
 
-Laden Sie die komprimierten Dateien in `numpy`-Arrays. Verwenden Sie dann `matplotlib`, um 30 zufällige Bilder aus dem Dataset mit den zugehörigen Bezeichnungen darüber zu zeichnen.
+Laden Sie die komprimierten Dateien in `numpy`-Arrays. Verwenden Sie dann `matplotlib`, um 30 zufällige Bilder aus dem Dataset mit den zugehörigen Bezeichnungen darüber zu zeichnen. Beachten Sie, dass dieser Schritt eine `load_data`-Funktion erfordert, die in der `util.py`-Datei enthalten ist. Diese Datei befindet sich im Beispielordner. Achten Sie darauf, dass sie sich im gleichen Ordner wie dieses Notebook befindet. Die `load_data`-Funktion analysiert die komprimierten Dateien in NumPy-Arrays.
 
 
 
@@ -194,7 +194,7 @@ Sie haben jetzt einen Eindruck vom Aussehen dieser Bilder und vom erwarteten Vor
 
 ### <a name="upload-data-to-the-cloud"></a>Hochladen von Daten in die Cloud
 
-Machen Sie die Daten jetzt für den Remotezugriff verfügbar, indem Sie die Daten von Ihrem lokalen Computer in die Cloud hochladen, sodass sie für das Remotetraining zugänglich sind. Der Datenspeicher ist ein praktisches Konstrukt, das Ihrem Arbeitsbereich zugeordnet wird, damit Sie Daten hoch- und herunterladen sowie von Ihren Remotecomputezielen aus damit interagieren können. 
+Machen Sie die Daten jetzt für den Remotezugriff verfügbar, indem Sie die Daten von Ihrem lokalen Computer in Azure hochladen, sodass sie für das Remotetraining zugänglich sind. Der Datenspeicher ist ein praktisches Konstrukt, das Ihrem Arbeitsbereich zugeordnet wird, damit Sie Daten hoch- und herunterladen sowie von Ihren Remotecomputezielen aus damit interagieren können. Der Speicher wird durch das Azure Blob Storage-Konto unterstützt.
 
 Die MNIST-Dateien werden in ein Verzeichnis namens `mnist` hochgeladen, das sich im Stammverzeichnis des Datenspeichers befindet.
 
@@ -365,7 +365,7 @@ run = exp.submit(config=est)
 run
 ```
 
-Da der Aufruf asynchron erfolgt, gibt er gleich nach dem Start des Auftrags einen **Ausführungsstatus** zurück.
+Da der Aufruf asynchron erfolgt, wird direkt nach dem Start des Auftrags ein **Vorbereitung-** oder **Ausführungsstatus** zurückgegeben.
 
 ## <a name="monitor-a-remote-run"></a>Überwachen einer Remoteausführung
 
@@ -377,7 +377,7 @@ Während der Wartezeit passiert Folgendes:
 
   Diese Phase erfolgt für jede Python-Umgebung einmal, weil der Container für nachfolgende Ausführungen zwischengespeichert wird.  Während der Imageerstellung werden Protokolle in den Ausführungsverlauf gestreamt. Anhand dieser Protokolle können Sie den Fortschritt der Imageerstellung überwachen.
 
-- **Skalierung**: Wenn für den Remotecluster mehr Knoten benötigt werden als derzeit verfügbar sind, werden weitere Knoten automatisch hinzugefügt. Die Skalierung dauert normalerweise **etwa fünf Minuten**.
+- **Skalierung**: Wenn der Remotecluster zum Ausführen mehr Knoten benötigt werden als derzeit verfügbar sind, werden weitere Knoten automatisch hinzugefügt. Die Skalierung dauert normalerweise **etwa fünf Minuten**.
 
 - **Ausführung**: In dieser Phase werden die erforderlichen Skripts und Dateien an das Computeziel gesendet. Anschließend werden die Datenspeicher eingebunden/kopiert, und das entry_script wird ausgeführt. Während der Auftrag ausgeführt wird, werden „stdout“ und das Verzeichnis „./logs“ an den Ausführungsverlauf gestreamt. Anhand dieser Protokolle können Sie den Fortschritt der Ausführung überwachen.
 

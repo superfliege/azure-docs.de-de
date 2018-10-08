@@ -1,5 +1,5 @@
 ---
-title: Einrichtung von Treibern für die Azure N-Serie unter Linux | Microsoft-Dokumentation
+title: Einrichtung von GPU-Treibern für die Azure N-Serie unter Linux | Microsoft-Dokumentation
 description: Einrichtung von NVIDIA-GPU-Treibern für virtuelle Computer der N-Serie mit Linux in Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/30/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d85bc79ddd08cb051b2e4d978a931f460020c10
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 822261e74f7da941ac89090e5d493c4be18bc307
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364499"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038883"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux
 
@@ -55,7 +55,7 @@ Führen Sie dann die für Ihre Verteilung spezifischen Installationsbefehle aus.
 
 1. Laden Sie die CUDA-Treiber herunter, und installieren Sie sie.
   ```bash
-  CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+  CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
@@ -99,7 +99,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS oder Red Hat Enterprise Linux 7.3 oder 7.4
 
-1. Aktualisieren Sie den Kernel.
+1. Aktualisieren Sie den Kernel (empfohlen). Wenn Sie den Kernel nicht aktualisieren, stellen sicher, dass die Versionen von `kernel-devel` und `dkms` für Ihren Kernel geeignet sind.
 
   ```
   sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -127,7 +127,7 @@ sudo reboot
 
   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-9.1.85-1.x86_64.rpm
+  CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
@@ -170,9 +170,9 @@ Stellen Sie RDMA-fähige VMs der N-Serie über eines der Images aus dem Azure Ma
 
 * **7.4 HPC (CentOS-basiert)**: Auf der VM sind RDMA-Treiber und Intel MPI 5.1 installiert.
 
-## <a name="install-grid-drivers-on-nv-series-vms"></a>Installieren von GRID-Treibern für virtuelle Computer der NV-Serie
+## <a name="install-grid-drivers-on-nv-or-nvv2-series-vms"></a>Installieren von GRID-Treibern für virtuelle Computer der NV- oder NVv2-Serie
 
-Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern der NV-Serie eine SSH-Verbindung mit jedem virtuellen Computer her, und führen Sie die Schritte für Ihre Linux-Verteilung aus. 
+Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern der NV- oder NVv2-Serie eine SSH-Verbindung mit jedem virtuellen Computer her, und führen Sie die Schritte für Ihre Linux-Distribution aus. 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -189,7 +189,7 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
 
   sudo apt-get install build-essential ubuntu-desktop -y
   ```
-3. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d `, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
+3. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NVv2-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d `, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
 
   ```
   blacklist nouveau
@@ -232,7 +232,7 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS oder Red Hat Enterprise Linux 
 
-1. Aktualisieren Sie den Kernel und DKMS.
+1. Aktualisieren Sie den Kernel und DKMS (empfohlen). Wenn Sie den Kernel nicht aktualisieren, stellen sicher, dass die Versionen von `kernel-devel` und `dkms` für Ihren Kernel geeignet sind.
  
   ```bash  
   sudo yum update
@@ -244,7 +244,7 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
   sudo yum install dkms
   ```
 
-2. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d `, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
+2. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NV2-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d `, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
 
   ```
   blacklist nouveau
@@ -304,7 +304,7 @@ Wenn der Treiber installiert wurde, wird eine Ausgabe ähnlich der folgenden ang
  
 
 ### <a name="x11-server"></a>X11-Server
-Wenn Sie einen X11-Server für Remoteverbindungen an einen virtuellen NV-Computer benötigen, wird [x11vnc](http://www.karlrunge.com/x11vnc/) empfohlen, da es die Grafikhardwarebeschleunigung ermöglicht. Die BusID des M60-Geräts muss der X11-Konfigurationsdatei (normalerweise `etc/X11/xorg.conf`) manuell hinzugefügt werden. Fügen Sie einen `"Device"`-Abschnitt analog zum folgenden Abschnitt hinzu:
+Wenn Sie einen X11-Server für Remoteverbindungen mit einem virtuellen NV- oder NVv2-Computer benötigen, wird [x11vnc](http://www.karlrunge.com/x11vnc/) empfohlen, da damit die Grafikhardwarebeschleunigung ermöglicht wird. Die BusID des M60-Geräts muss der X11-Konfigurationsdatei (normalerweise `etc/X11/xorg.conf`) manuell hinzugefügt werden. Fügen Sie einen `"Device"`-Abschnitt analog zum folgenden Abschnitt hinzu:
  
 ```
 Section "Device"

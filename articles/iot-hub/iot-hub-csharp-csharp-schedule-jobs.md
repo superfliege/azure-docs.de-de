@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: dobett
-ms.openlocfilehash: eb7b4c4c6228818f78e002f4a06a000e9aa34a3a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 0e0c398311c5826f8b6c72bf0f39ad2bfde306b2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109636"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223048"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Planen und Übertragen von Aufträgen (.NET/.NET)
 
@@ -140,7 +140,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die auf eine vom Lösu
 9. Speichern Sie Ihre Arbeit, und erstellen Sie Ihre Lösung.         
 
 > [!NOTE]
-> Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen erneuten Verbindungsversuch), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults) beschrieben.
+> Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen erneuten Verbindungsversuch), wie im Artikel zum [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults) beschrieben.
 > 
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a>Planen von Aufträgen zum Aufrufen einer direkten Methode und Senden der Gerätezwillingsupdates

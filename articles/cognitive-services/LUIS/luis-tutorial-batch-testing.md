@@ -1,51 +1,27 @@
 ---
-title: Verwenden von Batchtests zum Verbessern der LUIS-Vorhersagen | Microsoft-Dokumentation
-titleSuffix: Azure
-description: Laden Sie Batchtests, überprüfen Sie die Ergebnisse, und verbessern Sie die Vorhersagen von LUIS durch Änderungen.
+title: 'Tutorial 2: Batchtest mit einem Satz von 1000 Äußerungen '
+titleSuffix: Azure Cognitive Services
+description: Dieses Tutorial veranschaulicht die Verwendung von Batchtests zum Ermitteln von Problemen bei der Vorhersage für Äußerungen in Ihrer App und zu ihrer Behebung.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 5abaeaee87d54e82df29e75b89c83522b8746730
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: e5155caa26669cd98b679eec611334ee5c048fca
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158244"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162539"
 ---
-# <a name="improve-app-with-batch-test"></a>Verbessern einer App mithilfe eines Batchtests
+# <a name="tutorial-2-batch-test-data-sets"></a>Tutorial 2: Datasets für Batchtests
 
-Dieses Tutorial veranschaulicht die Verwendung von Batchtests zum Ermitteln von Problemen bei der Vorhersage für Äußerungen.  
-
-In diesem Tutorial lernen Sie Folgendes:
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-* Erstellen einer Batchtestdatei 
-* Ausführen eines Batchtests
-* Überprüfen der Testergebnisse
-* Beheben von Fehlern 
-* Erneutes Testen des Batchs
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Voraussetzungen
-
-Falls Sie nicht über die Personalabteilungs-App aus dem Tutorial [Überprüfen von Endpunktäußerungen](luis-tutorial-review-endpoint-utterances.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS](luis-reference-regions.md#luis-website)-Website). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json).
-
-Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `batchtest`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
-
-Trainieren Sie die App.
-
-## <a name="purpose-of-batch-testing"></a>Zweck von Batchtests
+Dieses Tutorial veranschaulicht die Verwendung von Batchtests zum Ermitteln von Problemen bei der Vorhersage für Äußerungen in Ihrer App und zu ihrer Behebung.  
 
 Anhand von Batchtests können Sie den Zustand des aktiven, trainierten Modells mit einer bekannten Gruppe von bezeichneten Äußerungen und Entitäten überprüfen. Fügen Sie in die JSON-formatierte Batchdatei die Äußerungen hinzu, und legen Sie die Entitätsbezeichnungen fest, die innerhalb der Äußerung vorhergesagt werden sollen. 
-
-<!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> Wenn Sie eine andere App als die in diesem Tutorial verwenden, verwenden Sie *nicht* die Beispieläußerungen, die einer Absicht bereits hinzugefügt wurden. Um die Äußerungen aus Ihrem Batchtest mit den Beispieläußerungen abzugleichen, [exportieren](luis-how-to-start-new-app.md#export-app) Sie die App. Vergleichen Sie die Beispieläußerungen der App mit den Äußerungen aus dem Batchtest. 
 
 Anforderungen für Batchtests:
 
@@ -53,13 +29,42 @@ Anforderungen für Batchtests:
 * Keine Duplikate 
 * Zulässige Entitätstypen: nur per Machine Learning trainierte Entitäten von einfachen, hierarchischen (nur übergeordneten) und zusammengesetzten Entitäten. Batchtests eignen sich nur für mit Machine Learning trainierten Absichten und Entitäten.
 
-## <a name="create-a-batch-file-with-utterances"></a>Erstellen einer Batchdatei mit Äußerungen
+Wenn Sie eine andere App als die in diesem Tutorial verwenden, verwenden Sie *nicht* die Beispieläußerungen, die einer Absicht bereits hinzugefügt wurden. 
 
-1. Erstellen Sie `HumanResources-jobs-batch.json` in einem Text-Editor wie [VS Code](https://code.visualstudio.com/). 
+**In diesem Tutorial lernen Sie Folgendes:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Verwenden der vorhandenen Tutorial-App
+> * Erstellen einer Batchtestdatei 
+> * Ausführen eines Batchtests
+> * Überprüfen der Testergebnisse
+> * Beheben von Fehlern 
+> * Erneutes Testen des Batchs
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
+
+Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json) herunter, und speichern Sie sie.
+
+2. Importieren Sie den JSON-Code in eine neue App.
+
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `batchtest`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind. 
+
+4. Trainieren Sie die App.
+
+## <a name="batch-file"></a>Batchdatei
+
+1. Erstellen Sie `HumanResources-jobs-batch.json` in einem Text-Editor, oder [laden Sie](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) es herunter. 
 
 2. Fügen Sie in die JSON-formatierte Batchdatei Äußerungen mit der **Absicht** hinzu, für die Sie im Test eine Vorhersage erhalten möchten. 
 
-   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
+   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>Ausführen des Batchs
 
@@ -73,13 +78,13 @@ Anforderungen für Batchtests:
 
     [![Screenshot der LUIS-App mit hervorgehobener Option „Dataset importieren“](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
-4. Wählen Sie den Speicherort im Dateisystem für die Datei `HumanResources-jobs-batch.json` aus.
+4. Wählen Sie den Speicherort für die Datei `HumanResources-jobs-batch.json` aus.
 
 5. Versehen Sie das Dataset mit dem Namen `intents only`, und klicken Sie auf **Fertig**.
 
     ![Datei auswählen](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
-6. Wählen Sie die Schaltfläche **Ausführen**. Warten Sie, bis der Test abgeschlossen ist.
+6. Wählen Sie die Schaltfläche **Ausführen**. 
 
 7. Wählen Sie **See results** (Ergebnisse anzeigen) aus.
 
@@ -109,7 +114,7 @@ Beachten Sie, dass beide Absichten die gleiche Anzahl von Fehlern aufweisen. Ein
 
 Bei den Äußerungen, die dem obersten Punkt im Abschnitt **Falsch positives Ergebnis** entsprechen, handelt es sich um `Can I apply for any database jobs with this resume?` und `Can I apply for any database jobs with this resume?`. Bei der ersten Äußerung wurde das Wort `resume` nur in **ApplyForJob** verwendet. Bei der zweiten Äußerung wurde das Wort `apply` nur in der Absicht **ApplyForJob** verwendet.
 
-## <a name="fix-the-app-based-on-batch-results"></a>Korrigieren der App anhand der Batchergebnisse
+## <a name="fix-the-app"></a>Problembehebung in der App
 
 Ziel dieses Abschnitts ist es, alle Äußerungen für **GetJobInformation** durch Korrigieren der App korrekt vorherzusagen. 
 
@@ -119,7 +124,7 @@ Möglicherweise gedenken Sie auch, Äußerungen aus **ApplyForJob** zu entfernen
 
 Die erste Lösung besteht darin, weitere Äußerungen zu **GetJobInformation** hinzuzufügen. Die zweite Lösung wäre, die Gewichtung von Wörtern wie `resume` und `apply` der Gewichtung der Absicht **ApplyForJob** nach unten hin anzugleichen. 
 
-### <a name="add-more-utterances-to-getjobinformation"></a>Hinzufügen von weiteren Äußerungen zu **GetJobInformation**
+### <a name="add-more-utterances"></a>Hinzufügen weiterer Äußerungen
 
 1. Schließen Sie den Batchtestbereich, indem Sie auf der oberen Navigationsleiste auf die Schaltfläche **Test** klicken. 
 
@@ -149,7 +154,7 @@ Die erste Lösung besteht darin, weitere Äußerungen zu **GetJobInformation** h
 
 4. Trainieren Sie die App, indem Sie im oberen rechten Navigationsbereich auf **Trainieren** klicken.
 
-## <a name="verify-the-fix-worked"></a>Überprüfen der Korrektur
+## <a name="verify-the-new-model"></a>Überprüfen des neuen Modells
 
 Um sicherzustellen, dass die Äußerungen im Batchtest richtig vorhergesagt werden, führen Sie den Batchtest erneut aus.
 
@@ -171,12 +176,12 @@ Wenn Sie zum ersten Mal Batchdateien schreiben und testen, sollten Sie für den 
 
 Der Wert einer **Job**-Entität, die in den Testäußerungen angegeben wurde, besteht in der Regel aus einem oder zwei Wörtern, wobei einige Beispiele mehr Wörter enthalten. Wenn _Ihre eigene_ Personalabteilungs-App üblicherweise Auftragsnamen mit einer Vielzahl von Wörtern enthält, wären die mit der **Job**-Entität in dieser App bezeichneten Beispieläußerungen nicht gut geeignet.
 
-1. Erstellen Sie `HumanResources-entities-batch.json` in einem Text-Editor wie [VS Code](https://code.visualstudio.com/). Laden Sie alternativ die [Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json) aus dem GitHub-Repository „LUIS-Samples“ herunter.
+1. Erstellen Sie `HumanResources-entities-batch.json` in einem Text-Editor, wie etwa [VSCode](https://code.visualstudio.com/), oder [laden Sie](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) es herunter.
 
 
 2. Fügen Sie in der JSON-formatierten Batchdatei ein Array von Objekten hinzu, das Äußerungen mit der **Absicht** enthält, für die im Test Vorhersagen erzeugt und für die Standorte von Entitäten in der Äußerung vorhergesagt werden sollen. Da eine Entität auf Token basiert, achten Sie darauf, dass jede Entität mit einem Zeichen beginnt und endet. Die Äußerung darf nicht mit einem Leerraum beginnen oder enden. Denn dieser verursacht einen Fehler beim Import der Batchdatei.  
 
-   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
+   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
 
 ## <a name="run-the-batch-with-entities"></a>Ausführen der Batchdatei mit Entitäten
@@ -222,15 +227,13 @@ Diese Aufgaben liegen in Ihrem Zuständigkeitsbereich.
 
 Durch Hinzufügen eines [Musters](luis-concept-patterns.md), bevor die Entität richtig vorhergesagt wird, wird das Problem nicht behoben. Denn es werden Musterübereinstimmungen gefunden, wenn alle Entitäten im Muster erkannt wurden. 
 
-## <a name="what-has-this-tutorial-accomplished"></a>Was wurde mit diesem Tutorial erreicht?
-
-Durch die Suche nach Fehlern im Batch und durch Korrigieren des Modells wurde die Vorhersagegenauigkeit der App erhöht. 
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Das Tutorial verwendete einen Batchtest zum Aufspüren von Problemen beim aktuellen Modell. Das Modell wurde repariert und erneut mit der Batchdatei getestet, um die Richtigkeit der Änderung zu überprüfen.
 
 > [!div class="nextstepaction"]
 > [Mehr über Muster erfahren](luis-tutorial-pattern.md)

@@ -1,23 +1,30 @@
 ---
-title: Verwalten horizontal hochskalierter Clouddatenbanken | Microsoft Docs
+title: Verwalten horizontal hochskalierter Clouddatenbanken | Microsoft-Dokumentation
 description: Verwenden Sie den Auftragsdienst der elastischen Datenbank, um ein Skript für eine Gruppe von Datenbanken auszuführen.
-metakeywords: azure sql database elastic databases
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 5e2c233ec631f6a3e57d2203a9678b42f909a885
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: 649a76fad8f54339a6b1e429b3966945410573f7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646084"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166791"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Verwalten horizontal hochskalierter Clouddatenbanken
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+**Aufträge für die elastische Datenbank** ist ein vom Kunden gehosteter Azure-Clouddienst, der die geplante und die Ad-hoc-Ausführung von Verwaltungsaufgaben, sogenannten **Aufträgen**, ermöglicht. Mit Aufträgen lassen sich große Gruppen von Azure SQL-Datenbanken durch Ausführen von Transact-SQL-Skripts für administrative Vorgänge problemlos und zuverlässig verwalten. 
+
 Für die Verwaltung horizontal hochskalierter Sharddatenbanken ermöglicht Ihnen das Feature **Auftrag für die elastische Datenbank** (Vorschau) das zuverlässige Ausführen eines Transact-SQL-Skripts (T-SQL) für eine Gruppe von Datenbanken. Dies schließt Folgendes ein:
 
 * Eine benutzerdefinierte Sammlung von Datenbanken (siehe Erläuterung weiter unten)
@@ -30,7 +37,7 @@ Für die Verwaltung horizontal hochskalierter Sharddatenbanken ermöglicht Ihnen
 * [Erstellen und Verwalten von Aufträgen über PowerShell](sql-database-elastic-jobs-powershell.md)
 * [Erstellen und Verwalten von horizontal hochskalierten Azure SQL-Datenbanken](sql-database-elastic-jobs-getting-started.md)
 
-**Auftrag für die elastische Datenbank** ist derzeit ein vom Kunden gehosteter Azure-Clouddienst, der die geplante und die Ad-hoc-Ausführung von Verwaltungsaufgaben, so genannten **Aufträgen**, ermöglicht. Mithilfe von Aufträgen lassen sich große Gruppen von Azure SQL-Datenbanken durch Ausführen von Transact-SQL-Skripts für administrative Vorgänge problemlos und zuverlässig verwalten. 
+
 
 ![Dienst für elastische Datenbankaufträge][1]
 
@@ -41,7 +48,7 @@ Führen Sie Schemaänderungen, die Verwaltung von Anmeldeinformationen, Verweisd
 
 **Berichte**
 
-Aggregieren Sie Daten aus einer Sammlung von Azure SQL-Datenbanken in einer einzigen Zieltabelle.
+Aggregation von Daten aus einer Sammlung von Azure SQL-Datenbanken in einer einzelnen Zieltabelle.
 
 **Reduzierter Aufwand**
 
@@ -53,7 +60,7 @@ Aufträge führen das Skript aus und protokollieren den Ausführungsstatus für 
 
 **Flexibilität**
 
-Definieren Sie benutzerdefinierte Gruppen von Azure SQL-Datenbanken, und definieren Sie einen Zeitplan für die Ausführung eines Auftrags.
+Definition benutzerdefinierter Gruppen von Azure SQL-Datenbanken sowie von Zeitplänen für die Auftragsausführung.
 
 > [!NOTE]
 > Im Azure-Portal steht nur eine eingeschränkte Anzahl von Funktionen für Pools für elastische SQL Azure-Datenbanken zur Verfügung. Verwenden Sie die PowerShell-APIs, um auf den gesamten aktuell verfügbaren Funktionsumfang zuzugreifen.

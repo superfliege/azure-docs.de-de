@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 5/8/2018
+ms.date: 9/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a79c1951fb8cfbfc208942835ee87b91b763c44
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 8bfe815b9664e499f7ae458dfc42b88199e0ecb4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798184"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037931"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -36,13 +36,13 @@ ms.locfileid: "34798184"
 
 <table>
 
-<tr><td>**SDK herunterladen**</td><td>[PyPI](https://pypi.python.org/pypi/pydocumentdb)</td></tr>
+<tr><td>**SDK herunterladen**</td><td>[PyPI](https://pypi.org/project/azure-cosmos)</td></tr>
 
-<tr><td>**API-Dokumentation**</td><td>[Python-API-Referenzdokumentation](https://docs.microsoft.com/python/api/pydocumentdb?view=azure-python)</td></tr>
+<tr><td>**API-Dokumentation**</td><td>[Python-API-Referenzdokumentation](https://docs.microsoft.com/python/api/azure-cosmos)</td></tr>
 
-<tr><td>**SDK-Installationsanweisungen**</td><td>[Python-SDK-Installationsanweisungen](http://azure.github.io/azure-documentdb-python/)</td></tr>
+<tr><td>**SDK-Installationsanweisungen**</td><td>[Python-SDK-Installationsanweisungen](https://github.com/Azure/azure-cosmos-python)</td></tr>
 
-<tr><td>**Am SDK mitwirken**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
+<tr><td>**Am SDK mitwirken**</td><td>[GitHub](https://github.com/Azure/azure-cosmos-python)</td></tr>
 
 <tr><td>**Erste Schritte**</td><td>[Erste Schritte mit dem Python-SDK](sql-api-python-application.md)</td></tr>
 
@@ -50,6 +50,12 @@ ms.locfileid: "34798184"
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
+* Unterstützung für Schreibvorgänge in mehreren Regionen.
+* Der Namespace wurde in „azure.cosmos“ geändert.
+* Sammlungs- und Dokumentkonzepte wurden in „Container“ und „Element“ umbenannt, „document_client“ wurde in „cosmos_client“ umbenannt. 
+
 ### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
 * Unterstützung für Standardwiederholungen bei Verbindungsproblemen hinzugefügt.
 

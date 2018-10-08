@@ -3,7 +3,7 @@ title: 'Tutorial: Verwenden von Azure Security Center für Linux-VMs in Azure | 
 description: In diesem Tutorial erfahren Sie mehr über die Funktionen im Azure Security Center zum Schutz und zur Absicherung Ihrer virtuellen Linux-Computer in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/07/2017
-ms.author: iainfou
+ms.date: 06/11/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e049bed6336f87d8077726843bbc870be90c633f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 562fc267a056d6908af5b89fd7a93e858f1c6165
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092610"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Tutorial: Verwenden von Azure Security Center zum Überwachen virtueller Linux-Computer
 
@@ -46,12 +47,13 @@ Security Center bietet über die reine Datenermittlung hinaus auch Empfehlungen 
 
 ## <a name="set-up-data-collection"></a>Einrichten der Datensammlung
 
-Bevor Sie Einblick in VM-Sicherheitskonfigurationen erhalten können, muss die Security Center-Datensammlung konfiguriert werden. Dies umfasst das Aktivieren der Datensammlung und das Erstellen eines Azure Storage-Kontos zum Speichern der gesammelten Daten. 
+Bevor Sie Einblick in VM-Sicherheitskonfigurationen erhalten können, muss die Security Center-Datensammlung konfiguriert werden. Dies umfasst das Aktivieren der Datensammlung, wodurch automatisch der Microsoft Monitoring Agent auf allen virtuellen Computern in Ihrem Abonnement installiert wird.
 
 1. Klicken Sie auf dem Security Center-Dashboard auf **Sicherheitsrichtlinie**, und wählen Sie dann Ihr Abonnement aus. 
-2. Wählen Sie unter **Datensammlung** die Option **Ein** aus.
-3. Wählen Sie zum Erstellen eines Speicherkontos **Speicherkonto wählen** aus. Wählen Sie anschließend **OK** aus.
-4. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Speichern** aus. 
+2. Für die **Datensammlung** wählen Sie unter **Automatische Bereitstellung** die Option **Ein**.
+3. Behalten Sie unter **Standardmäßige Arbeitsbereichskonfiguration** die Option **Von Security Center erstellte Arbeitsbereiche verwenden (Standard)** bei.
+4. Lassen Sie unter **Sicherheitsereignisse** die Standardoption **Allgemein** aktiviert.
+4. Klicken Sie oben auf der Seite auf **Speichern**. 
 
 Der Datensammlungs-Agent von Security Center wird daraufhin auf allen virtuellen Computern installiert, und die Datensammlung beginnt. 
 
@@ -59,26 +61,12 @@ Der Datensammlungs-Agent von Security Center wird daraufhin auf allen virtuellen
 
 Sicherheitsrichtlinien werden verwendet, um die Elemente zu definieren, für die Security Center Daten sammelt und Empfehlungen gibt. Sie können unterschiedliche Sicherheitsrichtlinien auf verschiedene Gruppen von Azure-Ressourcen anwenden. Obwohl Azure-Ressourcen standardmäßig für sämtliche Richtlinienelemente ausgewertet werden, können Sie einzelne Richtlinienelemente für alle Azure-Ressourcen oder für eine Ressourcengruppe deaktivieren. Ausführliche Informationen zu Security Center-Sicherheitsrichtlinien finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](../../security-center/security-center-policies.md). 
 
-So richten Sie eine Sicherheitsrichtlinie für alle Azure-Ressourcen ein:
+So richten Sie eine Sicherheitsrichtlinie für ein gesamtes Abonnement ein
 
-1. Wählen Sie auf dem Security Center-Dashboard **Sicherheitsrichtlinie** und dann Ihr Abonnement aus.
-2. Wählen Sie **Präventionsrichtlinie** aus.
-3. Aktivieren oder deaktivieren Sie die Richtlinienelemente, die Sie auf alle Azure-Ressourcen anwenden möchten.
-4. Wenn Sie Ihre Einstellungen festgelegt haben, wählen Sie **OK** aus.
-5. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Speichern** aus. 
-
-So richten Sie eine Richtlinie für eine bestimmte Ressourcengruppe ein:
-
-1. Wählen Sie auf dem Security Center-Dashboard **Sicherheitsrichtlinie** und dann eine Ressourcengruppe aus.
-2. Wählen Sie **Präventionsrichtlinie** aus.
-3. Aktivieren oder deaktivieren Sie die Richtlinienelemente, die Sie auf die Ressourcengruppe anwenden möchten.
-4. Wählen Sie unter **Vererbung** die Option **Eindeutig** aus.
-5. Wenn Sie Ihre Einstellungen festgelegt haben, wählen Sie **OK** aus.
-6. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Speichern** aus.  
-
-Sie können auf dieser Seite auch die Datensammlung für eine bestimmte Ressourcengruppe deaktivieren.
-
-Im folgenden Beispiel wurde eine eindeutige Richtlinie für die Ressourcengruppe *myResourceGroup* erstellt. In dieser Richtlinie wurden sowohl die Empfehlungen für die Datenträgerverschlüsselung als auch jene für die Web Application Firewall deaktiviert.
+1. Wählen Sie im Security Center-Dashboard **Sicherheitsrichtlinie** und dann Ihr Abonnement aus.
+2. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Sicherheitsrichtlinie** aus. 
+3. Aktivieren oder deaktivieren Sie auf dem Blatt **Sicherheitsrichtlinie – Sicherheitsrichtlinie** die Richtlinienelemente, die Sie auf das Abonnement anwenden möchten.
+4. Wenn Sie Ihre Einstellungen festgelegt haben, wählen Sie im oberen Bereich des Blatts **Speichern** aus. 
 
 ![Eindeutige Richtlinie](./media/tutorial-azure-security/unique-policy.png)
 
@@ -90,12 +78,12 @@ Bei der Datensammlung wird die Ressourcenintegrität für jede VM und die zugeh�
 
 So zeigen Sie die Ressourcenintegrität an:
 
-1.  Wählen Sie auf dem Security Center-Dashboard unter **Sicherheitsintegrität von Ressourcen** die Option **Compute** aus. 
-2.  Wählen Sie auf dem Blatt **Compute** die Option **Virtuelle Computer** aus. Diese Ansicht enthält eine Zusammenfassung des Konfigurationsstatus aller VMs.
+1.  Wählen Sie im Security Center-Dashboard unter **Prävention** die Option **Compute** aus. 
+2.  Wählen Sie auf dem Blatt **Compute** die Option **VMs und Computer** aus. Diese Ansicht enthält eine Zusammenfassung des Konfigurationsstatus aller VMs.
 
 ![Computeintegrität](./media/tutorial-azure-security/compute-health.png)
 
-Um alle Empfehlungen für einen virtuellen Computer anzuzeigen, wählen Sie den virtuellen Computer aus. Empfehlungen und Korrekturmaßnahmen werden im nächsten Abschnitt dieses Tutorials ausführlicher behandelt.
+Um alle Empfehlungen für einen virtuellen Computer anzuzeigen, wählen Sie den virtuellen Computer aus. 
 
 ## <a name="remediate-configuration-issues"></a>Beheben von Konfigurationsproblemen
 
@@ -105,7 +93,7 @@ So zeigen Sie eine Liste aller Empfehlungen an
 
 1. Wählen Sie auf dem Security Center-Dashboard **Empfehlungen** aus.
 2. Wählen Sie eine bestimmte Empfehlung aus. Es wird eine Liste aller Ressourcen angezeigt, für die diese Empfehlung gilt.
-3. Um eine Empfehlung anzuwenden, wählen Sie eine bestimmte Ressource aus. 
+3. Um eine Empfehlung anzuwenden, wählen Sie die Ressource aus. 
 4. Führen Sie die Anweisungen zur Wartung aus. 
 
 In vielen Fällen stellt Security Center Schritte zur Umsetzung der Empfehlung vor, die Sie ausführen können, ohne Security Center verlassen zu müssen. Im folgenden Beispiel erkennt Security Center eine Netzwerksicherheitsgruppe, die eine uneingeschränkte Eingangsregel enthält. Sie können auf der Empfehlungsseite die Schaltfläche **Eingangsregeln bearbeiten** auswählen. Die für das Ändern der Regel erforderliche Benutzeroberfläche wird angezeigt. 
@@ -118,14 +106,14 @@ Nachdem Empfehlungen umgesetzt wurden, werden sie als gelöst markiert.
 
 Neben den Empfehlungen zur Ressourcenkonfiguration bietet Security Center auch Warnungen zur Bedrohungserkennung. Das Sicherheitswarnfeature aggregiert die von den einzelnen VMs gesammelten Daten, Azure-Netzwerkprotokolle und verbundenen Partnerlösungen, um Sicherheitsrisiken für Azure-Ressourcen zu erkennen. Ausführliche Informationen zu Funktionen der Security Center-Bedrohungserkennung finden Sie unter [Azure Security Center-Erkennungsfunktionen](../../security-center/security-center-detection-capabilities.md).
 
-Für das Sicherheitswarnfeature muss der Security Center-Tarif von *Free* auf *Standard* erhöht werden. Sie können eine 30-tägige, **kostenlose Testversion** nutzen, wenn Sie auf diesen höheren Tarif wechseln. 
+Für das Sicherheitswarnfeature muss der Security Center-Tarif von *Free* auf *Standard* erhöht werden. Sie können eine 60-tägige, **kostenlose Testversion** nutzen, wenn Sie auf diesen höheren Tarif wechseln. 
 
 So ändern Sie den Tarif  
 
 1. Klicken Sie auf dem Security Center-Dashboard auf **Sicherheitsrichtlinie**, und wählen Sie dann Ihr Abonnement aus.
 2. Wählen Sie **Tarif**aus.
-3. Wählen Sie den neuen Tarif aus, und klicken Sie dann auf **Auswählen**.
-4. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Speichern** aus. 
+3. Wählen Sie **Standard** aus, und klicken Sie dann im oberen Bereich des Blatts auf **Speichern**.
+
 
 Nach dem Ändern des Tarifs wird das Diagramm zu den Sicherheitswarnungen aufgefüllt, sobald Sicherheitsbedrohungen erkannt werden.
 

@@ -9,14 +9,14 @@ ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: mvc
 ms.component: blobs
-ms.openlocfilehash: b3916fb0de48f30bd4809d1fc42dde6ac78c07b6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d50291a33a9456fad20382d8e646bf6a19d6179e
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023265"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180880"
 ---
-# <a name="make-your-application-data-highly-available-with-azure-storage"></a>Herstellen von Hochverfügbarkeit für Anwendungsdaten mit Azure Storage
+# <a name="tutorial-make-your-application-data-highly-available-with-azure-storage"></a>Tutorial: Herstellen von Hochverfügbarkeit für Anwendungsdaten mit Azure Storage
 
 Dieses Tutorial ist Teil einer Reihe, in der veranschaulicht wird, wie Sie Ihre Anwendungsdaten in Azure hoch verfügbar machen. Am Ende des Tutorials werden Sie über eine Konsolenanwendung verfügen, mit der Sie ein Blob in ein RA-GRS-Speicherkonto ([read-access geo-redundant storage, georedundanter Speicher mit Lesezugriff](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) hochladen bzw. von diesem abrufen können. RA-GRS funktioniert durch die Replikation von Transaktionen von der primären zur sekundären Region. Dieser Replikationsprozess garantiert, dass die Daten in der sekundären Region letztendlich konsistent sind. Für die Anwendung wird das Muster [Trennschalter](/azure/architecture/patterns/circuit-breaker) (Circuit Breaker) verwendet, um den Endpunkt zu ermitteln, mit dem eine Verbindung hergestellt werden soll. Die Anwendung verbindet sich mit dem sekundären Endpunkt, wenn ein Fehler simuliert wird.
 

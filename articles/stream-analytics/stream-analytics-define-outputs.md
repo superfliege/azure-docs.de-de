@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: d717737bc2b15e57ae32faffaece96f78a7cc013
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e9c09d31af1b6ea214ae2d0fc6fd7399c07fd8c0
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577819"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434541"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 In diesem Artikel werden die unterschiedlichen Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen. 
@@ -63,7 +63,7 @@ Um die Autorisierung zu erneuern, klicken Sie in Ihrem Auftrag auf **Beenden**, 
 ![Autorisieren von Data Lake-Speicher](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL-Datenbank
-[Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) kann als Ausgabe für relationale Daten oder für Anwendungen verwendet werden, die auf Inhalten aufsetzen, die in einer relationalen Datenbank gehostet werden. Stream Analytics-Aufträge schreiben in eine vorhandene Tabelle in einer Azure SQL-Datenbank.  Das Tabellenschema muss genau mit den Feldern und ihren Typen übereinstimmen, die aus Ihrem Auftrag ausgegeben werden. Eine [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)-Instanz kann auch über die SQL-Datenbank-Ausgabeoption als Ausgabe angegeben werden. Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer SQL-Datenbank-Ausgabe.
+[Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) kann als Ausgabe für relationale Daten oder für Anwendungen verwendet werden, die auf Inhalten aufsetzen, die in einer relationalen Datenbank gehostet werden. Stream Analytics-Aufträge schreiben in eine vorhandene Tabelle in einer Azure SQL-Datenbank.  Das Tabellenschema muss genau mit den Feldern und ihren Typen übereinstimmen, die aus Ihrem Auftrag ausgegeben werden. Eine [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)-Instanz kann auch über die SQL-Datenbank-Ausgabeoption als Ausgabe angegeben werden. Um zu erfahren, welche Möglichkeiten es gibt, um den Schreibdurchsatz zu erhöhen, lesen Sie den Artikel [Stream Analytics mit Azure SQL-Datenbank als Ausgabe](stream-analytics-sql-output-perf.md). Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer SQL-Datenbank-Ausgabe.
 
 | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
@@ -297,7 +297,7 @@ In der folgenden Tabelle werden die Partitionsunterstützung und die Anzahl der 
 | Ausgabetyp | Unterstützung der Partitionierung | Partitionsschlüssel  | Anzahl der Ausgabeschreiber | 
 | --- | --- | --- | --- |
 | Azure Data Lake Store | JA | Verwenden Sie die {date}- und {time}-Tokens im Pfadpräfixmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
-| Azure SQL-Datenbank | Nein  | Keine | Nicht zutreffend | 
+| Azure SQL-Datenbank | JA | Basierend auf der PARTITION BY-Klausel in der Abfrage | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
 | Azure Blob Storage | JA | Verwenden Sie die Token {date} und {time} aus Ihren Ereignisfeldern im Pfadmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. Im Rahmen der [Vorschauversion](https://aka.ms/ASAPreview) kann die Blobausgabe durch ein einzelnes benutzerdefiniertes Ereignisattribut {fieldname} oder {datetime:\<Spezifizierer>} partitioniert werden. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
 | Azure Event Hub | JA | JA | Variiert je nach Partitionsausrichtung.</br> Wenn der Event Hub-Ausgabepartitionsschlüssel entsprechend am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Event Hub-Ausgabepartitionen identisch. Jeder Schreiber verwendet die [EventHubSender-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) des EventHub-Elements, um Ereignisse an die jeweilige Partition zu senden. </br> Wenn der Event Hub-Ausgabepartitionsschlüssel nicht am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Partitionen in diesem vorherigen Schritt identisch. Für jeden Schreiber wird die [SendBatchAsync-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) des EventHubClient-Elements verwendet, um Ereignisse an alle Ausgabepartitionen zu senden. |
 | Power BI | Nein  | Keine | Nicht zutreffend | 

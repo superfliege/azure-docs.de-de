@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: ea8e8ae9b0f487481ac2f25d4e2b9c5733e15431
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 24eec3b1f3c85384f80823b82962038c235b6dac
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842254"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036989"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -69,7 +69,7 @@ Mit kurzlebigen Ports der öffentlichen Front-End-IP-Adresse des Lastenausgleich
 
 SNAT-Ports werden vorab zugeordnet, wie im Abschnitt [Grundlagen von SNAT und PAT](#snat) beschrieben. Es handelt sich um eine begrenzte Ressource, die überlastet werden kann. Es ist wichtig zu verstehen, wie sie [genutzt](#pat) wird. Um zu verstehen, wie Sie diese Nutzung beim Entwurf berücksichtigen und je nach Bedarf Abhilfemaßnahmen schaffen können, lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust).
 
-Wenn [Load Balancer Basic mehrere (öffentliche) IP-Adressen zugeordnet sind](load-balancer-multivip-overview.md), sind diese öffentlichen IP-Adressen [Kandidaten für ausgehende Datenflüsse](#multivipsnat), und eine davon wird ausgewählt.  
+Wenn [Load Balancer Basic mehrere öffentliche IP-Adressen zugeordnet sind](load-balancer-multivip-overview.md), sind diese öffentlichen IP-Adressen [Kandidaten für ausgehende Datenflüsse](#multivipsnat), und eine davon wird nach dem Zufallsprinzip ausgewählt.  
 
 Zum Überwachen der Integrität ausgehender Verbindungen mit Load Balancer Basic können Sie [Log Analytics für Azure Load Balancer](load-balancer-monitor-log.md) und [Warnungsereignisprotokolle](load-balancer-monitor-log.md#alert-event-log) verwenden.
 

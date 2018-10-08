@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2016
+ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: eb2b26333647d464a3a18cd07bf1576251fb3830
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9208f2cb207daff2b122550fede48a8dda11d1db
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715402"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407925"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines – Bereitstellung für SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -353,7 +353,7 @@ Für die SAP-Größenanpassung sind die folgenden Informationen wichtig:
 ### <a name="resource-groups"></a>Ressourcengruppen
 In Azure Resource Manager können Sie mit Ressourcengruppen alle Anwendungsressourcen im Azure-Abonnement verwalten. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager][resource-group-overview].
 
-## <a name="resources"></a>angeben
+## <a name="resources"></a>Ressourcen
 
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-Ressourcen
 Beim Einrichten der Bereitstellung Ihrer SAP-Software benötigen Sie die folgenden SAP-Ressourcen:
@@ -483,7 +483,7 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
   * **Administratorbenutzername** und **Administratorkennwort**: Benutzername und Kennwort.
     Für die Anmeldung am virtuellen Computer wird ein neuer Benutzer erstellt.
   * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt werden oder ein bestehendes Subnetz verwendet wird. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
-  * **Subnetz-ID**: Die ID des Subnetzes, mit dem die virtuellen Computer die Verbindung herstellen. Wählen Sie das Subnetz des VPN oder des virtuellen Azure ExpressRoute-Netzwerks aus, das zum Herstellen der Verbindung für den virtuellen Computer mit Ihrem lokalen Netzwerk verwendet wird. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
+  * **Subnetz-ID**: Wenn Sie den virtuellen Computer in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
 
 1. **Geschäftsbedingungen**:  
     Lesen Sie sich die Bedingungen durch, und bestätigen Sie diese.
@@ -614,9 +614,7 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
 
     Für die Anmeldung am virtuellen Computer wird ein neuer Benutzer erstellt.
   * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt werden oder ein vorhandenes Subnetz verwendet wird. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
-  * **Subnetz-ID**: Die ID des Subnetzes, mit dem die virtuellen Computer die Verbindung herstellen. Wählen Sie das Subnetz des VPN- oder virtuellen ExpressRoute-Netzwerks aus, um den virtuellen Computer mit dem lokalen Netzwerk zu verbinden. Die ID sieht normalerweise wie folgt aus:
-
-    /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
+  * **Subnetz-ID**: Wenn Sie den virtuellen Computer in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
 
 1. **Geschäftsbedingungen**:  
     Lesen Sie sich die Bedingungen durch, und bestätigen Sie diese.
@@ -697,9 +695,7 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
   * **URI der VHD mit dem Betriebssystemdatenträger** (nur Vorlage für nicht verwaltete Datenträger): Der URI des Datenträgers mit dem privaten Betriebssystem, z.B. „https://&lt;Kontoname&gt;.blob.core.windows.net/vhds/osdisk.vhd“.
   * **ID des verwalteten Betriebssystemdatenträgers** (nur Vorlage für verwaltete Datenträger): Die ID des verwalteten Datenträgers mit dem Betriebssystem, z.B. „/subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN“.
   * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt werden oder ein bestehendes Subnetz verwendet wird. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
-  * **Subnetz-ID**: Die ID des Subnetzes, mit dem die virtuellen Computer die Verbindung herstellen. Wählen Sie das Subnetz des VPN- oder virtuellen Azure ExpressRoute-Netzwerks aus, um den virtuellen Computer mit dem lokalen Netzwerk zu verbinden. Die ID sieht normalerweise wie folgt aus:
-
-    /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
+  * **Subnetz-ID**: Wenn Sie den virtuellen Computer in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
 
 1. **Geschäftsbedingungen**:  
     Lesen Sie sich die Bedingungen durch, und bestätigen Sie diese.
@@ -923,9 +919,7 @@ Die Skriptausgabe enthält die folgenden Informationen:
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Azure-CLI für virtuelle Linux-Computer
 Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung für SAP mit der Azure-Befehlszeilenschnittstelle zu installieren:
 
-1. So führen Sie eine Installation mit der Azure CLI 1.0 aus
-
-   1. Installieren Sie die Azure CLI 1.0 wie unter [Installieren der Azure CLI 1.0][azure-cli] beschrieben.
+   1. Installieren Sie die klassische Azure-Befehlszeilenschnittstelle (Azure-CLI), wie unter [Installieren der klassischen Azure CLI][azure-cli] beschrieben.
    1. Melden Sie sich mit Ihrem Azure-Konto an:
 
       ```
@@ -1005,6 +999,10 @@ Mit dieser Prüfung wird sichergestellt, dass alle Leistungsmetriken, die in Ihr
   >
 
 Wenn die Azure-Erweiterung zur verbesserten Überwachung nicht installiert ist oder der Dienst „AzureEnhancedMonitoring“ nicht ausgeführt wird, wurde die Erweiterung nicht richtig konfiguriert. Ausführliche Informationen zur Bereitstellung der Erweiterung finden Sie unter [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3].
+
+> [!NOTE]
+> „Azperflib.exe“ kann nicht für eigene Zwecke verwendet werden. Es ist eine Komponente, die Azure-Überwachungsdaten in Bezug auf die VM für den SAP Host Agent bereitstellt.
+> 
 
 ##### <a name="check-the-output-of-azperflibexe"></a>Überprüfen der Ausgabe von „azperflib.exe“
 Die Ausgabe von „azperflib.exe“ enthält alle ausgefüllten Azure-Leistungsindikatoren für SAP. Am Ende der Liste mit den gesammelten Indikatoren finden Sie eine Übersicht und einen Integritätsindikator, der den Zustand der Azure-Überwachung anzeigt.
@@ -1099,6 +1097,10 @@ Wenn einige Überwachungsdaten gemäß der Beschreibung des Tests unter [Bereits
 
 Stellen Sie sicher, dass das Ergebnis für jede Integritätsprüfung **OK** lautet. Gehen Sie wie folgt vor, wenn für einige Prüfungen nicht **OK** angezeigt wird: Führen Sie das update-Cmdlet wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben aus. Warten Sie 15 Minuten, und wiederholen Sie dann die Tests, die unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] und [Integritätsprüfung der Konfiguration für die Azure-Überwachungsinfrastruktur][deployment-guide-5.2] beschrieben sind. Falls die Tests weiterhin für einige oder alle Indikatoren Probleme melden, hilft Ihnen der Abschnitt [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3] weiter.
 
+> [!Note]
+> Möglicherweise treten einige Warnungen auf, wenn Sie verwaltete Azure-Standarddatenträger verwenden. Die Tests geben nicht „OK“ zurück, stattdessen werden Warnungen angezeigt. Dies ist normal und im Fall dieses Datenträgertyps beabsichtigt. Weitere Informationen finden Sie unter [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3].
+> 
+
 ### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP
 
 #### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
@@ -1150,6 +1152,23 @@ Das Verzeichnis „\\var\\lib\\waagent\\“ enthält kein Unterverzeichnis für 
 
 ###### <a name="solution"></a>Lösung
 Die Erweiterung ist nicht installiert. Ermitteln Sie, ob es sich um ein Proxyproblem handelt (wie weiter oben beschrieben). Unter Umständen müssen Sie den Computer neu starten bzw. das Konfigurationsskript `Set-AzureRmVMAEMExtension` erneut ausführen.
+
+##### <a name="the-execution-of-set-azurermvmaemextension-and-test-azurermvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Bei der Ausführung von „Set-AzureRmVMAEMExtension“ und „Test-AzureRmVMAEMExtension“ weisen Warnmeldungen darauf hin, dass verwalteter Standarddatenträger nicht unterstützt werden.
+
+###### <a name="issue"></a>Problem
+Bei der Ausführung von „Set-AzureRmVMAEMExtension“ oder „Test-AzureRmVMAEMExtension“ werden Meldungen wie die folgenden angezeigt:
+
+<pre><code>
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+</code></pre>
+
+Beim Ausführen von „azperfli.exe“ wie oben beschrieben können Sie ein Ergebnis erzielen, das auf einen fehlerhaften Zustand hinweist. 
+
+###### <a name="solution"></a>Lösung
+Diese Meldungen werden dadurch verursacht, dass verwaltete Standarddatenträger nicht die APIs bereitstellen, die von der Überwachungserweiterung verwendet werden, um die Statistiken der Azure Storage Standard-Konten zu überprüfen. Dies ist kein Grund zur Besorgnis. Der Grund für die Einführung der Überwachung der Storage Standard-Konten war die häufig auftretende Drosselung von E/A-Vorgängen. Verwaltete Datenträger verhindern eine solche Drosselung, indem die Anzahl von Datenträgern in einem Storage-Konto eingeschränkt wird. Daher ist es kein Problem, wenn diese Art Überwachungsdaten nicht verfügbar ist.
+
 
 #### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Einige Azure-Leistungsindikatoren fehlen.
 Leistungsmetriken werden in Azure über einen Daemon erfasst, der Daten aus mehreren Quellen abruft. Einige Konfigurationsdaten werden lokal gesammelt, und einige Leistungsmetriken werden aus der Azure-Diagnose ausgelesen. Speicherindikatoren stammen aus den Protokollen in Ihrem Speicherabonnement.

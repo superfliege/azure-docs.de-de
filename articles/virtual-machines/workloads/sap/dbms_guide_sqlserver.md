@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/11/2018
+ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: db0d796a407c8e33501b0a312c78e8508f17297d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 3cefecdf0f87483a1fb544d1eb4e3e514e388259
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075307"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406919"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
 
@@ -381,8 +381,10 @@ SQL Server 2014 und höher bietet die Möglichkeit, Datenbankdateien direkt in A
 
 * Das verwendete Speicherkonto muss sich in derselben Azure-Region befinden wie das Speicherkonto, das zur Bereitstellung des virtuellen Computers verwendet wird, auf dem SQL Server ausgeführt wird.
 * Die bereits genannten Überlegungen im Hinblick auf die Verteilung von VHDs auf verschiedene Azure Storage-Konten gelten auch für diese Bereitstellungsmethode. Dies bedeutet, dass die E/A-Vorgänge für die Grenzwerte des Azure-Speicherkontos eingerechnet werden.
-* Anstatt mit dem E/A-Speicherkontingent der VM verrechnet zu werden, wird der Datenverkehr mit Speicherblobs verrechnet, die die SQL Server-Daten und Protokolldateien darstellen, und zählt so zur Netzwerkbandbreite der VM des jeweiligen VM-Typs. Weitere Informationen zur Netzwerkbandbreite bestimmter VM-Typen finden Sie im Artikel [Größen für Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+* Anstatt mit dem E/A-Speicherkontingent der VM verrechnet zu werden, wird der Datenverkehr mit Speicherblobs verrechnet, die die SQL Server-Daten und Protokolldateien darstellen, und zählt so zur Netzwerkbandbreite der VM des jeweiligen VM-Typs. Weitere Informationen zur Netzwerk- und Speicherbandbreite eines bestimmten VM-Typs finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+* Indem Sie den E/A-Dateidurchsatz über das Netzwerkkontingent leiten, vergeuden Sie das Speicherkontingent zu weiten Teilen und nutzen die gesamte Bandbreite der VM daher nur teilweise.
 * Die Leistungsziele des IOPS- und E/A-Durchsatzes, die Azure Storage Premium für die verschiedenen Datenträgergrößen hat, gelten nicht mehr. Dies gilt auch für von Ihnen erstellte und in Azure Storage Premium gespeicherte Blobs. Die Ziele finden Sie unter [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets). Da SQL Server-Datendateien und -Protokolldateien direkt auf Blobs platziert werden, die in Azure Storage Premium gespeichert sind, können die Leistungsmerkmale im Vergleich zu VHDs in Azure Storage Premium unterschiedlich sein.
+* Hostbasiertes Caching, wie es für Azure Storage Premium-Datenträger verfügbar ist, steht nicht zur Verfügung, wenn Sie SQL Server-Datendateien direkt in Azure-Blobs platzieren.
 * Auf VMs der M-Serie kann Azure-Schreibbeschleunigung nicht verwendet werden, um Schreibvorgänge im Bereich unter Millisekunden für SQL Server-Transaktionsprotokolldateien zu unterstützen. 
 
 Weitere Informationen zu dieser Funktionalität finden Sie im Artikel [SQL Server-Datendateien in Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-2017).
@@ -513,7 +515,7 @@ Eine ausführliche Dokumentation der Bereitstellung von Always On mit SQL Server
 SQL Server Always On ist die am häufigsten in Azure verwendete Funktionalität für Hochverfügbarkeit und Notfallwiederherstellung für SAP-Workloadbereitstellungen. Die meisten Kunden nutzen Always On für Hochverfügbarkeit innerhalb einer einzelnen Azure-Region. Wenn die Bereitstellung auf nur zwei Knoten beschränkt ist, haben Sie zwei Verbindungsmöglichkeiten:
 
 - Verwenden des Verfügbarkeitsgruppenlisteners. Wenn Sie den Verfügbarkeitsgruppenlistener verwenden, müssen Sie eine Azure Load Balancer-Instanz bereitstellen. Dies ist in der Regel die Standardbereitstellungsmethode. SAP-Anwendungen sind so konfiguriert, dass sie sich mit dem Verfügbarkeitsgruppenlistener und nicht mit einem einzelnen Knoten verbinden.
-- Verwenden des Konnektivitätsparameters der SQL Server-Datenbankspiegelung. In diesem Fall müssen Sie die Konnektivität der SAP-Anwendungen so konfigurieren, dass beide Knotennamen benannt sind. Ausführliche Informationen zu dieser SAP-Konfiguration finden Sie im SAP-Hinweis [965908](https://launchpad.support.sap.com/#/notes/965908). Wenn Sie diese Option verwenden, müssen Sie keinen Verfügbarkeitsgruppenlistener konfigurieren und benötigen keine Azure Load Balancer-Instanz für die SQL Server-Hochverfügbarkeit. Dadurch ist die Netzwerklatenz zwischen der SAP-Anwendungsschicht und der DBMS-Schicht geringer. Denn der auf der SQL Server-Instanz eingehende Datenverkehr wird über keine Azure Load Balancer-Instanz weitergeleitet. Beachten Sie jedoch, dass diese Option nur funktioniert, wenn Sie Ihre Verfügbarkeitsgruppe auf zwei Instanzen beschränken. 
+- Verwenden des Konnektivitätsparameters der SQL Server-Datenbankspiegelung. In diesem Fall müssen Sie die Konnektivität der SAP-Anwendungen so konfigurieren, dass beide Knotennamen benannt sind. Ausführliche Informationen zu dieser SAP-Konfiguration finden Sie im SAP-Hinweis [965908](https://launchpad.support.sap.com/#/notes/965908). Indem Sie diese Option verwenden, müssen Sie den Verfügbarkeitsgruppenlistener nicht konfigurieren. Und daher ist kein Azure-Lastenausgleich erforderlich, um die Hochverfügbarkeit von SQL Server sicherzustellen. Dadurch ist die Netzwerklatenz zwischen der SAP-Anwendungsschicht und der DBMS-Schicht geringer. Denn der auf der SQL Server-Instanz eingehende Datenverkehr wird über keine Azure Load Balancer-Instanz weitergeleitet. Beachten Sie jedoch, dass diese Option nur funktioniert, wenn Sie Ihre Verfügbarkeitsgruppe auf zwei Instanzen beschränken. 
 
 Einige Kunden verwenden SQL Server Always On für zusätzliche Notfallwiederherstellungsfunktionen zwischen unterschiedlichen Azure-Regionen. Einige Kunden nutzen auch die Möglichkeit, Sicherungen von einem sekundären Replikat durchzuführen. 
 

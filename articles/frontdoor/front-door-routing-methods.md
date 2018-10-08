@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: e3d07e122c0506574e7e6c37a65333c62564fa7f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26b4e2b1bf2dc9e59bc41e1d9f0628a1f476d402
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965331"
+ms.locfileid: "47031480"
 ---
 # <a name="front-door-routing-methods"></a>Datenverkehrsrouting in Azure Front Door Service
 
@@ -77,7 +77,14 @@ Sitzungsaffinität kann auf einer Front-End-Hostebene für alle konfigurierten D
 
 Die Lebensdauer des Cookies ist identisch mit derjenigen der Benutzersitzung, da Azure Front Door Service derzeit nur Sitzungscookies unterstützt. 
 
+> [!NOTE]
+> Öffentlichen Proxys können die Sitzungsaffinität beeinträchtigen. Grund dafür ist, dass Front Door zum Einrichten einer Sitzung ein Sitzungsaffinitätscookie zur Antwort hinzufügen muss. Dies ist jedoch nicht möglich, wenn die Antwort zwischengespeichert werden kann, da dies die Cookies anderer Clients, die die gleiche Ressource anfordern, beeinträchtigen würde. Um dies zu verhindern, wird die Sitzungsaffinität **nicht** hergestellt, wenn das Back-End bei einem Versuch eine zwischenspeicherbare Antwort sendet. Wenn die Sitzung bereits eingerichtet ist, spielt es keine Rolle, ob die Antwort aus dem Back-End zwischengespeichert werden kann.
+> Die Sitzungsaffinität wird unter den folgenden Umständen hergestellt, **sofern** die Antwort einen HTTP 304-Statuscode enthält:
+> - Die Antwort hat spezifische Werte für den ```Cache-Control```-Header, die ein Zwischenspeichern verhindern, wie z.B. „private“ oder „no-store“.
+> - Die Antwort enthält einen noch nicht abgelaufenen ```Authorization```-Header.
+> - Die Antwort enthält einen HTTP 302-Statuscode.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
+- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).

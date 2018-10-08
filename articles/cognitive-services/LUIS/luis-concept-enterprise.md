@@ -1,20 +1,21 @@
 ---
-title: Unternehmenskonzepte für LUIS-Apps – Azure | Microsoft-Dokumentation
+title: Unternehmenskonzepte für eine LUIS-App – Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Grundlegende Entwurfskonzepte für große LUIS-Apps
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fda4a089866950688d88f9f47988c1540abe1cc0
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3782874ac69b299e24cf1555b290a9d2d86b6285
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224859"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038339"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Unternehmensstrategien für LUIS-Apps
 Lesen Sie die folgenden Entwurfsstrategien für Unternehmens-Apps.
@@ -50,9 +51,7 @@ Verwenden Sie das Befehlszeilentool [Dispatch][dispatch-tool] in den [BotBuilder
 
 ![Konzeptionelle Darstellung der Dispatcharchitektur](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-Die übergeordnete Domäne wird in LUIS als **V Dispatch**-App bezeichnet. 
-
-![Screenshot der Liste der LUIS-Apps mit vom Dispatchtool erstellter LUIS-App](./media/luis-concept-enterprise/dispatch.png)
+Die übergeordnete Domäne ist in LUIS mit einer Version mit dem Namen `Dispatch` in der Liste der Apps vermerkt. 
 
 Der Chatbot empfängt die Äußerung und sendet sie für die Vorhersage an die übergeordnete LUIS-App. Die bestbewertete Vorhersage der Absicht aus der übergeordneten App bestimmt, welche untergeordnete LUIS-App als Nächstes aufgerufen wird. Der Chatbot sendet die Äußerung an die untergeordnete App, um eine genauere Vorhersage zu erhalten.
 
@@ -66,4 +65,4 @@ Eine Dispatchanwendung hat maximal 500 Dispatchquellen, die 500 Absichten entspr
 * Erfahren Sie, wie Sie [in Batches testen](luis-how-to-batch-test.md).
 
 [dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
-[dispatch-tool]: https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch
+[dispatch-tool]: https://aka.ms/dispatch-tool

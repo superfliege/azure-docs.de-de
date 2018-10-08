@@ -4,17 +4,17 @@ description: In diesem Tutorial stellen Sie eine Azure-Funktion als Modul auf ei
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/22/2018
+ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cf973899a6f56010c47588bdd506418a3d9a7cd8
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 66dcb3347741c4826fc62cc258c67b85f3939ff7
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744041"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422761"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module (Vorschauversion)
 
@@ -45,7 +45,7 @@ Ein Azure IoT Edge-Gerät:
 
 Cloudressourcen:
 
-* Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) mit Standardtarif in Azure. 
+* Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) im kostenlosen Tarif in Azure. 
 
 Entwicklungsressourcen:
 

@@ -1,20 +1,21 @@
 ---
-title: Grundlegendes zu Ihren LUIS-Schlüsseln – Azure | Microsoft-Dokumentation
-description: Verwenden Sie LUIS-Schlüssel (Language Understanding Intelligent Service), um Ihre App zu erstellen und Ihren Endpunkt abzufragen.
+title: Erläuterungen zu Ihren LUIS-Schlüsseln
+titleSuffix: Azure Cognitive Services
+description: 'LUIS verwendet zwei Schlüssel: Erstellungs- und Endpunktschlüssel. Der Erstellungsschlüssel wird automatisch erstellt, wenn Sie Ihr LUIS-Konto erstellen. Wenn Sie Ihre LUIS-App veröffentlichen möchten, müssen Sie den Endpunktschlüssel erstellen, ihn Ihrer LUIS-App zuweisen und ihn für Endpunktabfragen verwenden.'
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b40ca74999be1821ffa329224ff419646591960e
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a4bd20f9f8a6a8317e161b1d84e948391cd08140
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225175"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034925"
 ---
 # <a name="keys-in-luis"></a>Schlüssel in LUIS
 LUIS verwendet zwei Schlüssel: [Erstellungs-](#programmatic-key) und [Endpunktschlüssel](#endpoint-key). Der Erstellungsschlüssel wird automatisch erstellt, wenn Sie Ihr LUIS-Konto erstellen. Wenn Sie Ihre LUIS-App veröffentlichen möchten, müssen Sie den [Endpunktschlüssel erstellen](luis-how-to-azure-subscription.md#create-luis-endpoint-key), ihn Ihrer LUIS-App [zuweisen](luis-how-to-manage-keys.md#assign-endpoint-key) und ihn [für Endpunktabfragen verwenden](#use-endpoint-key-in-query). 
@@ -35,15 +36,15 @@ Sie finden den Erstellungsschlüssel, indem Sie sich bei [LUIS](luis-reference-r
 
 ![Erstellungsschlüssel](./media/luis-concept-keys/programatic-key.png)
 
-Wenn Sie **Produktionsendpunkte abfragen** möchten, erstellen Sie ein [LUIS-Abonnement](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) in Azure. 
+Wenn Sie **Produktionsendpunkte abfragen** möchten, erstellen Sie das [LUIS-Abonnement](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) in Azure. 
 
 > [!CAUTION]
 > Der Einfachheit halber verwenden viele der Beispiele den Erstellungsschlüssel, da sein [Kontingent](luis-boundaries.md#key-limits) bereits einige Endpunktabfragen umfasst.  
 
 ## <a name="endpoint-key"></a>Endpunktschlüssel
- Wenn Sie **Produktionsendpunkte abfragen** möchten, erstellen Sie im Azure-Portal einen [LUIS-Schlüssel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). Merken Sie sich den zum Erstellen des Schlüssels verwendeten Namen, da Sie ihn benötigen, wenn Sie den Schlüssel der App hinzufügen.
+ Wenn Sie **Produktionsendpunkte abfragen** möchten, erstellen Sie im Azure-Portal einen [LUIS-Schlüssel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). Merken Sie sich den zum Erstellen des Schlüssels verwendeten Namen, da Sie ihn benötigen, wenn Sie den Schlüssel zur App hinzufügen.
 
-Nach Abschluss des LUIS-Abonnementvorgangs [fügen Sie den Schlüssel](luis-how-to-manage-keys.md#assign-endpoint-key) der App auf der Seite **Veröffentlichen** hinzu. 
+Nach Abschluss des LUIS-Abonnementvorgangs [weisen Sie den Schlüssel](luis-how-to-manage-keys.md#assign-endpoint-key) der App zu. 
 
 Der Endpunktschlüssel umfasst ein Kontingent an Endpunkttreffern basierend auf dem Nutzungsplan, den Sie beim Erstellen des Schlüssels angegeben haben. Weitere Informationen zu den Preisen finden Sie unter [Cognitive Services-Preise](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h).
 
@@ -73,6 +74,10 @@ Veröffentlichungsregionen unterscheiden sich von Erstellungsregionen. Stellen S
 
 ## <a name="key-limit-errors"></a>Fehler für Schlüsselgrenzwerte
 Beim Überschreiten Ihres Kontingents pro Sekunde erhalten Sie den HTTP-Fehler 429. Beim Überschreiten Ihres Kontingents pro Monat erhalten Sie den HTTP-Fehler 403. Sie beheben diese Fehler, indem Sie den LUIS-[Endpunktschlüssel](#endpoint-key) abrufen und den Schlüssel auf der [LUIS](luis-reference-regions.md#luis-website)-Website auf der Seite **Veröffentlichen** der App [zuweisen](luis-how-to-manage-keys.md#assign-endpoint-key).
+
+## <a name="automating-assignment-of-the-endpoint-key"></a>Automatisieren der Zuweisung des Endpunktschlüssels
+
+Um den Endpunktschlüssel einer LUIS-App zuzuweisen, müssen Sie die LUIS-Website wegen der richtigen Erstellungs- und Veröffentlichungs[regionen](luis-reference-regions.md) verwenden. Es gibt **keine** automatisierte Methode für diesen Vorgang, unabhängig vom Mechanismus, etwa einem Azure Resource Manager-Skript, der Azure CLI, programmgesteuert mit dem SDK oder den APIs.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

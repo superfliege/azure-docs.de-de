@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: cb8ba5169a6ebfbb11ba0acfa9b9f463b7cdf6a1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 7d8325ce04a9fa7853fb622062022a6938375f96
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520803"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47430980"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Übersicht über die öffentliche IP-Adresse (klassisch) auf Instanzebene
 Eine öffentliche IP-Adresse auf Instanzebene (Instance-Level Public IP, ILPIP) ist eine öffentliche IP-Adresse, die Sie einer VM oder Cloud Services-Rolleninstanz direkt zuweisen können, statt sie dem Clouddienst zuzuweisen, in dem sich Ihre VM oder Rolleninstanz befindet. Eine ILPIP tritt nicht an die Stelle der virtuellen IP-Adresse (VIP), die Ihrem Clouddienst zugeordnet ist. Es ist vielmehr eine zusätzliche IP-Adresse, mit der Sie direkt eine Verbindung mit der VM oder Rolleninstanz herstellen können.
@@ -31,10 +31,13 @@ Eine öffentliche IP-Adresse auf Instanzebene (Instance-Level Public IP, ILPIP) 
 
 Wie in Abbildung 1 dargestellt, erfolgt der Zugriff auf den Clouddienst über eine VIP-Adresse, während auf die einzelnen virtuellen Computer normalerweise unter Angabe von VIP:&lt;Portnummer&gt; zugegriffen wird. Die Zuweisung einer ILPIP zu einem bestimmten virtuellen Computer ermöglicht es, über diese IP-Adresse direkt auf diesen virtuellen Computer zuzugreifen.
 
-Bei der Erstellung eines Clouddiensts in Azure werden automatisch entsprechende DNS A-Datensätze für den Zugriff auf den Dienst über einen vollständig qualifizierten Domänennamen (FQDN) anstelle der tatsächlichen VIP-Adresse erstellt. Dasselbe geschieht für eine ILPIP, um den Zugriff auf die VM oder Rolleninstanz über den FQDN statt der ILPIP zu ermöglichen. Wenn Sie beispielsweise einen Clouddienst namens *contosoadservice* erstellen und eine Webrolle namens *contosoweb* mit zwei Instanzen konfigurieren, registriert Azure die folgenden A-Datensätze für die Instanzen:
+Bei der Erstellung eines Clouddiensts in Azure werden automatisch entsprechende DNS-A-Einträge erstellt, um den Zugriff auf den Dienst über einen vollqualifizierten Domänennamen (FQDN) anstelle der tatsächlichen VIP-Adresse zuzulassen. Dasselbe geschieht für eine ILPIP, um den Zugriff auf die VM oder Rolleninstanz über den FQDN statt der ILPIP zu ermöglichen. Wenn Sie beispielsweise einen Clouddienst namens *contosoadservice* erstellen, eine Webrolle namens *contosoweb* mit zwei Instanzen konfigurieren und `domainNameLabel` in der CSCFG-Datei auf *WebPublicIP* festgelegt ist, registriert Azure die folgenden A-Einträge für die Instanzen:
 
-* contosoweb\_IN_0.contosoadservice.cloudapp.net
-* contosoweb\_IN_1.contosoadservice.cloudapp.net 
+
+* WebPublicIP.0.contosoadservice.cloudapp.net
+* WebPublicIP.1.contosoadservice.cloudapp.net
+* ...
+
 
 > [!NOTE]
 > Sie können einer VM- oder Rolleninstanz jeweils nur eine ILPIP zuweisen. Sie können bis zu 5 ILPIPs pro Abonnement verwenden. ILPIPs werden für Multi-NIC-VMs nicht unterstützt.
@@ -152,7 +155,7 @@ Um eine ILPIP zu einer Cloud Services-Rolleninstanz hinzuzufügen, führen Sie d
         <AddressAssignments>
           <InstanceAddress roleName="WebRole1">
         <PublicIPs>
-          <PublicIP name="MyPublicIP" domainNameLabel="MyPublicIP" />
+          <PublicIP name="MyPublicIP" domainNameLabel="WebPublicIP" />
             </PublicIPs>
           </InstanceAddress>
         </AddressAssignments>
@@ -162,14 +165,22 @@ Um eine ILPIP zu einer Cloud Services-Rolleninstanz hinzuzufügen, führen Sie d
 3. Laden Sie die CSFG-Datei für den Clouddienst hoch, indem Sie Schritte ausführen, die im Artikel [Konfigurieren von Cloud-Diensten](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) aufgeführt sind.
 
 ### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>Abrufen von ILPIP-Informationen für einen Clouddienst
-Führen Sie zum Anzeigen der ILPIP-Informationen pro Rolleninstanz den folgenden PowerShell-Befehl aus, und beobachten Sie die Werte für *PublicIPAddress* und *PublicIPName*:
+Führen Sie zum Anzeigen der ILPIP-Informationen pro Rolleninstanz den folgenden PowerShell-Befehl aus, und beobachten Sie die Werte für *PublicIPAddress*, *PublicIPName*, *PublicIPDomainNameLabel* und *PublicIPFqdns*:
 
 ```powershell
-$roles = Get-AzureRole -ServiceName PaaSFTPService -Slot Production -RoleName WorkerRole1 -InstanceDetails
+Add-AzureAccount
+
+$roles = Get-AzureRole -ServiceName <Cloud Service Name> -Slot Production -RoleName WebRole1 -InstanceDetails
 
 $roles[0].PublicIPAddress
 $roles[1].PublicIPAddress
 ```
+
+Sie können auch `nslookup` für die Abfrage des A-Eintrags der Unterdomäne verwenden:
+
+```batch
+nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net
+``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über die Funktionsweise der [IP-Adressierung](virtual-network-ip-addresses-overview-classic.md) im klassischen Bereitstellungsmodell.

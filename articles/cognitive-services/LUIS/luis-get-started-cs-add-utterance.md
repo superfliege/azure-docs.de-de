@@ -1,20 +1,21 @@
 ---
-title: 'Schnellstart: Ändern des Modells und Trainieren der LUIS-App mit C# – Azure Cognitive Services | Microsoft-Dokumentation'
+title: 'C#-Schnellstartanleitung: Ändern des Modells und Trainieren einer LUIS-App'
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung für C# fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App. Bei Beispieläußerungen handelt es sich um Konversationstext von Benutzern, der einer Absicht zugeordnet ist. Indem Sie Beispieläußerungen für Absichten bereitstellen, teilen Sie LUIS mit, welche Arten des vom Benutzer angegebenen Texts zu welcher Absicht gehören.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0c631fe281587c86f26643367aead14683b699df
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: aab9651092f7ad5dbc78c31db8df4ef3538fedfc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160914"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039971"
 ---
 # <a name="quickstart-change-model-using-c"></a>Schnellstart: Ändern des Modells mit C#
 

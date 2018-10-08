@@ -1,21 +1,21 @@
 ---
-title: Hinzufügen von Entitäten in LUIS-Apps | Microsoft-Dokumentation
-titleSuffix: Azure
+title: Hinzufügen von Entitäten in LUIS-Apps
+titleSuffix: Azure Cognitive Services
 description: Hinzufügen von Entitäten (Schlüsseldaten in Ihrer Anwendungsdomäne) in Language Understanding-Apps (LUIS).
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e97f9a5391799849983bd98db5400e0a842627b7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e82955da24e127e5536c2e40ad2cccf07c5fa173
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224125"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032001"
 ---
 # <a name="manage-entities"></a>Verwalten von Entitäten
 Nachdem Sie die [Absichten](luis-concept-intent.md) Ihrer App identifiziert haben, müssen Sie [Beispieläußerungen](luis-concept-utterance.md) mit [Entitäten](luis-concept-entity-types.md) bezeichnen. Entitäten sind die wichtigen Teile eines Befehls oder einer Frage und können entscheidend dafür sein, dass Ihre Client-App ihre Aufgabe ausführt. 
@@ -31,8 +31,6 @@ Vordefinierte Entitäten werden im [Recognizers-Text](https://github.com/Microso
  
 2. Wählen Sie auf der Seite **Entitäten** die Option **Vordefinierte Entitäten verwalten** aus.
 
-    ![Screenshot zum Hinzufügen einer vordefinierten Entität auf der Seite „Entitäten“](./media/add-entities/manage-prebuilt-entities-button.png)
-
 3. Wählen Sie im Dialogfeld **Vordefinierte Entitäten hinzufügen oder entfernen** die vordefinierten Entitäten **number** und **datetimeV2** aus. Wählen Sie dann **Fertig** aus.
 
     ![Screenshot des Dialogfelds „Vordefinierte Entität hinzufügen“](./media/add-entities/list-of-prebuilt-entities.png)
@@ -43,8 +41,6 @@ Vordefinierte Entitäten werden im [Recognizers-Text](https://github.com/Microso
 Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt. 
 
 1. Klicken Sie in Ihrer App im Abschnitt **Erstellen** im linken Bereich auf **Entitäten**, und wählen Sie **Neue Entität erstellen** aus.
-
-    ![Screenshot: Seite „Entitäten“ mit hervorgehobener Schaltfläche „Neue Entität erstellen“](./media/add-entities/create-new-entity-button.png)
 
 2. Geben Sie im Popupdialogfeld `Airline` in das Feld **Entitätsname** ein, und wählen Sie **Einfach** in der Liste **Entitätstyp** und dann **Fertig** aus.
 

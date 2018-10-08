@@ -2,32 +2,39 @@
 title: Preise und Abrechnung – Azure Logic Apps | Microsoft-Dokumentation
 description: Erfahren Sie, wie Preisdetails und Abrechnung für Azure Logic Apps funktionieren.
 services: logic-apps
-author: kevinlam1
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
-ms.topic: article
-ms.date: 05/11/2018
+ms.suite: logic-apps
+author: kevinlam1
 ms.author: klam
-ms.openlocfilehash: e1702de42be8510412a6479b594a198a84d15ae2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: estfan, LADocs
+ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
+ms.topic: article
+ms.date: 09/24/2018
+ms.openlocfilehash: 5f9147035c07bbe4fb3f38b74025015e70dd87b3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299255"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159559"
 ---
-# <a name="logic-apps-pricing-model"></a>Preismodell für Logik-Apps
+# <a name="pricing-model-for-azure-logic-apps"></a>Preismodell für Azure Logic Apps
 
 Sie können automatisierte skalierbare Integrationsworkflows in der Cloud mit Azure Logic Apps erstellen und ausführen. Hier sind die Details zur Abrechnung und zu den Preisen für Logic Apps angegeben. 
 
+<a name="consumption-pricing"></a>
+
 ## <a name="consumption-pricing-model"></a>Modell für nutzungsbasierte Preise
 
-Bei neu erstellten Logik-Apps zahlen Sie nur für die Ressourcen, die Sie wirklich nutzen. Für neue Logik-Apps werden ein Verbrauchsplan und ein Preismodell verwendet. Dies bedeutet, dass alle Aktionsausführungen, die von einer Logik-App-Instanz durchgeführt werden, nutzungsbezogen abgerechnet werden. Jeder Schritt einer Logik-App-Definition ist eine Aktion, die Trigger, Ablaufsteuerungsschritte und Aufrufe von integrierten Aktionen und Connectors umfasst. Weitere Informationen finden Sie unter [Logik-Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
+Bei neuen Logik-Apps, die Sie mit dem öffentlichen oder „globalen“ Logic Apps-Dienst erstellen, bezahlen Sie nur für Ihre tatsächliche Nutzung. Diese Logik-Apps verwenden einen nutzungsbezogenen Plan und ein Preismodell. Dies bedeutet, dass alle Aktionsausführungen, die von einer Logik-App durchgeführt werden, nutzungsbezogen abgerechnet werden. Jeder Schritt einer Logik-App-Definition ist eine Aktion, die Trigger, Ablaufsteuerungsschritte und Aufrufe von integrierten Aktionen und Connectors umfasst. Weitere Informationen finden Sie unter [Logik-Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
+
+<a name="fixed-pricing"></a>
+
+## <a name="fixed-pricing-model"></a>Feststehendes Preismodell
+
+> [!NOTE]
+> Die Integrationsdienstumgebung befindet sich in der *privaten Vorschau*. Um den Zugriff anzufordern, [erstellen Sie Ihre Beitrittsanforderung hier](https://aka.ms/iseprivatepreview).
+
+Für neue Logik-Apps, die Sie mit einer [*Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erstellen, d.h. einer privaten isolierten Logic Apps-Instanz, die dedizierte Ressourcen verwendet, zahlen Sie eine monatliche Grundgebühr für integrierte Aktionen und Standardconnectors mit der ISE-Bezeichnung. Ihre ISE umfasst einen kostenlosen Unternehmensconnector, während zusätzliche Unternehmensconnectors basierend auf dem Verbrauchspreis des Unternehmens abgerechnet werden. Weitere Informationen finden Sie unter [Logik-Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="triggers"></a>
 
@@ -45,9 +52,9 @@ Trigger sind spezielle Aktionen, mit denen eine Logik-App-Instanz erstellt wird,
 
 Sie finden Triggerausführungen im Bereich „Übersicht“ Ihrer Logik-App unter dem Abschnitt „Triggerverlauf“.
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>Aktionen
 
-Integrierte Aktionen (z.B. Aktionen zum Aufrufen von HTTP, Azure Functions oder API Management) und auch Ablaufsteuerungsschritte werden als native Aktionen, die jeweils einen eigenen Typ haben, nutzungsbezogen abgerechnet. Aktionen, mit denen [Connectors](https://docs.microsoft.com/connectors) aufgerufen werden, haben den Typ „ApiConnection“. Diese Connectors sind als Standard- oder Unternehmensconnectors klassifiziert, deren Verbrauch zu den jeweiligen [Preisen][pricing] abgerechnet wird. 
+Integrierte Aktionen (z.B. Aktionen zum Aufrufen von HTTP, Azure Functions oder API Management) und auch Ablaufsteuerungsschritte werden als native Aktionen, die jeweils einen eigenen Typ haben, nutzungsbezogen abgerechnet. Aktionen, mit denen [Connectors](https://docs.microsoft.com/connectors) aufgerufen werden, haben den Typ „ApiConnection“. Diese Connectors sind als Standard- oder Unternehmensconnectors klassifiziert, deren Verbrauch zu den jeweiligen [Preisen][pricing] abgerechnet wird. Unternehmensconnectors in der *Vorschau* werden als Standardconnectors in Rechnung gestellt.
 
 Alle erfolgreich und nicht erfolgreich ausgeführten Aktionen werden als Aktionsausführungen gezählt und nutzungsbezogen abgerechnet. Aktionen, die aufgrund von nicht erfüllten Bedingungen übersprungen werden, oder Aktionen, die aufgrund einer Beendigung der Logik-App vor ihrem Abschluss nicht ausgeführt werden, werden nicht als Aktionsausführungen gezählt. Deaktivierte Logik-Apps können keine neuen Instanzen initiieren, sodass keine Gebühren anfallen, während sie deaktiviert sind.
 

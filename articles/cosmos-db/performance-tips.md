@@ -1,5 +1,5 @@
 ---
-title: Leistungstipps für Azure Cosmos DB und .NET | Microsoft Docs
+title: Leistungstipps für Azure Cosmos DB und .NET | Microsoft-Dokumentation
 description: Machen Sie sich mit Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos DB-Datenbanken vertraut.
 keywords: "So wird's gemacht: Verbessern der Datenbankleistung"
 services: cosmos-db
@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 47896b681c2ba43d4ca41682ec51e0dfd167c9d5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a805294ecb416d18f3ce13981d26a7d25cd5a204
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700955"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432850"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
 
@@ -42,7 +42,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
    * Direkter Modus
 
-     Der direkte Modus unterstützt die Verbindung über TCP- und HTTPS-Protokolle. Derzeit wird der direkte Modus nur in .NET Standard 2.0 für Windows unterstützt. Bei Verwendung des direkten Modus stehen zwei Protokolloptionen zur Verfügung:
+     Der direkte Modus unterstützt die Verbindung über TCP- und HTTPS-Protokolle. Derzeit wird der direkte Modus in .NET Standard 2.0 unterstützt. Bei Verwendung des direkten Modus stehen zwei Protokolloptionen zur Verfügung:
 
     * TCP
     * HTTPS

@@ -1,20 +1,21 @@
 ---
-title: 'Schnellstart: Ändern des Modells und Trainieren der LUIS-App mit Ruby – Azure Cognitive Services | Microsoft-Dokumentation'
+title: 'Ruby-Schnellstartanleitung: Ändern des Modells und Trainieren einer LUIS-App'
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung für Ruby fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App. Bei Beispieläußerungen handelt es sich um Konversationstext von Benutzern, der einer Absicht zugeordnet ist. Indem Sie Beispieläußerungen für Absichten bereitstellen, teilen Sie LUIS mit, welche Arten des vom Benutzer angegebenen Texts zu welcher Absicht gehören.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 537ebe2d008e313d2fb29d05143804c3478567e8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2d4633592742bd81cc6972884a0c4f5141aa9943
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159451"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030902"
 ---
 # <a name="quickstart-change-model-using-ruby"></a>Schnellstart: Ändern des Modells mit Ruby
 
