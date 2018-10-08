@@ -51,15 +51,16 @@ items:
         href: quickstart-v1-dotnet.md
       - name: Xamarin
         href: quickstart-v1-xamarin.md
-    - name: Dienst zu Dienst
+    - name: Dienst-zu-Dienst
       href: sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity
   - name: Beispiele
     href: sample-v1-code.md
   - name: Konzepte
     items:
     - name: Anwendungstypen
-      href: app-types.md
       items:
+      - name: Anwendungsarten
+        href: app-types.md
       - name: Einseitige Anwendung
         href: single-page-application.md
       - name: Web-App
@@ -71,26 +72,27 @@ items:
       - name: Daemon- oder Serveranwendung
         href: service-to-service.md
     - name: Authentifizierung
-      href: authentication-scenarios.md
       items:
-      - name: Protokolle
+      - name: Authentifizierungsgrundlagen
+        href: authentication-scenarios.md
+      - name: OAuth 2.0- und OpenID Connect-Protokoll
         items:
-        - name: OAuth- und OpenID Connect-Protokoll
-          items:
-          - name: Impliziter OAuth 2.0-Gewährungsablauf
-            href: v1-oauth2-implicit-grant-flow.md
-          - name: OAuth 2.0-Autorisierungscodeberechtigung
-            href: v1-protocols-oauth-code.md
-          - name: OAuth 2.0-Ablauf vom Typ „Im Auftrag von“
-            href: v1-oauth2-on-behalf-of-flow.md
-          - name: Gewähren von OAuth 2.0-Clientanmeldeinformationen
-            href: v1-oauth2-client-creds-grant-flow.md
-        - name: SAML 2.0
-          items:
-          - name: Einmaliges Anmelden
-            href: single-sign-on-saml-protocol.md
-          - name: Abmelden
-            href: single-sign-out-saml-protocol.md
+        - name: OpenID Connect
+          href: v1-protocols-openid-connect-code.md
+        - name: Impliziter OAuth 2.0-Gewährungsablauf
+          href: v1-oauth2-implicit-grant-flow.md
+        - name: OAuth 2.0-Autorisierungscodeberechtigung
+          href: v1-protocols-oauth-code.md
+        - name: OAuth 2.0-Ablauf vom Typ „Im Auftrag von“
+          href: v1-oauth2-on-behalf-of-flow.md
+        - name: Gewähren von OAuth 2.0-Clientanmeldeinformationen
+          href: v1-oauth2-client-creds-grant-flow.md
+      - name: SAML 2.0-Protokoll
+        items:
+        - name: Einmaliges Anmelden
+          href: single-sign-on-saml-protocol.md
+        - name: Abmelden
+          href: single-sign-out-saml-protocol.md
         - name: WS-Federation-
           items:
           - name: Verbundmetadaten
@@ -106,16 +108,18 @@ items:
       - name: SAML-Token
         href: reference-saml-tokens.md
     - name: Anwendungskonfiguration
-      href: app-objects-and-service-principals.md
       items:
+      - name: Anwendungen und Dienstprinzipale
+        href: app-objects-and-service-principals.md
       - name: Wie und warum werden Apps zu Azure AD hinzugefügt?
         href: active-directory-how-applications-are-added.md
       - name: Apps mit einem Mandanten und mit mehreren Mandanten
         href: single-and-multi-tenant-apps.md
     - name: Berechtigungen und Zustimmung
       displayName: Scopes
-      href: v1-permissions-and-consent.md
       items:
+      - name: Arten von Berechtigungen und Zustimmungen
+        href: v1-permissions-and-consent.md
       - name: Zustimmungsframework
         href: consent-framework.md
       - name: Erfahrungen mit der Anwendungszustimmung
@@ -143,6 +147,8 @@ items:
           href: ../active-directory-enterprise-app-role-management.md
         - name: Anpassen von Ansprüchen
           href: active-directory-saml-claims-customization.md
+      - name: Bewährte Methoden für die ADAL-Fehlerbehandlung
+        href: active-directory-devhowto-adal-error-handling.md
     - name: Anwendungskonfiguration
       items:
       - name: Umwandeln einer App mit nur einem Mandanten in eine mehrinstanzenfähige App
@@ -185,7 +191,7 @@ items:
       href: https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers
   - name: Referenzen
     items:
-    - name: Azure AD-Authentifizierungsbibliotheken
+    - name: Authentifizierungsbibliotheken
       displayName: ADAL
       href: active-directory-authentication-libraries.md
     - name: Azure AD Graph-API
@@ -276,20 +282,21 @@ items:
     - name: Anwendungstypen
       href: v2-app-types.md
     - name: Authentifizierung
-      href: authentication-scenarios.md
       items:
-      - name: Protokolle
+      - name: Authentifizierungsgrundlagen
+        href: authentication-scenarios.md
+      - name: OAuth 2.0- und OpenID Connect-Protokoll
         items:
-        - name: OAuth- und OpenID Connect-Protokoll
-          items:
-          - name: Impliziter OAuth 2.0-Gewährungsablauf
-            href: v2-oauth2-implicit-grant-flow.md
-          - name: OAuth 2.0-Autorisierungscodeberechtigung
-            href: v2-oauth2-auth-code-flow.md
-          - name: OAuth 2.0-Ablauf vom Typ „Im Auftrag von“
-            href: v2-oauth2-on-behalf-of-flow.md
-          - name: Gewähren von OAuth 2.0-Clientanmeldeinformationen
-            href: v2-oauth2-client-creds-grant-flow.md
+        - name: OpenID Connect
+          href: v2-protocols-oidc.md
+        - name: Impliziter OAuth 2.0-Gewährungsablauf
+          href: v2-oauth2-implicit-grant-flow.md
+        - name: OAuth 2.0-Autorisierungscodeberechtigung
+          href: v2-oauth2-auth-code-flow.md
+        - name: OAuth 2.0-Ablauf vom Typ „Im Auftrag von“
+          href: v2-oauth2-on-behalf-of-flow.md
+        - name: Gewähren von OAuth 2.0-Clientanmeldeinformationen
+          href: v2-oauth2-client-creds-grant-flow.md
       - name: ID-Token
         href: id-tokens.md
       - name: Zugriffstoken
@@ -297,14 +304,16 @@ items:
       - name: Zertifikatanmeldeinformationen
         href: active-directory-certificate-credentials.md
     - name: Anwendungskonfiguration
-      href: app-objects-and-service-principals.md
       items:
+      - name: Anwendungen und Dienstprinzipale
+        href: app-objects-and-service-principals.md
       - name: Apps mit einem Mandanten und mit mehreren Mandanten
         href: single-and-multi-tenant-apps.md
     - name: Berechtigungen und Zustimmung
       displayName: Scopes
-      href: v2-permissions-and-consent.md
       items:
+      - name: Arten von Berechtigungen und Zustimmungen
+        href: v2-permissions-and-consent.md
       - name: Zustimmungsframework
         href: consent-framework.md
       - name: Erfahrungen mit der Anwendungszustimmung
@@ -347,7 +356,7 @@ items:
         href: vs-active-directory-error.md
   - name: Referenzen
     items:
-    - name: Microsoft Authentication Library (MSAL)
+    - name: Authentifizierungsbibliotheken
       displayName: MSAL
       href: reference-v2-libraries.md
     - name: Azure AD-APIs in Microsoft Graph
@@ -373,9 +382,9 @@ items:
     href: developer-support-help-options.md
   - name: Verwaltete Dienstidentität für Azure-Ressourcen
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 180b7962d6083887a25f582471b6b3e405f3f8f9
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 139d80313bb663a45e476e90812ce7772beccc19
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419667"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785000"

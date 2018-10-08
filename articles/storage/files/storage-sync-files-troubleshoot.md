@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 4434b67393d34c3418e44e82681a586c268a37e5
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: cbfe3022c4ffd03e4ab93682eb14a5a588aa0013
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746995"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409472"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -125,6 +125,16 @@ Set-AzureRmStorageSyncServerEndpoint `
     -CloudTiering true `
     -VolumeFreeSpacePercent 60
 ```
+<a id="server-endpoint-noactivity"></a>**Serverendpunkt hat den Integritätsstatus „Keine Aktivität“ oder „Ausstehend“, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Als offline angezeigt“**  
+
+Dieses Problem kann auftreten, wenn der Überwachungsprozess für die Speichersynchronisierung nicht ausgeführt wird oder der Server aufgrund eines Proxy oder einer Firewall nicht mit dem Azure-Dateisynchronisierungsdienst kommunizieren kann.
+
+Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
+
+1. Öffnen Sie den Task-Manager auf dem Server und überprüfen Sie, ob der Überwachungsprozess für die Speichersynchronisierung (AzureStorageSyncMonitor.exe) ausgeführt wird. Wenn der Prozess nicht ausgeführt wird, versuchen Sie zunächst, den Server neu zu starten. Wenn der Neustart des Servers das Problem nicht behebt, deinstallieren und installieren Sie den Agent für die Azure-Dateisynchronisierung neu (Hinweis: Die Servereinstellungen bleiben bei der Deinstallation und Neuinstallation des Agents erhalten).
+2. Überprüfen Sie, ob Firewall- und Proxy-Einstellungen ordnungsgemäß konfiguriert sind:
+    - Wenn sich der Server hinter einer Firewall befindet, überprüfen Sie, ob Port 443 für ausgehenden Datenverkehr zulässig ist. Wenn die Firewall den Datenverkehr auf bestimmte Domänen einschränkt, bestätigen Sie, dass die in der Firewall-[Dokumentation](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) aufgeführten Domänen zugänglich sind.
+    - Wenn sich der Server hinter einem Proxy befindet, konfigurieren Sie die computerweiten oder App-spezifischen Proxyeinstellungen, indem Sie den Schritten in der Proxy-[Dokumentation](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy) folgen.
 
 ## <a name="sync"></a>Synchronisierung
 <a id="afs-change-detection"></a>**Wie lange dauert es, bis eine Datei auf Servern in der Synchronisierungsgruppe synchronisiert wird, wenn ich die Datei direkt auf meiner Azure-Dateifreigabe mithilfe von SMB oder über das Portal erstellt habe?**  
@@ -226,14 +236,13 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Eine Datei wurde während der Synchronisierung geändert, deshalb muss sie erneut synchronisiert werden. | Keine weiteren Maßnahmen erforderlich. |
 
 #### <a name="handling-unsupported-characters"></a>Behandlung von nicht unterstützten Zeichen
-Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercodes 0x7b und 0x8007007b) anzeigt, sollten Sie die jeweiligen Zeichen aus den entsprechenden Dateien entfernen oder ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen.
+Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercodes 0x7b und 0x8007007b) anzeigt, sollten Sie die jeweiligen Zeichen aus den entsprechenden Dateien entfernen oder ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-tool) können Sie nicht unterstützte Zeichen identifizieren.
 
 Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchronisierung noch nicht unterstützt.
 
 | Zeichensatz | Zeichenanzahl |
 |---------------|-----------------|
 | <ul><li>0x0000009D (Operating System Command, OSC)</li><li>0x00000090 (Device Control String, DCS)</li><li>0x0000008F (Single Shift Three, SS3)</li><li>0x00000081 (High Octet Preset)</li><li>0x0000007F (Delete, DEL)</li><li>0x0000008D (Reverse Line Feed, RI)</li></ul> | 6 |
-| <ul><li>0x0000200F (Right-to-Left Mark)</li><li>0x0000200E (Left-to-Right Mark)</li><li>0x0000202E (Right-to-Left Override)</li><li>0x0000202D (Left-to-Right Override)</li><li>0x0000202C (Pop Directional Formatting)</li><li>0x0000202B (Right-to-Left Embedding)</li><li>0x0000202A (Left-to-Right Embedding)</li></ul> | 7 |
 | 0x0000FDD0–0x0000FDEF (arabische Darstellungsformen) | 32 |
 | 0x0000FFF0–0x0000FFFF (Sonderzeichen) | 16 |
 | <ul><li>0x0001FFFE–0x0001FFFF = 2 (Nicht-Zeichen)</li><li>0x0002FFFE–0x0002FFFF = 2 (Nicht-Zeichen)</li><li>0x0003FFFE–0x0003FFFF = 2 (Nicht-Zeichen)</li><li>0x0004FFFE–0x0004FFFF = 2 (Nicht-Zeichen)</li><li>0x0005FFFE–0x0005FFFF = 2 (Nicht-Zeichen)</li><li>0x0006FFFE–0x0006FFFF = 2 (Nicht-Zeichen)</li><li>0x0007FFFE–0x0007FFFF = 2 (Nicht-Zeichen)</li><li>0x0008FFFE–0x0008FFFF = 2 (Nicht-Zeichen)</li><li>0x0009FFFE–0x0009FFFF = 2 (Nicht-Zeichen)</li><li>0x000AFFFE–0x000AFFFF = 2 (Nicht-Zeichen)</li><li>0x000BFFFE–0x000BFFFF = 2 (Nicht-Zeichen)</li><li>0x000CFFFE–0x000CFFFF = 2 (Nicht-Zeichen)</li><li>0x000DFFFE–0x000DFFFF = 2 (Nicht-Zeichen)</li><li>0x000EFFFE–0x000EFFFF = 2 (nicht definiert)</li><li>0x000FFFFE–0x000FFFFF = 2 (zusätzlicher privater Verwendungsbereich)</li></ul> | 30 |

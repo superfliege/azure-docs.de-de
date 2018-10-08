@@ -45,8 +45,9 @@ items:
   - name: IoT Edge-Zertifikate
     href: iot-edge-certs.md
   - name: IoT Edge-Module
-    href: iot-edge-modules.md
     items:
+    - name: Grundlegendes zu Azure IoT Edge-Modulen
+      href: iot-edge-modules.md
     - name: Entwicklung
       href: module-development.md
     - name: Komposition
@@ -91,6 +92,8 @@ items:
       href: how-to-install-iot-edge-windows-with-linux.md
     - name: IoT Core
       href: how-to-install-iot-core.md
+    - name: Aktualisieren der Runtimeversion
+      href: how-to-update-iot-edge.md
   - name: Automatische Bereitstellung mit DPS
     items:
     - name: Linux
@@ -217,9 +220,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 79223f7d33eae68f5af8a143bbe2f86d208f8f6f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fa5d551c95493361cac9d661938b50fb9ad2fed6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407041"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816309"

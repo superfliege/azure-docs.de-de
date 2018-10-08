@@ -6,15 +6,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/15/2018
+ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bca4b13ea2a003ea428351bcff44944630387e1b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 20db515e99f3e7535ba7b60bbd84f050e33b7acb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528009"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033922"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Vorgehensweise beim Ausfall von Azure Storage
 Bei Microsoft arbeiten wir hart, um sicherzustellen, dass unsere Dienste immer verfügbar sind. Aufgrund höherer Gewalt können ungeplante Dienstausfälle in einer Region oder auch mehreren Regionen auftreten. Damit Sie mit diesen seltenen Vorkommen umgehen können, stellen wir Ihnen den folgenden allgemeinen Leitfaden für Azure Storage-Dienste zur Verfügung.
@@ -43,18 +43,16 @@ Wenn Sie [Read-Access Geo-Redundant-Speicher (RA-GRS)](storage-redundancy-grs.md
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Was bei einem Storage-Failover zu erwarten ist
 Wenn Sie [Georedundanter Speicher (GRS)](storage-redundancy-grs.md) oder [Read-Access Geo-Redundant-Speicher (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (empfohlen) ausgewählt haben, wird Azure Storage Ihre Daten dauerhaft in zwei Regionen (primär und sekundär) beibehalten. In beiden Regionen unterhält Azure Storage ständig mehrere Replikate Ihrer Daten.
 
-Wenn ein regionaler Notfall die primäre Region betrifft, versuchen wir zunächst, den Dienst in dieser Region wiederherzustellen. Abhängig von der Art des Notfalls und seinen Auswirkungen, ist es uns in seltenen Fällen nicht möglich, die primäre Region wiederherzustellen. Zu diesem Zeitpunkt werden wir ein Geofailover durchführen. Die regionsübergreifende Datenreplikation ist ein asynchroner Prozess, der eine Verzögerung mit sich bringen kann. Es ist daher möglich, dass Änderungen, die noch nicht in die sekundäre Region repliziert wurden, möglicherweise verlorengehen. Sie können die [„letzte Synchronisierungszeit“ Ihres Speicherkontos](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) abfragen, um Informationen zu Ihrem Replikationsstatus zu erhalten.
+Wenn ein regionaler Notfall die primäre Region betrifft, versuchen wir zunächst, den Dienst in dieser Region wiederherzustellen, um die bestmögliche Kombination aus RTO und RPO zu bieten. Abhängig von der Art des Notfalls und seinen Auswirkungen, ist es uns in seltenen Fällen nicht möglich, die primäre Region wiederherzustellen. Zu diesem Zeitpunkt werden wir ein Geofailover durchführen. Die regionsübergreifende Datenreplikation ist ein asynchroner Prozess, der eine Verzögerung mit sich bringen kann. Es ist daher möglich, dass Änderungen, die noch nicht in die sekundäre Region repliziert wurden, möglicherweise verlorengehen.
 
 Ein paar Punkte in Bezug auf das Geofailoverereignis des Speichers:
 
-* Das Geofailover des Speichers wird nur durch das Azure Storage-Team ausgelöst, es ist keine Kundenaktion erforderlich.
-* Ihre vorhandenen Speicherdienstendpunkte für Blobs, Tabellen, Warteschlangen und Dateien bleiben nach dem Failover unverändert. Der von Microsoft bereitgestellte DNS-Eintrag muss aktualisiert werden, um einen Wechsel von der primären Region in die sekundäre zu ermöglichen.  Microsoft führt dieses Update automatisch im Rahmen des geografischen Failoverprozesses aus.
+* Das Geofailover des Speichers wird nur durch das Azure Storage-Team ausgelöst, es ist keine Kundenaktion erforderlich. Der Failover wird ausgelöst, wenn das Azure Storage-Team alle Möglichkeiten der Wiederherstellung von Daten in derselben Region ausgeschöpft hat, die die beste Kombination aus RTO und RPO bietet.
+* Ihre vorhandenen Speicherdienstendpunkte für Blobs, Tabellen, Warteschlangen und Dateien bleiben nach dem Failover unverändert. Der von Microsoft bereitgestellte DNS-Eintrag muss aktualisiert werden, um einen Wechsel von der primären Region in die sekundäre zu ermöglichen. Microsoft führt dieses Update automatisch im Rahmen des geografischen Failoverprozesses aus.
 * Vor und während des Geofailovers besitzen Sie keinen Schreibzugriff auf das Speicherkonto aufgrund der Auswirkung des Notfalls. Sie können jedoch weiterhin von der sekundären Region auslesen, wenn das Speicherkonto als RA-GRS konfiguriert wurde.
-* Wenn das Geofailover abgeschlossen wurde und die DNS-Änderungen übermittelt wurden, werden der Lese- und Schreibzugriff auf das Speicherkonto fortgesetzt; dies verweist auf Ihren bisherigen sekundären Endpunkt. 
-* Hinweis: Sie erhalten Schreibzugriff, wenn GRS oder RA-GRS für das Speicherkonto konfiguriert ist. 
-* Sie können mithilfe der Abfrage [„LastGeoFailoverTime“ Ihres Speicherkontos](https://msdn.microsoft.com/library/azure/ee460802.aspx) weitere Details darüber erhalten, wann für Ihr Speicherkonto zuletzt ein Failover zur sekundären Region durchgeführt wurde.
-* Nach dem Failover ist Ihr Speicherkonto voll funktionsfähig, hat jedoch den Status „heruntergestuft“, da es tatsächlich in einer eigenständigen Region ohne mögliche Georeplikation gehostet wird. Um dieses Risiko zu verringern, werden wir die ursprüngliche primäre Region wiederherstellen und anschließend ein Geofailback ausführen, um den ursprünglichen Status wiederherzustellen. Wenn die ursprüngliche primäre Region nicht verfügbar ist, wird eine andere sekundäre Region zugeordnet.
-  Weitere Informationen über die Infrastruktur der Georeplikation von Azure Storage finden Sie im Artikel auf dem Storage-Teamblog zu [Windows Azure Storage Redundancy Options and Read Access Geo Redundant Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)(Windows Azure Storage Redundanzoptionen und Georedundanter Speicher mit Lesezugriff (RA-GRS).
+* Wenn das Geofailover abgeschlossen wurde und die DNS-Änderungen übermittelt wurden, werden der Lese- und Schreibzugriff auf Ihr Speicherkonto wiederhergestellt, wenn Sie über GRS oder RA-GRS verfügen. Der Endpunkt, der zuvor Ihr sekundärer Endpunkt war, wird zu Ihrem primären Endpunkt. 
+* Sie können den Status des primären Standorts überprüfen und den Zeitpunkt des letzten Geofailovers für Ihr Speicherkonto abfragen. Weitere Informationen finden Sie unter [Speicherkonten – Abrufen von Eigenschaften](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/getproperties).
+* Nach dem Failover ist Ihr Speicherkonto voll funktionsfähig, hat jedoch den Status „heruntergestuft“, da es in einer eigenständigen Region ohne mögliche Georeplikation gehostet wird. Um dieses Risiko zu verringern, werden wir die ursprüngliche primäre Region wiederherstellen und anschließend ein Geofailback ausführen, um den ursprünglichen Status wiederherzustellen. Wenn die ursprüngliche primäre Region nicht verfügbar ist, wird eine andere sekundäre Region zugeordnet.
 
 ## <a name="best-practices-for-protecting-your-data"></a>Bewährte Methoden zum Schützen der Daten
 Es gibt einige empfohlenen Vorgehensweisen, um die Speicherdaten in regelmäßigen Abständen zu sichern.

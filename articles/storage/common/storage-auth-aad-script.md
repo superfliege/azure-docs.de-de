@@ -5,28 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 09/20/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: abd4a3b21ede2ddbdede2ec133938d412d5d4c8d
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 6354d89ff5a23ccb51b85737b3a842c08534683e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248164"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223609"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Verwenden einer Azure AD-Identität für den Zugriff auf Azure Storage mit der Befehlszeilenschnittstelle oder PowerShell (Vorschau)
 
-Azure Storage stellt Vorschauerweiterungen für die Azure-Befehlszeilenschnittstelle und PowerShell bereit, mit denen Sie sich anmelden und Skriptbefehle unter einer Azure AD-Identität (Azure Active Directory) ausführen können. Die Azure AD-Identität kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Dienstidentität](../../active-directory/managed-service-identity/overview.md) sein. Sie können der Azure AD-Identität über die rollenbasierte Zugriffssteuerung (RBAC) Berechtigungen für den Zugriff auf Speicherressourcen zuweisen. Weitere Informationen zu RBAC-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC (Vorschau)](storage-auth-aad-rbac.md).
+Azure Storage stellt Vorschauerweiterungen für die Azure-Befehlszeilenschnittstelle und PowerShell bereit, mit denen Sie sich anmelden und Skriptbefehle unter einer Azure AD-Identität (Azure Active Directory) ausführen können. Die Azure AD-Identität kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Dienstidentität](../../active-directory/managed-identities-azure-resources/overview.md) sein. Sie können der Azure AD-Identität über die rollenbasierte Zugriffssteuerung (RBAC) Berechtigungen für den Zugriff auf Speicherressourcen zuweisen. Weitere Informationen zu RBAC-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC (Vorschau)](storage-auth-aad-rbac.md).
 
 Wenn Sie sich bei der Azure-Befehlszeilenschnittstelle oder PowerShell mit einer Azure AD-Identität anmelden, wird ein Zugriffstoken für den Zugriff auf Azure Storage mit dieser Identität zurückgegeben. Dieses Token wird dann automatisch von der Befehlszeilenschnittstelle oder PowerShell verwendet, um Vorgänge in Azure Storage zu autorisieren. Für unterstützte Vorgänge müssen Sie mit dem Befehl keinen Kontoschlüssel und kein SAS-Token mehr übergeben.
 
-> [!IMPORTANT]
-> Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind erst dann verfügbar, wenn die Azure AD-Integration für Azure Storage als allgemein verfügbar deklariert wird. Wenn die Azure AD-Integration für Ihr Szenario noch nicht unterstützt wird, verwenden Sie in Ihren Anwendungen weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel oder SAS-Token. Weitere Informationen zur Vorschau finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)](storage-auth-aad.md).
->
-> In der Vorschauphase kann die Verteilung von RBAC-Rollenzuweisungen bis zu fünf Minuten dauern.
->
-> Für die Azure AD-Integration mit Azure Storage müssen Sie HTTPS für Azure Storage-Vorgänge verwenden.
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="supported-operations"></a>Unterstützte Vorgänge
 
@@ -61,40 +56,50 @@ Dem Parameter `--auth-mode` ist die Umgebungsvariable `AZURE_STORAGE_AUTH_MODE` 
 
 ## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>Aufrufen von PowerShell-Befehlen mit einer Azure AD-Identität
 
+Azure PowerShell unterstützt die Anmeldung mit einer Azure AD-Identität nur mit einem der folgenden Vorschaumodule: 
+
+- 4.4.0-preview 
+- 4.4.1-preview 
+
 So verwenden Sie Azure PowerShell für die Anmeldung mit einer Azure AD-Identität
 
-1. Vergewissern Sie sich, dass die aktuelle Version von PowerShellGet installiert ist. Führen Sie den folgenden Befehl aus, um die neueste Version zu installieren:
+1. Deinstallieren Sie alle älteren Installationen von Azure PowerShell:
+
+    - Entfernen Sie alle früheren Installationen von Azure PowerShell mit der Einstellung **Apps & Features** (unter **Einstellungen**) aus Windows.
+    - Entfernen Sie alle **Azure***-Module aus `%Program Files%\WindowsPowerShell\Modules`.
+
+1. Vergewissern Sie sich, dass die aktuelle Version von PowerShellGet installiert ist. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie den folgenden Befehl aus, um die neueste Version zu installieren:
  
     ```powershell
-    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber -RequiredVersion "4.4.1-preview"
+    Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+1. Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster, und öffnen Sie es dann erneut. 
 
-2. Deinstallieren Sie alle älteren Installationen von Azure PowerShell.
-3. Installieren Sie AzureRM:
+1. Installieren Sie die neueste Version von Azure PowerShell:
 
     ```powershell
     Install-Module AzureRM –Repository PSGallery –AllowClobber
     ```
 
-4. Installieren Sie das Vorschaumodul:
+1. Installieren Sie eines der Azure Storage-Vorschaumodule, das Azure AD unterstützt:
 
     ```powershell
-    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber 
+    Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 
     ```
+1. Schließen Sie das PowerShell-Fenster, und öffnen Sie es dann erneut.
+1. Rufen Sie das Cmdlet [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) auf, um einen Kontext zu erstellen und den Parameter `-UseConnectedAccount` einzufügen. 
+1. Für das Aufrufen eines Cmdlets mit einer Azure AD-Identität übergeben Sie den neu erstellten Kontext an das Cmdlet.
 
-5. Rufen Sie das Cmdlet [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) auf, um einen Kontext zu erstellen und den Parameter `-UseConnectedAccount` einzufügen. 
-6. Für das Aufrufen eines Cmdlets mit einer Azure AD-Identität übergeben Sie den Kontext an das Cmdlet.
-
-Das folgende Beispiel zeigt, wie Sie die Blobs in einem Container aus Azure PowerShell mit einer Azure AD-Identität auflisten: 
+Das folgende Beispiel zeigt, wie Sie die Blobs in einem Container aus Azure PowerShell mit einer Azure AD-Identität auflisten. Achten Sie darauf, dass Sie Platzhalterkonto- und Containernamen durch Ihre eigenen Werte ersetzen: 
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -UseConnectedAccount 
-Get-AzureStorageBlob -Container $sample-container -Context $ctx 
+$ctx = New-AzureStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
+Get-AzureStorageBlob -Container sample-container -Context $ctx 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu RBAC-Rollen für Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC (Vorschau)](storage-auth-aad-rbac.md).
-- Informationen zur Verwendung der verwalteten Dienstidentität mit Azure Storage finden Sie unter [Authentifizieren mit Azure AD über eine verwaltete Azure-Dienstidentität (Vorschau)](storage-auth-aad-msi.md).
+- Informationen zur Verwendung verwalteter Identitäten für Azure-Ressourcen mit Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit verwalteten Azure-Identitäten für Azure-Ressourcen (Vorschau)](storage-auth-aad-msi.md).
 - Informationen zum Autorisieren des Zugriffs auf Container und Warteschlangen aus Ihren Speicheranwendungen finden Sie unter [Verwenden von Azure AD mit Speicheranwendungen](storage-auth-aad-app.md).
 - Weitere Informationen zur Azure AD-Integration für Azure-Blobs und -Warteschlangen finden Sie im Blogbeitrag des Azure Storage-Teams [Announcing the Preview of Azure AD Authentication for Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/) (Ankündigung der Vorschau der Azure AD-Authentifizierung für Azure Storage).
