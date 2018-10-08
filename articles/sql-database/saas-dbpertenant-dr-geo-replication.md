@@ -1,21 +1,23 @@
 ---
 title: Notfallwiederherstellung für SaaS-Anwendungen über Azure SQL-Datenbank-Georeplikation | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure SQL-Datenbank-Georeplikationen verwenden können, um eine mehrinstanzenfähige SaaS-Anwendung nach einem Ausfall wiederherzustellen.
-keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-author: AyoOlubeko
-manager: craigg
 ms.service: sql-database
-ms.custom: saas apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/09/2018
+author: AyoOlubeko
 ms.author: ayolubek
-ms.openlocfilehash: f2ad92118c00f08e5dcdd4a8a12f007308b3fbd1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.reviewer: sstein
+manager: craigg
+ms.date: 04/09/2018
+ms.openlocfilehash: f24c76fb6b7ca24573a97aa122659fe5ca019550
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34645792"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056334"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung über Datenbankgeoreplikation
 
@@ -51,9 +53,9 @@ Ein NW-Plan, der auf Georeplikation basiert, besteht aus drei eigenständigen Te
 Alle Teile müssen sorgfältig überlegt werden, insbesondere bei bedarfsorientiertem Betrieb. Insgesamt muss der Plan mehreren Zielen genügen:
 
 * Einrichtung
-    * Einrichten und Verwalten einer Spiegelimageumgebung in der Wiederherstellungsregion. Erstellen der Pools für elastische Datenbanken und Replizieren aller eigenständigen Datenbanken in dieser Wiederherstellungsumgebung reserviert Kapazität in der Wiederherstellungsregion. Das Verwalten dieser Umgebung umfasst das Replizieren von neuen Mandantendatenbanken, während sie bereitgestellt werden.  
+    * Einrichten und Verwalten einer Spiegelimageumgebung in der Wiederherstellungsregion. Das Erstellen der Pools für elastische Datenbanken und Replizieren aller Einzeldatenbanken in dieser Wiederherstellungsumgebung reserviert Kapazität in der Wiederherstellungsregion. Das Verwalten dieser Umgebung umfasst das Replizieren von neuen Mandantendatenbanken, während sie bereitgestellt werden.  
 * Wiederherstellen
-    * Sofern eine herunterskalierte Wiederherstellungsumgebung verwendet wird, um die täglichen Kosten zu minimieren, müssen Pools und eigenständige Datenbanken zentral hochskaliert werden, um vollständige Betriebskapazität in der Wiederherstellungsregion zu erreichen.
+    * Sofern eine herunterskalierte Wiederherstellungsumgebung verwendet wird, um die täglichen Kosten zu minimieren, müssen Pools und Einzeldatenbanken hochskaliert werden, um vollständige Betriebskapazität in der Wiederherstellungsregion zu erreichen.
     * Ermöglichen der Bereitstellung von neuen Mandanten in der Wiederherstellungsregion so bald wie möglich.  
     * Der Plan muss für ein Wiederherstellen der Mandanten in der Reihenfolge ihrer Priorität optimiert sein.
     * Der Plan muss dafür optimiert sein, Mandanten so schnell wie möglich online schalten zu können, indem Schritte nach Möglichkeit parallel ausgeführt werden.
@@ -158,7 +160,7 @@ In dem Wiederherstellungsskript werden folgende Aufgaben ausgeführt:
 
 1. Alle vorhandenen Mandanten im Wiederherstellungskatalog werden als offline markiert, damit Zugriff auf Mandantendatenbanken verhindert wird, bevor für diese ein Failover ausgeführt wurde.
 
-1. Die Konfiguration aller Pools für elastische Datenbanken und replizierten eigenständigen Datenbanken in der Wiederherstellungsregion wird aktualisiert, um diese Konfiguration in der ursprünglichen Region zu spiegeln. (Diese Aufgabe ist nur erforderlich, wenn Pools oder replizierte Datenbanken in der Wiederherstellungsumgebung während des normalen Betriebs zentral herunterskaliert werden, um die Kosten zu reduzieren.)
+1. Die Konfiguration aller Pools für elastische Datenbanken und replizierten Einzeldatenbanken in der Wiederherstellungsregion wird aktualisiert, um diese Konfiguration in der ursprünglichen Region zu spiegeln. (Diese Aufgabe ist nur erforderlich, wenn Pools oder replizierte Datenbanken in der Wiederherstellungsumgebung während des normalen Betriebs zentral herunterskaliert werden, um die Kosten zu reduzieren.)
 
 1. Der Traffic Manager-Endpunkt für die Web-App in der Wiederherstellungsregion wird aktiviert. Durch das Aktivieren dieses Endpunkts wird es der Anwendung ermöglicht, neue Mandanten bereitzustellen. Zu diesem Zeitpunkt sind die vorhandenen Mandanten immer noch offline.
 

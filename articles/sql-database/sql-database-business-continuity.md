@@ -3,21 +3,22 @@ title: Geschäftskontinuität in der Cloud – Datenbankwiederherstellung – SQ
 description: Erfahren Sie, wie Azure SQL-Datenbank die Geschäftskontinuität in der Cloud sowie die Datenbankwiederherstellung unterstützt und dafür sorgt, dass geschäftskritische Cloudanwendungen in Betrieb gehalten werden.
 keywords: Geschäftskontinuität,Geschäftskontinuität in der Cloud,Notfallwiederherstellung von Datenbanken,Datenbankwiederherstellung
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.workload: On Demand
-ms.date: 07/25/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: ce0684f9ab06b5362ccdf25aeaff15ea668ce96c
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: e18b637ee583757e040ef6fd5c2d52cff14cb4fc
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444147"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221146"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -59,11 +60,11 @@ Die folgende Tabelle vergleicht ERT und RPO für die einzelnen Dienstebenen und 
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Wiederherstellen einer Datenbank auf dem vorhandenen Server
 
-SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, stündlichen differenziellen Datenbanksicherungen sowie Transaktionsprotokollsicherungen im Abstand von 5-10 Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Die Sicherungen werden für alle Dienstebenen 35 Tage lang in RA-GRS-Speicher gespeichert, mit Ausnahme der Dienstebene „Basic DTU“, bei der die Sicherungen 7 Tage lang gespeichert werden. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md). Sie können eine vorhandene Datenbank mit dem Azure-Portal, PowerShell oder der REST-API aus den automatischen Sicherungen zu einem früheren Zeitpunkt als eine neue Datenbank auf dem gleichen logischen Server wiederherstellen. Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
+SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, differenziellen Datenbanksicherungen alle 12 Stunden sowie Transaktionsprotokollsicherungen im Abstand von 5-10 Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Die Sicherungen werden für alle Dienstebenen 35 Tage lang in RA-GRS-Speicher gespeichert, mit Ausnahme der Dienstebene „Basic DTU“, bei der die Sicherungen 7 Tage lang gespeichert werden. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md). Sie können eine vorhandene Datenbank mit dem Azure-Portal, PowerShell oder der REST-API aus den automatischen Sicherungen zu einem früheren Zeitpunkt als eine neue Datenbank auf dem gleichen logischen Server wiederherstellen. Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 Wenn die maximal unterstützte PITR-Aufbewahrungsdauer (Point-in-Time-Wiederherstellung) für Ihre Anwendung nicht ausreicht, können Sie sie verlängern, indem Sie eine Richtlinie für die langfristige Aufbewahrung (LTR) für die Datenbanken konfigurieren. Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
 
-Sie können diese automatischen Datenbanksicherungen verwenden, um eine Datenbank nach verschiedenen Störungen und Unterbrechungen wiederherzustellen, sowohl innerhalb Ihres eigenen Rechenzentrums als auch in einem anderen Rechenzentrum. Bei automatischen Datenbanksicherungen hängt die geschätzte Wiederherstellungszeit von verschiedenen Faktoren ab, beispielsweise von der Gesamtzahl von Datenbanken, die gleichzeitig in der gleichen Region wiederhergestellt werden müssen, von der Größe der Datenbank und der Transaktionsprotokolle sowie von der Netzwerkbandbreite. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden. Das Wiederherstellen einer sehr großen oder aktiven Datenbank kann länger dauern. Weitere Informationen zur Wiederherstellungszeit finden Sie unter [Wiederherstellungszeit für Datenbanken](sql-database-recovery-using-backups.md#recovery-time). Bei der Wiederherstellung in eine andere Datenregion ist der potenzielle Datenverlust aufgrund der georedundanten Speicherung der stündlichen differenziellen Datensicherungen auf eine Stunde begrenzt.
+Sie können diese automatischen Datenbanksicherungen verwenden, um eine Datenbank nach verschiedenen Störungen und Unterbrechungen wiederherzustellen, sowohl innerhalb Ihres eigenen Rechenzentrums als auch in einem anderen Rechenzentrum. Bei automatischen Datenbanksicherungen hängt die geschätzte Wiederherstellungszeit von verschiedenen Faktoren ab, beispielsweise von der Gesamtzahl von Datenbanken, die gleichzeitig in der gleichen Region wiederhergestellt werden müssen, von der Größe der Datenbank und der Transaktionsprotokolle sowie von der Netzwerkbandbreite. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden. Das Wiederherstellen einer sehr großen oder aktiven Datenbank kann länger dauern. Weitere Informationen zur Wiederherstellungszeit finden Sie unter [Wiederherstellungszeit für Datenbanken](sql-database-recovery-using-backups.md#recovery-time). Bei der Wiederherstellung in eine andere Datenregion ist der potenzielle Datenverlust bei Verwendung der georedundanten Speicherung auf eine Stunde begrenzt.
 
 Verwenden Sie automatisierte Sicherungen und die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) als Mechanismus für Geschäftskontinuität und Wiederherstellung, wenn Folgendes auf Ihre Anwendung zutrifft:
 
@@ -101,7 +102,7 @@ Dieses Feature dient zum Schutz vor Unterbrechungen des Geschäftsbetriebs bei e
 * Daten ändern sich sehr schnell, und der Verlust aller innerhalb einer Stunde erfolgten Datenänderungen ist nicht akzeptabel.
 * Die zusätzlichen Kosten für die Georeplikation sind niedriger als die potenziellen Kosten aufgrund der finanziellen Haftung und die damit einhergehenden Geschäftsverluste.
 
-Die Dauer einer Wiederherstellung und die Menge an verlorenen Daten richten sich danach, wie Sie diese Features für die Geschäftskontinuität in Ihrer Anwendung einsetzen. Sie könnten z.B. je nach Anforderungen Ihrer Anwendung eine Kombination aus Datenbanksicherungen und aktiver Georeplikation verwenden. Überlegungen zum Anwendungsentwurf für eigenständige Datenbanken und zum Einsatz von Pools für elastische Datenbanken mit diesen Funktionen für die Geschäftskontinuität finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md) und [Strategien für die Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Die Dauer einer Wiederherstellung und die Menge an verlorenen Daten richten sich danach, wie Sie diese Features für die Geschäftskontinuität in Ihrer Anwendung einsetzen. Sie könnten z.B. je nach Anforderungen Ihrer Anwendung eine Kombination aus Datenbanksicherungen und aktiver Georeplikation verwenden. Überlegungen zum Anwendungsentwurf für Einzeldatenbanken und zum Einsatz von Pools für elastische Datenbanken mit diesen Funktionen für die Geschäftskontinuität finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md) und [Strategien für die Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 Die nachstehenden Abschnitte bieten eine Übersicht über die Schritte, die zur Wiederherstellung mithilfe von Datenbanksicherungen oder der aktiven Georeplikation erforderlich sind. Weitere Schritte einschließlich der Planungsanforderungen und Schritte nach der Wiederherstellung sowie Informationen zum Simulieren eines Ausfalls, um eine Strategie für die Notfallwiederherstellung zu entwickeln, finden Sie unter [Notfallwiederherstellung für SQL-Datenbank](sql-database-disaster-recovery.md).
 
@@ -122,12 +123,10 @@ Wenn Sie aktive Georeplikation und automatische Failovergruppen als Wiederherste
 > 
 
 ### <a name="perform-a-geo-restore"></a>Ausführen einer Geowiederherstellung
-Wenn Sie automatisierte Sicherungen mit georedundanter Speicherreplikation als Wiederherstellungsmechanismus verwenden, [stellen Sie die Datenbank per Geowiederherstellung wieder her](sql-database-disaster-recovery.md#recover-using-geo-restore). Die Wiederherstellung erfolgt in den meisten Fällen innerhalb von 12 Stunden. Es entsteht ein Datenverlust von bis zu einer Stunde – je nachdem, wann die letzte differenzielle Sicherung durchgeführt und repliziert wurde. Solange die Wiederherstellung nicht abgeschlossen ist, kann die Datenbank keine Transaktionen aufzeichnen oder auf Abfragen antworten. Beim Wiederherstellen einer Datenbank zum letzten verfügbaren Zeitpunkt wird die Wiederherstellung der Geo-Sekundärdatenbank zu einem beliebigen Zeitpunkt derzeit nicht unterstützt.
+Wenn Sie die automatischen Sicherungen mit georedundanter Speicherung (standardmäßig aktiviert) verwenden, können Sie die Datenbank mit [Geowiederherstellung](sql-database-disaster-recovery.md#recover-using-geo-restore) wiederherstellen. Die Wiederherstellung erfolgt in den meisten Fällen innerhalb von 12 Stunden. Es entsteht ein Datenverlust von bis zu einer Stunde – je nachdem, wann die letzte Protokollsicherung durchgeführt und repliziert wurde. Solange die Wiederherstellung nicht abgeschlossen ist, kann die Datenbank keine Transaktionen aufzeichnen oder auf Abfragen antworten. Beachten Sie, dass die Datenbank mit der Geowiederherstellung nur auf den letzten verfügbaren Zeitpunkt wiederhergestellt wird.
 
 > [!NOTE]
 > Wenn das Rechenzentrum wieder online ist, bevor Sie Ihre Anwendung auf die wiederhergestellte Datenbank umstellen, können Sie die Wiederherstellung abbrechen.  
->
->
 
 ### <a name="perform-post-failover--recovery-tasks"></a>Ausführen von Aufgaben nach dem Failover bzw. nach der Wiederherstellung
 Nach einer Wiederherstellung müssen Sie unabhängig vom Wiederherstellungsmechanismus folgende zusätzliche Aufgaben ausführen, damit Ihre Anwendungen wieder vollständig einsatzfähig sind und von Ihren Benutzern wieder in vollem Umfang verwendet werden können:
@@ -142,4 +141,4 @@ Nach einer Wiederherstellung müssen Sie unabhängig vom Wiederherstellungsmecha
 Zuweilen muss eine Anwendung aufgrund geplanter Wartungsmaßnahmen offline geschaltet werden – beispielsweise für Anwendungsupgrades. Der Artikel [Verwalten von Anwendungsupgrades](sql-database-manage-application-rolling-upgrade.md) beschreibt, wie Sie mithilfe der aktiven Georeplikation parallele Upgrades Ihrer Cloudanwendung ermöglichen und so Ausfallzeiten während Upgrades minimieren. Gleichzeitig können Sie mit dieser Funktion einen Wiederherstellungspfad bereitstellen, falls etwas schiefgeht. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überlegungen zum Anwendungsentwurf für eigenständige Datenbanken und Pools für elastische Datenbanken finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md) und [Strategien für die Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Überlegungen zum Anwendungsentwurf für Einzeldatenbanken und Pools für elastische Datenbanken finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md) und [Strategien für die Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

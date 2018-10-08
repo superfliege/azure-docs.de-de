@@ -1,22 +1,23 @@
 ---
 title: Erstellen und Verwalten von Pools für elastische Datenbanken – Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erstellen und Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
-keywords: mehrere Datenbanken, Datenbankressourcen, Datenbankleistung
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: DBs & servers
-ms.date: 08/01/2018
-ms.author: ninarn
+subservice: elastic-pool
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: oslake
+ms.author: moslake
 ms.reviewer: carlrab
-ms.openlocfilehash: cbfbe02926907ca3ca5b6c13932c8b67862c8456
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 6418694097c472afd6a2c706e55a9026ab03dcff
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842022"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162714"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Erstellen und Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
 
@@ -70,12 +71,12 @@ Verwenden Sie zum Erstellen und Verwalten von Pools für elastische SQL-Datenban
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
-|[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|Erstellt einen Pool für elastische Datenbanken.|
-|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|Gibt eine Liste der Pools für elastische Datenbanken auf einem Server zurück.|
-|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_dbs)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
-|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_editions)|Umfasst auch verfügbare DTU-Einstellungen, Speicherlimits und datenbankbezogene Einstellungen für den Pool. Zum Verringern der Ausführlichkeit sind zusätzliche Speicherlimits und datenbankbezogene Einstellungen standardmäßig ausgeblendet.|
-|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)|Aktualisiert einen Pool für elastische Datenbanken.|
-|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_delete)|Löscht den Pool für elastische Datenbanken.|
+|[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Erstellt einen Pool für elastische Datenbanken.|
+|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Gibt eine Liste der Pools für elastische Datenbanken auf einem Server zurück.|
+|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-dbs)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
+|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-editions)|Umfasst auch verfügbare DTU-Einstellungen, Speicherlimits und datenbankbezogene Einstellungen für den Pool. Zum Verringern der Ausführlichkeit sind zusätzliche Speicherlimits und datenbankbezogene Einstellungen standardmäßig ausgeblendet.|
+|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)|Aktualisiert einen Pool für elastische Datenbanken.|
+|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-delete)|Löscht den Pool für elastische Datenbanken.|
 
 ## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL: Verwalten von in einem Pool zusammengefassten Datenbanken
 

@@ -2,20 +2,22 @@
 title: Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken | Microsoft Docs
 description: Informationen zum Einrichten elastischer Abfragen, die horizontal partitionierte Datenbanken übergreifen
 services: sql-database
-documentationcenter: ''
-manager: craigg
-author: MladjoA
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MladjoA
 ms.author: mlandzic
-ms.openlocfilehash: fcb498542a496e4a887c825808642d3f586ef1d9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 906c6825dbfdf7d4873c765d0b3eba626ef52e1b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646353"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159362"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken (Vorschau)
 ![Abfrage über Shards hinweg][1]
@@ -49,7 +51,7 @@ Die Anmeldeinformationen werden von der elastischen Abfrage für die Verbindung 
     [;]
 
 > [!NOTE]
-> Stellen Sie sicher, dass der *\<username\>* kein *@servername*-Suffix enthält. 
+> Stellen Sie sicher, dass der *„\<Benutzername\>“* kein *„\@Servername“*-Suffix enthält. 
 > 
 > 
 

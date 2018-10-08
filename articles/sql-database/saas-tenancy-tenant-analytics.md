@@ -1,26 +1,27 @@
 ---
 title: Ausführen mandantenübergreifender Analysen mit extrahierten Daten| Microsoft-Dokumentation
-description: Mandantenübergreifende Analyseabfragen mithilfe von Daten, die aus mehreren Datenbanken von Azure SQL-Datenbank extrahiert wurden
-keywords: Tutorial zur SQL-Datenbank
+description: Mandantenübergreifende Analyseabfragen mithilfe von Daten, die in einer App mit einem Mandanten aus mehreren Datenbanken von Azure SQL-Datenbank extrahiert wurden.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.reviewer: anjangsh; billgib; genemi
-ms.openlocfilehash: 68057a2ae5925aa16288844759a34592aa7c7573
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: anjangsh,billgib,genemi
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: bd766dfb712921a57dd23c4fdecc25dd623eb833
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644959"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393263"
 ---
-# <a name="cross-tenant-analytics-using-extracted-data"></a>Mandantenübergreifende Analysen mit extrahierten Daten
-
-Dieses Tutorial führt Sie durch ein vollständiges Analyseszenario. Das Szenario veranschaulicht, wie Unternehmen mithilfe von Analysen intelligentere Entscheidungen treffen können. Sie verwenden Analysen auf der Grundlage von Daten, die aus den einzelnen Mandantendatenbanken extrahiert wurden, um Einblicke in das Mandantenverhalten und die Anwendungsnutzung zu erhalten. Dieses Szenario umfasst drei Schritte: 
+# <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – App mit einem Mandanten
+ 
+Dieses Tutorial führt Sie durch ein vollständiges Analyseszenario für eine Implementierung mit einem Mandanten. Das Szenario veranschaulicht, wie Unternehmen mithilfe von Analysen intelligentere Entscheidungen treffen können. Sie verwenden Analysen auf der Grundlage von Daten, die aus den einzelnen Mandantendatenbank extrahiert wurden, um Einblicke in das Mandantenverhalten zu erhalten. Dies umfasst auch ihre Verwendung der Wingtip Tickets SaaS-Beispielanwendung. Dieses Szenario umfasst drei Schritte: 
 
 1.  **Extrahieren** von Daten aus jeder Mandantendatenbank und **Laden** in einen Analysespeicher
 2.  **Transformieren der extrahierten Daten** für die Verarbeitung bei der Analyse
@@ -206,12 +207,12 @@ Sie können einen weiteren Drilldown in die Daten durchführen, um festzustellen
 
 Die Darstellung oben für die Contoso Concert Hall zeigt, dass der Ansturm nicht bei allen Veranstaltungen auftritt. Experimentieren Sie mit den Filteroptionen, um Verkaufstrends für die anderen Veranstaltungsorte aufzudecken.
 
-Die Einblicke in Muster beim Ticketverkauf können zur Optimierung des Geschäftsmodells von Wingtip Tickets beitragen. Anstelle einer gleichmäßigen Abrechnungen für alle Mandanten sollte Wingtip möglicherweise Dienstebenen mit unterschiedlichen Leistungsebenen einführen. Größeren Veranstaltungsorten, die täglich mehr Tickets verkaufen, könnte eine höhere Ebene mit einer umfassenderen Vereinbarung zum Servicelevel (SLA) angeboten werden. Die Datenbanken dieser Veranstaltungsorte könnten außerdem in einem Pool mit höheren Ressourcenlimits pro Datenbank platziert werden. Jeder Dienstebene könnte eine stündliche Verkaufsmenge zugeordnet werden, bei deren Überschreitung eine Zusatzgebühr in Rechnung gestellt wird. Größere Veranstaltungsorte mit regelmäßigen Anstiegen beim Verkauf würden von den höheren Tarifen profitieren, und Wingtip Tickets könnte den eigenen Diensts effizienter monetarisieren.
+Die Einblicke in Muster beim Ticketverkauf können zur Optimierung des Geschäftsmodells von Wingtip Tickets beitragen. Anstelle einer gleichmäßigen Abrechnungen für alle Mandanten sollte Wingtip möglicherweise Diensttarife mit unterschiedlichen Computegrößen einführen. Größeren Veranstaltungsorten, die täglich mehr Tickets verkaufen, könnte eine höhere Ebene mit einer umfassenderen Vereinbarung zum Servicelevel (SLA) angeboten werden. Die Datenbanken dieser Veranstaltungsorte könnten außerdem in einem Pool mit höheren Ressourcenlimits pro Datenbank platziert werden. Jeder Dienstebene könnte eine stündliche Verkaufsmenge zugeordnet werden, bei deren Überschreitung eine Zusatzgebühr in Rechnung gestellt wird. Größere Veranstaltungsorte mit regelmäßigen Anstiegen beim Verkauf würden von den höheren Tarifen profitieren, und Wingtip Tickets könnte den eigenen Diensts effizienter monetarisieren.
 
 Gleichzeitig könnten sich einige Kunden von Wingtip Tickets darüber beschweren, dass sie nicht genügend Tickets verkaufen, um die Betriebskosten zu rechtfertigen. Möglicherweise zeigen die Daten auch eine Möglichkeit zur Verbesserung der Ticketverkäufe für Veranstaltungsorte, die bisher zu wenige Tickets verkaufen. Höhere Umsätzen würde auch den wahrgenommenen Wert des Diensts steigern. Klicken Sie mit der rechten Maustaste auf „fact_Tickets“, und wählen Sie **Neues Measure** aus. Geben Sie den folgenden Ausdruck für das neue Measure namens **AverageTicketsSold** ein:
 
 ```
-AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
+AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CALCULATE( SUM(TableName[Tickets Sold] ) ) )
 ```
 
 Wählen Sie die folgenden Visualisierungsoptionen aus, um den Prozentsatz verkaufter Tickets pro Veranstaltungsort zu zeichnen und den relativen Erfolg dazustellen.
@@ -241,3 +242,4 @@ Glückwunsch!
 
 - Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 - [Elastische Aufträge](sql-database-elastic-jobs-overview.md)
+- [Mandantenübergreifende Analysen mit extrahierten Daten – Mehrinstanzenfähige App](saas-multitenantdb-tenant-analytics.md)

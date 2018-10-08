@@ -1,26 +1,29 @@
 ---
-title: Erteilen des Zugriffs auf Azure SQL-Datenbank | Microsoft Dokumentation
-description: Hier erhalten Sie Informationen zum Erteilen des Zugriffs auf Microsoft Azure SQL-Datenbank.
+title: Erteilen des Zugriffs auf Azure SQL-Datenbank und SQL Data Warehouse | Microsoft-Dokumentation
+description: Hier erhalten Sie Informationen zum Erteilen des Zugriffs auf Microsoft Azure SQL-Datenbank und SQL Data Warehouse.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: sql-data-warehouse
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 2ab2f047839763239358e61f61f0fc962c17d729
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 06/13/2018
+ms.openlocfilehash: a39e65d5a3aff6158c189f392e2db8bd8273ad1b
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647434"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063773"
 ---
-# <a name="azure-sql-database-access-control"></a>Zugriffssteuerung bei Azure SQL-Datenbank
-Zur Gewährleistung der Sicherheit steuert SQL-Datenbank den Zugriff mit Firewallregeln, die die Konnektivität nach IP-Adresse einschränken, Authentifizierungsmechanismen, die die Identitätsbestätigung durch Benutzer erfordern, und Autorisierungsmechanismen, die bestimmte Aktionen und Daten für Benutzer eingrenzen. 
+# <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Zugriffssteuerung für Azure SQL-Datenbank und SQL Data Warehouse
+Zur Gewährleistung der Sicherheit steuern Azure [SQL-Datenbank](sql-database-technical-overview.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) den Zugriff mit Firewallregeln (schränken die Konnektivität nach IP-Adresse ein), Authentifizierungsmechanismen (erfordern eine Identitätsbestätigung der Benutzer) und Autorisierungsmechanismen (grenzen bestimmte Aktionen und Daten auf Benutzer ein). 
 
 > [!IMPORTANT]
-> Eine Übersicht über die Sicherheitsfunktionen von SQL-Datenbank finden Sie unter [Securing your SQL Database](sql-database-security-overview.md) (Schützen Ihrer SQL-Datenbank). Ein Tutorial finden Sie unter [Schützen von Azure SQL-Datenbank](sql-database-security-tutorial.md).
+> Eine Übersicht über die Sicherheitsfunktionen von SQL-Datenbank finden Sie unter [Securing your SQL Database](sql-database-security-overview.md) (Schützen Ihrer SQL-Datenbank). Ein Tutorial finden Sie unter [Schützen von Azure SQL-Datenbank](sql-database-security-tutorial.md). Eine Übersicht über die Sicherheitsfunktionen von SQL Data Warehouse finden Sie unter [SQL Data Warehouse – Sicherheitsübersicht](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 ## <a name="firewall-and-firewall-rules"></a>Firewall und Firewallregeln
 Die Microsoft Azure SQL-Datenbank bietet einen relationalen Datenbankdienst für Azure und andere internetbasierte Anwendungen. Zum Schutz Ihrer Daten verhindern Firewalls jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Datenbankzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung. Weitere Informationen finden Sie unter [Übersicht über Firewallregeln für Azure SQL-Datenbank](sql-database-firewall-configure.md).

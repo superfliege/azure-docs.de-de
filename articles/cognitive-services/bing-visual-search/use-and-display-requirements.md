@@ -1,20 +1,20 @@
 ---
-title: Verwenden und Anzeigen von Anforderungen für Bilder, die von der API für die visuelle Bing-Suche zurückgegebenen werden | Microsoft-Dokumentation
-titleSuffix: Bing Web Search APIs - Cognitive Services
+title: Verwenden und Anzeigen von Anforderungen für Bilder – Visuelle Bing-Suche
+titleSuffix: Azure Cognitive Services
 description: In diesem Artikel werden die Anforderungen für das Anzeigen von Inhalten beschrieben, die von der API für die visuelle Bing-Suche zurückgegeben werden.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: scottwhi
-ms.openlocfilehash: f2087379fbb820adfb43ec85c93ce7f6ea4f7493
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a9305034102c9ca9e721f18841054d9473acfac9
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377803"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221124"
 ---
 [!INCLUDE [cognitive-services-bing-use-and-display-requirements](../../../includes/cognitive-services-bing-use-and-display-requirements.md)]

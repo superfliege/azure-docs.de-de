@@ -1,22 +1,23 @@
 ---
-title: Node.js-Schnellstart für Azure Cognitive Services, Bing-Videosuche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Videosuche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Bing-Videosuche-API, Node.js'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Bing-Videosuche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: be9cbd56a1db1f9df78ec6f1c378d803c0a37151
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a4ee4b0c0f4ce46110cebf95cdf927f8df3567d0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376939"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220383"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-nodejs"></a>Schnellstart für die Bing-Videosuche-API mit Node.js
+# <a name="quickstart-bing-video-search-api-with-nodejs"></a>Schnellstart: Bing-Videosuche-API mit Node.js
 
 In diesem Artikel erfahren Sie, wie Sie die Bing-Videosuche-API verwenden, die Ihnen im Rahmen von Microsoft Cognitive Services in Azure zur Verfügung steht. In diesem Artikel wird zwar Node.js eingesetzt, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann. 
 
@@ -34,7 +35,7 @@ Die [Bing-Videosuche-API](https://docs.microsoft.com/rest/api/cognitiveservices/
 
 1. Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Node.js-Projekt.
 2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den Wert `subscriptionKey` durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+3. Ersetzen Sie den `subscriptionKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
 ```javascript
@@ -97,7 +98,7 @@ bing_video_search(term);
 
 **Antwort**
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -208,8 +209,8 @@ Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückg
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Einteilen von Videos in Seiten](paging-videos.md)
-> [Ändern der Größe und Zuschneiden von Miniaturansichten](resize-and-crop-thumbnails.md)
+> [Durchsuchen von Videos](paging-videos.md)
+> [Anpassen der Größe und Zuschneiden von Miniaturansichten](resize-and-crop-thumbnails.md)
 
 ## <a name="see-also"></a>Weitere Informationen 
 

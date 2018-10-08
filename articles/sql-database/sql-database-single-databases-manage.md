@@ -2,24 +2,26 @@
 title: Erstellen und Verwalten von Servern und Einzeldatenbanken in Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erfahren Sie mehr über das Erstellen und Verwalten von logischen Servern und Einzeldatenbanken.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: DBs & servers
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/07/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 20039c32ed7bb740ba5d1185d195d7590cff39e2
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: c2855a9cdbb2abc01b3d3b55b12b979a2dbbf8bb
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051254"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165356"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Erstellen und Verwalten von logischen Servern und Einzeldatenbanken in Azure SQL-Datenbank 
 
-Sie können logische Server in Azure SQL-Datenbank-Instanzen mit dem Azure-Portal, mit PowerShell, der Azure CLI, der REST-API oder Transact-SQL erstellen und verwalten.
+Sie können logische Server und einzelne Datenbanken in Azure SQL-Datenbank mit dem Azure-Portal, mit PowerShell, der Azure CLI, der REST-API oder Transact-SQL erstellen und verwalten.
 
 ## <a name="azure-portal-manage-logical-servers-and-databases"></a>Azure-Portal: Verwalten von logischen Servern und Datenbanken
 
@@ -90,25 +92,25 @@ Verwenden Sie zum Erstellen und Verwalten von Servern, Datenbanken und Firewalls
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |Erstellt eine Datenbank|
-|[az sql db list](/cli/azure/sql/db#az_sql_db_list)|Listet alle Datenbanken und Data Warehouses eines Servers oder alle Datenbanken eines Pools für elastische Datenbanken auf|
-|[az sql db list-editions](/cli/azure/sql/db#az_sql_db_list_editions)|Listet verfügbare Dienstziele und Speicherlimits auf|
-|[az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|Gibt Informationen zur Datenbankverwendung zurück|
-|[az sql db show](/cli/azure/sql/db#az_sql_db_show)|Ruft eine Datenbank oder ein Data Warehouse ab|
-|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|Aktualisiert eine Datenbank|
-|[az sql db delete](/cli/azure/sql/db#az_sql_db_delete)|Entfernt eine Datenbank|
-|[az group create](/cli/azure/group#az_group_create)|Erstellt eine Ressourcengruppe|
-|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|Erstellt einen Server|
-|[az sql server list](/cli/azure/sql/server#az_sql_server_list)|Listet Server auf|
-|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list_usages)|Gibt Informationen zur Server-Verwendung zurück|
-|[az sql server show](/cli/azure/sql/server#az_sql_server_show)|Ruft einen Server ab|
-|[az sql server update](/cli/azure/sql/server#az_sql_server_update)|Aktualisiert einen Server|
-|[az sql server delete](/cli/azure/sql/server#az_sql_server_delete)|Löscht einen Server|
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Erstellt eine Serverfirewallregel|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Listet die Firewallregeln auf einem Server auf|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Zeigt die Details einer Firewallregel an|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Aktualisiert eine Firewallregel|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Löscht eine Firewallregel|
+|[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Erstellt eine Datenbank|
+|[az sql db list](/cli/azure/sql/db#az-sql-db-list)|Listet alle Datenbanken und Data Warehouses eines Servers oder alle Datenbanken eines Pools für elastische Datenbanken auf|
+|[az sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|Listet verfügbare Dienstziele und Speicherlimits auf|
+|[az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Gibt Informationen zur Datenbankverwendung zurück|
+|[az sql db show](/cli/azure/sql/db#az-sql-db-show)|Ruft eine Datenbank oder ein Data Warehouse ab|
+|[az sql db update](/cli/azure/sql/db#az-sql-db-update)|Aktualisiert eine Datenbank|
+|[az sql db delete](/cli/azure/sql/db#az-sql-db-delete)|Entfernt eine Datenbank|
+|[az group create](/cli/azure/group#az-group-create)|Erstellt eine Ressourcengruppe|
+|[az sql server create](/cli/azure/sql/server#az-sql-server-create)|Erstellt einen Server|
+|[az sql server list](/cli/azure/sql/server#az-sql-server-list)|Listet Server auf|
+|[az sql server list-usages](/cli/azure/sql/server#az-sql-server-list-usages)|Gibt Informationen zur Server-Verwendung zurück|
+|[az sql server show](/cli/azure/sql/server#az-sql-server-show)|Ruft einen Server ab|
+|[az sql server update](/cli/azure/sql/server#az-sql-server-update)|Aktualisiert einen Server|
+|[az sql server delete](/cli/azure/sql/server#az-sql-server-delete)|Löscht einen Server|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Erstellt eine Serverfirewallregel|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Listet die Firewallregeln auf einem Server auf|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Zeigt die Details einer Firewallregel an|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Aktualisiert eine Firewallregel|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Löscht eine Firewallregel|
 
 ## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL: Verwalten von logischen Servern und Datenbanken
 

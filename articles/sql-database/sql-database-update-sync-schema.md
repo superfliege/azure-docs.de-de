@@ -2,20 +2,22 @@
 title: Automatisieren der Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung automatisieren.
 services: sql-database
-ms.date: 06/19/2018
-ms.topic: conceptual
 ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: data sync
+ms.devlang: ''
+ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.custom: data-sync
-ms.openlocfilehash: eca5e308399b9fb694a8e5060d72c12790a8f78d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 09/20/2018
+ms.openlocfilehash: 3137b86dd186e628508111a932140fd9c1f59b5d
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434957"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161426"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatisieren der Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung
 
@@ -30,7 +32,7 @@ Dieser Artikel stellt eine Lösung zur automatisierten Replikation von Schemaän
 In diesem Artikel wird ALTER TABLE als Beispiel für eine Schemaänderung verwendet, aber diese Lösung funktioniert auch für andere Arten von Schemaänderungen.
 
 > [!IMPORTANT]
-> Es wird empfohlen, diesen Artikel sorgfältig zu lesen, insbesondere die Abschnitte über [Problembehandlung](#troubleshooting) und [Weitere Überlegungen](#other), bevor Sie mit der Implementierung der automatisierten Replikation von Schemaänderungen in Ihrer Synchronisierungsumgebung beginnen. Darüber hinaus ist es empfehlenswert, den Artikel [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](sql-database-sync-data.md) zu lesen. Es besteht die Möglichkeit, dass einige Datenbankvorgänge die in diesem Artikel beschriebene Lösung unterbrechen. Daher sind ggf. zusätzliche Domänenkenntnisse von SQL Server und Transact-SQL erforderlich, um derartige Probleme zu beheben.
+> Es wird empfohlen, diesen Artikel sorgfältig zu lesen, insbesondere die Abschnitte über [Problembehandlung](#troubleshoot) und [Weitere Überlegungen](#other), bevor Sie mit der Implementierung der automatisierten Replikation von Schemaänderungen in Ihrer Synchronisierungsumgebung beginnen. Darüber hinaus ist es empfehlenswert, den Artikel [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](sql-database-sync-data.md) zu lesen. Es besteht die Möglichkeit, dass einige Datenbankvorgänge die in diesem Artikel beschriebene Lösung unterbrechen. Daher sind ggf. zusätzliche Domänenkenntnisse von SQL Server und Transact-SQL erforderlich, um derartige Probleme zu beheben.
 
 ![Automatisieren der Replikation von Schemaänderungen](media/sql-database-update-sync-schema/automate-schema-changes.png)
 

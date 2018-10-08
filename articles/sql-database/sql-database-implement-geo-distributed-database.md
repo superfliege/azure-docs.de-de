@@ -2,19 +2,22 @@
 title: Implementieren einer geografisch verteilten Azure SQL-Datenbanklösung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Ihre Azure SQL-Datenbank-Instanz und die Anwendung für ein Failover zu einer replizierten Datenbank und zum Testen des Failovers konfigurieren.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,business continuity
-ms.topic: tutorial
-ms.date: 04/01/2018
-ms.author: carlrab
-ms.openlocfilehash: fbd239c3c8c11b1907a6d28eb95d2c0ad26cfe61
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: anosov1960
+ms.author: sashan
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/07/2018
+ms.openlocfilehash: 65cf954f5d91176715181620671f620264069bdc
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416618"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166261"
 ---
 # <a name="implement-a-geo-distributed-database"></a>Implementieren einer geografisch verteilten Datenbank
 
@@ -38,8 +41,8 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 - Eine Azure SQL-Datenbank muss installiert sein. Dieses Tutorial verwendet die AdventureWorksLT-Beispieldatenbank mit dem Namen **mySampleDatabase** aus einem der folgenden Schnellstarts:
 
    - [Erstellen einer Datenbank – Portal](sql-database-get-started-portal.md)
-   - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
-   - [Erstellen einer Datenbank – PowerShell](sql-database-get-started-powershell.md)
+   - [Erstellen einer Datenbank – CLI](sql-database-cli-samples.md)
+   - [Erstellen einer Datenbank – PowerShell](sql-database-powershell-samples.md)
 
 - Sie müssen eine Methode zum Ausführen von SQL-Skripts für Ihre Datenbank bestimmt haben, bei der eines der folgenden Abfragetools verwendet werden kann:
    - Der Abfrage-Editor im [Azure-Portal](https://portal.azure.com). Weitere Informationen zum Verwenden des Abfrage-Editors im Azure-Portal finden Sie unter [Verbinden und Abfragen mit dem Abfrage-Editor](sql-database-get-started-portal.md#query-the-sql-database).
@@ -54,7 +57,7 @@ Stellen Sie eine Verbindung mit der Datenbank her, und erstellen Sie mithilfe ei
 - SQL Server Management Studio
 - Visual Studio Code
 
-Diese Benutzerkonten werden automatisch auf den sekundären Server repliziert (und laufend synchronisiert gehalten). Zum Verwenden von SQL Server Management Studio oder Visual Studio Code müssen Sie möglicherweise eine Firewallregel konfigurieren, wenn Sie eine Verbindung mit einem Client unter einer IP-Adresse herstellen, für die Sie noch keine Firewall konfiguriert haben. Die Schritte hierzu werden ausführlich unter [Erstellen einer Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) beschrieben.
+Diese Benutzerkonten werden automatisch auf den sekundären Server repliziert (und laufend synchronisiert gehalten). Zum Verwenden von SQL Server Management Studio oder Visual Studio Code müssen Sie möglicherweise eine Firewallregel konfigurieren, wenn Sie eine Verbindung mit einem Client unter einer IP-Adresse herstellen, für die Sie noch keine Firewall konfiguriert haben. Die Schritte hierzu werden ausführlich unter [Erstellen einer Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md) beschrieben.
 
 - Führen Sie in einem Abfragefenster die folgende Abfrage aus, um zwei Benutzerkonten in der Datenbank zu erstellen. Das Skript gewährt dem **app_admin**-Konto **db_owner**-Berechtigungen und dem **app_user**-Konto **SELECT**- und **UPDATE**-Berechtigungen. 
 
@@ -70,7 +73,7 @@ Diese Benutzerkonten werden automatisch auf den sekundären Server repliziert (u
 
 ## <a name="create-database-level-firewall"></a>Erstellen einer Firewall auf Datenbankebene
 
-Erstellen Sie eine [Firewallregel auf Datenbankebene](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) für Ihre SQL-Datenbank. Diese Firewallregel auf Datenbankebene wird automatisch auf den sekundären Server repliziert, den Sie in diesem Tutorial erstellen. Verwenden Sie zur Vereinfachung (in diesem Tutorial) die öffentliche IP-Adresse des Computers, auf dem Sie die Schritte des Tutorials ausführen. Eine Beschreibung, wie Sie die IP-Adresse für die Firewallregel auf Serverebene für den aktuellen Computer bestimmen, finden Sie unter [Erstellen einer Firewall auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
+Erstellen Sie eine [Firewallregel auf Datenbankebene](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) für Ihre SQL-Datenbank. Diese Firewallregel auf Datenbankebene wird automatisch auf den sekundären Server repliziert, den Sie in diesem Tutorial erstellen. Verwenden Sie zur Vereinfachung (in diesem Tutorial) die öffentliche IP-Adresse des Computers, auf dem Sie die Schritte des Tutorials ausführen. Eine Beschreibung, wie Sie die IP-Adresse für die Firewallregel auf Serverebene für den aktuellen Computer bestimmen, finden Sie unter [Erstellen einer Firewall auf Serverebene](sql-database-get-started-portal-firewall.md).  
 
 - Ersetzen Sie im geöffneten Abfragefenster die vorherige Abfrage durch die folgende Abfrage, wobei Sie die IP-Adressen durch die entsprechenden IP-Adressen für Ihre Umgebung ersetzen.  
 
@@ -390,8 +393,8 @@ In diesem Tutorial haben Sie erfahren, wie Sie eine Azure SQL-Datenbank-Instanz 
 > * Erstellen und Kompilieren einer Java-Anwendung zum Abfragen einer Azure SQL-Datenbank
 > * Durchführen eines Notfallwiederherstellungsverfahrens
 
-Im nächsten Tutorial erfahren Sie, wie Sie eine verwaltete Instanz erstellen.
+Im nächsten Tutorial migrieren Sie SQL Server mithilfe von DMS zu einer verwalteten Azure SQL-Datenbank-Instanz.
 
 > [!div class="nextstepaction"]
->[Erstellen einer verwalteten Instanz](sql-database-managed-instance-create-tutorial-portal.md)
+>[Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS](../dms/tutorial-sql-server-to-managed-instance.md)
 

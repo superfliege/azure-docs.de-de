@@ -2,19 +2,22 @@
 title: Häufig gestellte Fragen zu Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Antworten auf häufig gestellte Fragen von Kunden zu Cloud-Datenbanken, zur Azure SQL-Datenbank, das Microsoft Managementsystem für relationale Datenbanken (RDBMS) und Database as a Service in der Cloud.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: reference
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/29/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: a7837ac6af82b5c67ea5779340aedc16cb78d156
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 8aaf89426cf392faaf6339f49300bf7d2b7dcfcd
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286331"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166621"
 ---
 # <a name="sql-database-faq"></a>SQL-Datenbank – Häufig gestellte Fragen
 
@@ -41,7 +44,7 @@ In vielen Fällen können Anwendungen von der Einfachheit eines vorkonfigurierte
 Das DTU-basierte Modell und das V-Kern-basierte Modell werden weiterhin parallel angeboten. Wir führen das V-Kern-basierte Modell als Reaktion auf Kundenanfragen nach mehr Transparenz in Bezug auf die Datenbankressourcen und die Möglichkeit zur separaten Skalierung ihrer Compute- und Speicherressourcen ein. Das V-Kern-basierte Modell ermöglicht dank des Azure-Hybridvorteils für SQL Server darüber hinaus zusätzliche Einsparungen für Kunden mit aktiver Software Assurance.
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>Was sollte ich bei der Entscheidung zwischen dem DTU-basierten Kaufmodell und dem V-Kern-basierten Kaufmodell beachten? 
-Die DTU (Database Transaction Unit) basiert auf einer Mischung aus den Werten für CPU, Speicher, Lesevorgänge und Schreibvorgänge. Die auf DTUs basierenden Leistungsstufen stellen vorkonfigurierte Ressourcenpakete gemäß den unterschiedlichen Stufen der Anwendungsleistung dar. Wenn Kunden die zugrunde liegenden Ressourcen außen vor lassen möchten und den Komfort eines vorkonfigurierten Pakets mit der Möglichkeit zur Zahlung eines monatlichen Festbetrags bevorzugen, ist das DTU-basierte Modell für ihre Anforderungen eventuell besser geeignet. Falls Kunden aber einen umfassenderen Einblick in die zugrunde liegenden Ressourcen benötigen oder diese aus Gründen der Leistungsoptimierung unabhängig voneinander skalieren möchten, ist das V-Kern-basierte Modell die ideale Wahl.  Wenn ein Kunde darüber hinaus über eine aktive Software Assurance (SA) für SQL Server verfügt, kann er seine getätigten Investitionen nutzen und mit dem [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) bis zu 30% sparen.  Die Optionen beider Kaufmodelle bieten die Vorteile eines vollständig verwalteten Diensts, z.B. automatisierte Sicherungen, Softwareupdates und Patches. 
+Die DTU (Database Transaction Unit) basiert auf einer Mischung aus den Werten für CPU, Speicher, Lesevorgänge und Schreibvorgänge. Die auf DTUs basierenden Computegrößen stellen vorkonfigurierte Ressourcenpakete gemäß den unterschiedlichen Stufen der Anwendungsleistung dar. Wenn Kunden die zugrunde liegenden Ressourcen außen vor lassen möchten und den Komfort eines vorkonfigurierten Pakets mit der Möglichkeit zur Zahlung eines monatlichen Festbetrags bevorzugen, ist das DTU-basierte Modell für ihre Anforderungen eventuell besser geeignet. Falls Kunden aber einen umfassenderen Einblick in die zugrunde liegenden Ressourcen benötigen oder diese aus Gründen der Leistungsoptimierung unabhängig voneinander skalieren möchten, ist das V-Kern-basierte Modell die ideale Wahl.  Wenn ein Kunde darüber hinaus über eine aktive Software Assurance (SA) für SQL Server verfügt, kann er seine getätigten Investitionen nutzen und mit dem [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) bis zu 30% sparen.  Die Optionen beider Kaufmodelle bieten die Vorteile eines vollständig verwalteten Diensts, z.B. automatisierte Sicherungen, Softwareupdates und Patches. 
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>Was ist der Azure-Hybridvorteil für SQL Server? 
 Der [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) ermöglicht eine maximale Ausnutzung Ihrer aktuellen Lizenzinvestitionen sowie eine schnellere Migration in die Cloud. Mit dem Azure-Hybridvorteil für SQL Server können Sie Ihre SQL Server-Lizenzen mit Software Assurance verwenden und zahlen so einen geringeren Preis („Basistarif“) für SQL-Datenbank. Der Azure-Hybridvorteil für SQL Server ist als öffentliche Vorschauversion des V-Kern-basierten Kaufmodells für Einzeldatenbanken und Pools für elastische Datenbanken von SQL-Datenbank verfügbar. Sie können diesen Vorteil auch bei aktiver SKU in Anspruch nehmen. Beachten Sie aber, dass der Basistarif in Kraft tritt, sobald Sie den Vorteil im Azure-Portal auswählen. Guthaben werden nicht rückwirkend gewährt.
@@ -71,15 +74,15 @@ Die [verwaltete Instanz](sql-database-managed-instance.md) ist nur für das V-Ke
 Die Computekosten spiegeln die gesamte Computekapazität wider, die für die Anwendung bereitgestellt wird. Für den Diensttarif „Unternehmenskritisch“ werden automatisch mindestens drei Always On-Replikate zugeordnet. Um diese zusätzliche Zuordnung von Computeressourcen widerzuspiegeln, ist der V-Kern-Preis für „Unternehmenskritisch“ ca. um das 2,7-fache höher. Aus dem gleichen Grund spiegelt der höhere Speicherpreis pro GB für die Ebene „Unternehmenskritisch“ den höheren E/A-Wert und die geringere Wartezeit des SSD-Speichers wider. Die Kosten für den Sicherungsspeicher unterscheiden sich nicht, da wir in beiden Fällen eine Klasse mit Standardspeicher verwenden.
 
 ## <a name="how-am-i-charged-for-storage---based-on-what-i-configure-upfront-or-on-what-the-database-uses"></a>Wie wird der Speicher berechnet: basierend auf meiner vorherigen Konfiguration oder basierend auf der Nutzung durch die Datenbank?
-Unterschiedliche Arten von Speicher werden auch unterschiedlich berechnet. Für Datenspeicher wird Ihnen der bereitgestellte Speicher basierend auf der von Ihnen gewählten maximalen Datenbank- oder Poolgröße berechnet. Die Kosten ändern sich nicht, sofern Sie dieses Maximum nicht verringern oder erhöhen. Der Sicherungsspeicher ist den automatisierten Sicherungen Ihrer Instanz zugeordnet. Durch eine Verlängerung der Beibehaltungsdauer Ihrer Sicherungen erhöht sich auch der von Ihrer Instanz verbrauchte Sicherungsspeicher. Für Ihren gesamten bereitgestellten Serverspeicher fallen keine zusätzlichen Gebühren für den Sicherungsspeicher an. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet. Beispiel: Wenn Sie über 100 GB Datenbankspeicher verfügen, erhalten Sie ohne Aufpreis einen Sicherungsspeicher von 100 GB. Wenn Sie aber 110 GB sichern, werden Ihnen die zusätzlichen 10 GB berechnet.
+Unterschiedliche Arten von Speicher werden auch unterschiedlich berechnet. Für Datenspeicher wird Ihnen der bereitgestellte Speicher basierend auf der von Ihnen gewählten maximalen Datenbank- oder Poolgröße berechnet. Die Kosten ändern sich nicht, sofern Sie dieses Maximum nicht verringern oder erhöhen. Der Sicherungsspeicher ist mit den automatischen Sicherungen Ihrer Instanz verbunden und wird dynamisch zugeordnet. Durch eine Verlängerung der Beibehaltungsdauer Ihrer Sicherungen erhöht sich auch der von Ihrer Instanz verbrauchte Sicherungsspeicher. Für Ihren gesamten bereitgestellten Serverspeicher fallen keine zusätzlichen Gebühren für den Sicherungsspeicher an. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet. Beispiel: Wenn Sie über 100 GB Datenbankspeicher verfügen, erhalten Sie ohne Aufpreis einen Sicherungsspeicher von 100 GB. Wenn Sie aber 110 GB sichern, werden Ihnen die zusätzlichen 10 GB berechnet. 
 
 Für einen Sicherungsspeicher einer Einzeldatenbank wird Ihnen der Speicher anteilig berechnet, der für die Datenbanksicherungen zugeordnet wurde, abzüglich der Größe der Datenbank. Für den Sicherungsspeicher eines Pools für elastische Datenbanken wird Ihnen der Speicher anteilig berechnet, der für die Datenbanksicherungen aller Datenbanken des Pools zugeordnet wurde, abzüglich der maximalen Datengröße des Pools für elastische Datenbanken. Jede Erhöhung der Datenbankgröße oder des Pools für elastische Datenbanken oder eine Erhöhung der Transaktionsrate führt zu höherem Speicherbedarf und somit auch zu einer höheren Rechnung für Ihren Sicherungsspeicher.  Wenn Sie die maximale Datengröße erhöhen, wird dieser neue Betrag von der berechneten Größe des Sicherungsspeichers abgezogen.
 
 ## <a name="how-do-i-select-the-right-sku-when-converting-an-existing-database-to-the-new-service-tiers"></a>Wie wähle ich die richtige SKU aus, wenn ich eine vorhandene Datenbank auf die neuen Diensttarife umstelle? 
 Für vorhandene SQL-Datenbank-Anwendungen mit dem DTU-basierten Modell ist der Diensttarif „Universell“ mit dem Standard-Tarif vergleichbar. Der Diensttarif „Unternehmenskritisch“ ist mit dem Premium-Tarif vergleichbar. In beiden Fällen sollten Sie mindestens jeweils einen V-Kern für 100 DTUs zuordnen, die von Ihrer Anwendung im DTU-basierten Modell verwendet werden.
 
-## <a name="do-the-new-vcore-based-service-tiers-offer-the-performance-levels-compatible-with-all-existing-service-level-objectives-slos"></a>Verfügen die neuen V-Kern-basierten Diensttarife über Leistungsstufen, die mit allen vorhandenen Servicelevelzielen (Service Level Objectives, SLOs) kompatibel sind?
-Die neuen V-Kern-basierten Diensttarife verfügen über vergleichbare Leistungsoptionen für alle Pools für elastische Datenbanken und Datenbanken, für die mindestens 100 DTUs verwendet werden.  Wir werden im Laufe der Zeit weitere SLOs hinzufügen, um Workloads mit weniger als 100 DTUs abzudecken.
+## <a name="do-the-new-vcore-based-service-tiers-offer-the-compute-sizes-compatible-with-all-existing-compute-sizes"></a>Sind die Computegrößen, die von den neuen Diensttarifen auf V-Kern-Basis angeboten werden, mit allen vorhandenen Computegrößen kompatibel?
+Die neuen V-Kern-basierten Diensttarife verfügen über vergleichbare Leistungsoptionen für alle Pools für elastische Datenbanken und Datenbanken, für die mindestens 100 DTUs verwendet werden.  Wir werden im Laufe der Zeit weitere Computegrößen hinzufügen, um Workloads mit weniger als 100 DTUs abzudecken.
 
 ## <a name="are-there-any-database-feature-differences-between-the-existing-dtu-based-and-new-vcore-based-service-tiers"></a>Bestehen bei den Datenbankfeatures Unterschiede zwischen den vorhandenen DTU-basierten und neuen V-Kern-basierten Diensttarifen? 
 Die neuen Diensttarife unterstützen eine Obermenge der Features, die für die aktuellen DTU-basierten Angebote verfügbar sind. Zu den zusätzlichen Features zählen eine Gruppe mit zusätzlichen dynamischen Verwaltungssichten (Dynamic Management Views, DMVs) und zusätzlichen Optionen für die Ressourcenkonfiguration. 
@@ -110,7 +113,7 @@ Da beim V-Kern-Modell eine unabhängige Steuerung der bereitgestellten Compute- 
 ## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>Wie oft kann ich die Ressourcen pro Pool anpassen?
 Beliebig oft. Weitere Informationen finden Sie unter [Verwalten von Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
-## <a name="how-long-does-it-take-to-change-the-service-tier-or-performance-level-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Wie lange dauert es, der Diensttarif oder die Leistungsstufe einer Einzeldatenbank zu ändern oder eine Datenbank in einen Pool für elastische Datenbanken oder aus solch einem Pool heraus zu verschieben?
+## <a name="how-long-does-it-take-to-change-the-service-tier-or-compute-size-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Wie lange dauert es, den Diensttarif oder die Computegröße einer Einzeldatenbank zu ändern oder eine Datenbank in einen Pool für elastische Datenbanken oder aus solch einem Pool heraus zu verschieben?
 Um den Diensttarif einer Datenbank zu ändern und ihn in einen Pool und aus einem Pool heraus zu verschieben, muss die Datenbank als Hintergrundvorgang auf die Plattform kopiert werden. Je nach Größe der Datenbanken kann das Ändern des Diensttarifs wenige Minuten oder mehrere Stunden dauern. In beiden Fällen bleiben die Datenbanken während des Verschiebens online und verfügbar. Weitere Informationen zum Ändern von Einzeldatenbanken finden Sie unter [Ändern der Dienstebene für eine Datenbank](sql-database-service-tiers-dtu.md). 
 
 ## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Wann sollten Einzeldatenbanken elastischen Datenbanken vorgezogen werden?
@@ -120,7 +123,7 @@ Pools für elastische Datenbanken sind generell auf herkömmliche [SaaS-Anwendun
 SQL-Datenbank wird anhand eines vorhersagbaren Stundensatzes basierend auf dem [Kaufmodell](sql-database-service-tiers-dtu.md) berechnet. Der tatsächliche Verbrauch wird stündlich berechnet und anteilig aufgeführt, sodass auf Ihrer Rechnung auch Bruchteile einer Stunde auftauchen können. Wenn eine Datenbank beispielsweise innerhalb eines Monats 12 Stunden existiert, wird auf Ihrer Rechnung eine Nutzung von 0,5 Tagen aufgeführt. 
 
 ## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>Was geschieht, wenn eine Einzeldatenbank weniger als eine Stunde aktiv ist oder für weniger als eine Stunde ein höherer Diensttarif verwendet?
-Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank die höchste in dieser Stunde angewandte Dienstebene und Leistungsstufe nutzt – unabhängig von der Verwendung der Datenbank und ob sie weniger als eine Stunde aktiv war. Wenn Sie beispielsweise eine Einzeldatenbank erstellen und diese fünf Minuten später löschen, wird Ihnen eine volle Datenbankstunde in Rechnung gestellt. 
+Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank den höchsten in dieser Stunde angewandten Diensttarif und die höchste Computegröße nutzt – unabhängig von der Verwendung der Datenbank und ob sie weniger als eine Stunde aktiv war. Wenn Sie beispielsweise eine Einzeldatenbank erstellen und diese fünf Minuten später löschen, wird Ihnen eine volle Datenbankstunde in Rechnung gestellt. 
 
 Beispiele:
 
@@ -141,8 +144,8 @@ Beispiele für das DTU-basierte Kaufmodell:
 Pools für elastische Datenbanken werden anhand der folgenden Merkmale abgerechnet:
 
 * Ein Pool für elastische Datenbanken wird bei seiner Erstellung abgerechnet, auch wenn keine Datenbanken im Pool vorhanden sind.
-* Ein Pool für elastische Datenbanken wird stündlich abgerechnet. Dies ist die gleiche Häufigkeit wie für Leistungsstufen von Einzeldatenbanken.
-* Wenn die Größe eines Pools für elastische Datenbanken geändert wird, wird der Pool erst dann gemäß der neuen Ressourcenmenge berechnet, wenn die Größenänderung abgeschlossen ist. Dies erfolgt nach dem gleichen Muster wie beim Ändern der Leistungsstufe von Einzeldatenbanken.
+* Ein Pool für elastische Datenbanken wird stündlich abgerechnet. Dies ist die gleiche Häufigkeit wie für Computegrößen von Einzeldatenbanken.
+* Wenn die Größe eines Pools für elastische Datenbanken geändert wird, wird der Pool erst dann gemäß der neuen Ressourcenmenge berechnet, wenn die Größenänderung abgeschlossen ist. Dies erfolgt nach dem gleichen Muster wie beim Ändern der Computegröße von Einzeldatenbanken.
 * Der Preis für einen Pool für elastische Datenbanken basiert auf den Ressourcen des Pools. Der Preis eines Pools für elastische Datenbanken hängt nicht von der Anzahl und Auslastung der darin enthaltenen elastischen Datenbanken ab.
 
 Ausführliche Informationen finden Sie unter [SQL-Datenbank – Preisübersicht](https://azure.microsoft.com/pricing/details/sql-database/), [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).

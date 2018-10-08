@@ -1,22 +1,23 @@
 ---
-title: Java-Schnellstart für Azure Cognitive Services, Bing-Videosuche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Videosuche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Bing-Videosuche-API, Java'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Bing-Videosuche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: db9bc353c86565956881c90ce3a3b6275e1b8771
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8ec5aa9e832a24fcd3b029727217bffb3b4d94e0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376947"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223235"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-java"></a>Schnellstart für die Bing-Videosuche-API mit Java
+# <a name="quickstart-bing-video-search-api-with-java"></a>Schnellstart: Bing-Videosuche-API mit Java
 
 In diesem Artikel erfahren Sie, wie Sie die Bing-Suche-API verwenden, die Ihnen im Rahmen von Microsoft Cognitive Services in Azure zur Verfügung steht. In diesem Artikel wird zwar Java eingesetzt, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann. 
 
@@ -35,7 +36,7 @@ Die [Bing-Videosuche-API](https://docs.microsoft.com/rest/api/cognitiveservices/
 1. Laden Sie die [gson-Bibliothek](https://github.com/google/gson) herunter, oder installieren Sie diese.
 2. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt.
 3. Fügen Sie den unten stehenden Code hinzu.
-4. Ersetzen Sie den Wert `subscriptionKey` durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+4. Ersetzen Sie den `subscriptionKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 5. Führen Sie das Programm aus.
 
 ```java
@@ -148,7 +149,7 @@ class SearchResults{
 
 **Antwort**
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben:
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {
@@ -259,8 +260,8 @@ Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückg
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Einteilen von Videos in Seiten](paging-videos.md)
-> [Ändern der Größe und Zuschneiden von Miniaturansichten](resize-and-crop-thumbnails.md)
+> [Durchsuchen von Videos](paging-videos.md)
+> [Anpassen der Größe und Zuschneiden von Miniaturansichten](resize-and-crop-thumbnails.md)
 
 ## <a name="see-also"></a>Weitere Informationen 
 

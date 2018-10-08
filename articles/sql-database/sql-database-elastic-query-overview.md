@@ -2,19 +2,22 @@
 title: Übersicht über elastische Abfragen in Azure SQL-Datenbank | Microsoft Docs
 description: Durch elastische Abfragen können Sie eine Transact-SQL-Abfrage für mehrere Datenbanken ausführen.
 services: sql-database
-manager: craigg
-author: MladjoA
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/03/2018
+author: MladjoA
 ms.author: mlandzic
-ms.openlocfilehash: 52fce1cf1acb5e084c629c9cad6486d6a599b4fd
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 8a7962866b70ae0ec99b8425a365575fbd4e5913
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435770"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164367"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Übersicht über elastische Abfragen in Azure SQL-Datenbank (Vorschau)
 
@@ -28,7 +31,7 @@ Die Abfrage über Azure SQL-Datenbanken hinweg erfolgt vollständig in T-SQL. Di
 
 ### <a name="available-on-standard-tier"></a>Im Standard-Tarif verfügbar
 
-Elastische Abfragen werden in den Leistungsstufen Standard und Premium unterstützt. Informationen zu Leistungseinschränkungen bei niedrigeren Tarifen finden Sie nachstehend im Abschnitt „Einschränkungen der Vorschau“.
+Elastische Abfragen werden in den Diensttarifen „Standard“ und „Premium“ unterstützt. Informationen zu Leistungseinschränkungen bei niedrigeren Diensttarifen finden Sie nachstehend im Abschnitt „Einschränkungen der Vorschau“.
 
 ### <a name="push-parameters-to-remote-databases"></a>Übertragen von Parametern mithilfe von Push an Remotedatenbanken
 
@@ -101,7 +104,7 @@ Das Verwenden einer elastischen Abfrage für Berichtsaufgaben auf einer Datenebe
 
 > [!NOTE]
 > Die elastische Abfragedatenbank (Hauptknoten) kann eine separate Datenbank oder aber die gleiche Datenbank sein, die als Host für die Shardzuordnung fungiert.
-> Stellen Sie unabhängig von der gewählten Konfiguration sicher, dass die Dienst- und Leistungsebene der Datenbank hoch genug ist, um das voraussichtliche Aufkommen an Anmelde- und Abfrageanforderungen zu bewältigen.
+> Stellen Sie unabhängig von der ausgewählten Konfiguration sicher, dass Diensttarif und Computegröße der Datenbank hoch genug sind, um das voraussichtliche Aufkommen an Anmelde- und Abfrageanforderungen zu bewältigen.
 
 Die folgenden Schritte dienen zum Konfigurieren elastischer Datenbankabfragen für Szenarios mit horizontaler Partitionierung, die Zugriff auf eine Gruppe von Tabellen in (üblicherweise) mehreren Remoteinstanzen von SQL-Datenbank erfordern:
 
@@ -133,7 +136,7 @@ Elastische Abfragen sind in den Kosten für Azure SQL-Datenbanken enthalten. Bea
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-* Beim Standard-Tarif kann das Ausführen Ihrer ersten elastischen Abfrage einige Minuten dauern. Dieser Zeitraum wird für das Laden der elastischen Abfragefunktionalität benötigt. Je höher der Tarif, desto besser die Ladeleistung.
+* Beim Diensttarif „Standard“ kann das Ausführen Ihrer ersten elastischen Abfrage einige Minuten dauern. Dieser Zeitraum wird für das Laden der elastischen Abfragefunktionalität benötigt: je höher der Diensttarif und die Computegröße, desto besser die Ladeleistung.
 * Das Erstellen von Skripts für externe Datenquellen oder externe Tabellen in SSMS oder SSDT wird noch nicht unterstützt.
 * Import/Export für SQLDB unterstützt noch keine externen Datenquellen und externen Tabellen. Wenn Sie Import/Export verwenden müssen, löschen Sie diese Objekte vor dem Exportieren, und erstellen Sie sie nach dem Importieren neu.
 * Elastische Abfragen unterstützen derzeit nur den schreibgeschützten Zugriff auf externe Tabellen. Sie können jedoch die vollständige T-SQL-Funktionalität für die Datenbank nutzen, in der die externe Tabelle definiert ist. Dies kann beispielsweise hilfreich sein, um temporäre Ergebnisse z.B. mithilfe von „SELECT <column_list> INTO <local_table>“ dauerhaft zu speichern, oder um gespeicherte Prozeduren für die elastische Abfragedatenbank zu definieren, die auf externe Tabellen verweisen.

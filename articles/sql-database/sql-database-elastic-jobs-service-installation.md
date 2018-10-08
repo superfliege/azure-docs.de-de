@@ -2,21 +2,29 @@
 title: Installieren von Aufträgen für die elastische Datenbank | Microsoft Docs
 description: Schrittweise Anleitung für die Installation der Funktion für elastische Aufträge
 services: sql-database
-manager: craigg
-author: ddove
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 5760ca693f347068e03770b348d88b3b2adbf678
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 37052c86736a05012b9bb996f07bbf2568d7c879
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645611"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163166"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Installieren von Aufträgen für die elastische Datenbank – Übersicht
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+
 [**Aufträge für die elastische Datenbank**](sql-database-elastic-jobs-overview.md) können mithilfe von PowerShell oder über das Azure-Portal installiert werden. Der Zugriff zum Erstellen und Verwalten von Aufträgen mithilfe der PowerShell-API ist jedoch nur möglich, wenn Sie das PowerShell-Paket installieren. Darüber hinaus stellen die PowerShell-APIs zurzeit erheblich mehr Funktionen bereit als das Portal.
 
 Wenn Sie **Aufträge für die elastische Datenbank** bereits über das Portal aus einem vorhandenen **Pool für elastische Datenbanken** installiert haben, finden Sie in der neuesten PowerShell-Vorschau Skripts, mit denen Sie ein Upgrade der vorhandenen Installation vornehmen können. Es wird dringend empfohlen, dass Sie ein Upgrade Ihrer Installation auf die neuesten Komponenten der **Aufträge für die elastische Datenbank** durchführen, um die über die PowerShell-APIs verfügbar gemachten neuen Funktionen nutzen zu können.
@@ -59,7 +67,7 @@ Die für diesen Beispielaufruf angegebenen Parameter können nach Ihren Wünsche
 <table style="width:100%">
   <tr>
     <th>Parameter</th>
-    <th>BESCHREIBUNG</th>
+    <th>Beschreibung</th>
   </tr>
 
 <tr>
@@ -88,7 +96,7 @@ Die für diesen Beispielaufruf angegebenen Parameter können nach Ihren Wünsche
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Gibt das Service Level-Ziel für die Standard-Edition an. Dieser Parameter ist standardmäßig „S0“. Die Parameterwerte „S0/S1/S2/S3/S4/S6/S9/S12“ sind zulässig und bewirken die Verwendung des entsprechenden SLO für Azure SQL-Datenbank. Weitere Informationen zu SLOs für SQL-Datenbank finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Stellt die Computegröße für eine Standard-Edition bereit. Dieser Parameter ist standardmäßig „S0“. Die Parameterwerte „S0/S1/S2/S3/S4/S6/S9/S12“ sind zulässig und bewirken die Verwendung der entsprechenden Computegröße für Azure SQL-Datenbank. Weitere Informationen zu Computegrößen für SQL-Datenbank finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </tr>
@@ -120,7 +128,7 @@ Zum Aktualisieren der Größe der VM einer Installation führen Sie das folgende
 <table style="width:100%">
   <tr>
   <th>Parameter</th>
-  <th>BESCHREIBUNG</th>
+  <th>Beschreibung</th>
 </tr>
 
   <tr>

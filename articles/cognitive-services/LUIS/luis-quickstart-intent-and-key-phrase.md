@@ -1,41 +1,24 @@
 ---
-title: 'Tutorial: Erstellen einer LUIS-App zum Zurückgeben von Schlüsselbegriffen: Azure | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie die Entität „keyPhrase“ zur LUIS-App hinzufügen, um Äußerungen auf Schlüsselinhalte zu analysieren.
+title: 'Tutorial 8: Schlüsselbegriffserkennung in LUIS'
+titleSuffix: Azure Cognitive Services
+description: Verwenden Sie die vordefinierte keyPhrase-Entität, um Schlüsselinhalte aus Äußerungen zu extrahieren. Sie müssen Äußerungen nicht mit vordefinierten Entitäten bezeichnen. Die Entität wird automatisch erkannt.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ef7a1c81f453a8d4ff9526a4844518782e152c4f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 8fa183c22b9b6830c57b0a16b7f5d20ca38e3ef3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159485"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166519"
 ---
-# <a name="tutorial-8-add-keyphrase-entity"></a>Tutorial: 8. Hinzufügen der keyPhrase-Entität 
-In diesem Tutorial verwenden Sie eine App, die veranschaulicht, wie Sie Schlüsselinhalte aus Äußerungen extrahieren.
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Grundlegendes zu keyPhrase-Entitäten 
-> * Verwenden der LUIS-App im Personalbereich 
-> * Hinzufügen der keyPhrase-Entität zum Extrahieren von Schlüsselinhalten aus einer Äußerung
-> * Trainieren und Veröffentlichen der App
-> * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort (einschließlich Schlüsselbegriffen)
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem [Tutorial zur einfachen Entität](luis-quickstart-primary-and-secondary-data.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json).
-
-Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `keyphrase`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
-
-## <a name="keyphrase-entity-extraction"></a>keyPhrase-Entitätsextraktion
-Schlüsselinhalte werden von der vordefinierten Entität **keyPhrase** bereitgestellt. Diese Entität gibt Schlüsselinhalte aus der Äußerung zurück.
+# <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Tutorial 8: Extrahieren von Schlüsselbegriffen einer Äußerung
+In diesem Tutorial verwenden Sie die vordefinierte keyPhrase-Entität, um Schlüsselinhalte aus Äußerungen zu extrahieren. Sie müssen Äußerungen nicht mit vordefinierten Entitäten bezeichnen. Die Entität wird automatisch erkannt.
 
 Die folgenden Äußerungen sind Beispiele für Schlüsselbegriffe:
 
@@ -46,147 +29,157 @@ Die folgenden Äußerungen sind Beispiele für Schlüsselbegriffe:
 
 Ihre Clientanwendung kann diese Werte zusammen mit anderen extrahierten Entitäten verwenden, um zu entscheiden, wie es in dem Gespräch weitergehen soll.
 
+**In diesem Tutorial lernen Sie Folgendes:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Verwenden der vorhandenen Tutorial-App
+> * Hinzufügen der keyPhrase-Entität 
+> * Trainieren
+> * Veröffentlichen
+> * Abrufen von Absichten und Entitäten von einem Endpunkt
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
+
+Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-simple-HumanResources.json) herunter, und speichern Sie sie.
+
+2. Importieren Sie den JSON-Code in eine neue App.
+
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `keyphrase`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+
 ## <a name="add-keyphrase-entity"></a>Hinzufügen der keyPhrase-Entität 
 Fügen Sie die vordefinierte keyPhrase-Entität hinzu, um Schlüsselinhalte aus Äußerungen zu extrahieren.
 
-1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste **Build** auswählen. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie im linken Menü die Option **Entitäten**.
 
-    [ ![Screenshot mit hervorgehobener Option „Entitäten“ im linken Navigationsbereich des Abschnitts „Erstellen“](./media/luis-quickstart-intent-and-key-phrase/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-key-phrase/hr-select-entities-button.png#lightbox)
-
-3. Klicken Sie auf **Manage prebuilt entities** (Vordefinierte Entitäten verwalten).
-
-    [ ![Screenshot des Popupdialogfensters mit der Liste der Entitäten](./media/luis-quickstart-intent-and-key-phrase/hr-manage-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/hr-manage-prebuilt-entities.png#lightbox)
+3. Wählen Sie **Manage prebuilt entities** (Vordefinierte Entitäten verwalten) aus.
 
 4. Klicken Sie im Popupdialogfenster auf **keyPhrase** und anschließend auf **Fertig**. 
 
     [ ![Screenshot des Popupdialogfensters mit der Liste der Entitäten](./media/luis-quickstart-intent-and-key-phrase/hr-add-or-remove-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/hr-add-or-remove-prebuilt-entities.png#lightbox)
 
-    <!-- TBD: asking Carol
-    You won't see these entities labeled in utterances on the intents pages. 
-    -->
 5. Klicken Sie im linken Menü auf **Absichten**, und wählen Sie die Absicht **Utilities.Confirm** aus. Die keyPhrase-Entität ist in mehreren Äußerungen gekennzeichnet. 
 
     [ ![Screenshot: Absicht „Utilities.Confirm“ mit keyPhrases-Kennzeichnung in Äußerungen](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png)](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png#lightbox)
 
-## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
+## <a name="train"></a>Trainieren
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-app-to-endpoint"></a>Veröffentlichen der App im Endpunkt
+## <a name="publish"></a>Veröffentlichen
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-
-## <a name="query-the-endpoint-with-an-utterance"></a>Abfragen des Endpunkts mit einer Äußerung
+## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `does form hrf-123456 cover the new dental benefits and medical plan` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
-
-```
-{
-  "query": "does form hrf-123456 cover the new dental benefits and medical plan",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.9300641
-  },
-  "intents": [
+    
+    ```JSON
     {
-      "intent": "FindForm",
-      "score": 0.9300641
-    },
-    {
-      "intent": "ApplyForJob",
-      "score": 0.0359598845
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.0141798034
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.0112197418
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00507669244
-    },
-    {
-      "intent": "None",
-      "score": 0.00238501839
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00202810857
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00102957746
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.0008688423
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 3.557994E-05
+      "query": "does form hrf-123456 cover the new dental benefits and medical plan",
+      "topScoringIntent": {
+        "intent": "FindForm",
+        "score": 0.9300641
+      },
+      "intents": [
+        {
+          "intent": "FindForm",
+          "score": 0.9300641
+        },
+        {
+          "intent": "ApplyForJob",
+          "score": 0.0359598845
+        },
+        {
+          "intent": "GetJobInformation",
+          "score": 0.0141798034
+        },
+        {
+          "intent": "MoveEmployee",
+          "score": 0.0112197418
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00507669244
+        },
+        {
+          "intent": "None",
+          "score": 0.00238501839
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.00202810857
+        },
+        {
+          "intent": "Utilities.Stop",
+          "score": 0.00102957746
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.0008688423
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 3.557994E-05
+        }
+      ],
+      "entities": [
+        {
+          "entity": "hrf-123456",
+          "type": "HRF-number",git 
+          "startIndex": 10,
+          "endIndex": 19
+        },
+        {
+          "entity": "new dental benefits",
+          "type": "builtin.keyPhrase",
+          "startIndex": 31,
+          "endIndex": 49
+        },
+        {
+          "entity": "medical plan",
+          "type": "builtin.keyPhrase",
+          "startIndex": 55,
+          "endIndex": 66
+        },
+        {
+          "entity": "hrf",
+          "type": "builtin.keyPhrase",
+          "startIndex": 10,
+          "endIndex": 12
+        },
+        {
+          "entity": "-123456",
+          "type": "builtin.number",
+          "startIndex": 13,
+          "endIndex": 19,
+          "resolution": {
+            "value": "-123456"
+          }
+        }
+      ]
     }
-  ],
-  "entities": [
-    {
-      "entity": "hrf-123456",
-      "type": "HRF-number",git 
-      "startIndex": 10,
-      "endIndex": 19
-    },
-    {
-      "entity": "new dental benefits",
-      "type": "builtin.keyPhrase",
-      "startIndex": 31,
-      "endIndex": 49
-    },
-    {
-      "entity": "medical plan",
-      "type": "builtin.keyPhrase",
-      "startIndex": 55,
-      "endIndex": 66
-    },
-    {
-      "entity": "hrf",
-      "type": "builtin.keyPhrase",
-      "startIndex": 10,
-      "endIndex": 12
-    },
-    {
-      "entity": "-123456",
-      "type": "builtin.number",
-      "startIndex": 13,
-      "endIndex": 19,
-      "resolution": {
-        "value": "-123456"
-      }
-    }
-  ]
-}
-```
+    ```
 
-Bei der Suche nach einem Formular hat der Benutzer mehr Informationen angegeben als erforderlich. Die zusätzlichen Informationen werden als **builtin.keyPhrase** zurückgegeben. Die Clientanwendung kann diese zusätzlichen Informationen für Folgefragen nutzen (Beispiel: Möchten Sie mit einem Mitarbeiter der Personalabteilung über Zahnarztleistungen unterhalten?) oder ein Menü mit weiteren Optionen anzeigen (einschließlich einer Option für weitere Informationen zu Zahnarztleistungen oder zur medizinischen Versorgung).
-
-## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
-Diese App mit keyPhrase-Entitätserkennung hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die extrahierten Daten sowie den Hauptschlüsselinhalt zurückgegeben. 
-
-Ihr Chatbot verfügt nun über ausreichend Informationen, um den nächsten Schritt in der Unterhaltung zu bestimmen. 
-
-## <a name="where-is-this-luis-data-used"></a>Wo werden diese LUIS-Daten verwendet? 
-Für LUIS ist diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die keyPhrase-Daten aus der Äußerung verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
+    Bei der Suche nach einem Formular hat der Benutzer mehr Informationen angegeben als erforderlich. Die zusätzlichen Informationen werden als **builtin.keyPhrase** zurückgegeben. Die Clientanwendung kann diese zusätzlichen Informationen für Folgefragen nutzen (Beispiel: Möchten Sie mit einem Mitarbeiter der Personalabteilung über Zahnarztleistungen unterhalten?) oder ein Menü mit weiteren Optionen anzeigen (einschließlich einer Option für weitere Informationen zu Zahnarztleistungen oder zur medizinischen Versorgung).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Tutorial wurde die vordefinierte keyPhrase-Entität hinzugefügt, durch die Schlüsselbegriffe in Äußerungen schnell bereitgestellt werden, ohne die Äußerungen kennzeichnen zu müssen. 
 
 > [!div class="nextstepaction"]
 > [Erstellen einer App, die neben der Absichtsvorhersage die Stimmung zurückgibt](luis-quickstart-intent-and-sentiment-analysis.md)

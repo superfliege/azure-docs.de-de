@@ -1,20 +1,21 @@
 ---
-title: 'Tutorial: SDK für die visuelle Bing-Suche: ImageInsightsToken | Microsoft-Dokumentation'
+title: 'Tutorial: ImageInsightsToken – Visuelle Bing-Suche'
+titlesuffix: Azure Cognitive Services
 description: Es wird beschrieben, wie Sie das SDK für die visuelle Bing-Suche nutzen, um URLs von Bildern abzurufen, die durch das ImageInsightsToken angegeben werden.
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 8f6e7f7e88ae78fe7e8a9be4adefd689dd26d0f9
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: bda4bdeea019d8cf3ae677d5eaf81e631ca38d16
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41929896"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222572"
 ---
 # <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>Tutorial: SDK für die visuelle Bing-Suche: ImageInsightsToken und Ergebnisse
 Das SDK für die visuelle Suche enthält eine Option, Bilder aus einer vorherigen Suche online zu finden, die ein `ImageInsightsToken` zurückgibt.  In diesem Beispiel wird ein `ImageInsightsToken` abgerufen und das Token in einer nachfolgenden Suche verwendet.  Der Code sendet das `ImageInsightsToken` an Bing und gibt Ergebnisse zurück, die URLs der Bing-Suche und URLs von ähnlichen online ermittelten Bildern enthalten.

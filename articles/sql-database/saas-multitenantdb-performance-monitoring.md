@@ -1,21 +1,23 @@
 ---
 title: Überwachen der Leistung mehrinstanzenfähiger Azure SQL-Datenbanken mit Shards in einer mehrinstanzenfähigen SaaS-App | Microsoft-Dokumentation
 description: Überwachen und Verwalten der Leistung mehrinstanzenfähiger Azure SQL-Datenbanken mit Shards in einer mehrinstanzenfähigen SaaS-App
-keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 75431715b5948525e92c99b778842d26a684da82
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 873660f362d2ad0002f512f911d4149519092787
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753443"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055944"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung mehrinstanzenfähiger Azure SQL-Datenbanken mit Shards in einer mehrinstanzenfähigen SaaS-App
 
@@ -44,9 +46,9 @@ Die Verwaltung der Datenbankleistung umfasst das Kompilieren und Analysieren von
 ### <a name="performance-management-strategies"></a>Leistungsverwaltungsstrategien
 
 * Um die Leistung nicht manuell überwachen zu müssen, ist es am effizientesten, **Benachrichtigungen einzurichten, die ausgelöst werden, wenn Datenbanken vom Normalbereich abweichen**.
-* Um auf kurzfristige Schwankungen in der Leistungsebene einer Datenbank zu reagieren, **kann die DTU-Stufe zentral hoch- oder herunterskaliert werden**. Wenn diese Fluktuation in regelmäßigen oder vorhersagbaren Abständen auftritt, **kann die Skalierung der Datenbank geplant werden und automatisch erfolgen**. Skalieren Sie z.B. zentral herunter, wenn Sie wissen, dass der Workload gering sein wird, beispielsweise nachts oder an den Wochenenden.
+* Um auf kurzfristige Schwankungen in der Computegröße einer Datenbank zu reagieren, **kann die DTU-Stufe hoch- oder herunterskaliert werden**. Wenn diese Fluktuation in regelmäßigen oder vorhersagbaren Abständen auftritt, **kann die Skalierung der Datenbank geplant werden und automatisch erfolgen**. Skalieren Sie z.B. zentral herunter, wenn Sie wissen, dass der Workload gering sein wird, beispielsweise nachts oder an den Wochenenden.
 * Um auf längerfristige Schwankungen oder Änderungen bei Mandanten zu reagieren, **können einzelne Mandanten in andere Datenbanken verschoben werden**.
-* Um auf kurzfristige Anstiege *einzelner* Mandantenlasten zu reagieren, **können einzelne Mandanten aus der Datenbank entfernt und einer separaten Leistungsebene zugewiesen werden**. Nachdem die Last sich verringert, kann der Mandant wieder der mehrinstanzenfähigen Datenbank hinzugefügt werden. Wenn dies im Voraus bekannt ist, können Mandanten vorsorglich verschoben werden, um sicherzustellen, dass die Datenbank immer über die erforderlichen Ressourcen verfügt, und um Auswirkungen auf andere Mandanten in der mehrinstanzenfähigen Datenbank zu vermeiden. Wenn diese Anforderungen vorhersagbar sind, wenn beispielsweise für eine beliebte Veranstaltung an einem Veranstaltungsort ein Run auf die Tickets zu erwarten ist, kann dieses Verwaltungsverhalten in die Anwendung integriert werden.
+* Um auf kurzfristige Anstiege *einzelner* Mandantenlasten zu reagieren, **können einzelne Mandanten aus der Datenbank entfernt und einer separaten Computegröße zugewiesen werden**. Nachdem die Last sich verringert, kann der Mandant wieder der mehrinstanzenfähigen Datenbank hinzugefügt werden. Wenn dies im Voraus bekannt ist, können Mandanten vorsorglich verschoben werden, um sicherzustellen, dass die Datenbank immer über die erforderlichen Ressourcen verfügt, und um Auswirkungen auf andere Mandanten in der mehrinstanzenfähigen Datenbank zu vermeiden. Wenn diese Anforderungen vorhersagbar sind, wenn beispielsweise für eine beliebte Veranstaltung an einem Veranstaltungsort ein Run auf die Tickets zu erwarten ist, kann dieses Verwaltungsverhalten in die Anwendung integriert werden.
 
 Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und Benachrichtigungen für die meisten Ressourcen. In SQL-Datenbank sind Überwachung und Warnung für Datenbanken verfügbar. Die integrierte Überwachungs- und Benachrichtigungsfunktionalität ist ressourcenspezifisch, daher lässt sie sich bequem für eine kleine Anzahl von Ressourcen verwenden, ist aber bei der Arbeit mit vielen Ressourcen unpraktisch.
 

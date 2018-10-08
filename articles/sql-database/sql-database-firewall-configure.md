@@ -1,25 +1,30 @@
 ---
-title: Firewallregeln für Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Erfahren Sie, wie eine SQL-Datenbankfirewall mit der Firewallregeln auf Server- und Datenbankebene zum Verwalten des Zugriffs konfigurieren.
-keywords: Datenbankfirewall
+title: Firewallregeln für Azure SQL-Datenbank und Data Warehouse | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Firewall für SQL-Datenbank und SQL Data Warehouse mit Firewallregeln auf Serverebene zum Verwalten des Zugriffs sowie Firewallregeln für SQL Datenbank auf Datenbankebene konfigurieren.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 1848fea8a21afc473873cb8c4a5ba87b09da02e2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: bc246031e57fd8e28cddf9f4e6e170b0695d7579
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646812"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166755"
 ---
-# <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Firewallregeln auf Server- und Datenbankebene für Azure SQL-Datenbank 
+# <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Firewallregeln für Azure SQL-Datenbank and SQL Data Warehouse 
 
-Die Microsoft Azure SQL-Datenbank bietet einen relationalen Datenbankdienst für Azure und andere internetbasierte Anwendungen. Zum Schutz Ihrer Daten verhindern Firewalls jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Datenbankzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
+Microsoft Azure [SQL-Datenbank](sql-database-technical-overview.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) stellen einen relationalen Datenbankdienst für Ihre internetbasierten Azure-Anwendungen (und weitere Anwendungen) bereit. Zum Schutz Ihrer Daten verhindern Firewalls jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Datenbankzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
+
+> [!NOTE]
+> Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
 
 #### <a name="virtual-network-rules-as-alternatives-to-ip-rules"></a>Regeln für virtuelle Netzwerke als Alternative zu IP-Regeln
 
@@ -30,6 +35,9 @@ Zusätzlich zu den IP-Regeln verwaltet die Firewall ebenfalls *virtuelle Netzwer
 Anfänglich wird jeglicher Transact-SQL-Zugriff auf Ihren Azure SQL Server durch die Firewall blockiert. Damit Sie Ihre Azure SQL Server-Instanz verwenden können, müssen Sie eine oder mehrere Firewallregeln auf Serverebene angeben, die Zugriff auf Ihre Azure SQL Server-Instanz ermöglichen. Geben Sie mit den Firewallregeln an, welche IP-Adressbereiche aus dem Internet zulässig sind, und ob Azure-Anwendungen versuchen können, eine Verbindung mit Ihrer Azure SQL Server-Instanz herzustellen.
 
 Um selektiv Zugriff auf nur eine der Datenbanken in Ihrer Azure SQL Server-Instanz zu gewähren, müssen Sie eine Regel auf Datenbankebene für die erforderliche Datenbank erstellen. Geben Sie in der Firewallregel auf Datenbankebene einen IP-Adressbereich an, der außerhalb des Bereichs liegt, der in der Firewallregel auf Serverebene angegeben ist, und stellen Sie sicher, dass die IP-Adresse des Clients innerhalb des auf Datenbankebene angegebenen Bereichs liegt.
+
+> [!IMPORTANT]
+> SQL Data Warehouse unterstützt nur Firewallregeln auf Serverebene und keine Firewallregeln auf Datenbankebene.
 
 Verbindungsversuche über das Internet und Azure müssen zunächst die Firewall passieren, bevor sie Ihren Azure SQL-Server oder Ihre SQL-Datenbank erreichen (wie im folgenden Diagramm dargestellt):
 
@@ -68,7 +76,7 @@ Um Anwendungen von Azure die Verbindung mit dem Azure SQL-Server zu ermöglichen
 > 
 
 ## <a name="creating-and-managing-firewall-rules"></a>Erstellen und Verwalten von Firewallregeln
-Die erste Firewalleinstellung auf Serverebene kann im [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe von [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), der [Azure-CLI](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/firewallrules) erstellt werden. Nachfolgende Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden. 
+Die erste Firewalleinstellung auf Serverebene kann im [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe von [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), der [Azure-CLI](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/firewallrules) erstellt werden. Nachfolgende Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden. 
 
 > [!IMPORTANT]
 > Firewallregeln auf Datenbankebene können nur mit Transact-SQL erstellt und verwaltet werden. 
@@ -154,17 +162,17 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ```
 
 > [!TIP]
-> PowerShell-Beispiele im Kontext eines Schnellstarts finden Sie unter [Erstellen einer Datenbank – PowerShell](sql-database-get-started-powershell.md) und [Erstellen einer einzelnen Datenbank und Konfigurieren einer Firewallregel mithilfe von PowerShell](scripts/sql-database-create-and-configure-database-powershell.md).
+> PowerShell-Beispiele im Kontext eines Schnellstarts finden Sie unter [Erstellen einer Datenbank – PowerShell](sql-database-powershell-samples.md) und [Erstellen einer einzelnen Datenbank und Konfigurieren einer Firewallregel mithilfe von PowerShell](scripts/sql-database-create-and-configure-database-powershell.md).
 >
 
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Verwalten von Firewallregeln mit Azure CLI
 | Cmdlet | Ebene | BESCHREIBUNG |
 | --- | --- | --- |
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Server|Erstellt eine Serverfirewallregel|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Server|Listet die Firewallregeln auf einem Server auf|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Server|Zeigt die Details einer Firewallregel an|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Server|Aktualisiert eine Firewallregel|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Server|Löscht eine Firewallregel|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server|Erstellt eine Serverfirewallregel|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server|Listet die Firewallregeln auf einem Server auf|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Server|Zeigt die Details einer Firewallregel an|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Server|Aktualisiert eine Firewallregel|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Server|Löscht eine Firewallregel|
 
 Im folgenden Beispiel wird mithilfe der Azure CLI eine Firewallregel auf Serverebene festgelegt: 
 
@@ -174,7 +182,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ```
 
 > [!TIP]
-> Ein Azure CLI-Beispiel im Kontext eines Schnellstarts finden Sie unter [Erstellen einer Datenbank – Azure CLI](sql-database-get-started-cli.md) und [Erstellen einer einzelnen Datenbank und Konfigurieren einer Firewallregel mithilfe der Azure CLI](scripts/sql-database-create-and-configure-database-cli.md).
+> Ein Azure CLI-Beispiel im Kontext einer Schnellstartanleitung finden Sie unter [Erstellen einer Datenbank – Azure CLI](sql-database-cli-samples.md) und [Erstellen einer einzelnen Datenbank und Konfigurieren einer Firewallregel mithilfe der Azure CLI](scripts/sql-database-create-and-configure-database-cli.md).
 >
 
 ## <a name="manage-firewall-rules-using-rest-api"></a>Verwalten von Firewallregeln mithilfe der REST-API

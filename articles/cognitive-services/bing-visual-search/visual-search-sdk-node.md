@@ -1,23 +1,23 @@
 ---
-title: Node SDK für die thematische Suche – Schnellstart | Microsoft-Dokumentation
-description: Setup für die Node SDK-Konsolenanwendung für die thematische Suche.
+title: 'Schnellstart: SDK für die visuelle Bing-Suche, Node'
 titleSuffix: Azure Cognitive Services
+description: Setup für die Node SDK-Konsolenanwendung für die thematische Suche.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: bb245f9eab0f367a0e1b69af88352c54132ea29d
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: afccbc66da94d5c2d276a05a47ffe60dfbae2261
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782439"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219701"
 ---
-# <a name="visual-search-sdk-node-quickstart"></a>Node SDK für die thematische Suche – Schnellstart
+# <a name="quickstart-bing-visual-search-sdk-node"></a>Schnellstart: SDK für die visuelle Bing-Suche, Node 
 
 Das Bing SDK für die thematische Suche nutzt die Funktionen der REST-API für Webanforderungen und Ergebnisanalysen.
 Der [Quellcode für das Node SDK für die thematische Suche](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) ist bei GitHub verfügbar.

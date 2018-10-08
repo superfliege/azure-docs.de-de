@@ -1,71 +1,69 @@
 ---
-title: 'Tutorial: Erstellen einer LUIS-App zum Abrufen von Daten, die mit einem regulären Ausdruck abgeglichen wurden – Azure | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie eine einfache LUIS-App erstellen, die Absichten und eine Entität vom Typ „Regulärer Ausdruck“ verwenden, um Daten zu extrahieren.
+title: 'Tutorial 3: Mit regulären Ausdrücken abgeglichene Daten – Extrahieren korrekt formatierter Daten'
+titleSuffix: Azure Cognitive Services
+description: Extrahieren Sie mithilfe der Entität vom Typ „Regulärer Ausdruck“ einheitlich formatierte Daten aus einer Äußerung.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 9672215c8cc5f95775e3b7fba74b27379a58ff49
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 06e212ef756fda9224b38b41c69c7c4eccfb9796
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162926"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159855"
 ---
-# <a name="tutorial-3-add-regular-expression-entity"></a>Tutorial 3: Hinzufügen einer Entität vom Typ „Regulärer Ausdruck“
-In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie mithilfe der Entität **Regulärer Ausdruck** einheitlich formatierte Daten aus einer Äußerung extrahieren.
+# <a name="tutorial-3-extract-well-formatted-data"></a>Tutorial 3: Extrahieren korrekt formatierter Daten
+In diesem Tutorial ändern Sie die Personal-App so, dass mithilfe der Entität **Regulärer Ausdruck** einheitlich formatierte Daten aus einer Äußerung extrahiert werden.
 
+Eine Entität dient dazu, wichtige Daten aus der Äußerung zu extrahieren. In dieser App wird die Entität vom Typ „Regulärer Ausdruck“ verwendet, um formatierte Personalformularnummern aus einer Äußerung zu extrahieren. Zwar wird die Absicht der Äußerung immer durch Machine Learning bestimmt, doch wird bei diesem spezifischen Entitätstyp kein Machine Learning verwendet. 
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Grundlegendes zu Entitäten vom Typ „Regulärer Ausdruck“ 
-> * Verwenden einer LUIS-App für eine Personaldomäne mit FindForm-Absicht
-> * Hinzufügen einer Entität vom Typ „Regulärer Ausdruck“ zum Extrahieren der Formularnummer aus einer Äußerung
-> * Trainieren und Veröffentlichen der App
-> * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem Tutorial zu [vordefinierten Entitäten](luis-tutorial-prebuilt-intents-entities.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS](luis-reference-regions.md#luis-website)-Website über das GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json)).
-
-Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `regex`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
-
-
-## <a name="purpose-of-the-regular-expression-entity"></a>Zweck der Entität vom Typ „Regulärer Ausdruck“
-Eine Entität dient dazu, wichtige Daten aus der Äußerung zu extrahieren. In der App wird die Entität vom Typ „Regulärer Ausdruck“ verwendet, um formatierte Personalformularnummern aus einer Äußerung zu extrahieren. Dabei wird kein Machine Learning verwendet. 
-
-Hier sehen Sie einige einfache Beispieläußerungen:
+**Hier sehen Sie einige einfache Beispieläußerungen:**
 
 ```
 Where is HRF-123456?
 Who authored HRF-123234?
 HRF-456098 is published in French?
-```
-
-Hier sehen Sie einige abgekürzte oder umgangssprachliche Versionen von Äußerungen:
-
-```
 HRF-456098
 HRF-456098 date?
 HRF-456098 title?
 ```
  
-Die Entität vom Typ „Regulärer Ausdruck“ für den Abgleich der Formularnummer lautet `hrf-[0-9]{6}`. Dieser reguläre Ausdruck gleicht die Literalzeichen `hrf -` ab, ignoriert aber die Groß-/Kleinschreibung sowie kulturelle Varianten. Außerdem werden genau sechs Ziffern (jeweils von 0 bis 9) abgeglichen.
+Ein regulärer Ausdruck ist eine gute Wahl für diese Art von Daten, wenn Folgendes gilt:
 
-„HRF“ steht für „Human Resources Form“ (Personalformular).
+* Die Daten sind korrekt formatiert.
 
-### <a name="tokenization-with-hyphens"></a>Tokenisierung mit Bindestrichen
-LUIS tokenisiert die Äußerung, wenn diese einer Absicht hinzugefügt wird. Bei der Tokenisierung für diese Äußerungen werden vor und nach dem Bindestrich Leerzeichen eingefügt: `Where is HRF - 123456?`. Der reguläre Ausdruck wird auf die Rohform der Äußerung (vor der Tokenisierung) angewendet. Aufgrund der Anwendung auf die _Rohform_ muss der reguläre Ausdruck keine Wortgrenzen berücksichtigen. 
+**In diesem Tutorial lernen Sie Folgendes:**
 
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Verwenden der vorhandenen Tutorial-App
+> * Hinzufügen der Absicht „FindForm“
+> * Hinzufügen einer Entität vom Typ „Regulärer Ausdruck“ 
+> * Trainieren
+> * Veröffentlichen
+> * Abrufen von Absichten und Entitäten von einem Endpunkt
 
-## <a name="add-findform-intent"></a>Hinzufügen der Absicht „FindForm“
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste **Build** auswählen. 
+## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
+
+Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+
+1. Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-prebuilts-HumanResources.json) herunter, und speichern Sie sie.
+
+2. Importieren Sie den JSON-Code in eine neue App.
+
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `regex`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind. 
+
+## <a name="findform-intent"></a>Absicht „FindForm“
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. 
 
@@ -92,38 +90,46 @@ LUIS tokenisiert die Äußerung, wenn diese einer Absicht hinzugefügt wird. Bei
 
     Die Anwendung verfügt über die vorgefertigte Zahlenentität aus dem vorherigen Tutorial, sodass jede Formularnummer über ein Tag verfügt. Unter Umständen reicht das für Ihre Clientanwendung bereits aus, die Nummer ist jedoch nicht mit der Art der Nummer gekennzeichnet. Durch die Erstellung einer neuen Entität mit einem geeigneten Namen kann die Clientanwendung die Entität entsprechend verarbeiten, wenn sie von LUIS zurückgegeben wird.
 
-## <a name="create-an-hrf-number-regular-expression-entity"></a>Erstellen einer Entität vom Typ „Regulärer Ausdruck“ namens „HRF-number“ 
+    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+
+## <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“ 
+Die Entität vom Typ „Regulärer Ausdruck“ für den Abgleich der Formularnummer lautet `hrf-[0-9]{6}`. Dieser reguläre Ausdruck gleicht die Literalzeichen `hrf-` ab, ignoriert aber die Groß-/Kleinschreibung sowie kulturelle Varianten. Außerdem werden genau sechs Ziffern (jeweils von 0 bis 9) abgeglichen.
+
+HRF steht für `human resources form`.
+
+LUIS tokenisiert die Äußerung, wenn diese einer Absicht hinzugefügt wird. Bei der Tokenisierung für diese Äußerungen werden vor und nach dem Bindestrich Leerzeichen eingefügt: `Where is HRF - 123456?`. Der reguläre Ausdruck wird auf die Rohform der Äußerung (vor der Tokenisierung) angewendet. Aufgrund der Anwendung auf die _Rohform_ muss der reguläre Ausdruck keine Wortgrenzen berücksichtigen. 
+
 In den folgenden Schritten erstellen Sie eine Entität vom Typ „Regulärer Ausdruck“, um LUIS mit dem Format von „HRF-number“ vertraut zu machen:
 
 1. Klicken Sie im linken Bereich auf **Entitäten**.
 
 2. Klicken Sie auf der Seite „Entitäten“ auf die Schaltfläche **Create new entity** (Neue Entität erstellen). 
 
-3. Geben Sie im daraufhin angezeigten Popupdialogfeld `HRF-number` als Name der neuen Entität, **RegEx** als Entitätstyp und `hrf-[0-9]{6}` als regulären Ausdruck ein, und klicken Sie anschließend auf **Fertig**.
+3. Geben Sie im daraufhin angezeigten Popupdialogfeld `HRF-number` als Name der neuen Entität, **RegEx** als Entitätstyp und `hrf-[0-9]{6}` als Wert für **RegEx** ein, und klicken Sie anschließend auf **Fertig**.
 
     ![Screenshot: Popupdialogfeld zum Festlegen der Eigenschaften für die neue Entität](./media/luis-quickstart-intents-regex-entity/create-regex-entity.png)
 
-4. Klicken Sie auf **Intents** (Absichten) und dann auf die Absicht **FindForm**, um den gekennzeichneten regulären Ausdruck in den Äußerungen zu sehen. 
+4. Wählen Sie im linken Menü die Option **Intents** (Absichten) und dann die Absicht **FindForm** aus, um den gekennzeichneten regulären Ausdruck in den Äußerungen zu sehen. 
 
     [![Screenshot: Gekennzeichnete Äußerungen mit vorhandener Entität und RegEx-Muster](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png)](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png#lightbox)
 
     Da die Entität keine ML-Entität ist, wird die Bezeichnung sofort nach der Erstellung auf die Äußerungen angewendet und auf der LUIS-Website angezeigt.
 
-## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
+## <a name="train"></a>Trainieren
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
+## <a name="publish"></a>Veröffentlichen
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
+## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `When were HRF-123456 and hrf-234567 published in the last year?` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der gekennzeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `FindForm` mit den beiden Formularnummern `HRF-123456` und `hrf-234567` zurückgeben.
 
-    ```
+    ```JSON
     {
       "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {
@@ -221,19 +227,13 @@ In den folgenden Schritten erstellen Sie eine Entität vom Typ „Regulärer Aus
 
     Die Nummern in der Äußerung werden zweimal zurückgegeben: einmal als die neue Entität `hrf-number` und einmal als vorgefertigte Entität `number`. Eine Äußerung kann mehrere Entitäten gleichen Typs besitzen, wie in diesem Beispiel zu sehen. Durch die Verwendung einer Entität vom Typ „Regulärer Ausdruck“ extrahiert LUIS benannte Daten. Dies ist programmatisch hilfreicher für die Clientanwendung, die die JSON-Antwort erhält.
 
-## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
-Diese App hat die Absicht ermittelt und die extrahierten Daten zurückgegeben. 
-
-Ihr Chatbot verfügt nun über genügend Informationen, um die primäre Aktion (`FindForm`) und die Formularnummern in der Suche zu bestimmen. 
-
-## <a name="where-is-this-luis-data-used"></a>Wo werden diese LUIS-Daten verwendet? 
-Für LUIS ist diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Chatbot) kann das topScoringIntent-Ergebnis und die Formularnummern für eine Suche über eine Drittanbieter-API verwenden. Diese Schritte werden nicht von LUIS ausgeführt. LUIS bestimmt lediglich die Absicht des Benutzers und extrahiert entsprechende Daten. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+In diesem Tutorial wurden eine neue Absicht erstellt, Beispieläußerungen hinzugefügt und dann eine Entität vom Typ „Regulärer Ausdruck“ erstellt, um korrekt formatierte Daten aus den Äußerungen zu extrahieren. Nach dem Trainieren und Veröffentlichen der App hat eine Abfrage des Endpunkts die Absicht identifiziert und die extrahierten Daten zurückgegeben.
 
 > [!div class="nextstepaction"]
 > [Erfahren Sie mehr über die Listenentität](luis-quickstart-intent-and-list-entity.md)

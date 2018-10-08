@@ -1,23 +1,23 @@
 ---
-title: Python-Schnellstart für das Videosuche-SDK | Microsoft-Dokumentation
+title: 'Schnellstart: Videosuche-SDK, Python'
+titleSuffix: Azure Cognitive Services
 description: Setup für die Konsolenanwendung des Videosuche-SDK
-titleSuffix: Azure Video Search SDK Python quickstart
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/15/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1c4769a6ca3391fa595cc078651beff330bbfd60
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 9784894ea9a9deb350171e0d19042eb65644093b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377938"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225649"
 ---
-# <a name="video-search-sdk-python-quickstart"></a>Python-Schnellstart für das Videosuche-SDK
+# <a name="quickstart-bing-video-search-sdk-with-python"></a>Schnellstart: Bing-Videosuche-SDK mit Python
 
 Das Bing-Videosuche-SDK enthält die Funktionalität der REST-API für Webabfragen und das Analysieren von Ergebnissen.
 
@@ -27,7 +27,7 @@ Der [Beispielquellcode für das Bing-Videosuche-SDK für Python](https://github.
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
 Installieren Sie Python, falls Sie es noch nicht getan haben. Das SDK ist mit Python 2.7, 3.3, 3.4, 3.5 und 3.6 kompatibel.
 
-Allgemein wird für die Python-Entwicklung die Verwendung einer [virtuellen Umgebung](https://docs.python.org/3/tutorial/venv.html) empfohlen. Installieren und initialisieren Sie die virtuelle Umgebung mit dem [virtualenv-Modul](https://pypi.python.org/pypi/virtualenv). Installieren Sie virtualenv für Python 2.7.
+Allgemein wird für die Python-Entwicklung die Verwendung einer [virtuellen Umgebung](https://docs.python.org/3/tutorial/venv.html) empfohlen. Installieren und initialisieren Sie die virtuelle Umgebung mit dem [venv-Modul](https://pypi.python.org/pypi/virtualenv). Installieren Sie virtualenv für Python 2.7.
 ```
 python -m venv mytestenv
 ```
@@ -37,7 +37,7 @@ cd mytestenv
 python -m pip install azure-cognitiveservices-search-videosearch
 ```
 ## <a name="video-search-client"></a>Videosuche-Client
-Rufen Sie unter *Suchen* einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab. Alle Importe:
+Rufen Sie unter *Suchen* einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab. Fügen Sie Importe hinzu:
 ```
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```

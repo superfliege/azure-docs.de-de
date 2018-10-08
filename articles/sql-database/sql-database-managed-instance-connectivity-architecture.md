@@ -1,23 +1,23 @@
 ---
 title: Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
 description: In diesem Artikel wird eine Kommunikationsübersicht für die verwaltete Azure SQL-Datenbank-Instanz bereitgestellt. Außerdem werden die Verbindungsarchitektur und die Übertragung des Datenverkehrs an die verwaltete Instanz mithilfe der unterschiedlichen Komponenten erläutert.
-keywords: ''
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.subservice: managed instance
+ms.subservice: managed-instance
 ms.custom: ''
-ms.date: 08/16/2018
+ms.devlang: ''
+ms.topic: conceptual
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.topic: conceptual
-ms.openlocfilehash: 54917c6548c7f0bfacad6408732c5619e6346683
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+manager: craigg
+ms.date: 08/16/2018
+ms.openlocfilehash: 312425d3ea02d15a992b9a694f09cb2be73b6221
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177505"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161589"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz 
 
@@ -73,8 +73,8 @@ Verwaltungs- und Bereitstellungsdienste stellen über öffentliche Endpunkte, di
 - Eine Übersicht finden Sie unter  [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md) 
 - Weitere Informationen zur VNet-Konfiguration finden Sie unter  [Konfigurieren eines VNet für eine verwaltete Instanz](sql-database-managed-instance-vnet-configuration.md). 
 - Informationen zum Erstellen einer verwaltete Instanz per Schnellstart finden Sie in den folgenden Artikeln. Zur Erstellung können 
-  - das [Azure-Portal](sql-database-managed-instance-create-tutorial-portal.md), 
-  - [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/), 
+  - Im [Azure-Portal](sql-database-managed-instance-get-started.md) 
+  - Mit [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) 
   - [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/) 
   - oder [Azure Resource Manager-Vorlagen im Zusammenspiel mit einer Jumpbox, in die SSMS integriert ist](https://portal.azure.com/), verwendet werden. 
 

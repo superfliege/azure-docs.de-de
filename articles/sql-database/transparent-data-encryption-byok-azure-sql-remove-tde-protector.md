@@ -1,28 +1,23 @@
 ---
 title: 'PowerShell: Entfernen einer TDE-Schutzvorrichtung – Azure SQL-Datenbank | Microsoft-Dokumentation'
 description: Anleitung zum Reagieren auf eine möglicherweise kompromittierte TDE-Schutzvorrichtung für eine Azure SQL-Datenbank- oder Data Warehouse-Instanz, die TDE mit Bring Your Own Key (BYOK)-Unterstützung verwendet
-keywords: ''
 services: sql-database
-documentationcenter: ''
-author: becczhang
-manager: craigg
-ms.prod: ''
-ms.reviewer: ''
-ms.suite: sql
-ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
+ms.subservice: security
 ms.custom: ''
-ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/07/2017
+author: becczhang
 ms.author: rebeccaz
-monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: feb187101ec02d6e765d6b025f518dc416f55b8b
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.reviewer: vanto
+manager: craigg
+ms.date: 08/07/2017
+ms.openlocfilehash: f965a008ed5973a544dba686e54e041ca6ef7673
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043363"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165992"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Entfernen einer Transparent Data Encryption (TDE)-Schutzvorrichtung mithilfe von PowerShell
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,8 +35,8 @@ Wenn der Verdacht besteht, dass ein Schlüssel kompromittiert ist, d.h ein Diens
 Denken Sie daran: Sobald die TDE-Schutzvorrichtung aus Key Vault gelöscht ist, **werden alle Verbindungen mit den verschlüsselten Datenbanken unter dem Server blockiert, und diese Datenbanken werden offline geschaltet und innerhalb von 24 Stunden gelöscht**. Auf alte Sicherungen, die mit dem kompromittierten Schlüssel verschlüsselt wurden, kann nicht mehr zugegriffen werden.
 
 In diesem Leitfaden werden zwei Ansätze behandelt, die jeweils vom gewünschten Ergebnis nach der Reaktion auf Vorfälle abhängen:
-- Der **Zugriff** auf die Azure SQL-Datenbank- und Data Warehouse-Instanzen soll weiterhin möglich sein.
-- Auf Azure SQL-Datenbank- bzw. Data Warehouse-Instanzen soll **kein Zugriff** mehr möglich sein.
+- Auf Azure SQL-Datenbank- bzw. Data Warehouse-Instanzen soll weiterhin **Zugriff** möglich sein
+- Auf Azure SQL-Datenbank- bzw. Data Warehouse-Instanzen soll **kein Zugriff** mehr möglich sein
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Zugriff auf die verschlüsselten Ressourcen weiterhin ermöglichen
 1. Erstellen Sie einen [neuen Schlüssel in Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0). Stellen Sie sicher, dass der neue Schlüssel in einem anderen Schlüsseltresor als der möglicherweise kompromittierten TDE-Schutzvorrichtung erstellt wird, da die Zugriffskontrolle auf Tresorebene bereitgestellt wird. 

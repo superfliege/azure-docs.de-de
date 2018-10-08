@@ -1,6 +1,6 @@
 ---
-title: Einrichten der SAP HANA-Systemreplikation auf virtuellen Azure-Computern (VMs) | Microsoft-Dokumentation
-description: Richten Sie die Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs) ein.
+title: Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server | Microsoft-Dokumentation
+description: Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 7a0797d79da95db77174a3e067a1e84276f286a5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e2e76e3cd058e5798b0159923118b050f38d077e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142411"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034636"
 ---
-# <a name="high-availability-of-sap-hana-on-azure-virtual-machines"></a>Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern
+# <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -68,6 +68,7 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 * SAP-Hinweis [1984787] enthält allgemeine Informationen zu SUSE Linux Enterprise Server 12.
 * SAP-Hinweis [1999351] enthält Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP.
 * Das [WIKI der SAP-Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) enthält alle erforderlichen SAP-Hinweise für Linux.
+* [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [SAP NetWeaver auf virtuellen Azure-Computern unter Linux – Planungs- und Implementierungshandbuch][planning-guide]
 * [Bereitstellung von Azure Virtual Machines für SAP unter Linux][deployment-guide] (dieser Artikel)
 * [SAP NetWeaver auf virtuellen Azure-Computern unter Linux – DBMS-Bereitstellungshandbuch][dbms-guide]
@@ -110,9 +111,13 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
     - **Systemverfügbarkeit**: Wählen Sie **HA**.
     - **Administratorbenutzername und Administratorkennwort:** Es wird ein neuer Benutzer erstellt, der verwendet werden kann, um sich auf dem Computer anzumelden.
     - **Neues oder vorhandenes Subnetz:** Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein bestehendes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
-    - **Subnetz-ID:** Die ID des Subnetzes, mit dem die virtuellen Computer eine Verbindung herstellen sollen. Wählen Sie das Subnetz des VPN oder des virtuellen Azure ExpressRoute-Netzwerks aus, um den virtuellen Computer mit dem lokalen Netzwerk zu verbinden. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>**.
+    - **Subnetz-ID**: Wenn Sie den virtuellen Computer in einem vorhandenen VNet bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>**.
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass das von Ihnen ausgewählte Betriebssystem SAP-zertifiziert ist für SAP HANA auf den spezifischen VM-Typen, die Sie verwenden. Die Liste der SAP HANA-zertifizierten VM-Typen und BS-Releases für diese kann unter [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) nachgeschlagen werden. Stellen Sie sicher, dass Sie in die Details des jeweils aufgeführten VM-Typs klicken, um die vollständige Liste der von SAP HANA unterstützten BS-Releases für den spezifischen VM-Typ anzuzeigen.
+>  
 
 1. Erstellen Sie eine Ressourcengruppe.
 1. Erstellen Sie ein virtuelles Netzwerk.
@@ -121,12 +126,10 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 1. Erstellen Sie einen Lastenausgleich (intern).
    - Wählen Sie das virtuelle Netzwerk aus, das Sie in Schritt 2 erstellt haben.
 1. Erstellen Sie den virtuellen Computer 1.
-   - Verwenden Sie mindestens SLES4SAP 12 SP1. In diesem Beispiel wird das SLES4SAP 12 SP2-Image https://ms.portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP2PremiumImage-ARM verwendet.
-   - Verwenden Sie SLES für SAP 12 SP2 (Premium).
+   - Verwenden Sie ein SLES4SAP-Abbild im Azure-Katalog, das für SAP HANA auf dem von Ihnen ausgewählten VM-Typ unterstützt wird.
    - Wählen Sie die Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben.
 1. Erstellen Sie den virtuellen Computer 2.
-   - Verwenden Sie mindestens SLES4SAP 12 SP1. In diesem Beispiel wird das SLES4SAP 12 SP1-BYOS-Image https://ms.portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP2PremiumImage-ARM verwendet.
-   - Verwenden Sie SLES für SAP 12 SP2 (Premium).
+   - Verwenden Sie ein SLES4SAP-Abbild im Azure-Katalog, das für SAP HANA auf dem von Ihnen ausgewählten VM-Typ unterstützt wird.
    - Wählen Sie die Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben. 
 1. Fügen Sie Datenträger hinzu.
 1. Konfigurieren Sie den Lastenausgleich. Erstellen Sie zunächst einen Front-End-IP-Pool:
@@ -677,6 +680,9 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 
 ### <a name="suse-tests"></a>SUSE-Tests
 
+> [!IMPORTANT]
+> Stellen Sie sicher, dass das von Ihnen ausgewählte Betriebssystem SAP-zertifiziert ist für SAP HANA auf den spezifischen VM-Typen, die Sie verwenden. Die Liste der SAP HANA-zertifizierten VM-Typen und BS-Releases für diese kann unter [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) nachgeschlagen werden. Stellen Sie sicher, dass Sie in die Details des jeweils aufgeführten VM-Typs klicken, um die vollständige Liste der von SAP HANA unterstützten BS-Releases für den spezifischen VM-Typ anzuzeigen.
+
 Führen Sie abhängig von Ihrem Anwendungsfall alle Testfälle aus, die im Szenario zur leistungsoptimierten SAP HANA-Systemreplikation oder zur kostenoptimierten SAP HANA-Systemreplikation aufgeführt werden. Sie finden diese Anleitungen auf der Seite [SLES for SAP – Best Practices][sles-for-sap-bp].
 
 Die folgenden Tests sind eine Kopie der Testbeschreibungen aus der Anleitung zum Szenario für die leistungsoptimierte SAP HANA-Systemreplikation unter SUSE Linux Enterprise Server for SAP Applications 12 SP1. Eine aktuelle Version finden Sie stets in der Anleitung selbst. Stellen Sie immer sicher, dass HANA synchron ist, bevor Sie den Test starten, und dass die Pacemaker-Konfiguration korrekt ist.
@@ -969,7 +975,7 @@ HINWEIS: Die folgenden Tests sind konzipiert, um nacheinander ausgeführt zu wer
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
 
-   Pacemaker erkennt die beendete HANA-Instanz und kennzeichnet die Ressource auf dem Knoten „hn1-db-1“ als fehlerhaft. Führen Sie zum Bereinigen des fehlerhaften Zustands den folgenden Befehl aus: Pacemaker sollte die HANA-Instanz dann automatisch neu starten.
+   Pacemaker erkennt die beendete HANA-Instanz und kennzeichnet die Ressource auf dem Knoten „hn1-db-1“ als fehlerhaft. Pacemaker sollte die HANA-Instanz automatisch neu starten. Führen Sie zum Bereinigen des fehlerhaften Zustands den folgenden Befehl aus:
 
    <pre><code># run as root
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1

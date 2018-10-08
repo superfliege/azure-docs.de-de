@@ -1,26 +1,23 @@
 ---
 title: Ausführen von Analyseabfragen für Mandantendatenbanken mit Azure SQL Data Warehouse | Microsoft-Dokumentation
-description: Mandantenübergreifende Analyseabfragen mithilfe von Daten, die aus mehreren Datenbanken von Azure SQL-Datenbank extrahiert wurden
-keywords: Tutorial zur SQL-Datenbank
+description: Mandantenübergreifende Analyseabfragen mithilfe von aus Azure SQL-Datenbank, SQL Data Warehouse, Azure Data Factory oder Power BI extrahierten Daten.
 services: sql-database
-documentationcenter: ''
-author: anumjs
-manager: craigg
-editor: MightyPen
 ms.service: sql-database
-ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: ''
+ms.subservice: scenario
+ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/08/2017
+author: anumjs
 ms.author: anjangsh
-ms.openlocfilehash: c7580e5481288695d3b5dea8fd0547f5f2c4c2b0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: MightyPen
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 034fd2434d3b824c4356e640a1c1665dff542de6
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644000"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056592"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Machen Sie sich mit SaaS-Analysen mit Azure SQL-Datenbank, SQL Data Warehouse, Data Factory und Power BI vertraut
 
@@ -230,7 +227,7 @@ Sie können einen weiteren Drilldown in die Daten durchführen, um festzustellen
 
 Dieses Diagramm der kumulativen Ticketverkäufe für die Contoso Concert Hall für jede Veranstaltung zeigt, dass der Ansturm nicht bei allen Veranstaltungen hoch ist. Experimentieren Sie mit den Filteroptionen, um Verkaufstrends für die anderen Veranstaltungsorte aufzudecken.
 
-Die Einblicke in Muster beim Ticketverkauf können zur Optimierung des Geschäftsmodells von Wingtip Tickets beitragen. Anstelle einer gleichmäßigen Abrechnungen für alle Mandanten sollte Wingtip möglicherweise Dienstebenen mit unterschiedlichen Leistungsebenen einführen. Größeren Veranstaltungsorten, die täglich mehr Tickets verkaufen, könnte eine höhere Ebene mit einer umfassenderen Vereinbarung zum Servicelevel (SLA) angeboten werden. Die Datenbanken dieser Veranstaltungsorte könnten außerdem in einem Pool mit höheren Ressourcenlimits pro Datenbank platziert werden. Jeder Dienstebene könnte eine stündliche Verkaufsmenge zugeordnet werden, bei deren Überschreitung eine Zusatzgebühr in Rechnung gestellt wird. Größere Veranstaltungsorte mit regelmäßigen Anstiegen beim Verkauf würden von den höheren Tarifen profitieren, und Wingtip Tickets könnte den eigenen Diensts effizienter monetarisieren.
+Die Einblicke in Muster beim Ticketverkauf können zur Optimierung des Geschäftsmodells von Wingtip Tickets beitragen. Anstelle einer gleichmäßigen Abrechnungen für alle Mandanten sollte Wingtip möglicherweise Diensttarife mit unterschiedlichen Computegrößen einführen. Größeren Veranstaltungsorten, die täglich mehr Tickets verkaufen, könnte eine höhere Ebene mit einer umfassenderen Vereinbarung zum Servicelevel (SLA) angeboten werden. Die Datenbanken dieser Veranstaltungsorte könnten außerdem in einem Pool mit höheren Ressourcenlimits pro Datenbank platziert werden. Jeder Dienstebene könnte eine stündliche Verkaufsmenge zugeordnet werden, bei deren Überschreitung eine Zusatzgebühr in Rechnung gestellt wird. Größere Veranstaltungsorte mit regelmäßigen Anstiegen beim Verkauf würden von den höheren Tarifen profitieren, und Wingtip Tickets könnte den eigenen Diensts effizienter monetarisieren.
 
 Gleichzeitig könnten sich einige Kunden von Wingtip Tickets darüber beschweren, dass sie nicht genügend Tickets verkaufen, um die Betriebskosten zu rechtfertigen. Möglicherweise zeigen die Daten auch eine Möglichkeit zur Verbesserung der Ticketverkäufe für Veranstaltungsorte, die bisher zu wenige Tickets verkaufen. Höhere Umsätzen würde auch den wahrgenommenen Wert des Diensts steigern. Klicken Sie mit der rechten Maustaste auf „fact_Tickets“, und wählen Sie **Neues Measure** aus. Geben Sie den folgenden Ausdruck für das neue Measure namens **AverageTicketsSold** ein:
 

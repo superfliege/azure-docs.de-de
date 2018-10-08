@@ -1,20 +1,23 @@
 ---
 title: Verwenden des Azure-Portals zum Erstellen von SQL-Datenbankwarnungen | Microsoft Docs
 description: Verwenden Sie das Azure-Portal, um SQL-Datenbankwarnungen zu erstellen, die Benachrichtigungen oder eine Automatisierung auslösen, wenn die angegebenen Bedingungen erfüllt sind.
-author: aamalvea
-manager: craigg
 services: sql-database
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: aamalvea
 ms.author: aamalvea
-ms.openlocfilehash: 349f1bbb0bfcc737d70e32947dd217c2cd51e194
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 27f807c8f2f6b6a65ef95136047f5eed1b3aab02
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648022"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159311"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure SQL-Datenbanken und Data Warehouse
 
@@ -108,7 +111,7 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 | SQL Data Warehouse | connection_successful | Erfolgreiche Verbindungen | Gesamt | 10 Minuten |
 | SQL Data Warehouse | connection_failed | Verbindungsfehler | Gesamt | 10 Minuten |
 | SQL Data Warehouse | blocked_by_firewall | Von der Firewall blockiert | Gesamt | 10 Minuten |
-| SQL Data Warehouse | service_level_objective | SLO der Datenbank | Gesamt | 10 Minuten |
+| SQL Data Warehouse | service_level_objective | Diensttarif der Datenbank | Gesamt | 10 Minuten |
 | SQL Data Warehouse | dwu_limit | DWU-Grenzwert | Maximum | 10 Minuten |
 | SQL Data Warehouse | dwu_consumption_percent | DWU in Prozent | Durchschnitt | 10 Minuten |
 | SQL Data Warehouse | dwu_used | DWU-Verbrauch | Durchschnitt | 10 Minuten |

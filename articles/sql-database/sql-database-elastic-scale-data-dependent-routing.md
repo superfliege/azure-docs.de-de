@@ -2,26 +2,29 @@
 title: Datenabhängiges Routing mit Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die ShardMapManager-Klasse in .NET-Apps für das datenabhängige Routing, einem Feature von Sharddatenbanken in Azure SQL-Datenbank, verwenden können.
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 715b6e55b053b3f999f3bd938c14d72a8e20ad1a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 25bb665d9ea9166d099ab7f3f9696d92da8314e9
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646880"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161816"
 ---
 # <a name="data-dependent-routing"></a>Datenabhängiges Routing
-**Datenabhängiges Routing** bezeichnet die Möglichkeit, die Daten in einer Abfrage dazu zu verwenden, die Anforderung an eine entsprechende Datenbank weiterzuleiten. Dieses stellt ein grundlegendes Muster bei der Arbeit mit horizontal partitionierten Datenbanken (Sharding) dar. Der Anforderungskontext kann auch zur Weiterleitung der Anforderung verwendet werden, insbesondere dann, wenn der Shardingschlüssel nicht Teil der Abfrage ist. Jede spezifische Abfrage oder Transaktion in einer Anwendung, die datenabhängiges Routing verwendet, ist auf den Zugriff auf eine Einzeldatenbank pro Anforderung beschränkt. Für die Tools für elastische Azure SQL-Datenbanken erfolgt dieses Routing mithilfe der Klasse **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)).
+**Datenabhängiges Routing** bezeichnet die Möglichkeit, die Daten in einer Abfrage dazu zu verwenden, die Anforderung an eine entsprechende Datenbank weiterzuleiten. Datenabhängiges Routing stellt ein grundlegendes Muster bei der Arbeit mit horizontal partitionierten Datenbanken (Sharding) dar. Der Anforderungskontext kann auch zur Weiterleitung der Anforderung verwendet werden, insbesondere dann, wenn der Shardingschlüssel nicht Teil der Abfrage ist. Jede spezifische Abfrage oder Transaktion in einer Anwendung, die datenabhängiges Routing verwendet, ist auf den Zugriff auf eine Einzeldatenbank pro Anforderung beschränkt. Für die Tools für elastische Azure SQL-Datenbanken erfolgt dieses Routing mithilfe der Klasse **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)).
 
 Es ist nicht erforderlich, dass die Anwendung die einzelnen Verbindungszeichenfolgen oder Datenbankspeicherorte verfolgt, die den Datenslices in der Shardingumgebung zugeordnet sind. Stattdessen öffnet bei Bedarf der [Shardzuordnungs-Manager](sql-database-elastic-scale-shard-map-management.md) basierend auf den Daten in der Shardzuordnung und dem Wert des Shardingschlüssels, der das Ziel der Anwendungsanforderung ist, Verbindungen zu den richtigen Datenbanken. Bei diesem Schlüssel handelt es sich in der Regel um *customer_id*, *tenant_id*, *date_key* oder einen anderen spezifischen Bezeichner, der ein grundlegender Parameter der Datenbankanforderung ist. 
 
-Weitere Informationen finden Sie unter [Scaling Out SQL Server with Data Dependent Routing](https://technet.microsoft.com/library/cc966448.aspx)(Horizontales Hochskalieren von SQL Server mit datenabhängigem Routing).
+Weitere Informationen finden Sie unter [Horizontales Hochskalieren von SQL Server mit datenabhängigem Routing](https://technet.microsoft.com/library/cc966448.aspx).
 
 ## <a name="download-the-client-library"></a>Herunterladen der Clientbibliothek
 Downloads:
@@ -42,7 +45,7 @@ RangeShardMap<int> customerShardMap = smm.GetRangeShardMap<int>("customerMap");
 ```
 
 ### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>Verwenden der Anmeldeinformationen mit den niedrigsten möglichen Rechten zum Abrufen der Shardzuordnung
-Wenn eine Anwendung die Shardzuordnung selbst nicht ändert, sollten die in der Factorymethode verwendeten Anmeldeinformationen nur Leseberechtigungen für die Datenbank mit der **globalen Shardzuordnung** bereitstellen. Diese Anmeldeinformationen unterscheiden sich in der Regel von Anmeldeinformationen, die für offene Verbindungen zum Shard-Zuordnungs-Manager verwendet werden. Lesen Sie dazu auch [Anmeldeinformationen für den Zugriff auf die Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-manage-credentials.md). 
+Wenn eine Anwendung die Shardzuordnung selbst nicht ändert, sollten die in der Factorymethode verwendeten Anmeldeinformationen Leseberechtigungen für die Datenbank mit der **globalen Shardzuordnung** bereitstellen. Diese Anmeldeinformationen unterscheiden sich in der Regel von Anmeldeinformationen, die für offene Verbindungen zum Shard-Zuordnungs-Manager verwendet werden. Lesen Sie dazu auch [Anmeldeinformationen für den Zugriff auf die Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-manage-credentials.md). 
 
 ## <a name="call-the-openconnectionforkey-method"></a>Aufrufen der OpenConnectionForKey-Methode
 Die **ShardMap.OpenConnectionForKey-Methode** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._list_shard_mapper.openconnectionforkey), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)) gibt eine Verbindung zurück, die für die Befehlsausgabe an die entsprechende Datenbank basierend auf dem Wert des **key**-Parameters vorbereitet ist. Shardinginformationen werden in der Anwendung vom **ShardMapManager** zwischengespeichert. Daher erfordern diese Anforderungen i.d.R. keine Datenbanksuche in der Datenbank mit der **globalen Shardzuordnung**. 
@@ -58,7 +61,7 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 ```
 * Der **key** -Parameter wird als Suchschlüssel in der Shard-Zuordnung verwendet, um die passende Datenbank für die Anforderung zu bestimmen. 
 * **connectionString** wird verwendet, um nur die Benutzeranmeldeinformationen für die gewünschte Verbindung zu übergeben. In diesem *connectionString*-Element ist kein Datenbankname oder Servername enthalten, da die Datenbank und der Server von der Methode anhand von **ShardMap** bestimmt werden. 
-* **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions.aspx)) sollte auf **ConnectionOptions.Validate** festgelegt werden, wenn in der Umgebung die Shardzuordnungen geändert und Zeilen aufgrund von Teilungen oder Zusammenführungen in andere Datenbanken verschoben werden können. Dies umfasst eine kurze Abfrage der lokalen Shardzuordnung in der Zieldatenbank (nicht der globalen Shardzuordnung), bevor die Verbindung an die Anwendung bereitgestellt wird. 
+* **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions.aspx)) sollte auf **ConnectionOptions.Validate** festgelegt werden, wenn in der Umgebung die Shardzuordnungen geändert und Zeilen aufgrund von Teilungen oder Zusammenführungen in andere Datenbanken verschoben werden können. Diese Validierung umfasst eine kurze Abfrage der lokalen Shardzuordnung in der Zieldatenbank (nicht der globalen Shardzuordnung), bevor die Verbindung der Anwendung bereitgestellt wird. 
 
 Wenn die Validierung der lokalen Shard-Zuordnung fehlschlägt (was angibt, dass der Zwischenspeicher nicht korrekt ist), fragt der Shard-Zuordnungs-Manager die globale Shard-Zuordnung ab, um den neuen, richtigen Wert für die Suche zu erhalten, den Zwischenspeicher zu aktualisieren und die passende Datenbankverbindung zu erhalten und zurückzugeben. 
 
@@ -107,7 +110,7 @@ Die **OpenConnectionForKeyAsync-Methode** ([Java](/java/api/com.microsoft.azure.
 ## <a name="integrating-with-transient-fault-handling"></a>Integration in die Behandlung vorübergehender Fehler
 Eine bewährte Methode bei der Entwicklung von Anwendungen für den Datenzugriff in der Cloud besteht darin, sicherzustellen, dass vorübergehende Fehler von der App abgefangen werden und dass die Vorgänge mehrmals wiederholt werden, bevor ein Fehler ausgelöst wird. Die Behandlung vorübergehender Fehler in Cloudanwendungen wird in „Transient Fault Handling“ (Behandeln vorübergehender Fehler) ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.NET](https://msdn.microsoft.com/library/dn440719\(v=pandp.60\).aspx)) besprochen. 
 
-Die Behandlung vorübergehender Fehler kann natürlich zusammen mit dem datenabhängigen Routing verwendet werden. Die wichtigste Anforderung besteht in einer Wiederholung der gesamten Datenzugriffsanforderung, darunter des **using** -Blocks, der die datenabhängige Routingverbindung abgerufen hat. Das vorherige Beispiel könnte wie folgt umgeschrieben werden. 
+Die Behandlung vorübergehender Fehler kann natürlich zusammen mit dem datenabhängigen Routingmuster verwendet werden. Die wichtigste Anforderung besteht in einer Wiederholung der gesamten Datenzugriffsanforderung, darunter des **using** -Blocks, der die datenabhängige Routingverbindung abgerufen hat. Das vorherige Beispiel könnte wie folgt umgeschrieben werden. 
 
 ### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Beispiel – Datenabhängiges Routing mit Behandlung vorübergehender Fehler
 ```Java 

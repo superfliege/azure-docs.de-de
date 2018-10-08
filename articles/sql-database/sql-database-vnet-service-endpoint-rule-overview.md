@@ -3,20 +3,21 @@ title: Dienstendpunkte und Regeln eines virtuellen Netzwerks für Azure SQL-Date
 description: Markieren Sie ein Subnetz als Dienstendpunkt eines virtuellen Netzwerks. Nutzen Sie dann den Endpunkt als Regel für ein virtuelles Netzwerk für die Zugriffssteuerungsliste Ihrer Azure SQL-Datenbank-Instanz. Ihre Azure SQL-Datenbank-Instanz akzeptiert anschließend Nachrichten von allen virtuellen Computern und anderen Knoten im Subnetz.
 services: sql-database
 ms.service: sql-database
-ms.prod_service: sql-database, sql-data-warehouse
-author: DhruvMsft
-manager: craigg
-ms.custom: VNet Service endpoints
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/28/2018
-ms.reviewer: carlrab
+author: DhruvMsft
 ms.author: dmalik
-ms.openlocfilehash: 223a8da0c3c940c57dfc58d9cc87a19ae45a64eb
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.reviewer: vanto, genemi
+manager: craigg
+ms.date: 09/18/2018
+ms.openlocfilehash: 90138664e5eab9110f51bbd3d3755dec0ed59ea8
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143809"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166808"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank und SQL Data Warehouse
 
@@ -125,7 +126,7 @@ Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s
 
 Bei Azure SQL-Datenbank gelten für Regeln für ein virtuelles Netzwerk folgende Einschränkungen:
 
-- Eine Web-App kann einer privaten IP in einem VNET/Subnetz zugeordnet werden. Auch wenn Dienstendpunkte im entsprechenden VNET/Subnetz aktiviert sind, haben Verbindungen zwischen der Web-App und dem Server keine VNET-/Subnetzquelle, sondern eine öffentliche Azure-IP-Quelle. Um die Verbindung zwischen einer Web-App und einem Server mit VNET-Firewallregeln zu ermöglichen, müssen Sie auf dem Server **alle Azure-Dienste zulassen**.
+- Eine Web-App kann einer privaten IP in einem VNET/Subnetz zugeordnet werden. Auch wenn Dienstendpunkte im entsprechenden VNET/Subnetz aktiviert sind, haben Verbindungen zwischen der Web-App und dem Server keine VNET-/Subnetzquelle, sondern eine öffentliche Azure-IP-Quelle. Um die Verbindung zwischen einer Web-App und einem Server mit VNET-Firewallregeln zu ermöglichen, müssen Sie auf dem Server **Azure-Diensten Zugriff auf den Server erlauben**.
 
 - In der Firewall für Ihre SQL-Datenbank verweist jede Regel für ein virtuelles Netzwerk auf ein Subnetz. Alle Subnetze, auf die verwiesen wird, müssen in derselben geografischen Region gehostet werden, in der die SQL-Datenbank gehostet wird.
 
@@ -157,23 +158,23 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-all-azure-services"></a>Auswirkungen des Entfernens von „Alle Azure-Dienste zulassen“
+## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>Auswirkungen des Entfernens des Zugriffs „Azure-Diensten Zugriff auf den Server erlauben“
 
-Viele Benutzer möchten **Alle Azure-Dienste zulassen** von ihren Azure SQL-Servern entfernen und durch eine VNET-Firewallregel ersetzen.
+Viele Benutzer möchten den Zugriff **Azure-Diensten Zugriff auf den Server erlauben** von ihren Azure SQL-Servern entfernen und durch eine VNET-Firewallregel ersetzen.
 Das Entfernen wirkt sich jedoch auf die folgenden Azure-SQLDB-Features aus:
 
 #### <a name="import-export-service"></a>Import/Export-Dienst
-Der Dienst Azure SQLDB-Import/Export wird auf virtuellen Computern in Azure ausgeführt. Diese virtuellen Computer befinden sich nicht in Ihrem VNET und erhalten daher beim Verbinden mit Ihrer Datenbank eine Azure-IP-Adresse. Beim Entfernen von **Alle Azure-Dienste zulassen** können diese virtuellen Computer nicht mehr auf Ihre Datenbanken zugreifen.
+Der Dienst Azure SQLDB-Import/Export wird auf virtuellen Computern in Azure ausgeführt. Diese virtuellen Computer befinden sich nicht in Ihrem VNET und erhalten daher beim Verbinden mit Ihrer Datenbank eine Azure-IP-Adresse. Beim Entfernen des Zugriffs **Azure-Diensten den Zugriff auf den Server erlauben** können diese virtuellen Computer nicht mehr auf Ihre Datenbanken zugreifen.
 Sie können das Problem umgehen. Führen Sie den BACPAC-Import oder -Export mithilfe der mithilfe der DACFx-API direkt im Code aus. Stellen Sie sicher, dass die Bereitstellung auf einem virtuellen Computer in dem VNET-Subnetz erfolgt, für das Sie die Firewallregel festgelegt haben.
 
 #### <a name="sql-database-query-editor"></a>Abfrage-Editor für SQL-Datenbank
-Der Abfrage-Editor für Azure SQL-Datenbank wird auf virtuellen Computern in Azure bereitgestellt. Diese virtuellen Computer befinden sich nicht in Ihrem VNET. Aus diesem Grund erhalten die virtuellen Computer beim Verbinden mit Ihrer Datenbank eine Azure-IP-Adresse. Beim Entfernen von **Alle Azure-Dienste zulassen** können diese virtuellen Computer nicht mehr auf Ihre Datenbanken zugreifen.
+Der Abfrage-Editor für Azure SQL-Datenbank wird auf virtuellen Computern in Azure bereitgestellt. Diese virtuellen Computer befinden sich nicht in Ihrem VNET. Aus diesem Grund erhalten die virtuellen Computer beim Verbinden mit Ihrer Datenbank eine Azure-IP-Adresse. Beim Entfernen von **Azure-Diensten den Zugriff auf den Server erlauben** können diese virtuellen Computer nicht mehr auf Ihre Datenbanken zugreifen.
 
 #### <a name="table-auditing"></a>Tabellenüberwachung
 Derzeit stehen Ihnen zwei Möglichkeiten zum Aktivieren der Überwachung für Ihre SQL-Datenbank-Instanz zur Verfügung. Die Tabellenüberwachung führt zu einem Fehler, nachdem Sie Dienstendpunkte in Ihrer Azure SQL Server-Instanz aktiviert haben. Um dieses Problem zu umgehen, wechseln Sie zur Blobüberwachung.
 
 #### <a name="impact-on-data-sync"></a>Auswirkungen auf die Datensynchronisierung
-Azure SQLDB verfügt über das Feature zur Synchronisierung von Daten, die auf Grundlage von Azure-IP-Adressen eine Verbindung zu Ihren Datenbanken herstellt. Bei der Verwendung von Dienstendpunkten ist es wahrscheinlich, dass Sie den Zugriff **Alle Azure-Dienste zulassen** auf Ihrem logischen Server deaktivieren. Dadurch wird die Datensynchronisierungsfunktion unterbrochen.
+Azure SQLDB verfügt über das Feature zur Synchronisierung von Daten, die auf Grundlage von Azure-IP-Adressen eine Verbindung zu Ihren Datenbanken herstellt. Bei der Verwendung von Dienstendpunkten werden Sie wahrscheinlich den Zugriff **Allen Azure-Diensten Zugriff auf den Server erlauben** auf Ihrem logischen Server deaktivieren. Dadurch wird die Datensynchronisierungsfunktion unterbrochen.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage
 
@@ -184,7 +185,7 @@ Wenn Sie dieses Feature mit einem Speicherkonto verwenden, das von einer Azure S
 PolyBase wird häufig verwendet, um Daten aus Speicherkonten in Azure SQLDW zu laden. Wenn das Speicherkonto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen beschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen. Hierfür gibt es jedoch eine Lösung. Wenden Sie sich an den Microsoft-Support, um weitere Informationen zu erhalten.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB-Blobüberwachung
-Bei der Blobüberwachung werden die Überwachungsprotokolle in Ihr eigenes Speicherkonto gepusht. Wenn dieses Speicherkonto das Feature für VNET-Dienstendpunkte verwendet, wird die Konnektivität zwischen Azure SQLDB und dem Speicherkonto unterbrochen.
+Bei der Blobüberwachung werden die Überwachungsprotokolle in Ihr eigenes Speicherkonto gepusht. Wenn dieses Speicherkonto das Feature für VNET-Dienstendpunkte verwendet, wird die Konnektivität zwischen Azure SQL-Datenbank und dem Speicherkonto unterbrochen.
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Hinzufügen einer VNET-Firewallregel zu Ihrem Server ohne Aktivierung von VNET-Dienstendpunkten
 

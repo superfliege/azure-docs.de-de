@@ -1,25 +1,26 @@
 ---
-title: Verwalten eines Schemas für Azure SQL-Datenbank in einer mehrinstanzenfähigen App | Microsoft-Dokumentation
-description: Verwalten des Schemas für mehrere Mandanten in einer mehrinstanzenfähigen Anwendung, die Azure SQL-Datenbank verwendet
-keywords: Tutorial zur SQL-Datenbank
+title: Verwalten eines Schemas für Azure SQL-Datenbank in einer App mit nur einem Mandanten | Microsoft-Dokumentation
+description: Verwalten des Schemas für mehrere Mandanten in einer App mit nur einem Mandanten, die Azure SQL-Datenbank verwendet
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 2e4af3e3e1ef1d9da7c66b929885e3ec749b462f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 2f747eb09fd13647c4b6764ce3cc4fe72c00bcf0
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646271"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054845"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Verwalten von Schemas in einer SaaS-Anwendung mit dem Muster für eine Datenbank pro Mandant in Azure SQL-Datenbank
-
+ 
 Wenn eine Datenbankanwendung weiterentwickelt wird, müssen unweigerlich Änderungen am Datenbankschema oder den Verweisdaten vorgenommen werden.  Auch Datenbankwartungsaufgaben sind in regelmäßigen Abständen erforderlich. Um eine Anwendung, die das Muster für eine Datenbank pro Mandant verwendet, zu verwalten, müssen Sie diese Änderungen oder Wartungsaufgaben für eine ganze Reihe von Mandantendatenbanken übernehmen.
 
 In diesem Tutorial werden zwei Szenarien erläutert: das Bereitstellen der Aktualisierungen von Verweisdaten für alle Mandanten und das erneute Erstellen eines Index für die Tabelle mit den Verweisdaten. Das Feature [Elastische Aufträge](sql-database-elastic-jobs-overview.md) wird zum Ausführen dieser Aktionen für alle Mandantendatenbanken sowie für die Vorlagendatenbank verwendet, die zum Erstellen neuer Mandantendatenbanken zur Anwendung kommt.

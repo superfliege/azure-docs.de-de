@@ -1,23 +1,23 @@
 ---
-title: Python-Schnellstart für die API für die visuelle Bing-Suche | Microsoft-Dokumentation
-titleSuffix: Bing Web Search APIs - Cognitive Services
+title: 'Schnellstart: Erstellen einer Abfrage für die visuelle Suche, Python – Visuelle Bing-Suche'
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie ein Bild in die API für die visuelle Bing-Suche hochladen und dadurch Erkenntnisse zu diesem Bild erhalten.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 96bd94e37c75d10726245fbcea7044d4ae2ed07e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 145749f52f64adf565eb33ab7fe92dd5494f9354
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070374"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223717"
 ---
-# <a name="your-first-bing-visual-search-query-in-python"></a>Ihre erste Abfrage für die visuelle Bing-Suche in Python
+# <a name="quickstart-your-first-bing-visual-search-query-in-python"></a>Schnellstart: Ihre erste Abfrage für die visuelle Bing-Suche in Python
 
 Die API für die visuelle Bing-Suche gibt Informationen zu einem von Ihnen bereitgestellten Bild zurück. Sie können ein Bild über die Bild-URL, ein Erkenntnistoken oder durch Hochladen des Bilds bereitstellen. Informationen zu diesen Optionen finden Sie unter [Was ist die API für die visuelle Bing-Suche?](../overview.md). In diesem Artikel wird gezeigt, wie Sie ein Bild hochladen. Das Hochladen eines Bilds ist besonders in Szenarien mit einem mobilen Gerät nützlich, wenn Sie eine bekannte Sehenswürdigkeit fotografiert haben und Informationen dazu erhalten möchten. Die Informationen können z.B. Wissenswertes zur Sehenswürdigkeit beinhalten. 
 

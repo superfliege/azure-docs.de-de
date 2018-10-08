@@ -3,19 +3,22 @@ title: SQL-Fehlercodes – Datenbankverbindungsfehler | Microsoft Docs
 description: 'Erfahren Sie mehr über SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen, beispielsweise zu häufigen Datenbankverbindungsfehlern, Datenbankkopiefehlern und allgemeinen Fehlern. '
 keywords: SQL-Fehlercodes,Zugriff auf SQL,Datenbankverbindungsfehler,SQL-Fehlercodes
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: d97ec2cc67da7c4bc1479c55a9a7c35c0c754532
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: d5b98f573b60115002e813ebbef59eb7983ce3c2
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092527"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064389"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme
 
@@ -111,7 +114,7 @@ Die folgenden Fehler beziehen sich auf die Erstellung und Verwendung von Pools f
 | 40857 |EX_USER |Der Pool für elastische Datenbanken wurde für folgenden Server nicht gefunden: „%ls“, Name des Pools für elastische Datenbanken: „%ls“. |Name des Servers; Name des Pools für elastische Datenbanken |Der angegebene Pool für elastische Datenbanken ist nicht auf dem angegebenen Server vorhanden. |Geben Sie einen gültigen Namen für den Pool für elastische Datenbanken an. |
 | 40858 |EX_USER |Der Pool für elastische Datenbanken „%ls“ ist bereits auf folgendem Server vorhanden: „%ls“ |Name des Pools für elastische Datenbanken, Servername |Der angegebene Pool für elastische Datenbanken existiert bereits auf dem angegebenen logischen Server. |Geben Sie einen neuen Namen für den Pool für elastische Datenbanken an. |
 | 40859 |EX_USER |Der Pool für elastische Datenbanken unterstützt Dienstebene „%ls“ nicht. |Dienstebene des Pools für elastische Datenbanken |Die angegebene Dienstebene wird für die Bereitstellung von Pools für elastische Datenbanken nicht unterstützt. |Geben Sie die richtige Edition an, oder lassen Sie die Dienstebene leer, um die Standarddienstebene zu verwenden. |
-| 40860 |EX_USER |Die Kombination aus dem Pool für elastische Datenbanken „%ls“ und Dienstziel „%ls“ ist ungültig. |Name des Pools für elastische Datenbanken; Name des Dienstebenenziels |Der Pool für elastische Datenbanken und das Dienstziel können gemeinsam angegeben werden, wenn das Dienstziel als „ElasticPool“ angegeben wird. |Geben Sie die richtige Kombination aus Pool für elastische Datenbanken und Dienstziel an. |
+| 40860 |EX_USER |Die Kombination aus dem Pool für elastische Datenbanken „%ls“ und Dienstziel „%ls“ ist ungültig. |Name des Pools für elastische Datenbanken, Diensttarif |Der Pool für elastische Datenbanken und der Diensttarif können nur gemeinsam angegeben werden, wenn der Ressourcentyp „ElasticPool“ definiert ist. |Geben Sie die richtige Kombination aus Pool für elastische Datenbanken und Diensttarif an. |
 | 40861 |EX_USER |Die Datenbankedition „%.*ls“ darf sich nicht von der Dienstebene des Pools für elastische Datenbanken („%.* ls“) unterscheiden. |Datenbankedition, Dienstebene des Pools für elastische Datenbanken |Die Datenbankedition unterscheidet sich von der Dienstebene des Pools für elastische Datenbanken. |Geben Sie keine Datenbankedition an, die sich von der Dienstebene des Pools für elastische Datenbanken unterscheidet.  Beachten Sie, dass die Datenbankedition nicht angegeben werden muss. |
 | 40862 |EX_USER |Der Name des Pools für elastische Datenbanken muss angegeben werden, wenn das Dienstziel des Pools für elastische Datenbanken angegeben wurde. |Keine |Das Dienstziel des Pools für elastische Datenbanken identifiziert einen Pool für elastische Datenbanken nicht eindeutig. |Geben Sie den Namen des Pools für elastische Datenbanken an, wenn Sie das Dienstziel des Pools für elastische Datenbanken verwenden. |
 | 40864 |EX_USER |Die DTU-Anzahl für den Pool für elastische Datenbanken muss mindestens (%d) DTUs für die Dienstebene „%.*ls“ betragen. |DTUs für Pools für elastische Datenbanken; Dienstebene des Pools für elastische Datenbanken. |Es wurde versucht, eine DTU-Anzahl für den Pool für elastische Datenbanken unterhalb des unteren Grenzwerts festzulegen. |Legen Sie die DTU-Einstellung für den Pool für elastische Datenbanken mindestens auf die Untergrenze fest. |

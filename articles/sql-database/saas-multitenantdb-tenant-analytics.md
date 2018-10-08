@@ -1,26 +1,27 @@
 ---
 title: Ausführen von Analyseabfragen anhand von Azure SQL-Datenbanken | Microsoft-Dokumentation
-description: Mandantenübergreifende Analyseabfragen mithilfe von Daten, die aus mehreren Datenbanken von Azure SQL-Datenbank extrahiert wurden
-keywords: SQL-Tutorial
+description: Mandantenübergreifende Analyseabfragen mithilfe von Daten, die in einer mehrinstanzenfähigen App aus mehreren Datenbanken von Azure SQL-Datenbank extrahiert wurden.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: anjangsh
-ms.reviewer: billgib, genemi
-ms.openlocfilehash: 8ed444320db641408b69efb19018e41e2170b51d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+author: stevestein
+ms.author: sstein
+ms.reviewer: anjangsh,billgib,genemi
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 5de707f3f2e6a82d880363eea91fb8ce644fb3aa
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644636"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055044"
 ---
-# <a name="cross-tenant-analytics-using-extracted-data"></a>Mandantenübergreifende Analysen mit extrahierten Daten
-
-Dieses Tutorial führt Sie durch ein vollständiges Analyseszenario. Das Szenario veranschaulicht, wie Unternehmen mithilfe von Analysen intelligentere Entscheidungen treffen können. Sie verwenden Analysen auf der Grundlage von Daten, die aus der Sharddatenbank extrahiert wurden, um Einblicke in das Mandantenverhalten zu erhalten. Dies umfasst auch ihre Verwendung der Wingtip Tickets SaaS-Beispielanwendung. Dieses Szenario umfasst drei Schritte: 
+# <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – Mehrinstanzenfähige App
+ 
+Dieses Tutorial führt Sie durch ein vollständiges Analyseszenario für eine mehrinstanzenfähige Implementierung. Das Szenario veranschaulicht, wie Unternehmen mithilfe von Analysen intelligentere Entscheidungen treffen können. Sie verwenden Analysen auf der Grundlage von Daten, die aus der Sharddatenbank extrahiert wurden, um Einblicke in das Mandantenverhalten zu erhalten. Dies umfasst auch ihre Verwendung der Wingtip Tickets SaaS-Beispielanwendung. Dieses Szenario umfasst drei Schritte: 
 
 1.  **Extrahieren von Daten** aus jeder Mandantendatenbank in einen Analysespeicher
 2.  **Optimieren der extrahierten Daten** für die Verarbeitung bei der Analyse
@@ -207,7 +208,7 @@ Sie können einen weiteren Drilldown in die Daten durchführen, um festzustellen
 
 Die Darstellung oben für die Contoso Concert Hall zeigt, dass der Ansturm nicht bei allen Veranstaltungen auftritt. Experimentieren Sie mit den Filteroptionen, um Verkaufstrends für die anderen Veranstaltungsorte aufzudecken.
 
-Die Einblicke in Muster beim Ticketverkauf können zur Optimierung des Geschäftsmodells von Wingtip Tickets beitragen. Anstelle einer gleichmäßigen Abrechnungen für alle Mandanten sollte Wingtip möglicherweise Dienstebenen mit unterschiedlichen Leistungsebenen einführen. Größeren Veranstaltungsorten, die täglich mehr Tickets verkaufen, könnte eine höhere Ebene mit einer umfassenderen Vereinbarung zum Servicelevel (SLA) angeboten werden. Die Datenbanken dieser Veranstaltungsorte könnten außerdem in einem Pool mit höheren Ressourcenlimits pro Datenbank platziert werden. Jeder Dienstebene könnte eine stündliche Verkaufsmenge zugeordnet werden, bei deren Überschreitung eine Zusatzgebühr in Rechnung gestellt wird. Größere Veranstaltungsorte mit regelmäßigen Anstiegen beim Verkauf würden von den höheren Tarifen profitieren, und Wingtip Tickets könnte den eigenen Diensts effizienter monetarisieren.
+Die Einblicke in Muster beim Ticketverkauf können zur Optimierung des Geschäftsmodells von Wingtip Tickets beitragen. Anstelle einer gleichmäßigen Abrechnungen für alle Mandanten sollte Wingtip möglicherweise Diensttarife mit unterschiedlichen Computegrößen einführen. Größeren Veranstaltungsorten, die täglich mehr Tickets verkaufen, könnte eine höhere Ebene mit einer umfassenderen Vereinbarung zum Servicelevel (SLA) angeboten werden. Die Datenbanken dieser Veranstaltungsorte könnten außerdem in einem Pool mit höheren Ressourcenlimits pro Datenbank platziert werden. Jeder Dienstebene könnte eine stündliche Verkaufsmenge zugeordnet werden, bei deren Überschreitung eine Zusatzgebühr in Rechnung gestellt wird. Größere Veranstaltungsorte mit regelmäßigen Anstiegen beim Verkauf würden von den höheren Tarifen profitieren, und Wingtip Tickets könnte den eigenen Diensts effizienter monetarisieren.
 
 Gleichzeitig könnten sich einige Kunden von Wingtip Tickets darüber beschweren, dass sie nicht genügend Tickets verkaufen, um die Betriebskosten zu rechtfertigen. Möglicherweise zeigen die Daten auch eine Möglichkeit zur Verbesserung der Ticketverkäufe für Veranstaltungsorte, die bisher zu wenige Tickets verkaufen. Höhere Umsätzen würde auch den wahrgenommenen Wert des Diensts steigern. Klicken Sie mit der rechten Maustaste auf „fact_Tickets“, und wählen Sie **Neues Measure** aus. Geben Sie den folgenden Ausdruck für das neue Measure namens **AverageTicketsSold** ein:
 
@@ -240,5 +241,6 @@ Glückwunsch!
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-<!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). -->
+Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) 
 - [Elastische Aufträge](sql-database-elastic-jobs-overview.md)
+- [Mandantenübergreifende Analysen mit extrahierten Daten – App mit einem Mandanten](saas-tenancy-tenant-analytics.md) 

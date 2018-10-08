@@ -1,24 +1,27 @@
 ---
 title: Azure SQL-Datenbank-Dienstebenen – DTU | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Dienstebenen für Einzel- und Pooldatenbanken, um verschiedene Leistungsstufen und Speichergrößen bereitzustellen.
+description: Erfahren Sie mehr über die Diensttarife für Einzeldatenbanken und Pools für elastische Datenbanken, um verschiedene Computegrößen und Speichergrößen bereitzustellen.
 services: sql-database
-author: sachinpMSFT
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/01/2018
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
 manager: craigg
-ms.author: carlrab
-ms.openlocfilehash: d0250d508ca6d21ee09c9402e10d2fdb025529ac
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.date: 09/14/2018
+ms.openlocfilehash: 2f9362a6d771df3cdb11855844025bc8d9ea732e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144957"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162371"
 ---
-# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>Auswählen einer DTU-basierten Dienstebene, von Leistungsstufe und Speicherressourcen 
+# <a name="choosing-a-dtu-based-service-tier-compute-size-and-storage-resources"></a>Auswählen eines DTU-basierten Diensttarifs, einer Computegröße und Speicherressourcen 
 
-Diensttarife unterscheiden sich durch eine Reihe von Leistungsstufen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Diensttarife ermöglichen das flexible Wechseln von Leistungsstufen ohne Ausfallzeiten. Einzeldatenbanken und Pools für elastische Datenbanken werden basierend auf dem Diensttarif und der Leistungsstufe pro Stunde abgerechnet.
+Diensttarife unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Diensttarife ermöglichen das flexible Wechseln von Computegrößen ohne Ausfallzeiten. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Diensttarif und Computegröße auf Stundenbasis abgerechnet.
 
 > [!IMPORTANT]
 > Für die verwaltete SQL-Datenbank-Instanz, die sich derzeit in der öffentlichen Vorschauphase befindet, wird das DTU-basierte Kaufmodell nicht unterstützt. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md). 
@@ -40,7 +43,7 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Begrenzungen für Einzeldatenbank-DTUs und Speicher
 
-Leistungsstufen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (elastic Database Transaction Units, eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Was sind DTUs und eDTUs?](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
+Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Was sind DTUs und eDTUs?](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: | --: |
@@ -73,7 +76,7 @@ Leistungsstufen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 Physische Merkmale (CPU, Arbeitsspeicher, E/A), die jedem DTU-Measure zugeordnet sind, werden mithilfe eines Vergleichstests kalibriert, der eine realitätsnahe Datenbankworkload simuliert.
 
 ### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korrelieren von Vergleichstestergebnissen mit realer Datenbankleistung
-Wichtig ist der Hinweis, dass alle Vergleichstests nur repräsentativen und informativen Charakter haben. Die mit der Vergleichstestanwendung erzielten Transaktionsraten entsprechen nicht denjenigen, die mit anderen Anwendungen erzielt werden. Der Vergleichstest umfasst eine Zusammenstellung verschiedener Typen von Transaktionen, die auf ein Schema angewendet werden, das einen Bereich von Tabellen und Datentypen enthält. Während für den Vergleichstest dieselben grundlegenden Vorgänge ausgeführt werden, die für alle OLTP-Workloads üblich sind, wird keine spezifische Klasse von Datenbank oder Anwendung abgebildet. Ziel des Vergleichstests ist das Bereitstellen eines vernünftigen Richtwerts für die relative Leistung einer Datenbank, der bei einer Skalierung nach oben und unten zwischen Leistungsstufen erwartet werden kann. In der Praxis haben Datenbanken eine unterschiedliche Größe und Komplexität, müssen verschiedene Kombinationen von Workloads bewältigen und reagieren auf unterschiedliche Weise. Beispielsweise kann eine E/A-intensive Anwendung E/A-Schwellenwerte früher erreichen, oder eine CPU-intensive Anwendung kann CPU-Grenzwerte früher erreichen. Es gibt keine Garantie, dass eine bestimmte Datenbank bei steigender Last auf die gleiche Weise wie im Vergleichstest skaliert wird.
+Wichtig ist der Hinweis, dass alle Vergleichstests nur repräsentativen und informativen Charakter haben. Die mit der Vergleichstestanwendung erzielten Transaktionsraten entsprechen nicht denjenigen, die mit anderen Anwendungen erzielt werden. Der Vergleichstest umfasst eine Zusammenstellung verschiedener Typen von Transaktionen, die auf ein Schema angewendet werden, das einen Bereich von Tabellen und Datentypen enthält. Während für den Vergleichstest dieselben grundlegenden Vorgänge ausgeführt werden, die für alle OLTP-Workloads üblich sind, wird keine spezifische Klasse von Datenbank oder Anwendung abgebildet. Ziel des Vergleichstests ist das Bereitstellen eines vernünftigen Richtwerts für die relative Leistung einer Datenbank, der bei einer Hoch- oder Herunterskalierung der Computegröße erwartet werden kann. In der Praxis haben Datenbanken eine unterschiedliche Größe und Komplexität, müssen verschiedene Kombinationen von Workloads bewältigen und reagieren auf unterschiedliche Weise. Beispielsweise kann eine E/A-intensive Anwendung E/A-Schwellenwerte früher erreichen, oder eine CPU-intensive Anwendung kann CPU-Grenzwerte früher erreichen. Es gibt keine Garantie, dass eine bestimmte Datenbank bei steigender Last auf die gleiche Weise wie im Vergleichstest skaliert wird.
 
 Der Vergleichstest und seine Methoden werden nachstehend ausführlich beschrieben.
 
@@ -155,5 +158,5 @@ Die Hauptmetriken im Vergleichstest sind Durchsatz und Antwortzeit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Ausführliche Informationen zu bestimmten Leistungsstufen und Speichergrößen für Einzeldatenbanken finden Sie unter [Single database: Storage sizes and performance levels](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels) (Einzeldatenbank: Speichergrößen und Leistungsstufen).
-- Ausführliche Informationen zu Auswahlmöglichkeiten bestimmter Leistungsstufen und Speichergrößen für Pools für elastische Datenbanken finden Sie unter [Elastic pool: Storage sizes and performance levels](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels) (Pool für elastische Datenbanken: Speichergrößen und Leistungsstufen).
+- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Einzeldatenbanken finden Sie unter [DTU-basierte Ressourceneinschränkungen in SQL-Datenbank für Einzeldatenbanken](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
+- Ausführliche Informationen zu Auswahlmöglichkeiten bestimmter Computegrößen und Speichergrößen für Pools für elastische Datenbanken finden Sie unter [DTU-basierte Ressourceneinschränkungen in SQL-Datenbank](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

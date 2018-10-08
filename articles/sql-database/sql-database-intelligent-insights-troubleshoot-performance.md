@@ -2,56 +2,58 @@
 title: Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights | Microsoft-Dokumentation
 description: Intelligent Insights hilft Ihnen, Probleme mit der Leistung von Azure SQL-Datenbank zu beheben.
 services: sql-database
-author: danimir
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/04/2018
+author: danimir
 ms.author: v-daljep
-ms.openlocfilehash: bcc33eb7e5050c991c89b7f0998eec3707f62ebb
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 49d5e307c51a6527ade63bac0276fa141ecb5c24
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751342"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222453"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
-Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Diagnoseprotokoll kann an [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gesendet werden.
+Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Telemetriediagnoseprotokoll kann an [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gestreamt werden.
 
 > [!NOTE]
-> Eine Kurzanleitung zur Behandlung von Problemen mit der Leistung von SQL-Datenbank finden Sie im Flussdiagramm [Empfohlene Vorgehensweise bei der Problembehandlung](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in diesem Dokument.
+> Eine Kurzanleitung zur Behandlung von Problemen mit der Leistung von SQL-Datenbank unter Verwendung von Intelligent Insights finden Sie im Flussdiagramm [Empfohlene Vorgehensweise bei der Problembehandlung](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in diesem Dokument.
 >
 
 ## <a name="detectable-database-performance-patterns"></a>Erkennbare Muster bei der Datenbankleistung
 
-Intelligent Insights erkennt automatisch Leistungsprobleme mit SQL-Datenbank auf Grundlage von Wartezeiten der Abfrageausführung, Fehlern oder Timeouts. Es werden anschließend erkannte Leistungsmuster an das Diagnoseprotokoll ausgegeben. Erkennbare Leistungsmuster sind in der folgenden Tabelle zusammengefasst:
+Intelligent Insights erkennt automatisch auf Grundlage von Wartezeiten bei der Abfrageausführung, Fehlern oder Timeouts Probleme mit der Leistung von SQL-Datenbank und verwalteten Datenbank-Instanzen. Erkannte Leistungsmuster werden in das Diagnoseprotokoll ausgegeben. Erkennbare Leistungsmuster sind in der folgenden Tabelle zusammengefasst.
 
-| Erkennbare Leistungsmuster | Ausgegebene Details |
-| :------------------- | ------------------- |
-| [Erreichen von Ressourcengrenzwerten](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Der Verbrauch von im überwachten Abonnement verfügbaren Ressourcen (Datenübertragungseinheiten, DTUs), Datenbankarbeitsthreads und -anmeldesitzungen hat Grenzwerte erreicht, was zu Problemen mit der Leistung von SQL-Datenbank führt. |
-| [Gestiegene Workload](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Eine Zunahme der Workload oder fortlaufende Häufung von Workloads in der Datenbank wurde erkannt, was zu Problemen mit der Leistung von SQL-Datenbank führt. |
-| [Hohe Arbeitsspeicherauslastung](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Worker, die Speicherzuweisungen angefordert haben, warten statistisch gesehen lange auf Speicherbelegung. Es sei denn, es gibt einen erhöhten Zuwachs von Workern, die Speicherzuweisungen angefordert haben, wodurch die Leistung von SQL-Datenbank beeinflusst wird. |
-| [Sperren](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Übermäßige Datenbanksperren wurden erkannt, wodurch die Leistung von SQL-Datenbank beeinträchtigt wird. |
-| [Erhöhter Wert für „Maximaler Grad an Parallelität“](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Die Option „Maximaler Grad an Parallelität“ (MAXDOP) wurde geändert, was sich auf die Effizienz der Ausführung von Abfragen auswirkt. |
-| [Seitenlatchkonflikt](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Ein Seitenlatchkonflikt wurde erkannt, wodurch die Leistung von SQL-Datenbank beeinträchtigt wird. Mehrere Threads versuchen, gleichzeitig auf die gleichen Pufferseiten von In-Memory-Daten zuzugreifen. Dies führt zu höheren Wartezeiten, was sich auf die Leistung von SQL-Datenbank auswirkt. |
-| [Fehlender Index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Es wurde ein fehlender Indexes erkannt, wodurch die Leistung von SQL-Datenbank beeinträchtigt wird. |
-| [Neue Abfrage](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Eine neue Abfrage wurde erkannt, die die allgemeine Leistung von SQL-Datenbank beeinträchtigt. |
-| [Ungewöhnliche Statistik bei Wartezeiten](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Ungewöhnliche Datenbankwartezeiten wurden erkannt, welche die Leistung von SQL-Datenbank beeinträchtigen. |
-| [TempDB-Konflikt](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Mehrere Threads versuchen, auf die gleichen tempDB-Ressourcen zuzugreifen, was einen Engpass verursacht, der die Leistung von SQL-Datenbank mindert. |
-| [Mangel an DTUs im Pool für elastische Datenbanken](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Ein Mangel an verfügbaren DTUs im Pool für elastische Datenbanken wirkt sich auf die Leistung von SQL-Datenbank aus. |
-| [Planregression](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Ein neuer Plan oder eine Änderung bei der Workload in einem bestehenden Plan wurde festgestellt, was die Leistung von SQL-Datenbank beeinträchtigt. |
-| [Änderung eines Werts der datenbankweit gültigen Konfiguration](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | Eine Konfigurationsänderung in der Datenbank beeinträchtigt die Leistung von SQL-Datenbank. |
-| [Langsamer Client](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | Ein langsamer Anwendungsclient, der nicht in der Lage ist, die Ausgabe der SQL-Datenbank-Instanz schnell genug zu nutzen, wurde festgestellt. Dadurch wird die Leistung von SQL-Datenbank beeinträchtigt. |
-| [Tarifdowngrade](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Durch ein Tarifdowngrade haben sich verfügbare Ressourcen verringert, was die Leistung von SQL-Datenbank beeinträchtigt. |
+| Erkennbare Leistungsmuster | Beschreibung für Azure SQL-Datenbank und Pools für elastische Datenbanken | Beschreibung für Datenbanken in einer verwalteten Instanz |
+| :------------------- | ------------------- | ------------------- |
+| [Erreichen von Ressourcengrenzwerten](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Die Nutzung der im überwachten Abonnement verfügbaren Ressourcen (Datenübertragungseinheiten, DTUs), Datenbankarbeitsthreads und Datenbankanmeldesitzungen hat Grenzwerte erreicht. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Die Nutzung von CPU-Ressourcen hat Grenzwerte für die verwaltete Instanz erreicht. Dies beeinträchtigt die Datenbankleistung. |
+| [Gestiegene Workload](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Eine Zunahme der Workload oder fortlaufende Häufung von Workloads wurde in der Datenbank erkannt. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Eine Zunahme der Workload wurde erkannt. Dies beeinträchtigt die Datenbankleistung. |
+| [Hohe Arbeitsspeicherauslastung](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Worker, die Speicherzuweisungen angefordert haben, warten statistisch gesehen lange auf Speicherbelegung. Oder es gibt eine zunehmende Anzahl von Workern, die Arbeitsspeicherzuweisungen angefordert haben. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Worker, die Speicherzuweisungen angefordert haben, warten statistisch gesehen lange auf Speicherbelegung. Dies beeinträchtigt die Datenbankleistung. |
+| [Sperren](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Übermäßige Datenbanksperren wurden erkannt, welche die Leistung von SQL-Datenbank beeinträchtigen. | Übermäßige Datenbanksperren wurden erkannt, welche die Datenbankleistung beeinträchtigen. |
+| [Erhöhter Wert für „Maximaler Grad an Parallelität“](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Die Option „Maximaler Grad an Parallelität“ (MAXDOP) wurde geändert, was sich auf die Effizienz der Ausführung von Abfragen auswirkt. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Die Option „Maximaler Grad an Parallelität“ (MAXDOP) wurde geändert, was sich auf die Effizienz der Ausführung von Abfragen auswirkt. Dies beeinträchtigt die Datenbankleistung. |
+| [Seitenlatchkonflikt](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Mehrere Threads versuchen gleichzeitig, auf dieselben Datenpufferseiten im Arbeitsspeicher zuzugreifen. Dies führt zu längeren Wartezeiten und verursacht einen Seitenlatchkonflikt. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Mehrere Threads versuchen gleichzeitig, auf dieselben Datenpufferseiten im Arbeitsspeicher zuzugreifen. Dies führt zu längeren Wartezeiten und verursacht einen Seitenlatchkonflikt. Dies beeinträchtigt die Datenbankleistung. |
+| [Fehlender Index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Ein fehlender Index wurde erkannt, wodurch die Leistung von SQL-Datenbank beeinträchtigt wird. | Ein fehlender Index wurde erkannt, wodurch die Datenbankleistung beeinträchtigt wird. |
+| [Neue Abfrage](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Eine neue Abfrage wurde erkannt, welche die allgemeine Leistung von SQL-Datenbank beeinträchtigt. | Eine neue Abfrage wurde erkannt, welche die allgemeine Datenbankleistung beeinträchtigt. |
+| [Statistik bei zunehmenden Wartezeiten](sql-database-intelligent-insights-troubleshoot-performance.md#increased-wait-statistic) | Zunehmende Datenbankwartezeiten wurden erkannt, welche die Leistung von SQL-Datenbank beeinträchtigen. | Zunehmende Datenbankwartezeiten wurden erkannt, welche die Datenbankleistung beeinträchtigen. |
+| [TempDB-Konflikt](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Mehrere Threads versuchen, auf die gleichen TempDB-Ressourcen zuzugreifen, was einen Engpass verursacht. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Mehrere Threads versuchen, auf die gleichen TempDB-Ressourcen zuzugreifen, was einen Engpass verursacht. Dies beeinträchtigt die Datenbankleistung. |
+| [Mangel an DTUs im Pool für elastische Datenbanken](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Ein Mangel an verfügbaren eDTUs im Pool für elastische Datenbanken beeinträchtigt die Leistung von SQL-Datenbank. | Nicht verfügbar für die verwaltete Instanz, da diese das V-Kern-Modell verwendet. |
+| [Planregression](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Ein neuer Plan oder eine Änderung bei der Workload in einem bestehenden Plan wurde erkannt. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Ein neuer Plan oder eine Änderung bei der Workload in einem bestehenden Plan wurde erkannt. Dies beeinträchtigt die Datenbankleistung. |
+| [Änderung eines Werts der datenbankweit gültigen Konfiguration](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | Eine Konfigurationsänderung in der SQL-Datenbank wurde erkannt, wodurch die Datenbankleistung beeinträchtigt wird. | Eine Konfigurationsänderung in der Datenbank wurde erkannt, wodurch die Datenbankleistung beeinträchtigt wird. |
+| [Langsamer Client](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | Ein langsamer Anwendungsclient kann die Ausgabe der Datenbank nicht schnell genug nutzen. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Ein langsamer Anwendungsclient kann die Ausgabe der Datenbank nicht schnell genug nutzen. Dies beeinträchtigt die Datenbankleistung. |
+| [Tarifdowngrade](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Ein Tarifdowngrade hat die verfügbaren Ressourcen reduziert. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Ein Tarifdowngrade hat die verfügbaren Ressourcen reduziert. Dies beeinträchtigt die Datenbankleistung. |
 
 > [!TIP]
 > Aktivieren Sie für die fortlaufende Optimierung von SQL-Datenbank die [automatische Optimierung von Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning). Diese einzigartige Funktion der integrierten Logik von SQL-Datenbank überwacht Ihre SQL-Datenbank, optimiert automatisch Indizes und wendet Abfrageplankorrekturen an.
 >
 
-Im folgenden Abschnitt werden die zuvor genannten erkennbaren Leistungsmuster genauer beschrieben.
+Im folgenden Abschnitt werden die erkennbaren Leistungsmuster genauer beschrieben.
 
 ## <a name="reaching-resource-limits"></a>Erreichen von Ressourcengrenzwerten
 
@@ -59,11 +61,11 @@ Im folgenden Abschnitt werden die zuvor genannten erkennbaren Leistungsmuster ge
 
 Dieses erkennbare Leistungsmuster kombiniert Leistungsprobleme im Zusammenhang mit dem Erreichen geltender Ressourcen-, Worker- und Sitzungsgrenzwerte. Sobald dieses Leistungsproblem erkannt wird, gibt ein Beschreibungsfeld im Diagnoseprotokoll an, ob es mit Ressourcen-, Worker- oder Sitzungsgrenzwerten zusammenhängt.
 
-Ressourcen auf SQL-Datenbank werden in der Regel als [DTU-Ressourcen](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) bezeichnet. Sie bestehen aus einer kombinierten Messung von CPU- und E/A-Ressourcen (E/A von Daten und Transaktionsprotokollen). Das Muster des Erreichens von „Ressourcengrenzwerten“ wird erkannt, wenn eine aufgetretene Verschlechterung der Abfrageleistung durch Erreichen eines der gemessenen Ressourcengrenzwerte verursacht wird.
+Ressourcen in SQL-Datenbank werden in der Regel als [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu)- oder [V-Kern](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore)-Ressourcen bezeichnet. Das Muster des Erreichens von „Ressourcengrenzwerten“ wird erkannt, wenn eine aufgetretene Verschlechterung der Abfrageleistung durch Erreichen eines der gemessenen Ressourcengrenzwerte verursacht wird.
 
 Die Ressourcengrenzwerte für Sitzungen beziehen sich auf die Anzahl der verfügbaren gleichzeitigen Anmeldungen bei der SQL-Datenbank-Instanz. Dieses Leistungsmuster wird dann erkannt, wenn Anwendungen, die mit den SQL-Datenbank-Instanzen verbunden sind, die Anzahl der verfügbaren gleichzeitigen Anmeldungen bei der Datenbank erreicht haben. Falls Anwendungen versuchen, mehr Sitzungen zu nutzen, als für eine Datenbank verfügbar sind, wird die Abfrageleistung beeinträchtigt.
 
-Das Erreichen von Workergrenzwerten ist ein spezieller Fall des Erreichens von Ressourcengrenzwerten, da verfügbare Worker nicht in die DTU-Nutzung einbezogen werden. Das Erreichen der Workergrenzwerte einer Datenbank kann eine Erhöhung ressourcenspezifischer Wartezeiten und damit eine Verschlechterung der Abfrageleistung zur Folge haben.
+Das Erreichen von Workergrenzwerten ist ein spezieller Fall des Erreichens von Ressourcengrenzwerten, da verfügbare Worker nicht in die DTU- oder V-Kern-Nutzung einbezogen werden. Das Erreichen der Workergrenzwerte einer Datenbank kann eine Erhöhung ressourcenspezifischer Wartezeiten und damit eine Verschlechterung der Abfrageleistung zur Folge haben.
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
@@ -201,17 +203,17 @@ Das Diagnoseprotokoll gibt Informationen für bis zu zwei neuen Abfragen mit der
 
 Erwägen Sie den Einsatz von [Query Performance Insight für Azure SQL-Datenbank](sql-database-query-performance.md).
 
-## <a name="unusual-wait-statistic"></a>Ungewöhnliche Statistik bei Wartezeiten
+## <a name="increased-wait-statistic"></a>Statistik bei zunehmenden Wartezeiten
 
 ### <a name="what-is-happening"></a>Was passiert?
 
 Dieses erkennbare Leistungsmuster deutet auf eine Verschlechterung der Workloadleistung dahingehend hin, dass im Vergleich mit einer Workloadbaseline der letzten sieben Tage Abfragen mit schlechter Leistung ausgemacht wurden.
 
-In diesem Fall kann das System die Abfragen mit schwacher Leistung nicht in andere standardmäßige erkennbaren Leistungskategorien einstufen. Es hat jedoch eine Wartestatistik erkannt, die für die Regression verantwortlich ist. Aus diesem Grund werden diese als Abfragen mit *ungewöhnlicher Statistik bei Wartezeiten* erkannt, wobei die für die Regression zuständige Wartestatistik ebenfalls verfügbar gemacht wird. 
+In diesem Fall kann das System die Abfragen mit schwacher Leistung nicht in andere standardmäßige erkennbaren Leistungskategorien einstufen. Es hat jedoch eine Wartestatistik erkannt, die für die Regression verantwortlich ist. Aus diesem Grund werden diese als Abfragen mit *Statistik bei zunehmenden Wartezeiten* erkannt, wobei die für die Regression zuständige Wartestatistik ebenfalls verfügbar gemacht wird. 
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
-Das Diagnoseprotokoll gibt Details zu ungewöhnlichen Wartezeiten, Abfragehashes der betroffenen Abfragen und Wartezeiten aus.
+Das Diagnoseprotokoll gibt Details zu zunehmenden Wartezeiten und Abfragehashes der betroffenen Abfragen aus.
 
 Da das System in diesem Fall nicht die Ursache für Abfragen mit schlechter Leistung bestimmen konnte, sind die Diagnoseinformationen ein geeigneter Ausgangspunkt für eine manuelle Problembehandlung. Sie können die Leistung dieser Abfragen optimieren. Es empfiehlt sich, nur Daten abzurufen, die Sie verwenden müssen, und komplexe Abfragen zu vereinfachen und in kleinere Abfragen zu unterteilen. 
 

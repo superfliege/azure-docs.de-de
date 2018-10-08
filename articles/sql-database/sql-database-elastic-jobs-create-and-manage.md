@@ -2,21 +2,24 @@
 title: Verwalten von Gruppen mit Azure SQL-Datenbanken | Microsoft-Dokumentation
 description: Führen Sie die Schritte zur Erstellung und Verwaltung eines elastischen Auftrags aus.
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: b367ddafc659db4dc4b8d658ac9dc007c4671b8c
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.reviewer: ''
+manager: craigg
+ms.date: 07/16/2018
+ms.openlocfilehash: dca4ae2c8aa75b7af40ed4f8430968b8477c6802
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092819"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165669"
 ---
-# <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Erstellen und Verwalten von horizontal hochskalierten Azure SQL-Datenbanken mithilfe von elastischen Aufträgen (Vorschau)
+# <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Erstellen und Verwalten von horizontal hochskalierten Azure SQL-Datenbanken mithilfe von elastischen Aufträgen (Preview)
 
 
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]

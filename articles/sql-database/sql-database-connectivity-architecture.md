@@ -2,19 +2,22 @@
 title: Verbindungsarchitektur von Azure SQL-Datenbank | Microsoft-Dokumentation
 description: In diesem Artikel wird die Verbindungsarchitektur von Azure-SQLDB aus Azure oder von außerhalb von Azure erläutert.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: DhruvMsft
+ms.author: dhruv
+ms.reviewer: carlrab
+manager: craigg
 ms.date: 01/24/2018
-ms.author: carlrab
-ms.openlocfilehash: afc82ea666fdbef89348e7453df92b8d8e1adc86
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 66f558db713ab951864fe694f27f2e60d52e875a
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493671"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064139"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Verbindungsarchitektur der Azure SQL-Datenbank 
 
@@ -51,13 +54,16 @@ Wenn Sie von außerhalb von Azure eine Verbindung herstellen, verfügen Ihre Ver
 ![Architekturübersicht](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Bei der Verwendung von Dienstendpunkten mit Azure SQL-Datenbank lautet die standardmäßige Richtlinie **Proxy**. Lassen Sie in der Liste unten ausgehende Verbindungen mit den IP-Adressen für das Azure SQL-Datenbank-Gateway zu, um die Konnektivität aus Ihrem VNET zu aktivieren. Beim Verwenden von Dienstendpunkten empfehlen wir Ihnen dringend, Ihre Verbindungsrichtlinie in **Umleiten** zu ändern, um die Leistung zu verbessern. Wenn Sie Ihre Verbindungsrichtlinie in **Umleiten** ändern, reicht dies nicht aus, um ausgehende Verbindungen für Ihre NSG mit den unten aufgeführten Azure SQL-Datenbank-Gateway-IPs zuzulassen. Sie müssen ausgehende Verbindungen für alle Azure SQL-Datenbank-IPs zulassen. Dies ist mithilfe von Dienst-Tags für Netzwerksicherheitsgruppen (NSGs) möglich. Weitere Informationen finden Sie unter [Dienst-Tags](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+> Bei der Verwendung von Dienstendpunkten mit Azure SQL-Datenbank lautet die standardmäßige Richtlinie **Proxy**. Um die Konnektivität aus Ihrem VNET zu aktivieren, müssen Sie ausgehende Verbindungen zu den in der folgenden Liste angegebenen IP-Adressen für den Azure SQL-Datenbank-Gateway zulassen. Beim Verwenden von Dienstendpunkten empfehlen wir Ihnen dringend, Ihre Verbindungsrichtlinie in **Umleiten** zu ändern, um die Leistung zu verbessern. Wenn Sie Ihre Verbindungsrichtlinie in **Umleiten** ändern, reicht dies nicht aus, um ausgehende Verbindungen für Ihre NSG mit den unten aufgeführten Azure SQL-Datenbank-Gateway-IPs zuzulassen. Sie müssen ausgehende Verbindungen für alle Azure SQL-Datenbank-IPs zulassen. Dies ist mithilfe von Dienst-Tags für Netzwerksicherheitsgruppen (NSGs) möglich. Weitere Informationen finden Sie unter [Dienst-Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP-Adressen vom Gateway von Azure SQL-Datenbank
 
 Zur Verbindung mit einer Azure SQL-Datenbank von einer lokalen Ressource aus müssen Sie ausgehenden Netzwerkdatenverkehr auf dem Gateway von Azure SQL-Datenbank für Ihre Azure-Region zulassen. Ihre Verbindungen erfolgen nur über das Gateway, wenn Sie eine Verbindung im Proxymodus herstellen. Dies ist die Standardeinstellung bei der Verbindung von lokalen Ressourcen aus.
 
 Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gateways von Azure SQL-Datenbank für alle Datenregionen. Für einige Regionen gibt es zwei IP-Adressen. In diesen Regionen ist die primäre IP-Adresse die aktuelle IP-Adresse des Gateways, und die zweite IP-Adresse ist eine Failover-IP-Adresse. Die Failoveradresse ist die Adresse, wohin wir möglicherweise Ihren Server verschieben, um die Verfügbarkeit des Dienst hoch zu halten. Für diese Regionen wird empfohlen, dass Sie ausgehenden Verkehr an beide IP-Adressen zulassen. Die zweite IP-Adresse ist Eigentum von Microsoft und belauscht keine Dienste von Azure SQL-Datenbank. Dies macht sie erst, wenn Sie zulassen, dass Azure SQL-Datenbank Verbindungen annimmt.
+
+> [!IMPORTANT]
+> Wenn Sie die Verbindung aus Azure herstellen, lautet Ihre Verbindungsrichtlinie standardmäßig **Umleiten** (sofern Sie keine Dienstendpunkte verwenden). Es reicht nicht aus, die folgenden IP-Adressen zuzulassen. Sie müssen alle IP-Adressen von Azure SQL-Datenbank zulassen. Wenn Sie die Verbindung aus einem VNet herstellen, können Sie dazu Diensttags für Netzwerksicherheitsgruppen (NSGs) verwenden. Weitere Informationen finden Sie unter [Dienst-Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 | Name der Region | Primäre IP-Adresse | Sekundäre IP-Adresse |
 | --- | --- |--- |
@@ -160,10 +166,10 @@ $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
 ```
 
-## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>Skript zum Ändern der Verbindungseinstellungen über Azure CLI 2.0
+## <a name="script-to-change-connection-settings-via-azure-cli"></a>Skript zum Ändern der Verbindungseinstellungen über die Azure CLI
 
 > [!IMPORTANT]
-> Dieses Skript erfordert die [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Dieses Skript erfordert die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 >
 
 Das folgende Skript für die Befehlszeilenschnittstelle veranschaulicht, wie Sie die Verbindungsrichtlinie ändern.

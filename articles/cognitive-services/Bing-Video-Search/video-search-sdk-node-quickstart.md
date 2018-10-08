@@ -1,23 +1,23 @@
 ---
-title: Node-Schnellstart für das Videosuche-SDK | Microsoft-Dokumentation
-description: Setup für die Konsolenanwendung des Videosuche-SDK
-titleSuffix: Azure cognitive services
+title: 'Schnellstart: Bing-Videosuche-SDK, Node'
+titleSuffix: Azure Cognitive Services
+description: Setup für die Konsolenanwendung des Bing-Videosuche-SDK.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
-ms.author: v-gedod
-ms.openlocfilehash: 5718c750288e0a5605db3296d2911cca5e03375c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: rosh
+ms.openlocfilehash: 4dcc9220d4d38bfe34514edd6a3ad47c7a7d4ba8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378513"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225615"
 ---
-# <a name="video-search-sdk-node-quickstart"></a>Node-Schnellstart für das Videosuche-SDK
+# <a name="quickstart-bing-video-search-sdk-with-node"></a>Schnellstart: Bing-Videosuche-SDK mit Node
 
 Das Bing-Videosuche-SDK enthält die Funktionalität der REST-API für Videoabfragen und das Analysieren von Ergebnissen. 
 

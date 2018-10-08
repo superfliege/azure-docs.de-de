@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk
-ms.openlocfilehash: ed0118584d51f08d64a88dc1e7e6e2ba5f95cb0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 07c2b506007daccd53a8b06a43064e6e274ac43b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042590"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433357"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure Toolkit für IntelliJ
 
@@ -181,8 +181,12 @@ Sie können einen normalen HDInsight-Cluster mithilfe des verwalteten Ambari-Ben
 
         ![Dialogfeld „Select Main Class“ (Hauptklasse auswählen)](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
 
-      * Da für den Anwendungscode in diesem Beispiel keine Befehlszeilenargumente oder Referenzdateien (JAR) erforderlich sind, können Sie die restlichen Felder leer lassen. Nachdem Sie alle Informationen angegeben haben, sollte das Dialogfeld in etwa wie in der folgenden Abbildung aussehen.
+      * Sie können beliebige Informationen bereitstellen. Zu den **Auftragskonfigurationen** gibt es einen Standardwert. Und unter [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) finden Sie weitere Informationen über die Schlüssel. Die **Befehlszeilenargumente**, **referenzierten JARs** und **referenzierten Dateien** sollten wie in der folgenden Abbildung aussehen. Weitere Informationen zu **referenzierten JARs** und **referenzierten Dateien** finden Sie unter [Spark Configuration](https://spark.apache.org/docs/latest/configuration.html#runtime-environment). Damit **referenzierte JARs** und **referenzierte Dateien** gut funktionieren, sollten Sie die Ressourcen in den Cluster hochladen, den Sie zuerst übermitteln. Informationen finden Sie unter [Hochladen von Ressourcen in Cluster](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer). Das Dialogfeld zum Übermitteln sollte der folgenden Abbildung ähneln.
         
+        ![Spark-Dialogfeld für die Übermittlung, Auftragskonfiguration, Bedeutung](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
+
+        ![Spark-Dialogfeld für die Übermittlung, JAR-Dateien, Bedeutung](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
+
         ![Dialogfeld für die Spark-Übermittlung](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
 
    c. Auf der Registerkarte **Spark Submission** (Spark-Übermittlung) unten im Fenster sollte nun der Status angezeigt werden. Sie können die Anwendung auch anhalten, indem Sie im Fenster **Spark Submission** (Spark-Übermittlung) die rote Schaltfläche auswählen.

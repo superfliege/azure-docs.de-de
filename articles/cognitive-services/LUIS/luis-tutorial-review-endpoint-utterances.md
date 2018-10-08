@@ -1,71 +1,81 @@
 ---
-title: 'Tutorial: Überprüfen von Endpunktäußerungen für Language Understanding (LUIS) – Azure | Microsoft-Dokumentation'
-description: In diesem Tutorial wird beschrieben, wie Sie Endpunktäußerungen im Personalbereich (Human Resources, HR) für LUIS überprüfen.
+title: 'Tutorial 1: Überprüfen von Endpunktäußerungen mit aktivem Lernen'
+titleSuffix: Azure Cognitive Services
+description: Verbessern Sie App-Vorhersagen, indem Sie die über den LUIS-HTTP-Endpunkt erhaltenen Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein. Sie sollten Endpunktäußerungen regelmäßig im Rahmen der geplanten LUIS-Wartung überprüfen.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/03/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: db44bfad5ece59ed3373699c10d6134201bf1879
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1047c117228b57f7361a1e386bc6cde7acbfdde8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160080"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042274"
 ---
-# <a name="tutorial-review-endpoint-utterances"></a>Tutorial: Überprüfen von Endpunktäußerungen
-In diesem Tutorial erfahren Sie, wie Sie App-Vorhersagen verbessern können, indem Sie die über den LUIS-HTTP-Endpunkt erhaltenen Äußerungen überprüfen bzw. korrigieren. 
+# <a name="tutorial-1-fix-unsure-predictions"></a>Tutorial 1: Korrigieren von unsicheren Vorhersagen
+In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie die über den LUIS-HTTPS-Endpunkt erhaltenen Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein. Sie sollten Endpunktäußerungen regelmäßig im Rahmen der geplanten LUIS-Wartung überprüfen. 
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Grundlegendes zur Überprüfung von Endpunktäußerungen 
-> * Verwenden der LUIS-App für den Personalbereich 
-> * Überprüfen von Endpunktäußerungen
-> * Trainieren und Veröffentlichen der App
-> * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem [Tutorial zur Standpunktanalyse](luis-quickstart-intent-and-sentiment-analysis.md) verfügen, können Sie sie aus dem GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-sentiment-HumanResources.json) importieren. Wenn Sie dieses Tutorial mit einer neuen, importierten App verwenden, müssen Sie auch das Trainieren und Veröffentlichen durchführen und die Äußerungen dem Endpunkt mit einem [Skript](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) oder in einem Browser vom Endpunkt hinzufügen. Fügen Sie die folgenden Äußerungen hinzu:
-
-   [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
-
-Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `review`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
-
-Falls Sie über alle Versionen der App für die gesamte Tutorialreihe verfügen, sind Sie vielleicht überrascht, dass sich die Liste **Review endpoint utterances** (Endpunktäußerungen überprüfen) nicht je nach Version ändert. Es muss nur ein Pool mit Äußerungen überprüft werden. Dies gilt unabhängig davon, welche Version der Äußerung Sie aktiv bearbeiten oder welche Version der App auf dem Endpunkt veröffentlicht wurde. 
-
-## <a name="purpose-of-reviewing-endpoint-utterances"></a>Zweck der Überprüfung von Endpunktäußerungen
-Dieser Überprüfungsprozess ist eine der Möglichkeiten, die für LUIS zum Erlernen Ihrer App-Domäne zur Verfügung stehen. LUIS wählt die Äußerungen in der Überprüfungsliste aus. Für diese Liste gilt Folgendes:
+Dieser Überprüfungsprozess ist eine der Möglichkeiten, die für LUIS zum Erlernen Ihrer App-Domäne zur Verfügung stehen. LUIS wählt die Äußerungen aus, die in der Überprüfungsliste angezeigt werden. Für diese Liste gilt Folgendes:
 
 * Sie gilt spezifisch für die App.
 * Sie soll die Vorhersagegenauigkeit der App verbessern. 
 * Sie sollte in regelmäßigen Abständen überprüft werden. 
 
-Indem Sie die Endpunktäußerungen überprüfen, verifizieren bzw. korrigieren Sie die vorhergesagte Absicht der Äußerung. Außerdem bezeichnen Sie benutzerdefinierte Entitäten, die nicht vorhergesagt wurden. 
+Indem Sie die Endpunktäußerungen überprüfen, verifizieren bzw. korrigieren Sie die vorhergesagte Absicht der Äußerung. Außerdem bezeichnen Sie benutzerdefinierte Entitäten, die nicht oder falsch vorhergesagt wurden. 
+
+**In diesem Tutorial lernen Sie Folgendes:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Verwenden der vorhandenen Tutorial-App
+> * Überprüfen von Endpunktäußerungen
+> * Aktualisieren der Ausdrucksliste
+> * Trainieren der App
+> * Veröffentlichen der App
+> * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Verwenden der vorhandenen App
+
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
+
+Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json) herunter, und speichern Sie sie.
+
+2. Importieren Sie den JSON-Code in eine neue App.
+
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `review`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+
+    Wenn Sie dieses Tutorial mit einer neuen, importierten App verwenden, müssen Sie auch das Trainieren und Veröffentlichen durchführen und die Äußerungen dem Endpunkt mit einem [Skript](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) oder in einem Browser vom Endpunkt hinzufügen. Fügen Sie die folgenden Äußerungen hinzu:
+
+   [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
+
+    Falls Sie über alle Versionen der App für die gesamte Tutorialreihe verfügen, sind Sie vielleicht überrascht, dass sich die Liste **Review endpoint utterances** (Endpunktäußerungen überprüfen) nicht je nach Version ändert. Es muss nur ein Pool mit Äußerungen überprüft werden. Dies gilt unabhängig davon, welche Version Sie aktiv bearbeiten oder welche Version der App auf dem Endpunkt veröffentlicht wurde. 
 
 ## <a name="review-endpoint-utterances"></a>Überprüfen von Endpunktäußerungen
 
-1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste **Build** auswählen. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie im linken Navigationsbereich die Option **Review endpoint utterances** (Endpunktäußerungen überprüfen). Die Liste wird für die Absicht **ApplyForJob** gefiltert. 
 
-    [ ![Screenshot: Schaltfläche „Review endpoint utterances“ (Endpunktäußerungen überprüfen) im linken Navigationsbereich](./media/luis-tutorial-review-endpoint-utterances/entities-view-endpoint-utterances.png)](./media/luis-tutorial-review-endpoint-utterances/entities-view-endpoint-utterances.png#lightbox)
+    [ ![Screenshot: Schaltfläche „Review endpoint utterances“ (Endpunktäußerungen überprüfen) im linken Navigationsbereich](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
 3. Schalten Sie **Entities view** (Entitätsansicht) um, um die bezeichneten Entitäten anzuzeigen. 
     
-    [ ![Screenshot: „Review endpoint utterances“ (Endpunktäußerungen überprüfen) mit hervorgehobenem Umschalter „Entities view“ (Entitätsansicht)](./media/luis-tutorial-review-endpoint-utterances/select-entities-view.png)](./media/luis-tutorial-review-endpoint-utterances/select-entities-view.png#lightbox)
+    [ ![Screenshot: „Review endpoint utterances“ (Endpunktäußerungen überprüfen) mit hervorgehobenem Umschalter „Entities view“ (Entitätsansicht)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
     |Äußerung|Richtige Absicht|Fehlende Entitäten|
     |:--|:--|:--|
     |I'm looking for a job with Natural Language Processing (Ich suche nach einem Job im Bereich Verarbeitung natürlicher Sprache)|GetJobInfo|Job – „Natural Language Process“|
 
     Diese Äußerung weist nicht die richtige Absicht auf und hat eine Bewertung von weniger als 50%. Die Absicht **ApplyForJob** verfügt über 21 Äußerungen, während für **GetJobInformation** nur sieben Äußerungen vorhanden sind. Zusätzlich zum richtigen Zuordnen der Endpunktäußerung sollten der Absicht **GetJobInformation** weitere Äußerungen hinzugefügt werden. Diese Übung können Sie selbstständig durchführen. Alle Absichten, mit Ausnahme von **None** (Keine), sollten ungefähr über die gleiche Anzahl von Beispieläußerungen verfügen. Die Absicht **None** (Keine) sollte etwa 10% der gesamten Äußerungen in der App aufweisen. 
-
-    Wenn Sie sich in **Tokens View** (Tokenansicht) befinden, können Sie den Mauszeiger auf beliebigen blauen Text bewegen, um den vorhergesagten Entitätsnamen anzuzeigen. 
 
 4. Wählen Sie für die Absicht `I'm looking for a job with Natual Language Processing` die richtige Absicht **GetJobInformation** in der Spalte **Aligned intent** (Zugeordnete Absicht) aus. 
 
@@ -87,11 +97,13 @@ Indem Sie die Endpunktäußerungen überprüfen, verifizieren bzw. korrigieren S
 
     [ ![Screenshot: Abschließen der restlichen Äußerungen in Bezug auf die zugeordnete Absicht](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
-9. Die Liste sollte diese Äußerungen nicht mehr enthalten. Falls weitere Äußerungen angezeigt werden, können Sie die Liste weiter durcharbeiten, Absichten korrigieren und alle fehlenden Entitäten bezeichnen, bis die Liste leer ist. Wählen Sie in der Liste „Filter“ die nächste Absicht aus, und fahren Sie dann mit dem Korrigieren von Äußerungen und dem Bezeichnen von Entitäten fort. Beachten Sie, dass der letzte Schritt für eine Absicht jeweils entweder das Auswählen von **Add to aligned intent** (Zugeordneter Absicht hinzufügen) in der Zeile mit der Äußerung oder das Aktivieren des Kontrollkästchens für jede Absicht und Auswählen von **Add selected** (Ausgewählte auswählen) oberhalb der Tabelle ist. 
+9. Die Liste sollte diese Äußerungen nicht mehr enthalten. Falls weitere Äußerungen angezeigt werden, können Sie die Liste weiter durcharbeiten, Absichten korrigieren und alle fehlenden Entitäten bezeichnen, bis die Liste leer ist. 
 
-    Dies ist eine sehr kleine App. Der Überprüfungsprozess dauert nur wenige Minuten.
+10. Wählen Sie in der Liste „Filter“ die nächste Absicht aus, und fahren Sie dann mit dem Korrigieren von Äußerungen und dem Bezeichnen von Entitäten fort. Beachten Sie, dass der letzte Schritt für eine Absicht jeweils entweder das Auswählen von **Add to aligned intent** (Zugeordneter Absicht hinzufügen) in der Zeile mit der Äußerung oder das Aktivieren des Kontrollkästchens für jede Absicht und Auswählen von **Add selected** (Ausgewählte auswählen) oberhalb der Tabelle ist.
 
-## <a name="add-new-job-name-to-phrase-list"></a>Hinzufügen eines neuen Jobnamens zur Ausdrucksliste
+    Setzen Sie diese Vorgehensweise fort, bis alle Absichten und Entitäten in der Filterliste eine leere Liste aufweisen. Dies ist eine sehr kleine App. Der Überprüfungsprozess dauert nur wenige Minuten. 
+
+## <a name="update-phrase-list"></a>Aktualisieren der Ausdrucksliste
 Halten Sie die Ausdrucksliste mit allen neu ermittelten Jobnamen auf dem aktuellen Stand. 
 
 1. Wählen Sie im linken Navigationsbereich die Option **Phrase lists** (Ausdruckslisten).
@@ -100,19 +112,19 @@ Halten Sie die Ausdrucksliste mit allen neu ermittelten Jobnamen auf dem aktuell
 
 3. Fügen Sie `Natural Language Processing` als Wert hinzu, und wählen Sie anschließend **Save** (Speichern). 
 
-## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
+## <a name="train"></a>Trainieren
 
 LUIS ist erst über die Änderungen informiert, nachdem das Trainieren durchgeführt wurde. 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
+## <a name="publish"></a>Veröffentlichen
 
 Nach dem Importieren dieser App müssen Sie die Option **Sentiment analysis** (Standpunktanalyse) wählen.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-an-utterance"></a>Abfragen des Endpunkts mit einer Äußerung
+## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
 
 Probieren Sie es mit einer Äußerung, die nicht weit von der korrigierten Äußerung abweicht. 
 
@@ -223,16 +235,14 @@ Probieren Sie es mit einer Äußerung, die nicht weit von der korrigierten Äuß
 Sie fragen sich vielleicht, warum nicht einfach weitere Beispieläußerungen hinzugefügt werden. Was ist der Zweck der Überprüfung von Endpunktäußerungen? Bei einer LUIS-App in der Praxis stammen die Endpunktäußerungen von Benutzern mit einer Wortwahl und einer Zusammensetzung, die Sie noch nicht verwendet haben. Wenn Sie die gleiche Wortwahl und Zusammensetzung verwendet hätten, würde die ursprüngliche Vorhersage einen höheren Prozentsatz aufweisen. 
 
 ## <a name="why-is-the-top-intent-on-the-utterance-list"></a>Warum ist die oberste Absicht in der Liste mit den Äußerungen enthalten? 
-Einige Endpunktäußerungen weisen in der Überprüfungsliste einen hohen Prozentsatz auf. Sie müssen diese Äußerungen trotzdem überprüfen und verifizieren. Sie sind in der Liste enthalten, weil die nächsthöhere Absicht über eine Bewertung verfügt hat, die zu nah an der Bewertung der obersten Absicht gelegen hat. 
-
-## <a name="what-has-this-tutorial-accomplished"></a>Was wurde mit diesem Tutorial erreicht?
-Die Vorhersagegenauigkeit der App wurde erhöht, indem die Äußerungen vom Endpunkt überprüft wurden. 
+Einige Endpunktäußerungen weisen in der Überprüfungsliste einen hohen Vorhersagewert auf. Sie müssen diese Äußerungen trotzdem überprüfen und verifizieren. Sie sind in der Liste enthalten, weil die nächsthöhere Absicht über eine Bewertung verfügt hat, die zu nah an der Bewertung der obersten Absicht gelegen hat. Es sollte ein Unterschied von ungefähr 15 % zwischen den beiden am höchsten bewerteten Absichten bestehen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+In diesem Tutorial haben Sie am Endpunkt ausgegebene Äußerungen überprüft, bei denen LUIS unsicher war. Sobald diese Äußerungen überprüft und als Beispieläußerungen unter die richtigen Absichten verschoben wurden, weist LUIS eine verbesserte Vorhersagegenauigkeit auf.
 
 > [!div class="nextstepaction"]
 > [Verwenden von Mustern](luis-tutorial-pattern.md)

@@ -1,36 +1,37 @@
 ---
 title: Migrieren einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz migrieren.
-keywords: Datenbankmigration,SQL Server-Datenbankmigration,Datenbankmigrationstools,Migrieren einer Datenbank,Migrieren einer SQL-Datenbank
 services: sql-database
+ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
 author: bonova
+ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.service: sql-database
-ms.custom: managed instance
-ms.topic: conceptual
-ms.date: 07/24/2018
-ms.author: bonova
-ms.openlocfilehash: e152fa4bb439f1881dc9974bfdf1b3e8c77c434a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.date: 09/26/2018
+ms.openlocfilehash: 7653ce7b0823b4e91685e77701a307370261f7e6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42141362"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394060"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz
 
-Dieser Artikel enthält Informationen zu den Methoden, mit denen eine SQL Server 2005-Instanz (oder eine höhere Version) zu einer [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) migriert wird (Vorschau).
+Dieser Artikel enthält Informationen zu den Methoden, mit denen eine SQL Server 2005-Instanz (oder eine höhere Version) zu einer [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) migriert wird.
 
 Die Datenbankmigration sieht im Allgemeinen folgendermaßen aus:
 
 ![Migrationsprozess](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [Bewerten der Kompatibilität der verwalteten Instanz](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
-- [Wählen einer App-Konnektivitätsoption](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
-- [Bereitstellen für eine verwaltete Instanz mit optimaler Größe](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
-- [Auswählen der Migrationsmethode und Migration](sql-database-managed-instance-migrate.md#select-migration-method-and-migrate)
-- [Überwachen von Anwendungen](sql-database-managed-instance-migrate.md#monitor-applications)
+- [Bewerten der Kompatibilität der verwalteten Instanz](#assess-managed-instance-compatibility)
+- [Wählen einer App-Konnektivitätsoption](sql-database-managed-instance-connect-app.md)
+- [Bereitstellen für eine verwaltete Instanz mit optimaler Größe](#deploy-to-an-optimally-sized-managed-instance)
+- [Auswählen der Migrationsmethode und Migration](#select-migration-method-and-migrate)
+- [Überwachen von Anwendungen](#monitor-applications)
 
 > [!NOTE]
 > Informationen zum Migrieren einer einzelnen Datenbank zu einer einzelnen Datenbank oder eines Pools für elastische Datenbanken finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud](sql-database-cloud-migrate.md).
@@ -39,9 +40,9 @@ Die Datenbankmigration sieht im Allgemeinen folgendermaßen aus:
 
 Stellen Sie zunächst fest, ob die verwaltete Instanz mit den Datenbankanforderungen Ihrer Anwendung kompatibel ist. Verwaltete Instanzen wurden konzipiert, um eine einfache Migration per Lift & Shift für die meisten bestehenden Anwendungen zu ermöglichen, die SQL Server lokal oder auf virtuellen Computern verwenden. Es kann jedoch vorkommen, dass Sie Features oder Funktionen benötigen, die noch nicht unterstützt werden und die Kosten für die Implementierung eines Workarounds zu hoch sind. 
 
-Verwenden Sie den [Datenmigrations-Assistenten (DMA)](https://docs.microsoft.com/sql/dma/dma-overview), um mögliche Kompatibilitätsprobleme zu erkennen, die die Datenbankfunktionalität der Azure SQL-Datenbank beeinträchtigen. Der DMA unterstützt noch keine verwalteten Instanzen als Migrationsziel, aber es wird empfohlen, die Bewertung der Azure SQL-Datenbank durchzuführen und die Liste der gemeldeten Funktionsparitäten und Kompatibilitätsprobleme anhand der Produktdokumentation sorgfältig zu überprüfen. In den [Unterschieden zwischen einem Azure SQL-Datenbank-Singleton und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-features.md) können Sie überprüfen, ob gemeldete Blockierungsprobleme vorliegen, die keine Blockierungen in einer verwalteten Instanz sind, da die meisten Blockierungsprobleme, die eine Migration zu Azure SQL-Datenbank verhindern, mit der verwalteten Instanz beseitigt wurden. Beispielsweise stehen Features wie datenbankübergreifende Abfragen, datenbankübergreifende Transaktionen innerhalb derselben Instanz, verknüpfte Server mit anderen SQL-Quellen, CLR, globale temporäre Tabellen, Ansichten auf Instanzebene, Service Broker und ähnliches in verwalteten Instanzen zur Verfügung. 
+Verwenden Sie den [Datenmigrations-Assistenten (DMA)](https://docs.microsoft.com/sql/dma/dma-overview), um mögliche Kompatibilitätsprobleme zu erkennen, die die Datenbankfunktionalität der Azure SQL-Datenbank beeinträchtigen. Der DMA unterstützt noch keine verwalteten Instanzen als Migrationsziel, aber es wird empfohlen, die Bewertung der Azure SQL-Datenbank durchzuführen und die Liste der gemeldeten Funktionsparitäten und Kompatibilitätsprobleme anhand der Produktdokumentation sorgfältig zu überprüfen. Unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md) können Sie überprüfen, ob gemeldete Blockierungsprobleme vorliegen, die keine Blockierungen in einer verwalteten Instanz sind, da die meisten Blockierungsprobleme, die eine Migration zu Azure SQL-Datenbank verhindern, mit der verwalteten Instanz beseitigt wurden. Beispielsweise stehen Features wie datenbankübergreifende Abfragen, datenbankübergreifende Transaktionen innerhalb derselben Instanz, verknüpfte Server mit anderen SQL-Quellen, CLR, globale temporäre Tabellen, Ansichten auf Instanzebene, Service Broker und ähnliches in verwalteten Instanzen zur Verfügung. 
 
-Wenn gemeldete Blockierungsprobleme vorliegen, die in einer verwalteten Azure SQL-Instanz nicht behoben werden, müssen Sie möglicherweise eine andere Möglichkeit in Betracht ziehen, z.B. [SQL Server auf virtuellen Computern](https://azure.microsoft.com/services/virtual-machines/sql-server/). Hier einige Beispiele:
+Wenn gemeldete Blockierungsprobleme vorliegen, die in einer verwalteten Azure SQL-Datenbank-Instanz nicht behoben werden, müssen Sie möglicherweise eine andere Möglichkeit in Betracht ziehen, z. B. [SQL Server auf virtuellen Computern in Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Hier einige Beispiele:
 
 - Wenn Sie direkten Zugriff auf das Betriebssystem oder das Dateisystem benötigen, z.B. um Drittanbieteragents oder benutzerdefinierte Agents auf demselben virtuellen SQL Server-Computer zu installieren.
 - Wenn Sie unbedingt von Features abhängig sind, die noch nicht unterstützt werden, wie z.B. FileStream / FileTable, PolyBase und instanzübergreifende Transaktionen.
@@ -81,7 +82,7 @@ Verwaltete Instanzen unterstützen die folgenden Datenbankmigrationsoptionen (de
 
 Der [Azure Database Migration Service (DMS)](../dms/dms-overview.md) ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimaler Downtime ermöglicht. Dieser Dienst optimiert die Aufgaben, die erforderlich sind, um bestehende Drittanbieter- und SQL Server-Datenbanken nach Azure zu verschieben. Zu den Bereitstellungsoptionen bei der öffentlichen Vorschau gehören Azure SQL-Datenbank, Managed Instance und SQL Server in einem virtuellen Azure-Computer. DMS ist die empfohlene Migrationsmethode für Ihre Unternehmensworkloads. 
 
-Wenn Sie SQL Server Integration Services (SSIS) auf SQL Server lokal verwenden, unterstützt DMS noch nicht die Migration des SSIS-Katalogs (SSISDB), in dem SSIS-Pakete gespeichert werden. Sie können jedoch die Azure SSIS Integration Runtime (IR) in Azure Data Factory (ADF) bereitstellen, mit der eine neue SSISDB in Azure SQL-Datenbank bzw. einer verwalteten Instanz erstellt wird. Anschließend können Sie dort das Paket erneut bereitstellen. Siehe dazu [Erstellen der Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+Wenn Sie SQL Server Integration Services (SSIS) auf SQL Server lokal verwenden, unterstützt DMS noch nicht die Migration des SSIS-Katalogs (SSISDB), in dem SSIS-Pakete gespeichert werden. Sie können jedoch die Azure SSIS Integration Runtime (IR) in Azure Data Factory (ADF) bereitstellen, mit der eine neue SSISDB in Azure SQL-Datenbank bzw. einer verwalteten Instanz erstellt wird. Anschließend können Sie dort das Paket erneut bereitstellen. Siehe dazu [Erstellen der Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Weitere Informationen zu diesem Szenario und zu Konfigurationsschritten für DMS finden Sie unter [Migrate your on-premises database to Managed Instance using DMS](../dms/tutorial-sql-server-to-managed-instance.md) (Migrieren Ihrer lokalen Datenbank zu einer verwalteten Instanz mit DMS).  
 
@@ -100,13 +101,15 @@ In der folgenden Tabelle finden Sie weitere Informationen über die Methoden, di
 |Sicherung auf Azure Storage legen|Vor SQL 2012 SP1 CU2|Direkter Upload der .bak-Datei in Azure Storage|
 ||2012 SP1 CU2 – 2016|Direkte Sicherung mit veralteter [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)-Syntax|
 ||Ab 2016|Direkte Sicherung mit [WITH SAS CREDENTIAL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
-|Aus Azure Storage in verwalteter Instanz wiederherstellen|[RESTORE FROM URL mit SAS CREDENTIAL](sql-database-managed-instance-restore-from-backup-tutorial.md)|
+|Aus Azure Storage in verwalteter Instanz wiederherstellen|[RESTORE FROM URL mit SAS CREDENTIAL](sql-database-managed-instance-get-started-restore.md)|
 
 > [!IMPORTANT]
-> - Beim Migrieren einer Datenbank, die durch [Transparent Data Encryption](transparent-data-encryption-azure-sql.md) geschützt ist, zu einer verwalteten Azure SQL-Instanz mithilfe der nativen Wiederherstellungsoption muss das entsprechende Zertifikat aus dem lokalen oder IaaS-SQL-Server vor der Wiederherstellung der Datenbank migriert werden. Eine ausführliche Schrittbeschreibung finden Sie unter [Migrieren von TDE zur verwalteten Instanz](sql-database-managed-instance-migrate-tde-certificate.md).
+> - Beim Migrieren einer durch die [Transparente Datenverschlüsselung (TDE)](transparent-data-encryption-azure-sql.md) geschützten Datenbank zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe der nativen Wiederherstellungsoption muss das entsprechende Zertifikat aus dem lokalen oder IaaS-SQL-Server vor der Wiederherstellung der Datenbank migriert werden. Eine ausführliche Schrittbeschreibung finden Sie unter [Migrieren von TDE zur verwalteten Instanz](sql-database-managed-instance-migrate-tde-certificate.md).
 > - Das Wiederherstellen von Systemdatenbanken wird nicht unterstützt. Um Objekte auf Instanzebene (gespeichert in Master- oder msdb-Datenbanken) zu migrieren, wird empfohlen, diese zu skripten und T-SQL-Skripts auf der Zielinstanz auszuführen.
 
-Ein vollständiges Tutorial über das Wiederherstellen einer Datenbanksicherung auf einer verwalteten Instanz mithilfe von SAS-Anmeldeinformationen finden Sie unter [Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-restore-from-backup-tutorial.md).
+Eine Schnellstartanleitung, die zeigt, wie Sie eine Datenbanksicherung mithilfe von SAS-Anmeldeinformationen in einer verwalteten Instanz wiederherstellen, finden Sie unter [Wiederherstellen einer Datenbanksicherung in einer verwalteten Instanz](sql-database-managed-instance-get-started-restore.md).
+
+> [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 ## <a name="monitor-applications"></a>Überwachen von Anwendungen
 

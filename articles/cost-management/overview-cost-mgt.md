@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/12/2018
+ms.date: 09/21/2018
 ms.topic: overview
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 10fef55ef09e4be427fbd36c730528a993dd64e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 470802c1119c1c367dcd72f782dfc1036f75f6db
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960860"
+ms.locfileid: "47035945"
 ---
 # <a name="what-is-azure-cost-management"></a>Was ist Azure-Kostenverwaltung?
 
@@ -23,7 +23,7 @@ Die Kostenverwaltung ist der Prozess, bei dem Sie die Kosten Ihrer Geschäftstä
 
 Die Abrechnung steht zwar in enger Beziehung zur Kostenverwaltung, ist jedoch nicht identisch mit dieser. Bei der Abrechnung werden Kunden Waren oder Dienstleistungen in Rechnungen gestellt, zudem werden Geschäftsbeziehungen verwaltet.  Für Abrechnungsaufgaben sind in der Regel die Beschaffungs- und Finanzteams zuständig.
 
-Cost Management zeigt die Kosten und Verwendungsmuster der Organisation mit erweiterten Analysen. Berichte in Cost Management zeigen Azure-Kosten und -Nutzung, reservierte Instanzen sowie Nutzung des Azure-Hybridvorteils. Die Berichte liefern eine Übersicht Ihrer internen und externen Kosten. Anhand der Berichte verstehen Sie Ihre Ausgaben und Ihre Ressourcennutzung, und Sie können außergewöhnliche Ausgaben ermitteln. Vorhersageanalysen sind ebenfalls verfügbar. Cost Management zeigt anhand von Azure-Verwaltungsgruppen, Budgets und Empfehlungen deutlich die Struktur Ihrer Ausgaben sowie Möglichkeiten der Kostensenkung auf.
+Cost Management zeigt die Kosten und Verwendungsmuster der Organisation mit erweiterten Analysen. Berichte in Cost Management zeigen Azure-Kosten und -Nutzung, reservierte Instanzen sowie Nutzung des Azure-Hybridvorteils. Die Berichte liefern eine Übersicht Ihrer internen und externen Kosten für die Nutzung sowie Azure Marketplace-Gebühren. Andere Gebühren wie Reservierungskäufe, Support und Steuern werden in den Berichten noch nicht ausgewiesen. Anhand der Berichte verstehen Sie Ihre Ausgaben und Ihre Ressourcennutzung, und Sie können außergewöhnliche Ausgaben ermitteln. Vorhersageanalysen sind ebenfalls verfügbar. Cost Management zeigt anhand von Azure-Verwaltungsgruppen, Budgets und Empfehlungen deutlich die Struktur Ihrer Ausgaben sowie Möglichkeiten der Kostensenkung auf.
 
 Über das Azure-Portal oder mithilfe diverser APIs können Sie Exportvorgänge automatisieren, um Kostendaten in externe Systeme und Prozesse zu integrieren. Automatisierter Abrechnungsdatenexport und geplante Berichte sind ebenfalls verfügbar.
 

@@ -2,19 +2,22 @@
 title: Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells in Azure SQL-Datenbank – Einzeldatenbank | Microsoft-Dokumentation
 description: Diese Seite beschreibt einige allgemeine Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: single-database
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/05/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: c1ea223bf00dea32fb150cf141be7b5ea3239215
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 5f0e5de7503d06d1aff319434d763d3b034053b3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055419"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166361"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
 
@@ -26,14 +29,14 @@ Informationen zu Einschränkungen bei DTU-basierten Einkaufsmodellen finden Sie 
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
 
-## <a name="single-database-storage-sizes-and-performance-levels"></a>Einzeldatenbank: Speichergrößen und Leistungsstufen
+## <a name="single-database-storage-sizes-and-compute-sizes"></a>Einzeldatenbank: Speicher- und Computegrößen
 
-Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken auf jeder Dienstebene und Leistungsstufe. Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases) oder [REST-API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) Dienstebene, Leistungsstufe und Speichermenge für eine einzelne Datenbank festlegen.
+Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken für alle Diensttarife und Computegrößen. Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases) oder [REST-API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) Diensttarif, Computegröße und Speichermenge für eine einzelne Datenbank festlegen.
 
 ### <a name="general-purpose-service-tier"></a>Universelle Dienstebene
 
 #### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
-|Leistungsstufe|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
+|Computegröße|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|1|2|4|8|16|24|
@@ -55,7 +58,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |||
 
 #### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
-|Leistungsstufe|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
+|Computegröße|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|2|4|8|16|24|32|40|80|
@@ -79,12 +82,12 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 ### <a name="business-critical-service-tier"></a>Diensttarif „Unternehmenskritisch“
 
 #### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
-|Leistungsstufe|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|Computegröße|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|1|2|4|8|16|24|
 |Arbeitsspeicher (GB)|7|14|28|56|112|168|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|N/V|N/V|N/V|N/V|N/V|N/V|
 |In-Memory-OLTP-Speicher (GB)|1|2|4|8|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
@@ -101,7 +104,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |||
 
 #### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
-|Leistungsstufe|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Computegröße|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
 |V-Kerne|2|4|8|16|24|32|40|80|
@@ -122,8 +125,52 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
+### <a name="hyperscale-service-tier-preview"></a>Diensttarif „Hyperscale“ (Vorschau)
+
+#### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+|Leistungsstufe|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |--: |
+|Hardwaregeneration|4|4|4|4|4|4|
+|V-Kerne|1|2|4|8|16|24|
+|Arbeitsspeicher (GB)|7|14|28|56|112|168|
+|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
+|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|
+|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |
+|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |
+|tempdb-Größe (GB)|32|64|128|256|384|384|
+|Ziel-IOPS (64 KB)|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|
+|E/A-Wartezeit (ungefähr)|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|
+|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|4800|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
+|Anzahl von Replikaten|2|2|2|2|2|2|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|
+|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|JA|
+|Enthaltener Sicherungsspeicher|7|7|7|7|7|7|
+|||
+### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+|Leistungsstufe|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
+|Hardwaregeneration|5|5|5|5|5|5|5|5|
+|V-Kerne|2|4|8|16|24|32|40|80|
+|Arbeitsspeicher (GB)|11|22|44|88|132|176|220|440|
+|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|Ja|JA|
+|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
+|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
+|tempdb-Größe (GB)|64|128|256|384|384|384|384|384|
+|Ziel-IOPS (64 KB)|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|
+|E/A-Wartezeit (ungefähr)|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|
+|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8.000|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
+|Anzahl von Replikaten|2|2|2|2|2|2|2|2|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|Ja|Ja|JA|
+|Enthaltener Sicherungsspeicher (Grenzwert der Vorschau)|7|7|7|7|7|7|7|7|
+|||
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Antworten auf häufig gestellte Fragen finden Sie unter [SQL-Datenbank – Häufig gestellte Fragen](sql-database-faq.md).
-- Informationen zu Grenzwerten auf dem Server und Abonnementebenen finden Sie unter [Übersicht zu Ressourcenlimits für Azure SQL-Datenbank](sql-database-resource-limits.md).
 - Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).

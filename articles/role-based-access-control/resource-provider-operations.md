@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/19/2018
+ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 86a2fba7730a653a254a2fd996f9e45ed322fbe3
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: ee2a72a65902347a2e58f79d0f621c9d08178104
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144639"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410305"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
@@ -34,7 +34,10 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktionstyp | Vorgang | Beschreibung |
 > | --- | --- | --- |
 > | Aktion | Microsoft.AAD/domainServices/delete | Löscht Domänendienste. |
-> | Aktion | Microsoft.AAD/domainServices/read | Liest Domänendienste. |
+> | Aktion | Microsoft.AAD/domainServices/oucontainer/delete | Dient zum Löschen des Ou-Containers. |
+> | Aktion | Microsoft.AAD/domainServices/oucontainer/read | Dient zum Lesen des Ou-Containers. |
+> | Aktion | Microsoft.AAD/domainServices/oucontainer/write | Dient zum Schreiben in den Ou-Container. |
+> | Aktion | Microsoft.AAD/domainServices/read | Dient zum Lesen der Domänendienste. |
 > | Aktion | Microsoft.AAD/domainServices/write | Schreibt Domänendienste. |
 > | Aktion | Microsoft.AAD/locations/operationresults/read |  |
 > | Aktion | Microsoft.AAD/Operations/read |  |
@@ -472,10 +475,10 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Automation/automationAccounts/listKeys/action | Liest die Schlüssel für das Automation-Konto. |
 > | Aktion | Microsoft.Automation/automationAccounts/logDefinitions/read | Ruft die verfügbaren Protokolle für das Automation-Konto ab. |
 > | Aktion | Microsoft.Automation/automationAccounts/modules/activities/read | Ruft Azure Automation-Aktivitäten ab. |
-> | Aktion | Microsoft.Automation/automationAccounts/modules/delete | Löscht ein Azure Automation-Modul. |
-> | Aktion | Microsoft.Automation/automationAccounts/modules/getCount/action | Ruft die Anzahl der Module innerhalb des Automation-Kontos ab. |
-> | Aktion | Microsoft.Automation/automationAccounts/modules/read | Ruft ein Azure Automation-Modul ab. |
-> | Aktion | Microsoft.Automation/automationAccounts/modules/write | Erstellt oder aktualisiert ein Azure Automation-Modul. |
+> | Aktion | Microsoft.Automation/automationAccounts/modules/delete | Löscht ein Powershell-Modul in Azure Automation. |
+> | Aktion | Microsoft.Automation/automationAccounts/modules/getCount/action | Ruft die Anzahl der Powershell-Module innerhalb des Automation-Kontos ab. |
+> | Aktion | Microsoft.Automation/automationAccounts/modules/read | Ruft ein Powershell-Modul in Azure Automation ab. |
+> | Aktion | Microsoft.Automation/automationAccounts/modules/write | Erstellt oder aktualisiert ein Powershell-Modul in Azure Automation. |
 > | Aktion | Microsoft.Automation/automationAccounts/nodeConfigurations/delete | Löscht die Knotenkonfiguration einer Azure Automation DSC-Instanz. |
 > | Aktion | Microsoft.Automation/automationAccounts/nodeConfigurations/rawContent/action | Liest den Inhalt der Knotenkonfiguration einer Azure Automation DSC-Instanz. |
 > | Aktion | Microsoft.Automation/automationAccounts/nodeConfigurations/read | Liest die Knotenkonfiguration einer Azure Automation DSC-Instanz. |
@@ -488,6 +491,12 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Automation/automationAccounts/nodes/write | Erstellt oder aktualisiert Azure Automation DSC-Knoten. |
 > | Aktion | Microsoft.Automation/automationAccounts/objectDataTypes/fields/read | Ruft TypeFields-Elemente für Azure Automation ab. |
 > | Aktion | Microsoft.Automation/automationAccounts/providers/Microsoft.Insights/metricDefinitions/read | Ruft Automation-Metrikdefinitionen ab. |
+> | Aktion | Microsoft.Automation/automationAccounts/python2Packages/delete | Löscht ein Azure Automation Python 2-Paket. |
+> | Aktion | Microsoft.Automation/automationAccounts/python2Packages/read | Ruft ein Azure Automation Python 2-Paket ab. |
+> | Aktion | Microsoft.Automation/automationAccounts/python2Packages/write | Erstellt oder aktualisiert ein Azure Automation Python 2-Paket. |
+> | Aktion | Microsoft.Automation/automationAccounts/python3Packages/delete | Löscht ein Azure Automation Python 3-Paket. |
+> | Aktion | Microsoft.Automation/automationAccounts/python3Packages/read | Ruft ein Azure Automation Python 3-Paket ab. |
+> | Aktion | Microsoft.Automation/automationAccounts/python3Packages/write | Erstellt oder aktualisiert ein Azure Automation Python 3-Paket. |
 > | Aktion | Microsoft.Automation/automationAccounts/read | Ruft ein Azure Automation-Konto ab. |
 > | Aktion | Microsoft.Automation/automationAccounts/runbooks/content/read | Ruft den Inhalt eines Azure Automation-Runbooks ab. |
 > | Aktion | Microsoft.Automation/automationAccounts/runbooks/delete | Löscht ein Azure Automation-Runbook. |
@@ -699,7 +708,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Cache/redis/patchSchedules/read | Ruft den Patchzeitplan einer Redis Cache-Instanz ab. |
 > | Aktion | Microsoft.Cache/redis/patchSchedules/write | Dient zum Ändern des Patchzeitplans einer Redis Cache-Instanz. |
 > | Aktion | Microsoft.Cache/redis/read | Dient zum Anzeigen der Redis Cache-Einstellungen und -Konfiguration im Verwaltungsportal. |
+> | Aktion | Microsoft.Cache/redis/recommendations/read | Dient zum Lesen der Empfehlungen für Azure Redis Cache. |
 > | Aktion | Microsoft.Cache/redis/regenerateKey/action | Dient zum Ändern des Werts von Redis Cache-Zugriffsschlüsseln im Verwaltungsportal. |
+> | Aktion | Microsoft.Cache/redis/start/action | Dient zum Starten einer Cache-Instanz. |
 > | Aktion | Microsoft.Cache/redis/start/action | Dient zum Starten einer Cache-Instanz. |
 > | Aktion | Microsoft.Cache/redis/stop/action | Dient zum Beenden einer Cache-Instanz. |
 > | Aktion | Microsoft.Cache/redis/write | Dient zum Ändern der Redis Cache-Einstellungen und -Konfiguration im Verwaltungsportal. |
@@ -825,8 +836,12 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.ClassicCompute/domainNames/capabilities/read | Zeigt die Domänennamenfunktionen an. |
 > | Aktion | Microsoft.ClassicCompute/domainNames/delete | Dient zum Entfernen der Domänennamen für Ressourcen. |
 > | Aktion | Microsoft.ClassicCompute/domainNames/deploymentslots/read | Zeigt die Bereitstellungsslots an. |
+> | Aktion | Microsoft.ClassicCompute/domainNames/deploymentslots/roles/read | Dient zum Abrufen der Rolle auf dem Bereitstellungsslot des Domänennamens. |
+> | Aktion | Microsoft.ClassicCompute/domainNames/deploymentslots/roles/roleinstances/read | Dient zum Abrufen der Rolleninstanz der Rolle auf dem Bereitstellungsslot des Domänennamens. |
 > | Aktion | Microsoft.ClassicCompute/domainNames/deploymentslots/state/read | Ruft den Zustand des Bereitstellungsslots ab. |
 > | Aktion | Microsoft.ClassicCompute/domainNames/deploymentslots/state/write | Fügt den Zustand des Bereitstellungsslots hinzu. |
+> | Aktion | Microsoft.ClassicCompute/domainNames/deploymentslots/upgradedomain/read | Dient zum Abrufen der Upgradedomäne für den Bereitstellungsslot auf dem Domänennamen. |
+> | Aktion | Microsoft.ClassicCompute/domainNames/deploymentslots/upgradedomain/write | Dient zum Aktualisieren der Upgradedomäne für den Bereitstellungsslot auf dem Domänennamen. |
 > | Aktion | Microsoft.ClassicCompute/domainNames/deploymentslots/write | Erstellt oder aktualisiert die Bereitstellung. |
 > | Aktion | Microsoft.ClassicCompute/domainNames/extensions/delete | Dient zum Entfernen der Domänennamenerweiterungen. |
 > | Aktion | Microsoft.ClassicCompute/domainNames/extensions/operationStatuses/read | Liest den Vorgangsstatus für die Domänennamenerweiterungen. |
@@ -1105,6 +1120,8 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Compute/images/write | Erstellt ein neues Image oder aktualisiert ein bereits vorhandenes. |
 > | Aktion | Microsoft.Compute/locations/capsOperations/read | Ruft den Status eines asynchronen Vorgangs zum Abrufen von Obergrenzen ab. |
 > | Aktion | Microsoft.Compute/locations/diskOperations/read | Ruft den Status eines asynchronen Vorgangs zum Abrufen von Datenträgern ab. |
+> | Aktion | Microsoft.Compute/locations/logAnalytics/getRequestRateByInterval/action | Dient zum Erstellen von Protokollen, die die gesamten Anforderungen nach Zeitintervall anzeigen, um bei der Drosselungsdiagnose zu helfen. |
+> | Aktion | Microsoft.Compute/locations/logAnalytics/getThrottledRequests/action | Dient zum Erstellen von Protokollen, die Aggregate von gedrosselten Anforderungen, nach Ressourcenname, OperationName oder der angewendeten Drosselungsrichtlinie gruppiert, anzeigen. |
 > | Aktion | Microsoft.Compute/locations/operations/read | Ruft den Status eines asynchronen Vorgangs ab. |
 > | Aktion | Microsoft.Compute/locations/publishers/artifacttypes/offers/read | Ruft die Eigenschaften eines Plattformimageangebots ab. |
 > | Aktion | Microsoft.Compute/locations/publishers/artifacttypes/offers/skus/read | Ruft die Eigenschaften einer Plattformimage-SKU ab. |
@@ -1173,6 +1190,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Compute/virtualMachineScaleSets/osUpgradeHistory/read | Ruft den Verlauf von Betriebssystemupgrades für eine VM-Skalierungsgruppe ab. |
 > | Aktion | Microsoft.Compute/virtualMachineScaleSets/performMaintenance/action | Führt ungeplante Wartungsaufgaben für die Instanzen der VM-Skalierungsgruppe durch. |
 > | Aktion | Microsoft.Compute/virtualMachineScaleSets/powerOff/action | Schaltet die Instanzen der VM-Skalierungsgruppe aus. |
+> | Aktion | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/diagnosticSettings/read | Hiermit wird die Diagnoseeinstellung für die VM-Skalierungsgruppe abgerufen. |
+> | Aktion | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/diagnosticSettings/write | Hiermit wird die Diagnoseeinstellung für die VM-Skalierungsgruppe erstellt oder aktualisiert. |
+> | Aktion | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/logDefinitions/read | Hiermit werden die verfügbaren Protokolle für VM-Skalierungsgruppen abgerufen. |
 > | Aktion | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/metricDefinitions/read | Hiermit werden Metrikdefinitionen für VM-Skalierungsgruppen gelesen. |
 > | Aktion | Microsoft.Compute/virtualMachineScaleSets/publicIPAddresses/read | Ruft die Eigenschaften aller öffentlichen IP-Adressen einer VM-Skalierungsgruppe ab. |
 > | Aktion | Microsoft.Compute/virtualMachineScaleSets/read | Dient zum Abrufen der Eigenschaften einer VM-Skalierungsgruppe. |
@@ -1338,6 +1358,17 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.ContentModerator/operations/read | Dient zum Lesen von Vorgängen. |
 > | Aktion | Microsoft.ContentModerator/updateCommunicationPreference/action | Dient zum Aktualisieren der Kommunikationseinstellungen. |
 
+## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
+
+> [!div class="mx-tdCol2BreakAll"]
+> | Aktionstyp | Vorgang | Beschreibung |
+> | --- | --- | --- |
+> | Aktion | Microsoft.CostManagement/dimensions/read | Dient zum Auflisten aller unterstützten Dimensionen nach Bereich. |
+> | Aktion | Microsoft.CostManagement/query/action | Dient zum Abfragen von Nutzungsdaten nach Bereich. |
+> | Aktion | Microsoft.CostManagement/query/read | Dient zum Abfragen von Nutzungsdaten nach Bereich. |
+> | Aktion | Microsoft.CostManagement/reports/action | Dient zum Planen von Berichten zu Nutzungsdaten nach Bereich. |
+> | Aktion | Microsoft.CostManagement/reports/read | Dient zum Planen von Berichten zu Nutzungsdaten nach Bereich. |
+
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -1450,15 +1481,60 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | --- | --- | --- |
 > | Aktion | Microsoft.DataBox/jobs/bookShipmentPickUp/action | Hiermit kann eine Abholung für Rücklieferungen gebucht werden. |
 > | Aktion | Microsoft.DataBox/jobs/cancel/action | Hiermit wird ein laufender Auftrag storniert. |
-> | Aktion | Microsoft.DataBox/jobs/copyLogsUri/action | Hiermit wird die URL für die Kopierprotokolle für jedes Zielkonto abgerufen. |
 > | Aktion | Microsoft.DataBox/jobs/delete | Hiermit werden die Aufträge gelöscht. |
-> | Aktion | Microsoft.DataBox/jobs/downloadShippingLabel/action | Hiermit wird das Adressetikett für die Rücklieferung abgerufen. |
-> | Aktion | Microsoft.DataBox/jobs/listSecrets/action | Hiermit werden die unverschlüsselten Geheimnisse für den Auftrag aufgelistet. |
+> | Aktion | Microsoft.DataBox/jobs/listCredentials/action | Hiermit werden die unverschlüsselten Anmeldeinformationen für den Auftrag aufgelistet. |
 > | Aktion | Microsoft.DataBox/jobs/read | Hiermit werden die Aufträge aufgelistet oder abgerufen. |
-> | Aktion | Microsoft.DataBox/jobs/reportIssue/action | Hiermit wird ein Problem mit dem Auftrag gemeldet. |
 > | Aktion | Microsoft.DataBox/jobs/write | Dient zum Erstellen oder Aktualisieren der Aufträge. |
 > | Aktion | Microsoft.DataBox/locations/availableSkus/action | Mit dieser Methode wird die Liste der verfügbaren SKUs zurückgegeben. |
 > | Aktion | Microsoft.DataBox/locations/validateAddress/action | Hiermit wird die Lieferadresse überprüft, und es werden – sofern vorhanden – alternative Adressen bereitgestellt. |
+
+## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
+
+> [!div class="mx-tdCol2BreakAll"]
+> | Aktionstyp | Vorgang | Beschreibung |
+> | --- | --- | --- |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/alerts/read | Listet die Warnungen auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/alerts/read | Listet die Warnungen auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/delete | Löscht die Bandbreitenzeitpläne. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/read | Listet die Bandbreitenzeitpläne auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/read | Listet die Bandbreitenzeitpläne auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/write | Hiermit werden die Bandbreitenzeitpläne erstellt oder aktualisiert. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/delete | Löscht die Data Box Edge-Geräte. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/downloadUpdates/action | Dient zum Herunterladen von Updates auf Geräte. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/extendedInformation/action | Ruft die erweiterten Informationen der Ressource ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/extendedInformation/write | Erstellt oder aktualisiert die erweiterten Informationen der Ressource. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/installUpdates/action | Dient zum Installieren von Updates auf einem Gerät. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/jobs/read | Listet die Aufträge auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/networkSettings/read | Listet die Netzwerkeinstellungen des Geräts auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Data Box Edge-Metriken auf Geräteebene ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Listet die Data Box Edge-Geräte auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Listet die Data Box Edge-Geräte auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Listet die Data Box Edge-Geräte auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | Löscht die ArmApiRes_roles. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Listet die ArmApiRes_roles auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Listet die ArmApiRes_roles auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | Erstellt oder aktualisiert die ArmApiRes_roles. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/scanForUpdates/action | Dient zum Suchen nach Updates. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/securitySettings/update/action | Dient zum Aktualisieren der Sicherheitseinstellungen. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/delete | Löscht die Freigaben. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/read | Listet die Freigaben auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/read | Listet die Freigaben auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/refresh/action | ArmApiDesc_action_refresh_shares |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/write | Erstellt oder aktualisiert die Freigaben. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/delete | Löscht die Speicherkonto-Anmeldedaten. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Listet die Speicherkonto-Anmeldedaten auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Listet die Speicherkonto-Anmeldedaten auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/write | Erstellt oder aktualisiert die Speicherkonto-Anmeldedaten. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/updateSummary/read | Listet die Updatezusammenfassung auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/action | Dient zum Hochladen des Zertifikats für die Geräteregistrierung. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/delete | Löscht die Benutzer der Freigabe. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/read | Listet die Benutzer der Freigabe auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/read | Listet die Benutzer der Freigabe auf oder ruft sie ab. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/write | Erstellt oder aktualisiert die Benutzer der Freigabe. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/write | Erstellt oder aktualisiert die Data Box Edge-Geräte. |
+> | Aktion | Microsoft.DataBoxEdge/dataBoxEdgeDevices/write | Erstellt oder aktualisiert die Data Box Edge-Geräte. |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
@@ -1674,6 +1750,30 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.DataMigration/services/write | Hiermit erstellen oder aktualisieren Sie Ressourcen und ihre Eigenschaften. |
 > | Aktion | Microsoft.DataMigration/skus/read | Hiermit rufen Sie eine Liste der von den DMS-Ressourcen unterstützten SKUs ab. |
 
+## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
+
+> [!div class="mx-tdCol2BreakAll"]
+> | Aktionstyp | Vorgang | Beschreibung |
+> | --- | --- | --- |
+> | Aktion | Microsoft.DBforMariaDB/locations/performanceTiers/read | Gibt die Liste der verfügbaren Leistungsstufen zurück. |
+> | Aktion | Microsoft.DBforMariaDB/performanceTiers/read | Gibt die Liste der verfügbaren Leistungsstufen zurück. |
+> | Aktion | Microsoft.DBforMariaDB/servers/configurations/read | Gibt die Liste mit den Konfigurationen für einen Server zurück oder ruft die Eigenschaften für die angegebene Konfiguration ab. |
+> | Aktion | Microsoft.DBforMariaDB/servers/configurations/write | Aktualisiert den Wert für die angegebene Konfiguration. |
+> | Aktion | Microsoft.DBforMariaDB/servers/delete | Löscht einen vorhandenen Server. |
+> | Aktion | Microsoft.DBforMariaDB/servers/firewallRules/delete | Löscht eine vorhandene Firewallregel. |
+> | Aktion | Microsoft.DBforMariaDB/servers/firewallRules/read | Gibt die Liste der Firewallregeln für einen Server zurück oder ruft die Eigenschaften für die angegebene Firewallregel ab. |
+> | Aktion | Microsoft.DBforMariaDB/servers/firewallRules/write | Erstellt eine Firewallregel mit den angegebenen Parametern oder aktualisiert eine vorhandene Regel. |
+> | Aktion | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
+> | Aktion | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
+> | Aktion | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/metricDefinitions/read | Dient zum Zurückgeben verfügbarer Metriktypen für Datenbanken. |
+> | Aktion | Microsoft.DBforMariaDB/servers/read | Gibt die Liste der Server zurück oder ruft die Eigenschaften für den angegebenen Server ab. |
+> | Aktion | Microsoft.DBforMariaDB/servers/recoverableServers/read | Gibt die wiederherstellbaren MariaDB Server-Informationen zurück. |
+> | Aktion | Microsoft.DBforMariaDB/servers/updateConfigurations/action | Aktualisiert Konfigurationen für den angegebenen Server. |
+> | Aktion | Microsoft.DBforMariaDB/servers/virtualNetworkRules/delete | Löscht eine vorhandene Regel für virtuelle Netzwerke. |
+> | Aktion | Microsoft.DBforMariaDB/servers/virtualNetworkRules/read | Gibt die Liste der Regeln für virtuelle Netzwerke zurück oder ruft die Eigenschaften für die angegebene Regel für virtuelle Netzwerke ab. |
+> | Aktion | Microsoft.DBforMariaDB/servers/virtualNetworkRules/write | Erstellt eine Regel für virtuelle Netzwerke mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene Regel für virtuelle Netzwerke. |
+> | Aktion | Microsoft.DBforMariaDB/servers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
+
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -1689,9 +1789,12 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.DBforMySQL/servers/firewallRules/write | Erstellt eine Firewallregel mit den angegebenen Parametern oder aktualisiert eine vorhandene Regel. |
 > | Aktion | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
 > | Aktion | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
+> | Aktion | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/logDefinitions/read | Ruft die verfügbaren Protokolle für MySQL-Server ab. |
 > | Aktion | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/metricDefinitions/read | Dient zum Zurückgeben verfügbarer Metriktypen für Datenbanken. |
 > | Aktion | Microsoft.DBforMySQL/servers/read | Gibt die Liste der Server zurück oder ruft die Eigenschaften für den angegebenen Server ab. |
 > | Aktion | Microsoft.DBforMySQL/servers/recoverableServers/read | Gibt die wiederherstellbaren MySQL Server-Informationen zurück. |
+> | Aktion | Microsoft.DBforMySQL/servers/securityAlertPolicies/read | Dient zum Abrufen von Details zur Richtlinie für die Serverbedrohungserkennung, die für einen bestimmten Server konfiguriert ist. |
+> | Aktion | Microsoft.DBforMySQL/servers/securityAlertPolicies/write | Dient zum Ändern der Richtlinie für die Serverbedrohungserkennung für einen bestimmten Server. |
 > | Aktion | Microsoft.DBforMySQL/servers/updateConfigurations/action | Aktualisiert Konfigurationen für den angegebenen Server. |
 > | Aktion | Microsoft.DBforMySQL/servers/virtualNetworkRules/delete | Löscht eine vorhandene Regel für virtuelle Netzwerke. |
 > | Aktion | Microsoft.DBforMySQL/servers/virtualNetworkRules/read | Gibt die Liste der Regeln für virtuelle Netzwerke zurück oder ruft die Eigenschaften für die angegebene Regel für virtuelle Netzwerke ab. |
@@ -1705,6 +1808,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | --- | --- | --- |
 > | Aktion | Microsoft.DBforPostgreSQL/locations/performanceTiers/read | Gibt die Liste der verfügbaren Leistungsstufen zurück. |
 > | Aktion | Microsoft.DBforPostgreSQL/performanceTiers/read | Gibt die Liste der verfügbaren Leistungsstufen zurück. |
+> | Aktion | Microsoft.DBforPostgreSQL/servers/advisors/read | Gibt die Liste der Ratgeber zurück. |
+> | Aktion | Microsoft.DBforPostgreSQL/servers/advisors/recommendedActions/read | Gibt die Liste der empfohlenen Aktionen zurück. |
+> | Aktion | Microsoft.DBforPostgreSQL/servers/advisors/recommendedActionSessions/action | Dient dazu, Empfehlungen abzugeben. |
 > | Aktion | Microsoft.DBforPostgreSQL/servers/configurations/read | Gibt die Liste mit den Konfigurationen für einen Server zurück oder ruft die Eigenschaften für die angegebene Konfiguration ab. |
 > | Aktion | Microsoft.DBforPostgreSQL/servers/configurations/write | Aktualisiert den Wert für die angegebene Konfiguration. |
 > | Aktion | Microsoft.DBforPostgreSQL/servers/delete | Löscht einen vorhandenen Server. |
@@ -1725,6 +1831,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/delete | Löscht eine vorhandene Regel für virtuelle Netzwerke. |
 > | Aktion | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/read | Gibt die Liste der Regeln für virtuelle Netzwerke zurück oder ruft die Eigenschaften für die angegebene Regel für virtuelle Netzwerke ab. |
 > | Aktion | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/write | Erstellt eine Regel für virtuelle Netzwerke mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene Regel für virtuelle Netzwerke. |
+> | Aktion | Microsoft.DBforPostgreSQL/servers/waitStatistics/read | Gibt Wartestatistiken für eine Instanz zurück. |
 > | Aktion | Microsoft.DBforPostgreSQL/servers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -2113,6 +2220,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > [!div class="mx-tdCol2BreakAll"]
 > | Aktionstyp | Vorgang | Beschreibung |
 > | --- | --- | --- |
+> | Aktion | Microsoft.HDInsight/clusters/applications/delete | Dient zum Löschen der Anwendung für HDInsight-Cluster. |
+> | Aktion | Microsoft.HDInsight/clusters/applications/read | Dient zum Abrufen der Anwendung für HDInsight-Cluster. |
+> | Aktion | Microsoft.HDInsight/clusters/applications/write | Dient zum Erstellen oder Aktualisieren der Anwendung für HDInsight-Cluster. |
 > | Aktion | Microsoft.HDInsight/clusters/changerdpsetting/action | Dient zum Ändern der RDP-Einstellung für HDInsight-Cluster. |
 > | Aktion | Microsoft.HDInsight/clusters/configurations/action | Dient zum Aktualisieren der Konfiguration von HDInsight-Clustern. |
 > | Aktion | Microsoft.HDInsight/clusters/configurations/read | Dient zum Abrufen der Konfigurationen von HDInsight-Clustern. |
@@ -2158,6 +2268,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Insights/AlertRules/Throttled/Action | Klassische Metrikwarnungsregel gedrosselt |
 > | Aktion | Microsoft.Insights/AlertRules/Write | Erstellt oder aktualisiert eine klassische Metrikwarnung. |
 > | Aktion | Microsoft.Insights/AutoscaleSettings/Delete | Löscht eine Einstellung zur automatischen Skalierung. |
+> | Aktion | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/diagnosticSettings/Read | Liest eine Diagnoseeinstellung für eine Ressource. |
+> | Aktion | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/diagnosticSettings/Write | Erstellt oder aktualisiert eine Diagnoseeinstellung für eine Ressource. |
+> | Aktion | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/logDefinitions/Read | Dient zum Lesen von Protokolldefinitionen. |
 > | Aktion | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/MetricDefinitions/Read | Dient zum Lesen von Metrikdefinitionen. |
 > | Aktion | Microsoft.Insights/AutoscaleSettings/Read | Liest eine Einstellung zur automatischen Skalierung. |
 > | Aktion | Microsoft.Insights/AutoscaleSettings/Scaledown/Action | Automatisches zentrales Herunterskalieren ausgelöst |
@@ -2234,6 +2347,152 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Insights/LogProfiles/Delete | Löscht ein Aktivitätsprotokollprofil. |
 > | Aktion | Microsoft.Insights/LogProfiles/Read | Liest ein Aktivitätsprotokollprofil. |
 > | Aktion | Microsoft.Insights/LogProfiles/Write | Erstellt oder aktualisiert ein Aktivitätsprotokollprofil. |
+> | Aktion | Microsoft.Insights/Logs/ADAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der ADAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ADReplicationResult/Read | Hiermit lesen Sie Daten aus der ADReplicationResult-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ADSecurityAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der ADSecurityAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/Alert/Read | Hiermit lesen Sie Daten aus der Alert-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/AlertHistory/Read | Hiermit lesen Sie Daten aus der AlertHistory-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ApplicationInsights/Read | Hiermit lesen Sie Daten aus der ApplicationInsights-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/AzureActivity/Read | Hiermit lesen Sie Daten aus der AzureActivity-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/AzureMetrics/Read | Hiermit lesen Sie Daten aus der AzureMetrics-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/BoundPort/Read | Hiermit lesen Sie Daten aus der BoundPort-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/CommonSecurityLog/Read | Hiermit lesen Sie Daten aus der CommonSecurityLog-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ComputerGroup/Read | Hiermit lesen Sie Daten aus der ComputerGroup-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ConfigurationChange/Read | Hiermit lesen Sie Daten aus der ConfigurationChange-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ConfigurationData/Read | Hiermit lesen Sie Daten aus der ConfigurationData-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ContainerImageInventory/Read | Hiermit lesen Sie Daten aus der ContainerImageInventory-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ContainerInventory/Read | Hiermit lesen Sie Daten aus der ContainerInventory-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ContainerLog/Read | Hiermit lesen Sie Daten aus der ContainerLog-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ContainerServiceLog/Read | Hiermit lesen Sie Daten aus der ContainerServiceLog-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceAppCrash/Read | Hiermit lesen Sie Daten aus der DeviceAppCrash-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceAppLaunch/Read | Hiermit lesen Sie Daten aus der DeviceAppLaunch-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceCalendar/Read | Hiermit lesen Sie Daten aus der DeviceCalendar-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceCleanup/Read | Hiermit lesen Sie Daten aus der DeviceCleanup-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceConnectSession/Read | Hiermit lesen Sie Daten aus der DeviceConnectSession-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceEtw/Read | Hiermit lesen Sie Daten aus der DeviceEtw-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceHardwareHealth/Read | Hiermit lesen Sie Daten aus der DeviceHardwareHealth-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceHealth/Read | Hiermit lesen Sie Daten aus der DeviceHealth-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceHeartbeat/Read | Hiermit lesen Sie Daten aus der DeviceHeartbeat-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceSkypeHeartbeat/Read | Hiermit lesen Sie Daten aus der DeviceSkypeHeartbeat-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceSkypeSignIn/Read | Hiermit lesen Sie Daten aus der DeviceSkypeSignIn-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DeviceSleepState/Read | Hiermit lesen Sie Daten aus der DeviceSleepState-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DHAppFailure/Read | Hiermit lesen Sie Daten aus der DHAppFailure-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DHAppReliability/Read | Hiermit lesen Sie Daten aus der DHAppReliability-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DHDriverReliability/Read | Hiermit lesen Sie Daten aus der DHDriverReliability-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DHLogonFailures/Read | Hiermit lesen Sie Daten aus der DHLogonFailures-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DHLogonMetrics/Read | Hiermit lesen Sie Daten aus der DHLogonMetrics-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DHOSCrashData/Read | Hiermit lesen Sie Daten aus der DHOSCrashData-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DHOSReliability/Read | Hiermit lesen Sie Daten aus der DHOSReliability-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DHWipAppLearning/Read | Hiermit lesen Sie Daten aus der DHWipAppLearning-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DnsEvents/Read | Hiermit lesen Sie Daten aus der DnsEvents-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/DnsInventory/Read | Hiermit lesen Sie Daten aus der DnsInventory-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ETWEvent/Read | Hiermit lesen Sie Daten aus der ETWEvent-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/Event/Read | Hiermit lesen Sie Daten aus der Event-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ExchangeAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der ExchangeAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ExchangeOnlineAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der ExchangeOnlineAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/Heartbeat/Read | Hiermit lesen Sie Daten aus der Heartbeat-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/IISAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der IISAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/InboundConnection/Read | Hiermit lesen Sie Daten aus der InboundConnection-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/KubeNodeInventory/Read | Hiermit lesen Sie Daten aus der KubeNodeInventory-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/KubePodInventory/Read | Hiermit lesen Sie Daten aus der KubePodInventory-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/LinuxAuditLog/Read | Hiermit lesen Sie Daten aus der LinuxAuditLog-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAApplication/Read | Hiermit lesen Sie Daten aus der MAApplication-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAApplicationHealth/Read | Hiermit lesen Sie Daten aus der MAApplicationHealth-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAApplicationHealthAlternativeVersions/Read | Liest Daten aus der Tabelle „MAApplicationHealthAlternativeVersions“. |
+> | Aktion | Microsoft.Insights/Logs/MAApplicationHealthIssues/Read | Liest Daten aus der Tabelle „MAApplicationHealthIssues“. |
+> | Aktion | Microsoft.Insights/Logs/MAApplicationInstance/Read | Hiermit lesen Sie Daten aus der MAApplicationInstance-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAApplicationInstanceReadiness/Read | Liest Daten aus der Tabelle „MAApplicationInstanceReadiness“. |
+> | Aktion | Microsoft.Insights/Logs/MAApplicationReadiness/Read | Hiermit lesen Sie Daten aus der MAApplicationReadiness-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MADeploymentPlan/Read | Hiermit lesen Sie Daten aus der MADeploymentPlan-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MADevice/Read | Hiermit lesen Sie Daten aus der MADevice-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MADevicePnPHealth/Read | Liest Daten aus der Tabelle „MADevicePnPHealth“. |
+> | Aktion | Microsoft.Insights/Logs/MADevicePnPHealthAlternativeVersions/Read | Liest Daten aus der Tabelle „MADevicePnPHealthAlternativeVersions“. |
+> | Aktion | Microsoft.Insights/Logs/MADevicePnPHealthIssues/Read | Liest Daten aus der Tabelle „MADevicePnPHealthIssues“. |
+> | Aktion | Microsoft.Insights/Logs/MADeviceReadiness/Read | Hiermit lesen Sie Daten aus der MADeviceReadiness-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MADriverInstanceReadiness/Read | Liest Daten aus der Tabelle „MADriverInstanceReadiness“. |
+> | Aktion | Microsoft.Insights/Logs/MADriverReadiness/Read | Hiermit lesen Sie Daten aus der MADriverReadiness-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeAddin/Read | Hiermit lesen Sie Daten aus der MAOfficeAddin-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeAddinHealth/Read | Hiermit lesen Sie Daten aus der MAOfficeAddinHealth-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeAddinHealthIssues/Read | Liest Daten aus der Tabelle „MAOfficeAddinHealthIssues“. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeAddinInstance/Read | Hiermit lesen Sie Daten aus der MAOfficeAddinInstance-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeAddinInstanceReadiness/Read | Liest Daten aus der Tabelle „MAOfficeAddinInstanceReadiness“. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeAddinReadiness/Read | Hiermit lesen Sie Daten aus der MAOfficeAddinReadiness-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeApp/Read | Hiermit lesen Sie Daten aus der MAOfficeApp-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeAppHealth/Read | Hiermit lesen Sie Daten aus der MAOfficeAppHealth-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeAppInstance/Read | Hiermit lesen Sie Daten aus der MAOfficeAppInstance-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeAppReadiness/Read | Hiermit lesen Sie Daten aus der MAOfficeAppReadiness-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeBuildInfo/Read | Hiermit lesen Sie Daten aus der MAOfficeBuildInfo-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeCurrencyAssessment/Read | Hiermit lesen Sie Daten aus der MAOfficeCurrencyAssessment-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeCurrencyAssessmentDailyCounts/Read | Hiermit lesen Sie Daten aus der MAOfficeCurrencyAssessmentDailyCounts-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeDeploymentStatus/Read | Hiermit lesen Sie Daten aus der MAOfficeDeploymentStatus-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeMacroHealth/Read | Liest Daten aus der Tabelle „MAOfficeMacroHealth“. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeMacroHealthIssues/Read | Liest Daten aus der Tabelle „MAOfficeMacroHealthIssues“. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeMacroIssueInstanceReadiness/Read | Liest Daten aus der Tabelle „MAOfficeMacroIssueInstanceReadiness“. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeMacroIssueReadiness/Read | Hiermit lesen Sie Daten aus der MAOfficeMacroIssueReadiness-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeMacroSummary/Read | Hiermit lesen Sie Daten aus der MAOfficeMacroSummary-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeSuite/Read | Hiermit lesen Sie Daten aus der MAOfficeSuite-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAOfficeSuiteInstance/Read | Hiermit lesen Sie Daten aus der MAOfficeSuiteInstance-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAProposedPilotDevices/Read | Hiermit lesen Sie Daten aus der MAProposedPilotDevices-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAWindowsBuildInfo/Read | Hiermit lesen Sie Daten aus der MAWindowsBuildInfo-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAWindowsCurrencyAssessment/Read | Hiermit lesen Sie Daten aus der MAWindowsCurrencyAssessment-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAWindowsCurrencyAssessmentDailyCounts/Read | Hiermit lesen Sie Daten aus der MAWindowsCurrencyAssessmentDailyCounts-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAWindowsDeploymentStatus/Read | Hiermit lesen Sie Daten aus der MAWindowsDeploymentStatus-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/MAWindowsSysReqInstanceReadiness/Read | Liest Daten aus der Tabelle „MAWindowsSysReqInstanceReadiness“. |
+> | Aktion | Microsoft.Insights/Logs/NetworkMonitoring/Read | Hiermit lesen Sie Daten aus der NetworkMonitoring-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/OfficeActivity/Read | Hiermit lesen Sie Daten aus der OfficeActivity-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/Operation/Read | Hiermit lesen Sie Daten aus der Operation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/OutboundConnection/Read | Hiermit lesen Sie Daten aus der OutboundConnection-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/Perf/Read | Hiermit lesen Sie Daten aus der Perf-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ProtectionStatus/Read | Hiermit lesen Sie Daten aus der ProtectionStatus-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/Read | Hiermit lesen Sie Daten aus allen Ihren Protokollen. |
+> | Aktion | Microsoft.Insights/Logs/ReservedAzureCommonFields/Read | Hiermit lesen Sie Daten aus der ReservedAzureCommonFields-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ReservedCommonFields/Read | Hiermit lesen Sie Daten aus der ReservedCommonFields-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SCCMAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der SCCMAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SCOMAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der SCOMAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SecurityAlert/Read | Hiermit lesen Sie Daten aus der SecurityAlert-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SecurityBaseline/Read | Hiermit lesen Sie Daten aus der SecurityBaseline-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SecurityBaselineSummary/Read | Hiermit lesen Sie Daten aus der SecurityBaselineSummary-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SecurityDetection/Read | Hiermit lesen Sie Daten aus der SecurityDetection-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SecurityEvent/Read | Hiermit lesen Sie Daten aus der SecurityEvent-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ServiceFabricOperationalEvent/Read | Hiermit lesen Sie Daten aus der ServiceFabricOperationalEvent-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ServiceFabricReliableActorEvent/Read | Hiermit lesen Sie Daten aus der ServiceFabricReliableActorEvent-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/ServiceFabricReliableServiceEvent/Read | Hiermit lesen Sie Daten aus der ServiceFabricReliableServiceEvent-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SfBAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der SfBAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SfBOnlineAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der SfBOnlineAssessmentRecommendatio-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SharePointOnlineAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der SharePointOnlineAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SPAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der SPAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SQLAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der SQLAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SQLQueryPerformance/Read | Hiermit lesen Sie Daten aus der SQLQueryPerformance-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/Syslog/Read | Hiermit lesen Sie Daten aus der Syslog-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/SysmonEvent/Read | Hiermit lesen Sie Daten aus der SysmonEvent-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UAApp/Read | Hiermit lesen Sie Daten aus der UAApp-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UAComputer/Read | Hiermit lesen Sie Daten aus der UAComputer-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UAComputerRank/Read | Hiermit lesen Sie Daten aus der UAComputerRank-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UADriver/Read | Hiermit lesen Sie Daten aus der UADriver-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UADriverProblemCodes/Read | Hiermit lesen Sie Daten aus der UADriverProblemCodes-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UAFeedback/Read | Hiermit lesen Sie Daten aus der UAFeedback-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UAHardwareSecurity/Read | Hiermit lesen Sie Daten aus der UAHardwareSecurity-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UAIESiteDiscovery/Read | Hiermit lesen Sie Daten aus der UAIESiteDiscovery-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UAOfficeAddIn/Read | Hiermit lesen Sie Daten aus der UAOfficeAddIn-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UAProposedActionPlan/Read | Hiermit lesen Sie Daten aus der UAProposedActionPlan-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UASysReqIssue/Read | Hiermit lesen Sie Daten aus der UASysReqIssue-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UAUpgradedComputer/Read | Hiermit lesen Sie Daten aus der UAUpgradedComputer-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/Update/Read | Hiermit lesen Sie Daten aus der Update-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UpdateRunProgress/Read | Hiermit lesen Sie Daten aus der UpdateRunProgress-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/UpdateSummary/Read | Hiermit lesen Sie Daten aus der UpdateSummary-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/Usage/Read | Hiermit lesen Sie Daten aus der Usage-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/W3CIISLog/Read | Hiermit lesen Sie Daten aus der W3CIISLog-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WaaSDeploymentStatus/Read | Hiermit lesen Sie Daten aus der WaaSDeploymentStatus-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WaaSInsiderStatus/Read | Hiermit lesen Sie Daten aus der WaaSInsiderStatus-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WaaSUpdateStatus/Read | Hiermit lesen Sie Daten aus der WaaSUpdateStatus-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WDAVStatus/Read | Hiermit lesen Sie Daten aus der WDAVStatus-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WDAVThreat/Read | Hiermit lesen Sie Daten aus der WDAVThreat-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WindowsClientAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der WindowsClientAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WindowsFirewall/Read | Hiermit lesen Sie Daten aus der WindowsFirewall-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WindowsServerAssessmentRecommendation/Read | Hiermit lesen Sie Daten aus der WindowsServerAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WireData/Read | Hiermit lesen Sie Daten aus der WireData-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WUDOAggregatedStatus/Read | Hiermit lesen Sie Daten aus der WUDOAggregatedStatus-Tabelle. |
+> | Aktion | Microsoft.Insights/Logs/WUDOStatus/Read | Hiermit lesen Sie Daten aus der WUDOStatus-Tabelle. |
 > | Aktion | Microsoft.Insights/MetricAlerts/Delete | Löscht ein Metrikwarnung. |
 > | Aktion | Microsoft.Insights/MetricAlerts/Read | Liest eine Metrikwarnung. |
 > | Aktion | Microsoft.Insights/MetricAlerts/Status/Read | Liest den Metrikwarnungsstatus. |
@@ -2259,6 +2518,20 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Insights/Webtests/Metrics/Read | Hiermit werden Webtestmetriken gelesen. |
 > | Aktion | Microsoft.Insights/Webtests/Read | Hiermit wird eine Webtestkonfiguration gelesen. |
 > | Aktion | Microsoft.Insights/Webtests/Write | Hiermit wird in eine Webtestkonfiguration geschrieben. |
+
+## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
+
+> [!div class="mx-tdCol2BreakAll"]
+> | Aktionstyp | Vorgang | Beschreibung |
+> | --- | --- | --- |
+> | Aktion | Microsoft.IoTSpaces/Graph/delete | Löscht die Microsoft.IoTSpaces Graph-Ressource. |
+> | Aktion | Microsoft.IoTSpaces/Graph/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellungen für die Ressource ab. |
+> | Aktion | Microsoft.IoTSpaces/Graph/providers/Microsoft.Insights/diagnosticSettings/write | Legt die Diagnoseeinstellungen für die Ressource fest. |
+> | Aktion | Microsoft.IoTSpaces/Graph/providers/Microsoft.Insights/logDefinitions/read | Ruft die verfügbaren Protokolldefinitionen für den Microsoft.IoTSpaces-Dienst ab. |
+> | Aktion | Microsoft.IoTSpaces/Graph/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Metrikdefinitionen für den Microsoft.IoTSpaces-Dienst ab. |
+> | Aktion | Microsoft.IoTSpaces/Graph/read | Ruft die Microsoft.IoTSpaces Graph-Ressource(n) ab. |
+> | Aktion | Microsoft.IoTSpaces/Graph/write | Erstellt die Microsoft.IoTSpaces Graph-Ressource. |
+> | Aktion | Microsoft.IoTSpaces/register/action | Dient zum Registrieren des Abonnements für den Microsoft.IoTSpaces Graph-Ressourcenanbieter, um die Erstellung von Ressourcen zu ermöglichen. |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -2322,6 +2595,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.LabServices/labAccounts/galleryImages/read | Dient zum Lesen von Katalogimages. |
 > | Aktion | Microsoft.LabServices/labAccounts/galleryImages/write | Fügt Katalogimages hinzu oder ändert diese. |
 > | Aktion | Microsoft.LabServices/labAccounts/GetRegionalAvailability/action | Hiermit werden Informationen zur regionalen Verfügbarkeit jeder Größenkategorie abgerufen, die in einem Labkonto konfiguriert sind. |
+> | Aktion | Microsoft.LabServices/labAccounts/labs/AddUsers/action | Benutzer zu einem Lab hinzufügen |
 > | Aktion | Microsoft.LabServices/labAccounts/labs/delete | Dient zum Löschen von Labs. |
 > | Aktion | Microsoft.LabServices/labAccounts/labs/environmentSettings/ClaimAny/action | Beansprucht eine zufällige Umgebung für einen Benutzer in den Umgebungseinstellungen. |
 > | Aktion | Microsoft.LabServices/labAccounts/labs/environmentSettings/delete | Hiermit wird eine Umgebungseinstellung gelöscht. |
@@ -2343,9 +2617,6 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.LabServices/labAccounts/labs/users/write | Dient zum Hinzufügen oder Ändern von Benutzern. |
 > | Aktion | Microsoft.LabServices/labAccounts/labs/write | Dient zum Hinzufügen oder Ändern von Labs. |
 > | Aktion | Microsoft.LabServices/labAccounts/read | Hiermit werden Lab-Konten gelesen. |
-> | Aktion | Microsoft.LabServices/labAccounts/sizes/GetRegionalAvailability/action | Hiermit werden Informationen zur regionalen Verfügbarkeit jeder Größenkategorie abgerufen, die in einem Labkonto konfiguriert sind. |
-> | Aktion | Microsoft.LabServices/labAccounts/sizes/read | Liest die Größe. |
-> | Aktion | Microsoft.LabServices/labAccounts/sizes/ResetOverrides/action | Hiermit wird die Größenkonfiguration dieses Labkontos auf Standardwerte zurückgesetzt. |
 > | Aktion | Microsoft.LabServices/labAccounts/write | Dient zum Hinzufügen oder Ändern von Lab-Konten. |
 > | Aktion | Microsoft.LabServices/locations/operations/read | Dient zum Lesen von Vorgängen. |
 > | Aktion | Microsoft.LabServices/register/action | Registriert das Abonnement. |
@@ -2399,6 +2670,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | DataAction | Microsoft.LogAnalytics/logs/Alert/read | Hiermit lesen Sie Daten aus der Alert-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/AlertHistory/read | Hiermit lesen Sie Daten aus der AlertHistory-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/ApplicationInsights/read | Hiermit lesen Sie Daten aus der ApplicationInsights-Tabelle. |
+> | DataAction | Microsoft.LogAnalytics/logs/AuditLogs/read | Dient zum Lesen von Daten aus der AuditLogs-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/AzureActivity/read | Hiermit lesen Sie Daten aus der AzureActivity-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/AzureMetrics/read | Hiermit lesen Sie Daten aus der AzureMetrics-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/BoundPort/read | Hiermit lesen Sie Daten aus der BoundPort-Tabelle. |
@@ -2410,7 +2682,6 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | DataAction | Microsoft.LogAnalytics/logs/ContainerInventory/read | Hiermit lesen Sie Daten aus der ContainerInventory-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/ContainerLog/read | Hiermit lesen Sie Daten aus der ContainerLog-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/ContainerServiceLog/read | Hiermit lesen Sie Daten aus der ContainerServiceLog-Tabelle. |
-> | DataAction | Microsoft.LogAnalytics/logs/CustomLogs/read | Hiermit lesen Sie Daten aus einem beliebigen benutzerdefinierten Protokoll. |
 > | DataAction | Microsoft.LogAnalytics/logs/DeviceAppCrash/read | Hiermit lesen Sie Daten aus der DeviceAppCrash-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/DeviceAppLaunch/read | Hiermit lesen Sie Daten aus der DeviceAppLaunch-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/DeviceCalendar/read | Hiermit lesen Sie Daten aus der DeviceCalendar-Tabelle. |
@@ -2507,11 +2778,13 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | DataAction | Microsoft.LogAnalytics/logs/SfBAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SfBAssessmentRecommendation-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/SfBOnlineAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SfBOnlineAssessmentRecommendatio-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/SharePointOnlineAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SharePointOnlineAssessmentRecommendation-Tabelle. |
+> | DataAction | Microsoft.LogAnalytics/logs/SigninLogs/read | Dient zum Lesen von Daten aus der SigninLogs-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/SPAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SPAssessmentRecommendation-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/SQLAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SQLAssessmentRecommendation-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/SQLQueryPerformance/read | Hiermit lesen Sie Daten aus der SQLQueryPerformance-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/Syslog/read | Hiermit lesen Sie Daten aus der Syslog-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/SysmonEvent/read | Hiermit lesen Sie Daten aus der SysmonEvent-Tabelle. |
+> | DataAction | Microsoft.LogAnalytics/logs/Tables.Custom/read | Hiermit lesen Sie Daten aus einem beliebigen benutzerdefinierten Protokoll. |
 > | DataAction | Microsoft.LogAnalytics/logs/UAApp/read | Hiermit lesen Sie Daten aus der UAApp-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/UAComputer/read | Hiermit lesen Sie Daten aus der UAComputer-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/UAComputerRank/read | Hiermit lesen Sie Daten aus der UAComputerRank-Tabelle. |
@@ -2537,6 +2810,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | DataAction | Microsoft.LogAnalytics/logs/WDAVStatus/read | Hiermit lesen Sie Daten aus der WDAVStatus-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/WDAVThreat/read | Hiermit lesen Sie Daten aus der WDAVThreat-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/WindowsClientAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der WindowsClientAssessmentRecommendation-Tabelle. |
+> | DataAction | Microsoft.LogAnalytics/logs/WindowsEvent/read | Dient zum Lesen von Daten aus der WindowsEvent-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/WindowsFirewall/read | Hiermit lesen Sie Daten aus der WindowsFirewall-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/WindowsServerAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der WindowsServerAssessmentRecommendation-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/WireData/read | Hiermit lesen Sie Daten aus der WireData-Tabelle. |
@@ -2589,8 +2863,12 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Logic/integrationAccounts/write | Erstellt oder aktualisiert das Integrationskonto. |
 > | Aktion | Microsoft.Logic/integrationServiceEnvironments/delete | Hiermit wird die Integrationsdienstumgebung gelöscht. |
 > | Aktion | Microsoft.Logic/integrationServiceEnvironments/join/action | Hiermit erfolgt ein Beitritt zur Integrationsdienstumgebung. |
+> | Aktion | Microsoft.Logic/integrationServiceEnvironments/managedApis/apiOperations/read | Liest den Vorgang der in der Integrationsdienstumgebung verwalteten API. |
+> | Aktion | Microsoft.Logic/integrationServiceEnvironments/managedApis/read | Liest die in der Integrationsdienstumgebung verwalteten API. |
+> | Aktion | Microsoft.Logic/integrationServiceEnvironments/providers/Microsoft.Insights/metricDefinitions/read | Liest die Metrikdefinitionen in der Integrationsdienstumgebung. |
 > | Aktion | Microsoft.Logic/integrationServiceEnvironments/read | Hiermit wird die Integrationsdienstumgebung gelesen. |
 > | Aktion | Microsoft.Logic/integrationServiceEnvironments/write | Hiermit wird die Integrationsdienstumgebung erstellt oder aktualisiert. |
+> | Aktion | Microsoft.Logic/locations/workflows/recommendOperationGroups/action | Ruft den Workflow der empfohlenen Vorgangsgruppen ab. |
 > | Aktion | Microsoft.Logic/locations/workflows/validate/action | Überprüft den Workflow. |
 > | Aktion | Microsoft.Logic/operations/read | Ruft den Vorgang ab. |
 > | Aktion | Microsoft.Logic/register/action | Registriert den Microsoft.Logic-Ressourcenanbieter für ein angegebenes Abonnement. |
@@ -2804,6 +3082,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > [!div class="mx-tdCol2BreakAll"]
 > | Aktionstyp | Vorgang | Beschreibung |
 > | --- | --- | --- |
+> | Aktion | Microsoft.Media/checknameavailability/action | Überprüft, ob ein Media Services-Kontoname verfügbar ist. |
 > | Aktion | Microsoft.Media/locations/checkNameAvailability/action | Überprüft, ob ein Media Services-Kontoname verfügbar ist. |
 > | Aktion | Microsoft.Media/mediaservices/assets/delete | Löscht alle Objekte. |
 > | Aktion | Microsoft.Media/mediaservices/assets/getEncryptionKey/action | Ruft Verschlüsselungsschlüssel für ein Objekt ab. |
@@ -2815,6 +3094,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Media/mediaservices/contentKeyPolicies/read | Liest alle Richtlinien für Inhaltsschlüssel. |
 > | Aktion | Microsoft.Media/mediaservices/contentKeyPolicies/write | Erstellt oder aktualisiert alle Richtlinien für Inhaltsschlüssel. |
 > | Aktion | Microsoft.Media/mediaservices/delete | Löscht ein Media Services-Konto. |
+> | Aktion | Microsoft.Media/mediaservices/eventGridFilters/delete | Löscht alle Event Grid-Filter. |
+> | Aktion | Microsoft.Media/mediaservices/eventGridFilters/read | Liest alle Event Grid-Filter. |
+> | Aktion | Microsoft.Media/mediaservices/eventGridFilters/write | Erstellt oder aktualisiert alle Event Grid-Filter. |
 > | Aktion | Microsoft.Media/mediaservices/liveEventOperations/read | Liest alle Vorgänge für Liveereignisse. |
 > | Aktion | Microsoft.Media/mediaservices/liveEvents/delete | Löscht alle Liveereignisse. |
 > | Aktion | Microsoft.Media/mediaservices/liveEvents/liveOutputs/delete | Löscht alle Liveausgaben. |
@@ -2937,6 +3219,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Dient zum Verknüpfen der Sicherheitsregel mit Anwendungssicherheitsgruppen. |
 > | Aktion | Microsoft.Network/applicationSecurityGroups/read | Ruft eine Anwendungssicherheitsgruppen-ID ab. |
 > | Aktion | Microsoft.Network/applicationSecurityGroups/write | Erstellt eine Anwendungssicherheitsgruppe oder aktualisiert eine vorhandene Anwendungssicherheitsgruppe. |
+> | Aktion | Microsoft.Network/azureFirewallFqdnTags/read | Ruft die Azure Firewall-FQDN-Tags ab. |
 > | Aktion | Microsoft.Network/azurefirewalls/delete | Hiermit löschen Sie Azure Firewall. |
 > | Aktion | Microsoft.Network/azurefirewalls/providers/Microsoft.Insights/logDefinitions/read | Ruft die Ereignisse für Azure Firewall ab. |
 > | Aktion | Microsoft.Network/azurefirewalls/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Metriken für Azure Firewall ab. |
@@ -3045,16 +3328,25 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/expressRoutePorts/delete | Löscht ExpressRoutePorts. |
 > | Aktion | Microsoft.Network/expressRoutePorts/join/action | Verknüpft ExpressRoutePorts. |
 > | Aktion | Microsoft.Network/expressRoutePorts/links/read | Hiermit rufen Sie ExpressRouteLink ab. |
+> | Aktion | Microsoft.Network/expressRoutePorts/providers/Microsoft.Insights/metricDefinitions/read | Ruft die Metrikdefinitionen für ExpressRoute-Ports ab. |
 > | Aktion | Microsoft.Network/expressRoutePorts/read | Ruft ExpressRoutePorts ab. |
 > | Aktion | Microsoft.Network/expressRoutePorts/write | Erstellt oder aktualisiert ExpressRoutePorts. |
 > | Aktion | Microsoft.Network/expressRoutePortsLocations/read | Hiermit rufen Sie Standorte von ExpressRoute-Ports ab. |
 > | Aktion | Microsoft.Network/expressRouteServiceProviders/read | Ruft ExpressRoute-Dienstanbieter ab. |
+> | Aktion | Microsoft.Network/frontdoors/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Frontdoor-Ressource ab. |
+> | Aktion | Microsoft.Network/frontdoors/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Frontdoor-Ressource. |
+> | Aktion | Microsoft.Network/frontdoors/providers/Microsoft.Insights/logDefinitions/read | Ruft die verfügbaren Protokolle für Frontdoor-Ressourcen ab. |
+> | Aktion | Microsoft.Network/frontdoors/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Metriken für Frontdoor-Ressourcen ab. |
 > | Aktion | Microsoft.Network/frontdoors/read | Hiermit rufen Sie Frontdoor ab. |
 > | Aktion | Microsoft.Network/getDnsResourceReference/action | Anforderung einer Ressourcenabhängigkeit von einem DNS-Alias |
+> | Aktion | Microsoft.Network/interfaceEndpoints/delete | Löscht eine Schnittstellenendpunkt-Ressource. |
+> | Aktion | Microsoft.Network/interfaceEndpoints/read | Ruft eine Schnittstellenendpunkt-Ressource ab. |
+> | Aktion | Microsoft.Network/interfaceEndpoints/write | Erstellt einen neuen Schnittstellenendpunkt oder aktualisiert einen vorhandenen Schnittstellenendpunkt. |
 > | Aktion | Microsoft.Network/internalNotify/action | Ressourcenbenachrichtigung zu DNS-Alias |
 > | Aktion | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für den Lastenausgleich. |
 > | Aktion | Microsoft.Network/loadBalancers/backendAddressPools/read | Ruft eine Back-End-Adresspooldefinition für den Lastenausgleich ab. |
 > | Aktion | Microsoft.Network/loadBalancers/delete | Löscht einen Lastenausgleich. |
+> | Aktion | Microsoft.Network/loadBalancers/frontendIPConfigurations/join/action | Verknüpft eine Front-End-IP-Konfiguration für den Lastenausgleich. |
 > | Aktion | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | Ruft eine Front-End-IP-Konfigurationsdefinition für den Lastenausgleich ab. |
 > | Aktion | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Verknüpft einen eingehenden NAT-Pool für den Lastenausgleich. |
 > | Aktion | Microsoft.Network/loadBalancers/inboundNatPools/read | Ruft eine eingehende NAT-Pooldefinition für den Lastenausgleich ab. |
@@ -3096,6 +3388,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/networkInterfaces/diagnosticIdentity/read | Ruft die Diagnoseidentität der Ressource ab. |
 > | Aktion | Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action | Dient zum Abrufen der Netzwerksicherheitsgruppen, die für die Netzwerkschnittstelle des virtuellen Computers konfiguriert sind. |
 > | Aktion | Microsoft.Network/networkInterfaces/effectiveRouteTable/action | Dient zum Abrufen der Routingtabelle, die für die Netzwerkschnittstelle des virtuellen Computers konfiguriert ist. |
+> | Aktion | Microsoft.Network/networkInterfaces/ipconfigurations/join/action | Verknüpft eine Netzwerkschnittstellen-IP-Konfiguration. |
 > | Aktion | Microsoft.Network/networkInterfaces/ipconfigurations/read | Ruft eine IP-Konfigurationsdefinition für Netzwerkschnittstellen ab.  |
 > | Aktion | Microsoft.Network/networkInterfaces/join/action | Verknüpft einen virtuellen Computer mit einer Netzwerkschnittstelle. |
 > | Aktion | Microsoft.Network/networkInterfaces/joinViaPrivateIp/action | Verknüpft eine Ressource mit einer Netzwerkschnittstelle über eine Dienstzuordnung. |
@@ -3106,6 +3399,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/networkInterfaces/serviceAssociations/read | Ruft die Definition für eine Dienstzuordnung ab. |
 > | Aktion | Microsoft.Network/networkInterfaces/serviceAssociations/validate/action | Überprüft eine Dienstzuordnung. |
 > | Aktion | Microsoft.Network/networkInterfaces/serviceAssociations/write | Erstellt eine neue Dienstzuordnung oder bearbeitet eine vorhandene. |
+> | Aktion | Microsoft.Network/networkInterfaces/tapConfigurations/delete | Löscht eine Netzwerkschnittstellen-TAP-Konfiguration. |
+> | Aktion | Microsoft.Network/networkInterfaces/tapConfigurations/read | Ruft eine Netzwerkschnittstellen-TAP-Konfiguration ab. |
+> | Aktion | Microsoft.Network/networkInterfaces/tapConfigurations/write | Erstellt eine Netzwerkschnittstellen-TAP-Konfiguration oder aktualisiert eine vorhandene Netzwerkschnittstellen-TAP-Konfiguration. |
 > | Aktion | Microsoft.Network/networkInterfaces/write | Erstellt eine Netzwerkschnittstelle oder aktualisiert eine vorhandene Netzwerkschnittstelle.  |
 > | Aktion | Microsoft.Network/networkProfiles/delete | Löscht ein Netzwerkprofil. |
 > | Aktion | Microsoft.Network/networkProfiles/read | Liest ein Netzwerkprofil. |
@@ -3157,6 +3453,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/networkWatchers/pingMeshes/start/action | Startet PingMesh zwischen angegebenen VMs. |
 > | Aktion | Microsoft.Network/networkWatchers/pingMeshes/stop/action | Beendet PingMesh zwischen angegebenen VMs. |
 > | Aktion | Microsoft.Network/networkWatchers/pingMeshes/write | Erstellt ein PingMesh-Element. |
+> | Aktion | Microsoft.Network/networkWatchers/queryConnectionMonitors/action | Führt eine Batchabfrage der Überwachungskonnektivität zwischen angegebenen Endpunkten ab. |
 > | Aktion | Microsoft.Network/networkWatchers/queryFlowLogStatus/action | Ruft den Status der Datenflussprotokollierung für eine Ressource ab. |
 > | Aktion | Microsoft.Network/networkWatchers/queryTroubleshootResult/action | Ruft das Ergebnis des zuvor oder momentan ausgeführten Problembehandlungsvorgangs ab. |
 > | Aktion | Microsoft.Network/networkWatchers/read | Dient zum Abrufen der Network Watcher-Definition. |
@@ -3165,6 +3462,16 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/networkWatchers/troubleshoot/action | Startet die Problembehandlung für eine Netzwerkressource in Azure. |
 > | Aktion | Microsoft.Network/networkWatchers/write | Erstellt eine Network Watcher-Instanz oder aktualisiert eine vorhandene Network Watcher-Instanz. |
 > | Aktion | Microsoft.Network/operations/read | Dient zum Abrufen verfügbarer Vorgänge. |
+> | Aktion | Microsoft.Network/p2sVpnGateways/delete | Löscht ein P2SVpnGateway. |
+> | Aktion | Microsoft.Network/p2sVpnGateways/generatevpnprofile/action | Generiert ein VPN-Profil für P2SVpnGateway. |
+> | Aktion | Microsoft.Network/p2sVpnGateways/read | Ruft ein P2SVpnGateway ab. |
+> | Aktion | Microsoft.Network/p2sVpnGateways/write | Legt ein P2SVpnGateway fest. |
+> | Aktion | Microsoft.Network/privateLinkServices/delete | Löscht eine private Verknüpfungsdienst-Ressource. |
+> | Aktion | Microsoft.Network/privateLinkServices/interfaceEndpointConnections/delete | Löscht eine Schnittstellenendpunkt-Verbindung. |
+> | Aktion | Microsoft.Network/privateLinkServices/interfaceEndpointConnections/read | Ruft eine Schnittstellenendpunkt-Verbindungsdefinition ab. |
+> | Aktion | Microsoft.Network/privateLinkServices/interfaceEndpointConnections/write | Erstellt eine neue Schnittstellenendpunkt-Verbindung oder aktualisiert eine vorhandene Schnittstellenendpunkt-Verbindung. |
+> | Aktion | Microsoft.Network/privateLinkServices/read | Ruft eine private Verknüpfungsdienst-Ressource ab. |
+> | Aktion | Microsoft.Network/privateLinkServices/write | Erstellt einen neuen privaten Verknüpfungsdienst oder aktualisiert einen vorhandenen privaten Verknüpfungsdienst. |
 > | Aktion | Microsoft.Network/publicIPAddresses/delete | Löscht eine öffentliche IP-Adresse. |
 > | Aktion | Microsoft.Network/publicIPAddresses/dnsAliases/delete | Löscht eine DNS-Aliasressource einer öffentlichen IP-Adresse. |
 > | Aktion | Microsoft.Network/publicIPAddresses/dnsAliases/read | Ruft eine DNS-Aliasressource einer öffentlichen IP-Adresse. |
@@ -3261,6 +3568,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/virtualNetworkGateways/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Metriken für das Gateway des virtuellen Netzwerks ab. |
 > | Aktion | Microsoft.Network/virtualNetworkGateways/read | Ruft VirtualNetworkGateway ab. |
 > | Aktion | microsoft.network/virtualnetworkgateways/reset/action | Setzt virtualNetworkGateway zurück. |
+> | Aktion | microsoft.network/virtualnetworkgateways/resetvpnclientsharedkey/action | Setzt den gemeinsam verwendeten Vpnclient-Schlüssel für den VirtualNetworkGateway P2S-Client zurück. |
 > | Aktion | microsoft.network/virtualnetworkgateways/setvpnclientipsecparameters/action | Legt die Vpnclient-IPsec-Parameter für den VirtualNetworkGateway P2S-Client fest. |
 > | Aktion | Microsoft.Network/virtualnetworkgateways/supportedvpndevices/action | Listet die unterstützten VPN-Geräte auf. |
 > | Aktion | Microsoft.Network/virtualNetworkGateways/write | Erstellt oder aktualisiert VirtualNetworkGateway. |
@@ -3303,10 +3611,20 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/virtualNetworks/write | Erstellt ein virtuelles Netzwerk oder aktualisiert ein vorhandenes virtuelles Netzwerk. |
 > | Aktion | Microsoft.Network/virtualNetworkTaps/delete | Löscht einen TAP eines virtuellen Netzwerks. |
 > | Aktion | Microsoft.Network/virtualNetworkTaps/join/action | Verknüpft einen TAP eines virtuellen Netzwerks. |
+> | Aktion | Microsoft.Network/virtualNetworkTaps/networkInterfaceTapConfigurationProxies/delete | Löscht einen Netzwerkschnittstellen-TAP-Konfigurations-Proxy. |
+> | Aktion | Microsoft.Network/virtualNetworkTaps/networkInterfaceTapConfigurationProxies/read | Ruft einen Netzwerkschnittstellen-TAP-Konfigurations-Proxy ab. |
+> | Aktion | Microsoft.Network/virtualNetworkTaps/networkInterfaceTapConfigurationProxies/write | Erstellt einen Netzwerkschnittstellen-TAP-Konfigurations-Proxy oder aktualisiert einen vorhandenen Netzwerkschnittstellen-TAP-Konfigurations-Proxy. |
 > | Aktion | Microsoft.Network/virtualNetworkTaps/read | Ruft einen TAP eines virtuellen Netzwerks ab. |
 > | Aktion | Microsoft.Network/virtualNetworkTaps/write | Erstellt oder aktualisiert einen TAP eines virtuellen Netzwerks. |
 > | Aktion | Microsoft.Network/virtualWans/delete | Löscht ein virtuelles WAN. |
+> | Aktion | Microsoft.Network/virtualWans/p2sVpnGatewayProxies/delete | Löscht einen P2SVpnGateway-Proxy. |
+> | Aktion | Microsoft.Network/virtualWans/p2sVpnGatewayProxies/read | Ruft eine P2SVpnGateway-Proxydefinition ab. |
+> | Aktion | Microsoft.Network/virtualWans/p2sVpnGatewayProxies/write | Erstellt einen P2SVpnGateway-Proxy oder aktualisiert einen P2SVpnGateway-Proxy. |
+> | Aktion | Microsoft.Network/virtualWans/p2sVpnServerConfigurations/delete | Löscht P2SVpnServerConfiguration für ein virtuelles WAN. |
+> | Aktion | Microsoft.Network/virtualWans/p2sVpnServerConfigurations/read | Ruft die P2SVpnServerConfiguration-Definition für ein virtuelles WAN ab. |
+> | Aktion | Microsoft.Network/virtualWans/p2sVpnServerConfigurations/write | Erstellt oder aktualisiert P2SVpnServerConfiguration für ein virtuelles WAN. |
 > | Aktion | Microsoft.Network/virtualWans/read | Ruft ein virtuelles WAN ab. |
+> | Aktion | Microsoft.Network/virtualwans/supportedSecurityProviders/read | Ruft unterstützte VirtualWan-Sicherheitsanbieter ab. |
 > | Aktion | Microsoft.Network/virtualWans/virtualHubProxies/delete | Löscht einen Proxy für einen virtuellen Hub. |
 > | Aktion | Microsoft.Network/virtualWans/virtualHubProxies/read | Ruft die Definition für den Proxy eines virtuellen Hubs ab. |
 > | Aktion | Microsoft.Network/virtualWans/virtualHubProxies/write | Erstellt oder aktualisiert einen Proxy für einen virtuellen Hub. |
@@ -3318,7 +3636,10 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/virtualWans/vpnSites/read | Ruft alle VPN-Standorte ab, die auf ein virtuelles WAN verweisen. |
 > | Aktion | Microsoft.Network/virtualWans/write | Erstellt oder aktualisiert ein virtuelles WAN. |
 > | Aktion | Microsoft.Network/vpnGateways/delete | Löscht VpnGateway. |
+> | Aktion | microsoft.network/vpngateways/listvpnconnectionshealth/action | Ruft die Verbindungsintegrität für alle oder eine Teilmenge der Verbindungen auf einem VpnGateway ab. |
 > | Aktion | Microsoft.Network/vpnGateways/read | Ruft VpnGateway ab. |
+> | Aktion | microsoft.network/vpngateways/reset/action | Setzt VpnGateway zurück. |
+> | Aktion | microsoft.network/vpnGateways/vpnConnections/delete | Löscht VpnConnection. |
 > | Aktion | microsoft.network/vpnGateways/vpnConnections/read | Ruft VpnConnection ab. |
 > | Aktion | microsoft.network/vpnGateways/vpnConnections/write | Legt VpnConnection fest. |
 > | Aktion | Microsoft.Network/vpnGateways/write | Legt VpnGateway fest. |
@@ -3451,6 +3772,159 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.OperationalInsights/workspaces/notificationSettings/read | Ruft die Benachrichtigungseinstellungen für den Arbeitsbereich des Benutzers ab. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/notificationSettings/write | Legt die Benachrichtigungseinstellungen für den Arbeitsbereich des Benutzers fest. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/purge/action | Löscht die angegebenen Daten aus dem Arbeitsbereich. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ADAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der ADAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ADReplicationResult/read | Hiermit lesen Sie Daten aus der ADReplicationResult-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ADSecurityAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der ADSecurityAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/Alert/read | Hiermit lesen Sie Daten aus der Alert-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/AlertHistory/read | Hiermit lesen Sie Daten aus der AlertHistory-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | Hiermit lesen Sie Daten aus der ApplicationInsights-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/AuditLogs/read | Dient zum Lesen von Daten aus der AuditLogs-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/AzureActivity/read | Hiermit lesen Sie Daten aus der AzureActivity-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/AzureMetrics/read | Hiermit lesen Sie Daten aus der AzureMetrics-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/BoundPort/read | Hiermit lesen Sie Daten aus der BoundPort-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/CommonSecurityLog/read | Hiermit lesen Sie Daten aus der CommonSecurityLog-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read | Hiermit lesen Sie Daten aus der ComputerGroup-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ConfigurationChange/read | Hiermit lesen Sie Daten aus der ConfigurationChange-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ConfigurationData/read | Hiermit lesen Sie Daten aus der ConfigurationData-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ContainerImageInventory/read | Hiermit lesen Sie Daten aus der ContainerImageInventory-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ContainerInventory/read | Hiermit lesen Sie Daten aus der ContainerInventory-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ContainerLog/read | Hiermit lesen Sie Daten aus der ContainerLog-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ContainerServiceLog/read | Hiermit lesen Sie Daten aus der ContainerServiceLog-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceAppCrash/read | Hiermit lesen Sie Daten aus der DeviceAppCrash-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceAppLaunch/read | Hiermit lesen Sie Daten aus der DeviceAppLaunch-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceCalendar/read | Hiermit lesen Sie Daten aus der DeviceCalendar-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceCleanup/read | Hiermit lesen Sie Daten aus der DeviceCleanup-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceConnectSession/read | Hiermit lesen Sie Daten aus der DeviceConnectSession-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceEtw/read | Hiermit lesen Sie Daten aus der DeviceEtw-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceHardwareHealth/read | Hiermit lesen Sie Daten aus der DeviceHardwareHealth-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceHealth/read | Hiermit lesen Sie Daten aus der DeviceHealth-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceHeartbeat/read | Hiermit lesen Sie Daten aus der DeviceHeartbeat-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceSkypeHeartbeat/read | Hiermit lesen Sie Daten aus der DeviceSkypeHeartbeat-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceSkypeSignIn/read | Hiermit lesen Sie Daten aus der DeviceSkypeSignIn-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DeviceSleepState/read | Hiermit lesen Sie Daten aus der DeviceSleepState-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DHAppFailure/read | Hiermit lesen Sie Daten aus der DHAppFailure-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DHAppReliability/read | Hiermit lesen Sie Daten aus der DHAppReliability-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DHDriverReliability/read | Hiermit lesen Sie Daten aus der DHDriverReliability-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DHLogonFailures/read | Hiermit lesen Sie Daten aus der DHLogonFailures-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DHLogonMetrics/read | Hiermit lesen Sie Daten aus der DHLogonMetrics-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DHOSCrashData/read | Hiermit lesen Sie Daten aus der DHOSCrashData-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DHOSReliability/read | Hiermit lesen Sie Daten aus der DHOSReliability-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DHWipAppLearning/read | Hiermit lesen Sie Daten aus der DHWipAppLearning-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DnsEvents/read | Hiermit lesen Sie Daten aus der DnsEvents-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/DnsInventory/read | Hiermit lesen Sie Daten aus der DnsInventory-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ETWEvent/read | Hiermit lesen Sie Daten aus der ETWEvent-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/Event/read | Hiermit lesen Sie Daten aus der Event-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ExchangeAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der ExchangeAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ExchangeOnlineAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der ExchangeOnlineAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/Heartbeat/read | Hiermit lesen Sie Daten aus der Heartbeat-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/IISAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der IISAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/InboundConnection/read | Hiermit lesen Sie Daten aus der InboundConnection-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/KubeNodeInventory/read | Hiermit lesen Sie Daten aus der KubeNodeInventory-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/KubePodInventory/read | Hiermit lesen Sie Daten aus der KubePodInventory-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/LinuxAuditLog/read | Hiermit lesen Sie Daten aus der LinuxAuditLog-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAApplication/read | Hiermit lesen Sie Daten aus der MAApplication-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAApplicationHealth/read | Hiermit lesen Sie Daten aus der MAApplicationHealth-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAApplicationHealthAlternativeVersions/read | Liest Daten aus der Tabelle „MAApplicationHealthAlternativeVersions“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAApplicationHealthIssues/read | Liest Daten aus der Tabelle „MAApplicationHealthIssues“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAApplicationInstance/read | Hiermit lesen Sie Daten aus der MAApplicationInstance-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAApplicationInstanceReadiness/read | Liest Daten aus der Tabelle „MAApplicationInstanceReadiness“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAApplicationReadiness/read | Hiermit lesen Sie Daten aus der MAApplicationReadiness-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MADeploymentPlan/read | Hiermit lesen Sie Daten aus der MADeploymentPlan-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MADevice/read | Hiermit lesen Sie Daten aus der MADevice-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MADevicePnPHealth/read | Liest Daten aus der Tabelle „MADevicePnPHealth“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MADevicePnPHealthAlternativeVersions/read | Liest Daten aus der Tabelle „MADevicePnPHealthAlternativeVersions“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MADevicePnPHealthIssues/read | Liest Daten aus der Tabelle „MADevicePnPHealthIssues“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MADeviceReadiness/read | Hiermit lesen Sie Daten aus der MADeviceReadiness-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MADriverInstanceReadiness/read | Liest Daten aus der Tabelle „MADriverInstanceReadiness“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MADriverReadiness/read | Hiermit lesen Sie Daten aus der MADriverReadiness-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddin/read | Hiermit lesen Sie Daten aus der MAOfficeAddin-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinHealth/read | Hiermit lesen Sie Daten aus der MAOfficeAddinHealth-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinHealthIssues/read | Liest Daten aus der Tabelle „MAOfficeAddinHealthIssues“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinInstance/read | Hiermit lesen Sie Daten aus der MAOfficeAddinInstance-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinInstanceReadiness/read | Liest Daten aus der Tabelle „MAOfficeAddinInstanceReadiness“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinReadiness/read | Hiermit lesen Sie Daten aus der MAOfficeAddinReadiness-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeApp/read | Hiermit lesen Sie Daten aus der MAOfficeApp-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeAppHealth/read | Hiermit lesen Sie Daten aus der MAOfficeAppHealth-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeAppInstance/read | Hiermit lesen Sie Daten aus der MAOfficeAppInstance-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeAppReadiness/read | Hiermit lesen Sie Daten aus der MAOfficeAppReadiness-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeBuildInfo/read | Hiermit lesen Sie Daten aus der MAOfficeBuildInfo-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeCurrencyAssessment/read | Hiermit lesen Sie Daten aus der MAOfficeCurrencyAssessment-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeCurrencyAssessmentDailyCounts/read | Hiermit lesen Sie Daten aus der MAOfficeCurrencyAssessmentDailyCounts-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeDeploymentStatus/read | Hiermit lesen Sie Daten aus der MAOfficeDeploymentStatus-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroHealth/read | Liest Daten aus der Tabelle „MAOfficeMacroHealth“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroHealthIssues/read | Liest Daten aus der Tabelle „MAOfficeMacroHealthIssues“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroIssueInstanceReadiness/read | Liest Daten aus der Tabelle „MAOfficeMacroIssueInstanceReadiness“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroIssueReadiness/read | Hiermit lesen Sie Daten aus der MAOfficeMacroIssueReadiness-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroSummary/read | Hiermit lesen Sie Daten aus der MAOfficeMacroSummary-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeSuite/read | Hiermit lesen Sie Daten aus der MAOfficeSuite-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAOfficeSuiteInstance/read | Hiermit lesen Sie Daten aus der MAOfficeSuiteInstance-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAProposedPilotDevices/read | Hiermit lesen Sie Daten aus der MAProposedPilotDevices-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAWindowsBuildInfo/read | Hiermit lesen Sie Daten aus der MAWindowsBuildInfo-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAWindowsCurrencyAssessment/read | Hiermit lesen Sie Daten aus der MAWindowsCurrencyAssessment-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAWindowsCurrencyAssessmentDailyCounts/read | Hiermit lesen Sie Daten aus der MAWindowsCurrencyAssessmentDailyCounts-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAWindowsDeploymentStatus/read | Hiermit lesen Sie Daten aus der MAWindowsDeploymentStatus-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/MAWindowsSysReqInstanceReadiness/read | Liest Daten aus der Tabelle „MAWindowsSysReqInstanceReadiness“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/NetworkMonitoring/read | Hiermit lesen Sie Daten aus der NetworkMonitoring-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/OfficeActivity/read | Hiermit lesen Sie Daten aus der OfficeActivity-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/Operation/read | Hiermit lesen Sie Daten aus der Operation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/OutboundConnection/read | Hiermit lesen Sie Daten aus der OutboundConnection-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/Perf/read | Hiermit lesen Sie Daten aus der Perf-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ProtectionStatus/read | Hiermit lesen Sie Daten aus der ProtectionStatus-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/read | Dient zum Ausführen von Abfragen für die Daten im Arbeitsbereich. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ReservedAzureCommonFields/read | Hiermit lesen Sie Daten aus der ReservedAzureCommonFields-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ReservedCommonFields/read | Hiermit lesen Sie Daten aus der ReservedCommonFields-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SCCMAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SCCMAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SCOMAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SCOMAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SecurityAlert/read | Hiermit lesen Sie Daten aus der SecurityAlert-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read | Hiermit lesen Sie Daten aus der SecurityBaseline-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SecurityBaselineSummary/read | Hiermit lesen Sie Daten aus der SecurityBaselineSummary-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SecurityDetection/read | Hiermit lesen Sie Daten aus der SecurityDetection-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SecurityEvent/read | Hiermit lesen Sie Daten aus der SecurityEvent-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ServiceFabricOperationalEvent/read | Hiermit lesen Sie Daten aus der ServiceFabricOperationalEvent-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ServiceFabricReliableActorEvent/read | Hiermit lesen Sie Daten aus der ServiceFabricReliableActorEvent-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/ServiceFabricReliableServiceEvent/read | Hiermit lesen Sie Daten aus der ServiceFabricReliableServiceEvent-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SfBAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SfBAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SfBOnlineAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SfBOnlineAssessmentRecommendatio-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SharePointOnlineAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SharePointOnlineAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SigninLogs/read | Dient zum Lesen von Daten aus der SigninLogs-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SPAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SPAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SQLAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der SQLAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | Hiermit lesen Sie Daten aus der SQLQueryPerformance-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/Syslog/read | Hiermit lesen Sie Daten aus der Syslog-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/SysmonEvent/read | Hiermit lesen Sie Daten aus der SysmonEvent-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read | Hiermit lesen Sie Daten aus einem beliebigen benutzerdefinierten Protokoll. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UAApp/read | Hiermit lesen Sie Daten aus der UAApp-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UAComputer/read | Hiermit lesen Sie Daten aus der UAComputer-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UAComputerRank/read | Hiermit lesen Sie Daten aus der UAComputerRank-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UADriver/read | Hiermit lesen Sie Daten aus der UADriver-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UADriverProblemCodes/read | Hiermit lesen Sie Daten aus der UADriverProblemCodes-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UAFeedback/read | Hiermit lesen Sie Daten aus der UAFeedback-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UAHardwareSecurity/read | Hiermit lesen Sie Daten aus der UAHardwareSecurity-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UAIESiteDiscovery/read | Hiermit lesen Sie Daten aus der UAIESiteDiscovery-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UAOfficeAddIn/read | Hiermit lesen Sie Daten aus der UAOfficeAddIn-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UAProposedActionPlan/read | Hiermit lesen Sie Daten aus der UAProposedActionPlan-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UASysReqIssue/read | Hiermit lesen Sie Daten aus der UASysReqIssue-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UAUpgradedComputer/read | Hiermit lesen Sie Daten aus der UAUpgradedComputer-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/Update/read | Hiermit lesen Sie Daten aus der Update-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read | Hiermit lesen Sie Daten aus der UpdateRunProgress-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read | Hiermit lesen Sie Daten aus der UpdateSummary-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/Usage/read | Hiermit lesen Sie Daten aus der Usage-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/VMBoundPort/read | Liest Daten aus der Tabelle „VMBoundPort“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/VMConnection/read | Liest Daten aus der Tabelle „VMConnection“. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/W3CIISLog/read | Hiermit lesen Sie Daten aus der W3CIISLog-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WaaSDeploymentStatus/read | Hiermit lesen Sie Daten aus der WaaSDeploymentStatus-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WaaSInsiderStatus/read | Hiermit lesen Sie Daten aus der WaaSInsiderStatus-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WaaSUpdateStatus/read | Hiermit lesen Sie Daten aus der WaaSUpdateStatus-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WDAVStatus/read | Hiermit lesen Sie Daten aus der WDAVStatus-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WDAVThreat/read | Hiermit lesen Sie Daten aus der WDAVThreat-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WindowsClientAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der WindowsClientAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WindowsEvent/read | Dient zum Lesen von Daten aus der WindowsEvent-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WindowsFirewall/read | Hiermit lesen Sie Daten aus der WindowsFirewall-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WindowsServerAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der WindowsServerAssessmentRecommendation-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WireData/read | Hiermit lesen Sie Daten aus der WireData-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WorkloadMonitoringPerf/read | Lesen von Daten aus der Tabelle „WorkloadMonitoringPerf“ |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WUDOAggregatedStatus/read | Hiermit lesen Sie Daten aus der WUDOAggregatedStatus-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/WUDOStatus/read | Hiermit lesen Sie Daten aus der WUDOStatus-Tabelle. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/read | Ruft einen vorhandenen Arbeitsbereich ab. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/savedSearches/delete | Löscht eine gespeicherte Suchabfrage. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/savedSearches/read | Ruft eine gespeicherte Suchabfrage ab. |
@@ -3494,7 +3968,13 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.PolicyInsights/policyStates/summarize/action | Fragt zusammenfassende Informationen zu den letzten Richtlinienzuständen ab. |
 > | Aktion | Microsoft.PolicyInsights/policyStates/summarize/read | Fragt zusammenfassende Informationen zu den letzten Richtlinienzuständen ab. |
 > | Aktion | Microsoft.PolicyInsights/policyStates/triggerEvaluation/action | Hiermit wird eine neue Konformitätsauswertung für den ausgewählten Bereich ausgelöst. |
+> | Aktion | Microsoft.PolicyInsights/policyTrackedResources/queryResults/read | Hiermit werden Informationen zu Ressourcen abgefragt, die gemäß DeployIfNotExists-Richtlinien erforderlich sind. |
 > | Aktion | Microsoft.PolicyInsights/register/action | Registriert den Ressourcenanbieter für Richtlinienerkenntnisse und ermöglicht entsprechende Aktionen. |
+> | Aktion | Microsoft.PolicyInsights/remediations/cancel/action | Hiermit brechen Sie laufende Richtlinienwartungen ab. |
+> | Aktion | Microsoft.PolicyInsights/remediations/delete | Hiermit werden Richtlinienwartungen gelöscht. |
+> | Aktion | Microsoft.PolicyInsights/remediations/listDeployments/read | Listet die für eine Richtlinienwartung erforderlichen Bereitstellungen auf. |
+> | Aktion | Microsoft.PolicyInsights/remediations/read | Hiermit werden Richtlinienwartungen abgerufen. |
+> | Aktion | Microsoft.PolicyInsights/remediations/write | Hiermit erstellen oder aktualisieren Sie Richtlinienwartungen. |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
@@ -3931,11 +4411,6 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.ServiceBus/namespaces/messagingPlan/read | Hiermit wird der Messagingplan für einen Namespace abgerufen.<br>Diese API ist veraltet.<br>Über die MessagingPlan-Ressource verfügbar gemachte Eigenschaften werden in höheren API-Versionen in die (übergeordnete) Namespaceressource verschoben.<br>Dieser Vorgang wird nicht für die API-Version 2017-04-01 unterstützt. |
 > | Aktion | Microsoft.ServiceBus/namespaces/messagingPlan/write | Hiermit wird der Messagingplan für einen Namespace aktualisiert.<br>Diese API ist veraltet.<br>Über die MessagingPlan-Ressource verfügbar gemachte Eigenschaften werden in höheren API-Versionen in die (übergeordnete) Namespaceressource verschoben.<br>Dieser Vorgang wird nicht für die API-Version 2017-04-01 unterstützt. |
 > | Aktion | Microsoft.ServiceBus/namespaces/migrate/action | Migriert den Namespacevorgang. |
-> | Aktion | Microsoft.ServiceBus/namespaces/migrationConfigurations/delete | Löscht die Migrationskonfiguration. |
-> | Aktion | Microsoft.ServiceBus/namespaces/migrationConfigurations/read | Ruft die Migrationskonfiguration ab, die den Zustand der Migration und ausstehende Replikationsvorgänge angibt. |
-> | Aktion | Microsoft.ServiceBus/namespaces/migrationConfigurations/revert/action | Setzt die Migration vom Standard- zum Premium-Namespace zurück. |
-> | Aktion | Microsoft.ServiceBus/namespaces/migrationConfigurations/upgrade/action | Weist den dem Standard-Namespace zugeordneten DNS-Wert dem Premium-Namespace zu, wodurch die Migration abgeschlossen und die Ressourcensynchronisierung zwischen dem Standard- und dem Premium-Namespace beendet wird. |
-> | Aktion | Microsoft.ServiceBus/namespaces/migrationConfigurations/write | Erstellt oder aktualisiert die Migrationskonfiguration. Dadurch wird die Synchronisierung der Ressourcen zwischen dem Standard- und dem Premium-Namespace ausgelöst. |
 > | Aktion | Microsoft.ServiceBus/namespaces/operationresults/read | Hiermit wird der Status des Namespacevorgangs abgerufen. |
 > | Aktion | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | Dient zum Abrufen der Liste mit Ressourcenbeschreibungen für Namespacediagnoseeinstellungen. |
 > | Aktion | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | Dient zum Abrufen der Liste mit Ressourcenbeschreibungen für Namespacediagnoseeinstellungen. |
@@ -4032,6 +4507,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Solutions/applications/delete | Hiermit wird eine Anwendung entfernt. |
 > | Aktion | Microsoft.Solutions/applications/read | Hiermit wird eine Liste mit Anwendungen abgerufen. |
 > | Aktion | Microsoft.Solutions/applications/write | Erstellt eine Anwendung |
+> | Aktion | Microsoft.Solutions/jitRequests/delete | Hiermit wird eine JitRequest entfernt. |
+> | Aktion | Microsoft.Solutions/jitRequests/read | Hiermit wird eine Liste mit JitRequests abgerufen. |
+> | Aktion | Microsoft.Solutions/jitRequests/write | Hiermit wird eine JitRequest erstellt. |
 > | Aktion | Microsoft.Solutions/locations/operationStatuses/read | Liest den Vorgangsstatus für die Ressource. |
 > | Aktion | Microsoft.Solutions/register/action | Hiermit registrieren Sie sich bei Lösungen. |
 
@@ -4060,6 +4538,8 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/locations/instanceFailoverGroups/forceFailoverAllowDataLoss/action | Führt das erzwungene Failover in einer vorhandenen Failovergruppe einer Instanz durch. |
 > | Aktion | Microsoft.Sql/locations/instanceFailoverGroups/read | Gibt die Liste der Failovergruppen einer Instanz zurück oder ruft die Eigenschaften für die angegebene Failovergruppe einer Instanz ab. |
 > | Aktion | Microsoft.Sql/locations/instanceFailoverGroups/write | Erstellt eine Failovergruppe einer Instanz mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Tags für die angegebene Failovergruppe einer Instanz. |
+> | Aktion | Microsoft.Sql/locations/interfaceEndpointProfileAzureAsyncOperation/read | Gibt die Details eines asynchronen Azure-Vorgangs für einen bestimmten Schnittstellenendpunkt zurück. |
+> | Aktion | Microsoft.Sql/locations/interfaceEndpointProfileOperationResults/read | Gibt die Details des angegebenen Schnittstellenendpunkt-Vorgangs zurück. |
 > | Aktion | Microsoft.Sql/locations/longTermRetentionBackups/read | Listet die Sicherungen zur langfristigen Aufbewahrung für jede Datenbank auf jedem Server an einem Speicherort auf. |
 > | Aktion | Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read | Listet die Sicherungen zur langfristigen Aufbewahrung für jede Datenbank auf jedem Server auf. |
 > | Aktion | Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete | Löscht eine Sicherung zur langfristigen Aufbewahrung. |
@@ -4067,8 +4547,6 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/completeRestore/action | Führt den Vorgang zur Wiederherstellung einer verwalteten Datenbank durch. |
 > | Aktion | Microsoft.Sql/locations/managedTransparentDataEncryptionAzureAsyncOperation/read | Ruft gegenwärtig ausgeführte Vorgänge für Transparent Data Encryption einer verwalteten Datenbank ab. |
 > | Aktion | Microsoft.Sql/locations/managedTransparentDataEncryptionOperationResults/read | Ruft gegenwärtig ausgeführte Vorgänge für Transparent Data Encryption einer verwalteten Datenbank ab. |
-> | Aktion | Microsoft.Sql/locations/networkInterfaceAzureAsyncOperation/read | Gibt die Details eines asynchronen Azure-Vorgangs für eine bestimmte Netzwerkschnittstelle zurück. |
-> | Aktion | Microsoft.Sql/locations/networkInterfaceOperationResults/read | Gibt die Details des Vorgangs der bestimmten Netzwerkschnittstelle zurück. |
 > | Aktion | Microsoft.Sql/locations/read | Ruft die verfügbaren Standorte für ein bestimmtes Abonnement ab. |
 > | Aktion | Microsoft.Sql/locations/syncAgentOperationResults/read | Ruft das Ergebnis des Ressourcenvorgangs des Synchronisierungs-Agents ab. |
 > | Aktion | Microsoft.Sql/locations/syncDatabaseIds/read | Ruft die Synchronisierungsdatenbank-IDs für eine bestimmte Region und ein bestimmtes Abonnement ab. |
@@ -4081,6 +4559,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/managedInstances/administrators/read | Ruft eine Liste der Administratoren für verwaltete Instanzen ab. |
 > | Aktion | Microsoft.Sql/managedInstances/administrators/write | Erstellt oder aktualisiert den Administrator für verwaltete Instanzen mit den angegebenen Parametern. |
 > | Aktion | Microsoft.Sql/managedInstances/databases/delete | Löscht eine vorhandene verwaltete Datenbank. |
+> | Aktion | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
+> | Aktion | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
+> | Aktion | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/logDefinitions/read | Ruft die verfügbaren Protokolle für Datenbanken der verwalteten Instanz ab. |
 > | Aktion | Microsoft.Sql/managedInstances/databases/read | Ruft eine vorhandene verwaltete Datenbank ab. |
 > | Aktion | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/read | Dient zum Abrufen von Details zur Bedrohungserkennungsrichtlinie von Datenbanken, die für eine bestimmte verwaltete Datenbank konfiguriert ist. |
 > | Aktion | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/write | Dient zum Ändern der Bedrohungserkennungsrichtlinie für eine bestimmte verwaltete Datenbank. |
@@ -4105,10 +4586,18 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/managedInstances/keys/write | Erstellt einen Schlüssel mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den Schlüssel der verwalteten Instanz. |
 > | Aktion | Microsoft.Sql/managedInstances/metricDefinitions/read | Ruft Metrikdefinitionen der verwalteten Instanz ab. |
 > | Aktion | Microsoft.Sql/managedInstances/metrics/read | Ruft Metriken der verwalteten Instanz ab. |
+> | Aktion | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
+> | Aktion | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
+> | Aktion | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/logDefinitions/read | Ruft die verfügbaren Protokolle für verwaltete Instanzen ab. |
+> | Aktion | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/metricDefinitions/read | Dient zum Zurückgeben verfügbarer Metriken für verwaltete Instanzen. |
 > | Aktion | Microsoft.Sql/managedInstances/read | Gibt die Liste der verwalteten Instanzen zurück oder ruft die Eigenschaften für die angegebene verwaltete Instanz ab. |
+> | Aktion | Microsoft.Sql/managedInstances/restorableDroppedDatabases/read | Gibt eine Liste der wiederherstellbaren gelöschten verwalteten Datenbanken zurück. |
 > | Aktion | Microsoft.Sql/managedInstances/securityAlertPolicies/read | Dient zum Abrufen von Details zur Richtlinie zur Bedrohungserkennung bei verwalteten Servern, die für einen bestimmten verwalteten Server konfiguriert ist. |
 > | Aktion | Microsoft.Sql/managedInstances/securityAlertPolicies/write | Dient zum Ändern der Richtlinie zur Bedrohungserkennung bei verwalteten Servern für einen bestimmten verwalteten Server. |
 > | Aktion | Microsoft.Sql/managedInstances/tdeCertificates/action | Erstellt oder aktualisiert das TDE-Zertifikat. |
+> | Aktion | Microsoft.Sql/managedInstances/vulnerabilityAssessments/delete | Entfernt die Sicherheitsrisikobewertung für eine bestimmte verwaltete Instanz. |
+> | Aktion | Microsoft.Sql/managedInstances/vulnerabilityAssessments/read | Dient zum Abrufen von Details zur Sicherheitsrisikobewertung, die für eine bestimmte verwaltete Instanz konfiguriert ist. |
+> | Aktion | Microsoft.Sql/managedInstances/vulnerabilityAssessments/write | Ändert die Sicherheitsrisikobewertung für eine bestimmte verwaltete Instanz. |
 > | Aktion | Microsoft.Sql/managedInstances/write | Erstellt eine verwaltete Instanz mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die verwaltete Instanz. |
 > | Aktion | Microsoft.Sql/operations/read | Ruft die verfügbaren REST-Vorgänge ab. |
 > | Aktion | Microsoft.Sql/register/action | Registriert das Abonnement für den Microsoft SQL-Datenbankressourcenanbieter und ermöglicht die Erstellung von Microsoft SQL-Datenbanken. |
@@ -4287,11 +4776,12 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/servers/firewallRules/write | Erstellt eine Serverfirewallregel mit den angegebenen Parametern, aktualisiert die Eigenschaften für die angegebene Regel oder überschreibt alle vorhandenen Regeln durch neue Serverfirewallregel. |
 > | Aktion | Microsoft.Sql/servers/import/action | Dient zum Erstellen einer neuen Datenbank auf dem Server und zum Bereitstellen von Schema und Daten aus einem DACPAC-Paket. |
 > | Aktion | Microsoft.Sql/servers/importExportOperationResults/read | Ruft gegenwärtig ausgeführte Import-/Exportvorgänge ab. |
+> | Aktion | Microsoft.Sql/servers/interfaceEndpointProfiles/delete | Löscht das angegebene Schnittstellenendpunktprofil. |
+> | Aktion | Microsoft.Sql/servers/interfaceEndpointProfiles/read | Gibt die Eigenschaften für das angegebene Schnittstellenendpunktprofil zurück. |
+> | Aktion | Microsoft.Sql/servers/interfaceEndpointProfiles/write | Erstellt ein Schnittstellenendpunktprofil mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Tags für das angegebene Schnittstellenendpunktprofil. |
 > | Aktion | Microsoft.Sql/servers/keys/delete | Löscht einen vorhandenen Serverschlüssel. |
 > | Aktion | Microsoft.Sql/servers/keys/read | Gibt die Liste der Serverschlüssel zurück oder ruft die Eigenschaften für den angegebenen Serverschlüssel ab. |
 > | Aktion | Microsoft.Sql/servers/keys/write | Erstellt einen Schlüssel mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Serverschlüssel. |
-> | Aktion | Microsoft.Sql/servers/networkInterfaces/read | Gibt die Eigenschaften für die angegebenen Netzwerkschnittstelle zurück. |
-> | Aktion | Microsoft.Sql/servers/networkInterfaces/write | Erstellt eine Netzwerkschnittstelle mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Tags für die angegebene Netzwerkschnittstelle. |
 > | Aktion | Microsoft.Sql/servers/operationResults/read | Ruft gegenwärtig ausgeführte Servervorgänge ab. |
 > | Aktion | Microsoft.Sql/servers/providers/Microsoft.Insights/metricDefinitions/read | Dient zum Zurückgeben verfügbarer Metriken für Server. |
 > | Aktion | Microsoft.Sql/servers/read | Gibt die Liste der Server zurück oder ruft die Eigenschaften für den angegebenen Server ab. |
@@ -4314,6 +4804,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/servers/virtualNetworkRules/delete | Löscht eine vorhandene Regel für virtuelle Netzwerke. |
 > | Aktion | Microsoft.Sql/servers/virtualNetworkRules/read | Gibt die Liste der Regeln für virtuelle Netzwerke zurück oder ruft die Eigenschaften für die angegebene Regel für virtuelle Netzwerke ab. |
 > | Aktion | Microsoft.Sql/servers/virtualNetworkRules/write | Erstellt eine Regel für virtuelle Netzwerke mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene Regel für virtuelle Netzwerke. |
+> | Aktion | Microsoft.Sql/servers/vulnerabilityAssessments/delete | Entfernt die Sicherheitsrisikobewertung für einen bestimmten Server. |
+> | Aktion | Microsoft.Sql/servers/vulnerabilityAssessments/read | Dient zum Abrufen von Details zur Sicherheitsrisikobewertung, die für einen bestimmten Server konfiguriert ist. |
+> | Aktion | Microsoft.Sql/servers/vulnerabilityAssessments/write | Ändert die Sicherheitsrisikobewertung für einen bestimmten Server. |
 > | Aktion | Microsoft.Sql/servers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
 > | Aktion | Microsoft.Sql/unregister/action | Hebt die Registrierung für das Abonnement für den Microsoft SQL-Datenbankressourcenanbieter auf und ermöglicht die Erstellung von Microsoft SQL-Datenbanken. |
 > | Aktion | Microsoft.Sql/virtualClusters/read | Gibt die Liste der Regeln für virtuelle Cluster zurück oder ruft die Eigenschaften für das angegebene virtuelle Cluster ab. |
@@ -4332,8 +4825,8 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Storage/skus/read | Listet die von Microsoft.Storage unterstützten SKUs auf. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action | Gibt das Ergebnis beim Hinzufügen von Blobinhalten zurück. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Gibt das Ergebnis beim Löschen eines Blobs zurück. |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteAutomaticSnapshot/action | Gibt das Ergebnis der Löschung einer automatischen Momentaufnahme zurück. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Gibt ein Blob oder eine Liste von Blobs zurück. |
-> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/runAsSuperUser/action | Gibt das Ergebnis des Blobbefehls zurück. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Gibt das Ergebnis beim Schreiben eines Blobs zurück. |
 > | Aktion | Microsoft.Storage/storageAccounts/blobServices/containers/clearLegalHold/action | Löscht die rechtliche Aufbewahrungspflicht für Blobcontainer. |
 > | Aktion | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Gibt das Ergebnis beim Löschen eines Containers zurück. |
@@ -4345,7 +4838,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Storage/storageAccounts/blobServices/containers/read | Gibt einen Container oder eine Liste von Containern zurück. |
 > | Aktion | Microsoft.Storage/storageAccounts/blobServices/containers/setLegalHold/action | Legt die rechtliche Aufbewahrungspflicht für Blobcontainer fest. |
 > | Aktion | Microsoft.Storage/storageAccounts/blobServices/containers/write | Hiermit wird das Ergebnis des Vorgangs zum Festlegen oder Leasen eines Blobcontainers zurückgegeben. |
-> | DataAction | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Gibt einen Benutzerdelegierungsschlüssel für den Blobdienst zurück. |
+> | Aktion | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Gibt einen Benutzerdelegierungsschlüssel für den Blobdienst zurück. |
 > | Aktion | Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
 > | Aktion | Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
 > | Aktion | Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/logDefinitions/read | Ruft die Protokolldefinition für das Blob ab. |
@@ -4353,13 +4846,11 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Storage/storageAccounts/blobServices/read | Gibt Eigenschaften oder Statistiken des Blob-Diensts zurück. |
 > | Aktion | Microsoft.Storage/storageAccounts/blobServices/write | Hiermit wird das Ergebnis des Vorgangs zum Festlegen von Eigenschaften des Blob-Diensts zurückgegeben. |
 > | Aktion | Microsoft.Storage/storageAccounts/delete | Löscht ein vorhandenes Speicherkonto. |
-> | Aktion | Microsoft.Storage/storageAccounts/fileServices/fileShare/delete | Ermöglicht dem Benutzer das Löschen der Dateifreigabe. |
-> | Aktion | Microsoft.Storage/storageAccounts/fileServices/fileShare/read | Ermöglicht dem Benutzer das Lesen der Dateifreigabe. |
-> | Aktion | Microsoft.Storage/storageAccounts/fileServices/fileShare/write | Ermöglicht dem Benutzer das Schreiben der Dateifreigabe. |
 > | Aktion | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
 > | Aktion | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
 > | Aktion | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/logDefinitions/read | Ruft die Protokolldefinition für die Datei ab. |
 > | Aktion | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/metricDefinitions/read | Hiermit wird die Liste der Microsoft Storage-Metrikdefinitionen abgerufen. |
+> | Aktion | Microsoft.Storage/storageAccounts/lastsynctime/read | Gibt den Zeitpunkt der letzten Synchronisierung für das Speicherkonto zurück. |
 > | Aktion | Microsoft.Storage/storageAccounts/listAccountSas/action | Gibt das Konto-SAS-Token für das angegebene Speicherkonto zurück. |
 > | Aktion | Microsoft.Storage/storageAccounts/listkeys/action | Gibt die Zugriffsschlüssel für das angegebene Speicherkonto zurück. |
 > | Aktion | Microsoft.Storage/storageAccounts/listServiceSas/action | Gibt das Dienst-SAS-Token für das angegebene Speicherkonto zurück. |
@@ -4382,6 +4873,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Storage/storageAccounts/queueServices/write | Gibt das Ergebnis beim Festlegen von Eigenschaften des Warteschlangendiensts zurück. |
 > | Aktion | Microsoft.Storage/storageAccounts/read | Gibt die Liste mit Speicherkonten zurück oder ruft die Eigenschaften für das angegebene Speicherkonto ab. |
 > | Aktion | Microsoft.Storage/storageAccounts/regeneratekey/action | Generiert die Zugriffsschlüssel für das angegebene Speicherkonto neu. |
+> | Aktion | Microsoft.Storage/storageAccounts/revokeUserDelegationKeys/action | Widerruft alle Benutzerdelegierungsschlüssel für das angegebene Speicherkonto. |
 > | Aktion | Microsoft.Storage/storageAccounts/services/diagnosticSettings/write | Dient zum Erstellen/Aktualisieren von Speicherkonto-Diagnoseeinstellungen. |
 > | Aktion | Microsoft.Storage/storageAccounts/tableServices/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
 > | Aktion | Microsoft.Storage/storageAccounts/tableServices/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
@@ -4395,7 +4887,8 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > [!div class="mx-tdCol2BreakAll"]
 > | Aktionstyp | Vorgang | Beschreibung |
 > | --- | --- | --- |
-> | Aktion | microsoft.storagesync/locations/checkNameAvailability/action | Überprüft die Verfügbarkeit des Namens für die Speichersynchronisierungsdienste. |
+> | Aktion | microsoft.storagesync/locations/checkNameAvailability/action | Prüft, ob der Name des Speichersynchronisierungsdiensts gültig ist und noch nicht verwendet wird. |
+> | Aktion | microsoft.storagesync/locations/workflows/operations/read | Ruft den Status eines asynchronen Vorgangs ab. |
 > | Aktion | microsoft.storagesync/storageSyncServices/delete | Löscht Speichersynchronisierungsdienste. |
 > | Aktion | microsoft.storagesync/storageSyncServices/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Metriken für Speichersynchronisierungsdienste ab. |
 > | Aktion | microsoft.storagesync/storageSyncServices/read | Liest Speichersynchronisierungsdienste. |
@@ -4404,7 +4897,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | microsoft.storagesync/storageSyncServices/registeredServers/read | Liest registrierte Server. |
 > | Aktion | microsoft.storagesync/storageSyncServices/registeredServers/write | Erstellt oder aktualisiert registrierte Server. |
 > | Aktion | microsoft.storagesync/storageSyncServices/syncGroups/cloudEndpoints/delete | Löscht Cloudendpunkte. |
-> | Aktion | microsoft.storagesync/storageSyncServices/syncGroups/cloudEndpoints/operationresults/read | Standort-API für asynchrone Sicherungsaufrufe |
+> | Aktion | microsoft.storagesync/storageSyncServices/syncGroups/cloudEndpoints/operationresults/read | Ruft den Status eines asynchronen Sicherungs-/Wiederherstellungsvorgangs ab. |
 > | Aktion | microsoft.storagesync/storageSyncServices/syncGroups/cloudEndpoints/postbackup/action | Ruft diese Aktion nach der Sicherung auf. |
 > | Aktion | microsoft.storagesync/storageSyncServices/syncGroups/cloudEndpoints/postrestore/action | Ruft diese Aktion nach der Wiederherstellung auf. |
 > | Aktion | microsoft.storagesync/storageSyncServices/syncGroups/cloudEndpoints/prebackup/action | Ruft diese Aktion vor der Sicherung auf. |
@@ -4421,6 +4914,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints/recallAction/action | Ruft diese Aktion auf, um Dateien auf einem Server abzurufen. |
 > | Aktion | microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints/write | Hiermit erstellen oder aktualisieren Sie Serverendpunkte. |
 > | Aktion | microsoft.storagesync/storageSyncServices/syncGroups/write | Hiermit erstellen oder aktualisieren Sie Synchronisierungsgruppen. |
+> | Aktion | microsoft.storagesync/storageSyncServices/workflows/operationresults/read | Ruft den Status eines asynchronen Vorgangs ab. |
+> | Aktion | microsoft.storagesync/storageSyncServices/workflows/operations/read | Ruft den Status eines asynchronen Vorgangs ab. |
+> | Aktion | microsoft.storagesync/storageSyncServices/workflows/read | Dient zum Lesen von Workflows. |
 > | Aktion | microsoft.storagesync/storageSyncServices/write | Erstellt oder aktualisiert Speichersynchronisierungsdienste. |
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple

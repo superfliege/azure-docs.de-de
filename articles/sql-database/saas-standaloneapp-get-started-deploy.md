@@ -1,21 +1,23 @@
 ---
-title: Tutorial für mehrinstanzenfähige SaaS-Anwendungen – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Tutorial für SaaS-Anwendungen mit einem Mandanten – Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Stellen Sie eine eigenständige SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet, bereit, und untersuchen Sie sie.
-keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: 32cfa2e9bd48dd4e27da5c4010391c032d67d96b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: sstein
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 1e74a0c915471fecb3b8e0662559eb5bfe189b3d
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644721"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423016"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Untersuchen einer eigenständigen SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet
 
@@ -25,7 +27,7 @@ Das Muster für eigenständige Anwendungen oder App-pro-Mandant stellt eine Anwe
 
 In diesem Tutorial stellen Sie drei eigenständige Anwendungen für drei Mandanten in Ihrem Azure-Abonnement bereit.  Sie haben Vollzugriff auf die einzelnen Anwendungskomponenten, um diese untersuchen und verwenden zu können.
 
-Der Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) verfügbar.
+Der Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) verfügbar. Die Anwendung wurde mit Visual Studio 2015 erstellt und lässt sich ohne Aktualisierung in Visual Studio 2017 nicht erfolgreich öffnen und kompilieren.
 
 
 In diesem Tutorial lernen Sie Folgendes kennen:

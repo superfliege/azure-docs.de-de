@@ -3,19 +3,22 @@ title: 'SSMS: Herstellen der Verbindung und Abfragen von Daten in Azure SQL-Date
 description: Erfahren Sie, wie Sie über SQL Server Management Studio (SSMS) eine Verbindung mit einer SQL-Datenbank in Azure herstellen. Führen Sie anschließend T-SQL-Anweisungen (Transact-SQL) aus, um Daten abzufragen und zu bearbeiten.
 keywords: Verbinden mit SQL-Datenbank, SQL Server Management Studio
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,DBs & servers
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: quickstart
-ms.date: 08/01/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 9177ad9cc4cbb668599d35b295ab939cea148a5a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.reviewer: ''
+manager: craigg
+ms.date: 08/01/2018
+ms.openlocfilehash: 4c8b8a609fe5aa531570805d7a58141a6df84090
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412813"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063216"
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten
 
@@ -26,6 +29,8 @@ ms.locfileid: "39412813"
 In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+
+Diese Schnellstartanleitung setzt auch voraus, dass Sie eine Firewallregel auf Serverebene konfigurieren. Ein Schnellstartanleitung für die Vorgehensweise finden Sie unter [Erstellen von Firewallregeln auf Serverebene Regel](sql-database-get-started-portal-firewall.md).
 
 #### <a name="install-the-latest-ssms"></a>Installieren der neuesten Version von SSMS
 

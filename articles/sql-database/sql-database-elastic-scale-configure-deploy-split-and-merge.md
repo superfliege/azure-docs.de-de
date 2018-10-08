@@ -2,19 +2,22 @@
 title: Bereitstellen eines Split-Merge-Diensts | Microsoft-Dokumentation
 description: Verwenden Sie das Split-Merge-Tool, um Daten zwischen Sharddatenbanken zu verschieben.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 51a5f70cc56b2a4196ee7b151be0af3a9e16fc4f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: e277e2fa5ca7062cde1c0061e585dfb092337d4a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646931"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159344"
 ---
 # <a name="deploy-a-split-merge-service"></a>Bereitstellen eines Split-Merge-Diensts
 Mit dem Split-Merge-Tool können Sie Daten zwischen Sharddatenbanken verschieben. Siehe [Skalierung mit dem Split-Merge-Tool für elastische Datenbanken](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -32,10 +35,8 @@ Die Dateien werden in einem Verzeichnis mit dem Namen **Microsoft.Azure.SqlDatab
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Erstellen Sie eine Azure SQL-Datenbank, die als Split-Merge-Statusdatenbank verwendet wird. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Erstellen Sie eine neue **SQL-Datenbank**. Geben Sie einen Namen für die Datenbank ein, und erstellen Sie einen neuen Administrator und ein neues Kennwort. Achten Sie darauf, dass Sie den Namen und das Kennwort zur späteren Verwendung notieren.
 2. Achten Sie darauf, dass Ihr Azure SQL-Datenbankserver Verbindungen mit Azure-Diensten zulässt. Stellen Sie im Portal in den **Firewalleinstellungen** sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** auf **Ein** festgelegt ist. Klicken Sie auf das Symbol "Speichern".
-   
-   ![Zulässige Dienste][1]
-3. Erstellen Sie ein Azure Storage-Konto, das für die Diagnoseausgabe verwendet wird. Öffnen Sie das Azure-Portal. Klicken Sie in der linken Leiste auf **Ressource erstellen**, klicken Sie auf **Daten und Speicher** und dann auf **Speicher**.
-4. Erstellen Sie einen Azure-Cloud-Dienst, der den Split-Merge-Dienst enthält.  Öffnen Sie das Azure-Portal. Klicken Sie in der linken Leiste auf **Ressource erstellen** und dann auf **Compute**, **Clouddienst** und **Erstellen**. 
+3. Erstellen Sie ein Azure-Speicherkonto für die Diagnoseausgabe.
+4. Erstellen Sie einen Azure-Clouddienst für den Split-Merge-Dienst.
 
 ## <a name="configure-your-split-merge-service"></a>Konfigurieren des Split-Merge-Diensts
 ### <a name="split-merge-service-configuration"></a>Konfiguration des Split-Merge-Diensts
@@ -118,17 +119,14 @@ Für die Webrolle:
 Beachten Sie, dass in Produktionsbereitstellungen für die Zertifizierungsstelle, die Verschlüsselung, das Serverzertifikat und die Clientzertifikate getrennte Zertifikate verwendet werden müssen. Ausführliche Anweisungen finden Sie unter [Sicherheitskonfiguration](sql-database-elastic-scale-split-merge-security-configuration.md).
 
 ## <a name="deploy-your-service"></a>Bereitstellen des Diensts
-1. Öffnen Sie das [Azure-Portal](https://manage.windowsazure.com).
-2. Klicken Sie links auf die Registerkarte **Cloud-Dienste** , und wählen Sie den zuvor erstellten Cloud-Dienst aus.
-3. Klicken Sie auf **Dashboard**.
-4. Wählen Sie die Stagingumgebung aus, und klicken Sie dann auf **Laden Sie eine neue Stagingbereitstellung hoch**.
-   
-   ![Wird bereitgestellt][3]
+1. [Navigieren Sie zum Azure-Portal](https://portal.azure.com).
+2. Wählen Sie den Clouddienst aus, den Sie zuvor erstellt haben.
+3. Klicken Sie auf **Overview**.
+4. Wählen Sie die Stagingumgebung aus, und klicken Sie dann auf **Hochladen**.
 5. Geben Sie im Dialogfeld eine Bezeichnung für die Bereitstellung ein. Klicken Sie sowohl unter „Paket“ als auch „Konfiguration“ auf „Aus lokaler Ressource“, und wählen Sie die Datei **SplitMergeService.cspkg** und die zuvor konfigurierte CSCFG-Datei aus.
 6. Stellen Sie sicher, dass das Kontrollkästchen **Auch dann bereitstellen, wenn für eine oder mehrere Rollen nur eine Instanz vorhanden ist** aktiviert ist.
 7. Aktivieren Sie die Schaltfläche mit dem Häkchen unten rechts, um die Bereitstellung zu starten. Die Ausführung dauert einige Minuten.
 
-   ![Hochladen][4]
 
 ## <a name="troubleshoot-the-deployment"></a>Problembehandlung bei der Bereitstellung
 Wenn Ihre Webrolle nicht online geschaltet wird, liegt möglicherweise ein Problem mit der Sicherheitskonfiguration vor. Überprüfen Sie, ob SSL wie oben beschrieben konfiguriert ist.
@@ -144,11 +142,11 @@ Wenn die Workerrolle nicht online geschaltet wird, während der Vorgang bei der 
    ```
 
 * Stellen Sie sicher, dass der Servername nicht mit **https://** beginnt.
-* Achten Sie darauf, dass Ihr Azure SQL-Datenbankserver Verbindungen mit Azure-Diensten zulässt. Zu diesem Zweck öffnen Sie https://manage.windowsazure.com, klicken Sie auf der linken Seite auf „SQL-Datenbanken“, klicken Sie oben auf „Server“, und wählen Sie den Server aus. Klicken Sie oben auf **Konfigurieren**, und stellen Sie sicher, dass die Einstellung für **Azure-Dienste** auf „Ja“ festgelegt ist. (Siehe den Abschnitt „Voraussetzungen“ am Anfang dieses Artikels.)
+* Achten Sie darauf, dass Ihr Azure SQL-Datenbankserver Verbindungen mit Azure-Diensten zulässt. Öffnen Sie dazu Ihre Datenbak im Portal, und stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** auf **Ein**** festgelegt ist.
 
 ## <a name="test-the-service-deployment"></a>Testen der Dienstbereitstellung
 ### <a name="connect-with-a-web-browser"></a>Herstellen einer Verbindung mit einem Webbrowser
-Ermitteln Sie den Webendpunkt Ihres Split-Merge-Diensts. Sie finden diesen im klassischen Azure-Portal im **Dashboard** Ihres Clouddiensts unter **Website-URL** auf der rechten Seite. Ersetzen Sie **http://** durch **https://**, da die Standardsicherheitseinstellungen den HTTP-Endpunkt deaktivieren. Laden Sie die Seite für diese URL in Ihrem Browser.
+Ermitteln Sie den Webendpunkt Ihres Split-Merge-Diensts. Sie finden diesen im Portal, indem Sie zu **Übersicht** für Ihren Clouddienst wechseln und auf der rechten Seite unter **Website-URL** nachschauen. Ersetzen Sie **http://** durch **https://**, da die Standardsicherheitseinstellungen den HTTP-Endpunkt deaktivieren. Laden Sie die Seite für diese URL in Ihrem Browser.
 
 ### <a name="test-with-powershell-scripts"></a>Testen mit PowerShell-Skripts
 Die Bereitstellung und Ihre Umgebung können getestet werden, indem Sie die im Paket enthaltenen PowerShell-Beispielskripts ausführen.

@@ -1,22 +1,23 @@
 ---
 title: Muster für mehrinstanzenfähige SaaS-Anwendungen – Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Anforderungen und allgemeinen Datenarchitekturmuster von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software-as-a-Service), die in einer Azure-Cloudumgebung ausgeführt werden.
-keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-author: billgib
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.reviewer: genemi
-ms.author: billgib
-ms.openlocfilehash: 39be48019979ceb1337cbd3008c8cf071d403310
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+author: MightyPen
+ms.author: genemi
+ms.reviewer: billgib, sstein
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: eff6859dda771bfc2ca2e709578983b6113c6057
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737679"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227485"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
@@ -74,7 +75,7 @@ In diesem Modell wird die gesamte Anwendung mehrmals installiert, nämlich einma
 
 Jede App-Instanz wird in einer separaten Azure-Ressourcengruppe installiert.  Die Ressourcengruppe kann einem Abonnement zugeordnet sein, das dem Softwarehersteller oder Mandanten gehört.  In beiden Fällen kann der Hersteller die Software für den Mandanten verwalten.  Jede Anwendungsinstanz ist so konfiguriert, dass sie eine Verbindung mit der entsprechenden Datenbank herstellt.
 
-Jede Mandantendatenbank wird als eigenständige Datenbank bereitgestellt.  Dieses Modell ermöglicht die umfangreichste Datenbankisolation.  Für die Isolation müssen jeder Datenbank jedoch genügend Ressourcen zugewiesen werden, damit Spitzenlasten verarbeitet werden können.  Hier ist entscheidend, dass Pools für elastische Datenbanken nicht für Datenbanken verwendet werden können, die in verschiedenen Ressourcengruppen oder für verschiedene Abonnements bereitgestellt werden.  Aufgrund dieser Beschränkung zählt dieses Modell einer eigenständigen Einzelinstanz-App hinsichtlich der gesamten Datenbankkosten zur teuersten Lösung.
+Jede Mandantendatenbank wird als Einzeldatenbank bereitgestellt.  Dieses Modell ermöglicht die umfangreichste Datenbankisolation.  Für die Isolation müssen jeder Datenbank jedoch genügend Ressourcen zugewiesen werden, damit Spitzenlasten verarbeitet werden können.  Hier ist entscheidend, dass Pools für elastische Datenbanken nicht für Datenbanken verwendet werden können, die in verschiedenen Ressourcengruppen oder für verschiedene Abonnements bereitgestellt werden.  Aufgrund dieser Beschränkung zählt dieses Modell einer eigenständigen Einzelinstanz-App hinsichtlich der gesamten Datenbankkosten zur teuersten Lösung.
 
 #### <a name="vendor-management"></a>Herstellerseitige Verwaltung
 
@@ -131,13 +132,13 @@ Ein weiteres verfügbares Muster besteht darin, viele Mandanten in einer mehrins
 
 #### <a name="lower-cost"></a>Kostensenkung
 
-Im Allgemeinen weisen mehrinstanzenfähige Datenbanken die niedrigsten Kosten pro Mandant auf.  Die Ressourcenkosten für eine eigenständige Datenbank sind niedriger als die für einen gleichwertig großen Pool für elastische Datenbanken.  Darüber hinaus können Millionen von Mandanten in Szenarien, in denen Mandanten nur einen begrenzten Speicher benötigen, eventuell in einer einzigen Datenbank gespeichert werden.  Es gibt keine Pools für elastische Datenbanken, die Millionen von Datenbanken enthalten können.  Eine Lösung mit 1000 Pools – wobei ein Pool 1000 Datenbanken enthält – kann jedoch eine Größenordnung in Millionenhöhe erreichen und damit eine umständliche Verwaltung nach sich ziehen.
+Im Allgemeinen weisen mehrinstanzenfähige Datenbanken die niedrigsten Kosten pro Mandant auf.  Die Ressourcenkosten für eine Einzeldatenbank sind niedriger als die für einen gleichwertig großen Pool für elastische Datenbanken.  Darüber hinaus können Millionen von Mandanten in Szenarien, in denen Mandanten nur einen begrenzten Speicher benötigen, eventuell in einer einzigen Datenbank gespeichert werden.  Es gibt keine Pools für elastische Datenbanken, die Millionen von Datenbanken enthalten können.  Eine Lösung mit 1000 Pools – wobei ein Pool 1000 Datenbanken enthält – kann jedoch eine Größenordnung in Millionenhöhe erreichen und damit eine umständliche Verwaltung nach sich ziehen.
 
 Im Folgenden werden zwei Varianten eines mehrinstanzenfähigen Datenbankmodells erläutert, wobei das mehrinstanzenfähige Modell mit Sharding das flexibelste Modell mit der höchsten Skalierbarkeit darstellt.
 
 ## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Mehrinstanzenfähige App mit einer Einzelinstanzdatenbank
 
-Das einfachste Muster einer mehrinstanzenfähigen Datenbank verwendet eine einzelne eigenständige Datenbank, um Daten für alle Mandanten zu hosten.  Bei einer steigenden Anzahl von Mandanten muss die Datenbank mit weiteren Speicher- und Computeressourcen zentral hochskaliert werden.  Eine solche zentrale Hochskalierung könnte Abhilfe leisten, wobei es jedoch immer eine finale Begrenzung für die Skalierung gibt.  Allerdings wird die Datenbankverwaltung lange vor Erreichen dieser Begrenzung zunehmend umständlicher.
+Das einfachste Muster einer mehrinstanzenfähigen Datenbank verwendet eine einzelne Datenbank, um Daten für alle Mandanten zu hosten.  Bei einer steigenden Anzahl von Mandanten muss die Datenbank mit weiteren Speicher- und Computeressourcen zentral hochskaliert werden.  Eine solche zentrale Hochskalierung könnte Abhilfe leisten, wobei es jedoch immer eine finale Begrenzung für die Skalierung gibt.  Allerdings wird die Datenbankverwaltung lange vor Erreichen dieser Begrenzung zunehmend umständlicher.
 
 Bei mehrinstanzenfähigen Datenbanken ist die Implementierung von Verwaltungsvorgängen, die sich auf einzelne Mandanten konzentrieren, komplexer.  Mit steigender Größenordnung könnte dies dazu führen, dass diese Vorgänge unzumutbar langsam werden.  Ein Beispiel ist die Point-in-Time-Wiederherstellung von Daten für nur einen Mandanten.
 
@@ -173,7 +174,7 @@ Im hybriden Modell enthalten alle Datenbanken im Schema die Mandanten-ID.  Alle 
 
 Sie können einen bestimmten Mandanten jederzeit in eine eigene mehrinstanzenfähige Datenbank verschieben.  Sie können dies jederzeit rückgängig machen und den Mandanten wieder zu einer Datenbank mit mehreren Mandanten wechseln.  Sie können einem Mandanten bei der Bereitstellung einer neuen Datenbank auch eine neue Einzelinstanzdatenbank zuordnen.
 
-Das hybride Modell erweist sich vor allem dann als hilfreich, wenn große Unterschiede zwischen den Ressourcenanforderungen der identifizierbarer Mandantengruppen herrschen.  Nehmen wir zum Beispiel an, dass Mandanten mit einer kostenlosen Testversion nicht dieselbe hohe Leistungsebene garantiert wird wie Mandanten mit einem Abonnement.  Die Richtlinie könnte vorschreiben, dass Mandanten im kostenlosen Testzeitraum in einer mehrinstanzenfähigen Datenbank, die von allen Mandanten mit der kostenlosen Testversion gemeinsam genutzt wird, gespeichert werden sollen.  Wenn ein Mandant mit der kostenlosen Testversion ein Abonnement für den Diensttarif „Standard“ erwirbt, kann der Mandant in eine andere mehrinstanzenfähige Datenbank verschoben werden, die möglicherweise weniger Mandanten aufweist.  Ein Abonnent, der für das Servicelevel „Premium“ zahlt, kann in seine eigene neue Einzelinstanzdatenbank verschoben werden.
+Das hybride Modell erweist sich vor allem dann als hilfreich, wenn große Unterschiede zwischen den Ressourcenanforderungen der identifizierbarer Mandantengruppen herrschen.  Nehmen wir zum Beispiel an, dass Mandanten mit einer kostenlosen Testversion nicht dieselbe hohe Leistungsebene garantiert wird wie Mandanten mit einem Abonnement.  Die Richtlinie könnte vorschreiben, dass Mandanten im kostenlosen Testzeitraum in einer mehrinstanzenfähigen Datenbank, die von allen Mandanten mit der kostenlosen Testversion gemeinsam genutzt wird, gespeichert werden sollen.  Wenn ein Mandant mit der kostenlosen Testversion ein Abonnement für den Standarddiensttarif erwirbt, kann der Mandant in eine andere mehrinstanzenfähige Datenbank verschoben werden, die möglicherweise weniger Mandanten aufweist.  Ein Abonnent, der für den Premiumdiensttarif bezahlt, kann in seine eigene neue Datenbank mit nur einem Mandanten verschoben werden.
 
 #### <a name="pools"></a>Pools
 
@@ -186,9 +187,9 @@ In der folgenden Tabelle werden die Unterschiede zwischen den wichtigsten Mandan
 | Messung | Eigenständige App | Eine Datenbank pro Mandant | Mehrinstanzenfähige Datenbank mit Shards |
 | :---------- | :------------- | :------------------ | :------------------- |
 | Skalieren | Mittel<br />1 – mehrere 100 | Sehr hoch<br />1 – mehrere 100.000 | Unbegrenzt<br />1 – mehrere 1.000.000 |
-| Mandantenisolation | Sehr hoch | Hoch | Niedrig, ausgenommen für einen (in einer MT-Datenbank einzelnen) Singleton-Mandanten |
+| Mandantenisolation | Sehr hoch | Hoch | Niedrig, ausgenommen für einen (in einer MT-Datenbank einzelnen) Einzelmandanten. |
 | Datenbankkosten pro Mandant | Hoch, für Spitzen dimensioniert | Niedrig, unter Verwendung von Pools | Am niedrigsten, für kleine Mandanten in MT-Datenbanken |
-| Leistungsüberwachung und -verwaltung | Nur pro Mandant | Aggregiert und pro Mandant | Aggregiert, jedoch nur für das Modell pro Mandant für Singletons |
+| Leistungsüberwachung und -verwaltung | Nur pro Mandant | Aggregiert und pro Mandant | Aggregiert, jedoch nur für das Modell pro Mandant für Einzeldatenbanken. |
 | Komplexität der Entwicklung | Niedrig | Niedrig | Mittel, aufgrund von Sharding |
 | Komplexität des Betriebs | Niedrig bis hoch Einzeln einfach, aber im großen Maßstab komplex | Niedrig bis mittel Muster als Abhilfemaßnahme für die Komplexität bei Skalierungen | Niedrig bis hoch Die Verwaltung einzelner Mandanten ist komplex. |
 | &nbsp; ||||

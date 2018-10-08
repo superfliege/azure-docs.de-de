@@ -1,20 +1,21 @@
 ---
-title: Endpunkte für die Videosuche | Microsoft-Dokumentation
-description: Überblick über den API-Endpunkt für die Videosuche.
+title: Videosuche-Endpunkte – Bing-Videosuche
+titlesuffix: Azure Cognitive Services
+description: Überblick über den Endpunkt für die Bing-Videosuche-API.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/04/2017
-ms.author: v-gedod
-ms.openlocfilehash: 9836d9928362ab37b0a81ff5043d99f9bf353f22
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: c153f577f76944d22f9a1b0fb4b24d332d2a02c8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372891"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220770"
 ---
 # <a name="video-search-endpoints"></a>Videosuche-Endpunkte
 Die **Videosuche-API**  umfasst drei Endpunkte.  Endpunkt 1 gibt Videos aus dem Internet basierend auf einer Abfrage zurück. Endpunkt 2 gibt Einblicke über Videos auf Basis des `modules`-URL-Parameters aus.  Endpunkt 3 gibt beliebte Videos zurück.

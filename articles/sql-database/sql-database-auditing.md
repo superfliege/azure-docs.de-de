@@ -2,19 +2,22 @@
 title: Erste Schritte bei der Überwachung von Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Verwenden Sie die Azure SQL-Datenbanküberwachung, um Datenbankereignisse in einem Überwachungsprotokoll nachzuverfolgen.
 services: sql-database
-author: giladmit
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/24/2018
+author: giladmit
 ms.author: giladm
-ms.openlocfilehash: f187a5fe1541f5508e55443abe80fc295ee63c87
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/10/2018
+ms.openlocfilehash: 8ba07b22d247cb9263890a747bd166d63af27e3b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081454"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395746"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung ermöglicht außerdem Folgendes:
@@ -65,50 +68,72 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 2. Navigieren Sie im Bereich für die SQL-Datenbank oder den SQL Server unter der Überschrift „Sicherheit“ zu **Überwachung**.
 
     <a id="auditing-screenshot"></a>![Navigationsbereich][1]
-3. Wenn Sie eine Serverüberwachungsrichtlinie einrichten möchten, können Sie auf dem Blatt für die Datenbanküberwachung den Link **Servereinstellungen anzeigen** auswählen. Anschließend können Sie die Serverüberwachungseinstellungen anzeigen oder ändern. Eine Standardrichtlinie für die Serverüberwachung wird auf alle vorhandenen und neu erstellten Datenbanken auf einem Server angewendet.
+
+3. Wenn Sie eine Serverüberwachungsrichtlinie einrichten möchten, wählen Sie auf dem Blatt für die Datenbanküberwachung den Link **Servereinstellungen anzeigen** aus. Anschließend können Sie die Serverüberwachungseinstellungen anzeigen oder ändern. Eine Standardrichtlinie für die Serverüberwachung wird auf alle vorhandenen und neu erstellten Datenbanken auf einem Server angewendet.
 
     ![Navigationsbereich][2]
+
 4. Wenn Sie die Überwachung auf Datenbankebene aktivieren möchten, ändern Sie **Überwachung** in **EIN**.
 
     Wenn die Serverüberwachung aktiviert ist, existiert die konfigurierte Datenbanküberwachung parallel zur Serverüberwachung.
 
     ![Navigationsbereich][3]
-5. Wählen Sie **Speicherdetails**, um das Blatt **Speicherung von Überwachungsprotokollen** zu öffnen. Wählen Sie das Azure Storage-Konto, in dem die Protokolle gespeichert werden sollen, und dann die Beibehaltungsdauer aus. Die alten Protokolle werden gelöscht. Klicken Sie dann auf **OK**.
 
-    <a id="storage-screenshot"></a>![Navigationsbereich][4]
-6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie [PowerShell-Cmdlets](#subheading-7) oder die [REST-API](#subheading-9) verwenden.
-7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](sql-database-threat-detection-get-started.md).
-8. Klicken Sie auf **Speichern**.
+5. **Neu**: Sie haben nun mehrere Optionen zur Auswahl, um zu konfigurieren, wohin Überwachungsprotokolle geschrieben werden sollen. Sie können die Protokolle in ein Azure-Speicherkonto, einen OMS-Arbeitsbereich für die Nutzung durch Log Analytics oder in einen Event Hub für die Nutzung durch den Event Hub schreiben. Sie können eine beliebige Kombination dieser Optionen konfigurieren, und die Überwachungsprotokolle werden in die jeweils angegebenen Speicherorte geschrieben.
 
+    ![Speicheroptionen](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
+6. Um das Schreiben von Überwachungsprotokollen in ein Speicherkonto zu konfigurieren, wählen Sie **Storage** aus, und öffnen Sie **Speicherdetails**. Wählen Sie das Azure Storage-Konto, in dem die Protokolle gespeichert werden sollen, und dann die Beibehaltungsdauer aus. Die alten Protokolle werden gelöscht. Klicken Sie dann auf **OK**.
 
+    ![Speicherkonto](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
+7. Um das Schreiben von Überwachungsprotokollen in einen OMS-Arbeitsbereich zu konfigurieren, wählen Sie **Log Analytics (Vorschau)** aus, und öffnen Sie **Log Analytics-Details**. Wählen Sie den OMS-Arbeitsbereich aus (oder erstellen Sie ihn), in den Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**.
+
+    ![OMS](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+
+8. Um das Schreiben von Überwachungsprotokollen in einen Event Hub zu konfigurieren, wählen Sie **Event Hub (Vorschau)** aus, und öffnen Sie **Event Hub-Details**. Wählen Sie den Event Hub aus, in den die Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**. Achten Sie darauf, dass sich der Event Hub in derselben Region wie Ihre Datenbank und der Server befindet.
+
+    ![Event Hub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+
+9. Klicken Sie auf **Speichern**.
+10. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie [PowerShell-Cmdlets](#subheading-7) oder die [REST-API](#subheading-9) verwenden.
+11. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](sql-database-threat-detection-get-started.md). 
 
 ## <a id="subheading-3"></a>Analysieren von Überwachungsprotokollen und -berichten
-Überwachungsprotokolle werden in dem Azure-Speicherkonto aggregiert, das Sie während der Einrichtung ausgewählt haben. Sie können Überwachungsprotokolle mithilfe eines Tools wie [Azure Storage-Explorer](http://storageexplorer.com/) untersuchen.
+Wenn Sie Überwachungsprotokolle in Log Analytics schreiben möchten:
+- Verwenden Sie das [Azure-Portal](https://portal.azure.com).  Öffnen Sie die entsprechende Datenbank. Klicken Sie in der Datenbank oben auf der Seite **Überwachung** auf **Überwachungsprotokolle anzeigen**.
 
-Protokolle der Blobüberwachung werden als Sammlung von Blobdateien in einem Container namens **sqldbauditlogs** gespeichert.
+    ![Überwachungsprotokolle anzeigen](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
 
-Weitere Informationen zur Hierarchie des Speicherordners, zu Namenskonventionen und zum Protokollformat finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](https://go.microsoft.com/fwlink/?linkid=829599).
+- Klicken Sie dann am oberen Rand der Seite **Überwachungsdatensätze** auf **In OMS öffnen**. Daraufhin wird die Protokollansicht in Log Analytics geöffnet, wo Sie Zeitbereich und Suchabfrage anpassen können.
 
-Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen:
+    ![In OMS öffnen](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
-* Verwenden Sie das [Azure-Portal](https://portal.azure.com).  Öffnen Sie die entsprechende Datenbank. Klicken Sie oben auf dem Blatt **Überwachung und Bedrohungserkennung** der Datenbank auf **Überwachungsprotokolle anzeigen**.
+- Alternativ können Sie auch vom Blatt „Log Analytics“ auf die Überwachungsprotokolle zugreifen. Öffnen Sie Ihren Log Analytics-Arbeitsbereich und klicken Sie im Abschnitt **Allgemein** auf **Protokolle**. Beginnen Sie mit einer einfachen Abfrage, wie z. B. *"SQLSecurityAuditEvents" suchen*, um die Überwachungsprotokolle anzuzeigen.
+    Von hier aus können Sie auch [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) verwenden, um erweiterte Suchvorgänge in den Überwachungsprotokolldaten auszuführen. Mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards gewährt Log Analytics Ihnen Einblicke in Betriebsabläufe in Echtzeit, sodass Sie Millionen von Datensätzen für all Ihre Workloads und Server analysieren können. Weitere nützliche Informationen zu OMS Log Analytics-Suchsprache und -nefehlen finden Sie unter [Referenz zur Log Analytics-Suche](../log-analytics/log-analytics-log-search.md).
+
+Wenn Sie Überwachungsprotokolle in Event Hub schreiben möchten:
+- Um die Überwachungsprotokolldaten von Event Hub zu nutzen, müssen Sie einen Stream zum Nutzen von Ereignissen einrichten und diese in ein Ziel schreiben. Weitere Informationen finden Sie in der [Dokumentation zu Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
+
+Wenn Sie die Überwachungsprotokolle in ein Azure-Speicherkonto schreiben möchten, gibt es mehrere Methoden zum Anzeigen der Protokolle:
+- Überwachungsprotokolle werden in dem Konto aggregiert, das Sie während der Einrichtung ausgewählt haben. Sie können Überwachungsprotokolle mithilfe eines Tools wie [Azure Storage-Explorer](http://storageexplorer.com/) untersuchen. In Azure Storage werden Überwachungsprotokolle als Sammlung von Blobdateien in einem Container namens **sqldbauditlogs** gespeichert. Weitere Informationen zur Hierarchie des Speicherordners, zu Namenskonventionen und zum Protokollformat finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](https://go.microsoft.com/fwlink/?linkid=829599).
+
+- Verwenden Sie das [Azure-Portal](https://portal.azure.com).  Öffnen Sie die entsprechende Datenbank. Klicken Sie in der Datenbank oben auf der Seite **Überwachung** auf **Überwachungsprotokolle anzeigen**.
 
     ![Navigationsbereich][7]
 
-    Das Blatt **Überwachungsdatensätze** wird geöffnet, auf dem Sie die Protokolle anzeigen können.
+    Der Bereich **Überwachungsdatensätze** wird geöffnet, in dem Sie die Protokolle anzeigen können.
 
-    - Sie können Protokolle bestimmter Daten anzeigen, indem Sie im oberen Bereich des Blatts **Überwachungsdatensätze** auf **Filter** klicken.
+    - Sie können Protokolle für einen bestimmten Zeitraum anzeigen, indem Sie im oberen Bereich der Seite **Überwachungsdatensätze** auf **Filter** klicken.
     - Sie können zwischen Überwachungsdatensätzen wechseln, die anhand der *Serverüberwachungsrichtlinie* oder der *Datenbanküberwachungsrichtlinie* erstellt wurden, indem Sie die Option unter **Überwachungsquelle** ändern.
     - Sie können nur Überwachungsdatensätze zur Einschleusung von SQL-Befehlen anzeigen, indem Sie das Kontrollkästchen **Nur Überwachungsdatensätze zur Einschleusung von SQL-Befehlen anzeigen** aktivieren.
 
        ![Navigationsbereich][8]
 
-* Verwenden Sie die Systemfunktion **sys.fn_get_audit_file** (T-SQL), um die Daten der Überwachungsprotokolle im Tabellenformat zurückzugeben. Weitere Informationen zur Verwendung dieser Funktion finden Sie in der [Dokumentation zu „sys.fn_get_audit_file“](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
+- Verwenden Sie die Systemfunktion **sys.fn_get_audit_file** (T-SQL), um die Daten der Überwachungsprotokolle im Tabellenformat zurückzugeben. Weitere Informationen zur Verwendung dieser Funktion finden Sie unter [sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 
-* Verwenden von **Überwachungsdateien zusammenführen** in SQL Server Management Studio (ab SSMS 17):
+- Verwenden von **Überwachungsdateien zusammenführen** in SQL Server Management Studio (ab SSMS 17):
     1. Wählen Sie im SSMS-Menü **Datei** > **Öffnen** > **Überwachungsdateien zusammenführen**.
 
         ![Navigationsbereich][9]
@@ -118,24 +143,17 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen:
 
     4. Die zusammengeführte Datei wird in SSMS geöffnet. Hier können Sie die Datei anzeigen und analysieren und in eine XEL- oder CSV-Datei oder in eine Tabelle exportieren.
 
-* Verwenden Sie die [Synchronisierungsanwendung](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration), die wir zuvor erstellt haben. Diese wird in Azure ausgeführt und nutzt öffentliche Log Analytics-APIs, um SQL-Überwachungsprotokolle in Log Analytics zu verschieben. Die Synchronisierungsanwendung verschiebt SQL-Überwachungsprotokolle für die Nutzung über das Log Analytics-Dashboard in Log Analytics.
-
-* Verwenden Sie Power BI. Sie können Überwachungsprotokolldateien in Power BI anzeigen und analysieren. Erfahren Sie mehr über [Power BI, und erhalten Sie Zugriff eine herunterladbare Vorlage](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
-
-* Laden Sie Protokolldateien aus Ihrem Azure Storage-Blobcontainer über das Portal oder mithilfe eines Tools wie [Azure Storage-Explorer](http://storageexplorer.com/) herunter.
+- Verwenden Sie Power BI. Sie können Überwachungsprotokolldateien in Power BI anzeigen und analysieren. Weitere Informationen finden Sie unter [Analysieren von Überwachungsprotokolldaten in Power BI](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/). Dort können Sie auch auf eine herunterladbare Vorlage zugreifen.
+- Laden Sie Protokolldateien aus Ihrem Azure Storage-Blobcontainer über das Portal oder mithilfe eines Tools wie [Azure Storage-Explorer](http://storageexplorer.com/) herunter.
     * Nachdem Sie die Protokolldatei lokal heruntergeladen haben, können Sie auf die Datei doppelklicken, um die Protokolle in SSMS zu öffnen, anzuzeigen und zu analysieren.
-    * Sie können mit dem Azure Storage-Explorer auch mehrere Dateien gleichzeitig herunterladen. Klicken Sie mit der rechten Maustaste auf einen bestimmten Unterordner, und wählen Sie **Speichern unter** aus, um die Dateien in einem lokalen Ordner zu speichern.
+    * Sie können mit dem Azure Storage-Explorer auch mehrere Dateien gleichzeitig herunterladen. Klicken Sie dazu mit der rechten Maustaste auf einen bestimmten Unterordner, und wählen Sie **Speichern unter** aus, um die Dateien in einem lokalen Ordner zu speichern.
 
 * Weitere Methoden:
-   * Nach dem Herunterladen mehrerer Dateien oder eines Unterordners, der Protokolldateien enthält, können Sie sie lokal zusammenführen, wie in den Anweisungen weiter oben für das Zusammenführen von Überwachungsdateien in SSMS beschrieben.
-
+   * Nach dem Herunterladen mehrerer Dateien oder eines Unterordners, der Protokolldateien enthält, können Sie die Dateien lokal zusammenführen, wie in den Anweisungen weiter oben für das Zusammenführen von Überwachungsdateien in SSMS beschrieben.
    * Programmgesteuertes Anzeigen von Blobüberwachungsprotokollen:
 
      * Verwenden Sie die C#-Bibliothek [Leser für erweiterte Ereignisse ](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/).
      * Führen Sie [Abfragen von Dateien mit erweiterten Ereignissen](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) mithilfe von PowerShell durch.
-
-
-
 
 ## <a id="subheading-5"></a>Produktionsverfahren
 <!--The description in this section refers to preceding screen captures.-->
@@ -154,16 +172,16 @@ Wenn Sie bei georeplizierten Datenbanken die Überwachung für die primäre Date
 <br>
 
 ### <a id="subheading-6">Erneute Speicherschlüsselgenerierung</a>
-In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich regelmäßig aktualisieren. Wenn Sie die Schlüssel aktualisieren, müssen Sie die Überwachungsrichtlinie neu speichern. Dieser Prozess verläuft wie folgt:
+In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich regelmäßig aktualisieren. Wenn Sie Überwachungsprotokolle in Azure Storage schreiben, müssen Sie Ihre Überwachungsrichtlinie neu speichern, wenn Sie die Schlüssel aktualisieren. Dieser Prozess verläuft wie folgt:
 
-1. Öffnen Sie das Blatt **Speicherdetails**. Wählen Sie im Feld **Speicherzugriffsschlüssel** die Option **Sekundär** aus, und klicken Sie dann auf **OK**. Klicken Sie anschließend oben auf dem Blatt für die Überwachungskonfiguration auf **Speichern**.
+1. Öffnen Sie **Speicherdetails**. Wählen Sie im Feld **Speicherzugriffsschlüssel** die Option **Sekundär** aus, und klicken Sie dann auf **OK**. Klicken Sie anschließend oben auf der Seite für die Überwachungskonfiguration auf **Speichern**.
 
     ![Navigationsbereich][5]
-2. Wechseln Sie zum Blatt für die Speicherkonfiguration, und generieren Sie erneut den primären Zugriffsschlüssel.
+2. Wechseln Sie zur Seite für die Speicherkonfiguration, und generieren Sie erneut den primären Zugriffsschlüssel.
 
     ![Navigationsbereich][6]
-3. Wechseln Sie zurück zum Blatt für die Überwachungskonfiguration, ändern Sie den Speicherzugriffsschlüssel von „Sekundär“ in „Primär“, und klicken Sie dann auf **OK**. Klicken Sie anschließend oben auf dem Blatt für die Überwachungskonfiguration auf **Speichern**.
-4. Wechseln Sie zurück zum Blatt für die Speicherkonfiguration, und generieren Sie erneut den sekundären Zugriffsschlüssel (als Vorbereitung auf den nächsten Schlüsselaktualisierungszyklus).
+3. Wechseln Sie zurück zur Seite für die Überwachungskonfiguration, ändern Sie den Speicherzugriffsschlüssel von „Sekundär“ in „Primär“, und klicken Sie dann auf **OK**. Klicken Sie anschließend oben auf der Seite für die Überwachungskonfiguration auf **Speichern**.
+4. Wechseln Sie wieder zurück zur Seite für die Speicherkonfiguration, und generieren Sie den sekundären Zugriffsschlüssel erneut (in Vorbereitung auf den nächsten Schlüsselaktualisierungszyklus).
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
@@ -199,16 +217,16 @@ Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Date
 
 **REST-API – Blobüberwachung**:
 
-* [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
-* [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
-* [Abrufen einer Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
-* [Abrufen einer Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
+* [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [Abrufen einer Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+* [Abrufen einer Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Filterung:
-* [Erstellen oder Aktualisieren einer *erweiterten* Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-* [Erstellen oder Aktualisieren einer *erweiterten* Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
-* [Abrufen einer *erweiterten* Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
-* [Abrufen einer *erweiterten* Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
+* [Erstellen oder Aktualisieren einer *erweiterten* Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [Erstellen oder Aktualisieren einer *erweiterten* Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [Abrufen einer *erweiterten* Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [Abrufen einer *erweiterten* Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

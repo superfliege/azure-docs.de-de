@@ -2,19 +2,22 @@
 title: Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von DMA | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe von DMA eine SQL Server-Datenbank zu Azure SQL-Datenbank migrieren.
 services: sql-database
-author: sachinpMSFT
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,migrate
-ms.topic: tutorial
-ms.date: 07/02/2018
-ms.author: carlrab
-ms.openlocfilehash: 1d8ec772293354c059f21aaae8006f5c40540058
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 58016636dad24b9b7d5278ce89643e6cd8d5be9e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050203"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162859"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von DMA
 
@@ -246,11 +249,11 @@ Verwenden Sie [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms
 
 ## <a name="change-database-properties"></a>Ändern von Datenbankeigenschaften
 
-Sie können die Dienstebene, die Leistungsstufe und den Kompatibilitätsgrad über SQL Server Management Studio ändern. Es empfiehlt sich, dass Sie während des Importierens eine Datenbank mit einer höheren Leistungsstufe importieren, um die bestmögliche Leistung zu erreichen. Skalieren Sie diese nach dem abgeschlossenen Import jedoch herunter, um Geld zu sparen, bis Sie die importierte Datenbank aktiv verwenden können. Durch Ändern des Kompatibilitätsgrads erreichen Sie eine bessere Leistung und erhalten Zugriff auf die neuesten Funktionen des Azure SQL-Datenbankdiensts. Wenn Sie eine ältere Datenbank migrieren, bleibt ihr Datenbankkompatibilitätsgrad auf der niedrigsten Ebene, die mit der zu importierenden Datenbank kompatibel ist. Weitere Informationen finden Sie unter [Improved query performance with compatibility Level 130 in Azure SQL Database](sql-database-compatibility-level-query-performance-130.md) (Verbesserte Abfrageleistung mit Kompatibilitätsgrad 130 in Azure SQL-Datenbank).
+Sie können den Diensttarif, die Computegröße und den Kompatibilitätsgrad mit SQL Server Management Studio ändern. Während des Importvorgang empfiehlt es sich, für den Import einen höheren Diensttarif oder eine höhere Computegröße zu verwenden, um die bestmögliche Leistung zu erzielen. Skalieren Sie diese nach dem abgeschlossenen Import jedoch wieder herunter, um Geld zu sparen, bis Sie die importierte Datenbank aktiv verwenden können. Durch Ändern des Kompatibilitätsgrads erreichen Sie eine bessere Leistung und erhalten Zugriff auf die neuesten Funktionen des Azure SQL-Datenbankdiensts. Wenn Sie eine ältere Datenbank migrieren, bleibt ihr Datenbankkompatibilitätsgrad auf der niedrigsten Ebene, die mit der zu importierenden Datenbank kompatibel ist. Weitere Informationen finden Sie unter [Improved query performance with compatibility Level 130 in Azure SQL Database](sql-database-compatibility-level-query-performance-130.md) (Verbesserte Abfrageleistung mit Kompatibilitätsgrad 130 in Azure SQL-Datenbank).
 
 1. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf **mySampleDatabase** und dann auf **Neue Abfrage**. Ein Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
 
-2. Führen Sie folgenden Befehl aus, um die auf die Dienstebene auf **Standard** und die Leistungsstufe auf **S1** festzulegen.
+2. Führen Sie den folgenden Befehl aus, um den Diensttarif auf **Standard** und die Computegröße auf **S1** festzulegen.
 
     ```sql
     ALTER DATABASE mySampleDatabase 

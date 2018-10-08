@@ -1,58 +1,106 @@
 ---
-title: 'Schnellstart: Anfordern und Filtern von Bildern mit dem SDK in Node.js'
-description: In diesem Schnellstart fordern Sie Bilder an und filtern die von der Bing-Bildersuche zurückgegebenen Bilder mithilfe von Node.js.
-titleSuffix: Azure cognitive services
+title: 'Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für Node.js'
+description: Verwenden Sie diesen Schnellstart, um Ihre erste Bildsuche mit dem Bing-Bildersuche-SDK durchzuführen, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Node.js-Anwendung sendet ein Bildsuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 02/12/2018
-ms.author: v-gedod
-ms.openlocfilehash: e88c045b220192a617e6b8caf5d8d53f70a25b5e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.topic: quickstart
+ms.date: 08/28/2018
+ms.author: aahi
+ms.openlocfilehash: 2fa3a221d42a522f19b00a4cb5596d93039a85ac
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41929768"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220216"
 ---
-# <a name="quickstart-request-and-filter-images-using-the-sdk-and-nodejs"></a>Schnellstart: Anfordern und Filtern von Bildern mit dem SDK und Node.js
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-nodejs"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK und Node.js
 
-Das Bing-Bildersuche-SDK enthält die Funktionalität der REST-API für Bilderabfragen und das Analysieren von Ergebnissen. 
+Verwenden Sie diesen Schnellstart, um Ihre erste Bildsuche mit dem Bing-Bildersuche-SDK durchzuführen, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache JavaScript-Anwendung sendet ein Bildsuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 
-Der [Beispielquellcode für das Bing-Bildersuche-SDK für Node](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) ist auf GitHub verfügbar.
+Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) mit zusätzlichen Fehlerbehandlungen und Anmerkungen verfügbar.
 
-## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
+## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie zum Einrichten einer Konsolenanwendung mit dem Bing-Bildersuche-SDK in Ihrer Entwicklungsumgebung `npm install azure-cognitiveservices-imagesearch` aus.
+* Das [Cognitive Services-Bildersuche-SDK für Node.js](https://www.npmjs.com/package/azure-cognitiveservices-imagesearch)
+    * Installation mithilfe von `npm install azure-cognitiveservices-imagesearch`
+* Das Modul [Node.js Azure REST](https://www.npmjs.com/package/ms-rest-azure)
+    * Installation mithilfe von `npm install ms-rest-azure`
 
-## <a name="image-search-client"></a>Bildersuche-Client
-Rufen Sie unter *Suchen* einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab. Erstellen Sie eine Instanz der `CognitiveServicesCredentials`:
-```
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
-```
-Instanziieren Sie dann den Client:
-```
-const ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
-let client = new ImageSearchAPIClient(credentials);
-```
-Verwenden Sie den Client zur Suche mit einem Abfragetext, in diesem Fall „El Capitan“:
-```
-client.imagesOperations.search('El Capitan', function (err, result, request, response) {
-    if (err) throw err;
-    console.log(result.value);
-});
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-```
-<!-- Need to sanitize result
-The code prints `result.value` items to the console without parsing any text. The results will be:
-- _type: 'ImageObjectElementType'
+## <a name="create-and-initialize-the-application"></a>Erstellen Sie und Initialisieren der Anwendung
 
-![Imageresults](media/node-sdk-quickstart-image-results.png)
--->
+1. Erstellen Sie eine neue JavaScript-Datei in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor, und stellen Sie die Genauigkeit, https und andere Anforderungen ein.
+
+    ```javascript
+    'use strict';
+    https = require('https');
+    const Search = require('azure-cognitiveservices-imagesearch');
+    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    ```
+
+2. Erstellen Sie in der Hauptmethode Ihres Projekts Variablen für Ihren gültigen Abonnementschlüssel, die von Bing zurückzugebenden Bildergebnisse und einen Suchbegriff. Instanziieren Sie dann den Bildsuchclient mit dem Schlüssel.
+
+    ```javascript
+    //replace this value with your valid subscription key.
+    let serviceKey = "ENTER YOUR KEY HERE";
+
+    //the search term for the request
+    let searchTerm = "canadian rockies";
+
+    //instantiate the image search client 
+    let credentials = new CognitiveServicesCredentials(serviceKey);
+    let imageSearchApiClient = new Search.ImageSearchAPIClient(credentials);
+
+    ```
+
+## <a name="create-an-asynchronous-helper-function"></a>Erstellen einer asynchronen Hilfsfunktion
+
+1. Erstellen Sie eine Funktion, um den Client asynchron aufzurufen und die Antwort vom Bing-Bildersuchdienst zurückzugeben.  
+    ```javascript
+    //a helper function to perform an async call to the Bing Image Search API
+    const sendQuery = async () => {
+        return await imageSearchApiClient.imagesOperations.search(searchTerm);
+    };
+    ```
+## <a name="send-a-query-and-handle-the-response"></a>Senden einer Abfrage und Verarbeiten der Antwort
+
+1. Rufen Sie die Hilfsfunktion auf und verwenden Sie `promise`, um die in der Antwort zurückgegebenen Bildergebnisse zu analysieren.
+
+    Wenn die Antwort Suchergebnisse enthält, speichern Sie das erste Ergebnis, und drucken Sie dessen Details aus, z. B. eine Miniaturansichts-URL, die ursprüngliche URL und die Gesamtzahl der zurückgegebenen Bilder.  
+    ```javascript
+    sendQuery().then(imageResults => {
+        if (imageResults == null) {
+        console.log("No image results were found.");
+        }
+        else {
+            console.log(`Total number of images returned: ${imageResults.value.length}`);
+            let firstImageResult = imageResults.value[0];
+            //display the details for the first image result. After running the application,
+            //you can copy the resulting URLs from the console into your browser to view the image.
+            console.log(`Total number of images found: ${imageResults.value.length}`);
+            console.log(`Copy these URLs to view the first image returned:`);
+            console.log(`First image thumbnail url: ${firstImageResult.thumbnailUrl}`);
+            console.log(`First image content url: ${firstImageResult.contentUrl}`);
+        }
+      })
+      .catch(err => console.error(err))
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Cognitive Services SDK-Beispiele für Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [!div class="nextstepaction"]
+> [Tutorial: Einseitige Web-App für die Bing-Bildersuche](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+
+## <a name="see-also"></a>Weitere Informationen
+
+* [Was ist die Bing-Bildersuche?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Interaktive Onlinedemo testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Abrufen eines kostenlosen Cognitive Services-Zugriffsschlüssels](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
+* [Node.js-Beispiele für das Azure Cognitive Services-SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* [Dokumentation zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

@@ -1,22 +1,23 @@
 ---
-title: Ruby-Schnellstart für Azure Cognitive Services, Bing-Videosuche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Videosuche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Bing-Videosuche, Ruby'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Bing-Videosuche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: d621944415ec376f11a45ea96c331138ec4d6cdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dfabfe24a653f84e5e242f32167b57b6a28b0075
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376946"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223572"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-ruby"></a>Schnellstart für die Bing-Videosuche-API mit Ruby
+# <a name="quickstart-bing-video-search-api-with-ruby"></a>Schnellstart: Bing-Videosuche-API mit Ruby
 
 In diesem Artikel erfahren Sie, wie Sie die Bing-Videosuche-API verwenden, die Ihnen im Rahmen von Microsoft Cognitive Services in Azure zur Verfügung steht. In diesem Artikel wird zwar Ruby eingesetzt, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann. 
 
@@ -26,7 +27,7 @@ Die [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-vi
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs** verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten. Alternativ können Sie den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs**. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten. Alternativ können Sie den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
 
 ## <a name="bing-video-search"></a>Bing-Videosuche
 
@@ -84,7 +85,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 **Antwort**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben:
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {

@@ -3,8 +3,8 @@ title: Azure Traffic Manager-Endpunktüberwachung | Microsoft Docs
 description: In diesem Artikel wird beschrieben, wie Traffic Manager die Endpunktüberwachung und das automatische Endpunktfailover verwendet, um Azure-Kunden bei der Bereitstellung von Anwendungen mit hoher Verfügbarkeit zu unterstützen.
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
-manager: timlt
+author: KumudD
+manager: jeconnoc
 editor: ''
 ms.assetid: fff25ac3-d13a-4af9-8916-7c72e3d64bc7
 ms.service: traffic-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 0124c70916d1c9a6f6b818a68f13d7a189a1b70f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 64f3595206c580d0d177622d23aa49753100d3c0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398834"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221093"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -32,17 +32,19 @@ Zum Konfigurieren der Endpunktüberwachung müssen Sie die folgenden Einstellung
 * **Protokoll**: Wählen Sie HTTP, HTTPS oder TCP als Protokoll, das von Traffic Manager beim Testen Ihres Endpunkts verwendet wird, um seine Integrität zu überprüfen. Bei der HTTPS-Überwachung wird nicht überprüft, ob Ihr SSL-Zertifikat gültig ist. Es wird nur überprüft, ob es vorhanden ist.
 * **Port**: Wählen Sie den Port aus, der für die Anforderung verwendet wird.
 * **Pfad**: Diese Konfigurationseinstellung gilt nur für die Protokolle HTTP und HTTPS, bei denen das Angeben der Pfadeinstellung obligatorisch ist. Das Angeben dieser Einstellung für das TCP-Überwachungsprotokoll führt zu einem Fehler. Geben Sie für das HTTP- und HTTPS-Protokoll den relativen Pfad und den Namen der Webseite oder Datei an, auf die bei der Überwachung zugegriffen wird. Ein Schrägstrich (/) ist ein gültiger Eintrag für den relativen Pfad. Dieser Wert bedeutet, dass sich die Datei im Stammverzeichnis befindet (Standard).
+* **Benutzerdefinierte Headereinstellungen**: Diese Konfigurationseinstellung hilft Ihnen, bestimmte HTTP-Header zu den Integritätsüberprüfungen hinzuzufügen, die Traffic Manager an Endpunkte unter einem Profil sendet. Die benutzerdefinierten Header können auf Profilebene so festgelegt werden, dass sie für alle Endpunkte in diesem Profil gelten und/oder auf einer Endpunktebene, die nur für diesen Endpunkt gilt. Sie können benutzerdefinierte Header verwenden, um Integritätsprüfungen an Endpunkte in einer mehrinstanzenfähigen Umgebung zu ermöglichen, die ordnungsgemäß an ihr Ziel weitergeleitet werden, indem Sie einen Hostheader angeben. Sie können mit dieser Einstellung auch eindeutige Header hinzufügen, mit denen Sie von Traffic Manager stammende HTTP(S)-Anforderungen identifizieren und unterschiedlich verarbeiten können.
+* **Erwartete Statuscodebereiche**: Mit dieser Einstellung können Sie mehrere Erfolgscodebereiche im Format 200-299, 301-301 angeben. Wenn diese Statuscodes als Antwort von einem Endpunkt empfangen werden, wenn eine Integritätsprüfung eingeleitet wird, markiert Traffic Manager diese Endpunkte als fehlerfrei. Sie können maximal acht Statuscodebereiche angeben. Diese Einstellung gilt nur für das HTTP- und HTTPS-Protokoll sowie für alle Endpunkte. Diese Einstellung bezieht sich auf die Traffic Manager-Profilebene und standardmäßig ist der Wert 200 als Erfolgsstatuscode definiert.
 * **Testintervall**: Dieser Wert gibt an, wie oft die Integrität eines Endpunkts mit einem Test-Agent von Traffic Manager überprüft wird. Sie können hier zwei Werte angeben: 30 Sekunden (Standardtest) und 10 Sekunden (schneller Test). Wenn keine Werte angegeben sind, wird für das Profil ein Standardwert von 30 Sekunden festgelegt. Weitere Informationen zu den Preisen für schnelle Tests finden Sie auf der Seite [Traffic Manager – Preise](https://azure.microsoft.com/pricing/details/traffic-manager).
 * **Tolerierte Anzahl von Fehlern**: Dieser Wert gibt an, wie viele Fehler von einem Traffic Manager-Test-Agent toleriert werden, bevor der Endpunkt als fehlerhaft markiert wird. Der Wert kann zwischen 0 und 9 liegen. Der Wert 0 bedeutet, dass der Endpunkt schon bei nur einem Überwachungsfehler als fehlerhaft markiert werden kann. Wenn kein Wert angegeben ist, wird der Standardwert 3 verwendet.
-* **Überwachungstimeout**: Mit dieser Eigenschaft wird angegeben, wie lange der Traffic Manager-Test-Agent warten soll, bevor der Test einen Fehler ergibt, wenn ein Integritätsprüfungstest an den Endpunkt gesendet wird. Bei einem Testintervall von 30 Sekunden können Sie für den Timeout einen Wert zwischen 5 und 10 Sekunden festlegen. Wenn kein Wert angegeben ist, wird der Standardwert von 10 Sekunden verwendet. Bei einem Testintervall von 10 Sekunden können Sie für den Timeout einen Wert zwischen 5 und 9 Sekunden festlegen. Wenn kein Timeoutwert angegeben ist, wird der Standardwert von 9 Sekunden verwendet.
+* **Test-Timeout**: Mit dieser Eigenschaft wird angegeben, wie lange der Traffic Manager-Test-Agent warten soll, bevor der Test einen Fehler ergibt, wenn ein Integritätsprüfungstest an den Endpunkt gesendet wird. Bei einem Testintervall von 30 Sekunden können Sie für den Timeout einen Wert zwischen 5 und 10 Sekunden festlegen. Wenn kein Wert angegeben ist, wird der Standardwert von 10 Sekunden verwendet. Bei einem Testintervall von 10 Sekunden können Sie für den Timeout einen Wert zwischen 5 und 9 Sekunden festlegen. Wenn kein Timeoutwert angegeben ist, wird der Standardwert von 9 Sekunden verwendet.
 
-![Traffic Manager-Endpunktüberwachung](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
+    ![Traffic Manager-Endpunktüberwachung](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-**Abbildung 1: Traffic Manager-Endpunktüberwachung**
+    **Abbildung: Traffic Manager-Endpunktüberwachung**
 
 ## <a name="how-endpoint-monitoring-works"></a>Funktionsweise der Endpunktüberwachung
 
-Wenn das Überwachungsprotokoll auf HTTP oder HTTPS festgelegt ist, sendet der Traffic Manager-Test-Agent eine GET-Anforderung an den Endpunkt, indem er die Angaben zum Protokoll, Port und relativen Pfad verwendet. Wenn die Antwort „200-OK“ lautet, wird der Endpunkt als fehlerfrei angesehen. Bei einer Antwort mit einem anderen Wert oder bei Nichterhalt einer Antwort innerhalb des angegebenen Timeout-Zeitraums startet der Test-Agent von Traffic Manager gemäß der Einstellung „Tolerierte Anzahl von Fehlern“ erneute Versuche (dies ist nicht der Fall, wenn diese Einstellung 0 lautet). Falls die Anzahl von aufeinanderfolgenden Fehlern höher als der Wert der Einstellung „Tolerierte Anzahl von Fehlern“ ist, wird der Endpunkt als fehlerhaft markiert. 
+Wenn das Überwachungsprotokoll auf HTTP oder HTTPS festgelegt ist, sendet der Traffic Manager-Test-Agent eine GET-Anforderung an den Endpunkt, indem er die Angaben zum Protokoll, Port und relativen Pfad verwendet. Wenn ein Endpunkt die Antwort „200-OK“ oder eine der im **Erwarteten Statuscodebereich** konfigurierten Antworten zurückgibt, wird dieser Endpunkt als fehlerfrei angesehen. Bei einer Antwort mit einem anderen Wert oder bei Nichterhalt einer Antwort innerhalb des angegebenen Timeout-Zeitraums startet der Test-Agent von Traffic Manager gemäß der Einstellung „Tolerierte Anzahl von Fehlern“ erneute Versuche (dies ist nicht der Fall, wenn diese Einstellung 0 lautet). Falls die Anzahl von aufeinanderfolgenden Fehlern höher als der Wert der Einstellung „Tolerierte Anzahl von Fehlern“ ist, wird der Endpunkt als fehlerhaft markiert. 
 
 Bei Verwendung von TCP als Überwachungsprotokoll initiiert der Traffic Manager-Test-Agent eine TCP-Verbindungsanforderung über den angegebenen Port. Wenn der Endpunkt auf die Anforderung mit einer Antwort zur Herstellung einer Verbindung reagiert, wird die Integritätsprüfung als erfolgreich markiert, und der Traffic Manager-Test-Agent setzt die TCP-Verbindung zurück. Bei einer Antwort mit einem anderen Wert oder bei Nichterhalt einer Antwort innerhalb des angegebenen Timeout-Zeitraums startet der Test-Agent von Traffic Manager gemäß der Einstellung „Tolerierte Anzahl von Fehlern“ erneute Versuche (dies ist nicht der Fall, wenn diese Einstellung 0 lautet). Falls die Anzahl von aufeinanderfolgenden Fehlern höher als der Wert der Einstellung „Tolerierte Anzahl von Fehlern“ ist, wird der Endpunkt als fehlerhaft markiert.
 
@@ -101,7 +103,7 @@ Traffic Manager überprüft regelmäßig die Integrität jedes Endpunkts, einsch
 
 Ein Endpunkt ist fehlerhaft, wenn eines der folgenden Ereignisse eintritt:
 - Bei Verwendung des Überwachungsprotokolls HTTP oder HTTPS:
-    - Eine andere Antwort als „200“ wird empfangen (z.B. ein anderer 2xx-Code oder eine 301/302-Umleitung).
+    - Eine „Nicht-200“-Antwort oder eine Antwort, die nicht den in der Einstellung **Erwartete Statuscodebereiche** angegebenen Statusbereich enthält, wird empfangen (einschließlich eines anderen 2xx-Codes oder einer 301/302-Umleitung).
 - Bei Verwendung des Überwachungsprotokolls TCP: 
     - Eine andere Antwort als ACK oder SYN-ACK wird als Reaktion auf die von Traffic Manager gesendete SYNC-Anforderung empfangen, um zu versuchen, eine Verbindung herzustellen.
 - Timeout 
@@ -109,14 +111,14 @@ Ein Endpunkt ist fehlerhaft, wenn eines der folgenden Ereignisse eintritt:
 
 Weitere Informationen zur Behandlung von Fehlern bei Integritätsprüfungen finden Sie unter [Problembehandlung beim Status „Heruntergestuft“ in Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md). 
 
-Die folgende Zeitachse in Abbildung 2 enthält eine ausführliche Beschreibung des Überwachungsprozesses für den Traffic Manager-Endpunkt mit den folgenden Einstellungen: Überwachungsprotokoll ist HTTP, Testintervall ist 30 Sekunden, tolerierte Anzahl von Fehlern ist 3, Timeoutwert ist 10 Sekunden und DNS-TTL ist 30 Sekunden.
+Die Zeitachse in der folgenden Abbildung enthält eine ausführliche Beschreibung des Überwachungsprozesses für den Traffic Manager-Endpunkt mit den folgenden Einstellungen: Überwachungsprotokoll ist HTTP, Testintervall ist 30 Sekunden, tolerierte Anzahl von Fehlern ist 3, Timeoutwert ist 10 Sekunden und DNS-TTL ist 30 Sekunden.
 
 ![Sequenz für Traffic Manager-Endpunktfailover und -failback](./media/traffic-manager-monitoring/timeline.png)
 
-**Abbildung 2: Sequenz für Traffic Manager-Endpunktfailover und -wiederherstellung**
+**Abbildung: Sequenz für Traffic Manager-Endpunktfailover und -wiederherstellung**
 
 1. **GET**. Für jeden Endpunkt führt das Traffic Manager-Überwachungssystem eine GET-Anforderung für den Pfad aus, der in den Überwachungseinstellungen angegeben wurde.
-2. **200 OK**. Das Überwachungssystem erwartet, dass innerhalb von zehn Sekunden eine HTTP 200 OK-Nachricht zurückgegeben wird. Wenn diese Nachricht empfangen wird, wird der Dienst als verfügbar betrachtet.
+2. **200 OK oder im benutzerdefinierten Codebereich angegebene Traffic Manager-Profilüberwachungseinstellungen**. Das Überwachungssystem erwartet, dass innerhalb von zehn Sekunden die Meldung „HTTP 200 OK“ oder die im benutzerdefinierten Codebereich angegebene Traffic Manager-Profilüberwachungseinstellungen zurückgegeben werden. Wenn diese Nachricht empfangen wird, wird der Dienst als verfügbar betrachtet.
 3. **30 Sekunden zwischen Überprüfungen**. Die Endpunktintegritätsprüfung wird alle 30 Sekunden wiederholt.
 4. **Dienst nicht verfügbar**. Der Dienst ist nicht verfügbar. Traffic Manager kann den Status erst bei der nächsten Integritätsprüfung ermitteln.
 5. **Versuch, auf den Überwachungspfad zuzugreifen**. Das Überwachungssystem führt eine GET-Anforderung aus, erhält aber nicht innerhalb des Zeitlimits von zehn Sekunden eine Antwort (alternativ hierzu wird ggf. eine andere Antwort als 200 empfangen). Es werden dann in Abständen von jeweils 30 Sekunden drei weitere Versuche durchgeführt. Wenn einer der Versuche erfolgreich ist, wird die Anzahl der Versuche zurückgesetzt.
@@ -137,6 +139,8 @@ Wenn ein Endpunkt den Status „Heruntergestuft“ aufweist, wird er nicht mehr 
 * **Gewichtet**. Alle verfügbaren Endpunkte werden basierend auf der ihnen zugewiesenen Gewichtung und den Gewichtungen der anderen verfügbaren Endpunkte zufällig ausgewählt.
 * **Leistung**. Der Endpunkt, der dem Endbenutzer am nächsten liegt, wird zurückgegeben. Wenn dieser Endpunkt nicht verfügbar ist, verschiebt Traffic Manager den Datenverkehr an die Endpunkte in der nächstgelegenen Azure-Region. Sie können alternative Failoverpläne für das leistungsorientierte Datenverkehrsrouting mithilfe von [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region) konfigurieren.
 * **Geografisch**. Der zugeordnete Endpunkt zum Bereitstellen des geografischen Standorts basierend auf den IPs der Abfrageanforderung wird zurückgegeben. Falls dieser Endpunkt nicht verfügbar ist, wird kein anderer Endpunkt für das Failover ausgewählt, da ein geografischer Standort nur einem Endpunkt eines Profils zugeordnet werden kann (weitere Details unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)). Als bewährte Methode bei der Verwendung des geografischen Routings empfehlen wir Kunden, geschachtelte Traffic Manager-Profile mit mehr als einem Endpunkt zu verwenden.
+* **MultiValue**: Mehrere Endpunkte, die IPv4/IPv6-Adressen zugeordnet sind, werden zurückgegeben. Wenn eine Abfrage für dieses Profil empfangen wird, werden fehlerfreie Endpunkte basierend auf dem von Ihnen angegebenen Wert für die **maximale Datensatzanzahl in einer Antwort** zurückgegeben. Die Standardanzahl der Antworten sind zwei Endpunkte.
+* **Subnetz**: Der Endpunkt, der einem Satz von IP-Adressbereichen zugeordnet ist, wird zurückgegeben. Wenn eine Anforderung von dieser IP-Adresse empfangen wird, ist der zurückgegebene Endpunkt derjenige, der für diese IP-Adresse zugeordnet ist. 
 
 Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md).
 

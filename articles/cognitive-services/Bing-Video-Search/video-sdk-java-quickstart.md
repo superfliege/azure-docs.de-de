@@ -1,23 +1,23 @@
 ---
-title: Java-Schnellstart für das Bing-Videosuche-SDK | Microsoft-Dokumentation
-description: Informationen zum Einrichten der Konsolenanwendung des Bing-Videosuche-SDK
+title: 'Schnellstart: Bing-Videosuche-SDK, Java'
 titleSuffix: Azure Cognitive Services
+description: Informationen zum Einrichten der Konsolenanwendung des Bing-Videosuche-SDK
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/18/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1d9ccd88de4b91060861c39ab20f6a203c820384
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: b0e083a7397378956d9fe0d0ae2257aaf0bbdf1e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377931"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223420"
 ---
-# <a name="bing-video-search-sdk-java-quickstart"></a>Java-Schnellstart für das Bing-Videosuche-SDK
+# <a name="quickstart-bing-video-search-sdk-java"></a>Schnellstart: Bing-Videosuche-SDK, Java
 
 Das Bing-Videosuche-SDK enthält die Funktionalität der REST-API für Videoabfragen und das Analysieren von Ergebnissen.
 
@@ -337,4 +337,4 @@ public class VideoSDK {
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Cognitive Services Java SDK samples (Cognitive Services SDK-Beispiele für Java)](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples).
+[Cognitive Services Java SDK samples (Cognitive Services SDK-Beispiele für Java)](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)

@@ -1,23 +1,23 @@
 ---
-title: Schnellstart für die Videosuche-API | Microsoft-Dokumentation
+title: 'Schnellstart: Bing-Videosuche-API'
+titlesuffix: Azure Cognitive Services
 description: In diesem Artikel lernen Sie die ersten Schritte mit der Bing-Videosuche-API kennen.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 7E59692A-83A8-4F4C-B122-1F0EDC8E5C86
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 0bd0f067d64cac3ebac342ebadcfcc010a47af7b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: abeeec95755a566216ac65b2edf5c831a8ab93b6
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376955"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225513"
 ---
-# <a name="your-first-video-search-query"></a>Ihre erste Videosuchabfrage
+# <a name="quickstart-your-first-video-search-query"></a>Schnellstart: Ihre erste Videosuchabfrage
 
 Bevor Sie Ihren ersten Aufruf vornehmen können, benötigen Sie einen Cognitive Services-Abonnementschlüssel für die Bing-Suche. Unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api) erfahren Sie, wie Sie einen Schlüssel erhalten.
 
@@ -41,7 +41,7 @@ Die Anforderung muss den [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/
 -   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#clientip)  
 -   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#location)  
 
-Die Client-IP- und Adressheader sind für die Rückgabe von standortbezogenem Inhalt wichtig.  
+Die Client-IP- und Adressheader sind für die Rückgabe von standortorientiertem Inhalt wichtig.  
 
 Eine Liste aller Anforderungs- und Antwortheader finden Sie unter [Header](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#headers).
 

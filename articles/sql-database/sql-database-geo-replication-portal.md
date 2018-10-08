@@ -2,19 +2,22 @@
 title: 'Azure-Portal: SQL-Datenbank – Georeplikation | Microsoft-Dokumentation'
 description: Konfigurieren der Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.author: carlrab
-ms.openlocfilehash: 27fb8f369ad23592902c05fe5275fc54bc6cf148
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+author: anosov1960
+ms.author: sashan
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 592e4c2dc375da34b3a6039bef7ea4da0fa3315b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090468"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163969"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 
@@ -34,7 +37,7 @@ Mit den folgenden Schritten wird eine neue sekundäre Datenbank in einer Partner
 
 Zum Hinzufügen einer sekundären Datenbank müssen Sie der Besitzer oder Mitbesitzer des Abonnements sein.
 
-Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Servicelevel. Die sekundäre Datenbank kann eine Einzeldatenbank oder eine Datenbank in einem Pool für elastische Datenbanken sein. Weitere Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [Auf virtuellen Kernen basierendes Einkaufsmodell](sql-database-service-tiers-vcore.md).
+Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Diensttarif und die gleiche Computegröße. Die sekundäre Datenbank kann eine Einzeldatenbank oder eine Datenbank in einem Pool für elastische Datenbanken sein. Weitere Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [Auf virtuellen Kernen basierendes Einkaufsmodell](sql-database-service-tiers-vcore.md).
 Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank.
 
 > [!NOTE]

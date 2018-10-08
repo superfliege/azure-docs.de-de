@@ -1,21 +1,23 @@
 ---
 title: Anleitung für die automatische Optimierung von E-Mail-Benachrichtigungen – Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Azure SQL-Datenbank analysiert SQL-Abfragen und führt eine automatische Anpassung an die Benutzerworkload durch.
+description: Aktivieren Sie E-Mail-Benachrichtigungen zur automatischen Optimierung der Azure SQL-Datenbank.
 services: sql-database
-author: danimir
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/05/2018
+author: danimir
 ms.author: v-daljep
-ms.openlocfilehash: 643740ea76769f857e8c99ebaa6d27eceed99067
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 86639be7c4d934929272e6d578485bfc8bfb9cc9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644330"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064100"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-Mail-Benachrichtigungen zur automatischen Optimierung
 
@@ -205,12 +207,12 @@ Im nächsten Schritt werden dem neu erstellten Flow drei Aufträge (Erstellen, A
 1. Erstellen Sie die Aktion für das Ausführen des PowerShell-Skripts zum Abrufen von Optimierungsempfehlungen.
 - Wählen Sie **+ Neuer Schritt** und dann im Bereich des Flows „Serie“ die Option **Aktion hinzufügen** aus.
 - Geben Sie im Suchfeld **Automation** ein, und wählen Sie in den Suchergebnissen **Azure Automation – Auftrag erstellen** aus.
-- Konfigurieren Sie im Bereich „Auftrag erstellen“ die Auftragseigenschaften. Bei dieser Konfiguration benötigen Sie Details Ihrer Azure-Abonnement-ID, der Ressourcengruppe und des Automation-Kontos, die Sie im Bereich **Automation-Konto** zuvor **notiert haben**. Weitere Informationen zu den in diesem Abschnitt verfügbaren Optionen finden Sie unter [Azure Automation – Auftrag erstellen](https://docs.microsoft.com/connectors/azureautomation/#Create_job).
+- Konfigurieren Sie im Bereich „Auftrag erstellen“ die Auftragseigenschaften. Bei dieser Konfiguration benötigen Sie Details Ihrer Azure-Abonnement-ID, der Ressourcengruppe und des Automation-Kontos, die Sie im Bereich **Automation-Konto** zuvor **notiert haben**. Weitere Informationen zu den in diesem Abschnitt verfügbaren Optionen finden Sie unter [Azure Automation – Auftrag erstellen](https://docs.microsoft.com/connectors/azureautomation/#create-job).
 - Schließen Sie diese Aktion ab, indem Sie auf **Flow speichern** klicken.
 
 2. Erstellen Sie eine Aktion, um die Ausgabe des ausgeführten PowerShell-Skripts abzurufen.
 - Wählen Sie **+ Neuer Schritt** und dann im Bereich des Flows „Serie“ die Option **Aktion hinzufügen** aus.
-- Geben Sie im Suchfeld **Automation** ein, und wählen Sie in den Suchergebnissen **Azure Automation – Auftragsausgabe abrufen** aus. Weitere Informationen zu den in diesem Abschnitt verfügbaren Optionen finden Sie unter [Azure Automation – Auftragsausgabe abrufen](https://docs.microsoft.com/connectors/azureautomation/#Get_job_output).
+- Geben Sie im Suchfeld **Automation** ein, und wählen Sie in den Suchergebnissen **Azure Automation – Auftragsausgabe abrufen** aus. Weitere Informationen zu den in diesem Abschnitt verfügbaren Optionen finden Sie unter [Azure Automation – Auftragsausgabe abrufen](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
 - Geben Sie in die erforderlichen Felder (ähnlich wie bei der vorherigen Auftragserstellung) Ihre Azure-Abonnement-ID, die Ressourcengruppe und ein Automation-Konto (wie im Bereich „Automation-Konto“ eingegeben) ein.
 - Klicken Sie in das Feld **Auftrags-ID**, um das Menü **Dynamischer Inhalt** anzuzeigen. Wählen Sie in diesem Menü die Option **Auftrags-ID** aus.
 - Schließen Sie diese Aktion ab, indem Sie auf **Flow speichern** klicken.

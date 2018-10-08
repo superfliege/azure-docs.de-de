@@ -1,21 +1,23 @@
 ---
 title: Tutorial für SaaS-Anwendungen mit einer Datenbank pro Mandant – Azure SQL-Datenbank | Microsoft Docs
 description: Erfahren Sie, wie Sie die mehrinstanzenfähige Wingtip Tickets-SaaS-Anwendung, mit der das Muster mit einer Datenbank pro Mandant und andere SaaS-Muster mithilfe von Azure SQL-Datenbank dargestellt werden, bereitstellen und erkunden.
-keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: cc3e870d67f3c38fe4173275b6fd210d0c4ee05a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.reviewer: sstein
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 77e3cdcbd18a4a5313160b947ce278a75f3e3de3
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423557"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056385"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet
 
@@ -242,7 +244,7 @@ Navigieren Sie zum Server **tenants1-dpt-&lt;Benutzer&gt;**, und wählen Sie **P
 - Das erste Diagramm mit der Bezeichnung **Ressourcenverwendung** zeigt die eDTU-Nutzung des Pools.
 - Das zweite Diagramm zeigt die eDTU-Nutzung der fünf aktivsten Datenbanken im Pool.
 
-Die beiden Diagramme veranschaulichen, dass Pools für elastische Datenbanken und SQL-Datenbank gut für unvorhersehbare Workloads von SaaS-Anwendungen geeignet sind. Die Diagramme zeigen, dass vier Datenbanken jeweils mit Bursts auf bis zu 40 eDTUs kommen, aber dennoch in einem 50-eDTU-Pool problemlos unterstützt werden. Der 50-eDTU-Pool kann auch größere Workloads unterstützen. Wenn die Datenbanken als eigenständige Datenbanken bereitgestellt werden, muss es sich bei jeder um eine S2-Datenbank (50 DTUs) handeln, damit die Bursts unterstützt werden. Die Kosten für vier eigenständige S2-Datenbanken würden fast den dreifachen Preis des Pools ausmachen. In der Praxis betreiben SQL-Datenbank-Kunden bis zu 500 Datenbanken in Pools mit 200 eDTUs. Weitere Informationen finden Sie im [Tutorial zur Leistungsüberwachung](saas-dbpertenant-performance-monitoring.md).
+Die beiden Diagramme veranschaulichen, dass Pools für elastische Datenbanken und SQL-Datenbank gut für unvorhersehbare Workloads von SaaS-Anwendungen geeignet sind. Die Diagramme zeigen, dass vier Datenbanken jeweils mit Bursts auf bis zu 40 eDTUs kommen, aber dennoch in einem 50-eDTU-Pool problemlos unterstützt werden. Der 50-eDTU-Pool kann auch größere Workloads unterstützen. Wenn die Datenbanken als einzelne Datenbanken bereitgestellt werden, muss es sich bei jeder um eine S2-Datenbank (50 DTUs) handeln, damit die Bursts unterstützt werden. Die Kosten für vier eigenständige S2-Datenbanken würden fast den dreifachen Preis des Pools ausmachen. In der Praxis betreiben SQL-Datenbank-Kunden bis zu 500 Datenbanken in Pools mit 200 eDTUs. Weitere Informationen finden Sie im [Tutorial zur Leistungsüberwachung](saas-dbpertenant-performance-monitoring.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

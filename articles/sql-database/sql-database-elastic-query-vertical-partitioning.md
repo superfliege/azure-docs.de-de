@@ -2,19 +2,22 @@
 title: Ausführen von Abfragen über Clouddatenbanken mit unterschiedlichen Schemas hinweg | Microsoft Docs
 description: Einrichten von datenbankübergreifenden Abfragen über vertikale Partitionen
 services: sql-database
-manager: craigg
-author: MladjoA
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MladjoA
 ms.author: mlandzic
-ms.openlocfilehash: 6b4dd9017c336c2034bac81ba92d219b511a38a4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 3d94a52aaafca91d45d7f1a6406d3f998fbffe9f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645754"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161759"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Ausführen von Abfragen über Clouddatenbanken mit unterschiedlichen Schemas hinweg (Vorschau)
 ![Abfrage über Tabellen in unterschiedlichen Datenbanken hinweg][1]
@@ -45,7 +48,7 @@ Die Anmeldeinformationen werden von der elastischen Abfrage für die Verbindung 
     [;]
 
 > [!NOTE]
-> Stellen Sie sicher, dass `<username>` kein **@servername**-Suffix enthält. 
+> Stellen Sie sicher, dass `<username>` kein **„\@Servername“**-Suffix enthält. 
 >
 
 ## <a name="create-external-data-sources"></a>Erstellen externer Datenquellen

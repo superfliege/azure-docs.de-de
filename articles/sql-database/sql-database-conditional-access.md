@@ -2,23 +2,31 @@
 title: Bedingter Zugriff – Azure SQL-Datenbank und Data Warehouse | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie der bedingte Zugriff für Azure SQL-Datenbank und Data Warehouse konfiguriert wird.
 services: sql-database
-author: GithubMirek
-manager: johammer
-ms.custom: security
 ms.service: sql-database
+ms.subservice: security
+ms.custom: sql-data-warehouse
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: GithubMirek
 ms.author: mireks
-ms.openlocfilehash: 83762136659756204aab5da367b905f66e770087
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: e7386e2f926132f5657bdb17011dafe1e1c7b101
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647458"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063080"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Bedingter Zugriff (MFA) mit Azure SQL-Datenbank und Data Warehouse  
 
-Sowohl die SQL-Datenbank als auch SQL Data Warehouse unterstützen den bedingten Zugriff von Microsoft. Die folgenden Schritte zeigen, wie die SQL-Datenbank zum Erzwingen einer Richtlinie für bedingten Zugriff konfiguriert wird.  
+Sowohl Azure [SQL-Datenbank](sql-database-technical-overview.md) als auch [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unterstützen den bedingten Zugriff von Microsoft. 
+
+> [!NOTE]
+> Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
+
+Die folgenden Schritte zeigen, wie die SQL-Datenbank zum Erzwingen einer Richtlinie für bedingten Zugriff konfiguriert wird.  
 
 ## <a name="prerequisites"></a>Voraussetzungen  
 - Sie müssen die SQL-Datenbank oder SQL Data Warehouse zur Unterstützung für die Azure Active Directory-Authentifizierung konfigurieren. Informationen zu den jeweiligen Schritten finden Sie unter [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit der SQL-Datenbank oder SQL Data Warehouse](sql-database-aad-authentication-configure.md).  

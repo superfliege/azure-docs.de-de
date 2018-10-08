@@ -2,19 +2,22 @@
 title: Dateispeicherplatzverwaltung mit Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Diese Seite beschreibt, wie Sie mit Azure SQL-Datenbank Dateispeicherplatz verwalten, und bietet Codebeispiele, mit denen Sie feststellen können, ob eine Datenbank verkleinert werden muss. Außerdem erhalten Sie hierin die entsprechenden Anweisungen zum Verkleinern der Datenbank.
 services: sql-database
-author: oslake
-manager: craigg
 ms.service: sql-database
-ms.custom: how-to
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/15/2018
+author: oslake
 ms.author: moslake
-ms.openlocfilehash: 498e83e7c312480af6d2eff7d44bd13aee9c55fd
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: a46192c79d32ddf5f178541c3be128893e8f6109
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145842"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159940"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz in Azure SQL-Datenbank
 Dieser Artikel beschreibt verschiedene Arten von Speicherplatz in der Azure SQL-Datenbank und Schritte, die ausgeführt werden können, wenn der für Datenbanken und Pools für elastische Datenbanken zugewiesene Speicherplatz explizit verwaltet werden muss.
@@ -27,7 +30,7 @@ In Azure SQL-Datenbank messen die meisten im Azure-Portal angezeigten Speicherpl
 - T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-Es gibt Workloadmuster, bei denen die Zuteilung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann.  Dies kann auftreten, wenn der Platzbedarf zunimmt und die Daten anschließend gelöscht werden.  Der Grund ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.  In diesen Szenarien kann der zugeordnete Speicherplatz für eine Datenbank oder einen Pool die unterstützten Grenzwerte übersteigen und die Datenzunahme oder Änderungen der Leistungsstufe verhindern. Außerdem kann die Verkleinerung von Datendateien erzwungen werden, um dieses Problem zu lösen.
+Es gibt Workloadmuster, bei denen die Zuteilung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann.  Dies kann auftreten, wenn der Platzbedarf zunimmt und die Daten anschließend gelöscht werden.  Der Grund ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.  In diesen Szenarien kann der zugeordnete Speicherplatz für eine Datenbank oder einen Pool die unterstützten Grenzwerte übersteigen und das Datenwachstum sowie Änderungen des Diensttarifs und der Computegröße verhindern. Außerdem kann die Verkleinerung von Datendateien erzwungen werden, um dieses Problem zu lösen.
 
 Der SQL-Datenbankdienst verkleinert Datendateien aufgrund der möglichen Auswirkungen auf die Datenbankleistung nicht automatisch, um ungenutzten zugewiesenen Speicherplatz freizugeben.  Kunden können Datendateien aber jederzeit selbst verkleinern, indem sie die Schritte unter [Freigeben von ungenutztem zugewiesenem Speicherplatz](#reclaim-unused-allocated-space) ausführen. 
 

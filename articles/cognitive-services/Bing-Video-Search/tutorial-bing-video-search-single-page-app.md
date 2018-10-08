@@ -1,20 +1,21 @@
 ---
-title: Single-Page-App für die Bing-Videosuche | Microsoft-Dokumente
+title: 'Tutorial: Erstellen einer einseitigen Bing-Videosuche-App'
+titlesuffix: Azure Cognitive Services
 description: In diesem Artikel wird erläutert, wie Sie die Bing-Videosuche-API in einer Single-Page-Webanwendung verwenden.
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: v-gedod
-ms.openlocfilehash: 55f662721e007e03c8f43f19d8b905e755cfe1d8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: a7c6646a69aec11797d354da28baca669b802ab0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377051"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226601"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Tutorial: Single-Page-App für die Videosuche
 Mit der Bing-Videosuche-API können Sie das Web durchsuchen und für eine Suchabfrage relevante Videoergebnisse abrufen. In diesem Tutorial wird eine Single-Page-Webanwendung erstellt, die unter Verwendung der Bing-Suche-API Suchergebnisse auf der Seite anzeigt. Die Anwendung enthält HTML-, CSS- und JavaScript-Komponenten.
@@ -24,7 +25,7 @@ Mit der Bing-Videosuche-API können Sie das Web durchsuchen und für eine Suchab
 -->
 
 > [!NOTE]
-> Wenn Sie auf die JSON- und HTTP-Überschriften am unteren Rand der Seite klicken, werden die JSON-Antwort und HTTP-Anforderungsinformationen angezeigt. Diese Details können hilfreich sein, wenn Sie sich genauer mit dem Dienst befassen.
+> Wenn Sie auf die JSON- und HTTP-Überschriften im unteren Bereich der Seite klicken, werden die JSON-Antwort und HTTP-Anforderungsinformationen angezeigt. Diese Details können hilfreich sein, wenn Sie sich genauer mit dem Dienst befassen.
 
 ![JSON- und HTTP-Rohergebnisse](./media/json-http-raw-results.png)
 
@@ -43,12 +44,12 @@ Die Tutorialseite ist unabhängig von anderen Komponenten und verwendet keine ex
 In diesem Tutorial werden ausgewählte Teile des Quellcodes erläutert. Der vollständige [Quellcode](tutorial-bing-video-search-single-page-app-source.md) steht zur Verfügung. Zum Ausführen des Beispiels kopieren Sie den Quellcode, fügen Sie ihn in einen Text-Editor ein, und speichern Sie die Datei als `bing.html`.
 
 ## <a name="app-components"></a>App-Komponenten
-Diese Tutorialanwendung setzt sich ebenso wie alle anderen Single-Page-Webanwendungen aus drei Teilen zusammen:
+Diese Tutorial-App setzt sich ebenso wie alle anderen Single-Page-Web-Apps aus drei Teilen zusammen:
 
 > [!div class="checklist"]
-> * Im HTML-Teil werden die Struktur und der Inhalt der Seite definiert.
-> * Im CSS-Teil wird das Layout der Seite festgelegt.
-> * Im JavaScript-Teil wird das Verhalten der Seite definiert.
+> * HTML: Definiert die Struktur und der Inhalt der Seite
+> * CSS: Definiert das Layout der Seite
+> * JavaScript: Definiert das Verhalten der Seite
 
 Bei HTML und CSS handelt es sich zum Großteil um konventionellen Code, der in diesem Tutorial nicht erläutert wird. Der HTML-Teil enthält das Suchformular, in dem der Benutzer eine Abfrage eingibt und Suchoptionen auswählt. Das Formular wird vom JavaScript-Teil ausgewertet, der die Suche mithilfe des `onsubmit`-Attributs des `<form>`-Tags ausführt:
 
@@ -57,7 +58,7 @@ Bei HTML und CSS handelt es sich zum Großteil um konventionellen Code, der in d
 ```
 Der `onsubmit`-Handler gibt `false` zurück, wodurch verhindert wird, dass das Formular an den Server gesendet wird. Der JavaScript-Code ist dafür verantwortlich, die erforderlichen Informationen aus dem Formular abzurufen und die Suche durchzuführen.
 
-Der HTML-Teil enthält auch die Bereiche (HTML-`<div>`-Tags), in denen die Suchergebnisse angezeigt werden.
+Der HTML-Teil enthält auch die Bereiche (`<div>`-HTML-Tags), in denen die Suchergebnisse angezeigt werden.
 
 ## <a name="managing-subscription-key"></a>Verwalten des Abonnementschlüssels
 
@@ -86,7 +87,7 @@ function getSubscriptionKey() {
     return key;
 }
 ```
-Das `onsubmit`-Attribut des HTML-Tags `<form>` ruft die `bingWebSearch`-Funktion auf, mit der die Suchergebnisse zurückgegeben werden. `bingWebSearch` verwendet zur Authentifizierung aller Abfragen `getSubscriptionKey()`. Wie in der obigen Definition gezeigt, fordert `getSubscriptionKey` den Benutzer zur Eingabe des Schlüssels auf, fall dieser noch nicht eingegeben wurde. Der Schlüssel wird anschließend gespeichert und kann von der Anwendung auch später verwendet werden.
+Das `onsubmit`-Attribut des HTML-Tags `<form>` ruft die `bingWebSearch`-Funktion auf, um die Suchergebnisse zurückzugeben. `bingWebSearch` verwendet `getSubscriptionKey()` zur Authentifizierung aller Abfragen. Wie in der obigen Definition gezeigt, fordert `getSubscriptionKey` den Benutzer zur Eingabe des Schlüssels auf, falls dieser noch nicht eingegeben wurde. Der Schlüssel wird anschließend gespeichert und kann von der Anwendung auch später verwendet werden.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
@@ -99,9 +100,9 @@ Die folgende Abbildung zeigt das Abfragetextfeld und Optionen, die eine Suche de
 
 Das HTML-Formular enthält folgende Elemente:
 
-|Element|Beschreibung|
+|Element|BESCHREIBUNG|
 |-|-|
-| `where` | Ein Dropdownmenü zur Auswahl des Marktes (Ort und Sprache), der für die Suche verwendet wird. |
+| `where` | Ein Dropdownmenü zur Auswahl des Markts (Ort und Sprache), der für die Suche verwendet wird. |
 | `query` | Das Textfeld, in das Suchbegriffe eingegeben werden. |
 | `modules` | Kontrollkästchen, mit denen bestimmte Module der Ergebnisse, alle Ergebnisse oder zugehörige Videos heraufgestuft werden können. |
 | `when` | Dropdownmenü, mit dem die Suche optional auf den letzten Tag, die letzte Woche oder den letzten Monat eingeschränkt werden kann. |
@@ -258,9 +259,9 @@ function handleOnLoad() {
 > Wenn bei einem Suchvorgang ein Fehler auftritt, gibt die Bing-News-Suche-API einen HTTP-Statuscode zurück, der vom Code 200 abweicht und Fehlerinformationen in der JSON-Antwort enthält. Wenn die Anzahl der Anforderungen begrenzt war, gibt die API zusätzlich eine leere Antwort zurück.
 Eine erfolgreiche HTTP-Anforderung ist *nicht* zwangsläufig mit einer erfolgreichen Suche gleichzusetzen. 
 
-Ein Großteil des Codes in den beiden vorangehenden Funktionen ist für die Fehlerbehandlung zuständig. In den folgenden Phasen können Fehler auftreten:
+Ein Großteil des Codes in den beiden vorangehenden Funktionen ist für die Fehlerbehandlung zuständig. In folgenden Phasen können Fehler auftreten:
 
-|Phase|Mögliche Fehler|Behandelt durch|
+|Phase|Mögliche Fehler|Verarbeitet durch|
 |-|-|-|
 |Erstellen des JavaScript-Anforderungsobjekts|Ungültige URL|`try`/`catch`-Block|
 |Senden der Anforderung|Netzwerkfehler, abgebrochene Verbindungen|Ereignishandler `error` und `abort`|
@@ -307,11 +308,11 @@ Die Suchergebnisse werden als `value`-Objekt der obersten Ebene in der JSON-Antw
 
 Die Bing-News-Suche-API gibt bis zu vier verschiedene Arten verwandter Ergebnisse zurück, und zwar jeweils in einem eigenen Objekt der obersten Ebene. Sie lauten wie folgt:
 
-|Beziehung|Beschreibung|
+|Beziehung|BESCHREIBUNG|
 |-|-|
 |`pivotSuggestions`|Abfragen, bei denen ein Pivot-Wort in der ursprünglichen Suche durch ein anderes ersetzt wird. Wenn Sie beispielsweise nach „rote Blumen“ suchen, kann ein Pivot-Wort „rote“ sein, und ein Pivot-Vorschlag kann „gelbe Blumen“ sein.|
 |`queryExpansions`|Abfragen, bei denen die ursprüngliche Suche durch Hinzufügen weiterer Begriffe eingegrenzt wird. Wenn Sie beispielsweise nach „Microsoft Surface“ suchen, kann eine Abfrageerweiterung „Microsoft Surface Pro“ sein.|
-|`relatedSearches`|Abfragen, die ebenfalls von anderen Benutzern eingegeben wurden, die auch die ursprüngliche Suche eingegeben hatten. Wenn Sie z.B. nach „Mount Rainier“ suchen, kann eine verwandte Suche „Mount Saint Helens“ lauten.|
+|`relatedSearches`|Abfragen, die ebenfalls von anderen Benutzern eingegeben wurden, die auch die ursprüngliche Suche eingegeben haben. Wenn Sie z.B. nach „Mount Rainier“ suchen, kann eine verwandte Suche „Mount Saint Helens“ lauten.|
 |`similarTerms`|Abfragen, die von der Bedeutung her der ursprünglichen Suche ähneln. Wenn Sie beispielsweise nach „Schulen“ suchen, kann ein ähnlicher Begriff „Ausbildung“ sein.|
 
 Wie bereits bei `renderSearchResults()` gezeigt, werden nur die `relatedItems`-Vorschläge gerendert und die resultierenden Links auf der Randleiste der Seite eingefügt.
@@ -331,13 +332,13 @@ searchItemRenderers = {
 ```
 Für eine Funktion zum Rendern können die folgenden Parameter angegeben werden:
 
-|Parameter|Beschreibung|
+|Parameter|BESCHREIBUNG|
 |-|-|
 |`item`| Das JavaScript-Objekt mit Eigenschaften des Elements, z.B. seine URL und Beschreibung.|
 |`index`| Der Index des Ergebniselements innerhalb der Auflistung.|
 |`count`| Die Anzahl der Elemente in der Auflistung der Suchergebniselemente.|
 
-Die Parameter `index` und `count` können zum Nummerieren von Ergebnissen, zum Generieren von speziellem HTML-Code für den Anfang oder das Ende einer Auflistung, zum Einfügen von Zeilenumbrüchen nach einer bestimmten Anzahl von Elementen usw. verwendet werden. Wenn ein Renderer diese Funktionalität nicht benötigt, muss er diese beiden Parameter nicht akzeptieren.
+Die Parameter `index` und `count` können beispielsweise zum Nummerieren von Ergebnissen, zum Generieren von speziellem HTML-Code für den Anfang oder das Ende einer Collection oder zum Einfügen von Zeilenumbrüchen nach einer bestimmten Anzahl von Elementen verwendet werden. Wenn ein Renderer diese Funktionalität nicht benötigt, muss er diese beiden Parameter nicht akzeptieren.
 
 Der `video`-Renderer wird im folgenden JavaScript-Auszug gezeigt. Bei Verwendung des Videos-Endpunkts sind alle Ergebnisse vom Typ `Videos`. Die `searchItemRenderers` werden im folgenden Codesegment gezeigt.
 
@@ -368,8 +369,8 @@ Die Funktion zum Rendern führt folgende Vorgänge aus:
 > [!div class="checklist"]
 > * Erstellt ein Absatztag, weist es der `images`-Klasse zu und übergibt es mit einem Pushvorgang an den HTML-Array.
 > * Berechnet die Größe von Miniaturbildern (die Breite ist auf 60 Pixel festgelegt, die Höhe wird proportional berechnet).
-> * Erstellt das HTML-`<img>`-Tag, mit dem das Miniaturbild angezeigt wird. 
-> * Erstellt die HTML-`<a>`-Tags, die eine Verknüpfung mit dem Bild und der Seite, die das Bild enthält, darstellen.
+> * Erstellt das HTML-Tag `<img>`, mit dem das Miniaturbild angezeigt wird. 
+> * Erstellt die `<a>`-HTML-Tags, die eine Verknüpfung mit dem Bild und der Seite, die das Bild enthält, darstellen.
 > * Erstellt die Beschreibung, die Informationen über das Bild und die Website, auf der sich das Bild befindet, angibt.
 
 Die Größe des Miniaturbilds wird sowohl im `<img>`-Tag als auch in den Feldern `h` und `w` in der URL des Miniaturbilds verwendet. Der [Bing-Dienst für Miniaturbilder](resize-and-crop-thumbnails.md) übermittelt anschließend ein Miniaturbild in genau dieser Größe.
@@ -381,24 +382,24 @@ Durch die Bereitstellung des `X-MSEdge-ClientID`-Headers können die Bing-Suche-
 
 Erstens kann die Bing-Suchmaschine auf diese Weise Kontextinformationen aus vorherigen Suchvorgängen nutzen, um den Benutzern relevantere Ergebnisse anzuzeigen. Wenn ein Benutzer in der Vergangenheit beispielsweise nach Segelbegriffen gesucht hat, können bei einer Suche nach „Knoten“ möglicherweise Informationen zu Segelknoten zurückgegeben werden.
 
-Zweitens wählt Bing möglicherweise Benutzer zufällig aus, die die Möglichkeit haben, neue Features zu testen, bevor diese allen Benutzern zur Verfügung gestellt werden. Indem Sie bei jeder Anforderung dieselbe Client-ID bereitstellen, stellen Sie sicher, dass Benutzer, denen das Feature angezeigt wird, dieses Feature dauerhaft sehen können. Ohne die Client-ID wird das Feature in den Suchergebnissen möglicherweise scheinbar willkürlich aus- oder eingeblendet.
+Zweitens wählt Bing möglicherweise Benutzer zufällig aus, die die Möglichkeit haben, neue Features zu testen, bevor diese allen Benutzern zur Verfügung gestellt werden. Indem Sie bei jeder Anforderung dieselbe Client-ID bereitstellen, stellen Sie sicher, dass Benutzer, denen das Feature angezeigt wird, dieses Feature dauerhaft nutzen können. Ohne die Client-ID wird das Feature in den Suchergebnissen möglicherweise scheinbar willkürlich aus- oder eingeblendet.
 
 Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da der Ursprung des Skripts mit dem Ursprung der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
 
 > [!NOTE]
-> In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung serverseitig ausführen. Andernfalls müsste der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels senden können, die Ihnen in Rechnung gestellt werden.
+> In einer Web-App für eine Produktionsumgebung sollten Sie die Anforderung serverseitig ausführen. Andernfalls muss der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
-In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt wird.
+In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
 
-Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend den folgenden Befehl in ein Befehlsfenster ein:
+Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend folgenden Befehl in ein Befehlsfenster ein:
 
     npm install -g cors-proxy-server
 
-Passen Sie den Bing-Websuche-API-Endpunkt in der HTML-Datei wie folgt an:
+Passen Sie den Endpunkt der Bing-Websuche-API in der HTML-Datei wie folgt an:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Starten Sie abschließend den CORS-Proxy mit dem folgenden Befehl:
+Starten Sie abschließend den CORS-Proxy mit folgendem Befehl:
 
     cors-proxy-server
 

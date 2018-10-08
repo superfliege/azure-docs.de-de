@@ -2,24 +2,27 @@
 title: Überwachen von XTP-In-Memory-Speicher | Microsoft-Dokumentation
 description: Einschätzen und Überwachen der XTP-In-Memory-Speicherverwendung und -kapazität; Beheben des Kapazitätsfehlers 41823
 services: sql-database
-author: jodebrui
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/20/2018
+author: jodebrui
 ms.author: jodebrui
-ms.openlocfilehash: f74c9bf06cad8b84d08baf7a0a0504b9cb729bf4
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.reviewer: genemi
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 2a9c01eb2c237a7c79464b930c9258f791d8f3ce
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308678"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161623"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Überwachen des In-Memory-OLTP-Speichers
 Bei der Verwendung von [In-Memory-OLTP](sql-database-in-memory.md)befinden sich die Daten der speicheroptimierten Tabellen und Tabellenvariablen im In-Memory-OLTP-Speicher. Jeder „Premium“- und „Unternehmenskritisch“-Diensttarif verfügt über eine maximale In-Memory-OLTP-Speichergröße. Siehe [DTU-basierte Ressourceneinschränkungen – Einzeldatenbank](sql-database-dtu-resource-limits-single-databases.md), [DTU-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md), [V-Kern-basierte Ressourceneinschränkungen – Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md) und [V-Kern-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md).
 
-Wenn dieses Limit überschritten wird, tritt bei Einfüge- und Aktualisierungsvorgängen möglicherweise der Fehler 41823 (eigenständige Datenbanken) bzw. der Fehler 41840 (Pools für elastische Datenbanken) auf. An diesem Punkt müssen Sie entweder Daten löschen, um Speicherplatz freizugeben, oder die Leistungsstufe Ihrer Datenbank upgraden.
+Wenn dieses Limit überschritten wird, tritt bei Einfüge- und Aktualisierungsvorgängen möglicherweise der Fehler 41823 (Einzeldatenbanken) bzw. der Fehler 41840 (Pools für elastische Datenbanken) auf. An diesem Punkt müssen Sie entweder Daten löschen, um Speicherplatz freizugeben, oder den Diensttarif bzw. die Computegröße für Ihre Datenbank upgraden.
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Bestimmen, ob genügend In-Memory-OLTP-Speicherplatz für die Daten zur Verfügung steht
 Bestimmen Sie die Speicherkapazitäten der verschiedenen Dienstebenen. Siehe [DTU-basierte Ressourceneinschränkungen – Einzeldatenbank](sql-database-dtu-resource-limits-single-databases.md), [DTU-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md), [V-Kern-basierte Ressourceneinschränkungen – Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md) und [V-Kern-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md).
@@ -29,7 +32,7 @@ Das Einschätzen des Speicherbedarfs für eine speicheroptimierte Tabelle funkti
 Sowohl die Tabellen- und Tabellenvariablenzeilen als auch die Indizes werden in die maximale Größe für Benutzerdaten eingerechnet. Darüber hinaus benötigt ALTER TABLE genügend Platz, um eine neue Version der gesamten Tabelle und ihrer Indizes zu erstellen.
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
-Sie können die Nutzung von In-Memory-Speicher als Prozentsatz der Speicherkapazität für Ihre Leistungsstufe im [Azure-Portal](https://portal.azure.com/) überwachen: 
+Sie können die Nutzung von In-Memory-Speicher als Prozentsatz der Speicherkapazität für Ihre Computegröße im [Azure-Portal](https://portal.azure.com/) überwachen: 
 
 1. Suchen Sie auf dem Blatt „Datenbank“ das Feld „Ressourcenverwendung“, und klicken Sie auf „Bearbeiten“.
 2. Wählen Sie die Metrik `In-Memory OLTP Storage percentage` aus.
@@ -41,7 +44,7 @@ Oder verwenden Sie folgende Abfrage, um die In-Memory-Speicherverwendung anzuzei
 
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Behandeln von Situationen mit zu wenig In-Memory-OLTP-Speicher: Fehler 41823 und 41840
-Bei Erreichen der Obergrenze des In-Memory-OLTP-Speichers in Ihrer Datenbank tritt bei INSERT-, UPDATE-, ALTER- und CREATE-Vorgängen der Fehler 41823 (eigenständige Datenbanken) bzw. der Fehler 41840 (Pools für elastische Datenbanken) auf. Beide Fehler führen zum Abbruch der aktiven Transaktion.
+Bei Erreichen der Obergrenze des In-Memory-OLTP-Speichers in Ihrer Datenbank tritt bei INSERT-, UPDATE-, ALTER- und CREATE-Vorgängen der Fehler 41823 (Einzeldatenbanken) bzw. der Fehler 41840 (Pools für elastische Datenbanken) auf. Beide Fehler führen zum Abbruch der aktiven Transaktion.
 
 Die Fehlermeldungen 41823 und 41840 geben an, dass die speicheroptimierten Tabellen und Tabellenvariablen in der Datenbank oder im Pool die maximale In-Memory-OLTP-Speichergröße erreicht haben.
 

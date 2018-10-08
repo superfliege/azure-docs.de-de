@@ -1,21 +1,23 @@
 ---
 title: Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und Sicherheit auf Zeilenebene | Microsoft-Dokumentation
 description: Verwenden Sie Tools für elastische Datenbanken mit Sicherheit auf Zeilenebene zum Erstellen einer Anwendung mit einer hochgradig skalierbaren Datenschicht.
-metakeywords: azure sql database elastic tools multi tenant row level security rls
 services: sql-database
-manager: craigg
-author: tmullaney
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: tmullaney
 ms.author: thmullan
-ms.openlocfilehash: 02ad01185a86aa5a975be2a66b54a214029dd73f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 94430d3b72bb5b8e8bde0e9e2e9fb2eb2b0c3632
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645809"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056283"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
 
@@ -38,7 +40,7 @@ Das Ziel ist die Verwendung der APIs der elastischen Datenbank-Clientbibliothek 
 ### <a name="prerequisites"></a>Voraussetzungen
 
 - Visual Studio (2012 oder neuere Version) 
-- Drei Azure SQL-Datenbanken 
+- Erstellen von drei Azure SQL-Datenbanken 
 - Folgendes Beispielprojekt: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](http://go.microsoft.com/?linkid=9888163)
   - Geben Sie die Informationen für Ihre Datenbanken am Anfang der Datei **Program.cs** 
 

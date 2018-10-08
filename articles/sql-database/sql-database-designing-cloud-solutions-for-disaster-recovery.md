@@ -3,20 +3,22 @@ title: Entwerfen von global verfügbaren Diensten mit Azure SQL-Datenbank | Micr
 description: Erfahren Sie, wie Sie einen Anwendungsentwurf für hoch verfügbare Dienste mithilfe von Azure SQL-Datenbank erstellen.
 keywords: cloudbasierte Notfallwiederherstellung,Notfallwiederherstellungslösungen,App-Datensicherung,Georeplikation,Planen der Geschäftskontinuität
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/26/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 88a6e1a66390b2b317e1e30a71455ad693e6d7df
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+manager: craigg
+ms.date: 07/26/2018
+ms.openlocfilehash: 8522fea10a4ec8f85d20e5a9ec04712c77bb6b94
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264653"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064270"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Entwerfen von global verfügbaren Diensten mit Azure SQL-Datenbank
 

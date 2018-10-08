@@ -2,19 +2,22 @@
 title: Hochverfügbarkeit – Azure SQL-Datenbankdienst | Microsoft Docs
 description: Erfahren Sie mehr über die Hochverfügbarkeitsfunktionen des Azure SQL-Datenbankdiensts.
 services: sql-database
-author: jovanpop-msft
-manager: craigg
 ms.service: sql-database
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/29/2018
+author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 7a60d800ce76f8ff9a903cc068fa7bc87cd33f3f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 9c06a028df098874a1ec12d83a362e01a5f4a711
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700634"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161895"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hochverfügbarkeit und Azure SQL-Datenbank
 
@@ -23,8 +26,8 @@ Azure SQL-Datenbank ist eine hochverfügbare PaaS-Datenbank (Platform as a Servi
 Die Azure Platform führt eine vollständige Verwaltung jeder Azure SQL-Datenbank durch und garantiert, dass keine Datenverluste auftreten und die Datenverfügbarkeit einen hohen Prozentsatz aufweist. In Azure werden Bereiche wie Patchen, Sicherungen, Replikation, Fehlererkennung, zugrunde liegende potenzielle Hardware-, Software- oder Netzwerkfehler, Bereitstellung von Fehlerbehebungen, Failover, Datenbankupgrades und andere Wartungsaufgaben automatisch durchgeführt. SQL Server-Techniker haben die am besten bekannten Methoden implementiert, sodass sichergestellt ist, dass alle Wartungsvorgänge in weniger als 0,01 % der Zeit des Datenbanklebenszyklus abgeschlossen werden. Mit dieser Architektur wird sichergestellt, dass Daten, die bereits committet wurden, niemals verloren gehen und dass Wartungsvorgänge ohne Beeinträchtigung der Workload ausgeführt werden. Es gibt keine Wartungsfenster oder Ausfallzeiten, aufgrund derer Sie die Workload während der Aktualisierung oder Wartung der Datenbank beenden müssen. Die in Azure SQL-Datenbank integrierte Hochverfügbarkeit garantiert, dass die Datenbank niemals zu einem Single Point of Failure in der Softwarearchitektur wird.
 
 Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um die Verfügbarkeit von 99,99 % selbst bei Infrastrukturausfällen sicherzustellen. In Azure SQL-Datenbank werden zwei Hochverfügbarkeits-Architekturmodelle verwendet (beide mit einer Verfügbarkeit von 99,99 %):
-- Modell des Typs „Standard/Universell“, das auf der Trennung der Compute- und Speicherebene basiert. Dieses Architekturmodell beruht auf der Hochverfügbarkeit und Zuverlässigkeit der Speicherebene, kann jedoch eine mögliche Leistungsbeeinträchtigung während Wartungsaktivitäten aufweisen.
-- Modell des Typs „Premium/Unternehmenskritisch“, das in einem Cluster von Datenbank-Engine-Prozessen basiert. Dieses Architekturmodell beruht darauf, dass immer ein Quorum von verfügbaren Datenbank-Engine-Knoten vorhanden ist, und weist selbst während Wartungsaktivitäten eine minimale Leistungsbeeinträchtigung der Workload auf.
+- Diensttarifmodell des Typs „Standard/Universell“, das auf der Trennung von Compute- und Speicherebene basiert. Dieses Architekturmodell beruht auf der Hochverfügbarkeit und Zuverlässigkeit der Speicherebene, kann jedoch eine mögliche Leistungsbeeinträchtigung während Wartungsaktivitäten aufweisen.
+- Diensttarifmodell des Typs „Premium/Unternehmenskritisch“, das auf einem Cluster von Datenbank-Engine-Prozessen basiert. Dieses Architekturmodell beruht darauf, dass immer ein Quorum von verfügbaren Datenbank-Engine-Knoten vorhanden ist, und weist selbst während Wartungsaktivitäten eine minimale Leistungsbeeinträchtigung der Workload auf.
 
 In Azure werden das zugrunde liegende Betriebssystem, Treiber und die SQL Server-Datenbank-Engine transparent mit minimaler Ausfallzeit für Endbenutzer aktualisiert und gepatcht. Azure SQL-Datenbank wird auf der neuesten stabilen Version der SQL Server-Datenbank-Engine und des Windows-Betriebssystems ausgeführt. Die meisten Benutzer bemerken nicht, dass die Upgrades kontinuierlich ausgeführt werden.
 
@@ -47,7 +50,7 @@ Bei jeder Aktualisierung der Datenbank-Engine oder des Betriebssystems, bei Fehl
 
 Die Premium-Verfügbarkeit wird im Premium-Tarif von Azure SQL-Datenbank aktiviert und ist für hohe Workloads vorgesehen, bei denen keine Leistungsbeeinträchtigung aufgrund laufender Wartungsvorgänge toleriert werden kann.
 
-Im Premium-Modell werden in Azure SQL-Datenbank der Compute- und Speicherbereich auf dem einzelnen Knoten integriert. Die Hochverfügbarkeit in diesem Architekturmodell wird durch die Replikation auf Compute- (SQL Server-Datenbank-Engine-Prozess) und Speicherebene (lokal angefügte SSD) erreicht, die in einem Cluster von [Always On-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) auf 4 Knoten bereitgestellt werden.
+Im Premium-Modell werden in Azure SQL-Datenbank der Compute- und Speicherbereich auf dem einzelnen Knoten integriert. Die Hochverfügbarkeit in diesem Architekturmodell wird durch die Replikation auf Compute- (SQL Server-Datenbank-Engine-Prozess) und Speicherebene (lokal angefügte SSD) erreicht, die in einem Cluster von [Always On-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) mit 4 Knoten bereitgestellt werden.
 
 ![Cluster von Datenbank-Engine-Knoten](media/sql-database-managed-instance/business-critical-service-tier.png)
 
@@ -57,9 +60,9 @@ Darüber hinaus umfasst der Cluster des Typs „Unternehmenskritisch“ einen in
 
 ## <a name="zone-redundant-configuration-preview"></a>Zonenredundante Konfiguration (Vorschau)
 
-Standardmäßig werden die Quorumssatzreplikate für die Konfigurationen mit lokalem Speicher im gleichen Rechenzentrum erstellt. Durch die Einführung von [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md) haben Sie die Möglichkeit, die verschiedenen Replikate in den Quorumssätzen in unterschiedlichen Verfügbarkeitszonen in derselben Region zu platzieren. Um einen Single Point of Failure auszuschließen, wird der Steuerring zudem in mehreren Zonen als drei Gatewayringe (GW) kopiert. Die Weiterleitung an einen bestimmten Gatewayring wird durch [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) gesteuert. Da bei der zonenredundanten Konfiguration keine zusätzliche Datenbankredundanz erzeugt wird, ist die Verwendung von Verfügbarkeitszonen auf den Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) ohne Zusatzkosten verfügbar. Durch die Auswahl einer zonenredundanten Datenbank können Sie Ihre Datenbanken der Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) für deutlich mehr Ausfallszenarien resistent machen – z.B. für schwerwiegende Rechenzentrumsausfälle –, ohne Änderungen an der Anwendungslogik vornehmen zu müssen. Sie können zudem alle vorhandenen Datenbanken oder Pools der Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) in die zonenredundante Konfiguration konvertieren.
+Standardmäßig werden die Quorumssatzreplikate für die Konfigurationen mit lokalem Speicher im gleichen Rechenzentrum erstellt. Durch die Einführung von [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md) haben Sie die Möglichkeit, die verschiedenen Replikate in den Quorumssätzen in unterschiedlichen Verfügbarkeitszonen in derselben Region zu platzieren. Um einen Single Point of Failure auszuschließen, wird der Steuerring zudem in mehreren Zonen als drei Gatewayringe (GW) kopiert. Die Weiterleitung an einen bestimmten Gatewayring wird durch [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) gesteuert. Da bei der zonenredundanten Konfiguration keine zusätzliche Datenbankredundanz erzeugt wird, ist die Verwendung von Verfügbarkeitszonen (Vorschau) in den Diensttarifen „Premium“ bzw. „Unternehmenskritisch“ ohne Zusatzkosten verfügbar. Durch die Auswahl einer zonenredundanten Datenbank können Sie Ihre Datenbanken der Dienstebenen „Premium“ oder „Unternehmenskritisch“ für deutlich mehr Ausfallszenarien resistent machen – z.B. für schwerwiegende Rechenzentrumsausfälle –, ohne Änderungen an der Anwendungslogik vornehmen zu müssen. Sie können zudem alle vorhandenen Datenbanken oder Pools der Dienstebenen „Premium“ oder „Unternehmenskritisch“ in die zonenredundante Konfiguration konvertieren.
 
-Da der zonenredundante Quorumssatz über Replikate in verschiedenen Rechenzentren mit einiger Entfernung dazwischen verfügt, kann sich durch die erhöhte Netzwerklatenz die Commitzeit erhöhen und dadurch die Leistung einiger OLTP-Workloads beeinträchtigt werden. Sie können jederzeit zur Einzelzonenkonfiguration zurückkehren, indem Sie die zonenredundante Einstellung deaktivieren. Dieser Prozess ist datenintensiv und ähnelt dem SLO-Update (Service Level Objective). Am Ende des Prozesses wird die Datenbank oder der Pool aus einem zonenredundanten Ring zum Ring einer einzelnen Zone migriert (oder umgekehrt).
+Da der zonenredundante Quorumssatz über Replikate in verschiedenen Rechenzentren mit einiger Entfernung dazwischen verfügt, kann sich durch die erhöhte Netzwerklatenz die Commitzeit erhöhen und dadurch die Leistung einiger OLTP-Workloads beeinträchtigt werden. Sie können jederzeit zur Einzelzonenkonfiguration zurückkehren, indem Sie die zonenredundante Einstellung deaktivieren. Dieser Prozess ist datenintensiv und ähnelt dem regulären Diensttarifupdate. Am Ende des Prozesses wird die Datenbank oder der Pool aus einem zonenredundanten Ring zum Ring einer einzelnen Zone migriert (oder umgekehrt).
 
 > [!IMPORTANT]
 > Zonenredundante Datenbanken und Pools für elastische Datenbanken werden derzeit nur für den Diensttarif „Premium“ unterstützt. In der Public Preview-Phase werden Sicherungen und Überwachungsdatensätze im RA-GRS-Speicher gespeichert und sind daher möglicherweise bei einem Ausfall der gesamten Zone nicht automatisch verfügbar. 
@@ -69,13 +72,13 @@ Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden
 ![Hochverfügbarkeitsarchitektur, zonenredundant](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>Horizontale Leseskalierung
-Wie bereits beschrieben, verwenden die Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) Quorumssätze und Always On-Technologie für Hochverfügbarkeit sowohl in Einzelzonenkonfigurationen als auch in zonenredundanten Konfigurationen. Einer der Vorteile der Always On-Technologie besteht darin, dass sich die Replikate jederzeit in einem transaktionssicheren Zustand befinden. Da die Replikate die gleiche Leistungsstufe aufweisen wie das primäre Replikat, kann die Anwendung kostenlos von dieser zusätzlichen Kapazität für die schreibgeschützten Workloads profitieren (horizontale Leseskalierung). Auf diese Weise werden die schreibgeschützten Abfragen von der Hauptworkload für Lesen und Schreiben isoliert und beeinträchtigen deren Leistung nicht. Das Feature der horizontalen Leseskalierung ist für Anwendungen konzipiert, die logisch getrennte schreibgeschützte Workloads z.B. zur Analyse umfassen und daher von dieser zusätzlichen Kapazität profitieren können, ohne eine Verbindung mit dem primären Replikat herstellen zu müssen. 
+Wie bereits beschrieben, verwenden die Dienstebenen „Premium“ oder „Unternehmenskritisch“ Quorumssätze und Always On-Technologie für Hochverfügbarkeit sowohl in Einzelzonenkonfigurationen als auch in zonenredundanten Konfigurationen. Einer der Vorteile der Always On-Technologie besteht darin, dass sich die Replikate jederzeit in einem transaktionssicheren Zustand befinden. Da die Replikate die gleiche Computegröße aufweisen wie das primäre Replikat, kann die Anwendung kostenlos von dieser zusätzlichen Kapazität für die schreibgeschützten Workloads profitieren (horizontale Leseskalierung). Auf diese Weise werden die schreibgeschützten Abfragen von der Hauptworkload für Lesen und Schreiben isoliert und beeinträchtigen deren Leistung nicht. Das Feature der horizontalen Leseskalierung ist für Anwendungen konzipiert, die logisch getrennte schreibgeschützte Workloads z.B. zur Analyse umfassen und daher von dieser zusätzlichen Kapazität profitieren können, ohne eine Verbindung mit dem primären Replikat herstellen zu müssen. 
 
 Um die horizontale Leseskalierung mit einer bestimmten Datenbank zu verwenden, müssen Sie das Feature explizit beim Erstellen der Datenbank aktivieren. Sie können es auch später aktivieren, indem Sie die Konfiguration ändern. Hierzu rufen Sie in PowerShell die Cmdlets [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) oder [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) auf oder verwenden die Methode [Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate) in der Azure Resource Manager-REST-API.
 
 Nachdem die horizontale Leseskalierung für eine Datenbank aktiviert wurde, werden Anwendungen, die eine Verbindung mit dieser Datenbank herstellen, entweder an das Replikat mit Lese-/Schreibzugriff oder an ein schreibgeschütztes Replikat dieser Datenbank weitergeleitet. Die Weiterleitung richtet sich nach der `ApplicationIntent`-Eigenschaft, die in der Verbindungszeichenfolge der Anwendung konfiguriert ist. Informationen zur `ApplicationIntent`-Eigenschaft finden Sie unter [Angeben der Anwendungsabsicht](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
 
-Wenn horizontale Leseskalierung deaktiviert ist, oder Sie die ReadScale-Eigenschaft in einer nicht unterstützten Dienstebene festlegen, werden alle Verbindungen unabhängig von der `ApplicationIntent`-Eigenschaft an das Replikat mit Lese-/Schreibzugriff weitergeleitet.  
+Wenn horizontale Leseskalierung deaktiviert ist, oder Sie die ReadScale-Eigenschaft in einer nicht unterstützten Dienstebene festlegen, werden alle Verbindungen unabhängig von der `ApplicationIntent`-Eigenschaft an das Replikat mit Lese-/Schreibzugriff weitergeleitet.
 
 ## <a name="conclusion"></a>Zusammenfassung
 Azure SQL-Datenbank ist nahtlos in die Azure-Plattform integriert und bei der Fehlererkennung und Wiederherstellung in hohem Maße von Service Fabric, in Verbindung mit dem Datenschutz von Azure Storage Blobs und für höhere Fehlertoleranz von Verfügbarkeitszonen abhängig. Gleichzeitig nutzt Azure SQL-Datenbank in vollem Umfang die Technologie der AlwaysOn-Verfügbarkeitsgruppen des SQL Server-Standardprodukts für Replikation und Failover. Dank der Kombination dieser Technologien können Anwendungen die Vorteile eines gemischten Speichermodells voll ausschöpfen und sehr anspruchsvolle SLAs unterstützen. 

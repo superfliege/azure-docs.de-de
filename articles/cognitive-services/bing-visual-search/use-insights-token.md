@@ -1,21 +1,21 @@
 ---
-title: Verwenden von Erkenntnistoken mit der API für die visuelle Bing-Suche | Microsoft-Dokumentation
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Dieser Artikel zeigt, wie Sie das Erkenntnistoken eines Bilds mit der API für die virtuelle Suche verwenden, um Erkenntnisse zu einem Bild zu gewinnen.
+title: Verwenden von Erkenntnistoken – Visuelle Bing-Suche
+titleSuffix: Azure Cognitive Services
+description: Dieser Artikel zeigt, wie Sie das Erkenntnistoken eines Bilds mit der API für die visuelle Bing-Suche verwenden, um Erkenntnisse zu einem Bild zu gewinnen.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 569ae89a712d14fb36989e756f99725dce398c0a
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: e853545e07709d82fa1e3b1143392e6d6012f6f6
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126557"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227587"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Verwenden eines Erkenntnistokens zum Gewinnen von Erkenntnissen zu einem Bild
 

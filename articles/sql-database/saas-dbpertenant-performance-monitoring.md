@@ -1,21 +1,23 @@
 ---
 title: Überwachen der Leistung vieler Azure SQL-Datenbanken in einer mehrinstanzenfähigen SaaS-App | Microsoft-Dokumentation
 description: Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
-keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: d8e260b8dabb4c6823d59374a7b8661e024f1b3d
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: e774394eeb95fbc8d80e181a614a7e30258a100e
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752270"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056769"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 
@@ -49,9 +51,9 @@ Pools und die Datenbanken in den Pools sollten überwacht werden, um sicherzuste
 ### <a name="performance-management-strategies"></a>Leistungsverwaltungsstrategien
 
 * Um die Leistung nicht manuell überwachen zu müssen, ist es am effizientesten, **Benachrichtigungen einzurichten, die ausgelöst werden, wenn Datenbanken oder Pools vom Normalbereich abweichen**.
-* Um auf kurzfristige Schwankungen in der aggregierten Leistungsstufe eines Pools zu reagieren, **kann die Pool-eDTU-Stufe zentral hoch- oder herunterskaliert werden**. Wenn diese Fluktuation in regelmäßigen oder vorhersagbaren Abständen auftritt, **kann die Skalierung des Pools geplant werden und automatische erfolgen**. Skalieren Sie z.B. zentral herunter, wenn Sie wissen, dass der Workload gering sein wird, beispielsweise nachts oder an den Wochenenden.
+* Um auf kurzfristige Schwankungen in der aggregierten Computegröße eines Pools zu reagieren, **kann die Pool-eDTU-Stufe hoch- oder herunterskaliert werden**. Wenn diese Fluktuation in regelmäßigen oder vorhersagbaren Abständen auftritt, **kann die Skalierung des Pools geplant werden und automatische erfolgen**. Skalieren Sie z.B. zentral herunter, wenn Sie wissen, dass der Workload gering sein wird, beispielsweise nachts oder an den Wochenenden.
 * Um auf längerfristige Schwankungen oder Änderungen bei der Anzahl der Datenbanken zu reagieren, **können einzelne Datenbanken in anderen Pools verschoben werden**.
-* Um auf kurzfristige Anstiege *einzelner* Datenbanklasten zu reagieren, **können einzelne Datenbanken aus dem Pool entfernt und einer individuellen Leistungsebene zugewiesen werden**. Sobald die Last sich verringert, kann die Datenbank wieder dem Pool hinzugefügt werden. Wenn dies im Voraus bekannt ist, können Datenbanken vorsorglich verschoben werden, um sicherzustellen, dass die Datenbank immer über die erforderlichen Ressourcen verfügt, und um Auswirkungen auf andere Datenbanken im Pool zu vermeiden. Wenn diese Anforderungen vorhersagbar sind, wenn beispielsweise für eine beliebte Veranstaltung an einem Veranstaltungsort ein Run auf die Tickets zu erwarten ist, kann dieses Verwaltungsverhalten in die Anwendung integriert werden.
+* Um auf kurzfristige Anstiege *einzelner* Datenbanklasten zu reagieren, **können Sie einzelne Datenbanken aus dem Pool entfernen und eine individuelle Computegröße zuweisen**. Sobald die Last sich verringert, kann die Datenbank wieder dem Pool hinzugefügt werden. Wenn dies im Voraus bekannt ist, können Datenbanken vorsorglich verschoben werden, um sicherzustellen, dass die Datenbank immer über die erforderlichen Ressourcen verfügt, und um Auswirkungen auf andere Datenbanken im Pool zu vermeiden. Wenn diese Anforderungen vorhersagbar sind, wenn beispielsweise für eine beliebte Veranstaltung an einem Veranstaltungsort ein Run auf die Tickets zu erwarten ist, kann dieses Verwaltungsverhalten in die Anwendung integriert werden.
 
 Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und Benachrichtigungen für die meisten Ressourcen. In SQL-Datenbank sind Überwachung und Benachrichtigungen für Datenbanken und Pools verfügbar. Die integrierte Überwachungs- und Benachrichtigungsfunktionalität ist ressourcenspezifisch, daher lässt sie sich bequem für eine kleine Anzahl von Ressourcen verwenden, ist aber bei der Arbeit mit vielen Ressourcen nicht sehr praktisch.
 
@@ -207,7 +209,7 @@ In dieser Übung werden die Auswirkungen simuliert, wenn der Ticketverkauf für 
 2. In der Anzeige **Überwachung der elastischen Datenbank** werden die meistverwendeten Datenbanken der letzten Stunde angezeigt. Die Datenbank *contosoconcerthall* sollte in Kürze unter den fünf meist verwendeten Datenbanken angezeigt werden.
 3. Klicken Sie auf das Diagramm **Überwachung der elastischen** **Datenbank**. Hierdurch wird die Seite **Datenbank-Ressourcennutzung** geöffnet, mit der Sie beliebige Datenbanken überwachen können. Dadurch können Sie die Anzeige für die Datenbank *contosoconcerthall* isolieren.
 4. Klicken Sie in der Liste der Datenbanken auf **contosoconcerthall**.
-5. Klicken Sie auf **Tarif (DTUs skalieren)**, um die Seite **Leistung konfigurieren** zu öffnen. Auf dieser können Sie eine eigenständige Leistungsebene für die Datenbank festlegen.
+5. Klicken Sie auf **Tarif (DTUs skalieren)**, um die Seite **Leistung konfigurieren** zu öffnen. Auf dieser können Sie eine eigenständige Computegröße für die Datenbank festlegen.
 6. Klicken Sie auf die Registerkarte **Standard**, um die Skalierungsoptionen des Standard-Tarifs zu öffnen.
 7. Schieben Sie den **DTU-Schieberegler** nach rechts, um **100** DTUs auszuwählen. Beachten Sie, dass dies dem Dienstziel **S3** entspricht.
 8. Klicken Sie auf **Anwenden**, um die Datenbank aus dem Pool zu verschieben und als *Standard S3*-Datenbank festzulegen.

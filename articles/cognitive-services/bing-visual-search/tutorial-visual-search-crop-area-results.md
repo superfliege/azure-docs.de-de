@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: SDK für die visuelle Bing-Suche – Ergebnisse für den Zuschneidebereich | Microsoft-Dokumentation'
+title: 'Tutorial: Bildzuschneidebereich und Ergebnisse – Visuelle Bing-Suche'
 description: Es wird beschrieben, wie Sie das SDK für die visuelle Bing-Suche nutzen, um URLs von Bildern abzurufen, die Ähnlichkeit mit dem Zuschneidebereich des hochgeladenen Bilds aufweisen.
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: dd51ed7c710cc51a9fe0e63e55aa0d2c4ea24bee
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 66e17c00da898e575bb858dbe16a35d1c44a2780
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574488"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226909"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>Tutorial: SDK für die visuelle Bing-Suche – Bildzuschneidebereich und Ergebnisse
 Das SDK für die visuelle Suche enthält eine Option zum Auswählen eines Bildbereichs und für die Onlinesuche von Bildern, die Ähnlichkeit mit dem Zuschneidebereich des größeren Bilds aufweisen.  In diesem Beispiel ist der Zuschneidebereich mit einer Person aus einem Bild angegeben, auf dem mehrere Personen zu sehen sind.  Der Code sendet den Zuschneidebereich und die URL des größeren Bilds und gibt Ergebnisse zurück, die URLs der Bing-Suche und URLs von ähnlichen online ermittelten Bildern enthalten.

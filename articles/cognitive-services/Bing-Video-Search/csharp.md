@@ -1,24 +1,25 @@
 ---
-title: C#-Schnellstart für Azure Cognitive Services, Bing-Videosuche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Videosuche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Bing-Videosuche-API, C#'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Bing-Videosuche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 0686d99b5f6f7b0546fc4e8c24369957667a7da6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 00522ac87a74226c9af1920bd884792ff2956a95
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376971"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225768"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-c"></a>Schnellstart für die Bing-Videosuche-API mit C#
+# <a name="quickstart-bing-video-search-api-with-c"></a>Schnellstart: Bing-Videosuche-API mit C#
 
-In diesem Artikel erfahren Sie, wie Sie die Bing-Videosuche-API verwenden, die Ihnen im Rahmen von Microsoft Cognitive Services in Azure zur Verfügung steht. In diesem Artikel wird zwar C# eingesetzt, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann. 
+In diesem Artikel erfahren Sie, wie Sie die Bing-Videosuche-API verwenden, die Ihnen im Rahmen von Azure Cognitive Services zur Verfügung steht. In diesem Artikel wird zwar C# eingesetzt, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann. 
 
 Der Beispielcode wurde in C# als .NET Core-Anwendung geschrieben und weist nur minimale externe Abhängigkeiten auf, sodass Sie den Code auch unter Linux oder Mac OS X mit Mono ausführen können.
 
@@ -190,7 +191,7 @@ namespace BingVideoSearchCSharpCore
 
 **Antwort**
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben:
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {
@@ -301,8 +302,8 @@ Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückg
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Einteilen von Videos in Seiten](paging-videos.md)
-> [Ändern der Größe und Zuschneiden von Miniaturansichten](resize-and-crop-thumbnails.md)
+> [Durchsuchen von Videos](paging-videos.md)
+> [Anpassen der Größe und Zuschneiden von Miniaturansichten](resize-and-crop-thumbnails.md)
 
 ## <a name="see-also"></a>Weitere Informationen 
 

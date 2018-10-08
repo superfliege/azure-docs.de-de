@@ -1,25 +1,25 @@
 ---
-title: Python SDK für die thematische Suche – Schnellstart | Microsoft-Dokumentation
-description: Setup für die Python SDK-Konsolenanwendung für die thematische Suche.
+title: 'Schnellstart: SDK für die visuelle Bing-Suche, Python'
 titleSuffix: Azure Cognitive Services
+description: Setup für die Python SDK-Konsolenanwendung für die thematische Suche.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: f7a1f275f9059abdceaef577fb5ca722c9951366
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 269eaccbf834646b540123dfeeeec7c569b8ced4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939415"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222640"
 ---
-# <a name="visual-search-sdk-python-quickstart"></a>Python SDK für die thematische Suche – Schnellstart
+# <a name="quickstart-bing-visual-search-sdk-python"></a>Schnellstart: SDK für die visuelle Bing-Suche, Python
 
-Das Bing-SDK für die visuelle Suche nutzt die Funktionen der REST-API für Webanforderungen und Ergebnisanalysen.
+Das Bing SDK für die thematische Suche nutzt die Funktionen der REST-API für Webanforderungen und Ergebnisanalysen.
 [Python-Beispielquellcode für das Bing-SDK für die thematische Suche](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) ist bei GitHub verfügbar.
 
 Codeszenarien sind unter den folgenden Themen dokumentiert:
@@ -325,4 +325,4 @@ Der folgende Code sendet ein Bildauswertungstoken im knowledgeRequest-Parameter 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Cognitive Services SDK-Beispiele für .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+[Cognitive services .NET SDK samples (Cognitive Services SDK-Beispiele für .NET)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

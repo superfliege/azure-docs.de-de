@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: d099163cdc34624afd8f01b8f1978c5ee902d1ff
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 6d4f7fab0c36095d96cec0038a39744102e8972b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356068"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433751"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
@@ -29,9 +29,9 @@ ms.locfileid: "34356068"
 - **Externe ASE**: Macht die gehosteten Apps der ASE für eine über das Internet erreichbare IP-Adresse verfügbar. Weitere Informationen finden Sie unter [Erstellen einer externen ASE][MakeExternalASE].
 - **ILB ASE**: Macht die gehosteten Apps der ASE für eine IP-Adresse in Ihrem VNet verfügbar. Der interne Endpunkt ist ein ILB (Internal Load Balancer, interner Lastenausgleich), daher der Name ILB-ASE. Weitere Informationen finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].
 
-Es gibt nun zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Informationen zur ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro]. ASEv1 kann in einem klassischen oder Resource Manager-VNet bereitgestellt werden. ASEv2 kann nur in einem Ressourcen-Manager-VNet bereitgestellt werden.
+Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Informationen zur ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro]. ASEv1 kann in einem klassischen oder Resource Manager-VNet bereitgestellt werden. ASEv2 kann nur in einem Ressourcen-Manager-VNet bereitgestellt werden.
 
-Alle Aufrufe, die von einer ASE ins Internet gehen, verlassen das VNet über eine der ASE zugewiesene VIP-Adresse. Die öffentliche IP dieser VIP ist die Quell-IP für alle Aufrufe, die von der ASE ins Internet gehen. Wenn die Apps in Ihrer ASE Ressourcen in Ihrem VNet oder über ein VPN aufrufen, ist die Quell-IP eine der IPs in dem von Ihrer ASE verwendeten Subnetz. Da sich die ASE im VNet befindet, hat sie ohne zusätzliche Konfiguration auch Zugriff auf Ressourcen im VNet. Wenn das VNet mit Ihrem lokalen Netzwerk verbunden ist, verfügen die Apps in der ASE auf über Zugriff auf die dort enthaltenen Ressourcen. Eine weitere Konfiguration der ASE oder der App ist nicht erforderlich.
+Alle Aufrufe, die von einer ASE ins Internet gehen, verlassen das VNet über eine der ASE zugewiesene VIP-Adresse. Die öffentliche IP dieser VIP ist die Quell-IP für alle Aufrufe, die von der ASE ins Internet gehen. Wenn die Apps in Ihrer ASE Ressourcen in Ihrem VNet oder über ein VPN aufrufen, ist die Quell-IP eine der IPs in dem von Ihrer ASE verwendeten Subnetz. Da sich die ASE im VNet befindet, hat sie ohne zusätzliche Konfiguration auch Zugriff auf Ressourcen im VNet. Wenn das VNet mit Ihrem lokalen Netzwerk verbunden ist, verfügen die Apps in der ASE ohne zusätzliche Konfiguration über Zugriff auf die dort enthaltenen Ressourcen.
 
 ![Externe ASE][1] 
 
@@ -44,7 +44,7 @@ Wenn Sie über eine externe ASE verfügen, ist die öffentliche VIP auch der End
 
 ![ILB ASE][2]
 
-Wenn Sie über eine ILB-ASE verfügen, ist die IP-Adresse der ILB der Endpunkt für HTTP/S, FTP/S, Webbereitstellung und Remotedebuggen.
+Wenn Sie über eine ILB-ASE verfügen, ist die Adresse der ILB der Endpunkt für HTTP/S, FTP/S, Webbereitstellung und Remotedebuggen.
 
 Die normalen App-Zugriffsports sind:
 
@@ -58,14 +58,18 @@ Dies gilt für externe ASEs und ILB-ASEs. Wenn Sie eine externe ASE nutzen, erre
 
 ## <a name="ase-subnet-size"></a>ASE-Subnetzgröße ##
 
-Die Größe des Subnetzes, das zum Hosten einer ASE verwendet wird, kann nach der ASE-Bereitstellung nicht mehr geändert werden.  Die ASE verwendet eine Adresse für jede Infrastrukturrolle sowie für jede Instanz eines isolierten App Service-Plans.  Zusätzlich werden 5 Adressen für den Azure-Netzwerkbetrieb für jedes erstellte Subnetz verwendet.  Eine ASE ohne App Service-Pläne verwendet 12 Adressen, bevor Sie eine App erstellen.  Wenn es sich um eine ILB-ASE handelt, werden vor dem Erstellen einer App in dieser ASE 13 Adressen verwendet. Beim horizontalen Hochskalieren Ihrer App Service-Pläne sind zusätzliche Adressen für jedes hinzugefügte Front-End erforderlich.  Standardmäßig werden Front-End-Server für je 15 App Service-Planinstanzen hinzugefügt. 
+Die Größe des Subnetzes, das zum Hosten einer ASE verwendet wird, kann nach der ASE-Bereitstellung nicht mehr geändert werden.  Die ASE verwendet eine Adresse für jede Infrastrukturrolle sowie für jede Instanz eines isolierten App Service-Plans.  Zusätzlich werden 5 Adressen für den Azure-Netzwerkbetrieb für jedes erstellte Subnetz verwendet.  Eine ASE ohne App Service-Pläne verwendet 12 Adressen, bevor Sie eine App erstellen.  Wenn es sich um eine ILB-ASE handelt, werden vor dem Erstellen einer App in dieser ASE 13 Adressen verwendet. Wenn Sie Ihre ASE horizontal hochskalieren, werden Infrastrukturrollen jedes Vielfache von 15 und 20 Ihrer App Service-Planinstanzen hinzugefügt.
 
    > [!NOTE]
-   > Im Subnetz kann sich ausschließlich die ASE befinden. Achten Sie darauf, einen Adressbereich auszuwählen, der auf künftiges Wachstum ausgelegt ist. Diese Einstellung kann später nicht geändert werden. Es wird eine Größe von `/25` mit 128 Adressen empfohlen.
+   > Im Subnetz kann sich ausschließlich die ASE befinden. Achten Sie darauf, einen Adressbereich auszuwählen, der auf künftiges Wachstum ausgelegt ist. Diese Einstellung kann später nicht geändert werden. Es wird eine Größe von `/24` mit 256 Adressen empfohlen.
+
+Wenn Sie zentral hoch- oder herunterskalieren, werden neue Rollen der entsprechenden Größe hinzugefügt und Ihre Workloads werden dann von der aktuellen Größe auf die Zielgröße migriert. Erst nach der Migration Ihrer Apps werden die ursprünglichen virtuellen Computer entfernt. Das bedeutet, wenn Sie über eine ASE mit 100 ASP-Instanzen verfügen, gäbe es einen Zeitraum, in dem Sie die doppelte Anzahl von virtuellen Computern benötigen.  Aus diesem Grund empfehlen wir die Verwendung von „/24“, um eventuelle Änderungen zu berücksichtigen.  
 
 ## <a name="ase-dependencies"></a>ASE-Abhängigkeiten ##
 
-Eine eingehende ASE-Zugriffsabhängigkeit ist:
+### <a name="ase-inbound-dependencies"></a>Eingehende ASE-Abhängigkeiten ###
+
+Die eingehenden ASE-Zugriffsabhängigkeiten sind:
 
 | Zweck | From | To |
 |-----|------|----|
@@ -74,7 +78,7 @@ Eine eingehende ASE-Zugriffsabhängigkeit ist:
 |  Azure Load Balancer eingehend zulassen | Azure Load Balancer | ASE-Subnetz: Alle Ports
 |  Von der App zugewiesene IP-Adressen | Von der App zugewiesene Adressen | ASE-Subnetz: Alle Ports
 
-Zusätzlich zur Systemüberwachung ermöglicht der eingehende Datenverkehr Befehl und Steuerung der ASE. Die Quell-IP-Adressen für diesen Datenverkehr sind im Dokument [App Service-Umgebung Management-Adressen][ASEManagement] aufgeführt. Die Netzwerksicherheitskonfiguration muss den Zugriff über alle IP-Adressen auf den Ports 454 und 455 zulassen.
+Zusätzlich zur Systemüberwachung ermöglicht der eingehende Verwaltungsdatenverkehr die Steuerung und Kontrolle der ASE. Die Quelladressen für diesen Datenverkehr sind im Dokument [App Service-Umgebung Management-Adressen][ASEManagement] aufgeführt. Die Netzwerksicherheitskonfiguration muss den Zugriff über alle IP-Adressen auf den Ports 454 und 455 zulassen. Wenn Sie den Zugriff von diesen Adressen blockieren, wird Ihr ASE fehlerhaft und dann entsprechend ausgesetzt.
 
 Viele Ports im ASE-Subnetz werden für die Kommunikation zwischen internen Komponenten verwendet, und sie können sich ändern.  Deshalb muss auf alle Ports im ASE-Subnetz aus dem ASE-Subnetz zugegriffen werden können. 
 
@@ -82,26 +86,23 @@ Für die Kommunikation zwischen dem Azure Load Balancer und dem ASE-Subnetz müs
 
 Wenn Sie von der App zugewiesene IP-Adressen verwenden, müssen Sie Datenverkehr von den IP-Adressen, die Ihren Apps zugewiesen sind, an das ASE-Subnetz zulassen.
 
-Eine ASE hängt beim ausgehenden Zugriff von mehreren externen Systemen ab. Diese Systemabhängigkeiten werden über DNS-Namen festgelegt und lassen sich keiner festen IP-Adressengruppe zuordnen. Somit erfordert die ASE den ausgehenden Zugriff aus dem ASE-Subnetz auf alle externen IP-Adressen über eine Vielzahl von Ports. Eine ASE weist die folgenden ausgehenden Abhängigkeiten auf:
+Der TCP-Datenverkehr, der über die Ports 454 und 455 eintrifft, muss wieder vom gleichen VIP ausgehen, sonst haben Sie ein asymmetrisches Routingproblem. 
 
-| Zweck | From | To |
-|-----|------|----|
-| Azure Storage | ASE-Subnetz | table.core.windows.net, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 wird nur in ASEv1 benötigt) |
-| Azure SQL-Datenbank | ASE-Subnetz | database.windows.net: 1433, 11000-11999, 14000-14999 (weitere Informationen finden Sie im Artikel zum [Verwenden der Ports von SQL-Datenbank V12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md))|
-| Azure-Verwaltung | ASE-Subnetz | management.core.windows.net, management.azure.com: 443 
-| SSL-Zertifikatprüfung |  ASE-Subnetz            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443
-| Azure Active Directory        | ASE-Subnetz            |  Internet: 443
-| App Service-Verwaltung        | ASE-Subnetz            |  Internet: 443
-| Azure DNS                     | ASE-Subnetz            |  Internet: 53
-| Interne ASE-Kommunikation    | ASE-Subnetz: Alle Ports |  ASE-Subnetz: Alle Ports
+### <a name="ase-outbound-dependencies"></a>Ausgehende ASE-Abhängigkeiten ###
 
-Wenn die ASE nicht mehr auf diese Abhängigkeiten zugreifen kann, ist die ASE nicht mehr funktionsfähig. Nach einer gewissen Zeit wird die ASE angehalten.
+Eine ASE hängt beim ausgehenden Zugriff von mehreren externen Systemen ab. Viele dieser Systemabhängigkeiten werden über DNS-Namen festgelegt und lassen sich keiner festen IP-Adressengruppe zuordnen. Somit erfordert die ASE den ausgehenden Zugriff aus dem ASE-Subnetz auf alle externen IP-Adressen über eine Vielzahl von Ports. 
+
+Die vollständige Liste der ausgehenden Abhängigkeiten ist in dem Dokument aufgeführt, das das [Sperren des ausgehenden Datenverkehrs der App Service-Umgebung](./firewall-integration.md) beschreibt. Wenn die ASE nicht mehr auf ihre Abhängigkeiten zugreifen kann, ist sie nicht mehr funktionsfähig. Nach einer gewissen Zeit wird die ASE angehalten. 
 
 ### <a name="customer-dns"></a>Kunden-DNS ###
 
 Wenn das VNet mit einem kundendefinierten DNS-Server konfiguriert ist, wird es von den Workloads des Mandanten verwendet. Zu Verwaltungszwecken muss die ASE auch weiterhin mit dem Azure-DNS kommunizieren können. 
 
 Wenn das VNet mit einem Kunden-DNS auf der anderen Seite eines VPN konfiguriert ist, muss der DNS-Server aus dem Subnetz erreichbar sein, das die ASE enthält.
+
+Sie können die Auflösung Ihrer Web-App mit dem Konsolenbefehl *nameresolver* testen. Wechseln Sie zum Debugfenster in Ihrer SCM-Website für Ihre App oder zur App im Portal, und wählen Sie die Konsole aus. Über die Shell-Eingabeaufforderung können Sie den Befehl *nameresolver* zusammen mit der Adresse ausgeben, die Sie suchen möchten. Das Ergebnis, das Sie erhalten, ist identisch mit dem, das Ihre App bei gleicher Suche erhalten würde. Wenn Sie nslookup verwenden, werden Sie stattdessen eine Suche mit Azure DNS durchführen.
+
+Wenn Sie die DNS-Einstellung des VNet ändern, in dem sich Ihre ASE befindet, müssen Sie Ihre ASE neu starten. Um einen Neustart Ihrer ASE zu vermeiden, wird dringend empfohlen, dass Sie Ihre DNS-Einstellungen für Ihr VNet konfigurieren, bevor Sie die ASE erstellen.  
 
 <a name="portaldep"></a>
 
@@ -141,6 +142,9 @@ Eine ASE muss einige IP-Adressen berücksichtigen. Sie lauten wie folgt:
 - **Von der App zugewiesene IP-basierte SSL-Adressen**: Kann nur in einer externen ASE verwendet werden, wenn gleichzeitig auch IP-basiertes SSL konfiguriert ist.
 
 Alle diese IP-Adressen sind von der ASE-Benutzeroberfläche aus auf einfache Weise in der ASEv2 im Azure-Portal sichtbar. Wenn Sie eine ILB-ASE verwenden, wird die IP der ILB angezeigt.
+
+   > [!NOTE]
+   > Diese IP-Adressen werden nicht geändert, solange Ihr ASE aktiv bleibt.  Wenn Ihre ASE ausgesetzt und wiederhergestellt wird, ändern sich die von Ihrer ASE verwendeten Adressen. Die normale Ursache für die Aussetzung einer ASE ist, wenn Sie den eingehenden Verwaltungszugriff oder den Zugriff auf eine ASE-Abhängigkeit blockieren. 
 
 ![IP-Adressen][3]
 

@@ -1,21 +1,21 @@
 ---
-title: Übersicht über die API für die visuelle Bing-Suche| Microsoft-Dokumentation
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Hier erfahren Sie, wie Sie Details oder Informationen zu einem Bild wie z.B. ähnliche Bilder oder Einkaufsquellen abrufen.
+title: Was ist die visuelle Bing-Suche?
+titleSuffix: Azure Cognitive Services
+description: Die visuelle Bing-Suche stellt Details oder Informationen zu einem Bild bereit, wie z. B. ähnliche Bilder oder Einkaufsquellen.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: overview
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: aa563d89b1834f5be952f13c31a2451d809709b1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 2ab73281eb050a52b596504ea9cc0e478144ff24
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006528"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226768"
 ---
 # <a name="what-is-bing-visual-search-api"></a>Was ist die API für die visuelle Bing-Suche?
 

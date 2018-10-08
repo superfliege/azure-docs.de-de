@@ -8,30 +8,30 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/12/2018
-ms.openlocfilehash: b514f23f2e8a43f99fd5bf5c3afb5ed625ad4472
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/14/2018
+ms.openlocfilehash: 4627593e4ab96c63423a7afd6152f3a004bc6c3f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046574"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042362"
 ---
 # <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Verwenden des erweiterten Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Spark-Anwendungen
 
-Dieser Artikel enthält Anleitungen zur Verwendung des erweiterten Spark-Verlaufsservers zum Debuggen und Diagnostizieren abgeschlossener und aktiver Spark-Anwendungen. Die Erweiterung enthält derzeit die Registerkarten „Daten“ und „Diagramm“. Auf der Registerkarte „Daten“ können Benutzer die Eingabe- und Ausgabedaten des Spark-Auftrags überprüfen. Auf der Registerkarte „Diagramm“ können Benutzer den Datenfluss überprüfen und das Auftragsdiagramm wiedergeben.
+Dieser Artikel enthält Anleitungen zur Verwendung des erweiterten Spark-Verlaufsservers zum Debuggen und Diagnostizieren abgeschlossener und aktiver Spark-Anwendungen. Die Erweiterung enthält die Registerkarten „Daten“, „Diagramm“ und „Diagnose“. Auf der Registerkarte **Daten** können Benutzer die Eingabe- und Ausgabedaten des Spark-Auftrags überprüfen. Auf der Registerkarte **Diagramm** können Benutzer den Datenfluss überprüfen und das Auftragsdiagramm wiedergeben. Auf der Registerkarte **Diagnose** finden Benutzer die Registerkarten **Datenschiefe**, **Zeitabweichung** und **Executor-Nutzungsanalyse**.
 
-## <a name="open-the-spark-history-server"></a>Öffnen des Spark-Verlaufsservers
+## <a name="get-access-to-spark-history-server"></a>Zugreifen auf den Spark-Verlaufsserver
 
 Der Spark-Verlaufsserver ist die Webbenutzeroberfläche für abgeschlossene und ausgeführte Spark-Anwendungen. 
 
-### <a name="to-open-the-spark-history-server-web-ui-from-azure-portal"></a>So öffnen Sie die Webbenutzeroberfläche des Spark-Verlaufsservers über das Azure-Portal
+### <a name="open-the-spark-history-server-web-ui-from-azure-portal"></a>Öffnen der Webbenutzeroberfläche des Spark-Verlaufsservers über das Azure-Portal
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Spark-Cluster. Weitere Informationen finden Sie unter [Auflisten und Anzeigen von Clustern](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 2. Klicken Sie unter **Quicklinks** auf **Clusterdashboard** und dann auf **Spark-Verlaufsserver**. Geben Sie bei Aufforderung die Anmeldeinformationen für den Spark-Cluster ein. 
 
     ![Spark-Verlaufsserver](./media/apache-azure-spark-history-server/launch-history-server.png "Spark-Verlaufsserver")
 
-### <a name="to-open-the-spark-history-server-web-ui-by-url"></a>So öffnen Sie die Webbenutzeroberfläche des Spark-Verlaufsservers mit einer URL
+### <a name="open-the-spark-history-server-web-ui-by-url"></a>Öffnen der Webbenutzeroberfläche des Spark-Verlaufsservers mit einer URL
 Öffnen Sie den Spark-Verlaufsserver durch Navigieren zur folgenden URL. Ersetzen Sie <ClusterName> mit dem Spark-Clusternamen des Kunden.
 
    ```
@@ -43,7 +43,7 @@ Die Webbenutzeroberfläche des Spark-Verlaufsservers sieht wie folgt aus:
 ![HDInsight Spark-Verlaufsserver](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
 
 
-## <a name="open-the-data-tab-from-spark-history-server"></a>Öffnen der Registerkarte „Daten“ des Spark-Verlaufsservers
+## <a name="data-tab-in-spark-history-server"></a>Registerkarte „Daten“ im Spark-Verlaufsserver
 Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Daten**, um die Datenansicht aufzurufen.
 
 + Überprüfen Sie die **Eingaben**, **Ausgaben** und **Tabellenvorgänge**, indem Sie die Registerkarten getrennt auswählen.
@@ -87,7 +87,7 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Daten**, um 
     ![Feedback zum Diagramm](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="open-the-graph-tab-from-spark-history-server"></a>Öffnen der Registerkarte „Diagramm“ des Spark-Verlaufsservers
+## <a name="graph-tab-in-spark-history-server"></a>Registerkarte „Diagramm“ im Spark-Verlaufsserver
 Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, um die Ansicht mit dem Auftragsdiagramm aufzurufen.
 
 + Überprüfen Sie die Übersicht über den Auftrag anhand des generierten Auftragsdiagramms. 
@@ -108,16 +108,19 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
 
     + Grün für Erfolg: Der Auftrag wurde erfolgreich abgeschlossen.
     + Orange für Wiederholung: Instanzen von Aufgaben mit Fehlern, die aber keine Auswirkungen auf das endgültige Ergebnis des Auftrags haben. Für diese Aufgaben gibt es doppelte oder Wiederholungsinstanzen, die später möglicherweise erfolgreich sind.
-    + Rot für Fehler: Aufgaben mit Fehlern.
     + Blau für Ausführung: Die Aufgabe wird ausgeführt.
-    + Weiß für übersprungene oder wartende Aufgaben: Die Aufgabe wartet auf die Ausführung, oder die Phase wurde übersprungen.
+    + Weiß für wartende oder übersprungene Aufgaben: Die Aufgabe wartet auf die Ausführung, oder die Phase wurde übersprungen.
+    + Rot für Fehler: Aufgaben mit Fehlern.
 
     ![Diagrammfarbbeispiel: Ausführung](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
+    Die übersprungene Phase wird in weiß angezeigt.
+    ![Diagrammfarbbeispiel: Überspringen](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+
     ![Diagrammfarbbeispiel: Fehler](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
  
     > [!NOTE]
-    > Die Wiedergabe ist für jeden Auftrag zulässig. Wenn ein Auftrag keine Phasen aufweist oder noch nicht abgeschlossen ist, wird die Wiedergabe nicht unterstützt.
+    > Die Wiedergabe ist für jeden Auftrag zulässig. Für einen unvollständigen Auftrag wird die Wiedergabe nicht unterstützt.
 
 
 + Vergrößern/verkleinern Sie das Auftragsdiagramm mit dem Mausrad, oder klicken Sie auf **Mit Zoom anpassen**, um es an die Bildschirmgröße anzupassen.
@@ -127,6 +130,12 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
 + Zeigen Sie auf den Diagrammknoten, um die QuickInfo anzuzeigen, wenn es fehlgeschlagene Aufgaben gibt. Klicken Sie auf die Phase, um die Phasenseite zu öffnen.
 
     ![Diagramm-QuickInfo](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
+
++ Auf der Registerkarte „Auftragsgraph“ wird für die Phasen eine QuickInfo und ein kleines Symbol angezeigt, wenn sie Aufgaben enthalten, die den folgenden Bedingungen entsprechen:
+    + Datenschiefe: Größe der gelesenen Daten > durchschnittliche Größe der gelesenen Daten aller Aufgaben innerhalb dieser Phase * 2 und Größe der gelesenen Daten > 10 MB
+    + Zeitabweichung: Ausführungszeit > durchschnittliche Ausführungszeit aller Aufgaben innerhalb dieser Phase * 2 und Ausführungszeit > 2 Minuten
+
+    ![Diagramm mit Symbol für Zeitabweichung](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + Der Diagrammknoten des Auftrags zeigt die folgenden Informationen der einzelnen Phasen an:
     + ID
@@ -147,6 +156,47 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
 + Senden Sie Feedback mit Problemen, indem Sie auf **Feedback abgeben** klicken.
 
     ![Feedback zum Diagramm](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+
+
+## <a name="diagnosis-tab-in-spark-history-server"></a>Registerkarte „Diagnose“ im Spark-Verlaufsserver
+Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagnose**, um die Ansicht mit dem Auftragsdiagnose aufzurufen. Die Registerkarte „Diagnose“ enthält die Registerkarten **Datenschiefe**, **Zeitabweichung** und **Executor-Nutzungsanalyse**.
+    
++ Überprüfen Sie die **Datenschiefe**, **Zeitabweichung**, und **Executor-Nutzungsanalyse**, indem Sie die entsprechenden Registerkarten auswählen.
+
+    ![Diagnoseregisterkarten](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
+
+### <a name="data-skew"></a>Datenschiefe
+Klicken Sie auf die Registerkarte **Datenschiefe**, und die entsprechenden Aufgaben mit Abweichungen werden basierend auf den angegebenen Parametern angezeigt. 
+
++ **Parameter festlegen**: Im ersten Abschnitt werden die Parameter angezeigt, die verwendet werden, um Datenschiefe zu erkennen. Die integrierte Regel lautet: „Task-Datenlesevorgänge“ > 3 * „Durchschnittliche Task-Datenlesevorgänge“, und „Task-Datenlesevorgänge“ > 10 MB. Wenn Sie eine eigene Regel für Aufgaben mit Abweichungen definieren möchten, können Sie Ihre Parameter auswählen, und die Abschnitte **Schiefe Phase** und **Abweichungsdiagramm Char** werden entsprechend aktualisiert.
+
++ **Schiefe Phase**: Im zweiten Abschnitt werden die Phasen angezeigt, die Aufgaben mit Abweichungen enthalten, die den oben angegebenen Kriterien entsprechen. Wenn es in einer Phase mehr als eine Aufgaben mit Abweichungen gibt, wird in der Tabelle der schiefen Phasen nur die am Aufgabe mit der größten Abweichung angezeigt (z. B. mit dem größten Wert der Datenschiefe).
+
+    ![Datenschiefe, Abschnitt 2](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
+
++ **Abweichungsdiagramm**: Wenn eine Zeile in der Tabelle „Schiefe Phase“ ausgewählt ist, zeigt das Abweichungsdiagramm weitere Details zur Aufgabenverteilung basierend auf den gelesenen Daten und der Ausführungszeit an. Die Aufgaben mit Abweichungen werden in rot markiert, und die normalen Aufgaben in blau. Aus Performancegründen zeigt das Diagramm nur bis zu 100 Beispielaufgaben an. Die Aufgabendetails werden im unteren rechten Bereich angezeigt.
+
+    ![Datenschiefe, Abschnitt 3](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
+
+### <a name="time-skew"></a>Zeitabweichung
+Auf der Registerkarte **Zeitabweichung** werden Aufgaben mit Abweichungen basierend auf der Ausführungszeit der Aufgabe angezeigt. 
+
++ **Parameter festlegen**: Im ersten Abschnitt werden die Parameter angezeigt, die verwendet werden, um Zeitabweichung zu erkennen. Die Standardkriterien zum Erkennen von Zeitabweichungen sind: Ausführungszeit der Aufgabe > 3 * durchschnittliche Ausführungszeit und die Ausführungszeit der Aufgabe > 30 Sekunden. Sie können die Parameter basierend auf Ihren Anforderungen ändern. Unter **Schiefe Phase** und **Abweichungsdiagramm** werden, genau wie auf der Registerkarte **Datenschiefe** oben, die entsprechenden Phasen und Aufgabeninformationen angezeigt.
+
++ Klicken Sie auf **Zeitabweichung**, wird das gefilterte Ergebnis im Abschnitt **Schiefe Phase** entsprechend den im Abschnitt **Parameter festlegen** angegebenen Parametern angezeigt. Klicken Sie auf ein Element im Abschnitt **Schiefe Phase**, wird das entsprechende Diagramm in Abschnitt 3 entworfen, und die Aufgabendetails werden im rechten unteren Bereich angezeigt.
+
+    ![Zeitabweichung, Abschnitt 2](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
+
+### <a name="executor-usage-analysis"></a>Executor-Nutzungsanalyse
+Das Executor-Nutzungsdiagramm visualisiert die tatsächliche Executor-Zuordnung und den Ausführungsstatus des Spark-Auftrags.  
+
++ Klicken Sie auf **Executor-Nutzungsanalyse**, werden vier Kurventypen zur Executor-Nutzung entworfen: die **zugewiesenen Executors**, die **ausgeführten Executors**, die **Executors im Leerlauf** und die **max. Executor-Instanzen**. Was die zugewiesenen Executors betrifft, so erhöht bzw. verringert jedes Ereignis "Executor hinzugefügt" oder "Executor entfernt" die Anzahl der zugewiesenen Executors. Weitere Vergleiche finden Sie unter "Ereigniszeitachse" auf der Registerkarte "Aufträge".
+
+    ![Registerkarte „Executors“](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
+
++ Klicken Sie auf das Farbsymbol, um den entsprechenden Inhalt in allen Entwürfen aus- oder abzuwählen.
+
+    ![Auswählen eines Diagramms](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
@@ -247,7 +297,7 @@ Wenn Sie mit einem Hotfix eine Aktualisierung durchführen möchten, verwenden S
 
 **Beispiel**:
 
-`upgrade_spark_enhancement.sh https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.tgz` 
+`upgrade_spark_enhancement.sh https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar` 
 
 **So verwenden Sie die Bash-Datei aus dem Azure-Portal**
 
@@ -268,7 +318,7 @@ Wenn Sie mit einem Hotfix eine Aktualisierung durchführen möchten, verwenden S
     ![Protokoll hochladen oder Hotfix-Aktualisierung](./media/apache-azure-spark-history-server/sparkui-upload2.png)
 
 
-## <a name="known-issue"></a>Bekannte Probleme
+## <a name="known-issues"></a>Bekannte Probleme
 
 1.  Gegenwärtig können nur Spark 2.3-Cluster verwendet werden.
 
