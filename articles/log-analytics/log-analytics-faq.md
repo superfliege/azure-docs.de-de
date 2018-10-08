@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 06b30d1381d8fba1d6f053576f6556e6d02f2ae9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d873d28ec772735b8f21551cde1c7d0eab79a18c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949161"
+ms.locfileid: "47035138"
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -69,6 +69,10 @@ A: Um auf einen Arbeitsbereich in Azure zuzugreifen, müssen Ihnen Azure-Berecht
 
 ### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>F: Warum kann ich den Ansicht-Designer-Eintrag in Protokolle nicht sehen? 
 A: Ansicht-Designer ist in Protokolle nur für Benutzer verfügbar, denen mindestens Berechtigungen als Mitwirkender zugewiesen wurden.
+
+### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>F: Kann ich das Analytics-Portal weiterhin außerhalb von Azure nutzen?
+A. Ja, die Seite „Protokolle“ in Azure und das [Advanced Analytics-Portal](https://portal.loganalytics.io) basieren auf demselben Code. Log Analytics ist als Feature in Azure Monitor integriert, um eine einheitlichere Überwachungsoberfläche zu realisieren. Sie können weiterhin über die URL auf das Analytics-Portal zugreifen: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
+
 
 
 ## <a name="general"></a>Allgemein

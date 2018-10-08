@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 69ead9e6dae400ce16cb2442c7b1c13e348d1572
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 92422a254bcfd5b31731dda6d1790cc85f467860
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355252"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094979"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Erstellen einer ASE mit einer Azure Resource Manager-Vorlage
 
@@ -30,7 +30,7 @@ Eine ASE kann über das Azure-Portal oder mit einer Azure Resource Manager-Vorla
 Beim Erstellen einer ASE im Azure-Portal können Sie entweder gleichzeitig ein VNET erstellen oder ein vorhandenes VNET auswählen, in dem die Bereitstellung erfolgt. Wenn Sie eine ASE aus einer Vorlage erstellen, benötigen Sie zunächst Folgendes: 
 
 * Ein Resource Manager-VNET.
-* Ein Subnetz in diesem VNET. Wir empfehlen eine ASE-Subnetzgröße von `/25` mit 128 Adressen, um genügend Platz für zukünftiges Wachstum zu haben. Nachdem die ASE erstellt wurde, können Sie die Größe nicht mehr ändern.
+* Ein Subnetz in diesem VNET. Wir empfehlen eine ASE-Subnetzgröße von `/24` mit 256 Adressen, um genügend Platz für zukünftiges Wachstum und Skalierungsanforderungen zu haben. Nachdem die ASE erstellt wurde, können Sie die Größe nicht mehr ändern.
 * Die Ressourcen-ID aus Ihrem VNET. Sie finden diese Informationen im Azure-Portal in den Eigenschaften Ihres virtuellen Netzwerks.
 * Das Abonnement, in dem die Bereitstellung erfolgen soll.
 * Der Speicherort, in dem die Bereitstellung erfolgen soll.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 248ec73b09c25c162c5bdc77ceb18e610d604b77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a49ad2546babe8bef6b52be1d8a2dbaceec94003
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052172"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391801"
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -34,6 +34,8 @@ Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen 
 
 ## <a name="scalability-targets-for-a-storage-account"></a>Skalierbarkeitsziele für ein Speicherkonto
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
+
+### <a name="storage-resource-provider-limits"></a>Grenzwerte für Speicherressourcenanbieter 
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 

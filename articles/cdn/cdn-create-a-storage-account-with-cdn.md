@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 05ce8c932e9d3d812e34e23c082d459c3193ea40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f720c8921a9a49e76465cce1c8226232fdb12ea
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608500"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096240"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Schnellstart: Integrieren eines Azure-Speicherkontos in Azure CDN
 In dieser Schnellstartanleitung aktivieren Sie das [Azure Content Delivery Network (CDN)](cdn-overview.md) für die Zwischenspeicherung von Inhalten aus Azure Storage. Azure CDN bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hoher Bandbreite. Sie können Blobs und statische Inhalte von Compute-Instanzen auf physischen Knoten in den USA, Europa, Asien, Australien und Südamerika zwischenspeichern.
@@ -84,7 +84,7 @@ Es gibt mehrere Methoden zum Erstellen eines Speicherkontos, einschließlich Azu
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>Aktivieren von Azure CDN für das Speicherkonto
 
-Sie können Azure CDN direkt über Ihr Speicherkonto für Ihr Speicherkonto aktivieren. Wenn Sie erweiterte Konfigurationseinstellungen (etwa den Optimierungstyp) für den CDN-Endpunkt angeben möchten, können Sie stattdessen die [Azure CDN-Erweiterung](cdn-create-new-endpoint.md) verwenden, um ein CDN-Profil oder einen CDN-Endpunkt zu erstellen.
+Sie können Azure CDN direkt über Ihr Speicherkonto für Ihr Speicherkonto aktivieren. Wenn Sie erweiterte Konfigurationseinstellungen (etwa die [Optimierung des Downloads großer Dateien](cdn-optimization-overview.md#large-file-download)) für den CDN-Endpunkt angeben möchten, können Sie stattdessen die [Azure CDN-Erweiterung](cdn-create-new-endpoint.md) verwenden, um ein CDN-Profil und einen CDN-Endpunkt zu erstellen.
 
 1. Wählen Sie über das Dashboard ein Speicherkonto und dann im linken Bereich **Azure CDN** aus. Wenn die Schaltfläche **Azure CDN** nicht sofort angezeigt wird, können Sie im Feld **Suchen** im linken Bereich „CDN“ eingeben, um danach zu suchen.
     
@@ -109,6 +109,9 @@ Sie können Azure CDN direkt über Ihr Speicherkonto für Ihr Speicherkonto akti
 Wählen Sie in der Liste auf der Seite **Azure CDN** des Speicherkontos den CDN-Endpunkt aus, um die Seite mit der CDN-Endpunktkonfiguration zu öffnen. Auf dieser Seite können Sie weitere CDN-Features für Ihre Übertragung aktivieren (beispielsweise [Komprimierung](cdn-improve-performance.md), [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md) und [Geofilterung](cdn-restrict-access-by-country.md)). 
     
 ![Storage – Konfiguration des CDN-Endpunkts](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
+
+## <a name="enable-sas"></a>SAS aktivieren
+Wenn Sie einen eingeschränkten Zugriff auf private Speichercontainer gewähren möchten, können Sie die Shared Access Signature (SAS)-Funktion Ihres Azure-Speicherkontos verwenden. Eine SAS ist ein URI, der eingeschränkte Zugriffsrechte auf Ihre Azure Storage-Ressourcen erteilt, ohne Ihren Kontoschlüssel verfügbar zu machen. Weitere Informationen finden Sie unter [Verwendung von Azure CDN mit SAS](cdn-sas-storage-support.md).
 
 ## <a name="access-cdn-content"></a>Zugreifen auf CDN-Inhalte
 Verwenden Sie für den Zugriff auf die im CDN zwischengespeicherten Inhalte den im Portal bereitgestellten CDN-URL. Die Adresse eines zwischengespeicherten Blobs hat das folgende Format:
@@ -139,8 +142,8 @@ In den vorherigen Schritten haben Sie ein CDN-Profil und einen Endpunkt in einer
 3. Wenn Sie Ihr Speicherkonto löschen möchten, wählen Sie es über das Dashboard aus, und klicken Sie anschließend im oberen Menü auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Im folgenden Tutorial erfahren Sie, wie Sie Ihrem CDN-Endpunkt eine benutzerdefinierte Domäne hinzufügen:
+Informationen zum Hinzufügen einer benutzerdefinierten Domäne und zur Aktivierung von HTTPS auf Ihrem CDN-Endpunkt finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](cdn-map-content-to-custom-domain.md)
+> [Tutorial: Zugreifen auf Speicher-Blobs mithilfe einer benutzerdefinierten Azure CDN-Domäne über HTTPS](cdn-storage-custom-domain-https.md)
 
