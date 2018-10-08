@@ -1,20 +1,21 @@
 ---
-title: Grundlegendes zum Vorhersageergebnis von LUIS – Azure | Microsoft-Dokumentation
+title: Grundlegendes zum Vorhersageergebnis von LUIS
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, was das Vorhersageergebnis in LUIS bedeutet.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 7412459fca179e7a13d6933f27c2c9ac2d770f33
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: dc19151e82f44159533050e60ba2f1c6d65466fe
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358102"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032228"
 ---
 # <a name="prediction-score"></a>Vorhersageergebnis
 Ein Vorhersageergebnis gibt den Grad der Zuverlässigkeit an, den LUIS in die Ergebnisse von Vorhersagen hat. 

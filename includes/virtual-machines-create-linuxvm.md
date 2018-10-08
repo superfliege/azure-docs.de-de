@@ -1,5 +1,5 @@
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Schritte unter [Herstellen einer Verbindung mit Azure von der Azure Befehlszeilenschnittstelle (Azure-CLI 1.0)](/cli/azure/authenticate-azure-cli)ausführen.
+1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Schritte unter [Herstellen einer Verbindung mit Azure von der klassischen Azure CLI](/cli/azure/authenticate-azure-cli) ausführen.
 
 2. Stellen Sie wie folgt sicher, dass der klassische Bereitstellungsmodus aktiviert ist:
 
@@ -52,5 +52,5 @@
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Ausführliche Informationen zu diesen Azure-CLI 1.0-Befehlen für virtuelle Computer finden Sie unter [Verwendung der Azure CLI 1.0 mit der API der klassischen Bereitstellung](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+Ausführliche Informationen zu diesen Befehlen der klassischen Azure CLI für virtuelle Computer finden Sie unter [Verwenden der klassischen Azure CLI mit der klassischen Bereitstellungs-API](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 

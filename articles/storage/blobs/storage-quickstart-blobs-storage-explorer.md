@@ -1,29 +1,31 @@
 ---
-title: 'Azure-Schnellstart: Erstellen eines Blobs im Objektspeicher mithilfe des Azure Storage-Explorers | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung verwenden Sie den Azure Storage-Explorer im Objektspeicher (Blob). Anschließend verwenden Sie Storage-Explorer, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
+title: 'Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher'
+description: In diesem Schnellstart erfahren Sie, wie Sie Azure Storage-Explorer verwenden, um einen Container und ein Blob zu erstellen. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container anzeigen. Außerdem erfahren Sie, wie Sie eine Momentaufnahme eines Blobs erstellen, Zugriffsrichtlinien für Container verwalten und eine SAS (Shared Access Signature) erstellen.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 08/27/2018
 ms.author: tamram
-ms.openlocfilehash: 83698abd3006671c5edce37e3cada26d07d25b8f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 3f0418e9ccdc5fe3babd2f1ac4482795994fe3b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399635"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996127"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Azure Storage-Explorer
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher
 
-[Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) ist eine Benutzeroberfläche für mehrere Plattformen, die zum Verwalten des Inhalts Ihrer Speicherkonten verwendet wird. In dieser Anleitung wird ausführlich beschrieben, wie sie Azure Storage-Explorer zum Übertragen von Dateien zwischen einem lokalen Datenträger und Azure Blob Storage verwenden.
+In diesem Schnellstart erfahren Sie, wie Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um einen Container und ein Blob zu erstellen. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container anzeigen. Außerdem erfahren Sie, wie Sie eine Momentaufnahme eines Blobs erstellen, Zugriffsrichtlinien für Container verwalten und eine SAS (Shared Access Signature) erstellen.
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Für diese Schnellstartanleitung muss Azure Storage-Explorer installiert sein. Wenn Sie die Anwendung installieren müssen, können Sie sie unter [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) für Windows, Macintosh oder Linux herunterladen.
+Diese Schnellstartanleitung setzt voraus, dass Sie Azure Storage-Explorer installiert haben. Informationen zum Installieren von Azure Storage-Explorer für Windows, Macintosh oder Linux finden Sie unter [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="log-in-to-storage-explorer"></a>Anmelden an Storage-Explorer
 

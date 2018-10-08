@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 75bba953a7a5737f0388e53a9f6f38dd8324eb83
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 91e9cb6b436cc78a0c5bd4769d38622abda4c04d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944536"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977569"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimieren virtueller Linux-Computer in Azure
 Virtuelle Linux-Maschinen (VM) lassen sich einfach über die Befehlszeile oder über das Portal erstellen. In diesem Tutorial erfahren Sie, wie Sie mit virtuellen Computern im Rahmen der Microsoft Azure Platform optimale Ergebnisse erzielen. In diesem Thema wird eine Ubuntu Server-VM verwendet, aber Sie können virtuelle Linux-Computer auch mithilfe [Ihrer eigenen Images als Vorlagen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)erstellen.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Dieses Thema setzt voraus, dass Sie bereits über ein funktionierendes Azure-Abonnement verfügen ([Anmeldung für eine kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und einen virtuellen Computer in Ihrem Azure-Abonnement bereitgestellt haben. Stellen Sie sicher, dass die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert ist und dass Sie mit [az login](/cli/azure/reference-index#az_login) bei Ihrem Azure-Abonnement angemeldet sind, bevor Sie [einen virtuellen Computer erstellen](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Dieses Thema setzt voraus, dass Sie bereits über ein funktionierendes Azure-Abonnement verfügen ([Anmeldung für eine kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und einen virtuellen Computer in Ihrem Azure-Abonnement bereitgestellt haben. Stellen Sie sicher, dass die neueste [Azure CLI](/cli/azure/install-az-cli2) installiert ist und dass Sie mit [az login](/cli/azure/reference-index#az_login) bei Ihrem Azure-Abonnement angemeldet sind, bevor Sie [einen virtuellen Computer erstellen](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Betriebssystem-Datenträger von Azure
 Nach dem Erstellen eines virtuellen Linux-Computers in Azure sind diesem zwei Datenträger zugeordnet. **/dev/sda** ist der Betriebssystem-Datenträger, **/dev/sdb** ist der temporäre Datenträger.  Verwenden Sie den Betriebssystem-Hauptdatenträger (**/dev/sda**) ausschließlich für das Betriebssystem. Er ist für den schnellen Start des virtuellen Computers optimiert und bietet keine gute Leistung für Ihre Workloads. Es empfiehlt sich, dem virtuellen Computer mindestens einen Datenträger anzufügen, um eine beständige und optimierte Datenspeicherung zu erhalten. 
@@ -42,7 +42,7 @@ Um bei Storage Premium-Datenträgern mit der Cacheeinstellung **ReadOnly** oder 
 * Wenn Sie **XFS**verwenden, deaktivieren Sie Barriers mithilfe der Bereitstellungsoption `nobarrier` (zum Aktivieren von Barriers verwenden Sie `barrier`).
 
 ## <a name="unmanaged-storage-account-considerations"></a>Überlegungen zu nicht verwalteten Speicherkonten
-Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure CLI 2.0 ist die Verwendung von Azure Managed Disks.  Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung.  Nicht verwaltete Datenträger erfordern ein Speicherkonto, und es sind einige Leistungsaspekte zu bedenken.  Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../windows/managed-disks-overview.md).  Im folgenden Abschnitt werden einige Leistungsaspekte erläutert, die nur zu berücksichtigen sind, wenn Sie nicht verwaltete Datenträger verwenden.  Um es noch einmal zu betonen: Die standardmäßige und empfohlene Speicherlösung sind verwaltete Datenträger.
+Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure CLI ist die Verwendung von Azure Managed Disks.  Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung.  Nicht verwaltete Datenträger erfordern ein Speicherkonto, und es sind einige Leistungsaspekte zu bedenken.  Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../windows/managed-disks-overview.md).  Im folgenden Abschnitt werden einige Leistungsaspekte erläutert, die nur zu berücksichtigen sind, wenn Sie nicht verwaltete Datenträger verwenden.  Um es noch einmal zu betonen: Die standardmäßige und empfohlene Speicherlösung sind verwaltete Datenträger.
 
 Wenn Sie einen virtuellen Computer mit nicht verwalteten Datenträgern erstellen, stellen Sie sicher, dass Sie Datenträger aus Speicherkonten anfügen, die sich in der gleichen Region befinden wie Ihr virtueller Computer, um für physische Nähe zu sorgen und die Netzwerklatenz zu minimieren.  Die Kapazität jedes Storage Standard-Kontos ist auf maximal 20.000 IOPS und eine Größe von 500 TB beschränkt.  Dieser Grenzwert entspricht etwa 40 stark ausgelasteten Datenträgern, einschließlich des Betriebssystem-Datenträgers und aller von Ihnen erstellten Datenträger. Bei Storage Premium-Konten gilt kein IOPS-Limit, die Größe ist jedoch auf 32 TB beschränkt. 
 
@@ -118,7 +118,7 @@ Found memtest86+ image: /memtest86+.bin
 done
 ```
 
-Bei Redhat-Verteilungen benötigen Sie nur den folgenden Befehl:   
+Bei Red Hat-Distributionen benötigen Sie nur den folgenden Befehl:   
 
 ```bash
 echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local

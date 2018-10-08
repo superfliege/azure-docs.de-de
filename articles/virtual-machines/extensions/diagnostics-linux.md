@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: agaiha
-ms.openlocfilehash: 8ffa9823000efbb101be73397cd0025f9933cecd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652643"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994801"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -54,9 +54,10 @@ Die herunterladbare Konfiguration ist nur ein Beispiel. Passen Sie sie an Ihre e
 ### <a name="prerequisites"></a>Voraussetzungen
 
 * **Azure Linux Agent ab Version 2.2.0**. Die meisten Images des Azure-Katalogs für virtuelle Linux-Computer enthalten Version 2.2.7 oder höher. Führen Sie `/usr/sbin/waagent -version` aus, um die auf dem virtuellen Computer installierte Version zu überprüfen. Wenn der virtuelle Computer unter einer älteren Version des Gast-Agents ausgeführt wird, führen Sie [diese Anweisungen](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) aus, um ihn zu aktualisieren.
-* **Azure-Befehlszeilenschnittstelle**. [Richten Sie Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) auf dem Computer ein.
+* **Azure-Befehlszeilenschnittstelle**. [Richten Sie Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) auf dem Computer ein.
 * Der wget-Befehl, sofern Sie ihn noch nicht ausgeführt haben: Führen Sie `sudo apt-get install wget` aus.
 * Ein vorhandenes Azure-Abonnement und ein vorhandenes Speicherkonto in diesem Abonnement zum Speichern der Daten.
+* Eine Liste der unterstützten Linux-Distributionen finden Sie unter https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions.
 
 ### <a name="sample-installation"></a>Beispielinstallation
 

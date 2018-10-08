@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: af32ea826f8150284c242fb6d1013924945aee97
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 25e6fba6ac8aa34c0c30fd61f5fe297b94720439
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247781"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983666"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Verwalten des Azure Blob Storage-Lebenszyklus (Vorschau)
 
@@ -30,7 +30,7 @@ Betrachten Sie eine Menge von Daten, auf die in der Frühphase des Lebenszyklus 
 
 ## <a name="storage-account-support"></a>Speicherkontounterstützung
 
-Richtlinien zur Lebenszyklusverwaltung sind sowohl für das GPv2-Konto (General Purpose v2) als auch für das Blob-Speicherkonto erhältlich. Ein vorhandenes GPv1-Konto (General Purpose v1) kann in einem einfachen Prozess im Azure-Portal mit einem Mausklick in ein GPv2-Konto konvertiert werden. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](../common/storage-account-options.md).  
+Richtlinien zur Lebenszyklusverwaltung sind sowohl für das GPv2-Konto (General Purpose v2) als auch für das Blob-Speicherkonto erhältlich. Ein vorhandenes GPv1-Konto (General Purpose v1) kann in einem einfachen Prozess im Azure-Portal mit einem Mausklick in ein GPv2-Konto konvertiert werden. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).  
 
 ## <a name="pricing"></a>Preise 
 
@@ -54,7 +54,7 @@ Get-AzureRmProviderFeature -FeatureName DLM -ProviderNamespace Microsoft.Storage
 ```
 Wenn die Funktion genehmigt und ordnungsgemäß registriert wurde, sollte der Status „Registriert“ zurückgegeben werden.
 
-### <a name="cli-20"></a>CLI 2.0
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 So senden Sie eine Anforderung: 
 ```cli
@@ -69,7 +69,7 @@ Wenn die Funktion genehmigt und ordnungsgemäß registriert wurde, sollte der St
 
 ## <a name="add-or-remove-policies"></a>Hinzufügen oder Entfernen von Richtlinien 
 
-Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [REST-APIs](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies) oder Clienttools in den folgenden Sprachen hinzufügen, bearbeiten oder entfernen: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0) und [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [REST-APIs](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies) oder Clienttools in den folgenden Sprachen hinzufügen, bearbeiten oder entfernen: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0) und [Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
 ### <a name="azure-portal"></a>Azure-Portal
 

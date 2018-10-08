@@ -1,27 +1,24 @@
 ---
-title: 'Azure-Schnellstartanleitung: Erstellen eines Speicherkontos | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Azure PowerShell oder über die Azure-Befehlszeilenschnittstelle ein neues Speicherkonto erstellen.
+title: 'Schnellstart: Erstellen eines Speicherkontos | Azure Storage'
+description: In diesem Schnellstart erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Azure PowerShell oder über die Azure-Befehlszeilenschnittstelle ein Speicherkonto erstellen. Ein Azure-Speicherkonto stellt in Microsoft Azure einen eindeutigen Namespace zum Speichern der Datenobjekte, die Sie in Azure Storage erstellen, sowie zum Zugreifen auf diese Objekte bereit.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 07/03/2018
+ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 91e98f74fd6cd88533a5090a383897eaa0e60648
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a695e333f48ed0bbf1ad5656c20964232feff4d7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524019"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990126"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Ein Azure-Speicherkonto stellt in der Cloud einen eindeutigen Namespace zum Speichern Ihrer Datenobjekte in Azure Storage sowie zum Zugreifen auf diese Objekte bereit. Ein Speicherkonto enthält alle Blobs, Dateien, Warteschlangen, Tabellen und Datenträger, die Sie unter diesem Konto erstellen. 
-
-Für Ihre ersten Schritte mit Azure Storage müssen Sie zunächst ein neues Speicherkonto erstellen. Ein Azure-Speicherkonto kann über das [Azure-Portal](https://portal.azure.com/), mithilfe von [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) oder über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) erstellt werden. In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihr neues Speicherkonto mit diesen Optionen erstellen. 
-
+In diesem Schnellstart erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com/), mithilfe von [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) oder über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) ein Speicherkonto erstellen.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -54,7 +51,7 @@ Die Schaltfläche öffnet eine interaktive Shell, mit der Sie die Schritte in di
 
 ### <a name="install-the-cli-locally"></a>Lokales Installieren der Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
+Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
 ---
 
@@ -84,26 +81,21 @@ az login
 
 ---
 
-## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+Sie können nun Ihr Speicherkonto erstellen.
+
+Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine neue Ressourcengruppe erstellen. 
+
+Ein **universelles v2**-Speicherkonto bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. In diesem Schnellstart wird ein universelles v2-Speicherkonto erstellt, doch die Schritte zum Erstellen jedes Typs von Speicherkonto sind diesen ähnlich.   
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 
-Führen Sie die folgenden Schritte aus, um über das Azure-Portal eine Ressourcengruppe zu erstellen:
-
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Ressourcengruppen**.
-2. Klicken Sie auf **Hinzufügen**, um eine neue Ressourcengruppe hinzuzufügen.
-3. Geben Sie einen Namen für die neue Ressourcengruppe ein.
-4. Wählen Sie das Abonnement aus, in dem die neue Ressourcengruppe erstellt werden soll.
-5. Wählen Sie den Standort für die Ressourcengruppe aus.
-6. Klicken Sie auf die Schaltfläche **Erstellen** .  
-
-![Screenshot mit der Ressourcengruppenerstellung über das Azure-Portal](./media/storage-quickstart-create-account/create-resource-group.png)
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Wenn Sie eine neue Ressourcengruppe mithilfe von PowerShell erstellen möchten, verwenden Sie den Befehl [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
+Erstellen Sie zuerst eine neue Ressourcengruppe mithilfe von PowerShell, und verwenden Sie hierzu den Befehl [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -119,64 +111,7 @@ Get-AzureRmLocation | select Location
 $location = "westus"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
-
-Wenn Sie eine neue Ressourcengruppe über die Azure-Befehlszeilenschnittstelle erstellen möchten, verwenden Sie den Befehl [az group create](/cli/azure/group#az_group_create). 
-
-```azurecli-interactive
-az group create \
-    --name storage-quickstart-resource-group \
-    --location westus
-```
-
-Falls Sie nicht wissen, welche Region Sie für den `--location`-Parameter angeben sollen, können Sie mit dem Befehl [az account list-locations](/cli/azure/account#az_account_list) eine Liste der unterstützten Regionen für Ihr Abonnement abrufen.
-
-```azurecli-interactive
-az account list-locations \
-    --query "[].{Region:name}" \
-    --out table
-```
-
----
-
-## <a name="create-a-general-purpose-storage-account"></a>Erstellen eines allgemeinen Speicherkontos
-
-Ein allgemeines Speicherkonto bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen und Tabellen. Allgemeine Speicherkonten können in einem Standard- oder Premium-Tarif erstellt werden. In den Beispielen in diesem Artikel wird ein allgemeines Speicherkonto im Standardtarif (Standardeinstellung) erstellt.
-
-Azure Storage verfügt über zwei Arten von allgemeinen Speicherkonten:
-
-- Allgemeines Konto vom Typ „General Purpose v2“ 
-- Allgemeines Konto vom Typ „General Purpose v1“ 
-
-> [!NOTE]
-> Es wird empfohlen, für neu erstellte Speicherkonten den Typ **General Purpose v2** zu verwenden, um die neueren Features nutzen zu können, die für diese Konten verfügbar sind.  
-
-Weitere Informationen zu Arten von Speicherkonten finden Sie unter [Azure Storage-Kontooptionen](storage-account-options.md).
-
-Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
-
-- Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
-- Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. Zwei Speicherkonten können nicht denselben Namen haben.
-
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
-
-Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „General Purpose v2“ über das Azure-Portal erstellen möchten:
-
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Alle Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
-2. Geben Sie einen Namen für Ihr Speicherkonto ein.
-3. Legen Sie das Feld **Kontoart** auf **StorageV2 (General Purpose v2)** fest.
-4. Übernehmen Sie für das Feld **Replikation** die Einstellung **Lokal redundanter Speicher (LRS)**. Alternativ hierzu können Sie **Zonenredundanter Speicher (ZRS)**, **Georedundanter Speicher (GRS)** oder **Read-Access Geo Redundant-Speicher (RA-GRS)** wählen.
-5. Behalten Sie in den folgenden Feldern die Standardwerte bei: **Bereitstellungsmodell****Leistung**, **Sichere Übertragung erforderlich**.
-6. Wählen Sie das Abonnement aus, in dem Sie das Speicherkonto erstellen möchten.
-7. Wählen Sie im Abschnitt **Ressourcengruppe** die Option **Vorhandene verwenden** und anschließend die Ressourcengruppe aus, die Sie im vorherigen Abschnitt erstellt haben.
-8. Wählen Sie den Standort für Ihr neues Speicherkonto aus.
-9. Klicken Sie auf **Erstellen** , um das Speicherkonto zu erstellen.      
-
-![Screenshot mit der Speicherkontoerstellung über das Azure-Portal](./media/storage-quickstart-create-account/create-account-portal.png)
-
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-
-Verwenden Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ per PowerShell mit lokal redundantem Speicher (LRS) den Befehl [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount): 
+Als Nächstes erstellen Sie ein universelles v2-Speicherkonto mit lokal redundantem Speicher (LRS). Verwenden Sie den Befehl [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount): 
 
 ```powershell
 New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
@@ -197,7 +132,23 @@ Fügen Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ m
 
 # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Verwenden Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ über die Azure CLI mit lokal redundantem Speicher den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create).
+Erstellen Sie zuerst eine neue Ressourcengruppe über die Azure-Befehlszeilenschnittstelle, und verwenden Sie hierzu den Befehl [az group create](/cli/azure/group#az_group_create). 
+
+```azurecli-interactive
+az group create \
+    --name storage-quickstart-resource-group \
+    --location westus
+```
+
+Falls Sie nicht wissen, welche Region Sie für den `--location`-Parameter angeben sollen, können Sie mit dem Befehl [az account list-locations](/cli/azure/account#az_account_list) eine Liste der unterstützten Regionen für Ihr Abonnement abrufen.
+
+```azurecli-interactive
+az account list-locations \
+    --query "[].{Region:name}" \
+    --out table
+```
+
+Als Nächstes erstellen Sie ein universelles v2-Speicherkonto mit lokal redundantem Speicher. Verwenden Sie den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create):
 
 ```azurecli-interactive
 az storage account create \
@@ -258,16 +209,16 @@ In diesem Schnellstart haben Sie ein allgemeines Standardspeicherkonto erstellt.
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 
 > [!div class="nextstepaction"]
-> [Übertragen von Objekten nach/aus Azure Blob Storage über das Azure-Portal](../blobs/storage-quickstart-blobs-portal.md)
+> [Arbeiten mit Blobs unter Verwendung des Azure-Portals](../blobs/storage-quickstart-blobs-portal.md)
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 > [!div class="nextstepaction"]
-> [Übertragen von Objekten nach/aus Azure Blob Storage mit PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
+> [Arbeiten mit Blobs unter Verwendung der PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
 
 # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
-> [Übertragen Objekten nach/aus Azure Blob Storage mit der Azure-Befehlszeilenschnittstelle](../blobs/storage-quickstart-blobs-cli.md)
+> [Arbeiten mit Blobs unter Verwendung der Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 
 ---

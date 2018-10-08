@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: seguler
-ms.openlocfilehash: 90858501cbf20af032c98ca8703f9e74b475e9c1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 93dc651767fc2be815fb706f71386ce72b382a37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398575"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981718"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Go
 
@@ -23,11 +23,14 @@ In diesem Schnellstart erfahren Sie, wie Sie mit der Programmiersprache „Go“
 
 So führen Sie diesen Schnellstart durch: 
 * Installieren von [Go 1.8 oder höher](https://golang.org/dl/)
-* Laden Sie mithilfe von `go get -u github.com/azure/azure-storage-blob-go/2016-05-31/azblob` das [Azure Storage Blob-SDK für Go](https://github.com/azure/azure-storage-blob-go/) herunter, und installieren Sie es. 
+* Laden Sie mithilfe von `go get -u github.com/Azure/azure-storage-blob-go/2016-05-31/azblob` das [Azure Storage Blob-SDK für Go](https://github.com/azure/azure-storage-blob-go/) herunter, und installieren Sie es. 
+
+> [!WARNING]
+> Schreiben Sie Azure in der URL unbedingt groß. Andernfalls können bei der Verwendung des SDK Importprobleme aufgrund der Groß-/Kleinschreibung auftreten. Azure muss außerdem in den Importanweisungen großgeschrieben werden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 Die in diesem Schnellstart verwendete [Beispielanwendung](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) ist eine einfache Go-Anwendung.  

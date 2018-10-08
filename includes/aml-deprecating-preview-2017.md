@@ -1,0 +1,2 @@
+>[!Note]
+>**Dieser Artikel ist veraltet.** Die Unterstützung für frühere Versionen dieses Diensts wird nach und nach beendet. [Sehen Sie sich die Zeitleiste für die Unterstützung an](../articles/machine-learning/service/overview-what-happened-to-workbench.md#timeline). Beginnen Sie damit, die neueste Version zu verwenden, mit diesem [Schnellstart](../articles/machine-learning/service/index.yml).

@@ -15,17 +15,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: cf73f792bcce906a673da0c6fb2eec099239c1c2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a9dc868c4f22f95ca5027e3c95513d176c69eac
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409549"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392398"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine Learning- und Data Science-Tools
 Die Data Science-VM (DSVM) verfügt über ein umfangreiches Angebot an Tools und Bibliotheken für Machine Learning in gängigen Sprachen wie Python, R und Julia. 
 
 Im Anschluss sind einige der Machine Learning-Tools und -Bibliotheken auf der DSVM aufgeführt. 
+
+## <a name="azure-machine-learning-servicehttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>SDK für den [Azure Machine Learning-Dienst](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml)
+|    |           |
+| ------------- | ------------- |
+| Was ist das?   |   Der Azure Machine Learning-Dienst ist ein Clouddienst, den Sie zum Entwickeln und Bereitstellen von Machine Learning-Modellen verwenden können.  Sie können Ihre Modelle beim Erstellen, Trainieren, Skalieren und Verwalten mit dem Python-SDK nachverfolgen. Stellen Sie Modelle als Container bereit, und führen Sie sie in der Cloud, lokal oder in IoT Edge aus.   |
+| Unterstützte DSVM-Editionen     | Windows (Conda-Umgebung: AzureML), Linux (Conda-Umgebung: py36)    |
+| Typische Verwendung      | Allgemeine ML-Plattform      |
+| Konfiguration/Installation auf der DSVM      |  Installiert mit GPU-Unterstützung   |
+| Verwendung/Ausführung      | Als Python-SDK und Azure-Befehlszeilentool (AZ-CLI). Aktivieren Sie die Conda-Umgebung `AzureML` unter der Windows-Edition ODER `py36` unter der Linux-Edition.      |
+| Links zu Beispielen      | Beispiele für Jupyter-Notebooks sind im Verzeichnis `AzureML` unter Notebooks enthalten.  |
+| Verwandte Tools auf der DSVM      | Visual Studio Code, Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |

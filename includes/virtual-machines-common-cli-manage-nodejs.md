@@ -5,11 +5,12 @@ Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht installiert und noch ke
 ## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
-- Azure CLI 10: Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](../articles/virtual-machines/linux/cli-manage.md) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- Klassische Azure-Befehlszeilenschnittstelle: Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
+- [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/cli-manage.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
-## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Grundlegende Azure Resource Manager-Befehle in der Azure-Befehlszeilenschnittstelle
-Dieser Artikel behandelt die grundlegenden Befehle, die Sie mit der Azure-Befehlszeilenschnittstelle verwenden, um Ihre Ressourcen (hauptsächlich virtuelle Computer) im Azure-Abonnement zu verwalten und mit ihnen zu interagieren.  Ausführlichere Informationen zu bestimmten Befehlszeilenschaltern und -optionen finden Sie in der Onlinehilfe zu Befehlen und Optionen, die Sie durch Eingeben von `azure <command> <subcommand> --help` oder `azure help <command> <subcommand>` aufrufen können.
+## <a name="basic-azure-resource-manager-commands-in-azure-classic-cli"></a>Grundlegende Azure Resource Manager-Befehle in der klassischen Azure-Befehlszeilenschnittstelle
+
+Dieser Artikel behandelt die grundlegenden Befehle, die Sie mit der klassischen Azure-Befehlszeilenschnittstelle verwenden, um Ihre Ressourcen (hauptsächlich virtuelle Computer) im Azure-Abonnement zu verwalten und mit ihnen zu interagieren.  Ausführlichere Informationen zu bestimmten Befehlszeilenschaltern und -optionen finden Sie in der Onlinehilfe zu Befehlen und Optionen, die Sie durch Eingeben von `azure <command> <subcommand> --help` oder `azure help <command> <subcommand>` aufrufen können.
 
 > [!NOTE]
 > Diese Beispiele umfassen keine vorlagenbasierten Vorgänge, die im Allgemeinen für VM-Bereitstellungen im Ressourcen-Manager empfohlen werden. Informationen finden Sie unter [Use the Azure CLI to manage Azure resources and resource groups](../articles/xplat-cli-azure-resource-manager.md) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Befehlszeilenschnittstelle) sowie unter [Bereitstellen und Verwalten von virtuellen Computern mit Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

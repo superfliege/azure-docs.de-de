@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 1009a7a1d9f354f7a41b0e3a0fbc49d57992bc31
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 034731ac2c965d6b9b682c62b9866870e558ff6d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42916469"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964666"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Schnellstart: Erstellen eines Speicherkontos in Azure Data Lake Storage Gen2 (Vorschauversion)
 
@@ -49,7 +49,7 @@ Die Schaltfläche öffnet eine interaktive Shell, mit der Sie die Schritte in di
 
 ### <a name="install-the-cli-locally"></a>Lokales Installieren der Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.38 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu.
+Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.38 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>Übersicht über das Erstellen eines Azure Data Lake Storage Gen2-Kontos
 
@@ -58,7 +58,7 @@ Erstellen Sie vor der Erstellung des Kontos zunächst eine Ressourcengruppe, die
 > [!NOTE]
 > Die neuen Speicherkonten müssen vom Typ **StorageV2 (Allgemein v2 (GPv2))** sein, damit Sie die Funktionen von Data Lake Storage Gen2 nutzen können.  
 
-Weitere Informationen zu Arten von Speicherkonten finden Sie unter [Azure Storage-Kontooptionen](../common/storage-account-options.md).
+Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
 Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 

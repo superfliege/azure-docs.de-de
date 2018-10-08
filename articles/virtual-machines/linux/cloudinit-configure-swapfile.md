@@ -1,6 +1,6 @@
 ---
 title: Verwenden von „cloud-init“ zum Konfigurieren einer Auslagerungsdatei auf einer Linux-VM | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie „cloud-init“ zum Konfigurieren einer Auslagerungsdatei auf einer Linux-VM während der Erstellung mithilfe der Azure CLI 2.0 verwenden.
+description: Erfahren Sie, wie Sie „cloud-init“ zum Konfigurieren einer Auslagerungsdatei auf einer Linux-VM während der Erstellung mithilfe der Azure CLI verwenden.
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 88a141922f113caf7ad67c89de48f84a821f7ba3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2a5a878b7c8c3b6126d90b978241fbcb237d8db7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29952597"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946305"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>Verwenden von „cloud-init“ zum Konfigurieren einer Auslagerungsdatei auf einer Linux-VM
 Dieser Artikel zeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren der Auslagerungsdatei auf verschiedenen Linux-Distributionen verwenden. Die Auslagerungsdatei wurde traditionell vom Linux-Agent (WALA) konfiguriert – abhängig davon, für welche Distributionen eine Auslagerungsdatei benötigt wurde.  In diesem Dokument wird das Vorgehen für die bedarfsgesteuerte Erstellung der Auslagerungsdatei zur Bereitstellungszeit unter Verwendung von „cloud-init“ beschrieben.  Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
@@ -27,7 +27,7 @@ Dieser Artikel zeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum
 ## <a name="create-swapfile-for-ubuntu-based-images"></a>Erstellen einer Auslagerungsdatei für Ubuntu-basierte Images
 In Azure werden für Ubuntu-Katalogimages standardmäßig keine Auslagerungsdateien erstellt. Informationen zum Aktivieren der Konfiguration einer Auslagerungsdatei während der VM-Bereitstellung mit „cloud-init“ finden Sie im Ubuntu-Wiki im [AzureSwapPartitions-Dokument](https://wiki.ubuntu.com/AzureSwapPartitions).
 
-## <a name="create-swapfile-for-redhat-and-centos-based-images"></a>Erstellen einer Auslagerungsdatei für RedHat- und CentOS-basierte Images
+## <a name="create-swapfile-for-red-hat-and-centos-based-images"></a>Erstellen einer Auslagerungsdatei für Red Hat- und CentOS-basierte Images
 
 Erstellen Sie in der aktuellen Shell eine Datei namens *cloud_init_swapfile.txt*, und fügen Sie die folgende Konfiguration ein. Erstellen Sie für dieses Beispiel die Datei in der Cloud Shell, nicht auf dem lokalen Computer. Dazu können Sie einen beliebigen Editor verwenden. Geben Sie `sensible-editor cloud_init_swapfile.txt` ein, um die Datei zu erstellen und eine Liste der verfügbaren Editoren anzuzeigen. Wählen Sie #1 aus, um den Editor **nano** zu verwenden. Stellen Sie sicher, dass die gesamte cloud-init-Datei ordnungsgemäß kopiert wird, insbesondere die erste Zeile.  
 

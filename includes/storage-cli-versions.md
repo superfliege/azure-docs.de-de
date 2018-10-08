@@ -2,5 +2,5 @@
 
 Derzeit sind zwei Versionen der Azure-Befehlszeilenschnittstelle (CLI) verfügbar:
 
-* [Azure CLI 2.0:](../articles/storage/common/storage-azure-cli.md) Unsere Befehlszeilenschnittstelle (CLI) der nächsten Generation, die in Python zur Verwendung für das Resource Manager-Bereitstellungsmodell geschrieben wurde
-* [Azure CLI 1.0:](../articles/storage/common/storage-azure-cli-nodejs.md) Unsere in Node.js geschriebene CLI zur Verwendung für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
+* [Azure CLI](../articles/storage/common/storage-azure-cli.md): Die aktuelle Version der Azure CLI zur Verwendung mit dem Resource Manager-Bereitstellungsmodell.
+* [Klassische Azure CLI](../articles/storage/common/storage-azure-cli-nodejs.md): Eine ältere Version der Azure CLI, gedacht für die ausschließliche Verwendung mit dem klassischen Bereitstellungsmodell.

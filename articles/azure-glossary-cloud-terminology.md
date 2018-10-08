@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 84766ba4cf9e844184752bc44d2e0a471b97db27
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159127"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963593"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -31,7 +31,7 @@ Das Microsoft Azure-Glossar ist ein kompaktes Wörterbuch der Cloudterminologie 
 
 ## <a name="account"></a>Konto
 Ein Konto für den Zugriff auf ein Azure-Abonnement und dessen Verwaltung. Es wird häufig als Azure-Konto bezeichnet, kann aber ein vorhandenes Geschäfts-, Schul- oder Unikonto, ein persönliches Microsoft-Konto oder ein Office 365-Benutzername und -Kennwort sein. Sie können auch ein Konto für die Verwaltung eines Azure-Abonnements erstellen, wenn Sie sich für die [kostenlose Testversion](https://azure.microsoft.com) registrieren.  
-Weitere Informationen finden Sie unter [Registrieren für ein Azure-Abonnement mit Ihrem Office 365-Konto](billing/billing-use-existing-office-365-account-azure-subscription.md) sowie unter [Konten, die für die Anmeldung verwendet werden können](active-directory/active-directory-how-subscriptions-associated-directory.md).
+Weitere Informationen finden Sie unter [Registrieren für ein Azure-Abonnement mit Ihrem Office 365-Konto](billing/billing-use-existing-office-365-account-azure-subscription.md) sowie unter [Konten, die für die Anmeldung verwendet werden können](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>Eine API-App
 Ein anderer Name für [App Service-App](#app-service-app).
@@ -47,7 +47,7 @@ Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller 
 Eines der zwei [Bereitstellungsmodelle](resource-manager-deployment-model.md), die in Azure zum Bereitstellen von Ressourcen verwendet werden. (Das neue Modell ist Azure Resource Manager.) Einige Azure-Dienste unterstützen nur das Resource Manager-Bereitstellungsmodell, andere nur das klassische Bereitstellungsmodell und wieder andere unterstützen beide Modelle. Welches Modell bzw. welche Modelle der jeweilige Azure-Dienst unterstützt, können Sie der Dokumentation des entsprechenden Diensts entnehmen.
 
 ## <a name="cli"></a>Azure-Befehlszeilenschnittstelle (CLI)
-Eine Befehlszeilenschnittstelle zum Verwalten von Azure-Diensten unter Windows, macOS und Linux.  Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden. Weitere Informationen finden Sie unter [Azure CLI 2.0](/cli/azure)
+Eine Befehlszeilenschnittstelle zum Verwalten von Azure-Diensten unter Windows, macOS und Linux.  Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden. Weitere Informationen finden Sie unter [Azure CLI](/cli/azure).
 
 ## <a name="powershell"></a>Azure PowerShell
 Eine Befehlszeilenschnittstelle zum Verwalten von Azure-Diensten über eine Befehlszeile auf einem Windows-PC. Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden.
@@ -66,8 +66,8 @@ Weitere Informationen finden Sie unter [Azure-Regionen](best-practices-availabil
 
 ## <a name="geo-replication"></a>Georeplikation
 Der Vorgang der automatischen Replikation von Inhalten wie beispielsweise Blobs, Tabellen und Warteschlangen innerhalb eines Regionspaars.  
-Weitere Informationen finden Sie unter [Aktive Georeplikation für Azure SQL-Datenbank](sql-database/sql-database-geo-replication-overview.md).
-<!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
+Weitere Informationen finden Sie unter [Aktive Georeplikation für Azure SQL-Datenbank](sql-database/sql-database-geo-replication-overview.md)
+<!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->.
 
 ## <a name="image"></a>image
 Eine Datei, die das Betriebssystem und die Anwendungskonfiguration enthält, und die zum Erstellen einer beliebigen Anzahl von virtuellen Computern verwendet werden kann. In Azure können zwei Arten von Images verwendet werden: VM-Images und Betriebssystem-Images. Ein VM-Image enthält ein Betriebssystem und alle Datenträger, die an einen virtuellen Computer angefügt sind, wenn das Image erstellt wird. Ein Betriebssystem-Image enthält nur ein generalisiertes Betriebssystem ohne Datenträgerkonfigurationen.  
@@ -127,7 +127,7 @@ Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](s
 
 ## <a name="subscription"></a>Abonnement
 Eine Vereinbarung des Kunden mit Microsoft, die die Inanspruchnahme von Azure-Diensten ermöglicht. Die Abonnementpreise und -bedingungen richten sich nach dem ausgewählten Angebot für das Abonnement.
-Weitere Informationen finden Sie unter [Microsoft Online-Abonnementvertrag](https://azure.microsoft.com/support/legal/subscription-agreement/) sowie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory/active-directory-how-subscriptions-associated-directory.md).
+Weitere Informationen finden Sie unter [Microsoft Online-Abonnementvertrag](https://azure.microsoft.com/support/legal/subscription-agreement/) sowie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="tag"></a>tag
 Ein Begriff aus dem Bereich der Indizierung, mit dem Sie Ressourcen gemäß Ihren Anforderungen für die Verwaltung oder Abrechnung kategorisieren können. Die Verwendung von Tags kann hilfreich sein, wenn Sie über eine komplexe Sammlung von Ressourcen verfügen und diese auf möglichst sinnvolle Weise visualisieren möchten. Beispielsweise können Sie Ressourcen markieren, die in Ihrer Organisation eine ähnliche Funktion haben oder zu derselben Abteilung gehören.  

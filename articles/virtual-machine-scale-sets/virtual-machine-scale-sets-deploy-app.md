@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 8817facc21d2a7ac86bdaf198aab3179a93c4914
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 86bb231a4eb9468ccc92c182b099714950b2a81c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718980"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979440"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In diesem Artikel werden Möglichkeiten zum Erstellen eines benutzerdefinierten VM-Image für Instanzen in einer Skalierungsgruppe oder zum automatischen Ausführen von Installationsskripts auf vorhandenen VM-Instanzen aufgezeigt. Außerdem erfahren Sie, wie Sie Anwendungs- oder Betriebssystemupdates für eine Skalierungsgruppe verwalten.
@@ -31,14 +31,14 @@ Wenn Sie eines der Azure-Plattformimages zum Erstellen der Instanzen in Ihrer Sk
 
 Zum Reduzieren der Konfigurationsverwaltung und der Zeit für die Bereitstellung einer VM können Sie ein benutzerdefiniertes VM-Image erstellen, das für die Ausführung Ihrer Anwendung bereitsteht, sobald in der Skalierungsgruppe eine Instanz bereitgestellt wird. Weitere Informationen zur Erstellung und Verwendung eines benutzerdefinierten VM-Images mit einer Skalierungsgruppe finden Sie in den folgenden Tutorials:
 
-- [Azure CLI 2.0](tutorial-use-custom-image-cli.md)
+- [Azure-CLI](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
 ## <a name="already-provisioned"></a>Installieren einer App mit der benutzerdefinierten Skripterweiterung
 Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter und führt sie aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Skripts können aus Azure Storage oder GitHub heruntergeladen oder dem Azure-Portal zur Laufzeit für die Erweiterung bereitgestellt werden. Weitere Informationen zur Erstellung und Verwendung eines benutzerdefinierten VM-Images mit einer Skalierungsgruppe finden Sie in den folgenden Tutorials:
 
-- [Azure CLI 2.0](tutorial-install-apps-cli.md)
+- [Azure-CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
 - [Azure Resource Manager-Vorlage](tutorial-install-apps-template.md)
 
@@ -114,7 +114,7 @@ az vmss create \
 ### <a name="install-applications-with-os-updates"></a>Installieren von Anwendungen mit Betriebssystemupdates
 Wenn neue Releases von Betriebssystemen verfügbar sind, können Sie ein neues benutzerdefiniertes Image verwenden oder erstellen und [Betriebssystemupgrades](virtual-machine-scale-sets-upgrade-scale-set.md) für eine Skalierungsgruppe bereitstellen. Jede VM-Instanz wird auf das aktuelle Image aktualisiert, das Sie angegeben haben. Sie können ein benutzerdefiniertes Image mit der vorinstallierten Anwendung, der benutzerdefinierten Skripterweiterung oder PowerShell DSC verwenden, damit die Anwendung automatisch verfügbar ist, wenn Sie das Upgrade durchführen. Unter Umständen müssen Sie die Anwendungswartung planen, wenn Sie diesen Prozess durchführen, um sicherzustellen, dass keine Probleme aufgrund der Kompatibilität von Versionen auftreten.
 
-Wenn Sie ein benutzerdefiniertes VM-Image mit vorinstallierter Anwendung verwenden, können Sie die Anwendungsupdates in eine Bereitstellungspipeline integrieren, um die neuen Images zu erstellen und Betriebssystemupgrades für die gesamte Skalierungsgruppe bereitzustellen. Bei diesem Ansatz kann die Pipeline die aktuellen Builds der Anwendung nutzen, ein VM-Image erstellen und überprüfen und anschließend die VM-Instanzen in der Skalierungsgruppe aktualisieren. Zum Ausführen einer Bereitstellungspipeline, mit der Anwendungsupdates über benutzerdefinierte VM-Images hinweg erstellt und bereitgestellt werden, können Sie [mit Visual Studio Team Services ein Packer-Image erstellen und bereitstellen](/vsts/pipelines/apps/cd/azure/deploy-azure-scaleset) oder eine andere Plattform (beispielsweise [Spinnaker](https://www.spinnaker.io/) oder [Jenkins](https://jenkins.io/)) verwenden.
+Wenn Sie ein benutzerdefiniertes VM-Image mit vorinstallierter Anwendung verwenden, können Sie die Anwendungsupdates in eine Bereitstellungspipeline integrieren, um die neuen Images zu erstellen und Betriebssystemupgrades für die gesamte Skalierungsgruppe bereitzustellen. Bei diesem Ansatz kann die Pipeline die aktuellen Builds der Anwendung nutzen, ein VM-Image erstellen und überprüfen und anschließend die VM-Instanzen in der Skalierungsgruppe aktualisieren. Zum Ausführen einer Bereitstellungspipeline, mit der Anwendungsupdates über benutzerdefinierte VM-Images hinweg erstellt und bereitgestellt werden, können Sie [mit Azure DevOps Services ein Packer-Image erstellen und bereitstellen](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset) oder eine andere Plattform (beispielsweise [Spinnaker](https://www.spinnaker.io/) oder [Jenkins](https://jenkins.io/)) verwenden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,26 +1,32 @@
 ---
-title: 'Schnellstartanleitung: Cassandra-API mit Java – Azure Cosmos DB | Microsoft-Dokumentation'
+title: 'Schnellstart: Cassandra-API mit Java – Azure Cosmos DB'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Cassandra-API von Azure Cosmos DB eine Profilanwendung mit dem Azure-Portal und Java erstellen.
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
+author: SnehaGunda
+ms.author: sngun
 ms.component: cosmosdb-cassandra
 ms.custom: quick start connect, mvc
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: e0344aadbbf263fa3c84ee37f2527eb41b19b7d8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/24/2018
+ms.openlocfilehash: fcb707f886b960335e69a6af3e485634ebb0a506
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38629086"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974033"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Cassandra-App mit Java und Azure Cosmos DB
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Java und der [Cassandra-API](cassandra-introduction.md) von Azure Cosmos DB eine Profil-App erstellen, indem Sie ein Beispiel von GitHub klonen. Außerdem wird in dieser Schnellstartanleitung die Erstellung eines Azure Cosmos DB-Kontos über das webbasierte Azure-Portal gezeigt.
+> [!div class="op_single_selector"]
+> * [.NET](create-cassandra-dotnet.md)
+> * [Java](create-cassandra-java.md)
+> * [Node.js](create-cassandra-nodejs.md)
+> * [Python](create-cassandra-python.md)
+>  
+
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Java und der [Cassandra-API](cassandra-introduction.md) von Azure Cosmos DB eine Profil-App erstellen, indem Sie ein Beispiel von GitHub klonen. Außerdem wird in dieser Schnellstartanleitung gezeigt, wie Sie das webbasierte Azure-Portal verwenden, um ein Azure Cosmos DB-Konto zu erstellen.
 
 Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB bietet. 
 
@@ -28,9 +34,7 @@ Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehr
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativ können Sie [Azure Cosmos DB ohne Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtung.
 
-Sie benötigen Zugriff auf das Vorschauprogramm für die Cassandra-API von Azure Cosmos DB. Falls Sie noch keinen Zugriff angefordert haben, können Sie sich [hier](cassandra-introduction.md#sign-up-now) registrieren.
-
-Außerdem haben Sie folgende Möglichkeiten: 
+Zudem benötigen Sie:
 
 * [Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
     * Führen Sie unter Ubuntu `apt-get install default-jdk` aus, um das JDK zu installieren.
@@ -39,8 +43,6 @@ Außerdem haben Sie folgende Möglichkeiten:
     * Unter Ubuntu können Sie `apt-get install maven` ausführen, um Maven zu installieren.
 * [Git-Client](https://www.git-scm.com/)
     * Unter Ubuntu können Sie `sudo apt-get install git` ausführen, um Git zu installieren.
-
-
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -52,13 +54,13 @@ Vor dem Erstellen einer Dokumentdatenbank müssen Sie mit Azure Cosmos DB ein Ca
 
 Beginnen wir nun mit der Verwendung von Code. Wir klonen eine Cassandra-App aus GitHub, legen die Verbindungszeichenfolge fest und führen die App aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
 
-1. Öffnen Sie eine Eingabeaufforderung, erstellen Sie einen neuen Ordner namens „git-samples“, und schließen Sie die Eingabeaufforderung.
+1. Öffnen Sie eine Eingabeaufforderung. Erstellen Sie einen neuen Ordner namens `git-samples`. Schließen Sie dann die Eingabeaufforderung.
 
     ```bash
     md "C:\git-samples"
     ```
 
-2. Öffnen Sie ein Git-Terminalfenster (z. B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
+2. Öffnen Sie ein Git-Terminalfenster (z.B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
 
     ```bash
     cd "C:\git-samples"
@@ -72,7 +74,7 @@ Beginnen wir nun mit der Verwendung von Code. Wir klonen eine Cassandra-App aus 
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) fortfahren. Alle Codeausschnitte stammen aus der Datei „src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java“.  
+Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenbankressourcen erstellt, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) fortfahren. Diese Codeausschnitte stammen alle aus der Datei `src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java`.  
 
 * Cassandra-Host, -Port, -Benutzername, -Kennwort und SSL-Optionen wurden festgelegt. Die Informationen zur Verbindungszeichenfolge stammen von der Seite „Verbindungszeichenfolge“ im Azure-Portal.
 
@@ -86,7 +88,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
     return cluster.connect();
     ```
 
-Die folgenden Codeausschnitte stammen aus der Datei src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java.
+Die folgenden Codeausschnitte stammen aus der Datei `src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java`.
 
 * Erstellen Sie einen neuen Keyspace.
 
@@ -148,15 +150,15 @@ Die folgenden Codeausschnitte stammen aus der Datei src/main/java/com/azure/cosm
 
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 
-Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren. Dadurch kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren.
+Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren. Die Angabe der Verbindungszeichenfolgendetails ermöglicht Ihrer App die Kommunikation mit Ihrer gehosteten Datenbank.
 
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) auf **Verbindungszeichenfolge**. 
+1. Wählen Sie im [Azure-Portal](http://portal.azure.com/) die Option **Verbindungszeichenfolge** aus. 
 
     ![Anzeigen und Kopieren eines Benutzernamens im Azure-Portal auf der Seite „Verbindungszeichenfolge“](./media/create-cassandra-java/keys.png)
 
 2. Verwenden Sie die Schaltfläche ![Schaltfläche „Kopieren“](./media/create-cassandra-java/copy.png) auf der rechten Seite des Bildschirms, um den Kontaktpunktwert zu kopieren.
 
-3. Öffnen Sie die Datei `config.properties` im Ordner „C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources“. 
+3. Öffnen Sie die Datei `config.properties` im Ordner `C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources`. 
 
 3. Ersetzen Sie `<Cassandra endpoint host>` in Zeile 2 durch den Kontaktpunktwert aus dem Portal.
 
@@ -180,17 +182,17 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 6. Wenn Sie Zeile 6 so geändert haben, dass ein bestimmtes SSL-Zertifikat verwendet wird, aktualisieren Sie Zeile 7 so, dass das Kennwort für das betreffende Zertifikat verwendet wird. 
 
-7. Speichern Sie die Datei „config.properties“.
+7. Speichern Sie die Datei `config.properties`.
 
-## <a name="run-the-app"></a>Ausführen der App
+## <a name="run-the-java-app"></a>Ausführen der Java-App
 
-1. Wechseln Sie im Terminalfenster von Git mithilfe von `cd` zum Ordner „azure-cosmosdb-cassandra-java-getting-started\java-examples“.
+1. Wechseln Sie im Git-Terminalfenster mithilfe von `cd` in den Ordner `azure-cosmosdb-cassandra-java-getting-started\java-examples`.
 
     ```git
     cd "C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples"
     ```
 
-2. Generieren Sie im Git-Terminalfenster mit dem folgenden Befehl die Datei „cosmosdb-cassandra-examples.jar“.
+2. Verwenden Sie im Git-Terminalfenster den folgenden Befehl, um die Datei `cosmosdb-cassandra-examples.jar` zu generieren.
 
     ```git
     mvn clean install
@@ -204,9 +206,9 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     Im Terminalfenster werden Benachrichtigungen angezeigt, dass der Keyspace und die Tabelle erstellt wurden. Anschließend werden alle Benutzer in der Tabelle ausgewählt und zurückgegeben, und die Ausgabe wird angezeigt. Dann wird eine Zeile anhand der ID ausgewählt und der Wert angezeigt.  
 
-    Drücken Sie STRG+C, um die Programmausführung zu beenden und das Konsolenfenster zu schließen. 
-    
-    Nun können Sie im Azure-Portal den Daten-Explorer öffnen, um die neuen Daten anzuzeigen, abzufragen, anzupassen und zu verwenden. 
+    Drücken Sie STRG+C, um die Programmausführung zu beenden und das Konsolenfenster zu schließen.
+
+4. Öffnen Sie im Azure-Portal den **Daten-Explorer**, um diese neuen Daten abzufragen, zu ändern und zu verwenden. 
 
     ![Anzeigen der Daten im Daten-Explorer](./media/create-cassandra-java/data-explorer.png)
 

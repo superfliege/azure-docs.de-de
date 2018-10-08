@@ -1,6 +1,6 @@
 ---
 title: Erstellen virtueller Azure-Computer mit beschleunigtem Netzwerkbetrieb | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen virtuellen Linux-Computer mit beschleunigtem Netzwerkbetrieb erstellen.
+description: Weitere Informationen finden Sie unter „Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb“.
 services: virtual-network
 documentationcenter: na
 author: gsilva5
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 9ea843df4cf437b97f7fe1d62636a51f8201376e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: b6aaf98ca3b5581691b6c70783be5250b506056c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414571"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990959"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -75,7 +75,7 @@ In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers m
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
+Installieren Sie die neueste Version von [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
 
 Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
 

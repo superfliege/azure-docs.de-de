@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 9eaaaaa4cc9be661cdc2ffde2b634e062c95a404
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523256"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972554"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage
 Azure Storage bietet ein mehrstufiges Sicherheitsmodell, mit dem Sie Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke sichern können.  Wenn Netzwerkregeln konfiguriert sind, können nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen.  Anwendungen, die aus einem zulässigen Netzwerk aufgerufen werden, erfordern für den Zugriff auf das Speicherkonto weiterhin eine ordnungsgemäße Autorisierung (einen gültigen Zugriffsschlüssel oder ein gültiges SAS-Token).
 
 > [!IMPORTANT]
-> Durch das Aktivieren von Firewallregeln für Ihr Storage-Konto wird der Zugriff auf eingehende Datenanforderungen, auch von anderen Azure-Diensten, blockiert.  Dies schließt das Portal, das Schreiben von Protokollen usw. mit ein.  Für beteiligte Dienste können Sie die Funktionalität erneut aktivieren, wie unten im Abschnitt [Ausnahmen](#Exceptions) beschrieben.  Um auf das Portal zuzugreifen, müssen Sie dies von einem Computer innerhalb der von Ihnen eingerichteten vertrauenswürdigen Grenze (entweder IP oder VNET) aus tun.
+> Durch das Aktivieren von Firewallregeln für Ihr Storage-Konto wird der Zugriff auf eingehende Datenanforderungen, auch von anderen Azure-Diensten, blockiert.  Dies schließt das Portal, das Schreiben von Protokollen usw. mit ein.  Für beteiligte Dienste können Sie die Funktionalität erneut aktivieren, wie unten im Abschnitt [Ausnahmen](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) beschrieben.  Um auf das Portal zuzugreifen, müssen Sie dies von einem Computer innerhalb der von Ihnen eingerichteten vertrauenswürdigen Grenze (entweder IP oder VNET) aus tun.
 >
 
 ## <a name="scenarios"></a>Szenarien
@@ -35,7 +35,7 @@ Datenverkehr virtueller Computer (einschließlich Bereitstellungsvorgängen, des
 
 Die Funktion „Firewalls und virtuelle Netzwerke“ wird von klassischen Speicherkonten **nicht** unterstützt.
 
-Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit Anwendung von Netzwerkregeln wird über das Erstellen einer Ausnahme gemäß Beschreibung im Abschnitt [Ausnahmen](/storage/common/storage-network-security#exceptions) dieses Artikels unterstützt.  Firewallausnahmen sind nicht mit verwalteten Datenträgern anwendbar, da sie bereits von Azure verwaltet werden.
+Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit Anwendung von Netzwerkregeln wird über das Erstellen einer Ausnahme gemäß Beschreibung im Abschnitt [Ausnahmen](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) dieses Artikels unterstützt.  Firewallausnahmen sind nicht mit verwalteten Datenträgern anwendbar, da sie bereits von Azure verwaltet werden.
 
 ## <a name="change-the-default-network-access-rule"></a>Ändern der Standard-Netzwerkzugriffsregel
 Standardmäßig akzeptieren Speicherkonten Verbindungen von Clients in jedem Netzwerk.  Um den Zugriff auf ausgewählte Netzwerke zu beschränken, müssen Sie zunächst die Standardaktion ändern.
@@ -70,7 +70,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 ```    
 
 #### <a name="cliv2"></a>CLI v2
-1. [Installieren Sie Azure CLI 2.0](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
+1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 2. Zeigen Sie den Status der Standardregel für das Speicherkonto an.
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
@@ -152,7 +152,7 @@ Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Na
 >
 
 #### <a name="cliv2"></a>CLI v2
-1. [Installieren Sie Azure CLI 2.0](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
+1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 2. Listen Sie Regeln für virtuelle Netzwerke auf.
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
@@ -208,7 +208,7 @@ IP-Netzwerkregeln für Speicherkonten können über das Azure-Portal, über Powe
 2. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
 3. Stellen Sie sicher, dass Sie das Zulassen des Zugriffs aus „Ausgewählte Netzwerke“ ausgewählt haben.
 4. Geben Sie unter „Firewall“, „Adressbereiche“ die IP-Adresse oder den IP-Adressbereich (im CIDR-Format) ein, um Zugriff auf einen Internet-IP-Adressbereich zu gewähren.
-5. Klicken Sie zum Entfernen einer IP-Netzwerkregel auf „...“, um das Kontextmenü für die Regel zu öffnen, und klicken Sie auf „Entfernen“.
+5. Klicken Sie zum Entfernen einer IP-Netzwerkregel auf das Papierkorbsymbol neben der Netzwerkregel.
 6. Klicken Sie zum Übernehmen der Änderungen auf *Speichern*.
 
 #### <a name="powershell"></a>PowerShell
@@ -243,7 +243,7 @@ Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Ac
 >
 
 #### <a name="cliv2"></a>CLI v2
-1. [Installieren Sie Azure CLI 2.0](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
+1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 2. Listen Sie IP-Netzwerkregeln auf.
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
@@ -290,7 +290,9 @@ Wenn die Ausnahme „Vertrauenswürdige Microsoft-Dienste“ aktiviert ist, wird
 |Azure Event Grid|Microsoft.EventGrid|Aktivieren der Veröffentlichung von Blob Storage-Ereignissen.  [Weitere Informationen](https://docs.microsoft.com/azure/event-grid/overview)|
 |Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture.  [Weitere Informationen](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
 |Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs.  [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)|
-||||
+|Azure Monitor|Microsoft.Insights| Ermöglicht das Schreiben von Überwachungsdaten in ein gesichertes Speicherkonto. [Weitere Informationen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|
+
 
 ### <a name="storage-analytics-data-access"></a>Zugriff auf Storage Analytics-Daten
 In manchen Fällen ist der Lesezugriff auf Diagnoseprotokolle und -metriken von außerhalb des Netzwerks erforderlich.  Es können Ausnahmen von den Netzwerkregeln gewährt werden, um den Lesezugriff auf Protokolldateien und/oder Metriktabellen des Speicherkontos zuzulassen. [Weitere Informationen zum Arbeiten mit Storage Analytics](/azure/storage/storage-analytics)
@@ -327,7 +329,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 >
 
 #### <a name="cliv2"></a>CLI v2
-1. [Installieren Sie Azure CLI 2.0](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
+1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 2. Zeigen Sie die Ausnahmen für die Speicherkonto-Netzwerkregeln an.
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass
