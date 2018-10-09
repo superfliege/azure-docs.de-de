@@ -1,25 +1,27 @@
 ---
-title: C#-Schnellstart für Azure Cognitive Services, Microsoft-Sprachübersetzungs-API | Microsoft-Dokumentation
-description: Hier finden Sie Informationen und Codebeispiele, mit denen Sie schnell erste Schritte mit der Microsoft-Sprachübersetzungs-API in Microsoft Cognitive Services in Azure ausführen können.
+title: 'Schnellstart: Sprachübersetzungs-API C#'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Sprachübersetzungs-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c8c1945d8343ad966fe4b09f67099bccdae4be29
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7d1f5968fe6ddffce3194f070b6a17aca4d3d9ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128536"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995039"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>Schnellstart für die Microsoft-Sprachübersetzungs-API mit C# 
+# <a name="quickstart-translator-speech-api-with-c"></a>Schnellstart: Sprachübersetzungs-API mit C# 
 <a name="HOLTop"></a>
 
-In diesem Artikel wird gezeigt, wie Sie mit der Microsoft-Sprachübersetzungs-API gesprochene Sprache in einer WAV-Datei übersetzen.
+In diesem Artikel wird gezeigt, wie Sie mit der Sprachübersetzungs-API gesprochene Sprache in einer WAV-Datei übersetzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

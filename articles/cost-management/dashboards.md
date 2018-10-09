@@ -1,21 +1,21 @@
 ---
-title: Anzeigen von Schlüsselmetriken in Azure Cost Management-Dashboards | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Schlüsselmetriken mit Dashboards in Azure Cost Management angezeigt werden.
+title: Anzeigen von Schlüsselmetriken mit Cloudyn-Dashboards in Azure | Microsoft Docs
+description: In diesem Artikel wird beschrieben, wie Schlüsselmetriken mit Dashboards in Cloudyn angezeigt werden.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/05/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b1dc2e2eca900ca0ae72329c3c373b2d24f1b2e0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1d2b4a0cd78f3d68a76bd9186be4174f2dd1d86c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302759"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999705"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Anzeigen der wichtigsten Kostenmetriken mit Dashboards
 
@@ -34,7 +34,7 @@ Die Dashboardversionen unterscheiden sich für Management- (MSP-), Enterprise- u
 
 Die Dashboardverfügbarkeit hängt von der Art des Kontos des Clouddienstanbieters ab, das zur Anzeige von Dashboards verwendet wird. Die Art der verfügbaren und von Cloudyn erfassten Informationen besitzt Auswirkungen auf die Berichte in Dashboards. Wenn Sie zum Beispiel kein AWS-Konto besitzen, wird Ihnen das S3 Tracker-Dashboard nicht angezeigt. Ebenso wenig werden Ihnen Azure-spezifische Informationen in den Gadgets des Optimiererdashboards angezeigt, wenn Sie den Azure Resource Manager-Zugriff auf Cloudyn nicht aktivieren.
 
-Sie können eines der vorgefertigten Dashboards verwenden oder Ihr eigenes Dashboard mit angepassten Berichten erstellen. Wenn Sie mit Cloudyn-Berichten nicht vertraut sind, finden Sie Informationen hierzu unter [Verwenden von Cost Management-Berichten](use-reports.md).
+Sie können eines der vorgefertigten Dashboards verwenden oder Ihr eigenes Dashboard mit angepassten Berichten erstellen. Wenn Sie mit Cloudyn-Berichten nicht vertraut sind, finden Sie weitere Informationen dazu unter [Verwenden von Cloudyn-Berichten](use-reports.md).
 
 ## <a name="create-a-custom-dashboard"></a>Erstellen eines benutzerdefinierten Dashboards
 
@@ -295,3 +295,6 @@ Dieses Gadget zeigt Ihre aktuellen Amazon EC2-Kosten und vergleicht diese mit Az
 ### <a name="ec2azure-instance-type-mapping"></a>Zuordnung der EC2-/Azure-Instanztypen
 Dieses Gadget zeigt die beste Zuordnung elastischer Compute-Einheiten zwischen Amazon EC2 und Azure.
 - Klicken Sie auf das Gadget, um den Bericht mit der Zuordnung von Instanztypen zu öffnen.
+
+## <a name="next-steps"></a>Nächste Schritte
+- Lesen Sie den Artikel [Verwenden von Cloudyn-Berichten](use-reports.md), um mehr über Berichte zu erfahren.

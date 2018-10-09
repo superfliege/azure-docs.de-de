@@ -1,25 +1,27 @@
 ---
-title: Java-Schnellstart für Azure Cognitive Services, Microsoft-Sprachübersetzungs-API | Microsoft-Dokumentation
-description: Hier finden Sie Informationen und Codebeispiele, mit denen Sie schnell erste Schritte mit der Microsoft-Sprachübersetzungs-API in Microsoft Cognitive Services in Azure ausführen können.
+title: 'Schnellstart: Sprachübersetzungs-API Java'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Sprachübersetzungs-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0db55f4064d3415cb647519ea9030936012a8446
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ROBOTS: NOINDEX
+ms.openlocfilehash: dde7d3dc7c1a744da9a22c0e4c0a483a186aa327
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41929746"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969460"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-java"></a>Schnellstart für die Microsoft-Sprachübersetzungs-API mit Java 
+# <a name="quickstart-translator-speech-api-with-java"></a>Schnellstart: Sprachübersetzungs-API mit Java 
 <a name="HOLTop"></a>
 
-In diesem Artikel wird gezeigt, wie Sie mit der Microsoft-Sprachübersetzungs-API gesprochene Sprache in einer WAV-Datei übersetzen.
+In diesem Artikel wird gezeigt, wie Sie mit der Sprachübersetzungs-API gesprochene Sprache in einer WAV-Datei übersetzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

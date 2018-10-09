@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: d2b05c83f77a58e224760d90d111b270d71a6514
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 38d73f38a5e04a42ee15c9206ce760936e3e10c9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092426"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980303"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -55,43 +55,35 @@ In der Eigenschaft `bindings` werden sowohl Trigger als auch Bindungen konfiguri
 | `name` |Zeichenfolge |Der Name, der für die gebundenen Daten in der Funktion verwendet wird. In C# ist dies ein Argumentname, in JavaScript ist es der Schlüssel in einer Schlüssel-Wert-Liste. |
 
 ## <a name="function-app"></a>Funktionen-App
-Eine Funktionen-App besteht aus einer oder mehreren individuellen Funktionen, die zusammen vom Azure App Service verwaltet werden. Der Tarif, die kontinuierliche Bereitstellung und die Laufzeitversion sind für alle Funktionen in einer Funktionen-App gleich. Funktionen, die in mehreren Sprachen geschrieben wurden, können dieselbe Funktionen-App nutzen. Eine Funktionen-App ist somit eine Möglichkeit, mit der Sie Ihre Funktionen organisieren und kollektiv verwalten können. 
+Eine Funktions-App bietet einen Ausführungskontext in Azure, in dem Ihre Funktionen ausgeführt werden. Eine Funktionen-App besteht aus einer oder mehreren individuellen Funktionen, die zusammen vom Azure App Service verwaltet werden. Der Tarif, die kontinuierliche Bereitstellung und die Laufzeitversion sind für alle Funktionen in einer Funktionen-App gleich. Eine Funktionen-App ist somit eine Möglichkeit, mit der Sie Ihre Funktionen organisieren und kollektiv verwalten können. 
 
-## <a name="runtime-script-host-and-web-host"></a>Runtime (Skripthost und Webhost)
-Die Laufzeit bzw. der Skripthost ist der zugrunde liegende WebJobs SDK-Host, der auf Ereignisse lauscht, Daten sammelt und sendet und letztendlich den Code ausführt. 
+> [!NOTE]
+> Ab der [Version 2.x](functions-versions.md) von Azure Functions-Runtime müssen alle Funktionen in einer Funktions-App in der gleichen Sprache geschrieben sein.
 
-Um HTTP-Trigger zu ermöglichen, gibt es auch einen Webhost, der in Produktionsszenarien vor dem Skripthost platziert ist. Durch die Verwendung von zwei Hosts kann der Skripthost vom Front-End-Datenverkehr isoliert werden, der vom Webhost verwaltet wird.
+## <a name="runtime"></a>Laufzeit
+Azure Functions-Runtime bzw. der Skripthost ist der zugrunde liegende Host, der auf Ereignisse lauscht, Daten erfasst und sendet und schließlich den Code ausführt. Dieser gleiche Host wird vom WebJobs SDK verwendet.
+
+Es gibt auch ein Webhost, der HTTP-Triggeranforderungen für die Runtime verarbeitet. Durch die Verwendung von zwei Hosts kann die Runtime vom Front-End-Datenverkehr isoliert werden, der vom Webhost verwaltet wird.
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Wenn Sie ein Projekt einrichten, um Funktionen für eine Funktionen-App in Azure App Service bereitzustellen, können Sie diese Ordnerstruktur als Sitecode behandeln. Sie können vorhandene Tools, wie z.B. die fortlaufende Integration und Bereitstellung, oder benutzerdefinierte Bereitstellungsskripts verwenden, um eine Paketinstallation zur Bereitstellungszeit oder eine Codetranspilierung umzusetzen.
+Wenn Sie ein Projekt einrichten, um Funktionen für eine Funktions-App in Azure bereitzustellen, können Sie diese Ordnerstruktur als Sitecode behandeln. Es wird empfohlen, [Paketbereitstellung](deployment-zip-push.md) zum Bereitstellen des Projekts für Ihre Funktions-App in Azure zu verwenden. Sie können auch vorhandene Tools wie [Continuous Integration und Continuous Deployment](functions-continuous-deployment.md) und Azure DevOps verwenden.
 
 > [!NOTE]
-> Stellen Sie sicher, dass Sie Ihre `host.json`-Datei und die Funktionsordner direkt im Ordner `wwwroot` bereitstellen. Schließen Sie den Ordner `wwwroot` nicht in Ihre Bereitstellungen ein. Andernfalls erhalten Sie `wwwroot\wwwroot`-Ordner. 
-> 
-> 
+> Stellen Sie sicher, dass Sie Ihre `host.json`-Datei und die Funktionsordner direkt im Ordner `wwwroot` bereitstellen. Schließen Sie den Ordner `wwwroot` nicht in Ihre Bereitstellungen ein. Andernfalls erhalten Sie `wwwroot\wwwroot`-Ordner.
 
 ## <a id="fileupdate"></a> Aktualisieren von Funktionen-App-Dateien
 Der im Azure-Portal integrierte Funktionen-Editor ermöglicht das Aktualisieren der Datei *function.json* und der Codedatei für eine Funktion. Zum Hochladen oder Aktualisieren anderer Dateien wie *package.json* oder *project.json* oder von Abhängigkeiten müssen Sie andere Bereitstellungsmethoden nutzen.
 
 Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-Apps verfügbaren Bereitstellungsoptionen](../app-service/app-service-deploy-local-git.md) auch für Funktionen-Apps zur Verfügung. Es folgen einige Methoden, die Sie zum Hochladen oder Aktualisieren von Funktionen-App-Dateien befolgen können. 
 
-#### <a name="to-use-app-service-editor"></a>So verwenden Sie den App Service-Editor
-1. Klicken Sie im Azure Functions-Portal auf **Plattformfeatures**.
-2. Klicken Sie im Abschnitt **ENTWICKLUNGSTOOLS** auf **App Service-Editor**.   
-   Nachdem der App Service-Editor geladen wurde, sehen Sie die Datei *host.json* und die Funktionenordner unter *wwwroot*. 
-5. Öffnen Sie die Dateien, um Sie zu bearbeiten, oder laden Sie Dateien per Drag & Drop von Ihrem Entwicklungscomputer hoch.
-
-#### <a name="to-use-the-function-apps-scm-kudu-endpoint"></a>So verwenden Sie den SCM-Endpunkt (Kudu) der Funktionen-App
-1. Navigieren Sie zu `https://<function_app_name>.scm.azurewebsites.net`.
-2. Klicken Sie auf **Debugkonsole > CMD**.
-3. Navigieren Sie zu `D:\home\site\wwwroot\`, um *host.json* zu aktualisieren, oder zu `D:\home\site\wwwroot\<function_name>`, um die Dateien einer Funktion zu aktualisieren.
-4. Verschieben Sie eine Datei per Drag & Drop, die Sie im Dateiraster in den entsprechenden Ordner hochladen möchten. Es gibt zwei Bereiche im Dateiraster, in denen Sie eine Datei ablegen können. Für *ZIP* -Dateien wird ein Feld mit der Bezeichnung „Zum Hochladen und Entzippen hier ablegen“ angezeigt. Legen Sie Dateien anderer Dateitypen im Dateiraster ab, jedoch außerhalb des Felds zum Entzippen.
+#### <a name="use-local-tools-and-publishing"></a>Verwenden von lokalen Tools und Veröffentlichung
+Funktions-Apps können mit verschiedenen Tools erstellt und veröffentlicht werden, darunter [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md) und die [Azure Functions-Kerntools](./functions-develop-local.md). Weitere Informationen finden Sie unter [Lokales Codieren und Testen von Azure Functions](./functions-develop-local.md).
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-#### <a name="to-use-continuous-deployment"></a>Verwenden der kontinuierlichen Bereitstellung
+#### <a name="continuous-deployment"></a>Kontinuierliche Bereitstellung
 Befolgen Sie die Anweisungen im Thema [Continuous deployment for Azure Functions](functions-continuous-deployment.md)(Kontinuierliche Bereitstellung für Azure Functions).
 
 ## <a name="parallel-execution"></a>Parallele Ausführung
@@ -99,7 +91,7 @@ Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer 
 
 ## <a name="functions-runtime-versioning"></a>Versionsverwaltung der Functions-Runtime
 
-Sie können die Version der Functions-Runtime mit der App-Einstellung `FUNCTIONS_EXTENSION_VERSION` konfigurieren. Der Wert „~1“ bedeutet beispielsweise, dass für Ihre Funktionen-App „1“ als deren Hauptversion verwendet wird. Funktionen-Apps werden auf jede neue Nebenversion aktualisiert, wenn sie freigegeben werden. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md), einschließlich der Informationen zum Anzeigen der genauen Version Ihrer Funktions-App.
+Sie können die Version der Functions-Runtime mit der App-Einstellung `FUNCTIONS_EXTENSION_VERSION` konfigurieren. Der Wert „~2“ bedeutet beispielsweise, dass für Ihre Funktions-App „2.x“ als deren Hauptversion verwendet wird. Funktionen-Apps werden auf jede neue Nebenversion aktualisiert, wenn sie freigegeben werden. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md), einschließlich der Informationen zum Anzeigen der genauen Version Ihrer Funktions-App.
 
 ## <a name="repositories"></a>Repositorys
 Der Code für Azure Functions ist Open Source und in GitHub-Repositorys gespeichert:

@@ -12,14 +12,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 83d6f529330a05e6a7c46ad45b19f0338f93bfc7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "35636854"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995090"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Bildklassifizierung per Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Ansätze für die Bildklassifizierung können verwendet werden, um eine große Zahl von Problemen zu lösen, die für das maschinelle Sehen auftreten können.
 Hierzu gehört auch das Erstellen von Modellen, mit denen beispielsweise folgende Fragen beantwortet werden: *Ist ein OBJEKT im Bild vorhanden?*, wobei das OBJEKT beispielsweise *Hund*, *Auto* oder *Boot* lauten kann. Ein Beispiel für eine komplexere Frage ist: *Welche Augenkrankheit-Schweregradklasse zeigt der Netzhautscan des Patienten?*.
@@ -51,7 +56,7 @@ Es ist zwar keine Erfahrung mit Machine Learning und CNTK erforderlich, aber sie
 Folgende Voraussetzungen müssen zum Ausführen dieses Beispiels erfüllt sein:
 
 1. Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
-2. [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) gemäß [Schnellstart-Installationshandbuch](../service/quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs  
+2. [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) gemäß [Schnellstart-Installationshandbuch](quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs  
 3. Ein Windows-Computer Das Windows-Betriebssystem ist erforderlich, da Workbench nur Windows und macOS unterstützt, während für das Cognitive Toolkit von Microsoft (als Deep Learning-Bibliothek verwendet) nur Windows und Linux unterstützt werden.
 4. Eine dedizierte GPU ist nicht erforderlich, um das SVM-Training in Teil 1 durchzuführen, wird aber für die in Teil 2 beschriebene Optimierung der DNN benötigt. Wenn Sie keine leistungsstarke GPU haben, das Trainieren für mehrere GPUs durchführen möchten oder keinen Windows-Computer nutzen, können Sie erwägen, die Deep Learning Virtual Machine von Azure mit dem Windows-Betriebssystem zu verwenden. Eine Anleitung für die Bereitstellung mit nur einem Klick finden Sie [hier](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning). Stellen Sie nach der Bereitstellung per Remotedesktopverbindung eine Verbindung mit der VM her, installieren Sie Workbench darauf, und führen Sie den Code von der VM lokal aus.
 5. Es müssen verschiedene Python-Bibliotheken installiert werden, z.B. OpenCV. Klicken Sie in der Workbench im Menü *Datei* auf *Eingabeaufforderung öffnen*, und führen Sie die folgenden Befehle aus, um diese Abhängigkeiten zu installieren:  
@@ -95,7 +100,7 @@ Wenn Sie diese Schritte ausführen, wird die unten angegebene Projektstruktur er
 
 ## <a name="data-description"></a>Datenbeschreibung
 
-In diesem Tutorial wird als auszuführendes Beispiel ein Dataset mit Daten zu Oberbekleidungsstoffmustern verwendet, das bis zu 428 Bilder enthält. Jedes Bild ist mit einer Anmerkung zu drei unterschiedlichen Stoffen versehen: „dotted“ (Gepunktet), „striped“ (Gestreift) oder „leopard“ (Leopardenmuster). Wir haben die Anzahl von Bildern bewusst gering gehalten, damit dieses Tutorial schnell ausgeführt werden kann. Der Code wurde aber sorgfältig getestet und funktioniert auch mit Zehntausenden von Bildern oder auch noch mehr Bildern. Alle Bilder wurden mit der Bing-Bildersuche erfasst und manuell mit Anmerkungen versehen. Dies ist in [Teil 3](#using-a-custom-dataset) beschrieben. Die Bild-URLs mit ihren jeweiligen Attributen sind in der Datei */resources/fashionTextureUrls.tsv* aufgeführt.
+In diesem Tutorial wird als auszuführendes Beispiel ein Dataset mit Daten zu Oberbekleidungsstoffmustern verwendet, das bis zu 428 Bilder enthält. Jedes Bild ist mit einer Anmerkung zu drei unterschiedlichen Stoffen versehen: „dotted“ (Gepunktet), „striped“ (Gestreift) oder „leopard“ (Leopardenmuster). Wir haben die Anzahl von Bildern bewusst gering gehalten, damit dieses Tutorial schnell ausgeführt werden kann. Der Code wurde aber sorgfältig getestet und funktioniert auch mit Zehntausenden von Bildern oder auch noch mehr Bildern. Alle Bilder wurden manuell kommentiert, wie in [Teil 3](#using-a-custom-dataset) beschrieben. Die Bild-URLs mit ihren jeweiligen Attributen sind in der Datei */resources/fashionTextureUrls.tsv* aufgeführt.
 
 Mit dem Skript `0_downloadData.py` werden alle Bilder in das Verzeichnis *DATA_DIR/images/fashionTexture/* heruntergeladen. Einige der 428 URLs sind vermutlich fehlerhaft. Dies ist kein Problem und bedeutet nur, dass etwas weniger Bilder für das Trainieren und Testen zur Verfügung stehen. Alle in diesem Beispiel bereitgestellten Skripts müssen lokal ausgeführt werden, nicht etwa in einer Docker-Remoteumgebung (beispielsweise).
 
@@ -263,11 +268,11 @@ Hier sind einige Verbesserungen aufgeführt, die am meisten Erfolg versprechen:
 
 ## <a name="part-3---custom-dataset"></a>Teil 3: Benutzerdefiniertes Dataset
 
-In Teil 1 und 2 haben wir ein Bildklassifizierungsmodell trainiert und evaluiert, indem die bereitgestellten Bilder mit Oberbekleidungsstoffen verwendet wurden. Jetzt wird beschrieben, wie Sie stattdessen ein benutzerdefiniertes und vom Benutzer bereitgestelltes Dataset verwenden. Falls kein Dataset dieser Art verfügbar ist, kann es auch mit der Bing-Bildersuche generiert und mit Anmerkungen versehen werden.
+In Teil 1 und 2 haben wir ein Bildklassifizierungsmodell trainiert und evaluiert, indem die bereitgestellten Bilder mit Oberbekleidungsstoffen verwendet wurden. Jetzt wird beschrieben, wie Sie stattdessen ein benutzerdefiniertes und vom Benutzer bereitgestelltes Dataset verwenden. 
 
 ### <a name="using-a-custom-dataset"></a>Verwenden eines benutzerdefinierten Datasets
 
-Zuerst sehen wir uns die Ordnerstruktur für die Daten zu den Bekleidungsstoffmustern an. Sie sehen, dass sich alle Bilder für die verschiedenen Attribute unter *DATA_DIR/images/fashionTexture/* in den entsprechenden Unterordnern *dotted*, *leopard und *striped* befinden. Beachten Sie auch, dass der Name des Bildordners auch in der Datei `PARAMETERS.py` vorkommt:
+Zuerst sehen wir uns die Ordnerstruktur für die Daten zu den Bekleidungsstoffmustern an. Sie sehen, dass sich alle Bilder für die verschiedenen Attribute unter *DATA_DIR/images/fashionTexture/* in den entsprechenden Unterordnern *dotted*, *leopard* und *striped* befinden. Beachten Sie auch, dass der Name des Bildordners auch in der Datei `PARAMETERS.py` vorkommt:
 ```python
 datasetName = "fashionTexture"
 ```
@@ -280,14 +285,23 @@ Es ist wichtig, dass jedes Bild genau einem Attribut zugewiesen werden kann. Bei
 
 ### <a name="image-scraping-and-annotation"></a>Bilderfassung und Hinzufügen von Anmerkungen
 
-Das Sammeln einer ausreichend hohen Zahl von mit Anmerkungen versehenen Bildern für Trainings- und Testzwecke kann schwierig sein. Eine Möglichkeit zur Lösung dieses Problems ist die Verwendung von Bildern aus dem Internet. Unten sind beispielsweise die Ergebnisse der Bing-Bildersuche für die Abfrage *t-shirt striped* (T-Shirt gestreift) angegeben. Erwartungsgemäß zeigen die meisten Bilder gestreifte T-Shirts. Die wenigen falschen oder mehrdeutigen Bilder (z.B. Spalte 1, Zeile 1 oder Spalte 3, Zeile 2) können leicht identifiziert und entfernt werden:
+Das Sammeln einer ausreichend hohen Zahl von mit Anmerkungen versehenen Bildern für Trainings- und Testzwecke kann schwierig sein. Eine Möglichkeit zur Lösung dieses Problems ist die Verwendung von Bildern aus dem Internet.
+
+> [!IMPORTANT] 
+> Achten Sie bei allen von Ihnen verwendeten Bildern darauf, dass Sie nicht gegen das Urheberrecht und die Lizenzierung des Bilds verstoßen. 
+
+<!--
+For example, see below the Bing Image Search results for the query *t-shirt striped*. As expected, most images indeed are striped t-shirts. The few incorrect or ambiguous images (such as column 1, row 1; or column 3, row 2) can be identified and removed easily:
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/bing_search_striped.jpg" alt="alt text" width="600"/>
 </p>
+-->
 
 Es sollten mehrere Abfragen verwendet werden, um ein großes und vielfältiges Dataset zu generieren. 7\*3 = 21 Abfragen können beispielsweise automatisch synthetisiert werden, indem alle möglichen Kombinationen von Bekleidungsstücken {Bluse, Hoodie, Pullover, Sweater, Hemd, T-Shirt, Weste} und Attributen {Gestreift, Gepunktet, Leopardenmuster} verwendet werden. Wenn dann die ersten 50 Bilder pro Abfrage heruntergeladen werden, ergeben sich maximal 21 * 50 = 1.050 Bilder.
 
-Anstatt Bilder manuell aus der Bing-Bildersuche herunterzuladen, ist es viel einfacher, stattdessen die [Bing-Bildersuche-API der Cognitive Services](https://www.microsoft.com/cognitive-services/bing-image-search-api) zu verwenden. Hiermit wird für eine Abfragezeichenfolge ein Satz mit Bild-URLs zurückgegeben.
+<!--
+Rather than manually downloading images from Bing Image Search, it is much easier to instead use the [Cognitive Services Bing Image Search API](https://www.microsoft.com/cognitive-services/bing-image-search-api) which returns a set of image URLs given a query string.
+-->
 
 Einige der heruntergeladenen Bilder sind exakte oder nahezu identische Duplikate (beispielsweise besteht der Unterschied nur in der Bildauflösung oder in JPG-Artefakten). Diese Duplikate sollten entfernt werden, damit die Trainings- und Testaufteilungen nicht die gleichen Bilder enthalten. Das Entfernen von doppelten Bildern ist möglich, indem ein hashbasierter Ansatz verwendet wird, der aus zwei Schritten besteht: (i) Zuerst wird die Hashzeichenfolge für alle Bilder berechnet, (ii) und im zweiten Durchlauf für die Bilder werden nur die Bilder beibehalten, deren Hashzeichenfolge noch nicht vorgekommen ist. Alle anderen Bilder werden verworfen. Der Ansatz `dhash` in der Python-Bibliothek `imagehash`, der in diesem [Blog](http://www.hackerfactor.com/blog/index.php?/archives/529-Kind-of-Like-That.html) beschrieben ist, funktioniert gut, wenn der Parameter `hash_size` auf 16 festgelegt ist. Es ist zulässig, fälschlicherweise einige Bilder zu entfernen, bei denen es sich nicht um Duplikate handelt, solange der Großteil der richtigen Duplikate entfernt wird.
 

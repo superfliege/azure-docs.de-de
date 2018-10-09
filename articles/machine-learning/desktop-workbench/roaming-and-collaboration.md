@@ -7,27 +7,33 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: b587f5dcc9558ec52b85e4b53dae0e31ad475a4e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983717"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Roaming und Zusammenarbeit in Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
 Dieser Artikel beschreibt, wie Sie mit Azure Machine Learning Workbench Projekte für Roaming zwischen Computern einrichten und mit Teammitgliedern zusammenarbeiten können. 
 
 Wenn Sie ein Azure Machine Learning-Projekt mit einem Link zu einem Git-Remoterepository erstellen, werden die Metadaten und Momentaufnahmen des Projekts in der Cloud gespeichert. Der Cloudlink ermöglicht Ihnen, auf einem anderen Computer auf das Projekt zuzugreifen („Roaming“). Sie können auch mit Teammitgliedern zusammenarbeiten, indem Sie ihnen Zugriff auf das Projekt gewähren. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Installieren Sie die Machine Learning Workbench-App. Stellen Sie sicher, das Sie Zugriff auf ein Azure Machine Learning-Experimentieren-Konto haben. Weitere Informationen finden Sie im [Installationshandbuch](../service/quickstart-installation.md).
+1. Installieren Sie die Machine Learning Workbench-App. Stellen Sie sicher, das Sie Zugriff auf ein Azure Machine Learning-Experimentieren-Konto haben. Weitere Informationen finden Sie im [Installationshandbuch](quickstart-installation.md).
 
-2. Greifen Sie auf [Visual Studio Team Services](https://www.visualstudio.com) (Team Services) zu, und erstellen Sie dann ein Repository, mit dem Ihr Projekt verknüpft werden soll. Weitere Informationen finden Sie unter [Verwenden eines Git-Repositorys mit einem Machine Learning Workbench-Projekt](using-git-ml-project.md).
+2. Greifen Sie auf [Azure DevOps](https://www.visualstudio.com) zu, und erstellen Sie dann ein Repository, mit dem Ihr Projekt verknüpft wird. Weitere Informationen finden Sie unter [Verwenden eines Git-Repositorys mit einem Machine Learning Workbench-Projekt](using-git-ml-project.md).
 
 ## <a name="create-a-new-machine-learning-project"></a>Erstellen von Machine Learning-Projekten
-Öffnen Sie Azure Machine Learning-Workbench, und erstellen Sie ein neues Projekt (z.B. ein Projekt namens „iris“). Geben Sie im Feld **Visualstudio.com GIT Repository URL** eine gültige URL für ein Team Services-Git-Repository ein. 
+Öffnen Sie Azure Machine Learning-Workbench, und erstellen Sie ein neues Projekt (z.B. ein Projekt namens „iris“). Geben Sie im Feld **Visualstudio.com GIT Repository URL** eine gültige URL für ein Azure DevOps-Git-Repository ein. 
 
 > [!IMPORTANT]
 > Wenn Sie die leere Projektvorlage auswählen, verfügt das ausgewählte Git-Repository möglicherweise bereits über einen Masterbranch. Machine Learning klont den Masterbranch einfach lokal. Dabei werden dem lokalen Projektordner der Ordner „aml_config“ und andere Projekt-Metadatendateien hinzugefügt. 
@@ -60,7 +66,7 @@ $ git push origin master
 <a name="roaming"></a>
 
 ### <a name="open-machine-learning-workbench-on-a-second-computer"></a>Öffnen von Machine Learning Workbench auf einem zweiten Computer
-Nachdem das Team Services-Git-Repository mit Ihrem Projekt verknüpft ist, können Sie von jedem Computer, auf dem Azure Machine Learning Workbench installiert wurde, auf das Projekt „iris“ zugreifen. 
+Nachdem das Azure DevOps-Git-Repository mit Ihrem Projekt verknüpft ist, können Sie von jedem Computer, auf dem Azure Machine Learning Workbench installiert wurde, auf das Projekt „iris“ zugreifen. 
 
 Um auf einem anderen Computer auf das Projekt „iris“ zugreifen zu können, müssen Sie sich bei der App mit denselben Anmeldeinformationen wie beim Erstellen des Projekts anmelden. Sie müssen auch beim selben Machine Learning Experimentieren-Konto und -Arbeitsbereich angemeldet sein. Das Projekt „iris“ wird alphabetisch mit den anderen Projekten im Arbeitsbereich aufgelistet. 
 
@@ -82,11 +88,11 @@ Für eine zukünftige Version ist geplant, die Funktionalität zu erweitern, sod
 
 
 ### <a name="work-on-the-downloaded-project"></a>Arbeiten im heruntergeladenen Projekt 
-Das neu heruntergeladene Projekt spiegelt den Projektstand zum Zeitpunkt der letzten Ausführung im Projekt wider. Eine Momentaufnahme des Projektstands wird automatisch im Branch „Ausführungsverlauf“ im Team Services-Git-Repository committet, wenn Sie eine Ausführung übermitteln. Die mit der letzten Ausführung verknüpfte Momentaufnahme wird zum Instanziieren des Projekts auf dem zweiten Computer verwendet. 
+Das neu heruntergeladene Projekt spiegelt den Projektstand zum Zeitpunkt der letzten Ausführung im Projekt wider. Eine Momentaufnahme des Projektstands wird automatisch im Branch „Ausführungsverlauf“ im Azure DevOps-Git-Repository committet, wenn Sie eine Ausführung übermitteln. Die mit der letzten Ausführung verknüpfte Momentaufnahme wird zum Instanziieren des Projekts auf dem zweiten Computer verwendet. 
  
 
 ## <a name="collaboration"></a>Zusammenarbeit
-Sie können mit Teammitgliedern an Projekten zusammenarbeiten, die mit einem Team Services-Git-Repository verknüpft sind. Sie können Benutzern Berechtigungen für das Machine Learning-Experimentieren-Konto, den Arbeitsbereich und das Projekt zuweisen. Derzeit können Sie Azure Resource Manager-Befehle über die Azure-Befehlszeilenschnittstelle ausführen. Sie können auch das [Azure-Portal](https://portal.azure.com) verwenden. Weitere Informationen finden Sie unter [Verwenden des Azure-Portals zum Hinzufügen von Benutzern](#portal).    
+Sie können mit Teammitgliedern an Projekten zusammenarbeiten, die mit einem Azure DevOps-Git-Repository verknüpft sind. Sie können Benutzern Berechtigungen für das Machine Learning-Experimentieren-Konto, den Arbeitsbereich und das Projekt zuweisen. Derzeit können Sie Azure Resource Manager-Befehle über die Azure-Befehlszeilenschnittstelle ausführen. Sie können auch das [Azure-Portal](https://portal.azure.com) verwenden. Weitere Informationen finden Sie unter [Verwenden des Azure-Portals zum Hinzufügen von Benutzern](#portal).    
 
 ### <a name="use-the-command-line-to-add-users"></a>Hinzufügen von Benutzern über die Befehlszeile
 Beispiel: Alice ist die Besitzerin des Projekts „iris“. Alice möchte den Zugriff auf das Projekt für Bob freigeben. 
@@ -127,16 +133,16 @@ Sie finden die Ressource, der Sie Benutzer hinzufügen möchten, in der Ansicht 
 ## <a name="sample-collaboration-workflow"></a>Beispiel eines Workflows für die Zusammenarbeit
 Zur Veranschaulichung des Kollaborationsworkflows wird hier ein Beispiel durchlaufen. Die Contoso-Mitarbeiter Alice und Bob möchten mithilfe von Machine Learning Workbench an einem Data Science-Projekt zusammenarbeiten. Ihre Identitäten gehören demselben Contoso Azure Active Directory-Mandanten (Azure AD) an. Alice und Bob führen die folgenden Schritte aus:
 
-1. Alice erstellt ein leeres Git-Repository in einem Team Services-Projekt. Das Team Services-Projekt muss sich in einem Azure-Abonnement befinden, das unter dem Contoso Azure AD-Mandanten erstellt wurde. 
+1. Alice erstellt ein leeres Git-Repository in einem Azure DevOps-Projekt. Das Azure DevOps-Projekt muss sich in einem Azure-Abonnement befinden, das unter dem Contoso Azure AD-Mandanten erstellt wurde. 
 
-2. Alice erstellt dann ein Machine Learning-Experimentieren-Konto, einen Arbeitsbereich und ein Machine Learning Workbench-Projekt auf ihrem Computer. Beim Erstellen des Projekts gibt sie die Team Services-Git-Repository-URL an.
+2. Alice erstellt dann ein Machine Learning-Experimentieren-Konto, einen Arbeitsbereich und ein Machine Learning Workbench-Projekt auf ihrem Computer. Beim Erstellen des Projekts gibt sie die Azure DevOps-Git-Repository-URL an.
 
-3. Alice beginnt mit der Arbeit an dem Projekt. Sie erstellt einige Skripts und nimmt einige Ausführungen vor. Bei jeder Ausführung wird automatisch eine Momentaufnahme des gesamten Projektordners als Commit an einen Branch „Ausführungsverlauf“ im Team Services-Git-Repository übertragen, der von Machine Learning Workbench erstellt wird.
+3. Alice beginnt mit der Arbeit an dem Projekt. Sie erstellt einige Skripts und nimmt einige Ausführungen vor. Bei jeder Ausführung wird automatisch eine Momentaufnahme des gesamten Projektordners als Commit an einen Branch „Ausführungsverlauf“ im Azure DevOps-Git-Repository übertragen, der von Machine Learning Workbench erstellt wird.
 
-4. Alice ist mit der vorgenommenen Arbeit zufrieden. Sie möchte ihre Änderung im lokalen Masterbranch committen und dann per Push in den Masterbranch des Team Services-Git-Repositorys übertragen. Während das Projekt in Machine Learning-Workbench geöffnet ist, öffnet Sie das Eingabeaufforderungsfenster und gibt diese Befehle ein:
+4. Alice ist mit der vorgenommenen Arbeit zufrieden. Sie möchte ihre Änderung im lokalen Masterbranch committen und dann in den Masterbranch des Azure DevOps-Git-Repositorys übertragen pushen. Während das Projekt in Machine Learning-Workbench geöffnet ist, öffnet Sie das Eingabeaufforderungsfenster und gibt diese Befehle ein:
     
     ```sh
-    # Verify that the Git remote is pointing to the Team Services Git repo.
+    # Verify that the Git remote is pointing to the Azure DevOps Git repo.
     $ git remote -v
 
     # Verify that the current branch is master.
@@ -148,11 +154,11 @@ Zur Veranschaulichung des Kollaborationsworkflows wird hier ein Beispiel durchla
     # Commit changes with a comment.
     $ git commit -m "this is a good milestone"
 
-    # Push the commit to the master branch of the remote Git repo in Team Services.
+    # Push the commit to the master branch of the remote Git repo in Azure DevOps.
     $ git push
     ```
 
-5. Alice fügt Bob dem Arbeitsbereich als einen Mitwirkenden hinzu. Dies erreicht sie im Azure-Portal oder mithilfe des Befehls `az role assignment`, wie weiter oben erläutert. Alice gewährt Bob außerdem Berechtigungen für den Lese-/Schreibzugriff auf das Team Services-Git-Repository.
+5. Alice fügt Bob dem Arbeitsbereich als einen Mitwirkenden hinzu. Dies erreicht sie im Azure-Portal oder mithilfe des Befehls `az role assignment`, wie weiter oben erläutert. Alice gewährt Bob außerdem Lese-/Schreibberechtigungen für das Azure DevOps-Git-Repository.
 
 6. Bob meldet sich auf seinem Computer bei Machine Learning Workbench an. Er kann den Arbeitsbereich sehen, den Alice für ihn freigegeben hat. Er kann das Projekt „iris“ sehen, das unter diesem Arbeitsbereich aufgeführt wird. 
 
@@ -165,13 +171,13 @@ Zur Veranschaulichung des Kollaborationsworkflows wird hier ein Beispiel durchla
 9. Bob möchte die neuesten von Alice gepushten Änderungen erhalten und dann in einem anderen Branch arbeiten. Dazu öffnet er in Machine Learning Workbench ein Eingabeaufforderungsfenster und führt die folgenden Befehle aus:
 
     ```sh
-    # Verify that the Git remote is pointing to the Team Services Git repo.
+    # Verify that the Git remote is pointing to the Azure DevOps Git repo.
     $ git remote -v
 
     # Verify that the current branch is master.
     $ git branch
 
-    # Get the latest commit in the Team Services Git master branch and overwrite current files.
+    # Get the latest commit in the Azure DevOps Git master branch and overwrite current files.
     $ git pull --force
 
     # Create a new local branch named "bob" so that Bob's work is done in the "bob" branch
@@ -192,7 +198,7 @@ Zur Veranschaulichung des Kollaborationsworkflows wird hier ein Beispiel durchla
     # Commit the changes with a comment.
     $ git commit -m "I found a cool new trick."
 
-    # Create a new branch on the remote Team Services Git repo, and then push the changes.
+    # Create a new branch on the remote Azure DevOps Git repo, and then push the changes.
     $ git push origin bob
     ```
 

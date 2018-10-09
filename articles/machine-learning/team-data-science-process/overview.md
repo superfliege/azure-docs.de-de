@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: e44b21530cb3db8a2ba354ef19ebb3d2c557ecae
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: e6e6b8e03102825a15035adbea80ac5e9f3fa404
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125758"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996450"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Was ist der Team Data Science-Prozess (TDSP)?
 
@@ -71,7 +71,7 @@ Im folgenden Diagramm ist eine Rasteransicht der Aufgaben (blau) und Artefakte (
 
 ## <a name="standardized-project-structure"></a>Standardisierte Projektstruktur
 
-Wenn in allen Projekten die Verzeichnisstruktur gleich ist und Vorlagen für Projektdokumente verwendet werden, können Teammitglieder Informationen zu ihren Projekten mühelos finden. Der gesamte Code und alle Dokumente werden im Hinblick auf die Zusammenarbeit im Team in einem Versionskontrollsystem, z.B. Git, TFS oder Subversion, gespeichert. Die Erfassung von Aufgaben und Features in einem flexiblen Projektnachverfolgungssystem wie Jira, Rally oder Visual Studio Team Services ermöglicht die detaillierte Nachverfolgung des Codes für einzelne Funktionen. Durch eine solche Nachverfolgung können Teams bessere Kostenschätzungen erreichen. Der TDSP empfiehlt zur Versionsverwaltung, Informationssicherheit und Zusammenarbeit die Erstellung eines separaten Repositorys für jedes Projekt im Versionskontrollsystem. Die standardisierte Struktur für alle Projekte trägt zum Aufbau des institutionellen Wissens in der gesamten Organisation bei.
+Wenn in allen Projekten die Verzeichnisstruktur gleich ist und Vorlagen für Projektdokumente verwendet werden, können Teammitglieder Informationen zu ihren Projekten mühelos finden. Der gesamte Code und alle Dokumente werden im Hinblick auf die Zusammenarbeit im Team in einem Versionskontrollsystem, z.B. Git, TFS oder Subversion, gespeichert. Die Erfassung von Aufgaben und Features in einem flexiblen Projektnachverfolgungssystem wie Jira, Rally und Azure DevOps ermöglicht die detaillierte Nachverfolgung des Codes für einzelne Funktionen. Durch eine solche Nachverfolgung können Teams bessere Kostenschätzungen erreichen. Der TDSP empfiehlt zur Versionsverwaltung, Informationssicherheit und Zusammenarbeit die Erstellung eines separaten Repositorys für jedes Projekt im Versionskontrollsystem. Die standardisierte Struktur für alle Projekte trägt zum Aufbau des institutionellen Wissens in der gesamten Organisation bei.
 
 Wir stellen Vorlagen für die Ordnerstruktur und erforderliche Dokumente in Standardspeicherorten bereit. In dieser Ordnerstruktur werden die Dateien organisiert, die Code zur Datenuntersuchung und Featureextraktion enthalten und in denen Modelliterationen erfasst werden. Anhand dieser Vorlagen können Teammitglieder einfacher die Arbeit von anderen Mitgliedern nachvollziehen und neue Mitglieder zu Teams hinzufügen. Die Dokumentvorlagen im Markdown-Format lassen sich einfach anzeigen und aktualisieren. Verwenden Sie Vorlagen zum Bereitstellen von Prüflisten mit den wichtigsten Fragen für jedes Projekt, um sicherzustellen, dass das Problem klar definiert ist und die Ergebnisse den erwarteten Qualitätsanforderungen entsprechen. Beispiele:
 
@@ -89,10 +89,10 @@ Die Verzeichnisstruktur kann von[GitHub](https://github.com/Azure/Azure-TDSP-Pro
 
 Der TDSP umfasst Empfehlungen zum Verwalten der freigegebenen Analyse- und Speicherinfrastruktur, beispielsweise:
 
-- Clouddateisysteme zum Speichern von DataSets 
+- Clouddateisysteme zum Speichern von Datasets 
 - Datenbanken
 - Big Data-Cluster (Hadoop oder Spark) 
-- Dienste für maschinelles Lernen 
+- Machine Learning-Dienst 
 
 Die Analyse- und Speicherinfrastruktur kann in der Cloud oder lokal konfiguriert werden. In dieser Infrastruktur werden Roh-DataSets und verarbeitete DataSets gespeichert. Diese Infrastruktur ermöglicht reproduzierbare Analysen. Sie verhindert außerdem die Duplizierung, die zu Inkonsistenzen und unnötigen Infrastrukturkosten führen kann. Tools werden bereitgestellt, um freigegebene Ressourcen bereitzustellen und nachzuverfolgen sowie jedem Teammitglied zu ermöglichen, eine sichere Verbindung mit diesen Ressourcen herzustellen. Es empfiehlt sich außerdem, dass Projektmitglieder eine einheitliche Computeumgebung erstellen. Verschiedene Teammitglieder können dann Experimente replizieren und überprüfen.
 

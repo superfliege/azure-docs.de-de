@@ -1,25 +1,27 @@
 ---
-title: Python-Schnellstart für Azure Cognitive Services, Microsoft-Sprachübersetzungs-API | Microsoft-Dokumentation
-description: Hier finden Sie Informationen und Codebeispiele, mit denen Sie schnell erste Schritte mit der Microsoft-Sprachübersetzungs-API in Microsoft Cognitive Services in Azure ausführen können.
+title: 'Schnellstart: Sprachübersetzungs-API Python'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Sprachübersetzungs-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a24ccd456df533542e7cbd2315fc1050cd82afbf
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ROBOTS: NOINDEX
+ms.openlocfilehash: 601e8473482cf6d90151b221309aef4d48d368d0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41929938"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979014"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-python"></a>Schnellstart für die Microsoft-Sprachübersetzungs-API mit Python 
+# <a name="quickstart-translator-speech-api-with-python"></a>Schnellstart: Sprachübersetzungs-API mit Python
 <a name="HOLTop"></a>
 
-In diesem Artikel wird gezeigt, wie Sie mit der Microsoft-Sprachübersetzungs-API gesprochene Sprache in einer WAV-Datei übersetzen.
+In diesem Artikel wird gezeigt, wie Sie mit der Sprachübersetzungs-API gesprochene Sprache in einer WAV-Datei übersetzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

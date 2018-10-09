@@ -1,30 +1,31 @@
 ---
-title: Dokumentation für die Sprachübersetzungs-API | Microsoft-Dokumentation
-titleSuffix: Cognitive Services
-description: Verwenden Sie die Sprachübersetzungs-API von Microsoft, um Ihre Anwendungen mit Sprache-zu-Sprache- und Sprache-zu-Text-Übersetzungen auszustatten.
+title: Was ist der Sprachübersetzungsdienst?
+titleSuffix: Azure Cognitive Services
+description: Verwenden Sie die Sprachübersetzungsdienst-API, um Ihre Anwendungen mit Sprache-in-Sprache- und Sprache-in-Text-Übersetzungen auszustatten.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 15f27e6b5b2fd7384958a660156855fc65f4e558
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: fd974d153e9db48b25c1b732b9719c21b16b5e01
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374138"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948773"
 ---
-# <a name="microsoft-translator-speech-api"></a>Sprachübersetzungs-API von Microsoft
-Mit der Sprachübersetzungs-API von Microsoft können Sie Anwendungen, Tools und Lösungen, die eine Sprachübersetzung für mehrere Sprachen erfordern, unabhängig vom Zielbetriebssystem oder den Entwicklungssprachen mit umfassenden Sprachübersetzungen in Echtzeit ausstatten. Die API kann sowohl für Sprache-zu-Sprache-Übersetzungen als auch für Sprache-zu-Text-Übersetzungen verwendet werden.
+# <a name="what-is-translator-speech-api"></a>Was ist die Sprachübersetzungs-API?
+Mit der Sprachübersetzungs-API können Sie Anwendungen, Tools und Lösungen, die eine Sprachübersetzung für mehrere Sprachen erfordern, unabhängig vom Zielbetriebssystem oder den Entwicklungssprachen mit umfassenden Sprachübersetzungen in Echtzeit ausstatten. Die API kann sowohl für Sprache-zu-Sprache-Übersetzungen als auch für Sprache-zu-Text-Übersetzungen verwendet werden.
 
-Die Textübersetzungs-API von Microsoft ist ein Azure-Dienst und gehört zur [API-Sammlung von Microsoft Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive). Hierbei handelt es sich um eine Sammlung von Machine Learning- und KI-Algorithmen in der Cloud, die Sie direkt in Ihren Entwicklungsprojekten verwenden können.
+Die Textübersetzungs-API ist ein Azure-Dienst und gehört zur [API-Sammlung von Azure Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive). Hierbei handelt es sich um eine Sammlung von Machine Learning- und KI-Algorithmen in der Cloud, die Sie direkt in Ihren Entwicklungsprojekten verwenden können.
 
-Mit der Sprachübersetzungs-API von Microsoft streamen Clientanwendungen Audio an den Dienst und empfangen einen Stream mit text- und audiobasierten Ergebnissen. Diese umfassen den erkannten Text in der Ausgangssprache und die entsprechende Übersetzung in der Zielsprache. Zur Generierung der Textergebnisse wird auf den eingehenden Audiostream eine auf neuronalen Netzwerken basierende automatische Spracherkennung (Automatic Speech Recognition, ASR) angewendet. Eine unformatierte ASR-Ausgabe wird mithilfe einer neuen Technik namens TrueText weiter verbessert, um die Benutzerabsicht noch besser zu erfassen. So entfernt TrueText beispielsweise Elemente, die den Textfluss stören (etwa „Hmm“ und Husten), sowie Wortwiederholungen und sorgt für eine ordnungsgemäße Interpunktion und Großschreibung. Es besteht auch die Möglichkeit, anstößige Ausdrücke zu maskieren oder auszuschließen. Die Erkennungs- und Übersetzungsengines werden speziell für die Verarbeitung von Konversationen trainiert. 
+Mit der Sprachübersetzungs-API streamen Clientanwendungen Audio an den Dienst und empfangen einen Stream mit text- und audiobasierten Ergebnissen. Diese umfassen den erkannten Text in der Ausgangssprache und die entsprechende Übersetzung in der Zielsprache. Zur Generierung der Textergebnisse wird auf den eingehenden Audiostream eine auf neuronalen Netzwerken basierende automatische Spracherkennung (Automatic Speech Recognition, ASR) angewendet. Eine unformatierte ASR-Ausgabe wird mithilfe einer neuen Technik namens TrueText weiter verbessert, um die Benutzerabsicht noch besser zu erfassen. So entfernt TrueText beispielsweise Elemente, die den Textfluss stören (etwa „Hmm“ und Husten), sowie Wortwiederholungen und sorgt für eine ordnungsgemäße Interpunktion und Großschreibung. Es besteht auch die Möglichkeit, anstößige Ausdrücke zu maskieren oder auszuschließen. Die Erkennungs- und Übersetzungsengines werden speziell für die Verarbeitung von Konversationen trainiert. 
 
-Der Sprachübersetzungsdienst verwendet die Stille-Erkennung, um das Ende einer Äußerung zu bestimmen. Nach einer Sprechpause gibt der Dienst mittels Streaming ein Endergebnis der abgeschlossenen Äußerung zurück. Der Dienst kann auch Teilergebnisse zurückgeben, die Zwischeninformationen zu Erkennungen und Übersetzungen einer noch nicht abgeschlossenen Äußerung liefern. 
+Der Sprachübersetzungsdienst verwendet die Erkennung von Stille, um das Ende einer Äußerung zu bestimmen. Nach einer Sprechpause gibt der Dienst mittels Streaming ein Endergebnis der abgeschlossenen Äußerung zurück. Der Dienst kann auch Teilergebnisse zurückgeben, die Zwischeninformationen zu Erkennungen und Übersetzungen einer noch nicht abgeschlossenen Äußerung liefern. 
 
 Bei Sprache-zu-Sprache-Übersetzungen bietet der Dienst die Möglichkeit, Sprache aus dem gesprochenen Text in den Zielsprachen zu synthetisieren (Text-to-Speech). Das Audio der Sprachsynthese wird im vom Client angegebenen Format erstellt. Verfügbare Formate sind WAV und MP3.
 
@@ -36,7 +37,7 @@ Microsoft Translator ist ein cloudbasierter Übersetzungsdienst. Das Herzstück 
 Weitere Informationen zum Microsoft Translator-Dienst finden Sie [hier](https://www.microsoft.com/en-us/translator/home.aspx).
 
 ## <a name="microsoft-translator-neural-machine-translation-nmt"></a>Neuronale maschinelle Übersetzungen (NMT) von Microsoft Translator
-Die Sprachübersetzungs-API von Microsoft verwendet sowohl die ältere statistische Maschinenübersetzung (Statistical Machine Translation, SMT) als auch die neuere neuronale maschinelle Übersetzung (Neural Machine Translation, NMT), um Übersetzungen bereitzustellen.
+Die Sprachübersetzungs-API verwendet sowohl die ältere statistische Maschinenübersetzung (Statistical Machine Translation, SMT) als auch die neuere neuronale maschinelle Übersetzung (Neural Machine Translation, NMT), um Übersetzungen bereitzustellen.
 
 Die Leistung der statistischen Maschinenübersetzung hat ihren Zenit erreicht: Die Übersetzungsqualität lässt sich bei generischen Systemen mit SMT nicht mehr nennenswert verbessern. Dafür ist eine neue Übersetzungstechnologie auf dem Vormarsch, die auf künstlicher Intelligenz und neuronale Netzwerken (NN) basiert.
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 9c39d621bfc8df338a4556fd412ae54489982074
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: fb9de98a80d348c3ba1e84ae19551c7ca080628b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092766"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966842"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -234,7 +234,7 @@ In diesem Beispiel werden die folgenden Regeln eingerichtet:
 
 Der Kategoriewert in *host.json* steuert die Protokollierung für alle Kategorien, die mit dem gleichen Wert beginnen. Mit „Host“ in *host.json* wird beispielsweise die Protokollierung für „Host.General“, „Host.Executor“, „Host.Results“ usw. gesteuert.
 
-Wenn *host.json* mehrere Kategorien enthält, die mit der gleichen Zeichenfolge beginnen, werden zuerst die längeren abgeglichen. Nehmen Sie Folgendes an: Sie möchten, dass für die Laufzeit alles mit Ausnahme von „Host.Aggregator“ auf der Ebene `Error` protokolliert wird, während „Host.Aggregator“ auf der Ebene `Information` protokolliert wird:
+Wenn *host.json* mehrere Kategorien enthält, die mit der gleichen Zeichenfolge beginnen, werden zuerst die längeren abgeglichen. Nehmen Sie Folgendes an: Sie möchten, dass für die Laufzeit alles mit Ausnahme von „Host.Aggregator“ auf der Ebene `Error` protokolliert wird, während „Host.Aggregator“ auf der Ebene `Information` protokolliert werden soll:
 
 ```json
 {
@@ -298,7 +298,7 @@ Wie im vorherigen Abschnitt erwähnt, werden von der Laufzeit Daten zu den Funkt
 
 ## <a name="configure-sampling"></a>Konfigurieren des Samplings
 
-Application Insights verfügt über ein [Sampling](../application-insights/app-insights-sampling.md)-Feature als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten produziert werden. Wenn die Anzahl von Telemetrieelementen eine bestimmte Rate übersteigt, beginnt Application Insights damit, einige der eingehenden Elemente nach dem Zufallsprinzip zu ignorieren. Die Standardeinstellung für die maximale Anzahl von Elementen pro Sekunde ist 5. Sie können das Sampling in der Datei *host.json* konfigurieren.  Hier sehen Sie ein Beispiel:
+Application Insights verfügt über ein [Sampling](../application-insights/app-insights-sampling.md)-Feature als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten produziert werden. Wenn die Rate der eingehenden Telemetrieelemente einen bestimmten Schwellenwert übersteigt, beginnt Application Insights, einige der eingehenden Elemente zufällig zu ignorieren. Die Standardeinstellung für die maximale Anzahl von Elementen pro Sekunde ist 5. Sie können das Sampling in der Datei *host.json* konfigurieren.  Hier sehen Sie ein Beispiel:
 
 ```json
 {
@@ -457,11 +457,6 @@ namespace functionapp0915
                 };
             UpdateTelemetryContext(dependency.Context, context, name);
             telemetryClient.TrackDependency(dependency);
-            
-            return name == null
-                ? req.CreateResponse(HttpStatusCode.BadRequest, 
-                    "Please pass a name on the query string or in the request body")
-                : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
         }
         
         // This correllates all telemetry with the current Function invocation
@@ -499,18 +494,6 @@ module.exports = function (context, req) {
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:{"ai.operation.id": context.invocationId}});
     client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:{"ai.operation.id": context.invocationId}});
 
-    if (req.query.name || (req.body && req.body.name)) {
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
     context.done();
 };
 ```
@@ -547,9 +530,9 @@ Auch wenn auf der Registerkarte **Überwachen** Application Insights-Daten angez
 
 ### <a name="real-time-monitoring"></a>Überwachung in Echtzeit
 
-Sie können Protokolldateien mithilfe der [Azure-Befehlszeilenschnittstelle 2.0 (Azure CLI 2.0)](/cli/azure/install-azure-cli) oder über [Azure PowerShell](/powershell/azure/overview) in eine Befehlszeilensitzung auf einer lokalen Arbeitsstation streamen.  
+Sie können Protokolldateien mithilfe der [Azure-Befehlszeilenschnittstelle (Azure CLI)](/cli/azure/install-azure-cli) oder über [Azure PowerShell](/powershell/azure/overview) in eine Befehlszeilensitzung auf einer lokalen Arbeitsstation streamen.  
 
-Verwenden Sie für Azure CLI 2.0 die folgenden Befehle, um sich anzumelden, Ihr Abonnement auszuwählen und Protokolldateien zu streamen:
+Verwenden Sie für die Azure CLI die folgenden Befehle, um sich anzumelden, Ihr Abonnement auszuwählen und Protokolldateien zu streamen:
 
 ```
 az login

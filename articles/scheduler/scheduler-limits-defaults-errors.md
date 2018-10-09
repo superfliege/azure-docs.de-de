@@ -1,49 +1,40 @@
 ---
-title: Scheduler – Einschränkungen und Standardwerte
-description: Scheduler – Einschränkungen und Standardwerte
+title: Grenzwerte, Kontingente und Schwellenwerte in Azure Scheduler
+description: Informationen zu Grenzwerten, Kontingenten, Standardwerten und Drosselungsschwellenwerten für Azure Scheduler
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
 ms.topic: article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: db6b1c196cb468f41c7a7ce34758de346b522abb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c1e704a3bdec239c87d879ae1ef95e6e76d27fc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23043165"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966896"
 ---
-# <a name="scheduler-limits-and-defaults"></a>Scheduler – Einschränkungen und Standardwerte
-## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>Kontingente, Einschränkungen, Standardwerte und Drosselungen für Scheduler
+# <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Grenzwerte, Kontingente und Drosselungsschwellenwerte in Azure Scheduler
+
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+
+## <a name="limits-quotas-and-thresholds"></a>Grenzwerte, Kontingente und Schwellenwerte
+
 [!INCLUDE [scheduler-limits-table](../../includes/scheduler-limits-table.md)]
 
-## <a name="the-x-ms-request-id-header"></a>Der Header „x-ms-request-id“
-Jede Anforderung für den Scheduler-Dienst gibt einen Antwortheader namens**x-ms-request-id**zurück. Dieser Header enthält einen opaken Wert, der die Anforderung eindeutig identifiziert.
+## <a name="x-ms-request-id-header"></a>x-ms-request-id header
 
-Wenn bei einer Anforderung kontinuierlich ein Fehler auftritt, obwohl die Anforderung ordnungsgemäß formuliert ist, können Sie den Fehler unter Angabe dieses Werts an Microsoft melden. Geben Sie in Ihrem Bericht den Wert von „x-ms-request-id“, die ungefähre Anforderungszeit, die ID des Abonnements, die Auftragssammlung und/oder den Auftrag sowie die Art des Vorgangs an, den die Anforderung ausgeführt hat.
+Jede Anforderung für den Scheduler-Dienst gibt einen Antwortheader namens **x-ms-request-id**zurück. Dieser Header enthält einen opaken Wert, der die Anforderung eindeutig identifiziert. Wenn also eine Anforderung immer wieder fehlschlägt und Sie bestätigt haben, dass die Anforderung ordnungsgemäß formatiert ist, können Sie den Fehler an Microsoft melden, indem Sie den Antwortheaderwert **x-ms-request id** und die folgenden Details angeben: 
+
+* Den **x-ms-request-id**-Wert
+* Die ungefähre Zeit, zu der die Anforderung vorgenommen wurde 
+* Die Bezeichner für das Azure-Abonnement, die Auftragssammlung und den Auftrag 
+* Die Art des Vorgangs, den die Anforderung versucht hat
 
 ## <a name="see-also"></a>Weitere Informationen
- [Was ist Azure Scheduler?](scheduler-intro.md)
 
- [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
-
- [Erste Schritte mit dem Scheduler im Azure-Portal](scheduler-get-started-portal.md)
-
- [Pläne und Abrechnung in Azure Scheduler](scheduler-plans-billing.md)
-
- [Azure Scheduler-REST-API – Referenz](https://msdn.microsoft.com/library/mt629143)
-
- [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
-
- [Hochverfügbarkeit und Zuverlässigkeit von Azure Scheduler](scheduler-high-availability-reliability.md)
-
- [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
-
+* [Was ist Azure Scheduler?](scheduler-intro.md)
+* [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)

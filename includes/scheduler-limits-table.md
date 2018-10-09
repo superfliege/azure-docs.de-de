@@ -1,19 +1,37 @@
+---
+title: Includedatei
+description: Includedatei
+services: scheduler
+ms.service: scheduler
+author: derek1ee
+ms.topic: include
+ms.date: 08/16/2016
+ms.author: deli
+ms.custom: include file
+ms.openlocfilehash: be52bf289898dfcd3ee669f12329669f6fabd356
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47006500"
+---
 Die folgende Tabelle informiert über die einzelnen zentralen Kontingente, Einschränkungen, Standardwerte und Drosselungen für Azure Scheduler:
 
 | Ressource | Beschreibung der Einschränkung |
-| --- | --- |
-| **Auftragsgröße** |Die maximale Auftragsgröße beträgt 16 K. Bei Überschreitung dieses Grenzwerts durch eine PUT- oder PATCH-Anforderung wird der Statuscode 400 (unzulässige Anforderung) zurückgegeben. |
-| **Größe der Anforderungs-URL** |Die Anforderungs-URL darf maximal 2048 Zeichen umfassen. |
-| **Aggregierte Headergröße** |Die aggregierte Headergröße darf maximal 4096 Zeichen umfassen. |
-| **Headeranzahl** |Die maximale Headeranzahl beträgt 50 Header. |
-| **Textlänge** |Die maximale Textlänge beträgt 8192 Zeichen. |
-| **Wiederholungsspanne** |Die maximal zulässige Wiederholungsspanne beträgt 18 Monate. |
-| **Zeit bis zur Startzeit** |Der maximal zulässige Wert für die Zeit bis zur Startzeit beträgt 18 Monate. |
-| **Auftragsverlauf** |Die maximale Größe des im Auftragsverlauf gespeicherten Antworttexts beträgt 2048 Bytes. |
-| **Frequency** |Das Standardkontingent für die maximale Häufigkeit beträgt eine Stunde (kostenlose Auftragssammlung) bzw. eine Minute (Standard-Auftragssammlung). Die maximale Häufigkeit kann für eine Auftragssammlung auf einen Wert unterhalb des Maximalwerts festgelegt werden. Der für die Auftragssammlung festgelegte Wert gilt für alle Aufträge in der Auftragssammlung. Beim Versuch, einen Auftrag mit einer Häufigkeit zu erstellen, die die maximal zulässige Häufigkeit der Auftragssammlung übersteigt, ist die Anforderung nicht erfolgreich, und der Statuscode 409 (Konflikt) wird zurückgegeben. |
-| **Aufträge** |Das Standardkontingent für die maximale Auftragsanzahl liegt bei fünf Aufträgen (kostenlose Auftragssammlung) bzw. bei 50 Aufträgen (Standard-Auftragssammlung). Die maximale Auftragsanzahl kann für eine Auftragssammlung konfiguriert werden. Der für die Auftragssammlung festgelegte Wert gilt für alle Aufträge in der Auftragssammlung. Bei Überschreitung des maximalen Auftragskontingents wird der Statuscode 409 (Konflikt) zurückgegeben. |
-| **Auftragssammlungen** |Die maximale Anzahl von Auftragssammlungen pro Abonnement beträgt 200.000. |
-| **Speicherung des Auftragsverlaufs** |Der Auftragsverlauf wird bis zu 2 Monate lang oder maximal für die letzten 1000 Ausführungen beibehalten. |
-| **Speicherung abgeschlossener und fehlerhafter Aufträge** |Abgeschlossene und fehlerhafte Aufträge werden 60 Tage lang aufbewahrt. |
-| **Timeout** |Bei HTTP-Aktionen gilt ein statisches (nicht konfigurierbares) Anforderungstimeout von 60 Sekunden. Greifen Sie bei länger dauernden Vorgängen auf asynchrone HTTP-Protokolle zurück, bei denen beispielsweise umgehend der Statuscode 202 zurückgegeben und der Vorgang im Hintergrund fortgesetzt wird. |
+| -------- | ----------------- |
+| **Auftragsgröße** | Die maximale Auftragsgröße beträgt 16 KB. Wenn ein PUT- oder PATCH-Vorgang zu einer Auftragsgröße führt, die größer als dieser Grenzwert ist, wird ein Statuscode 400 Bad Request (unzulässige Anforderung) zurückgegeben. | 
+| **Auftragssammlungen** | Die maximale Anzahl von Auftragssammlungen pro Azure-Abonnement beträgt 200.000. | 
+| **Aufträge pro Sammlung** | Standardmäßig beträgt die maximale Anzahl der Aufträge fünf Aufträge in einer kostenlosen Auftragssammlung und 50 Aufträge in einer Standardauftragssammlung. <p>Sie können die maximale Auftragsanzahl für eine Auftragssammlung ändern. Der für die Auftragssammlung festgelegte Wert gilt für alle Aufträge in der Auftragssammlung. Wenn Sie versuchen, mehr Aufträge als das maximale Auftragskontingent zu erstellen, schlägt die Anforderung mit dem Statuscode 409 Conflict (Konflikt) fehl. | 
+| **Zeit bis zur Startzeit** | Der maximal zulässige Wert für die „Zeit bis zur Startzeit“ beträgt 18 Monate. |
+| **Wiederholungsspanne** | Die maximal zulässige Wiederholungsspanne beträgt 18 Monate. | 
+| **Frequency** | Standardmäßig beträgt das maximale Häufigkeitskontingent eine Stunde bei einer kostenlosen Auftragssammlung und eine Minute bei einer Standardauftragssammlung. <p>Sie können die maximale Häufigkeit für eine Auftragssammlung niedriger als den Maximalwert festlegen. Der für die Auftragssammlung festgelegte Wert gilt für alle Aufträge in der Auftragssammlung. Beim Versuch, einen Auftrag mit einer Häufigkeit zu erstellen, die die maximal zulässige Häufigkeit der Auftragssammlung übersteigt, ist die Anforderung nicht erfolgreich, und der Statuscode 409 Conflict (Konflikt) wird zurückgegeben. | 
+| **Textlänge** | Die maximale Textgröße für eine Anforderung beträgt 8.192 Zeichen. |
+| **Größe der Anforderungs-URL** | Die maximale Größe für eine Anforderungs-URL beträgt 2.048 Zeichen. |
+| **Headeranzahl** | Die maximale Headeranzahl beträgt 50 Header. | 
+| **Aggregierte Headergröße** | Die aggregierte Headergröße darf maximal 4.096 Zeichen umfassen. |
+| **Timeout** | Das Anforderungstimeout ist statisch (nicht konfigurierbar) und beträgt 60 Sekunden für HTTP-Aktionen. Für Vorgänge mit längerer Ausführungszeit folgen Sie den asynchronen HTTP-Protokollen. Geben Sie z.B. sofort 202 zurück, arbeiten Sie aber weiterhin im Hintergrund. | 
+| **Auftragsverlauf** | Die maximale Größe des im Auftragsverlauf gespeicherten Antworttexts beträgt 2.048 Bytes. |
+| **Speicherung des Auftragsverlaufs** | Der Auftragsverlauf wird bis zu 2 Monate lang oder maximal für die letzten 1.000 Ausführungen beibehalten. | 
+| **Speicherung abgeschlossener und fehlerhafter Aufträge** | Abgeschlossene und fehlerhafte Aufträge werden 60 Tage lang aufbewahrt. |
+||| 
 

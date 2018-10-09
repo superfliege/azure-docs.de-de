@@ -2,27 +2,26 @@
 title: OpenAPI-Metadaten in Azure Functions | Microsoft-Dokumentation
 description: Übersicht über OpenAPI-Unterstützung in Azure Functions
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: b6aacc536e589a2036aba5a0784a4ba71641a59e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 93e6b8c606c0a6d7abebeb515b938a45001757c1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "22991675"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950368"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0-Metadatenunterstützung in Azure Functions (Vorschauversion)
 Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions ist eine Vorschaufunktion, mit der Sie eine OpenAPI 2.0-Definition in einer Funktions-App schreiben können. Diese Datei kann dann mit der Funktions-App gehostet werden.
+
+> [!IMPORTANT]
+> Das OpenAPI-Vorschaufeature ist aktuell nur in der 1.x-Runtime verfügbar. Informationen zum Erstellen einer 1.x-Funktions-App [finden Sie hier](./functions-versions.md#creating-1x-apps).
 
 [OpenAPI-Metadaten](http://swagger.io/) ermöglichen, dass eine Funktion, die eine REST-API hostet, von vielen anderen Softwareprodukten verwendet werden kann. Diese Software enthält Microsoft-Angebote wie PowerApps und die [API-Apps-Funktion von Azure App Service](../app-service/app-service-web-overview.md), Drittanbieter-Entwicklertools wie [Postman](https://www.getpostman.com/docs/importing_swagger) sowie [viele weitere Pakete](http://swagger.io/tools/).
 
@@ -33,6 +32,9 @@ Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions is
 
 ## <a name="enable"></a>Aktivieren der Unterstützung für eine OpenAPI-Definition
 Sie können alle OpenAPI-Einstellungen auf der Seite **API-Definition** in den **Plattformfunktionen** der Funktions-App konfigurieren.
+
+> [!NOTE]
+> Das Funktionen-API-Definitionsfeature wird für die Betaruntime zurzeit nicht unterstützt.
 
 Um das Generieren einer gehosteten OpenAPI-Definition und einer Schnellstartdefinition zu ermöglichen, legen Sie **API-Definitionsquelle** auf **Funktion (Vorschau)** fest. **Externe URL** ermöglicht, dass Sie in Ihrer Funktion eine OpenAPI-Definition verwenden, die andernorts gehostet wird.
 

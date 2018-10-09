@@ -1,26 +1,26 @@
 ---
-title: Tutorial zur Sprachübersetzung (C#) | Microsoft-Dokumentation
-titleSuffix: Cognitive Services
-description: Hier erfahren Sie, wie Sie Text mithilfe des Sprachübersetzungsdiensts in Echtzeit übersetzen.
+title: 'Tutorial: Sprachübersetzungs-API C#'
+titleSuffix: Azure Cognitive Services
+description: Übersetzen Sie Text mit der Sprachübersetzungs-API in Echtzeit.
 services: cognitive-services
 author: v-jerkin
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.devlang: csharp
-ms.topic: article
+ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 010ad8b5ceeaf046c8d361ff352e6058154a482d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2de56366c3204e77eb2e6775ddd88b6fc4f0c219
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41937522"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993866"
 ---
-# <a name="tutorial-microsoft-translator-wpf-application-in-c"></a>Tutorial: Microsoft Translator-WPF-Anwendung in C#
+# <a name="tutorial-translator-speech-application-in-c"></a>Tutorial: Sprachübersetzungsanwendung in C#
 
-In diesem Tutorial lernen Sie ein interaktives Sprachübersetzungstool kennen, das den Microsoft-Sprachübersetzungsdienst (eine Microsoft Cognitive Services-Komponente in Azure) verwendet. Folgendes wird vermittelt:
+In diesem Tutorial lernen Sie ein interaktives Sprachübersetzungstool kennen, das die Sprachübersetzungs-API (ein Teil von Azure Cognitive Services) verwendet. Sie lernen Folgendes:
 
 > [!div class="checklist"]
 > * Anfordern einer Liste mit Sprachen, die der Dienst unterstützt
@@ -42,7 +42,7 @@ Die [JSON.Net-Bibliothek](https://www.newtonsoft.com/json) (von Newtonsoft) ist 
 
 ## <a name="trying-the-translation-app"></a>Ausprobieren der Übersetzungs-App
 
-Öffnen Sie in Visual Studio die Projektmappe für die Microsoft-Sprachübersetzung (`SpeechTranslator.sln`), und drücken Sie F5, um die Anwendung zu starten.  Das Hauptfenster der Anwendung wird angezeigt.
+Öffnen Sie in Visual Studio die Projektmappe für die Sprachübersetzung (`SpeechTranslator.sln`), und drücken Sie F5, um die Anwendung zu starten.  Das Hauptfenster der Anwendung wird angezeigt.
 
 ![[Hauptfenster der Sprachübersetzung]](media/speech-translator-main-window.png)
 
@@ -50,7 +50,7 @@ Wenn Sie die Anwendung zum ersten Mal ausführen, klicken Sie im Menü **Einstel
 
 ![[Hauptfenster der Sprachübersetzung]](media/speech-translator-settings-window.png)
 
-Fügen Sie in diesem Fenster Ihren Abonnementschlüssel für die Microsoft-Sprachübersetzung ein, und klicken Sie auf **Speichern**. Der Schlüssel wird zwischen den Ausführungen gespeichert.
+Fügen Sie in diesem Fenster Ihren Abonnementschlüssel für die Sprachübersetzung ein, und klicken Sie dann auf **Speichern**. Der Schlüssel wird zwischen den Ausführungen gespeichert.
 
 Wählen Sie im Hauptfenster die gewünschten Geräte für die Audioeingabe und die Audioausgabe sowie die Ausgangs- und die Zielsprache aus. Wenn die Übersetzung als Audio ausgegeben werden soll, vergewissern Sie sich, dass das Kontrollkästchen **TTS** (Text-To-Speech, Sprachsynthese) aktiviert ist. Falls bereits während des Sprechens spekulative Teilübersetzungen angezeigt werden sollen, aktivieren Sie die Option **Partial Results** (Teilergebnisse).
 
@@ -58,7 +58,7 @@ Klicken Sie abschließend auf **Start** (Starten), um mit der Übersetzung zu be
 
 ## <a name="obtaining-supported-languages"></a>Abrufen der unterstützten Sprachen
 
-Zum Zeitpunkt der Artikelerstellung unterstützt der Microsoft Translator-Dienst mehr als fünf Dutzend Sprachen für die Textübersetzung. Die Sprachübersetzung wird für eine geringere Anzahl von Sprachen unterstützt. Für solche Sprachen müssen sowohl die Transkription (Spracherkennung) als auch die Sprachsynthese (für die Sprachausgabe) unterstützt werden.
+Zum Zeitpunkt der Artikelerstellung unterstützt der Sprachübersetzungsdienst mehr als fünf Dutzend Sprachen für die Textübersetzung. Die Sprachübersetzung wird für eine geringere Anzahl von Sprachen unterstützt. Für solche Sprachen müssen sowohl die Transkription (Spracherkennung) als auch die Sprachsynthese (für die Sprachausgabe) unterstützt werden.
 
 Mit anderen Worten: Für die Sprachübersetzung muss eine Ausgangssprache mit Transkriptionsunterstützung verwendet werden. Bei der Ausgabesprache kann es sich um eine beliebige Sprache handeln, für die die Textübersetzung unterstützt wird (vorausgesetzt, Sie möchten das Ergebnis in Textform erhalten). Wenn Sie die Sprachausgabe nutzen möchten, muss für die Zielsprache der Übersetzung die Sprachsynthese unterstützt werden.
 

@@ -1,26 +1,25 @@
 ---
-title: Überwachung in Azure Database for PostgreSQL
-description: In diesem Artikel werden die Metriken (u.a. CPU, Speicher und Verbindungsstatistiken) für Überwachung und Warnungen für Azure Database for PostgreSQL beschrieben.
+title: Überwachung und Optimierung in Azure Database for PostgreSQL
+description: Dieser Artikel beschreibt die Überwachungs- und Optimierungsfunktionen in Azure Database for PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: d0a57fe6d7b1040c32f6d67e2bf0259176c72099
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.topic: conceptual
+ms.date: 09/24/2018
+ms.openlocfilehash: e29186d07d9a060e45ed051d6f7ed0ac81a5e15b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29687607"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982663"
 ---
-# <a name="monitoring-in-azure-database-for-postgresql"></a>Überwachung in Azure Database for PostgreSQL
-Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Metriken, die Einblicke in das Verhalten der Ressourcen gewähren, die dem PostgreSQL-Server zugrunde liegen. 
+# <a name="monitor-and-tune"></a>Überwachen und Optimieren
+Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. 
 
 ## <a name="metrics"></a>Metriken
-Alle Azure-Metriken werden im Minutentakt erfasst, und für jede Metrik steht ein Verlauf von 30 Tagen zur Verfügung. Sie können Warnungen für die Metriken konfigurieren. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](howto-alert-on-metric.md) (Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL). Darüber hinaus können weitere Aufgaben wie das Einrichten automatisierter Aktionen, das Durchführen erweiterter Analysen und das Archivieren des Verlaufs ausgeführt werden. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure Database for PostgreSQL bietet verschiedene Metriken, die Einblicke in das Verhalten der Ressourcen gewähren, die dem PostgreSQL-Server zugrunde liegen. Jede Metrik wird mit einer Frequenz von einer Minute ausgegeben und verfügt über einen Verlauf von bis zu 30 Tagen. Sie können Warnungen für die Metriken konfigurieren. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](howto-alert-on-metric.md) (Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL). Darüber hinaus können weitere Aufgaben wie das Einrichten automatisierter Aktionen, das Durchführen erweiterter Analysen und das Archivieren des Verlaufs ausgeführt werden. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 ### <a name="list-of-metrics"></a>Liste der Metriken
 Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
@@ -31,11 +30,24 @@ Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
 |memory_percent|Arbeitsspeicher in Prozent|Prozent|Die Arbeitsspeicherauslastung in Prozent|
 |io_consumption_percent|E/A in Prozent|Prozent|Die E/A-Auslastung in Prozent|
 |storage_percent|Speicher in Prozent|Prozent|Der verwendete Speicher relativ zum Maximalwert des Servers (in Prozent)|
-|storage_used|Verwendeter Speicher|Byte|Die Menge des verwendeten Speichers. Der vom Dienst verwendete Speicher umfasst die Datenbankdateien, Transaktionsprotokolle und Serverprotokolle.|
+|storage_used|Verwendeter Speicher|Byte|Die Menge des verwendeten Speichers. Der vom Dienst verwendete Speicher kann die Datenbankdateien, Transaktionsprotokolle und Serverprotokolle umfassen.|
 |storage_limit|Speicherbegrenzung|Byte|Der maximale Speicher für diesen Server|
-|active_connections|Aktive Verbindungen gesamt|Count|Die Anzahl aktiver Verbindungen mit dem Server|
-|connections_failed|Fehlerhafte Verbindungen gesamt|Count|Die Anzahl von Verbindungsfehlern für den Server|
+|serverlog_storage_percent|Serverprotokollspeicher in Prozent|Prozent|Der Prozentsatz des Serverprotokollspeichers, der aus dem maximalen Serverprotokollspeicher des Servers verwendet wird.|
+|serverlog_storage_usage|Verwendeter Serverprotokollspeicher|Byte|Die Menge des verwendeten Serverprotokollspeichers.|
+|serverlog_storage_limit|Begrenzung des Serverprotokollspeichers|Byte|Der maximale Serverprotokollspeicher für diesen Server.|
+|active_connections|Die aktiven Verbindungen.|Count|Die Anzahl aktiver Verbindungen mit dem Server|
+|connections_failed|Verbindungsfehler|Count|Die Anzahl von Verbindungsfehlern für den Server|
+|network_bytes_egress|Netzwerk ausgehend|Byte|Ausgehender Netzwerkdatenverkehr über aktive Verbindungen.|
+|network_bytes_ingress|Netzwerk eingehend|Byte|Eingehender Netzwerkdatenverkehr über aktive Verbindungen.|
 
+## <a name="query-store"></a>Abfragespeicher
+[Abfragespeicher](concepts-query-store.md) ist ein Feature der öffentlichen Vorschau, das die Abfrageleistung im Zeitablauf verfolgt, einschließlich Statistiken zur Abfrageausführungszeit und Warteereignissen. Das Feature speichert Informationen zur Leistung der Abfrageausführungszeit in einer Systemdatenbank namens **azure_sys** unter dem Schema „query_store“ persistent. Sie können die Sammlung und Speicherung von Daten über verschiedene Konfigurationsoptionen steuern.
+
+## <a name="query-performance-insight"></a>Query Performance Insight
+[Query Performance Insight](concepts-query-performance-insight.md) arbeitet mit dem Abfragespeicher zusammen, um Visualisierungen bereitzustellen, auf die über das Azure-Portal zugegriffen werden kann. Diese Diagramme ermöglichen es Ihnen, wichtige Abfragen zu identifizieren, die sich auf die Leistung auswirken. Query Performance Insight befindet sich in der öffentlichen Vorschau und ist im Abschnitt **Support und Problembehandlung** auf der Portalseite Ihres Azure Database for PostgreSQL-Servers verfügbar.
+
+## <a name="performance-recommendations"></a>Leistungsempfehlungen
+Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) identifiziert Möglichkeiten zur Verbesserung der Workloadleistung. Die öffentliche Vorschauversion von „Leistungsempfehlungen“ gibt Ihnen Empfehlungen für das Erstellen neuer Indizes, die das Potenzial besitzen, die Leistung Ihrer Workloads zu verbessern. Um Indexempfehlungen zu generieren, berücksichtigt das Feature verschiedene Datenbankmerkmale einschließlich des Schemas und der Workload laut Abfragespeicher. Nach der Implementierung von Leistungsempfehlungen sollten Kunden die Leistung testen, um die Auswirkungen dieser Änderungen auszuwerten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-on-metric.md).

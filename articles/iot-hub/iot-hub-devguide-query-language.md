@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 7704e08246798108aa251c19a4ab0c3baaaad570
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42146246"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952476"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
 IoT Hub bietet eine leistungsstarke, SQL-ähnliche Sprache zum Abrufen von Informationen zu [Gerätezwillingen][lnk-twins], [Aufträgen][lnk-jobs] und [Nachrichtenrouting][lnk-devguide-messaging-routes]. Dieser Artikel enthält Folgendes:
 
 * Eine Einführung in die wichtigsten Features der IoT Hub-Abfragesprache
-* Eine ausführliche Beschreibung der Sprache
+* Eine ausführliche Beschreibung der Sprache Weitere Informationen zur Abfragesprache für das Nachrichtenrouting finden Sie unter [Abfragen im Nachrichtenrouting](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -305,126 +305,6 @@ Derzeit wird für Abfragen von **devices.jobs** Folgendes nicht unterstützt:
 * Bedingungen, die zusätzlich zu Auftragseigenschaften auf einen Gerätezwilling verweisen (siehe vorausgehender Abschnitt).
 * Durchführung von Aggregationen, z.B. Zählen, Durchschnittsbildung, Gruppieren.
 
-## <a name="device-to-cloud-message-routes-query-expressions"></a>D2C-Nachrichtenrouten-Abfrageausdrücke
-
-Mit [Gerät-zu-Cloud-Routen][lnk-devguide-messaging-routes] können Sie IoT Hub so konfigurieren, dass Gerät-zu-Cloud-Nachrichten an verschiedene Endpunkte verteilt werden. Die Verteilung basiert auf Ausdrücken, die für einzelne Nachrichten ausgewertet werden.
-
-Die Routen[bedingung][lnk-query-expressions] verwendet die Syntax der IoT Hub-Abfragesprache als Bedingungen in Zwillings- und Auftragsabfragen. Es steht aber nur eine Teilmenge der Funktionen zur Verfügung. Routenbedingungen werden anhand von Nachrichtenheadern und Nachrichtentext ausgewertet. Ihr Abfrageausdruck für das Routing kann nur Nachrichtenheader, nur den Nachrichtentext oder sowohl Nachrichtenheader als auch Nachrichtentext umfassen. IoT Hub geht von einem bestimmten Schema für die Header und Nachrichtentexte aus, um Nachrichten weiterzuleiten. In den folgenden Abschnitten wird beschrieben, was für das ordnungsgemäße Routing in IoT Hub erforderlich ist.
-
-### <a name="routing-on-message-headers"></a>Routing nach Nachrichtenheader
-
-IoT Hub geht für das Nachrichtenrouting von der folgenden JSON-Darstellung des Nachrichtenheader aus:
-
-```json
-{
-  "message": {
-    "systemProperties": {
-      "contentType": "application/json",
-      "contentEncoding": "utf-8",
-      "iothub-message-source": "deviceMessages",
-      "iothub-enqueuedtime": "2017-05-08T18:55:31.8514657Z"
-    },
-    "appProperties": {
-      "processingPath": "<optional>",
-      "verbose": "<optional>",
-      "severity": "<optional>",
-      "testDevice": "<optional>"
-    },
-    "body": "{\"Weather\":{\"Temperature\":50}}"
-  }
-}
-```
-
-Nachrichtensystemeigenschaften ist das Symbol `'$'` vorangestellt.
-Auf Benutzereigenschaften wird stets über deren Namen zugegriffen. Wenn der Name einer Benutzereigenschaft mit dem einer Systemeigenschaft übereinstimmt (wie z.B. `$contentType`), wird die Benutzereigenschaft mit dem Ausdruck `$contentType` abgerufen.
-Sie können stets mithilfe von Klammern `{}` auf die Systemeigenschaft zugreifen. Sie können beispielsweise über den Ausdruck `{$contentType}` auf die Systemeigenschaft `contentType` zuweisen. Über Eigenschaftsnamen in Klammern wird stets die entsprechende Systemeigenschaft abgerufen.
-
-Beachten Sie, dass bei Eigenschaftennamen nicht zwischen Groß- und Kleinschreibung unterschieden wird.
-
-> [!NOTE]
-> Alle Nachrichteneigenschaften sind Zeichenfolgen. Systemeigenschaften, wie im [Entwicklerhandbuch][lnk-devguide-messaging-format] beschrieben, sind derzeit nicht zur Verwendung in Abfragen verfügbar.
->
-
-Wenn Sie z.B. eine `messageType`-Eigenschaft verwenden, möchten Sie vielleicht alle Telemetrie zu einem bestimmten Endpunkt weiterleiten und alle Warnungen zu einem anderen Endpunkt. Sie können den folgenden Ausdruck schreiben, um die Telemetrie weiterzuleiten:
-
-```sql
-messageType = 'telemetry'
-```
-
-Schreiben Sie dann den folgenden Ausdruck zum Weiterleiten der Warnmeldungen:
-
-```sql
-messageType = 'alert'
-```
-
-Boolesche Ausdrücke und Funktionen werden ebenfalls unterstützt. Anhand dieses Features können Sie Schweregrade unterscheiden, z.B.:
-
-```sql
-messageType = 'alerts' AND as_number(severity) <= 2
-```
-
-Im Abschnitt [Ausdrücke und Bedingungen][lnk-query-expressions] finden Sie die vollständige Liste der unterstützten Operatoren und Funktionen.
-
-### <a name="routing-on-message-bodies"></a>Routing nach Nachrichtentext
-
-IoT Hub kann nur basierend auf dem Inhalt des Nachrichtentexts weiterleiten, wenn der Nachrichtentext ordnungsgemäß in dem Format UTF-8, UTF-16 oder UTF-32 JSON-codiert wurde. Setzen Sie den Inhaltstyp der Nachricht auf `application/json`. Legen Sie die Inhaltscodierung im Nachrichtenkopf auf eine der unterstützten UTF-Codierungen fest. Wenn einer der Nachrichtenköpfe nicht angegeben wurde, versucht IoT Hub nicht, etwaige Abfrageausdrücke im Zusammenhang mit dem Text für die Nachricht auszuwerten. Wenn Ihre Nachricht keine JSON-Nachricht ist, oder wenn die Nachricht den Inhaltstyp und die Inhaltscodierung nicht angibt, können Sie trotzdem das Nachrichtenrouting für das Weiterleiten der Nachricht basierend auf den Nachrichtenköpfen verwenden.
-
-Das folgende Beispiel zeigt, wie eine Nachricht mit einem ordnungsgemäß formatierten und codierten JSON-Text erstellt wird:
-
-```csharp
-string messageBody = @"{ 
-                            ""Weather"":{ 
-                                ""Temperature"":50, 
-                                ""Time"":""2017-03-09T00:00:00.000Z"", 
-                                ""PrevTemperatures"":[ 
-                                    20, 
-                                    30, 
-                                    40 
-                                ], 
-                                ""IsEnabled"":true, 
-                                ""Location"":{ 
-                                    ""Street"":""One Microsoft Way"", 
-                                    ""City"":""Redmond"", 
-                                    ""State"":""WA"" 
-                                }, 
-                                ""HistoricalData"":[ 
-                                    { 
-                                    ""Month"":""Feb"", 
-                                    ""Temperature"":40 
-                                    }, 
-                                    { 
-                                    ""Month"":""Jan"", 
-                                    ""Temperature"":30 
-                                    } 
-                                ] 
-                            } 
-                        }"; 
- 
-// Encode message body using UTF-8 
-byte[] messageBytes = Encoding.UTF8.GetBytes(messageBody); 
- 
-using (var message = new Message(messageBytes)) 
-{ 
-    // Set message body type and content encoding. 
-    message.ContentEncoding = "utf-8"; 
-    message.ContentType = "application/json"; 
- 
-    // Add other custom application properties.  
-    message.Properties["Status"] = "Active";    
- 
-    await deviceClient.SendEventAsync(message); 
-}
-```
-
-Sie können im Abfrageausdruck `$body` für das Weiterleiten der Nachricht verwenden. Sie können einen einfachen Textverweis, einen Textarrayverweis oder mehrere Textverweise in den Abfrageausdruck einfügen. Der Abfrageausdruck kann auch einen Textverweis mit einem Verweis auf den Nachrichtenheader kombinieren. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig:
-
-```sql
-$body.Weather.HistoricalData[0].Month = 'Feb'
-$body.Weather.Temperature = 50 AND $body.Weather.IsEnabled
-length($body.Weather.Location.State) = 2
-$body.Weather.Temperature = 50 AND Status = 'Active'
-```
-
 ## <a name="basics-of-an-iot-hub-query"></a>Grundlagen von IoT Hub-Abfragen
 Jede IoT Hub-Abfrage besteht aus einer SELECT- und einer FROM-Klausel mit optionalen WHERE- und GROUP BY-Klauseln. Jede Abfrage wird für eine Sammlung von JSON-Dokumenten ausgeführt, z.B. Gerätezwillinge. Die FROM-Klausel zeigt die Dokumentsammlung an, die durchlaufen werden soll (**devices** oder **devices.jobs**). Anschließend wird der Filter in der WHERE-Klausel angewendet. Mit Aggregationen werden die Ergebnisse dieses Schritts gruppiert, wie in der GROUP BY-Klausel angegeben. Für jede Gruppe wird eine Zeile generiert, wie in der SELECT-Klausel angegeben.
 
@@ -614,8 +494,7 @@ Informieren Sie sich darüber, wie Sie Abfragen in Ihren Apps mit [Azure IoT SDK
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-read-custom.md
+[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
 [lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-[lnk-devguide-messaging-routes]: ./iot-hub-devguide-messages-read-custom.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: d3438f42753cba82a28d16be2b63926c4762b26b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c8f9db2674976d2c1efa7686b8b224b48a19a534
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421932"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964444"
 ---
 # <a name="deploy-docker-ce-cluster"></a>Bereitstellen eines Docker CE-Clusters
 
@@ -24,7 +24,7 @@ Docker CE in Azure Container Service befindet sich in der Vorschauphase und **da
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -169,7 +169,7 @@ In dieser Schnellstartanleitung wurden vorab erstellte Containerimages verwendet
 
 In dieser Schnellstartanleitung haben Sie einen Docker Swarm-Cluster und eine Anwendung mit mehreren Containern dafür bereitgestellt.
 
-Informationen zur Integration von Docker Swarm in Visual Studio Team Services finden Sie im folgenden Artikel:
+Informationen zur Integration von Docker Swarm in Azure DevOps finden unter „CI/CD mit Docker Swarm und Azure DevOps“.
 
 > [!div class="nextstepaction"]
-> [CD/CI mit Docker Swarm und VSTS](./container-service-docker-swarm-setup-ci-cd.md)
+> [CI/CD mit Docker Swarm und Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)

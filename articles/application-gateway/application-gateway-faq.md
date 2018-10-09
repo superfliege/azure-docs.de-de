@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 8/10/2018
+ms.date: 9/6/2018
 ms.author: victorh
-ms.openlocfilehash: 858427bfd2a9b4c40ddf7054e09d98bcf5c1a992
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038343"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986675"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -211,8 +211,8 @@ Die folgende Tabelle zeigt einen durchschnittlichen Leistungsdurchsatz für jede
 
 | Durchschnittliche Größe der Back-End-Seitenantwort | Klein | Mittel | Groß |
 | --- | --- | --- | --- |
-| 6 KB |7,5 MBit/s |13 MBit/s |50 MBit/s |
-| 100 KB |35 MBit/s |100 MBit/s |200 MBit/s |
+| 6 KB |7,5 MBit/s |13 MBit/s |50 MBit/s |
+| 100 KB |35 MBit/s |100 MBit/s |200 MBit/s |
 
 > [!NOTE]
 > Hierbei handelt es sich um ungefähre Werte für den Durchsatz des Anwendungsgateways. Der tatsächliche Durchsatz ist abhängig von verschiedenen Umgebungsdetails wie etwa durchschnittliche Seitengröße, Speicherort der Back-End-Instanzen und Verarbeitungszeit für die Seitenbereitstellung. Für genaue Leistungsangaben sollten Sie Ihre eigenen Tests ausführen. Diese Werte dienen nur als Leitfaden für die Kapazitätsplanung.
@@ -333,7 +333,7 @@ WAF unterstützt derzeit CRS [2.2.9](application-gateway-crs-rulegroups-rules.md
 
 **F: Unterstützt WAF auch DDoS-Verhinderung?**
 
-Nein, WAF bietet keinen DDoS-Schutz.
+Ja. Sie können DDos-Schutz im VNET aktivieren, in dem Application Gateway bereitgestellt wird. Dadurch wird sichergestellt, dass die VIP-Adresse des Anwendungsgateways ebenfalls durch den Azure DDos Protection-Dienst geschützt ist.
 
 ## <a name="diagnostics-and-logging"></a>Diagnose und Protokollierung
 
@@ -360,6 +360,12 @@ Für Application Gateway sind Überwachungsprotokolle verfügbar. Klicken Sie im
 **F: Kann ich mit Application Gateway Warnungen einrichten?**
 
 Ja, Application Gateway unterstützt Warnungen. Warnungen werden anhand von Metriken konfiguriert. Application Gateway verfügt derzeit über die Metrik „Durchsatz“, mit der Warnungen konfiguriert werden können. Weitere Informationen zu Warnungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+
+**F: Wie analysieren ich-Datenverkehrsstatistiken für Application Gateway?**
+
+Sie können Zugriffsprotokolle über eine Reihe von Mechanismen wie Azure Log Analytics, Excel, Power BI usw. anzeigen und analysieren.
+
+Wir haben auch eine Resource Manager-Vorlage veröffentlicht, die die beliebte [GoAccess](https://goaccess.io/)-Protokollanalyse für Application Gateway Access Logs installiert und ausführt. GoAccess stellt wertvolle HTTP-Datenverkehrsstatistiken wie eindeutige Besucher, angeforderte Dateien, Hosts, Betriebssysteme, Browser, HTTP-Statuscodes und vieles mehr zur Verfügung. Weitere Informationen finden Sie in der [Infodatei im Resource Manager-Vorlagenordner in GitHub](https://aka.ms/appgwgoaccessreadme).
 
 **F: Die Back-End-Integrität gibt den Status „Unbekannt“ zurück. Was kann die Ursache sein?**
 
