@@ -7,7 +7,7 @@
 ### [.NET Core (Visual Studio 2017)](quickstart-netcore-visualstudio.md)
 ### [Node.js (VS Code und CLI)](quickstart-nodejs.md)
 
-## Tutorials
+## Lernprogramme
 ### Java (VS Code und CLI)
 #### [1 – Erste Schritte](get-started-java.md)
 #### [2 – Teamentwicklung](team-development-java.md)
@@ -22,6 +22,7 @@
 #### [2 – Teamentwicklung](team-development-nodejs.md)
 
 ## Anleitung
+### [Erstellen eines Kubernetes-Clusters mit Azure Cloud Shell](how-to/create-cluster-cloud-shell.md)
 ### [Freigeben von Azure Dev Spaces](how-to/share-dev-spaces.md)
 ### [Verwalten von Geheimnissen](how-to/manage-secrets.md)
 ### [Verwenden eines benutzerdefinierten NuGet-Feeds](how-to/use-custom-nuget-feed.md)
