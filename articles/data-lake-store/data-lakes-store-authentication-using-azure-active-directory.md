@@ -1,6 +1,6 @@
 ---
-title: Authentifizierung bei Data Lake Store mit Azure Active Directory | Microsoft-Dokumentation
-description: Informationen zum Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory
+title: Authentifizierung bei Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft-Dokumentation
+description: Informationen zum Authentifizieren bei Azure Data Lake Storage Gen1 mit Azure Active Directory
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,31 +11,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7db48b03a6f34655917c82702c12dbc9bc4c987a
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: b74696be433b00a5afb3416295b6317975aa6873
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494176"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967658"
 ---
-# <a name="authentication-with-data-lake-store-using-azure-active-directory"></a>Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory
+# <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Authentifizierung bei Azure Data Lake Storage Gen1 mit Azure Active Directory
 
-Azure Data Lake Store verwendet Azure Active Directory für die Authentifizierung. Vor dem Erstellen einer Anwendung, die mit Azure Data Lake Store funktioniert, müssen Sie entscheiden, wie Sie Ihre Anwendung bei Azure Active Directory (Azure AD) authentifizieren.
+Azure Data Lake Storage Gen1 verwendet Azure Active Directory für die Authentifizierung. Vor dem Erstellen einer Anwendung, die mit Data Lake Storage Gen1 funktioniert, müssen Sie entscheiden, wie Sie Ihre Anwendung bei Azure Active Directory (Azure AD) authentifizieren möchten.
 
 ## <a name="authentication-options"></a>Authentifizierungsoptionen
 
-* **Endbenutzerauthentifizierung**: Die Azure-Anmeldeinformationen eines Endbenutzers werden für die Authentifizierung bei Data Lake Store verwendet. Die Anwendung, die Sie zum Arbeiten mit Data Lake Store erstellen, fordert diese Benutzeranmeldeinformationen an. Folglich ist dieser Authentifizierungsmechanismus *interaktiv*, und die Anwendung wird im Kontext des angemeldeten Benutzers ausgeführt. Weitere Informationen und Anweisungen finden Sie unter [Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Endbenutzerauthentifizierung**: Die Azure-Anmeldeinformationen eines Endbenutzers werden für die Authentifizierung bei Data Lake Storage Gen1 verwendet. Die Anwendung, die Sie zum Arbeiten mit Data Lake Storage Gen1 erstellen, fordert diese Benutzeranmeldeinformationen an. Folglich ist dieser Authentifizierungsmechanismus *interaktiv*, und die Anwendung wird im Kontext des angemeldeten Benutzers ausgeführt. Weitere Informationen und Anweisungen finden Sie unter [Authentifizierung von Endbenutzern bei Data Lake Storage Gen1](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **Authentifizierung zwischen Diensten**: Verwenden Sie diese Option, wenn eine Anwendung sich selbst bei Data Lake Store authentifizieren soll. In solchen Fällen erstellen Sie eine Azure Active Directory-Anwendung (AD) und verwenden den Schlüssel aus der Azure AD-Anwendung für die Authentifizierung bei Data Lake Store. Folglich ist dieser Authentifizierungsmechanismus *nicht interaktiv*. Weitere Informationen und Anweisungen finden Sie unter [Service-to-service authentication with Data Lake Store using Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md) (Authentifizierung zwischen Diensten bei Data Lake Store mit Azure Active Directory).
+* **Authentifizierung zwischen Diensten**: Verwenden Sie diese Option, wenn eine Anwendung sich selbst bei Data Lake Storage Gen1 authentifizieren soll. In solchen Fällen erstellen Sie eine Azure Active Directory-Anwendung (AD) und verwenden den Schlüssel aus der Azure AD-Anwendung für die Authentifizierung bei Data Lake Storage Gen1. Folglich ist dieser Authentifizierungsmechanismus *nicht interaktiv*. Weitere Informationen und Anweisungen finden Sie unter [Authentifizierung zwischen Diensten bei Data Lake Storage Gen1](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
-Die folgende Tabelle verdeutlicht, wie Endbenutzerauthentifizierung und Authentifizierung zwischen Diensten für Data Lake Store unterstützt werden. Lesen Sie die Tabelle wie im Folgenden beschrieben.
+Die folgende Tabelle verdeutlicht, wie Endbenutzerauthentifizierung und Authentifizierung zwischen Diensten für Data Lake Storage Gen1 unterstützt werden. Lesen Sie die Tabelle wie im Folgenden beschrieben.
 
 * Das Symbol ✔* gibt an, dass die Authentifizierungsoption unterstützt wird, und ist mit einem Artikel verlinkt, in dem die Verwendung der Authentifizierungsoption veranschaulicht wird. 
 * Das Symbol ✔ gibt an, dass die Authentifizierungsoption unterstützt wird. 
 * Leere Zellen bedeuten, dass die Authentifizierungsoption nicht unterstützt wird.
 
 
-|Verwenden Sie diese Authentifizierungsoption mit...                   |.NET         |Java     |PowerShell |CLI 2.0 | Python   |REST     |
+|Verwenden Sie diese Authentifizierungsoption mit...                   |.NET         |Java     |PowerShell |Azure-Befehlszeilenschnittstelle | Python   |REST     |
 |:---------------------------------------------|:------------|:--------|:----------|:-------------|:---------|:--------|
 |Endbenutzer (ohne MFA\*\*)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)** (veraltet)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
 |Endbenutzer (mit MFA)                           |    **[✔*](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔*](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔*](data-lake-store-get-started-cli-2.0.md)**      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |
