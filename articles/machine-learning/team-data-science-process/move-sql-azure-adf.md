@@ -214,7 +214,7 @@ Kopieren Sie die JSON-Definition der Tabelle in eine Datei namens *AzureSqlTable
 ## <a name="adf-pipeline"></a>Definieren und Erstellen der Pipeline
 Geben Sie die Aktivitäten an, die zu der Pipeline gehören, und erstellen Sie die Pipeline mit den folgenden skriptbasierten Verfahren. Zum Definieren der Pipeline-Eigenschaften wird eine JSON-Datei verwendet.
 
-* Das Skript setzt voraus, dass der **Pipelinename***AMLDSProcessPipeline*lautet.
+* Das Skript setzt voraus, dass der **Pipelinename** *AMLDSProcessPipeline*lautet.
 * Beachten Sie außerdem, dass wir die Häufigkeit auf eine tägliche Ausführung festgelegt haben und die Standardausführungszeit des Auftrags verwenden (12 Uhr UTC).
 
 > [!NOTE]
