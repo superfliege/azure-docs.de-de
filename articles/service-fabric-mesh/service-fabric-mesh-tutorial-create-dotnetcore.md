@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen, Debuggen und Bereitstellen einer Webanwendung mit mehreren Diensten in Service Fabric Mesh | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen, Debuggen, Bereitstellen und Überwachen einer Anwendung mit mehreren Diensten in Service Fabric Mesh | Microsoft-Dokumentation'
 description: In diesem Tutorial erstellen Sie eine Azure Service Fabric Mesh-Anwendung mit mehreren Diensten, die eine mit einem Back-End-Webdienst kommunizierende ASP.NET Core-Website umfasst. Diese Anwendung debuggen Sie anschließend lokal und veröffentlichen sie in Azure.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,26 +12,28 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 59ff3434e7b984f4530ad4f8b03b27991d3a9c1c
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 09112aafdbabf0cda2b3ae13af73a9223533a6e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41918473"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979192"
 ---
-# <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>Tutorial: Erstellen, Debuggen und Bereitstellen einer Webanwendung mit mehreren Diensten in Service Fabric Mesh
+# <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Tutorial: Erstellen, Debuggen, Bereitstellen und Aktualisieren einer Service Fabric Mesh-App mit mehreren Diensten
 
-Dieses Tutorial ist der erste Teil einer Serie. Sie erfahren, wie Sie eine Azure Service Fabric Mesh-Anwendung erstellen, die über ein ASP.NET-Web-Front-End und einen ASP.NET Core-Web-API-Back-End-Dienst verfügt. Anschließend debuggen Sie die App in Ihrem lokalen Entwicklungscluster und veröffentlichen sie in Azure. Danach verfügen Sie über eine einfache Aufgaben-App zur Veranschaulichung eines Aufrufs zwischen Diensten in einer Service Fabric Mesh-Anwendung, die in Azure Service Fabric Mesh ausgeführt wird.
+Dieses Tutorial ist der erste Teil einer Serie. Sie erfahren, wie Sie mit Visual Studio eine Azure Service Fabric Mesh-App erstellen, die über ein ASP.NET-Web-Front-End und einen ASP.NET Core Web-API-Back-End-Dienst verfügt. Anschließend debuggen Sie die App in Ihrem lokalen Entwicklungscluster. Sie veröffentlichen die App in Azure, nehmen dann Konfigurations- und Codeänderungen vor und aktualisieren die App. Abschließend löschen Sie nicht verwendete Azure-Ressourcen, damit diese Ihnen nicht in Rechnung gestellt werden.
+
+Wenn Sie fertig sind, sind Sie mit den meisten Phasen der App-Lebenszyklusverwaltung vertraut und haben eine App erstellt, die einen Aufruf zwischen Diensten in einer Service Fabric Mesh-App veranschaulicht.
 
 Wenn Sie die Aufgabenanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/azure-samples/service-fabric-mesh) und direkt mit [Lokales Debuggen der App](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md) fortfahren.
 
 Im ersten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen einer Service Fabric Mesh-Anwendung mit einem ASP.NET-Web-Front-End
+> * Erstellen einer Service Fabric Mesh-App mit einem ASP.NET-Web-Front-End mithilfe von Visual Studio
 > * Erstellen eines Modells für die Darstellung von Aufgaben
 > * Erstellen eines Back-End-Diensts und Abrufen von Daten aus diesem Dienst
 > * Hinzufügen eines Controllers und eines Datenkontexts als Teil des Model View Controller-Musters für den Back-End-Dienst
@@ -40,9 +42,11 @@ Im ersten Teil der Serie lernen Sie Folgendes:
 
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Erstellen einer Service Fabric Mesh-Anwendung
-> * [Lokales Debuggen der App](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * [Veröffentlichen der App in Azure](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * Erstellen einer Service Fabric-App in Visual Studio
+> * [Debuggen einer Service Fabric Mesh-App, die in Ihrem lokalen Entwicklungscluster ausgeführt wird](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Bereitstellen einer Service Fabric Mesh-App](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Aktualisieren einer Service Fabric Mesh-App](service-fabric-mesh-tutorial-upgrade.md)
+> * [Bereinigen von Service Fabric Mesh-Ressourcen](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -54,9 +58,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Stellen Sie sicher, dass Sie [Ihre Entwicklungsumgebung eingerichtet haben](service-fabric-mesh-howto-setup-developer-environment-sdk.md). Dies umfasst auch das Installieren der Service Fabric-Laufzeit, des SDK und die Installation von Docker sowie Visual Studio 2017.
 
-* Die App für dieses Tutorial muss vorerst mit dem englischen Gebietsschema erstellt werden.
-
-## <a name="create-a-service-fabric-mesh-project"></a>Erstellen eines Service Fabric Mesh-Projekts
+## <a name="create-a-service-fabric-mesh-project-in-visual-studio"></a>Erstellen eines Service Fabric-Projekts in Visual Studio
 
 Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt...**.
 
@@ -72,7 +74,7 @@ Als Nächstes wird das Dialogfeld **Neuer Service Fabric-Dienst** angezeigt.
 
 ### <a name="create-the-web-front-end-service"></a>Erstellen des Web-Front-End-Diensts
 
-Wählen Sie im Dialogfeld **Neuer Service Fabric-Dienst** den Projekttyp **ASP.NET Core** aus, und vergewissern Sie sich, dass das Containerbetriebssystem**** auf **Windows** festgelegt ist.
+Wählen Sie im Dialogfeld **Neuer Service Fabric-Dienst** den Projekttyp **ASP.NET Core** aus, und vergewissern Sie sich, dass das **Containerbetriebssystem** auf **Windows** festgelegt ist.
 
 Legen Sie den Dienstnamen im Feld **Dienstname** auf **WebFrontEnd** fest. Klicken Sie auf **OK**, um den ASP.NET Core-Dienst zu erstellen.
 
@@ -184,17 +186,17 @@ Erstellen Sie als Nächstes den Service Fabric-Dienst, der die Aufgaben nachverf
 
 Klicken Sie in Visual Studio im Fenster **Projektmappen-Explorer** mit der rechten Maustaste auf **todolistapp**, und klicken Sie anschließend auf **Hinzufügen** > **Neuer Service Fabric-Dienst...**.
 
-Das Dialogfeld **Neuer Service Fabric-Dienst** wird angezeigt. Wählen Sie den Projekttyp **ASP.NET Core** aus, und vergewissern Sie sich, dass das Containerbetriebssystem**** auf **Windows** festgelegt ist.
+Das Dialogfeld **Neuer Service Fabric-Dienst** wird angezeigt. Wählen Sie den Projekttyp **ASP.NET Core** aus, und vergewissern Sie sich, dass das **Containerbetriebssystem** auf **Windows** festgelegt ist.
 
 Legen Sie den Dienstnamen im Feld **Dienstname** auf **ToDoService** fest. Klicken Sie auf **OK**, um den ASP.NET Core-Dienst zu erstellen. Als Nächstes wird das Dialogfeld **Neue ASP.NET Core-Webanwendung** angezeigt. Klicken Sie in diesem Dialogfeld auf **API** und anschließend auf **OK**. Daraufhin wird der Projektmappe ein Projekt für den Dienst hinzugefügt.
 
 ![Visual Studio-Dialogfeld: Neue ASP.NET Core-Webanwendung](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-webapi.png)
 
-Da für den Back-End-Dienst keinerlei Benutzeroberfläche zur Verfügung steht, deaktivieren Sie die Option, durch die beim Start des Diensts der Browser gestartet wird. Klicken Sie im Projektmappen-Explorer**** mit der rechten Maustaste auf **ToDoService**, und klicken Sie auf **Eigenschaften**. Klicken Sie im daraufhin angezeigten Eigenschaftenfenster auf der linken Seite auf die Registerkarte **Debuggen**, und deaktivieren Sie das Kontrollkästchen **Browser starten**. Drücken Sie**** STRG+S, um die Änderung zu speichern.
+Da für den Back-End-Dienst keinerlei Benutzeroberfläche zur Verfügung steht, deaktivieren Sie die Option, durch die beim Start des Diensts der Browser gestartet wird. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **ToDoService**, und klicken Sie auf **Eigenschaften**. Klicken Sie im daraufhin angezeigten Eigenschaftenfenster auf der linken Seite auf die Registerkarte **Debuggen**, und deaktivieren Sie das Kontrollkästchen **Browser starten**. Drücken Sie **STRG+S** , um die Änderung zu speichern.
 
 Da dieser Dienst die Aufgabeninformationen verwaltet, fügen Sie einen Verweis auf die Klassenbibliothek „Model“ hinzu. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **ToDoService**, und klicken Sie anschließend auf **Hinzufügen** > **Verweis...**. Das Dialogfeld **Verweis-Manager** wird angezeigt.
 
-Aktivieren Sie im**** Verweis-Manager das Kontrollkästchen für **Model**, und klicken Sie auf **OK**.
+Aktivieren Sie im **Verweis-Manager** das Kontrollkästchen für **Model**, und klicken Sie auf **OK**.
 
 ### <a name="add-a-data-context"></a>Hinzufügen eines Datenkontexts
 
@@ -212,10 +214,7 @@ public static class DataContext
 
     static DataContext()
     {
-        ToDoList = new Model.ToDoList("Main List");
-
         // Seed to-do list
-
         ToDoList.Add(Model.ToDoItem.Load("Learn about microservices", 0, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric", 1, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric Mesh", 2, false));
@@ -278,11 +277,11 @@ Da in diesem Tutorial die Kommunikation mit einem anderen Dienst im Mittelpunkt 
 Nach der Implementierung des Back-End-Diensts können Sie als Nächstes die Website programmieren, auf der die bereitgestellten Aufgaben angezeigt werden. Die folgenden Schritte werden im Projekt **WebFrontEnd** ausgeführt.
 
 Die Webseite, auf der die Aufgaben angezeigt werden, benötigt Zugriff auf die Klasse **ToDoItem** und auf die entsprechende Liste.
-Fügen Sie im Projektmappen-Explorer**** einen Verweis auf das Projekt „Model“ hinzu. Klicken Sie hierzu mit der rechten Maustaste auf **WebFrontEnd**, und klicken Sie anschließend auf **Hinzufügen** > **Verweis...**. Das Dialogfeld **Verweis-Manager** wird angezeigt.
+Fügen Sie im **Projektmappen-Explorer** einen Verweis auf das Projekt „Model“ hinzu. Klicken Sie hierzu mit der rechten Maustaste auf **WebFrontEnd**, und klicken Sie anschließend auf **Hinzufügen** > **Verweis...**. Das Dialogfeld **Verweis-Manager** wird angezeigt.
 
-Klicken Sie im**** Verweis-Manager auf das Kontrollkästchen für **Model** und anschließend auf **OK**.
+Klicken Sie im **Verweis-Manager** auf das Kontrollkästchen für **Model** und anschließend auf **OK**.
 
-Navigieren Sie im Projektmappen-Explorer**** zu **WebFrontEnd** > **Seiten** > **Index.cshtml**, um die Seite „Index.cshtml“ zu öffnen. Öffnen Sie **Index.cshtml**.
+Navigieren Sie im **Projektmappen-Explorer** zu **WebFrontEnd** > **Seiten** > **Index.cshtml**, um die Seite „Index.cshtml“ zu öffnen. Öffnen Sie **Index.cshtml**.
 
 Ersetzen Sie den Inhalt der gesamten Datei durch den folgenden HTML-Code, um eine einfache Tabelle für die Aufgabenanzeige zu definieren:
 
@@ -314,7 +313,7 @@ Ersetzen Sie den Inhalt der gesamten Datei durch den folgenden HTML-Code, um ein
 </div>
 ```
 
-Öffnen Sie den Code für die Indexseite im**** Projektmappen-Explorer, indem Sie **Index.cshtml** und anschließend **Index.cshtml.cs** öffnen.
+Öffnen Sie den Code für die Indexseite im**Projektmappen-Explorer** , indem Sie **Index.cshtml** und anschließend **Index.cshtml.cs** öffnen.
 Fügen Sie am Anfang von **Index.cshtml.cs** Folgendes hinzu: `using System.Net.Http;`.
 
 Ersetzen Sie den Inhalt von `public class IndexModel` durch Folgendes:
@@ -353,7 +352,7 @@ private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.G
 
 Die URL setzt sich aus dem Dienstnamen und dem Port zusammen. Diese Informationen befinden sich in der Datei „service.yaml“ des Projekts **ToDoService**.
 
-Navigieren Sie im Projektmappen-Explorer**** zum Projekt **ToDoService**, und öffnen Sie **Service Resources** (Dienstressourcen) > **service.yaml**.
+Navigieren Sie im **Projektmappen-Explorer** zum Projekt **ToDoService**, und öffnen Sie **Service Resources** (Dienstressourcen) > **service.yaml**.
 
 ![Abbildung 1: Die Datei „service.yaml“ des Projekts „ToDoService“](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-port.png)
 
@@ -362,12 +361,13 @@ Navigieren Sie im Projektmappen-Explorer**** zum Projekt **ToDoService**, und ö
 
 Im nächsten Schritt werden im Projekt „WebFrontEnd“ Umgebungsvariablen für den Dienstnamen und die Portnummer definiert, um den Back-End-Dienst aufrufen zu können.
 
-Navigieren Sie im Projektmappen-Explorer**** zu **WebFrontEnd** > **Service Resources** (Dienstressourcen) > **service.yaml**, um die Variablen zu definieren, die die Adresse des Back-End-Diensts angeben.
+Navigieren Sie im **Projektmappen-Explorer** zu **WebFrontEnd** > **Service Resources** (Dienstressourcen) > **service.yaml**, um die Variablen zu definieren, die die Adresse des Back-End-Diensts angeben.
 
 Fügen Sie in der Datei „service.yaml“ unter `environmentVariables` die folgenden Variablen hinzu. Die Leerzeichen sind wichtig. Richten Sie die hinzugefügten Variablen daher an den anderen Variablen unter `environmentVariables:` aus.
 
 > [!IMPORTANT]
-> Die Variablen müssen in der Datei „service.yaml“ mithilfe von Leerzeichen (nicht mithilfe von Tabulatoren) eingerückt werden, da sie sonst nicht kompiliert werden kann. Visual Studio fügt bei der Erstellung der Umgebungsvariablen möglicherweise Tabulatoren ein. Ersetzen Sie alle Tabulatoren durch Leerzeichen. In der Debugausgabe der Erstellung**** werden zwar Fehler angezeigt, die App kann aber trotzdem gestartet werden. Sie funktioniert allerdings erst, wenn die Tabulatoren durch Leerzeichen ersetzt wurden. Um sicherzustellen, dass die Datei „service.yaml“ keine Leerzeichen enthält, können Sie die Leerzeichen im Visual Studio-Editor über **Bearbeiten**  > **Erweitert**  > **Leerstelle anzeigen** einblenden.
+> Die Variablen müssen in der Datei „service.yaml“ mithilfe von Leerzeichen (nicht mithilfe von Tabulatoren) eingerückt werden, da sie sonst nicht kompiliert werden kann. Visual Studio fügt bei der Erstellung der Umgebungsvariablen möglicherweise Tabulatoren ein. Ersetzen Sie alle Tabulatoren durch Leerzeichen. In der Debugausgabe der **Erstellung**werden zwar Fehler angezeigt, die App kann aber trotzdem gestartet werden. Sie funktioniert allerdings erst, wenn die Tabulatoren durch Leerzeichen ersetzt wurden. Um sicherzustellen, dass die Datei „service.yaml“ keine Leerzeichen enthält, können Sie die Leerzeichen im Visual Studio-Editor über **Bearbeiten**  > **Erweitert**  > **Leerstelle anzeigen** einblenden.
+> Beachten Sie, dass Dateien vom Typ „service.yaml“ mit dem englischen Gebietsschema verarbeitet werden.  Beispiel: Wenn Sie ein Dezimaltrennzeichen verwenden müssen, verwenden Sie einen Punkt anstelle eines Kommas.
 
 Die Datei **service.yaml** Ihres Projekts **WebFrontEnd** sollte in etwa wie folgt aussehen, wobei sich Ihr Wert für `ApiHostPort` jedoch wahrscheinlich unterscheidet:
 
@@ -380,7 +380,7 @@ Nun können Sie das Image der Service Fabric Mesh-Anwendung erstellen und zusamm
 In diesem Teil des Tutorials haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Erstellen einer Service Fabric Mesh-Anwendung mit einem ASP.NET-Web-Front-End
+> * Erstellen einer Service Fabric Mesh-App mit einem ASP.NET-Web-Front-End
 > * Erstellen eines Modells für die Darstellung von Aufgaben
 > * Erstellen eines Back-End-Diensts und Abrufen von Daten aus diesem Dienst
 > * Hinzufügen eines Controllers und eines Datenkontexts als Teil des Model View Controller-Musters für den Back-End-Dienst
@@ -389,4 +389,4 @@ In diesem Teil des Tutorials haben Sie Folgendes gelernt:
 
 Fahren Sie mit dem nächsten Tutorial fort:
 > [!div class="nextstepaction"]
-> [Debug a Service Fabric Mesh web application](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md) (Debuggen einer Service Fabric Mesh-Webanwendung)
+> [Debuggen einer Service Fabric Mesh-Anwendung, die in Ihrem lokalen Entwicklungscluster ausgeführt wird](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
