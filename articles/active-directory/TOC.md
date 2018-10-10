@@ -25,7 +25,7 @@
 # Anleitung
 ## Planen und Entwerfen
 ### [Informationen zur Azure AD-Architektur](fundamentals/active-directory-architecture.md)
-### [Zuordnen von Benutzeransprüchen in Azure Active Directory](active-directory-claims-mapping.md)
+### [Zuordnen von Benutzeransprüchen in Azure Active Directory](develop/active-directory-claims-mapping.md)
 ### [Bereitstellen einer Hybrididentitätslösung](hybrid/plan-hybrid-identity-design-considerations-overview.md)
 #### Bestimmen der Anforderungen
 ##### [Identität](hybrid/plan-hybrid-identity-design-considerations-business-needs.md)
@@ -72,7 +72,7 @@
 #### [B2B und externe Office 365-Freigaben](b2b/o365-external-user.md)
 #### [B2B-Lizenzierung](b2b/licensing-guidance.md)
 #### [Aktuelle Einschränkungen](b2b/current-limitations.md)
-#### [HÄUFIG GESTELLTE FRAGEN](b2b/faq.md)
+#### [Häufig gestellte Fragen](b2b/faq.md)
 #### [Problembehandlung für B2B](b2b/troubleshoot.md)
 #### [Grundlegendes zu B2B-Benutzern](b2b/user-properties.md)
 #### [B2B-Benutzertoken](b2b/user-token.md)
@@ -82,7 +82,7 @@
 #### [Anfordern von Unterstützung für B2B](b2b/get-support.md)
 
 ## [Verwalten von Gruppen und Mitgliedern](fundamentals/active-directory-manage-groups.md)
-### [Gruppen verwalten](fundamentals/active-directory-groups-create-azure-portal.md)
+### [Verwalten von Gruppen](fundamentals/active-directory-groups-create-azure-portal.md)
 ### [Löschen einer Gruppe und ihrer Mitglieder](fundamentals/active-directory-groups-delete-group.md)
 ### [Verwalten von Gruppeneinstellungen](fundamentals/active-directory-groups-settings-azure-portal.md)
 ## [Verwalten von Berichten](reports-monitoring/overview-reports.md)
@@ -92,7 +92,7 @@
 ### [Riskante Anmeldungen](reports-monitoring/concept-risky-sign-ins.md)
 ### [Risikoereignisse](reports-monitoring/concept-risk-events.md)
 ### [Überwachen von Protokollen mithilfe von Azure Monitor](reports-monitoring/concept-activity-logs-in-azure-monitor.md)
-### [HÄUFIG GESTELLTE FRAGEN](reports-monitoring/reports-faq.md)
+### [Häufig gestellte Fragen](reports-monitoring/reports-faq.md)
 
 ### Aufgaben
 #### [Herunterladen eines Anmeldeberichts](reports-monitoring/quickstart-download-sign-in-report.md)
@@ -200,7 +200,7 @@
 #### [Mandanteneinschränkungen](manage-apps/tenant-restrictions.md)
 #### [Verwenden von SCIM zum Bereitstellen von Benutzern](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [Grundlegendes zur Zustimmung für Azure AD-Anwendungen](application-consent-experience.md)
+### [Grundlegendes zur Zustimmung für Azure AD-Anwendungen](develop/application-consent-experience.md)
 
 ### Problembehandlung
 
@@ -323,7 +323,7 @@
 
 ### [Integrieren lokaler Identitäten mit Azure AD Connect](hybrid/whatis-hybrid-identity.md)
 
-### [Konfigurieren der Tokengültigkeitsdauer](active-directory-configurable-token-lifetimes.md)
+### [Konfigurieren der Tokengültigkeitsdauer](develop/active-directory-configurable-token-lifetimes.md)
 
 ## Schützen Ihrer Identitäten
 
@@ -362,5 +362,5 @@
 ## [Preise](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)
-## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-active-directory)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)

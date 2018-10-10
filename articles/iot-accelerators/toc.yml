@@ -97,61 +97,6 @@ items:
       href: iot-accelerators-remote-monitoring-rbac.md
     - name: Gewähren des Zugriffs auf den Telemetriedaten-Explorer
       href: iot-accelerators-remote-monitoring-rbac-tsi.md
-  - name: Remoteüberwachung (vorherige Version)
-    items:
-    - name: Was sind die vorkonfigurierten Lösungen?
-      href: ../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md
-    - name: Häufig gestellte Fragen
-      href: ../iot-suite/iot-suite-v1-faq.md
-    - name: Erste Schritte
-      items:
-      - name: Erste Schritte mit den vorkonfigurierten Lösungen
-        href: ../iot-suite/iot-suite-v1-getstarted-preconfigured-solutions.md
-      - name: Berechtigungen auf azureiotsuite.com
-        href: ../iot-suite/iot-suite-v1-permissions.md
-      - name: Exemplarische Vorgehensweise zur Remoteüberwachungslösung
-        href: ../iot-suite/iot-suite-v1-remote-monitoring-sample-walkthrough.md
-      - name: Herstellen einer Verbindung mit Raspberry Pi
-        href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-get-started.md
-        items:
-        - name: Verwenden von C
-          items:
-          - name: Simulierte Daten
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md
-          - name: Verwenden echter Sensoren
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md
-          - name: Implementieren eines Firmwareupdates
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md
-        - name: Verwenden von Node.js
-          items:
-          - name: Simulierte Daten
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md
-          - name: Verwenden echter Sensoren
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md
-          - name: Implementieren eines Firmwareupdates
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md
-      - name: Herstellen einer Verbindung mit dem MXChip IoT DevKit
-        href: ../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md
-    - name: Anleitungen
-      items:
-      - name: Verbinden eines simulierten Geräts
-        items:
-        - name: C unter Windows
-          href: ../iot-suite/iot-suite-v1-connecting-devices.md
-        - name: C unter Linux
-          href: ../iot-suite/iot-suite-v1-connecting-devices-linux.md
-        - name: Node.js
-          href: ../iot-suite/iot-suite-v1-connecting-devices-node.md
-      - name: Verbinden einer Logik-App mit der Remoteüberwachungslösung
-        href: ../iot-suite/iot-suite-v1-logic-apps-tutorial.md
-      - name: Anpassen eines Solution Accelerators
-        href: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
-      - name: Verwenden dynamischer Telemetriedaten mit der Remoteüberwachungslösung
-        href: ../iot-suite/iot-suite-v1-dynamic-telemetry.md
-      - name: Erstellen einer benutzerdefinierten Regel in der Remoteüberwachungslösung
-        href: ../iot-suite/iot-suite-v1-custom-rule.md
-      - name: Geräteinformationen in der Remoteüberwachungslösung
-        href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
   - name: Verbundene Factory
     items:
     - name: Verwenden des Dashboards
@@ -203,7 +148,7 @@ items:
   - name: Lösungen
     items:
     - name: IoT Solution Accelerators
-      href: /azure/iot-suite
+      href: /azure/iot-accelerators
     - name: IoT Central
       href: https://docs.microsoft.com/microsoft-iot-central/
   - name: Plattformdienste
@@ -256,9 +201,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: 'IoT Solution Accelerators: Lernpfad'
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 935b9acf2eeaaee73745426eefb5625f470f62b7
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: f0efa66bd9ed85ed4ab79f5937355bd19c404a64
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365467"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884332"
