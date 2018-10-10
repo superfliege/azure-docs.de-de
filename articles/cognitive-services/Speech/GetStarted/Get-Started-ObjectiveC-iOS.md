@@ -1,22 +1,24 @@
 ---
-title: Erste Schritte mit der Spracherkennungs-API von Microsoft in Objective-C unter iOS | Microsoft-Dokumentation
-description: Verwenden Sie die Spracherkennungs-API von Microsoft, um iOS-Anwendungen zu entwickeln, mit denen Sprachaudiodaten in Text konvertiert werden.
+title: Erste Schritte mit der Bing-Spracheingabe-API in Objective-C unter iOS | Microsoft-Dokumentation
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die Bing-Spracheingabe-API, um iOS-Anwendungen zu entwickeln, mit denen Sprachaudiodaten in Text konvertiert werden.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: bbb8d3975cdab537135b97ca9bbf6e845aa3fa0e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: a12c9b5325898afe508398f67939c39e591eb1cc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373882"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954499"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-objective-c-on-ios"></a>Erste Schritte mit der Spracherkennungs-API in Objective-C unter iOS
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Schnellstart: Verwenden der Bing-Spracheingabe-API in Objective-C unter iOS
 
 Mit der Spracherkennungs-API können Sie iOS-Anwendungen entwickeln, die Sprachaudiodaten mithilfe des cloudbasierten Speech-Diensts in Text umwandeln. Die API unterstützt Echtzeitstreaming. Hierdurch kann Ihre Anwendung während der Audioübermittlung an den Dienst gleichzeitig und asynchron partielle Erkennungsergebnisse empfangen.
 
@@ -34,7 +36,7 @@ Die Speech-Clientbibliothek und die Beispiele für iOS sind im [Speech-Client-SD
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Abonnieren der Spracherkennungs-API und Abrufen eines Schlüssels für ein kostenloses Probeabonnement
 
-Die Speech-API ist Teil von Cognitive Services (ehemals „Project Oxford“). Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/) können Sie Schlüssel für ein kostenloses Testabonnement abrufen. Wählen Sie zunächst die Option für die Sprach-API aus, und klicken Sie anschließend auf **API-Schlüssel abrufen**, um den Schlüssel abzurufen. Daraufhin werden ein Primär- und ein Sekundärschlüssel zurückgegeben. Beide Schlüssel sind an das gleiche Kontingent gebunden. Es spielt daher keine Rolle, welchen Schlüssel Sie verwenden.
+Die Sprach-API ist Teil von Cognitive Services (ehemals Project Oxford). Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/) können Sie Schlüssel für ein kostenloses Probeabonnement abrufen. Wählen Sie zunächst die Option für die Sprach-API aus, und klicken Sie anschließend auf **API-Schlüssel abrufen**, um den Schlüssel abzurufen. Daraufhin werden ein Primär- und ein Sekundärschlüssel zurückgegeben. Beide Schlüssel sind an das gleiche Kontingent gebunden. Es spielt daher keine Rolle, welchen Schlüssel Sie verwenden.
 
 Wenn Sie eine *Erkennung mit Absicht* verwenden möchten, müssen Sie sich auch für [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) registrieren.
 

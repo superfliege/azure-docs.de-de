@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: danlep
-ms.openlocfilehash: 827c80a70047fd0f1ad67e4f19cb2300e45b2c6b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 804b7c0ff31575e6d62497fd5166e1a38a273076
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38606205"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965582"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure 
 Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie einen virtuellen Linux-Computer in Azure erstellen, bei dem standardmäßig zur Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. Mit dem Azure-Portal erstellte VMs, Resource Manager-Vorlagen für Azure CLI oder andere Tools können Ihren öffentlichen SSH-Schlüssel als Teil der Bereitstellung enthalten, die die Authentifizierung mit dem SSH-Schlüssel für SSH-Verbindungen einrichtet. 
@@ -130,11 +130,11 @@ Sie sollten *unbedingt* Ihrem privaten Schlüssel eine Passphrase hinzuzufügen.
 
 ## <a name="generate-keys-automatically-during-deployment"></a>Automatisches Generieren der Schlüssel während der Bereitstellung
 
-Bei Verwendung von [Azure CLI 2.0](/cli/azure) zum Erstellen Ihres virtuellen Computers können Sie optional durch Ausführen des [az vm create](/cli/azure/vm#az_vm_create)-Befehls mit der `--generate-ssh-keys`-Option Dateien für öffentliche und private SSH-Schlüssel generieren. Die Schlüssel werden im Verzeichnis „~/.ssh“ gespeichert. Beachten Sie, dass diese Befehlsoption keine Schlüssel überschreibt, wenn sie bereits an diesem Speicherort vorhanden sind.
+Bei Verwendung der [Azure CLI](/cli/azure) zum Erstellen Ihres virtuellen Computers können Sie optional den Befehl [az vm create](/cli/azure/vm#az_vm_create) mit der `--generate-ssh-keys`-Option ausführen, um Dateien für öffentliche und private SSH-Schlüssel zu generieren. Die Schlüssel werden im Verzeichnis „~/.ssh“ gespeichert. Beachten Sie, dass diese Befehlsoption keine Schlüssel überschreibt, wenn sie bereits an diesem Speicherort vorhanden sind.
 
 ## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>Bereitstellen des öffentlichen SSH-Schlüssels beim Bereitstellen eines virtuellen Computers
 
-Um eine Linux-VM zu erstellen, die SSH-Schlüssel zur Authentifizierung verwendet, geben Sie Ihren öffentlichen SSH-Schlüssel beim Erstellen des virtuellen Computers mit Azure-Portal, CLI, Resource Manager-Vorlagen oder anderen Methoden ein. Wenn Sie das Portal verwenden, geben Sie den öffentlichen Schlüssel selbst ein. Bei Verwendung der [Azure CLI 2.0](/cli/azure) zum Erstellen Ihres virtuellen Computers mit einem vorhandenen öffentlichen Schlüssel geben Sie den Wert oder Speicherort dieses öffentlichen Schlüssels durch Ausführen des [az vm create](/cli/azure/vm#az_vm_create)-Befehls mit der `--ssh-key-value`-Option ein. 
+Um eine Linux-VM zu erstellen, die SSH-Schlüssel zur Authentifizierung verwendet, geben Sie Ihren öffentlichen SSH-Schlüssel beim Erstellen des virtuellen Computers mit Azure-Portal, CLI, Resource Manager-Vorlagen oder anderen Methoden ein. Wenn Sie das Portal verwenden, geben Sie den öffentlichen Schlüssel selbst ein. Bei Verwendung der [Azure CLI](/cli/azure) zum Erstellen Ihres virtuellen Computers mit einem vorhandenen öffentlichen Schlüssel führen Sie den Befehl [az vm create](/cli/azure/vm#az_vm_create) mit der `--ssh-key-value`-Option aus, um den Wert oder Speicherort dieses öffentlichen Schlüssels anzugeben. 
 
 Falls Sie nicht mit dem Format öffentlicher SSH-Schlüssel vertraut sein sollten, können Sie Ihren öffentlichen Schlüssel anzeigen, indem Sie `cat` wie unten angegeben ausführen. Ersetzen Sie hierbei `~/.ssh/id_rsa.pub` durch den Speicherort Ihrer eigenen Datei mit dem öffentlichen Schlüssel:
 

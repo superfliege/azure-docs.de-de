@@ -1,22 +1,24 @@
 ---
-title: Erste Schritte mit der Microsoft-Spracherkennungs-API unter Verwendung der C#-Desktopbibliothek | Microsoft-Dokumentation
-description: Entwickeln Sie einfache Windows-Anwendungen, die gesprochenes Audio mithilfe der Spracherkennungs-API von Microsoft in Text umwandeln.
+title: Erste Schritte mit der Bing-Spracheingabe-API unter Verwendung der C#-Desktopbibliothek | Microsoft-Dokumentation
+titlesuffix: Azure Cognitive Services
+description: Entwickeln Sie einfache Windows-Anwendungen, die gesprochene Audiosignale mithilfe der Bing-Spracheingabe-API in Text konvertieren.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e59b0e25401fb5182edd52f82985ffed9052286d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5b85a548d692b06a6da009432678d9c02242cb50
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373890"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996824"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-c35-for-net-on-windows"></a>Erste Schritte mit der Spracherkennungs-API in C&#35; für .NET unter Windows
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Schnellstart: Verwenden der Bing-Spracheingabe-API in C&#35; für .NET unter Windows
 
 Auf dieser Seite erfahren Sie, wie Sie eine einfache Windows-Anwendung entwickeln, die gesprochenes Audio mithilfe der Spracherkennungs-API in Text umwandelt. Die Verwendung der Clientbibliothek ermöglicht Streamen in Echtzeit. Das bedeutet: Wenn Ihre Clientanwendung Audio an den Dienst sendet, werden gleichzeitig und asynchron partielle Erkennungsergebnisse an die Anwendung zurückgegeben.
 

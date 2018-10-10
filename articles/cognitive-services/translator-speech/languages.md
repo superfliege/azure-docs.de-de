@@ -1,22 +1,24 @@
 ---
-title: Unterstützte Sprachen in der Microsoft-Sprachübersetzungs-API | Microsoft-Dokumentation
-description: Zeigen Sie die von der Microsoft-Sprachübersetzungs-API unterstützten Sprachen an.
+title: Unterstützte Sprachen – Sprachübersetzungs-API
+titlesuffix: Azure Cognitive Services
+description: Zeigen Sie die von der Sprachübersetzungs-API unterstützten Sprachen an.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0d33033442a012290baa78d80f1b8bde0499b3f1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3c0d0e17026dc0c970138c30f83dc9eb98db4228
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378423"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950181"
 ---
-# <a name="languages-supported-by-the-microsoft-translator-speech-api"></a>Von der Microsoft-Sprachübersetzungs-API unterstützten Sprachen
+# <a name="languages-supported-by-the-translator-speech-api"></a>Von der Sprachübersetzungs-API unterstützte Sprachen
 Die Sprachübersetzung wird für folgende Sprachen unterstützt. Wenn beide Sprachen für die Sprachübersetzung unterstützt werden, ist die Sprache-zu-Sprache- oder die Sprache-zu-Text-Übersetzung verfügbar. Wenn die Zielsprache nicht für die Sprachübersetzung unterstützt wird, ist nur die Sprache-zu-Text-Übersetzung verfügbar. 
 
 | Sprache    |
@@ -32,9 +34,9 @@ Die Sprachübersetzung wird für folgende Sprachen unterstützt. Wenn beide Spra
 | Russisch      |
 | Spanisch      | 
 
-Die Microsoft Translator-Sprachübersetzungs-API unterstützt die folgenden Sprachen als Zielsprachen für eine Sprache-zu-Text-Übersetzung. 
+Die Sprachübersetzungs-API unterstützt die folgenden Sprachen als Zielsprachen für eine Spracherkennungsübersetzungen. 
 
-| Textsprache    | Sprachcode |
+| Sprache für Textausgabe    | Sprachcode |
 |:----------- |:-------------:|
 | Afrikaans      | `af`          |
 | Arabisch       | `ar`          |
@@ -68,7 +70,7 @@ Die Microsoft Translator-Sprachübersetzungs-API unterstützt die folgenden Spra
 | Japanisch      | `ja`          |
 | Suaheli      | `sw`          |
 | Klingonisch      | `tlh`          |
-| Klingonisch (pIqaD)      | `tlh-Qaak`          |
+| Klingonisch (plqaD)      | `tlh-Qaak`          |
 | Koreanisch      | `ko`          |
 | Lettisch      | `lv`          |
 | Litauisch      | `lt`          |
@@ -102,7 +104,7 @@ Die Microsoft Translator-Sprachübersetzungs-API unterstützt die folgenden Spra
 
 ## <a name="access-the-list-programmatically"></a>Programmgesteuertes Zugreifen auf die Liste
 
-Mithilfe der Ressource „languages“ können Sie programmgesteuert auf die Liste der unterstützten Sprachen zugreifen. Die Liste enthält den Sprachcode sowie den Sprachnamen in Englisch oder in jeder anderen unterstützten Sprache. Sobald neue Sprachen verfügbar sind, wird diese Liste automatisch vom Microsoft Translator-Dienst aktualisiert.
+Mithilfe der Ressource „languages“ können Sie programmgesteuert auf die Liste der unterstützten Sprachen zugreifen. Die Liste enthält den Sprachcode sowie den Sprachnamen in Englisch oder in jeder anderen unterstützten Sprache. Sobald neue Sprachen verfügbar sind, wird diese Liste automatisch vom Sprachübersetzungsdienst aktualisiert.
 
 Die Ressource „languages“ gibt die Liste der unterstützten Sprachen für Sprache, Text und Sprachsynthese zurück. Die Ressource „languages“ erfordert keine Authentifizierung.
 

@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/13/2018
 ms.author: magattus
-ms.openlocfilehash: c3a20bd4fa1cccdca7cba0de52620f09fe01abc5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2468462170f970cd597dd1296417d5b93a88c2ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145829"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997272"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN
 Die Dateikomprimierung reduziert die Größe einer Datei, bevor sie vom Server gesendet wird, und ist eine einfache und effektive Methode zum Verbessern der Geschwindigkeit von Dateiübertragungen sowie der Seitenladeleistung. Die Dateikomprimierung reduziert die Bandbreitenkosten und steigert die Benutzerfreundlichkeit.
@@ -102,13 +102,14 @@ Die CDN-Tarife „Standard“ und „Premium“ bieten die gleiche Komprimierung
 
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN Standard aus Microsoft-Profilen
 
-Bei **Azure CDN Standard von Microsoft**-Profilen sind alle Dateien zur Komprimierung zugelassen. Eine Datei muss allerdings einen MIME-Typ aufweisen, der [für die Komprimierung konfiguriert](#enabling-compression) wurde.
+Bei **Azure CDN Standard von Microsoft**-Profilen sind alle Dateien zur Komprimierung zugelassen. Damit eine Datei für die Komprimierung zugelassen wird, muss sie allerdings einen MIME-Typ aufweisen, der [für die Komprimierung konfiguriert](#enabling-compression) wurde.
+Zudem muss sie zwischen 1 KB und 8 MB groß sein.
 
 Diese Profile unterstützen die folgenden Komprimierungscodierungen:
 - GZIP (GNU Zip)
 - Brotli 
  
-Falls die Anforderung mehrere Komprimierungstypen unterstützt, haben diese Komprimierungstypen Vorrang vor der Brotli-Komprimierung.
+Falls die Anforderung mehrere Komprimierungstypen unterstützt, hat die Brotli-Komprimierung Vorrang.
 
 Wenn in einer Anforderung für eine Ressource Gzip-Komprimierung angegeben ist und die Anforderung zu einem Cachefehler führt, führt Azure CDN die Gzip-Komprimierung der Ressource direkt auf dem POP-Server durch. Anschließend wird die komprimierte Datei aus dem Cache bereitgestellt.
 

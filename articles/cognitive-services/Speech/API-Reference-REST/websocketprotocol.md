@@ -1,24 +1,26 @@
 ---
-title: Microsoft-Spracherkennung – WebSocket-Protokoll | Microsoft-Dokumentation
-description: Protokolldokumentation für Spracherkennungsdienst basierend auf WebSockets
+title: WebSocket-Protokoll für die Bing-Spracheingabe | Microsoft-Dokumentation
+titlesuffix: Azure Cognitive Services
+description: Protokolldokumentation für die Bing-Spracheingabe basierend auf WebSockets
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 17954536e8bdb49c09204c2e522586b79cb1bef5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6ee61a38615ac8cbf4c4fcf6b8d631c5f9a8f7d1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373986"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962775"
 ---
-# <a name="speech-service-websocket-protocol"></a>Spracherkennungsdienst – WebSocket-Protokoll
+# <a name="bing-speech-websocket-protocol"></a>WebSocket-Protokoll für die Bing-Spracheingabe
 
-  Der Spracherkennungsdienst ist eine cloudbasierte Plattform mit den am weitesten entwickelten Algorithmen, die für die Konvertierung von Sprachaudiodaten in Text verfügbar sind. Mit dem Spracherkennungsdienst-Protokoll wird die [Verbindungseinrichtung](#connection-establishment) zwischen Clientanwendungen und dem Dienst und den Spracherkennungsnachrichten definiert, die zwischen den beiden Seiten ausgetauscht werden ([Nachrichten vom Client](#client-originated-messages) und [Nachrichten vom Dienst](#service-originated-messages)). Außerdem werden [Telemetrienachrichten](#telemetry-schema) und die [Fehlerbehandlung](#error-handling) beschrieben.
+Die Bing-Spracheingabe ist eine cloudbasierte Plattform mit den am weitesten entwickelten Algorithmen, die für die Konvertierung von Sprachaudiodaten in Text verfügbar sind. Mit dem Protokoll für die Bing-Spracheingabe wird die [Verbindungseinrichtung](#connection-establishment) zwischen Clientanwendungen und dem Dienst und den Spracherkennungsnachrichten definiert, die zwischen den beiden Seiten ausgetauscht werden ([Nachrichten vom Client](#client-originated-messages) und [Nachrichten vom Dienst](#service-originated-messages)). Außerdem werden [Telemetrienachrichten](#telemetry-schema) und die [Fehlerbehandlung](#error-handling) beschrieben.
 
 ## <a name="connection-establishment"></a>Verbindungsherstellung
 
@@ -65,7 +67,7 @@ Der *Authorization*-Header muss ein JWT-Zugriffstoken (JSON Web Token) enthalten
 
 Informationen dazu, wie Sie API-Schlüssel abonnieren und beziehen, die zum Abrufen von gültigen JWT-Zugriffstoken verwendet werden, finden Sie auf der Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/).
 
-Der API-Schlüssel wird an den Tokendienst übergeben. Beispiel:
+Der API-Schlüssel wird an den Tokendienst übergeben. Beispiel: 
 
 ``` HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
@@ -94,7 +96,7 @@ Clients *müssen* die Standardumleitungsmechanismen unterstützen, die über die
 
 Clients *müssen* einen geeigneten Endpunkt des Spracherkennungsdiensts nutzen. Der Endpunkt basiert auf dem Erkennungsmodus und der Sprache. In der Tabelle sind einige Beispiele angegeben.
 
-| Modus | Path | Dienst-URI |
+| Mode | path | Dienst-URI |
 | -----|-----|-----|
 | Interactive | /speech/recognition/interactive/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | Unterhaltung | /speech/recognition/conversation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
@@ -148,7 +150,7 @@ Die unten angegebenen Header sind für alle vom Client stammenden Nachrichten er
 
 | Header | Wert |
 |----|----|
-| Path | Der Nachrichtenpfad gemäß Angabe in diesem Dokument |
+| path | Der Nachrichtenpfad gemäß Angabe in diesem Dokument |
 | X-RequestId | UUID im Format „no-dash“ |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
 
@@ -177,7 +179,7 @@ Clients *müssen* sofort eine `speech.config`-Nachricht senden, nachdem sie die 
 
 | Headername | Wert |
 |----|----|
-| Path | `speech.config` |
+| path | `speech.config` |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
 | Content-Typ | application/json; charset=utf-8 |
 
@@ -248,7 +250,7 @@ Die folgenden Header sind für alle `audio`-Nachrichten erforderlich.
 
 | Header         |  Wert     |
 | ------------- | ---------------- |
-| Path | `audio` |
+| path | `audio` |
 | X-RequestId | UUID im Format „no-dash“ |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
 | Content-Typ | Der Audioinhaltstyp. Der Typ muss entweder *audio/x-wav* (PCM) oder *audio/silk* (SILK) lauten. |
@@ -304,7 +306,7 @@ Clients müssen das Ende eines „Turns“ bestätigen, indem sie eine `telemetr
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| Path | `telemetry` |
+| path | `telemetry` |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
 | Content-Typ | `application/json` |
 | Body | Eine JSON-Struktur, die Clientinformationen zum „Turn“ enthält. |
@@ -326,7 +328,7 @@ Mit der `speech.startDetected`-Nachricht wird angegeben, dass der Spracherkennun
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| Path | `speech.startDetected` |
+| path | `speech.startDetected` |
 | Content-Typ | application/json; charset=utf-8 |
 | Body | Die JSON-Struktur mit Informationen zu den Bedingungen, die bei der Erkennung der Spracheingabe geherrscht haben. Über das Feld *Offset* dieser Struktur wird der Versatz (in Einheiten von 100 Nanosekunden) angegeben, der zwischen der Erkennung der Sprachdaten im Audiodatenstrom und dem Beginn des Datenstroms besteht. |
 
@@ -351,7 +353,7 @@ Während der Spracherkennung generiert der Spracherkennungsdienst regelmäßig H
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| Path | `speech.hypothesis` |
+| path | `speech.hypothesis` |
 | X-RequestId | UUID im Format „no-dash“ |
 | Content-Typ | Anwendung/json |
 | Body | JSON-Struktur für die Sprachhypothese |
@@ -383,7 +385,7 @@ Wenn der Spracherkennungsdienst ermittelt, dass er über ausreichende Informatio
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| Path | `speech.phrase` |
+| path | `speech.phrase` |
 | Content-Typ | Anwendung/json |
 | Body | JSON-Struktur des gesprochenen Ausdrucks |
 
@@ -411,7 +413,7 @@ Die `speech.endDetected`-Nachricht gibt an, dass die Clientanwendung das Streame
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| Path | `speech.endDetected` |
+| path | `speech.endDetected` |
 | Body | Die JSON-Struktur mit dem Versatz für die Erkennung des Endes der Spracheingabe. Der Versatz wird in Einheiten von 100 Nanosekunden ab dem Beginn der Audiodaten dargestellt, die für die Erkennung verwendet werden. |
 | Content-Typ | application/json; charset=utf-8 |
 
@@ -436,7 +438,7 @@ Mit `turn.start` wird der Beginn eines „Turns“ aus Sicht des Diensts signali
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| Path | `turn.start` |
+| path | `turn.start` |
 | Content-Typ | application/json; charset=utf-8 |
 | Body | JSON-Struktur |
 
@@ -463,7 +465,7 @@ Mit `turn.end` wird das Ende eines „Turns“ aus Sicht des Diensts signalisier
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| Path | `turn.end` |
+| path | `turn.end` |
 | Body | Keine |
 
 #### <a name="sample-message"></a>Beispielnachricht
@@ -512,14 +514,14 @@ Mit der `Connection`-Metrik werden Details zu Verbindungsversuchen des Clients a
 
 Die Fehlerbeschreibung sollte maximal 50 Zeichen lang sein und idealerweise einem der Werte entsprechen, die in der folgenden Tabelle aufgeführt sind. Wenn die Fehlerbedingung nicht mit einem dieser Wert übereinstimmt, können Clients eine kurze Beschreibung der Fehlerbedingung nutzen, indem sie Binnenmajuskeln (Englisch: [CamelCasing](https://en.wikipedia.org/wiki/Camel_case)) ohne Leerzeichen nutzen. Für das Senden einer *telemetry*-Nachricht ist eine Verbindung mit dem Dienst erforderlich, sodass nur vorübergehende oder temporäre Fehlerbedingungen in der *telemetry*-Nachricht gemeldet werden können. Fehlerbedingungen, die einen Client *dauerhaft* daran hindern, eine Verbindung mit dem Dienst herzustellen, verhindern für den Client das Senden von Nachrichten an den Dienst (einschließlich *telemetry*-Nachrichten).
 
-| Fehler | Verwendung |
+| Error | Verwendung |
 | ----- | ----- |
 | DNSfailure | Der Client konnte aufgrund eines DNS-Fehlers im Netzwerkstapel keine Verbindung mit dem Dienst herstellen. |
 | NoNetwork | Der Client hat versucht, eine Verbindung herzustellen, aber vom Netzwerkstapel wurde gemeldet, dass kein physisches Netzwerk verfügbar war. |
 | NoAuthorization | Die Clientverbindung ist fehlgeschlagen, während versucht wurde, ein Autorisierungstoken für die Verbindung zu beziehen. |
 | NoResources | Eine lokale Ressource (z.B. der Arbeitsspeicher) des Clients war erschöpft, während versucht wurde, eine Verbindung herzustellen. |
-| Forbidden | Der Client konnte keine Verbindung mit dem Dienst herstellen, da der Dienst den HTTP-Statuscode `403 Forbidden` für die WebSocket-Upgradeanforderung zurückgegeben hat. |
-| Unauthorized | Der Client konnte keine Verbindung mit dem Dienst herstellen, da der Dienst den HTTP-Statuscode `401 Unauthorized` für die WebSocket-Upgradeanforderung zurückgegeben hat. |
+| Verboten | Der Client konnte keine Verbindung mit dem Dienst herstellen, da der Dienst den HTTP-Statuscode `403 Forbidden` für die WebSocket-Upgradeanforderung zurückgegeben hat. |
+| Nicht autorisiert | Der Client konnte keine Verbindung mit dem Dienst herstellen, da der Dienst den HTTP-Statuscode `401 Unauthorized` für die WebSocket-Upgradeanforderung zurückgegeben hat. |
 | BadRequest | Der Client konnte keine Verbindung mit dem Dienst herstellen, da der Dienst den HTTP-Statuscode `400 Bad Request` für die WebSocket-Upgradeanforderung zurückgegeben hat. |
 | ServerUnavailable | Der Client konnte keine Verbindung mit dem Dienst herstellen, da der Dienst den HTTP-Statuscode `503 Server Unavailable` für die WebSocket-Upgradeanforderung zurückgegeben hat. |
 | ServerError | Der Client konnte keine Verbindung mit dem Dienst herstellen, da der Dienst den Statuscode `HTTP 500` für interne Fehler für die WebSocket-Upgradeanforderung zurückgegeben hat. |

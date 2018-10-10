@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: df32578c92b1973568c9b811cb7f9e9db067915f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 5520c08d2bf5dba85ece1de0bca7329286625911
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29691392"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968049"
 ---
 # <a name="customize-server-configuration-parameters-using-azure-cli"></a>Anpassen der Serverkonfigurationsparameter mithilfe der Azure CLI
 Sie können Konfigurationsparameter für einen Azure PostgreSQL-Server mithilfe der Befehlszeilenschnittstelle (Azure CLI) auflisten, anzeigen und aktualisieren. Auf Serverebene ist eine Teilmenge der Engine-Konfigurationen verfügbar und kann geändert werden. 
@@ -23,7 +23,7 @@ Sie können Konfigurationsparameter für einen Azure PostgreSQL-Server mithilfe 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 - Erstellen Sie einen Azure Database for PostgreSQL-Server und eine -Datenbank gemäß [Erstellen einer Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md).
-- Installieren Sie die Befehlszeilenschnittstelle [Azure CLI 2.0](/cli/azure/install-azure-cli) auf Ihrem Computer, oder verwenden Sie die [Azure Cloud Shell](../cloud-shell/overview.md) im Azure-Portal über Ihren Browser.
+- Installieren Sie die Befehlszeilenschnittstelle [Azure CLI](/cli/azure/install-azure-cli) auf Ihrem Computer, oder verwenden Sie [Azure Cloud Shell](../cloud-shell/overview.md) im Azure-Portal über Ihren Browser.
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Auflisten der Serverkonfigurationsparameter für Server für Azure-Datenbank für PostgreSQL
 Führen Sie den Befehl [az postgres server configuration list](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_list) aus, um alle änderbaren Parameter eines Servers mit ihren Werten aufzulisten.

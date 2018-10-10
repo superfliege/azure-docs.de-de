@@ -1,6 +1,6 @@
 ---
 title: Trennen eines Datenträgers für Daten von einem virtuellen Linux-Computer – Azure | Microsoft Docs
-description: Erfahren Sie, wie Sie einen Datenträger unter Verwendung von Azure CLI 2.0 oder des Azure-Portals von einem virtuellen Computer in Azure trennen.
+description: Erfahren Sie, wie Sie einen Datenträger unter Verwendung der Azure CLI oder des Azure-Portals von einem virtuellen Computer in Azure trennen.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
-ms.openlocfilehash: 0225c6605109489c4b9b599918dc09983ae25ac8
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b087040e5d219941ec0b2ee0f58dfe0058a1ad04
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144073"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968346"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Linux-Computer
 
@@ -99,7 +99,7 @@ sudo umount /dev/sdc1 /datadrive
 ```
 
 
-## <a name="detach-a-data-disk-using-cli-20"></a>Trennen eines Datenträgers mit CLI 2.0
+## <a name="detach-a-data-disk-using-azure-cli"></a>Trennen eines Datenträgers mit der Azure CLI 
 
 Im folgenden Beispiel wird der Datenträger *myDataDisk* vom virtuellen Computer *myVM* in *myResourceGroup* getrennt:
 

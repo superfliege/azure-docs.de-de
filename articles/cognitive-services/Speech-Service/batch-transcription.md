@@ -8,12 +8,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: b6fb39ef5941157cfe0d18324deeb9d836d7ab09
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 860b58a18fbc14532a8591fc753453d60492d3c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377620"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981371"
 ---
 # <a name="batch-transcription"></a>Batch-Transkription
 
@@ -59,36 +59,38 @@ Bei Audiodatenströmen in Stereo wird der linke und rechte Kanal während der Tr
 
 ## <a name="authorization-token"></a>Autorisierungstoken
 
-Wie bei allen Features des vereinheitlichten Spracherkennungsdiensts erstellen Sie einen Abonnementschlüssel im [Azure-Portal](https://portal.azure.com). Darüber hinaus rufen Sie einen API-Schlüssel aus dem Speech-Portal ab: 
+Wie bei allen Features des vereinheitlichten Spracherkennungsdiensts erstellen Sie einen Abonnementschlüssel im [Azure-Portal](https://portal.azure.com) anhand der Anleitung unter [Erste Schritte](get-started.md). Wenn Sie das Abrufen von Transkriptionen aus unseren Baselinemodellen planen, müssen Sie nichts weiter tun. 
+
+Wenn Sie ein benutzerdefiniertes Modell anpassen und verwenden möchten, müssen Sie diesen Abonnementschlüssel wie folgt im Custom Speech-Portal hinzufügen:
 
 1. Melden Sie sich bei [Custom Speech](https://customspeech.ai) an.
 
 2. Wählen Sie **Abonnements**.
 
-3. Wählen Sie **API-Schlüssel generieren**.
+3. Wählen Sie **Verbindung mit vorhandenem Abonnement herstellen** aus.
+
+4. Fügen Sie den Abonnementschlüssel und einen Alias in der nun eingeblendeten Ansicht hinzu.
 
     ![Screenshot der Seite „Abonnements“ von Custom Speech](media/stt/Subscriptions.jpg)
 
-4. Kopieren Sie diesen Schlüssel, und fügen Sie ihn in den Clientcode im folgenden Beispiel ein.
+5. Kopieren Sie diesen Schlüssel, und fügen Sie ihn in den Clientcode im folgenden Beispiel ein.
 
 > [!NOTE]
-> Wenn Sie ein benutzerdefiniertes Modell verwenden möchten, benötigen Sie auch die ID dieses Modells. Beachten Sie, dass es sich hier nicht um die Bereitstellungs- oder Endpunkt-ID handelt, die in der Ansicht „Endpunktdetails“ angegeben ist. Es ist die Modell-ID, die Sie durch Klicken auf die Details dieses Modells abrufen können.
+> Wenn Sie ein benutzerdefiniertes Modell verwenden möchten, benötigen Sie auch die ID dieses Modells. Beachten Sie, dass es sich hier nicht um die Endpunkt-ID handelt, die in der Ansicht „Endpunktdetails“ angegeben ist. Es ist die Modell-ID, die Sie durch Klicken auf die Details dieses Modells abrufen können.
 
 ## <a name="sample-code"></a>Beispielcode
 
 Passen Sie den folgenden Beispielcode mit einem Abonnementschlüssel und einem API-Schlüssel an. Dadurch können Sie ein Bearertoken abrufen.
 
 ```cs
-    public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
+     public static CrisClient CreateApiV2Client(string key, string hostName, int port)
+
         {
             var client = new HttpClient();
             client.Timeout = TimeSpan.FromMinutes(25);
             client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
-
-            var tokenProviderPath = "/oauth/ctoken";
-            var clientToken = await CreateClientTokenAsync(client, hostName, port, tokenProviderPath, username, key).ConfigureAwait(false);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", clientToken.AccessToken);
-
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+         
             return new CrisClient(client);
         }
 ```
@@ -98,8 +100,8 @@ Nachdem Sie das Token abgerufen haben, müssen Sie den SAS-URI angeben, der auf 
 ```cs
    static async Task TranscribeAsync()
         { 
-            private const string SubscriptionKey = "<your Speech[Preview] subscription key>";
-            private const string HostName = "cris.ai";
+            private const string SubscriptionKey = "<your Speech subscription key>";
+            private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
             // Creating a Batch transcription API Client
@@ -167,7 +169,7 @@ Nachdem Sie das Token abgerufen haben, müssen Sie den SAS-URI angeben, der auf 
 ```
 
 > [!NOTE]
-> Im oben angegebenen Code stammt der Abonnementschlüssel von der Speech (Vorschau)-Ressource, die Sie im Azure-Portal erstellen. Schlüssel, die von der Custom Speech Service-Ressource abgerufen werden, funktionieren nicht.
+> Im oben angegebenen Code stammt der Abonnementschlüssel von der Speech-Ressource, die Sie im Azure-Portal erstellen. Schlüssel, die von der Custom Speech Service-Ressource abgerufen werden, funktionieren nicht.
 
 Beachten Sie das asynchrone Setup für das Senden von Audiodaten und das Empfangen des Transkriptionsstatus. Der erstellte Client ist ein .NET-HTTP-Client. Es gibt eine `PostTranscriptions`-Methode für das Senden der Audiodateidetails und eine `GetTranscriptions`-Methode zum Empfangen der Ergebnisse. `PostTranscriptions` gibt ein Handle zurück, und `GetTranscriptions` verwendet dieses Handle, um ein Handle zum Abrufen des Transkriptionsstatus zu erstellen.
 

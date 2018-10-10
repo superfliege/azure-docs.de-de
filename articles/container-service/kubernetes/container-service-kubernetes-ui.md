@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 0680551d3a87c942574a4eac70fa380cc1e9b5d9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b5079ddb63f468f924577f61adda6a3056ec8c6c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163247"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998524"
 ---
 # <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Verwenden der Webbenutzeroberfläche von Kubernetes mit Azure Container Service
 
@@ -24,7 +24,7 @@ ms.locfileid: "32163247"
 In dieser exemplarischen Vorgehensweise wird davon ausgegangen, dass Sie mit [Azure Container Service einen Kubernetes-Cluster erstellt haben](container-service-kubernetes-walkthrough.md).
 
 
-Außerdem wird angenommen, dass die Tools Azure CLI 2.0 und `kubectl` installiert sind.
+Außerdem wird angenommen, dass die Azure CLI und die Tools `kubectl` installiert sind.
 
 Führen Sie Folgendes aus, um zu prüfen, ob das Tool `az` installiert ist:
 

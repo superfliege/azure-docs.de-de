@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung in Service Fabric Mesh | Microsoft Docs'
-description: Erfahren Sie, wie eine Azure Service Fabric Mesh-Anwendung veröffentlicht wird, die aus einer ASP.NET Core-Website besteht, die mit einem Back-End-Webdienst kommuniziert.
+title: 'Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie mit Visual Studio eine Azure Service Fabric Mesh-Anwendung veröffentlichen, die aus einer ASP.NET Core-Website besteht, die mit einem Back-End-Webdienst kommuniziert.
 services: service-fabric-mesh
 documentationcenter: .net
 author: TylerMSFT
@@ -12,35 +12,35 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/26/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 350749161260768071afbb47b854cb2e9184bd9d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 467484824ec3a3ceffb6dfa692953406ed6acc1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284726"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963320"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-web-application"></a>Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung
 
 Dieses Tutorial ist der dritte Teil einer Reihe und zeigt, wie Sie eine Azure Service Fabric Mesh-Anwendung direkt über Visual Studio in Azure veröffentlichen.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Veröffentlichen der App in Azure
+> * Veröffentlichen der App in Azure mithilfe von Visual Studio
 > * Überprüfen des Status der Anwendungsbereitstellung
 > * Anzeigen aller Anwendungen, die zurzeit in Ihrem Abonnement bereitgestellt sind
-> * Anzeigen der Anwendungsprotokolle
-> * Bereinigen der von der App verwendeten Ressourcen
 
-In dieser Tutorialreihe lernen Sie Folgendes:
+In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
-> * [Erstellen einer Service Fabric Mesh-Anwendung ](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Lokales Debuggen der App](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * Veröffentlichen der App in Azure
+> * [Erstellen einer Service Fabric-App in Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [Debuggen einer Service Fabric Mesh-App, die in Ihrem lokalen Entwicklungscluster ausgeführt wird](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * Bereitstellen einer Service Fabric Mesh-App
+> * [Aktualisieren einer Service Fabric Mesh-App](service-fabric-mesh-tutorial-upgrade.md)
+> * [Bereinigen von Service Fabric Mesh-Ressourcen](service-fabric-mesh-tutorial-cleanup-resources.md)
 
-Sie erfahren, wie Sie eine Azure Service Fabric Mesh-App erstellen, die über ein ASP.NET-Web-Front-End und einen ASP.NET Core Web-API-Back-End-Dienst verfügt. Anschließend debuggen Sie die App auf Ihrem lokalen Entwicklungscluster und veröffentlichen die App in Azure. Wenn Sie fertig sind, verfügen Sie über eine einfache Aufgaben-App, die zeigt, wie ein Aufruf zwischen Diensten in einer Service Fabric Mesh-Webanwendung vorgenommen wird.
+[!INCLUDE [preview note](./includes/include-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +62,7 @@ Die Anwendung befindet sich im Verzeichnis „`src\todolistapp`“.
 
 ## <a name="publish-to-azure"></a>Veröffentlichen in Azure
 
-Um das Service Fabric Mesh-Projekt in Azure zu veröffentlichen, klicken Sie in Visual Studio mit der rechten Maustaste auf **ServiceFabricMeshApp**, und wählen Sie dann **Veröffentlichen...** aus.
+Um das Service Fabric Mesh-Projekt in Azure zu veröffentlichen, klicken Sie in Visual Studio mit der rechten Maustaste auf **todolistapp**, und wählen Sie dann **Veröffentlichen...** aus.
 
 Nun wird ein Dialogfeld **Service Fabric-Anwendung veröffentlichen** angezeigt.
 
@@ -74,9 +74,9 @@ Wählen Sie unter **Ressourcengruppe** die Option **\<Neue Ressourcengruppe erst
 
 ![Dialogfeld „Neue Ressourcengruppe“ von Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-Im Dialogfeld **Service Fabric-Anwendung veröffentlichen** wählen Sie unter **Azure Container Registry** die Option **\<Neue Containerregistrierung erstellen...>** aus. Verwenden Sie im Dialogfeld **Containerregistrierung erstellen** einen eindeutigen Namen für den **Containerregistrierungsnamen**. Geben Sie einen **Standort** an (in diesem Tutorial wird **USA, Osten** verwendet). Wählen Sie in der Dropdownliste die **Ressourcengruppe** aus, die Sie im vorherigen Schritt erstellt haben, z.B. **sfmeshTutorial1RG**. Legen Sie die **SKU** auf **Basic** fest, und klicken Sie dann auf **Erstellen**, um zum Dialogfeld „Veröffentlichen“ zurückzukehren.
+Im Dialogfeld **Service Fabric-Anwendung veröffentlichen** wählen Sie unter **Azure Container Registry** die Option **\<Neue Containerregistrierung erstellen...>** aus. Verwenden Sie im Dialogfeld **Containerregistrierung erstellen** einen eindeutigen Namen für den **Containerregistrierungsnamen**. Geben Sie einen **Standort** an (in diesem Tutorial wird **USA, Osten** verwendet). Wählen Sie in der Dropdownliste die **Ressourcengruppe** aus, die Sie im vorherigen Schritt erstellt haben, z.B. **sfmeshTutorial1RG**. Legen Sie **SKU** auf **Basic** fest, und klicken Sie dann auf **Erstellen**, um die private Azure-Containerregistrierung zu erstellen und zum Veröffentlichungsdialogfeld zurückzukehren.
 
-![Dialogfeld „Neue Ressourcengruppe“ von Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
+![Dialogfeld für neue Containerregistrierung von Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
 Wenn Sie einen Fehler erhalten, dass kein Ressourcenanbieter für Ihr Abonnement registriert wurde, können Sie diesen registrieren. Prüfen Sie zunächst, ob der Ressourcenanbieter für Ihr Abonnement verfügbar ist:
 
@@ -109,7 +109,6 @@ The application was deployed successfully and it can be accessed at http://10.00
 ## <a name="set-up-service-fabric-mesh-cli"></a>Einrichten der Service Fabric Mesh-CLI 
 Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für die verbleibenden Schritte verwenden. Installieren Sie das CLI-Erweiterungsmodul von Azure Service Fabric Mesh, indem Sie die folgenden [Anweisungen](service-fabric-mesh-howto-setup-cli.md) befolgen.
 
-
 ## <a name="check-application-deployment-status"></a>Überprüfen des Status der Anwendungsbereitstellung
 
 An diesem Punkt wurde Ihre Anwendung bereitgestellt. Sie können ihren Status mithilfe des Befehls `app show` überprüfen. 
@@ -124,31 +123,9 @@ az mesh app show --resource-group $rg --name ServiceMeshApp
 
 Sie können den Befehl „app list“ verwenden, um eine Liste der Anwendungen abzurufen, die Sie in Ihrem Abonnement bereitgestellt haben.
 
-```cli
+```azurecli-interactive
 az mesh app list --output table
 ```
-
-## <a name="see-the-application-logs"></a>Anzeigen der Anwendungsprotokolle
-
-Untersuchen Sie die Protokolle für die bereitgestellte Anwendung:
-
-```azurecli-interactive
-az mesh code-package-log get --resource-group $rg --application-name ServiceMeshApp --service-name todoservice --replica-name 0 --code-package-name ServiceMeshApp
-```
-
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Löschen Sie alle erstellten Ressourcen, wenn Sie sie nicht mehr benötigen. Da Sie eine neue Ressourcengruppe zum Hosten von ACR- und Service Fabric Mesh-Dienstressourcen erstellt haben, können Sie dieser Ressourcengruppe bedenkenlos löschen. Hierbei werden alle zugehörigen Ressourcen gelöscht.
-
-```azurecli
-az group delete --resource-group sfmeshTutorial1RG
-```
-
-```powershell
-Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
-```
-
-Alternativ können Sie die Ressourcengruppe [über das Portal](../azure-resource-manager/resource-group-portal.md#delete-resource-group-or-resources) löschen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -157,13 +134,9 @@ In diesem Teil des Tutorials haben Sie Folgendes gelernt:
 > * Veröffentlichen der App in Azure
 > * Überprüfen des Status der Anwendungsbereitstellung
 > * Anzeigen aller Anwendungen, die zurzeit in Ihrem Abonnement bereitgestellt sind
-> * Anzeigen der Anwendungsprotokolle
-> * Bereinigen der von der App verwendeten Ressourcen
 
-Da Sie die Veröffentlichung einer Service Fabric Mesh-Anwendung in Azure nun abgeschlossen haben, versuchen Sie Folgendes:
-
-* Untersuchen Sie das [Beispiel für eine Abstimmungs-App](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp), um sich mit einem weiteren Beispiel für die Kommunikation zwischen Diensten vertraut zu machen.
-* Erfahren Sie mehr über [Service Fabric-Ressourcen](service-fabric-mesh-service-fabric-resources.md).
-* Erfahren Sie mehr über die [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+Fahren Sie mit dem nächsten Tutorial fort:
+> [!div class="nextstepaction"]
+> [Aktualisieren einer Service Fabric Mesh-App](service-fabric-mesh-tutorial-upgrade.md)
 
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: jasonh
-ms.openlocfilehash: 0225115fb6c74f736e6a5fba09414dc2ebafd84e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9a10620e3a388fa47076afd54e1789607e5ca47e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104822"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986250"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 
@@ -33,7 +33,7 @@ Skriptaktionen können mithilfe der folgenden Methoden angewendet werden:
 | --- |:---:|:---:|
 | Azure-Portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
-| Azure-Befehlszeilenschnittstelle 1.0 |&nbsp; |✓ |
+| Klassische Azure CLI |&nbsp; |✓ |
 | HDInsight .NET-SDK |✓ |✓ |
 | Azure Resource Manager-Vorlage |✓ |&nbsp; |
 

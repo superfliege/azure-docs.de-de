@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: 0ff14ec2100d47e0edc5288f1c46f4fdd63fa683
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: cbd1a7a3a797cc20be92583bbb5ac163333729fc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171526"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969800"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurieren von Reverse-DNS für in Azure gehostete Dienste
 
@@ -51,7 +51,7 @@ Die gleichen Einschränkungen gelten für Reverse-DNS für Clouddienste.
 
 ## <a name="reverse-dns-for-publicipaddress-resources"></a>Reverse-DNS für öffentliche IP-Adressressourcen
 
-In diesem Abschnitt finden Sie ausführliche Anweisungen zum Konfigurieren von Reverse-DNS für öffentliche IP-Adressressourcen im Resource Manager-Bereitstellungsmodell mit Azure PowerShell, Azure CLI 1.0 oder Azure CLI 2.0. Das Konfigurieren von Reverse-DNS für öffentliche IP-Adressressourcen über das Azure-Portal wird derzeit nicht unterstützt.
+In diesem Abschnitt finden Sie ausführliche Anweisungen zum Konfigurieren von Reverse-DNS für PublicIpAddress-Ressourcen im Resource Manager-Bereitstellungsmodell mit Azure PowerShell, der klassischen Azure CLI oder der Azure CLI. Das Konfigurieren von Reverse-DNS für öffentliche IP-Adressressourcen über das Azure-Portal wird derzeit nicht unterstützt.
 
 Azure unterstützt derzeit Reverse-DNS nur für öffentliche IPv4-IP-Adressressourcen. Für IPv6 wird dies nicht unterstützt.
 
@@ -77,7 +77,7 @@ $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
 Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 ```
 
-#### <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
+#### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 So fügen Sie vorhandenen öffentlichen IP-Adressen Reverse-DNS hinzu
 
@@ -91,7 +91,7 @@ Um einer vorhandenen öffentlichen IP-Adresse, die noch keinen DNS-Namen aufweis
 azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 So fügen Sie vorhandenen öffentlichen IP-Adressen Reverse-DNS hinzu
 
@@ -115,13 +115,13 @@ So erstellen Sie eine öffentliche neue Adresse mit bereits angegebener Reverse-
 New-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
 ```
 
-#### <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
+#### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
 azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d contosoapp3 -f contosoapp3.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli
 az network public-ip create --name PublicIp --resource-group MyResourceGroup --location westcentralus --dns-name contosoapp1 --reverse-fqdn contosoapp1.westcentralus.cloudapp.azure.com
@@ -137,13 +137,13 @@ So zeigen Sie den konfigurierten Wert für eine vorhandene öffentliche IP-Adres
 Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 ```
 
-#### <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
+#### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
 azure network public-ip show -n PublicIp -g MyResourceGroup
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli
 az network public-ip show --name PublicIp --resource-group MyResourceGroup
@@ -161,13 +161,13 @@ $pip.DnsSettings.ReverseFqdn = ""
 Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 ```
 
-#### <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
+#### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup –f ""
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn ""
@@ -176,7 +176,7 @@ az network public-ip update --resource-group MyResourceGroup --name PublicIp --r
 
 ## <a name="configure-reverse-dns-for-cloud-services"></a>Konfigurieren von Reverse-DNS für Clouddienste
 
-Dieser Abschnitt enthält ausführliche Anweisungen zum Konfigurieren von Reverse-DNS für Clouddienste im klassischen Bereitstellungsmodell mit Azure PowerShell. Das Konfigurieren von Reverse-DNS für Clouddienste über das Azure-Portal, Azure CLI 1.0 oder Azure CLI 2.0 wird nicht unterstützt.
+Dieser Abschnitt enthält ausführliche Anweisungen zum Konfigurieren von Reverse-DNS für Clouddienste im klassischen Bereitstellungsmodell mit Azure PowerShell. Das Konfigurieren von Reverse-DNS für Clouddienste über das Azure-Portal, die klassische Azure CLI oder die Azure CLI wird nicht unterstützt.
 
 ### <a name="add-reverse-dns-to-existing-cloud-services"></a>Hinzufügen von Reverse-DNS zu vorhandenen Clouddiensten
 

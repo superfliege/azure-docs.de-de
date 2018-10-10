@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: b735f93b2d7ad093ef752fd5f26be729a1157b37
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 15d2e40127579fbd278cc3dc18653d782a515caa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090677"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957311"
 ---
 # <a name="supported-languages-in-azure-functions"></a>In Azure Functions unterstützte Sprachen
 
@@ -31,23 +31,23 @@ Es gibt drei Unterstützungsebenen:
 
 ## <a name="languages-in-runtime-1x-and-2x"></a>Sprachen in der Runtime 1.x und 2.x
 
-Es sind [zwei Versionen der Azure Functions-Runtime](functions-versions.md) verfügbar. Die 1.x-Runtime ist allgemein verfügbar. Sie ist als einzige Runtime für Produktionsanwendungen freigegeben. Die 2.x-Runtime befindet sich aktuell in der Vorschau, daher sind auch die von ihr unterstützten Sprachen im Vorschaustatus. Die folgende Tabelle gibt an, welche Sprachen in den beiden Runtimeversionen unterstützt werden.
+Es sind [zwei Versionen der Azure Functions-Runtime](functions-versions.md) verfügbar. Die folgende Tabelle gibt an, welche Sprachen in den beiden Runtimeversionen unterstützt werden.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 ### <a name="experimental-languages"></a>Experimentelle Sprachen
 
-Die experimentellen Sprachen in Version 1.x sind nicht gut skalierbar und unterstützen nicht alle Bindungen. Beispielsweise ist Python langsam, da die Functions-Runtime bei jedem Funktionsaufruf *python.exe* ausführt. Und obwohl Python HTTP-Bindungen unterstützt, kann es nicht auf das Anforderungsobjekt zugreifen.
+Die experimentellen Sprachen in Version 1.x sind nicht gut skalierbar und unterstützen nicht alle Bindungen. Beispielsweise ist Python 1.x langsam, da die Functions-Runtime bei jedem Funktionsaufruf *python.exe* ausführt. Und obwohl Python HTTP-Bindungen unterstützt, kann es nicht auf das Anforderungsobjekt zugreifen.
 
-Die experimentelle Unterstützung für PowerShell ist auf Version 5.1 eingeschränkt, weil diese Version standardmäßig auf den virtuellen Computern installiert ist, auf denen Funktions-Apps ausgeführt werden. Wenn Sie PowerShell-Skripts ausführen möchten, ziehen Sie [Azure Automation](https://azure.microsoft.com/services/automation/) in Erwägung.
+Die experimentelle Unterstützung für PowerShell in 1.x ist auf Version 5.1 eingeschränkt, weil diese Version standardmäßig auf den virtuellen Computern installiert ist, auf denen Funktions-Apps ausgeführt werden. Wenn Sie PowerShell-Skripts ausführen möchten, ziehen Sie [Azure Automation](https://azure.microsoft.com/services/automation/) in Erwägung.
 
-Wenn Sie eine der Sprachen verwenden möchten, die nur in 1.x zur Verfügung stehen, bleiben Sie bei der 1.x-Runtime. Verwenden Sie jedoch keine experimentellen Sprachen für irgendetwas, worauf Sie aufbauen, da es für sie keine offizielle Unterstützung gibt. Sie können Hilfe durch [Erstellen von GitHub-Problemen](https://github.com/Azure/azure-webjobs-sdk-script/issues) anfordern, jedoch sollten für Probleme mit experimentellen Sprachen keine Supportfälle geöffnet werden. 
+Verwenden Sie keine experimentellen Sprachen für Bereiche, die für Sie sehr wichtig sind, da es dafür keinen offiziellen Support gibt. Für Probleme mit experimentellen Sprachen sollten keine Supportfälle erstellt werden. 
 
 Für Version 2.x der Runtime werden keine experimentellen Sprachen unterstützt. Die Unterstützung für neue Sprachen wird nur hinzugefügt, wenn die Sprache in der Produktion unterstützt werden kann. 
 
 ### <a name="language-extensibility"></a>Spracherweiterbarkeit
 
-Die 2.x-Runtime ist für [Spracherweiterbarkeit](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility) ausgelegt. Unter den ersten Sprachen, die auf diesem Erweiterbarkeitsmodell aufbauen, ist Java, das sich in 2.x im Vorschaustatus befindet.
+Die 2.x-Runtime ist für [Spracherweiterbarkeit](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility) ausgelegt. Die Sprachen JavaScript und Java in der Runtime 2.x verfügen über diese Erweiterbarkeit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/29/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0abf0a5971435fc3842a93e79d39468cba5c74da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fb0fb4e0f23413cb56b1bb5ec419c44dfc52e7b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445210"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996841"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory
 
@@ -37,7 +37,9 @@ Die erhöhten Zugriffsrechte sollten nur vorübergehend und nur bei Bedarf zugew
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator mit dem Azure-Portal
+## <a name="azure-portal"></a>Azure-Portal
+
+Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Administrator mit dem Azure-Portal zu erhöhen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure Active Directory Admin Center](https://aad.portal.azure.com) an.
 
@@ -59,7 +61,9 @@ Die erhöhten Zugriffsrechte sollten nur vorübergehend und nur bei Bedarf zugew
 
 1. Führen Sie die Aufgaben aus, die Sie mit erhöhten Zugriffsrechten vornehmen müssen. Wenn Sie fertig sind, legen Sie wieder **Nein** fest.
 
-## <a name="list-role-assignment-at-the-root-scope--using-powershell"></a>Auflisten der Rollenzuweisung im Stammbereich (/) mit PowerShell
+## <a name="azure-powershell"></a>Azure PowerShell
+
+### <a name="list-role-assignment-at-the-root-scope-"></a>Auflisten der Rollenzuweisung im Stammbereich (/)
 
 Verwenden Sie den Befehl [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) aufzulisten.
 
@@ -79,7 +83,7 @@ ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
 ```
 
-## <a name="remove-a-role-assignment-at-the-root-scope--using-powershell"></a>Entfernen einer Rollenzuweisung im Stammbereich (/) mit PowerShell
+### <a name="remove-a-role-assignment-at-the-root-scope-"></a>Entfernen einer Rollenzuweisung im Stammbereich (/)
 
 Verwenden Sie den Befehl [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) zu entfernen.
 
@@ -88,7 +92,9 @@ Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
   -RoleDefinitionName "User Access Administrator" -Scope "/"
 ```
 
-## <a name="elevate-access-for-a-global-administrator-using-the-rest-api"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator mit der REST-API
+## <a name="rest-api"></a>REST-API
+
+### <a name="elevate-access-for-a-global-administrator"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator
 
 Führen Sie die folgenden grundlegenden Schritte aus, um mithilfe der REST-API die Zugriffsrechte für einen globalen Administrator zu erhöhen.
 
@@ -117,7 +123,7 @@ Führen Sie die folgenden grundlegenden Schritte aus, um mithilfe der REST-API d
 
 1. Entfernen Sie Ihre Berechtigungen als Benutzerzugriffsadministrator, bis sie wieder benötigt werden.
 
-## <a name="list-role-assignments-at-the-root-scope--using-the-rest-api"></a>Auflisten der Rollenzuweisung im Stammbereich (/) mit der REST-API
+### <a name="list-role-assignments-at-the-root-scope-"></a>Auflisten der Rollenzuweisungen im Stammbereich (/)
 
 Sie können alle Rollenzuweisungen für einen Benutzer im Stammbereich (`/`) auflisten.
 
@@ -127,7 +133,17 @@ Sie können alle Rollenzuweisungen für einen Benutzer im Stammbereich (`/`) auf
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
    ```
 
-## <a name="remove-elevated-access-using-the-rest-api"></a>Entfernen des Zugriffs mit erhöhten Rechten über die REST-API
+### <a name="list-deny-assignments-at-the-root-scope-"></a>Auflisten von Ablehnungszuweisungen im Stammbereich (/)
+
+Sie können alle Ablehnungszuweisungen für einen Benutzer im Stammbereich (`/`) auflisten.
+
+- Rufen Sie „GET denyAssignments“ auf. Hierbei entspricht `{objectIdOfUser}` der Objekt-ID des Benutzers, dessen Ablehnungszuweisungen Sie abrufen möchten.
+
+   ```http
+   GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter=gdprExportPrincipalId+eq+'{objectIdOfUser}'
+   ```
+
+### <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte
 
 Beim Aufruf von `elevateAccess` erstellen Sie eine Rollenzuweisung für sich selbst. Um diese Berechtigungen zu widerrufen, müssen Sie die Zuweisung entfernen.
 

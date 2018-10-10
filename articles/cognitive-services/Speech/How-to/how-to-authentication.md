@@ -1,24 +1,26 @@
 ---
-title: Authentifizieren beim Speech-Dienst von Microsoft | Microsoft-Dokumentation
-description: Fordern Sie eine Authentifizierung für die Verwendung der Sprach-API von Microsoft an.
+title: Authentifizieren bei der Bing-Spracheingabe | Microsoft-Dokumentation
+titlesuffix: Azure Cognitive Services
+description: Anfordern einer Authentifizierung für die Verwendung der Bing-Spracheingabe-API
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e36168cf3ff938af44f1028c2d26fd475d60b148
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4d4b9f43b6b3a4127d70989414d467f724f6ec28
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373842"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972792"
 ---
 # <a name="authenticate-to-the-speech-api"></a>Authentifizieren bei der Sprach-API
 
-Der Speech-Dienst unterstützt folgende Authentifizierungsmethoden:
+Die Bing-Spracheingabe unterstützt folgende Authentifizierungsmethoden:
 
 - Abonnementschlüssel
 - Autorisierungstoken
@@ -31,7 +33,7 @@ Registrieren Sie sich für ein [Azure-Konto](https://azure.microsoft.com/free/),
 
 Um die Sprach-REST-API verwenden zu können, müssen Sie den Abonnementschlüssel im Feld `Ocp-Apim-Subscription-Key` des Anforderungsheaders übergeben.
 
-NAME| Format| Beschreibung
+NAME| Format| BESCHREIBUNG
 ----|-------|------------
 Ocp-Apim-Subscription-Key | ASCII | YOUR_SUBSCRIPTION_KEY
 

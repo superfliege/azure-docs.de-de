@@ -1,6 +1,6 @@
 ---
-title: Verwenden der Azure-Befehlszeilenschnittstelle 1.0 mit Azure Storage | Microsoft Docs
-description: Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle 1.0 (Azure CLI) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten. Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool.
+title: Verwenden der klassischen Azure CLI mit Azure Storage| Microsoft Docs
+description: Erfahren Sie, wie Sie die klassische Azure-Befehlszeilenschnittstelle (CLI) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten.
 services: storage
 author: seguler
 ms.service: storage
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: f406f12b3313670e8e2d89296f7c24478bb58c6c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e563c7000b600bed917f42d8ffb87df883564ef8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521505"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979327"
 ---
-# <a name="using-the-azure-cli-10-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle 1.0 mit Azure Storage
+# <a name="using-the-azure-classic-cli-with-azure-storage"></a>Verwenden der klassischen Azure CLI mit Azure Storage
 
 ## <a name="overview"></a>Übersicht
 
-Die Azure-Befehlszeilenschnittstelle stellt eine Reihe von plattformübergreifenden Open Source-Befehlen für die Arbeit mit der Azure-Plattform bereit. Sie bietet im Wesentlichen die gleiche Funktionalität wie das [Azure-Portal](https://portal.azure.com) sowie umfangreiche Datenzugriffsfunktionen.
+Die klassische Azure CLI stellt eine Reihe von plattformübergreifenden Open Source-Befehlen für die Arbeit mit der Azure-Plattform bereit. Sie bietet im Wesentlichen die gleiche Funktionalität wie das [Azure-Portal](https://portal.azure.com) sowie umfangreiche Datenzugriffsfunktionen.
 
-Diese Anleitung enthält Informationen zur Verwendung der [Azure-Befehlszeilenschnittstelle (Azure CLI)](../../cli-install-nodejs.md) zum Ausführen einer Vielzahl von Entwicklungs- und Verwaltungsaufgaben mit Azure Storage. Sie sollten die neueste Azure-Befehlszeilenschnittstelle herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie diese Anleitung verwenden.
+Diese Anleitung enthält Informationen zur Verwendung der [klassischen Azure CLI](../../cli-install-nodejs.md) zum Ausführen einer Vielzahl von Entwicklungs- und Verwaltungsaufgaben mit Azure Storage. Sie sollten die neueste klassische Azure CLI herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie diese Anleitung verwenden.
 
-Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Storage verstehen. Die Anleitung bietet eine Reihe von Skripts, um die Verwendung der Azure-Befehlszeilenschnittstelle mit Azure-Speicher zu veranschaulichen. Sie müssen die Skriptvariablen auf Basis Ihrer Konfiguration aktualisieren, bevor Sie die jeweiligen Skripts ausführen.
+Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Storage verstehen. Die Anleitung bietet eine Reihe von Skripts, um die Verwendung der klassischen Azure CLI mit Azure Storage zu veranschaulichen. Sie müssen die Skriptvariablen auf Basis Ihrer Konfiguration aktualisieren, bevor Sie die jeweiligen Skripts ausführen.
 
 > [!NOTE]
-> Die Anleitung enthält die Befehle der Azure-Befehlszeilenschnittstelle und Skriptbeispiele für klassische Speicherkonten. Befehle der Azure-Befehlszeilenschnittstelle für Resource Manager-Speicherkonten finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects) .
+> Die Anleitung enthält die Befehle der klassischen Azure CLI und Skriptbeispiele für klassische Speicherkonten. Befehle der klassischen Azure CLI für Resource Manager-Speicherkonten finden Sie unter [Verwenden der klassischen Azure CLI für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects).
 >
 >
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
-## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>Erste Schritte mit Azure-Speicher und der Azure-Befehlszeilenschnittstelle in 5 Minuten
+## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>Erste Schritte mit Azure Storage und der klassischen Azure CLI in 5 Minuten
 Diese Anleitung verwendet für Beispiele Ubuntu, andere Betriebssystemplattformen funktionieren jedoch auf ähnliche Weise.
 
 **Neu in Azure:** Holen Sie Sich ein Microsoft Azure-Abonnement und ein Microsoft-Konto für dieses Abonnement. Informationen zu Azure-Kaufoptionen finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/), [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/) und [Angebote für Mitglieder](https://azure.microsoft.com/pricing/member-offers/) (für Mitglieder von MSDN, Microsoft Partner Network, BizSpark und anderen Microsoft-Programmen).
@@ -41,12 +41,12 @@ Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](ht
 
 **Nach der Erstellung eines Microsoft Azure-Abonnements und eines Kontos:**
 
-1. Laden Sie die Azure-Befehlszeilenschnittstelle herunterladen und installieren Sie sie gemäß den Anweisungen unter [Installieren der Azure-Befehlszeilenschnittstelle](../../cli-install-nodejs.md).
-2. Sobald die Befehlszeilenschnittstelle installiert ist, können Sie den Befehl "azure" in Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung) verwenden, um auf die Befehle der Azure-Befehlszeilenschnittstelle zuzugreifen. Wenn Sie den Befehl _azure_ eingeben, sollte die folgende Ausgabe angezeigt werden.
+1. Laden Sie die klassische Azure CLI herunterladen und installieren Sie sie gemäß den Anweisungen unter [Installieren der klassischen Azure CLI](../../cli-install-nodejs.md).
+2. Sobald die klassische CLI installiert ist, können Sie den Befehl „azure“ in Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung) verwenden, um auf die Befehle der klassischen Azure CLI zuzugreifen. Wenn Sie den Befehl _azure_ eingeben, sollte die folgende Ausgabe angezeigt werden.
 
     ![Azure-Befehlsausgabe:](./media/storage-azure-cli/azure_command.png)   
-3. Geben Sie in der Befehlszeilenschnittstelle `azure storage` ein, um alle Azure Storage-Befehle aufzulisten und einen ersten Eindruck vom Funktionsumfang der Azure-Befehlszeilenschnittstelle zu erhalten. Sie können Befehlsnamen mit einem **-h**-Parameter (z. B. `azure storage share create -h`) eingeben , um Details der Befehlssyntax anzuzeigen.
-4. In einem einfachen Skript werden nun grundlegende Befehle der Azure-Befehlszeilenschnittstelle für den Zugriff auf Azure Storage dargestellt. In dem Skript werden Sie als erstes dazu aufgefordert, zwei Variablen für Ihr Speicherkonto und Ihren Speicherschlüssel festzulegen. Als Nächstes erstellt das Skript in dem neuen Speicherkonto einen neuen Container und lädt eine vorhandene Image-Datei (Blob) in diesen Container. Nachdem das Skript alle Blobs in diesem Container aufgelistet hat, lädt es die Image-Datei in ein Zielverzeichnis auf dem lokalen Computer herunter.
+3. Geben Sie in der Befehlszeilenschnittstelle `azure storage` ein, um alle Azure Storage-Befehle aufzulisten und einen ersten Eindruck vom Funktionsumfang der klassischen Azure CLI zu erhalten. Sie können Befehlsnamen mit einem **-h**-Parameter (z. B. `azure storage share create -h`) eingeben , um Details der Befehlssyntax anzuzeigen.
+4. In einem einfachen Skript werden nun grundlegende Befehle der klassischen Azure CLI für den Zugriff auf Azure Storage dargestellt. In dem Skript werden Sie als erstes dazu aufgefordert, zwei Variablen für Ihr Speicherkonto und Ihren Speicherschlüssel festzulegen. Als Nächstes erstellt das Skript in dem neuen Speicherkonto einen neuen Container und lädt eine vorhandene Image-Datei (Blob) in diesen Container. Nachdem das Skript alle Blobs in diesem Container aufgelistet hat, lädt es die Image-Datei in ein Zielverzeichnis auf dem lokalen Computer herunter.
 
     ```azurecli
     #!/bin/bash
@@ -88,9 +88,9 @@ Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](ht
 
 Nachdem das Skript ausgeführt wird, sollten Sie über einen lokalen Ordner verfügen, der die heruntergeladene Datei enthält.
 
-## <a name="manage-storage-accounts-with-the-azure-cli"></a>Verwalten von Speicherkonten mit der Azure-Befehlszeilenschnittstelle
+## <a name="manage-storage-accounts-with-the-azure-classic-cli"></a>Verwalten von Speicherkonten mit der klassischen Azure CLI
 ### <a name="connect-to-your-azure-subscription"></a>Verbinden mit Ihrem Azure-Abonnement
-Obwohl die meisten Speicherbefehle ohne Azure-Abonnement funktionieren, empfehlen wir Ihnen, eine Verbindung zu Ihrem Abonnement über die Azure-Befehlszeilenschnittstelle herzustellen. Zum Konfigurieren der Azure-Befehlszeilenschnittstelle für die Verwendung mit Ihrem Abonnement führen Sie die Schritte unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](/cli/azure/authenticate-azure-cli)aus.
+Obwohl die meisten Speicherbefehle ohne Azure-Abonnement funktionieren, empfehlen wir Ihnen, eine Verbindung zu Ihrem Abonnement über die klassische Azure CLI herzustellen.
 
 ### <a name="create-a-new-storage-account"></a>Erstellen eines neuen Speicherkontos
 Für die Verwendung von Azure-Speicher benötigen Sie ein Speicherkonto. Nachdem Sie Ihren Computer für die Verbindung mit Ihrem Abonnement konfiguriert haben, können Sie ein neues Azure-Speicherkonto erstellen.
@@ -102,7 +102,7 @@ azure storage account create <account_name>
 Der Name Ihres Speicherkontos muss zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
 
 ### <a name="set-a-default-azure-storage-account-in-environment-variables"></a>Festlegen eines Azure-Standardspeicherkontos in Umgebungsvariablen
-Sie können mehrere Speicherkonten in Ihrem Abonnement verwenden. Sie können ein Speicherkonto auswählen und es in den Umgebungsvariablen als Standardspeicherkonto für alle Speicherbefehle in einer Sitzung festlegen. Dadurch können Sie die Speicherbefehle der Azure-Befehlszeilenschnittstelle ohne explizite Angabe des Speicherkontos und des Speicherschlüssels ausführen.
+Sie können mehrere Speicherkonten in Ihrem Abonnement verwenden. Sie können ein Speicherkonto auswählen und es in den Umgebungsvariablen als Standardspeicherkonto für alle Speicherbefehle in einer Sitzung festlegen. Dadurch können Sie die Speicherbefehle der klassischen CLI ohne explizite Angabe des Speicherkontos und des Speicherschlüssels ausführen.
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
@@ -177,7 +177,7 @@ azure storage blob delete mycontainer myBlockBlob2
 ```
 
 ## <a name="create-and-manage-file-shares"></a>Erstellen und Verwalten von Dateifreigaben
-Azure Files bietet einen gemeinsam genutzten Speicher für Anwendungen und verwendet das Standardprotokoll SMB. Microsoft Azure Virtual Machines und Clouddienste können wie lokale Anwendungen Dateidaten mithilfe bereitgestellter Freigaben teilen. Dateifreigaben und Dateidaten können über die Azure-Befehlszeilenschnittstelle verwaltet werden. Weitere Informationen zu Azure Files finden Sie unter [Einführung in Azure Files](../files/storage-files-introduction.md).
+Azure Files bietet einen gemeinsam genutzten Speicher für Anwendungen und verwendet das Standardprotokoll SMB. Microsoft Azure Virtual Machines und Clouddienste können wie lokale Anwendungen Dateidaten mithilfe bereitgestellter Freigaben teilen. Dateifreigaben und Dateidaten können über die klassische CLI verwaltet werden. Weitere Informationen zu Azure Files finden Sie unter [Einführung in Azure Files](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe
 Eine Azure-Dateifreigabe ist eine SMB-Dateifreigabe in Azure. Alle Verzeichnisse und Dateien müssen in einer Dateifreigabe erstellt werden. Ein Konto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze des Speicherkontos erreicht ist. Im folgenden Beispiel wird eine Dateifreigabe namens **myshare**erstellt.
@@ -214,7 +214,7 @@ azure storage file list myshare myDir
 Beachten Sie, dass der Name des Verzeichnisses für den Auflistungsvorgang optional ist. Wenn kein Namen angegeben wird, listet der Befehl den Inhalt des Stammverzeichnisses der Freigabe auf.
 
 ### <a name="copy-files"></a>Kopieren von Dateien
-Ab Version 0.9.8 der Azure-CLI können Sie eine Datei in eine andere Datei, eine Datei in ein Blob oder ein Blob in eine Datei kopieren. Im Folgenden wird demonstriert, wie diese Kopiervorgänge mithilfe von CLI-Befehlen ausgeführt werden können. So kopieren Sie eine Datei in das neue Verzeichnis:
+Ab Version 0.9.8 der klassischen CLI können Sie eine Datei in eine andere Datei, eine Datei in ein Blob oder ein Blob in eine Datei kopieren. Im Folgenden wird demonstriert, wie diese Kopiervorgänge mithilfe von CLI-Befehlen ausgeführt werden können. So kopieren Sie eine Datei in das neue Verzeichnis:
 
 ```azurecli
 azure storage file copy start --source-share srcshare --source-path srcdir/hello.txt --dest-share destshare
@@ -230,9 +230,9 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie finden die Befehlsreferenz zur Azure-Befehlszeilenschnittstelle 1.0 für die Arbeit mit Speicherressourcen hier:
+Sie finden die Befehlsreferenz zur klassischen Azure CLI für die Arbeit mit Speicherressourcen hier:
 
-* [Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
-* [Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“](../../cli-install-nodejs.md)
+* [Befehle der klassischen Azure CLI im Resource Manager-Modus](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
+* [Befehle der klassischen Azure CLI im Modus „Azure-Dienstverwaltung“](../../cli-install-nodejs.md)
 
-Sie können auch die [Azure CLI 2.0](../storage-azure-cli.md) testen. Dies ist eine in Python geschriebene Befehlszeilenschnittstelle (Command Line Interface, CLI) der nächsten Generation zur Verwendung mit dem Resource Manager-Bereitstellungsmodell.
+Probieren Sie auch die aktuelle Version der [Azure CLI](../storage-azure-cli.md) zur Verwendung mit dem Resource Manager-Bereitstellungsmodell aus.

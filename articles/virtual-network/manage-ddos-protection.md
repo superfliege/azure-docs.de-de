@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: dd094f2b9cdb9b5eb164dda2925d094cafa7cd89
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 59cfcc72abee100b95cf17033083827fbb30f9f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895611"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986692"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals
 
@@ -46,7 +46,7 @@ Die Erstellung von mehr als einem Plan ist für die meisten Organisationen nicht
     |NAME           | myDdosProtectionPlan                              |
     |Abonnement   | Wählen Sie Ihr Abonnement aus.                         |
     |Ressourcengruppe | Klicken Sie auf **Neue erstellen**, und geben Sie *myResourceGroup* ein. |
-    |Speicherort       | USA (Ost)                                           |
+    |Standort       | USA (Ost)                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>Aktivieren von DDoS für ein neues virtuelles Netzwerk
 
@@ -59,7 +59,7 @@ Die Erstellung von mehr als einem Plan ist für die meisten Organisationen nicht
     | NAME            | myVirtualNetwork                                             |
     | Abonnement    | Wählen Sie Ihr Abonnement aus.                                    |
     | Ressourcengruppe  | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
-    | Speicherort        | USA (Ost)                                                      |
+    | Standort        | USA (Ost)                                                      |
     | DDoS-Schutz | Wählen Sie **Standard** und dann unter **DDoS-Schutz** die Option **myDdosProtectionPlan** aus. Der von Ihnen ausgewählte Plan kann sich im selben oder in einem anderen Abonnement als das virtuelle Netzwerk befinden. Beide Abonnements müssen jedoch dem gleichen Azure Active Directory-Mandanten zugeordnet sein.|
 
 Ein virtuelles Netzwerk kann nicht in eine andere Ressourcengruppe oder ein anderes Abonnement verschoben werden, wenn der DDoS-Standard für das virtuelle Netzwerk aktiviert ist. Wenn Sie ein virtuelles Netzwerks mit aktiviertem DDoS-Standard verschieben müssen, deaktivieren Sie zuerst den DDoS-Standard, verschieben Sie das virtuelle Netzwerk, und aktivieren Sie dann den DDoS-Standard. Nach der Verschiebung werden die automatisch optimierten Schwellenwerte der Richtlinie für alle geschützten, öffentlichen IP-Adressen im virtuellen Netzwerk zurückgesetzt.
@@ -116,21 +116,6 @@ Um zur Überprüfung Ihrer Warnung einen DDoS-Angriff zu simulieren, lesen Sie [
 
 Sie können auch mehr über das [Konfigurieren von Webhooks](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und über [Logik-Apps](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für die Erstellung von Warnungen erfahren.
 
-## <a name="configure-logging-for-ddos-protection-metrics"></a>Konfigurieren der Protokollierung von DDoS-Schutzmetriken
-
-1. Wählen Sie oben im Portal auf der linken Seite **Alle Dienste** aus.
-2. Geben Sie *Monitor* in das Feld **Filter** ein. Wenn **Monitor** in den Ergebnissen angezeigt wird, wählen Sie diese Angabe aus.
-3. Wählen Sie unter **EINSTELLUNGEN** die Option **Diagnoseeinstellungen** aus.
-4. Wählen Sie das **Abonnement** und die **Ressourcengruppe** aus, die die öffentliche zu protokollierende IP-Adresse enthält.
-5. Wählen Sie **Öffentliche IP-Adresse** für **Ressourcentyp** aus, wählen Sie dann die jeweilige öffentliche IP-Adresse aus, für die Metriken protokolliert werden sollen.
-6. Wählen Sie **Diagnose zum Erfassen der folgenden Daten aktivieren** und dann so viele der folgenden Optionen aus, wie Sie benötigen:
-
-    - **In einem Speicherkonto archivieren**: Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **An einen Event Hub streamen**: Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe von Azure Event Hub. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Azure-Diagnoseprotokollen an Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **An Log Analytics senden**: Schreibt Protokolle in den Dienst Azure OMS Log Analytics. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-
-Um zur Überprüfung der Protokollierung einen DDoS-Angriff zu simulieren, lesen Sie [Überprüfen der DDoS-Erkennung](#validate-ddos-detection).
-
 ## <a name="use-ddos-protection-telemetry"></a>Verwenden der DDoS Protection-Telemetrie
 
 Die Telemetrie für einen Angriff wird in Echtzeit durch Azure Monitor bereitgestellt. Die Telemetrie ist nur so lange verfügbar, wie eine öffentliche IP-Adresse der Entschärfung unterliegt. Vor oder nach der Entschärfung eines Angriffs werden Ihnen keine Telemetriedaten angezeigt.
@@ -157,6 +142,56 @@ Der DDoS-Schutzstandard wendet drei automatisch optimierte Entschärfungsrichtli
 ![Anzeigen von Entschärfungsrichtlinien](./media/manage-ddos-protection/view-mitigation-policies.png)
 
 Die Schwellenwerte der Richtlinien werden automatisch über unsere auf Machine Learning basierende Netzwerkdatenverkehrs-Profilerstellung von Azure konfiguriert. Nur, wenn der Richtlinienschwellenwert überschritten wird, wird die DDoS-Entschärfung für die IP-Adresse durchgeführt, die einem Angriff ausgesetzt ist.
+
+## <a name="configure-ddos-attack-analytics"></a>Konfigurieren der Analyse von DDoS-Angriffen
+Die Standardversion von Azure DDoS Protection liefert per Analyse von DDoS-Angriffen ausführliche Erkenntnisse zu Angriffen und ermöglicht eine Visualisierung. Kunden, die ihre virtuellen Netzwerke vor DDoS-Angriffen schützen, verfügen über detaillierte Einblicke in den Datenverkehr von Angriffen und die Aktionen, die zur Eindämmung des Angriffs durchgeführt werden. Hierfür werden Berichte zur Angriffsentschärfung und Protokolle zum Verlauf der Entschärfung genutzt. 
+
+## <a name="configure-ddos-attack-mitigation-reports"></a>Konfigurieren der Berichte zur Entschärfung von DDoS-Angriffen
+Für Berichte zur Entschärfung von Angriffen werden die NetFlow-Protokolldaten verwendet. Diese Daten werden aggregiert, um ausführliche Informationen zum Angriff auf Ihre Ressource zu liefern. Jedes Mal, wenn eine öffentliche IP-Ressource angegriffen wird, beginnt die Berichterstellung, sobald der Entschärfungsvorgang gestartet wurde. Alle fünf Minuten wird ein inkrementeller Bericht generiert, und für den gesamten Entschärfungszeitraum wird ein Abschlussbericht erstellt. So wird sichergestellt, dass Sie bei einem länger andauernden DDoS-Angriff die aktuellste Momentaufnahme des Berichts zur Entschärfung (alle fünf Minuten) und eine vollständige Zusammenfassung nach Abschluss der Entschärfung anzeigen können. 
+
+1. Wählen Sie oben im Portal auf der linken Seite **Alle Dienste** aus.
+2. Geben Sie *Monitor* in das Feld **Filter** ein. Wenn **Monitor** in den Ergebnissen angezeigt wird, wählen Sie diese Angabe aus.
+3. Wählen Sie unter **EINSTELLUNGEN** die Option **Diagnoseeinstellungen** aus.
+4. Wählen Sie das **Abonnement** und die **Ressourcengruppe** aus, die die öffentliche zu protokollierende IP-Adresse enthält.
+5. Wählen Sie **Öffentliche IP-Adresse** für **Ressourcentyp** aus, wählen Sie dann die jeweilige öffentliche IP-Adresse aus, für die Metriken protokolliert werden sollen.
+6. Wählen Sie **Turn on diagnostics to collect the DDoSMitigationReports log** (Diagnose zum Erfassen des DDoSMitigationReports-Protokolls aktivieren) und dann so viele der folgenden Optionen aus, wie Sie benötigen:
+
+    - **In einem Speicherkonto archivieren**: Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **An einen Event Hub streamen**: Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe von Azure Event Hub. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Azure-Diagnoseprotokollen an Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **An Log Analytics senden**: Schreibt Protokolle in den Dienst Azure OMS Log Analytics. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+Sowohl der inkrementelle Bericht als auch der Abschlussbericht zur Entschärfung enthält Felder zu den folgenden Bereichen:
+- Angriffsvektoren
+- Statistiken zum Datenverkehr
+- Grund für verworfene Pakete
+- Beteiligte Protokolle
+- Top 10 der Länder/Regionen
+- Top 10 der Quell-ASNs
+
+## <a name="configure-ddos-attack-mitigation-flow-logs"></a>Konfigurieren der Protokolle zum Entschärfungsverlauf von DDoS-Angriffen
+Mit Protokollen zum Entschärfungsverlauf für Angriffe können Sie den verworfenen Datenverkehr, weitergeleiteten Datenverkehr und andere interessante Datenpunkte bei einem aktiven DDoS-Angriff nahezu in Echtzeit prüfen. Sie können den konstanten Strom dieser Daten in Ihren SIEM-Systemen per Event Hub erfassen, um eine Überwachung nahezu in Echtzeit zu ermöglichen, ggf. Aktionen durchzuführen und Ihre erforderlichen Abwehrmaßnahmen zu ermitteln. 
+
+1. Wählen Sie oben im Portal auf der linken Seite **Alle Dienste** aus.
+2. Geben Sie *Monitor* in das Feld **Filter** ein. Wenn **Monitor** in den Ergebnissen angezeigt wird, wählen Sie diese Angabe aus.
+3. Wählen Sie unter **EINSTELLUNGEN** die Option **Diagnoseeinstellungen** aus.
+4. Wählen Sie das **Abonnement** und die **Ressourcengruppe** aus, die die öffentliche zu protokollierende IP-Adresse enthält.
+5. Wählen Sie **Öffentliche IP-Adresse** für **Ressourcentyp** aus, wählen Sie dann die jeweilige öffentliche IP-Adresse aus, für die Metriken protokolliert werden sollen.
+6. Wählen Sie **Turn on diagnostics to collect the DDoSMitigationFlowLogs log** (Diagnose zum Erfassen des DDoSMitigationFlowLogs-Protokolls aktivieren) und dann so viele der folgenden Optionen aus, wie Sie benötigen:
+
+    - **In einem Speicherkonto archivieren**: Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **An einen Event Hub streamen**: Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe von Azure Event Hub. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Azure-Diagnoseprotokollen an Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **An Log Analytics senden**: Schreibt Protokolle in den Dienst Azure OMS Log Analytics. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+7. Zum Anzeigen der Verlaufsprotokolldaten im Azure Analytics-Dashboard können Sie das Beispieldashboard von https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip importieren.
+
+Flussprotokolle enthalten die folgenden Felder: 
+- Quell-IP
+- Ziel-IP
+- Quellport 
+- Zielport 
+- Protokolltyp 
+- Bei der Entschärfung durchgeführte Aktion
+
+
 
 ## <a name="validate-ddos-detection"></a>Überprüfen der DDoS-Erkennung
 

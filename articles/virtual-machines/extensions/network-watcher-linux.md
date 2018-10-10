@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: efd512395b49d3c274bb5aa409d1cbd527673659
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 35cd773c2a30549dde10a73b2fbe6db1a0c8b34a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781886"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989378"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>VM-Erweiterung für den Network Watcher-Agent für Linux
 
@@ -87,7 +87,7 @@ Der folgende JSON-Code zeigt das Schema für die Network Watcher-Agent-Erweiteru
 
 Sie können Azure-VM-Erweiterungen mithilfe einer Azure Resource Manager-Vorlage bereitstellen. Verwenden Sie für die Bereitstellung der Erweiterung für den Network Watcher-Agent das vorangehende JSON-Schema in Ihrer Vorlage.
 
-## <a name="azure-cli-10-deployment"></a>Bereitstellung von Azure CLI 1.0
+## <a name="azure-classic-cli-deployment"></a>Klassische Azure CLI-Bereitstellung
 
 Im folgenden Beispiel wird die VM-Erweiterung für den Network Watcher-Agent über das klassische Bereitstellungsmodell für eine vorhandene VM bereitgestellt:
 
@@ -96,7 +96,7 @@ azure config mode asm
 azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
 ```
 
-## <a name="azure-cli-20-deployment"></a>Bereitstellung von Azure CLI 2.0
+## <a name="azure-cli-deployment"></a>Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle
 
 Im folgenden Beispiel wird die VM-Erweiterung für den Network Watcher-Agent über den Resource Manager für eine vorhandene VM bereitgestellt:
 
@@ -110,7 +110,7 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 Sie können Daten zum Status von Erweiterungsbereitstellungen entweder über das Azure-Portal oder die Azure CLI abrufen.
 
-Das folgende Beispiel zeigt den Bereitstellungsstatus von Erweiterungen in Azure CLI 1.0 für eine VM, die über das klassische Bereitstellungsmodell bereitgestellt wurde:
+Das folgende Beispiel zeigt den Bereitstellungsstatus von Erweiterungen mit der klassischen Azure CLI für eine VM, die über das klassische Bereitstellungsmodell bereitgestellt wurde:
 
 ```azurecli
 azure config mode asm
@@ -122,7 +122,7 @@ Die Ausgabe der Erweiterungsausführung wird in Dateien im folgenden Verzeichnis
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
 `
 
-Das folgende Beispiel zeigt den Bereitstellungsstatus der NetworkWatcherAgentLinux-Erweiterung in Azure CLI 2.0 für eine VM, die über den Resource Manager bereitgestellt wurde:
+Das folgende Beispiel zeigt den Bereitstellungsstatus der NetworkWatcherAgentLinux-Erweiterung mit der Azure CLI für eine VM, die über den Resource Manager bereitgestellt wurde:
 
 ```azurecli
 az vm extension show --name NetworkWatcherAgentLinux --resource-group myResourceGroup1 --vm-name myVM1

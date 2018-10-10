@@ -1,26 +1,26 @@
 ---
-title: Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung – Azure
-description: Es wird beschrieben, wie Sie Apache Ranger-Richtlinien für Hive in einem in die Domäne eingebundenen Azure HDInsight-Dienst konfigurieren.
+title: Konfigurieren von Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket – Azure
+description: Erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive in einem Azure HDInsight-Dienst mit dem Enterprise-Sicherheitspaket konfigurieren.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.openlocfilehash: 55abb5331da24c3914075c21579e5082853b3c1f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/24/2018
+ms.openlocfilehash: bdad0bac0d320b641359df4093ae10c9505b7de2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042079"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993424"
 ---
-# <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung
+# <a name="configure-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive konfigurieren. In diesem Artikel erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Hive-Beispieltabelle „hivesampletable“ einzuschränken. Die Hive-Beispieltabelle „hivesampletable“ ist in HDInsight-Clustern enthalten. Nach dem Konfigurieren der Richtlinien stellen Sie unter Verwendung von Excel und ODBC-Treiber eine Verbindung mit Hive-Tabellen in HDInsight her.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* In die Domäne eingebundener HDInsight-Cluster. Weitere Informationen finden Sie unter [Configure Domain-joined HDInsight clusters (Preview)](apache-domain-joined-configure.md) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]).
+* Ein HDInsight-Cluster mit dem Enterprise-Sicherheitspaket. Weitere Informationen finden Sie unter [Konfigurieren von HDInsight-Clustern mit Enterprise-Sicherheitspaket](apache-domain-joined-configure.md).
 * Arbeitsstation mit Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, Excel 2013 (eigenständige Version) oder Office 2010 Professional Plus.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Herstellen einer Verbindung mit der Apache Ranger-Administratoroberfläche
@@ -34,15 +34,15 @@ Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive konfigurieren. In
    >
 2. Melden Sie sich mit dem Domänenbenutzernamen und dem Kennwort des Clusteradministrators an:
 
-    ![HDInsight mit Domänenverknüpfung – Ranger – Startseite](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    ![Startseite von HDInsight ESP Ranger](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
 
     Ranger kann derzeit nur mit Yarn und Hive verwendet werden.
 
 ## <a name="create-domain-users"></a>Erstellen von Domänenbenutzern
-Unter [Erstellen eines in die Domäne eingebundenen HDInsight-Clusters](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster) finden Sie Informationen zum Erstellen von „hiveruser1“ und „hiveuser2“. Diese beiden Benutzerkonten werden in diesem Tutorial verwendet.
+Unter [Erstellen eines HDInsight-Clusters mit ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp) finden Sie Informationen zum Erstellen von „hiveruser1“ und „hiveuser2“. Diese beiden Benutzerkonten werden in diesem Tutorial verwendet.
 
 ## <a name="create-ranger-policies"></a>Erstellen von Ranger-Richtlinien
-In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf „hivesampletable“. Sie erteilen für bestimmte Spaltengruppen die Berechtigung „Auswählen“. Beide Benutzer wurden mit [Erstellen eines in die Domäne eingebundenen HDInsight-Clusters](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster) erstellt. Im nächsten Abschnitt testen Sie die beiden Richtlinien in Excel.
+In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf „hivesampletable“. Sie erteilen für bestimmte Spaltengruppen die Berechtigung „Auswählen“. Beide Benutzer wurden über [Erstellen eines HDInsight-Clusters mit ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp) erstellt. Im nächsten Abschnitt testen Sie die beiden Richtlinien in Excel.
 
 **So erstellen Sie Ranger-Richtlinien**
 
@@ -57,7 +57,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
    * Benutzer auswählen: hiveuser1
    * Berechtigungen: Auswählen
 
-     ![HDInsight mit Domänenverknüpfung – Ranger – Konfigurieren der Hive-Richtlinie](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+     ![HDInsight ESP Ranger – Konfigurieren einer Hive-Richtlinie](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
      > [!NOTE]
      > Wenn unter „Benutzer auswählen“ kein Domänenbenutzer eingetragen wird, warten Sie kurz, bis Ranger mit AAD synchronisiert wurde.
@@ -86,7 +86,7 @@ Die Anleitung finden Sie unter [Erstellen einer Hive ODBC-Datenquelle](../hadoop
  | Mechanismus | Wählen Sie **Azure HDInsight Service** aus. |
  | HTTP-Pfad | Lassen Sie dieses Feld leer. |
  | Benutzername | Geben Sie hiveuser1@contoso158.onmicrosoft.com ein. Aktualisieren Sie ggf. den Domänennamen, falls er sich unterscheidet. |
- | Password | Geben Sie das Kennwort für „hiveuser1“ ein. |
+ | Kennwort | Geben Sie das Kennwort für „hiveuser1“ ein. |
 
 Klicken Sie vor dem Speichern der Datenquelle auf **Testen**.
 
@@ -131,9 +131,9 @@ So testen Sie die zweite Richtlinie (read-hivesampletable-devicemake), die Sie i
     Nach Abschluss des Vorgangs wurden zwei Datenspalten importiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Configure Domain-joined HDInsight clusters (Preview)](apache-domain-joined-configure.md) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]).
-* Informationen zum Verwalten eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Verwalten von in die Domäne eingebundenen HDInsight-Clustern](apache-domain-joined-manage.md).
-* Informationen zum Ausführen von Hive-Abfragen per SSH für in die Domäne eingebundene HDInsight-Cluster finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Informationen zum Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket finden Sie unter [Konfigurieren von HDInsight-Clustern mit Enterprise-Sicherheitspaket](apache-domain-joined-configure.md).
+* Informationen zur Verwaltung eines HDInsight-Clusters mit ESP finden Sie unter [Verwalten von HDInsight-Clustern mit ESP](apache-domain-joined-manage.md).
+* Informationen zum Ausführen von Hive-Abfragen per SSH für HDInsight-Cluster mit ESP finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 * Informationen zum Verbinden von Hive unter Verwendung von Hive JDBC finden Sie unter [Herstellen einer Verbindung mit Hive unter Azure HDInsight per Hive-JDBC-Treiber](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md).
 * Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Hive ODBC finden Sie unter [Verbinden von Excel über den Microsoft Hive ODBC-Treiber mit Hadoop](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
 * Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Power Query finden Sie unter [Verbinden von Excel mit Hadoop mithilfe von Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md).

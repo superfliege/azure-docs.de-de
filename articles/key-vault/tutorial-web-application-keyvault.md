@@ -9,32 +9,32 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/17/2018
+ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 91e2047998d6e743691821c631e15c94cd63cf15
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d1776fc2347eb1a1f03a834b6a5f847ef5c551e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41918906"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948882"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Tutorial: Konfigurieren einer Azure-Webanwendung zum Lesen eines Geheimnisses aus Key Vault
 
-In diesem Tutorial wird ausführlich erläutert, mit Sie eine Azure-Webanwendung zum Lesen von Informationen aus Key Vault unter Verwendung von verwalteten Dienstidentitäten konfigurieren. Folgendes wird vermittelt:
+In diesem Tutorial wird ausführlich erläutert, wie Sie eine Azure-Webanwendung zum Lesen von Informationen aus Key Vault unter Verwendung von verwalteten Identitäten für Azure-Ressourcen konfigurieren. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Key Vault-Instanz
 > * Speichern eines Geheimnisses in Key Vault
 > * Erstellen einer Azure-Webanwendung
-> * Aktivieren von verwalteten Dienstidentitäten
+> * Aktivieren einer verwalteten Identität für die Webanwendung
 > * Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus Key Vault für die Anwendung
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 
 Geben Sie Folgendes ein, um sich über die Befehlszeilenschnittstelle bei Azure anzumelden:
 
@@ -218,9 +218,9 @@ Zwei NuGet-Pakete müssen für Ihre Webanwendung installiert sein. Führen Sie z
 >[!IMPORTANT]
 > Ein Browserfenster wird geöffnet, und die Meldung „502.5 – Prozessfehler“ wird angezeigt. Dies entspricht dem erwarteten Verhalten. Sie müssen der Anwendung Identitätsberechtigungen zum Lesen von Geheimnissen aus Key Vault gewähren.
 
-## <a name="enable-managed-service-identity"></a>Aktivieren der verwalteten Dienstidentität
+## <a name="enable-a-managed-identity-for-the-web-app"></a>Aktivieren einer verwalteten Identität für die Web-App
 
-Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mithilfe von MSI (Managed Service Identity, verwaltete Dienstidentität) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
+Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mit den Informationen unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
 1. Kehren Sie zur Azure-Befehlszeilenschnittstelle zurück.
 2. Führen Sie den Befehl „assign-identity“ aus, um die Identität für diese Anwendung zu erstellen:
@@ -230,7 +230,7 @@ az webapp identity assign --name "WebKeyVault" --resource-group "ContosoResource
 ```
 
 >[!NOTE]
->Dieser Befehl entspricht dem Aufrufen des Portals und dem Festlegen von **Verwaltete Dienstidentität** auf **Ein** in den Webanwendungseigenschaften.
+>Dieser Befehl entspricht dem Aufrufen des Portals und dem Festlegen der Einstellung **Identity/System assigned** (Identität/Vom System zugewiesen) auf **Ein** in den Webanwendungseigenschaften.
 
 ## <a name="grant-rights-to-the-application-identity"></a>Gewähren von Berechtigungen für die Anwendungsidentität
 

@@ -1,20 +1,22 @@
 ---
 title: Segmentierte Übertragung des Audiodatenstroms | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie die segmentierte Übertragung zum Senden von Audiodatenströmen an den Spracherkennungsdienst verwenden.
+titlesuffix: Azure Cognitive Services
+description: Verwenden der segmentierten Übertragung zum Senden von Audiodatenströmen an den Bing-Spracheingabe-Dienst
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 7d02340932dfc547893c4c40cbe08978b7b93756
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: cf21b11f76592f5df2d81e6bdc10413c79fe895e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373787"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979225"
 ---
 # <a name="chunked-transfer-encoding"></a>Codierung für segmentierte Übertragung
 

@@ -1,5 +1,6 @@
 ---
 title: Erste Schritte mit der Spracherkennungs-API von Microsoft in Java unter Android | Microsoft-Dokumentation
+titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Sprach-API von Microsoft, um Android-Anwendungen zu entwickeln, die gesprochenes Audio in Text umwandeln.
 services: cognitive-services
 author: zhouwangzw
@@ -7,18 +8,19 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: a10f7be1c36fb431016a9867f606e26be858069e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3b1e82d65a3eafb9e41277a18569270ef02cd8e5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373891"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989038"
 ---
-# <a name="get-started-with-speech-recognition-in-java-on-android"></a>Erste Schritte mit der Spracherkennung in Java unter Android
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>Schnellstart: Verwenden der Bing-Spracheingabe-API in Java unter Android
 
-Mit der Spracherkennungs-API können Sie Android-Anwendungen entwickeln, die gesprochenes Audio mithilfe des cloudbasierten Speech-Diensts in Text umwandeln. Die API unterstützt Echtzeitstreaming. Dadurch kann Ihre Anwendung während der Audioübermittlung an den Dienst gleichzeitig und asynchron partielle Erkennungsergebnisse empfangen.
+Mit der Bing-Spracheingabe-API können Sie Android-Anwendungen entwickeln, die gesprochene Audiosignale mithilfe der cloudbasierten Bing-Spracheingabe-API in Text konvertieren. Die API unterstützt Echtzeitstreaming. Hierdurch kann Ihre Anwendung während der Audioübermittlung an den Dienst gleichzeitig und asynchron partielle Erkennungsergebnisse empfangen.
 
 Dieser Artikel veranschaulicht anhand einer Beispielanwendung, wie die Speech-Clientbibliothek für Android verwendet wird, um Spracherkennungsanwendungen in Java für Android-Geräte zu entwickeln.
 
@@ -125,7 +127,7 @@ Wenn Sie den Client mithilfe von `SpeechRecognitionServiceFactory` erstellen, m�
 
 Bei der Clienterstellung mit `SpeechRecognitionServiceFactory` muss außerdem `SpeechRecognitionMode` angegeben werden:
 
-* `ShortPhrase`: Eine Äußerung mit einer Dauer von bis zu 15 Sekunden. Während der Datenübermittlung an den Dienst erhält der Client mehrere Teilergebnisse und ein Endergebnis mit mehreren n besten Optionen.
+* `ShortPhrase`: Eine Äußerung mit einer Dauer von bis zu 15 Sekunden. Während der Datenübermittlung an den Dienst erhält der Client mehrere Teilergebnisse und ein Endergebnis mit mehreren Optionen („n“ beste Optionen).
 * `LongDictation`: Eine Äußerung mit einer Dauer von bis zu zwei Minuten. Während der Datenübermittlung an den Dienst erhält der Client mehrere Teilergebnisse und mehrere Endergebnisse (abhängig davon, wo der Dienst Pausen zwischen Sätzen erkennt).
 
 ### <a name="attach-event-handlers"></a>Anfügen von Ereignishandlern
@@ -136,7 +138,7 @@ An den erstellten Client können verschiedene Ereignishandler angefügt werden:
 * **Fehlerereignisse:** Werden aufgerufen, wenn der Dienst einen Fehler erkennt.
 * **Absichtsereignisse:** Werden für Clients vom Typ „WithIntent“ (nur im Modus `ShortPhrase`) aufgerufen, nachdem das Endergebnis der Erkennung analysiert und in eine strukturierte JSON-Absicht konvertiert wurde.
 * **Ergebnisereignisse:**
-  * Im Modus `ShortPhrase` wird dieses Ereignis aufgerufen und gibt die n besten Ergebnisse zurück, wenn Sie mit Sprechen fertig sind.
+  * Im Modus `ShortPhrase` wird dieses Ereignis aufgerufen und gibt die n besten Ergebnisse zurück, wenn Sie mit dem Sprechen fertig sind.
   * Im Modus `LongDictation` kann der Ereignishandler mehrmals aufgerufen werden (abhängig davon, wo der Dienst Pausen zwischen Sätzen erkennt).
   * **Für jede der n besten Optionen** werden ein Zuverlässigkeitswert und mehrere Formen des erkannten Texts zurückgegeben. Weitere Informationen finden Sie unter [Output format](../Concepts.md#output-format) (Ausgabeformat).
 

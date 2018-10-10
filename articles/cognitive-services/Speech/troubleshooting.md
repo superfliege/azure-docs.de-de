@@ -1,22 +1,24 @@
 ---
-title: Problembehandlung | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Probleme bei der Verwendung des Speech-Diensts von Microsoft beheben.
+title: Beheben von Problemen bei der Bing-Spracheingabe | Microsoft-Dokumentation
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie Probleme bei der Verwendung der Bing-Spracheingabe beheben.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 04f3da19939d523d201d357b2b0293db1508431d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 532916106f62e0236b8dd53cf7988a648355aef4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373810"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991860"
 ---
-# <a name="troubleshooting"></a>Problembehandlung
+# <a name="troubleshooting-bing-speech"></a>Beheben von Problemen bei der Bing-Spracheingabe
 
 ## <a name="error-http-403-forbidden"></a>Fehler `HTTP 403 Forbidden`
 

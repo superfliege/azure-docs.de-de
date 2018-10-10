@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a40f4489e63c30a101dd708b5a175c25788fb04b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145130"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976753"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Rollen von X.509-Gerätezertifikaten
 
@@ -41,7 +41,7 @@ Zertifikate auf einem Gerät sollten immer an einem sicheren Ort gespeichert wer
 
 Wenn Ihre Zertifikate von einem Drittanbieter stammen, müssen Sie überprüfen, wie dieser seine Zertifikate rollt. Der Prozess kann in Ihrer Vereinbarung mit dem Drittanbieter enthalten oder als separater Dienst verfügbar sein. 
 
-Wenn Sie Ihre eigenen Gerätezertifikate verwalten, müssen Sie eine eigene Pipeline für die Aktualisierung von Zertifikaten erstellen. Stellen Sie sicher, dass sowohl alte als auch neue untergeordnete Zertifikate denselben allgemeinen Namen (Common Name, CN) aufweisen. Durch die Verwendung desselben allgemeinen Namens kann das Gerät sich selbst erneut bereitstellen, ohne einen doppelten Registrierungseintrag zu erstellen.
+Wenn Sie Ihre eigenen Gerätezertifikate verwalten, müssen Sie eine eigene Pipeline für die Aktualisierung von Zertifikaten erstellen. Stellen Sie sicher, dass sowohl alte als auch neue untergeordnete Zertifikate denselben allgemeinen Namen (Common Name, CN) aufweisen. Durch die Verwendung desselben allgemeinen Namens kann das Gerät sich selbst erneut bereitstellen, ohne einen doppelten Registrierungseintrag zu erstellen. 
 
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>Rollen des Zertifikats im IoT Hub
@@ -78,10 +78,13 @@ Wenn Sie Zertifikate als Reaktion auf eine Sicherheitsverletzung rollen, sollten
 
     ![Verwalten individueller Registrierungen](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
-3. Nachdem das kompromittierte Zertifikat aus Provisioning Service entfernt wurde, navigieren Sie zu Ihrem IoT Hub, und entfernen Sie die dem kompromittierten Zertifikat zugeordnete Geräteregistrierung.     
+3. Nachdem das kompromittierte Zertifikat aus dem Provisioning-Dienst entfernt wurde, kann es weiterhin verwendet werden, um Geräteverbindungen mit dem IoT-Hub herzustellen – sofern dort eine Geräteregistrierung dafür vorhanden ist. Es gibt zwei Vorgehensweisen: 
+
+    Die erste Möglichkeit ist das manuelle Navigieren zu Ihrem IoT-Hub und das sofortige Entfernen der Geräteregistrierung, die dem kompromittierten Zertifikat zugeordnet ist. Wenn das Gerät dann mit einem aktualisierten Zertifikat erneut bereitgestellt wird, wird eine neue Geräteregistrierung erstellt.     
 
     ![Entfernen der IoT Hub-Geräteregistrierung](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
+    Die zweite Möglichkeit ist die Verwendung der Unterstützung für die erneute Bereitstellung, um das Gerät auf demselben IoT-Hub erneut bereitzustellen. Dieser Ansatz kann genutzt werden, um das Zertifikat für die Geräteregistrierung auf dem IoT-Hub zu ersetzen. Weitere Informationen finden Sie unter [How to reprovision devices](how-to-reprovision.md) (Erneutes Bereitstellen von Geräten).
 
 ## <a name="individual-enrollments-and-certificate-expiration"></a>Individuelle Registrierungen und Zertifikatablauf
 
@@ -118,9 +121,14 @@ Um eine Gruppenregistrierung als Reaktion auf eine Sicherheitsverletzung zu aktu
 
     ![Auswählen des neuen Stammzertifizierungsstellenzertifikats](./media/how-to-roll-certificates/select-new-root-cert.png)
 
-6. Nachdem das kompromittierte Zertifikat aus Provisioning Service entfernt wurde, navigieren Sie zum verknüpften IoT Hub mit den kompromittierten Geräteregistrierungen, und entfernen Sie die dem kompromittierten Zertifikat zugeordneten Registrierungen.
+6. Nachdem das kompromittierte Zertifikat aus dem Provisioning-Dienst entfernt wurde, kann es weiterhin verwendet werden, um Geräteverbindungen mit dem IoT-Hub herzustellen – sofern dort Geräteregistrierungen dafür vorhanden sind. Es gibt zwei Vorgehensweisen: 
+
+    Die erste Möglichkeit ist das manuelle Navigieren zu Ihrem IoT-Hub und das sofortige Entfernen der Geräteregistrierung, die dem kompromittierten Zertifikat zugeordnet ist. Wenn Ihre Geräte dann mit aktualisierten Zertifikaten erneut bereitgestellt wurden, wird jeweils eine neue Geräteregistrierung erstellt.     
 
     ![Entfernen der IoT Hub-Geräteregistrierung](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    Die zweite Möglichkeit ist die Verwendung der Unterstützung für die erneute Bereitstellung, um Ihre Geräte auf demselben IoT-Hub erneut bereitzustellen. Dieser Ansatz kann verwendet werden, um Zertifikate für Geräteregistrierungen auf dem IoT-Hub zu ersetzen. Weitere Informationen finden Sie unter [How to reprovision devices](how-to-reprovision.md) (Erneutes Bereitstellen von Geräten).
+
 
 
 #### <a name="update-compromised-intermediate-certificates"></a>Aktualisieren kompromittierter Zwischenzertifikate
@@ -134,9 +142,13 @@ Um eine Gruppenregistrierung als Reaktion auf eine Sicherheitsverletzung zu aktu
     ![Verwalten individueller Registrierungen](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
-3. Nachdem das kompromittierte Zertifikat aus Provisioning Service entfernt wurde, navigieren Sie zum verknüpften IoT Hub mit der Geräteregistrierung, und entfernen Sie die dem kompromittierten Zertifikat zugeordnete Registrierung.
+3. Nachdem das kompromittierte Zertifikat aus dem Provisioning-Dienst entfernt wurde, kann es weiterhin verwendet werden, um Geräteverbindungen mit dem IoT-Hub herzustellen – sofern dort Geräteregistrierungen dafür vorhanden sind. Es gibt zwei Vorgehensweisen: 
+
+    Die erste Möglichkeit ist das manuelle Navigieren zu Ihrem IoT-Hub und das sofortige Entfernen der Geräteregistrierung, die dem kompromittierten Zertifikat zugeordnet ist. Wenn Ihre Geräte dann mit aktualisierten Zertifikaten erneut bereitgestellt wurden, wird jeweils eine neue Geräteregistrierung erstellt.     
 
     ![Entfernen der IoT Hub-Geräteregistrierung](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    Die zweite Möglichkeit ist die Verwendung der Unterstützung für die erneute Bereitstellung, um Ihre Geräte auf demselben IoT-Hub erneut bereitzustellen. Dieser Ansatz kann verwendet werden, um Zertifikate für Geräteregistrierungen auf dem IoT-Hub zu ersetzen. Weitere Informationen finden Sie unter [How to reprovision devices](how-to-reprovision.md) (Erneutes Bereitstellen von Geräten).
 
 
 ## <a name="enrollment-groups-and-certificate-expiration"></a>Registrierungsgruppen und Zertifikatablauf

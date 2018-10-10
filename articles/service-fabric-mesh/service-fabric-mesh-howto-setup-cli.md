@@ -9,12 +9,12 @@ ms.date: 07/26/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: c0e2aefe1222263b169e21490da079b165a57321
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 5e8eaca7f759842a8097184dafc1f3ea183b898c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42108477"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993186"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>Einrichten der Service Fabric Mesh CLI
 Die Service Fabric Mesh CLI ist zum Bereitstellen und Verwalten von Ressourcen in Service Fabric Mesh erforderlich. 
@@ -23,7 +23,8 @@ Für die Vorschauversion wird die Azure Service Fabric Mesh CLI als eine Erweite
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie die Version 2.0.43 oder höher der Azure CLI installieren. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und zu einem Upgrade auf die neueste Version der CLI finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install].
+## <a name="install-the-service-fabric-mesh-cli-locally"></a>Lokales Installieren der Service Fabric Mesh-Befehlszeilenschnittstelle
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie die Version 2.0.43 oder höher der Azure CLI installieren. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und zu einem Upgrade auf die neueste Version der CLI finden Sie unter [Installieren der Azure CLI][azure-cli-install].
 
 Installieren Sie das Azure Service Fabric Mesh CLI-Erweiterungsmodul mit dem folgenden Befehl. 
 

@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Azure-Anwendungsgateways – Azure CLI 1.0 | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe der Azure CLI 1.0 in Resource Manager ein Azure-Anwendungsgateway erstellen.
+title: Erstellen einer Azure Application Gateway-Instanz – klassische Azure CLI | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie ein Anwendungsgateway mit der klassischen Azure CLI in Resource Manager erstellen.
 services: application-gateway
 documentationcenter: na
 author: vhorne
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 29eec4ad1883db9d824b416bdfc7e984a5af4fbe
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e834b1633f17ecec74ae17e962de445ad8d6dccd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35636473"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974424"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mithilfe der Azure-CLI
 
@@ -29,8 +29,8 @@ ms.locfileid: "35636473"
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Klassische Azure PowerShell](application-gateway-create-gateway.md)
 > * [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
-> * [Azure CLI 1.0](application-gateway-create-gateway-cli.md)
-> * [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
+> * [Die klassische Azure CLI](application-gateway-create-gateway-cli.md)
+> * [Azure-CLI](application-gateway-create-gateway-cli.md)
 > 
 > 
 
@@ -38,7 +38,7 @@ Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwe
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Voraussetzung: Installieren der Azure-Befehlszeilenschnittstelle
 
-Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI) installieren](../xplat-cli-install.md) und sich [bei Azure anmelden](/cli/azure/authenticate-azure-cli). 
+Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure CLI installieren](../xplat-cli-install.md) und sich bei [Azure anmelden](/cli/azure/authenticate-azure-cli). 
 
 > [!NOTE]
 > Wenn Sie über kein Azure-Konto verfügen, müssen Sie eines erstellen. Sie können sich [hier](../active-directory/fundamentals/sign-up-organization.md)für eine kostenlose Testversion registrieren.

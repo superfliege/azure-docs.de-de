@@ -4,20 +4,20 @@ description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Azure F
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 07/19/2018
+ms.date: 09/11/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 31f5b2792aa83d15a1478cf201ca674995816430
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 43acff5c4d37c46245566fb2e1d74d3e14d527bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142905"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949841"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
-[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
+[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
 
-In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -Funktionen beantwortet, z.B. die Nutzung von Azure File Sync mit Azure Files. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
+In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -Funktionen beantwortet, z.B. die Nutzung der Azure-Dateisynchronisierung mit Azure Files. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
 
 1. Im Abschnitt „Kommentare“ dieses Artikels.
 2. [Azure Storage-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
@@ -34,8 +34,8 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Sie können die Dateifreigabe mithilfe des SMB 3.0-Protokolls auf Ihrem lokalen Computer einbinden oder mithilfe von Tools wie dem [Storage-Explorer](http://storageexplorer.com/) auf Dateien in Ihrer Dateifreigabe zugreifen. In Ihrer Anwendung können Sie über Speicherclientbibliotheken, REST-APIs, PowerShell oder die Azure CLI auf Ihre Dateien in der Azure-Dateifreigabe zugreifen.
 
 * <a id="what-is-afs"></a>
-**Was ist Azure File Sync?**  
-    Sie können Azure File Sync verwenden, um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, Network File System (NFS) und File Transfer Protocol Service (FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
+**Was ist Azure-Dateisynchronisierung?**  
+    Sie können die Azure-Dateisynchronisierung verwenden, um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, Network File System (NFS) und File Transfer Protocol Service (FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
 
 * <a id="files-versus-blobs"></a>
 **Warum sollte ich für meine Daten eine Azure-Dateifreigabe anstelle von Azure Blob Storage verwenden?**  
@@ -43,7 +43,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     
     Der Azure Blob Storage ist für umfangreiche native Cloudanwendungen geeignet, die unstrukturierte Daten speichern müssen. In Bezug auf die Maximierung von Leistung und Skalierbarkeit stellt der Azure Blob Storage eine einfachere Speicherabstraktion dar als ein echtes Dateisystem. Sie können auf den Azure Blob Storage nur über REST-basierte Clientbibliotheken (oder direkt über das REST-basierte Protokoll) zugreifen.
 
-    Azure Files ist eigentlich ein Dateisystem. Azure Files verfügt über alle Datei-Abstracts, die Sie bei der jahrelangen Arbeit mit lokalen Betriebssystemen kennen und schätzen gelernt haben. Wie Azure Blob Storage auch, verfügt Azure Files über eine REST-Schnittstelle und REST-basierte Clientbibliotheken. Im Gegensatz zu Azure Blob Storage ermöglicht Azure Files den SMB-Zugriff auf Azure-Dateifreigaben. Per SMB können Sie eine Azure-Dateifreigabe direkt unter Windows, Linux oder macOS (lokal oder auf Cloud-VMs) bereitstellen, ohne Codes schreiben oder dem Dateisystem spezielle Treiber hinzufügen zu müssen. Außerdem können Sie Azure-Dateifreigaben auf lokalen Dateiservern zwischenspeichern, indem Sie Azure File Sync nutzen, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen. 
+    Azure Files ist eigentlich ein Dateisystem. Azure Files verfügt über alle Datei-Abstracts, die Sie bei der jahrelangen Arbeit mit lokalen Betriebssystemen kennen und schätzen gelernt haben. Wie Azure Blob Storage auch, verfügt Azure Files über eine REST-Schnittstelle und REST-basierte Clientbibliotheken. Im Gegensatz zu Azure Blob Storage ermöglicht Azure Files den SMB-Zugriff auf Azure-Dateifreigaben. Per SMB können Sie eine Azure-Dateifreigabe direkt unter Windows, Linux oder macOS (lokal oder auf Cloud-VMs) bereitstellen, ohne Codes schreiben oder dem Dateisystem spezielle Treiber hinzufügen zu müssen. Außerdem können Sie Azure-Dateifreigaben auf lokalen Dateiservern per Azure-Dateisynchronisierung zwischenspeichern, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen. 
    
     Eine ausführliche Beschreibung der Unterschiede zwischen Azure Files und dem Azure Blob Storage finden Sie unter [Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Weitere Informationen zum Azure Blob Storage finden Sie unter [Einführung in Blob Storage](../blobs/storage-blobs-introduction.md).
 
@@ -52,7 +52,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
     Das Ausführen eines Dateiservers mit Azure-Datenträgern als Back-End-Speicher ist aus einigen Gründen normalerweise aber deutlich teurer als die Verwendung einer Azure-Dateifreigabe. Zunächst einmal müssen Sie nicht nur für die Kosten des Datenträgerspeichers aufkommen, sondern auch für die Ausgaben zum Betrieb von einer oder mehreren Azure-VMs. Zweitens müssen Sie auch die VMs verwalten, die zum Ausführen des Dateiservers verwendet werden. Beispielsweise sind Sie für Upgrades des Betriebssystems verantwortlich. Und falls Daten lokal zwischengespeichert werden müssen, sind Sie auch für die Einrichtung und Verwaltung der Replikationstechnologien (z.B. DFS-Replikation (Distributed File System Replication)) zuständig.
 
-    Ein Ansatz, bei dem Sie jeweils die Vorteile von Azure Files sowie eines unter Azure Virtual Machines gehosteten Dateiservers (zusätzlich zur Verwendung von Azure-Datenträgern als Back-End-Speicher) nutzen können, ist die Installation von Azure File Sync auf einem Dateiserver, der auf einer Cloud-VM gehostet wird. Wenn sich die Azure-Dateifreigabe in derselben Region wie Ihr Dateiserver befindet, können Sie das Cloudtiering aktivieren und den Prozentsatz des freien Volumespeicherplatzes auf den Maximalwert (99%) festlegen. So wird die minimale Duplizierung von Daten sichergestellt. Außerdem können Sie für Ihre Dateiserver beliebige Anwendungen nutzen, z.B. Anwendungen, die eine Unterstützung des NFS-Protokolls benötigen.
+    Ein Ansatz, bei dem Sie jeweils die Vorteile von Azure Files sowie eines unter Azure Virtual Machines gehosteten Dateiservers (zusätzlich zur Verwendung von Azure-Datenträgern als Back-End-Speicher) nutzen können, ist die Installation der Azure-Dateisynchronisierung auf einem Dateiserver, der auf einer Cloud-VM gehostet wird. Wenn sich die Azure-Dateifreigabe in derselben Region wie Ihr Dateiserver befindet, können Sie das Cloudtiering aktivieren und den Prozentsatz des freien Volumespeicherplatzes auf den Maximalwert (99%) festlegen. So wird die minimale Duplizierung von Daten sichergestellt. Außerdem können Sie für Ihre Dateiserver beliebige Anwendungen nutzen, z.B. Anwendungen, die eine Unterstützung des NFS-Protokolls benötigen.
 
     Informationen zu einer Möglichkeit, wie Sie einen leistungsstarken und hochverfügbaren Dateiserver in Azure einrichten, finden Sie unter [Deploying IaaS VM Guest Clusters in Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/) (Bereitstellen von IaaS-VM-Gastclustern in Microsoft Azure). Eine ausführliche Beschreibung der Unterschiede zwischen Azure Files und Azure-Datenträgern finden Sie unter [Entscheidung zwischen Azure Blob Storage, Azure Files und Azure-Datenträger](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Weitere Informationen zu Azure-Datenträgern finden Sie unter [Azure Managed Disks – Übersicht](../../virtual-machines/windows/managed-disks-overview.md).
 
@@ -84,8 +84,8 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 ## <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
 
 * <a id="afs-region-availability"></a>
-**Welche Regionen werden für Azure File Sync unterstützt?**  
-    Eine Liste der verfügbaren Regionen finden Sie im Abschnitt [Regionsverfügbarkeit](storage-sync-files-planning.md#region-availability) im Azure File Sync-Planungshandbuch. Wir erweitern den Support kontinuierlich auf weitere Regionen, einschließlich nicht öffentliche Regionen.
+**Welche Regionen werden für die Azure-Dateisynchronisierung unterstützt?**  
+    Eine Liste der verfügbaren Regionen finden Sie im Abschnitt [Regionsverfügbarkeit](storage-sync-files-planning.md#region-availability) im Planungshandbuch für die Azure-Dateisynchronisierung. Wir erweitern den Support kontinuierlich auf weitere Regionen, einschließlich nicht öffentliche Regionen.
 
 * <a id="cross-domain-sync"></a>
 **Kann ich in Domänen eingebundene Server und nicht in Domänen eingebundene Server in derselben Synchronisierungsgruppe verwenden?**  
@@ -96,19 +96,19 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
 * <a id="afs-conflict-resolution"></a>**Was passiert, wenn dieselbe Datei ungefähr zur gleichen Zeit auf zwei Servern geändert wird?**  
-    Für Azure File Sync wird eine einfache Strategie zur Konfliktlösung verwendet: Die Änderungen der Dateien, die gleichzeitig auf zwei Servern vorgenommen werden, werden jeweils beibehalten. Für die zuletzt vorgenommene Änderung wird der ursprüngliche Dateiname beibehalten. Bei der älteren Datei werden der „Quellcomputer“ und die Konfliktnummer an den Namen angefügt. Hierfür wird die folgende Taxonomie verwendet: 
+    Für die Azure-Dateisynchronisierung wird eine einfache Strategie zur Konfliktlösung verwendet: Die Änderungen der Dateien, die gleichzeitig auf zwei Servern vorgenommen werden, werden jeweils beibehalten. Für die zuletzt vorgenommene Änderung wird der ursprüngliche Dateiname beibehalten. Bei der älteren Datei werden der „Quellcomputer“ und die Konfliktnummer an den Namen angefügt. Hierfür wird die folgende Taxonomie verwendet: 
    
     \<Dateiname_ohne_Erweiterung\>-\<Name_des_Computers\>\[-#\].\<Erweiterung\>  
 
     Beim ersten Konflikt für „CompanyReport.docx“ wird beispielsweise „CompanyReport-CentralServer.docx“ verwendet, wenn CentralServer der Ort ist, an dem der ältere Schreibvorgang durchgeführt wurde. Der zweite Konflikt hat dann den Namen „CompanyReport-CentralServer-1.docx“.
 
 * <a id="afs-storage-redundancy"></a>
-**Wird georedundanter Speicher von Azure File Sync unterstützt?**  
-    Ja. Azure Files unterstützt sowohl lokal redundanten Speicher (LRS) als auch georedundanten Speicher (GRS). Bei einem GRS-Failover zwischen gekoppelten Regionen wird empfohlen, die neue Region lediglich als Datensicherung zu behandeln. Azure File Sync beginnt nicht automatisch die Synchronisierung mit der neuen primären Region. 
+**Wird georedundanter Speicher von der Azure-Dateisynchronisierung unterstützt?**  
+    Ja. Azure Files unterstützt sowohl lokal redundanten Speicher (LRS) als auch georedundanten Speicher (GRS). Bei einem GRS-Failover zwischen gekoppelten Regionen wird empfohlen, die neue Region lediglich als Datensicherung zu behandeln. Die Azure-Dateisynchronisierung beginnt nicht automatisch die Synchronisierung mit der neuen primären Region. 
 
 * <a id="sizeondisk-versus-size"></a>
-**Warum stimmt die Eigenschaft *Größe auf Datenträger* einer Datei nach der Verwendung von Azure File Sync nicht mit der Eigenschaft *Größe* überein?**  
-    Der Windows-Datei-Explorer verwendet zwei Eigenschaften zur Darstellung einer Dateigröße: **Größe** und **Größe auf Festplatte**. Diese Eigenschaften unterscheiden sich leicht in ihrer Bedeutung. **Größe** steht für die vollständige Größe der Datei. **Größe auf Datenträger** steht für die Größe des Dateidatenstroms, der auf dem Datenträger gespeichert ist. Die Werte dieser Eigenschaften können aus unterschiedlichen Gründen variieren, z.B. aufgrund einer Komprimierung, einer Datendeduplizierung oder eines Cloudtiering mit Azure File Sync. Wenn eine Datei per Tiering auf eine Azure-Dateifreigabe ausgelagert wird, ist die Größe auf dem Datenträger gleich null, da der Dateidatenstrom nicht auf dem Datenträger, sondern in Ihrer Azure-Dateifreigabe gespeichert wird. Für eine Datei kann das Tiering auch teilweise durchgeführt werden (bzw. teilweise zurückgerufen werden). Bei einer teilweise per Tiering ausgelagerten Datei befindet sich ein Teil der Datei auf dem Datenträger. Dies kann vorkommen, wenn Dateien von Anwendungen, z.B. Multimedia-Playern oder ZIP-Hilfsprogrammen, teilweise gelesen werden. 
+**Warum stimmt die Eigenschaft *Größe auf Datenträger* einer Datei nach der Verwendung der Azure-Dateisynchronisierung nicht mit der Eigenschaft *Größe* überein?**  
+    Der Windows-Datei-Explorer verwendet zwei Eigenschaften zur Darstellung einer Dateigröße: **Größe** und **Größe auf Festplatte**. Diese Eigenschaften unterscheiden sich leicht in ihrer Bedeutung. **Größe** steht für die vollständige Größe der Datei. **Größe auf Datenträger** steht für die Größe des Dateidatenstroms, der auf dem Datenträger gespeichert ist. Die Werte dieser Eigenschaften können aus unterschiedlichen Gründen variieren, z.B. aufgrund einer Komprimierung, einer Datendeduplizierung oder eines Cloudtiering mit der Azure-Dateisynchronisierung. Wenn eine Datei per Tiering auf eine Azure-Dateifreigabe ausgelagert wird, ist die Größe auf dem Datenträger gleich null, da der Dateidatenstrom nicht auf dem Datenträger, sondern in Ihrer Azure-Dateifreigabe gespeichert wird. Für eine Datei kann das Tiering auch teilweise durchgeführt werden (bzw. teilweise zurückgerufen werden). Bei einer teilweise per Tiering ausgelagerten Datei befindet sich ein Teil der Datei auf dem Datenträger. Dies kann vorkommen, wenn Dateien von Anwendungen, z.B. Multimedia-Playern oder ZIP-Hilfsprogrammen, teilweise gelesen werden. 
 
 * <a id="is-my-file-tiered"></a>
 **Woran erkenne ich, ob eine Datei per Tiering ausgelagert wurde?**  
@@ -120,30 +120,30 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
         | Attributbuchstabe | Attribut | Definition |
         |:----------------:|-----------|------------|
         | Eine Datei | Archivieren | Gibt an, dass die Datei durch Sicherungssoftware gesichert werden sollte. Dieses Attribut ist immer festgelegt, unabhängig davon, ob die Datei per Tiering ausgelagert oder vollständig auf dem Datenträger gespeichert wurde. |
-        | P | Sparsedatei | Gibt an, dass die Datei eine „Sparsedatei“ (platzsparende Datei) ist. Eine platzsparende Datei ist ein spezieller Typ von Datei, der von NTFS zur effizienten Verwendung bereitgestellt wird, wenn die Datei im Datenträgerdatenstrom nahezu leer ist. Platzsparende Dateien werden von Azure File Sync genutzt, da eine Datei entweder vollständig per Tiering ausgelagert oder teilweise zurückgerufen wurde. Bei einer vollständig per Tiering ausgelagerten Datei wird der Dateidatenstrom in der Cloud gespeichert. Bei einer teilweise zurückgerufenen Datei befindet sich dieser Teil der Datei bereits auf dem Datenträger. Wenn eine Datei vollständig auf die Festplatte zurückgerufen wird, konvertiert Azure File Sync diese platzsparende Datei in eine normale Datei. |
-        | L | Analysepunkt | Gibt an, dass die Datei über einen Analysepunkt verfügt. Ein Analysepunkt ist ein spezieller Zeiger für die Verwendung durch einen Dateisystemfilter. Azure File Sync verwendet Analysepunkte, um den Speicherort für den Azure File Sync-Dateisystemfilter (StorageSync.sys) zu definieren, an dem die Datei in der Cloud gespeichert ist. Dies erleichtert den nahtlosen Zugriff. Benutzer müssen nicht wissen, dass Azure File Sync verwendet wird oder wie der Zugriff auf die Datei in Ihrer Azure-Dateifreigabe möglich ist. Wenn eine Datei vollständig zurückgerufen wird, entfernt Azure File Sync den Analysepunkt aus der Datei. |
-        | O | Offline | Gibt an, dass ein Teil des Dateiinhalts oder der gesamte Dateiinhalt nicht auf dem Datenträger gespeichert ist. Wenn eine Datei vollständig zurückgerufen wird, entfernt Azure File Sync dieses Attribut. |
+        | P | Sparsedatei | Gibt an, dass die Datei eine „Sparsedatei“ (platzsparende Datei) ist. Eine platzsparende Datei ist ein spezieller Typ von Datei, der von NTFS zur effizienten Verwendung bereitgestellt wird, wenn die Datei im Datenträgerdatenstrom nahezu leer ist. Platzsparende Dateien werden von der Azure-Dateisynchronisierung genutzt, da eine Datei entweder vollständig per Tiering ausgelagert oder teilweise zurückgerufen wurde. Bei einer vollständig per Tiering ausgelagerten Datei wird der Dateidatenstrom in der Cloud gespeichert. Bei einer teilweise zurückgerufenen Datei befindet sich dieser Teil der Datei bereits auf dem Datenträger. Wenn eine Datei vollständig auf die Festplatte zurückgerufen wird, konvertiert die Azure-Dateisynchronisierung diese platzsparende Datei in eine normale Datei. |
+        | L | Analysepunkt | Gibt an, dass die Datei über einen Analysepunkt verfügt. Ein Analysepunkt ist ein spezieller Zeiger für die Verwendung durch einen Dateisystemfilter. Die Azure-Dateisynchronisierung verwendet Analysepunkte, um den Speicherort für den Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) zu definieren, an dem die Datei in der Cloud gespeichert ist. Dies erleichtert den nahtlosen Zugriff. Benutzer müssen nicht wissen, dass die Azure-Dateisynchronisierung verwendet wird oder wie der Zugriff auf die Datei in Ihrer Azure-Dateifreigabe möglich ist. Wenn eine Datei vollständig zurückgerufen wird, entfernt die Azure-Dateisynchronisierung den Analysepunkt aus der Datei. |
+        | O | Offline | Gibt an, dass ein Teil des Dateiinhalts oder der gesamte Dateiinhalt nicht auf dem Datenträger gespeichert ist. Wenn eine Datei vollständig zurückgerufen wird, entfernt die Azure-Dateisynchronisierung dieses Attribut. |
 
         ![Dialogfeld „Eigenschaften“ einer Datei mit ausgewählter Registerkarte „Details“](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
         Sie können die Attribute für alle Dateien in einem Ordner anzeigen, indem das Feld **Attribute** der Tabellenanzeige des Datei-Explorers hinzugefügt wird. Klicken Sie hierzu mit der rechten Maustaste auf eine vorhandene Spalte (z.B. **Größe**). Wählen Sie anschließend **Mehr** und dann in der Dropdownliste **Attribute** aus.
         
    * **Verwenden Sie `fsutil`, um nach Analysepunkten in einer Datei zu suchen.**
-       Wie für die vorherige Option beschrieben, verfügt eine per Tiering ausgelagerte Datei immer über einen festgelegten Analysepunkt. Ein Analysepunkt ist ein spezieller Zeiger für den Azure File Sync-Dateisystemfilter (StorageSync.sys). Führen Sie das Hilfsprogramm `fsutil` an einer Eingabeaufforderung mit erhöhten Rechten oder in einem PowerShell-Fenster aus, um zu überprüfen, ob eine Datei einen Analysepunkt hat:
+       Wie für die vorherige Option beschrieben, verfügt eine per Tiering ausgelagerte Datei immer über einen festgelegten Analysepunkt. Ein Analysepunkt ist ein spezieller Zeiger für den Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys). Führen Sie das Hilfsprogramm `fsutil` an einer Eingabeaufforderung mit erhöhten Rechten oder in einem PowerShell-Fenster aus, um zu überprüfen, ob eine Datei einen Analysepunkt hat:
     
         ```PowerShell
         fsutil reparsepoint query <your-file-name>
         ```
 
-        Falls die Datei einen Analysepunkt enthält, sollte **Analysenkennungswert : 0x8000001e** angezeigt werden. Dieser Hexadezimalwert ist der Analysepunktwert, der Azure File Sync zuzuordnen ist. Die Ausgabe enthält außerdem die Analysedaten, die für den Pfad zu Ihrer Datei auf der Azure-Dateifreigabe stehen.
+        Falls die Datei einen Analysepunkt enthält, sollte **Analysenkennungswert : 0x8000001e** angezeigt werden. Dieser Hexadezimalwert ist der Analysepunktwert, der der Azure-Dateisynchronisierung zuzuordnen ist. Die Ausgabe enthält außerdem die Analysedaten, die für den Pfad zu Ihrer Datei auf der Azure-Dateifreigabe stehen.
 
         > [!WARNING]  
-        > Der Hilfsprogrammbefehl `fsutil reparsepoint` bietet außerdem die Möglichkeit, einen Analysepunkt zu löschen. Führen Sie diesen Befehl nur aus, wenn Sie vom Engineering-Team von Azure File Sync dazu aufgefordert werden. Bei der Ausführung dieses Befehls kann es zu Datenverlusten kommen. 
+        > Der Hilfsprogrammbefehl `fsutil reparsepoint` bietet außerdem die Möglichkeit, einen Analysepunkt zu löschen. Führen Sie diesen Befehl nur aus, wenn Sie vom Engineering-Team für die Azure-Dateisynchronisierung dazu aufgefordert werden. Bei der Ausführung dieses Befehls kann es zu Datenverlusten kommen. 
 
 * <a id="afs-recall-file"></a>**Eine Datei, die ich verwenden möchte, wurde per Tiering ausgelagert. Wie kann ich die Datei auf den Datenträger zurückrufen, um sie lokal zu verwenden?**  
-    Der einfachste Weg zum Zurückrufen einer Datei auf den Datenträger besteht darin, sie zu öffnen. Der Azure File Sync-Dateisystemfilter (StorageSync.sys) lädt die Datei nahtlos von Ihrer Azure-Dateifreigabe herunter, ohne dass Sie irgendetwas tun müssen. Bei Dateitypen, die teilweise gelesen werden können (z.B. Multimedia- oder ZIP-Dateien), wird beim Öffnen einer Datei nicht die gesamte Datei heruntergeladen.
+    Der einfachste Weg zum Zurückrufen einer Datei auf den Datenträger besteht darin, sie zu öffnen. Der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) lädt die Datei nahtlos von Ihrer Azure-Dateifreigabe herunter, ohne dass Sie irgendetwas tun müssen. Bei Dateitypen, die teilweise gelesen werden können (z.B. Multimedia- oder ZIP-Dateien), wird beim Öffnen einer Datei nicht die gesamte Datei heruntergeladen.
 
-    Sie können auch PowerShell nutzen, um für eine Datei das Zurückrufen zu erzwingen. Diese Option kann nützlich sein, wenn Sie mehrere Dateien auf einmal zurückrufen möchten, z.B. alle Dateien in einem Ordner. Öffnen Sie eine PowerShell-Sitzung auf dem Serverknoten, auf dem Azure File Sync installiert ist, und führen Sie anschließend die folgenden PowerShell-Befehle aus:
+    Sie können auch PowerShell nutzen, um für eine Datei das Zurückrufen zu erzwingen. Diese Option kann nützlich sein, wenn Sie mehrere Dateien auf einmal zurückrufen möchten, z.B. alle Dateien in einem Ordner. Öffnen Sie eine PowerShell-Sitzung auf dem Serverknoten, auf dem die Azure-Dateisynchronisierung installiert ist, und führen Sie anschließend die folgenden PowerShell-Befehle aus:
     
     ```PowerShell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -164,8 +164,8 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Wenn auf einem Volume mehrere Serverendpunkte vorhanden sind, gilt als freier Speicherplatz auf dem Volume der größte freie Speicherplatz auf dem Volume, der für alle Serverendpunkte auf diesem Volume angegeben wurde. Die Dateien werden entsprechend ihrer Verwendungsmuster, aber unabhängig davon, zu welchem Serverendpunkt sie gehören, eingestuft. Wenn Sie z.B. auf einem Volume über die beiden Serverendpunkte Endpoint1 und Endpoint2 verfügen, wobei Endpoint1 über einen Schwellenwert für freien Speicherplatz auf dem Volume von 25 % und Endpoint2 von 50 % verfügt, beträgt der Schwellenwert für freien Speicherplatz das auf dem Volume für beide Serverendpunkte 50 %.
 
 * <a id="afs-files-excluded"></a>
-**Welche Dateien oder Ordner werden automatisch von Azure File Sync ausgeschlossen?**  
-    Azure File Sync schließt standardmäßig die folgenden Dateien aus:
+**Welche Dateien oder Ordner werden automatisch von der Azure-Dateisynchronisierung ausgeschlossen?**  
+    Die Azure-Dateisynchronisierung schließt standardmäßig die folgenden Dateien aus:
     * desktop.ini
     * thumbs.db
     * ehthumbs.db
@@ -181,60 +181,113 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     * \SyncShareState
 
 * <a id="afs-os-support"></a>
-**Kann ich Azure File Sync entweder mit Windows Server 2008 R2, Linux oder meinem NAS-Gerät (Network Attached Storage) verwenden?**  
-    Gegenwärtig unterstützt Azure File Sync ausschließlich Windows Server 2016 und Windows Server 2012 R2. Zurzeit sind keine anderen Optionen geplant. Je nach Kundennachfrage sind wir aber offen dafür, weitere Plattformen zu unterstützen. Teilen Sie uns über [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) mit, für welche Plattformen Sie Unterstützung von uns wünschen.
+**Kann ich die Azure-Dateisynchronisierung entweder mit Windows Server 2008 R2, Linux oder meinem NAS-Gerät (Network Attached Storage) verwenden?**  
+    Gegenwärtig unterstützt die Azure-Dateisynchronisierung ausschließlich Windows Server 2016 und Windows Server 2012 R2. Zurzeit sind keine anderen Optionen geplant. Je nach Kundennachfrage sind wir aber offen dafür, weitere Plattformen zu unterstützen. Teilen Sie uns über [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) mit, für welche Plattformen Sie Unterstützung von uns wünschen.
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
 **Warum sind mehrstufige Dateien außerhalb des Serverendpunkt-Namespaces vorhanden?**  
-    Vor der Agent-Version 3 von Azure File Sync blockierte Azure File Sync die Verschiebung mehrstufiger Dateien außerhalb des Serverendpunkts, aber auf demselben Volume wie der Serverendpunkt. Kopiervorgänge, Verschiebungen nicht mehrstufiger Dateien und Verschiebungen mehrstufiger Dateien in andere Volumes waren hiervon nicht betroffen. Der Grund für dieses Verhalten war die implizite Annahme, dass Datei-Explorer und andere Windows-APIs Verschiebungen auf dem gleichen Volume durchführen, die (fast) unmittelbare Umbenennungsvorgänge sind. Dies bedeutet, dass Datei-Explorer oder andere Methoden zum Verschieben (z.B. über die Befehlszeile oder PowerShell) scheinbar nicht mehr reagieren, während Azure File Sync die Daten aus der Cloud abruft. Beginnend mit [Azure File Sync-Agent-Version 3.0.12.0](storage-files-release-notes.md#agent-version-30120) lässt Azure File Sync zu, dass Sie eine mehrstufige Datei außerhalb des Serverendpunkts verschieben. Wir vermeiden die bereits erwähnten negativen Auswirkungen, indem wir zulassen, dass die mehrstufige Datei außerhalb des Serverendpunkts als mehrstufige Datei vorhanden ist, und dann die Datei im Hintergrund abrufen. Dies bedeutet, dass Verschiebungen auf dem gleichen Volume unmittelbar sind, und wir erledigen die gesamte Arbeit zum Abrufen der Datei auf den Datenträger, nachdem der Verschiebevorgang abgeschlossen ist. 
+    Vor der Agent-Version 3 der Azure-Dateisynchronisierung blockierte die Azure-Dateisynchronisierung die Verschiebung mehrstufiger Dateien außerhalb des Serverendpunkts, aber auf demselben Volume wie der Serverendpunkt. Kopiervorgänge, Verschiebungen nicht mehrstufiger Dateien und Verschiebungen mehrstufiger Dateien in andere Volumes waren hiervon nicht betroffen. Der Grund für dieses Verhalten war die implizite Annahme, dass Datei-Explorer und andere Windows-APIs Verschiebungen auf dem gleichen Volume durchführen, die (fast) unmittelbare Umbenennungsvorgänge sind. Dies bedeutet, dass Datei-Explorer oder andere Methoden zum Verschieben (z.B. über die Befehlszeile oder PowerShell) scheinbar nicht mehr reagieren, während die Azure-Dateisynchronisierung die Daten aus der Cloud abruft. Beginnend mit [Version 3.0.12.0 des Azure-Dateisynchronisierungs-Agents](storage-files-release-notes.md#agent-version-30120) lässt die Azure-Dateisynchronisierung zu, dass Sie eine mehrstufige Datei außerhalb des Serverendpunkts verschieben. Wir vermeiden die bereits erwähnten negativen Auswirkungen, indem wir zulassen, dass die mehrstufige Datei außerhalb des Serverendpunkts als mehrstufige Datei vorhanden ist, und dann die Datei im Hintergrund abrufen. Dies bedeutet, dass Verschiebungen auf dem gleichen Volume unmittelbar sind, und wir erledigen die gesamte Arbeit zum Abrufen der Datei auf den Datenträger, nachdem der Verschiebevorgang abgeschlossen ist. 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
-**Es besteht ein Problem mit Azure File Sync auf dem Server (Synchronisierung, Cloudtiering usw.). Soll der Serverendpunkt entfernt und neu erstellt werden?**  
+**Es besteht ein Problem mit der Azure-Dateisynchronisierung auf dem Server (Synchronisierung, Cloudtiering usw.). Soll der Serverendpunkt entfernt und neu erstellt werden?**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
 **Kann ich den Speichersynchronisierungsdienst und/oder das Speicherkonto in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben?**  
    Ja, der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe oder ein anderes Abonnement verschoben werden. Wenn das Speicherkonto verschoben wird, müssen Sie dem Hybrid-Dateisynchronisierungsdienst Zugriff auf das Speicherkonto gewähren (siehe [Sicherstellen, dass die Azure-Dateisynchronisierung Zugriff auf das Speicherkonto besitzt](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
+* <a id="afs-ntfs-acls"></a>
+**Werden NTFS-ACLs auf Verzeichnis-/Dateiebene in der Azure-Dateisynchronisierung zusammen mit den in Azure Files gespeicherten Daten beibehalten?**
+
+    NTFS-ACLs, die von lokalen Dateiservern stammen, werden von der Azure-Dateisynchronisierung als Metadaten beibehalten. Azure Files unterstützt keine Authentifizierung mit Azure AD-Anmeldeinformationen für den Zugriff auf Dateifreigaben, die mit dem Dienst für die Azure-Dateisynchronisierung verwaltet werden.
+    
 ## <a name="security-authentication-and-access-control"></a>Sicherheit, Authentifizierung und Zugriffssteuerung
 * <a id="ad-support"></a>
 **Unterstützt Azure Files die Active Directory-basierte Authentifizierung und Zugriffssteuerung?**  
-    Azure Files bietet zwei Möglichkeiten zur Verwaltung der Zugriffssteuerung:
+    
+    Ja. Azure Files unterstützt die auf Identitäten basierende Authentifizierung und Zugriffssteuerung mit Azure Active Directory (Vorschauversion). Für die Azure Active Directory-Authentifizierung per SMB für Azure Files wird Azure Active Directory Domain Services genutzt, um für in die Domäne eingebundene VMs mit Azure AD-Anmeldeinformationen auf Freigaben, Verzeichnisse und Dateien zuzugreifen. Ausführlichere Informationen finden Sie unter [Übersicht zur Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau)](storage-files-active-directory-overview.md). 
+
+    Azure Files verfügt noch über zwei weitere Möglichkeiten zur Verwaltung der Zugriffssteuerung:
 
     - Sie können Shared Access Signatures (SAS) zum Generieren von Token verwenden, die über bestimmte Berechtigungen verfügen und für ein angegebenes Zeitintervall gültig sind. Sie können beispielsweise ein Token mit Lesezugriff auf eine bestimmte Datei generieren, das nach zehn Minuten abläuft. Jeder Benutzer, der während des Gültigkeitszeitraums über das Token verfügt, hat für einen Zeitraum von zehn Minuten Lesezugriff auf die Datei. Shared Access Signature-Schlüssel werden derzeit nur per REST-API oder in Clientbibliotheken unterstützt. Sie müssen die Azure-Dateifreigabe per SMB einbinden, indem Sie die Speicherkontoschlüssel verwenden.
 
-    - Für Azure File Sync werden alle besitzerverwalteten ACLs bzw. DACLs (ob Active Directory-basiert oder lokal) für alle Serverendpunkte beibehalten und repliziert, für die die Synchronisierung durchgeführt wird. Da Windows Server bereits bei Active Directory authentifiziert werden kann, stellt Azure File Sync eine ausgezeichnete Überbrückungsmaßnahme dar, bis die volle Unterstützung für eine Active Directory-basierte Authentifizierung und ACL-Unterstützung bereitgestellt wird.
+    - Für die Azure-Dateisynchronisierung werden alle besitzerverwalteten ACLs bzw. DACLs (ob Active Directory-basiert oder lokal) für alle Serverendpunkte beibehalten und repliziert, für die die Synchronisierung durchgeführt wird. Da Windows Server bereits bei Active Directory authentifiziert werden kann, stellt die Azure-Dateisynchronisierung eine ausgezeichnete Überbrückungsmaßnahme dar, bis die volle Unterstützung für eine Active Directory-basierte Authentifizierung und ACL-Unterstützung bereitgestellt wird.
 
-    Azure Files unterstützt Active Directory derzeit nicht direkt.
+* <a id="ad-support-regions"></a>
+**Ist die Vorschauversion von Azure AD über SMB für Azure Files in allen Azure-Regionen verfügbar?**
+
+    Die Vorschau ist in allen öffentlichen Regionen verfügbar, mit Ausnahme von: „USA, Westen“, „USA, Westen 2“, „USA, Süden-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Norden-Mitte“, „Australien, Osten“, „Europa, Westen“, „Europa, Norden“.
+
+* <a id="ad-support-on-premises"></a>
+**Unterstützt die Azure AD-Authentifizierung über SMB für Azure Files (Vorschauversion) die Authentifizierung per Azure AD von lokalen Computern?**
+
+    Nein. Azure Files unterstützt die Authentifizierung mit Azure AD von lokalen Computern in der Vorschauversion nicht.
+
+* <a id="ad-support-devices"></a>
+**Unterstützt die Azure AD-Authentifizierung über SMB für Azure Files (Vorschauversion) den SMB-Zugriff mit Azure AD-Anmeldeinformationen von Geräten, die in Azure AD eingebunden oder dafür registriert sind?**
+
+    Nein. Dieses Szenario wird nicht unterstützt.
+
+* <a id="ad-support-rest-apis"></a>
+**Sind REST-APIs zur Unterstützung von Get/Set/Copy-Vorgängen für NTFS-ACLs auf Verzeichnis-/Dateiebene vorhanden?**
+
+    Die Vorschauversion verfügt nicht über Unterstützung für REST-APIs, mit denen NTFS-ACLs für Verzeichnisse oder Dateien abgerufen, festgelegt oder kopiert werden können.
+
+* <a id="ad-vm-subscription"></a>
+**Kann ich auf Azure Files mit Azure AD-Anmeldeinformationen von einer VM unter einem anderen Abonnement zugreifen?**
+
+    Wenn das Abonnement, unter dem die Dateifreigabe bereitgestellt wurde, demselben Azure AD-Mandanten wie die Azure AD Domain Services-Bereitstellung (mit Einbindung der VM) zugeordnet ist, können Sie auf Azure Files mit den gleichen Azure AD-Anmeldeinformationen zugreifen. Die Einschränkung bezieht sich nicht auf das Abonnement, sondern auf den zugeordneten Azure AD-Mandanten.    
+    
+* <a id="ad-support-subscription"></a>
+**Kann ich die Azure AD-Authentifizierung über SMB für Azure Files mit einem Azure AD-Mandanten aktivieren, der sich von dem primären Mandanten unterscheidet, dem die Dateifreigabe zugeordnet ist?**
+
+    Nein. Azure Files unterstützt nur die Azure AD-Integration mit einem Azure AD-Mandanten, der sich unter demselben Abonnement wie die Dateifreigabe befindet. Einem Azure AD-Mandanten kann nur ein Abonnement zugeordnet sein.
+
+* <a id="ad-linux-vms"></a>
+**Unterstützt die Azure AD-Authentifizierung über SMB für Azure Files (Vorschauversion) Linux-VMs?**
+
+    Nein. Die Authentifizierung von Linux-VMs wird in der Vorschauversion nicht unterstützt.
+
+* <a id="ad-aad-smb-afs"></a>
+**Kann ich die Azure AD-Authentifizierung über SMB-Funktionen auf Dateifreigaben nutzen, die per Azure-Dateisynchronisierung verwaltet werden?**
+
+    Nein. Azure Files verfügt nicht über Unterstützung für die Beibehaltung von NTFS-ACLs auf Dateifreigaben, die per Azure-Dateisynchronisierung verwaltet werden. Die Datei-ACLs, die von lokalen Dateiservern stammen, werden von der Azure-Dateisynchronisierung beibehalten. Alle NTFS-ACLs, die für Azure Files nativ konfiguriert werden, werden vom Dienst für die Azure-Dateisynchronisierung überschrieben. Azure Files unterstützt auch keine Authentifizierung mit Azure AD-Anmeldeinformationen für den Zugriff auf Dateifreigaben, die mit dem Dienst für die Azure-Dateisynchronisierung verwaltet werden.
 
 * <a id="encryption-at-rest"></a>
 **Wie kann ich sicherstellen, dass meine Azure-Dateifreigabe im ruhenden Zustand verschlüsselt wird?**  
+
     Azure Storage Service Encryption wird derzeit für alle Regionen standardmäßig aktiviert. Für diese Regionen müssen Sie nichts unternehmen, um die Verschlüsselung zu aktivieren. Informationen zu anderen Regionen finden Sie unter [Serverseitige Verschlüsselung](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="access-via-browser"></a>
 **Wie kann ich mithilfe eines Webbrowsers Zugriff auf eine bestimmte Datei gewähren?**  
+
     Sie können Shared Access Signatures zum Generieren von Token verwenden, die über bestimmte Berechtigungen verfügen und für ein angegebenes Zeitintervall gültig sind. Beispielsweise können Sie ein Token, das Lesezugriff auf eine bestimmte Datei ermöglicht, für einen festen Zeitraum generieren. Jeder Benutzer, der über diese URL verfügt, kann bis zum Ablauf der Tokengültigkeit direkt über einen beliebigen Webbrowser auf die Datei zugreifen. Sie können einen Shared Access Signature-Schlüssel über eine Benutzeroberfläche, z.B. Storage-Explorer, leicht generieren.
 
 * <a id="file-level-permissions"></a>
 **Ist es möglich, Lese- oder Schreibberechtigungen für Ordner der Freigabe anzugeben?**  
+
     Wenn Sie die Dateifreigabe per SMB einbinden, haben Sie auf Ordnerebene keine Kontrolle über die Berechtigungen. Aber wenn Sie eine Shared Access Signature mit der REST-API oder Clientbibliotheken erstellen, können Sie für Ordner der Freigabe Berechtigungen für Lese- oder Schreibzugriff angeben.
 
 * <a id="ip-restrictions"></a>
 **Können IP-Einschränkungen für eine Azure-Dateifreigabe implementiert werden?**  
+
     Ja. Der Zugriff auf Ihre Azure-Dateifreigabe kann auf Speicherkontoebene eingeschränkt werden. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="data-compliance-policies"></a>
 **Welche Richtlinien zur Datenkonformität werden von Azure Files unterstützt?**  
+
    Azure Files wird zusätzlich zu der gleichen Speicherarchitektur ausgeführt, die auch in anderen Speicherdiensten in Azure Storage genutzt wird. Für Azure Files werden die gleichen Richtlinien zur Datenkonformität wie in anderen Azure-Speicherdiensten angewendet. Weitere Informationen zur Datenkonformität von Azure Storage finden Sie unter [Azure Storage-Complianceangebote](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings) und im [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Lokaler Zugriff
 * <a id="expressroute-not-required"></a>
-**Muss ich Azure ExpressRoute verwenden, wenn ich eine Verbindung mit Azure Files herstellen oder Azure File Sync lokal verwenden möchte?**  
-    Nein. ExpressRoute ist für den Zugriff auf eine Azure-Dateifreigabe nicht erforderlich. Wenn Sie eine Azure-Dateifreigabe direkt lokal bereitstellen, muss lediglich Port 445 (TCP ausgehend) für den Internetzugriff geöffnet sein (dies ist der Port, über den SMB kommuniziert). Wenn Sie Azure File Sync verwenden, ist lediglich Port 443 (TCP ausgehend) für den HTTPS-Zugriff erforderlich (SMB ist nicht erforderlich). Sie *können* ExpressRoute aber mit beiden Zugriffsoptionen verwenden.
+**Muss ich Azure ExpressRoute verwenden, wenn ich eine Verbindung mit Azure Files herstellen oder die Azure-Dateisynchronisierung lokal verwenden möchte?**  
+
+    Nein. ExpressRoute ist für den Zugriff auf eine Azure-Dateifreigabe nicht erforderlich. Wenn Sie eine Azure-Dateifreigabe direkt lokal bereitstellen, muss lediglich Port 445 (TCP ausgehend) für den Internetzugriff geöffnet sein (dies ist der Port, über den SMB kommuniziert). Wenn Sie die Azure-Dateisynchronisierung verwenden, ist lediglich Port 443 (TCP ausgehend) für den HTTPS-Zugriff erforderlich (SMB ist nicht erforderlich). Sie *können* ExpressRoute aber mit beiden Zugriffsoptionen verwenden.
 
 * <a id="mount-locally"></a>
 **Wie kann ich eine Azure-Dateifreigabe auf meinem lokalen Computer bereitstellen?**  
-    Sie können die Dateifreigabe über das SMB-Protokoll bereitstellen, sofern Port 445 (TCP ausgehend) geöffnet ist und Ihr Client das SMB 3.0-Protokoll unterstützt (beispielsweise unter Windows 10 oder Windows Server 2016 der Fall). Wenn Port 445 durch eine Richtlinie Ihrer Organisation oder Ihres ISP blockiert ist, können Sie über Azure File Sync auf Ihre Azure-Dateifreigabe zugreifen.
+
+    Sie können die Dateifreigabe über das SMB-Protokoll bereitstellen, sofern Port 445 (TCP ausgehend) geöffnet ist und Ihr Client das SMB 3.0-Protokoll unterstützt (beispielsweise unter Windows 10 oder Windows Server 2016 der Fall). Wenn Port 445 durch eine Richtlinie Ihrer Organisation oder Ihres ISP blockiert ist, können Sie über die Azure-Dateisynchronisierung auf Ihre Azure-Dateifreigabe zugreifen.
 
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
@@ -242,6 +295,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Sie können regelmäßige [Freigabemomentaufnahmen](storage-snapshots-files.md) zum Schutz vor einer versehentlichen Löschung verwenden. Außerdem können Sie AzCopy, Robocopy oder ein Sicherungstool eines Drittanbieters nutzen, das zum Sichern einer eingebundenen Dateifreigabe geeignet ist. Azure Backup ermöglicht die Sicherung von Azure Files. Erfahren Sie mehr über das [Sichern von Azure-Dateifreigaben mit Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>Freigabemomentaufnahmen
+
 ### <a name="share-snapshots-general"></a>Freigabemomentaufnahmen: allgemein
 * <a id="what-are-snaphots"></a>
 **Was sind Dateifreigaben-Momentaufnahmen?**  
@@ -262,10 +316,14 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="snapshot-limits"></a>
 **Gibt es Beschränkungen hinsichtlich der Anzahl von Freigabemomentaufnahmen, die verwendet werden können?**  
     Ja. In Azure Files können maximal 200 Freigabemomentaufnahmen verwendet werden. Freigabemomentaufnahmen werden nicht zum Kontingent für die Dateifreigabe gezählt, sodass es für den von allen Freigabemomentaufnahmen genutzten Gesamtspeicherplatz keine Begrenzung pro Freigabe gibt. Die Beschränkungen für Speicherkonten gelten weiterhin. Wenn die Zahl von 200 Freigabemomentaufnahmen erreicht ist, müssen Sie ältere Momentaufnahmen löschen, um neue Freigabemomentaufnahmen erstellen zu können.
+
 * <a id="snapshot-cost"></a>
 **Wie viel kosten Freigabemomentaufnahmen?**  
     Für Momentaufnahmen gelten die standardmäßigen Transaktions- und Speicherkosten. Momentaufnahmen sind in der Regel inkrementell. Bei der Basismomentaufnahme handelt es sich um die Freigabe selbst. Alle nachfolgenden Momentaufnahmen sind inkrementell und speichern lediglich die Differenz zur vorherigen Momentaufnahme. Dies bedeutet, dass die in der Rechnung angezeigten Deltaänderungen minimal ausfallen, wenn Ihre Workloadänderungen geringfügig sind. Preisinformationen finden Sie auf der [Preisgestaltungsseite](https://azure.microsoft.com/pricing/details/storage/files/) für Azure Files im Standard-Tarif. Heutzutage wird die von Freigabemomentaufnahmen genutzte Größe durch das Vergleichen der abgerechneten Kapazität mit der verwendeten Kapazität ermittelt. Wir arbeiten derzeit an Tools, um die Berichterstellung zu verbessern.
 
+* <a id="ntfs-acls-snaphsots"></a>
+**Werden NTFS-ACLs in Verzeichnissen und Dateien in Freigabemomentaufnahmen beibehalten?**
+    NTFS-ACLs in Verzeichnissen und Dateien werden in Freigabemomentaufnahmen beibehalten.
 
 ### <a name="create-share-snapshots"></a>Erstellen von Freigabemomentaufnahmen
 * <a id="file-snaphsots"></a>
@@ -285,7 +343,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 ### <a name="manage-share-snapshots"></a>Verwalten von Freigabemomentaufnahmen
 * <a id="browse-snapshots-linux"></a>
 **Kann ich meine Freigabemomentaufnahmen unter Linux durchsuchen?**  
-    Sie können mit Azure CLI 2.0 unter Linux Freigabemomentaufnahmen erstellen, auflisten, durchsuchen und wiederherstellen.
+    Sie können mit der Azure CLI unter Linux Freigabemomentaufnahmen erstellen, auflisten, durchsuchen und wiederherstellen.
 
 * <a id="copy-snapshots-to-other-storage-account"></a>
 **Kann ich die Freigabemomentaufnahmen in ein anderes Speicherkonto kopieren?**  
@@ -365,4 +423,4 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 ## <a name="see-also"></a>Weitere Informationen
 * [Behandeln von Azure Files-Problemen unter Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Behandeln von Azure Files-Problemen unter Linux](storage-troubleshoot-linux-file-connection-problems.md)
-* [Problembehandlung für Azure File Sync](storage-sync-files-troubleshoot.md)
+* [Problembehandlung für die Azure-Dateisynchronisierung](storage-sync-files-troubleshoot.md)

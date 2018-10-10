@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: c11883156f53ab53ebe6f84d66232f81f8cf31ff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: bd8a9e651c3b2369ae29be966ba4c9cbe0ae579b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697363"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972911"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure Resource Manager-Ber
 
 In den folgenden Schritten wird beschrieben, wie gemäß dem Szenario beispielhaft ein virtueller Computer mit mehreren IP-Adressen erstellt werden kann. Sie können die Variablenwerte in "" ändern und die IP-Adresstypen an Ihren Implementierungsbedarf anpassen. 
 
-1. Installieren Sie die [Azure CLI 2.0](/cli/azure/install-az-cli2), sofern noch nicht geschehen.
+1. Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli), sofern noch nicht geschehen.
 2. Erstellen Sie ein Paar aus einem öffentlichen und privaten SSH-Schlüssel für Linux-VMs, indem Sie die Schritte im Artikel [Erstellen eines öffentlich-privaten SSH-Schlüsselpaars für virtuelle Linux-Computer](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ausführen.
 3. Melden Sie sich über eine Befehlsshell mit dem Befehl `az login` an, und wählen Sie das Abonnement aus, das Sie verwenden.
 4. Erstellen Sie die VM, indem Sie das folgende Skript auf einem Linux- oder Mac-Computer ausführen. Das Skript erstellt eine Ressourcengruppe, ein virtuelles Netzwerk (VNET), eine Netzwerkkarte mit drei IP-Konfigurationen und eine VM, an die die zwei Netzwerkkarten angefügt sind. Die Netzwerkkarte, die öffentliche IP-Adresse, das virtuelle Netzwerk und die VM-Ressourcen müssen sich alle am selben Standort und im selben Abonnement befinden. Wenngleich sich die Ressourcen nicht zwingend in derselben Ressourcengruppe befinden müssen, ist dies im folgenden Skript der Fall.
@@ -157,7 +157,7 @@ az vm create \
 
 Zusätzlich zur VM mit einer Netzwerkkarte mit drei IP-Konfigurationen wird mit dem Skript Folgendes erstellt:
 
-- Ein einzelner verwalteter Premium-Datenträger. Dies ist die Standardeinstellung, aber Sie können auch einen anderen Datenträgertyp für die Erstellung auswählen. Ausführliche Informationen finden Sie im Artikel [Erstellen einer Linux-VM mithilfe der Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Ein einzelner verwalteter Premium-Datenträger. Dies ist die Standardeinstellung, aber Sie können auch einen anderen Datenträgertyp für die Erstellung auswählen. Ausführliche Informationen finden Sie im Artikel [Erstellen einer Linux-VM mithilfe der Azure CLI](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Ein virtuelles Netzwerk mit einem Subnetz und zwei öffentlichen IP-Adressen. Alternativ können Sie ein *vorhandenes* Netzwerk, ein Subnetz, eine Netzwerkkarte oder öffentliche IP-Adressressourcen verwenden. Um zu erfahren, wie Sie vorhandene Netzwerkressourcen verwenden, statt zusätzliche Ressourcen zu erstellen, geben Sie `az vm create -h` ein.
 
 Für öffentliche IP-Adressen fällt eine geringe Gebühr an. Weitere Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses) . Die Anzahl der öffentlichen IP-Adressen, die in einem Abonnement verwendet werden können, ist beschränkt. Weitere Informationen über die Einschränkungen finden Sie im Artikel zu den [Azure-Einschränkungen](../azure-subscription-service-limits.md#networking-limits) .
@@ -170,7 +170,7 @@ Fügen Sie die privaten IP-Adressen dem Betriebssystem des virtuellen Computers 
 
 Sie können zu einer vorhandenen Azure-Netzwerkschnittstelle zusätzliche private und öffentliche IP-Adressen hinzufügen, indem Sie die nachfolgenden Schritte ausführen. Die Beispiele bauen auf dem in diesem Artikel beschriebenen [Szenario](#Scenario) auf.
 
-1. Öffnen Sie eine Befehlsshell, und führen Sie die verbleibenden Schritte in diesem Abschnitt in einer einzigen Sitzung aus. Wenn Sie die Azure CLI noch nicht installiert und konfiguriert haben, führen Sie die Schritte im Artikel [Installieren der Azure CLI 2.0](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) aus, und melden Sie sich dann mit dem Befehl `az-login` bei Ihrem Azure-Konto an.
+1. Öffnen Sie eine Befehlsshell, und führen Sie die verbleibenden Schritte in diesem Abschnitt in einer einzigen Sitzung aus. Wenn Sie die Azure CLI noch nicht installiert und konfiguriert haben, führen Sie die Schritte im Artikel [Installieren der Azure CLI](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) aus, und melden Sie sich dann mit dem Befehl `az-login` bei Ihrem Azure-Konto an.
 
 2. Führen Sie gemäß Ihren Anforderungen die Schritte eines der folgenden Abschnitte aus:
 

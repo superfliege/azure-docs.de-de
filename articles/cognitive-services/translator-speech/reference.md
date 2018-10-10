@@ -1,45 +1,46 @@
 ---
-title: Referenz für die Sprachübersetzungs-API von Microsoft | Microsoft-Dokumentation
-titleSuffix: Cognitive Services
-description: Referenzdokumentation für die Sprachübersetzungs-API von Microsoft.
+title: Referenz für die Sprachübersetzungs-API
+titleSuffix: Azure Cognitive Services
+description: Referenzdokumentation für die Sprachübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-speech
+ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: be8faddf56158de3399713c41638c0b913b4627e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 46aeab52014a28d1a962195de802d0e000b62509
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378405"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978708"
 ---
-# <a name="microsoft-translator-speech-api"></a>Sprachübersetzungs-API von Microsoft
+# <a name="translator-speech-api"></a>Sprachübersetzungs-API
 
-Dieser Dienst stellt eine Streaming-API für die Übertragung von Konversationen aus einer Sprache in Text in einer anderen Sprache bereit. Darüber hinaus integriert die API auch Text-to-Speech-Funktionen, damit der übersetzte Text in Form einer Audioaufnahme zurückübertragen werden kann. Die Sprachübersetzungs-API von Microsoft ermöglicht Szenarios wie Echtzeitübersetzungen von Konversationen in Skype Translator.
+Dieser Dienst stellt eine Streaming-API für die Übertragung von Konversationen aus einer Sprache in Text in einer anderen Sprache bereit. Darüber hinaus integriert die API auch Text-to-Speech-Funktionen, damit der übersetzte Text in Form einer Audioaufnahme zurückübertragen werden kann. Die Sprachübersetzungs-API ermöglicht Szenarien wie Echtzeitübersetzungen von Konversationen in Skype Translator.
 
-Mit der Sprachübersetzungs-API von Microsoft streamen Clientanwendungen Audioaufnahmen an den Dienst und empfangen einen Stream mit textbasierten Ergebnissen. Diese umfassen den erkannten Text in der Quellsprache und die zugehörige Übersetzung in der Zielsprache. Textergebnisse werden durch die automatische Spracherkennung (Automatic Speech Recognition, ASR) erzeugt, die von neuronalen Netzwerken für den eingehenden Audiostream unterstützt wird. Eine unformatierte ASR-Ausgabe wird mithilfe einer neuen Technik, TrueText, weiter verbessert, damit die Benutzerabsicht genauer widergespiegelt werden kann. So entfernt TrueText beispielsweise Komponenten, die den Textfluss stören (z.B. „Hmm“ und Husten), und stellt eine ordnungsgemäße Interpunktion und Großschreibung wieder her. Es besteht auch die Möglichkeit, Obszönitäten zu maskieren oder auszuschließen. Die Erkennungs- und Übersetzungsengines sind speziell für die Verarbeitung von Konversationen geschult. Der Sprachübersetzungsdienst verwendet die Stille-Erkennung, um das Ende einer Äußerung zu bestimmen. Nach einer Pause in der Sprechaktivität streamt der Dienst ein Endergebnis der abgeschlossenen Äußerung zurück. Der Dienst kann auch Teilergebnisse zurücksenden, die Zwischeninformationen zu Erkennungen und Übersetzungen einer noch nicht abgeschlossenen Äußerung geben. Für Endergebnisse stellt der Dienst die Funktion zur Verfügung, Sprache aus dem gesprochenen Text in die Zielsprachen zu synthetisieren (Text-to-Speech). Text-to-Speech-Audio wird in dem vom Client angegebenen Format erstellt. Das WAV- und das MP3-Format stehen zur Verfügung.
+Mit der Sprachübersetzungs-API streamen Clientanwendungen Audio an den Dienst und empfangen einen Stream mit textbasierten Ergebnissen. Diese umfassen den erkannten Text in der Ausgangssprache und die entsprechende Übersetzung in der Zielsprache. Zur Generierung der Textergebnisse wird auf den eingehenden Audiostream eine auf neuronalen Netzwerken basierende automatische Spracherkennung (Automatic Speech Recognition, ASR) angewendet. Eine unformatierte ASR-Ausgabe wird mithilfe einer neuen Technik, TrueText, weiter verbessert, damit die Benutzerabsicht genauer widergespiegelt werden kann. So entfernt TrueText beispielsweise Komponenten, die den Textfluss stören (z.B. „Hmm“ und Husten), und stellt eine ordnungsgemäße Interpunktion und Großschreibung wieder her. Es besteht auch die Möglichkeit, Obszönitäten zu maskieren oder auszuschließen. Die Erkennungs- und Übersetzungsengines werden speziell für die Verarbeitung von Konversationen trainiert. Der Sprachübersetzungsdienst verwendet die Stille-Erkennung, um das Ende einer Äußerung zu bestimmen. Nach einer Sprechpause gibt der Dienst mittels Streaming ein Endergebnis der abgeschlossenen Äußerung zurück. Der Dienst kann auch Teilergebnisse zurücksenden, die Zwischeninformationen zu Erkennungen und Übersetzungen einer noch nicht abgeschlossenen Äußerung geben. Für Endergebnisse stellt der Dienst die Funktion zur Verfügung, Sprache aus dem gesprochenen Text in die Zielsprachen zu synthetisieren (Text-to-Speech). Text-to-Speech-Audio wird in dem vom Client angegebenen Format erstellt. Verfügbare Formate sind WAV und MP3.
 
-Die Sprachübersetzungs-API von Microsoft nutzt für die Bereitstellung eines Vollduplex-Kommunikationskanals zwischen dem Client und dem Server das WebSocket-Protokoll. Für die Verwendung des Diensts müssen in einer Anwendung die folgenden Schritte ausgeführt werden:
+Die Sprachübersetzungs-API nutzt für die Bereitstellung eines Vollduplex-Kommunikationskanals zwischen dem Client und dem Server das WebSocket-Protokoll. Für die Verwendung des Diensts müssen in einer Anwendung die folgenden Schritte ausgeführt werden:
 
 ## <a name="1-getting-started"></a>1. Erste Schritte
-Für den Zugriff auf die Textübersetzungs-API von Microsoft müssen Sie sich [bei Microsoft Azure registrieren](translator-speech-how-to-signup.md).
+Für den Zugriff auf die Textübersetzungs-API müssen Sie sich [bei Microsoft Azure registrieren](translator-speech-how-to-signup.md).
 
 ## <a name="2-authentication"></a>2. Authentifizierung
 
-Authentifizieren Sie sich mithilfe des Abonnementschlüssels. Die Sprachübersetzungs-API von Microsoft unterstützt zwei Authentifizierungsmodi:
+Authentifizieren Sie sich mithilfe des Abonnementschlüssels. Die Sprachübersetzungs-API unterstützt zwei Authentifizierungsmodi:
 
-* **Verwendung eines Zugriffstokens:** Rufen Sie in Ihrer Anwendung ein Zugriffstoken von dem Tokendienst ab. Rufen Sie mithilfe Ihres Abonnementschlüssels für die Sprachübersetzungs-API vom Cognitive Services-Authentifizierungsdienst ein Zugriffstoken ab. Das Zugriffstoken ist 10 Minuten lang gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie weiterhin das gleiche Zugriffstoken für wiederholte Anforderungen innerhalb dieser 10 Minuten.
+* **Verwendung eines Zugriffstokens:** Rufen Sie in Ihrer Anwendung ein Zugriffstoken von dem Tokendienst ab. Rufen Sie mithilfe Ihres Abonnementschlüssels für die Sprachübersetzungs-API ein Zugriffstoken vom Azure Cognitive Services-Authentifizierungsdienst ab. Das Zugriffstoken ist 10 Minuten lang gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie weiterhin das gleiche Zugriffstoken für wiederholte Anforderungen innerhalb dieser 10 Minuten.
 
 * **Direkte Verwendung eines Abonnementschlüssels:** Übergeben Sie Ihren Abonnementschlüssel in Ihrer Anwendung als Wert im Header `Ocp-Apim-Subscription-Key`.
 
 Behandeln Sie Ihren Abonnementschlüssel und das Zugriffstoken als geheime Schlüssel, die nicht in der Ansicht dargestellt werden sollten.
 
 ## <a name="3-query-languages"></a>3. Abfragen von Sprachen
-**Fragen Sie die Ressource „Sprachen“ nach den aktuellen unterstützten Sprache an.** Die [Ressource „Sprachen“](languages-reference.md) macht die Sprachen und Stimmen für die Spracherkennung, für Textübersetzungen und für Text-to-Speech verfügbar. Jeder Sprache oder Stimme wird ein Bezeichner zugeordnet, den die Sprachübersetzungs-API von Microsoft für die Ermittlung der gleichen Sprache oder Stimme verwendet.
+**Fragen Sie die Ressource „Sprachen“ nach den aktuellen unterstützten Sprache an.** Die [Ressource „Sprachen“](languages-reference.md) macht die Sprachen und Stimmen für die Spracherkennung, für Textübersetzungen und für Text-to-Speech verfügbar. Jeder Sprache oder Stimme wird ein Bezeichner zugeordnet, den die Sprachübersetzungs-API für die Ermittlung der gleichen Sprache oder Stimme verwendet.
 
 ## <a name="4-stream-audio"></a>4. Streamen von Audio
 **Öffnen Sie eine Verbindung und beginnen Sie mit dem Streaming von Audio an den Dienst.** Die Dienst-URL lautet `wss://dev.microsofttranslator.com/speech/translate`. Vom Dienst erwartete Parameter und Audioformate werden unten, im Vorgang `/speech/translate`, beschrieben. Einer der Parameter wird für die Übergabe des Zugriffstokens aus Schritt 2 verwendet.
@@ -47,7 +48,7 @@ Behandeln Sie Ihren Abonnementschlüssel und das Zugriffstoken als geheime Schl�
 ## <a name="5-process-the-results"></a>5. Verarbeiten der Ergebnisse
 **Verarbeiten Sie die Ergebnisse, die vom Dienst zurück gestreamt werden.** Das Format der Teilergebnisse, Endergebnisse und Text-to-Speech-Audiosegmente wird unten in der Dokumentation zum Vorgang `/speech/translate` beschrieben.
 
-Codebeispiele, die die Verwendung der Sprachübersetzungs-API von Microsoft veranschaulichen, sind auf der [Microsoft Translator Github site (GitHub-Website zu Microsoft Translator)](https://github.com/MicrosoftTranslator) verfügbar.
+Codebeispiele, die die Verwendung der Sprachübersetzungs-API veranschaulichen, sind auf der [GitHub-Website zu Microsoft Translator](https://github.com/MicrosoftTranslator) verfügbar.
 
 ## <a name="implementation-notes"></a>Hinweise zur Implementierung
 
@@ -164,7 +165,7 @@ Wenn eine Clientanwendung die Audiowiedergabe abgeschlossen und das letzte Ender
 |:---|:---|:---|:---|:---|
 |api-version|1.0|Die vom Client angeforderte Version der API. Zulässige Werte sind: `1.0`.|query   |Zeichenfolge|
 |from|(leer)   |Gibt die Sprache der Spracheingabe an. Der Wert ist eine der Sprachen-IDs aus dem Bereich `speech` in der Antwort von der Sprachen-API.|query|Zeichenfolge|
-|in:|(leer)|Gibt die Sprache an, in die der transkribierte Text übersetzt werden soll. Der Wert ist eine der Sprachen-IDs aus dem Bereich `text` in der Antwort von der Sprachen-API.|query|Zeichenfolge|
+|zu|(leer)|Gibt die Sprache an, in die der transkribierte Text übersetzt werden soll. Der Wert ist eine der Sprachen-IDs aus dem Bereich `text` in der Antwort von der Sprachen-API.|query|Zeichenfolge|
 |Features|(leer)   |Vom Client ausgewählte, durch Kommas getrennte Funktionen. Zu den verfügbaren Funktionen zählen:<ul><li>`TextToSpeech`: Gibt an, dass der Dienst die übersetzte Audioaufnahme des letzten übersetzten Satzes zurückgeben muss.</li><li>`Partial`: Gibt an, dass der Dienst Zwischenergebnisse der Erkennung zurückgeben muss, während die Audioaufnahme an den Dienst gestreamt wird.</li><li>`TimingInfo`: Gibt an, dass der Dienst Zeitmessungsergebnisse zurückgeben muss, die den einzelnen Erkennungsvorgängen zugeordnet sind.</li></ul>So würde ein Client beispielsweise `features=partial,texttospeech` angeben, um Teilergebnisse und Text-to-Speech zu empfangen, jedoch keine Zeitmessungsinformationen. Beachten Sie, dass Endergebnisse immer an den Client gestreamt werden.|query|Zeichenfolge|
 |voice|(leer)|Gibt an, welche Stimme für das Text-to-Speech-Rendering des übersetzten Texts verwendet werden soll. Der Wert ist eine der Stimmenkennungen aus dem TTS-Bereich in der Antwort von der Sprachen-API. Wenn eine Stimme nicht angegeben ist, wählt das System automatisch eine Stimme aus, wenn die Text-to-Speech-Funktion aktiviert ist.|query|Zeichenfolge|
 |format|(leer)|Gibt das Format des Text-to-Speech-Audiostreams an, der vom Dienst zurückgegeben wurde. Die verfügbaren Optionen lauten wie folgt:<ul><li>`audio/wav`: Waveform-Audiostream. Der Client sollte den WAV-Header verwenden, um das Audioformat richtig interpretieren zu können. Das WAV-Audio für Text-to-Speech ist einkanaliges 16-Bit-PCM mit einer Samplingrate von 24 kHz oder 16 kHz.</li><li>`audio/mp3`: MP3-Audiostream.</li></ul>Der Standardwert ist `audio/wav`.|query|Zeichenfolge|
@@ -184,7 +185,7 @@ Wenn eine Clientanwendung die Audiowiedergabe abgeschlossen und das letzte Ender
 |HTTP-Statuscode|Grund|Antwortmodell|Header|
 |:--|:--|:--|:--|
 |101    |WebSocket-Upgrade.|Beispielwert für das Modell <br/> Objekt {}|X-RequestId<br/>Ein Wert, der die Anforderung für die Problembehandlung identifiziert.<br/>Zeichenfolge|
-|400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter, um sicherzustellen, dass sie gültig sind. Das Antwortobjekt enthält eine ausführlichere Beschreibung des Fehlers.|||
+|400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter, und stellen Sie sicher, dass sie gültig sind. Das Antwortobjekt enthält eine ausführlichere Beschreibung des Fehlers.|||
 |401    |Nicht autorisiert. Stellen Sie sicher, dass Anmeldeinformationen festgelegt sind, dass diese gültig sind und dass es bei Ihrem Abonnement für den Azure-Datenmarkt keine Probleme gibt und ein Saldo verfügbar ist.|||
 |500    |Ein Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|||
 |503    |Der Server ist vorübergehend nicht verfügbar. Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|||

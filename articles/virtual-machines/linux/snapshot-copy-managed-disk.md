@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 224f017decc3f48a23cb3fbf14f9a4e744bfaded
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9fbbbb4f73b5295b648008878c8145fe926fbaad
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007004"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974390"
 ---
 # <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme 
 
@@ -26,7 +26,7 @@ Erstellen Sie eine Momentaufnahme eines Betriebssystems oder Datenträgers für 
 
 ## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle 
 
-Im folgenden Beispiel muss [Cloud Shell](https://shell.azure.com/bash) verwendet werden oder die Azure CLI 2.0 installiert sein. Führen Sie **az --version** aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
+Im folgenden Beispiel muss [Cloud Shell](https://shell.azure.com/bash) verwendet werden oder die Azure CLI installiert sein.
 
 Die folgenden Schritte zeigen, wie Sie mithilfe des Befehls **az snapshot create** mit dem **--source-disk**-Parameter eine Momentaufnahme erstellen. Beim folgenden Beispiel wird davon ausgegangen, dass eine VM namens *myVM* in der Ressourcengruppe *myResourceGroup* vorhanden ist.
 

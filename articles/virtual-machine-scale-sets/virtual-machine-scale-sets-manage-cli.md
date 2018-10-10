@@ -1,6 +1,6 @@
 ---
-title: Verwalten von VM-Skalierungsgruppen mit der Azure CLI 2.0 | Microsoft-Dokumentation
-description: Gängige Azure CLI 2.0-Befehle für die Verwaltung von VM-Skalierungsgruppen (etwa zum Starten und Beenden einer Instanz oder zum Ändern der Kapazität der Skalierungsgruppe).
+title: Verwalten von VM-Skalierungsgruppen mit der Azure CLI | Microsoft-Dokumentation
+description: Gängige Azure CLI-Befehle für die Verwaltung von VM-Skalierungsgruppen (etwa zum Starten und Beenden einer Instanz oder zum Ändern der Kapazität der Skalierungsgruppe).
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 512dd7c3318022106b721d8f215bff17de51e51d
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 014e6ff2bc769675e47743cfdd4fbf7fc6234974
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42145587"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999833"
 ---
-# <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI 2.0
-Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. In diesem Artikel werden einige der gängigen Azure CLI 2.0-Befehle behandelt, mit denen Sie diese Aufgaben durchführen können.
+# <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI
+Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. In diesem Artikel werden einige der gängigen Azure CLI-Befehle behandelt, mit denen Sie diese Aufgaben durchführen können.
 
-Für diese Verwaltungsaufgaben benötigen Sie die aktuelle Azure CLI 2.0. Weitere Informationen finden Sie unter [Installieren der Azure CLI 2.0](/cli/azure/install-azure-cli). Bei Bedarf können Sie [eine VM-Skalierungsgruppe mit der Azure CLI 2.0 erstellen](quick-create-cli.md).
+Für diese Verwaltungsaufgaben benötigen Sie die aktuelle Azure CLI. Weitere Informationen finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Bei Bedarf können Sie [eine VM-Skalierungsgruppe mit der Azure CLI erstellen](quick-create-cli.md).
 
 
 ## <a name="view-information-about-a-scale-set"></a>Anzeigen von Informationen zu einer Skalierungsgruppe

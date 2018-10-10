@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: efedb7cde06ed03ec330027a18b00bcc897919cf
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: e3e3a981daf1273b8b2387cb1c665317f860b1d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576918"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974866"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Einrichten eines Azure AD-Dienstprinzipals für einen Kubernetes-Cluster in Container Service
 
@@ -23,7 +23,7 @@ ms.locfileid: "39576918"
 Für die Interaktion mit Azure-APIs benötigt Kubernetes in Azure Container Service einen [Azure Active Directory-Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md). Der Dienstprinzipal wird für die dynamische Verwaltung von Ressourcen wie etwa [benutzerdefinierte Routen](../../virtual-network/virtual-networks-udr-overview.md) und [Azure Load Balancer (Layer 4)](../../load-balancer/load-balancer-overview.md) benötigt.
 
 
-In diesem Artikel werden verschiedene Optionen zum Einrichten eines Dienstprinzipals für Ihren Kubernetes-Cluster gezeigt. Wenn Sie beispielsweise [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert und eingerichtet haben, können Sie durch Ausführen des Befehls [`az acs create`](/cli/azure/acs#az-acs-create) sowohl den Kubernetes-Cluster als auch den Dienstprinzipal erstellen.
+In diesem Artikel werden verschiedene Optionen zum Einrichten eines Dienstprinzipals für Ihren Kubernetes-Cluster gezeigt. Wenn Sie beispielsweise die [Azure CLI](/cli/azure/install-az-cli2) installiert und eingerichtet haben, können Sie durch Ausführen des Befehls [`az acs create`](/cli/azure/acs#az_acs_create) sowohl den Kubernetes-Cluster als auch den Dienstprinzipal erstellen.
 
 
 ## <a name="requirements-for-the-service-principal"></a>Anforderungen für den Dienstprinzipal
@@ -44,7 +44,7 @@ Sie können einen vorhandenen Azure AD-Dienstprinzipal verwenden, der die folgen
 
 Wenn Sie einen Azure AD-Dienstprinzipal erstellen möchten, bevor Sie Ihren Kubernetes-Cluster bereitstellen, bietet Azure dazu mehrere Möglichkeiten.
 
-Bei den folgenden Beispielbefehlen wird [Azure CLI 2.0](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) verwendet. Alternativ dazu können Sie einen Dienstprinzipal auch mithilfe von [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md), im [Portal](../../azure-resource-manager/resource-group-create-service-principal-portal.md) oder mit anderen Methoden erstellen.
+Bei den folgenden Beispielbefehlen wird die [Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) verwendet. Alternativ dazu können Sie einen Dienstprinzipal auch mithilfe von [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md), im [Portal](../../azure-resource-manager/resource-group-create-service-principal-portal.md) oder mit anderen Methoden erstellen.
 
 ```azurecli
 az login
@@ -67,13 +67,13 @@ Hervorgehoben sind die **Client-ID** (`appId`) und das **Clientgeheimnis** (`pas
 
 Geben Sie beim Erstellen des Kubernetes-Clusters die **Client-ID** – auch als `appId` (Anwendungs-ID) bezeichnet – und das **Clientgeheimnis** (`password`) eines vorhandenen Dienstprinzipals als Parameter an. Stellen Sie sicher, dass der Dienstprinzipal die zu Beginn dieses Artikels aufgeführten Anforderungen erfüllt.
 
-Sie können diese Parameter beim Bereitstellen des Kubernetes-Clusters über die [Azure-Befehlszeilenschnittstelle (Azure CLI 2.0)](container-service-kubernetes-walkthrough.md), im [Azure-Portal](../dcos-swarm/container-service-deployment.md) oder mit anderen Methoden angeben.
+Sie können diese Parameter beim Bereitstellen des Kubernetes-Clusters über die [Azure-Befehlszeilenschnittstelle (Azure CLI)](container-service-kubernetes-walkthrough.md), im [Azure-Portal](../dcos-swarm/container-service-deployment.md) oder mit anderen Methoden angeben.
 
 >[!TIP]
 >Geben Sie als **Client-ID** nicht den `ObjectId`-Wert, sondern den `appId`-Wert des Dienstprinzipals an.
 >
 
-Das folgende Beispiel zeigt eine Möglichkeit, die Parameter über die Azure CLI 2.0 zu übergeben. In diesem Beispiel wird die [Kubernetes-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes) verwendet.
+Das folgende Beispiel zeigt eine Möglichkeit, die Parameter über die Azure CLI zu übergeben. In diesem Beispiel wird die [Kubernetes-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes) verwendet.
 
 1. Laden Sie [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json) die Vorlagenparameterdatei `azuredeploy.parameters.json` von GitHub herunter.
 

@@ -1,6 +1,6 @@
 ---
 title: Ändern einer Azure-VM-Skalierungsgruppe | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Azure-VM-Skalierungsgruppe mit den REST-APIs, Azure PowerShell und Azure CLI 2.0 ändern und aktualisieren.
+description: Erfahren Sie, wie Sie eine Azure-VM-Skalierungsgruppe mit den REST-APIs, Azure PowerShell und der Azure CLI ändern und aktualisieren.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: gatneil
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 662cea7ac47e411b127540faf5cab8b3c4d8964a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 628d407869d24f466b5a7c056d51d76217e29798
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194045"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996654"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
-Während des Lebenszyklus von Anwendungen müssen Sie möglicherweise Ihre VM-Skalierungsgruppe ändern oder aktualisieren. Zu diesen Aktualisierungen können das Aktualisieren der Konfiguration der Skalierungsgruppe oder das Ändern der Anwendungskonfiguration zählen. Dieser Artikel beschreibt die Vorgehensweise zum Ändern einer vorhandenen Skalierungsgruppe mit den REST-APIs, Azure PowerShell oder Azure CLI 2.0.
+Während des Lebenszyklus von Anwendungen müssen Sie möglicherweise Ihre VM-Skalierungsgruppe ändern oder aktualisieren. Zu diesen Aktualisierungen können das Aktualisieren der Konfiguration der Skalierungsgruppe oder das Ändern der Anwendungskonfiguration zählen. Dieser Artikel beschreibt die Vorgehensweise zum Ändern einer vorhandenen Skalierungsgruppe mit den REST-APIs, Azure PowerShell oder der Azure CLI.
 
 ## <a name="fundamental-concepts"></a>Grundlegende Konzepte
 
@@ -42,7 +42,7 @@ Eine Skalierungsgruppe enthält ein Skalierungsgruppenmodell, das den *gewünsch
     Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
     ```
 
-- Azure CLI 2.0 mit [az vmss show](/cli/azure/vmss#az_vmss_show):
+- Azure CLI mit [az vmss show](/cli/azure/vmss#az_vmss_show):
 
     ```azurecli
     az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -50,7 +50,7 @@ Eine Skalierungsgruppe enthält ein Skalierungsgruppenmodell, das den *gewünsch
 
 - Sie können auch [resources.azure.com](https://resources.azure.com) oder die sprachspezifischen [Azure-SDKs](https://azure.microsoft.com/downloads/) verwenden.
 
-Die genaue Darstellung der Ausgabe hängt von den für den Befehl angegebenen Optionen ab. Das folgende Beispiel zeigt eine verkürzte Beispielausgabe mit Azure CLI 2.0:
+Die genaue Darstellung der Ausgabe hängt von den für den Befehl angegebenen Optionen ab. Das folgende Beispiel zeigt eine verkürzte Beispielausgabe von der Azure CLI:
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -86,7 +86,7 @@ Eine Skalierungsgruppe verfügt außerdem über eine Skalierungsgruppen-Instanze
     Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
     ```
 
-- Azure CLI 2.0 mit [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view):
+- Azure CLI mit [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view):
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
@@ -94,7 +94,7 @@ Eine Skalierungsgruppe verfügt außerdem über eine Skalierungsgruppen-Instanze
 
 - Sie können auch [resources.azure.com](https://resources.azure.com) oder die sprachspezifischen [Azure-SDKs](https://azure.microsoft.com/downloads/) verwenden.
 
-Die genaue Darstellung der Ausgabe hängt von den für den Befehl angegebenen Optionen ab. Das folgende Beispiel zeigt eine verkürzte Beispielausgabe mit Azure CLI 2.0:
+Die genaue Darstellung der Ausgabe hängt von den für den Befehl angegebenen Optionen ab. Das folgende Beispiel zeigt eine verkürzte Beispielausgabe von der Azure CLI:
 
 ```azurecli
 $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
@@ -140,7 +140,7 @@ Nicht nur die Skalierungsgruppe verfügt über eine Modellansicht, sondern auch 
     Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
-- Azure CLI 2.0 mit [az vmss show](/cli/azure/vmss#az_vmss_show):
+- Azure CLI mit [az vmss show](/cli/azure/vmss#az_vmss_show):
 
     ```azurecli
     az vmss show --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -148,7 +148,7 @@ Nicht nur die Skalierungsgruppe verfügt über eine Modellansicht, sondern auch 
 
 - Sie können auch [resources.azure.com](https://resources.azure.com) oder die [Azure-SDKs](https://azure.microsoft.com/downloads/) verwenden.
 
-Die genaue Darstellung der Ausgabe hängt von den für den Befehl angegebenen Optionen ab. Das folgende Beispiel zeigt eine verkürzte Beispielausgabe mit Azure CLI 2.0:
+Die genaue Darstellung der Ausgabe hängt von den für den Befehl angegebenen Optionen ab. Das folgende Beispiel zeigt eine verkürzte Beispielausgabe von der Azure CLI:
 
 ```azurecli
 $ az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -180,7 +180,7 @@ Nicht nur die Skalierungsgruppe verfügt über eine Instanzenansicht, sondern au
     Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
     ```
 
-- Azure CLI 2.0 mit [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view)
+- Azure CLI mit [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view):
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -188,7 +188,7 @@ Nicht nur die Skalierungsgruppe verfügt über eine Instanzenansicht, sondern au
 
 - Sie können auch [resources.azure.com](https://resources.azure.com) oder die [Azure-SDKs](https://azure.microsoft.com/downloads/) verwenden.
 
-Die genaue Darstellung der Ausgabe hängt von den für den Befehl angegebenen Optionen ab. Das folgende Beispiel zeigt eine verkürzte Beispielausgabe mit Azure CLI 2.0:
+Die genaue Darstellung der Ausgabe hängt von den für den Befehl angegebenen Optionen ab. Das folgende Beispiel zeigt eine verkürzte Beispielausgabe von der Azure CLI:
 
 ```azurecli
 $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -259,7 +259,7 @@ Wenn Sie eine globale Skalierungsgruppeneigenschaft aktualisieren möchten, müs
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet {scaleSetConfigPowershellObject}
     ```
 
-- Azure CLI 2.0 mit [az vmss update](/cli/azure/vmss#az_vmss_update):
+- Azure CLI mit [az vmss update](/cli/azure/vmss#az_vmss_update):
     - So ändern Sie eine Eigenschaft
 
         ```azurecli
@@ -306,7 +306,7 @@ Um vorhandene virtuelle Computer zu aktualisieren, müssen Sie für jeden virtue
     Update-AzureRmVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
-- Azure CLI 2.0 mit [az vmss update-instances](/cli/azure/vmss#az_vmss_update_instances)
+- Azure CLI mit [az vmss update-instances](/cli/azure/vmss#az_vmss_update_instances):
 
     ```azurecli
     az vmss update-instances --resource-group myResourceGroup --name myScaleSet --instance-ids {instanceIds}
@@ -331,7 +331,7 @@ Eine der Änderungen, die an globalen Skalierungsgruppeneigenschaften vorgenomme
     Set-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- Azure CLI 2.0 mit [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss#az_vmss_reimage):
+- Azure CLI mit [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss#az_vmss_reimage):
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -392,7 +392,7 @@ Möglicherweise verfügen Sie über eine Skalierungsgruppe mit einer alten Versi
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
     ```
 
-- Azure CLI 2.0 mit [az vmss update](/cli/azure/vmss#az_vmss_update_instances):
+- Azure CLI mit [az vmss update](/cli/azure/vmss#az_vmss_update_instances):
 
     ```azurecli
     az vmss update --resource-group myResourceGroup --name myScaleSet --set virtualMachineProfile.storageProfile.imageReference.version=16.04.201801090
@@ -418,7 +418,7 @@ Angenommen, Sie besitzen eine Skalierungsgruppe mit Azure Load Balancer und möc
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -virtualMachineScaleSet $vmss
     ```
 
-- Azure CLI 2.0:
+- Azure-Befehlszeilenschnittstelle:
 
     ```azurecli
     # Remove the load balancer backend pool from the scale set model
@@ -436,4 +436,4 @@ Angenommen, Sie besitzen eine Skalierungsgruppe mit Azure Load Balancer und möc
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können mit [Azure CLI 2.0](virtual-machine-scale-sets-manage-cli.md) oder [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md) auch allgemeine Verwaltungsaufgaben für Skalierungsgruppen ausführen.
+Sie können mit der [Azure CLI](virtual-machine-scale-sets-manage-cli.md) oder [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md) auch allgemeine Verwaltungsaufgaben für Skalierungsgruppen ausführen.

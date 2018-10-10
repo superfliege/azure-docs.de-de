@@ -10,15 +10,19 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 10fe861682da6c1d1ac701a565cef11f9b44cd1e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: b9b515a2ccaedc40fc531d6a1cc58cbe98212b4a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41918222"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967896"
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>Tutorial: Klassifizieren von Iris über die Befehlszeilenschnittstelle
-Azure Machine Learning-Dienste (Vorschauversion) sind eine integrierte End-to-End-Lösung für Data Science und erweiterte Analysen, mit der professionelle Datenanalysten Daten aufbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Der Azure Machine Learning-Dienst (Vorschauversion) ist eine integrierte End-to-End-Lösung für Data Science und erweiterte Analysen, mit der professionelle Datenanalysten Daten aufbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
 
 In diesem Tutorial wird erklärt, wie Sie über die CLI-Tools (Command-Line Interface, Befehlszeilenschnittstelle) der Funktionen der Azure Machine Learning-Vorschauversion folgende Aktionen ausführen können: 
 > [!div class="checklist"]
@@ -34,7 +38,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
   
   Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-- Azure Machine Learning Workbench-Anwendung, die gemäß der Anleitung unter [Quickstart: Install and get started with Azure Machine Learning services](../service/quickstart-installation.md) (Schnellstartanleitung: Installieren und Verwenden von Azure Machine Learning-Diensten) installiert ist. 
+- Azure Machine Learning Workbench-Anwendung, die gemäß der Anleitung unter [Quickstart: Install and get started with Azure Machine Learning service](quickstart-installation.md) (Schnellstartanleitung: Installieren und Verwenden des Azure Machine Learning-Diensts) installiert ist. 
 
   >[!IMPORTANT]
   >Erstellen Sie keine Azure Machine Learning-Dienstkonten. Diese werden im vorliegenden Artikel über die Befehlszeilenschnittstelle erstellt.
@@ -139,16 +143,16 @@ $ az ml project create --name <project name> --workspace <workspace name> --acco
 ```
 
 ### <a name="create-a-new-project-associated-with-a-cloud-git-repository"></a>Erstellen eines neuen Projekts mit Zuordnung zu einem Git-Repository in der Cloud
-Sie können ein neues Projekt erstellen, das einem Git-Repository in VSTS (Visual Studio Team Service) zugeordnet ist. Jedes Mal, wenn ein Experiment gesendet wird, wird eine Momentaufnahme des gesamten Projektordners an das Remote-Git-Repository übergeben. Weitere Informationen finden Sie unter [Verwenden von Git-Repository mit einem Azure Machine Learning Workbench-Projekt](using-git-ml-project.md).
+Sie können ein neues Projekt erstellen, das einem Azure DevOps-Git-Repository zugeordnet ist. Jedes Mal, wenn ein Experiment gesendet wird, wird eine Momentaufnahme des gesamten Projektordners an das Remote-Git-Repository übergeben. Weitere Informationen finden Sie unter [Verwenden von Git-Repository mit einem Azure Machine Learning Workbench-Projekt](using-git-ml-project.md).
 
 > [!NOTE]
-> Azure Machine Learning unterstützt nur leere Git-Repositorys in VSTS.
+> Azure Machine Learning unterstützt nur leere Git-Repositorys, die in Azure DevOps erstellt werden.
 
 ```azure-cli
 $ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <VSTS repo URL>
 ```
 > [!TIP]
-> Wenn der Fehler „Repository-URL ist möglicherweise ungültig, oder der Benutzer hat keinen Zugriff“ angezeigt wird, können Sie ein Sicherheitstoken in VSTS erstellen (unter _Sicherheit_ im Menü _Persönliche Zugriffstoken hinzufügen_). Verwenden Sie beim Erstellen des Projekts außerdem das Argument `--vststoken`. 
+> Wenn der Fehler „Repository-URL ist möglicherweise ungültig, oder der Benutzer hat keinen Zugriff“ angezeigt wird, können Sie ein Sicherheitstoken in Azure DevOps erstellen (unter _Sicherheit_ im Menü _Persönliche Zugriffstoken hinzufügen_). Verwenden Sie beim Erstellen des Projekts außerdem das Argument `--vststoken`. 
 
 ### <a name="sample_create"></a>Erstellen eines neuen Projekts über ein Beispiel
 In diesem Beispiel erstellen Sie ein neues Projekt mit einem Beispielprojekt als Vorlage.

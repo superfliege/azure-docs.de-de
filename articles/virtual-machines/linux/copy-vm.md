@@ -14,24 +14,23 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: cynthn
-ms.openlocfilehash: 8d250f1289c3757d5ea862a1c195dde6f8efb0eb
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 64b33fcd25582f6b1d3e7efe12aba85bb17c4cca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938263"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951201"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Erstellen einer Kopie Ihrer Linux-VM mithilfe von Azure CLI und Managed Disks
 
-
-In diesem Artikel erfahren Sie, wie Sie eine Kopie des virtuellen Azure-Computers (VM) unter Linux mit Azure CLI 2.0 und dem Azure Resource Manager-Bereitstellungsmodell erstellen. 
+In diesem Artikel erfahren Sie, wie Sie eine Kopie des virtuellen Azure-Computers unter Linux mit der Azure CLI und dem Azure Resource Manager-Bereitstellungsmodell erstellen. 
 
 Sie können auch [einen virtuellen Computer aus einer VHD hochladen und erstellen](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 
--   Installieren Sie [Azure CLI 2.0](/cli/azure/install-az-cli2).
+-   [Azure-Befehlszeilenschnittstelle](/cli/azure/install-az-cli2)
 
 -   Melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an.
 

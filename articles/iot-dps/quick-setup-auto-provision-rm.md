@@ -9,22 +9,22 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e3aa2cf93e529fcc430162ac90be06a75690fb21
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 45558e25f2f61090cfb3ddb5c382170ab40792d0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523443"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999041"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Einrichten des IoT Hub Device Provisioning-Diensts mit einer Azure Resource Manager-Vorlage
 
-Sie können [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwenden, um die Azure-Cloudressourcen programmgesteuert einzurichten, die zum Bereitstellen Ihrer Geräte erforderlich sind. In diesen Schritten wird gezeigt, wie Sie einen IoT Hub und einen neuen IoT Hub Device Provisioning-Dienst erstellen und diese beiden Komponenten mit einer Azure Resource Manager-Vorlage verknüpfen. In dieser Schnellstartanleitung wird [Azure CLI 2.0](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) verwendet, um die erforderlichen programmgesteuerten Schritte zum Erstellen einer Ressourcengruppe und Bereitstellen der Vorlage auszuführen. Sie können aber auch problemlos das [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .NET, Ruby oder andere Programmiersprachen nutzen, um diese Schritte auszuführen und Ihre Vorlage bereitzustellen. 
+Sie können [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwenden, um die Azure-Cloudressourcen programmgesteuert einzurichten, die zum Bereitstellen Ihrer Geräte erforderlich sind. In diesen Schritten wird gezeigt, wie Sie einen IoT Hub und einen neuen IoT Hub Device Provisioning-Dienst erstellen und diese beiden Komponenten mit einer Azure Resource Manager-Vorlage verknüpfen. In diesem Schnellstart wird [die Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) verwendet, um die erforderlichen programmgesteuerten Schritte zum Erstellen einer Ressourcengruppe und Bereitstellen der Vorlage auszuführen. Sie können aber auch problemlos das [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .NET, Ruby oder andere Programmiersprachen nutzen, um diese Schritte auszuführen und Ihre Vorlage bereitzustellen. 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-- Für diese Schnellstartanleitung ist es erforderlich, dass Sie die Azure CLI lokal ausführen. Hierfür muss Azure CLI Version 2.0 oder höher installiert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und Aktualisierung der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+- Für diese Schnellstartanleitung ist es erforderlich, dass Sie die Azure CLI lokal ausführen. Hierfür muss Azure CLI Version 2.0 oder höher installiert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Installieren und Aktualisieren der Befehlszeilenschnittstelle finden Sie bei Bedarf unter [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>Anmelden an Azure und Erstellen einer Ressourcengruppe

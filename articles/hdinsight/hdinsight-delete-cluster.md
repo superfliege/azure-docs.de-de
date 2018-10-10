@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 737cc120877a9d0f06a1f6d209bcf9a233aa7d19
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 39404ff74552b11e982cf5968c0eb131ea642e27
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091308"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979450"
 ---
-# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Löschen eines HDInsight-Clusters mithilfe von Browser, PowerShell oder Azure-Befehlszeilenschnittstelle
+# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-classic-cli"></a>Löschen eines HDInsight-Clusters mithilfe von Browser, PowerShell oder der klassischen Azure CLI
 
-Die Abrechnung für einen HDInsight-Cluster beginnt, sobald der Cluster erstellt wurde, und endet mit dem Löschen des Clusters. Die Gebühren werden anteilig nach Minuten erhoben. Daher sollten Sie Ihren Cluster immer löschen, wenn Sie ihn nicht mehr verwenden. In diesem Artikel erfahren Sie, wie Sie einen Cluster mithilfe des Azure-Portals, Azure PowerShell und der Azure-Befehlszeilenschnittstelle 1.0 löschen.
+Die Abrechnung für einen HDInsight-Cluster beginnt, sobald der Cluster erstellt wurde, und endet mit dem Löschen des Clusters. Die Gebühren werden anteilig nach Minuten erhoben. Daher sollten Sie Ihren Cluster immer löschen, wenn Sie ihn nicht mehr verwenden. In diesem Artikel erfahren Sie, wie Sie einen Cluster mithilfe des Azure-Portals, Azure PowerShell und der klassischen Azure CLI löschen.
 
 > [!IMPORTANT]
 > Das Löschen eines HDInsight-Clusters führt nicht zum Löschen der zugeordneten Azure Storage-Konten oder Data Lake Store-Instanz. Sie können die in diesen Diensten gespeicherten Daten künftig wiederverwenden.
@@ -41,13 +41,12 @@ Verwenden Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl zum L
 
 Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters.
 
-## <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
+## <a name="azure-classic-cli"></a>Die klassische Azure CLI
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Verwenden Sie an einer Eingabeaufforderung den folgenden Befehl zum Löschen des Clusters:
 
     azure hdinsight cluster delete CLUSTERNAME
 
 Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters.
-
-> [!NOTE]
-> Azure CLI 2.0 bietet derzeit (Stand: 23. Oktober 2017) keine Unterstützung für das Löschen von HDInsight-Clustern an.

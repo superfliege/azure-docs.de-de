@@ -1,27 +1,29 @@
 ---
-title: Übersicht über Azure Cost Management | Microsoft-Dokumentation
-description: Azure Cost Management ist eine Multicloud-Kostenverwaltungslösung, die Ihnen das Verwenden von Azure und anderen Cloudressourcen erleichtert.
+title: Übersicht über Cloudyn in Azure | Microsoft-Dokumentation
+description: Cloudyn ist eine Kostenverwaltungslösung für mehrere Clouds, die das Verwenden von Azure und anderen Cloudressourcen vereinfacht.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: overview
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 05e53688e1350052fdbbc61451df8a51dc3349cd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9f0eac454d6ac937fc3313e4c50f8872e320c7ca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162975"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985383"
 ---
-# <a name="what-is-azure-cost-management"></a>Was ist Azure-Kostenverwaltung?
+# <a name="what-is-cloudyn"></a>Was ist Cloudyn?
 
-Azure Cost Management (lizenziert von Cloudyn, einer Tochtergesellschaft von Microsoft) ermöglicht Ihnen das Nachverfolgen der Cloudnutzung und der Ausgaben für Ihre Azure-Ressourcen sowie andere Cloudanbieter, einschließlich AWS und Google. Leicht verständliche Dashboardberichte unterstützen Sie bei der Kostenzuteilung sowie bei Showbacks und verbrauchsbasierten Kostenzuteilungen. Die Kostenverwaltung unterstützt Sie beim Optimieren der Ausgaben für Ihre Cloud, indem nicht ausgelastete Ressourcen ermittelt werden, die Sie dann verwalten und anpassen können.
+Cloudyn, eine Tochtergesellschaft von Microsoft, ermöglicht Ihnen das Nachverfolgen der Cloudnutzung und der Ausgaben für Ihre Azure-Ressourcen sowie andere Cloudanbieter, einschließlich AWS und Google. Leicht verständliche Dashboardberichte unterstützen Sie bei der Kostenzuteilung sowie bei Showbacks und verbrauchsbasierten Kostenzuteilungen. Cloudyn unterstützt Sie beim Optimieren der Ausgaben für Ihre Cloud, indem nicht ausgelastete Ressourcen ermittelt werden, die Sie dann verwalten und anpassen können.
 
-Ein Einführungsvideo finden Sie unter [Introduction to Azure Cost Management](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo) (Einführung in Azure Cost Management).
+Ein Einführungsvideo finden Sie unter [Introduction to Azure Cloudyn](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo) (Einführung in Azure Cloudyn).
+
+Azure Cost Management bietet ähnliche Funktionen wie Cloudyn. Azure Cost Management ist eine native Azure-Kostenverwaltungslösung. Die Lösung unterstützt Sie beim Analysieren von Kosten, beim Erstellen und Verwalten von Budgets, beim Exportieren von Daten sowie beim Prüfen von Optimierungsempfehlungen und beim Reagieren auf diese – und damit beim Sparen von Geld. Weitere Informationen finden Sie unter [Azure Cost Management](overview-cost-mgt.md).
 
 ## <a name="monitor-usage-and-spending"></a>Überwachen der Nutzung und Ausgaben
 
@@ -29,12 +31,9 @@ Das Überwachen Ihrer Nutzung und Ausgaben ist für Cloudinfrastrukturen ausgesp
 
 Berichte unterstützen Sie bei der Überwachung Ihrer Ausgaben, um die Cloudnutzung, Kosten und Trends zu analysieren und nachzuverfolgen. Durch das Verwenden von Berichten für den Zeitverlauf können Sie Anomalien erkennen, die von den normalen Trends abweichen. Ineffizienzen in Ihrer Cloudbereitstellung werden in Optimierungsberichten angezeigt. Sie können Ineffizienzen auch in Kostenanalyseberichten feststellen.
 
-![Bericht für die Kosten im Lauf der Zeit](media\overview\cost-over-time-rpt.png)
-
-
 ## <a name="manage-costs"></a>Verwalten von Kosten
 
-Verlaufsdaten können Sie beim Verwalten der Kosten unterstützen, wenn Sie die Nutzung und die Kosten im Lauf der Zeit analysieren, um Trends zu erkennen. Trends werden dann verwendet, um zukünftige Ausgaben vorherzusagen. Die Kostenverwaltung enthält ebenfalls nützliche projizierte Kostenberichte.
+Verlaufsdaten können Sie beim Verwalten der Kosten unterstützen, wenn Sie die Nutzung und die Kosten im Lauf der Zeit analysieren, um Trends zu erkennen. Trends werden dann verwendet, um zukünftige Ausgaben vorherzusagen. Cloudyn enthält auch nützliche Berichte über geplante Kosten.
 
 Die Kostenzuteilung verwaltet Kosten, indem Ihre Kosten basierend auf Ihrer Tagrichtlinie analysiert werden. Sie können Tags für Ihre benutzerdefinierten Konten, Ressourcen und Entitäten verwenden, um die Kostenzuteilung zu optimieren. Der Kategorie-Manager organisiert Ihre Tags, um zusätzliche Kontrolle zu ermöglichen. Sie verwenden die Kostenzuteilung ebenfalls für Showback und die verbrauchsbasierte Kostenzuteilung, um die Ressourcennutzung und die zugehörigen Kosten anzuzeigen und das Nutzungsverhalten zu beeinflussen oder diese Mandantenkunden in Rechnung zu stellen.
 
@@ -44,14 +43,12 @@ Warnungen unterstützen Sie beim Verwalten der Kosten, indem Sie automatisch ben
 
 ## <a name="improve-efficiency"></a>Verbessern der Effizienz
 
-Mit der Kostenverwaltung können Sie die optimale Nutzung der VMs bestimmen, VMs im Leerlauf identifizieren oder VMs im Leerlauf und nicht angefügte Datenträger entfernen. Mithilfe der Informationen in den Berichten zu Größenempfehlungen und Ineffizienzen können Sie einen Plan erstellen, um die Größe von VMs im Leerlauf zu reduzieren oder diese zu entfernen. Für Konten oder Abonnements von CSP-Partnern werden Optimierungsberichte jedoch derzeit nicht unterstützt.
-
-![Größenempfehlungen](.\media\overview\sizing.png)
+Mit Cloudyn können Sie die optimale Nutzung der VMs bestimmen, VMs im Leerlauf identifizieren und VMs im Leerlauf sowie nicht angefügte Datenträger entfernen. Mithilfe der Informationen in den Berichten zu Größenempfehlungen und Ineffizienzen können Sie einen Plan erstellen, um die Größe von VMs im Leerlauf zu reduzieren oder diese zu entfernen. Für Konten oder Abonnements von CSP-Partnern werden Optimierungsberichte jedoch derzeit nicht unterstützt.
 
 Wenn Sie für AWS reservierte Instanzen bereitgestellt haben, können Sie die Nutzung Ihrer reservierten Instanzen mit Optimierungsberichten verbessern, in denen Sie Kaufempfehlungen einsehen, ungenutzte Reservierungen ändern und Bereitstellungen planen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Da Sie nun mit der Kostenverwaltung vertraut sind, sind die nächsten Schritte das Registrieren Ihrer Cloudumgebung und das Untersuchen Ihrer Daten.
+Da Sie nun mit Cloudyn vertraut sind, bestehen die nächsten Schritte im Registrieren Ihrer Cloudumgebung und dem Untersuchen Ihrer Daten.
 
 - [Register an individual Azure subscription (Registrieren eines einzelnen Azure-Abonnements)](quick-register-azure-sub.md)

@@ -1,29 +1,31 @@
 ---
-title: Verwenden von Cost Management-Berichten in Azure Cost Management | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie verschiedene Cost Management-Berichte im Cloudyn-Portal verwenden.
+title: Verwenden von Cloudyn-Berichten in Azure | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie verschiedene Berichte im Cloudyn-Portal verwenden.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/06/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 055584bd27c978fb71e6c09995c28be7348acda8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 8267401a0dade0ca7cfb1dbf69d2fdfd6786f1df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906376"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976785"
 ---
-# <a name="use-cost-management-reports"></a>Verwenden von Kostenverwaltungsberichten
+# <a name="use-cloudyn-reports"></a>Verwenden der Cloudyn-Berichte
 
-Dieser Artikel beschreibt den Zweck der Kostenverwaltungsberichte, die im Cloudyn-Portal enthalten sind. Es wird außerdem beschrieben, wie Sie die Berichte effektiv nutzen können. Die meisten Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Die meisten der Aktionen, die Sie in einem Bericht ausführen können, sind auch in anderen Berichten verfügbar. Eine Übersicht über das Verwenden von Kostenverwaltungsberichten, einschließlich des Anpassens und Speicherns und des Planens von Berichten, finden Sie unter [Grundlagen zu Kostenberichten](understanding-cost-reports.md).
+Dieser Artikel beschreibt den Zweck der Cloudyn-Berichte, die im Cloudyn-Portal enthalten sind. Es wird außerdem beschrieben, wie Sie die Berichte effektiv nutzen können. Die meisten Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Die meisten der Aktionen, die Sie in einem Bericht ausführen können, sind auch in anderen Berichten verfügbar. Eine Übersicht über das Verwenden von Cloudyn-Berichten, einschließlich des Anpassens und Speicherns oder des Planens von Berichten, finden Sie unter [Grundlagen zu Kostenberichten](understanding-cost-reports.md).
+
+Azure Cost Management bietet ähnliche Funktionen wie Cloudyn. Azure Cost Management ist eine native Azure-Kostenverwaltungslösung. Die Lösung unterstützt Sie beim Analysieren von Kosten, Erstellen und Verwalten von Budgets, Exportieren von Daten sowie beim Prüfen von und Reagieren auf Optimierungsempfehlungen zur Kosteneinsparung. Weitere Informationen finden Sie unter [Was ist Azure-Kostenverwaltung?](overview-cost-mgt.md).
 
 ## <a name="report-types"></a>Berichtstypen
 
-Es gibt drei Arten von Kostenverwaltungsberichten:
+Es gibt drei Arten von Cloudyn-Berichten:
 
 - Berichte im Zeitverlauf. Beispiel: Bericht über Kosten im Zeitverlauf. Berichte im Zeitverlauf enthalten eine Zeitreihe von Daten über einen ausgewählten Zeitraum mit einer vordefinierten Auflösung sowie eine wöchentliche Auflösung für die letzten zwei Monate. Sie können mithilfe von Gruppierung und Filterung verschiedene Datenpunkte vergrößern.
   - Berichte im Zeitverlauf helfen dabei, Trends anzuzeigen und Spitzen oder Anomalien zu erkennen.
@@ -49,7 +51,7 @@ In Berichten zur _Kostenanalyse_ werden Abrechnungsdaten von Ihren Cloudanbieter
 
 In einigen _Kostenanalyseberichten_ werden die Kosten nicht nach Ressourcentags gruppiert. Außerdem werden tagbasierte Abrechnungsinformationen in Berichten nur aufgeführt, nachdem Sie Kosten zugeteilt haben, indem Sie ein Kostenmodell mit [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) erstellt haben.
 
-_Kostenzuteilungsberichte_ sind verfügbar, nachdem Sie mit [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) ein Kostenmodell erstellt haben. In Cost Management werden Kosten- und Abrechnungsdaten verarbeitet und die Daten mit den Nutzungs- und Tagdaten Ihrer Cloudkonten _abgeglichen_. Für den Abgleich der Daten benötigt Cost Management Zugriff auf Ihre Nutzungsdaten. Wenn Sie über Konten ohne Anmeldeinformationen verfügen, werden diese als _nicht kategorisierte Ressourcen_ gekennzeichnet.
+_Kostenzuteilungsberichte_ sind verfügbar, nachdem Sie mit [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) ein Kostenmodell erstellt haben. In Cloudyn werden Kosten- und Abrechnungsdaten verarbeitet und die Daten mit den Nutzungs- und Tagdaten Ihrer Cloudkonten _abgeglichen_. Für den Abgleich der Daten benötigt Cloudyn Zugriff auf Ihre Nutzungsdaten. Wenn Sie über Konten ohne Anmeldeinformationen verfügen, werden diese als _nicht kategorisierte Ressourcen_ gekennzeichnet.
 
 ## <a name="dashboards"></a>Dashboards
 
@@ -57,7 +59,7 @@ Dashboards in Cloudyn bieten eine allgemeine Ansicht von Berichten. Dashboards b
 
 ## <a name="budget-information-in-reports"></a>Budgetinformationen in Berichten
 
-Viele Kostenmanagementberichte enthalten Budgetinformationen, nachdem Sie sie manuell erstellt haben. Berichte enthalten also keine Budgetinformationen, bis Sie ein Budget erstellen. Weitere Informationen finden Sie unter [Budgeteinstellungen](#budget-settings).
+Viele Cloudyn-Berichte enthalten Budgetinformationen, nachdem Sie manuell ein Budget erstellt haben. Berichte enthalten also keine Budgetinformationen, bis Sie ein Budget erstellen. Weitere Informationen finden Sie unter [Budgeteinstellungen](#budget-settings).
 
 ## <a name="reports-and-reporting-features"></a>Berichte und Berichterstellungsfeatures
 
@@ -81,7 +83,7 @@ Der Kostenanalysebericht ist eine Berechnung von Showback und Chargeback, basier
 
 Die in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) festgelegten Richtlinien werden im Kostenanalysebericht verwendet, und die Ergebnisse werden dann mit Informationen aus den Rohdaten Ihres Cloudanbieters kombiniert.
 
-Wie wird dieser Bericht berechnet? Im Cost Management-Dienst wird durch Anwenden der _Kontenaffinität_ sichergestellt, dass bei der Kostenzuteilung die Integrität der einzelnen verknüpften Konten beibehalten wird. Durch die Affinität wird sichergestellt, dass einem Konto, das einen bestimmten Dienst nicht verwendet, keine Kosten für diesen Dienst zugeordnet werden. Die in diesem Konto anfallenden Kosten verbleiben im Konto und werden nicht über die Zuordnungsrichtlinien berechnet. Angenommen, Sie verfügen über fünf verknüpfte Konten. Wenn nur in drei dieser Konten Speicherdienste verwendet werden, werden die Kosten für Speicherdienste nur Tags in den drei Konten zugeteilt.
+Wie wird dieser Bericht berechnet? Im Cloudyn-Dienst wird durch Anwenden der _Kontenaffinität_ sichergestellt, dass bei der Kostenzuteilung die Integrität der einzelnen verknüpften Konten beibehalten wird. Durch die Affinität wird sichergestellt, dass einem Konto, das einen bestimmten Dienst nicht verwendet, keine Kosten für diesen Dienst zugeordnet werden. Die in diesem Konto anfallenden Kosten verbleiben im Konto und werden nicht über die Zuordnungsrichtlinien berechnet. Angenommen, Sie verfügen über fünf verknüpfte Konten. Wenn nur in drei dieser Konten Speicherdienste verwendet werden, werden die Kosten für Speicherdienste nur Tags in den drei Konten zugeteilt.
 
 Sie können den Bericht „Cost Analysis“ (Kostenanalyse) für Folgendes verwenden:
 
@@ -147,7 +149,7 @@ In dieser Gruppe von Berichten zu amortisierten Kosten werden linearisierte nich
 - Gebühren für den Kauf von reservierten Instanzen
 - Einige Azure Marketplace-Elemente
 
-In der Abrechnungsdatei werden einmalige Gebühren gekennzeichnet, wenn das Start- und das Enddatum (Zeitstempel) der Dienstnutzung gleiche Werte aufweisen. Der Cost Management-Dienst erkennt diese dann als einmalige Gebühren, die amortisiert werden. Andere nutzungsbasierte Dienste mit Kosten für bedarfsgesteuerte Nutzung werden nicht amortisiert.
+In der Abrechnungsdatei werden einmalige Gebühren gekennzeichnet, wenn das Start- und das Enddatum (Zeitstempel) der Dienstnutzung gleiche Werte aufweisen. Der Cloudyn-Dienst erkennt diese dann als einmalige Gebühren, die amortisiert werden. Andere nutzungsbasierte Dienste mit Kosten für bedarfsgesteuerte Nutzung werden nicht amortisiert.
 
 Berichte zu amortisierten Kosten schließen ein:
 
@@ -158,9 +160,9 @@ Berichte zu amortisierten Kosten schließen ein:
 
 Der Bericht „Cost Analysis“ (Kostenanalyse) bietet Einblick in die Cloudnutzung und die für die Cloud anfallenden Kosten innerhalb eines ausgewählten Zeitraums. Die in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) festgelegten Richtlinien werden im Kostenanalysebericht verwendet.
 
-Wie berechnet Cost Management diesen Bericht?
+Wie wird dieser Bericht in Cloudyn berechnet?
 
-In Cost Management wird durch Anwenden der _Kontenaffinität_ sichergestellt, dass bei der Kostenzuteilung die Integrität der einzelnen verknüpften Konten beibehalten wird. Durch die Affinität wird sichergestellt, dass einem Konto, das einen bestimmten Dienst nicht verwendet, auch keine Kosten für diesen Dienst zugeordnet werden. Die in diesem Konto anfallenden Kosten verbleiben im Konto und werden nicht über die Zuordnungsrichtlinien berechnet. Angenommen, Sie verfügen über fünf verknüpfte Konten. Wenn nur in drei dieser Konten Speicherdienste verwendet werden, werden die Kosten für Speicherdienste nur Tags in den drei Konten zugeteilt.
+In Cloudyn wird durch Anwenden der _Kontenaffinität_ sichergestellt, dass bei der Kostenzuteilung die Integrität der einzelnen verknüpften Konten beibehalten wird. Durch die Affinität wird sichergestellt, dass einem Konto, das einen bestimmten Dienst nicht verwendet, auch keine Kosten für diesen Dienst zugeordnet werden. Die in diesem Konto anfallenden Kosten verbleiben im Konto und werden nicht über die Zuordnungsrichtlinien berechnet. Angenommen, Sie verfügen über fünf verknüpfte Konten. Wenn nur in drei dieser Konten Speicherdienste verwendet werden, werden die Kosten für Speicherdienste nur Tags in den drei Konten zugeteilt.
 
 Sie können den Bericht „Cost Analysis“ (Kostenanalyse) für Folgendes verwenden:
 
@@ -248,11 +250,11 @@ Nach Abschluss wird Ihr Budget in den Berichten zur Kostenanalyse und zum Vergle
 
 ### <a name="azure-resource-explorer-report"></a>Azure-Ressourcen-Explorer-Bericht
 
-Im Azure-Ressourcen-Explorer-Bericht wird eine Gesamtliste aller in Cost Management verfügbaren Azure-Ressourcen angezeigt. Um den Bericht effektiv verwenden zu können, sollten für Ihre Azure-Konten erweiterte Metriken aktiviert sein. Erweiterte Metriken bieten Cost Management Zugriff auf Ihre Azure-VMs. Weitere Informationen finden Sie unter [Hinzufügen erweiterter Metriken für virtuelle Azure-Computer](azure-vm-extended-metrics.md).
+Im Azure-Ressourcen-Explorer-Bericht wird eine Gesamtliste aller in Cloudyn verfügbaren Azure-Ressourcen angezeigt. Um den Bericht effektiv verwenden zu können, sollten für Ihre Azure-Konten erweiterte Metriken aktiviert sein. Erweiterte Metriken bieten Cloudyn Zugriff auf Ihre virtuellen Azure-Computer. Weitere Informationen finden Sie unter [Hinzufügen erweiterter Metriken für virtuelle Azure-Computer](azure-vm-extended-metrics.md).
 
 ### <a name="azure-resources-over-time-report"></a>Bericht über Azure-Ressourcen im Lauf der Zeit
 
-Der Bericht über Azure-Ressourcen im Lauf der Zeit zeigt eine Aufschlüsselung aller Ressourcen an, die über einen bestimmten Zeitraum laufen. Um den Bericht effektiv verwenden zu können, sollten für Ihre Azure-Konten erweiterte Metriken aktiviert sein. Erweiterte Metriken bieten Cost Management Zugriff auf Ihre Azure-VMs. Weitere Informationen finden Sie unter [Hinzufügen erweiterter Metriken für virtuelle Azure-Computer](azure-vm-extended-metrics.md).
+Der Bericht über Azure-Ressourcen im Lauf der Zeit zeigt eine Aufschlüsselung aller Ressourcen an, die über einen bestimmten Zeitraum laufen. Um den Bericht effektiv verwenden zu können, sollten für Ihre Azure-Konten erweiterte Metriken aktiviert sein. Erweiterte Metriken bieten Cloudyn Zugriff auf Ihre virtuellen Azure-Computer. Weitere Informationen finden Sie unter [Hinzufügen erweiterter Metriken für virtuelle Azure-Computer](azure-vm-extended-metrics.md).
 
 ### <a name="instance-explorer-report"></a>Instanz-Explorer-Bericht
 
@@ -355,7 +357,7 @@ Es gibt drei Vorauszahlungsoptionen für RIs:
 - Keine Vorauszahlung: Die Kosten der RI werden in monatlichen Raten über die Dauer der RI mit dem geringsten Rabatt bezahlt.
 - Teilvorauszahlung: ¼ bis ½ des Preises wird im Voraus bezahlt und der Rest in monatlichen Raten mit einem Rabatt, der etwas geringer als der Tarif mit vollständiger Bezahlung im Voraus ist.
 
-Cost Management bewertet die Betriebszeit jedes Computers in den letzten 30 Tagen. Cost Management empfiehlt den Kauf von RIs, wenn der Betrieb des Computers mit einer RI beim aktuellen Betriebszeitgrad kostengünstiger ist.
+Cloudyn bewertet die Betriebszeit jedes Computers in den letzten 30 Tagen. Cloudyn empfiehlt den Kauf von RIs, wenn der Betrieb des Computers mit einer RI beim aktuellen Betriebszeitgrad kostengünstiger ist.
 
 Der Bericht zeigt die Begründung für die Empfehlungen, um das meiste Geld im Lauf des Jahres einsparen zu können. In den Empfehlungen wird vorgeschlagen, Instanzen bei Bedarf durch RIs zu ersetzen. Sie können RIs direkt aus dem Bericht kaufen.
 
@@ -363,9 +365,9 @@ Auf jeder Registerkarte wird ein vollständiger Bericht geöffnet. Zu den bedeut
 
 - **EC2 RI Purchase Impact** (Auswirkung des EC2-RI-Kaufs): Dieser Abschnitt bietet eine Simulation des Unterschieds zwischen einer bedarfsgesteuerten im Vergleich zu reservierten Instanzen. Klicken Sie auf **Zoom in** (Vergrößern), um den vollständigen Bericht zur Auswirkung des EC2-RI-Kaufs mit den bereits für Ihre Empfehlung definierten Filtern anzuzeigen. Dieser Bericht zeigt die Auswirkungen für alle möglichen RI-Käufe an. Sie können die erwartete durchschnittliche Betriebszeit anpassen, um das Einsparungspotenzial beim Kauf reservierter EC2-Instanzen anzuzeigen.
 
-- **Saving Analysis** (Einsparungsanalyse): Dieser Abschnitt enthält die möglichen erzielten Einsparungen beim Befolgen der Cost Management-Empfehlungen und den Monat, in dem die Einsparungen erzielt werden. Die tatsächlichen Einsparungen und der eingesparte prozentuale Anteil sind rot markiert.
+- **Saving Analysis** (Einsparungsanalyse): Dieser Abschnitt enthält die möglichen erzielten Einsparungen beim Befolgen der Cloudyn-Empfehlungen sowie den Monat, in dem die Einsparungen erzielt werden. Die tatsächlichen Einsparungen und der eingesparte prozentuale Anteil sind rot markiert.
 
-- **EC2 RI Type Comparison** (EC2-RI-Typvergleich): In diesem Abschnitt werden die wichtigsten Auswirkungen der von Cost Management empfohlenen Bereitstellung auf die Rendite hervorgehoben, einschließlich aller relevanten Optionen. In den Ergebnissen dieses Berichts wird davon ausgegangen, dass der Computer mit einer Betriebszeit von 100 % ausgeführt wird. Klicken Sie auf **Zoom in** (Vergrößern), um den detaillierten Bericht zu öffnen.
+- **EC2 RI Type Comparison** (EC2-RI-Typvergleich): In diesem Abschnitt werden die wichtigsten Auswirkungen der von Cloudyn empfohlenen Bereitstellung auf die Rendite hervorgehoben, einschließlich aller relevanten Optionen. In den Ergebnissen dieses Berichts wird davon ausgegangen, dass der Computer mit einer Betriebszeit von 100 % ausgeführt wird. Klicken Sie auf **Zoom in** (Vergrößern), um den detaillierten Bericht zu öffnen.
 
 - **Instances Over Time** (Instanzen im Lauf der Zeit): Dieser Abschnitt enthält eine Aufschlüsselung aller Instanzen im Zusammenhang mit der Empfehlung, ausgeschlüsselt in OnDemand, reservierte Instanzen und Spot. Klicken Sie auf **Zoom in** (Vergrößern), um den detaillierten Bericht zu öffnen.
 - **Breakeven Points** (Gewinnschwellen): Dieser Abschnitt enthält eine Tabelle aller möglichen empfohlenen Bereitstellungen mit der Rendite und dem Monat, in dem die Rendite erfolgt. Klicken Sie auf **Zoom in** (Vergrößern), um den detaillierten Bericht zu öffnen.
@@ -394,7 +396,7 @@ Im Bericht über RDS-RI-Kaufempfehlungen wird empfohlen, wann RDS-RIs anstelle v
 Auf jeder Registerkarte wird ein vollständiger Bericht geöffnet. Zu den bedeutenden Abschnitten auf den Registerkarten gehören die folgenden:
 
 - **RDS RI Purchase Impact** (Auswirkung des RDS-RI-Kaufs): Dieser Abschnitt bietet eine Simulation des Unterschieds zwischen einer bedarfsgesteuerten im Vergleich zu reservierten Instanzen. Klicken Sie auf **Zoom in** (Vergrößern), um den vollständigen Bericht zur Auswirkung des RDS-RI-Kaufs mit den bereits für Ihre Empfehlung definierten Filtern anzuzeigen. Sie können dem Bericht die Auswirkungen für alle möglichen RI-Käufe entnehmen.  Sie können die erwartete durchschnittliche Betriebszeit anpassen und die möglichen Einsparungen durch den Erwerb von RIs anzeigen.
-- **Saving Analyse** (Einsparungsanalyse): Dieser Abschnitt enthält die möglichen erzielten Einsparungen beim Befolgen der Cost Management-Empfehlungen und den Monat, in dem die Einsparungen erzielt werden. Die tatsächlichen Einsparungen und der eingesparte prozentuale Anteil sind rot markiert.
+- **Saving Analysis** (Einsparungsanalyse): Dieser Abschnitt enthält die möglichen erzielten Einsparungen beim Befolgen der Cloudyn-Empfehlungen sowie den Monat, in dem die Einsparungen erzielt werden. Die tatsächlichen Einsparungen und der eingesparte prozentuale Anteil sind rot markiert.
 
 - **RDS RI Type Comparison** (RDS-RI-Typvergleich): In diesem Abschnitt werden die wichtigsten Auswirkungen der empfohlenen Bereitstellung auf die Rendite hervorgehoben, einschließlich aller relevanten Optionen. In den Ergebnissen dieses Berichts wird davon ausgegangen, dass der Computer mit einer Betriebszeit von 100 % ausgeführt wird. Klicken Sie auf **Zoom in** (Vergrößern), um den detaillierten Bericht für den ausgewählten Computer zu öffnen.
 - **Instances Over Time** (Instanzen im Lauf der Zeit): Dieser Abschnitt enthält eine Aufschlüsselung aller Instanzen im Zusammenhang mit der Empfehlung, OnDemand, reservierte Instanzen und Spot. Klicken Sie auf **Zoom in** (Vergrößern), um den detaillierten Bericht zu öffnen.
@@ -417,7 +419,7 @@ Sie können die Liste der für eine Verkleinerung empfohlenen Instanz-IDs in die
 
 Betrachten Sie das folgende Beispiel für eine Verkleinerung:
 
-Sie haben sechs ausgeführte m3.xlarge-Instanzen. Die Analyse durch Cost Management zeigt, dass fünf von ihnen eine niedrige CPU-Auslastung aufweisen. Ziehen Sie in Betracht, sie zu verkleinern.
+Sie haben sechs ausgeführte m3.xlarge-Instanzen. Die Analyse durch Cloudyn zeigt, dass fünf von ihnen eine niedrige CPU-Auslastung aufweisen. Ziehen Sie in Betracht, sie zu verkleinern.
 
 Im Bericht über Kostenauswirkung wird die Auswirkung auf die Kosten berechnet. In diesem Beispiel sehen Sie durch Erweitern der Position, dass der aktuelle Preis für eine m3.xlarge-Instanz (Linux/Unix) bei 0,266 US-Dollar pro Stunde und der Preis für eine m3.large-Instanz (Linux/Unix) bei 0,133 US-Dollar pro Stunde liegt. Die jährlichen Kosten betragen also 11.651 US-Dollar für fünf m3.xlarge-Instanzen, die zu 100 % ausgelastet sind. Die jährlichen Kosten betragen 5.825 US-Dollar für fünf m3.large-Instanzen, die zu 100 % ausgelastet sind. Die potenziellen Einsparungen betragen 5.825 US-Dollar.
 
@@ -425,7 +427,7 @@ Um die Begründungen für kosteneffektive Größen anzuzeigen, klicken Sie auf +
 
 - Der Abschnitt **Recommendation Justification** (Empfehlungsbegründung) enthält die aktuelle Bereitstellung und die Anzahl der Instanzen, für die eine Verkleinerung empfohlen wird.
 - Der Abschnitt **Cost Impact** (Kostenauswirkung) enthält die Berechnung zum Ermitteln der potenziellen Einsparungen.
-- Der Abschnitt **Potential Annual Savings** (Potenzielle jährliche Einsparungen) enthält die potenziellen jährlichen Einsparungen durch eine Verkleinerung gemäß den Empfehlungen von Cost Management.
+- Der Abschnitt **Potential Annual Savings** (Potenzielle jährliche Einsparungen) enthält die potenziellen jährlichen Einsparungen durch eine Verkleinerung gemäß den Empfehlungen von Cloudyn.
 
 ### <a name="all-sizing-recommendations-report"></a>Bericht über alle Größenempfehlungen
 
@@ -483,11 +485,11 @@ So zeigen Sie Metriken für eine bestimmte Instanz im Lauf der Zeit an
 
 ### <a name="rds-sizing-recommendations-report"></a>Bericht über RDS-Größenempfehlungen
 
-Der Bericht über RDS-Größenempfehlungen stellt RDS-Größenempfehlungen zur Optimierung Ihrer Cloudnutzung RDS bereit. Er enthält eine Liste von nicht ausgelasteten Instanzen, die Kandidaten für eine Verkleinerung sind. Die Empfehlungen von Cost Management basieren auf der Nutzung und den Leistungsdaten der letzten 30 Tage. Sie können Empfehlungen nach Kontoname, Region, Instanztyp und Status filtern.
+Der Bericht über RDS-Größenempfehlungen stellt RDS-Größenempfehlungen zur Optimierung Ihrer Cloudnutzung RDS bereit. Er enthält eine Liste von nicht ausgelasteten Instanzen, die Kandidaten für eine Verkleinerung sind. Die Empfehlungen von Cloudyn basieren auf der Nutzung und den Leistungsdaten der letzten 30 Tage. Sie können Empfehlungen nach Kontoname, Region, Instanztyp und Status filtern.
 
 ### <a name="sizing-threshold-manager-report"></a>Sizing Threshold Manager-Bericht
 
-Die integrierten Empfehlungen von Cost Management werden mit einem komplexen Algorithmus berechnet, um genaue Empfehlungen für die Größen anzugeben. Sie können die Schwellenwerte für Verkleinerungsempfehlungen anpassen.
+Die integrierten Empfehlungen von Cloudyn werden mit einem komplexen Algorithmus berechnet, um genaue Empfehlungen für die Größen anzugeben. Sie können die Schwellenwerte für Verkleinerungsempfehlungen anpassen.
 
 So passen Sie die Schwellenwerte für Größenempfehlungen manuell an
 

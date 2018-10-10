@@ -1,6 +1,6 @@
 ---
-title: Verwalten von DNS-Einträgen in Azure DNS mit der Azure CLI 2.0 | Microsoft-Dokumentation
-description: Verwalten von DNS-Datensatzgruppen und Einträgen in Azure DNS, wenn Sie Ihre Domäne in Azure DNS hosten. Alle Befehle der CLI 2.0 für Vorgänge für Ressourceneintragssätze und Einträge.
+title: Verwalten von DNS-Einträgen mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: Verwalten von DNS-Datensatzgruppen und Einträgen in Azure DNS, wenn Sie Ihre Domäne in Azure DNS hosten.
 services: dns
 documentationcenter: na
 author: vhorne
@@ -14,23 +14,23 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: victorh
-ms.openlocfilehash: 41366f29ecf5dcd6ffe23148acd61100681620df
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 1f1ee4f69cc1ab656df04ed30cae6f4c3e55bfa7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174251"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963814"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Verwalten von DNS-Einträgen und Ressourceneintragssätzen in Azure DNS mit der Azure CLI 2.0
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Verwalten von DNS-Einträgen und Ressourceneintragssätzen in Azure DNS mit der Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
+> * [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-Dieser Artikel zeigt, wie Sie DNS-Einträge für Ihre DNS-Zone mit der plattformübergreifenden Azure CLI 2.0 (Command-Line Interface, Befehlszeilenschnittstelle) verwalten, die für Windows, Mac und Linux verfügbar ist. Sie können Ihre DNS-Einträge auch mithilfe von [Azure PowerShell](dns-operations-recordsets.md) oder über das [Azure-Portal](dns-operations-recordsets-portal.md) verwalten.
+Dieser Artikel zeigt, wie Sie DNS-Einträge für Ihre DNS-Zone mit der plattformübergreifenden Azure CLI verwalten, die für Windows, Mac und Linux verfügbar ist. Sie können Ihre DNS-Einträge auch mithilfe von [Azure PowerShell](dns-operations-recordsets.md) oder über das [Azure-Portal](dns-operations-recordsets-portal.md) verwalten.
 
-Bei den Beispielen in diesem Artikel wird vorausgesetzt, dass Sie bereits [die Azure CLI 2.0 installiert haben, angemeldet sind und eine DNS-Zone erstellt haben](dns-operations-dnszones-cli.md).
+Bei den Beispielen in diesem Artikel wird vorausgesetzt, dass Sie bereits [die Azure-Befehlszeilenschnittstelle installiert haben, angemeldet sind und eine DNS-Zone erstellt haben](dns-operations-dnszones-cli.md).
 
 ## <a name="introduction"></a>Einführung
 

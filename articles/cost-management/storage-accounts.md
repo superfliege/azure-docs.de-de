@@ -1,27 +1,27 @@
 ---
-title: Konfigurieren von Speicherkonten für Azure Cost Management | Microsoft-Dokumentation
-description: In diesem Artikel ist beschrieben, wie Sie Azure-Speicherkonten und AWS-Speicherbuckets für Azure Cost Management konfigurieren.
+title: Konfigurieren von Speicherkonten für Cloudyn in Azure | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie Azure-Speicherkonten und AWS-Speicherbuckets für Cloudyn konfigurieren.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: dab7100c97fab7e086352916ec222ec70a0d0400
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 829995d40a73dc181a28a467e4d16fef0bdeb454
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142549"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990653"
 ---
-# <a name="configure-storage-accounts-for-cost-management"></a>Konfigurieren von Speicherkonten für Cost Management
+# <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurieren von Speicherkonten für Cloudyn
 
-<!--- intent: As a Cost Management user, I want to configure Cost Management to use my cloud service provider storage account to store my reports. -->
+<!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-Sie können Cost Management-Berichte im Cloudyn-Portal, in Azure-Speicher oder in AWS-Speicherbuckets speichern. Speichern Ihrer Berichte im Cloudyn-Portal ist kostenfrei. Dagegen ist das Speichern Ihrer Berichte im Speicher Ihres Cloud-Dienstanbieters optional und verursacht zusätzliche Kosten. Dieser Artikel hilft Ihnen bei der Konfiguration von Azure-Speicherkonten und AWS-Speicherbucktes (Amazon Web Services), um Ihre Berichte zu speichern.
+Sie können Cloudyn-Berichte im Cloudyn-Portal, in Azure-Speicher oder in AWS-Speicherbuckets speichern. Speichern Ihrer Berichte im Cloudyn-Portal ist kostenfrei. Dagegen ist das Speichern Ihrer Berichte im Speicher Ihres Cloud-Dienstanbieters optional und verursacht zusätzliche Kosten. Dieser Artikel hilft Ihnen bei der Konfiguration von Azure-Speicherkonten und AWS-Speicherbucktes (Amazon Web Services), um Ihre Berichte zu speichern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +33,7 @@ Wenn Sie keinen AWS Simple Storage Service Bucket (S3-Bucket) haben, müssen Sie
 
 ## <a name="configure-your-azure-storage-account"></a>Konfigurieren Ihres Azure-Speicherkontos
 
-Das Konfigurieren Ihres Azure-Speichers zur Verwendung durch Cost Management ist einfach. Besorgen Sie sich die Details zu dem Speicherkonto, und kopieren Sie diese in das Cloudyn-Portal.
+Das Konfigurieren Ihres Azure-Speichers zur Verwendung durch Cloudyn ist einfach. Besorgen Sie sich die Details zu dem Speicherkonto, und kopieren Sie diese in das Cloudyn-Portal.
 
 1. Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 2. Klicken Sie auf **Alle Dienste**, wählen Sie **Speicherkonten** aus, scrollen Sie zu dem Speicherkonto, das Sie verwenden möchten, und wählen Sie es aus.
@@ -163,4 +163,4 @@ Sie können jetzt Berichte im Azure-Speicher speichern. Klicken Sie in irgendein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie [Grundlegendes zu Kostenverwaltungsberichten](understanding-cost-reports.md), um mehr über die grundlegende Struktur und die grundlegenden Funktionen von Kostenverwaltungsberichten zu erfahren.
+- Lesen Sie [Grundlegendes zu Cloudyn-Berichten](understanding-cost-reports.md), um mehr über die grundlegende Struktur und die Basisfunktionen von Cloudyn-Berichten zu erfahren.

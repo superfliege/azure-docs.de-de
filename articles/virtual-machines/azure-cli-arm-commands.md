@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8a2bae12fae6a1bf8f5ecbdb2ae01dea5260f3cb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5aecb218b66c06c87446e35e5c7c9ca8108b956c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30839143"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995549"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus
 Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie für gewöhnlich zum Erstellen und Verwalten von Azure-Ressourcen im Azure Resource Manager-Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im ARM-Modus ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. Eine allgemeine Übersicht über Azure-Ressourcen und -Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  
 
 > [!NOTE]
-> In diesem Artikel werden Befehle der Azure-Befehlszeilenschnittstelle (auch Azure CLI 1.0) im Resource Manager-Modus vorgestellt. Um im Resource Manager-Modell zu arbeiten, können Sie auch die [Azure CLI 2.0](/cli/azure/install-az-cli2) ausprobieren, unsere Multi-Plattform-Befehlszeilenschnittstelle der nächsten Generation.
+> In diesem Artikel werden Befehle der Azure CLI (auch als klassische Azure CLI bezeichnet) im Resource Manager-Modus vorgestellt. Um im Resource Manager-Modell zu arbeiten, können Sie auch die [Azure CLI](/cli/azure/install-az-cli2) testen, unsere Multi-Plattform-CLI der nächsten Generation.
 >Erfahren Sie mehr über die [alte und die neue Azure-Befehlszeilenschnittstelle](/cli/azure/old-and-new-clis).
 >
 

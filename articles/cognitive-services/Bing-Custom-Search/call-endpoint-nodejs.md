@@ -9,43 +9,40 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 5d9391cc486dc868a1a291ccc7095291cddd3e4c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 73c31c7175bd4dfcb182fb76784937c176ac7702
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858458"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977875"
 ---
 # <a name="call-bing-custom-search-endpoint-nodejs"></a>Aufrufen des Endpunkts für die benutzerdefinierte Bing-Suche (Node.js)
 
 Dieser Schnellstart veranschaulicht das Anfordern von Suchergebnissen aus Ihrer Instanz der benutzerdefinierten Suche unter Verwendung von Node.js zum Aufrufen des Endpunkts der benutzerdefinierten Bing-Suche. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
-- Eine Instanz der benutzerdefinierten Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
-
+- Eine einsatzbereite Instanz für die benutzerdefinierte Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
 - Installation von [Node.js](https://www.nodejs.org/)
-
--  Ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs** Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+- Abonnementschlüssel Sie erhalten einen Abonnementschlüssel, wenn Sie Ihre [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktivieren, oder Sie können einen kostenpflichtigen Abonnementschlüssel über Ihr Azure-Dashboard beziehen (siehe [Schnellstart: Erstellen eines Cognitive Services-API-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgendermaßen vor:
+Führen Sie diese Schritte aus, um das Beispiel auszuführen:
 
-1. Erstellen Sie einen Ordner für Ihren Code.
-
-2. Navigieren Sie an einer Eingabeaufforderung oder einem Terminal zu dem Ordner, den Sie gerade erstellt haben.
-
+1. Erstellen Sie einen Ordner für Ihren Code.  
+  
+2. Navigieren Sie an einer Eingabeaufforderung oder einem Terminal zu dem Ordner, den Sie gerade erstellt haben.  
+  
 3. Installieren Sie das Modul zum **Anfordern** eines Knotens:
     <pre>
     npm install request
-    </pre>
+    </pre>  
     
-4. Erstellen Sie die Datei „BingCustomSearch.js“, und kopieren Sie den folgenden Code in die Datei.
-
-5. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Schlüssel bzw. Ihre Konfigurations-ID (siehe Schritt 1).
-
+4. Erstellen Sie eine Datei mit dem Namen „BingCustomSearch.js“ in dem von Ihnen erstellten Ordner, und kopieren Sie den folgenden Code in diese. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Abonnementschlüssel und Ihre Konfigurations-ID.  
+  
     ``` javascript
     var request = require("request");
     
@@ -74,11 +71,13 @@ Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgend
             console.log();
         }
     })
-    ```
-6. Führen Sie den Code mit dem folgenden Befehl aus:
+    ```  
+  
+6. Führen Sie den Code mit dem folgenden Befehl aus:  
+  
     ```    
     node BingCustomSearch.js
-   ``` 
+    ``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Konfigurieren der gehosteten Benutzeroberfläche](./hosted-ui.md)

@@ -1,38 +1,38 @@
 ---
-title: Herstellen einer Verbindung eines Google Cloud Platform-Kontos mit dem Azure Cost Management| Microsoft-Dokumentation
-description: Stellen Sie eine Verbindung eines Google Cloud Platform-Kontos her, um Kosten und Nutzungsdaten in Cost Management-Berichten anzuzeigen.
+title: Herstellen einer Verbindung eines Google Cloud Platform-Kontos mit Cloudyn in Azure| Microsoft-Dokumentation
+description: Stellen Sie eine Verbindung eines Google Cloud Platform-Kontos her, um Kosten und Nutzungsdaten in Cloudyn-Berichten anzuzeigen.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: d4b906bd966da66659d23b935f7dbbd44b33899a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 09035146fe3211f9fc46d3ad51326a6e76921b7d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296440"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977297"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Herstellen einer Verbindung eines Google Cloud Platform-Kontos
 
-Sie können eine Verbindung Ihres bestehenden Google Cloud Platform-Kontos mit Azure Cost Management herstellen. Nachdem Sie eine Verbindung Ihres Kontos mit Cost Management hergestellt haben, sind Kosten und Verwendungsdaten in Cost Management-Berichten verfügbar. Dieser Artikel unterstützt Sie beim Herstellen einer Verbindung Ihres Google-Kontos mit Cost Management und beim Konfigurieren.
+Sie können eine Verbindung Ihres bestehenden Google Cloud Platform-Kontos mit Cloudyn herstellen. Nachdem Sie eine Verbindung Ihres Kontos mit Cloudyn hergestellt haben, sind Kosten und Verwendungsdaten in Cloudyn-Berichten verfügbar. Dieser Artikel unterstützt Sie beim Herstellen einer Verbindung Ihres Google-Kontos mit Cloudyn und beim Konfigurieren.
 
 ## <a name="collect-project-information"></a>Sammeln von Projektinformationen
 
 Sie beginnen mit dem Sammeln von Informationen zu Ihrem Projekt.
 
 1. Melden Sie sich bei der Google Cloud Platform-Konsole unter [https://console.cloud.google.com](https://console.cloud.google.com) an.
-2. Überprüfen Sie die Projektinformationen, die Sie Cost Management übergeben möchten, und notieren Sie **Project name (Projektname)** und **Project ID (Projekt-ID)**. Halten Sie die Informationen für spätere Schritte bereit.  
+2. Überprüfen Sie die Projektinformationen, die Sie Cloudyn übergeben möchten, und notieren Sie **Projektname** und **Projekt-ID**. Halten Sie die Informationen für spätere Schritte bereit.  
     ![Google Cloud Platform-Konsole](./media/connect-google-account/gcp-console01.png)
 3. Wenn die Abrechnung nicht aktiviert und mit Ihrem Projekt verknüpft ist, erstellen Sie ein Abrechnungskonto. Weitere Informationen finden Sie unter [Neues Rechnungskonto erstellen](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account).
 
 ## <a name="enable-storage-bucket-billing-export"></a>Aktivieren des Exportierens der Speicherbucketabrechnung
 
-Cost Management ruft Ihre Google-Abrechnungsdaten aus einem Speicherbucket ab. Halten Sie die Daten für **Bucket name (Bucketname)** und **Report prefix (Berichtpräfix)** für die spätere Verwendung während der Cost Management-Registrierung bereit.
+Cloudyn ruft Ihre Google-Abrechnungsdaten aus einem Speicherbucket ab. Halten Sie die Daten für **Bucketname** und **Berichtpräfix** für die spätere Verwendung während der Cloudyn-Registrierung bereit.
 
 Wenn Sie Google Cloud Storage zum Speichern von Verwendungsberichten nutzen, fallen minimale Gebühren an. Weitere Informationen finden Sie unter [Google Cloud Storage – Preise](https://cloud.google.com/storage/pricing).
 
@@ -42,7 +42,7 @@ Wenn Sie Google Cloud Storage zum Speichern von Verwendungsberichten nutzen, fal
 
 ## <a name="enable-google-cloud-platform-apis"></a>Aktivieren der Google Cloud Platform-APIs
 
-Zum Sammeln von Nutzungs- und Ressourceninformationen setzt Cost Management voraus, dass die folgenden Google Cloud Plattform-APIs aktiviert sind:
+Zum Sammeln von Nutzungs- und Ressourceninformationen setzt Cloudyn voraus, dass die folgenden Google Cloud Platform-APIs aktiviert sind:
 
 - BigQuery API
 - Google Cloud SQL
@@ -53,12 +53,12 @@ Zum Sammeln von Nutzungs- und Ressourceninformationen setzt Cost Management vora
 
 ### <a name="enable-or-verify-apis"></a>Aktivieren oder Überprüfen von APIs
 
-1. Wählen Sie in der Google Cloud Platform-Konsole das Projekt aus, das Sie bei Cost Management registrieren möchten.
+1. Wählen Sie in der Google Cloud Platform-Konsole das Projekt aus, das Sie bei Cloudyn registrieren möchten.
 2. Navigieren Sie zu **APIs & Services (APIs und Dienste)** > **Library (Bibliothek)**.
 3. Nutzen Sie die Suche, um die oben aufgelisteten APIs zu finden.
 4. Überprüfen Sie, ob für jede API **API enabled (API aktiviert)** angezeigt wird. Klicken Sie andernfalls auf **ENABLE (AKTIVIEREN)**.
 
-## <a name="add-a-google-cloud-account-to-cost-management"></a>Hinzufügen eines Google Cloud-Kontos zu Cost Management
+## <a name="add-a-google-cloud-account-to-cloudyn"></a>Hinzufügen eines Google Cloud-Kontos zu Cloudyn
 
 1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu [https://azure.cloudyn.com](https://azure.cloudyn.com/), und melden Sie sich an.
 2. Klicken Sie auf **Einstellungen** (Zahnrad-Symbol), und wählen Sie dann **Cloud Accounts (Cloudkonten)**.
@@ -70,8 +70,8 @@ Zum Sammeln von Nutzungs- und Ressourceninformationen setzt Cost Management vora
 
 Ihr Google-Konto wird in der Liste der Benutzerkonten angezeigt, und es müsste **Authenticated (Authentifiziert)** angegeben werden. Darunter werden Ihr Google-Projektname und die Projekt-ID angezeigt, beide mit einem grünen Häkchensymbol versehen. Der „Account Status“ (Kontostatus) sollte **Completed (Abgeschlossen)** lauten.
 
-Innerhalb von wenigen Stunden zeigen Cost Management-Berichte Kosten- und Nutzungsinformationen von Google an.
+Innerhalb von wenigen Stunden zeigen Cloudyn-Berichte Kosten- und Nutzungsinformationen von Google an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure Cost Management finden Sie im Tutorial [Überprüfen der Nutzung und der Kosten](./tutorial-review-usage.md).
+- Weitere Informationen zu Cloudyn finden Sie im Tutorial [Überprüfen der Nutzung und der Kosten](./tutorial-review-usage.md) für Cloudyn.

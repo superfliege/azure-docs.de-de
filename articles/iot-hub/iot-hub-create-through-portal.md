@@ -1,161 +1,159 @@
 ---
 title: Erstellen eines IoT Hubs über das Azure-Portal | Microsoft Docs
 description: Erstellen, Verwalten und Löschen von Azure IoT Hubs über das Azure-Portal. Enthält Informationen zu Tarifen, Skalierung, Sicherheit und die Messagingkonfiguration.
-author: dominicbetts
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: dobett
-ms.openlocfilehash: 0b03ae434e93dbab45235fe67c499497e1257064
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.date: 09/06/2018
+ms.author: robinsh
+ms.openlocfilehash: 8f08141f5c14a734f89ba91045767e2a36a44fd2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145421"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985604"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Erstellen eines IoT Hubs über das Portal
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Dieser Artikel beschreibt Folgendes:
+In diesem Artikel wird das Erstellen und Verwalten von IoT-Hubs über das [Azure-Portal](https://portal.azure.com) beschrieben.
 
-* Vorgehensweise zum Suchen nach dem IoT Hub-Dienst im Azure-Portal
-* Vorgehensweise zum Erstellen und Verwalten von IoT Hubs
-
-## <a name="where-to-find-the-iot-hub-service"></a>Bereiche zum Suchen nach dem IoT Hub-Dienst
-
-Sie können in den folgenden Bereichen im Portal nach dem IoT Hub-Dienst suchen:
-
-* Wählen Sie **+ Neu** und dann **Internet der Dinge**.
-* Wählen Sie im Marketplace **Internet der Dinge**.
+Sie benötigen ein Azure-Abonnement, um die Schritte in diesem Tutorial durchzuführen. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
-Sie können einen IoT Hub mit den folgenden Methoden erstellen:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. 
 
-* Mit der Option **+ Neu** wird das Blatt geöffnet, das im folgenden Screenshot gezeigt wird. Beim Erstellen des IoT Hubs mit dieser Methode gehen Sie genauso vor wie beim Erstellen über den Marketplace.
+2. Wählen Sie +**Ressource erstellen**, und wählen Sie dann **Internet der Dinge**.
 
-* Wählen Sie im Marketplace **Erstellen**, um das im folgenden Screenshot gezeigte Blatt zu öffnen.
+3. Klicken Sie in der Liste auf der rechten Seite auf **Iot Hub**. Daraufhin wird Ihnen der erste Bildschirm zum Erstellen eines IoT-Hubs angezeigt.
 
-In den folgenden Abschnitten werden die verschiedenen Schritte zum Erstellen eines IoT Hubs beschrieben.
+   ![Screenshot: Erstellen eines Hubs im Azure-Portal](./media/iot-hub-create-through-portal/iot-hub-create-screen-basics.png)
 
-### <a name="choose-the-name-of-the-iot-hub"></a>Auswählen des Namen des IoT Hubs
+   Füllen Sie die Felder aus.
 
-Um einen IoT Hub zu erstellen, müssen Sie einen Namen für den IoT Hub festlegen. Dieser Name muss unter allen IoT Hubs eindeutig sein.
+   **Abonnement**: Wählen Sie das Abonnement aus, das Sie für den IoT-Hub verwenden möchten.
 
-[!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
+   **Ressourcengruppe**: Sie können eine neue Ressourcengruppe erstellen oder eine vorhandene verwenden. Um eine neue Ressourcengruppe zu erstellen, klicken Sie auf **Neu erstellen**, und geben Sie den Namen ein, den Sie verwenden möchten. Um eine vorhandene Ressourcengruppe zu verwenden, klicken Sie auf **Vorhandene verwenden**, und wählen Sie die Ressourcengruppe in der Dropdownliste aus.
 
-### <a name="choose-the-pricing-tier"></a>Auswählen des Tarifs
+   **Region**: Wählen Sie die Region, in der sich Ihr Hub befinden soll, in der Dropdownliste aus.
 
-Ihnen stehen abhängig davon, wie viele Features Sie wünschen, und wie viele Nachrichten Sie über Ihre Lösung pro Tag senden möchten, mehrere Tarife zur Auswahl. Der kostenlose Tarif ist für Test und Bewertung vorgesehen. Damit kann für 500 Geräte eine Verbindung mit dem IoT Hub hergestellt werden, und bis zu 8.000 Nachrichten pro Tag sind möglich. Jedes Azure-Abonnement kann einen IoT Hub im kostenlosen Tarif erstellen. 
+   **IoT Hub-Name**: Geben Sie den Namen für Ihren IoT-Hub ein. Dieser Name muss global eindeutig sein. 
 
-Einzelheiten zu den anderen Tarifoptionen finden Sie unter [Skalieren einer IoT Hub-Lösung](iot-hub-scaling.md).
+   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-### <a name="iot-hub-units"></a>IoT Hub-Einheiten
+4. Klicken Sie auf **Weiter: Größe und Skalierung**, um zum nächsten Bildschirm zu wechseln.
 
-Die Anzahl der pro Einheit und Tag zulässigen Nachrichten hängt von Ihrem Hubtarif ab. Beispiel: Wenn der IoT Hub 700.000 eingehende Nachrichten unterstützen soll, wählen Sie zwei Einheiten des Tarifs S1.
+   ![Screenshot mit der Einstellung für Größe und Skalierung für einen neuen IoT-Hub über das Azure-Portal](./media/iot-hub-create-through-portal/iot-hub-create-screen-size-scale.png)
 
-### <a name="device-to-cloud-partitions-and-resource-group"></a>Gerät für Cloud-Partitionen und Ressourcengruppe
+   Auf diesem Bildschirm können Sie die Standardeinstellungen übernehmen und im unteren Bereich einfach auf **Überprüfen + erstellen** klicken. Alternativ dazu können Sie die Felder nach Bedarf ausfüllen.
 
-Sie können die Anzahl der Partitionen für einen IoT Hub ändern. Die Standardanzahl von Partitionen beträgt 4. Sie können eine andere Anzahl aus der Dropdownliste auswählen.
+   **Tarif und Skalierung**: Ihnen stehen abhängig davon, wie viele Features Sie wünschen, und wie viele Nachrichten Sie über Ihre Lösung pro Tag senden möchten, mehrere Tarife zur Auswahl. Der kostenlose Tarif ist für Test und Bewertung vorgesehen. Damit kann für 500 Geräte eine Verbindung mit dem IoT Hub hergestellt werden, und bis zu 8.000 Nachrichten pro Tag sind möglich. Jedes Azure-Abonnement kann einen IoT Hub im kostenlosen Tarif erstellen. 
 
-Sie müssen nicht explizit eine leere Ressourcengruppe erstellen. Beim Erstellen einer Ressource können Sie entweder eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden.
+   **IoT Hub-Einheiten**: Die Anzahl der pro Einheit und Tag zulässigen Nachrichten hängt von Ihrem Hubtarif ab. Beispiel: Wenn der IoT Hub 700.000 eingehende Nachrichten unterstützen soll, wählen Sie zwei Einheiten des Tarifs S1.
 
-![Screenshot: Erstellen eines Hubs im Azure-Portal](./media/iot-hub-create-through-portal/location1.png)
+   Einzelheiten zu den anderen Tarifoptionen finden Sie unter [Skalieren einer IoT Hub-Lösung](iot-hub-scaling.md).
 
-### <a name="choose-subscription"></a>Auswählen eines Abonnements
+   **Erweitert/Gerät-zu-Cloud-Partitionen**: Diese Eigenschaft setzt die Gerät-zu-Cloud-Nachrichten in Relation zur Anzahl von gleichzeitigen Lesern der Nachrichten. Die meisten IoT-Hubs benötigen nur vier Partitionen. 
 
-Azure IoT Hub listet automatisch die Azure-Abonnements auf, mit denen das Benutzerkonto verknüpft ist. Sie können das Azure-Abonnement auswählen, das IoT Hub zugeordnet ist.
+5. Klicken Sie auf **Überprüfen + erstellen**, um Ihre Auswahl zu überprüfen. Die Anzeige entspricht in etwa dem folgenden Bildschirm.
 
-### <a name="choose-the-location"></a>Wählen des Standorts
+   ![Screenshot zur Überprüfung von Informationen bei der Erstellung des neuen IoT-Hubs](./media/iot-hub-create-through-portal/iot-hub-create-review.png)
 
-Die Option „Standort“ enthält eine Liste der Regionen, in denen IoT Hub verfügbar ist.
-
-### <a name="create-the-iot-hub"></a>Erstellen des IoT Hubs
-
-Wenn alle vorherigen Schritte abgeschlossen sind, können Sie IoT Hub erstellen. Klicken Sie auf **Erstellen**, um den Back-End-Prozess zu starten, mit dem IoT Hub mit den von Ihnen gewählten Optionen erstellt und bereitgestellt wird.
-
-Die Erstellung von IoT Hub kann einige Minuten in Anspruch nehmen, da es etwas dauert, bis die Back-End-Bereitstellung auf den jeweiligen Standortservern ausgeführt wird.
+5. Klicken Sie auf **Erstellen**, um Ihren neuen IoT-Hub zu erstellen. Das Erstellen des Hubs dauert einige Minuten.
 
 ## <a name="change-the-settings-of-the-iot-hub"></a>Ändern der Einstellungen des IoT Hubs
-<!--robinsh these screenshots are out of date -->
 
-Sie können die Einstellungen für einen IoT Hub nach dessen Erstellung im Blatt „IoT Hub“ ändern.
+Sie können die Einstellungen eines vorhandenen IoT-Hubs nach seiner Erstellung im Bereich „IoT Hub“ ändern.
 
-![Screenshot: Einstellungen für den IoT Hub](./media/iot-hub-create-through-portal/portal-settings.png)
+![Screenshot: Einstellungen für den IoT Hub](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
 
-**Richtlinien für gemeinsamen Zugriff**: Diese Richtlinien definieren die Berechtigungen für Geräte und Dienste zum Herstellen einer Verbindung mit dem IoT Hub. Sie finden diese Richtlinien, indem Sie unter **Allgemein** auf **Richtlinien für gemeinsamen** Zugriff klicken. Auf diesem Blatt können Sie vorhandene Richtlinien ändern oder eine neue Richtlinie hinzufügen.
+Hier werden einige der Eigenschaften aufgeführt, die Sie für einen IoT-Hub festlegen können:
 
-### <a name="create-a-policy"></a>Erstellen einer Richtlinie
+**Tarif und Skalierung**: Mit dieser Eigenschaft können Sie die Migration zu einem anderen Tarif durchführen oder die Anzahl von IoT Hub-Einheiten festlegen. 
 
-* Klicken Sie auf **Hinzufügen**, um ein Blatt zu öffnen. Hier können Sie den Namen der neuen Richtlinie und die Berechtigungen, die dieser Richtlinie zugeordnet werden sollen, wie in der folgenden Abbildung gezeigt eingeben:
+**Vorgangsüberwachung**: Aktivieren oder deaktivieren Sie die verschiedenen Überwachungskategorien, beispielsweise die Protokollierung von Ereignissen im Zusammenhang mit Gerät-zu-Cloud-Nachrichten oder Cloud-zu-Gerät-Nachrichten.
 
-    Diesen freigegebenen Richtlinien können mehrere Berechtigungen zugeordnet werden. Die Richtlinien **Registrierung lesen** und **In Registrierung schreiben** berechtigen zum Lesen und Schreiben in der Identitätsregistrierung. Beim Auswählen der Schreiboption wird die Leseoption automatisch ausgewählt.
+**IP-Filter**: Hier können Sie einen IP-Adressbereich angeben, der vom IoT-Hub akzeptiert oder abgelehnt wird.
 
-    Die Richtlinie **Dienstverbindung** erteilt die Berechtigung für den Zugriff auf Dienstendpunkte, z.B. **Empfangen von Gerät-an-Cloud-Nachrichten**. Die Richtlinie **Geräteverbindung** gewährt Berechtigungen zum Senden und Empfangen von Nachrichten mit den geräteseitigen IoT Hub-Endpunkten.
+**Eigenschaften**: Enthält die Liste der Eigenschaften, die Sie kopieren und an anderer Stelle verwenden können, z.B. die Ressourcen-ID, die Ressourcengruppe, den Standort usw.
 
-* Klicken Sie auf **Erstellen** , um der vorhandenen Liste diese neu erstellte Richtlinie hinzuzufügen.
+### <a name="shared-access-policies"></a>Freigegebene Zugriffsrichtlinien
 
-   ![Screenshot: Hinzufügen einer SAS-Richtlinie](./media/iot-hub-create-through-portal/shared-access-policies.png)
+Sie können die Liste der freigegebenen Zugriffsrichtlinien auch anzeigen oder ändern, indem Sie im Abschnitt **Einstellungen** auf **Richtlinien für gemeinsamen Zugriff** klicken. Diese Richtlinien definieren die Berechtigungen für Geräte und Dienste zum Herstellen einer Verbindung mit dem IoT-Hub. 
 
-## <a name="endpoints"></a>Endpunkte
+Klicken Sie auf **Hinzufügen**, um das Blatt **Richtlinie für den gemeinsamen Zugriff hinzufügen** zu öffnen.  Sie können den Namen der neuen Richtlinie und die Berechtigungen, die dieser Richtlinie zugeordnet werden sollen, wie in der folgenden Abbildung gezeigt eingeben:
 
-Klicken Sie auf **Endpunkte**, um eine Liste der Endpunkte für den IoT-Hub anzuzeigen, den Sie ändern. Es gibt zwei Typen von Endpunkten: Endpunkte, die in den IoT-Hub integriert sind, und Endpunkte, die Sie dem IoT-Hub nach seiner Erstellung hinzufügen.
+![Screenshot: Hinzufügen einer SAS-Richtlinie](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-![Screenshot: Hinzufügen eines Endpunkts](./media/iot-hub-create-through-portal/messaging-settings.png)
+* Die Richtlinien **Registrierung lesen** und **In Registrierung schreiben** berechtigen zum Lesen und Schreiben in der Identitätsregistrierung. Beim Auswählen der Schreiboption wird die Leseoption automatisch ausgewählt.
 
-### <a name="built-in-endpoints"></a>Integrierte Endpunkte
+* Die Richtlinie **Dienstverbindung** erteilt die Berechtigung für den Zugriff auf Dienstendpunkte, z.B. **Empfangen von Gerät-an-Cloud-Nachrichten**. 
 
-Es gibt zwei integrierte Endpunkte: **Cloud-zu-Gerät-Feedback** und **Ereignisse**.
+* Die Richtlinie **Geräteverbindung** gewährt Berechtigungen zum Senden und Empfangen von Nachrichten mit den geräteseitigen IoT Hub-Endpunkten.
 
-* Einstellungen für **Cloud-zu-Gerät-Feedback**: Diese Einstellung hat zwei untergeordnete Einstellungen: **Cloud-zu-Gerät-TTL** (Time to Live, Gültigkeitsdauer) und **Aufbewahrungszeit** (in Stunden) für die Nachrichten. Bei der ersten Erstellung eines IoT-Hubs ist für beide Einstellungen ein Standardwert von einer Stunde festgelegt. Zum Anpassen dieser Einstellungen bewegen Sie die Schieberegler oder geben die entsprechenden Werte ein.
+Klicken Sie auf **Erstellen** , um der vorhandenen Liste diese neu erstellte Richtlinie hinzuzufügen.
 
-* Einstellungen für **Ereignisse**: Für diese Einstellung sind verschiedene Untereinstellungen verfügbar. Manche davon sind schreibgeschützt. Diese Einstellungen werden in der folgende Liste beschrieben:
+## <a name="message-routing-for-an-iot-hub"></a>Nachrichtenrouting für einen IoT-Hub
 
-  * **Partitionen**: Beim Erstellen des IoT-Hubs wird ein Standardwert festgelegt. Sie können die Anzahl von Partitionen über diese Einstellung ändern.
+Klicken Sie unter **Messaging** auf **Nachrichtenrouting**, um den Bereich „Nachrichtenrouting“ anzuzeigen. Hier definieren Sie die Routen und benutzerdefinierten Endpunkte für den Hub. Über [Nachrichtenrouting](iot-hub-devguide-messages-d2c.md) können Sie verwalten, wie Daten von Ihren Geräten an die Endpunkte gesendet werden. Der erste Schritt besteht darin, eine neue Route hinzuzufügen. Anschließend können Sie der Route einen vorhandenen Endpunkt hinzufügen oder einen neuen mit einem der unterstützten Typen erstellen, z.B. Blobspeicher. 
 
-  * **Event Hub-kompatibler Name und Event-Hub-kompatibler Endpunkt**: Bei Erstellung des IoT Hubs wird intern ein Event Hub erstellt, auf den Sie unter bestimmten Umständen zugreifen müssen. Die Event Hub-kompatiblen Werte für Name und Endpunkt können nicht angepasst, aber kopiert werden. Klicken Sie dazu auf **Kopieren**.
+![Bereich „Nachrichtenrouting“](./media/iot-hub-create-through-portal/iot-hub-message-routing.png)
 
-  * **Aufbewahrungszeit**: Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe der Dropdownliste geändert werden. Dieser Wert wird für die Gerät-zu-Cloud-Einstellung in Tagen angegeben.
+### <a name="routes"></a>Routen
 
-  * **Consumergruppen**: Consumergruppen ermöglichen mehreren Lesern, Nachrichten unabhängig von IoT Hub zu lesen. Jeder IoT Hub wird mit einer Standard-Consumergruppe erstellt. Sie können mit dieser Einstellung Ihren IoT-Hubs jedoch Consumergruppen hinzufügen oder diese daraus löschen.
+„Routen“ ist die erste Registerkarte im Bereich „Nachrichtenrouting“. Um eine neue Route hinzuzufügen, klicken Sie auf +**Hinzufügen**. Der folgende Bildschirm wird angezeigt. 
 
-  > [!NOTE]
-  > Die Standard-Consumergruppe kann nicht bearbeitet oder gelöscht werden.
+![Screenshot: Hinzufügen einer neuen Route](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
+
+Benennen Sie Ihren Hub. Der Name muss in der Liste der Routen für diesen Hub eindeutig sein. 
+
+Als **Endpunkt** können Sie einen Eintrag aus der Dropdownliste auswählen oder einen neuen hinzufügen. In diesem Beispiel sind ein Speicherkonto und ein Container bereits verfügbar. Um sie als Endpunkt hinzuzufügen, klicken Sie neben der Dropdownliste „Endpunkt“ auf +**Hinzufügen**, und wählen Sie **Blob Storage** aus. Der folgende Bildschirm zeigt, wo das Speicherkonto und der Container angegeben werden.
+
+![Screenshot: Hinzufügen eines Speicherendpunkts für die Routingregel](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
+
+Klicken Sie auf **Container auswählen**, um das Speicherkonto und den Container auswählen. Wenn Sie diese Felder ausgewählt haben, gelangen Sie zurück zum Bereich „Endpunkt“. Verwenden Sie die Standardeinstellungen für die übrigen Felder und dann **Erstellen**, um den Endpunkt für das Speicherkonto zu erstellen und den Routingregeln hinzuzufügen.
+
+Wählen Sie für **Datenquelle** die Option „Gerätetelemetriemeldungen“ aus. 
+
+Fügen Sie anschließend eine Routingabfrage hinzu. In diesem Beispiel werden die Nachrichten, die eine Anwendungseigenschaft namens `level` mit einem Wert von `critical` aufweisen, an das Speicherkonto weitergeleitet.
+
+![Screenshot: Speichern einer neuen Routingregel](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
+
+Klicken Sie auf **Speichern**, um die Routingregel zu speichern. Sie kehren zum Bereich „Nachrichtenrouting“ zurück, und Ihre neue Routingregel wird angezeigt.
 
 ### <a name="custom-endpoints"></a>Benutzerdefinierte Endpunkte
 
-Sie können Ihrem IoT-Hub über das Portal benutzerdefinierte Endpunkte hinzufügen. Klicken Sie auf dem Blatt **Endpunkte** oben auf **Hinzufügen**, um das Blatt **Endpunkt hinzufügen** zu öffnen. Geben Sie die erforderlichen Informationen ein, und klicken Sie dann auf **OK**. Ihr benutzerdefinierter Endpunkt wird nun auf dem Hauptblatt für **Endpunkte** aufgeführt.
+Klicken Sie auf die Registerkarte **Benutzerdefinierte Endpunkte**. Bereits erstellte benutzerdefinierte Endpunkte werden angezeigt. Von hier aus können Sie neue Endpunkte hinzufügen oder vorhandene Endpunkte löschen. 
 
-![Screenshot: Erstellen eines benutzerdefinierten Endpunkts](./media/iot-hub-create-through-portal/endpoint-creation.png)
+> [!NOTE]
+> Wenn Sie eine Route löschen, werden nicht die Endpunkte gelöscht, die dieser Route zugewiesen sind. Um einen Endpunkt zu löschen, klicken Sie auf die Registerkarte „Benutzerdefinierte Endpunkte“, wählen Sie den Endpunkt aus, den Sie löschen möchten, und klicken Sie auf „Löschen“.
+>
 
-In [Referenz: IoT Hub-Endpunkte]( iot-hub-devguide-endpoints.md) erfahren Sie mehr über benutzerdefinierte Endpunkte.
+In [Referenz: IoT Hub-Endpunkte](iot-hub-devguide-endpoints.md) erfahren Sie mehr über benutzerdefinierte Endpunkte.
 
-## <a name="routes"></a>Routen
+Sie können bis zu 10 benutzerdefinierte Endpunkte für einen IoT-Hub definieren. 
 
-Klicken Sie auf **Routen**, um zu verwalten, wie IoT Hub Ihre D2C-Nachrichten sendet.
+Ein vollständiges Beispiel zur Verwendung benutzerdefinierter Endpunkte mit der Routingfunktion finden Sie unter [Nachrichtenrouting mit IoT Hub](tutorial-routing.md).
 
-![Screenshot: Hinzufügen einer neuen Route](./media/iot-hub-create-through-portal/routes-list.png)
+## <a name="find-a-specific-iot-hub"></a>Suchen eines bestimmten IoT-Hubs
 
-Sie können Ihrem IoT-Hub Routen hinzufügen, indem Sie am oberen Rand des Blatts **Routen*** auf **Hinzufügen** klicken, die erforderlichen Informationen eingeben und auf **OK** klicken. Ihre Route wird dann auf dem Hauptblatt **Routen** aufgeführt. Sie können eine Route bearbeiten, indem Sie in der Liste der Routen darauf klicken. Um eine Route zu aktivieren, klicken sie in der Liste der Routen darauf, und legen Sie den Schalter **Aktiviert** auf **Aus** fest. Um die Änderung zu speichern, klicken Sie am unteren Rand des Blatts auf **OK**.
+Es gibt zwei Möglichkeiten zum Finden eines bestimmten IoT-Hubs in Ihrem Abonnement:
 
-![Screenshot: Bearbeiten einer neuen Routingregel](./media/iot-hub-create-through-portal/route-edit.png)
+1. Wenn Sie die Ressourcengruppe kennen, zu der der IoT-Hub gehört, klicken Sie auf **Ressourcengruppen**, und wählen Sie dann die Ressourcengruppe aus der Liste aus. Der Bildschirm „Ressourcengruppe“ zeigt alle Ressourcen in dieser Gruppe, einschließlich der IoT-Hubs. Klicken Sie auf den Hub, nach dem Sie suchen.
+
+2. Klicken Sie auf **Alle Ressourcen**. Im Bereich **Alle Ressourcen** gibt es eine Dropdownliste mit dem Standardwert `All types`. Klicken Sie auf die Dropdownliste, und deaktivieren Sie `Select all`. Suchen Sie nach `IoT Hub`, und überprüfen Sie den Eintrag. Klicken Sie auf das Dropdown-Listenfeld, um es zu schließen. Die Einträge werden gefiltert und zeigen nur Ihre IoT-Hubs an.
 
 ## <a name="delete-the-iot-hub"></a>Löschen des IoT Hubs
 
-Klicken Sie zum Suchen des zu löschenden IoT Hubs auf **Durchsuchen**, und wählen Sie dann den zu löschenden Hub aus. Durch Klicken auf die Schaltfläche **Löschen** unterhalb des IoT Hub-Namens wird der IoT Hub gelöscht.
+Um einen IoT-Hub zu löschen, suchen Sie den betreffenden IoT-Hub, und klicken Sie dann unter dem Namen des IoT-Hubs auf die Schaltfläche **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
 
-* [Massenverwaltung von IoT-Geräten](iot-hub-bulk-identity-mgmt.md)
+* [Nachrichtenrouting mit IoT Hub](tutorial-routing.md)
 * [IoT Hub-Metriken](iot-hub-metrics.md)
 * [Vorgangsüberwachung](iot-hub-operations-monitoring.md)
-
-Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
-
-* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
-* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
-* [Schützen Ihrer IoT-Lösung von Grund auf](../iot-fundamentals/iot-security-ground-up.md)

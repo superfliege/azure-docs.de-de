@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Azure Redis Cache mit der Azure-CLI | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle auf einer beliebigen Plattform installieren, eine Verbindung mit Ihrem Azure-Konto herstellen und über die Azure-Befehlszeilenschnittstelle einen Redis-Cache erstellen und verwalten.
+title: Verwalten von Azure Redis Cache mit der klassischen Azure CLI | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die klassische Azure CLI auf einer beliebigen Plattform installieren, eine Verbindung mit Ihrem Azure-Konto herstellen und über die klassische CLI einen Redis Cache erstellen und verwalten.
 services: redis-cache
 documentationcenter: ''
 author: wesmc7777
@@ -14,34 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: fdb0989af2215166b69f10474a0d22aab7b4d593
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 0e8bbaad920f35028c51641779a3272f73f81f37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27911277"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978402"
 ---
-# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Erstellen und Verwalten von Azure Redis Cache mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI)
+# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-classic-cli"></a>Erstellen und Verwalten von Azure Redis Cache mit der klassischen Azure CLI
 > [!div class="op_single_selector"]
 > * [PowerShell](cache-howto-manage-redis-cache-powershell.md)
-> * [Azure-CLI](cache-manage-cli.md)
->
+> * [Die klassische Azure CLI](cache-manage-cli.md)
 >
 
-Die Azure-Befehlszeilenschnittstelle ist eine hervorragende Methode, um Ihre Azure-Infrastruktur von einer beliebigen Plattform aus zu verwalten. In diesem Artikel wird das Erstellen und Verwalten Ihrer Azure Redis Cache-Instanzen mit der Azure-Befehlszeilenschnittstelle beschrieben.
+Die klassische Azure CLI (Befehlszeilenschnittstelle) ist eine hervorragende Methode, um Ihre Azure-Infrastruktur von einer beliebigen Plattform aus zu verwalten. In diesem Artikel wird das Erstellen und Verwalten Ihrer Azure Redis Cache-Instanzen mit der klassischen Azure CLI beschrieben.
 
+[!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 > [!NOTE]
-> Dieser Artikel bezieht sich auf eine frühere Version der Azure-Befehlszeilenschnittstelle. Die Beispielskripts für die aktuelle Azure-CLI 2.0 finden sich in [Azure-CLI-Beispiele für Redis Cache](cli-samples.md).
-> 
-> 
+> Die Beispielskripts für die aktuelle Azure CLI finden Sie unter [Azure CLI-Beispiele für Redis Cache](cli-samples.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Erstellen und Verwalten von Azure Redis Cache-Instanzen mithilfe der Azure-Befehlszeilenschnittstelle müssen Sie die folgenden Schritte ausführen.
+Zum Erstellen und Verwalten von Azure Redis Cache-Instanzen mithilfe der klassischen Azure CLI müssen Sie die folgenden Schritte ausführen.
 
-* Sie benötigen ein Azure-Abonnement. Wenn Sie dies noch nicht haben, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
-* [Installieren Sie die Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
-* Verbinden Sie die Installation der Azure-Befehlszeilenschnittstelle mit einem persönlichen Azure-Konto oder einem Arbeits- oder Schulkonto für Azure, und melden Sie sich mit dem `azure login` -Befehl über die Azure-Befehlszeilenschnittstelle an. Um die Unterschiede zu verstehen und die richtige Auswahl treffen zu können, lesen Sie die Informationen unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](/cli/azure/authenticate-azure-cli).
-* Wechseln Sie vor dem Ausführen eines der folgenden Befehle in der Azure-Befehlszeilenschnittstelle in den Ressourcen-Manager-Modus, indem Sie den Befehl `azure config mode arm` ausführen. Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](../xplat-cli-azure-resource-manager.md).
+* Sie benötigen ein Azure-Konto. Wenn Sie dies noch nicht haben, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
+* [Installieren Sie die klassische Azure CLI](../cli-install-nodejs.md).
+* Verbinden Sie die Installation der Azure CLI mit einem persönlichen Azure-Konto oder einem Geschäfts-, Schul- oder Unikonto für Azure, und melden Sie sich mit dem Befehl `azure login` über die klassische Azure CLI an.
+* Wechseln Sie vor dem Ausführen eines der folgenden Befehle in der klassischen Azure CLI in den Resource Manager-Modus, indem Sie den Befehl `azure config mode arm` ausführen. Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der klassischen Azure CLI](../xplat-cli-azure-resource-manager.md).
 
 ## <a name="redis-cache-properties"></a>Eigenschaften in Redis Cache
 Die folgenden Eigenschaften werden beim Erstellen und Aktualisieren von Redis Cache-Instanzen verwendet.
@@ -57,7 +55,7 @@ Die folgenden Eigenschaften werden beim Erstellen und Aktualisieren von Redis Ca
 | Redis-Konfiguration |-c, --redis-configuration |Redis-Konfiguration. Geben Sie hier eine JSON-formatierte Zeichenfolge des Konfigurationsschlüssels und der -werte ein. Format:"{"":"","":""}" |
 | Redis-Konfiguration |-f, --redis-configuration-file |Redis-Konfiguration. Geben Sie hier den Pfad einer Datei mit Konfigurationsschlüssel und -werten ein. Format für den Dateieintrag: {"":"","":""} |
 | Shard-Anzahl |-r, --shard-count |Die Anzahl der zu erstellenden Shards auf einem Premium-Clustercache mit Clustering. |
-| Virtuelles Netzwerk |-v, --virtual-network |Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Redis-Cache in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Virtual Network |-v, --virtual-network |Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Redis-Cache in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type |-t, --key-type |Der Typ des zu erneuernden Schlüssels. Gültige Werte: [Primary, Secondary] |
 | StaticIP |-p, --static-ip <Statische IP-Adresse> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. |
 | Subnetz |t, --subnet <subnet> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. |

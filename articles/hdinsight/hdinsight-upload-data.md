@@ -1,6 +1,6 @@
 ---
 title: Hochladen von Daten für Hadoop-Aufträge in HDInsight
-description: Erfahren Sie, wie Sie Daten für Hadoop-Aufträge in HDInsight mithilfe der Azure-Befehlszeilenschnittstelle, Azure Storage-Explorer, Azure PowerShell, der Hadoop-Befehlszeile oder Sqoop hochladen und abrufen können.
+description: Erfahren Sie, wie Sie Daten für Hadoop-Aufträge in HDInsight mit der klassischen Azure CLI, Azure Storage-Explorer, Azure PowerShell, der Hadoop-Befehlszeile oder Sqoop hochladen und abrufen können.
 keywords: ETL Hadoop, Importieren von Daten in Hadoop, Laden von Daten in Hadoop
 services: hdinsight
 author: jasonwhowell
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 838444898500ce7127e1a9e999d0b5ee7b1e3687
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051823"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985978"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hochladen von Daten für Hadoop-Aufträge in HDInsight
 
@@ -38,22 +38,22 @@ Microsoft bietet die folgenden Hilfsprogramme für die Arbeit mit Azure Storage:
 
 | Tool | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure-Befehlszeilenschnittstelle][azurecli] |✔ |✔ |✔ |
+| [Klassische Azure CLI][azurecli] |✔ |✔ |✔ |
 | [Azure PowerShell][azure-powershell] | | |✔ |
 | [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Hadoop-Befehl](#commandline) |✔ |✔ |✔ |
 
 > [!NOTE]
-> Während die Azure-Befehlszeilenschnittstelle, Azure PowerShell und AzCopy außerhalb von Azure verwendet werden können, ist der Hadoop-Befehl nur im HDInsight-Cluster verfügbar. Zudem können mit dem Befehl nur Daten aus dem lokalen Dateisystem in Azure Storage geladen werden.
+> Während die klassische Azure CLI, Azure PowerShell und AzCopy außerhalb von Azure verwendet werden können, ist der Hadoop-Befehl nur im HDInsight-Cluster verfügbar. Zudem können mit dem Befehl nur Daten aus dem lokalen Dateisystem in Azure Storage geladen werden.
 >
 >
 
-#### <a id="xplatcli"></a>Azure-Befehlszeilenschnittstelle
-Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool zur Verwaltung von Azure-Diensten. Verwenden Sie zum Hochladen von Daten in Azure Storage die folgenden Schritte:
+#### <a id="xplatcli"></a>Klassische Azure CLI
+Die klassische Azure CLI ist ein plattformübergreifendes Tool zur Verwaltung von Azure-Diensten. Verwenden Sie zum Hochladen von Daten in Azure Storage die folgenden Schritte:
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-1. [Installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows](../cli-install-nodejs.md).
+1. [Installieren und konfigurieren Sie die klassische Azure CLI für Mac, Linux und Windows](../cli-install-nodejs.md).
 2. Öffnen Sie eine Eingabeaufforderung, Bash oder eine andere Shell, und authentifizieren Sie Ihr Azure-Abonnement wie folgt.
 
     ```cli

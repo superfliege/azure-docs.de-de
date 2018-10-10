@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: 0b22e51814f79b00257433a7e601349ad25cd2b7
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d725bbe31de0f93d1b741ffd008bf39086904b61
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104299"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997504"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -29,7 +29,7 @@ In vielen Schritten in diesem Dokument werden die folgenden Hilfsprogramme verwe
 
 * [cURL](https://curl.haxx.se/) – wird für die Kommunikation mit webbasierten Diensten verwendet
 * [jq](https://stedolan.github.io/jq/) – wird verwendet, um JSON-Dokumente zu analysieren
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) – wird zur Remoteverwaltung von Azure-Diensten verwendet
+* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-az-cli2) – wird zur Remoteverwaltung von Azure-Diensten verwendet
 
 ## <a name="users"></a>Benutzer
 
@@ -176,7 +176,7 @@ Es gibt viele verschiedene Möglichkeiten, wie Sie außerhalb des HDInsight-Clus
 
 Wenn Sie __Azure Storage__ nutzen, finden Sie unter den folgenden Links Methoden für den Zugriff auf Ihre Daten:
 
-* [Azure CLI 2.0:](https://docs.microsoft.com/cli/azure/install-az-cli2) Befehlszeilenschnittstelle für die Arbeit mit Azure. Verwenden Sie nach der Installation den Befehl `az storage`, um Hilfe zur Speicherung abzurufen, oder `az storage blob` für blobspezifische Befehle.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Befehlszeilenschnittstelle für die Arbeit mit Azure. Verwenden Sie nach der Installation den Befehl `az storage`, um Hilfe zur Speicherung abzurufen, oder `az storage blob` für blobspezifische Befehle.
 * [blobxfer.py](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): Python-Skript zum Arbeiten mit Blobs im Azure-Speicher.
 * Verschiedene SDKs:
 
@@ -192,7 +192,7 @@ Wenn Sie __Azure Data Lake Store__ nutzen, finden Sie unter den folgenden Links 
 
 * [Webbrowser](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
-* [Azure CLI 2.0](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
+* [Azure-CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [WebHDFS-REST-API](../data-lake-store/data-lake-store-get-started-rest-api.md)
 * [Data Lake-Tools für Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)

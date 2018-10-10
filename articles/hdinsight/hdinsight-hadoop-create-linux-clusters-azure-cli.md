@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Hadoop-Clustern mit der Befehlszeilenschnittstelle – Azure HDInsight
-description: Erfahren Sie, wie Sie HDInsight-Cluster mit der plattformübergreifenden Azure-Befehlszeilenschnittstelle 1.0 erstellen.
+title: Erstellen von Hadoop-Clustern mit der klassischen Azure CLI – Azure HDInsight
+description: Erfahren Sie, wie Sie HDInsight-Cluster mit der plattformübergreifenden klassischen Azure CLI erstellen.
 services: hdinsight
 author: jasonwhowell
 ms.reviewer: jasonh
@@ -9,23 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 523c2a85929d8474c283055a8ae38d489cbd4b12
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 84b352fea0c5b9c98cd3b4e814e448cf8b706402
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090973"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992812"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Erstellen von HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle
+# <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Erstellen von HDInsight-Clustern mit der klassischen Azure CLI
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDInsight 3.5-Clusters mithilfe von Azure CLI 1.0 geführt.
+Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDInsight 3.5-Clusters mithilfe der klassischen Azure CLI geführt.
 
-> [!IMPORTANT]
-> In diesem Thema wird beschrieben, wie Sie mit Azure CLI 1.0 einen HDInsight-Cluster erstellen. Diese Version der Befehlszeilenschnittstelle ist veraltet, und in Azure CLI 2.0 wurde keine Unterstützung für das Erstellen von HDInsight-Clustern hinzugefügt.
->
-> Sie können auch mit Azure PowerShell HDInsight-Cluster erstellen und verwenden. Weitere Informationen finden Sie im Dokument [Erstellen von HDInsight-Clustern mit Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md).
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,14 +30,11 @@ Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDI
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* **Azure-Befehlszeilenschnittstelle**. Die Schritte in diesem Dokument wurden mit der neuesten Version der Azure-Befehlszeilenschnittstelle (0.10.14) getestet.
-
-    > [!IMPORTANT]
-    > Azure CLI 1.0 ist veraltet, und in Azure CLI 2.0 wurde keine Unterstützung für das Erstellen von HDInsight-Clustern hinzugefügt.
+* **Die klassische Azure CLI**. Die Schritte in diesem Dokument wurden mit der neuesten Version der klassischen Azure CLI (0.10.14) getestet.
 
 ## <a name="log-in-to-your-azure-subscription"></a>Melden Sie sich bei Ihrem Azure-Abonnement an.
 
-Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure Befehlszeilenschnittstelle (Azure-CLI)](/cli/azure/authenticate-azure-cli) dokumentiert sind, und stellen Sie über die **login** -Methode eine Verbindung mit Ihrem Abonnement her.
+Führen Sie die Schritte aus, die unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli) dokumentiert sind, und stellen Sie über die **login**-Methode eine Verbindung mit Ihrem Abonnement her.
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
 
@@ -50,7 +44,7 @@ Die folgenden Schritte sollten an einer Befehlszeile (z.B. PowerShell oder Bash)
 
         azure login
 
-    Sie werden aufgefordert, Ihren Namen und das Kennwort anzugeben. Wenn Sie über mehrere Azure-Abonnements verfügen, verwenden Sie `azure account set <subscriptionname>` zum Festlegen des Abonnements, das von den Befehlen der Azure-CLI genutzt werden soll.
+    Sie werden aufgefordert, Ihren Namen und das Kennwort anzugeben. Wenn Sie über mehrere Azure-Abonnements verfügen, verwenden Sie `azure account set <subscriptionname>`, um das Abonnement festzulegen, das von den Befehlen der klassischen CLI genutzt werden soll.
 
 2. Wechseln Sie mit dem folgenden Befehl in den Azure-Ressourcen-Manager-Modus:
 
@@ -124,7 +118,7 @@ Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie einen HDInsight-Cluster erfolgreich mithilfe der Azure-Befehlszeilenschnittstelle erstellt haben, nutzen Sie die folgenden Informationen, um mehr über die Arbeit mit Ihrem Cluster zu lernen:
+Nachdem Sie einen HDInsight-Cluster erfolgreich mithilfe der klassischen CLI erstellt haben, nutzen Sie die folgenden Informationen, um mehr über die Arbeit mit Ihrem Cluster zu erfahren:
 
 ### <a name="hadoop-clusters"></a>Hadoop-Cluster
 

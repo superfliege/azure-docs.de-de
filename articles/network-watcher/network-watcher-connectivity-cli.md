@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung für Verbindungen mit Azure Network Watcher – Azure CLI 2.0 | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI 2.0 die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen.
+title: Problembehandlung für Verbindungen mit Azure Network Watcher – Azure CLI | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 1ce5856a5ee2c37d96483df82836d2e8b2a61d4c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ee7aff0256cf5567b4b29e6140ffb57b3717631a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182105"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978045"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli-20"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und der Azure CLI 2.0
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und der Azure CLI
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-connectivity-powershell.md)
-> - [CLI 2.0](network-watcher-connectivity-cli.md)
+> - [Azure-CLI](network-watcher-connectivity-cli.md)
 > - [Azure-REST-API](network-watcher-connectivity-rest.md)
 
 Hier erfahren Sie, wie Sie mit der Problembehandlung für Verbindungen überprüfen können, ob von einem virtuellen Computer eine direkte TCP-Verbindung mit einem bestimmten Endpunkt hergestellt werden kann.

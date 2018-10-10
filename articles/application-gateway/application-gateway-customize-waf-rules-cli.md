@@ -1,6 +1,6 @@
 ---
-title: Anpassen von Web Application Firewall-Regeln in Azure Application Gateway – Azure CLI 2.0 | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zum Anpassen von Web Application Firewall-Regeln (WAF) in Application Gateway mit Azure CLI 2.0.
+title: Anpassen von Web Application Firewall-Regeln in Azure Application Gateway – Azure CLI | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zum Anpassen von Web Application Firewall-Regeln (WAF) in Application Gateway mit der Azure CLI.
 documentationcenter: na
 services: application-gateway
 author: vhorne
@@ -14,19 +14,19 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: victorh
-ms.openlocfilehash: b0bd79bb7ce584a9abaffbb6c30d6fbfe64f87c2
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c02e4edabdcb73bc14c64b42788cddc98d78498c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204206"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964120"
 ---
-# <a name="customize-web-application-firewall-rules-through-the-azure-cli-20"></a>Anpassen von Web Application Firewall-Regeln mit Azure CLI 2.0
+# <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>Anpassen von Web Application Firewall-Regeln mit der Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-customize-waf-rules-portal.md)
 > * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
+> * [Azure-CLI](application-gateway-customize-waf-rules-cli.md)
 
 Die Web Application Firewall (WAF) von Azure Application Gateway bietet Schutz für Webanwendungen. Diese Schutzmaßnahmen werden durch die Kernregeln (Core Rule Set, CRS) des Open Web Application Security-Projekts (OWASP) bereitgestellt. Einige Regeln können falsche positive Ergebnisse ausgeben und den realen Datenverkehr blockieren. Aus diesem Grund bietet Application Gateway die Möglichkeit, Regelgruppen und Regeln anzupassen. Weitere Informationen zu den jeweiligen Regelgruppen und Regeln finden Sie in der [Liste der CRS-Regelgruppen und -Regeln der Web Application Firewall](application-gateway-crs-rulegroups-rules.md).
 

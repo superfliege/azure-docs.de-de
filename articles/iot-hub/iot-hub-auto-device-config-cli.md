@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: f81ef3c231874f314d6fe023ba247a0bcff61e90
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 6535eee93b0fcaa2c0888fc6b647811c21e564d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42145379"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971908"
 ---
 # <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-cli"></a>Konfigurieren und Überwachen von IoT-Geräten im großen Maßstab mit der Azure-Befehlszeilenschnittstelle
 
@@ -34,8 +34,8 @@ Bei automatischen Gerätekonfigurationen wird ein Satz von Gerätezwillingen mit
 ## <a name="cli-prerequisites"></a>Voraussetzungen für die Befehlszeilenschnittstelle
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) in Ihrem Azure-Abonnement. 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) in Ihrer Umgebung. Ihre Azure CLI 2.0-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –-version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. 
-* Die [IoT-Erweiterung für Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension).
+* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –-version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. 
+* Die [IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Implementieren von Gerätezwillingen für die Gerätekonfiguration
 
@@ -56,7 +56,7 @@ Bevor Sie eine Konfiguration erstellen können, müssen Sie angeben, welche Ger�
 
 ## <a name="define-the-target-content-and-metrics"></a>Definieren der Zielinhalte und -metriken
 
-Die Abfragen von Zielinhalten und -metriken werden als JSON-Dokumente angegeben, in denen die gewünschten festzulegenden Eigenschaften des Gerätezwillings und die gemeldeten zu messenden Eigenschaften beschrieben werden.  Um eine automatische Gerätekonfiguration mithilfe von Azure CLI 2.0 zu erstellen, speichern Sie die Zielinhalte und -metriken lokal als TXT-Dateien. Sie verwenden die Dateipfade in einem späteren Abschnitt, wenn Sie den Befehl zum Anwenden der Konfiguration auf Ihr Gerät ausführen. 
+Die Abfragen von Zielinhalten und -metriken werden als JSON-Dokumente angegeben, in denen die gewünschten festzulegenden Eigenschaften des Gerätezwillings und die gemeldeten zu messenden Eigenschaften beschrieben werden.  Um eine automatische Gerätekonfiguration mithilfe der Azure CLI zu erstellen, speichern Sie die Zielinhalte und -metriken lokal als TXT-Dateien. Sie verwenden die Dateipfade in einem späteren Abschnitt, wenn Sie den Befehl zum Anwenden der Konfiguration auf Ihr Gerät ausführen. 
 
 Hier ist ein einfaches Beispiel für Zielinhalt:
 

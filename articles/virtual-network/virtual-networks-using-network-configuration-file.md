@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 57ad5541bb7b61f8d26002168bb069fad3058965
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5267ce5c50e8a57843f0bc54165289b38013ad91
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339073"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986114"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Konfigurieren eines virtuellen Netzwerks (klassisch) mithilfe einer Netzwerkkonfigurationsdatei
 > [!IMPORTANT]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Bereitstellungsmodells.
 
-Sie können ein virtuelles Netzwerk (klassisch) mit einer Netzwerkkonfigurationsdatei unter Verwendung der Azure-Befehlszeilenschnittstelle (CLI) 1.0 oder Azure PowerShell erstellen und konfigurieren. Sie können ein virtuelles Netzwerk nicht mithilfe einer Netzwerkkonfigurationsdatei im Azure Resource Manager-Bereitstellungsmodell erstellen oder ändern. Sie können nicht das Azure-Portal verwenden, um ein virtuelles Netzwerk (klassisch) mithilfe einer Netzwerkkonfigurationsdatei zu erstellen oder zu ändern. Jedoch können Sie das Azure-Portal dazu verwenden, ein virtuelles Netzwerk (klassisch) zu erstellen, ohne eine Netzwerkkonfigurationsdatei zu verwenden.
+Sie können ein virtuelles Netzwerk (klassisch) mit einer Netzwerkkonfigurationsdatei unter Verwendung der klassischen Azure-Befehlszeilenschnittstelle (CLI) oder Azure PowerShell erstellen und konfigurieren. Sie können ein virtuelles Netzwerk nicht mithilfe einer Netzwerkkonfigurationsdatei im Azure Resource Manager-Bereitstellungsmodell erstellen oder ändern. Sie können nicht das Azure-Portal verwenden, um ein virtuelles Netzwerk (klassisch) mithilfe einer Netzwerkkonfigurationsdatei zu erstellen oder zu ändern. Jedoch können Sie das Azure-Portal dazu verwenden, ein virtuelles Netzwerk (klassisch) zu erstellen, ohne eine Netzwerkkonfigurationsdatei zu verwenden.
 
 Um ein virtuelles Netzwerk (klassisch) mithilfe einer Netzwerkkonfigurationsdatei zu erstellen und zu ändern, müssen Sie die Datei exportieren, ändern und importieren.
 
 ## <a name="export"></a>Exportieren einer Netzwerkkonfigurationsdatei
 
-Sie können PowerShell oder die Azure CLI verwenden, um eine Netzwerkkonfigurationsdatei zu exportieren. PowerShell exportiert eine XML-Datei, während die Azure CLI eine JSON-Datei exportiert.
+Sie können PowerShell oder die klassische Azure CLI verwenden, um eine Netzwerkkonfigurationsdatei zu exportieren. PowerShell exportiert eine XML-Datei, während die klassische Azure CLI eine JSON-Datei exportiert.
 
 ### <a name="powershell"></a>PowerShell
  
@@ -44,9 +44,9 @@ Sie können PowerShell oder die Azure CLI verwenden, um eine Netzwerkkonfigurati
     Get-AzureVNetConfig -ExportToFile c:\azure\networkconfig.xml
     ```
 
-### <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
+### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
-1. [Installieren Sie die Azure CLI 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Führen Sie die verbleibenden Schritte über eine Eingabeaufforderung der Azure CLI 1.0 durch.
+1. [Installieren Sie die klassische Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Führen Sie die verbleibenden Schritte über eine Eingabeaufforderung der klassischen CLI durch.
 2. Melden Sie sich bei Azure an, indem Sie den Befehl `azure login` eingeben.
 3. Stellen Sie durch Eingabe des Befehls `azure config mode asm` sicher, dass Sie sich im ASM-Modus befinden.
 4. Ändern Sie das Verzeichnis (und vergewissern Sie sich, dass es vorhanden ist) und den Dateinamen im folgenden Befehl nach Bedarf, und führen Sie dann den Befehl zum Exportieren der Netzwerkkonfigurationsdatei aus:
@@ -57,7 +57,7 @@ Sie können PowerShell oder die Azure CLI verwenden, um eine Netzwerkkonfigurati
 
 ## <a name="create-or-modify-a-network-configuration-file"></a>Erstellen oder Ändern einer Netzwerkkonfigurationsdatei
 
-Bei der Netzwerkkonfigurationsdatei handelt es sich um eine XML-Datei (bei Verwendung von PowerShell) oder eine JSON-Datei (bei Verwendung der Azure CLI). Sie können die Datei in einem beliebigen Text- oder XML/JSON-Editor bearbeiten. Im Artikel [Azure Virtual Network Configuration Schema (Konfigurationsschema von Azure Virtual Network)](https://msdn.microsoft.com/library/azure/jj157100.aspx) finden Sie weitere Informationen für alle Einstellungen. Weitere Erläuterungen der Einstellungen finden Sie unter [Anzeigen von virtuellen Netzwerken und Einstellungen](manage-virtual-network.md#view-virtual-networks-and-settings). Die Änderungen, die Sie an der Datei vornehmen:
+Eine Netzwerkkonfigurationsdatei ist eine XML-Datei (bei Verwendung von PowerShell) oder eine JSON-Datei (bei Verwendung der klassischen CLI). Sie können die Datei in einem beliebigen Text- oder XML/JSON-Editor bearbeiten. Im Artikel [Azure Virtual Network Configuration Schema (Konfigurationsschema von Azure Virtual Network)](https://msdn.microsoft.com/library/azure/jj157100.aspx) finden Sie weitere Informationen für alle Einstellungen. Weitere Erläuterungen der Einstellungen finden Sie unter [Anzeigen von virtuellen Netzwerken und Einstellungen](manage-virtual-network.md#view-virtual-networks-and-settings). Die Änderungen, die Sie an der Datei vornehmen:
 
 - müssen dem Schema entsprechen, oder es tritt ein Fehler beim Import der Netzwerkkonfigurationsdatei auf.
 - überschreiben alle vorhandenen Netzwerkeinstellungen für Ihr Abonnement, weshalb Sie beim Vornehmen von Änderungen sehr vorsichtig sein sollten. Verweisen Sie beispielsweise auf die folgenden Netzwerkkonfigurationsdateien. Angenommen, die ursprüngliche Datei enthielt zwei **VirtualNetworkSite**-Instanzen, und Sie haben diese geändert, wie in den Beispielen gezeigt. Wenn Sie die Datei importieren, löscht Azure das virtuelle Netzwerk für die **VirtualNetworkSite**-Instanz, die Sie in der Datei entfernt haben. Bei diesem vereinfachten Szenario wird davon ausgegangen, dass sich keine Ressourcen im virtuellen Netzwerk befanden. Wäre dies der Fall gewesen, hätte das virtuelle Netzwerk nicht gelöscht werden können, und es wäre ein Fehler beim Import aufgetreten.
@@ -92,7 +92,7 @@ Die folgende Beispiel-Netzwerkkonfigurationsdatei erstellt ein virtuelles Netzwe
 
 Wenn die Netzwerkkonfigurationsdatei, die Sie exportiert haben, keinen Inhalt hat, können Sie die XML im vorherigen Beispiel kopieren und in eine neue Datei einfügen.
 
-### <a name="example-json-for-use-with-the-azure-cli-10"></a>Beispiel-JSON für die Verwendung mit der Azure CLI 1.0
+### <a name="example-json-for-use-with-the-classic-cli"></a>Beispiel-JSON für die Verwendung mit der klassischen CLI
 
 Die folgende Beispiel-Netzwerkkonfigurationsdatei erstellt ein virtuelles Netzwerk namens *MeinVirtuellesNetzwerk* mit einem Adressraum von *10.0.0.0/16* in der Azure-Region *USA, Osten*. Das virtuelle Netzwerk enthält ein Subnetz mit dem Namen *MeinSubnetz* mit einem Adresspräfix von *10.0.0.0/24*.
 
@@ -121,7 +121,7 @@ Wenn die Netzwerkkonfigurationsdatei, die Sie exportiert haben, keinen Inhalt ha
 
 ## <a name="import"></a>Importieren einer Netzwerkkonfigurationsdatei
 
-Sie können PowerShell oder die Azure CLI verwenden, um eine Netzwerkkonfigurationsdatei zu importieren. PowerShell importiert eine XML-Datei während die Azure CLI eine JSON-Datei importiert. Wenn beim Import ein Fehler auftritt, bestätigen Sie, dass die Datei dem [Netzwerkkonfigurationsschema](https://msdn.microsoft.com/library/azure/jj157100.aspx) entspricht. 
+Sie können PowerShell oder die klassische CLI verwenden, um eine Netzwerkkonfigurationsdatei zu importieren. PowerShell importiert eine XML-Datei, während die klassische CLI eine JSON-Datei importiert. Wenn beim Import ein Fehler auftritt, bestätigen Sie, dass die Datei dem [Netzwerkkonfigurationsschema](https://msdn.microsoft.com/library/azure/jj157100.aspx) entspricht. 
 
 ### <a name="powershell"></a>PowerShell
  
@@ -132,9 +132,9 @@ Sie können PowerShell oder die Azure CLI verwenden, um eine Netzwerkkonfigurati
     Set-AzureVNetConfig  -ConfigurationPath c:\azure\networkconfig.xml
     ```
 
-### <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
+### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
-1. [Installieren Sie die Azure CLI 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Führen Sie die verbleibenden Schritte über eine Eingabeaufforderung der Azure CLI 1.0 durch.
+1. [Installieren Sie die klassische Azure CLI](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Führen Sie die verbleibenden Schritte über eine Eingabeaufforderung der klassischen CLI durch.
 2. Melden Sie sich bei Azure an, indem Sie den Befehl `azure login` eingeben.
 3. Stellen Sie durch Eingabe des Befehls `azure config mode asm` sicher, dass Sie sich im ASM-Modus befinden.
 4. Ändern Sie das Verzeichnis und den Dateinamen im folgenden Befehl nach Bedarf, und führen Sie dann den Befehl zum Importieren der Netzwerkkonfigurationsdatei aus:

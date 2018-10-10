@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: v-brapel
-ms.openlocfilehash: 35f0bca01de1c2087f6ae30949cca9b03192b838
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 25d622772fe47ffad001834d476e612f8c606904
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374739"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981654"
 ---
 # <a name="create-your-first-bing-custom-search-instance"></a>Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche
 Zum Verwenden einer benutzerdefinierten Bing-Suche müssen Sie eine Instanz der benutzerdefinierten Suche erstellen, mit der Ihre Ansicht bzw. das Segment des Webs definiert wird. Die Instanz enthält Einstellungen, mit denen die öffentlichen Domänen, Websites und Webseiten, die mit Bing durchsucht werden sollen, und alle Rangfolgeanpassungen angegeben werden. Verwenden Sie zum Erstellen der Instanz das [Portal](https://customsearch.ai) für die benutzerdefinierte Bing-Suche. 
@@ -24,12 +24,12 @@ Zum Verwenden einer benutzerdefinierten Bing-Suche müssen Sie eine Instanz der 
 Erstellen Sie wie folgt eine Instanz für die benutzerdefinierte Bing-Suche:
 
 1.  Rufen Sie einen Schlüssel für die API für die benutzerdefinierte Bing-Suche ab. Weitere Informationen finden Sie unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
-2.  Melden Sie sich mit einem Microsoft-Konto (MSA) am Portal an. Klicken Sie auf die Schaltfläche **Anmelden**. Führen Sie die unten angegebenen zusätzlichen Schritte aus, falls Sie das Portal zum ersten Mal verwenden. Beginnen Sie andernfalls mit Schritt 3.
+2.  Klicken Sie auf die Schaltfläche **Anmelden**, und melden Sie sich mit einem Microsoft-Konto (MSA) beim Portal an. 
     - Klicken Sie auf **Microsoft-Konto erstellen**, wenn Sie kein MSA besitzen. Im Portal werden die Berechtigungen für den Zugriff auf Ihre Daten abgefragt. Klicken Sie auf **Ja**.
     - Stimmen Sie den Nutzungsbedingungen für Cognitive Services zu. Setzen Sie das Häkchen unter **Ich stimme zu**, und klicken Sie auf **Stimme zu**.  
 3.  Klicken Sie nach dem Anmelden auf **Neue Instanz**, und geben Sie einen Namen für die Instanz an. Verwenden Sie einen Namen, der aussagekräftig ist und den Typ des Inhalts beschreibt, der von der Suche zurückgegeben wird. Sie können den Namen jederzeit ändern. 
-4.  Geben Sie auf der **Suchoberfläche** auf der Registerkarte **Aktiv** die URL für mindestens eine Site ein, die Sie in Ihre Suche einbeziehen möchten.
-5.  Um zu bestätigen, dass Ihre Instanz Ergebnisse zurückgibt, geben Sie eine Abfrage im Vorschaubereich auf der rechten Seite ein. Geben Sie eine neue Site an, falls keine Ergebnisse vorhanden sind. Bing gibt nur Ergebnisse für öffentliche Websites zurück, die indiziert wurden.
+4.  Geben Sie auf der **Suchoberfläche** auf der Registerkarte **Aktiv** die URL für mindestens eine Website ein, die Sie in Ihre Suche einbeziehen möchten.
+5.  Um zu bestätigen, dass Ihre Instanz Ergebnisse zurückgibt, geben Sie eine Abfrage im Vorschaubereich auf der rechten Seite ein. Geben Sie eine neue Website an, falls keine Ergebnisse zurückgegeben werden. Bing gibt nur Ergebnisse für öffentliche Websites zurück, die indiziert wurden.
 6.  Klicken Sie auf **Veröffentlichen**, um Konfigurationsänderungen für die Produktion zu veröffentlichen. Klicken Sie bei entsprechender Aufforderung auf **Veröffentlichen**, um dies zu bestätigen.
 7.  Klicken Sie auf **Produktion** > **Endpunkte**, und kopieren Sie die **Custom Configuration ID** (Benutzerdefinierte Konfigurations-ID). Sie benötigen diese ID zum Aufrufen der API für die benutzerdefinierte Bing-Suche.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Debuggen einer Azure Service Fabric Mesh-Webanwendung | Microsoft-Dokumentation'
+title: 'Tutorial: Debuggen einer Azure Service Fabric Mesh-Webanwendung, die in Ihrem lokalen Entwicklungscluster ausgeführt wird | Microsoft-Dokumentation'
 description: In diesem Tutorial wird eine in Ihrem lokalen Cluster ausgeführte Azure Service Fabric-Mesh-Anwendung debuggt.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c519d24a8401823039f3d6598276890ec6498bbc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 27e4c8f6ac24d40a6afacf10175413745f5151d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41918338"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997011"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>Tutorial: Debuggen einer Service Fabric Mesh-Webanwendung
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Tutorial: Debuggen einer Service Fabric Mesh-Anwendung, die in Ihrem lokalen Entwicklungscluster ausgeführt wird
 
-Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie eine Azure Service Fabric Mesh-Webanwendung in Ihrem lokalen Entwicklungscluster debuggen.
+Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie eine Azure Service Fabric Mesh-App in Ihrem lokalen Entwicklungscluster erstellen und debuggen.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -34,9 +34,11 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
-> * [Erstellen einer Service Fabric Mesh-Anwendung](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * Lokales Debuggen der App
-> * [Veröffentlichen der App in Azure](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Erstellen einer Service Fabric-App in Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * Debuggen einer Service Fabric Mesh-App, die in Ihrem lokalen Entwicklungscluster ausgeführt wird
+> * [Bereitstellen einer Service Fabric Mesh-App](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Aktualisieren einer Service Fabric Mesh-App](service-fabric-mesh-tutorial-upgrade.md)
+> * [Bereinigen von Service Fabric Mesh-Ressourcen](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -105,4 +107,4 @@ In diesem Teil des Tutorials haben Sie Folgendes gelernt:
 
 Fahren Sie mit dem nächsten Tutorial fort:
 > [!div class="nextstepaction"]
-> [Veröffentlichen einer Service Fabric Mesh-Webanwendung](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> [Bereitstellen einer Service Fabric Mesh-App](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

@@ -1,6 +1,6 @@
 ---
-title: Aufbereiten von Daten zum Tutorial „Klassifizieren von Iris“ in Azure Machine Learning-Diensten (Vorschau) | Microsoft-Dokumentation
-description: Dieses Tutorial in voller Länge zeigt, wie Azure Machine Learning-Dienste (Vorschau) konsistent verwendet werden können. Dies ist der erste Teil, in dem die Datenaufbereitung beschrieben wird.
+title: Aufbereiten von Daten zum Tutorial „Klassifizieren von Iris“ im Azure Machine Learning-Dienste (Vorschauversion) | Microsoft-Dokumentation
+description: Dieses umfassende Tutorial zeigt, wie der Azure Machine Learning-Dienst (Vorschauversion) konsistent verwendet werden kann. Dies ist der erste Teil, in dem die Datenaufbereitung beschrieben wird.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -12,18 +12,21 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/7/2018
-ms.openlocfilehash: 56f1d26d5d687982366b9a8fb20235ff338a9573
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 272b8250a80fee42780311dec92f6d47c221c160
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722982"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990160"
 ---
 # <a name="tutorial-1-classify-iris---preparing-the-data"></a>Tutorial 1: Klassifizieren von Iris – Vorbereiten der Daten
 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Der Azure Machine Learning-Dienst (Vorschauversion) ist eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten aufbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
 
-Dieses Tutorial ist der **erste Teil einer dreiteiligen Reihe**. In diesem Tutorial werden Schritt für Schritt die Grundlagen von Azure Machine Learning-Diensten (Vorschauversion) erläutert. Dabei lernen Sie Folgendes:
+Dieses Tutorial ist der **erste Teil einer dreiteiligen Reihe**. In diesem Tutorial werden Schritt für Schritt die Grundlagen des Azure Machine Learning-Diensts (Vorschauversion) erläutert. Dabei lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Projekts in Azure Machine Learning Workbench
@@ -31,6 +34,8 @@ Dieses Tutorial ist der **erste Teil einer dreiteiligen Reihe**. In diesem Tutor
 > * Generieren von Python/PySpark-Code zum Aufrufen eines Datenaufbereitungspakets
 
 In diesem Tutorial wird das zeitlose Schwertlilien-Dataset ([Iris flower data set](https://en.wikipedia.org/wiki/Iris_flower_data_set)) verwendet. 
+
+[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,11 +45,11 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Ein Azure Machine Learning-Experimentieren-Konto
 - Installation von Azure Machine Learning Workbench
 
-Falls Sie noch nicht über diese Komponenten verfügen, können Sie die Schritte im Artikel [Erstellen von Vorschaukonten für Azure Machine Learning und Installieren von Azure Machine Learning Workbench](../service/quickstart-installation.md) ausführen, um Ihre Konten einzurichten und die Azure Machine Learning Workbench-Anwendung zu installieren. 
+Falls Sie noch nicht über diese Komponenten verfügen, können Sie die Schritte im Artikel [Erstellen von Vorschaukonten für Azure Machine Learning und Installieren von Azure Machine Learning Workbench](quickstart-installation.md) ausführen, um Ihre Konten einzurichten und die Azure Machine Learning Workbench-Anwendung zu installieren. 
 
 ## <a name="create-a-new-project-in-workbench"></a>Erstellen eines neuen Projekts in Workbench
 
-Wenn Sie die Schritte im Artikel [Erstellen von Vorschaukonten für Azure Machine Learning und Installieren von Azure Machine Learning Workbench](../service/quickstart-installation.md) ausgeführt haben, sollte dieses Projekt bereits vorhanden sein. In diesem Fall können Sie zum nächsten Abschnitt springen.
+Wenn Sie die Schritte im Artikel [Erstellen von Vorschaukonten für Azure Machine Learning und Installieren von Azure Machine Learning Workbench](quickstart-installation.md) ausgeführt haben, sollte dieses Projekt bereits vorhanden sein. In diesem Fall können Sie zum nächsten Abschnitt springen.
 
 1. Öffnen Sie die Azure Machine Learning Workbench-App, und melden Sie sich bei Bedarf an. 
    
@@ -62,7 +67,7 @@ Wenn Sie die Schritte im Artikel [Erstellen von Vorschaukonten für Azure Machin
    Projektname | myIris |Geben Sie einen eindeutigen Namen ein, der Ihr Konto identifiziert. Sie können Ihren eigenen Namen verwenden oder einen Abteilungs- oder Projektnamen, der am besten zu dem Experiment passt. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig. 
    Projektverzeichnis | c:\Temp\ | Geben Sie das Verzeichnis an, in dem das Projekt erstellt wird.
    Projektbeschreibung | _nicht ausfüllen_ | Optionales Feld für eine Beschreibung der Projekte.
-   Visualstudio.com GIT Repository URL (Git-Repository-URL für Visualstudio.com) |_nicht ausfüllen_ | Optionales Feld. Sie können ein Projekt zur Quellcodeverwaltung und Zusammenarbeit einem Git-Repository in Visual Studio Team Services zuordnen. Die entsprechende Vorgehensweise wird [hier](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo) erläutert. 
+   Visualstudio.com GIT Repository URL (Git-Repository-URL für Visualstudio.com) |_nicht ausfüllen_ | Optionales Feld. Zur Quellcodeverwaltung und Zusammenarbeit kann ein Projekt einem Git-Repository bei Azure DevOps zugeordnet werden. Die entsprechende Vorgehensweise wird [hier](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo) erläutert. 
    Ausgewählter Arbeitsbereich | IrisGarden (falls vorhanden) | Wählen Sie einen Arbeitsbereich aus, den Sie im Azure-Portal für Ihr Experimentieren-Konto erstellt haben. <br/>Wenn Sie nach dem Schnellstart vorgegangen sind, sollten Sie einen Arbeitsbereich namens „IrisGarden“ haben. Wenn dies nicht der Fall ist, wählen Sie den Arbeitsbereich aus, den Sie bei der Erstellung Ihres Experimentieren-Kontos erstellt haben, oder einen anderen Arbeitsbereich, den Sie verwenden möchten.
    Projektvorlage | Klassifizieren von Schwertlilien | Vorlagen enthalten Skripts und Daten, die Sie zum Erkunden des Produkts verwenden können. Diese Vorlage enthält die benötigten Skripts und Daten für diesen Schnellstart und andere Tutorials auf dieser Dokumentationswebsite. 
 

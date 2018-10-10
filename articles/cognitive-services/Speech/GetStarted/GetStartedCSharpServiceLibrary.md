@@ -1,22 +1,24 @@
 ---
 title: Erste Schritte mit der Microsoft-Spracherkennungs-API unter Verwendung der C#-Dienstbibliothek | Microsoft-Dokumentation
-description: Verwenden Sie die Dienstbibliothek der Microsoft-Spracherkennung, um gesprochene Sprache in Text umzuwandeln.
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die Dienstbibliothek der Bing-Spracheingabe-API, um gesprochene Sprache in Text umzuwandeln.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/17/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 0320f41658a7ac4d6bf9e88ed998c853b665d485
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5716f7a0af16bd3e40dea4468e2fae884f911718
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373931"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967556"
 ---
-# <a name="get-started-with-the-speech-recognition-service-library-in-c35-for-net-windows"></a>Erste Schritte mit der Dienstbibliothek der Spracherkennung in C&#35; für .NET unter Windows
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Schnellstart: Verwenden der Dienstbibliothek der Bing-Spracheingabe-API in C&#35; für .NET unter Windows
 
 Die Dienstbibliothek ist für Entwickler gedacht, die über einen eigenen Clouddienst verfügen und in ihrem Dienst den Speech-Dienst aufrufen möchten. Verwenden Sie dieses SDK nicht, wenn Sie den Spracherkennungsdienst über gerätegebundene Apps aufrufen möchten. (Verwenden Sie in diesem Fall andere Clientbibliotheken oder REST-APIs.)
 
@@ -116,7 +118,7 @@ Nach Abschluss der Anforderung wird die von „RecognizeAsync“ zurückgegebene
 
 Dieses Ereignis wird jedes Mal aufgerufen, wenn der Speech-Dienst noch während des Sprechens (bei Verwendung von `MicrophoneRecognitionClient`) oder noch vor Abschluss der Datenübermittlung (bei Verwendung von `DataRecognitionClient`) versucht, das Gesagte vorauszusagen. Das Ereignis kann mithilfe von `SpeechClient.SubscribeToPartialResult()` abonniert werden. Sie können aber auch die generische Ereignisabonnementmethode `SpeechClient.SubscribeTo<RecognitionPartialResult>()` verwenden.
 
-**Rückgabeformat** | Beschreibung |
+**Rückgabeformat** | BESCHREIBUNG |
 ------|------
 **LexicalForm** | Dieses Format ist optimal für Anwendungen, die unformatierte, unverarbeitete Spracherkennungsergebnisse benötigen.
 **DisplayText** | Der erkannte Ausdruck mit inverser Textnormalisierung, Groß-/Kleinschreibung, Zeichensetzung und Filterung anstößiger Ausdrücke. Anstößige Ausdrücke werden nach dem Anfangszeichen durch Sternchen ersetzt (Beispiel: P***). Dieses Format ist optimal für Anwendungen, bei denen die Spracherkennungsergebnisse einem Benutzer angezeigt werden.
@@ -127,7 +129,7 @@ Dieses Ereignis wird jedes Mal aufgerufen, wenn der Speech-Dienst noch während 
 #### <a name="result-event"></a>Ergebnisereignis
 Dieses Ereignis wird aufgerufen, wenn Sie mit Sprechen fertig sind (im Modus `ShortPhrase`). Ihnen werden die n besten Ergebnisoptionen bereitgestellt. Im Modus `LongDictation` kann das Ereignis mehrmals aufgerufen werden (abhängig davon, wo der Server Pausen zwischen Sätzen erkennt). Das Ereignis kann mithilfe von `SpeechClient.SubscribeToRecognitionResult()` abonniert werden. Sie können aber auch die generische Ereignisabonnementmethode `SpeechClient.SubscribeTo<RecognitionResult>()` verwenden.
 
-**Rückgabeformat** | Beschreibung |
+**Rückgabeformat** | BESCHREIBUNG |
 ------|------|
 **RecognitionStatus** | Der Status, der angibt, wie die Erkennung zustande gekommen ist. Sie kann beispielsweise infolge einer erfolgreichen Erkennung oder infolge eines Verbindungsabbruchs zustande gekommen sein.
 **Phrases** | Die n besten erkannten Ausdrücke mit der Erkennungszuverlässigkeit.

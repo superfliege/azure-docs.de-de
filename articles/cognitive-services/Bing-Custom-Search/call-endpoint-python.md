@@ -9,45 +9,43 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 88bf82805ba46abf79b7899e0428a83485062302
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 3666e92372e9bed80e5c0c7991dcac730cebb588
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504966"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967590"
 ---
 # <a name="call-bing-custom-search-endpoint-python"></a>Aufrufen des Endpunkts für die benutzerdefinierte Bing-Suche (Python)
 
 Dieser Schnellstart veranschaulicht das Anfordern von Suchergebnissen aus Ihrer Instanz der benutzerdefinierten Suche unter Verwendung von Python zum Aufrufen des Endpunkts der benutzerdefinierten Bing-Suche. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
-- Eine Instanz der benutzerdefinierten Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
+- Eine einsatzbereite Instanz für die benutzerdefinierte Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
+- Installation von [Python](https://www.python.org/)
+- Abonnementschlüssel Sie erhalten einen Abonnementschlüssel, wenn Sie Ihre [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktivieren, oder Sie können einen kostenpflichtigen Abonnementschlüssel über Ihr Azure-Dashboard beziehen (siehe [Schnellstart: Erstellen eines Cognitive Services-API-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
--  Installation von [Python](https://www.python.org/)
-
-- Ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs**. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden. 
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgendermaßen vor:
+Führen Sie diese Schritte aus, um das Beispiel auszuführen:
 
-1. Erstellen Sie einen Ordner für Ihren Code.
-
-2. Navigieren Sie an einer Administrator-Eingabeaufforderung oder einem Administrator-Terminal zu dem Ordner, den Sie gerade erstellt haben.
-
-3. Installieren Sie das Python-Modul für **Anforderungen**:
-
+1. Erstellen Sie einen Ordner für Ihren Code.  
+  
+2. Navigieren Sie an einer Administrator-Eingabeaufforderung oder einem Administrator-Terminal zu dem Ordner, den Sie gerade erstellt haben.  
+  
+3. Installieren Sie das Python-Modul für **Anforderungen**:  
+  
     <pre>
     pip install pipenv
     pipenv install requests
-    </pre>
-    
-7. Erstellen Sie die Datei „BingCustomSearch.py“, und kopieren Sie den folgenden Code in die Datei.
-
-8. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Schlüssel bzw. Ihre Konfigurations-ID (siehe Schritt 1).
-
+    </pre>  
+      
+4. Erstellen Sie eine Datei mit dem Namen „BingCustomSearch.py“ in dem von Ihnen erstellten Ordner, und kopieren Sie den folgenden Code in diese. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Abonnementschlüssel und Ihre Konfigurations-ID.  
+  
     ``` Python
     import json
     import requests
@@ -59,8 +57,10 @@ Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgend
     url = 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=' + searchTerm + '&customconfig=' + customConfigId
     r = requests.get(url, headers={'Ocp-Apim-Subscription-Key': subscriptionKey})
     print(r.text)
-    ```
-9. Führen Sie den Code mit dem folgenden Befehl aus:
+    ```  
+  
+7. Führen Sie den Code mit dem folgenden Befehl aus:  
+  
     ```
     python BingCustomSearch.py
     ```

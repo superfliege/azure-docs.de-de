@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 05/24/2018
 ms.author: glenga
-ms.openlocfilehash: e3f2cc24a3ff765a33d27bbe5a43ca9d5a229e1b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: cc965073863375d76efb969ad66cf5750c9755bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092954"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969426"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 
@@ -160,7 +160,7 @@ In einigen Entwicklungsumgebungen müssen Sie eine zu verwendende Bindung expliz
 |C#-Klassenbibliothek mit Visual Studio 2017|[Verwendung von NuGet-Tools](#c-class-library-with-visual-studio-2017)|[Verwendung von NuGet-Tools](#c-class-library-with-visual-studio-2017)|
 |C#-Klassenbibliothek mit Visual Studio Code|N/V|[Verwendung der .NET Core-CLI](#c-class-library-with-visual-studio-code)|
 
-Die folgenden Bindungstypen sind Ausnahmen, für die keine explizite Registrierung erforderlich ist, da sie in allen Versionen und Umgebungen automatisch registriert werden: HTTP, Timer und Azure Storage (Blobs, Warteschlangen und Tabellen). 
+Die folgenden Bindungstypen sind Ausnahmen, für die keine explizite Registrierung erforderlich ist, da sie in allen Versionen und Umgebungen automatisch registriert werden: HTTP und Timer.
 
 ### <a name="azure-portal-development"></a>Entwicklung im Azure-Portal
 

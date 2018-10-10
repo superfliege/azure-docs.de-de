@@ -1,89 +1,93 @@
 ---
-title: Grundlegendes zum Azure IoT Hub-D2C-Messaging | Microsoft-Dokumentation
-description: 'Entwicklerhandbuch: Verwenden des D2C-Messaging mit IoT Hub. Enthält Informationen zum Senden von Telemetriedaten und anderen Daten und zum Übermitteln von Nachrichten mithilfe von Routing.'
-author: dominicbetts
-manager: timlt
+title: Grundlegendes zum Azure IoT Hub-Nachrichtenrouting | Microsoft-Dokumentation
+description: 'Entwicklerhandbuch: Verwenden des Nachrichtenroutings zum Senden von D2C-Nachrichten. Enthält Informationen zum Senden von Telemetriedaten und anderen Daten.'
+author: ash2017
+manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: be87b00f27f0d0b25cd77a0634ab1c653a85e5ac
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.date: 08/13/2018
+ms.author: asrastog
+ms.openlocfilehash: 7c36ab2f0d4d3e5c772f8ef62c13161a2649362f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126441"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966740"
 ---
-# <a name="send-device-to-cloud-messages-to-iot-hub"></a>Senden von D2C-Nachrichten an IoT Hub
+# <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
-Zum Senden von Zeitreihen-Telemetrie und Warnungen von Ihren Geräten an Ihr Lösungs-Back-End senden Sie D2C-Nachrichten von Ihrem Gerät an Ihre IoT Hub-Instanz. Eine Erläuterung anderer D2C-Optionen, die von IoT Hub unterstützt werden, finden Sie im [Leitfaden zur D2C-Kommunikation][lnk-d2c-guidance].
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Sie senden Gerät-zu-Cloud-Nachrichten (Device-to-Cloud, D2C) von einem geräteseitigen Endpunkt (**/devices/{Geräte-ID}/messages/events**). Mit Routingregeln werden Ihre Nachrichten dann an einen der dienstseitigen Endpunkte auf Ihrem IoT Hub geleitet. Routingregeln verwenden die Header und Texte der D2C-Nachrichten, um den Zielort für die Weiterleitung zu ermitteln. Standardmäßig werden Nachrichten an den integrierten dienstseitigen Endpunkt (**messages/events**) gesendet, der mit [Event Hubs][lnk-event-hubs] kompatibel ist. Auf diese Weise können Sie standardmäßige [Event Hubs-Integration und -SDKs][lnk-compatible-endpoint] zum Empfangen von D2C-Nachrichten an Ihrem Lösungs-Back-End verwenden.
+Das Nachrichtenrouting ermöglicht es Ihnen, Nachrichten automatisiert, skalierbar und zuverlässig von Ihren Geräten an Clouddienste zu senden. Das Nachrichtenrouting kann für Folgendes verwendet werden: 
 
-IoT Hub implementiert das D2C-Messaging anhand eines Streaming-Messagingmusters. Die D2C-Nachrichten von IoT Hub ähneln eher [Event Hubs][lnk-event-hubs] *-Ereignissen* als [Service Bus][lnk-servicebus] *-Nachrichten*, da der Dienst von einem größeren Volumen von Ereignissen durchlaufen wird, die von mehreren Lesern gelesen werden können.
+* **Senden von Gerätetelemetrienachrichten sowie von Ereignissen** – insbesondere von Ereignissen im Gerätelebenszyklus und Änderungsereignissen für Gerätezwillinge im integrierten Endpunkt und in benutzerdefinierten Endpunkten. Erfahren Sie mehr über [Routingendpunkte](##routing-endpoints).
 
-D2C-Messaging mit IoT Hub weist folgende Merkmale auf:
+* **Filtern von Daten vor dem Weiterleiten an verschiedene Endpunkte** durch Anwenden umfassender Abfragen. Mithilfe des Nachrichtenroutings können Sie Abfragen für Nachrichteneigenschaften und Nachrichtentext sowie für Gerätezwillingstags und Gerätezwillingseigenschaften durchführen. Erfahren Sie mehr über die Verwendung von [Abfragen im Nachrichtenrouting](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
-* D2C-Nachrichten sind dauerhafter Art und werden bis zu sieben Tage lang auf dem Standardendpunkt der IoT Hub-Instanz (**messages/events**) aufbewahrt.
-* D2C-Nachrichten dürfen maximal 256 KB groß sein. Sie können in Batches gruppiert werden, um den Sendevorgang zu optimieren. Die Batches können maximal 256 KB groß sein.
-* Wie im Abschnitt [Verwalten des Zugriffs auf IoT Hub][lnk-devguide-security] erläutert, ermöglicht IoT Hub Authentifizierung und Zugriffssteuerung auf Gerätebasis.
-* Mit IoT Hub können Sie bis zu zehn benutzerdefinierte Endpunkte erstellen. Nachrichten werden basierend auf Routen, die auf Ihrem IoT Hub konfiguriert sind, an die Endpunkte gesendet. Weitere Informationen finden Sie unter [Routingregeln](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
-* IoT Hub ermöglicht Millionen gleichzeitig verbundener Geräte (siehe [Kontingente und Drosselung][lnk-quotas]).
-* IoT Hub erlaubt keine beliebige Partitionierung. D2C-Nachrichten werden gemäß ihrer ursprünglichen **deviceId**partitioniert.
+IoT Hub benötigt Schreibzugriff auf diese Dienstendpunkte, damit das Nachrichtenrouting funktioniert. Wenn Sie Ihre Endpunkte über das Azure-Portal konfigurieren, werden die erforderlichen Berechtigungen für Sie hinzugefügt. Stellen Sie sicher, dass Sie Ihre Dienste zur Unterstützung des erwarteten Durchsatzes konfigurieren. Nach der Erstkonfiguration Ihrer IoT-Lösung müssen Sie möglicherweise Ihre zusätzlichen Endpunkte überwachen und ggf. Anpassungen an die tatsächliche Last vornehmen.
 
-Weitere Informationen zu den Unterschieden zwischen IoT Hub und Event Hubs finden Sie unter [Vergleich zwischen Azure IoT Hub und Azure Event Hubs][lnk-comparison].
+IoT Hub definiert ein [allgemeines Format](../iot-hub/iot-hub-devguide-messages-construct.md) für alle D2C-Nachrichten, um Interoperabilität zwischen Protokollen zu ermöglichen. Wenn eine Nachricht mehreren Routen entspricht, die auf den gleichen Endpunkt verweisen, übermittelt IoT Hub die Nachricht nur einmal an diesen Endpunkt. Aus diesem Grund müssen Sie keine Deduplizierung für Ihre Service Bus-Warteschlange oder Ihr Service Bus-Thema konfigurieren. In partitionierten Warteschlangen garantiert die Partitionsaffinität die Nachrichtensortierung. In diesem Tutorial lernen Sie, wie Sie das [Nachrichtenrouting konfigurieren] (https://docs.microsoft.com/azure/iot-hub/tutorial-routing).
 
-## <a name="send-non-telemetry-traffic"></a>Senden von Datenverkehr ohne Telemetrie
+## <a name="routing-endpoints"></a>Routingendpunkte
 
-Häufig senden Geräte nicht nur Telemetriedaten, sondern auch Nachrichten und Anforderungen, die eine separate Ausführung und Verarbeitung im Lösungs-Back-End erforderlich machen. Ein Beispiel hierfür sind kritische Warnungen, für die eine bestimmte Aktion auf dem Back-End ausgelöst werden muss. Sie können eine [Routingregel][lnk-devguide-custom] schreiben, mit der diese Arten von Nachrichten basierend auf dem Header der Nachricht oder einem Wert im Nachrichtentext an einen Endpunkt gesendet werden, der für deren Verarbeitung zuständig ist.
+Ein IoT Hub verfügt über einen standardmäßigen integrierten Endpunkt (**messages/events**), der mit Event Hubs kompatibel ist. Sie können [benutzerdefinierte Endpunkte](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints) für die Weiterleitung von Nachrichten erstellen, indem Sie andere Dienste Ihres Abonnements mit dem IoT Hub verknüpfen. IoT Hub unterstützt derzeit folgende Dienste als benutzerdefinierte Endpunkte:
 
-Weitere Informationen zur besten Möglichkeit zum Verarbeiten dieser Art von Nachricht finden Sie im Tutorial [Gewusst wie: Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-d2c-tutorial].
+### <a name="built-in-endpoint"></a>Integrierter Endpunkt
+Sie können standardmäßige [Event Hubs-Integration und -SDKs](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) zum Empfangen von D2C-Nachrichten vom integrierten Endpunkt (**messages/events**) verwenden. Beachten Sie Folgendes: Sobald eine Route erstellt wurde, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, es wird eine Route zu diesem Endpunkt erstellt.
 
-## <a name="route-device-to-cloud-messages"></a>Weiterleiten von D2C-Nachrichten
+### <a name="azure-blob-storage"></a>Azure Blob Storage
+IoT Hub unterstützt das Schreiben von Daten in Azure Blob Storage nur im [Apache Avro](http://avro.apache.org/)-Format. IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in ein Blob, wenn das Batch eine bestimmte Größe erreicht hat oder ein bestimmter Zeitraum verstrichen ist.
 
-Sie haben zwei Möglichkeiten für das Weiterleiten von D2C-Nachrichten an Ihre Back-End-Apps:
-
-* Verwenden Sie den integrierten [Event Hub-kompatiblen Endpunkt][lnk-compatible-endpoint], über den Back-End-Apps vom Hub empfangene D2C-Nachrichten lesen können. Weitere Informationen zum integrierten Event Hub-kompatiblen Endpunkt finden Sie unter [Lesen von D2C-Nachrichten vom integrierten Endpunkt][lnk-devguide-builtin].
-* Verwenden Sie Routingregeln zum Senden von Nachrichten an benutzerdefinierte Endpunkte in Ihrer IoT Hub-Instanz. Mit benutzerdefinierten Endpunkten können Ihre Back-End-Apps D2C-Nachrichten mithilfe von Event Hubs, Service Bus-Warteschlangen oder Service Bus-Themen lesen. Weitere Informationen zum Routing und zu benutzerdefinierten Endpunkten finden Sie unter [Verwenden von benutzerdefinierten Endpunkten und Routingregeln für D2C-Nachrichten][lnk-devguide-custom].
-
-## <a name="anti-spoofing-properties"></a>Eigenschaften zum Schutz vor Spoofing
-
-Um ein Gerätespoofing beim D2C-Messaging zu verhindern, versieht IoT Hub alle Nachrichten mit den folgenden Eigenschaften:
-
-* **ConnectionDeviceId**
-* **ConnectionDeviceGenerationId**
-* **ConnectionAuthMethod**
-
-Die ersten beiden Eigenschaften enthalten die Werte für **deviceId** und **generationId** des ursprünglichen Geräts, wie unter [Geräteidentitätseigenschaften][lnk-device-properties] beschrieben.
-
-Die Eigenschaft **ConnectionAuthMethod** enthält ein serialisiertes JSON-Objekt mit folgenden Eigenschaften:
-
-```json
-{
-  "scope": "{ hub | device }",
-  "type": "{ symkey | sas | x509 }",
-  "issuer": "iothub"
-}
+IoT Hub folgt standardmäßig der nachstehenden Dateibenennungskonvention:
+```
+{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
+Sie können eine beliebige Dateibenennungskonvention verwenden, müssen jedoch alle aufgelisteten Tokens verwenden. IoT Hub schreibt in ein leeres Blob, wenn keine Daten zum Schreiben vorhanden sind.
+
+### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus-Warteschlangen und Service Bus-Themen
+Für Service Bus-Warteschlangen und -Themen, die als IoT Hub-Endpunkte verwendet werden, dürfen **Sitzungen** oder **Duplikaterkennung** nicht aktiviert werden. Wenn eine dieser Optionen aktiviert ist, wird der Endpunkt im Azure-Portal als **Nicht erreichbar** angezeigt.
+
+### <a name="event-hubs"></a>Event Hubs
+Sie können Daten nicht nur an den mit Event Hubs kompatiblen integrierten Endpunkt, sondern auch an benutzerdefinierte Endpunkte vom Typ „Event Hubs“ weiterleiten. 
+
+Bei Verwendung von Routing und benutzerdefinierten Endpunkten werden Nachrichten nur an den integrierten Endpunkt übermittelt, wenn sie mit keinen Regeln übereinstimmen. Fügen Sie für die Übermittlung von Nachrichten an den integrierten Endpunkt und die benutzerdefinierten Endpunkte eine Route hinzu, die Nachrichten an den Endpunkt „events“ sendet.
+
+## <a name="reading-data-that-has-been-routed"></a>Lesen weitergeleiteter Daten
+Sie können mit diesem [Tutorial](https://docs.microsoft.com/azure/iot-hub/tutorial-routing) eine Route konfigurieren.
+
+Verwenden Sie die folgenden Tutorials, um zu erfahren, wie Sie Nachrichten aus einem Endpunkt auslesen.
+
+* Lesen vom [integrierten Endpunkt](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-node)
+* Lesen aus [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart)
+* Lesen aus [Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
+* Lesen aus [Service Bus-Warteschlangen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues)
+* Lesen aus [Service Bus-Themen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
+
+## <a name="fallback-route"></a>Fallbackroute
+Die Fallbackroute sendet alle Nachrichten, die die Abfragebedingungen in einer der vorhandenen Routen nicht erfüllen, an den integrierten Endpunkt (**messages/events**), der mit [Event Hubs](https://docs.microsoft.com/azure/event-hubs/) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Beachten Sie Folgendes: Sobald eine Route erstellt wurde, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, es wird eine Route zu diesem Endpunkt erstellt. Wenn keine Routen zum integrierten Endpunkt vorhanden sind und eine Fallbackroute aktiviert ist, werden nur Nachrichten an den integrierten Endpunkt gesendet, die keinen Abfragebedingungen in Routen entsprechen. Wenn alle vorhandenen Routen gelöscht wurden, muss eine Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen. 
+
+Sie können die Fallbackroute im Azure-Portal auf dem Blatt „Nachrichtenrouting“ aktivieren und deaktivieren. Sie können auch Azure Resource Manager verwenden, um [FallbackRouteProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) für die Nutzung eines benutzerdefinierten Endpunkts für die Fallbackroute festzulegen.
+
+## <a name="non-telemetry-events"></a>Nicht telemetriebezogene Ereignisse
+Das Nachrichtenrouting ermöglicht zusätzlich zum Weiterleiten von Gerätetelemetriedaten auch das Senden von Änderungsereignissen für Gerätezwillinge und Ereignissen im Gerätelebenszyklus. Wenn beispielsweise eine Route erstellt wird, deren Datenquelle auf **Änderungsereignisse für Gerätezwillinge** festgelegt ist, sendet IoT Hub Nachrichten an den Endpunkt, der die Änderung im Gerätezwilling enthält. Ebenso gilt: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse im Gerätelebenszyklus** festgelegt ist, sendet IoT Hub eine Nachricht, die darauf hinweist, ob das Gerät erstellt oder gelöscht wurde. 
+[IoT Hub lässt sich auch in Azure Event Grid integrieren](iot-hub-event-grid.md), um Geräteereignisse zu veröffentlichen und so Echtzeitintegrationen und die Automatisierung von Workflows basierend auf diesen Ereignissen zu unterstützen. Informationen dazu, welche Methode sich am besten für Ihr Szenario eignet, finden Sie unter [Vergleichen von Nachrichtenweiterleitung und Event Grid für IoT Hub](iot-hub-event-grid-routing-comparison.md).
+
+## <a name="testing-routes"></a>Testen von Routen
+Wenn Sie eine neue Route erstellen oder eine vorhandene Route bearbeiten, sollten Sie die Routenabfrage mit einer Beispielnachricht testen. Sie können einzelne Routen oder alle Routen gleichzeitig testen. Während des Tests werden keine Nachrichten an die Endpunkte weitergeleitet. Zum Testen können Sie das Azure-Portal, Azure Resource Manager, Azure PowerShell und die Azure CLI verwenden. Anhand der Ausgaben können Sie herausfinden, ob die Beispielnachricht der Abfrage entspricht oder nicht oder ob der Test nicht ausgeführt werden konnte, weil Beispielnachricht oder Abfragesyntax falsch sind. Weitere Informationen finden Sie unter [Testen einer Route](https://docs.microsoft.com/rest/api/iothub/iothubresource/testroute) und [Testen aller Routen](https://docs.microsoft.com/rest/api/iothub/iothubresource/testallroutes).
+
+## <a name="latency"></a>Latency
+Wenn Sie Geräte-zu-Cloud-Telemetrienachrichten über integrierte Endpunkte weiterleiten, kommt es nach der Erstellung der ersten Route zu einer leichten Erhöhung der Gesamtlatenz.
+
+In den meisten Fällen beträgt der durchschnittliche Latenzanstieg weniger als 500 ms. Sie können die Latenz mithilfe der IoT Hub-Metriken **Routing: Nachrichtenlatenz für „messages/events“** oder **d2c.endpoints.latency.builtIn.events** überwachen. Das Erstellen oder Löschen einer Route nach der ersten hat keinen Einfluss auf die Gesamtlatenz.
+
+## <a name="monitoring-and-troubleshooting"></a>Überwachung und Problembehandlung
+IoT Hub bietet mehrere Metriken in Bezug auf Routing und Endpunkte, um Ihnen einen Überblick über die Integrität Ihres Hubs und der gesendeten Nachrichten zu verschaffen. Sie können Informationen aus mehreren Metriken kombinieren, um die Grundursache eines Problems zu ermitteln. Verwenden Sie z.B. die Metriken **Routing: verworfene Telemetrienachrichten** oder **d2c.telemetry.egress.dropped**, um herauszufinden, wie viele Nachrichten verworfen wurden, weil sie keiner Abfrage in einer der Routen entsprachen und die Fallbackroute deaktiviert war. Unter [IoT Hub-Metriken](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) werden alle Metriken aufgeführt, die standardmäßig für Ihren IoT Hub aktiviert sind.
+
+Mithilfe der Diagnoseprotokolle für **Routen** in den Azure Monitor-[Diagnoseeinstellungen](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health) können Sie Fehler bei der Auswertung einer Routingabfrage und der Endpunktintegrität nachverfolgen, die von IoT Hub registriert werden, wenn beispielsweise ein Endpunkt nicht erreichbar ist. Diese Diagnoseprotokolle können zur benutzerdefinierten Verarbeitung an Log Analytics, Event Hubs oder Azure Storage gesendet werden.
+
 ## <a name="next-steps"></a>Nächste Schritte
-
-Informationen zu den SDKs, die Sie für das Senden von D2C-Nachrichten verwenden können, finden Sie unter [Azure IoT-SDKs][lnk-sdks].
-
-In den [Schnellstarts][lnk-get-started] erfahren Sie, wie Sie D2C-Nachrichten über simulierte Geräte senden. Ausführlichere Informationen finden Sie im Tutorial [Verarbeiten von IoT Hub-D2C-Nachrichten mit Routen][lnk-d2c-tutorial].
-
-[lnk-devguide-builtin]: iot-hub-devguide-messages-read-builtin.md
-[lnk-devguide-custom]: iot-hub-devguide-messages-read-custom.md
-[lnk-comparison]: iot-hub-compare-event-hubs.md
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-[lnk-get-started]: quickstart-send-telemetry-node.md
-
-[lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/
-[lnk-servicebus]: http://azure.microsoft.com/documentation/services/service-bus/
-[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-compatible-endpoint]: iot-hub-devguide-messages-read-builtin.md
-[lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
-[lnk-devguide-security]: iot-hub-devguide-security.md
-[lnk-d2c-tutorial]: tutorial-routing.md
+* Im Tutorial [Verarbeiten von IoT Hub-D2C-Nachrichten mit Routen](../iot-hub/tutorial-routing.md) erfahren Sie, wie Sie Nachrichtenrouten erstellen.
+* In den [Schnellstarts](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-node) erfahren Sie, wie Sie D2C-Nachrichten über simulierte Geräte senden.
+* Informationen zu den SDKs, die Sie zum Senden von D2C-Nachrichten verwenden können, finden Sie unter [Azure IoT-SDKs](../iot-hub/iot-hub-devguide-sdks.md).

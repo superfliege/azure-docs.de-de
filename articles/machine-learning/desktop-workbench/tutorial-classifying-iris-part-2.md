@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Erstellen eines Modells für Azure Machine Learning-Dienste (Vorschau) | Microsoft-Dokumentation
-description: Dieses Tutorial in voller Länge zeigt, wie Azure Machine Learning-Dienste (Vorschau) konsistent verwendet werden können. Dies ist der zweite Teil der Reihe, in dem es um das Experimentieren geht.
+title: Tutorial zum Erstellen eines Modells für den Azure Machine Learning-Dienst (Vorschauversion) | Microsoft-Dokumentation
+description: Dieses umfassende Tutorial zeigt, wie der Azure Machine Learning-Dienst (Vorschauversion) konsistent verwendet werden kann. Dies ist der zweite Teil der Reihe, in dem es um das Experimentieren geht.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -12,17 +12,21 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: 4f9b14762332bd11fd69a855d8fabdb206e34919
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6faabc3003048c93c08451c537496e762352b50b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41918474"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997312"
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>Tutorial 2: Klassifizieren von Iris – Erstellen eines Modells
-Azure Machine Learning-Dienste (Vorschauversion) sind eine integrierte Lösung für Data Science und erweiterte Analysen, mit der professionelle Datenanalysten Daten aufbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
 
-Dieses Tutorial ist der **zweite Teil einer dreiteiligen Reihe**. In diesem Teil des Tutorials verwenden Sie Azure Machine Learning-Dienste für folgende Zwecke:
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Der Azure Machine Learning-Dienst (Vorschauversion) ist eine integrierte Lösung für Data Science und erweiterte Analysen, mit der professionelle Datenanalysten Daten aufbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
+
+Dieses Tutorial ist der **zweite Teil einer dreiteiligen Reihe**. In diesem Teil des Tutorials verwenden Sie den Azure Machine Learning-Dienst für folgende Zwecke:
 
 > [!div class="checklist"]
 > * Öffnen von Skripts und Überprüfen von Code
@@ -39,7 +43,7 @@ In diesem Tutorial wird das zeitlose Schwertlilien-Dataset ([Iris flower data se
 
 Für dieses Tutorial benötigen Sie Folgendes:
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
-- Ein Experimentierkonto und eine Installation von Azure Machine Learning Workbench, wie in dieser [Schnellstartanleitung](../service/quickstart-installation.md) beschrieben.
+- Ein Experimentierkonto und eine Installation von Azure Machine Learning Workbench, wie in dieser [Schnellstartanleitung](quickstart-installation.md) beschrieben.
 - Das Projekt und vorbereitete Iris-Daten aus [Teil 1 des Tutorials](tutorial-classifying-iris-part-1.md).
 - Eine lokal installierte und ausgeführte Docker-Engine. Die Community Edition von Docker ist ausreichend. Hier ist beschrieben, wie Sie Docker installieren: https://docs.docker.com/engine/installation/.
 

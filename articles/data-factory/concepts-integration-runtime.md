@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: a9df3d9d181ed210a7c6aaec7974fa719b4f072e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: dafbfb959e70563f8619f7aea877a3aa1c380453
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086881"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997402"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory die folgenden Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt:
@@ -90,14 +90,14 @@ Für die Durchführung von Lift & Shift-Vorgängen für vorhandene SSIS-Workload
 Die Azure-SSIS--Integrationslaufzeit kann entweder im öffentlichen oder im privaten Netzwerk bereitgestellt werden.  Der lokale Datenzugriff wird unterstützt, indem Azure-SSIS-IR mit einem virtuellen Netzwerk verknüpft wird, für das eine Verbindung mit Ihrem lokalen Netzwerk besteht.  
 
 ### <a name="azure-ssis-ir-compute-resource-and-scaling"></a>Azure-SSIS-Integrationslaufzeit: Computeressource und Skalierung
-Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit Azure-VMs, die speziell für die Ausführung von SSIS-Paketen bestimmt sind. Sie können Ihren eigenen Server mit Azure SQL-Datenbank oder mit einer verwalteten Instanz (Vorschauversion) bereitstellen, um den Katalog mit SSIS-Projekten/-Paketen (SSISDB) zu hosten, der daran angefügt werden soll. Sie können die Computeleistung zentral hochskalieren, indem Sie die Knotengröße angeben und horizontal hochskalieren. Geben Sie hierzu die Anzahl von Knoten im Cluster an. Sie können die Kosten für die Ausführung Ihrer Azure-SSIS-Integrationslaufzeit verwalten, indem Sie sie je nach Bedarf anhalten und starten.
+Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit Azure-VMs, die speziell für die Ausführung von SSIS-Paketen bestimmt sind. Sie können Ihren eigenen Server mit Azure SQL-Datenbank oder mit einer verwalteten Instanz bereitstellen, um den Katalog mit SSIS-Projekten/-Paketen (SSISDB) zu hosten, der daran angefügt werden soll. Sie können die Computeleistung zentral hochskalieren, indem Sie die Knotengröße angeben und horizontal hochskalieren. Geben Sie hierzu die Anzahl von Knoten im Cluster an. Sie können die Kosten für die Ausführung Ihrer Azure-SSIS-Integrationslaufzeit verwalten, indem Sie sie je nach Bedarf anhalten und starten.
 
 Weitere Informationen finden Sie in den Anleitungen unter „Gewusst wie: Erstellen und Konfigurieren von Azure-SSIS-Integrationslaufzeit“.  Nach der Erstellung können Sie Ihre vorhandenen SSIS-Pakete mit nur wenigen oder auch ganz ohne Änderungen bereitstellen und verwalten, indem Sie vertraute Tools wie SQL Server Data Tools (SSDT) und SQL Server Management Studio (SSMS) verwenden – genauso wie bei der lokalen Nutzung von SSIS.
 
 Weitere Informationen zur Azure-SSIS-Laufzeit finden Sie in den folgenden Artikeln: 
 
 - [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md): Dieser Artikel enthält schrittweise Anweisungen zum Erstellen einer Azure-SSIS-Integrationslaufzeit und verwendet eine Azure SQL-Datenbank zum Hosten des SSIS-Katalogs. 
-- [Gewusst wie: Erstellen einer Azure-SSIS-Integrationslaufzeit](create-azure-ssis-integration-runtime.md): In diesem Artikel wird das Tutorial vertieft, und er enthält Anweisungen zur Verwendung einer verwalteten Azure SQL-Instanz (Vorschau) und zum Verknüpfen der IR mit einem virtuellen Netzwerk. 
+- [Gewusst wie: Erstellen einer Azure-SSIS-Integrationslaufzeit](create-azure-ssis-integration-runtime.md): In diesem Artikel wird das Tutorial vertieft, und er enthält Anweisungen zur Verwendung einer verwalteten Azure SQL-Datenbank-Instanz und zum Verknüpfen der IR mit einem virtuellen Netzwerk. 
 - [Überwachen einer Azure-SSIS-Integrationslaufzeit](monitor-integration-runtime.md#azure-ssis-integration-runtime): In diesem Artikel wird das Abrufen von Informationen zu einer Azure-SSIS-Integrationslaufzeit veranschaulicht, und er enthält Beschreibungen der Status in den zurückgegebenen Informationen. 
 - [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie eine Azure-SSIS-Integrationslaufzeit beenden, starten oder entfernen. Es wird zudem gezeigt, wie Sie Ihre Azure-SSIS-Integrationslaufzeit horizontal hochskalieren, indem Sie der Integrationslaufzeit weitere Knoten hinzufügen. 
 - [Verknüpfen einer Azure-SSIS-Integration Runtime mit einem virtuellen Netzwerk:](join-azure-ssis-integration-runtime-virtual-network.md). Dieser Artikel enthält grundlegende Informationen zum Verknüpfen einer Azure-SSIS-IR mit einem virtuellen Azure-Netzwerk. Darüber hinaus enthält er Schritte zur Verwendung des Azure-Portals zum Konfigurieren des virtuellen Netzwerks, damit die Azure-SSIS-IR dem virtuellen Netzwerk beitreten kann. 
@@ -128,9 +128,9 @@ Bei Verwendung zum Durchführen der Datenverschiebung extrahiert die selbstgehos
 ### <a name="azure-ssis-ir-location"></a>Azure-SSIS-Integrationslaufzeit: Standort
 Die Auswahl des richtigen Standorts für Ihre Azure-SSIS-Integrationslaufzeit ist entscheidend, um für Ihre ETL-Workflows (Extrahieren-Transformieren-Laden) eine hohe Leistung zu erzielen.
 
-- Der Standort Ihrer Azure-SSIS-Integration Runtime muss nicht dem Standort Ihrer Data Factory entsprechen. Es sollte aber derselbe Standort wie für Ihren eigenen Server mit Azure SQL-Datenbank bzw. einer verwalteten Instanz (Vorschauversion) sein, auf dem SSISDB gehostet werden soll. Ihre Azure-SSIS-Integrationslaufzeit kann dann leicht auf SSISDB zugreifen, ohne dass es zwischen unterschiedlichen Standorten zu übermäßig viel Datenverkehr kommt.
-- Wenn Sie nicht über einen vorhandenen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz (Vorschauversion) zum Hosten von SSISDB verfügen, aber über lokale Datenquellen bzw. -ziele, sollten Sie wie folgt vorgehen: Erstellen Sie einen neuen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz (Vorschauversion) am Standort eines virtuellen Netzwerks, das mit Ihrem lokalen Netzwerk verbunden ist.  Auf diese Weise können Sie am gleichen Ort Ihre Azure-SSIS-IR mit dem neuen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz (Vorschauversion) erstellen und den Beitritt zu diesem virtuellen Netzwerk durchführen. Dies führt effektiv zu einer Verringerung der Datenverschiebungen zwischen unterschiedlichen Standorten.
-- Wenn der Standort Ihres vorhandenen Servers mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz (Vorschauversion), auf dem SSISDB gehostet wird, nicht dem Standort eines virtuellen Netzwerks entspricht, das mit Ihrem lokalen Netzwerk verbunden ist, sollten Sie wie folgt vorgehen: Erstellen Sie zuerst Ihre Azure-SSIS-IR, indem Sie einen vorhandenen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz (Vorschauversion) verwenden und den Beitritt zu einem anderen virtuellen Netzwerk am gleichen Ort durchführen, und konfigurieren Sie dann eine VNET-zu-VNET-Verbindung zwischen unterschiedlichen Standorten.
+- Der Standort von Azure-SSIS IR muss nicht dem Standort Ihrer Data Factory entsprechen. Es sollte aber derselbe Standort wie für Ihren eigenen Server mit Azure SQL-Datenbank bzw. einer verwalteten Instanz sein, auf dem die SSISDB gehostet werden soll. Ihre Azure-SSIS-Integrationslaufzeit kann dann leicht auf SSISDB zugreifen, ohne dass es zwischen unterschiedlichen Standorten zu übermäßig viel Datenverkehr kommt.
+- Wenn Sie nicht über einen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz zum Hosten der SSISDB verfügen, aber über lokale Datenquellen bzw. -ziele, sollten Sie wie folgt vorgehen: Erstellen Sie einen neuen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz am Standort eines virtuellen Netzwerks, das mit Ihrem lokalen Netzwerk verbunden ist.  Auf diese Weise können Sie am gleichen Ort Azure-SSIS IR mit dem neuen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz erstellen und den Beitritt zu diesem virtuellen Netzwerk durchführen. Dies führt effektiv zu einer Verringerung der Datenverschiebungen zwischen unterschiedlichen Standorten.
+- Wenn der Standort Ihres vorhandenen Servers mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz, auf dem die SSISDB gehostet wird, nicht dem Standort eines virtuellen Netzwerks entspricht, das mit Ihrem lokalen Netzwerk verbunden ist, sollten Sie wie folgt vorgehen: Erstellen Sie zuerst Azure-SSIS IR, indem Sie einen vorhandenen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz verwenden und den Beitritt zu einem anderen virtuellen Netzwerk am gleichen Ort durchführen, und konfigurieren Sie dann eine VNET-zu-VNET-Verbindung zwischen unterschiedlichen Standorten.
 
 Im folgenden Diagramm sind die Standorteinstellungen von Data Factory und die dazugehörigen Integrationslaufzeiten dargestellt:
 
@@ -158,4 +158,4 @@ Jede Transformationsaktivität verfügt über einen verknüpften Zielcomputedien
 Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
 - [Create self-hosted integration runtime](create-self-hosted-integration-runtime.md) (Erstellen einer selbstgehosteten Integrationslaufzeit)
-- [Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft-Dokumentation](create-azure-ssis-integration-runtime.md). In diesem Artikel wird das Tutorial vertieft, und er enthält Anweisungen zur Verwendung einer verwalteten Azure SQL-Instanz (Vorschau) und zum Verknüpfen der IR mit einem virtuellen Netzwerk. 
+- [Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft-Dokumentation](create-azure-ssis-integration-runtime.md). In diesem Artikel wird das Tutorial vertieft, und er enthält Anweisungen zur Verwendung einer verwalteten Azure SQL-Datenbank-Instanz und zum Verknüpfen der IR mit einem virtuellen Netzwerk. 

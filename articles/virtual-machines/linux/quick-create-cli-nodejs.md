@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines virtuellen Linux-Computers mit der Azure CLI 1.0 | Microsoft-Dokumentation
-description: Erstellen eines virtuellen Linux-Computers in Azure mithilfe der Azure CLI 1.0
+title: Erstellen eines virtuellen Linux-Computers mit der klassischen Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: Erstellen eines virtuellen Linux-Computers in Azure mithilfe der klassischen Azure-Befehlszeilenschnittstelle
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: ea9eab1a02a29005917848ed54ab8ba160b89b63
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 94362256dfb5b8deff233f7c575d0720f29eec5c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30901808"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987850"
 ---
-# <a name="create-a-linux-vm-using-the-azure-cli-10"></a>Erstellen eines virtuellen Linux-Computers mit der Azure CLI 1.0
+# <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Erstellen eines virtuellen Linux-Computers mit der klassischen Azure-Befehlszeilenschnittstelle
 
 In diesem Artikel wird erläutert, wie Sie mit dem Befehl `azure vm quick-create` in der Azure-Befehlszeilenschnittstelle (CLI) schnell einen virtuellen Linux-Computer (VM) bereitstellen können. Der Befehl `quick-create` stellt eine VM in einer sicheren Basisinfrastruktur bereit, mit der Sie rasch einen Prototyp erstellen oder ein Konzept testen können.
 
 > [!NOTE]
-Wenn Sie einen virtuellen Computer mit der Azure CLI 2.0 erstellen möchten, lesen Sie unter [Erstellen eines virtuellen Linux-Computers mithilfe der Azure CLI 2.0 (Vorschau) (az.py)](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weiter.
+Wenn Sie einen virtuellen Computer mit der Azure-Befehlszeilenschnittstelle erstellen möchten, lesen Sie unter [Schnellstart: Erstellen eines virtuellen Windows-Computers per Azure CLI 2.0](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weiter.
 
 Sie können eine Linux-VM auch schnell über das [Azure-Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bereitstellen.
 

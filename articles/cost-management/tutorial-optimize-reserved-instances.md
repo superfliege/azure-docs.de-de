@@ -1,30 +1,30 @@
 ---
-title: Tutorial – Optimieren von Kosten für reservierte Instanzen mit Azure Cost Management | Microsoft-Dokumentation
+title: Tutorial – Optimieren von Kosten für reservierte Instanzen mit Cloudyn in Azure | Microsoft-Dokumentation
 description: In diesem Tutorial wird beschrieben, wie Sie die Kosten für Ihre reservierten Instanzen für Azure und Amazon Web Services (AWS) optimieren.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: f0edad58256ecc29e2fd215095e8b5ab13d69ce8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c50259f0df955c3a22edc979dfebc8bfb2059e16
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177322"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987764"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
 # <a name="tutorial-optimize-reserved-instances"></a>Tutorial: Optimieren von reservierten Instanzen
 
-In diesem Tutorial wird beschrieben, wie Cost Management Sie beim Optimieren Ihrer Kosten für reservierte Instanzen und der Nutzung für Azure und Amazon Web Services (AWS) unterstützen kann. Bei beiden Cloud-Dienstanbietern gehen Sie mit einer reservierten Instanz einen langfristigen Vertrag ein, bei dem Sie sich im Voraus zur Nutzung der VM verpflichten. Hieraus können sich unter Umständen erhebliche Einsparungen gegenüber der Verwendung des Standardpreismodells mit nutzungsabhängiger Bezahlung ergeben. Potenzielle Einsparungen werden nur realisiert, wenn Sie die Kapazität Ihrer reservierten Instanzen vollständig nutzen.
+In diesem Tutorial wird beschrieben, wie Cloudyn Sie beim Optimieren Ihrer Kosten für reservierte Instanzen und der Nutzung für Azure und Amazon Web Services (AWS) unterstützen kann. Bei beiden Cloud-Dienstanbietern gehen Sie mit einer reservierten Instanz einen langfristigen Vertrag ein, bei dem Sie sich im Voraus zur Nutzung der VM verpflichten. Hieraus können sich unter Umständen erhebliche Einsparungen gegenüber der Verwendung des Standardpreismodells mit nutzungsabhängiger Bezahlung ergeben. Potenzielle Einsparungen werden nur realisiert, wenn Sie die Kapazität Ihrer reservierten Instanzen vollständig nutzen.
 
-In diesem Tutorial wird beschrieben, wie Azure und reservierte AWS-Instanzen (RIs) von Cost Management unterstützt werden. Außerdem wird beschrieben, wie Sie die Kosten der reservierten Instanzen optimieren können. Vor allem sollten Sie sicherstellen, dass Ihre Reservierungen vollständig genutzt werden. In diesem Lernprogramm lernen Sie Folgendes:
+In diesem Tutorial wird beschrieben, wie Azure und reservierte AWS-Instanzen (RIs) von Cloudyn unterstützt werden. Außerdem wird beschrieben, wie Sie die Kosten der reservierten Instanzen optimieren können. Vor allem sollten Sie sicherstellen, dass Ihre Reservierungen vollständig genutzt werden. In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Verstehen der Grundlagen von Azure-RI-Kosten
@@ -40,8 +40,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie benötigen ein Azure-Abonnement.
-- Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Azure Cost Management verfügen.
+- Sie benötigen ein Azure-Konto.
+- Sie müssen entweder über eine Registrierung für die Testversion oder über ein kostenpflichtiges Abonnement für Cloudyn verfügen.
 - Sie müssen RIs in Azure oder AWS erworben haben.
 
 ## <a name="understand-azure-ri-costs"></a>Verstehen der Grundlagen von Azure-RI-Kosten
@@ -85,7 +85,7 @@ Der Umfang „Freigegeben“ für den Erwerb ist am flexibelsten und wird allgem
 
 ## <a name="optimize-azure-ri-costs"></a>Optimieren von Azure-RI-Kosten
 
-Azure Cost Management unterstützt reservierte Instanzen und Hybridvorteile wie folgt:
+Cloudyn unterstützt reservierte Instanzen und Hybridvorteile wie folgt:
 
 - Anzeige der Kosten, die Preismodellen zugeordnet sind
 - Nachverfolgung der RI-Nutzung
@@ -116,7 +116,7 @@ Wenn die VM nur 50% der Zeit ausgeführt wird, liegt der Break-even-Point bei ze
 
 ## <a name="view-ri-costs"></a>Anzeigen von RI-Kosten
 
-Wenn Sie eine Reservierung erwerben, leisten Sie eine einmalige Zahlung. Es gibt zwei Möglichkeiten, die Zahlung in Cost Management anzuzeigen:
+Wenn Sie eine Reservierung erwerben, leisten Sie eine einmalige Zahlung. Es gibt zwei Möglichkeiten, die Zahlung in Cloudyn anzuzeigen:
 
 - Ist-Kosten
 - Amortisierte Kosten

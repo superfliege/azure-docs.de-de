@@ -11,16 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2018
-ms.openlocfilehash: 0e37e1839d2248507a30de08e2ac4c975bd3b859
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 06e85845d41b240638a5b5b4d75d64fd460a99bf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635656"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953326"
 ---
 # <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>Installieren und Verwenden der Machine Learning-CLI für wichtige Aufgaben in Azure Machine Learning
 
-Azure Machine Learning-Dienste sind eine integrierte End-to-End-Lösung für Data Science und Advanced Analytics. Professionelle Data Scientists können mit Azure Machine Learning-Diensten Daten vorbereiten, Experimente entwickeln und Modelle für die Cloud bereitstellen. 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Der Azure Machine Learning-Dienst ist eine integrierte End-to-End-Lösung für Data Science und Advanced Analytics. Professionelle Data Scientists können mit dem Azure Machine Learning-Dienst Daten vorbereiten, Experimente entwickeln und Modelle für die Cloud bereitstellen. 
 
 Mit der Befehlszeilenschnittstelle (Command-Line Interface, CLI) von Azure Machine Learning können Sie:
 + Ihren Arbeitsbereich und Ihre Projekte verwalten
@@ -39,7 +42,7 @@ In diesem Artikel können Sie die nützlichsten CLI-Befehle nachschlagen.
 Sie benötigen Mitwirkendenzugriff auf ein Azure-Abonnement oder eine Ressourcengruppe, wo Sie Ihre Modelle bereitstellen können. Außerdem müssen Sie Azure Machine Learning Workbench installieren, um die CLI auszuführen. 
 
 >[!IMPORTANT]
->Die CLI der Azure Machine Learning-Dienste unterscheidet sich von der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), die für die Verwaltung von Azure-Ressourcen verwendet wird.
+>Die CLI des Azure Machine Learning-Diensts unterscheidet sich von der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), die für die Verwaltung von Azure-Ressourcen verwendet wird.
 
 ## <a name="get-and-start-cli"></a>Abrufen und starten der CLI
 
@@ -201,7 +204,7 @@ az ml env set -n <environment name> -g <resource group name>
 ## <a name="next-steps"></a>Nächste Schritte
 
 Beginnen Sie mit einem dieser Artikel: 
-+ [Schnellstart: Installation und erste Schritte mit Azure Machine Learning-Dienste](../service/quickstart-installation.md)
++ [Schnellstart: Installation und erste Schritte mit Azure Machine Learning-Dienste](quickstart-installation.md)
 + [Tutorial 1: Klassifizieren von Iris – Vorbereiten der Daten](tutorial-classifying-iris-part-1.md)
 
 Weiterführende Informationen bieten Ihnen diese Artikel:

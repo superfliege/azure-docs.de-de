@@ -1,6 +1,6 @@
 ---
-title: Hochladen eines benutzerdefinierten Linux-Datenträgers mithilfe von Azure CLI 2.0 | Microsoft Docs
-description: Erstellen Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mithilfe des Resource Manager-Bereitstellungsmodells und Azure CLI 2.0, und laden Sie sie in Azure hoch.
+title: Hochladen eines benutzerdefinierten Linux-Datenträgers mithilfe der Azure CLI | Microsoft-Dokumentation
+description: Erstellen Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mithilfe des Resource Manager-Bereitstellungsmodells und der Azure CLI, und laden Sie sie in Azure hoch.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,22 +15,23 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 4b05c4c7db1e1c1953af2466d2c6a277baa07082
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1926f0bcf7efca786e97bd973601888e5a8d4463
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737344"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966502"
 ---
-# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe von Azure CLI 2.0
-In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit Azure CLI 2.0 in ein Azure-Speicherkonto hochladen und virtuelle Linux-Computer aus diesem benutzerdefinierten Datenträger erstellen. Dadurch können Sie eine Linux-Distribution installieren und konfigurieren und die VHD dann zur schnellen Erstellung virtueller Azure-Computer (Azure-VMs) verwenden.
+# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Hochladen und Erstellen eines virtuellen Linux-Computers auf der Grundlage eines benutzerdefinierten Datenträgers mithilfe der Azure CLI
+
+In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit der Azure CLI in ein Azure-Speicherkonto hochladen und virtuelle Linux-Computer auf der Grundlage dieses benutzerdefinierten Datenträgers erstellen. Dadurch können Sie eine Linux-Distribution installieren und konfigurieren und die VHD dann zur schnellen Erstellung virtueller Azure-Computer (Azure-VMs) verwenden.
 
 Dieses Thema verwendet die Speicherkonten für die endgültigen VHDs, Sie können diese Schritten jedoch auch mit [verwalteten Datenträgern](upload-vhd.md) ausführen. 
 
 ## <a name="quick-commands"></a>Schnellbefehle
 Im folgenden Abschnitt werden die grundlegenden Befehle zum Hochladen einer VHD in Azure beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#requirements)).
 
-Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sind.
+Überprüfen Sie, ob Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sind.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu den Beispielparameternamen zählen `myResourceGroup`, `mystorageaccount` und `mydisks`.
 
@@ -96,7 +97,7 @@ Um die folgenden Schritte ausführen zu können, benötigen Sie Folgendes:
   * Erstellen eines Speicherkontos und eines Containers für den benutzerdefinierten Datenträger und die erstellten virtuellen Computer
   * Nachdem Sie alle virtuellen Computer erstellt haben, können Sie den Datenträger problemlos löschen.
 
-Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sind.
+Überprüfen Sie, ob Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sind.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu den Beispielparameternamen zählen `myResourceGroup`, `mystorageaccount` und `mydisks`.
 

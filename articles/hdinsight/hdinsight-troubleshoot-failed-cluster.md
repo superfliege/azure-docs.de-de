@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: f18e667e86c310e4d2950ba195911307aec5426d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6c9e980e4f448f705743b2e6dce268c671ffe9b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047024"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950712"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
 
@@ -57,12 +57,13 @@ Im Azure-Portal können diese Informationen bereitgestellt werden:
 
 ![Informationen zu HDInsight im Azure-Portal](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-Sie können auch die Azure CLI verwenden:
+Sie können auch die klassische Azure-Befehlszeilenschnittstelle verwenden.
 
 ```
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 ```
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Eine andere Möglichkeit ist die Verwendung von PowerShell. Weitere Informationen finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md).
 
@@ -100,7 +101,7 @@ Vergleichen Sie die Clusterversion mit dem aktuellen HDInsight-Release. Jedes HD
 
 #### <a name="restart-your-cluster-services"></a>Neustarten Ihrer Clusterdienste
 
-Falls es in Ihrem Cluster zu Verlangsamungen kommt, können Sie erwägen, Ihre Dienste über die Ambari-Benutzeroberfläche oder die Azure CLI neu zu starten. Unter Umständen kommt es im Cluster zu vorübergehenden Fehlern, und ein Neustart ist die schnellste Möglichkeit, die Umgebung zu stabilisieren und ggf. die Leistung zu verbessern.
+Falls es in Ihrem Cluster zu Verlangsamungen kommt, können Sie erwägen, Ihre Dienste über die Ambari-Benutzeroberfläche oder die klassische Azure-Befehlszeilenschnittstelle neu zu starten. Unter Umständen kommt es im Cluster zu vorübergehenden Fehlern, und ein Neustart ist die schnellste Möglichkeit, die Umgebung zu stabilisieren und ggf. die Leistung zu verbessern.
 
 ## <a name="step-3-view-your-clusters-health"></a>Schritt 3: Anzeigen der Integrität des Clusters
 

@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 4f8ad67fafa20fd9adce62e8beb619999203ef62
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: db9c22acfba0f6f1781348b36a1d253a515cc063
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346660"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977270"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-Geräte-SDK für C
 
@@ -71,7 +71,7 @@ Für die Verwaltung Ihrer IoT Hub-Instanz stehen mehrere Open-Source-Tools zur V
 
 * Eine Windows-Anwendung namens [Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 * Eine plattformübergreifende Visual Studio Code-Erweiterung namens [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
-* Ein plattformübergreifendes Python CLI-Tool hat die [IoT-Erweiterung für Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) aufgerufen.
+* Eine plattformübergreifende Python CLI hat die [IoT-Erweiterung für Azure CLI](https://github.com/Azure/azure-iot-cli-extension) aufgerufen.
 
 In diesem Tutorial wird der grafische *Geräte-Explorer* verwendet. Sie können die *Azure IoT Toolkit-Erweiterung für VS Code* verwenden, wenn Sie in VS Code entwickeln. Falls Sie lieber mit einem CLI-Tool arbeiten, können Sie auch das Tool für die *IoT-Erweiterung für Azure CLI 2.0* verwenden.
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 37498394bc163852d397337cf5728b4941ae45a7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714450"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956505"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)?
 
@@ -89,7 +89,7 @@ Wenn Sie den Zugriff in einem übergeordneten Bereich gewähren, werden diese Be
 - Wenn Sie einer Rolle im Abonnementkontext die Rolle [Leser](built-in-roles.md#reader) zuweisen, können die Mitglieder dieser Gruppe alle Ressourcengruppen und Ressourcen im Abonnement anzeigen.
 - Wenn Sie einer Anwendung im Ressourcengruppenkontext die Rolle [Mitwirkender](built-in-roles.md#contributor) zuweisen, kann diese Ressourcen aller Typen in dieser Ressourcengruppe verwalten, jedoch keine anderen Ressourcengruppen des Abonnements.
 
-### <a name="role-assignment"></a>Rollenzuweisung
+### <a name="role-assignments"></a>Rollenzuweisungen
 
 Eine *Rollenzuweisung* ist der Prozess, in dem eine Rollenzuweisung zum Zwecke der Zugriffserteilung in einem bestimmten Bereich an einen Benutzer, eine Gruppe oder ein Dienstprinzipal gebunden wird. Der Zugriff wird durch Erstellen einer Rollenzuweisung erteilt und durch Entfernen einer Rollenzuweisung widerrufen.
 
@@ -98,6 +98,32 @@ Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Be
 ![Rollenzuweisung zum Steuern des Zugriffs](./media/overview/rbac-overview.png)
 
 Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, Azure SDKs oder REST-APIs Rollenzuweisungen erstellen. In jedem Abonnement können Sie über bis zu 2.000 Rollenzuweisungen verfügen. Um Rollenzuweisungen erstellen und entfernen zu können, benötigen Sie die Berechtigung `Microsoft.Authorization/roleAssignments/*`. Diese Berechtigung wird über die Rolle [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) erteilt.
+
+## <a name="deny-assignments"></a>Ablehnungszuweisungen
+
+Früher war RBAC ein Modell, in dem es nur Zulassungen und keine Ablehnungen gab, jetzt unterstützt RBAC jedoch auch Ablehnungszuweisungen auf eingeschränkte Weise. Ähnlich wie eine Rollenzuweisung bindet eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen an einen Benutzer, eine Gruppe oder einen Dienstprinzipal, um den Zugriff zu verweigern. In einer Rollenzuweisung wird einen Satz von Aktionen definiert, die *zulässig* sind, während in einer Ablehnungszuweisung eine Reihe von Aktionen definiert wird, die *nicht zulässig* sind. Das heißt, Ablehnungszuweisungen blockieren Aktionen für bestimmte Benutzer, auch wenn diese durch eine Rollenzuweisung Zugriff erhalten. Ablehnungszuweisungen haben Vorrang vor Rollenzuweisungen.
+
+Derzeit sind Ablehnungszuweisungen **schreibgeschützt** und können nur von Azure festgelegt werden. Auch wenn Sie keine eigenen Ablehnungszuweisungen erstellen können, ist es möglich, Ablehnungszuweisungen aufzulisten, da sie sich auf Ihre effektiven Berechtigungen auswirken können. Um Informationen zu einer Ablehnungszuweisung zu erhalten, benötigen Sie die Berechtigung `Microsoft.Authorization/denyAssignments/read`, die in den meisten [integrierten Rollen](built-in-roles.md#owner) enthalten ist. Weitere Informationen finden Sie unter [Grundlegendes zu Ablehnungszuweisungen](deny-assignments.md).
+
+## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Ermitteln des Benutzerzugriffs auf eine Ressource durch RBAC
+
+Im Folgenden finden Sie die allgemeinen Schritte, über die RBAC ermittelt, ob Sie Zugriff auf eine Ressource auf der Verwaltungsebene haben. Es ist hilfreich, dies zu verstehen, wenn Sie versuchen, ein Zugriffsproblem zu behandeln.
+
+1. Ein Benutzer (oder Dienstprinzipal) erhält ein Token für Azure Resource Manager.
+
+    Das Token enthält die Gruppenmitgliedschaften des Benutzers (einschließlich transitiver Gruppenmitgliedschaften).
+
+1. Der Benutzer führt einen REST-API-Aufruf an Azure Resource Manager mit dem angefügten Token durch.
+
+1. Azure Resource Manager ruft alle Rollenzuweisungen und Ablehnungszuweisungen ab, die die Ressource, für die die Aktion ausgeführt wird, betreffen.
+
+1. Azure Resource Manager begrenzt die Rollenzuweisungen, die diesen Benutzer oder seine Gruppe betreffen, und ermittelt, welche Rollen der Benutzer für diese Ressource besitzt.
+
+1. Azure Resource Manager ermittelt, ob die Aktion im API-Aufruf in den Rollen, die der Benutzer für diese Ressource besitzt, enthalten ist.
+
+1. Wenn der Benutzer keine Rolle mit der Aktion als angefordertem Bereich besitzt, wird kein Zugriff gewährt. Andernfalls überprüft Azure Resource Manager, ob eine Ablehnungszuweisung zutrifft.
+
+1. Wenn eine Ablehnungszuweisung zutrifft, wird der Zugriff blockiert. Andernfalls wird der Zugriff gewährt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

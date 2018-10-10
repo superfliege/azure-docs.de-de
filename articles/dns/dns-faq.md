@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2017
+ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 747b2e2499a9bafcf7a7b03bc2ce144828c55c75
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 66e04e7f0b272f19788e79805ef06d11e2eda572
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172499"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948025"
 ---
 # <a name="azure-dns-faq"></a>Häufig gestellte Fragen zu Azure DNS
 
@@ -63,6 +63,10 @@ Sie müssen einen Domänennamen erwerben, wenn Sie Ihre DNS-Zone in der globalen
 
 ## <a name="azure-dns-features"></a>Azure DNS-Features
 
+### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Gibt es Einschränkungen beim Verwenden von Aliaseinträgen für einen Domänennamen-Apex mit Traffic Manager?
+
+Ja. Sie müssen bei Traffic Manager statische öffentliche IP-Adressen verwenden. Konfigurieren Sie den **externen Endpunkt** als Ziel mithilfe einer statischen IP-Adresse. 
+
 ### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Unterstützt Azure DNS die Weiterleitung von Datenverkehr oder Endpunktfailover auf Basis von DNS?
 
 Die Weiterleitung von Datenverkehr und Endpunktfailover auf Basis von DNS werden von Azure Traffic Manager bereitgestellt. Azure Traffic Manager ist ein separater Azure-Dienst, der zusammen mit Azure DNS verwendet werden kann. Weitere Informationen finden Sie in der [Traffic Manager-Übersicht](../traffic-manager/traffic-manager-overview.md).
@@ -93,13 +97,41 @@ Nein. Dienste für URL-Umleitungen sind eigentlich keine DNS-Dienste – sie arb
 
 Das Feature zur URL-Umleitung wird im Azure DNS-Backlog nachverfolgt. Sie können auf der Feedbackwebsite [Ihre Unterstützung für dieses Feature registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
 
-### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset-"></a>Unterstützt Azure DNS den erweiterten ASCII-Codierungssatz (8-Bit) für TXT-Recordsets?
+### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset"></a>Unterstützt Azure DNS den erweiterten ASCII-Codierungssatz (8 Bit) für TXT-Eintragssätze?
 
-Ja. Azure DNS unterstützt erweiterte ASCII-Codierung für TXT-Recordsets, wenn Sie die neueste Version der Azure-REST-APIs, SDKs, von PowerShell und CLI verwenden (Versionen vor 2017-10-01 oder SDK 2.1 unterstützen den erweiterten ASCII-Satz nicht). Wenn der Benutzer beispielsweise eine Zeichenfolge als Wert für einen TXT-Eintrag mit dem erweiterten ASCII-Zeichen „\128“ (z.B. abcd\128efgh) angibt, verwendet Azure DNS in interner Darstellung den Bytewert dieses Zeichens (der 128 entspricht). Zum Zeitpunkt der DNS-Auflösung wird dieser Bytewert ebenfalls in der Antwort zurückgegeben. Beachten Sie auch, dass „abc“ und „\097\098\099“, was die Auflösung betrifft, austauschbar sind. 
+Ja. Azure DNS unterstützt den erweiterten ASCII-Codierungssatz für TXT-Eintragssätze, wenn Sie die neueste Version der Azure-REST-APIs, SDKs, von PowerShell und der CLI verwenden (Versionen vor 2017-10-01 oder SDK 2.1 unterstützen den erweiterten ASCII-Satz nicht). Wenn der Benutzer beispielsweise eine Zeichenfolge als Wert für einen TXT-Eintrag mit dem erweiterten ASCII-Zeichen „\128“ (Beispiel: abcd\128efgh) angibt, verwendet Azure DNS in der internen Darstellung den Bytewert dieses Zeichens (also 128). Zum Zeitpunkt der DNS-Auflösung wird dieser Bytewert ebenfalls in der Antwort zurückgegeben. Beachten Sie auch, dass „abc“ und „\097\098\099“, was die Auflösung betrifft, austauschbar sind. 
 
 Wir befolgen für TXT-Einträge die Escaperegeln für das Zonendatei-Masterformat in [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Zum Beispiel fungiert „\“ jetzt tatsächlich laut RFC als Escapezeichen für alles. Wenn Sie „A\B“ als TXT-Eintragswert angeben, wird dieser nur als „AB“ dargestellt und aufgelöst. Wenn Sie wirklich möchten, dass der TXT-Eintrag in „A\B“ aufgelöst wird, müssen Sie „\"“ wieder mit dem Escapezeichen versehen, d.h. als „A\\B“ angeben. 
 
-Beachten Sie, dass diese Unterstützung derzeit nicht für TXT-Einträge gilt, die im Azure-Portal erstellt wurden. 
+Diese Unterstützung gilt derzeit nicht für TXT-Einträge, die im Azure-Portal erstellt wurden. 
+
+## <a name="alias-records"></a>Aliaseinträge
+
+### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>In welchen Szenarien sind Aliaseinträge nützlich?
+Informationen hierzu finden Sie unter [Azure DNS-Aliaseinträge – Übersicht](dns-alias.md) im Abschnitt mit den Szenarien.
+
+### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Welche Eintragstypen werden für Aliaseintragssätze unterstützt?
+Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Zone unterstützt: A, AAAA und CNAME. 
+
+### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Welche Ressourcen werden als Ziele für Aliaseintragssätze unterstützt?
+- **Verweisen auf eine öffentliche IP-Ressource aus einem DNS-A/AAAA-Eintragssatz**. Sie können einen A/AAAA-Eintragssatz erstellen und zu einem Aliaseintragssatz machen, um auf eine öffentliche IP-Ressource zu verweisen.
+- **Verweisen auf ein Traffic Manager-Profil aus einem DNS-A/AAAA/CNAME-Eintragssatz**. Zusätzlich zur Möglichkeit, von einem DNS-CNAME-Eintragssatz auf den CNAME eines Traffic Manager-Profils (z.B. contoso.trafficmanager.net) zu verweisen, können Sie jetzt auch von einem A- oder AAAA-Eintragssatz in Ihrer DNS-Zone auf ein Traffic Manager-Profil verweisen, das über externe Endpunkte verfügt.
+- **Verweisen auf einen anderen DNS-Eintragssatz innerhalb derselben Zone**. Aliaseinträge können auf andere Eintragssätze desselben Typs verweisen. So kann beispielsweise ein DNS-CNAME-Eintragssatz ein Alias für einen anderen CNAME-Eintragssatz desselben Typs sein. Dies ist hilfreich, wenn Sie möchten, dass einige Eintragssätze in Bezug auf ihr Verhalten Aliase und andere keine Aliase sind.
+
+### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Kann ich Aliaseinträge im Azure-Portal erstellen und aktualisieren?
+Ja. Aliaseinträge können nicht nur über Azure-REST-APIs, Azure PowerShell, die Befehlszeilenschnittstelle und SDKs, sondern auch im Azure-Portal erstellt oder verwaltet werden.
+
+### <a name="will-alias-records-help-ensure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Stellen Aliaseinträge sicher, dass mein DNS-Eintragssatz gelöscht wird, wenn die zugrunde liegende öffentliche IP-Adresse gelöscht wird?
+Ja. In der Tat ist dies eine der Kernfunktionen von Aliaseinträgen. Sie unterstützen Sie dabei, potenzielle Ausfälle für die Endbenutzer Ihrer Anwendung zu vermeiden.
+
+### <a name="will-alias-records-help-ensure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Helfen Aliaseinträge mir dabei, sicherzustellen, dass mein DNS-Eintragssatz mit den richtigen IP-Adressen aktualisiert wird, wenn sich die zugrunde liegende öffentliche IP-Adresse ändert?
+Ja. Es gilt das gleiche wie in der vorherigen Frage: Dies ist eine der Kernfunktionen von Aliaseinträgen und hilft Ihnen dabei, potenzielle Ausfälle oder Sicherheitsrisiken für Ihre Anwendung zu vermeiden.
+
+### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-an-a-or-aaaa-records-to-point-to-traffic-manager"></a>Gelten Einschränkungen für die Verwendung von Aliaseintragssätzen für A- oder AAAA-Einträge zum Verweisen auf Traffic Manager?
+Ja. Wenn Sie in Form eines Alias für einen A- oder AAAA-Eintrag auf ein Traffic Manager-Profil verweisen möchten, müssen Sie sicherstellen, dass das Traffic Manager-Profil ausschließlich externe Endpunkte verwendet. Stellen Sie beim Erstellen der externen Endpunkte in Traffic Manager sicher, dass Sie die tatsächlichen IP-Adressen der Endpunkte angeben.
+
+### <a name="is-there-an-additional-charge-for-using-alias-records"></a>Fallen zusätzliche Gebühren für die Verwendung von Aliaseinträgen an?
+Aliaseinträge sind eine Qualifizierung in einem gültigen DNS-Eintragssatz und werden nicht zusätzlich abgerechnet.
 
 ## <a name="using-azure-dns"></a>Verwenden von Azure DNS
 
@@ -141,7 +173,7 @@ Azure DNS wird mit Azure Resource Manager verwaltet und profitiert von Features 
 
 Weitere Informationen finden Sie unter [Schützen von DNS-Zonen und -Einträgen](dns-protect-zones-recordsets.md).
 
-### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>Wie richte ich SPF-Datensätze in Azure DNS ein?
+### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>Wie richte ich SPF-Einträge in Azure DNS ein?
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
@@ -179,7 +211,7 @@ Nein. Private Zonen werden in Verbindung mit virtuellen Netzwerken verwendet und
 Ja. Kunden können einer einzelnen privaten Zone bis zu zehn virtuelle Auflösungsnetzwerke zuordnen.
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Kann ein virtuelles Netzwerk, das zu einem anderen Abonnement gehört, einer privaten Zone als virtuelles Auflösungsnetzwerk hinzugefügt werden? 
-Ja, solange der Benutzer über Schreibberechtigung sowohl für die virtuellen Netzwerke als auch die private DNS-Zone verfügt. Beachten Sie, dass die Schreibberechtigung mehreren RBAC-Rollen zugeordnet sein kann. Beispielsweise weist die RBAC-Rolle „Mitwirkender von klassischem Netzwerk“ Schreibberechtigungen für virtuelle Netzwerke auf. Weitere Informationen zu RBAC-Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
+Ja, solange der Benutzer über Schreibberechtigung sowohl für die virtuellen Netzwerke als auch die private DNS-Zone verfügt. Die Schreibberechtigung kann mehreren RBAC-Rollen zugeordnet sein. Beispielsweise weist die RBAC-Rolle „Mitwirkender von klassischem Netzwerk“ Schreibberechtigungen für virtuelle Netzwerke auf. Weitere Informationen zu RBAC-Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Werden die automatisch registrierten DNS-Einträge virtueller Computer in einer privaten Zone automatisch gelöscht, wenn die virtuellen Computer vom Kunden gelöscht werden?
 Ja. Wenn Sie einen virtuellen Computer innerhalb eines virtuellen Registrierungsnetzwerks löschen, löschen wir automatisch die DNS-Einträge, die in der Zone aufgrund der Tatsache registriert wurden, dass es sich um ein virtuelles Registrierungsnetzwerk handelt. 
@@ -190,14 +222,14 @@ Nein. Derzeit können die DNS-Einträge virtueller Computer, die in einer privat
 ### <a name="what-happens-when-we-attempt-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>Was geschieht bei dem Versuch, einen neuen DNS-Eintrag manuell in einer privaten Zone zu erstellen, die den gleichen Hostnamen wie ein (automatisch registrierter) vorhandener virtueller Computer in einem virtuellen Registrierungsnetzwerk aufweist? 
 Wenn Sie versuchen, manuell einen neuen DNS-Eintrag in einer privaten Zone zu erstellen, die den gleichen Hostnamen wie ein vorhandener (automatisch registrierter) virtueller Computer in einem virtuellen Registrierungsnetzwerk aufweist, wird dem neuen DNS-Eintrag gestattet, den automatisch registrierten Eintrag für den virtuellen Computer zu überschreiben. Darüber hinaus wird bei dem anschließenden Versuch, diesen manuell erstellten DNS-Eintrag aus der Zone zu löschen, der Löschvorgang erfolgreich ausgeführt, und die automatische Registrierung erfolgt erneut (der DNS-Eintrag wird in der Zone automatisch neu erstellt), sofern der virtuelle Computer noch vorhanden ist und ihm eine private IP-Adresse angefügt ist. 
 
-### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone--would-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-as-well"></a>Was geschieht, wenn wir die Verknüpfung eines virtuellen Registrierungsnetzwerks mit einer privaten Zone aufheben? Würden auch die automatisch registrierten Einträge virtueller Computer vom virtuellen Netzwerk aus der Zone entfernt werden?
+### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone-would-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-as-well"></a>Was geschieht, wenn ich die Verknüpfung eines virtuellen Registrierungsnetzwerks mit einer privaten Zone aufhebe? Würden auch die automatisch registrierten Einträge virtueller Computer vom virtuellen Netzwerk aus der Zone entfernt werden?
 Ja. Wenn Sie die Verknüpfung eines virtuellen Registrierungsnetzwerks mit einer privaten Zone aufheben (die DNS-Zone aktualisieren, um das zugeordnete virtuelle Registrierungsnetzwerk zu entfernen), entfernt Azure alle automatisch registrierten Einträge virtueller Computer aus der Zone. 
 
-### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-that-is-linked-to-a-private-zone--do-we-have-to-manually-update-the-private-zone-to-un-link-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>Was geschieht, wenn wir ein virtuelles Registrierungsnetzwerk (oder Auflösungsnetzwerk) löschen, das mit einer privaten Zone verknüpft ist? Müssen wir die private Zone manuell aktualisieren, um die Verknüpfung des virtuellen Netzwerks mit der Zone als virtuelles Registrierungsnetzwerk (oder Auflösungsnetzwerk) aufzuheben?
+### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-that-is-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>Was geschieht, wenn ich ein virtuelles Registrierungsnetzwerk (oder Auflösungsnetzwerk) lösche, das mit einer privaten Zone verknüpft ist? Muss ich die private Zone manuell aktualisieren, um die Verknüpfung des virtuellen Netzwerks mit der Zone als virtuelles Registrierungsnetzwerk (oder Auflösungsnetzwerk) aufzuheben?
 Ja. Wenn Sie ein virtuelles Registrierungsnetzwerk (oder Auflösungsnetzwerk) löschen, ohne zuerst die Verknüpfung mit einer privaten Zone aufzuheben, ermöglicht Azure einen erfolgreichen Löschvorgang, doch wird die Verknüpfung des virtuellen Netzwerks mit der privaten Zone (falls vorhanden) nicht automatisch aufgehoben. Sie müssen die Verknüpfung des virtuellen Netzwerks mit der privaten Zone manuell aufheben. Aus diesem Grund wird empfohlen, zuerst die Verknüpfung Ihres virtuellen Netzwerks mit Ihrer privaten Zone aufzuheben, bevor Sie es löschen.
 
 ### <a name="would-dns-resolution-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>Würde die DNS-Auflösung mithilfe des Standard-FQDN (internal.cloudapp.net) auch funktionieren, wenn eine private Zone (z.B. „contoso.local“) mit einem virtuellen Netzwerk verknüpft ist? 
-Ja. Das Feature für private Zonen ersetzt nicht die DNS-Standardauflösungen mithilfe der von Azure bereitgestellten Zone „internal.cloudapp.net“, sondern wird als eine zusätzliche Funktion oder Erweiterung angeboten. In beiden Fällen (bei Verwendung der von Azure bereitgestellten Zone „internal.cloudapp.net“ oder Ihrer eigenen privaten Zone) wird empfohlen, den FQDN der Zone zu verwenden, anhand der Auflösungen vorgenommen werden sollen. 
+Ja. Das Feature für private Zonen ersetzt nicht die DNS-Standardauflösungen mithilfe der von Azure bereitgestellten Zone „internal.cloudapp.net“, sondern wird als eine zusätzliche Funktion oder Erweiterung angeboten. In beiden Fällen (bei Verwendung der von Azure bereitgestellten Zone „internal.cloudapp.net“ und bei Verwendung Ihrer eigenen privaten Zone) wird empfohlen, den FQDN der Zone zu verwenden, anhand der Auflösungen vorgenommen werden sollen. 
 
 ### <a name="would-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Würde das DNS-Suffix auf virtuellen Computern in einem verknüpften virtuellen Netzwerk in das der privaten Zone geändert? 
 Nein. Derzeit wird weiterhin das von Azure bereitgestellte Standardsuffix (*.internal.cloudapp.net) als DNS-Suffix auf den virtuellen Computern in Ihrem verknüpften virtuellen Netzwerk verwendet. Sie können jedoch dieses DNS-Suffix auf Ihren virtuellen Computern manuell in das der privaten Zone ändern. 

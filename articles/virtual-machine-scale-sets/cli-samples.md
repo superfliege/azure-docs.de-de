@@ -1,6 +1,6 @@
 ---
-title: Beispiele für die Azure CLI 2.0 | Microsoft-Dokumentation
-description: Beispiele für die Azure CLI 2.0
+title: Azure CLI-Beispiele | Microsoft-Dokumentation
+description: Azure CLI-Beispiele
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ca362f79ff45a886ed570cfdf68b731064d1c17f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d563afc6545cd84654ef1bfa0fac3931e2b80152
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597365"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970361"
 ---
-# <a name="azure-cli-20-samples-for-virtual-machine-scale-sets"></a>Azure CLI 2.0-Beispiele für VM-Skalierungsgruppen
+# <a name="azure-cli-samples-for-virtual-machine-scale-sets"></a>Azure CLI-Beispiele für VM-Skalierungsgruppen
 
-Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI 2.0 erstellt wurden:
+Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI erstellt wurden.
 
 | | |
 |---|---|

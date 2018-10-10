@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: echuvyrov
-ms.openlocfilehash: 1af96b686a1502d638b4335e22259b79169d1065
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0943bd1bffb3df7beda97ea0619f1aced4ca3a41
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173246"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946781"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure
  
@@ -65,17 +65,17 @@ Jetzt können Sie einen Dienstprinzipal für die Verwendung mit Terraform erstel
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-Es werden *appId*, *password*, *sp_name* und *tenant* zurückgegeben. Notieren Sie sich die App-ID (*appId*) und das Kennwort (*password*).
+Die Werte für `appId`, `password`, `sp_name` und `tenant` werden zurückgegeben. Notieren Sie sich `appId` und `password`.
 
 ## <a name="configure-terraform-environment-variables"></a>Konfigurieren der Terraform-Umgebungsvariablen
 
 Um Terraform für die Verwendung Ihres Azure AD-Dienstprinzipals zu konfigurieren, legen Sie die folgenden Umgebungsvariablen fest, die dann von den [Azure-Terraform-Modulen](https://registry.terraform.io/modules/Azure) verwendet werden. Sie können die Umgebung auch festlegen, wenn Sie mit einer anderen als der öffentlichen Azure-Cloud arbeiten.
 
-- ARM_SUBSCRIPTION_ID
-- ARM_CLIENT_ID
-- ARM_CLIENT_SECRET
-- ARM_TENANT_ID
-- ARM_ENVIRONMENT
+- `ARM_SUBSCRIPTION_ID`
+- `ARM_CLIENT_ID`
+- `ARM_CLIENT_SECRET`
+- `ARM_TENANT_ID`
+- `ARM_ENVIRONMENT`
 
 Sie können das folgende Beispiel-Shell-Skript dazu verwenden, diese Variablen festzulegen:
 

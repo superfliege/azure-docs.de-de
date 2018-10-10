@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: d0720c23e0831b446a92855383fab06b0bfacbc7
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e66d896a7df48645dad39b5b978c4f7c2f8d8cb9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525466"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954550"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Aufheben der Registrierung eines Geräts bei IoT Hub Device Provisioning Service
 
@@ -34,9 +34,12 @@ So fügen Sie das Gerät durch Deaktivieren des Registrierungseintrags vorüberg
 2. Wählen Sie in der Liste der Ressourcen den Bereitstellungsdienst aus, für den Sie Ihr Gerät zur Blacklist hinzufügen möchten.
 3. Wählen Sie in Ihrem Bereitstellungsdienst **Registrierungen verwalten** und dann die Registerkarte **Individuelle Registrierungen** aus.
 4. Wählen Sie den Eintrag für das Gerät aus, das zur Blacklist hinzugefügt werden soll. 
-5. Scrollen Sie ganz nach unten, legen Sie den Umschalter **Eintrag aktivieren** auf **Deaktivieren** fest, und klicken Sie anschließend auf **Speichern**.  
 
-   [![Deaktivieren eines Eintrags für eine individuelle Registrierung im Portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+    ![Auswählen Ihrer individuellen Registrierung](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
+
+5. Scrollen Sie auf Ihrer Registrierungsseite ganz nach unten, legen Sie den Umschalter **Eintrag aktivieren** auf **Deaktivieren** fest, und klicken Sie anschließend auf **Speichern**.  
+
+   ![Deaktivieren eines Eintrags für eine individuelle Registrierung im Portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
 So fügen Sie das Gerät durch Löschen des jeweiligen Registrierungseintrags dauerhaft zur Blacklist hinzu
 
@@ -47,7 +50,8 @@ So fügen Sie das Gerät durch Löschen des jeweiligen Registrierungseintrags da
 5. Wählen Sie im oberen Bereich des Fensters **Löschen** und anschließend **Ja** aus, um zu bestätigen, dass die Registrierung entfernt werden soll. 
 
    ![Löschen eines Eintrags für eine individuelle Registrierung im Portal](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
-    
+
+
 Nachdem Sie den Vorgang abgeschlossen haben, sollten Sie sehen, dass Ihr Eintrag aus der Liste der individuellen Registrierungen entfernt wurde.  
 
 ## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Hinzufügen eines X.509-Zertifikats der Zwischen- oder Stammzertifizierungsstelle mithilfe einer Registrierungsgruppe
@@ -91,14 +95,18 @@ Um ein einzelnes Gerät in einer Registrierungsgruppe zur Blacklist hinzuzufüge
 1. Melden Sie sich beim Azure-Portal an, und wählen Sie im linken Menü **Alle Ressourcen** aus.
 2. Wählen Sie in der Liste der Ressourcen den Bereitstellungsdienst aus, der die Registrierungsgruppe für das zur Blacklist hinzuzufügende Gerät enthält.
 3. Wählen Sie in Ihrem Bereitstellungsdienst **Registrierungen verwalten** und dann die Registerkarte **Individuelle Registrierungen** aus.
-4. Klicken Sie ganz oben auf die Schaltfläche **Hinzufügen**. 
-5. Wählen Sie als Nachweismechanismus für das Gerät **X.509** aus, und laden Sie das Gerätezertifikat hoch. Dies ist das signierte auf dem Gerät installierte Endeinheitszertifikat. Das Gerät verwendet diese zum Generieren von Zertifikaten für die Authentifizierung.
-6. Geben Sie unter **IoT Hub-Geräte-ID** die ID für das Gerät ein. 
-7. Wählen Sie **Deaktivieren** für den Umschalter **Eintrag aktivieren** und dann **Speichern** aus. 
+4. Wählen Sie oben die Schaltfläche **Individuelle Registrierung hinzufügen**. 
+5. Wählen Sie für das Gerät auf der Seite **Registrierung hinzufügen** die Option **X.509** als **Mechanismus** für den Nachweis aus.
+
+    Laden Sie das Gerätezertifikat hoch, und geben Sie die Geräte-ID des Geräts ein, das auf die Blacklist gesetzt werden soll. Verwenden Sie für das Zertifikat das auf dem Gerät installierte signierte Endeinheitszertifikat. Das Gerät nutzt das signierte Endeinheitszertifikat für die Authentifizierung.
+
+    ![Festlegen von Geräteeigenschaften für das auf die Blacklist gesetzte Gerät](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
+
+6. Scrollen Sie auf der Seite **Registrierung hinzufügen** nach unten, und wählen Sie für den Switch **Eintrag aktivieren** die Option **Deaktivieren**. Wählen Sie anschließend **Speichern**. 
 
     [![Deaktivieren des Geräts über die Gruppenregistrierung im Portal mithilfe eines deaktivierten individuellen Registrierungseintrags](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
-Nach erfolgreicher Erstellung Ihrer Registrierung sollte Ihr Gerät auf der Registerkarte **Individuelle Registrierungen** angezeigt werden.
+Nach erfolgreicher Erstellung Ihrer Registrierung sollte Ihre deaktivierte Geräteregistrierung auf der Registerkarte **Individuelle Registrierungen** angezeigt werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

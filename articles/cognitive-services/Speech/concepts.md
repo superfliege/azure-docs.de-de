@@ -1,5 +1,6 @@
 ---
-title: Konzepte | Microsoft-Dokumentation
+title: Bing-Spracheingabe-Konzepte | Microsoft-Dokumentation
+titlesuffix: Azure Cognitive Services
 description: Grundlegende Konzepte des Microsoft Speech Service.
 services: cognitive-services
 author: zhouwangzw
@@ -7,14 +8,15 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: bc23f4fb7dfc045a0f8cc87155c31875c4de8450
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 08790d73dd4fd182d8129c755a291fd99b6136a2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373971"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954108"
 ---
 # <a name="basic-concepts"></a>Grundlegende Konzepte
 
@@ -77,10 +79,10 @@ Der Spracherkennungsdienst von Microsoft bietet Entwicklern zwei Möglichkeiten,
 
 | Anwendungsfälle | [REST-APIs](GetStarted/GetStartedREST.md) | [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| Konvertieren von kurzem gesprochenem Audio mit einer Länge von weniger als 15 Sekunden (beispielsweise Befehle) ohne Zwischenergebnisse | Ja | Ja |
-| Konvertieren von langem Audio (länger als 15 Sekunden) | Nein  | Ja |
-| Streamen von Audio mit Zwischenergebnissen | Nein  | Ja |
-| Verstehen des aus Audio konvertierten Texts mithilfe von LUIS | Nein  | Ja |
+| Konvertieren von kurzem gesprochenem Audio mit einer Länge von weniger als 15 Sekunden (beispielsweise Befehle) ohne Zwischenergebnisse | JA | JA |
+| Konvertieren von langem Audio (länger als 15 Sekunden) | Nein  | JA |
+| Streamen von Audio mit Zwischenergebnissen | Nein  | JA |
+| Verstehen des aus Audio konvertierten Texts mithilfe von LUIS | Nein  | JA |
 
  Wenn Ihre Sprache oder Plattform nicht über ein SDK verfügt, können Sie eine eigene Implementierung auf Basis der [Protokolldokumentation](API-Reference-REST/websocketprotocol.md) erstellen.
 

@@ -1,25 +1,26 @@
 ---
-title: Languages-Methode der Microsoft-Sprachübersetzungs-API | Microsoft-Dokumentation
-titleSuffix: Cognitive Services
-description: Verwenden der Languages-Methode der Microsoft Sprachübersetzungs-API.
+title: Verwenden der Languages-Methode der Sprachübersetzungs-API
+titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie die Languages-Methode der Sprachübersetzungs-API verwenden.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-speech
+ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: 5396e3be17345c3c36197a9b6cbace86e1f574c1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9fbbba7ed5e81cae1d30c5a480b9f7f7a13342c5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378465"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986420"
 ---
-# <a name="speech-api-languages"></a>Sprachübersetzungs-API: Sprachen
+# <a name="translator-speech-api-languages"></a>Sprachübersetzungs-API: Languages-Methode
 
-Microsoft Translator erweitert ständig die Liste der von den Diensten unterstützten Sprachen. Verwenden Sie diese API, um die Sprachen zu ermitteln, die zur Verwendung mit dem Sprachübersetzungsdienst verfügbar sind.
+Die Sprachübersetzung erweitert ständig die Liste der von den Diensten unterstützten Sprachen. Verwenden Sie diese API, um die Sprachen zu ermitteln, die zur Verwendung mit dem Sprachübersetzungsdienst verfügbar sind.
 
 Codebeispiele, die die Verwendung der API zum Abrufen der verfügbaren Sprachen veranschaulichen finden Sie auf der [GitHub-Website zu Microsoft Translator](https://github.com/MicrosoftTranslator).
 

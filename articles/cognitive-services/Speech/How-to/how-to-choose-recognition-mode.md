@@ -1,26 +1,28 @@
 ---
-title: Auswählen des Erkennungsmodus | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie den besten Erkennungsmodus wählen.
+title: Auswählen des Modus für die Bing-Spracheingabe | Microsoft-Dokumentation
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie den besten Erkennungsmodus in der Bing-Spracheingabe auswählen.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4f02b683dde16b537ae5554e6435c068f0fcb808
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: a39b357a26823e322d4e902f2d99b67488bbf2df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373794"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950878"
 ---
-# <a name="speech-recognition-modes"></a>Spracherkennungsmodi
+# <a name="bing-speech-recognition-modes"></a>Erkennungsmodi für die Bing-Spracheingabe
 
-Die Microsoft-APIs für die *Spracherkennung* unterstützen mehrere Spracherkennungsmodi. Wählen Sie den Modus, in dem die besten Erkennungsergebnisse für Ihre Anwendung erzeugt werden.
+Die Bing-Spracherkennungs-APIs unterstützen mehrere Spracherkennungsmodi. Wählen Sie den Modus, in dem die besten Erkennungsergebnisse für Ihre Anwendung erzeugt werden.
 
-| Modus | Beschreibung |
+| Mode | BESCHREIBUNG |
 |---|---|
 | *Interaktiv* | Erkennung vom Typ „Befehl und Steuerung“ für interaktive Benutzeranwendungsszenarien. Benutzer äußern kurze Ausdrücke als Befehle für eine Anwendung. |
 | *Diktieren* | Fortlaufende Erkennung für Diktierszenarien. Benutzer äußern längere Sätze, die als Text angezeigt werden. Hierbei verwenden die Benutzer eine formellere Sprache. |

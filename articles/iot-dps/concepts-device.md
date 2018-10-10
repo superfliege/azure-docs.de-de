@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: bd77a56acee948995bb2fcbb5beea60f69cda9ee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 354ef48f7935536864cde9dc0d9a130fa5aeb865
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630152"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972860"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Konzepte für Geräte mit dem IoT Hub Device Provisioning-Dienst
 
@@ -28,9 +28,10 @@ Der Nachweismechanismus ist die Methode für das Überprüfen der Identität ein
 > [!NOTE]
 > IoT Hub verwendet das „Authentifizierungsschema“ für ein ähnliches Konzept in diesem Dienst.
 
-Der Device Provisioning-Dienst unterstützt zwei Arten von Nachweisen:
+Der Device Provisioning-Dienst unterstützt die folgenden Arten von Nachweisen:
 * **X.509-Zertifikate** – basierend auf dem Standardauthentifizierungsablauf für X.509-Zertifikate.
 * **Trusted Platform Module (TPM)** – basierend auf einer Nonce-Abfrage mit dem TPM-Standard für Schlüssel zum Bereitstellen eines signierten SAS-Tokens (Shared Access Signature). Dies erfordert keine physische TPM-Instanz auf dem Gerät. Der Dienst erwartet für den Nachweis jedoch den Endorsement Key gemäß [TPM-Spezifikation](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Symmetrischer Schlüssel** – basierend auf Shared Access Signature (SAS)-[Sicherheitstokens](../iot-hub/iot-hub-devguide-security.md#security-tokens), die eine Hashsignatur und ein eingebettetes Ablaufdatum haben. Weitere Informationen finden Sie unter [Symmetric key attestation](concepts-symmetric-key-attestation.md) (Nachweis des symmetrischen Schlüssels).
 
 ## <a name="hardware-security-module"></a>Hardwaresicherheitsmodul
 

@@ -1,6 +1,6 @@
 ---
 title: Grundlegendes zum integrierten Azure IoT Hub-Endpunkt | Microsoft-Dokumentation
-description: 'Entwicklerhandbuch: Beschreibt, wie der integrierte, Event Hub-kompatible Endpunkt verwendet wird, um Nachrichten zu lesen, die von Geräten an die Cloud gesendet werden.'
+description: Entwicklerhandbuch – beschreibt, wie der integrierte, Event Hub-kompatible Endpunkt verwendet wird, um Nachrichten zu lesen, die von Geräten an die Cloud gesendet werden.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 767c91e4926e553b63b8331ac99edcd7823d2c13
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 02624b4f3b0fceb1816f4f43b1f435356f8d5235
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055014"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984040"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt
 
@@ -26,7 +26,7 @@ Standardmäßig werden Nachrichten an den integrierten dienstseitigen Endpunkt (
 
 Mit dem IoT Hub können Sie außerdem Consumergruppen auf dem integrierten D2C-Empfangsendpunkt verwalten.
 
-Standardmäßig werden alle Nachrichten, für die sich nicht explizit eine Übereinstimmung mit einer Nachrichtenroutingregel ergibt, auf den integrierten Endpunkt geschrieben. Wenn Sie diese Fallbackroute deaktivieren, werden Nachrichten verworfen, für die sich keine expliziten Übereinstimmungen mit Nachrichtenroutingregeln ergeben.
+Bei Verwendung von [Nachrichtenweiterleitung ](iot-hub-devguide-messages-d2c.md) und aktivierter [Fallbackroute](iot-hub-devguide-messages-d2c.md#fallback-route) werden alle Nachrichten, die keiner Abfrage in keiner Route entsprechen in den integrierten Endpunkt geschrieben. Wenn Sie diese Fallbackroute deaktivieren, werden Nachrichten verworfen, für die sich keine Übereinstimmungen mit Abfragen ergeben.
 
 Sie können die Aufbewahrungsdauer sowohl programmgesteuert über die [IoT Hub-Ressourcenanbieter-REST-APIs][lnk-resource-provider-apis] als auch über das [Azure-Portal][lnk-management-portal] ändern.
 
@@ -39,9 +39,8 @@ Wenn Sie das [Azure Service Bus-SDK für .NET][lnk-servicebus-sdk] oder den [Eve
 Wenn Sie SDKs (oder Produktintegrationen) verwenden, die nicht IoT Hub-fähig sind, müssen Sie einen Event Hub-kompatiblen Endpunkt und den Event Hub-kompatiblen Namen abrufen:
 
 1. Melden Sie sich beim [Azure-Portal][lnk-management-portal] an, und navigieren Sie zu Ihrem IoT Hub.
-1. Klicken Sie auf **Endpunkte**.
-1. Klicken Sie im Abschnitt **Integrierte Endpunkte** auf **Ereignisse**. 
-1. Eine Eigenschaftenseite wird geöffnet und enthält die folgenden Werte: **Event Hub-kompatibler Endpunkt**, **Event Hub-kompatibler Name**, **Partitionen**, **Aufbewahrungszeit** und **Consumergruppen**.
+1. Klicken Sie auf **Integrierte Endpunkte**.
+1. Der Abschnitt **Ereignisse** enthält die folgenden Werte: **Event Hub-kompatibler Endpunkt**, **Event Hub-kompatibler Name**, **Partitionen**, **Aufbewahrungszeit** und **Consumergruppen**.
 
     ![D2C-Einstellungen][img-eventhubcompatible]
 
@@ -63,11 +62,9 @@ Die SDKs und Integrationen, die Sie mit Event Hub-kompatiblen Endpunkten verwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu IoT Hub-Endpunkten finden Sie unter [IoT Hub-Endpunkte][lnk-endpoints].
-
-In den [Schnellstarts][lnk-get-started] erfahren Sie, wie Sie D2C-Nachrichten über simulierte Geräte senden und die Nachrichten über den integrierten Endpunkt lesen. Ausführlichere Informationen finden Sie im Tutorial [Verarbeiten von IoT Hub-D2C-Nachrichten mit Routen][lnk-d2c-tutorial].
-
-Informationen zum Weiterleiten von Gerät-zu-Cloud-Nachrichten an benutzerdefinierte Endpunkte finden Sie unter [Verwenden von Nachrichtenrouten und benutzerdefinierten Endpunkte für D2C-Nachrichten][lnk-custom].
+* Weitere Informationen zu IoT Hub-Endpunkten finden Sie unter [IoT Hub-Endpunkte][lnk-endpoints].
+* In den [Schnellstarts][lnk-get-started] erfahren Sie, wie Sie D2C-Nachrichten über simulierte Geräte senden und die Nachrichten über den integrierten Endpunkt lesen. Ausführlichere Informationen finden Sie im Tutorial [Verarbeiten von IoT Hub-D2C-Nachrichten mit Routen][lnk-d2c-tutorial].
+* Informationen zum Weiterleiten von Gerät-zu-Cloud-Nachrichten an benutzerdefinierte Endpunkte finden Sie unter [Verwenden von Nachrichtenrouten und benutzerdefinierten Endpunkte für D2C-Nachrichten][lnk-custom].
 
 [img-eventhubcompatible]: ./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png
 

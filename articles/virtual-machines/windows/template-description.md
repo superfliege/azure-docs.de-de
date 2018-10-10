@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 18a9709893533c2c0b606077a126437282f9195e
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42141355"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987695"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuelle Computer in einer Azure Resource Manager-Vorlage
 
@@ -164,7 +164,7 @@ Verwenden Sie diese Optionen zum Abrufen der aktuellen API-Versionen:
 
 - REST-API: [Auflisten aller Ressourcenanbieter](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell: [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Azure CLI 2.0: [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+- Azure CLI – [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 
 ## <a name="parameters-and-variables"></a>Parameter und Variablen
 
@@ -442,7 +442,7 @@ Sie können den Status der installierten Erweiterungen über die Erweiterungsein
 
 ![Abrufen des Erweiterungsstatus](./media/template-description/virtual-machines-show-extensions.png)
 
-Sie können die Erweiterungsinformationen auch abrufen, indem Sie den PowerShell-Befehl **Get-AzureRmVMExtension**, den Azure CLI 2.0-Befehl **vm extension get** oder die REST-API **Get extension information** (Erweiterungsinformationen abrufen) verwenden.
+Sie können die Erweiterungsinformationen auch abrufen, indem Sie den PowerShell-Befehl **Get-AzureRmVMExtension**, den Azure CLI-Befehl **vm extension get** oder die REST-API **Get extension information** (Erweiterungsinformationen abrufen) verwenden.
 
 ## <a name="deployments"></a>Bereitstellungen
 

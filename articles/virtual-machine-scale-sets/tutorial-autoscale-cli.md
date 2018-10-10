@@ -1,6 +1,6 @@
 ---
-title: Tutorial – Automatisches Skalieren einer Skalierungsgruppe mit Azure CLI 2.0 | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie eine VM-Skalierungsgruppe mit Azure CLI 2.0 automatisch skalieren, wenn sich die CPU-Anforderungen erhöhen oder verringern.
+title: 'Tutorial: Automatisches Skalieren einer Skalierungsgruppe mit der Azure CLI | Microsoft-Dokumentation'
+description: Hier wird beschrieben, wie Sie eine VM-Skalierungsgruppe mit der Azure CLI automatisch skalieren, wenn sich die CPU-Anforderungen erhöhen oder verringern.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4dedf4a84d5eaa47018fe0cd1cb6fd9a92d8ef7e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7c3d536cd4fb99d6d83b973989279d289e8434a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630151"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995374"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit Azure CLI 2.0
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit der Azure CLI
 
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren. In diesem Tutorial lernen Sie Folgendes:
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.32 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.32 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
 
@@ -216,7 +216,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde beschrieben, wie Sie für eine Skalierungsgruppe mit Azure CLI 2.0 das automatische horizontale Herunter- oder Hochskalieren durchführen:
+In diesem Tutorial wurde beschrieben, wie Sie mit der Azure CLI eine Skalierungsgruppe automatisch horizontal herunter- oder hochskalieren:
 
 > [!div class="checklist"]
 > * Verwenden der automatischen Skalierung mit einer Skalierungsgruppe
@@ -224,7 +224,7 @@ In diesem Tutorial wurde beschrieben, wie Sie für eine Skalierungsgruppe mit Az
 > * Durchführen eines Belastungstests für VM-Instanzen und Auslösen von Regeln für die automatische Skalierung
 > * Zurückfahren der automatischen Skalierung bei einer Reduzierung des Bedarfs
 
-Weitere Beispiele für VM-Skalierungsgruppen in Aktion finden Sie in den folgenden Azure CLI 2.0-Beispielskripts:
+Weitere Beispiele für VM-Skalierungsgruppen in Aktion finden Sie in den folgenden Azure CLI-Beispielskripts:
 
 > [!div class="nextstepaction"]
-> [Skalierungsgruppen-Skriptbeispiele für Azure CLI 2.0](cli-samples.md)
+> [Azure CLI 2.0-Beispiele für VM-Skalierungsgruppen](cli-samples.md)

@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines internen Lastenausgleichs – Azure CLI (klassisch) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen internen Load Balancer im klassischen Bereitstellungsmodell mithilfe der Azure-Befehlszeilenschnittstelle erstellen.
+title: Erstellen eines internen Lastenausgleichs – Klassische Azure CLI | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen internen Load Balancer im klassischen Bereitstellungsmodell mithilfe der klassischen Azure CLI erstellen.
 services: load-balancer
 documentationcenter: na
 author: genlin
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 06/18/2018
 ms.author: genli
-ms.openlocfilehash: 8f0ac03ff7b749e47692d03d65502df0a19bb758
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fb8929b31fa4325b996ddf4c5ec48e4acb0b930a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539516"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966904"
 ---
-# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Erste Schritte zum Erstellen eines internen Load Balancers (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>Erste Schritte zum Erstellen eines internen Load Balancers mithilfe der klassischen Azure CLI
 
 > [!div class="op_single_selector"]
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
@@ -44,11 +44,11 @@ Zum Erstellen einer internen Load Balancer-Gruppe und der Server, die den Datenv
 2. Fügen Sie Endpunkte für die virtuellen Computer hinzu, die den eingehenden Datenverkehr empfangen können.
 3. Konfigurieren Sie die Server für das Senden ihres Datenverkehrs an die virtuelle IP-Adresse (VIP) der ILB-Instanz.
 
-## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>Schritte zum Erstellen eines internen Load Balancers mit der Befehlszeilenschnittstelle
+## <a name="step-by-step-creating-an-internal-load-balancer-using-classic-cli"></a>Schritte zum Erstellen eines internen Load Balancers mit der klassischen CLI
 
 Anhand der folgenden Anleitung erstellen Sie auf der Grundlage des oben beschriebenen Szenarios einen internen Load Balancer.
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Wenn Sie die klassische CLI noch nie verwendet haben, helfen Ihnen die Informationen unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) weiter. Befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den Befehl **azure config mode** aus, um in den klassischen Modus zu wechseln, wie unten dargestellt.
 
     ```azurecli
