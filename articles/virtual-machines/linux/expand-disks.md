@@ -1,6 +1,6 @@
 ---
 title: Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie virtuelle Festplatten auf einer Linux-VM mit Azure CLI 2.0 erweitern.
+description: Erfahren Sie, wie Sie virtuelle Festplatten auf einer Linux-VM mit Azure CLI erweitern.
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
@@ -14,21 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: rogarana
-ms.openlocfilehash: 96d50260663f00f5ae2e9b2e0495c91ecb5da4b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0c2d4d1413b6cfd0b5e457e720b59c6c7b575092
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421187"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974543"
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
-Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating system; OS) beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, aber möglicherweise möchten Sie auch einen vorhandenen Datenträger für Daten erweitern. Dieser Artikel erläutert, wie verwaltete Datenträger für eine Linux-VM mithilfe von Azure CLI 2.0 erweitert werden können. 
+
+Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating system; OS) beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, aber möglicherweise möchten Sie auch einen vorhandenen Datenträger für Daten erweitern. Dieser Artikel erläutert, wie verwaltete Datenträger für eine Linux-VM mithilfe von Azure CLI erweitert werden können. 
 
 > [!WARNING]
 > Stellen Sie immer sicher, dass Sie Ihre Daten sichern, bevor Sie Änderungen an der Größe von Datenträgern vornehmen. Weitere Informationen finden Sie unter [Sichern virtueller Linux-Computer in Azure](tutorial-backup-vms.md).
 
 ## <a name="expand-azure-managed-disk"></a>Erweitern eines verwalteten Azure-Datenträgers
-Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sind.
+Überprüfen Sie, ob Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az_login) in einem Azure-Konto angemeldet sind.
 
 Für diesen Artikel ist ein vorhandener virtueller Computer in Azure mit mindestens einem angefügten und vorbereiteten Datenträger erforderlich. Wenn Sie noch nicht über einen virtuellen Computer verfügen, den Sie verwenden können, finden Sie entsprechende Informationen unter [Erstellen und Vorbereiten eines virtuellen Computers mit Datenträgern](tutorial-manage-disks.md#create-and-attach-disks).
 
