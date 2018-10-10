@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 7d37a60ad3ae3bea8490006bdd35dc47d728b88e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: bdf4c7527e2c0056b2de2321fbae280e9008cb1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103853"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990672"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
@@ -58,7 +58,7 @@ __Anforderungen__:
 
 ## <a name="to-use-the-script"></a>So verwenden Sie das Skript
 
-Das Skript kann über das Azure-Portal, Azure PowerShell oder die Azure CLI 1.0 verwendet werden. Weitere Informationen finden Sie im Dokument [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
+Das Skript kann über das Azure-Portal, über Azure PowerShell oder über die klassische Azure-Befehlszeilenschnittstelle verwendet werden. Weitere Informationen finden Sie im Dokument [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
 
 > [!IMPORTANT]
 > Verwenden Sie beim Ausführen der Schritte im Anpassungsdokument die folgenden Informationen, um dieses Skript anzuwenden:
@@ -71,7 +71,7 @@ Das Skript kann über das Azure-Portal, Azure PowerShell oder die Azure CLI 1.0 
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Speicherkonten werden im Azure-Portal oder in Tools nicht angezeigt
 
-Wenn Sie beim Anzeigen des HDInsight-Clusters im Azure-Portal den Eintrag __Speicherkonten__ unter __Eigenschaften__ auswählen, werden keine Speicherkonten angezeigt, die über diese Skriptaktion hinzugefügt wurden. Azure PowerShell und Azure CLI zeigen das zusätzliche Speicherkonto ebenfalls nicht an.
+Wenn Sie beim Anzeigen des HDInsight-Clusters im Azure-Portal den Eintrag __Speicherkonten__ unter __Eigenschaften__ auswählen, werden keine Speicherkonten angezeigt, die über diese Skriptaktion hinzugefügt wurden. Azure PowerShell und die klassische Azure-Befehlszeilenschnittstelle zeigen das zusätzliche Speicherkonto ebenfalls nicht an.
 
 Die Speicherinformationen werden nicht angezeigt, da das Skript nur die core-site.xml-Konfiguration für den Cluster ändert. Diese Informationen werden nicht verwendet, wenn Sie die Clusterinformationen mit Azure-Verwaltungs-APIs abrufen.
 

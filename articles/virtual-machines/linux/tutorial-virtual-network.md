@@ -1,6 +1,6 @@
 ---
 title: Tutorial – Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Azure CLI 2.0 zum Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer verwenden.
+description: In diesem Tutorial erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle zum Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e214e60cf61f809d8bc4a541c2f4ecf544feccd9
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: daee5a2073e78ca5bb9e0eb0386617d7638ab930
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928657"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988517"
 ---
-# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli-20"></a>Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer mit Azure CLI 2.0
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer mit der Azure-Befehlszeilenschnittstelle
 
 Virtuelle Azure-Computer nutzen Azure-Netzwerke für interne und externe Kommunikation. Dieses Tutorial enthält ausführliche Informationen zum Bereitstellen von zwei virtuellen Computern sowie zum Konfigurieren von Azure-Netzwerken für diese virtuellen Computer. In den Beispielen in diesem Tutorial wird davon ausgegangen, dass auf den virtuellen Computern eine Webanwendung mit einem Datenbank-Back-End gehostet wird. Eine Anwendung wird im Tutorial jedoch nicht bereitgestellt. In diesem Tutorial lernen Sie Folgendes:
 
@@ -36,7 +36,7 @@ Virtuelle Azure-Computer nutzen Azure-Netzwerke für interne und externe Kommuni
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="vm-networking-overview"></a>Übersicht über VM-Netzwerke
 

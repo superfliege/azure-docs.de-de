@@ -1,23 +1,23 @@
 ---
-title: Grundlegendes zu Kostenverwaltungsberichten in Azure Cost Management | Microsoft-Dokumentation
+title: Grundlegendes zu Cloudyn-Kostenverwaltungsberichten in Azure | Microsoft-Dokumentation
 description: In diesem Artikel erhalten Sie Informationen zur grundlegenden Struktur und den Funktionen von Cloudyn-Kostenverwaltungsberichten.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/18/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 75709e099c6126997d91bf4b679de473fc75a485
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e4d4c2115ddae592e9ca7bdf119b36d0ccee2da4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064408"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998711"
 ---
-# <a name="understanding-cost-management-reports"></a>Grundlegendes zu Kostenverwaltungsberichten
+# <a name="understanding-cloudyn-cost-management-reports"></a>Grundlegendes zu Cloudyn-Kostenverwaltungsberichten
 
 In diesem Artikel erhalten Sie Informationen zur grundlegenden Struktur und den Funktionen von Cloudyn-Kostenverwaltungsberichten. Die meisten Cloudyn-Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Nachdem Sie diesen Artikel gelesen haben, sind Sie zum Verwenden aller Kostenverwaltungsberichte bereit. In den verschiedenen Berichten sind zahlreiche Standardfunktionen zur problemlosen Navigation in den Berichten verfügbar. Berichte können angepasst werden, und Sie haben die Wahl zwischen mehreren Optionen zum Berechnen und Anzeigen von Ergebnissen.
 
@@ -203,5 +203,5 @@ Klicken Sie in einem geöffneten Bericht auf **Aktionen**, und wählen Sie dann 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie [Verwenden von Cost Management-Berichten](use-reports.md), um mehr über die in Cloudyn enthaltenen Berichte zu erfahren.
+- Lesen Sie [Verwenden der Cloudyn-Berichte](use-reports.md), um mehr über die in Cloudyn enthaltenen Berichte zu erfahren.
 - Erfahren Sie, wie Sie Berichte zum Erstellen von [Dashboards](dashboards.md) verwenden.

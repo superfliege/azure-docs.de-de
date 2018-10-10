@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 2802a725bca7f63f6956293048b0e854ebfb59b5
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: e92c099d9e0dfacff71c13382059acb06037bb1e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142443"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999867"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -257,5 +257,26 @@ VNET-Peeringverbindungen wechseln in den Status *Getrennt*, wenn ein VNET-Peerin
 Nein. Transitives Peering wird nicht unterstützt. Sie müssen hierzu eine Peeringverbindung zwischen VNetA und VNetC herstellen.
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Gibt es Bandbreiteneinschränkungen für Peeringverbindungen?
-Nein. Für VNET-Peering, ob lokal oder global, bestehen keine Bandbreiteneinschränkungen. Die Bandbreite wird nur durch die VM oder Computeressource beschränkt.
+Nein. Für VNET-Peering, ob lokal oder global, bestehen keine Bandbreiteneinschränkungen. Die Bandbreite wird nur durch den virtuellen Computer oder die Computeressource beschränkt.
 
+## <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
+
+### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Welche Azure-Regionen sind für den TAP eines virtuellen Netzwerks verfügbar?
+Während der Entwicklervorschau ist die Funktion in der Region „USA, Westen Mitte“ verfügbar. Die überwachten Netzwerkschnittstellen, die TAP-Ressource des virtuellen Netzwerks und der Collector oder die Analyselösung müssen in der gleichen Region bereitgestellt werden.
+
+### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Unterstützt der TAP eines virtuellen Netzwerks Filterfunktionen für die gespiegelten Pakete?
+Filterfunktionen werden in der Vorschauversion des TAP für ein virtuelles Netzwerk nicht unterstützt. Beim Hinzufügen einer TAP-Konfiguration zu einer Netzwerkschnittstelle wird eine Tiefenkopie des gesamten eingehenden und ausgehenden Datenverkehrs an das TAP-Ziel gestreamt.
+
+### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>Können einer überwachten Netzwerkschnittstelle mehrere TAP-Konfigurationen hinzugefügt werden?
+Eine überwachte Netzwerkschnittstelle kann nur über eine TAP-Konfiguration verfügen. Überprüfen Sie die einzelnen [Partnerlösungen](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) auf die Möglichkeit zum Streamen mehrerer Kopien des TAP-Datenverkehrs an die Analysetools Ihrer Wahl.
+
+### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>Kann dieselbe TAP-Ressource eines virtuellen Netzwerks Datenverkehr von überwachten Netzwerkschnittstellen in mehr als einem virtuellen Netzwerk aggregieren?
+Ja. Dieselbe TAP-Ressource eines virtuellen Netzwerks kann zum Aggregieren von gespiegeltem Datenverkehr von überwachten Netzwerkschnittstellen in virtuellen Netzwerken mit Peering im gleichen Abonnement oder in einem anderen Abonnement verwendet werden. Die TAP-Ressource des virtuellen Netzwerks und der Lastenausgleich oder die Zielnetzwerk-Schnittstelle müssen sich im selben Abonnement befinden. Alle Abonnements müssen demselben Azure Active Directory-Mandanten zugeordnet sein.
+
+### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Gibt es Überlegungen zur Leistung für Produktionsdatenverkehr, wenn ich eine TAP-Konfiguration für ein virtuelles Netzwerk an einer Netzwerkschnittstelle aktiviere?
+
+TAP eines virtuellen Netzwerk befindet sich in der Entwicklervorschau. Während der Vorschau gibt es keine Vereinbarung zum Servicelevel. Die Funktion darf nicht für Produktionsworkloads verwendet werden. Wenn die Netzwerkschnittstelle eines virtuellen Computers mit einer TAP-Konfiguration aktiviert ist, werden mit den Ressourcen auf dem Azure-Host, der dem virtuellen Computer für das Senden des Produktionsdatenverkehrs zugeordnet ist, auch die Spiegelungsfunktion ausgeführt und die gespiegelten Pakete versendet. Wählen Sie die richtige Größe für einen virtuellen [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer aus, um sicherzustellen, dass für den virtuellen Computer genügend Ressourcen zum Senden des Produktionsdatenverkehrs und des gespiegelten Datenverkehrs verfügbar sind.
+
+### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Wird beschleunigter Netzwerkbetrieb für [Linux](create-vm-accelerated-networking-cli.md) oder [Windows](create-vm-accelerated-networking-powershell.md) mit TAP eines virtuellen Netzwerks unterstützt?
+
+Sie haben die Möglichkeit, eine TAP-Konfiguration an einer Netzwerkschnittstelle hinzuzufügen, die einem virtuellen Computer angefügt ist, für den beschleunigter Netzwerkbetrieb aktiviert ist. Die Leistung und Latenz auf dem virtuellen Computer werden durch das Hinzufügen einer TAP-Konfiguration jedoch beeinträchtigt, da die Auslagerung für Spiegelungsdatenverkehr vom beschleunigten Netzwerkbetrieb in Azure derzeit nicht unterstützt wird.

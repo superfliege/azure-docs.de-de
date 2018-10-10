@@ -1,83 +1,87 @@
 ---
-title: Pläne und Abrechnung in Azure Scheduler
-description: Pläne und Abrechnung in Azure Scheduler
+title: Pläne und Abrechnung – Microsoft Azure Scheduler
+description: Erfahren Sie mehr über die Pläne und Abrechnung für Microsoft Azure Scheduler.
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.topic: article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: 03f335634b7ce1fe4aa6251d6ec21922ed9b84c8
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 74f13628b62d53a84b4d19255a30a6bc4a7367ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887486"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974288"
 ---
-# <a name="plans-and-billing-in-azure-scheduler"></a>Pläne und Abrechnung in Azure Scheduler
+# <a name="plans-and-billing-for-azure-scheduler"></a>Pläne und Abrechnung für Microsoft Azure Scheduler
+
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+
 ## <a name="job-collection-plans"></a>Pläne für Auftragssammlungen
-In Azure Scheduler wird nach Auftragssammlungen abgerechnet. Auftragssammlungen enthalten eine Reihe von Aufträgen und sind in drei Plänen (Standard, P10 Premium und P20 Premium) verfügbar.
 
-| **Auftragssammlungsplan** | **Max. Anzahl von Aufträgen pro Auftragssammlung** | **Max. Wiederholungen** | **Max. Auftragssammlungen pro Abonnement** | **Einschränkungen** |
+In Azure Scheduler enthält eine Auftragssammlung eine bestimmte Anzahl von Aufträgen. Die Auftragssammlung ist die fakturierbare Entität und ist in Standard-, P10 Premium- sowie P20 Premium-Plänen verfügbar, die hier beschrieben werden: 
+
+| Auftragssammlungsplan | Max. Aufträge pro Sammlung | Max. Wiederholungen | Max. Auftragssammlungen pro Abonnement | Einschränkungen | 
 |:--- |:--- |:--- |:--- |:--- |
-| **Standard** |50 Aufträge pro Auftragssammlung |Einmal pro Minute. Aufträge können maximal einmal pro Minute ausgeführt werden. |Ein Abonnement kann bis zu 100 Auftragssammlungen vom Typ „Standard“ enthalten. |Zugriff auf sämtliche Scheduler-Features |
-| **P10 Premium** |50 Aufträge pro Auftragssammlung |Einmal pro Minute. Aufträge können maximal einmal pro Minute ausgeführt werden. |Ein Abonnement kann bis zu 10.000 Auftragssammlungen vom Typ „P10 Premium“ enthalten. <a href="mailto:wapteams@microsoft.com">Setzen Sie sich mit uns in Verbindung</a>, um weitere Informationen zu erhalten. |Zugriff auf sämtliche Scheduler-Features |
-| **P20 Premium** |1.000 Aufträge pro Auftragssammlung |Einmal pro Minute. Aufträge können maximal einmal pro Minute ausgeführt werden. |Ein Abonnement kann bis zu 10.000 Auftragssammlungen vom Typ „P20 Premium“ enthalten. <a href="mailto:wapteams@microsoft.com">Setzen Sie sich mit uns in Verbindung</a>, um weitere Informationen zu erhalten. |Zugriff auf sämtliche Scheduler-Features |
-
-## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>Upgrades und Downgrades für Auftragssammlungspläne
-Sie können bei Ihren Auftragssammlungsplänen jederzeit zwischen „Standard“, „P10 Premium“ und „P20 Premium“ wechseln.
-
-## <a name="billing-and-azure-plans"></a>Abrechnung und Azure-Pläne
-Bei mehr als 100 Standard-Auftragssammlungen (entspricht zehn Standard-Abrechnungseinheiten) lohnt sich die Verlagerung der Auftragssammlungen in der Premium-Plan.
-
-Wenn Sie eine Auftragssammlung vom Typ „Standard“ und eine vom Typ „Premium“ besitzen, werden Ihnen eine Standard-Abrechnungseinheit *und* eine Premium-Abrechnungseinheit in Rechnung gestellt. Die Abrechnung des Scheduler-Diensts basiert auf der Anzahl aktiver Auftragssammlungen vom Typ „Standard“ oder „Premium“. Dies wird in den beiden folgenden Abschnitten ausführlicher erläutert.
-
-## <a name="standard-billable-units"></a>Standard-Abrechnungseinheiten
-Eine Standard-Abrechnungseinheit kann bis zu zehn Standard-Auftragssammlungen enthalten. Da eine Auftragssammlung vom Typ „Standard“ bis zu 50 Aufträge enthalten kann, kann ein Abonnement mit einer Standard-Abrechnungseinheit bis zu 500 Aufträge – und nahezu 22 Millionen Auftragsausführungen pro Monat – umfassen.
-
-Bis zu einer Anzahl von zehn Standard-Auftragssammlungen wird eine Standard-Abrechnungseinheit berechnet. Zwischen 11 und 20 Standard-Auftragssammlungen werden zwei Standard-Abrechnungseinheiten berechnet. Zwischen 21 und 30 Standard-Auftragssammlungen werden drei Standard-Abrechnungseinheiten berechnet usw.
-
-## <a name="p10-premium-billable-units"></a>P10 Premium-Abrechnungseinheiten
-Eine P10 Premium-Abrechnungseinheit kann bis zu 10.000 P10 Premium-Auftragssammlungen enthalten. Da eine P10 Premium-Auftragssammlung bis zu 50 Aufträge enthalten kann, kann ein Abonnement mit einer Premium-Abrechnungseinheit bis zu 500.000 Aufträge – und nahezu 22 Milliarden Auftragsausführungen pro Monat – umfassen.
-
-Wenn Sie bis zu 10.000 Premium-Auftragssammlungen besitzen, wird eine P10 Premium-Abrechnungseinheit berechnet. Wenn Sie zwischen 10.001 und 20.000 Premium-Auftragssammlungen besitzen, werden zwei P10 Premium-Abrechnungseinheiten berechnet usw.
-
-P10 Premium-Auftragssammlungen haben den gleichen Funktionsumfang wie Standard-Auftragssammlungen, sind preislich aber interessanter, wenn Ihre Anwendung viele Auftragssammlungen benötigt.
-
-## <a name="p20-premium-billable-units"></a>P20 Premium-Abrechnungseinheiten
-Eine P20 Premium-Abrechnungseinheit kann bis zu 5.000 P20 Premium-Auftragssammlungen enthalten. Da eine P20 Premium-Auftragssammlung bis zu 1.000 Aufträge enthalten kann, kann ein Abonnement mit einer Premium-Abrechnungseinheit bis zu 5.000.000 Aufträge – und nahezu 220 Milliarden Auftragsausführungen pro Monat – umfassen.
-
-P20 Premium-Auftragssammlungen bieten den gleichen Funktionsumfang wie P10 Premium-Auftragssammlungen, unterstützen aber eine größere Anzahl von Aufträgen pro Auftragssammlung und eine größere Anzahl von Aufträgen insgesamt als P10 Premium, sodass Sie von größerer Skalierbarkeit profitieren.
-
-## <a name="billing-and-active-status"></a>Abrechnung und aktiver Status
-Auftragssammlungen sind immer aktiv, es sei denn, Ihr gesamtes Abonnement wurde aufgrund von Problemen bei der Abrechnung vorübergehend deaktiviert. Wenn Sie sichergehen möchten, dass eine Auftragssammlung nicht in Rechnung gestellt wird, müssen Sie die Auftragssammlung löschen.
-
-Sie können zwar mit einem einzelnen Vorgang alle Aufträge innerhalb einer Auftragssammlung deaktivieren, dies hat jedoch keine Auswirkungen auf deren Abrechnungsstatus. Mit anderen Worten: Die Auftragssammlung wird *weiterhin* in Rechnung gestellt. Darüber hinaus gelten auch leere Auftragssammlungen als aktiv und werden berechnet.
+| **Standard** | 50 Aufträge pro Sammlung | Eine pro Minute. Aufträge können nicht häufiger als einmal pro Minute ausgeführt werden. | Jedes Azure-Abonnement kann bis zu 100 Standard-Auftragssammlungen enthalten. | Zugriff auf sämtliche Scheduler-Features | 
+| **P10 Premium** | 50 Aufträge pro Sammlung | Eine pro Minute. Aufträge können nicht häufiger als einmal pro Minute ausgeführt werden. | Jedes Azure-Abonnement kann bis zu 10.000 P10 Premium-Auftragssammlungen enthalten. <a href="mailto:wapteams@microsoft.com">Wenden Sie sich an uns</a>, wenn Sie mehr Sammlungen benötigen. | Zugriff auf sämtliche Scheduler-Features |
+| **P20 Premium** | 1.000 Aufträge pro Sammlung | Eine pro Minute. Aufträge können nicht häufiger als einmal pro Minute ausgeführt werden. | Jedes Azure-Abonnement kann bis zu 5.000 P20 Premium-Auftragssammlungen enthalten. <a href="mailto:wapteams@microsoft.com">Wenden Sie sich an uns</a>, wenn Sie mehr Sammlungen benötigen. | Zugriff auf sämtliche Scheduler-Features |
+|||||| 
 
 ## <a name="pricing"></a>Preise
+
 Ausführliche Preisinformationen finden Sie unter [Scheduler – Preise](https://azure.microsoft.com/pricing/details/scheduler/).
 
-## <a name="see-also"></a>Siehe auch
- [Was ist Azure Scheduler?](scheduler-intro.md)
+## <a name="upgrade-or-downgrade-plans"></a>Ausführen eines Upgrades oder Downgrades für Pläne
 
- [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
+Sie können für Auftragssammlungspläne jederzeit ein Upgrade oder Downgrade zwischen den Standard-, P10 Premium- und P20 Premium-Plänen durchführen.
 
- [Erste Schritte mit dem Scheduler im Azure-Portal](scheduler-get-started-portal.md)
+## <a name="active-status-and-billing"></a>Aktiver Status und Abrechnung
 
- [Azure Scheduler-REST-API – Referenz](https://msdn.microsoft.com/library/mt629143)
+Auftragssammlungen sind immer aktiv, es sei denn, Ihr gesamtes Azure-Abonnement wird aufgrund von Problemen bei der Abrechnung vorübergehend deaktiviert. Sie können zwar mit einem einzigen Vorgang alle Aufträge innerhalb einer Auftragssammlung deaktivieren, der Abrechnungsstatus der Auftragssammlung wird dadurch jedoch nicht geändert. Die Auftragssammlung wird also *weiterhin* in Rechnung gestellt. Leere Auftragssammlungen gelten als aktiv und werden berechnet.
 
- [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
+Um sicherzustellen, dass eine Auftragssammlung nicht in Rechnung gestellt wird, müssen Sie die Auftragssammlung löschen.
 
- [Hochverfügbarkeit und Zuverlässigkeit von Azure Scheduler](scheduler-high-availability-reliability.md)
+## <a name="standard-billable-units"></a>Standard-Abrechnungseinheiten
 
- [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
+Eine Standard-Abrechnungseinheit kann bis zu zehn Standard-Auftragssammlungen umfassen. Da eine Standard-Auftragssammlung bis zu 50 Aufträge pro Sammlung enthalten kann, sind mit einer Standard-Abrechnungseinheit für Ihr Azure-Abonnement bis zu 500 Aufträge bzw. nahezu 22 *Millionen* Auftragsausführungen pro Monat möglich. In der folgenden Liste wird erläutert, wie Ihnen unterschiedliche Anzahlen von Standard-Auftragssammlungen in Rechnung gestellt werden:
 
- [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
+* Bis zu einer Anzahl von zehn Standard-Auftragssammlungen wird eine Standard-Abrechnungseinheit berechnet. 
 
+* Bei 11 bis 20 Standard-Auftragssammlungen werden zwei Standard-Abrechnungseinheiten berechnet. 
+
+* Bei 21 bis 30 Standard-Auftragssammlungen werden drei Standard-Abrechnungseinheiten berechnet usw.
+
+## <a name="p10-premium-billable-units"></a>P10 Premium-Abrechnungseinheiten
+
+Eine P10 Premium-Abrechnungseinheit kann bis zu 10.000 P10 Premium-Auftragssammlungen umfassen. Da eine P10 Premium-Auftragssammlung bis zu 50 Aufträge pro Sammlung enthalten kann, sind mit einer P10 Premium-Abrechnungseinheit für Ihr Azure-Abonnement bis zu 500.000 Aufträge bzw. nahezu 22 *Milliarden* Auftragsausführungen pro Monat möglich. 
+
+P10 Premium-Auftragssammlungen haben den gleichen Funktionsumfang wie Standard-Auftragssammlungen, sind preislich aber interessanter für Apps, die viele Auftragssammlungen erfordern, und bieten eine höhere Skalierbarkeit. In der folgenden Liste wird erläutert, wie Ihnen unterschiedliche Anzahlen von P10 Premium-Auftragssammlungen in Rechnung gestellt werden:
+
+* Bis zu einer Anzahl von 10.000 P10 Premium-Auftragssammlungen wird eine P10 Premium-Abrechnungseinheit berechnet. 
+
+* Bei 10.001 bis 20.000 P10 Premium-Auftragssammlungen werden zwei P10 Premium-Abrechnungseinheiten berechnet usw.
+
+## <a name="p20-premium-billable-units"></a>P20 Premium-Abrechnungseinheiten
+
+Eine P20 Premium-Abrechnungseinheit kann bis zu 5.000 P20 Premium-Auftragssammlungen umfassen. Da eine P20 Premium-Auftragssammlung bis zu 1.000 Aufträge pro Sammlung enthalten kann, sind mit einer P20 Premium-Abrechnungseinheit für Ihr Azure-Abonnement bis zu 5.000.000 Aufträge bzw<<<<<<<. nahezu 220 *Milliarden* Auftragsausführungen pro Monat möglich.
+
+P20 Premium-Auftragssammlungen haben den gleichen Funktionsumfang wie P10 Premium-Auftragssammlungen, unterstützen aber eine größere Anzahl von Aufträgen pro Sammlung und eine größere Gesamtanzahl von Aufträgen als P10 Premium, sodass sie eine höhere Skalierbarkeit bieten.
+
+## <a name="plan-comparison"></a>Vergleich der Pläne
+
+* Bei mehr als 100 Standard-Auftragssammlungen (entspricht zehn Standard-Abrechnungseinheiten) lohnt sich die Verlagerung aller Auftragssammlungen in einen Premium-Plan.
+
+* Wenn Sie eine Standard-Auftragssammlung und eine Premium-Auftragssammlung haben, werden Ihnen eine Standard-Abrechnungseinheit *und* eine Premium-Abrechnungseinheit in Rechnung gestellt.
+
+  Die Abrechnung des Scheduler-Diensts basiert auf der Anzahl aktiver Standard- oder Premium-Auftragssammlungen.
+
+## <a name="see-also"></a>Weitere Informationen
+
+* [Was ist Azure Scheduler?](scheduler-intro.md)
+* [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
+* [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)

@@ -1,6 +1,6 @@
 ---
-title: Importieren und Exportieren einer Domänenzonendatei in Azure DNS mit Azure CLI 2.0 | Microsoft-Dokumentation
-description: Informationen zum Importieren und Exportieren einer DNS-Zonendatei in Azure DNS mit Azure CLI 2.0
+title: Importieren und Exportieren einer Domänenzonendatei in Azure DNS mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: Informationen zum Importieren und Exportieren einer DNS-Zonendatei in Azure DNS mithilfe der Azure-CLI
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 7578d078b147b5c4bf42f5343d3fdfdf6f0bc42e
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 5afb607f0410b428d8e67fdff043a4e376dd60a5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171604"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956352"
 ---
-# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-20"></a>Importieren und Exportieren einer DNS-Zonendatei mit der Azure CLI 2.0 
+# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importieren und Exportieren einer DNS-Zonendatei mit der Azure-Befehlszeilenschnittstelle 
 
-In diesem Artikel wird das Importieren und Exportieren von DNS-Zonendateien für Azure DNS mit Azure CLI 2.0 erläutert.
+In diesem Artikel wird das Importieren und Exportieren von DNS-Zonendateien für Azure DNS mit der Azure-Befehlszeilenschnittstelle erläutert.
 
 ## <a name="introduction-to-dns-zone-migration"></a>Einführung in die DNS-Zonenmigration
 
@@ -30,7 +30,7 @@ Eine DNS-Zonendatei ist eine Textdatei, die Details aller Domain Name System-Ein
 
 Für Azure DNS wird das Importieren und Exportieren von Zonendateien mit der Azure-Befehlszeilenschnittstelle (CLI) unterstützt. Das Importieren von Zonendateien mithilfe von Azure PowerShell oder dem Azure-Portal wird derzeit **nicht** unterstützt.
 
-Azure CLI 2.0 (Command Line Interface, Befehlszeilenschnittstelle) ist ein plattformübergreifendes Befehlszeilentool zum Verwalten von Azure-Diensten. Sie steht auf der [Azure-Downloadseite](https://azure.microsoft.com/downloads/)für Windows-, Mac- und Linux-Plattformen zur Verfügung. Die plattformübergreifende Unterstützung ist wichtig für das Importieren und Exportieren von Zonendateien, da die am häufigsten verwendete Namenserversoftware ([BIND](https://www.isc.org/downloads/bind/)) meist unter Linux ausgeführt wird.
+Die Azure-CLI (Command Line Interface, Befehlszeilenschnittstelle) ist ein plattformübergreifendes Befehlszeilentool zum Verwalten von Azure-Diensten. Sie steht auf der [Azure-Downloadseite](https://azure.microsoft.com/downloads/)für Windows-, Mac- und Linux-Plattformen zur Verfügung. Die plattformübergreifende Unterstützung ist wichtig für das Importieren und Exportieren von Zonendateien, da die am häufigsten verwendete Namenserversoftware ([BIND](https://www.isc.org/downloads/bind/)) meist unter Linux ausgeführt wird.
 
 
 ## <a name="obtain-your-existing-dns-zone-file"></a>Abrufen Ihrer vorhandenen DNS-Zonendatei

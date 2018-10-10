@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer privaten Azure DNS-Zone mit der Azure CLI
+title: Erstellen einer privaten Azure DNS-Zone mit der Azure-Befehlszeilenschnittstelle
 description: In diesem Tutorial erstellen und testen Sie eine private DNS-Zone und einen Eintrag in Azure DNS. Dies ist eine Schritt-für-Schritt-Anleitung zum Erstellen und Verwalten Ihrer ersten privaten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe der Azure CLI.
 services: dns
 author: vhorne
@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/25/2018
 ms.author: victorh
-ms.openlocfilehash: 023a1ecb6afc49dd20a14d57558d72a44779dbe9
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 27a27cfb81362b070deb0bad367ff62e8c39460c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257564"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964386"
 ---
-# <a name="create-an-azure-dns-private-zone-using-azure-cli"></a>Erstellen einer privaten Azure DNS-Zone mit der Azure CLI
+# <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>Erstellen einer privaten Azure DNS-Zone mit der Azure-Befehlszeilenschnittstelle
 
-In diesem Tutorial wird Schritt für Schritt beschrieben, wie Sie Ihre erste private DNS-Zone und Ihren ersten DNS-Eintrag mithilfe der Azure CLI erstellen.
+In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle Ihre erste private DNS-Zone und Ihren ersten DNS-Eintrag erstellen.
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 

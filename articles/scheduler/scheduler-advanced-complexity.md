@@ -1,123 +1,156 @@
 ---
-title: Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler
-description: Erfahren Sie, wie komplexe Zeitpläne und erweiterte Serien mit Azure Scheduler erstellt werden.
+title: Erstellen erweiterter Auftragszeitpläne und -serien – Microsoft Azure Scheduler
+description: Erfahren Sie, wie Sie erweiterte Zeitpläne und Serien für Aufträge in Azure Scheduler erstellen.
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.suite: infrastructure-services
+ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: 4293442e13fc4bae871b1f32a3ed4231d9f32632
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f5a8b929cf5af6e4e43c6003e6b622d04a50b93e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29692333"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980939"
 ---
-# <a name="build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler
+# <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Erstellen erweiterter Zeitpläne und Serien für Aufträge in Microsoft Azure Scheduler
 
-Das Herzstück eines Azure Scheduler-Auftrags ist der Zeitplan. Der Zeitplan bestimmt, wann und wie Scheduler den Auftrag ausführt. 
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
-Mit Scheduler können Sie mehrere einmalige Ausführungen und Zeitplanserien für einen Auftrag festlegen. Einmalige Zeitpläne werden ein Mal zu einem angegebenen Zeitpunkt ausgelöst. Einmalige Zeitpläne sind effektiv Zeitplanserien, die nur ein Mal ausgeführt werden. Wiederholungszeitpläne werden gemäß einer vorgegebenen Häufigkeit ausgelöst.
+In einem [Azure Scheduler](../scheduler/scheduler-intro.md)-Auftrag bestimmt der Zeitplan, wann und wie der Scheduler-Dienst den Auftrag ausführt. Mit Scheduler können Sie mehrere einmalige Zeitpläne und Zeitplanserien für einen Auftrag einrichten. Einmalige Zeitpläne werden nur einmal zu einem festgelegten Zeitpunkt ausgeführt und sind im Grunde Zeitplanserien, die nur einmal ausgeführt werden. Zeitplanserien werden mit einer festgelegten Häufigkeit ausgeführt. Aufgrund dieser Flexibilität kann Scheduler für eine Vielzahl von Geschäftsszenarien verwendet werden, beispielsweise:
 
-Durch diese Flexibilität können Sie Scheduler für eine Vielzahl von Geschäftsszenarien verwenden:
+* **Regelmäßige Bereinigung von Daten**: Erstellen Sie einen täglichen Auftrag, der alle Tweets löscht, die älter als drei Monate sind.
 
-* **Periodische Datenbereinigung**. Löschen Sie beispielsweise jeden Tag alle Tweets, die älter als drei Monate sind.
-* **Archivierung**. Beispielsweise können Sie jeden Monat den Rechnungsverlauf an einen Sicherungsdienst pushen.
-* **Anforderungen für externe Daten**. Sie können z.B. alle 15 Minuten einen neuen Wintersport-Wetterbericht von NOAA abrufen.
-* **Bildverarbeitung**. Sie können z.B. die hochgeladenen Bilder des aktuellen Tages mithilfe von Cloud Computing an jedem Wochentag außerhalb der Spitzenzeiten komprimieren.
+* **Archivierung von Daten**: Erstellen Sie einen monatlichen Auftrag, der Ihren Rechnungsverlauf in einen Sicherungsdienst pusht.
 
-Dieser Artikel enthält Beispielaufträge, die Sie mit Scheduler erstellen können. Hier finden Sie auch die JSON-Daten zur Beschreibung der einzelnen Zeitpläne. Bei Verwendung der [Scheduler-REST-API](https://msdn.microsoft.com/library/mt629143.aspx) können Sie diese JSON-Daten zum [Erstellen eines Scheduler-Auftrags](https://msdn.microsoft.com/library/mt629145.aspx) verwenden.
+* **Anforderung von externen Daten**: Erstellen Sie einen Auftrag, der alle 15 Minuten ausgeführt wird und einen neuen Wetterbericht von NOAA pullt.
+
+* **Bearbeitung von Bildern**: Erstellen Sie einen wöchentlichen Auftrag, der außerhalb der Spitzenzeiten ausgeführt wird und Cloud Computing nutzt, um im Laufe des Tags hochgeladene Bilder zu komprimieren.
+
+In diesem Artikel werden Beispielaufträge beschrieben, die Sie mit Scheduler und der [Azure Scheduler-REST-API](https://docs.microsoft.com/rest/api/schedule) erstellen können. Zudem finden Sie hier die JSON-Definition (JavaScript Object Notation) für jeden Zeitplan. 
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
-Die Beispiele in diesem Artikel veranschaulichen die Bandbreite der Szenarien, die Scheduler unterstützt. Die Beispiele veranschaulichen in groben Zügen, wie Zeitpläne für viele Verhaltensmuster erstellt werden können:
+
+Diese Beispiele veranschaulichen die Vielzahl von Szenarien, die Azure Scheduler unterstützt, und zeigen, wie Sie Zeitpläne für verschiedene Verhaltensmuster erstellen können, beispielsweise:
 
 * Einmalige Ausführung zu einem bestimmten Zeitpunkt (Datum und Uhrzeit).
 * Ausführung und Ausführungsserie für eine bestimmte Anzahl von Malen.
 * Sofortige Ausführung und Ausführungsserie.
-* Ausführung ab einem bestimmten Zeitpunkt und Ausführungsserie alle *n* Minuten, Stunden, Tage, Wochen oder Monate.
+* Ausführung und Ausführungsserie alle *n* Minuten, Stunden, Tage, Wochen oder Monate ab einem bestimmten Zeitpunkt.
 * Ausführung und wöchentliche oder monatliche Ausführungsserie, jedoch nur an bestimmten Wochentagen oder Tagen des Monats.
-* Ausführung und Ausführungsserie mehrere Male in einem bestimmten Zeitraum. Zum Beispiel am letzten Freitag und letzten Montag eines jeden Monats, oder jeden Tag um 05:15 Uhr und um 17:15 Uhr.
+* Ausführung und Ausführungsserie mehrere Male für einen bestimmten Zeitraum. Beispielsweise am letzten Freitag und letzten Montag jedes Monats oder täglich um 05:15 Uhr und 17:15 Uhr.
 
-## <a name="date-and-date-time"></a>Datum und Datum/Uhrzeit
-Datumsangaben in Scheduler-Aufträgen entsprechen der [ISO-8601-Spezifikation](http://en.wikipedia.org/wiki/ISO_8601) und enthalten nur das Datum.
+Die oben genannten Szenarien werden in diesem Artikel an späterer Stelle ausführlicher beschrieben.
 
-Datums-/Uhrzeitangaben in Scheduler-Aufträgen entsprechen der [ISO-8601-Spezifikation](http://en.wikipedia.org/wiki/ISO_8601) und enthalten ein Datum und eine Uhrzeit. Eine Datums-/Uhrzeitangabe ohne UTC-Offset wird als UTC-Angabe interpretiert.  
+<a name="create-scedule"></a>
 
-## <a name="use-json-and-the-rest-api-to-create-a-schedule"></a>Verwenden von JSON und der REST-API zum Erstellen eines Zeitplans
-Um einen grundlegenden Zeitplan mithilfe der [Scheduler-REST-API](https://msdn.microsoft.com/library/mt629143) zu erstellen, [registrieren Sie Ihr Abonnement zunächst bei einem Ressourcenanbieter](https://msdn.microsoft.com/library/azure/dn790548.aspx). Der Anbietername für Scheduler ist **Microsoft.Scheduler**. [Erstellen Sie dann eine Auftragssammlung](https://msdn.microsoft.com/library/mt629159.aspx). Schließlich [erstellen Sie einen Auftrag](https://msdn.microsoft.com/library/mt629145.aspx). 
+## <a name="create-schedule-with-rest-api"></a>Erstellen eines Zeitplans mit der REST-API
 
-Bei der Auftragserstellung können Sie mithilfe von JSON den Zeitplan und die Ausführungsserie angeben, wie der folgende Auszug zeigt:
+Führen Sie die folgenden Schritte aus, um einen einfachen Zeitplan mit der [Azure Scheduler-REST-API](https://docs.microsoft.com/rest/api/schedule) zu erstellen:
 
-    {
-        "startTime": "2012-08-04T00:00Z", // Optional
-         …
-        "recurrence":                     // Optional
-        {
-            "frequency": "week",     // Can be "year", "month", "day", "week", "hour", or "minute"
-            "interval": 1,                // How often to fire
-            "schedule":                   // Optional (advanced scheduling specifics)
-            {
-                "weekDays": ["monday", "wednesday", "friday"],
-                "hours": [10, 22]                      
-            },
-            "count": 10,                  // Optional (default to recur infinitely)
-            "endTime": "2012-11-04",      // Optional (default to recur infinitely)
-        },
-        …
-    }
+1. Registrieren Sie Ihr Azure-Abonnement mit dem [Registrierungsvorgang der Resource Manager-REST-API](https://docs.microsoft.com/rest/api/resources/providers#Providers_Register) bei einem Ressourcenanbieter. Der Anbietername für den Azure Scheduler-Dienst ist **Microsoft.Scheduler**. 
 
-## <a name="job-schema-basics"></a>Grundlagen zum Auftragsschema
-Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten Elemente für das Festlegen der Ausführungsserie und Zeitplanung in einem Auftrag:
+1. Erstellen Sie eine Auftragssammlung mit dem [Erstellungs- oder Aktualisierungsvorgang für Auftragssammlungen](https://docs.microsoft.com/rest/api/scheduler/jobcollections#JobCollections_CreateOrUpdate) in der Scheduler-REST-API. 
 
-| JSON-Name | BESCHREIBUNG |
-|:--- |:--- |
-| **startTime** |Ein Datums-/Uhrzeitwert. Bei einfachen Zeitplänen ist **startTime** das erste Vorkommen. Bei komplexen Zeitplänen wird der Auftrag frühestens bei **startTime** gestartet. |
-| **recurrence** |Gibt die Wiederholungsregeln für den Auftrag und die Wiederholung an, mit der der Auftrag ausgeführt wird. Dass recurrence-Objekt unterstützt die Elemente **frequency**, **interval**, **endTime**, **count** und **schedule**. Wenn **recurrence** definiert ist, ist **frequency** erforderlich. Andere **recurrence**-Elemente sind optional. |
-| **frequency** |Eine Zeichenfolge, die die Häufigkeitseinheit für die Auftragsserie darstellt. Unterstützte Werte sind „minute“, „hour“, „day“, „week“ und „month“. |
-| **interval** |Eine positive ganze Zahl **interval** gibt das Intervall für den Wert **frequency** an, der bestimmt, wie oft der Auftrag ausgeführt wird. Wenn **interval** beispielsweise auf „3“ und **frequency** auf „week“ festgelegt ist, wird der Auftrag alle drei Wochen ausgeführt.<br /><br />Scheduler unterstützt für **interval** maximal 18 Monate bei monatlicher Häufigkeit, 78 Wochen bei wöchentlicher Häufigkeit bzw. 548 Tage (bei täglicher Häufigkeit). Bei Stunden und Minuten wird folgender Bereich unterstützt: 1 <= **interval** <= 1000. |
-| **endTime** |Eine Zeichenfolge, die das Datum und die Uhrzeit angibt, ab dem bzw. der der Auftrag nicht mehr ausgeführt wird. Sie können einen Wert für **endTime** festlegen, der in der Vergangenheit liegt. Ohne Angabe von **endTime** oder **count** wird der Auftrag unendlich lange ausgeführt. Sie können **endTime** und **count** nicht im gleichen Auftrag verwenden. |
-| **count** |Eine positive ganze Zahl (größer als null), die angibt, wie oft dieser Auftrag ausgeführt wird, bevor er abgeschlossen ist.<br /><br />**count** stellt die Anzahl der Ausführungen des Auftrags dar, bevor er als abgeschlossen betrachtet wird. So ist beispielsweise ein täglich auszuführender Auftrag, für den **count** auf „5“ und das Startdatum auf Montag festgelegt ist, nach der Ausführung am Freitag abgeschlossen. Liegt das Startdatum in der Vergangenheit, wird die erste Ausführung auf der Grundlage des Erstellungszeitpunkts berechnet.<br /><br />Ohne Angabe von **endTime** oder **count** wird der Auftrag unendlich ausgeführt. Sie können **endTime** und **count** nicht im gleichen Auftrag verwenden. |
-| **schedule** |Die Wiederholung eines Auftrags mit einer bestimmten Häufigkeit wird auf der Grundlage eines Wiederholungszeitplans angepasst. Ein **schedule**-Wert enthält Änderungen auf der Grundlage von Minuten, Stunden, Wochentagen, Tagen des Monats und der Wochennummer. |
+1. Erstellen Sie einen Auftrag mit dem [Erstellungs- oder Aktualisierungsvorgang für Aufträge](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate). 
 
-## <a name="job-schema-defaults-limits-and-examples"></a>Standardwerte des Auftragsschemas, Einschränkungen und Beispiele
-Später in diesem Artikel behandeln wir jedes der folgenden Elemente im Detail:
+## <a name="job-schema-elements"></a>Elemente des Auftragsschemas
 
-| JSON-Name | Werttyp | Erforderlich? | Standardwert | Gültige Werte | Beispiel |
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** |Zeichenfolge |Nein  |Keine |Datum/Uhrzeit (nach ISO 8601) |`"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** |object |Nein  |Keine |Das Serienobjekt |`"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **frequency** |Zeichenfolge |Ja |Keine |"minute", "hour", "day", "week", "month" |`"frequency" : "hour"` |
-| **interval** |number |Ja |Keine |1 bis 1.000 |`"interval":10` |
-| **endTime** |Zeichenfolge |Nein  |Keine |Ein Datums-/Uhrzeitwert, der eine Zeit in der Zukunft darstellt. |`"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **count** |number |Nein  |Keine |>= 1 |`"count": 5` |
-| **schedule** |object |Nein  |Keine |Das Zeitplanobjekt |`"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten JSON-Elemente, die Sie zum Einrichten von Serien und Zeitplänen für Aufträge verwenden können. 
 
-## <a name="deep-dive-starttime"></a>Ausführliche Betrachtung: „startTime“
-Die folgende Tabelle beschreibt, wie **startTime** die Art und Weise steuert, wie ein Auftrag ausgeführt wird:
+| Element | Erforderlich | BESCHREIBUNG | 
+|---------|----------|-------------|
+| **startTime** | Nein  | Ein DateTime-Zeichenfolgenwert im [ISO 8601-Format](http://en.wikipedia.org/wiki/ISO_8601), der angibt, wann der Auftrag in einem einfachen Zeitplan erstmals gestartet wird. <p>Bei komplexen Zeitplänen wird der Auftrag frühestens bei **startTime** gestartet. | 
+| **recurrence** | Nein  | Die Wiederholungsregeln für die Ausführung des Auftrags. Das **recurrence**-Objekt unterstützt die folgenden Elemente: **frequency**, **interval**, **schedule**, **count** und **endTime**. <p>Wenn Sie das **recurrence**-Element verwenden, müssen Sie auch das **frequency**-Element verwenden. Andere **recurrence**-Elemente sind dagegen optional. |
+| **frequency** | Ja, bei Verwendung von **recurrence** | Die Zeiteinheit zwischen den Ausführungen. Unterstützt werden folgende Werte: „Minute“, „Hour“, „Day“, „Week“, „Month“ und „Year“. | 
+| **interval** | Nein  | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den Ausführungen basierend auf dem Wert von **frequency** bestimmt. <p>Ist **interval** beispielsweise auf 10 und **frequency** auf „Week“ festgelegt, wird der Auftrag alle zehn Wochen ausgeführt. <p>Die maximale Anzahl von Intervallen für jede Häufigkeit lautet wie folgt: <p>- 18 Monate <br>- 78 Wochen <br>- 548 Tage <br>- Für Stunden und Minuten ist der Bereich 1 <= <*Intervall*> <= 1.000. | 
+| **schedule** | Nein  | Definiert Änderungen an der Serie auf Grundlage der angegebenen Minutenmarkierungen, Stundenmarkierungen, Wochentage und Tage des Monats. | 
+| **count** | Nein  | Eine positive ganze Zahl, die angibt, wie oft dieser Auftrag ausgeführt wird, bevor er abgeschlossen ist. <p>Wenn beispielsweise für einen täglichen Auftrag **count** auf 7 festgelegt und das Startdatum Montag ist, wird der Auftrag Sonntag abgeschlossen. Liegt das Startdatum in der Vergangenheit, wird die erste Ausführung auf Grundlage des Erstellungszeitpunkts berechnet. <p>Ohne Angabe von **endTime** oder **count** wird der Auftrag unendlich ausgeführt. Es ist nicht möglich, **count** und **endTime** im selben Auftrag zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. | 
+| **endTime** | Nein  | Ein Date- oder DateTime-Zeichenfolgenwert im [ISO 8601-Format](http://en.wikipedia.org/wiki/ISO_8601), der angibt, wann die Ausführung des Auftrags beendet wird. Sie können einen Wert für **endTime** festlegen, der in der Vergangenheit liegt. <p>Ohne Angabe von **endTime** oder **count** wird der Auftrag unendlich ausgeführt. Es ist nicht möglich, **count** und **endTime** im selben Auftrag zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. |
+|||| 
 
-| startTime-Wert | Keine Serie | Serie, kein Zeitplan | Wiederholung mit Zeitplan |
-|:--- |:--- |:--- |:--- |
-| **Keine Startzeit** |Sofortige einmalige Ausführung. |Sofortige einmalige Ausführung. Berechnet weitere Ausführungen auf Grundlage der letzten Ausführungszeit. |Sofortige einmalige Ausführung.<br /><br />Berechnet weitere Ausführungen auf Grundlage des Serienzeitplans. |
-| **Startuhrzeit in der Vergangenheit** |Sofortige einmalige Ausführung. |Berechnung der ersten zukünftigen Ausführungszeit nach der Startzeit und Ausführung zu diesem Zeitpunkt.<br /><br />Berechnet weitere Ausführungen auf Grundlage der letzten Ausführungszeit. <br /><br />Weitere Informationen finden Sie im Beispiel, das auf diese Tabelle folgt. |Auftrag startet *frühestens* zur angegebenen Startzeit. Das erste Vorkommen basiert auf dem Zeitplan, der auf der Grundlage der Startzeit berechnet wird.<br /><br />Berechnet weitere Ausführungen auf Grundlage des Serienzeitplans. |
-| **Startzeit in der Zukunft oder aktuelle Uhrzeit** |Einmalige Ausführung zur angegebenen Startzeit. |Einmalige Ausführung zur angegebenen Startzeit.<br /><br />Berechnet weitere Ausführungen auf Grundlage der letzten Ausführungszeit.|Auftrag startet *frühestens* zur angegebenen Startzeit. Das erste Vorkommen basiert auf dem Zeitplan, der auf der Grundlage der Startzeit berechnet wird.<br /><br />Berechnet weitere Ausführungen auf Grundlage des Serienzeitplans. |
+Dieses JSON-Schema beschreibt beispielsweise einen einfachen Zeitplan und eine einfache Serie für einen Auftrag: 
 
-Das folgende Beispiel veranschaulicht, was passiert, wenn **startTime** in der Vergangenheit liegt und nur „recurrence“, aber kein Zeitplan angegeben ist.  In diesem Beispiel wird davon ausgegangen, dass die aktuelle Zeit „2015-04-08-13:00“ ist, **startTime** auf „2015-04-07 14:00“ festgelegt ist und für **recurrence** ein Zwei-Tages-Intervall (mit „**frequency**: day“ und „**interval**: 2“) angegeben wurde. Beachten Sie, dass **startTime** in der Vergangenheit liegt.
+```json
+"properties": {
+   "startTime": "2012-08-04T00:00Z", 
+   "recurrence": {
+      "frequency": "Week",
+      "interval": 1,
+      "schedule": {
+         "weekDays": ["Monday", "Wednesday", "Friday"],
+         "hours": [10, 22]                      
+      },
+      "count": 10,       
+      "endTime": "2012-11-04"
+   },
+},
+``` 
 
-Unter diesen Umständen erfolgt die erste Ausführung am 9.4.2015 um 14:00 Uhr. Die Scheduler-Engine berechnet die Ausführungen auf Grundlage der Startzeit. In der Vergangenheit liegende Instanzen werden verworfen. Die Engine verwendet die nächste in der Zukunft liegende Instanz. In diesem Fall ist **startTime** auf den 7.4.2015 um 14:00 Uhr festgelegt. Die nächste Instanz folgt zwei Tage nach diesem Zeitpunkt, also am 9.4.2015 um 14:00 Uhr.
+*Datumsangaben und DateTime-Werte*
 
-Beachten Sie, dass die erste Ausführung auch dann zu diesem Zeitpunkt stattfinden würde, wenn als **startTime** der 5.4.2015 oder der 1.4.2015 (jeweils 14:00 Uhr) angegeben würde.\. Nach der ersten Ausführung werden nachfolgende Ausführungen anhand des Zeitplans berechnet. Sie finden am 11.4.2015 um 14:00 Uhr, am 13.4.2015 um 14:00 Uhr, am 15.4.2015 um 14:00 Uhr usw. statt.
+* Datumsangaben in Scheduler-Aufträgen enthalten nur das Datum und entsprechen der [ISO 8601-Spezifikation](http://en.wikipedia.org/wiki/ISO_8601).
 
-Wenn für den Auftrag ein Zeitplan, aber keine Stunden- und Minutenangabe festgelegt ist, werden als Werte standardmäßig die Stunden und Minuten der ersten Ausführung verwendet.
+* DateTime-Werte in Scheduler-Aufträgen enthalten sowohl das Datum als auch die Uhrzeit, entsprechen der [ISO 8601-Spezifikation](http://en.wikipedia.org/wiki/ISO_8601) und werden als UTC-Angaben interpretiert, sofern keine UTC-Abweichung angegeben ist. 
 
-## <a name="deep-dive-schedule"></a>Ausführliche Untersuchung: „schedule“
+Weitere Informationen finden Sie unter [Konzepte, Terminologie und Entitäten](../scheduler/scheduler-concepts-terms.md).
+
+<a name="start-time"></a>
+
+## <a name="details-starttime"></a>Details: startTime
+
+In der folgenden Tabelle wird beschrieben, wie **startTime**-Werte die Ausführung eines Auftrags steuern:
+
+| startTime | Keine Serie | Serie, kein Zeitplan | Wiederholung mit Zeitplan |
+|-----------|---------------|-------------------------|--------------------------|
+| **Keine Startzeit** | Sofortige einmalige Ausführung. | Sofortige einmalige Ausführung. Berechnet weitere Ausführungen auf Grundlage der letzten Ausführungszeit. | Sofortige einmalige Ausführung. Berechnet weitere Ausführungen auf Grundlage des Serienzeitplans. | 
+| **Startuhrzeit in der Vergangenheit** | Sofortige einmalige Ausführung. | Berechnung der ersten zukünftigen Ausführungszeit nach der Startzeit und Ausführung zu diesem Zeitpunkt. <p>Berechnet weitere Ausführungen auf Grundlage der letzten Ausführungszeit. <p>Siehe hierzu das Beispiel im Anschluss an diese Tabelle. | Start des Auftrags *frühestens* zur angegebenen Startzeit. Das erste Vorkommen basiert auf dem Zeitplan, der auf der Grundlage der Startzeit berechnet wird. <p>Berechnet weitere Ausführungen auf Grundlage des Serienzeitplans. | 
+| **Startzeit in der Zukunft oder aktuelle Uhrzeit** | Einmalige Ausführung zur angegebenen Startzeit. | Einmalige Ausführung zur angegebenen Startzeit. <p>Berechnet weitere Ausführungen auf Grundlage der letzten Ausführungszeit. | Start des Auftrags *frühestens* zur angegebenen Startzeit. Das erste Vorkommen basiert auf dem Zeitplan, der auf der Grundlage der Startzeit berechnet wird. <p>Berechnet weitere Ausführungen auf Grundlage des Serienzeitplans. |
+||||| 
+
+Angenommen, Sie verwenden dieses Beispiel mit den folgenden Bedingungen: eine Startzeit in der Vergangenheit, eine Wiederholung, aber kein Zeitplan.
+
+```json
+"properties": {
+   "startTime": "2015-04-07T14:00Z", 
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 2
+   }
+}
+```
+
+* Das aktuelle Datum und die aktuelle Uhrzeit sind „2015-04-08 13:00“.
+
+* Das Startdatum und die Startuhrzeit sind „2015-04-07 14:00“, d. h. ein Zeitpunkt vor dem aktuellen Datum und der aktuellen Uhrzeit.
+
+* Die Wiederholung ist auf alle zwei Tage festgelegt.
+
+1. Unter diesen Bedingungen erfolgt die erste Ausführung am 09.04.2015 um 14:00 Uhr. 
+
+   Scheduler berechnet die Ausführungen auf Grundlage der Startzeit, verwirft alle Instanzen in der Vergangenheit und verwendet die nächste Instanz in der Zukunft. 
+   In diesem Fall ist **startTime** auf den 07.04.2015 um 14:00 Uhr festgelegt. Die nächste Instanz folgt zwei Tage nach diesem Zeitpunkt, also am 09.04.2015 um 14:00 Uhr.
+
+   Die erste Ausführungszeit ist identisch, unabhängig davon, ob **startTime** auf „2015-04-05 14:00“ oder „2015-04-01 14:00“ festgelegt ist. Nach der ersten Ausführung werden nachfolgende Ausführungen anhand des Zeitplans berechnet. 
+   
+1. Die Ausführungen erfolgen dann in der folgenden Reihenfolge: 
+   
+   1. 11.04.2015 um 14:00 Uhr
+   1. 13.04.2015 um 14:00 Uhr 
+   1. 15.04.2015 um 14:00 Uhr
+   1. Und so weiter.
+
+1. Wenn für einen Auftrag ein Zeitplan, aber keine Stunden- und Minutenangaben festgelegt sind, werden als Werte standardmäßig die Stunden und Minuten der ersten Ausführung verwendet.
+
+<a name="schedule"></a>
+
+## <a name="details-schedule"></a>Details: schedule
+
 Mithilfe von **schedule** lässt sich die Anzahl der Auftragsausführungen *begrenzen*. Beispiel: Wird für einen Auftrag mit einer monatlichen Häufigkeit (**frequency** ist „month“) ein Zeitplan angegeben, der nur am 31. Tag ausgeführt wird, wird der Auftrag nur in Monaten mit 31 Tagen ausgeführt.
 
 Mithilfe von **schedule** lässt sich die Anzahl der Auftragsausführungen auch *erweitern*. Beispiel: Wird für einen Auftrag mit einer monatlichen Häufigkeit (**frequency** ist „month“) ein Zeitplan angegeben, der am ersten und zweiten Tag des Monats ausgeführt wird, wird der Auftrag nicht nur ein Mal im Monat, sondern jeweils am ersten und zweiten Tag des Monats ausgeführt.
@@ -135,6 +168,7 @@ Die folgende Tabelle enthält eine ausführliche Beschreibung der Zeitplanelemen
 | **monthDays** |Der Tag des Monats, an dem der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. |Ein Array mit den folgenden Werten:<br />– Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31<br />– Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31|
 
 ## <a name="examples-recurrence-schedules"></a>Beispiele: Serienzeitpläne
+
 Die folgenden Beispiele zeigen verschiedene Serienzeitpläne. Die Beispiele beziehen sich auf das schedule-Objekt und seine untergeordneten Elemente.
 
 Bei diesen Zeitplänen wird davon ausgegangen, dass **interval** auf 1 festgelegt ist.\. Die Beispiele gehen auch von den richtigen **frequency**-Werten für die Werte in **schedule** aus. Beispielsweise können nicht der **frequency**-Wert „day“ und die Änderung **monthDays** in **schedule** angegeben werden. Wir haben diese Einschränkungen weiter oben in diesem Artikel beschrieben.
@@ -175,13 +209,6 @@ Bei diesen Zeitplänen wird davon ausgegangen, dass **interval** auf 1 festgeleg
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Was ist Azure Scheduler?](scheduler-intro.md)
-- [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
-- [Erste Schritte mit dem Scheduler im Azure-Portal](scheduler-get-started-portal.md)
-- [Pläne und Abrechnung in Azure Scheduler](scheduler-plans-billing.md)
-- [Azure Scheduler-REST-API – Referenz](https://msdn.microsoft.com/library/mt629143)
-- [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
-- [Hochverfügbarkeit und Zuverlässigkeit von Azure Scheduler](scheduler-high-availability-reliability.md)
-- [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
-- [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
-
+* [Was ist Azure Scheduler?](scheduler-intro.md)
+* [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
+* [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)

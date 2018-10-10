@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: bryanla
-ms.openlocfilehash: 0554e2e184ce3f3140d3b9e90eb33c20774ed789
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 73ece43c26c3957a1b7dba02a673099f7d35e8d6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303003"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951779"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Verwenden des vorläufigen Löschens in Key Vault mit der CLI
 
@@ -25,9 +25,9 @@ Das Azure Key Vault-Feature für vorläufiges Löschen ermöglicht die Wiederher
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure CLI 2.0: Falls Sie diese Version nicht für Ihre Umgebung eingerichtet haben, lesen Sie die Informationen unter [Verwalten von Key Vault mit CLI 2.0](key-vault-manage-with-cli2.md).
+- Azure-Befehlszeilenschnittstelle: Falls Sie dieses Feature nicht für Ihre Umgebung eingerichtet haben, lesen Sie die Informationen unter [Verwalten von Key Vault mit der Azure-Befehlszeilenschnittstelle](key-vault-manage-with-cli2.md).
 
-Key Vault-spezifische Informationen zur CLI finden Sie in der [Key Vault-Referenz für Azure CLI 2.0](https://docs.microsoft.com/cli/azure/keyvault).
+Key Vault-spezifische Informationen zur Befehlszeilenschnittstelle finden Sie in der [Key Vault-Referenz für die Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/keyvault).
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 

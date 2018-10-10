@@ -1,26 +1,29 @@
 ---
-title: 'Tutorial: Verwalten von Kosten mit Azure Cost Management | Microsoft-Dokumentation'
+title: 'Tutorial: Verwalten von Kosten mit Cloudyn in Azure | Microsoft-Dokumentation'
 description: In diesem Tutorial wird beschrieben, wie Sie Kosten per Kostenzuteilung und mit Showback- und Chargeback-Berichten verwalten.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 16f86eace9b5848f263e0d0772db441a123f21ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 743576d8cbd7135369fb692e601360cb57a6c3bd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989634"
 ---
-# <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>Tutorial: Verwalten von Kosten mit Azure Cost Management
+# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Tutorial: Verwalten von Kosten mithilfe von Cloudyn
 
-Sie verwalten die Kosten und erstellen Showback-Berichte in Azure Cost Management, indem Sie die Kosten basierend auf Tags zuteilen. Beim Prozess der Kostenzuteilung werden Kosten Ihren verbrauchten Cloudressourcen zugewiesen. Die Kosten werden vollständig zugeteilt, wenn Ihre gesamten Ressourcen mit Tags kategorisiert sind. Nachdem die Kosten zugeteilt wurden, können Sie für Ihre Benutzer über Dashboards und Berichte Showback- oder Chargeback-Informationen bereitstellen. Es kann aber sein, dass viele Ressourcen kein Tag aufweisen oder nicht mit einem Tag versehen werden können, wenn Sie mit der Nutzung von Cost Management beginnen.
+Sie verwalten Kosten und erstellen Showback-Berichte in Cloudyn, indem Sie Kosten basierend auf Tags zuteilen. Beim Prozess der Kostenzuteilung werden Kosten Ihren verbrauchten Cloudressourcen zugewiesen. Die Kosten werden vollständig zugeteilt, wenn Ihre gesamten Ressourcen mit Tags kategorisiert sind. Nachdem die Kosten zugeteilt wurden, können Sie für Ihre Benutzer über Dashboards und Berichte Showback- oder Chargeback-Informationen bereitstellen. Es kann aber sein, dass viele Ressourcen kein Tag aufweisen oder nicht mit einem Tag versehen werden können, wenn Sie mit der Nutzung von Cloudyn beginnen.
 
 Beispielsweise bemühen Sie sich um die Erstattung von Engineering-Kosten. Sie müssen in der Lage sein, für Ihr Engineering-Team darzustellen, dass Sie basierend auf den Ressourcenkosten einen bestimmten Betrag benötigen. Sie können einen Bericht mit allen verbrauchten Ressourcen präsentieren, die über das Tag *Engineering* verfügen.
+
+In diesem Artikel werden „Tags“ und „Kategorien“ bisweilen synonym verwendet. Kategorien sind große Auflistungen und können viele Formen annehmen. Sie können Geschäftseinheiten, Kostenstellen, Webdienste und alle Elemente mit Tag enthalten. Tags sind Name/Wert-Paare, die Ihnen das Kategorisieren von Ressourcen und die Anzeige und Verwaltung von konsolidierten Abrechnungsinformationen ermöglichen, indem Sie dasselbe Tag auf mehrere Ressourcen und Ressourcengruppen anwenden. In früheren Versionen des Azure-Portals wurde ein *Tag-Name* als *Schlüssel* bezeichnet. Tags werden für ein einzelnes Azure-Abonnement erstellt und von diesem gespeichert. Tags in AWS bestehen aus Schlüssel/Wert-Paaren. Da sowohl Azure als auch AWS die Benennung *Schlüssel* verwendet haben, verwendet auch Cloudyn diese Benennung. Der Kategorie-Manager verwendet Schlüssel (Tag-Namen), um Tags zusammenzuführen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -32,14 +35,23 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie benötigen ein Azure-Abonnement.
-- Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Azure Cost Management verfügen.
+- Sie benötigen ein Azure-Konto.
+- Sie müssen entweder über eine Registrierung für die Testversion oder über ein kostenpflichtiges Abonnement für Cloudyn verfügen.
+- [Nicht aktivierte Konten müssen im Cloudyn-Portal aktiviert werden](activate-subs-accounts.md).
+- [Überwachung auf Gastebene](azure-vm-extended-metrics.md) muss auf Ihren virtuellen Computern aktiviert sein.
+
 
 ## <a name="use-custom-tags-to-allocate-costs"></a>Verwenden von benutzerdefinierten Tags zum Zuteilen von Kosten
 
+Cloudyn ruft Tag-Daten für Ressourcengruppen aus Azure ab und verteilt automatisch Tag-Informationen an Ressourcen. In der Kostenzuteilung können Sie Kosten nach Ressourcen-Tags anzeigen.
+
+Mithilfe des Kostenzuteilungsmodells definieren Sie Kategorien (Tags), die intern auf nicht kategorisierte Ressourcen (ohne Tags) angewendet werden, um Ihre Kosten zu gruppieren und Regeln zum Verarbeiten der Kosten ohne Tags zu definieren. Kostenzuteilungsregeln sind Ihre gespeicherten Anweisungen für die Verteilung der Kosten eines Diensts an einen anderen Dienst. Anschließend zeigen Ressourcen Tags/Kategorien in *Kostenzuteilungsberichten* an, wenn Sie das von Ihnen erstellte Modell auswählen.
+
+Denken Sie daran, dass Tag-Informationen für diese Ressourcen in *Kostenanalyseberichten* nicht angezeigt werden. Außerdem werden mithilfe der Kostenzuteilung in Cloudyn angewendete Tags nicht an Azure gesendet, daher werden sie im Azure-Portal nicht angezeigt.
+
 Zu Beginn der Kostenzuteilung definieren Sie zuerst den Bereich, indem Sie ein Kostenmodell verwenden. Mit dem Kostenmodell werden die Kosten nicht geändert, sondern verteilt. Wenn Sie ein Kostenmodell erstellen, segmentieren Sie Ihre Daten nach Kostenentität, Konto oder Abonnement und nach mehreren Tags. Zu den häufig verwendeten Beispieltags gehören beispielsweise ein Abrechnungscode, eine Kostenstelle oder ein Gruppenname. Außerdem sind Tags beim Durchführen von Showback- oder Chargeback-Vorgängen mit anderen Teilen Ihrer Organisation nützlich.
 
-Wählen Sie zum Erstellen eines benutzerdefinierten Kostenzuteilungsmodells im Menü des Berichts die Optionen **Kosten** &gt; **Kostenverwaltung** &gt; **Cost Allocation 360°** (Kostenzuteilung 360°).
+Wählen Sie zum Erstellen eines benutzerdefinierten Kostenzuteilungsmodells im Menü des Berichts die Optionen **Kosten** &gt; **Cost Management** &gt; **Cost Allocation 360**.
 
 ![Auswahl von „Cost Allocation 360°“ (Kostenzuteilung 360°)](./media/tutorial-manage-costs/cost-allocation-360.png)
 
@@ -59,7 +71,7 @@ Es kann beispielsweise sein, dass Sie Ihre Azure-Speicherkosten gleichmäßig au
 
 
 
-Ein anderes Beispiel ist ein Fall, in dem Sie Ihre gesamten Azure-Netzwerkkosten einer bestimmten Geschäftseinheit Ihrer Organisation zuteilen möchten. Wählen Sie hierzu den Dienst **Azure/Network** (Azure/Netzwerk) und dann die Option **Explicit Distribution** (Explizite Verteilung). Legen Sie den Verteilungsprozentsatz anschließend auf den Wert 100 fest, und wählen Sie die Geschäftseinheit aus. In der folgenden Abbildung ist dies **G&amp;A**:
+Ein anderes Beispiel ist ein Fall, in dem Sie Ihre gesamten Azure-Netzwerkkosten einer bestimmten Geschäftseinheit Ihrer Organisation zuteilen möchten. Wählen Sie dazu den Dienst **Azure/Network** (Azure/Netzwerk) und dann unter **Define Allocation Rule** (Zuteilungsregel definieren) die Option **Explicit Distribution** (Explizite Verteilung). Legen Sie den Verteilungsprozentsatz anschließend auf den Wert 100 fest, und wählen Sie die Geschäftseinheit aus. In der folgenden Abbildung ist dies **G&amp;A**:
 
 ![Beispiel: Kostenmodell-Zuteilungsregel für eine bestimmte Geschäftseinheit](./media/tutorial-manage-costs/cost-model03.png)
 
@@ -97,9 +109,9 @@ Tag-Daten, die Sie in Cloudyn-Berichten sehen, stammen von drei Stellen:
     - Cloudyn Entitätstags – benutzerdefinierte Metadaten, die auf Cloudyn Entitäten angewendet werden
     - Kategorie-Manager – ein Datenbereinigungstool, das neue Tags anhand von Regeln erstellt, die auf vorhandene Tags angewendet werden
 
-Wenn Sie Cloudanbieter-Tags in Cloudyn-Kostenberichten anzeigen möchten, müssen Sie mit „Cost Allocation 360“ ein benutzerdefiniertes Kostenzuteilungsmodell erstellen. Klicken Sie dazu auf **Cost** > **Cost Management** > **Cost Allocation 360**, wählen Sie die gewünschten Tags aus, und definieren Sie dann Regeln zum Verarbeiten von Kosten, die keine Tags haben. Erstellen Sie anschließend ein neues Kostenmodell. Anschließend können Sie Berichte in „Cost Allocation Analysis“ anzeigen, um Ihre Azure-Ressourcentags anzuzeigen, zu filtern und nach ihnen zu sortieren.
+Wenn Sie Cloudanbieter-Tags in Cloudyn-Kostenberichten anzeigen möchten, müssen Sie mit „Cost Allocation 360“ ein benutzerdefiniertes Kostenzuteilungsmodell erstellen. Klicken Sie dazu auf **Kosten** > **Cost Management** > **Cost Allocation 360**, wählen Sie die gewünschten Tags aus, und definieren Sie dann Regeln zum Verarbeiten von Kosten, die keine Tags haben. Erstellen Sie anschließend ein neues Kostenmodell. Anschließend können Sie Berichte in „Cost Allocation Analysis“ anzeigen, um Ihre Azure-Ressourcentags anzuzeigen, zu filtern und nach ihnen zu sortieren.
 
-Azure-Ressourcentags werden nur in **Cost Allocation Analysis**-Berichten angezeigt.
+Azure-Ressourcentags werden nur in **Kosten** > **Cost Allocation Analysis**-Berichten angezeigt.
 
 Abrechnungstags von Cloudanbietern werden in allen Kostenberichten angezeigt.
 

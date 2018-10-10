@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d89e9b4dcfe44648f1e3ddd95fb01b62a36295df
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6bb13ad19f9b0b6137cdb2b4a9afbb2f325b9d36
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166336"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975054"
 ---
 # <a name="introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>Einführung in Docker-Containerhostinglösungen mit Azure Container Service 
 
@@ -30,7 +30,7 @@ Mit dem Azure Container Service können Sie die Unternehmensfunktionen von Azure
 Mit dem Azure Container Service verfolgen wir das Ziel, mit Open Source-Tools und -Technologien, die heutzutage bei unseren Kunden beliebt sind, eine Umgebung für das Containerhosting bereitzustellen. Zu diesem Zweck machen wir die Standard-API-Endpunkte für den von Ihnen ausgewählten Orchestrator (DC/OS, Docker Swarm oder Kubernetes) verfügbar. Mithilfe dieser Endpunkte können Sie jede Software nutzen, die mit diesen Endpunkten kommunizieren kann. Im Fall des Docker Swarm-Endpunkts können Sie z. B. die Docker-Befehlszeilenschnittstelle (Command-Line Interface, CLI) verwenden. Für DC/OS können Sie beispielsweise die DCOS-CLI wählen. Für Kubernetes können Sie `kubectl` wählen.
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Erstellen eines Docker-Clusters mit Azure Container Service
-Stellen Sie zum Verwenden von Azure Container Service zunächst einen Azure Container Service-Cluster über das Portal bereit (suchen Sie auf dem Marketplace nach **Azure Container Service**). Verwenden Sie hierzu entweder eine Azure Resource Manager-Vorlage ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) oder [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) oder [Azure CLI 2.0](container-service-create-acs-cluster-cli.md). Die bereitgestellten Schnellstartvorlagen können auch so geändert werden, dass sie eine zusätzliche oder erweiterte Azure-Konfiguration enthalten. Weitere Informationen finden Sie unter [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md).
+Stellen Sie zum Verwenden von Azure Container Service zunächst einen Azure Container Service-Cluster über das Portal bereit (suchen Sie im Marketplace nach **Azure Container Service**). Verwenden Sie hierzu eine Azure Resource Manager-Vorlage ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) oder [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) oder die [Azure-Befehlszeilenschnittstelle](container-service-create-acs-cluster-cli.md). Die bereitgestellten Schnellstartvorlagen können auch so geändert werden, dass sie eine zusätzliche oder erweiterte Azure-Konfiguration enthalten. Weitere Informationen finden Sie unter [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md).
 
 ## <a name="deploying-an-application"></a>Bereitstellen einer Anwendung
 Azure Container Service ermöglicht die Auswahl von Docker Swarm, DC/OS oder Kubernetes zur Orchestrierung. Wie Sie Ihre Anwendung bereitstellen, hängt davon ab, welchen Orchestrator Sie wählen.
@@ -55,7 +55,8 @@ Unter dem Azure-Containerdienst beinhaltet DC/OS standardmäßig die Marathon-Or
 ![DC/OS Universe in Azure Container Service](media/dcos/universe.png)
 
 #### <a name="using-marathon"></a>Verwenden von Marathon
-Marathon ist ein clusterweites Initialisierungs- und Steuerungssystem für Dienste in cgroups – oder, im Fall von Azure Container Service, in Containern im Docker-Format. Marathon verfügt über eine Webbenutzeroberfläche, über die Sie Ihre Anwendungen bereitstellen können. Der Zugriff erfolgt über eine URL, die in etwa wie folgt aussieht: `http://DNS_PREFIX.REGION.cloudapp.azure.com`. „DNS\_PREFIX“ und „REGION“ werden erst zum Zeitpunkt der Bereitstellung definiert. Natürlich können Sie auch Ihren eigenen DNS-Namen angeben. Weitere Informationen zum Ausführen eines Containers über die Marathon-Webbenutzeroberfläche finden Sie unter [Verwalten eines Azure Container Service-DC/OS-Clusters über die Marathon-Webbenutzeroberfläche](container-service-mesos-marathon-ui.md).
+Marathon ist ein clusterweites Initialisierungs- und Steuerungssystem für Dienste in cgroups – oder, im Fall von Azure Container Service, in Containern im Docker-Format. Marathon verfügt über eine Webbenutzeroberfläche, über die Sie Ihre Anwendungen bereitstellen können. Sie können über eine URL darauf zugreifen, die ähnlich aussieht wie `http://DNS_PREFIX.REGION.cloudapp.azure.com`,
+wobei „DNS\_PREFIX“ und „REGION“ zum Zeitpunkt der Bereitstellung definiert werden. Natürlich können Sie auch Ihren eigenen DNS-Namen angeben. Weitere Informationen zum Ausführen eines Containers über die Marathon-Webbenutzeroberfläche finden Sie unter [Verwalten eines Azure Container Service-DC/OS-Clusters über die Marathon-Webbenutzeroberfläche](container-service-mesos-marathon-ui.md).
 
 ![Liste der Marathon-Anwendungen](media/dcos/marathon-applications-list.png)
 
@@ -102,4 +103,4 @@ Erstellen von Anwendungen mithilfe von Azure Container Service (Build 2016)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Stellen Sie einen Azure Container Service-Cluster über das [Portal](container-service-deployment.md) oder mithilfe von [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) bereit.
+Stellen Sie einen Azure Container Service-Cluster über das [Portal](container-service-deployment.md) oder die [Azure-Befehlszeilenschnittstelle](container-service-create-acs-cluster-cli.md) bereit.

@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Bereitstellen eines Modells für Azure Machine Learning-Dienste
-description: In diesem umfassenden Tutorial wird die Verwendung von Azure Machine Learning-Diensten erläutert. Dies ist der dritte Teil, in dem das Bereitstellen des Modells beschrieben wird.
+title: Tutorial zum Bereitstellen eines Modells für den Azure Machine Learning-Dienst
+description: In diesem umfassenden Tutorial wird die Verwendung des Azure Machine Learning-Diensts erläutert. Dies ist der dritte Teil, in dem das Bereitstellen des Modells beschrieben wird.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41918007"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946611"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Tutorial 3: Klassifizieren von Iris: Bereitstellen eines Modells
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Bei Azure Machine Learning (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
 
 Dieses Tutorial ist der **dritte Teil einer dreiteiligen Reihe**. In diesem Tutorial verwenden Sie Machine Learning (Vorschauversion) für folgende Zwecke:
@@ -38,7 +42,7 @@ In diesem Tutorial wird das zeitlose Schwertlilien-Dataset ([Iris flower data se
 
 Für dieses Tutorial benötigen Sie Folgendes:
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
-- Ein Experimentierkonto und eine Installation von Azure Machine Learning Workbench, wie in dieser [Schnellstartanleitung](../service/quickstart-installation.md) beschrieben.
+- Ein Experimentierkonto und eine Installation von Azure Machine Learning Workbench, wie in dieser [Schnellstartanleitung](quickstart-installation.md) beschrieben.
 - Das Klassifizierungsmodell aus dem [zweiten Teil des Tutorials](tutorial-classifying-iris-part-2.md).
 - Eine lokal installierte und ausgeführte Docker-Engine.
 
@@ -224,9 +228,9 @@ Sie können nun den Echtzeit-Webdienst erstellen.
 1. Verwenden Sie den folgenden Befehl, um einen Echtzeit-Webdienst zu erstellen:
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s ./output/service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
    ```
-   Bei diesem Befehl wird eine Webdienst-ID zur späteren Verwendung generiert.
+   Bei diesem Befehl wird eine Webdienst-ID zur späteren Verwendung generiert. Lassen Sie im Falle eines Notebooks das Ausgabeverzeichnis weg.
 
    Die folgenden Switches werden für den Befehl **az ml service create realtime** verwendet:
 
@@ -276,9 +280,9 @@ Registrieren Sie zuerst das Modell. Generieren Sie anschließend das Manifest, e
    Verwenden Sie zum Erstellen eines Manifests den folgenden Befehl, und geben Sie die Modell-ID aus dem vorherigen Schritt an:
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json -c aml_config\conda_dependencies.yml
+   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s ./output/service_schema.json -c aml_config\conda_dependencies.yml
    ```
-   Mit diesem Befehl wird eine Manifest-ID generiert.
+   Mit diesem Befehl wird eine Manifest-ID generiert.  Lassen Sie im Falle eines Notebooks das Ausgabeverzeichnis weg.
 
 1. Erstellen Sie ein Docker-Image.
 

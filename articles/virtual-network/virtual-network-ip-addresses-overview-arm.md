@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2017
+ms.date: 09/24/2018
 ms.author: jdial
-ms.openlocfilehash: f55dfa8ffadc4ddee1ff3861682e5596b675f0d0
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 65dc420b6832b7b0a4cf14d63203d4c66e2a4254
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325284"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993594"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -28,6 +28,8 @@ Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit ande
 
 * **Öffentliche IP-Adressen**: Sie werden für die Kommunikation mit dem Internet verwendet. Hierzu zählen auch öffentliche Azure-Dienste.
 * **Private IP-Adressen**: Sie werden für die Kommunikation innerhalb eines virtuellen Azure-Netzwerks (VNet) und innerhalb Ihres lokalen Netzwerks verwendet, wenn Sie Ihr Netzwerk mithilfe eines VPN-Gateways oder einer ExpressRoute-Verbindung auf Azure ausdehnen.
+
+Sie können auch einen zusammenhängenden Bereich von statischen öffentlichen IP-Adressen über ein Präfix für öffentliche IP-Adressen erstellen. Informationen zu Präfixen für öffentliche IP-Adressen finden Sie [hier](public-ip-address-prefix.md).
 
 > [!NOTE]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des [klassischen Bereitstellungsmodells](virtual-network-ip-addresses-overview-classic.md) empfohlen wird.

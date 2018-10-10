@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 1ac55b728a29ff1bb8129087da5992ffe5f23df9
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 6ed1ef6019e339768c4ba6a62d8b4d99d844f254
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820295"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949524"
 ---
 # <a name="azure-and-linux"></a>Azure und Linux
 Microsoft Azure ist eine wachsende Sammlung von integrierten Diensten der öffentlichen Cloud, z.B. für Analysen, virtuelle Computer, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web. Azure eignet sich also perfekt zum Hosten Ihrer Lösungen.  Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen.  Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.
@@ -37,7 +37,7 @@ Für Azure wurde eine branchenweit führende Vereinbarung zum Servicelevel von 9
 
 ## <a name="managed-disks"></a>Managed Disks
 
-Der Managed Disks-Dienst erledigt die Erstellungs- und Verwaltungsaufgaben in Ihrem Azure Storage-Konto im Hintergrund und sorgt dafür, dass Sie sich keine Gedanken mehr über die Skalierbarkeitsgrenzen des Speicherkontos machen müssen. Sie geben die Datenträgergröße und die Leistungsstufe (Standard/Premium) an, und Azure kümmert sich um die Erstellung und Verwaltung der Datenträger. So müssen Sie sich beim Hinzufügen von Datenträgern oder beim Skalieren virtueller Computer keine Gedanken mehr über den verwendeten Speicher machen. Wenn Sie neue virtuelle Computer erstellen, [verwenden Sie Azure CLI 2.0](quick-create-cli.md) oder das Azure-Portal, um virtuelle Computer mit verwalteten Datenträgern für Betriebssystem und Daten zu erstellen. Wenn Sie bereits über virtuelle Computer mit nicht verwalteten Datenträgern verfügen, können Sie [Ihre virtuellen Computer für die Verwendung mit verwalteten Datenträgern konvertieren](convert-unmanaged-to-managed-disks.md).
+Der Managed Disks-Dienst erledigt die Erstellungs- und Verwaltungsaufgaben in Ihrem Azure Storage-Konto im Hintergrund und sorgt dafür, dass Sie sich keine Gedanken mehr über die Skalierbarkeitsgrenzen des Speicherkontos machen müssen. Sie geben die Datenträgergröße und die Leistungsstufe (Standard/Premium) an, und Azure kümmert sich um die Erstellung und Verwaltung der Datenträger. So müssen Sie sich beim Hinzufügen von Datenträgern oder beim Skalieren virtueller Computer keine Gedanken mehr über den verwendeten Speicher machen. Wenn Sie neue virtuelle Computer erstellen, [verwenden Sie die Azure-Befehlszeilenschnittstelle](quick-create-cli.md) oder das Azure-Portal, um virtuelle Computer mit verwalteten Datenträgern für Betriebssystem und Daten zu erstellen. Wenn Sie bereits über virtuelle Computer mit nicht verwalteten Datenträgern verfügen, können Sie [Ihre virtuellen Computer für die Verwendung mit verwalteten Datenträgern konvertieren](convert-unmanaged-to-managed-disks.md).
 
 Darüber hinaus können Sie Ihre benutzerdefinierten Images in einem einzelnen Speicherkonto pro Azure-Region verwalten und mit diesen Hunderte von virtuellen Computern im gleichen Abonnement erstellen. Weitere Informationen zu Managed Disk finden Sie in der [Übersicht über Managed Disks](../linux/managed-disks-overview.md).
 
@@ -91,7 +91,7 @@ Um mit der Verwendung von Azure beginnen zu können, benötigen Sie ein Azure-Ko
 Der erste Schritt zur Verwendung der Azure-Cloud besteht darin, sich für ein Azure-Konto zu registrieren.  Besuchen Sie die Seite [Erstellen eines kostenlosen Azure-Kontos](https://azure.microsoft.com/pricing/free-trial/) , um zu beginnen.
 
 ### <a name="install-the-cli"></a>Installieren der Befehlszeilenschnittstelle
-Mit Ihrem neuen Azure-Konto können Sie sofort mit dem Azure-Portal loslegen, einem webbasierten Verwaltungsbereich.  Um die Azure-Cloud über die Befehlszeile zu verwalten, installieren Sie `azure-cli`.  Installieren Sie die [Azure CLI 2.0](/cli/azure/install-azure-cli) auf Ihrem Mac oder Ihrer Linux-Arbeitsstation.
+Mit Ihrem neuen Azure-Konto können Sie sofort mit dem Azure-Portal loslegen, einem webbasierten Verwaltungsbereich.  Um die Azure-Cloud über die Befehlszeile zu verwalten, installieren Sie `azure-cli`.  Installieren Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) auf Ihrem Mac oder Ihrer Linux-Arbeitsstation.
 
 ### <a name="create-an-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
 Jetzt verfügen Sie über ein Azure-Konto, das Azure-Webportal und die Azure-Befehlszeilenschnittstelle.  Der nächste Schritt besteht darin, ein SSH-Schlüsselpaar zu erstellen, um über SSH eine Verbindung mit Linux herzustellen, ohne ein Kennwort zu verwenden.  [Erstellen Sie SSH-Schlüssel unter Linux und Mac](mac-create-ssh-keys.md), um Anmeldungen ohne Kennwort und eine höhere Sicherheit zu ermöglichen.

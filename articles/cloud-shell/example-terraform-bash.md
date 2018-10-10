@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: 6df6a3a5242e0a5fc5c03136e1cd20967a93487a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8512c04cb0efc698ca688724c3806291bb02d200
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386519"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947646"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Bereitstellen mit Terraform aus Bash in Azure Cloud Shell
 In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Ressourcengruppe mit dem [AzureRM-Anbieter von Terraform](https://www.terraform.io/docs/providers/azurerm/index.html) erstellen. 
@@ -26,9 +26,9 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Ressourcengrup
 [Hashicorp Terraform](https://www.terraform.io/) ist ein Open Source-Tool, das APIs in deklarative Konfigurationsdateien umwandelt, die an Teammitglieder weitergegeben und von diesen bearbeitet, überprüft und versioniert werden können. Der Microsoft AzureRM-Anbieter wird verwendet, um mit Ressourcen zu interagieren, die vom Azure Resource Manager über die AzureRM-APIs unterstützt werden. 
 
 ## <a name="automatic-authentication"></a>Automatische Authentifizierung
-Terraform wird in Bash in Cloud Shell standardmäßig installiert. Darüber hinaus authentifiziert Cloud Shell automatisch Ihr Azure CLI 2.0-Standardabonnement für die Bereitstellung von Ressourcen über die Terraform-Azure-Module.
+Terraform wird in Bash in Cloud Shell standardmäßig installiert. Darüber hinaus authentifiziert Cloud Shell automatisch Ihr Azure CLI-Standardabonnement für die Bereitstellung von Ressourcen über die Terraform-Azure-Module.
 
-Terraform verwendet das festgelegte Azure CLI 2.0-Standardabonnement. Führen Sie zum Aktualisieren von Standardabonnements Folgendes aus:
+Terraform verwendet das festgelegte Azure CLI-Standardabonnement. Führen Sie zum Aktualisieren von Standardabonnements Folgendes aus:
 
 ```azurecli-interactive
 az account set --subscription mySubscriptionName
@@ -144,7 +144,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 Der Befehl [terraform apply](https://www.terraform.io/docs/commands/apply.html) dient zum Anwenden der Änderungen, die zum Erreichen des gewünschten Zustands der Konfiguration erforderlich sind.
 
-### <a name="verify-deployment-with-azure-cli-20"></a>Überprüfen der Bereitstellung mit der Azure CLI 2.0
+### <a name="verify-deployment-with-azure-cli"></a>Überprüfen der Bereitstellung mit der Azure-Befehlszeilenschnittstelle
 Führen Sie `az group show -n myRgName` aus, um zu überprüfen, ob die Ressource erfolgreich bereitgestellt wurde.
 
 ```azcliinteractive

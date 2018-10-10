@@ -1,31 +1,33 @@
 ---
-title: Verwalten von Budgets in Azure Cost Management | Microsoft-Dokumentation
-description: Dieser Artikel unterstützt Sie beim Erstellen und Verwalten von Budgets in Cost Management.
+title: Verwalten von Cloudyn-Budgets in Azure | Microsoft-Dokumentation
+description: Dieser Artikel unterstützt Sie beim Erstellen und Verwalten von Budgets in Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/25/2018
+ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 106e8f082d148ed9a8c58313177be81ee074a2c3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: bbd232c819a11de691c4d3c3209273b064eddf62
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578462"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963430"
 ---
 # <a name="manage-budgets"></a>Verwalten von Budgets
 
-Die Einrichtung von Budgets und budgetbasierten Warnmeldungen hilft Ihnen, Ihre Cloudgovernance und Verantwortlichkeit zu verbessern. Mit diesem Artikel können Sie Budgets in Cost Management schnell erstellen und verwalten.
+Die Einrichtung von Budgets und budgetbasierten Warnmeldungen hilft Ihnen, Ihre Cloudgovernance und Verantwortlichkeit zu verbessern. Anhand dieses Artikels können Sie schnell Budgets erstellen und in Cloudyn verwalten.
 
 Wenn Sie ein Unternehmenskonto oder MSP-Konto haben, können Sie Ihre hierarchische Kostenentitätsstruktur verwenden, um monatliche Budgetkontingente verschiedenen Geschäftseinheiten, Abteilungen oder anderen Kostenentitäten zuzuordnen. Wenn Sie ein Premium-Konto haben, können Sie die Budgetverwaltung nutzen, die dann auf Ihre gesamten Cloudausgaben angewendet wird. Alle Budgets werden manuell zugewiesen.
 
 Auf der Grundlage der zugewiesenen Budgets können Sie Schwellenwertwarnungen basierend auf dem prozentualen Anteil des verbrauchten Budgets festlegen und den Schweregrad der einzelnen Schwellenwerte festlegen.
 
 Das zugewiesene Budget wird im Budgetbericht angezeigt. Benutzer können sehen, wann ihre Ausgaben über, unter oder auf dem Niveau ihres Verbrauchs im Laufe der Zeit liegen. Wenn Sie oben im Budgetbericht **Felder ein-/ausblenden** auswählen, können Sie die Kosten, das Budget, die akkumulierten Kosten und das Gesamtbudget anzeigen.
+
+Azure Cost Management bietet ähnliche Funktionen wie Cloudyn. Azure Cost Management ist eine native Azure-Kostenverwaltungslösung. Die Lösung unterstützt Sie beim Analysieren von Kosten, beim Erstellen und Verwalten von Budgets, beim Exportieren von Daten sowie bei der Prüfung und Umsetzung von Optimierungsempfehlungen, um Kosten zu sparen. Weitere Informationen zu Budgets in Cost Management finden Sie unter [Erstellen und Verwalten von Budgets](tutorial-acm-create-budgets.md).
 
 ## <a name="create-budgets"></a>Erstellen von Budgets
 
@@ -83,5 +85,5 @@ Klicken Sie im Bericht mit dem Vergleich der Kosten und des Budgets im Laufe der
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Falls Sie das erste Tutorial zu Cost Management noch nicht abgeschlossen haben, lesen Sie es unter [Überprüfen der Nutzung und der Kosten](https://docs.microsoft.com/azure/cost-management/tutorial-review-usage).
-- Erfahren Sie mehr über die [in Cost Management verfügbaren Berichte](use-reports.md).
+- Das erste Tutorial zu Cloudyn finden Sie bei Bedarf unter [Überprüfen der Nutzung und der Kosten](tutorial-review-usage.md).
+- Weitere Informationen zu den in Cloudyn verfügbaren Berichten finden Sie [hier](use-reports.md).

@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Lastenausgleichs für den Internetzugriff – Azure CLI (klassisch) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen Load Balancer mit Internetzugriff in einem klassischen Bereitstellungsmodell erstellen.
+title: Erstellen eines Load Balancers mit Internetzugriff – klassische Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe der klassischen Azure-Befehlszeilenschnittstelle im Rahmen des klassischen Bereitstellungsmodells einen Load Balancer mit Internetzugriff erstellen.
 services: load-balancer
 documentationcenter: na
 author: genlin
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 06/18/2018
 ms.author: genli
-ms.openlocfilehash: bacf135da25a5315e61922179db9a29fa8a152f1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a91a53070985a24ccd87f16254f652fe48c42c5a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38540007"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988154"
 ---
-# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-cli"></a>Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-classic-cli"></a>Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff (klassisch) mithilfe der klassischen Azure-Befehlszeilenschnittstelle
 
 > [!div class="op_single_selector"]
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-classic-ps.md)
-> * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-internet-classic-cli.md)
+> * [Klassische Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-internet-classic-cli.md)
 > * [Azure Cloud Services](../load-balancer/load-balancer-get-started-internet-classic-cloud.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
@@ -33,13 +33,15 @@ ms.locfileid: "38540007"
 > [!IMPORTANT]
 > Bevor Sie mit Azure-Ressourcen arbeiten, sollten Sie wissen, dass Azure derzeit über zwei Bereitstellungsmodelle verfügt: die Bereitstellung mit dem Azure Resource Manager und die klassische Bereitstellung. Stellen Sie sicher, dass Sie die [Bereitstellungsmodelle und -tools](../azure-classic-rm.md) verstanden haben, bevor Sie mit Azure-Ressouren arbeiten. Zum Anzeigen der Dokumentation für verschiedene Tools klicken Sie auf die Registerkarten oben in diesem Artikel. Dieser Artikel gilt für das klassische Bereitstellungsmodell. Informationen zum Erstellen eines Load Balancers mit Internetzugriff unter Verwendung des Azure-Ressourcen-Managers finden Sie [hier](load-balancer-get-started-internet-arm-ps.md).
 
+[!INCLUDE [requires-classic-cli](../../includes/contains-classic-cli-content.md)]
+
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="create-an-internet-facing-load-balancer-using-cli"></a>Erstellen eines Load Balancers mit Internetzugriff per CLI
 
 In diesem Handbuch erfahren Sie, wie Sie auf der Grundlage des oben beschriebenen Szenarios einen Internet-Load Balancer erstellen.
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Falls Sie die klassische Azure-Befehlszeilenschnittstelle noch nie verwendet haben, lesen Sie den Artikel [Installieren der klassischen Azure CLI](../cli-install-nodejs.md), und befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den Befehl **azure config mode** aus, um in den klassischen Modus zu wechseln, wie unten dargestellt.
 
     ```azurecli

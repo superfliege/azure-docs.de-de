@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 9ce0bc425836fffb59e804bdbd19f23cfc26c00e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ec952aa26d7bc6b185b425700080a4f474564b76
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527168"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955808"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Erstellen einer Dateifreigabe in Azure Files
 Sie können Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com/), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. In diesem Tutorial lernen Sie Folgendes:
@@ -47,7 +47,7 @@ Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese ansch
 > [!Note]  
 > Sie sollten daher das neueste Azure PowerShell-Modul herunterladen und installieren bzw. ein Upgrade durchführen.
 
-1. **Erstellen Sie einen Kontext für Ihr Speicherkonto und den Schlüssel:** Der Kontext kapselt den Speicherkontonamen und den Kontoschlüssel. Anweisungen zum Kopieren Ihres Kontoschlüssels aus dem [Azure-Portal](https://portal.azure.com/) finden Sie unter [Anzeigen und Kopieren von Speicherzugriffsschlüsseln](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#view-and-copy-storage-access-keys).
+1. **Erstellen Sie einen Kontext für Ihr Speicherkonto und den Schlüssel:** Der Kontext kapselt den Speicherkontonamen und den Kontoschlüssel. Anweisungen zum Kopieren Ihres Kontoschlüssels aus dem [Azure-Portal](https://portal.azure.com/) finden Sie unter [Zugriffsschlüssel](../common/storage-account-manage.md#access-keys).
 
     ```powershell
     $storageContext = New-AzureStorageContext <storage-account-name> <storage-account-key>
@@ -64,7 +64,7 @@ Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese ansch
 
 ## <a name="create-file-share-through-command-line-interface-cli"></a>Erstellen einer Dateifreigabe unter Verwendung der Befehlszeilenschnittstelle (CLI)
 1. **Laden Sie zur Vorbereitung auf die Verwendung einer Befehlszeilenschnittstelle (CLI) die Azure-Befehlszeilenschnittstelle herunter, und installieren Sie sie.**  
-    Informationen finden Sie unter [Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (Installieren von Azure CLI 2.0) und [Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) (Erste Schritte mit Azure CLI 2.0).
+    Informationen finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) sowie unter [Erste Schritte mit der Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
 2. **Erstellen Sie eine Verbindungszeichenfolge für das Speicherkonto, unter dem Sie die Freigabe erstellen möchten.**  
     Ersetzen Sie im folgenden Beispiel ```<storage-account>``` und ```<resource_group>``` durch Ihren Speicherkontonamen und Ihre Ressourcengruppe:

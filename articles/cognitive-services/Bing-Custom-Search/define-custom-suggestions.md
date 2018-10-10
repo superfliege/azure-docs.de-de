@@ -9,39 +9,81 @@ ms.technology: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: e7a62a79bdc2e486fb6bfca34eb4addeba2bde0e
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 11d3b1c2d98caa8d6527c52bec1cc65ba22c6c3b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158312"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958746"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Konfigurieren der benutzerdefinierten Vorschlagssuche
-Wenn Sie das entsprechende Abonnement für die benutzerdefinierte Bing-Suche haben (siehe [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), können Sie die Suchvorschläge anpassen, die Ihnen in der benutzerdefinierten Bing-Suche angezeigt werden. Die benutzerdefinierte Vorschlagssuche gibt basierend auf einem Teil der Abfragezeichenfolge, die der Benutzer bereitstellt, eine Liste von vorgeschlagenen Abfragen zurück. Mit der benutzerdefinierten Bing-Vorschlagssuche erhalten Sie benutzerdefinierte Suchvorschläge, die für Ihre Suche relevant sind. Sie bestimmen, ob nur benutzerdefinierte Vorschläge zurückgegeben oder auch Bing-Vorschläge eingeschlossen werden. Wenn Sie Bing-Vorschläge einschließen, werden benutzerdefinierte Vorschläge vor den Bing-Vorschlägen angezeigt. Bing-Vorschläge sind auf Ihre benutzerdefinierte Suchinstanz beschränkt.
 
-## <a name="configure-custom-autosuggest"></a>Konfigurieren der benutzerdefinierten Vorschlagssuche
-Befolgen Sie die Anleitung, um die benutzerdefinierte Vorschlagssuche für Ihre benutzerdefinierte Suchinstanz zu konfigurieren.
+Die benutzerdefinierte Vorschlagssuche gibt eine Liste der für Ihre Suche relevanten vorgeschlagenen Suchabfragezeichenfolgen zurück. Die vorgeschlagenen Abfragezeichenfolgen basieren auf einer partiellen Abfragezeichenfolge, die der Benutzer in das Suchfeld eingibt. Die Liste enthält maximal 10 Vorschläge. 
 
-1.  Melden Sie sich in der [benutzerdefinierten Bing-Suche](https://customsearch.ai) an.
-2.  Klicken Sie auf eine benutzerdefinierte Suchinstanz. Weitere Informationen dazu finden Sie unter [Erstellen der ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
-3.  Klicken Sie auf die Registerkarte **Vorschlagssuche**.
+Sie bestimmen, ob nur benutzerdefinierte Vorschläge zurückgegeben oder auch Bing-Vorschläge eingeschlossen werden. Wenn Sie Bing-Vorschläge einschließen, werden benutzerdefinierte Vorschläge vor den Bing-Vorschlägen angezeigt. Wenn Sie genügend relevante Vorschläge angeben, ist es möglich, dass die zurückgegebene Liste mit Vorschlägen keine Bing-Vorschläge enthält. Bing-Vorschläge beziehen sich immer auf den Kontext der benutzerdefinierten Suchinstanz. 
+
+Um die Vorschläge zu Suchabfragen für Ihre Instanz zu konfigurieren, klicken Sie auf die Registerkarte **Vorschlagssuche**.  
+
+> [!NOTE]
+> Um dieses Feature verwenden zu können, müssen Sie die benutzerdefinierte Suche im entsprechenden Tarif abonnieren (siehe [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)).
+
+Es kann bis zu 24 Stunden dauern, bis Vorschläge am aktiven Endpunkt (API oder gehostete Benutzeroberfläche) verfügbar werden.
 
 ## <a name="enable-bing-suggestions"></a>Aktivieren der Bing-Vorschläge
+
 Schalten Sie den Schieberegler für **Automatische Bing-Vorschläge** auf die Position EIN um, um Bing-Vorschläge zu aktivieren. Der Schieberegler wird Blau angezeigt.
 
-## <a name="add-suggestions"></a>Hinzufügen von Vorschlägen
-Geben Sie einen Vorschlag in das Textfeld ein, um ihn hinzuzufügen. Drücken Sie die Eingabetaste, oder klicken Sie auf das Symbol **+**. Benutzerdefinierte Vorschläge können in jeder beliebigen Sprache eingegeben werden und erscheinen vor den Bing- Vorschlägen.
+## <a name="add-your-own-suggestions"></a>Hinzufügen eigener Vorschläge
+
+Ihre eigenen Vorschläge für Abfragezeichenfolgen fügen Sie der Liste mit **benutzerdefinierten Vorschlägen** hinzu. Nachdem Sie der Liste einen Vorschlag hinzugefügt haben, drücken Sie die EINGABETASTE, oder klicken Sie auf das Symbol **+**. Sie können die Vorschläge in einer beliebigen Sprache angeben. Sie können maximal 5.000 Vorschläge für Abfragezeichenfolgen hinzufügen.
 
 ## <a name="upload-suggestions"></a>Hochladen von Vorschlägen
-Sie können eine Liste mit Vorschlägen aus einer Datei hochladen. Platzieren Sie jeden Vorschlag in einer separaten Zeile. Klicken Sie auf das Symbol zum Hochladen, und wählen Sie Ihre Datei aus.
+
+Sie können optional auch eine Liste mit Vorschlägen aus einer Datei hochladen. Die Datei darf pro Zeile jeweils nur eine Zeichenfolge zur Suchabfrage enthalten. Um die Datei hochzuladen, klicken Sie auf das Symbol für den Upload und wählen die Datei aus. Der Dienst extrahiert die Vorschläge aus der Datei und fügt sie der Liste hinzu.
 
 ## <a name="remove-suggestions"></a>Entfernen von Vorschlägen
-Wenn Sie einen Vorschlag entfernen möchten, klicken Sie neben diesem auf das Symbol zum Entfernen.
 
-[!INCLUDE [publish or revert](./includes/publish-revert.md)]
+Wenn Sie einen Vorschlag für eine Abfragezeichenfolge entfernen möchten, klicken Sie neben diesem auf das Symbol zum Entfernen.
 
-  >[!NOTE]  
-  >Es kann bis zu 24 Stunden dauern, bis Änderungen an der Konfiguration der benutzerdefinierten Vorschlagssuche wirksam werden.
+## <a name="block-suggestions"></a>Blockieren von Vorschlägen
+
+Wenn Sie Bing-Vorschläge einschließen, können Sie eine Liste von Abfragezeichenfolgen für die Suche hinzufügen, die Bing nicht zurückgeben soll. Wenn Sie blockierte Abfragezeichenfolgen hinzufügen möchten, klicken Sie auf **Show blocked suggestions** (Blockierte Vorschläge anzeigen). Fügen Sie die Abfragezeichenfolge der Liste hinzu, und drücken Sie die EINGABETASTE, oder klicken Sie auf das Symbol **+**. Sie können maximal 50 blockierte Abfragezeichenfolgen hinzufügen.
+
+
+
+[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+
+>[!NOTE]  
+>Es kann bis zu 24 Stunden dauern, bis Änderungen an der Konfiguration der benutzerdefinierten Vorschlagssuche wirksam werden.
+
+
+## <a name="enabling-autosuggest-in-hosted-ui"></a>Aktivieren der Vorschlagssuche auf gehosteter Benutzeroberfläche
+
+Um Vorschläge für Abfragezeichenfolgen für Ihre gehostete Benutzeroberfläche zu aktivieren, klicken Sie auf **Gehostete Benutzeroberfläche**. Scrollen Sie nach unten zum Abschnitt **Zusätzliche Konfiguration**. Wählen Sie unter **Websuche** für **Enable autosuggest** (Vorschlagssuche aktivieren) die Option **Ein** aus. Um die Vorschlagssuche zu aktivieren, müssen Sie ein Layout auswählen, das ein Suchfeld enthält.
+
+
+## <a name="calling-the-autosuggest-api"></a>Aufrufen der Vorschlagssuche-API
+
+Um mithilfe der API für die benutzerdefinierte Bing-Suche vorgeschlagene Abfragezeichenfolgen zu erhalten, senden Sie eine `GET`-Anforderung an den folgenden Endpunkt.
+
+```
+GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions 
+```
+
+Die Antwort enthält eine Liste mit `SearchAction`-Objekten, in denen die vorgeschlagenen Abfragezeichenfolgen enthalten sind.
+
+```
+        {  
+            "displayText" : "sailing lessons seattle",  
+            "query" : "sailing lessons seattle",  
+            "searchKind" : "CustomSearch"  
+        },  
+```
+
+Jeder Vorschlag enthält die Felder `displayText` und `query`. Das Feld `displayText` enthält die vorgeschlagene Abfragezeichenfolge, die Sie zum Auffüllen der Dropdownliste des Suchfelds verwenden.
+
+Wenn der Benutzer in der Dropdownliste eine vorgeschlagene Abfragezeichenfolge auswählt, können Sie die Abfragezeichenfolge im Feld `query` verwenden, wenn Sie die [API für die benutzerdefinierte Bing-Suche](overview.md) aufrufen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

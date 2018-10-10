@@ -5,14 +5,14 @@ author: vhorne
 manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 6/7/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 0812f5e3e23fbf49afec91524b4de2ff0eb7cd9a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e3e04bf7e35b22a56465810f476323ed217e047a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574180"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967624"
 ---
 # <a name="what-is-azure-dns"></a>Was ist Azure DNS?
 
@@ -52,6 +52,14 @@ Ihre Domänen und Einträge können über das Azure-Portal, Azure PowerShell-Cmd
 Azure DNS unterstützt auch private DNS-Domänen (jetzt in der öffentlichen Vorschauphase). Sie können also Ihre eigenen benutzerdefinierten Domänennamen in Ihren privaten virtuellen Netzwerken anstelle der von Azure bereitgestellten Namen verwenden, die derzeit verfügbar sind.
 
 Weitere Informationen finden Sie unter [Verwenden von Azure DNS für private Domänen](private-dns-overview.md).
+
+## <a name="alias-records"></a>Aliaseinträge
+
+Azure DNS unterstützt Aliasdatensätze. Sie können einen Aliasdatensatz zum Verweisen auf eine Azure-Ressource, z.B. eine öffentliche Azure-IP-Adresse oder ein Traffic Manager-Profil, verwenden. Wenn sich die IP-Adresse der zugrunde liegenden Ressource ändert, wird der Aliasdatensatz während der DNS-Auflösung nahtlos automatisch aktualisiert. Der Aliasdatensatz verweist auf die Dienstinstanz, und der Dienstinstanz ist eine IP-Adresse zugeordnet. 
+
+Darüber hinaus kann Ihre Apex- oder Naked-Domäne (z.B. contoso.com) jetzt auf ein Traffic Manager-Profil mit einem Aliaseintrag zeigen.
+
+Weitere Informationen finden Sie in der [Übersicht über Azure-DNS-Aliaseinträge](dns-alias.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
