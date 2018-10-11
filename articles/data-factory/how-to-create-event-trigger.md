@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: douglasl
-ms.openlocfilehash: 53ea7425f0497eca7c95ddefeaa09aa40259672b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 38fbb62de60bc5604210c8ad7339368a04967c27
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216264"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867051"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt
 
@@ -58,11 +58,11 @@ Sobald die Datei in Ihrem Speicherort eingeht und das entsprechende Blob-Element
 
 ### <a name="map-trigger-properties-to-pipeline-parameters"></a>Zuordnen von Triggereigenschaften zu Pipelineparametern
 
-Wenn ein Ereignistrigger für einen bestimmten Blob ausgelöst wird, erfasst das Ereignis den Ordnerpfad und den Dateinamen des Blobs in den Eigenschaften `@triggerBody().folderPath` und `@triggerBody().fileName`. Um die Werte dieser Eigenschaften in einer Pipeline zu verwenden, müssen Sie die Eigenschaften Pipelineparametern zuordnen. Nach der Zuordnung der Eigenschaften zu Parametern können Sie über den Ausdruck `@pipeline.parameters.parameterName` auf die vom Trigger erfassten Werte in der gesamten Pipeline zugreifen.
+Wenn ein Ereignistrigger für einen bestimmten Blob ausgelöst wird, erfasst das Ereignis den Ordnerpfad und den Dateinamen des Blobs in den Eigenschaften `@triggerBody().folderPath` und `@triggerBody().fileName`. Um die Werte dieser Eigenschaften in einer Pipeline zu verwenden, müssen Sie die Eigenschaften Pipelineparametern zuordnen. Nach der Zuordnung der Eigenschaften zu Parametern können Sie über den Ausdruck `@pipeline().parameters.parameterName` auf die vom Trigger erfassten Werte in der gesamten Pipeline zugreifen.
 
 ![Zuordnung von Eigenschaften zu Pipelineparametern](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-Ein Beispiel sehen Sie im obigen Screenshot. Der Trigger ist so konfiguriert, dass er ausgelöst wird, sobald ein Blobpfad mit der Endung `.csv` im Speicherkonto erstellt wird. Wenn ein Blob mit der Erweiterung `.csv` im Speicherkonto erstellt wird, erfassen die Eigenschaften `folderPath` und `fileName` den Speicherort des neuen Blobs. Zum Beispiel weist `@triggerBody().folderPath` einen Wert wie `/containername/foldername/nestedfoldername` und `@triggerBody().fileName` einen Wert wie `filename.csv` auf. Diese Werte werden im Beispiel den Pipelineparametern `sourceFolder` und `sourceFile` zugeordnet. Sie können sie in der gesamten Pipeline als `@pipeline.parameters.sourceFolder` bzw. `@pipeline.parameters.sourceFile` verwenden.
+Ein Beispiel sehen Sie im obigen Screenshot. Der Trigger ist so konfiguriert, dass er ausgelöst wird, sobald ein Blobpfad mit der Endung `.csv` im Speicherkonto erstellt wird. Wenn ein Blob mit der Erweiterung `.csv` im Speicherkonto erstellt wird, erfassen die Eigenschaften `folderPath` und `fileName` den Speicherort des neuen Blobs. Zum Beispiel weist `@triggerBody().folderPath` einen Wert wie `/containername/foldername/nestedfoldername` und `@triggerBody().fileName` einen Wert wie `filename.csv` auf. Diese Werte werden im Beispiel den Pipelineparametern `sourceFolder` und `sourceFile` zugeordnet. Sie können sie in der gesamten Pipeline als `@pipeline().parameters.sourceFolder` bzw. `@pipeline().parameters.sourceFile` verwenden.
 
 ## <a name="json-schema"></a>JSON-Schema
 

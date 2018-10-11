@@ -8,14 +8,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: 1080bb0ad1d901a8b9a5ace4993d4e0d46924a03
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2a0715d3becf695600ed84edbae38151acf055a8
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375354"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246841"
 ---
 # <a name="what-is-anomaly-finder"></a>Worum handelt es sich bei der Anomaliesuche?
+
+[!INCLUDE [PrivatePreviewNote](../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 Mithilfe der Anomaliesuche können Sie Daten im Zeitverlauf überwachen und Anomalien beim maschinellen Lernen ermitteln, das sich durch die automatische Anwendung des richtigen Statistikmodells an Ihre Daten anpasst, unabhängig von Branche, Szenario oder Datenvolumen. Auf der Grundlage einer Zeitreihe als Eingabe gibt die API zur Anomaliesuche zurück, ob ein Datenpunkt eine Anomalie darstellt oder nicht, bestimmt den erwarteten Wert und die Ober- und Untergrenze für die Visualisierung. Als vorgefertigter AI-Dienst benötigt die Anomaliesuche keine Fachkenntnisse auf dem Gebiet des maschinellen Lernens über das Wissen um die Verwendung einer RESTful API hinaus. Dadurch wird die Entwicklung einfach und flexibel, da dies mit beliebigen Zeitreihendaten funktioniert und sogar in Streamingdatensysteme integriert werden kann. Die Anomaliesuche umfasst eine große Bandbreite von Anwendungsfällen – beispielsweise Finanztools für die Bearbeitung von Betrug, Diebstahl, sich ändernden Märkten und möglichen Geschäftsvorfällen oder das Überwachen von Datenverkehr mit IoT-Geräten bei Aufrechterhaltung der Anonymität. Diese Lösung kann auch als Teil einer Dienstleistung für Endkunden zum Verstehen von Änderungen an den Daten, dem Ausgabeverhalten, dem Return-on-Investment oder der Benutzeraktivität monetarisiert werden.
 Testen Sie die Anomaliesuche-API, und erwerben Sie ein tieferes Verständnis Ihrer Daten. 
@@ -34,7 +36,7 @@ Abb. 1: Erkennen von Anomalien in Vertriebsumsätzen
 
 Abb. 2: Erkennen von Musteränderungen in Dienstanforderungen
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 - Mindestdaten für die Eingabe von Zeitreihen: Mindestens 13 Datenpunkte für Zeitreihen ohne eindeutige Periodizität, mindestens vier Zyklen von Datenpunkten für die Zeitreihe mit bekannter Periodizität. 
 - Datenintegrität: Datenpunkte von Zeitreihen liegen voneinander getrennt innerhalb des gleichen Intervalls vor, und es fehlen keine Punkte. 
@@ -47,8 +49,8 @@ Die API zur Anomalieerkennung gibt für alle angegebenen Datenpunkte das Ergebni
 * ExpectedValue (ErwarteterWert): Der auf der Grundlage des lernbasierten Modells vorhergesagte Wert
 * IsAnomaly (IstAnomalie): Das Ergebnis, ob die Datenpunkte Anomalien darstellen oder nicht
 * IsAnomaly_Neg (IstAnomalie_neg): Das Ergebnis, ob die Datenpunkte Anomalien darstellen in negativer Richtung (Senken)
-* IsAnomaly_Pos (IstAnomalie_pos): Das Ergebnis, ob die Datenpunkte Anomalien darstellen in positiver Richtung (Zacken)
-* UpperMargin (Obergrenze): Die Summe von „ExpectedValue“ und „UpperMargin“ bestimmt die Obergrenze, unterhalb derer ein Datenpunkt noch als normal angesehen wird
+* IsAnomaly_Pos: Ergebnis, ob die Datenpunkte Anomalien in positiver Richtung darstellen (Hoch)
+* UpperMargin: Summe aus „ExpectedValue“ und „UpperMargin“; bestimmt die Obergrenze, unterhalb derer ein Datenpunkt als normal gilt
 * LowerMargin (Untergrenze): („ExpectedValue“ - „LowerMargin“) bestimmt die Untergrenze, oberhalb derer der betreffende Datenpunkt noch als normal angesehen wird
 
 > [!Note]

@@ -1,20 +1,21 @@
 ---
-title: Übersicht über Project Answer Search – Microsoft Cognitive Services | Microsoft-Dokumentation
+title: Worum handelt es sich bei Project Answer Search?
+titlesuffix: Azure Cognitive Services
 description: Einführung in Project Answer Search
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: overview
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: d87cf1390970d2c815b94bcaee7e07c19bc03cce
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 5658054b3cc77db20edd64f6c560ee5d4a58eb46
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376386"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883719"
 ---
 # <a name="what-is-project-answer-search"></a>Worum handelt es sich bei Project Answer Search?
 Die Project Answer Search-API verwendet den Bing-v7-Endpunkt, um Antworten auf interrogative Abfragen zu erhalten. Auf eine Frage wie z.B. „Wie groß ist der Erdumfang?“ wird eine Antwort mit Fakten zurückgegeben.  Eine Abfrage für eine Person, einen Ort oder eine Sache gibt Informationen über die in der Abfrage angegebene Entität zurück. Diese Szenarien können in Anwendungen wie Konversationsbots, Messaging-Apps, Readern usw. nützlich sein.  
@@ -253,7 +254,7 @@ Project Answer Search-Antworten enthalten Informationen, deren Besitzer Drittanb
   
 Wenn eine Antwort oder ein Ergebnis die Felder `contractualRules`, `attributions` oder `provider` enthält, müssen Sie die Daten zuordnen. Enthält die Antwort keines dieser Felder, ist keine Zuordnung erforderlich. Wenn die Antwort das Feld `contractualRules` sowie die Felder `attributions` und/oder `provider` enthält, müssen Sie die vertraglichen Regeln zum Zuordnen der Daten verwenden.  
   
-Das folgende Beispiel zeigt eine Entität, die eine vertragliche Regel vom Typ „MediaAttribution“ enthält, sowie ein Bild, das ein `provider`-Feld umfasst. Die „MediaAttribution“-Regel legt das Bild als Ziel für die Regel fest, sodass Sie das `provider`-Feld des Bilds ignorieren und stattdessen die „MediaAttribution“-Regel für die Zuordnung verwenden.  
+Das folgende Beispiel zeigt eine Entität, die eine vertragliche MediaAttribution-Regel enthält, sowie ein Bild, das ein `provider`-Feld umfasst. Die MediaAttribution-Regel identifiziert das Bild als Ziel der Regel, sodass Sie das `provider`-Feld des Bilds ignorieren und stattdessen die MediaAttribution-Regel für die Zuordnung verwenden müssen.  
   
 ```  
         "value" : [{
@@ -285,7 +286,7 @@ Das folgende Beispiel zeigt eine Entität, die eine vertragliche Regel vom Typ �
 Wenn eine vertragliche Regel das Feld `targetPropertyName` enthält, gilt die Regel nur für das Zielfeld. Andernfalls gilt die Regel für das übergeordnete Objekt, das das Feld `contractualRules` enthält.  
   
   
-Im folgenden Beispiel enthält die `LinkAttribution`-Regel das Feld `targetPropertyName`, sodass die Regel für das Feld `description` gilt. Bei Regeln, die für bestimmte Felder gelten, müssen Sie eine Zeile einfügen, die unmittelbar auf die Zieldaten folgt und einen Link zur Website des Anbieters enthält. Um beispielsweise die Beschreibung zuzuordnen, fügen Sie eine Zeile unmittelbar nach dem Beschreibungstext ein, der einen Link zu den Daten auf der Website des Anbieters enthält, also in diesem Fall einen Link zu „en.wikipedia.org“.  
+Im folgenden Beispiel enthält die Regel `LinkAttribution` das Feld `targetPropertyName`, sodass die Regel für das Feld `description` gilt. Bei Regeln, die für bestimmte Felder gelten, müssen Sie eine Zeile einfügen, die unmittelbar auf die Zieldaten folgt und einen Link zur Website des Anbieters enthält. Um beispielsweise die Beschreibung zuzuordnen, fügen Sie eine Zeile unmittelbar nach dem Beschreibungstext ein, der einen Link zu den Daten auf der Website des Anbieters enthält, also in diesem Fall einen Link zu „en.wikipedia.org“.  
   
 ```  
 "entities" : {  
@@ -306,7 +307,7 @@ Im folgenden Beispiel enthält die `LinkAttribution`-Regel das Feld `targetPrope
 
 ### <a name="license-attribution"></a>Lizenzzuordnung  
 
-Wenn die Liste der vertraglichen Regeln eine [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution)-Regel enthält, müssen Sie den Hinweis in der Zeile anzeigen, die unmittelbar auf den Inhalt folgt, für den die Lizenz gilt. Die `LicenseAttribution`-Regel verwendet das Feld `targetPropertyName` um anzugeben, wofür die Lizenz gilt.  
+Wenn die Liste der vertraglichen Regeln eine [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution)-Regel enthält, müssen Sie den Hinweis in der Zeile anzeigen, die unmittelbar auf den Inhalt folgt, für den die Lizenz gilt. Die `LicenseAttribution`-Regel verwendet das Feld `targetPropertyName`, um die Eigenschaft anzugeben, für die die Lizenz gilt.  
   
 Nachfolgend sehen Sie ein Beispiel, das eine `LicenseAttribution`-Regel enthält.  
   
@@ -326,7 +327,7 @@ Nachfolgend sehen Sie ein Beispiel, das `LinkAttribution`- und `TextAttribution`
 
 ### <a name="media-attribution"></a>Medienzuordnung  
 
-Wenn die Entität ein Bild enthält und Sie dieses anzeigen, müssen Sie einen Link zum Durchklicken zur Website des Anbieters bereitstellen. Wenn die Entität eine [MediaAttribution](reference.md#mediaattribution)-Regel enthält, verwenden Sie die URL der Regel, um den Link zum Durchklicken zu erstellen. Verwenden Sie andernfalls die URL, die im `provider`-Feld des Bilds enthalten ist, um den Link zum Durchklicken zu erstellen.  
+Wenn die Entität ein Bild enthält und Sie dieses anzeigen, müssen Sie einen Link zum Durchklicken zur Website des Anbieters bereitstellen. Wenn die Entität eine [MediaAttribution](reference.md#mediaattribution)-Regel enthält, verwenden Sie die URL der Regel, um den Link zum direkten Klicken zu erstellen. Verwenden Sie andernfalls die URL, die im `provider`-Feld des Bilds enthalten ist, um den Link zum direkten Klicken zu erstellen.  
   
 Nachfolgend sehen Sie ein Beispiel, das ein `provider`-Feld eines Bilds und vertragliche Regeln enthält. Da das Beispiel die vertragliche Regel enthält, ignorieren Sie das `provider`-Feld des Bilds und wenden die `MediaAttribution`-Regel an.  
   

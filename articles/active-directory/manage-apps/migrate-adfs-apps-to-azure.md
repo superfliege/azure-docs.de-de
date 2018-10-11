@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 8d5f31f09d51794f9ad3c126edf2fd935f379221
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296470"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48903027"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrieren von lokalen AD FS-Apps zu Azure 
 
@@ -151,7 +151,7 @@ Zu den derzeit leicht zu migrierenden Apps gehören SAML 2.0-Apps, für die der 
 - Vorname
 - Nachname
 - Alternatives Attribut als SAML-**NameID**, z.B. Azure AD-E-Mail-Attribut, E-Mail-Präfix, Mitarbeiter-ID, Erweiterungsattribute 1 - 15 oder lokales **SamAccountName**-Attribut. Weitere Informationen finden Sie im Artikel zum [Bearbeiten des NameIdentifier-Anspruchs](../develop/active-directory-saml-claims-customization.md).
-- Benutzerdefinierte Ansprüche. Informationen zu den unterstützten Anspruchszuordnungen finden Sie unter [Anspruchszuordnung in Azure Active Directory (Public Preview)](../active-directory-claims-mapping.md) und [Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
+- Benutzerdefinierte Ansprüche. Informationen zu den unterstützten Anspruchszuordnungen finden Sie unter [Anspruchszuordnung in Azure Active Directory (Public Preview)](../develop/active-directory-claims-mapping.md) und [Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
 
 Zusätzlich zu benutzerdefinierten Ansprüchen und **NameID**-Elementen gibt es die folgenden Konfigurationen, für die in Azure AD im Rahmen der Migration zusätzliche Konfigurationsschritte erforderlich sind:
 - Benutzerdefinierte Autorisierungs- oder Multi-Factor Authentication-Regeln in AD FS. Sie konfigurieren diese Regeln, indem Sie das Feature [Bedingter Azure AD-Zugriff](../active-directory-conditional-access-azure-portal.md) verwenden.
@@ -171,7 +171,7 @@ Apps, für die die folgenden Funktionen erforderlich sind, können derzeit nicht
 - Ansprüche in Tokenfunktionen:
     - Ausstellung von lokalen Gruppennamen als Ansprüche.
     - Ansprüche aus anderen Speichern als Azure AD.
-    - Komplexe Transformationsregeln für die Ausstellung von Ansprüchen. Informationen zu den unterstützten Anspruchszuordnungen finden Sie unter [Anspruchszuordnung in Azure Active Directory (Public Preview)](../active-directory-claims-mapping.md) und [Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
+    - Komplexe Transformationsregeln für die Ausstellung von Ansprüchen. Informationen zu den unterstützten Anspruchszuordnungen finden Sie unter [Anspruchszuordnung in Azure Active Directory (Public Preview)](../develop/active-directory-claims-mapping.md) und [Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
     - Ausstellung von Verzeichniserweiterungen als Ansprüche.
     - Benutzerdefinierte Angabe des **NameID**-Formats.
     - Ausstellung von mehrwertigen Attributen.

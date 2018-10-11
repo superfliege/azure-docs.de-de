@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 8/3/2018
 ms.author: junhan
-ms.openlocfilehash: ef99f4be97f5168add44d373a7e74de62347d110
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d79e5b0b5281d502523cd92fbdb21106ffde0c21
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450270"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040132"
 ---
 # <a name="use-azure-iot-toolkit-extension-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Verwenden der Azure IoT-Toolkiterweiterung für Visual Studio Code für die Geräteverwaltung mit Azure IoT Hub
 
@@ -23,8 +23,8 @@ Das [Azure IoT-Toolkit](https://marketplace.visualstudio.com/items?itemName=vsci
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Verwaltungsoption          | Aufgabe                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| Verwaltungsoption          | Aufgabe                    |
+|----------------------------|--------------------------------|
 | Direkte Methoden             | Lassen Sie ein Gerät beispielsweise mit dem Senden von Nachrichten beginnen oder dies beenden, oder starten Sie es neu.                                        |
 | Lesen des Gerätezwillings           | Rufen Sie den berichteten Status eines Geräts ab. Das Gerät meldet z.B., das die LED jetzt blinkt.                                    |
 | Aktualisieren des Gerätezwillings         | Setzen Sie ein Gerät in bestimmte Status, stellen Sie z.B. das Leuchten einer grünen LED ein, oder legen Sie das Telemetriesendeintervall auf 30 Minuten fest.         |
@@ -44,18 +44,22 @@ Führen Sie die Azure IoT-Toolkiterweiterung für Visual Studio Code mit untersc
 
 ## <a name="what-you-need"></a>Voraussetzungen
 
-- Ein aktives Azure-Abonnement.
-- Ein Azure IoT Hub in Ihrem Abonnement.
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure IoT-Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+* Ein aktives Azure-Abonnement.
+* Ein Azure IoT Hub in Ihrem Abonnement.
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Azure IoT-Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Anmeldung zum Zugreifen auf Ihren IoT Hub
 
 1. Erweitern Sie in der Ansicht **Explorer** von VS Code in der unteren linken Ecke den Abschnitt **Azure IoT Hub-Geräte**.
-1. Klicken Sie im Kontextmenü auf **IoT Hub auswählen**.
-1. In der unteren rechten Ecke wird ein Popupfenster angezeigt, mit der Sie sich zum ersten Mal bei Azure anmelden können.
-1. Nachdem Sie sich angemeldet haben, wird Ihre Liste der Azure-Abonnements angezeigt. Wählen Sie dann „Azure-Abonnement“ und „IoT Hub“ aus.
-1. In der Geräteliste wird nach wenigen Sekunden die Registerkarte **Azure IoT Hub-Geräte** angezeigt.
+
+2. Klicken Sie im Kontextmenü auf **IoT Hub auswählen**.
+
+3. In der unteren rechten Ecke wird ein Popupfenster angezeigt, mit der Sie sich zum ersten Mal bei Azure anmelden können.
+
+4. Nachdem Sie sich angemeldet haben, wird Ihre Liste der Azure-Abonnements angezeigt. Wählen Sie dann „Azure-Abonnement“ und „IoT Hub“ aus.
+
+5. In der Geräteliste wird nach wenigen Sekunden die Registerkarte **Azure IoT Hub-Geräte** angezeigt.
 
    > [!Note]
    > Sie können die Einrichtung auch abschließen, indem Sie auf **Set IoT Hub Connection String** (IoT Hub-Verbindungszeichenfolge festlegen) klicken. Geben Sie in das Popupfenster die Verbindungszeichenfolge für den IoT Hub ein, mit dem Ihr IoT-Gerät eine Verbindung herstellt.
@@ -63,27 +67,34 @@ Führen Sie die Azure IoT-Toolkiterweiterung für Visual Studio Code mit untersc
 ## <a name="direct-methods"></a>Direkte Methoden
 
 1. Klicken Sie mit der rechten Maustaste auf Ihr Gerät, und wählen Sie **Invoke Direct Method** (Direkte Methode aufrufen). 
-1. Geben Sie den Methodennamen und die Nutzlast im Eingabefeld ein.
-1. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT-Toolkit** angezeigt.
+
+2. Geben Sie den Methodennamen und die Nutzlast im Eingabefeld ein.
+
+3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT-Toolkit** angezeigt.
 
 ## <a name="read-device-twin"></a>Lesen des Gerätezwillings
 
 1. Klicken Sie mit der rechten Maustaste auf Ihr Gerät, und wählen Sie **Gerätezwilling bearbeiten**. 
-1. Die Datei **azure-iot-device-twin.json** mit dem Inhalt des Gerätezwillings wird geöffnet.
+
+2. Die Datei **azure-iot-device-twin.json** mit dem Inhalt des Gerätezwillings wird geöffnet.
 
 ## <a name="update-device-twin"></a>Aktualisieren des Gerätezwillings
 
 1. Nehmen Sie Änderungen an **Tags** oder am Feld **properties.desired** vor.
-1. Klicken Sie mit der rechten Maustaste auf die Datei **azure-iot-device-twin.json**.
-1. Wählen Sie **Update Device Twin** (Gerätezwilling aktualisieren), um den Gerätezwilling zu aktualisieren.
+
+2. Klicken Sie mit der rechten Maustaste auf die Datei **azure-iot-device-twin.json**.
+
+3. Wählen Sie **Update Device Twin** (Gerätezwilling aktualisieren), um den Gerätezwilling zu aktualisieren.
 
 ## <a name="send-cloud-to-device-messages"></a>Senden von C2D-Nachrichten.
 
 Um eine Nachricht von Ihrem IoT Hub zu Ihrem Gerät zu senden, gehen Sie folgendermaßen vor:
  
 1. Klicken Sie mit der rechten Maustaste auf Ihr Gerät, und klicken Sie auf **C2D-Nachricht an Gerät senden**. 
-1. Geben Sie die Nachricht in das Eingabefeld ein.
-1. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT-Toolkit** angezeigt.
+
+2. Geben Sie die Nachricht in das Eingabefeld ein.
+
+3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT-Toolkit** angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

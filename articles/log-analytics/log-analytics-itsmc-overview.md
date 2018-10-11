@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.component: na
-ms.openlocfilehash: da37e7558f93bc5073cd4ee1726a409c7defe127
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 5f5b03090f374f936e03d487596ca0462feea348
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131717"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042427"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -153,7 +153,7 @@ Das Dashboard bietet darüber hinaus Informationen zum Connectorstatus, die als 
 
 Zudem lassen sich die mit den betroffenen Computern synchronisierten Incidents innerhalb der Dienstzuordnungslösung visuell darstellen.
 
-Service Map ermittelt automatisch die Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich. [Weitere Informationen](../operations-management-suite/operations-management-suite-service-map.md)
+Service Map ermittelt automatisch die Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich. [Weitere Informationen](../operations-management-suite/operations-management-suite-service-map.md).
 
 Wenn Sie die Dienstzuordnungslösung verwenden, können Sie die in den ITSM-Lösungen erstellten Service Desk-Elemente anzeigen, wie im folgenden Beispiel gezeigt:
 
@@ -180,7 +180,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - ServiceDeskConnectionName
 - Service Desk-ID
-- State (Zustand)
+- Zustand
 - Dringlichkeit
 - Auswirkung
 - Priorität
@@ -238,7 +238,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics-Feld | ServiceNow-Feld |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | State (Zustand) |
+| IncidentState_s | Zustand |
 | Urgency_s |Dringlichkeit |
 | Impact_s |Auswirkung|
 | Priority_s | Priorität |
@@ -266,7 +266,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  Kurzbeschreibung |
 | Type_s|  Typ |
 | Category_s|  Category (Kategorie) |
-| CRState_s|  State (Zustand)|
+| CRState_s|  Zustand|
 | Urgency_s|  Dringlichkeit |
 | Priority_s| Priorität|
 | Risk_s| Risiko|
