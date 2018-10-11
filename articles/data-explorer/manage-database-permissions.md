@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fbbc5a199116e46aac0874f3dc6d6d9aa18c60cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b0fb2cd79c0ee685ad2000c5444a84d53e462f24
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954020"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868274"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Verwalten der Berechtigungen für Datenbanken in Azure-Daten-Explorer
 
@@ -31,7 +31,6 @@ Der Azure-Daten-Explorer verfügt über die folgenden Rollen:
 |Datenbank-Benutzer              |Kann alle Daten und Metadaten in der Datenbank lesen. Darüber hinaus kann er Tabellen und Funktionen in der Datenbank erstellen und wird dabei zum Tabellenadministrator für die jeweiligen Tabellen.|
 |Database viewer (Anzeigender Datenbankbenutzer)            |Kann alle Daten und Metadaten in der Datenbank lesen.|
 |Database ingestor (Datenbankerfasser)          |Kann Daten in allen vorhandenen Tabellen in der Datenbank erfassen, die Daten aber nicht abfragen.|
-|Database unrestrictedviewer (Nicht eingeschränkter anzeigender Datenbankbenutzer)|Kann Tabellen abfragen, für die die Richtlinie **RestrictedViewAccess** aktiviert ist. Andere Tabellen können nicht abgefragt werden.|
 |Database monitor (Datenbankmonitor)           |Kann Befehle vom Typ „.show ... im Kontext der Datenbank und ihrer untergeordneten Entitäten ausführen.|
 |Table admin (Tabellenadministrator)                |Kann alle Aktionen im Bereich einer bestimmten Tabelle ausführen. |
 |Table ingestor (Tabellenerfasser)             |Kann Daten im Bereich einer bestimmten Tabelle erfassen, die Daten aber nicht abfragen.|
@@ -78,4 +77,4 @@ Der Azure-Daten-Explorer verfügt über die folgenden Rollen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Schreiben von Abfragen](write-queries.md)
+[Write queries](write-queries.md) (Schreiben von Abfragen)

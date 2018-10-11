@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 941c29506aa8f17dcb6262495b28dd26e78194d5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e0cdda629ddded121a424af61377c04ee8d958d3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036054"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867543"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Tutorial 7: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
 
@@ -40,21 +40,21 @@ Die Simple-Entität eignet sich gut für diese Art von Daten, wenn folgende Bedi
 > * Hinzufügen einer Begriffsliste, um das Signal von Stellenwörtern zu verstärken
 > * Trainieren 
 > * Veröffentlichen 
-> * Abrufen von Absichten und Entitäten von einem Endpunkt
+> * Abrufen von Absichten und Entitäten vom Endpunkt
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Verwenden der vorhandenen App
 
-Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **Personalwesen** fort. 
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
 
-Wenn Sie nicht über die Personalwesen-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
 
 1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json) herunter, und speichern Sie sie.
 
 2. Importieren Sie den JSON-Code in eine neue App.
 
-3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und benennen Sie sie `simple`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf der Name keine Zeichen enthalten, die in einer URL ungültig sind.
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `simple`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
 
 ## <a name="simple-entity"></a>Entität vom Typ „Simple“
 Die Simple-Entität erkennt ein einfaches Datenkonzept, das in Wörtern oder Formulierungen enthalten ist.
@@ -299,7 +299,7 @@ Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präzise
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-5. [Trainieren](#train-the-luis-app) und [veröffentlichen](#publish-the-app-to-get-the-endpoint-URL) Sie die App erneut, um die Begriffsliste zu verwenden.
+5. [Trainieren](#train) und [veröffentlichen](#publish) Sie die App erneut, um die Begriffsliste zu verwenden.
 
 6. Fragen Sie den Endpunkt erneut mit der gleichen Äußerung ab: `This is the lead welder paperwork.`
 

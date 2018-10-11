@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 60a6061d6ac0998064897462c0e82db811bdc187
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9a867289cffa17030e397ef170e9055451057410
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435312"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237737"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Sprach- und Regionsunterstützung für die API für den Spracherkennungsdienst
 
@@ -31,16 +31,16 @@ Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen. Es sind 
  ca-ES | Katalanisch (Spanien) | Nein  | Nein  | Nein 
  da-DK | Dänisch (Dänemark) | Nein  | Nein  | Nein 
  de-DE | Deutsch (Deutschland) | JA | JA | Nein 
- en-AU | Englisch (Australien) | JA | Ja | JA
- en-CA | Englisch (Kanada) | JA | Ja | JA
- en-GB | Englisch (Vereinigtes Königreich) | JA | Ja | JA
- en-IN | Englisch (Indien) | Nein  | Ja | JA
- en-NZ | Englisch (Neuseeland) | JA | Ja | JA  
+ en-AU | Englisch (Australien) | Nein  | Ja | JA
+ en-CA | Englisch (Kanada) | Nein  | Ja | JA
+ en-GB | Englisch (Vereinigtes Königreich) | Nein  | Ja | JA
+ en-IN | Englisch (Indien) | JA | Ja | JA
+ en-NZ | Englisch (Neuseeland) | Nein  | Ja | JA  
  en-US | Englisch (USA) | JA | Ja | JA
- es-ES | Spanisch (Spanien) | JA | JA | Nein 
- es-MX | Spanisch (Mexiko) | JA | JA | Nein 
+ es-ES | Spanisch (Spanien) | Nein  | Ja | Nein 
+ es-MX | Spanisch (Mexiko) | Nein  | Ja | Nein 
  fi-FI | Finnisch (Finnland) | Nein  | Nein  | Nein 
- fr-CA | Französisch (Kanada) | JA | JA | Nein 
+ fr-CA | Französisch (Kanada) | Nein  | Ja | Nein 
  fr-FR | Französisch (Frankreich) | JA | JA | Nein 
  hi-IN | Hindi (Indien) | Nein  | Ja | Nein 
  it-IT | Italienisch (Italien) | JA | JA | Nein 
@@ -51,7 +51,7 @@ Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen. Es sind 
  pl-PL | Polnisch (Polen) | Nein  | Nein  | Nein 
  pt-BR | Portugiesisch (Brasilien) | Nein  | Ja | Nein 
  pt-PT | Portugiesisch (Portugal) | Nein  | Ja | Nein 
- ru-RU | Russisch (Russland) | Nein  | Ja | Nein 
+ ru-RU | Russisch (Russland) | JA | JA | Nein 
  sv-SE | Schwedisch (Schweden) | Nein  | Nein  | Nein 
  zh-CN | Chinesisch (Mandarin, vereinfacht) | JA | JA | Nein 
  zh-HK | Chinesisch (Mandarin, Traditionell) | Nein  | Ja | Nein 
@@ -161,8 +161,6 @@ Die Stimmanpassung ist für US-amerikanisches Englisch (en-US), vereinfachtes Ch
 ## <a name="speech-translation"></a>Sprachübersetzung
 
 Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übersetzung von Sprache in Sprache und Sprache in Text. Die Ausgangssprache muss immer eine der Sprachen aus der folgenden Sprachtabelle sein. Welche Zielsprachen verfügbar sind, richtet sich danach, ob es sich beim Übersetzungsziel um Sprache oder Text handelt.
-
-Sie können die Liste der Sprachen programmgesteuert oder über den Sprachenendpunkt der REST-API abrufen. Die Liste enthält alle Sprachcodes sowie den Sprachnamen in Englisch bzw. einer anderen unterstützten Sprache. Sobald eine neue Sprache verfügbar ist, wird diese Liste vom Microsoft Translator-Dienst aktualisiert.
 
 ### <a name="speech-languages"></a>Sprachen für Sprachausgabe
 

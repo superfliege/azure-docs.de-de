@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 2ffb1f7edef0cf92cbbf7adc4314967858bcfeb1
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8fbc84b4016659b6d0d6ce9ec47c05a0b241c3d9
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128642"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855373"
 ---
 # <a name="enterprise-integration-architecture-with-queues-and-events"></a>Unternehmensintegrationsarchitektur mit Warteschlangen und Ereignissen
 
@@ -81,7 +81,7 @@ Event Grid verwendet ein serverloses Modell. Die Abrechnung erfolgt auf Basis de
 
 ### <a name="use-peeklock-to-consume-service-bus-messages"></a>Nutzen von PeekLock für Service Bus-Nachrichten
 
-Beim Erstellen einer Logik-Apps zur Nutzung von Service Bus-Nachrichten verwenden Sie [PeekLock](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#queues) in der Logik-App, um auf eine Gruppe von Nachrichten zuzugreifen. Mit PeekLock kann die Logik-App dann Schritte ausführen, um die einzelnen Nachrichten zu überprüfen, bevor sie abgeschlossen oder verworfen werden. Dieser Ansatz schützt vor versehentlichem Nachrichtenverlust.
+Beim Erstellen einer Logik-Apps zur Nutzung von Service Bus-Nachrichten verwenden Sie [PeekLock](../service-bus-messaging/service-bus-messaging-overview.md#queues) in der Logik-App, um auf eine Gruppe von Nachrichten zuzugreifen. Mit PeekLock kann die Logik-App dann Schritte ausführen, um die einzelnen Nachrichten zu überprüfen, bevor sie abgeschlossen oder verworfen werden. Dieser Ansatz schützt vor versehentlichem Nachrichtenverlust.
 
 ### <a name="check-for-multiple-objects-when-an-event-grid-trigger-fires"></a>Überprüfung auf mehrere Objekte beim Auslösen eines Event Grid-Triggers
 
@@ -101,7 +101,7 @@ Mit dem Service Bus-Premium-Tarif lässt sich die Anzahl von Nachrichteneinheite
 
 * Die Vereinbarung zum Servicelevel (SLA) für Azure API Management beträgt für die Tarife „Basic“, „Standard“ und „Premium“ derzeit 99,9%. Für Konfigurationen mit Premium-Tarif und Bereitstellung von mindestens einer Einheit in zwei oder mehr Regionen gilt eine SLA von 99,95%.
 
-* Der SLA für Azure Logic Apps beträgt derzeit 99,9%.
+* Die SLA für Azure Logic Apps beträgt derzeit 99,9%.
 
 ### <a name="disaster-recovery"></a>Notfallwiederherstellung
 

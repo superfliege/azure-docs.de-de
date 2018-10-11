@@ -1,20 +1,21 @@
 ---
-title: Project URL Preview-Endpunkt – Microsoft Cognitive Services | Microsoft Docs
+title: Project URL Preview-Endpunkt
+titlesuffix: Azure Cognitive Services
 description: Zusammenfassung des URL Preview-Endpunkts.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: ddd53aa49db01d7a6db397eb285d0854edc59388
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0464ac80c451ada46561de78b5ba0860c59a9e34
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376226"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868648"
 ---
 # <a name="project-url-preview-endpoint"></a>Project URL Preview-Endpunkt
 
@@ -30,9 +31,9 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ````
 
 ### <a name="query-parameters"></a>Abfrageparameter
-|Name|Wert|Typ|Erforderlich|  
+|NAME|Wert|Typ|Erforderlich|  
 |----------|-----------|----------|--------------|  
-|q|Die URL, für die eine Vorschau angezeigt werden soll|Zeichenfolge |Ja|
+|q|Die URL, für die eine Vorschau angezeigt werden soll|Zeichenfolge |JA|
 |safeSearch|Ungültige, nicht jugendfreie Inhalte oder illegale Inhalte. Diese werden mit dem Fehlercode 400 blockiert, und das Flag *isFamilyFriendly* wird nicht zurückgegeben. <p>Für legale nicht jugendfreie Inhalte wird das Verhalten unten beschrieben. Es wird der Statuscode 200 zurückgegeben, und das Flag *IsFamilyFriendly* wird auf „false“ festgelegt.<ul><li>safeSearch=strict: Titel, Beschreibung, URL und Bild werden nicht zurückgegeben.</li><li>safeSearch=moderate: Titel, URL und Beschreibung werden abgerufen, das beschreibende Bild aber nicht.</li><li>safeSearch=off: Alle Antwortobjekte/-elemente (Titel, URL, Beschreibung und Bild) werden abgerufen.</li></ul> |Zeichenfolge|Nicht erforderlich. </br> Standardmäßig wird „safeSearch=strict“ verwendet.| 
 
 ## <a name="response-object"></a>Antwortobjekt

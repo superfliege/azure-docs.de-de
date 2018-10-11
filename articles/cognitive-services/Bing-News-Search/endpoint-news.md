@@ -1,22 +1,23 @@
 ---
-title: Endpunkte für die Bing-News-Suche | Microsoft-Dokumentation
+title: Bing-News-Suche-Endpunkte
+titlesuffix: Azure Cognitive Services
 description: Überblick über den API-Endpunkt für die News-Suche.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: v-gedod
-ms.openlocfilehash: ab892e947566adf025499382b213a52ed3e96e35
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 0ed8b9048c04c4aff5214cea697810a0c573559e
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433683"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800544"
 ---
-# <a name="news-search-endpoints"></a>News-Suche-Endpunkte
+# <a name="bing-news-search-endpoints"></a>Bing-News-Suche-Endpunkte
 Die **News-Suche-API** gibt Nachrichtenartikel, Webseiten, Bilder, Videos und [Entitäten](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) zurück. Entitäten enthalten zusammenfassende Informationen zur einer Person, einem Ort oder einem Thema.
 ## <a name="endpoints"></a>Endpunkte
 Um mithilfe der Bing-API News-Suchergebnisse zu erhalten, senden Sie eine `GET`-Anforderung an einen der folgenden Endpunkte. Die Header und die URL-Parameter definieren weitere Spezifikationen.

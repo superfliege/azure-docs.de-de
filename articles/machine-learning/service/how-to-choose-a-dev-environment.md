@@ -6,15 +6,16 @@ author: rastala
 ms.author: roastala
 manager: cgronlun
 ms.service: machine-learning
+ms.component: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 9/24/2018
-ms.openlocfilehash: 260e209bcf00396ee545851684038578c4fd148a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f221d160685dd12fb18a611432911baa60ebc6f7
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971041"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888103"
 ---
 # <a name="development-environment-for-azure-machine-learning"></a>Entwicklungsumgebung für Azure Machine Learning 
 
@@ -24,7 +25,7 @@ Der Azure Machine Learning-Dienst ist plattformunabhängig und benötigt keine b
 
 Im restlichen Teil dieses Dokuments werden die von uns empfohlenen Entwicklungsumgebungen beschrieben:
 
-* __Jupyter Notebooks__
+* __Jupyter-Notebooks__
 * __Azure Notebooks__
 * __Integrierte Entwicklungsumgebungen (IDEs) und Code-Editoren__
 * __Virtueller Computer für Data Science__
@@ -36,13 +37,13 @@ Ein Vergleich zwischen diesen Umgebungen ist schwierig, da sowohl Notebooks als 
 >
 > Dies ist der Grund, warum die Data Science Virtual Machine sowohl über Jupyter Notebooks als auch über mehrere beliebte Python-IDEs verfügt.
 
-## <a name="jupyter-notebooks"></a>Jupyter Notebooks
+## <a name="jupyter-notebooks"></a>Jupyter-Notebooks
 
 Jupyter Notebooks sind Teil des [Jupyter-Projekts](https://jupyter.org/). Sie sollen vor allem für die Bereitstellung einer interaktiven Codierumgebung sorgen, mit der Sie Dokumente erstellen können, in denen Livecode mit beschreibendem Text und Grafiken gemischt ist. Sie können Jupyter Notebooks auf vielen unterschiedlichen Plattformen installieren.
 
 Wenn Sie über eine eigene Jupyter Notebook-Installation verfügen, können Sie die Umgebung wie gewünscht installieren und konfigurieren. Sie sind dann aber für die Wartung des Systems verantwortlich.
 
-## <a name="azure-notebooks"></a>Azure Notebooks
+## <a name="azure-notebooks"></a>Azure-Notebooks
 
 [Azure Notebooks](https://notebooks.azure.com) (Vorschauversion) ist eine Notebookumgebung in der Azure-Cloud. Sie basiert auf Jupyter, und es wird eine Umgebung bereitgestellt, in der beliebte Bibliotheken bereits vorab geladen sind. Das Azure Machine Learning SDK ist in Azure Notebooks bereits installiert, sodass Sie nahezu ohne Setupaufwand mit dem Experimentieren beginnen können.
 
