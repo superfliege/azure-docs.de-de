@@ -1,0 +1,44 @@
+items:
+- name: Dokumentation zur Anpassung des Azure-Portals
+  href: index.yml
+- name: Azure-Dashboards
+  items:
+  - name: Erstellen und Freigeben von Azure-Dashboards
+    href: azure-portal-dashboards.md
+  - name: Freigeben von Dashboards per rollenbasierter Zugriffssteuerung
+    href: azure-portal-dashboard-share-access.md
+  - name: Struktur von Azure-Dashboards
+    href: azure-portal-dashboards-structure.md
+  - name: Programmgesteuertes Erstellen von Azure-Dashboards
+    href: azure-portal-dashboards-create-programmatically.md
+- name: Einstellungen
+  items:
+  - name: Tastenkombinationen
+    href: azure-portal-keyboard-shortcuts.md
+  - name: Unterstützte Browser und Geräte
+    href: ../azure-preview-portal-supported-browsers-devices.md
+  - name: Aktivieren des hohen Kontrasts oder Ändern des Designs
+    href: azure-portal-change-theme-high-contrast.md
+  - name: Exportieren oder Löschen von Benutzereinstellungen
+    href: azure-portal-export-delete-settings.md
+  expanded: true
+- name: Ressourcen
+  items:
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/updates/
+  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+    href: /learn/browse/?products=azure-portal
+  - name: Preisrechner
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/regions/services/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-management-portal
+  - name: Videos
+    href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
+ms.openlocfilehash: d2918197e211cc40662d51fa9f6d6131df426ef6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079711"
