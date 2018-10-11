@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 5de25f574cb876701ffce74f1dca8c4bb9764157
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc9681ee286c30825ac908f9f97ae092808c783a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30165669"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802135"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>Vorbereiten des ASDK-Hostcomputers
 Bevor Sie das ASDK auf dem Hostcomputer installieren können, muss die ASDK-Umgebung vorbereitet werden. Nach der Vorbereitung des Development Kit-Hostcomputers startet der Computer von der Festplatte des virtuellen Computers (CloudBuilder.vhdx), sodass die ASDK-Bereitstellung beginnen kann.
@@ -53,7 +53,6 @@ Bevor Sie das ASDK auf dem Hostcomputer installieren können, muss die Umgebung 
 
 6. Geben Sie auf der Seite **Optionale Einstellungen** das lokale Administratorkonto für den Development Kit-Hostcomputer an, und klicken Sie auf **Weiter**. Sie können auch Werte für die folgenden optionalen Einstellungen angeben:
   - **Computername**: Diese Option legt den Namen für den Development Kit-Host fest. Der Name muss die FQDN-Anforderungen erfüllen und darf höchstens 15 Zeichen umfassen. Der Standardwert ist ein von Windows generierter zufälliger Computername.
-  - **Zeitzone**: Legt die Zeitzone für den Development Kit-Host fest. Der Standardwert ist (UTC-8:00) Pacific Time (USA und Kanada).
   - **Statische IP-Konfiguration**: Legt für Ihre Bereitstellung die Verwendung einer statischen IP-Adresse fest. Andernfalls werden beim Neustart des Installationsprogramms in „cloudbuilder.vhdx“ die Netzwerkschnittstellen mit DHCP konfiguriert.
 
     ![](media/asdk-prepare-host/3.PNG)

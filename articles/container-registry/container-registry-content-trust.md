@@ -2,17 +2,17 @@
 title: Inhaltsvertrauen in Azure Container Registry
 description: Sie erfahren, wie Inhaltsvertrauen für Ihre Azure-Containerregistrierung aktiviert wird und Push- und Pull-Vorgänge für signierte Images ausgeführt werden.
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 08/20/2018
-ms.author: marsma
-ms.openlocfilehash: 5dd8bc4227fda4c5d4def4b59bd7ff9a707f47f9
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.author: danlep
+ms.openlocfilehash: 1f1e7ce41c00078c0181fc5f32c43b7e5885eef8
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234032"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857668"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhaltsvertrauen in Azure Container Registry
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 7067a71eea3ffbfadf006a102ee926fb15347f63
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: a5481f9b2b443a0860ce0df5643427f357e1c294
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423645"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785370"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -452,7 +452,7 @@ Verwenden Sie die folgenden Tipps zum Behandeln von Problemen mit dem Azure Cosm
 Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an einer Administratoreingabeaufforderung aus:
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Beobachten Sie die Taskleiste, um sicherzugehen, dass das Programm beendet wurde; dies kann eine Minute dauern. Sie können auch einfach auf der Benutzeroberfläche des Azure Cosmos DB-Emulators auf **Beenden** klicken.
+2. `CosmosDB.Emulator.exe /shutdown`. Beobachten Sie die Taskleiste, um sicherzugehen, dass das Programm beendet wurde; dies kann eine Minute dauern. Sie können auch einfach auf der Benutzeroberfläche des Azure Cosmos DB-Emulators auf **Beenden** klicken.
 3. `CosmosDB.Emulator.exe /starttraces`
 4. `CosmosDB.Emulator.exe`
 5. Reproduzieren des Problems Wenn der Daten-Explorer nicht funktioniert, müssen Sie nur einige Sekunden warten, bis der Browser geöffnet wird, um den Fehler zu erfassen.
@@ -466,54 +466,6 @@ Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an ein
 2. Geben Sie in das Windows-Suchfeld **Apps & Features** ein, und klicken Sie auf das Ergebnis **Apps & Features (Systemeinstellungen)**.
 3. Scrollen Sie in der Liste der Apps zu **Azure Cosmos DB-Emulator**, wählen ihn aus, und klicken Sie auf **Deinstallieren**. Bestätigen Sie den Vorgang, und klicken Sie erneut auf **Deinstallieren**.
 4. Wenn die App deinstalliert ist, navigieren Sie zu `C:\Users\<user>\AppData\Local\CosmosDBEmulator` und löschen den Ordner. 
-
-## <a name="change-list"></a>Änderungsliste
-
-Sie können die Versionsnummer überprüfen, indem Sie mit der rechten Maustaste auf das Symbol des lokalen Emulators in der Taskleiste und auf das Menüelement „Info“ klicken.
-
-### <a name="1220-released-on-april-20-2018"></a>1.22.0. Veröffentlicht am 20. April 2018
-
-Wir haben nicht nur die Emulatordienste für die Parität mit Cosmos DB-Clouddiensten aktualisiert, sondern stellen auch eine verbesserte PowerShell-Dokumentation und verschiedene Fehlerbehebungen bereit.
-
-### <a name="12106-released-on-march-27-2018"></a>1.21.0.6, veröffentlicht am 27. März 2018
-
-Wir haben in diesem Release nicht nur die Emulatordienste für die Parität mit Cosmos DB-Clouddiensten aktualisiert, sondern stellen auch ein neues Feature und zwei Fehlerbehebungen bereit.
-
-#### <a name="features"></a>Features
-
-1. Der Start-CosmosDbEmulator-Befehl enthält jetzt Startoptionen.
-
-#### <a name="bug-fixes"></a>Fehlerbehebungen
-
-1. Das Microsoft.Azure.CosmosDB.Emulator-PowerShell-Modul stellt nun sicher, dass die `ServiceControllerStatus`-Enumeration geladen wird.
-
-2. Das Microsoft.Azure.CosmosDB.Emulator-PowerShell-Modul enthält nun ein Manifest; dies wurde im ersten Release ausgelassen.
-
-### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4, freigegeben am 14. Februar 2018
-
-In dieser Version gibt es ein neues Feature und zwei Fehlerbehebungen. Vielen Dank an die Kunden, die uns geholfen haben, diese Probleme zu finden und zu beheben.
-
-#### <a name="bug-fixes"></a>Fehlerbehebungen
-
-1. Der Emulator funktioniert jetzt auf Computern mit einem Kern oder zwei Kernen (oder virtuellen CPUs).
-
-   Cosmos DB weist Aufgaben zu, um verschiedene Dienste auszuführen. Die Anzahl der zugewiesenen Aufgaben ist ein Vielfaches der Anzahl von Kernen auf einem Host. Das Standardvielfache ist gut für Produktionsumgebungen geeignet, in denen viele Kerne vorhanden sind. Auf Computern mit höchstens zwei Prozessoren werden jedoch keine Aufgaben zugewiesen, um diese Dienste auszuführen, wenn dieses Vielfache angewendet wird.
-
-   Dies wurde korrigiert, indem ein Feature zur Außerkraftsetzung der Konfiguration zum Emulator hinzugefügt wurde. Es wird jetzt ein Vielfaches von 1 angewendet. Die Anzahl der Aufgaben, die für die Ausführung verschiedener Dienste zugewiesen wurden, entspricht nun der Anzahl der Kerne auf einem Host.
-
-   Bei dieser Version haben wir uns in erster Linie auf die Behebung dieses Problems konzentriert. Viele Entwicklungs-/Testumgebungen, die den Emulator hosten, haben einen Kern oder zwei Kerne.
-
-2. Es ist nicht mehr erforderlich, für den Emulator Microsoft Visual C++ 2015 Redistributable zu installieren.
-
-   Neuinstallationen von Windows (Desktop- und Server-Editionen) enthalten dieses weiterverteilbare Paket nicht. Daher sind die weiterverteilbaren Binärdateien nun direkt im Emulator enthalten.
-
-#### <a name="features"></a>Features
-
-Viele der befragten Kunden gaben an, dass es von Vorteil wäre, wenn der Emulator skriptfähig wäre. Daher haben wir in dieser Version einige Skriptfunktionen hinzugefügt. Der Emulator enthält nun ein PowerShell-Modul zum Starten, Beenden und Abrufen des Status. Mit diesem Modul kann sich der Emulator auch selbst deinstallieren: `Microsoft.Azure.CosmosDB.Emulator`. 
-
-### <a name="120911-released-on-january-26-2018"></a>1.20.91.1, veröffentlicht am 26. Januar 2018
-
-* Die Pipeline für die MongoDB-Aggregation wurde standardmäßig aktiviert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

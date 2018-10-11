@@ -8,22 +8,16 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 571a005dd3f50690f291a7ffa3c1174ea15cb0ed
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 07ee05128333df963c2d8ff3dd3f6442a3843d07
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046285"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48866889"
 ---
 # <a name="delete-data-from-azure-data-explorer"></a>Löschen von Daten aus dem Azure-Daten-Explorer
 
 Der Azure-Daten-Explorer unterstützt mehrere Ansätze zum Massenlöschen, die in diesem Artikel behandelt werden. Das Löschen einzelner Datensätze in Echtzeit wird nicht unterstützt, weil er für schnellen Lesezugriff optimiert ist.
-
-* Wenn die Datenbank nicht mehr erforderlich ist, löschen Sie sie mit dem Befehl „drop database“.
-
-    ```Kusto
-    .drop database <DatabaseName>
-    ```
 
 * Wenn eine oder mehrere Tabellen nicht mehr benötigt werden, löschen Sie sie über den Befehl „drop table“ bzw. „drop tables“.
 
@@ -44,12 +38,5 @@ Der Azure-Daten-Explorer unterstützt mehrere Ansätze zum Massenlöschen, die i
     ```
 
     Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinie](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy).
-
-* Einzelne Datensätze können über den Vorgang *purge* basierend auf einem Prädikat wie `where CustomerName == 'contoso'` gelöscht werden. Demnach entspricht ein endgültiger Löschvorgang mit „purge“ einer Massenlöschung, die nicht auf das Löschen in Echtzeit ausgerichtet ist. Im folgenden Beispiel wird ein endgültiger Löschvorgang mit „purge“ dargestellt.
-
-    ```Kusto
-    .purge table Customer records
-    | where CustomerName =='contoso'
-    ```
 
 Wenn Sie Hilfe bei Datenlöschvorgängen benötigen, erstellen Sie eine Supportanfrage im [Azure-Portal](https://portal.azure.com).

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 08/14/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 83d2fabbe3a1b0ab44cb97e53baf0aa40349aeed
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141141"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079207"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Unterstützungsmatrix für die Hyper-V-Replikation in Azure
 
@@ -59,16 +59,16 @@ Datenträger auf einer replizierten Hyper-V-VM hinzufügen | Nicht unterstützt.
 
 **Komponente** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
-Hostnetzwerk: NIC-Teaming | JA
-Hostnetzwerk: VLAN | JA
-Hostnetzwerk: IPv4 | JA
-Hostnetzwerk: IPv6 | Nein 
-Gast-VM-Netzwerk: NIC-Teaming | Nein 
-Gast-VM-Netzwerk: IPv4 | JA
-Gast-VM-Netzwerk: IPv6 | Nein 
-Gast-VM-Netzwerk: statische IP-Adresse (Windows) | JA
-Gast-VM-Netzwerk: statische IP-Adresse (Linux) | Nein 
-Gast-VM-Netzwerk: Multi-NIC | JA
+Hostnetzwerk: NIC-Teaming | JA | JA
+Hostnetzwerk: VLAN | JA | JA
+Hostnetzwerk: IPv4 | JA | JA
+Hostnetzwerk: IPv6 | Nein  | Nein 
+Gast-VM-Netzwerk: NIC-Teaming | Nein  | Nein 
+Gast-VM-Netzwerk: IPv4 | JA | JA
+Gast-VM-Netzwerk: IPv6 | Nein  | JA
+Gast-VM-Netzwerk: statische IP-Adresse (Windows) | JA | JA
+Gast-VM-Netzwerk: statische IP-Adresse (Linux) | Nein  | Nein 
+Gast-VM-Netzwerk: Multi-NIC | JA | JA
 
 
 
@@ -162,7 +162,7 @@ Fiber-Channel-Datenträger | Nicht unterstützt | Beim Überprüfen der Vorausse
 Festplattenformat | VHD  <br/><br/> VHDX | Site Recovery konvertiert VHDX automatisch in VHD, wenn Sie das Failover auf Azure anstoßen. Wenn Sie ein Failback zum lokalen Speicher durchführen, wird für die virtuellen Computer weiterhin das VHDX-Format verwendet.
 BitLocker | Nicht unterstützt | BitLocker muss deaktiviert sein, bevor Sie die Replikation für einen virtuellen Computer aktivieren.
 Name des virtuellen Computers | Zwischen 1 und 63 Zeichen. Ist auf Buchstaben, Zahlen und Bindestriche beschränkt. Der VM-Name muss mit einem Buchstaben oder einer Zahl beginnen und enden. | Aktualisieren Sie den Wert in den VM-Eigenschaften in Site Recovery.
-VM-Typ | Generation 1<br/><br/> Generation 2 – Windows | Zwei virtuelle Computer der Generation 2 mit einem Betriebssystem-Datenträger des Typs „Basic“ (mit einem oder zwei als VHDX formatierten Datenvolumes) und weniger als 300 GB Speicherplatz werden unterstützt.<br></br>Linux-VMs der Generation 2 werden nicht unterstützt. [Weitere Informationen](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)|
+VM-Typ | Generation 1<br/><br/> Generation 2 – Windows | Zwei virtuelle Computer der Generation 2 mit einem Betriebssystem-Datenträger des Typs „Basic“ (mit einem oder zwei als VHDX formatierten Datenvolumes) und weniger als 300 GB Speicherplatz werden unterstützt.<br></br>Linux-VMs der Generation 2 werden nicht unterstützt. [Weitere Informationen](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Aktionen mit dem Recovery Services-Tresor
 

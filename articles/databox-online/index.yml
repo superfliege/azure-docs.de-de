@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 16b7fbdfa6df1b8cabf4f5e29a6109d9f9a9200e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 467d4d982d76f4defe8ed887ebcc3f99100af313
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959766"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068994"
 documentType: LandingData
 title: Azure Data Box-Dokumentation für Onlineübertragung
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 09/26/2018
   ms.author: alkohli
 abstract:
   description: Die Azure Data Box-Familie ermöglicht Ihnen das schnelle, kostengünstige und zuverlässige Übertragen von Hunderten Terabyte an Daten an Azure. Nutzen Sie die Data Box-Geräte für Hochleistungs-Datenübertragungen über das Netzwerk.<p>Wählen Sie Data Box Gateway<SUP>Vorschauversion</SUP>, um Daten für die Archivierung in der Cloud zu senden, die Notfallwiederherstellung durchzuführen oder Daten für die Cloud zu verarbeiten.  Verwenden Sie Data Box Edge<SUP>Vorschauversion</SUP>, um Ihre Daten auf dem Weg in Azure zu filtern, zu analysieren und zu transformieren.</p><p>In unseren Tutorials wird beschrieben, wie Sie Data Box Gateway und Data Box Edge für die netzwerkbasierte Übertragung nutzen.</p>
@@ -30,7 +30,7 @@ sections:
     style: ordered
     items:
     - html: <a href="data-box-gateway-deploy-prep">Vorbereiten der Bereitstellung von Azure Data Box Gateway</a>
-    - html: <a href="/azure/databox/data-box-deploy-set-up">Bereitstellen von Azure Data Box Gateway in Hyper-V</a>
+    - html: <a href="/azure/databox/data-box-deploy-provision-hyperv">Bereitstellen von Azure Data Box Gateway in Hyper-V</a>
     - html: <a href="data-box-gateway-deploy-provision-vmware">Bereitstellen von Azure Data Box Gateway in VMware</a>
     - html: <a href="data-box-gateway-deploy-connect-setup-activate">Verbinden, Einrichten und Aktivieren von Azure Data Box Gateway</a>
     - html: <a href=data-box-gateway-deploy-add-shares">Übertragen von Daten mit Azure Data Box Gateway</a>

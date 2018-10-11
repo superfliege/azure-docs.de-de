@@ -2,19 +2,18 @@
 title: Azure Container Registry-Tutorial – Vorbereiten einer georeplizierten Azure-Containerregistrierung
 description: Es wird beschrieben, wie Sie eine Azure-Containerregistrierung erstellen, die Georeplikation konfigurieren, ein Docker-Image vorbereiten und es für die Registrierung bereitstellen. Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 379878e261007eca13a4e455ef2b97237c81eeba
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9d1371dc02f37889b15b3448d82c62d76472f847
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450027"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854302"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Tutorial: Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -42,7 +41,7 @@ Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der ein
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 
 Klicken Sie auf **Ressource erstellen** > **Container** > **Azure Container Registry**.
 

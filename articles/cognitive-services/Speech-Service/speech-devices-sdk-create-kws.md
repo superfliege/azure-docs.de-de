@@ -5,16 +5,16 @@ titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
-ms.technology: speech
+ms.component: speech
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7ba62ce0cc2d391c96c31795aabaac9c8796f6d5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 52f1d9cb242f140d485ccf7b39a55a46ee575a3d
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165533"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883617"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Erstellen eines benutzerdefinierten Aktivierungsworts mit dem Spracherkennungsdienst
 
@@ -49,30 +49,29 @@ Bevor Sie auf Ihrem Gerät ein benutzerdefiniertes Aktivierungswort verwenden k�
 
 1. Navigieren Sie zum [Portal des Custom Speech Service](https://cris.ai/).
 
-2. Erstellen Sie ein neues Konto. Verwenden Sie dabei die E-Mail-Adresse, an die Ihre Einladung für Azure Active Directory gesendet wurde. 
+1. Erstellen Sie ein neues Konto. Verwenden Sie dabei die E-Mail-Adresse, an die Ihre Einladung für Azure Active Directory gesendet wurde. 
 
     ![Erstellen eines neuen Kontos](media/speech-devices-sdk/wake-word-1.png)
  
-3.  Nachdem Sie sich angemeldet haben, füllen Sie das Formular aus, und wählen Sie dann **Meine Reise beginnen** aus.
+1.  Nachdem Sie sich angemeldet haben, füllen Sie das Formular aus, und wählen Sie dann **Meine Reise beginnen** aus.
 
     ![Erfolgreich angemeldet](media/speech-devices-sdk/wake-word-3.png)
  
-4. Die Seite **Custom Wake Word** (Benutzerdefiniertes Aktivierungswort) ist nicht für die Öffentlichkeit verfügbar. Folglich ist kein direkter Link vorhanden, über den Sie zu der Seite gelangen. Das Custom Speech-Feature erfordert ein Azure-Abonnement, das Feature „Benutzerdefiniertes Aktivierungswort“ hingegen nicht. Wenn die Fehlerseite **Keine Abonnements gefunden** angezeigt wird, ersetzen Sie einfach **"Subscriptions?errorMessage=No%20Subscriptions%20found"** durch "**customkws**" in der URL, und drücken Sie die EINGABETASTE. Die URL muss eine der folgenden URLs sein: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws oder https://northeurope.cris.ai/customkws abhängig von Ihrer Region.   
-
+1. Die Seite **Custom Wake Word** (Benutzerdefiniertes Aktivierungswort) ist nicht für die Öffentlichkeit verfügbar. Folglich ist kein direkter Link vorhanden, über den Sie zu der Seite gelangen. Das Custom Speech-Feature erfordert ein Azure-Abonnement, das Feature „Benutzerdefiniertes Aktivierungswort“ hingegen nicht. Wenn die Fehlerseite **Keine Abonnements gefunden** angezeigt wird, ersetzen Sie einfach **"Subscriptions?errorMessage=No%20Subscriptions%20found"** durch "**customkws**" in der URL, und drücken Sie die EINGABETASTE. Die URL muss eine der folgenden URLs sein: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws oder https://northeurope.cris.ai/customkws abhängig von Ihrer Region.
 
     ![Die Seite „Benutzerdefiniertes Aktivierungswort“ ist ausgeblendet.](media/speech-devices-sdk/wake-word-4.png)
  
-6. Geben Sie das gewünschte Aktivierungswort ein, und wählen Sie dann **Wort übermitteln** aus.
+1. Geben Sie das gewünschte Aktivierungswort ein, und wählen Sie dann **Wort übermitteln** aus.
 
     ![Eingeben Ihres Aktivierungsworts](media/speech-devices-sdk/wake-word-5.png)
  
-7. Es kann einige Minuten dauern, bis die Dateien generiert werden. Im Fenster Ihres Browsers müsste ein sich drehender Kreis angezeigt werden. Danach wird eine Informationsleiste angezeigt, in der Sie aufgefordert werden, eine ZIP-Datei herunterzuladen.
+1. Es kann einige Minuten dauern, bis die Dateien generiert werden. Im Fenster Ihres Browsers müsste ein sich drehender Kreis angezeigt werden. Danach wird eine Informationsleiste angezeigt, in der Sie aufgefordert werden, eine ZIP-Datei herunterzuladen.
 
     ![Empfangen der ZIP-Datei](media/speech-devices-sdk/wake-word-6.png)
 
-8. Speichern Sie die ZIP-Datei auf Ihrem Computer. Sie benötigen diese Datei, um das benutzerdefinierte Aktivierungswort im Development Kit bereitzustellen. Um das benutzerdefinierte Aktivierungswort bereitzustellen, befolgen Sie die Anweisungen unter [Erste Schritte mit dem SDK für sprachaktivierte Geräte](speech-devices-sdk-qsg.md).
+1. Speichern Sie die ZIP-Datei auf Ihrem Computer. Sie benötigen diese Datei, um das benutzerdefinierte Aktivierungswort im Development Kit bereitzustellen. Um das benutzerdefinierte Aktivierungswort bereitzustellen, befolgen Sie die Anweisungen unter [Erste Schritte mit dem SDK für sprachaktivierte Geräte](speech-devices-sdk-qsg.md).
 
-9. Wählen Sie **Abmelden** aus.
+1. Wählen Sie **Abmelden** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

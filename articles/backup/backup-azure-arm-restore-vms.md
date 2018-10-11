@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: eb47b1d8d3f2859b2b5c0b79633b2d37e5a40756
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f7561ef4978e19439eafb6ef1a6ca1275c0f2bc7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380164"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804615"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
 Schützen Sie Ihre Daten, indem Sie in festgelegten Abständen Momentaufnahmen Ihrer Daten erstellen. Diese Momentaufnahmen werden als Wiederherstellungspunkte bezeichnet. Sie werden in Recovery Services-Tresoren gespeichert. Wenn es erforderlich ist, einen virtuellen Computer zu reparieren oder wiederherzustellen, können Sie den virtuellen Computer auf der Grundlage eines gespeicherten Wiederherstellungspunkts wiederherstellen. Beim Herstellen eines Wiederherstellungspunkts haben Sie folgende Möglichkeiten:
@@ -37,6 +37,7 @@ Das Wiederherstellen eines virtuellen Computers oder aller Datenträger aus eine
 * Auswählen des Wiederherstellungstyps, Erstellen eines neuen virtuellen Computers oder Wiederherstellen eines Datenträgers und Angeben der erforderlichen Parameter 
 
 ## <a name="select-a-restore-point-for-restore"></a>Auswählen eines Wiederherstellungspunkts für die Wiederherstellung
+
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
 
 1. Klicken Sie im Azure-Menü auf **Durchsuchen**. Geben Sie in der Liste mit den Diensten **Recovery Services** ein. Die Liste der Dienste wird während der Eingabe angepasst. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
@@ -102,7 +103,7 @@ Wählen Sie nach der Auswahl des Wiederherstellungspunkts eine Konfiguration fü
 Das Portal bietet für einen wiederhergestellten virtuellen Computer die Option **Schnellerfassung**. Wenn Sie die Konfiguration des virtuellen Computers oder die Namen der Ressourcen anpassen möchten, die beim Erstellen einer neuen VM-Auswahl erstellt wurden, verwenden Sie PowerShell oder das Portal zum Wiederherstellen gesicherter Datenträger. Fügen Sie sie mithilfe von PowerShell-Befehlen an eine Auswahl von VM-Konfigurationen an. Sie können auch die mit wiederhergestellten Datenträgern bereitgestellte Vorlage verwenden, um den wiederhergestellten virtuellen Computer anzupassen. Informationen zum Wiederherstellen von virtuellen Computern mit mehreren Netzwerkkarten oder einem Lastenausgleichsmodul finden Sie unter [Wiederherstellen virtueller Computer über das Azure-Portal](#restore-vms-with-special-network-configurations). Wenn der virtuelle Windows-Computer [HUB-Lizenzierung](../virtual-machines/windows/hybrid-use-benefit-licensing.md) verwendet, müssen Sie zum Erstellen des virtuellen Computers Datenträger wiederherstellen und PowerShell bzw. eine Vorlage verwenden, wie in diesem Artikel beschrieben. Stellen Sie sicher, dass Sie beim Erstellen des virtuellen Computers für **Lizenztyp** den Wert „Windows_Server“ angeben, um auf dem wiederhergestellten virtuellen Computer von den HUB-Vorteilen zu profitieren. 
  
 ## <a name="create-a-new-vm-from-a-restore-point"></a>Erstellen eines neuen virtuellen Computer über einen Wiederherstellungspunkt
-1. Falls noch nicht geschehen, [wählen Sie einen Wiederherstellungspunkt aus](#restore-a vm-with-special-network-configurations), bevor Sie mit der Erstellung eines neuen virtuellen Computers auf der Grundlage eines Wiederherstellungspunkts beginnen. Geben Sie nach dem Auswählen des Wiederherstellungspunkts auf dem Blatt **Wiederherstellungskonfiguration** Werte für jedes der folgenden Felder ein:
+1. Falls noch nicht geschehen, [wählen Sie einen Wiederherstellungspunkt aus](#select-a-restore-point-for-restore), bevor Sie mit der Erstellung eines neuen virtuellen Computers auf der Grundlage eines Wiederherstellungspunkts beginnen. Geben Sie nach dem Auswählen des Wiederherstellungspunkts auf dem Blatt **Wiederherstellungskonfiguration** Werte für jedes der folgenden Felder ein:
 
     a. **Wiederherstellungstyp**. Erstellen Sie eine VM.
 
@@ -239,9 +240,9 @@ Zum vollständigen Neuerstellen der virtuellen Computer nach der Wiederherstellu
 
    b. Erstellen Sie einen virtuellen Computer zum Herstellen einer Verbindung mit einem [Load Balancer mit Internetzugriff](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/).
 
-   c. Erstellen Sie einen virtuellen Computer mit [mehreren Netzwerkkarten](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/).
+   c. Erstellen Sie einen virtuellen Computer mit [mehreren Netzwerkkarten](../virtual-machines/windows/multiple-nics.md).
 
-   d. Erstellen Sie einen virtuellen Computer mit [mehreren reservierten IP-Adressen](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/).
+   d. Erstellen Sie einen virtuellen Computer mit [mehreren reservierten IP-Adressen](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Jetzt können Sie Ihre virtuellen Computer wiederherstellen. Informationen zu häufig bei VMs auftretenden Fehlern finden Sie im Artikel zur Problembehandlung. Lesen Sie auch den Artikel zur Verwaltung von Aufgaben mit Ihren virtuellen Computern.

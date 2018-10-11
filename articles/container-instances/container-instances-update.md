@@ -2,18 +2,17 @@
 title: Aktualisieren von Containern in Azure Container Instances
 description: Hier erfahren Sie, wie Sie ausgeführte Container in Ihren Azure Container Instances-Containergruppen aktualisieren.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/01/2018
-ms.author: marsma
-ms.openlocfilehash: 5a42b0983b0f754b119fa304317e758a976fb4f6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: danlep
+ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432615"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854540"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualisieren von Containern in Azure Container Instances
 
@@ -23,7 +22,7 @@ Während des normalen Betriebs Ihrer Containerinstanzen ist es unter Umständen 
 
 Aktualisieren Sie die Container in einer Containergruppe, indem Sie eine vorhandene Gruppe mit mindestens einer geänderten Eigenschaft erneut bereitstellen. Wenn Sie eine Containergruppe aktualisieren, werden alle ausgeführten Container in der Gruppe direkt neu gestartet.
 
-Stellen Sie mit dem Befehl „create“ (oder über das Azure-Portal) eine vorhandene Containergruppe erneut bereit. Geben Sie dabei den Namen einer vorhandenen Gruppe an. Ändern Sie mindestens eine gültige Eigenschaft der Gruppe, wenn Sie den Befehl „create“ zum Auslösen der erneuten Bereitstellung ausgeben. Nicht alle Eigenschaften der Containergruppe sind für eine erneute Bereitstellung zulässig. Unter [Eigenschaften, für die eine Löschung der Container erforderlich ist](#properties-that-require-delete) finden Sie eine Liste der nicht unterstützten Eigenschaften.
+Stellen Sie mit dem Befehl „create“ (oder über das Azure-Portal) eine vorhandene Containergruppe erneut bereit. Geben Sie dabei den Namen einer vorhandenen Gruppe an. Ändern Sie mindestens eine gültige Eigenschaft der Gruppe, wenn Sie den Befehl „create“ zum Auslösen der erneuten Bereitstellung ausgeben. Nicht alle Eigenschaften der Containergruppe sind für eine erneute Bereitstellung zulässig. Unter [Eigenschaften, für die eine Löschung der Container erforderlich ist](#properties-that-require-container-delete) finden Sie eine Liste der nicht unterstützten Eigenschaften.
 
 Das folgende Azure CLI-Beispiel aktualisiert eine Containergruppe mit einer neuen DNS-Namensbezeichnung. Da die Eigenschaft der DNS-Namensbezeichnung der Gruppe geändert wurde, wird die Containergruppe erneut bereitgestellt, und ihre Container werden neu gestartet.
 

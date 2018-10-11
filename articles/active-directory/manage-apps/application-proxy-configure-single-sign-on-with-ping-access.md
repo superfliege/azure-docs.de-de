@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: aae73816b883fe782eff27c56174c71f14c253c4
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 53d613052713e5144cb9d96aeeb937392fd4736a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577185"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902925"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -162,10 +162,10 @@ Dieses Beispiel verwendet das [Azure-Portal](https://portal.azure.com) zum Aktua
 >[!NOTE]
 >Um einen benutzerdefinierten Anspruch zu verwenden, benötigen Sie auch eine für diese Anwendung definierte und ihr zugewiesene benutzerdefinierte Richtlinie.  Diese Richtlinie sollte alle erforderlichen benutzerdefinierten Attribute enthalten.
 >
->Richtliniendefinition und Zuweisung können über PowerShell, Azure AD Graph Explorer oder MS Graph ausgeführt werden.  Wenn Sie dies in PowerShell tun, müssen Sie möglicherweise zuerst `New-AzureADPolicy ` verwenden und dann der Anwendung mit `Set-AzureADServicePrincipalPolicy` zuweisen.  Weitere Informationen finden Sie unter [Zuweisung von Anspruchszuordnungsrichtlinien](../active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+>Richtliniendefinition und Zuweisung können über PowerShell, Azure AD Graph Explorer oder MS Graph ausgeführt werden.  Wenn Sie dies in PowerShell tun, müssen Sie möglicherweise zuerst `New-AzureADPolicy ` verwenden und dann der Anwendung mit `Set-AzureADServicePrincipalPolicy` zuweisen.  Weitere Informationen finden Sie unter [Zuweisung von Anspruchszuordnungsrichtlinien](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ### <a name="optional---use-a-custom-claim"></a>Optional – Verwenden eines benutzerdefinierten Anspruchs
-Damit Ihre Anwendung einen benutzerdefinierten Anspruch verwenden und zusätzliche Felder beinhalten kann, achten Sie darauf, dass Sie auch [eine Richtlinie für die Zuordnung benutzerdefinierter Ansprüche erstellt und der Anwendung zugeordnet haben ](../active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+Damit Ihre Anwendung einen benutzerdefinierten Anspruch verwenden und zusätzliche Felder beinhalten kann, achten Sie darauf, dass Sie auch [eine Richtlinie für die Zuordnung benutzerdefinierter Ansprüche erstellt und der Anwendung zugeordnet haben ](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>Herunterladen von PingAccess und Konfigurieren der App
 

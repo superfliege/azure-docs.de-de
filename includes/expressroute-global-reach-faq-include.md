@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 343bd2bc4f0e875c84ddb69ea064e30f3f7671c4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b9c4cf6c90ef5507b318b4f13afb982aab151c79
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060723"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874049"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Was ist ExpressRoute Global Reach?
 
@@ -35,13 +35,13 @@ ExpressRoute ermöglicht die Konnektivität zwischen Ihrem lokalen Netzwerk und 
 
 ExpressRoute Global Reach wird in den folgenden Ländern unterstützt. Die ExpressRoute-Leitungen müssen an den Peeringstandorten in diesen Ländern eingerichtet werden.
 
-* USA
-* Vereinigtes Königreich
+* Australien
 * Hongkong
 * Irland
-* Niederlande
 * Japan
-
+* Niederlande
+* Vereinigtes Königreich
+* USA
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>Ich habe mehr als zwei lokale Netzwerke, die jeweils mit einer ExpressRoute-Leitungen verbunden sind. Kann ich ExpressRoute Global Reach aktivieren, um alle meine lokalen Netzwerke miteinander zu verbinden?
 

@@ -3,7 +3,7 @@ title: Zuordnen der Nutzung durch Azure-Partner und -Kunden
 description: Übersicht über die Nachverfolgung der Kundennutzung für Azure Marketplace-Lösungen
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: ellacroi
+author: yijenj
 manager: nunoc
 editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/26/2018
-ms.author: ellacroi
-ms.openlocfilehash: c3690c9be940a69bd2f8745493d4e2648bac6d9b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.date: 10/05/2018
+ms.author: yijenj
+ms.openlocfilehash: 99df133b9f626f970189df578c6d107086b9dab9
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143242"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854999"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -157,7 +157,7 @@ Sie erhalten [das ursprüngliche Skript](https://gist.github.com/bmoore-msft/ae6
 ```
 Param(
     [GUID][Parameter(Mandatory=$true)]$guid,
-    [string][Parameter(Mandatory=$true)]$resourceGroupName'
+    [string][Parameter(Mandatory=$true)]$resourceGroupName
 )
 
 # Get the correlationId of the pid deployment
@@ -250,7 +250,7 @@ Mit der Nachverfolgungsressource soll die Lösung des Partners mit der Azure-Nut
 
 **Kann eine GUID geändert werden, nachdem sie hinzugefügt wurde?**
  
-Ja, ein Kunde oder Implementierungspartner kann die Vorlage anpassen und die GUID ändern oder entfernen. Es wird empfohlen, dass Partner ihren Kunden und Partnern proaktiv die Funktion der Ressource und der GUID beschreiben, um das Entfernen oder Ändern der Nachverfolgungs-GUID zu verhindern. Eine Änderung der GUID hat nur Auswirkungen auf neue, noch nicht vorhandene Bereitstellungen und Ressourcen.
+Ja, ein Kunde oder Implementierungspartner kann die Vorlage anpassen und die GUID ändern oder entfernen. Es wird empfohlen, dass Partner ihren Kunden und Partnern proaktiv die Funktion der Ressource und der GUID beschrieben, um das Entfernen oder Ändern der Nachverfolgungs-GUID zu verhindern. Eine Änderung der GUID hat nur Auswirkungen auf neue, noch nicht vorhandene Bereitstellungen und Ressourcen.
 
 **Wann ist die Berichterstellung verfügbar?**
 

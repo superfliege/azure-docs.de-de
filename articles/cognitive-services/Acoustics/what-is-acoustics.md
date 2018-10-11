@@ -1,20 +1,21 @@
 ---
-title: 'Einführung in die Akustik: Cognitive Services'
+title: 'Was ist „Projekt: Akustik“?'
+titlesuffix: Azure Cognitive Services
 description: 'Das Unity-Plug-In für „Projekt: Akustik“ bietet Okklusion, Nachhall und Verräumlichung für Projekte, die auf VR und herkömmliche Bildschirme ausgerichtet sind.'
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
 ms.topic: overview
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 08c6d8b8e229aabcc05fdfde2d8ffadf3a6346c2
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 6a3c97ead40cfb24604edac0624e38a9b0713fc0
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180982"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901023"
 ---
 # <a name="what-is-project-acoustics"></a>Was ist „Projekt: Akustik“?
 Das Unity-Plug-In für „Projekt: Akustik“ bietet Okklusion, Nachhall und Verräumlichung für Projekte, die auf VR und herkömmliche Bildschirme ausgerichtet sind. Es bietet eine Möglichkeit zum Entwickeln von Spielakustik, bei der die Absichten des Entwicklers über eine physikbasierte Wellensimulation gelagert werden.
@@ -44,7 +45,7 @@ Mit dem Ansatz des Unity-Plug-ins für „Projekt: Akustik“ stellen Sie Form u
 
 ![Entwurfsansicht](media/GearsWithVoxels.jpg)
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 * Unity 2018.2+ für Akustikintegrationen und Unity 5.2+ für Sounddesign- und bereitstellung
 * Unity Editor für Windows (64-Bit)
 * Azure Batch-Abonnement für Akustikintegrationen
@@ -56,7 +57,7 @@ Mit dem Ansatz des Unity-Plug-ins für „Projekt: Akustik“ stellen Sie Form u
 * Android (x86 und ARM64)
 
 ## <a name="download"></a>Download
-Wenn Sie an der Evaluierung des Akustik-Plug-ins interessiert sind, registrieren Sie sich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) für die Teilnahme an der Designer-Vorschauversion.
+Wenn Sie an der Evaluierung des Akustik-Plug-Ins interessiert sind, registrieren Sie sich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u), um die Designer-Vorschauversion nutzen zu können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum [Entwurfsprozess](design-process.md)

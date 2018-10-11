@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 6af4533a4ab374071b904cc4b03ca239a3e83364
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 309c7275a1e775ed2bd689520ac39501e8bd6052
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011658"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857821"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Übersicht zu Azure Cloud Services
 Azure Cloud Services sind ein Beispiel für [Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Diese Technologie unterstützt genau wie [Azure App Service](../app-service/app-service-web-overview.md) skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Azure Cloud Services werden wie App Service auf virtuellen Computern (VMs) gehostet. Sie haben jedoch mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf virtuellen Computern installieren, die Azure Cloud Services verwenden, und remote darauf zugreifen.
@@ -33,7 +33,7 @@ Es gibt zwei Arten von Azure Cloud Services-Rollen. Der einzige Unterschied best
 
 * **Workerrolle**: IIS wird nicht verwendet; die App wird eigenständig ausgeführt.
 
-Einfache Anwendungen verwenden beispielsweise lediglich eine einzige Webrolle für eine Website. Komplexere Anwendungen verwenden eine Webrolle für eingehende Benutzeranforderungen und delegieren die Verarbeitung dieser Anforderungen an Workerrollen. (Für diese Kommunikation wird [Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) oder [Azure Queue Storage](../storage/common/storage-introduction.md) verwendet.)
+Einfache Anwendungen verwenden beispielsweise lediglich eine einzige Webrolle für eine Website. Komplexere Anwendungen verwenden eine Webrolle für eingehende Benutzeranforderungen und delegieren die Verarbeitung dieser Anforderungen an Workerrollen. (Für diese Kommunikation wird [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) oder [Azure Queue Storage](../storage/common/storage-introduction.md) verwendet.)
 
 Die voranstehende Abbildung zeigt, dass alle VMs in einer einzigen Anwendung im gleichen Clouddienst laufen. Benutzer greifen über eine einzige öffentliche IP-Adresse auf die Anwendung zu, und die Anforderungen werden automatisch auf die einzelnen VMs verteilt. Die virtuellen Computer in einer Azure Cloud Services-Anwendung werden von der Plattform so [skaliert und bereitgestellt](cloud-services-how-to-scale-portal.md), dass einzelne Fehlerquellen (Single Points of Failure, SPOF) vermieden werden.
 

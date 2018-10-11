@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cbd475ae4ce944db3ebf57b415b60e7abdd52677
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 33126c094a55bc57edd49a54fbc4f5acd7401998
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163850"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079003"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Konfigurieren von Experimenten mit automatisiertem maschinellem Lernen
 
@@ -34,7 +34,7 @@ Für das automatisierte maschinelle Lernen sind folgende Konfigurationsoptionen 
 
 ## <a name="select-your-experiment-type"></a>Auswählen der Experimentart
 Legen Sie vor Experimentbeginn fest, welche Art von Problem des maschinellen Lernens Sie lösen möchten. Das automatisierte maschinelle Lernen unterstützt zwei Kategorien von überwachtem Lernen: Klassifizierung und Regression. Das automatisierte maschinelle Lernen unterstützt die folgenden Algorithmen beim Automatisierungs- und Optimierungsprozess. Als Benutzer müssen Sie den Algorithmus nicht angeben.
-Klassifizierung | Regression
+Classification | Regression
 --|--
 sklearn.linear_model.LogisticRegression | sklearn.linear_model.ElasticNet
 sklearn.linear_model.SGDClassifier  | sklearn.ensemble.GradientBoostingRegressor
@@ -225,7 +225,6 @@ Die folgenden Metriken werden in jeder Iteration gespeichert:
 * AUC_macro
 * AUC_micro
 * AUC_weighted
-* AUC_weighted_max
 * accuracy
 * average_precision_score_macro
 * average_precision_score_micro

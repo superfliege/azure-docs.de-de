@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 13b4dc6e49c67ae9fd880ab64880966835242dec
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e1a0ee2a9ad958a5938569927a489785edd8ee1f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37923418"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078836"
 ---
 # <a name="support-matrix-for-replication-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Replikation von virtuellen Hyper-V-Computern an einen sekundären Standort
 
@@ -55,15 +55,15 @@ Nur Linux-Computer mit dem folgenden Speicher können repliziert werden:
 
 **Konfiguration** | **Unterstützt**  
 --- | --- 
-Host – NIC-Teamvorgang | Ja 
-Host – VLAN | Ja 
-Host – IPv4 | Ja 
+Host – NIC-Teamvorgang | JA 
+Host – VLAN | JA 
+Host – IPv4 | JA 
 Host – IPv6 | Nein  
 Gast-VM – NIC-Teamvorgang | Nein 
-Gast-VM – IPv4 | Ja
+Gast-VM – IPv4 | JA
 Gast-VM – IPv6 | Nein 
-Gast-VM – Windows/Linux – Statische IP-Adresse | Ja
-Gast-VM – Multi-NIC | Ja
+Gast-VM – Windows/Linux – Statische IP-Adresse | JA
+Gast-VM – Multi-NIC | JA
 
 
 ## <a name="storage"></a>Speicher
@@ -73,9 +73,9 @@ Gast-VM – Multi-NIC | Ja
 **Speicher (Host)** | **Unterstützt**
 --- | --- 
 NFS | N/V
-SMB 3.0 |  Ja
-SAN (ISCSI) | Ja
-Multipfad (MPIO) | Ja
+SMB 3.0 |  JA
+SAN (ISCSI) | JA
+Multipfad (MPIO) | JA
 
 ### <a name="guest-or-physical-server-storage"></a>Gast- oder physischer Serverspeicher
 
@@ -83,19 +83,19 @@ Multipfad (MPIO) | Ja
 --- | --- | 
 VMDK |  N/V
 VHD/VHDX | Ja (bis zu 16 Datenträger)
-Gen 2-VM | Ja
+Gen 2-VM | JA
 Freigegebener Clusterdatenträger | Nein 
 Verschlüsselter Datenträger | Nein 
 UEFI| N/V
 NFS | Nein 
 SMB 3.0 | Nein 
 RDM | N/V
-Datenträger > 1 TB | Ja
-Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | Ja
-Speicherplätze | Ja
+Datenträger > 1 TB | JA
+Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | JA
+Speicherplätze | JA
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein 
-Ausschließen von Datenträgern | Ja
-Multipfad (MPIO) | Ja
+Ausschließen von Datenträgern | JA
+Multipfad (MPIO) | JA
 
 ## <a name="vaults"></a>Tresore
 

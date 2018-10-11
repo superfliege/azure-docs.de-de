@@ -3,16 +3,18 @@ title: Failover und Failback von Hyper-V-VMs, die mit Site Recovery in Azure rep
 description: Erfahren Sie, wie Sie ein Failover für Hyper-V-VMs zu Azure und ein Failback zum lokalen Standort mit Azure Site Recovery durchführen.
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: tutorial
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: f758939964045ed373703a211d4cbef00f0e42e7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.custom: MVC
+ms.openlocfilehash: 31de654e6746cecf5aedabbfe481ab99b2aa3510
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919545"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49076982"
 ---
 # <a name="failover-and-failback-hyper-v-vms-replicated-to-azure"></a>Failover und Failback von Hyper-V-VMs, die in Azure repliziert werden
 
@@ -26,7 +28,7 @@ In diesem Tutorial wird das Ausführen eines Failovers einer Hyper-V-VM zu Azure
 
 Dies ist das fünfte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben.    
 
-1. [Prepare Azure](tutorial-prepare-azure.md) (Vorbereiten von Azure)
+1. [Vorbereiten von Azure](tutorial-prepare-azure.md)
 2. [Vorbereiten lokaler Hyper-V-Instanzen](tutorial-prepare-on-premises-hyper-v.md)
 3. Einrichten der Notfallwiederherstellung für [Hyper-V-VMs](tutorial-hyper-v-to-azure.md) oder [in System Center VMM-Clouds verwaltete Hyper-V-VMs](tutorial-hyper-v-vmm-to-azure.md)
 4. [Durchführen eines Notfallwiederherstellungsverfahrens](tutorial-dr-drill-azure.md)
@@ -57,7 +59,7 @@ Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** > VM.
 
 ## <a name="failover-to-azure"></a>Failover zu Azure
 
-1. Klicken Sie unter **Einstellungen** > **Replizierte Elemente** auf die VM und dann auf **Failover**.
+1. Klicken Sie unter **Einstellungen** > **Replizierte Elemente** auf VM > **Failover**.
 2. Wählen Sie unter **Failover** den **letzten** Wiederherstellungspunkt aus. 
 3. Wählen Sie **Computer vor Beginn des Failovers herunterfahren** aus. Site Recovery versucht, die Quell-VMs herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
 4. Klicken Sie auf **Commit ausführen**, nachdem Sie das Failover überprüft haben. Daraufhin werden alle verfügbaren Wiederherstellungspunkte gelöscht.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 3c8eac98414fa43213136940fb4c91694a78a2c1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: a420033d96a1366a79f5f2032693c38d7eca4ac3
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397525"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830972"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-Dienst in Azure Service Fabric
 Der DNS-Dienst ist ein optionaler Systemdienst, den Sie in Ihrem Cluster aktivieren können, um andere Dienste mithilfe des DNS-Protokolls zu ermitteln. 
@@ -132,7 +132,7 @@ Nachdem die Anwendung bereitgestellt wurde, wird der DNS-Name für die Dienstins
 
 ![Dienstendpunkte](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-Das folgende Beispiel legt den DNS-Namen für einen zustandsbehafteten Dienst auf `statefulsvc.app` fest. Der Dienst verwendet ein benanntes Partitionsschema. Beachten Sie, dass die Partitionsnamen aus Kleinbuchstaben bestehen. Dies ist notwendig für Partitionen, für die DNS-Abfragen durchgeführt werden. Weitere Informationen finden Sie unter [Senden von DNS-Abfragen in einer zustandsbehafteten Dienstpartition](#making-dns-queries-on-a-stateful-service-partition).
+Das folgende Beispiel legt den DNS-Namen für einen zustandsbehafteten Dienst auf `statefulsvc.app` fest. Der Dienst verwendet ein benanntes Partitionsschema. Beachten Sie, dass die Partitionsnamen aus Kleinbuchstaben bestehen. Dies ist notwendig für Partitionen, für die DNS-Abfragen durchgeführt werden. Weitere Informationen finden Sie unter [Senden von DNS-Abfragen in einer zustandsbehafteten Dienstpartition](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />

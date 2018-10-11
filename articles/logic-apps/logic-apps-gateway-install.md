@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842446"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855424"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -101,7 +101,7 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
 
 ## <a name="install-data-gateway"></a>Installieren eines Datengateways
 
-1. [Laden Sie den Gateway-Installer auf einen lokalen Computer herunter, speichern Sie ihn, und führen Sie ihn aus.](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)
+1. [Laden Sie den Gateway-Installer auf einen lokalen Computer herunter, speichern Sie ihn, und führen Sie ihn aus.](https://aka.ms/on-premises-data-gateway-installer)
 
 2. Übernehmen Sie den Standardinstallationspfad, oder geben Sie den Speicherort auf Ihrem Computer an, an dem das Gateway installiert werden soll.
 
@@ -182,7 +182,7 @@ Wenn Sie den Ort Ihres Gateways ändern, die Gatewayinstallation auf einen neuen
 
 1. Klicken Sie auf Ihrem Computer in der **Systemsteuerung** auf **Programme und Features**. Klicken Sie in der Liste der Programme auf **Lokales Datengateway** und dann auf **Deinstallieren**.
 
-2. [Installieren Sie das lokale Datengateway neu.](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)
+2. [Installieren Sie das lokale Datengateway neu.](https://aka.ms/on-premises-data-gateway-installer)
 
 3. Wenn der Installer geöffnet wurde, melden Sie sich mit dem gleichen Geschäfts-, Schul- oder Unikonto an, das auch zuvor zum Installieren des Gateways verwendet wurde.
 
@@ -211,7 +211,7 @@ Informationen dazu, wie Sie Proxyinformationen für Ihr Gateway bereitstellen, f
 > [!NOTE]
 > Dieser Befehl testet nur die Netzwerkverbindung und die Verbindung mit dem Azure Service Bus. Der Befehl führt keine Aktion für das Gateway oder den Gatewayclouddienst aus, der Ihre Anmeldeinformationen und Gatewaydetails verschlüsselt und speichert. 
 >
-> Außerdem ist dieser Befehl ist nur unter Windows Server 2012 R2 oder höher und Windows 8.1 oder höher verfügbar. In früheren Betriebssystemversionen können Sie Telnet verwenden, um Konnektivität zu testen. Erfahren Sie mehr über [Azure Service Bus und Hybridlösungen](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md).
+> Außerdem ist dieser Befehl ist nur unter Windows Server 2012 R2 oder höher und Windows 8.1 oder höher verfügbar. In früheren Betriebssystemversionen können Sie Telnet verwenden, um Konnektivität zu testen. Erfahren Sie mehr über [Azure Service Bus und Hybridlösungen](../service-bus-messaging/service-bus-messaging-overview.md).
 
 Die Ergebnisse sollten etwa wie das folgende Beispiel aussehen. Dabei muss **TcpTestSucceeded** auf **True** festgelegt sein:
 
@@ -232,7 +232,7 @@ Es kann auch sein, dass die Firewall Verbindungen blockiert, die von Azure Servi
 
 ## <a name="configure-ports"></a>Konfigurieren von Ports
 
-Das Gateway erstellt eine ausgehende Verbindung mit [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) und kommuniziert über Ports für ausgehenden Datenverkehr: TCP 443 (Standard), 5671, 5672, 9350 bis 9354. Das Gateway benötigt keine eingehenden Ports. Erfahren Sie mehr über [Azure Service Bus und Hybridlösungen](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md).
+Das Gateway erstellt eine ausgehende Verbindung mit [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) und kommuniziert über Ports für ausgehenden Datenverkehr: TCP 443 (Standard), 5671, 5672, 9350 bis 9354. Das Gateway benötigt keine eingehenden Ports. Erfahren Sie mehr über [Azure Service Bus und Hybridlösungen](../service-bus-messaging/service-bus-messaging-overview.md).
 
 Das Gateway verwendet die folgenden vollqualifizierten Domänennamen:
 
