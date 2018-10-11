@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: d873d28ec772735b8f21551cde1c7d0eab79a18c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.component: ''
+ms.openlocfilehash: 08a85cea75d692573f9e9e6c4bcd8bb61e03867f
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035138"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041968"
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.

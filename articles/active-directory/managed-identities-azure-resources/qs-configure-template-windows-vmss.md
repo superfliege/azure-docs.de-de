@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 4bfaed3d908574eff3521cedcef4b117d45e1ca2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c6bc77e5ee1fa5e180b41dca50640dc01fee0691
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220918"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017515"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer Azure VM-Skalierungsgruppe mithilfe einer Vorlage
 
@@ -146,7 +146,7 @@ Wenn für die VM-Skalierungsgruppe keine vom System zugewiesene verwaltete Ident
 
    Wenn `2018-06-01` als apiVersion verwendet wird und Ihr virtueller Computer sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit den userAssignedIdentities-Wörterbuchwerten bei.
 
-   **Microsoft.Compute/virtualMachineScaleSets-API, Version 2018-06-01 und früher**
+   **Microsoft.Compute/virtualMachineScaleSets-API, Version 2018-06-01**
 
    Wenn `2017-12-01` als apiVersion verwendet wird und Ihre VM-Skalierungsgruppe sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem `identityIds`-Array der benutzerzugewiesenen verwalteten Identitäten bei. 
    
@@ -279,7 +279,7 @@ In diesem Abschnitt weisen Sie einer VM-Skalierungsgruppe mithilfe der Azure Res
     ]
    ```
 
-   **Microsoft.Compute/virtualMachines-API, Version 2017-12-01 und früher**
+   **Microsoft.Compute/virtualMachines-API, Version 2017-12-01**
 
    ```json
    "resources": [

@@ -236,12 +236,12 @@ Dieser Abschnitt enthält weitere Informationen dazu, wie Sie bestimmte Aufgaben
 | Übermitteln eines Hive-Auftrags mit dem .NET SDK |Siehe [Übermitteln von Hive-Aufträgen](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
 | Übermitteln eines Pig-Auftrags mit dem .NET SDK |Siehe [Übermitteln von Pig-Aufträgen](hadoop/apache-hadoop-use-pig-dotnet-sdk.md) |
 | Übermitteln eines Sqoop-Auftrags mit dem .NET SDK |Siehe [Übermitteln von Sqoop-Aufträgen](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
-| Auflisten von HDInsight-Clustern mit dem .NET SDK |Weitere Informationen finden Sie unter [List HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
-| Skalieren von HDInsight-Clustern mit dem .NET SDK |Weitere Informationen finden Sie unter [Scale HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
-| Gewähren/Widerrufen von Zugriff auf HDInsight-Cluster mit dem .NET SDK |Weitere Informationen finden Sie unter [Grant/revoke access to HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
-| Aktualisieren von HTTP-Anmeldeinformationen für HDInsight-Cluster mit dem .NET SDK |Weitere Informationen finden Sie unter [Update HTTP user credentials for HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) |
-| Suchen des standardmäßigen Speicherkonto für HDInsight-Cluster mit dem .NET SDK |Weitere Informationen finden Sie unter [Find the default storage account for HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
-| Löschen von HDInsight-Clustern mithilfe des .NET SDK |Weitere Informationen finden Sie unter [Delete HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
+| Auflisten von HDInsight-Clustern mit dem .NET SDK |Weitere Informationen finden Sie unter [Auflisten von HDInsight-Clustern](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
+| Skalieren von HDInsight-Clustern mit dem .NET SDK |Weitere Informationen finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
+| Gewähren/Widerrufen von Zugriff auf HDInsight-Cluster mit dem .NET SDK |Weitere Informationen finden Sie unter [Gewähren/Verweigern des Zugriffs auf HDInsight-Cluster](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
+| Aktualisieren von HTTP-Anmeldeinformationen für HDInsight-Cluster mit dem .NET SDK |Weitere Informationen finden Sie unter [Aktualisieren von HTTP-Benutzeranmeldeinformationen für HDInsight-Cluster](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) |
+| Suchen des standardmäßigen Speicherkonto für HDInsight-Cluster mit dem .NET SDK |Weitere Informationen finden Sie unter [Auffinden des Standardspeicherkontos für HDInsight-Cluster](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
+| Löschen von HDInsight-Clustern mithilfe des .NET SDK |Weitere Informationen finden Sie unter [Löschen von HDInsight-Clustern](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
 
 ### <a name="examples"></a>Beispiele
 Im Folgenden finden Sie einige Beispiele dazu, wie ein Vorgang mit dem ASM-basierten SDK durchgeführt wird und welcher der entsprechende Codeausschnitt für das Resource Manager-basierte SDK ist.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 738ebdcc612d944db3794525085d220b33533245
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 87d5389abd72875c62ea3484fc3f9ca43c339447
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30198229"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48240055"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Wird die benutzerdefinierte IPsec-/IKE-Richtlinie von allen Azure VPN Gateway-SKUs unterstützt?
 Die benutzerdefinierte IPsec-/IKE-Richtlinie wird von Azure-VPN-Gateways vom Typ **VpnGw1, VpnGw2, VpnGw3, Standard** und **HighPerformance** unterstützt. Die SKU **Basic** wird **nicht** unterstützt.
@@ -76,7 +76,7 @@ Die folgende Tabelle enthält die unterstützten Diffie-Hellman-Gruppen für IKE
 | 2                         | DHGroup2                 | PFS2         | 1024-Bit-MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048-Bit-MODP  |
 | 19                        | ECP256                   | ECP256       | 256-Bit-ECP    |
-| 20                        | ECP384                   | ECP284       | 384-Bit-ECP    |
+| 20                        | ECP384                   | ECP384       | 384-Bit-ECP    |
 | 24                        | DHGroup24                | PFS24        | 2048-Bit-MODP  |
 |                           |                          |              |                |
 

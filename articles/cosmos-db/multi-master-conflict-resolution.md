@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5feefdb8fe6204bc8ef42a5e65bf1e30354e0cf9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 39fd393e78a2b66749c6aa34a758b185b38effdf
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393926"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041186"
 ---
 # <a name="multi-master-conflict-resolution-in-azure-cosmos-db"></a>Konfliktauflösung in Azure Cosmos DB-Multimaster 
 
@@ -157,7 +157,7 @@ Die Prozedur weist vier Parameter auf:
 
 * **conflictingDocuments**: Gibt eine Sammlung der Version aller Dokumente in der Datenbank an, für die ein Commit ausgeführt wurde und die in Konflikt mit incomingDocument bezüglich der ID-Spalte oder anderer Felder mit eindeutigem Index steht. Diese Dokumente weisen einen anderen rid-Wert als das incomingDocument auf.
 
-Die benutzerdefinierte Prozedur verfügt über Vollzugriff auf den Cosmos DB-Partitionsschlüssel und kann alle Speichervorgänge durchführen, um Konflikte aufzulösen. Wenn die benutzerdefinierte Prozedur die in Konflikt stehende Version nicht committet, löscht das System den Konflikt, und das existingDocument verbleibt im committeten Zustand. Wenn bei der benutzerdefinierten Prozedur ein Fehler auftritt oder diese nicht vorhanden ist, fügt Azure Cosmos DB den Konflikt zum schreibgeschützten Konfliktfeed hinzu, in dem dieser asynchron verarbeitet werden kann, wie unter [Benutzerdefiniert – asynchron]() gezeigt wird. 
+Die benutzerdefinierte Prozedur verfügt über Vollzugriff auf den Cosmos DB-Partitionsschlüssel und kann alle Speichervorgänge durchführen, um Konflikte aufzulösen. Wenn die benutzerdefinierte Prozedur die in Konflikt stehende Version nicht committet, löscht das System den Konflikt, und das existingDocument verbleibt im committeten Zustand. Wenn bei der benutzerdefinierten Prozedur ein Fehler auftritt oder diese nicht vorhanden ist, fügt Azure Cosmos DB den Konflikt zum schreibgeschützten Konfliktfeed hinzu, in dem dieser asynchron verarbeitet werden kann, wie unter [Benutzerdefiniert – asynchron](#custom--asynchronous) gezeigt wird. 
 
 ### <a name="custom--asynchronous"></a>Benutzerdefiniert – asynchron  
 
