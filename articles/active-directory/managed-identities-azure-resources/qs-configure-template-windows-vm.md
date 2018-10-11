@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: bb62f892ec3d171958764d10f4b069bbd536d2ea
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f50714538cdfd1a0bd258a3b78d0885e3c7beed1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223437"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018484"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe einer Vorlage
 
@@ -188,7 +188,7 @@ Bei einem virtuellen Computer, für den die vom System zugewiesene verwaltete Id
 
    Wenn Ihre VM sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit den `userAssignedIdentities`-Wörterbuchwerten bei.
 
-   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01 und früher**
+   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**
    
    Wenn `2017-12-01` als `apiVersion` verwendet wird und Ihre VM sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem `identityIds`-Array der vom Benutzer zugewiesenen verwalteten Identitäten bei.  
    
@@ -235,7 +235,7 @@ In diesem Abschnitt weisen Sie einer Azure-VM mit der Azure Resource Manager-Vor
    }
    ```
    
-   **Microsoft.Compute/virtualMachines-API, Version 2017-12-01 und früher**
+   **Microsoft.Compute/virtualMachines-API, Version 2017-12-01**
     
    Wenn `2017-12-01` als `apiVersion` verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `identityIds`-Array gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Abschnitt `variables` der Vorlage definierten Variable gespeichert werden.
     
@@ -316,7 +316,7 @@ In diesem Abschnitt weisen Sie einer Azure-VM mit der Azure Resource Manager-Vor
        }
     ]
    ```
-   **Microsoft.Compute/virtualMachines-API, Version 2017-12-01 und früher**
+   **Microsoft.Compute/virtualMachines-API, Version 2017-12-01**
    
    ```JSON
    "resources": [
@@ -375,7 +375,7 @@ Bei einem virtuellen Computer, für den die vom Benutzer zugewiesene verwaltete 
     }
    ```
    
-   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01 und früher**
+   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**
     
    Um eine einzelne vom Benutzer zugewiesene verwaltete Identität von einem virtuellen Computer zu entfernen, entfernen Sie diese aus dem `useraAssignedIdentities`-Wörterbuch.
 
