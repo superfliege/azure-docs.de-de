@@ -28,6 +28,7 @@
 ### [Zugriffssteuerung](data-lake-store-access-control.md)
 ### [Sichern von gespeicherten Daten](data-lake-store-secure-data.md)
 ### [Verschlüsselung](data-lake-store-encryption.md)
+### [Integration des virtuellen Netzwerks (Vorschau)](data-lake-store-network-security.md)
 
 ## Authentifizieren mit Data Lake Storage Gen1
 ### [Authentifizierungsoptionen](data-lakes-store-authentication-using-azure-active-directory.md)
@@ -91,7 +92,7 @@
 ## [Python (Kontoverwaltung)](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)
 ## [Python (Dateisystemverwaltung)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
-## [Azure-CLI](https://docs.microsoft.com/cli/azure/dls)
+## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/dls)
 
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)

@@ -1,26 +1,25 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 467d4d982d76f4defe8ed887ebcc3f99100af313
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: cd544367113986b3a3959c2bf50fac80a8b36bc5
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068994"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309075"
 documentType: LandingData
-title: Azure Data Box-Dokumentation für Onlineübertragung
+title: 'Azure Data Box-Dokumentation: Onlineübertragung'
 metadata:
-  title: Azure Data Box-Dokumentation für Onlineübertragung
-  description: Die Azure Data Box-Familie ermöglicht Ihnen das schnelle, kostengünstige und zuverlässige Übertragen von Hunderten Terabyte an Daten an Azure. Nutzen Sie die Data Box-Geräte für Hochleistungs-Datenübertragungen über das Netzwerk.
-  services: databox-edge-gateway
+  title: 'Azure Data Box-Dokumentation: Onlineübertragung'
+  description: Verwenden Sie die Data Box-Geräte für schnelle, kostengünstige und zuverlässige Hochleistungsdatenübertragungen über das Netzwerk an Azure.
+  services: databox
   author: alkohli
   manager: twooley
-  ms.service: databox-edge-gateway
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.service: databox
+  ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 09/26/2018
+  ms.date: 10/12/2018
   ms.author: alkohli
 abstract:
-  description: Die Azure Data Box-Familie ermöglicht Ihnen das schnelle, kostengünstige und zuverlässige Übertragen von Hunderten Terabyte an Daten an Azure. Nutzen Sie die Data Box-Geräte für Hochleistungs-Datenübertragungen über das Netzwerk.<p>Wählen Sie Data Box Gateway<SUP>Vorschauversion</SUP>, um Daten für die Archivierung in der Cloud zu senden, die Notfallwiederherstellung durchzuführen oder Daten für die Cloud zu verarbeiten.  Verwenden Sie Data Box Edge<SUP>Vorschauversion</SUP>, um Ihre Daten auf dem Weg in Azure zu filtern, zu analysieren und zu transformieren.</p><p>In unseren Tutorials wird beschrieben, wie Sie Data Box Gateway und Data Box Edge für die netzwerkbasierte Übertragung nutzen.</p>
+  description: Mit der Azure Data Box-Familie können Sie schnell, kostengünstig und zuverlässig Hunderte von Terabyte an Daten in Azure übertragen. Nutzen Sie die Data Box-Geräte für Hochleistungs-Datenübertragungen über das Netzwerk.<p>Wählen Sie Data Box Gateway<SUP>Vorschauversion</SUP>, um Daten für die Archivierung in der Cloud zu senden, die Notfallwiederherstellung durchzuführen oder Daten für die Cloud zu verarbeiten.  Verwenden Sie Data Box Edge<SUP>Vorschauversion</SUP>, um Ihre Daten auf dem Weg in Azure zu filtern, zu analysieren und zu transformieren.</p><p>In unseren Tutorials wird beschrieben, wie Sie Data Box Gateway und Data Box Edge für die netzwerkbasierte Übertragung nutzen.</p>
 sections:
 - title: Lernprogramme
   items:
@@ -30,13 +29,17 @@ sections:
     style: ordered
     items:
     - html: <a href="data-box-gateway-deploy-prep">Vorbereiten der Bereitstellung von Azure Data Box Gateway</a>
-    - html: <a href="/azure/databox/data-box-deploy-provision-hyperv">Bereitstellen von Azure Data Box Gateway in Hyper-V</a>
+    - html: <a href="data-box-gateway-deploy-provision-hyperv">Bereitstellen von Azure Data Box Gateway in Hyper-V</a>
     - html: <a href="data-box-gateway-deploy-provision-vmware">Bereitstellen von Azure Data Box Gateway in VMware</a>
     - html: <a href="data-box-gateway-deploy-connect-setup-activate">Verbinden, Einrichten und Aktivieren von Azure Data Box Gateway</a>
-    - html: <a href=data-box-gateway-deploy-add-shares">Übertragen von Daten mit Azure Data Box Gateway</a>
+    - html: <a href="data-box-gateway-deploy-add-shares">Übertragen von Daten mit Azure Data Box Gateway</a>
   - type: paragraph
     text: <b>Für Data Box Edge<SUP>Vorschauversion</SUP></b>
   - type: list
     style: ordered
     items:
-    - html: <a href="data-box-edge-overview#sign-up">Registrieren Sie sich jetzt!</a>
+    - html: <a href="data-box-edge-deploy-prep">Vorbereiten der Bereitstellung von Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-install">Installieren von Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-connect-setup-activate">Verbinden, Einrichten und Aktivieren von Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-add-shares">Übertragen von Daten mit Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-configure-compute">Transformieren von Daten mit Azure Data Box Edge</a>

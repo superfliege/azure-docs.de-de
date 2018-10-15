@@ -1,23 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f4ef48157896d7cf4947fbc8ef6eba8b59ec414b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7056f5478838eec1cccf6329e172d86ea90d4dd8
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986512"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311047"
 documentType: LandingData
-title: Azure Data Box zur Offlineübertragung
+title: 'Dokumentation zu Azure Data Box: Offlineübertragung'
 metadata:
-  title: Dokumentation zu Azure Data Box zur Offlineübertragung
-  description: Mit der Azure Data Box-Familie können Sie schnell, kostengünstig und zuverlässig Hunderte von Terabyte an Daten in Azure übertragen. Verwenden Sie die Data Box-Geräte zur Offlinedatenübertragung bei Einschränkungen hinsichtlich Zeit, Kosten oder Netzwerk.
+  title: 'Dokumentation zu Azure Data Box: Offlineübertragung'
+  description: Verwenden Sie die Data Box-Geräte zur Offlinedatenübertragung an Azure bei Einschränkungen hinsichtlich Zeit, Netzwerk oder Kosten.
   services: databox
   author: alkohli
   manager: twooley
   ms.service: databox
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: pod
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 10/12/2018
   ms.author: alkohli
 abstract:
   description: Mit der Azure Data Box-Familie können Sie schnell, kostengünstig und zuverlässig Hunderte von Terabyte an Daten in Azure übertragen. Verwenden Sie die Data Box-Geräte zur Offlinedatenübertragung bei Einschränkungen hinsichtlich Zeit, Kosten oder Netzwerk.<p>Treffen Sie je nach Ihrem Datenvolumen Ihre Wahl aus Data Box Disk, Data Box-<SUP>Vorschau</SUP> oder Data Box Heavy-<SUP>Vorschau</SUP>. Für jedes Gerät erfolgt die Übertragung in Azure in 4 mühelosen Schritten – bestellen, empfangen, Daten auf das Gerät kopieren und Gerät an Azure zurücksenden. Im Azure-Rechenzentrum werden die Daten hochgeladen und anschließend vom Datenträger gelöscht.</p><p>Erfahren Sie aus unseren Schnellstarts und Tutorials, wie Sie Data Box für Ihre Offlinedatenübertragung nutzen können.</p>

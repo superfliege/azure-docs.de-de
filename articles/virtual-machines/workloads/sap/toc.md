@@ -77,6 +77,7 @@
 #### [HA unter Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [HA unter Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-guide-wsfc-file-share.md)
 #### [HA unter SUSE Linux für die (A)SCS-Instanz](high-availability-guide-suse.md)
+#### [Hochverfügbarkeit unter Red Hat Enterprise Linux für die (A)SCS-Instanz](high-availability-guide-rhel.md)
 ### Vorbereitung der Azure-Infrastruktur
 #### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-infrastructure-wsfc-file-share.md)
