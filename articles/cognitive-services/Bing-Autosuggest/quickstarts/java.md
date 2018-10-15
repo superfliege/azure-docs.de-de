@@ -1,23 +1,23 @@
 ---
-title: Schnellstart für die Bing-Vorschlagssuche-API mit Java | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Vorschlagssuche-API in Microsoft Cognitive Services einsteigen können.
+title: 'Schnellstart: Bing-Vorschlagssuche-API, Java'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Verwendung der Bing-Vorschlagssuche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: c3a6b7119521772dbb60f3702c84e9bbd94217c4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6f79416c28631a47209558fd0c415ae79cff93bc
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377258"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831397"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-java"></a>Schnellstart für die Bing-Vorschlagssuche-API mit Java
-<a name="HOLTop"></a>
 
 In diesem Artikel erfahren Sie, wie Sie die [Bing-Vorschlagssuche-API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) mit Java verwenden. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge zurück, die der Benutzer in das Suchfeld eingibt. Sie rufen diese API immer wieder auf, wenn der Benutzer ein neues Zeichen in das Suchfeld eingibt. Die Vorschläge werden in der Dropdownliste des Suchfelds angezeigt. In diesem Artikel wird gezeigt, wie Sie eine Anforderung senden, die die vorgeschlagenen Abfragezeichenfolgen für *sail* zurückgibt.
 
@@ -25,13 +25,13 @@ In diesem Artikel erfahren Sie, wie Sie die [Bing-Vorschlagssuche-API](https://a
 
 Zum Kompilieren und Ausführen des Codes benötigen Sie [JDK 7 oder 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Sie können auch eine Java-Entwicklungsumgebung verwenden, ein Text-Editor ist jedoch ausreichend.
 
-Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit der **Bing-Vorschlagssuche-API V7**. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/#search) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten. Alternativ können Sie den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit der **Bing-Vorschlagssuche-API V7**. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/#search) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
 
 ## <a name="get-autosuggest-results"></a>Abrufen von Ergebnissen der Vorschlagssuche
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Java-Projekt.
 2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den Wert `subscriptionKey` durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+3. Ersetzen Sie den `subscriptionKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
 ```java
@@ -117,7 +117,7 @@ public class Autosuggest {
 
 ### <a name="response"></a>response
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {

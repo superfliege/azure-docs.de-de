@@ -1,32 +1,33 @@
 ---
-title: Java-Schnellstart für Azure Cognitive Services, Bing-News-Suche-API | Microsoft-Dokumentation
+title: 'Schnellstart: Bing-News-Suche-API, Java'
+titlesuffix: Azure Cognitive Services
 description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-News-Suche-API in Microsoft Cognitive Services in Azure einsteigen können.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 15d0f6490a517466036d3caba1058cfefa551321
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f7011ceb51d4fb4a5a92c6aeb56a0c26e7d86388
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377378"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803629"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-java"></a>Schnellstart für die Bing-News-Suche-API mit Java
 
-In diesem Artikel erfahren Sie, wie Sie die Bing-Suche-API verwenden, die im Rahmen von Microsoft Cognitive Services in Azure zur Verfügung steht. In diesem Artikel wird zwar Java eingesetzt, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderung stellen und JSON analysieren kann. 
+In diesem Artikel erfahren Sie, wie Sie die Bing-Suche-API verwenden, die im Rahmen von Microsoft Cognitive Services in Azure zur Verfügung steht. In diesem Artikel wird zwar Java eingesetzt, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann. 
 
 Der Beispielcode wurde so geschrieben, dass er unter Java 7 als Konsolenanwendung ausgeführt werden kann.
 
-Sehen Sie sich die [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) an, in der technische Details zu APIs enthalten sind.
+Die [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) enthält technische Informationen zu den APIs.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs** verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs**. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten. Alternativ können Sie den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
 
 ## <a name="bing-news-search"></a>Bing News-Suche
 
@@ -34,7 +35,7 @@ Die [Bing-News-Suche-API](https://docs.microsoft.com/rest/api/cognitiveservices/
 
 1. Laden Sie die [gson-Bibliothek](https://github.com/google/gson) herunter, oder installieren Sie diese.
 2. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt.
-3. Fügen Sie den untenstehenden Code hinzu.
+3. Fügen Sie den unten stehenden Code hinzu.
 4. Ersetzen Sie den `subscriptionKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 5. Führen Sie das Programm aus.
 
@@ -148,7 +149,7 @@ class SearchResults{
 
 **Antwort**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben:
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {

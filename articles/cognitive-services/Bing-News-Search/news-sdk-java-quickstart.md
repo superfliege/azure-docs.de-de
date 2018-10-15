@@ -1,23 +1,23 @@
 ---
-title: Java-Schnellstart für das Bing-News-Suche-SDK | Microsoft-Dokumentation
-description: Informationen zum Einrichten des Bing-News-Suche-SDK für die Konsolenanwendung.
+title: 'Schnellstart: Bing-News-Suche-SDK, Java'
 titleSuffix: Azure Cognitive Services
+description: Informationen zum Einrichten des Bing-News-Suche-SDK für die Konsolenanwendung.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: a6d4baf307fa3edcc0886d32204f2872fe310ce2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7919f13e8c5aaa592a416190d3cd11edbf31af2c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377915"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802476"
 ---
-# <a name="bing-news-search-sdk-java-quickstart"></a>Java-Schnellstart für das Bing-News-Suche-SDK
+# <a name="quickstart-bing-news-search-sdk-with-java"></a>Schnellstart: Bing-News-Suche-SDK mit Java
 
 Das Bing-News-Suche-SDK enthält die Funktionalität der REST-API für Neuigkeitenabfragen und das Analysieren von Ergebnissen. 
 
@@ -286,6 +286,6 @@ public class NewsSearchSDK {
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Cognitive Services Java SDK samples (Cognitive Services SDK-Beispiele für Java)](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples).
+[Cognitive Services Java SDK samples (Cognitive Services SDK-Beispiele für Java)](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 

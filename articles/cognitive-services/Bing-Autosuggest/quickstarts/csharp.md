@@ -1,23 +1,23 @@
 ---
-title: Schnellstart für die Bing-Vorschlagssuche-API mit C# | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Vorschlagssuche-API in Microsoft Cognitive Services einsteigen können.
+title: 'Schnellstart: Bing-Vorschlagssuche-API, C#'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Verwendung der Bing-Vorschlagssuche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 8115950c3b6f3ad439f077847d6645ddaec88dc4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c735145724577f92e75079f550c99aa9e6656542
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377211"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829580"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-c"></a>Schnellstart für die Bing-Vorschlagssuche-API mit C\#
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-autosuggest-api-with-c"></a>Schnellstart für die Bing-Vorschlagssuche-API mit C#
 
 In diesem Artikel erfahren Sie, wie Sie die [Bing-Vorschlagssuche-API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) mit C# verwenden. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge zurück, die der Benutzer in das Suchfeld eingibt. Sie rufen diese API immer wieder auf, wenn der Benutzer ein neues Zeichen in das Suchfeld eingibt. Die Vorschläge werden in der Dropdownliste des Suchfelds angezeigt. In diesem Artikel wird gezeigt, wie Sie eine Anforderung senden, die die vorgeschlagenen Abfragezeichenfolgen für *sail* zurückgibt.
 
@@ -158,9 +158,9 @@ namespace AutosuggestSample1
 }
 ```
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {

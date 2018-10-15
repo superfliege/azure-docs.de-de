@@ -1,21 +1,23 @@
 ---
-title: Node.js-Schnellstart für Project URL Preview – Microsoft Cognitive Services | Microsoft Docs
+title: 'Schnellstart: „Projekt: URL-Vorschau“, Node.js'
+titlesuffix: Azure Cognitive Services
 description: Hier erhalten Sie Informationen zu den ersten Schritten mit URL Preview in Microsoft Cognitive Services in Azure.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 195033d2740b11873baae095cec028dc8d19ce49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: b8410127ed9a0444ab400eb3242868a85bd5b2c9
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376243"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883566"
 ---
-# <a name="url-preview-node-quickstart"></a>Node-Schnellstart für URL Preview
+# <a name="quickstart-url-preview-with-nodejs"></a>Schnellstart: URL-Vorschau mit Node.js 
 
 Im folgenden Node-Beispiel wird eine URL-Vorschau für die SwiftKey-Website erstellt: https://swiftkey.com/en.
 

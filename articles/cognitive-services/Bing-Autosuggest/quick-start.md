@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: Vorschlagssuche-API | Microsoft-Dokumentation'
+title: 'Schnellstart: Bing-Vorschlagssuche-API'
+titlesuffix: Azure Cognitive Services
 description: In diesem Artikel lernen Sie die ersten Schritte zur Verwendung der Bing-Vorschlagssuche-API.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 1482E781-7352-4A3F-B1D5-B896381348C4
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: a7b54a1fb0b7c76eb72097357a6b51aa02e6e2fd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 446d271854a4e45bcea8c261a0dc078e549f8229
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377002"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830752"
 ---
-# <a name="making-your-first-autosuggest-query"></a>Erstellen Ihrer ersten Abfrage für die Vorschlagssuche
+# <a name="quickstart-making-your-first-autosuggest-query"></a>Schnellstart: Erstellen Ihrer ersten Abfrage für die Vorschlagssuche
 
 Bevor Sie Ihren ersten Aufruf vornehmen können, benötigen Sie einen Cognitive Services-Abonnementschlüssel. Unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api) erfahren Sie, wie Sie einen Schlüssel erhalten.
 
@@ -36,11 +36,11 @@ https://api.cognitive.microsoft.com/bing/v5.0/Suggestions
 
 Die Anforderung muss das HTTPS-Protokoll verwenden.
 
-Es wird empfohlen, dass alle Anforderungen von einem Server stammen. Das Verteilen eines Schlüssels als Teil einer Clientanwendung bietet mehr Gelegenheiten für den Zugriff durch eine böswillige dritte Partei. Aufrufe von einem Server stellen ebenso einen einzelnen Upgradepunkt für zukünftige Versionen der API dar.
+Alle Anforderungen sollten von einem Server stammen. Das Verteilen eines Schlüssels als Teil einer Clientanwendung birgt ein größeres Risiko, dass eine böswillige dritte Partei darauf zugreift. Aufrufe von einem Server stellen ebenso einen einzelnen Upgradepunkt für zukünftige Versionen der API dar.
 
 Die Anforderung muss den Abfrageparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) angeben, der den partiellen Suchbegriff des Benutzers enthält. Obwohl es optional ist, sollte die Anforderung auch den Abfrageparameter [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) angeben, wodurch der Markt identifiziert wird, von dem die Ergebnisse stammen sollen. Unter [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters) finden Sie eine Liste optionaler Abfrageparameter. Alle Abfrageparameter müssen URL-codiert sein.
 
-Die Anforderung muss den [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey)-Header angeben. Auch wenn dies optional ist, sollten Sie die folgenden Header ebenso angeben:
+Die Anforderung muss den [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey)-Header angeben. Auch wenn dies optional ist, sollten Sie die folgenden Header ebenfalls angeben:
 
 - [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
 - [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)

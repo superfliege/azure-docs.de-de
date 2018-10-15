@@ -1,20 +1,21 @@
 ---
-title: Was ist die benutzerdefinierte Bing-Suche? | Microsoft-Dokumentation
+title: Was ist die benutzerdefinierte Bing-Suche?
+titlesuffix: Azure Cognitive Services
 description: Enthält eine allgemeine Übersicht über die benutzerdefinierte Bing-Suche.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: overview
 ms.date: 09/29/2017
 ms.author: v-brapel
-ms.openlocfilehash: b6f50844d6571cca6d63c1db7a85863e3d22d411
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2483bf36bb18af21bc454e08f3321b33094c43c8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948076"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814303"
 ---
 # <a name="what-is-bing-custom-search"></a>Was ist die benutzerdefinierte Bing-Suche?
 
@@ -32,19 +33,19 @@ In der folgenden Abbildung ist dargestellt, wie einfach die benutzerdefinierte S
 
 ## <a name="adding-custom-search-box-suggestions"></a>Hinzufügen eines Felds für benutzerdefinierte Suchvorschläge
 
-Durch ein Feld für benutzerdefinierte Suchvorschläge können Sie die Funktion für benutzerdefinierte Suchen optimieren. Mit diesem Feature erhalten Sie benutzerdefinierte Suchvorschläge, die für Ihre Suche relevant sind. Wenn der Benutzer das gesuchte Schlüsselwort in das Suchfeld eingibt, wird eine Dropdownliste mit empfohlenen Abfragezeichenfolgen basierend auf der partiellen Abfragezeichenfolge des Benutzers angezeigt. Sie können bestimmen, ob nur benutzerdefinierte Vorschläge zurückgegeben oder auch Bing-Vorschläge eingeschlossen werden. [Weitere Informationen](define-custom-suggestions.md)
+Durch ein Feld für benutzerdefinierte Suchvorschläge können Sie die Funktion für benutzerdefinierte Suchen optimieren. Mit diesem Feature erhalten Sie benutzerdefinierte Suchvorschläge, die für Ihre Suche relevant sind. Wenn der Benutzer das gesuchte Schlüsselwort in das Suchfeld eingibt, wird eine Dropdownliste mit empfohlenen Abfragezeichenfolgen basierend auf der partiellen Abfragezeichenfolge des Benutzers angezeigt. Sie können bestimmen, ob nur benutzerdefinierte Vorschläge zurückgegeben oder auch Bing-Vorschläge eingeschlossen werden. [Weitere Informationen](define-custom-suggestions.md).
 
 ## <a name="adding-custom-image-search-experience"></a>Hinzufügen einer Funktion zur benutzerdefinierten Bildersuche
 
-Durch Bilder können Sie die Funktion für benutzerdefinierte Suchen optimieren. Ähnlich wie bei Webergebnissen wird bei der benutzerdefinierten Suche das Suchen nach Bildern in der Liste von Websites in Ihrer Instanz ermöglicht. [Weitere Informationen](get-images-from-instance.md)
+Durch Bilder können Sie die Funktion für benutzerdefinierte Suchen optimieren. Ähnlich wie bei Webergebnissen wird bei der benutzerdefinierten Suche das Suchen nach Bildern in der Websiteliste in Ihrer Instanz ermöglicht. [Weitere Informationen](get-images-from-instance.md).
 
 ## <a name="adding-custom-video-search-experience"></a>Hinzufügen einer Funktion zur benutzerdefinierten Videosuche
 
-Durch Videos können Sie die Funktion für benutzerdefinierte Suchen optimieren. Ähnlich wie bei Webergebnissen wird bei der benutzerdefinierten Suche das Suchen nach Videos in der Liste von Websites in Ihrer Instanz ermöglicht. [Weitere Informationen](get-videos-from-instance.md)
+Durch Videos können Sie die Funktion für benutzerdefinierte Suchen optimieren. Ähnlich wie bei Webergebnissen wird bei der benutzerdefinierten Suche das Suchen nach Videos in der Liste von Websites in Ihrer Instanz ermöglicht. [Weitere Informationen](get-videos-from-instance.md).
 
 ## <a name="sharing-your-custom-search-instance-with-others"></a>Freigeben von Instanzen für benutzerdefinierte Suchen für andere Benutzer
 
-Sie können auf einfache Weise das gemeinsame Bearbeiten und Testen Ihrer Instanz ermöglichen, indem Sie sie für Mitglieder Ihres Teams freigeben. [Weitere Informationen](share-your-custom-search.md)
+Sie können auf einfache Weise das gemeinsame Bearbeiten und Testen Ihrer Instanz ermöglichen, indem Sie sie für Mitglieder Ihres Teams freigeben. [Weitere Informationen](share-your-custom-search.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

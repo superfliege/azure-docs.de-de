@@ -1,20 +1,21 @@
 ---
-title: Single-Page-App für die Bing-News-Suche | Microsoft-Dokumentation
+title: 'Tutorial: Einzelseiten-App für die Bing-News-Suche'
+titlesuffix: Azure Cognitive Services
 description: In diesem Artikel wird erläutert, wie Sie die Bing-News-Suche-API in einer Single-Page-Web-App verwenden.
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: fb8cd24dfdfb03500cc86ee1b1f0126ec044a873
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1d27751d12c82736ca519bb3a0e9bcd49bef4a47
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377435"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803646"
 ---
 # <a name="tutorial-single-page-news-search-app"></a>Tutorial: Einzelseiten-App für die News-Suche
 Mit der Bing-News-Suche-API können Sie das Web durchsuchen und Ergebnisse für verschiedene Arten von News finden, die für eine Suchabfrage relevant sind. In diesem Tutorial wird eine Single-Page-Web-App erstellt, die unter Verwendung der Bing-News-Suche-API Suchergebnisse auf der Seite anzeigt. Die Anwendung enthält HTML-, CSS- und JavaScript-Komponenten.
@@ -37,7 +38,7 @@ In dieser Tutorial-App wird Folgendes veranschaulicht:
 
 Die Tutorialseite ist unabhängig von anderen Komponenten und verwendet keine externen Frameworks, Stylesheets oder Bilddateien. Die Seite greift nur auf die am häufigsten unterstützten Features für JavaScript zurück und kann in aktuellen Versionen aller gängigen Webbrowser ausgeführt werden.
 
-In diesem Tutorial werden ausgewählte Teile des Quellcodes erläutert. Der vollständige [Quellcode](tutorial-bing-news-search-single-page-app-source.md) steht zur Verfügung. Zum Ausführen des Beispiels kopieren Sie den Quellcode, fügen ihn in einen Text-Editor ein, und speichern ihn als `bing.html`.
+In diesem Tutorial werden ausgewählte Teile des Quellcodes erläutert. Der vollständige [Quellcode](tutorial-bing-news-search-single-page-app-source.md) steht zur Verfügung. Zum Ausführen des Beispiels kopieren Sie den Quellcode, fügen Sie ihn in einen Text-Editor ein, und speichern Sie die Datei als `bing.html`.
 
 ## <a name="app-components"></a>App-Komponenten
 Diese Tutorial-App setzt sich ebenso wie alle anderen Single-Page-Web-Apps aus drei Teilen zusammen:

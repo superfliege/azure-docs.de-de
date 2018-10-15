@@ -1,23 +1,23 @@
 ---
-title: Java-Schnellstart für das Bing-Entitätssuche-SDK | Microsoft-Dokumentation
+title: 'Schnellstart: Bing-Entitätssuche-SDK, Java'
+titlesuffix: Azure Cognitive Services
 description: Einrichten des Bing-Entitätssuche-SDK für die Konsolenanwendung.
-titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/19/2018
 ms.author: v-gedod
-ms.openlocfilehash: ebfabc00b5dc031ac4e5284450a9d639c383e78f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: eeb8e6e0ac132ef2d927aa2de03817389230191e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377882"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814490"
 ---
-# <a name="bing-entity-search-sdk-java-quickstart"></a>Java-Schnellstart für das Bing-Entitätssuche-SDK
+# <a name="quickstart-bing-entity-search-sdk-with-java"></a>Schnellstart: Bing-Entitätssuche-SDK mit Java
 
 Das Bing-Entitätssuche-SDK enthält die Funktionalität der REST-API für Entitätsabfragen und das Analysieren von Ergebnissen. 
 
@@ -296,5 +296,5 @@ public class EntitySearchSDK {
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Cognitive Services Java SDK samples (Cognitive Services SDK-Beispiele für Java)](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples).
+[Cognitive Services Java SDK samples (Cognitive Services SDK-Beispiele für Java)](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 

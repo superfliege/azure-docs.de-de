@@ -1,22 +1,23 @@
 ---
-title: Java-Schnellstart in Project Answer Search – Microsoft Cognitive Services | Microsoft-Dokumentation
+title: 'Schnellstart: „Projekt: Suche nach Antworten“, Java'
+titlesuffix: Azure Cognitive Services
 description: Steigen Sie in Project Answer Search in Java ein.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 4e1f606e1564981589e638e0e51a8b42633ca7b0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 1e10ecf685aaf5b60b94a5e9e0d8e118f45e5168
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376147"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867033"
 ---
-# <a name="project-answer-search-query-in-java"></a>Project Answer Search-Abfrage in Java
+# <a name="quickstart-project-answer-search-query-in-java"></a>Schnellstart: Abfrage „Projekt: Suche nach Antworten“ in Java
 In diesem Artikel wird Java verwendet, um die Bing-Antwortsuche-API zu veranschaulichen, die einen Teil der Microsoft Cognitive Services in Azure darstellt. Die API ist ein REST-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann.
  
 Der Beispielcode verwendet Java und weist nur minimale externe Abhängigkeiten auf.  Sie können auch unter Linux oder Mac OS X mit Mono ausführen.

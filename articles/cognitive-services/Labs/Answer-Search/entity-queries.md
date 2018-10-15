@@ -1,22 +1,23 @@
 ---
-title: Project Answer Search-Entitätenabfrage – Microsoft Cognitive Services | Microsoft Docs
+title: 'Schnellstart: Entitätsabfrage für „Projekt: Suche nach Antworten“'
+titlesuffix: Azure Cognitive Services
 description: Abfragen für Entitäten mit Project Answer Search
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 2b8382b791c02514e5110097700e223d98fafd6a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 0845f491772b905599bb60e8ec555d14b6d6b15f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376202"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883600"
 ---
-# <a name="query-for-entities"></a>Abfragen für Entitäten
+# <a name="quickstart-query-for-entities"></a>Schnellstart: Abfragen von Entitäten
 
 Wenn die Abfrage Informationen zu einer Person, einem Ort oder einer Sache anfordert, kann die Antwort eine `entities`-Antwort enthalten.  Abfragen geben immer Webseiten zurück, und [Fakten](fact-queries.md) und/oder [Entitäten](entity-queries.md) hängen von der Abfrage ab.
 

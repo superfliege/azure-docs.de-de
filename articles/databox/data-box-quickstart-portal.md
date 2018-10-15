@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/04/2018
 ms.author: alkohli
-ms.openlocfilehash: 514b2a026ea34f4bd82f13ebc73c09f71637ce30
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fe15167a5e88dbc9a97383c9a074a32c91f4219a
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978351"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784636"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Schnellstart: Bereitstellen von Azure Data Box über das Azure-Portal
 
@@ -31,18 +31,19 @@ Eine ausführliche Anleitung zur Schritt-für-Schritt-Bereitstellung und zur Nac
 
 Vorbereitungen
 
-- Stellen Sie sicher, dass Sie ein Abonnement der folgenden Typen für den Data Box-Dienst verwenden:
+- Sie verwenden ein Abonnement der folgenden Typen für den Data Box-Dienst:
     - Microsoft Enterprise Agreement (EA). Erfahren Sie mehr über [EA-Abonnements](https://azure.microsoft.com/pricing/enterprise-agreement/).
     - Cloud Solution Provider (CSP). Erfahren Sie mehr über das [Azure CSP-Programm](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
     - Nutzungsbasierte Bezahlung. Erfahren Sie mehr über Azure-[Abonnements mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/).
+    - Microsoft Azure Sponsorship. Erfahren Sie mehr über das [Azure Sponsorship-Programm](https://azure.microsoft.com/en-in/offers/ms-azr-0036p/). 
 
-- Zum Erstellen einer Data Box-Bestellung benötigen Sie Zugriff als Besitzer oder Mitwirkender auf das Abonnement.
+- Sie haben Zugriff als Besitzer oder Mitwirkender auf das Abonnement (zum Erstellen einer Data Box-Bestellung erforderlich).
 - Überprüfen Sie die [Sicherheitsrichtlinien für Ihre Data Box](data-box-safety.md).
-- Sie haben einen Hostcomputer, der über die Daten verfügt, die Sie in die Data Box kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
-    - Auf ihm muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
+- Sie haben einen Hostcomputer mit den Daten, die Sie auf die Data Box kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
+    - Es muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
     - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, wodurch jedoch die Geschwindigkeit der Kopiervorgänge leidet. 
-- Sie benötigen Zugang zu einer ebenen Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Rechenzentrum. Sie können das Gerät waagerecht oder senkrecht in das Rack einbauen.
-- Sie haben die folgenden Kabel beschafft, um Ihre Data Box mit dem Hostcomputer zu verbinden.
+- Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Rechenzentrum. Sie können das Gerät waagerecht oder senkrecht in das Rack einbauen.
+- Sie haben die folgenden Kabel zur Hand, um Ihre Data Box mit dem Hostcomputer zu verbinden.
     - Zwei SFP+-Twinax-Kupferkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2)
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle MGMT)
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6A oder RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle DATA 3, die mit 10 GBit/s bzw. 1 GBit/s konfiguriert ist)
@@ -105,7 +106,7 @@ Die Dauer dieses Vorgangs hängt von der Datenmenge und der Netzwerkgeschwindigk
 2. Stellen Sie eine Verbindung mit den Freigaben über diesen Pfad her: `\\<IP address of your device>\ShareName`. Um die Anmeldeinformationen für den Freigabezugriff zu erhalten, wechseln Sie auf der lokalen Webbenutzeroberfläche der Data Box zur Seite **Verbindung herstellen und Daten kopieren**.
 3. Stellen Sie sicher, dass die Namen der Freigaben und Ordner sowie die Daten den Vorgaben entsprechen, die unter [Für Azure Storage und den Data Box-Dienst geltende Einschränkungen](data-box-limits.md) beschrieben sind.
 
-## <a name="ship-to-azure"></a>Versand an Azure 
+## <a name="ship-to-azure"></a>Senden an Azure 
 
 Dieser Vorgang dauert ca. 10-15 Minuten.
 

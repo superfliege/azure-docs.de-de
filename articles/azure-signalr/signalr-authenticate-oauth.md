@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 696139a3e37f7bd1e32b4e7cec836b3c66df16a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8751e3485b97b67fd8dd4821480fecd7735c08cd
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974322"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268511"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Tutorial: Azure SignalR-Dienstauthentifizierung
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie, wie Sie Ihre eigene Authentifizierung implementie
 
 Die Authentifizierung, die ursprünglich in der Chatroomanwendung des Schnellstarts verwendet wurde, ist für reale Szenarien zu einfach. Die Anwendung erlaubt es jedem Client eine Identität vorzugeben, und der Server akzeptiert dies einfach. In der Praxis ist dieser Ansatz nicht sehr nützlich, da ein betrügerischer Benutzer sich einfach als anderer ausgeben könnte, um auf sensible Daten zuzugreifen. 
 
-[GitHub](https://github.com/) bietet Authentifizierungs-APIs, die auf einem gängigen Industriestandardprotokoll namens [OAuth](https://oauth.net/) basieren. Diese APIs ermöglichen es Anwendungen von Drittanbietern, GitHub-Konten zu authentifizieren. In diesem Tutorial werden Sie mithilfe dieser APIs die Authentifizierung über ein Github-Konto implementieren, bevor Sie Clientanmeldungen für die Chatroomanwendung zulassen. Nach der Authentifizierung eines GitHub-Kontos werden die Kontoinformationen als Cookie hinzugefügt, das vom Webclient zur Authentifizierung verwendet wird.
+[GitHub](https://github.com/) bietet Authentifizierungs-APIs, die auf einem gängigen Industriestandardprotokoll namens [OAuth](https://oauth.net/) basieren. Diese APIs ermöglichen es Anwendungen von Drittanbietern, GitHub-Konten zu authentifizieren. In diesem Tutorial werden Sie mithilfe dieser APIs die Authentifizierung über ein GitHub-Konto implementieren, bevor Sie Clientanmeldungen für die Chatroomanwendung zulassen. Nach der Authentifizierung eines GitHub-Kontos werden die Kontoinformationen als Cookie hinzugefügt, das vom Webclient zur Authentifizierung verwendet wird.
 
 Weitere Informationen zu den über GitHub bereitgestellten APIs für die OAuth-Authentifizierung finden Sie unter [Basics of Authentication](https://developer.github.com/v3/guides/basics-of-authentication/) (Grundlagen der Authentifizierung).
 

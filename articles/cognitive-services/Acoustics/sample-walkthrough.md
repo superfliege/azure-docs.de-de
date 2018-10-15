@@ -1,20 +1,21 @@
 ---
-title: Exemplarische Vorgehensweise zum Project Acoustics-Beispiel – Cognitive Services
+title: 'Beispiel: „Projekt: Akustik“'
+titlesuffix: Azure Cognitive Services
 description: In dieser exemplarischen Vorgehensweise wird die Unity-Beispielszene für Project Acoustics mit der Bereitstellung auf dem Desktop und in einer VR beschrieben.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: eaf7ff9f7f791fd6d04e6b76d256b4987c50cd13
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434091"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901157"
 ---
 # <a name="unity-sample-walkthrough"></a>Exemplarische Vorgehensweise zu Unity
 Dies ist eine exemplarische Vorgehensweise zum Project Acoustics-Beispiel. Weitere Informationen dazu, was Project Acoustics ist, finden Sie unter [Introduction to Project Acoustics (Einführung in Project Acoustics)](what-is-acoustics.md). Unterstützung beim Hinzufügen des Project Acoustics-Pakets zu einem bereits vorhandenen Unity-Projekt finden Sie im [Leitfaden für erste Schritte](getting-started.md).

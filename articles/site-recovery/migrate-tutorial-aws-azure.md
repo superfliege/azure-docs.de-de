@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/24/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 48714d71edcf54726eb362c7f56950a1350fd52b
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 04e7506562d29e37abb65b7a760fbc9bd707e2c6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885324"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078935"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -239,10 +239,9 @@ In einigen Szenarien ist für das Failover eine zusätzliche Verarbeitung erford
 Führen Sie ein tatsächliches Failover für die EC2-Instanzen durch, um sie zu Azure-VMs zu migrieren:
 
 1. Wählen Sie unter **Geschützte Elemente** > **Replizierte Elemente** die AWS-Instanzen und dann die Option **Failover**.
-2. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Wählen Sie den letzten Wiederherstellungspunkt aus.
-3. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, wenn Site Recovery versuchen soll, virtuelle Quellcomputer herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
-4. Stellen Sie sicher, dass die VM unter **Replizierte Elemente** angezeigt wird.
-5. Klicken Sie jeweils mit der rechten Maustaste auf eine VM, und wählen Sie dann die Option **Migration abschließen**. Dadurch wird der Migrationsvorgang abgeschlossen, die Replikation für die AWS-VM wird beendet, und die Site Recovery-Abrechnung für die VM wird eingestellt.
+2. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Wählen Sie den letzten Wiederherstellungspunkt aus, und starten Sie das Failover. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
+1. Stellen Sie sicher, dass die VM unter **Replizierte Elemente** angezeigt wird.
+2. Klicken Sie jeweils mit der rechten Maustaste auf eine VM, und wählen Sie dann die Option **Migration abschließen**. Dadurch wird der Migrationsvorgang abgeschlossen, die Replikation für die AWS-VM wird beendet, und die Site Recovery-Abrechnung für die VM wird eingestellt.
 
     ![Abschließen der Migration](./media/migrate-tutorial-aws-azure/complete-migration.png)
 

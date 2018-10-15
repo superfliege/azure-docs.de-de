@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2b6f46c10603e54f0f77a635b3233073aadac0cd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9e7e853ad7562bf5d449479ad730a5dabd6a97b8
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700122"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585423"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Übersicht über die Integration von Azure Service Bus in Event Grid
 
@@ -129,9 +129,9 @@ Gehen Sie wie folgt vor, um ein neues Event Grid-Abonnement zu erstellen:
 2. Klicken Sie im linken Bereich auf **Event Grid**. 
 3. Klicken Sie auf **Ereignisabonnement**.  
 
-   Die folgende Abbildung zeigt einen Namespace mit einigen Event Grid-Abonnements:
+   Die folgende Abbildung zeigt einen Namespace mit einem Event Grid-Abonnement:
 
-   ![20][]
+   ![Event Grid-Abonnements](./media/service-bus-to-event-grid-integration-concept/sbtoeventgridportal.png)
 
    Die folgende Abbildung zeigt, wie Sie eine Funktion oder einen Webhook ohne spezielle Filterung abonnieren:
 
@@ -176,7 +176,7 @@ Als Nächstes können Sie sich die anderen Setupoptionen ansehen oder [sich verg
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Rufen Sie [Beispiele](service-bus-to-event-grid-integration-example.md) für Service Bus und Event Grid ab.
-* Informieren Sie sich ausführlicher über [Event Grid](https://docs.microsoft.com/azure/azure-functions/).
+* Informieren Sie sich ausführlicher über [Event Grid](https://docs.microsoft.com/azure/event-grid/).
 * Erfahren Sie mehr über [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
 * Informieren Sie sich ausführlicher über [Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
 * Erfahren Sie mehr über [Service Bus](https://docs.microsoft.com/azure/azure-functions/).

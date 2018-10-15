@@ -1,20 +1,21 @@
 ---
-title: Verwenden der Bing-Entitätssuche-API in einer Single-Page-Web-App | Microsoft-Dokumentation
+title: 'Tutorial: Einzelseiten-Web-App für die Bing-Entitätssuche'
+titlesuffix: Azure Cognitive Services
 description: In diesem Artikel wird beschrieben, wie Sie die Bing-Entitätssuche-API in einer Single-Page-Webanwendung verwenden.
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/08/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 91c60913cd806baf100e5511cbf59299bf9a84f0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9aabecbec144797b9fbafdff7179213b68921447
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377458"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815544"
 ---
 # <a name="tutorial-single-page-web-app"></a>Tutorial: Single-Page-Web-App
 
@@ -61,7 +62,7 @@ Die Tutorialanwendung setzt sich ebenso wie alle anderen Single-Page-Webanwendun
 
 > [!div class="checklist"]
 > * Im HTML-Teil werden die Struktur und der Inhalt der Seite definiert.
-> * Im CSS-Teil wird das Layout der Seite festgelegt.
+> * CSS: Definiert das Layout der Seite
 > * Im JavaScript-Teil wird das Verhalten der Seite definiert.
 
 In diesem Tutorial wird ein Großteil des HTML- und CSS-Codes nicht ausführlich behandelt, da dieser selbsterklärend ist.
@@ -377,7 +378,7 @@ function handleBingResponse() {
 > [!IMPORTANT]
 > Eine erfolgreiche HTTP-Anforderung ist *nicht* zwangsläufig mit einer erfolgreichen Suche gleichzusetzen. Wenn bei einem Suchvorgang ein Fehler auftritt, gibt die Bing-Entitätssuche-API einen HTTP-Statuscode zurück, der vom Code 200 abweicht und Fehlerinformationen in der JSON-Antwort enthält. Wenn die Anzahl der Anforderungen begrenzt war, gibt die API zusätzlich eine leere Antwort zurück.
 
-Ein Großteil des Codes in den beiden vorangehenden Funktionen ist für die Fehlerbehandlung zuständig. In den folgenden Phasen können Fehler auftreten:
+Ein Großteil des Codes in den beiden vorangehenden Funktionen ist für die Fehlerbehandlung zuständig. In folgenden Phasen können Fehler auftreten:
 
 |Phase|Mögliche Fehler|Behandelt durch|
 |-|-|-|
@@ -444,7 +445,7 @@ Für eine Rendererfunktion können die folgenden Parameter angegeben werden:
 
 | | |
 |-|-|
-|`item`|Das JavaScript-Objekt mit Eigenschaften des Elements, z.B. die zugehörige URL und Beschreibung.|
+|`item`|Das JavaScript-Objekt mit Eigenschaften des Elements, z.B. seine URL und Beschreibung.|
 |`index`|Der Index des Ergebniselements innerhalb der Auflistung.|
 |`count`|Die Anzahl der Elemente in der Auflistung der Suchergebniselemente.|
 
@@ -521,22 +522,22 @@ Erstens kann die Bing-Suchmaschine auf diese Weise Kontextinformationen aus vorh
 
 Zweitens wählt Bing möglicherweise Benutzer zufällig aus, die die Möglichkeit haben, neue Features zu testen, bevor diese allen Benutzern zur Verfügung gestellt werden. Indem Sie bei jeder Anforderung dieselbe Client-ID bereitstellen, stellen Sie sicher, dass Benutzer, die zur Nutzung eines neuen Features ausgewählt wurden, dieses Feature dauerhaft nutzen können. Ohne die Client-ID wird das Feature in den Suchergebnissen möglicherweise scheinbar willkürlich aus- oder eingeblendet.
 
-Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich die Herkunft der Suchantwort von derjenigen der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da die Herkunft des Skripts mit derjenigen der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
+Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da die Herkunft des Skripts mit derjenigen der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
 
 > [!NOTE]
 > In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls müsste der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
 In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
 
-Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend den folgenden Befehl in ein Befehlsfenster ein:
+Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend folgenden Befehl in ein Befehlsfenster ein:
 
     npm install -g cors-proxy-server
 
-Passen Sie den Bing-Websuche-API-Endpunkt in der HTML-Datei wie folgt an:
+Passen Sie den Endpunkt der Bing-Websuche-API in der HTML-Datei wie folgt an:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Starten Sie abschließend den CORS-Proxy mit dem folgenden Befehl:
+Starten Sie abschließend den CORS-Proxy mit folgendem Befehl:
 
     cors-proxy-server
 

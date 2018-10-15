@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6997d40603bd6ebf39f8797a3e354e92c04da58d
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: de856aed32b596209f7af2861b76ed6648d0caca
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422744"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067821"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul (Vorschauversion)
 
@@ -139,7 +139,9 @@ Mithilfe der drei Elemente – Eingabe, Ausgabe und Abfrage – wird in diesem A
 
 Um Ihren Stream Analytics-Auftrag auf die Bereitstellung als IoT Edge-Gerät vorzubereiten, müssen Sie den Auftrag einem Container in einem Speicherkonto zuordnen. Wenn Sie Ihren Auftrag bereitstellen, wird die Auftragsdefinition in den Speichercontainer extrahiert. 
 
-1. Klicken Sie unter **Konfigurieren** auf **IoT Edge-Einstellungen**.
+1. Wählen Sie unter **Konfigurieren** die Option **Speicherkontoeinstellungen** aus.
+
+1. Wählen Sie **Speicherkonto hinzufügen** aus. 
 
 1. Wählen Sie im Dropdownmenü Ihr **Speicherkonto** aus.
 

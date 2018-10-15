@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 0d75a58ddf0607286d41867828119fdd05e07d22
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 3d9e00a97355c03da5360846d4cd9f27a8540ed6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985579"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017431"
 ---
 # <a name="example-embed-video-indexer-widgets-into-your-applications"></a>Beispiel: Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
@@ -29,7 +29,7 @@ Ein Widget vom Typ **Kognitive Erkenntnisse** enthält alle visuellen Erkenntnis
 |NAME|Definition|BESCHREIBUNG|
 |---|---|---|
 |Widgets|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/>Beispiel: Mit `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Stichwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche)<br/>nicht unterstützt über URL bei „version=2“<br/><br/>**Hinweis:** Der URL-Parameter **widgets** wird bei Verwenden von **version=2** nicht unterstützt. |
-|version|Versionen des Widgets **Kognitive Erkenntnisse**|Zum Abrufen der neuesten Updates für das Widget „Kognitive Erkenntnisse“ fügen Sie den Abfrageparameter `?version=2` an die Einbettungs-URL an. Beispiel: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> Um die ältere Version abzurufen, entfernen Sie einfach `version=2` aus der URL.
+|Version|Versionen des Widgets **Kognitive Erkenntnisse**|Zum Abrufen der neuesten Updates für das Widget „Kognitive Erkenntnisse“ fügen Sie den Abfrageparameter `?version=2` an die Einbettungs-URL an. Zum Beispiel, `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> Um die ältere Version abzurufen, entfernen Sie einfach `version=2` aus der URL.
 
 ### <a name="player-widget"></a>Player-Widget
 
@@ -47,15 +47,16 @@ Mit einem **Player**-Widget können Sie das Video mit einer adaptiven Bitrate st
 ## <a name="embedding-public-content"></a>Einbetten von öffentlichen Inhalten
 
 1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
-2. Klicken Sie auf die Schaltfläche „Einbetten“, die unter dem Video angezeigt wird.
+2. Klicken Sie auf das Video, das Sie verwenden möchten.
+3. Klicken Sie auf die Schaltfläche „Einbetten“, die unter dem Video angezeigt wird.
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
     Nach dem Klicken auf die Schaltfläche wird auf dem Bildschirm ein modales Element für das Einbetten angezeigt, in dem Sie auswählen können, welches Widget Sie in Ihre Anwendung einbetten möchten.
     Beim Auswählen eines Widgets (**Player** oder **Kognitive Erkenntnisse**) wird der eingebettete Code generiert, den Sie in Ihre Anwendung einfügen können.
  
-3. Wählen Sie den gewünschten Widget-Typ aus (**Kognitive Erkenntnisse** oder **Player**).
-4. Kopieren Sie den Einbettungscode, und fügen Sie ihn Ihrer Anwendung hinzu. 
+4. Wählen Sie den gewünschten Widget-Typ aus (**Kognitive Erkenntnisse** oder **Player**).
+5. Kopieren Sie den Einbettungscode, und fügen Sie ihn Ihrer Anwendung hinzu. 
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 

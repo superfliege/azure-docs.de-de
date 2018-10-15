@@ -1,25 +1,25 @@
 ---
-title: Schnellstart für die Bing-Vorschlagssuche-API mit Node.js | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Vorschlagssuche-API in Microsoft Cognitive Services einsteigen können.
+title: 'Schnellstart: Bing-Vorschlagssuche-API, Node.js'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Verwendung der Bing-Vorschlagssuche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: d327f3da493259793c2a4adfd6e87d756610f920
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 498953625907aad85d8ea5999905cad21bf245da
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377234"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829986"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-nodejs"></a>Schnellstart für die Bing-Vorschlagssuche-API mit Node.js
-<a name="HOLTop"></a>
 
-In diesem Artikel erfahren Sie, wie Sie die [Bing-Vorschlagssuche-API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) mit Node.js verwenden. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge zurück, die der Benutzer in das Suchfeld eingibt. Sie rufen diese API immer wieder neu auf, wenn der Benutzer ein neues Zeichen in das Suchfeld eingibt, und die Vorschläge werden in der Dropdownliste des Suchfelds angezeigt. In diesem Artikel wird gezeigt, wie Sie eine Anforderung senden, die die vorgeschlagenen Abfragezeichenfolgen für *sail* zurückgibt.
+In diesem Artikel erfahren Sie, wie Sie die [Bing-Vorschlagssuche-API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) mit Node.js verwenden. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge zurück, die der Benutzer in das Suchfeld eingibt. Sie rufen diese API immer wieder auf, wenn der Benutzer ein neues Zeichen in das Suchfeld eingibt. Die Vorschläge werden in der Dropdownliste des Suchfelds angezeigt. In diesem Artikel wird gezeigt, wie Sie eine Anforderung senden, die die vorgeschlagenen Abfragezeichenfolgen für *sail* zurückgibt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -88,7 +88,7 @@ get_suggestions ();
 
 ### <a name="response"></a>response
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -157,9 +157,9 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial zur Bing-Vorschlagssuche](../tutorials/autosuggest.md)
+> [Tutorial für die Bing-Vorschlagssuche](../tutorials/autosuggest.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Worum handelt es sich bei der Bing-Vorschlagssuche?](../get-suggested-search-terms.md)
-- [Referenz zur Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Referenz für die Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)

@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/07/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4239eb31afd4abc8b3555f0ee353f5d96716d623
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e35a63a36a84316815d609afa178f9a896415c2b
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068975"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584115"
 ---
 # <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Erstellen eines virtuellen Computers mit einem sicheren, in einer Azure Stack Key Vault-Instanz gespeicherten Kennwort
 
@@ -38,7 +37,7 @@ Sie können Werte (etwa Kennwörter) als Geheimnis in einem Azure Stack-Schlüss
 
 * Sie müssen ein Angebot abonnieren, das den Key Vault-Dienst umfasst.
 * [Installieren Sie PowerShell für Azure Stack-](azure-stack-powershell-install.md)
-* [Konfigurieren Sie die PowerShell-Umgebung des Azure Stack-Benutzers.](azure-stack-powershell-configure-user.md)
+* [Konfigurieren der PowerShell-Umgebung](azure-stack-powershell-configure-user.md)
 
 Die folgenden Schritte beschreiben das Verfahren zum Erstellen eines virtuellen Computers durch Abrufen des Kennworts, das in einem Schlüsseltresor gespeichert ist:
 
@@ -46,13 +45,14 @@ Die folgenden Schritte beschreiben das Verfahren zum Erstellen eines virtuellen 
 2. Aktualisieren der Datei „azuredeploy.parameters.json“
 3. Stellen Sie die Vorlage bereit.
 
->[HINWEIS] Führen Sie die Schritte über das Azure Stack Development Kit oder über einen externen Client aus, wenn eine Verbindung über VPN besteht.
+> ![HINWEIS]  
+> Führen Sie die Schritte über das Azure Stack Development Kit oder über einen externen Client aus, wenn eine Verbindung per VPN besteht.
 
 ## <a name="create-a-key-vault-secret"></a>Erstellen eines Geheimnisses im Schlüsseltresor
 
 Das folgende Skript erstellt einen Schlüsseltresor und speichert ein Kennwort als Geheimnis im Schlüsseltresor. Verwenden Sie beim Erstellen des Schlüsseltresors den `-EnabledForDeployment`-Parameter. Dieser Parameter stellt sicher, dass von Azure Resource Manager-Vorlagen auf den Schlüsseltresor verwiesen werden kann.
 
-```powershell
+```PowerShell
 
 $vaultName = "contosovault"
 $resourceGroup = "contosovaultrg"
@@ -117,7 +117,7 @@ Aktualisieren Sie die Datei „azuredeploy.parameters.json“ gemäß Ihrer Umge
 
 Stellen Sie nun die Vorlage mithilfe des folgenden PowerShell-Skripts bereit:
 
-```powershell
+```PowerShell  
 New-AzureRmResourceGroupDeployment `
   -Name KVPwdDeployment `
   -ResourceGroupName $resourceGroup `

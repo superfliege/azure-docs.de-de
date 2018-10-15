@@ -11,16 +11,16 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: eb03d2dae42d656e62b8f02eeccf1f7312f07732
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a77018d5ee1738f24518742c2386e6e261a7c6a8
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962437"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901447"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Erstellen einer Funktion in Linux mit einem benutzerdefinierten Image (Vorschau)
 
-Mit Azure Functions können Sie Funktionen unter Linux in einem eigenen benutzerdefinierten Container hosten. Das [Hosten in einem Azure App Service-Standardcontainer](functions-create-first-azure-function-azure-cli-linux.md) ist ebenfalls möglich. Diese Funktion ist derzeit als Vorschauversion verfügbar und setzt [die Functions 2.0-Laufzeit](functions-versions.md) (ebenfalls eine Vorschauversion) voraus.
+Mit Azure Functions können Sie Funktionen unter Linux in einem eigenen benutzerdefinierten Container hosten. Das [Hosten in einem Azure App Service-Standardcontainer](functions-create-first-azure-function-azure-cli-linux.md) ist ebenfalls möglich. Diese Funktion ist derzeit als Vorschauversion verfügbar und setzt [die Functions 2.0-Laufzeit](functions-versions.md) voraus.
 
 In diesem Lernprogramm erfahren Sie, wie Sie eine Funktions-App als benutzerdefiniertes Docker-Image bereitstellen. Dieses Muster ist hilfreich, wenn Sie das integrierte App Service-Containerimage anpassen müssen. Sie sollten ein benutzerdefiniertes Image verwenden, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder eine bestimmte Abhängigkeit oder Konfiguration erforderlich ist, die nicht mit dem integrierten Image bereitgestellt wird.
 

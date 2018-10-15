@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 09/19/2018
 ms.author: cshoe
-ms.openlocfilehash: a325029ded60a1cd8274743a88f7a4d410466dea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e23e888a1c90e1c6c7eecf25491f048e9077f11
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987576"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857889"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript-preview"></a>Schnellstart: Hochladen, Herunterladen, Auflisten und Löschen von Blobs mit Azure Storage v10 SDK für JavaScript (Preview)
 
@@ -128,7 +128,7 @@ Die nächste Gruppe von Konstanten hilft dabei, den Zweck von Dateigrößenberec
 const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
-Für von der API gestellte Anforderungen kann ein Timeout nach einem angegebenen Intervall festgelegt werden. Die *Aborter* Klasse ist zuständig für das Verwalten, wie bei Anforderungen ein Timeout erfolgt, und die folgende Konstante wird verwendet, um in diesem Beispiel verwendete Timeouts zu definieren.
+Für von der API gestellte Anforderungen kann ein Timeout nach einem angegebenen Intervall festgelegt werden. Die [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-preview) Klasse ist zuständig für das Verwalten, wie bei Anforderungen ein Timeout erfolgt, und die folgende Konstante wird verwendet, um in diesem Beispiel verwendete Timeouts zu definieren.
 ```javascript
 const ONE_MINUTE = 60 * 1000;
 ```
@@ -163,13 +163,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 ```
 Die folgenden Klassen werden in diesem Codeblock verwendet:
 
-- Die *SharedKeyCredential*-Klasse ist verantwortlich für das Einbetten von Anmeldeinformationen für das Speicherkonto, um sie einer Anforderungspipeline bereitzustellen.
+- Die [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-preview)-Klasse ist verantwortlich für das Einbetten von Anmeldeinformationen für das Speicherkonto, um sie einer Anforderungspipeline bereitzustellen.
 
-- Die *StorageURL*-Klasse ist für das Erstellen einer neuen Pipeline verantwortlich.
+- Die [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-preview)-Klasse ist für das Erstellen einer neuen Pipeline verantwortlich.
 
-- Die *ServiceURL* modelliert eine in der REST-API verwendete URL. Instanzen dieser Klasse gestatten Ihnen die Ausführung von Aktionen wie das Auflisten von Containern und bieten Kontextinformationen zum Generieren von Container-URLs.
+- Die [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-preview) modelliert eine in der REST-API verwendete URL. Instanzen dieser Klasse gestatten Ihnen die Ausführung von Aktionen wie das Auflisten von Containern und bieten Kontextinformationen zum Generieren von Container-URLs.
 
-Die Instanz von *ServiceURL* wird zusammen mit den Instanzen von *ContainerURL* und *BlockBlobURL* verwendet, um Container und Blobs in Ihrem Speicherkonto zu verwalten.
+Die Instanz von *ServiceURL* wird zusammen mit den Instanzen von [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-preview) und [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-preview) verwendet, um Container und Blobs in Ihrem Speicherkonto zu verwalten.
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
@@ -202,7 +202,7 @@ Aborter verleihen Ihnen die Kontrolle über Anforderungen, indem sie Ihnen Folge
 - Festlegen des Zeitraums, der einem Batch von Anforderungen gewährt wird
 - Festlegen, wie lange eine einzelne Anforderung im Batch ausgeführt werden kann
 - Abbrechen von Anforderungen
-- Verwenden des statischen *Aborter.None*-Members, um einen Timeout aller Ihrer Anforderungen zu unterbinden
+- Verwenden des statischen *Aborter.none*-Members, um ein Timeout aller Ihrer Anforderungen zu unterbinden
 
 ### <a name="show-container-names"></a>Anzeigen von Containernamen
 Konten können eine große Anzahl von Containern speichern. Der folgende Code veranschaulicht, wie sich Container segmentiert auflisten lassen, wodurch Sie eine große Anzahl von Containern durchlaufen können. Der *showContainerNames*-Funktion werden Instanzen von *ServiceURL* und *Aborter* übergeben.

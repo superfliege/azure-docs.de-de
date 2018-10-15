@@ -1,20 +1,21 @@
 ---
-title: Ruby-Schnellstart für Azure Cognitive Services, Bing-News-Suche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-News-Suche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Bing-News-Suche-API, Ruby'
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Verwendung der Bing-News-Suche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 2c4074a5bf63a2b4d6301e81608c0cfafd9de8e8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c6c004469b86e443dc1fcc04106d0c7b8b749334
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377347"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803816"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-ruby"></a>Schnellstart für die Bing-News-Suche-API mit Ruby
 
@@ -84,7 +85,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 **Antwort**
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben:
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {
@@ -181,7 +182,7 @@ Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückg
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Einteilen von Nachrichten in Seiten](paging-news.md)
-> [Behandeln von Trefferhervorhebungen](hit-highlighting.md)
-> [Suchen nach Nachrichten im Web](search-the-web.md)  
+> [Durchblättern von Nachrichten](paging-news.md)
+> [Verwenden von Formatierungsmarkern zum Hervorheben von Text](hit-highlighting.md)
+> [Suchen nach Nachrichten im Internet](search-the-web.md)  
 > [Testen](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)

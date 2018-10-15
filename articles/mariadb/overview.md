@@ -9,12 +9,12 @@ ms.service: mariadb
 ms.topic: overview
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 1ba4a9bd597473b71ac7561c41b81783b899766a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3649a173d5707179ca8547a8169b7d308c4f7f1c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971602"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249161"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Was ist Azure Database for MariaDB?
 Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft-Cloud, der auf der Datenbank-Engine [MariaDB Community Edition](https://mariadb.org/download/) basiert. Dieser Dienst befindet sich in der öffentlichen Vorschau. Azure Database for MariaDB bietet Folgendes:
@@ -51,7 +51,7 @@ Azure Database for MariaDB führt die Tradition der Datensicherheit von Azure-Da
 
 Der Azure Database for MariaDB-Dienst verwendet Speicherverschlüsselung für ruhende Daten. Die Daten, einschließlich der Sicherungen, werden auf dem Datenträger verschlüsselt (mit Ausnahme von temporären Dateien, die von der Engine während der Ausführung von Abfragen erstellt werden). Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
 
-In der Standardeinstellung ist der Azure Database for MariaDB-Dienst so konfiguriert, dass SSL-Verbindungssicherheit <!--[SSL connection security](./concepts-ssl-connection-security.md)--> für Daten bei Übertragungen innerhalb des Netzwerks erforderlich ist. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird. Wenn Ihre Clientanwendung keine SSL-Konnektivität unterstützt, können Sie optional die Erzwingung von SSL zum Herstellen einer Verbindung mit dem Datenbankdienst deaktivieren.
+In der Standardeinstellung ist der Azure Database for MariaDB-Dienst so konfiguriert, dass [SSL-Verbindungssicherheit](./concepts-ssl-connection-security.md) für Daten bei Übertragungen innerhalb des Netzwerks erforderlich ist. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird. Wenn Ihre Clientanwendung keine SSL-Konnektivität unterstützt, können Sie optional die Erzwingung von SSL zum Herstellen einer Verbindung mit dem Datenbankdienst deaktivieren.
 
 ## <a name="contacts"></a>Kontakte
 Sollten Sie Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for MariaDB haben, senden Sie eine E-Mail an das zuständige Team ([@Ask Azure DB for MariaDB](mailto:AskAzureDBforMariaDB@service.microsoft.com)). Beachten Sie, dass es sich hierbei nicht um einen Alias für den technischen Support handelt.

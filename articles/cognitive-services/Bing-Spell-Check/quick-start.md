@@ -1,23 +1,23 @@
 ---
-title: Schnellstart für die Bing-Rechtschreibprüfungs-API | Microsoft-Dokumentation
+title: 'Schnellstart: Bing-Rechtschreibprüfungs-API'
+titlesuffix: Azure Cognitive Services
 description: In diesem Artikel lernen Sie die ersten Schritte mit der Bing-Rechtschreibprüfungs-API kennen.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: AF8EB1F0-386D-4555-9354-735611435F04
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
-ms.topic: article
+ms.topic: quickstart
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: cae8353e5be6e70eca90e5995b29b6774fc7d6a9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 29ee7cb4ee648d20b425939553ba31cd9ac150f0
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372898"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804190"
 ---
-# <a name="your-first-spell-check-request"></a>Ihre erste Rechtschreibprüfungsanforderung
+# <a name="quickstart-your-first-spell-check-request"></a>Schnellstart: Ihre erste Rechtschreibprüfungsanforderung
 
 Bevor Sie Ihren ersten Aufruf vornehmen können, benötigen Sie einen Cognitive Services-Abonnementschlüssel. Unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) erfahren Sie, wie Sie einen Schlüssel erhalten.
 
