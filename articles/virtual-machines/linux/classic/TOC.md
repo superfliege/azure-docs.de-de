@@ -1,7 +1,7 @@
 # [Übersicht](../overview.md)
 ## [VM-Erweiterungen](agents-and-extensions-classic.md)
 ## [Verfügbarkeit](configure-availability-classic.md)
-## [HÄUFIG GESTELLTE FRAGEN](faq-classic.md)
+## [Häufig gestellte Fragen](faq-classic.md)
 
 # Erste Schritte
 ## [Erstellen eines virtuellen Linux-Computers](createportal-classic.md)
@@ -33,7 +33,6 @@
 ### [Ruby on Rails-Webanwendung](ruby-rails-web-app.md)
 ### [Cassandra und Node.js-Client](cassandra-nodejs.md)
 ### [Tomcat](setup-tomcat.md)
-### [RDMA-Cluster zum Ausführen von MPI-Anwendungen](rdma-cluster.md)
 ### HPC Pack
 #### [Erstellen eines Clusters für Linux-Workloads](hpcpack-cluster-powershell-script.md)
 #### [Verwalten eines Clusters mit Linux-Knoten](hpcpack-cluster.md)
