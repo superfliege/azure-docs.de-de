@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/29/2018
+ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f6f443dfe637e68b0e1e13f7c3b9e718ae48a85d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: cce14d91509fe051beef87acdaeac9a92d998ef6
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191302"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053777"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Erstellen einer ASP.NET Framework-Web-App in Azure
 
@@ -32,11 +32,12 @@ ms.locfileid: "43191302"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
+Installieren Sie <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> mit der Workload **ASP.NET und Webentwicklung**, um dieses Tutorial abzuschließen.
 
-Installieren Sie <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> mit der Workload **ASP.NET und Webentwicklung**.
+Sie haben Visual Studio 2017 bereits installiert:
 
-Falls Sie Visual Studio bereits installiert haben, können Sie die Workloads in Visual Studio hinzufügen, indem Sie auf **Extras** > **Get Tools and Features** (Tools und Features abrufen) klicken.
+- Installieren Sie die neuesten Updates in Visual Studio, indem Sie auf **Hilfe** > **Nach Updates suchen** klicken.
+- Fügen Sie die Workload hinzu. Klicken Sie dazu auf **Tools** > **Tools und Features abrufen**.
 
 ## <a name="create-an-aspnet-web-app"></a>Erstellen einer ASP.NET-Web-App
 
@@ -58,17 +59,15 @@ Wählen Sie im Menü **Debuggen > Starten ohne Debugging** aus, um die Web-App l
 
 ![Lokales Ausführen der App](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
-## <a name="publish-to-azure"></a>Veröffentlichen in Azure
+## <a name="launch-the-publish-wizard"></a>Starten des Veröffentlichungs-Assistenten
 
 Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **myFirstAzureWebApp**, und wählen Sie **Veröffentlichen** aus.
 
 ![Veröffentlichen über den Projektmappen-Explorer](./media/app-service-web-get-started-dotnet-framework/solution-explorer-publish.png)
 
-Vergewissern Sie sich, dass **Microsoft Azure App Service** ausgewählt ist, und wählen Sie **Veröffentlichen** aus.
+Der Veröffentlichungs-Assistent wird automatisch gestartet. Wählen Sie **App Service** > **Veröffentlichen**, um das Dialogfeld **App Service erstellen** zu öffnen.
 
 ![Veröffentlichen über die Projektübersichtsseite](./media/app-service-web-get-started-dotnet-framework/publish-to-app-service.png)
-
-Daraufhin wird das Dialogfeld **App Service erstellen** geöffnet, in dem Sie alle erforderlichen Azure-Ressourcen erstellen können, um die ASP.NET-Web-App in Azure auszuführen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -93,9 +92,9 @@ Nennen Sie die Ressourcengruppe **myResourceGroup**, und wählen Sie **OK** aus.
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-Wählen Sie neben **App Service-Plan** die Option **Neu** aus. 
+Wählen Sie neben **Hostingplan** die Option **Neu** aus. 
 
-Verwenden Sie im Dialogfeld **App Service-Plan konfigurieren** die in der Tabelle unter dem Screenshot aufgeführten Einstellungen.
+Verwenden Sie im Dialogfeld **Hostingplan konfigurieren** die in der Tabelle unter dem Screenshot aufgeführten Einstellungen.
 
 ![App Service-Plan erstellen](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
 
@@ -109,17 +108,17 @@ Klicken Sie auf **OK**.
 
 ## <a name="create-and-publish-the-web-app"></a>Erstellen und Veröffentlichen der Web-App
 
-Geben Sie unter **Web-App-Name** einen eindeutigen App-Namen ein (gültige Zeichen sind `a-z`, `0-9` und `-`), oder akzeptieren Sie den automatisch generierten eindeutigen Namen. Die URL der Web-App lautet `http://<app_name>.azurewebsites.net`, wobei `<app_name>` der Name der Web-App ist.
+Geben Sie unter **App-Name** einen eindeutigen App-Namen ein (gültige Zeichen sind `a-z`, `0-9` und `-`), oder akzeptieren Sie den automatisch generierten eindeutigen Namen. Die URL der Web-App lautet `http://<app_name>.azurewebsites.net`, wobei `<app_name>` der Name Ihrer App ist.
 
 Wählen Sie **Erstellen** aus, um mit der Erstellung der Azure-Ressourcen zu beginnen.
 
-![Konfigurieren des Web-App-Namens](./media/app-service-web-get-started-dotnet-framework/web-app-name.png)
+![Konfigurieren des App-Namens](./media/app-service-web-get-started-dotnet-framework/web-app-name.png)
 
 Nach Abschluss des Assistenten wird die ASP.NET Web-App in Azure veröffentlicht und anschließend im Standardbrowser gestartet.
 
 ![Veröffentlichte ASP.NET-Web-App in Azure](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
-Der Web-App-Name, den Sie im [Schritt „Erstellen und Veröffentlichen“](#create-and-publish-the-web-app) angegeben haben, wird als URL-Präfix im Format `http://<app_name>.azurewebsites.net` verwendet.
+Der App-Name, den Sie im [Schritt „Erstellen und Veröffentlichen“](#create-and-publish-the-web-app) angegeben haben, wird als URL-Präfix im Format `http://<app_name>.azurewebsites.net` verwendet.
 
 Herzlichen Glückwunsch, Ihre ASP.NET-Web-App wird live in Azure App Service ausgeführt.
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 163972329161f90ad364b25e7e60e9e5a04324d5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448542"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720003"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 ## <a name="overview"></a>Übersicht
@@ -71,7 +71,7 @@ Folgende Schritte sind erforderlich, um Azure AD zum Freigeben eines Kontos zu v
 Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor Authentication (MFA) sicherer gestalten (siehe [Sichern von Anwendungen mit Azure AD](authentication/concept-mfa-whichversion.md)), und Sie können die Verwaltungsrechte über den Zugriff auf die Anwendung mithilfe der [Azure AD Self-Service](users-groups-roles/groups-self-service-management.md)-Gruppenverwaltung delegieren.
 
 ## <a name="related-articles"></a>Verwandte Artikel
-* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
+* [Anwendungsverwaltung in Azure Active Directory](manage-apps/what-is-application-management.md)
 * [Schützen von Apps durch bedingten Zugriff](active-directory-conditional-access-azure-portal.md)
 * [Self-Service-Gruppenverwaltung/SSAA](users-groups-roles/groups-self-service-management.md)
 

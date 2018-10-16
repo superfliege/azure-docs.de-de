@@ -3,5 +3,5 @@
 * [Zuweisen von Benutzern zu einer Anwendung](../articles/active-directory/active-directory-applications-guiding-developers-assigning-users.md)
 * [Zuweisen von Gruppen zu einer Anwendung](../articles/active-directory/active-directory-applications-guiding-developers-assigning-groups.md)
 * [Integrieren von Anwendungen in Azure Active Directory](../articles/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
-* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../articles/active-directory/active-directory-apps-index.md)
+* [Anwendungsverwaltung in Azure Active Directory](../articles/active-directory/manage-apps/what-is-application-management.md)
 

@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2018
+ms.date: 09/06/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7ad93cbfd096cacadaef8666b0ea5b31d7fd992
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: e46503f8dc97f58db1cd5acfd2122e2895fb15b0
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918800"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162307"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -272,6 +272,11 @@ Es gibt mehrere Best Practices, die infolge von Hunderten von Kundenbereitstellu
 - Die VMs im VNET haben eine statische Zuordnung der privaten IP-Adresse. Weitere Informationen finden Sie im Artikel [IP-Adresstypen und Zuordnungsmethoden in Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm).
 - Routingeinschränkungen in und aus DBMS-VMs werden **NICHT** mit Firewalls festgelegt, die auf den lokalen DBMS-VMs installiert sind. Stattdessen wird Routing mit [Azure-Netzwerksicherheitsgruppen (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) definiert.
 - Weisen Sie der VM verschiedene Netzwerkadapter zu, um den Datenverkehr zur DBMS-VM zu trennen und zu isolieren. Jeder Netzwerkadapter hat eine andere IP-Adresse und ist einem anderen VNET-Subnetz zugeordnet, das wiederum andere NSG-Regeln hat. Bedenken Sie, dass die Isolation oder Trennung des Datenverkehrs nur eine Routingmaßnahme ist und nicht das Festlegen von Kontingenten für den Netzwerkdurchsatz ermöglicht.
+
+> [!NOTE]
+> Sie sollten einzelnen virtuellen Netzwerkkarten statische IP-Adressen über Azure-Tools zuweisen. Virtuellen Netzwerkkarten sollten nicht innerhalb des Gastbetriebssystems statische IP-Adressen zugewiesen werden. Einige Azure-Dienste wie der Azure Backup-Dienst basieren darauf, dass mindestens die primäre virtuelle Netzwerkkarte auf DHCP festgelegt ist und nicht auf statische IP-Adressen. Weitere Informationen finden Sie auch im Dokument zur [Problembehandlung bei der Sicherung virtueller Azure-Computer](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Wenn Sie einer VM mehrere statische IP-Adressen zuweisen müssen, müssen Sie ihr auch mehrere virtuelle Netzwerkkarten zuweisen.
+>
+>
 
 Wenn Sie zwei VMs für Ihre DBMS-Produktionsbereitstellung in einer Azure-Verfügbarkeitsgruppe und ein separates Routing für die SAP-Anwendungsschicht sowie den Datenverkehr für die Verwaltung und Vorgänge zu den beiden DBMS-VMs verwenden, würde das Diagramm etwa so aussehen:
 

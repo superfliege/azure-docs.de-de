@@ -8,14 +8,16 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 63593ff5f02f5e37fc25c988c4cef071a03a00b4
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: a934a1b75e85e03b6803be5c8afcd8fe74b0fad5
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37066032"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45739197"
 ---
 Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Blobspeicher ist für die Speicherung großer Mengen von unstrukturierten Daten, z.B. Text oder Binärdaten, optimiert.
+
+Hochgradig skalierbarer Objektspeicher für unstrukturierte Daten
 
 Blobspeicher ist für folgende Zwecke ideal geeignet:
 
@@ -36,7 +38,7 @@ Blobspeicher macht drei Ressourcen verfügbar: Ihr Speicherkonto, die Container 
 
 ### <a name="storage-account"></a>Speicherkonto
 
-Der gesamte Zugriff auf Datenobjekte erfolgt in Azure Storage über ein Speicherkonto. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../articles/storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Der gesamte Zugriff auf Datenobjekte erfolgt in Azure Storage über ein Speicherkonto. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../articles/storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="container"></a>Container
 
