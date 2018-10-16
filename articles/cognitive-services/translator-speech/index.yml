@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 879dd4e9b20a57257dd7b93fddb54168d6bceb33
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ac2b928e73031adb77616161f844f3f7fabdf146
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095064"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339847"
 documentType: LandingData
 title: Dokumentation zur Sprachübersetzungs-API
 metadata:
@@ -21,8 +21,12 @@ metadata:
   ms.date: 3/5/2018
   ms.author: v-jansko
 abstract:
-  description: Die Microsoft-Sprachübersetzungs-API, Teil der Microsoft Cognitive Services-API-Sammlung, ist ein cloudbasierter Dienst für die maschinelle Übersetzung, der Sprache-zu-Sprache- und Sprache-zu-Text-Übersetzungen bereitstellt. Basierend auf dem Branchenstandard der REST-Technologie können Sie damit Anwendungen, Tools und Lösungen, die eine Sprachübersetzung für mehrere Sprachen erfordern, unabhängig vom Zielbetriebssystem oder den Entwicklungssprachen mit umfassenden Sprachübersetzungen in Echtzeit ausstatten. Eine Liste der unterstützten Sprachen finden Sie unter <a href="languages.md">Unterstützte Sprachen</a>.
+  description: Die Microsoft-Sprachübersetzungs-API, Teil der Microsoft Cognitive Services-API-Sammlung, ist ein cloudbasierter Dienst für die maschinelle Übersetzung, der Sprache-zu-Sprache- und Sprache-zu-Text-Übersetzungen bereitstellt. Basierend auf dem Branchenstandard der REST-Technologie können Sie damit Anwendungen, Tools und Lösungen, die eine Sprachübersetzung für mehrere Sprachen erfordern, unabhängig vom Zielbetriebssystem oder den Entwicklungssprachen mit umfassenden Sprachübersetzungen in Echtzeit ausstatten. Die Liste der unterstützten Sprachen finden Sie im Artikel <a href="languages.md">Unterstützte Sprachen</a>.
 sections:
+- title: 
+  items:
+  - type: paragraph
+    text: '<b>HINWEIS: Der neue Speech-Dienst und das SDK ersetzen die Sprachübersetzungs-API, deren Funktionsfähigkeit am 15. Oktober 2019 endet. Informationen zum Umstieg auf den Speech Service finden Sie unter <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-translator-speech-api">Migrating from the Translator Speech API to the Speech Service</a></b> (Migration von der Sprachübersetzungs-API zum Speech-Dienst).'
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
