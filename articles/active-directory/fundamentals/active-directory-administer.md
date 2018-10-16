@@ -1,26 +1,25 @@
 ---
-title: Übersicht über die Verwendung eines AD-Mandantenverzeichnisses | Microsoft-Dokumentation
-description: Hier erfahren Sie, was ein Azure AD-Mandant ist und wie Sie Azure mithilfe von Azure Active Directory verwalten.
+title: Verwalten Ihres Azure Active Directory-Mandanten | Microsoft-Dokumentation
+description: Erfahren Sie, was ein Azure AD-Mandant ist und wie Sie Azure mithilfe von Azure Active Directory verwalten.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
-ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
-ms.date: 08/23/2017
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro;oldportal
-ms.openlocfilehash: b18ff1f59a46e98544159b488294e2d3f7bd9cd7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+custom: it-pro
+ms.openlocfilehash: eb9cf7c21613ab91cc0b8e41a4454835d18f2c34
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767425"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297927"
 ---
-# <a name="manage-your-azure-ad-directory"></a>Verwalten Ihres Azure AD-Verzeichnisses
+# <a name="manage-your-azure-active-directory-tenant"></a>Verwalten Ihres Azure Active Directory-Mandanten
 
 ## <a name="what-is-an-azure-ad-tenant"></a>Was ist Azure AD-Mandant?
 In Azure Active Directory (Azure AD) ist ein Mandant eine dedizierte Instanz eines Azure AD-Verzeichnisses, die Ihre Organisation erhält, wenn sie sich für einen Microsoft-Clouddienst wie Azure oder Office 365 registriert. Jedes Azure AD-Verzeichnis ist eindeutig und von anderen Azure AD-Verzeichnissen getrennt. Genau so wie ein Bürogebäude, das ein sicherer Ort nur für Ihre Organisation ist, soll auch ein Azure AD-Verzeichnis ein sicheres Anlagegut nur für Ihre Organisation darstellen. Die Azure AD-Architektur isoliert Kundendaten und Identitätsinformationen, sodass Benutzer und Administratoren eines Azure AD-Verzeichnisses nicht versehentlich oder mit böser Absicht auf Daten in einem anderen Verzeichnis zugreifen können.
@@ -43,7 +42,7 @@ Wir empfehlen, bei der Registrierung für andere Microsoft-Dienste das Administr
 
 Wenn Sie sich also beispielsweise für ein Microsoft Intune-Abonnement registrieren und dann Ihr lokales Active Directory weiter mit Ihrem Azure AD-Verzeichnis synchronisieren, können Sie sich für einen anderen Microsoft-Dienst wie Office 365 registrieren und komfortabel von den gleichen Vorteilen der Verzeichnisintegration profitieren wie bei Microsoft Intune.
 
-Weitere Informationen zum Integrieren Ihres lokalen Verzeichnisses in Azure AD finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../connect/active-directory-aadconnect.md).
+Weitere Informationen zum Integrieren Ihres lokalen Verzeichnisses in Azure AD finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 ### <a name="associate-an-existing-azure-ad-directory-with-a-new-azure-subscription"></a>Zuordnen eines vorhandenen Azure AD-Verzeichnisses zu einem neuen Azure-Abonnement
 Sie können ein neues Azure-Abonnement dem gleichen Verzeichnis zuordnen, das auch die Anmeldung für ein vorhandenes Office 365- oder Microsoft Intune-Abonnement authentifiziert. Weitere Informationen zu diesem Szenario finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../../billing/billing-subscription-transfer.md).

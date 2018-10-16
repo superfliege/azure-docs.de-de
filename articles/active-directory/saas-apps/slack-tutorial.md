@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 09/14/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f79926d0d4729c6ad939bc604e9eb885dbe9f03
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5b1099e46cf1aa2fd4b948fee8407cfd859390ce
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421252"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129114"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Tutorial: Azure Active Directory-Integration mit Slack
 
@@ -114,11 +114,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.slack.com`.
 
-    b. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://slack.com`.
+    b. Aktualisieren Sie im Feld **Bezeichner** den Wert mit der Anmelde-URL. Dies ist Ihre Arbeitsbereichsdomäne. Beispiel: `https://contoso.slack.com`
 
-    > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Sie müssen den Wert mit der richtigen Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam von Slack](https://slack.com/help/contact), um diesen Wert zu erhalten.
-     
 1. Die Slack-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
     
     ![Configure single sign-on](./media/slack-tutorial/tutorial_slack_attribute.png)
@@ -220,6 +217,9 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 > [!NOTE]
 > Setzen Sie sich mit dem [Supportteam von Slack](https://slack.com/help/contact) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+
+> [!NOTE]
+> Azure AD Connect ist das Synchronisierungstool, das lokale Active Directory-Identitäten mit Azure AD synchronisieren kann, woraufhin diese synchronisierten Benutzer ebenfalls die Anwendungen wie alle anderen Cloudbenutzer verwenden können.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

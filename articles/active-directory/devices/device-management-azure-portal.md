@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ff1d51021038909c132bef4cb680589b9951f218
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7aa7cd2e5b1cf1346a5a7b1f82ec9c7933dd1112
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041424"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542479"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Verwalten von Geräten mithilfe des Azure-Portals
 
@@ -123,7 +123,7 @@ Als Administrator können Sie die registrierten oder verknüpften Geräte verwal
 
 ### <a name="manage-an-intune-device"></a>Verwalten eines Intune-Geräts
 
-Wenn Sie ein Intune-Administrator sind, können Sie Geräte verwalten, die mit der Kennzeichnung **Microsoft Intune** versehen sind. Ein Administrator kann zusätzliche Gerät anzeigen. 
+Wenn Sie ein Intune-Administrator sind, können Sie Geräte verwalten, die mit der Kennzeichnung **Microsoft Intune** versehen sind. 
 
 ![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/31.png)
 
