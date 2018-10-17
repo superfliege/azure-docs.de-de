@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 69898358026eab716c057f339d8594df43db136f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 11112e01e38f85db9f71280c53c27b130275d86f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629370"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498265"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Kennenlernen der Benutzeroberfläche von Azure IoT Central
 
@@ -39,7 +39,7 @@ _Bediener_ verwenden die Benutzeroberfläche von Azure IoT Central, um ihre Azur
 
 | Menü | BESCHREIBUNG |
 | ---- | ----------- |
-| ![Linkes Navigationsmenü](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Über die Schaltfläche **Startseite** gelangen Sie zur Startseite der Anwendung. Als Ersteller können Sie diese Startseite für die Bediener anpassen.</li><li>Die Schaltfläche **Device Explorer** dient zum Auflisten der in Ihrer Anwendung definierten Gerätevorlagen sowie der simulierten und echten Geräte, die den einzelnen Gerätevorlagen zugeordnet sind. Bediener verwenden den **Device Explorer**, um ihre verbundenen Geräte zu verwalten.</li><li>Die Schaltfläche **Device Sets** (Gerätegruppen) dient zum Anzeigen und Erstellen von Gerätegruppen. Bediener können Gerätegruppen als logische, durch eine Abfrage angegebene Sammlung von Geräten erstellen.</li><li>Die Schaltfläche **Analytics** dient zum Anzeigen von Analysen, die auf Gerätetelemetriedaten für Geräte und Gerätegruppen basieren. Bediener können benutzerdefinierte Ansichten auf der Grundlage von Gerätedaten erstellen, um basierend auf ihrer Anwendung Erkenntnisse zu gewinnen.</li><li>Die Schaltfläche **Application Builder** (Anwendungs-Generator) dient zum Anzeigen der von einem Ersteller verwendeten Tools (etwa des **Tools zum Erstellen von Gerätevorlagen**).</li><li>Die Schaltfläche **Verwaltung** dient zum Anzeigen der Seiten für die Anwendungsverwaltung, auf denen ein Administrator Anwendungseinstellungen, Benutzer und Rollen verwalten kann.</li></ul> |
+| ![Linkes Navigationsmenü](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Über die Schaltfläche **Startseite** gelangen Sie zur Startseite der Anwendung. Als Ersteller können Sie diese Startseite für die Bediener anpassen.</li><li>Die Schaltfläche **Device Explorer** dient zum Auflisten der in Ihrer Anwendung definierten Gerätevorlagen sowie der simulierten und echten Geräte, die den einzelnen Gerätevorlagen zugeordnet sind. Bediener verwenden den **Device Explorer**, um ihre verbundenen Geräte zu verwalten.</li><li>Die Schaltfläche **Device Sets** (Gerätegruppen) dient zum Anzeigen und Erstellen von Gerätegruppen. Bediener können Gerätegruppen als logische, durch eine Abfrage angegebene Sammlung von Geräten erstellen.</li><li>Die Schaltfläche **Analytics** dient zum Anzeigen von Analysen, die auf Gerätetelemetriedaten für Geräte und Gerätegruppen basieren. Bediener können benutzerdefinierte Ansichten auf der Grundlage von Gerätedaten erstellen, um basierend auf ihrer Anwendung Erkenntnisse zu gewinnen.</li><li>Die Schaltfläche **Aufträge** ermöglicht eine Geräteverwaltung per Massenvorgang, da Sie Aufträge für Updates in großem Umfang erstellen und ausführen können.</li><li>Die Schaltfläche **Application Builder** (Anwendungs-Generator) dient zum Anzeigen der von einem Ersteller verwendeten Tools (etwa des **Tools zum Erstellen von Gerätevorlagen**).</li><li>Die Schaltfläche **Verwaltung** dient zum Anzeigen der Seiten für die Anwendungsverwaltung, auf denen ein Administrator Anwendungseinstellungen, Benutzer und Rollen verwalten kann.</li></ul> |
 
 ## <a name="search-help-and-support"></a>Suche, Hilfe und Support
 
@@ -82,7 +82,13 @@ Auf der Seite _Device Sets_ (Gerätegruppen) werden Gerätegruppen angezeigt, di
 
 Anhand der Diagramme auf der Analyseseite können Sie das Verhalten der mit Ihrer Anwendung verbundenen Geräte nachvollziehen. Bediener verwenden diese Seite zur Überwachung und Untersuchung von Problemen mit verbundenen Geräten. Der Ersteller kann definieren, welche Diagramme auf dieser Seite angezeigt werden. Weitere Informationen finden Sie im Artikel [How to use analytics to analyze your device data](howto-create-analytics.md) (Analysieren Ihrer Anwendungsdaten mithilfe von Analysen).
 
-## <a name="application-builder"></a>Anwendungs-Generator
+## <a name="jobs"></a>Aufträge
+
+![Seite „Aufträge“](media/overview-iot-central-tour/jobs.png)
+
+Auf der Seite „Aufträge“ können Sie Massenvorgänge für die Geräteverwaltung auf Ihren Geräten ausführen. Ersteller verwenden diese Seite, um Eigenschaften, Einstellungen und Befehle für Geräte zu aktualisieren. Weitere Informationen finden Sie im Artikel [Ausführen eines Auftrags](howto-run-a-job.md).
+
+## <a name="application-builder"></a>Anwendungsersteller
 
 ![Seite „Application Builder“ (Anwendungs-Generator)](media/overview-iot-central-tour/applicationbuilder.png)
 

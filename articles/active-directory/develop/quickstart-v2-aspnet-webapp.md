@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 7196cd6c18680583494a485c136081d90960464d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cabc4f2212e18d774066efad70d9654bb70020d5
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991282"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831499"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
@@ -56,9 +56,9 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET-Web-App persönliche Kont
 
 [Visual Studio 2017-Projektmappe herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren Ihres Visual Studio-Projekts
+#### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
 
-1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner (z.B. **C:\Azure-Samples**).
+1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner, der sich näher am Stammordner befindet, beispielsweise **C:\Azure-Samples**.
 1. Öffnen Sie die Projektmappe in Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln).
 1. Bearbeiten Sie die Datei **Web.config**, und ersetzen Sie `Enter_the_Application_Id_here` durch die Anwendungs-ID der Anwendung, die Sie soeben registriert haben:
 

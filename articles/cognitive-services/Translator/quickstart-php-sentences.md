@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Ermitteln der Satzlänge mit PHP | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung ermitteln Sie die Länge von Sätzen im Text. Dazu verwenden Sie die Textübersetzungs-API mit PHP in Cognitive Services.
+title: 'Schnellstart: Ermitteln der Satzlänge – Textübersetzung, PHP'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart ermitteln Sie die Länge von Sätzen im Text. Dazu verwenden Sie die Textübersetzungs-API mit PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: e93a8e3fa900933bc3a169f4527f898e8431a194
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 63c2822e7b61eb437a43fb394cfa3cc8172d9af3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769734"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124744"
 ---
 # <a name="quickstart-get-sentence-lengths-with-php"></a>Schnellstart: Ermitteln der Satzlänge mit PHP
 

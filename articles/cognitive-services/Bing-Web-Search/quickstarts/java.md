@@ -1,19 +1,21 @@
 ---
-title: 'Schnellstart: Verwenden von Java zum Aufrufen der Bing-Websuche-API'
+title: 'Schnellstart: Ausführen einer Suche mit Java – Bing-Websuche-API'
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie die Bing-Websuche-API zum ersten Mal aufrufen, indem Sie Java verwenden, und wie Sie eine JSON-Antwort erhalten.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 8d3e01aef8efdf1503ad7056220e0cba9fb38ed3
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: e0c1a038a0d63bcae8620c89462bdecfd88d8227
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888223"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121973"
 ---
 # <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von Java zum Aufrufen der Bing-Websuche-API  
 
@@ -177,7 +179,7 @@ class SearchResults{
 }
 ```
 
-## <a name="put-it-all-together"></a>Zusammenfügen der Teile
+## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
 Der letzte Schritt ist das Kompilieren Ihres Codes und dessen Ausführung! Hier sind die Befehle angegeben:
 

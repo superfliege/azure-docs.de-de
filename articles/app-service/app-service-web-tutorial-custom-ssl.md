@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 2aca366e6a433e3e71cccb49a13638dedacc38d6
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 700465279a43a8490c5863e7181c4c4d009ee97b
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887505"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857923"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps
 
@@ -66,7 +66,7 @@ Das Zertifikat muss sämtliche der folgenden Anforderungen erfüllen, damit Ihr 
 
 ## <a name="prepare-your-web-app"></a>Vorbereiten Ihrer Web-App
 
-Um ein benutzerdefiniertes SSL-Zertifikat an Ihre Web-App zu binden, muss Ihr [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) den Tarif **Basic**, **Standard** oder **Premium** aufweisen. Stellen Sie in diesem Schritt sicher, dass sich Ihre Web-App im richtigen Tarif befindet.
+Um ein benutzerdefiniertes SSL-Zertifikat an Ihre Web-App zu binden, muss Ihr [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) den Tarif **Basic**, **Standard**, **Premium** oder **App Service (isoliert)** aufweisen. Stellen Sie in diesem Schritt sicher, dass sich Ihre Web-App im richtigen Tarif befindet.
 
 ### <a name="log-in-to-azure"></a>Anmelden an Azure
 

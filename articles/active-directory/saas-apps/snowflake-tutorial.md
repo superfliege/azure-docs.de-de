@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 09/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 3ad3f42563878d829f900d5cddb0c6866d2deab5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c611fd7893a96113a4a9f2454bcd0b11db02be29
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43311251"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Tutorial: Azure Active Directory-Integration mit Snowflake
 
@@ -39,6 +39,7 @@ Um die Azure AD-Integration mit Snowflake konfigurieren zu können, benötigen S
 
 - Ein Azure AD-Abonnement
 - Ein Snowflake-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Kunden, die kein Snowflake-Konto besitzen und es über den Azure AD-App-Katalog ausprobieren möchten, verwenden [diesen](https://trial.snowflake.net/?cloud=azure&utm_source=azure-marketplace&utm_medium=referral&utm_campaign=self-service-azure-mp) Link.
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -103,22 +104,22 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/snowflake-tutorial/tutorial_snowflake_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Snowflake** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+3. Führen Sie im Abschnitt **Domäne und URLs für Snowflake** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Snowflake](./media/snowflake-tutorial/tutorial_snowflake_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<SNOWFLAKE-URL>`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<SNOWFLAKE-URL>/fed/login`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/login`
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Snowflake](./media/snowflake-tutorial/tutorial_snowflake_url1.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SNOWFLAKE-URL>`.
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`.
      
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von Snowflake](https://support.snowflake.net/s/snowflake-support), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL.
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
@@ -132,7 +133,22 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Snowflake-Konfiguration](./media/snowflake-tutorial/tutorial_snowflake_configure.png) 
 
-8. Zum Konfigurieren des einmaligen Anmeldens bei **Snowflake** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die **SAML-Dienst-URL für einmaliges Anmelden** an das [Snowflake-Supportteam](https://support.snowflake.net/s/snowflake-support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+8. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei Snowflake an.
+
+9. Führen Sie die unten stehende SQL-Abfrage für das Arbeitsblatt aus, indem Sie den Wert **Zertifikat** auf das **heruntergeladene Zertifikat** festlegen und **ssoUrl** auf die kopierte **SAML-SSO-Dienst-URL** aus Azure AD auf den Wert, wie unten dargestellt.
+
+    ![Snowflake SQL](./media/snowflake-tutorial/tutorial_snowflake_sql.png) 
+
+    ```
+    use role accountadmin;
+    alter account set saml_identity_provider = '{
+    "certificate": "<Paste the content of downloaded certificate from Azure portal>",
+    "ssoUrl":"<SAML single sign-on service URL value which you have copied from the Azure portal>",
+    "type":"custom",
+    "label":"AzureAD"
+    }';
+    alter account set sso_login_page = TRUE;
+    ```
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -168,7 +184,25 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-snowflake-test-user"></a>Erstellen eines Snowflake-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Snowflake eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Snowflake-Plattform vom [Snowflake-Supportteam](https://support.snowflake.net/s/snowflake-support) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+Damit sich Azure AD-Benutzer bei Snowflake anmelden können, müssen sie in Snowflake bereitgestellt werden. Im Fall von Snowflake muss die Bereitstellung manuell ausgeführt werden.
+
+**Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:**
+
+1. Melden Sie sich bei Snowflake als Sicherheitsadministrator an.
+
+2. **Wechseln Sie die Rolle** zu **ACCOUNTADMIN**, indem Sie auf der Seite oben rechts auf **Profil** klicken.  
+
+    ![Der Snowflake-Administrator ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+
+3. Erstellen Sie den Benutzer durch Ausführen der folgenden SQL-Abfrage, wobei Sie sicherstellen, dass „Anmeldename“ (Login name) auf den Azure AD-Benutzernamen auf dem Arbeitsblatt festgelegt ist, wie unten dargestellt.
+
+    ![Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+
+    ```
+
+    use role accountadmin;
+    CREATE USER britta_simon PASSWORD = '' LOGIN_NAME = 'BrittaSimon@contoso.com' DISPLAY_NAME = 'Britta Simon';
+    ```
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

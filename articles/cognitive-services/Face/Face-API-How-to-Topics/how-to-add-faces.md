@@ -1,29 +1,29 @@
 ---
-title: Hinzufügen von Gesichtern mit der Gesichtserkennungs-API| Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: Verwenden Sie die Gesichtserkennungs-API in Cognitive Services, um Gesichter in Bildern hinzuzufügen.
+title: 'Beispiel: Hinzufügen von Gesichtern – Gesichtserkennungs-API'
+titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie mithilfe der Gesichtserkennungs-API Bildern Gesichter hinzufügen.
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 3306c13d6c3d231ddbda38cfcbc5419fcdbd30db
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb5d03e2cb3c11daf7a94966fda46345ee910ded
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372994"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125101"
 ---
-# <a name="how-to-add-faces"></a>Hinzufügen von Gesichtern
+# <a name="example-how-to-add-faces"></a>Beispiel: Hinzufügen von Gesichtern
 
 Dieser Leitfaden veranschaulicht die bewährte Methode, um einer PersonGroup eine große Anzahl von Personen und Gesichtern hinzuzufügen.
 Die gleiche Strategie gilt auch für FaceList und LargePersonGroup.
 Die Beispiele sind in C# geschrieben und verwenden die Clientbibliothek für die Gesichtserkennungs-API.
 
-## <a name="step1"></a> Schritt 1: Initialisierung
+## <a name="step-1-initialization"></a>Schritt 1: Initialisieren
 
 Es sind mehrere Variablen deklariert und eine Hilfsfunktion wird implementiert, um die Anforderungen zu planen.
 
@@ -60,7 +60,7 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step2"></a> Schritt 2: Autorisieren des API-Aufrufs
+## <a name="step-2-authorize-the-api-call"></a>Schritt 2: Autorisieren des API-Aufrufs
 
 Wenn Sie eine Clientbibliothek verwenden, wird der Abonnementschlüssel durch den Konstruktor der Klasse FaceServiceClient übergeben. Beispiel: 
 
@@ -70,7 +70,7 @@ FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>"
 
 Sie können den Abonnementschlüssel auf der Seite „Marketplace“ des Azure-Portals abrufen. Weitere Informationen finden Sie unter [Abonnements](https://www.microsoft.com/cognitive-services/en-us/sign-up).
 
-## <a name="step3"></a> Schritt 3: Erstellen der PersonGroup
+## <a name="step-3-create-the-persongroup"></a>Schritt 3: Erstellen von PersonGroup
 
 Eine PersonGroup mit dem Namen „MyPersonGroup“ wird erstellt, um Personen zu speichern.
 Die Anforderungszeit wird in `_timeStampQueue` in die Warteschlange eingereiht, um die gesamte Validierung sicherzustellen.
@@ -82,7 +82,7 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step4"></a> Schritt 4: Erstellen der Personen für PersonGroup
+## <a name="step-4-create-the-persons-to-the-persongroup"></a>Schritt 4: Erstellen von Personen für PersonGroup
 
 Personen werden gleichzeitig erstellt und `await WaitCallLimitPerSecondAsync()` wird ebenfalls angewendet, um zu vermeiden, dass die Aufrufbeschränkung überschritten wird.
 
@@ -97,7 +97,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step5"></a> Schritt 5: Hinzufügen von Gesichtern zu den Personen
+## <a name="step-5-add-faces-to-the-persons"></a>Schritt 5: Hinzufügen von Gesichtern zu Personen
 
 Das Hinzufügen von Gesichtern zu verschiedenen Personen wird gleichzeitig verarbeitet, während es für eine bestimmte Person sequentiell ist.
 `await WaitCallLimitPerSecondAsync()` wird erneut aufgerufen, um sicherzustellen, dass sich die Häufigkeit der Anforderungen innerhalb der Beschränkungen bewegt.
@@ -120,7 +120,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="summary"></a> Zusammenfassung
+## <a name="summary"></a>Zusammenfassung
 
 In diesem Leitfaden haben Sie erfahren, wie eine PersonGroup mit einer großen Anzahl an Personen und Gesichtern erstellt wird. Einige Hinweise:
 
@@ -135,7 +135,8 @@ Im Folgenden finden Sie eine kurze Erinnerung an die zuvor erläuterten und demo
 - Erstellen von Personen mithilfe der API [PersonGroup Person – Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
 - Hinzufügen von Gesichtern zu Personen mithilfe der API [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)
 
-## <a name="related"></a> Verwandte Themen
-- [Informationen zur Gesichtsidentifikation in Bildern](HowtoIdentifyFacesinImage.md)
+## <a name="related-topics"></a>Verwandte Themen
+
+- [Gesichtsidentifikation in Bildern](HowtoIdentifyFacesinImage.md)
 - [Informationen zur Gesichtserkennung in Bildern](HowtoDetectFacesinImage.md)
 - [Verwenden der Funktion für die Verarbeitung in großem Umfang](how-to-use-large-scale.md)

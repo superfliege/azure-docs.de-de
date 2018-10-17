@@ -1,10 +1,9 @@
 ---
-title: 'Übersicht: Definition und Vorteile von Azure Relay | Microsoft-Dokumentation'
-description: Übersicht über Azure Relay
+title: Was ist Azure Relay? | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Übersicht über den Azure Relay-Dienst. Mit diesem Dienst können Sie Cloudanwendungen entwickeln, die in Ihrem Unternehmensnetzwerk ausgeführte lokale Dienste nutzen, ohne eine Firewallverbindung zu öffnen oder grundlegende Änderungen an Ihrer Netzwerkinfrastruktur vorzunehmen.
 services: service-bus-relay
-documentationcenter: .net
 author: spelluru
-manager: timlt
+manager: ''
 editor: ''
 ms.assetid: 1e3e971d-2a24-4f96-a88a-ce3ea2b1a1cd
 ms.service: service-bus-relay
@@ -12,71 +11,85 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 05/02/2018
+ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: dc616f18033014a5dcc9e5d15434497978484bc1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 46a9045cdf422ed4f14e5588b3342e8bfde2e4c8
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695964"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888098"
 ---
 # <a name="what-is-azure-relay"></a>Was ist Azure Relay?
+Mit dem Azure Relay-Dienst können Sie Dienste, die in Ihrem Unternehmensnetzwerk ausgeführt werden, auf sichere Weise in der öffentlichen Cloud verfügbar machen. Sie können dies durchführen, ohne eine Firewallverbindung zu öffnen oder grundlegende Änderungen an der Netzwerkinfrastruktur Ihres Unternehmens vorzunehmen. 
 
-Der Azure Relay-Dienst unterstützt Hybridanwendungen, indem er Ihnen die Möglichkeit bietet, WCF-Dienste in einem Unternehmensnetzwerk sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung geöffnet werden muss oder tiefgreifende Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden. Relay unterstützt eine Vielzahl verschiedener Transportprotokolle und Webdienststandards.
+Der Relaydienst unterstützt die folgenden Szenarien zwischen lokalen Diensten und Anwendungen, die in der Cloud oder einer anderen lokalen Umgebung ausgeführt werden. 
 
-Der Relaydienst unterstützt herkömmlichen, unidirektionalen, Anforderungs-/Antwort und Peer-to-Peer-Verkehr. Er unterstützt außerdem Ereignisverteilung im Internetumfang, um Veröffentlichen-/Abonnieren-Szenarios und bidirektionale Socketkommunikation für erhöhte Punkt-Effizienz zu ermöglichen.
+- Herkömmliche unidirektionale Peer-zu-Peer-Kommunikation vom Typ „Anforderung/Antwort“ 
+- Ereignisverteilung auf Internetebene für Veröffentlichen/Abonnieren-Szenarien 
+- Bidirektionale und ungepufferte Socketkommunikation über Netzwerkgrenzen hinweg
 
-Im Relay des Datenübertragungsmusters stellt ein lokaler Dienst eine Verbindung zu dem Relaydienst über einen ausgehenden Port her und erstellt einen bidirektionalen Socket für die mit einer bestimmten Rendezvous-Adresse gekoppelte Kommunikation. Der Client kann dann mit dem lokalen Dienst durch das Senden von Verkehr an den Relaydienst unter Verwendung der Rendezvousadresse kommunizieren. Der Relaydienst „vermittelt“ dann Daten an den lokalen Dienst über einen bidirektionalen Socket, der für jeden Client dezidiert ist. Der Client benötigt keine direkte Verbindung zum lokalen Dienst, muss nicht wissen, wo der Dienst angesiedelt ist, und für den lokalen Dienst sind keine geöffneten eingehenden Ports in der Firewall notwendig.
+Azure Relay unterscheidet sich von Technologie für die Integration auf Netzwerkebene, z.B. VPN. Für ein Azure-Relay kann als Bereich ein einzelner Anwendungsendpunkt auf einem einzelnen Computer festgelegt werden. Die VPN-Technologie hat deutlich größere Auswirkungen, da eine Änderung der Netzwerkumgebung erforderlich ist. 
 
-Die Schlüsselfunktionselemente, die von Relay bereitgestellt werden, sind die bidirektionale, ungepufferte Kommunikation über Netzwerkgrenzen mit TCP-ähnlicher Drosselung, die Ermittlung von Endpunkten, der Konnektivitätsstatus und die überlagerte Endpunktsicherheit.
+## <a name="basic-flow"></a>Grundlegender Ablauf
+Die grundlegenden Schritte des Datenübertragungsmusters mit Relay sind:
 
-Die Relayfunktionen weichen von Integrationstechnologien auf Netzwerkebene, z.B. VPN, darin ab, dass Relay einem einzelnen Anwendungsendpunkt auf einem einzelnen Computer zugeordnet werden kann. Die VPN-Technologie ist deutlich intrusiver, da sie mit einer Änderung der Netzwerkumgebung verbunden ist.
+1. Ein lokaler Dienst stellt über einen ausgehenden Port eine Verbindung mit dem Relaydienst her. 
+2. Es wird ein bidirektionaler Socket für die Kommunikation über eine bestimmte Adresse erstellt. 
+3. Der Client kann mit dem lokalen Dienst dann durch das Senden von Datenverkehr an den Relaydienst unter Verwendung dieser Adresse kommunizieren. 
+4. Der Relaydienst *vermittelt* anschließend Daten an den lokalen Dienst über den bidirektionalen Socket, der für den Client festgelegt ist. Der Client benötigt keine direkte Verbindung mit dem lokalen Dienst. Er muss den Standort des Diensts nicht kennen. Außerdem müssen für den lokalen Dienst auch keine eingehenden Ports in der Firewall geöffnet sein.
 
+
+## <a name="features"></a>Features 
 Azure Relay verfügt über zwei Funktionen:
 
-1. [Hybridverbindungen](#hybrid-connections): Verwenden die offenen Standardwebsockets, die plattformübergreifende Szenarios zulassen.
-2. [WCF-Relays](#wcf-relays): Verwenden Windows Communication Foundation, um Remoteprozeduraufrufe zuzulassen. WCF-Relay ist das ältere Relayangebot, das viele Kunden bereits mit ihren WCF-Programmiermodellen verwenden.
+- [Hybridverbindungen](#hybrid-connections): Verwenden die offenen Standardwebsockets, die plattformübergreifende Szenarios zulassen.
+- [WCF-Relays](#wcf-relays): Verwenden Windows Communication Foundation, um Remoteprozeduraufrufe zuzulassen. WCF-Relay ist das ältere Relayangebot, das viele Kunden bereits mit ihren WCF-Programmiermodellen verwenden.
 
-Hybridverbindungen und WCF-Relays aktivieren beide die sichere Verbindung mit Assets, die innerhalb eines Unternehmensnetzwerks vorhanden sind. Welcher Ansatz verwendet wird, richtet sich nach den jeweiligen Anforderungen. Dies ist in der folgenden Tabelle beschrieben:
+## <a name="hybrid-connections"></a>Hybridverbindungen
 
-|  | WCF-Relay | Hybridverbindungen |
+Das Feature „Hybridverbindungen“ in Azure Relay ist eine sichere Weiterentwicklung des Relay-Features mit offenem Protokoll, das bereits vorhanden war. Sie können es auf jeder Plattform und mit jeder Sprache verwenden. Das Feature „Hybridverbindungen“ in Azure Relay basiert auf HTTP- und WebSockets-Protokollen. Sie können damit über WebSockets oder HTTP(S) Anforderungen senden und Antworten empfangen. Dieses Feature ist mit der WebSocket-API in gängigen Webbrowsern kompatibel. 
+
+Ausführliche Informationen zum Hybridverbindungsprotokoll finden Sie im [Leitfaden zum Hybridverbindungsprotokoll](relay-hybrid-connections-protocol.md). Sie können Hybridverbindungen mit einer beliebigen WebSockets-Bibliothek für alle Runtimes bzw. Sprachen verwenden.
+
+> [!NOTE]
+> Hybridverbindungen von Azure Relay ersetzt das alte Feature für Hybridverbindungen von BizTalk Services. Das Feature „Hybridverbindungen“ in BizTalk Services basierte auf Azure Service Bus WCF Relay. Die Funktion „Hybridverbindungen“ in Azure Relay ist eine Ergänzung des bereits vorhandenen WCF Relay-Features. Diese beiden Dienstfunktionen (WCF Relay und Hybridverbindungen) sind im Azure Relay-Dienst parallel vorhanden. Sie teilen sich ein allgemeines Gateway, sind jedoch andererseits verschiedene Implementierungen.
+
+## <a name="wcf-relay"></a>WCF Relay
+WCF Relay funktioniert mit dem vollständigen .NET Framework und für WCF. Sie erstellen eine Verbindung zwischen dem lokalen Dienst und dem Relaydienst mithilfe einer Sammlung von WCF-Bindungen vom Typ „Relay“. Im Prinzip werden die Relaybindungen neuen Transportbindungselementen zugeordnet, die entwickelt wurden, um WCF-Kanalkomponenten zu erstellen, die mit Service Bus in der Cloud integriert werden. Weitere Informationen finden Sie unter [Verwenden von Azure Relay-WCF-Relays mit .NET](relay-wcf-dotnet-get-started.md).
+
+## <a name="hybrid-connections-vs-wcf-relay"></a>Hybridverbindungen und WCF Relay
+Hybridverbindungen und WCF Relay aktivieren beide die sichere Verbindung mit Objekten, die innerhalb eines Unternehmensnetzwerks vorhanden sind. Welcher Ansatz verwendet wird, richtet sich nach den jeweiligen Anforderungen. Dies ist in der folgenden Tabelle beschrieben:
+
+|  | WCF Relay | Hybridverbindungen |
 | --- |:---:|:---:|
 | **WCF** |x | |
 | **.NET Core** | |x |
 | **.NET Framework** |x |x |
-| **JavaScript/NodeJS** | |x |
+| **JavaScript/Node.js** | |x |
 | **Standardbasierte offene Protokolle** | |x |
 | **Mehrere RPC-Programmiermodelle** | |x |
 
-## <a name="hybrid-connections"></a>Hybridverbindungen
-
-Azure Relay Hybrid Connections bietet eine sichere Weiterentwicklung der vorhandenen Relay-Features mit offenem Protokoll, die auf jeder beliebigen Plattform und in jeder beliebigen Sprache implementiert werden kann. Hybrid Connections können sowohl WebSockets als auch HTTP(S)-Anforderungen und -Antworten weiterleiten. Dies schließt die WebSocket-API in gängigen Webbrowsern ein. Hybridverbindungen basieren auf HTTP und WebSockets.
-
-Das Protokoll ist vollständig im [Hybrid Connections-Protokollhandbuch](relay-hybrid-connections-protocol.md) dokumentiert, sodass das Hybrid Connections Relay mit praktisch jeder WebSockets-Bibliothek für jede Laufzeit und Sprache verwendet werden kann.
-
-### <a name="service-history"></a>Dienstverlauf
-
-Hybridverbindungen ersetzen die ehemalige ähnliche benannte Funktion „BizTalk Services“, die auf dem Azure Service Bus-WCF-Relay erstellt wurde. Die neue Funktion „Hybrid Connections“ ergänzt die vorhandene WCF-Relayfunktion, und diese beiden Dienstfunktionen sind parallel im Azure-Relaydienst vorhanden. Sie teilen sich ein allgemeines Gateway, sind jedoch andererseits verschiedene Implementierungen.
-
-## <a name="wcf-relay"></a>WCF-Relay
-
-WCF-Relay funktioniert für das gesamte .NET Framework (NETFX) sowie für WCF. Sie initiieren die Verbindung zwischen dem lokalen Dienst und dem Relaydienst mithilfe einer Sammlung von WCF-Bindungen vom Typ „Relay“. Im Prinzip werden die Relaybindungen neuen Transportbindungselementen zugeordnet, die entwickelt wurden, um WCF-Kanalkomponenten zu erstellen, die mit Service Bus in der Cloud integriert werden. Weitere Informationen finden Sie unter [Verwenden von Azure Relay-WCF-Relays mit .NET](relay-wcf-dotnet-get-started.md).
-
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektur: Verarbeiten eingehender Relayanforderungen
-
-Wenn ein Client eine Anforderung an den [Azure Relay](/azure/service-bus-relay/)-Dienst sendet, wird diese vom Azure Load Balancer an einen der Gatewayknoten weitergeleitet. Handelt es sich dabei um eine Lauschanforderung, erstellt der Gatewayknoten ein neues Relay. Handelt es sich um eine Verbindungsanforderung für ein bestimmtes Relay, leitet der Gatewayknoten die Anforderung an den für das Relay zuständigen Gatewayknoten weiter. Der für das Relay zuständige Gatewayknoten sendet eine Rendezvousanforderung an den lauschenden Client und fordert den Listener auf, einen temporären Kanal zu dem Gatewayknoten zu erstellen, der die Verbindungsanfrage erhalten hat.
-
-Sobald die Relayverbindung besteht, können die Clients Nachrichten über den Gatewayknoten austauschen, die für das Rendezvous verwendet wird.
+Im folgenden Diagramm ist dargestellt, wie eingehende Relayanforderungen vom Azure Relay-Dienst verarbeitet werden:
 
 ![Verarbeiten eingehender WCF Relay-Anforderungen](./media/relay-what-is-it/ic690645.png)
 
-## <a name="next-steps"></a>Nächste Schritte
+1. Der lauschende Client sendet eine Lauschanforderung an den Azure Relay-Dienst. Der Azure Load Balancer leitet die Anforderung an einen der Gatewayknoten weiter. 
+2. Der Azure Relay-Dienst erstellt im Gatewayspeicher ein Relayelement. 
+3. Der sendende Client sendet eine Anforderung zum Herstellen einer Verbindung mit dem lauschenden Dienst. 
+4. Das Gateway, das die Anforderung empfängt, sucht im Gatewayspeicher nach dem Relay. 
+5. Das Gateway leitet die Verbindungsanforderung an das richtige Gateway, das im Gatewayspeicher angegeben ist. 
+6. Das Gateway sendet eine Anforderung an den lauschenden Client, damit dieser einen temporären Kanal mit dem Gatewayknoten erstellt, der dem sendenden Client am nächsten liegt. 
+7. Der lauschende Client erstellt dann einen temporären Kanal und sendet eine Antwortnachricht an das Gateway, das dem sendenden Client am nächsten liegt.
+8. Das Gateway leitet die Antwortnachricht an den sendenden Client weiter. 
 
-* [Relay – häufig gestellte Fragen](relay-faq.md)
-* [Erstellen eines Namespaces](relay-create-namespace-portal.md)
+Sobald die Relayverbindung besteht, können die Clients Nachrichten über den Gatewayknoten austauschen, die für das Rendezvous verwendet wird.
+
+## <a name="next-steps"></a>Nächste Schritte
 * [Erste Schritte mit .NET-WebSockets](relay-hybrid-connections-dotnet-get-started.md)
 * [Erste Schritte mit .NET-HTTP-Anforderungen](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 * [Erste Schritte mit Node-WebSockets](relay-hybrid-connections-node-get-started.md)
 * [Erste Schritte mit Node-HTTP-Anforderungen](relay-hybrid-connections-http-requests-node-get-started.md)
+* [Relay – häufig gestellte Fragen](relay-faq.md)
 

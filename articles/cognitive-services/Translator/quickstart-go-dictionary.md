@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Ermitteln alternativer Übersetzungen mit Go | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung ermitteln Sie alternative Übersetzungen und Beispiele für Begriffe im Kontext. Dazu verwenden Sie die Textübersetzungs-API mit Go in Cognitive Services.
+title: 'Schnellstart: Ermitteln alternativer Übersetzungen – Textübersetzung mit Go'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung ermitteln Sie kontextbezogene alternative Übersetzungen und Beispiele für Begriffe. Dazu verwenden Sie die Textübersetzungs-API mit Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: a076418dbf969a61107c28f191457fc336a8b907
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 4ea21673c993c6dd9478f42bfee790b62317946f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43769782"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128875"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-go"></a>Schnellstart: Ermitteln alternativer Übersetzungen und der Verwendung mit Go
 

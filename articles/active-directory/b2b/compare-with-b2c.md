@@ -4,22 +4,28 @@ description: Was ist der Unterschied zwischen Azure Active Directory B2B-Zusamme
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: overview
 ms.date: 03/15/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b59dba541394c105370cfd3af0768a8477ddb4e6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 42fbb8b08a2dc24ced436c4a6104f03ae3bca1e9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347837"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982809"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Vergleichen von B2B-Zusammenarbeit und B2C in Azure Active Directory
 
 Sowohl Azure Active Directory (Azure AD) B2B-Zusammenarbeit als auch Azure AD B2C ermöglichen Ihnen die Arbeit mit externen Benutzern in Azure AD. Aber worin bestehen die Unterschiede?
+
+**Azure AD B2B** eignet sich für Unternehmen, die Dateien und Ressourcen sicher für die gemeinsame Nutzung mit externen Benutzern freigeben möchten, um die Zusammenarbeit zu ermöglichen. Ein Azure-Administrator richtet B2B im Azure-Portal ein, und Azure AD sorgt für den Verbund zwischen Ihrem Unternehmen und Ihrem externen Partner. Benutzer melden sich über einen einfachen Einladungs- und Einlösungsprozess mit ihrem Geschäfts-, Schul- oder Unikonto oder einem E-Mail-Konto bei den freigegebenen Ressourcen an.
+ 
+**Azure AD B2C** ist primär für Unternehmen und Entwickler gedacht, die Apps für Kunden erstellen. Mit Azure AD B2C können Entwickler Azure AD als Identitätssystem mit allen notwendigen Features für ihre Anwendung verwenden. Gleichzeitig können Kunden sich mit einer bereits vorhandenen Identität anmelden (z.B. Facebook oder Gmail).
+
+In der folgenden Tabelle finden Sie einen detaillierten Vergleich.
 
 
 Funktionen von B2B-Zusammenarbeit |     Eigenständiges Azure AD B2C-Angebot

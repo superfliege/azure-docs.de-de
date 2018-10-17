@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/22/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1c933c9dcb3e3e2c2cb267073386d4b9c4e2022
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 8b6e543a4835410368e752e70e7e8cb6d8805c0e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746017"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735578"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -79,11 +79,13 @@ Sie können mehrere Batch-Workloads in einem Batch-Konto ausführen oder Ihre Wo
 
 Die meisten Batch-Lösungen verwenden Azure Storage zum Speichern von Ressourcen- und Ausgabedateien. In Ihren Batch-Tasks (einschließlich Standardtasks, Starttasks und Tasks zur Auftragsvorbereitung und -freigabe) werden beispielsweise in der Regel Ressourcendateien angegeben, die sich in einem Speicherkonto befinden.
 
-Batch unterstützt die folgenden [Kontooptionen](../storage/common/storage-account-options.md) für Azure Storage:
+Batch unterstützt die folgenden Arten von Azure Storage-Konten:
 
 * Konten vom Typ „General Purpose v2“ (GPv2) 
 * Konten vom Typ „General Purpose v1“ (GPv1)
 * BLOB-Speicherkonten (derzeit für Pools, in der VM-Konfiguration unterstützt)
+
+Weitere Informationen zu Speicherkonten finden Sie unter [Azure Storage-Konto – Übersicht](../storage/common/storage-account-overview.md).
 
 Sie können ein Speicherkonto mit Ihrem Batch-Konto verknüpfen – entweder im Zuge der Batch-Kontoerstellung oder zu einem späteren Zeitpunkt. Berücksichtigen Sie bei der Wahl eines Speicherkontos Ihre Kosten- und Leistungsanforderungen. Die Optionen für GPv2 und Blobspeicherkonto unterstützen beispielsweise höhere [Kapazitäts- und Skalierbarkeitsgrenzwerte](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) als GPv1. (Über den Azure-Support kann eine Erhöhung des Speicherlimits angefordert werden.) Diese Kontooptionen können die Leistung von Batch-Lösungen mit einer großen Anzahl paralleler Aufgaben verbessern, die aus dem Speicherkonto lesen oder in das Speicherkonto schreiben.
 
@@ -540,7 +542,7 @@ Wenn bei einigen Ihrer Tasks Fehler auftreten, kann Ihre Batch-Clientanwendung o
 [net_rdpfile]: https://msdn.microsoft.com/library/azure/Mt272127.aspx
 [vnet]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_netconf
 
-[py_add_user]: https://docs.microsoft.com/en-us/python/azure/?view=azure-python
+[py_add_user]: https://docs.microsoft.com/python/azure/?view=azure-python
 
 [batch_rest_api]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
 [rest_add_job]: https://msdn.microsoft.com/library/azure/mt282178.aspx

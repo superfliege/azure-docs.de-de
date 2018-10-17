@@ -1,22 +1,23 @@
 ---
-title: Verwenden der Sprachenerkennung in der Textanalyse-REST-API (Microsoft Cognitive Services in Azure) | Microsoft-Dokumentation
-description: In diesem Tutorial mit exemplarischer Vorgehensweise erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API in Microsoft Cognitive Services in Azure Sprachen erkennen.
+title: 'Beispiel: Sprachenerkennung mit der Textanalyse-REST-API'
+titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API Sprachen erkennen.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 3/07/2018
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: f8e2d9a36533c298addcf42d3cb2061e9c2d1ac7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fa71e4ce2e5cb5967bb583c7314072830de08051
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373867"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604551"
 ---
-# <a name="how-to-detect-language-in-text-analytics"></a>Erkennen der Sprache mithilfe der Textanalyse
+# <a name="example-how-to-detect-language-in-text-analytics"></a>Beispiel: Erkennen der Sprache mithilfe der Textanalyse
 
 Die [Sprachenerkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) wertet Texteingaben aus und gibt für jedes Dokument Sprachen-IDs mit einer Punktzahl zurück, die die Stärke der Analyse angibt. Die Textanalyse erkennt bis zu 120 Sprachen.
 
@@ -57,13 +58,13 @@ Die Dokumentgröße darf 5.000 Zeichen pro Dokument nicht übersteigen, und pro 
 
 ## <a name="step-1-structure-the-request"></a>Schritt 1: Strukturieren der Anforderung
 
-Details zur Anforderungsdefinition finden Sie unter [How to call the Text Analytics REST API](text-analytics-how-to-call-api.md) (Aufrufen der Textanalyse-REST-API). Der Einfachheit halber führen wir hier noch mal einige Punkte auf:
+Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-REST-API](text-analytics-how-to-call-api.md). Der Einfachheit halber sind hier noch einmal einige Punkte aufgeführt:
 
 + Erstellen Sie eine Anforderung vom Typ **POST**. Die API-Dokumentation für diese Anforderung finden Sie [hier](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
 + Legen Sie den HTTP-Endpunkt für die Sprachenerkennung fest. Er muss die Ressource `/languages` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
 
-+ Legen Sie einen Anforderungsheader fest, der den Zugriffsschlüssel für Textanalysevorgänge enthält. Weitere Informationen finden Sie unter [How to find endpoints and access keys](text-analytics-how-to-access-key.md) (Ermitteln von Endpunkten und Zugriffsschlüsseln).
++ Legen Sie einen Anforderungsheader fest, der den Zugriffsschlüssel für Textanalysevorgänge enthält. Weitere Informationen finden Sie unter [Ermitteln von Endpunkten und Zugriffsschlüsseln](text-analytics-how-to-access-key.md).
 
 + Geben Sie im Anforderungstext die JSON-Dokumentsammlung an, die Sie für diese Analyse vorbereitet haben.
 
@@ -164,7 +165,7 @@ Falls das Analysetool die Eingabe nicht analysieren kann (beispielsweise im Fall
 
 Wenn in einem Dokument Inhalte in verschiedenen Sprachen enthalten sind, wird die Sprache zurückgegeben, die in den Inhalten überwiegt – allerdings mit einer niedrigeren positiven Bewertung, die die marginale Stärke dieser Bewertung widerspiegelt. Im folgenden Beispiel enthält die Eingabe eine Mischung aus Englisch, Spanisch und Französisch. Das Analysetool zählt die Zeichen der einzelnen Segmente, um die vorherrschende Sprache zu bestimmen.
 
-**Eingabe**
+**Input** (Eingabe)
 
 ```
 {

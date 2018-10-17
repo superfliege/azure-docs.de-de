@@ -1,20 +1,21 @@
 ---
-title: Verwenden des Endpunkts der Custom Vision Service-Vorhersage – Azure Cognitive Services | Microsoft-Dokumentation
+title: 'Beispiel: Verwenden des Endpunkts der Vorhersage für das programmgesteuerte Testen von Bildern mit einer Klassifizierung – Custom Vision'
+titlesuffix: Azure Cognitive Services
 description: API-Nutzung für das programmgesteuerte Testen von Bildern mit Ihrer Custom Vision Service-Klassifizierung
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: sample
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d7f9b90db06811e16cd0cd6ad2b32a27912cfee5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 3a81f3cef6aaeb5c98022d9fc93f4d84f3f58a6e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341792"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363648"
 ---
 # <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Verwenden des Endpunkts der Vorhersage für das programmgesteuerte Testen von Bildern mit einer Custom Vision Service-Klassifizierung
 
@@ -23,7 +24,7 @@ Nachdem Sie Ihr Modell trainiert haben, können Sie Bilder programmgesteuert tes
 > [!NOTE]
 > Dieser Artikel veranschaulicht, wie Sie mit C# ein Bild an die Vorhersage-API senden. Weitere Informationen und Beispiele für die Verwendung der API finden Sie in der [Vorhersage-API-Referenz](https://go.microsoft.com/fwlink/?linkid=865445).
 
-## <a name="get-the-url-and-prediction-key"></a>Abrufen der Vorhersage-URL und des Vorhersageschlüssels
+## <a name="get-the-url-and-prediction-key"></a>Abrufen der Vorhersage-URL und des Vorhersage-Schlüssels
 
 Wählen Sie auf der [Custom Vision-Webseite](https://customvision.ai) Ihr Projekt und dann die Registerkarte __Leistung__ aus. Wählen Sie __Vorhersage-URL__ aus, um Informationen zur Nutzung der Vorhersage-API anzuzeigen, einschließlich __Vorhersageschlüssel__. Für Projekte, die an eine Azure-Ressource angefügt sind, finden Sie Ihren __Vorhersageschlüssel__ für die zugehörige Azure-Ressource auch im [Azure-Portal](https://portal.azure.com) unter __Schlüssel__. Kopieren Sie die folgenden Angaben, um sie in der Anwendung einzufügen:
 

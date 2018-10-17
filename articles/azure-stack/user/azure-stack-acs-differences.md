@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 6c0c42763ec3d124850555500c3a322073af2479
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 14e32bdfcde6969b820c0950d59bd5cf946a51e6
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43050424"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802320"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack-Speicher: Unterschiede und Überlegungen
 
@@ -27,7 +27,7 @@ ms.locfileid: "43050424"
 
 Bei Azure Stack-Speicher handelt es sich um eine Reihe von Speicherclouddiensten in Microsoft Azure Stack. Der Azure Stack-Speicher bietet Blob-, Tabellen-, Warteschlangen- und Kontoverwaltungsfunktionen mit einer mit Azure konsistenten Semantik.
 
-Dieser Artikel fasst die bekannten Unterschiede des Azure Stack-Speichers im Vergleich zu Azure Storage-Diensten zusammen. Außerdem werden dort die Aspekte erläutert, die beim Bereitstellen von Azure Stack berücksichtigt werden sollten. Informationen zu allgemeinen Unterschieden zwischen globalen Azure-Umgebungen und Azure Stack finden Sie im Thema [Wichtige Aspekte: Verwenden von Diensten oder Erstellen von Apps für Azure Stack](azure-stack-considerations.md).
+Dieser Artikel fasst die bekannten Unterschiede des Azure Stack-Speichers im Vergleich zu Azure Storage-Diensten zusammen. Außerdem werden dort die Aspekte erläutert, die beim Bereitstellen von Azure Stack berücksichtigt werden sollten. Informationen zu allgemeinen Unterschieden zwischen globalen Azure-Umgebungen und Azure Stack finden Sie im Artikel [Wichtige Aspekte](azure-stack-considerations.md).
 
 ## <a name="cheat-sheet-storage-differences"></a>Spickzettel: Speicherunterschiede
 
@@ -38,10 +38,9 @@ Dieser Artikel fasst die bekannten Unterschiede des Azure Stack-Speichers im Ver
 |Speicherkontotyp|Allgemeine Speicherkonten und Azure Blob Storage-Konten|Nur allgemein.
 |Replikationsoptionen|Lokal redundanter Speicher, georedundanter Speicher, schreibgeschützter georedundanter Speicher und zonenredunanter Speicher|Lokal redundanter Speicher.
 |Storage Premium|Vollständig unterstützt|Kann bereitgestellt werden, aber ohne Leistungsgrenzwerte oder Garantien.
-|Verwaltete Datenträger|Unterstützung für Premium und Standard|Noch nicht unterstützt.
+|Verwaltete Datenträger|Unterstützung für Premium und Standard|Unterstützt bei Verwendung von Version 1808 oder höher.
 |Blobname|1.024 Zeichen (2.048 Bytes)|880 Zeichen (1.760 Bytes)
 |Maximale Blockblobgröße|4,75 TB (100 MB X 50.000 Blöcke)|4,75 TB (100 MB x 50.000 Blöcke) für das Update 1802 oder eine neuere Version. 50.000 x 4 MB (ca. 195 GB) für vorherige Versionen.
-|Seitenblob-Momentaufnahmenkopie|Die Sicherung nicht verwalteter Azure-VM-Datenträger, die an einen ausgeführten virtuellen Computer angefügt sind, wird unterstützt.|Noch nicht unterstützt.
 |Inkrementelle Momentaufnahmenkopie des Seitenblobs|Unterstützung für Premium- und Standard-Azure-Seitenblobs|Noch nicht unterstützt.
 |Speicherebenen für Blobspeicher|Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“.|Noch nicht unterstützt.
 Vorläufiges Löschen für Blobspeicher|Vorschau|Noch nicht unterstützt.

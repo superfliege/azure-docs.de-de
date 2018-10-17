@@ -1,25 +1,27 @@
 ---
-title: Emotionen-API Ruby-Schnellstart | Microsoft Docs
-description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Emotionen-API mit Ruby in Cognitive Services.
+title: 'Schnellstart: Erkennen von Emotionen auf Gesichtern in einem Bild – Emotionen-API, Ruby'
+titlesuffix: Azure Cognitive Services
+description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Emotionen-API mit Ruby.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 733127bb3656d86a7f3f57cd26c72909900f4899
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ROBOTS: NOINDEX
+ms.openlocfilehash: bcab24334c1ee4e47061ce6ea28bd60039e17b3f
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021048"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239028"
 ---
-# <a name="emotion-api-ruby-quick-start"></a>Emotionen-API Ruby-Schnellstart
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Schnellstart: Erstellen einer App zur Erkennung von Emotionen auf Gesichtern in einem Bild
 
 > [!IMPORTANT]
-> Die Video-API-Vorschau ist am 30. Oktober 2017 abgelaufen. Testen Sie die neue [Video-Indexer-API (Vorschau)](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Extrahieren Sie Erkenntnisse aus Videos, und verbessern Sie die Auffindbarkeit von Inhalten, z.B. mit Suchergebnissen durch die Erkennung von gesprochenen Wörtern, Gesichtern, Zeichen und Emotionen. [Weitere Informationen](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
+> Die Emotionen-API wird am 15. Februar 2019 eingestellt. Die Funktion zur Erkennung von Emotionen ist jetzt als Teil der [Gesichtserkennungs-API](https://docs.microsoft.com/azure/cognitive-services/face/) allgemein verfügbar. 
 
 Dieser Artikel enthält Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der [Recognize-Methode der Emotionen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) mit Ruby zum Erkennen der von einer oder mehreren Personen auf einem Bild ausgedrückten Emotionen.
 
@@ -34,7 +36,7 @@ Dieser Artikel enthält Informationen und Codebeispiele für den schnellen Einst
 require 'net/http'
 
 # NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-#   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+#   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
 #   URL below with "westcentralus".
 uri = URI('https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize')
 uri.query = URI.encode_www_form({
@@ -59,10 +61,10 @@ puts response.body
 ## <a name="recognize-emotions-sample-response"></a>Beispielantwort der Emotionserkennung
 Ein erfolgreicher Aufruf gibt ein Array von Gesichtseinträgen zusammen mit den ihnen zugeordneten Emotionsbewertungen in der Rangfolge der Rechteckgröße der Gesichter in absteigender Reihenfolge zurück. Eine leere Antwort zeigt an, dass keine Gesichter erkannt wurden. Ein Emotionseintrag enthält die folgenden Felder:
 * faceRectangle: Rechteckposition des Gesichts auf dem Bild
-* scores: Emotionsbewertungen für jedes Gesicht auf dem Bild 
+* scores: Emotionsbewertungen für jedes Gesicht auf dem Bild
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

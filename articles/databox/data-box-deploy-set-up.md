@@ -1,6 +1,6 @@
 ---
 title: Einrichten der Azure Data Box | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie mehr über die Software- und Netzwerkanforderungen für Ihre Azure Data Box.
+description: Es wird beschrieben, wie Sie Ihre Azure Data Box verkabeln und die Verbindung herstellen.
 services: databox
 documentationcenter: NA
 author: alkohli
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: 6623744a26d79ccbc8b68ba84baf3a37024e0ed7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952306"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785635"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Tutorial: Verkabeln und Herstellen einer Verbindung mit der Azure Data Box
 
@@ -36,15 +36,15 @@ In diesem Tutorial lernen Sie Folgendes:
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 1. Sie haben das [Tutorial zum Bestellen einer Azure Data Box](data-box-deploy-ordered.md) durchgearbeitet.
-2. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt. 
+2. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt. Die Klarsichthülle, die am Gerät unter dem eigentlichen Etikett angebracht ist, enthält ein Adressetikett. Bewahren Sie dieses Etikett sicher auf, da Sie es für den Rückversand benötigen.
 3. Sie haben sich mit den [Sicherheitsrichtlinien für die Data Box](data-box-safety.md) vertraut gemacht.
 4. Sie haben ein geerdetes Netzkabel zur Verwendung mit dem 100-TB-Speichergerät erhalten.
 5. Sie haben einen Hostcomputer mit den Daten, die Sie auf die Data Box kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
     - Es muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
-    - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Es wird dringend empfohlen, dass mindestens eine 10-GbE-Verbindung verfügbar ist. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt. 
-6. Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal aufstellen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Datencenter. Sie können das Gerät flach oder hochkant in das Rack stellen.
+    - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, wodurch aber die Geschwindigkeit der Kopiervorgänge leidet. 
+6. Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Rechenzentrum. Sie können das Gerät waagerecht oder senkrecht in das Rack einbauen.
 7. Sie haben die folgenden Kabel zur Hand, um Ihre Data Box mit dem Hostcomputer zu verbinden.
-    - Zwei 10-GbE-SFP+ Twinax-Kupferkabel (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2)
+    - Zwei SFP+-Twinax-Kupferkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2)
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle MGMT)
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6A oder RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle DATA 3, die mit 10 GBit/s bzw. 1 GBit/s konfiguriert ist)
 

@@ -1,0 +1,82 @@
+---
+title: Benutzereinwilligung bei LinkedIn-Kontoverbindungen für das Teilen von Daten in Azure Active Directory | Microsoft-Dokumentation
+description: Erläutert, wie LinkedIn-Kontoverbindungen Daten über Microsoft-Apps in Azure Active Directory teilen.
+services: active-directory
+author: curtand
+manager: mtillman
+ms.service: active-directory
+ms.workload: identity
+ms.component: users-groups-roles
+ms.topic: article
+ms.date: 09/13/2018
+ms.author: curtand
+ms.reviewer: beengen
+ms.custom: it-pro
+ms.openlocfilehash: 3f11ae3d5f6e686133b0f5ef355734ce09c00fed
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734640"
+---
+# <a name="user-consent-and-linkedin-account-connections-data-sharing"></a>Benutzereinwilligung und Teilen von Daten über LinkedIn-Kontoverbindungen
+
+Als Azure Active Directory-Administrator (Azure AD) können Sie Benutzern in Ihrer Organisation die Einwilligung ermöglichen, ihr Microsoft-Geschäfts-, -Schul- oder -Unikonto mit ihrem LinkedIn-Konto zu verbinden. Wenn Benutzer ihre Konten verbinden, sind die Informationen und Highlights von LinkedIn in einigen Microsoft-Apps und Diensten verfügbar. Benutzer können ebenfalls damit rechnen, dass ihre Netzwerkerfahrung bei LinkedIn verbessert und mit Informationen von Microsoft angereichert wird.
+
+Um LinkedIn-Informationen in Microsoft-Apps und -Diensten anzuzeigen, müssen Benutzer einwilligen, ihre eigenen Microsoft- und LinkedIn-Konten zu verbinden. Benutzer werden aufgefordert, ihre Konten zu verbinden, wenn sie zum ersten Mal auf einer Profilkarte in Outlook, OneDrive oder SharePoint Online klicken, um LinkedIn-Informationen von jemandem anzuzeigen. LinkedIn-Kontoverbindungen werden für Ihre Benutzer erst dann vollständig aktiviert, wenn sie ihre Einwilligung zu der Erfahrung und dem Verbinden Ihrer Konten gegeben haben.
+
+[!INCLUDE [active-directory-gdpr-note](../../../includes/gdpr-hybrid-note.md)]
+
+## <a name="benefits-of-sharing-linkedin-information"></a>Vorteile des Teilens von LinkedIn-Informationen
+
+Zugriff auf LinkedIn-Informationen in Microsoft-Apps und -Diensten erleichtert es Ihren Benutzern, sich zu vernetzen, zu engagieren und professionelle Beziehungen mit Kollegen, Kunden und Partnern innerhalb und außerhalb Ihrer Organisation aufzubauen. Neue Benutzer gewöhnen sich schneller ein, indem sie sich mit Kollegen verbinden, mehr über sie erfahren und einfacher auf weitere Informationen zugreifen können. Hier ist ein Beispiel dafür, wie LinkedIn-Informationen auf der Profilkarte in Microsoft-Apps angezeigt werden:
+
+![Aktivieren von LinkedIn-Kontoverbindungen](./media/linkedin-user-consent/display-example.png)
+
+## <a name="enable-and-announce-linkedin-account-connections"></a>Aktivieren und Ankündigen von LinkedIn-Kontoverbindungen
+
+Sie müssen Azure Active Directory-Administrator sein, um die Einstellung für Ihre Organisation zu verwalten. Sie können sie für alle Benutzer oder nur für eine bestimmte Gruppe von Benutzern aktivieren.
+
+1. Um die Kontoverbindungsintegration zu aktivieren oder deaktivieren, befolgen Sie die Schritte in [LinkedIn-Kontoverbindungen](linkedin-integration.md).
+2. Wenn Sie die LinkedIn-Integration in Ihrer Organisation ankündigen, verweisen Sie Ihre Benutzer auf die häufig gestellten Fragen (FAQ) zu [LinkedIn-Informationen in Microsoft-Apps und -Diensten](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Der Artikel enthält Informationen dazu, wo LinkedIn-Informationen angezeigt werden, wie man Konten verbindet und mehr.
+
+## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Benutzereinwilligung zum Datenzugriff in Microsoft und LinkedIn
+
+Daten, auf die von LinkedIn zugegriffen wird, werden nicht dauerhaft in Microsoft-Diensten gespeichert. Daten, auf die von Microsoft zugegriffen wird, werden nicht dauerhaft in LinkedIn gespeichert, außer Kontakten. Microsoft-Kontakte werden in LinkedIn gespeichert, bis Benutzer sie entfernen, wie unter [Löschen importierter Kontakte aus LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377) beschrieben.
+
+Wenn Benutzer ihre Konten verbinden, sind die Informationen und Einblicke aus LinkedIn in einigen Microsoft-Apps verfügbar, z. B. auf der Profilkarte. Benutzer können ebenfalls damit rechnen, dass ihre Netzwerkerfahrung bei LinkedIn verbessert und mit Informationen von Microsoft angereichert wird.
+Beim Verbinden ihrer Geschäfts-, Schul- oder Unikonten von LinkedIn und Microsoft haben Benutzer in Ihrer Organisation zwei Möglichkeiten:
+
+* Die Berechtigung für den Zugriff auf Daten aus beiden Konten erteilen. Dies bedeutet, dass sie ihrem Microsoft- oder Geschäftskonto die Berechtigung zum Zugriff auf Daten aus ihrem LinkedIn-Konto erteilen und [ihrem LinkedIn-Konto den Zugriff auf Daten aus ihrem Microsoft-Geschäfts-, -Schul- oder -Unikonto](https://www.linkedin.com/help/linkedin/answer/84077).
+* Nur die Berechtigung für den Zugriff auf LinkedIn-Daten von ihrem Microsoft-Geschäfts-, -Schul- oder -Unikonto aus erteilen.
+
+Benutzer können jederzeit Konten trennen und Datenzugriffsberechtigungen entfernen, und [Benutzer können kontrollieren, wie ihr eigenes LinkedIn-Profil angezeigt wird](https://www.linkedin.com/help/linkedin/answer/83), z .B. ob ihr Profil in Microsoft-Apps angezeigt werden kann.
+
+### <a name="linkedin-account-data"></a>LinkedIn-Kontodaten
+
+Wenn Sie Ihre Microsoft- und LinkedIn-Konten verbinden, gestatten Sie LinkedIn, ;Microsoft die folgenden Daten bereitzustellen:
+
+* Profildaten: umfassen LinkedIn-Identität, Kontaktinformationen und die Informationen, die Sie mit anderen in Ihrem [LinkedIn-Profil](https://www.linkedin.com/help/linkedin/answer/15493) teilen.
+* Interessendaten: umfassen Interessen auf LinkedIn wie Personen und Themen, denen Sie folgen, Kurse, Gruppen, und Inhalte, die Ihnen gefallen und die Sie teilen.
+* Abonnementdaten: umfassen Abonnements von LinkedIn-Anwendungen und -Diensten zusammen mit zugehörigen Daten. 
+* Verbindungsdaten: umfassen Ihr [LinkedIn-Netzwerk](https://www.linkedin.com/help/linkedin/answer/110), einschließlich Profile und Kontaktinformationen Ihrer Verbindungen des 1. Grads.
+
+Daten, auf die von LinkedIn zugegriffen wird, werden nicht dauerhaft in Microsoft-Diensten gespeichert. Weitere Informationen zur Verwendung persönlicher Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen von Microsoft](https://privacy.microsoft.com/privacystatement/).
+
+### <a name="microsoft-work-or-school-account-data"></a>Microsoft-Geschäfts-, -Schul- oder -Unikontodaten
+
+Wenn Sie Ihre Microsoft- und LinkedIn-Konten verbinden, gestatten Sie Microsoft, LinkedIn die folgenden Daten bereitzustellen:
+
+* Profildaten: umfassen Informationen wie Ihren Vornamen, Nachnamen, Profilfoto, E-Mail-Adresse, Vorgesetzten und Personen, die Ihnen unterstehen.
+* Kalenderdaten: umfassen Besprechungen in Ihren Kalendern, deren Zeiten, Orte und die Kontaktinformationen der Teilnehmer. Informationen zu der Besprechung wie Tagesordnung, Inhalt oder Besprechungstitel sind in den Kalenderdaten nicht enthalten.
+* Interessendaten: umfassen die Ihrem Konto zugeordneten Interessen, basierend auf Ihrer Verwendung von Microsoft-Diensten wie Cortana und Bing für Unternehmen.
+* Abonnementdaten: umfasst Abonnements, die von Ihrer Organisation für Microsoft-Apps und -Dienste bereitgestellt werden, z. B. Office 365.
+* Kontaktdaten: umfasst Kontaktlisten in Outlook, Skype und anderen Microsoft-Kontodiensten, einschließlich der Kontaktinformationen für Personen, mit denen Sie häufig kommunizieren oder zusammenarbeiten. Kontakte werden in regelmäßigen Abständen importiert, gespeichert und von LinkedIn verwendet, z. B. um Verbindungen vorzuschlagen, beim Organisieren von Kontakten zu helfen sowie Aktualisierungen von Kontakten anzuzeigen.
+
+Daten, auf die von Microsoft zugegriffen wird, werden nicht dauerhaft in LinkedIn gespeichert, außer Kontakten. Microsoft-Kontakte werden in LinkedIn gespeichert, bis Benutzer sie entfernen. Weitere Informationen zum [Löschen importierter Kontakte aus LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
+
+Weitere Informationen zur Verwendung persönlicher Daten durch LinkedIn finden Sie in den [Datenschutzbestimmungen von LinkedIn](https://www.linkedin.com/legal/privacy-policy). Bei Diensten, Datenübertragungen und Speicherung von LinkedIn können Daten aus der Europäischen Union in die Vereinigten Staaten und zurück fließen, wobei Ihr Datenschutz wie in [Datenübertragungen in der Europäischen Union](https://www.linkedin.com/help/linkedin/answer/62533) beschrieben gewährleistet wird.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [LinkedIn in Microsoft-Anwendungen mit Ihrem Geschäfts-, Schul- oder Unikonto](https://www.linkedin.com/help/linkedin/answer/84077)

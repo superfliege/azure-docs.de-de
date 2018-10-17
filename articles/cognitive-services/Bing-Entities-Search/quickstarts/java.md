@@ -1,23 +1,23 @@
 ---
-title: Java-Schnellstart für Azure Cognitive Services, Bing-Entitätssuche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Entitätssuche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Bing-Entitätssuche-API, Java'
+titlesuffix: Azure Cognitive Services
+description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Bing-Entitätssuche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 9b11471e08360cb5fe92f1506516bf88dd5ee72a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0cf1103b37572b43585e4a977dc4d034e7a50e2f
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377331"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814473"
 ---
-# <a name="quickstart-for-microsoft-bing-entity-search-api-with-java"></a>Schnellstart für die Microsoft Bing-Entitätssuche-API mit Java 
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-entity-search-api-with-java"></a>Schnellstart für die Bing-Entitätssuche-API mit Java 
 
 In diesem Artikel erfahren Sie, wie Sie die [Bing-Entitätssuche-API](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) mit Java verwenden.
 
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie die [Bing-Entitätssuche-API](https://do
 
 Zum Kompilieren und Ausführen des Codes benötigen Sie [JDK 7 oder 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Wenn Sie möchten, können Sie eine Java-Entwicklungsumgebung verwenden, ein Text-Editor ist aber auch ausreichend.
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit der **Bing-Entitätssuche-API** verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit der **Bing-Entitätssuche-API** verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements über Ihr Azure-Dashboard verwenden.
 
 ## <a name="search-entities"></a>Durchsuchen von Entitäten
 
@@ -119,7 +119,7 @@ public class EntitySearch {
 
 **Antwort**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -188,5 +188,5 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 
 > [!div class="nextstepaction"]
 > [Tutorial zur Bing-Entitätssuche](../tutorial-bing-entities-search-single-page-app.md)
-> [Übersicht über die Bing-Entitätssuche](../search-the-web.md )
+> [Übersicht zur Bing-Entitätssuche](../search-the-web.md )
 > [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

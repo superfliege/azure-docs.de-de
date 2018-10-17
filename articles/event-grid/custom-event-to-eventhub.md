@@ -5,19 +5,19 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 10/09/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: b5be37ede208ba14fbfe8270bff317a782bf655a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0d8504dc002fa43c25f689b4c5b3f78c822cf5b0
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425883"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069419"
 ---
 # <a name="route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Weiterleiten benutzerdefinierter Ereignisse an Azure Event Hubs mit Azure CLI und Event Grid
 
-Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Event Hubs ist einer der unterstützten Ereignishandler. In diesem Artikel erstellen Sie mithilfe der Azure-Befehlszeilenschnittstelle ein benutzerdefiniertes Thema, abonnieren dieses Thema und lösen das Ereignis aus, um das Ergebnis anzuzeigen. Sie senden Ereignisse an einen Event Hub.
+Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Event Hubs ist einer der unterstützten Ereignishandler. In diesem Artikel erstellen Sie mithilfe der Azure-Befehlszeilenschnittstelle ein benutzerdefiniertes Thema, abonnieren dieses benutzerdefinierte Thema und lösen das Ereignis zum Anzeigen des Ergebnisses aus. Sie senden Ereignisse an einen Event Hub.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,7 +37,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Erstellen eines benutzerdefinierten Themas
 
-Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. Im folgenden Beispiel wird das benutzerdefinierte Thema in Ihrer Ressourcengruppe erstellt. Ersetzen Sie `<your-topic-name>` durch einen eindeutigen Namen für Ihr Thema. Der Name des Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird.
+Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. Im folgenden Beispiel wird das benutzerdefinierte Thema in Ihrer Ressourcengruppe erstellt. Ersetzen Sie `<your-topic-name>` durch einen eindeutigen Namen für Ihr benutzerdefiniertes Thema. Der Name des benutzerdefinierten Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird.
 
 ```azurecli-interactive
 topicname=<your-topic-name>
@@ -46,7 +46,7 @@ az eventgrid topic create --name $topicname -l westus2 -g gridResourceGroup
 
 ## <a name="create-event-hub"></a>Event Hub erstellen
 
-Vor dem Abonnieren des Themas erstellen wir zunächst den Endpunkt für die Ereignisnachricht. Sie erstellen einen Event Hub zum Sammeln der Ereignisse.
+Vor dem Abonnieren des benutzerdefinierten Themas erstellen wir zunächst den Endpunkt für die Ereignisnachricht. Sie erstellen einen Event Hub zum Sammeln der Ereignisse.
 
 ```azurecli-interactive
 namespace=<unique-namespace-name>
@@ -56,9 +56,9 @@ az eventhubs namespace create --name $namespace --resource-group gridResourceGro
 az eventhubs eventhub create --name $hubname --namespace-name $namespace --resource-group gridResourceGroup
 ```
 
-## <a name="subscribe-to-a-topic"></a>Abonnieren eines Themas
+## <a name="subscribe-to-a-custom-topic"></a>Abonnieren eines benutzerdefinierten Themas
 
-Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten. Im folgenden Beispiel wird das von Ihnen erstellte Thema abonniert. Außerdem wird die Ressourcen-ID des Event Hubs für den Endpunkt übergeben. Der Endpunkt weist folgendes Format auf:
+Sie abonnieren ein Event Grid-Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten. Im folgenden Beispiel wird das von Ihnen erstellte benutzerdefinierte Thema abonniert. Außerdem wird die Ressourcen-ID des Event Hubs für den Endpunkt übergeben. Der Endpunkt weist folgendes Format auf:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 
@@ -75,7 +75,9 @@ az eventgrid event-subscription create \
   --endpoint $hubid
 ```
 
-## <a name="send-an-event-to-your-topic"></a>Senden eines Ereignisses an Ihr Thema
+Das Konto, das das Ereignisabonnement erstellt, muss über Schreibzugriff auf den Event Hub verfügen.
+
+## <a name="send-an-event-to-your-custom-topic"></a>Senden eines Ereignisses an Ihr benutzerdefiniertes Thema
 
 Nun wird ein Ereignis ausgelöst, um zu sehen, wie Event Grid die Nachricht an Ihren Endpunkt weiterleitet. Zunächst rufen wir die URL und den Schlüssel für das benutzerdefinierte Thema ab.
 
@@ -84,13 +86,13 @@ endpoint=$(az eventgrid topic show --name $topicname -g gridResourceGroup --quer
 key=$(az eventgrid topic key list --name $topicname -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Zur Vereinfachung dieses Artikels verwenden Sie Beispielereignisdaten, die an das Thema gesendet werden können. Üblicherweise werden die Ereignisdaten von einer Anwendung oder einem Azure-Dienst gesendet. CURL ist ein Hilfsprogramm zum Senden von HTTP-Anforderungen. In diesem Artikel wird CURL verwendet, um das Ereignis an das Thema zu senden.  Das folgende Beispiel sendet drei Ereignisse an das Event Grid-Thema:
+Zur Vereinfachung dieses Artikels verwenden Sie Beispielereignisdaten, die an das benutzerdefinierte Thema gesendet werden können. Üblicherweise werden die Ereignisdaten von einer Anwendung oder einem Azure-Dienst gesendet. CURL ist ein Hilfsprogramm zum Senden von HTTP-Anforderungen. In diesem Artikel wird CURL verwendet, um das Ereignis an das benutzerdefinierte Thema zu senden.  Das folgende Beispiel sendet drei Ereignisse an das Event Grid-Thema:
 
 ```azurecli-interactive
 for i in 1 2 3
 do
-   body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
-   curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+   event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
+   curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 done
 ```
 

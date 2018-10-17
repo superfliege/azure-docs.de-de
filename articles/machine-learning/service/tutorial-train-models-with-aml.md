@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning'
+title: 'Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst'
 description: Dieses Tutorial zeigt, wie Sie mit Azure Machine Learning Service ein Bildklassifizierungsmodell mit scikit-learn in einem Python Jupyter Notebook trainieren. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe.
 services: machine-learning
 ms.service: machine-learning
@@ -9,18 +9,18 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 6fbca5e83d8ab4b3c34c6448c7a2303697da623b
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 7110d8df5ee837829f97fec8ab26d929689e3436
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181397"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785137"
 ---
-# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning"></a>Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning
+# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst
 
 In diesem Tutorial wird ein Machine Learning-Modell sowohl lokal als auch auf Remotecomputeressourcen traininert. Hierbei wird der Trainings- und Bereitstellungsworkflow für Azure Machine Learning Service (Vorschau) in einem Python Jupyter Notebook verwendet.  Anschließend können Sie das Notebook als Vorlage verwenden, um Ihr eigenes Machine Learning-Modell mit Ihren eigenen Daten zu trainieren. Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**.  
 
-In diesem Tutorial wird eine einfache logistische Regression anhand des [MNIST](http://yann.lecun.com/exdb/mnist/)-Datasets und [scikit-learn](http://scikit-learn.org) mit Azure Machine Learning trainiert.  MNIST ist ein populäres Dataset, das aus 70.000 Graustufenbildern besteht. Jedes Bild ist eine handgeschriebene Ziffer von 0 bis 9 im Format von 28 × 28 Pixeln. Das Ziel besteht darin, einen Multiklassen-Klassifizierer zu erstellen, um die in einem bestimmten Bild dargestellte Ziffer zu erkennen. 
+In diesem Tutorial wird eine einfache logistische Regression anhand des [MNIST](http://yann.lecun.com/exdb/mnist/)-Datasets und [scikit-learn](http://scikit-learn.org) mit dem Azure Machine Learning-Dienst trainiert.  MNIST ist ein populäres Dataset, das aus 70.000 Graustufenbildern besteht. Jedes Bild ist eine handgeschriebene Ziffer von 0 bis 9 im Format von 28 × 28 Pixeln. Das Ziel besteht darin, einen Multiklassen-Klassifizierer zu erstellen, um die in einem bestimmten Bild dargestellte Ziffer zu erkennen. 
 
 In diesem Artikel werden folgende Themen erläutert:
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="get-the-notebook"></a>Abrufen des Notebooks
 
-Dieses Tutorial steht Ihnen auch als Jupyter Notebook zur Verfügung. Verwenden Sie eine der beiden folgenden Methoden, um die [Machine Learning-Beispielnotebooks im GitHub-Repository](https://github.com/Azure/MachineLearningNotebooks) zu klonen und das Notebook `tutorials/01.train-models.ipynb` auszuführen:
+Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb) bereitgestellt. Führen Sie das Notebook `01.train-models.ipynb` in Azure Notebooks oder auf Ihrem eigenen Jupyter Notebook-Server aus.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -454,7 +454,7 @@ compute_target.delete()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Azure Machine Learning-Tutorial haben Sie Python für folgende Zwecke verwendet:
+In diesem Tutorial für den Azure Machine Learning-Dienst haben Sie Python für folgende Zwecke verwendet:
 
 > [!div class="checklist"]
 > * Einrichten der Entwicklungsumgebung

@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Identifizieren der Textsprache mit PHP | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung bestimmen Sie die Sprache des Quelltexts. Dazu verwenden Sie die Textübersetzungs-API mit PHP in Cognitive Services.
+title: 'Schnellstart: Identifizieren der Textsprache – Textübersetzung, PHP'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart bestimmen Sie die Sprache des Quelltexts. Dazu verwenden Sie die Textübersetzungs-API mit PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 2888ea96ac31d56f6870b2f2ccbb04ff8328a1b8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: cb643503f72f9cf21c83f35477ca6878d8938339
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769737"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125968"
 ---
 # <a name="quickstart-identify-language-from-text-with-php"></a>Schnellstart: Identifizieren der Textsprache mit PHP
 

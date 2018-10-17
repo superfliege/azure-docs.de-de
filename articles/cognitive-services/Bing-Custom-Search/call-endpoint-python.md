@@ -1,22 +1,23 @@
 ---
-title: Aufrufen eines Endpunkts mit Python – benutzerdefinierte Bing-Suche – Microsoft Cognitive Services
+title: 'Schnellstart: Aufrufen eines Endpunkts mit Python – benutzerdefinierte Bing-Suche'
+titlesuffix: Azure Cognitive Services
 description: Dieser Schnellstart veranschaulicht das Anfordern von Suchergebnissen aus Ihrer Instanz der benutzerdefinierten Suche unter Verwendung von Python zum Aufrufen des Endpunkts der benutzerdefinierten Bing-Suche.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 3666e92372e9bed80e5c0c7991dcac730cebb588
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d16b7354b0ef727ba3c670b97105e1bd6f99034e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967590"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815459"
 ---
-# <a name="call-bing-custom-search-endpoint-python"></a>Aufrufen des Endpunkts für die benutzerdefinierte Bing-Suche (Python)
+# <a name="quickstart-call-bing-custom-search-endpoint-python"></a>Schnellstart: Aufrufen eines Endpunkts für die benutzerdefinierte Bing-Suche (Python)
 
 Dieser Schnellstart veranschaulicht das Anfordern von Suchergebnissen aus Ihrer Instanz der benutzerdefinierten Suche unter Verwendung von Python zum Aufrufen des Endpunkts der benutzerdefinierten Bing-Suche. 
 

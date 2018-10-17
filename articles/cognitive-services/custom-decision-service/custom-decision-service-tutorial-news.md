@@ -1,21 +1,23 @@
 ---
-title: 'Artikelpersonalisierung: Azure Cognitive Services | Microsoft Docs'
-description: Ein Tutorial zur Artikelpersonalisierung in Azure Custom Decision Service, einer cloudbasierten API für die kontextabhängige Entscheidungsfindung.
+title: 'Tutorial: Artikelpersonalisierung – Custom Decision Service'
+titlesuffix: Azure Cognitive Services
+description: Ein Tutorial zur Artikelpersonalisierung für die kontextbezogene Entscheidungsfindung.
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh;marossi
-ms.openlocfilehash: 35d0567f81a23d4726461059eb6fd31e04228697
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: slivkins
+ms.openlocfilehash: b142fe2051c017d0c0ec3c4cac6aaedd563f6cd7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377011"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366334"
 ---
-# <a name="article-personalization"></a>Artikelpersonalisierung
+# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Tutorial: Artikelpersonalisierung für die kontextbezogene Entscheidungsfindung
 
 Dieses Tutorial beschäftigt sich mit der Personalisierung der Artikelauswahl auf der Startseite einer Website. Custom Decision Service wirkt sich beispielsweise auf *mehrere* Listen von Artikeln auf der Startseite aus. Möglicherweise ist die Seite eine Newswebsite, die sich nur mit Politik und Sport beschäftigt. Sie würde drei Rangfolgelisten mit Artikeln anzeigen: Politik, Sport und Zuletzt gelesen.
 

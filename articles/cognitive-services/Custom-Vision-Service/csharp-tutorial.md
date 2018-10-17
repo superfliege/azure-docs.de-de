@@ -1,22 +1,23 @@
 ---
-title: Verwenden des Custom Vision Service über eine C#-Anwendung – Azure Cognitive Services | Microsoft-Dokumentation
-description: Lernen Sie eine einfache C#-App kennen, die die Custom Vision-API in Microsoft Cognitive Services verwendet. Erstellen Sie ein Projekt, fügen Sie Tags hinzu, laden Sie Bilder hoch, und erstellen Sie eine Vorhersage mit dem Standardendpunkt.
+title: 'Tutorial: Erstellen einer Windows-App für den Custom Vision Service mit C#'
+titlesuffix: Azure Cognitive Services
+description: Erstellen Sie ein Projekt, fügen Sie Tags hinzu, laden Sie Bilder hoch, und erstellen Sie eine Vorhersage mit dem Standardendpunkt.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d3c2ffb0fd9578458bd07241eed4a87cf70d3c3c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 9e5ed71d4620f7ffeac8acb15f90d67964a86870
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617433"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366640"
 ---
-# <a name="use-the-custom-vision-service-from-a-c35-application"></a>Verwenden des Custom Vision Service über eine C&#35;-Anwendung
+# <a name="tutorial-use-the-custom-vision-service-from-a-c-application"></a>Tutorial: Verwenden des Custom Vision Service über eine C#-Anwendung
 
 Es wird beschrieben, wie Sie den Custom Vision Service über eine C#-Anwendung verwenden. Nach der Erstellung können Sie Tags hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Open-Source-Beispiel als Vorlage zum Erstellen Ihrer eigenen App für Windows, indem Sie die Custom Vision Service-API verwenden.
 

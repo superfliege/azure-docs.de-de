@@ -1,21 +1,23 @@
 ---
-title: Java-Schnellstart für die Projekt-URL-Vorschau – Microsoft Cognitive Services | Microsoft-Dokumentation
-description: Skriptbeispiel für die ersten Schritte mit der Projekt-URL-Vorschau in Microsoft Cognitive Services in Azure
+title: 'Schnellstart: „Projekt: URL-Vorschau“, Java'
+titlesuffix: Azure Cognitive Services
+description: 'Skriptbeispiel für die ersten Schritte mit dem „Projekt: URL-Vorschau“ mit Java.'
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 2de74f48882605bfcf05f65723ba5d8993587f51
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 95e33ceddc2fbbab51d3c4f0164b410847430244
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376267"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867115"
 ---
-# <a name="url-preview-java-quickstart"></a>Java-Schnellstart für die URL-Vorschau
+# <a name="quickstart-url-preview-with-java"></a>Schnellstart: URL-Vorschau mit Java
 
 Das folgende Java-Beispiel veranschaulicht das Erstellen einer URL-Vorschau für die SwiftKey-Website https://swiftkey.com/en.
 
@@ -49,11 +51,11 @@ Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader 
 
 ## <a name="complete-code"></a>Vollständiger Code
 
-Die API der Bing-Suche gibt Ergebnisse der Bing-Suchmaschine zurück.
+Die API der Bing-Antwortsuche gibt Ergebnisse der Bing-Suchmaschine zurück.
 1. Laden Sie die gson-Bibliothek herunter, oder installieren Sie diese.
 2. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt.
 3. Fügen Sie den unten stehenden Code hinzu.
-4. Ersetzen Sie den Wert subscriptionKey durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+4. Ersetzen Sie den Wert von „subscriptionKey“ durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 5. Führen Sie das Programm aus.
 
 ````

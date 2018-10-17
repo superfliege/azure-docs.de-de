@@ -1,25 +1,27 @@
 ---
-title: 'Textübersetzung: Ermitteln der Satzlänge mit C# | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung ermitteln Sie die Länge von Sätzen im Text. Dazu verwenden Sie die Textübersetzungs-API mit C# in Cognitive Services.
+title: 'Schnellstart: Abrufen von Satzlängen – Textübersetzungs-API, C#'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung ermitteln Sie mit der Textübersetzungs-API und C# die Länge von Sätzen im Text.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: b3e7f1099b1a7584435646fe3fae237cd458967f
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 4569a580dfdad3a71201e607ae5b7895d0d01099
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43769504"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364345"
 ---
 # <a name="quickstart-get-sentence-lengths-with-c35"></a>Schnellstart: Ermitteln der Satzlänge mit C#
 
 In dieser Schnellstartanleitung ermitteln Sie mithilfe der Textübersetzungs-API die Länge von Sätzen im Text.
+
+Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

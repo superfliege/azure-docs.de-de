@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 93626e6a8f199841b285fb8a6e302e6c3054db0d
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b1b903b945a60cebe2001a1ae41201b9b665c556
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918032"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078816"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
@@ -70,7 +70,7 @@ Zum Einrichten des Konfigurationsservers als hoch verfügbaren virtuellen VMware
 > In diesem Tutorial wird eine OVA-Vorlage verwendet, um den virtuellen Computer für den VMware-Konfigurationsserver zu erstellen. Kann sie nicht verwendet werden, können Sie [den Konfigurationsserver manuell einrichten](physical-manage-configuration-server.md).
 
 > [!TIP]
-> In diesem Tutorial lädt Site Recovery MySQL herunter und installiert MySQL auf dem Konfigurationsserver. Falls Site Recovery diese Schritte nicht ausführen soll, können Sie die Einrichtung manuell vornehmen. [Weitere Informationen](vmware-azure-deploy-configuration-server.md#configure-settings)
+> In diesem Tutorial lädt Site Recovery MySQL herunter und installiert MySQL auf dem Konfigurationsserver. Falls Site Recovery diese Schritte nicht ausführen soll, können Sie die Einrichtung manuell vornehmen. [Weitere Informationen](vmware-azure-deploy-configuration-server.md#configure-settings).
 
 
 ### <a name="download-the-vm-template"></a>Herunterladen der Vorlage
@@ -132,7 +132,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 4. Klicken Sie auf **VMware PowerCLI installieren**. Stellen Sie sicher, dass alle Browserfenster geschlossen sind, bevor Sie diesen Schritt durchführen. Klicken Sie anschließend auf **Weiter**.
 5. Unter **Anwendungskonfiguration überprüfen** werden die Voraussetzungen überprüft, bevor der Vorgang fortgesetzt wird.
 6. Geben Sie unter **vCenter-Server/vSphere ESXi-Server konfigurieren** den FQDN oder die IP-Adresse des vCenter-Servers oder vSphere-Hosts ein, auf dem sich die virtuellen Computer befinden, die repliziert werden sollen. Geben Sie den Port ein, über den der Server lauscht. Geben Sie einen Anzeigenamen ein, der für den VMware-Server im Tresor verwendet werden soll.
-7. Geben Sie die Anmeldeinformationen ein, die der Konfigurationsserver beim Herstellen der Verbindung mit dem VMware-Server verwenden soll. Site Recovery verwendet diese Anmeldeinformationen für die automatische Erkennung von VMware-VMs, die für die Replikation verfügbar sind. Klicken Sie auf **Hinzufügen** und anschließend auf **Weiter**.
+7. Geben Sie die Benutzeranmeldeinformationen ein, die der Konfigurationsserver zum Herstellen der Verbindung mit dem VMware-Server verwenden soll. Stellen Sie sicher, dass der Benutzername und das Kennwort korrekt sind und dieser Benutzer der Gruppe „Administratoren“ der zu schützenden VM angehört. Site Recovery verwendet diese Anmeldeinformationen für die automatische Erkennung von VMware-VMs, die für die Replikation verfügbar sind. Klicken Sie auf **Hinzufügen** und anschließend auf **Weiter**.
 8. Geben Sie unter **Anmeldeinformationen für virtuelle Computer konfigurieren** den Benutzernamen und das Kennwort an, die für die automatische Installation von Mobility Service auf virtuellen Computern verwendet werden sollen, wenn die Replikation aktiviert ist.
     - Für Windows-Computer benötigt das Konto lokale Administratorrechte auf den Computern, die Sie replizieren möchten.
     - Bei Linux geben Sie die Anmeldeinformationen für das root-Konto an.

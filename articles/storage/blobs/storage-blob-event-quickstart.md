@@ -8,12 +8,12 @@ ms.date: 08/23/2018
 ms.topic: quickstart
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 6910386fbc98a2a951fa78ccd99204d19046d637
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 78ee6f198bf4e16e3b2b0deb8fdb0b68c0fe9b73
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744137"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735085"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit Azure CLI
 
@@ -48,7 +48,7 @@ az group create --name <resource_group_name> --location westcentralus
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Zur Verwendung von Blob Storage-Ereignissen benötigen Sie ein [Blob Storage-Konto](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) oder ein [Speicherkonto des Typs „General Purpose v2“](../common/storage-account-options.md#general-purpose-v2-accounts). Bei **General Purpose v2 (GPv2)** handelt es sich um Speicherkonten, die alle Features für alle Speicherdienste unterstützen, z.B. Blobs, Files, Queues und Tables. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten. 
+Blob Storage-Ereignisse stehen in Speicherkonten des Typs „Allgemein v2“ und in Blob Storage-Konten zur Verfügung. Speicherkonten vom Typ **Allgemein v2** unterstützen alle Features für alle Speicherdienste, z.B. Blob Storage, Files, Queue Storage und Table Storage. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Weitere Informationen finden Sie unter [Azure Storage-Konto – Übersicht](../common/storage-account-overview.md).
 
 Ersetzen Sie `<storage_account_name>` durch einen eindeutigen Namen für Ihr Speicherkonto und `<resource_group_name>` durch die zuvor erstellte Ressourcengruppe.
 

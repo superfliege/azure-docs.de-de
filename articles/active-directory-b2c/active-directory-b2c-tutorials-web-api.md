@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 469a3662b5bc4db467dde3285d557ac8bbae368e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 2b70ed174331b88f9afc9aa30d14a585986496a5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39609088"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604340"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API über eine Web-App unter Verwendung von Azure Active Directory B2C
 
@@ -40,19 +40,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie [geschützte Ressourcenanforderungen](../active-directory/develop/developer-glossary.md#resource-server) von [Clientanwendungen](../active-directory/develop/developer-glossary.md#client-application), die über ein [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) von Azure Active Directory verfügen, akzeptieren und darauf reagieren können. Durch die Registrierung werden in Ihrem Mandanten das [Anwendungs- und Dienstprinzipalobjekt](../active-directory/develop/developer-glossary.md#application-object) eingerichtet. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
 
-2. Vergewissern Sie sich, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie oben rechts im Azure-Portal zu diesem Verzeichnis wechseln. Wählen Sie die Abonnementinformationen aus, und klicken Sie dann auf **Verzeichnis wechseln**.
+[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-    ![Wechseln von Verzeichnissen](./media/active-directory-b2c-tutorials-web-api/switch-directories.png)
+1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf. Sie sollten nun den Mandanten verwenden, den Sie im vorherigen Tutorial erstellt haben.
 
-3. Wählen Sie das Verzeichnis aus, das den Mandanten enthält.
-
-    ![Auswählen des Verzeichnisses](./media/active-directory-b2c-tutorials-web-api/select-directory.png)
-
-4. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf. Sie sollten nun den Mandanten verwenden, den Sie im vorherigen Tutorial erstellt haben.
-
-5. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
+2. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
 
     Verwenden Sie die folgenden Einstellungen, um die Beispiel-Web-API bei Ihrem Mandanten zu registrieren.
     
@@ -67,7 +61,7 @@ Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie [ge
     | **App-ID-URI** | myAPISample | Durch den URI wird die API eindeutig im Mandanten identifiziert. Dadurch können pro Mandant mehrere APIs registriert werden. [Bereiche](../active-directory/develop/developer-glossary.md#scopes) steuern den Zugriff auf die geschützte API-Ressource und werden auf der Grundlage des APP-ID-URI definiert. |
     | **Nativer Client** | Nein  | Da es sich hierbei um eine Web-API und nicht um einen nativen Client handelt, wählen Sie „Nein“ aus. |
     
-6. Klicken Sie auf **Erstellen**, um Ihre API zu registrieren.
+3. Klicken Sie auf **Erstellen**, um Ihre API zu registrieren.
 
 Registrierte APIs werden in der Anwendungsliste für den Azure AD B2C-Mandanten angezeigt. Wählen Sie Ihre Web-API aus der Liste aus. Der Eigenschaftenbereich der Web-API wird angezeigt.
 

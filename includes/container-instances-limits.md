@@ -1,13 +1,13 @@
 | Ressource | Standardlimit |
 | --- | :--- |
-| Containergruppen pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) | 20<sup>1</sup> |
+| Containergruppen pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) | 100<sup>1</sup> |
 | Anzahl von Containern pro Containergruppe | 60 |
 | Anzahl von Volumes pro Containergruppe | 20 |
 | Ports pro IP-Adresse | 5 |
-| Containererstellungen pro Stunde |60<sup>1</sup> |
-| Containererstellungen pro 5 Minuten | 20<sup>1</sup> |
-| Containerlöschungen pro Stunde | 150<sup>1</sup> |
-| Containerlöschungen pro 5 Minuten | 50<sup>1</sup> |
+| Containererstellungen pro Stunde |300<sup>1</sup> |
+| Containererstellungen pro 5 Minuten | 100<sup>1</sup> |
+| Containerlöschungen pro Stunde | 300<sup>1</sup> |
+| Containerlöschungen pro 5 Minuten | 100<sup>1</sup> |
 | Mehrere Container pro Containergruppe | Nur Linux<sup>2</sup> |
 | Azure Files-Volumes | Nur Linux<sup>2</sup> |
 | GitRepo-Volumes | Nur Linux<sup>2</sup> |

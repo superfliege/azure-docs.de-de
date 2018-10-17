@@ -1,24 +1,25 @@
 ---
-title: Single-Page-Webanwendung für die Bing-Bildersuche (Quellcode) | Microsoft-Dokumentation
-description: Der Quellcode für das Tutorial zur Verwendung der Bing-Bildersuche-API in einer Single-Page-Webanwendung.
+title: 'Tutorial: Single-Page-Webanwendung für die Bing-Entitätssuche (Quellcode)'
+titlesuffix: Azure Cognitive Services
+description: Quellcode für das Tutorial zur Verwendung der Bing-Entitätssuche-API in einer Single-Page-Webanwendung.
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 988d4c809fdfb528c9cef2b3cdbefa00c274d33e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 09cb10002be43d65ff10e3c238a880cf138aa064
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373027"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815051"
 ---
 # <a name="tutorial-single-page-web-app-source"></a>Tutorial: Single-Page-Webanwendung – Code
 
-Hier finden Sie den vollständigen Quellcode, der im [Tutorial zu Single-Page-Webanwendungen](tutorial-bing-entities-search-single-page-app.md) für die Bing-Bildersuche vorgestellt wird. Kopieren Sie zum Ausführen der App den Quellcode in Editor oder einen anderen Text-Editor, und speichern Sie die Datei als `bing.html`. Öffnen Sie dann die gespeicherte Datei in Microsoft Edge oder einem anderen gängigen Browser.
+Hier finden Sie den vollständigen Quellcode, der im [Tutorial zu Single-Page-Webanwendungen](tutorial-bing-entities-search-single-page-app.md) für die Bing-Entitätssuche vorgestellt wird. Kopieren Sie zum Ausführen der App den Quellcode in Editor oder einen anderen Text-Editor, und speichern Sie die Datei als `bing.html`. Öffnen Sie dann die gespeicherte Datei in Microsoft Edge oder einem anderen gängigen Browser.
 
 ```html
 <!DOCTYPE html>

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 84783472adda9a4a74670f0579790aac69feb23d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e48eac4cdc1e98e21a122850b1dc7d3e8f4efe07
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094993"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854523"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions
 
@@ -25,7 +25,7 @@ Mithilfe von Eingabe- und Ausgabebindungen in Azure Functions können Sie Daten 
 
 ![Im Storage-Explorer angezeigte Warteschlangenmeldung](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-## <a name="prerequisites"></a>Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen
 
 So führen Sie diesen Schnellstart durch:
 
@@ -39,15 +39,19 @@ In diesem Abschnitt verwenden Sie die Benutzeroberfläche des Portals, um der zu
 
 1. Öffnen Sie im Azure-Portal die Seite „Funktions-App“ für die Funktions-App, die Sie in [Erstellen Ihrer ersten Funktion im Azure-Portal](functions-create-first-azure-function.md) erstellt haben. Klicken Sie hierzu auf **Alle Dienste > Funktionen-Apps**, und wählen Sie dann Ihre Funktions-App aus.
 
-2. Wählen Sie die Funktion aus, die Sie im Rahmen der vorherigen Schnellstartanleitung erstellt haben.
+1. Wählen Sie die Funktion aus, die Sie im Rahmen der vorherigen Schnellstartanleitung erstellt haben.
 
 1. Klicken Sie auf **Integrieren > Neue Ausgabe > Azure Queue Storage**.
 
 1. Klicken Sie auf **Auswählen**.
-    
+
     ![Hinzufügen einer Ausgabebindung von Queue Storage in einer Funktion im Azure-Portal](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. Verwenden Sie unter **Azure Queue Storage output** (Azure Queue Storage-Ausgabe) die Einstellungen aus der Tabelle nach dem folgenden Screenshot: 
+1. Wenn die Meldung **Erweiterungen nicht installiert** angezeigt wird, können Sie **Installieren** wählen, um die Storage-Bindungserweiterung in der Funktions-App zu installieren. Dies kann ein oder zwei Minuten dauern.
+
+    ![Installieren der Storage-Bindungserweiterung](./media/functions-integrate-storage-queue-output-binding/functions-integrate-install-binding-extension.png)
+
+1. Verwenden Sie unter **Azure Queue Storage output** (Azure Queue Storage-Ausgabe) die Einstellungen aus der Tabelle nach dem folgenden Screenshot: 
 
     ![Hinzufügen einer Ausgabebindung von Queue Storage in einer Funktion im Azure-Portal](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -57,52 +61,58 @@ In diesem Abschnitt verwenden Sie die Benutzeroberfläche des Portals, um der zu
     | **Speicherkontoverbindung** | AzureWebJobsStorage | Sie können die Speicherkontoverbindung verwenden, die bereits von Ihrer Funktionen-App verwendet wird, oder eine neue erstellen.  |
     | **Warteschlangenname**   | outqueue    | Der Name der zu verknüpfenden Warteschlange in Ihrem Speicherkonto. |
 
-4. Klicken Sie auf **Speichern**, um die Bindung hinzuzufügen.
- 
+1. Klicken Sie auf **Speichern**, um die Bindung hinzuzufügen.
+
 Nachdem Sie eine Ausgabebindung definiert haben, müssen Sie den Code aktualisieren, um die Bindung zum Hinzufügen von Meldungen in eine Warteschlange verwenden zu können.  
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Hinzufügen von Code, der die Ausgabebindung verwendet
 
 In diesem Abschnitt fügen Sie Code hinzu, der eine Meldung in die Ausgabewarteschlange schreibt. Die Meldung enthält den Wert, der an den HTTP-Trigger in der Abfragezeichenfolge übergeben wird. Wenn die Abfragezeichenfolge also beispielsweise `name=Azure` enthält, lautet die Warteschlangenmeldung *Name passed to the function: Azure*.
 
-1. Wählen Sie die Funktion, um den Funktionscode im Editor anzuzeigen. 
+1. Wählen Sie die Funktion, um den Funktionscode im Editor anzuzeigen.
 
-2. Fügen Sie für eine C#-Funktion einen Methodenparameter für die Bindung ein, und schreiben Sie Code, um sie zu verwenden:
+1. Aktualisieren Sie den Funktionscode gemäß Ihrer Funktionssprache:
 
-   Fügen Sie der Methodensignatur einen Parameter vom Typ **outputQueueItem** hinzu, wie im folgenden Beispiel zu sehen. Der Parametername entspricht Ihrer Eingabe für **Name des Meldungsparameters** beim Erstellen der Bindung.
+    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
-   ```cs   
-   public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
-       ICollector<string> outputQueueItem, TraceWriter log)
-   {
-       ...
-   }
-   ```
+    Fügen Sie der Methodensignatur einen Parameter vom Typ **outputQueueItem** hinzu, wie im folgenden Beispiel zu sehen.
 
-   Fügen Sie im Text der C#-Funktion kurz vor der `return`-Anweisung Code hinzu, der unter Verwendung des Parameters eine Warteschlangenmeldung erstellt.
+    ```cs
+    public static async Task<IActionResult> Run(HttpRequest req,
+        ICollector<string> outputQueueItem, ILogger log)
+    {
+        ...
+    }
+    ```
 
-   ```cs
-   outputQueueItem.Add("Name passed to the function: " + name);     
-   ```
+    Fügen Sie im Text der Funktion kurz vor der `return`-Anweisung Code hinzu, der unter Verwendung des Parameters eine Warteschlangenmeldung erstellt.
 
-3. Fügen Sie für eine JavaScript-Funktion Code hinzu, der die Ausgabebindung für das `context.bindings`-Objekt verwendet, um eine Warteschlangenmeldung zu erstellen. Fügen Sie diesen Code vor der `context.done`-Anweisung hinzu.
+    ```cs
+    outputQueueItem.Add("Name passed to the function: " + name);
+    ```
 
-   ```javascript
-   context.bindings.outputQueueItem = "Name passed to the function: " + 
-               (req.query.name || req.body.name);
-   ```
+    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-4. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
- 
-## <a name="test-the-function"></a>Testen der Funktion 
+    Fügen Sie Code hinzu, der die Ausgabebindung für das `context.bindings`-Objekt verwendet, um eine Warteschlangenmeldung zu erstellen. Fügen Sie diesen Code vor der `context.done`-Anweisung hinzu.
+
+    ```javascript
+    context.bindings.outputQueueItem = "Name passed to the function: " + 
+                (req.query.name || req.body.name);
+    ```
+
+    ---
+
+1. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
+
+## <a name="test-the-function"></a>Testen der Funktion
 
 1. Nachdem die Codeänderungen gespeichert wurden, klicken Sie auf **Ausführen**. 
 
     ![Hinzufügen einer Ausgabebindung von Queue Storage in einer Funktion im Azure-Portal](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
-   Beachten Sie, dass der **Anforderungstext** den `name`-Wert *Azure* enthält. Dieser Wert erscheint in der Warteschlangenmeldung, die erstellt wird, wenn die Funktion aufgerufen wird.
-
-   Anstatt auf **Ausführen** zu klicken, können Sie die Funktion auch aufrufen, indem Sie eine URL in einen Browser eingeben und den `name`-Wert in der Abfragezeichenfolge angeben. Die Browsermethode wird in der [vorherigen Schnellstartanleitung](functions-create-first-azure-function.md#test-the-function) gezeigt.
+    Beachten Sie, dass der **Anforderungstext** den `name`-Wert *Azure* enthält. Dieser Wert erscheint in der Warteschlangenmeldung, die erstellt wird, wenn die Funktion aufgerufen wird.
+    
+    Anstatt auf **Ausführen** zu klicken, können Sie die Funktion auch aufrufen, indem Sie eine URL in einen Browser eingeben und den `name`-Wert in der Abfragezeichenfolge angeben. Die Browsermethode wird in der [vorherigen Schnellstartanleitung](functions-create-first-azure-function.md#test-the-function) gezeigt.
 
 2. Überprüfen Sie die Protokolle, um sicherzustellen, dass die Funktion erfolgreich durchgeführt wurde. 
 

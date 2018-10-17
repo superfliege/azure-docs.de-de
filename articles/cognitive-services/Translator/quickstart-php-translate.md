@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Übersetzen von Text mit PHP | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung übersetzen Sie Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit PHP in Cognitive Services.
+title: 'Schnellstart: Übersetzen von Text – Textübersetzung, PHP'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart übersetzen Sie Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: e7d86e36c6137980ba379371548de6f5e6721302
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7b9716ba3d2ec793dc9591d5487acc4ced3276fa
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769740"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125135"
 ---
 # <a name="quickstart-translate-text-with-php"></a>Schnellstart: Übersetzen von Text mit PHP
 
@@ -109,7 +109,7 @@ echo $json;
 
 ## <a name="translate-response"></a>Übersetzungsantwort (Translate)
 
-Eine erfolgreiche Antwort im JSON-Format wird zurückgegeben, wie im folgenden Beispiel gezeigt:
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 [

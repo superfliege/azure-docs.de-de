@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ff2a161cbc39cdb4cf35cad2b8bd403ef2d3260c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b3a3baaf22fa9c382bb45a5b2a2065ef7678faf5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222166"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855953"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
@@ -68,7 +68,7 @@ für die Azure AD-Hybrideinbindung ist erforderlich, dass die Geräte innerhalb 
 - https://device.login.microsoftonline.com
 - https://autologon.microsoftazuread-sso.com (Wenn Sie das nahtlose einmalige Anmelden verwenden oder verwenden möchten)
 
-Wenn Ihre Organisation Internetzugriff über einen ausgehenden Proxy erfordert, können Sie ab Windows 10 1709 Proxyeinstellungen auf dem Computer mithilfe eines Gruppenrichtlinienobjekts (GPO) konfigurieren. Wenn Ihr Computer unter einem älteren Betriebssystem als Windows 10 1709 ausgeführt wird, müssen Sie den Web Proxy Auto-Discovery-Dienst (WPAD) implementieren, um Windows 10-Computer für die Geräteregistrierung bei Azure AD zu aktivieren. 
+Wenn für Ihre Organisation Internetzugriff über einen ausgehenden Proxy erforderlich ist, können Sie ab Windows 10 1709 [mithilfe eines Gruppenrichtlinienobjekts (GPO) Proxyeinstellungen auf Ihrem Computer konfigurieren](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/). Wenn Ihr Computer unter einem älteren Betriebssystem als Windows 10 1709 ausgeführt wird, müssen Sie den Web Proxy Auto-Discovery-Dienst (WPAD) implementieren, um Windows 10-Computer für die Geräteregistrierung bei Azure AD zu aktivieren. 
 
 Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden Proxy erfordert, müssen Sie sicherstellen, dass Ihre Windows 10-Computer erfolgreich beim ausgehenden Proxy authentifiziert werden können. Da Windows 10-Computer die Geräteregistrierung mithilfe von Computerkontext ausführen, muss die Authentifizierung bei ausgehenden Proxys mithilfe von Computerkontext konfiguriert werden. Erkundigen Sie sich beim Anbieter Ihres ausgehenden Proxys nach den Konfigurationsanforderungen. 
 
@@ -160,7 +160,7 @@ Um die Einbindung in Hybrid-Azure AD für Ihre kompatiblen Windows-Geräte erfol
 
 - `https://device.login.microsoftonline.com`
 
-- `https://autologon.microsoftazuread-sso.com`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+- `https://autologon.microsoftazuread-sso.com`.
 
 Außerdem müssen Sie in der lokalen Intranetzone des Benutzers die Option **Aktualisierungen der Statusleiste per Skript zulassen** aktivieren.
 

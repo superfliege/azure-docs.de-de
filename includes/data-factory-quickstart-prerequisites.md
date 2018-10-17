@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/20/2018
+ms.date: 10/01/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: ac6b53926ca6c44c8ec1e71db67321366aacb00e
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 4b209953e957d0c2892bc5c6bca7a577992c5dee
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617611"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48842894"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -21,18 +21,26 @@ ms.locfileid: "42617611"
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ### <a name="azure-roles"></a>Azure-Rollen
-Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle *Mitwirkender* oder *Besitzer* oder ein *Administrator* des Azure-Abonnements sein. Klicken Sie im Azure-Portal in der oberen rechten Ecke auf Ihren Benutzernamen und dann auf **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. Beispielanweisungen zum Hinzufügen eines Benutzers zu einer Rolle finden Sie im Artikel [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](../articles/billing/billing-add-change-azure-subscription-administrator.md).
+Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle *Mitwirkender* oder *Besitzer* oder ein *Administrator* des Azure-Abonnements sein. Klicken Sie im Azure-Portal in der oberen rechten Ecke auf Ihren Benutzernamen und dann auf **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. 
 
-Sie müssen Mitglied der Rolle **Data Factory Contributor** sein, um untergeordnete Ressourcen (etwa Datasets, verknüpfte Dienste, Pipelines, Trigger und Integration Runtimes) für Data Factory über die Benutzeroberfläche zum Erstellen und Überwachen im Azure-Portal erstellen und verwalten zu können. Zum Erstellen und Verwalten von untergeordneten Ressourcen mit Powershell oder dem SDK ist die Rolle **Mitwirkender** ausreichend.
+Für das Erstellen und Verwalten von untergeordneten Ressourcen für Data Factory – z.B. Datasets, verknüpfte Dienste, Pipelines, Trigger und Integration Runtimes – gelten die folgenden Anforderungen:
+- Für das Erstellen und Verwalten von untergeordneten Ressourcen im Azure-Portal müssen Sie auf Ressourcengruppenebene oder höher Mitglied der Rolle **Mitwirkender von Data Factory** sein.
+- Zum Erstellen und Verwalten von untergeordneten Ressourcen mit PowerShell oder dem SDK auf Ressourcenebene oder höher ist die Rolle **Mitwirkender** ausreichend.
+
+Eine Beispielanleitung zum Hinzufügen eines Benutzers zu einer Rolle finden Sie im Artikel [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](../articles/billing/billing-add-change-azure-subscription-administrator.md).
+
+Weitere Informationen finden Sie in den folgenden Artikeln:
+- [Rolle „Mitwirkender von Data Factory“](../articles/role-based-access-control/built-in-roles.md#data-factory-contributor)
+- [Roles and permissions for Azure Data Factory](../articles/data-factory/concepts-roles-permissions.md) (Rollen und Berechtigungen für Azure Data Factory)
 
 ### <a name="azure-storage-account"></a>Azure-Speicherkonto
 Sie verwenden in diesem Schnellstart ein allgemeines Azure-Speicherkonto (Blobspeicher) als Datenspeicher vom Typ *Quelle* und vom Typ *Ziel*. Falls Sie noch nicht über ein allgemeines Azure-Speicherkonto verfügen, lesen Sie zum Erstellen die Informationen unter [Erstellen Sie ein Speicherkonto](../articles/storage/common/storage-quickstart-create-account.md). 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Abrufen des Speicherkontonamens und des Kontoschlüssels
-In diesem Schnellstart verwenden Sie Name und Schlüssel Ihres Azure-Speicherkontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens und Schlüssels für Ihr Speicherkonto: 
+In dieser Schnellstartanleitung benötigen Sie den Namen und Schlüssel Ihres Azure-Speicherkontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens und Schlüssels für Ihr Speicherkonto: 
 
 1. Wechseln Sie in einem Webbrowser zum [Azure-Portal](https://portal.azure.com). Melden Sie sich mit Ihrem Azure-Benutzernamen und -Kennwort an. 
-2. Klicken Sie im Menü auf der linken Seite auf **Weitere Dienste**, filtern Sie nach dem Schlüsselwort **Speicher**, und wählen Sie **Speicherkonten**.
+2. Klicken Sie im Menü auf der linken Seite auf **Alle Dienste**, filtern Sie nach dem Schlüsselwort **Speicher**, und wählen Sie **Speicherkonten**.
 
    ![Suchen nach einem Speicherkonto](media/data-factory-quickstart-prerequisites/search-storage-account.png)
 3. Filtern Sie in der Liste mit den Speicherkonten nach Ihrem Speicherkonto (falls erforderlich), und wählen Sie Ihr Speicherkonto aus. 
@@ -56,7 +64,7 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutoria
 4. Wählen Sie in der Liste mit den Containern die Option **adftutorial**. 
 
    ![Auswählen des Containers](media/data-factory-quickstart-prerequisites/seelct-adftutorial-container.png)
-1. Klicken Sie auf der Seite **Container** auf der Symbolleiste auf **Hochladen**.  
+5. Klicken Sie auf der Seite **Container** auf der Symbolleiste auf **Hochladen**.  
 
    ![Schaltfläche zum Hochladen](media/data-factory-quickstart-prerequisites/upload-toolbar-button.png)
 6. Klicken Sie auf der Seite **Blob hochladen** auf **Erweitert**.

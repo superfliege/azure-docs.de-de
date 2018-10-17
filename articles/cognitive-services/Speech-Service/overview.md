@@ -9,18 +9,19 @@ ms.component: speech-service
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: v-jerkin
-ms.openlocfilehash: c12cd754d9979683fac4b819739d53e78ab9259c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b014144dd819aa354596175068bfb2c5905a4377
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990194"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857991"
 ---
 # <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
 
-Der Speech-Dienst vereint die Azure-Sprachfeatures, die zuvor über die Dienste [Bing-Spracheingabe-API](https://docs.microsoft.com/azure/cognitive-services/speech/home), [Sprachübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator-speech/), [Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home) und [Custom Voice](http://customvoice.ai/) verfügbar waren. Nun kann über ein einzelnes Abonnement auf alle diese Funktionen zugegriffen werden.
 
-Der Speech-Dienst basiert genau wie die anderen Azure-Sprachdienste auf den Sprachtechnologien aus Produkten wie Cortana und Microsoft Office. Sie können auf die Qualität der Ergebnisse und auf die Zuverlässigkeit der Cloudplattform zählen.
+Der Speech-Dienst basiert genau wie die anderen Azure-Sprachdienste auf den Sprachtechnologien aus Produkten wie Cortana und Microsoft Office.
+
+Der Speech-Dienst vereint die Azure-Sprachfeatures, die zuvor über die Dienste [Bing-Spracheingabe-API](https://docs.microsoft.com/azure/cognitive-services/speech/home), [Sprachübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator-speech/), [Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home) und [Custom Voice](http://customvoice.ai/) verfügbar waren. Nun kann über ein einzelnes Abonnement auf alle diese Funktionen zugegriffen werden.
 
 ## <a name="main-speech-service-functions"></a>Hauptfunktionen des Speech-Diensts
 
@@ -28,7 +29,7 @@ Zu den Hauptfunktionen des Speech-Diensts zählen Sprache-zu-Text (auch Spracher
 
 |Funktion|Features|
 |-|-|
-|[Spracherkennung](speech-to-text.md)| <ul><li>Wandelt fortlaufende Sprache in Echtzeit in Text um.<li>Kann Sprache aus Audioaufnahmen als Batch transkribieren. <li>Bietet Erkennungsmodi für interaktive Anwendungsfälle sowie für Konversationen und Diktate.<li>Unterstützt Zwischenergebnisse, die Erkennung des Endes der Spracheingabe, automatische Textformatierung sowie die Maskierung anstößiger Ausdrücke. <li>Kann mithilfe von [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) die Benutzerabsicht aus der transkribierten Sprache ableiten.\*|
+|[Spracherkennung](speech-to-text.md)| <ul><li>Wandelt fortlaufende Sprache in Echtzeit in Text um.<li>Kann Sprache aus Audioaufnahmen als Batch transkribieren. <li>Unterstützt Zwischenergebnisse, die Erkennung des Endes der Spracheingabe, automatische Textformatierung sowie die Maskierung anstößiger Ausdrücke. <li>Kann mithilfe von [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) die Benutzerabsicht aus der transkribierten Sprache ableiten.\*|
 |[Sprachsynthese](text-to-speech.md)| <ul><li>Konvertiert Text in natürlich klingende Sprache. <li>Bietet mehrere Geschlechter und/oder Dialekte für viele unterstützte Sprachen. <li>Unterstützt Nur-Text-Eingabe und SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). |
 |[Sprachübersetzung](speech-translation.md)| <ul><li>Übersetzt Audiostreams nahezu in Echtzeit.<li> Kann auch aufgezeichnete Sprache verarbeiten.<li>Liefert Ergebnisse als Text oder Sprachsynthese. |
 
@@ -49,7 +50,7 @@ Sie können Ihre benutzerdefinierten Modelle überall dort verwenden, wo sonst i
 
 ## <a name="use-the-speech-service"></a>Verwenden des Speech-Diensts
 
-Für den neuen Speech-Dienst stellt Microsoft das [Speech SDK](speech-sdk.md) bereit, um die Entwicklung sprachaktivierter Anwendungen zu vereinfachen. Das Speech SDK bietet konsistente native Spracherkennungs- und Sprachübersetzungs-APIs für C#, C++ und Java. Wenn Sie eine dieser Sprachen verwenden, kümmert sich das Speech SDK für Sie um die Netzwerkdetails und vereinfacht so die Entwicklungsarbeit.
+Um die Entwicklung sprachaktivierter Anwendungen zu vereinfachen, stellt Microsoft das [Speech SDK](speech-sdk.md) für den Speech-Dienst bereit. Das Speech SDK bietet konsistente native Spracherkennungs- und Sprachübersetzungs-APIs für C#, C++ und Java. Wenn Sie eine dieser Sprachen verwenden, kümmert sich das Speech SDK für Sie um die Netzwerkdetails und vereinfacht so die Entwicklungsarbeit.
 
 Der Speech-Dienst verfügt auch über eine [REST-API](rest-apis.md), die mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen beherrscht. Die REST-Schnittstelle bietet nicht die Streaming-/Echtzeitfunktionen des SDK.
 
@@ -67,6 +68,42 @@ Falls Sie jedoch bereits über Code verfügen, der die Bing-Spracheingabe oder d
 ### <a name="speech-devices-sdk"></a>Speech-Geräte-SDK
 
 Das [SDK für sprachaktivierte Geräte](speech-devices-sdk.md) ist eine integrierte Hardware- und Softwareplattform für Entwickler sprachaktivierter Geräte. Unsere Hardwarepartner stellen Referenzentwürfe und Entwicklungseinheiten bereit. Microsoft bietet ein geräteoptimiertes SDK, das die Funktionen der Hardware optimal ausnutzt.
+
+## <a name="why-move-to-the-speech-service"></a>Gründe für die Umstellung auf den Speech-Dienst
+
+Mit dem Speech-Dienst wird nicht nur die gesamte Funktionalität der Bing-Spracheingabe-API bereitgestellt, sondern darüber hinaus drei weitere Azure-Sprachdienste: Custom Speech, Custom Voice und Sprachübersetzung. Wir raten Benutzern dieser Dienste, die Migration zum Speech-Dienst durchzuführen.
+
+Mit dem Speech-Dienst werden viele Upgrades in diese anderen Dienste eingebunden, z.B.:
+
+* Höhere Genauigkeit bei der Spracherkennung. Wir verbessern regelmäßig die Modelle, die im Dienst verwendet werden.
+
+* Höhere Skalierbarkeit. Der Dienst kann mehrere gleichzeitige Anforderungen besser verarbeiten, sodass die Latenz verringert wird.
+
+* Für den Speech-Dienst wird ein zeitbasiertes Preismodell verwendet. Ausführlichere Informationen finden Sie unter [Cognitive Services-Preise – Sprachdienste](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+
+* Der Speech-Dienst ist in [mehreren Regionen](regions.md) verfügbar, um die Anforderungen der Kunden weltweit zu erfüllen. Sie benötigen ein [Azure-Abonnement](https://docs.microsoft.com/azure/cognitive-services/welcome) für jede Region, die von Ihrer Anwendung verwendet wird.
+
+* Mit einem einzelnen Abonnementschlüssel für den Speech-Dienst wird Zugriff auf die folgenden Features gewährt. Da die Abrechnung jeweils separat erfolgt, werden Ihnen nur die genutzten Features berechnet.
+
+    * [Spracherkennung](speech-to-text.md)
+    * [Benutzerdefinierte Spracherkennung](https://cris.ai/CustomSpeech)
+    * [Sprachsynthese](text-to-speech.md)
+    * [Benutzerdefinierte Stimmen für Sprachsynthese](https://cris.ai/CustomVoice)
+    * [Sprachübersetzung](speech-translation.md) (ohne [Textübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview))
+
+* Die Spracherkennungsfunktion des Speech-Diensts wird in den [Language Understanding Service](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) integriert, um die Absicht des Sprechers zu erkennen. Auch ein LUIS-Endpunktschlüssel kann mit dem Speech-Dienst verwendet werden. Ausführlichere Informationen finden Sie unter [Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#](how-to-recognize-intents-from-speech-csharp.md).
+
+* Für die Spracherkennung ist es nicht mehr erforderlich, einen Erkennungsmodus anzugeben.
+
+* Der Speech-Dienst unterstützt 24-KHz-Stimmen für die Sprachsynthese, um die Audioqualität zu verbessern. Zum Zeitpunkt der Erstellung dieses Texts sind zwei Stimmen verfügbar (nur „Englisch USA“): `Jessa24kRUS` und `Guy24kRUS`.
+
+* Die [Batch-Transkription](batch-transcription.md) des Speech-Diensts ermöglicht es, dass große Mengen von aufgezeichneter Sprache, z.B. Callcenter-Aufzeichnungen, effizient in Text transkribiert werden, damit dieser leicht analysiert und durchsucht werden kann.
+
+* Beim Verwenden des Speech SDK gilt kein Zeitlimit für das Streamen der Transkription für die Spracherkennung.
+
+* Das [Speech SDK](speech-sdk.md) stellt für den Speech-Dienst über mehrere Programmiersprachen und Ausführungsumgebungen (z.B. Windows 10, UWP und .NET Core) hinweg eine einheitliche API bereit, um die Entwicklung zu vereinfachen. Dies gilt vor allem bei Verwendung von mehreren Plattformen.
+
+* Der Speech-Dienst ist mit den REST-APIs und dem WebSockets-Protokoll kompatibel, die von anderen Azure-Sprachdiensten genutzt werden, sodass es einfach ist, vorhandene Clientanwendungen zum Speech-Dienst zu migrieren.
 
 ## <a name="speech-scenarios"></a>Speech-Szenarien
 

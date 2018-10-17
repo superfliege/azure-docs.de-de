@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen eines Machine Learning-Arbeitsbereichs – Azure'
-description: Verwenden Sie das Azure-Portal zum Erstellen eines Azure Machine Learning-Arbeitsbereichs. Dieser Arbeitsbereich bildet die Grundlage in der Cloud für das Experimentieren, Trainieren und Bereitstellen von Modellen für maschinelles Lernen mit dem Azure Machine Learning-Dienst.
+title: 'Schnellstart: Erstellen eines Arbeitsbereichs für den Machine Learning-Dienst im Azure-Portal – Azure Machine Learning'
+description: Verwenden Sie das Azure-Portal zum Erstellen eines Arbeitsbereichs für den Azure Machine Learning-Dienst. Dieser Arbeitsbereich bildet die Grundlage in der Cloud für das Experimentieren, Trainieren und Bereitstellen von Modellen für maschinelles Lernen mit dem Azure Machine Learning-Dienst.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,16 +9,16 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: c1610291e06255e2c724268f63d740f7e4debea4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6f0201a36a676e7647b9f5e60bc2df3415b9594
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959987"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831329"
 ---
-# <a name="quickstart-get-started-with-azure-machine-learning-service"></a>Schnellstart: erste Schritte mit dem Azure Machine Learning-Dienst
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning-service"></a>Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte für den Azure Machine Learning-Dienst
 
-In diesem Schnellstart verwenden Sie das Azure-Portal zum Erstellen eines Azure Machine Learning-Arbeitsbereichs. Dieser Arbeitsbereich bildet die Grundlage in der Cloud für das Experimentieren, Trainieren und Bereitstellen von Modellen für maschinelles Lernen mit dem Azure Machine Learning-Dienst. 
+In dieser Schnellstartanleitung verwenden Sie das Azure-Portal zum Erstellen eines Arbeitsbereichs für den Azure Machine Learning-Dienst. Dieser Arbeitsbereich bildet die Grundlage in der Cloud für das Experimentieren, Trainieren und Bereitstellen von Modellen für maschinelles Lernen mit dem Azure Machine Learning-Dienst. 
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -28,7 +28,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 Der Einfachheit halber werden die folgenden Azure-Ressourcen bei regionaler Verfügbarkeit Ihrem Arbeitsbereich automatisch hinzugefügt: [Containerregistrierung](https://azure.microsoft.com/services/container-registry/), [Storage](https://azure.microsoft.com/services/storage/), [Application Insights](https://azure.microsoft.com/services/application-insights/) und [Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-Die von Ihnen erstellten Ressourcen können ggf. auch in anderen Azure Machine Learning-Tutorials und -Anleitungen verwendet werden. Ebenso wie bei anderen Azure-Diensten gelten bei bestimmten Ressourcen (z.B. BatchAI-Clustergröße) in Verbindung mit dem Azure Machine Learning-Dienst Einschränkungen. Lesen Sie [diesen](how-to-manage-quotas.md) Artikel zu den Standardgrenzwerten und zum Anfordern zusätzlicher Kontingente.
+Die von Ihnen erstellten Ressourcen können ggf. auch in anderen Tutorials und Anleitungen für den Azure Machine Learning-Dienst verwendet werden. Ebenso wie bei anderen Azure-Diensten gelten bei bestimmten Ressourcen (z.B. BatchAI-Clustergröße) in Verbindung mit dem Azure Machine Learning-Dienst Einschränkungen. Lesen Sie [diesen](how-to-manage-quotas.md) Artikel zu den Standardgrenzwerten und zum Anfordern zusätzlicher Kontingente.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-Klicken Sie auf der Seite des Arbeitsbereichs auf `Explore your Azure Machine Learning Workspace`.
+Klicken Sie auf der Seite des Arbeitsbereichs auf `Explore your Azure Machine Learning service workspace`.
 
  ![Erkunden des Arbeitsbereichs](./media/quickstart-get-started/explore_aml.png)
 
@@ -69,9 +69,9 @@ Neben zwei Notebooks sehen Sie eine Datei `config.json`.  Diese Konfigurationsda
 
 Klicken Sie auf `01.run-experiment.ipynb`, um das Notebook zu öffnen.
 
-Sie können die Zellen nacheinander ausführen, indem Sie `Shift`+`Enter` verwenden.  Oder verwenden Sie das Menü `Cells` > `Run All`, um das gesamte Notebook auszuführen.
+Sie können die Zellen nacheinander ausführen, indem Sie `Shift`+`Enter` verwenden.  Oder verwenden Sie das Menü `Cells` > `Run All`, um das gesamte Notebook auszuführen.  Wenn neben einer Zelle [*] angezeigt wird, wird es ausgeführt.  Wenn die Verarbeitung des Codes für diese Zelle abgeschlossen ist, wird eine Zahl angezeigt.
 
-Sie werden möglicherweise aufgefordert, sich anzumelden.  Kopieren Sie den Code in der Meldung, klicken Sie dann auf den Link, und fügen Sie den Code im neuen Fenster ein.  Achten Sie darauf, dass Sie kein Leerzeichen vor oder hinter dem Code kopieren.
+Sie werden unter Umständen aufgefordert, sich anzumelden.  Kopieren Sie den Code in der Meldung, klicken Sie dann auf den Link, und fügen Sie den Code im neuen Fenster ein.  Achten Sie darauf, dass Sie kein Leerzeichen vor oder hinter dem Code kopieren.  Melden Sie sich mit demselben Konto an, das Sie im Azure-Portal verwendet haben.
 
  ![Anmeldung](./media/quickstart-get-started/login.png)
 

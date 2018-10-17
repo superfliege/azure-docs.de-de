@@ -1,65 +1,65 @@
 ---
-title: Java-Schnellstart für die Maschinelles Sehen-API | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild, indem Sie die Maschinelles Sehen-API mit Java in Cognitive Services verwenden.
+title: 'Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, Java – Maschinelles Sehen'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild, indem Sie die Maschinelles Sehen-API mit Java verwenden.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: a03652ab019730032ea02cfdc3ebc477379f8d03
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: a0b5967e8796f494e14dde3728c785191c2882d5
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770220"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632499"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-java"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, Java
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-java-in-computer-vision"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der REST-API und Java in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild (auch als Optical Character Recognition (OCR) bezeichnet), indem Sie die Maschinelles Sehen-API verwenden.
+In dieser Schnellstartanleitung extrahieren Sie mittels optischer Zeichenerkennung (Optical Character Recognition, OCR) gedruckten Text aus einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- Die [Java&trade;-Plattform, Standard Edition Development Kit 7 oder 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (JDK 7 oder 8), muss installiert sein.
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="ocr-request"></a>OCR-Anforderung
+## <a name="create-and-run-the-sample-application"></a>Erstellen und Ausführen der Beispielanwendung
 
-Mit der [OCR-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
+1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt. Wenn die Option verfügbar ist, erstellen Sie das Java-Projekt anhand einer Befehlszeilen-Anwendungsvorlage.
+1. Importieren Sie die folgenden Bibliotheken in Ihr Java-Projekt. Wenn Sie Maven verwenden, werden die Maven-Koordinaten für jede Bibliothek bereitgestellt.
+   - [Apache-HTTP-Client](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
+   - [Apache-HTTP-Core](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
+   - [JSON-Bibliothek](https://github.com/stleary/JSON-java) (org.json:json:20180130)
+1. Fügen Sie der Datei, die die öffentliche Klasse `Main` für Ihr Projekt enthält, die folgenden `import`-Anweisungen hinzu.  
 
-1. Erstellen Sie eine neue Befehlszeilen-App.
-1. Ersetzen Sie die Main-Klasse durch den folgenden Code (behalten Sie alle `package`-Anweisungen bei).
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uriBase` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ändern Sie optional den Wert von `imageToAnalyze` in ein anderes Bild.
-1. Laden Sie die folgenden Bibliotheken aus dem Maven-Repository in das Verzeichnis `lib` in Ihrem Projekt herunter:
-   * `org.apache.httpcomponents:httpclient:4.5.5`
-   * `org.apache.httpcomponents:httpcore:4.4.9`
-   * `org.json:json:20180130`
-1. Führen Sie „Main“ aus.
+   ```java
+   import java.net.URI;
+   import org.apache.http.HttpEntity;
+   import org.apache.http.HttpResponse;
+   import org.apache.http.client.methods.HttpPost;
+   import org.apache.http.entity.StringEntity;
+   import org.apache.http.client.utils.URIBuilder;
+   import org.apache.http.impl.client.CloseableHttpClient;
+   import org.apache.http.impl.client.HttpClientBuilder;
+   import org.apache.http.util.EntityUtils;
+   import org.json.JSONObject;
+   ```
+
+1. Ersetzen Sie die öffentliche Klasse `Main` durch den folgenden Code, und nehmen Sie dann die folgenden Änderungen am Code vor, falls dies erforderlich ist:
+   1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
+   1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+   1. Ersetzen Sie optional den Wert von `imageToAnalyze` durch die URL eines anderen Bilds, aus dem gedruckter Text extrahiert werden soll.
+1. Speichern Sie die Änderungen, und erstellen Sie dann das Java-Projekt.
+1. Wenn Sie eine IDE verwenden, führen Sie `Main` aus. Öffnen Sie andernfalls ein Eingabeaufforderungsfenster, und verwenden Sie dann den `java`-Befehl, um die kompilierte Klasse auszuführen. Beispiel: `java Main`.
 
 ```java
-// This sample uses the following libraries:
-//  - Apache HTTP client (org.apache.httpcomponents:httpclient:4.5.5)
-//  - Apache HTTP core (org.apache.httpcomponents:httpccore:4.4.9)
-//  - JSON library (org.json:json:20180130).
-
-import java.net.URI;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
-
 public class Main {
     // **********************************************
     // *** Update or verify the following values. ***
@@ -68,12 +68,14 @@ public class Main {
     // Replace <Subscription Key> with your valid subscription key.
     private static final String subscriptionKey = "<Subscription Key>";
 
-    // You must use the same region in your REST call as you used to get your
-    // subscription keys. For example, if you got your subscription keys from
-    // westus, replace "westcentralus" in the URI below with "westus".
+    // You must use the same Azure region in your REST API method as you used to
+    // get your subscription keys. For example, if you got your subscription keys
+    // from the West US region, replace "westcentralus" in the URL
+    // below with "westus".
     //
-    // Free trial subscription keys are generated in the westcentralus region. If you
-    // use a free trial subscription key, you shouldn't need to change this region.
+    // Free trial subscription keys are generated in the West Central US region.
+    // If you use a free trial subscription key, you shouldn't need to change
+    // this region.
     private static final String uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr";
 
@@ -103,7 +105,7 @@ public class Main {
                     new StringEntity("{\"url\":\"" + imageToAnalyze + "\"}");
             request.setEntity(requestEntity);
 
-            // Make the REST API call and get the response entity.
+            // Call the REST API method and get the response entity.
             HttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
 
@@ -122,11 +124,9 @@ public class Main {
 }
 ```
 
-## <a name="ocr-response"></a>OCR-Antwort
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die OCR-Ergebnisse enthalten den erkannten Text und Begrenzungsrahmen für Regionen, Zeilen und Wörter.
-
-Das Programm sollte eine Ausgabe erzeugen, die dem folgenden JSON-Code ähnelt:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Konsolenfenster an, ähnlich wie im folgenden Beispiel:
 
 ```json
 REST Response:
@@ -217,9 +217,13 @@ REST Response:
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie das Java-Projekt nicht mehr benötigen, löschen Sie es (einschließlich der kompilierten Klasse und der importierten Bibliotheken).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lernen Sie eine einfache Java Swing-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Lernen Sie eine einfache Java Swing-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit der Maschinelles Sehen-API beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
 > [!div class="nextstepaction"]
 > [Computer Vision API Java Tutorial](../Tutorials/java-tutorial.md) (Java-Tutorial zur Maschinelles Sehen-API)

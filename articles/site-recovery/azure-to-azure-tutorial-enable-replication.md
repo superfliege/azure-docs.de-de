@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4638b697dcaa0d4c11bae1878a94f76f6237d4a4
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 0404774f1cb347ceead8b78d1a9a6506712dea5c
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42154780"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069096"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Einrichten einer Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Azure-Region
 
@@ -169,6 +169,19 @@ Um die Einstellungen für die Standardreplikationsrichtlinie zu überschreiben, 
 
 > [!IMPORTANT]
   Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über den Port 20004 miteinander. Stellen Sie sicher, dass die interne Kommunikation zwischen den VMs über Port 20004 nicht durch eine Firewallappliance blockiert wird. Wenn Sie Linux-VMs in eine Replikationsgruppe einschließen möchten, stellen Sie sicher, dass der ausgehende Datenverkehr auf Port 20004 gemäß den Anweisungen für die jeweilige Linux-Version manuell geöffnet wird.
+
+### <a name="configure-encryption-settings"></a>Konfigurieren der Verschlüsselungseinstellungen
+
+Wenn für den virtuellen Quellcomputer Azure Disk Encryption (ADE) aktiviert ist, wird der unten angegebene Abschnitt mit den Verschlüsselungseinstellungen angezeigt.
+
+- **Schlüsseltresore für Datenträgerverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Verschlüsselungsschlüsseln für die Datenträger des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet.
+- **Schlüsseltresore für Schlüsselverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Schlüsseln für die Schlüsselverschlüsselung des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet.
+
+Klicken Sie neben den Verschlüsselungseinstellungen auf „Anpassen“, um die Standardwerte zu überschreiben und benutzerdefinierte Schlüsseltresore auszuwählen.
+
+>[!NOTE]
+>Von Azure Site Recovery werden derzeit nur Azure-VMs unterstützt, auf denen das Windows-Betriebssystem ausgeführt wird und die [für die Verschlüsselung mit der Azure AD-App aktiviert sind](https://aka.ms/ade-aad-app).
+>
 
 ### <a name="track-replication-status"></a>Nachverfolgen des Replikationsstatus
 

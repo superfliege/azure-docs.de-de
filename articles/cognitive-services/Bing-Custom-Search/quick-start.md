@@ -1,22 +1,23 @@
 ---
-title: Erstellen einer ersten Instanz der benutzerdefinierten Bing-Suche – Microsoft Cognitive Services
+title: 'Schnellstart: Erstellen der ersten Instanz der benutzerdefinierten Bing-Suche'
+titlesuffix: Azure Cognitive Services
 description: Zum Verwenden einer benutzerdefinierten Bing-Suche müssen Sie eine Instanz der benutzerdefinierten Suche erstellen, mit der Ihre Ansicht bzw. das Segment des Webs definiert wird. Die Instanz enthält Einstellungen, mit denen die öffentlichen Domänen, Unterwebsites und Webseiten, die mit Bing durchsucht werden sollen, und alle Rangfolgeanpassungen angegeben werden.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/07/2017
 ms.author: v-brapel
-ms.openlocfilehash: 25d622772fe47ffad001834d476e612f8c606904
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 866d32aa4de45076fcbc4e413d8c2e67d5346878
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981654"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816235"
 ---
-# <a name="create-your-first-bing-custom-search-instance"></a>Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Schnellstart: Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche
 Zum Verwenden einer benutzerdefinierten Bing-Suche müssen Sie eine Instanz der benutzerdefinierten Suche erstellen, mit der Ihre Ansicht bzw. das Segment des Webs definiert wird. Die Instanz enthält Einstellungen, mit denen die öffentlichen Domänen, Websites und Webseiten, die mit Bing durchsucht werden sollen, und alle Rangfolgeanpassungen angegeben werden. Verwenden Sie zum Erstellen der Instanz das [Portal](https://customsearch.ai) für die benutzerdefinierte Bing-Suche. 
 
 ## <a name="create-a-custom-search-instance"></a>Erstellen einer Instanz für die benutzerdefinierte Suche

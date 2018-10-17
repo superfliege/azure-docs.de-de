@@ -3,25 +3,24 @@ title: Interaktive Kartensuchen mit Azure Maps | Microsoft-Dokumentation
 description: 'Azure-Schnellstart: Starten einer Demo für die interaktive Kartensuche mit Azure Maps'
 author: dsk-2015
 ms.author: dkshir
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 002d9820cb4414d8f33cdd362e28f31e7e8b6273
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cf39ad460d163a996bd2e0aa522d634cf485d83a
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989553"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541550"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>Starten einer interaktiven Kartensuche mit Azure Maps
 
-In diesem Artikel werden die Funktionen von Azure Maps beschrieben, um eine Karte mit interaktiven Suchfunktionen zu erstellen. Es werden die grundlegenden Schritte zum Erstellen eines eigenen Maps-Kontos sowie zum Abrufen Ihres Kontoschlüssels beschrieben, der in der Demowebanwendung verwendet wird. 
+In diesem Artikel werden die Funktionen von Azure Maps beschrieben, um eine Karte mit interaktiven Suchfunktionen zu erstellen. Es werden die grundlegenden Schritte zum Erstellen eines eigenen Maps-Kontos sowie zum Abrufen Ihres Kontoschlüssels beschrieben, der in der Demowebanwendung verwendet wird.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
@@ -31,36 +30,34 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) links oben auf **Ressource erstellen**.
 2. Geben Sie im Feld *Marketplace durchsuchen* das Wort **Maps** ein.
-3. Wählen Sie in den *Ergebnissen* die Option **Maps** aus. Klicken Sie auf die unterhalb der Karte angezeigte Schaltfläche **Erstellen**. 
+3. Wählen Sie in den *Ergebnissen* die Option **Maps** aus. Klicken Sie auf die unterhalb der Karte angezeigte Schaltfläche **Erstellen**.
 4. Geben Sie auf der Seite **Azure Maps-Konto erstellen** die folgenden Werte ein:
-    - *Name* des neuen Kontos 
+    - *Name* des neuen Kontos
     - *Abonnement*, das Sie für dieses Konto verwenden möchten
     - Die *Ressourcengruppe* für dieses Konto. Sie können für die Ressourcengruppe die Option *Neu erstellen* oder die Option *Vorhandene verwenden* auswählen.
     - Wählen Sie den *Ressourcengruppenstandort*.
-    - Lesen Sie die *Lizenzbedingungen* und die *Datenschutzerklärung*, und aktivieren Sie zum Akzeptieren der Bestimmungen das Kontrollkästchen. 
+    - Lesen Sie die *Lizenzbedingungen* und die *Datenschutzerklärung*, und aktivieren Sie zum Akzeptieren der Bestimmungen das Kontrollkästchen.
     - Klicken Sie schließlich auf die Schaltfläche **Erstellen**.
 
     ![Erstellen eines Maps-Kontos im Portal](./media/quick-demo-map-app/create-account.png)
 
-5. Nachdem Ihr Konto erfolgreich erstellt wurde, öffnen Sie es, und navigieren Sie zum Abschnitt „Einstellungen“ des Kontomenüs. Klicken Sie auf **Schlüssel**, um den primären und den sekundären Schlüssel für Ihr Azure Maps-Konto anzuzeigen. Kopieren Sie den Wert für den **Primärschlüssel** zur Verwendung im folgenden Abschnitt in die lokale Zwischenablage. 
+5. Nachdem Ihr Konto erfolgreich erstellt wurde, öffnen Sie es, und navigieren Sie zum Abschnitt „Einstellungen“ des Kontomenüs. Klicken Sie auf **Schlüssel**, um den primären und den sekundären Schlüssel für Ihr Azure Maps-Konto anzuzeigen. Kopieren Sie den Wert für den **Primärschlüssel** zur Verwendung im folgenden Abschnitt in die lokale Zwischenablage.
 
 ## <a name="download-the-application"></a>Herunterladen der Anwendung
 
 1. Laden Sie den Inhalt der Datei [interactiveSearch.html](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/interactiveSearch.html) herunter, oder kopieren Sie ihn.
 2. Speichern Sie den Inhalt dieser Datei lokal unter **AzureMapDemo.html**, und öffnen Sie die Datei in einem Text-Editor.
-3. Suchen Sie nach der Zeichenfolge `<insert-key>`, und ersetzen Sie sie durch den Wert für den **Primärschlüssel**, den Sie im vorherigen Abschnitt abgerufen haben. 
-
+3. Suchen Sie nach der Zeichenfolge `<insert-key>`, und ersetzen Sie sie durch den Wert für den **Primärschlüssel**, den Sie im vorherigen Abschnitt abgerufen haben.
 
 ## <a name="launch-the-application"></a>Starten der Anwendung
 
 1. Öffnen Sie die Datei **AzureMapDemo.html** in einem Browser Ihrer Wahl.
 2. Die Karte von Los Angeles wird angezeigt. Vergrößern und verkleinern Sie sie, um zu sehen, wie die Karte abhängig vom Zoomfaktor automatisch mit mehr oder weniger Informationen gerendert wird. 
-3. Ändern Sie den Standardmittelpunkt der Karte. Suchen Sie in der Datei **AzureMapDemo.html** nach der Variable **center**. Ersetzen Sie den Wert des Längengrad/Breitengrad-Paars für diese Variable durch die neuen Werte **[-74,0060, 40,7128]**. Speichern Sie die Datei, und aktualisieren Sie Ihren Browser. 
-3. Probieren Sie die interaktiven Suchfunktionen aus. Geben Sie in das Suchfeld in der oberen linken Ecke der Demowebanwendung **Restaurants** ein. 
-4. Bewegen Sie den Mauszeiger über die Liste der Adressen/Standorte, die unterhalb des Suchfelds angezeigt werden. Beachten Sie dabei, wie über dem entsprechenden Pin auf der Karte Informationen zum jeweiligen Standort angezeigt werden. Zum Schutz von Privatunternehmen werden fiktive Namen und Adressen angezeigt. 
+3. Ändern Sie den Standardmittelpunkt der Karte. Suchen Sie in der Datei **AzureMapDemo.html** nach der Variable **center**. Ersetzen Sie den Wert des Längengrad/Breitengrad-Paars für diese Variable durch die neuen Werte **[-74,0060, 40,7128]**. Speichern Sie die Datei, und aktualisieren Sie Ihren Browser.
+4. Probieren Sie die interaktiven Suchfunktionen aus. Geben Sie in das Suchfeld in der oberen linken Ecke der Demowebanwendung **Restaurants** ein.
+5. Bewegen Sie den Mauszeiger über die Liste der Adressen/Standorte, die unterhalb des Suchfelds angezeigt werden. Beachten Sie dabei, wie über dem entsprechenden Pin auf der Karte Informationen zum jeweiligen Standort angezeigt werden. Zum Schutz von Privatunternehmen werden fiktive Namen und Adressen angezeigt.
 
     ![Webanwendung für die interaktive Suche](./media/quick-demo-map-app/interactive-search.png)
-
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

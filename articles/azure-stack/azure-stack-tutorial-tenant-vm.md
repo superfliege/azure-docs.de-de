@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/07/2018
+ms.date: 09/11/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 6bd722801202f5cdff2882c29895ae06fecbbcb8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d106d9f79498678f08142f952e09c5125c6e5d6c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425362"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721516"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Tutorial: Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer
 
@@ -46,11 +46,11 @@ Weitere Informationen finden Sie unter [Wichtige Features und Konzepte in Azure 
 
 Angebote sind Gruppen mit einem oder mehreren Plänen, die Anbieter Benutzern zum Erwerben oder Abonnieren anbieten. Der Prozess zum Erstellen eines Angebots umfasst mehrere Schritte. Sie werden nacheinander zum Erstellen des Angebots, eines Plans und von Kontingenten aufgefordert.
 
-1. Führen Sie die [Anmeldung](azure-stack-connect-azure-stack.md) beim Portal als Cloudadministrator durch, und klicken Sie anschließend auf **Neu** > **Angebote + Pläne** > **Angebot**.
+1. Führen Sie die [Anmeldung](azure-stack-connect-azure-stack.md) beim Portal als Cloudadministrator durch, und klicken Sie anschließend auf **+ Eine Ressource erstellen** > **Angebote + Pläne** > **Angebot**.
 
    ![Neues Angebot](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-1. Geben Sie unter **Neues Angebot** einen Wert für **Anzeigename** und **Ressourcenname** an, und wählen Sie anschließend eine neue oder vorhandene **Ressourcengruppe** aus. Der Anzeigename ist der verständliche Anzeigename des Angebots. Nur der Cloudbetreiber kann den Ressourcennamen sehen. Es handelt sich um den Namen, mit dem Administratoren das Angebot als Azure-Ressourcen-Manager-Ressource bearbeiten.
+1. Geben Sie unter **Neues Angebot** einen Wert für **Anzeigename** und **Ressourcenname** an, und wählen Sie anschließend eine neue oder vorhandene **Ressourcengruppe** aus. Der Anzeigename ist der verständliche Anzeigename des Angebots. Der Ressourcenname ist nur für den Cloudbetreiber sichtbar und wird von Administratoren verwendet, um mit dem Angebot als Azure Resource Manager-Ressource zu arbeiten.
 
    ![Anzeigename](media/azure-stack-tutorial-tenant-vm/image02.png)
 
@@ -58,7 +58,7 @@ Angebote sind Gruppen mit einem oder mehreren Plänen, die Anbieter Benutzern zu
 
    ![Hinzufügen eines Plans](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-1. Geben Sie im Abschnitt **Neuer Plan** Werte für die Optionen **Anzeigename** und **Ressourcenname** ein. Der Anzeigename ist der verständliche Anzeigename des Plans, der für Benutzer angezeigt wird. Nur der Cloudbetreiber kann den Ressourcennamen sehen. Dieser Name wird von Cloudbetreibern verwendet, um mit dem Plan als Azure Resource Manager-Ressource zu arbeiten.
+1. Geben Sie im Abschnitt **Neuer Plan** Werte für die Optionen **Anzeigename** und **Ressourcenname** ein. Der Anzeigename ist der verständliche Name des Plans, der Benutzern angezeigt wird. Der Ressourcenname ist nur für den Cloudbetreiber sichtbar und wird von Cloudbetreibern verwendet, um mit dem Plan als Azure Resource Manager-Ressource zu arbeiten.
 
    ![Anzeigename des Plans](media/azure-stack-tutorial-tenant-vm/image04.png)
 
@@ -112,13 +112,13 @@ Nachdem Sie ein Angebot erstellt haben, können Sie es testen. Melden Sie sich a
    - Bei einem integrierten System variiert die URL abhängig von der Region und dem externen Domänenamen des Betreibers und hat das Format https://portal.&lt;*Region*&gt;.&lt;*FQDN*&gt;.
    - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse https://portal.local.azurestack.external.
 
-   ![Erwerben eines Abonnements](media/azure-stack-subscribe-plan-provision-vm/image01.png)
+   ![Erwerben eines Abonnements](media/azure-stack-tutorial-tenant-vm/image10.png)
 
    b. Geben Sie unter **Abonnement erwerben** im Feld **Anzeigename** einen Namen für Ihr Abonnement ein. Klicken Sie auf **Angebot**, und wählen Sie dann eines der Angebote in der Liste **Angebot wählen** aus. Klicken Sie auf **Erstellen**.
 
-   ![Erstellen von Angeboten](media/azure-stack-subscribe-plan-provision-vm/image02.png)
+   ![Erstellen von Angeboten](media/azure-stack-tutorial-tenant-vm/image11.png)
 
-   c. Klicken Sie zum Anzeigen des Abonnements auf **Weitere Dienste** und anschließend auf **Abonnements**. Wählen Sie Ihr neues Abonnement aus, um anzuzeigen, welche Dienste zum Abonnement gehören.
+   c. Klicken Sie zum Anzeigen des Abonnements auf **Alle Dienste** und anschließend unter der Kategorie **ALLGEMEIN** auf **Abonnements**. Wählen Sie Ihr neues Abonnement aus, um anzuzeigen, welche Dienste zum Abonnement gehören.
 
    >[!NOTE]
    >Nach dem Abonnieren eines Angebots müssen Sie das Portal unter Umständen aktualisieren, um anzuzeigen, welche Dienste zum neuen Abonnement gehören.
@@ -131,7 +131,7 @@ Nachdem Sie ein Angebot erstellt haben, können Sie es testen. Melden Sie sich a
       - Bei einem integrierten System variiert die URL abhängig von der Region und dem externen Domänenamen des Betreibers und hat das Format https://portal.&lt;*Region*&gt;.&lt;*FQDN*&gt;.
    - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse https://portal.local.azurestack.external.
 
-   b.  Klicken Sie auf dem Dashboard auf **Neu** > **Compute** > **Windows Server 2016 Datacenter Eval**, und klicken Sie dann auf **Erstellen**.
+   b.  Klicken Sie auf dem Dashboard auf **+ Eine Ressource erstellen** > **Compute** > **Windows Server 2016 Datacenter Eval** und dann auf **Erstellen**.
 
    c. Geben Sie unter **Grundlagen** die folgenden Informationen ein:
       - Geben Sie unter **Name** einen Namen ein.
@@ -151,14 +151,11 @@ Nachdem Sie ein Angebot erstellt haben, können Sie es testen. Melden Sie sich a
 
    h. Klicken Sie unter **Einstellungen** auf **OK**, um die Netzwerkkonfiguration zu speichern.
 
-   ![Virtuelles Netzwerk erstellen](media/azure-stack-provision-vm/image04.png)
-
-   i. Klicken Sie unter **Zusammenfassung** auf **OK**, um den virtuellen Computer zu erstellen.  
+      i. Klicken Sie unter **Zusammenfassung** auf **OK**, um den virtuellen Computer zu erstellen.  
 
    j. Klicken Sie zum Anzeigen des neuen virtuellen Computers auf **Alle Ressourcen**. Suchen Sie nach dem virtuellen Computer, und klicken Sie in den Suchergebnissen auf seinen Namen.
 
-   ![Alle Ressourcen](media/azure-stack-provision-vm/image06.png)
-
+   
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:

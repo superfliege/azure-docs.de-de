@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 7/16/2018
 ms.author: victorh
-ms.openlocfilehash: 3fb39558ff99c35786dedc133a9d1d1a450b5928
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: f80488f555cfa3b7be6f35b9f23ea0a501a27fd9
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090121"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831596"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines -Eintrags mithilfe der Azure CLI
 
@@ -20,7 +20,7 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie mithilfe der für W
 
 Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Und schließlich müssen Sie die Namenserver für die Domäne konfigurieren, um Ihre DNS-Zone im Internet zu veröffentlichen. Jeder dieser Schritte wird im Folgenden beschrieben.
 
-Azure DNS unterstützt jetzt auch private DNS-Zonen (zurzeit als öffentliche Vorschauversion verfügbar). Weitere Informationen zu privaten DNS-Zonen finden Sie unter [Using Azure DNS for private domains](private-dns-overview.md) (Verwenden von Azure DNS für private Domänen). Ein Beispiel zum Erstellen einer privaten DNS-Zone finden Sie unter [Erste Schritte mit privaten Azure DNS-Zonen mithilfe der CLI](./private-dns-getstarted-cli.md).
+Azure DNS unterstützt jetzt auch private DNS-Zonen (zurzeit als öffentliche Vorschauversion verfügbar). Weitere Informationen zu privaten DNS-Zonen finden Sie unter [Using Azure DNS for private domains](private-dns-overview.md) (Verwenden von Azure DNS für private Domänen). Ein Beispiel für die Erstellung einer privaten DNS-Zone finden Sie unter [Erstellen einer privaten Azure DNS-Zone mit der Azure-Befehlszeilenschnittstelle](./private-dns-getstarted-cli.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -46,9 +46,9 @@ az network dns zone create -g MyResourceGroup -n contoso.com
 
 ## <a name="create-a-dns-record"></a>Erstellen eines DNS-Eintrags
 
-Verwenden Sie zum Erstellen eines DNS-Eintrags den Befehl `az network dns record-set [record type] add-record`. Hilfe beispielsweise zu A-Einträgen finden Sie unter `azure network dns record-set A add-record -h`.
+Verwenden Sie zum Erstellen eines DNS-Eintrags den Befehl `az network dns record-set [record type] add-record`. Hilfe zu A-Einträgen finden Sie unter `azure network dns record-set A add-record -h`.
 
-Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen „www“ in der DNS-Zone „contoso.com“ in der Ressourcengruppe „MyResourceGroup“ erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes ist „www.contoso.com“. Der Eintragstyp lautet „A“, die IP-Adresse lautet 1.2.3.4, und es wird ein TTL-Standardwert von 3600 Sekunden (1 Stunde) verwendet.
+Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen „www“ unter der DNS-Zone „contoso.com“ in der Ressourcengruppe „MyResourceGroup“ erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes ist „www.contoso.com“. Der Eintragstyp lautet „A“ mit der IP-Adresse „1.2.3.4“ und einer Standardgültigkeitsdauer (TTL) von 3.600 Sekunden (1 Stunde).
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www -a 1.2.3.4
@@ -64,7 +64,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.com
 
 ## <a name="update-name-servers"></a>Aktualisieren der Namenserver
 
-Wenn Sie sicher sind, dass Ihre DNS-Zone und die Einträge ordnungsgemäß eingerichtet wurden, müssen Sie den Namen Ihrer Domäne für die Verwendung der Azure-DNS-Namenserver konfigurieren. Auf diese Weise können andere Benutzer im Internet Ihre DNS-Einträge finden.
+Wenn Sie sicher sind, dass Ihre DNS-Zone und die Einträge richtig eingerichtet wurden, müssen Sie den Namen Ihrer Domäne für die Verwendung der Azure DNS-Namenserver konfigurieren. So können andere Benutzer im Internet Ihre DNS-Einträge finden.
 
 Die Namenserver für Ihre Zone werden durch den Befehl `az network dns zone show` angegeben. Um die Namen der Namenserver anzuzeigen, verwenden Sie eine JSON-Ausgabe, wie im folgenden Beispiel gezeigt.
 

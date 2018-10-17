@@ -3,7 +3,7 @@ title: 'Tutorial: Abonnieren eines Azure Stack-Angebots | Microsoft-Dokumentatio
 description: In diesem Tutorial erfahren Sie, wie Sie ein neues Abonnement für Azure Stack-Dienste erstellen und das Angebot mit einem erstellten virtuellen Testcomputer testen.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/07/2018
-ms.author: brenduns
+ms.date: 09/05/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 96b82ede71e7957105dce25096d7873ee876211f
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: aff20cba3bc07924f669420a8c367613b41111a1
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236952"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49076099"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>Tutorial: Erstellen und Testen eines Abonnements
 In diesem Tutorial erfahren Sie, wie Sie ein Abonnement mit einem Angebot erstellen und es anschließend testen. Für den Test melden Sie sich beim Azure Stack-Benutzerportal als Cloudadministrator an, abonnieren das Angebot und erstellen dann einen virtuellen Computer.
@@ -51,7 +51,7 @@ Wenn Sie als Benutzer ein Angebot abonnieren möchten, müssen Sie sich beim Azu
    > [!TIP]
    > Aktualisieren Sie nun das Benutzerportal, um mit der Verwendung Ihres Abonnements zu beginnen.
 
-3. Klicken Sie zum Anzeigen des Abonnements, das Sie soeben erstellt haben, auf **Weitere Dienste**, auf **Abonnements** und anschließend auf Ihr neues Abonnement. Aktualisieren Sie nach dem Abonnieren eines Angebots das Portal, um zu sehen, ob das neue Abonnement neue Dienste beinhaltet. In diesem Beispiel wurde **Virtuelle Computer** hinzugefügt.
+3. Klicken Sie zum Anzeigen des von Ihnen erstellten Abonnements auf **Alle Dienste**.  Wählen Sie anschließend unter der Kategorie **ALLGEMEIN** die Option **Abonnements** und dann Ihr neues Abonnement aus. Aktualisieren Sie nach dem Abonnieren eines Angebots das Portal, um zu sehen, ob das neue Abonnement neue Dienste beinhaltet. In diesem Beispiel wurde **Virtuelle Computer** hinzugefügt.
 
    ![Anzeigen des Abonnements](media/azure-stack-subscribe-services/view-subscription.png)
 
@@ -62,7 +62,7 @@ Wenn Sie beim Benutzerportal angemeldet sind, können Sie das Angebot testen, in
 > [!NOTE]
 > Dieser Test setzt voraus, dass dem Azure Stack-Marketplace ein virtueller Windows Server 2016 Datacenter-Computer hinzugefügt wurde. 
 
-1. Melden Sie sich beim Benutzerportal an.
+1. Melden Sie sich am Benutzerportal an.
 
 2. Klicken Sie im Benutzerportal auf **Virtual Machines** > **Hinzufügen** > **Windows Server 2016 Datacenter** und anschließend auf **Erstellen**.
 

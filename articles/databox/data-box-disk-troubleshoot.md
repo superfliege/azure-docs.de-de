@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/03/2018
+ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: e1a5cb33bb473daf5b9e45e7c64bcb297eca7733
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9b2c03c13cf687af7cdebc9c4d2624a6a7c5907f
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595544"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069198"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Behandeln von Problemen mit dem Azure Data Box-Datenträger (Vorschau)
 
@@ -74,7 +74,7 @@ Das Aktivitätsprotokoll enthält alle Schreibvorgänge (z.B. PUT, POST, DELETE)
 
 Aktivitätsprotokolle werden 90 Tage lang aufbewahrt. Sie können beliebige Datumsbereiche abfragen, das Startdatum darf jedoch maximal 90 Tage zurückliegen. Sie können auch mit einer der integrierten Abfragen in Insights filtern. Klicken Sie z.B. auf „Fehler“, und klicken Sie dann auf bestimmte Fehler, um die Grundursache zu verstehen.
 
-## <a name="data-box-disk-unlock-tool-errors"></a>Fehler des Tools zum Entsperren von Data Box-Datenträgern
+## <a name="data-box-disk-unlock-tool-errors"></a>Fehler des Data Box Disk-Tools zum Entsperren
 
 
 | Fehlermeldung/Toolverhalten      | Empfehlungen                                                                                               |
@@ -85,6 +85,31 @@ Aktivitätsprotokolle werden 90 Tage lang aufbewahrt. Sie können beliebige Datu
 | Folgende Volumes sind entsperrt und überprüft. <br>Volumelaufwerkbuchstaben: E:<br>Es konnten keine Volumes mit den folgenden Hauptschlüsseln entsperrt werden: werwerqomnf, qwerwerqwdfda <br><br>Das Tool entsperrt einige Laufwerke und zeigt die erfolgreichen und fehlerhaften Laufwerkbuchstaben an.| Teilweise erfolgreich. Einige der Laufwerke konnten mit dem angegebenen Hauptschlüssel nicht entsperrt werden. Erkundigen Sie sich beim Support von Microsoft nach den weiteren Schritten. |
 | Es wurden keine gesperrten Laufwerke gefunden. Stellen Sie sicher, dass der von Microsoft erhaltene Datenträger ordnungsgemäß verbunden ist und einen gesperrten Zustand aufweist.          | Das Tool findet keine gesperrten Laufwerke. Die Laufwerke sind bereits entsperrt, oder sie werden nicht erkannt. Stellen Sie sicher, dass die Laufwerke verbunden und gesperrt sind.                                                           |
 | Schwerwiegender Fehler: Ungültiger Parameter<br>Parametername: invalid_arg<br>SYNTAX:<br>DataBoxDiskUnlock /PassKeys:<Durch_Semicolons_getrennte_Liste_der_Hauptschlüssel><br><br>Beispiel: DataBoxDiskUnlock /PassKeys:Hauptschlüssel1;Hauptschlüssel2;Hauptschlüssel3<br>Beispiel: DataBoxDiskUnlock /SystemCheck<br>Beispiel: DataBoxDiskUnlock /Help<br><br>/PassKeys:       Abrufen dieses Schlüssels aus der Bestellung des Azure DataBox-Datenträgers. Der Hauptschlüssel entsperrt Ihre Datenträger.<br>/Help:           Diese Option bietet Hilfe für die Cmdlet-Verwendung sowie Beispiele.<br>/SystemCheck:    Diese Option überprüft, ob Ihr System die Anforderungen zum Ausführen des Tools erfüllt.<br><br>Drücken Sie zum Beenden eine beliebige Taste. | Ungültige Parametereingabe. Der einzigen zulässigen Parameter sind /SystemCheck, /PassKey und /Help.                                                                            |
+
+## <a name="data-box-disk-split-copy-tool-errors"></a>Fehler des Data Box Disk-Tools zum Aufteilen/Kopieren
+
+|Fehlermeldung/Warnungen  |Empfehlungen |
+|---------|---------|
+|[Info] Retrieving bitlocker password for volume: m <br>[Error] Exception caught while retrieving bitlocker key for volume m:<br> Sequence contains no elements.
+([Information] BitLocker-Kennwort für folgendes Volume wird abgerufen: M.
+[Fehler] Ausnahme beim Abrufen des BitLocker-Schlüssels für das Volume M:
+Die Sequenz enthält keine Elemente.)|Dieser Fehler tritt auf, wenn das Data Box Disk-Ziel offline ist. <br> Verwenden Sie das Tool `diskmgmt.msc`, um Datenträger online zu schalten.|
+|[Error] Exception thrown: WMI operation failed:<br> Method=UnlockWithNumericalPassword, ReturnValue=2150694965, <br>Win32Message=The format of the recovery password provided is invalid. <br>BitLocker recovery passwords are 48 digits. <br>Verify that the recovery password is in the correct format and then try again.
+([Fehler] Ausgelöste Ausnahme: Fehler beim WMI-Vorgang:
+Methode: UnlockWithNumericalPassword, Rückgabewert: 2150694965,
+Win32-Meldung: Das Format des angegebenen Wiederherstellungskennworts ist ungültig.
+BitLocker-Wiederherstellungskennwörter müssen 48-stellig sein.
+Vergewissern Sie sich, dass das Wiederherstellungskennwort das richtige Format hat, und wiederholen Sie den Vorgang.|Entsperren Sie die Datenträger zunächst mit dem Data Box Disk-Tool zum Entsperren, und führen Sie den Befehl anschließend erneut aus. Weitere Informationen finden Sie unter: <li> [Entsperren von Datenträgern auf Windows-Client](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) </li><li> [Entsperren von Datenträgern auf Linux-Client](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client) </li>|
+|[Error] Exception thrown: A DriveManifest.xml file exists on the target drive. <br> This indicates the target drive may have been prepared with a different journal file. <br>To add more data to the same drive, use the previous journal file. To delete existing data and reuse target drive for a new import job, delete the DriveManifest.xml on the drive. Rerun this command with a new journal file.
+([Fehler] Ausgelöste Ausnahme: Auf dem Ziellaufwerk befindet sich eine Datei vom Typ „DriveManifest.xml“.
+Das Ziellaufwerk wurde möglicherweise mit einer anderen Journaldatei vorbereitet.
+Wenn Sie dem gleichen Laufwerk weitere Daten hinzufügen möchten, verwenden Sie die vorherige Journaldatei. Wenn Sie die vorhandenen Daten löschen und das Ziellaufwerk für einen neuen Importauftrag verwenden möchten, löschen Sie die Datei „DriveManifest.xml“ auf dem Laufwerk, und führen Sie diesen Befehl mit einer neuen Journaldatei aus.)| Dieser Fehler tritt auf, wenn Sie versuchen, die gleiche Gruppe von Laufwerken für mehrere Importsitzungen zu verwenden. <br> Verwenden Sie pro Aufteilungs-/Kopiersitzung immer nur eine Gruppe von Laufwerken.|
+|[Error] Exception thrown: CopySessionId importdata-sept-test-1 refers to a previous copy session and cannot be reused for a new copy session. ([Fehler] Ausgelöste Ausnahme: „CopySessionId importdata-sept-test-1“ bezieht sich auf eine vorherige Kopiersitzung und kann nicht für diese neue Kopiersitzung wiederverwendet werden.)|Dieser Fehler tritt auf, wenn Sie versuchen, den Auftragsnamen eines bereits erfolgreich abgeschlossenen Auftrags für einen neuen Auftrag zu verwenden.<br> Weisen Sie Ihrem neuen Auftrag einen eindeutigen Namen zu.|
+|[Info] Destination file or directory name exceeds the NTFS length limit. ([Information] Der Name der Zieldatei oder des Zielverzeichnisses übersteigt die NTFS-Längenbeschränkung.) |Diese Meldung wird zurückgegeben, wenn die Zieldatei aufgrund eines langen Dateipfads umbenannt wurde.<br> Ändern Sie die Dispositionsoption in der Datei `config.json`, die dieses Verhalten zu steuern.|
+|[Error] Exception thrown: Bad JSON escape sequence. ([Fehler] Ausgelöste Ausnahme: Ungültige JSON-Escapesequenz.) |Diese Meldung wird zurückgegeben, wenn das Format von „config.json“ ungültig ist. <br> Überprüfen Sie die Datei `config.json` vor dem Speichern mithilfe von [JSONLint](https://jsonlint.com/).|
+
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum [Verwalten des Data Box-Datenträgers über das Azure-Portal](data-box-portal-ui-admin.md).

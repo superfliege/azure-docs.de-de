@@ -1,24 +1,25 @@
 ---
-title: API für den Entity Linking-Analysedienst | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die API für den Entity Linking-Analysedienst für Entitätsverknüpfungsaufgaben in Cognitive Services verwenden können.
+title: Was ist die API für den Entity Linking-Analysedienst?
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie die API für den Entity Linking-Analysedienst für Entitätsverknüpfungsaufgaben verwenden können.
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: entity-linking-intelligence
-ms.topic: article
+ms.topic: overview
 ms.date: 03/28/2016
 ms.author: davl
-ms.openlocfilehash: 662295c42a421fe76892e6e5aac7b7e7178d6155
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b0f839e8f33e9ff48d2ad526621167a89e3b9be8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373003"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366181"
 ---
-# <a name="entity-linking-intelligence-service-api"></a>API für den Entity Linking-Analysedienst
+# <a name="what-is-the-entity-linking-intelligence-service-api"></a>Was ist die API für den Entity Linking-Analysedienst?
 
-Willkommen beim Microsoft Entity Linking-Analysedienst, einem Webdienst, der Entwickler bei Aufgabe rund um die Entitätsverknüpfung unterstützen soll.
+Willkommen beim Entity Linking-Analysedienst, einem Webdienst, der Entwickler bei Aufgaben rund um die Entitätsverknüpfung unterstützen soll.
 
 ## <a name="entity-linking"></a>Entitätsverknüpfung
 

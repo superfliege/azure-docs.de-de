@@ -1,24 +1,22 @@
 ---
-title: Übermitteln eines Workflows per SAS anstelle eines Speicherkontoschlüssels | Microsoft-Dokumentation
+title: Übermitteln eines Workflows per SAS anstelle eines Speicherkontoschlüssels – Microsoft Genomics
 titleSuffix: Azure
 description: In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie den msgen-Client installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt haben.
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 03/02/2018
-ms.openlocfilehash: 802e300ac453baa4ea9bd9183223315abced2ea1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a22e4bb0949544e18237e789ca807e57ed59abf
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177213"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733496"
 ---
-# <a name="submit-a-workflow-using-a-sas-instead-of-a-storage-account-key"></a>Übermitteln eines Workflows per SAS anstelle eines Speicherkontoschlüssels
+# <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Übermitteln eines Workflows per SAS anstelle eines Speicherkontoschlüssels an Microsoft Genomics 
 
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie einen Workflow nicht mit Speicherkontoschlüsseln, sondern mit der Datei „config.txt“ mit [Shared Access Signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) an den Microsoft Genomics-Dienst übermitteln. Dieses Feature kann hilfreich sein, falls Sicherheitsbedenken bestehen, weil der Speicherkontoschlüssel in der Datei „config.txt“ sichtbar ist. In diesem Artikel wird vorausgesetzt, dass Sie den `msgen`-Client bereits installiert und ausgeführt haben und mit der Verwendung von Azure Storage vertraut sind. Wenn Sie erfolgreich einen Workflow mit den bereitgestellten Beispieldaten übermittelt haben, können Sie mit dieser Schnellstartanleitung fortfahren. 
 

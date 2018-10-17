@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 8458aaee9f8d328d959fb47fb3e32af176d545b1
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 4d504e0488d35c5c606468faa35bece1318503b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247367"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498520"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Verwalten von Windows-Updates mithilfe von Azure Automation
 
@@ -158,6 +158,8 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 
 * **Betriebssystem:** Wählen Sie das Betriebssystem aus, das als Ziel für die Updatebereitstellung dienen soll.
 
+* **Zu aktualisierende Gruppen (Vorschau)**: Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe aus Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management.md#using-dynamic-groups).
+
 * **Zu aktualisierende Computer:** Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
 * **Updateklassifizierung:** Wählen Sie die Softwareklassen aus, die in die Updatebereitstellung eingeschlossen werden sollen. Lassen Sie für dieses Tutorial alle Typen ausgewählt.
@@ -171,10 +173,13 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 
    Eine Beschreibung der Klassifizierungstypen finden Sie unter [Updateklassifizierungen](automation-update-management.md#update-classifications).
 
+* **Einzuschließende/auszuschließende Updates**: Öffnet die Seite **Einschließen/ausschließen**. Updates, die eingeschlossen oder ausgeschlossen werden sollen, befinden sich auf verschiedenen Registerkarten. Weitere Informationen finden Sie unter [Verhalten beim Einschließen](automation-update-management.md#inclusion-behavior).
+
 * **Zeitplaneinstellungen:** Der Bereich **Zeitplaneinstellungen** wird geöffnet. Der Standard-Startzeitpunkt liegt 30 Minuten nach der aktuellen Uhrzeit. Als Startzeit können Sie einen beliebigen Wert festlegen, er muss jedoch mindestens 10 Minuten in der Zukunft liegen.
 
    Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Wählen Sie unter **Wiederholung** die Option **Einmal**. Übernehmen Sie den Standardwert „1 Tag“, und wählen Sie **OK**. Ein Zeitplan für Wiederholung wird eingerichtet.
 
+* **Pre-Skripts und Post-Skripts**: Wählen Sie die Skripts aus, die vor und nach Ihrer Bereitstellung ausgeführt werden sollen. Weitere Informationen finden Sie unter [Verwalten von Pre- und Post-Skripts](pre-post-scripts.md).
 * **Wartungsfenster (Minuten):** Übernehmen Sie hierfür den Standardwert. Sie können das Zeitfenster angeben, in dem die Updatebereitstellung stattfinden soll. Mit dieser Einstellung können Sie sicherstellen, dass Änderungen in den von Ihnen festgelegten Wartungsfenstern ausgeführt werden.
 
 * **Neustartoptionen:** Mit dieser Einstellung wird festgelegt, wie Neustarts behandelt werden sollen. Die verfügbaren Optionen lauten wie folgt:

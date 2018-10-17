@@ -3,7 +3,7 @@ title: Herstellen einer Verbindung von Azure Stack zu Azure mithilfe von Express
 description: Erfahren Sie, wie Sie mithilfe von ExpressRoute eine Verbindung zwischen virtuellen Netzwerken in Azure Stack und virtuellen Netzwerken in Azure herstellen.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2018
-ms.author: brenduns
+ms.date: 09/12/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: eee4407af8d7def94061002941d758a99237645f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43050431"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078697"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Herstellen einer Verbindung zwischen Azure Stack und Azure mithilfe von Azure ExpressRoute
 
@@ -98,7 +98,7 @@ Verwenden Sie die folgenden Verfahren, um die erforderlichen Netzwerkressourcen 
 #### <a name="create-the-virtual-network-and-vm-subnet"></a>Erstellen des virtuellen Netzwerks und des VM-Subnetzes
 
 1. Melden Sie sich beim Benutzerportal mit einem Benutzerkonto (Mandantenkonto) an.
-1. Klicken Sie im Portal auf **Neu**.
+1. Klicken Sie im Portal auf **+ Ressource erstellen**.
 
 1. Wählen Sie unter **Azure Marketplace** die Option **Netzwerk** aus.
 
@@ -131,7 +131,7 @@ Verwenden Sie die folgenden Verfahren, um die erforderlichen Netzwerkressourcen 
 
 #### <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für das lokale Netzwerk
 
-1. Klicken Sie im Azure Stack-Portal auf **Neu**.
+1. Klicken Sie im Azure Stack-Benutzerportal auf **+ Ressource erstellen**.
 1. Wählen Sie unter **Azure Marketplace** die Option **Netzwerk** aus.
 1. Wählen Sie in der Liste mit den Netzwerkressourcen den Eintrag **Gateway von Virtual Network** aus.
 1. Geben Sie **GW1** in das Feld **Name** ein.
@@ -146,7 +146,7 @@ Verwenden Sie die folgenden Verfahren, um die erforderlichen Netzwerkressourcen 
 
 Die Ressource „Gateway für lokales Netzwerk“ gibt das Remotegateway am anderen Ende der VPN-Verbindung an. In diesem Beispiel ist das Remoteende der Verbindung die LAN-Unterschnittstelle des ExpressRoute-Routers. Für den Mandanten 1 in *Abbildung 2* lautet die Remoteadresse 10.60.3.255.
 
-1. Melden Sie sich mit Ihrem Benutzerkonto beim Azure Stack-Benutzerportal an, und klicken Sie auf **Neu**.
+1. Melden Sie sich mit Ihrem Benutzerkonto beim Azure Stack-Benutzerportal an, und klicken Sie auf **+ Ressource erstellen**.
 1. Wählen Sie unter **Azure Marketplace** die Option **Netzwerk** aus.
 1. Wählen Sie in der Ressourcenliste den Eintrag für das **lokale Netzwerkgateway** aus.
 1. Geben Sie **ER-Router-GW** in das Feld **Name** ein.
@@ -163,7 +163,7 @@ Die Ressource „Gateway für lokales Netzwerk“ gibt das Remotegateway am ande
 
 #### <a name="create-the-connection"></a>Erstellen der Verbindung
 
-1. Klicken Sie im Azure Stack-Portal auf **Neu**.
+1. Klicken Sie im Azure Stack-Benutzerportal auf **+ Ressource erstellen**.
 1. Wählen Sie unter **Azure Marketplace** die Option **Netzwerk** aus.
 1. Wählen Sie in der Ressourcenliste die Option **Verbindung** aus.
 1. Wählen Sie unter **Grundlagen** die Option **Standort-zu-Standort (IPsec)** als **Verbindungstyp** aus.
@@ -187,7 +187,7 @@ Nachdem Sie das Gateway für virtuelle Netzwerke erstellt haben, können Sie die
 
 Zum Testen des Datenverkehrs über die VPN-Verbindung benötigen Sie VMs, um Daten im Azure Stack-VNET zu senden und zu empfangen. Erstellen Sie eine VM, und stellen Sie sie im VM-Subnetz für Ihr virtuelles Netzwerk bereit.
 
-1. Klicken Sie im Azure Stack-Portal auf **Neu**.
+1. Klicken Sie im Azure Stack-Benutzerportal auf **+ Ressource erstellen**.
 1. Wählen Sie unter **Azure Marketplace** die Option **Compute** aus.
 1. Wählen Sie in der Liste mit den VM-Images das Image **Windows Server 2016 Datacenter Eval** aus.
 

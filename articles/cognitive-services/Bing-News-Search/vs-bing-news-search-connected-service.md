@@ -1,23 +1,23 @@
 ---
-title: Bing-News-Suche – C#-Tutorial | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: Stellen Sie über eine ASP.NET Core-Webanwendung eine Verbindung zur Bing-News-Suche von Cognitive Services her.
+title: 'Tutorial: Bing-News-Suche, C#'
+titleSuffix: Azure Cognitive Services
+description: Stellen Sie über eine ASP.NET Core-Webanwendung eine Verbindung mit der Bing-News-Suche her.
 services: cognitive-services
 author: ghogen
-manager: douge
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 5cfa82067d28b05f32bd87e0e83d55a03da8d508
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: f1f5c590216975ce6b0813da6d9d98279d591454
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095428"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804343"
 ---
-# <a name="connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>Herstellen einer Verbindung mit der Bing-News-Suche-API mithilfe von verbundenen Diensten in Visual Studio
+# <a name="tutorial-connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>Tutorial: Herstellen einer Verbindung mit der Bing-News-Suche-API mithilfe von verbundenen Diensten in Visual Studio
 
 Indem Sie die Bing-News-Suche verwenden, können Sie Apps und Diensten die Nutzung einer leistungsstarken, werbefreien Suchmaschine für das gesamte Web ermöglichen. Die Bing-News-Suche ist einer der in Cognitive Services verfügbaren Suchdienste.
 

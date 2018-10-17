@@ -1,22 +1,23 @@
 ---
-title: C#-Schnellstart für Azure Cognitive Services, Bing-News-Suche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-News-Suche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Bing-News-Suche-API, C#'
+titlesuffix: Azure Cognitive Services
+description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Bing-News-Suche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 0364d5754539c0e83318d595fd00b3e7b7e79c08
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 48c6bf413ab2b5a45b5daa54ad31afe2c0fdf8f1
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377370"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804265"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-c"></a>Schnellstart für die Bing-News-Suche-API mit C#
+# <a name="quickstart-bing-news-search-api-with-c"></a>Schnellstart: Bing-News-Suche-API mit C#
 
 In diesem Artikel erfahren Sie, wie Sie die Bing-Suche-API verwenden, die Ihnen im Rahmen von Microsoft Cognitive Services in Azure zur Verfügung steht. In diesem Artikel wird zwar C# eingesetzt, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann. 
 
@@ -190,7 +191,7 @@ namespace BingNewsSearchCSharpCore
 
 **Antwort**
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben:
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {

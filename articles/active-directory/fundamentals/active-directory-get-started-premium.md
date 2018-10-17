@@ -1,8 +1,7 @@
 ---
-title: Registrieren für Azure AD Premium | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie sich für die Azure Active Directory Premium-Edition registrieren.
+title: 'Gewusst wie: Registrieren für Azure Active Directory Premium-Editionen | Microsoft-Dokumentation'
+description: In diesen ausführlichen Anweisungen wird erläutert, wie Sie sich für Azure Active Directory Premium-Editionen registrieren.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
@@ -12,89 +11,90 @@ ms.topic: quickstart
 ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.custom: it-pro;
-ms.openlocfilehash: a5ede142b7f3dd314d1a6b3eb8f100ec55a4ea4e
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.custom: it-pro
+ms.openlocfilehash: bce7a060908e8043390fdce729161cad48a644be
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42023952"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731069"
 ---
-# <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>Schnellstartanleitung: Registrieren für Azure Active Directory Premium
-Um Azure Active Directory (Azure AD) Premium zu verwenden, können Sie Lizenzen erwerben und Ihrem Azure-Abonnement zuordnen. Wenn Sie ein neues Azure-Abonnement erstellen, müssen Sie außerdem Ihren Lizenzplan und den Azure AD-Dienstzugriff aktivieren. Dies wird in den folgenden Abschnitten beschrieben. 
-
-## <a name="sign-up-for-active-directory-premium"></a>Registrieren für Active Directory Premium
-Es gibt mehrere Möglichkeiten, sich für Active Directory Premium zu registrieren: 
-* Ihr Azure- oder Office 365-Abonnement
-* Enterprise Mobility + Security-Lizenzplan
-* Microsoft-Volumenlizenzierungsplan
-
-### <a name="azure-or-office-365"></a>Azure oder Office 365 
-Abonnenten von Azure oder Office 365 können Azure Active Directory Premium online erwerben. 
-
-Ausführliche Schritte finden Sie unter [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) (Erwerben von Azure Active Directory Premium – Bestandskunden) oder [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) (Erwerben von Azure Active Directory Premium – Neukunden).  
-
-### <a name="enterprise-mobility--security"></a>Enterprise Mobility + Security
-Enterprise Mobility + Security (EMS) ist eine kostengünstige Lösung für Unternehmen, die die folgenden Dienste unter einem einzelnen Lizenzplan verwenden möchten: Azure Active Directory Premium, Azure Information Protection und Microsoft Intune. Weitere Informationen zu EMS finden Sie auf der [Enterprise Mobility + Security-Website](https://www.microsoft.com/cloud-platform/enterprise-mobility-security). Weitere Informationen zu den erhältlichen EMS-Lizenztypen finden Sie auf der [Seite mit Preisoptionen für Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-pricing).  
-
-Für Ihre ersten Schritte mit Azure AD unter EMS-Lizenzen können Sie eine der folgenden Lizenzoptionen verwenden:
-
-- Testen Sie EMS mit einem kostenlosen [Enterprise Mobility + Security E5-Testabonnement](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
-- Erwerben Sie [Enterprise Mobility + Security E5-Lizenzen](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1).
-- Erwerben Sie [Enterprise Mobility + Security E3-Lizenzen](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1).
-
-### <a name="microsoft-volume-licensing"></a>Microsoft-Volumenlizenzierung
-Azure Active Directory Premium ist per [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (ab 250 Lizenzen) oder über das [Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)-Programm (fünf bis 250 Lizenzen) erhältlich.
-
-Weitere Informationen zu Kaufoptionen im Rahmen der Volumenlizenzierung finden Sie [hier](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
+# <a name="how-to-sign-up-for-azure-active-directory-premium"></a>Gewusst wie: Registrieren für Azure Active Directory Premium
+Sie können Azure Active Directory (Azure AD) Premium erwerben und Ihrem Azure-Abonnement zuordnen. Wenn Sie ein neues Azure-Abonnement erstellen müssen, müssen Sie außerdem Ihren Lizenzplan und den Azure AD-Dienstzugriff aktivieren.
 
 > [!NOTE]
-> Die Azure Active Directory Premium und Basic Editions stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
+>Die Azure AD-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure AD-Editionen „Premium“ und „Basic“ derzeit nicht durch den Azure-Dienst unterstützt, der in China von 21Vianet betrieben wird. Sollten Sie weitere Informationen benötigen, können Sie sich über das [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung setzen.
 
-Wenn Sie bereits Azure AD-Lizenzen für das Azure-Abonnement erworben und aktiviert haben, das Sie in den vorherigen Schritten verwendet haben, werden die Lizenzen automatisch im gleichen Verzeichnis aktiviert. Wenn nicht, können Sie die restlichen Schritte in diesem Artikel ausführen.
+Bevor Sie sich für Active Directory Premium 1 oder Premium 2 registrieren, müssen Sie zuerst festlegen, welches Ihrer vorhandenen Abonnements oder Pläne Sie verwenden möchten:
 
-## <a name="activate-your-license-plan"></a>Aktivieren Ihres Lizenzplans
-Ist das der erste Azure AD-Lizenzplan, den Sie von Microsoft erworben haben? Falls ja, erhalten Sie nach Abschluss Ihres Kaufs eine Bestätigungs-E-Mail. Sie benötigen diese E-Mail zum Aktivieren Ihres ersten Lizenzplans.
+    - Ihr vorhandenes Azure- oder Office 365-Abonnement
 
-**Führen Sie einen der folgenden Schritte aus, um den Lizenzplan zu aktivieren:**
+    - Ihren Enterprise Mobility + Security-Lizenzplan
 
-1. Klicken Sie zum Starten der Aktivierung entweder auf **Anmelden** oder **Registrieren**.
+    - Einen Microsoft-Volumenlizenzierungsplan
+
+Durch die Registrierung über Ihr Azure-Abonnement und bereits erworbenen aktivierten Azure AD-Lizenzen werden automatisch die Lizenzen im selben Verzeichnis aktiviert. Wenn dies nicht der Fall ist, müssen Sie noch Ihren Lizenzplan und den Azure AD-Zugriff aktivieren. Weitere Informationen zum Aktivieren Ihres Lizenzplans finden Sie unter [Aktivieren des neuen Lizenzplans](#activate-your-new-license-plan). Weitere Informationen zum Aktivieren Ihres Azure AD-Zugriffs finden Sie unter [Aktivieren des Azure AD-Zugriffs](#activate-your-azure-ad-access). 
+
+## <a name="sign-up-using-your-existing-azure-or-office-365-subscription"></a>Registrieren über ein vorhandenes Azure- oder Office 365-Abonnement
+Abonnenten von Azure oder Office 365 können Azure Active Directory Premium-Editionen online erwerben. Ausführliche Schritte finden Sie unter [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) (Erwerben von Azure Active Directory Premium – Bestandskunden) oder [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) (Erwerben von Azure Active Directory Premium – Neukunden).
+
+## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Registrieren über den Enterprise Mobility + Security-Lizenzplan
+Enterprise Mobility + Security (EMS) ist eine Suite bestehend aus Azure AD Premium, Azure Information Protection und Microsoft Intune. Wenn Sie bereits über eine EMS-Lizenz verfügen, können Sie für Ihre ersten Schritte mit Azure AD eine der folgenden Lizenzoptionen verwenden:
+
+Weitere Informationen zu EMS finden Sie auf der Website [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security).
+
+    - Testen Sie EMS mit einem kostenlosen [Enterprise Mobility + Security E5-Testabonnement](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
+
+    - Erwerben Sie [Enterprise Mobility + Security E5-Lizenzen](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1).
+
+    - Erwerben Sie [Enterprise Mobility + Security E3-Lizenzen](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1).
+
+## <a name="sign-up-using-your-microsoft-volume-licensing-plan"></a>Registrieren über den Microsoft-Volumenlizenzierungsplan
+Über Ihren Microsoft-Volumenlizenzierungsplan können Sie sich mit einem der beiden folgenden Programme (basierend auf der Anzahl der Lizenzen, die Sie beziehen möchten) für Azure AD Premium registrieren:
+
+    - **Für mindestens 250 Lizenzen** [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
+
+    - **Für 5 bis 250 Lizenzen** [Open** Volume-Lizenz](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
+
+    Weitere Informationen zu Kaufoptionen im Rahmen der Volumenlizenzierung finden Sie unter [Gewusst wie: Kaufoptionen über die Volumenlizenzierung](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
+
+## <a name="activate-your-new-license-plan"></a>Aktivieren des neuen Lizenzplans
+Wenn Sie sich mit einem neuen Azure AD-Lizenzplan registriert haben, müssen Sie ihn für Ihre Organisation mit der Bestätigungs-E-Mail, die nach dem Kauf gesendet wird, aktivieren.
+
+### <a name="to-activate-your-license-plan"></a>Aktivieren des Lizenzplans
+- Öffnen Sie die Bestätigungs-E-Mail, die Sie von Microsoft nach Ihrer Registrierung erhalten haben, und klicken Sie dann entweder auf **Anmelden** oder **Registrieren**.
    
     ![Anmelden](media/active-directory-get-started-premium/MOLSEmail.png)
 
-    - Wenn Sie bereits über einen Mandanten verfügen, klicken Sie auf **Anmelden** , um sich bei Ihrem vorhandenen Administratorkonto anzumelden. Melden Sie sich mit Anmeldeinformationen des globalen Administrators für den Mandanten an, für den die Lizenzen aktiviert werden sollen.
+    - **Anmelden**: Klicken Sie auf diesen Link, wenn Sie bereits über einen Mandanten verfügen, und melden Sie sich dann bei Ihrem vorhandenen Administratorkonto an. Sie müssen ein globaler Administrator auf dem Mandanten sein, auf dem die Lizenzen aktiviert werden.
 
-    - Wenn Sie einen neuen Azure AD-Mandanten für die Verwendung mit Ihrem Lizenzplan erstellen möchten, klicken Sie auf **Registrieren**, um das Dialogfeld **Kontoprofil erstellen** zu öffnen.
+    - **Registrieren**: Klicken Sie auf diesen Link, wenn Sie die Seite **Kontoprofil erstellen** öffnen und einen neuen Azure AD-Mandanten für Ihren Lizenzplan erstellen möchten.
 
         ![Kontoprofil erstellen](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
-Nach Abschluss des Vorgangs wird das folgende Dialogfeld angezeigt, um zu bestätigen, dass die Aktivierung des Lizenzplans für Ihren Mandanten durchgeführt wurde:
+Wenn Sie fertig sind, sehen Sie ein Bestätigungsdialogfeld, in dem Ihnen für die Aktivierung des Lizenzplans für Ihren Mandanten gedankt wird.
 
 ![Bestätigung](media/active-directory-get-started-premium/MOLSThankYou.png)
 
-## <a name="activate-your-azure-active-directory-access"></a>Aktivieren des Azure Active Directory-Zugriffs
+## <a name="activate-your-azure-ad-access"></a>Aktivieren des Azure AD-Zugriffs
 Wenn Sie neue Azure AD Premium-Lizenzen zu einem vorhandenen Abonnement hinzufügen, sollte Ihr Azure AD-Zugriff bereits aktiviert sein. Andernfalls müssen Sie den Azure AD-Zugriff aktivieren, nachdem Sie die **Begrüßungs-E-Mail** erhalten haben.  
 
-Nach der Bereitstellung der erworbenen Lizenzen in Ihrem Verzeichnis erhalten Sie eine **Begrüßungs-E-Mail**. Mit der E-Mail wird bestätigt, dass Sie mit der Verwaltung der Lizenzen und Features von Azure Active Directory Premium oder Enterprise Mobility + Security beginnen können. 
+Nachdem Ihre erworbenen Lizenzen in Ihrem Verzeichnis bereitgestellt wurden, erhalten Sie eine **Willkommens-E-Mail**. Mit dieser E-Mail wird bestätigt, dass Sie mit der Verwaltung der Lizenzen und Features von Azure AD Premium oder Enterprise Mobility + Security beginnen können. 
 
 > [!TIP]
-> Sie können erst auf Azure AD für Ihren neuen Mandanten zugreifen, wenn Sie den Azure AD-Verzeichniszugriff über die Begrüßungs-E-Mail aktiviert haben, die automatisch nach Abschluss der Lizenzbereitstellung versendet wird. 
+> Sie können erst auf Azure AD für Ihren neuen Mandanten zugreifen, wenn Sie den Azure AD-Verzeichniszugriff über die Willkommens-E-Mail aktiviert haben.
 
-**Führen Sie die folgenden Schritte aus, um den Azure AD-Zugriff zu aktivieren:**
+### <a name="to-activate-your-azure-ad-access"></a>Aktivieren des Azure AD-Zugriffs
 
-1. Klicken Sie in der **Willkommens-E-Mail** auf **Anmelden**. 
+1. Öffnen Sie die **Willkommens-E-Mail**, und klicken Sie dann auf **Anmelden**.
    
     ![Begrüßungs-E-Mail](media/active-directory-get-started-premium/AADEmail.png)
-2. Nach erfolgreicher Anmeldung ist noch eine zweite Authentifizierung über ein mobiles Gerät erforderlich:
+
+2. Nach der erfolgreichen Anmeldung durchlaufen Sie eine zweistufige Überprüfung mithilfe eines Mobilgeräts.
    
     ![Mobile Verifizierung](media/active-directory-get-started-premium/SignUppage.png)
 
-Die Aktivierung dauert nur ein wenige Minuten. Danach haben Sie Zugriff auf Ihr Azure AD. 
+Der Aktivierungsvorgang dauert in der Regel nur wenige Minuten. Danach können Sie Ihren Azure AD-Mandanten verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie sich für Azure AD Premium registrieren und Ihren Azure Active Directory-Zugriff aktivieren. 
-
-Falls Sie bereits über ein Azure-Abonnement verfügen, können Sie über den folgenden Link eine Testversion verwenden oder Azure AD Premium-Lizenzen über das Azure-Portal erwerben.
-
-> [!div class="nextstepaction"]
-> [Azure AD Premium-Lizenzen aktivieren](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/TryBuyProductBlade)
+Nachdem Sie nun über Azure AD Premium verfügen, können Sie [Ihre Domäne anpassen](add-custom-domain.md), Ihr [Unternehmensbranding](customize-branding.md) hinzufügen, [einen Mandanten erstellen](active-directory-access-create-new-tenant.md) und [Gruppen](active-directory-groups-create-azure-portal.md) sowie [Benutzer hinzufügen](add-users-azure-active-directory.md).

@@ -1,43 +1,45 @@
 ---
 title: 'Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, JavaScript – Maschinelles Sehen-API'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild, indem Sie die Maschinelles Sehen-API mit JavaScript in Cognitive Services verwenden.
+description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild, indem Sie die Maschinelles Sehen-API mit JavaScript verwenden.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 09/10/2018
 ms.author: v-deken
-ms.openlocfilehash: 877f206d325127ba625984bfb1821f15e1280e5e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: df4d60170c676e7e2666a8a3c7179cf4b90b15eb
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842701"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634012"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-javascript---computer-vision"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, JavaScript – Maschinelles Sehen-API
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-javascript-in-computer-vision"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mit der REST-API und JavaScript in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild (auch als Optical Character Recognition (OCR) bezeichnet), indem Sie die Maschinelles Sehen-API verwenden.
+In dieser Schnellstartanleitung extrahieren Sie mittels optischer Zeichenerkennung (Optical Character Recognition, OCR) gedruckten Text aus einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="ocr-request"></a>OCR-Anforderung
+## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
-Mit der [OCR-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Kopieren Sie das folgende Skript, und speichern Sie es in einer Datei wie `ocr.html`.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uriBase` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ziehen Sie die Datei per Drag & Drop in Ihren Browser.
-1. Klicken Sie auf die Schaltfläche `Read image`.
-
-In diesem Beispiel wird jQuery 1.9.0 verwendet. Ein Beispiel, in dem JavaScript ohne jQuery verwendet wird, finden Sie unter [Intelligentes Generieren einer Miniaturansicht](javascript-thumb.md).
+1. Kopieren Sie den folgenden Code, und fügen Sie ihn in einen Text-Editor ein.
+1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
+    1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie optional den Wert des Attributs `value` für das Steuerelement `inputImage` durch die URL eines anderen Bilds, das Sie analysieren möchten.
+1. Speichern Sie den Code als Datei mit der Erweiterung `.html`. Beispiel: `get-printed-text.html`.
+1. Öffnen Sie ein Browserfenster.
+1. Ziehen Sie die Datei in das Browserfenster, und legen Sie sie dort ab.
+1. Wenn die Webseite im Browser angezeigt wird, klicken Sie auf die Schaltfläche **Bild lesen**.
 
 ```html
 <!DOCTYPE html>
@@ -57,11 +59,12 @@ In diesem Beispiel wird jQuery 1.9.0 verwendet. Ein Beispiel, in dem JavaScript 
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to get your
-        // subscription keys. For example, if you got your subscription keys from
-        // westus, replace "westcentralus" in the URI below with "westus".
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
+        // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
@@ -137,11 +140,9 @@ Image to read:
 </html>
 ```
 
-## <a name="ocr-response"></a>OCR-Antwort
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die zurückgegebenen OCR-Ergebnisse enthalten Text, Begrenzungsrahmen für Regionen, Zeilen und Wörter.
-
-Das Programm erzeugt eine Ausgabe, die dem folgenden JSON-Code ähnelt:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebseite analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Browserfenster an. Im Folgenden finden Sie ein Beispiel dafür:
 
 ```json
 {
@@ -242,9 +243,13 @@ Das Programm erzeugt eine Ausgabe, die dem folgenden JSON-Code ähnelt:
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Datei, falls Sie sie nicht mehr benötigen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lernen Sie eine JavaScript-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Lernen Sie eine JavaScript-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit der Maschinelles Sehen-API beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
 > [!div class="nextstepaction"]
 > [Tutorial zur Maschinelles Sehen-API mit JavaScript](../Tutorials/javascript-tutorial.md)

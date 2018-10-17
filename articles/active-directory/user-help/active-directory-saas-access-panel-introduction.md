@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.component: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/11/18
+ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 1caf69ee822ec11e8797ca23c9c163d36344edc7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302276"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719986"
 ---
 # <a name="what-is-the-myapps-portal"></a>Was ist das MyApps-Portal?
 
@@ -109,16 +109,6 @@ Vom Azure Active Directory-Team wird die mobile App „Meine Apps“ veröffentl
 
 > [!NOTE]
 > Sie können sich auf nahezu jedem Gerät in praktisch jedem Webbrowser bei Anwendungen anmelden, die den Verbund mit Azure AD unterstützen (z.B. Salesforce, Google Apps, Dropbox, Box, Concur, Workday, Office 365 und mehr als 70 weitere) – ohne dass ein Plug-In oder eine mobile App erforderlich ist. Bei Verwendung auf einem mobilen Gerät ist für die anderen [Umgebungen des Portals „Meine Apps“](https://myapps.microsoft.com/) auch die mobile App „Meine Apps“ nicht erforderlich.
->
->
-
-### <a name="my-apps-for-android"></a>"Meine Apps" für Android
-
-„Meine Apps“ für Android wird auf allen Android-Geräten unterstützt, die mindestens über die Android-Version 4.1 verfügen.  
-
-Die App ist im [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.myapps) erhältlich.
-
-!["Meine Apps" für Android][3]   
 
 ### <a name="my-apps-for-iphone-and-ipad"></a>"Meine Apps" für iPhone und iPad
 
@@ -129,13 +119,13 @@ Die App ist im [Apple App Store](https://itunes.apple.com/us/app/my-apps-azure-a
 ![„Meine Apps“ für iOS][4]    
 
 
-## <a name="managed-browser-for-my-apps"></a>Managed Browser für „Meine Apps“
+## <a name="intune-managed-browser-for-my-apps"></a>Intune Managed Browser für „Meine Apps“
 
-„Meine Apps“ ist auch in den Intune Managed Browser integriert. Der Intune Managed Browser für iOS- und Android-Geräte trägt entscheidend zum Schutz der Daten auf mobilen Geräten bei. Der Browser bietet eine sichere Webbrowserumgebung, in der Sie Webseiten mit Unternehmensinformationen sicher anzeigen und verwenden können.  
+„Meine Apps“ ist auch in den Intune Managed Browser integriert. Der Intune Managed Browser für iOS- und Android-Geräte hilft Ihnen dabei, Webseiten, die Unternehmensinformationen enthalten könnten, sicherer anzuzeigen und zu navigieren, und bietet so eine sichere Webbrowsererfahrung.  
 
-Über Ihre Managed Browser-Startseite und Ihre Favoriten können Sie schnell auf „Meine Apps“ zugreifen und so jede Anwendung mit weniger Klicks erreichen.
+Sie gelangen zu „Meine Apps“ sowohl über die Startseite von Managed Browser als auch über Ihre Lesezeichen, was bedeutet, dass Sie weniger Mausklicks benötigen, um Ihre Apps zu erreichen.
 
-Der Intune Managed Browser ist im [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) und im [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser&hl=en) erhältlich.
+Der Intune Managed Browser ist im [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) und im [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) erhältlich.
 
 ![Managed Browser für „Meine Apps“][5]    
 
@@ -210,17 +200,16 @@ Wenn eine Anwendung beispielsweise für die Benutzerauthentifizierung per AD FS 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Liste mit allen Themen im Zusammenhang mit der Anwendungsverwaltung finden Sie im [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md).
+- Informationen zur Anwendungsverwaltung finden Sie unter [Anwendungsverwaltung in Azure Active Directory](../manage-apps/what-is-application-management.md).
  
 - Informationen zum Integrieren einer SaaS-App in Azure AD finden Sie in der [Liste der Tutorials zur Integration von SaaS-Apps](../saas-apps/tutorial-list.md).
  
 - Informationen zum Verwalten von Apps in Azure AD finden Sie in der [Einführung in das einmalige Anmelden und das Verwalten von App-Zugriff mit Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
  
-- Weitere Informationen zur Benutzerbereitstellung finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen](../active-directory-saas-app-provisioning.md).
+- Weitere Informationen zur Benutzerbereitstellung finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen](../manage-apps/user-provisioning.md).
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-introduction/01.png
 [2]: ./media/active-directory-saas-access-panel-introduction/02.png
-[3]: ./media/active-directory-saas-access-panel-introduction/03.png
 [4]: ./media/active-directory-saas-access-panel-introduction/04.png
 [5]: ./media/active-directory-saas-access-panel-introduction/05.png

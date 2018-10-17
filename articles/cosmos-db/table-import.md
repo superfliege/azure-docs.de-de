@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 905815259707116759e0b980690fac108ab81c7b
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8614bf7009afab8c005d2ffb8b1a78f3694d2af7
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186829"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247508"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die Tabellen-API
 
@@ -30,7 +30,9 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Erhöhung des Durchsatzes: Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für einen einzelnen Container oder eine Gruppe von Containern einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im Azure-Portal finden Sie unter „Leistungsstufen und Tarife in Azure Cosmos DB“.
+* **Erhöhen des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für einen einzelnen Container oder eine Gruppe von Containern einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im Azure-Portal finden Sie unter „Leistungsstufen und Tarife in Azure Cosmos DB“.
+
+* **Erstellen von Azure Cosmos DB-Ressourcen:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie vorab alle Ihre Tabellen im Azure-Portal. Wenn Sie als Migrationsziel ein Azure Cosmos DB-Konto mit Durchsatz auf Datenbankebene verwenden, geben Sie beim Erstellen der Azure Cosmos DB-Tabellen einen Partitionsschlüssel an.
 
 ## <a name="data-migration-tool"></a>Datenmigrationstool
 

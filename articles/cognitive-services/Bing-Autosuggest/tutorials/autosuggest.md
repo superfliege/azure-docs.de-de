@@ -1,23 +1,23 @@
 ---
-title: Abrufen von Ergebnissen der Vorschlagssuche mit der Bing-Vorschlagssuche-API (Azure Cognitive Services) | Microsoft Docs
+title: 'Tutorial: Abrufen von Ergebnissen der Vorschlagssuche mit der Bing-Vorschlagssuche-API'
+titlesuffix: Azure Cognitive Services
 description: Zeigt, wie die Bing-Vorschlagssuche verwendet wird.
 services: cognitive-services
 author: v-jaswel
-manager: kamrani
-ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: f66af61ed06f4c6a7fe36cd44aa7781b71bb18ea
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b93ab8ebb4bb50723ec6ebae617fe9d95c6c7a47
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377010"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831437"
 ---
-# <a name="build-a-web-page-autosuggest-client"></a>Erstellen eines Webseitenclients für die Vorschlagssuche
+# <a name="tutorial-build-a-web-page-autosuggest-client"></a>Tutorial: Erstellen eines Webseitenclients für die Vorschlagssuche
 
 In diesem Tutorial wird eine Webseite erstellt, die es Benutzern ermöglicht, die Bing-Vorschlagssuche-API abzufragen.
 

@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Konvertieren eines Textskript mit Python | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung konvertieren Sie Text in einer Sprache aus einem Skript in ein anderes. Dazu verwenden Sie die Textübersetzungs-API mit Python in Cognitive Services.
+title: 'Schnellstart: Konvertieren eines Textskripts – Textübersetzung, Python'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart konvertieren Sie Text in einer Sprache aus einem Skript in ein anderes. Dazu verwenden Sie die Textübersetzungs-API mit Python.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 41fb0f72c5974a1ab034680a820dca6aa7bbdc6d
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 24fe0dc23703bdca4ce74ba1a527990a70ac2ffc
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43769614"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122110"
 ---
 # <a name="quickstart-transliterate-text-with-python"></a>Schnellstart: Transliteration von Text mit Python
 

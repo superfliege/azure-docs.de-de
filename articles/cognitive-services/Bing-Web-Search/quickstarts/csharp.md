@@ -1,19 +1,21 @@
 ---
-title: 'Schnellstart: Verwenden von C# zum Aufrufen der Bing-Websuche-API'
+title: 'Schnellstart: Ausführen einer Suche mit C# – Bing-Websuche-API'
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie die Bing-Websuche-API zum ersten Mal aufrufen, indem Sie C# verwenden, und wie Sie eine JSON-Antwort erhalten.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 9db551f89a3b7834119fe85a22e4cdc8d0402252
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 7f0555a9bb655109ff8786d3a0873d997d715477
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888507"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124761"
 ---
 # <a name="quickstart-use-c-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von C# zum Aufrufen der Bing-Websuche-API  
 
@@ -230,7 +232,7 @@ static string JsonPrettyPrint(string json)
 }
 ```
 
-## <a name="put-it-all-together"></a>Zusammenfügen der Teile
+## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
 Der letzte Schritt ist das Ausführen Ihres Codes! [Auf GitHub finden Sie Beispielcode](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs), falls Sie Ihren Code mit unserem Code vergleichen möchten.
 

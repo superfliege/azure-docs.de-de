@@ -1,20 +1,21 @@
 ---
-title: Custom Vision-ONNX-Modell mit Windows ML – Cognitive Services | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie eine Windows-UWP-App erstellen, für die ein aus Cognitive Services exportiertes ONNX-Modell verwendet wird.
+title: 'Tutorial: Verwenden eines ONNX-Modells mit Windows ML – Custom Vision Service'
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie eine Windows-UWP-App erstellen, die ein aus Azure Cognitive Services exportiertes ONNX-Modell verwendet.
 services: cognitive-services
 author: larryfr
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 06/19/2018
 ms.author: larryfr
-ms.openlocfilehash: 0b128ba1800e74c20c09a9c5711c8473f1dd00d0
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3a9e9bc92ce38c4bb8d6d83c8017fa223342e7d2
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939432"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365603"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Tutorial: Verwenden eines ONNX-Modells von Custom Vision mit Windows ML (Vorschauversion)
 
@@ -55,7 +56,7 @@ Die Anwendung ist eine generische Windows-UWP-Anwendung. Sie nutzt die Kamera Ih
 
 Die Benutzeroberfläche für die Beispielanwendung wird mit den Steuerelementen __CaptureElement__ und __TextBlock__ erstellt. Mit CaptureElement wird für die Videodaten der Kamera eine Vorschau angezeigt, und mit TextBlock werden die Ergebnisse angezeigt, die vom Modell zurückgegeben werden. 
 
-### <a name="the-model"></a>Modell
+### <a name="the-model"></a>Das Modell
 
 Das für das Beispiel bereitgestellte Modell (`cat-or-dog.onnx`) wurde per Custom Vision Service von Cognitive Services erstellt und trainiert. Anschließend wurde das trainierte Modell als ONNX-Modell exportiert. Weitere Informationen zur Verwendung dieses Diensts finden Sie in den Dokumenten [How to build a classifier with Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) (Erstellen eines Klassifizierers mit Custom Vision) und [Exportieren Ihres Modells für die Verwendung mit Mobilgeräten](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model).
 

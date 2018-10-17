@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1be4769a8a07ac5d4a968ed5aa15ed2e0a2b6db2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c1f94c04db69ad44203ef1ada1c3b9fa3df2d779
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086825"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718087"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe des Tools zum Kopieren von Daten
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -72,13 +72,7 @@ Bereiten Sie Ihre Blob Storage-Instanz und SQL-Datenbank durch Ausführen der fo
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Gewähren Sie Azure-Diensten den Zugriff auf SQL Server. Vergewissern Sie sich, dass für den Server mit SQL Server die Einstellung **Zugriff auf Azure-Dienste erlauben** aktiviert ist. Diese Einstellung ermöglicht Data Factory das Schreiben von Daten in Ihre SQL Server-Instanz. Führen Sie folgende Schritte aus, um diese Einstellung zu überprüfen und zu aktivieren:
-
-    a. Klicken Sie links auf **Weitere Dienste** und dann auf **SQL Server**.
-
-    b. Wählen Sie Ihren Server aus, und klicken Sie dann auf **EINSTELLUNGEN** > **Firewall**.
-
-    c. Legen Sie auf der Seite **Firewalleinstellungen** die Option **Zugriff auf Azure-Dienste erlauben** auf **EIN** fest.
+2. Gewähren Sie Azure-Diensten den Zugriff auf SQL Server. Vergewissern Sie sich, dass für den Server, auf dem SQL-Datenbank ausgeführt wird, die Einstellung **Zugriff auf Azure-Dienste erlauben** aktiviert ist. Diese Einstellung ermöglicht der Data Factory das Schreiben von Daten in Ihre Datenbankinstanz. Um diese Einstellung zu überprüfen und zu aktivieren, navigieren Sie auf Ihrem Azure SQL-Datenbank-Server zu **Sicherheit** > **Firewalls und virtuelle Netzwerke** und legen die Option **Zugriff auf Azure-Dienste zulassen** auf **EIN** fest.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 

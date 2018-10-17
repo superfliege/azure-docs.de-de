@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: v-deken
-ms.openlocfilehash: 030a8351a8f41c7404fa4ca8d243fff1ad818c2f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9a0acae20a6361f5a9b69e427d46dd1b9c7db05e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433598"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869345"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -61,7 +61,7 @@ Maschinelles Sehen kann Bilder analysieren, die folgende Anforderungen erfüllen
 - Das Bild muss im JPEG-, PNG-, GIF- oder BMP-Format vorliegen.
 - Die Dateigröße muss weniger als 4 MB betragen.
 - Das Bild muss größer als 50 x 50 Pixel sein.  
-  Für die optische Zeichenerkennung (OCR) muss das Bild zwischen 50 x 50 und 4.200 x 4.200 Pixel groß sein und darf eine Größe von 10 Megapixel nicht überschreiten.
+  Für OCR muss die Größe des Bilds zwischen 50 x 50 und 4.200 x 4.200 Pixel liegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

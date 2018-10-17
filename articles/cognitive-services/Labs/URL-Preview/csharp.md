@@ -1,21 +1,23 @@
 ---
-title: C#-Schnellstart für Project URL Preview – Microsoft Cognitive Services | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen zu den ersten Schritten mit Project URL Preview in Microsoft Cognitive Services in Azure.
+title: 'Schnellstart: „Projekt: URL-Vorschau“, C#'
+titlesuffix: Azure Cognitive Services
+description: 'Erste Schritte mit dem „Projekt: URL-Vorschau“ mit C#.'
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 17d44bd0c23d0a1e67da5a0e91248700d3166c1a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 8d31d3a83f9873ce550b9c78626eea0d96ac39bb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376266"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867441"
 ---
-# <a name="url-preview-query-in-c"></a>URL-Vorschauabfrage in C#
+# <a name="quickstart-url-preview-query-in-c"></a>Schnellstart: Abfrage für die URL-Vorschau in C#
 
 Im folgenden C#-Beispiel wird eine URL-Vorschau für die SwiftKey-Website erstellt: https://swiftkey.com/en.
 

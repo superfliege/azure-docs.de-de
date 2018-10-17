@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 8/8/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 179db61777fe60ae53d7fee553c8124d7a9f7abf
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: fe84dfcef2a5dad1c170592f933638b984e16a05
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42022326"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717028"
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
@@ -47,7 +47,7 @@ Alle Ressourcen in einem virtuellen Netzwerk können standardmäßig in ausgehen
 Azure-Ressourcen können auf eine der folgenden Arten sicher miteinander kommunizieren:
 
 - **Über ein virtuelles Netzwerk:** Sie können virtuelle Computer und verschiedene andere Arten von Azure-Ressourcen in einem virtuellen Netzwerk bereitstellen, wie beispielsweise Azure App Service-Umgebungen, den Azure Kubernetes Service (AKS) und Azure Virtual Machine Scale Sets. Eine vollständige Liste mit Azure-Ressourcen, die Sie in einem virtuellen Netzwerk bereitstellen können, finden Sie unter [Integration virtueller Netzwerke für Azure-Dienste](virtual-network-for-azure-services.md). 
-- **Über einen Dienstendpunkt des virtuellen Netzwerks:** Erweitern Sie den Bereich privater Adressen und die Identität Ihres virtuellen Netzwerks über eine direkte Verbindung auf Azure-Dienstressourcen wie Azure Storage-Konten und Azure SQL-Datenbank-Instanzen. Mithilfe von Dienstendpunkten können Sie Ihre kritischen Azure-Dienstressourcen auf ein virtuelles Netzwerk beschränken und so schützen. Weitere Informationen finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md).
+- **Über einen Dienstendpunkt des virtuellen Netzwerks**: Erweitern Sie den Bereich privater Adressen und die Identität Ihres virtuellen Netzwerks über eine direkte Verbindung auf Azure-Dienstressourcen wie Azure Storage-Konten und Azure SQL-Datenbank-Instanzen. Mithilfe von Dienstendpunkten können Sie Ihre kritischen Azure-Dienstressourcen auf ein virtuelles Netzwerk beschränken und so schützen. Weitere Informationen finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md).
  
 ## <a name="communicate-with-on-premises-resources"></a>Kommunikation mit lokalen Ressourcen
 

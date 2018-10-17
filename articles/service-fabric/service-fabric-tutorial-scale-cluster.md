@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/06/2018
+ms.date: 010/01/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: da9e1ce17e21f4d87286c0be5d425419f6ed0300
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1af4cdb361c1db378991201fc42f17dcbf67fe67
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408509"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238764"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
@@ -114,14 +114,14 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 
 ## <a name="scale-in"></a>Horizontales Herunterskalieren
 
-Horizontales Herunterskalieren ist mit horizontalem Hochskalieren vergleichbar. In diesem Fall wird jedoch ein niedrigerer Wert für **Kapazität** verwendet. Beim horizontalen Herunterskalieren einer Skalierungsgruppe werden VM-Instanzen aus der Skalierungsgruppe entfernt. Service Fabric erkennt üblicherweise nicht, was passiert ist, und geht davon aus, dass ein Knoten verloren gegangen ist. Daraufhin meldet Service Fabric einen fehlerhaften Zustand für den Cluster. Zur Vermeidung dieses Fehlerzustands müssen Sie Service Fabric auf das Verschwinden des Knotens vorbereiten.
+Horizontales Herunterskalieren ist mit horizontalem Hochskalieren vergleichbar. In diesem Fall wird jedoch ein niedrigerer Wert für **Kapazität** verwendet. Beim horizontalen Herunterskalieren einer Skalierungsgruppe werden VM-Instanzen aus der Skalierungsgruppe entfernt. Service Fabric erkennt üblicherweise nicht, was passiert ist, und geht davon aus, dass ein Knoten verloren gegangen ist. Daraufhin meldet Service Fabric einen fehlerhaften Zustand für den Cluster. Zur Vermeidung dieses Fehlerzustands müssen Sie Service Fabric auf den erwarteten Wegfall des Knotens vorbereiten.
 
 ### <a name="remove-the-service-fabric-node"></a>Entfernen des Service Fabric-Knotens
 
 > [!NOTE]
 > Dieser Teil ist nur für die Dauerhaftigkeitsstufe *Bronze* relevant. Weitere Informationen zur Dauerhaftigkeit finden Sie unter [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster][durability].
 
-Beim horizontalen Herunterskalieren einer VM-Skalierungsgruppe entfernt die Skalierungsgruppe in den meisten Fällen die zuletzt erstellte VM-Instanz. Sie müssen also den passenden, zuletzt erstellten Service Fabric-Knoten ermitteln. Diesen finden Sie, indem Sie nach dem größten `NodeInstanceId`-Eigenschaftswert der Service Fabric-Knoten suchen. In den Codebeispielen weiter unten wird eine Sortierung nach Knoteninstanz vorgenommen, und es werden Details zur Instanz mit dem größten ID-Wert zurückgegeben.
+Der zuletzt erstellte Knoten sollte zuerst entfernt werden, damit die Knoten des Clusters über die Upgrade- und Fehlerdomänen gleichmäßig verteilt bleiben und die gleichmäßige Nutzung sichergestellt ist. Anders ausgedrückt: Die Knoten sollten in der umgekehrten Reihenfolge ihrer Erstellung entfernt werden. Der zuletzt erstellte Knoten verfügt über den höchsten `virtual machine scale set InstanceId`-Eigenschaftswert. In den unten angegebenen Codebeispielen wird der zuletzt erstellte Knoten zurückgegeben.
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
@@ -137,7 +137,7 @@ Der Service Fabric-Cluster muss wissen, dass dieser Knoten entfernt wird. Hierzu
 PowerShell: `Disable-ServiceFabricNode`  
 sfctl: `sfctl node disable`
 
-2. Beenden Sie den Knoten, damit die Service Fabric-Laufzeit ordnungsgemäß heruntergefahren wird und Ihre App eine Beendigungsanforderung erhält.  
+2. Beenden Sie den Knoten, damit die Service Fabric-Laufzeit richtig heruntergefahren wird und Ihre App eine Beendigungsanforderung erhält.  
 PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
 sfctl: `sfctl node transition --node-transition-type Stop`
 

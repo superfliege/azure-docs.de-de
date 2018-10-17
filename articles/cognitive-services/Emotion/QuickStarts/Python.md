@@ -1,27 +1,28 @@
 ---
-title: Python-Schnellstart für die Emotionen-API | Microsoft-Dokumentation
-description: Erhalten Sie Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Emotionen-API mit Python in Cognitive Services.
+title: 'Schnellstart: Erkennen von Emotionen auf Gesichtern in einem Bild – Emotionen-API, Python'
+description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Emotionen-API mit Python.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/05/2018
 ms.author: anroth
-ms.openlocfilehash: ff1f6b2ddc872d0ee63d9885b04b1f007bc86e33
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: c7611628918cf40800d173dc9404b0948b9a68a4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373067"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236566"
 ---
-# <a name="emotion-api-python-quickstart"></a>Python-Schnellstart für die Emotionen-API
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Schnellstart: Erstellen einer App zur Erkennung von Emotionen auf Gesichtern in einem Bild
 
 > [!IMPORTANT]
-> Die Vorschauversion der Video-API ist am 30. Oktober 2017 abgelaufen. Testen Sie die neue [Video Indexer-API (Vorschauversion)](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Extrahieren Sie Erkenntnisse aus Videos, und verbessern Sie die Auffindbarkeit von Inhalten, z.B. mit Suchergebnissen durch die Erkennung von gesprochenen Wörtern, Gesichtern, Zeichen und Emotionen. [Weitere Informationen](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
+> Die Emotionen-API wird am 15. Februar 2019 eingestellt. Die Funktion zur Erkennung von Emotionen ist jetzt als Teil der [Gesichtserkennungs-API](https://docs.microsoft.com/azure/cognitive-services/face/) allgemein verfügbar. 
 
-Diese exemplarische Vorgehensweise enthält Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der [Recognize-Methode der Emotionen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) mit Python zum Erkennen der von einer oder mehreren Personen auf einem Bild ausgedrückten Emotionen. 
+Diese exemplarische Vorgehensweise enthält Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der [Recognize-Methode der Emotionen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) mit Python zum Erkennen der von einer oder mehreren Personen auf einem Bild ausgedrückten Emotionen.
 
 Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.org) ausführen, indem Sie auf das Binder-Badge [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=EmotionAPI.ipynb) klicken.
 
@@ -101,7 +102,7 @@ analysis
 
 
 
-Das zurückgegebene JSON-Objekt enthält die Begrenzungsrahmen der Gesichter, die zusammen mit den erkannten Emotionen erkannt wurden. Jede Emotion ist einer Bewertung zwischen 0 und 1 zugeordnet, in denen ein höheres Ergebnis mehr über eine Emotion aussagt als ein niedrigeres Ergebnis. 
+Das zurückgegebene JSON-Objekt enthält die Begrenzungsrahmen der Gesichter, die zusammen mit den erkannten Emotionen erkannt wurden. Jede Emotion ist einer Bewertung zwischen 0 und 1 zugeordnet, in denen ein höheres Ergebnis mehr über eine Emotion aussagt als ein niedrigeres Ergebnis.
 
 Die folgenden Codezeilen stellen die erkannten Emotionen auf den Gesichtern im Bild mithilfe der Bibliothek `matplotlib` dar. Der Übersichtlichkeit halber werden nur die ersten drei Emotionen angezeigt.
 

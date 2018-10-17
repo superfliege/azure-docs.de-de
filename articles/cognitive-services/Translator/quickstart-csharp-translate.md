@@ -1,25 +1,27 @@
 ---
-title: 'Textübersetzung: Übersetzen von Text mit C# | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung übersetzen Sie Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit C# in Cognitive Services.
+title: 'Schnellstart: Übersetzen von Text – Textübersetzung, C#'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung übersetzen Sie mithilfe der Textübersetzungs-API und C# Text von einer Sprache in eine andere.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 7923cf3249beaf713b91ba0e5ea4f70f34841b3c
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: e60b2a9ea7c56352a1b4dfb65537ba6dc57fcb68
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43769507"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365960"
 ---
 # <a name="quickstart-translate-text-with-c35"></a>Schnellstart: Übersetzen von Text mit C#
 
 In dieser Schnellstartanleitung übersetzen Sie mithilfe der Textübersetzungs-API Text von einer Sprache in eine andere.
+
+Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

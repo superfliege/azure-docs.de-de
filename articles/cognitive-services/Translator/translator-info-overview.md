@@ -1,26 +1,27 @@
 ---
-title: Übersicht über die Textübersetzungs-API von Microsoft – Azure Cognitive Services | Microsoft-Dokumentation
-description: Integrieren Sie die Textübersetzungs-API von Microsoft in Ihre Anwendungen, Websites, Tools sowie in andere Lösungen, um Benutzererlebnisse in mehreren Sprachen bereitzustellen.
+title: Was ist die Textübersetzungs-API?
+titlesuffix: Azure Cognitive Services
+description: Integrieren Sie die Textübersetzungs-API in Ihre Anwendungen, Websites, Tools und in andere Lösungen, um Benutzererlebnisse in mehreren Sprachen bereitzustellen.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: nolachar
-ms.openlocfilehash: bfbb316ac41045add7f424b5d478581aa226fc19
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 47ac3c81b85424a5cacab00863cd88fab9463fb9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42889299"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124659"
 ---
-# <a name="what-is-microsoft-translator"></a>Was ist Microsoft Translator?
+# <a name="what-is-translator-text-api"></a>Was ist die Textübersetzungs-API?
 
-Die Textübersetzungs-API von Microsoft lässt sich nahtlos in Anwendungen, Websites, Tools und andere Lösungen integrieren, um Benutzererlebnisse in [über 60 Sprachen](languages.md) bereitzustellen. Sie kann auf jeder Hardwareplattform und mit jedem Betriebssystem verwendet werden, um Text-zu-Text-Sprachübersetzungen durchzuführen.
+Die Textübersetzungs-API lässt sich nahtlos in Anwendungen, Websites, Tools und andere Lösungen integrieren, um Benutzererlebnisse in [über 60 Sprachen](languages.md) bereitzustellen. Sie kann auf jeder Hardwareplattform und mit jedem Betriebssystem verwendet werden, um Text-zu-Text-Sprachübersetzungen durchzuführen.
 
-Die Textübersetzungs-API von Microsoft gehört zur [API-Sammlung von Microsoft Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai). Hierbei handelt es sich um eine Sammlung von Machine Learning- und KI-Algorithmen in der Cloud, die Sie direkt in Ihren Entwicklungsprojekten verwenden können.
+Die Textübersetzungs-API gehört zur [API-Sammlung von Azure Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai). Hierbei handelt es sich um eine Sammlung von Machine Learning- und KI-Algorithmen in der Cloud, die Sie direkt in Ihren Entwicklungsprojekten verwenden können.
 
 ## <a name="about-microsoft-translator"></a>Informationen zu Microsoft Translator
 

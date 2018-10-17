@@ -6,26 +6,26 @@ author: prashanthyv
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 07/24/2018
+ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: a9ae1fb3243c31eb92231320c5ced93d80301a0d
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 7f71e92513aedb1eb9c394c1e8f547173cfb4dbe
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917433"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604177"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer .NET-Web-App
 
-In dieser Schnellstartanleitung wird erläutert, mit welchen Schritten Sie eine Azure-Webanwendung zum Lesen von Informationen aus Azure Key Vault unter Verwendung von verwalteten Dienstidentitäten konfigurieren. Folgendes wird vermittelt:
+In dieser Schnellstartanleitung führen Sie die erforderlichen Schritte zum Abrufen einer Azure-Webanwendung durch, um Informationen aus Azure Key Vault mithilfe von verwalteten Identitäten für Azure-Ressourcen zu lesen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines Schlüsseltresors
 > * Speichern eines Geheimnisses im Schlüsseltresor
 > * Abrufen eines Geheimnisses aus dem Schlüsseltresor
 > * Erstellen einer Azure-Webanwendung
-> * [Aktivieren von verwalteten Dienstidentitäten](../active-directory/managed-service-identity/overview.md)
+> * Aktivieren einer [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) für die Web-App
 > * Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus dem Schlüsseltresor für die Webanwendung
 
 Lesen Sie die Informationen zu [grundlegenden Konzepten](key-vault-whatis.md#basic-concepts), bevor Sie fortfahren.
@@ -33,7 +33,7 @@ Lesen Sie die Informationen zu [grundlegenden Konzepten](key-vault-whatis.md#bas
 >[!NOTE]
 >Key Vault ist ein zentrales Repository zum programmgesteuerten Speichern von Geheimnissen. Dafür müssen sich Anwendungen und Benutzer jedoch zuerst bei Key Vault authentifizieren, d.h. sie müssen ein Geheimnis angeben. Aus Sicherheitsgründen muss das erste Geheimnis regelmäßig rotiert werden. 
 >
->Dank der [verwalteten Dienstidentität](../active-directory/managed-service-identity/overview.md) erhalten in Azure ausgeführte Anwendungen eine Identität, die automatisch von Azure verwaltet wird. Das macht die *Einführung von Geheimnissen weniger problematisch*, da Benutzer und Anwendungen die empfohlene Vorgehensweise verwenden können und sich nicht um die Rotation des ersten Geheimnisses kümmern müssen.
+>Dank der [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) erhalten in Azure ausgeführte Anwendungen eine Identität, die automatisch von Azure verwaltet wird. Das macht die *Einführung von Geheimnissen weniger problematisch*, da Benutzer und Anwendungen die empfohlene Vorgehensweise verwenden können und sich nicht um die Rotation des ersten Geheimnisses kümmern müssen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -139,9 +139,9 @@ Veröffentlichen Sie diese App in Azure, um sie live als Web-App zu verwenden un
 
 >[!VIDEO https://sec.ch9.ms/ch9/e93d/a6ac417f-2e63-4125-a37a-8f34bf0fe93d/KeyVault_high.mp4]
 
-## <a name="enable-managed-service-identities"></a>Aktivieren von verwalteten Dienstidentitäten
+## <a name="enable-a-managed-identity-for-the-web-app"></a>Aktivieren einer verwalteten Identität für die Web-App
 
-Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code aber bei Azure Key Vault authentifizieren. Mithilfe der verwalteten Dienstidentität (Managed Service Identity, MSI) kann dieser Vorgang vereinfacht werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
+Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mit den Informationen unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
 1. Kehren Sie zur Azure-Befehlszeilenschnittstelle zurück.
 2. Führen Sie den Befehl „assign-identity“ aus, um die Identität für diese Anwendung zu erstellen:
@@ -151,7 +151,7 @@ Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinfor
    ```
 
 >[!NOTE]
->Der Befehl in dieser Prozedur entspricht dem Aufrufen des Portals und dem Festlegen von **Verwaltete Dienstidentität** auf **Ein** in den Webanwendungseigenschaften.
+>Dieser Befehl in dieser Vorgehensweise entspricht dem Aufrufen des Portals und dem Festlegen der Einstellung **Identität/Vom System zugewiesen** auf **Ein** in den Webanwendungseigenschaften.
 
 ## <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>Zuweisen von Berechtigungen zu Ihrer Anwendung für das Lesen von Geheimnissen aus Key Vault
 
@@ -167,11 +167,11 @@ Führen Sie anschließend diesen Befehl aus, indem Sie den Namen Ihres Schlüsse
 
 ```azurecli
 
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get
+az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get list
 
 ```
 
-Wenn Sie die Anwendung nun ausführen, sollte der Wert des Geheimnisses abgerufen werden.
+Wenn Sie die Anwendung nun ausführen, sollte der Wert des Geheimnisses abgerufen werden. Im obigen Befehl gewähren Sie der Identität (MSI) von App Service Berechtigungen zum Ausführen von **get**- und **list**-Vorgängen für Ihren Schlüsseltresor.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

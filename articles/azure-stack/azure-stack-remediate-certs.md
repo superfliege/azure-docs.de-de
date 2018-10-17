@@ -3,7 +3,7 @@ title: Beheben von Problemen mit Azure Stack-Zertifikaten | Microsoft-Dokumentat
 description: Verwenden Sie Azure Stack Readiness Checker, um Probleme mit Zertifikaten zu überprüfen und zu beheben.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,17 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0d2c4d848f861e4e07dbd0de4609344955ca26f7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5e96c731496d79ca081091e2059a35545f963bd6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937572"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078635"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Beheben von häufigen Problemen mit Azure Stack-PKI-Zertifikaten
 In diesem Artikel werden häufig auftretende Probleme mit Azure Stack-PKI-Zertifikaten beschrieben und erläutert, wie diese behoben werden können. Probleme können mithilfe des Tools Azure Stack Readiness Checker zur [Überprüfung von Azure Stack-PKI-Zertifikaten](azure-stack-validate-pki-certs.md) ermittelt werden. Das Tool führt Überprüfungen durch, um sicherzustellen, dass Zertifikate die PKI-Anforderungen einer Azure Stack-Bereitstellung und Azure Stack-Geheimnisrotation erfüllen, und protokolliert die Ergebnisse in einer Datei namens [report.json](azure-stack-validation-report.md).  
+
+## <a name="pfx-encryption"></a>PFX-Verschlüsselung
+**Fehler**: Bei der PFX-Verschlüsselung handelt es sich nicht um TripleDES-SHA1.   
+**Problembehandlung**: Exportieren Sie PFX-Dateien mit **TripleDES-SHA1**-Verschlüsselung. Dies ist die Standardeinstellung für alle Windows 10-Clients beim Exportieren über das Zertifikat-Snap-In oder bei der Verwendung von „Export-PFXCertificate“. 
 
 ## <a name="read-pfx"></a>Lesen einer PFX-Datei
 **Warnung**: Ein Kennwort schützt nur persönliche Informationen im Zertifikat.  
@@ -66,6 +70,7 @@ In diesem Artikel werden häufig auftretende Probleme mit Azure Stack-PKI-Zertif
 
 ## <a name="fix-common-packaging-issues"></a>Beheben von häufigen Problemen beim Packen
 AzsReadinessChecker kann eine PFX-Datei importieren und dann exportieren, um allgemeine Probleme beim Packen wie Folgende zu beheben: 
+ - Bei der *PFX-Verschlüsselung* handelt es sich nicht um TripleDES-SHA1.
  - Beim *privaten Schlüssel* fehlt das Attribut des lokalen Computers.
  - Die *Zertifikatkette* ist unvollständig oder falsch. (Der lokale Computer muss die Zertifikatkette enthalten, wenn dies beim PFX-Paket nicht der Fall ist.) 
  - *Andere Zertifikate*:

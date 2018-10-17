@@ -1,44 +1,56 @@
 ---
 title: 'Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, Node.js – Maschinelles Sehen-API'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild, indem Sie die Maschinelles Sehen-API mit Node.js in Cognitive Services verwenden.
+description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild mithilfe der Maschinelles Sehen-API und Node.js.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 540f3ae05fa7049ee5330d613c1c0352e25db57e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: af22b17d52b654438ae52c1eb85e523dbaf638fa
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842684"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45628912"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-nodejs---computer-vision"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, Node.js – Maschinelles Sehen-API
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-nodejs-in-computer-vision"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der REST-API und Node.js in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild (auch als Optical Character Recognition (OCR) bezeichnet), indem Sie die Maschinelles Sehen-API verwenden.
+In dieser Schnellstartanleitung extrahieren Sie mittels optischer Zeichenerkennung (Optical Character Recognition, OCR) gedruckten Text aus einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- [Node.js](https://nodejs.org) 4.x oder höher muss installiert sein.
+- [npm](https://www.npmjs.com/) muss installiert sein.
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="ocr-request"></a>OCR-Anforderung
+## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
-Mit der [OCR-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
+1. Installieren Sie das npm-Paket [`request`](https://www.npmjs.com/package/request).
+   1. Öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
+   1. Führen Sie den folgenden Befehl aus:
 
-1. Kopieren Sie den folgenden Code in einen Editor.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uriBase` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ändern Sie optional den Wert von `imageUrl` in das Bild, das Sie analysieren möchten.
-1. Speichern Sie die Datei mit der Erweiterung `.js`.
-1. Öffnen Sie die Node.js-Eingabeaufforderung, und führen Sie die Datei aus, z.B. `node myfile.js`.
+      ```console
+      npm install request
+      ```
 
-In diesem Beispiel wird das npm-[request](https://www.npmjs.com/package/request)-Paket verwendet.
+   1. Wenn das Paket erfolgreich installiert wurde, schließen Sie das Eingabeaufforderungsfenster.
+
+1. Kopieren Sie den folgenden Code, und fügen Sie ihn in einen Text-Editor ein.
+1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
+    1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie optional den Wert von `imageUrl` durch die URL eines anderen Bilds, aus dem gedruckter Text extrahiert werden soll.
+1. Speichern Sie den Code als Datei mit der Erweiterung `.js`. Beispiel: `get-printed-text.js`.
+1. Öffnen Sie ein Eingabeaufforderungsfenster.
+1. Verwenden Sie an der Eingabeaufforderung den Befehl `node`, um die Datei auszuführen. Beispiel: `node get-printed-text.js`.
 
 ```nodejs
 'use strict';
@@ -84,9 +96,9 @@ request.post(options, (error, response, body) => {
 });
 ```
 
-## <a name="ocr-response"></a>OCR-Antwort
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Bei einer erfolgreichen Ausführung enthalten die zurückgegebenen OCR-Ergebnisse Text, Begrenzungsrahmen für Regionen, Zeilen und Wörter, z.B.:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Das Beispiel analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Im Folgenden finden Sie ein Beispiel dafür:
 
 ```json
 {
@@ -187,9 +199,22 @@ Bei einer erfolgreichen Ausführung enthalten die zurückgegebenen OCR-Ergebniss
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Datei nicht mehr benötigen, löschen Sie sie, und deinstallieren Sie dann das npm-Paket `request`. Führen Sie die folgenden Schritte durch, um das Paket zu deinstallieren:
+
+1. Öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
+2. Führen Sie den folgenden Befehl aus:
+
+   ```console
+   npm uninstall request
+   ```
+
+3. Wenn das Paket erfolgreich deinstalliert wurde, schließen Sie das Eingabeaufforderungsfenster.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie die Maschinelles Sehen-APIs, die zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem sowie handschriftlichem Text verwendet werden. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Erkunden Sie die Maschinelles Sehen-API, die zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem sowie handschriftlichem Text verwendet wird. Wenn Sie schnell mit Ihren Experimenten mit der Maschinelles Sehen-API beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
 > [!div class="nextstepaction"]
-> [Maschinelles Sehen-APIs erkunden](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Erkunden der Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

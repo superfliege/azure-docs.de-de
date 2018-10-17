@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: d314c04a40155fccc99660bacdb9f646ce77b22f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a4e41408a3af2e6bb68c14f2e34bf1141bf349c1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107587"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017806"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Kopieren von Daten mithilfe des Tools zum Kopieren von Daten 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -52,13 +52,9 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 1. Wählen Sie **V2** als **Version** aus.
 1. Wählen Sie unter **Standort** den Standort für die Data Factory aus. 
 
-   In der Liste werden nur unterstützte Standorte angezeigt. Die von Data Factory verwendeten Datenspeicher (etwa Azure Storage und Azure SQL-Datenbank) und Computedienste (etwa Azure HDInsight) können sich an anderen Standorten bzw. in anderen Regionen befinden.
+   In der Liste werden nur Standorte angezeigt, die von Data Factory unterstützt werden und an denen Ihre Azure Data Factory-Metadaten gespeichert werden. Beachten Sie hierbei, dass die von Data Factory verwendeten zugeordneten Datenspeicher (z.B. Azure Storage und Azure SQL-Datenbank) und Computedienste (z.B. Azure HDInsight) in anderen Regionen ausgeführt werden können.
 
-1. Wählen Sie die Option **An Dashboard anheften** aus.     
 1. Klicken Sie auf **Erstellen**.
-1. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status **Deploying Data Factory** (Data Factory wird bereitgestellt...): 
-
-    ![Kachel „Deploying Data Factory“ (Data Factory wird bereitgestellt...)](media/quickstart-create-data-factory-copy-data-tool/deploying-data-factory.png)
 1. Nach Abschluss der Erstellung wird die Seite **Data Factory** angezeigt. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Anwendung für die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
    
    ![Startseite der Data Factory mit der Kachel „Erstellen und überwachen“](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)

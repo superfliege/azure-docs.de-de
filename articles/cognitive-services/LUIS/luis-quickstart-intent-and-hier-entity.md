@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 92b6327cbb97ed871cd4b10977bcd73a81494e20
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042124"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831023"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>Tutorial 5: Extrahieren kontextbezogener Daten
 In diesem Tutorial wird das kontextbasierte Finden aufeinander bezogener Teildaten behandelt. Beispielsweise sind der Ausgangsort und der Zielort für eine physische Verlegung aus einem Gebäude und Büro in ein anderes Gebäude und Büro aufeinander bezogen. Zum Erstellen eines Arbeitsauftrags sind möglicherweise beide Teilinformationen erforderlich, und sie sind aufeinander bezogen.  
@@ -39,20 +39,20 @@ Die hierarchische Entität ist eine gute Wahl für diese Art von Daten, da für 
 > * Hinzufügen einer hierarchischen Standortentität mit Unterelementen zu Abflug- und Zielort
 > * Trainieren
 > * Veröffentlichen
-> * Abrufen von Absichten und Entitäten von einem Endpunkt
+> * Abrufen von Absichten und Entitäten vom Endpunkt
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Verwenden der vorhandenen App
-Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **Personalwesen** fort. 
+Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
 
-Wenn Sie nicht über die Personalwesen-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
+Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verfügen, befolgen Sie diese Schritte:
 
 1.  Laden Sie die [App-JSON-Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-list-HumanResources.json) herunter, und speichern Sie sie.
 
 2. Importieren Sie den JSON-Code in eine neue App.
 
-3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und benennen Sie sie `hier`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf der Name keine Zeichen enthalten, die in einer URL ungültig sind. 
+3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `hier`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind. 
 
 ## <a name="remove-prebuilt-number-entity-from-app"></a>Entfernen der vordefinierten Zahlenentität aus der App
 Entfernen Sie die vordefinierte Zahlenentität vorübergehend, um die gesamte Äußerung anzuzeigen und die untergeordneten Elemente der Hierarchie zu kennzeichnen.
@@ -61,7 +61,7 @@ Entfernen Sie die vordefinierte Zahlenentität vorübergehend, um die gesamte Ä
 
 2. Wählen Sie im linken Menü die Option **Entitäten**.
 
-3. Wählen Sie die Auslassungspunkte (***...***) rechts von der Zahlenentität in der Liste aus. Klicken Sie auf **Löschen**. 
+3. Aktivieren Sie das Kontrollkästchen links neben der Zahlenentität in der Liste. Klicken Sie auf **Löschen**. 
 
 ## <a name="add-utterances-to-moveemployee-intent"></a>Hinzufügen von Äußerungen zur MoveEmployee-Absicht
 

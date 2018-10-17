@@ -1,21 +1,22 @@
 ---
-title: Node-Schnellstart für Microsoft Cognitive Services, Project Answer Search | Microsoft Docs
-description: Hier erhalten Sie Informationen zu den ersten Schritten mit Project Answer Search, Microsoft Cognitive Services in Azure.
+title: 'Schnellstart: „Projekt: Suche nach Antworten“, Node'
+description: 'Erste Schritte mit dem „Projekt: Suche nach Antworten“ mit Node.'
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 36b2709d39230aae7929164ba4c9306f57043b43
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 99dba482c9dec4448110301201c7c9e79a7a6380
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376194"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867424"
 ---
-# <a name="project-answer-search-node-quickstart"></a>Node-Schnellstart für Project Answer Search
+# <a name="quickstart-project-answer-search-with-node"></a>Schnellstart: „Projekt: Suche nach Antworten“ mit Node
 
 Im folgenden Node-Beispiel wird eine Abfrage für Informationen zum Yosemite-Nationalpark erstellt.
 

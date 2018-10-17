@@ -6,13 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: overview
-ms.date: 09/24/2018
-ms.openlocfilehash: 152a145601dcf4282ec0a3a3b6ebcf37bd11848b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/04/2018
+ms.openlocfilehash: ade162d0261b765336cbff9ea8a6429f9bd2d871
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992965"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801823"
 ---
 # <a name="hdinsight-40-overview-preview"></a>Übersicht über HDInsight 4.0 (Vorschau)
 
@@ -93,6 +93,12 @@ Es gibt keinen unterstützten Upgradepfad von früheren Versionen von HDI auf HD
 * HDI 4.0 unterstützt MapReduce nicht. Verwenden Sie stattdessen Tez. Erfahren Sie mehr über [Apache Tez](https://tez.apache.org/).
 
 * Hive View ist in HDI 4.0 nicht mehr verfügbar. 
+
+* Shellinterpreter in Apache Zeppelin wird in Spark- und Interactive Query-Clustern nicht unterstützt.
+
+* Sie können LLAP in einem Spark-LLAP-Cluster nicht *deaktivieren*. Sie können LLAP nur ausschalten.
+
+* Für Azure Data Lake Storage Gen2 können Juypter Notebooks nicht in einem Spark-Cluster gespeichert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

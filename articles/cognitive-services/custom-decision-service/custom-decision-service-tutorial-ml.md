@@ -1,21 +1,23 @@
 ---
-title: 'Machine Learning: Azure Cognitive Services | Microsoft Docs'
-description: Ein Tutorial zu Machine Learning in Azure Custom Decision Service, einer cloudbasierten API für die kontextabhängige Entscheidungsfindung.
+title: 'Tutorial: Featurebereitstellung und Featurespezifikationen – Custom Decision Service'
+titlesuffix: Azure Cognitive Services
+description: Ein Tutorial zur Featurebereitstellung und zu den Featurespezifikationen für maschinelles Lernen in Custom Decision Service.
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh
-ms.openlocfilehash: 50814d67ee39c6657954610358462d877843416e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: slivkins
+ms.openlocfilehash: 1e5d012706d1de5a201eecb8ad805b4d6faaf411
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377026"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869589"
 ---
-# <a name="machine-learning"></a>Machine Learning
+# <a name="tutorial-featurization-and-feature-specification"></a>Tutorial: Featurebereitstellung und Featurespezifikationen
 
 Dieses Tutorial behandelt die erweiterten Machine Learning-Funktionen in Custom Decision Service. Das Tutorial besteht aus zwei Teilen: [Featurebereitstellung](#featurization-concepts-and-implementation) und [Featurespezifikation](#feature-specification-format-and-apis). „Featurebereitstellung“ bezieht sich auf die Darstellung Ihrer Daten als „Features“ für Machine Learning. „Featurespezifikation“ umfasst das JSON-Format und die Hilfs-APIs zum Angeben von Features.
 

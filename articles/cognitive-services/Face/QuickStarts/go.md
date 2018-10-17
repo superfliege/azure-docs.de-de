@@ -1,21 +1,21 @@
 ---
-title: Gesichtserkennungs-API – Go-Schnellstart | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung führen Sie die Gesichtserkennung für ein Bild durch, indem Sie die Gesichtserkennungs-API mit Go in Cognitive Services verwenden.
+title: 'Schnellstart: Erkennen von Gesichtern in einem Bild – Gesichtserkennungs-API, Go'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart verwenden Sie die Gesichtserkennungs-API mit Go, um Gesichter in einem Bild zu erkennen.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: nolachar
-ms.openlocfilehash: e4d7f3f605b110f51488d9a7f483fc2832a149b9
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 0c8a70153ac9a54f3e46e5fb1a2ee3404a960dd3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "43769758"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125424"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-go"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit Go
 

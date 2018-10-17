@@ -1,6 +1,6 @@
 ---
-title: 'Einführung in Blob Storage: Objektspeicher in Azure | Microsoft-Dokumentation'
-description: Azure Blob Storage dient zum Speichern großer Mengen unstrukturierter Objektdaten wie etwa Text- und Binärdaten. Ihre Anwendungen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle, über Code mittels Azure Storage-Clientbibliotheken oder über REST auf Objekte in Blob Storage zugreifen.
+title: 'Einführung in Blob Storage: Objektspeicher in Azure'
+description: In Azure Blob Storage werden große Mengen unstrukturierter Objektdaten wie etwa Text- und Binärdaten gespeichert. Azure Blob Storage ist hochgradig skalierbar und hochverfügbar. Clients können über PowerShell oder über die Azure CLI, programmgesteuert über Azure Storage-Clientbibliotheken oder über REST auf Datenobjekte in Blob Storage zugreifen.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/27/2018
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: b445da54808249f85b22563b5d1ba74f5347740c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: c5a088e2bf9e05647e5f577db1a169ac73ccc4a7
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396895"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731171"
 ---
 # <a name="introduction-to-object-storage-in-azure"></a>Einführung in Objektspeicher in Azure
 

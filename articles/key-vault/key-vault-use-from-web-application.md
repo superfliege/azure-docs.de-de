@@ -9,14 +9,14 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/09/2018
 ms.author: barclayn
-ms.openlocfilehash: ff59e39e54433aa673b093e2ee1fbe8c74010e54
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b66c9912ba0b6508c2beb786d2327efa779c6645
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171322"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079462"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Tutorial: Verwenden von Azure Key Vault aus einer Webanwendung
 
@@ -42,8 +42,7 @@ Für dieses Tutorial benötigen Sie folgende Elemente:
 
 Führen Sie die Schritte unter [Erste Schritte mit Azure Key Vault](key-vault-get-started.md) aus, um den URI für einen geheimen Schlüssel, eine Client-ID, einen geheimen Clientschlüssel abzurufen und die Anwendung zu registrieren. Die Webanwendung hat Zugriff auf den Tresor und muss in Azure Active Directory registriert werden. Darüber hinaus benötigt sie Zugriffsrechte für Key Vault. Wenn dies nicht der Fall ist, kehren Sie zur Registrierung der Anwendung im Tutorial „Erste Schritte“ zurück, und wiederholen Sie die dort aufgeführten Schritte. Weitere Informationen zur Erstellung von Azure-Web-Apps finden Sie unter [Web-Apps – Übersicht](../app-service/app-service-web-overview.md).
 
-Dieses Beispiel basiert auf der manuellen Bereitstellung von Azure Active Directory-Identitäten. Sie sollten stattdessen jedoch die [verwaltete Dienstidentität (Managed Service Identity, MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) verwenden. MSIs können automatisch Azure AD-Identitäten bereitstellen. Weitere Informationen finden Sie im Beispiel im [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) und im zugehörigen Tutorial [MSI mit App Service und Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). Sie können sich außerdem das für Key Vault spezifische [MSI-Tutorial](tutorial-web-application-keyvault.md) ansehen.
-
+Dieses Beispiel basiert auf der manuellen Bereitstellung von Azure Active Directory-Identitäten. Sie sollten aber stattdessen [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) verwenden, da hierbei automatisch Azure AD-Identitäten bereitgestellt werden. Weitere Informationen finden Sie im [Beispiel auf GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) und im zugehörigen Tutorial zu [App Service und Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). Sie können auch den für Key Vault spezifischen Artikel [Tutorial: Konfigurieren einer Azure-Webanwendung zum Lesen eines Geheimnisses aus Key Vault](tutorial-web-application-keyvault.md) verwenden.
 
 ## <a id="packages"></a>Hinzufügen von NuGet-Paketen
 
@@ -145,14 +144,19 @@ Nun, da Sie eine Azure AD-App mithilfe einer Client-ID und eines geheimen Client
 
 ```powershell
 #Create self-signed certificate and export pfx and cer files 
-$PfxFilePath = "c:\data\KVWebApp.pfx" 
-$CerFilePath = "c:\data\KVWebApp.cer" 
-$DNSName = "MyComputer.Contoso.com" 
-$Password ="MyPassword" 
+$PfxFilePath = 'KVWebApp.pfx'
+$CerFilePath = 'KVWebApp.cer'
+$DNSName = 'MyComputer.Contoso.com'
+$Password = 'MyPassword"'
+
+$StoreLocation = 'CurrentUser' #be aware that LocalMachine requires elevated privileges
+$CertBeginDate = Get-Date
+$CertExpiryDate = $CertBeginDate.AddYears(1)
+
 $SecStringPw = ConvertTo-SecureString -String $Password -Force -AsPlainText 
-$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\LocalMachine\My" -NotBefore 05/15/2018 -NotAfter 05/15/2019 
-Export-PfxCertificate -cert $cert -FilePath $PFXFilePath -Password $SecStringPw 
-Export-Certificate -cert $cert -FilePath $CerFilePath 
+$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\$StoreLocation\My" -NotBefore $CertBeginDate -NotAfter $CertExpiryDate -KeySpec Signature
+Export-PfxCertificate -cert $Cert -FilePath $PFXFilePath -Password $SecStringPw 
+Export-Certificate -cert $Cert -FilePath $CerFilePath 
 ```
 
 Notieren Sie sich das Enddatum und das Kennwort für die PFX-Datei (in diesem Beispiel: 15. Mai 2019 und „MyPassword“). Sie benötigen diese für das nachfolgende Skript. 
@@ -172,7 +176,7 @@ $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwe
 $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
 
 
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "http://kvwebapp" -PermissionsToSecrets all -ResourceGroupName 'contosorg'
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "http://kvwebapp" -PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge -ResourceGroupName 'contosorg'
 
 # get the thumbprint to use in your app settings
 $x509.Thumbprint

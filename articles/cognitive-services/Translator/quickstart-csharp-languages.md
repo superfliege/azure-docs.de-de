@@ -1,25 +1,27 @@
 ---
-title: 'Textübersetzung: Abrufen unterstützter Sprachen mit C# | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung rufen Sie eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab. Dazu verwenden Sie die Textübersetzungs-API mit C# in Cognitive Services.
+title: 'Schnellstart: Abrufen von unterstützten Sprachen – Textübersetzung-API, C#'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung rufen Sie mit der Textübersetzungs-API und C# eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 001f4bc67170d28dd56d6f8a773586c5e6968503
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 967e978518debb5aef071807b1482d6f225c062f
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43769496"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367711"
 ---
 # <a name="quickstart-get-supported-languages-with-c35"></a>Schnellstart: Abrufen der unterstützten Sprachen mit C#
 
 In dieser Schnellstartanleitung rufen Sie mit der Textübersetzungs-API eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab.
+
+Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

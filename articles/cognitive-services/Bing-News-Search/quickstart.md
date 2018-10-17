@@ -1,23 +1,23 @@
 ---
-title: Schnellstart für die Bing-News-Suche-API | Microsoft-Dokumentation
+title: 'Schnellstart: Bing-News-Suche-API'
+titlesuffix: Azure Cognitive Services
 description: In diesem Artikel lernen Sie die ersten Schritte mit der Bing-News-Suche-API kennen.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 9CF6EAF3-42D8-4321-983C-4AC3896E8E03
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b3f2b36034ab33b4f5eec2d138103c3e4d8e21f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bc3d2e43983791cf8f666660675a7dd537f04d77
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034330"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802524"
 ---
-# <a name="your-first-news-search-query"></a>Ihre erste News-Suche-Abfrage
+# <a name="quickstart-your-first-news-search-query"></a>Schnellstart: Ihre erste News-Suchabfrage
 
 Bevor Sie Ihren ersten Aufruf vornehmen können, benötigen Sie einen Cognitive Services-Abonnementschlüssel. Unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api) erfahren Sie, wie Sie einen Schlüssel erhalten.
 

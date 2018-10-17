@@ -1,22 +1,23 @@
 ---
-title: 'Benutzerdefinierte Bing-Suche: Erstellen einer benutzerdefinierten Suchwebseite | Microsoft Docs'
-description: Beschreibt, wie eine benutzerdefinierte Suchinstanz konfiguriert und in eine Webseite integriert wird.
+title: 'Tutorial: Erstellen einer benutzerdefinierten Suchwebseite – benutzerdefinierte Bing-Suche'
+titlesuffix: Azure Cognitive Services
+description: Beschreibt, wie eine Instanz der benutzerdefinierten Suche konfiguriert und in eine Webseite integriert wird.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: 8bc1520325afc256ac62cc1f1dfaf24c53da4b83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3e892131a0109d2fff924940542b5d8b2b701950
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979997"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815374"
 ---
-# <a name="build-a-custom-search-web-page"></a>Erstellen einer benutzerdefinierten Suchwebseite
+# <a name="tutorial-build-a-custom-search-web-page"></a>Tutorial: Erstellen einer benutzerdefinierten Suchwebseite
 
 Die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten Suchbenutzeroberfläche für Themen, die Sie interessieren. Wenn Sie beispielsweise Besitzer einer Kampfsportwebsite sind, die eine Suchbenutzeroberfläche bietet, können Sie die Domänen, Unterwebsites und Webseiten angeben, die Bing durchsucht. Ihre Benutzer sehen Suchergebnisse, die auf den Inhalt zugeschnitten sind, für den sie sich interessieren, anstatt durch allgemeine Suchergebnisse blättern zu müssen, die möglicherweise irrelevante Inhalte enthalten. 
 
@@ -78,7 +79,7 @@ Um Ergebnisse von bestimmten Websites oder URLs auszuschließen, fügen Sie dies
 
 ## <a name="add-pinned-entries"></a>Hinzufügen angehefteter Einträge
 
-Um eine bestimmte Webseite am Anfang der Suchergebnisse anzuheften, fügen Sie auf der Registerkarte **Angeheftet** die Webseite und den Abfragebegriff hinzu. Die Registerkarte **Angeheftet** enthält eine Liste mit Webseiten- und Abfragebegriffpaaren, die die Webseite angeben, die als oberstes Ergebnis für eine bestimmte Abfrage angezeigt wird. Die Webseite wird nur dann angeheftet, wenn die Abfragezeichenfolge des Benutzers basierend auf der Übereinstimmungsbedingung der Pin mit der Abfragezeichenfolge der Pin übereinstimmt. [Weitere Informationen](../define-your-custom-view.md#pin-to-top)
+Um eine bestimmte Webseite am Anfang der Suchergebnisse anzuheften, fügen Sie auf der Registerkarte **Angeheftet** die Webseite und den Abfragebegriff hinzu. Die Registerkarte **Angeheftet** enthält eine Liste mit Webseiten- und Abfragebegriffpaaren, die die Webseite angeben, die als oberstes Ergebnis für eine bestimmte Abfrage angezeigt wird. Die Webseite wird nur dann angeheftet, wenn die Abfragezeichenfolge des Benutzers basierend auf der Übereinstimmungsbedingung der Pin mit der Abfragezeichenfolge der Pin übereinstimmt. [Weitere Informationen](../define-your-custom-view.md#pin-to-top).
 
 1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Angeheftet**, und geben Sie die Webseite und den Abfragebegriff der Webseite ein, die als oberstes Ergebnis zurückgegeben werden soll.  
   

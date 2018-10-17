@@ -9,12 +9,12 @@ ms.author: govindk
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 0bf5e47513ded4b2c65e7291db497e53a42776a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f73a201a25bb2f975e8a261a6c21aa7b066c3a7c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976175"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247849"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die Cassandra-API
 
@@ -62,7 +62,7 @@ Nachdem Sie die Anforderungen Ihrer Workload ermittelt haben, sollten Sie anhand
 
 ## <a name="prerequisites-for-migration"></a>Voraussetzungen für die Migration
 
-* **Erstellen von Tabellen im Azure Cosmos DB-Konto für die Cassandra-API:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie vorab alle Ihre Tabellen im Azure-Portal oder mit cqlsh.
+* **Erstellen von Tabellen im Azure Cosmos DB-Konto für die Cassandra-API:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie vorab alle Ihre Tabellen im Azure-Portal oder mit cqlsh. Wenn Sie als Migrationsziel ein Azure Cosmos DB-Konto mit Durchsatz auf Datenbankebene verwenden, geben Sie beim Erstellen der Azure Cosmos DB-Container einen Partitionsschlüssel an.
 
 * **Erhöhen des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach der Durchsatzmenge, die Sie für Ihre Tabellen in Azure Cosmos DB bereitstellen. Erhöhen Sie den Durchsatz für die Dauer der Migration. Mit dem höheren Durchsatz können Sie eine Ratenbegrenzung vermeiden und Migrationen in kürzerer Zeit durchführen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zum Erhöhen des Durchsatzes finden Sie unter [Festlegen von Durchsatz](set-throughput.md) für Azure Cosmos DB-Container. Es wird außerdem empfohlen, ein Azure Cosmos DB-Konto in derselben Region wie die Quelldatenbank zu verwenden. 
 

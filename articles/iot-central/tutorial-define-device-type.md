@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7121c83aea75f3b23820a7b0504fa704ec9f3016
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702543"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984304"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -427,7 +427,7 @@ Nachdem Sie Ihre Gerätevorlage **Connected Air Conditioner** definiert haben, k
     | Titel                   | Serial number |
     | Settings and Properties (Einstellungen und Eigenschaften) | Seriennummer |
 
-    ![Einstellungen für die Seriennummerneigenschaft](./media/tutorial-define-device-type/propertysettings1.png)
+    ![Einstellungen für die Seriennummerneigenschaft](./media/tutorial-define-device-type/propertysettings3.png)
 
     Klicken Sie auf **Speichern**.
 
@@ -442,7 +442,7 @@ Nachdem Sie Ihre Gerätevorlage **Connected Air Conditioner** definiert haben, k
     | Titel                   | Firmware version |
     | Settings and Properties (Einstellungen und Eigenschaften) | Firmware Version |
 
-    ![Einstellungen für die Seriennummerneigenschaft](./media/tutorial-define-device-type/propertysettings2.png)
+    ![Einstellungen für die Seriennummerneigenschaft](./media/tutorial-define-device-type/propertysettings3.png)
 
     Klicken Sie auf **Speichern**.
 

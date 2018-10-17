@@ -1,21 +1,23 @@
 ---
-title: Python-Schnellstart für Project URL Preview – Microsoft Cognitive Services | Microsoft Docs
-description: Skriptbeispiel für den schnellen Einstieg in das Project URL Preview in Microsoft Cognitive Services in Azure
+title: 'Schnellstart: „Projekt: URL-Vorschau“, Python'
+titlesuffix: Azure Cognitive Services
+description: 'Skriptbeispiel für den schnellen Einstieg in die Verwendung des „Projekts: URL-Vorschau“ mit Python.'
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 78b2d83b02aa9ea32509029c7456e04e420b8572
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: c4af701188c6453bd3c067b838519c32862af13d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376250"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867271"
 ---
-# <a name="url-preview-python-quickstart"></a>Python-Schnellstart für die URL-Vorschau
+# <a name="quickstart-url-preview-with-python"></a>Schnellstart: URL-Vorschau mit Python
 
 Im folgenden Python-Beispiel wird eine URL-Vorschau für die SwiftKey-Website erstellt: https://swiftkey.com/en.
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: abed9fd8d466b582b534b365f4be4257f4986435
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38767101"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736001"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>Schnellstart: Erstellen eines Azure Media Services-Kontos
 
@@ -30,7 +30,7 @@ Diese Schnellstartanleitung beschreibt die Schritte zum Erstellen eines neuen Az
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-azure"></a>Anmelden bei Azure
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an, und starten Sie **CloudShell**, um CLI-Befehle auszuführen, wie in den nächsten Schritten gezeigt.
 
@@ -56,9 +56,9 @@ az group create -n <myresourcegroup> -l westus2
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-Wenn Sie ein Media Services-Konto erstellen, müssen Sie die ID einer Azure Storage-Kontoressource angeben. Das angegebene Storage-Konto wird an Ihr Media Services-Konto angefügt. 
+Wenn Sie ein Media Services-Konto erstellen, müssen Sie die ID einer Azure Storage-Kontoressource angeben. Das angegebene Speicherkonto wird an Ihr Media Services-Konto angefügt. 
 
-Sie müssen über ein **primäres** Storage-Konto verfügen. Darüber hinaus können Sie beliebig viele **sekundäre** Storage-Konten an Ihr Media Services-Konto anfügen. Media Services unterstützt Konten vom Typ **Allgemein v2** (GPv2) oder **Allgemein v1** (GPv1). Reine Blobkonten sind als **primäre** Konten nicht zulässig. Weitere Informationen zu Storage-Konten finden Sie unter [Optionen für Azure Storage-Konten](../../storage/common/storage-account-options.md). 
+Sie müssen über ein **primäres** Speicherkonto verfügen. Darüber hinaus können Sie beliebig viele **sekundäre** Speicherkonten an Ihr Media Services-Konto anfügen. Media Services unterstützt Konten des Typs **general-purpose v2** oder **general-purpose v1**. Blobspeicherkonten sind als **primäre** Konten nicht zulässig. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../../storage/common/storage-account-overview.md). 
 
 Der folgende Befehl erstellt das Storage-Konto, das dem (primären) Media Services-Konto zugeordnet werden soll. Ersetzen Sie im unten stehenden Skript den Platzhalter *storageaccountforams*. Die Zeichenfolge für „account_name“ muss weniger als 24 Zeichen lang sein.
 

@@ -1,27 +1,29 @@
 ---
-title: Emotionen-API cURL-Schnellstart | Microsoft Docs
-description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Emotionen-API mit cURL in Cognitive Services.
+title: 'Schnellstart: Erkennen von Emotionen auf Gesichtern in einem Bild – Emotionen-API, cURL'
+titlesuffix: Azure Cognitive Services
+description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Emotionen-API mit cURL.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: a7ca2cac718797462bb4dc889b3f1361b252435e
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ROBOTS: NOINDEX
+ms.openlocfilehash: dfdaa89c9d29e419539f385f601dc7f264bf838e
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021097"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237074"
 ---
-# <a name="emotion-api-curl-quick-start"></a>Emotionen-API cURL-Schnellstart
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Schnellstart: Erstellen einer App zur Erkennung von Emotionen auf Gesichtern in einem Bild
 
 > [!IMPORTANT]
-> Die Video-API-Vorschau ist am 30. Oktober 2017 abgelaufen. Testen Sie die neue [Video-Indexer-API (Vorschau)](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Extrahieren Sie Erkenntnisse aus Videos, und verbessern Sie die Auffindbarkeit von Inhalten, z.B. mit Suchergebnissen durch die Erkennung von gesprochenen Wörtern, Gesichtern, Zeichen und Emotionen. [Weitere Informationen](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
+> Die Emotionen-API wird am 15. Februar 2019 eingestellt. Die Funktion zur Erkennung von Emotionen ist jetzt als Teil der [Gesichtserkennungs-API](https://docs.microsoft.com/azure/cognitive-services/face/) allgemein verfügbar.
 
-Dieser Artikel enthält Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der [Recognize-Methode der Emotionen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) mit cURL zum Erkennen der von einer oder mehreren Personen auf einem Bild ausgedrückten Emotionen. 
+Dieser Artikel enthält Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der [Recognize-Methode der Emotionen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) mit cURL zum Erkennen der von einer oder mehreren Personen auf einem Bild ausgedrückten Emotionen.
 
 ## <a name="prerequisite"></a>Voraussetzung
 * Rufen Sie [hier](https://azure.microsoft.com/try/cognitive-services/) Ihren kostenlosen Abonnementschlüssel ab.
@@ -38,16 +40,16 @@ curl -v -X POST "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recogni
 -H "Content-Type: application/json"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
---data-ascii "{body}" 
+--data-ascii "{body}"
 ```
 
 ## <a name="recognize-emotions-sample-response"></a>Beispielantwort der Emotionserkennung
 Ein erfolgreicher Aufruf gibt ein Array von Gesichtseinträgen zusammen mit den ihnen zugeordneten Emotionsbewertungen in der Rangfolge der Rechteckgröße der Gesichter in absteigender Reihenfolge zurück. Eine leere Antwort zeigt an, dass keine Gesichter erkannt wurden. Ein Emotionseintrag enthält die folgenden Felder:
 * faceRectangle: Rechteckposition des Gesichts auf dem Bild
-* scores: Emotionsbewertungen für jedes Gesicht auf dem Bild 
+* scores: Emotionsbewertungen für jedes Gesicht auf dem Bild
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {
@@ -68,4 +70,3 @@ application/json
     }
   }
 ]
-

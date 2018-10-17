@@ -1,53 +1,52 @@
 ---
-title: cURL-Schnellstart für OCR mit der Maschinelles Sehen-API | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild, indem Sie die Maschinelles Sehen-API mit cURL in Cognitive Services verwenden.
+title: 'Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, cURL – Maschinelles Sehen'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild mithilfe der Maschinelles Sehen-API und cURL.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 09/10/2018
 ms.author: v-deken
-ms.openlocfilehash: 3a9ebafa5e367c4fcd7dce63c54c9fdc14eb3812
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: ed064728d32f24e5d61da26f3f9e8297bff8bc99
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770143"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630178"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-curl"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, cURL
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-curl-in-computer-vision"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der REST-API und cURL in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild (auch als Optical Character Recognition (OCR) bezeichnet), indem Sie die Maschinelles Sehen-API verwenden.
+In dieser Schnellstartanleitung extrahieren Sie mittels optischer Zeichenerkennung (Optical Character Recognition, OCR) gedruckten Text aus einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- Sie benötigen [cURL](https://curl.haxx.se/windows).
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="ocr-request"></a>OCR-Anforderung
+## <a name="create-and-run-the-sample-command"></a>Erstellen und Ausführen des Beispielbefehls
 
-Mit der [OCR-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
+1. Kopieren Sie den folgenden Befehl, und fügen Sie ihn in einen Text-Editor ein.
+1. Nehmen Sie die folgenden Änderungen im Befehl vor, falls dies erforderlich ist:
+    1. Ersetzen Sie den `<subscriptionKey>`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie die Anforderungs-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr`) durch die Endpunkt-URL für die [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ändern Sie optional die Bild-URL im Anforderungstext (`https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\`) in die URL eines anderen Bilds, das analysiert werden soll.
+1. Öffnen Sie ein Eingabeaufforderungsfenster.
+1. Fügen Sie den Befehl aus dem Text-Editor in das Eingabeaufforderungsfenster ein, und führen Sie den Befehl aus.
 
-1. Kopieren Sie den folgenden Code in einen Editor.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie die Anforderungs-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0`) ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ändern Sie optional das Bild (`{\"url\":\"...`), das Sie analysieren möchten.
-1. Öffnen Sie auf einem Computer, auf dem cURL installiert ist, ein Befehlsfenster.
-1. Fügen Sie den Code in das Fenster ein, und führen Sie den Befehl aus.
-
->[!NOTE]
->Sie müssen in Ihrem REST-Aufruf den gleichen Standort verwenden, den Sie zum Erwerb Ihrer Abonnementschlüssel verwendet haben. Wenn Sie Ihre Abonnementschlüssel beispielsweise von „westus“ erhalten haben, ersetzen Sie „westcentralus“ in der URL unten durch „westus“.
-
-```json
-curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr?language=unk&detectOrientation=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\"}"
+```console
+curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr?language=unk&detectOrientation=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\"}"
 ```
 
-## <a name="ocr-response"></a>OCR-Antwort
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Bei einer erfolgreichen Ausführung enthalten die zurückgegebenen OCR-Ergebnisse Text, Begrenzungsrahmen für Regionen, Zeilen und Wörter, z.B.:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Dies wird im folgenden Beispiel veranschaulicht:
 
 ```json
 {
@@ -148,9 +147,13 @@ Bei einer erfolgreichen Ausführung enthalten die zurückgegebenen OCR-Ergebniss
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie das Eingabeaufforderungsfenster und den Text-Editor nicht mehr benötigen, schließen Sie sie.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie die Maschinelles Sehen-APIs, die zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem sowie handschriftlichem Text verwendet werden. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Erkunden Sie die Maschinelles Sehen-API, die zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem sowie handschriftlichem Text verwendet wird. Wenn Sie schnell mit Ihren Experimenten mit der Maschinelles Sehen-API beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
 > [!div class="nextstepaction"]
-> [Maschinelles Sehen-APIs erkunden](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Erkunden der Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

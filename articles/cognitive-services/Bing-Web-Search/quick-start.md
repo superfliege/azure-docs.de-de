@@ -1,28 +1,29 @@
 ---
-title: Schnellstart für die Websuche-API | Microsoft-Dokumentation
+title: 'Schnellstart: Websuche-API'
+titleSuffix: Azure Cognitive Services
 description: In diesem Artikel lernen Sie die ersten Schritte mit der Bing-Websuche-API kennen.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: 27B4B51A-D017-44C8-8E4E-9684DC553886
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 0b8c4678a518985a4be3ee426a85b0a85dd2365d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: af32abe1c61c44b14d0f70033aee54aa7eba7c8b
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373226"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126240"
 ---
 # <a name="your-first-bing-search-query"></a>Ihre erste Bing-Suchabfrage
 
 Bevor Sie Ihren ersten Aufruf vornehmen können, benötigen Sie einen Cognitive Services-Abonnementschlüssel. Unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) erfahren Sie, wie Sie einen Schlüssel erhalten.
 
 Um nur Websuchergebnisse zu erhalten, senden Sie eine GET-Anforderung an den folgenden Endpunkt:  
-  
+
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search
 ```  
@@ -30,24 +31,24 @@ https://api.cognitive.microsoft.com/bing/v7.0/search
 Die Anforderung muss das HTTPS-Protokoll verwenden.
 
 Alle Anforderungen sollten von einem Server stammen. Das Verteilen eines Schlüssels als Teil einer Clientanwendung birgt ein größeres Risiko, dass eine böswillige dritte Partei darauf zugreift. Aufrufe von einem Server stellen zudem einen einzelnen Upgradepunkt für zukünftige Versionen der API dar.  
-  
+
 Die Anforderung muss den Abfrageparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query) angeben, der den Suchbegriff des Benutzers enthält. Obwohl er optional ist, sollte die Anforderung auch den Abfrageparameter [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#mkt) angeben, wodurch der Markt identifiziert wird, von dem die Ergebnisse stammen sollen. Unter [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters) finden Sie eine Liste optionaler Abfrageparameter wie `responseFilter` und `textDecorations`. Alle Abfrageparameterwerte müssen URL-codiert sein.  
-  
+
 Die Anforderung muss den [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#subscriptionkey)-Header angeben. Auch wenn dies optional ist, sollten Sie die folgenden Header ebenfalls angeben:  
-  
+
 -   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#clientid)  
 -   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#clientip)  
 -   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#location)  
 
-Die Client-IP- und Adressheader sind für die Rückgabe von standortbezogenem Inhalt wichtig. Bei der Benutzerabfrage *sailing+lessons* beispielsweise werden aller Wahrscheinlichkeit nach Kurse gesucht, die in der Nähe gelegen sind. Wenn die Ergebnisse Kurse enthalten sollen, die in der Nähe des Benutzerstandorts verfügbar sind, müssen Sie den Standortheader und optional den Client-IP-Header einschließen. Hierbei ist weniger entscheidend, ob im Abfrageausdruck explizit ein Standort (z.B. „sailing+lessons+florida+keys“) erwähnt wird. 
+Die Client-IP- und Adressheader sind für die Rückgabe von standortbezogenem Inhalt wichtig. Bei der Benutzerabfrage *sailing+lessons* beispielsweise werden aller Wahrscheinlichkeit nach Kurse gesucht, die in der Nähe gelegen sind. Wenn die Ergebnisse Kurse enthalten sollen, die in der Nähe des Benutzerstandorts verfügbar sind, müssen Sie den Standortheader und optional den Client-IP-Header einschließen. Hierbei ist weniger entscheidend, ob im Abfrageausdruck explizit ein Standort (z.B. „sailing+lessons+florida+keys“) erwähnt wird.
 
 Eine Liste aller Anforderungs- und Antwortheader finden Sie unter [Header](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers).
 
 ## <a name="the-request"></a>Die Anforderung
 
-Im Folgenden ist eine Suchanforderung dargestellt, die alle vorgeschlagenen Abfrageparameter und -header enthält. Wenn Sie zuvor noch keine der Bing-APIs aufgerufen haben, lassen Sie den Client-ID-Header weg. Schließen Sie die Client-ID nur ein, wenn Sie bereits eine Bing-API aufgerufen haben und Bing eine Client-ID für die Kombination aus Benutzer und Gerät zurückgegeben hat. 
-  
+Im Folgenden ist eine Suchanforderung dargestellt, die alle vorgeschlagenen Abfrageparameter und -header enthält. Wenn Sie zuvor noch keine der Bing-APIs aufgerufen haben, lassen Sie den Client-ID-Header weg. Schließen Sie die Client-ID nur ein, wenn Sie bereits eine Bing-API aufgerufen haben und Bing eine Client-ID für die Kombination aus Benutzer und Gerät zurückgegeben hat.
+
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+lessons+seattle&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
@@ -265,6 +266,6 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie die API. Besuchen Sie die [Testkonsole für die Bing-Websuche-API](https://dev.cognitive.microsoft.com/docs/services/56b43eeccf5ff8098cef3807/operations/56b4447dcf5ff8098cef380d). 
+Testen Sie die API. Besuchen Sie die [Testkonsole für die Bing-Websuche-API](https://dev.cognitive.microsoft.com/docs/services/56b43eeccf5ff8098cef3807/operations/56b4447dcf5ff8098cef380d).
 
 Ausführliche Details zur Nutzung der Antwortobjekte finden Sie auf der Seite [Internetsuchen](./search-the-web.md).

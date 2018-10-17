@@ -1,19 +1,21 @@
 ---
-title: 'Schnellstart: Verwenden von Ruby zum Aufrufen der Bing-Websuche-API'
+title: 'Schnellstart: Ausführen einer Suche mit Ruby – Bing-Websuche-API'
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie die Bing-Websuche-API zum ersten Mal aufrufen, indem Sie Ruby verwenden, und wie Sie eine JSON-Antwort erhalten.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: a60bf0ef12272be3b224fdbf9f9819057fe4aa55
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: e1819be51c339b302dbc1181e2a8f998170b2413
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888704"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127056"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von Ruby zum Aufrufen der Bing-Websuche-API  
 
@@ -91,7 +93,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="put-it-all-together"></a>Zusammenfügen der Teile
+## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
 Der letzte Schritt ist das Überprüfen Ihres Codes und dessen Ausführung! Hier ist das vollständige Programm angegeben, falls Sie Ihren Code mit unserem Code vergleichen möchten:
 

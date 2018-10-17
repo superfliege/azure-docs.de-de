@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: dcc0456637c17e779593b121025596149398afba
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 3bae20a7d6eea298dd09d24c0c5b53365784b3d0
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410220"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239182"
 ---
 # <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
 
@@ -37,7 +37,7 @@ Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar:
 - **[Azure Cosmos DB:](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds.
 - **[Azure Key Vault:](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)** Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds
 
-**Vorschau**
+**Preview**
 
 - **[Azure SQL Data Warehouse:](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion in allen Azure-Regionen mit öffentlichen Clouds verfügbar
 - **[Azure Service Bus:](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion verfügbar.
@@ -49,7 +49,7 @@ Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Upda
 
 Dienstendpunkte bieten folgende Vorteile:
 
-- **Verbesserte Sicherheit für Ihre Azure-Dienstressourcen**: Mit Dienstendpunkten können Ressourcen von Azure-Diensten auf Ihr virtuelles Netzwerk beschränkt und so geschützt werden. Das Sichern von Dienstressourcen in einem virtuellen Netzwerk erhöht die Sicherheit, da der Zugriff über das öffentliche Internet auf Ressourcen vollständig verhindert und nur Datenverkehr aus Ihrem virtuellen Netzwerk zugelassen wird.
+- **Verbesserte Sicherheit für Ihre Azure-Dienstressourcen:** Der private VNET-Adressraum kann sich überschneiden und daher nicht zur eindeutigen Identifizierung von Datenverkehr aus Ihrem VNET verwendet werden. Dienstendpunkte ermöglichen es, Azure-Dienstressourcen für Ihr virtuelles Netzwerk zu schützen, indem die VNET-Identität auf den Dienst erweitert wird. Nachdem Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert wurden, können Sie Ressourcen von Azure-Diensten auf Ihr virtuelles Netzwerk beschränken und auf diese Weise schützen, indem Sie den Ressourcen eine Regel für das virtuelle Netzwerk hinzufügen. Auf diese Weise erhöhen Sie die Sicherheit, da der Ressourcenzugriff über das öffentliche Internet vollständig verhindert und nur Datenverkehr aus Ihrem virtuellen Netzwerk zugelassen wird.
 - **Optimale Weiterleitung des Datenverkehrs für Azure-Dienste aus Ihrem virtuellen Netzwerk**: Heutzutage wird für alle Routen in Ihrem virtuellen Netzwerk, die für Internet-Datenverkehr den Weg auf Ihre lokalen und/oder virtuellen Geräte erzwingen (als Tunnelerzwingung bezeichnet), auch für den Datenverkehr von Azure-Diensten die gleiche Route wie für den Internet-Datenverkehr erzwungen. Dienstendpunkte ermöglichen eine optimale Weiterleitung für Azure-Datenverkehr. 
 
   Endpunkte leiten den Datenverkehr der Dienste direkt aus Ihrem virtuellen Netzwerk an den Dienst im Microsoft Azure-Backbone-Netzwerk. Die Verwaltung von Datenverkehr im Azure-Backbonenetzwerk ermöglicht Ihnen weiterhin die Überwachung und Überprüfung von ausgehendem Internet-Datenverkehr aus Ihren virtuellen Netzwerken durch die Tunnelerzwingung, ohne dass sich dies auf den Datenverkehr der Dienste auswirkt. Informieren Sie sich über [benutzerdefinierte Routen und die Tunnelerzwingung](virtual-networks-udr-overview.md).

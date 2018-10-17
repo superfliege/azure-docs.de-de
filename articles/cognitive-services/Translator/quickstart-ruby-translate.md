@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Übersetzen von Text mit Ruby | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung übersetzen Sie Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit Ruby in Cognitive Services.
+title: 'Schnellstart: Übersetzen von Text – Textübersetzung, Ruby'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart übersetzen Sie Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit Ruby.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: b4d2e04d67fea140148e626ee94b46fdfcd6bac7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 38b4ee3a2122e0151490ef1a29ee02d498a06b7d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769743"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126546"
 ---
 # <a name="quickstart-translate-text-with-ruby"></a>Schnellstart: Übersetzen von Text mit Ruby
 

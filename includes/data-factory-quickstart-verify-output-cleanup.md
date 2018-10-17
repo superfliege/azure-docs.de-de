@@ -17,6 +17,8 @@ Wenn Sie eine Ressourcengruppe löschen, werden alle Ressourcen einschließlich 
 Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
+Hinweis: Das Löschen einer Ressourcengruppe kann einige Zeit in Anspruch nehmen. Bitte haben Sie etwas Geduld.
+
 Wenn Sie nur die Data Factory und nicht die gesamte Ressourcengruppe löschen möchten, führen Sie den folgenden Befehl aus: 
 
 ```powershell

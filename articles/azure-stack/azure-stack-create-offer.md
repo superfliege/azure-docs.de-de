@@ -3,7 +3,7 @@ title: Erstellen von Angeboten in Azure Stack | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie als Cloudadministrator ein Angebot für Ihre Benutzer in Azure Stack erstellen.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/20/2018
-ms.author: brenduns
+ms.date: 09/12/2018
+ms.author: sethm
 ms.reviewer: efemmano
-ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 4ccff997c7e9f29aafc6966730ab36dfcf72ca9f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "43050439"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077339"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Erstellen von Angeboten in Azure Stack
 
 [Angebote](azure-stack-key-features.md) sind Gruppen mit mindestens einem Plan, die Anbieter Benutzern zum Kauf oder in Form von Abonnements anbieten. In diesem Dokument erfahren Sie, wie Sie ein Angebot erstellen, das den [von Ihnen erstellten Plan](azure-stack-create-plan.md) enthält. Durch dieses Angebot erhalten Abonnenten die Möglichkeit, virtuelle Computer einzurichten.
 
-1. Melden Sie sich beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) an, und klicken Sie auf **Neu** > **Mandantenangebote + Pläne** > **Angebot**.
+1. Melden Sie sich beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external)) an, und klicken Sie auf **+ Ressource erstellen** > **Mandantenangebote + Pläne** > **Angebot**.
 
    ![Erstellen von Angeboten](media/azure-stack-create-offer/image01.png)
   

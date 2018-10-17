@@ -1,23 +1,23 @@
 ---
-title: Node-Schnellstart für das Entitätssuche-SDK | Microsoft-Dokumentation
-description: Setup für die Konsolenanwendung des Entitätssuche-SDK
-titleSuffix: Azure cognitive services
+title: 'Schnellstart: Bing-Entitätssuche-SDK, Node'
+titleSuffix: Azure Cognitive Services
+description: Setup für die Konsolenanwendung des Entitätssuche-SDK mit Node
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 2904ecfed33334458f9b6a9ca2500cd0bfef13bc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f2a5f6a1473cde40928ada6e30f6bd9b780543d
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378501"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814881"
 ---
-# <a name="entity-search-sdk-node-quickstart"></a>Node-Schnellstart für das Entitätssuche-SDK
+# <a name="quickstart-bing-entity-search-sdk-with-node"></a>Schnellstart: Bing-Entitätssuche-SDK mit Node
 
 Das Bing-Entitätssuche-SDK enthält die Funktionalität der REST-API für Entitätsabfragen und das Analysieren von Ergebnissen. 
 

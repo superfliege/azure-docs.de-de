@@ -1,47 +1,57 @@
 ---
-title: PHP-Schnellstart zum Domänenmodell mit der Maschinelles Sehen-API | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung verwenden Sie ein Domänenmodell, um in einem Bild Wahrzeichen zu identifizieren, indem Sie die Maschinelles Sehen-API mit PHP in Cognitive Services verwenden.
+title: 'Schnellstart: Verwenden eines Domänenmodells – REST, PHP – Maschinelles Sehen'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung verwenden Sie ein Domänenmodell, um in einem Bild Sehenswürdigkeiten zu identifizieren, indem Sie die Maschinelles Sehen-API und PHP verwenden.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 335065b45781dd2712f5416fb03a2f8726182472
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 40a4fa90442a5771f6b221a25ddca46d3ebc4f5c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770292"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629490"
 ---
-# <a name="quickstart-use-a-domain-model---rest-php"></a>Schnellstart: Verwenden eines Domänenmodells – REST, PHP
+# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-php-in-computer-vision"></a>Schnellstart: Verwenden eines Domänenmodells mit der REST-API und PHP in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung verwenden Sie ein Domänenmodell, um in einem Bild Wahrzeichen und Prominente zu identifizieren, indem Sie die Maschinelles Sehen-API verwenden.
+In dieser Schnellstartanleitung verwenden Sie ein Domänenmodell, um in einem Bild Sehenswürdigkeiten oder wahlweise Prominente zu identifizieren, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der Methode [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) können Sie ein domänenspezifisches Modell anwenden, um Inhalte in einem Bild zu erkennen.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Verwendung der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- [PHP](https://secure.php.net/downloads.php) muss installiert sein.
+- [PEAR](https://pear.php.net) muss installiert sein.
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="recognize-landmark-request"></a>Recognize Landmark-Anforderung
+## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
-Mit der [Recognize Domain Specific Content-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) können Sie einen bestimmten Satz mit Objekten in einem Bild identifizieren. Die beiden domänenspezifischen Modelle, die derzeit verfügbar sind, sind _celebrities_ (Prominente) und _landmarks_ (Wahrzeichen).
+Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
+1. Installieren Sie das PHP5-Paket [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2).
+   1. Öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
+   1. Führen Sie den folgenden Befehl aus:
 
-1. Kopieren Sie den folgenden Code in einen Editor.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie `uriBase` ggf. in den Speicherort, vom dem Sie Ihren Abonnementschlüssel abgerufen haben.
-1. Legen Sie optional `imageUrl` auf das Bild fest, das Sie analysieren möchten.
-1. Legen Sie optional `domain` auf `celebrities` fest, um das Modell für Prominente zu verwenden.
-1. Speichern Sie die Datei mit der Erweiterung `.php`.
-1. Öffnen Sie die Datei in einem Browserfenster mit PHP-Unterstützung.
+      ```console
+      pear install HTTP_Request2
+      ```
 
-Im folgenden Beispiel wird ein Wahrzeichen in einem Bild zu identifizieren.
+   1. Wenn das Paket erfolgreich installiert wurde, schließen Sie das Eingabeaufforderungsfenster.
 
-In diesem Beispiel wird das PHP5-Paket [HTTP_Request2](http://pear.php.net/package/HTTP_Request2) verwendet.
+1. Kopieren Sie den folgenden Code, und fügen Sie ihn in einen Text-Editor ein.
+1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
+    1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die Methode [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie optional den Wert von `imageUrl` durch die URL eines anderen Bilds, das analysiert werden soll.
+    1. Ersetzen Sie optional den Wert des Anforderungsparameters `domain` durch `celebrites`, wenn Sie anstelle des Domänenmodells `landmarks` das Domänenmodell `celebrities` verwenden möchten.
+1. Speichern Sie den Code als Datei mit der Erweiterung `.php`. Beispiel: `use-domain-model.php`.
+1. Öffnen Sie ein Browserfenster mit PHP-Unterstützung.
+1. Ziehen Sie die Datei in das Browserfenster, und legen Sie sie dort ab.
 
 ```php
 <html>
@@ -105,9 +115,9 @@ catch (HttpException $ex)
 </html>
 ```
 
-## <a name="recognize-landmark-response"></a>Recognize Landmark-Antwort
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebsite analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Im Folgenden finden Sie ein Beispiel dafür:
 
 ```json
 {
@@ -128,9 +138,22 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Datei nicht mehr benötigen, löschen Sie sie, und deinstallieren Sie dann das PHP5-Paket `HTTP_Request2`. Führen Sie die folgenden Schritte durch, um das Paket zu deinstallieren:
+
+1. Öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
+2. Führen Sie den folgenden Befehl aus:
+
+   ```console
+   pear uninstall HTTP_Request2
+   ```
+
+3. Wenn das Paket erfolgreich deinstalliert wurde, schließen Sie das Eingabeaufforderungsfenster.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie die Maschinelles Sehen-APIs, die zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem sowie handschriftlichem Text verwendet werden. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Erkunden Sie die Maschinelles Sehen-API, die zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem sowie handschriftlichem Text verwendet wird. Wenn Sie schnell mit Ihren Experimenten mit der Maschinelles Sehen-API beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
 > [!div class="nextstepaction"]
-> [Maschinelles Sehen-APIs erkunden](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Erkunden der Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

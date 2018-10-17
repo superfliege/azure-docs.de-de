@@ -9,12 +9,12 @@ ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 01955ba7a61b3eb46be6bad72c7243c4918add12
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8f3be2b1eb9c12aab212fb198283dce9ee3d3912
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263047"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982860"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Erhalten einer Benachrichtigung, wenn ein Metrikwert eine Bedingung erfüllt
 
@@ -45,9 +45,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
      ![Erstellter Serientrigger im Logik-App-Designer im Bereich „Portal“](./media/monitor-quick-resource-metric-alert-portal/logic-app-designer.png)  
 
-6. Richten Sie Werte wie in der folgenden Abbildung dargestellt ein.
+6. Richten Sie Werte wie in folgendem Diagramm dargestellt ein.
 
-    ![Konfigurieren des Logik-App-Triggers im Bereich „Portal“](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png)zu erstellen und zu verwalten. 
+    ![Konfigurieren des Logik-App-Triggers im Bereich „Portal“](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png) 
 
 7. Wählen Sie im Designer den Trigger **Serie** aus.
 

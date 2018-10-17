@@ -1,52 +1,46 @@
 ---
-title: 'Go-Schnellstart: Analysieren von Bildern mit der Maschinelles Sehen-API | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung analysieren Sie ein Bild mithilfe der Maschinelles Sehen-API mit Go in Cognitive Services.
+title: 'Schnellstart: Analysieren eines remote gespeicherten Bilds – REST, Go – Maschinelles Sehen'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung analysieren Sie ein Bild mit der Maschinelles Sehen-API und Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: ef7d6ac818f517615fc98f40ac073e6bfc9a65fd
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: ccdd8922993fb1ea3e723a68f28f95f7b6ffe93b
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770311"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632227"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-go"></a>Schnellstart: Analysieren eines Remotebilds – REST und Go
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>Schnellstart: Analysieren eines remote gespeicherten Bilds mit der REST-API und Go in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung analysieren Sie mithilfe der Maschinelles Sehen-API ein Bild, um visuelle Merkmale zu extrahieren.
+In dieser Schnellstartanleitung analysieren Sie mithilfe der REST-API von Maschinelles Sehen ein remote gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Verwendung der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- [Go](https://golang.org/dl/) muss installiert sein.
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-image-request"></a>Bildanalyseanforderung
+## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
-Mit der [Methode zum Analysieren von Bildern](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren. Sie können ein Bild hochladen oder eine Bild-URL angeben und auswählen, welche Merkmale zurückgegeben werden sollen. Zu den verfügbaren Merkmalen zählen beispielsweise:
+Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-* Eine detaillierte Liste der Tags im Zusammenhang mit dem Bildinhalt
-* Eine Beschreibung des Bildinhalts in einem vollständigen Satz
-* Die Koordinaten, das Geschlecht und das Alter aller im Bild enthaltenen Gesichter
-* Der Bildtyp (ClipArt oder Strichzeichnung)
-* Die dominante Farbe, die Akzentfarbe und, ob ein Bild schwarzweiß ist
-* Die in dieser [Taxonomie](../Category-Taxonomy.md) definierte Kategorie
-* Ob das Bild nicht jugendfreie oder freizügige Inhalte enthält
-
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Kopieren Sie den folgenden Code in einen Editor.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uriBase` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ändern Sie optional den Wert von `imageUrl` in das Bild, das Sie analysieren möchten.
-1. Speichern Sie die Datei mit der Erweiterung `.go`.
-1. Öffnen Sie auf einem Computer, auf dem Go installiert ist, eine Eingabeaufforderung.
-1. Erstellen Sie die Datei, beispielsweise: `go build analyze-image.go`.
-1. Führen Sie die Datei aus, beispielsweise: `analyze-image`.
+1. Kopieren Sie den folgenden Code, und fügen Sie ihn in einen Text-Editor ein.
+1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
+    1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie optional den Wert von `imageUrl` durch die URL eines anderen Bilds, das analysiert werden soll.
+1. Speichern Sie den Code als Datei mit der Erweiterung `.go`. Beispiel: `analyze-image.go`.
+1. Öffnen Sie ein Eingabeaufforderungsfenster.
+1. Führen Sie an der Eingabeaufforderung den Befehl `go build` aus, um zur Paketerstellung die Datei zu kompilieren. Beispiel: `go build analyze-image.go`.
+1. Führen Sie an der Eingabeaufforderung das kompilierte Paket aus. Beispiel: `analyze-image`.
 
 ```go
 package main
@@ -61,12 +55,17 @@ import (
 )
 
 func main() {
-    // For example, subscriptionKey = "0123456789abcdef0123456789ABCDEF"
+    // Replace <Subscription Key> with your valid subscription key.
     const subscriptionKey = "<Subscription Key>"
 
-    // You must use the same location in your REST call as you used to get your
-    // subscription keys. For example, if you got your subscription keys from
-    // westus, replace "westcentralus" in the URL below with "westus".
+    // You must use the same Azure region in your REST API method as you used to
+    // get your subscription keys. For example, if you got your subscription keys
+    // from the West US region, replace "westcentralus" in the URL
+    // below with "westus".
+    //
+    // Free trial subscription keys are generated in the West Central US region.
+    // If you use a free trial subscription key, you shouldn't need to change
+    // this region.
     const uriBase =
         "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze"
     const imageUrl =
@@ -78,18 +77,18 @@ func main() {
 
     reader := strings.NewReader(imageUrlEnc)
 
-    // Create the Http client
+    // Create the HTTP client
     client := &http.Client{
         Timeout: time.Second * 2,
     }
 
-    // Create the Post request, passing the image URL in the request body
+    // Create the POST request, passing the image URL in the request body
     req, err := http.NewRequest("POST", uri, reader)
     if err != nil {
         panic(err)
     }
 
-    // Add headers
+    // Add request headers
     req.Header.Add("Content-Type", "application/json")
     req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 
@@ -101,26 +100,26 @@ func main() {
 
     defer resp.Body.Close()
 
-    // Read the response body.
+    // Read the response body
     // Note, data is a byte array
     data, err := ioutil.ReadAll(resp.Body)
     if err != nil {
         panic(err)
     }
 
-    // Parse the Json data
+    // Parse the JSON data from the byte array
     var f interface{}
     json.Unmarshal(data, &f)
 
-    // Format and display the Json result
+    // Format and display the JSON result
     jsonFormatted, _ := json.MarshalIndent(f, "", "  ")
     fmt.Println(string(jsonFormatted))
 }
 ```
 
-## <a name="analyze-image-response"></a>Bildanalyseantwort
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Dies wird im folgenden Beispiel veranschaulicht:
 
 ```json
 {
@@ -178,9 +177,13 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie das kompilierte Paket nicht mehr benötigen, löschen Sie das Paket sowie die Datei, die zur Paketerstellung kompiliert wurde, und schließen Sie dann das Eingabeaufforderungsfenster und den Text-Editor.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie die Maschinelles Sehen-APIs, die zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem sowie handschriftlichem Text verwendet werden. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Erkunden Sie die Maschinelles Sehen-API, die zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem sowie handschriftlichem Text verwendet wird. Wenn Sie schnell mit Ihren Experimenten mit der Maschinelles Sehen-API beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
 > [!div class="nextstepaction"]
-> [Maschinelles Sehen-APIs erkunden](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Erkunden der Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

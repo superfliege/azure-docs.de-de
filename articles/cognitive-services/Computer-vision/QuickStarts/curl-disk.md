@@ -1,58 +1,53 @@
 ---
-title: cURL-Schnellstart zum Analysieren von lokalen Bildern mit der Maschinelles Sehen-API | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung analysieren Sie ein lokales Bild, indem Sie die Maschinelles Sehen-API mit cURL in Cognitive Services verwenden.
+title: 'Schnellstart: Analysieren eines lokalen Bilds – REST, cURL – Maschinelles Sehen'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung analysieren Sie ein lokales Bild mit der Maschinelles Sehen-API und cURL.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 09/10/2018
 ms.author: v-deken
-ms.openlocfilehash: 93ca3ea6eee3743dfd0c25c9514375ae63a531ee
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 1952d0045550362a242ce1c105c58bd65c815ea6
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770380"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631241"
 ---
-# <a name="quickstart-analyze-a-local-image---rest-curl"></a>Schnellstart: Analysieren eines lokalen Bilds – REST, cURL
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Schnellstart: Analysieren eines lokalen Bilds mit der REST-API und cURL in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung analysieren Sie mithilfe der Maschinelles Sehen-API ein lokales Bild, um visuelle Merkmale zu extrahieren. Informationen zur Analyse eines Remotebilds finden Sie unter [Analyze a remote image with cURL](curl-analyze.md) (Analysieren eines Remotebilds mit cURL).
+In dieser Schnellstartanleitung analysieren Sie mithilfe der REST-API von Maschinelles Sehen ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- Sie benötigen [cURL](https://curl.haxx.se/windows).
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-a-local-image"></a>Analysieren von lokalen Bildern
+## <a name="create-and-run-the-sample-command"></a>Erstellen und Ausführen des Beispielbefehls
 
-Dieses Beispiel ähnelt [Analyze a remote image with cURL](curl-analyze.md) (Analysieren eines Remotebilds mit cURL), aber das zu analysierende Bild wird lokal vom Datenträger gelesen. Drei Änderungen sind erforderlich:
+Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-- Ändern Sie den Inhaltstyp (Content-Type) in `"Content-Type: application/octet-stream"`.
-- Ändern Sie den Switch `-d` in `--data-binary`.
-- Geben Sie das zu analysierende Bild mit der folgenden Syntax an: `@C:/Pictures/ImageToAnalyze.jpg`.
+1. Kopieren Sie den folgenden Befehl, und fügen Sie ihn in einen Text-Editor ein.
+1. Nehmen Sie die folgenden Änderungen im Befehl vor, falls dies erforderlich ist:
+    1. Ersetzen Sie den `<subscriptionKey>`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie die Anforderungs-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze`) durch die Endpunkt-URL für die [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-Methode in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie den Wert von `<localImage>` durch den vollständigen Pfad und Dateinamen des Bilds, das analysiert werden soll. Beispiel: `@C:/Pictures/ImageToAnalyze.jpg`.
+    1. Ändern Sie optional die Sprachparameter der Anforderungs-URL (`language=en`), um eine andere unterstützte Sprache zu verwenden.
+1. Öffnen Sie ein Eingabeaufforderungsfenster.
+1. Fügen Sie den Befehl aus dem Text-Editor in das Eingabeaufforderungsfenster ein, und führen Sie den Befehl aus.
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Kopieren Sie den folgenden Code in einen Editor.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie die Anforderungs-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0`) ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ersetzen Sie `<Image To Analyze>` durch das lokale Bild, das analysiert werden soll.
-1. Ändern Sie optional die Sprache der Antwort (`language=en`).
-1. Öffnen Sie auf einem Computer, auf dem cURL installiert ist, ein Befehlsfenster.
-1. Fügen Sie den Code in das Fenster ein, und führen Sie den Befehl aus.
-
->[!NOTE]
->Sie müssen in Ihrem REST-Aufruf den gleichen Standort verwenden, den Sie zum Erwerb Ihrer Abonnementschlüssel verwendet haben. Wenn Sie Ihre Abonnementschlüssel beispielsweise von „westus“ erhalten haben, ersetzen Sie „westcentralus“ in der URL unten durch „westus“.
-
-```json
-curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" -H "Content-Type: application/octet-stream" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" --data-binary <Image To Analyze>
+```console
+curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" -H "Content-Type: application/octet-stream" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" --data-binary "<localImage>"
 ```
 
-## <a name="analyze-image-response"></a>Antwort zur Bildanalyse
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Dies wird im folgenden Beispiel veranschaulicht:
 
 ```json
 {
@@ -110,9 +105,13 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie das Eingabeaufforderungsfenster und den Text-Editor nicht mehr benötigen, schließen Sie sie.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie die Maschinelles Sehen-APIs, die zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem sowie handschriftlichem Text verwendet werden. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Erkunden Sie die Maschinelles Sehen-API, die zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem sowie handschriftlichem Text verwendet wird. Wenn Sie schnell mit Ihren Experimenten mit der Maschinelles Sehen-API beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
 > [!div class="nextstepaction"]
-> [Maschinelles Sehen-APIs erkunden](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Erkunden der Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

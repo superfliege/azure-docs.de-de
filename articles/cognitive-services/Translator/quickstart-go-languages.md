@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Abrufen unterstützter Sprachen mit Go | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung rufen Sie eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab. Dazu verwenden Sie die Textübersetzungs-API mit Go in Cognitive Services.
+title: 'Schnellstart: Abrufen der unterstützten Sprachen – Textübersetzung, Go'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart rufen Sie eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab. Dazu verwenden Sie die Textübersetzungs-API mit Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: 91ba39f072d97a87250a2d6284df8571905c1b0f
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 6f8725c834e4417321722f7d49e09765e19a3b6d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43769794"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127770"
 ---
 # <a name="quickstart-get-supported-languages-with-go"></a>Schnellstart: Abrufen der unterstützten Sprachen mit Go
 

@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: d649095a6b1b9f692a6795e96c9f15631d36e3e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05bfba9fffa7db75ef4e1a1167b3170a775e1d34
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974509"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785459"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden der Azure Data Box und Überprüfen des Datenuploads in Azure
 
@@ -39,7 +39,10 @@ Stellen Sie zunächst sicher, dass Sie das [Tutorial zum Kopieren von Daten auf 
 ## <a name="ship-data-box-back"></a>Zurücksenden der Data Box
 
 1. Stellen Sie sicher, dass das Gerät ausgeschaltet ist und die Kabel entfernt wurden. Wickeln Sie das mit dem Gerät gelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
-2. Stellen Sie sicher, dass das Adressetikett auf dem Freihanddisplay angezeigt wird, und vereinbaren Sie einen Abholtermin mit Ihrem Kurierdienst. Falls das Adressetikett beschädigt oder nicht mehr vorhanden ist, können Sie es aus dem Azure-Portal herunterladen und dann am Gerät anbringen. Navigieren Sie zu **Übersicht > Versandetikett herunterladen**.
+2. Wenn das Gerät in den USA versendet wird, vergewissern Sie sich, dass das Adressetikett auf der E-Ink-Anzeige angezeigt wird, und vereinbaren Sie einen Abholtermin mit Ihrem Transportunternehmen. Falls das Adressetikett beschädigt oder nicht mehr vorhanden ist, können Sie es aus dem Azure-Portal herunterladen und dann am Gerät anbringen. Navigieren Sie zu **Übersicht > Versandetikett herunterladen**. 
+
+    Wenn das Gerät in Europa versendet wird, wird das Adressetikett nicht auf der E-Ink-Anzeige angezeigt. Das Adressetikett für den Rückversand befindet sich stattdessen in einer durchsichtigen Tasche unter dem Adressetikett für den Hinversand. Entfernen Sie das alte Adressetikett, und achten Sie darauf, dass das Adressetikett gut sichtbar ist.
+    
 3. Planen Sie die Abholung durch UPS, falls Sie das Gerät in den USA zurücksenden. Wenn Sie das Gerät in Europa per DHL zurücksenden, können Sie die Abholung durch DHL anfordern, indem Sie auf der DHL-Website die Luftfrachtbrief-Nummer angeben. Greifen Sie auf die DHL Express-Website für Ihr Land zu, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**. 
 
     Geben Sie die Luftfrachtbrief-Nummer an, und klicken Sie auf **Abholung beauftragen**, um die Abholung anzufordern.

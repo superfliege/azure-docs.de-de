@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 771c4a33603ddf262df3b35992d318d34de6c2dc
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: af6faa6abcc54ef11e066d3a348dac28b23c7af4
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698110"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079088"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools 
 
@@ -42,7 +42,9 @@ Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgende
 
 * [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) oder höher.
 
-* Erhöhung des Durchsatzes: Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für eine einzelne Sammlung oder eine Gruppe von Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im Azure-Portal finden Sie unter „Leistungsstufen und Tarife in Azure Cosmos DB“.
+* **Erhöhung des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für eine einzelne Sammlung oder eine Gruppe von Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im Azure-Portal finden Sie unter „Leistungsstufen und Tarife in Azure Cosmos DB“.
+
+* **Erstellen von Azure Cosmos DB-Ressourcen:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie Ihre gesamten Sammlungen vorab im Azure-Portal. Wenn Sie eine Migration zu einem Azure Cosmos DB-Konto durchführen, das über Durchsatz auf Datenbankebene verfügt, sollten Sie beim Erstellen der Azure Cosmos DB-Sammlungen unbedingt einen Partitionsschlüssel angeben.
 
 ## <a id="Overviewl"></a>Übersicht
 Das Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten aus verschiedensten Quellen in Azure Cosmos DB importiert werden können. Zu diesen Quellen zählen unter anderem:
@@ -171,7 +173,7 @@ Diese Abfrage gibt die folgenden (partiellen) Ergebnisse zurück:
 
 ![Screenshot der SQL-Abfrageergebnisse](./media/import-data/sqlqueryresults.png)
 
-Beachten Sie die Aliase, wie z. B. Address.AddressType und Address.Location.StateProvinceName. Durch Angabe des Schachtelungstrennzeichens "." erstellt das Importtool während des Imports die Filialdokumente "Address" und "Address.Location". Hier finden Sie ein Beispiel für ein Zieldokument in Azure Cosmos DB:
+Beachten Sie die Aliase, wie z. B. Address.AddressType und Address.Location.StateProvinceName. Indem Sie das Schachtelungstrennzeichen „.“ angeben, erstellt das Importtool während des Imports die Filialdokumente „Address“ und „Address.Location“. Hier finden Sie ein Beispiel für ein Zieldokument in Azure Cosmos DB:
 
 *{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
 
@@ -192,7 +194,7 @@ Mit der Importprogrammoption für CSV-Dateiquellen können Sie eine oder mehrere
 
 ![Screenshot der CSV-Beispieldatensätze – CSV in JSON](./media/import-data/csvsample.png)
 
-Beachten Sie die Aliase wie z. B."DomainInfo.Domain_Name" und "RedirectInfo.Redirecting". Durch Angabe des Schachtelungstrennzeichens "." erstellt das Importtool während des Imports die Filialdokumente "DomainInfo" und "RedirectInfo". Hier finden Sie ein Beispiel für ein Zieldokument in Azure Cosmos DB:
+Beachten Sie die Aliase wie z. B."DomainInfo.Domain_Name" und "RedirectInfo.Redirecting". Durch Angabe des Schachtelungstrennzeichens „.“ erstellt das Importtool während des Imports die Filialdokumente „DomainInfo“ und „RedirectInfo“. Hier finden Sie ein Beispiel für ein Zieldokument in Azure Cosmos DB:
 
 *{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
@@ -201,7 +203,7 @@ Das Importtool versucht, Typinformationen für Werte ohne Anführungszeichen in 
 In Bezug auf CSV-Importe gibt es zwei weitere Dinge zu beachten:
 
 1. Standardmäßig werden Tabstopps und Anführungszeichen aus Werten ohne Anführungszeichen immer gekürzt, während Werte in Anführungszeichen unverändert beibehalten werden. Dieses Verhalten kann mithilfe des Kontrollkästchens „Trim quoted values“ (Werte in Anführungszeichen kürzen) oder der Befehlszeilenoption „/s.TrimQuoted“ überschrieben werden.
-2. Standardmäßig wird eine Null ohne Anführungszeichen als Nullwert behandelt. Dieses Verhalten kann mithilfe des Kontrollkästchens „Treat unquoted NULL as string“ (NULL-Wert ohne Anführungszeichen als Zeichenfolge behandeln) oder der Befehlszeilenoption "/s.NoUnquotedNulls" überschrieben werden, sodass ein NULL-Wert ohne Anführungszeichen als NULL-Zeichenfolge behandelt wird.
+2. Standardmäßig wird eine Null ohne Anführungszeichen als Nullwert behandelt. Dieses Verhalten kann mithilfe des Kontrollkästchens „Treat unquoted NULL as string“ (NULL-Wert ohne Anführungszeichen als Zeichenfolge behandeln) oder der Befehlszeilenoption „/s.NoUnquotedNulls“ außer Kraft gesetzt werden, sodass ein NULL-Wert ohne Anführungszeichen als NULL-Zeichenfolge behandelt wird.
 
 Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von CSV-Dateien:
 
@@ -522,6 +524,14 @@ Sie können optional die generierte JSON-Datei  optimieren, wodurch die Größe 
       }
     ]
     }]
+
+Hier ist ein Befehlszeilenbeispiel zum Exportieren der JSON-Datei in Azure-Blobspeicher angegeben:
+
+```
+dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB database_name>" /s.Collection:<CosmosDB collection_name>
+/t:JsonFile /t.File:"blobs://<Storage account key>@<Storage account name>.blob.core.windows.net:443/<Container_name>/<Blob_name>"
+/t.Overwrite
+```
 
 ## <a name="advanced-configuration"></a>Erweiterte Konfiguration
 Geben Sie auf dem Bildschirm "Erweiterte Konfiguration" den Speicherort der Protokolldatei an, in die Fehler geschrieben werden sollen. Für diese Seite gelten folgende Regeln:

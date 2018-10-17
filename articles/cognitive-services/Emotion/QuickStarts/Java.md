@@ -1,27 +1,28 @@
 ---
-title: Emotionen-API Java für Android-Schnellstart | Microsoft Docs
-description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Emotionen-API mit Java for Android in Cognitive Services.
+title: 'Schnellstart: Erkennen von Emotionen auf Gesichtern in einem Bild – Emotionen-API, Java'
+description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Emotionen-API mit Java für Android.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 0e7d3991b195a83a8b87e306b3b34fbed2098581
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5c845c07eff2d4627dd756a49f4b3fee2fca6a7a
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018025"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237619"
 ---
-# <a name="emotion-api-java-for-android-quick-start"></a>Emotionen-API Java for Android-Schnellstart
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Schnellstart: Erstellen einer App zur Erkennung von Emotionen auf Gesichtern in einem Bild
 
 > [!IMPORTANT]
-> Die Video-API-Vorschau ist am 30. Oktober 2017 abgelaufen. Testen Sie die neue [Video-Indexer-API (Vorschau)](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Extrahieren Sie Erkenntnisse aus Videos, und verbessern Sie die Auffindbarkeit von Inhalten, z.B. mit Suchergebnissen durch die Erkennung von gesprochenen Wörtern, Gesichtern, Zeichen und Emotionen. [Weitere Informationen](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
+> Die Emotionen-API wird am 15. Februar 2019 eingestellt. Die Funktion zur Erkennung von Emotionen ist jetzt als Teil der [Gesichtserkennungs-API](https://docs.microsoft.com/azure/cognitive-services/face/) allgemein verfügbar. 
 
-Dieser Artikel enthält Informationen und ein Codebeispiel für den schnellen Einstieg in die Verwendung der [Emotion Recognize-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) in der Android-Clientbibliothek der Emotionen-API. Das Beispiel veranschaulicht, wie Sie Java zum Erkennen der von Personen ausgedrückten Emotionen verwenden können. 
+Dieser Artikel enthält Informationen und ein Codebeispiel für den schnellen Einstieg in die Verwendung der [Emotion Recognize-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) in der Android-Clientbibliothek der Emotionen-API. Das Beispiel veranschaulicht, wie Sie Java zum Erkennen der von Personen ausgedrückten Emotionen verwenden können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Rufen Sie das Emotionen-API Java for Android-SDK [hier](https://github.com/Microsoft/Cognitive-emotion-android) ab.
@@ -50,7 +51,7 @@ public class Main
         try
         {
             // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URL below with "westcentralus".
             URIBuilder uriBuilder = new URIBuilder("https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize");
 
@@ -84,10 +85,10 @@ public class Main
 ## <a name="recognize-emotions-sample-response"></a>Beispielantwort der Emotionserkennung
 Ein erfolgreicher Aufruf gibt ein Array von Gesichtseinträgen zusammen mit den ihnen zugeordneten Emotionsbewertungen in der Rangfolge der Rechteckgröße der Gesichter in absteigender Reihenfolge zurück. Eine leere Antwort zeigt an, dass keine Gesichter erkannt wurden. Ein Emotionseintrag enthält die folgenden Felder:
 * faceRectangle: Rechteckposition des Gesichts auf dem Bild
-* scores: Emotionsbewertungen für jedes Gesicht auf dem Bild 
+* scores: Emotionsbewertungen für jedes Gesicht auf dem Bild
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

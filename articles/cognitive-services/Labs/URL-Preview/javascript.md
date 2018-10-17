@@ -1,21 +1,23 @@
 ---
-title: JavaScript-Schnellstart für Project URL Preview – Microsoft Cognitive Services | Microsoft-Dokumentation
-description: Skriptbeispiel für den schnellen Einstieg in die Bing-URL-Vorschau-API in Microsoft Cognitive Services in Azure
+title: 'Schnellstart: „Projekt: URL-Vorschau“, JavaScript'
+titlesuffix: Azure Cognitive Services
+description: Skriptbeispiel für den schnellen Einstieg in die Verwendung der Bing-URL-Vorschau-API mit JavaScript.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: dda6f7c105dfbadc3c22f0c008aa8759fe12fa03
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.author: rosh
+ms.openlocfilehash: b10e33a0947057c35bb6227cc43f92c4f0a56ceb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301351"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869464"
 ---
-# <a name="url-preview-in-javascript"></a>URL-Vorschau in JavaScript 
+# <a name="quickstart-url-preview-in-javascript"></a>Schnellstart: URL-Vorschau in JavaScript 
 
 Die folgende einseitige Anwendung verwendet JavaScript zum Erstellen einer URL-Vorschau für die SwiftKey-Website: https://swiftkey.com/en. 
 

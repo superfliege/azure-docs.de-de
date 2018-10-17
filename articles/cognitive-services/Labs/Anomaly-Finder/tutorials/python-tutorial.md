@@ -1,22 +1,25 @@
 ---
-title: Python-App zur Erkennung von Anomalien – Microsoft Cognitive Services | Microsoft-Dokumentation
-description: Lernen Sie ein Python-Notebook kennen, das die API zur Anomalieerkennung in Microsoft Cognitive Services verwendet. Senden Sie originale Datenpunkte an die API, und rufen Sie den erwarteten Wert und Anomaliepunkte ab.
+title: 'Tutorial: Anomalieerkennung, Python'
+titlesuffix: Azure Cognitive Services
+description: Lernen Sie ein Python-Notebook kennen, das die Anomalieerkennungs-API verwendet. Senden Sie originale Datenpunkte an die API, und rufen Sie den erwarteten Wert und Anomaliepunkte ab.
 services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: d35f41ddab21aa155376ad52ff4084298dab8fc5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 98f83fbc4db8685526833c3d4f1d15903419ad3f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376146"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887750"
 ---
-# <a name="anomaly-detection-python-application"></a>Python-Anwendung zur Anomalieerkennung
+# <a name="tutorial-anomaly-detection-with-python-application"></a>Tutorial: Anomalieerkennung mit einer Python-Anwendung
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 Das Tutorial veranschaulicht die Verwendung der API zur Anomalieerkennung in Python und die Visualisierung Ihrer Ergebnisse mithilfe beliebter Bibliotheken. Verwenden Sie Jupyter zur Ausführung des Tutorials, und probieren Sie eigene Daten mit Ihrem Abonnementschlüssel aus. Informationen zum Einstieg in interaktive Jupyter-Notebooks finden Sie in der [Jupyter-Dokumentation](http://jupyter.readthedocs.io/en/latest/index.html). 
 
@@ -39,7 +42,7 @@ Das Tutorial veranschaulicht die Verwendung der API zur Anomalieerkennung in Pyt
 
 ## <a name="running-the-tutorial"></a>Ausführen des Tutorials
 
-Um dieses Notebook verwenden zu können, benötigen Sie einen Abonnementschlüssel für die Anomalieerkennungs-API. Suchen Sie die Abonnementseite auf, um sich zu registrieren. Melden Sie sich auf der Seite „Anmelden“ mit Ihrem Microsoft-Konto an. Dort können Sie abonnieren und Ihre Schlüssel abrufen. Fügen Sie Ihren Schlüssel nach Abschluss des Registrierungsvorgangs in den Variablenabschnitt des Notebooks ein (unten dargestellt). Sie können wahlweise den primären oder den sekundären Schlüssel verwenden. Achten Sie darauf, den Schlüssel in Anführungszeichen einzuschließen, um ihn zu einer Zeichenfolge zu machen.
+Um dieses Notebook verwenden zu können, benötigen Sie einen Abonnementschlüssel für die Anomalieerkennungs-API. Suchen Sie die Abonnementseite auf, um sich zu registrieren. Melden Sie sich auf der Seite „Anmelden“ mit Ihrem Microsoft-Konto an. Dort können Sie abonnieren und Ihre Schlüssel abrufen. Fügen Sie Ihren Schlüssel nach Abschluss des Registrierungsvorgangs in den Variablenabschnitt des Notebooks ein (unten dargestellt). Entweder der Primär- oder der Sekundärschlüssel funktioniert. Achten Sie darauf, den Schlüssel in Anführungszeichen zu setzen, um ihn zu einer Zeichenfolge zu machen.
 
 ```Python
 

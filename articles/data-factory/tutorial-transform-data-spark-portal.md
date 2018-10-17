@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: c6817fa20d4177efd3e38f1454f3142f6d40a07d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f1cc1b728a91c22f9b4b2062ed5c423314e561c8
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108617"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017583"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Azure Data Factory-Pipeline zu erstellen. In dieser Pipeline werden Daten transformiert, indem eine Spark-Aktivität und ein bedarfsabhängiger verknüpfter Azure HDInsight-Dienst verwendet wird. 
@@ -34,6 +34,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure-Speicherkonto**. Sie erstellen ein Python-Skript und eine Eingabedatei und laden diese in Azure Storage hoch. Die Ausgabe des Spark-Programms wird in diesem Speicherkonto gespeichert. Der bedarfsgesteuerte Spark-Cluster verwendet dieses Storage-Konto als primären Speicher.  
+
+> [!NOTE]
+> HdInsight unterstützt nur universelle Speicherkonten mit dem Standard-Tarif. Stellen Sie sicher, dass das Konto kein Premium- oder ausschließlich für Blobs vorgesehenes Speicherkonto ist.
+
 * **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-azurerm-ps) (Erste Schritte mit Azure PowerShell-Cmdlets).
 
 
@@ -99,11 +103,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 1. Wählen Sie unter **Standort** den Standort für die Data Factory aus. 
 
    Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von Data Factory verwendeten Datenspeicher (etwa Azure Storage und Azure SQL-Datenbank) und Computedienste (etwa HDInsight) können sich in anderen Regionen befinden.
-1. Wählen Sie die Option **An Dashboard anheften** aus.     
-1. Klicken Sie auf **Erstellen**.
-1. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status **Deploying Data Factory** (Data Factory wird bereitgestellt...): 
 
-   ![Kachel „Deploying Data Factory“ (Data Factory wird bereitgestellt...)](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)
+1. Klicken Sie auf **Erstellen**.
+
 1. Nach Abschluss der Erstellung wird die Seite **Data Factory** angezeigt. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Anwendung für die Data Factory-Benutzeroberfläche auf einer separaten Registerkarte zu starten.
 
     ![Startseite der Data Factory mit der Kachel „Erstellen und überwachen“](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
@@ -157,11 +159,11 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste:
    
    h. Erweitern Sie **Betriebssystemtyp**.
    
-   i. Geben Sie einen Namen für den Benutzer des Clusters ein. 
+   i. Geben Sie einen Namen für **Clusterbenutzername** ein. 
    
-   j. Geben Sie das Kennwort für den Benutzer ein. 
+   j. Geben Sie das **Clusterkennwort** für den Benutzer ein. 
    
-   k. Wählen Sie **Speichern**aus. 
+   k. Wählen Sie **Fertig stellen** aus. 
 
    ![Einstellungen für den verknüpften HDInsight-Dienst](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 

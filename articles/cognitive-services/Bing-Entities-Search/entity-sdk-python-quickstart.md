@@ -1,32 +1,32 @@
 ---
-title: Python-Schnellstart für das Entitätssuche-SDK | Microsoft-Dokumentation
-description: Setup für die Konsolenanwendung des Entitätssuche-SDK
-titleSuffix: Azure Entity Search SDK Python quickstart
+title: 'Schnellstart: Bing-Entitätssuche-SDK, Python'
+titlesuffix: Azure Cognitive Services
+description: Setup für die Konsolenanwendung des Bing-Entitätssuche-SDK
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/15/2018
 ms.author: v-gedod
-ms.openlocfilehash: 95449fa3753291269e1a83d1431df3bf0cbe372f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 908373a216d0b14bb2dd41d3bb740b5582ac3ab1
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377898"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814235"
 ---
-# <a name="entity-search-sdk-python-quickstart"></a>Python-Schnellstart für das Entitätssuche-SDK
+# <a name="quickstart-bing-entity-search-sdk-with-python"></a>Schnellstart: Bing-Entitätssuche-SDK mit Python
 
 Das Entitätssuche-SDK enthält die Funktionalität der REST-API für Entitätsabfragen und das Analysieren von Ergebnissen.
 
 Der [Beispielquellcode für das Bing-Entitätssuche-SDK für Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py) ist auf GitHub verfügbar.
 
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
-Installieren Sie Python, falls Sie es noch nicht getan haben. Das SDK ist mit Python 2.7, 3.3, 3.4, 3.5 und 3.6 kompatibel.
+Installieren Sie Python, falls noch nicht geschehen. Das SDK ist mit Python 2.7, 3.3, 3.4, 3.5 und 3.6 kompatibel.
 
-Allgemein wird für die Python-Entwicklung die Verwendung einer [virtuellen Umgebung](https://docs.python.org/3/tutorial/venv.html) empfohlen. Installieren und initialisieren Sie die virtuelle Umgebung mit dem [virtualenv-Modul](https://pypi.python.org/pypi/virtualenv). Sie müssen virtualenv für Python 2.7 installieren.
+Allgemein wird für die Python-Entwicklung die Verwendung einer [virtuellen Umgebung](https://docs.python.org/3/tutorial/venv.html) empfohlen. Installieren und initialisieren Sie die virtuelle Umgebung mit dem [venv-Modul](https://pypi.python.org/pypi/virtualenv). Sie müssen virtualenv für Python 2.7 installieren.
 ```
 python -m venv mytestenv
 ```

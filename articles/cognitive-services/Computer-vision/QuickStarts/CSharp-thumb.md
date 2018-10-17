@@ -1,48 +1,47 @@
 ---
-title: C#-Schnellstart zur Erstellung einer Miniaturansicht mit der Maschinelles Sehen-API | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung generieren Sie aus einem Bild eine Miniaturansicht, indem Sie die Maschinelles Sehen-API mit C# in Cognitive Services verwenden.
+title: 'Schnellstart: Generieren einer Miniaturansicht – REST, C# – Maschinelles Sehen'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart generieren Sie eine Miniaturansicht von einem Bild, indem Sie die Maschinelles Sehen-API mit C# verwenden.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 0f5e3be75ce34d10c223e6a157a89fca12b9c3dc
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: f6353f0f99d34121e29de46c62e6f840a69806ed
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770215"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630748"
 ---
-# <a name="quickstart-generate-a-thumbnail---rest-c35"></a>Schnellstart: Generieren einer Miniaturansicht – REST, C&#35;
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c35-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit der REST-API und C# in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung generieren Sie aus einem Bild eine Miniaturansicht, indem Sie die Maschinelles Sehen-API verwenden.
+In diesem Schnellstart generieren Sie eine Miniaturansicht von einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)-Methode können Sie eine Miniaturansicht von einem Bild generieren. Sie geben die Höhe und Breite an. Diese kann sich vom Seitenverhältnis des Eingabebilds unterscheiden. Für das maschinelle Sehen wird die intelligente Zuschneidefunktion verwendet, um die gewünschte Region zu identifizieren und basierend auf dieser Region Zuschneidekoordinaten zu generieren.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- Sie benötigen [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) oder höher.
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="get-thumbnail-request"></a>Get Thumbnail-Anforderung
+## <a name="create-and-run-the-sample-application"></a>Erstellen und Ausführen der Beispielanwendung
 
-Mit der [Get Thumbnail-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) können Sie aus einem Bild eine Miniaturansicht generieren. Sie geben die Höhe und Breite an. Diese kann sich vom Seitenverhältnis des Eingabebilds unterscheiden. Für das maschinelle Sehen wird die intelligente Zuschneidefunktion verwendet, um die gewünschte Region zu identifizieren und basierend auf dieser Region Zuschneidekoordinaten zu generieren.
+Führen Sie die folgenden Schritte durch, um das Beispiel in Visual Studio zu erstellen:
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Erstellen Sie in Visual Studio eine neue Visual C#-Konsolen-App.
+1. Erstellen Sie mithilfe der Visual C#-Konsolen-App-Vorlage eine neue Visual Studio-Projektmappe in Visual Studio.
 1. Installieren Sie das NuGet-Paket „Newtonsoft.Json“.
     1. Klicken Sie im Menü auf **Werkzeuge**, wählen Sie **NuGet-Paket-Manager** und dann **NuGet-Pakete für Projektmappe verwalten** aus.
     1. Klicken Sie auf die Registerkarte **Durchsuchen**, und geben Sie „Newtonsoft.Json“ in das Feld **Suchen** ein.
     1. Wählen Sie **Newtonsoft.Json** aus, wenn das Paket angezeigt wird, aktivieren Sie das Kontrollkästchen neben dem Projektnamen, und klicken Sie dann auf **Installieren**.
-1. Ersetzen Sie `Program.cs` durch den folgenden Code.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uriBase` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
+1. Ersetzen Sie den Code in `Program.cs` durch den folgenden Code, und nehmen Sie dann die folgenden Änderungen im Code vor, falls dies erforderlich ist:
+    1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die Methode [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
 1. Führen Sie das Programm aus.
 1. Geben Sie an der Eingabeaufforderung den Pfad zu einem lokalen Bild ein.
-
-Die Miniaturansicht wird in demselben Ordner wie das lokale Bild gespeichert, indem der ursprüngliche Name mit dem Suffix „_thumb“ verwendet wird.
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -59,12 +58,12 @@ namespace CSHttpClientSample
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to
-        // get your subscription keys. For example, if you got your
-        // subscription keys from westus, replace "westcentralus" in the URL
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         const string uriBase =
@@ -80,7 +79,7 @@ namespace CSHttpClientSample
 
             if (File.Exists(imageFilePath))
             {
-                // Make the REST API call.
+                // Call the REST API method.
                 Console.WriteLine("\nWait a moment for the results to appear.\n");
                 MakeThumbNailRequest(imageFilePath).Wait();
             }
@@ -108,35 +107,41 @@ namespace CSHttpClientSample
                     "Ocp-Apim-Subscription-Key", subscriptionKey);
 
                 // Request parameters.
+                // The width and height parameters specify a thumbnail that's 
+                // 200 pixels wide and 150 pixels high.
+                // The smartCropping parameter is set to true, to enable smart cropping.
                 string requestParameters = "width=200&height=150&smartCropping=true";
 
-                // Assemble the URI for the REST API Call.
+                // Assemble the URI for the REST API method.
                 string uri = uriBase + "?" + requestParameters;
 
                 HttpResponseMessage response;
 
-                // Request body.
-                // Posts a locally stored JPEG image.
+                // Read the contents of the specified local image
+                // into a byte array.
                 byte[] byteData = GetImageAsByteArray(imageFilePath);
 
+                // Add the byte array as an octet stream to the request body.
                 using (ByteArrayContent content = new ByteArrayContent(byteData))
                 {
-                    // This example uses content type "application/octet-stream".
+                    // This example uses the "application/octet-stream" content type.
                     // The other content types you can use are "application/json"
                     // and "multipart/form-data".
                     content.Headers.ContentType =
                         new MediaTypeHeaderValue("application/octet-stream");
 
-                    // Make the REST API call.
+                    // Asynchronously call the REST API method.
                     response = await client.PostAsync(uri, content);
                 }
 
+                // Check the HTTP status code of the response. If successful, display
+                // display the response and save the thumbnail.
                 if (response.IsSuccessStatusCode)
                 {
                     // Display the response data.
                     Console.WriteLine("\nResponse:\n{0}", response);
 
-                    // Get the image data.
+                    // Get the image data for the thumbnail from the response.
                     byte[] thumbnailImageData =
                         await response.Content.ReadAsByteArrayAsync();
 
@@ -169,9 +174,11 @@ namespace CSHttpClientSample
         /// <returns>The byte array of the image data.</returns>
         static byte[] GetImageAsByteArray(string imageFilePath)
         {
+            // Open a read-only file stream for the specified file.
             using (FileStream fileStream =
                 new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
             {
+                // Read the file's contents into a byte array.
                 BinaryReader binaryReader = new BinaryReader(fileStream);
                 return binaryReader.ReadBytes((int)fileStream.Length);
             }
@@ -180,9 +187,11 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="get-thumbnail-response"></a>Get Thumbnail-Antwort
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort enthält die Binärdaten zur Miniaturansicht. Wenn die Anforderung nicht erfolgreich ist, enthält die Antwort einen Fehlercode und eine Meldung, damit Sie ermitteln können, wo der Fehler liegt.
+Eine erfolgreiche Antwort wird als Binärdaten zurückgegeben, die die Bilddaten für die Miniaturansicht darstellen. Wenn die Anforderung erfolgreich ausgeführt wird, wird die Miniaturansicht im selben Ordner wie das lokale Bild gespeichert, wobei der ursprüngliche Name mit dem Suffix „_thumb“ verwendet wird. Wenn die Anforderung nicht erfolgreich ist, enthält die Antwort einen Fehlercode und eine Meldung, damit Sie ermitteln können, wo der Fehler liegt.
+
+Die Beispielanwendung zeigt eine erfolgreiche Antwort im Konsolenfenster an, ähnlich wie im folgenden Beispiel:
 
 ```text
 Response:
@@ -202,6 +211,10 @@ StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.Stre
   Expires: -1
 }
 ```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Visual Studio-Projektmappe nicht mehr benötigen, löschen Sie sie. Öffnen Sie zu diesem Zweck den Datei-Explorer, navigieren Sie zu dem Ordner, in dem Sie die Visual Studio-Projektmappe erstellt haben, und löschen Sie den Ordner.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

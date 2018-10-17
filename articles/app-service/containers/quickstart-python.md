@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/13/2018
+ms.date: 10/09/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c3089ad11dc951d3105b25b6857b7697f8c38d1a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 52429d44c41d990fb0de4c01c63d4af9fe5863d4
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432068"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902891"
 ---
 # <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Erstellen einer Python-Web-App in Azure App Service unter Linux (Vorschau)
 
@@ -172,13 +172,13 @@ Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App ange
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Das integrierte Python-Image in App Service unter Linux befindet sich derzeit in der Vorschauversion. Sie können Python-Apps für die Produktionsumgebung stattdessen mit einem benutzerdefinierten Container erstellen.
+Das integrierte Python-Image in App Service unter Linux ist zurzeit als Vorschauversion verfügbar, und Sie können den zum Starten Ihrer App verwendeten Befehl anpassen. Sie können Python-Apps für die Produktionsumgebung stattdessen auch mit einem benutzerdefinierten Container erstellen.
 
 > [!div class="nextstepaction"]
 > [Python mit PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurieren des integrierten Python-Image](how-to-configure-python.md)
+> [Konfigurieren eines benutzerdefinierten Startbefehls](how-to-configure-python.md#custom-startup-command)
 
 > [!div class="nextstepaction"]
 > [Verwenden von benutzerdefinierten Images](tutorial-custom-docker-image.md)

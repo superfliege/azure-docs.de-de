@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d606b7b536147b7e1d96bfb6cebf2522e5b4f85f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161929"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078856"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>Tutorial: Kopieren von Daten auf die Azure Data Box 
 
@@ -88,11 +88,11 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
     The command completed successfully.
     ```
 
-4. Drücken Sie WINDOWS-TASTE+R. Geben Sie im Fenster **Ausführen** die `\\<device IP address>` an. Klicken Sie auf **OK**. Der Datei-Explorer wird geöffnet.
+4. Drücken Sie WINDOWS-TASTE+R. Geben Sie im Fenster **Ausführen** die `\\<device IP address>` an. Klicken Sie auf **OK**. Der Datei-Explorer wird geöffnet. Die Freigaben sollten jetzt als Ordner angezeigt werden.
     
     ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
-5. Die Freigaben sollten jetzt als Ordner angezeigt werden. Erstellen Sie einen Ordner für die Dateien, die Sie kopieren möchten (in diesem Fall Vorlagen). Mitunter werden die Ordner mit einem grauen Kreuz angezeigt. Das Kreuz bedeutet nicht, dass ein Fehler vorliegt. Die Ordner werden zum Nachverfolgen des Status von der Anwendung gekennzeichnet.
+5.  **Erstellen Sie immer einen Ordner für die Dateien, die Sie unter die Freigabe kopieren möchten, und kopieren Sie die Dateien dann in diesen Ordner**. Mitunter werden die Ordner mit einem grauen Kreuz angezeigt. Das Kreuz bedeutet nicht, dass ein Fehler vorliegt. Die Ordner werden zum Nachverfolgen des Status von der Anwendung gekennzeichnet.
     
     ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
@@ -239,11 +239,14 @@ Befolgen Sie die nachstehenden Richtlinien, wenn Sie die rsync-Option für einen
 
  - Installieren Sie je nach Dateisystem, das Ihr Linux-Client verwendet, das **CIFS Utils**- oder **NFS Utils**-Paket.
 
-    `sudo apt-get install cifs-utils``sudo apt-get install nfs-utils`
+    `sudo apt-get install cifs-utils`
+
+    `sudo apt-get install nfs-utils`
 
  -  Installieren Sie **Rsync** und **Parallel** (variiert abhängig von der Linux-Version).
 
     `sudo apt-get install rsync`
+   
     `sudo apt-get install parallel` 
 
  - Erstellen Sie einen Bereitstellungspunkt.

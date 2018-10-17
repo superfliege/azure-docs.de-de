@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/20/2018
+ms.date: 10/03/2018
 ms.author: markvi
-ms.reviewer: jairoc
-ms.openlocfilehash: f9664e22be5d7a17dd2a2a7c328593d8168c26f0
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.reviewer: spunukol
+ms.openlocfilehash: 1b8a6e6a6b5f482a4e3575c4da18a02a958c4081
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434737"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249365"
 ---
 # <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>Gewusst wie: Verwalten der veralteten Geräte in Azure AD
 
@@ -101,7 +101,7 @@ Definieren Sie einen Zeitraum, der als Indikator für ein veraltetes Gerät dien
 
 ### <a name="disable-devices"></a>Deaktivieren von Geräten
 
-Es ist nicht ratsam, ein Gerät sofort zu löschen, das veraltet erscheint. Falls es fälschlicherweise als veraltet gekennzeichnet wurde, können Sie einen Löschvorgang nämlich nicht mehr rückgängig machen. Die bewährte Methode besteht darin, ein Gerät für einen Karenzzeitraum zu deaktivieren, bevor Sie es löschen. Definieren Sie in Ihrer Richtlinie einen Zeitraum, für den eine Richtlinie deaktiviert wird, bevor der Löschvorgang durchgeführt wird.
+Es ist nicht ratsam, ein Gerät sofort zu löschen, das veraltet erscheint. Falls es fälschlicherweise als veraltet gekennzeichnet wurde, können Sie einen Löschvorgang nämlich nicht mehr rückgängig machen. Die bewährte Methode besteht darin, ein Gerät für einen Karenzzeitraum zu deaktivieren, bevor Sie es löschen. Definieren Sie in Ihrer Richtlinie einen Zeitraum, in dem ein Gerät deaktiviert werden kann, bevor der Löschvorgang durchgeführt wird.
 
 
 ### <a name="mdm-controlled-devices"></a>Geräte mit MDM-Steuerung
@@ -111,10 +111,10 @@ Wenn Ihr Gerät per Intune oder mit einer anderen MDM-Lösung gesteuert wird, so
 
 ### <a name="system-managed-devices"></a>Vom System verwaltete Geräte
 
-Löschen Sie keine vom System verwalteten Geräte. Hierbei handelt es sich normalerweise um Geräte wie Autopilot. Nach dem Löschen können diese Geräte nicht erneut bereitgestellt werden. Beim neuen Cmdlet „Get-MmsolDevice“ sind vom System verwaltete Geräte standardmäßig ausgeschlossen. 
+Löschen Sie keine vom System verwalteten Geräte. Hierbei handelt es sich normalerweise um Geräte wie Autopilot. Nach dem Löschen können diese Geräte nicht erneut bereitgestellt werden. Das neue `get-msoldevice`-Cmdlet schließt vom System verwaltete Geräte standardmäßig aus. 
 
 
-### <a name="hybrid-azure-ad-joined-devices"></a>In Hybrid-Azure AD eingebundene Geräte
+### <a name="hybrid-azure-ad-joined-devices"></a>In Azure AD eingebundene Hybridgeräte
 
 Ihre in Hybrid-Azure AD eingebundenen Geräte sollten an Ihren Richtlinien für die Verwaltung von lokalen veralteten Geräten ausgerichtet sein. 
 
@@ -137,7 +137,7 @@ Deaktivieren oder löschen Sie in Azure AD registrierte Geräte in Azure AD.
 
 
 
-## <a name="cleanup-stale-devices-in-the-azure-portal"></a>Bereinigen veralteter Geräte im Azure-Portal  
+## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Bereinigen veralteter Geräte im Azure-Portal  
 
 Sie können veraltete Geräte zwar im Azure-Portal bereinigen, aber es ist effizienter, für diesen Vorgang ein PowerShell-Skript zu verwenden. Verwenden Sie das aktuelle PowerShell V1-Modul, um den Zeitstempelfilter zu nutzen und vom System verwaltete Geräte herauszufiltern, z.B. Autopilot. An diesem Punkt ist die Nutzung von PowerShell V2 nicht zu empfehlen.
 
@@ -150,7 +150,9 @@ Eine typische Routine umfasst die folgenden Schritte:
 
 3. Deaktivieren Sie das Gerät, indem Sie das Cmdlet [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) verwenden. 
 
-4. Entfernen Sie das Gerät mit dem Cmdlet [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0).
+4. Warten Sie unabhängig von der ausgewählten Anzahl von Tagen vor dem Löschen des Geräts die Toleranzperiode ab.
+
+5. Entfernen Sie das Gerät mit dem Cmdlet [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0).
 
 ### <a name="get-the-list-of-devices"></a>Abrufen der Liste mit den Geräten
 

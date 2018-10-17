@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 08/13/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a47beb3e4299c62ec4b7959b4834d0440fee06f7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 17fba267e85c7b1421e632930c8bea2bfaf6ff5f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744584"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736494"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Erstellen und Weiterleiten von Blob Storage-Ereignissen mit dem Azure-Portal und Event Grid
 
@@ -37,7 +37,7 @@ Am Ende sehen Sie, dass die Ereignisdaten an die Web-App gesendet wurden.
 
    ![Auswählen von „Speicher“](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Für Ereignisse müssen Sie entweder ein [Blob Storage-Konto](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) oder ein [Speicherkonto des Typs „Universell v2“](../storage/common/storage-account-options.md#general-purpose-v2-accounts) erstellen. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten. Geben Sie Werte für das Blobkonto oder das V2-Speicherkonto an. Geben Sie einen eindeutigen Namen für das Konto an. Wenn Sie mit dem Angeben der Werte fertig sind, können Sie **Erstellen** wählen.
+1. Um Ereignisse zu abonnieren, erstellen Sie entweder ein Speicherkonto vom Typ „general-purpose v2“ oder ein Blobspeicherkonto. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md).
 
    ![Starten von Schritten](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

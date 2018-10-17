@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 61b354dfd6f704eb0677991c02f28de08e49ee37
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1c9af5c94aa05f60220080b779921a2c79c322f3
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917498"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067430"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Ausführen eines Failovers und Failbacks von Azure-VMs zwischen Azure-Regionen
 
@@ -71,4 +71,4 @@ Nach dem Failover der VM müssen Sie sie erneut schützen, damit sie wieder zur�
 
 ## <a name="fail-back-to-the-primary-region"></a>Ausführen eines Failbacks auf die primäre Region
 
-Nachdem VMs erneut geschützt wurden, können Sie bei Bedarf ein Failback zur primären Region ausführen. Befolgen Sie dazu die [Failover-Anweisungen](#run-a-failover) unten.
+Nachdem VMs erneut geschützt wurden, können Sie bei Bedarf ein Failback zur primären Region ausführen. Dazu richten Sie wie in diesem Artikel beschrieben ein Failover von der sekundären zur primären Region ein.

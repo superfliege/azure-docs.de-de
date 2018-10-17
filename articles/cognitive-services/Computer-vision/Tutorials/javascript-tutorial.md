@@ -1,24 +1,25 @@
 ---
-title: Tutorial zur Maschinelles Sehen-API mit JavaScript | Microsoft-Dokumentation
-description: Erfahren Sie mehr über eine grundlegende JavaScript-App, die die Maschinelles Sehen-API in Microsoft Cognitive Services verwendet. Führen Sie OCR aus, erstellen Sie Miniaturansichten und arbeiten Sie mit visuellen Merkmalen in einem Bild.
+title: 'Tutorial: Maschinelles Sehen-API mit JavaScript'
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie mehr über eine grundlegende JavaScript-App, die die Maschinelles Sehen-API in Azure Cognitive Services verwendet. Führen Sie eine optische Zeichenerkennung durch, erstellen Sie Miniaturansichten, und arbeiten Sie mit visuellen Merkmalen in einem Bild.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
-ms.openlocfilehash: 89bdc0524e07c1cb6a1473e0a52791fe20271e06
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6dc6eec729fc1be3f0a859834597bf2d5785d9bc
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373443"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984923"
 ---
-# <a name="computer-vision-api-javascript-tutorial"></a>Tutorial zur Maschinelles Sehen-API mit JavaScript
+# <a name="tutorial-computer-vision-api-javascript"></a>Tutorial: Maschinelles Sehen-API mit JavaScript
 
-Dieses Tutorial zeigt die Funktionen der Maschinellen Sehen-REST-API in Microsoft Cognitive Services.
+Dieses Tutorial zeigt die Funktionen der Maschinellen Sehen-REST-API von Azure Cognitive Services.
 
 Erfahren Sie mehr über eine JavaScript-Anwendung, die die Maschinelles Sehen-REST-API verwendet, um die optische Zeichenerkennung (OCR) auszuführen, Miniaturansichten mithilfe der Funktion „Intelligentes Zuschneiden“ zu erstellen, sowie visuelle Merkmale zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. In diesem Beispiel können Sie eine Bild-URL zur Analyse oder Verarbeitung einreichen. Sie können dieses Open Source-Beispiel als Vorlage für die Erstellung Ihrer eigenen App in JavaScript verwenden, um die Maschinelles Sehen-REST-API zu verwenden.
 
@@ -32,7 +33,7 @@ Dieses Tutorial mit einem einfachen Text-Editor entwickelt.
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Abonnieren der Maschinelles Sehen-API und Anfordern eines Abonnementschlüssels 
 
-Bevor Sie das Beispiel erstellen, müssen Sie die Maschinelles Sehen-API abonnieren, die Teil der Microsoft Cognitive Services ist. Informationen zu Abonnements und zur Schlüsselverwaltung finden Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/). In diesem Tutorial sind sowohl der Primär- als auch der Sekundärschlüssel gültig. 
+Bevor Sie das Beispiel erstellen, müssen Sie die Maschinelles Sehen-API abonnieren, die zum Funktionsumfang von Azure Cognitive Services gehört. Informationen zu Abonnements und zur Schlüsselverwaltung finden Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/). In diesem Tutorial sind sowohl der Primär- als auch der Sekundärschlüssel gültig. 
 
 ## <a name="download-the-tutorial-project"></a>Herunterladen des Tutorial-Projekts
 

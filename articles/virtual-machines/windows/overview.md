@@ -1,5 +1,5 @@
 ---
-title: Übersicht über virtuelle Windows-Computer | Microsoft Docs
+title: Übersicht über Virtuelle Windows-Computer – Azure | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie virtuelle Windows-Computer in Azure erstellen und verwalten.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/17/2017
+ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e12b8153494eaefb1f7e2d27fc667ef0070c68d0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 6ec151222bda3d87386cc3be4c54821775880795
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41918071"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816836"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Übersicht über virtuelle Windows-Computer in Azure
 
@@ -83,9 +83,9 @@ Die folgende Tabelle enthält einige Methoden zur Ermittlung von Informationen z
 | Methode | BESCHREIBUNG |
 | --- | --- |
 | Azure-Portal |Die Werte werden automatisch angegeben, wenn Sie ein zu verwendendes Image auswählen. |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location "location"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location "location" -Publisher "publisherName"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "location" -Publisher "publisherName" -Offer "offerName" |
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location *location*<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
 | REST-APIs |[List image publishers](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers) (Imageherausgeber auflisten)<BR>[List image offers](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers) (Imageangebote auflisten)<BR>[List image skus](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) (Image-SKUs auflisten) |
-| Azure-Befehlszeilenschnittstelle |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "location"<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "location" --publisher "publisherName"<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "location" --publisher "publisherName" --offer "offerName"|
+| Azure-Befehlszeilenschnittstelle |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location *location*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location *location* --publisher *publisherName* --offer *offerName*|
 
 Sie können auch [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account). In diesem Fall werden Herausgebername, Angebot und SKU nicht verwendet.
 
@@ -124,7 +124,7 @@ Die folgende Tabelle enthält hilfreiche Informationen zur Erstellung Ihres erst
 | REST-APIs |[Erstellen oder Aktualisieren eines virtuellen Computers](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
 | Azure-Befehlszeilenschnittstelle |[Erstellen eines virtuellen Computers mit der Azure CLI](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-cli-sample-create-vm) |
 
-Man hofft zwar immer, dass es nicht dazu kommt, gelegentlich tritt dann aber doch der eine oder andere Fehler auf. In diesem Fall finden Sie unter [Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hilfreiche Informationen.
+Man hofft zwar immer, dass es nicht dazu kommt, gelegentlich tritt dann aber doch der eine oder andere Fehler auf. In diesem Fall finden Sie unter [Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](../troubleshooting/troubleshoot-deployment-new-vm-windows.md) hilfreiche Informationen.
 
 ## <a name="how-do-i-manage-the-vm-that-i-created"></a>Wie verwalte ich den erstellten virtuellen Computer?
 Virtuelle Computer können über ein browserbasiertes Portal, über Befehlszeilentools mit Skriptunterstützung oder direkt über APIs verwaltet werden. Gängige Verwaltungsaufgaben sind das Abrufen von Informationen zu einem virtuellen Computer, das Anmelden bei einem virtuellen Computer, das Verwalten der Verfügbarkeit und die Durchführung von Sicherungen.
@@ -141,10 +141,10 @@ Die folgende Tabelle enthält einige der Methoden, mit denen Sie Informationen z
 | Azure-Befehlszeilenschnittstelle |Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle zum Verwalten von VMs finden Sie in der [Azure CLI-Referenz](https://docs.microsoft.com/cli/azure/vm). |
 
 ### <a name="log-on-to-the-vm"></a>Anmelden beim virtuellen Computer
-Verwenden Sie zum [Starten einer Remotedesktopsitzung](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) die Schaltfläche „Verbinden“ im Azure-Portal. Bei Remoteverbindungen können gelegentlich Probleme auftreten. In diesem Fall finden Sie unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hilfreiche Informationen.
+Verwenden Sie zum [Starten einer Remotedesktopsitzung](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) die Schaltfläche „Verbinden“ im Azure-Portal. Bei Remoteverbindungen können gelegentlich Probleme auftreten. In diesem Fall finden Sie unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../troubleshooting/troubleshoot-rdp-connection.md) hilfreiche Informationen.
 
 ### <a name="manage-availability"></a>Verwalten der Verfügbarkeit
-Informieren Sie sich darüber, wie Sie die [Hochverfügbarkeit für Ihre Anwendung sicherstellen](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Diese Konfiguration umfasst das Erstellen mehrerer virtueller Computer, um zu gewährleisten, dass mindestens einer davon aktiv ist.
+Informieren Sie sich darüber, wie Sie die [Hochverfügbarkeit für Ihre Anwendung sicherstellen](manage-availability.md). Diese Konfiguration umfasst das Erstellen mehrerer virtueller Computer, um zu gewährleisten, dass mindestens einer davon aktiv ist.
 
 Damit Ihre Bereitstellung den Verfügbarkeitswert von 99,95 Prozent unserer VM-Vereinbarung zum Servicelevel erreicht, müssen Sie mindestens zwei virtuelle Computer bereitstellen, die Ihre Workload innerhalb einer [Verfügbarkeitsgruppe](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ausführen. So wird sichergestellt, dass Ihre virtuellen Computer auf mehrere Fehlerdomänen verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
 
@@ -152,5 +152,5 @@ Damit Ihre Bereitstellung den Verfügbarkeitswert von 99,95 Prozent unserer VM-V
 Ein [Recovery Services-Tresor](../../backup/backup-introduction-to-azure-backup.md) dient zum Schutz von Daten und Assets in Azure Backup und Azure Site Recovery. Mit einem Recovery Services-Tresor können Sie [Sicherungen für mit Resource Manager bereitgestellte virtuelle Computer mithilfe von PowerShell bereitstellen und verwalten](../../backup/backup-azure-vms-automation.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Wenn Sie virtuelle Linux-Computer verwenden möchten, sehen Sie sich [Azure und Linux](../linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) an.
-* Weitere Informationen zu den Richtlinien im Zusammenhang mit der Einrichtung Ihrer Infrastruktur finden Sie unter [Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur](infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Wenn Sie virtuelle Linux-Computer verwenden möchten, sehen Sie sich [Azure und Linux](../linux/overview.md) an.
+* Weitere Informationen zu den Richtlinien im Zusammenhang mit der Einrichtung Ihrer Infrastruktur finden Sie unter [Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur](infrastructure-example.md).

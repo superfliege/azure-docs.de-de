@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 030774716e1af4a7d6817d64ae66ded2bcaf4081
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fde063cb593ca1f610dc35cd044fe41e34ab9202
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41924740"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578358"
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
@@ -29,9 +29,9 @@ Azure Active Directory erkennt verdächtige Aktionen im Zusammenhang mit Ihren B
 
 Die erkannten Risikoereignisse werden zum Berechnen folgender Werte verwendet:
 
-- **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. Weitere Informationen finden Sie unter [Riskante Anmeldungen](../identity-protection/overview.md#risky-sign-ins). 
+- **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlinien zum Anmelderisiko](../identity-protection/howto-sign-in-risk-policy.md). 
 
-- **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter [Benutzer mit Risikokennzeichnung](../identity-protection/overview.md#users-flagged-for-risk).  
+- **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlinien zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md).  
 
 Im Azure-Portal befinden sich die Sicherheitsberichte auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit**.  
 
@@ -78,13 +78,13 @@ In diesem Dialogfenster steht Ihnen folgende Option zur Verfügung:
 
 Der Bericht „Benutzer mit Risikomarkierung“ in den Premium-Editionen von Azure Active Directory enthält Folgendes:
 
-- Eine [Liste mit Benutzerkonten](../identity-protection/overview.md#users-flagged-for-risk), die unter Umständen kompromittiert wurden 
+- Eine Liste mit Benutzerkonten, die unter Umständen kompromittiert wurden 
 
 - Aggregierte Informationen zu den erkannten [Risikoereignistypen](concept-risk-events.md)
 
 - Option zum Herunterladen des Berichts
 
-- Option zum Konfigurieren einer [Richtlinie zum Beheben des Benutzerrisikos](../identity-protection/overview.md#user-risk-security-policy)  
+- Option zum Konfigurieren einer [Richtlinie zum Beheben des Benutzerrisikos](../identity-protection/howto-user-risk-policy.md)  
 
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/71.png)
@@ -103,7 +103,7 @@ Wenn Sie einen Benutzer auswählen, erhalten Sie eine ausführliche Berichtsansi
 ![Riskante Anmeldungen](./media/concept-user-at-risk/324.png)
 
 
-Um ein Risikoereignis zu untersuchen, wählen Sie es in der Liste aus, um das Blatt **Details** für dieses Risikoereignis zu öffnen. Auf dem Blatt **Details** können Sie ein [Risikoereignis manuell schließen](../identity-protection/overview.md#closing-risk-events-manually) oder ein manuell geschlossenes Risikoereignis wieder aktivieren. 
+Um ein Risikoereignis zu untersuchen, wählen Sie es in der Liste aus, um das Blatt **Details** für dieses Risikoereignis zu öffnen. Auf dem Blatt **Details** können Sie ein Risikoereignis manuell schließen oder ein manuell geschlossenes Risikoereignis wieder aktivieren. 
 
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/325.png)

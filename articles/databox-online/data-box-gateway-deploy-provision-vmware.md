@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2018
+ms.date: 10/01/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 5a173340be424c74c76da659816b1b95b74c465f
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a96aa2ee8b474bcc4e3e9362d6b1ba755e3fdbc3
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419541"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017447"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware (Vorschauversion)
 
@@ -96,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
 
 1. Kopieren Sie das Image mit dem virtuellen Gerät auf Ihr System. Dies ist das virtuelle Image (zwei Dateien), das Sie über das Azure-Portal heruntergeladen haben. Notieren Sie sich den Speicherort, an den Sie das Image kopiert haben, da Sie es später noch benötigen.
 
-2. Melden Sie sich mit dem vSphere-Client am ESXi-Server an. Sie benötigen Administratorrechte, um einen virtuellen Computer zu erstellen.
+2. Melden Sie sich mit dem vSphere-Webclient beim ESXi-Server an. Sie benötigen Administratorrechte, um einen virtuellen Computer zu erstellen.
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -104,7 +104,10 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
-4. Wählen Sie im rechten Bereich unter **Datenspeicher**den Datenspeicher aus, in den Sie das VMDK hochladen möchten. Der Datenspeicher muss vom Typ VMFS 5 sein. Der Datenspeicher muss zudem über genügend freien Speicherplatz für die Datenträger für das Betriebssystem und die Daten verfügen.
+4. Wählen Sie im rechten Bereich unter **Datenspeicher**den Datenspeicher aus, in den Sie das VMDK hochladen möchten. 
+
+    - Der Datenspeicher muss vom Typ VMFS5 sein. 
+    - Der Datenspeicher muss zudem über genügend freien Speicherplatz für die Datenträger für das Betriebssystem und die Daten verfügen.
    
 5. Klicken Sie mit der rechten Maustaste, und wählen Sie **Datenspeicher durchsuchen** aus.
 
@@ -145,11 +148,11 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
 15. Wählen Sie auf der Seite **Select storage** (Speicher auswählen) einen Datenspeicher aus, den Sie zum Bereitstellen der VM verwenden möchten. Klicken Sie auf **Weiter**.
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. Legen Sie auf der Seite **Customize settings** (Einstellungen anpassen) **CPU** auf 4, **Memory** (Arbeitsspeicher) auf 8.192 MB (oder mehr) und **Hard disk 1** (Festplatte 1) auf 2 TB (oder mehr) fest. Wählen Sie den Typ der **SCSI-Festplatte aus** , den Sie hinzufügen möchten. In diesem Fall wurde „LSI Logic SAS“ ausgewählt. **Statische IDE-Datenträger werden nicht unterstützt.** **Hard disk 1** (Festplatte 1) ist der virtuelle Datenträger. Beachten Sie, dass Sie den Datenträger nach der Bereitstellung nicht mehr verkleinern können.
+16. Legen Sie auf der Seite **Customize settings** (Einstellungen anpassen) **CPU** auf 4, **Memory** (Arbeitsspeicher) auf 8.192 MB (oder mehr) und **Hard disk 1** (Festplatte 1) auf 2 TB (oder mehr) fest. Wählen Sie die **SCSI-Festplatte** aus, die Sie hinzufügen möchten. In diesem Fall wurde „LSI Logic SAS“ ausgewählt. **Statische IDE-Datenträger werden nicht unterstützt.** **Hard disk 1** (Festplatte 1) ist der virtuelle Datenträger. Beachten Sie, dass Sie den Datenträger nach der Bereitstellung nicht mehr verkleinern können.
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
-    Klicken Sie auf der gleichen Seite auf **Add hard disk** (Festplatte hinzufügen), und wählen Sie dann **Existing hard disk** (Vorhandene Festplatte) aus. Dadurch wird ein Betriebssystemdatenträger hinzugefügt. 
+    Klicken Sie auf der gleichen Seite auf **Add hard disk** (Festplatte hinzufügen), und wählen Sie dann **Existing hard disk** (Vorhandene Festplatte) aus. Wählen Sie die VMDK-Datei im Datenspeicher aus. Dadurch wird ein Betriebssystemdatenträger hinzugefügt. 
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 

@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 35295f00b9264e4b6fba2ff9d293772c22b91c50
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 4694d7a580c9544e43cf0b56b192b55c02257531
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991918"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730663"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche (Vorschau)
 
@@ -32,6 +32,9 @@ In diesem Tutorial werden Sie die folgenden Aufgaben mithilfe von REST-API-Aufru
 Die Ausgabe ist ein durchsuchbarer Volltextindex auf Azure Search. Sie können den Index mit weiteren Standardfunktionen erweitern, wie etwa [Synonymen](search-synonyms.md), [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [Analysetools](search-analyzers.md) und [Filtern](search-filters.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+> [!NOTE]
+> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen, das Extrahieren von Bildern und die Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -1,52 +1,45 @@
 ---
-title: 'C#-Schnellstart: Analysieren von lokalen Bildern mit der Maschinelles Sehen-API | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung analysieren Sie ein lokales Bild mithilfe der Maschinelles Sehen-API mit C# in Cognitive Services.
+title: 'Schnellstart: Analysieren eines lokalen Bilds – REST, C# – Maschinelles Sehen'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung analysieren Sie ein lokales Bild mit der Maschinelles Sehen-API und C#.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 09/10/2018
 ms.author: v-deken
-ms.openlocfilehash: 8196787df9f7fadedda72d525aee440afe7b7d34
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 572d352b04debca0ab3afdea6d86a7383370050f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770132"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634114"
 ---
-# <a name="quickstart-analyze-a-local-image---rest-c35"></a>Schnellstart: Analysieren eines lokalen Bilds – REST und C&#35;
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c35-in-computer-vision"></a>Schnellstart: Analysieren eines lokalen Bilds mit der REST-API und C# in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung analysieren Sie mithilfe der Maschinelles Sehen-API ein lokales Bild, um visuelle Merkmale zu extrahieren.
+In dieser Schnellstartanleitung analysieren Sie mithilfe der REST-API von Maschinelles Sehen ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Verwendung der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- Sie benötigen [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) oder höher.
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-image-request"></a>Bildanalyseanforderung
+## <a name="create-and-run-the-sample-application"></a>Erstellen und Ausführen der Beispielanwendung
 
-Mit der [Methode zum Analysieren von Bildern](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren. Sie können ein Bild hochladen oder eine Bild-URL angeben und auswählen, welche Merkmale zurückgegeben werden sollen. Zu den verfügbaren Merkmalen zählen beispielsweise:
+Führen Sie die folgenden Schritte durch, um das Beispiel in Visual Studio zu erstellen:
 
-* Eine detaillierte Liste der Tags im Zusammenhang mit dem Bildinhalt
-* Eine Beschreibung des Bildinhalts in einem vollständigen Satz
-* Die Koordinaten, das Geschlecht und das Alter aller im Bild enthaltenen Gesichter
-* Der Bildtyp (ClipArt oder Strichzeichnung)
-* Die dominante Farbe, die Akzentfarbe und, ob ein Bild schwarzweiß ist
-* Die in dieser [Taxonomie](../Category-Taxonomy.md) definierte Kategorie
-* Ob das Bild nicht jugendfreie oder freizügige Inhalte enthält
-
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Erstellen Sie in Visual Studio eine neue Visual C#-Konsolen-App.
+1. Erstellen Sie mithilfe der Visual C#-Konsolen-App-Vorlage eine neue Visual Studio-Projektmappe in Visual Studio.
 1. Installieren Sie das NuGet-Paket „Newtonsoft.Json“.
     1. Klicken Sie im Menü auf **Werkzeuge**, wählen Sie **NuGet-Paket-Manager** und dann **NuGet-Pakete für Projektmappe verwalten** aus.
     1. Klicken Sie auf die Registerkarte **Durchsuchen**, und geben Sie „Newtonsoft.Json“ in das Feld **Suchen** ein.
     1. Wählen Sie **Newtonsoft.Json** aus, wenn das Paket angezeigt wird, aktivieren Sie das Kontrollkästchen neben dem Projektnamen, und klicken Sie dann auf **Installieren**.
-1. Ersetzen Sie `Program.cs` durch den folgenden Code.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uriBase` ggf. in die Region, in der Sie Ihren Abonnementschlüssel erhalten haben.
+1. Ersetzen Sie den Code in `Program.cs` durch den folgenden Code, und nehmen Sie dann die folgenden Änderungen im Code vor, falls dies erforderlich ist:
+    1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
 1. Führen Sie das Programm aus.
 1. Geben Sie an der Eingabeaufforderung den Pfad zu einem lokalen Bild ein.
 
@@ -65,12 +58,12 @@ namespace CSHttpClientSample
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to
-        // get your subscription keys. For example, if you got your
-        // subscription keys from westus, replace "westcentralus" in the URL
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         const string uriBase =
@@ -80,12 +73,13 @@ namespace CSHttpClientSample
         {
             // Get the path and filename to process from the user.
             Console.WriteLine("Analyze an image:");
-            Console.Write("Enter the path to the image you wish to analyze: ");
+            Console.Write(
+                "Enter the path to the image you wish to analyze: ");
             string imageFilePath = Console.ReadLine();
 
             if (File.Exists(imageFilePath))
             {
-                // Make the REST API call.
+                // Call the REST API method.
                 Console.WriteLine("\nWait a moment for the results to appear.\n");
                 MakeAnalysisRequest(imageFilePath).Wait();
             }
@@ -113,30 +107,40 @@ namespace CSHttpClientSample
                     "Ocp-Apim-Subscription-Key", subscriptionKey);
 
                 // Request parameters. A third optional parameter is "details".
+                // The Analyze Image method returns information about the following
+                // visual features:
+                // Categories:  categorizes image content according to a
+                //              taxonomy defined in documentation.
+                // Description: describes the image content with a complete
+                //              sentence in supported languages.
+                // Color:       determines the accent color, dominant color, 
+                //              and whether an image is black & white.
                 string requestParameters =
                     "visualFeatures=Categories,Description,Color";
 
-                // Assemble the URI for the REST API Call.
+                // Assemble the URI for the REST API method.
                 string uri = uriBase + "?" + requestParameters;
 
                 HttpResponseMessage response;
 
-                // Request body. Posts a locally stored JPEG image.
+                // Read the contents of the specified local image
+                // into a byte array.
                 byte[] byteData = GetImageAsByteArray(imageFilePath);
 
+                // Add the byte array as an octet stream to the request body.
                 using (ByteArrayContent content = new ByteArrayContent(byteData))
                 {
-                    // This example uses content type "application/octet-stream".
+                    // This example uses the "application/octet-stream" content type.
                     // The other content types you can use are "application/json"
                     // and "multipart/form-data".
                     content.Headers.ContentType =
                         new MediaTypeHeaderValue("application/octet-stream");
 
-                    // Make the REST API call.
+                    // Asynchronously call the REST API method.
                     response = await client.PostAsync(uri, content);
                 }
 
-                // Get the JSON response.
+                // Asynchronously get the JSON response.
                 string contentString = await response.Content.ReadAsStringAsync();
 
                 // Display the JSON response.
@@ -156,9 +160,11 @@ namespace CSHttpClientSample
         /// <returns>The byte array of the image data.</returns>
         static byte[] GetImageAsByteArray(string imageFilePath)
         {
+            // Open a read-only file stream for the specified file.
             using (FileStream fileStream =
                 new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
             {
+                // Read the file's contents into a byte array.
                 BinaryReader binaryReader = new BinaryReader(fileStream);
                 return binaryReader.ReadBytes((int)fileStream.Length);
             }
@@ -167,83 +173,86 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="analyze-image-response"></a>Bildanalyseantwort
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Konsolenfenster an, ähnlich wie im folgenden Beispiel:
 
 ```json
 {
-   "categories": [
-      {
-         "name": "abstract_",
-         "score": 0.00390625
-      },
-      {
-         "name": "others_",
-         "score": 0.0234375
-      },
-      {
-         "name": "outdoor_",
-         "score": 0.00390625
-      }
-   ],
-   "description": {
-      "tags": [
-         "road",
-         "building",
-         "outdoor",
-         "street",
-         "night",
-         "black",
-         "city",
-         "white",
-         "light",
-         "sitting",
-         "riding",
-         "man",
-         "side",
-         "empty",
-         "rain",
-         "corner",
-         "traffic",
-         "lit",
-         "hydrant",
-         "stop",
-         "board",
-         "parked",
-         "bus",
-         "tall"
-      ],
-      "captions": [
-         {
-            "text": "a close up of an empty city street at night",
-            "confidence": 0.7965622853462756
-         }
-      ]
-   },
-   "requestId": "dddf1ac9-7e66-4c47-bdef-222f3fe5aa23",
-   "metadata": {
-      "width": 3733,
-      "height": 1986,
-      "format": "Jpeg"
-   },
-   "color": {
-      "dominantColorForeground": "Black",
-      "dominantColorBackground": "Black",
-      "dominantColors": [
-         "Black",
-         "Grey"
-      ],
-      "accentColor": "666666",
-      "isBWImg": true
-   }
+    "categories": [
+        {
+            "name": "abstract_",
+            "score": 0.00390625
+        },
+        {
+            "name": "others_",
+            "score": 0.0234375
+        },
+        {
+            "name": "outdoor_",
+            "score": 0.00390625
+        }
+    ],
+    "description": {
+        "tags": [
+            "road",
+            "building",
+            "outdoor",
+            "street",
+            "night",
+            "black",
+            "city",
+            "white",
+            "light",
+            "sitting",
+            "riding",
+            "man",
+            "side",
+            "empty",
+            "rain",
+            "corner",
+            "traffic",
+            "lit",
+            "hydrant",
+            "stop",
+            "board",
+            "parked",
+            "bus",
+            "tall"
+        ],
+        "captions": [
+            {
+                "text": "a close up of an empty city street at night",
+                "confidence": 0.7965622853462756
+            }
+        ]
+    },
+    "requestId": "dddf1ac9-7e66-4c47-bdef-222f3fe5aa23",
+    "metadata": {
+        "width": 3733,
+        "height": 1986,
+        "format": "Jpeg"
+    },
+    "color": {
+        "dominantColorForeground": "Black",
+        "dominantColorBackground": "Black",
+        "dominantColors": [
+            "Black",
+            "Grey"
+        ],
+        "accentColor": "666666",
+        "isBWImg": true
+    }
 }
 ```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Visual Studio-Projektmappe nicht mehr benötigen, löschen Sie sie. Öffnen Sie zu diesem Zweck den Datei-Explorer, navigieren Sie zu dem Ordner, in dem Sie die Visual Studio-Projektmappe erstellt haben, und löschen Sie den Ordner.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lernen Sie eine einfache Windows-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
-
 > [!div class="nextstepaction"]
-> [Verwenden der Maschinelles Sehen-API mit C#](../Tutorials/CSharpTutorial.md)
+> [Tutorial zur Maschinelles Sehen-API in C&#35;](../Tutorials/CSharpTutorial.md)

@@ -1,419 +1,106 @@
 ---
-title: 'Schnellstart: Anfordern und Filtern von Bildern mit dem SDK in Java'
-description: In diesem Schnellstart fordern Sie Bilder an und filtern die von der Bing-Bildersuche zurückgegebenen Bilder mithilfe von Java.
+title: 'Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für Java'
+description: Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bildersuche-SDK aus, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Java-Anwendung sendet eine Bildersuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 02/16/2018
-ms.author: v-gedod
-ms.openlocfilehash: 280a4b67d81b0734ea983c1d7fe1389e59651ccd
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.topic: quickstart
+ms.date: 08/28/2018
+ms.author: aahi
+ms.openlocfilehash: 36f59e1c405ef9e5cf69a19e49d69a3adfdc4636
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41929696"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298182"
 ---
-# <a name="quickstart-request-and-filter-images-using-the-sdk-and-java"></a>Schnellstart: Anfordern und Filtern von Bildern mit dem SDK und Java
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-java"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK und Java
 
-Das Bing-Bildersuche-SDK enthält die Funktionalität der REST-API für Bildabfragen und das Analysieren von Ergebnissen. 
+Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bildersuche-SDK aus, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Java-Anwendung sendet eine Bildersuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 
-Der [Java-Beispielquellcode für das Bing-Bildersuche-SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch) ist auf GitHub verfügbar. 
+Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) mit zusätzlichen Fehlerbehandlungen und Anmerkungen verfügbar.
 
-## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
-Rufen Sie unter **Suchen** einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab. Installieren Sie die Abhängigkeit für das Bing-Bildersuche-SDK mithilfe von Maven, Gradle oder anderen Systemen zum Verwalten von Abhängigkeiten. Die POM-Datei für Maven erfordert die folgende Deklaration:
-```
+## <a name="prerequisites"></a>Voraussetzungen
+
+Sie benötigen die aktuelle Version des [Java Development Kits (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+
+Installieren Sie die Abhängigkeit für das Bing-Bildersuche-SDK mithilfe von Maven, Gradle oder anderen Systemen zum Verwalten von Abhängigkeiten. Die Maven-POM-Datei erfordert die folgende Deklaration:
+
+```xml
  <dependencies>
     <dependency>
       <groupId>com.microsoft.azure.cognitiveservices</groupId>
       <artifactId>azure-cognitiveservices-imagesearch</artifactId>
       <version>0.0.1-beta-SNAPSHOT</version>
     </dependency>
- </dependencies> 
+ </dependencies>
 ```
-## <a name="image-search-client"></a>Client für die Bildersuche
-Fügen Sie Importe zur Klassenimplementierung hinzu.
-```
-import com.microsoft.azure.cognitiveservices.imagesearch.*;
-import com.microsoft.azure.cognitiveservices.imagesearch.ImageObject;
-import com.microsoft.azure.cognitiveservices.imagesearch.PivotSuggestions;
-import com.microsoft.azure.cognitiveservices.imagesearch.Query;
-import com.microsoft.azure.cognitiveservices.imagesearch.implementation.ImageInsightsInner;
-import com.microsoft.azure.cognitiveservices.imagesearch.implementation.ImageSearchAPIImpl;
-import com.microsoft.azure.cognitiveservices.imagesearch.implementation.ImagesInner;
-import com.microsoft.azure.cognitiveservices.imagesearch.implementation.TrendingImagesInner;
-import com.microsoft.rest.credentials.ServiceClientCredentials;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-```
-Implementieren Sie den **ImageSearchAPIImpl**-Client, der eine Instanz der **ServiceClientCredentials**-Klasse erfordert.
-```
-public static ImageSearchAPIImpl getClient(final String subscriptionKey) {
-    return new ImageSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
-            new ServiceClientCredentials() {
-                @Override
-                public void applyCredentialsFilter(OkHttpClient.Builder builder) {
-                    builder.addNetworkInterceptor(
-                            new Interceptor() {
-                                @Override
-                                public Response intercept(Chain chain) throws IOException {
-                                    Request request = null;
-                                    Request original = chain.request();
-                                    // Request customization: add request headers
-                                    Request.Builder requestBuilder = original.newBuilder()
-                                            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-                                    request = requestBuilder.build();
-                                    return chain.proceed(request);
-                                }
-                            });
-                }
-            });
+
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+
+## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
+
+1. Erstellen Sie in Ihrer bevorzugten IDE bzw. in einem Editor ein neues Java-Projekt, und fügen Sie Ihrer Klassenimplementierung die folgenden Importe hinzu:
+
+    ```java
+    import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchAPI;
+    import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchManager;
+    import com.microsoft.azure.cognitiveservices.search.imagesearch.models.ImageObject;
+    import com.microsoft.azure.cognitiveservices.search.imagesearch.models.ImagesModel;
+    ```
+
+2. Erstellen Sie in Ihrer Main-Methode Variablen für Ihren Abonnementschlüssel und einen Suchbegriff. Instanziieren Sie dann den Bing-Bildersuche-Client.
+
+    ```java
+    final String subscriptionKey = "COPY_YOUR_KEY_HERE";
+    String searchTerm = "canadian rockies";
+    //Image search client
+    BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
+    ```
+
+## <a name="send-a-search-request-to-the-bing-image-search-api"></a>Senden einer Suchanforderung an die Bing-Bildersuche-API
+
+1. Senden Sie mithilfe von `bingImages().search()` die HTTP-Anforderung, die die Suchabfrage enthält. Speichern Sie die Antwort als `ImagesModel`-Objekt.
+    ```java
+    ImagesModel imageResults = client.bingImages().search()
+                .withQuery(searchTerm)
+                .withMarket("en-us")
+                .execute();
+    ```
+
+## <a name="parse-and-view-the-result"></a>Analysieren und Anzeigen von Ergebnissen
+
+Analysieren Sie die Bildergebnisse, die in der Antwort zurückgegeben werden.
+Wenn die Antwort Suchergebnisse enthält, speichern Sie das erste Ergebnis, und drucken Sie die Details aus, z.B. eine Miniaturansichts-URL, die ursprüngliche URL und die Gesamtzahl der zurückgegebenen Bilder.  
+
+```java
+if (imageResults != null && imageResults.value().size() > 0) {
+    // Image results
+    ImageObject firstImageResult = imageResults.value().get(0);
+
+    System.out.println(String.format("Total number of images found: %d", imageResults.value().size()));
+    System.out.println(String.format("First image thumbnail url: %s", firstImageResult.thumbnailUrl()));
+    System.out.println(String.format("First image content url: %s", firstImageResult.contentUrl()));
 }
-
-```
-Suchen Sie über die Abfrage „Canadian Rockies“ nach Bildern. Überprüfen Sie die Anzahl von Ergebnissen. Geben Sie Werte für die Parameter **firstImageResult**, **pivotSuggestions** und **queryExpansions** aus.
-```
-public static void imageSearch(String subscriptionKey)
-{
-     ImageSearchAPIImpl client = ImageSrchSDK.getClient(subscriptionKey);
-
-    try
-    {
-        ImagesInner imageResults = client.searchs().list("canadian rockies");
-        System.out.println("\r\nSearch images for query \"canadian rockies\"");
-
-        if (imageResults == null)
-        {
-            System.out.println("No image result data.");
-        }
-        else
-        {
-            // Image results
-            if (imageResults.value().size() > 0)
-            {
-                ImageObject firstImageResult = imageResults.value().get(0);
-
-                System.out.println(String.format("Image result count: %d", imageResults.value().size()));
-                System.out.println(String.format("First image insights token: %s", firstImageResult.imageInsightsToken()));
-                System.out.println(String.format("First image thumbnail url: %s", firstImageResult.thumbnailUrl()));
-                System.out.println(String.format("First image content url: %s", firstImageResult.contentUrl()));
-            }
-            else
-            {
-                System.out.println("Couldn't find image results!");
-            }
-
-            System.out.println(String.format("Image result total estimated matches: %s", imageResults.totalEstimatedMatches()));
-            System.out.println(String.format("Image result next offset: %s", imageResults.nextOffset()));
-
-            // Pivot suggestions
-            if (imageResults.pivotSuggestions().size() > 0)
-            {
-                PivotSuggestions firstPivot = imageResults.pivotSuggestions().get(0);
-
-                System.out.println(String.format("Pivot suggestion count: %d", imageResults.pivotSuggestions().size()));
-                System.out.println(String.format("First pivot: %s", firstPivot.pivot()));
-
-                if (firstPivot.suggestions().size() > 0)
-                {
-                    Query firstSuggestion = firstPivot.suggestions().get(0);
-
-                    System.out.println(String.format("Suggestion count: %s", firstPivot.suggestions().size()));
-                    System.out.println(String.format("First suggestion text: %s", firstSuggestion.text()));
-                    System.out.println(String.format("First suggestion web search url: %s", firstSuggestion.webSearchUrl()));
-                }
-                else
-                {
-                    System.out.println("Couldn't find suggestions!");
-                }
-            }
-            else
-            {
-                System.out.println("Couldn't find pivot suggestions!");
-            }
-
-            // Query expansions
-            if (imageResults.queryExpansions().size() > 0)
-            {
-                Query firstQueryExpansion = imageResults.queryExpansions().get(0);
-
-                System.out.println(String.format("Query expansion count: %d", imageResults.queryExpansions().size()));
-                System.out.println(String.format("First query expansion text: %s", firstQueryExpansion.text()));
-                System.out.println(String.format("First query expansion search link: %s", firstQueryExpansion.searchLink()));
-            }
-            else
-            {
-                System.out.println("Couldn't find query expansions!");
-            }
-        }
-    }
-
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
-
-}
-
-```
-Suchen Sie nach Bildern zu „Gibraltar“, und filtern Sie nach animiertes GIFs und einem Seitenverhältnis im Breitformat. Überprüfen Sie die Anzahl von Ergebnissen. Geben Sie für das erste Ergebnis die Werte für die Parameter **insightsToken**, **thumbnailUrl** und **webUrl** aus.
-```
-public static void imageSearchWithFilters(String subscriptionKey)
-{
-     ImageSearchAPIImpl client = ImageSrchSDK.getClient(subscriptionKey);
-
-    try
-    {
-        ImagesInner imageResults = client.searchs().list("Gibraltar", null, null, null, null, ImageAspect.WIDE, null,
-                null, null, null, null, null, null, ImageType.ANIMATED_GIF, null, null, null, null, null, null,
-                null, null, null, null, null, null, null);
-        System.out.println("\r\nSearch images for \"Gibraltar\" results that are animated gifs and wide aspect");
-
-        if (imageResults == null)
-        {
-            System.out.println("Didn't see any image result data.");
-        }
-        else
-        {
-            // First image result
-            if (imageResults.value().size() > 0)
-            {
-                ImageObject firstImageResult = imageResults.value().get(0);
-
-                System.out.println(String.format("Image result count: %s", imageResults.value().size()));
-                System.out.println(String.format("First image insightsToken: %s", firstImageResult.imageInsightsToken()));
-                System.out.println(String.format("First image thumbnail url: %s", firstImageResult.thumbnailUrl()));
-                System.out.println(String.format("First image web search url: %s", firstImageResult.webSearchUrl()));
-            }
-            else
-            {
-                System.out.println("Couldn't find image results!");
-            }
-        }
-    }
-
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
-
-}
-
-```
-Suchen Sie nach beliebten Bildern. Überprüfen Sie die Parameter **categories** und **tiles**.
-```
-public static void imageTrending(String subscriptionKey)
-{
-    ImageSearchAPIImpl client = ImageSrchSDK.getClient(subscriptionKey);
-
-    try
-    {
-        TrendingImagesInner trendingResults = client.trendings().list();
-        System.out.println("\r\nSearch trending images");
-
-        if (trendingResults == null)
-        {
-            System.out.println("Didn't see any trending image data.");
-        }
-        else
-        {
-            // Categories of images
-            if (trendingResults.categories().size() > 0)
-            {
-                TrendingImagesCategory firstCategory = trendingResults.categories().get(0);
-                System.out.println(String.format("Category count: %d", trendingResults.categories().size()));
-                System.out.println(String.format("First category title: %s", firstCategory.title()));
-
-                // Tiles for images
-                if (firstCategory.tiles().size() > 0)
-                {
-                    TrendingImagesTile firstTile = firstCategory.tiles().get(0);
-                    System.out.println(String.format("Tile count: %d", firstCategory.tiles().size()));
-                    System.out.println(String.format("First tile text: %s", firstTile.query().text()));
-                    System.out.println(String.format("First tile url: %s", firstTile.query().webSearchUrl()));
-                }
-                else
-                {
-                    System.out.println("Couldn't find tiles!");
-                }
-            }
-            else
-            {
-                System.out.println("Couldn't find categories!");
-            }
-        }
-    }
-
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
-
-}
-
-```
-Suchen Sie über die Abfrage „Degas“ erst nach Bildern, und dann nach Details zum ersten Bildergebnis. 
-```
-public static void imageDetail(String subscriptionKey)
-{
-    ImageSearchAPIImpl client = ImageSrchSDK.getClient(subscriptionKey);
-
-    try
-    {
-        ImagesInner imageResults = client.searchs().list("degas");
-        if (imageResults.value().size() > 0)
-        {
-            ImageObject firstImage = imageResults.value().get(0);
-            List<ImageInsightModule> modules = new ArrayList<ImageInsightModule>();
-            modules.add(ImageInsightModule.ALL);
-            ImageInsightsInner imageDetail = client.details().list("degas", null, null, null, null, null, null, null,
-                null, null, null, null, null, null, firstImage.imageInsightsToken(), modules, "en-us",
-                null, null);
-                    //query: "degas", insightsToken: firstImage.ImageInsightsToken, modules: modules).Result;
-            System.out.println(String.format("\r\nSearch detail for image insightsToken=%s",
-                    firstImage.imageInsightsToken()));
-
-            if (imageDetail != null)
-            {
-                // Insights token
-                System.out.println(String.format("Expected image insights token: %s",
-                        imageDetail.imageInsightsToken()));
-
-                // Best representative query
-                if (imageDetail.bestRepresentativeQuery() != null)
-                {
-                    System.out.println(String.format("Best representative query text: %s",
-                            imageDetail.bestRepresentativeQuery().text()));
-                    System.out.println(String.format("Best representative query web search url: %s",
-                            imageDetail.bestRepresentativeQuery().webSearchUrl()));
-                }
-                else
-                {
-                    System.out.println("Couldn't find best representative query!");
-                }
-
-                // Image caption
-                if (imageDetail.imageCaption() != null)
-                {
-                    System.out.println(String.format("Image caption: %s",
-                            imageDetail.imageCaption().caption()));
-                    System.out.println(String.format("Image caption data source url: %s",
-                            imageDetail.imageCaption().dataSourceUrl()));
-                }
-                else
-                {
-                    System.out.println("Couldn't find image caption!");
-                }
-
-                // Pages that include the image
-                if (imageDetail.pagesIncluding().value().size() > 0)
-                {
-                    ImageObject firstPage = imageDetail.pagesIncluding().value().get(0);
-                    System.out.println(String.format("Pages including count: %d",
-                            imageDetail.pagesIncluding().value().size()));
-                    System.out.println(String.format("First page content url: %s",
-                            firstPage.contentUrl()));
-                    System.out.println(String.format("First page name: %s",
-                            firstPage.name()));
-                    System.out.println(String.format("First page date published: %s",
-                            firstPage.datePublished()));
-                }
-                else
-                {
-                    System.out.println("Couldn't find any pages including this image!");
-                }
-
-                // Related searches
-                if (imageDetail.relatedSearches().value().size() > 0)
-                {
-                    Query firstRelatedSearch = imageDetail.relatedSearches().value().get(0);
-                    System.out.println(String.format("Related searches count: %d",
-                            imageDetail.relatedSearches().value().size()));
-                    System.out.println(String.format("First related search text: %s",
-                            firstRelatedSearch.text()));
-                    System.out.println(String.format("First related search web search url: %s",
-                            firstRelatedSearch.webSearchUrl()));
-                }
-                else
-                {
-                    System.out.println("Couldn't find any related searches!");
-                }
-
-                // Images that are visually similar
-                if (imageDetail.visuallySimilarImages().value().size() > 0)
-                {
-                    ImageObject firstVisuallySimilarImage = imageDetail.visuallySimilarImages().value().get(0);
-                    System.out.println(String.format("Visually similar images count: %d",
-                            imageDetail.relatedSearches().value().size()));
-                    System.out.println(String.format("First visually similar image name: %s",
-                            firstVisuallySimilarImage.name()));
-                    System.out.println(String.format("First visually similar image content url: %s",
-                            firstVisuallySimilarImage.contentUrl()));
-                    System.out.println(String.format("First visually similar image size: %s",
-                            firstVisuallySimilarImage.contentSize()));
-                }
-                else
-                {
-                    System.out.println("Couldn't find any related searches!");
-                }
-
-                // Image tags
-                if (imageDetail.imageTags().value().size() > 0)
-                {
-                    InsightsTag firstTag = imageDetail.imageTags().value().get(0);
-                    System.out.println(String.format("Image tags count: %d",
-                            imageDetail.imageTags().value().size()));
-                    System.out.println(String.format("First tag name: %s",
-                            firstTag.name()));
-                }
-                else
-                {
-                    System.out.println("Couldn't find any related searches!");
-                }
-            }
-            else
-            {
-                System.out.println("Couldn't find detail about the image!");
-            }
-        }
-        else
-        {
-            System.out.println("Couldn't find image results!");
-        }
-    }
-
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
+else {
+        System.out.println("Couldn't find image results!");
     }
 }
 ```
-Fügen Sie die in diesem Artikel beschriebenen Methoden zu einer Klasse hinzu, deren Hauptfunktion die Ausführung von Code ist.
-```
-package ImageSDK;
-import com.microsoft.azure.cognitiveservices.imagesearch.*;
 
-public class ImageSrchSDK {
-
-    public static void main(String[] args) {
-    
-        imageSearch("YOUR-SUBSCRIPTION-KEY");
-        imageSearchWithFilters("YOUR-SUBSCRIPTION-KEY");
-        imageTrending("YOUR-SUBSCRIPTION-KEY");
-        imageDetail("YOUR-SUBSCRIPTION-KEY");
-
-    // Include the methods described in this article.
-}
-
-```
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Cognitive Services Java SDK samples (Cognitive Services SDK-Beispiele für Java)](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+> [!div class="nextstepaction"]
+> [Tutorial: Einseitige Web-App für die Bing-Bildersuche](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+
+## <a name="see-also"></a>Weitere Informationen
+
+* [Was ist die Bing-Bildersuche?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Interaktive Onlinedemo testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Abrufen eines kostenlosen Cognitive Services-Zugriffsschlüssels](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
+* [Java-Beispiele für das Azure Cognitive Services SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+* [Dokumentation zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

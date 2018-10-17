@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory-Berichterstellung | Microsoft-Dokumentation
-description: Enthält eine allgemeine Übersicht über die Azure Active Directory-Berichterstellung.
+title: Was sind Azure Active Directory-Berichte? | Microsoft-Dokumentation
+description: Dieser Artikel bietet eine allgemeine Übersicht über Azure Active Directory-Berichte.
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -9,23 +9,23 @@ editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 96faeaefc6c58f03328a85b626528267396121a5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 220f27ccf2d3eaefd8347e1d52824be2d601d9c9
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42146209"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364391"
 ---
-# <a name="azure-active-directory-reporting"></a>Azure Active Directory-Berichterstellung
+# <a name="what-are-azure-active-directory-reports"></a>Was sind Azure Active Directory-Berichte?
 
-Mit der Azure Active Directory-Berichterstellung erhalten Sie Einblicke in den Leistungszustand Ihrer Umgebung.  
+Mit Azure Active Directory-Berichten erhalten Sie Einblicke in den Leistungszustand Ihrer Umgebung.  
 Die bereitgestellten Daten ermöglichen Ihnen Folgendes:
 
 - Ermitteln, wie Ihre Apps und Dienste von Ihren Benutzern genutzt werden
@@ -50,6 +50,7 @@ In Azure Active Directory gibt es zwei Arten von Sicherheitsberichten:
 - **Riskante Anmeldungen:** Mit dem [Sicherheitsbericht „Riskante Anmeldungen“](concept-risky-sign-ins.md) erhalten Sie einen Indikator für Anmeldeversuche von Benutzern, die nicht der rechtmäßige Besitzer eines Benutzerkontos sind. 
 
 **Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf einen Sicherheitsbericht?**  
+
 Alle Editionen von Azure Active Directory verfügen über die Sicherheitsberichte „Benutzer mit Risikomarkierung“ und „Riskante Anmeldungen“.  
 Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber variieren: 
 
@@ -69,9 +70,7 @@ In Azure Active Directory gibt es zwei Arten von Aktivitätsberichten:
 - **Anmeldungen:** Mit dem [Aktivitätsbericht „Anmeldungen“](concept-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die im Bericht „Überwachungsprotokolle“ aufgeführt sind.
 
 
-
-Der **Bericht „Überwachungsprotokolle“** enthält Datensätze zu Systemaktivitäten, die für die Konformität relevant sind.
-Die bereitgestellten Daten sind beispielsweise in den folgenden häufigen Szenarien hilfreich:
+Der **Bericht „Überwachungsprotokolle“** enthält Datensätze zu Systemaktivitäten, die für die Konformität relevant sind. Diese Daten sind in folgenden häufigen Szenarien hilfreich:
 
 - Ein Benutzer meines Mandanten hat Zugriff auf eine Administratorgruppe erhalten. Wer hat dem Benutzer den Zugriff gewährt? 
 
@@ -81,10 +80,10 @@ Die bereitgestellten Daten sind beispielsweise in den folgenden häufigen Szenar
 
 
 **Welche Azure AD-Lizenz benötigen Sie, um auf den Bericht „Überwachungsprotokolle“ zuzugreifen?**  
+
 Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll.
 
 Weitere Informationen finden Sie auf der Seite [Azure Active Directory – Features und Funktionen](https://www.microsoft.com/cloud-platform/azure-active-directory-features) unter **Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium**.   
-
 
 
 Mit dem **Aktivitätsbericht „Anmeldungen“** können Sie beispielsweise folgende Fragen beantworten:
@@ -95,8 +94,8 @@ Mit dem **Aktivitätsbericht „Anmeldungen“** können Sie beispielsweise folg
 
 
 **Welche Azure AD-Lizenz ist erforderlich, um auf den Aktivitätsbericht „Anmeldungen“ zuzugreifen?**  
-Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, um auf den Aktivitätsbericht „Anmeldungen“ zugreifen zu können.
 
+Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, um auf den Aktivitätsbericht „Anmeldungen“ zugreifen zu können.
 
 ## <a name="programmatic-access"></a>Programmgesteuerter Zugriff
 
@@ -105,17 +104,6 @@ Zusätzlich zur Benutzeroberfläche ermöglicht die Azure Active Directory-Beric
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den unterschiedlichen Arten von Azure Active Directory-Berichten finden Sie unter:
-
-- [Bericht „Benutzer mit Risikomarkierung“](concept-user-at-risk.md)
 - [Bericht „Riskante Anmeldungen“](concept-risky-sign-ins.md)
 - [Bericht „Überwachungsprotokolle“](concept-audit-logs.md)
 - [Bericht „Anmeldungen“](concept-sign-ins.md)
-
-Weitere Informationen zum Zugriff auf die Berichtsdaten mit der Berichterstellungs-API finden Sie unter: 
-
-- [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](concept-reporting-api.md)
-
-
-<!--Image references-->
-[1]: ./media/active-directory-reporting-azure-portal/ic195031.png

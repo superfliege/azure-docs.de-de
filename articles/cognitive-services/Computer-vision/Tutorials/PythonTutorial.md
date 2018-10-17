@@ -1,22 +1,23 @@
 ---
-title: Tutorial zur Maschinelles Sehen-API mit Python | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie die Maschinelles Sehen-API mit Python verwenden, indem Sie Jupyter-Notebooks in Microsoft Cognitive Services nutzen. Visualisieren Sie Ihre Ergebnisse mithilfe gängiger Bibliotheken.
+title: 'Tutorial: Maschinelles Sehen-API in Python'
+titlesuffix: Azure Cognitive Services
+description: Es wird beschrieben, wie Sie die Maschinelles Sehen-API mit Python verwenden, indem Sie Jupyter-Notebooks nutzen. Visualisieren Sie Ihre Ergebnisse mithilfe gängiger Bibliotheken.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/25/2017
 ms.author: kefre
-ms.openlocfilehash: a093c2d066e70a8daf1fe1cd33ccf794ecb196af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 59e88ecb253bc6da803ddf34a4a02229b99e259d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374066"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981710"
 ---
-# <a name="computer-vision-api-python-tutorial"></a>Tutorial: Maschinelles Sehen-API in Python
+# <a name="tutorial-computer-vision-api-python"></a>Tutorial: Maschinelles Sehen-API in Python
 
 Im Tutorial wird veranschaulicht, wie Sie die Maschinelles Sehen-API in Python verwenden und Ihre Ergebnisse mithilfe beliebter Bibliotheken visualisieren. Nutzen Sie Jupyter, um das Tutorial durchzuarbeiten. Informationen zum Einstieg in interaktive Jupyter-Notebooks finden Sie in der [Jupyter-Dokumentation](http://jupyter.readthedocs.io/en/latest/index.html). 
 

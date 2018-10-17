@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018s
+ms.date: 10/10/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 9092629c7bef46cdb7c464fca5e22d4aea0da9fc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 12b7a605350b07565660e9e4d1334b286aa5ac00
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041539"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079105"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -32,15 +32,23 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Kostenanalyse steht allen [EA-Kunden (Enterprise Agreement)](https://azure.microsoft.com/pricing/enterprise-agreement/) zur Verfügung. Zum Aufrufen von Kostendaten benötigen Sie für einen oder mehrere der folgenden Bereiche mindestens Lesezugriff:
+Die Kostenanalyse steht allen [EA-Kunden (Enterprise Agreement)](https://azure.microsoft.com/pricing/enterprise-agreement/) zur Verfügung. Zum Aufrufen von Kostendaten benötigen Sie für einen oder mehrere der folgenden Bereiche mindestens Lesezugriff.
 
-- Abrechnungskonto
-- Department
-- Registrierungskonto
-- Verwaltungsgruppe
-- Abonnement
-- Ressourcengruppe
+- Der Bereich *Abrechnungskonto* wird unter https://ea.azure.com definiert, und es wird Unternehmensadministrator-Zugriff benötigt. Es ist keine Enterprise Agreement-Einstellung als Voraussetzung erforderlich. Die Abrechnungsinformationen in der Kostenanalyse werden für alle Abonnements im Enterprise Agreement-Dokument zusammengefasst. Das Abrechnungskonto wird häufig als *Enterprise Agreement* oder *Registrierung* bezeichnet.
 
+- Der Bereich *Abteilung* ist unter https://ea.azure.com definiert, und es ist Zugriff vom Typ „Abteilungsadministrator“ erforderlich. Die Einstellung **Gebühren anzeigen** für Abteilungsadministratoren muss im Enterprise Agreement-Portal aktiviert sein. Die Abrechnungsinformationen in der Kostenanalyse werden für alle Abonnements des Registrierungskontos zusammengefasst, die mit der Abteilung verknüpft sind.
+
+- Der Bereich *Registrierungskonto* wird unter https://ea.azure.com definiert, und es ist Zugriff vom Typ „Kontobesitzer“ erforderlich. Die Einstellung **Gebühren anzeigen** für Kontobesitzer muss im Enterprise Agreement-Portal aktiviert sein. Die Abrechnungsinformationen in der Kostenanalyse werden für alle Abonnements zusammengefasst, die zum Registrierungskonto gehören. Das Registrierungskonto wird häufig als *Kontobesitzer* bezeichnet.
+
+- Der Bereich *Verwaltungsgruppe* wird unter https://portal.azure.com definiert, und es ist Zugriff vom Typ „Cost Management-Leser“ (Leser) erforderlich. Die Einstellung **Gebühren anzeigen** für Kontobesitzer muss im Enterprise Agreement-Portal aktiviert sein. Die Abrechnungsinformationen in der Kostenanalyse werden für alle Abonnements unterhalb der Verwaltungsgruppe zusammengefasst.
+
+- Der Bereich *Abonnement* wird unter https://portal.azure.com definiert, und es ist Zugriff vom Typ „Cost Management-Leser“ (Leser) erforderlich. Die Einstellung **Gebühren anzeigen** für Kontobesitzer muss im Enterprise Agreement-Portal aktiviert sein. Abrechnungsinformationen in der Kostenanalyse werden für alle Ressourcen und Ressourcengruppen des Abonnements zusammengefasst.
+
+- Der Bereich *Ressourcengruppe* wird unter https://portal.azure.com definiert, und es ist Zugriff vom Typ „Cost Management-Leser“ (Leser) erforderlich. Die Einstellung **Gebühren anzeigen** für Kontobesitzer muss im Enterprise Agreement-Portal aktiviert sein. Abrechnungsinformationen in der Kostenanalyse werden für alle Ressourcen der Ressourcengruppe zusammengefasst.
+
+
+
+Weitere Informationen zur Konfiguration der Einstellungen **Gebühren anzeigen (Abteilungsadministrator)** und **Gebühren anzeigen (Kontobesitzer)** finden Sie unter [Aktivieren des Zugriffs auf Kosten](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -94,6 +102,11 @@ Pivotdiagramme unter der Ansicht „Gesamt“ im oberen Bereich zeigen Ansichten
 ![Alle Daten für aktuelle Ansicht](./media/quick-acm-cost-analysis/full-data-set.png)
 
 Das vorhergehende Bild zeigt die Namen der Ressourcengruppen. Anzeigetags für Ressourcen sind in keiner der Kostenanalysesichten, Filter oder Gruppierungen verfügbar.
+
+Beim Gruppieren von Kosten nach einem bestimmten Attribut wird die Top-Ten-Liste der Kostenverursacher angezeigt (von den höchsten zu den niedrigsten Kosten). Falls mehr als zehn Gruppen vorhanden sind, werden die obersten neun Kostenverursacher und zusätzlich die Gruppe **Others** (Andere) angezeigt, um alle verbleibenden Gruppen abzudecken.
+
+Für *klassische* virtuelle Computer (Azure Service Management, ASM), Netzwerke und Speicherressourcen werden keine ausführlichen Abrechnungsdaten bereitgestellt. Sie werden beim Gruppieren der Kosten als **Classic services** (Klassische Dienste) gruppiert.
+
 
 ## <a name="download-cost-analysis-data"></a>Herunterladen von Kostenanalysedaten
 

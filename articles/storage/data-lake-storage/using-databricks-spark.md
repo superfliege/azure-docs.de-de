@@ -8,26 +8,25 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 7d951a959da28187a5971ee218f2bd921d331727
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fd9dfaa2042cae0923c919f4e76d7b59a170918e
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301797"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466029"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ (Vorschauversion) mit Azure Databricks unter Verwendung von Spark
 
-In diesem Tutorial erfahren Sie, wie Sie Spark-Abfragen in einem Azure Databricks-Cluster ausführen, um Daten in einem Azure-Konto abzufragen, das für „Data Lake Storage Gen2“ (Vorschauversion) geeignet ist.
+In diesem Tutorial erfahren Sie, wie Sie Spark-Abfragen in einem Azure Databricks-Cluster ausführen, um Daten in einem Konto abzufragen, das für „Azure Data Lake Storage Gen2“ (Vorschauversion) geeignet ist.
 
 > [!div class="checklist"]
 > * Erstellen eines Databricks-Clusters
 > * Erfassen von unstrukturierten Daten in einem Speicherkonto
-> * Auslösen einer Azure-Funktion zum Verarbeiten von Daten
 > * Ausführen von Analysen für Ihre Daten im Blobspeicher
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Tutorial wird veranschaulicht, wie Sie die Flugdaten einer Fluggesellschaft nutzen und abfragen, die vom [Verkehrsministerium der Vereinigten Staaten](https://transtats.bts.gov/Tables.asp?DB_ID=120&DB_Name=Airline%20On-Time%20Performance%20Data&DB_Short_Name=On-Time) zur Verfügung gestellt werden. Laden Sie Flugdaten für einen Zeitraum von mindestens zwei Jahren herunter (alle Felder auswählen), und speichern Sie das Ergebnis auf Ihrem Computer. Achten Sie darauf, dass Sie sich den Dateinamen und -pfad Ihres Downloads notieren. Sie benötigen diese Angaben in einem späteren Schritt.
+In diesem Tutorial wird veranschaulicht, wie Sie die Flugdaten einer Fluggesellschaft nutzen und abfragen, die vom [Verkehrsministerium der Vereinigten Staaten](https://transtats.bts.gov/Tables.asp?DB_ID=120&DB_Name=Airline%20On-Time%20Performance%20Data&DB_Short_Name=On-Time) zur Verfügung gestellt werden. Laden Sie Flugdaten für einen Zeitraum von mindestens zwei Jahren herunter (wählen Sie alle Felder aus), und speichern Sie das Ergebnis auf Ihrem Computer. Achten Sie darauf, dass Sie sich den Dateinamen und -pfad Ihres Downloads notieren. Sie benötigen diese Angaben in einem späteren Schritt.
 
 > [!NOTE]
 > Klicken Sie auf das Kontrollkästchen **Prezipped file** (ZIP-Datei), um alle Datenfelder auszuwählen. Der Download hat eine Größe von einigen GB, aber diese Datenmenge ist für die Analyse erforderlich.
@@ -36,11 +35,8 @@ In diesem Tutorial wird veranschaulicht, wie Sie die Flugdaten einer Fluggesells
 
 Erstellen Sie zunächst ein neues [Azure-Konto vom Typ „Data Lake Storage Gen2“](quickstart-create-account.md), und geben Sie ihm einen eindeutigen Namen. Navigieren Sie anschließend zu diesem Speicherkonto, um Konfigurationseinstellungen abzurufen.
 
-> [!IMPORTANT]
-> Während der Vorschauphase funktionieren Azure-Funktionen nur mit Azure-Konten vom Typ „Data Lake Storage Gen2“, die mit einem flachen Namespace erstellt wurden.
-
 1. Klicken Sie unter **Einstellungen** auf **Zugriffsschlüssel**.
-3. Klicken Sie auf die Schaltfläche **Kopieren** neben **key1**, um den Schlüsselwert zu kopieren.
+2. Klicken Sie auf die Schaltfläche **Kopieren** neben **key1**, um den Schlüsselwert zu kopieren.
 
 Sowohl der Kontoname als auch der Schlüssel sind für weitere Schritte dieses Tutorials erforderlich. Öffnen Sie einen Text-Editor, und notieren Sie sich darin den Kontonamen und Schlüssel zur späteren Verwendung.
 
@@ -74,7 +70,7 @@ Im nächsten Schritt wird ein [Databricks-Cluster](https://docs.azuredatabricks.
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Kopieren von Quelldaten in das Speicherkonto
 
-Die nächste Aufgabe ist die Nutzung von AzCopy zum Kopieren der Daten aus der *CSV*-Datei in den Azure-Speicher. Öffnen Sie ein Eingabeaufforderungsfenster, und geben Sie die folgenden Befehle ein. Achten Sie darauf, die Platzhalter `<DOWNLOAD_FILE_PATH>`, `<ACCOUNT_NAME>` und `<ACCOUNT_KEY>` durch die entsprechenden Werte zu ersetzen, die Sie in einem vorherigen Schritt notiert haben.
+Die nächste Aufgabe ist die Nutzung von AzCopy zum Kopieren der Daten aus der *CSV*-Datei in den Azure-Speicher. Öffnen Sie ein Eingabeaufforderungsfenster, und geben Sie die folgenden Befehle ein. Achten Sie darauf, die Platzhalter `<DOWNLOAD_FILE_PATH>` und `<ACCOUNT_KEY>` durch die entsprechenden Werte zu ersetzen, die Sie in einem vorherigen Schritt notiert haben.
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -141,7 +137,7 @@ dbutils.fs.help()
 dbutils.fs.put(source + "/temp/1.txt", "Hello, World!", True)
 dbutils.fs.ls(source + "/temp/parquet/flights")
 ```
-Mit diesen Codebeispielen haben Sie die hierarchische Auslegung von HDFS untersucht, indem Sie Daten eines Azure-Kontos genutzt haben, das für „Data Lake Storage Gen2“ geeignet ist.
+Mit diesen Codebeispielen haben Sie die hierarchische Ausrichtung von HDFS untersucht, indem Sie Daten in einem Konto genutzt haben, das für „Azure Data Lake Storage Gen2“ geeignet ist.
 
 ## <a name="query-the-data"></a>Abfragen von Daten
 
@@ -159,7 +155,7 @@ Führen Sie das folgende Skript aus, um Dataframes für Ihre Datenquellen zu ers
 acDF = spark.read.format('csv').options(header='true', inferschema='true').load(accountsource + "/<YOUR_CSV_FILE_NAME>.csv")
 acDF.write.parquet(accountsource + '/parquet/airlinecodes')
 
-#read the existing parquet file for the flights database that was created via the Azure Function
+#read the existing parquet file for the flights database that was created earlier
 flightDF = spark.read.format('parquet').options(header='true', inferschema='true').load(accountsource + "/parquet/flights")
 
 #print the schema of the dataframes

@@ -1,43 +1,48 @@
 ---
-title: JavaScript-Schnellstart für die Maschinelles Sehen-API | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild, indem Sie die Maschinelles Sehen-API mit JavaScript in Cognitive Services verwenden.
+title: 'Schnellstart: Extrahieren von handschriftlichem Text – REST, JavaScript – Maschinelles Sehen-API'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und JavaScript.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: c6b52bfdf1c42499772da1e5f72897baa65a4786
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 82c51c95bf8a538ce50dd190cce737b0295abc6e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770103"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634675"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-javascript"></a>Schnellstart: Extrahieren von handschriftlichem Text – REST, JavaScript
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>Schnellstart: Extrahieren von handschriftlichem Text mit der REST-API und JavaScript in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild, indem Sie die Maschinelles Sehen-API verwenden.
+In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit den Methoden [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) und [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) können Sie in einem Bild handschriftlichen Text erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+
+> [!IMPORTANT]
+> Im Gegensatz zur [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode wird die [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)-Methode asynchron ausgeführt. Diese Methode gibt keine Informationen im Text einer erfolgreichen Antwort zurück. Die Recognize Text-Methode gibt stattdessen einen URI im Wert des Antwortheaderfelds `Operation-Content` zurück. Anschließend können Sie diesen URI aufrufen, der die Methode [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) darstellt, um den Status zu überprüfen und die Ergebnisse des Recognize Text-Methodenaufrufs zurückzugeben.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+Sie benötigen einen Abonnementschlüssel für die Maschinelles Sehen-API. Informationen zum Abrufen eines Abonnementschlüssels finden Sie unter [Abrufen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="recognize-text-request"></a>Recognize Text-Anforderung
+## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
-Mit den Methoden [Recognize Text](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) und [Get Recognize Text Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) können Sie in einem Bild handschriftlichen Text erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Kopieren Sie das folgende Skript, und speichern Sie es in einer Datei wie `handwriting.html`.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uriBase` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ziehen Sie die Datei per Drag & Drop in Ihren Browser.
-1. Klicken Sie auf die Schaltfläche `Read image`.
-
-In diesem Beispiel wird jQuery 1.9.0 verwendet. Ein Beispiel, in dem JavaScript ohne jQuery verwendet wird, finden Sie unter [Intelligentes Generieren einer Miniaturansicht](javascript-thumb.md).
+1. Kopieren Sie den folgenden Code in einen Text-Editor.
+1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
+    1. Ersetzen Sie den Wert von `subscriptionKey` durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die Methode [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) aus der Azure-Region, aus der Sie Ihre Abonnementschlüssel abgerufen haben, falls erforderlich.
+    1. Ersetzen Sie optional den Wert des Attributs `value` für das Steuerelement `inputImage` durch die URL eines anderen Bilds, aus dem Sie handschriftlichen Text extrahieren möchten.
+1. Speichern Sie den Code als Datei mit der Erweiterung `.html`. Beispiel: `get-handwriting.html`.
+1. Öffnen Sie ein Browserfenster.
+1. Ziehen Sie die Datei in das Browserfenster, und legen Sie sie dort ab.
+1. Wenn die Webseite im Browser angezeigt wird, klicken Sie auf die Schaltfläche **Bild lesen**.
 
 ```html
 <!DOCTYPE html>
@@ -57,19 +62,18 @@ In diesem Beispiel wird jQuery 1.9.0 verwendet. Ein Beispiel, in dem JavaScript 
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to get your
-        // subscription keys. For example, if you got your subscription keys from
-        // westus, replace "westcentralus" in the URI below with "westus".
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
+        // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
 
         // Request parameter.
-        // Note: The request parameter changed for APIv2.
-        // For APIv1, it is "handwriting": "true".
         var params = {
             "mode": "Handwritten",
         };
@@ -186,11 +190,9 @@ Image to read:
 </html>
 ```
 
-## <a name="recognize-text-response"></a>Recognize Text-Antwort
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die zurückgegebenen Ergebnisse zum handschriftlichen Text enthalten Text, Begrenzungsrahmen für Regionen, Zeilen und Wörter.
-
-Das Programm erzeugt eine Ausgabe, die dem folgenden JSON-Code ähnelt:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebseite analysiert eine erfolgreiche Antwort und zeigt sie im Browserfenster an, ähnlich wie im folgenden Beispiel:
 
 ```json
 {
@@ -468,9 +470,13 @@ Das Programm erzeugt eine Ausgabe, die dem folgenden JSON-Code ähnelt:
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Datei nicht mehr benötigen, löschen Sie sie.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lernen Sie eine JavaScript-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Lernen Sie eine JavaScript-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
 
 > [!div class="nextstepaction"]
 > [Tutorial zur Maschinelles Sehen-API mit JavaScript](../Tutorials/javascript-tutorial.md)

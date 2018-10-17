@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: e133dde4defdec51d33fda70c0ac6d6fbeff18fe
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 56d885fa4a52c907ef2b7eab10899191a1ac3acd
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189384"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248522"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die MongoDB-API
 
@@ -38,9 +38,11 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Erhöhung des Durchsatzes: Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für eine einzelne Sammlung oder eine Gruppe von Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im [Azure-Portal](https://portal.azure.com) finden Sie unter [Leistungsstufen und Tarife in Azure Cosmos DB](performance-levels.md).
+* **Erhöhung des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für eine einzelne Sammlung oder eine Gruppe von Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im [Azure-Portal](https://portal.azure.com) finden Sie unter [Leistungsstufen und Tarife in Azure Cosmos DB](performance-levels.md).
 
-* SSL-Aktivierung: Für Azure Cosmos DB gelten strenge Sicherheitsanforderungen und -standards. Achten Sie darauf, SSL für die Interaktion mit Ihrem Konto zu aktivieren. Die Verfahren im restlichen Artikel verdeutlichen, wie Sie SSL für „mongoimport“ und „mongorestore“ aktivieren.
+* **Aktivieren von SSL:** Für Azure Cosmos DB gelten strenge Sicherheitsanforderungen und -standards. Achten Sie darauf, SSL für die Interaktion mit Ihrem Konto zu aktivieren. Die Verfahren im restlichen Artikel verdeutlichen, wie Sie SSL für „mongoimport“ und „mongorestore“ aktivieren.
+
+* **Erstellen von Azure Cosmos DB-Ressourcen:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie vorab all Ihre Sammlungen im Azure-Portal. Wenn Sie als Migrationsziel ein Azure Cosmos DB-Konto mit Durchsatz auf Datenbankebene verwenden, geben Sie beim Erstellen der Azure Cosmos DB-Sammlungen einen Partitionsschlüssel an.
 
 ## <a name="get-your-connection-string"></a>Abrufen Ihrer Verbindungszeichenfolge 
 

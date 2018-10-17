@@ -1,22 +1,24 @@
 ---
-title: 'Azure Cognitive Services: Erstellen eines Objekterkennungsprojekts in C#, Custom Vision Service | Microsoft-Dokumentation'
-description: Erfahren Sie mehr über eine grundlegende Windows-App, die die Custom Vision-API in Microsoft Cognitive Services verwendet. Erstellen Sie ein Projekt, fügen Sie Tags hinzu, laden Sie Bilder hoch, und erstellen Sie eine Vorhersage mit dem Standardendpunkt.
+title: 'Tutorial: Erstellen eines Objekterkennungsprojekts in C# – Custom Vision Service'
+titlesuffix: Azure Cognitive Services
+description: Erstellen Sie ein Projekt, fügen Sie Tags hinzu, laden Sie Bilder hoch, und erstellen Sie eine Vorhersage mit dem Standardendpunkt.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: areddish
-ms.openlocfilehash: e3def864267a590c86a2dd6663561d8488081ad6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: d04fb86abbc0f174e895c166d97fc5467831206f
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "36301079"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366912"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-in-c35"></a>Verwenden der Custom Vision-API zum Erstellen eines Objekterkennungsprojekts in C&#35; 
+# <a name="tutorial-use-custom-vision-api-to-build-an-object-detection-project-in-c"></a>Tutorial: Verwenden der Custom Vision-API zum Erstellen eines Objekterkennungsprojekts in C#
+
 Erfahren Sie, wie Sie eine grundlegende Windows-Anwendung verwenden können, die die Custom Vision-API zum Erstellen eines Objekterkennungsprojekts verwendet. Nachdem es erstellt wurde, können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Open-Source-Beispiel als Vorlage zum Erstellen Ihrer eigenen App für Windows, indem Sie die Custom Vision-API verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen

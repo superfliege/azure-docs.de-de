@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 54ddafbf0e4fe02bfc1445aad23ac3e20b42acb0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: efe975fa4f89a262faef82df3cc79820d393b60e
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339385"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605758"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET Core-Web-API über eine einseitige App mithilfe von Azure Active Directory B2C
 
@@ -46,9 +46,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Admi
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-1. Wählen Sie **Azure AD B2C** aus der Dienstliste im Azure-Portal aus.
+1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf. Sie sollten nun den Mandanten verwenden, den Sie im vorherigen Tutorial erstellt haben.
 
-2. Klicken Sie in den B2C-Einstellungen auf **Anwendungen** und anschließend auf **Hinzufügen**.
+2. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
 
     Verwenden Sie die folgenden Einstellungen, um die Beispiel-Web-API bei Ihrem Mandanten zu registrieren.
     
@@ -59,7 +59,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Admi
     | **Name** | Hello Core API | Geben Sie einen aussagekräftigen**Namen** für Ihre Web-API ein. |
     | **Web-App/Web-API einschließen** | JA | Wählen Sie für eine Web-API die Option **Ja** aus. |
     | **Impliziten Fluss zulassen** | JA | Diese API verwendet die [OpenID Connect-Anmeldung](active-directory-b2c-reference-oidc.md). Wählen Sie daher **Ja** aus. |
-    | **Antwort-URL** | `http://localhost:44332` | Antwort-URLs sind Endpunkte, an denen Azure AD B2C von Ihrer API angeforderte Token zurückgibt. Die Beispiel-Web-API in diesem Tutorial wird lokal (localhost) ausgeführt und lauscht am Port 5000. |
+    | **Antwort-URL** | `http://localhost:5000` | Antwort-URLs sind Endpunkte, an denen Azure AD B2C von Ihrer API angeforderte Token zurückgibt. Die Beispiel-Web-API in diesem Tutorial wird lokal (Localhost) ausgeführt und lauscht am Port 5000 (sobald dies weiter unten in diesem Tutorial konfiguriert ist). |
     | **App-ID-URI** | HelloCoreAPI | Durch den URI wird die API eindeutig im Mandanten identifiziert. Dadurch können pro Mandant mehrere APIs registriert werden. [Bereiche](../active-directory/develop/developer-glossary.md#scopes) steuern den Zugriff auf die geschützte API-Ressource und werden auf der Grundlage des APP-ID-URI definiert. |
     | **Nativer Client** | Nein  | Da es sich hierbei um eine Web-API und nicht um einen nativen Client handelt, wählen Sie „Nein“ aus. |
     
@@ -111,7 +111,7 @@ Wenn Sie über eine App eine geschützte Web-API aufrufen möchten, müssen Sie 
 
 5. Klicken Sie auf **OK**.
 
-**My sample single page app** wird zum Aufrufen der geschützten API **Hello Core API** registriert. Ein Benutzer [authentifiziert](../active-directory/develop/developer-glossary.md#authentication) sich mit Azure AD B2C, um die WPF-Desktop-App zu verwenden. Die Desktop-App bezieht eine [Autorisierungsgewährung](../active-directory/develop/developer-glossary.md#authorization-grant) von Azure AD B2C, um auf die geschützte Web-API zuzugreifen.
+**My sample single page app** wird zum Aufrufen der geschützten API **Hello Core API** registriert. Ein Benutzer [authentifiziert](../active-directory/develop/developer-glossary.md#authentication) sich mit Azure AD B2C, um die Single-Page-Webanwendung zu verwenden. Die Single-Page-Webanwendung holt eine [Autorisierungsgewährung](../active-directory/develop/developer-glossary.md#authorization-grant) von Azure AD B2C ein, um auf die geschützte Web-API zuzugreifen.
 
 ## <a name="update-code"></a>Aktualisieren des Codes
 
@@ -158,7 +158,7 @@ Damit Ihre einseitige App die ASP.NET Core-Web-API aufrufen kann, müssen Sie [C
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
-3. Öffnen Sie die Datei **launchSettings.json** unter **Eigenschaften**, suchen Sie die Einstellung *applicationURL*, und halten Sie den Wert für die Verwendung im nächsten Abschnitt fest.
+3. Öffnen Sie die Datei **launchSettings.json** unter **Eigenschaften**, suchen Sie nach der Einstellung **iisSettings** *applicationURL*, und legen Sie die Portnummer auf die Nummer fest, die für die API-Antwort-URL `http://localhost:5000` registriert ist.
 
 ### <a name="configure-the-single-page-app"></a>Konfigurieren der einseitigen App
 
@@ -174,7 +174,7 @@ Gehen Sie zum Ändern der App-Einstellungen wie folgt vor:
         clientID: '<Application ID for your SPA obtained from portal app registration>',
         authority: "https://<your-tenant-name>.b2clogin.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://<Your tenant name>.onmicrosoft.com/HelloCoreAPI/demo.read"],
-        webApi: 'http://localhost:64791/api/values',
+        webApi: 'http://localhost:5000/api/values',
     };
     ```
 

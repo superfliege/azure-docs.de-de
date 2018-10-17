@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/28/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4aac44d46b6c5d202431aa34a1dc7b962466c799
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346187"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078493"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
 
@@ -40,7 +40,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * Erstellen einer .NET Service Fabric-Anwendung
 > * [Bereitstellen der Anwendung in einem Remotecluster](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
-> * [Konfigurieren von CI/CD mit Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [Konfigurieren von CI/CD mit Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -455,6 +455,9 @@ Im nächsten Schritt verbinden Sie die beiden Dienste miteinander und sorgen daf
 Service Fabric bietet absolute Flexibilität bei der Kommunikation mit Reliable Services. Sie können in einer Anwendung über Dienste verfügen, auf die über TCP zugegriffen werden kann. Auf andere Dienste wird möglicherweise über eine HTTP-REST-API zugegriffen, und bei wieder anderen Diensten erfolgt der Zugriff über Websockets. Ausführliche Informationen zu den verfügbaren Optionen und deren Vor- und Nachteilen finden Sie unter [Kommunizieren mit Diensten](service-fabric-connect-and-communicate-with-services.md).
 
 In diesem Tutorial verwenden Sie die [ASP.NET Core-Web-API](service-fabric-reliable-services-communication-aspnetcore.md) und den [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md), damit der Front-End-Webdienst „VotingWeb“ mit dem Back-End-Datendienst „VotingData“ kommunizieren kann. Der Reverseproxy ist standardmäßig zur Verwendung des Ports 19081 konfiguriert und sollte für dieses Tutorial funktionieren. Der Port wird in der ARM-Vorlage, die zum Einrichten des Clusters verwendet wird, festgelegt. Sehen Sie sich die Clustervorlage in der Ressource **Microsoft.ServiceFabric/clusters** oder das Element „HttpApplicationGatewayEndpoint“ im Clustermanifest an, um herauszufinden, welcher Port verwendet wird.
+
+> [!NOTE]
+> Der Reverseproxy wird nur in einem Cluster unter Windows 8 und höher oder Windows Server 2012 und höher unterstützt.
 
 <u>Ressource „reverseProxyEndpointPort“ aus Microsoft.ServiceFabric/clusters</u>
 

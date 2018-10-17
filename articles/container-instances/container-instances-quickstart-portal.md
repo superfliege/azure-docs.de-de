@@ -1,26 +1,25 @@
 ---
-title: 'Schnellstart: Erstellen Ihres ersten Azure Container Instances-Containers mit dem Azure-Portal'
-description: In dieser Schnellstartanleitung stellen Sie mithilfe des Azure-Portals einen Windows-Container in Azure Container Instances bereit.
+title: 'Schnellstart: Ausführen einer Anwendung in Azure Container Instances'
+description: In dieser Schnellstartanleitung stellen Sie mithilfe des Azure-Portals eine in einem Docker-Container ausgeführte Anwendung in Azure Container Instances bereit.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 05/11/2018
-ms.author: marsma
+ms.date: 10/02/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 6aa6fb27b2aa7c8b9614e5812fadc629b1e185f8
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 6ab7680559400c0a270142563ecf7e251c2cd1b8
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076237"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857719"
 ---
-# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Schnellstartanleitung: Erstellen Ihres ersten Containers in Azure Container Instances
+# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Schnellstart: Ausführen einer Anwendung in Azure Container Instances
 
-Azure Container Instances erleichtert die Erstellung und Verwaltung von Docker-Containern in Azure, ohne dass Sie virtuelle Computer bereitstellen oder einen übergeordneten Dienst einführen müssen. In dieser Schnellstartanleitung erstellen Sie mithilfe des Azure-Portals einen Container in Azure und machen ihn mit einem vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) über das Internet verfügbar. Nach dem Konfigurieren einiger Einstellungen wird in Ihrem Browser Folgendes angezeigt:
+Führen Sie mithilfe von Azure Container Instances Docker-Container schnell und einfach in Azure aus. Sie müssen keine virtuellen Computer bereitstellen und keine vollständige Containerorchestrierungsplattform wie Kubernetes verwenden. In dieser Schnellstartanleitung erstellen Sie mithilfe des Azure-Portals einen Container in Azure und machen seine Anwendung mit einem vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügbar. Nachdem Sie einige Einstellungen konfiguriert und den Container bereitgestellt haben, können Sie zur ausgeführten Anwendung navigieren:
 
-![Mit Azure Container Instances bereitgestellte App im Browser][aci-portal-07]
+![In Azure Container Instances bereitgestellte App im Browser][aci-portal-07]
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -38,7 +37,7 @@ Geben Sie die folgenden Werte in die Textfelder **Containername**, **Containerim
 
 * Containername: `mycontainer`
 * Containerimage: `microsoft/aci-helloworld`
-* Ressourcengruppe: `myResourceGroup`
+* Ressourcengruppe: **Neu erstellen** > `myResourceGroup`
 
 ![Konfigurieren grundlegender Einstellungen für eine neue Containerinstanz im Azure-Portal][aci-portal-03]
 
@@ -54,11 +53,11 @@ Nach Abschluss der Überprüfung wird eine Zusammenfassung der Containereinstell
 
 ![Zusammenfassung der Einstellungen für eine neue Containerinstanz im Azure-Portal][aci-portal-05]
 
-Wenn die Bereitstellung beginnt, gibt eine Kachel auf dem Portaldashboard an, dass die Bereitstellung durchgeführt wird. Nach Abschluss der Bereitstellung zeigt die Kachel Ihre neue Containerinstanz an.
+Wenn die Bereitstellung startet, wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die Bereitstellung durchgeführt wird. Eine weitere Benachrichtigung wird angezeigt, nachdem die Containergruppe bereitgestellt wurde.
 
 ![Status der Erstellung einer neuen Containerinstanz im Azure-Portal][aci-portal-08]
 
-Wählen Sie die Containerinstanz **mycontainer** aus, um die dazugehörigen Eigenschaften anzuzeigen. Beachten Sie den **FQDN** (vollqualifizierter Domänenname) der Containerinstanz sowie den **Status**.
+Öffnen Sie die Übersicht für die Containergruppe, indem Sie zu **Ressourcengruppen** > **myResourceGroup** > **mycontainer** navigieren. Beachten Sie den **FQDN** (vollqualifizierter Domänenname) der Containerinstanz sowie den **Status**.
 
 ![Übersicht über die Containergruppe im Azure-Portal][aci-portal-06]
 
@@ -72,7 +71,7 @@ Glückwunsch! Mit wenigen Konfigurationsschritten haben Sie eine öffentlich zug
 
 Die Protokolle für eine Containerinstanz sind hilfreich, wenn Sie Probleme mit dem Container oder mit der ausgeführten Anwendung behandeln.
 
-Klicken Sie zum Anzeigen der Protokolle des Containers unter **EINSTELLUNGEN** auf **Container** > **Protokolle**. Daraufhin sollte die HTTP GET-Anforderung angezeigt werden, die beim Betrachten der Anwendung in Ihrem Browser generiert wurde.
+Klicken Sie zum Anzeigen der Protokolle des Containers unter **Einstellungen** auf **Container** und dann auf **Protokolle**. Daraufhin sollte die HTTP GET-Anforderung angezeigt werden, die beim Betrachten der Anwendung in Ihrem Browser generiert wurde.
 
 ![Containerprotokolle im Azure-Portal][aci-portal-11]
 
@@ -88,7 +87,7 @@ Klicken Sie im Bestätigungsdialogfeld auf **Ja**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Azure-Containerinstanz auf der Grundlage eines Images in der öffentlichen Docker Hub-Registrierung erstellt. Wenn Sie selbst ein Containerimage erstellen und über eine private Azure-Containerregistrierung in Azure Container Instances bereitstellen möchten, fahren Sie mit dem Azure Container Instances-Tutorial fort.
+In dieser Schnellstartanleitung haben Sie eine Azure-Containerinstanz auf der Grundlage eines Images in der öffentlichen Docker Hub-Registrierung erstellt. Fahren Sie mit dem Azure Container Instances-Tutorial fort, wenn Sie ein Containerimage erstellen und über eine private Azure-Containerregistrierung bereitstellen möchten.
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances-Tutorial](./container-instances-tutorial-prepare-app.md)

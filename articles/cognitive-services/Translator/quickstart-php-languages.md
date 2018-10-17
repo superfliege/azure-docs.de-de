@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Abrufen unterstützter Sprachen mit PHP | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung rufen Sie eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab. Dazu verwenden Sie die Textübersetzungs-API mit PHP in Cognitive Services.
+title: 'Schnellstart: Abrufen der unterstützten Sprachen – Textübersetzung, PHP'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart rufen Sie eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab. Dazu verwenden Sie die Textübersetzungs-API mit PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 95b48f15ffe8cea14f9ffb7612193b819e03f5f3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2924a61a31037fcf52986d250007b906ffb40b98
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769689"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128706"
 ---
 # <a name="quickstart-get-supported-languages-with-php"></a>Schnellstart: Abrufen der unterstützten Sprachen mit PHP
 

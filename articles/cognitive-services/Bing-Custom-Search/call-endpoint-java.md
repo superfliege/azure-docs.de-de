@@ -1,22 +1,23 @@
 ---
-title: Aufrufen eines Endpunkts mit Java – benutzerdefinierte Bing-Suche – Microsoft Cognitive Services
+title: 'Schnellstart: Aufrufen eines Endpunkts mit Java – benutzerdefinierte Bing-Suche'
+titlesuffix: Azure Cognitive Services
 description: Dieser Schnellstart veranschaulicht das Anfordern von Suchergebnissen aus Ihrer Instanz der benutzerdefinierten Suche unter Verwendung von Java zum Aufrufen des Endpunkts der benutzerdefinierten Bing-Suche.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ba1eb9799bc95dede081c6f1a6d972896c126da6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951813"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814116"
 ---
-# <a name="call-bing-custom-search-endpoint-java"></a>Aufrufen des Endpunkts für die benutzerdefinierte Bing-Suche (Java)
+# <a name="quickstart-call-bing-custom-search-endpoint-java"></a>Schnellstart: Aufrufen eines Endpunkts für die benutzerdefinierte Bing-Suche (Java)
 
 Dieser Schnellstart veranschaulicht, wie Suchergebnisse aus Ihrer Instanz der benutzerdefinierten Suche mittels Java angefordert werden, um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen. 
 
@@ -26,7 +27,7 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
 - Eine einsatzbereite Instanz für die benutzerdefinierte Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
 - Installation von [Java](https://www.java.com)
-- Abonnementschlüssel Sie erhalten einen Abonnementschlüssel, wenn Sie Ihre [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktivieren, oder Sie können einen kostenpflichtigen Abonnementschlüssel über Ihr Azure-Dashboard beziehen (siehe [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+- Abonnementschlüssel Sie erhalten einen Abonnementschlüssel, wenn Sie Ihre [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktivieren, oder Sie können einen kostenpflichtigen Abonnementschlüssel über Ihr Azure-Dashboard beziehen (siehe [Schnellstart: Erstellen eines Cognitive Services-API-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 

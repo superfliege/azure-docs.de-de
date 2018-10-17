@@ -1,52 +1,49 @@
 ---
-title: Python-Schnellstart zum Analysieren von lokalen Bildern mit der Maschinelles Sehen-API | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung analysieren Sie ein lokales Bild, indem Sie die Maschinelles Sehen-API mit Python in Cognitive Services verwenden.
+title: 'Schnellstart: Analysieren eines lokalen Bilds – REST, Python – Maschinelles Sehen'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung analysieren Sie ein lokales Bild mit der Maschinelles Sehen-API und Python.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: a1f3fce5a547f143f7c4884c6642e78f53d160e9
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 48a6602c9f3029cc008f3db7d4701499c14e7ce1
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770095"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633859"
 ---
-# <a name="quickstart-analyze-a-local-image---rest-python"></a>Schnellstart: Analysieren eines lokalen Bilds – REST, Python
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-python-in-computer-vision"></a>Schnellstart: Analysieren eines lokalen Bilds mit der REST-API und Python in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung analysieren Sie ein lokales Bild mit der Maschinelles Sehen-API. Informationen zur Analyse eines Remotebilds finden Sie unter [Analyze a remote image with Python](python-analyze.md) (Analysieren eines Remotebilds mit Python).
+In dieser Schnellstartanleitung analysieren Sie mithilfe der REST-API von Maschinelles Sehen ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
 
 Sie können diese Schnellstartanleitung Schritt für Schritt mit einem Jupyter-Notebook in [MyBinder](https://mybinder.org) ausführen. Klicken Sie zum Starten von Binder auf die folgende Schaltfläche:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-a-local-image"></a>Analysieren von lokalen Bildern
+## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
-Dieses Beispiel ähnelt [Analyze a remote image with Python](python-analyze.md) (Analysieren eines Remotebilds mit Python), aber das zu analysierende Bild wird lokal vom Datenträger gelesen. Zwei Änderungen sind erforderlich:
+Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-- Fügen Sie der Anforderung den Header `{"Content-Type": "application/octet-stream"}` hinzu.
-- Fügen Sie die Bilddaten (Bytearray) dem Text der Anforderung hinzu.
-
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Kopieren Sie den folgenden Code in eine neue Python-Skriptdatei.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `vision_base_url` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ändern Sie den Wert von `image_path` in den Pfad eines lokalen Bilds.
-1. Führen Sie das Skript aus.
-
-Im folgenden Code wird die Python-Bibliothek `requests` verwendet, um die Bildanalyse-API für maschinelles Sehen aufzurufen. Die Ergebnisse werden als JSON-Objekt zurückgegeben. Der API-Schlüssel wird über das `headers`-Wörterbuch übergeben. Die Merkmale, die erkannt werden sollen, werden über das `params`-Wörterbuch übergeben. Die binären Bilddaten werden über den Parameter `data` an `requests.post` übergeben.
-
-## <a name="analyze-image-request"></a>Anforderung zur Bildanalyse
+1. Kopieren Sie den folgenden Code, und fügen Sie ihn in einen Text-Editor ein.
+1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
+    1. Ersetzen Sie den `subscription_key`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie den Wert von `vision_base_url` durch die Endpunkt-URL für die Ressource „Maschinelles Sehen-API“ in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie optional den Wert von `image_path` durch den Pfad und den Dateinamen eines anderen Bilds, das Sie analysieren möchten.
+1. Speichern Sie den Code als Datei mit der Erweiterung `.py`. Beispiel: `analyze-local-image.py`.
+1. Öffnen Sie ein Eingabeaufforderungsfenster.
+1. Verwenden Sie an der Eingabeaufforderung den Befehl `python`, um das Beispiel auszuführen. Beispiel: `python analyze-local-image.py`.
 
 ```python
 import requests
@@ -96,9 +93,9 @@ plt.axis("off")
 _ = plt.title(image_caption, size="x-large", y=-0.1)
 ```
 
-## <a name="analyze-image-response"></a>Antwort zur Bildanalyse
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebseite analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Im Folgenden finden Sie ein Beispiel dafür:
 
 ```json
 {
@@ -172,9 +169,13 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Datei, falls Sie sie nicht mehr benötigen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lernen Sie eine einfache Python-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Lernen Sie eine einfache Python-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit der Maschinelles Sehen-API beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
 > [!div class="nextstepaction"]
 > [Tutorial zur Maschinelles Sehen-API in Python](../Tutorials/PythonTutorial.md)

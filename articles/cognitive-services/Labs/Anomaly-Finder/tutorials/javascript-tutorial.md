@@ -1,22 +1,25 @@
 ---
-title: Javascript-App zur Erkennung von Anomalien – Microsoft Cognitive Services | Microsoft-Dokumentation
-description: Lernen Sie eine Javascript-Web-App kennen, die die API zur Anomalieerkennung in Microsoft Cognitive Services verwendet. Senden Sie originale Datenpunkte an die API, und rufen Sie den erwarteten Wert und Anomaliepunkte ab.
+title: 'Tutorial: Anomalieerkennung mit JavaScript'
+titlesuffix: Azure Cognitive Services
+description: Lernen Sie eine JavaScript-App kennen, die die Anomalieerkennungs-API verwendet. Senden Sie originale Datenpunkte an die API, und rufen Sie den erwarteten Wert und Anomaliepunkte ab.
 services: cognitive-services
 author: wenya
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: 42c3941a05efe8b74f818cd99f3606b3073892a9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cd65a5275fac651968197c9000b2d4cd3962693b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38453168"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883702"
 ---
-# <a name="anomaly-detection-javascript-application"></a>Javascript-Anwendung zur Anomalieerkennung
+# <a name="tutorial-anomaly-detection-with-javascript-application"></a>Tutorial: Anomalieerkennung mit einer JavaScript-Anwendung
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 Lernen Sie eine Webanwendung kennen, die die REST-API zur Anomalieerkennung zum Erkennen einer Anomalie verwendet. Im Beispiel werden die Zeitreihendaten mit Ihrem Abonnementschlüssel an die Anomalieerkennungs-API übermittelt, anschließend werden alle Anomaliepunkte und der erwartete Wert für jeden Datenpunkt bei der API abgerufen.
 

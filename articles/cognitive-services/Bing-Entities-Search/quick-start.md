@@ -1,25 +1,24 @@
 ---
-title: Schnellstart für die Entitätssuche-API | Microsoft-Dokumentation
-description: In diesem Artikel lernen Sie die ersten Schritte mit der Bing-Entitätssuche-API kennen.
+title: 'Schnellstart: Bing-Entitätssuche-API'
+description: In diesem Artikel werden die ersten Schritte mit der Bing-Entitätssuche-API erläutert.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: B206A254-B7E9-49FF-AFD5-87B1E4D6D30B
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/06/2017
 ms.author: scottwhi
-ms.openlocfilehash: 12031d2447920c7e2d6180f35cf4fb29aa1b6150
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ffc9ebb21c6646b1a39af4659053adf4157d204b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372930"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813956"
 ---
-# <a name="making-your-first-entities-request"></a>Ihre erste Entitätsanforderung
+# <a name="quickstart-making-your-first-bing-entity-search-request"></a>Schnellstart: Erstellen Ihrer ersten Anforderung für die Bing-Entitätssuche
 
-Die-Entitätssuche-API sendet eine Suchabfrage an Bing und erhält Ergebnisse, die Entitäten und Orte umfassen. Zu Orten gehören Restaurants, Hotels oder andere lokale Geschäfte. Für Orte kann die Abfrage den Namen des lokalen Unternehmens angeben oder nach einer Liste fragen (z.B. Restaurants in meiner Nähe). Entitätsergebnisse enthalten Personen, Orte oder Gegenstände. Orte sind in diesem Zusammenhang touristische Attraktionen, Staaten, Länder, etc. 
+Die Bing-Entitätssuche-API sendet eine Suchabfrage an Bing und erhält Ergebnisse, die Entitäten und Orte umfassen. Zu Orten gehören Restaurants, Hotels oder andere lokale Geschäfte. Für Orte kann die Abfrage den Namen des lokalen Unternehmens angeben oder nach einer Liste fragen (z.B. Restaurants in meiner Nähe). Entitätsergebnisse enthalten Personen, Orte oder Gegenstände. Orte sind in diesem Zusammenhang touristische Attraktionen, Staaten, Länder, etc. 
 
 ## <a name="first-steps"></a>Erste Schritte
 
@@ -48,7 +47,7 @@ Die Anforderung muss den [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/
 -   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientip)  
 -   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#location)  
 
-Die Client-IP- und Adressheader sind für die Rückgabe von standortbezogenem Inhalt wichtig.  
+Die Client-IP- und Adressheader sind für die Rückgabe von standortorientiertem Inhalt wichtig.  
 
 Eine Liste aller Anforderungs- und Antwortheader finden Sie unter [Header](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers).
 

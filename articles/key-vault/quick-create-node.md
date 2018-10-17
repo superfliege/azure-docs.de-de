@@ -8,32 +8,32 @@ manager: sumedhb
 ms.service: key-vault
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4592b256dfda75e81a94034545cd54dbf0d71532
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 860294ebc7fbadd3eeefc4298ec740ca7f704587
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42022605"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714393"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App 
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Geheimnis in Key Vault speichern und es über eine Web-App abrufen. Um den Wert des Geheimnisses anzuzeigen, müssen Sie die folgenden Schritte in Azure ausführen. Diese Schnellstartanleitung verwendet Node.js und verwaltete Dienstidentitäten (managed service identities, MSIs)
+In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Geheimnis in Key Vault speichern und es über eine Web-App abrufen. Um den Wert des Geheimnisses anzuzeigen, müssen Sie die folgenden Schritte in Azure ausführen. In dieser Schnellstartanleitung werden Node.js und verwaltete Identitäten für Azure-Ressourcen verwendet.
 
 > [!div class="checklist"]
 > * Erstellen einer Key Vault-Instanz
 > * Speichern eines Geheimnisses in Key Vault
 > * Abrufen eines Geheimnisses aus Key Vault
 > * Erstellen einer Azure-Webanwendung
-> * [Aktivieren von verwalteten Dienstidentitäten](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)
+> * Aktivieren einer [verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) für die Web-App
 > * Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus Key Vault für die Webanwendung
 
 Bevor Sie fortfahren, stellen Sie sicher, dass Sie mit den [grundlegenden Konzepte](key-vault-whatis.md#basic-concepts) vertraut sind.
 
 >[!NOTE]
-Sie müssen mit ein paar Konzepten vertraut sein, um zu verstehen, warum das folgende Tutorial die empfohlene Vorgehensweise ist. Key Vault ist ein zentrales Repository zum programmgesteuerten Speichern von Geheimnissen. Dafür müssen sich Anwendungen oder Benutzer jedoch zuerst bei Key Vault authentifizieren, d.h. sie müssen ein Geheimnis angeben. Aus Sicherheitsgründen muss das erste Geheimnis außerdem regelmäßig rotiert werden. Dank der [verwalteten Dienstidentität](../active-directory/managed-service-identity/overview.md) erhalten in Azure ausgeführte Anwendungen jedoch eine Identität, die automatisch von Azure verwaltet wird. Das macht die **Einführung von Geheimnissen weniger problematisch**, da Benutzer/Anwendungen die empfohlene Vorgehensweise verwenden können und sich nicht um die Rotation des ersten Geheimnisses kümmern müssen.
+Sie müssen mit ein paar Konzepten vertraut sein, um zu verstehen, warum das folgende Tutorial die empfohlene Vorgehensweise ist. Key Vault ist ein zentrales Repository zum programmgesteuerten Speichern von Geheimnissen. Dafür müssen sich Anwendungen oder Benutzer jedoch zuerst bei Key Vault authentifizieren, d.h. sie müssen ein Geheimnis angeben. Aus Sicherheitsgründen muss das erste Geheimnis außerdem regelmäßig rotiert werden. Dank der [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) erhalten in Azure ausgeführte Anwendungen jedoch eine Identität, die automatisch von Azure verwaltet wird. Das macht die **Einführung von Geheimnissen weniger problematisch**, da Benutzer/Anwendungen die empfohlene Vorgehensweise verwenden können und sich nicht um die Rotation des ersten Geheimnisses kümmern müssen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -156,9 +156,9 @@ Im Folgenden finden Sie die Schritte, die erforderlich sind.
     git remote add azure <url>
     ```
 
-## <a name="enable-managed-service-identity"></a>Aktivieren der verwalteten Dienstidentität
+## <a name="enable-a-managed-identity-for-the-web-app"></a>Aktivieren einer verwalteten Identität für die Web-App
 
-Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mithilfe von MSI (Managed Service Identity, verwaltete Dienstidentität) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
+Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mit den Informationen unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
 Führen Sie den Befehl „assign-identity“ aus, um die Identität für diese Anwendung zu erstellen:
 
@@ -166,7 +166,7 @@ Führen Sie den Befehl „assign-identity“ aus, um die Identität für diese A
 az webapp identity assign --name <app_name> --resource-group "<YourResourceGroupName>"
 ```
 
-Dieser Befehl entspricht dem Aufrufen des Portals und dem Festlegen von **Verwaltete Dienstidentität** auf **Ein** in den Webanwendungseigenschaften.
+Dieser Befehl entspricht dem Aufrufen des Portals und dem Festlegen der Einstellung **Identität/Vom System zugewiesen** auf **Ein** in den Webanwendungseigenschaften.
 
 ### <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>Zuweisen von Berechtigungen zu Ihrer Anwendung für das Lesen von Geheimnissen aus Key Vault
 

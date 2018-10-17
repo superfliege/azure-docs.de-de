@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 27600cd4656f70b4cd01745667c0e0fd2a2f4997
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 33b95c1b0e3d654ce8bb6eda3e96b7b3e9c9bc13
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405818"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831482"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Clusters von Linux in einem virtuellen Azure-Netzwerk
 
@@ -85,7 +85,7 @@ Diese Vorlage stellt einen sicheren Cluster aus fünf virtuellen Computern und e
 
 ### <a name="service-fabric-cluster"></a>Service Fabric-Cluster
 
-Es wird ein Linux-Cluster mit den folgenden Merkmalen bereitgestellt:
+In der Ressource **Microsoft.ServiceFabric/clusters** wird ein Linux-Cluster mit den folgenden Eigenschaften bereitgestellt:
 
 * Nur ein Knotentyp
 * Fünf Knoten für den primären Knotentyp (in Vorlagenparametern konfigurierbar)
@@ -99,7 +99,7 @@ Es wird ein Linux-Cluster mit den folgenden Merkmalen bereitgestellt:
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Ein Load Balancer wird bereitgestellt, und für die folgenden Ports werden Tests und Regeln eingerichtet:
+In der Ressource **Microsoft.Network/loadBalancers** wird ein Lastenausgleich konfiguriert, und es werden Tests und Regeln für die folgenden Ports eingerichtet:
 
 * Clientverbindungsendpunkt: 19000
 * HTTP-Gatewayendpunkt: 19080
@@ -108,7 +108,7 @@ Ein Load Balancer wird bereitgestellt, und für die folgenden Ports werden Tests
 
 ### <a name="virtual-network-and-subnet"></a>Virtuelles Netzwerk und Subnetz
 
-Die Namen des virtuellen Netzwerks und Subnetzes werden in den Vorlagenparametern deklariert.  Adressräume des virtuellen Netzwerks und Subnetzes werden auch in den Vorlagenparametern deklariert:
+Die Namen des virtuellen Netzwerks und Subnetzes werden in den Vorlagenparametern deklariert.  Adressräume des virtuellen Netzwerks und des Subnetzes werden auch in den Vorlagenparametern deklariert und in der Ressource **Microsoft.Network/virtualNetworks** konfiguriert:
 
 * Adressraum des virtuellen Netzwerks: 10.0.0.0/16
 * Service Fabric-Subnetzadressraum: 10.0.2.0/24

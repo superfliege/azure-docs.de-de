@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Konvertieren eines Textskripts mit PHP | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung konvertieren Sie Text in einer Sprache von einem Skript in ein anderes. Dazu verwenden Sie die Textübersetzungs-API mit PHP in Cognitive Services.
+title: 'Schnellstart: Konvertieren eines Textskripts – Textübersetzung, PHP'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart konvertieren Sie Text in einer Sprache aus einem Skript in ein anderes. Dazu verwenden Sie die Textübersetzungs-API mit PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: aec4dfe9c99f95eb971148ace4a9e692a01998c2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b2b1773bc6eeea3a19d197faae75039511e77cf9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769683"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123864"
 ---
 # <a name="quickstart-transliterate-text-with-php"></a>Schnellstart: Transliteration von Text mit PHP
 

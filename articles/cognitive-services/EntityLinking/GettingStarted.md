@@ -1,22 +1,23 @@
 ---
-title: Erste Schritte mit der API für den Entity Linking-Analysedienst | Microsoft-Dokumentation
-description: Analysieren Sie die nach Text und Verknüpfungen benannten Entitäten auf relevante Einträge in einer Wissensdatenbank mithilfe der API für den Entity Linking-Analysedienst in Cognitive Services.
+title: 'Tutorial: Erstellen einer Entitätsverknüpfung-App – C#'
+titlesuffix: Azure Cognitive Services
+description: Analysieren Sie benannte Entitäten für Text und Verknüpfungen auf relevante Einträge in einer Wissensdatenbank mithilfe der Entitätsverknüpfungs-API.
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: entity-linking-intelligence
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: 54c4a3bbb3637c248bd7705ed291633368b542c9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 907b4cab483f1bf63a864094530784f9c632a1c8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373258"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365637"
 ---
-# <a name="get-started-with-entity-linking-api-in-c35"></a>Erste Schritte mit der API für den Entitity Linking-Analysedienst in C#
+# <a name="tutorial-build-an-entity-linking-app-with-c"></a>Tutorial: Erstellen einer Entitätsverknüpfung-App mit C#
 
 Der Entity Linking-Analysedienst von Microsoft ist ein Tool zur Verarbeitung natürlicher Sprache, um nach Text und Verknüpfungen benannte Entitäten auf relevante Einträge in einer Wissensdatenbank zu analysieren. 
 

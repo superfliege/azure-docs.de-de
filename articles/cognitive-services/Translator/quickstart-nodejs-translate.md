@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Übersetzen von Text mit Node.js | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung übersetzen Sie Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit Node.js in Cognitive Services.
+title: 'Schnellstart: Übersetzen von Text – Textübersetzung, Node.js'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart übersetzen Sie Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit Node.js.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 6d862125dc6c248afa8d8322ec1b008959abb7cd
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: fe81b7fffd1705cb940e3aa52f397cf0f2cf1b14
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43769599"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122181"
 ---
 # <a name="quickstart-translate-text-with-nodejs"></a>Schnellstart: Übersetzen von Text mit Node.js
 

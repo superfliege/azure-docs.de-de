@@ -1,25 +1,25 @@
 ---
-title: Schnellstart für die Bing-Vorschlagssuche-API mit Ruby | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Vorschlagssuche-API in Microsoft Cognitive Services einsteigen können.
+title: 'Schnellstart: Bing-Vorschlagssuche-API, Ruby'
+titlesuffix: Azure Cognitive Services
+description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Bing-Vorschlagssuche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 30bb2986b90bc20efa96dba6f490948dce3e4ade
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 643b9173b57b9f8e8596fe6a8b49358d34297b97
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377235"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831176"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-ruby"></a>Schnellstart für die Bing-Vorschlagssuche-API mit Ruby 
-<a name="HOLTop"></a>
 
-In diesem Artikel erfahren Sie, wie Sie die [Bing-Vorschlagssuche-API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) mit Ruby verwenden. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge zurück, die der Benutzer in das Suchfeld eingibt. Sie rufen diese API immer wieder neu auf, wenn der Benutzer ein neues Zeichen in das Suchfeld eingibt, und die Vorschläge werden in der Dropdownliste des Suchfelds angezeigt. In diesem Artikel wird gezeigt, wie Sie eine Anforderung senden, die die vorgeschlagenen Abfragezeichenfolgen für *sail* zurückgibt.
+In diesem Artikel erfahren Sie, wie Sie die [Bing-Vorschlagssuche-API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) mit Ruby verwenden. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge zurück, die der Benutzer in das Suchfeld eingibt. Sie rufen diese API immer wieder auf, wenn der Benutzer ein neues Zeichen in das Suchfeld eingibt. Die Vorschläge werden in der Dropdownliste des Suchfelds angezeigt. In diesem Artikel wird gezeigt, wie Sie eine Anforderung senden, die die vorgeschlagenen Abfragezeichenfolgen für *sail* zurückgibt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -67,7 +67,7 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ### <a name="response"></a>response
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben:
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {
@@ -136,9 +136,9 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial zur Bing-Vorschlagssuche](../tutorials/autosuggest.md)
+> [Tutorial für die Bing-Vorschlagssuche](../tutorials/autosuggest.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Worum handelt es sich bei der Bing-Vorschlagssuche?](../get-suggested-search-terms.md)
-- [Referenz zur Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Referenz für die Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)

@@ -8,16 +8,16 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 3ec2c44c168b47fd66d1ffa9a0c8d0069600ecb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0acb5bf18c078d8b7eb6a5c14a61fcef622f9f2d
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958100"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831126"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>Schnellstart: Konfigurieren von Azure DNS für die Namensauflösung über das Azure-Portal
 
- Sie können Azure DNS zum Auflösen der Hostnamen in Ihrer öffentlichen Domäne konfigurieren. Wenn Sie beispielsweise den Domänennamen „contoso.com“ von einer Domänennamen-Registrierungsstelle erworben haben, können Sie Azure DNS zum Hosten der Domäne „contoso.com“ und zum Auflösen von „www.contoso.com“ in die IP-Adresse für Ihren Webserver oder Ihre Web-App konfigurieren.
+ Sie können Azure DNS zum Auflösen der Hostnamen in Ihrer öffentlichen Domäne konfigurieren. Wenn Sie beispielsweise den Domänennamen „contoso.com“ von einer Domänennamen-Registrierungsstelle erworben haben, können Sie Azure DNS für das Hosten der Domäne „contoso.com“ und Auflösen von „www.contoso.com“ in die IP-Adresse Ihres Webservers oder Ihrer Web-App konfigurieren.
 
 In dieser Schnellstartanleitung erstellen Sie eine Testdomäne und anschließend einen Adresseintrag mit dem Namen „www“, der in die IP-Adresse 10.10.10.10 aufgelöst wird.
 
@@ -43,7 +43,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
    | **Einstellung** | **Wert** | **Details** |
    |---|---|---|
-   |**Name**|contoso.xyz|Der Name der DNS-Zone für dieses Beispiel. Sie können einen beliebigen Wert für diese Schnellstartanleitung verwenden, sofern er nicht bereits auf den Azure DNS-Servern konfiguriert ist. Ein realer Wert ist eine Domäne, die Sie von einer Domänennamen-Registrierungsstelle erworben haben.|
+   |**Name**|contoso.xyz|Der Name der DNS-Zone für dieses Beispiel kann ein beliebiger Name sein, den Sie für diese Schnellstartanleitung verwenden möchten. Er darf nur auf den Azure DNS-Servern nicht bereits konfiguriert sein. Ein realer Wert ist eine Domäne, die Sie von einer Domänennamen-Registrierungsstelle erworben haben.|
    |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem die DNS-Zone erstellt werden soll.|
    |**Ressourcengruppe**|**Neu erstellen:** dns-test|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. |
    |**Location**|USA (Ost)||
@@ -74,7 +74,7 @@ In dieser Schnellstartanleitung erwerben Sie nicht tatsächlich einen echten Dom
 
 ## <a name="test-the-name-resolution"></a>Testen der Namensauflösung
 
-Sie besitzen nun eine Testzone mit einem A-Testeintrag darin und können die Namensauflösung mit einem Tool namens nslookup testen. 
+Sie besitzen nun eine Testzone mit einem darin enthaltenen A-Testeintrag und können die Namensauflösung mit dem Tool *nslookup* testen. 
 
 1. Zunächst müssen Sie die Azure DNS-Namenserver für die Verwendung mit nslookup notieren. 
 
@@ -96,7 +96,7 @@ Das angezeigte Ergebnis sollte ähnlich wie der folgende Screenshot aussehen:
 
 ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-Dadurch wird bestätigt, dass die Namensauflösung ordnungsgemäß funktioniert. www.contoso.xyz wird gemäß Ihrer Konfiguration in 10.10.10.10 aufgelöst.
+Dadurch wird bestätigt, dass die Namensauflösung ordnungsgemäß funktioniert. „www.contoso.xyz“ wird gemäß Ihrer Konfiguration in 10.10.10.10 aufgelöst.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

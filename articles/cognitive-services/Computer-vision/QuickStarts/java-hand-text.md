@@ -1,67 +1,70 @@
 ---
 title: 'Schnellstart: Extrahieren von handschriftlichem Text – REST, Java – Maschinelles Sehen-API'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild, indem Sie die Maschinelles Sehen-API mit Java in Cognitive Services verwenden.
+description: In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und Java.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: a7f2599853bcc8dc4502ef870a91e2ee131b4667
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: b69d36652838f5d5d6caa3ebb7a3287e234b32cf
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842735"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629440"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-java---computer-vision"></a>Schnellstart: Extrahieren von handschriftlichem Text – REST, Java – Maschinelles Sehen-API
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>Schnellstart: Extrahieren von handschriftlichem Text mit der REST-API und Java in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild, indem Sie die Maschinelles Sehen-API verwenden.
+In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit den Methoden [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) und [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) können Sie in einem Bild handschriftlichen Text erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+
+> [!IMPORTANT]
+> Im Gegensatz zur [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode wird die [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)-Methode asynchron ausgeführt. Diese Methode gibt keine Informationen im Text einer erfolgreichen Antwort zurück. Die Recognize Text-Methode gibt stattdessen einen URI im Wert des Antwortheaderfelds `Operation-Content` zurück. Anschließend können Sie diesen URI aufrufen, der die Methode [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) darstellt, um den Status zu überprüfen und die Ergebnisse des Recognize Text-Methodenaufrufs zurückzugeben.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- Die [Java&trade;-Plattform, Standard Edition Development Kit 7 oder 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (JDK 7 oder 8), muss installiert sein.
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="recognize-text-request"></a>Recognize Text-Anforderung
+## <a name="create-and-run-the-sample-application"></a>Erstellen und Ausführen der Beispielanwendung
 
-Mit den Methoden [Recognize Text](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) und [Get Recognize Text Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) können Sie in einem Bild handschriftlichen Text erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
+1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt. Wenn die Option verfügbar ist, erstellen Sie das Java-Projekt anhand einer Befehlszeilen-Anwendungsvorlage.
+1. Importieren Sie die folgenden Bibliotheken in Ihr Java-Projekt. Wenn Sie Maven verwenden, werden die Maven-Koordinaten für jede Bibliothek bereitgestellt.
+   - [Apache-HTTP-Client](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
+   - [Apache-HTTP-Core](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
+   - [JSON-Bibliothek](https://github.com/stleary/JSON-java) (org.json:json:20180130)
+1. Fügen Sie der Datei, die die öffentliche Klasse `Main` für Ihr Projekt enthält, die folgenden `import`-Anweisungen hinzu.  
 
-1. Erstellen Sie eine neue Befehlszeilen-App.
-1. Ersetzen Sie die Main-Klasse durch den folgenden Code (behalten Sie alle `package`-Anweisungen bei).
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uriBase` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ändern Sie optional den Wert von `imageToAnalyze` in ein anderes Bild.
-1. Laden Sie die folgenden Bibliotheken aus dem Maven-Repository in das Verzeichnis `lib` in Ihrem Projekt herunter:
-   * `org.apache.httpcomponents:httpclient:4.5.5`
-   * `org.apache.httpcomponents:httpcore:4.4.9`
-   * `org.json:json:20180130`
-1. Führen Sie „Main“ aus.
+   ```java
+   import java.net.URI;
+   import org.apache.http.HttpEntity;
+   import org.apache.http.HttpResponse;
+   import org.apache.http.client.methods.HttpGet;
+   import org.apache.http.client.methods.HttpPost;
+   import org.apache.http.client.utils.URIBuilder;
+   import org.apache.http.entity.StringEntity;
+   import org.apache.http.impl.client.CloseableHttpClient;
+   import org.apache.http.impl.client.HttpClientBuilder;
+   import org.apache.http.util.EntityUtils;
+   import org.apache.http.Header;
+   import org.json.JSONObject;
+   ```
+
+1. Ersetzen Sie die öffentliche Klasse `Main` durch den folgenden Code, und nehmen Sie dann die folgenden Änderungen am Code vor, falls dies erforderlich ist:
+   1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
+   1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die Methode [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+   1. Ersetzen Sie optional den Wert von `imageToAnalyze` durch die URL eines anderen Bilds, aus dem handschriftlicher Text extrahiert werden soll.
+1. Speichern Sie die Änderungen, und erstellen Sie dann das Java-Projekt.
+1. Wenn Sie eine IDE verwenden, führen Sie `Main` aus. Öffnen Sie andernfalls ein Eingabeaufforderungsfenster, und verwenden Sie dann den `java`-Befehl, um die kompilierte Klasse auszuführen. Beispiel: `java Main`.
 
 ```java
-// This sample uses the following libraries:
-//  - Apache HTTP client (org.apache.httpcomponents:httpclient:4.5.5)
-//  - Apache HTTP core (org.apache.httpcomponents:httpccore:4.4.9)
-//  - JSON library (org.json:json:20180130).
-
-import java.net.URI;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.apache.http.Header;
-import org.json.JSONObject;
-
 public class Main {
     // **********************************************
     // *** Update or verify the following values. ***
@@ -70,12 +73,14 @@ public class Main {
     // Replace <Subscription Key> with your valid subscription key.
     private static final String subscriptionKey = "<Subscription Key>";
 
-    // You must use the same region in your REST call as you used to get your
-    // subscription keys. For example, if you got your subscription keys from
-    // westus, replace "westcentralus" in the URI below with "westus".
+    // You must use the same Azure region in your REST API method as you used to
+    // get your subscription keys. For example, if you got your subscription keys
+    // from the West US region, replace "westcentralus" in the URL
+    // below with "westus".
     //
-    // Free trial subscription keys are generated in the westcentralus region. If you
-    // use a free trial subscription key, you shouldn't need to change this region.
+    // Free trial subscription keys are generated in the West Central US region.
+    // If you use a free trial subscription key, you shouldn't need to change
+    // this region.
     private static final String uriBase =
         "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
 
@@ -94,11 +99,9 @@ public class Main {
             URIBuilder builder = new URIBuilder(uriBase);
 
             // Request parameter.
-            // Note: The request parameter changed for APIv2.
-            // For APIv1, it is "handwriting", "true".
             builder.setParameter("mode", "Handwritten");
 
-            // Prepare the URI for the REST API call.
+            // Prepare the URI for the REST API method.
             URI uri = builder.build();
             HttpPost request = new HttpPost(uri);
 
@@ -111,7 +114,11 @@ public class Main {
                     new StringEntity("{\"url\":\"" + imageToAnalyze + "\"}");
             request.setEntity(requestEntity);
 
-            // Make the first REST API call to detect the text.
+            // Two REST API methods are required to extract handwritten text.
+            // One method to submit the image for processing, the other method
+            // to retrieve the text found in the image.
+
+            // Call the first REST API method to detect the text.
             HttpResponse response = httpTextClient.execute(request);
 
             // Check for success.
@@ -125,11 +132,12 @@ public class Main {
                 return;
             }
 
-            // Stores the URI where you can get the text recognition operation result.
+            // Store the URI of the second REST API method.
+            // This URI is where you can get the results of the first REST API method.
             String operationLocation = null;
 
-            // 'Operation-Location' in the response contains the URI to
-            // retrieve the recognized text.
+            // The 'Operation-Location' response header value contains the URI for
+            // the second REST API method.
             Header[] responseHeaders = response.getAllHeaders();
             for (Header header : responseHeaders) {
                 if (header.getName().equals("Operation-Location")) {
@@ -143,16 +151,19 @@ public class Main {
                 System.exit(1);
             }
 
+            // If the first REST API method completes successfully, the second
+            // REST API method retrieves the text written in the image.
+            //
             // Note: The response may not be immediately available. Handwriting
-            // recognition is an asynchronous operation, which takes a variable
-            // amount of time dependent on the length of the text analyzed. You
-            // may need to wait or retry the Get operation.
+            // recognition is an asynchronous operation that can take a variable
+            // amount of time depending on the length of the handwritten text.
+            // You may need to wait or retry this operation.
 
             System.out.println("\nHandwritten text submitted.\n" +
                     "Waiting 10 seconds to retrieve the recognized text.\n");
             Thread.sleep(10000);
 
-            // Make the second REST API call and get the response.
+            // Call the second REST API method and get the response.
             HttpGet resultRequest = new HttpGet(operationLocation);
             resultRequest.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
 
@@ -173,11 +184,9 @@ public class Main {
 }
 ```
 
-## <a name="recognize-text-response"></a>Recognize Text-Antwort
+## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Ergebnisse der Erkennung des handschriftlichen Texts enthalten den erkannten Text und Begrenzungsrahmen für Regionen, Zeilen und Wörter.
-
-Das Programm sollte eine Ausgabe erzeugen, die dem folgenden JSON-Code ähnelt:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt sie bei erfolgreicher Ausführung im Konsolenfenster an, ähnlich wie im folgenden Beispiel:
 
 ```json
 Handwritten text submitted. Waiting 10 seconds to retrieve the recognized text.
@@ -455,9 +464,13 @@ Text recognition result response:
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie das Java-Projekt nicht mehr benötigen, löschen Sie es (einschließlich der kompilierten Klasse und der importierten Bibliotheken).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lernen Sie eine einfache Java Swing-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Lernen Sie eine einfache Java Swing-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit der Maschinelles Sehen-API beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
 > [!div class="nextstepaction"]
 > [Computer Vision API Java Tutorial](../Tutorials/java-tutorial.md) (Java-Tutorial zur Maschinelles Sehen-API)

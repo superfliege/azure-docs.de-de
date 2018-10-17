@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/27/2018
+ms.date: 10/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ae2d312feb0fcefab85bcbbd2db7ac46c328213f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a23e9dc8fad52bac85de834c53d2c710423211c7
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104981"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269240"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -39,7 +39,7 @@ Azure Analysis Services ist in den Tarifen **Developer**, **Basic** und **Standa
 
 ### <a name="developer-tier"></a>Developer-Tarif
 
-Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. Ein einzelner Plan enthält die gleichen Funktionen wie der Standard-Tarif, ist aber in Bezug auf die Verarbeitungsleistung, die QPUs und die Speichergröße begrenzt. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif nicht verfügbar. Für diesen Tarif wird keine Vereinbarung zum Servicelevel angeboten.
+Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. Ein einzelner Plan enthält die gleichen Funktionen wie der Standard-Tarif, ist aber in Bezug auf die Verarbeitungsleistung, die QPUs und die Speichergröße begrenzt. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar*. Für diesen Tarif wird keine Vereinbarung zum Servicelevel angeboten.
 
 |Plan  |QPUs  |Arbeitsspeicher (GB)  |
 |---------|---------|---------|
@@ -102,6 +102,7 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |Region  | Unterstützte Pläne | Abfragereplikate (nur Standard-Pläne) |
 |---------|---------|:---------:|
 |Australien, Südosten     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Australien (Osten)     |    B1, B2, S0, S1, S2, S4    <br>S8, S9    |    3<br>1     |
 |Japan, Osten  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
 |Indien, Westen     |    B1, B2, S0, S1, S2, S4, D1     |    1     |

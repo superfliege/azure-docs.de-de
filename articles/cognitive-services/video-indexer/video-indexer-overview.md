@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: overview
-ms.date: 09/15/2018
+ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: fd92e91989bd1a37626227b327d644c9d704ab6c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983013"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077916"
 ---
 # <a name="what-is-video-indexer"></a>Was ist Video Indexer?
 
@@ -38,8 +38,8 @@ Microsoft Video Indexer ist eine Cloudanwendung, die auf Azure Media Analytics, 
 - **Extraktion von Marken**: Extrahiert Marken aus Sprache und sichtbarem Text.
 - **Gesichtserkennung**: Erkennt und gruppiert im Video gezeigte Gesichter.
 - **Extraktion von Gesichtern als Miniaturbild („bestes Gesicht“)**: Identifiziert automatisch das am besten aufgenommene Gesicht in der jeweiligen Gruppe von Gesichtern (basierend auf Qualität, Größe und frontaler Position) und extrahiert es als Bildobjekt.
-- **Prominentenerkennung**: Erkennt Prominente im Video mithilfe einer Datenbank mit 1 Mio. Prominenten. Als Quellen dienen IMDB, Wikipedia und Top-Influencer auf Linkedin.
-- **Benutzerdefinierte Gesichtserkennung**: Erkennt Gesichter im Video basierend auf einem benutzerdefinierten Modell, das für das jeweilige Konto trainiert wurde.
+- **Prominentenerkennung**: Video Indexer kann automatisch mehr als 1 Million Prominente erkennen, z.B. wichtige Politiker/Politikerinnen, Schauspieler/Schauspielerinnen, Athleten/Athletinnen, Forscher/Forscherinnen und Führungskräfte aus dem Wirtschafts- und Technologiebereich. Die Daten zu diesen Prominenten sind auch auf verschiedenen bekannten Websites zu finden, z.B. IMDB und Wikipedia.
+- **Kontobasierte Gesichtsidentifikation**: Video Indexer trainiert ein Modell für ein bestimmtes Konto. Gesichter im Video werden dann basierend auf dem Modell erkannt, das speziell für Videos dieses Kontos trainiert wurde.
 - **Moderation von Textinhalten**: Erkennt im Transkript des Audios anstößigen Text.
 - **Szenenwechselerkennung**: Erkennt, wenn sich im Video eine Szene ändert.
 - **Erkennung schwarzer Frames**: Erkennt schwarze Frames im Video.

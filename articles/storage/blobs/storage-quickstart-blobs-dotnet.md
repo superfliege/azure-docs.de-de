@@ -1,27 +1,27 @@
 ---
-title: 'Azure-Schnellstart: Erstellen eines Blobs im Objektspeicher mithilfe von .NET | Microsoft-Dokumentation'
-description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Anschließend verwenden Sie die Speicherclientbibliothek für .NET, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
+title: 'Schnellstart: Erstellen eines Blobs im Objektspeicher mithilfe von .NET – Azure Storage'
+description: In dieser Schnellstartanleitung erfahren Sie, wie mithilfe der Azure Storage-Clientbibliothek für .NET ein Container und ein Blob in Blob Storage (Objekt) erstellt werden. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 05/22/2018
+ms.date: 08/27/2018
 ms.author: tamram
-ms.openlocfilehash: d5a9c87246a175cc7455113c36caa59d59a79226
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: cde8516b93c2aac0cb74d9c9599168c8e6a70472
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399684"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734132"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET
+# <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Schnellstart: Erstellen eines Blobs im Objektspeicher mithilfe von .NET
 
-In diesem Schnellstart erfahren Sie, wie Sie die .NET-Clientbibliothek für Azure Storage zum Hochladen, Herunterladen und Auflisten von Blockblobs in einem Container verwenden.
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+In dieser Schnellstartanleitung erfahren Sie, wie mithilfe der Azure Storage-Clientbibliothek für .NET ein Container und ein Blob in Blob Storage (Objekt) erstellt werden. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 Erstellen Sie zum Durchführen dieser Schnellstartanleitungen zuerst über das [Azure-Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) ein Azure-Speicherkonto. Hilfe zur Erstellung des Kontos finden Sie unter [Erstellen eines Speicherkontos](../common/storage-quickstart-create-account.md).
 

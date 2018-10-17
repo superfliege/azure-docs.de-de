@@ -3,18 +3,18 @@ title: Ermitteln einer Route mit Azure Maps | Microsoft-Dokumentation
 description: Route zu einem Point of Interest mit Azure Maps
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/04/2018
+ms.date: 10/02/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 68d7df575e3d413780b8181c11dd59a22469708b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578936"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816717"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Route zu einem Point of Interest mit Azure Maps
 
@@ -126,14 +126,16 @@ Legen Sie in diesem Tutorial als Startpunkt Microsoft und als Ziel eine Tankstel
         padding: 50
     });
 
-    // Add pins to the map for the start and end point of the route
-    map.addPins([startPin, destinationPin], {
-        name: "route-pins",
-        textFont: "SegoeUi-Regular",
-        textOffset: [0, -20]
+    map.addEventListener("load", function () { 
+        // Add pins to the map for the start and end point of the route
+        map.addPins([startPin, destinationPin], {
+            name: "route-pins",
+            textFont: "SegoeUi-Regular",
+            textOffset: [0, -20]
+        });
     });
     ```
-    Mit **map.setCameraBounds** wird das Kartenfenster gemäß den Koordinaten des Start- und Endpunkts angepasst. Mit der API **map.addPins** werden die Punkte dem Kartensteuerelement als visuelle Komponenten hinzugefügt.
+    Mit **map.setCameraBounds** wird das Kartenfenster gemäß den Koordinaten des Start- und Endpunkts angepasst. Mit **map.addEventListener** wird sichergestellt, dass alle Kartenfunktionen, die der Karte hinzugefügt werden, erst nach dem vollständigen Laden der Karte geladen werden. Mit der API **map.addPins** innerhalb des Ereignislisteners werden die Punkte dem Kartensteuerelement als visuelle Komponenten hinzugefügt.
 
 3. Speichern Sie die Datei **MapRoute.html**, und aktualisieren Sie den Browser. Die Karte ist nun auf Seattle zentriert, und Sie sehen die runde blaue Markierung für den Startpunkt und die blaue Markierung für das Ziel.
 
@@ -143,7 +145,7 @@ Legen Sie in diesem Tutorial als Startpunkt Microsoft und als Ziel eine Tankstel
 
 ## <a name="get-directions"></a>Abrufen einer Wegbeschreibung
 
-In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Maps verwenden, um die Route von einem bestimmten Startpunkt zu einem Ziel zu ermitteln. Der Routendienst stellt APIs zum Planen der *schnellsten*, *kürzesten*, *umweltfreundlichsten* oder *schönsten* Route zwischen zwei Orten bereit. Benutzer können zukünftige Routen planen, indem sie die umfassende Azure-Datenbank zum Verkehrsverlauf nutzen und die Routendauern für beliebige Tage und Uhrzeiten vorhersagen. Weitere Informationen finden Sie unter [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Abrufen von Wegbeschreibungen).
+In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Maps verwenden, um die Route von einem bestimmten Startpunkt zu einem Ziel zu ermitteln. Der Routendienst stellt APIs zum Planen der *schnellsten*, *kürzesten*, *umweltfreundlichsten* oder *schönsten* Route zwischen zwei Orten bereit. Benutzer können zukünftige Routen planen, indem sie die umfassende Azure-Datenbank zum Verkehrsverlauf nutzen und die Routendauern für beliebige Tage und Uhrzeiten vorhersagen. Weitere Informationen finden Sie unter [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Abrufen von Wegbeschreibungen). Alle folgenden Funktionen sollten **innerhalb des eventListener-Elements für das Laden der Karte** hinzugefügt werden, um sicherzustellen, dass sie erst nach dem vollständigen Laden der Karte geladen werden.
 
 1. Fügen Sie der Karte zunächst eine neue Ebene (*LineString*) hinzu, um die Route anzuzeigen. Fügen Sie dem *script*-Block den folgenden JavaScript-Code hinzu.
 
@@ -204,6 +206,10 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
 > * Festlegen von Adressenkoordinaten
 > * Abfragen des Routendiensts nach der Wegbeschreibung zum Point of Interest
+
+Das Codebeispiel für dieses Tutorial finden Sie hier:
+
+> [Ermitteln einer Route mit Azure Maps](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/route.html)
 
 Im nächsten Tutorial erfahren Sie, wie Sie eine Routenabfrage mit Einschränkungen wie Fortbewegungsart oder Frachttyp erstellen und anschließend mehrere Routen auf der gleichen Karte anzeigen.
 

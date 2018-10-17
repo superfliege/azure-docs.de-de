@@ -3,20 +3,20 @@ title: Ausführen einer Onlinemigration von MySQL zu Azure Database for MySQL mi
 description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer lokalen MySQL-Instanz zu Azure Database for MySQL durchführen.
 services: dms
 author: HJToland3
-ms.author: jtoland
+ms.author: scphang
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/31/2018
-ms.openlocfilehash: c36a771266f595f6d8dc8575d100fa5bb9496584
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.date: 10/06/2018
+ms.openlocfilehash: 4825985253f5525314a496f2adbc40657231f5d5
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714928"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829850"
 ---
 # <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Ausführen einer Onlinemigration von MySQL zu Azure Database for MySQL mithilfe von DMS
 Mit Azure Database Migration Service können Sie die Datenbanken mit minimaler Ausfallzeit von einer lokalen MySQL-Instanz zu [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) migrieren. Somit kommt es bei der Migration nur zu einer geringen Ausfallzeit für die Anwendung. In diesem Tutorial migrieren Sie die Beispieldatenbank **Employees** von einer lokalen Instanz von MySQL 5.7 zu Azure Database for MySQL. Zu diesem Zweck verwenden Sie eine Onlinemigrationsaktivität in Azure Database Migration Service.
@@ -50,13 +50,23 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Azure Database for MySQL unterstützt nur InnoDB-Tabellen. Informationen zum Konvertieren von MyISAM-Tabellen in InnoDB finden Sie im Artikel [Converting Tables from MyISAM to InnoDB](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html) (Konvertieren von Tabellen von MyISAM zu InnoDB). 
 
 - Aktivieren Sie mithilfe der folgenden Konfiguration die binäre Protokollierung in der Datei „my.ini“ (Windows) oder „my.cnf“ (Unix) in der Quelldatenbank.
+
+    - **server_id** = 1 oder höher (nur für MySQL 5.6 relevant)
+    - **log-bin** =<path> (nur für MySQL 5.6 relevant)
+
+        Beispiel: log-bin = E:\MySQL_logs\BinLog
+    - **binlog_format** = row
+    - **Expire_logs_days** = 5 (es wird empfohlen, nicht null zu verwenden; nur für MySQL 5.6 relevant)
+    - **Binlog_row_image** = full (nur für MySQL 5.6 relevant)
+    - **log_slave_updates** = 1
+ 
 - Für den Benutzer muss die Rolle „ReplicationAdmin“ mit den folgenden Berechtigungen festgelegt sein:
     - **REPLICATION CLIENT**: Nur für Aufgaben zur Änderungsverarbeitung erforderlich. Für Aufgaben zum vollständigen Laden wird diese Berechtigung daher nicht benötigt.
     - **REPLICATION CLIENT**: Nur für Aufgaben zur Änderungsverarbeitung erforderlich. Für Aufgaben zum vollständigen Laden wird diese Berechtigung daher nicht benötigt.
     - **SUPER**: Nur in älteren Versionen als MySQL 5.6.6 erforderlich
 
 ## <a name="migrate-the-sample-schema"></a>Migrieren des Beispielschemas
-Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespeicherter Prozeduren muss das Schema aus der Quelldatenbank extrahiert und auf die Datenbank angewendet werden. Zum Extrahieren des Schemas können Sie „mysqldump“ mit dem Parameter „- - no-data“ verwenden.
+Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespeicherter Prozeduren muss das Schema aus der Quelldatenbank extrahiert und auf die Datenbank angewendet werden. Zum Extrahieren des Schemas können Sie „mysqldump“ mit dem Parameter `--no-data` verwenden.
  
 Wenn sich die MySQL-Beispieldatenbank „employees“ im lokalen System befindet, lautet der Befehl für die Schemamigration mithilfe von „mysqldump“ wie folgt:
 ```

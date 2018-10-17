@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b2bb187e5ad55b466da0b9b06ffbb047ac539717
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 20a57a0d528fa6a291aa66f91ff6ddd71053f478
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104998"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297059"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Tutorial: Vorbereiten einer Anwendung für Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ In den nachfolgenden Tutorials wird das Containerimage in eine Azure Container R
 
 In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Konzepte wie Container und Containerimages sowie `docker`-Befehle bekannt sind. Eine Einführung in Container finden Sie bei Bedarf unter [Get started with Docker][docker-get-started] (Erste Schritte mit Docker).
 
-Für dieses Tutorial ist eine lokale Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker in einem [Mac-][docker-for-mac], [Windows-][docker-for-windows] oder [Linux-][docker-for-linux]System konfiguriert werden kann.
+Für dieses Tutorial ist eine lokale Docker-Entwicklungsumgebung mit Linux-Containern erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker in einem [Mac-][docker-for-mac], [Windows-][docker-for-windows] oder [Linux-][docker-for-linux]System konfiguriert werden kann.
 
 Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieser Tutorials erforderlich sind. Aus diesem Grund wird empfohlen, eine vollständige Docker-Entwicklungsumgebung zu verwenden.
 

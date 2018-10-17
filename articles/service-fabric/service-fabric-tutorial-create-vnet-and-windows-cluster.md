@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1ee3000ab26dbb0eea33de828812959fe709aaa2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 2f503a534f79440e6e6c572b7fb29ce3048ee7bc
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410016"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831568"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk
 
@@ -88,7 +88,7 @@ Diese Vorlage stellt einen sicheren Cluster aus fünf virtuellen Computern und e
 
 ### <a name="service-fabric-cluster"></a>Service Fabric-Cluster
 
-Es wird ein Windows-Cluster mit den folgenden Merkmalen bereitgestellt:
+In der Ressource **Microsoft.ServiceFabric/clusters** wird ein Windows-Cluster mit den folgenden Merkmalen konfiguriert:
 
 * Nur ein Knotentyp
 * Fünf Knoten für den primären Knotentyp (in Vorlagenparametern konfigurierbar)
@@ -103,7 +103,7 @@ Es wird ein Windows-Cluster mit den folgenden Merkmalen bereitgestellt:
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Ein Load Balancer wird bereitgestellt, und für die folgenden Ports werden Tests und Regeln eingerichtet:
+In der Ressource **Microsoft.Network/loadBalancers** wird ein Lastenausgleich konfiguriert, und es werden Tests und Regeln für die folgenden Ports eingerichtet:
 
 * Clientverbindungsendpunkt: 19000
 * HTTP-Gatewayendpunkt: 19080
@@ -111,16 +111,16 @@ Ein Load Balancer wird bereitgestellt, und für die folgenden Ports werden Tests
 * Anwendungsport: 443
 * Service Fabric-Reverseproxy: 19081
 
-Wenn keine andere Anwendungsports benötigt werden, müssen Sie die Ressourcen „Microsoft.Network/loadBalancers“ und „Microsoft.Network/networkSecurityGroups“ anpassen, um Datenverkehr zuzulassen.
+Falls andere Anwendungsports benötigt werden, müssen Sie die Ressourcen **Microsoft.Network/loadBalancers** und **Microsoft.Network/networkSecurityGroups** anpassen, um den eingehenden Datenverkehr zuzulassen.
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>Virtuelles Netzwerk, Subnetz und Netzwerksicherheitsgruppe
 
-Die Namen des virtuellen Netzwerks, des Subnetzes und der Netzwerksicherheitsgruppe werden in den Vorlagenparametern deklariert.  Adressräume des virtuellen Netzwerks und Subnetzes werden auch in den Vorlagenparametern deklariert:
+Die Namen des virtuellen Netzwerks, des Subnetzes und der Netzwerksicherheitsgruppe werden in den Vorlagenparametern deklariert.  Adressräume des virtuellen Netzwerks und des Subnetzes werden auch in den Vorlagenparametern deklariert und in der Ressource **Microsoft.Network/virtualNetworks** konfiguriert:
 
 * Adressraum des virtuellen Netzwerks: 172.16.0.0/20
 * Service Fabric-Subnetzadressraum: 172.16.2.0/23
 
-Die folgenden Regeln für den eingehenden Datenverkehr sind in der Netzwerksicherheitsgruppe aktiviert. Sie können die Portwerte ändern, indem Sie die Vorlagenvariablen ändern.
+Die folgenden Regeln für eingehenden Datenverkehr sind für die Ressource **Microsoft.Network/networkSecurityGroups** aktiviert. Sie können die Portwerte ändern, indem Sie die Vorlagenvariablen ändern.
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
@@ -131,7 +131,7 @@ Die folgenden Regeln für den eingehenden Datenverkehr sind in der Netzwerksiche
 * Portbereich für Anwendungen: 49152 bis 65534 (wird für die Kommunikation von Dienst zu Dienst verwendet, ansonsten kein Öffnen auf dem Load Balancer)
 * Blockieren aller anderen Ports
 
-Wenn keine anderen Anwendungsports benötigt werden, müssen Sie die Ressourcen „Microsoft.Network/loadBalancers“ und „Microsoft.Network/networkSecurityGroups“ anpassen, um Datenverkehr zuzulassen.
+Falls andere Anwendungsports benötigt werden, müssen Sie die Ressourcen **Microsoft.Network/loadBalancers** und **Microsoft.Network/networkSecurityGroups** anpassen, um den eingehenden Datenverkehr zuzulassen.
 
 ## <a name="set-template-parameters"></a>Festlegen von Vorlagenparametern
 

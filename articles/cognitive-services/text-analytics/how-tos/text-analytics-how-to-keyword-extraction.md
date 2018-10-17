@@ -1,22 +1,23 @@
 ---
-title: Verwenden der Schlüsselbegriffserkennung in der Textanalyse-REST-API (Microsoft Cognitive Services in Azure) | Microsoft-Dokumentation
-description: In diesem Tutorial mit exemplarischer Vorgehensweise erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API in Microsoft Cognitive Services in Azure Schlüsselbegriffe extrahieren.
+title: 'Beispiel: Extrahieren von Schlüsselbegriffen in der Textanalyse'
+titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API Schlüsselbegriffe extrahieren.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 3/07/2018
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 78b100e737242fa9f56e50275ef2038d8895349e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 62c078a8a72cd0a3633b7dd5fda1545f01067dbc
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373874"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605486"
 ---
-# <a name="how-to-extract-key-phrases-in-text-analytics"></a>Gewusst wie: Extrahieren von Schlüsselbegriffen in der Textanalyse
+# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Beispiel: Extrahieren von Schlüsselbegriffen in der Textanalyse
 
 Die [Schlüsselbegriffserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) bewertet unstrukturierten Text und gibt für jedes JSON-Dokument eine Liste mit Schlüsselbegriffen zurück. 
 
@@ -66,11 +67,11 @@ Die Dokumentgröße darf 5.000 Zeichen pro Dokument nicht übersteigen, und pro 
     
 ## <a name="step-1-structure-the-request"></a>Schritt 1: Strukturieren der Anforderung
 
-Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-REST-API](text-analytics-how-to-call-api.md). Der Einfachheit halber führen wir hier noch mal einige Punkte auf:
+Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-REST-API](text-analytics-how-to-call-api.md). Der Einfachheit halber sind hier noch einmal einige Punkte aufgeführt:
 
 + Erstellen Sie eine Anforderung vom Typ **POST**. Lesen Sie die API-Dokumentation für diese Anforderung: [Schlüsselbegriffs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6).
 
-+ Legen Sie den HTTP-Endpunkt für die Schlüsselbegriffserkennung fest. Er muss die Ressource `/keyphrases` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
++ Legen Sie den HTTP-Endpunkt für die Schlüsselbegriffserkennung fest. Er muss die Ressource `/keyphrases` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`.
 
 + Legen Sie einen Anforderungsheader fest, der den Zugriffsschlüssel für Textanalysevorgänge enthält. Weitere Informationen finden Sie unter [Ermitteln von Endpunkten und Zugriffsschlüsseln](text-analytics-how-to-access-key.md).
 

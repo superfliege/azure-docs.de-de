@@ -5,19 +5,19 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 06/29/2018
+ms.date: 10/02/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 544f5210adbea6791f9224a1e2be0743ce9995d5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d56a07bf6fcb368f50e081a1f56b7cfb022c05ca
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434145"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042239"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Weiterleiten benutzerdefinierter Ereignisse an Azure Relay Hybrid Connections mit Azure-Befehlszeilenschnittstelle und Event Grid
 
-Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Relay Hybrid Connections ist einer der unterstützten Ereignishandler. Hybridverbindungen werden als Ereignishandler verwendet, wenn Sie Ereignisse von Anwendungen verarbeiten müssen, die über keinen öffentlichen Endpunkt verfügen. Diese Anwendungen können sich in Ihrem Unternehmensnetzwerk befinden. In diesem Artikel erstellen Sie mithilfe der Azure-Befehlszeilenschnittstelle ein benutzerdefiniertes Thema, abonnieren dieses Thema und lösen das Ereignis aus, um das Ergebnis anzuzeigen. Sie senden die Ereignisse an die Hybridverbindung.
+Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Relay Hybrid Connections ist einer der unterstützten Ereignishandler. Hybridverbindungen werden als Ereignishandler verwendet, wenn Sie Ereignisse von Anwendungen verarbeiten müssen, die über keinen öffentlichen Endpunkt verfügen. Diese Anwendungen können sich in Ihrem Unternehmensnetzwerk befinden. In diesem Artikel erstellen Sie mithilfe der Azure-Befehlszeilenschnittstelle ein benutzerdefiniertes Thema, abonnieren dieses benutzerdefinierte Thema und lösen das Ereignis zum Anzeigen des Ergebnisses aus. Sie senden die Ereignisse an die Hybridverbindung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,7 +39,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Erstellen eines benutzerdefinierten Themas
 
-Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. Im folgenden Beispiel wird das benutzerdefinierte Thema in Ihrer Ressourcengruppe erstellt. Ersetzen Sie `<topic_name>` durch einen eindeutigen Namen für Ihr Thema. Der Name des Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird.
+Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. Im folgenden Beispiel wird das benutzerdefinierte Thema in Ihrer Ressourcengruppe erstellt. Ersetzen Sie `<topic_name>` durch einen eindeutigen Namen für Ihr benutzerdefiniertes Thema. Der Name des Event Grid-Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird.
 
 ```azurecli-interactive
 # if you have not already installed the extension, do it now.
@@ -49,9 +49,9 @@ az extension add --name eventgrid
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 
-## <a name="subscribe-to-a-topic"></a>Abonnieren eines Themas
+## <a name="subscribe-to-a-custom-topic"></a>Abonnieren eines benutzerdefinierten Themas
 
-Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten. Im folgenden Beispiel wird das von Ihnen erstellte Thema abonniert. Außerdem wird die Ressourcen-ID der Hybridverbindung für den Endpunkt übergeben. Die Hybridverbindungs-ID weist das folgende Format auf:
+Sie abonnieren ein Event Grid-Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten. Im folgenden Beispiel wird das von Ihnen erstellte benutzerdefinierte Thema abonniert. Außerdem wird die Ressourcen-ID der Hybridverbindung für den Endpunkt übergeben. Die Hybridverbindungs-ID weist das folgende Format auf:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
@@ -91,18 +91,18 @@ Sie benötigen eine Anwendung, die Ereignisse von der Hybridverbindung abrufen k
 
 Nun wird ein Ereignis ausgelöst, um zu sehen, wie Event Grid die Nachricht an Ihren Endpunkt weiterleitet. In diesem Artikel erfahren Sie, wie Sie Azure CLI zum Auslösen des Ereignisses verwenden. Alternativ können Sie die [Event Grid-Herausgeber-App](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridPublisher) verwenden.
 
-Zunächst rufen wir die URL und den Schlüssel für das benutzerdefinierte Thema ab. Verwenden Sie auch hier wieder Ihren Themanamen für `<topic_name>`.
+Zunächst rufen wir die URL und den Schlüssel für das benutzerdefinierte Thema ab. Verwenden Sie auch hier für `<topic_name>` den Namen Ihres benutzerdefinierten Themas.
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Zur Vereinfachung dieses Artikels verwenden Sie Beispielereignisdaten, die an das Thema gesendet werden können. Üblicherweise werden die Ereignisdaten von einer Anwendung oder einem Azure-Dienst gesendet. CURL ist ein Hilfsprogramm zum Senden von HTTP-Anforderungen. In diesem Artikel wird CURL verwendet, um das Ereignis an das Thema zu senden.  Das folgende Beispiel sendet drei Ereignisse an das Event Grid-Thema:
+Zur Vereinfachung dieses Artikels verwenden Sie Beispielereignisdaten, die an das benutzerdefinierte Thema gesendet werden können. Üblicherweise werden die Ereignisdaten von einer Anwendung oder einem Azure-Dienst gesendet. CURL ist ein Hilfsprogramm zum Senden von HTTP-Anforderungen. In diesem Artikel wird CURL verwendet, um das Ereignis an das benutzerdefinierte Thema zu senden.
 
 ```azurecli-interactive
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 Die Listener-Anwendung sollte die Ereignismeldung empfangen.

@@ -3,7 +3,7 @@ title: Abonnieren von Angeboten in Azure Stack | Microsoft-Dokumentation
 description: Erstellen von Abonnements für Angebote in Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 7f3f8683-ef09-4838-92ed-41f2fddbbbed
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/11/2018
-ms.author: brenduns
-ms.openlocfilehash: 9153649774a67533649fb62da83a3f50abd592da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 09/05/2018
+ms.author: sethm
+ms.openlocfilehash: b6739a194f6374cf90e6508f4a4316892daaf3dd
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295209"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079241"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>Erstellen von Abonnements für Angebote in Azure Stack
 
@@ -46,9 +46,9 @@ Nachdem Sie ein Abonnement für einen Benutzer erstellt haben, kann er sich beim
    - **Anzeigename**: Ein Anzeigename zum Identifizieren des Abonnements, der als *Name des Benutzerabonnements* angezeigt wird
    - **Benutzer**: Geben Sie einen Benutzer aus einem verfügbaren Verzeichnismandanten für dieses Abonnement an. Der Benutzername wird als *Besitzer* angezeigt.  Das Format des Benutzernamens hängt von Ihrer Identitätslösung ab. Beispiel: 
 
-     - **Azure AD:** *&lt;user1>@&lt;contoso.onmicrosoft.com>*
+     - **Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
-     - **AD FS:** *&lt;user1>@&lt;azurestack.local>*
+     - **AD FS:** `<user1>@<azurestack.local>` 
 
    - **Verzeichnismandant**: Wählen Sie den Verzeichnismandanten aus, zu dem das Benutzerkonto gehört. Wenn Sie keine Mehrinstanzenfähigkeit aktiviert haben, ist nur der lokale Verzeichnismandant verfügbar.
 
@@ -60,7 +60,7 @@ Nachdem Sie ein Abonnement für einen Benutzer erstellt haben, kann er sich beim
 
 Ein Cloudbediener kann jederzeit einen Add-On-Plan zu einem zuvor erstellten Abonnement hinzufügen:
 
-1. Klicken Sie im Administratorportal auf **Weitere Dienste** > **Benutzerabonnements**. Wählen Sie das Abonnement aus, das Sie ändern möchten.
+1. Klicken Sie im Verwaltungsportal auf **Alle Dienste** und anschließend unter der Kategorie **VERWALTUNGSRESSOURCEN** auf **Benutzerabonnements**. Wählen Sie das Abonnement aus, das Sie ändern möchten.
 
 2. Klicken Sie auf **Add-Ons** und anschließend auf **+Hinzufügen**.  
 
@@ -84,13 +84,13 @@ Als Benutzer können Sie sich beim Benutzerportal anmelden, um öffentliche Ange
    ![Erstellen von Angeboten](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
 3. Aktualisieren Sie nach dem Abonnieren eines Angebots das Portal, um anzuzeigen, welche Dienste zum neuen Abonnement gehören.
-4. Klicken Sie zum Anzeigen des erstellten Abonnements auf **Weitere Dienste** und anschließend auf **Abonnements**. Klicken Sie auf das Abonnement, um die Abonnementdetails anzuzeigen.  
+4. Klicken Sie zum Anzeigen des erstellten Abonnements auf **Alle Dienste** und anschließend unter der Kategorie **ALLGEMEIN** auf **Abonnements**. Klicken Sie auf das Abonnement, um die Abonnementdetails anzuzeigen.  
 
 ### <a name="to-subscribe-to-an-add-on-plan"></a>So abonnieren Sie einen Add-On-Plan
 
 Wenn ein Angebot einen Add-On-Plan enthält, können Sie diesen Plan jederzeit zu Ihrem Abonnement hinzufügen.  
 
-1. Klicken Sie im Benutzerportal auf **Weitere Dienste** > **Abonnements**, und wählen Sie dann das zu ändernde Abonnement aus. Sofern Add-On-Pläne verfügbar sind, ist **+Plan hinzufügen** aktiv, und es ist eine Kachel für **Add-On-Pläne** vorhanden.
+1. Klicken Sie im Benutzerportal auf **Alle Dienste**. Klicken Sie als Nächstes unter der Kategorie **ALLGEMEIN** auf **Abonnements**, und wählen Sie dann das zu ändernde Abonnement aus. Sofern Add-On-Pläne verfügbar sind, ist **+Plan hinzufügen** aktiv, und es ist eine Kachel für **Add-On-Pläne** vorhanden.
 
    >[!NOTE]
    >Ist **+Plan hinzufügen** nicht aktiv, gibt es keine Add-On-Pläne für das mit diesem Abonnement verknüpfte Angebot.

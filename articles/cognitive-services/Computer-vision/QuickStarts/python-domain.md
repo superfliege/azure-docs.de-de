@@ -1,51 +1,49 @@
 ---
-title: Python-Schnellstart zum Domänenmodell mit der Maschinelles Sehen-API | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung verwenden Sie die Domänenmodelle, um in einem Bild Prominente und Sehenswürdigkeiten zu identifizieren, indem Sie die Maschinelles Sehen-API mit Python in Cognitive Services verwenden.
+title: 'Schnellstart: Verwenden eines Domänenmodells – REST, Python – Maschinelles Sehen'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung verwenden Sie die Domänenmodelle, um in einem Bild Prominente und Sehenswürdigkeiten zu identifizieren, indem Sie die Maschinelles Sehen-API und Python verwenden.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 357cab72c0a6c9a2254350c84cda91c366ac685a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 93027e2f9cd3a9b0e9c6ef261b8af876022632a4
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770108"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632448"
 ---
-# <a name="quickstart-use-a-domain-model---rest-python"></a>Schnellstart: Verwenden eines Domänenmodells – REST, Python
+# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Schnellstart: Verwenden eines Domänenmodells mit der REST-API und Python in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung verwenden Sie die Domänenmodelle, um in einem Bild Prominente und Sehenswürdigkeiten zu identifizieren, indem Sie die Maschinelles Sehen-API verwenden.
+In dieser Schnellstartanleitung verwenden Sie ein Domänenmodell, um in einem Bild Sehenswürdigkeiten oder wahlweise Prominente zu identifizieren, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der Methode [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) können Sie ein domänenspezifisches Modell anwenden, um Inhalte in einem Bild zu erkennen.
 
 Sie können diese Schnellstartanleitung Schritt für Schritt mit einem Jupyter-Notebook in [MyBinder](https://mybinder.org) ausführen. Klicken Sie zum Starten von Binder auf die folgende Schaltfläche:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden der Maschinelles Sehen-API benötigen Sie einen Abonnementschlüssel. Siehe [Obtaining Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md) (Abrufen von Abonnementschlüsseln).
+- Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
+- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="identify-celebrities-and-landmarks"></a>Identifizieren von Prominenten und Sehenswürdigkeiten
+## <a name="create-and-run-the-landmarks-sample"></a>Erstellen und Ausführen des Beispiels zu Sehenswürdigkeiten
 
-Mit der [Recognize Domain Specific Content-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) können Sie in einem Bild einen bestimmten Satz mit Objekten identifizieren. Die beiden domänenspezifischen Modelle, die derzeit verfügbar sind, sind _celebrities_ (Prominente) und _landmarks_ (Sehenswürdigkeiten).
+Führen Sie zum Erstellen und Ausführen des Beispiels zu Sehenswürdigkeiten die folgenden Schritte aus:
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Kopieren Sie den folgenden Code in eine neue Python-Skriptdatei.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `vision_base_url` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ändern Sie optional den Wert von `image_url` in ein anderes Bild.
-1. Führen Sie das Skript aus.
-
-Im folgenden Code wird die Python-Bibliothek `requests` verwendet, um die Bildanalyse-API für maschinelles Sehen aufzurufen. Die Ergebnisse werden als JSON-Objekt zurückgegeben. Der API-Schlüssel wird über das `headers`-Wörterbuch übergeben. Das zu verwendende Modell wird über das `params`-Wörterbuch übergeben.
-
-## <a name="landmark-identification"></a>Identifikation von Sehenswürdigkeiten
-
-### <a name="recognize-landmark-request"></a>Recognize Landmark-Anforderung
+1. Kopieren Sie den folgenden Code, und fügen Sie ihn in einen Text-Editor ein.
+1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
+    1. Ersetzen Sie den `subscription_key`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie den Wert von `vision_base_url` durch die Endpunkt-URL für die Ressource „Maschinelles Sehen-API“ in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie optional den Wert von `image_url` durch die URL eines anderen Bilds, in dem Sehenswürdigkeiten erkannt werden sollen.
+1. Speichern Sie den Code als Datei mit der Erweiterung `.py`. Beispiel: `get-landmarks.py`.
+1. Öffnen Sie ein Eingabeaufforderungsfenster.
+1. Verwenden Sie an der Eingabeaufforderung den Befehl `python`, um das Beispiel auszuführen. Beispiel: `python get-landmarks.py`.
 
 ```python
 import requests
@@ -95,9 +93,9 @@ plt.axis("off")
 _ = plt.title(landmark_name, size="x-large", y=-0.1)
 ```
 
-### <a name="recognize-landmark-response"></a>Recognize Landmark-Antwort
+## <a name="examine-the-response-for-the-landmarks-sample"></a>Untersuchen der Antwort für das Beispiel zu Sehenswürdigkeiten
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebseite analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Im Folgenden finden Sie ein Beispiel dafür:
 
 ```json
 {
@@ -118,9 +116,18 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein
 }
 ```
 
-## <a name="celebrity-identification"></a>Identifikation von Sehenswürdigkeiten
+## <a name="create-and-run-the-celebrities-sample"></a>Erstellen und Ausführen des Beispiels zu Prominenten
 
-### <a name="recognize-celebrity-request"></a>Recognize Celebrity-Anforderung
+Führen Sie zum Erstellen und Ausführen des Beispiels zu Sehenswürdigkeiten die folgenden Schritte aus:
+
+1. Kopieren Sie den folgenden Code, und fügen Sie ihn in einen Text-Editor ein.
+1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
+    1. Ersetzen Sie den `subscription_key`-Wert durch Ihren Abonnementschlüssel.
+    1. Ersetzen Sie den Wert von `vision_base_url` durch die Endpunkt-URL für die Ressource „Maschinelles Sehen-API“ in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie optional den Wert von `image_url` durch die URL eines anderen Bilds, in dem Prominente erkannt werden sollen.
+1. Speichern Sie den Code als Datei mit der Erweiterung `.py`. Beispiel: `get-celebrities.py`.
+1. Öffnen Sie ein Eingabeaufforderungsfenster.
+1. Verwenden Sie an der Eingabeaufforderung den Befehl `python`, um das Beispiel auszuführen. Beispiel: `python get-celebrities.py`.
 
 ```python
 import requests
@@ -163,9 +170,10 @@ plt.axis("off")
 _ = plt.title(celebrity_name, size="x-large", y=-0.1)
 ```
 
-### <a name="recognize-celebrity-response"></a>Recognize Celebrity-Antwort
+## <a name="examine-the-response-for-the-celebrities-sample"></a>Untersuchen der Antwort für das Beispiel zu Prominenten
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebseite analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Im Folgenden finden Sie ein Beispiel dafür:
+
 
 ```json
 {
@@ -192,9 +200,13 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein
 }
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Dateien für beide Beispiele, falls Sie sie nicht mehr benötigen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lernen Sie eine einfache Python-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Lernen Sie eine einfache Python-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit der Maschinelles Sehen-API beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
 
 > [!div class="nextstepaction"]
 > [Tutorial zur Maschinelles Sehen-API in Python](../Tutorials/PythonTutorial.md)

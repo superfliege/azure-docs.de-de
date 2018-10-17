@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 10/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e984dc985100bcdabbee4fb86bd1819a329301a5
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 95a0ffc6deecb7fd3bd6fce740f578352fdf2d66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452631"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888139"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](how-to-connect-install-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -156,12 +156,19 @@ In einer Produktionsbereitstellung wird es schwer, eine einzelne Gruppe mit alle
 ### <a name="optional-features"></a>Optionale Features
 Über diesen Bildschirm können Sie die optionalen Features für Ihre spezifischen Szenarios auswählen.
 
+>[!WARNING]
+>Für Azure AD Connect Version **1.0.8641.0** und früher wird der Azure Access Control Service für das Kennwortrückschreiben verwendet.  Dieser Dienst wird am **7. November 2018** außer Betrieb genommen.  Wenn Sie eine dieser Versionen von Azure AD Connect nutzen und das Kennwortrückschreiben aktiviert haben, können Benutzer unter Umständen ihre Kennwörter nicht mehr ändern oder zurücksetzen, nachdem der Dienst außer Betrieb genommen wurde. Das Kennwortrückschreiben mit diesen Versionen von Azure AD Connect wird nicht unterstützt.
+>
+>Weitere Informationen zum Azure Access Control Service finden Sie unter [Gewusst wie: Migrieren aus Azure Access Control Service](../develop/active-directory-acs-migration.md).
+>
+>[Klicken Sie hier](https://www.microsoft.com/en-us/download/details.aspx?id=47594), um die aktuelle Version von Azure AD Connect herunterzuladen.
+
 ![Optionale Features](./media/how-to-connect-install-custom/optional2.png)
 
 > [!WARNING]
 > Wenn derzeit DirSync oder Azure AD Sync aktiv ist, aktivieren Sie keine der Features zum Rückschreiben in Azure AD Connect.
->
->
+
+
 
 | Optionale Features | BESCHREIBUNG |
 | --- | --- |
@@ -190,6 +197,9 @@ Auf der Grundlage der im vorherigen Schritt ausgewählten Dienste werden auf die
 
 ### <a name="directory-extension-attribute-sync"></a>Verzeichniserweiterungen-Attributsynchronisierung
 Das Schema in Azure AD kann durch von Ihrer Organisation hinzugefügte benutzerdefinierte Attribute oder durch andere Attribute in Active Directory erweitert werden. Wählen Sie auf der Seite **Optionale Features** die Option **Verzeichniserweiterungen-Attributsynchronisierung** aus, um dieses Feature zu verwenden. Auf dieser Seite können weitere zu synchronisierende Attribute ausgewählt werden.
+
+>[!NOTE]
+>Für das Feld „Verfügbare Attribute“ wird die Groß-/Kleinschreibung berücksichtigt.
 
 ![Verzeichniserweiterungen](./media/how-to-connect-install-custom/extension2.png)
 

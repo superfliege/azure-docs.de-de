@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: dd68b65825c9c22453e0191d42a0fcce3b65ca64
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2e01f61ff915a8fe4327aa78c8867d666dc36fda
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236085"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983225"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Tutorial: Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung
 
@@ -56,7 +56,7 @@ Um Ihrer Anwendung ein echtes Gerät hinzuzufügen, verwenden Sie die Gerätevor
 
    ![Beginnen mit dem Herstellen einer Verbindung mit einer echten verbundenen Klimaanlage](media/tutorial-add-device/newreal.png)
 
-3. Sie können das neue Gerät optional umbenennen, indem Sie auf den Gerätenamen klicken und den Wert bearbeiten:
+3. Geben Sie die Geräte-ID (**muss in Kleinbuchstaben angegeben werden**) ein, oder verwenden Sie die vorgeschlagene Geräte-ID. Sie können auch einen Namen für Ihr neues Gerät eingeben.  
 
    ![Umbenennen des Geräts](media/tutorial-add-device/rename.png)
 
@@ -68,23 +68,36 @@ Das echte Gerät wird auf der Grundlage der Gerätevorlage **Connected Air Condi
 
     ![Einstellungen mit Synchronisierungsangabe](media/tutorial-add-device/settingssyncing.png)
 
-2. Legen Sie auf der Seite **Eigenschaften** für Ihre neue, echte verbundene Klimaanlage die **Seriennummer** auf **rcac0010** und die **Firmwareversion** auf „9.75“ fest. Klicken Sie anschließend auf **Speichern**:
+2. Legen Sie auf der Seite **Eigenschaften** für Ihre neue, echte vernetzte Klimaanlage die **Seriennummer** auf **10001** und die **Firmwareversion** auf „9.75“ fest. Klicken Sie anschließend auf **Speichern**:
 
     ![Festlegen der Eigenschaften für ein echtes Gerät](media/tutorial-add-device/setproperties.png)
 
 3. Als Ersteller können Sie die Seiten **Measurements** (Messungen), **Regeln** und **Dashboard** für Ihr echtes Gerät anzeigen.
 
-## <a name="get-connection-string-for-real-device-from-application"></a>Abrufen der Verbindungszeichenfolge für das echte Gerät aus der Anwendung
+## <a name="get-connection-details-for-real-device-from-application"></a>Abrufen der Verbindungsdetails für ein echtes Gerät aus der Anwendung
 
-Ein Geräteentwickler muss die *Verbindungszeichenfolge* für Ihr echtes Gerät in den Code einbetten, der auf dem Gerät ausgeführt wird. Die Verbindungszeichenfolge ermöglicht es dem Gerät, eine sichere Verbindung mit Ihrer Azure IoT Central-Anwendung herzustellen. Jede Geräteinstanz verfügt über eine eindeutige Verbindungszeichenfolge. Die folgenden Schritte zeigen, wie Sie die Verbindungszeichenfolge für eine Geräteinstanz in Ihrer Anwendung finden:
+Ein Geräteentwickler muss die *Verbindungsdetails für das Gerät* für Ihr echtes Gerät in den Code einbetten, der auf dem Gerät ausgeführt wird. Die Verbindungszeichenfolge ermöglicht es dem Gerät, eine sichere Verbindung mit Ihrer Azure IoT Central-Anwendung herzustellen. Die folgenden Schritte zeigen, wie Sie die Verbindungszeichenfolge für eine Geräteinstanz in Ihrer Anwendung finden:
 
 1. Klicken Sie im Bildschirm **Gerät** für Ihre echte verbundene Klimaanlage auf **Connect this device** (Dieses Gerät verbinden):
 
     ![Geräteseite mit Link zum Anzeigen der Verbindungsinformationen](media/tutorial-add-device/connectionlink.png)
 
-2. Kopieren Sie auf der Seite **Verbinden** die **primäre Verbindungszeichenfolge**, und speichern Sie sie. Dieser Wert wird in der zweiten Hälfte des Tutorials benötigt. Ein Geräteentwickler verwendet diesen Wert in der Clientanwendung, die auf dem Gerät ausgeführt wird:
+2. Kopieren Sie auf der Seite **Verbinden** die **Bereichs-ID, die Geräte-ID und den primären Schlüssel**, und speichern Sie diese Werte.
 
-    ![Verbindungszeichenfolgen](media/tutorial-add-device/connectionstring.png)
+   ![Verbindungsdetails](media/tutorial-add-device/device-connect.PNG)
+
+   Nutzen Sie das unten stehende Befehlszeilentool, um die Verbindungszeichenfolge abzurufen.  
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+    **Verwendung**
+    
+    Um eine Verbindungszeichenfolge zu erstellen, suchen Sie die binäre Datei im Ordner „/bin“.
+    ```cmd/sh
+    dps_cstr <scope_id> <device_id> <Primary Key(for device)>
+    ```
+    Erfahren Sie mehr über das [Befehlszeilentool](https://www.npmjs.com/package/dps-keygen).
 
 ## <a name="prepare-the-client-code"></a>Vorbereiten des Clientcodes
 
@@ -130,14 +143,17 @@ Die folgenden Schritte zeigen, wie Sie das Beispiel für [Node.js](https://nodej
 
 8. Fügen Sie der Datei folgende Variablendeklarationen hinzu:
 
+ 
+
    ```javascript
    var connectionString = '{your device connection string}';
    var targetTemperature = 0;
    var client = clientFromConnectionString(connectionString);
    ```
+   
 
    > [!NOTE]
-   > Der Platzhalter `{your device connection string}` wird in einem späteren Schritt aktualisiert.
+   > Der Platzhalter `{your device connection string}` wird in einem späteren Schritt aktualisiert. 
 
 9. Speichern Sie die bisherigen Änderungen, lassen Sie die Datei aber noch geöffnet.
 
@@ -248,8 +264,7 @@ Im vorherigen Abschnitt haben Sie ein provisorisches Node.js-Projekt für eine A
 
 ## <a name="configure-client-code-for-the-real-device"></a>Konfigurieren des Clientcodes für das echte Gerät
 
-<!-- Add the connection string to the sample code, build, and run -->
-Um den Clientcode für die Verbindungsherstellung mit Ihrer Azure IoT Central-Anwendung konfigurieren zu können, müssen Sie die Verbindungszeichenfolge für Ihr echtes Gerät hinzufügen, die Sie sich zuvor in diesem Tutorial notiert haben.
+<!-- Add the connection string to the sample code, build, and run --> Um den Clientcode für die Verbindungsherstellung mit Ihrer Azure IoT Central-Anwendung zu konfigurieren, müssen Sie die Verbindungszeichenfolge für Ihr echtes Gerät hinzufügen, die Sie sich zuvor in diesem Tutorial notiert haben.
 
 1. Suchen Sie in der Datei **ConnectedAirConditioner.js** nach folgender Codezeile:
 

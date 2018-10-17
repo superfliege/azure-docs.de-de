@@ -1,22 +1,23 @@
 ---
-title: Objekterkennung mit Python und der Custom Vision-API – Azure Cognitive Services | Microsoft-Dokumentation
-description: Erfahren Sie mehr über eine grundlegende Windows-App, die die Custom Vision-API in Microsoft Cognitive Services verwendet. Erstellen Sie ein Projekt, fügen Sie Tags hinzu, laden Sie Bilder hoch und machen Sie eine Vorhersage mit dem standardmäßigen Endpunkt.
+title: 'Tutorial: Erstellen eines Objekterkennungsprojekts – Custom Vision-API, Python'
+titlesuffix: Azure Cognitive Services
+description: Erstellen Sie ein Projekt, fügen Sie Kategorien hinzu, laden Sie Bilder hoch, trainieren Sie Ihr Projekt, und machen Sie eine Vorhersage, die den Standardendpunkt verwendet.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: areddish
-ms.openlocfilehash: 37bdb9ebf7c74586c728e171a9897903b8ad2ee8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f49f5ab32d834b32de54be2d96c3671ad46f79f3
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213580"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363699"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-with-python"></a>Verwenden der Custom Vision-API zum Erstellen eines Objekterkennungsprojekts in Python
+# <a name="tutorial-build-an-object-detection-project-with-python"></a>Tutorial: Erstellen eines Objekterkennungsprojekts mit Python
 
 Erfahren Sie mehr über ein grundlegendes Python-Skript, das die Maschinelles Sehen-API zum Erstellen eines Objekterkennungsprojekts verwendet. Nachdem dieses Skript erstellt wurde, können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Open-Source-Beispiel als Vorlage zum Erstellen Ihrer eigenen App mithilfe der Custom Vision-API.
 

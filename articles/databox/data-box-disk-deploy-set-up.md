@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e4a913aaeb6eeb3c58b70dbcd714f1360875594f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b1e647c6aee251bebd257db5e4e631deba0be3fa
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161535"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068807"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Tutorial: Entpacken, Verbinden und Entsperren des Azure Data Box-Datenträgers
 
@@ -76,12 +76,14 @@ Je nachdem, ob Sie mit einem Windows- oder Linux-Client verbunden sind, untersch
 Führen Sie die folgenden Schritte aus, um Ihre Datenträger anzuschließen und zu entsperren.
      
 1. Navigieren Sie im Azure-Portal zu **Allgemein > Gerätedetails**. 
-2. Laden Sie das entsprechende Data Box Disk-Toolset für den Windows-Client herunter. 
+2. Laden Sie das entsprechende Data Box Disk-Toolset für den Windows-Client herunter. Dieses Toolset enthält drei Tools: Tool zum Entsperren von Data Box-Datenträgern, Data Box Disk-Überprüfungstool und Data Box Disk-Tool zum Aufteilen/Kopieren. 
+
+    In diesem Verfahren verwenden Sie nur das Tool zum Entsperren von Data Box-Datenträgern. Die anderen beiden Tools werden später verwendet.
 
     > [!div class="nextstepaction"]
     > [Herunterladen des Data Box Disk-Toolsets für Windows](http://aka.ms/databoxdisktoolswin)         
 
-3. Extrahieren Sie das Tool auf demselben Computer, den Sie zum Kopieren der Daten verwenden möchten.
+3. Extrahieren Sie das Toolset auf demselben Computer, den Sie zum Kopieren der Daten verwenden möchten. 
 4. Öffnen Sie ein Eingabeaufforderungsfenster, oder führen Sie Windows PowerShell auf demselben Computer als Administrator aus.
 5. (Optional) Um zu überprüfen, ob der zum Entsperren des Datenträgers verwendete Computer die Anforderungen des Betriebssystems erfüllt, können Sie den Befehl für die Systemüberprüfung ausführen. Nachfolgend sehen Sie eine Beispielausgabe. 
 

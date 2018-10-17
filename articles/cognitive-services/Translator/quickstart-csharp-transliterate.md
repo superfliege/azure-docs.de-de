@@ -1,25 +1,27 @@
 ---
-title: 'Textübersetzung: Konvertieren eines Textskripts mit C# | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung konvertieren Sie Text in einer Sprache aus einem Skript in ein anderes. Dazu verwenden Sie die Textübersetzungs-API mit C# in Cognitive Services.
+title: 'Schnellstart: Konvertieren eines Textskripts – Textübersetzung, C#'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung konvertieren Sie mithilfe der Textübersetzungs-API und C# Text in einer Sprache aus einem Skript in ein anderes.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 66d649c0015be8c6a74e9925af68297334bfdb30
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 53ac3f4aa85e889c86d09927ece7df012427e4a9
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43769499"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367592"
 ---
 # <a name="quickstart-transliterate-text-with-c35"></a>Schnellstart: Transliteration von Text mit C#
 
 In dieser Schnellstartanleitung konvertieren Sie mithilfe der Textübersetzungs-API Text in einer Sprache aus einem Skript in ein anderes.
+
+Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

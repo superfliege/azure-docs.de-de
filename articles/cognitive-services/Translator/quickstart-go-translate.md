@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Übersetzen von Text mit Go | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung übersetzen Sie Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit Go in Cognitive Services.
+title: 'Schnellstart: Übersetzen von Text – Textübersetzung, Go'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart übersetzen Sie Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: 72d4a3bc7563d6427335f1536f787eab6d7a0de4
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: df8b938c9541a4f57a337065af0ab02fe6815c6d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43769791"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126699"
 ---
 # <a name="quickstart-translate-text-with-go"></a>Schnellstart: Übersetzen von Text mit Go
 

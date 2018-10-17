@@ -1,24 +1,22 @@
 ---
-title: 'Schnellstartanleitung: Übermitteln eines Workflows mit FASTQ-Eingabedateien | Microsoft-Dokumentation'
+title: 'Schnellstart: Übermitteln eines Workflows mit FASTQ-Eingabedateien – Microsoft Genomics'
 titleSuffix: Azure
 description: In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie den msgen-Client installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt haben.
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: f093397803f21c023a2c32e42709ecfcd0e3aec7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: acbcceb32ec54ab85db05ef743e9c10cd8cf025c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
-ms.locfileid: "26684482"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735848"
 ---
-# <a name="submit-a-workflow-using-fastq-file-inputs"></a>Übermitteln eines Workflows mit FASTQ-Eingabedateien
+# <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>Übermitteln eines Workflows mit FASTQ-Eingabedateien in Microsoft Genomics
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn es sich bei Ihren Eingabedateien um ein einzelnes FASTQ-Dateipaar handelt. In diesem Thema wird vorausgesetzt, dass Sie den `msgen`-Client bereits installiert und ausgeführt haben und mit der Verwendung von Azure Storage vertraut sind. Wenn Sie erfolgreich einen Workflow mit den bereitgestellten Beispieldaten übermittelt haben, können Sie mit dieser Schnellstartanleitung fortfahren. 
 

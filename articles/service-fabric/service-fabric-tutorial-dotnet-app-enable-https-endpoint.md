@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 70bbeabe2c2b14e8e0dcccac9ffa63f2e19230a2
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 27167b011e23befda5d0c3703adeafc1581f4b98
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41920694"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268934"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API mithilfe von Kestrel
 
@@ -41,7 +41,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * [Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Bereitstellen der Anwendung in einem Remotecluster](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst
-> * [Konfigurieren von CI/CD mit Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [Konfigurieren von CI/CD mit Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -232,6 +232,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 
 Legen Sie in den Dateieigenschaften von *Setup.bat* die Option **In Ausgabeverzeichnis kopieren** auf „Kopieren, wenn neuer“ fest.
+
 ![Festlegen der Dateieigenschaften][image1]
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **VotingWeb**, klicken Sie auf **Hinzufügen**->**Neues Element**, und fügen Sie eine neue Datei namens „SetCertAccess.ps1“ hinzu.  Bearbeiten Sie die Datei *SetCertAccess.ps1*, und fügen Sie das folgende Skript hinzu:
@@ -265,7 +266,7 @@ if ($cert -eq $null)
     $hasPermissionsAlready = ($acl.Access | where {$_.IdentityReference.Value.Contains($userGroup.ToUpperInvariant()) -and $_.FileSystemRights -eq [System.Security.AccessControl.FileSystemRights]::FullControl}).Count -eq 1
 
     if ($hasPermissionsAlready){
-        Write-Host "Account $userGroupCertificate already has permissions to certificate '$subject'." -ForegroundColor Green
+        Write-Host "Account $userGroup already has permissions to certificate '$subject'." -ForegroundColor Green
         return $false;
     } else {
         Write-Host "Need add permissions to '$subject' certificate..." -ForegroundColor DarkYellow
@@ -281,8 +282,9 @@ if ($cert -eq $null)
     }
 }
 
-Modify the *SetCertAccess.ps1* file properties to set **Copy to Output Directory** to "Copy if newer".
 ```
+
+Legen Sie in den Dateieigenschaften von *SetCertAccess.ps1* die Option **In Ausgabeverzeichnis kopieren** auf „Kopieren, wenn neuer“ fest.
 
 ### <a name="run-the-setup-script-as-a-local-administrator"></a>Ausführen des Setupskripts als lokaler Administrator
 
@@ -442,7 +444,7 @@ In diesem Teil des Tutorials haben Sie Folgendes gelernt:
 
 Fahren Sie mit dem nächsten Tutorial fort:
 > [!div class="nextstepaction"]
-> [Konfigurieren von CI/CD mit Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> [Konfigurieren von CI/CD mit Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 [image1]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/SetupBatProperties.png
 [image2]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/VotingAppLocal.png

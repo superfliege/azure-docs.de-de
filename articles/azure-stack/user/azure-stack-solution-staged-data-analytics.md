@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/02/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b704db0b79d056f5c7081d3fed117e1d1f22b336
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b4b81546a267e6fd082f83db8b23010f0742771f
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978827"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237903"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer bereitgestellten Lösung für die Datenanalyse mit Azure und Azure Stack 
 
@@ -55,7 +55,7 @@ Es sind einige Vorbereitungsschritte erforderlich, um diese Lösung zu erstellen
 
 -   Laden Sie den [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) herunter, und installieren Sie ihn.
 
--   Die von diesen Funktionen verarbeiteten Daten werden nicht bereitgestellt. Daten müssen generiert werden und für den Upload in den Azure Stack-Speicherblobcontainer verfügbar sein.
+-   Sie müssen Ihre eigenen Daten angeben, die von den Funktionen verarbeitet werden. Daten müssen generiert werden und für den Upload in den Azure Stack-Speicherblobcontainer verfügbar sein.
 
 ## <a name="issues-and-considerations"></a>Probleme und Überlegungen
 
@@ -123,17 +123,11 @@ Das Speicherkonto und der Blobcontainer enthalten alle Originaldaten, die von lo
 
 Erstellen Sie eine neue Azure Stack-Funktion, um bereinigte Daten aus Azure Stack nach Azure zu verschieben.
 
-1.  Erstellen Sie eine neue Funktion, indem Sie auf **Funktionen** und dann auf die Schaltfläche **+ Neue Funktion** klicken.
+### <a name="create-the-azure-stack-function-app"></a>Erstellen der Azure Stack-Funktions-App
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image3.png)
-
-2.  Wählen Sie **Zeitgebertrigger**.
-
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image4.png)
-
-3.  Wählen Sie **C\#** als Sprache aus, und geben Sie der Funktion den Namen `upload-to-azure`. Legen Sie den Zeitplan auf `0 0 * * * *` fest (in CRON-Notation einmal pro Stunde).
-
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image5.png)
+1. Melden Sie sich am [Azure Stack-Portal](https://portal.local.azurestack.external) an.
+2. Wählen Sie **Alle Dienste** aus.
+3. Wählen Sie in der Gruppe **Web und mobil** die Option **Funktionen-Apps**.
 
 4.  Erstellen Sie die Funktions-App, indem Sie die in der Tabelle unter der Abbildung angegebenen Einstellungen verwenden.
 
@@ -148,7 +142,7 @@ Erstellen Sie eine neue Azure Stack-Funktion, um bereinigte Daten aus Azure Stac
     | Verbrauchsplan | Der Hostingplan, der definiert, wie Ihre Ressourcen der Funktionen-App zugewiesen werden Im Standard-Verbrauchstarif werden Ressourcen je nach Bedarf der Funktionen dynamisch hinzugefügt. Beim serverlosen Hosting bezahlen Sie nur die Zeit, in der Ihre Funktionen ausgeführt werden. |  |
     | Standort | Nächstgelegene Region | Wählen Sie eine Region in Ihrer Nähe oder in der Nähe von anderen Diensten aus, auf die Ihre Funktionen zugreifen. |
     | **Speicherkonto** |  |  |
-    | \<oben erstelltes Speicherkonto> | Der Name des neuen Speicherkontos, das von Ihrer Funktionen-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können außerdem ein vorhandenes Konto verwenden. |  |
+    | \<oben erstelltes Speicherkonto> | Der Name des neuen Speicherkontos, das von Ihrer Funktionen-App verwendet wird. Speicherkontonamen müssen eine Länge von 3 bis 24 Zeichen haben. Für den Namen dürfen nur Zahlen und Kleinbuchstaben verwendet werden. Sie können außerdem ein vorhandenes Konto verwenden. |  |
 
     **Beispiel:**
 
@@ -164,13 +158,25 @@ Erstellen Sie eine neue Azure Stack-Funktion, um bereinigte Daten aus Azure Stac
 
 ![Die Funktionen-App wurde erfolgreich erstellt.](media\azure-stack-solution-staged-data-analytics\image8.png)
 
+### <a name="add-a-function-to-the-azure-stack-function-app"></a>Hinzufügen einer Funktion zur Azure Stack-Funktions-App
+
+1.  Erstellen Sie eine neue Funktion, indem Sie auf **Funktionen** und dann auf die Schaltfläche **+ Neue Funktion** klicken.
+
+    ![Alt text](media\azure-stack-solution-staged-data-analytics\image3.png)
+
+2.  Wählen Sie **Zeitgebertrigger**.
+
+    ![Alt text](media\azure-stack-solution-staged-data-analytics\image4.png)
+
+3.  Wählen Sie **C\#** als Sprache aus, und geben Sie der Funktion den Namen `upload-to-azure`. Legen Sie den Zeitplan auf `0 0 * * * *` fest (in CRON-Notation einmal pro Stunde).
+
+    ![Alt text](media\azure-stack-solution-staged-data-analytics\image5.png)
+
 ## <a name="create-a-blob-storage-triggered-function"></a>Erstellen einer Funktion, die durch Blob Storage ausgelöst wird
 
-1.  Erweitern Sie die Funktions-App, und wählen Sie die Schaltfläche **+** neben **Functions**. Wählen Sie **Benutzerdefinierte Funktion**, wenn dies die erste Funktion in der Funktions-App ist. Hiermit wird der vollständige Satz von Funktionsvorlagen angezeigt.
+1.  Erweitern Sie die Funktions-App, und wählen Sie die Schaltfläche **+** neben **Functions**.
 
-  ![Schnellstartseite für Funktionen im Azure-Portal](media\azure-stack-solution-staged-data-analytics\image9.png)
-
-2.  Geben Sie im Suchfeld „blob“ ein, und wählen Sie dann die gewünschte Sprache für die Blob Storage-Triggervorlage aus.
+2.  Geben Sie im Suchfeld `blob` ein, und wählen Sie dann die gewünschte Sprache für die Vorlage **Blobtrigger** aus.
 
   ![Wählen Sie die Blob Storage-Triggervorlage aus.](media\azure-stack-solution-staged-data-analytics\image10.png)
 

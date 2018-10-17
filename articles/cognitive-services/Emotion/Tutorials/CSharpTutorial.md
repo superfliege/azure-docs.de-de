@@ -1,25 +1,27 @@
 ---
-title: Tutorial zur Emotionen-API in C# | Microsoft-Dokumentation
-description: Untersuchen einer einfachen Windows-App, die die Cognitive Services-Emotionen-API zur Erkennung der Emotionen verwendet, die Gesichter in einem Bild ausdrücken.
+title: 'Tutorial: Erkennen von Emotionen auf Gesichtern in einem Bild – Emotionen-API, C#'
+titlesuffix: Azure Cognitive Services
+description: Lernen Sie eine einfache Windows-App kennen, die Emotionen auf Gesichtern in einem Bild erkennt.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/23/2017
 ms.author: anroth
-ms.openlocfilehash: f015e5720f65d0951a77de76ce8882a6dcdc1c3b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: f3a84a68718fba29e2a4b2fae057e68976119c95
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374178"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237023"
 ---
-# <a name="emotion-api-in-c35-tutorial"></a>Tutorial: Emotionen-API in C&#35;
+# <a name="tutorial-recognize-emotions-on-a-face-in-an-image"></a>Tutorial: Erkennen von Emotionen auf Gesichtern in einem Bild
 
 > [!IMPORTANT]
-> Die Video-API-Vorschau ist am 30. Oktober 2017 abgelaufen. Testen Sie die neue [Video Indexer-API (Vorschau)](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Extrahieren Sie Erkenntnisse aus Videos, und verbessern Sie die Auffindbarkeit von Inhalten, z.B. mit Suchergebnissen durch die Erkennung von gesprochenen Wörtern, Gesichtern, Zeichen und Emotionen. [Weitere Informationen](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
+> Die Emotionen-API wird am 15. Februar 2019 eingestellt. Die Funktion zur Erkennung von Emotionen ist jetzt als Teil der [Gesichtserkennungs-API](https://docs.microsoft.com/azure/cognitive-services/face/) allgemein verfügbar. 
 
 Untersuchen einer einfachen Windows-App, die die Emotionen-API zur Erkennung der Emotionen verwendet, die Gesichter in einem Bild ausdrücken. Im folgenden Beispiel können Sie eine Bild-URL oder eine lokal gespeicherte Datei übermitteln. Sie können dieses Open-Source-Beispiel als Vorlage verwenden, um Ihre eigene App für Windows mit der Emotionen-API und WPF (Windows Presentation Foundation; eine Komponente von .NET Framework) zu erstellen.
 
@@ -51,37 +53,37 @@ Sie können die Emotionen-API-Clientbibliothek über [SDK](https://www.github.co
 ## <a name="Step3">Schritt 3: Ausführen des Beispiels</a>
 1.  Drücken Sie nach Abschluss des Buildvorgangs **F5**, oder klicken Sie auf dem Menüband auf **Starten**, um das Beispiel auszuführen.
 2.  Navigieren Sie zum Fenster der Emotionen-API mit dem **Textfeld** **Abonnementschlüssel hier einfügen, um zu beginnen**. Fügen Sie Ihren Abonnementschlüssel in das Textfeld ein, wie im folgenden Screenshot gezeigt. Durch Klicken auf „Schlüssel speichern“ können Sie den Abonnementschlüssel auf Ihrem PC oder Laptop speichern. Wenn Sie den Abonnementschlüssel aus dem System löschen möchten, klicken Sie auf „Schlüssel löschen“, um ihn von Ihrem PC oder Laptop zu entfernen.
-  
+
   ![Emotionen-Funktionalitätsschnittstelle](../Images/EmotionKey.png)
 
 3.  Klicken Sie unter „**Szenario auswählen**“ auf eines der beiden Szenarien, um es zu verwenden – „**Emotionen mithilfe eines Datenstroms erkennen** „ oder „**Emotionen mithilfe einer URL erkennen**", und befolgen Sie die Anweisungen auf dem Bildschirm. Microsoft empfängt die Bilder, die Sie hochladen, und nutzt sie ggf. zur Verbesserung der Emotionen-API und der dazugehörigen Dienste. Wenn Sie ein Bild übermitteln, bestätigen Sie dadurch, dass Sie sich an unsere [Verhaltensregeln für Entwickler](https://azure.microsoft.com/support/legal/developer-code-of-conduct/) gehalten haben.
 4.  Für diese Beispielanwendung stehen Beispielbilder zur Verfügung. Diese befinden sich im Ordner **Data** des [GitHub-Repositorys für die Gesichtserkennungs-API](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data). Bitte beachten Sie, dass die Verwendung dieser Bilder im Rahmen einer Fair Use-Vereinbarung lizenziert ist, was bedeutet, dass sie zum Testen dieses Beispiel verwendet werden können, aber nicht zum erneuten Veröffentlichen.
 
 ## <a name="Review">Ansehen und Lernen</a>
-Nachdem Sie nun über eine aktive Anwendung verfügen, erfahren Sie als Nächstes, wie sich die Integration zwischen dieser Beispiel-App und Microsoft Cognitive Services gestaltet. Auf der Grundlage dieser Informationen können Sie entweder diese App weiterentwickeln oder Ihre eigene App mit der Emotionen-API von Microsoft entwickeln. 
+Nachdem Sie nun über eine aktive Anwendung verfügen, erfahren Sie als Nächstes, wie sich die Integration zwischen dieser Beispiel-App und Microsoft Cognitive Services gestaltet. Auf der Grundlage dieser Informationen können Sie entweder diese App weiterentwickeln oder Ihre eigene App mit der Emotionen-API von Microsoft entwickeln.
 
 Diese Beispiel-App nutzt die Clientbibliothek der Emotionen-API. Dabei handelt es sich um einen C#-Thin Client-Wrapper für die Emotionen-API von Microsoft. Wenn Sie die Beispiel-App wie oben beschrieben erstellt haben, haben Sie die Clientbibliothek aus einem NuGet-Paket erhalten. Der Quellcode der Clientbibliothek befindet sich im Ordner „[Client Library](https://github.com/Microsoft/Cognitive-Emotion-Windows/tree/master/ClientLibrary)“ unter **Emotionen** > **Windows** > **Client Library**. Dieser Ordner ist Teil des heruntergeladenen Dateirepositorys, das unter [Voraussetzungen](#Prerequisites) erwähnt wurde.
- 
-Sie können auch herausfinden, wie Sie die Clientbibliothekscodes im **Projektmappen-Explorer** verwenden: Erweitern Sie unter **EmotionAPI-WPF_Samples** **DetectEmotionUsingStreamPage.xaml**, um die Datei **DetectEmotionUsingStreamPage.xaml.cs** zu suchen, die verwendet wird, um zu einer lokal gespeicherten Datei zu navigieren, oder erweitern Sie **DetectEmotionUsingURLPage.xaml**, um die Datei  **DetectEmotionUsingURLPage.xaml.cs** zu finden, die beim Hochladen einer Bild-URL verwendet wird. Doppelklicken Sie auf die XAML.CS-Dateien, um sie in neuen Visual Studio-Fenstern zu öffnen. 
+
+Sie können auch herausfinden, wie Sie die Clientbibliothekscodes im **Projektmappen-Explorer** verwenden: Erweitern Sie unter **EmotionAPI-WPF_Samples** **DetectEmotionUsingStreamPage.xaml**, um die Datei **DetectEmotionUsingStreamPage.xaml.cs** zu suchen, die verwendet wird, um zu einer lokal gespeicherten Datei zu navigieren, oder erweitern Sie **DetectEmotionUsingURLPage.xaml**, um die Datei  **DetectEmotionUsingURLPage.xaml.cs** zu finden, die beim Hochladen einer Bild-URL verwendet wird. Doppelklicken Sie auf die XAML.CS-Dateien, um sie in neuen Visual Studio-Fenstern zu öffnen.
 
 Bei der Untersuchung, wie die Emotionen-Clientbibliothek in unserer Beispiel-App verwendet wird, betrachten wir zwei Codeausschnitte aus **DetectEmotionUsingStreamPage.xaml.cs** und **DetectEmotionUsingURLPage.xaml.cs**. Jede Datei enthält die Codekommentare „KEY SAMPLE CODE STARTS HERE“ und „KEY SAMPLE CODE ENDS HERE“, die den Beginn und das Ende des betreffenden Beispielcodes angeben, damit Sie die weiter unten reproduzierten Codeausschnitte leichter finden.
 
-Die Emotionen-API kann als Eingabe eine Bild-URL oder binäre Bilddaten (in Form eines Oktett-Streams) verwenden. Im Folgenden werden die beiden Optionen untersucht. In beiden Fällen befindet sich am Anfang eine using-Direktive, die die Verwendung der Clientbibliothek für Emotionen ermöglicht. 
+Die Emotionen-API kann als Eingabe eine Bild-URL oder binäre Bilddaten (in Form eines Oktett-Streams) verwenden. Im Folgenden werden die beiden Optionen untersucht. In beiden Fällen befindet sich am Anfang eine using-Direktive, die die Verwendung der Clientbibliothek für Emotionen ermöglicht.
 ```csharp
 
-            // ----------------------------------------------------------------------- 
-            // KEY SAMPLE CODE STARTS HERE 
-            // Use the following namespace for EmotionServiceClient 
-            // ----------------------------------------------------------------------- 
-            using Microsoft.ProjectOxford.Emotion; 
-            using Microsoft.ProjectOxford.Emotion.Contract; 
-            // ----------------------------------------------------------------------- 
-            // KEY SAMPLE CODE ENDS HERE 
-            // ----------------------------------------------------------------------- 
+            // -----------------------------------------------------------------------
+            // KEY SAMPLE CODE STARTS HERE
+            // Use the following namespace for EmotionServiceClient
+            // -----------------------------------------------------------------------
+            using Microsoft.ProjectOxford.Emotion;
+            using Microsoft.ProjectOxford.Emotion.Contract;
+            // -----------------------------------------------------------------------
+            // KEY SAMPLE CODE ENDS HERE
+            // -----------------------------------------------------------------------
 ```
-#### <a name="detectemotionusingurlpagexamlcs"></a>DetectEmotionUsingURLPage.xaml.cs 
+#### <a name="detectemotionusingurlpagexamlcs"></a>DetectEmotionUsingURLPage.xaml.cs
 
-Dieser Codeausschnitt zeigt, wie Sie mithilfe der Clientbibliothek Ihren Abonnementschlüssel und eine Foto-URL an den Emotionen-API-Dienst übermitteln. 
+Dieser Codeausschnitt zeigt, wie Sie mithilfe der Clientbibliothek Ihren Abonnementschlüssel und eine Foto-URL an den Emotionen-API-Dienst übermitteln.
 
 ```csharp
 
@@ -115,9 +117,9 @@ Dieser Codeausschnitt zeigt, wie Sie mithilfe der Clientbibliothek Ihren Abonnem
             // KEY SAMPLE CODE ENDS HERE
             // -----------------------------------------------------------------------
 ```
-#### <a name="detectemotionusingstreampagexamlcs"></a>DetectEmotionUsingStreamPage.xaml.cs 
+#### <a name="detectemotionusingstreampagexamlcs"></a>DetectEmotionUsingStreamPage.xaml.cs
 
-Unten wird gezeigt, wie Ihr Abonnementschlüssel und ein lokal gespeichertes Bild an die Emotionen-API übermittelt werden. 
+Unten wird gezeigt, wie Ihr Abonnementschlüssel und ein lokal gespeichertes Bild an die Emotionen-API übermittelt werden.
 
 
 ```csharp

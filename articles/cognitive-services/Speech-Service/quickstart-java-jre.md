@@ -5,16 +5,16 @@ description: Informationen zur Spracherkennung in Java (Windows oder Linux)
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: 00603c467ec96e52fc2b7745263153a68d20f584
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: c0963fa8453dd51dfb05af20a5468e1eed1fc7cf
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053961"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885212"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Java unter Windows oder Linux mit dem Speech SDK
 
@@ -69,11 +69,11 @@ Wenn Sie Ubuntu 16.04 verwenden, führen Sie vor dem Starten von Eclipse die fol
 
 1. Öffnen Sie die Datei **pom.xml**, und bearbeiten Sie diese.
 
-   * Erstellen Sie vor dem schließenden Tag `</project>` am Ende der Datei einen Repositoryabschnitt mit einem Verweis auf das Maven-Repository für das Speech SDK. Das folgende Beispiel zeigt dies:
+   * Erstellen Sie wie hier gezeigt vor dem schließenden Tag `</project>` am Ende der Datei ein `repositories`-Element mit einem Verweis auf das Maven-Repository für das Speech SDK:
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-  * Fügen Sie anschließend einen Abschnitt „Abhängigkeiten“ mit der Version 1.0.0 des Speech SDK als Abhängigkeit hinzu:
+  * Fügen Sie außerdem ein `dependencies`-Element mit dem Speech SDK Version 1.0.0 als Abhängigkeit hinzu:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 

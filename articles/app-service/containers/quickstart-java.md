@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: b9e8d2b9eacfa5c427ffe3f27ea99bbd35651d57
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 92dde19e42c1adb6d83e1708106f844f228e8989
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165975"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239349"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Schnellstart: Erstellen einer Java-Web-App in App Service unter Linux
 
@@ -127,7 +127,7 @@ Navigieren Sie nach Abschluss der Bereitstellung zur bereitgestellten Anwendung,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie mit Maven eine Java-Webanwendung erstellt, das [Maven-Plug-In für Azure Web Apps (Vorschau)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) konfiguriert und dann eine in einem Webarchiv verpackte Java-Webanwendung für den App Service unter Linux bereitgestellt. Weitere Informationen zur Verwendung von Java mit Azure finden Sie unter folgendem Link:
+In diesem Schnellstart haben Sie mit Maven eine Java-Webanwendung erstellt, das [Maven-Plug-In für Azure-Web-Apps (Vorschauversion)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) konfiguriert und anschließend eine in einem Webarchiv verpackte Java-Webanwendung in App Service unter Linux bereitgestellt. Weitere Informationen zur Verwendung von Java mit Azure finden Sie unter folgendem Link:
 
 > [!div class="nextstepaction"]
 > [Azure für Java-Entwickler](https://docs.microsoft.com/java/azure/)

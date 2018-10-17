@@ -13,16 +13,16 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: af93ade2a7031aeda5b4108649c59a8d6c1393ce
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186210"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465859"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
-Mit Azure Active Directory (AD) Privileged Identity Management können Sie den Zugriff innerhalb Ihrer Organisation verwalten, steuern und überwachen. Dazu zählt der Zugriff auf Ressourcen in Azure AD, in Azure-Ressourcen (Vorschauversion) und anderen Microsoft-Onlinediensten wie Office 365 oder Microsoft Intune.
+Mit Azure Active Directory Privileged Identity Management können Sie den Zugriff innerhalb Ihrer Organisation verwalten, steuern und überwachen. Dazu zählt der Zugriff auf Ressourcen in Azure AD, in Azure-Ressourcen und anderen Microsoft-Onlinediensten wie Office 365 oder Microsoft Intune.
 
 > [!NOTE]
 > Wenn Sie Privileged Identity Management für Ihren Mandanten aktivieren, ist für jeden Benutzer, der mit dem Dienst interagiert oder einen Nutzen daraus zieht, eine gültige Lizenz vom Typ Azure AD Premium P2 oder Enterprise Mobility + Security E5 (kostenpflichtig oder Testversion) erforderlich. Beispiele sind Benutzer bzw. Benutzer in einer Gruppe, für die Folgendes gilt:
@@ -39,11 +39,11 @@ Organisationen möchten die Anzahl von Personen mit Zugriff auf sichere Informat
 
 Azure AD Privileged Identity Management ermöglicht Ihrer Organisation Folgendes:
 
-- Ermitteln, welchen Benutzern privilegierte Rollen für die Verwaltung von Azure-Ressourcen (Vorschauversion) und welchen Benutzern Administratorrollen in Azure AD zugewiesen sind
-- Aktivieren von bedarfsgesteuertem Just-In-Time-Administratorzugriff auf Microsoft-Onlinedienste wie Office 365 und Intune sowie auf Azure-Ressourcen (Vorschauversion) von Abonnements, Ressourcengruppen und Einzelressourcen wie virtuellen Computern 
--   Anzeigen eines Administratoraktivierungsverlaufs, der unter anderem Aufschluss über die von Administratoren vorgenommenen Änderungen an Azure-Ressourcen (Vorschauversion) gibt
+- Ermitteln, welchen Benutzern privilegierte Rollen für die Verwaltung von Azure-Ressourcen und welchen Benutzern Administratorrollen in Azure AD zugewiesen sind
+- Aktivieren von bedarfsgesteuertem Just-In-Time-Administratorzugriff auf Microsoft-Onlinedienste wie Office 365 und Intune sowie auf Azure-Ressourcen von Abonnements, Ressourcengruppen und Einzelressourcen wie virtuellen Computern 
+- Anzeigen eines Administratoraktivierungsverlaufs, der unter anderem Aufschluss über die von Administratoren vorgenommenen Änderungen an Azure-Ressourcen gibt
 - Erhalten von Benachrichtigungen bei geänderten Administratorzuweisungen
-- Erzwingen einer Genehmigung für die Aktivierung privilegierter Azure AD-Administratorrollen (Vorschauversion) 
+- Erzwingen einer Genehmigung für die Aktivierung privilegierter Azure AD-Administratorrollen
 - Überprüfen der Mitgliedschaft von Administratorrollen und Erzwingen der Angabe einer Begründung bei längerer Mitgliedschaft
 
 In Azure AD kann Azure AD Privileged Identity Management die Benutzer verwalten, die den integrierten Azure AD-Organisationsrollen zugewiesen sind (beispielsweise „Globaler Administrator“). In Azure kann Azure AD Privileged Identity Management die Benutzer und Gruppen verwalten, die über Azure RBAC-Rollen zugewiesen werden (einschließlich „Besitzer“ oder „Mitwirkender“).
@@ -100,17 +100,17 @@ Bei Azure RBAC-Rollen können nur Abonnementadministratoren, Ressourcenbesitzer 
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Übersicht über Privileged Identity Management (Einstiegspunkt)
 
-Azure AD Privileged Identity Management unterstützt die Verwaltung von Azure AD-Verzeichnisrollen sowie von Rollen für Azure-Ressourcen (Vorschauversion). Die Funktion von Rollen für Azure-Ressourcen unterscheidet sich von Administratorrollen in Azure AD. Azure-Ressourcenrollen bieten präzise Berechtigungen für die Ressource, für die sie zugewiesen sind, sowie für alle untergeordneten Ressourcen in der Ressourcenhierarchie (Vererbung). Weitere Informationen zu RBAC, Ressourcenhierarchie und Vererbung finden Sie [hier](../../role-based-access-control/role-assignments-portal.md). PIM für Azure AD-Verzeichnisrollen und Azure-Ressourcen (Vorschauversion) kann über den entsprechenden Link im Abschnitt „Verwalten“ verwaltet werden. Zu diesem Abschnitt gelangen Sie über den Einstiegspunkt der PIM-Übersicht im linken Navigationsmenü.
+Azure AD Privileged Identity Management unterstützt die Verwaltung von Azure AD-Verzeichnisrollen sowie von Rollen für Azure-Ressourcen. Die Funktion von Rollen für Azure-Ressourcen unterscheidet sich von Administratorrollen in Azure AD. Azure-Ressourcenrollen bieten präzise Berechtigungen für die Ressource, für die sie zugewiesen sind, sowie für alle untergeordneten Ressourcen in der Ressourcenhierarchie (Vererbung). Weitere Informationen zu RBAC, Ressourcenhierarchie und Vererbung finden Sie [hier](../../role-based-access-control/role-assignments-portal.md). PIM für Azure AD-Verzeichnisrollen und Azure-Ressourcen kann über den entsprechenden Link im Abschnitt „Verwalten“ verwaltet werden. Zu diesem Abschnitt gelangen Sie über das linke Navigationsmenü in der PIM-Übersicht.
 
 Mit PIM können Sie über den Aufgabenabschnitt des linken Navigationsmenüs komfortabel Rollen aktivieren sowie ausstehende Aktivierungen/Anforderungen, ausstehende Genehmigungen (für Azure AD-Verzeichnisrollen) und Überprüfungen mit ausstehender Antwort anzeigen.
 
-Wenn Sie von der Übersicht aus auf eines der Elemente im Aufgabenmenü zugreifen, enthält die daraufhin angezeigte Ansicht sowohl Ergebnisse für Azure AD-Verzeichnisrollen als auch Ergebnisse für Azure-Ressourcenrollen (Vorschauversion).
+Wenn Sie von der Übersicht aus auf eines der Elemente im Aufgabenmenü zugreifen, enthält die daraufhin angezeigte Ansicht Ergebnisse sowohl für Azure AD-Verzeichnisrollen als auch für Azure-Ressourcenrollen.
 
 ![Schnellstart](./media/pim-configure/quick-start.png)
 
-Unter „My roles“ (Meine Rollen) befindet sich eine Liste mit aktiven und berechtigten Rollenzuweisungen für Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen (Vorschauversion). Weitere Informationen zum Aktivieren berechtigter Rollenzuweisungen finden Sie [hier](pim-how-to-activate-role.md).
+Unter „My roles“ (Meine Rollen) befindet sich eine Liste mit aktiven und berechtigten Rollenzuweisungen für Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen. Weitere Informationen zum Aktivieren berechtigter Rollenzuweisungen finden Sie [hier](pim-how-to-activate-role.md).
 
-Zur Aktivierung von Rollen für Azure-Ressourcen (Vorschauversion) wird eine neue Umgebung eingeführt, in der berechtigte Mitglieder einer Rolle die Aktivierung für einen späteren Zeitpunkt planen und eine bestimmte Aktivierungsdauer auswählen können, die innerhalb des von Administratoren festgelegten Bereichs liegt.
+Zur Aktivierung von Rollen für Azure-Ressourcen wird eine neue Umgebung eingeführt, in der berechtigte Mitglieder einer Rolle die Aktivierung für einen späteren Zeitpunkt planen und eine bestimmte Aktivierungsdauer auswählen können, die innerhalb des von Administratoren festgelegten Maximalbereichs liegt.
 
 ![](./media/pim-configure/activations.png)
 
@@ -126,15 +126,15 @@ Azure AD Privileged Identity Manager bietet ein Administratoren-Dashboard, das w
 * Anzahl der Benutzer, die jeder privilegierten Rolle zugewiesen sind  
 * Anzahl berechtigter und permanenter Administratoren
 * Ein Diagramm der Aktivierungen privilegierter Rollen in Ihrem Verzeichnis
-*   Die Anzahl von Just-In-Time-Zuweisungen, zeitgebundenen Zuweisungen und permanenten Zuweisungen für Azure-Ressourcenrollen (Vorschauversion)
-*   Benutzer und Gruppen mit neuen Rollenzuweisungen in den letzten 30 Tagen (Azure-Ressourcenrollen)
+* Die Anzahl von Just-In-Time-Zuweisungen, zeitgebundenen Zuweisungen und permanenten Zuweisungen für Azure-Ressourcenrollen
+* Benutzer und Gruppen mit neuen Rollenzuweisungen in den letzten 30 Tagen (Azure-Ressourcenrollen)
 
 
 ![PIM-Dashboard – Screenshot](./media/pim-configure/PIM_Admin_Overview.png)
 
 ## <a name="privileged-role-management"></a>Verwaltung privilegierter Rollen
 
-Mit Azure AD Privileged Identity Management können Sie die Administratoren verwalten, indem Sie den einzelnen Rollen permanente oder berechtigte Administratoren für Azure AD-Verzeichnisrollen hinzufügen oder selbige entfernen. Mit PIM für Azure-Ressourcen (Vorschauversionen) können Besitzer, Benutzerzugriffsadministratoren und globale Administratoren, die die Verwaltung von Abonnements in ihrem Mandanten ermöglichen, Azure-Ressourcenrollen Benutzer oder Gruppen als berechtigt (Just-In-Time-Zugriff) oder zeitgebunden (keine Aktivierung erforderlich) zuweisen – entweder mit einem Start- oder Endzeitpunkt (Datum und Uhrzeit) oder dauerhaft (sofern in den Rolleneinstellungen aktiviert).
+Mit Azure AD Privileged Identity Management können Sie die Administratoren verwalten, indem Sie den einzelnen Rollen permanente oder berechtigte Administratoren für Azure AD-Verzeichnisrollen hinzufügen oder selbige entfernen. Mit PIM für Azure-Ressourcen können Besitzer, Benutzerzugriffsadministratoren und globale Administratoren, die die Verwaltung von Abonnements in ihrem Mandanten ermöglichen, Azure-Ressourcenrollen Benutzer oder Gruppen als berechtigt (Just-In-Time-Zugriff) oder zeitgebunden (keine Aktivierung erforderlich) zuweisen – entweder mit einem Start- und Endzeitpunkt (Datum und Uhrzeit) oder permanent (sofern in den Rolleneinstellungen aktiviert).
 
 ![Hinzufügen/Entfernen von PIM-Administratoren – Screenshot](./media/pim-configure/PIM_AddRemove.png)
 
@@ -146,13 +146,13 @@ Mithilfe der [Rolleneinstellungen](pim-how-to-change-default-settings.md) könne
 * Benachrichtigung zur Rollenaktivierung
 * Informationen, die ein Benutzers während des Rollenaktivierungsprozesses bereitstellen muss
 * Dienstticket oder Vorfallnummer
-* [Anforderungen an den Genehmigungsworkflow – Vorschauversion](./azure-ad-pim-approval-workflow.md)
+* [Anforderungen an den Genehmigungsworkflow](./azure-ad-pim-approval-workflow.md)
 
 ![PIM-Einstellungen – Administratoraktivierung – Screenshot](./media/pim-configure/PIM_Settings_w_Approval_Disabled.png)
 
 Beachten Sie, dass in der Abbildung die Schaltflächen für **Multi-Factor Authentication** deaktiviert sind. Für bestimmte, sehr privilegierte Rollen ist MFA für erhöhten Schutz erforderlich.
 
-Mit Rolleneinstellungen für Azure-Ressourcenrollen (Vorschauversion) können Administratoren Einstellungen für Just-In-Time- und Direktzuweisungen konfigurieren:
+Mit Rolleneinstellungen für Azure-Ressourcenrollen können Administratoren Einstellungen für Just-In-Time- und Direktzuweisungen konfigurieren:
 
 - Die Möglichkeit, Benutzer oder Gruppen Rollen ohne Enddatum/-uhrzeit zuzuweisen (permanente Zuweisung)
 - Die Standarddauer einer Zuweisung (sofern nicht permanent)
@@ -173,7 +173,7 @@ Die Rollenaktivierung ist anpassbar. In den PIM-Einstellungen können Sie die Da
 
 ## <a name="review-role-activity"></a>Überprüfen der Rollenaktivität
 
-Ihnen stehen zwei Möglichkeiten zur Verfügung, um nachzuverfolgen, wie Ihre Mitarbeiter und Administratoren privilegierte Rollen nutzen. Die erste Option verwendet den [Verlauf der Verzeichnisrollenüberwachung](pim-how-to-use-audit-log.md). Im Überwachungsverlauf werden Änderungen an privilegierten Rollenzuweisungen, der Rollenaktivierungsverlauf sowie Änderungen an Einstellungen für Azure-Ressourcenrollen (Vorschauversion) nachverfolgt. 
+Ihnen stehen zwei Möglichkeiten zur Verfügung, um nachzuverfolgen, wie Ihre Mitarbeiter und Administratoren privilegierte Rollen nutzen. Die erste Option verwendet den [Verlauf der Verzeichnisrollenüberwachung](pim-how-to-use-audit-log.md). Im Überwachungsverlauf werden Änderungen an privilegierten Rollenzuweisungen, der Rollenaktivierungsverlauf sowie Änderungen an Einstellungen für Azure-Ressourcenrollen nachverfolgt. 
 
 ![PIM-Aktivierungsverlauf – Screenshot](./media/pim-configure/PIM_ActivationHistory.png)
 

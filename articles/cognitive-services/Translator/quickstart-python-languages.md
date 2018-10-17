@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Abrufen unterstützter Sprachen mit Python | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung rufen Sie mit der Textübersetzungs-API und Java in Cognitive Services eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab.
+title: 'Schnellstart: Abrufen der unterstützten Sprachen – Textübersetzung, Python'
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart rufen Sie eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab. Dazu verwenden Sie die Textübersetzungs-API mit Java.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 3ae3c6be814f79541e39eddd3be137b71cc1a494
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a68a1b31cb844a4873bf34c6a292beeb2a4b61c0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43769659"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121735"
 ---
 # <a name="quickstart-get-supported-languages-with-python"></a>Schnellstart: Abrufen der unterstützten Sprachen mit Python
 
@@ -27,7 +27,7 @@ Zum Ausführen dieses Codes benötigen Sie [Python 3.x](https://www.python.org/d
 
 Damit Sie die Textübersetzungs-API verwenden können, benötigen Sie darüber hinaus einen Abonnementschlüssel. Informationen hierzu finden Sie unter [Registrieren für die Textübersetzungs-API](translator-text-how-to-signup.md).
 
-## <a name="languages-request"></a>Languages-Anforderung
+## <a name="languages-request"></a>Sprachenanforderung (Languages)
 
 Mit dem folgenden Code werden mithilfe der [Languages](./reference/v3-0-languages.md)-Methode eine Liste der unterstützten Sprachen für Übersetzung, Transliteration und Wörterbuchsuche sowie Beispiele abgerufen.
 
@@ -74,7 +74,7 @@ f.write (json)
 f.close
 ```
 
-## <a name="languages-response"></a>Languages-Antwort
+## <a name="languages-response"></a>Sprachenantwort (Languages)
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 

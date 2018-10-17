@@ -1,23 +1,23 @@
 ---
-title: Node-Schnellstart für das SDK für die News-Suche | Microsoft-Dokumentation
-description: Einrichten der Konsolenanwendung für das SDK für die News-Suche
-titleSuffix: Azure cognitive services
+title: 'Schnellstart: Bing-News-Suche-SDK, Node'
+titleSuffix: Azure Cognitive Services
+description: Einrichten der Konsolenanwendung des Bing-News-Suche-SDK
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 4ae99aa100b697a0dd75863c6f0c3c556dfa3d21
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2279a6475ab8c39b3ff599f7244caea59d622651
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377939"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803000"
 ---
-# <a name="news-search-sdk-node-quickstart"></a>Node-Schnellstart für das SDK für die News-Suche
+# <a name="quickstart-bing-news-search-sdk-with-node"></a>Schnellstart: Bing-News-Suche-SDK mit Node
 
 Das SDK für die Bing-News-Suche enthält die Funktionalität der REST-API für das Abfragen von News und das Analysieren von Ergebnissen. 
 

@@ -1,21 +1,23 @@
 ---
-title: Python-Schnellstart für Microsoft Cognitive Services, Project Answer Search | Microsoft-Dokumentation
-description: Python-Beispiel für die ersten Schritte mit Project Answer Search, Microsoft Cognitive Services in Azure
+title: 'Schnellstart: „Projekt: Suche nach Antworten“, Python'
+titlesuffix: Azure Cognitive Services
+description: 'Python-Beispiel für die ersten Schritte mit dem „Projekt: Suche nach Antworten“.'
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9cb5406c616ed8e96d73c00c788a0d20f66dcabd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c33a88b65dcdf5ddddff9f5109afbe0cca7247c4
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376138"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869827"
 ---
-# <a name="project-answer-search-python-quickstart"></a>Python-Schnellstart für Project Answer Search
+# <a name="quickstart-project-answer-search-with-python"></a>Schnellstart: „Projekt: Suche nach Antworten“ mit Python
 
 Das folgende Python-Beispiel veranschaulicht das Erstellen und Senden einer Anforderung für Informationen zu „Felsen von Gibraltar“.
 
@@ -28,11 +30,11 @@ In diesem Beispiel wird Python 3.6.4 verwendet.
 ## <a name="code-scenario"></a>Codeszenario 
 
 Der folgende Code erstellt eine URL-Vorschau.
-Er wird folgendermaßen implementiert:
-1. Deklarieren Sie Variablen, um den Endpunkt nach Host und Pfad anzugeben.
+Er wird in den folgenden Schritten implementiert:
+1. Deklarieren Sie Variablen zum Angeben des Endpunkts nach Host und Pfad.
 2. Geben Sie die Abfrage-URL zum Anzeigen einer Vorschau an, und fügen Sie den Abfrageparameter hinzu.  
 3. Legen Sie den Abfrageparameter fest.
-4. Definieren Sie die Suchfunktion, die die Anforderung erstellt und den Header *Ocp-Apim-Subscription-Key* hinzufügt.
+4. Definieren Sie die Suchfunktion, mit der die Anforderung erstellt und der Header *Ocp-Apim-Subscription-Key* hinzugefügt wird.
 5. Legen Sie den Header *Ocp-Apim-Subscription-Key* fest. 
 6. Stellen Sie die Verbindung her, und senden Sie die Anforderung.
 7. Drucken Sie die JSON-Ergebnisse.

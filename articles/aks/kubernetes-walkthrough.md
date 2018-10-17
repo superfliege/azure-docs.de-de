@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 07/31/2018
+ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: f52551e9d57ccfc44502992b59412878c4092c0d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: caf3607dbd33d75916ff65b0ab498fa228e2a823
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436902"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068911"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -26,7 +26,7 @@ In dieser Schnellstartanleitung wird davon ausgegangen, dass Sie grundlegend mit
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.43 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.46 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -55,7 +55,7 @@ Ausgabe:
 
 ## <a name="create-aks-cluster"></a>Erstellen eines ACS-Clusters
 
-Erstellen Sie mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* erstellt. Die Containerintegritätsüberwachung wird auch mithilfe des Parameters *--enable-addons monitoring* aktiviert. Weitere Informationen zum Aktivieren der Lösung für die Überwachung der Integrität von Containern finden Sie unter [Überwachen der Integrität von Azure Kubernetes Service][aks-monitor].
+Erstellen Sie mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* erstellt. Azure Monitor für Container wird auch mit dem Parameter *--enable-addons monitoring* aktiviert. Weitere Informationen zum Aktivieren der Lösung für die Überwachung der Integrität von Containern finden Sie unter [Überwachen der Integrität von Azure Kubernetes Service][aks-monitor].
 
 ```azurecli-interactive
 az aks create --resource-group myAKSCluster --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
@@ -114,6 +114,13 @@ spec:
       containers:
       - name: azure-vote-back
         image: redis
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 6379
           name: redis
@@ -142,6 +149,13 @@ spec:
       containers:
       - name: azure-vote-front
         image: microsoft/azure-vote-front:v1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 80
         env:
@@ -209,16 +223,19 @@ Beim Erstellen des AKS-Clusters wurde die Überwachung aktiviert, um Integrität
 Führen Sie die folgenden Schritte aus, um den aktuellen Status, die Betriebszeit und die Ressourcennutzung für die Azure Vote-Pods anzuzeigen:
 
 1. Öffnen Sie in einem Webbrowser das Azure-Portal [https://portal.azure.com][azure-portal].
-1. Wählen Sie Ihre Ressourcengruppe aus, z.B. *myResourceGroup*, und wählen Sie anschließend Ihren AKS-Cluster, z.B. *myAKSCluster*. 
-1. Wählen Sie **Containerintegrität überwachen**. Wählen Sie dann den **Standardnamespace** aus, und klicken Sie anschließend auf **Container**.
+1. Wählen Sie Ihre Ressourcengruppe aus, z.B. *myResourceGroup*, und wählen Sie anschließend Ihren AKS-Cluster, z.B. *myAKSCluster*.
+1. Wählen Sie auf der linken Seite unter **Überwachung** die Option **Insights (Vorschau)**.
+1. Wählen Sie oben die Option **+ Filter hinzufügen**.
+1. Wählen Sie *Namespace* als Eigenschaft, und wählen Sie dann die Option *\<All but kube-system\>* (Alles außer kube-system).
+1. Wählen Sie die Anzeige **Container**.
 
-Es dauert möglicherweise einige Minuten, bis diese Daten wie im folgenden Beispiel gezeigt im Azure-Portal aufgefüllt werden:
+Die Container *azure-vote-back* und *azure-vote-front* werden angezeigt. Dies wird im folgenden Beispiel veranschaulicht:
 
-![Erstellen des ersten AKS-Clusters](media/kubernetes-walkthrough/view-container-health.png)
+![Anzeigen der Integrität der ausgeführten Container in AKS](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Wenn Sie die Protokolle für den Pod `azure-vote-front` anzeigen möchten, wählen Sie den Link **Protokolle anzeigen** auf der rechten Seite der Containerliste. Diese Protokolle enthalten die Datenströme *stdout* und *stderr* aus dem Container.
+Wenn Sie Protokolle für den Pod `azure-vote-front` anzeigen möchten, klicken Sie auf der rechten Seite der Containerliste auf den Link **Containerprotokolle anzeigen**. Diese Protokolle enthalten die Datenströme *stdout* und *stderr* aus dem Container.
 
-![Erstellen des ersten AKS-Clusters](media/kubernetes-walkthrough/view-container-logs.png)
+![Anzeigen der Containerprotokolle in AKS](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>Löschen von Clustern
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 62e376a345be837e910ea615f8648e6b8d196ae1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c5f1c5add069be99f7a6f467f6e3e2bd9c2b3535
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006246"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543087"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
 Mit Visual Studio können Sie ein Projekt erstellen, das Ihre Infrastruktur und Ihren Code in Azure bereitstellt. Sie können z. B. den Webhost, die Website und die Datenbank für Ihre App definieren und diese Infrastruktur zusammen mit dem Code bereitstellen. Visual Studio bietet viele verschiedene Starter-Vorlagen für die Bereitstellung gängiger Szenarien. In diesem Artikel stellen Sie eine Web-App und SQL-Datenbank bereit.  
@@ -305,5 +305,8 @@ Sie sind nicht auf die Ressourcen beschränkt, die über die Visual Studio-Benut
 Sie können den Zugriff auf das Dashboard verwalten, indem Sie RBAC-Gruppen verwenden. Außerdem können Sie die Darstellung des Dashboards anpassen, nachdem es bereitgestellt wurde. Wenn Sie die Ressourcengruppe jedoch erneut bereitstellen, wird das Dashboard auf den Standardzustand in der Vorlage zurückgesetzt. Weitere Informationen über das Erstellen von Dashboards finden Sie unter [Programmgesteuertes Erstellen von Azure-Dashboards](../azure-portal/azure-portal-dashboards-create-programmatically.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 
+In dieser Schnellstartanleitung haben Sie erfahren, wie Vorlagen mit Visual Studio erstellt und bereitgestellt werden. Im nächsten Tutorial wird gezeigt, wie Sie die Informationen in der Vorlagenreferenz suchen, um ein verschlüsseltes Azure Storage-Konto erstellen zu können.
+
+> [!div class="nextstepaction"]
+> [Tutorial: Erstellen einer Azure Resource Manager-Vorlage für die Bereitstellung eines verschlüsselten Speicherkontos](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

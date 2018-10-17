@@ -1,25 +1,25 @@
 ---
-title: 'Schnellstartanleitung: Ausführen eines Workflows über den Microsoft Genomics-Dienst | Microsoft-Dokumentation'
+title: 'Schnellstartanleitung: Ausführen eines Workflows über Microsoft Genomics'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Eingabedaten in Azure Blob Storage laden und einen Workflow über den Microsoft Genomics-Dienst ausführen.
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 4387e1c935ada99e1f9c335fb7e1b67905c01188
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: e1d10b578d33ba8d96f43666b82e94ef5503fe77
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42023821"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731086"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Schnellstartanleitung: Ausführen eines Workflows über den Microsoft Genomics-Dienst
 
-Microsoft Genomics ist ein skalierbarer, sicherer Sekundäranalysedienst für die schnelle Verarbeitung eines Genoms – von unaufbereiteten Abschnitten zu aufbereiteten Abschnitten und Variantendetektierung. Der Einstieg ist ganz einfach: 
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Eingabedaten in Azure Blob Storage laden und einen Workflow über den Microsoft Genomics-Dienst ausführen. Microsoft Genomics ist ein skalierbarer, sicherer Sekundäranalysedienst für die schnelle Verarbeitung eines Genoms – von unaufbereiteten Abschnitten zu aufbereiteten Abschnitten und Variantendetektierung. 
+
+Der Einstieg ist ganz einfach: 
 1.  Einrichten: Erstellen Sie über das Azure-Portal ein Microsoft Genomics-Konto, und installieren Sie den Microsoft Genomics-Python-Client in Ihrer lokalen Umgebung. 
 2.  Hochladen von Eingabedaten: Erstellen Sie über das Azure-Portal ein Microsoft Azure-Speicherkonto, und laden Sie die Eingabedateien hoch. Bei den Eingabedateien muss es sich um Abschnitte mit gepaarten Enden handeln (FASTQ- oder BAM-Dateien).
 3.  Ausführen: Verwenden Sie die Befehlszeilenschnittstelle von Microsoft Genomics, um Workflows über den Microsoft Genomics-Dienst auszuführen. 

@@ -1,82 +1,57 @@
 ---
-title: 'Schnellstart: API C# – Erstellen einer Wissensdatenbank – QnA Maker'
+title: 'Schnellstart: Erstellen einer Wissensdatenbank – REST, C# – QnA Maker'
 titlesuffix: Azure Cognitive Services
 description: Diese Schnellstartanleitung führt Sie durch das programmgesteuerte Erstellen einer Beispielwissensdatenbank für QnA Maker, die auf dem Azure-Dashboard Ihres Cognitive Services-API-Kontos angezeigt wird.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/01/2018
 ms.author: diberry
-ms.openlocfilehash: 8a0840a96f21f76f3a742d973c86dd02929b8e30
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 260ec46d292e244dfe51a3714e8b97e9d4689068
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039445"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883414"
 ---
-# <a name="create-a-new-knowledge-base-in-c"></a>Erstellen einer neuen Wissensdatenbank in C#
+# <a name="quickstart-create-a-qna-maker-knowledge-base-in-c"></a>Schnellstart: Erstellen einer QnA Maker-Wissensdatenbank in C#
 
-Diese Schnellstartanleitung führt Sie durch das programmgesteuerte Erstellen einer Beispielwissensdatenbank für QnA Maker, die auf dem Azure-Dashboard Ihres Cognitive Services-API-Kontos angezeigt wird.
+In dieser Schnellstartanleitung wird das programmgesteuerte Erstellen eines Beispiels für eine QnA Maker-Wissensdatenbank Schritt für Schritt beschrieben. QnA Maker extrahiert automatisch Fragen und Antworten aus teilweise strukturiertem Inhalt (z.B. häufig gestellten Fragen) von [Datenquellen](../Concepts/data-sources-supported.md). Das Modell für die Wissensdatenbank ist im JSON-Code definiert, der im Text der API-Anforderung gesendet wird. 
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
-
-Weiter unten finden Sie zwei Beispiel-URLs für häufig gestellte Fragen („urls“ in „string kb“). QnA Maker extrahiert automatisch Fragen und Antworten aus teilweise strukturiertem Inhalt (etwa häufig gestellten Fragen). Dies wird im Dokument zu [Datenquellen](../Concepts/data-sources-supported.md) ausführlicher erläutert. Sie können in diesem Schnellstart auch Ihre eigenen URLs für häufig gestellte Fragen verwenden.
+In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
+* [Erstellen einer Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+* [Abrufen von Vorgangsdetails](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Visual Studio Ihre bevorzugte IDE ist, benötigen Sie für die Ausführung dieses Codebeispiels unter Windows [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Die kostenlose Community Edition ist hierfür geeignet.)
+* Aktuelle [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/)
+* Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie zum Abrufen des Schlüssels auf Ihrem Dashboard unter **Ressourcenverwaltung** die Option **Schlüssel** aus. 
 
-Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **QnA Maker** als Ressource. Sie benötigen einen kostenpflichtigen Abonnementschlüssel aus Ihrem neuen API-Konto in Ihrem [Azure-Dashboard](https://portal.azure.com/#create/Microsoft.CognitiveServices). Wählen Sie zum Abrufen des Schlüssels auf Ihrem Dashboard unter **Ressourcenverwaltung** die Option **Schlüssel** aus. Beide Schlüssel können in dieser Schnellstartanleitung verwendet werden.
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
-![Dienstschlüssel auf dem Azure-Dashboard](../media/sub-key.png)
+## <a name="create-a-knowledge-base-project"></a>Erstellen eines Wissensdatenbank-Projekts
 
-## <a name="create-knowledge-base"></a>Erstellen einer Wissensdatenbank
+[!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)] 
 
-Über den folgenden Code können Sie mithilfe der Methode zum [Erstellen einer Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) eine neue Wissensdatenbank erstellen.
+## <a name="add-the-required-dependencies"></a>Hinzufügen der erforderlichen Abhängigkeiten
 
-1. Erstellen Sie eine neue .NET Framework-C#-Konsolenanwendung in Ihrer bevorzugten IDE.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den Wert `key` durch Ihren gültigen Abonnementschlüssel.
-4. Führen Sie das Programm aus.
+[!INCLUDE [Add required constants to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-dependencies.md)]  
+
+## <a name="add-the-required-constants"></a>Hinzufügen der erforderlichen Konstanten
+
+[!INCLUDE [Add required constants to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-constants.md)] 
+
+## <a name="add-the-kb-definition"></a>Hinzufügen der Definition der Wissensdatenbank
+
+Fügen Sie nach den Konstanten die folgende Definition für die Wissensdatenbank hinzu:
 
 ```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-// NOTE: Install the Newtonsoft.Json NuGet package.
-using Newtonsoft.Json;
-
-namespace QnAMaker
+static string kb = @"
 {
-    class Program
-    {
-        // Represents the various elements used to create HTTP request URIs
-        // for QnA Maker operations.
-        static string host = "https://westus.api.cognitive.microsoft.com";
-        static string service = "/qnamaker/v4.0";
-        static string method = "/knowledgebases/create";
-
-        // NOTE: Replace this value with a valid QnA Maker subscription key.
-        static string key = "YOUR SUBSCRIPTION KEY HERE";
-
-        /// <summary>
-        /// Defines the data source used to create the knowledge base.
-        /// The data source includes a QnA pair, with metadata, 
-        /// the URL for the QnA Maker FAQ article, and 
-        /// the URL for the Azure Bot Service FAQ article.
-        /// </summary>
-        static string kb = @"
-{
-  'name': 'QnA Maker FAQ',
+  'name': 'QnA Maker FAQ from quickstart',
   'qnaList': [
     {
       'id': 0,
@@ -100,246 +75,199 @@ namespace QnAMaker
   'files': []
 }
 ";
+```
 
-        /// <summary>
-        /// Represents the HTTP response returned by an HTTP request.
-        /// </summary>
-        public struct Response
-        {
-            public HttpResponseHeaders headers;
-            public string response;
+## <a name="add-supporting-functions-and-structures"></a>Hinzufügen von unterstützenden Funktionen und Strukturen
 
-            public Response(HttpResponseHeaders headers, string response)
-            {
-                this.headers = headers;
-                this.response = response;
-            }
-        }
+[!INCLUDE [Add supporting functions and structures](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-support-functions.md)] 
 
-        /// <summary>
-        /// Formats and indents JSON for display.
-        /// </summary>
-        /// <param name="s">The JSON to format and indent.</param>
-        /// <returns>A string containing formatted and indented JSON.</returns>
-        static string PrettyPrint(string s)
-        {
-            return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s), Formatting.Indented);
-        }
+## <a name="add-a-post-request-to-create-kb"></a>Hinzufügen einer POST-Anforderung zum Erstellen der Wissensdatenbank
 
-        /// <summary>
-        /// Asynchronously sends a POST HTTP request.
-        /// </summary>
-        /// <param name="uri">The URI of the HTTP request.</param>
-        /// <param name="body">The body of the HTTP request.</param>
-        /// <returns>A <see cref="System.Threading.Tasks.Task{TResult}(QnAMaker.Program.Response)"/> 
-        /// object that represents the HTTP response."</returns>
-        async static Task<Response> Post(string uri, string body)
-        {
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
-            {
-                request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(uri);
-                request.Content = new StringContent(body, Encoding.UTF8, "application/json");
-                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
+Der folgende Code sendet eine HTTPS-Anforderung an die QnA Maker-API, um eine Wissensdatenbank zu erstellen, und empfängt die Antwort:
 
-                var response = await client.SendAsync(request);
-                var responseBody = await response.Content.ReadAsStringAsync();
-                return new Response(response.Headers, responseBody);
-            }
-        }
+```csharp
+async static Task<Response> PostCreateKB(string kb)
+{
+    // Builds the HTTP request URI.
+    string uri = host + service + method;
 
-        /// <summary>
-        /// Asynchronously sends a GET HTTP request.
-        /// </summary>
-        /// <param name="uri">The URI of the HTTP request.</param>
-        /// <returns>A <see cref="System.Threading.Tasks.Task{TResult}(QnAMaker.Program.Response)"/> 
-        /// object that represents the HTTP response."</returns>
-        async static Task<Response> Get(string uri)
-        {
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
-            {
-                request.Method = HttpMethod.Get;
-                request.RequestUri = new Uri(uri);
-                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
+    // Writes the HTTP request URI to the console, for display purposes.
+    Console.WriteLine("Calling " + uri + ".");
 
-                var response = await client.SendAsync(request);
-                var responseBody = await response.Content.ReadAsStringAsync();
-                return new Response(response.Headers, responseBody);
-            }
-        }
+    // Asynchronously invokes the Post(string, string) method, using the
+    // HTTP request URI and the specified data source.
+    using (var client = new HttpClient())
+    using (var request = new HttpRequestMessage())
+    {
+        request.Method = HttpMethod.Post;
+        request.RequestUri = new Uri(uri);
+        request.Content = new StringContent(kb, Encoding.UTF8, "application/json");
+        request.Headers.Add("Ocp-Apim-Subscription-Key", key);
 
-        /// <summary>
-        /// Creates a knowledge base.
-        /// </summary>
-        /// <param name="kb">The data source for the knowledge base.</param>
-        /// <returns>A <see cref="System.Threading.Tasks.Task{TResult}(QnAMaker.Program.Response)"/> 
-        /// object that represents the HTTP response."</returns>
-        /// <remarks>The method constructs the URI to create a knowledge base in QnA Maker, and then
-        /// asynchronously invokes the <see cref="QnAMaker.Program.Post(string, string)"/> method
-        /// to send the HTTP request.</remarks>
-        async static Task<Response> PostCreateKB(string kb)
-        {
-            // Builds the HTTP request URI.
-            string uri = host + service + method;
-            
-            // Writes the HTTP request URI to the console, for display purposes.
-            Console.WriteLine("Calling " + uri + ".");
-
-            // Asynchronously invokes the Post(string, string) method, using the
-            // HTTP request URI and the specified data source.
-            return await Post(uri, kb);
-        }
-
-        /// <summary>
-        /// Gets the status of the specified QnA Maker operation.
-        /// </summary>
-        /// <param name="operation">The QnA Maker operation to check.</param>
-        /// <returns>A <see cref="System.Threading.Tasks.Task{TResult}(QnAMaker.Program.Response)"/> 
-        /// object that represents the HTTP response."</returns>
-        /// <remarks>The method constructs the URI to get the status of a QnA Maker operation, and
-        /// then asynchronously invokes the <see cref="QnAMaker.Program.Get(string)"/> method
-        /// to send the HTTP request.</remarks>
-        async static Task<Response> GetStatus(string operation)
-        {
-            // Builds the HTTP request URI.
-            string uri = host + service + operation;
-
-            // Writes the HTTP request URI to the console, for display purposes.
-            Console.WriteLine("Calling " + uri + ".");
-
-            // Asynchronously invokes the Get(string) method, using the
-            // HTTP request URI.
-            return await Get(uri);
-        }
-
-        /// <summary>
-        /// Creates a knowledge base, periodically checking status 
-        /// until the knowledge base is created.
-        /// </summary>
-        async static void CreateKB()
-        {
-            try
-            {
-                // Starts the QnA Maker operation to create the knowledge base.
-                var response = await PostCreateKB(kb);
-
-                // Retrieves the operation ID, so the operation's status can be
-                // checked periodically.
-                var operation = response.headers.GetValues("Location").First();
-
-                // Displays the JSON in the HTTP response returned by the 
-                // PostCreateKB(string) method.
-                Console.WriteLine(PrettyPrint(response.response));
-
-                // Iteratively gets the state of the operation creating the
-                // knowledge base. Once the operation state is set to something other
-                // than "Running" or "NotStarted", the loop ends.
-                var done = false;
-                while (true != done)
-                {
-                    // Gets the status of the operation.
-                    response = await GetStatus(operation);
-
-                    // Displays the JSON in the HTTP response returned by the
-                    // GetStatus(string) method.
-                    Console.WriteLine(PrettyPrint(response.response));
-
-                    // Deserialize the JSON into key-value pairs, to retrieve the
-                    // state of the operation.
-                    var fields = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.response);
-
-                    // Gets and checks the state of the operation.
-                    String state = fields["operationState"];
-                    if (state.CompareTo("Running") == 0 || state.CompareTo("NotStarted") == 0)
-                    {
-                        // QnA Maker is still creating the knowledge base. The thread is 
-                        // paused for a number of seconds equal to the Retry-After header value,
-                        // and then the loop continues.
-                        var wait = response.headers.GetValues("Retry-After").First();
-                        Console.WriteLine("Waiting " + wait + " seconds...");
-                        Thread.Sleep(Int32.Parse(wait) * 1000);
-                    }
-                    else
-                    {
-                        // QnA Maker has completed creating the knowledge base. 
-                        done = true;
-                    }
-                }
-            }
-            catch
-            {
-                // An error occurred while creating the knowledge base. Ensure that
-                // you included your QnA Maker subscription key where directed in the sample.
-                Console.WriteLine("An error occurred while creating the knowledge base.");
-            }
-            finally
-            {
-                Console.WriteLine("Press any key to continue.");
-            }
-
-        }
-
-        static void Main(string[] args)
-        {
-            // Invoke the CreateKB() method to create a knowledge base, periodically 
-            // checking the status of the QnA Maker operation until the 
-            // knowledge base is created.
-            CreateKB();
-
-            // The console waits for a key to be pressed before closing.
-            Console.ReadLine();
-        }
+        var response = await client.SendAsync(request);
+        var responseBody = await response.Content.ReadAsStringAsync();
+        return new Response(response.Headers, responseBody);
     }
 }
-  
 ```
 
-## <a name="understand-what-qna-maker-returns"></a>Informationen zur QnA Maker-Rückgabe
+Mit diesem API-Aufruf wird eine JSON-Antwort zurückgegeben, die die Vorgangs-ID enthält. Verwenden Sie die Vorgangs-ID, um zu ermitteln, ob die Erstellung der Wissensdatenbank erfolgreich war. 
 
-Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt. Ihre Ergebnisse können geringfügig abweichen. Wird mit dem letzten Aufruf der Status „Succeeded“ zurückgegeben, wurde die Wissensdatenbank erfolgreich erstellt. Informationen zur Problembehandlung finden Sie in den [Details zum GET-Vorgang](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) der QnA Maker-API.
-
-```json
-Calling https://westus.api.cognitive.microsoft.com/qnamaker/v4.0/knowledgebases/create.
+```JSON
 {
   "operationState": "NotStarted",
-  "createdTimestamp": "2018-06-25T10:30:15Z",
-  "lastActionTimestamp": "2018-06-25T10:30:15Z",
-  "userId": "0d85ec291c204197a70cfec51725cd22",
-  "operationId": "d9d40918-01bd-49f4-88b4-129fbc434c94"
+  "createdTimestamp": "2018-09-26T05:19:01Z",
+  "lastActionTimestamp": "2018-09-26T05:19:01Z",
+  "userId": "XXX9549466094e1cb4fd063b646e1ad6",
+  "operationId": "8dfb6a82-ae58-4bcb-95b7-d1239ae25681"
 }
-Calling https://westus.api.cognitive.microsoft.com/qnamaker/v4.0/operations/d9d40918-01bd-49f4-88b4-129fbc434c94.
-{
-  "operationState": "Running",
-  "createdTimestamp": "2018-06-25T10:30:15Z",
-  "lastActionTimestamp": "2018-06-25T10:30:15Z",
-  "userId": "0d85ec291c184197a70cfeb51025cd22",
-  "operationId": "d9d40918-01bd-49f4-88b4-129fbc434c94"
-}
-Waiting 30 seconds...
-Calling https://westus.api.cognitive.microsoft.com/qnamaker/v4.0/operations/d9d40918-01bd-49f4-88b4-129fbc434c94.
-{
-  "operationState": "Running",
-  "createdTimestamp": "2018-06-25T10:30:15Z",
-  "lastActionTimestamp": "2018-06-25T10:30:15Z",
-  "userId": "0d85ec221c284197a70gfeb51725cd22",
-  "operationId": "d9d40918-01bd-49f4-88b4-129fbc434c94"
-}
-Waiting 30 seconds...
-Calling https://westus.api.cognitive.microsoft.com/qnamaker/v4.0/operations/d9d40918-01bd-49f4-88b4-129fbc434c94.
-{
-  "operationState": "Succeeded",
-  "createdTimestamp": "2018-06-25T10:30:15Z",
-  "lastActionTimestamp": "2018-06-25T10:30:51Z",
-  "resourceLocation": "/knowledgebases/1d9eb2a1-de2a-4709-91b2-f6ea8afb6fb9",
-  "userId": "0d85ec294c284197a70cfeb51775cd22",
-  "operationId": "d9d40918-01bd-49f4-88b4-129fbc434c94"
-}
-Press any key to continue.
 ```
 
-Nach der Erstellung der Wissensdatenbank können Sie sie im QnA Maker-Portal auf der Seite [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Meine Wissensdatenbanken) anzeigen. Wählen Sie zum Anzeigen den Namen Ihrer Wissensdatenbank aus, etwa „QnA Maker FAQ“.
+## <a name="add-get-request-to-determine-creation-status"></a>Hinzufügen einer GET-Anforderung zum Ermitteln des Erstellungsstatus
+
+Überprüfen Sie den Status des Vorgangs.
+
+```csharp
+async static Task<Response> GetStatus(string operationID)
+{
+    // Builds the HTTP request URI.
+    string uri = host + service + operationID;
+
+    // Writes the HTTP request URI to the console, for display purposes.
+    Console.WriteLine("Calling " + uri + ".");
+
+    // Asynchronously invokes the Get(string) method, using the
+    // HTTP request URI.
+    using (var client = new HttpClient())
+    using (var request = new HttpRequestMessage())
+    {
+        request.Method = HttpMethod.Get;
+        request.RequestUri = new Uri(uri);
+        request.Headers.Add("Ocp-Apim-Subscription-Key", key);
+
+        var response = await client.SendAsync(request);
+        var responseBody = await response.Content.ReadAsStringAsync();
+        return new Response(response.Headers, responseBody);
+    }
+}
+```
+
+Dieser API-Aufruf gibt eine JSON-Antwort zurück, die den Vorgangsstatus enthält: 
+
+```JSON
+{
+  "operationState": "NotStarted",
+  "createdTimestamp": "2018-09-26T05:22:53Z",
+  "lastActionTimestamp": "2018-09-26T05:22:53Z",
+  "userId": "XXX9549466094e1cb4fd063b646e1ad6",
+  "operationId": "177e12ff-5d04-4b73-b594-8575f9787963"
+}
+```
+
+Wiederholen Sie den Aufruf, bis er erfolgreich abgeschlossen wird oder ein Fehler auftritt: 
+
+```JSON
+{
+  "operationState": "Succeeded",
+  "createdTimestamp": "2018-09-26T05:22:53Z",
+  "lastActionTimestamp": "2018-09-26T05:23:08Z",
+  "resourceLocation": "/knowledgebases/XXX7892b-10cf-47e2-a3ae-e40683adb714",
+  "userId": "XXX9549466094e1cb4fd063b646e1ad6",
+  "operationId": "177e12ff-5d04-4b73-b594-8575f9787963"
+}
+```
+
+## <a name="add-createkb-method"></a>Hinzufügen der CreateKB-Methode
+
+Mit der folgenden Methode wird die Wissensdatenbank erstellt, und der Status wird wiederholt überprüft. Da die Erstellung der Wissensdatenbank einige Zeit dauern kann, müssen Sie die Aufrufe zum Überprüfen des Status wiederholen, bis der Status entweder „Erfolgreich“ oder „Fehler“ lautet.
+
+```csharp
+async static void CreateKB()
+{
+    try
+    {
+        // Starts the QnA Maker operation to create the knowledge base.
+        var response = await PostCreateKB(kb);
+
+        // Retrieves the operation ID, so the operation's status can be
+        // checked periodically.
+        var operation = response.headers.GetValues("Location").First();
+
+        // Displays the JSON in the HTTP response returned by the 
+        // PostCreateKB(string) method.
+        Console.WriteLine(PrettyPrint(response.response));
+
+        // Iteratively gets the state of the operation creating the
+        // knowledge base. Once the operation state is set to something other
+        // than "Running" or "NotStarted", the loop ends.
+        var done = false;
+        while (true != done)
+        {
+            // Gets the status of the operation.
+            response = await GetStatus(operation);
+
+            // Displays the JSON in the HTTP response returned by the
+            // GetStatus(string) method.
+            Console.WriteLine(PrettyPrint(response.response));
+
+            // Deserialize the JSON into key-value pairs, to retrieve the
+            // state of the operation.
+            var fields = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.response);
+
+            // Gets and checks the state of the operation.
+            String state = fields["operationState"];
+            if (state.CompareTo("Running") == 0 || state.CompareTo("NotStarted") == 0)
+            {
+                // QnA Maker is still creating the knowledge base. The thread is 
+                // paused for a number of seconds equal to the Retry-After header value,
+                // and then the loop continues.
+                var wait = response.headers.GetValues("Retry-After").First();
+                Console.WriteLine("Waiting " + wait + " seconds...");
+                Thread.Sleep(Int32.Parse(wait) * 1000);
+            }
+            else
+            {
+                // QnA Maker has completed creating the knowledge base. 
+                done = true;
+            }
+        }
+    }
+    catch
+    {
+        // An error occurred while creating the knowledge base. Ensure that
+        // you included your QnA Maker subscription key where directed in the sample.
+        Console.WriteLine("An error occurred while creating the knowledge base.");
+    }
+    finally
+    {
+        Console.WriteLine("Press any key to continue.");
+    }
+
+}
+``` 
+
+## <a name="add-the-createkb-method-to-main"></a>Hinzufügen der CreateKB-Methode zu „Main“
+
+Ändern Sie die Main-Methode, um die CreateKB-Methode aufzurufen:
+
+```csharp
+static void Main(string[] args)
+{
+    // Call the CreateKB() method to create a knowledge base, periodically 
+    // checking the status of the QnA Maker operation until the 
+    // knowledge base is created.
+    CreateKB();
+
+    // The console waits for a key to be pressed before closing.
+    Console.ReadLine();
+}
+```
+
+## <a name="build-and-run-the-program"></a>Erstellen und Ausführen des Programms
+
+Erstellen Sie das Programm, und führen Sie es aus. Die Anforderung wird automatisch an die QnA Maker-API gesendet, um die Wissensdatenbank zu erstellen, und dann werden die Ergebnisse alle 30 Sekunden abgefragt. Jede Antwort wird im Konsolenfenster ausgegeben.
+
+Nach der Erstellung der Wissensdatenbank können Sie sie im QnA Maker-Portal auf der Seite [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Meine Wissensdatenbanken) anzeigen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

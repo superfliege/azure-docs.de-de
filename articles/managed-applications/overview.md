@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 628a936d85eb94a1ee332205047527b0f9795d50
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 67797f3bc5eadc126bad1051e793a8d3bc4590e5
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990513"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800943"
 ---
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
@@ -25,13 +25,13 @@ Eine verwaltete Anwendung ähnelt bis auf einen wichtigen Unterschied einer Mark
 
 ## <a name="advantages-of-managed-applications"></a>Vorteile von verwalteten Anwendungen
 
-Verwaltete Anwendungen bauen Hürden für Verbraucher ab, die Ihre Lösungen verwenden. Verbraucher benötigen keine Cloudinfrastrukturkenntnisse, um Ihre Lösung verwenden zu können. Ihr Zugriff auf kritische Ressourcen ist beschränkt. Der Verbraucher muss nicht befürchten, bei der Verwaltung einen Fehler zu machen. 
+Verwaltete Anwendungen bauen Hürden für Verbraucher ab, die Ihre Lösungen verwenden. Verbraucher benötigen keine Cloudinfrastrukturkenntnisse, um Ihre Lösung verwenden zu können. Verbraucher haben eingeschränkten Zugriff auf die kritischen Ressourcen und müssen sich keine Sorgen machen, beim Verwalten einen Fehler zu begehen. 
 
 Mithilfe von verwalteten Anwendungen können Sie eine anhaltende Beziehung zu Ihren Verbrauchen aufbauen. Sie definieren die Bedingungen für die Verwaltung der Anwendung, und sämtliche Gebühren werden über Azure abgerechnet.
 
 Obwohl Kunden diese verwalteten Anwendungen in ihren Abonnements bereitstellen, müssen sie diese nicht verwalten, aktualisieren oder betreuen. Sie können sicherstellen, dass alle Kunden genehmigte Versionen verwenden. Für die Verwaltung dieser Anwendungen müssen sich Kunden kein anwendungsspezifisches Domänenwissen aneignen. Kunden erhalten automatisch Anwendungsupdates, ohne sich mit der Behandlung und Diagnose von Anwendungsproblemen befassen zu müssen. 
 
-Für IT-Teams können Sie mit verwalteten Anwendungen vorab genehmigte Lösungen für Benutzer in der Organisation anbieten. Sie gewährleisten, dass diese Lösungen mit den Standards der Organisation konform sind.
+Für IT-Teams können Sie mit verwalteten Anwendungen vorab genehmigte Lösungen für Benutzer in der Organisation anbieten. Sie wissen, dass diese Lösungen mit den Standards der Organisation konform sind.
 
 ## <a name="types-of-managed-applications"></a>Arten von verwalteten Anwendungen
 
@@ -41,7 +41,7 @@ Sie können Ihre verwaltete Anwendung entweder extern oder intern veröffentlich
 
 ### <a name="service-catalog"></a>Dienstkatalog
 
-Der Dienstkatalog ist ein interner Katalog mit freigegebenen Lösungen für Benutzer in einer Organisation. Mithilfe des Katalogs können Sie die Einhaltung bestimmter Organisationsstandards gewährleisten und gleichzeitig Lösungen für die Organisationen bereitstellen. Mitarbeiter können über den Katalog komfortabel Anwendungen finden, die die IT-Abteilung empfohlen und freigegeben hat. Sie sehen die verwalteten Anwendungen, die auch von anderen Personen in der Organisation verwendet werden.
+Der Dienstkatalog ist ein interner Katalog mit freigegebenen Lösungen für Benutzer in einer Organisation. Sie verwenden den Katalog, um Organisationsstandards zu erfüllen, während Lösungen für die Organisationen angeboten werden. Mitarbeiter können über den Katalog komfortabel Anwendungen finden, die die IT-Abteilung empfohlen und freigegeben hat. Sie sehen die verwalteten Anwendungen, die auch von anderen Personen in der Organisation verwendet werden.
 
 Informationen zum Veröffentlichen einer verwalteten Dienstkataloganwendung finden Sie unter [Erstellen einer Dienstkataloganwendung](publish-service-catalog-app.md).
 
@@ -55,7 +55,7 @@ Informationen zum Veröffentlichen einer verwalteten Anwendung im Marketplace fi
 
 Die Ressourcen für eine verwaltete Anwendung befinden sich üblicherweise in zwei Ressourcengruppen. Eine wird vom Verbraucher verwaltet, die andere vom Herausgeber. Beim Definieren der verwalteten Anwendung gibt der Herausgeber die Zugriffsebenen an. Das Einschränken des Zugriffs für [Datenvorgänge](../role-based-access-control/role-definitions.md) wird derzeit nicht für alle Datenanbieter in Azure unterstützt.
 
-Die folgende Abbildung zeigt ein Szenario, in dem der Herausgeber die Besitzerrolle für die verwaltete Ressourcengruppe anfordert. Der Herausgeber hat die Ressourcengruppe für den Verbraucher mit einer Schreibschutzsperre belegt. Dies gilt nicht für Herausgeberidentitäten, denen Zugriff auf die verwaltete Ressourcengruppe gewährt wird.
+Die folgende Abbildung zeigt ein Szenario, in dem der Herausgeber die Besitzerrolle für die verwaltete Ressourcengruppe anfordert. Der Herausgeber hat die Ressourcengruppe für den Verbraucher mit einer Schreibschutzsperre belegt. Dies gilt nicht für die Identitäten des Herausgebers, denen Zugriff auf die verwaltete Ressourcengruppe gewährt wird.
 
 ![Ressourcengruppenzugriff](./media/overview/access.png)
 
@@ -71,12 +71,13 @@ Diese Ressourcengruppe enthält alle Ressourcen, die von der verwalteten Anwendu
 
 Wenn der Verbraucher die verwaltete Anwendung löscht, wird auch die verwaltete Ressourcengruppe gelöscht.
 
-## <a name="azure-policy"></a>Azure-Richtlinie
+## <a name="azure-policy"></a>Azure Policy
 
 Sie können eine [Azure-Richtlinie](../azure-policy/azure-policy-introduction.md) auf Ihre verwaltete Anwendung anwenden. Richtlinien werden angewendet, um sicherzustellen, dass die bereitgestellten Instanzen Ihrer verwalteten Anwendung die Daten- und Sicherheitsanforderungen erfüllen. Falls Ihre Anwendung mit sensiblen Daten interagiert, müssen Sie prüfen, wie diese Daten geschützt werden müssen. Interagiert Ihre Anwendung also beispielsweise mit Daten aus Office 365, wenden Sie eine Richtlinie an, um sicherzustellen, dass die Datenverschlüsselung aktiviert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Grundlegende Informationen zum Definieren und Bereitstellen einer verwalteten Anwendung finden Sie unter [Erstellen und Bereitstellen einer verwalteten Azure-Anwendung per Azure CLI](managed-apps-quickstart-cli.md).
-* Informationen zum Veröffentlichen einer internen Anwendung finden Sie unter [Erstellen einer Dienstkataloganwendung](publish-service-catalog-app.md).
-* Informationen zum Veröffentlichen von verwalteten Anwendungen im Marketplace finden Sie unter [Erstellen einer Marketplace-Anwendung](publish-marketplace-app.md).
+In diesem Artikel haben Sie Informationen zu den Vorteilen erhalten, die sich bei der Verwendung von verwalteten Anwendungen ergeben. Fahren Sie mit dem nächsten Artikel fort, um eine Definition für die verwaltete Anwendung zu erstellen.
+
+> [!div class="nextstepaction"]
+> [Schnellstart: Veröffentlichen einer Definition für eine verwaltete Azure-Anwendung](publish-managed-app-definition-quickstart.md)

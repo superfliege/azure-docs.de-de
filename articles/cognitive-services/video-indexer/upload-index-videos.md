@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: e84411535b82b3e4861b529f490bdde0eb25fd42
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f3889d1cddce92cbdd3049d4421bfdffc69da41e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983884"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884305"
 ---
 # <a name="example-upload-and-index-your-videos"></a>Beispiel: Hochladen und Indizieren Ihrer Videos  
 
@@ -36,6 +36,11 @@ Außerdem werden in diesem Artikel einige Parameter beschrieben, die Sie für di
 - Wenn Sie das Video über eine URL hochladen (bevorzugt), muss der Endpunkt mit TLS 1.2 (oder höher) gesichert werden.
 - Die Option für das Bytearray ist auf 2 GB bei einem Zeitlimit von 30 Minuten beschränkt.
 - Die im Parameter `videoURL` angegebene URL muss codiert sein.
+
+> [!Tip]
+> Es wird empfohlen, .NET Framework-Version 4.6.2 oder höher zu verwenden, da für frühere .NET Frameworks nicht standardmäßig TLS 1.2 genutzt wird.
+>
+> Falls Sie frühere .NET Frameworks verwenden müssen, sollten Sie Ihrem Code eine Zeile hinzufügen, bevor Sie den REST-API-Aufruf durchführen:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
 ## <a name="configurations-and-params"></a>Konfigurationen und Parameter
 
@@ -243,8 +248,14 @@ public class AccountContractSlim
     public string AccessToken { get; set; }
 }
 ```
+## <a name="common-errors"></a>Häufige Fehler
 
+Die in der folgenden Tabelle aufgeführten Statuscodes können über den Uploadvorgang zurückgegeben werden.
 
+|Statuscode|ErrorType (im Antworttext)|BESCHREIBUNG|
+|---|---|---|
+|400|VIDEO_ALREADY_IN_PROGRESS|Dasselbe Video wird unter dem angegebenen Konto bereits verarbeitet.|
+|400|VIDEO_ALREADY_FAILED|Dasselbe Video konnte unter dem angegebenen Konto vor weniger als zwei Stunden nicht verarbeitet werden. API-Clients sollten mindestens zwei Stunden warten, bevor ein Video erneut hochgeladen wird.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

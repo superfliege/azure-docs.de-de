@@ -1,22 +1,25 @@
 ---
-title: C#-App zur Erkennung von Anomalien – Microsoft Cognitive Services | Microsoft-Dokumentation
-description: Lernen Sie eine C#-Web-App kennen, die die API zur Anomalieerkennung in Microsoft Cognitive Services verwendet. Senden Sie originale Datenpunkte an die API, und rufen Sie den erwarteten Wert und Anomaliepunkte ab.
+title: 'Tutorial: Anomalieerkennung, C#'
+titlesuffix: Azure Cognitive Services
+description: Lernen Sie eine C#-App kennen, die die Anomalieerkennungs-API verwendet. Senden Sie originale Datenpunkte an die API, und rufen Sie den erwarteten Wert und Anomaliepunkte ab.
 services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 7d4f6a12c94620f447b5d6df4d7715d32eac2d98
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: f99ce765c1d9417fd5ca88b49214eca8a3b0bf49
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41929793"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887648"
 ---
-# <a name="anomaly-detection-c-application"></a>C#-Anwendung zur Anomalieerkennung
+# <a name="tutorial-anomaly-detection-with-c-application"></a>Tutorial: Anomalieerkennung mit einer C#-Anwendung
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 Lernen Sie eine einfache Windows-Anwendung kennen, die die API zur Anomalieerkennung verwendet, um Anomalien aus der Eingabe zu erkennen. Im Beispiel werden die Zeitreihendaten mit Ihrem Abonnementschlüssel an die Anomalieerkennungs-API übermittelt, anschließend werden alle Anomaliepunkte und der erwartete Wert für jeden Datenpunkt bei der API abgerufen.
 

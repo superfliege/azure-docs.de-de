@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: eda4a1dabd20eee73cfbfa4dc0dd2b0eaa56788e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b1ae3fb5de3e28f44ef39731f49a33e2086255a1
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031236"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785340"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Tutorial 2: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instance (ACI)
 
@@ -35,7 +35,7 @@ ACI ist nicht ideal für Produktionsumgebungen, eignet sich aber optimal, um den
 
 ## <a name="get-the-notebook"></a>Abrufen des Notebooks
 
-Dieses Tutorial steht Ihnen auch als Jupyter Notebook zur Verfügung. Verwenden Sie eine dieser Methoden zum Ausführen des `tutorials/02.deploy-models.ipynb` Notebooks:
+Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/02.deploy-models.ipynb) bereitgestellt. Führen Sie das Notebook `02.deploy-models.ipynb` in Azure Notebooks oder auf Ihrem eigenen Jupyter Notebook-Server aus.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -374,7 +374,7 @@ service.delete()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Azure Machine Learning-Tutorial haben Sie Python für folgende Zwecke verwendet:
+In diesem Tutorial für den Azure Machine Learning-Dienst haben Sie Python für folgende Zwecke verwendet:
 
 > [!div class="checklist"]
 > * Einrichten Ihrer Testumgebung
@@ -383,4 +383,4 @@ In diesem Azure Machine Learning-Tutorial haben Sie Python für folgende Zwecke 
 > * Bereitstellen des Modells für ACI
 > * Testen des bereitgestellten Modells
  
-Sie können auch das Tutorial [Automatische Algorithmusauswahl]() ausprobieren, um zu sehen, wie Azure Machine Learning den besten Algorithmus für Ihr Modell automatisch auswählen und optimieren und dieses Modell für Sie erstellen kann.
+Sie können auch das Tutorial [Automatische Algorithmusauswahl]() ausprobieren, um zu sehen, wie der Azure Machine Learning-Dienst den besten Algorithmus für Ihr Modell automatisch auswählen und optimieren und dieses Modell für Sie erstellen kann.

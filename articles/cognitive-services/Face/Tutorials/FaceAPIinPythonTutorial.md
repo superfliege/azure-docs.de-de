@@ -1,27 +1,27 @@
 ---
-title: Tutorial zur Gesichtserkennungs-API in Python | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: Erfahren Sie, wie Sie die Gesichtserkennungs-API mit dem Python SDK zum Erkennen menschlicher Gesichter in einem Bild in Cognitive Services verwenden.
+title: 'Tutorial: Erkennen und Umranden von Gesichtern in einem Bild – Gesichtserkennungs-API, Python'
+titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie die Gesichtserkennungs-API mit dem Python SDK zum Erkennen menschlicher Gesichter in einem Bild verwenden.
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 90d74d8df2ed59e6f3313ef7c620284d1022a667
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 6cc3ac25d2196c0275b445503b79b9ac06a791d3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049110"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127736"
 ---
-# <a name="getting-started-with-face-api-in-python-tutorial"></a>Tutorial für erste Schritte mit der Gesichtserkennungs-API in Python
+# <a name="tutorial-detect-and-frame-faces-with-the-face-api-and-python"></a>Tutorial: Erkennen und Umranden von Gesichtern mit der Gesichtserkennungs-API und Python 
 
 In diesem Tutorial erfahren Sie, wie Sie die Gesichtserkennungs-API über das Python SDK aufrufen, um menschliche Gesichter in einem Bild zu erkennen.
 
-## <a name="prerequisites"></a> Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Verwenden des Tutorials müssen Sie die folgenden Schritte ausführen:
 
@@ -35,7 +35,7 @@ pip install cognitive_face
 
 - Rufen Sie einen [Abonnementschlüssel](https://azure.microsoft.com/try/cognitive-services/) für Microsoft Cognitive Services ab. Sie können entweder Ihren Primärschlüssel oder Sekundärschlüssel in diesem Tutorial verwenden. (Beachten Sie, dass Sie zur Verwendung einer Gesichtserkennungs-API über einen gültigen Abonnementschlüssel verfügen müssen.)
 
-## <a name="sdk-example"></a> Erkennen eines Gesichts in einem Bild
+## <a name="detect-a-face-in-an-image"></a>Erkennen eines Gesichts in einem Bild
 
 ```python
 import cognitive_face as CF
@@ -93,7 +93,7 @@ for face in faces:
 img.show()
 ```
 
-## <a name='further'></a> Weiteres Erkunden
+## <a name="further-exploration"></a>Weiteres Erkunden
 
 Damit Sie die Gesichtserkennungs-API weiter erkunden können, bietet dieses Tutorial ein Beispiel der grafischen Benutzeroberfläche. Um es auszuführen, installieren Sie zuerst [wxPython](https://wxpython.org/pages/downloads/), und führen Sie dann die folgenden Befehle aus.
 
@@ -103,11 +103,11 @@ cd Cognitive-Face-Python
 python sample
 ```
 
-## <a name="summary"></a> Zusammenfassung
+## <a name="summary"></a>Zusammenfassung
 
 In diesem Tutorial haben Sie die grundlegende Vorgehensweise zur Verwendung der Gesichtserkennungs-API über einen Aufruf des Python SDK kennengelernt. Weitere Informationen zu API-Details finden Sie unter den Vorgehensweisen und in der [API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
-## <a name="related"></a> Verwandte Themen
+## <a name="related-topics"></a>Verwandte Themen
 
 - [Erste Schritte mit der Gesichtserkennungs-API in CSharp](FaceAPIinCSharpTutorial.md)
 - [Erste Schritte mit der Gesichtserkennungs-API in Java für Android](FaceAPIinJavaForAndroidTutorial.md)

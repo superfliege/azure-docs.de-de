@@ -1,21 +1,21 @@
 ---
-title: 'Textübersetzung: Ermitteln alternativer Übersetzungen mit Ruby | Microsoft-Dokumentation'
-titleSuffix: Microsoft Cognitive Services
-description: In dieser Schnellstartanleitung ermitteln Sie alternative Übersetzungen und Beispiele für Begriffe im Kontext. Dazu verwenden Sie die Textübersetzungs-API mit Ruby in Cognitive Services.
+title: 'Schnellstart: Ermitteln alternativer Übersetzungen – Textübersetzung mit Ruby'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung ermitteln Sie kontextbezogene alternative Übersetzungen und Beispiele für Begriffe. Dazu verwenden Sie die Textübersetzungs-API mit Ruby.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 6462a48c2f15c8ac4a6b9bce49d23ea3d38dcbd5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7cd34e3482df666de8b974380302ee6b4c592496
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769686"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122806"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-ruby"></a>Schnellstart: Ermitteln alternativer Übersetzungen und der Verwendung mit Ruby
 

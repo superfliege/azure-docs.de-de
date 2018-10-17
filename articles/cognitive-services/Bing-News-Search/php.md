@@ -1,20 +1,21 @@
 ---
-title: PHP-Schnellstart für Azure Cognitive Services, Bing-News-Suche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-News-Suche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Bing-News-Suche-API, PHP'
+titlesuffix: Azure Cognitive Services
+description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Bing-News-Suche-API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: a1e62a63ec926b77bca290767ee453cde83de3df
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8f70352a8f9f07b94b53fae0aac286bc65e3f0dc
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377355"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801743"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-php"></a>Schnellstart für die Bing-News-Suche-API mit PHP
 
@@ -22,11 +23,11 @@ In diesem Artikel erfahren Sie, wie Sie die Bing-News-Suche-API verwenden, die i
 
 Der Beispielcode wurde für PHP 5.6 geschrieben.
 
-Sehen Sie sich die [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) an, in der technische Details zu APIs enthalten sind.
+Die [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) enthält technische Informationen zu den APIs.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs** verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs**. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten. Alternativ können Sie den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
 
 ## <a name="bing-news-search"></a>Bing News-Suche
 
@@ -34,7 +35,7 @@ Die [Bing-News-Suche-API](https://docs.microsoft.com/rest/api/cognitiveservices/
 
 1. Achten Sie darauf, dass die Unterstützung des sicheren Hypertext Transfer-Protokolls (HTTP) in Ihrer `php.ini`-Datei aktiviert ist wie im Codekommentar beschrieben.
 2. Erstellen Sie in Ihrer bevorzugten IDE ein neues PHP-Projekt.
-3. Fügen Sie den untenstehenden Code hinzu.
+3. Fügen Sie den unten stehenden Code hinzu.
 4. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 5. Führen Sie das Programm aus.
 
@@ -100,7 +101,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 
 **Antwort**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -196,8 +197,8 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Paging news (Neuigkeiten zum Paging)](paging-news.md)
-> [Using decoration markers to highlight text (Verwenden von Formatierungsmarkern zum Hervorheben von Text)](hit-highlighting.md)
-> [Suchen nach News im Internet](search-the-web.md)  
+> [Durchblättern von Nachrichten](paging-news.md)
+> [Verwenden von Formatierungsmarkern zum Hervorheben von Text](hit-highlighting.md)
+> [Suchen nach Nachrichten im Internet](search-the-web.md)  
 > [Testen](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
 

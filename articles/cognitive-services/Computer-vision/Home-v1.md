@@ -1,20 +1,21 @@
 ---
-title: Maschinelles Sehen-API für Microsoft Cognitive Services | Microsoft-Dokumentation
-description: Verwenden Sie erweiterte Algorithmen in der Maschinelles Sehen-API als Unterstützung beim Verarbeiten von Bildern und Zurückgeben von Informationen in Microsoft Cognitive Services.
+title: Was ist die Maschinelles Sehen-API?
+titlesuffix: Azure Cognitive Services
+description: Über die Maschinelles Sehen-API haben Entwickler Zugriff auf erweiterte Algorithmen für die Bildverarbeitung und die Rückgabe von Informationen.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: 86e0441c600162e479c678d3cb1dbeaad423ddb5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e2f3a5655b2fbedf3ad80d555421599e26225196
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377219"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982099"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Worum handelt es sich bei der Maschinelles Sehen-API Version 1.0?
 
@@ -36,7 +37,7 @@ ms.locfileid: "35377219"
 * [Kennzeichnen nicht jugendfreier Inhalte](#Adult)
 * [Zuschneiden von Fotos zur Verwendung als Miniaturbilder](#Thumbnails)
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 * Unterstützte Eingabemethoden: Rohe Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL
 * Unterstützte Bildformate: JPEG, PNG, GIF, BMP
 * Bilddateigröße: Kleiner als 4 MB
@@ -48,7 +49,7 @@ Die Maschinelles Sehen-API gibt Tags basierend auf über 2000 erkennbaren Objekt
 Nachdem Sie ein Bild hochgeladen oder eine Bild-URL angegeben haben, geben die Algorithmen der Maschinelles Sehen-API Tags basierend auf den Objekten, Lebewesen und Aktionen aus, die im Bild erkannt werden. Das Tagging ist nicht auf den Hauptinhalt (z.B. eine Person im Vordergrund) beschränkt, sondern umfasst auch die Umgebung (Innen- oder Außenbereich), Möbel, Werkzeuge, Pflanzen, Tiere, Zubehör, Geräte usw.
 
 ### <a name="example"></a>Beispiel
-![House_Yard](./Images/house_yard.jpg) '
+![House_Yard](./Images/house_yard.png) '
 
 ```json
 Returned Json
@@ -95,15 +96,15 @@ Zusätzlich zu Tagging und Beschreibungen gibt die Maschinelles Sehen-API auf de
 ### <a name="the-86-category-concept"></a>Das 86-Kategorien-Konzept
 Basierend auf einer Liste mit 86 Kategorien, die in der folgenden Abbildung dargestellt sind, können visuelle Merkmale, die in einem Bild gefunden werden, in allgemeine bis spezifische Kategorien eingeordnet werden. Die vollständige Taxonomie im Textformat finden Sie unter [Kategorietaxonomie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).
 
-![Analysieren von Kategorien](./Images/analyze_categories.jpg)
+![Analysieren von Kategorien](./Images/analyze_categories.png)
 
-Bild                                                  | Antwort
+Image                                                  | response
 ------------------------------------------------------ | ----------------
-![Woman Roof](./Images/woman_roof.jpg)                 | people
-![Family Photo](./Images/family_photo.jpg)             | people_crowd
-![Cute Dog](./Images/cute_dog.jpg)                     | animal_dog
-![Outdoor Mountain](./Images/mountain_vista.jpg)       | outdoor_mountain
-![Bildanalyse: Food Bread](./Images/bread.jpg)       | food_bread
+![Woman Roof](./Images/woman_roof.png)                 | people
+![Family Photo](./Images/family_photo.png)             | people_crowd
+![Cute Dog](./Images/cute_dog.png)                     | animal_dog
+![Outdoor Mountain](./Images/mountain_vista.png)       | outdoor_mountain
+![Bildanalyse: Food Bread](./Images/bread.png)       | food_bread
 
 ## <a name="identifying-image-types"></a>Identifizieren von Bildtypen
 Bilder können auf verschiedene Arten kategorisiert werden. Die Maschinelles Sehen-API kann ein boolesches Flag setzen, um anzugeben, ob ein Bild in Schwarzweiß oder Farbe vorliegt. Die API kann auch ein Flag setzen, um anzugeben, ob es sich bei einem Bild um eine Strichzeichnung handelt oder nicht. Zudem kann sie angeben, ob es sich bei einem Bild um ClipArt handelt oder nicht, und deren Qualität auf einer Skala von 0 bis 3 benennen.
@@ -118,23 +119,23 @@ Wert | Bedeutung
 2     | Normale ClipArt
 3     | Gute ClipArt
 
-Bild|Antwort
+Image|response
 ----|----
-![Bildanalyse: Cheese Clip Art](./Images/cheese_clipart.jpg)|3 good-clip-art
-![Bildanalyse: House Yard](./Images/house_yard.jpg)|0 Non-clip-art
+![Bildanalyse: Cheese Clip Art](./Images/cheese_clipart.png)|3 good-clip-art
+![Bildanalyse: House Yard](./Images/house_yard.png)|0 Non-clip-art
 
 ### <a name="line-drawing-type"></a>Strichzeichnungstyp
 Erkennt, ob es sich bei einem Bild um eine Strichzeichnung handelt oder nicht.
 
-Bild|Antwort
+Image|response
 ----|----
-![Bildanalyse: Lion Drawing](./Images/lion_drawing.jpg)|True
-![Bildanalyse: Flower](./Images/flower.jpg)|False
+![Bildanalyse: Lion Drawing](./Images/lion_drawing.png)|True
+![Bildanalyse: Flower](./Images/flower.png)|False
 
 ### <a name="faces"></a>Gesichtserkennung
 Erkennt menschliche Gesichter in einem Bild und generiert die Gesichtskoordinaten, das Rechteck für das Gesicht, Geschlecht und Alter. Diese visuellen Merkmale sind eine Teilmenge der für die Gesichtserkennung generierten Metadaten. Zum Generieren umfassenderer Metadaten für die Gesichtserkennung (Gesichtsausdruck, Kopfhaltung usw.) verwenden Sie die Gesichtserkennungs-API.  
 
-Bild|Antwort
+Image|response
 ----|----
 ![Bildanalyse: Woman Roof Face](./Images/woman_roof_face.png) | [ { "age": 23, "gender": "Female", "faceRectangle": { "left": 1379, "top": 320, "width": 310, "height": 310 } } ]
 ![Bildanalyse: Mom Daughter Face](./Images/mom_daughter_face.png) | [ { "age": 28, "gender": "Female", "faceRectangle": { "left": 447, "top": 195, "width": 162, "height": 162 } }, { "age": 10, "gender": "Male", "faceRectangle": { "left": 355, "top": 87, "width": 143, "height": 143 } } ]
@@ -159,7 +160,7 @@ Analyse zur Bereitstellung zusätzlicher Details im Zusammenhang mit Kategorien 
 Algorithmen der Maschinelles Sehen-API analysieren den Inhalt eines Bilds. Diese Analyse bildet die Grundlage für eine „Beschreibung“, die in einer für Menschen lesbaren Sprache in vollständigen Sätzen angezeigt wird. Die Beschreibung ist eine Zusammenfassung dessen, was im Bild gefunden wird. Algorithmen der Maschinelles Sehen-API generieren verschiedene Beschreibungen auf Grundlage der im Bild erkannten Objekte. Die Beschreibungen werden jeweils ausgewertet, und eine Zuverlässigkeitsbewertung wird generiert. Dann wird eine Liste in der Reihenfolge von höchster Zuverlässigkeitsbewertung zu niedrigster zurückgegeben. Ein Beispiel für einen Bot, der diese Technologie zum Generieren von Bildbeschriftungen verwendet, finden Sie [hier](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption).  
 
 ### <a name="example-description-generation"></a>Beispiel für eine Beschreibungsgenerierung
-![Schwarzweiße Gebäude](./Images/bw_buildings.jpg) '
+![Schwarzweiße Gebäude](./Images/bw_buildings.png) '
 ```json
  Returned Json
 
@@ -200,29 +201,29 @@ Algorithmen der Maschinelles Sehen-API analysieren den Inhalt eines Bilds. Diese
 ## <a name="perceiving-color-schemes"></a>Erkennen von Farbschemas
 Der Maschinelles Sehen-Algorithmus extrahiert Farben aus einem Bild. Die Farben werden in drei verschiedenen Kontexten analysiert: Vordergrund, Hintergrund und Gesamtbild. Sie werden in 12 vorherrschende Akzentfarben gruppiert. Diese Akzentfarben sind Schwarz, Blau, Brown, Grau, Grün, Orange, Rosa, Violett, Rot, Aquamarin, Weiß und Gelb. Je nach Farben in einem Bild können einfach Schwarz und Weiß oder Akzentfarben in hexadezimalen Farbcodes zurückgegeben werden.
 
-Bild                                                       | Vordergrund |Hintergrund| Farben
+Image                                                       | Vordergrund |Hintergrund| Farben
 ----------------------------------------------------------- | --------- | ------- | ------
-![Outdoor Mountain](./Images/mountain_vista.jpg)            | Schwarz     | Schwarz   | Weiß
-![Bildanalyse: Flower](./Images/flower.jpg)               | Schwarz     | Weiß   | Weiß, Schwarz, Grün
-![Bildanalyse: Train Station](./Images/train_station.jpg) | Schwarz     | Schwarz   | Schwarz
+![Outdoor Mountain](./Images/mountain_vista.png)            | Schwarz     | Schwarz   | Weiß
+![Bildanalyse: Flower](./Images/flower.png)               | Schwarz     | Weiß   | Weiß, Schwarz, Grün
+![Bildanalyse: Train Station](./Images/train_station.png) | Schwarz     | Schwarz   | Schwarz
 
 ### <a name="accent-color"></a>Akzentfarbe
 Farbe, die aus einem Bild extrahiert wurde und die für die Benutzer am stärksten ins Auge fallende Farbe durch eine Mischung von vorherrschenden Farben und Sättigung darstellen soll.
 
-Bild                                                       | Antwort
+Image                                                       | response
 ----------------------------------------------------------- | ----
-![Outdoor Mountain](./Images/mountain_vista.jpg)            | #BC6F0F
-![Bildanalyse: Flower](./Images/flower.jpg)               | #CAA501
-![Bildanalyse: Train Station](./Images/train_station.jpg) | #484B83
+![Outdoor Mountain](./Images/mountain_vista.png)            | #BC6F0F
+![Bildanalyse: Flower](./Images/flower.png)               | #CAA501
+![Bildanalyse: Train Station](./Images/train_station.png) | #484B83
 
 
 ### <a name="black--white"></a>Schwarzweiß
 Boolesches Flag, das angibt, ob ein Bild schwarzweiß ist oder nicht.
 
-Bild                                                      | Antwort
+Image                                                      | response
 ---------------------------------------------------------- | ----
-![Bildanalyse: Building](./Images/bw_buildings.jpg)      | True
-![Bildanalyse: House Yard](./Images/house_yard.jpg)      | False
+![Bildanalyse: Building](./Images/bw_buildings.png)      | True
+![Bildanalyse: House Yard](./Images/house_yard.png)      | False
 
 ## <a name="flagging-adult-content"></a>Kennzeichnen nicht jugendfreier Inhalte
 Die verschiedenen visuellen Kategorien umfassen auch die Gruppe der nicht jugendfreien und anzüglichen Inhalte, die eine Erkennung solcher jugendgefährdenden Inhalte ermöglicht und die Anzeige von Bildern mit sexuellen Inhalten einschränkt. Der Filter zur Erkennung nicht jugendfreier und anzüglicher Inhalte kann durch einen Schieberegler entsprechend den Anforderungen des Benutzers eingestellt werden.

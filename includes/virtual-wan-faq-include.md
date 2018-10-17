@@ -5,23 +5,27 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/10/2018
+ms.date: 10/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: de744a4a23b246223ed0f42f3d079b1ac2e5521a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 761b68ca99df8ae5b4d379b95e7d2a300f7e6238
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47008820"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874138"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Was ist der Unterschied zwischen einem Gateway für virtuelle Azure-Netzwerke (VPN Gateway) und einem Azure Virtual WAN-Gateway (vpngateway)?
 
-Virtual WAN ermöglicht eine umfassende Site-to-Site-Konnektivität und ist auf Durchsatz, Skalierbarkeit und Benutzerfreundlichkeit ausgelegt. ExpressRoute und Point-to-Site-Konnektivität sind derzeit in der Vorschauphase. CPE-Zweigstellengeräte werden automatisch bereitgestellt und mit Azure Virtual WAN verbunden. Diese Geräte sind über ein ständig wachsendes Ökosystem von SD-WAN- und VPN-Partnern erhältlich. Siehe die [Liste der bevorzugten Partner](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+Virtual WAN ermöglicht eine umfassende Site-to-Site-Konnektivität und ist auf Durchsatz, Skalierbarkeit und Benutzerfreundlichkeit ausgelegt. ExpressRoute und Point-to-Site-Konnektivität sind derzeit in der Vorschauphase. CPE-Branchgeräte werden automatisch bereitgestellt und mit Azure Virtual WAN verbunden. Diese Geräte sind über ein ständig wachsendes Ökosystem von SD-WAN- und VPN-Partnern erhältlich. Siehe die [Liste der bevorzugten Partner](https://go.microsoft.com/fwlink/p/?linkid=2019615).
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>Welche Geräteanbieter (Virtual WAN-Partner) werden beim Start unterstützt? 
 
-Derzeit wird die vollständig automatisierte Virtual WAN-Umgebung von Citrix und Riverbed unterstützt. Weitere Informationen finden Sie auf der Seite mit den Informationen zu [Virtual WAN-Partnern](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+Derzeit wird die vollständig automatisierte Virtual WAN-Umgebung von vielen Partnern unterstützt. Weitere Informationen finden Sie auf der Seite mit den Informationen zu [Virtual WAN-Partnern](https://go.microsoft.com/fwlink/p/?linkid=2019615). 
+
+### <a name="what-are-the-virtual-wan-partner-automation-steps"></a>Was sind die Automatisierungsschritte für Virtual WAN-Partner?
+
+Informationen zu den Automatisierungsschritten für Partner finden Sie unter [Konfigurieren von Virtual WAN-Automatisierung – für Virtual WAN-Partner](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>Muss ich ein Gerät eines bevorzugten Partners nutzen?
 
@@ -29,7 +33,7 @@ Nein. Sie können ein beliebiges VPN-fähiges Gerät nutzen, das die Anforderung
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Wie automatisieren Virtual WAN-Partner die Konnektivität mit Azure Virtual WAN?
 
-Softwaredefinierte Konnektivitätslösungen verwalten ihre Zweigstellengeräte normalerweise mithilfe eines Controllers oder über ein Center für die Gerätebereitstellung. Für den Controller können Azure-APIs verwendet werden, um die Konnektivität mit Azure Virtual WAN zu automatisieren. Weitere Informationen finden Sie unter „Konfigurieren von Virtual WAN-Automatisierung – für Virtual WAN-Partner“.
+Softwaredefinierte Konnektivitätslösungen verwalten ihre Branchgeräte normalerweise mithilfe eines Controllers oder über ein Center für die Gerätebereitstellung. Für den Controller können Azure-APIs verwendet werden, um die Konnektivität mit Azure Virtual WAN zu automatisieren. Weitere Informationen finden Sie unter „Konfigurieren von Virtual WAN-Automatisierung – für Virtual WAN-Partner“.
 
 ### <a name="does-virtual-wan-change-any-existing-connectivity-features"></a>Ändern sich durch Virtual WAN vorhandene Konnektivitätsfeatures?   
 
@@ -41,7 +45,7 @@ Ja. Mit Virtual WAN werden neue Resource Manager-Ressourcen eingeführt. Weitere
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>Wie viele VPN-Geräte können sich mit einem einzelnen Hub verbinden?
 
-Pro virtuellem Hub werden bis zu 100 Verbindungen unterstützt. Jede Verbindung umfasst zwei Tunnel mit einer Aktiv-Aktiv-Konfiguration. Die Tunnel enden in einem virtuellen Azure-Hub (vpngateway).
+Pro virtuellem Hub werden bis zu 1.000 Verbindungen unterstützt. Jede Verbindung umfasst zwei Tunnel mit einer Aktiv-Aktiv-Konfiguration. Die Tunnel enden in einem virtuellen Azure-Hub (vpngateway).
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Kann das lokale VPN-Gerät eine Verbindung mit mehreren Hubs herstellen?
 
@@ -66,7 +70,6 @@ Nein. Das NVA-VNET kann nicht über ein Gateway für virtuelle Netzwerke verfüg
 ### <a name="is-there-support-for-bgp"></a>Ist Unterstützung für BGP vorhanden?
 
 Ja. BGP wird unterstützt. Um sicherzustellen, dass Routen für ein VNET eines virtuellen Netzwerkgeräts richtig angekündigt werden, muss BGP für die Spokes deaktiviert werden, wenn sie mit einem VNET eines virtuellen Netzwerkgeräts verbunden sind (das wiederum mit einem virtuellen Hub verbunden ist). Verbinden Sie zusätzlich die Spoke-VNETs mit dem virtuellen Hub, um sicherzustellen, dass die Spoke-VNET-Routen an lokale Systeme weitergegeben werden.
-Kann ich Datenverkehr per UDR auf dem virtuellen Hub weiterleiten?
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>Kann ich Datenverkehr per UDR auf dem virtuellen Hub weiterleiten?
 
@@ -84,17 +87,17 @@ Senden Sie eine E-Mail an azurevirtualwan@microsoft.com. Ein idealer Partner ver
 
 Eine einfache Konfiguration eines Virtual WAN mit einem Hub und einem VPN-Standort kann mit einer [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network) erstellt werden. Virtual WAN ist in erster Linie ein von REST oder vom Portal gesteuerter Dienst.
 
-### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Ist die Konnektivität zwischen Zweigstellen für Virtual WAN zulässig?
+### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Ist die Konnektivität zwischen Branches für Virtual WAN zulässig?
 
 Ja. Die Konnektivität zwischen Zweigstellen ist in Virtual WAN für VPN und VPN zu ExpressRoute zulässig. Site-to-Site-VPN ist allgemein verfügbar. ExpressRoute und Point-to-Site-Konnektivität sind derzeit in der Vorschauphase.
 
-### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Läuft der Datenverkehr zwischen den Zweigstellen über Azure Virtual WAN?
+### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Läuft der Datenverkehr zwischen den Branches über Azure Virtual WAN?
 
 Ja.
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Inwiefern unterscheidet sich Virtual WAN vom vorhandenen Azure-Gateway für virtuelle Netzwerke?
 
-Das VPN des Gateways für virtuelle Netzwerke ist auf 30 Tunnel begrenzt. Für Verbindungen sollten Sie bei einem größeren VPN-Umfang Virtual WAN verwenden. Sie können im Hub bis zu 100 Zweigstellenverbindungen mit 2 Gbit/s miteinander verbinden. Eine Verbindung ist ein Aktiv-Aktiv-Tunnel vom lokalen VPN-Gerät zum virtuellen Hub. Sie können einen Hub pro Region haben, was bedeutet, dass Sie mehr als 100 Zweigstellen über Hubs verbinden können.
+Das VPN des Gateways für virtuelle Netzwerke ist auf 30 Tunnel begrenzt. Für Verbindungen sollten Sie bei einem größeren VPN-Umfang Virtual WAN verwenden. Sie können im Hub bis zu 1.000 Branchverbindungen mit 2 GBit/s für alle Regionen verbinden, mit Ausnahme von „USA, Westen-Mitte“. Für die Region „USA, Westen-Mitte“ sind 20 GBit/s verfügbar. In Zukunft werden auch für weitere Regionen 20 GBit/s eingeführt. Eine Verbindung ist ein Aktiv-Aktiv-Tunnel vom lokalen VPN-Gerät zum virtuellen Hub. Sie können einen Hub pro Region nutzen, sodass Sie mehr als 1.000 Branches über Hubs verbinden können.
 
 ### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>Ist für diese Virtual WAN-Instanz eine ExpressRoute-Verbindung mit jeder Site erforderlich?
 
@@ -102,15 +105,15 @@ Nein. Für diese Virtual WAN-Instanz ist keine ExpressRoute-Verbindung mit jeder
 
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Gibt es bei Verwendung von Azure Virtual WAN einen Grenzwert für den Netzwerkdurchsatz?
 
-Die Anzahl von Zweigstellen ist auf 100 Verbindungen pro Hub/Region und auf maximal 2 G im Hub begrenzt.
+Die Anzahl von Branches ist auf 1.000 Verbindungen pro Hub/Region und auf maximal 2 G im Hub begrenzt. Eine Ausnahme stellt die Region „USA, Westen-Mitte“ dar, für die insgesamt 20 GBit/s verfügbar sind. Für die Zukunft ist die Einführung von 20 GBit/s auch für andere Regionen geplant.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Lässt Virtual WAN für das lokale Gerät die parallele Nutzung mehrerer ISPs zu, oder wird immer nur ein VPN-Tunnel verwendet?
 
-Ja. Sie können je nach Zweigstellengerät Aktiv-Aktiv-Tunnel (2 Tunnel = 1 Azure Virtual WAN-Verbindung) für eine einzelne Zweigstelle verwenden.
+Ja. Sie können je nach Branchgerät Aktiv-Aktiv-Tunnel (2 Tunnel = 1 Azure Virtual WAN-Verbindung) für eine einzelne Branch verwenden.
 
 ### <a name="how-is-traffic-routed-on-the-azure-backbone"></a>Wie wird Datenverkehr über den Azure-Backbone geleitet?
 
-Für den Datenverkehr wird das folgende Muster verwendet: Zweigstellengerät > ISP > Microsoft Edge > Microsoft-Domänencontroller > Microsoft Edge > ISP > Zweigstellengerät.
+Für den Datenverkehr wird das folgende Muster verwendet: Branchgerät > ISP > Microsoft Edge > Microsoft-Domänencontroller > Microsoft Edge > ISP > Branchgerät.
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>Was wird bei diesem Modell für jede Site benötigt? Nur eine Internetverbindung?
 
