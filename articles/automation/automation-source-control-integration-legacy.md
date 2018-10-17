@@ -110,7 +110,7 @@ Durch Einchecken des Runbooks können Sie die Änderungen, die Sie an einem Runb
 3. Der Name des geänderten Runbooks wird als Eingabeparameter an das eingecheckte Runbook gesendet. Sie können die [Auftragsdetails anzeigen](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal), indem Sie das Runbook auf der Seite **Repositorysynchronisierung** erweitern.  
    
     ![Eingabe zum Einchecken](media/automation-source-control-integration-legacy/automation_09_CheckinInput.png)
-4. Aktualisieren Sie das GitHub-Repository nach Abschluss des Auftrags, um die Änderungen anzuzeigen.  Ihr Repository sollte einen Commit mit der Meldung enthalten, dass eine ***Aktualisierung von*Runbookname** in Azure Automation erfolgt ist.  
+4. Aktualisieren Sie das GitHub-Repository nach Abschluss des Auftrags, um die Änderungen anzuzeigen.  Ihr Repository sollte einen Commit mit der Meldung enthalten, dass eine **Aktualisierung von *Runbookname* in Azure Automation** erfolgt ist.  
 
 ### <a name="sync-runbooks-from-source-control-to-azure-automation"></a>Synchronisieren von Runbooks aus der Quellcodeverwaltung in Azure Automation
 Mit der Synchronisierungsschaltfläche auf der Seite „Repositorysynchronisierung“ können Sie alle Runbooks im Runbook-Ordnerpfad des Repositorys in Ihr Automation-Konto verschieben. Dasselbe Repository kann mit mehreren Automation-Konten synchronisiert werden. Mit den folgenden Schritten können Sie ein Runbook synchronisieren:

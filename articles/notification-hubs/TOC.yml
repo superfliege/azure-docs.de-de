@@ -5,7 +5,7 @@ items:
   items:
   - name: Informationen zu Notification Hubs
     href: notification-hubs-push-notification-overview.md
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: 1. Senden von Pushbenachrichtigungen an alle registrierten Geräte
     items:
@@ -60,7 +60,7 @@ items:
 - name: Beispiele
   items:
   - name: Codebeispiele
-    href: https://azure.microsoft.com/en-us/resources/samples/?service=notification-hubs
+    href: https://azure.microsoft.com/resources/samples/?service=notification-hubs
   - name: PowerShell
     href: samples-powershell.md
 - name: Konzepte
@@ -126,9 +126,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Supportoptionen
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 5db03d0909e6617e2fbdfa7b125d90b37ae73dab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cfd93332b994359f0bbaa71369be9d33b7d22ae6
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779054"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364046"

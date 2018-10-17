@@ -4,9 +4,9 @@ items:
 - name: Schnellstarts
   items:
   - name: 'OpenShift: Community-Vorlage'
-    href: https://azure.microsoft.com/en-us/resources/templates/openshift-origin-rhel/
+    href: https://azure.microsoft.com/resources/templates/openshift-origin-rhel/
   expanded: true
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: Bereitstellen für virtuelle Azure-Computer
     href: /azure/virtual-machines/linux/openshift-get-started
@@ -20,9 +20,9 @@ items:
     href: https://docs.openshift.org/latest/getting_started/index.html
   - name: OpenShift-Website
     href: https://docs.openshift.org/latest/welcome/index.html
-ms.openlocfilehash: f6db2582c1988d1016fbe5179c9350da214c5221
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d0339ac640f7f4f554d99bbff26ca258ed3620c6
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178765"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362012"

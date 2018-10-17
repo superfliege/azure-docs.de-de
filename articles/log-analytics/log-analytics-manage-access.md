@@ -226,7 +226,7 @@ Sie müssen über ein Azure-Abonnement verfügen, um den Tarif mithilfe des OMS-
 
 1. Klicken Sie im OMS-Portal auf die Kachel **Einstellungen**.
 
-2. Klicken Sie auf die Registerkarte **Konten****Azure Subscription & Data Plan** (Azure-Abonnement und -Datentarif).
+2. Klicken Sie auf die Registerkarte **Konten** **Azure Subscription & Data Plan** (Azure-Abonnement und -Datentarif).
 
 3. Klicken Sie auf den Tarif, den Sie verwenden möchten.
 

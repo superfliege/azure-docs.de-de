@@ -38,7 +38,7 @@
 ### [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL-Datenbank
-#### [Verfügbarkeitszonen mit SQL-Datenbank](../sql-database/sql-database-high-availability.md#availability-zones)
+#### [Verfügbarkeitszonen mit SQL-Datenbank](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 
 ### Speicher
 #### [Zonenredundanter Speicher](../storage/common/storage-redundancy-zrs.md)
