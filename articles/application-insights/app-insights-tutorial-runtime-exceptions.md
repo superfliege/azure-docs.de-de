@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 7c2e67605cd2489f2c8d9da5ac80386056464afa
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: f45cb6a47756fae7b75d8c3df80a0bc754742063
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42815112"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299002"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Suchen und Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights
 
@@ -101,6 +101,15 @@ Alle von Application Insights gesammelten Daten werden in Azure Log Analytics ge
     ![Code](media/app-insights-tutorial-runtime-exceptions/codelens.png)
 
 9. Klicken Sie auf **Auswirkungen analysieren**, um Application Insights Analytics zu öffnen.  Die Analyse enthält mehrere Abfragen, die Details über Anforderungsfehler bereitstellen, z.B. betroffene Benutzer, Browser und Regionen.<br><br>![Analyse](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
+
+## <a name="add-work-item"></a>Arbeitselement hinzufügen
+Wenn Sie Application Insights mit einem Nachverfolgungssystem wie Azure DevOps oder GitHub verbinden, können Sie direkt in Application Insights ein Arbeitselement erstellen.
+
+1. Kehren Sie zum Bereich mit den **Ausnahmeeigenschaften** in Application Insights zurück.
+2. Klicken Sie auf **Neues Arbeitselement**.
+3. Der Bereich **New Work Item** wird geöffnet und enthält bereits Details zur Ausnahme.  Sie können vor dem Speichern weitere Informationen hinzufügen.
+
+    ![Neues Arbeitselement](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit dem Identifizieren von Laufzeitausnahmen vertraut gemacht haben, können Sie mit dem nächsten Tutorial fortfahren. Dort erfahren Sie, wie Leistungsprobleme identifiziert und diagnostiziert werden.

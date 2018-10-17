@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 49fa4cf9b24c432b0956f930a1429e1cdf827f1b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7451d6ade7f8b042a68f456e604e2919cacab0a5
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304877"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378430"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Load Balancers im Tarif „Basic“ mit dem Azure-Portal
 
@@ -36,7 +36,7 @@ Melden Sie sich zur Durchführung aller Aufgaben dieser Schnellstartanleitung am
 
 ## <a name="create-a-basic-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Basic“
 
-In diesem Abschnitt erstellen Sie über das Portal einen öffentlichen Load Balancer im Tarif „Basic“. Die öffentliche IP-Adresse wird automatisch als Front-End des Load Balancers konfiguriert, wenn Sie die öffentliche IP-Adresse und die Lastenausgleichsressource im Portal erstellen. Der Name des Front-Ends lautet **LoadBalancerFrontend**.
+In diesem Abschnitt erstellen Sie über das Portal einen öffentlichen Load Balancer im Tarif „Basic“. Die öffentliche IP-Adresse wird automatisch als Front-End des Load Balancers konfiguriert, wenn Sie die öffentliche IP-Adresse und die Lastenausgleichsressource im Portal erstellen. Der Name des Front-Ends lautet **myLoadBalancer**.
 
 1. Wählen Sie oben links im Portal **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
 2. Geben Sie im Bereich **Lastenausgleich erstellen** die folgenden Werte ein:

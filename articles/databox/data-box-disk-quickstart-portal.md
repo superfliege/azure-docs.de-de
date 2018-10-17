@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/28/2018
+ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 596c4b15ea6ef76d4471bca6994377bf4d5ddc01
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: b4ec329fc5b1f3df9e6641bee3e1378c3a4d09c6
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143422"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378345"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Schnellstart: Bereitstellen des Azure Data Box-Datenträgers über das Azure-Portal (Vorschauversion)
 
@@ -68,12 +68,12 @@ Die Data Box-Datenträger werden per UPS Express-Paket verschickt. Öffnen Sie d
 
 Dieser Schritt dauert ungefähr fünf Minuten.
 
-1. Verwenden Sie das beigefügte Kabel, um den Datenträger mit einem Windows-Computer zu verbinden, auf dem eine unterstützte Version ausgeführt wird. Weitere Informationen zu unterstützten Betriebssystemversionen finden Sie unter den [Systemanforderungen für Azure Data Box-Datenträger](data-box-disk-system-requirements.md). 
+1. Verwenden Sie das beigefügte Kabel, um den Datenträger mit einem Windows-/Linux-Computer zu verbinden, auf dem eine unterstützte Version ausgeführt wird. Weitere Informationen zu unterstützten Betriebssystemversionen finden Sie unter den [Systemanforderungen für Azure Data Box-Datenträger](data-box-disk-system-requirements.md). 
 2. Entsperren Sie den Datenträger wie folgt:
 
     1. Wechseln Sie im Azure-Portal zu **Allgemein > Gerätedetails**, und rufen Sie den Hauptschlüssel ab.
-    2. Laden Sie das Tool zum Entsperren von Data Box-Datenträgern herunter, und extrahieren Sie es auf dem Computer, den Sie zum Kopieren der Daten auf die Datenträger verwenden möchten. 
-    3. Führen Sie *DataBoxDiskUnlock.exe* aus, und geben Sie den Hauptschlüssel ein. Führen Sie für alle neu eingelegten Datenträger erneut das Entsperrungstool aus, und geben Sie den Hauptschlüssel an. **Verwenden Sie zum Entsperren des Datenträgers nicht das BitLocker-Dialogfeld oder den BitLocker-Schlüssel.** 
+    2. Laden Sie das Tool zum Entsperren von betriebssystemspezifischen Data Box-Datenträgern herunter, und extrahieren Sie es auf dem Computer, den Sie zum Kopieren der Daten auf die Datenträger verwenden möchten. 
+    3. Führen Sie das Tool zum Entsperren von Data Box-Datenträgern aus, und geben Sie den Hauptschlüssel an. Führen Sie für alle neu eingelegten Datenträger erneut das Entsperrungstool aus, und geben Sie den Hauptschlüssel an. **Verwenden Sie zum Entsperren des Datenträgers nicht das BitLocker-Dialogfeld oder den BitLocker-Schlüssel.** Weitere Informationen zum Entsperren von Datenträgern finden Sie unter [Entsperren von Datenträgern auf einem Windows-Client]() bzw. [Entsperren von Datenträgern auf einem Linux-Client]().
     4. Der Laufwerkbuchstabe, der dem Datenträger zugewiesen ist, wird vom Tool angezeigt. Notieren Sie sich den Laufwerkbuchstaben des Datenträgers. Er wird in den nachfolgenden Schritten verwendet.
 
 ## <a name="copy-data-and-verify"></a>Kopieren der Daten und Durchführen der Überprüfung
@@ -86,9 +86,9 @@ Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, häng
 
     > [!NOTE] 
     > - Für alle Container und Blobs sollten die [Azure-Namenskonventionen](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions) eingehalten werden. Wenn diese Regeln nicht befolgt werden, tritt beim Datenupload in Azure ein Fehler auf.
-    > - Stellen Sie sicher, dass Dateien für Blockblobs eine Größe von ca. 4,7 TiB und für Seitenblobs eine Größe von ca. 8 TiB nicht überschreiten.
+    > - Stellen Sie sicher, dass Dateien für Blockblobs eine Größe von ca. 4,75 TiB und für Seitenblobs eine Größe von ca. 8 TiB nicht überschreiten.
 
-2. (Optional) Nachdem der Kopiervorgang abgeschlossen ist, ist es ratsam, die im Ordner *AzureImportExport* enthaltene Datei `AzureExpressDiskService.cmd` auszuführen, um Prüfsummen für die Validierung zu generieren. Je nach Datengröße kann dieser Schritt relativ lange dauern. 
+2. (Optional) Nachdem der Kopiervorgang abgeschlossen ist, ist es ratsam, die im Ordner *AzureImportExport* enthaltene Datei `DataBoxDiskValidation.cmd` auszuführen, um Prüfsummen für die Validierung zu generieren. Je nach Datengröße kann dieser Schritt relativ lange dauern. 
 3. Trennen Sie die Kabelverbindung des Laufwerks mit dem Computer. 
 
 

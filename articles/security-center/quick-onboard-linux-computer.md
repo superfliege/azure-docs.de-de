@@ -3,7 +3,7 @@ title: 'Schnellstart für Azure Security Center: Einbinden von Linux-Computern i
 description: Dieser Schnellstart zeigt, wie Sie Ihre Linux-Computer in Security Center integrieren.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: 05e4bed0f9b4dfb6d1879408085447ef53db8655
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/02/2018
+ms.author: rkarlin
+ms.openlocfilehash: 1eab54d16dcc0facace9a51a4cf5b5d1243baf4f
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630096"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025392"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Linux-Computern in Azure Security Center
 Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Linux-Ressourcen aktivieren, die außerhalb von Azure ausgeführt werden, z.B. lokale Ressourcen oder Ressourcen in anderen Clouds, indem Sie den Linux-Agent bereitstellen.
@@ -39,13 +39,12 @@ Vor dem Start dieses Schnellstarts müssen Sie zum Tarif „Standard“ von Secu
 
  ![Übersicht über das Security Center][2]
 
-3. Klicken Sie im Hauptmenü von Security Center auf **Integration in erweiterte Sicherheit**.
-4. Klicken Sie auf **Möchten Sie Nicht-Azure-Computer hinzufügen?**.
-   ![Integration in erweiterte Sicherheit][3]
+3. Wählen Sie im Security Center im Hauptmenü die Option **Erste Schritte** aus.
+4. Wählen Sie die Registerkarte **Erste Schritte**. ![Erste Schritte][3]
 
-5. Unter **Neue Nicht-Azure-Computer hinzufügen** wird eine Liste Ihrer Log Analytics-Arbeitsbereiche angezeigt. Die Liste enthält, falls zutreffend, den Standardarbeitsbereich, der von Security Center für Sie erstellt wurde, wenn die automatische Bereitstellung aktiviert wurde. Wählen Sie diesen Arbeitsbereich oder einen anderen Arbeitsbereich aus, den Sie verwenden möchten.
+5. Klicken Sie auf **Konfigurieren** unter **Neue Nicht-Azure-Computer hinzufügen**. Anschließend wird eine Liste Ihrer Log Analytics-Arbeitsbereiche angezeigt. Die Liste enthält, falls zutreffend, den Standardarbeitsbereich, der von Security Center für Sie erstellt wurde, wenn die automatische Bereitstellung aktiviert wurde. Wählen Sie diesen Arbeitsbereich oder einen anderen Arbeitsbereich aus, den Sie verwenden möchten.
 
-    ![Hinzufügen eines Azure-fremden Computers][4]
+    ![Hinzufügen eines Azure-fremden Computers](./media/quick-onboard-linux-computer/non-azure.png)
 
 6.  Klicken Sie auf der Seite **Direkt-Agent** unter **OMS-Agent für Linux herunterladen und integrieren** auf die Schaltfläche **Kopieren**, um den Befehl *wget* zu kopieren.
 
@@ -91,7 +90,7 @@ In diesem Schnellstart haben Sie den Agent auf einem Linux-Computer bereitgestel
 <!--Image references-->
 [1]: ./media/quick-onboard-linux-computer/portal.png
 [2]: ./media/quick-onboard-linux-computer/overview.png
-[3]: ./media/quick-onboard-linux-computer/onboard-windows-computer.png
+[3]: ./media/quick-onboard-linux-computer/get-started.png
 [4]: ./media/quick-onboard-linux-computer/add-computer.png
 [5]: ./media/quick-onboard-linux-computer/pgrep-command.png
 [6]: ./media/quick-onboard-linux-computer/logs-for-agent.png

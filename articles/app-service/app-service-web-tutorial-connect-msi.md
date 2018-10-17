@@ -1,6 +1,6 @@
 ---
-title: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels verwalteter Dienstidentität | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie die Sicherheit der Datenbankverbindung mithilfe einer verwalteten Dienstidentität erhöhen und wie Sie dieses Wissen auf andere Azure-Dienste übertragen.
+title: Schützen der Azure SQL-Datenbankverbindung von App Service mittels einer verwalteten Identität | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die Sicherheit der Datenbankverbindung mithilfe einer verwalteten Identität erhöhen und wie Sie dieses Wissen auf andere Azure-Dienste übertragen.
 services: app-service\web
 documentationcenter: dotnet
 author: cephalin
@@ -14,24 +14,24 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 173588c0200666c52f3ac0a5d2e70d667cfe3294
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3125db03dc13f70524fd094736f50b563ef712a4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445560"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379926"
 ---
-# <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>Tutorial: Schützen der SQL-Datenbank-Verbindung mittels verwalteter Dienstidentität
+# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbankverbindung von App Service mittels einer verwalteten Identität
 
-[App Service](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching in Azure. Außerdem steht eine [verwaltete Dienstidentität](app-service-managed-service-identity.md) für Ihre App zur Verfügung. Hierbei handelt es sich um eine vorgefertigte Lösung zum Schutz des Zugriffs auf [Azure SQL-Datenbank](/azure/sql-database/) und andere Azure-Dienste. Verwaltete Dienstidentitäten in App Service machen Ihre App frei von Geheimnissen (wie etwa Anmeldeinformationen in Verbindungszeichenfolgen) und verbessern so die Sicherheit Ihrer App. In diesem Tutorial fügen Sie der ASP.NET-Beispiel-Web-App, die Sie im Tutorial [Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md) erstellt haben, eine verwaltete Dienstidentität hinzu. Danach stellt Ihre Beispiel-App ganz ohne Benutzername und Kennwort eine sichere Verbindung mit SQL-Datenbank her.
+[App Service](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching in Azure. Außerdem steht eine [verwaltete Identität](app-service-managed-service-identity.md) für Ihre App zur Verfügung. Hierbei handelt es sich um eine vorgefertigte Lösung zum Schutz des Zugriffs auf [Azure SQL-Datenbank](/azure/sql-database/) und andere Azure-Dienste. Verwaltete Identitäten in App Service machen Ihre App frei von Geheimnissen (wie etwa Anmeldeinformationen in Verbindungszeichenfolgen) und verbessern so die Sicherheit Ihrer App. In diesem Tutorial fügen Sie der ASP.NET-Beispiel-Web-App, die Sie im Tutorial [Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md) erstellt haben, eine verwaltete Identität hinzu. Danach stellt Ihre Beispiel-App ganz ohne Benutzername und Kennwort eine sichere Verbindung mit SQL-Datenbank her.
 
 Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Aktivieren der verwalteten Dienstidentität
-> * Gewähren von SQL-Datenbank-Zugriff für die verwaltete Dienstidentität
+> * Aktivieren von verwalteten Identitäten
+> * Gewähren von SQL-Datenbank-Zugriff für die verwaltete Identität
 > * Konfigurieren des Anwendungscodes für die Authentifizierung mit SQL-Datenbank mittels Azure Active Directory-Authentifizierung
-> * Gewähren minimaler Berechtigungen für die Dienstidentität in SQL-Datenbank
+> * Gewähren minimaler Berechtigungen für die verwaltete Identität in SQL-Datenbank
 
 > [!NOTE]
 > Die Azure Active Directory-Authentifizierung _unterscheidet sich_ von der [integrierten Windows-Authentifizierung](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) im lokalen Active Directory (AD DS) AD DS und Azure Active Directory verwenden komplett unterschiedliche Authentifizierungsprotokolle. Weitere Informationen finden Sie unter [Der Unterschied zwischen Windows Server AD DS und Azure AD](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad)
@@ -46,9 +46,9 @@ Dieser Artikel ist eine direkte Fortsetzung des Tutorials [Erstellen einer ASP.N
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="enable-managed-service-identity"></a>Aktivieren der verwalteten Dienstidentität
+## <a name="enable-managed-identities"></a>Aktivieren von verwalteten Identitäten
 
-Verwenden Sie den Befehl [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) in Cloud Shell, um eine Dienstidentität für Ihre Azure-App zu aktivieren. Ersetzen Sie im folgenden Befehl den Platzhalter *\<app name>*.
+Verwenden Sie den Befehl [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) in Cloud Shell, um eine verwaltete Identität für Ihre Azure-App zu aktivieren. Ersetzen Sie im folgenden Befehl den Platzhalter *\<app name>*.
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app name>
@@ -73,13 +73,13 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>Gewähren von Datenbankzugriff für die Identität
 
-Als Nächstes verwenden Sie den Befehl [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) in Cloud Shell, um der Dienstidentität Ihrer App Zugriff auf die Datenbank zu gewähren. Ersetzen Sie im folgenden Befehl die Platzhalter *\<server_name>* und „<principalid_from_last_step>“. Geben Sie für *\<admin_user>* einen Administratornamen ein.
+Als Nächstes verwenden Sie den Befehl [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) in Cloud Shell, um der verwalteten Identität Ihrer App Zugriff auf die Datenbank zu gewähren. Ersetzen Sie im folgenden Befehl die Platzhalter *\<server_name>* und „<principalid_from_last_step>“. Geben Sie für *\<admin_user>* einen Administratornamen ein.
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
 ```
 
-Die verwaltete Dienstidentität hat jetzt Zugriff auf Ihren Azure SQL-Datenbank-Server.
+Die verwaltete Identität hat jetzt Zugriff auf Ihren Azure SQL-Datenbank-Server.
 
 ## <a name="modify-connection-string"></a>Ändern der Verbindungszeichenfolge
 
@@ -119,7 +119,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 }
 ```
 
-Dieser Konstruktor konfiguriert ein benutzerdefiniertes SqlConnection-Objekt für die Verwendung eines Zugriffstokens für Azure SQL-Datenbank aus App Service. Mit dem Zugriffstoken authentifiziert sich Ihre App Service-App mit ihrer verwalteten Dienstidentität bei Azure SQL-Datenbank. Weitere Informationen finden Sie unter [Abrufen von Tokens für Azure-Ressourcen](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources). Die `if`-Anweisung ermöglicht es, die App weiterhin lokal mit LocalDB zu testen.
+Dieser Konstruktor konfiguriert ein benutzerdefiniertes SqlConnection-Objekt für die Verwendung eines Zugriffstokens für Azure SQL-Datenbank aus App Service. Mit dem Zugriffstoken authentifiziert sich Ihre App Service-App mit ihrer verwalteten Identität bei Azure SQL-Datenbank. Weitere Informationen finden Sie unter [Abrufen von Tokens für Azure-Ressourcen](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources). Die `if`-Anweisung ermöglicht es, die App weiterhin lokal mit LocalDB zu testen.
 
 > [!NOTE]
 > `SqlConnection.AccessToken` wird derzeit nur in .NET Framework 4.6 und höher unterstützt, nicht in [.NET Core](https://www.microsoft.com/net/learn/get-started/windows).
@@ -141,7 +141,7 @@ Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Proj
 
 ![Veröffentlichen über den Projektmappen-Explorer](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Klicken Sie auf der Veröffentlichungsseite auf **Veröffentlichen**. Wenn die neue Webseite Ihre Aufgabenliste anzeigt, stellt Ihre App unter Verwendung der verwalteten Dienstidentität eine Verbindung mit der Datenbank her.
+Klicken Sie auf der Veröffentlichungsseite auf **Veröffentlichen**. Wenn die neue Webseite Ihre Aufgabenliste anzeigt, stellt Ihre App unter Verwendung der verwalteten Identität eine Verbindung mit der Datenbank her.
 
 ![Azure-Web-App nach Code First-Migration](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
@@ -151,11 +151,11 @@ Die Aufgabenliste sollte sich nun wie gewohnt bearbeiten lassen.
 
 ## <a name="grant-minimal-privileges-to-identity"></a>Gewähren minimaler Berechtigungen für die Identität
 
-In den obigen Schritten ist Ihnen vielleicht aufgefallen, dass Ihre verwaltete Dienstidentität mit SQL Server als Azure AD-Administrator verbunden ist. Wenn Sie Ihrer verwalteten Dienstidentität minimale Berechtigungen gewähren möchten, müssen Sie sich beim Azure SQL-Datenbank-Server als Azure AD-Administrator anmelden und eine Azure Active Directory-Gruppe hinzufügen, die die Dienstidentität enthält. 
+In den obigen Schritten ist Ihnen vielleicht aufgefallen, dass Ihre verwaltete Identität mit SQL Server als Azure AD-Administrator verbunden ist. Um die minimale Berechtigungen für Ihre verwaltete Identität zu gewähren, müssen Sie sich bei Ihrem Azure SQL-Datenbankserver als Azure AD-Administrator anmelden, und dann eine Azure Active Directory-Gruppe hinzufügen, die die verwaltete Identität enthält. 
 
-### <a name="add-managed-service-identity-to-an-azure-active-directory-group"></a>Hinzufügen der verwalteten Dienstidentität zu einer Azure Active Directory-Gruppe
+### <a name="add-managed-identity-to-an-azure-active-directory-group"></a>Hinzufügen der verwalteten Identität zu einer Azure Active Directory-Gruppe
 
-Fügen Sie die verwaltete Dienstidentität für Ihre App über Cloud Shell einer neuen Azure Active Directory-Gruppe namens _myAzureSQLDBAccessGroup_ hinzu, wie im folgenden Skript gezeigt:
+Fügen Sie die verwaltete Identität für Ihre App über Cloud Shell einer neuen Azure Active Directory-Gruppe namens _myAzureSQLDBAccessGroup_ hinzu, wie im folgenden Skript gezeigt:
 
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
@@ -168,7 +168,7 @@ Wenn Sie die Parameter `--query objectId --output tsv` weglassen, wird die volls
 
 ### <a name="reconfigure-azure-ad-administrator"></a>Ändern der Konfiguration für den Azure AD-Administrator
 
-Bis jetzt haben Sie die verwaltete Dienstidentität als Azure AD-Administrator für Ihre SQL-Datenbank zugewiesen. Da diese Identität nicht für die interaktive Anmeldung (zum Hinzufügen von Datenbankbenutzern) verwendet werden kann, müssen Sie Ihren echten Azure AD-Benutzer verwenden. Gehen Sie zum Hinzufügen Ihres Azure AD-Benutzers wie unter [Bereitstellen eines Azure Active Directory-Administrators für Ihren Azure SQL-Datenbank-Server](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) beschrieben vor. 
+Bis jetzt haben Sie die verwaltete Identität als Azure AD-Administrator für Ihre SQL-Datenbank zugewiesen. Da diese Identität nicht für die interaktive Anmeldung (zum Hinzufügen von Datenbankbenutzern) verwendet werden kann, müssen Sie Ihren echten Azure AD-Benutzer verwenden. Gehen Sie zum Hinzufügen Ihres Azure AD-Benutzers wie unter [Bereitstellen eines Azure Active Directory-Administrators für Ihren Azure SQL-Datenbank-Server](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) beschrieben vor. 
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Gewähren von Berechtigungen für die Azure Active Directory-Gruppe
 
@@ -204,10 +204,10 @@ GO
 Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Aktivieren der verwalteten Dienstidentität
-> * Gewähren von SQL-Datenbank-Zugriff für die verwaltete Dienstidentität
+> * Aktivieren von verwalteten Identitäten
+> * Gewähren von SQL-Datenbank-Zugriff für die verwaltete Identität
 > * Konfigurieren des Anwendungscodes für die Authentifizierung mit SQL-Datenbank mittels Azure Active Directory-Authentifizierung
-> * Gewähren minimaler Berechtigungen für die Dienstidentität in SQL-Datenbank
+> * Gewähren minimaler Berechtigungen für die verwaltete Identität in SQL-Datenbank
 
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer Web-App einen benutzerdefinierten DNS-Namen zuordnen.
 

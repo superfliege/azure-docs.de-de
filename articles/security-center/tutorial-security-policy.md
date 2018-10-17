@@ -3,7 +3,7 @@ title: Azure Security Center-Tutorial – Definieren und Bewerten von Sicherheit
 description: Azure Security Center-Tutorial – Definieren und Bewerten von Sicherheitsrichtlinien
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
-ms.author: terrylan
-ms.openlocfilehash: 15c69bce87ede96eb3a7bc0bada4e4f6a6669abb
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: fcd3c2a95cea0a838fc16149a0a74fad95ea3300
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358607"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027060"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Tutorial: Definieren und Bewerten von Sicherheitsrichtlinien
 Mit Security Center kann sichergestellt werden, dass die Sicherheitsanforderungen von Unternehmen oder Behörden erfüllt werden, indem Sicherheitsrichtlinien zum Definieren der gewünschten Konfiguration Ihrer Workloads verwendet werden. Nachdem Sie die Richtlinien für Ihre Azure-Abonnements definiert und an den Workloadtyp bzw. die Empfindlichkeit Ihrer Daten angepasst haben, kann Security Center Sicherheitsempfehlungen für Ihre Compute-, Anwendungs-, Netzwerk-, Daten- und Speicher- sowie Identitäts- und Zugriffsressourcen bereitstellen. In diesem Lernprogramm lernen Sie Folgendes:
@@ -42,8 +42,7 @@ Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Sta
 
   ![Sicherheitsrichtlinie](./media/tutorial-security-policy/tutorial-security-policy-fig1.png)  
 
-3. Wählen Sie unter **RICHTLINIENKOMPONENTEN** die Option **Sicherheitsrichtlinie**.
-4. Wählen Sie für jede Sicherheitskonfiguration, die Sie überwachen möchten, die Option **Ein**. Security Center bewertet ständig die Konfiguration Ihrer Umgebung und generiert eine Sicherheitsempfehlung, falls ein Sicherheitsrisiko besteht. Wählen Sie **Aus**, falls die Sicherheitskonfiguration nicht empfehlenswert oder relevant ist. In einer Entwicklungs- oder Testumgebung ist beispielsweise nicht der gleiche Grad an Sicherheit wie in einer Produktionsumgebung erforderlich. Klicken Sie nach dem Auswählen der Richtlinien, die für Ihre Umgebung gelten, auf **Speichern**.
+3. Klicken Sie unter **Compute und Apps** auf **Netzwerk** und auf **Daten**, und **aktivieren** Sie jede Sicherheitskonfiguration, die Sie überwachen müssen. Security Center bewertet ständig die Konfiguration Ihrer Umgebung und generiert eine Sicherheitsempfehlung, falls ein Sicherheitsrisiko besteht. Wählen Sie **Aus**, falls die Sicherheitskonfiguration nicht empfehlenswert oder relevant ist. In einer Entwicklungs- oder Testumgebung ist beispielsweise nicht der gleiche Grad an Sicherheit wie in einer Produktionsumgebung erforderlich. Klicken Sie nach dem Auswählen der Richtlinien, die für Ihre Umgebung gelten, auf **Speichern**.
 
   ![Sicherheitskonfiguration](./media/tutorial-security-policy/tutorial-security-policy-fig6.png)  
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: fc17ce0ebd13fb7e89405fcf4d6633551f340a27
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: bdf31c72fbcd8941161e6b9df0a490df7f6a16e0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43050406"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026517"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Bereitstellen von VM-Datenträgerspeicher in Azure Stack
 
@@ -30,9 +30,13 @@ In diesem Artikel wird beschrieben, wie Sie VM-Datenträgerspeicher mit dem Azur
 
 ## <a name="overview"></a>Übersicht
 
-Mit Azure Stack können [nicht verwaltete Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) auf virtuellen Computern sowohl als Betriebssystemdatenträger als auch als Datenträger für Daten verwendet werden.
+Ab Version 1808 können mit Azure Stack nicht verwaltete Datenträger auf virtuellen Computern sowohl als Betriebssystemdatenträger als auch als Datenträger für Daten verwendet werden. Vor Version 1808 werden nur nicht verwaltete Datenträger unterstützt. 
 
-Zum Verwenden von nicht verwalteten Datenträgern erstellen Sie ein [Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account), unter dem die Datenträger gespeichert werden können. Die von Ihnen erstellten Datenträger werden als VM-Datenträger bezeichnet und in Containern im Speicherkonto gespeichert.
+**[Verwaltete Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)** vereinfachen die Datenträgerverwaltung für Azure-IaaS-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. Sie müssen nur die Größe des von Ihnen benötigten Datenträgers angeben. Azure Stack erstellt und verwaltet den Datenträger dann für Sie.
+
+Zum Verwenden von **[nicht verwalteten Datenträgern](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)** müssen Sie ein [Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) erstellen, unter dem die Datenträger gespeichert werden können. Die von Ihnen erstellten Datenträger werden als VM-Datenträger bezeichnet und in Containern im Speicherkonto gespeichert.
+
+ 
 
 ### <a name="best-practice-guidelines"></a>Richtlinien zu bewährten Methoden
 

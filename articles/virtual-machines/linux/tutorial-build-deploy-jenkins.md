@@ -1,5 +1,5 @@
 ---
-title: Tutorial – CI/CD von Jenkins auf virtuellen Azure-Computern mit Team Services | Microsoft-Dokumentation
+title: Tutorial – CI/CD von Jenkins auf virtuellen Azure-Computern mit Azure DevOps Services | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration (CI) und Continuous Deployment (CD) einer Node.js-App mithilfe von Jenkins auf virtuellen Azure-Computern über Release Management in Visual Studio Team Services oder Microsoft Team Foundation Server einrichten.
 author: tomarcher
 manager: jpconnock
@@ -13,38 +13,40 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: d3a4a81f60f4e70c2c7576c3176e2b4d6de08d04
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: cfe67fbed61b4af9b4a4f5b490397ca1a6e1d752
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390594"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299490"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Jenkins und Visual Studio Team Services
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Jenkins und Azure DevOps Services
 
-Continuous Integration (CI) und Continuous Deployment (CD) bilden eine Pipeline, über die Sie Ihren Code erstellen, freigeben und bereitstellen können. Visual Studio Team Services bietet eine vollständige Gruppe von CI/CD-Automatisierungstools mit umfassenden Features für die Bereitstellung in Azure. Jenkins ist ein gängiges serverbasiertes CI/CD-Drittanbietertool, das auch CI/CD-Automatisierung beinhaltet. Sie können Team Services und Jenkins zusammen verwenden und so die Bereitstellung Ihrer Cloud-Apps oder Clouddienste anpassen.
+Continuous Integration (CI) und Continuous Deployment (CD) bilden eine Pipeline, über die Sie Ihren Code erstellen, freigeben und bereitstellen können. Azure DevOps Services umfasst eine vollständige Gruppe von CI/CD-Automatisierungstools mit vollem Funktionsumfang für die Bereitstellung in Azure. Jenkins ist ein gängiges serverbasiertes CI/CD-Drittanbietertool, das auch CI/CD-Automatisierung beinhaltet. Sie können Azure DevOps Services und Jenkins zusammen verwenden und so die Bereitstellung Ihrer Cloud-Apps oder Clouddienste anpassen.
 
-In diesem Tutorial erstellen Sie mithilfe von Jenkins eine Node.js-Web-App. Anschließend verwenden Sie entweder Team Services oder Team Foundation Server, um sie in einer [Bereitstellungsgruppe](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/) mit virtuellen Linux-Computern bereitzustellen. Folgendes wird vermittelt:
+In diesem Tutorial erstellen Sie mithilfe von Jenkins eine Node.js-Web-App. Anschließend stellen Sie diese mit Azure DevOps
+
+für eine [Bereitstellungsgruppe](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/deployment-groups/index?view=vsts) bereit, die virtuelle Linux-Computer (VMs) enthält. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Abrufen der Beispiel-App
 > * Konfigurieren von Jenkins-Plug-Ins
 > * Konfigurieren eines Jenkins Freestyle-Projekts für Node.js
-> * Konfigurieren von Jenkins für die Team Services-Integration
+> * Konfigurieren von Jenkins für die Azure DevOps Services-Integration
 > * Erstellen eines Jenkins-Dienstendpunkts
 > * Erstellen einer Bereitstellungsgruppe für die virtuellen Azure-Computer
-> * Erstellen einer Team Services-Releasedefinition
+> * Erstellen einer Azure Pipelines-Releasepipeline
 > * Ausführen manueller und durch CI ausgelöster Bereitstellungen
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 * Sie benötigen Zugriff auf einen Jenkins-Server. Falls Sie noch keinen Jenkins-Server erstellt haben, lesen Sie unter [Erstellen eines Jenkins-Masters auf einem virtuellen Azure-Computer](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template) weiter. 
 
-* Melden Sie sich bei Ihrem Team Services-Konto (**https://{Ihr Konto}.visualstudio.com**) an. 
-  Sie können ein [kostenloses Team Services-Konto](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308) erstellen.
+* Melden Sie sich bei Ihrer Azure DevOps Services-Organisation an (**https://{yourorganization}.visualstudio.com**). 
+  Sie können eine [kostenlose Azure DevOps-Organisation](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308) erhalten.
 
   > [!NOTE]
-  > Weitere Informationen finden Sie unter [Connect to Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services) (Herstellen einer Verbindung mit Team Services).
+  > Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Azure DevOps Services](https://docs.microsoft.com/azure/devops/organizations/projects/connect-to-projects?view=vsts).
 
 *  Sie benötigen einen virtuellen Linux-Computer für ein Bereitstellungsziel.  Weitere Informationen finden Sie unter [Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
 
@@ -89,22 +91,22 @@ Als Erstes müssen zwei Jenkins-Plug-Ins konfiguriert werden: **NodeJS** und **V
 6. Wählen Sie auf der Registerkarte **Build** die Option **Execute shell** (Shell ausführen) aus, und geben Sie den Befehl `npm install` ein, um sicherzustellen, dass alle Abhängigkeiten aktualisiert werden.
 
 
-## <a name="configure-jenkins-for-team-services-integration"></a>Konfigurieren von Jenkins für die Team Services-Integration
+## <a name="configure-jenkins-for-azure-devops-services-integration"></a>Konfigurieren von Jenkins für die Azure DevOps Services-Integration
 
 > [!NOTE]
-> Stellen sie sicher, dass das für die folgenden Schritte verwendete persönliche Zugriffstoken (Personal Access Token, PAT) die Berechtigung *Release (Lesen, Schreiben, Ausführen und Verwalten)* in Team Services enthält.
+> Stellen sie sicher, dass das für die folgenden Schritte verwendete persönliche Zugriffstoken (Personal Access Token, PAT) die Berechtigung *Release (Lesen, Schreiben, Ausführen und Verwalten)* in Azure DevOps Services enthält.
  
-1.  Erstellen Sie bei Bedarf ein persönliches Zugriffstoken in Ihrem Team Services-Konto. In Jenkins sind diese Informationen für den Zugriff auf Ihr Team Services-Konto erforderlich. Speichern Sie die Tokeninformationen für die folgenden Schritte in diesem Abschnitt.
+1.  Erstellen Sie ein persönliches Zugriffstoken in Ihrer Azure DevOps Services-Organisation, wenn Sie noch keines besitzen. In Jenkins sind diese Informationen für den Zugriff auf Ihre Azure DevOps Services-Organisation erforderlich. Speichern Sie die Tokeninformationen für die folgenden Schritte in diesem Abschnitt.
   
-    Informationen zum Generieren eines Tokens finden Sie unter [Authenticate access with personal access tokens for VSTS and TFS](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate) (Authentifizieren des Zugriffs mit persönlichen Zugriffstoken für VSTS und TFS).
+    Informationen zum Generieren eines Tokens finden Sie unter [Authentifizieren Zugriffs mit persönlichen Zugriffstoken für Azure DevOps Services](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts).
 2. Klicken Sie auf der Registerkarte **Post-build Actions** (Postbuildaktionen) auf **Add post-build action** (Postbuildaktion hinzufügen). Klicken Sie auf **Archive the artifacts** (Artefakte archivieren).
 3. Geben Sie für **Files to archive** (Dateien zur Archivierung) den Wert `**/*` ein, um alle Dateien einzuschließen.
 4. Klicken Sie zum Erstellen einer weiteren Aktion auf **Add post-build action** (Postbuildaktion hinzufügen).
-5. Klicken Sie auf **Trigger release in TFS/Team Services** (Release in TFS/Team Services auslösen). Geben Sie den URI für Ihr Team Services-Konto ein (beispielsweise **https://{Ihr Kontoname}.visualstudio.com**).
-6. Geben Sie unter **Team Project** (Teamprojekt) einen Namen ein.
-7. Wählen Sie einen Namen für die Releasedefinition aus. (Die Releasedefinition wird später in Team Services erstellt.)
-8. Wählen Sie die Anmeldeinformationen für die Verbindung mit Ihrer Team Services- oder Team Foundation Server-Umgebung aus:
-   - Lassen Sie bei Verwendung von Team Services das Feld **Username** (Benutzername) leer. 
+5. Klicken Sie auf **Trigger release in TFS/Team Services** (Release in TFS/Team Services auslösen). Geben Sie den URI für Ihre Azure DevOps Services-Organisation ein wie z.B. **https://{your-organization-name}.visualstudio.com**.
+6. Geben Sie den **Projektnamen** ein.
+7. Wählen Sie einen Namen für die Releasepipeline aus. (Sie können diese Releasepipeline später in Azure DevOps Services erstellen.)
+8. Wählen Sie die Anmeldeinformationen für die Verbindung mit Ihrer Azure DevOps Services- oder Team Foundation Server-Umgebung aus:
+   - Lassen Sie bei Verwendung von Azure DevOps Services das Feld **Benutzername** leer. 
    - Geben Sie bei Verwendung einer lokale Version von Team Foundation Server einen Benutzernamen und ein Kennwort ein.    
    ![Konfigurieren von Jenkins-Postbuildaktionen](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Speichern Sie das Jenkins-Projekt.
@@ -112,9 +114,9 @@ Als Erstes müssen zwei Jenkins-Plug-Ins konfiguriert werden: **NodeJS** und **V
 
 ## <a name="create-a-jenkins-service-endpoint"></a>Erstellen eines Jenkins-Dienstendpunkts
 
-Über einen Dienstendpunkt kann eine Verbindung zwischen Team Services und Jenkins hergestellt werden.
+Über einen Dienstendpunkt kann eine Verbindung zwischen Azure DevOps Services und Jenkins hergestellt werden.
 
-1. Öffnen Sie in Team Services die Seite **Dienste**, öffnen Sie die Liste **Neuer Dienstendpunkt**, und wählen Sie **Jenkins** aus.
+1. Öffnen Sie in Azure DevOps Services die Seite **Dienste**, öffnen Sie die Liste **Neuer Dienstendpunkt**, und wählen Sie **Jenkins** aus.
    ![Hinzufügen eines Jenkins-Endpunkts](media/tutorial-build-deploy-jenkins/add-jenkins-endpoint.png)
 2. Geben Sie einen Namen für die Verbindung ein.
 3. Geben Sie die URL Ihres Jenkins-Servers ein, und klicken Sie auf die Option **Nicht vertrauenswürdige SSL-Zertifikate annehmen**. Beispiel-URL: **http://{Ihre Jenkins-URL}.westcentralus.cloudapp.azure.com**
@@ -124,7 +126,7 @@ Als Erstes müssen zwei Jenkins-Plug-Ins konfiguriert werden: **NodeJS** und **V
 
 ## <a name="create-a-deployment-group-for-azure-virtual-machines"></a>Erstellen einer Bereitstellungsgruppe für virtuelle Azure-Computer
 
-Sie benötigen eine [Bereitstellungsgruppe](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/) für die Registrierung des Team Services-Agents, damit die Releasedefinition auf dem virtuellen Computer bereitgestellt werden kann. Mit Bereitstellungsgruppen können Sie komfortabel logische Gruppen von Zielcomputern für die Bereitstellung definieren und den erforderlichen Agent auf den einzelnen Computern installieren.
+Sie benötigen eine [Bereitstellungsgruppe](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/) für die Registrierung des Azure DevOps Services-Agents, damit die Releasepipeline auf dem virtuellen Computer bereitgestellt werden kann. Mit Bereitstellungsgruppen können Sie komfortabel logische Gruppen von Zielcomputern für die Bereitstellung definieren und den erforderlichen Agent auf den einzelnen Computern installieren.
 
    > [!NOTE]
    > Achten Sie bei der folgenden Prozedur darauf, die erforderlichen Komponenten zu installieren und *das Skript nicht mit sudo-Berechtigungen auszuführen*.
@@ -137,15 +139,15 @@ Sie benötigen eine [Bereitstellungsgruppe](https://www.visualstudio.com/docs/bu
 6. Klicken Sie auf **Skript in die Zwischenablage kopieren**, um das Skript zu kopieren.
 7. Melden Sie sich bei dem virtuellen Zielcomputer der Bereitstellung an, und führen Sie das Skript aus. Führen Sie das Skript nicht mit sudo-Berechtigungen aus.
 8. Nach der Installation werden Sie aufgefordert, Bereitstellungsgruppenmarkierungen anzugeben. Übernehmen Sie die Standardeinstellungen.
-9. Suchen Sie den neu registrierten virtuellen Computer in Team Services unter **Bereitstellungsgruppen** (in **Ziele**).
+9. Suchen Sie den neu registrierten virtuellen Computer in Azure DevOps Services unter **Bereitstellungsgruppen** (in **Ziele**).
 
-## <a name="create-a-team-services-release-definition"></a>Erstellen einer Team Services-Releasedefinition
+## <a name="create-a-azure-pipelines-release-pipeline"></a>Erstellen einer Azure Pipelines-Releasepipeline
 
-Eine Releasedefinition gibt den Prozess an, der in Team Services zum Bereitstellen der App verwendet wird. In diesem Beispiel führen Sie ein Shellskript aus.
+Eine Releasepipeline gibt den Prozess an, der in Azure Pipelines zum Bereitstellen der App verwendet wird. In diesem Beispiel führen Sie ein Shellskript aus.
 
-So erstellen Sie die Freigabedefinition in Team Services
+So erstellen Sie die Releasepipeline in Azure Pipelines:
 
-1. Öffnen Sie die Registerkarte **Releases** des Hubs **Build &amp; Release**, und klicken Sie auf **Releasedefinition erstellen**. 
+1. Öffnen Sie die Registerkarte **Releases** des Hubs **Build &amp; Release**, und klicken Sie auf **Releasepipeline erstellen**. 
 2. Wählen Sie die Vorlage **Leer** aus, indem Sie mit einem **leeren Prozess** starten.
 3. Klicken Sie im Abschnitt **Artefakte** auf **+ Artefakt hinzufügen**, und wählen Sie unter **Quelltyp** die Option **Jenkins** aus. Wählen Sie Ihre Jenkins-Dienstendpunktverbindung aus. Wählen Sie dann den Jenkins-Quellauftrag aus, und klicken Sie auf **Hinzufügen**.
 4. Klicken Sie auf die Auslassungspunkte neben **Umgebung 1**. Klicken Sie auf **Bereitstellungsgruppenphase hinzufügen**.
@@ -155,8 +157,8 @@ So erstellen Sie die Freigabedefinition in Team Services
 8. Geben Sie für **Skriptpfad** Folgendes ein: **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh**.
 9. Klicken Sie auf **Erweitert**, und aktivieren Sie dann **Arbeitsverzeichnis angeben**.
 10. Geben Sie für **Arbeitsverzeichnis** Folgendes ein: **$(System.DefaultWorkingDirectory)/Fabrikam-Node**.
-11. Ändern Sie den Namen der Releasedefinition in den Namen, den Sie auf der Registerkarte **Post-build Actions** (Postbuildaktionen) des Builds in Jenkins angegeben haben. Dieser Name ist in Jenkins erforderlich, damit eine neue Freigabe ausgelöst werden kann, wenn die Quellartefakte aktualisiert werden.
-12. Klicken Sie auf **Speichern** und dann auf **OK**, um die Releasedefinition zu speichern.
+11. Ändern Sie den Namen der Releasepipeline in den Namen, den Sie auf der Registerkarte **Postbuildaktionen** des Builds in Jenkins angegeben haben. Dieser Name ist in Jenkins erforderlich, damit eine neue Freigabe ausgelöst werden kann, wenn die Quellartefakte aktualisiert werden.
+12. Klicken Sie auf **Speichern** und dann auf **OK**, um die Releasepipeline zu speichern.
 
 ## <a name="execute-manual-and-ci-triggered-deployments"></a>Ausführen manueller und durch CI ausgelöster Bereitstellungen
 
@@ -167,7 +169,7 @@ So erstellen Sie die Freigabedefinition in Team Services
 5. Öffnen Sie im Browser die URL für einen der Server, die Sie der Bereitstellungsgruppe hinzugefügt haben. Geben Sie dazu beispielsweise **http://{IP-Adresse des Servers}** ein.
 6. Wechseln Sie zum Git-Quellrepository, und ändern Sie den Inhalt der Überschrift **h1** in der Datei „app/views/index.jade“ durch geänderten Text.
 7. Committen Sie die Änderung.
-8. Nach einigen Minuten wird auf der Seite **Freigaben** von Team Services oder Team Foundation Server ein neu erstelltes Release angezeigt. Öffnen Sie die Freigabe, um anzuzeigen, wie die Bereitstellung durchgeführt wird. Glückwunsch!
+8. Nach einigen Minuten wird auf der Seite **Releases** von Azure DevOps eine neu erstellte Freigabe angezeigt. Öffnen Sie die Freigabe, um anzuzeigen, wie die Bereitstellung durchgeführt wird. Glückwunsch!
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Problembehandlung beim Jenkins-Plug-In
 
@@ -175,13 +177,13 @@ Wenn bei den Jenkins-Plug-Ins Fehler auftreten, melden Sie das Problem auf der [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die Bereitstellung einer App in Azure mit Jenkins (für den Build) und Team Services (für das Release) automatisiert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie die Bereitstellung einer App in Azure mit Jenkins (für den Build) und Azure DevOps (für das Release) automatisiert. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen der App in Jenkins
-> * Konfigurieren von Jenkins für die Team Services-Integration
+> * Konfigurieren von Jenkins für die Azure DevOps Services-Integration
 > * Erstellen einer Bereitstellungsgruppe für die virtuellen Azure-Computer
-> * Erstellen einer Releasedefinition zum Konfigurieren der virtuellen Computer und zum Bereitstellen der App
+> * Erstellen einer Releasepipeline zum Konfigurieren der virtuellen Computer und zum Bereitstellen der App
 
 Im nächsten Tutorial erfahren Sie, wie Sie einen LAMP-Stapel (Linux, Apache, MySQL und PHP) bereitstellen.
 

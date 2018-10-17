@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f7856edef3bb93300fce0ff00d9434400e239f8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917043"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391367"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für VMware-VMs und physische Server, die nach Azure repliziert werden.
 
@@ -67,7 +67,7 @@ Failover und Failback weisen vier Phasen auf:
 1. Klicken Sie unter **Einstellungen** > **Replizierte Elemente** auf VM > **Failover**.
 
 2. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-   - **Neueste** (Standard): Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+   - **Neueste** : Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
    - **Letzte Verarbeitung:** Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
    - **Letzte App-Konsistenz:** Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten App-konsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde.
    - **Benutzerdefiniert**: Geben Sie einen Wiederherstellungspunkt an.
@@ -82,11 +82,14 @@ In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, 
 
 ## <a name="connect-to-failed-over-virtual-machine-in-azure"></a>Verbindung zu der VM in Azure, für die ein Failover ausgeführt wurde
 
-1. Wechseln Sie nach dem Failover zur VM, und überprüfen Sie sie, indem Sie eine [Verbindung](../virtual-machines/windows/connect-logon.md) herstellen.
-2. Klicken Sie nach der Überprüfung auf **Commit**, um den Wiederherstellungspunkt des virtuellen Computers nach dem Failover abzuschließen. Nach dem Commit werden alle anderen verfügbaren Wiederherstellungspunkte gelöscht. So wird das Failover abgeschlossen.
+1. Wenn Sie nach dem Failover per RDP/SSH eine Verbindung mit Azure-VMs herstellen möchten, müssen Sie die in dieser [Tabelle](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) zusammengefassten Anforderungen erfüllen.
+2. Wechseln Sie nach dem Failover zur VM, und überprüfen Sie sie, indem Sie eine [Verbindung](../virtual-machines/windows/connect-logon.md) herstellen.
+3. Klicken Sie nach der Überprüfung auf **Commit**, um den Wiederherstellungspunkt des virtuellen Computers nach dem Failover abzuschließen. Nach dem Commit werden alle anderen verfügbaren Wiederherstellungspunkte gelöscht. So wird das Failover abgeschlossen.
 
 >[!TIP]
 > **Wiederherstellungspunkt ändern** hilft Ihnen bei der Auswahl eines anderen Wiederherstellungspunkts nach dem Failover, wenn Sie mit der VM, für die ein Failover ausgeführt wurde, nicht zufrieden sind. Nach dem **Commit** ist diese Option nicht mehr verfügbar.
+
+Führen Sie die [hier](site-recovery-failover-to-azure-troubleshoot.md) beschriebenen Schritte aus, um nach dem Failover ggf. Konnektivitätsprobleme zu beheben.
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>Vorbereitung auf erneuten Schutz der Azure-VM
 
@@ -95,7 +98,7 @@ In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, 
 Der Prozessserver empfängt Daten von der Azure-VM und sendet Daten an den lokalen Standort. Zwischen dem Prozessserver und dem geschützten virtuellen Computer ist ein Netzwerk mit geringer Wartezeit erforderlich.
 
 - Wenn Sie über eine Azure ExpressRoute-Verbindung verfügen, können Sie zu Testzwecken den lokalen Prozessserver verwenden (integrierter Prozessserver), der automatisch auf dem Konfigurationsserver installiert wird.
-- Wenn Sie über eine VPN-Verbindung verfügen, oder Sie das Failback in einer Produktionsumgebung ausführen, müssen Sie eine Azure-VM als Azure-basierten Prozessserver für Failback einrichten.
+- Wenn Sie über eine VPN-Verbindung verfügen oder Sie das Failback in einer Produktionsumgebung ausführen, müssen Sie eine Azure-VM als Azure-basierten Prozessserver für Failback einrichten.
 - Um einen Prozessserver in Azure einzurichten, befolgen Sie die Anweisungen in [diesem Artikel](vmware-azure-set-up-process-server-azure.md).
 
 ### <a name="configure-the-master-target-server"></a>Konfigurieren des Masterzielservers
@@ -110,7 +113,7 @@ Wenn der virtuelle Computer sich auf einem **ESXi-Host befindet, der von einem v
 Wenn der virtuelle Computer sich auf einem **ESXi-Host befindet, der nicht von einem vCenter-Server verwaltet wird**, erstellt der Site Recovery-Dienst während des erneuten Schutzes einen neuen virtuellen Computer. Dieser virtuelle Computer wird auf dem ESX-Host erstellt, auf dem Sie das Masterziel erstellen.
 Die Festplatte des virtuellen Computers muss sich in einen Datenspeicher befinden, der für den Host zugänglich ist, auf dem der Masterzielserver ausgeführt wird.
 
-Wenn der virtuelle Computer **vCenter nicht verwendet**, sollten Sie die Ermittlung des Hosts abschließen, auf dem der Masterzielserver ausgeführt wird, bevor Sie den Computer erneut schützen können. Dasselbe gilt auch bei einem Failback für physische Server. Als weitere Option können Sie den lokalen virtuellen Computer (sofern er noch vorhanden ist) vor dem Ausführen des Failbacks löschen. Beim Failback wird dann ein neuer virtueller Computer auf dem gleichen Host erstellt, der als Masterziel-ESX-Host fungiert. Wenn Sie das Failback zu einem anderen Speicherort durchführen, werden die Daten in dem gleichen Datenspeicher und in dem gleichen ESX-Host wiederhergestellt, der vom lokalen Masterzielserver verwendet wird.
+Wenn der virtuelle Computer **vCenter nicht verwendet**, müssen Sie die Ermittlung des Hosts durchführen, auf dem der Masterzielserver ausgeführt wird, um den Computer erneut schützen zu können. Dasselbe gilt auch bei einem Failback für physische Server. Als weitere Option können Sie den lokalen virtuellen Computer (sofern er noch vorhanden ist) vor dem Ausführen des Failbacks löschen. Beim Failback wird dann ein neuer virtueller Computer auf dem gleichen Host erstellt, der als Masterziel-ESX-Host fungiert. Wenn Sie das Failback zu einem anderen Speicherort durchführen, werden die Daten in dem gleichen Datenspeicher und in dem gleichen ESX-Host wiederhergestellt, der vom lokalen Masterzielserver verwendet wird.
 
 Es ist nicht möglich, Storage vMotion auf dem Masterzielserver zu verwenden. Wenn Sie dies tun, ist kein Failback möglich, da die Datenträger nicht verfügbar sind. Schließen Sie die Masterzielserver aus der vMotion-Liste aus.
 
@@ -119,7 +122,7 @@ Es ist nicht möglich, Storage vMotion auf dem Masterzielserver zu verwenden. We
 
 ## <a name="reprotect-azure-vms"></a>Erneutes Schützen der virtuellen Azure-Computer
 
-Das erneute Schützen einer Azure-VM führt dazu, dass Daten auf einer lokalen VM repliziert werden. Dieser Schritt ist obligatorisch, bevor Sie ein Failover von Azure auf die lokale VM durchführen können. Befolgen Sie die Anweisungen unten, um den erneuten Schutz auszuführen.
+Das erneute Schützen einer Azure-VM führt dazu, dass Daten auf einer lokalen VM repliziert werden. Dieser Schritt ist obligatorisch, um ein Failover von Azure auf die lokale VM durchführen zu können. Befolgen Sie die Anweisungen unten, um den erneuten Schutz auszuführen.
 
 1. Klicken Sie in **Einstellungen** > **Replizierte Elemente** mit der rechten Maustaste auf den virtuellen Computer, für den ein Failover ausgeführt wurde und dann auf **Erneut schützen**.
 2. Überprüfen Sie in **Erneut schützen**, ob **Azure auf lokal** ausgewählt ist.

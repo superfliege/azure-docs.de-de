@@ -8,22 +8,22 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: b364dfb033c3af640892bb305d7df3c916dd3fef
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a6ad40f90e12bbf4dd85c3cbd22839d39a734ca1
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095766"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391164"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Bereitstellen in Azure App Service mit dem Jenkins-Plug-In 
 
 Zum Bereitstellen einer Java-Web-App für Azure können Sie die Azure-Befehlszeilenschnittstelle in der [Jenkins-Pipeline](/azure/jenkins/execute-cli-jenkins-pipeline) oder das [Jenkins-Plug-In für Azure App Service](https://plugins.jenkins.io/azure-app-service) verwenden. Version 1.0 des Jenkins-Plug-Ins unterstützt die kontinuierliche Bereitstellung mithilfe der Web-Apps-Funktion von Azure App Service über:
-* Git oder FTP
+* Dateiupload.
 * Docker für Web-Apps unter Linux
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Konfigurieren von Jenkins zum Bereitstellen von Web-Apps über Git oder FTP
+> * Konfigurieren von Jenkins zum Bereitstellen von Web-Apps über den Dateiupload.
 > * Konfigurieren von Jenkins zum Bereitstellen von Web-App für Container
 
 ## <a name="create-and-configure-a-jenkins-instance"></a>Erstellen und Konfigurieren einer Jenkins-Instanz
@@ -37,7 +37,7 @@ Wenn Sie noch nicht über einen Jenkins-Master verfügen, sollten Sie mit der [P
 
 Mithilfe des Jenkins-Plug-Ins können Sie eine Web-App in einer beliebigen Sprache bereitstellen, die von Web-Apps unterstützt wird, wie beispielsweise C#, PHP, Java und Node.js. In diesem Tutorial wird eine [einfache Java-Web-App für Azure](https://github.com/azure-devops/javawebappsample) verwendet. Wählen Sie die Schaltfläche **Fork** (Verzweigen) in der rechten oberen Ecke der GitHub-Benutzeroberfläche aus, um das Repository in Ihr GitHub-Konto zu verzweigen.  
 > [!NOTE]
-> Das Java JDK und Maven sind zum Erstellen des Java-Projekts erforderlich. Installieren Sie diese Komponenten auf dem Jenkins-Master oder dem VM-Agent, wenn Sie diesen für Continuous Integration nutzen. 
+> Das Java JDK und Maven sind zum Erstellen des Java-Projekts erforderlich. Installieren Sie diese Komponenten auf dem Jenkins-Master oder dem VM-Agent, wenn Sie diesen für Continuous Integration nutzen. Wenn Sie eine Java SE-Anwendung bereitstellen, wird ZIP auch auf dem Buildserver benötigt.
 
 Melden Sie sich zum Installieren der Komponenten mithilfe von SSH bei der Jenkins-Instanz an, und führen Sie die folgenden Befehle aus:
 
@@ -60,7 +60,11 @@ Ein Azure-Dienstprinzipal ist für die Bereitstellung in Azure erforderlich.
 
 ## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>Konfigurieren von Jenkins zum Bereitstellen von Web-Apps durch das Hochladen von Dateien
 
-Zum Bereitstellen Ihres Projekts für Web-Apps können Sie Ihre Buildartefakte (z.B. eine WAR-Datei in Java) per Git oder FTP hochladen.
+Um Ihr Projekt in Web Apps bereitzustellen, können Sie Ihre Buildartefakte per Dateiupload hochladen. Azure App Service unterstützt mehrere Bereitstellungsoptionen. Durch das Jenkins-Plug-In von Azure App Service können sie die Bereitstellungsoption einfach basierend auf dem Dateityp ableiten. 
+
+* Für Java EE-Anwendungen wird die [WAR-Bereitstellung](/azure/app-service/app-service-deploy-zip#deploy-war-file) verwendet.
+* Für Java SE-Anwendungen wird die [ZIP-Bereitstellung](/azure/app-service/app-service-deploy-zip#deploy-zip-file) verwendet.
+* Für andere Sprachen wir die [Git-Bereitstellung](/azure/app-service/app-service-deploy-local-git) verwendet.
 
 Vor dem Einrichten des Auftrags in Jenkins benötigen Sie einen Azure App Service-Plan und eine Web-App zum Ausführen der Java-App.
 
@@ -127,7 +131,7 @@ Das Jenkins-Plug-In für Azure App Service ist für die Pipeline vorbereitet. Da
 
 Web-Apps unter Linux unterstützen die Bereitstellung mithilfe von Docker. Für die Bereitstellung Ihrer Web-App mit Docker müssen Sie eine Dockerfile-Datei angeben, mit der Ihre Web-App mit einer Dienstruntime als Docker-Image verpackt wird. Das Jenkins-Plug-In erstellt dann das Image, übermittelt es mittels Push an eine Docker-Registrierung und stellt das Image für Ihre Web-App bereit.
 
-Für Web-Apps unter Linux werden auch herkömmliche Bereitstellungsmethoden wie Git und FTP unterstützt. Dies gilt jedoch nur für integrierte Sprachen (.NET Core, Node.js, PHP und Ruby). Für andere Sprachen müssen Sie Ihren Anwendungscode und die Dienstruntime gemeinsam in ein Docker-Image packen und Docker zum Bereitstellen verwenden.
+Für Web-Apps unter Linux werden auch herkömmliche Bereitstellungsmethoden wie Git und Dateiupload unterstützt. Dies gilt jedoch nur für integrierte Sprachen (.NET Core, Node.js, PHP und Ruby). Für andere Sprachen müssen Sie Ihren Anwendungscode und die Dienstruntime gemeinsam in ein Docker-Image packen und Docker zum Bereitstellen verwenden.
 
 Vor dem Einrichten des Auftrags in Jenkins benötigen Sie eine Web-App unter Linux. Außerdem ist eine Containerregistrierung zum Speichern und Verwalten Ihrer privaten Docker-Containerimages erforderlich. Sie können DockerHub zum Erstellen der Containerregistrierung verwenden. In diesem Beispiel wird Azure Container Registry verwendet.
 
@@ -232,5 +236,5 @@ In diesem Tutorial haben Sie das Jenkins-Plug-In für Azure App Service für die
 Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
-> * Konfigurieren von Jenkins zum Bereitstellen in Azure App Service per FTP 
+> * Konfigurieren von Jenkins zum Bereitstellen in Azure App Service per Dateiupload 
 > * Konfigurieren von Jenkins zum Bereitstellen in Web-App für Container 

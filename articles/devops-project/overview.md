@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
-ms.openlocfilehash: eef71aabaab71f908f950a4467da918dca1787fa
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 39dffad597b8382dea4df6fa1b0726d9582d67d1
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492543"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44293625"
 ---
 # <a name="overview-of-azure-devops-project"></a>Übersicht über das Azure DevOps-Projekt
 
@@ -35,8 +35,8 @@ Das Azure DevOps-Projekt nimmt Ihnen die gesamte Erstkonfiguration einer DeOps-P
 Das Azure DevOps-Projekt ermöglicht Folgendes:
 
 * Schnelles Bereitstellen Ihrer Anwendung in Azure
-* Automatisieren der Einrichtung einer VSTS-CI/CD-Pipeline
-* Verwenden des DevOps-Projekts als Vorlage, anhand der Sie die ordnungsgemäße Einrichtung von CD/CI für Azure mit VSTS betrachten und nachvollziehen können
+* Automatisieren der Einrichtung einer CI/CD-Pipeline
+* Verwenden des DevOps-Projekts als Vorlage, anhand der Sie die ordnungsgemäße Einrichtung von CI/CD für Azure mit Azure DevOps betrachten und nachvollziehen können
 * Ausführen erster Schritte mit der CI/CD-Pipeline für Azure und weiteres Anpassen der Releasepipeline auf der Grundlage Ihrer spezifischen Szenarien
 
 ## <a name="how-do-i-use-the-azure-devops-project"></a>Verwenden des Azure DevOps-Projekts
@@ -49,16 +49,16 @@ Bei der Ersteinrichtung müssen mehrere Konfigurationsoptionen ausgewählt werde
 * Auswählen einer App-Sprache
 * Auswählen eines App-Frameworks auf der Grundlage der Sprache
 * Auswählen eines Azure-Diensts (Bereitstellungsziel)
-* VSTS-Konto (neu oder bereits vorhanden)
-* Auswählen Ihres Azure-Abonnements
+* Azure DevOps-Organisation (neu oder bereits vorhanden)
+* Wählen Sie Ihr Azure-Abonnement aus.
 * Auswählen des Standorts von Azure-Diensten
 * Auswählen eines Tarifs für Azure-Dienste
 
 Nach Verwendung des Azure DevOps-Projekts können die Ressourcen auch alle von einem zentralen Ort aus über das Azure DevOps-Projektdashboard im Azure-Portal gelöscht werden.
 
-## <a name="azure-devops-project-and-vsts-integration"></a>Azure DevOps-Projekt und VSTS-Integration
+## <a name="azure-devops-project-and-azure-devops-integration"></a>Azure DevOps-Projekt und Azure DevOps-Integration
 
-DevOps-Projekte basieren auf VSTS.  Das DevOps-Projekt automatisiert sämtliche Arbeiten, die in VSTS zum Einrichten von CD/CI für Azure erforderlich sind.  Ein Git-Repository wird unter einem neuen oder vorhandenen VSTS-Konto erstellt.  Das DevOps-Projekt committet eine Beispielanwendung oder Ihren vorhandenen Code in einem neuen Git-Repository.  Die Automatisierung richtet auch einen CI-Trigger für den Build ein, sodass nach jedem neuen Codecommit ein Buildvorgang initiiert wird.  Darüber hinaus erstellt das DevOps-Projekt einen CD-Trigger und stellt jeden neuen erfolgreichen Build für den Azure-Dienst Ihrer Wahl bereit.  Build- und Releasedefinition können für zusätzliche Szenarien angepasst werden.  Darüber hinaus können Sie die Build- und die Releasedefinition für die Verwendung in anderen Projekten klonen.
+DevOps-Projekte basieren auf Azure DevOps.  Das DevOps-Projekt automatisiert sämtliche Arbeiten, die in Azure DevOps zum Einrichten von CI/CD für Azure erforderlich sind.  Ein Git-Repository wird unter einer neuen oder vorhandenen Azure DevOps-Organisation erstellt.  Das DevOps-Projekt committet eine Beispielanwendung oder Ihren vorhandenen Code in einem neuen Git-Repository.  Die Automatisierung richtet auch einen CI-Trigger für den Build ein, sodass nach jedem neuen Codecommit ein Buildvorgang initiiert wird.  Darüber hinaus erstellt das DevOps-Projekt einen CD-Trigger und stellt jeden neuen erfolgreichen Build für den Azure-Dienst Ihrer Wahl bereit.  Build- und Releasepipelines können für zusätzliche Szenarien angepasst werden.  Darüber hinaus können Sie die Build- und die Releasepipelines für die Verwendung in anderen Projekten klonen.
 
 Nach der Erstellung des DevOps-Projekts haben Sie folgende Möglichkeiten:
 

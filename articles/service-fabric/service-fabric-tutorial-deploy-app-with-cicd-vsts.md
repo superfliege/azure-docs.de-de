@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen einer Service Fabric-App mit Continuous Integration (Team Services) in Azure | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und Continuous Deployment mithilfe von Visual Studio Team Services für eine Service Fabric-Anwendung einrichten.
+title: Bereitstellen einer Service Fabric-App mit Continuous Integration (Azure DevOps Services) in Azure | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und Continuous Deployment mithilfe von Azure DevOps Services für eine Service Fabric-Anwendung einrichten.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2122b6d9c385e1137d0fc6df5229975359fa20d5
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 7f14151224a9e2baa74183696c92bca06695bf4f
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41919391"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380147"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
 
-Dieses Tutorial ist der vierte Teil einer Reihe und beschreibt die Einrichtung von Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Visual Studio Team Services.  Es ist eine vorhandene Service Fabric-Anwendung erforderlich. Die im Artikel [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md) erstellte Anwendung wird als Beispiel verwendet.
+Dieses Tutorial ist der vierte Teil einer Reihe und beschreibt die Einrichtung von Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Azure DevOps.  Es ist eine vorhandene Service Fabric-Anwendung erforderlich. Die im Artikel [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md) erstellte Anwendung wird als Beispiel verwendet.
 
 Im dritten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Hinzufügen der Quellcodeverwaltung zum Projekt
-> * Erstellen einer Builddefinition in Team Services
-> * Erstellen einer Releasedefinition in Team Services
+> * Erstellen einer Buildpipeline in Azure DevOps
+> * Erstellen einer Releasepipeline in Azure DevOps
 > * Automatisches Bereitstellen und Durchführen von Upgrades einer Anwendung
 
 In dieser Tutorialserie lernen Sie Folgendes:
@@ -39,7 +39,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * [Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)
 > * [Bereitstellen der Anwendung in einem Remotecluster](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
-> * Konfigurieren von CI/CD mit Visual Studio Team Services
+> * Konfigurieren von CI/CD mit Azure Pipelines
 > * [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -50,7 +50,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 * [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 * [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
 * Erstellen Sie einen Windows Service Fabric-Cluster in Azure, z.B. durch das [Ausführen der Schritte in diesem Tutorial](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-* Erstellen Sie ein [Team Services-Konto](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
+* Erstellen Sie eine [Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student).
 
 ## <a name="download-the-voting-sample-application"></a>Laden Sie die Beispielanwendung „Voting“ herunter.
 
@@ -62,43 +62,43 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>Erstellen eines Veröffentlichungsprofils
 
-Nachdem Sie [eine Anwendung erstellt](service-fabric-tutorial-create-dotnet-app.md) und [die Anwendung in Azure bereitgestellt](service-fabric-tutorial-deploy-app-to-party-cluster.md) haben, können Sie Continuous Integration einrichten.  Erstellen Sie zunächst in der Anwendung ein Veröffentlichungsprofil für den Bereitstellungsprozess, der in Team Services ausgeführt wird.  Das Veröffentlichungsprofil muss für den Cluster konfiguriert werden, den Sie zuvor erstellt haben.  Starten Sie Visual Studio, und öffnen Sie ein vorhandenes Service Fabric-Anwendungsprojekt.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Anwendung, und wählen Sie **Veröffentlichen** aus.
+Nachdem Sie [eine Anwendung erstellt](service-fabric-tutorial-create-dotnet-app.md) und [die Anwendung in Azure bereitgestellt](service-fabric-tutorial-deploy-app-to-party-cluster.md) haben, können Sie Continuous Integration einrichten.  Erstellen Sie zunächst in der Anwendung ein Veröffentlichungsprofil für den Bereitstellungsprozess, der in Azure DevOps ausgeführt wird.  Das Veröffentlichungsprofil muss für den Cluster konfiguriert werden, den Sie zuvor erstellt haben.  Starten Sie Visual Studio, und öffnen Sie ein vorhandenes Service Fabric-Anwendungsprojekt.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Anwendung, und wählen Sie **Veröffentlichen** aus.
 
-Wählen Sie ein Zielprofil im Anwendungsprojekt aus, das Sie für den Continuous Integration-Workflow verwenden möchten, z.B. „Cloud“.  Geben Sie den Clusterverbindungsendpunkt an.  Aktivieren Sie das Kontrollkästchen **Upgrade der Anwendung ausführen**, damit für jede Bereitstellung in Team Services ein Upgrade der Anwendung erfolgt.  Klicken Sie auf den Link **Speichern**, um die Einstellungen im Veröffentlichungsprofil zu speichern, und klicken Sie dann auf **Abbrechen**, um das Dialogfeld zu schließen.
+Wählen Sie ein Zielprofil im Anwendungsprojekt aus, das Sie für den Continuous Integration-Workflow verwenden möchten, z.B. „Cloud“.  Geben Sie den Clusterverbindungsendpunkt an.  Aktivieren Sie das Kontrollkästchen **Upgrade der Anwendung ausführen**, damit für jede Bereitstellung in Azure DevOps ein Upgrade der Anwendung erfolgt.  Klicken Sie auf den Link **Speichern**, um die Einstellungen im Veröffentlichungsprofil zu speichern, und klicken Sie dann auf **Abbrechen**, um das Dialogfeld zu schließen.
 
 ![Profil pushen][publish-app-profile]
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>Freigeben der Visual Studio-Projektmappe in einem neuen Git-Repository von Team Services
+## <a name="share-your-visual-studio-solution-to-a-new-azure-devops-git-repo"></a>Freigeben der Visual Studio-Projektmappe in einem neuen Git-Repository von Azure DevOps
 
-Geben Sie die Anwendungsquelldateien in einem Teamprojekt in Team Services frei, damit Sie Builds generieren können.
+Teilen Sie Ihre Anwendungsquelldateien für ein Projekt in Azure DevOps, damit Sie Builds erstellen können.
 
 Erstellen Sie ein neues lokales Git-Repository für das Projekt, indem Sie auf der Statusleiste in der unteren rechten Ecke von Visual Studio **Zur Quellcodeverwaltung hinzufügen** -> **Git** auswählen.
 
-Klicken Sie in der Ansicht **Push** in **Team Explorer** unter **Per Push in Visual Studio Team Services übertragen** auf die Schaltfläche **Git-Repository veröffentlichen**.
+Klicken Sie in der Ansicht **Push** in **Team Explorer** unter **Per Push in Azure DevOps übertragen** auf die Schaltfläche **Git-Repository veröffentlichen**.
 
 ![Git-Repository pushen][push-git-repo]
 
-Überprüfen Sie Ihre E-Mail-Adresse, und wählen Sie in der Dropdownliste **Team Services-Domäne** Ihr Konto aus. Geben Sie den Repositorynamen ein, und wählen Sie **Repository veröffentlichen** aus.
+Überprüfen Sie Ihre E-Mail-Adresse, und wählen Sie in der Dropdownliste **Azure DevOps-Domäne** Ihr Konto aus. Geben Sie den Repositorynamen ein, und wählen Sie **Repository veröffentlichen** aus.
 
 ![Git-Repository pushen][publish-code]
 
-Durch das Veröffentlichen des Repositorys wird in Ihrem Konto ein neues Teamprojekt mit dem gleichen Namen wie das lokale Repository erstellt. Um das Repository in einem vorhandenen Teamprojekt zu erstellen, klicken Sie neben **Repositoryname** auf **Erweitert**, und wählen Sie ein Teamprojekt aus. Sie können den Code im Web anzeigen, indem Sie **Im Web anzeigen** auswählen.
+Durch das Veröffentlichen des Repositorys wird in Ihrem Konto ein neues Projekt mit dem gleichen Namen wie das lokale Repository erstellt. Um das Repository in einem vorhandenen Projekt zu erstellen, klicken Sie neben **Repositoryname** auf **Erweitert**, und wählen Sie ein Projekt aus. Sie können den Code im Web anzeigen, indem Sie **Im Web anzeigen** auswählen.
 
-## <a name="configure-continuous-delivery-with-vsts"></a>Konfigurieren von Continuous Delivery mit VSTS
+## <a name="configure-continuous-delivery-with-azure-devops"></a>Konfigurieren von Continuous Delivery mit Azure DevOps
 
-Eine Team Services-Builddefinition beschreibt einen Workflow, der aus verschiedenen Buildschritten besteht, die nacheinander ausgeführt werden. Erstellen Sie eine Builddefinition, die ein Service Fabric-Anwendungspaket und andere Elemente erzeugt, um sie in einem Service Fabric-Cluster bereitzustellen. Weitere Informationen zu [Team Services-Builddefinitionen](https://www.visualstudio.com/docs/build/define/create). 
+Eine Azure DevOps-Buildpipeline beschreibt einen Workflow, der aus verschiedenen Buildschritten besteht, die nacheinander ausgeführt werden. Erstellen Sie eine Buildpipeline, die ein Service Fabric-Anwendungspaket und andere Elemente erzeugt, um sie in einem Service Fabric-Cluster bereitzustellen. Erfahren Sie mehr über [Azure DevOps-Buildpipelines](https://www.visualstudio.com/docs/build/define/create). 
 
-Eine Team Services-Releasedefinition beschreibt einen Workflow, der ein Anwendungspaket in einem Cluster bereitstellt. Bei gemeinsamer Verwendung führen die Builddefinition und Releasedefinition den gesamten Workflow aus, und zwar beginnend mit den Quelldateien und endend mit einer im Cluster ausgeführten Anwendung. Erfahren Sie mehr zu Team Services- [Releasedefinitionen](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Eine Azure DevOps-Releasepipeline beschreibt einen Workflow, der ein Anwendungspaket in einem Cluster bereitstellt. Bei gemeinsamer Verwendung führen die Buildpipeline und Releasepipeline den gesamten Workflow aus, und zwar beginnend mit den Quelldateien und endend mit einer im Cluster ausgeführten Anwendung. Erfahren Sie mehr über Azure DevOps-[Releasepipelines](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
-### <a name="create-a-build-definition"></a>Erstellen einer Builddefinition
+### <a name="create-a-build-pipeline"></a>Erstellen einer Buildpipeline
 
-Navigieren Sie in einem Webbrowser zu Ihrem neuen Teamprojekt: [https://&lt;IhrKonto&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
+Navigieren Sie in einem Webbrowser zu Ihrem neuen Projekt: [https://&lt;IhrKonto&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
 Wählen Sie die Registerkarte **Build und Release** und die Option **Builds** aus, und klicken Sie dann auf **Neue Pipeline**.
 
 ![Neue Pipeline][new-pipeline]
 
-Wählen Sie **VSTS-Git** als Quelle, das Teamprojekt **Voting**, das Repository **Voting** und den Standardbranch **master** oder manuelle und geplante Builds aus.  Klicken Sie anschließend auf **Weiter**.
+Wählen Sie **Azure DevOps-Git** als Quelle, das Projekt **Voting**, das Repository **Voting** und den Standardbranch **master** oder manuelle und geplante Builds aus.  Klicken Sie anschließend auf **Weiter**.
 
 Wählen Sie unter **Vorlage auswählen** die Vorlage **Azure Service Fabric-Anwendung** aus, und klicken Sie anschließend auf **Anwenden**.
 
@@ -114,9 +114,9 @@ Klicken Sie im Dialogfeld **Save build pipeline and queue** (Buildpipeline speic
 
 ![Auswählen von Triggern][save-and-queue2]
 
-Buildvorgänge werden auch bei Push- oder Eincheckvorgängen ausgelöst. Wechseln Sie zum Überprüfen des Buildstatus zur Registerkarte **Builds**.  Nachdem Sie überprüft haben, ob der Build erfolgreich ausgeführt wird, legen Sie eine Releasedefinition fest, mit der die Anwendung in einem Cluster bereitgestellt wird.
+Buildvorgänge werden auch bei Push- oder Eincheckvorgängen ausgelöst. Wechseln Sie zum Überprüfen des Buildstatus zur Registerkarte **Builds**.  Nachdem Sie überprüft haben, ob der Build erfolgreich ausgeführt wird, müssen Sie eine Releasepipeline festlegen, mit der die Anwendung in einem Cluster bereitgestellt wird.
 
-### <a name="create-a-release-definition"></a>Erstellen einer Releasedefinition
+### <a name="create-a-release-pipeline"></a>Erstellen einer Releasepipeline
 
 Wählen Sie auf der Registerkarte **Build und Release** die Option **Releases** und anschließend **+ Neue Pipeline** aus.  Wählen Sie in der Liste unter **Vorlage auswählen** die Vorlage **Azure Service Fabric-Bereitstellung** aus, und klicken Sie auf **Anwenden**.
 
@@ -134,11 +134,11 @@ Fügen Sie bei Verwendung von Azure Active Directory-Anmeldeinformationen den **
 
 Klicken Sie auf **Hinzufügen**, um die Clusterverbindung zu speichern.
 
-Fügen Sie als Nächstes der Pipeline ein Buildartefakt hinzu, damit die Releasedefinition die Ausgabe des Builds findet. Klicken Sie auf **Pipeline** und anschließend auf **Artefakte**->**+Hinzufügen**.  Wählen Sie unter **Quelle (Builddefinition)** die zuvor erstellte Builddefinition aus.  Klicken Sie auf **Hinzufügen**, um das Buildartefakt zu speichern.
+Fügen Sie als Nächstes der Pipeline ein Buildartefakt hinzu, damit die Releasepipeline die Ausgabe des Builds findet. Klicken Sie auf **Pipeline** und anschließend auf **Artefakte**->**+Hinzufügen**.  Wählen Sie unter **Quelle (Builddefinition)** die zuvor erstellte Buildpipeline aus.  Klicken Sie auf **Hinzufügen**, um das Buildartefakt zu speichern.
 
 ![Hinzufügen des Artefakts][add-artifact]
 
-Aktivieren Sie einen Continuous Deployment-Trigger, damit nach Abschluss des Buildvorgangs automatisch ein Release erstellt wird. Klicken Sie im Artefakt auf das Blitzsymbol, aktivieren Sie den Trigger, und klicken Sie anschließend auf **Speichern**, um die Releasedefinition zu speichern.
+Aktivieren Sie einen Continuous Deployment-Trigger, damit nach Abschluss des Buildvorgangs automatisch ein Release erstellt wird. Klicken Sie im Artefakt auf das Blitzsymbol, aktivieren Sie den Trigger, und klicken Sie anschließend auf **Speichern**, um die Releasepipeline zu speichern.
 
 ![Aktivieren des Triggers][enable-trigger]
 
@@ -148,7 +148,7 @@ Wählen Sie **+ Release** -> **Release erstellen** -> **Erstellen** aus, um manu
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Committen und Pushen von Änderungen, Auslösen eines Release
 
-Wir checken einige Codeänderungen in Team Services ein, um zu überprüfen, ob die Continuous Integration-Pipeline ordnungsgemäß ausgeführt wird.
+Um die Funktionsfähigkeit Continuous Integration-Pipeline zu überprüfen, checken Sie einige Codeänderungen bei Azure DevOps ein.
 
 Während Sie den Code schreiben, werden Ihre Änderungen automatisch von Visual Studio nachverfolgt. Führen Sie den Commit der Änderungen in das lokale Git-Repository aus, indem Sie auf der Statusleiste unten rechts das Symbol „Ausstehende Änderungen“ (![Ausstehend][pending]) auswählen.
 
@@ -156,13 +156,13 @@ Fügen Sie in der Ansicht **Änderungen** in Team Explorer eine Nachricht hinzu,
 
 ![Commit für alle][changes]
 
-Wählen Sie das Statusleistensymbol für nicht veröffentlichte Änderungen (![nicht unveröffentlichte Änderungen][unpublished-changes]) oder die Synchronisierungsansicht in Team Explorer aus. Wählen Sie **Push** aus, um den Code in Team Services/TFS zu aktualisieren.
+Wählen Sie das Statusleistensymbol für nicht veröffentlichte Änderungen (![nicht unveröffentlichte Änderungen][unpublished-changes]) oder die Synchronisierungsansicht in Team Explorer aus. Wählen Sie **Push**, um Ihren Code in Azure DevOps Services/TFS zu aktualisieren.
 
 ![Änderungen pushen][push]
 
-Durch das Pushen der Änderungen nach Team Services wird automatisch ein Build ausgelöst.  Nach erfolgreichem Abschluss der Builddefinition wird automatisch ein Release erstellt, und es wird ein Upgrade der Anwendung im Cluster gestartet.
+Durch das Pushen der Änderungen zu Azure DevOps wird automatisch ein Build ausgelöst.  Wenn die Buildpipeline erfolgreich abgeschlossen ist, wird automatisch ein Release erstellt, das mit dem Upgrade der Anwendung auf dem Cluster beginnt.
 
-Um den Buildstatus zu überprüfen, wechseln Sie in Visual Studio in **Team Explorer** zur Registerkarte **Builds**.  Nachdem Sie überprüft haben, ob der Build erfolgreich ausgeführt wird, legen Sie eine Releasedefinition fest, mit der die Anwendung in einem Cluster bereitgestellt wird.
+Um den Buildstatus zu überprüfen, wechseln Sie in Visual Studio in **Team Explorer** zur Registerkarte **Builds**.  Nachdem Sie überprüft haben, ob der Build erfolgreich ausgeführt wird, müssen Sie eine Releasepipeline festlegen, mit der die Anwendung in einem Cluster bereitgestellt wird.
 
 Überprüfen Sie, ob die Bereitstellung erfolgreich war und die Anwendung im Cluster ausgeführt wird.  Öffnen Sie einen Webbrowser, und navigieren Sie zu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Beachten Sie, dass die Anwendungsversion in diesem Beispiel 1.0.0.20170815.3 lautet.
 
@@ -186,12 +186,11 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Hinzufügen der Quellcodeverwaltung zum Projekt
-> * Erstellen einer Builddefinition
-> * Erstellen einer Releasedefinition
+> * Erstellen einer Buildpipeline
+> * Erstellen einer Releasepipeline
 > * Automatisches Bereitstellen und Durchführen von Upgrades einer Anwendung
 
 Fahren Sie mit dem nächsten Tutorial fort:
-> [!div class="nextstepaction"]
 > [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md)
 
 <!-- Image References -->
@@ -214,6 +213,6 @@ Fahren Sie mit dem nächsten Tutorial fort:
 [changes]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/Changes.png
 [unpublished-changes]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/UnpublishedChanges.png
 [push]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/Push.png
-[continuous-delivery-with-VSTS]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/VSTS-Dialog.png
+[continuous-delivery-with-AzureDevOpsServices]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/VSTS-Dialog.png
 [new-service-endpoint]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewServiceEndpoint.png
 [new-service-endpoint-dialog]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewServiceEndpointDialog.png

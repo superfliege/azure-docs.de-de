@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: b9ba2bb89bb0d7e16a28a165cf14530a7a10f71b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 35f4d2adfe3ca64496139cdd708fb5f52f8721ee
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234749"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023476"
 ---
 # <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>Tutorial: Verfügbarmachen von SQL-Datenbanken für Ihre Azure Stack-Benutzer
 
@@ -59,7 +59,7 @@ Da Sie den SQL Server-Ressourcenanbieter nun bereitgestellt und ein Angebot erst
 1. Melden Sie sich als Mandant beim Azure Stack-Portal (https://portal.local.azurestack.external)) an.
 2. Klicken Sie auf **Abonnement erwerben**, und geben Sie dann unter **Anzeigename** die Zeichenfolge **TestSQLServerSubscription** ein.
 3. Klicken Sie auf **Angebot auswählen** > **TestSQLServerOffer** > **Erstellen**.
-4. Klicken Sie auf **Weitere Dienste** > **Abonnements** > **TestSQLServerSubscription** > **Ressourcenanbieter**.
+4. Klicken Sie auf **Alle Dienste** > **Abonnements** > **TestSQLServerSubscription** > **Ressourcenanbieter**.
 5. Klicken Sie neben dem Anbieter **Microsoft.SQLAdapter** auf **Registrieren**.
 
 ### <a name="create-a-sql-database"></a>Erstellen einer SQL-Datenbank

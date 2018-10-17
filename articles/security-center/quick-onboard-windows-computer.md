@@ -3,7 +3,7 @@ title: 'Schnellstart für Azure Security Center: Einbinden von Windows-Computern
 description: Dieser Schnellstart veranschaulicht die Microsoft Monitoring Agent-Bereitstellung auf einem Windows-Computer.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: b872153278810ce92f19c7c71fe473a2b77def35
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/2/2018
+ms.author: rkarlin
+ms.openlocfilehash: 55bb7242427bf85d10fac0a44e2b2eac3a5181ad
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38702656"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022999"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Windows-Computern in Azure Security Center
 Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Ressourcen aktivieren, die außerhalb von Azure ausgeführt werden, z.B. lokale Ressourcen oder Ressourcen in anderen Clouds, indem Sie den Microsoft Monitoring Agent bereitstellen.
@@ -39,14 +39,14 @@ Vor dem Start dieses Schnellstarts müssen Sie zum Tarif „Standard“ von Secu
 
  ![Übersicht über das Security Center][2]
 
-3. Klicken Sie im Hauptmenü von Security Center auf **Integration in erweiterte Sicherheit**.
-4. Klicken Sie auf **Möchten Sie Nicht-Azure-Computer hinzufügen?**.
+3. Wählen Sie im Security Center im Hauptmenü die Option **Erste Schritte** aus.
+4. Wählen Sie die Registerkarte **Erste Schritte**.
 
-   ![Integration in erweiterte Sicherheit][3]
+   ![Erste Schritte][3]
 
-5. Unter **Neue Nicht-Azure-Computer hinzufügen** wird eine Liste Ihrer Log Analytics-Arbeitsbereiche angezeigt. Die Liste enthält, falls zutreffend, den Standardarbeitsbereich, der von Security Center für Sie erstellt wurde, wenn die automatische Bereitstellung aktiviert wurde. Wählen Sie diesen Arbeitsbereich oder einen anderen Arbeitsbereich aus, den Sie verwenden möchten.
+5. Klicken Sie auf **Konfigurieren** unter **Neue Nicht-Azure-Computer hinzufügen**. Es wird eine Liste Ihrer Log Analytics-Arbeitsbereiche angezeigt. Die Liste enthält, falls zutreffend, den Standardarbeitsbereich, der von Security Center für Sie erstellt wurde, wenn die automatische Bereitstellung aktiviert wurde. Wählen Sie diesen Arbeitsbereich oder einen anderen Arbeitsbereich aus, den Sie verwenden möchten.
 
-    ![Hinzufügen eines Azure-fremden Computers][4]
+    ![Hinzufügen eines Azure-fremden Computers](./media/quick-onboard-windows-computer/non-azure.png)
 
   Das Blatt **Direkt-Agent** wird mit einem Link zum Herunterladen eines Windows- oder Linux-Agents sowie Schlüsseln für Ihre Arbeitsbereichs-ID geöffnet, die Sie zum Konfigurieren des Agents benötigen.
 
@@ -104,7 +104,7 @@ In diesem Schnellstart haben Sie den Microsoft Monitoring Agent auf einem Window
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png
-[3]: ./media/quick-onboard-windows-computer/onboard-windows-computer.png
+[3]: ./media/quick-onboard-windows-computer/get-started.png
 [4]: ./media/quick-onboard-windows-computer/add-computer.png
 [5]: ./media/quick-onboard-windows-computer/log-analytics-mma-setup-laworkspace.png
 [6]: ./media/quick-onboard-windows-computer/compute.png

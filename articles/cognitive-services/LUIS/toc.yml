@@ -10,7 +10,7 @@ items:
   items:
   - name: Hinzufügen einer App für eine vordefinierte Domäne
     href: luis-get-started-create-app.md
-  - name: Verwenden von APIs
+  - name: Verwenden von REST-APIs
     items:
     - name: Abrufen der Absicht
       items:
@@ -164,7 +164,7 @@ items:
       href: luis-how-to-add-example-utterances.md
     - name: Hinzufügen von Entitäten
       href: luis-how-to-add-entities.md
-    - name: Mit APIs
+    - name: Mit REST-APIs
       items:
       - name: Programmgesteuertes Erstellen einer App per Node.js
         href: luis-tutorial-node-import-utterances-csv.md
@@ -172,7 +172,7 @@ items:
         href: luis-tutorial-list-entity.md
   - name: Integrieren
     items:
-    - name: Mit Bing-Rechtschreibprüfungs-API v7
+    - name: Mit Bing-Rechtschreibprüfung v7
       href: luis-tutorial-bing-spellcheck.md
     - name: Mit Spracherkennungsdienst
       href: luis-tutorial-speech-to-intent.md
@@ -234,13 +234,13 @@ items:
         href: luis-how-to-manage-from-cloud-shell.md
       - name: Verteilen des Endpunktkontingents auf Schlüssel per Traffic Manager
         href: luis-traffic-manager.md
-  - name: Migrieren zur V2-API
+  - name: Migrieren zur V2-REST-API
     href: luis-migration-api-v1-to-v2.md
   - name: Programmgesteuertes Suchen nach der Region
     items:
-    - name: Verwenden von C#
+    - name: Verwenden der REST-API und C#
       href: luis-find-region-csharp.md
-    - name: Verwenden von Node.js
+    - name: Verwenden der REST-API und Node.js
       href: luis-find-region-nodejs.md
 - name: Verweis
   items:
@@ -266,7 +266,7 @@ items:
       href: luis-reference-prebuilt-deprecated.md
     - name: E-Mail-Entität
       href: luis-reference-prebuilt-email.md
-    - name: GeographyV2-Entität
+    - name: geographyV2-Entität
       href: luis-reference-prebuilt-geographyV2.md
     - name: KeyPhrase-Entität
       href: luis-reference-prebuilt-keyphrase.md
@@ -276,7 +276,7 @@ items:
       href: luis-reference-prebuilt-ordinal.md
     - name: Prozentsatzentität
       href: luis-reference-prebuilt-percentage.md
-    - name: Personenname-Entität
+    - name: personName-Entität
       href: luis-reference-prebuilt-person.md
     - name: Telefonnummernentität
       href: luis-reference-prebuilt-phonenumber.md
@@ -286,16 +286,18 @@ items:
       href: luis-reference-prebuilt-url.md
   - name: Vordefinierter Domänenverweis
     href: luis-reference-prebuilt-domains.md
-  - name: Erstellen von V2-APIs
-    href: https://aka.ms/luis-authoring-apis
-  - name: Endpunkt-V2-API
-    href: https://aka.ms/luis-endpoint-apis
-  - name: HTTP-Codes
-    href: luis-reference-response-codes.md
   - name: Azure-Befehlszeilenschnittstelle
     href: https://aka.ms/az-cli-cognitiveservices
   - name: Azure RM PowerShell
     href: https://aka.ms/azure-powershell-cognitiveservices
+  - name: REST-APIs
+    items:
+    - name: Erstellung von V2-REST-APIs
+      href: https://aka.ms/luis-authoring-apis
+    - name: Endpunkt-V2-REST-API
+      href: https://aka.ms/luis-endpoint-apis
+    - name: HTTP-Codes
+      href: luis-reference-response-codes.md
   - name: SDKs
     items:
     - name: C#
@@ -374,9 +376,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: Wissensdatenbank
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: bf82f62fac518c0442ad67c346c422b06aa73088
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: fe393a2c92cf9391dc620acae4878996d107a68e
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432768"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364539"

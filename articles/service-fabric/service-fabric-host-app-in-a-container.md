@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: a1e8c53263093554bb616ec130cd17a0d6d4339c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7573746b91f057d83a299d54801785118cc1c878
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302914"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380130"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Tutorial: Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 
@@ -225,7 +225,7 @@ Im Fenster „Ausgabe“ können Sie den Fortschritt der Bereitstellung nachverf
 ![Fabrikam-Webbeispiel][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Einrichten von Continuous Integration und Continuous Deployment (CI/CD) mit einem Service Fabric-Cluster
-Informationen zum Konfigurieren der CI/CD-Anwendungsbereitstellung für einen Service Fabric-Cluster mithilfe von VSTS finden Sie unter [Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Der in dem Tutorial beschriebene Vorgang gilt auch für dieses Projekt (FabrikamFiber). Überspringen Sie einfach den Download des Voting-Beispiels, und ersetzen Sie den Repositorynamen „Voting“ durch „FabrikamFiber“.
+Informationen zum Konfigurieren der CI/CD-Anwendungsbereitstellung für einen Service Fabric-Cluster mithilfe von Azure DevOps finden Sie unter [Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Der in dem Tutorial beschriebene Vorgang gilt auch für dieses Projekt (FabrikamFiber). Überspringen Sie einfach den Download des Voting-Beispiels, und ersetzen Sie den Repositorynamen „Voting“ durch „FabrikamFiber“.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Entfernen Sie alle erstellten Ressourcen, wenn Sie fertig sind.  Am einfachsten ist es, die Ressourcengruppen zu entfernen, die den Service Fabric-Cluster, Azure SQL-Datenbank und Azure Container Registry enthalten.
@@ -254,8 +254,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen einer Azure-Containerregistrierung
 > * Bereitstellen einer Service Fabric-Anwendung in Azure
 
-Im nächsten Teil des Tutorials erfahren Sie, wie Sie die [Überwachung für Ihren Container](service-fabric-tutorial-monitoring-wincontainers.md) einrichten.
-
+Im nächsten Teil des Tutorials erfahren Sie, wie Sie [Eine Containeranwendung mit CI/CD in einem Service Fabric-Cluster bereitstellen](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md).
 
 [link-fabrikam-github]: https://aka.ms/fabrikamcontainer
 [link-azure-powershell-install]: /powershell/azure/install-azurerm-ps

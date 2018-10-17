@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.custom: mvc
 ms.topic: overview
-ms.date: 06/26/2017
+ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b83d08b9dac4fccc033ad4537afd343a6fbe02c2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23660595"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050237"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Überblick über Application Insights für DevOps
 
@@ -50,7 +50,7 @@ Konzentrieren wir uns auf den Feedbackteil des Zyklus:
 ## <a name="detect-poor-availability"></a>Erkennen schlechter Verfügbarkeit
 Marcela Markova ist leitende Entwicklerin im OBS-Team, und ist für Tests sowie für die Überwachung der Onlineleistung zuständig. Sie richtet mehrere [Verfügbarkeitstests](app-insights-monitor-web-app-availability.md) ein:
 
-* Einen einzelnen URL-Test für die Hauptangebotsseite der App: http://fabrikambank.com/onlinebanking/. Sie legt Kriterien für den HTTP-Code 200 und den Text "Willkommen!" fest. Wenn dieser Test misslingt, ist etwas mit dem Netzwerk oder den Servern ernsthaft nicht in Ordnung, oder es liegt ggf. ein Bereitstellungsproblem vor. (Oder jemand hat ohne ihr Wissen die Begrüßungsmeldung auf der Seite geändert.)
+* Einen einzelnen URL-Test für die Hauptangebotsseite der App: http://fabrikambank.com/onlinebanking/ Sie legt Kriterien für den HTTP-Code 200 und den Text "Willkommen!" fest. Wenn dieser Test misslingt, ist etwas mit dem Netzwerk oder den Servern ernsthaft nicht in Ordnung, oder es liegt ggf. ein Bereitstellungsproblem vor. (Oder jemand hat ohne ihr Wissen die Begrüßungsmeldung auf der Seite geändert.)
 * Einen umfassenden mehrstufigen Test, der eine Anmeldung ausführt, eine aktuelle Kontoauflistung abruft und einige wichtige Details auf jeder Seite überprüft. Dieser Test bestätigt, dass die Verbindung mit der Kontendatenbank funktioniert. Sie verwendet eine fiktive Kunden-ID, von denen einige für Testzwecke vorgehalten werden.
 
 Nach dem Einrichten dieser Tests ist Marcela sicher, dass das Team schnell über Systemausfälle informiert wird.  
@@ -64,7 +64,7 @@ Aber noch wichtiger ist, dass eine Warnung zu allen Fehlern per E-Mail an das En
 ## <a name="monitor-performance"></a>Überwachen der Leistung
 Die Übersichtsseite in Application Insights enthält ein Diagramm, das eine Vielzahl [wichtiger Metriken](app-insights-web-monitor-performance.md) zeigt.
 
-![Verschiedene Metriken](./media/app-insights-detect-triage-diagnose/05-perfMetrics.png)
+![Screenshot der Übersichtsleistung – KPI-Diagramme](./media/app-insights-detect-triage-diagnose/overview-graphs.png)
 
 Die Browser-Seitenladezeit wird von Telemetriedaten abgeleitet, die direkt von Webseiten gesendet werden. Die Serverantwortzeit, die Anzahl von Serveranforderungen und die Anzahl der Anforderungsfehler werden auf dem Webserver gemessen und von dort an Application Insights gesendet.
 
@@ -72,7 +72,7 @@ Marcela ist etwas besorgt über das Serverantwortdiagramm. Dieses Diagramm zeigt
 
 Sie öffnet die Serverdiagramme:
 
-![Verschiedene Metriken](./media/app-insights-detect-triage-diagnose/06.png)
+![Verschiedene Metriken](./media/app-insights-detect-triage-diagnose/002-servers.png)
 
 Es scheinen keine Anzeichen einer Ressourceneinschränkung vorhanden zu sein, also sind die Unregelmäßigkeiten in den Serverantwort-Diagrammen möglicherweise nur ein Zufall.
 
@@ -154,7 +154,7 @@ Ausnahmen und Ereignisse werden auf dem Blatt [Diagnosesuche](app-insights-diagn
 ## <a name="monitor-proactively"></a>Proaktive Überwachung
 Marcela sitzt nicht bloß herum und wartet auf Warnungen. Schon bald nach jeder erneuten Bereitstellung befasst sie sich mit [Antwortzeiten](app-insights-web-monitor-performance.md) – sowohl mit der Gesamtanzahl und der Tabelle mit den langsamsten Anforderungen als auch mit der Anzahl der Ausnahmen.  
 
-![Antwortzeitdiagramm und Raster von Serverantwortzeiten.](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
+![Antwortzeitdiagramm und Raster von Serverantwortzeiten.](./media/app-insights-detect-triage-diagnose/response-time.png)
 
 Sie kann die Auswirkung jeder Bereitstellung auf die Leistung bewerten, indem üblicherweise jede Woche mit der Vorwoche verglichen wird. Sobald es eine plötzliche Verschlechterung gibt, wendet sie sich an die entsprechenden Entwickler.
 
@@ -168,8 +168,6 @@ Im Gegensatz dazu ist ein drastischer und stabiler Anstieg im Diagramm der Anzah
 Eine nützliche Eingrenzungstaktik ist das eigenständige Ausprobieren. Wenn bei Ihnen das gleiche Problem auftritt, wissen Sie, dass es real ist.
 
 Welcher Anteil der Benutzer ist betroffen? Um eine grobe Antwort zu erhalten, teilen Sie die Fehlerrate durch die Anzahl der Sitzungen.
-
-![Diagramme fehlerhafter Anforderungen und Sitzungen](./media/app-insights-detect-triage-diagnose/10-failureRate.png)
 
 Vergleichen Sie bei langen Antwortzeiten die Tabelle mit den Anforderungen, die die längsten Antwortzeiten aufweisen, mit der Nutzungsfrequenz jeder Seite.
 
@@ -203,7 +201,6 @@ Das Entwicklungsteam der Fabrikam Bank befolgt nun einen strukturierteren Ansatz
 * Es legt auf der Übersichtsseite von Application Insights Leistungsziele in Bezug auf bestimmte Kennzahlen fest.
 * Das Team integriert von Anfang an Leistungsmessungen in die Anwendung, z. B. in Form von Metriken, die den Benutzerfortschritt in "Trichtern" messen.  
 
-
 ## <a name="monitor-user-activity"></a>Überwachen der Benutzeraktivität
 Wenn die Antwortzeit konsistent gut ist und wenige Ausnahmen auftreten, kann das Entwicklungsteam zur Verwendbarkeit übergehen. Es kann über die Verbesserung der Benutzeroberfläche nachdenken oder darüber, wie die Benutzer besser zum Erreichen der gewünschten Ziele ermuntert werden können.
 
@@ -211,7 +208,7 @@ Application Insights kann auch genutzt werden, um zu erfahren, welche Aktionen B
 
 Der normale Weg eines Benutzers durch die Website weist beispielsweise einen deutlichen „Trichtereffekt“ auf. Viele Kunden sehen sich die Zinsen für verschiedene Arten von Darlehen an. Eine kleinere Anzahl fährt mit dem Ausfüllen des Angebotsformulars fort. Von denen, die ein Angebot anfordern, enden nur wenige dabei, das Darlehen aufzunehmen.
 
-![Anzahl von Seitenaufrufen](./media/app-insights-detect-triage-diagnose/12-funnel.png)
+![Anzahl von Seitenaufrufen](./media/app-insights-detect-triage-diagnose/funnel.png)
 
 Ein Unternehmen kann nun untersuchen, an welcher Stelle die meisten Kunden den Vorgang abbrechen, und so ermitteln, wie sich mehr Benutzer durch den gesamten Trichter schleusen lassen. In manchen Fällen tritt ein Fehler auf der Benutzeroberfläche auf. Beispielsweise ist die Schaltfläche „Weiter“ schwer zu finden, oder die Anweisungen sind nicht eindeutig. Wahrscheinlicher sind jedoch geschäftliche Gründe (wie etwa zu hohe Zinssätze für Darlehen).
 

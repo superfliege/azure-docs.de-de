@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Update
 ms.date: 03/15/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: ce30a9eb11cd951ca7d8197c15c3becba333f5a9
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: e09a1b1c1a849e9957c2969da2b8e4c1d00347ff
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34053775"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297693"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Einführung in Azure Automation
 
@@ -65,7 +65,7 @@ Suchen Sie im [Automation-Katalog](automation-runbook-gallery.md) nach Runbooks 
 
 Mit Azure Automation wird der Lebenszyklus Ihrer Infrastruktur und Anwendungen verwaltet. Übertragen Sie das Wissen, wie die Organisation Workloads bereitstellt und wartet, in das System. Führen Sie die Erstellung in gängigen Sprachen durch, z.B. mithilfe von PowerShell, Desired State Configuration, Python und grafischen Runbooks. Verschaffen Sie sich einen Überblick über den gesamten Bestand an bereitgestellten Ressourcen für die Bereiche Zielgruppenadressierung, Berichterstellung und Konformität. Identifizieren Sie Änderungen, die zu Fehlkonfigurationen führen können, und verbessern Sie die betriebsbezogene Konformität.
 
-* **Ressourcen erstellen/bereitstellen**: Stellen Sie VMs in einer Hybridumgebung bereit, indem Sie Runbooks und Azure Resource Manager-Vorlagen verwenden. Führen Sie die Integration in Entwicklungstools wie Jenkins und Visual Studio Team Services durch.
+* **Ressourcen erstellen/bereitstellen**: Stellen Sie VMs in einer Hybridumgebung bereit, indem Sie Runbooks und Azure Resource Manager-Vorlagen verwenden. Führen Sie die Integration in Entwicklungstools wie Jenkins und Azure DevOps durch.
 * **VMs konfigurieren**: Bewerten und konfigurieren Sie Windows- und Linux-Computer mit der gewünschten Konfiguration für die Infrastruktur und Anwendung.
 * **Überwachen**: Identifizieren Sie Änderungen auf Computern, die Probleme verursachen, und beheben Sie diese, oder nutzen Sie die Eskalation an Verwaltungssysteme.
 * **Schützen**: Aktivieren Sie für eine VM den Quarantänezustand, wenn eine Sicherheitswarnung ausgelöst wird. Legen Sie Anforderungen auf Gastsystemen fest.

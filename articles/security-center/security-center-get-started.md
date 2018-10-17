@@ -3,7 +3,7 @@ title: 'Schnellstart für Azure Security Center: Einbinden Ihres Azure-Abonnemen
 description: Dieser Schnellstart zeigt Ihnen, wie Sie für zusätzliche Sicherheit ein Upgrade auf den Security Center-Tarif Standard durchführen können.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
-ms.author: terrylan
-ms.openlocfilehash: d10cef33ef0c325d41c9539107b9a4cab5e916d8
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.date: 09/2/2018
+ms.author: rkarlin
+ms.openlocfilehash: dc4c07b54085dfea6d97f2ca43a8cdddfcb9e57c
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059853"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025463"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard
 Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Während der Free-Tarif nur eingeschränkte Sicherheit für Ihre Azure-Ressourcen bietet, erweitert der Standard-Tarif diese Funktionen auf lokale Umgebungen und andere Clouds. Security Center Standard hilft Ihnen, Sicherheitsrisiken zu finden und zu beseitigen, Zugriffs- und Anwendungssteuerungen anzuwenden, um böswillige Aktivitäten zu blockieren, Bedrohungen mithilfe von Analysen und intelligenter Funktionen zu erkennen und bei Angriffen schnell zu reagieren. Sie können Security Center Standard die ersten 60 Tage kostenlos testen.
@@ -53,20 +53,18 @@ Um den vollen Nutzen aus Security Center zu ziehen, müssen Sie die folgenden Sc
 ## <a name="upgrade-to-the-standard-tier"></a>Upgrade auf den Standard-Tarif
 Für die Zwecke des Schnellstarts und der Tutorials für Security Center müssen Sie ein Upgrade auf den Standard-Tarif durchführen. Die ersten 60 Tage sind kostenlos, und Sie können jederzeit zum Free-Tarif zurückkehren.
 
-1. Klicken Sie im Hauptmenü von Security Center auf **Integration in erweiterte Sicherheit**.
+1. Wählen Sie im Security Center im Hauptmenü die Option **Erste Schritte** aus.
+ 
+  ![Erste Schritte][4]
 
-2. Unter **Integration in erweiterte Sicherheit** werden von Security Center für die Integration geeignete Abonnements und Arbeitsbereiche aufgeführt. Wählen Sie in der Liste ein Abonnement aus.
+2. Unter **Upgrade** werden von Security Center für die Integration geeignete Abonnements und Arbeitsbereiche aufgeführt. 
+   - Klicken Sie auf den erweiterbaren Bereich **Ihre Testversion anwenden**, um eine Liste aller Abonnements und Arbeitsbereiche mit einem Berechtigungsstatus für Ihre Testversion anzuzeigen.
+   -    Sie können Abonnements und Arbeitsbereiche aktualisieren, die keine Berechtigung für die Testversion haben.
+   -    Sie können berechtigte Arbeitsbereiche und Abonnements auswählen, um Ihre Testversion zu starten.
+3.  Klicken Sie auf **Testversion starten**, um Ihre Testversion für die ausgewählten Abonnements zu starten.
 
-  ![Auswählen eines Abonnements][4]
 
-3. **Sicherheitsrichtlinie** liefert Informationen zu den im Abonnement enthaltenen Ressourcengruppen. **Preise** wird auch geöffnet.
-4. Wählen Sie unter **Preise** die Option **Standard** aus, um ein Upgrade von Free auf Standard durchzuführen. Klicken Sie dann auf **Speichern**.
-
-  ![Auswählen von „Standard“][5]
-
-Nach Upgrade auf den Standard-Tarif haben Sie nun Zugriff auf zusätzliche Security Center-Funktionen, darunter **adaptive Anwendungssteuerungen**, **Just-in-Time-VM-Zugriff**, **Sicherheitswarnungen**, **Informationen zu Bedrohungen**, **Automation-Playbooks** und mehr. Beachten Sie, dass Sicherheitswarnungen nur dann angezeigt werden, wenn Security Center bösartige Aktivitäten erkennt.
-
-  ![Sicherheitswarnungen][7]
+  ![Sicherheitswarnungen][9]
 
 ## <a name="automate-data-collection"></a>Automatisieren der Datensammlung
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Standardmäßig erstellt Security Center einen neuen Arbeitsbereich für Sie.
@@ -76,11 +74,10 @@ Bei aktivierter automatischer Bereitstellung wird Microsoft Monitoring Agent von
 So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent:
 
 1. Klicken Sie im Hauptmenü von Security Center auf **Sicherheitsrichtlinie**.
-2. Wählen Sie das Abonnement aus.
-3. Klicken Sie unter **Sicherheitsrichtlinie** auf **Datensammlung**.
-4. Klicken Sie unter **Datensammlung** auf **Ein**, um die automatische Bereitstellung zu aktivieren.
-5. Wählen Sie **Speichern**aus.
-
+2. Wählen Sie in der Zeile des Abonnements **Einstellungen bearbeiten>**.
+3. Wählen Sie auf der Registerkarte **Datensammlung** für **Automatische Bereitstellung** **Aktivieren** aus.
+4. Wählen Sie **Speichern**aus.
+****
   ![Aktivieren der automatischen Bereitstellung][6]
 
 Mit diesen neuen Einblicken in Ihre Azure-VMs kann Security Center zusätzliche Empfehlungen in Bezug auf den Status von Systemupdates, Sicherheitskonfigurationen für Betriebssysteme und des Endgeräteschutzes geben sowie zusätzliche Sicherheitswarnungen generieren.
@@ -91,16 +88,15 @@ Mit diesen neuen Einblicken in Ihre Azure-VMs kann Security Center zusätzliche 
 Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstartanleitungen und Tutorials fortzufahren, sollten Sie weiter den Tarif „Standard“ nutzen und die automatische Bereitstellung aktiviert lassen. Gehen Sie wie folgt vor, falls Sie nicht fortfahren oder zum Free-Tarif zurückkehren möchten:
 
 1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Sicherheitsrichtlinie**.
-2. Wählen Sie das Abonnement oder die Richtlinie aus, für das bzw. die Sie zu „Free“ zurückwechseln möchten. Der Bereich **Sicherheitsrichtlinie** wird geöffnet.
-3. Wählen Sie unter **RICHTLINIENKOMPONENTEN** die Option **Tarif**.
-4. Wählen Sie **Free**, um für das Abonnement vom Tarif „Standard“ zu „Free“ zu wechseln.
+2. Wählen Sie in der Zeile des Abonnements, das Sie wieder auf den Free-Tarif umstellen möchten, **Einstellungen bearbeiten>**.
+3. Wählen Sie **Tarif** und anschließend **Free**, um für das Abonnement vom Tarif „Standard“ zu „Free“ zu wechseln.
 5. Wählen Sie **Speichern**aus.
 
 Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
 
 1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Sicherheitsrichtlinie**.
-2. Wählen Sie das Abonnement aus, für das Sie die automatische Bereitstellung deaktivieren möchten.
-3. Wählen Sie im Bereich **Sicherheitsrichtlinie – Datensammlung** unter **Onboarding** die Option **Aus**, um die automatische Bereitstellung zu deaktivieren.
+2. Wählen Sie in der Zeile des Abonnements, für das Sie die automatische Bereitstellung deaktivieren möchten, **Einstellungen bearbeiten>**.
+3. Wählen Sie auf der Registerkarte **Datensammlung** für **Automatische Bereitstellung** **Deaktivieren** aus.
 4. Wählen Sie **Speichern**aus.
 
 >[!NOTE]
@@ -115,8 +111,9 @@ In diesem Schnellstart haben Sie ein Upgrade auf den Standard-Tarif durchgeführ
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png
-[4]: ./media/security-center-get-started/onboarding.png
+[4]: ./media/security-center-get-started/get-started.png
 [5]: ./media/security-center-get-started/pricing.png
 [6]: ./media/security-center-get-started/enable-automatic-provisioning.png
 [7]: ./media/security-center-get-started/security-alerts.png
 [8]: ./media/security-center-get-started/recommendations.png
+[9]: ./media/security-center-get-started/select-subscription.png

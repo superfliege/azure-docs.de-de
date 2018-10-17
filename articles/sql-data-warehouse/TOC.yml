@@ -238,14 +238,22 @@ items:
       href: manage-compute-with-azure-functions.md
   - name: Integrieren
     items:
-    - name: Elastische Abfrage für SQL-Datenbank
-      href: tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
-    - name: Hinzufügen eines Azure Stream Analytics-Auftrags
-      href: sql-data-warehouse-integrate-azure-stream-analytics.md
     - name: Verwenden von maschinellem Lernen
       href: sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
-    - name: Visualisieren mit Power BI
-      href: sql-data-warehouse-get-started-visualize-with-power-bi.md
+    - name: Erstellen von Datenpipelines
+      items:
+      - name: Verbinden mit Fivetran
+        href: fivetran-quickstart.md
+      - name: Erste Schritte mit Striim
+        href: striim-quickstart.md
+      - name: Hinzufügen eines Azure Stream Analytics-Auftrags
+        href: sql-data-warehouse-integrate-azure-stream-analytics.md
+    - name: Erstellen von Dashboards und Berichten
+      items:
+      - name: Elastische Abfrage für SQL-Datenbank
+        href: tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
+      - name: Visualisieren mit Power BI
+        href: sql-data-warehouse-get-started-visualize-with-power-bi.md
 - name: Verweis
   items:
   - name: T-SQL
@@ -290,9 +298,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Datenverwaltung
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 3098ed3a24f5cfe9a372c7cbd36f5acc062d8339
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 46faacd4a8704c89ed86f97d205f81cfff222b79
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901227"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354154"

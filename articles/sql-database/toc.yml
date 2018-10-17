@@ -97,6 +97,8 @@ items:
         href: sql-database-service-tiers-general-purpose-business-critical.md
       - name: Hyperscale
         href: sql-database-service-tier-hyperscale.md
+      - name: Häufig gestellte Fragen zu Hyperscale
+        href: sql-database-service-tier-hyperscale-faq.md
     - name: DTU-Diensttarife
       href: sql-database-service-tiers-dtu.md
     - name: Vorauszahlen für eine reservierte Kapazität
@@ -161,6 +163,8 @@ items:
       href: sql-database-business-continuity.md
     - name: Hochverfügbarkeit
       href: sql-database-high-availability.md
+    - name: Schnellere Datenbankwiederherstellung
+      href: sql-database-accelerated-database-recovery.md
     - name: Datenbanksicherungen
       href: sql-database-automated-backups.md
     - name: Langfristiges Aufbewahren von Sicherungen
@@ -179,13 +183,13 @@ items:
         href: sql-database-geo-replication-portal.md
       - name: Konfigurieren der Sicherheit für Replikate
         href: sql-database-geo-replication-security-config.md
-    - name: Datenbankwiederherstellung
+    - name: Optionen für die Datenbankwiederherstellung
       items:
-      - name: Datenbankwiederherstellung
+      - name: Wiederherstellung mithilfe von Sicherungen
         href: sql-database-recovery-using-backups.md
-      - name: Wiederherstellen nach einem Ausfall
+      - name: Anleitungen zur Wiederherstellung nach Ausfällen
         href: sql-database-disaster-recovery.md
-      - name: Durchführen des Notfallwiederherstellungsverfahrens
+      - name: Übungen zur Wiederherstellung
         href: sql-database-disaster-recovery-drills.md
     - name: App-Design
       items:
@@ -319,7 +323,7 @@ items:
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
   - name: Vergleich von SQL-Funktionen
     href: sql-database-features.md
-  - name: Leistung und Optimierung
+  - name: Leistung und Überwachung
     items:
     - name: Intelligente Leistung
       items:
@@ -630,9 +634,9 @@ items:
     href: /azure/architecture/
   - name: Kundenstimmen
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: abafd9d9022b306ce090b618ecc9477cd95c714e
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e39e94ccbf1da42b10cd8c618cd27c2a7eb214de
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869243"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353509"

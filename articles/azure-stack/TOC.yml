@@ -26,6 +26,10 @@ items:
     href: azure-stack-tutorial-tenant-vm.md
   - name: Anbieten von SQL-Datenbanken
     href: azure-stack-tutorial-sql-server.md
+  - name: Anbieten von hoch verfügbaren SQL-Datenbanken
+    href: azure-stack-tutorial-sql.md
+  - name: Anbieten von hoch verfügbaren MySQL-Datenbanken
+    href: azure-stack-tutorial-mysql.md
   - name: Anbieten von Web-Apps
     href: azure-stack-tutorial-app-service.md
   - name: Bereitstellen von Ethereum
@@ -380,9 +384,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Training und Zertifizierung
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 7bb089d4a10f6c30318befc5ccca71ac5bdb9017
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 6fc6652110dbc8b459e7961632b3b6e654773a5c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249552"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362499"
