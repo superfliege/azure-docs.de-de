@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24add63639f5fffe18e4b4468bfd78600a38c5f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc73bbd775da31faecf236716a2b028171438b7c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969290"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220886"
 ---
 # <a name="azure-resource-manager-overview"></a>Übersicht über den Azure-Ressourcen-Manager
 Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponenten. Dies können beispielsweise ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk oder eine Web-App, eine Datenbank, ein Datenbankserver und Drittanbieterdienste sein. Sie sehen diese Komponenten nicht als separate Entitäten, sondern als verwandte und voneinander abhängige Teile einer einzelnen Entität. Diese möchten Sie als Gruppe bereitstellen, verwalten und überwachen. Mit dem Azure-Ressourcen-Manager können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z.B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können. 
@@ -155,6 +155,12 @@ Nach dem Definieren der Vorlage können Sie die Ressourcen in Azure bereitstelle
 * [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](resource-group-template-deploy-portal.md)
 * [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API](resource-group-template-deploy-rest.md)
 
+## <a name="safe-deployment-practices"></a>Sichere Bereitstellungsmethoden
+
+Wenn Sie einen komplexen Dienst in Azure bereitstellen, müssen Sie den Dienst vielleicht in mehreren Regionen bereitstellen und seine Integrität überprüfen, bevor Sie mit dem nächsten Schritt fortfahren. Koordinieren Sie mit dem [Azure-Bereitstellungs-Manager](deployment-manager-overview.md) eine phasenweise Einführung des Diensts. Mit der phasenweisen Einführung des Diensts können Sie mögliche Probleme finden, bevor er in allen Regionen bereitgestellt ist. Wenn Sie diese Vorsichtsmaßnahmen nicht benötigen, sind die Bereitstellungsvorgänge im vorherigen Abschnitt die bessere Option.
+
+Der Bereitstellungs-Manager ist derzeit als Public Preview verfügbar.
+
 ## <a name="tags"></a>Tags
 Der Ressourcen-Manager verfügt über eine Markierungsfunktion, mit der Sie Ressourcen gemäß Ihren Anforderungen für die Verwaltung oder Abrechnung kategorisieren können. Die Verwendung von Tags (Markierungen) kann ratsam sein, wenn Sie über eine komplexe Sammlung von Ressourcengruppen und Ressourcen verfügen und diese Ressourcen auf möglichst sinnvolle Weise visualisieren müssen. Beispielsweise können Sie Ressourcen markieren, die in Ihrer Organisation eine ähnliche Funktion haben oder zu derselben Abteilung gehören. Benutzer in Ihrer Organisation können mehrere Ressourcen erstellen, die ohne Tags später schwer zu identifizieren und zu verwalten sind. Es kann beispielsweise sein, dass Sie alle Ressourcen für ein bestimmtes Projekt löschen möchten. Wenn diese Ressourcen für das Projekt nicht mit Tags versehen sind, müssen Sie manuell danach suchen. Mit Tags lassen sich unter Umständen unnötige Kosten in Ihrem Abonnement vermeiden. 
 
@@ -176,20 +182,6 @@ Das folgende Beispiel enthält ein Tag, das auf einen virtuellen Computer angewe
   }
 ]
 ```
-
-Verwenden Sie das folgende PowerShell-Cmdlet, um alle Ressourcen mit einem Tagwert abzurufen:
-
-```powershell
-Find-AzureRmResource -TagName costCenter -TagValue Finance
-```
-
-Oder führen Sie den folgenden Azure-CLI-Befehl aus:
-
-```azurecli
-az resource list --tag costCenter=Finance
-```
-
-Sie haben auch die Möglichkeit, Ressourcen mit Tags über das Azure-Portal anzuzeigen.
 
 Der [Nutzungsbericht](../billing/billing-understand-your-bill.md) für Ihr Abonnement enthält Tagnamen und -werte, sodass Sie die Kosten nach Tags aufschlüsseln können. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](resource-group-using-tags.md).
 
@@ -228,29 +220,8 @@ Es kann vorkommen, dass Sie Codeabschnitte oder Skripts ausführen möchten, mit
 
 Sie können kritische Ressourcen auch explizit sperren, um zu verhindern, dass sie von Benutzern gelöscht oder geändert werden. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](resource-group-lock-resources.md).
 
-## <a name="activity-logs"></a>Aktivitätsprotokolle
-Resource Manager protokolliert alle Vorgänge, mit denen eine Ressource erstellt, geändert oder gelöscht wird. Sie können bei der Problembehandlung mithilfe der Aktivitätsprotokolle einen Fehler ermitteln oder nachverfolgen, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat. Sie können die Protokolle nach vielen verschiedenen Werten filtern, z.B. nach dem Benutzer, der den Vorgang initiiert hat. Informationen zum Verwenden von Aktivitätsprotokollen finden Sie unter [View activity logs to audit actions on resources](resource-group-audit.md) (Anzeigen von Aktivitätsprotokollen zum Überwachen von Aktionen von Ressourcen).
-
 ## <a name="customized-policies"></a>Benutzerdefinierte Richtlinien
 Mit dem Ressourcen-Manager können Sie benutzerdefinierte Richtlinien zum Verwalten Ihrer Ressourcen erstellen. Die Arten der von Ihnen erstellten Richtlinien können unterschiedliche Szenarien umfassen. Sie können eine Namenskonvention für Ressourcen erzwingen, begrenzen, welche Arten und Instanzen von Ressourcen bereitgestellt werden können, oder begrenzen, in welchen Regionen eine Ressourcenart gehostet werden kann. Um die Abrechnung nach Abteilungen zu organisieren, können Sie die Verwendung eines Tagwerts für Ressourcen obligatorisch machen. Sie erstellen Richtlinien, um Kosten zu senken und die Konsistenz in Ihrem Abonnement zu wahren. 
-
-Sie definieren Richtlinien per JSON-Code und wenden diese Richtlinien dann entweder in Ihrem gesamten Abonnement oder in einer Ressourcengruppe an. Richtlinien werden auf Ressourcentypen angewendet und unterscheiden sich somit von der rollenbasierten Zugriffssteuerung.
-
-Das folgende Beispiel enthält eine Richtlinie zum Sicherstellen der Einheitlichkeit von Tags, indem angegeben wird, dass alle Ressourcen ein costCenter-Tag enthalten.
-
-```json
-{
-  "if": {
-    "not" : {
-      "field" : "tags",
-      "containsKey" : "costCenter"
-    }
-  },
-  "then" : {
-    "effect" : "deny"
-  }
-}
-```
 
 Es gibt noch viele weitere Arten von Richtlinien, die Sie erstellen können. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../azure-policy/azure-policy-introduction.md).
 

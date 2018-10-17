@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 181e31530960f031dd2785b852c0ae15c21af782
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186307"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406381"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe des Azure-Portals
 
@@ -54,7 +54,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-
     - Abonnement: Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource vorhanden ist oder in Rechnung gestellt wird.
     - Ressourcengruppe: **myresourcegroup**
     - Serveradministrator-Anmeldename und ein Kennwort Ihrer Wahl
-    - Speicherort
+    - Standort
     - PostgreSQL-Version
 
    > [!IMPORTANT]
@@ -85,7 +85,7 @@ Der Azure Database for PostgreSQL-Dienst verwendet eine Firewall auf der Servere
 
 2.  Wählen Sie auf der Serverseite die Option **Verbindungssicherheit** aus. 
 
-3.  Klicken Sie in das Textfeld unter **Regelname**, und fügen Sie eine neue Firewallregel hinzu, um den IP-Adressbereich auf die Whitelist für die Konnektivität zu setzen. Für dieses Tutorial lassen wir durch Eingabe von **Regelname = AllowAllIps**, **Start-IP = 0.0.0.0** und **End-IP = 255.255.255.255** alle IP-Adressen zu und klicken dann auf **Speichern**. Sie können eine bestimmte Firewallregel festlegen, die einen kleineren Bereich von IP-Adressen abdeckt, mit denen Verbindungen aus dem Netzwerk hergestellt werden können.
+3.  Klicken Sie in das Textfeld unter **Regelname**, und fügen Sie eine neue Firewallregel hinzu, um den IP-Adressbereich auf die Whitelist für die Konnektivität zu setzen. Geben Sie den IP-Adressbereich ein. Klicken Sie auf **Speichern**.
 
    ![Azure-Datenbank für PostgreSQL – Erstellen von Firewallregeln](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 

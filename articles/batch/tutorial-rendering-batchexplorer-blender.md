@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 8df9054e069540398c137290e682bb4160b4a799
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 46c65cd7ac5734134fa7c4ad6fd85f39d1188e28
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40036480"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392552"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer
 
@@ -24,11 +24,11 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Rendern mehrerer Frames
 > * Anzeigen und Herunterladen der gerenderten Frame-Dateien
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ein Azure Batch-Konto mit einem zugeordneten Speicherkonto.  Informationen zum Erstellen eines Batch-Kontos finden Sie in den Batch-Schnellstartartikeln, etwa [Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI](https://docs.microsoft.com/azure/batch/quick-create-cli).
+Sie benötigen ein Abonnement mit nutzungsbasierter Bezahlung oder eine andere Azure-Kaufoption, um die Renderinganwendungen in Batch auf nutzungsbasierter Basis zu verwenden. Nutzungsbasierte Lizenzierung wird nicht unterstützt, wenn Sie ein kostenloses Azure-Angebot verwenden, das mit monetären Gutschriften verbunden ist.
+
+Sie benötigen ein Azure Batch-Konto mit einem zugeordneten Speicherkonto.  Informationen zum Erstellen eines Batch-Kontos finden Sie in den Batch-Schnellstartartikeln, etwa [Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI](https://docs.microsoft.com/azure/batch/quick-create-cli).
 
 Für die in diesem Tutorial angegebene VM-Größe und -Anzahl ist ein Kernkontingent mit niedriger Priorität von mindestens 50 Kernen erforderlich. Das Standardkontingent kann zwar verwendet werden, Sie benötigen dann aber eine kleinere VM-Größe, was bedeutet, dass das Rendern der Bilder länger dauert. Die Vorgehensweise zum Anfordern eines höheren Kernkontingents wird in [diesem Artikel](https://docs.microsoft.com/azure/batch/batch-quota-limit) ausführlich beschrieben.
 

@@ -3,18 +3,17 @@ title: Private Docker-Containerregistrierungen in Azure
 description: Enthält eine Einführung in den Dienst „Azure-Containerregistrierung“ und die Bereitstellung von cloudbasierten, verwalteten, privaten Docker-Registrierungen.
 services: container-registry
 author: stevelas
-manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/08/2018
+ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: f282d7d6950278d0c270009256cf054a0d630e60
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5d60144c6b3aada74e4b89c905085835dd5b32d2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120634"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031330"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Einführung in private Docker-Containerregistrierungen in Azure
 
@@ -28,12 +27,12 @@ Hintergrundinformationen zu Docker und Containern finden Sie im [Docker – Übe
 
 Rufen Sie Images aus einer Azure-Containerregistrierung für verschiedene Bereitstellungsziele ab:
 
-* **Skalierbare Orchestrierungssysteme** zum Verwalten von Anwendungen in Containern über Cluster mit Hosts hinweg, z.B. [DC/OS](https://docs.mesosphere.com/), [Docker Swarm](https://docs.docker.com/swarm/) und [Kubernetes](http://kubernetes.io/docs/).
+* **Skalierbare Orchestrierungssysteme** zum Verwalten von Anwendungen in Containern über Cluster mit Hosts hinweg, z.B. [DC/OS](http://kubernetes.io/docs/), [Docker Swarm](https://docs.mesosphere.com/) und [Kubernetes](https://docs.docker.com/swarm/).
 * **Azure-Dienste**, die die bedarfsorientierte Erstellung und Ausführung von Anwendungen unterstützen, z. B. [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) und andere.
 
-Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine Pushübertragung in eine Containerregistrierung durchführen. Sie können Daten beispielsweise mit einem Tool für Continuous Integration und Entwicklung an eine Containerregistrierung wie z.B. [Visual Studio Team Services](https://www.visualstudio.com/docs/overview) oder [Jenkins](https://jenkins.io/) übertragen.
+Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine Pushübertragung in eine Containerregistrierung durchführen. Sie können Daten beispielsweise mit einem Tool für Continuous Integration und Bereitstellung an eine Containerregistrierung wie z.B. [Azure DevOps Services](https://www.visualstudio.com/docs/overview) oder [Jenkins](https://jenkins.io/) übertragen.
 
-Konfigurieren Sie [ACR Build](#azure-container-registry-build)-Buildaufgaben, um Anwendungsimages automatisch neu zu erstellen, wenn ihre Basisimages aktualisiert werden. Verwenden Sie ACR Build, um Imagebuilds zu automatisieren, wenn das Team ein Commit für Code an ein Git-Repository ausführt. *ACR Build befindet sich derzeit in der Vorschauphase.*
+Konfigurieren Sie [ACR Tasks](#azure-container-registry-build), um Anwendungsimages automatisch neu zu erstellen, wenn ihre Basisimages aktualisiert werden. Verwenden Sie ACR Tasks, um Imagebuilds zu automatisieren, wenn das Team ein Commit für Code an ein Git-Repository ausführt.
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 
@@ -51,14 +50,14 @@ Konfigurieren Sie [ACR Build](#azure-container-registry-build)-Buildaufgaben, um
 
 * **Container**: Ein Container definiert eine Softwareanwendung und ihre Abhängigkeiten innerhalb eines vollständigen Dateisystems, einschließlich Code, Laufzeit, Systemtools und Bibliotheken. Führen Sie Docker-Container basierend auf Windows- oder Linux-Images aus, die Sie aus einer Containerregistrierung abrufen. Für Container, die auf demselben Computer ausgeführt werden, wird derselbe Betriebssystemkernel genutzt. Docker-Container sind ohne Einschränkungen für alle gängigen Linux-Distributionen sowie für macOS und Windows portierbar.
 
-## <a name="azure-container-registry-build-preview"></a>Azure Container Registry Build (Vorschau)
+## <a name="azure-container-registry-tasks"></a>Azure Container Registry Tasks
 
-[Azure Container Registry Build](container-registry-build-overview.md) (ACR Build) ist eine Suite mit Features in Azure Container Registry, die optimierte und effiziente Docker-Containerimage-Builds in Azure bietet. Verwenden Sie ACR Build, um die Inner Loop-Entwicklungsumgebung in die Cloud zu erweitern, indem Sie `docker build`-Vorgänge in Azure auslagern. Konfigurieren Sie Buildaufgaben, um die Pipeline für das Containerbetriebssystem- und Frameworkpatching zu automatisieren und automatisch Images zu erstellen, wenn das Team ein Commit für Code an die Quellcodeverwaltung ausführt.
+[Azure Container Registry Tasks](container-registry-tasks-overview.md) (ACR Tasks) ist eine Suite mit Features in Azure Container Registry, die optimierte und effiziente Docker-Containerimage-Builds in Azure bietet. Verwenden Sie ACR Tasks, um die Inner Loop-Entwicklungsumgebung in die Cloud zu erweitern, indem Sie `docker build`-Vorgänge in Azure auslagern. Konfigurieren Sie Buildaufgaben, um die Pipeline für das Containerbetriebssystem- und Frameworkpatching zu automatisieren und automatisch Images zu erstellen, wenn das Team ein Commit für Code an die Quellcodeverwaltung ausführt.
 
-[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
+[Mehrstufige Aufgaben](container-registry-tasks-overview.md#multi-step-tasks-preview), eine Previewfunktion von ACR Tasks, bietet schrittbasierte Aufgabendefinition und Ausführung für Erstellen, Testen und Patchen von Containerimages in der Cloud. Aufgabenschritte definieren einzelne Containerimagebuild- und Pushvorgänge. Sie können auch die Ausführung eines oder mehrerer Container mit jedem Schritt definieren, wobei der Container als Ausführungsumgebung verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen einer Containerregistrierung mit dem Azure-Portal](container-registry-get-started-portal.md)
 * [Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle](container-registry-get-started-azure-cli.md)
-* [Automatisieren von Betriebssystem- und Frameworkpatching mit ACR Build](container-registry-build-overview.md) (Vorschau)
+* [Automatisieren von Betriebssystem- und Frameworkpatching mit ACR Tasks](container-registry-tasks-overview.md)

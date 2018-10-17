@@ -13,20 +13,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 7e86ba2b7fc729bd4663503282a936a5eaddf3ca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8cf779f203850ca03942ba2395baf07412712610
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637872"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092968"
 ---
 # <a name="compare-managed-labs-in-azure-lab-services-and-devtest-labs"></a>Vergleichen verwalteter Labs in Azure Lab Services und DevTest Labs
 Sie können zwei Arten von Labs erstellen: **verwaltete Labs** mit Azure Lab Services und **benutzerdefinierte Labs** mit Azure DevTest Labs. Wenn Sie lediglich Ihre Lab-Anforderungen eingeben und die Einrichtung und Verwaltung der dafür erforderlichen Infrastruktur dem Dienst überlassen möchten, wählen Sie eines der **verwalteten Labs**. Aktuell können mit Azure Lab Services nur verwaltete Labs vom Typ **Classroom-Lab** erstellt werden. Wenn Sie Ihre eigene Infrastruktur verwalten möchten, erstellen Sie ein Lab mithilfe von Azure DevTest Labs.
 
 Ausführlichere Informationen zu diesen Labs finden Sie in den folgenden Abschnitten. 
 
-## <a name="managed-labs"></a>Verwaltete Labs
-Verwaltete Labs bieten verschiedene Arten von Labs für Ihre individuellen Anforderungen. Aktuell unterstützt Azure Lab Services nur verwaltete Labs vom Typ **Classroom-Lab**. Verwaltete Labs zeichnen sich durch ihren geringen Einrichtungsaufwand aus und sind schnell einsatzbereit. Der Dienst übernimmt die gesamte Infrastrukturverwaltung für das Lab – vom Hochfahren der virtuellen Computer über die Fehlerbehandlung bis hin zur Skalierung der Infrastruktur. Wenn Sie ein verwaltetes Lab erstellen möchten, müssen Sie zunächst ein Lab-Konto für Ihre Organisation erstellen. Das Lab-Konto fungiert als zentrales Konto, unter dem alle Labs der Organisation verwaltet werden. 
+## <a name="managed-lab-types"></a>Verwaltete Labtypen
+Mit Azure Lab Services können Sie Labs erstellen, deren Infrastruktur von Azure verwaltet wird. In diesem Artikel werden sie als verwaltete Labs bezeichnet. Verwaltete Labs bieten verschiedene Arten von Labs für Ihre individuellen Anforderungen. Derzeit wird das **Classroom-Lab** als einziger verwalteter Labtyp unterstützt. 
+
+Verwaltete Labs zeichnen sich durch ihren geringen Einrichtungsaufwand aus und sind schnell einsatzbereit. Der Dienst übernimmt die gesamte Infrastrukturverwaltung für das Lab – vom Hochfahren der virtuellen Computer über die Fehlerbehandlung bis hin zur Skalierung der Infrastruktur. Wenn Sie ein verwaltetes Lab wie ein Classroom-Lab erstellen möchten, müssen Sie zunächst ein Labkonto für Ihre Organisation erstellen. Das Lab-Konto fungiert als zentrales Konto, unter dem alle Labs der Organisation verwaltet werden. 
 
 Wenn Sie Azure-Ressourcen in diesen verwalteten Labs erstellen und verwenden, erstellt und verwaltet der Dienst Ressourcen in internen Microsoft-Abonnements. Sie werden nicht in Ihrem eigenen Azure-Abonnement erstellt. Der Dienst überwacht die Nutzung dieser Ressourcen in internen Microsoft-Abonnements. Diese Nutzung wird dann über Ihr Azure-Abonnement abgerechnet, dem das Lab-Konto angehört.   
 
@@ -51,11 +53,11 @@ Im Anschluss finden Sie einige **Anwendungsfälle für DevTest Labs**:
 - Verwenden Sie ein Lab, das mit der neuesten Version Ihres Produkts konfiguriert ist, um Schulungen für Kunden anzubieten. Geben Sie jedem Kunden ein begrenztes Zeitkontingent für die Lab-Verwendung. 
 
 
-## <a name="managed-labs-vs-devtest-labs"></a>Verwaltete Labs und DevTest Labs
+## <a name="managed-lab-types-vs-devtest-labs"></a>Verwaltete Labtypen im Vergleich zu DevTest Labs
 In der folgenden Tabelle werden die beiden Arten von Labs verglichen, die von Azure Lab Services unterstützt werden: 
 
 | Features | Verwaltete Labs | DevTest Labs |
-| -------- | ----------------  | ---------- |
+| -------- | ----------------- | ---------- |
 | Verwaltung der Azure-Infrastruktur im Lab |  Automatisch durch den Dienst | Manuelle Verwaltung  |
 | Integrierte Resilienz gegen Infrastrukturprobleme | Automatisch durch den Dienst | Manuelle Verwaltung  |
 | Abonnementverwaltung | Der Dienst übernimmt die Zuteilung von Ressourcen in Microsoft-Abonnements, die dem Dienst zugrunde liegen. Die Skalierung wird automatisch vom Dienst durchgeführt. | Die Verwaltung muss manuell in Ihrem eigenen Azure-Abonnement durchgeführt werden. Abonnements werden nicht automatisch skaliert. |

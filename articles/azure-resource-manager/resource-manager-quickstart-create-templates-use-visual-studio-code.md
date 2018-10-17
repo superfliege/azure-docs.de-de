@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/24/2018
+ms.date: 09/07/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 540aabc9164e43776d2166926430f4512dd23f49
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a2b4c4824960c21011876a7c0adf029fc56d93d2
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106048"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419116"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code
 
@@ -96,22 +96,38 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartan
 
     ![Azure-Portal, Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
 
-    Cloud Shell wird am unteren Bildschirmrand geöffnet.
+    Cloud Shell wird am unteren Fensterrand geöffnet.
 
-3. Klicken Sie in Cloud Shell oben links auf **PowerShell** oder **Bash**. Zur Verwendung der CLI müssen Sie eine Bash-Sitzung öffnen. Zur Ausführung von PowerShell müssen Sie eine PowerShell-Sitzung öffnen. Klicken Sie zum Wechseln auf den Pfeil nach unten, und wählen Sie dann den Interpreter aus. In der folgenden Abbildung ist der Wechsel von PowerShell zu Bash dargestellt:
+3. Klicken Sie in Cloud Shell oben links auf **PowerShell** oder **Bash**. Zur Verwendung der CLI müssen Sie eine Bash-Sitzung öffnen. Zur Ausführung von PowerShell müssen Sie eine PowerShell-Sitzung öffnen. Wählen Sie den nach unten gerichteten Pfeil, um zwischen Bash und PowerShell zu wechseln. In der folgenden Abbildung ist der Wechsel von PowerShell zu Bash dargestellt:
 
     ![Azure-Portal, Cloud Shell, CLI](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
     Bei einem Wechsel ist ein Neustart der Shell erforderlich.
 4. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus.
 
+    # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+
     ![Azure-Portal, Cloud Shell, Datei hochladen](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Azure-Portal, Cloud Shell, Datei hochladen](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
+    
+    ---
 
     Sie müssen die Vorlagendatei hochladen, bevor Sie sie über die Shell bereitstellen können.
 5. Wählen Sie die Datei aus, die Sie zuvor in der Schnellstartanleitung gespeichert haben. Der Standardname lautet **azuredeploy.json**.
 6. Führen Sie aus Cloud Shell den Befehl **ls** aus, um zu überprüfen, ob die Datei erfolgreich hochgeladen wurde. Sie können auch den Befehl **Cat** verwenden, um den Inhalt der Vorlage zu überprüfen. In der folgenden Abbildung ist die Ausführung des Befehls über Bash dargestellt.  In einer PowerShell-Sitzung verwenden Sie die gleichen Befehle.
 
+    # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+
     ![Azure-Portal, Cloud Shell, Datei auflisten](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Azure-Portal, Cloud Shell, Datei auflisten](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
+    
+    ---
 7. Führen Sie in Cloud Shell die folgenden Befehle aus. Klicken Sie auf die Registerkarte, um den PowerShell-Code oder den CLI-Code anzuzeigen.
 
     # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
@@ -131,9 +147,17 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartan
     
     ---
 
-    Der folgende Screenshot zeigt eine CLI-Beispielausführung:
+    Der folgende Screenshot zeigt eine Beispielbereitstellung:
+
+    # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
     ![Azure-Portal, Cloud Shell, Vorlage bereitstellen](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Azure-Portal, Cloud Shell, Vorlage bereitstellen](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
+    
+    ---
 
     Im Screenshot werden diese Werte verwendet:
 
@@ -170,7 +194,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial geht es in erster Linie um die Bearbeitung einer vorhandenen Azure-Schnellstartvorlage mithilfe von Visual Studio Code. Darüber hinaus haben Sie gelernt, wie Sie die Vorlage über Azure Cloud Shell mithilfe der CLI oder PowerShell bereitstellen. Die Azure-Schnellstartvorlagen decken unter Umständen nicht alle Ihre Anforderungen ab. Im nächsten Tutorial wird gezeigt, wie Sie die Informationen in der Vorlagenreferenz suchen, um ein verschlüsseltes Azure Storage-Konto erstellen zu können.
+In diesem Schnellstart geht es in erster Linie um die Bearbeitung einer vorhandenen Azure-Schnellstartvorlage mithilfe von Visual Studio Code. Darüber hinaus haben Sie gelernt, wie Sie die Vorlage über Azure Cloud Shell mithilfe der CLI oder PowerShell bereitstellen. Die Azure-Schnellstartvorlagen decken unter Umständen nicht alle Ihre Anforderungen ab. Im nächsten Tutorial wird gezeigt, wie Sie die Informationen in der Vorlagenreferenz suchen, um ein verschlüsseltes Azure Storage-Konto erstellen zu können.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Erstellen einer Azure Resource Manager-Vorlage für die Bereitstellung eines verschlüsselten Speicherkontos](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

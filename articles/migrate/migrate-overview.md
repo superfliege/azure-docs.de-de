@@ -4,15 +4,15 @@ description: Enthält eine Übersicht über den Azure Migrate-Dienst.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 08/08/2018
+ms.date: 09/25/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8371a160d129586f63b2f14946ed34a8d0637f6c
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d2a8885ffb9148d408eff0e8a7d2ef09121e5359
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714239"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162037"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -33,9 +33,12 @@ Azure Migrate bietet Folgendes:
 - Wenn Sie virtuelle Hyper-Computer und physische Server bewerten möchten, verwenden Sie den [Azure Site Recovery-Bereitstellungsplaner](http://aka.ms/asr-dp-hyperv-doc) für Hyper-V und unsere [Partnertools](https://azure.microsoft.com/migration/partners/) für physische Computer.
 - Sie können in einer einzigen Ermittlung bis zu 1.500 und in einem einzelnen Projekt bis zu 1.500 virtuelle Computer ermitteln. Außerdem können Sie in einem einzelnen Assessment bis zu 1.500 virtuelle Computer bewerten.
 - Wenn Sie eine Ermittlung für eine größere Umgebung durchführen möchten, können Sie die Ermittlung aufteilen und mehrere Projekte erstellen. [Weitere Informationen](how-to-scale-assessment.md) Azure Migrate unterstützt bis zu 20 Projekte pro Abonnement.
-- Azure Migrate-Projekte können nur in der Region „USA, Westen-Mitte“ oder „USA, Osten“ erstellt werden. Dies hat keinerlei Auswirkungen auf die Möglichkeit, die Migration zu einem beliebigen Azure-Zielstandort zu planen. Der Standort des Migrationsprojekts wird nur zum Speichern der Metadaten verwendet, die in der lokalen Umgebung ermittelt wurden.
 - Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
+- Sie können ein Azure Migrate-Projekt nur in den USA erstellen. Dies hat keinerlei Auswirkungen auf die Möglichkeit, die Migration zu einem beliebigen Azure-Zielstandort zu planen. Die Region des Migrationsprojekts wird nur zum Speichern der Metadaten verwendet, die in der lokalen Umgebung ermittelt wurden. [Erfahren Sie mehr](https://docs.microsoft.com/azure/migrate/resources-faq#discovery-and-assessment) über die von Azure Migrate gesammelten Metadaten. Die gesammelten Metadaten werden in einer der Regionen in der ausgewählten [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) gespeichert:
 
+**Geografie** | **Regionen**
+--- | ---
+USA | „USA, Westen-Mitte“; „USA, Osten“
 
 ## <a name="what-do-i-need-to-pay-for"></a>Für was muss ich zahlen?
 
@@ -49,14 +52,14 @@ Bewertungseinstellungen können je nach Bedarf angepasst werden. Die Bewertungse
 **Eigenschaft** | **Details**
 --- | ---
 **Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll.<br/><br/>Azure Migrate unterstützt derzeit 30 Regionen. [Hier](https://azure.microsoft.com/global-infrastructure/services/) sind die Regionen aufgeführt. Die Zielregion ist standardmäßig auf „USA, Westen 2“ festgelegt.
-**Speichertyp** | Die Art der Datenträger, die Sie in Azure zuordnen möchten. Dies ist bei Verwendung des Größenkriteriums **Wie lokal** relevant. Der Zieldatenträgertyp kann als „Premium“ (Standardeinstellung) oder als „Managed Disks Standard“ angegeben werden. Bei der leistungsbasierten Größenanpassung werden für die Größenempfehlung automatisch die Leistungsdaten der virtuellen Computer herangezogen. 
-**Größenkriterium** | Sie können die Größenanpassung auf der Grundlage des **Leistungsverlaufs** der lokalen virtuellen Computer vornehmen oder die Größe ohne Berücksichtigung des Leistungsverlauf **an die lokale Umgebung** (Standardeinstellung) anpassen. 
+**Speichertyp** | Die Art der Datenträger, die Sie in Azure zuordnen möchten. Dies ist bei Verwendung des Größenkriteriums **Wie lokal** relevant. Der Zieldatenträgertyp kann als „Premium“ (Standardeinstellung) oder als „Managed Disks Standard“ angegeben werden. Bei der leistungsbasierten Größenanpassung werden für die Größenempfehlung automatisch die Leistungsdaten der virtuellen Computer herangezogen.
+**Größenkriterium** | Sie können die Größenanpassung auf der Grundlage des **Leistungsverlaufs** der lokalen virtuellen Computer vornehmen oder die Größe ohne Berücksichtigung des Leistungsverlauf **an die lokale Umgebung** (Standardeinstellung) anpassen.
 **Azure-Angebot** | Das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/), bei dem Sie registriert sind. Dies wird dann von Azure Migrate bei der Kostenschätzung entsprechend berücksichtigt.
 **Azure-Hybridvorteil** | Mit dieser Eigenschaft wird angegeben, ob Sie über Software Assurance verfügen und Anspruch auf den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) mit Preisnachlässen haben.
 **Reservierte Instanzen** |  Mit dieser Eigenschaft wird angegeben, ob Sie [reservierte Instanzen](https://azure.microsoft.com/pricing/reserved-vm-instances/) in Azure besitzen. Dies wird dann von Azure Migrate bei der Kostenschätzung entsprechend berücksichtigt.
 **VM-Betriebszeit** | Die Dauer, für die virtuelle Computer in Azure ausgeführt werden. Diese wird bei der Kostenschätzung entsprechend berücksichtigt.
 **Preisstufe** | Der [Tarif (Basic/Standard)](../virtual-machines/windows/sizes-general.md) für die virtuellen Azure-Zielcomputer. Wenn Sie beispielsweise eine Produktionsumgebung migrieren möchten, sollten Sie den Standard-Tarif angeben, der virtuelle Computer mit geringer Latenz umfasst, jedoch auch kostenintensiver sein kann. In einer Testumgebung können Sie hingegen den Tarif „Basic“ mit höherer Wartezeit und niedrigeren Kosten verwenden. Standardmäßig wird der Tarif [Standard](../virtual-machines/windows/sizes-general.md) verwendet.
-**Leistungsverlauf** | Standardmäßig bewertet Azure Migrate die Leistung lokaler Computer anhand des Leistungsverlaufs des letzten Tags mit einem 95-prozentigen Perzentilwert. 
+**Leistungsverlauf** | Standardmäßig bewertet Azure Migrate die Leistung lokaler Computer anhand des Leistungsverlaufs des letzten Tags mit einem 95-prozentigen Perzentilwert.
 **VM-Serie** | Die für die Größenschätzung verwendete VM-Serie. Wenn Sie beispielsweise eine Produktionsumgebung haben, die Sie nicht zu virtuellen Computern der A-Serie in Azure migrieren möchten, können Sie die A-Serie aus der Liste oder Serie ausschließen. Die Größenanpassung erfolgt nur basierend auf der ausgewählten Serie.   
 **Komfortfaktor** | Bei Azure Migrate wird während der Bewertung ein Puffer (Komfortfaktor) berücksichtigt. Dieser Puffer wird zusätzlich zu den Daten zur Computernutzung für VMs (CPU, Arbeitsspeicher, Datenträger und Netzwerk) angewendet. Beim Komfortfaktor geht es um Bereiche wie saisonale Nutzung, kurzer Leistungsverlauf und voraussichtliche zukünftige Zunahme der Nutzung.<br/><br/> Beispiel: Für einen virtuellen Computer mit zehn Kernen und einer Auslastung von 20 Prozent ergibt sich normalerweise ein virtueller Computer mit zwei Kernen. Bei einem Komfortfaktor von 2.0x ist das Ergebnis dagegen eine VM mit vier Kernen. Die Standardeinstellung für den Komfortfaktor lautet 1.3x.
 
@@ -80,10 +83,10 @@ Bewertungseinstellungen können je nach Bedarf angepasst werden. Die Bewertungse
 In der Tabelle sind die Ports zusammengefasst, die für die Azure Migrate-Kommunikation erforderlich sind.
 
 Komponente | Kommuniziert mit |  Details
---- | --- |--- 
+--- | --- |---
 Collector  | Azure Migrate-Dienst | Der Collector stellt über den SSL-Port 443 eine Verbindung mit dem Dienst her.
-Collector | vCenter Server | Standardmäßig stellt der Collector eine Verbindung mit vCenter Server über Port 443 her. Wenn der Server an einem anderen Port lauscht, konfigurieren Sie ihn auf dem virtuellen Collectorcomputer als ausgehenden Port. 
-Lokale VM | Log Analytics-Arbeitsbereich | [TCP 443] | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) nutzt TCP-Port 443, um eine Verbindung mit Log Analytics herzustellen. Sie benötigen diesen Port nur, wenn Sie die Visualisierung von Abhängigkeiten verwenden, für die der MMA-Agent erforderlich ist. 
+Collector | vCenter Server | Standardmäßig stellt der Collector eine Verbindung mit vCenter Server über Port 443 her. Wenn der Server an einem anderen Port lauscht, konfigurieren Sie ihn auf dem virtuellen Collectorcomputer als ausgehenden Port.
+Lokale VM | Log Analytics-Arbeitsbereich | [TCP 443] | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) nutzt TCP-Port 443, um eine Verbindung mit Log Analytics herzustellen. Sie benötigen diesen Port nur, wenn Sie die Visualisierung von Abhängigkeiten verwenden, für die der MMA-Agent erforderlich ist.
 
 
 ## <a name="what-happens-after-assessment"></a>Was passiert nach der Bewertung?
@@ -91,7 +94,7 @@ Lokale VM | Log Analytics-Arbeitsbereich | [TCP 443] | [Microsoft Monitoring Age
 Nachdem Sie lokale Computer bewertet haben, können Sie einige Tools nutzen, um die Migration durchzuführen:
 
 - **Azure Site Recovery:** Sie können Azure Site Recovery für die Migration zu Azure verwenden. Dazu [bereiten Sie die erforderlichen Azure-Komponenten](../site-recovery/tutorial-prepare-azure.md) vor, einschließlich eines Speicherkontos und eines virtuellen Netzwerks. Lokal [bereiten Sie Ihre VMware-Umgebung vor](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Wenn alles vorbereitet ist, richten Sie die Replikation in Azure ein und aktivieren sie. Anschließend migrieren Sie die virtuellen Computer. [Weitere Informationen](../site-recovery/vmware-azure-tutorial.md)
-- **Azure Database Migration:** Wenn Ihre lokalen Computer eine Datenbank wie etwa SQL Server, MySQL oder Oracle ausführen, können Sie den [Azure Database Migration Service](../dms/dms-overview.md) für die Migration zu Azure verwenden. 
+- **Azure Database Migration:** Wenn Ihre lokalen Computer eine Datenbank wie etwa SQL Server, MySQL oder Oracle ausführen, können Sie den [Azure Database Migration Service](../dms/dms-overview.md) für die Migration zu Azure verwenden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

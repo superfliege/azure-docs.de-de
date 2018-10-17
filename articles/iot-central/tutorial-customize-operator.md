@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c0b42c3efd5e015eaf1fbd750f835d8de8818de9
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185850"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038288"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Tutorial: Anpassen der Azure IoT Central-Ansicht für Bediener
 
@@ -50,9 +50,9 @@ Als Ersteller können Sie definieren, welche Informationen auf einem Gerätedash
 
     ![Auswählen der verbundenen Klimaanlage](media/tutorial-customize-operator/selectdevice.png)
 
-    Wenn Sie eine Änderung an einem Gerät vornehmen (beispielsweise an **Connected Air Conditioner-1**), nehmen Sie eine Änderung an der zugrunde liegenden Vorlage vor. Weitere Informationen finden Sie unter [Erstellen einer neuen Gerätevorlagenversion](howto-version-devicetemplate.md).
+    Innerhalb eines Geräts, z.B. **Connected Air Conditioner-1**, können Sie **Vorlage bearbeiten** auswählen, um eine Änderung an der zugrunde liegenden Vorlage vorzunehmen. Weitere Informationen finden Sie unter [Erstellen einer neuen Gerätevorlagenversion](howto-version-devicetemplate.md).
 
-3. Klicken Sie zum Bearbeiten des Dashboards auf **Dashboard**:
+3. Wählen Sie zum Bearbeiten des Dashboards **Dashboard** und dann **Vorlage bearbeiten** aus:
 
     ![Dashboardseite der Gerätevorlage](media/tutorial-customize-operator/dashboard.png)
 
@@ -77,11 +77,13 @@ Als Ersteller können Sie definieren, welche Informationen auf einem Gerätedash
 
     ![Bearbeiten des Dashboardlayouts](media/tutorial-customize-operator/dashboardlayout.png)
 
+7. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**.
+
 ## <a name="configure-your-settings-layout"></a>Konfigurieren des Layouts Ihrer Einstellungen
 
 Als Ersteller können Sie auch die Darstellung der Geräteeinstellungen für Bediener konfigurieren. Bediener verwenden die Seite mit den Geräteeinstellungen, um ein Gerät zu konfigurieren. So kann ein Bediener auf der Einstellungsseite beispielsweise die Zieltemperatur für die Kühlanlage festlegen.
 
-1. Klicken Sie auf **Einstellungen**, um das Layout der Einstellungen für Ihre verbundene Klimaanlage zu bearbeiten:
+1. Wählen Sie **Einstellungen** und dann **Vorlage bearbeiten** aus, um das Layout der Einstellungen für Ihre verbundene Klimaanlage zu bearbeiten:
 
     ![Seite "Einstellungen"](media/tutorial-customize-operator/settings.png)
 
@@ -89,14 +91,16 @@ Als Ersteller können Sie auch die Darstellung der Geräteeinstellungen für Bed
 
     ![Bearbeiten des Layouts der Einstellungen](media/tutorial-customize-operator/settingslayout.png)
 
+3. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**.
+
 > [!NOTE]
-> Im **Entwurfsmodus** können die Werte der Einstellungen nicht bearbeitet werden.
+> Im Modus **Vorlage bearbeiten** können die Werte der Einstellungen nicht bearbeitet werden.
 
 ## <a name="configure-your-properties-layout"></a>Konfigurieren des Layouts Ihrer Eigenschaften
 
 Neben dem Dashboard und den Einstellungen können Sie auch die Darstellung der Geräteeigenschaften für Bediener konfigurieren. Bediener verwenden die Seite mit den Geräteeigenschaften zur Verwaltung von Gerätemetadaten. So kann ein Bediener über die Eigenschaftenseite beispielsweise die Seriennummer eines Geräts anzeigen oder die Kontaktdetails für den Hersteller aktualisieren.
 
-1. Klicken Sie auf **Eigenschaften**, um das Layout der Eigenschaften für Ihre verbundene Klimaanlage zu bearbeiten:
+1. Wählen Sie **Eigenschaften** und dann **Vorlage bearbeiten** aus, um das Layout der Eigenschaften für Ihre verbundene Klimaanlage zu bearbeiten:
 
     ![Eigenschaftenseite](media/tutorial-customize-operator/properties.png)
 
@@ -104,16 +108,18 @@ Neben dem Dashboard und den Einstellungen können Sie auch die Darstellung der G
 
     ![Bearbeiten des Layouts der Eigenschaften](media/tutorial-customize-operator/propertieslayout.png)
 
+3. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**.
+
 > [!NOTE]
-> Im **Entwurfsmodus** können die Werte der Eigenschaften nicht bearbeitet werden.
+> Im Modus **Vorlage bearbeiten** können die Werte der Eigenschaften nicht bearbeitet werden.
 
 ## <a name="preview-the-connected-air-conditioner-device-as-an-operator"></a>Anzeigen einer Vorschau der verbundenen Klimaanlage als Bediener
 
-Im **Entwurfsmodus** können Sie die Seiten „Dashboard“, „Einstellungen“ und „Eigenschaften“ für einen Bediener anpassen. Wenn Sie den **Entwurfsmodus** deaktivieren, können Sie die Anwendung als Bediener anzeigen.
+Im Modus **Vorlage bearbeiten** können Sie die Seiten „Dashboard“, „Einstellungen“ und „Eigenschaften“ für einen Bediener anpassen. Wenn Sie nicht im **Vorlage bearbeiten**-Modus sind, können Sie die Anwendung als Bediener anzeigen.
 
-1. Wenn Sie Ihre verbundene Klimaanlage als Bediener anzeigen möchten, müssen Sie den **Entwurfsmodus** deaktivieren. Legen Sie zum Deaktivieren des **Entwurfsmodus** den Umschalter für den **Entwurfsmodus** rechts oben auf der Seite auf „Aus“ fest.
+1. Wenn Sie Ihre verbundene Klimaanlage als Bediener anzeigen möchten, müssen Sie auf **Fertig** klicken, um die Bearbeitung der Vorlage zu beenden. Damit kehren Sie zu einer Bedieneransicht des Geräts zurück.
 
-2. Bearbeiten Sie zum Aktualisieren der Seriennummer dieses Geräts den Wert in der Kachel für die Seriennummer, und klicken Sie anschließend auf **Speichern**:
+2. Bearbeiten Sie zum Aktualisieren des Standorts dieses Geräts den Wert in der Kachel für den Standort, und klicken Sie anschließend auf **Speichern**:
 
     ![Eingeben eines Eigenschaftswerts](media/tutorial-customize-operator/editproperty.png)
 
@@ -131,7 +137,7 @@ Im **Entwurfsmodus** können Sie die Seiten „Dashboard“, „Einstellungen“
 
 Wenn sich ein Ersteller oder Bediener bei einer Azure IoT Central-Anwendung anmeldet, wird eine Startseite angezeigt. Ersteller können den Inhalt dieser Startseite anpassen, sodass einem Bediener möglichst hilfreiche und relevante Inhalte angezeigt werden.
 
-1. Navigieren Sie zum Anpassen der Standardstartseite zur**Startseite**, und aktivieren Sie rechts oben auf der Seite den **Entwurfsmodus**. Nach Aktivierung des **Entwurfsmodus** wird von rechts ein Bereich mit einer Liste von Objekten eingeblendet, die Sie Ihrer Startseite hinzufügen können.
+1. Navigieren Sie zum Anpassen der Standardstartseite zur**Startseite**, und wählen Sie rechts oben auf der Seite **Bearbeiten** aus. Bei Auswahl von **Bearbeiten** wird von rechts ein Bereich mit einer Liste von Objekten eingeblendet, die Sie Ihrer Startseite hinzufügen können.
 
     ![Seite „Application Builder“ (Anwendungs-Generator)](media/tutorial-customize-operator/builderhome.png)
 
@@ -150,7 +156,7 @@ Wenn sich ein Ersteller oder Bediener bei einer Azure IoT Central-Anwendung anme
 
 ## <a name="preview-the-default-home-page-as-an-operator"></a>Anzeigen einer Vorschau der Standardstartseite als Bediener
 
-Deaktivieren Sie rechts oben auf der Seite den **Entwurfsmodus**, um als Bediener eine Vorschau der Startseite anzuzeigen:
+Um als Bediener eine Vorschau der Startseite anzuzeigen und die Bearbeitung zu beenden, wählen Sie rechts oben auf der Seite **Fertig** aus.
 
 ![Umschalten des Entwurfsmodus](media/tutorial-customize-operator/operatorviewhome.png)
 

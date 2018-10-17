@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer CI-/CD-Pipeline für vorhandenen Code mit Azure DevOps-Projekt | VSTS-Tutorial
+title: Erstellen einer CI-/CD-Pipeline für vorhandenen Code mit Azure DevOps-Projekt | Azure DevOps Services-Tutorial
 description: Das DevOps-Projekt erleichtert die ersten Schritte mit Azure. Damit können Sie Ihren eigenen Code und das GitHub-Repository verwenden, um eine App in einem Azure-Dienst Ihrer Wahl in wenigen Schritten zu starten.
 services: vsts
 documentationcenter: vs-devops-build
@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 192992917432a64c2f9f81761e22bf7d9205703a
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 4e0e28ff9ea14e42e1df7ce35bb90e8720a0d0b6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205560"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407296"
 ---
 # <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Erstellen einer CI-/CD-Pipeline für vorhandenen Code mit Azure DevOps-Projekt
 
@@ -33,9 +33,9 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 > [!div class="checklist"]
 > * Erstellen eines Azure DevOps-Projekts
 > * Konfigurieren des Zugriffs auf Ihr GitHub-Repository und Wahl eines Frameworks
-> * Konfigurieren von VSTS und eines Azure-Abonnements 
+> * Konfigurieren von Azure DevOps Services und eines Azure-Abonnements 
 > * Ausführen eines Commits für Änderungen an GitHub und automatisches Bereitstellen in Azure
-> * Überprüfen der VSTS-CI/CD-Pipeline
+> * Überprüfen der Azure DevOps Services-CI/CD-Pipeline
 > * Konfigurieren der Azure Application Insights-Überwachung
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -45,7 +45,7 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Mit dem Azure DevOps-Projekt wird in VSTS eine CI/CD-Pipeline erstellt.  Sie können ein **neues VSTS**-Konto erstellen oder ein **vorhandenes Konto** verwenden.  Außerdem werden mit dem Azure DevOps-Projekt **Azure-Ressourcen** im **Azure-Abonnement** Ihrer Wahl erstellt.
+Mit dem Azure DevOps-Projekt wird in Azure DevOps Services eine CI/CD-Pipeline erstellt.  Sie können eine **neue Azure DevOps Services**-Organisation erstellen oder eine **bestehende Organisation** verwenden.  Außerdem werden mit dem Azure DevOps-Projekt **Azure-Ressourcen** im **Azure-Abonnement** Ihrer Wahl erstellt.
 
 1. Melden Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com) an.
 
@@ -65,13 +65,11 @@ Mit dem Azure DevOps-Projekt wird in VSTS eine CI/CD-Pipeline erstellt.  Sie kö
 
 1. Das Anwendungsframework, das Sie im vorherigen Schritt ausgewählt haben, bestimmt den Typ des hier verfügbaren Bereitstellungsziels für den Azure-Dienst.  Wählen Sie den **Zieldienst** Ihrer Wahl aus.  Wählen Sie **Weiter** aus, wenn Sie fertig sind.
 
-## <a name="configure-vsts-and-an-azure-subscription"></a>Konfigurieren von VSTS und eines Azure-Abonnements 
+## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurieren von Azure DevOps Services und eines Azure-Abonnements 
 
-1. Erstellen Sie ein **neues** VSTS-Konto, oder wählen Sie ein **vorhandenes** Konto aus.  Wählen Sie für Ihr VSTS-Projekt einen **Namen** aus.  Wählen Sie Ihr **Azure-Abonnement**, den **Speicherort** und einen **Namen** für Ihre Anwendung aus.  Klicken Sie auf **Fertig**, wenn Sie fertig sind.
+1. Erstellen Sie eine **neue** Azure DevOps Services-Organisation, oder verwenden Sie eine **bestehende** Organisation.  Wählen Sie einen **Namen** für das Azure DevOps-Projekt aus.  Wählen Sie Ihr **Azure-Abonnement**, den **Speicherort** und einen **Namen** für Ihre Anwendung aus.  Klicken Sie auf **Fertig**, wenn Sie fertig sind.
 
-    ![Eingeben von VSTS-Informationen](_img/azure-devops-project-github/vstsazureinfo.png)
-
-1. Das **Projektdashboard** wird in wenigen Minuten in das Azure-Portal geladen.  Eine Beispielanwendung wird in einem Repository in Ihrem VSTS-Konto eingerichtet. Ein Build wird ausgeführt, und Ihre Anwendung wird in Azure bereitgestellt.  Dieses Dashboard bietet Einblick in Ihr GitHub-**Coderepository**, in Ihre **VSTS-CI/CD-Pipeline** und in Ihre **Anwendung in Azure**.  Wählen Sie auf der rechten Seite des Dashboards **Durchsuchen**, um Ihre aktive Anwendung anzuzeigen.
+1. In wenigen Minuten wird das **Azure DevOps-Projektdashboard** im Azure-Portal geladen.  Eine Beispielanwendung wird in einem Repository in Ihrer Azure DevOps Services-Organisation eingerichtet. Ein Build wird ausgeführt, und Ihre Anwendung wird in Azure bereitgestellt.  Dieses Dashboard bietet Einblick in Ihr GitHub-**Coderepository**, Ihre **Azure DevOps Services-CI/CD-Pipeline** und Ihre **Anwendung in Azure**.  Wählen Sie auf der rechten Seite des Dashboards **Durchsuchen**, um Ihre aktive Anwendung anzuzeigen.
 
     ![Dashboardansicht](_img/azure-devops-project-github/dashboardnopreview.png) 
     
@@ -79,41 +77,41 @@ Mit dem Azure DevOps-Projekt werden automatisch ein CI-Build- und -Releasetrigge
 
 ## <a name="commit-changes-to-github-and-automatically-deploy-to-azure"></a>Ausführen eines Commits für Änderungen an GitHub und automatisches Bereitstellen in Azure 
 
-Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit auf Ihrer Website automatisch bereitgestellt wird, mit einem Team an Ihrer App zusammenarbeiten.  Mit jeder Änderung am GitHub-Repository wird in VSTS ein Build gestartet. Ferner wird durch eine VSTS-Releaseverwaltungsdefinition eine Bereitstellung in Azure ausgeführt.
+Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit auf Ihrer Website automatisch bereitgestellt wird, mit einem Team an Ihrer App zusammenarbeiten.  Mit jeder Änderung am GitHub-Repository wird in Azure DevOps ein Build gestartet. Ferner wird durch eine Azure DevOps-CD-Pipeline eine Bereitstellung in Azure ausgeführt.
 
 1.  Nehmen Sie eine Änderung an Ihrer Anwendung vor, und führen Sie einen **Commit** der Änderungen an Ihrem GitHub-Repository durch.
-2.  In wenigen Augenblicken wird in VSTS ein Build gestartet.  Sie können den Buildstatus mit dem DevOps-Projektdashboard oder im Browser mit Ihrem VSTS-Konto überwachen.
+2.  In wenigen Augenblicken wird in Azure DevOps Services ein Build gestartet.  Sie können den Buildstatus mit dem Azure DevOps-Projektdashboard oder im Browser mit Ihrer Azure DevOps Services-Organisation überwachen.
 3.  Nachdem der Build erfolgreich ausgeführt wurde, **aktualisieren Sie Ihre Anwendung** im Browser, um sicherzustellen, dass Ihre Änderungen angezeigt werden.
 
-## <a name="examine-the-vsts-cicd-pipeline"></a>Überprüfen der VSTS-CI/CD-Pipeline
+## <a name="examine-the-azure-devops-services-cicd-pipeline"></a>Überprüfen der Azure DevOps Services-CI/CD-Pipeline
 
-Mit dem Azure DevOps-Projekt wurde in Ihrem VSTS-Konto automatisch eine vollständige VSTS-CI/CD-Pipeline erstellt.  Untersuchen Sie die Pipeline, und passen Sie sie bei Bedarf an.  Gehen Sie wie folgt vor, um sich mit den VSTS-Build- und -Releasedefinitionen vertraut zu machen.
+Mit dem Azure DevOps-Projekt wird in Ihrer Azure DevOps Services-Organisation automatisch eine Azure DevOps Services-CI/CD-Pipeline erstellt.  Untersuchen Sie die Pipeline, und passen Sie sie bei Bedarf an.  Gehen Sie folgendermaßen vor, um sich mit den Build- und Releasepipelines von Azure DevOps Services vertraut zu machen.
 
-1. Wählen Sie **oben** im Azure DevOps-Projektdashboard **Pipelines erstellen** aus.  Über diesen Link werden eine Browserregisterkarte und die VSTS-Builddefinition für Ihr neues Projekt geöffnet.
+1. Wählen Sie **oben** im Azure DevOps-Projektdashboard **Pipelines erstellen** aus.  Dieser Link öffnet eine Browserregisterkarte und die Azure DevOps Services-Buildpipeline für Ihr neues Projekt.
 
-1. Verschieben Sie den Cursor rechts neben die Builddefinition neben das Feld **Status**. Wählen Sie die **Auslassungspunkte** aus, die angezeigt werden.  Mit dieser Aktion wird ein Menü geöffnet, über das Sie verschiedene Aktivitäten starten können. So können Sie beispielsweise einen neuen Build zur Warteschlange hinzufügen, einen Build anhalten und die Builddefinition bearbeiten.
+1. Verschieben Sie den Cursor rechts neben die Buildpipeline neben das Feld **Status**. Wählen Sie die **Auslassungspunkte** aus, die angezeigt werden.  Mit dieser Aktion wird ein Menü geöffnet, über das Sie verschiedene Aktivitäten starten können. So können Sie beispielsweise einen neuen Build zur Warteschlange hinzufügen, einen Build anhalten und die Buildpipeline bearbeiten.
 
-1. Klicken Sie auf **Bearbeiten**.
+1. Wählen Sie **Bearbeiten** aus.
 
-1. In dieser Ansicht können Sie sich **die verschiedenen Aufgaben ansehen**, die Sie für Ihre Builddefinition durchführen können.  Vom Build werden verschiedene Aufgaben durchgeführt. So werden beispielsweise Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
+1. In dieser Ansicht können Sie sich **die verschiedenen Aufgaben ansehen**, die Sie für Ihre Buildpipeline durchführen können.  Vom Build werden verschiedene Aufgaben durchgeführt. So werden beispielsweise Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
 
-1. Wählen Sie oben in der Builddefinition den **Builddefinitionsnamen** aus.
+1. Wählen Sie oben in der Buildpipeline den **Buildpipelinenamen**.
 
-1. Ersetzen Sie den **Namen** Ihrer Builddefinition durch einen aussagekräftigeren Namen.  Wählen Sie **Speichern und in Warteschlange einreihen** und dann **Speichern** aus.
+1. Ersetzen Sie den **Namen** Ihrer Buildpipeline durch einen aussagekräftigeren Namen.  Wählen Sie **Speichern und in Warteschlange einreihen** und dann **Speichern** aus.
 
-1. Wählen Sie unter dem Builddefinitionsnamen **Verlauf** aus.  Es wird ein Überwachungspfad mit den letzten Änderungen für den Build angezeigt.  An der Builddefinition vorgenommene Änderungen werden von VSTS überwacht, sodass Sie verschiedene Versionen vergleichen können.
+1. Wählen Sie unter dem Buildpipelinenamen **Verlauf** aus.  Es wird ein Überwachungspfad mit den letzten Änderungen für den Build angezeigt.  An der Buildpipeline vorgenommene Änderungen werden von Azure DevOps Services überwacht, sodass Sie verschiedene Versionen vergleichen können.
 
 1. Wählen Sie **Trigger** aus.  Mit dem Azure DevOps-Projekt wurde automatisch ein CI-Trigger erstellt, und mit jedem Commit, der für das Repository ausgeführt wird, wird ein neuer Build gestartet.  Optional können Sie Branches aus dem CI-Prozess einbeziehen oder ausschließen.
 
 1. Wählen Sie **Aufbewahrung** aus.  Je nach Szenario können Sie Richtlinien zum Aufbewahren oder Entfernen einer bestimmten Anzahl von Builds festlegen.
 
-1. Wählen Sie **Build und Release** und anschließend **Releases** aus.  Mit dem Azure DevOps-Projekt wurde eine VSTS-Releasedefinition zum Verwalten von Bereitstellungen für Azure erstellt.
+1. Wählen Sie **Build und Release** und anschließend **Releases** aus.  Mit dem Azure DevOps-Projekt wurde eine Azure DevOps Services-Releasepipeline zum Verwalten von Bereitstellungen für Azure erstellt.
 
-1. Wählen Sie links im Browser die **Auslassungspunkte** neben Ihrer Releasedefinition und anschließend **Bearbeiten** aus.
+1. Wählen Sie links im Browser die **Auslassungspunkte** neben Ihrer Releasepipeline und anschließend **Bearbeiten** aus.
 
-1. Die Releasedefinition enthält eine **Pipeline**, die den Releaseprozess definiert.  Wählen Sie unter **Artefakte** die Option **Ablegen** aus.  Mit der Builddefinition, die Sie in den vorherigen Schritten untersucht haben, wird die für das Artefakt verwendete Ausgabe erzeugt. 
+1. Die Releasepipeline enthält eine **Pipeline**, die den Releaseprozess definiert.  Wählen Sie unter **Artefakte** die Option **Ablegen** aus.  Die in den vorherigen Schritten untersuchte Buildpipeline erzeugt die für das Artefakt verwendete Ausgabe. 
 
-1. Wählen Sie die Option **Continuous Deployment-Trigger** rechts neben dem Symbol **Ablegen** aus.  Diese Releasedefinition enthält einen aktivierten CD-Trigger. Jedes Mal, wenn ein neues Buildartefakt verfügbar ist, wird von diesem CD-Trigger eine Bereitstellung ausgeführt.  Optional können Sie den Trigger deaktivieren, sodass Ihre Bereitstellungen manuell ausgeführt werden müssen. 
+1. Wählen Sie die Option **Continuous Deployment-Trigger** rechts neben dem Symbol **Ablegen** aus.  Diese Releasepipeline enthält einen aktivierten CD-Trigger. Jedes Mal, wenn ein neues Buildartefakt verfügbar ist, wird von diesem CD-Trigger eine Bereitstellung ausgeführt.  Optional können Sie den Trigger deaktivieren, sodass Ihre Bereitstellungen manuell ausgeführt werden müssen. 
 
 1. Wählen Sie links im Browser die Option **Aufgaben** aus.  Bei den Aufgaben handelt es sich um die Aktivitäten, die beim Bereitstellungsprozess durchgeführt werden.  In diesem Beispiel wurde für die Bereitstellung für **Azure App Service** eine Aufgabe erstellt.
 
@@ -159,17 +157,17 @@ Sie können die mit dieser Schnellstartanleitung erstellte Azure App Service-Ber
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie den CI/CD-Prozess mit diesem Tutorial konfiguriert haben, wurden in Ihrem VSTS-Projekt automatisch eine Build- und eine Releasedefinition erstellt. Diese Build- und Releasedefinitionen können Sie an die Anforderungen Ihres Teams anpassen. Es wurde Folgendes vermittelt:
+Wenn Sie den CI/CD-Prozess in diesem Tutorial konfiguriert haben, wurden in Ihrem Azure DevOps-Projekt automatisch eine Build- und eine Releasepipeline erstellt. Diese Build- und Releasepipelines können Sie den Anforderungen Ihres Teams anpassen. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines Azure DevOps-Projekts
 > * Konfigurieren des Zugriffs auf Ihr GitHub-Repository und Wahl eines Frameworks
-> * Konfigurieren von VSTS und eines Azure-Abonnements 
+> * Konfigurieren von Azure DevOps Services und eines Azure-Abonnements 
 > * Ausführen eines Commits für Änderungen an GitHub und automatisches Bereitstellen in Azure
-> * Überprüfen der VSTS-CI/CD-Pipeline
+> * Überprüfen der Azure DevOps Services-CI/CD-Pipeline
 > * Konfigurieren der Azure Application Insights-Überwachung
 
-Weitere Informationen zur VSTS-Pipeline finden Sie im folgenden Tutorial:
+Weitere Informationen zur Azure DevOps Services-CI/CD-Pipeline finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
-> [Anpassen von CD-Prozessen](https://docs.microsoft.com/vsts/pipelines/release/define-multistage-release-process?view=vsts)
+> [Anpassen von CD-Prozessen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

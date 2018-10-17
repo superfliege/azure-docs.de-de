@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 1cbe63184578f7d1e72992577a11c58b9b83a002
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a7e5051248a579b0943fa69620215b060bd1e235
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937316"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092692"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Veröffentlichen mehrerer Versionen Ihrer API 
 
@@ -44,7 +44,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ![API-Kontextmenü – Version hinzufügen](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
-1. Wählen Sie in der API-Liste **Conference API** aus.
+1. Wählen Sie in der API-Liste **Demo Conference API** aus.
 2. Klicken Sie auf das Kontextmenü (**...**) daneben.
 3. Klicken Sie auf **+ Version hinzufügen**.
 
@@ -58,37 +58,39 @@ Mit Azure API Management können Sie auswählen, wie Aufrufer angeben können, w
 ![Bildschirm zum Hinzufügen von Versionen](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
 1. Lassen Sie **Pfad** als **Schema für Versionsverwaltung** ausgewählt.
-2. Fügen Sie **v1** als **Versionsbezeichner** hinzu.
+2. Fügen Sie **v1** als **Namen** und **Versionsbezeichner** hinzu.
 
     > [!TIP]
     > Wenn Sie **Header** oder **Abfragezeichenfolge** als Schema für die Versionsverwaltung auswählen, müssen Sie einem zusätzlichen Wert (den Namen des Headers oder Abfragezeichenfolgen-Parameters) angeben.
 
-3. Geben Sie bei Bedarf eine Beschreibung an.
-4. Klicken Sie auf **Erstellen**, um Ihre neue Version einzurichten.
-5. In der API-Liste werden unter **Big Conference API** nun zwei unterschiedliche APIs angezeigt: **Original** und **v1**.
+3. Klicken Sie auf **Erstellen**, um Ihre neue Version einzurichten.
+4. In der API-Liste werden unter **Demo Conference API** nun zwei unterschiedliche APIs angezeigt: **Original** und **v1**.
 
     ![Unter einer API aufgeführte Versionen im Azure-Portal](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
     > Wenn Sie einer API ohne Versionsverwaltung eine Version hinzufügen, wird automatisch ein **Original** erstellt, das auf die Standard-URL reagiert. Dadurch wird sichergestellt, dass bereits vorhandene Aufrufer durch das Hinzufügen einer Version nicht beeinträchtigt werden. Wenn Sie Versionen gleich bei der Erstellung einer neuen API aktivieren, wird kein Original erstellt.
 
-6. Nun können Sie **v1** als eine API bearbeiten und konfigurieren, die vom **Original** getrennt ist. Änderungen an einer Version haben keine Auswirkungen auf die andere.
+5. Nun können Sie **v1** als eine API bearbeiten und konfigurieren, die vom **Original** getrennt ist. Änderungen an einer Version haben keine Auswirkungen auf die andere.
 
 ## <a name="add-the-version-to-a-product"></a>Hinzufügen der Version zu einem Produkt
 
 Damit Aufrufern die neue Version angezeigt wird, muss sie einem **Produkt** hinzugefügt werden.
 
 1. Klicken Sie auf der Seite des klassischen Bereitstellungsmodells auf **Produkte**.
+
+    ![API Management-Produkte](media/api-management-getstarted-publish-versions/Products.png)
+
 2. Klicken Sie auf **Unbegrenzt**.
 3. Klicken Sie auf **APIs**.
 4. Wählen Sie **Hinzufügen**.
-5. Klicken Sie auf **Conference API, Version v1**.
+5. Wählen Sie **Demo Conference API, Version v1** aus.
 6. Navigieren Sie zur Dienstverwaltungsseite, und klicken Sie auf **APIs**.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Anzeigen der Version im Entwicklerportal
 
 1. Klicken Sie im oberen Menü auf **Entwicklerportal**.
-2. Klicken Sie auf **APIs**. Wie Sie sehen, werden für **Conference API** die Versionen **Original** und **v1** angezeigt.
+2. Wählen Sie **APIs** aus. Wie Sie sehen, werden für **Demo Conference API** die Versionen **Original** und **v1** angezeigt.
 3. Klicken Sie auf **v1**.
 4. Beachten Sie die **Anforderungs-URL** des ersten Vorgangs in der Liste. Dort sehen Sie, dass der API-URL-Pfad **v1** enthält.
 
@@ -107,4 +109,4 @@ In diesem Tutorial lernen Sie Folgendes:
 Fahren Sie mit dem nächsten Tutorial fort:
 
 > [!div class="nextstepaction"]
-> [Upgraden und Skalieren](upgrade-and-scale.md)
+> [Anpassen des Stils der Seiten im Entwicklerportal](api-management-customize-styles.md)

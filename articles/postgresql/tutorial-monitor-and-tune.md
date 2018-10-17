@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: c21236026af960af0697978e49a0075fc9cf77ef
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2e4d625cd123583baa30fde8e9826f5b57da49fe
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960293"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393587"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>Tutorial: Überwachung und Optimierung in Azure Database for PostgreSQL
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL umfasst Features,mit denen Sie die Leistung Ihres 
 Sie benötigen einen Azure Database for PostgreSQL-Server mit der PostgreSQL-Version 9.6 oder 10. Sie können auch die unter [Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe des Azure-Portals](tutorial-design-database-using-azure-portal.md) beschriebenen Schritte ausführen, um einen Server zu erstellen.
 
 > [!IMPORTANT]
-> Der **Abfragespeicher**, **Query Performance Insight** und die **Leistungsempfehlungen** stehen als öffentliche Vorschauversion zur Verfügung.
+> Der **Abfragespeicher**, **Query Performance Insight** und die **Leistungsempfehlungen** stehen als Public Preview in einer begrenzten Zahl von Regionen zur Verfügung.
 
 ## <a name="enabling-data-collection"></a>Aktivieren von Datensammlung
 Der [Abfragespeicher](concepts-query-store.md) erfasst den Verlauf der Abfragen und Wartestatistiken auf Ihrem Server und speichert ihn in der **azure_sys**-Datenbank auf Ihrem Server. Dies ist eine optionale Funktion. Aktivieren Sie sie wie folgt:
@@ -78,11 +78,11 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ana
    
    ![Leistungsempfehlungen-Startseite](./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png)
 
-2. Wählen Sie **Analysieren**, und wählen Sie eine Datenbank aus. Dadurch wird die Analyse gestartet.
+2. Wählen Sie **Analysieren** und eine Datenbank aus. Dadurch wird die Analyse gestartet.
 
 3. Je nach Workload kann dies einige Minuten dauern. Wenn die Analyse abgeschlossen ist, wird im Portal eine Benachrichtigung angezeigt.
 
-4. Das Fenster **Leistungsempfehlungen** Fenster zeigt eine Liste mit den gefundenen Empfehlungen an. 
+4. Das Fenster **Leistungsempfehlungen** zeigt eine Liste mit den gefundenen Empfehlungen an. 
 
 5. Eine Empfehlung zeigt Informationen zur relevanten **Datenbank**, **Tabelle**, **Spalte** und **Indexgröße** an.
 
@@ -94,4 +94,4 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ana
 Zum Ausführen einer Analyse mit dem Leistungsempfehlungen-Feature sind die Berechtigungen **Besitzer** oder **Mitwirkender** erforderlich.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weiter Informationen finden Sie unter [Überwachung in Azure Database for PostgreSQL](concepts-monitoring.md).
+- Weitere Informationen zu [Überwachung und Optimierung](concepts-monitoring.md) in Azure Database for PostgreSQL.

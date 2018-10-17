@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/27/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4383ce3788f6fade5299d69ef99b80221c58d9e7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 916d0cf37ab3588091d4ca2d45f43a5669afe4f1
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936982"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094894"
 ---
 # <a name="mock-api-responses"></a>Simulieren von API-Antworten
 
@@ -46,7 +46,7 @@ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Managemen
 
 In diesem Abschnitt erfahren Sie, wie Sie eine leere API ohne Back-End erstellen. Außerdem wird gezeigt, wie Sie der API einen Vorgang hinzufügen. Das Aufrufen des Vorgangs nach Abschluss der Schritte in diesem Abschnitt führt zu einem Fehler. Sie erhalten keine Fehler mehr, nachdem die Schritte im Abschnitt „Aktivieren der Antwortsimulation“ abgeschlossen wurden.
 
-1. Wählen Sie unter **API MANAGEMENT** die Option **APIs** aus.
+1. Wählen Sie im **API Management**-Dienst **APIs** aus.
 2. Wählen Sie im linken Menü die Option **+ API hinzufügen** aus.
 3. Wählen Sie in der Liste **Leere API** aus.
 4. Geben Sie „*Test API*“ als **Anzeigename** ein.
@@ -57,14 +57,13 @@ In diesem Abschnitt erfahren Sie, wie Sie eine leere API ohne Back-End erstellen
 
 1. Wählen Sie die API aus, die Sie im vorherigen Schritt erstellt haben.
 2. Klicken Sie auf **+ Vorgang hinzufügen**.
-
-    ![Simulierte Antwort auf einen Vorgang](./media/mock-api-responses/mock-api-responses02.png)
+    ![Simulierte Antwort auf einen Vorgang](./media/mock-api-responses/mock-api-responses-add-operation.png)
 
     |Einstellung|Wert|BESCHREIBUNG|
     |---|---|---|
+    |**Anzeigename**|*Test call*|Dieser Name wird im **Entwicklerportal** angezeigt.|
     |**URL** (HTTP-Verb)|GET|Sie können eines der vordefinierten HTTP-Verben auswählen.|
     |**URL** |*/test*|Ein URL-Pfad für die API. |
-    |**Anzeigename**|*Test call*|Dieser Name wird im **Entwicklerportal** angezeigt.|
     |**Beschreibung**||Geben Sie eine Beschreibung für den Vorgang an, die als Dokumentation für Entwickler dient, die diese API im **Entwicklerportal** verwenden.|
     |Registerkarte **Abfrage**||Sie können Abfrageparameter hinzufügen. Neben einem Namen und einer Beschreibung können Sie Werte angeben, die diesem Parameter zugewiesen werden können. Einer der Werte kann als Standard markiert werden (optional).|
     |Registerkarte **Anforderung**||Sie können Inhaltstypen für die Anforderung, Beispiele und Schemas definieren. |
@@ -75,18 +74,19 @@ In diesem Abschnitt erfahren Sie, wie Sie eine leere API ohne Back-End erstellen
 5. Wählen Sie **200 OK** in der Liste aus.
 6. Wählen Sie unter der Überschrift **Darstellungen** auf der rechten Seite **+ Darstellung hinzufügen** aus.
 7. Geben Sie „*application/json*“ in das Suchfeld ein, und wählen Sie den Inhaltstyp **application/json** aus.
-8. Geben Sie im Testfeld **Beispiel** die Zeichenfolge „*{ 'sampleField' : 'test' }*“ ein.
-9. Wählen Sie **Speichern**aus.
+8. Geben Sie im Testfeld **Beispiel** `{ 'sampleField' : 'test' }` ein.
+9. Klicken Sie auf **Erstellen**.
 
 ## <a name="enable-response-mocking"></a>Aktivieren der Antwortsimulation
 
 1. Wählen Sie die API aus, die Sie im Schritt „Erstellen einer Test-API“ erstellt haben.
 2. Wählen Sie den Testvorgang aus, den Sie hinzugefügt haben.
-2. Klicken Sie im Fenster auf der rechten Seite auf die Registerkarte **Entwurf**.
-3. Klicken Sie im Fenster **Eingehende Verarbeitung** auf das Stiftsymbol.
-4. Wählen Sie auf der Registerkarte **Simulation** für **Simulationsverhalten** die Option **Statische Antworten** aus.
-5. Geben Sie im Textfeld **API Management returns the following response:** (API Management gibt folgende Antwort zurück) die Zeichenfolge **200 OK, application/json** ein. Diese Auswahl gibt an, dass Ihre API das Antwortbeispiel zurückgeben soll, das Sie im vorherigen Abschnitt definiert haben.
-6. Wählen Sie **Speichern**aus.
+3. Klicken Sie im Fenster auf der rechten Seite auf die Registerkarte **Entwurf**.
+4. Klicken Sie im Fenster **Eingehende Verarbeitung** auf das Stiftsymbol.
+5. Wählen Sie auf der Registerkarte **Simulation** für **Simulationsverhalten** die Option **Statische Antworten** aus.
+6. Geben Sie im Textfeld **API Management returns the following response:** (API Management gibt folgende Antwort zurück) die Zeichenfolge **200 OK, application/json** ein. Diese Auswahl gibt an, dass Ihre API das Antwortbeispiel zurückgeben soll, das Sie im vorherigen Abschnitt definiert haben.
+    ![Aktivieren der Antwortsimulation](./media/mock-api-responses/mock-api-responses-set-mocking.png)
+7. Klicken Sie auf **Speichern**.
 
 ## <a name="test-the-mocked-api"></a>Testen der simulierten API
 
@@ -97,8 +97,9 @@ In diesem Abschnitt erfahren Sie, wie Sie eine leere API ohne Back-End erstellen
     > [!TIP]
     > Ein gelber Balken mit dem Text **Die Antwortsimulation ist aktiviert** gibt an, dass die von API Management zurückgegebenen Antworten einer Simulationsrichtlinie folgen und keine tatsächliche Back-End-Antwort darstellen.
 
-3. Wählen Sie **Senden** aus, um einen Testaufruf durchzuführen.
-4. In **HTTP-Antwort** wird der JSON-Code angezeigt, der als Beispiel im ersten Abschnitt des Tutorials angegeben wurde.
+4. Wählen Sie **Senden** aus, um einen Testaufruf durchzuführen.
+5. In **HTTP-Antwort** wird der JSON-Code angezeigt, der als Beispiel im ersten Abschnitt des Tutorials angegeben wurde.
+    ![Aktivieren der Antwortsimulation](./media/mock-api-responses/mock-api-responses-test-response.png)
 
 ## <a name="video"></a>Video
 
