@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: c20375d42786b817f677be22dee8f4e71e710bc5
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 493beb254852464765d506c61c7ae6ce3b3835d3
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920294"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362890"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -92,7 +92,7 @@ Informationen zu erforderlichen Berechtigungen für die Erstellung eines Peering
 
 Für ein- und ausgehenden Datenverkehr, der eine VNET-Peeringverbindung verwendet, fällt eine Gebühr an. Weitere Informationen zu den Preisen für VNET-Peering und globales VNET-Peering finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Gatewaytransit ist eine Peeringeigenschaft, die es einem virtuellen Netzwerk ermöglicht, ein VPN-Gateway im virtuellen Netzwerk mit Peeringbeziehung für standortübergreifende oder VNET-zu-VNET-Konnektivität zu nutzen. In diesem Szenario fallen für Datenverkehr über ein Remotegateway [Gebühren für das VPN-Gateway](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/), aber keine [Gebühren für VNET-Peering](https://azure.microsoft.com/pricing/details/virtual-network) an. Beispiel: Wenn VNetA ein VPN-Gateway für lokale Verbindungen nutzt und VNetB über Peering mit VNetA verbunden ist und die entsprechenden Eigenschaften konfiguriert sind, wird nur ausgehender Datenverkehr von VNetB an lokale Ressourcen gemäß den Preisen für VPN-Gateways in Rechnung gestellt. Es fallen keine Gebühren für VNET-Peering an. Lesen Sie mehr über das [Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Gatewaytransit ist eine Peeringeigenschaft, die es einem virtuellen Netzwerk ermöglicht, ein VPN-Gateway im virtuellen Netzwerk mit Peeringbeziehung für standortübergreifende oder VNET-zu-VNET-Konnektivität zu nutzen. In diesem Szenario fallen für Datenverkehr über ein Remotegateway [Gebühren für das VPN-Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/), aber keine [Gebühren für VNET-Peering](https://azure.microsoft.com/pricing/details/virtual-network) an. Beispiel: Wenn VNetA ein VPN-Gateway für lokale Verbindungen nutzt und VNetB über Peering mit VNetA verbunden ist und die entsprechenden Eigenschaften konfiguriert sind, wird nur ausgehender Datenverkehr von VNetB an lokale Ressourcen gemäß den Preisen für VPN-Gateways in Rechnung gestellt. Es fallen keine Gebühren für VNET-Peering an. Lesen Sie mehr über das [Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

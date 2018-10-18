@@ -3,19 +3,19 @@ title: 'Schnellstart: Extrahieren von gedrucktem Text (OCR) â€“ REST, Node.js â€
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild mithilfe der Maschinelles Sehen-API und Node.js.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: af22b17d52b654438ae52c1eb85e523dbaf638fa
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 02ff205f2408fed19d7831e7a1344eac2bc6f261
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628912"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344267"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-nodejs-in-computer-vision"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der REST-API und Node.js in der Maschinelles Sehen-API
 

@@ -30,6 +30,18 @@ items:
     href: tutorial-kubernetes-upgrade-cluster.md
 - name: Konzepte
   items:
+  - name: Cluster und Workloads
+    href: concepts-clusters-workloads.md
+  - name: Zugriff und Identität
+    href: concepts-identity.md
+  - name: Sicherheit
+    href: concepts-security.md
+  - name: Netzwerk
+    href: concepts-network.md
+  - name: Speicher
+    href: concepts-storage.md
+  - name: Skalieren
+    href: concepts-scale.md
   - name: Kontingente und regionale Grenzwerte
     href: container-service-quotas.md
   - name: Migrieren von ACS zu AKS
@@ -71,12 +83,12 @@ items:
       href: azure-files-volume.md
   - name: Konfigurieren der Netzwerkeinstellungen
     items:
-    - name: Netzwerkübersicht
-      href: networking-overview.md
-    - name: Statische IP-Adresse
-      href: static-ip.md
-    - name: Interner Lastenausgleich
+    - name: Erstellen oder Verwenden eines vorhandenen virtuellen Netzwerks
+      href: configure-advanced-networking.md
+    - name: Erstellen eines internen Load Balancers
       href: internal-lb.md
+    - name: Verwenden von statischen IP-Adressen
+      href: static-ip.md
     - name: Eingehende Daten
       items:
       - name: Erstellen eines einfachen Controllers
@@ -182,9 +194,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: Häufig gestellte Fragen
     href: faq.md
-ms.openlocfilehash: a050be092d1216a00a7d73e383086709dc6d15fc
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 5bce64990b8fbf9ad6bd5af01631544189f35a93
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405360"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376293"

@@ -4,21 +4,21 @@ description: Dieses Thema enthält eine Übersicht über Microsoft Azure Media S
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/10/2017
-ms.author: juliako;anilmur
-ms.openlocfilehash: 8381cdfffd34ffa25d1b87be3a3aca3de69c2802
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 10/15/2018
+ms.author: juliako
+ms.openlocfilehash: 0e9537f09049d5fe056819e6f8b9718cfc52f489
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809278"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352813"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Szenarien und datencenterübergreifende Verfügbarkeit von Media Services-Features
 
@@ -158,7 +158,7 @@ AMS-Kunden können Streamingendpunkte, Medienverarbeitung und Speicherung in ihr
     Weitere Informationen finden Sie unter [Skalieren der Medienverarbeitung](media-services-portal-scale-media-processing.md).
 * Außerdem können Sie Ihr Media Services-Konto skalieren, indem Sie Speicherkonten hinzufügen. Jedes Speicherkonto ist auf 500 TB beschränkt. Um den Speicher über die Standardbeschränkungen hinaus zu erweitern, können Sie mehrere Speicherkonten mit einem einzelnen Media Services-Konto verknüpfen. Weitere Informationen finden Sie unter [Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten](meda-services-managing-multiple-storage-accounts.md).
 
-##<a id="availability"></a> Datencenterübergreifende Verfügbarkeit von Media Services-Features
+## <a id="availability"></a> Datencenterübergreifende Verfügbarkeit von Media Services-Features
 
 Dieser Abschnitt enthält Details zur datencenterübergreifenden Verfügbarkeit von Media Services-Features.
 

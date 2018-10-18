@@ -10,16 +10,17 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ROBOTS: NOINDEX
-ms.openlocfilehash: dde7d3dc7c1a744da9a22c0e4c0a483a186aa327
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4147e164434109a90a2a044565a1fb0b2e1b48bf
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969460"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386501"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>Schnellstart: Sprachübersetzungs-API mit Java 
 <a name="HOLTop"></a>
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 In diesem Artikel wird gezeigt, wie Sie mit der Sprachübersetzungs-API gesprochene Sprache in einer WAV-Datei übersetzen.
 
@@ -38,7 +39,7 @@ Sie benötigen die folgenden Dateien:
 - [javax-websocket-client-impl-9.4.11.v20180605.jar (oder höher)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
 - [jetty-client-9.4.11.v20180605.jar (oder höher)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
 
-Sie benötigen eine WAV-Datei namens „speak.wav“, die im gleichen Ordner gespeichert ist wie die ausführbare Datei, die Sie aus dem unten angegebenen Code kompilieren. Diese WAV-Datei muss im PCM-Standardformat mit 16 Bit, 16 kHz und in mono vorliegen. Eine solche WAV-Datei können Sie über die [Text-to-Speech-API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech) abrufen.
+Sie benötigen eine WAV-Datei namens „speak.wav“, die im gleichen Ordner gespeichert ist wie die ausführbare Datei, die Sie aus dem unten angegebenen Code kompilieren. Diese WAV-Datei muss im PCM-Standardformat mit 16 Bit, 16 kHz und in mono vorliegen. Eine solche WAV-Datei können Sie über die [Text-to-Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech) abrufen.
 
 Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Microsoft-Sprachübersetzungs-API** verfügen. Sie benötigen einen kostenpflichtigen Abonnementschlüssel aus Ihrem [Azure-Dashboard](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 

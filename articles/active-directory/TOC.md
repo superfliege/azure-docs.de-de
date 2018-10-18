@@ -105,6 +105,7 @@
 #### [Archivieren von Aktivitätsprotokollen in einem Azure-Speicherkonto](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [Integrieren von Aktivitätsprotokollen mit Splunk unter Verwendung von Azure Monitor](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
 #### [Integrieren von Aktivitätsprotokollen mit SumoLogic unter Verwendung von Azure Monitor](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
+#### [Integrieren von Aktivitätsprotokollen mit Log Analytics unter Verwendung von Azure Monitor](reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ### Verweis
 #### [Vermerkdauer](reports-monitoring/reference-reports-data-retention.md)

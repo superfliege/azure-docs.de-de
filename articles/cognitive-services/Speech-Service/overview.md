@@ -3,18 +3,18 @@ title: Worum handelt es sich beim Speech-Dienst?
 description: 'Der Speech-Dienst ist Bestandteil von Microsoft Cognitive Services und vereint mehrere Azure-Sprachdienste, die zuvor separat verfügbar waren: Bing-Spracheingabe (bestehend aus Spracherkennung und Sprachsynthese), Custom Speech und Sprachübersetzung.'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: overview
 ms.date: 09/24/2018
-ms.author: v-jerkin
-ms.openlocfilehash: b014144dd819aa354596175068bfb2c5905a4377
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: erhopf
+ms.openlocfilehash: 7a61d85d96b993d49a536c38c2907a3d6ef55e65
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857991"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365457"
 ---
 # <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
 
@@ -29,11 +29,10 @@ Zu den Hauptfunktionen des Speech-Diensts zählen Sprache-zu-Text (auch Spracher
 
 |Funktion|Features|
 |-|-|
-|[Spracherkennung](speech-to-text.md)| <ul><li>Wandelt fortlaufende Sprache in Echtzeit in Text um.<li>Kann Sprache aus Audioaufnahmen als Batch transkribieren. <li>Unterstützt Zwischenergebnisse, die Erkennung des Endes der Spracheingabe, automatische Textformatierung sowie die Maskierung anstößiger Ausdrücke. <li>Kann mithilfe von [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) die Benutzerabsicht aus der transkribierten Sprache ableiten.\*|
-|[Sprachsynthese](text-to-speech.md)| <ul><li>Konvertiert Text in natürlich klingende Sprache. <li>Bietet mehrere Geschlechter und/oder Dialekte für viele unterstützte Sprachen. <li>Unterstützt Nur-Text-Eingabe und SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). |
-|[Sprachübersetzung](speech-translation.md)| <ul><li>Übersetzt Audiostreams nahezu in Echtzeit.<li> Kann auch aufgezeichnete Sprache verarbeiten.<li>Liefert Ergebnisse als Text oder Sprachsynthese. |
+|[Spracherkennung](speech-to-text.md)| <li>Wandelt fortlaufende Sprache in Echtzeit in Text um.<li>Kann Sprache aus Audioaufnahmen als Batch transkribieren. <li>Unterstützt Zwischenergebnisse, die Erkennung des Endes der Spracheingabe, automatische Textformatierung sowie die Maskierung anstößiger Ausdrücke. <li>Kann mithilfe von [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) die Benutzerabsicht aus der transkribierten Sprache ableiten.\*|
+|[Sprachsynthese](text-to-speech.md)| <li>Konvertiert Text in natürlich klingende Sprache. <li>Bietet mehrere Geschlechter und/oder Dialekte für viele unterstützte Sprachen. <li>Unterstützt Nur-Text-Eingabe und SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). |
+|[Sprachübersetzung](speech-translation.md)| <li>Übersetzt Audiostreams nahezu in Echtzeit.<li> Kann auch aufgezeichnete Sprache verarbeiten.<li>Liefert Ergebnisse als Text oder Sprachsynthese. |
 
-\* *Für die Absichtserkennung ist ein LUIS-Abonnement erforderlich.*
 
 ## <a name="customize-speech-features"></a>Anpassen von Sprachfeatures
 
@@ -69,41 +68,6 @@ Falls Sie jedoch bereits über Code verfügen, der die Bing-Spracheingabe oder d
 
 Das [SDK für sprachaktivierte Geräte](speech-devices-sdk.md) ist eine integrierte Hardware- und Softwareplattform für Entwickler sprachaktivierter Geräte. Unsere Hardwarepartner stellen Referenzentwürfe und Entwicklungseinheiten bereit. Microsoft bietet ein geräteoptimiertes SDK, das die Funktionen der Hardware optimal ausnutzt.
 
-## <a name="why-move-to-the-speech-service"></a>Gründe für die Umstellung auf den Speech-Dienst
-
-Mit dem Speech-Dienst wird nicht nur die gesamte Funktionalität der Bing-Spracheingabe-API bereitgestellt, sondern darüber hinaus drei weitere Azure-Sprachdienste: Custom Speech, Custom Voice und Sprachübersetzung. Wir raten Benutzern dieser Dienste, die Migration zum Speech-Dienst durchzuführen.
-
-Mit dem Speech-Dienst werden viele Upgrades in diese anderen Dienste eingebunden, z.B.:
-
-* Höhere Genauigkeit bei der Spracherkennung. Wir verbessern regelmäßig die Modelle, die im Dienst verwendet werden.
-
-* Höhere Skalierbarkeit. Der Dienst kann mehrere gleichzeitige Anforderungen besser verarbeiten, sodass die Latenz verringert wird.
-
-* Für den Speech-Dienst wird ein zeitbasiertes Preismodell verwendet. Ausführlichere Informationen finden Sie unter [Cognitive Services-Preise – Sprachdienste](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
-
-* Der Speech-Dienst ist in [mehreren Regionen](regions.md) verfügbar, um die Anforderungen der Kunden weltweit zu erfüllen. Sie benötigen ein [Azure-Abonnement](https://docs.microsoft.com/azure/cognitive-services/welcome) für jede Region, die von Ihrer Anwendung verwendet wird.
-
-* Mit einem einzelnen Abonnementschlüssel für den Speech-Dienst wird Zugriff auf die folgenden Features gewährt. Da die Abrechnung jeweils separat erfolgt, werden Ihnen nur die genutzten Features berechnet.
-
-    * [Spracherkennung](speech-to-text.md)
-    * [Benutzerdefinierte Spracherkennung](https://cris.ai/CustomSpeech)
-    * [Sprachsynthese](text-to-speech.md)
-    * [Benutzerdefinierte Stimmen für Sprachsynthese](https://cris.ai/CustomVoice)
-    * [Sprachübersetzung](speech-translation.md) (ohne [Textübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview))
-
-* Die Spracherkennungsfunktion des Speech-Diensts wird in den [Language Understanding Service](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) integriert, um die Absicht des Sprechers zu erkennen. Auch ein LUIS-Endpunktschlüssel kann mit dem Speech-Dienst verwendet werden. Ausführlichere Informationen finden Sie unter [Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#](how-to-recognize-intents-from-speech-csharp.md).
-
-* Für die Spracherkennung ist es nicht mehr erforderlich, einen Erkennungsmodus anzugeben.
-
-* Der Speech-Dienst unterstützt 24-KHz-Stimmen für die Sprachsynthese, um die Audioqualität zu verbessern. Zum Zeitpunkt der Erstellung dieses Texts sind zwei Stimmen verfügbar (nur „Englisch USA“): `Jessa24kRUS` und `Guy24kRUS`.
-
-* Die [Batch-Transkription](batch-transcription.md) des Speech-Diensts ermöglicht es, dass große Mengen von aufgezeichneter Sprache, z.B. Callcenter-Aufzeichnungen, effizient in Text transkribiert werden, damit dieser leicht analysiert und durchsucht werden kann.
-
-* Beim Verwenden des Speech SDK gilt kein Zeitlimit für das Streamen der Transkription für die Spracherkennung.
-
-* Das [Speech SDK](speech-sdk.md) stellt für den Speech-Dienst über mehrere Programmiersprachen und Ausführungsumgebungen (z.B. Windows 10, UWP und .NET Core) hinweg eine einheitliche API bereit, um die Entwicklung zu vereinfachen. Dies gilt vor allem bei Verwendung von mehreren Plattformen.
-
-* Der Speech-Dienst ist mit den REST-APIs und dem WebSockets-Protokoll kompatibel, die von anderen Azure-Sprachdiensten genutzt werden, sodass es einfach ist, vorhandene Clientanwendungen zum Speech-Dienst zu migrieren.
 
 ## <a name="speech-scenarios"></a>Speech-Szenarien
 
@@ -123,8 +87,6 @@ Wenn Ihre App für die Allgemeinheit vorgesehen ist, können Sie die standardmä
 Wenn Ihre App in einem bestimmten Bereich verwendet wird (z.B. Medizin oder IT), können Sie ein [Sprachmodell](how-to-customize-language-model.md) erstellen. Mit diesem Modell können Sie den Speech Dienst bezüglich der speziellen Terminologie Ihrer App trainieren.
 
 Wenn Ihre App in einer lauten Umgebung (beispielsweise einer Fabrik) verwendet wird, können Sie ein benutzerdefiniertes [Akustikmodell](how-to-customize-acoustic-models.md) erstellen. Dieses Modell unterstützt den Speech-Dienst bei der Unterscheidung von Sprache von Störgeräuschen.
-
-Der Anfang ist denkbar einfach. Laden Sie das [Speech SDK](speech-sdk.md) einfach herunter, und befolgen Sie die Anweisungen im entsprechenden [Schnellstart](quickstart-csharp-dotnet-windows.md)-Artikel.
 
 ### <a name="call-center-transcription"></a>Callcentertranskription
 

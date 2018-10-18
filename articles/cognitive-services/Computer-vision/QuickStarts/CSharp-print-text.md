@@ -3,19 +3,19 @@ title: 'Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, C# – Mas
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild mithilfe der Maschinelles Sehen-API und C#.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: d3074b9c5b62ea41aa0ee4c577a18b9f582dc80a
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 83abf15e638ab8caf867126361d81198aa3ad7e2
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631530"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340221"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der REST-API und C# in der Maschinelles Sehen-API
 
@@ -169,7 +169,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an, ähnlich wie im folgenden Beispiel:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Konsolenfenster an, ähnlich wie im folgenden Beispiel:
 
 ```json
 {

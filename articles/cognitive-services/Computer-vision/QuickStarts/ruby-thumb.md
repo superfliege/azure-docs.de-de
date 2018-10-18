@@ -3,19 +3,19 @@ title: 'Schnellstart: Generieren einer Miniaturansicht – REST, Ruby – Maschi
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart generieren Sie eine Miniaturansicht von einem Bild, indem Sie die Maschinelles Sehen-API mit Ruby verwenden.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 117e1fcc49aea5b3cef3e8d3b299a1eec90527db
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 16cfadb1b1dec90324739427656a6587ba6314cc
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632941"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343043"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-ruby-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit der REST-API und Ruby in der Maschinelles Sehen-API
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-1. Kopieren Sie den folgenden Code, und fügen Sie ihn in einen Text-Editor ein.
+1. Kopieren Sie den folgenden Code in einen Text-Editor.
 1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
     1. Ersetzen Sie `<Subscription Key>` durch Ihren Abonnementschlüssel.
     1. Ersetzen Sie `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze` durch die Endpunkt-URL für die Methode [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
@@ -79,7 +79,7 @@ Eine erfolgreiche Antwort wird als Binärdaten zurückgegeben, die die Bilddaten
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei, falls Sie sie nicht mehr benötigen.
+Wenn Sie die Datei nicht mehr benötigen, löschen Sie sie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

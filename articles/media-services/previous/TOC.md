@@ -64,6 +64,7 @@
 ##### [Anpassen von Media Encoder Standard-Voreinstellungen](media-services-custom-mes-presets-with-dotnet.md)
 ##### [Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
 ##### [Zuschneiden von Videos mit Media Encoder Standard](media-services-crop-video.md)
+##### [Generieren eines Miniaturansicht-Sprites](generate-thumbnail-sprite.md)
 #### MES-Schemas
 ##### [Media Encoder Standard-Schema](media-services-mes-schema.md)
 ##### [Eingeben von Metadaten](media-services-input-metadata-schema.md)
@@ -97,7 +98,7 @@
 ### Media Encoder Premium Workflow
 #### [Media Encoder Premium Workflow-Formate und -Codecs](media-services-premium-workflow-encoder-formats.md)
 #### Codierung mit dem Medienencoder-Premium-Workflow
-##### [Media Encoder Premium-Workflow](media-services-encode-with-premium-workflow.md)
+##### [Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md)
 ##### [Tutorials für den Media Encoder Premium-Workflow](media-services-media-encoder-premium-workflow-tutorials.md)
 ##### [Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer](media-services-workflow-designer.md)
 ##### [Premium-Workflow mit mehreren Eingaben](media-services-media-encoder-premium-workflow-multiplefilesinput.md)
@@ -141,7 +142,7 @@
 ### [PlayReady (offline) für Windows 10](https://blogs.msdn.microsoft.com/playready4/2016/10/26/does-azure-media-services-support-offline-mode/)
 ### [FairPlay (offline) für iOS](media-services-protect-hls-with-offline-fairplay.md)
 ### [Widevine (offline) für Android](offline-widevine-for-android.md)
-### [Configure in Azure portal](media-services-portal-protect-content.md) (Konfigurieren im Azure-Portal)
+### [Konfigurieren im Azure-Portal](media-services-portal-protect-content.md)
 ### [Bereitstellen von DRM-Lizenzen](media-services-deliver-keys-and-licenses.md)
 ### Erstellen von ContentKeys
 #### [.NET](media-services-dotnet-create-contentkey.md)
@@ -243,5 +244,5 @@
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [Preise](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
-## [Anmerkungen zu dieser Version](media-services-release-notes.md)
+## [Versionshinweise](media-services-release-notes.md)
 ## [Videos](https://azure.microsoft.com/resources/videos/index/?services=media-services)

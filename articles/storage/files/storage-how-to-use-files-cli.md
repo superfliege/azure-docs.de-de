@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 07d1d1f7050437306d5c2737b9f62b5615753869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: de48789c42ccd2d7e090af6f430f323b16416e9c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980422"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389784"
 ---
 # <a name="manage-azure-file-shares-using-azure-cli"></a>Verwalten von Azure-Dateifreigaben mit der Azure CLI
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können unter Windows, Linux und macOS bereitgestellt werden. In diesem Artikel werden die Grundlagen der Arbeit mit Azure-Dateifreigaben per Azure CLI Schritt für Schritt beschrieben. In diesem Artikel werden folgende Themen erläutert: 
@@ -180,7 +180,7 @@ Der Befehl `az storage file copy start` ist für Dateiverschiebungen zwischen Az
 Eine weitere nützliche Aufgabe, die Sie mit einer Azure-Dateifreigabe durchführen können, ist die Erstellung von Freigabemomentaufnahmen. Mit einer Momentaufnahme wird eine Kopie einer Azure-Dateifreigabe für einen bestimmten Zeitpunkt erstellt. Freigabemomentaufnahmen ähneln einigen Betriebssystemtechnologien, mit denen Sie unter Umständen bereits vertraut sind:
 - Momentaufnahmen vom Typ [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) für Linux-Systeme
 - Momentaufnahmen vom Typ [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) für macOS
-- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/en-us/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme wie NTFS und ReFS
+- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme wie NTFS und ReFS
 
 Sie können eine Freigabemomentaufnahme erstellen, indem Sie den Befehl [`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot) verwenden:
 
