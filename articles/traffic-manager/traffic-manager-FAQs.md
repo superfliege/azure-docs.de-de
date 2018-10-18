@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2018
+ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: 6c196d16258e4bf000f998899086c7a6d0197fba
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8c3d632063c8ed9347aa870d0971cc09dc1a658e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038217"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129538"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -72,7 +72,7 @@ Um dieses Problem zu umgehen, wird empfohlen, eine HTTP-Umleitung zu verwenden, 
 Die uneingeschränkte Unterstützung von Naked-Domänen in Traffic Manager ist Teil unseres Feature-Backlogs. Sie können die Unterstützung für diese Funktionsanforderung registrieren, indem Sie [auf unserer Community-Feedbackwebsite dafür abstimmen](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Berücksichtigt Traffic Manager beim Verarbeiten von DNS-Abfragen die Clientsubnetzadresse? 
-Ja. Zusätzlich zur empfangenen IP-Quelladresse der DNS-Abfrage (normalerweise die IP-Adresse des DNS-Resolvers) berücksichtigt Traffic Manager beim Durchführen von Suchvorgängen für geografische und leistungsbezogene Routingmethoden auch die Clientsubnetzadresse, sofern sie vom Resolver, der die Anforderung im Namen des Endbenutzers durchführt, in die Abfrage eingebunden wird.  
+Ja. Zusätzlich zur empfangenen IP-Quelladresse der DNS-Abfrage (normalerweise die IP-Adresse des DNS-Resolvers) berücksichtigt Traffic Manager beim Durchführen von Suchvorgängen für geografische, leistungsbezogene und Subnetzroutingmethoden auch die Clientsubnetzadresse, sofern sie vom Resolver, der die Anforderung im Namen des Endbenutzers durchführt, in die Abfrage eingebunden wird.  
 Insbesondere [RFC 7871 – Client Subnet in DNS Queries](https://tools.ietf.org/html/rfc7871), über den ein [Extension Mechanism for DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) bereitgestellt wird, der die Clientsubnetzadresse von unterstützenden Resolvern weitergeben kann.
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Was ist DNS TTL, und wie wirkt DNS TTL sich auf meine Benutzer aus?
@@ -133,6 +133,39 @@ Beim geografischen Routingtyp kann eine Region nur einem Endpunkt innerhalb eine
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Gibt es Einschränkungen hinsichtlich der API-Version, die diesen Routingtyp unterstützt?
 
 Ja, nur die API-Version 2017-03-01 und höhere Versionen unterstützen den geografischen Routingtyp. Ältere API-Versionen können nicht zum Erstellen von Profilen vom geografischen Routingtyp oder zum Zuweisen von geografischen Regionen zu Endpunkten verwendet werden. Wenn eine ältere API-Version zum Abrufen von Profilen aus einem Azure-Abonnement verwendet wird, werden keine Profile mit dem geografischen Routingtyp zurückgegeben. Darüber hinaus wird bei Verwendung älterer API-Versionen für zurückgegebene Profile, die Endpunkte mit einer geografischen Regionszuweisung aufweisen, die geografische Regionszuweisung nicht angezeigt.
+
+## <a name="traffic-manager-subnet-traffic-routing-method"></a>Subnetzroutingmethode für Datenverkehr in Traffic Manager
+
+### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Welche Anwendungsfälle gibt es, in denen Subnetzrouting sinnvoll ist?
+Das Subnetzrouting ermöglicht die Differenzierung der für bestimmte, durch die Quell-IP der IP-Adresse ihrer DNS-Anfragen identifizierte Benutzergruppen bereitgestellten Oberflächen. Beispielsweise könnten verschiedene Inhalte angezeigt werden, wenn Benutzer aus Ihrer Unternehmenszentrale auf eine Website zugreifen. Ein weiteres Beispiel wäre die Beschränkung von Benutzern bestimmter ISPs auf Endpunkte, die nur IPv4-Verbindungen unterstützen, wenn diese ISPs bei Verwendung von IPv6 eine unterdurchschnittliche Performance aufweisen.
+Ein weiterer Grund für die Verwendung der Subnetzroutingmethode ist die Kombination mit anderen Profilen in einem verschachtelten Profilsatz. Wenn Sie beispielsweise für das Geofencing Ihrer Benutzer die geografische Routingmethode, für einen bestimmten ISP aber eine andere Routingmethode verwenden möchten, können Sie ein Profil mit einer Subnetzroutingmethode als übergeordnetes Profil verwenden und diesen ISP außer Kraft setzen, um ein bestimmtes Unterprofil zu verwenden, und das geografische Standardprofil für alle anderen Benutzer verwenden.
+
+### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Wie erkennt Traffic Manager die IP-Adresse des Endbenutzers?
+Endbenutzergeräte verwenden in der Regel einen DNS-Resolver, um das DNS-Lookup für sie durchzuführen. Die ausgehende IP dieser Resolver wird von Traffic Manager als Quell-IP betrachtet. Darüber hinaus prüft die Subnetzroutingmethode auch, ob es EDNS0 Extended Client Subnet-Informationen (ECS) gibt, die mit der Anforderung übergeben wurden. Wenn ECS-Informationen vorhanden sind, wird das Routing anhand dieser Adresse bestimmt. Sind keine ECS-Informationen vorhanden, wird die Quell-IP der Abfrage für Routingzwecke verwendet.
+
+### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Wie kann ich bei der Verwendung von Subnetzrouting IP-Adressen angeben?
+Die IP-Adresse, die einem Endpunkt zugeordnet werden soll, kann auf zwei Arten angegeben werden. Erstens können Sie die Quad-gepunktete dezimale Oktettnotation mit Start- und Endadresse verwenden, um den Bereich festzulegen (z. B. 1.2.3.4-5.6.7.8 oder 3.4.5.6-3.4.5.5.5.6). Zweitens können Sie den Bereich in der CIDR-Notation angeben (z. B. 1.2.3.3.0/24). Sie können mehrere Bereiche angeben und beide Notationstypen in einem Bereichssatz verwenden. Es gelten ein paar Einschränkungen.
+-   Es dürfen keine Überschneidung der Adressbereiche vorliegen, da jede IP nur einem einzigen Endpunkt zugeordnet werden kann.
+-   Die Startadresse darf nicht größer als die Endadresse sein.
+-   Im Falle der CIDR-Notation sollte die IP-Adresse vor dem „/“ die Startadresse dieses Bereichs sein (z. B. ist 1.2.3.3.0/24 gültig, 1.2.3.4.4/24 aber NICHT).
+
+### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Wie kann ich bei der Verwendung von Subnetzrouting einen Fallbackendpunkt angeben?
+Wenn in einem Profil mit Subnetzrouting einem Endpunkt keine Subnetze zugeordnet sind, werden an diesen alle Anforderung weitergeleitet, die nicht mit anderen Endpunkten übereinstimmt. Es wird dringend empfohlen, dass Sie in Ihrem Profil einen solchen Fallbackendpunkt einrichten, da Traffic Manager eine NXDOMAIN-Antwort zurückgibt, wenn eine Anforderung eintrifft, die keinem Endpunkt zugeordnet werden kann oder deren zugeordneter Endpunkt fehlerhaft ist.
+
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Was geschieht, wenn ein Endpunkt in einem Profil vom Typ Subnetzrouting deaktiviert ist?
+Wenn in einem Profil mit Subnetzrouting ein Endpunkt deaktiviert ist, verhält sich Traffic Manager so, als ob dieser Endpunkt und die darin enthaltenen Subnetzzuordnungen nicht existieren würden. Wird eine Abfrage empfangen, die mit der IP-Adresszuordnung übereinstimmen würde, der entsprechende Endpunkt aber deaktiviert ist, gibt Traffic Manager einen Fallbackendpunkt (einen Endpunkt ohne Zuordnung) oder, wenn ein solcher Endpunkt nicht vorhanden ist, eine NXDOMAIN-Antwort zurück.
+
+## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Routingmethode „MultiValue“ für Datenverkehr in Traffic Manager
+
+### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Was sind einige Anwendungsfälle, in denen MultiValue-Routing nützlich ist?
+Das MultiValue-Routing gibt mehrere fehlerfreie Endpunkte in einer einzigen Abfrageantwort zurück. Der Hauptvorteil besteht darin, dass der Client, wenn ein Endpunkt fehlerhaft ist, mehr Möglichkeiten für erneute Versuche hat, ohne einen weiteren DNS-Aufruf zu tätigen (der möglicherweise den gleichen Wert aus einem Upstream-Cache zurückgibt). Dies gilt für verfügbarkeitssensible Anwendungen, deren Ausfallzeiten minimiert werden sollen.
+Eine weitere Verwendung für die MultiValue-Routingmethode sind Endpunkte, die sowohl IPv4- als auch IPv6-Adressen umfassen, und für die Sie dem Anrufer beide Optionen zur Auswahl geben möchten, wenn er eine Verbindung zum Endpunkt herstellt.
+
+### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Wie viele Endpunkte werden zurückgegeben, wenn das MultiValue-Routing verwendet wird?
+Sie können die maximale Anzahl der zurückzugebenden Endpunkte angeben, und MultiValue gibt beim Empfang einer Abfrage maximal diese Anzahl von fehlerfreien Endpunkten zurück. Der maximal mögliche Wert für diese Konfiguration ist 10.
+
+### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Erhalte ich den gleichen Satz von Endpunkten, wenn das MultiValue-Routing verwendet wird?
+Wir können nicht garantieren, dass bei jeder Abfrage der gleiche Satz von Endpunkten zurückgegeben wird. Dies wird auch dadurch beeinflusst, dass einige der Endpunkte fehlerhaft werden könnten, sodass sie dann nicht mehr in die Antwort einbezogen werden.
 
 ## <a name="real-user-measurements"></a>Benutzer-Realmessungen
 
@@ -257,7 +290,7 @@ Ja. Stagingslots des Clouddiensts können in Traffic Manager als externe Endpunk
 
 Traffic Manager stellt derzeit keine IPv6-adressierbaren Nameserver zur Verfügung. Traffic Manager kann jedoch weiterhin von IPv6-Clients verwendet werden, die IPv6-Endpunkte verbinden. Ein Client erstellt keine DNS-Anfragen direkt an Traffic Manager. Stattdessen verwendet der Client einen rekursiven DNS-Dienst. Ein reiner IPv6-Client sendet Anforderungen an den rekursiven DNS-Dienst über IPv6. Der rekursive Dienst sollte anschließend in der Lage sein, die Traffic Manager-Namensserver per IPv4 zu kontaktieren.
 
-Traffic Manager antwortet mit dem DNS-Namen des Endpunkts. Ein IPv6-Endpunkt kann unterstützt werden, indem ein DNS AAAA-Eintrag konfiguriert wird, mit dem der DNS-Name des Endpunkts auf die IPv6-Adresse verwiesen wird. Traffic Manager-Integritätsprüfungen unterstützen nur IPv4-Adressen. Der Dienst muss einen IPv4-Endpunkt auf dem gleichen DNS-Namen verfügbar machen.
+Traffic Manager antwortet mit dem DNS-Namen oder der IP-Adresse des Endpunkts. Um einen IPv6-Endpunkt zu unterstützen, gibt es zwei Möglichkeiten. Sie können den Endpunkt als DNA-Namen mit einem zugehörigen AAAA-Eintrag hinzufügen. Traffic Manager überprüft die Integrität dieses Endpunkts und gibt ihn als CNAME-Eintragstyp in der Abfrageantwort zurück. Sie können diesen Endpunkt auch direkt über die IPv6-Adresse hinzufügen, und Traffic Manager gibt einen Datensatz vom Typ AAAA in der Abfrageantwort zurück. 
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Kann ich Traffic Manager mit mehr als einer Web-App in derselben Region verwenden?
 
@@ -300,6 +333,46 @@ Traffic Manager kann keine Zertifikatüberprüfung bereitstellen. Dazu zählt Fo
 * Serverseitige SNI-Zertifikate werden nicht unterstützt.
 * Clientzertifikate werden nicht unterstützt.
 
+### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Verwende ich beim Hinzufügen eines Endpunkts eine IP-Adresse oder einen DNS-Namen?
+Traffic Manager unterstützt das Hinzufügen von Endpunkten auf drei Arten: als DNS-Name, als IPv4-Adresse und als IPv6-Adresse. Wenn der Endpunkt als IPv4- oder IPv6-Adresse hinzugefügt wird, ist die Abfrageantwort vom Eintragstyp A bzw. AAAA. Wenn der Endpunkt als DNS-Name hinzugefügt wird, ist die Abfrageantwort vom Eintragstyp CNAME. Beachten Sie, dass das Hinzufügen von Endpunkten als IPv4- oder IPv6-Adresse nur zulässig ist, wenn der Endpunkt vom Typ „Extern“ ist.
+Alle Routingmethoden und Überwachungseinstellungen werden von den drei Endpunktadressierungsarten unterstützt.
+
+### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Welche Arten von IP-Adressen kann ich beim Hinzufügen eines Endpunkts verwenden?
+In Traffic Manager können Sie IPv4- oder IPv6-Adressen zur Angabe von Endpunkten verwenden. Es gibt einige Einschränkungen, die im Folgenden aufgeführt sind:
+- Adressen, die reservierten privaten IP-Adressräumen entsprechen, sind nicht erlaubt. Zu diesen Adressen gehören die in RFC 1918, RFC 6890, RFC 5737, RFC 3068, RFC 2544 und RFC 5771 genannten Adressen.
+- Die Adresse darf keine Portnummern enthalten (Sie können die Ports angeben, die in den Profilkonfigurationseinstellungen verwendet werden sollen). 
+- Zwei Endpunkte im gleichen Profil dürfen nie die gleiche Ziel-IP-Adresse aufweisen.
+
+### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Kann ich verschiedene Endpunktadressierungsarten innerhalb eines einzigen Profils verwenden?
+Nein, In Traffic Manager ist es nicht zulässig, Endpunktadressierungstypen innerhalb eines Profils zu mischen, außer im Falle eines Profils mit dem Routingtyp „MultiValue“. Hierbei können Sie IPv4- und IPv6-Adressierungstypen mischen.
+
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Was passiert, wenn sich der Eintragstyp einer eingehenden Abfrage vom Eintragstyp unterscheidet, der dem Adressierungstyp der Endpunkte zugeordnet ist?
+Wenn eine Abfrage für ein Profil empfangen wird, sucht Traffic Manager zunächst den Endpunkt, der nach der angegebenen Routingmethode und dem Integritätsstatus der Endpunkte zurückgegeben werden muss. Anschließend wird der in der eingehenden Abfrage angeforderte Eintragstyp und der dem Endpunkt zugeordneten Eintragstyp betrachtet, bevor eine Antwort basierend auf der folgenden Tabelle zurückgegeben wird.
+
+Für Profile mit einer beliebigen Routingmethode außer „MultiValue“:
+|Eingehende Abfrageanforderung|    Endpunkttyp|  Bereitgestellte Antwort|
+|--|--|--|
+|BELIEBIG |  A/AAAA/CNAME |  Zielendpunkt| 
+|A |    A/CNAME | Zielendpunkt|
+|A |    AAAA |  NODATA |
+|AAAA | AAAA/CNAME |  Zielendpunkt|
+|AAAA | A | NODATA |
+|CNAME |    CNAME | Zielendpunkt|
+|CNAME  |A/AAAA | NODATA |
+|
+Für Profile mit der Routingmethode „MultiValue“:
+
+|Eingehende Abfrageanforderung|    Endpunkttyp | Bereitgestellte Antwort|
+|--|--|--|
+|BELIEBIG |  Kombination aus A und AAAA | Zielendpunkte|
+|A |    Kombination aus A und AAAA | Nur Zielendpunkte vom Typ A|
+|AAAA   |Kombination aus A und AAAA|     Nur Zielendpunkte vom Typ AAAA|
+|CNAME |    Kombination aus A und AAAA | NODATA |
+
+### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Kann ich ein Profil mit über IPv4/IPv6 adressierten Endpunkten in einem verschachtelten Profil verwenden?
+Ja, mit der Ausnahme, dass ein Profil vom Typ „MultiValue“ kein übergeordnetes Profil in einem verschachtelten Profilsatz sein kann.
+
+
 ### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Ich habe einen Clouddienst oder einen Webanwendungs-Endpunkt in meinem Traffic Manager-Profil angehalten, aber ich erhalte keinen Datenverkehr, auch nicht nach einem Neustart. Wie kann ich dieses Problem beheben?
 
 Wenn ein Azure-Clouddienst oder Webanwendungs-Endpunkt beendet wird, überprüft Traffic Manager nicht mehr die Integrität, und die Integritätsprüfungen werden erst wieder aufgenommen, wenn erkannt wird, dass der Endpunkt neu gestartet wurde. Um diese Verzögerung zu vermeiden, deaktivieren Sie diesen Endpunkt im Traffic Manager-Profil, und aktivieren Sie ihn erneut, nachdem Sie den Endpunkt neu gestartet haben.   
@@ -326,9 +399,13 @@ Mithilfe dieser Einstellungen kann Traffic Manager Failover in weniger als 10 Se
 
 Traffic Manager-Überwachungseinstellungen werden pro Profil festgelegt. Wenn Sie nur für einen Endpunkt eine andere Überwachungseinstellung verwenden müssen, kann dieser Endpunkt als [geschachteltes Profil](traffic-manager-nested-profiles.md) konfiguriert werden, dessen Überwachungseinstellungen sich vom übergeordneten Profil unterscheiden.
 
-### <a name="what-host-header-do-endpoint-health-checks-use"></a>Welcher Hostheader wird für die Integritätsprüfungen für Endpunkte verwendet?
+### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Wie kann ich meinen Endpunkten HTTP-Header für die Traffic Manager-Integritätsprüfungen zuweisen?
+Mit Traffic Manager können Sie benutzerdefinierte Header in den für Ihre Endpunkte initiierten HTTP(S)-Integritätsprüfungen angeben. Wenn Sie einen benutzerdefinierten Header angeben möchten, können Sie dies auf Profilebene (gilt für alle Endpunkte) oder auf Endpunktebene tun. Wenn ein Header auf beiden Ebenen definiert ist, überschreibt der auf der Endpunktebene angegebene Header den auf der Profilebene angegebenen Header.
+Ein häufiger Anwendungsfall dafür ist die Angabe von Hostheadern, sodass Traffic Manager-Anforderungen korrekt an einen Endpunkt weitergeleitet werden können, der in einer mehrinstanzenfähigen Umgebung gehostet wird. Ein weiterer Anwendungsfall ist die Identifizierung von Traffic Manager-Anforderungen aus den HTTP(S)-Anforderungsprotokollen eines Endpunkts.
 
-Traffic Manager verwendet Hostheader in HTTP- und HTTPS-Integritätsprüfungen. Der von Traffic Manager verwendete Hostheader ist der Name des Endpunktziels, das im Profil konfiguriert wurde. Der im Hostheader verwendete Wert kann nicht separat von der Zieleigenschaft („target“) angegeben werden.
+## <a name="what-host-header-do-endpoint-health-checks-use"></a>Welcher Hostheader wird für die Integritätsprüfungen für Endpunkte verwendet?
+Wenn keine benutzerdefinierte Hostheadereinstellung angegeben wird, ist der vom Traffic Manager verwendete Hostheader der DNS-Name des im Profil konfigurierten Endpunktziels, sofern verfügbar. 
+
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Wie lauten die IP-Adressen, von denen die Integritätsüberprüfungen stammen?
 

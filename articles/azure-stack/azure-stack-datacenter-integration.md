@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 0c43b66a9d6210ea951af3fae5eca8bc6d47c3d9
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9e5a8cf59d4f1dc47495c5889f8ed4aae64f7ff7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261218"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720445"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Überlegungen zur Integration von Rechenzentren für integrierte Azure Stack-Systeme
 Wenn Sie an einem mit Azure Stack integrierten System interessiert sind, müsse Sie einige der wichtigsten Aspekte bei der Planung der Bereitstellung verstehen und wissen, wie das System in Ihr Rechenzentrum passt. Dieser Artikel bietet einen allgemeinen Überblick über diese Aspekte, damit Sie wichtige Infrastrukturentscheidungen für Ihr Azure Stack-System mit mehreren Knoten treffen können. Ein Verständnis dieser Aspekte hilft Ihnen bei der Zusammenarbeit mit Ihrem OEM-Hardwareanbieter, sobald dieser Azure Stack in Ihrem Rechenzentrum bereitstellt.  
@@ -35,7 +35,7 @@ Während Sie die erforderlichen Informationen recherchieren und sammeln, müssen
 ## <a name="capacity-planning-considerations"></a>Aspekte der Kapazitätsplanung
 Beim Auswerten einer Azure Stack-Lösung für den Kauf müssen Entscheidungen in Bezug auf die Hardwarekonfiguration getroffen werden, die eine direkte Auswirkung auf die Gesamtkapazität der Azure Stack-Lösung haben. Hierzu gehört die übliche Auswahl von CPU, Arbeitsspeicherdichte, Speicherkonfiguration und Gesamtumfang der Lösung (z.B. Anzahl von Servern). Im Gegensatz zu einer herkömmlichen Virtualisierungslösung gilt die einfache Arithmetik dieser Komponenten zur Ermittlung der nutzbaren Kapazität nicht. Der erste Grund ist, dass Azure Stack so aufgebaut ist, dass die Infrastruktur- bzw. Verwaltungskomponenten in der Lösung selbst gehostet werden. Der zweite Grund ist, dass ein Teil der Lösungskapazität zur Unterstützung der Resilienz reserviert ist. Es geht um die Aktualisierung der Lösungssoftware auf eine Weise, bei der die Beeinträchtigung von Mandantenworkloads verringert wird. 
 
-Mit dem Tool [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) können Sie auf zwei Arten fundierte Entscheidungen zur Planung der Kapazität treffen: entweder per Auswahl eines Hardwareangebots und einer passenden Kombination von Ressourcen, oder per Definition der von Azure Stack auszuführenden Workload, um die verfügbaren Hardware-SKUs anzuzeigen, die dies unterstützen. Schließlich dient das Tool auch als Hilfe beim Treffen von Entscheidungen in Bezug auf die Azure Stack-Planung und -Konfiguration. 
+Mit dem Tool [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) können Sie auf zwei Arten fundierte Entscheidungen zur Planung der Kapazität treffen: entweder per Auswahl eines Hardwareangebots und einer passenden Kombination von Ressourcen, oder per Definition der von Azure Stack auszuführenden Workload, um die verfügbaren Hardware-SKUs anzuzeigen, die dies unterstützen. Schließlich dient das Tool auch als Hilfe beim Treffen von Entscheidungen in Bezug auf die Azure Stack-Planung und -Konfiguration. 
 
 Es soll aber nicht als Ersatz für Ihre eigenen Untersuchungen und Analysen dienen.  Microsoft gewährt für die mit dem Tool bereitgestellten Informationen keine Zusicherungen oder Garantien, weder ausdrücklich noch konkludent.
 
@@ -89,7 +89,7 @@ In der folgenden Tabelle sind diese Entscheidungen zur Domänenbenennung zusamme
 
 | NAME | BESCHREIBUNG | 
 | -------- | ------------- | 
-|Regionsname | Der Name Ihres ersten Azure Stack-Region. Dieser Name wird als FQDN-Komponente für die öffentlichen virtuellen IP-Adressen (VIPs) verwendet, die von Azure Stack verwaltet werden. Der Regionsname gibt in der Regel eine physische Standort-ID an, z. B. den Standort des Rechenzentrums. | 
+|Regionsname | Der Name Ihres ersten Azure Stack-Region. Dieser Name wird als FQDN-Komponente für die öffentlichen virtuellen IP-Adressen (VIPs) verwendet, die von Azure Stack verwaltet werden. Der Regionsname gibt in der Regel eine physische Standort-ID an, z. B. den Standort des Rechenzentrums.<br><br>Die Regionsname darf nur aus Buchstaben und Ziffern zwischen 0 und 9 bestehen. Sonderzeichen wie „-“ oder „#“ usw. sind unzulässig.| 
 | Externer Domänenname | Der Name der DNS-Zone (Domain Name System) für Endpunkte mit externen VIPs. Wird im FQDN für diese öffentlichen VIPs verwendet. | 
 | Privater (interner) Domänenname | Der Name der Domäne (und internen DNS-Zone), die in Azure Stack zur Infrastrukturverwaltung erstellt wurde. 
 | | |
@@ -191,10 +191,7 @@ Azure Stack sichert keine Mandantenanwendungen und -daten. Sie müssen die Siche
 
 Zur Sicherung von virtuellen IaaS-Computern mit Linux oder Windows müssen Sie Sicherungsprodukte mit Zugriff auf das Gastbetriebssystem verwenden, um den Datei-, Ordner- und Systemstatus sowie Anwendungsdaten zu schützen. Sie können Azure Backup, System Center Data Center Protection Manager oder unterstützte Produkte von Drittanbietern verwenden.
 
-Sie können Azure Site Recovery oder unterstützte Produkte von Drittanbietern verwenden, um Daten für den Notfall an einen sekundären Standort zu replizieren und Anwendungsfailover zu orchestrieren. (Bei der ersten veröffentlichten Version von integrierten Systemen werden Failbacks von Azure Site Recovery nicht unterstützt. Allerdings können Sie Failbacks über einen manuellen Prozess erreichen.) Darüber hinaus können Anwendungen, die die native Replikation unterstützen (z. B. Microsoft SQL Server), Daten an einen anderen Speicherort replizieren, an dem die Anwendung ausgeführt wird.
-
-> [!IMPORTANT]
-> Bei der ersten veröffentlichten Version von integrierten Systemen werden Schutztechnologien unterstützt, die auf der Gastebene eines virtuellen IaaS-Computers arbeiten. Sie können keine Agenten auf zugrunde liegenden Infrastrukturservern installieren.
+Sie können Azure Site Recovery oder unterstützte Produkte von Drittanbietern verwenden, um Daten für den Notfall an einen sekundären Standort zu replizieren und Anwendungsfailover zu orchestrieren. Darüber hinaus können Anwendungen, die die native Replikation unterstützen (z.B. Microsoft SQL Server), Daten an einen anderen Speicherort replizieren, an dem die Anwendung ausgeführt wird.
 
 ## <a name="learn-more"></a>Weitere Informationen
 

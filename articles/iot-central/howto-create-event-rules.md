@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwalten von Ereignisregeln in Ihre Azure IoT Central-Anwendung | Microsoft-Dokumentation
+title: Erstellen und Verwalten von Ereignisregeln in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Azure IoT Central-Ereignisregeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen.
 author: ankitgupta
 ms.author: ankitgup
@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 40c7b2865795f8c6a5cfbabe4d59aea1715d4a57
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 889f3928ee72c035035abb635eb71ec0b06a3b45
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42145885"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730156"
 ---
-# <a name="create-an-eevent-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Ereignisregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
+# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Ereignisregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
 
-Mithilfe von Azure IoT Central können Sie Ihre verbundenen Geräte remote überwachen. Azure IoT Central-Regeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen aufzurufen, z.B. das Senden einer E-Mail oder das Auslösen von Microsoft Flow. Mit nur wenigen Mausklicks können Sie die Bedingung definieren, um Ihre Gerätedaten zu überwachen, und die entsprechende Aktion konfigurieren. In diesem Artikel wird erläutert, wie Regeln zum Überwachen von Ereignissen erstellt werden, die vom Gerät gesendet werden.
+*Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
+
+Mithilfe von Azure IoT Central können Sie Ihre verbundenen Geräte remote überwachen. Azure IoT Central-Regeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und automatisch Aktionen aufzurufen, z. B. das Senden einer E-Mail oder das Auslösen von Microsoft Flow. Mit nur wenigen Mausklicks können Sie die Bedingung definieren, um Ihre Gerätedaten zu überwachen, und die entsprechende Aktion konfigurieren. In diesem Artikel wird erläutert, wie Regeln zum Überwachen von Ereignissen erstellt werden, die vom Gerät gesendet werden.
 
 Geräte können Ereignismessungen zum Senden von wichtigen Geräteereignissen oder Informationen verwenden. Eine Ereignisregel wird ausgelöst, wenn das ausgewählte Geräteereignis vom Gerät gemeldet wird.
 
@@ -37,10 +39,10 @@ Um eine Ereignisregel zu erstellen, muss für die Gerätevorlage mindestens eine
     ![Noch keine Regeln](media\howto-create-event-rules\Rules_Landing_Page.png)
 
 
-1. Klicken Sie auf der Registerkarte **Regeln** auf die Option **+ Neue Regel**, um die Typen von Regeln anzuzeigen, die Sie erstellen können.
+1. Klicken Sie auf der Registerkarte **Regeln** auf **Vorlage bearbeiten** und dann auf **+ Neue Regel**, um die Regeltypen anzuzeigen, die Sie erstellen können.
 
 
-1. Klicken Sie auf die Kachel **Ereignis**, um eine Regel zu erstellen.
+1. Klicken Sie auf die Kachel **Ereignis**, um eine Regel für Ereignisüberwachung zu erstellen.
 
     ![Regeltypen](media\howto-create-event-rules\Rule_Types.png)
 
@@ -93,7 +95,9 @@ In diesem Abschnitt erfahren Sie, wie Aktionen eingerichtet werden, die ausgefü
 
 1. Um die neue Regel zu speichern, wählen Sie **Speichern** aus. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Ereignisse, die an Ihre Anwendung gesendet werden. Wenn die in der Regel festgelegte Bedingung erfüllt ist, löst die Regel die konfigurierte E-Mail-Aktion aus.
 
-Sie können der Regel auch andere Aktionen wie Microsoft Flow und Webhooks hinzufügen. Sie können bis zu 5 Aktionen pro Regel hinzufügen.
+1. Klicken Sie auf **Fertig**, um den Modus **Vorlage bearbeiten** zu beenden.
+
+Sie können der Regel auch andere Aktionen wie Microsoft Flow und Webhooks hinzufügen. Sie können bis zu fünf Aktionen pro Regel hinzufügen.
 
 - [Microsoft Flow-Aktion](howto-add-microsoft-flow.md) zum Initiieren eines Workflows in Microsoft Flow bei Auslösung einer Regel 
 - [Webhookaktion](howto-create-webhooks.md) zum Benachrichtigen anderer Dienste bei Auslösung einer Regel

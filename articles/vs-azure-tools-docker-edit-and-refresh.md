@@ -1,43 +1,33 @@
 ---
 title: Debuggen von Apps in einem lokalen Docker-Container | Microsoft Docs
 description: Erfahren Sie, wie Sie eine in einem lokalen Docker-Container ausgeführte App ändern, den Container über das Feature zum Bearbeiten und Aktualisieren aktualisieren und Haltepunkte für das Debuggen setzen.
-services: azure-container-service
-documentationcenter: na
+services: container-service
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 480e3062-aae7-48ef-9701-e4f9ea041382
 ms.service: multiple
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/22/2016
-ms.author: mlearned
-ms.openlocfilehash: 01741ba25ac3a6ab187a08636b7e26ee58dbee90
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.date: 09/11/2018
+ms.author: ghogen
+ms.openlocfilehash: 0f3f323cb4486c06f6f18de4c695efaf8dce4d99
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038304"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715719"
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>Debuggen von Apps in einem lokalen Docker-Container
 ## <a name="overview"></a>Übersicht
-Visual Studio 2017 bietet eine zuverlässige Möglichkeit der Entwicklung in einem Linux Docker-Container und der lokalen Überprüfung Ihrer Anwendung.
+Visual Studio 2017 bietet eine zuverlässige Möglichkeit der Entwicklung in einem Docker-Container und der lokalen Überprüfung Ihrer Anwendung.
 Sie müssen bei jeder Codeänderung den Container nicht neu starten.
 In diesem Artikel erfahren Sie, wie Sie das Feature zum Bearbeiten und Aktualisieren nutzen, um eine ASP.NET Core-Web-App in einem lokalen Docker-Container zu starten, die erforderlichen Änderungen vorzunehmen und den Browser dann zu aktualisieren, um die Änderungen anzuzeigen.
 Ferner wird gezeigt, wie Sie zum Debuggen Haltepunkte festlegen.
 
-> [!NOTE]
-> Unterstützung von Windows-Container wird in einer künftigen Version geboten.
->
->
-
 ## <a name="prerequisites"></a>Voraussetzungen
 Die folgenden Tools müssen installiert sein.
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/)
-* [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit installierter Workload für Webentwicklung.
 
 Um Docker-Container lokal ausführen zu können, benötigen Sie einen lokalen Docker-Client.
 Sie können die [Docker Toolbox](https://www.docker.com/products/docker-toolbox) verwenden, wofür Hyper-V deaktiviert werden muss. Sie können auch [Docker für Windows](https://www.docker.com/get-docker) nutzen, das Hyper-V verwendet und Windows 10 erfordert.
@@ -47,10 +37,7 @@ Wenn Sie Docker Toolbox verwenden, müssen Sie [den Docker-Client konfigurieren]
 ## <a name="1-create-a-web-app"></a>1. Erstellen einer Web-App
 [!INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
-## <a name="2-add-docker-support"></a>2. Hinzufügen der Docker-Unterstützung
-[!INCLUDE [Add docker support](../includes/vs-azure-tools-docker-add-docker-support.md)]
-
-## <a name="3-edit-your-code-and-refresh"></a>3. Bearbeiten des Codes und Aktualisieren
+## <a name="2-edit-your-code-and-refresh"></a>2. Bearbeiten des Codes und Aktualisieren
 Um Änderungen schnell zu durchlaufen, können Sie Ihre Anwendung in einem Container starten, Änderungen weiter vornehmen und wie mithilfe von IIS Express anzeigen.
 
 1. Legen Sie die Projektmappenkonfiguration auf `Debug` fest, und drücken Sie **&lt;STRG+F5>**, um Ihr Docker-Image zu erstellen und lokal auszuführen.
@@ -70,19 +57,20 @@ Um Änderungen schnell zu durchlaufen, können Sie Ihre Anwendung in einem Conta
    Now listening on: http://*:80
    Application started. Press Ctrl+C to shut down
    ```
+
 6. Ihre Änderungen wurden übernommen!
 
-## <a name="4-debug-with-breakpoints"></a>4. Debuggen mit Haltepunkten
+## <a name="3-debug-with-breakpoints"></a>3. Debuggen mit Haltepunkten
 Änderungen müssen öfters überprüft werden, wozu die Debugfunktionen von Visual Studio genutzt werden.
 
-1. Kehren Sie zu Visual Studio zurück, und öffnen Sie `Controllers\HomeController.cs`
-2. Ersetzen Sie den Inhalt der „About()“-Methode durch Folgendes:
+1. Kehren Sie zu Visual Studio zurück, und öffnen Sie `About.cshtml.cs`
+2. Ersetzen Sie den Inhalt der OnGet()-Methode durch Folgendes:
 
+   ```cs
+       Message = "Your application description page from within a Container";
    ```
-   string message = "Your application description page from within a Container";
-   ViewData["Message"] = message;
-   ````
-3. Setzen Sie links neben die Zeile `string message`einen Haltepunkt.
+
+3. Setzen Sie links neben die Codezeile einen Haltepunkt.
 4. Drücken Sie **&lt;F5>**, um mit dem Debuggen zu beginnen.
 5. Navigieren Sie zur Seite „Info“, und den Haltepunkt zu erreichen.
 6. Kehren Sie zu Visual Studio zurück, um den Haltepunkt anzuzeigen, und untersuchen Sie den Wert der Nachricht.
@@ -96,11 +84,11 @@ Die Docker-Unterstützung in Visual Studio 2017 bietet die Produktivität einer 
 [Problembehandlung bei der Visual Studio Docker-Entwicklung](vs-azure-tools-docker-troubleshooting-docker-errors.md)
 
 ## <a name="more-about-docker-with-visual-studio-windows-and-azure"></a>Weitere Informationen zu Docker mit Visual Studio und Azure
-* [Docker-Tools für Visual Studio Team Services](http://aka.ms/dockertoolsforvsts) – Erstellen und Bereitstellen von Docker-Containern
+* [Containerentwicklung mit Visual Studio](/visualstudio/containers) – eine Containerentwicklungs-Hubseite
+* [Docker-Integration für Azure Pipelines](http://aka.ms/dockertoolsforvsts) – Erstellen und Bereitstellen von Docker-Containern
 * [Docker-Tools für Visual Studio Code](http://aka.ms/dockertoolsforvscode) – Sprachdienste für die Bearbeitung von Docker-Dateien, mit weiteren e2e-Szenarien in Planung
 * [Informationen zu Windows-Containern](http://aka.ms/containers)– Informationen zu Windows Server und Nano Server
-* [Azure Container Service](https://azure.microsoft.com/services/container-service/) - [Inhalt des Azure Container Services](http://aka.ms/AzureContainerService)
-* Weitere Beispiele zum Arbeiten mit Docker finden Sie unter [Working with Docker](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker) (Arbeiten mit Docker) aus der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der HealthClinic.biz-Demo finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)(Schnellstarts zu Azure-Entwicklungstools).
+* [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) - [Dokumentation zum Azure Kubernetes Service](/azure/aks)
 
 ## <a name="various-docker-tools"></a>Verschiedene Docker-Tools
 [Some great docker tools (Blog von Steve Lasker) (Einige großartige Docker-Tools)](https://blogs.msdn.microsoft.com/stevelasker/2016/03/25/some-great-docker-tools/)

@@ -10,15 +10,22 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 204a9d64d14fe190cb0de73c964bb95b4b9b475f
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e265a66b841530d1133d760ebdcdf56046d1aee1
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628765"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364126"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>Grundlagen der Datenaufbewahrung in Time Series Insights
+
 In diesem Artikel werden zwei Einstellungen beschrieben, die sich auf die Datenaufbewahrung in Ihrer TSI-Umgebung (Time Series Insights) auswirken.
+
+## <a name="video"></a>Video: 
+
+### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>In diesem Video erfahren Sie mehr über die Datenspeicherung mit Time Series Insights und, wie Sie diese planen.</br>
+
+> [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 Jede TSI-Umgebung verfügt über eine Einstellung, mit der die **Datenaufbewahrungszeit**  gesteuert wird. Der Wert kann von 1 bis 400 Tagen reichen. Die Daten werden anhand der Speicherkapazität der Umgebung oder der Aufbewahrungsdauer (1 - 400) gelöscht, je nachdem, welcher Fall zuerst eintritt.
 

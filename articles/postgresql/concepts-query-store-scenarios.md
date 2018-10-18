@@ -7,19 +7,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 3cd3ebf86221db1531bd19e94bb072b4559d07d6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: fc354a9545f3073a858c2b669d428d1fa4185073
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395592"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377477"
 ---
 # <a name="usage-scenarios-for-query-store"></a>Verwendungsszenarios für den Abfragespeicher
 
 **Gilt für:** Azure Database for PostgreSQL 9.6 und 10
 
 > [!IMPORTANT]
-> Das Abfragespeicherfeature befindet sich in der Public Preview in einer begrenzte Anzahl von Regionen.
+> Das Abfragespeicherfeature befindet sich in der Public Preview-Phase.
 
 Sie können den Abfragespeicher in verschiedenen Szenarios verwenden, in denen das Nachverfolgen und Verwalten der vorhersagbaren Leistung einer Workload von Bedeutung ist. Betrachten Sie die folgenden Beispiele: 
 - Erkennen und Optimieren besonders aufwendiger Abfragen 

@@ -6,25 +6,25 @@ keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 07/20/2018
+ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5732f6986750dfee49084e2744052bb54e3a8139
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3ec7f6043c1d2e8e8f090ffc60822768ab9bc9d9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382566"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984000"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von C-Modulen für Azure IoT Edge
 
 Sie können Ihre Geschäftslogik in Azure IoT Edge-Module umwandeln. In diesem Artikel wird veranschaulicht, wie Sie Visual Studio Code (VS Code) als wichtigstes Tool zum Entwickeln und Debuggen von C-Modulen verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie einen Computer oder virtuellen Computer unter Windows oder Linux als Entwicklungscomputer verwenden. Sie simulieren außerdem ein IoT Edge-Gerät auf dem Entwicklungscomputer.
+In diesem Artikel wird davon ausgegangen, dass Sie einen Computer oder virtuellen Computer unter Windows oder Linux als Entwicklungscomputer verwenden. Sie simulieren außerdem ein IoT Edge-Gerät auf dem Entwicklungscomputer mit IoT Edge-Sicherheits-Daemon.
 
 > [!NOTE]
-> In diesem Debugartikel werden das Anfügen eines Prozesses in einem Modulcontainer und das Debuggen mit Visual Studio Code beschrieben. Sie können nur C-Module in Containern vom Typ „Linux amd64“ debuggen. Wenn Sie mit den Debugfunktionen von Visual Studio Code nicht vertraut sind, informieren Sie sich über [Debuggen](https://code.visualstudio.com/Docs/editor/debugging). 
+> In diesem Debugartikel werden das Anfügen eines Prozesses in einem Modulcontainer und das Debuggen mit Visual Studio Code beschrieben. Sie können nur C-Module in Containern vom Typ „Linux amd64“ debuggen. Wenn Sie mit den Debugfunktionen von Visual Studio Code nicht vertraut sind, informieren Sie sich über [Debuggen](https://code.visualstudio.com/Docs/editor/debugging).
 
 Weil in diesem Artikel Visual Studio Code als Hauptentwicklungstool verwendet wird, installieren Sie VS Code. Fügen Sie dann die erforderlichen Erweiterungen hinzu:
 * [Visual Studio Code](https://code.visualstudio.com/) 
@@ -37,7 +37,7 @@ Um ein Modul zu erstellen, benötigen Sie Docker zum Erstellen des Modulimages u
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) oder [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
    * Sie können anstelle einer Cloudregistrierung auch eine lokale Docker-Registrierung für Prototyp- bzw. Testzwecke verwenden. 
 
-Um das Modul auf einem Gerät zu testen, benötigen Sie einen aktiven IoT Hub mit mindestens einem IoT Edge-Gerät. Um Ihren Computer als IoT Edge-Gerät zu verwenden, führen Sie die Schritte in der Schnellstartanleitung für [Windows](quickstart.md) oder [Linux](quickstart-linux.md) aus. 
+Um das Modul auf einem Gerät zu testen, benötigen Sie einen aktiven IoT Hub mit mindestens einem IoT Edge-Gerät. Um Ihren Computer als IoT Edge-Gerät zu verwenden, führen Sie die Schritte in der Schnellstartanleitung für [Linux](quickstart-linux.md) aus. 
 
 ## <a name="create-a-new-solution-template"></a>Erstellen einer neuen Lösungsvorlage
 
@@ -97,7 +97,7 @@ In jedem Modulordner gibt es mehrere Docker-Dateien für unterschiedliche Contai
     "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
     ```
 
-2. Geben Sie in der Befehlspalette von VS Code den Befehl **Edge: Build IoT Edge solution** ein, und führen Sie ihn aus.
+2. Geben Sie in der Befehlspalette von Visual Studio Code den Befehl **Azure IoT Edge: Build and Push IoT Edge solution** ein, und führen Sie ihn aus.
 3. Wählen Sie in der Befehlspalette die Datei `deployment.template.json` für die Projektmappe aus. 
 4. Klicken Sie im Azure IoT Hub Device Explorer mit der rechten Maustaste auf eine IoT Edge-Geräte-ID. Klicken Sie dann auf **Create Deployment for Single Device** (Bereitstellung für einzelnes Gerät erstellen). 
 5. Öffnen Sie den **config**-Ordner Ihrer Projektmappe. Wählen Sie dann die `deployment.json`-Datei aus. Wählen Sie **Edge-Bereitstellungsmanifest auswählen** aus. 
@@ -111,7 +111,7 @@ VS Code speichert die Konfigurationsinformationen für das Debuggen in einer Dat
 
 1. Navigieren Sie zur VS Code-Debugansicht. Wählen Sie die Debugkonfigurationsdatei für Ihr Modul aus. Der Name der Debugoption sollte **ModuleName Remote Debug (C)** ähneln.
 
-   ![Auswählen der Debugkonfiguration](./media/how-to-develop-c-module/debug-config.png).
+   ![Auswählen der Debugkonfiguration](./media/how-to-develop-c-module/debug-config.png)
 
 2. Navigieren Sie zu `main.c`. Fügen Sie einen Breakpoint in dieser Datei hinzu.
 

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/25/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: ba67acec778a48c084897095aa457e5637240a57
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4ab3d0b74e8305d67af862020197c69b15221086
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227429"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830224"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 
@@ -42,7 +42,7 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine ASP.NET Core-
 > 1. Geben Sie einen Namen für Ihre Anwendung ein, stellen Sie sicher, dass die Option **Angeleitetes Setup** deaktiviert ist, und klicken Sie auf **Erstellen**.
 > 1. Klicken Sie auf `Add Platform`, und wählen Sie dann `Web` aus.
 > 1. Stellen Sie sicher, dass **Impliziten Fluss zulassen** *aktiviert* ist.
-> 1. Geben Sie `https://localhost:3110/` unter **Umleitungs-URLs** ein.
+> 1. Geben Sie `http://localhost:3110/` unter **Umleitungs-URLs** ein.
 > 1. Scrollen Sie auf der Seite nach unten, und klicken Sie auf **Speichern**.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -60,7 +60,7 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine ASP.NET Core-
 
 #### <a name="step-3-configure-your-project"></a>Schritt 3: Konfigurieren des Projekts
 
-1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner (z.B. **C:\Azure-Samples**).
+1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner, der sich näher am Stammordner befindet, beispielsweise **C:\Azure-Samples**.
 1. Wenn Sie Visual Studio 2017 verwenden, öffnen Sie das Projekt in Visual Studio (optional).
 1. Bearbeiten Sie **appsettings.json**, und ersetzen Sie den Wert für `ClientId` durch die Anwendungs-ID aus der Anwendung, die Sie soeben registriert haben:
 

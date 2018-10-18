@@ -1,6 +1,6 @@
 ---
-title: Leitlinien für die Optimierung der Leistung von Azure Data Lake Store | Microsoft Docs
-description: Leitlinien für die Optimierung der Leistung von Azure Data Lake Store
+title: Leitlinien für die Optimierung der Leistung von Azure Data Lake Storage Gen1 | Microsoft Docs
+description: Leitlinien für die Optimierung der Leistung von Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 29b662aa2f30083b444483554a78d53f0d05cb7f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ba46ba6429640cf29d9abc75055563fb1578d2e2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196983"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129589"
 ---
-# <a name="tuning-azure-data-lake-store-for-performance"></a>Optimieren der Leistung von Azure Data Lake Store
+# <a name="tuning-azure-data-lake-storage-gen1-for-performance"></a>Optimieren der Leistung von Azure Data Lake Storage Gen1
 
-Data Lake Store unterstützt hohe Durchsätze für E/A-intensive Analysen und Datenverschiebungen.  Bei Azure Data Lake Store ist der verfügbare Durchsatz entscheidend, um höchste Leistung zu erzielen. Der verfügbare Durchsatz bezieht sich hierbei auf die Menge der Daten, die pro Sekunde gelesen oder geschrieben werden können.  Dies wird erreicht, indem möglichst viele Lese- und Schreibvorgänge parallel ausgeführt werden.
+Azure Data Lake Storage Gen1 unterstützt hohe Durchsätze für E/A-intensive Analysen und Datenverschiebungen.  In Data Lake Storage Gen1 ist der verfügbare Durchsatz entscheidend, um höchste Leistung zu erzielen. Der verfügbare Durchsatz bezieht sich hierbei auf die Menge der Daten, die pro Sekunde gelesen oder geschrieben werden können.  Dies wird erreicht, indem möglichst viele Lese- und Schreibvorgänge parallel ausgeführt werden.
 
-![Data Lake Store-Leistung](./media/data-lake-store-performance-tuning-guidance/throughput.png)
+![Data Lake Storage Gen1-Leistung](./media/data-lake-store-performance-tuning-guidance/throughput.png)
 
-Azure Data Lake Storage kann skaliert werden, um den erforderlichen Durchsatz für sämtliche Analyseszenarien bereitzustellen. Standardmäßig bietet ein Azure Data Lake Store-Konto automatisch genügend Durchsatz, um die Anforderungen von einer großen Palette an Anwendungsfällen zu erfüllen. Sollten Kunden das Standardlimit erreichen, kann das ADLS-Konto für die Bereitstellung eines höheren Durchsatzes konfiguriert werden. Wenden Sie sich hierfür an den Microsoft-Support.
+Data Lake Storage Gen1 kann skaliert werden, um den erforderlichen Durchsatz für sämtliche Analyseszenarien bereitzustellen. Standardmäßig bietet ein Data Lake Storage Gen1-Konto automatisch genügend Durchsatz, um die Anforderungen von einer großen Palette an Anwendungsfällen zu erfüllen. Sollten Kunden das Standardlimit erreichen, kann das Data Lake Storage Gen1-Konto für die Bereitstellung eines höheren Durchsatzes konfiguriert werden. Wenden Sie sich hierfür an den Microsoft-Support.
 
 ## <a name="data-ingestion"></a>Datenerfassung
 
-Bei der Erfassung von Daten aus einem Quellsystem in ADLS ist zu berücksichtigen, dass bei Quellhardware, bei Quellnetzwerkhardware und bei der Netzwerkkonnektivität mit ADLS Engpässe auftreten können.  
+Bei der Erfassung von Daten aus einem Quellsystem in Data Lake Storage Gen1 ist zu berücksichtigen, dass bei Quellhardware, bei Quellnetzwerkhardware und bei der Netzwerkkonnektivität mit Data Lake Storage Gen1 Engpässe auftreten können.  
 
-![Data Lake Store-Leistung](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
+![Data Lake Storage Gen1-Leistung](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
 Es ist unbedingt sicherzustellen, dass die Datenverschiebung durch diese Faktoren nicht beeinträchtigt wird.
 
@@ -39,9 +39,9 @@ Es ist unbedingt sicherzustellen, dass die Datenverschiebung durch diese Faktore
 
 Sie sollten die entsprechende Hardware sorgfältig auswählen, unabhängig davon, ob Sie mit lokalen Computern oder VMs in Azure arbeiten. Bei Quelldatenträgerhardware wird empfohlen, SSDs gegenüber HDDs vorzuziehen und Datenträgerhardware mit schnelleren Spindeln zu wählen. Verwenden Sie für Quellnetzwerkhardware die schnellstmöglichen Netzwerkkarten.  Für Azure werden Azure D14-VMs mit entsprechend leistungsstarker Datenträger- und Netzwerkhardware empfohlen.
 
-### <a name="network-connectivity-to-azure-data-lake-store"></a>Netzwerkkonnektivität mit Azure Data Lake Store
+### <a name="network-connectivity-to-data-lake-storage-gen1"></a>Netzwerkkonnektivität mit Data Lake Storage Gen1
 
-Bei der Netzwerkkonnektivität zwischen Ihren Quelldaten und Azure Data Lake Store kann es gelegentlich zu Engpässen kommen. Wenn Ihre Quelldaten lokal gespeichert sind, ziehen Sie die Verwendung einer dedizierten Verknüpfung mit [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) in Erwägung. Sind Ihre Quelldaten in Azure enthalten, wird eine optimale Leistung erzielt, wenn sich die Daten in derselben Azure-Region wie die von Data Lake Store befinden.
+Bei der Netzwerkkonnektivität zwischen Ihren Quelldaten und Data Lake Storage Gen1 kann es gelegentlich zu Engpässen kommen. Wenn Ihre Quelldaten lokal gespeichert sind, ziehen Sie die Verwendung einer dedizierten Verknüpfung mit [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) in Erwägung. Sind Ihre Quelldaten in Azure enthalten, wird eine optimale Leistung erzielt, wenn sich die Daten in derselben Azure-Region wie das Data Lake Storage Gen1-Konto befinden.
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurieren von Datenerfassungstools für maximale Parallelisierung
 
@@ -57,7 +57,7 @@ Nachdem Sie die oben genannten Engpässe bei der Quellhardware und der Netzwerkk
 
 ## <a name="structure-your-data-set"></a>Strukturieren Ihres Datasets
 
-Beim Speichern von Daten in Data Lake Store sind für die Leistung die Dateigröße, die Anzahl der Dateien und die Ordnerstruktur ausschlaggebend.  Im folgenden Abschnitt werden bewährte Methoden für diese Bereiche beschrieben.  
+Beim Speichern von Daten in Data Lake Storage Gen1 sind für die Leistung die Dateigröße, die Anzahl der Dateien und die Ordnerstruktur ausschlaggebend.  Im folgenden Abschnitt werden bewährte Methoden für diese Bereiche beschrieben.  
 
 ### <a name="file-size"></a>Dateigröße
 
@@ -96,7 +96,7 @@ Die folgende Anleitung gilt nur für E/A-intensive Aufträge.
 ### <a name="general-considerations-for-an-hdinsight-cluster"></a>Allgemeine Überlegungen zu HDInsight-Clustern
 
 * **HDInsight-Versionen**: Um eine optimale Leistung zu erzielen, verwenden Sie die neueste Version von HDInsight.
-* **Regionen**: Platzieren Sie Data Lake Store in dieselbe Region wie die des HDInsight-Clusters.  
+* **Regionen**: Platzieren Sie das Data Lake Storage Gen1-Konto in der gleichen Region wie den HDInsight-Cluster.  
 
 Ein HDInsight-Cluster besteht aus zwei Hauptknoten und einigen Workerknoten. Jeder Workerknoten stellt eine bestimmte Anzahl von Kernen und eine bestimmte Menge an Speicher bereit, die durch den VM-Typ festgelegt wird.  Bei der Ausführung eines Auftrags ist YARN der Verhandlungspartner für Ressourcen, der den verfügbaren Speicher und die Kerne zur Erstellung von Containern zuordnet.  Jeder Container führt die für den Auftrag erforderlichen Aufgaben durch.  Zur schnellen Verarbeitung von Aufgaben werden Container parallel ausgeführt. Aus diesem Grund wird eine bessere Leistung erzielt, indem Sie so viele Container wie möglich parallel ausführen.
 
@@ -110,15 +110,15 @@ Es gibt drei Ebenen in einem HDInsight-Cluster, die sich optimieren lassen, um d
 
 **Führen Sie Cluster mit einer größeren Anzahl von Knoten und/oder größeren VMs aus.**  Bei einem größeren Cluster können Sie mehr YARN-Container ausführen, wie in der folgenden Abbildung gezeigt wird.
 
-![Data Lake Store-Leistung](./media/data-lake-store-performance-tuning-guidance/VM.png)
+![Data Lake Storage Gen1-Leistung](./media/data-lake-store-performance-tuning-guidance/VM.png)
 
-**Verwenden Sie VMs mit mehr Netzwerkbandbreite.**  Die Menge der Netzwerkbandbreite kann zu einem Engpass führen, wenn die Netzwerkbandbreite geringer ist als der Data Lake Store-Durchsatz.  Die Menge der Netzwerkbandbreite variiert je nach VM.  Wählen Sie einen VM-Typ, der die größtmögliche Netzwerkbandbreite aufweist.
+**Verwenden Sie VMs mit mehr Netzwerkbandbreite.**  Die Menge der Netzwerkbandbreite kann zu einem Engpass führen, wenn die Netzwerkbandbreite geringer ist als der Data Lake Storage Gen1-Durchsatz.  Die Menge der Netzwerkbandbreite variiert je nach VM.  Wählen Sie einen VM-Typ, der die größtmögliche Netzwerkbandbreite aufweist.
 
 ### <a name="yarn-layer"></a>YARN-Ebene
 
 **Verwenden Sie kleinere YARN-Container.**  Reduzieren Sie die Größe der einzelnen YARN-Container, um mit derselben Menge an Ressourcen mehr Container zu erstellen.
 
-![Data Lake Store-Leistung](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
+![Data Lake Storage Gen1-Leistung](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
 
 Abhängig von Ihrer Workload ist stets eine Mindestgröße für YARN-Container erforderlich. Wenn Sie einen zu kleinen Container auswählen, treten bei Ihren Aufträgen Probleme aufgrund von unzureichendem Speicherplatz auf. In der Regel dürfen YARN-Container nicht kleiner als 1 GB sein. Üblich sind YARN-Container mit 3 GB. Für einige Workloads benötigen Sie möglicherweise größere YARN-Container.  
 
@@ -128,7 +128,7 @@ Abhängig von Ihrer Workload ist stets eine Mindestgröße für YARN-Container e
 
 **Verwenden Sie alle verfügbaren Container.**  Legen Sie die Anzahl von Aufgaben auf dieselbe oder eine höhere Anzahl der verfügbaren Containern fest, damit alle Ressourcen ausgelastet sind.
 
-![Data Lake Store-Leistung](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
+![Data Lake Storage Gen1-Leistung](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
 
 **Aufgaben, die mit Fehlern beendet werden, sind kostspielig.** Sind bei jeder Aufgabe große Mengen an Daten zu verarbeiten, führen fehlerhafte Aufgaben zu einer kostenintensiven Wiederholung.  Aus diesem Grund empfiehlt es sich, mehr Aufgaben zu erstellen, bei denen jeweils eine kleine Menge von Daten verarbeitet wird.
 
@@ -142,5 +142,5 @@ Neben den oben genannten allgemeinen Richtlinien stehen in jeder Anwendung versc
 | [Storm in HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>Anzahl von Workerprozessen</li><li>Anzahl von Spout Executor-Instanzen</li><li>Anzahl von Bolt Executor-Instanzen </li><li>Anzahl von Spout-Aufgaben</li><li>Anzahl von Bolt-Aufgaben</li></ul>|
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Übersicht über Azure Data Lake Store](data-lake-store-overview.md)
+* [Übersicht über Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

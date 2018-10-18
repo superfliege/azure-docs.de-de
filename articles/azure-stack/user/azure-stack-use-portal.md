@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 7ca29ee359349f69c3d5ff21bd9db3f93358206a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7ccf746cfd9645b63c2810bff83cfb0c4fa55d65
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724311"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713736"
 ---
 # <a name="use-the-azure-stack-portal"></a>Verwenden des Azure Stack-Portals
 
@@ -37,7 +37,7 @@ Ihr Azure Stack-Operator (ein Dienstanbieter oder ein Administrator in Ihrer Org
 
 ## <a name="customize-the-dashboard"></a>Anpassen des Dashboards
 
-Das Dashboard enthält eine Reihe von Standardkacheln. Wählen Sie **Dashboard bearbeiten** aus, um das Standarddashboard anzupassen, oder wählen Sie **Neues Dashboard** aus, um ein benutzerdefiniertes Dashboard zu erstellen. Sie können ein Dashboard einfach durch Hinzufügen oder Entfernen von Kacheln anpassen. Wählen Sie beispielsweise zum Hinzufügen der Kachel „Compute“ die Option **Neu** aus. Klicken Sie mit der rechten Maustaste auf **Compute**, und wählen Sie dann **An Dashboard anheften** aus.
+Das Dashboard enthält eine Reihe von Standardkacheln. Wählen Sie **Dashboard bearbeiten** aus, um das Standarddashboard anzupassen, oder wählen Sie **Neues Dashboard** aus, um ein benutzerdefiniertes Dashboard zu erstellen. Sie können ein Dashboard einfach durch Hinzufügen oder Entfernen von Kacheln anpassen. Wählen Sie beispielsweise zum Hinzufügen einer Kachel „Compute“ die Option **+Ressource erstellen** aus. Klicken Sie mit der rechten Maustaste auf **Compute**, und wählen Sie dann **An Dashboard anheften** aus.
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Erstellen von Abonnements und Durchsuchen verfügbarer Ressourcen
 
@@ -45,7 +45,7 @@ Wenn Sie noch kein Abonnement haben, müssen Sie zunächst ein Angebot abonniere
 
 - Wählen Sie auf dem Dashboard die Kachel **Marketplace** aus.
 - Wählen Sie auf der Kachel **Alle Ressourcen** die Option **Ressourcen erstellen** aus.
-- Wählen Sie im linken Navigationsbereich die Option **Neu** aus.
+- Wählen Sie im linken Navigationsbereich die Option **+Ressource erstellen** aus.
 
 ## <a name="learn-how-to-use-available-services"></a>Erlernen der Verwendung verfügbarer Dienste
 

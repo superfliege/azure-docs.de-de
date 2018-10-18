@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 8ac151a70a81f78dab5ed1f30df51a1121a42cbd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b0fe9acc187aab87e8ee0528cf998e2ef923f897
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029015"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722009"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Rotieren von Geheimnissen in Azure Stack
 
@@ -42,7 +42,7 @@ Infrastrukturdienstzertifikate für extern ausgerichtete Dienste, die vom Azure 
     - ADFS<sup>*</sup>
     - Graph<sup>*</sup>
 
-    > <sup>*</sup>Nur relevant, wenn Active Directory-Verbunddienste (AD FS) als Identitätsanbieter der Umgebung verwendet wird.
+   <sup>*</sup>Nur relevant, wenn Active Directory-Verbunddienste (AD FS) als Identitätsanbieter der Umgebung verwendet wird.
 
 > [!NOTE]
 > Alle anderen sicheren Schlüssel und Zeichenfolgen (einschließlich BMC- und Wechselkennwörter sowie Kennwörter für Benutzer- und Administratorkonten) werden weiterhin manuell vom Administrator aktualisiert. 
@@ -54,7 +54,7 @@ Um die Integrität der Azure Stack-Infrastruktur zu erhalten, müssen Betreiber 
 Azure Stack unterstützt Geheimnisrotation mit externen Zertifikaten von einer neuen Zertifizierungsstelle (ZS) in den folgenden Kontexten:
 
 |Installierte Zertifizierungsstelle|ZS, zu der rotiert werden soll|Unterstützt|Unterstützte Versionen von Azure Stack|
-|-----|-----|-----|-----|-----|
+|-----|-----|-----|-----|
 |Von „Selbstsigniert“|Zu „Enterprise“|Nicht unterstützt||
 |Von „Selbstsigniert“|Zu „Selbstsigniert“|Nicht unterstützt||
 |Von „Selbstsigniert“|Zu „Öffentlich“<sup>*</sup>|Unterstützt|1803 und höher|
@@ -79,12 +79,11 @@ Diese Warnungen können durch Ausführen der Geheimnisrotation behandelt werden.
 
 ## <a name="pre-steps-for-secret-rotation"></a>Vorbereiten der Geheimnisrotation
 
+   > [!IMPORTANT]  
+   > Vergewissern Sie sich, dass die Geheimnisrotation in Ihrer Umgebung nicht erfolgreich durchgeführt wurde. Wenn die Geheimnisrotation bereits durchgeführt wurde, aktualisieren Sie Azure Stack auf Version 1807 oder höher, bevor Sie die Geheimnisrotation ausführen. 
 1.  Informieren Sie Ihre Benutzer über sämtliche Wartungsmaßnahmen. Planen Sie normale Wartungszeitfenster möglichst außerhalb der Geschäftszeiten. Wartungsvorgänge können sowohl Benutzerworkloads als auch Portalvorgänge beeinträchtigen.
-
     > [!note]  
     > Die nächsten Schritte gelten nur für die Rotation externer Azure Stack-Geheimnisse.
-
-2. Vergewissern Sie sich, dass die Geheimnisrotation in Ihrer Umgebung innerhalb des letzten Monats nicht erfolgreich durchgeführt wurde. Azure Stack unterstützt derzeit nur jeweils eine Geheimnisrotation pro Monat. 
 3. Bereiten Sie eine neue Gruppe externer Ersatzzertifikate vor. Die neue Gruppe entspricht den Zertifikatspezifikationen aus den [Azure Stack-PKI-Zertifikatanforderungen](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
 4.  Speichern Sie eine Sicherung der für die Rotation verwendeten Zertifikate an einem sicheren Sicherungsspeicherort. Sollte die Rotation nicht erfolgreich sein, ersetzen Sie die Zertifikate in der Dateifreigabe durch die Sicherungskopien, und wiederholen Sie dann die Rotation. Hinweis: Bewahren Sie Sicherungskopien am sicheren Sicherungsspeicherort auf.
 5.  Erstellen Sie eine Dateifreigabe, auf die Sie über die virtuellen ERCS-Computer zugreifen können. Die Identität **CloudAdmin** muss über Lese- und Schreibzugriff für die Dateifreigabe verfügen.
@@ -111,6 +110,8 @@ Gehen Sie zum Rotieren externer und interner Geheimnisse wie folgt vor:
     Eine sichere Zeichenfolge des Kennworts, das für alle erstellten PFX-Zertifikatdateien verwendet wird.
 4. Warten Sie, bis Ihre Geheimnisse rotiert wurden.  
 Wenn die Geheimnisrotation erfolgreich abgeschlossen wurde, wird in der Konsole **Overall action status: Success** (Allgemeiner Aktionsstatus: Erfolgreich) angezeigt. 
+    > [!note]  
+    > Wenn bei der Geheimnisrotation ein Fehler auftritt, befolgen Sie die Anweisungen in der Fehlermeldung, und führen Sie „start-secretrotation“ mit dem Parameter **-Rerun** erneut aus. Wenden Sie sich an den Support, wenn wiederholt Fehler bei der Geheimnisrotation auftreten. 
 5. Entfernen Sie nach erfolgreichem Abschluss der Geheimnisrotation Ihre Zertifikate aus der Freigabe, die Sie im Rahmen der Vorbereitung erstellt haben, und speichern Sie sie an ihrem sicheren Sicherungsspeicherort. 
 
 ## <a name="walkthrough-of-secret-rotation"></a>Exemplarische Vorgehensweise für die Geheimnisrotation
@@ -137,6 +138,10 @@ So rotieren Sie nur die internen Geheimnisse von Azure Stack:
 
 1. Erstellen Sie eine PowerShell-Sitzung mit dem [privilegierten Endpunkt](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 2. Führen Sie in der Sitzung des privilegierten Endpunkts **Start-SecretRotation** ohne Argumente aus.
+3. Warten Sie, bis Ihre Geheimnisse rotiert wurden.  
+Wenn die Geheimnisrotation erfolgreich abgeschlossen wurde, wird in der Konsole **Overall action status: Success** (Allgemeiner Aktionsstatus: Erfolgreich) angezeigt. 
+    > [!note]  
+    > Wenn bei der Geheimnisrotation ein Fehler auftritt, befolgen Sie die Anweisungen in der Fehlermeldung, und führen Sie „start-secretrotation“ mit dem Parameter **-Rerun** erneut aus. Wenden Sie sich an den Support, wenn wiederholt Fehler bei der Geheimnisrotation auftreten. 
 
 ## <a name="start-secretrotation-reference"></a>Referenz für „Start-SecretRotation“
 
@@ -158,9 +163,10 @@ Das Cmdlet „Start-SecretRotation“ rotiert die Infrastrukturgeheimnisse eines
 
 | Parameter | Typ | Erforderlich | Position | Standard | BESCHREIBUNG |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | Zeichenfolge  | False  | benannt  | Keine  | Der Dateifreigabepfad des Verzeichnisses **\Certificates** mit allen externen Netzwerkendpunkt-Zertifikaten. Nur beim Rotieren interner und externer Geheimnisse erforderlich. Das Endverzeichnis muss **\Certificates** sein. |
+| PfxFilesPath | Zeichenfolge  | False  | benannt  | Keine  | Der Dateifreigabepfad des Verzeichnisses **\Certificates** mit allen externen Netzwerkendpunkt-Zertifikaten. Nur beim Rotieren externer oder aller Geheimnisse erforderlich. Das Endverzeichnis muss **\Certificates** sein. |
 | CertificatePassword | SecureString | False  | benannt  | Keine  | Das Kennwort für alle Zertifikate in „-PfXFilesPath“. Erforderlich, wenn „PfxFilesPath“ beim gleichzeitigen Rotieren interner und externer Geheimnisse angegeben wird. |
-|
+| PathAccessCredential | PSCredential | False  | benannt  | Keine  | Die PowerShell-Anmeldeinformationen für die Dateifreigabe des Verzeichnisses **\Certificates** mit allen externen Netzwerkendpunkt-Zertifikaten. Nur beim Rotieren externer oder aller Geheimnisse erforderlich.  |
+| Rerun | SwitchParameter | False  | benannt  | Keine  | Die erneute Ausführung muss immer dann erfolgen, wenn die Geheimnisrotation nach einem fehlgeschlagenen Versuch erneut versucht wird. |
 
 ### <a name="examples"></a>Beispiele
  

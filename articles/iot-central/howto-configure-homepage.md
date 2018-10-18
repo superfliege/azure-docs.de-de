@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 93f406a1d5e4a8c2ce5ad1db0c3936dd3ad2bfb9
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 609dc8aa1305833fb3677de6fbe95cf490237a4a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992356"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731120"
 ---
 ## <a name="configuring-homepage"></a>Konfigurieren der Homepage
 
 Die Homepage ist die Seite, die geladen wird, wenn zugriffsberechtigte Benutzer zur URL der Anwendung navigieren. Wenn Sie beim Erstellen Ihrer Anwendung die Anwendungsvorlagen „Beispiel-Contoso“ oder „Beispiel-Entwickler-Kits“ ausgewählt haben, verfügt Ihre Anwendung über vordefinierte Homepages. Dagegen ist die Homepage bei Auswahl der Anwendungsvorlage „Benutzerdefinierte Anwendung“ leer.
 
-In diesem Beispiel ist die Homepage für Anwendungen zu sehen, die auf der „Beispiel-Contoso“-Vorlage basieren. Um die Homepage für Ihre Anwendung anzupassen, schalten Sie zunächst oben rechts den **Entwurfsmodus** ein. 
+In diesem Beispiel ist die Homepage für Anwendungen zu sehen, die auf der „Beispiel-Contoso“-Vorlage basieren. Um die Homepage für Ihre Anwendung anzupassen, wählen Sie zunächst oben rechts **Bearbeiten** aus. 
 
 ![Homepage für Anwendungen auf Basis der „Beispiel-Contoso“-Vorlage](media\howto-configure-homepage\image1.png)
 
-Durch Aktivieren des **Entwurfsmodus** wird die Dashboardbibliothek links in einem Fenster geöffnet. Es gibt viele Arten von Kacheln und Dashboardprimitiven, die Sie zum Anpassen Ihrer Homepage hinzufügen können.
+Wenn Sie **Bearbeiten** auswählen, wird die Dashboardbibliothek links in einem Fenster geöffnet. Es gibt viele Arten von Kacheln und Dashboardprimitiven, die Sie zum Anpassen Ihrer Homepage hinzufügen können.
 
 ![Dashboardbibliothek](media\howto-configure-homepage\image2.png)
 
-Beispielsweise können Sie eine Kachel **Einstellungen und Eigenschaften** hinzufügen, um eine Auswahl der aktuellen Werte für Einstellungen und Eigenschaften anzuzeigen. Wählen Sie dazu zuerst eine **Gerätevorlage** und dann eine **Geräteinstanz** aus. Danach geben Sie der Kachel einen Titel und wählen eine anzuzeigende **Einstellung** oder **Eigenschaft** aus. In diesem Fall wurde **Lüfterdrehzahl** ausgewählt. Wenn Sie auf **Speichern** klicken, wird diese Kachel auf der Homepage angezeigt.
+Beispielsweise können Sie eine Kachel **Einstellungen und Eigenschaften** hinzufügen, um eine Auswahl der aktuellen Werte für Einstellungen und Eigenschaften anzuzeigen. Wählen Sie dazu zuerst eine **Gerätevorlage** und dann eine **Geräteinstanz** aus. Danach geben Sie der Kachel einen Titel und wählen eine anzuzeigende **Einstellung** oder **Eigenschaft** aus. In diesem Fall wurde **Temperatur festlegen** ausgewählt. Wenn Sie auf **Speichern** klicken, wird diese Kachel auf der Homepage angezeigt.
 
 ![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](media\howto-configure-homepage\image3.png)
 

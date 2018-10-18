@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4b4ded86075e49277bca84f5261b6762b0f4fcae
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937617"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737310"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
@@ -51,12 +51,9 @@ So fügen Sie ein Gerät Ihrer Azure IoT Central-Anwendung hinzu:
 
 ## <a name="import-devices"></a>Importieren von Geräten
 
-Um eine Verbindung einer großen Anzahl von Geräten mit Ihrer Anwendung herzustellen, ermöglicht Azure IoT Central das Massenimportieren von Geräten über eine CSV-Datei. 
-
-Anforderungen an die CSV-Datei:
-1. Die CSV-Datei sollte nur eine Spalte aufweisen, die Geräte-IDs enthält.
-
-1. Die Datei sollte keine Kopfzeile enthalten.
+Um eine Verbindung einer großen Anzahl von Geräten mit Ihrer Anwendung herzustellen, ermöglicht Azure IoT Central das Massenimportieren von Geräten über eine CSV-Datei. Die CSV-Datei sollten die folgenden Spalten (und Kopfzeilen) aufweisen:
+1.  IOTC_DeviceID **<span style="color:Red">(sollten Kleinbuchstaben sein)</span>**
+1.  IOTC_DeviceName (optional)
 
 
 So führen Sie die Massenregistrierung von Geräten in Ihrer Anwendung durch:
@@ -119,11 +116,13 @@ So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
 
     [![Export erfolgreich](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 
-1. Die exportierte CSV-Datei verfügt über folgende Informationen:
-    1. NAME
-    1. Geräte-ID
-    1. Primäre Verbindungszeichenfolge
-
+1. Die exportierte CSV-Datei weist die folgenden Spalteninformationen auf: **„Device Id“, „Device Name“, „Device Primary/Secondary Keys“ und „Primary/Secondary certificate thumbprints“**
+    *   IOTC_DEVICEID
+    *   IOTC_DEVICENAME
+    *   IOTC_SASKEY_PRIMARY
+    *   IOTC_SASKEY_SECONDARY
+    *   IOTC_X509THUMBPRINT_PRIMARY 
+    *   IOTC_X509THUMBPRINT_SECONDARY
 
 ## <a name="delete-a-device"></a>Gerät löschen
 

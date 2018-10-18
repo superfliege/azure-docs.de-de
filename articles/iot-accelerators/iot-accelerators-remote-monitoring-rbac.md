@@ -1,6 +1,6 @@
 ---
 title: Remoteüberwachung-Zugriffssteuerung – Azure | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung im Solution Accelerators der Remoteüberwachung konfigurieren.
+description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung im Solution Accelerator der Remoteüberwachung konfigurieren.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886309"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364294"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurieren der rollenbasierten Zugriffssteuerung im Solution Accelerator der Remoteüberwachung
 
@@ -134,11 +134,11 @@ Die folgenden Schritte beschreiben, wie Sie einer Anwendung in Azure Active Dire
 
 ### <a name="define-a-policy-for-the-new-role"></a>Definieren einer Richtlinie für die neue Rolle
 
-Nachdem Sie die Rolle der App im Azure-Portal hinzugefügt haben, müssen Sie für die Rolle eine Richtlinie in [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/pcs-auth/Services/data/policies/roles.json) definieren, die zur Geräteverwaltung erforderliche Berechtigungen zuweist.
+Nachdem Sie die Rolle der App im Azure-Portal hinzugefügt haben, müssen Sie für die Rolle eine Richtlinie in [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) definieren, die zur Geräteverwaltung erforderliche Berechtigungen zuweist.
 
-1. Klonen Sie das GitHub-Repository des Microservices [Authentifizierung und Autorisierung](https://github.com/Azure/pcs-auth-dotnet) auf Ihren lokalen Computer.
+1. Klonen des [Remoteüberwachung-Microservices](https://github.com/Azure/remote-monitoring-services-dotnet)-Repository von GitHub auf Ihren lokalen Computer.
 
-1. Bearbeiten Sie die Datei **Services/data/policies/roles.json**, um die Richtlinie der Rolle **ManageDevices** hinzuzufügen (siehe folgender Ausschnitt). Die Werte für **ID** und **Rolle** müssen der Rollendefinition im App-Manifest aus dem vorherigen Abschnitt entsprechen. Die Liste der zulässigen Aktionen ermöglicht Benutzern mit der Rolle **ManageDevices** mit der Lösung verbundene Geräte zu erstellen, zu aktualisieren und zu löschen:
+1. Bearbeiten Sie die Datei **auth/Services/data/policies/roles.json**, um die Richtlinie für die Rolle **ManageDevices** hinzuzufügen (siehe den folgenden Ausschnitt). Die Werte für **ID** und **Rolle** müssen der Rollendefinition im App-Manifest aus dem vorherigen Abschnitt entsprechen. Die Liste der zulässigen Aktionen ermöglicht Benutzern mit der Rolle **ManageDevices** mit der Lösung verbundene Geräte zu erstellen, zu aktualisieren und zu löschen:
 
     ```json
     {
@@ -184,7 +184,7 @@ Nachdem Sie die Rolle der App im Azure-Portal hinzugefügt haben, müssen Sie f�
 
 ### <a name="how-the-web-ui-enforces-permissions"></a>Erzwingen von Berechtigungen durch die Webbenutzeroberfläche
 
-Die Webbenutzeroberfläche verwendet den Microservice [Authentifizierung und Autorisierung](https://github.com/Azure/pcs-auth-dotnet) um festzulegen, welche Aktionen ein Benutzer ausführen darf, und welche Steuerelemente in der Benutzeroberfläche angezeigt werden. Wenn Ihre Lösung beispielsweise **contoso-rm4** heißt, ruft die Webbenutzeroberfläche eine Liste der zulässigen Aktionen für den aktuellen Benutzer ab, indem sie die folgende Anforderung sendet:
+Die Webbenutzeroberfläche verwendet den Microservice [Authentifizierung und Autorisierung](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) um festzulegen, welche Aktionen ein Benutzer ausführen darf, und welche Steuerelemente in der Benutzeroberfläche angezeigt werden. Wenn Ihre Lösung beispielsweise **contoso-rm4** heißt, ruft die Webbenutzeroberfläche eine Liste der zulässigen Aktionen für den aktuellen Benutzer ab, indem sie die folgende Anforderung sendet:
 
 ```http
 http://contoso-rm4.azurewebsites.net/v1/users/current
@@ -226,7 +226,7 @@ Weitere Informationen finden Sie unter [Geschützte Komponenten](https://github.
 
 Die Microservices überprüfen die Berechtigungen, um Schutz vor nicht autorisierten API-Anforderungen zu bieten. Wenn ein Microservice eine API-Anforderung empfängt, decodiert und überprüft er das JWT-Token, um die Benutzer-ID und die Berechtigungen der Benutzerrolle abzurufen.
 
-Der folgende Ausschnitt aus der Datei [DevicesController.cs](https://github.com/Azure/iothub-manager-dotnet/blob/master/WebService/v1/Controllers/DevicesController.cs) im [IoT Hub-Manager-Microservice](https://github.com/Azure/iothub-manager-dotnet) zeigt, wie Berechtigungen erzwungen werden:
+Der folgende Ausschnitt aus der Datei [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) im [IoT Hub-Manager-Microservice](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager) zeigt, wie Berechtigungen erzwungen werden:
 
 ```csharp
 [HttpDelete("{id}")]
@@ -240,6 +240,8 @@ public async Task DeleteAsync(string id)
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie erfahren, wie Sie die rollenbasierte Zugriffssteuerung im Solution Accelerator der Remoteüberwachung implementieren.
+
+Informationen zum Verwalten des Zugriffs auf den Time Series Insights-Explorer im Solution Accelerator für Remoteüberwachung finden Sie unter [Konfigurieren der Zugriffssteuerung für den Time Series Insights-Explorer](iot-accelerators-remote-monitoring-rbac-tsi.md).
 
 Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
 

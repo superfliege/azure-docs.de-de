@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 77dca29b0c60726f0a072dd662aba0d12730502a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 650fead700afcc1f6d1d18c7356324074fb9365b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413687"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716450"
 ---
 # <a name="create-mysql-databases"></a>Erstellen von MySQL-Datenbanken
 
@@ -28,7 +28,7 @@ Self-Service-Datenbanken können im Benutzerportal erstellt und verwaltet werden
 ## <a name="test-your-deployment-by-creating-a-mysql-database"></a>Testen der Bereitstellung durch Erstellen einer MySQL-Datenbank
 
 1. Melden Sie sich beim Azure Stack-Benutzerportal an.
-2. Klicken Sie auf **+ Neu** > **Daten und Speicher** > **MySQL-Datenbank** > **Hinzufügen**.
+2. Wählen Sie **+Ressource erstellen** > **Daten und Speicher** > **MySQL-Datenbank** > **Hinzufügen** aus.
 3. Geben Sie unter **MySQL-Datenbank erstellen** den Datenbanknamen ein, und konfigurieren Sie die anderen Einstellungen für Ihre Umgebung.
 
     ![Erstellen einer MySQL-Testdatenbank](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)

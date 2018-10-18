@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15fe97e39fbc1c669762ddb7523cfd043638d3de
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: adef9d2f2d859c62d3b3b3a542536698fa668f9a
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144228"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498299"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Ereignisquellen in Azure Event Grid
 
@@ -58,7 +58,7 @@ Abonnieren Sie benutzerdefinierte Themen, um auf Anwendungsereignisse zu reagier
 | [PowerShell: Abonnieren von Ereignissen für ein benutzerdefiniertes Thema](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Beispielskript, mit dem ein Abonnement für ein benutzerdefiniertes Thema erstellt wird. Sendet Ereignisse an einen WebHook.|
 | [Resource Manager-Vorlage: Benutzerdefiniertes Thema und WebHook-Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Eine Resource Manager-Vorlage, mit der ein benutzerdefiniertes Thema und ein Abonnement für dieses benutzerdefinierte Thema erstellt werden. Sendet Ereignisse an einen WebHook. |
 |
-| [Resource Manager-Vorlage: Benutzerdefiniertes Thema und Event Hubs-Endpunkt](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeCustomTopicToEventHub.json)| Eine Resource Manager-Vorlage, mit der ein Abonnement für ein benutzerdefiniertes Thema erstellt wird. Sendet Ereignisse an Azure Event Hubs. |
+| [Resource Manager-Vorlage: Benutzerdefiniertes Thema und Event Hubs-Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Eine Resource Manager-Vorlage, mit der ein Abonnement für ein benutzerdefiniertes Thema erstellt wird. Sendet Ereignisse an Azure Event Hubs. |
 | [Ereignisschema](event-schema.md) | Zeigt Felder in benutzerdefinierten Ereignissen an. |
 
 ## <a name="event-hubs"></a>Event Hubs
@@ -104,7 +104,7 @@ Abonnieren Sie Ressourcengruppenereignisse, um auf Änderungen in Ressourcen in 
 | [Azure CLI: Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource](./scripts/event-grid-cli-resource-group-filter.md) | Beispielskript, mit dem Ereignisse für eine Ressourcengruppe abonniert und Ereignisse nach einer Ressource gefiltert werden. |
 | [PowerShell: Abonnieren von Ereignissen für eine Ressourcengruppe](./scripts/event-grid-powershell-resource-group.md) | Beispielskript, mit dem Ereignisse für eine Ressourcengruppe abonniert werden. Sendet Ereignisse an einen WebHook. |
 | [PowerShell: Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource](./scripts/event-grid-powershell-resource-group-filter.md) | Beispielskript, mit dem Ereignisse für eine Ressourcengruppe abonniert und Ereignisse nach einer Ressource gefiltert werden. |
-| [Resource Manager-Vorlage: Ressourcengruppenabonnement](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeResourceGroupToWebHook.json) | Abonniert Ereignisse für eine Ressourcengruppe. Sendet Ereignisse an einen WebHook. |
+| [Resource Manager-Vorlage: Ressourcenabonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Abonniert Ereignisse für ein Azure-Abonnement oder eine Ressourcengruppe. Sendet Ereignisse an einen WebHook. |
 | [Ereignisschema](event-schema-resource-groups.md) | Zeigt Felder in Ressourcengruppenereignissen an. |
 
 ## <a name="service-bus"></a>Service Bus
@@ -128,7 +128,7 @@ Abonnieren Sie Blob Storage-Ereignisse, um auf Ereignisse der Bloberstellung und
 | [Schnellstart: Erstellen und Weiterleiten von Blob Storage-Ereignissen mit dem Azure-Portal](blob-event-quickstart-portal.md) | Zeigt die Verwendung des Portals zum Senden von Blob Storage-Ereignissen an einen WebHook. |
 | [Azure CLI: Abonnieren von Ereignissen für ein Blobspeicherkonto](./scripts/event-grid-cli-blob.md) | Beispielskript, mit dem Ereignisse für ein Blobspeicherkonto abonniert werden. Sendet das Ereignis an einen WebHook. |
 | [PowerShell: Abonnieren von Ereignissen für ein Blobspeicherkonto](./scripts/event-grid-powershell-blob.md) | Beispielskript, mit dem Ereignisse für ein Blobspeicherkonto abonniert werden. Sendet das Ereignis an einen WebHook. |
-| [Resource Manager-Vorlage: Erstellen eines Blobspeichers und Abonnements](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/createBlobAndSubscribe.json) | Stellt ein Azure Blob Storage-Konto bereit und abonniert Ereignisse für dieses Speicherkonto. Sendet Ereignisse an einen WebHook. |
+| [Resource Manager-Vorlage: Erstellen eines Blobspeichers und Abonnements](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Stellt ein Azure Blob Storage-Konto bereit und abonniert Ereignisse für dieses Speicherkonto. Sendet Ereignisse an einen WebHook. |
 | [Übersicht: Reaktion auf Blob Storage-Ereignisse](../storage/blobs/storage-blob-event-overview.md) | Übersicht über die Integration von Blob Storage in Event Grid. |
 | [Ereignisschema](event-schema-blob-storage.md) | Zeigt Felder in Blob Storage-Ereignissen an. |
 

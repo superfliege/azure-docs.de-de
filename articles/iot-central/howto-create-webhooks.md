@@ -3,19 +3,21 @@ title: Erstellen von Webhooks für Regeln in Azure IoT Central | Microsoft-Dokum
 description: Erstellen Sie Webhooks in Azure IoT Central, um andere Anwendungen automatisch über ausgelöste Regeln zu informieren.
 author: viv-liu
 ms.author: viviali
-ms.date: 07/17/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1e21076cafe21e6c0efcdf5a8146278eabd9ebc4
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 896d4e9c775fa0b0c8eb062d11d141901daa7242
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227771"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295980"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Erstellen von Webhookaktionen für Regeln in Azure IoT Central
+
+*Dieses Thema gilt für Generatoren und Administratoren.*
 
 Webhooks ermöglichen es Ihnen, Ihre IoT Central-App mit anderen Anwendungen und Diensten für Remoteüberwachung und Benachrichtigung zu verbinden. Durch Webhooks werden automatisch andere Anwendungen und Dienste benachrichtigt, die Sie verbinden, wenn eine Regel in Ihrer IoT Central-App ausgelöst wird. Ihre IoT Central-App sendet eine POST-Anfrage an den HTTP-Endpunkt der anderen Anwendung, sobald eine Regel ausgelöst wird. Die Nutzlast enthält Details zu Gerät und Regelauslösern. 
 
@@ -25,9 +27,9 @@ In diesem Beispiel werden Sie sich mit RequestBin verbinden, damit Sie Benachric
 1. Öffnen Sie [RequestBin](http://requestbin.net/). 
 1. Erstellen Sie ein neues RequestBin-Element, und kopieren Sie die **Bin-URL**. 
 1. Erstellen Sie eine [Telemetrieregel](howto-create-telemetry-rules.md) oder eine [Ereignisregel](howto-create-event-rules.md). Speichern Sie die Regel, und fügen Sie eine neue Aktion hinzu.
-![Bildschirm für die Webhookerstellung](media/howto-create-webhooks/webhookcreate.png)
+![Bildschirm für die Webhookerstellung](media/howto-create-webhooks/webhookcreate.PNG)
 1. Wählen Sie die Webhookaktion, geben Sie einen Anzeigenamen an, und fügen Sie die Bin-URL als Rückruf-URL ein. 
-1. Speichern der Regel
+1. Speichern Sie die Regel.
 
 Wenn jetzt die Regel ausgelöst wird, sollte eine neue Anforderung in RequestBin angezeigt werden.
 
@@ -42,6 +44,7 @@ Wenn eine Regel ausgelöst wird, erfolgt eine HTTP-POST-Anforderung an die Rück
         "id":"ID",
         "name":  "Refrigerator1",
         "simulated" : true,
+        "deviceId": "deviceID",
         "deviceTemplate":{
             "id": "ID",
             "version":"1.0.0"

@@ -1,6 +1,6 @@
 ---
-title: Leitfaden für die Optimierung der Leistung von Azure Data Lake Store für MapReduce | Microsoft-Dokumentation
-description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Store für MapReduce
+title: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen1 für MapReduce | Microsoft Docs
+description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen1 für MapReduce
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: f5586e7706d4dad7e3c943b2a661fa296b4d30bf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b661499786057a3083f79684dfd12c85266b7b5c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198632"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128790"
 ---
-# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-store"></a>Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Store
+# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Storage Gen1
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Ein Azure Data Lake Store-Konto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit Azure Data Lake Store](data-lake-store-get-started-portal.md)
-* **Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake-Speicherkonto. Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
+* **Ein Azure Data Lake Storage Gen1-Konto**. Eine Anleitung zum Erstellen eines Kontos finden Sie unter [Erste Schritte mit Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
+* **Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake Storage Gen1-Konto. Weitere Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
 * **Verwendung von MapReduce in HDInsight**.  Weitere Informationen finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce).
-* **Leitfaden für die Optimierung der Leistung von Azure Data Lake Store**.  Allgemeine Leistungskonzepte finden Sie unter [Anleitung für die Leistungsoptimierung von Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).
+* **Richtlinien für die Leistungsoptimierung von Data Lake Storage Gen1**.  Allgemeine Leistungskonzepte finden Sie unter [Anleitung für die Leistungsoptimierung von Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).
 
 ## <a name="parameters"></a>Parameter
 
-Im Folgenden finden Sie die wichtigsten Parameter, die Sie für die Ausführung von MapReduce konfigurieren können, um die Leistung in Azure Data Lake Store zu verbessern:
+Im Folgenden finden Sie die wichtigsten Parameter, die Sie für die Ausführung von MapReduce konfigurieren können, um die Leistung in Azure Data Lake Storage Gen1 zu verbessern:
 
 * **Mapreduce.map.memory.mb** – die Menge an Arbeitsspeicher, die jedem Mapper zugeordnet werden soll
 * **Mapreduce.job.maps** – die Anzahl an Zuordnungstasks pro Auftrag
@@ -83,9 +83,9 @@ Angenommen, Sie haben einen Cluster mit 8 D14-Knoten und möchten einen E/A-inte
 
 ## <a name="limitations"></a>Einschränkungen
 
-**Drosselung bei Azure Data Lake Store**
+**Data Lake Storage Gen1-Einschränkung**
 
-Azure Data Lake Store ist ein mehrinstanzenfähiger Dienst und legt daher Bandbreitengrenzwerte auf Kontoebene fest.  Wenn Sie diese Grenzwerte erreichen, werden Taskfehler angezeigt. Dies lässt sich durch Beobachten der Drosselungsfehler in den Taskprotokollen ermitteln.  Wenn Sie für einen Auftrag mehr Bandbreite benötigen, wenden Sie sich an uns.   
+Azure Data Lake Storage Gen1 ist ein mehrinstanzenfähiger Dienst und legt daher Bandbreitengrenzwerte auf Kontoebene fest.  Wenn Sie diese Grenzwerte erreichen, werden Taskfehler angezeigt. Dies lässt sich durch Beobachten der Drosselungsfehler in den Taskprotokollen ermitteln.  Wenn Sie für einen Auftrag mehr Bandbreite benötigen, wenden Sie sich an uns.   
 
 Um zu prüfen, ob eine Drosselung vorliegt, müssen Sie die Debugprotokollierung auf Clientseite aktivieren. Gehen Sie hierzu wie folgt vor:
 
@@ -97,7 +97,7 @@ Um zu prüfen, ob eine Drosselung vorliegt, müssen Sie die Debugprotokollierung
 
 ## <a name="examples-to-run"></a>Beispiele für die Ausführung
 
-Um zu zeigen, wie MapReduce in Azure Data Lake Store ausgeführt wird, finden Sie hier einen Beispielcode, der mit folgenden Einstellungen in einem Cluster ausgeführt wurde:
+Um zu zeigen, wie MapReduce in Data Lake Storage Gen1 ausgeführt wird, finden Sie hier Beispielcode, der mit folgenden Einstellungen in einem Cluster ausgeführt wurde:
 
 * D14v2 mit 16 Knoten
 * Hadoop-Cluster mit HDI 3.6

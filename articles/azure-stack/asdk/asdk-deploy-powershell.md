@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 06/07/2018
+ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: f0d7daa479f6e6ea345e010962488c1ecad5b7e2
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: c6b2387360973cd4e65b5a1e4ba483abf5ea9070
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849956"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716025"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>Bereitstellen des ASDK über die Befehlszeile
 Das ASDK ist eine Test- und Entwicklungsumgebung, die sie zum Evaluieren und Demonstrieren von Azure Stack-Funktionen und -Diensten bereitstellen können. Zur Einrichtung der Umgebung müssen Sie die Umgebungshardware vorbereiten und einige Skripts ausführen. (Dies nimmt mehrere Stunden in Anspruch.) Anschließend können Sie sich beim Administrator- und Benutzerportal anmelden und Azure Stack verwenden.
@@ -91,6 +91,8 @@ Führen Sie die folgenden PowerShell-Befehle aus, um das Development Kit mit Azu
   ```
 
 Einige Minuten nach Beginn der ASDK-Installation werden Sie zum Eingeben der Azure AD-Anmeldeinformationen aufgefordert. Geben Sie die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten an. 
+
+Nach der Bereitstellung ist die globale Azure Active Directory-Administratorberechtigung nicht erforderlich. Einige Vorgänge erfordern jedoch möglicherweise die Anmeldeinformationen für den globalen Administrator. Beispielsweise ein Ressourcenanbieter-Installationsskript oder ein neues Feature, dem eine Berechtigung erteilt werden muss. Sie können entweder die globalen Administratorrechte des Kontos vorübergehend wiederherstellen oder ein separates globales Administratorkonto verwenden, das Besitzer des *Standardanbieterabonnements* ist.
 
 ### <a name="deploy-azure-stack-using-ad-fs"></a>Bereitstellen von Azure Stack mit AD FS 
 Führen Sie die folgenden PowerShell-Befehle aus (indem Sie einfach den Parameter „-UseADFS“ hinzufügen), um das Development Kit **mit AD FS als Identitätsanbieter** bereitzustellen: 

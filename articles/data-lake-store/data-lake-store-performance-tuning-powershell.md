@@ -1,6 +1,6 @@
 ---
-title: Leitfaden zur Leistungsoptimierung für die Verwendung von PowerShell mit Data Lake Store | Microsoft-Dokumentation
-description: Tipps zum Verbessern der Leistung bei Verwendung von Azure PowerShell mit Data Lake Store
+title: Leitfaden zur Leistungsoptimierung für die Verwendung von PowerShell mit Azure Data Lake Storage Gen1 | Microsoft Docs
+description: Tipps zum Verbessern der Leistung bei Verwendung von Azure PowerShell mit Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: 7b19972ed4a75ac899a4b78b28ab36ba305a5a64
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fff26406b036edeb48371b89f7e585160ddc58e0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198649"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123316"
 ---
-# <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-store"></a>Leitfaden zur Leistungsoptimierung für die Verwendung von PowerShell mit Azure Data Lake Store
+# <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Leitfaden zur Leistungsoptimierung für die Verwendung von PowerShell mit Azure Data Lake Storage Gen1
 
-In diesem Artikel sind die Eigenschaften aufgeführt, die optimiert werden können, um eine bessere Leistung zu erzielen, wenn Sie PowerShell für die Arbeit mit Data Lake Store verwenden:
+In diesem Artikel sind die Eigenschaften aufgeführt, die optimiert werden können, um eine bessere Leistung zu erzielen, wenn Sie PowerShell für die Arbeit mit Azure Data Lake Storage Gen1 verwenden:
 
 ## <a name="performance-related-properties"></a>Leistungsbezogene Eigenschaften
 
@@ -31,9 +31,9 @@ In diesem Artikel sind die Eigenschaften aufgeführt, die optimiert werden könn
 
 **Beispiel**
 
-Mit diesem Befehl werden Dateien aus Azure Data Lake Store auf den lokalen Datenträger des Benutzers heruntergeladen, indem 20 Threads pro Datei und 100 gleichzeitige Dateien verwendet werden.
+Mit diesem Befehl werden Dateien aus Azure Data Lake Storage Gen1 auf den lokalen Datenträger des Benutzers heruntergeladen, indem 20 Threads pro Datei und 100 gleichzeitige Dateien verwendet werden.
 
-    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Store account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
+    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
 
 ## <a name="how-do-i-determine-the-value-for-these-properties"></a>Wie kann ich den Wert für diese Eigenschaften ermitteln?
 
@@ -93,8 +93,8 @@ Sie können diese Einstellungen weiter optimieren, indem Sie den Wert für **Per
 * **Drosselungsfehler**: Es können Drosselungsfehler auftreten, wenn die Parallelität zu hoch ist. Falls es zu Drosselungsfehlern kommt, sollten Sie entweder die Parallelität reduzieren oder mit uns Kontakt aufnehmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwenden von Azure Data Lake Store für Big Data-Anforderungen](data-lake-store-data-scenarios.md) 
-* [Sichern von Daten in Data Lake Store](data-lake-store-secure-data.md)
-* [Verwenden von Azure Data Lake Analytics mit Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Verwenden von Azure HDInsight mit Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Verwenden von Azure Data Lake Storage Gen1 für Big Data-Anforderungen](data-lake-store-data-scenarios.md) 
+* [Schützen von Daten in Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Verwenden von Azure Data Lake Analytics mit Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Verwenden von Azure HDInsight mit Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 

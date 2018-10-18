@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2018
+ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: e3fe033de05ed42d221795159461048790e1cec8
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: f6640e7d179199fbfb5b0c2b0c384729b6f53bcf
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493301"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498248"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -39,109 +39,200 @@ Dieser Artikel zu den bewährten Methoden für die Azure-Identitätsverwaltung u
 
 Der Artikel enthält bewährte Methoden zur Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung für die folgenden Bereiche:
 
+* Behandeln von Identität als primären Sicherheitsbereich
 * Zentralisieren der Identitätsverwaltung
-* Ermöglichen des einmaligen Anmeldens (SSO)
-* Bereitstellen der Kennwortverwaltung
-* Erzwingen der Multi-Factor Authentication (MFA) für Benutzer
-* Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
-* Steuern von Standorten, an denen Ressourcen erstellt werden, mit Resource Manager
-* Anleiten von Entwicklern zur Nutzung von Identitätsfunktionen für SaaS-Apps
-* Aktives Überwachen auf verdächtige Aktivitäten
+* Einmaliges Anmelden aktivieren
+* Aktivieren des bedingten Zugriffs
+* Aktivieren der Kennwortverwaltung
+* Erzwingen der mehrstufigen Überprüfung für Benutzer
+* Verwenden der rollenbasierten Zugriffssteuerung
+* Senken der Gefährdung privilegierter Konten
+* Steuern von Standorten, wo sich Ressourcen befinden
 
-## <a name="centralize-your-identity-management"></a>Zentralisieren der Identitätsverwaltung
+## <a name="treat-identity-as-the-primary-security-perimeter"></a>Behandeln von Identität als primären Sicherheitsbereich
 
-Ein wichtiger Schritt zum Schützen Ihrer Identität ist die Sicherstellung, dass die IT-Mitarbeiter Konten unabhängig vom Erstellungsort von einem zentralen Standort aus verwalten können. In den meisten IT-Abteilungen von Unternehmen liegt das primäre Kontenverzeichnis lokal vor. Aber die Zahl der Hybrid-Cloudbereitstellungen nimmt zu, und es ist wichtig, dass Sie verstehen, wie Sie lokale Verzeichnisse und Cloudverzeichnisse integrieren und Endbenutzern eine nahtlose Oberfläche bieten können.
+Viele betrachten Identität als primären Sicherheitsbereich. Dies ist eine Abkehr vom traditionellen Schwerpunkt der Netzwerksicherheit. Netzwerkumkreise werden immer durchlässiger, und die Verteidigung des Umkreises kann nicht so effektiv sein wie vor der explosionsartigen Verbreitung von [BYOD](http://aka.ms/byodcg)-Geräten und Cloudanwendungen.
+[Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) ist die Lösung für Identitäts- und Zugriffsverwaltung von Azure. Azure AD ist ein mehrinstanzenfähiger, cloudbasierter Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Azure AD kombiniert grundlegende Verwaltungsdienste, Zugriffsverwaltung für Anwendungen und Identitätsgovernance in einer einzigen Lösung.
 
-Wir empfehlen Ihnen zwei Optionen, um dieses Szenario mit [Hybrididentitäten](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md) zu erreichen:
+In den folgenden Abschnitten werden die Best Practices für die Identitäts- und Zugriffssicherheit mit Azure AD aufgeführt.
 
-* Synchronisieren des lokalen Verzeichnisses mit Ihrem Cloudverzeichnis per Azure AD Connect
-* Aktivieren des einmaligen Anmeldens mit [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization), [Passthrough-Authentifizierung](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq) oder Erstellen eines Verbundes Ihrer lokalen Identität mit dem Cloudverzeichnis unter Verwendung von [Active Directory-Verbunddienste ](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) (Active Directory Federation Services, AD FS)
+## <a name="centralize-identity-management"></a>Zentralisieren der Identitätsverwaltung
 
-Für Organisationen, die ihre lokale Identität nicht in die Cloudidentität integrieren, fällt beim Verwalten der Konten Mehraufwand an. Dies erhöht die Wahrscheinlichkeit von Fehlern und Sicherheitsverletzungen.
+In einem [Hybrididentitätsszenario](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?) sollten Sie Ihre lokalen und Cloudverzeichnisse integrieren. Die Integration ermöglicht Ihrem IT-Team, Konten von einem zentralen Ort aus zu verwalten, unabhängig davon, wo ein Konto erstellt wird. Die Integration steigert auch die Produktivität Ihrer Benutzer, da für den Zugriff auf die Cloud und lokale Ressourcen nur eine Identität benötigt wird.
 
-Weitere Informationen zur Azure AD-Synchronisierung finden Sie im Artikel [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/active-directory-aadconnect.md).
 
-## <a name="enable-single-sign-on-sso"></a>Ermöglichen des einmaligen Anmeldens (SSO)
+**Best Practice**: Integrieren Sie Ihre lokalen Verzeichnisse mit Azure AD.  
+**Detail**: Synchronisieren Sie per [Azure AD Connect](../active-directory/connect/active-directory-aadconnect.md) Ihr lokales Verzeichnis mit Ihrem Cloudverzeichnis.
 
-Wenn Sie mehrere Verzeichnisse verwalten müssen, wird dies nicht nur für die IT-Abteilung zu einem Verwaltungsproblem, sondern auch für die Endbenutzer, die sich mehrere Kennwörter merken müssen. Bei Verwendung von [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) geben Sie Ihren Benutzern die Möglichkeit, die gleiche Gruppe von Anmeldeinformationen zum Anmelden und Zugreifen auf die benötigten Ressourcen zu nutzen. Dabei spielt es keine Rolle, ob sich eine Ressource lokal oder in der Cloud befindet.
+**Best Practice**: Aktivieren Sie die Kennworthashsynchronisierung.  
+**Detail**: Die Kennworthashsynchronisierung ist ein Feature zum Synchronisieren von Hashes von Benutzerkennwörtern aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD).
 
-Verwenden Sie SSO, um Benutzern zu ermöglichen, basierend auf ihrem Organisationskonto in Azure AD auf ihre [SaaS-Anwendungen](../active-directory/manage-apps/what-is-single-sign-on.md) zuzugreifen. Dies gilt nicht nur für Microsoft SaaS-Apps, sondern auch für andere Apps, z.B. [Google-Apps](../active-directory/saas-apps/google-apps-tutorial.md) und [Salesforce](../active-directory/saas-apps/salesforce-tutorial.md). Ihre Anwendung kann so konfiguriert werden, dass Azure AD als [SAML-Identitätsanbieter](../active-directory/fundamentals-identity.md) verwendet wird. Als Sicherheitsmaßnahme stellt Azure AD nur dann ein Token aus, das den Benutzern die Anmeldung bei der Anwendung erlaubt, wenn ihnen zuvor mit Azure AD Zugriff gewährt wurde. Sie können den Zugriff direkt oder über eine Gruppe gewähren, deren Mitglied die Benutzer sind.
+Auch wenn Sie den Verbund mit Active Directory-Verbunddiensten (Active Directory Federation Services, AD FS) oder anderen Identitätsanbietern verwenden möchten, können Sie die Kennworthashsynchronisierung optional als eine Sicherung für den Fall einrichten, dass bei Ihren lokalen Servern ein Fehler auftritt oder sie vorübergehend nicht verfügbar sind. Dies ermöglicht Benutzern, sich bei dem Dienst mit dem gleichen Kennwort anzumelden, das sie zur Anmeldung bei Ihrer lokalen Active Directory-Instanz verwenden. Außerdem ermöglicht es Identity Protection das Erkennen gefährdeter Anmeldeinformationen durch Vergleichen ihrer Kennworthashes mit Kennwörtern, die bekanntermaßen gefährdet sind, wenn ein Benutzer dieselbe E-Mail-Adresse und dasselbe Kennwort bei anderen Diensten genutzt hat, die nicht mit Azure AD verbunden sind.
 
-> [!NOTE]
-> Die Entscheidung zur Nutzung von SSO wirkt sich auch darauf aus, wie Sie das lokale Verzeichnis in Ihr Cloudverzeichnis integrieren. Wenn Sie SSO verwenden möchten, müssen Sie einen Verbund nutzen, da die Verzeichnissynchronisierung nur eine [Oberfläche für die gleiche Anmeldung (Same Sign-On)](../active-directory/active-directory-aadconnect.md) bietet.
->
->
+Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
-Für Organisationen, die SSO für ihre Benutzer und Anwendungen nicht erzwingen, kommt es häufiger zu Szenarien, bei denen Benutzer mehrere Kennwörter haben. Dies erhöht direkt die Wahrscheinlichkeit, dass Benutzer Kennwörter wiederverwenden oder unsichere Kennwörter nutzen.
+Organisationen, die ihre lokale Identität nicht in ihre Cloudidentität integrieren, haben mehr Aufwand beim Verwalten der Konten. Dieser Aufwand steigert die Wahrscheinlichkeit von Fehlern und Sicherheitsverletzungen.
 
-Weitere Informationen zu Azure AD SSO finden Sie im Artikel [Verwaltung der Active Directory-Verbunddienste und Anpassung mit Azure AD Connect](../active-directory/active-directory-aadconnect-federation-management.md).
+## <a name="enable-single-sign-on"></a>Einmaliges Anmelden aktivieren
 
-## <a name="deploy-password-management"></a>Bereitstellen der Kennwortverwaltung
+In einer primär auf Mobil- und Cloudtechnologie ausgelegten Welt möchten Sie einmaliges Anmelden (Single Sign-On, SSO) bei Geräten, Apps und Diensten von jedem Ort ermöglichen, damit Ihre Benutzer jederzeit und überall produktiv sein können. Wenn Sie mehrere Identitätslösungen verwalten müssen, wird dies nicht nur für die IT-Abteilung zu einem Verwaltungsproblem, sondern auch für die Benutzer, die sich mehrere Kennwörter merken müssen.
 
-Bei Szenarien, in denen Sie mehrere Mandanten verwenden oder Benutzern das [Zurücksetzen ihres Kennworts](../active-directory/user-help/active-directory-passwords-update-your-own-password.md) ermöglichen möchten, ist es wichtig, dass Sie zur Verhinderung von Missbrauch geeignete Sicherheitsrichtlinien verwenden. In Azure können Sie die Funktion für die Self-Service-Kennwortzurücksetzung nutzen und die Sicherheitsoptionen anpassen, um Ihre geschäftlichen Anforderungen zu erfüllen.
+Indem Sie für alle Ihre Apps und Ressourcen die gleiche Identitätslösung verwenden, können Sie SSO erreichen. Ihre Benutzer können die gleiche Gruppe von Anmeldeinformationen zum Anmelden und Zugreifen auf die benötigten Ressourcen nutzen. Dabei spielt es keine Rolle, ob eine Ressource lokal ist oder sich in der Cloud befindet.
 
-Es ist wichtig, Feedback von diesen Benutzern zu erhalten und aus den Erfahrungen zu lernen, die diese beim Ausführen der Schritte machen. Stellen Sie basierend auf diesen Erfahrungen einen Plan zur Lösung von potenziellen Problemen auf, die während der Bereitstellung für eine größere Gruppe auftreten können. Wir empfehlen Ihnen auch, den [Bericht zur Registrierung für die Kennwortzurücksetzung](../active-directory/active-directory-passwords-get-insights.md) zu verwenden, um die registrierten Benutzer zu überwachen.
+**Best Practice**: Aktivieren Sie SSO.  
+**Detail**: Azure AD [erweitert das lokale Active Directory](../active-directory/connect/active-directory-aadconnect.md) auf die Cloud. Benutzer können ihr primäres Geschäfts-, Schul- oder Unikonto für ihre in die Domäne eingebundenen Geräte und Unternehmensressourcen sowie alle Web-und SaaS-Anwendungen verwenden, die sie benötigen, um ihre Arbeit zu erledigen. Benutzer müssen sich keine Vielzahl von Benutzernamen und Kennwörtern mehr merken, und ihr Anwendungszugriff kann basierend auf ihrer Gruppenmitgliedschaft in der Organisation sowie ihrem Mitarbeiterstatus automatisch bereitgestellt (oder deaktiviert) werden. Und Sie können diesen Zugriff für Katalog-Apps oder für Ihre eigenen lokalen Apps steuern, die Sie über den [Azure AD-Anwendungsproxy](../active-directory/active-directory-application-proxy-get-started.md) entwickelt und veröffentlicht haben.
 
-Für Organisationen, die Supportanrufe zum Thema Kennwortänderung vermeiden möchten und Benutzern gleichzeitig das Zurücksetzen der eigenen Kennwörter erlauben, fallen aufgrund von Kennwortproblemen häufiger vermehrte Anrufe beim Service Desk an. In Organisationen mit mehreren Mandanten ist es unerlässlich, dass Sie diese Art von Funktion implementieren und Benutzern die Kennwortzurücksetzung innerhalb der Sicherheitsgrenzen ermöglichen, die in der Sicherheitsrichtlinie festgelegt wurden.
+Verwenden Sie SSO, um Benutzern zu ermöglichen, basierend auf ihrem Geschäfts-, Schul- oder Unikonto in Azure AD auf ihre [SaaS-Anwendungen](../active-directory/active-directory-appssoaccess-whatis.md) zuzugreifen. Dies gilt nicht nur für Microsoft SaaS-Apps, sondern auch für andere Apps, z.B. [Google-Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) und [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Sie können Ihre Anwendung so konfigurieren, dass Azure AD als [SAML-Identitätsanbieter](../active-directory/fundamentals-identity.md) verwendet wird. Als Sicherheitsmaßnahme stellt Azure AD nur dann ein Token aus, das Benutzern die Anmeldung bei der Anwendung erlaubt, wenn ihnen zuvor mit Azure AD Zugriff gewährt wurde. Sie können den Zugriff direkt oder über eine Gruppe gewähren, deren Mitglied die Benutzer sind.
 
-Weitere Informationen zur Kennwortzurücksetzung finden Sie im Artikel [Bereitstellen der Kennwortverwaltung und Schulen der Benutzer zu deren Verwendung](../active-directory/authentication/howto-sspr-deployment.md).
+Organisationen, die keine gemeinsame Identität zum Einrichten von SSO für ihre Benutzer und Anwendungen erstellen, haben häufiger mit Szenarien zu tun, in denen Benutzer mehrere Kennwörter haben. Diese Szenarien erhöhen die Wahrscheinlichkeit, dass Benutzer Kennwörter wiederverwenden oder unsichere Kennwörter verwenden.
 
-## <a name="enforce-multi-factor-authentication-mfa-for-users"></a>Erzwingen der Multi-Factor Authentication (MFA) für Benutzer
+## <a name="turn-on-conditional-access"></a>Aktivieren des bedingten Zugriffs
 
-Für Organisationen, die Branchenstandards erfüllen müssen, z.B. [PCI DSS Version 3.2](http://blog.pcisecuritystandards.org/preparing-for-pci-dss-32), ist die Multi-Factor Authentication zwingend erforderlich, um Benutzer authentifizieren zu können. Über die Erfüllung von Branchenstandards hinaus kann die Erzwingung von MFA für die Authentifizierung von Benutzern für Organisationen auch eine Hilfe darstellen, wenn es um eine Lösung für Angriffe geht, bei denen Anmeldeinformationen gestohlen werden, z.B. [Pass-the-Hash (PtH)](http://aka.ms/PtHPaper).
+Benutzer können mithilfe einer Vielzahl von Geräten und Apps von überall aus auf Ressourcen in Ihrer Organisation zugreifen. Als IT-Administrator möchten Sie sicherstellen, dass diese Geräte Ihren Standards für Sicherheit und Konformität entsprechen. Eine Konzentration darauf, wer auf Ihre Ressourcen Zugriff hat, reicht nicht mehr aus.
 
-Durch die Aktivierung von Azure MFA für Ihre Benutzer fügen Sie eine zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen hinzu. In diesem Fall greift eine Transaktion möglicherweise auf ein Dokument zu, das sich auf einem Dateiserver oder in Ihrem SharePoint Online-Konto befindet. Azure MFA hilft der IT, die Wahrscheinlichkeit zu verringern, dass kompromittierte Anmeldeinformationen Zugriff auf die Daten einer Organisation haben.
+Um das Gleichgewicht zwischen Sicherheit und Produktivität zu bewahren, müssen Sie bei der Wahl der Zugriffssteuerung berücksichtigen, auf welche Weise auf eine Ressource zugegriffen wird. Mit dem bedingten Zugriff von Azure AD können Sie diese Anforderung erfüllen. Mit dem bedingten Zugriff können Sie basierend auf bestimmten Bedingungen automatisierte Entscheidungen hinsichtlich der Zugriffssteuerung für den Zugriff auf Ihre Cloud-Apps treffen.
 
-Beispiel: Sie erzwingen Azure MFA für Ihre Benutzer und konfigurieren den Vorgang so, dass zur Verifizierung ein Telefonanruf oder eine SMS verwendet wird. Wenn die Anmeldeinformationen eines Benutzers kompromittiert werden, kann der Angreifer dann nicht auf Ressourcen zugreifen, da er keinen Zugriff auf das Telefon des Benutzers hat. Organisationen, die keine zusätzliche Schicht zur Identitätssicherung hinzufügen, sind anfälliger für Angriffe mit dem Ziel des Diebstahls von Anmeldeinformationen, was wiederum zu kompromittierten Daten führen kann.
+**Best Practice**: Verwalten und steuern Sie den Zugriff auf Unternehmensressourcen.  
+**Detail**: Konfigurieren Sie den [bedingten Zugriff](../active-directory/active-directory-conditional-access-azure-portal.md) auf Azure AD basierend auf einer Gruppen-, Standort- und Anwendungsvertraulichkeit für SaaS-Apps und verbundene Azure AD-Apps.
 
-Eine Alternative für Organisationen, die die gesamte Authentifizierung weiterhin lokal steuern möchten, ist die Verwendung des [Azure Multi-Factor Authentication-Servers](../active-directory/authentication/howto-mfaserver-deploy.md). Dies wird auch als „MFA lokal“ bezeichnet. Mithilfe dieser Methode können Sie weiterhin die Multi-Factor Authentication erzwingen und dabei den MFA-Server lokal halten.
+## <a name="enable-password-management"></a>Aktivieren der Kennwortverwaltung
 
-Weitere Informationen über Azure Multi-Factor Authentication finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](../active-directory/authentication/howto-mfa-getstarted.md).
+Wenn Sie mehrere Mandanten verwenden oder Benutzern das [Zurücksetzen ihres Kennworts](../active-directory/active-directory-passwords-update-your-own-password.md) ermöglichen möchten, ist es wichtig, dass Sie zur Verhinderung von Missbrauch geeignete Sicherheitsrichtlinien verwenden.
+
+**Best Practice**: Richten Sie Self-Service-Kennwortzurücksetzung (SSPR, Self-Service Password Reset) für Ihre Benutzer ein.  
+**Detail**: Verwenden Sie das Feature [Self-Service-Kennwortzurücksetzung](../active-directory-b2c/active-directory-b2c-reference-sspr.md) in Azure AD.
+
+**Best Practice**: Überwachen Sie, wie oder ob SSPR tatsächlich verwendet wird.  
+**Detail**: Überwachen Sie die Benutzer, die sich registrieren, mit dem [Bericht zur Registrierung für die Kennwortzurücksetzung](../active-directory/active-directory-passwords-get-insights.md) von Azure AD. Über die Berichtsfunktion, die von Azure AD bereitgestellt wird, können Sie Fragen beantworten, indem Sie vordefinierte Berichte verwenden. Wenn Sie eine ordnungsgemäße Lizenz haben, können Sie auch benutzerdefinierte Abfragen erstellen.
+
+## <a name="enforce-multi-factor-verification-for-users"></a>Erzwingen der mehrstufigen Überprüfung für Benutzer
+
+Sie sollten die zweistufige Überprüfung für alle Benutzer fordern. Dies schließt Administratoren und andere Personen in Ihrer Organisation ein, bei denen die Gefährdung ihrer Konten einen besonders schädlichen Einfluss haben kann (z.B. Finanzchefs).
+
+Es gibt mehrere Optionen, um eine zweistufige Überprüfung zu erzwingen. Die beste Option für Sie hängt von Ihren Zielen ab, der Azure AD-Edition, die Sie ausführen, und Ihrem Lizenzierungsprogramm. Bestimmen Sie mithilfe des Artikels [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](../active-directory/authentication/howto-mfa-userstates.md) die beste Option für Sie. Weitere Informationen zu Lizenzen und Preisen finden Sie auf den Preisgestaltungsseiten von [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) und [Multi-Factor Authentication – Preise](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+
+Im Folgenden werden Optionen und Vorteile der zweistufigen Überprüfung beschrieben:
+
+**Option 1**: [Aktivieren Sie Azure MFA durch Ändern des Benutzerstatus](../active-directory/authentication/howto-mfa-userstates.md#enable-azure-mfa-by-changing-user-status).   
+**Vorteil**: Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu erfordern. Sie funktioniert sowohl mit der [mehrstufigen Azure-Authentifizierung in der Cloud als auch mit Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md). Diese Methode erfordert, dass Benutzer jedes Mal, wenn sie sich anmelden, die zweistufige Überprüfung durchführen, und überschreibt Richtlinien für bedingten Zugriff.
+
+**Option 2**: [Aktivieren Sie Multi-Factor Authentication mit Richtlinie für bedingten Zugriff](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access).   
+**Vorteil**: Mit dieser Option können Sie die zweistufige Überprüfung unter bestimmten Bedingungen mithilfe des [bedingten Zugriffs](../active-directory/active-directory-conditional-access-azure-portal.md) anfordern. Bestimmte Bedingungen können sein: Benutzeranmeldung von verschiedenen Standorten, nicht vertrauenswürdige Geräte oder Anwendungen, die Sie als risikoreich betrachten. Durch Definieren von bestimmten Bedingungen, in denen Sie die zweistufige Überprüfung erfordern, können Sie die konstante Aufforderung Ihrer Benutzer vermeiden, die eine unangenehme Benutzererfahrung sein kann.
+
+Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung einer Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure Multi-Factor Authentication in der Cloud und ist eine Premium-Funktion von Azure AD. Weitere Informationen zu dieser Methode finden Sie unter [Bereitstellen von cloudbasierter Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md).
+
+**Option 3**: Aktivieren Sie Multi-Factor Authentication mit Richtlinien für bedingten Zugriff durch die Auswertung von Benutzer und Anmelderisiko durch [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md).   
+**Vorteil**: Diese Option ermöglicht Ihnen:
+
+- Ermitteln potenzieller Sicherheitsrisiken für Identitäten Ihrer Organisation.
+- Konfigurieren automatischer Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit den Identitäten Ihrer Organisation.
+- Untersuchen verdächtiger Vorfälle und Ergreifen entsprechender Maßnahmen zu deren Behebung.
+
+Diese Methode nutzt die Risikobewertung von Azure AD Identity Protection, um die Notwendigkeit der zweistufigen Überprüfung auf Basis des Benutzers und Anmelderisikos für alle Cloudanwendungen zu bestimmen. Diese Methode erfordert die Azure Active Directory P2-Lizenzierung. Weitere Informationen zu dieser Methode finden Sie unter [Azure Active Directory Identity Protection](../active-directory/identity-protection/overview.md).
+
+> [!Note]
+> Option 1, Aktivierung von Multi-Factor Authentication durch Ändern des Benutzerstatus, überschreibt die Bedingungsrichtlinien. Da die Optionen 2 und 3 Richtlinien für bedingten Zugriff verwenden, können Sie Option 1 nicht mit ihnen zusammen verwenden.
+
+Organisationen, die keine zusätzliche Schicht zur Identitätssicherung hinzufügen, etwa die zweistufige Überprüfung, sind anfälliger für Angriffe mit dem Ziel des Diebstahls von Anmeldeinformationen. Ein Angriff mit gestohlenen Anmeldeinformationen kann zum Kompromittieren der Daten führen.
 
 ## <a name="use-role-based-access-control-rbac"></a>Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
 
-Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Die rollenbasierte Zugriffssteuerung in Azure (RBAC) kann verwendet werden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein.
+Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Sie können die [rollenbasierte Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) verwenden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein.
 
-Sie können [integrierte RBAC-Rollen](../role-based-access-control/built-in-roles.md) in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Ziehen Sie die Verwendung von *Speicherkontomitwirkender* für Cloudoperatoren in Betracht, die Speicherkonten verwalten müssen, und nutzen Sie die Rolle *Klassischer Speicherkontomitwirkender*, um klassische Speicherkonten zu verwalten. Überlegen Sie sich, ob Sie Cloudoperatoren, die VMs und Speicherkonten verwalten müssen, zur Rolle *Mitwirkender für virtuelle Computer* hinzufügen.
+Sie können [integrierte RBAC-Rollen](../role-based-access-control/built-in-roles.md) in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBAC erzwingen, erteilen Ihren Benutzern möglicherweise mehr Berechtigungen als erforderlich. Dies kann zum Kompromittieren von Daten führen, indem Benutzern erlaubt wird, auf bestimmte Arten von Daten zuzugreifen (z.B. Daten mit hoher geschäftlicher Bedeutung), auf die sie eigentlich keinen Zugriff haben dürften.
 
-Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBAC erzwingen, erteilen ihren Benutzern unter Umständen mehr Berechtigungen als erforderlich. Dies kann zur Kompromittierung von Daten führen, indem Benutzern erlaubt wird, auf bestimmte Arten von Daten zuzugreifen (z.B. Daten mit hoher geschäftlicher Bedeutung), auf die sie eigentlich keinen Zugriff haben dürften.
+## <a name="lower-exposure-of-privileged-accounts"></a>Senken der Gefährdung privilegierter Konten
 
-Lesen Sie den Artikel [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md), um mehr über die Azure RBAC zu erfahren.
+Das Sichern des privilegierten Zugriffs ist ein entscheidender erster Schritt, um die geschäftlichen Ressourcen zu schützen. Halten Sie die Anzahl von Personen mit Zugriff auf sichere Informationen oder Ressourcen möglichst gering, da sich so das Risiko verringert, dass ein böswilliger Benutzer Zugriff darauf erhält, oder ein autorisierter Benutzer versehentlich eine sensible Ressource kompromittiert.
 
-## <a name="control-locations-where-resources-are-created-using-resource-manager"></a>Steuern von Standorten, an denen Ressourcen erstellt werden, mit Resource Manager
+Mit privilegierten Konten werden IT-Systeme verwaltet. Cyberkriminelle versuchen diese Konten anzugreifen, um Zugriff auf die Daten und Systeme eines Unternehmens zu erhalten. Zum Schutz des privilegierten Zugriffs empfiehlt es sich, Konten und Systeme zu isolieren, um sie vor dem Zugriff durch böswillige Benutzer zu schützen.
 
-Es ist wichtig, für Cloudbediener die Durchführung von Aufgaben zu ermöglichen und gleichzeitig die Nichteinhaltung von Konventionen zu verhindern, die zum Verwalten der Ressourcen einer Organisation erforderlich sind. Organisationen, die die Orte steuern möchten, an denen Ressourcen erstellt werden, sollten diese Orte hartcodieren.
+Wir empfehlen Ihnen, eine Roadmap zum Schützen des privilegierten Zugriffs gegenüber Cyberangreifern zu entwickeln und zu befolgen. Informationen zum Erstellen eines detaillierten Plans zum Sichern von Identitäten und Zugriff, die in Azure AD, Microsoft Azure, Office 365 und anderen Clouddiensten verwaltet oder berichtet werden, finden Sie unter [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../active-directory/users-groups-roles/directory-admin-roles-secure.md).
 
-Hierzu können Organisationen Sicherheitsrichtlinien erstellen, die über Definitionen verfügen, mit denen die jeweils verweigerten Aktionen oder Ressourcen beschrieben werden. Sie weisen diese Richtliniendefinitionen dem gewünschten Ziel zu, z. B. einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource.
+Im Folgenden werden die Best Practices in [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../active-directory/users-groups-roles/directory-admin-roles-secure.md) zusammengefasst:
+
+**Bewährte Methode**: Verwalten, Steuern und Überwachen des Zugriffs auf privilegierte Konten.   
+**Detail**: Aktivieren Sie [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/active-directory-securing-privileged-access.md). Nach der Aktivierung von Privileged Identity Management erhalten Sie Benachrichtigungs-E-Mails zu Rollenänderungen bei privilegiertem Zugriff. Diese Benachrichtigungen sind eine frühzeitige Warnung, wenn zusätzliche Benutzer hoch privilegierten Rollen in Ihrem Verzeichnis hinzugefügt werden.
+
+**Best Practice**: Identifizieren und kategorisieren Sie Konten in stark privilegierten Rollen.   
+**Detail**: Zeigen Sie nach dem Aktivieren von Azure AD Privileged Identity Management die Benutzer an, die die Rollen globaler Administrator, privilegierter Rollenadministrator und andere hoch privilegierte Rollen einnehmen. Entfernen Sie alle Konten, die nicht mehr in diesen Rollen benötigt werden, und kategorisieren Sie die restlichen Konten, die Administratorrollen zugewiesen sind:
+
+- Einzeln Benutzern mit Administratorrechten zugewiesen, und kann nicht zu administrativen Zwecken (z.B. persönliche E-Mail) verwendet werden
+- Einzeln Benutzern mit Administratorrechten zugewiesen und nur für Verwaltungszwecke vorgesehen
+- Für mehrere Benutzer freigegeben
+- Für Notfallzugriffs-Szenarios
+- Für automatisierte Skripts
+- Für externe Benutzer
+
+**Best Practice**: Implementieren Sie Just-in-Time-Zugriff (JIT) zur weiteren Reduzierung der Offenlegungszeit von Berechtigungen und Steigern Ihres Einblicks in die Verwendung privilegierter Konten.   
+**Detail**: Azure AD Privileged Identity Management ermöglicht Ihnen Folgendes:
+
+- Beschränken der Nutzung von Benutzerberechtigungen auf JIT.
+- Zuweisen von Rollen für eine verkürzte Dauer mit der Gewissheit, dass die Berechtigungen automatisch widerrufen werden.
+
+**Best Practice**: Definieren Sie mindestens zwei Notfallzugriffskonten.   
+**Detail**: Konten für den Notfallzugriff unterstützen Organisationen dabei, den privilegierten Zugriff innerhalb einer vorhandenen Azure Active Directory-Umgebung einzuschränken. Diese Konten verfügen über weitreichende Privilegien und werden keinen Einzelpersonen zugewiesen. Konten für den Notfallzugriff sind auf Szenarios beschränkt, in denen normale Administratorkonten nicht verwendet werden können. Organisationen müssen die Notfallkontennutzung auf die erforderliche Zeitspanne begrenzen.
+
+Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler Administrator“ berechtigt sind. Wenn Ihnen keine ausschließlichen Cloudkonten mit der `*.onmicrosoft.com`-Domäne (vorgesehen für den Notfallzugriff) angezeigt werden, erstellen Sie sie. Weitere Informationen finden Sie unter „Verwalten von Administratorkonten für den Notfallzugriff in Azure AD“.
+
+**Best Practice**: Aktivieren Sie mehrstufige Authentifizierung und Registrieren aller anderen nicht verbundenen Einzelbenutzer-Administratorkonten mit hohen Privilegien.  
+**Detail**: Setzen Sie die mehrstufige Azure-Authentifizierung (Multi-Factor Authentication, MFA) bei der Anmeldung für alle einzelnen Benutzer voraus, die dauerhaft einer oder mehreren Azure AD-Administratorrollen zugewiesen sind: globaler Administrator, privilegierter Rollenadministrator, Exchange Online-Administrator und SharePoint Online-Administrator. Nutzen Sie den Leitfaden zum Aktivieren einer [mehrstufigen Authentifizierung für Ihre Administratorkonten](../active-directory/authentication/howto-mfa-userstates.md), und stellen Sie sicher, dass alle Benutzer [registriert](https://aka.ms/mfasetup) sind.
+
+**Best Practice**: Führen Sie Maßnahmen zum Abschwächen der am häufigsten verwendeten Angriffstechniken durch.  
+**Detail**: [Identifizieren Sie Microsoft-Konten in Administratorrollen, die auf Arbeits- oder Schulkonten umgestellt werden müssen.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+
+[Stellen Sie separate Benutzerkonten und E-Mail-Weiterleitung für globale Administratorkonten sicher.](../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
+
+[Stellen Sie sicher, dass die Kennwörter von Administratorkonten kürzlich geändert wurden.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+
+[Aktivieren Sie die Kennworthashsynchronisierung.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
+
+[Fordern Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) sowohl für Benutzer in allen privilegierten Rollen als auch für Benutzer mit hoher Gefährdung.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+
+[Rufen Sie Ihren Office 365 Secure Score ab (bei Verwendung von Office 365).](../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
+
+[Überprüfen Sie die Office 365-Sicherheit und -Konformität (bei Verwendung von Office 365).](../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+
+[Konfigurieren Sie die Office 365-Aktivitätsüberwachung (bei Verwendung von Office 365).](../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
+
+[Richten Sie Notfallreaktionsplan-Besitzer ein.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
+
+[Schützen Sie lokale privilegierte Administratorkonten.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
+
+Wenn Sie privilegierten Zugriff nicht schützen, verfügen Sie möglicherweise über zu viele Benutzer in stark privilegierten Rollen und sind anfälliger für Angriffe. Böswillige Akteure einschließlich Cyberangreifern haben häufig Administratorkonten und andere Elemente des privilegierten Zugriffs im Visier, um mit Angriffen, deren Ziel der Diebstahl von Anmeldeinformationen ist, Zugriff auf sensible Daten und Systeme zu erhalten.
+
+## <a name="control-locations-where-resources-are-created"></a>Steuern von Standorten, wo Ressourcen erstellt werden
+
+Es ist sehr wichtig, für Cloudbediener die Durchführung von Aufgaben zu ermöglichen und gleichzeitig die Nichteinhaltung von Konventionen zu verhindern, die zum Verwalten der Ressourcen einer Organisation erforderlich sind. Organisationen, die die Orte steuern möchten, an denen Ressourcen erstellt werden, sollten diese Orte hartcodieren.
+
+Sie können mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) Sicherheitsrichtlinien erstellen, mit deren Definitionen die jeweils verweigerten Aktionen oder Ressourcen beschrieben werden. Sie weisen diese Richtliniendefinitionen dem gewünschten Ziel zu, z.B. einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource.
 
 > [!NOTE]
-> Dies ist nicht das Gleiche wie RBAC. RBAC wird genutzt, um die Benutzer zu authentifizieren, die über die Berechtigung zum Erstellen dieser Ressourcen verfügen.
+> Sicherheitsrichtlinien sind nicht das gleiche wie RBAC. Tatsächlich nutzen sie RBAC, um Benutzer zum Erstellen dieser Ressourcen zu autorisieren.
 >
 >
-
-Nutzen Sie [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md), um benutzerdefinierte Richtlinien auch für Szenarien zu erstellen, in denen die Organisation Vorgänge nur zulassen möchte, wenn die entsprechende Kostenstelle zugeordnet ist. Andernfalls wird die Anforderung verweigert.
 
 Organisationen, die die Erstellung von Ressourcen nicht steuern, sind anfälliger dafür, dass Benutzer den Dienst durch die Erstellung von mehr Ressourcen als benötigt missbrauchen. Das Absichern der Ressourcenerstellung ist ein wichtiger Schritt zum Schützen eines Szenarios mit mehreren Mandanten.
 
-Weitere Informationen zur Erstellung von Richtlinien mit Azure Resource Manager finden Sie im Artikel [Was ist Azure Policy](../azure-policy/azure-policy-introduction.md).
-
-## <a name="guide-developers-to-leverage-identity-capabilities-for-saas-apps"></a>Anleiten von Entwicklern zur Nutzung von Identitätsfunktionen für SaaS-Apps
-
-Die Benutzeridentität wird in vielen Szenarien genutzt, wenn Benutzer auf [SaaS-Apps](https://azure.microsoft.com/marketplace/active-directory/all/) zugreifen, die in ein lokales Verzeichnis oder ein Cloudverzeichnis integriert werden können. Zuallererst empfehlen wir, dass Entwickler zum Entwickeln dieser Apps eine sichere Methodik verwenden, z.B. [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx). Azure AD vereinfacht die Authentifizierung für Entwickler mittels Identity as a Service durch Unterstützung branchenüblicher Protokolle wie [OAuth 2.0](http://oauth.net/2/) und [OpenID Connect](http://openid.net/connect/) sowie durch offene Quellbibliotheken für verschiedene Plattformen.
-
-Stellen Sie sicher, dass alle Anwendungen, für die die Authentifizierung an Azure AD outgesourct wird, registriert sind. Dies ist ein erforderlicher Vorgang. Der Grund ist, dass Azure AD die Kommunikation mit der Anwendung koordinieren muss, wenn die Anmeldung (SSO) verarbeitet wird oder Token ausgetauscht werden. Die Sitzung des Benutzers läuft ab, wenn die Gültigkeitsdauer des von Azure AD ausgestellten Tokens abläuft. Werten Sie immer aus, ob dieser Zeitraum für Ihre Anwendung verwendet werden soll oder ob Sie den Zeitraum reduzieren können. Das Reduzieren der Gültigkeitsdauer kann als Sicherheitsmaßnahme fungieren, bei der Benutzer nach einer bestimmten Zeit der Inaktivität zum Abmelden gezwungen werden.
-
-Organisationen, die keine Identitätssteuerung für den Zugriff auf Apps erzwingen und für ihre Entwickler nicht vorgeben, wie Apps sicher in das System für die Identitätsverwaltung integriert werden können, sind häufig anfälliger für den Diebstahl von Anmeldeinformationen, z.B. bei einer unsicheren Authentifizierung und Sitzungsverwaltung. Dies ist unter [Open Web Application Security Project (OWASP) Top 10](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet) beschrieben.
-
-Weitere Informationen zu Authentifizierungsszenarien für SaaS-Apps finden Sie im Artikel [Authentifizierungsszenarien für Azure AD](../active-directory/develop/authentication-scenarios.md).
-
 ## <a name="actively-monitor-for-suspicious-activities"></a>Aktives Überwachen auf verdächtige Aktivitäten
 
-Laut [Verizon 2016 Data Breach-Bericht](http://www.verizonenterprise.com/verizon-insights-lab/dbir/2016/) sind für die Kompromittierung von Anmeldeinformationen weiterhin steigende Fallzahlen zu verzeichnen, und diese Art von Angriff ist für Cyberkriminelle zu einem der einträglichsten Geschäfte geworden. Aus diesem Grund ist es wichtig, dass Sie ein System zur aktiven Überwachung der Identität verwenden, mit dem verdächtige Aktivitäten schnell erkannt werden und eine Warnung ausgelöst wird, damit dies näher untersucht werden kann. Azure AD bietet zwei wichtige Funktionen, die für Organisationen beim Überwachen ihrer Identitäten hilfreich sind: Azure AD Premium-[Anomalieberichte](../active-directory/active-directory-view-access-usage-reports.md) und Azure AD-[Identitätsschutz](../active-directory/active-directory-identityprotection.md).
+Ein aktives Identitätsüberwachungssystem kann schnell verdächtiges Verhalten erkennen und eine Warnung zur weiteren Untersuchung auslösen. Die folgende Tabelle enthält zwei Azure AD-Funktionen, mit denen Organisationen ihre Identitäten überwachen können:
 
-Verwenden Sie auf jeden Fall Anomalieberichte, um Versuche der folgenden Art identifizieren zu können: [Anmeldung ohne Nachverfolgung](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md), [Brute-Force](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md)-Angriffe gegen ein bestimmtes Konto, Anmeldung von mehreren Standorten, Anmeldung mit infizierten Geräten und Verwendung verdächtiger IP-Adressen. Bedenken Sie, dass es sich hierbei um Berichte handelt. Anders ausgedrückt: Sie müssen über Prozesse und Verfahren verfügen, mit denen IT-Administratoren diese Berichte täglich oder bei Bedarf ausführen können (normalerweise in einem Szenario mit Reaktionen auf Zwischenfälle).
+**Best Practice**: Verwenden Sie eine Methode zum Identifizieren:
 
-Im Gegensatz dazu ist Azure AD Identity Protection ein aktives Überwachungssystem, bei dem die aktuellen Risiken im eigenen Dashboard hervorgehoben werden. Außerdem erhalten Sie auch täglich per E-Mail Benachrichtigungen mit einer Zusammenfassung. Wir empfehlen Ihnen, die Risikoebene gemäß Ihren geschäftlichen Anforderungen anzupassen. Die Risikostufe für ein Risikoereignis ist ein Hinweis (Hoch, Mittel oder Niedrig) auf den Schweregrad des Risikoereignisses. Die Risikostufe dient Identity Protection-Benutzern als Hilfe beim Priorisieren der Aktionen, die sie durchführen müssen, um das Risiko für ihre Organisation zu mindern.
+- Versuch einer Anmeldung [ohne Ablaufverfolgung](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md).
+- [Brute-Force](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md)-Angriffe gegen ein bestimmtes Konto.
+- Versuch der Anmeldung von mehreren Standorten aus.
+- Anmeldungen von [infizierten Geräten](../active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices.md).
+- Verdächtige IP-Adressen.
+
+**Detail**: Verwenden Sie [Anomalieberichte](../active-directory/active-directory-view-access-usage-reports.md) von Azure AD Premium. Sie müssen über Prozesse und Verfahren verfügen, mit denen IT-Administratoren diese Berichte täglich oder bei Bedarf ausführen können (normalerweise in einem Szenario mit Reaktionen auf Zwischenfälle).
+
+**Best Practice**: Sie haben ein aktives Überwachungssystem, das Sie über Risiken informiert, und können die Risikostufe (hoch, mittel oder niedrig) Ihren geschäftlichen Anforderungen anpassen.   
+**Detail**: Verwenden Sie [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md), das die aktuellen Risiken im eigenen Dashboard markiert und tägliche Zusammenfassungen per E-Mail sendet. Zum Schutz der Identitäten Ihrer Organisation können Sie risikobasierte Richtlinien konfigurieren, die automatisch auf erkannte Probleme reagieren, wenn eine angegebene Risikostufe erreicht ist.
 
 Für Organisationen, die ihre Identitätssysteme nicht aktiv überwachen, besteht das Risiko, dass Anmeldeinformationen kompromittiert werden. Ohne das Wissen, dass diese Anmeldeinformationen für verdächtige Aktivitäten genutzt werden, können Organisationen dieser Art von Bedrohung nicht begegnen.
-Weitere Informationen zu Azure Identity Protection finden Sie im Artikel [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md).
+
+## <a name="next-step"></a>Nächster Schritt
+
+Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](security-best-practices-and-patterns.md).

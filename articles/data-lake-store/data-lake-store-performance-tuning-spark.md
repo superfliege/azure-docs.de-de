@@ -1,6 +1,6 @@
 ---
-title: Leitfaden für die Optimierung der Leistung von Azure Data Lake Store für Spark | Microsoft-Dokumentation
-description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Store für Spark
+title: Leitlinien für die Optimierung der Leistung von Azure Data Lake Storage Gen1 Spark | Microsoft Docs
+description: Leitlinien für die Optimierung der Leistung von Azure Data Lake Storage Gen1 Spark
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: a807bea13063d2a0b3c1c71ddb6c98aa2d2568d3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d280ef50d91f2e9b5157de5ec918e496f9887681
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34197068"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127668"
 ---
-# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>Anleitung für die Leistungsoptimierung für Spark in HDInsight und Azure Data Lake Store
+# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Anleitung für die Leistungsoptimierung für Spark in HDInsight und Azure Data Lake Storage Gen1 Spark
 
 Beim Optimieren der Leistung in Spark müssen Sie die Anzahl von Apps berücksichtigen, die in Ihrem Cluster ausgeführt werden sollen.  Standardmäßig können Sie bis zu 4 Apps gleichzeitig in einem HDI-Cluster ausführen (Hinweis: Die Standardeinstellung wird in Zukunft geändert).  Wenn Sie weniger Apps verwenden möchten, setzen Sie die Standardeinstellungen außer Kraft, und verwenden Sie einen größeren Teil des Clusters für diese Apps.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Ein Azure Data Lake Store-Konto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit Azure Data Lake Store](data-lake-store-get-started-portal.md)
-* **Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake-Speicherkonto. Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
-* **Ausführen eines Spark-Clusters in Azure Data Lake Store**.  Weitere Informationen finden Sie unter [Verwenden des HDInsight Spark-Clusters, um Daten in Data Lake Store zu analysieren](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store).
-* **Leitfaden für die Optimierung der Leistung von Azure Data Lake Store**.  Allgemeine Leistungskonzepte finden Sie unter [Anleitung für die Leistungsoptimierung von Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance). 
+* **Ein Azure Data Lake Storage Gen1-Konto**. Eine Anleitung zum Erstellen eines Kontos finden Sie unter [Erste Schritte mit Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
+* **Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake Storage Gen1-Konto. Weitere Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
+* **Ausführen eines Spark-Clusters für Azure Data Lake Storage Gen1**.  Weitere Informationen finden Sie unter [Verwenden des HDInsight Spark-Clusters, um Daten in Data Lake Storage Gen1 zu analysieren](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store).
+* **Richtlinien für die Leistungsoptimierung von Data Lake Storage Gen1**.  Allgemeine Leistungskonzepte finden Sie unter [Anleitung für die Leistungsoptimierung von Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance). 
 
 ## <a name="parameters"></a>Parameter
 
-Hier finden Sie die wichtigsten Einstellungen, die optimiert werden können, um die Leistung von Azure Data Lake Store beim Ausführen von Spark-Aufträgen verbessern:
+Hier finden Sie die wichtigsten Einstellungen, die optimiert werden können, um die Leistung von Azure Data Lake Storage Gen1 beim Ausführen von Spark-Aufträgen zu verbessern:
 
 * **Num-executors**: Die Anzahl von gleichzeitigen Tasks, die ausgeführt werden können
 
@@ -51,7 +51,7 @@ Standardmäßig sind bei der Ausführung von Spark in HDInsight für jeden physi
 
 ## <a name="guidance"></a>Anleitungen
 
-Beim Ausführen von Spark-Analyseworkloads zum Arbeiten mit Daten in Data Lake Store empfiehlt sich die Verwendung der neuesten HDInsight-Version, um die beste Leistung mit Data Lake Store zu erzielen. Wenn Ihr Auftrag E/A-intensiver ist, können bestimmte Parameter konfiguriert werden, um die Leistung zu verbessern.  Azure Data Lake Store ist eine hochgradig skalierbare Speicherplattform, die einen hohen Durchsatz verarbeiten kann.  Wenn ein Auftrag hauptsächlich aus Lese- oder Schreibvorgängen besteht, kann die Leistung durch Erhöhen der Parallelität für die Eingabe in und Ausgabe aus Azure Data Lake Store gesteigert werden.
+Beim Ausführen von Spark-Analyseworkloads zum Arbeiten mit Daten in Data Lake Storage Gen1 empfiehlt sich die Verwendung der neuesten HDInsight-Version, um die beste Leistung mit Data Lake Storage Gen1 zu erzielen. Wenn Ihr Auftrag E/A-intensiver ist, können bestimmte Parameter konfiguriert werden, um die Leistung zu verbessern.  Data Lake Storage Gen1 ist eine hochgradig skalierbare Speicherplattform, die einen hohen Durchsatz verarbeiten kann.  Wenn ein Auftrag hauptsächlich aus Lese- oder Schreibvorgängen besteht, kann die Leistung durch Erhöhen der Parallelität für die Eingabe in und Ausgabe aus Data Lake Storage Gen1 gesteigert werden.
 
 Es gibt einige allgemeine Möglichkeiten, die Parallelität für E/A-intensive Aufträge zu erhöhen.
 
@@ -65,7 +65,7 @@ Es gibt einige allgemeine Möglichkeiten, die Parallelität für E/A-intensive A
 Durch Erhöhen der Anzahl von Executorkernen steigt die Parallelität, sodass Sie mit verschiedenen Executorkernen experimentieren können.  Bei Aufträgen mit komplexeren Vorgängen sollten Sie die Anzahl von Kernen pro Executor reduzieren.  Wenn der Wert für „executor-cores“ höher als 4 ist, wird die Garbage Collection möglicherweise ineffizient und senkt die Leistung.
 
 **Schritt 4: Ermitteln der YARN-Arbeitsspeichermenge im Cluster**: Diese Informationen sind in Ambari verfügbar.  Navigieren Sie zu YARN, und zeigen Sie die Registerkarte für die Konfiguration an.  Die Größe des YARN-Arbeitsspeichers wird in diesem Fenster angezeigt.  
-Hinweis: In diesem Fenster wird auch die standardmäßige Größe der YARN-Container angezeigt.  Die YARN-Containergröße entspricht dem Parameter für die Menge des Arbeitsspeichers pro Executor.
+Beachten Sie, dass auch die Größe des YARN-Standardcontainers in diesem Fenster angezeigt wird.  Die YARN-Containergröße entspricht dem Parameter für die Menge des Arbeitsspeichers pro Executor.
 
     Total YARN memory = nodes * YARN memory per node
 **Schritt 5: Berechnen von „num-executors“**

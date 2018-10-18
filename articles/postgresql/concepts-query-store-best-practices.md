@@ -7,19 +7,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: c449aaff9741250cfcfaaa4ee490aafc857c4369
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 54a86a7ea1852efba0776451291820f4174a1f1f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395303"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377580"
 ---
 # <a name="best-practices-for-query-store"></a>Bewährte Methoden für den Abfragespeicher
 
 **Gilt für:** Azure Database for PostgreSQL 9.6 und 10
 
 > [!IMPORTANT]
-> Das Abfragespeicherfeature befindet sich in der Public Preview in einer begrenzte Anzahl von Regionen.
+> Das Abfragespeicherfeature befindet sich in der Phase der öffentlichen Vorschau.
 
 
 Dieser Artikel beschreibt bewährte Methoden für die Verwendung des Abfragespeichers in Azure Database for PostgreSQL.

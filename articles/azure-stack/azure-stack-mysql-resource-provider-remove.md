@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: d3a615e3b92a62709a787d0463dfa3148f14d07e
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: cd0195796189158650c9c2655062950b71130ad7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088364"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578479"
 ---
 # <a name="remove-the-mysql-resource-provider"></a>Entfernen des MySQL-Ressourcenanbieters
 
@@ -53,6 +53,7 @@ Der Administrator ist für die folgenden Bereinigungsaufgaben verantwortlich:
 5. Führen Sie das Skript „DeployMySqlProvider.ps1“ mit den folgenden Parametern aus:
     - **Deinstallieren**. Entfernt den Ressourcenanbieter und alle zugeordneten Ressourcen.
     - **PrivilegedEndpoint**. Die IP-Adresse oder der DNS-Name des privilegierten Endpunkts.
+    - **AzureEnvironment**. Die Azure-Umgebung, die für die Bereitstellung von Azure Stack verwendet wird. Nur für Azure AD-Bereitstellungen erforderlich.
     - **CloudAdminCredential**. Die Anmeldeinformationen für den Cloudadministrator, die für den Zugriff auf den privilegierten Endpunkt erforderlich sind.
     - **DirectoryTenantID**
     - **AzCredential**. Die Anmeldeinformationen für das Azure Stack-Dienstadministratorkonto. Verwenden Sie die gleichen Anmeldeinformationen wie bei der Bereitstellung von Azure Stack.

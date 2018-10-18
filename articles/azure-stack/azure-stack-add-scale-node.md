@@ -3,7 +3,7 @@ title: Hinzufügen von Knoten zu Skalierungseinheiten in Azure Stack | Microsoft
 description: Fügen Sie Knoten zu Skalierungseinheiten in Azure Stack hinzu.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
-ms.author: brenduns
+ms.date: 09/17/2018
+ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 02602243bcb4e426ebf4984e387da8e8c148232e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 3ce74cdb610f2902133459b913f53bb7809cb4b7
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41946564"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982996"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Hinzufügen zusätzlicher Knoten zu Skalierungseinheiten in Azure Stack
 
@@ -64,7 +64,7 @@ Zum Hinzufügen neuer Knoten können Sie das Verwaltungsportal oder PowerShell v
 ### <a name="use-the-admin-portal"></a>Verwenden des Verwaltungsportals
 
 1. Melden Sie sich beim Azure Stack-Administratorportal als Azure Stack-Operator an.
-2. Navigieren Sie zu **Neu** > **Kapazität** > **Scale Unit Node** (Skalierungseinheitknoten).
+2. Navigieren Sie zu **+Ressource erstellen** > **Kapazität** > **Skalierungseinheitknoten**.
    ![Scale Unit Node](media/azure-stack-add-scale-node/select-node1.png) (Skalierungseinheitknoten)
 3. Wählen Sie im Bereich **Knoten hinzufügen** die *Region* und dann die *Skalierungseinheit* aus, der der Knoten hinzugefügt werden soll. Geben Sie auch die *BMC-IP-ADRESSE* für den hinzugefügten Skalierungseinheitknoten an. Sie können immer nur jeweils einen Knoten hinzufügen.
    ![Hinzufügen von Knotendetails](media/azure-stack-add-scale-node/select-node2.png)
@@ -142,4 +142,4 @@ Die folgenden Probleme treten häufig beim Hinzufügen eines Knotens auf.
 
 
 ## <a name="next-steps"></a>Nächste Schritte 
-Lesen Sie [Knotenaktionen](azure-stack-node-actions.md). 
+[Hinzufügen öffentlicher IP-Adressen](azure-stack-add-ips.md) 
