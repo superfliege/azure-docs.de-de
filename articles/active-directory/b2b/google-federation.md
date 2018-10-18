@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 4ffe6cf3f1da4c149d1cb39856d02fc40acd20cf
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 396fb947a95ebc634ab0dea24d20f35126bc006e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984791"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389444"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
@@ -84,7 +84,7 @@ Nun legen Sie die Google-Client-ID und den geheimen Clientschlüssel entweder du
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Verwenden Sie die Client-ID und den geheimen Clientschlüssel der App, die Sie in „Schritt 1: Konfigurieren eines Google-Entwicklerprojekts“ erstellt haben. Weitere Informationen finden Sie im Artikel zu [New-AzureADMSIdentityProvider](https://docs.microsoft.com/en-us/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview). 
+   > Verwenden Sie die Client-ID und den geheimen Clientschlüssel der App, die Sie in „Schritt 1: Konfigurieren eines Google-Entwicklerprojekts“ erstellt haben. Weitere Informationen finden Sie im Artikel zu [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview). 
  
 ## <a name="how-do-i-remove-google-federation"></a>Wie entferne ich einen Google Verbund?
 Sie können Ihre Google-Verbundeinrichtung löschen. Wenn Sie dies tun, können Google-Gastbenutzer, die bereits seine Einladung eingelöst haben, sich nicht mehr anmelden. Sie können ihnen aber erneut Zugriff auf Ihre Ressourcen erteilen, indem Sie sie aus dem Verzeichnis löschen und erneut einladen. 
@@ -108,4 +108,4 @@ Sie können Ihre Google-Verbundeinrichtung löschen. Wenn Sie dies tun, können 
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 
    > [!NOTE]
-   > Weitere Informationen finden Sie unter [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/en-us/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > Weitere Informationen finden Sie unter [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 

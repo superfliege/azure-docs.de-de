@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 01548cf2de8db8f4dc9984598a5e5544bf97fd49
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 582ace641cadbc7ad3a622def07f70ed51ccac53
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432648"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389801"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Wählen der Kapazität für Ihre QnA Maker-Bereitstellung
 
@@ -27,9 +27,9 @@ Der QnA Maker-Dienst weist Abhängigkeiten von drei Azure-Ressourcen auf:
 Bevor Sie Ihren QnA Maker-Dienst erstellen, sollten Sie sich entscheiden, welcher Tarif der oben aufgeführten Dienste für Ihre Zwecke geeignet ist. 
 
 Es gibt in der Regel drei Parameter, die Sie berücksichtigen müssen:
-1. **Den Durchsatz, den Sie vom Dienst benötigen**: Wählen Sie den passenden [App-Plan](https://azure.microsoft.com/en-in/pricing/details/app-service/plans/) für Ihren App Service auf der Grundlage Ihrer Anforderungen aus. Sie können die App [zentral hochskalieren](https://docs.microsoft.com/azure/app-service/web-sites-scale) oder zentral herunterskalieren. Dies sollte auch Einfluss auf Ihre Wahl der Azure Search SKU haben; weitere Details dazu finden Sie [hier](https://docs.microsoft.com/azure/search/search-sku-tier).
+1. **Den Durchsatz, den Sie vom Dienst benötigen**: Wählen Sie den passenden [App-Plan](https://azure.microsoft.com/pricing/details/app-service/plans/) für Ihren App Service auf der Grundlage Ihrer Anforderungen aus. Sie können die App [zentral hochskalieren](https://docs.microsoft.com/azure/app-service/web-sites-scale) oder zentral herunterskalieren. Dies sollte auch Einfluss auf Ihre Wahl der Azure Search SKU haben; weitere Details dazu finden Sie [hier](https://docs.microsoft.com/azure/search/search-sku-tier).
 
-2. **Größe und Anzahl der Wissensdatenbanken**: Wählen Sie die für Ihr Szenario passende [Azure Search-SKU](https://azure.microsoft.com/en-in/pricing/details/search/) aus. Sie können N-1 Wissensdatenbanken in einem bestimmten Tarif veröffentlichen, wobei N die Anzahl der im Tarif maximal zulässigen Indizes ist. Überprüfen Sie außerdem die maximale Größe und Anzahl der in den einzelnen Tarifen zulässigen Dokumente.
+2. **Größe und Anzahl der Wissensdatenbanken**: Wählen Sie die für Ihr Szenario passende [Azure Search-SKU](https://azure.microsoft.com/pricing/details/search/) aus. Sie können N-1 Wissensdatenbanken in einem bestimmten Tarif veröffentlichen, wobei N die Anzahl der im Tarif maximal zulässigen Indizes ist. Überprüfen Sie außerdem die maximale Größe und Anzahl der in den einzelnen Tarifen zulässigen Dokumente.
 
 3. **Anzahl der Dokumente aus Quellen**: Die kostenlose SKU des QnA Maker-Verwaltungsdiensts begrenzt die Anzahl der Dokumente, die über das Portal und die APIs verwaltet werden können, auf 3 (bei einer Größe von jeweils 1 MB). Die Standard-SKU ist in der Anzahl der Dokumente, die Sie verwalten können, nicht begrenzt. Ausführlichere Informationen finden Sie [hier](https://aka.ms/qnamaker-pricing).
 

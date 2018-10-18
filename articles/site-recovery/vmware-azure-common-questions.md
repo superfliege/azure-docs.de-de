@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: fe20cae4c316462e3af3f0a5e7e6052f6ba5719d
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 487e0c763ca4b247f1818b2beaf3282734fc4e27
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344422"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388441"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -22,7 +22,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zum Replizieren l
 
 ## <a name="general"></a>Allgemein
 ### <a name="how-is-site-recovery-priced"></a>Wie werden Site Recovery-Preise kalkuliert?
-Nähere Informationen finden Sie unter [Site Recovery – Preise](https://azure.microsoft.com/en-in/pricing/details/site-recovery/).
+Nähere Informationen finden Sie unter [Site Recovery – Preise](https://azure.microsoft.com/pricing/details/site-recovery/).
 
 ### <a name="how-do-i-pay-for-azure-vms"></a>Wie zahle ich für Azure-VMs?
 Während der Replikation werden Daten zu Azure-Speicher repliziert, und Sie bezahlen keine VM-Änderungen. Wenn Sie einen Failover zu Azure ausführen, erstellt Site Recovery automatisch Azure-IaaS-VMs. Danach werden Ihnen die Computeressourcen in Rechnung gestellt, die Sie in Azure nutzen.
@@ -41,7 +41,7 @@ Sie benötigen ein Azure-Abonnement, einen Recovery Services-Tresor, ein Speiche
 Sie benötigen ein LRS- oder GRS-Speicherkonto. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. Storage Premium wird unterstützt.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Benötigt mein Azure-Konto Berechtigungen zum Erstellen von virtuellen Computern?
-Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replikationsberechtigungen. Wenn nicht, benötigen Sie Berechtigungen zum Erstellen einer Azure-VM in der Ressourcengruppe und dem virtuellen Netzwerk, die Sie beim Konfigurieren von Site Reocvery angeben, und Schreibberechtigungen für das ausgewählte Speicherkonto. [Weitere Informationen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)
+Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replikationsberechtigungen. Wenn nicht, benötigen Sie Berechtigungen zum Erstellen einer Azure-VM in der Ressourcengruppe und dem virtuellen Netzwerk, die Sie beim Konfigurieren von Site Reocvery angeben, und Schreibberechtigungen für das ausgewählte Speicherkonto. [Weitere Informationen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 
 
@@ -157,7 +157,7 @@ Site Recovery benötigt Zugriff auf VMware-Server, um folgende Aufgaben durchzuf
 
 ### <a name="what-access-does-site-recovery-need-to-vmware-vms"></a>Welchen Zugriff auf VMware-VMs benötigt Site Recovery?
 
-- Zum Replizieren muss auf einer VMware-VM der Site Recovery Mobility Service installiert sein und ausgeführt werden. Sie können das Tool manuell bereitstellen oder angeben, dass Site Recovery eine Pushinstallation des Diensts ausführen soll, wenn Sie die Replikation für einen virtuellen Computer aktivieren. Für die Pushinstallation benötigt Site Recovery ein Konto, das zum Installieren der Dienstkomponente verwendet werden kann. [Weitere Informationen](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation) Der (standardmäßig auf dem Konfigurationsserver ausgeführte) Prozessserver führt diese Installation durch. [Erfahren Sie mehr](vmware-azure-install-mobility-service.md) über die Mobility Service-Installation.
+- Zum Replizieren muss auf einer VMware-VM der Site Recovery Mobility Service installiert sein und ausgeführt werden. Sie können das Tool manuell bereitstellen oder angeben, dass Site Recovery eine Pushinstallation des Diensts ausführen soll, wenn Sie die Replikation für einen virtuellen Computer aktivieren. Für die Pushinstallation benötigt Site Recovery ein Konto, das zum Installieren der Dienstkomponente verwendet werden kann. [Weitere Informationen](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation). Der (standardmäßig auf dem Konfigurationsserver ausgeführte) Prozessserver führt diese Installation durch. [Erfahren Sie mehr](vmware-azure-install-mobility-service.md) über die Mobility Service-Installation.
 - Während der Replikation kommunizieren virtuelle Computer wie folgt mit Site Recovery:
     - VMs kommunizieren mit dem Konfigurationsserver über Port HTTPS 443 für die Replikationsverwaltung.
     - VMs senden Replikationsdaten über Port HTTPS 9443 an den Prozessserver (Konfiguration möglich).
@@ -190,7 +190,7 @@ Azure ist auf Resilienz ausgelegt. Site Recovery ist für ein Failover zu einem 
 Ein [Failover](site-recovery-failover.md) erfolgt nicht automatisch. Sie initiieren Failover mit einem Mausklick im Portal, oder Sie können [PowerShell](/powershell/module/azurerm.siterecovery) verwenden, um ein Failover auslösen.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Kann ich ein Failback zu einem anderen Speicherort ausführen?
-Ja, wenn Sie ein Failover zu Azure ausgeführt haben, können Sie ein Failback zu einem anderen Speicherort ausführen, wenn der ursprüngliche nicht verfügbar ist. [Weitere Informationen](concepts-types-of-failback.md#alternate-location-recovery-alr)
+Ja, wenn Sie ein Failover zu Azure ausgeführt haben, können Sie ein Failback zu einem anderen Speicherort ausführen, wenn der ursprüngliche nicht verfügbar ist. [Weitere Informationen](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>Warum benötige ich ein VPN oder ExpressRoute für ein Failback?
 
@@ -205,7 +205,7 @@ Ja. Sie können Site Recovery-Workflows mithilfe von REST-API, PowerShell oder A
 
 ## <a name="performance-and-capacity"></a>Leistung und Kapazität
 ### <a name="can-i-throttle-replication-bandwidth"></a>Kann ich die Replikationsbandbreite drosseln?
-Ja. [Weitere Informationen](site-recovery-plan-capacity-vmware.md)
+Ja. [Weitere Informationen](site-recovery-plan-capacity-vmware.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

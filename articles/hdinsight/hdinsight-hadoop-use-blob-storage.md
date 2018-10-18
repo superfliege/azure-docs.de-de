@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 91be34468dae0fb1c24080fbe53c3c8056e8c1a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3f045000791ff2e760cdd69aa524d5222fd76d06
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967847"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389478"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Verwenden von Azure Storage mit Azure HDInsight-Clustern
 
@@ -60,7 +60,7 @@ Hier sind einige Aspekte beim Verwenden eines Azure Storage-Kontos mit HDInsight
 * **Öffentliche Container oder öffentliche Blobs in Speicherkonten, die NICHT mit einem Cluster verbunden sind:** Sie haben schreibgeschützten Zugriff auf die Blobs in den Containern.
   
   > [!NOTE]
-  > Öffentliche Container erlauben das Abrufen einer Liste aller im Container verfügbaren Blobs und der Container-Metadaten. Auf öffentliche Blobs haben Sie nur Zugriff, wenn Sie die exakte URL kennen. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-manage-access-to-resources">Verwalten des Zugriffs auf Container und Blobs</a>.
+  > Öffentliche Container erlauben das Abrufen einer Liste aller im Container verfügbaren Blobs und der Container-Metadaten. Auf öffentliche Blobs haben Sie nur Zugriff, wenn Sie die exakte URL kennen. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources">Verwalten des Zugriffs auf Container und Blobs</a>.
   > 
   > 
 * **Private Container in Speicherkonten, die NICHT mit einem Cluster verbunden sind** : Sie können nicht auf die Blobs in den Containern zugreifen, es sei denn, Sie definieren beim Senden der WebHCat-Aufträge das Speicherkonto. Dies wird weiter unten im Artikel erläutert.
@@ -133,7 +133,7 @@ Nach dem [Installieren und Konfigurieren von Azure PowerShell][powershell-instal
     $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
-### <a name="use-azure-classic-cli"></a>Verwenden der klassischen Azure-Befehlszeilenschnittstelle
+### <a name="use-azure-classic-cli"></a>Verwenden der klassischen Azure CLI
 
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
@@ -264,7 +264,7 @@ $clusterName = "<HDInsightClusterName>"
 
     Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasb://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
-### <a name="use-azure-classic-cli"></a>Verwenden der klassischen Azure-Befehlszeilenschnittstelle
+### <a name="use-azure-classic-cli"></a>Verwenden der klassischen Azure CLI
 Verwenden Sie den folgenden Befehl, um die Blob-bezogenen Befehle aufzulisten:
 
     azure storage blob

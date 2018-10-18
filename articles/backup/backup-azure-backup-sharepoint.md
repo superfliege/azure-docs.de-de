@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/29/2016
 ms.author: adigan
-ms.openlocfilehash: 728850fe70fb3f9e64b0fa25b4ceebb1a1b51cd4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7331b1c99425500b58d186cedab1e83dd20e3684
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606652"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389818"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Sichern einer SharePoint-Farm in Azure 
 Die Vorgehensweise zum Sichern einer SharePoint-Farm mithilfe von System Center Data Protection Manager (DPM) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit DPM können Sie lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.
@@ -123,7 +123,7 @@ Wenn Sie DPM und die SharePoint-Farm wie oben beschrieben konfiguriert haben, ka
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
     
     > [!NOTE]
-    > DPM bietet maximal zwei tägliche Sicherungen in Azure zu unterschiedlichen Zeitpunkten. Azure Backup kann auch mithilfe der [Azure Backup-Netzwerk-Bandbreiteneinschränkung](https://azure.microsoft.com/en-in/documentation/articles/backup-configure-vault/#enable-network-throttling)steuern, welche WAN-Bandbreite innerhalb und außerhalb von Spitzenzeiten für Sicherungen verwendet werden kann.
+    > DPM bietet maximal zwei tägliche Sicherungen in Azure zu unterschiedlichen Zeitpunkten. Azure Backup kann auch mithilfe der [Azure Backup-Netzwerk-Bandbreiteneinschränkung](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)steuern, welche WAN-Bandbreite innerhalb und außerhalb von Spitzenzeiten für Sicherungen verwendet werden kann.
     > 
     > 
 11. Wählen Sie abhängig vom ausgewählten Sicherungszeitplan auf der Seite **Online-Aufbewahrungsrichtlinie angeben** die gewünschte Aufbewahrungsrichtlinie für die täglichen, wöchentlichen, monatlichen und jährlichen Sicherungspunkte aus.

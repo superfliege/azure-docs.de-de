@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 0183261a561e139105a93421af06f581b67fb926
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393589"
 documentType: LandingData
 title: Dokumentation für Azure Stack-Bediener
 metadata:
@@ -12,14 +18,8 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/13/2018
+  ms.date: 10/16/2018
   ms.author: jeffgilb
-  ms.openlocfilehash: 9da39d733c51c637fdf13d1fb9c5649276ea8a23
-  ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 04/23/2018
-  ms.locfileid: "31786535"
 abstract:
   description: Microsoft Azure Stack ist eine Hybrid Cloud-Plattform, mit der Sie Azure-Dienste aus Ihrem Datencenter bereitstellen können. In unseren Schnellstarts und Tutorials erfahren Sie, wie Sie die Infrastruktur für integrierte Azure Stack-Systeme verwalten und Dienste anbieten.<br/><br/>Wenn Sie ein Azure Stack-Benutzer sind, der Dienste verwendet oder Apps für Azure Stack erstellt, helfen Ihnen die Informationen in unserer <a href="/azure/azure-stack/user">Dokumentation für Benutzer</a> weiter.<br/><br/>Wenn Sie als Azure Stack-Bediener das Azure Stack Development Kit (ASDK) verwenden möchten, können Sie eine kostenlose Azure Stack-Bereitstellung mit einem Knoten herunterladen. Weitere Informationen finden Sie in der <a href="/azure/azure-stack/asdk">ASDK-Dokumentation</a>.
 sections:
@@ -43,6 +43,8 @@ sections:
     items:
     - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Anbieten von virtuellen Computern in Azure Stack</a>
     - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">Anbieten von SQL-Datenbanken in Azure Stack</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql">Erstellen von hoch verfügbaren SQL-Datenbanken</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-mysql">Erstellen von hoch verfügbaren MySQL-Datenbanken</a>
     - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Anbieten von Web-Apps in Azure Stack</a>
 - title: Kostenloses PluralSight-Videotraining
   items:

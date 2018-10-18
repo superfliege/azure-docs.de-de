@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: e2037ff2f1b95a5ce5de69d76d66ec81cc9badb4
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 100ea0147bf56242ba15bee39e4bda1b65af27da
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064202"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Tutorial: Azure Active Directory-Integration in lokales SharePoint
 
@@ -144,7 +144,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     Melden Sie sich in SharePoint Server 2016 an, und öffnen Sie die SharePoint 2016-Verwaltungsshell. Geben Sie die Werte für „$realm“ (Bezeichnerwert aus dem Abschnitt „Domäne und URLs für lokale SharePoint-Instanz“ im Azure-Portal), „$wsfedurl“ (Dienst-URL für einmaliges Anmelden) und „$filepath“ (Dateipfad, in den Sie die Zertifikatdatei heruntergeladen haben) aus dem Azure-Portal ein, und führen Sie die folgenden Befehle aus, um einen neuen vertrauenswürdigen Identitätsanbieter zu konfigurieren.
 
     > [!TIP]
-    > Unter [SharePoint PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/overview?view=sharepoint-ps) finden Sie eine Übersicht über PowerShell und die Funktionen. 
+    > Unter [SharePoint PowerShell](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps) finden Sie eine Übersicht über PowerShell und die Funktionen. 
 
     ```
     $realm = "<Identifier value from the SharePoint on-premises Domain and URLs section in the Azure portal>"
@@ -310,7 +310,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Verwenden von Azure AD für die SharePoint Server-Authentifizierung](https://docs.microsoft.com/en-us/office365/enterprise/using-azure-ad-for-sharepoint-server-authentication)
+* [Verwenden von Azure AD für die SharePoint Server-Authentifizierung](https://docs.microsoft.com/office365/enterprise/using-azure-ad-for-sharepoint-server-authentication)
 
 <!--Image references-->
 

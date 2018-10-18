@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: cd0af3bc9489452dfc98efaa3ded768a8ca775ab
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 71d96d7e88404c1f8b617370ef5cc841aad882f8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079479"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390039"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Site Recovery
 Dieser Artikel enthält häufig gestellte Fragen zur Azure Site Recovery. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -70,7 +70,7 @@ Zum Schützen von VMware-VMs benötigen Sie einen vSphere-Hypervisor und virtuel
 Ja. Wenn Sie Site Recovery zum Orchestrieren von Replikation und Failover in Zweigstellen verwenden, erhalten Sie eine einheitliche Orchestrierung und Anzeige der Workloads aller Zweigstellen an einer zentralen Stelle. Sie können problemlos über Ihren Hauptsitz für alle Zweigstellen Failover ausführen und die Notfallwiederherstellung verwalten, ohne die Zweigstellen zu besuchen.
 
 ## <a name="pricing"></a>Preise
-Bei Fragen in Zusammenhang mit Preisen lesen Sie die FAQs unter [Site Recovery – Preise ](https://azure.microsoft.com/en-in/pricing/details/site-recovery/).
+Bei Fragen in Zusammenhang mit Preisen lesen Sie die FAQs unter [Site Recovery – Preise ](https://azure.microsoft.com/pricing/details/site-recovery/).
 
 ## <a name="security"></a>Sicherheit
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Werden Replikationsdaten an den Site Recovery-Dienst gesendet?

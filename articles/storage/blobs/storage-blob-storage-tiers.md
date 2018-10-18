@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 6acea70ca929310fe37f36fe98698e6adb76101b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 922e7ed5d55f50b2069dad71ead73d9ef4475ed0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997827"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389903"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Speicherebenen „Premium“ (Preview), „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“
 
@@ -47,7 +47,7 @@ Jedes dieser Datenzugriffsszenarien profitiert von einer differenzierten Speiche
 
 ## <a name="storage-accounts-that-support-tiering"></a>Speicherkonten mit Tiering-Unterstützung
 
-Sie können das Tiering für „Heiß“, „Kalt“ und „Archiv“ für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (General Purpose v2, Allgemein, Version 2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Kunden können ihre vorhandenen GPv1- oder Blobspeicherkonten aber leicht in GPv2-Konten konvertieren, indem sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Für GPv2 gilt eine neue Preisstruktur für Blobs, Dateien und Warteschlangen, und außerdem besteht Zugriff auf viele andere neue Speicherfeatures. Zudem werden in Zukunft einige neue Features und Preisreduzierungen nur für GPv2-Konten angeboten. Aus diesem Grund ist es für Kunden ratsam, die Nutzung von GPv2-Konten zu evaluieren. Sie sollten die Konten aber erst verwenden, nachdem sie die Preise für alle Dienste überprüft haben, da einige Workloads unter GPv2 teurer als unter GPv1 sein können. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
+Sie können das Tiering für „Heiß“, „Kalt“ und „Archiv“ für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (General Purpose v2, Allgemein, Version 2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Kunden können ihre vorhandenen GPv1- oder Blobspeicherkonten aber leicht in GPv2-Konten konvertieren, indem sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Für GPv2 gilt eine neue Preisstruktur für Blobs, Dateien und Warteschlangen, und außerdem besteht Zugriff auf viele andere neue Speicherfeatures. Zudem werden in Zukunft einige neue Features und Preisreduzierungen nur für GPv2-Konten angeboten. Aus diesem Grund ist es für Kunden ratsam, die Nutzung von GPv2-Konten zu evaluieren. Sie sollten die Konten aber erst verwenden, nachdem sie die Preise für alle Dienste überprüft haben, da einige Workloads unter GPv2 teurer als unter GPv1 sein können. Weitere Informationen finden Sie unter [Azure Storage-Konto – Übersicht](../common/storage-account-overview.md).
 
 Bei Blobspeicher- und GPv2-Konten wird das Attribut **Access Tier** (Zugriffsebene) auf Kontoebene verfügbar gemacht. Hiermit können Sie die Standardspeicherebene für alle Blobs des Speicherkontos, für die auf Objektebene keine Ebene festgelegt ist, als „Heiß“ oder „Kalt“ angeben. Für Objekte, für die die Ebene auf Objektebene festgelegt ist, gilt die Kontoebene nicht. Die Archivebene kann nur auf Objektebene angewendet werden. Sie können jederzeit zwischen diesen Speicherebenen wechseln.
 
@@ -113,7 +113,7 @@ Ein Konto kann Blobs aus allen drei Speicherebenen enthalten. Blobs, denen keine
 Auf der Premium-Zugriffsebene gespeicherte Daten können weder mithilfe von [Set Blob Tier](/rest/api/storageservices/set-blob-tier) noch unter Verwendung der Azure Blob Storage-Lebenszyklusverwaltung auf die Ebene „Heiß“, „Kalt“ oder „Archiv“ verschoben werden. Um Daten zu verschieben, müssen Sie Blobs synchron vom Premium-Zugriff auf die Ebene „Heiß“ kopieren und hierzu die [Put Block From URL-API](/rest/api/storageservices/put-block-from-url) oder eine AzCopy-Version, die diese API unterstützt, verwenden. Die *Put Block From URL*-API kopiert Daten synchron auf den Server, was heißt, dass der Aufruf erst abgeschlossen wird, nachdem alle Daten vom ursprünglichen Serverspeicherort an den Zielspeicherort verschoben wurden.
 
 ### <a name="blob-lifecycle-management"></a>Lebenszyklusverwaltung für Blobs
-Die Blob Storage-Lebenszyklusverwaltung (Preview) bietet eine umfassende, regelbasierte Richtlinie, mit deren Hilfe Sie den Übergang Ihrer Daten in die optimale Zugriffsebene und den Ablauf der Daten am Ende ihres Lebenszyklus umsetzen können. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts).  
+Die Blob Storage-Lebenszyklusverwaltung (Preview) bietet eine umfassende, regelbasierte Richtlinie, mit deren Hilfe Sie den Übergang Ihrer Daten in die optimale Zugriffsebene und den Ablauf der Daten am Ende ihres Lebenszyklus umsetzen können. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).  
 
 ### <a name="blob-level-tiering-billing"></a>Abrechnung für das Blobebenentiering
 
@@ -131,8 +131,8 @@ Die folgende Tabelle enthält eine Gegenüberstellung der Speicherebenen „Hot�
 
 | | **Speicherebene „Hot“** | **Speicherebene „Cool“** | **Speicherebene „Archiv“**
 | ---- | ----- | ----- | ----- |
-| **Availability** | 99,9 % | 99 % | N/V |
-| **Availability** <br> **(RA-GRS-Lesevorgänge)**| 99,99 % | 99,9 % | N/V |
+| **Verfügbarkeit** | 99,9 % | 99 % | N/V |
+| **Verfügbarkeit** <br> **(RA-GRS-Lesevorgänge)**| 99,99 % | 99,9 % | N/V |
 | **Nutzungsgebühren** | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten | Niedrigste Speicherkosten, höchste Zugriffs- und Transaktionskosten |
 | **Mindestobjektgröße** | N/V | N/V | N/V |
 | **Mindestspeicherdauer** | N/V | 30 Tage (nur GPv2) | 180 Tage
@@ -191,7 +191,7 @@ Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf de
 
 Wir empfehlen Ihnen, für das Tiering anstelle von Blobspeicherkonten GPv2-Konten zu nutzen. Für GPv2 werden alle Features von Blobspeicherkonten sowie noch viele weitere Features unterstützt. Die Preise für Blobspeicher und GPv2 sind nahezu identisch, aber einige neue Features und Preisreduzierungen gelten nur für GPv2-Konten. Für GPv1-Konten wird das Tiering nicht unterstützt.
 
-Die Preisstruktur von GPv1 und GPv2 unterscheidet sich, und Kunden sollten dies jeweils sorgfältig evaluieren, bevor sie sich für die Nutzung von GPv2-Konten entscheiden. Sie können ein vorhandenes Blobspeicher- oder GPv1-Konto leicht in ein GPv2-Konto konvertieren, indem Sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
+Die Preisstruktur von GPv1 und GPv2 unterscheidet sich, und Kunden sollten dies jeweils sorgfältig evaluieren, bevor sie sich für die Nutzung von GPv2-Konten entscheiden. Sie können ein vorhandenes Blobspeicher- oder GPv1-Konto leicht in ein GPv2-Konto konvertieren, indem Sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Weitere Informationen finden Sie unter [Azure Storage-Konto – Übersicht](../common/storage-account-overview.md).
 
 **Kann ich Objekte unter demselben Konto auf allen drei Speicherebenen („Hot“, „Cool“ und „Archiv“) speichern?**
 

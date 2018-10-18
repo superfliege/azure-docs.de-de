@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: 637f837ec2421f0bef5131a33c709087b891aa0f
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505110"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388318"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Leitfaden für eine vertrauenswürdige Internetverbindung
 
@@ -223,7 +223,7 @@ Die folgenden Beispielrichtlinien können in TIC-Konformitätsszenarien verwende
 
 ### <a name="network-watcher-traffic-analytics"></a>Traffic Analytics von Network Watcher
 
-[Traffic Analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/) von Network Watcher nutzt Datenflussprotokolle und andere Protokolle, um einen allgemeinen Überblick über den Netzwerkdatenverkehr zu erhalten. Diese Daten sind nützlich, um die TIC-Konformität zu überwachen und mögliche Problemstellen zu identifizieren. Sie können mit dem Übersichtsdashboard schnell die virtuellen Computer überprüfen, die mit dem Internet kommunizieren, und erhalten eine entsprechende Liste für das TIC-Routing.
+[Traffic Analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) von Network Watcher nutzt Datenflussprotokolle und andere Protokolle, um einen allgemeinen Überblick über den Netzwerkdatenverkehr zu erhalten. Diese Daten sind nützlich, um die TIC-Konformität zu überwachen und mögliche Problemstellen zu identifizieren. Sie können mit dem Übersichtsdashboard schnell die virtuellen Computer überprüfen, die mit dem Internet kommunizieren, und erhalten eine entsprechende Liste für das TIC-Routing.
 
 ![Datenverkehrsanalyse](media/tic-traffic-analytics-1.png)
 

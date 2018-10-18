@@ -6,14 +6,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: a946ecb31697591a7490c80496c02c5f907c6f36
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 7470dab537a8ab248228b9c445e1124e7ec9c444
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182381"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387802"
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation  
 
@@ -125,7 +125,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 **Number of DR drills in a year** (Anzahl von DR-Drills in einem Jahr): Gibt an, wie oft Sie in einem Jahr DR-Drills durchführen. Die Standardeinstellung ist viermal pro Jahr. Sie können den Zeitraum für bestimmte VMs ändern oder den neuen Wert auf alle VMs anwenden, indem Sie den neuen Wert in der obersten Zeile eingeben und auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken. Die Gesamtkosten für DR-Drills werden basierend auf der Anzahl von DR-Drills in einem Jahr und den einzelnen Dauern der DR-Drills berechnet.  
 
-**Each DR drill duration (Days)** (Dauer einzelner DR-Drills (Tage)): Die Dauer der einzelnen DR-Drills. Standardmäßig ist als Wert hier „7 Tage alle 90 Tage“ angegeben. Dies entspricht dem [Software Assurance-Vorteil für die Notfallwiederherstellung](https://azure.microsoft.com/en-in/pricing/details/site-recovery). Sie können den Zeitraum für bestimmte VMs ändern oder einen neuen Wert auf alle VMs anwenden, indem Sie den neuen Wert in der obersten Zeile eingeben und auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken. Die Gesamtkosten für DR-Drills werden basierend auf der Anzahl von DR-Drills in einem Jahr und der Dauer der einzelnen DR-Drills berechnet.
+**Each DR drill duration (Days)** (Dauer einzelner DR-Drills (Tage)): Die Dauer der einzelnen DR-Drills. Standardmäßig ist als Wert hier „7 Tage alle 90 Tage“ angegeben. Dies entspricht dem [Software Assurance-Vorteil für die Notfallwiederherstellung](https://azure.microsoft.com/pricing/details/site-recovery). Sie können den Zeitraum für bestimmte VMs ändern oder einen neuen Wert auf alle VMs anwenden, indem Sie den neuen Wert in der obersten Zeile eingeben und auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken. Die Gesamtkosten für DR-Drills werden basierend auf der Anzahl von DR-Drills in einem Jahr und der Dauer der einzelnen DR-Drills berechnet.
   
 **OS Type** (Betriebssystemtyp): Dies ist der Betriebssystemtyp der VM. Er kann entweder „Windows“ oder „Linux“ lauten. Wenn als Betriebssystemtyp „Windows“ angegeben ist, kann der Azure-Vorteil bei Hybridnutzung auf die VM angewendet werden. 
 

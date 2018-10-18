@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 77154d596eb9202c4f9d1063ba7f4e1ec4855181
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 33be58ae3ac5fcc8d0b35b240f9f378ccce134cc
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665004"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387683"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure (ab Update 3)
 
@@ -265,7 +265,7 @@ Sie müssen das Cloudgerät löschen, damit alle Gebühren wegfallen. Sie könne
 ## <a name="troubleshoot-internet-connectivity-errors"></a>Behandeln von Internetverbindungsfehlern
 Wenn beim Erstellen eines Cloudgeräts keine Verbindung mit dem Internet besteht, kann der Erstellungsschritt nicht erfolgreich ausgeführt werden. Führen Sie im Azure-Portal die folgenden Schritte aus, um Probleme mit der Internetverbindung zu behandeln:
 
-1. [Erstellen Sie einen virtuellen Windows-Computer im Azure-Portal.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal) Für diesen virtuellen Computer müssen dasselbe Speicherkonto, virtuelle Netzwerk und Subnetz wie für Ihr Cloudgerät verwendet werden. Wenn in Azure ein Windows Server-Host vorhanden ist, für den dasselbe Speicherkonto, virtuelle Netzwerk und Subnetz verwendet werden, können Sie zum Behandeln von Internetverbindungsproblemen auch diesen Host verwenden.
+1. [Erstellen Sie einen virtuellen Windows-Computer im Azure-Portal.](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) Für diesen virtuellen Computer müssen dasselbe Speicherkonto, virtuelle Netzwerk und Subnetz wie für Ihr Cloudgerät verwendet werden. Wenn in Azure ein Windows Server-Host vorhanden ist, für den dasselbe Speicherkonto, virtuelle Netzwerk und Subnetz verwendet werden, können Sie zum Behandeln von Internetverbindungsproblemen auch diesen Host verwenden.
 2. Melden Sie sich remote bei dem virtuellen Computer an, den Sie im vorherigen Schritt erstellt haben.
 3. Öffnen Sie auf dem virtuellen Computer ein Befehlsfenster. (Drücken Sie WINDOWS-TASTE+R, und geben Sie `cmd` ein.)
 4. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus:

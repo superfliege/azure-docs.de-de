@@ -1,28 +1,21 @@
 ---
-title: Für Azure Data Box-Datenträger geltende Einschränkungen | Microsoft-Dokumentation
-description: Beschreibt für das System geltende Einschränkungen und empfohlene Größen für den Microsoft Azure Data Box-Datenträger.
+title: Begrenzungen für Azure Data Box-Datenträger | Microsoft-Dokumentation
+description: Beschreibt Systembegrenzungen und empfohlene Größen für den Microsoft Azure Data Box-Datenträger.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/04/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: b7de39ca8723df2d15da7677b7032c98e84ecb1d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1a4fe30881f06d8af851a67f389a6faafbe3dfef
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960616"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389461"
 ---
-# <a name="azure-data-box-disk-limits-preview"></a>Für Azure Data Box-Datenträger geltende Einschränkungen (Vorschau)
+# <a name="azure-data-box-disk-limits-preview"></a>Begrenzungen für Azure Data Box-Datenträger (Vorschau)
 
 
 Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betreiben Ihrer Microsoft Azure Data Box-Datenträgerlösung. 
@@ -42,7 +35,7 @@ Beim Testen mit Datenträgern, die über USB 3.0 verbunden waren, betrug die Dat
 
 ## <a name="azure-storage-limits"></a>Speichergrenzwerte für Azure
 
-In diesem Abschnitt werden die geltenden Einschränkungen für den Azure Storage-Dienst und die Benennungskonventionen für Azure Files, Azure-Blockblobs und Azure-Seitenblobs beschrieben, sofern für den Data Box-Dienst zutreffend. Machen Sie sich sorgfältig mit den Speichergrenzwerten vertraut, und beachten Sie alle Empfehlungen.
+In diesem Abschnitt werden die Grenzwerte für den Azure Storage-Dienst und die erforderlichen Benennungskonventionen für Azure Files, Azure-Blockblobs und Azure-Seitenblobs beschrieben, sofern mit dem Data Box-Dienst verfügbar. Machen Sie sich sorgfältig mit den Speichergrenzwerten vertraut, und beachten Sie alle Empfehlungen.
 
 Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährte Vorgehensweisen für die Benennung von Freigaben, Containern und Dateien finden Sie hier:
 
@@ -64,7 +57,7 @@ Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährt
 
 ## <a name="azure-storage-account-size-limits"></a>Größenbeschränkungen für das Azure-Speicherkonto
 
-Dies sind die Grenzwerte für die Größe der Daten, die in das Speicherkonto kopiert werden. Stellen Sie sicher, dass die von Ihnen hochgeladenen Daten diesen Grenzwerten entsprechen. Die neuesten Informationen zu diesen Einschränkungen finden Sie unter [Skalierbarkeitsziele für Azure-Blobspeicher](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) und [Skalierbarkeitsziele für Azure Files](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
+Dies sind die Grenzwerte für die Größe der Daten, die in das Speicherkonto kopiert werden. Stellen Sie sicher, dass die von Ihnen hochgeladenen Daten diesen Grenzwerten entsprechen. Die neuesten Informationen zu diesen Einschränkungen finden Sie unter [Skalierbarkeitsziele für Azure-Blobspeicher](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) und [Skalierbarkeitsziele für Azure Files](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
 
 | Größe der in das Azure-Speicherkonto kopierten Daten                      | Standardlimit          |
 |---------------------------------------------------------------------|------------------------|
@@ -78,7 +71,7 @@ Hier sind die Größen der Azure-Objekte, die geschrieben werden können. Stelle
 | Azure-Objekttyp | Standardlimit                                             |
 |-------------------|-----------------------------------------------------------|
 | Blockblob        | ~ 8TB                                                 |
-| Seitenblob         | 1 TB <br> (Jede Datei, die im Seitenblobformat hochgeladen wird, muss einem ganzzahligen Vielfachen von 512 Bytes entsprechen. Andernfalls tritt beim Hochladen ein Fehler auf. <br> VHD- und VHDX-Dateien entsprechen einem ganzzahligen Vielfachen von 512 Bytes.) |
+| Seitenblob         | 1 TB <br> (Jede Datei, die im Seitenblobformat hochgeladen wird, muss einem ganzzahligen Vielfachen von 512Bytes entsprechen, andernfalls tritt beim Hochladen ein Fehler auf. <br> VHD- und VHDX-Dateien entsprechen einem ganzzahligen Vielfachen von 512Bytes.) |
 
 
 ## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Benennungskonventionen für Azure-Blockblobs und -Seitenblobs

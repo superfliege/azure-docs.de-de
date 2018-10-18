@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 9072a25b55bf461ad7dcc8393b98a66d87866d48
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ae7eba9997c4f567eb7b07e23ab42c9ac7740698
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143805"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388108"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitionieren von Service Fabric Reliable Services
 Dieser Artikel enthält eine Einführung in die grundlegenden Konzepte der Partitionierung von Azure Service Fabric Reliable Services. Der in diesem Artikel verwendete Quellcode ist auch unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)verfügbar.
@@ -365,7 +365,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
 Den gesamten Quellcode des Beispiels finden Sie unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services und akteurforkende Unterprozesse
-Service Fabric unterstützt keine Reliable Services und daher auch keine Reliable akteurforkende Unterprozesse. Ein Beispiel für den Grund der fehlenden Unterstützung ist [CodePackageActivationContext](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet), der nicht verwendet werden kann, um einen nicht unterstützten Unterprozess zu registrieren, und Abbruchtoken werden nur an registrierte Prozesse gesendet. Dies führt zu allen möglichen Problemen, z.B. zu Upgradefehlern, wenn Unterprozesse nicht geschlossen werden, nachdem der übergeordnete Prozess ein Abbruchtoken empfangen hat. 
+Service Fabric unterstützt keine Reliable Services und daher auch keine Reliable akteurforkende Unterprozesse. Ein Beispiel für den Grund der fehlenden Unterstützung ist [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet), der nicht verwendet werden kann, um einen nicht unterstützten Unterprozess zu registrieren, und Abbruchtoken werden nur an registrierte Prozesse gesendet. Dies führt zu allen möglichen Problemen, z.B. zu Upgradefehlern, wenn Unterprozesse nicht geschlossen werden, nachdem der übergeordnete Prozess ein Abbruchtoken empfangen hat. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zu den Service Fabric-Konzepten finden Sie hier:

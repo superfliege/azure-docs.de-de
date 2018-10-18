@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 1716ebf1d3490511d7102c8c756c78c0f0c55291
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e03016b80b0a7043a72e55b6c8b68b67b55283b1
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43670064"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388125"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Überlegungen zum Entwurf von Skalierungsgruppen
 In diesem Artikel werden Überlegungen zum Entwurf von VM-Skalierungsgruppen erörtert. Informationen darüber, was Skalierungsgruppen für virtuelle Computer sind, finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md).
@@ -33,8 +33,8 @@ Skalierungsgruppen sind im Allgemeinen hilfreich für das Bereitstellen einer ho
 
 - Nachdem Sie die Konfiguration der Skalierungsgruppe festgelegt haben, können Sie die *Capacity*-Eigenschaft aktualisieren, um mehrere VMs parallel bereitzustellen. Das ist besser, als ein Skript zu schreiben, um die parallele Bereitstellung von vielen einzelnen VMs zu orchestrieren.
 - Sie können [Azure Autoscale dazu verwenden, Skalierungsgruppen automatisch zu skalieren](./virtual-machine-scale-sets-autoscale-overview.md), nicht jedoch einzelne virtuelle Computer.
-- Sie können [ein Reimaging für virtuelle Computer in einer Skalierungsgruppe ](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/reimage) durchführen, [nicht jedoch für einzelne virtuelle Computer](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- Sie können virtuelle Computer in einer Skalierungsgruppe [überbereitstellen](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning), um eine höhere Zuverlässigkeit und kürzere Bereitstellungszeiten zu erreichen. Eine Überprovisionierung einzelner VMs ist nur möglich, wenn Sie benutzerdefinierten Code zum Ausführen dieser Aktion schreiben.
+- Sie können [ein Reimaging für virtuelle Computer in einer Skalierungsgruppe ](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) durchführen, [nicht jedoch für einzelne virtuelle Computer](https://docs.microsoft.com/rest/api/compute/virtualmachines).
+- Sie können virtuelle Computer in einer Skalierungsgruppe [überbereitstellen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning), um eine höhere Zuverlässigkeit und kürzere Bereitstellungszeiten zu erreichen. Eine Überprovisionierung einzelner VMs ist nur möglich, wenn Sie benutzerdefinierten Code zum Ausführen dieser Aktion schreiben.
 - Sie können eine [Upgraderichtlinie](./virtual-machine-scale-sets-upgrade-scale-set.md) festlegen, um Upgrades auf den virtuellen Computern in Ihrer Skalierungsgruppe auf einfache Weise durchzuführen. Bei einzelnen virtuellen Computern müssen Sie die Updates selbst orchestrieren.
 
 ### <a name="vm-specific-features"></a>Spezifische Funktionen von virtuellen Computern

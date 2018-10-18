@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 87bcd23983c1d973f7e90caf806092c909b7b9e4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 103da0c65bcf9b9bd24130082f844b9bd12a9a02
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032545"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389716"
 ---
 # <a name="create-a-qna-maker-service"></a>Erstellen eines QnA Maker-Diensts
 
@@ -41,10 +41,10 @@ Bei diesem Setup werden einige Azure-Ressourcen bereitgestellt. In Kombination v
     * Wählen Sie das **Abonnement** aus, in dem die QnA Maker-Ressource bereitgestellt werden soll.
     * Wählen Sie den **Tarif für Verwaltung** für die QnA Maker-Verwaltungsdienste (Portal und Verwaltungs-APIs) aus. Details zur den Preisen für SKUs finden Sie [hier](https://aka.ms/qnamaker-pricing).
     * Erstellen Sie eine neue **Ressourcengruppe** (empfohlen), oder verwenden Sie eine vorhandene Ressourcengruppe, in der diese QnA Maker-Ressource bereitgestellt werden soll.
-    * Wählen Sie den **Tarif für Suche** des Azure Search-Diensts aus. Wenn die Free-Tarifoption abgeblendet angezeigt wird, bedeutet dies, dass Sie bereits einen kostenlosen Azure Search-Tarif in Ihrem Abonnement bereitgestellt haben. In diesem Fall müssen Sie mit dem Basic Azure Search-Tarif einsteigen. Details zu den Preisen von Azure Search finden Sie [hier](https://azure.microsoft.com/en-us/pricing/details/search/).
+    * Wählen Sie den **Tarif für Suche** des Azure Search-Diensts aus. Wenn die Free-Tarifoption abgeblendet angezeigt wird, bedeutet dies, dass Sie bereits einen kostenlosen Azure Search-Tarif in Ihrem Abonnement bereitgestellt haben. In diesem Fall müssen Sie mit dem Basic Azure Search-Tarif einsteigen. Details zu den Preisen von Azure Search finden Sie [hier](https://azure.microsoft.com/pricing/details/search/).
     * Wählen Sie den **Suchspeicherort** aus, an dem die Azure Search-Daten bereitgestellt werden sollen. Einschränkungen zu den verpflichtenden Speicherorten für Kundendaten ergeben sich durch Ihre Wahl des Speicherorts für Azure Search.
     * Geben Sie Ihrem App Service unter **App-Name** einen Namen.
-    * Standardmäßig wird der App Service nach dem Standardtarif (S1) abgerechnet. Sie können den Plan nach der Erstellung ändern. Weitere Details zu App Service-Preisen finden Sie [hier](https://azure.microsoft.com/en-in/pricing/details/app-service/).
+    * Standardmäßig wird der App Service nach dem Standardtarif (S1) abgerechnet. Sie können den Plan nach der Erstellung ändern. Weitere Details zu App Service-Preisen finden Sie [hier](https://azure.microsoft.com/pricing/details/app-service/).
     * Wählen Sie den **Website-Speicherort** aus, an dem der App Service bereitgestellt wird.
 
         > [!NOTE]
