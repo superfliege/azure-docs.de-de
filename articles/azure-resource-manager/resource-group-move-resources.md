@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 33d5560f2bfef04678cf7a2236fd920385d68aac
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783337"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452155"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -163,7 +163,7 @@ Während der Vorgang ausgeführt wird, wird weiterhin der Statuscode 202 angezei
 
 ## <a name="services-that-can-be-moved"></a>Dienste, die verschoben werden können
 
-Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe und ein neues Abonnement:
+Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können. Ausführliche Informationen finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](move-support-resources.md).
 
 * Analysis Services
 * API Management
@@ -173,6 +173,9 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure Database for MySQL
+* Azure Database for PostgreSQL
+* Azure DevOps – Azure DevOps-Unternehmen mit erworbenen Erweiterungen, die nicht von Microsoft stammen, müssen ihre [Käufe stornieren](https://go.microsoft.com/fwlink/?linkid=871160), bevor sie das Konto zwischen Abonnements verschieben können.
 * Azure Maps
 * Azure Relay
 * Azure Stack: Registrierungen
@@ -193,6 +196,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * DNS
 * Event Grid
 * Event Hubs
+* Front Door
 * HDInsight-Cluster – siehe [HDInsight-Einschränkungen](#hdinsight-limitations)
 * Iot Central
 * IoT Hubs
@@ -201,44 +205,41 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Log Analytics
 * Logic Apps
 * Machine Learning – Machine Learning Studio-Webdienste können in eine Ressourcengruppe im gleichen Abonnement verschoben werden, aber nicht in ein anderes Abonnement. Andere Machine Learning-Ressourcen können über Abonnements hinweg verschoben werden.
+* Managed Disks – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
 * Verwaltete Identität – vom Benutzer zugewiesen
 * Media Services
-* Mobile Engagement
 * Notification Hubs
 * Operational Insights
 * Operations Management
 * Dashboards im Portal
 * Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
-* Redis Cache
+* Redis Cache – Wenn die Redis Cache-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations).
 * Scheduler
 * Suchen,
 * Service Bus
 * Service Fabric
 * Service Fabric Mesh
 * SignalR Service
-* Speicher
+* Storage – Speicherkonten in verschiedenen Regionen können nicht im selben Vorgang verschoben werden. Stattdessen müssen Sie für jede Region einen separaten Vorgang durchführen.
 * Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Stream Analytics – Stream Analytics-Aufträge können nicht verschoben werden, wenn sie ausgeführt werden.
 * SQL-Datenbankserver – Die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken.
 * Time Series Insights
 * Traffic Manager
-* Virtual Machines – Virtuelle Computer mit verwalteten Datenträgern können nicht verschoben werden. Weitere Informationen finden Sie unter [Einschränkungen von virtuellen Computern](#virtual-machines-limitations).
+* Virtual Machines – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations) bei VMs mit verwalteten Datenträgern.
 * Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * VM-Skalierungsgruppen – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
 * Virtual Network – siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations)
-* Visual Studio Team Services – VSTS-Konten mit dem Erwerb von Nicht-Microsoft-Erweiterungen müssen ihre [Käufe stornieren](https://go.microsoft.com/fwlink/?linkid=871160), bevor sie das Konto zwischen Abonnements verschieben können.
 * VPN Gateway
 
 ## <a name="services-that-cannot-be-moved"></a>Dienste, die nicht verschoben werden können
 
-Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht:
+Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, die nicht in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können. Ausführliche Informationen finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](move-support-resources.md).
 
 * AD Domain Services
 * AD Hybrid Health Service
 * Application Gateway
-* Azure Database for MySQL
-* Azure Database for PostgreSQL
 * Azure-Datenbankmigration
 * Azure Databricks
 * Azure Migrate
@@ -254,7 +255,6 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Lab-Dienste: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Load Balancer – siehe [Load Balancer-Einschränkungen](#lb-limitations)
 * Verwaltete Anwendungen
-* Managed Disks – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
 * Microsoft Genomics
 * NetApp
 * Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
@@ -267,22 +267,62 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 
 ## <a name="virtual-machines-limitations"></a>Einschränkungen von virtuellen Computern
 
-Verwaltete Datenträger unterstützen das Verschieben nicht. Diese Einschränkung bedeutet, dass auch verschiedene zugehörige Ressourcen nicht verschoben werden können. Folgende Elemente können nicht verschoben werden:
+Das Verschieben verwalteter Datenträger wird seit dem 24. September 2018 unterstützt. 
 
-* Verwaltete Datenträger
+1. Sie müssen sich registrieren, um dieses Feature zu aktivieren.
+
+  ```azurepowershell-interactive
+  Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
+
+1. Die Registrierungsanforderung gibt zunächst den Zustand `Registering` zurück. Mit den folgenden Befehlen können Sie den aktuellen Zustand prüfen:
+
+  ```azurepowershell-interactive
+  Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
+
+1. Warten Sie einige Minuten, bis der Zustand in `Registered` geändert wird.
+
+1. Nachdem Sie das Feature registriert haben, registrieren Sie den Ressourcenanbieter `Microsoft.Compute`. Führen Sie diesen Schritt auch aus, wenn der Ressourcenanbieter bereits registriert wurde.
+
+  ```azurepowershell-interactive
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az provider register --namespace Microsoft.Compute
+  ```
+
+Mit dieser Unterstützung können Sie auch Folgendes verschieben:
+
 * Virtuelle Computer mit verwalteten Datenträgern
-* Auf der Grundlage von verwalteten Datenträgern erstellte Images
-* Auf der Grundlage von verwalteten Datenträgern erstellte Momentaufnahmen
+* Verwaltete Images
+* Verwaltete Momentaufnahmen
 * Verfügbarkeitsgruppen mit virtuellen Computern mit verwalteten Datenträgern
 
-Sie können einen verwalteten Datenträger zwar nicht verschieben, haben jedoch die Möglichkeit, eine Kopie zu erstellen und dann einen neuen virtuellen Computer aus dem vorhandenen verwalteten Datenträger zu erstellen. Weitere Informationen finden Sie unter
+Im Folgenden werden Einschränkungen aufgeführt, die noch nicht unterstützt werden:
 
-* Kopieren von verwalteten Datenträgern in das gleiche oder ein anderes Abonnement mit [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) oder [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md)
-* Erstellen Sie einen virtuellen Computer mit einem vorhandenen verwalteten Betriebssystemdatenträger mithilfe von [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) oder [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md).
+* Virtuelle Computer mit in Key Vault gespeichertem Zertifikat können in eine neue Ressourcengruppe im gleichen Abonnement verschoben werden, das abonnementübergreifende Verschieben ist jedoch nicht möglich.
+* Mit Azure Backup konfigurierte virtuelle Computer. Verwenden Sie die folgende Problemumgehung, um diese virtuellen Computer zu verschieben:
+  * Ermitteln Sie den Speicherort Ihres virtuellen Computers.
+  * Suchen Sie eine Ressourcengruppe mit dem folgenden Namensmuster: `AzureBackupRG_<location of your VM>_1`, z.B. „AzureBackupRG_westus2_1“
+  * Wenn Sie das Azure-Portal verwenden, aktivieren Sie die Option „Ausgeblendete Typen anzeigen“
+  * Wenn Sie PowerShell verwenden, verwenden Sie das Cmdlet `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`
+  * Wenn Sie die CLI (Befehlszeilenschnittstelle) verwenden, verwenden Sie den Befehl `az resource list -g AzureBackupRG_<location of your VM>_1`
+  * Suchen Sie jetzt nach der Ressource mit dem Typ `Microsoft.Compute/restorePointCollections` und dem Namensmuster `AzureBackup_<name of your VM that you're trying to move>_###########`
+  * Löschen Sie diese Ressource
+  * Nach Abschluss des Löschvorgangs können Sie Ihren virtuellen Computer verschieben
+* VM-Skalierungsgruppen mit dem Lastenausgleich der Standard-SKU oder der öffentlichen IP-Adresse der Standard-SKU können nicht verschoben werden
+* Von Marketplace-Ressourcen erstellte virtuelle Computer, an die Pläne angefügt sind, können nicht ressourcengruppen- oder abonnementübergreifend verschoben werden. Heben Sie die Bereitstellung des virtuellen Computers im aktuellen Abonnement auf, und stellen Sie ihn im neuen Abonnement erneut bereit.
 
-Von Marketplace-Ressourcen erstellte virtuelle Computer, an die Pläne angefügt sind, können nicht ressourcengruppen- oder abonnementübergreifend verschoben werden. Heben Sie die Bereitstellung des virtuellen Computers im aktuellen Abonnement auf, und stellen Sie ihn im neuen Abonnement erneut bereit.
-
-Virtuelle Computer mit in Key Vault gespeichertem Zertifikat können in eine neue Ressourcengruppe im gleichen Abonnement verschoben werden, das abonnementübergreifende Verschieben ist jedoch nicht möglich.
 
 ## <a name="virtual-networks-limitations"></a>Einschränkungen von virtuellen Netzwerken
 

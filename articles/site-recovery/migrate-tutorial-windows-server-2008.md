@@ -11,14 +11,14 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/23/2018
+ms.date: 09/22/2018
 ms.author: bsiva
-ms.openlocfilehash: 6e5946f3f9dcf1c7d941054c844adcf683b485ab
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: d15a5b62a148e971c0740f01744fce308e502340
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308642"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056035"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrieren von Servern mit Windows Server 2008 zu Azure
 
@@ -59,14 +59,11 @@ Im übrigen Teil dieses Tutorials erfahren Sie, wie Sie lokale virtuelle VMware-
 
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 
-- Der Konfigurationsserver, zusätzliche Prozessserver und der Mobilitätsdienst, die zum Migrieren von Windows Server 2008 SP2-Servern verwendet werden, sollten Version 9.18.0.1 der Azure Site Recovery-Software aufweisen. Das einheitliche Setup für Version 9.18.0.1 des Konfigurations- und Prozessservers kann unter [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) heruntergeladen werden.
-
-- Ein vorhandener Konfigurations- oder Prozessserver kann nicht für die Migration von Servern verwendet werden, auf denen Windows Server 2008 SP2 ausgeführt wird. Ein neuer Konfigurationsserver sollte mit Version 9.18.0.1 der Azure Site Recovery-Software bereitgestellt werden. Dieser Konfigurationsserver sollte nur für die Migration von Windows-Servern zu Azure verwendet werden.
+- Der Konfigurationsserver, zusätzliche Prozessserver und der Mobilitätsdienst, die zum Migrieren von Windows Server 2008 SP2-Servern verwendet werden, sollten Azure Site Recovery Version 9.19.0.0 oder höher verwenden.
 
 - Anwendungskonsistente Wiederherstellungspunkte und das Feature für Konsistenz mit mehreren virtuellen Computern werden nicht für die Replikation von Servern unterstützt, auf denen Windows Server 2008 SP2 ausgeführt wird. Windows Server 2008 SP2-Server sollten an einem absturzkonsistenten Wiederherstellungspunkt migriert werden. Absturzkonsistente Wiederherstellungspunkte werden standardmäßig alle 5 Minuten generiert. Die Verwendung einer Replikationsrichtlinie mit einer konfigurierten Häufigkeit der Momentaufnahmen für Anwendungskonsistenz führt dazu, dass die Replikationsintegrität aufgrund mangelnder anwendungskonsistenter Wiederherstellungspunkte kritisch wird. Um zu verhindern, dass falsche positive Ergebnisse ausgegeben werden, legen Sie die Häufigkeit der Momentaufnahmen für Anwendungskonsistenz in der Replikationsrichtlinie auf „Aus“ fest.
 
 - Die Server, die migriert werden, sollten .NET Framework 3.5 Service Pack 1 aufweisen, damit der Mobilitätsdienst funktioniert.
-
 
 - Verfügt Ihr Server über dynamische Datenträger, werden Sie bei bestimmten Konfigurationen möglicherweise feststellen, dass diese Datenträger auf dem Server, für den ein Failover ausgeführt wurde, als offline gekennzeichnet sind oder als fremde Datenträger angezeigt werden. Möglicherweise wird Ihnen außerdem auffallen, dass der Status gespiegelter Sätze für gespiegelte Volumes auf dynamischen Datenträgern mit „Fehlerhafte Redundanz“ markiert ist. Sie können dieses Problem über „diskmgmt.msc“ beheben, indem Sie diese Datenträger manuell importieren und wieder aktivieren.
 
@@ -89,7 +86,7 @@ Im übrigen Teil dieses Tutorials erfahren Sie, wie Sie lokale virtuelle VMware-
 
 Führen Sie die folgenden Aufgaben zur Vorbereitung des Azure-Abonnements und der lokalen VMware- bzw. physischen Umgebung durch:
 
-1. [Prepare Azure](tutorial-prepare-azure.md) (Vorbereiten von Azure)
+1. [Vorbereiten von Azure](tutorial-prepare-azure.md)
 2. Vorbereiten einer lokalen [VMware-VM](vmware-azure-tutorial-prepare-on-premises.md)
 
 
@@ -109,48 +106,8 @@ Der neue Tresor wird dem **Dashboard** unter **Alle Ressourcen** und der Hauptse
 
 ## <a name="prepare-your-on-premises-environment-for-migration"></a>Vorbereiten Ihrer lokalen Umgebung für die Migration
 
-- Herunterladen des Konfigurationsserver-Installationsprogramms (einheitliches Setup) von [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup)
-- Befolgen Sie die nachfolgend beschriebenen Schritte, um mithilfe der im vorherigen Schritt heruntergeladenen Installationsdatei die Quellumgebung einzurichten.
-
-> [!IMPORTANT]
-> - Verwenden Sie die Setupdatei, die Sie im ersten Schritt weiter oben heruntergeladen haben, um den Konfigurationsserver zu installieren und zu registrieren. Laden Sie die Setupdatei nicht aus dem Azure-Portal herunter. Die Setupdatei unter [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) ist die einzige Version, die Windows Server 2008-Migrationen unterstützt.
->
-> - Sie können nicht mit einem vorhandenen Konfigurationsserver Computer migrieren, auf denen Windows Server 2008 ausgeführt wird. Über den oben angegebenen Link müssen Sie einen neuen Konfigurationsserver einrichten.
->
-> - Führen Sie die folgenden Schritte aus, um den Konfigurationsserver zu installieren. Versuchen Sie nicht, das GUI-basierte Installationsverfahren zu verwenden, indem Sie das einheitliche Setup direkt ausführen. Dies führt dazu, dass beim Installationsversuch eine falsche Fehlermeldung angezeigt wird, die besagt, dass keine Internetkonnektivität besteht.
-
- 
-1) Laden Sie die Datei mit Tresoranmeldeinformationen aus dem Portal herunter: Wählen Sie im Azure-Portal den Recovery Services-Tresor aus, den Sie im vorherigen Schritt erstellt haben. Öffnen Sie im Menü auf der Tresorseite **Site Recovery-Infrastruktur** > **Konfigurationsserver** aus. Klicken Sie dann auf **+Server**. Wählen Sie aus dem Dropdownformular auf der Seite, die geöffnet wird, *Konfigurationsserver für physische Computer* aus. Klicken Sie bei Schritt 4 auf die Schaltfläche „Herunterladen“, um die Datei mit Tresoranmeldeinformationen herunterzuladen.
-
- ![Herunterladen des Tresorregistrierungsschlüssels](media/migrate-tutorial-windows-server-2008/download-vault-credentials.png) 
-
-2) Kopieren Sie die Datei mit Tresoranmeldeinformationen, die Sie im vorherigen Schritt heruntergeladen haben, und die Datei zum einheitlichen Setup, die Sie zuvor auf dem Desktop des Konfigurationsservercomputers heruntergeladen haben (der Windows Server 2012 R2- oder Windows Server 2016-Computer, auf dem die Konfigurationsserversoftware installiert wird).
-
-3) Stellen Sie sicher, dass der Konfigurationsserver über Internetkonnektivität verfügt und die Systemuhr und Zeitzoneneinstellungen auf dem Computer richtig konfiguriert sind. Laden Sie das Installationsprogramm [MySQL 5.7](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi) herunter, und platzieren Sie es unter *C:\Temp\ASRSetup*. (Falls das Verzeichnis nicht vorhanden ist, erstellen Sie es.) 
-
-4) Erstellen Sie eine Datei mit MySQL-Anmeldeinformationen mit den folgenden Zeilen, und platzieren Sie sie auf dem Desktop **C:\Users\Administrator\MySQLCreds.txt**. Ersetzen Sie „Password~1“ unten durch ein geeignetes und sicheres Kennwort:
-
-```
-[MySQLCredentials]
-MySQLRootPassword = "Password~1"
-MySQLUserPassword = "Password~1"
-```
-
-5) Extrahieren Sie den Inhalt der heruntergeladenen Datei mit dem einheitliche Setup auf dem Desktop, indem Sie den folgenden Befehl ausführen:
-
-```
-cd C:\Users\Administrator\Desktop
-
-MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Users\Administrator\Desktop\9.18
-```
-  
-6) Installieren Sie mithilfe der extrahierten Inhalte die Konfigurationsserversoftware, indem Sie die folgenden Befehle ausführen:
-
-```
-cd C:\Users\Administrator\Desktop\9.18.1
-
-UnifiedSetup.exe /AcceptThirdpartyEULA /ServerMode CS /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /MySQLCredsFilePath "C:\Users\Administrator\Desktop\MySQLCreds.txt" /VaultCredsFilePath <vault credentials file path> /EnvType VMWare /SkipSpaceCheck
-```
+- [Richten Sie den lokalen Konfigurationsserver in VMware ein](vmware-azure-tutorial.md#set-up-the-source-environment), um Windows Server 2008-VMs zu migrieren, die in VMware ausgeführt werden.
+- Wenn der Konfigurationsserver nicht als VMware-VM eingerichtet werden kann, [richten Sie den Konfigurationsserver auf einem lokalen physischen Server oder einer VM ein](physical-azure-disaster-recovery.md#set-up-the-source-environment).
 
 ## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
 

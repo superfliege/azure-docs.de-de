@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4101f6819dff81376dcab47adb57e4b8ef35e094
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: fc26e1d32332bb0ed9624b7442e38ea79b7bfb1d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40036726"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393552"
 ---
 # <a name="rendering-using-azure"></a>Rendern mit Azure
 
@@ -69,7 +69,7 @@ Azure Batch wird für viele Workloads genutzt, aber die folgenden Funktionen sin
   * Es sind Azure Marketplace-VM-Images verfügbar, die beliebte Grafik- und Renderinganwendungen enthalten. Sie müssen die Anwendungen also nicht selbst installieren und keine benutzerdefinierten Images mit den installierten Anwendungen erstellen. 
 * Nutzungsbasierte Lizenzierung für Renderinganwendungen:
   * Sie können die Option wählen, bei der Sie für die Anwendungen nach Minuten und zusätzlich für die Compute-VMs bezahlen. So vermeiden Sie, dass Sie Lizenzen erwerben und ggf. einen Lizenzserver für die Anwendungen konfigurieren müssen.  Nutzungsbasierte Bezahlung bedeutet auch, dass Sie auf variierende und unerwartete Lasten vorbereitet sind, da es keine feste Anzahl von Lizenzen gibt.
-  * Es ist auch möglich, die vorinstallierten Anwendungen mit Ihren eigenen Lizenzen zu nutzen und nicht die nutzungsbasierte Lizenzierung zu verwenden.
+  * Es ist auch möglich, die vorinstallierten Anwendungen mit Ihren eigenen Lizenzen zu nutzen und nicht die nutzungsbasierte Lizenzierung zu verwenden. Dazu müssen Sie in der Regel einen lokalen oder auf Azure basierenden Lizenzserver installieren und das virtuelle Azure-Netzwerk verwenden, um den Renderingpool mit dem Lizenzserver zu verbinden.
 * Plug-Ins für Anwendungen für den Cliententwurf und die Modellierung:
   * Mit Plug-Ins können Endbenutzer Azure Batch direkt über die Clientanwendung nutzen, z.B. Autodesk Maya, und so Pools erstellen, Aufträge übermitteln und weitere Computekapazität nutzen, um schnellere Rendervorgänge zu erzielen.
 * Integration eines Render-Managers:

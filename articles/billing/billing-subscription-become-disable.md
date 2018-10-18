@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: d76d02ba326cf93582c03937b3ab54d806acaff1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: cwatson
+ms.openlocfilehash: 3fc7e316289201f5a800b56a7dc63f559c1f90a2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067604"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422659"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Warum ist mein Azure-Abonnement deaktiviert, und wie reaktiviere ich es?
 
@@ -38,7 +38,7 @@ Für Azure-Abonnements mit Gutschrift, wie etwa die kostenlose Testversion und V
 > [!NOTE] 
 > Wenn Sie über ein Abonnement vom Typ „Kostenlose Testversion“ verfügen und das Ausgabenlimit entfernen, wird das Abonnement am Ende des Testzeitraums auf „Nutzungsbasierte Zahlung“ umgestellt. Sie behalten Ihr Restguthaben für die vollen 30 Tage nach Erstellung des Abonnements. Sie haben auch Zugang zu kostenlosen Diensten für 12 Monate.
 
-Weitere Informationen zum Überwachen und Verwalten von Abrechnungsaktivitäten für Azure finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md) und [Einrichten von Abrechnungsbenachrichtigungen für Microsoft Azure-Abonnements](billing-set-up-alerts.md).
+Weitere Informationen zum Überwachen und Verwalten von Abrechnungsaktivitäten für Azure finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md).
 
 
 ## <a name="your-bill-is-past-due"></a>Ihre Rechnung ist überfällig

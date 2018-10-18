@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f157602ce3a9c5b6f15a03ad816d8aece4e22805
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e6cff4e2daf86b63bc0db0d4f2d537322d2841df
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339166"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409302"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthentifizierung
 
@@ -237,7 +237,7 @@ Nachdem Ihr RESTful-Dienst mithilfe der Client-ID (Benutzername) und eines Gehei
 
 6. Geben Sie im Feld **Geheimnis** die zuvor definierte App-ID ein.
 
-7. Wählen Sie für **Schlüsselverwendung** die Option **Geheimnis** aus.
+7. Wählen Sie für **Schlüsselverwendung** **Signatur** aus.
 
 8. Klicken Sie auf **Erstellen**.
 
@@ -257,7 +257,7 @@ Nachdem Ihr RESTful-Dienst mithilfe der Client-ID (Benutzername) und eines Gehei
 
 6. Geben Sie im Feld **Geheimnis** das zuvor definierte App-Geheimnis ein.
 
-7. Wählen Sie für **Schlüsselverwendung** die Option **Geheimnis** aus.
+7. Wählen Sie für **Schlüsselverwendung** **Signatur** aus.
 
 8. Klicken Sie auf **Erstellen**.
 

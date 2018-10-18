@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/11/2018
+ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: b5512186913eb59be2b89ce8b8bb9fb881f59cd8
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 08b4ef6ea59123524500188428eb0bc03d85138b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699820"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409982"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace mit einem Thema und einem Abonnement anhand einer Azure Resource Manager-Vorlage
 
@@ -41,7 +41,7 @@ Die vollständige Vorlage finden Sie unter [Service Bus namespace with topic and
 > 
 > 
 
-## <a name="what-will-you-deploy"></a>Was möchten Sie bereitstellen?
+## <a name="what-do-you-deploy"></a>Was stellen Sie bereit?
 
 Mit dieser Vorlage können Sie einen Service Bus-Namespace mit Thema und Abonnement bereitstellen.
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 09/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a2855ca5dbb76d3fcc30c4b1007c20bb48c91c9b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e164488a1bf176d5b6c0e28a84cd1ec22cae4cce
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146259"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423577"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Importieren einer Power BI Desktop-Datei
 
@@ -22,10 +22,13 @@ Sie können ein Datenmodell in einer Power BI Desktop-Datei (PBIX-Datei) in Azur
 **Einschränkungen**   
 
 - Der Importvorgang aus einer PBIX-Datei verwendet das Webdesigner-Feature im Portal, das als **Vorschauversion** vorliegt. Die Funktionalität ist daher eingeschränkt. Bei komplexeren Modellentwicklungen und -tests ist es sinnvoll, Visual Studio (SSDT) und SQL Server Management Studio (SSMS) zu verwenden.
+- Wenn Ihr Datenmodell mit Power BI Desktop-Update vom Juli 2018 (2.60.5169.3201) oder danach erstellt wurde, stellen Sie sicher, dass keine Previewfunktionen aktiviert sind. Previewfunktionen werden noch nicht in Azure Analysis Services unterstützt.  
+Wenn der folgende Fehler beim Importieren ausgelöst wird, sind für die PBIX-Datei Previewfunktionen aktiviert, die noch nicht in Azure Analysis Services unterstützt werden.
+
+    ![Kompatibilitätsgradwarnung](./media/analysis-services-import-pbix/aas-import-pbix-cl-warning.png)   
 - Sie benötigen Serveradministratorberechtigungen zum Importieren aus einer PBIX-Datei.
 - Das PBIX-Modell kann nur Verbindungen mit Datenquellen vom Typ **Azure SQL-Datenbank** und **Azure SQL Data Warehouse** herstellen.
 - Das pbix-Modell eignet sich nicht für Live- oder DirectQuery-Verbindungen. 
-- Beim Import kann ein Fehler auftreten, wenn Ihr pbix-Datenmodell Metadaten enthält, die in Analysis Services nicht unterstützt werden.
 
 
 ## <a name="to-import-from-pbix"></a>So führen Sie den Import aus PBIX durch

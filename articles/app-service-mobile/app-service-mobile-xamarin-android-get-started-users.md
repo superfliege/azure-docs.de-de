@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: 97207b722b65ccf98c57304cd559b0927aacd5a4
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: d496801894560310a4225eae8a32fced52bcc428
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27595294"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063539"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Hinzufügen der Authentifizierung zu Ihrer Xamarin.Android-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -125,6 +125,12 @@ Die App wird so aktualisiert, dass Benutzer auf die Schaltfläche **Anmelden** t
         </activity>
 
 6. Führen Sie das Clientprojekt in Visual Studio oder Xamarin Studio auf einem Gerät oder Emulator aus, und melden Sie sich mit dem ausgewählten Identitätsanbieter an. Nachdem Sie sich erfolgreich angemeldet haben, zeigt die App Ihre Login-ID und die Liste der zu erledigenden Elemente an, und Sie können die Daten ändern.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+**Die Anwendung ist mit dem Fehler `Java.Lang.NoSuchMethodError: No static method startActivity` abgestürzt.**
+
+In einigen Fällen werden Konflikte in den Unterstützungspaketen nur als Warnung in Visual Studio angezeigt, aber die Anwendung stürzt zur Laufzeit mit dieser Ausnahme ab. In diesem Fall müssen Sie sicherstellen, dass alle Unterstützungspakete, auf die in Ihrem Projekt verwiesen wird, die gleiche Version aufweisen. Das [Azure Mobile Apps-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) hat eine `Xamarin.Android.Support.CustomTabs`-Abhängigkeit für die Android-Plattform. Wenn also das Projekt neuere Unterstützungspakete verwendet, müssen Sie dieses Paket direkt mit der erforderlichen Version installieren, um Konflikte zu vermeiden.
 
 <!-- URLs. -->
 [Erstellen einer Xamarin.Android-App]: app-service-mobile-xamarin-android-get-started.md

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8a7ae412fc80dff7bd91c1cdc5d4fcd985e07f4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8745519f1a0fdda7a5feb6ffb3f61e5250bb260a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359066"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164786"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logische Funktionen für Azure Resource Manager-Vorlagen
 
@@ -40,8 +40,8 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
-| arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
+| arg1 |JA |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
+| arg2 |JA |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -102,7 +102,7 @@ Konvertiert den Parameter in einen booleschen Wert.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in einen booleschen Wert konvertiert werden soll. |
+| arg1 |JA |Zeichenfolge oder ganze Zahl |Der Wert, der in einen booleschen Wert konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 Ein boolescher Wert des konvertierten Werts.
@@ -167,9 +167,9 @@ Gibt einen Wert abhängig davon zurück, ob eine Bedingung zutrifft oder nicht.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| condition |Ja |boolean |Der Wert, für den überprüft wird, ob er zutrifft. |
-| trueValue |Ja | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung zutrifft. |
-| falseValue |Ja | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung nicht zutrifft. |
+| condition |JA |boolean |Der Wert, für den überprüft wird, ob er zutrifft. |
+| trueValue |JA | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung zutrifft. |
+| falseValue |JA | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung nicht zutrifft. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -239,6 +239,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
         "noOutput": {
             "type": "string",
             "value": "[if(equals('a', 'b'), 'yes', 'no')]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
         }
     }
 }
@@ -250,6 +254,7 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 | ---- | ---- | ----- |
 | yesOutput | Zeichenfolge | Ja |
 | noOutput | Zeichenfolge | no |
+| objectOutput | Objekt | { "test": "value1" } |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -272,7 +277,7 @@ Konvertiert den booleschen Wert in seinen gegenteiligen Wert.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |boolean |Der zu konvertierende Wert. |
+| arg1 |JA |boolean |Der zu konvertierende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -367,8 +372,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
-| arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
+| arg1 |JA |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
+| arg2 |JA |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
 
 ### <a name="return-value"></a>Rückgabewert
 

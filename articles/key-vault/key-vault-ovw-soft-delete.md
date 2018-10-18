@@ -2,16 +2,17 @@
 ms.assetid: ''
 title: Vorläufiges Löschen in Azure Key Vault | Microsoft Docs
 ms.service: key-vault
+ms.topic: conceptual
 author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: ccdefc83642285194635ffe7b561e9e322360533
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: ac34f03c896e9e2180b653c41faa7f7525a40e33
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42142368"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407874"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
@@ -36,9 +37,26 @@ Azure-Schlüsseltresore sind nachverfolgte Ressourcen, die von Azure Resource Ma
 
 ### <a name="soft-delete-behavior"></a>Verhalten des vorläufigen Löschens
 
-Bei diesem Feature ist der DELETE-Vorgang für einen Schlüsseltresor oder ein Key Vault-Objekt eine vorläufige Löschung, bei der die Ressourcen während einer bestimmten Aufbewahrungsdauer effektiv gespeichert werden, das Objekt aber scheinbar gelöscht wird. Der Dienst bietet darüber hinaus einen Mechanismus zur Wiederherstellung des gelöschten Objekts, bei dem der Löschvorgang im Wesentlichen rückgängig gemacht wird. 
+Bei diesem Feature ist der DELETE-Vorgang für einen Schlüsseltresor oder ein Key Vault-Objekt eine vorläufige Löschung, bei der die Ressourcen während einer bestimmten Aufbewahrungsdauer (90 Tage) effektiv gespeichert werden, das Objekt aber scheinbar gelöscht wird. Der Dienst bietet darüber hinaus einen Mechanismus zur Wiederherstellung des gelöschten Objekts, bei dem der Löschvorgang im Wesentlichen rückgängig gemacht wird. 
 
 Vorläufiges Löschen ist ein optionales Key Vault-Verhalten und in dieser Version **nicht standardmäßig aktiviert**. 
+
+### <a name="purge-protection--flag"></a>Bereinigungsschutz-Flag
+Das Bereinigungsschutz-Flag (**--enable-purge-protection** in der Azure CLI) ist in der Standardeinstellung deaktiviert. Wenn dieses Flag aktiviert wird, kann ein Tresor oder ein Objekt im gelöschten Zustand nicht gelöscht werden, bis die Aufbewahrungsdauer von 90 Tagen abgelaufen ist. Solch ein Tresor oder Objekt kann noch wiederhergestellt werden. Dieses Flag versichert Kunden zusätzlich, dass ein Tresor oder ein Objekt nie dauerhaft gelöscht werden kann, bevor die Aufbewahrungsdauer abgelaufen ist. Das Bereinigungsschutz-Flag kann nur aktiviert werden, wenn das Flag für Vorläufiges Löschen aktiviert ist. Sie können auch bei der Tresorerstellung das Flag für Vorläufiges Löschen und das Bereinigungsschutz-Flag aktivieren.
+
+[!NOTE] Damit der Bereinigungsschutz aktiviert werden kann, muss das Vorläufige Löschen aktiviert sein. Der dafür erforderliche Befehl in der Azure CLI 2 ist
+
+```
+az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
+```
+
+### <a name="permitted-purge"></a>Zulässige Löschung
+
+Das endgültige Löschen eines Schlüsseltresors kann über einen POST-Vorgang für die Proxyressource erfolgen und erfordert spezielle Berechtigungen. Im Allgemeinen kann nur der Besitzer des Abonnements einen Schlüsseltresor endgültig löschen. Der POST-Vorgang löst die sofortige Löschung dieses Tresors aus, die nicht rückgängig gemacht werden kann. 
+
+Eine Ausnahme besteht,
+- wenn das Azure-Abonnement als *nicht löschbar* markiert wurde. In diesem Fall kann der eigentliche Löschvorgang nur vom Dienst ausgeführt werden, und dies erfolgt als geplanter Prozess. 
+- wenn das Flag „--enable-purge-protection“ auf dem Tresor selbst aktiviert wurde. In diesem Fall wartet Key Vault 90 Tage ab der Markierung des ursprünglichen geheimen Objekts zum Löschen, bevor das Objekt vollständig gelöscht wird.
 
 ### <a name="key-vault-recovery"></a>Wiederherstellung eines Schlüsseltresors
 
@@ -62,12 +80,6 @@ Vorläufig gelöschte Ressourcen werden für einen festgelegten Zeitraum von 90 
 - Nur ein Benutzer mit speziellen Berechtigungen kann das Löschen eines Schlüsseltresors oder Key Vault-Objekts durch Ausführen eines Löschbefehls für die entsprechende Proxyressource erzwingen.
 
 Sofern ein Schlüsseltresor oder Key Vault-Objekt nicht wiederhergestellt wird, löscht der Dienst am Ende des Aufbewahrungsintervalls den vorläufig gelöschten Schlüsseltresor oder das vorläufig gelöschte Key Vault-Objekt und dessen Inhalt endgültig. Das Löschen von Ressourcen kann nicht neu geplant werden.
-
-### <a name="permitted-purge"></a>Zulässige Löschung
-
-Das endgültige Löschen eines Schlüsseltresors kann über einen POST-Vorgang für die Proxyressource erfolgen und erfordert spezielle Berechtigungen. Im Allgemeinen kann nur der Besitzer des Abonnements einen Schlüsseltresor endgültig löschen. Der POST-Vorgang löst die sofortige Löschung dieses Tresors aus, die nicht rückgängig gemacht werden kann. 
-
-Eine Ausnahme davon besteht, wenn das Azure-Abonnement als *nicht löschbar* markiert wurde. In diesem Fall kann der eigentliche Löschvorgang nur vom Dienst ausgeführt werden, und dies erfolgt als geplanter Prozess. 
 
 ### <a name="billing-implications"></a>Hinweise zur Gebührenberechnung
 

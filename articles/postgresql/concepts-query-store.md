@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 149840157c5e9bb47be70f669b2078585fe4b56c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 03f22a7975e8f331efa9dcc30fd088f32bee1649
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953026"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393490"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
 **Gilt für:** Azure Database for PostgreSQL 9.6 und 10
 
 > [!IMPORTANT]
-> Das Abfragespeicherfeature befindet sich in der Public Preview-Phase.
+> Das Abfragespeicherfeature befindet sich in der Public Preview in einer begrenzte Anzahl von Regionen.
 
 
 Das Abfragespeicherfeature in Azure Database for PostgreSQL bietet eine Möglichkeit, um die Abfrageleistung im Zeitverlauf nachzuverfolgen. Der Abfragespeicher vereinfacht das Beheben von Leistungsproblemen, da er es Ihnen ermöglicht, die am längsten ausgeführten und ressourcenintensivsten Abfragen schnell zu ermitteln. Der Abfragespeicher erfasst automatisch einen Verlauf der Abfragen und Laufzeitstatistiken und bewahrt diese auf, damit Sie sie überprüfen können. Er unterteilt die Daten nach Zeitfenstern, damit Sie Verwendungsmuster für Datenbanken erkennen können. Die Daten für alle Benutzer, Datenbanken und Abfragen werden in einer Datenbank namens **azure_sys** in der Azure Database for PostgreSQL-Instanz gespeichert.
@@ -117,7 +117,7 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 |query_id   |bigint  || Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
 |query_sql_text |Varchar(10000)  || Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster.|
 |plan_id    |bigint |   |ID des Plans, der dieser Abfrage entspricht, noch nicht verfügbar|
-|start_time |timestamp  ||  Abfragen werden nach Zeitrahmen zusammengefasst. Die Zeitspanne eines Zeitrahmens beträgt standardmäßig 15 Minuten und ist konfigurierbar. Dies ist die Startzeit des Zeitrahmens für diesen Eintrag.|
+|start_time |timestamp  ||  Abfragen werden nach Zeitrahmen zusammengefasst. Die Zeitspanne eines Zeitrahmens beträgt standardmäßig 15 Minuten. Dies ist die Startzeit des Zeitrahmens für diesen Eintrag.|
 |end_time   |timestamp  ||  Dies ist die Endzeit des Zeitrahmens für diesen Eintrag.|
 |calls  |bigint  || Häufigkeit der Abfrageausführung|
 |total_time |double precision   ||  Gesamte Abfrageausführungsdauer in Millisekunden|
@@ -168,6 +168,10 @@ Query_store.qs_reset() gibt „void“ zurück
 Query_store.staging_data_reset() gibt „void“ zurück
 
 `staging_data_reset` verwirft alle Statistiken, die vom Abfragespeicher im Arbeitsspeicher erfasst werden (d.h. die Daten im Arbeitsspeicher, für die noch kein Flushvorgang in die Datenbank durchgeführt wurde). Diese Funktion kann nur von der Serveradministratorrolle ausgeführt werden.
+
+## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
+- Wenn ein PostgreSQL-Server über den Parameter „default_transaction_read_only“ verfügt, kann der Abfragespeicher keine Daten erfassen.
+- Die Abfragespeicherfunktionalität kann unterbrochen werden, wenn lange Unicodeabfragen (mindestens 6000 Bytes) festgestellt werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -3,23 +3,23 @@ title: Zuordnung virtueller Netzwerke zwischen zwei Azure-Regionen in Azure Site
 description: Azure Site Recovery koordiniert Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server. Informieren Sie sich über das Failover zu Azure oder zu einem sekundären Rechenzentrum.
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 editor: ''
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
 ms.service: site-recovery
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: aed804a257376308c668ce0c2f3e8ce652ee9b3f
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 95e6a388d0638d2fd477d33aaf7c39cf120e29aa
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145101"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353429"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Zuordnen virtueller Netzwerke in verschiedenen Azure-Regionen
 
@@ -106,7 +106,7 @@ Wenn das Quellsubnetz und das Zielsubnetz über unterschiedliche Adressräume ve
 Dem virtuellen Computer, für den das Failover ausgeführt wurde, wird die nächste verfügbare IP vom Ende des Subnetzadressbereichs (10.0.0.254) zugewiesen. </br>
 
 **Hinweis:** Der Begriff **Produktions-VNET** bezieht sich auf das „Zielnetzwerk“, das während der Konfiguration der Notfallwiederherstellung zugeordnet wird.
-####<a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Beim ausgewählten Zielnetzwerk handelt es sich nicht um das Produktions-VNET, es besitzt jedoch den gleichen Subnetzbereich wie das Produktionsnetzwerk: 
+#### <a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Beim ausgewählten Zielnetzwerk handelt es sich nicht um das Produktions-VNET, es besitzt jedoch den gleichen Subnetzbereich wie das Produktionsnetzwerk:
 
 - Die Wiederherstellungs-IP (Ziel-IP) ist eine statische IP **mit derselben IP-Adresse** (d.h. der konfigurierten statischen IP-Adresse), die für das Failover reserviert ist. Voraussetzung ist, dass die gleiche IP-Adresse verfügbar ist.
 - Wenn die konfigurierte statische IP bereits einem anderen virtuellen Computer/Gerät zugewiesen ist, handelt es sich bei der Wiederherstellungs-IP um die nächste verfügbare IP vom Ende des Subnetzadressbereichs.

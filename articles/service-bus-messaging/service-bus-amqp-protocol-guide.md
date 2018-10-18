@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: e124ea3f932a81634191785e7ee69c2492cb32fa
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 75c6b5c34559ad17f662c895352bff5a58da00d4
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312541"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395847"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -47,7 +47,7 @@ Im Gegensatz zu früheren abgelaufenen Entwürfen, die von der AMQP-Arbeitsgrupp
 
 Das Protokoll kann für die symmetrische Peer-to-Peer-Kommunikation verwendet werden, um die Interaktion mit Nachrichtenbrokern zu ermöglichen, die Warteschlangen unterstützen und Entitäten veröffentlichen/abonnieren, wie dies bei Azure Service Bus der Fall ist. Außerdem kann das Protokoll für die Interaktion mit der Messaginginfrastruktur verwendet werden, bei der sich die Interaktionsmuster von regulären Warteschlangen unterscheiden, wie dies bei Azure Event Hubs der Fall ist. Ein Event Hub verhält sich wie eine Warteschlange, wenn Ereignisse an den Event Hub gesendet werden, aber eher wie ein serieller Speicherdienst, wenn Ereignisse daraus gelesen werden. Dieses Verhalten ähnelt in gewisser Weise einem Bandlaufwerk. Der Client wählt ein Offset in den verfügbaren Datenstrom und erhält dann alle Ereignisse dieses Offsets bis zum aktuellsten Ereignis.
 
-Das AMQP 1.0-Protokoll ist auf Erweiterbarkeit ausgelegt, damit die Funktionen durch weitere Spezifikationen ausgebaut werden können. Dies wird in den drei Erweiterungsspezifikationen deutlich, die in diesem Dokument beschrieben werden. Für die Kommunikation über die vorhandene HTTPS/WebSockets-Infrastruktur, bei der die Konfiguration der nativen AMQP-TCP-Ports schwierig sein kann, wird mit einer bindenden Spezifikation definiert, wie AMQP auf WebSockets verteilt werden kann. Für die Interaktion mit der Messaginginfrastruktur nach dem Schema „Anforderung/Antwort“ für Verwaltungszwecke oder zur Bereitstellung erweiterter Funktionen sind in der AMQP-Verwaltungsspezifikation die erforderlichen Grundlagen für die Interaktion definiert. Für die Verbundautorisierungsmodell-Integration definiert die anspruchsbasierte AMQP-Sicherheitsspezifikation, wie Sie Autorisierungstoken, die Links zugeordnet sind, zuordnen und erneuern.
+Das AMQP 1.0-Protokoll ist auf Erweiterbarkeit ausgelegt, damit die Funktionen durch weitere Spezifikationen ausgebaut werden können. Dies wird in den drei Erweiterungsspezifikationen deutlich, die in diesem Dokument beschrieben werden. Für die Kommunikation über die vorhandene HTTPS/WebSockets-Infrastruktur kann das Konfigurieren der nativen AMQP-TCP-Ports schwierig sein. Eine Bindungsspezifikation definiert, wie AMQP WebSockets übergeordnet wird. Für die Interaktion mit der Messaginginfrastruktur nach dem Schema „Anforderung/Antwort“ für Verwaltungszwecke oder zur Bereitstellung erweiterter Funktionen sind in der AMQP-Verwaltungsspezifikation die erforderlichen Grundlagen für die Interaktion definiert. Für die Verbundautorisierungsmodell-Integration definiert die anspruchsbasierte AMQP-Sicherheitsspezifikation, wie Sie Autorisierungstoken, die Links zugeordnet sind, zuordnen und erneuern.
 
 ## <a name="basic-amqp-scenarios"></a>Grundlegende AMQP-Szenarien
 
@@ -78,7 +78,7 @@ Sitzungen verfügen über ein fensterbasiertes Flusssteuerungsmodell. Wenn eine 
 
 Dieses fensterbasierte Modell entspricht im Wesentlichen dem TCP-Konzept der fensterbasierten Flusssteuerung, aber auf Sitzungsebene innerhalb des Sockets. Das Konzept des Protokolls, mehrere gleichzeitige Sitzungen zuzulassen, hat den Zweck, dass Datenverkehr mit hoher Priorität gedrosselten normalen Verkehr überholen kann – wie auf der linken Spur auf der Autobahn.
 
-In Azure Service Bus wird für jede Verbindung derzeit genau eine Sitzung verwendet. Die maximale Service Bus-Framegröße beträgt 262.144 Byte (256 KB) für Service Bus-Standardhubs und Event Hubs. Für Service Bus Premium sind es 1.048.576 Byte (1 MB). Service Bus gibt keine bestimmten Fenster für die Drosselung auf Sitzungsebene vor, sondern setzt das Fenster im Rahmen der Flusssteuerung auf Verknüpfungsebene regelmäßig zurück (siehe [nächster Abschnitt](#links)).
+In Azure Service Bus wird für jede Verbindung derzeit genau eine Sitzung verwendet. Die maximale Service Bus-Framegröße beträgt 262.144 Byte (256 KB) für Service Bus Standard und Event Hubs. Für Service Bus Premium sind es 1.048.576 Byte (1 MB). Service Bus gibt keine bestimmten Fenster für die Drosselung auf Sitzungsebene vor, sondern setzt das Fenster im Rahmen der Flusssteuerung auf Verknüpfungsebene regelmäßig zurück (siehe [nächster Abschnitt](#links)).
 
 Verbindungen, Kanäle und Sitzungen sind flüchtig. Wenn die zugrunde liegende Verbindung getrennt wird, müssen Verbindungen, TLS-Tunnel, SASL-Autorisierungskontext und Sitzungen wiederhergestellt werden.
 
@@ -94,7 +94,7 @@ Der Container, der die Verknüpfung initiiert hat, bittet den anderen Container,
 
 Verknüpfungen werden benannt und Knoten zugeordnet. Wie am Anfang erwähnt, sind Knoten die kommunizierenden Entitäten in einem Container.
 
-In Service Bus entspricht ein Knoten direkt einer Warteschlange, einem Thema, einem Abonnement oder einer Unterwarteschlange für unzustellbare Nachrichten, die einer Warteschlange oder einem Abonnement zugeordnet ist. Der in AMQP verwendete Knotenname ist daher der relative Name der Entität im Service Bus-Namespace. Wenn eine Warteschlange den Namen **myqueue** hat, ist dies gleichzeitig ihr AMQP-Knotenname. Ein Themenabonnement folgt der HTTP-API-Konvention, indem es in einer Ressourcensammlung vom Typ „subscriptions“ angeordnet wird. Daher verfügt das Abonnement **sub** oder das Thema **mytopic** über den AMQP-Knotennamen **mytopic/subscriptions/sub**.
+In Service Bus entspricht ein Knoten direkt einer Warteschlange, einem Thema, einem Abonnement oder einer Unterwarteschlange für unzustellbare Nachrichten, die einer Warteschlange oder einem Abonnement zugeordnet ist. Der in AMQP verwendete Knotenname ist daher der relative Name der Entität im Service Bus-Namespace. Wenn eine Warteschlange den Namen `myqueue` hat, ist dies gleichzeitig ihr AMQP-Knotenname. Ein Themenabonnement folgt der HTTP-API-Konvention, indem es in einer Ressourcensammlung vom Typ „subscriptions“ angeordnet wird. Daher verfügt das Abonnement **sub** oder das Thema **mytopic** über den AMQP-Knotennamen **mytopic/subscriptions/sub**.
 
 Der verbindende Client ist auch zum Verwenden eines lokalen Knotennamens zum Erstellen von Verknüpfungen erforderlich. Service Bus schreibt diese Knotennamen nicht vor und interpretiert sie auch nicht. AMQP 1.0-Clientstapel verwenden im Allgemeinen ein Schema, um sicherzustellen, dass diese flüchtigen Knotennamen im Bereich des Clients eindeutig sind.
 
@@ -106,7 +106,7 @@ Nachdem eine Verknüpfung eingerichtet wurde, können Nachrichten über die Verk
 
 Im einfachsten Fall kann sich der Absender Nachrichten im Zustand „vor der Übereinkunft“ (pre-settled) senden. Das bedeutet, dass der Client am Ergebnis nicht interessiert ist und der Empfänger kein Feedback zum Ergebnis des Vorgangs liefert. Dieser Modus wird von Service Bus auf AMQP-Protokollebene unterstützt, aber nicht in den Client-APIs verfügbar gemacht.
 
-Im Normalfall werden Nachrichten ohne Übereinkunft gesendet, und der Empfänger gibt mithilfe der *disposition*-Performative an, ob sie akzeptiert oder abgelehnt wurden. Eine Ablehnung liegt vor, wenn der Empfänger die Nachricht aus einem bestimmten Grund nicht akzeptieren kann. Die Ablehnungsnachricht enthält Informationen zum Grund, und die Fehlerstruktur wird von AMQP definiert. Wenn Nachrichten aufgrund von internen Fehlern in Service Bus abgelehnt werden, gibt der Dienst zusätzliche Informationen innerhalb dieser Struktur zurück. Diese Informationen können zum Bereitstellen von Diagnosehinweisen verwendet werden, um Mitarbeiter zu unterstützen, wenn Sie Supportanfragen erstellen. Weiter unten erhalten Sie weitere Informationen zu Fehlern.
+Im Normalfall werden Nachrichten ohne Übereinkunft gesendet, und der Empfänger gibt mithilfe der *disposition*-Performative an, ob sie akzeptiert oder abgelehnt wurden. Eine Ablehnung liegt vor, wenn der Empfänger die Nachricht aus einem bestimmten Grund nicht akzeptieren kann. Die Ablehnungsnachricht enthält Informationen zum Grund, und die Fehlerstruktur wird von AMQP definiert. Wenn Nachrichten aufgrund von internen Fehlern in Service Bus abgelehnt werden, gibt der Dienst zusätzliche Informationen innerhalb dieser Struktur zurück. Diese Informationen können zum Bereitstellen von Diagnosehinweisen verwendet werden, um Mitarbeiter zu unterstützen, wenn Sie Supportanfragen erstellen. Weiter unten erhalten Sie ausführlichere Informationen zu Fehlern.
 
 Eine Sonderform der Ablehnung ist der Status *released* (Freigegeben). Dieser gibt an, dass der Empfänger keine technischen Einwände gegen die Übertragung erhebt, aber auch kein Interesse an der Erzielung einer Übereinkunft über die Übertragung hat. Ein Beispiel für diesen Fall ist: Eine Nachricht wird an einen Service Bus-Client zugestellt, und der Client entscheidet sich für das „Verwerfen“ der Nachricht, weil er die sich aus der Nachricht ergebenden Verarbeitungsschritte nicht ausführen kann; die Nachrichtenzustellung selbst weist keinen Fehler auf. Eine Variante dieses Zustands ist der Zustand *modified* (Geändert), in dem Änderungen an der Nachricht zulässig sind, wenn sie freigegeben wird. Dieser Status wird von Service Bus derzeit nicht verwendet.
 
@@ -238,7 +238,7 @@ Jede Eigenschaft, die die Anwendung definieren muss, sollte der `application-pro
 
 #### <a name="message-annotations"></a>Nachrichtenanmerkungen
 
-Einige andere Servicebus-Nachrichteneigenschaften sind nicht Teil der AMQP-Nachrichteneigenschaften und werden mit der Nachricht als `MessageAnnotations` übergeben.
+Einige andere Service Bus-Nachrichteneigenschaften sind nicht Teil der AMQP-Nachrichteneigenschaften und werden mit der Nachricht als `MessageAnnotations` übergeben.
 
 | Anmerkungszuordnungsschlüssel | Verwendung | API-Name |
 | --- | --- | --- |
@@ -258,13 +258,13 @@ Die Vorgänge werden durch einen Bezeichner `txn-id` gruppiert.
 
 Für die Transaktionsinteraktion fungiert der Client als `transaction controller`, der die Vorgänge steuert, die zusammen gruppiert werden sollten. Der Service Bus-Dienst fungiert als `transactional resource` und führt Aufgaben aus, die vom `transaction controller` angefordert werden.
 
-Die Kommunikation zwischen Client und Dienst über einen `control link`, der vom Client eingerichtet wird. Die `declare`- und `discharge`-Nachrichten werden vom Controller über den Steuerlink gesendet, um Transaktionen zuzuordnen und abzuschließen (sie entsprechen nicht der Abgrenzung von Transaktionsaufgaben). Das tatsächliche Senden/Empfangen wird nicht über diesen Link ausgeführt. Jeder angeforderte Transaktionsvorgang wird explizit mit der gewünschten `txn-id` identifiziert und kann daher auf einem beliebigen Link der Verbindung auftreten. Wenn der Steuerlink geschlossen ist, während von ihm erstellte nicht entladene Transaktionen vorhanden sind, wird für alle solche Transaktionen sofort ein Rollback durchgeführt, und Versuche, weitere Transaktionsaufgaben daran auszuführen, führen zu Fehlern. Über den Steuerlink gesendete Nachrichten dürfen nicht vorab ausgeglichen sein.
+Die Kommunikation zwischen Client und Dienst erfolgt über einen `control link`, der vom Client eingerichtet wird. Die `declare`- und `discharge`-Nachrichten werden vom Controller über den Steuerlink gesendet, um Transaktionen zuzuordnen und abzuschließen (sie entsprechen nicht der Abgrenzung von Transaktionsaufgaben). Das tatsächliche Senden/Empfangen wird nicht über diesen Link ausgeführt. Jeder angeforderte Transaktionsvorgang wird explizit mit der gewünschten `txn-id` identifiziert und kann daher auf einem beliebigen Link der Verbindung auftreten. Wenn der Steuerlink geschlossen ist, während von ihm erstellte nicht entladene Transaktionen vorhanden sind, wird für alle solche Transaktionen sofort ein Rollback durchgeführt, und Versuche, weitere Transaktionsaufgaben daran auszuführen, führen zu Fehlern. Über den Steuerlink gesendete Nachrichten dürfen nicht vorab ausgeglichen sein.
 
 Jede Verbindung muss einen eigenen Steuerlink initiieren, um Transaktionen starten und beenden zu können. Der Dienst definiert ein spezielles Ziel, das als `coordinator` fungiert. Der Client/Controller richtet einen Steuerlink zu diesem Ziel ein. Der Steuerlink befindet sich außerhalb der Grenzen einer Entität, d.h. derselbe Steuerlink kann zum Initiieren und Entladen von Transaktionen für mehrere Entitäten verwendet werden.
 
 #### <a name="starting-a-transaction"></a>Starten einer Transaktion
 
-Um mit Transaktionsaufgaben zu beginnen, benötigt der Controller eine `txn-id` vom Koordinator. Dies geschieht durch Senden einer `declare`-Typmeldung. Wenn die Deklaration erfolgreich ist, antwortet der Koordinator mit dem Dispositionsergebnis `declared`, das die zugewiesene `txn-id` enthält.
+Um mit Transaktionsaufgaben zu beginnen, benötigt der Controller eine `txn-id` vom Koordinator. Dies geschieht durch Senden einer `declare`-Typmeldung. Wenn die Deklaration erfolgreich ist, antwortet der Koordinator mit dem Dispositionsergebnis, das die zugewiesene `txn-id` enthält.
 
 | Client (Controller) | | Servicebus (Coordinator) |
 | --- | --- | --- |
@@ -283,7 +283,7 @@ Der Controller schließt die Transaktionsaufgabe durch Senden einer `discharge`-
 | --- | --- | --- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
-| | zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten. <br/>Transaktionsaufgabe<br/>auf anderen Links<br/> zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten. |
+| | . . . <br/>Transaktionsaufgabe<br/>auf anderen Links<br/> . . . |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)**)}| ------> |  |
 | | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()**)|
 
@@ -338,7 +338,7 @@ Für dieses Muster ist es natürlich erforderlich, dass der Clientcontainer und 
 
 Der Austausch von Nachrichten für das Verwaltungsprotokoll und alle anderen Protokolle, die das gleiche Muster verwenden, wird auf der Anwendungsebene durchgeführt. Es werden keine neuen Gesten auf AMQP-Protokollebene definiert. Dies ist beabsichtigt, damit Anwendungen diese Erweiterungen mit kompatiblen AMQP 1.0-Stapeln sofort nutzen können.
 
-Service Bus implementiert derzeit keine Kernfeatures der Verwaltungsspezifikation. Das von der Verwaltungsspezifikation definierte Anforderungs-Antwort-Muster stellt aber die Grundlage für die anspruchsbasierte Sicherheitsfunktion und fast alle erweiterten Funktionen dar, die in den folgenden Abschnitten beschrieben werden.
+Service Bus implementiert derzeit keine Kernfeatures der Verwaltungsspezifikation. Das von der Verwaltungsspezifikation definierte Anforderung/Antwort-Muster stellt aber die Grundlage für die anspruchsbasierte Sicherheitsfunktion und fast alle erweiterten Funktionen dar, die in den folgenden Abschnitten beschrieben sind:
 
 ### <a name="claims-based-authorization"></a>Anspruchsbasierte Autorisierung
 
@@ -364,7 +364,7 @@ Die Anforderungsnachricht weist die folgenden Anwendungseigenschaften auf:
 | operation |Nein  |Zeichenfolge |**put-token** |
 | type |Nein  |Zeichenfolge |Der Typ des abgelegten Tokens. |
 | name |Nein  |Zeichenfolge |Die Zielgruppe, für die das Token gilt. |
-| expiration |Ja |timestamp |Der Ablaufzeitpunkt des Tokens. |
+| expiration |JA |timestamp |Der Ablaufzeitpunkt des Tokens. |
 
 Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werden soll. In Service Bus ist dies der Pfad zur Warteschlange oder zum Thema/Abonnement. Die *type*-Eigenschaft dient zum Identifizieren des Tokentyps:
 
@@ -381,7 +381,7 @@ Die Antwortnachricht verfügt über die folgenden *application-properties*-Werte
 | Schlüssel | Optional | Werttyp | Wertinhalt |
 | --- | --- | --- | --- |
 | status-code |Nein  |int |HTTP-Antwortcode **[RFC2616]** |
-| status-description |Ja |Zeichenfolge |Beschreibung des Status |
+| status-description |JA |Zeichenfolge |Beschreibung des Status |
 
 Der Client kann *put-token* wiederholt und für jede Entität in der Messaginginfrastruktur aufrufen. Die Token gelten für den aktuellen Client und sind in der aktuellen Verbindung verankert. Das bedeutet, dass der Server alle beibehaltenen Token verwirft, wenn die Verbindung getrennt wird.
 
@@ -395,7 +395,7 @@ Der Client ist anschließend dafür zuständig, den Tokenablauf nachzuverfolgen.
 
 ### <a name="send-via-functionality"></a>„Senden über“-Funktionalität
 
-Mit der Funktion [Senden über / Übertragungssender](service-bus-transactions.md#transfers-and-send-via) kann Service Bus eine bestimmte Nachricht über eine andere Entität an eine Zielentität weiterleiten. Dies wird hauptsächlich verwendet, um Entitäten übergreifende Vorgänge in einer einzelnen Transaktion auszuführen.
+Mit der Funktion [Senden über / Übertragungssender](service-bus-transactions.md#transfers-and-send-via) kann Service Bus eine bestimmte Nachricht über eine andere Entität an eine Zielentität weiterleiten. Diese Funktion wird hauptsächlich verwendet, um Entitäten übergreifende Vorgänge in einer einzelnen Transaktion auszuführen.
 
 Mit dieser Funktionalität erstellen Sie einen Sender und richten den Link zur `via-entity` ein. Beim Einrichten des Links werden zusätzliche Informationen übergeben, um das „true“-Ziel der Nachrichten/Übertragungen auf diesem Link einzurichten. Nach erfolgreichem Anfügen werden alle Nachrichten, die über diesen Link gesendet wurden, automatisch über die *via-entity* an die *destination-entity* weitergeleitet. 
 

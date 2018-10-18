@@ -5,22 +5,20 @@ services: azure-resource-manager,virtual-machines
 documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
-ms.date: 04/23/2018
+ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 523ea3bf5d41231ab3281f9d8eb1fac8c3dfb55f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9320e3089e02e1ca6b6bcce0287946baaf0558d9
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359144"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452036"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Anzeigen von Bereitstellungsvorgängen mit Azure Resource Manager
 
@@ -67,7 +65,13 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
   Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-2. Jede Bereitstellung umfasst mehrere Vorgänge. Jeder Vorgang repräsentiert einen Schritt des Bereitstellungsvorgangs. Um einen Bereitstellungsfehler zu ermitteln, benötigen Sie in der Regel Einzelheiten zu den Bereitstellungsvorgängen. Den Status der Vorgänge können Sie mit **Get-AzureRmResourceGroupDeploymentOperation** abrufen.
+1. Gehen Sie folgendermaßen vor, um die Korrelations-ID abzurufen:
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
+  ```
+
+1. Jede Bereitstellung umfasst mehrere Vorgänge. Jeder Vorgang repräsentiert einen Schritt des Bereitstellungsvorgangs. Um einen Bereitstellungsfehler zu ermitteln, benötigen Sie in der Regel Einzelheiten zu den Bereitstellungsvorgängen. Den Status der Vorgänge können Sie mit **Get-AzureRmResourceGroupDeploymentOperation** abrufen.
 
   ```powershell 
   Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
@@ -85,7 +89,7 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-3. Um weitere Informationen zu fehlgeschlagenen Vorgängen zu erhalten, rufen Sie die Eigenschaften für Vorgänge mit dem Zustand **Fehler** ab.
+1. Um weitere Informationen zu fehlgeschlagenen Vorgängen zu erhalten, rufen Sie die Eigenschaften für Vorgänge mit dem Zustand **Fehler** ab.
 
   ```powershell
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
@@ -108,7 +112,7 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
   ```
 
     Beachten Sie die serviceRequestId und die trackingId für den Vorgang. Die serviceRequestId kann hilfreich sein, wenn Sie bei der Problembehandlung für eine Bereitstellung mit dem technischen Support zusammenarbeiten. Sie verwenden die trackingId im nächsten Schritt, um sich auf einen bestimmten Vorgang zu konzentrieren.
-4. Verwenden Sie den folgenden Befehl, um die Statusmeldung für einen bestimmten fehlerhaften Vorgang abzurufen:
+1. Verwenden Sie den folgenden Befehl, um die Statusmeldung für einen bestimmten fehlerhaften Vorgang abzurufen:
 
   ```powershell
   ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -121,7 +125,7 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-4. Jeder Bereitstellungsvorgang in Azure enthält Inhalte für Anforderung und Antwort. Der Inhalt der Anforderung ist das, was Sie während der Bereitstellung an Azure senden (z.B. erstellen einer VM, eines Betriebssystemdatenträgers und andere Ressourcen). Der Inhalts der Antwort ist das, was Azure aus der Bereitstellungsanforderung zurücksendet. Während der Bereitstellung können Sie den Parameter **DeploymentDebugLogLevel** verwenden, um anzugeben, dass die Anforderung und/oder Antwort im Protokoll beibehalten werden. 
+1. Jeder Bereitstellungsvorgang in Azure enthält Inhalte für Anforderung und Antwort. Der Inhalt der Anforderung ist das, was Sie während der Bereitstellung an Azure senden (z.B. erstellen einer VM, eines Betriebssystemdatenträgers und andere Ressourcen). Der Inhalts der Antwort ist das, was Azure aus der Bereitstellungsanforderung zurücksendet. Während der Bereitstellung können Sie den Parameter **DeploymentDebugLogLevel** verwenden, um anzugeben, dass die Anforderung und/oder Antwort im Protokoll beibehalten werden. 
 
   Sie erhalten diese Information aus dem Protokoll, und speichern sie lokal mit den folgenden PowerShell-Befehlen:
 

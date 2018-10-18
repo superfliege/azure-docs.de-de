@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 56df09f461458071093088159d3b468755b0e4ad
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 71d8bfa116fd4d0e824d80da26df7271121a595c
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434941"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311370"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Aktivieren von Enterprise State Roaming in Azure Active Directory
 Enterprise State Roaming ist für jedes Unternehmen mit einer Azure AD Premium- oder Enterprise Mobility + Security-Lizenz (EMS) verfügbar. Weitere Informationen zum Erhalt eines Azure AD-Abonnements finden Sie auf der [Azure AD-Produktseite](https://azure.microsoft.com/services/active-directory) .
@@ -32,9 +32,9 @@ Wenn Sie Enterprise State Roaming aktivieren, wird Ihrer Organisation über Azur
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com/) an.
 
-2. Wählen Sie **Azure Active Directory** &gt; **Geräte** &gt; **Enterprise State Roaming**.
+1. Wählen Sie **Azure Active Directory** &gt; **Geräte** &gt; **Enterprise State Roaming**.
 
-3. Wählen Sie **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren**. Weitere Informationen finden Sie unter [Verwalten von Geräten im Azure-Portal – Vorschau](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
+1. Wählen Sie **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren**. Weitere Informationen finden Sie unter [Verwalten von Geräten im Azure-Portal – Vorschau](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
   ![Bild der Geräteeinstellung „Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren“](./media/active-directory-windows-enterprise-state-roaming-enable/device-settings.png)
   
@@ -57,15 +57,15 @@ Führen Sie diese Schritte aus, um einen Bericht zum Gerätesynchronisierungssta
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com/) an.
 
-2. Wählen Sie **Azure Active Directory** &gt; **Benutzer** &gt; **Alle Benutzer**.
+1. Wählen Sie **Azure Active Directory** &gt; **Benutzer** &gt; **Alle Benutzer**.
 
-3. Wählen Sie den Benutzer und dann **Geräte** aus.
+1. Wählen Sie den Benutzer und dann **Geräte** aus.
 
-4. Wählen Sie unter **Anzeigen** die Option **Einstellungen für Gerätesynchronisierung und App-Daten**, um den Synchronisierungsstatus anzuzeigen.
+1. Wählen Sie unter **Anzeigen** die Option **Einstellungen für Gerätesynchronisierung und App-Daten**, um den Synchronisierungsstatus anzuzeigen.
   
   ![Bild der Gerätesynchronisierungsdaten-Einstellung](./media/active-directory-windows-enterprise-state-roaming-enable/sync-status.png)
   
-5. Wenn für diese Benutzer Geräte synchronisiert werden, werden die Geräte hier angezeigt.
+1. Wenn für diese Benutzer Geräte synchronisiert werden, werden die Geräte hier angezeigt.
   
   ![Bild der Spaltendarstellung von Gerätesynchronisierungsdaten](./media/active-directory-windows-enterprise-state-roaming-enable/device-status-row.png)
 
@@ -77,7 +77,7 @@ Bei expliziter Löschung löscht ein Azure-Administrator einen Benutzer oder ein
 
 * **Löschung eines Benutzers**: Wenn ein Benutzer in Azure AD gelöscht wird, werden die Roamingdaten des Benutzerkontos nach 90 bis 180 Tagen gelöscht. 
 * **Löschung eines Verzeichnisses:** Das Löschen eines gesamten Verzeichnisses in Azure AD ist ein unmittelbarer Vorgang. Alle diesem Verzeichnis zugeordneten Einstellungsdaten werden nach 90 bis 180 Tagen gelöscht. 
-* **Löschung auf Anforderung:** Wenn der Azure AD-Administrator die Einstellungen oder Daten eines bestimmten Benutzers manuell löschen möchte, kann er beim [Azure-Support](https://azure.microsoft.com/support/) ein Ticket erstellen. 
+* **Löschung auf Anforderung:** Wenn der Azure AD-Administrator die Einstellungen oder Daten eines bestimmten Benutzers manuell löschen möchte, kann er beim [Azure-Support](https://azure.microsoft.com/support/)ein Ticket erstellen. 
 
 ### <a name="stale-data-deletion"></a>Löschung veralteter Daten
 Daten, auf die ein Jahr lang nicht zugegriffen wurde („Aufbewahrungsdauer“), werden als veraltet eingestuft und ggf. aus der Microsoft Cloud gelöscht. Die Aufbewahrungsdauer kann sich ändern, wird jedoch nicht weniger als 90 Tage betragen. Bei den veralteten Daten kann es sich um eine bestimmte Gruppe von Windows-/Anwendungseinstellungen oder um alle Einstellungen eines Benutzers handeln. Beispiel: 

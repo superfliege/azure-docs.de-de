@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Azure Key Vault mit der CLI | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zum Automatisieren von häufigen Aufgaben in Key Vault mithilfe von CLI 2.0
+description: Dieser Artikel enthält Informationen zum Automatisieren von häufigen Aufgaben in Key Vault mithilfe der Azure CLI
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: f88e98561a88380fbe40ecc9627ffabe39b0071c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ba39ba2d4206fa86ed32bddf0538a2e997a79339
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295173"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220566"
 ---
-# <a name="manage-key-vault-using-cli-20"></a>Verwalten von Schlüsseltresor mit CLI 2.0
+# <a name="manage-key-vault-using-the-azure-cli"></a>Verwalten von Key Vault mit der Azure CLI 
 
-In diesem Artikel wird beschrieben, wie Sie Azure Key Vault mithilfe der Azure CLI 2.0 verwenden. Sie finden hier Informationen zu folgenden Schritten:
+In diesem Artikel wird beschrieben, wie Sie Azure Key Vault mithilfe der Azure CLI verwenden.  Sie finden hier Informationen zu folgenden Schritten:
 
-- Voraussetzungen
 - Erstellen eines festgeschriebenen Containers (Tresors) in Azure
 - Hinzufügen eines Schlüssels, Geheimnisses oder Zertifikats zum Schlüsseltresor
 - Registrieren einer Anwendung mit Azure Active Directory
@@ -50,7 +49,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Für die Verwendung der Azure CLI-Befehle in diesem Artikel benötigen Sie Folgendes:
 
 * Ein Abonnement für Microsoft Azure. Falls Sie über kein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial) registrieren.
-* Befehlszeilenschnittstellen-Version 2.0 oder höher. Informationen zum Installieren der aktuellen Version finden Sie unter [Installieren und Konfigurieren der plattformübergreifenden Azure CLI 2.0](/cli/azure/install-azure-cli).
+* Azure-Befehlszeilenschnittstelle Version 2.0 oder höher. Unter [Install the Azure CLI (Installieren der Azure CLI)](/cli/azure/install-azure-cli) erhalten Sie Informationen zur Installation der neuesten Version.
 * Eine Anwendung, die zur Verwendung des Schlüssels oder Kennworts konfiguriert wird, den bzw. das Sie in diesem Artikel erstellen. Eine Beispielanwendung erhalten Sie im [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=45343). Anweisungen finden Sie in der enthaltenen Infodatei.
 
 ### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Hilfestellung für die plattformübergreifende Azure-Befehlszeilenschnittstelle
@@ -67,7 +66,7 @@ az account set -h
 Lesen Sie bitte auch die folgenden Artikel, um sich mit dem Azure Resource Manager in der plattformübergreifenden Azure CLI vertraut zu machen:
 
 * [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
-* [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli)
+* [Erste Schritte mit der Azure CLI](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Erstellen eines festgeschriebenen Containers (Tresors) in Azure
 
@@ -200,7 +199,7 @@ Anwendungen, die einen Schlüsseltresor verwenden, müssen sich mithilfe eines A
 
 Die Anwendung muss beide dieser Werte in Azure Active Directory vorlegen, um ein Token zu erhalten.  Die Konfiguration des Tokenabrufs hängt von der Anwendung ab. Bei der [Key Vault-Beispielanwendung](https://www.microsoft.com/download/details.aspx?id=45343) legt der Anwendungsbesitzer diese Werte in der Datei „app.config“ fest.
 
-Ausführliche Anweisungen zum Registrieren einer Anwendung in Azure Active Directory finden Sie in den Artikeln [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md), [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md) und [Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli).
+Ausführliche Anweisungen zum Registrieren einer Anwendung in Azure Active Directory finden Sie in den Artikeln [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md), [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md) und [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 Registrieren Sie eine Anwendung in Azure Active Directory:
 

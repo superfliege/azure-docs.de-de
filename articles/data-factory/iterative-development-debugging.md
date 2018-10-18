@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie Data Factory-Pipelines im Azure-Portal i
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 05/14/2018
+ms.date: 09/26/2018
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: a4d3f991dbba8a686c7242aabff11d9228300777
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 610f0c8691714bf30415347dd2775b6fa3625c11
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865164"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391094"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratives Entwickeln und Debuggen mit Azure Data Factory
 
@@ -40,13 +40,22 @@ Fügen Sie nach der erfolgreichen Ausführung eines Testlaufs weitere Aktivität
 
 ![Abbrechen eines Testlaufs](media/iterative-development-debugging/iterative-development-image3.png)
 
-Beim Ausführen von Testläufen müssen Sie Ihre Änderungen nicht in der Data Factory veröffentlichen, bevor Sie auf **Debuggen** klicken. Dies ist in Szenarien praktisch, bei denen Sie sicherstellen möchten, dass die Änderungen wie erwartet funktionieren, bevor Sie den Data Factory-Workflow aktualisieren.
+Beim Ausführen von Testläufen müssen Sie Ihre Änderungen nicht in der Data Factory veröffentlichen, bevor Sie auf **Debuggen** klicken. Dieses Feature ist in Szenarios praktisch, bei denen Sie sicherstellen möchten, dass die Änderungen wie erwartet funktionieren, bevor Sie den Data Factory-Workflow aktualisieren.
 
-## <a name="more-info-about-debugging"></a>Weitere Informationen zum Debuggen
+> [!IMPORTANT]
+> Durch Auswählen von **Debuggen** wird die Pipeline ausgeführt. Wenn die Pipeline also beispielsweise die copy-Aktivität enthält, werden beim Testlauf Daten aus der Quelle zum Ziel kopiert. Daher wird empfohlen, beim Debuggen Testordner in Ihrer copy-Aktivität und Ihren anderen Aktivitäten zu verwenden. Wechseln Sie nach dem Debuggen der Pipeline zu den Ordnern, die Sie tatsächlich in normalen Vorgängen verwenden möchten.
 
-1. Die mit der Funktion **Debuggen** initiierten Testläufe sind nicht in der Liste auf der Registerkarte **Überwachen** verfügbar. Es werden nur Testläufe angezeigt, die mithilfe der Trigger **Jetzt auslösen**, **Zeitplan** oder **Rollierendes Fenster** auf der Registerkarte **Überwachen** ausgelöst wurden. Der letzte mit der Funktion **Debuggen** initiierte Testlauf wird im Fenster **Ausgabe** der Pipelinecanvas angezeigt.
+## <a name="visualizing-debug-runs"></a>Visualisieren von Debugausführungen
 
-2. Durch Auswählen von **Debuggen** wird die Pipeline ausgeführt. Wenn die Pipeline also beispielsweise die copy-Aktivität enthält, werden beim Testlauf Daten aus der Quelle zum Ziel kopiert. Daher wird empfohlen, beim Debuggen Testordner in Ihrer copy-Aktivität und Ihren anderen Aktivitäten zu verwenden. Wechseln Sie nach dem Debuggen der Pipeline zu den Ordnern, die Sie tatsächlich in normalen Vorgängen verwenden möchten.
+Sie können alle Debugausführungen visualisieren, die an einem Ort für Ihre Data Factory verarbeitet werden. Wählen Sie in der oberen rechten Ecke der Seite **View debug runs** (Debugausführungen anzeigen) aus. Dieses Feature ist in Szenarios nützlich, in denen Masterpipelines Debugausführungen für untergeordnete Pipelines auslösen und Sie möchten, dass alle aktiven Debugausführungen in einer einzelnen Ansicht angezeigt werden.
+
+![Auswählen des Symbols zum Anzeigen aktiver Debugausführungen](media/iterative-development-debugging/view-debug-runs-image1.png)
+
+![Beispielauflistung aktiver Debugausführungen](media/iterative-development-debugging/view-debug-runs-image2.png)
+
+## <a name="monitoring-debug-runs"></a>Überwachen von Debugausführungen
+
+Die mit der Funktion **Debuggen** initiierten Testläufe sind nicht in der Liste auf der Registerkarte **Überwachen** verfügbar. Es werden nur Testläufe angezeigt, die mithilfe der Trigger **Jetzt auslösen**, **Zeitplan** oder **Rollierendes Fenster** auf der Registerkarte **Überwachen** ausgelöst wurden. Der letzte mit der Funktion **Debuggen** initiierte Testlauf wird im Fenster **Ausgabe** der Pipelinecanvas angezeigt.
 
 ## <a name="setting-breakpoints-for-debugging"></a>Festlegen von Breakpoints für das Debuggen
 

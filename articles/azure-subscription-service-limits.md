@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: 00955d5de314e6efb0e491e33708495fbdd14f3b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: efaca1b9506ada02c52ad0833139d3b4e441d456
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782589"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393612"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden. Dieses Dokument behandelt derzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste erweitert, um größere Teile der Plattform abzudecken.
@@ -52,10 +52,12 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Azure-Datenbank für PostgreSQL](#azure-database-for-postgresql)
 * [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
+* [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Sicherung](#backup-limits)
 * [Batch](#batch-limits)
+* [Batch AI](#batch-ai-limits)
 * [BizTalk Services](#biztalk-services-limits)
 * [CDN](#cdn-limits)
 * [Cloud Services](#cloud-services-limits)
@@ -69,6 +71,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
 * [Azure Firewall](#azure-firewall-limits)
+* [Front Door](#azure-front-door-service-limits)
 * [IoT Hub](#iot-hub-limits)
 * [IoT Hub Device Provisioning-Dienst](#iot-hub-device-provisioning-service-limits)
 * [Schlüsseltresor](#key-vault-limits)
@@ -77,7 +80,6 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Media Services](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
-* [Überwachen](#monitor-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [Netzwerk](#networking-limits)
 * [Network Watcher](#network-watcher-limits)
@@ -87,6 +89,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Scheduler](#scheduler-limits)
 * [Suchen,](#search-limits)
 * [Service Bus](#service-bus-limits)
+* [SignalR-Dienst](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL-Datenbank](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -156,11 +159,16 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 #### <a name="azure-firewall-limits"></a>Grenzwerte für Azure Firewall
 [!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
 
-### <a name="storage-limits"></a>Speichergrenzwerte
-Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage/common/storage-scalability-targets.md).
+#### <a name="azure-front-door-service-limits"></a>Grenzwerte von Azure Front Door Service
+[!INCLUDE [azure-front-door-service-limits](../includes/front-door-limits.md)]
 
+### <a name="storage-limits"></a>Speichergrenzwerte
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+
+Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage/common/storage-scalability-targets.md).
+
+#### <a name="storage-resource-provider-limits"></a>Grenzwerte für Speicherressourcenanbieter 
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -211,6 +219,9 @@ Die folgenden App Service-Grenzwerte umfassen Grenzwerte für Web-Apps, Mobile A
 ### <a name="batch-limits"></a>Batch-Grenzwerte
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
+### <a name="batch-ai-limits"></a>Grenzwerte von Batch AI
+[!INCLUDE [azure-batch-ai-limits](../includes/azure-batch-ai-limits.md)]
+
 ### <a name="biztalk-services-limits"></a>BizTalk Services-Grenzwerte
 In der folgende Tabelle werden die Grenzwerte für Azure Biztalk Services aufgeführt.
 
@@ -224,9 +235,6 @@ Informationen zu Grenzwerten für Azure Database for MySQL finden Sie unter [Bes
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Informationen zu Grenzwerten für Azure Database for PostgreSQL finden Sie unter [Beschränkungen in Azure Database for PostgreSQL](postgresql/concepts-limits.md).
-
-### <a name="mobile-engagement-limits"></a>Mobile Engagement-Grenzwerte
-[!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
 
 ### <a name="search-limits"></a>Search-Grenzwerte
 Die Tarife bestimmen die Kapazität und die Beschränkungen des Suchdiensts. Folgende Tarife sind verfügbar:
@@ -307,6 +315,9 @@ Detailliertere Informationen zu Grenzwerten wie etwa für Dokumentgröße, Abfra
 
 ### <a name="backup-limits"></a>Backup-Grenzwerte
 [!INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
+
+### <a name="signalr-service-limits"></a>Grenzwerte von SignalR
+[!INCLUDE [signalr-service-limits](../includes/signalr-service-limits.md)]
 
 ### <a name="site-recovery-limits"></a>Site Recovery-Grenzwerte
 [!INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]

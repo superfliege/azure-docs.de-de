@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 81fab8903c0101d0e4aae8a392f05129651cd762
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 698a85244d5341224dd9f513c5617b9086e36844
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368628"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033072"
 ---
 # <a name="scaling-media-processing-overview"></a>Übersicht über das Skalieren der Medienverarbeitung
 Diese Seite bietet eine Übersicht über die Gründe und Vorgehensweise bei der Skalierung der Medienverarbeitung. 
@@ -30,12 +30,12 @@ Ein Media Services-Konto ist dem Typ einer reservierten Einheit zugeordnet, der 
 Zusätzlich zum Typ reservierter Einheiten können Sie angeben, dass für Ihr Konto reservierte Einheiten bereitgestellt werden sollen. Die Anzahl der bereitgestellten reservierten Einheiten bestimmt die Anzahl der Medienaufgaben, die gleichzeitig unter einem angegebenen Konto verarbeitet werden können. Wenn Ihr Konto beispielsweise über fünf reservierte Einheiten verfügt, werden fünf Medienaufgaben gleichzeitig ausgeführt, solange es auszuführende Aufgaben gibt. Die restlichen Aufgaben bleiben in der Warteschlange und werden nacheinander für die Verarbeitung aufgerufen, wenn eine aktive Aufgabe abgeschlossen wird. Wenn für ein Konto keine reservierten Einheiten bereitgestellt wurden, werden die Aufgaben nacheinander aufgerufen. In diesem Fall hängt die Wartezeit zwischen dem Abschließen einer Aufgabe und dem Start der nächsten Aufgabe von der Verfügbarkeit von Ressourcen im System ab.
 
 ## <a name="choosing-between-different-reserved-unit-types"></a>Auswählen zwischen verschiedenen Typen reservierter Einheiten
-Die folgende Tabelle hilft Ihnen bei der Entscheidung, wenn Sie zwischen verschiedenen Codierungsgeschwindigkeit wählen müssen. Sie enthält darüber hinaus einige Fälle für Vergleichstests sowie SAS-URLs, über die Sie Videos für eigene Tests herunterladen können:
+Die folgende Tabelle hilft Ihnen bei der Entscheidung, wenn Sie zwischen verschiedenen Codierungsgeschwindigkeiten wählen müssen. Sie stellt darüber hinaus einige Fälle für Vergleichstests in [einem Video, das Sie herunterladen können](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z), bereit, damit Sie Ihre eigenen Tests ausführen können:
 
 | Szenarien | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
 | Beabsichtigter Anwendungsfall |Single-Bitrate-Codierung. <br/>Dateien mit SD-Auflösung oder einer niedrigeren Auflösung, nicht zeitkritisch, niedrige Kosten. |Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Normale Verwendung für SD- und HD-Codierung. |Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Videos mit Full HD- und 4K-Auflösung. Zeitkritisch, schnellere Codierung |
-| Vergleichstest |Die Codierung in eine Single-Bitrate-MP4-Datei mit gleicher Auflösung dauert ca. 11 Minuten. |Die Codierung mit der Voreinstellung „H264 Single Bitrate 720p“ dauert etwa 5 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 720p“ dauert etwa 11,5 Minuten. |Die Codierung mit der Voreinstellung „H264 Single Bitrate 1080p“ dauert etwa 2,7 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 1080p“ dauert etwa 5,7 Minuten. |
+| Vergleichstest für ein siebenminütiges Video |Die Codierung in eine Single-Bitrate-MP4-Datei mit gleicher Auflösung dauert ca. 5 Minuten. |Die Codierung mit der Voreinstellung „H264 Single Bitrate 720p“ dauert etwa 8 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 720p“ dauert etwa 16,8 Minuten. |Die Codierung mit der Voreinstellung „H264 Single Bitrate 1080p“ dauert etwa 4 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 1080p“ dauert etwa 8 Minuten. |
 
 
 ## <a name="considerations"></a>Überlegungen

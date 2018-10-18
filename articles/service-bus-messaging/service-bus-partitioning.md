@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 09/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 821d9bf3c844da030d1d351e895704a81678fb4e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2ca2063158634dfa42da094b77c70a2730e82176
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699470"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423169"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
 
@@ -140,7 +140,7 @@ Service Bus unterstützt die automatische Nachrichtenweiterleitung von und zwisc
 
 Derzeit gelten bei Service Bus die folgenden Einschränkungen für partitionierte Warteschlangen und Themen:
 
-* Partitionierte Warteschlangen und Themen werden im Premium-Messaging-Tarif nicht unterstützt.
+* Partitionierte Warteschlangen und Themen werden im Premium-Messaging-Tarif nicht unterstützt. Sitzungen werden im Premium-Tarif mithilfe von SessionId unterstützt. 
 * Für partitionierte Warteschlangen und Themen wird nicht das Senden von Nachrichten unterstützt, die unterschiedlichen Sitzungen einer einzelnen Transaktion angehören.
 * Service Bus erlaubt derzeit bis zu 100 partitionierte Warteschlangen oder Themen pro Namespace. Jede partitionierte Warteschlange bzw. jedes partitionierte Thema wird in das zulässige Kontingent von 10.000 Entitäten pro Namespace eingerechnet (gilt nicht für Premium-Tarif).
 

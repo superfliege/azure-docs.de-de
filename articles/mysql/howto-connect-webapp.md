@@ -8,13 +8,13 @@ editor: jasonwhowell
 manager: kfile
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: ff4a28e2f9a0149016d0e47c24e4665ab2e0500d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/26/2018
+ms.openlocfilehash: 4aecc4941f2181216ea537c0019152ce822ac4b0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265502"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408934"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Verbinden vorhandener Azure App Service-Instanzen mit Azure-Datenbank für MySQL
 Dieses Thema erläutert das Verbinden vorhandener Azure App Service-Instanzen mit Ihrem Azure Database for MySQL-Server.
@@ -24,24 +24,15 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. Erstellen eines
 
 Es gibt derzeit zwei Lösungen zum Aktivieren des Zugriffs von Azure App Service auf Azure-Datenbank für MySQL. Beide Lösungen umfassen das Einrichten von Firewallregeln auf Serverebene.
 
-## <a name="solution-1---create-a-firewall-rule-to-allow-all-ips"></a>Lösung 1: Erstellen einer Firewallregel für das Zulassen aller IP-Adressen
-Azure-Datenbank für MySQL bietet Zugriffssicherheit über eine Firewall zum Schutz Ihrer Daten. Beim Herstellen einer Verbindung von Azure App Service mit Azure-Datenbank für MySQL-Server sollten Sie bedenken, dass die ausgehenden IP-Adressen von App Service dynamisch sind. 
-
-Um die Verfügbarkeit von Azure App Service sicherzustellen, wird empfohlen, diese Lösung zu verwenden, bei der alle IP-Adressen zugelassen werden.
-
-> [!NOTE]
-> Microsoft arbeitet an einer langfristigen Lösung, mit der vermieden werden kann, dass für eine Verbindung mit Azure Database for MySQL alle IP-Adressen für Azure-Dienste zugelassen werden müssen.
+## <a name="solution-1---allow-azure-services"></a>Lösung 1: Zulassen von Azure-Diensten
+Azure-Datenbank für MySQL bietet Zugriffssicherheit über eine Firewall zum Schutz Ihrer Daten. Beim Herstellen einer Verbindung von Azure App Service mit Azure-Datenbank für MySQL-Server sollten Sie bedenken, dass die ausgehenden IP-Adressen von App Service dynamisch sind. Durch Auswahl der Option „Zugriff auf Azure-Dienste erlauben“ wird zugelassen, dass App Service eine Verbindung mit MySQL Server herstellt.
 
 1. Klicken Sie auf dem Blatt des MySQL-Servers unter der Überschrift „Einstellungen“ auf **Verbindungssicherheit**, um das Blatt „Verbindungssicherheit“ für Azure Database for MySQL zu öffnen.
 
-   ![Azure-Portal – Klicken auf „Verbindungssicherheit“](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+   ![Azure-Portal – Klicken auf „Verbindungssicherheit“](./media/howto-connect-webapp/1-connection-security.png)
 
-2. Geben Sie **REGELNAME**, **START-IP** und **END-IP** ein, und klicken Sie dann auf **Speichern**.
-   - Regelname: Allow-All-IPs
-   - Start-IP: 0.0.0.0
-   - End-IP: 255.255.255.255
-
-   ![Azure-Portal – alle IP-Adressen hinzufügen](./media/howto-connect-webapp/1_2-add-all-ips.png)
+2. Wählen Sie für **Zugriff auf Azure-Dienste erlauben** **ON** (EIN) aus, und klicken Sie dann auf **Speichern**.
+   ![Azure-Portal: Zugriff auf Azure-Dienste erlauben](./media/howto-connect-webapp/allow-azure.png)
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>Lösung 2: Erstellen einer Firewallregel zum expliziten Zulassen ausgehender IP-Adressen
 Sie können alle ausgehenden IP-Adressen von Azure App Service explizit hinzufügen.

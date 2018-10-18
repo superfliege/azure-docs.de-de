@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: ab0fa22e9ba776db3d4af301499545f6e0822478
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 034d59c39628a08c389c5ceb67c5872bbea10d59
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070170"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223167"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit Konnektivität und Netzwerken in Microsoft Azure Cloud Services – Häufig gestellte Fragen (FAQs)
 
@@ -65,7 +65,7 @@ Standardmäßig wird ein 5-Tupel-Hash-Verteilungsalgorithmus (Quell-IP, Quellpor
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Wie kann ich den bei meiner Standard-URL des Clouddiensts eingehenden Datenverkehr zu einer benutzerdefinierten URL umleiten? 
 
-Das URL-Rewrite-Modul von IIS kann zum Umleiten von Datenverkehr, der bei der Standard-URL für den Clouddienst (z.B. \*. cloudapp.net) eingeht, zu einem benutzerdefinierten Namen/einer benutzerdefinierten URL verwendet werden. Da das URL-Rewrite-Modul standardmäßig auf Webrollen aktiviert ist und seine Regeln in der „web.config“ der Anwendung konfiguriert sind, ist es auf dem virtuellen Computer unabhängig von Neustarts/Duchführungen von Reimages immer verfügbar. Weitere Informationen finden Sie unter 
+Das URL-Rewrite-Modul von IIS kann zum Umleiten von Datenverkehr, der bei der Standard-URL für den Clouddienst (z.B. \*. cloudapp.net) eingeht, zu einem benutzerdefinierten Namen/einer benutzerdefinierten URL verwendet werden. Da das URL-Rewrite-Modul standardmäßig auf Webrollen aktiviert ist und seine Regeln in der „web.config“ der Anwendung konfiguriert sind, ist es auf dem virtuellen Computer unabhängig von Neustarts/Duchführungen von Reimages immer verfügbar. Weitere Informationen finden Sie unter
 
 - [Erstellen von Neuschreibungsregeln für das URL-Rewrite-Modul](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Remove a default link (Entfernen eines Standardlinks)](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
@@ -110,3 +110,19 @@ Diese Datei enthält die IP-Adressbereiche (einschließlich Compute-, SQL- und S
 ## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>Wie kann ich virtuelle Azure Resource Manager-Netzwerke mit Clouddiensten verwenden? 
 
 Clouddienste können nicht in virtuelle Azure Resource Manager-Netzwerke platziert werden. Virtuelle Resource Manager-Netzwerke und virtuelle Netzwerke in klassischen Bereitstellungen können über Peering verbunden werden. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md).
+
+
+## <a name="how-can-i-get-the-list-of-public-ips-used-by-my-cloud-services"></a>Wie erhalte ich die Liste der öffentlichen IP-Adressen, die von meinen Cloud Services genutzt werden?
+
+Sie können das folgende PS-Skript verwenden, um die Liste der öffentlichen IP-Adressen für Cloud Services unter Ihrem Konto abzurufen.
+
+    $services = Get-AzureService  | Group-Object -Property ServiceName
+
+    foreach ($service in $services) 
+    {
+        "Cloud Service '$($service.Name)'"
+
+        $deployment = Get-AzureDeployment -ServiceName $service.Name 
+        "VIP - " +  $deployment.VirtualIPs[0].Address
+        "================================="
+    }

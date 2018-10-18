@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 9fa966999e220ea4357d5b5c37f0038c75fe2339
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607110"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393982"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Azure AD-Nutzungsbedingungen.
@@ -242,4 +242,4 @@ A: Sie können [zuvor akzeptierte Nutzungsbedingungen überprüfen](#how-users-c
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Best Practices für den bedingten Zugriff in Azure Active Directory](../../cognitive-services/qnamaker/concepts/best-practices.md)
+- [Best Practices für den bedingten Zugriff in Azure Active Directory](../../active-directory/conditional-access/best-practices.md)

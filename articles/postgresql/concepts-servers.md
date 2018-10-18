@@ -4,17 +4,16 @@ description: Dieser Artikel enthält Aspekte und Richtlinien für das Konfigurie
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/22/2018
-ms.openlocfilehash: f877f6df51cd7aed29260331d27d5c96f0584afc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 09/27/2018
+ms.openlocfilehash: 8fcb5e8371d6c813eb7f0ab4d23a5aac5c41fb3b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640012"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404638"
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL-Server
 Dieser Artikel enthält Erwägungen und Richtlinien für die Arbeit mit Azure-Datenbank für PostgreSQL-Server.
@@ -56,6 +55,7 @@ Das PostgreSQL-Superuser-Attribut ist dem „azure_superuser“ zugewiesen, der 
 Ein Azure Database for PostgreSQL-Server verfügt über zwei Standarddatenbanken: 
 - **postgres**: Eine Standarddatenbank, mit der Sie nach der Erstellung Ihres Servers eine Verbindung herstellen können.
 - **azure_maintenance**: Diese Datenbank wird verwendet, um die Prozesse, die den verwalteten Dienst bereitstellen, von den Benutzeraktionen zu trennen. Sie haben keinen Zugriff auf diese Datenbank.
+- **azure_sys**: Eine Datenbank für den Abfragespeicher. Diese Datenbank sammelt keine Daten, wenn der Abfragespeicher deaktiviert ist (Standardeinstellung). Weitere Informationen finden Sie in der [Übersicht über den Abfragespeicher](concepts-query-store.md).
 
 
 ## <a name="server-parameters"></a>Serverparameter

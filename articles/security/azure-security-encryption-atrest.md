@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 21438b107632166f3717c07b0fd01a56a2944f34
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 71351a979e8bb443864c975b91539c527bea7f2a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294055"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033429"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -79,7 +79,7 @@ Die DEKs, die mit KEKs verschlüsselt wurden, werden separat gespeichert. Nur ei
 
 ## <a name="data-encryption-models"></a>Datenverschlüsselungsmodelle
 
-Ein fundiertes Verständnis der verschiedenen Verschlüsselungsmodelle und ihrer jeweiligen Vor- und Nachteile ist wesentlich, um zu verstehen, wie die verschiedenen Ressourcenanbieter in Azure die Verschlüsselung ruhender Daten implementieren. Diese Definitionen sind in allen Ressourcenanbietern in Azure gleich, um die gleiche Sprache und Taxonomie zu gewährleisten. 
+Damit Sie verstehen, wie die verschiedenen Ressourcenanbieter in Azure die ruhende Verschlüsselung implementieren, ist es wichtig, dass Sie die unterschiedlichen Verschlüsselungsmodelle und deren Vor- und Nachteile kennen. Diese Definitionen sind in allen Ressourcenanbietern in Azure gleich, um die gleiche Sprache und Taxonomie zu gewährleisten. 
 
 Es gibt drei Szenarios für die serverseitige Verschlüsselung:
 
@@ -259,28 +259,28 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 |----------------------------------|--------------------|--------------------|--------------------|--------------------|
 |                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Key Vault**             |  **Serverseitig mit vom Kunden lokal verwaltetem Schlüssel**                  | **Client mit clientverwaltetem Schlüssel**      |
 | **Speicher und Datenbanken**        |                    |                    |                    |                    |                    |
-| Datenträger (IaaS)                      | -                  | Ja, RSA 2048 Bit  | Ja               | -                  |
-| SQL Server (IaaS)                | Ja                | Ja, RSA 2048 Bit  | Ja                | Ja                |
-| Azure SQL-Datenbank (PaaS)        | Ja                | Ja, RSA 2048 Bit  | -                  | Ja                |
-| Azure Storage (Block-/Seitenblobs) | Ja                | Ja, RSA 2048 Bit  | -                  | Ja                |
-| Azure Storage (Dateien)            | Ja                | Ja, RSA 2048 Bit  | -                  | -                  |
-| Azure Storage (Tabellen, Warteschlangen)   | Ja                | -                  | -                  | Ja                |
-| Cosmos DB (Document DB)          | Ja                | -                  | -                  | -                  |
-| StorSimple                       | Ja                | -                  | -                  | Ja                |
-| Backup                           | -                  | -                  | -                  | Ja                |
+| Datenträger (IaaS)                      | -                  | Ja, RSA 2048 Bit  | JA               | -                  |
+| SQL Server (IaaS)                | JA                | Ja, RSA 2048 Bit  | JA                | JA                |
+| Azure SQL-Datenbank/Azure SQL Data Warehouse | JA                | Ja, RSA 2048 Bit  | -                  | JA                |
+| Azure Storage (Block-/Seitenblobs) | JA                | Ja, RSA 2048 Bit  | -                  | JA                |
+| Azure Storage (Dateien)            | JA                | Ja, RSA 2048 Bit  | -                  | -                  |
+| Azure Storage (Tabellen, Warteschlangen)   | JA                | -                  | -                  | JA                |
+| Cosmos DB (Document DB)          | JA                | -                  | -                  | -                  |
+| StorSimple                       | JA                | -                  | -                  | JA                |
+| Backup                           | -                  | -                  | -                  | JA                |
 | **Informationen und Analyse**   |                    |                    |                    |                    |
-| Azure Data Factory               | Ja                | -                  | -                  | -                  |
+| Azure Data Factory               | JA                | -                  | -                  | -                  |
 | Azure Machine Learning           | -                  | RSA 2048 Bit, Vorschauversion | -                  | -                  |
-| Azure Stream Analytics           | Ja                | -                  | -                  | -                  |
-| HDInsight (Azure Blob Storage)   | Ja                | -                  | -                  | -                  |
-| HDInsight (Data Lake Storage)    | Ja                | -                  | -                  | -                  |
-| Azure Data Lake Store            | Ja                | Ja, RSA 2048 Bit  | -                  | -                  |
-| Azure Data Catalog               | Ja                | -                  | -                  | -                  |
-| Power BI                         | Ja                | -                  | -                  | -                  |
+| Azure Stream Analytics           | JA                | -                  | -                  | -                  |
+| HDInsight (Azure Blob Storage)   | JA                | -                  | -                  | -                  |
+| HDInsight (Data Lake Storage)    | JA                | -                  | -                  | -                  |
+| Azure Data Lake Store            | JA                | Ja, RSA 2048 Bit  | -                  | -                  |
+| Azure Data Catalog               | JA                | -                  | -                  | -                  |
+| Power BI                         | JA                | -                  | -                  | -                  |
 | **IoT-Dienste**                 |                    |                    |                    |                    |
-| IoT Hub                          | -                  | -                  | -                  | Ja                |
-| Service Bus                      | Ja                | -                  | -                  | Ja                |
-| Event Hubs                       | Ja                | -                  | -                  | -                  |
+| IoT Hub                          | -                  | -                  | -                  | JA                |
+| Service Bus                      | JA                | -                  | -                  | JA                |
+| Event Hubs                       | JA                | -                  | -                  | -                  |
 
 
 ## <a name="conclusion"></a>Zusammenfassung

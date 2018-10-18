@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3f2fa055af63ab3920fec79ad93c25b8ea7e5ed9
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 6d79cdf279022320f654fbbeadb870f82db88cab
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42141263"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392784"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
 
@@ -50,9 +50,12 @@ Die Anwendungen, die verwendet werden und für die eine Lizenzgebühr anfällt, 
 * Geben Sie beim [Erstellen eines Pools](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body) die `applicationLicenses`-Eigenschaft an.  Die folgenden Werte können im Array von Zeichenfolgen angegeben werden: „vray“, „arnold“, „3dsmax“ und „maya“.
 * Wenn Sie eine oder mehrere Anwendungen angeben, werden die Kosten für diese Anwendungen mit den Kosten der virtuellen Computer addiert.  Anwendungspreise sind auf der [Seite mit den Preisen für Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering) aufgeführt.
 
+> [!NOTE]
+> Wenn Sie stattdessen eine Verbindung mit einem Lizenzserver für die Verwendung der Renderinganwendungen herstellen, geben Sie die `applicationLicenses`-Eigenschaft nicht an.
+
 Sie können das Azure-Portal oder Batch Explorer zum Auswählen von Anwendungen und Anzeigen der Preise für die Anwendungen verwenden.
 
-Wenn versucht wird, eine Anwendung zu verwenden, die Anwendung jedoch in der `applicationLicenses`-Eigenschaft der Poolkonfiguration nicht angegeben wurde, treten bei der Ausführung der Anwendung ein Lizenzierungsfehler und ein Exitcode ungleich null auf.
+Wenn versucht wird, eine Anwendung zu verwenden, die Anwendung jedoch in der `applicationLicenses`-Eigenschaft der Poolkonfiguration nicht angegeben wurde oder keinen Lizenzserver erreicht hat, treten bei der Ausführung der Anwendung ein Lizenzierungsfehler und ein Exitcode ungleich null auf.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Umgebungsvariablen für vorinstallierte Anwendungen
 

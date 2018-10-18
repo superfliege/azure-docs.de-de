@@ -1,24 +1,25 @@
 ---
-title: Transkriptionsrichtlinien – Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: Es wird beschrieben, wie Sie Ihre Daten für den Custom Speech Service vorbereiten.
+title: Richtlinien für die Transkription im Custom Speech Service unter Azure | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie Ihre Daten für den Custom Speech Service in Cognitive Services vorbereiten.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: a5daca2dbb3fc792850264bca7d8b0c59e7c8faa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6c64b89c2eb933e9bcc24bdc3097e7a0b2aab368
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220617"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342465"
 ---
 # <a name="transcription-guidelines"></a>Richtlinien für die Transkription
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Halten Sie sich an die folgenden Richtlinien für die Transkription, um sicherzustellen, dass Ihre Textdaten für die Anpassung des Akustik- und Sprachmodells bestmöglich genutzt werden. Diese Richtlinien sind sprachspezifisch.
 
 ## <a name="text-normalization"></a>Textnormalisierung

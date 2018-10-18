@@ -1,6 +1,6 @@
 ---
-title: Integration von Azure Security Center-Sicherheitsrichtlinien in Azure Policy | Microsoft-Dokumentation
-description: In diesem Dokument erfahren Sie, wie Sie die Integration von Azure Security Center-Sicherheitsrichtlinien in Azure Policy konfigurieren.
+title: Azure Security Center-Richtlinien können entweder individuell oder als Teil von Azure-Richtlinien festgelegt werden | Microsoft-Dokumentation
+description: Dieses Dokument enthält Informationen darüber, wie Sie Richtlinien in Azure Security Center oder Azure Policy festlegen können.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,20 +9,27 @@ editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
+ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: b3d6d15d41fece613290deb2c77e980caa5dcfef
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 3c198ea44953c0b2e72a544cd0e83b6592d9a81f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018562"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032075"
 ---
-# <a name="integrate-security-center-security-policies-with-azure-policy"></a>Integrieren von Security Center-Sicherheitsrichtlinien in Azure Policy
-In diesem Artikel wird das Konfigurieren von Azure Security Center-Sicherheitsrichtlinien beschrieben, die auf [Azure Policy](../azure-policy/azure-policy-introduction.md) basieren.
+# <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>Festlegen von Sicherheitsrichtlinien in Security Center oder Azure Policy
+
+Dieser Artikel enthält Informationen darüber, wie Sie Sicherheitsrichtlinien in Azure Security Center konfigurieren. Azure Security Center-Richtlinien können in Azure-Richtlinien integriert werden. Sie können sie entweder in Security Center für ein bestimmtes Abonnement oder in [Azure Policy](../azure-policy/azure-policy-introduction.md) festlegen, was Ihnen ermöglicht, Richtlinien für mehrere Verwaltungsgruppen und Abonnements festzulegen.
+
+## <a name="what-are-security-policies"></a>Was sind Sicherheitsrichtlinien?
+Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei. In Azure Security Center können Sie Richtlinien für Ihre Azure-Abonnements definieren und auf die Art der Workload oder auf die Vertraulichkeit der Daten abstimmen. So kann etwa für Anwendungen mit regulierten Daten (beispielsweise personenbezogene Informationen) eine höhere Sicherheitsstufe erforderlich sein als für andere Workloads. Um eine Richtlinie mehreren Abonnements oder Verwaltungsgruppen zuzuweisen, legen Sie diese in [Azure Policy](../azure-policy/azure-policy-introduction.md) fest.
+
+> [!NOTE]
+> Falls Sie zuvor Sicherheitsrichtlinien für ein Abonnement konfiguriert haben, das zu einer Verwaltungsgruppe gehört, oder dem bereits mehrere Richtlinien zugewiesen sind, werden diese Richtlinien in Security Center ausgegraut angezeigt, damit Sie die Richtlinie auf der Verwaltungsgruppenebene über die Azure Policy-Seite verwalten können. 
 
 ## <a name="how-security-policies-work"></a>Funktionsweise von Sicherheitsrichtlinien
 Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Standardsicherheitsrichtlinie. Sie können die Richtlinien in Security Center bearbeiten oder Azure Policy verwenden, um Folgendes zu erreichen:
@@ -40,8 +47,17 @@ Eine Azure-Richtlinie umfasst die folgenden Komponenten:
 
 Eine Ressource wird basierend auf den Richtlinien ausgewertet, die ihr zugewiesen sind, und erhält gemäß der Anzahl von Richtlinien, mit denen die Ressource konform ist, einen Konformitätsverhältniswert.
 
+## <a name="who-can-edit-security-policies"></a>Wer kann Sicherheitsrichtlinien bearbeiten?
+Security Center verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Dabei werden integrierte Rollen bereitgestellt, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Das bedeutet, dass Benutzern die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ für das Abonnement oder die Ressourcengruppe einer Ressource zugewiesen wird. Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
+
+- Benutzer mit Leseberechtigung für Sicherheitsfunktionen: Kann Informationen in Security Center (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
+- Sicherheitsadministrator: Verfügt über die gleichen Anzeigeberechtigungen wie ein Benutzer mit Leseberechtigung für Sicherheitsfunktionen, ist zusätzlich aber auch zum Aktualisieren der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen berechtigt.
+
 ## <a name="edit-security-policies"></a>Bearbeiten von Sicherheitsrichtlinien
 Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements und jede Verwaltungsgruppe in Security Center bearbeiten. Eine Sicherheitsrichtlinie kann nur von einem Besitzer, Mitwirkenden oder Systemadministrator des Abonnements oder der enthaltenden Verwaltungsgruppe geändert werden. Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
+
+> [!NOTE]
+> Alle Richtlinien, die für ein Abonnement festgelegt sind, welches zu einer Verwaltungsgruppe gehört oder dem mehrere Richtlinien zugewiesen sind, werden in Security Center ausgegraut angezeigt. Sie können diese Richtlinien in [Azure Policy](../azure-policy/azure-policy-introduction.md) bearbeiten. 
 
 1. Wählen Sie im Dashboard **Security Center** unter **RICHTLINIE UND KONFORMITÄT** die Option **Sicherheitsrichtlinie**. Der Bereich **Richtlinienverwaltung** wird geöffnet.
 
@@ -95,7 +111,7 @@ Die folgende Tabelle gibt Aufschluss über die verfügbaren Richtliniendefinitio
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. Azure-Verwaltungsgruppen stellen einen abonnementübergreifenden Bereich dar. Sie organisieren Abonnements in Containern, die als „Verwaltungsgruppen“ bezeichnet werden, und wenden Ihre Governancerichtlinien auf die Verwaltungsgruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Richtlinien. Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe (Root) bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. Befolgen Sie die Anleitung im Artikel [Gain tenant-wide visibility for Azure Security Center](security-center-management-groups.md) (Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center), um Verwaltungsgruppen für die Verwendung mit Azure Security Center einzurichten. 
 
 > [!NOTE]
-> Es ist wichtig, dass Sie die Hierarchie von Verwaltungsgruppen und Abonnements verstehen. Weitere Informationen zu Verwaltungsgruppen, zur Stammveraltung und zum Zugriff auf Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md#root-management-group-for-each-directory).
+> Es ist wichtig, dass Sie die Hierarchie von Verwaltungsgruppen und Abonnements verstehen. Weitere Informationen zu Verwaltungsgruppen, zur Stammveraltung und zum Zugriff auf Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/index.md#root-management-group-for-each-directory).
 >
 >
 

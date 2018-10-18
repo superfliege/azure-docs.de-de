@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: e3e8c843437558c6d5d3a3c39bed1e647f852b18
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: f7e500fb5856c7eec48a371042244b44dd944779
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593397"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063772"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Hinzufügen von Authentifizierung zu Ihrer Xamarin Forms-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -187,6 +187,12 @@ In diesem Abschnitt wird das Implementieren der **IAuthenticate** -Schnittstelle
 
     Mit diesem Code wird sichergestellt, dass der Authentifikator vor dem Laden der App initialisiert wird.
 8. Erstellen Sie die App erneut, und führen Sie sie aus. Melden Sie sich dann über den ausgewählten Authentifizierungsanbieter an, und stellen Sie sicher, dass Sie als authentifizierter Benutzer auf Daten zugreifen können.
+
+### <a name="troubleshooting"></a>Problembehandlung
+
+**Die Anwendung ist mit dem Fehler `Java.Lang.NoSuchMethodError: No static method startActivity` abgestürzt.**
+
+In einigen Fällen werden Konflikte in den Unterstützungspaketen nur als Warnung in Visual Studio angezeigt, aber die Anwendung stürzt zur Laufzeit mit dieser Ausnahme ab. In diesem Fall müssen Sie sicherstellen, dass alle Unterstützungspakete, auf die in Ihrem Projekt verwiesen wird, die gleiche Version aufweisen. Das [Azure Mobile Apps-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) hat eine `Xamarin.Android.Support.CustomTabs`-Abhängigkeit für die Android-Plattform. Wenn also das Projekt neuere Unterstützungspakete verwendet, müssen Sie dieses Paket direkt mit der erforderlichen Version installieren, um Konflikte zu vermeiden.
 
 ## <a name="add-authentication-to-the-ios-app"></a>Hinzufügen der Authentifizierung zur iOS-App
 In diesem Abschnitt wird das Implementieren der **IAuthenticate** -Schnittstelle im iOS-App-Projekt gezeigt. Überspringen Sie diesen Abschnitt, wenn Sie iOS-Geräte nicht unterstützen.

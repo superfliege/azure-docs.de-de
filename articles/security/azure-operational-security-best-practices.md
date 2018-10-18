@@ -3,7 +3,7 @@ title: Bewährte Methoden für Azure Operational Security | Microsoft-Dokumentat
 description: Dieser Artikel enthält bewährte Methoden für Azure Operational Security.
 services: security
 documentationcenter: na
-author: unifycloud
+author: TerryLanfear
 manager: mbaldwin
 editor: tomsh
 ms.assetid: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: tomsh
-ms.openlocfilehash: 75f0d7ffaf92558b16605c29cd99ee439ab2e3d8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 09/20/2018
+ms.author: terrylan
+ms.openlocfilehash: d005dd01de0dff0136c0a4e9775001dbe018228f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896515"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035282"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
-Azure Operational Security bezieht sich auf die Dienste, Steuerelemente und Features, die für Benutzer zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Microsoft Azure zur Verfügung stehen. Azure Operational Security basiert auf einem Framework, das die über verschiedene für Microsoft einzigartige Funktionen erworbenen Kenntnisse einbezieht, einschließlich Microsoft Security Development Lifecycle (SDL), dem Microsoft Security Response Center-Programm und den umfassenden Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
+Azure Operational Security bezieht sich auf die Dienste, Steuerelemente und Features, die Benutzern zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Azure zur Verfügung stehen. Azure Operational Security basiert auf einem Framework, das Erkenntnisse verwendet, die aus einzigartigen Microsoft-Funktionen stammen, u.a. aus dem [Microsoft Security Development Lifecycle](https://www.microsoft.com/sdl), dem [Microsoft Security Response Center-Programm](https://www.microsoft.com/msrc?rtc=1) und den umfassenden Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
 
-In diesem Artikel werden die bewährten Methoden für die Azure-Datenbanksicherheit beschrieben. Diese bewährten Methoden sind aus unseren Erfahrungen mit der Azure-Datenbanksicherheit und den Erfahrungen von Kunden wie Ihnen abgeleitet.
+In diesem Artikel werden die bewährten Methoden für die Sicherheit beschrieben. Diese bewährten Methoden sind aus unseren Erfahrungen mit der Azure-Datenbanksicherheit und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
 Für jede bewährte Methode wird Folgendes beschrieben:
 -   Wobei es bei der bewährten Methode geht
@@ -34,146 +34,99 @@ Für jede bewährte Methode wird Folgendes beschrieben:
 
 Dieser Artikel zu den bewährten Methoden für Azure Operational Security basiert auf einer Konsensmeinung und den Möglichkeiten und Funktionssätzen der Azure-Plattform, wie sie zum Zeitpunkt der Erstellung dieses Artikels vorhanden waren. Meinungen und Technologien ändern sich im Laufe der Zeit. Dieser Artikel wird daher regelmäßig aktualisiert, um diese Änderungen widerzuspiegeln.
 
-Bewährte Methoden für Azure Operational Security, die in diesem Artikel beschrieben werden:
+## <a name="monitor-storage-services-for-unexpected-changes-in-behavior"></a>Überwachen von Speicherdiensten auf unerwartete Änderungen des Verhaltens
+Das Diagnostizieren und Behandeln von Problemen kann in einer verteilten Anwendung, die in einer Cloudumgebung gehostet wird, komplexer sein als in herkömmlichen Umgebungen. Anwendungen können in einer PaaS- oder IaaS-Infrastruktur, lokal, auf einem mobilen Gerät oder in einer Kombination dieser Umgebungen bereitgestellt werden. Der Netzwerkdatenverkehr Ihrer Anwendung fließt möglicherweise durch öffentliche und private Netzwerke, und Ihre Anwendung verwendet möglicherweise mehrere Speichertechnologien.
 
--   Überwachen, Verwalten und Schützen der Cloudinfrastruktur
--   Verwalten von Identitäten und Implementieren des einmaligen Anmeldens (SSO)
--   Verfolgen von Anforderungen, Analysieren von Verwendungstrends und Diagnostizieren von Problemen
--   Überwachen von Diensten mit einer zentralen Überwachungslösung
--   Verhindern, Erkennen und Reagieren auf Bedrohungen
--   Szenariobasierte lückenlose Netzwerküberwachung
--   Sichern der Bereitstellung mithilfe von bewährten DevOps-Tools
+Es wird empfohlen, die von Ihrer Anwendung verwendeten Speicherdienste fortlaufend zu überwachen, um unerwartete Änderungen am Verhalten zu erkennen (z.B. eine langsamere Reaktionszeit). Erfassen Sie mit der Protokollierung umfangreichere Daten, anhand derer Sie ein Problem genauer analysieren können. Die Diagnoseinformationen, die Sie sowohl aus der Überwachung als auch der Protokollierung erhalten, helfen Ihnen, die Ursache des Problems, das bei Ihrer Anwendung auftritt, zu bestimmen. Dann können Sie das Problem behandeln und die entsprechenden Schritte zur Beseitigung bestimmen.
 
-## <a name="monitor-manage-and-protect-cloud-infrastructure"></a>Überwachen, Verwalten und Schützen der Cloudinfrastruktur
-Die IT-Abteilung (IT Operations) ist für die Verwaltung der Infrastruktur, Anwendungen und Daten von Rechenzentren verantwortlich, z.B. die Stabilität und Sicherheit dieser Systeme. Für die Gewinnung von Erkenntnissen zur Sicherheit in immer komplexeren IT-Umgebungen müssen Organisationen aber häufig Daten aus mehreren Sicherheits- und Verwaltungssystemen zusammentragen.
-
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen das Verwalten und Schützen Ihrer Infrastruktur lokal und in der Cloud erleichtert.
-
-Mit der [Sicherheits- und Überwachungslösung von OMS](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) kann die IT-Abteilung aktiv alle Ressourcen überwachen. Dies kann zur Minimierung der Auswirkungen von Sicherheitsincidents beitragen. Die Sicherheits- und Überwachungslösung von OMS verfügt über Sicherheitsdomänen, die zum Überwachen von Ressourcen verwendet werden können.
-
-Weitere Informationen zu OMS finden Sie im Artikel [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx).
-
-Mit der [Sicherheits- und Überwachungslösung von Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) werden Daten zu Ihren Ressourcen erfasst und verarbeitet, um Sie beim Verhindern, Erkennen und Reagieren auf Bedrohungen zu unterstützen. Beispiele für Daten sind:
-
--   Sicherheitsereignisprotokoll
--   Ereignisablaufverfolgung für Windows-Ereignisse (ETW)
--   AppLocker-Überwachungsereignisse
--   Windows-Firewallprotokoll
--   Advanced Threat Analytics-Ereignisse
--   Ergebnisse der Baselinebewertung
--   Ergebnisse der Antischadsoftwarebewertung
--   Ergebnisse der Update-/Patchbewertung
--   Syslog-Datenströme, die auf dem Agent explizit aktiviert sind
-
-
-## <a name="manage-identity-and-implement-single-sign-on"></a>Verwalten von Identitäten und Implementieren des einmaligen Anmeldens
-[Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft.
-
-[Azure AD](https://azure.microsoft.com/services/active-directory/) bietet auch einen vollständigen Satz von [Identitätsverwaltungsfunktionen](https://docs.microsoft.com/azure/security/security-identity-management-overview), z.B.: [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication), Geräteregistrierung, Self-Service-Kennwortverwaltung, Self-Service-Gruppenverwaltung, Verwaltung privilegierter Konten, rollenbasierte Zugriffssteuerung, Überwachung der Anwendungsnutzung, umfassende Überwachungsfunktionen sowie Sicherheitsüberwachung und -warnungen.
-
-Mit den folgenden Funktionen können Sie cloudbasierte Anwendungen sichern, IT-Prozesse optimieren, Kosten senken und sicherstellen, dass unternehmensweite Kompatibilitätsziele erreicht werden:
-
--   Identitäts- und Zugriffsverwaltung für die Cloud
--   Vereinfachen des Benutzerzugriffs auf sämtliche Cloud-Apps
--   Schützen von sensiblen Daten und Anwendungen
--   Aktivieren von Self-Service für Ihre Mitarbeiter
--   Integrieren in Azure Active Directory
-
-### <a name="identity-and-access-management-for-the-cloud"></a>Identitäts- und Zugriffsverwaltung für die Cloud
-Azure Active Directory (Azure AD) ist eine umfassende [Cloudlösung zur Identitäts- und Zugriffsverwaltung](https://www.microsoft.com/cloud-platform/identity-management), die eine Reihe solider Funktionen für die Benutzer- und Gruppenverwaltung bietet. Damit können Sie den sicheren Zugriff auf lokale und Cloudanwendungen gewährleisten, beispielsweise auf Microsoft-Webdienste wie Office 365 oder zahlreiche SaaS-Anwendungen (Software-as-a-Service) anderer Anbieter.
-Weitere Informationen zum Aktivieren des Schutzes von Identitäten in Azure AD finden Sie im Artikel [Aktivieren von Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-enable).
-
-### <a name="simplify-user-access-to-any-cloud-app"></a>Vereinfachen des Benutzerzugriffs auf sämtliche Cloud-Apps
-[Aktivieren Sie das einmalige Anmelden](https://docs.microsoft.com/azure/active-directory/active-directory-sso-integrate-saas-apps), um den Benutzerzugriff auf Tausende von Cloudanwendungen über Windows-, Mac-, Android- und iOS-Geräte zu erleichtern. Benutzer können Anwendungen mithilfe ihrer Unternehmensanmeldeinformationen über einen persönlichen webbasierten Zugriffsbereich oder eine mobile App starten. Mit dem Anwendungsproxy-Modul von Azure AD können Sie nicht nur SaaS-Anwendungen, sondern auch lokale Webanwendungen veröffentlichen, um sehr sicheren Remotezugriff und einmaliges Anmelden zu ermöglichen.
-
-### <a name="protect-sensitive-data-and-applications"></a>Schützen von sensiblen Daten und Anwendungen
-Aktivieren Sie [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication), um nicht autorisierten Zugriff auf lokale Anwendungen und auf Cloudanwendungen zu verhindern, indem eine zusätzliche Authentifizierungsebene geschaffen wird. Schützen Sie Ihr Unternehmen, und wenden Sie potenzielle Bedrohungen ab – mit Sicherheitsüberwachung, Warnungen und auf Machine Learning basierenden Berichten, die inkonsistente Zugriffsmuster erkennen.
-
-### <a name="enable-self-service-for-your-employees"></a>Aktivieren von Self-Service für Ihre Mitarbeiter
-Delegieren Sie wichtige Aufgaben wie das Zurücksetzen von Kennwörtern und das Erstellen und Verwalten von Gruppen an Ihre Mitarbeiter. Aktivieren Sie mit Azure AD [Self-Service-Funktionen für Kennwortänderung](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password) und -zurücksetzung sowie Gruppenverwaltung.
-
-### <a name="integrate-with-azure-active-directory"></a>Integrieren in Azure Active Directory
-Erweitern Sie [Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate) und andere lokale Verzeichnisse auf Azure AD, um das einmalige Anmelden für alle cloudbasierten Anwendungen zu ermöglichen. Benutzerattribute können automatisch aus allen Arten von lokalen Verzeichnissen mit Ihrem Cloudverzeichnis synchronisiert werden.
-
-Weitere Informationen zur Integration in Azure Active Directory und deren Aktivierung finden Sie im Artikel [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
-
-## <a name="trace-requests-analyze-usage-trends-and-diagnose-issues"></a>Verfolgen von Anforderungen, Analysieren von Verwendungstrends und Diagnostizieren von Problemen
-Die [Azure-Speicheranalyse](https://docs.microsoft.com/azure/storage/storage-analytics) führt die Protokollierung aus und stellt Metrikdaten für ein Speicherkonto bereit. Mit diesen Daten können Sie Anforderungen verfolgen, Verwendungstrends analysieren und Probleme mit dem Speicherkonto diagnostizieren.
-
-Metriken der Speicheranalyse sind standardmäßig für neue Speicherkonten aktiviert. Im Azure-Portal können Sie die Protokollierung aktivieren und Metriken sowie die Protokollierung konfigurieren. Details finden Sie unter [Überwachen eines Speicherkontos im Azure-Portal](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account). Sie können die Speicheranalyse auch programmgesteuert über die REST-API oder die Clientbibliothek aktivieren. Verwenden Sie den Vorgang „Diensteigenschaften festlegen“, um die Speicheranalyse für jeden Dienst einzeln zu aktivieren.
-
-Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
-
-Weitere Informationen zur Integration in Azure Active Directory und deren Aktivierung finden Sie im Artikel [Enabling and Configuring Storage Analytics (Aktivieren und Konfigurieren der Speicheranalyse)](https://docs.microsoft.com/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics?redirectedfrom=MSDN).
-
-## <a name="monitoring-services"></a>Überwachen von Diensten
-Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
-
-### <a name="monitor-azure-resources"></a>Überwachen von Azure-Ressourcen
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an einem zentralen Ort verwalten können. Mit Azure Monitor können Sie Metriken und Protokolle aus den Ressourcen in Azure visualisieren, abfragen, weiterleiten und archivieren und ggf. notwendige Maßnahmen ergreifen. Sie können im Portal auf dem Blatt „Monitor“, über [Monitor PowerShell-Cmdlets](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples), in einer [plattformübergreifenden Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples) oder in [Azure Monitor-REST-APIs](https://msdn.microsoft.com/library/dn931943.aspx) mit diesen Daten arbeiten.
-
-### <a name="enable-autoscale-with-azure-monitor"></a>Aktivieren der automatischen Skalierung mit Azure Monitor
-Die Aktivierung der [automatische Skalierung von Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started) gilt nur für VM-Skalierungsgruppen (VMSS), Clouddienste, App Service-Pläne und App Service-Umgebungen.
-
-### <a name="manage-roles-permissions-and-security"></a>Verwalten von Berechtigungen und Sicherheit für Rollen
-Viele Teams müssen den [Zugriff auf Überwachungsdaten](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security) und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken.
-
-Hier wird beschrieben, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
+[Azure Storage Analytics](../storage/storage-analytics.md) führt die Protokollierung durch und stellt Metrikdaten für ein Azure-Speicherkonto bereit. Es wird empfohlen, mit diesen Daten Anforderungen zu verfolgen, Verwendungstrends zu analysieren und Probleme mit dem Speicherkonto zu diagnostizieren.
 
 ## <a name="prevent-detect-and-respond-to-threats"></a>Verhindern, Erkennen und Reagieren auf Bedrohungen
-Bei der Bedrohungserkennung von Security Center werden automatisch Sicherheitsinformationen von Azure-Ressourcen, aus dem Netzwerk und von verbundenen Partnerlösungen gesammelt. Diese Informationen, bei denen es sich häufig um korrelierende Informationen aus mehreren Quellen handelt, werden analysiert, um Bedrohungen zu identifizieren. Sicherheitswarnungen werden in Security Center zusammen mit Empfehlungen zur Lösung der Bedrohung priorisiert.
+[Azure Security Center](../security-center/security-center-intro.md) unterstützt Sie durch mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen dabei, Bedrohungen zu erkennen, zu verhindern und zu beheben. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt blieben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
--   [Konfigurieren Sie eine Sicherheitsrichtlinie](https://docs.microsoft.com/azure/security-center/security-center-policies) für Ihr Azure-Abonnement.
--   Verwenden Sie die [Empfehlungen in Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) als Hilfe beim Schützen Ihrer Azure-Ressourcen.
--   Überprüfen und verwalten Sie Ihre aktuellen [Sicherheitswarnungen](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts).
+Der Free-Tarif des Security Center bietet Sicherheit nur für Ihre Azure-Ressourcen. Im Standard-Tarif ist auch die Sicherheit für lokale Ressourcen und Cloudressourcen enthalten. Security Center Standard hilft Ihnen, Sicherheitsrisiken zu finden und zu beseitigen, Zugriffs- und Anwendungssteuerungen anzuwenden, um böswillige Aktivitäten zu blockieren, Bedrohungen mithilfe von Analysen und intelligenter Funktionen zu erkennen und bei Angriffen schnell zu reagieren. Sie können Security Center Standard die ersten 60 Tage kostenlos testen. Es wird empfohlen, für Ihr Azure-Abonnements den [Security Center Standard-Tarif](../security-center/security-center-get-started.md) zu verwenden.
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) unterstützt Sie beim Verhindern, Erkennen und Beheben von Bedrohungen durch größere Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
+Im Security Center können Sie sich den Sicherheitsstatus Ihrer Azure-Ressourcen auf einen Blick ansehen. Erfahren Sie auf einen Blick, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und ermitteln Sie schnell Ressourcen, die Ihre Aufmerksamkeit erfordern.
 
-Security Center stellt benutzerfreundliche und effektive Funktionen bereit, die in Azure integriert sind und verwendet werden können, um Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren. Wichtige Funktionen sind:
+## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Szenariobasierte End-to-End-Netzwerküberwachung
+Kunden erstellen ein End-to-End-Netzwerk in Azure, indem sie verschiedene Netzwerkressourcen wie z.B. virtuelle Netzwerke, ExpressRoute, Application Gateway und Load Balancer miteinander kombinieren. Überwachung steht für jede der Netzwerkressourcen zur Verfügung.
 
--   Verstehen des Sicherheitsstatus der Cloud
--   Kontrollieren der Cloudsicherheit
--   Problemloses Bereitstellen integrierter Cloudsicherheitslösungen
--   Ermitteln von Bedrohungen und umgehendes Reagieren
+[Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) ist ein regionaler Dienst. Mit diesem Dienst können Sie Bedingungen auf Netzwerkebene in Azure überwachen und diagnostizieren.
 
-### <a name="understand-cloud-security-state"></a>Verstehen des Sicherheitsstatus der Cloud
-Mit Azure Security Center erhalten Sie eine zentrale Ansicht des Sicherheitsstatus all Ihrer Azure-Ressourcen. Überprüfen Sie auf einen Blick, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und ermitteln Sie schnell Ressourcen, die Ihre Aufmerksamkeit erfordern.
+Im Folgenden sind bewährte Methoden für die Netzwerküberwachung und verfügbare Tools aufgelistet.
 
-### <a name="take-control-of-cloud-security"></a>Kontrollieren der Cloudsicherheit
-Definieren Sie basierend auf den Anforderungen Ihres Unternehmens an die Sicherheit in der Cloud [Sicherheitsrichtlinien](https://docs.microsoft.com/azure/security-center/security-center-policies) für Ihre Azure-Abonnements, die auf den Typ der Anwendung oder die Vertraulichkeit der Daten in den verschiedenen Abonnements abgestimmt sind. Nutzen Sie richtlinienbasierte Empfehlungen, um Ressourcenbesitzer durch die Implementierung der erforderlichen Kontrollmechanismen zu leiten. So können Sie sich jederzeit auf die Sicherheit Ihrer Cloudlösungen verlassen.
+**Bewährte Methode:** Automatisieren der Remotenetzwerküberwachung per Paketerfassung.   
+**Beschreibung:** Überwachen und diagnostizieren Sie mithilfe von Network Watcher Netzwerkprobleme, ohne sich bei Ihren VMs anmelden zu müssen. Lösen Sie mithilfe von Warnungen die [Paketerfassung](../network-watcher/network-watcher-alert-triggered-packet-capture.md) aus, und erhalten Sie Zugriff auf Leistungsinformationen in Echtzeit auf Paketebene. Wenn Sie ein Problem feststellen, können Sie dieses detailliert untersuchen, um es besser diagnostizieren zu können.
 
-### <a name="easily-deploy-integrated-cloud-security-solutions"></a>Problemloses Bereitstellen integrierter Cloudsicherheitslösungen
-[Aktivieren Sie Sicherheitslösungen](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) von Microsoft und den Microsoft-Partnern, wie z.B. branchenführende Firewalls und Antischadsoftware. Profitieren Sie von der optimierten Bereitstellung, um Ihre Sicherheitslösungen zu implementieren – sogar Netzwerkänderungen werden für Sie konfiguriert. Sicherheitsereignisse aus Partnerlösungen werden automatisch erfasst und analysiert, um Sie ggf. über Bedrohungen zu benachrichtigen.
+**Bewährte Methode:** Gewinnen von Einblicken in den Netzwerkdatenverkehr mithilfe von Datenflussprotokollen.   
+**Beschreibung:** Lernen Sie mithilfe von Datenflussprotokollen von [Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-overview.md) die Datenverkehrsmuster in Ihrem Netzwerk kennen. Mit den Daten aus den Datenflussprotokollen können Sie Erkenntnisse gewinnen, die Sie zum Erfüllen von Konformitätsanforderungen und zum Überwachen Ihres Netzwerksicherheitsprofils benötigen.
 
-### <a name="detect-threats-and-respond-fast"></a>Ermitteln von Bedrohungen und umgehendes Reagieren
-Erkennen Sie aktuelle und zukünftige Cloudbedrohungen rechtzeitig dank eines integrierten, analysebasierten Ansatzes. Security Center kombiniert [globale Bedrohungsanalysen](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities) und die umfassende Erfahrung von Microsoft mit Einblicken in Ereignisse zur Cloudsicherheit über all Ihre Azure-Bereitstellungen hinweg. So unterstützt Security Center Sie dabei, tatsächliche Bedrohungen frühzeitig zu erkennen und falsch positive Ergebnisse zu reduzieren. Cloudsicherheitswarnungen liefern Einblicke in Angriffsversuche, die zugehörigen Ereignisse und die betroffenen Ressourcen. Außerdem erhalten Sie Empfehlungen für eine schnelle Problembehandlung und Wiederherstellung des Betriebs.
+**Bewährte Methode:** Diagnostizieren von VPN-Konnektivitätsproblemen.   
+[Beschreibung:](../network-watcher/network-watcher-diagnose-on-premises-connectivity.md) Verwenden Sie Network Watcher, um die **am häufigsten auftretenden VPN-Gateway- und Verbindungsprobleme zu diagnostizieren**. Sie können nicht nur das Problem identifizieren, sondern auch umfangreiche Protokolle verwenden, um das Problem ausführlich zu untersuchen.
 
-## <a name="end-to-end-scenario-based-network-monitoring"></a>Szenariobasierte lückenlose Netzwerküberwachung
-Kunden erstellen ein End-to-End-Netzwerk in Azure und orchestrieren und kombinieren dabei verschiedene Netzwerkressourcen wie z.B. VNET, ExpressRoute, Application Gateway, Load Balancer u.v.m. Überwachung steht für jede der Netzwerkressourcen zur Verfügung.
+## <a name="secure-deployment-by-using-proven-devops-tools"></a>Sichern der Bereitstellung mithilfe von bewährten DevOps-Tools
+Mit den folgenden bewährten DevOps-Methoden können Sie sicherstellen, dass Ihr Unternehmen und Team produktiv und effizient arbeiten.
 
-[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) ist ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Die Tools zur Netzwerkdiagnose und -visualisierung von Network Watcher helfen Ihnen dabei, Ihr Netzwerk in Azure zu verstehen, Diagnosen durchzuführen und Einblicke zu gewinnen.
+**Bewährte Methode:** Automatisieren der Erstellung und Bereitstellung eines Diensts.   
+**Beschreibung:** [Infrastruktur als Code](https://en.wikipedia.org/wiki/Infrastructure_as_Code) sind Techniken und Methoden, die für IT-Experten die tägliche Erstellung und Verwaltung einer modularen Infrastruktur vereinfachen. IT-Experten können damit ihre moderne Serverumgebung so erstellen und verwalten, wie Softwareentwickler Anwendungscode erstellen und verwalten.
 
-### <a name="automate-remote-network-monitoring-with-packet-capture"></a>Automatisieren der Remotenetzwerküberwachung per Paketerfassung
-Überwachen und diagnostizieren Sie mithilfe von Network Watcher Netzwerkprobleme, ohne sich an Ihren virtuellen Computern (VMs) anmelden zu müssen. Lösen Sie mithilfe von Warnungen die [Paketerfassung](https://docs.microsoft.com/azure/network-watcher/network-watcher-alert-triggered-packet-capture) aus, und erhalten Sie Zugriff auf Leistungsinformationen in Echtzeit auf Paketebene. Wenn Sie ein Problem feststellen, können Sie dieses detailliert untersuchen, um es besser diagnostizieren zu können.
+Mit dem [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) können Sie Ihre Anwendungen mit einer deklarativen Vorlage bereitstellen. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung in jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.
 
-### <a name="gain-insight-into-your-network-traffic-using-flow-logs"></a>Gewinnen von Einblicken in den Netzwerkdatenverkehr mithilfe von Datenflussprotokollen
-Lernen Sie mithilfe von [Datenflussprotokollen von Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) die Datenverkehrsmuster in Ihrem Netzwerk kennen. Mit den Daten aus den Datenflussprotokollen können Sie Informationen gewinnen, die Sie zum Erfüllen von Complianceanforderungen und zum Überwachen Ihres Netzwerksicherheitsprofils benötigen.
+**Bewährte Methode:** Automatisches Erstellen und Bereitstellen von Azure-Web-Apps oder -Clouddiensten.   
+**Beschreibung:** Sie können Ihre Teamprojekte in Visual Studio Team Services so konfigurieren, dass sie [automatisch erstellt und in Azure-Web-Apps oder -Clouddiensten bereitgestellt](https://www.visualstudio.com/docs/build/overview) werden. VSTS stellt die Binärdateien nach der Durchführung eines Builds in Azure nach jedem Einchecken von Code automatisch bereit. Der Prozess der Paketerstellung entspricht dem Befehl „Packen“ in Visual Studio, und die Veröffentlichungsschritte entsprechen dem Befehl „Veröffentlichen“ in Visual Studio.
 
-### <a name="diagnose-vpn-connectivity-issues"></a>Diagnostizieren von VPN-Konnektivitätsproblemen
-Network Watcher ermöglicht es Ihnen, die [am häufigsten auftretenden VPN-Gateway- und Verbindungsprobleme zu diagnostizieren](https://docs.microsoft.com/azure/network-watcher/network-watcher-diagnose-on-premises-connectivity). So können Sie die Probleme nicht nur identifizieren, sondern anhand detaillierter Protokolle genauer untersuchen.
+**Bewährte Methode:** Automatisieren der Releaseverwaltung.   
+**Beschreibung:** [Release Management für Visual Studio](https://msdn.microsoft.com/library/vs/alm/release/overview) ist eine Lösung für die Automatisierung einer mehrstufigen Bereitstellung und die Verwaltung des Releaseprozesses. Erstellen Sie verwaltete Continuous Deployment-Pipelines für schnelle, einfache und häufige Releases. Mit Release Management können Sie den Releaseprozess automatisieren und vordefinierte Genehmigungsworkflows einrichten. Stellen Sie lokal und in der Cloud bereit, und führen Sie nach Bedarf Erweiterungen und Anpassungen durch.
 
-Weitere Informationen zum Konfigurieren und Aktivieren von Network Watcher finden Sie im Artikel [Konfigurieren von Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
+**Bewährte Methode:** Testen der Leistung Ihrer Web-App vor dem Start oder Bereitstellen von Updates für die Produktion.   
+**Beschreibung:** Führen Sie cloudbasierte [Auslastungstest](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) durch, und verwenden Sie VSTS für Folgendes:
 
-## <a name="secure-deployment-using-proven-devops-tools"></a>Sichern der Bereitstellung mithilfe von bewährten DevOps-Tools
-Dies sind einige Verfahren aus der Liste der Azure DevOps-Verfahren in diesem Microsoft Cloud-Bereich, die Unternehmen und Teams produktiver und effizienter machen.
+- Leistungsprobleme in Ihrer Web-App finden.
+- Qualität der Bereitstellung verbessern.
+- Verfügbarkeit Ihrer App sicherstellen.
+- Stellen Sie sicher, dass Ihre App den Datenverkehr für die nächste Produkteinführung oder Marketingkampagne bewältigen kann.
 
--   **Infrastruktur als Code (IaC):** „Infrastruktur als Code“ ist ein Satz von Techniken und Methoden, die für IT-Experten die tägliche Erstellung und Verwaltung einer modularen Infrastruktur vereinfachen. IT-Experten können damit ihre moderne Serverumgebung so erstellen und verwalten, wie Softwareentwickler Anwendungscode erstellen und verwalten. Für Azure ermöglicht [Azure Resource Manager]( https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) die Bereitstellung Ihrer Anwendungen mit einer deklarativen Vorlage. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung während jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.
--   **Continuous Integration und Continuous Deployment:** Sie können Ihre Teamprojekte in Visual Studio Team Services (VSTS) so konfigurieren, dass sie [automatisch erstellt und in Azure-Web-Apps oder -Clouddiensten bereitgestellt](https://www.visualstudio.com/docs/build/overview) werden. VSTS stellt die Binärdateien nach der Durchführung eines Builds in Azure nach jedem Einchecken von Code automatisch bereit. Der hier beschriebene Prozess der Paketerstellung entspricht dem Befehl „Paket“ in Visual Studio, und die Veröffentlichungsschritte entsprechen dem Befehl „Veröffentlichen“ in Visual Studio.
--   **Release Management:** Visual Studio [Release Management](https://msdn.microsoft.com/library/vs/alm/release/overview) ist eine hervorragende Lösung für die Automatisierung einer mehrstufigen Bereitstellung und die Verwaltung des Releaseprozesses. Erstellen Sie verwaltete Continuous Deployment-Pipelines für schnelle, einfache und häufige Releases. Mit Release Management können wir große Teile des Releaseprozesses automatisieren und vordefinierte Genehmigungsworkflows einrichten. Stellen Sie lokal und in der Cloud bereit, und führen Sie nach Bedarf Erweiterungen und Anpassungen durch.
--   **App-Leistungsüberwachung:** Erkennen und lösen Sie Probleme, und verbessern Sie Ihre Anwendungen kontinuierlich. Diagnostizieren Sie schnell alle Probleme in Ihrer Liveanwendung. Verstehen Sie, wie sie von den Benutzern verwendet wird. Zur Konfiguration werden einfach JS-Code und ein webconfig-Eintrag hinzugefügt, und Sie sehen die Ergebnisse innerhalb von Minuten mit allen Details im Portal. Mit [App Insights](https://azure.microsoft.com/documentation/articles/app-insights-start-monitoring-app-health-usage/) können Unternehmen Probleme schneller erkennen und lösen.
--   **Auslastungstests und automatische Skalierung:** Wir können Leistungsprobleme in unserer App finden, um die Bereitstellungsqualität zu verbessern und um sicherzustellen, dass unsere App immer verfügbar ist, damit wir allen Unternehmensbedürfnissen gerecht werden. Stellen Sie sicher, dass Ihre App den Datenverkehr für die nächste Produkteinführung oder Marketingkampagne bewältigen kann. Beginnen Sie mit VSTS im Handumdrehen mit der Ausführung von cloudbasierten [Auslastungstests](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing).
+**Bewährte Methode:** Überwachen der Anwendungsleistung.   
+**Beschreibung:** [Azure Application Insights](../application-insights/app-insights-overview.md) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Sie können mit Application Insights Ihre Live-Web-App überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von Benutzern verwendet wird. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App.
+
+## <a name="mitigate-and-protect-against-ddos"></a>Abwenden von und Schützen vor DDoS
+Bei einem DDoS-Angriff versucht ein Angreifer, Anwendungsressourcen zu erschöpfen. Die Verfügbarkeit der Anwendung und ihre Fähigkeit, legitime Anforderungen zu verarbeiten, sollen beeinträchtigt werden. Diese Angriffe werden komplexer, ihr Ausmaß größer und ihre Auswirkungen gravierender. Jeder Endpunkt, der öffentlich über das Internet erreichbar ist, kann Ziel von DDoS-Angriffen werden.
+
+Konzeptionen für Resilienz gegenüber DDoS-Angriffen setzen Planung und Entwürfe für eine Vielzahl von Fehlerzuständen voraus.
+
+Im Folgenden sind bewährte Methoden zum Erstellen von Anwendungen in Azure aufgelistet, die DDoS-Angriffen standhalten können.
+
+**Bewährte Methode:** Stellen Sie sicher, dass die Sicherheit im gesamten Lebenszyklus einer Anwendung Priorität hat – von Entwurf und Implementierung bis hin zu Bereitstellung und Betrieb. Anwendungen können Fehler enthalten, die einer relativ geringen Anzahl von Anforderungen die Verwendung von vielen Ressourcen erlauben. Dies führt zu einem Dienstausfall.    
+**Beschreibung:** Um einen in Microsoft Azure ausgeführten Dienst zu schützen, sollten Sie Ihre Anwendungsarchitektur verstehen und sich auf die [Fünf Säulen der Softwarequalität](https://docs.microsoft.com/azure/architecture/guide/pillars) konzentrieren. Sie sollten Folgendes kennen: das typische Datenverkehrsvolumen, das Modell der Konnektivität zwischen der Anwendung und anderen Anwendungen, sowie die Dienstendpunkte, die dem öffentlichen Internet verfügbar gemacht werden.
+
+Es ist von größter Wichtigkeit sicherzustellen, dass eine Anwendung stabil genug ist, um mit einem Denial-of-Service-Angriff fertig zu werden. Sicherheit und Datenschutz sind direkt in der Azure-Plattform integriert, beginnend mit [Security Development Lifecycle (SDL)](https://www.microsoft.com/en-us/sdl). Die SDL spricht Sicherheit in jeder Entwicklungsphase an und sorgt dafür, dass Azure kontinuierlich aktualisiert wird, um noch sicherer zu sein.
+
+**Bewährte Methode:** Sie sollten Ihre Anwendungen so entwerfen, dass sie [horizontal skaliert](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) werden können, um die Anforderungen einer verstärkten Auslastung zu erfüllen – insbesondere im Falle eines DDoS-Angriffs. Wenn Ihre Anwendung von einer einzelnen Instanz eines Diensts abhängig ist, entsteht dadurch ein Single Point of Failure. Durch Bereitstellen mehrerer Instanzen wird Ihr System stabiler und besser skalierbar.   
+**Beschreibung:** Wählen Sie für [Azure App Service](../app-service/app-service-value-prop-what-is.md) einen [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) aus, der mehrere Instanzen bietet.
+
+Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](../cloud-services/cloud-services-choose-me.md) verwenden.
+
+Stellen Sie für [Azure-VMS](../virtual-machines/windows/overview.md) sicher, dass die VM-Architektur mehr als eine VM enthält und dass jede VM zu einer [Verfügbarkeitsgruppe](../virtual-machines/virtual-machines-windows-manage-availability.md) gehört. Sie sollten VM-Skalierungsgruppen für Funktionen zur automatischen Skalierung verwenden.
+
+**Bewährte Methode:** Implementieren Sie Abwehrmaßnahmen schichtweise in eine Anwendung, um die Wahrscheinlichkeit eines erfolgreichen Angriffs zu reduzieren. Implementieren Sie sichere Entwürfe für Ihre Anwendungen mithilfe der integrierten Funktionen der Azure-Plattform.   
+**Beschreibung:** Das Angriffsrisiko steigt mit der Größe (Oberfläche) der Anwendung. Sie können den Oberflächenbereich durch Verwendung von Whitelists verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) und [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) nicht mehr benötigt werden.
+
+Durch [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) kann die angreifbare Oberfläche ebenfalls reduziert werden. Sie können mit [Diensttags](../virtual-network/security-overview.md#service-tags) und [Anwendungssicherheitsgruppen](../virtual-network/security-overview.md#application-security-groups) das Erstellen von Sicherheitsregeln weniger komplex machen und Netzwerksicherheit als natürliche Erweiterung der Struktur einer Anwendung konfigurieren.
+
+Sie sollten Azure-Dienste nach Möglichkeit in einem [virtuellen Netzwerk](../virtual-network/virtual-networks-overview.md) bereitstellen. Mit dieser Methode können Dienstressourcen über private IP-Adressen kommunizieren. Standardmäßig werden für Datenverkehr von Azure-Diensten aus einem virtuellen Netzwerk öffentliche IP-Adressen als Quell-IP-Adressen verwendet.
+
+Bei Verwendung von [Dienstendpunkten](../virtual-network/virtual-network-service-endpoints-overview.md) wechselt der Dienstdatenverkehr zu privaten Adressen im virtuellen Netzwerk als Quell-IP-Adressen, wenn aus einem virtuellen Netzwerk auf den Azure-Dienst zugegriffen wird.
+
+Häufig werden lokale Ressourcen von Kunden zusammen mit ihren Azure-Ressourcen angegriffen. Wenn Sie die Verbindung einer lokalen Umgebung mit Azure herstellen, machen Sie lokale Ressourcen so wenig wie möglich im öffentlichen Internet verfügbar.
+
+Azure bietet zwei [DDoS-Dienstangebote](../virtual-network/ddos-protection-overview.md), die vor Netzwerkangriffen schützen:
+
+- Basic-Schutz ist standardmäßig und ohne zusätzliche Kosten in der Azure-Plattform integriert. Die Skalierung und Kapazität des global bereitgestellten Azure-Netzwerks bietet Schutz vor häufigen Vermittlungsschichtangriffen durch Always On-Datenverkehrsüberwachung und Risikominderung in Echtzeit. Für den Basic-Schutz sind keine weiteren Konfigurationen oder Anwendungsänderungen von Seiten des Benutzers erforderlich. Mit diesem Schutz können Sie alle Azure-Dienste schützen, u.a. PaaS-Dienste wie Azure DNS.
+- Der Standard-Schutz bietet erweiterte DDoS-Abwehrfunktionen gegen Netzwerkangriffe. Es wird automatisch optimiert, um Ihre spezifischen Azure-Ressourcen zu schützen. Der Schutz lässt sich einfach während der Erstellung virtueller Netzwerke aktivieren. Dies ist auch nach der Erstellung möglich und erfordert keine Änderungen der Anwendung oder Ressourcen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [Azure Operational Security](https://docs.microsoft.com/azure/security/azure-operational-security).
-- Erfahren Sie mehr über [Operations Management Suite – Security & Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance).
-- [Erste Schritte mit der Sicherheits- und Überwachungslösung von Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started).
+Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](security-best-practices-and-patterns.md).
+
+Die folgenden Ressourcen enthalten allgemeinere Informationen zur Sicherheit in Azure und verwandten Microsoft-Diensten:
+* [Blog des Azure-Sicherheitsteams](https://blogs.msdn.microsoft.com/azuresecurity/): Hier finden Sie Informationen über den aktuellen Stand der Azure-Sicherheit.
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx): Hier können Sie Microsoft-Sicherheitsrisiken (z.B. Probleme mit Azure) melden oder eine E-Mail an secure@microsoft.com schreiben.

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2018
+ms.date: 09/26/2018
 ms.author: jingwang
-ms.openlocfilehash: e8e106bc71b87af8cd36f7edb0fe64fcddd6133e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: ce3c494dc0b8c962c8dae0af38d3cb5476cdf48b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574673"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406174"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Dynamics 365 (Common Data Service) oder Dynamics CRM mithilfe von Azure Data Factory
 
@@ -158,7 +158,8 @@ Legen Sie zum Kopieren von Daten aus und nach Dynamics die type-Eigenschaft des 
 | entityName | Der logische Name der abzurufenden Entität. | Nein für die Quelle (wenn „query“ in der Aktivitätsquelle angegeben ist), Ja für die Senke. |
 
 > [!IMPORTANT]
->- Wenn Sie Daten aus Dynamics kopieren, ist im Dynamics-Dataset der Abschnitt „structure“ erforderlich. Darin werden Spaltenname und Datentyp für die Dynamics-Daten definiert, die Sie kopieren möchten. Weitere Informationen finden Sie unter [Datasetstruktur](concepts-datasets-linked-services.md#dataset-structure) und [Datentypzuordnung für Dynamics](#data-type-mapping-for-dynamics).
+>- Wenn Sie Daten von Dynamics kopieren, ist der „structure“-Abschnitt optional, wird jedoch im Dynamics-Dataset empfohlen, um ein deterministisches Kopierergebnis sicherzustellen. Darin werden Spaltenname und Datentyp für die Dynamics-Daten definiert, die Sie kopieren möchten. Weitere Informationen finden Sie unter [Datasetstruktur](concepts-datasets-linked-services.md#dataset-structure) und [Datentypzuordnung für Dynamics](#data-type-mapping-for-dynamics).
+>- Wenn Sie ein Schema in die Erstellungsbenutzeroberfläche importieren, leiten Sie das Schema mit der ADF-Datei ab, indem Stichproben der oberen Zeilen des Dynamics-Testergebnisses entnommen werden, um die Strukturerstellung zu initialisieren. In diesem Fall werden Spalten ohne Werte ausgelassen. Sie können bei Bedarf weitere Spalten zum Datasetschema bzw. zur Datasetstruktur hinzufügen und überprüfen. Dieser Vorgang wird während der Laufzeit des Kopiervorgangs berücksichtigt.
 >- Beim Kopieren von Daten nach Dynamics ist der Abschnitt „structure“ im Dynamics-Dataset optional. Welche Spalten kopiert werden sollen, wird vom Quelldatenschema bestimmt. Wenn es sich bei Ihrer Quelle um eine CSV-Datei ohne Header handelt, geben Sie im Eingabedataset die „structure“ mit Spaltenname und Datentyp an. Diese werden den Feldern in der CSV-Datei nacheinander in der entsprechenden Reihenfolge zugeordnet.
 
 **Beispiel:**

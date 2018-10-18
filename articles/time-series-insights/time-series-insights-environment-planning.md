@@ -11,16 +11,22 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 2c06463d95467543a426079addf981aa42d53eb6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: fa178efadf001b70501b132ede67686ae5c06363
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630635"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422557"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Planen Ihrer Azure Time Series Insights-Umgebung
 
 In diesem Artikel wird beschrieben, wie Sie Ihre Azure Time Series Insights-Umgebung basierend auf der erwarteten Eingangsrate und den Anforderungen zur Datenaufbewahrung planen.
+
+## <a name="video"></a>Video: 
+
+### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>In diesem Video erfahren Sie mehr über die Datenspeicherung mit Time Series Insights und, wie Sie diese planen.</br>
+
+> [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
@@ -63,16 +69,16 @@ In der folgenden Tabelle ist die Eingangskapazität für jede SKU zusammengefass
 
 |SKU  |Ereignisanzahl pro Monat, pro Einheit  |Ereignisgröße pro Monat, pro Einheit  |Ereignisanzahl pro Minute, pro Einheit  | Größe pro Minute, pro Einheit   |
 |---------|---------|---------|---------|---------|
-|S1     |   30 Millionen     |  30 GB     |  700    |  700 KB   |
-|S2     |   300 Millionen    |   300 GB   | 7.000   | 7.000 KB  |
+|S1     |   30 Millionen     |  30 GB     |  720    |  720 KB   |
+|S2     |   300 Millionen    |   300 GB   | 7.200   | 7.200 KB  |
 
-Sie können die Kapazität einer SKU des Typs S1 oder S2 in einer einzelnen Umgebung auf 10 Einheiten erhöhen. Die Migration von einer S1-Umgebung zu einer S2-Umgebung oder von einer S2-Umgebung zu einer S1-Umgebung ist nicht möglich. 
+Sie können die Kapazität einer SKU des Typs S1 oder S2 in einer einzelnen Umgebung auf 10 Einheiten erhöhen. Die Migration von einer S1-Umgebung zu einer S2-Umgebung oder von einer S2-Umgebung zu einer S1-Umgebung ist nicht möglich.
 
 Für die Eingangskapazität sollten Sie zunächst den Gesamteingang bestimmen, den Sie pro Monat benötigen. Ermitteln Sie anschließend die Anforderungen pro Minute, da dies eine Rolle für Drosselung und Latenz spielt.
 
 Wenn Sie eine Spitze im Dateneingang über einen Zeitraum unter 24 Stunden verzeichnen, kann Time Series Insights dies mit einer Eingangsrate „aufholen“, die doppelt so hoch ist wie die oben aufgeführten Raten. 
 
-Wenn Sie z.B. über eine einzelne SKU des Typs S1 verfügen und Daten mit einer Rate von 700 Ereignissen pro Minute und bei einer Spitze in einem Zeitraum unter 1 Stunde mit einer Rate von maximal 1.400 Ereignissen eingehen, weist Ihre Umgebung keine merkliche Latenz auf. Wenn jedoch 1.400 Ereignisse pro Minute in einem Zeitraum von über einer Stunde überschritten werden, treten für Daten, die in Ihrer Umgebung visualisiert werden und zur Abfrage verfügbar sind, wahrscheinlich Latenzprobleme auf. 
+Wenn Sie z.B. über eine einzelne SKU des Typs S1 verfügen und Daten mit einer Rate von 720 Ereignissen pro Minute und bei einer Spitze in einem Zeitraum unter 1 Stunde mit einer Rate von maximal 1440 Ereignissen eingehen, weist Ihre Umgebung keine merkliche Latenz auf. Wenn jedoch 1440 Ereignisse pro Minute in einem Zeitraum von über einer Stunde überschritten werden, treten für Daten, die in Ihrer Umgebung visualisiert werden und zur Abfrage verfügbar sind, wahrscheinlich Latenzprobleme auf. 
 
 Sie wissen möglicherweise nicht im Voraus, wie viele Daten erwartungsgemäß übertragen werden. In diesem Fall finden Sie die Datentelemetrie für [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) und [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) im Azure-Portal. Anhand dieser Telemetrie können Sie die Bereitstellung Ihrer Umgebung bestimmen. Verwenden Sie die Seite **Metriken** im Azure-Portal für die jeweilige Ereignisquelle, um die zugehörige Telemetrie anzuzeigen. Wenn Sie sich mit den Metriken der Ereignisquelle vertraut gemacht haben, können Sie Ihre Time Series Insights-Umgebung effektiver planen und bereitstellen.
 
@@ -84,28 +90,36 @@ Sie wissen möglicherweise nicht im Voraus, wie viele Daten erwartungsgemäß ü
  
 ### <a name="mitigate-throttling-and-latency"></a>Beschränken der Drosselung und Latenz
 
-Informationen zum Verhindern der Drosselung und Latenz finden Sie unter [Verringern der Latenz und Drosselung](time-series-insights-environment-mitigate-latency.md). 
+Informationen zum Verhindern der Drosselung und Latenz finden Sie unter [Verringern der Latenz und Drosselung](time-series-insights-environment-mitigate-latency.md).
 
 ## <a name="shaping-your-events"></a>Gestalten Ihrer Ereignisse
-Es ist wichtig sicherzustellen, dass für den Vorgang zum Senden von Ereignissen an TSI die Größe der bereitgestellten Umgebung unterstützt wird. (Sie können auch die Größe der Umgebung daran anpassen, wie viele Ereignisse TSI liest, und an die Größe der einzelnen Ereignisse.)  Außerdem ist es wichtig, sich Gedanken über die Attribute zu machen, die Sie beim Abfragen Ihrer Daten für das Slicing und die Filterung verwenden möchten.  In diesem Zusammenhang empfehlen wir Ihnen, den Abschnitt zur JSON-Gestaltung in unserer Dokumentation *Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe von Event Hub* [Dokumentation] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events) zu lesen.  Er befindet sich im unteren Teil der Seite.  
+Es ist wichtig sicherzustellen, dass für den Vorgang zum Senden von Ereignissen an TSI die Größe der bereitgestellten Umgebung unterstützt wird. (Sie können auch die Größe der Umgebung daran anpassen, wie viele Ereignisse TSI liest, und an die Größe der einzelnen Ereignisse.)  Außerdem ist es wichtig, sich Gedanken über die Attribute zu machen, die Sie beim Abfragen Ihrer Daten für das Slicing und die Filterung verwenden möchten.  In diesem Zusammenhang empfehlen wir Ihnen, den Abschnitt zur JSON-Gestaltung in unserer Dokumentation [Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe von Event Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events) zu lesen.  Er befindet sich im unteren Teil der Seite.  
 
 ## <a name="ensuring-you-have-reference-data-in-place"></a>Sicherstellen des Vorhandenseins von Verweisdaten
 Ein Verweisdataset ist eine Sammlung von Elementen, die die Ereignisse aus Ihrer Ereignisquelle ergänzen. Die Time Series Insights-Erfassungs-Engine verknüpft jedes Ereignis aus Ihrer Ereignisquelle mit der entsprechenden Datenzeile in Ihrem Verweisdataset. Dieses ergänzte Ereignis ist dann für Abfragen verfügbar. Diese Verknüpfung basiert auf den in Ihrem Verweisdataset definierten Primärschlüsselspalten.
 
 Hinweis: Verweisdaten werden nicht rückwirkend verknüpft. Das bedeutet, dass nur aktuelle und künftige eingehende Daten nach dem Konfigurieren und Hochladen abgeglichen und dem Verweisdataset hinzugefügt werden.  Wenn Sie planen, eine große Menge von Verlaufsdaten an TSI zu senden, und nicht zuerst Verweisdaten in TSI hochladen oder erstellen, müssen Sie Ihre Arbeitsschritte unter Umständen erneut durchführen (was keinen Spaß macht).  
 
-Weitere Informationen dazu, wie Sie Ihre Verweisdaten in TSI erstellen, hochladen und verwalten, finden Sie in unserer Dokumentation zu den *Verweisdaten* Dokumentation [Dokumentation](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Weitere Informationen dazu, wie Sie Ihre Verweisdaten in TSI erstellen, hochladen und verwalten, finden Sie in unserer [Dokumentation zu Verweis-DataSets](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 ## <a name="business-disaster-recovery"></a>Business Disaster Recovery
-Als Azure-Dienst sorgt Time Series Insights für Hochverfügbarkeit, indem Redundanzen auf Azure-Regionsebene bereitgestellt werden, ohne dass zusätzlicher Aufwand für die Lösung anfällt. Die Microsoft Azure-Plattform bietet auch Features zum Erstellen von Lösungen mit Notfallwiederherstellungsfunktionen (Disaster Recovery, DR) oder regionsübergreifender Verfügbarkeit. Wenn Sie global und regionsübergreifend Hochverfügbarkeit für Geräte oder Benutzer erreichen möchten, nutzen Sie die Notfallwiederherstellungsfeatures von Azure. Im Artikel [Azure-Geschäftskontinuität – Technische Anleitung](../resiliency/resiliency-technical-guidance.md) werden die integrierten Features von Azure für Geschäftskontinuität und Notfallwiederherstellung beschrieben. Das Dokument [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen][Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen] enthält Architekturinformationen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
+Als Azure-Dienst sorgt Time Series Insights für Hochverfügbarkeit, indem Redundanzen auf Azure-Regionsebene bereitgestellt werden, ohne dass zusätzlicher Aufwand für die Lösung anfällt. Die Microsoft Azure-Plattform bietet auch Features zum Erstellen von Lösungen mit Notfallwiederherstellungsfunktionen (Disaster Recovery, DR) oder regionsübergreifender Verfügbarkeit. Wenn Sie global und regionsübergreifend Hochverfügbarkeit für Geräte oder Benutzer erreichen möchten, nutzen Sie die Notfallwiederherstellungsfeatures von Azure. Im Artikel [Azure-Geschäftskontinuität – Technische Anleitung](../resiliency/resiliency-technical-guidance.md) werden die integrierten Features von Azure für Geschäftskontinuität und Notfallwiederherstellung beschrieben. Das Dokument [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](https://docs.microsoft.com/azure/architecture/resiliency/index) enthält Architekturinformationen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
 
-Time Series Insights verfügt nicht über integrierte Business Disaster Recovery (BCDR).  Allerdings können Kunden, die BCDR benötigen, immer noch eine Wiederherstellungsstrategie implementieren. Erstellen Sie eine zweite Time Series Insights-Umgebung in einer Azure-Sicherungsregion, und senden Sie Ereignisse aus der primären Ereignisquelle an diese sekundäre Umgebung, wobei Sie eine zweite dedizierte Comsumergruppe und die BCDR-Richtlinien dieser Ereignisquelle nutzen.  
+Azure Time Series Insights verfügt nicht über integrierte Business Disaster Recovery (BCDR).
+Standardmäßig verfügen sowohl Azure IoT Hub als auch Event Hubs über integrierte Wiederherstellungsfunktionen.
 
-1.  Erstellen Sie eine Umgebung in der zweiten Region.  Weitere Informationen zum Erstellen einer Time Series Insights-Umgebung finden Sie [hier](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-get-started).
-2.  Erstellen Sie eine zweite dedizierte Consumergruppe für Ihre Ereignisquelle, und stellen Sie eine Verbindung dieser Ereignisquelle mit der neuen Umgebung her.  Vergessen Sie nicht, die zweite, dedizierte Consumergruppe festzulegen.  Um mehr hierzu zu erfahren, lesen Sie die [IoT Hub-Dokumentation](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) oder [Event Hub-Dokumentation](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access).
+Weitere Informationen zu den BCDR-Richtlinien von IoT Hub finden Sie [hier](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr).  
+
+Weitere Informationen zu den BCDR-Richtlinien von Event Hub finden Sie [hier](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr).
+
+Allerdings können Kunden, die BCDR benötigen, immer noch eine Wiederherstellungsstrategie anhand der folgenden Methode implementieren.
+Erstellen Sie eine zweite Time Series Insights-Umgebung in einer Azure-Sicherungsregion, und senden Sie Ereignisse aus der primären Ereignisquelle an diese sekundäre Umgebung, wobei Sie eine zweite dedizierte Comsumergruppe und die BCDR-Richtlinien dieser Ereignisquelle nutzen.  
+
+1.  Erstellen Sie eine Umgebung in der zweiten Region.  Weitere Informationen zum Erstellen einer Time Series Insights-Umgebung finden Sie [hier](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
+2.  Erstellen Sie eine zweite dedizierte Consumergruppe für Ihre Ereignisquelle, und stellen Sie eine Verbindung dieser Ereignisquelle mit der neuen Umgebung her.  Vergessen Sie nicht, die zweite, dedizierte Consumergruppe festzulegen.  Um mehr hierzu zu erfahren, lesen Sie die [IoT Hub-Dokumentation](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) oder [Event Hub-Dokumentation](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access).
 3.  Wenn Ihre primäre Region während eines Notfalls ausfällt, verlagern Sie den Betrieb in die Time Series Insights-Sicherungsumgebung.  
 
-Weitere Informationen zu den BCDR-Richtlinien von IoT Hub finden Sie [hier](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-ha-dr).  Weitere Informationen zu den BCDR-Richtlinien von Event Hub finden Sie [hier](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-geo-dr).  
+Es ist **wichtig zu beachten**, dass bei jedem Failoverszenario eine Verzögerung möglich ist, bevor TSI mit der Verarbeitung von Nachrichten wieder beginnen kann: Dies kann zu einem kurzzeitigen sprunghaften Anstieg bei der Nachrichtenverarbeitung führen. Weitere Informationen finden Sie [in diesem Dokument](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Hinzufügen einer Event Hub-Ereignisquelle](time-series-insights-how-to-add-an-event-source-eventhub.md)

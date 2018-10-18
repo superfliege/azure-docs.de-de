@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
-ms.author: tonguyen
-ms.openlocfilehash: 9396e954305ecc9ff6cbdd664c6cb71846bd5bfa
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: 6b497fd9f4280c36adcbeb4d94e469525c9dad6e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919125"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422999"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -54,17 +54,6 @@ Weitere Informationen zu Preisen finden Sie unter diesen [häufig gestellten Fra
 Wenn Sie im Azure-Portal einen Dienst hinzufügen, erscheint üblicherweise eine ähnliche Schätzung der monatlichen Kosten. Wenn Sie also etwa die Größe Ihres virtuellen Windows-Computers auswählen, werden die voraussichtlichen monatlichen Kosten für die Computestunden angezeigt:
 
 ![Beispiel: Die monatlichen Kosten für einen virtuellen A1-Windows-Computer belaufen sich voraussichtlich auf 66,96 USD.](./media/billing-getting-started/vm-size-cost.PNG)
-
-### <a name="set-up-billing-alerts"></a>Einrichten von Abrechnungswarnungen
-
-Richten Sie Abrechnungswarnungen ein, um sich per E-Mail benachrichtigen zu lassen, wenn Ihre Nutzungskosten einen bestimmten Betrag übersteigen. Falls Sie über monatliches Guthaben verfügen, richten Sie Warnungen für den Verbrauch eines bestimmten Betrags ein. Weitere Informationen finden Sie unter [Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements](billing-set-up-alerts.md).
-
-![Screenshot einer E-Mail mit einer Abrechnungswarnung](./media/billing-getting-started/billing-alert.png)
-
-> [!NOTE]
-> Da sich dieses Feature noch in der Vorschauphase befindet, sollten Sie Ihre Nutzung in regelmäßigen Abständen überprüfen.
-
-Bei Ihrer ersten Warnung können Sie sich an der Kostenschätzung des Preisrechners orientieren.
 
 ### <a name="spending-limit"></a>Überprüfen, ob ein Ausgabenlimit aktiviert ist
 
@@ -147,7 +136,7 @@ Nach dem Ende Ihres Abrechnungszyklus wird Ihre Rechnung zur Verfügung gestellt
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA-, CSP- und Sponsorship-Kunden
 Wenden Sie sich an Ihren Kundenbetreuer oder Azure-Partner.
 
-| Angebot | angeben |
+| Angebot | Ressourcen |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | Enterprise Agreement (EA) | [EA-Portal](https://ea.azure.com/), [Hilfedokumente](https://ea.azure.com/helpdocs) und [Power BI-Bericht](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | Cloud Solution Provider (CSP) | Wenden Sie sich an Ihren Anbieter. |
@@ -166,7 +155,7 @@ Enterprise-Kostenansichten sind derzeit als öffentliche Vorschau verfügbar. Fo
     - Sie sind Abteilungsadministrator, und der Registrierungsadministrator hat die Einstellung „Gebühren anzeigen“ für Abteilungsadministratoren deaktiviert.  Wenden Sie sich an den Registrierungsadministrator, um Zugriff zu erhalten. 
     - Sie haben Azure über einen Channelpartner erworben, und der Partner hat die Preisinformationen nicht freigegeben.  
 - Wenn Einstellungen in Bezug auf den Zugriff auf die Kosten im Enterprise-Portal aktualisiert werden, werden die Änderungen erst nach einigen Minuten Verzögerung im Azure-Portal angezeigt.
-- Das Ausgabenlimit, Abrechnungsbenachrichtigungen und Rechnungsanleitungen sind für EA-Abonnements nicht relevant.
+- Das Ausgabelimit und die Rechnungsanleitungen gelten nicht für EA-Abonnements.
 
 ### <a name="check-your-subscription-and-access"></a>Überprüfen von Abonnement und Zugriff
 

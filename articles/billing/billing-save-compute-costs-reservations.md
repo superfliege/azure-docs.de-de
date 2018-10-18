@@ -1,6 +1,6 @@
 ---
 title: Was sind Azure-Reservierungen? | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie mehr über Azure-Reservierungen und Preise, mit denen Sie Einsparungen für virtuelle Computer, SQL-Datenbanken und andere Ressourcenkosten erzielen.
+description: Erfahren Sie mehr über Azure-Reservierungen und -Preise, um Kosten für virtuelle Computer, SQL-Datenbank-Instanzen, Azure Cosmos DB-Instanzen und andere Ressourcen zu sparen.
 services: billing
 documentationcenter: ''
 author: yashesvi
@@ -12,31 +12,33 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: yashar
-ms.openlocfilehash: 82b23f46acc94fefccc871583657200b90a33f05
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.author: cwatson
+ms.openlocfilehash: a0fb5eccf14aee07005ab345f1af293f341f9215
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43303561"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422948"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
-Mit Azure-Reservierungen können Sie Geld sparen, indem Sie im Voraus VM-, SQL-Datenbank-Kapazitäten oder andere Azure-Ressourcen für ein Jahr oder drei Jahre bezahlen. Durch die Vorabzahlung können Sie einen Rabatt für die Ressourcen, die Sie nutzen, in Anspruch nehmen. Reservierungen können Ihre Kosten für virtuelle Computer, SQL-Datenbank-Computing oder andere Ressourcen deutlich um bis zu 72 % gegenüber der nutzungsbasierten Bezahlung reduzieren. Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer Ressourcen aus.
+Mit Azure-Reservierungen können Sie Geld sparen, indem Sie für virtuelle Computer, SQL-Datenbank-Computekapazität, Azure Cosmos DB-Durchsatz oder andere Azure-Ressourcen für ein Jahr oder für drei Jahre im Voraus zahlen. Durch die Vorabzahlung können Sie einen Rabatt für die Ressourcen, die Sie nutzen, in Anspruch nehmen. Reservierungen können Ihre Kosten für virtuelle Computer, SQL-Datenbank-Compute, Azure Cosmos DB-Kapazitäten oder andere Ressourcen deutlich um bis zu 72 % gegenüber der nutzungsbasierten Bezahlung reduzieren. Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer Ressourcen aus.
 
 Sie können eine Reservierung im [Azure-Portal](https://aka.ms/reservations) erwerben. Weitere Informationen finden Sie in den folgenden Themen:
 
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../sql-database/sql-database-reserved-capacity.md)
+- [Vorauszahlen für Azure Cosmos DB-Ressourcen mit reservierter Azure Cosmos DB-Kapazität](../cosmos-db/cosmos-db-reserved-capacity.md)
 
 ## <a name="why-should-i-buy-a-reservation"></a>Warum sollte ich eine Reservierung erwerben?
 
-Wenn Sie über virtuelle Computer oder SQL-Datenbank-Instanzen verfügen, die für längere Zeiträume ausgeführt werden, erhalten Sie durch den Erwerb einer reservierten Instanz die kostengünstigste Option. Wenn Sie beispielsweise kontinuierlich vier Instanzen von einem Dienst ohne Reservierung ausführen, fallen die Gebühren für die nutzungsbasierte Bezahlung an. Wenn Sie eine Reservierung für diese Ressourcen erwerben, erhalten Sie sofort den Rabatt auf Reservierungen. Die Ressourcen werden nicht mehr mit den Gebühren für die nutzungsbasierte Bezahlung in Rechnung gestellt.
+Wenn Sie über virtuelle Computer, Azure Cosmos DB- oder SQL-Datenbank-Instanzen verfügen, die für längere Zeiträume ausgeführt werden, erhalten Sie durch den Erwerb einer reservierten Instanz die kostengünstigste Option. Wenn Sie beispielsweise kontinuierlich vier Instanzen von einem Dienst ohne Reservierung ausführen, fallen die Gebühren für die nutzungsbasierte Bezahlung an. Wenn Sie eine Reservierung für diese Ressourcen erwerben, erhalten Sie sofort den Rabatt auf Reservierungen. Die Ressourcen werden nicht mehr mit den Gebühren für die nutzungsbasierte Bezahlung in Rechnung gestellt.
 
 ## <a name="what-charges-does-a-reservation-cover"></a>Welche Gebühren werden von einer Reservierung abgedeckt?
 
 - Reservierte VM-Instanz: Eine Reservierung deckt nur die Computekosten virtueller Computer ab. Eine Reservierung deckt keine zusätzlichen Kosten für Software, Netzwerke oder Speicher ab.
 - Reservierte virtuelle Kerne für SQL-Datenbank: In einer Reservierung sind nur die Computekosten enthalten. Die Lizenz wird separat abgerechnet.
+- Die reservierte Azure Cosmos DB-Kapazität: Eine Reservierung deckt den für Ihre Ressourcen bereitgestellten Durchsatz ab, nicht die Speicher- und Netzwerkkosten. 
 
 Für virtuelle Windows-Computer und SQL-Datenbank können Sie die Lizenzierungskosten mit dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) decken.
 
@@ -56,7 +58,7 @@ Die Reservierung wird mit der Zahlungsmethode in Rechnung gestellt, die mit dem 
 
 ## <a name="how-is-the-reservation-discount-applied"></a>Wie wird der Rabatt auf Reservierungen angewendet?
 
-Der Reservierungsrabatt gilt für die Ressourcennutzung, die den Attribute entspricht, die Sie beim Erwerb der Reservierung auswählen. Zu diesen Attributen gehört der Bereich, in dem die entsprechenden VMs, SQL-Datenbank-Instanzen oder anderen Ressourcen ausgeführt werden. Beispiel: Wenn Sie einen Rabatt auf eine Reservierung für vier virtuelle Computer des Typs „Standard D2“ in der Region „USA, Westen“ nutzen möchten, wählen Sie das Abonnement aus, in dem die VMs ausgeführt werden. Wenn die virtuellen Computer in verschiedenen Abonnements in Ihrer Registrierung/Ihrem Konto ausgeführt werden, wählen Sie den Bereich „Freigegeben“ aus. Der Bereich „Freigegeben“ ermöglicht die abonnementübergreifende Anwendung des Reservierungsrabatts. Sie können den Bereich nach dem Erwerb einer Reservierung ändern. Weitere Informationen finden Sie unter [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md).
+Der Reservierungsrabatt gilt für die Ressourcennutzung, die den Attribute entspricht, die Sie beim Erwerb der Reservierung auswählen. Zu diesen Attributen gehört der Bereich, in dem die entsprechenden VMs, SQL-Datenbank-Instanzen, Azure Cosmos DB-Instanzen oder anderen Ressourcen ausgeführt werden. Beispiel: Wenn Sie einen Rabatt auf eine Reservierung für vier virtuelle Computer des Typs „Standard D2“ in der Region „USA, Westen“ nutzen möchten, wählen Sie das Abonnement aus, in dem die VMs ausgeführt werden. Wenn die virtuellen Computer in verschiedenen Abonnements in Ihrer Registrierung/Ihrem Konto ausgeführt werden, wählen Sie den Bereich „Freigegeben“ aus. Der Bereich „Freigegeben“ ermöglicht die abonnementübergreifende Anwendung des Reservierungsrabatts. Sie können den Bereich nach dem Erwerb einer Reservierung ändern. Weitere Informationen finden Sie unter [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md).
 
 Der Rabatt auf Reservierungen gilt nur für Ressourcen, denen einer der Abonnementtypen „Enterprise“, „Nutzungsbasierte Bezahlung“ oder „CSP“ zugeordnet ist. Für Ressourcen, die in einem Abonnement mit anderen Angebotstypen ausgeführt werden, gilt der Reservierungsrabatt nicht. Bei Enterprise-Registrierungen können die Vorteile einer Reservierung nicht für Enterprise Dev/Test-Abonnements genutzt werden.
 
@@ -64,15 +66,25 @@ Um besser zu verstehen, wie sich Reservierungen auf Ihre Abrechnung auswirken, l
 
 -  [Grundlegendes zum Rabatt für reservierte Azure-VM-Instanzen](billing-understand-vm-reservation-charges.md)
 - [Grundlegendes zum Rabatt für Azure-Reservierungen](billing-understand-vm-reservation-charges.md)
-- Grundlegendes zum Rabatt für SUSE und zur Verwendung von Azure-Reservierungen unter SUSE
+- [Understand Azure Cosmos DB reservation discount (Grundlegendes zum Rabatt für Azure Cosmos DB-Reservierungen)](billing-understand-cosmosdb-reservation-charges.md)
+- [Grundlegendes zur Anwendung des Rabatts für den SUSE Linux Enterprise-Softwareplan](billing-understand-suse-reservation-charges.md)
 
 ## <a name="what-happens-when-the-reservation-term-expires"></a>Was geschieht nach Ende der Laufzeit der Reservierung?
 
-Am Ende der Laufzeit der Reservierung läuft der Abrechnungsrabatt ab, und die Infrastruktur der virtuellen Computer, SQL-Datenbank-Instanzen oder anderen Ressourcen wird mit den Gebühren für die nutzungsbasierte Bezahlung in Rechnung gestellt. Azure-Reservierungen verlängern sich nicht automatisch. Zur weiteren Nutzung des Abrechnungsrabatts müssen Sie eine neue Reservierung für Dienste und Software erwerben, die für Reservierungen berechtigt sind.
+Am Ende der Laufzeit der Reservierung läuft der Abrechnungsrabatt ab, und die Infrastruktur der virtuellen Computer, SQL-Datenbank-Instanzen, Azure Cosmos DB-Instanzen oder anderen Ressourcen wird mit den Gebühren für die nutzungsbasierte Bezahlung in Rechnung gestellt. Azure-Reservierungen verlängern sich nicht automatisch. Zur weiteren Nutzung des Abrechnungsrabatts müssen Sie eine neue Reservierung für Dienste und Software erwerben, die für Reservierungen berechtigt sind.
+
+## <a name="discount-applies-to-different-sizes-with-instance-size-flexibility"></a>Der Rabatt gilt für verschiedene Größen mit Instanzgrößenflexibilität
+
+Wenn Sie eine Reservierung erwerben, kann der Rabatt auf andere Instanzen mit Attributen angewendet werden, die sich in der gleichen Größengruppe befinden. Die Flexibilität der Rabattabdeckung hängt vom Reservierungstyp und den Attributen ab, die Sie beim Erwerb der Reservierung auswählen.
+
+- Reservierte VM-Instanzen: Wenn Sie die Reservierung erwerben, und Sie unter **Optimiert für** die **Instanzgrößenflexibilität** auswählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Die Reservierung kann für VM-Größen in derselben Größenordnung gelten. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- SUSE Linux Enterprise-Softwareplan: Die Rabattabdeckung hängt von den virtuellen CPUs der VMs ab, auf denen Sie die SUSE-Software ausführen. Weitere Informationen finden Sie unter [Grundlegendes zur Anwendung des Rabatts für den SUSE Linux Enterprise-Softwareplan](billing-understand-suse-reservation-charges.md).
+- Reservierte SQL-Datenbank-Kapazität: Die Rabattabdeckung hängt von der ausgewählten Leistungsstufe ab. Weitere Informationen finden Sie unter [Grundlegendes zur Anwendung eines Rabatts für Azure-Reservierungen auf SQL-Datenbank-Instanzen](billing-understand-reservation-charges.md).
+- Reservierte Azure Cosmos DB-Kapazität: Die Rabattabdeckung hängt vom bereitgestellten Durchsatz ab. Weitere Informationen finden Sie unter [Understand how an Azure Cosmos DB reservation discount is applied (Grundlegendes zur Anwendung eines Rabatts für Azure Cosmos DB-Reservierungen)](billing-understand-cosmosdb-reservation-charges.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sparen Sie durch den Erwerb einer [reservierten VM-Instanz](../virtual-machines/windows/prepay-reserved-vm-instances.md) oder einer [reservierten SQL-Datenbank-Kapazität](../sql-database/sql-database-reserved-capacity.md) ab sofort Kosten für Ihre virtuellen Computer.
+Sparen Sie durch den Erwerb einer [reservierten VM-Instanz](../virtual-machines/windows/prepay-reserved-vm-instances.md), einer [reservierten SQL-Datenbank-Kapazität](../sql-database/sql-database-reserved-capacity.md) oder einer [reservierten Azure Cosmos DB-Kapazität](../cosmos-db/cosmos-db-reserved-capacity.md) bei den Kosten für Ihre virtuellen Computer.
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
