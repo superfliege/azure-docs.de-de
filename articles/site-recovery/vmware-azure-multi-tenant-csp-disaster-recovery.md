@@ -2,18 +2,18 @@
 title: Einrichten der VMware-Replikation in Azure in Umgebungen mit mehreren Mandanten mithilfe von Site Recovery und dem Cloud Solution Provider-Programm (CSP) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Mandantenabonnements über CSP erstellen und verwalten und wie Sie Azure Site Recovery in einer Umgebung mit mehreren Mandanten bereitstellen.
 services: site-recovery
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: d384a77054cdcab0305b9e6d3fe5bb824e49bb16
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: bd356a7e4285f8663b91da1f200cc2ae3c266bf3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916801"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354120"
 ---
 # <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Einrichten der VMware-Replikation in einer Umgebung mit mehreren Mandanten mit dem Cloud Solution Provider-Programm (CSP)
 

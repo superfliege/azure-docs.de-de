@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e4d625cd123583baa30fde8e9826f5b57da49fe
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ef8809afa2da36f44384d784e32532b7b121e3a9
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393587"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379143"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>Tutorial: Überwachung und Optimierung in Azure Database for PostgreSQL
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL umfasst Features,mit denen Sie die Leistung Ihres 
 Sie benötigen einen Azure Database for PostgreSQL-Server mit der PostgreSQL-Version 9.6 oder 10. Sie können auch die unter [Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe des Azure-Portals](tutorial-design-database-using-azure-portal.md) beschriebenen Schritte ausführen, um einen Server zu erstellen.
 
 > [!IMPORTANT]
-> Der **Abfragespeicher**, **Query Performance Insight** und die **Leistungsempfehlungen** stehen als Public Preview in einer begrenzten Zahl von Regionen zur Verfügung.
+> Der **Abfragespeicher**, **Query Performance Insight** und die **Leistungsempfehlungen** stehen als öffentliche Vorschauversion zur Verfügung.
 
 ## <a name="enabling-data-collection"></a>Aktivieren von Datensammlung
 Der [Abfragespeicher](concepts-query-store.md) erfasst den Verlauf der Abfragen und Wartestatistiken auf Ihrem Server und speichert ihn in der **azure_sys**-Datenbank auf Ihrem Server. Dies ist eine optionale Funktion. Aktivieren Sie sie wie folgt:

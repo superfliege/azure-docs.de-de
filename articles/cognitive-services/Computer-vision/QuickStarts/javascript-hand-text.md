@@ -3,19 +3,19 @@ title: 'Schnellstart: Extrahieren von handschriftlichem Text – REST, JavaScrip
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und JavaScript.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 82c51c95bf8a538ce50dd190cce737b0295abc6e
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 2b653c57aafd9e457855390f4f9955d9d387ed20
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634675"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344182"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>Schnellstart: Extrahieren von handschriftlichem Text mit der REST-API und JavaScript in der Maschinelles Sehen-API
 
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen einen Abonnementschlüssel für die Maschinelles Sehen-API. Informationen zum Abrufen eines Abonnementschlüssels finden Sie unter [Abrufen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
+Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
 ## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
@@ -192,7 +192,7 @@ Image to read:
 
 ## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebseite analysiert eine erfolgreiche Antwort und zeigt sie im Browserfenster an, ähnlich wie im folgenden Beispiel:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebseite analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Browserfenster an. Im Folgenden finden Sie ein Beispiel dafür:
 
 ```json
 {

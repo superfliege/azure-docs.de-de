@@ -3,8 +3,8 @@ title: Azure-Diagnoseprotokolle | Microsoft-Dokumentation
 description: Kunden können die Protokollanalyse für Azure CDN aktivieren.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: v-deasim
-ms.openlocfilehash: 0baa43977099af9c6c0d9c2e4c03abc121ec279d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: magattus
+ms.openlocfilehash: 6834222ec2befa305b558abf0976a1c9899a7086
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47097005"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093025"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 
@@ -49,7 +49,7 @@ Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Erfassen und Nutz
 
 Führen Sie die folgenden Schritte aus, um die Protokollierung mit der CDN-Basisanalyse zu aktivieren:
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an. Wenn Sie CDN für Ihren Workflow noch nicht aktiviert haben, [Erstellen Sie ein Azure CDN-Profil und einen Endpunkt](cdn-create-new-endpoint.md), bevor Sie fortfahren.
+Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an. Wenn Sie CDN für Ihren Workflow noch nicht aktiviert haben, [Erstellen Sie ein Azure CDN-Profil und einen Endpunkt](cdn-create-new-endpoint.md), bevor Sie fortfahren.
 
 1. Navigieren Sie im Azure-Portal zum **CDN-Profil**.
 

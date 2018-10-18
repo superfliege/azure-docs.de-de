@@ -1,26 +1,18 @@
 ---
 title: Microsoft Azure Data Box Gateway – Übersicht | Microsoft-Dokumentation
 description: In diesem Artikel wird Azure Data Box Gateway beschrieben, eine Speicherlösung mit einem virtuellen Gerät, die zum Übertragen von Daten in Azure dient.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 9c12674a66582ede04b4cf9d311238d61816afec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f1ab6d955c81ce6f7b141eef42341f43bb379f6
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969545"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165316"
 ---
 # <a name="what-is-azure-data-box-gateway-preview"></a>Was ist Azure Data Box Gateway (Vorschauversion)? 
 
@@ -54,7 +46,7 @@ Data Box Gateway hat die folgenden Vorteile:
 
 Data Box Gateway bietet die folgenden Funktionen:
 
-|Funktion |Beschreibung  |
+|Funktion |BESCHREIBUNG  |
 |---------|---------|
 |Geschwindigkeit     | Vollständig automatisierte und stark optimierte Datenübertragung und Bandbreite.|
 |Unterstützte Protokolle     | Für die Datenerfassung werden die Standardprotokolle SMB und NFS unterstützt. <br> Weitere Informationen zu unterstützten Versionen finden Sie unter [Systemanforderungen für Data Box Gateway](data-box-gateway-system-requirements.md).|
@@ -70,7 +62,7 @@ Data Box Gateway bietet die folgenden Funktionen:
 
 Das virtuelle Data Box Gateway-Gerät weist die folgenden Merkmale auf:
 
-| Spezifikationen                                          | Beschreibung              |
+| Spezifikationen                                          | BESCHREIBUNG              |
 |---------------------------------------------------------|--------------------------|
 | Virtuelle Prozessoren (Kerne)   | Mindestens 4 |            
 | Arbeitsspeicher  | Mindestens 8 GB|

@@ -3,19 +3,19 @@ title: 'Schnellstart: Analysieren eines remote gespeicherten Bilds – REST, Rub
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung analysieren Sie ein Bild mit der Maschinelles Sehen-API und Ruby.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: bf17e8213ad2bbdc793f979471d9861578cac8e2
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: a00b7d8fd56c28edd220d90f85df76892a54db6a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628861"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341570"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-ruby-in-computer-vision"></a>Schnellstart: Analysieren eines remote gespeicherten Bilds mit der REST-API und Ruby in der Maschinelles Sehen-API
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
-1. Kopieren Sie den folgenden Code, und fügen Sie ihn in einen Text-Editor ein.
+1. Kopieren Sie den folgenden Code in einen Text-Editor.
 1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
     1. Ersetzen Sie `<Subscription Key>` durch Ihren Abonnementschlüssel.
     1. Ersetzen Sie `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze` ggf. durch die Endpunkt-URL für die [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-Methode in der Azure-Region, in der Sie Ihren Abonnementschlüssel bezogen haben.
@@ -75,7 +75,7 @@ puts response.body
 
 ## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Das Beispiel analysiert eine erfolgreiche Antwort im Eingabeaufforderungsfenster und zeigt sie an. Im Folgenden finden Sie ein Beispiel dafür:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Das Beispiel analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Im Folgenden finden Sie ein Beispiel dafür:
 
 ```json
 {
@@ -180,7 +180,7 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Das Beispiel analy
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei, falls Sie sie nicht mehr benötigen.
+Wenn Sie die Datei nicht mehr benötigen, löschen Sie sie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

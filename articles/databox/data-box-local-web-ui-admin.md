@@ -2,25 +2,18 @@
 title: Verwaltung von Microsoft Azure Data Box auf der lokalen Webbenutzeroberfläche | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Ihr Data Box-Gerät auf der lokalen Webbenutzeroberfläche verwalten.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/11/2018
 ms.author: alkohli
-ms.openlocfilehash: a5f3f1b4d0d67a12ee0ebaa40935b8494e53dab3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9dd519f8efc9700f7a747aa37a9c02414f3e1865
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956301"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093883"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>Verwalten von Data Box auf der lokalen Webbenutzeroberfläche
 
@@ -28,7 +21,7 @@ In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben besc
 
 Die lokale Webbenutzeroberfläche für das Data Box-Gerät dient zur Erstkonfiguration des Geräts. Sie können die lokale Webbenutzeroberfläche auch verwenden, um das Data Box-Gerät herunterzufahren oder neu zu starten, Diagnosetests durchzuführen, Software zu aktualisieren, Kopierprotokolle anzuzeigen und ein Protokollpaket für den Microsoft-Support zu erstellen.
 
-Dieser Artikel enthält folgende Tutorials:
+Dieser Artikel enthält folgende Lernprogramme:
 
 - Erstellen eines Unterstützungspakets
 - Herunterfahren oder Neustarten des Geräts
@@ -77,7 +70,7 @@ Sobald das Gerät heruntergefahren ist, schalten Sie es über den Netzschalter a
 Führen Sie zum Neustarten Ihres Data Box-Geräts die folgenden Schritte aus.
 
 1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Herunterfahren oder neu starten**.
-2. Klicken Sie auf **Neu starten**.
+2. Klicken Sie auf **Restart**.
 
     ![Data Box neu starten 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
@@ -106,7 +99,7 @@ Es wird dringend empfohlen, die Prüfsumme nicht zu deaktivieren, es sei denn, d
     ![Prüfsumme deaktivieren](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. **Deaktivieren** Sie die Überprüfung der Prüfsumme.
-3. Klicken Sie auf **Übernehmen**.
+3. Klicken Sie auf **Anwenden**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

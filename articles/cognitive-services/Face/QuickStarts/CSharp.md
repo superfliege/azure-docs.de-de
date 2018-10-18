@@ -3,19 +3,19 @@ title: 'Schnellstart: Erkennen von Gesichtern in einem Bild – Gesichtserkennun
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart führen Sie die Gesichtserkennung für ein Bild aus, indem Sie die Gesichtserkennungs-API mit C# verwenden.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
-ms.author: nolachar
-ms.openlocfilehash: ffeb20fdd39bc5e4579fc708e0902bd8d3630b23
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: pafarley
+ms.openlocfilehash: 080e616067bb0b8a640ded6faec184030314d79a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129368"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341020"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-c"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit C#
 
@@ -332,7 +332,7 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie eine WPF-Anwendung erstellen, die mit der Gesichtserkennungs-API Gesichter in Bildern erkennt. Die Anwendung zeichnet einen Rahmen um jedes Gesicht und zeigt eine Beschreibung des Gesichts in der Statusleiste an.
+Erfahren Sie, wie Sie eine WPF-Anwendung erstellen, die mithilfe des Gesichtserkennungsdiensts Gesichter in Bildern erkennt. Die Anwendung zeichnet einen Rahmen um jedes Gesicht und zeigt eine Beschreibung des Gesichts in der Statusleiste an.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Erste Schritte mit der Gesichtserkennungs-API in C#](../Tutorials/FaceAPIinCSharpTutorial.md)

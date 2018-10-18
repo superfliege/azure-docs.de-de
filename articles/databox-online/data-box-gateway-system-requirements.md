@@ -1,25 +1,19 @@
 ---
 title: Systemanforderungen für Microsoft Azure Data Box Gateway | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie mehr über die Software- und Netzwerkanforderungen für Azure Data Box Gateway.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 915190f6f2773d22d14c75be1140f96b7dd40559
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f70cd5de29cc3050142dfff905acae2008dab115
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991571"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379121"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Systemanforderungen für Microsoft Azure Data Box Gateway (Vorschauversion)
 
@@ -84,7 +78,7 @@ Im Folgenden finden Sie eine Liste der unterstützten Speichertypen für Data Bo
 
 Es folgt eine Liste der für die lokale Webbenutzeroberfläche des virtuellen Geräts unterstützten Webbrowser.
 
-|Browser  |Versionen  |Weitere Anforderungen/Hinweise  |
+|"Browser"  |Versionen  |Weitere Anforderungen/Hinweise  |
 |---------|---------|---------|
 |Google Chrome   |Aktuelle Version         |         |
 |Microsoft Edge    | Aktuelle Version        |         |
@@ -118,7 +112,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 |     URL-Muster                                                                                                                                                                                                                                                                                                                                                                                                                                       |     Komponente/Funktionalität                                                                             |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://*.databoxedge.azure.com/*<br>https://*.accesscontrol.windows.net/*<br>https://*.servicebus.windows.net/*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                        |    Azure Data Box Gateway-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure-Servicebus<br>Authentifizierungsdienst    |
+|    https://*.databoxedge.azure.com/*<br>https://*.servicebus.windows.net/*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                        |    Azure Data Box Gateway-Dienst<br>Azure-Servicebus<br>Authentifizierungsdienst    |
 |    http://*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                   |    Geräteaktivierung                                                                                    |
 |    http://crl.microsoft.com/pki/*   http://www.microsoft.com/pki/*                                                                                                                                                                                                                                                                                                                                                                                    |    Zertifikatswiderruf                                                                               |
 |    https://*.core.windows.net/*   https://*.data.microsoft.com   http://*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                |    Azure-Speicherkonten und Überwachung                                                                |

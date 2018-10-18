@@ -17,7 +17,7 @@
 ##  Konzepte
 ### [Virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Netzwerklastenausgleich](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Anwendungslastenausgleich](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Anwendungslastenausgleich](../application-gateway/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [DNS](../dns/dns-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [DNS-basierte Datenverkehrsverteilung](../traffic-manager/traffic-manager-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Lokal verbinden – VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)
@@ -49,15 +49,15 @@
 ### [Netzwerktopologie](../network-watcher/network-watcher-topology-powershell.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## Beispielskripts
-### [Azure-CLI](cli-samples.md)
+### [Azure-Befehlszeilenschnittstelle](cli-samples.md)
 ### [Azure PowerShell](powershell-samples.md)
 
-## Tutorials
+## Lernprogramme
 ### [Lastenausgleich für virtuelle Computer](../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Verbinden eines Computers mit einem virtuellen Netzwerk](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # Verweis
-## [Azure-CLI](https://docs.microsoft.com/cli/azure/network)
+## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network)
 ## [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network/?view=azurermps-3.8.0)
 ## [.Net](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.network?view=azuremgmtnetwork-9.1.0-preview)
 ## [Node.js](https://azure.microsoft.com/develop/nodejs/#azure-sdk)
@@ -71,6 +71,6 @@
 ## [Preise](https://azure.microsoft.com/pricing)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
-## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-virtual-network)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 ## [Videos](https://azure.microsoft.com/resources/videos/index/?services=virtual-network)
 

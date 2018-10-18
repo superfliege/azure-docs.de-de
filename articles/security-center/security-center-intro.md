@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: bd0e517845b9cfcbe6090dff8d656edcca782c83
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1b0a6c6d6daa686404021afb2e10b25bb9f54191
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126291"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319386"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Mit Security Center können Sie Sicherheitsrichtlinien für Ihre Workloads anwenden, die Angriffsfläche für Bedrohungen verringern sowie Angriffe erkennen und darauf reagieren.
@@ -113,7 +113,7 @@ Im rechten Bereich des Dashboards unter **Ressourcen** wird eine Liste der am h�
 
 Dies ist die Empfehlung mit der höchsten Auswirkung in Ihrer Umgebung. Durch Umsetzen dieser Empfehlung verbessern Sie die Konformität am meisten. In diesem Beispiel lautet die Empfehlung, die Datenträgerverschlüsselung anzuwenden. Durch Auswahl von **Konformität verbessern** wird eine Beschreibung der Empfehlung geöffnet und eine Liste der betroffenen Ressourcen angezeigt.
 
-![Datenträgerverschlüsselung anwenden][12]
+![Anwenden der Datenträgerverschlüsselung][12]
 
 ## <a name="threat-protection"></a>Bedrohungsschutz
 Dieser Bereich bietet Einblick in die Sicherheitswarnungen, die für Ihre Ressourcen ermittelt wurden, und gibt den Schweregrad für diese Warnungen an.

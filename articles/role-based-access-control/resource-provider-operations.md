@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ee2a72a65902347a2e58f79d0f621c9d08178104
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: d9cf46a1fd28985d9ca98d173bbef17380b7de21
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410305"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354392"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
@@ -3346,8 +3346,6 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für den Lastenausgleich. |
 > | Aktion | Microsoft.Network/loadBalancers/backendAddressPools/read | Ruft eine Back-End-Adresspooldefinition für den Lastenausgleich ab. |
 > | Aktion | Microsoft.Network/loadBalancers/delete | Löscht einen Lastenausgleich. |
-> | Aktion | Microsoft.Network/loadBalancers/frontendIPConfigurations/join/action | Verknüpft eine Front-End-IP-Konfiguration für den Lastenausgleich. |
-> | Aktion | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | Ruft eine Front-End-IP-Konfigurationsdefinition für den Lastenausgleich ab. |
 > | Aktion | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Verknüpft einen eingehenden NAT-Pool für den Lastenausgleich. |
 > | Aktion | Microsoft.Network/loadBalancers/inboundNatPools/read | Ruft eine eingehende NAT-Pooldefinition für den Lastenausgleich ab. |
 > | Aktion | Microsoft.Network/loadBalancers/inboundNatRules/delete | Löscht eine eingehende NAT-Regel für den Lastenausgleich. |
@@ -3477,10 +3475,6 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/publicIPAddresses/dnsAliases/read | Ruft eine DNS-Aliasressource einer öffentlichen IP-Adresse. |
 > | Aktion | Microsoft.Network/publicIPAddresses/dnsAliases/write | Erstellt eine DNS-Aliasressource einer öffentlichen IP-Adresse. |
 > | Aktion | Microsoft.Network/publicIPAddresses/join/action | Verknüpft eine öffentliche IP-Adresse. |
-> | Aktion | Microsoft.Network/publicIPAddresses/loadBalancerPools/delete | Löscht einen Back-End-Pool für den Lastenausgleich von öffentlichen IP-Adressen. |
-> | Aktion | Microsoft.Network/publicIPAddresses/loadBalancerPools/join/action | Verknüpft einen Back-End-Pool für den Lastenausgleich von öffentlichen IP-Adressen. |
-> | Aktion | Microsoft.Network/publicIPAddresses/loadBalancerPools/read | Ruft die Definition eines Back-End-Pools für den Lastenausgleich von öffentlichen IP-Adressen ab. |
-> | Aktion | Microsoft.Network/publicIPAddresses/loadBalancerPools/write | Erstellt einen Back-End-Pool für den Lastenausgleich von öffentlichen IP-Adressen oder aktualisiert einen vorhandenen. |
 > | Aktion | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellungen der öffentlichen IP-Adresse ab. |
 > | Aktion | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellungen der öffentlichen IP-Adresse. |
 > | Aktion | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/logDefinitions/read | Ruft die Protokolldefinitionen der öffentlichen IP-Adresse ab. |

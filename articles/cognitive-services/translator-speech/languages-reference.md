@@ -10,15 +10,16 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: 9fbbba7ed5e81cae1d30c5a480b9f7f7a13342c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b7005811898df9132be6bc199e26f6c6dc358618
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986420"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345202"
 ---
 # <a name="translator-speech-api-languages"></a>Sprachübersetzungs-API: Languages-Methode
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 Die Sprachübersetzung erweitert ständig die Liste der von den Diensten unterstützten Sprachen. Verwenden Sie diese API, um die Sprachen zu ermitteln, die zur Verwendung mit dem Sprachübersetzungsdienst verfügbar sind.
 

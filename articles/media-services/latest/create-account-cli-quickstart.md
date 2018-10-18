@@ -4,25 +4,22 @@ description: Führen Sie die Schritte dieser Schnellstartanleitung aus, um ein A
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cflower
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/27/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: abed9fd8d466b582b534b365f4be4257f4986435
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: de54571308b737b9160a39ee4ba5d4b2d9f15775
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736001"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376532"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>Schnellstart: Erstellen eines Azure Media Services-Kontos
-
-> [!NOTE]
-> Die neueste Version von Azure Media Services (2018-03-30) befindet sich in der Vorschau. Diese Version wird auch als „v3“ bezeichnet. 
 
 Wenn Sie Entwickler sind oder Medieninhalte erstellen, müssen Sie ein Media Services-Konto erstellen, um Medieninhalte in Azure zu speichern, zu verschlüsseln, zu codieren, zu verwalten und zu streamen. Wenn Sie ein Media Services-Konto erstellen, müssen Sie die ID einer Azure Storage-Kontoressource angeben. Das angegebene Storage-Konto wird an Ihr Media Services-Konto angefügt. Diese Storage-Kontoressource muss sich in der gleichen geografischen Region befinden wie das Media Services-Konto.  
 

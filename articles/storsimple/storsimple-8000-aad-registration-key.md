@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: e6e792c31f9856bcaf1d777e534dcac8d8be3dd3
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b1ea195ab0b06c4ca0fab37fe7e5701229b34938
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113526"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387037"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Verwenden der neuen Authentifizierung für StorSimple
 
@@ -28,7 +28,7 @@ ms.locfileid: "37113526"
 Der StorSimple-Geräte-Manager-Dienst wird in Microsoft Azure ausgeführt. Er verfügt über Verbindungen mit mehreren StorSimple-Geräten. Bislang hat der StorSimple-Geräte-Manager-Dienst einen Zugriffssteuerungsdienst (Access Control Service, ACS) verwendet, um den Dienst bei Ihrem StorSimple-Gerät zu authentifizieren. Der ACS-Mechanismus wird in Kürze eingestellt und durch eine AAD-Authentifizierung (Azure Active Directory) ersetzt. Weitere Informationen finden Sie in den folgenden Ankündigungen zur Einstellung von ACS und zur Verwendung der AAD-Authentifizierung.
 
 - [The future of Azure ACS is Azure Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/12/the-future-of-azure-acs-is-azure-active-directory/) (Die Zukunft von Azure ACS ist Azure Active Directory)
-- [Upcoming changes to the Microsoft Access Control Service](https://azure.microsoft.com/en-in/blog/acs-access-control-service-namespace-creation-restriction/) (Anstehende Änderungen beim Microsoft Access Control Service)
+- [Upcoming changes to the Microsoft Access Control Service](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/) (Anstehende Änderungen beim Microsoft Access Control Service)
 
 Dieser Artikel behandelt die Details der AAD-Authentifizierung und den zugeordneten neuen Dienstregistrierungsschlüssel sowie Änderungen an den Firewallregeln im Zusammenhang mit den StorSimple-Geräten. Die Informationen in diesem Artikel gelten nur für Geräte der StorSimple 8000-Serie.
 

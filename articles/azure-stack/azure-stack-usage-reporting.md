@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 54a81e6c5c6e1fe5c37b985e40174dc369edfe6d
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: cf6604730ab3bd9ee04fac36e703022f63dcb949
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630408"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090364"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Melden von Azure Stack-Nutzungsdaten an Azure 
 
@@ -95,10 +95,6 @@ Für Azure Stack-Systeme mit mehreren Knoten werden das Enterprise Agreement-Abo
 ## <a name="does-usage-data-reporting-work-in-sovereign-clouds"></a>Funktioniert das Melden von Nutzungsdaten in unabhängigen Clouds?
 
 Beim Azure Stack Development Kit werden für das Melden von Nutzungsdaten Abonnements benötigt, die im globalen Azure-System erstellt wurden. Abonnements, die in einer der unabhängigen Clouds (die Clouds „Azure Government“, „Azure Deutschland“ und „Azure China“) erstellt wurden, können nicht bei Azure registriert werden und unterstützen daher das Melden von Nutzungsdaten nicht.
-
-## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>Wie können Benutzer Azure Stack-Nutzungsdaten auf dem Azure-Abrechnungsportal erkennen?
-
-Die Azure Stack-Nutzungsdaten werden Benutzern in der Datei mit Nutzungsdetails angezeigt. Informationen zum Abrufen der Datei mit Nutzungsdetails finden Sie unter [Herunterladen der Nutzungsdaten aus dem Kontocenter (CSV)](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). Die Datei mit Nutzungsdetails enthält die Azure Stack-Verbrauchseinheiten, die Azure Stack-Speicher und -VMs identifizieren. Alle in Azure Stack verwendeten Ressourcen werden im Abschnitt „Azure Stack“ gemeldet.
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Wieso stimmen die in Azure Stack gemeldeten Nutzungsdaten nicht mit dem vom Azure-Kontocenter erstellten Bericht überein?
 

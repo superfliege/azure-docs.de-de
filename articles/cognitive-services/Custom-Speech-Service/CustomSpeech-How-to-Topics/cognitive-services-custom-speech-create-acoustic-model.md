@@ -1,24 +1,24 @@
 ---
-title: 'Tutorial: Erstellen eines Akustikmodells – Custom Speech Service'
-titlesuffix: Azure Cognitive Services
-description: In diesem Tutorial erfahren Sie, wie Sie mit Custom Speech Service ein Akustikmodell erstellen.
+title: 'Tutorial: Erstellen eines Akustikmodells mit Custom Speech Service – Microsoft Cognitive Services | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie mit Custom Speech Service ein Akustikmodell in Microsoft Cognitive Services erstellen.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 72c5a0dfb8f33f273ba850378c1fefeef82b4d7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 53e93a08782ba66e69b903c32c4c3c7417e5a801
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220228"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344573"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Tutorial: Erstellen eines benutzerdefinierten Akustikmodells
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 In diesem Tutorial erstellen Sie ein benutzerdefiniertes Akustikmodell für Sprachdaten, die von Ihrer Anwendung erkannt werden sollen. Die Erstellung eines benutzerdefinierten Akustikmodells ist hilfreich, wenn Ihre Anwendung für die Verwendung in einer bestimmten Umgebung, etwa einer lauten Werksumgebung, oder für die Verwendung durch bestimmte Benutzer entwickelt wurde.
 
@@ -140,4 +140,4 @@ In der Tabelle mit den Akustikmodellen wird Ihnen jetzt ein neuer Eintrag angeze
 In diesem Tutorial haben Sie ein benutzerdefiniertes Akustikmodell für die Verwendung mit Audiodateien und Transkripts entwickelt. Wenn Sie eine benutzerdefinierte Sprachdatei für die Verwendung mit Textdateien erstellen möchten, fahren Sie mit dem Tutorial zum Erstellen eines benutzerdefinierten Sprachmodells fort.
 
 > [!div class="nextstepaction"]
-> [Erstellen eines benutzerdefinierten Akustikmodells](cognitive-services-custom-speech-create-language-model.md)
+> [Erstellen eines benutzerdefinierten Sprachmodells](cognitive-services-custom-speech-create-language-model.md)

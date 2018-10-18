@@ -3,19 +3,19 @@ title: 'Schnellstart: Analysieren eines remote gespeicherten Bilds – REST, cUR
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung analysieren Sie ein remote gespeichertes Bild mit der Maschinelles Sehen-API und cURL.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: 51122da84e3845bba4919e4f2b2e46d513bbb3f4
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 04ad5ff2e148a5f5469cd13ce6106e6466d645b3
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633485"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344029"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-curl-in-computer-vision"></a>Schnellstart: Analysieren eines remote gespeicherten Bilds mit der REST-API und cURL in der Maschinelles Sehen-API
 
@@ -47,7 +47,7 @@ curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: applica
 
 ## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Im Folgenden finden Sie ein Beispiel dafür:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Eingabeaufforderungsfenster an. Dies wird im folgenden Beispiel veranschaulicht:
 
 ```json
 {

@@ -1,23 +1,23 @@
 ---
-title: Hochladen, Codieren und Streamen mit Azure Media Services | Microsoft-Dokumentation
+title: Hochladen, Codieren und Streamen mit Azure Media Services | Microsoft Docs
 description: Führen Sie die Schritte in diesem Tutorial aus, um eine Datei hochzuladen, das Video zu codieren und Ihre Inhalte mit Azure Media Services unter Verwendung von REST zu streamen.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/16/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 5cc109467f9affa9cf5f43342203e8d4298269e0
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e49b450ef2c731e9ddbafa0c8366d9eae29dc5ef
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115205"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377430"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mit REST
 
@@ -99,8 +99,8 @@ In diesem Abschnitt senden wir relevante Anforderungen für die Codierung und Er
 2. Erstellen eines Ausgabemedienobjekts
 3. Erstellen einer Transformation
 4. Erstellen eines Auftrags 
-5. Erstellen eines Streaminglocators
-6. Auflisten der Pfade des Streaminglocators
+5. Erstellen Sie eines Streaminglocators
+6. Auflisten der Pfade des streaminglocators
 
 > [!Note]
 >  In diesem Tutorial wird davon ausgegangen, dass Sie alle Ressourcen mit eindeutigen Namen erstellen.  
@@ -226,7 +226,7 @@ Der Abschluss des Auftrags nimmt einige Zeit in Anspruch. Wenn er erfolgt ist, m
 
 Der **Auftrag** durchläuft in der Regel die folgenden Zustände: **Geplant**, **In der Warteschlange**, **Verarbeitung** und **Abgeschlossen** (der letzte Zustand). Wenn für den Auftrag ein Fehler aufgetreten ist, erhalten Sie den Zustand **Fehler**. Wenn der Auftrag aktuell abgebrochen wird, erhalten Sie **Abbrechen** und **Abgebrochen**, wenn dies geschehen ist.
 
-### <a name="create-a-streaming-locator"></a>Erstellen eines Streaminglocators
+### <a name="create-a-streaming-locator"></a>Erstellen Sie eines Streaminglocators
 
 Nach Abschluss des Codierungsauftrags muss das Video im Ausgabemedienobjekt für die Wiedergabe durch Clients verfügbar gemacht werden. Sie können dies in zwei Schritten bewerkstelligen: Erstellen Sie zunächst einen [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) und dann die Streaming-URLs, die Clients verwenden können. 
 

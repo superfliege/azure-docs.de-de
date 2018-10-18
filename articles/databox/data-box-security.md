@@ -2,25 +2,18 @@
 title: Microsoft Azure Data Box-Sicherheit – Übersicht | Microsoft-Dokumentation
 description: Informationen zu den Sicherheitsmerkmalen von Azure Data Box auf dem Gerät, im Dienst und für Daten, die sich in Data Box befinden
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: mvc
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 26f9cd589a754914a5c7b7ee700f9cefb1421d51
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0b4e7165f30364ba61b583cf5d2f55e8826b9cf3
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994994"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092124"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box – Sicherheit und Schutz von Daten
 
@@ -35,15 +28,15 @@ Die Microsoft Azure Data Box-Lösung besteht aus vier Hauptkomponenten, die mite
 - **In Azure gehosteter Azure Data Box-Dienst**: Der Verwaltungsdienst, den Sie zum Erstellen des Geräteauftrags, Konfigurieren des Geräts und anschließenden Nachverfolgen des Auftrags bis zur Erfüllung verwenden.
 - **Data Box-Gerät**: Das Übertragungsgerät, das an Sie gesendet werden, um Ihre lokalen Daten in Azure zu importieren. 
 - **Mit dem Gerät verbundene Clients/Hosts**: Die Clients in Ihrer Infrastruktur, die mit dem Data Box-Gerät verbunden werden und zu schützende Daten enthalten.
-- **Cloud-Speicher**: Der Speicherort in der Azure-Cloud, an dem die Daten gespeichert werden. Dies ist normalerweise das Speicherkonto, das mit der von Ihnen erstellten Azure Data Box-Ressource verknüpft ist.
+- **Cloud-Speicher** – Der Speicherort in der Azure-Cloud, an dem die Daten gespeichert werden. Dies ist normalerweise das Speicherkonto, das mit der von Ihnen erstellten Azure Data Box-Ressource verknüpft ist.
 
 Im folgenden Diagramm ist der Datenfluss durch die Azure Data Box-Lösung vom lokalen Standort nach Azure beschrieben.
 
 ![Data Box-Sicherheit](media/data-box-security/data-box-security-2.png)
 
-## <a name="security-features"></a>Sicherheitsmerkmale
+## <a name="security-features"></a>Sicherheitsfeatures
 
-Data Box ist eine sichere Lösung für den Schutz der Daten, indem dafür gesorgt wird, dass nur autorisierte Entitäten Ihre Daten anzeigen, ändern oder löschen können. Die Sicherheitsmerkmale für diese Lösung gelten für den Datenträger und den zugeordneten Dienst, um sicherzustellen, dass die darauf gespeicherten Daten geschützt sind. 
+Data Box ist eine sichere Lösung für den Schutz der Daten, indem dafür gesorgt wird, dass nur autorisierte Entitäten Ihre Daten anzeigen, ändern oder löschen können. Die Sicherheitsfunktionen für diese Lösung gelten für den Datenträger und den zugeordneten Dienst, um sicherzustellen, dass die darauf gespeicherten Daten geschützt sind. 
 
 ### <a name="data-box-device-protection"></a>Schutz des Data Box-Geräts
 
@@ -67,7 +60,7 @@ Die Daten, die in und aus Data Box übertragen werden, werden mithilfe der folge
 
 ### <a name="data-box-service-protection"></a>Schutz des Data Box-Diensts
 
-Der Data Box-Dienst wird mithilfe der folgenden Merkmalen geschützt.
+Der Data Box-Dienst wird mithilfe der folgenden Features geschützt.
 
 - Für den Zugriff auf den Data Box-Dienst muss Ihre Organisation über ein Azure-Abonnement verfügen, das Data Box umfasst. Ihr Abonnement bestimmt die Features, auf die Sie im Azure-Portal zugreifen können.
 - Da der Data Box-Dienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx). 
@@ -104,7 +97,7 @@ Weitere Informationen finden Sie im [Trust Center](https://www.microsoft.com/tru
 
 Die folgenden Sicherheitsrichtlinien sind in Data Box implementiert: 
 
-|Richtlinie   |Beschreibung   |
+|Vorgabe   |BESCHREIBUNG   |
 |---------|---------|
 |[IEC 60529 IP52](http://www.iec.ch/)    | Für Schutz vor Wasser und Staub         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Für Dauerhaftigkeit bei widrigen Transportbedingungen          |

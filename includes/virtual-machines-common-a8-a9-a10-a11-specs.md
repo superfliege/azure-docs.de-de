@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: azcspmt;jonbeck;cynthn;danlep
 ms.custom: include file
-ms.openlocfilehash: 296e92d803bb69376f286aa60cfb4a955b08010f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c12fff63cdb7241d89e7511a3dac2ff9c1363ae6
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34669341"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49346103"
 ---
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 * **Azure-Abonnement:** Um eine größere Anzahl von rechenintensiven Instanzen bereitzustellen, sollten Sie ein Abonnement mit nutzungsbasierter Bezahlung oder andere Kaufoptionen in Erwägung ziehen. Bei Verwendung eines [kostenlosen Azure-Kontos](https://azure.microsoft.com/free/)können Sie nur eine begrenzte Anzahl von Azure-Compute-Kernen nutzen.
 
-* **Preise und Verfügbarkeit:** Diese VM-Größen werden nur im Tarif „Standard“ angeboten. Informationen zur Verfügbarkeit in den Azure-Regionen finden Sie unter [Verfügbare Produkte nach Region] (https://azure.microsoft.com/regions/services/). 
+* **Preise und Verfügbarkeit:** Diese VM-Größen werden nur im Tarif „Standard“ angeboten. Informationen zur Verfügbarkeit in den Azure-Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/) . 
 * **Kontingent Speicherkerne:** Es kann sein, dass Sie das Kontingent für die Speicherkerne in Ihrem Azure-Abonnement anpassen müssen, indem Sie den Standardwert erhöhen. Möglicherweise ist bei Ihrem Abonnement auch die Anzahl von Kernen beschränkt, die in bestimmten VM-Größenkategorien bereitgestellt werden können. In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../articles/azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern. (Standardgrenzwerte variieren unter Umständen je nach Abonnementkategorie.)
   
   > [!NOTE]
@@ -37,4 +37,3 @@ Mithilfe dieser Schnittstelle können die RDMA-fähigen Instanzen über ein Infi
 > In Azure wird „IP over IB“ nicht unterstützt. Nur RDMA over IB wird unterstützt.
 >
 
-Stellen Sie die RDMA-fähigen HPC-VMs in der gleichen Verfügbarkeitsgruppe bzw. VM-Skalierungsgruppe (bei Verwendung des Azure Resource Manager-Bereitstellungsmodells) bzw. im gleichen Clouddienst (bei Verwendung des klassischen Bereitstellungsmodells) bereit. Wenn Sie eine VM-Skalierungsgruppe verwenden, stellen Sie sicher, dass Sie die Bereitstellung auf eine einzelne Platzierungsgruppe beschränken. Legen Sie z.B. in einer Resource Manager-Vorlage die *SinglePlacementGroup*-Eigenschaft auf *true* fest. Es folgen weitere Anforderungen für RDMA-fähige HPC-VMs für den Zugriff auf das Azure RDMA-Netzwerk.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: 7aa7fc2620fa02af4a720a97eece3c0734252245
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: feb9d0a01cbba75fc9868f5a603d494c5c09ae2e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146261"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386296"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen
 
@@ -264,7 +264,7 @@ Der folgende Codeausschnitt zeigt die verschiedenen Arten von Ressourcen, die mi
 Angenommen, Ihr Cluster ist bereits eingerichtet und einige Anwendungen, die Sie als Resource Manager-Ressourcen verwalten möchten, sind bereits im Cluster bereitgestellt. Sie können, statt die Anwendungen zu entfernen und neu bereitzustellen, einen PUT-Aufruf mit denselben APIs verwenden, um die Anwendungen als Resource Manager-Ressourcen zu bestätigen. 
 
 > [!NOTE]
-> Damit ein Clusterupgrade fehlerhafte Apps ignorieren kann, kann der Kunde „maxpercentunhealthyapplications: 100“ im Abschnitt „upgradeDescription/healthPolicy“ festlegen. Ausführliche Beschreibungen für alle Einstellungen finden Sie in der [Dokumentation zur REST-API-Clusterupgraderichtlinie von Service Fabric](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
+> Damit ein Clusterupgrade fehlerhafte Apps ignorieren kann, kann der Kunde „maxpercentunhealthyapplications: 100“ im Abschnitt „upgradeDescription/healthPolicy“ festlegen. Ausführliche Beschreibungen für alle Einstellungen finden Sie in der [Dokumentation zur REST-API-Clusterupgraderichtlinie von Service Fabric](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

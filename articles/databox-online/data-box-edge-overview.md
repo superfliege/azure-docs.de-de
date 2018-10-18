@@ -1,26 +1,19 @@
 ---
 title: Microsoft Azure Data Box Edge – Übersicht | Microsoft-Dokumentation
 description: Beschreibt Azure Data Box Edge, eine Speicherlösung, die ein physisches Gerät für die netzwerkbasierte Übertragung in Azure verwendet.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: edge
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: b64489912725872db971c19965ac58c84cb2fc2e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6422482a31ad8022b795cb357c37ad8560781767
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993526"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166592"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>Was ist Azure Data Box Edge (Vorschauversion)? 
 
@@ -64,7 +57,7 @@ Data Box Edge hat die folgenden Vorteile:
 
 Data Box Edge bietet die folgenden Funktionen:
 
-|Funktion |Beschreibung  |
+|Funktion |BESCHREIBUNG  |
 |---------|---------|
 |Hohe Leistung     | Vollständig automatisierte und stark optimierte Datenübertragung und Bandbreite.|
 |Unterstützte Protokolle     | Für die Datenerfassung werden die Standardprotokolle SMB und NFS unterstützt. <br> Weitere Informationen zu unterstützten Versionen finden Sie unter [Systemanforderungen für Data Box Edge](http://aka.ms/dbe-docs).|
@@ -81,9 +74,9 @@ Data Box Edge bietet die folgenden Funktionen:
 
 Das physische Data Box Edge-Gerät weist die folgenden Merkmale auf:
 
-| Funktionen/Technische Daten                                          | Beschreibung              |
+| Funktionen/Technische Daten                                          | BESCHREIBUNG              |
 |---------------------------------------------------------|--------------------------|
-| Abmessungen   | Breite: 43,8 cm Tiefe: 69,2 cm Höhe: 4,4 cm<br>(ohne Ösen und Netzteilgriffe)  |            
+| Dimensionen   | Breite: 43,8 cm Tiefe: 69,2 cm Höhe: 4,4 cm<br>(ohne Ösen und Netzteilgriffe)  |            
 | Platzbedarf im Rack|1 HE bei Einbau im Rack|
 | Kabel| 2 Netzkabel<br>2 RJ45-Kabel (1 GBit/s)<br>2 SFP+-Kupferkabel (10 GBit/s)|
 | Komponenten|2 integrierte Netzteile|
@@ -114,10 +107,10 @@ Die Data Box Edge-Lösung umfasst die Data Box Edge-Ressource, ein physisches Da
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Das physische Data Box Edge-Gerät, die Azure-Ressource und das Zielspeicherkonto, an das Sie Daten übertragen, müssen sich nicht alle in der gleichen Region befinden.
+Das virtuelle Data Box Gateway-Gerät, die Azure-Ressource und das Zielspeicherkonto, an das Sie Daten übertragen, müssen sich nicht alle in der gleichen Region befinden.
 
-- **Verfügbarkeit der Ressource**: Bei dieser Version ist die Data Box Edge-Ressource in den folgenden Regionen verfügbar:
-    - **USA**: USA, Westen und USA, Osten
+- **Verfügbarkeit der Ressource**: Bei dieser Version ist die Data Box Gateway-Ressource in den folgenden Regionen verfügbar:
+    - **USA**: USA, Westen 2 und USA, Osten
     - **Europa**: Europa, Westen
     - **Asien-Pazifik**: Asien-Pazifik, Südosten
 
@@ -130,7 +123,7 @@ Das physische Data Box Edge-Gerät, die Azure-Ressource und das Zielspeicherkont
 
 Data Box Edge ist in der Vorschauphase. Sie müssen sich für den Dienst registrieren. Führen Sie die folgenden Schritte aus, um sich für Data Box Edge zu registrieren:
 
-1. Melden Sie sich unter [https://aka.ms/databox-edge](https://aka.ms/databox-edge) beim Azure-Portal an.
+1. Melden Sie sich am Azure-Portal an unter: [https://aka.ms/databox-edge](https://aka.ms/databox-edge).
 
 2. Wählen Sie das Abonnement aus, das Sie für die Vorschauversion von Data Box Edge verwenden möchten. Wählen Sie die Region aus, in der Sie die Data Box Edge-Ressource bereitstellen möchten. Klicken Sie bei der Option „Data Box Edge“ auf **Registrieren**.
 

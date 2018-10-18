@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
-ms.openlocfilehash: 012f78fc07f237e8ed532246c81a3c86bb6ab4ac
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c619ae164f8f8b6e94d9061c4346de58bd6cb795
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764341"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319437"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>Benutzerdefiniertes Image, mehrere Container oder integriertes Plattformimage?
 
@@ -30,7 +30,7 @@ ms.locfileid: "33764341"
 - **Bereitstellung mit mehreren Containern:** „Verpacken“ Sie Ihre App in Docker über mehrere Container mit Docker Compose oder einer Kubernetes-Konfigurationsdatei. Weitere Informationen finden Sie unter [App mit mehreren Containern](#multi-container-apps-supportability).
 - **App-Bereitstellung mit einem integrierten Plattformimage:** Unsere integrierten Plattformimages enthalten allgemeine Web-App-Runtimes und Abhängigkeiten wie Node und PHP. Verwenden Sie eine der [Azure App Service-Bereitstellungsmethoden](../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) zum Bereitstellen Ihrer App im Speicher Ihrer Web-App, und führen Sie sie dann mithilfe eines integrierten Plattformimages aus.
 
-##<a name="which-method-is-right-for-your-app"></a>Welche Methode ist für Ihre App geeignet? 
+## <a name="which-method-is-right-for-your-app"></a>Welche Methode ist für Ihre App geeignet? 
 
 Hauptsächlich sind folgende Faktoren zu berücksichtigen:
 

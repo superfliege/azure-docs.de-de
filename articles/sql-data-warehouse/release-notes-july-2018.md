@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 5c54505625f40d7c0bd00111e2ff260dc9afaf1c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288003"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318842"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Neuerungen in Azure SQL Data Warehouse Juli 2018
 Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informieren wir Sie über neue Features und Änderungen, die im Juli 2018 eingeführt wurden.
@@ -30,7 +30,7 @@ Neben der Laufzeitleistung wurde im Bericht von [Gigaom Research](https://gigaom
 ![Azure SQL Data Warehouse ist schneller und preisgünstiger als Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
 <sub>Quelle: [Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) (Benchmark für Data Warehouse in der Cloud)</sub>
 
-###<a name="query-concurrency"></a>Abfrageparallelität
+### <a name="query-concurrency"></a>Abfrageparallelität
 SQL Data Warehouse stellt auch sicher, dass die Daten in der gesamten Organisation zugänglich sind. Microsoft hat den Dienst verbessert, sodass 128 Abfragen gleichzeitig unterstützt werden. Dadurch können mehr Benutzer dieselbe Datenbank abfragen, ohne von anderen Anforderungen blockiert zu werden. Im Vergleich dazu ist bei Amazon Redshift die maximale Anzahl gleichzeitiger Abfragen auf 50 beschränkt und dadurch der Datenzugriff innerhalb der Organisation begrenzt.
 
 SQL Data Warehouse bietet diesen Zuwachs der Abfrageleistung und Abfrageparallelität ohne Preiserhöhung und unter Verwendung seiner einzigartigen Architektur mit Entkopplung von Speicher und Compute.

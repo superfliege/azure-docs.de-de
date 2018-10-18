@@ -3,8 +3,8 @@ title: HTTP-Header „X-EC-Debug“ für Azure CDN-Regel-Engine | Microsoft Docs
 description: Der Debugcache-Anforderungsheader „X-EC-Debug“ stellt zusätzliche Informationen zur Cacherichtlinie bereit, die auf das angeforderte Objekt angewendet wird. Diese Header sind spezifisch für Verizon.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
-ms.author: v-deasim
-ms.openlocfilehash: 3a99e322d81748c54585e7dd0eb06959bfeb9569
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: magattus
+ms.openlocfilehash: 4ba42850ee28e2e212d9bc2b7b64be103218757c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31516274"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094223"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>HTTP-Header „X-EC-Debug“ für Azure CDN-Regel-Engine
 Der Debugcache-Anforderungsheader (`X-EC-Debug`) stellt zusätzliche Informationen zur Cacherichtlinie bereit, die auf das angeforderte Objekt angewendet wird. Diese Header sind spezifisch für **Azure CDN Premium-Produkte von Verizon**.
@@ -33,7 +33,7 @@ Die an einen Benutzer von den POP-Servern gesendete Antwort enthält die `X-EC-D
 ## <a name="requesting-debug-cache-information"></a>Anfordern von Debugcacheinformationen
 Verwenden Sie die folgenden Anweisungen in der angegebenen Anforderung, um die Debugcacheinformationen zu definieren, die in der Antwort enthalten sein werden:
 
-Anforderungsheader | Beschreibung |
+Anforderungsheader | BESCHREIBUNG |
 ---------------|-------------|
 X-EC-Debug: x-ec-cache | [Cachestatuscode](#cache-status-code-information)
 X-EC-Debug: x-ec-cache-remote | [Cachestatuscode](#cache-status-code-information)
@@ -43,7 +43,7 @@ X-EC-Debug: x-ec-cache-state | [Cachestatus](#cache-state-response-header)
 
 ### <a name="syntax"></a>Syntax
 
-Debugcache-Antwortheader können angefordert werden, indem der folgende Header und die angegebenen Anweisungen in die Anforderung aufgenommen werden:
+Zum Anfordern von Debugcache-Antwortheadern müssen der folgende Header und die angegebenen Anweisungen in die Anforderung aufgenommen werden:
 
 `X-EC-Debug: Directive1,Directive2,DirectiveN`
 
@@ -54,7 +54,7 @@ Debugcache-Antwortheader können angefordert werden, indem der folgende Header u
 ## <a name="cache-status-code-information"></a>Cachestatus-Codeinformationen
 Der X-EC-Debug-Antwortheader kann einen Server identifizieren und durch die folgenden Anweisungen feststellen, wie er die Antwort verarbeitet hat:
 
-Header | Beschreibung
+Header | BESCHREIBUNG
 -------|------------
 X-EC-Debug: x-ec-cache | Dieser Header wird gemeldet, wenn Inhalt über das CDN weitergeleitet wird. Er identifiziert den POP-Server, der die Anforderung erfüllt hat.
 X-EC-Debug: x-ec-cache-remote | Dieser Header wird nur dann gemeldet, wenn der angeforderte Inhalt auf einem Shield-Ursprungsserver oder einem ADN-Gatewayserver zwischengespeichert wurde.
@@ -103,9 +103,9 @@ Der Antwortheader `X-EC-Debug`, der meldet, ob eine Anforderung hätte zwischeng
 
 Der oben in der Antwortheadersyntax verwendete Begriff ist folgendermaßen definiert:
 
-Wert  | Beschreibung
+Wert  | BESCHREIBUNG
 -------| --------
-YES    | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern geeignet war.
+JA    | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern geeignet war.
 NO     | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern nicht geeignet war. Dieses Status ergibt sich möglicherweise aufgrund einer der folgenden Ursachen: <br /> – Kundenspezifische Konfiguration: Eine für Ihr Konto spezifische Konfiguration kann verhindern, dass die POP-Server ein Objekt zwischenspeichern. Beispielsweise kann die Regel-Engine verhindern, dass ein Objekt zwischengespeichert wird, indem sie das Feature „Cache umgehen“ für die betreffenden Anforderungen aktiviert.<br /> – Cacheantwortheader: Die angeforderten Header „Cache-Control“ und „Expires“ des Objekts können verhindern, dass POP-Server es zwischenspeichern.
 UNKNOWN | Gibt an, dass die Server nicht beurteilen konnten, ob das angeforderte Objekt zwischenspeicherbar war. Dieser Status tritt normalerweise auf, wenn die Anforderung aufgrund von tokenbasierter Authentifizierung abgelehnt wird.
 

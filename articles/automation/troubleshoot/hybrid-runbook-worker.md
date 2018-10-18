@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1cae7253a4bfcb4f83baf003a4d9d3c367d8f014
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 6c8dc240172451118fd75b042ba267740999882d
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064323"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321766"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Problembehandlung für Hybrid Runbook Worker
 
@@ -24,7 +24,7 @@ Dieser Artikel bietet Informationen zur Problembehandlung für Hybrid Runbook Wo
 
 Der Hybrid Runbook Worker ist von einem Agent abhängig, um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbookaufträge zu erhalten und den Status zu melden. Bei Windows ist dies der Microsoft Monitoring Agent. Bei Linux ist dies der OMS-Agent für Linux.
 
-###<a name="runbook-execution-fails"></a>Szenario: Fehler bei der Runbook-Ausführung
+### <a name="runbook-execution-fails"></a>Szenario: Fehler bei der Runbook-Ausführung
 
 #### <a name="issue"></a>Problem
 
@@ -42,7 +42,7 @@ Dafür gibt es drei mögliche Ursachen:
 
 * Die Runbooks können nicht bei lokalen Ressourcen authentifiziert werden
 
-* Der Hybrid Worker befindet sich hinter einem Proxy oder einer Firewall
+* Der Hybrid Worker befindet sich hinter einem Proxy oder einer Firewall.
 
 * Die Runbooks können nicht bei lokalen Ressourcen authentifiziert werden
 
@@ -62,7 +62,7 @@ Prüfen Sie, ob im Ereignisprotokoll **Microsoft-SMA** ein entsprechendes Ereign
 
 Der Linux Hybrid Runbook Worker ist abhängig vom OMS-Agent für Linux, um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Wenn bei der Registrierung des Workers ein Fehler auftritt, gibt es mehrere mögliche Gründe dafür:
 
-###<a name="oms-agent-not-running"></a>Szenario: Der OMS-Agent für Linux wird nicht ausgeführt
+### <a name="oms-agent-not-running"></a>Szenario: Der OMS-Agent für Linux wird nicht ausgeführt
 
 Wenn der OMS-Agent für Linux nicht ausgeführt wird, verhindert dies die Kommunikation zwischen dem Linux Hybrid Runbook Worker und Azure Automation. Überprüfen Sie, dass der Agent ausgeführt wird, indem Sie den folgenden Befehl eingeben: `ps -ef | grep python`. Die Ausgabe sollte in etwa folgendermaßen aussehen, die Python-Prozesse mit dem **nxautomation**-Benutzerkonto. Wenn die Lösungen Updateverwaltung oder Azure Automation nicht aktiviert sind, wird keiner der folgenden Prozesse ausgeführt.
 
@@ -82,7 +82,7 @@ Die folgende Liste enthält die Prozesse, die für einen Linux Hybrid Runbook Wo
 
 Wenn der OMS-Agent für Linux nicht ausgeführt wird, führen Sie zum Starten des Diensts den folgenden Befehl aus: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 
-###<a name="class-does-not-exist"></a>Szenario: Die angegebene Klasse ist nicht vorhanden
+### <a name="class-does-not-exist"></a>Szenario: Die angegebene Klasse ist nicht vorhanden
 
 Wenn die Fehlermeldung **Die angegebene Klasse ist nicht vorhanden...** in `/var/opt/microsoft/omsconfig/omsconfig.log` angezeigt wird, muss der OMS-Agent für Linux aktualisiert werden. Führen Sie den folgenden Befehl aus, um den OMS-Agent neu zu installieren:
 
@@ -94,7 +94,7 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 Der Windows Hybrid Runbook Worker ist abhängig vom Microsoft Monitoring Agent, um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu empfangen und den Status zu melden. Wenn bei der Registrierung des Workers ein Fehler auftritt, gibt es mehrere mögliche Gründe dafür:
 
-###<a name="mma-not-running"></a>Szenario: Der Microsoft Monitoring Agent wird nicht ausgeführt
+### <a name="mma-not-running"></a>Szenario: Der Microsoft Monitoring Agent wird nicht ausgeführt
 
 #### <a name="issue"></a>Problem
 
@@ -108,7 +108,7 @@ Wenn der Microsoft Monitoring Agent-Dienst von Windows nicht ausgeführt wird, v
 
 Überprüfen Sie, dass der Agent ausgeführt wird, indem Sie den folgenden Befehl in PowerShell eingeben: `Get-Service healthservice`. Wenn der Dienst beendet wurde, geben Sie den folgenden Befehl in PowerShell ein, um ihn wieder zu starten: `Start-Service healthservice`.
 
-###<a name="event-4502"></a> Ereignis 4502 im Operations Manager-Protokoll
+### <a name="event-4502"></a> Ereignis 4502 im Operations Manager-Protokoll
 
 #### <a name="issue"></a>Problem
 

@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 81c80ab6c8d10d263de96566f5554709a2404a24
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4caa05ffa96dbc15922fed85edfdefdb68ead68b
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802592"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361710"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Was ist die Bing-Rechtschreibprüfungs-API?
 
@@ -36,7 +36,7 @@ Diese Rechtschreibprüfung eignet sich für jedes beliebige Textverarbeitungssze
 
 ## <a name="spell-check-modes"></a>Rechtschreibprüfungsmodi
 
-Die API unterstützt zwei Prüfmodi: `Proof` und `Spell`.  Beispiele finden Sie [hier](https://azure.microsoft.com/en-us/services/cognitive-services/spell-check/).
+Die API unterstützt zwei Prüfmodi: `Proof` und `Spell`.  Beispiele finden Sie [hier](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 ### <a name="proof---for-documents-scenario"></a>Proof (für Dokumente)
 Der Standardmodus ist `Proof`. Der Rechtschreibmodus `Proof` bietet die umfangreichsten Prüfungen – unter anderem mit Features für Groß-/Kleinschreibung, grundlegende Zeichensetzung und anderen hilfreichen Features für die Dokumenterstellung. Er ist allerdings nur für „en-US“ (Englisch – USA), „es-ES“ (Spanisch) und „pt-BR“ (Portugiesisch) verfügbar. (Hinweis: Für Spanisch und Portugiesisch steht nur eine Betaversion zur Verfügung.) Für alle anderen Märkte muss der Modusabfrageparameter auf „Spell“ festgelegt werden. 
 <br /><br/>**Hinweis:** Wenn die Länge des Abfragetexts 4.096 Zeichen übersteigt, wird er vor der Verarbeitung auf 4.096 Zeichen gekürzt. 

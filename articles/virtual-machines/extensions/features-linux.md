@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: aefb9142e5954b2e4598c73eb36fa25de99e9584
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 255fe84f0d155902b2a3ac477a1e677efef42bb4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452257"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386655"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -65,7 +65,7 @@ Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository herunterg
 > [!IMPORTANT]
 > Wenn Sie den Zugriff auf *168.63.129.1* mit der Gastfirewall blockiert haben, schlagen die Erweiterungen unabhängig von den gerade beschriebenen Szenarios fehl.
 
-Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage benötigen, können Sie den Zugriff über Azure-NSG-Diensttags für [Storage](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags) gewähren.
+Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage benötigen, können Sie den Zugriff über Azure-NSG-Diensttags für [Storage](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) gewähren.
 
 Für Anfragen zum Umleiten von Datenverkehr verfügt der Linux-Agent über Proxyserverunterstützung. Diese Proxyserverunterstützung gilt jedoch nicht für Erweiterungen. Sie müssen jede einzelne Erweiterung für die Arbeit mit einem Proxy konfigurieren.
 
@@ -259,7 +259,7 @@ In der vorhergehenden Beispielausgabe ist die Version des übergeordneten Prozes
 
 Die Zielversion des Agents ist die automatisch aktualisierte Version.
 
-Es wird dringend empfohlen, die automatische Aktualisierung für den Agent immer zu aktivieren: [AutoUpdate.Enabled=y](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent). Ist diese Funktion nicht aktiviert, müssen Sie den Agent manuell aktualisieren und erhalten keine Fehlerbehebungen und Sicherheitsupdates.
+Es wird dringend empfohlen, die automatische Aktualisierung für den Agent immer zu aktivieren: [AutoUpdate.Enabled=y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Ist diese Funktion nicht aktiviert, müssen Sie den Agent manuell aktualisieren und erhalten keine Fehlerbehebungen und Sicherheitsupdates.
 
 #### <a name="extension-updates"></a>Updates für Erweiterungen
 
@@ -408,7 +408,7 @@ Sie können eine Erweiterung auch im Azure-Portal wie folgt entfernen:
 | Benutzerdefinierte Skripterweiterung für Linux |Führt Skripts auf einem virtuellen Azure-Computer aus |[Benutzerdefinierte Skripterweiterung für Linux](custom-script-linux.md) |
 | Erweiterungen für den Zugriff auf virtuelle Computer |Wiedererlangen des Zugriffs auf einen virtuellen Azure-Computer |[Erweiterungen für den Zugriff auf virtuelle Computer](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 | Azure-Diagnoseerweiterung |Verwalten der Azure-Diagnose |[Azure-Diagnoseerweiterung](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Erweiterung für den Zugriff auf virtuelle Azure-Computer |Verwalten von Benutzern und Anmeldeinformationen |[Erweiterungen für den Zugriff auf virtuelle Computer für Linux](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Erweiterung für den Zugriff auf virtuelle Azure-Computer |Verwalten von Benutzern und Anmeldeinformationen |[Erweiterungen für den Zugriff auf virtuelle Computer für Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

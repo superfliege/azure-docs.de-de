@@ -10,15 +10,17 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: 3c0d0e17026dc0c970138c30f83dc9eb98db4228
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dd1c60a2c2ad88abf686e89972d29768ef600e4e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950181"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344556"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>Von der Sprachübersetzungs-API unterstützte Sprachen
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
+
 Die Sprachübersetzung wird für folgende Sprachen unterstützt. Wenn beide Sprachen für die Sprachübersetzung unterstützt werden, ist die Sprache-zu-Sprache- oder die Sprache-zu-Text-Übersetzung verfügbar. Wenn die Zielsprache nicht für die Sprachübersetzung unterstützt wird, ist nur die Sprache-zu-Text-Übersetzung verfügbar. 
 
 | Sprache    |

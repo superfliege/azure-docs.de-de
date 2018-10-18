@@ -4,23 +4,17 @@ description: In diesem Artikel wird Azure Data Box beschrieben, eine Cloudlösun
 services: databox
 documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 9c27efa133ab093c6aaae85d976d08cf16147233
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1beecd4c37ef333464e96b93294c25d182ffdf91
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967505"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090805"
 ---
 # <a name="what-is-azure-data-box"></a>Was ist Azure Data Box?
 
@@ -31,9 +25,9 @@ Sie können das Data Box-Gerät im Azure-Portal bestellen. Nach Empfang des Ger�
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
-Data Box eignet sich ideal für die Übertragung von Datenmengen von mehr als 40 TB in Szenarien ohne oder mit eingeschränkter Netzwerkkonnektivität. Die Datenverschiebung kann eine einmalige, regelmäßige oder eine erste Massenübertragung von Daten sein, auf die regelmäßige Übertragungen folgen. Es folgen die verschiedenen Szenarien, in denen Data Box für die Datenübertragung verwendet werden kann.
+Data Box eignet sich ideal für die Übertragung von Datenmengen von mehr als 40 TB in Szenarien ohne oder mit eingeschränkter Netzwerkkonnektivität. Die Datenverschiebung kann eine einmalige, eine periodische oder eine erste Massenübertragung von Daten sein, auf die regelmäßige Übertragungen folgen. Es folgen die verschiedenen Szenarien, in denen Data Box für die Datenübertragung verwendet werden kann.
 
- - **Einmalige Migration**: Das Verschieben einer große Menge lokaler Daten in Azure. 
+ - **Einmalige Migration**: Wird verwendet, wenn eine große Menge von lokalen Daten in Azure verschoben wird. 
      - Verschieben einer Medienbibliothek von Offlinebändern in Azure, um eine Onlinemedienbibliothek zu erstellen
      - Migrieren Ihrer VM-Farm, SQL-Server und Anwendungen in Azure
      - Verschieben von Verlaufsdaten in Azure für eine detaillierte Analyse und Berichterstellung mithilfe von HDInsight
@@ -41,7 +35,7 @@ Data Box eignet sich ideal für die Übertragung von Datenmengen von mehr als 40
  - **Erste Massenübertragung**: Die Ausführung einer ersten Massenübertragung mithilfe von Data Box (Seeding) gefolgt von inkrementellen Übertragungen über das Netzwerk. 
      - Beispielsweise werden Partner im Bereich Sicherungslösungen wie Commvault und Data Box herangezogen, um die erste große Sicherung von Verlaufsdaten in Azure zu verschieben. Im Anschluss werden die inkrementellen Daten über das Netzwerk in Azure Storage übertragen.
 
-- **Regelmäßige Uploads**: Erfolgen, wenn große Datenmengen regelmäßig generiert werden und in Azure verschoben werden müssen. Ein Beispiel hierfür ist die Exploration in der Energiebranche, bei der Videodaten auf Bohrinseln und für Windfarmen generiert werden.      
+- **Periodische Uploads**: Werden verwendet, wenn regelmäßig große Datenmengen generiert werden und in Azure verschoben werden müssen. Ein Beispiel hierfür ist die Exploration in der Energiebranche, bei der Videodaten auf Bohrinseln und für Windfarmen generiert werden.      
 
 ## <a name="benefits"></a>Vorteile
 
@@ -64,8 +58,8 @@ Das Data Box-Gerät weist in dieser Version folgende Merkmale auf.
 
 | Spezifikationen                                          | BESCHREIBUNG              |
 |---------------------------------------------------------|--------------------------|
-| Gewicht                                                  | Weniger als 23 kg                |
-| Abmessungen                                              | Gerät – Breite: 309,0 mm, Höhe: 430,4 mm, Tiefe: 502,0 mm |            
+| Weight                                                  | Weniger als 23 kg                |
+| Dimensionen                                              | Gerät – Breite: 309,0 mm, Höhe: 430,4 mm, Tiefe: 502,0 mm |            
 | Platzbedarf im Rack                                              | 7 HE bei seitlicher Platzierung im Rack (kann nicht im Rack montiert werden)|
 | Erforderliche Kabel                                         | 1 Netzkabel (inbegriffen) <br> 2 RJ45-Kabel <br> 2 SFP+-Twinax-Kupferkabel|
 | Speicherkapazität                                        | 100 TB <br> 80 TB nutzbare Kapazität nach Aktivierung von RAID-5-Schutz|

@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6193a515f0d8136e0d420b7554cf26fee8f50953
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a80577bb226cbec080edf5e06dbd0f31c80a5890
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173100"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321426"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Verwenden von mehrwertigen Entitäten in einem Unterhaltungslernmodell
 In diesem Tutorial wird die Eigenschaft „mehrwertig“ von Entitäten erörtert.
@@ -24,7 +24,7 @@ In diesem Tutorial wird die Eigenschaft „mehrwertig“ von Entitäten erörter
 
 [![Tutorial 6 – Vorschau](http://aka.ms/cl-tutorial-06-preview)](http://aka.ms/blis-tutorial-06)
 
-##<a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
     npm run tutorial-general
@@ -87,7 +87,7 @@ Wir können noch mehr hinzufügen:
 
 7. Geben Sie „Paprika hinzufügen“ ein.
     - Klicken Sie unter „Entitätserkennung“ auf „Paprika“, und wählen Sie „Beläge“ aus.
-3. Klicken Sie auf „Bewertungsaktionen“.
+3. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
     - „Paprika“ jetzt als zusätzlicher Wert für die Beläge angezeigt.
 6. Wählen Sie „Hier sind Ihre Beläge: $Beläge“ aus.
 
@@ -96,7 +96,7 @@ Als Nächstes werden wir einen Belag entfernen und einen Belag hinzufügen:
 2. Geben Sie „Paprika entfernen und Salami hinzufügen“ ein.
 1. Klicken Sie auf „Paprika“, und klicken Sie auf das rote X, um diesen Belag zu entfernen.
 2. Klicken Sie auf „Paprika“, und wählen Sie „-Beläge“ aus.
-3. Klicken Sie auf „Bewertungsaktionen“.
+3. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
     - „Paprika“ wurde gelöscht und „Salami“ wurde hinzugefügt.
 6. Wählen Sie „Hier sind Ihre Beläge: $Beläge“ aus.
 
@@ -104,7 +104,7 @@ Jetzt versuchen wir, alles zu entfernen:
 
 6. Geben Sie „Pilze entfernen, Käse entfernen und Salami entfernen“ ein.
 7. Klicken Sie auf jeden der drei Beläge, und wählen Sie „-Beläge“ aus.
-7. Klicken Sie auf „Bewertungsaktionen“.
+7. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
     - Alle Beläge werden entfernt.
 2. Wählen Sie „Welche Beläge möchten Sie?“ aus.
 3. Klicken Sie auf „Training abgeschlossen“.

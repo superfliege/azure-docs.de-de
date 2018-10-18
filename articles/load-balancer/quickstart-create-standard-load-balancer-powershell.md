@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: mvc
-ms.openlocfilehash: 67d514fe6315604016dc10b7dfc8154c3919f914
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: e197d5306d0df93c243b765ba9154dd8661c6908
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616542"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319523"
 ---
 # <a name="get-started"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz mit Azure PowerShell
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell eine Load Balancer Standard-Instanz erstellen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (VMs) mit Windows Server bereit und führen für eine Web-App zwischen den VMs einen Lastenausgleich durch. Weitere Informationen zu Load Balancer Standard finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md).
@@ -209,7 +209,7 @@ $nsg = New-AzureRmNetworkSecurityGroup`
 -SecurityRules $rule1,$rule2
 ```
 
-###<a name="create-nics"></a>Erstellen von NICs
+### <a name="create-nics"></a>Erstellen von NICs
 Erstellen Sie virtuelle NICs per [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Im folgenden Beispiel werden zwei virtuelle Netzwerkkarten erstellt. (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen). Sie können jederzeit weitere virtuelle NICs und virtuelle Computer erstellen und dem Load Balancer hinzufügen:
 
 ```azurepowershell-interactive

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 97f33a1c0c42b534dafd1e4ed378b655b339395a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: aa84dc4cb23a0fa2fa854e1f3d6da1234ec00bd6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143832"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386636"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Zertifikate und Sicherheit in Linux-Clustern
 
@@ -35,7 +35,7 @@ Wenn Sie Ihr Zertifikat über Azure Key Vault installieren, indem Sie entweder e
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Im Anwendungsmanifest angegebene Zertifikate
 
-Im Anwendungsmanifest angegebene Zertifikate (z.B. über die Elemente [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) oder [**EndpointCertificate**](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element)) müssen im Verzeichnis */var/lib/sfcerts* vorhanden sein. Für die Elemente, die zum Angeben von Zertifikaten im Anwendungsmanifest verwendet werden, wird kein Pfadattribut verwendet. Daher müssen die Zertifikate im Standardverzeichnis enthalten sein. Für diese Elemente wird optional das Attribut **X509StoreName** verwendet. Mit dem Standardwert „My“ wird auf Linux-Knoten auf das Verzeichnis */var/lib/sfcerts* verwiesen. Alle anderen Werte sind in einem Linux-Cluster nicht definiert. Wir empfehlen Ihnen, das Attribut **X509StoreName** für Apps wegzulassen, die in Linux-Clustern ausgeführt werden. 
+Im Anwendungsmanifest angegebene Zertifikate (z.B. über die Elemente [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) oder [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element)) müssen im Verzeichnis */var/lib/sfcerts* vorhanden sein. Für die Elemente, die zum Angeben von Zertifikaten im Anwendungsmanifest verwendet werden, wird kein Pfadattribut verwendet. Daher müssen die Zertifikate im Standardverzeichnis enthalten sein. Für diese Elemente wird optional das Attribut **X509StoreName** verwendet. Mit dem Standardwert „My“ wird auf Linux-Knoten auf das Verzeichnis */var/lib/sfcerts* verwiesen. Alle anderen Werte sind in einem Linux-Cluster nicht definiert. Wir empfehlen Ihnen, das Attribut **X509StoreName** für Apps wegzulassen, die in Linux-Clustern ausgeführt werden. 
 
 ## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>Im Konfigurationspaket (Settings.xml) angegebene Zertifikate
 

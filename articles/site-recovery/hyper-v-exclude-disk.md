@@ -3,15 +3,15 @@ title: Ausschließen von Datenträgern vom Schutz per Azure Site Recovery | Micr
 description: Es wird beschrieben, warum und wie Sie VM-Datenträger von der Replikation für das Szenario „Hyper-V in Azure“ ausschließen können.
 author: nsoneji
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 14b825b7b7f14efc0bf35a1e61e40e6248a4d3d1
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 38b7e965a85bf7014167f9a5c3fd66202c02e0fa
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920619"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091911"
 ---
 # <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
 In diesem Artikel wird beschrieben, wie Datenträger von der Replikation ausgeschlossen werden. Durch diesen Ausschluss können die beanspruchte Replikationsbandbreite oder die zielseitigen Ressourcen optimiert werden, die solche Datenträger verwenden.
@@ -19,7 +19,7 @@ In diesem Artikel wird beschrieben, wie Datenträger von der Replikation ausgesc
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 **Feature** | **VMware zu Azure** | **Hyper-V in Azure** | **Azure zu Azure**| **Hyper-V zu Hyper-V** 
 --|--|--|--|--
-Ausschließen von Datenträgern | Ja | Ja | Nein  | Nein 
+Ausschließen von Datenträgern | JA | JA | Nein  | Nein 
 
 ## <a name="why-exclude-disks-from-replication"></a>Gründe für das Ausschließen von Datenträgern von der Replikation
 Das Ausschließen von Datenträgern von der Replikation ist häufig aus folgenden Gründen erforderlich:

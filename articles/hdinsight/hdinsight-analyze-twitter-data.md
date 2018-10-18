@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: abf9cd311af141a646c56f452ded77a914bc1d2f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 294353cfcfba617ab19e703f11f35402bcf7ea82
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093297"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387579"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analysieren von Twitter-Daten mit Hive in HDInsight
 Soziale Netzwerke sind einer der Hauptfaktoren für die Akzeptanz von Big Data. Öffentliche APIs von Websites wie Twitter sind eine nützliche Datenquelle für Analyse und Verständnis beliebter Trends.
@@ -95,7 +95,7 @@ In diesem Tutorial verwenden Sie Windows PowerShell, um einen Webdienstaufruf zu
 
 **So rufen Sie Tweets ab**
 
-1. Öffnen Sie die Windows PowerShell Integrated Scripting Environment (ISE): (Geben Sie im Windows 8-Startbildschirm **PowerShell_ISE** ein, und klicken Sie dann auf **Windows PowerShell ISE**. Weitere Informationen finden Sie unter [Starten von Windows PowerShell unter Windows 8 und Windows](https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6).
+1. Öffnen Sie die Windows PowerShell Integrated Scripting Environment (ISE): (Geben Sie im Windows 8-Startbildschirm **PowerShell_ISE** ein, und klicken Sie dann auf **Windows PowerShell ISE**. Weitere Informationen finden Sie unter [Starten von Windows PowerShell unter Windows 8 und Windows](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell?view=powershell-6).
 2. Kopieren Sie das folgende Skript in den Skriptbereich:
 
     ```powershell

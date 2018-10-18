@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: ef404b106d600f5cb25a46319d75c8978148b466
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d0826d60d766874ddd186bcf406ea987134dab16
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895871"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385865"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Checkliste für die Azure Service Fabric-Sicherheit
 Dieser Artikel enthält eine einfach zu verwendende Checkliste, die Sie zum Sichern Ihrer Azure Service Fabric-Umgebung nutzen können.
@@ -43,7 +43,7 @@ Verwenden Sie die folgende Checkliste, um sicherzustellen, dass Sie keine wichti
 |[ServerCertificate](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security)| <ul><li>Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. Sie können zwei verschiedene Serverzertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades.</li></ul>|
 |ClientCertificateThumbprints| <ul><li>Dies ist eine Gruppe von Zertifikaten, die auf den authentifizierten Clients installiert werden sollen. </li></ul>|
 |ClientCertificateCommonNames| <ul><li>Legen Sie den allgemeinen Namen des ersten Clientzertifikats für „CertificateCommonName“ fest. „CertificateIssuerThumbprint“ ist der Fingerabdruck für den Aussteller dieses Zertifikats. </li></ul>|
-|ReverseProxyCertificate| <ul><li>Hierbei handelt es sich um ein optionales Zertifikat, das zum Schutz des [Reverseproxys](https://docs.microsoft.com/en-in/azure/service-fabric/service-fabric-reverseproxy) angegeben werden kann. </li></ul>|
+|ReverseProxyCertificate| <ul><li>Hierbei handelt es sich um ein optionales Zertifikat, das zum Schutz des [Reverseproxys](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) angegeben werden kann. </li></ul>|
 |Key Vault| <ul><li>Dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure.  </li></ul>|
 
 

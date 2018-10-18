@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: e9d1bf1a6a2383a58a890ce9add816f9e9060273
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2682236ae9f9256b91d1259248e72139c907c8e5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948144"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345015"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Erste Schritte mit Clientbibliotheken des Bing-Spracherkennungsdiensts
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Mit dem Bing-Spracherkennungsdienst können Entwickler nicht nur direkte HTTP-Anforderungen per REST-API nutzen, sondern auch Speech-Clientbibliotheken in anderen Sprachen. Für die Speech-Clientbibliotheken gilt Folgendes:
 
@@ -33,9 +34,6 @@ Derzeit sind die folgenden Clientbibliotheken des Bing-Spracherkennungsdiensts v
 - [JavaScript-Bibliothek](GetStartedJSWebsockets.md)
 - [Java-Bibliothek für Android](GetStartedJavaAndroid.md)
 - [Objective-C-Bibliothek für iOS](Get-Started-ObjectiveC-iOS.md)
-
-> [!NOTE] 
-Im Mai 2018 haben wir auch den neuen [Spracherkennungsdienst](../../speech-service/index.yml) in Public Preview veröffentlicht. Wir empfehlen Ihnen, diesen [kostenlos auszuprobieren](../../speech-service/get-started.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

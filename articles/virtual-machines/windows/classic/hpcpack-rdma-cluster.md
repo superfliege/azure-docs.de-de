@@ -15,17 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 03/06/2018
 ms.author: danlep
-ms.openlocfilehash: 437c475735ec3823de51c5f9e996a5303fe9cfa7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 7bb49e48f3777304aa6f40cee40e0b7147994201
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852539"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345236"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen
 Richten Sie anhand der Informationen unter [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) und [Größen von virtuellen HPC-Computern (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) (Abschnitt „RDMA-fähige Instanzen“) einen Windows RDMA-Cluster in Azure ein, um parallele MPI-Anwendungen (Message Passing Interface) auszuführen. Wenn Sie RDMA-fähige, Windows Server-basierte Knoten in einem HPC Pack-Cluster einrichten, wird die Kommunikation der MPI-Anwendungen in Azure effizient über ein auf RDMA-Technologie (Remote Direct Memory Access) basierendes Netzwerk mit niedriger Latenz und hohem Durchsatz abgewickelt.
-
-Weitere Informationen zum Ausführen von MPI-Workloads auf virtuellen Linux-Computern, die auf das Azure RDMA-Netzwerk zugreifen, finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](../../linux/classic/rdma-cluster.md).
 
 ## <a name="hpc-pack-cluster-deployment-options"></a>Optionen für die Bereitstellung von HPC Pack-Clustern
 Microsoft HPC Pack ist ein kostenloses Tool zum Erstellen von HPC-Clustern (lokal oder in Azure) für die Ausführung Windows- oder Linux-basierter HPC-Anwendungen. HPC Pack enthält eine Laufzeitumgebung für die Microsoft-Implementierung von Message Passing Interface für Windows (MS-MPI). Bei Verwendung mit RDMA-fähigen Instanzen unter einem unterstützten Windows Server-Betriebssystem stellt HPC Pack eine effiziente Option für die Ausführung von Windows-MPI-Anwendungen dar, die auf das Azure RDMA-Netzwerk zugreifen. 
@@ -84,7 +82,7 @@ Im Anschluss finden Sie Überlegungen und Schritte zum Burst auf RDMA-fähige Az
    Wenn Sie die Aufträge ausgeführt haben, schalten Sie die Knoten offline, und verwenden Sie die Aktion **Beenden** in HPC Cluster Manager.
 
 ## <a name="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas"></a>Szenario 2: Bereitstellen von Computeknoten in rechenintensiven virtuellen Computern (IaaS)
-In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clustercomputeknoten auf virtuellen Computern in einem virtuellen Azure-Netzwerk bereit. HPC Pack bietet eine Reihe von [Bereitstellungsoptionen für virtuelle Azure-Computer](../../linux/hpcpack-cluster-options.md). Hierzu zählen unter anderem automatisierte Bereitstellungsskripts und Azure-Schnellstartvorlagen. In den folgenden Anweisungen erfahren Sie, wie Sie das [HPC Pack IaaS-Bereitstellungsskript](hpcpack-cluster-powershell-script.md) zum Automatisieren der Bereitstellung eines HPC Pack 2012 R2-Clusters in Azure nutzen.
+In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clustercomputeknoten auf virtuellen Computern in einem virtuellen Azure-Netzwerk bereit. HPC Pack bietet eine Reihe von [Bereitstellungsoptionen für virtuelle Azure-Computer](../../windows/hpcpack-cluster-options.md). Hierzu zählen unter anderem automatisierte Bereitstellungsskripts und Azure-Schnellstartvorlagen. In den folgenden Anweisungen erfahren Sie, wie Sie das [HPC Pack IaaS-Bereitstellungsskript](hpcpack-cluster-powershell-script.md) zum Automatisieren der Bereitstellung eines HPC Pack 2012 R2-Clusters in Azure nutzen.
 
 ![Cluster in Azure-VMs][iaas]
 
@@ -185,7 +183,6 @@ Im Anschluss finden Sie Aspekte, die beim Ausführen von MPI-Anwendungen mit HPC
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie bei der Entwicklung als Alternative zur Verwendung von HPC Pack den Azure Batch-Dienst, um MPI-Anwendung in verwalteten Pools von Computeknoten in Azure auszuführen. Entsprechende Informationen finden Sie unter [Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch](../../../batch/batch-mpi.md).
-* Weitere Informationen zum Ausführen von Linux MPI-Anwendungen, die auf das Azure RDMA-Netzwerk zugreifen, finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](../../linux/classic/rdma-cluster.md).
 
 <!--Image references-->
 [burst]:media/hpcpack-rdma-cluster/burst.png

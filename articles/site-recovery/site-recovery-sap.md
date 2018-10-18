@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 95e5c53da2556293fc676fa5b1db9b4585038300
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922738"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318689"
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Schützen einer SAP NetWeaver-Anwendungsbereitstellung mit mehreren Ebenen mit Azure Site Recovery
 
@@ -71,10 +71,10 @@ Zur Notfallwiederherstellung muss es möglich sein, ein Failover zu einer sekund
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>Virtuelle Computer mit SAP Web Dispatcher-Pool 
 Die Web Dispatcher-Komponente wird als Lastenausgleichsmodul für SAP-Datenverkehr zwischen den SAP-Anwendungsservern verwendet. Um Hochverfügbarkeit für die Web Dispatcher-Komponente zu erreichen, wird Azure Load Balancer dazu verwendet, das parallele Web Dispatcher-Setup in einer Roundrobin-Konfiguration für HTTP(S)-Datenverkehrsverteilung zwischen den verfügbaren Web Dispatcher-Instanzen im Lastenausgleichspool zu implementieren. Dies wird mithilfe von Azure Site Recovery (ASR) repliziert, und Automatisierungsskripts werden verwendet, um das Lastenausgleichsmodul in der Notfallwiederherstellungregion zu konfigurieren. 
 
-####<a name="vms-running-application-servers-pool"></a>Virtuelle Computer mit Anwendungsserverpool
+#### <a name="vms-running-application-servers-pool"></a>Virtuelle Computer mit Anwendungsserverpool
 Um Anmeldegruppen für ABAP-Anwendungsserver zu verwalten, wird die SMLG-Transaktion verwendet. In ihr wird die Lastenausgleichsfunktion im Nachrichtenserver der Central Services verwendet, um Arbeitslast im SAP-Anwendungsserverpool für SAPGUIs und RFC-Datenverkehr zu verteilen. Dies wird mithilfe von Azure Site Recovery repliziert. 
 
-####<a name="vms-running-sap-central-services-cluster"></a>Virtuelle Computer mit SAP Central Services-Cluster
+#### <a name="vms-running-sap-central-services-cluster"></a>Virtuelle Computer mit SAP Central Services-Cluster
 In dieser Referenzarchitektur wird Central Services auf virtuellen Computern auf der Logikschicht ausgeführt. Die Central Services-Komponente ist ein möglicher Single Point of Failure (SPOF), wenn sie auf einem einzelnen virtuellen Computer bereitgestellt wird – dies ist die typische Bereitstellung, wenn Hochverfügbarkeitnicht erforderlich ist.<br>
 
 Soll eine Hochverfügbarkeitslösung implementiert werden, kann ein Cluster mit freigegebenen Datenträgern oder ein Dateifreigabecluster verwendet werden. Um virtuelle Computer für einen Cluster mit freigegebenen Datenträgern zu konfigurieren, verwenden Sie Windows Server-Failovercluster. Cloudzeuge wird als ein Quorumzeuge empfohlen. 
@@ -110,7 +110,7 @@ Nachfolgend ist die Empfehlung für eine Notfallwiederherstellung der einzelnen 
 **Virtuelle Active Directory-Computer** |  Active Directory-Replikation 
 **SQL-Datenbankserver** |  SQL Always On-Replikation
 
-##<a name="replicate-virtual-machines"></a>Replizieren von virtuellen Computern
+## <a name="replicate-virtual-machines"></a>Replizieren von virtuellen Computern
 
 Zu Beginn des Replizieren aller virtuellen Computer für SAP-Anwendungen in ein Azure-Notfallwiederherstellungsrechenzentrum folgen Sie der Anleitung unter [Replikation eines virtuellen Computers in Azure](azure-to-azure-walkthrough-enable-replication.md).
 
@@ -142,7 +142,7 @@ Für die korrekte Funktionsweise Ihrer Anwendungen kann es erforderlich sein, na
 
 Sie können die am häufigsten verwendeten Azure Site Recovery-Skripts in Ihrem Automation-Konto bereitstellen, indem Sie auf die Schaltfläche „In Azure bereitstellen“ klicken. Wenn Sie ein beliebiges veröffentlichtes Skript verwenden, vergewissern Sie sich, dass Sie die Anleitung im Skript befolgen.
 
-[![Bereitstellen in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![In Azure bereitstellen](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. Fügen Sie der „Gruppe 1“ ein Skript als vorausgehende Aktion hinzu, um für die SQL-Verfügbarkeitsgruppe ein Failover durchzuführen. Verwenden Sie das Skript „ASR-SQL-FailoverAG“ aus den Beispielskripts. Befolgen Sie die Anleitung im Skript genau, und nehmen Sie die erforderlichen Änderungen im Skript vor.
 2. Fügen Sie ein Skript als nachfolgende Aktion hinzu, um den Failover-VMs der Webebene (Gruppe 1) einen Lastenausgleich anzufügen. Verwenden Sie das Skript „ASR-AddSingleLoadBalancer“ aus den Beispielskripts. Befolgen Sie die Anleitung im Skript genau, und nehmen Sie die erforderlichen Änderungen im Skript vor.

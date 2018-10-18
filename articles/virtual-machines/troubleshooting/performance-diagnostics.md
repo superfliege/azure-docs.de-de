@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: f79be44d33a327f3ead8d950885cb5d47ce3a015
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412518"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387386"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Leistungsdiagnose für virtuelle Azure-Computer
 
@@ -103,7 +103,7 @@ Nach dem Upload wird ein neuer Diagnosebericht im Azure-Portal aufgelistet.
 Verwenden Sie die Symbolleistenschaltfläche **Einstellungen**, um das Speicherkonto zu ändern, in dem die Erkenntnisse und Ausgaben der Diagnose gespeichert werden können. Sie können das gleiche Speicherkonto für mehrere VMs verwenden, für die eine Leistungsdiagnose ausgeführt wird. Wenn Sie das Speicherkonto ändern, werden die vorhandenen Berichte und Erkenntnisse nicht gelöscht. Sie werden aber nicht mehr in der Liste der Diagnoseberichte angezeigt. 
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>Überprüfen von Erkenntnissen und Leistungsdiagnosebericht
-Jede Diagnoseausführung enthält eine Liste mit Erkenntnissen und Empfehlungen, betroffene Ressourcen, Protokolldateien, weitere relevante Diagnoseinformationen, die gesammelt wurden, und einen Bericht für die Offlineanzeige. Eine vollständige Liste aller gesammelten Diagnosedaten finden Sie unter [Welche Informationen werden von PerfInsights gesammelt?](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights). 
+Jede Diagnoseausführung enthält eine Liste mit Erkenntnissen und Empfehlungen, betroffene Ressourcen, Protokolldateien, weitere relevante Diagnoseinformationen, die gesammelt wurden, und einen Bericht für die Offlineanzeige. Eine vollständige Liste aller gesammelten Diagnosedaten finden Sie unter [Welche Informationen werden von PerfInsights gesammelt?](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights). 
 
 ### <a name="select-a-performance-diagnostics-report"></a>Auswählen eines Leistungsdiagnoseberichts
 Sie können die Liste der Diagnoseberichte verwenden, um alle ausgeführten Diagnoseberichte zu finden. Die Liste enthält Details zu der verwendeten Analyse, gefundenen Erkenntnisse sowie deren Schweregrade. Markieren Sie eine Zeile, um weitere Details anzuzeigen.
@@ -123,7 +123,7 @@ Sie können eine Erkenntnis auswählen, um weitere Details zu den betroffenen Re
 ![Screenshot: Details zu einer Erkenntnis der Leistungsdiagnose](media/performance-diagnostics/insight-detail.png)
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>Herunterladen und Überprüfen des vollständigen Leistungsdiagnoseberichts
-Sie können die Schaltfläche **Bericht herunterladen** verwenden, um einen HTML-Bericht herunterzuladen, der weitere relevante Diagnoseinformationen enthält, z.B. Speicher- und Netzwerkkonfiguration, Leistungsindikatoren, Ablaufverfolgungen, Prozesslisten und Protokolle. Der Inhalt richtet sich nach der ausgewählten Analyse. Zur erweiterten Problembehandlung kann der Bericht auch weitere Informationen und interaktive Diagramme enthalten, die sich auf eine hohe CPU- und Datenträgerauslastung sowie auf Prozesse beziehen, die übermäßig viel Arbeitsspeicher belegen. Weitere Informationen zum Leistungsdiagnosebericht finden Sie unter [Überprüfen eines Diagnoseberichts](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report).
+Sie können die Schaltfläche **Bericht herunterladen** verwenden, um einen HTML-Bericht herunterzuladen, der weitere relevante Diagnoseinformationen enthält, z.B. Speicher- und Netzwerkkonfiguration, Leistungsindikatoren, Ablaufverfolgungen, Prozesslisten und Protokolle. Der Inhalt richtet sich nach der ausgewählten Analyse. Zur erweiterten Problembehandlung kann der Bericht auch weitere Informationen und interaktive Diagramme enthalten, die sich auf eine hohe CPU- und Datenträgerauslastung sowie auf Prozesse beziehen, die übermäßig viel Arbeitsspeicher belegen. Weitere Informationen zum Leistungsdiagnosebericht finden Sie unter [Überprüfen eines Diagnoseberichts](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report).
 
 ## <a name="manage-performance-diagnostics-reports"></a>Verwalten von Leistungsdiagnoseberichten
 Sie können Leistungsdiagnoseberichte löschen, indem Sie die Schaltfläche **Bericht löschen** verwenden.

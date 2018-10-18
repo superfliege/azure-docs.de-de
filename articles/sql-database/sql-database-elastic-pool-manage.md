@@ -11,23 +11,24 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 6418694097c472afd6a2c706e55a9026ab03dcff
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 6c43e5bf311d94ff2e5b5c31217c5071ea26746c
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162714"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351861"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Erstellen und Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
 
-Mit einem Pool für elastische Datenbanken legen Sie die Menge der Ressourcen fest, die für den Pool für elastische Datenbanken zur Verarbeitung der Workload der zugehörigen Datenbanken erforderlich sind, sowie die Menge der Ressourcen für die einzelnen in einem Pool zusammengefassten Datenbanken. 
+Mit einem Pool für elastische Datenbanken legen Sie die Menge der Ressourcen fest, die für den Pool für elastische Datenbanken zur Verarbeitung der Workload der zugehörigen Datenbanken erforderlich sind, sowie die Menge der Ressourcen für die einzelnen in einem Pool zusammengefassten Datenbanken.
 
 ## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Azure-Portal: Verwalten von Pools für elastische Datenbanken und von in einem Pool zusammengefassten Datenbanken
 
 Alle Pooleinstellungen befinden sich an einem Ort: dem Blatt **Pool konfigurieren**. Zum Aufrufen dieses Blatts suchen Sie im Portal einen Pool für elastische Datenbanken und klicken entweder oben auf dem Blatt oder im Ressourcenmenü auf der linken Seite auf **Pool konfigurieren**.
 
 Hier können Sie eine beliebige Kombination aus den folgenden Änderungen vornehmen und alle in einem Batch speichern:
+
 1. Ändern der Dienstebene des Pools
 2. Herauf- oder Herunterskalieren der Leistung (DTU oder V-Kerne)
 3. Hinzufügen oder Entfernen von Datenbanken im Pool
@@ -36,7 +37,7 @@ Hier können Sie eine beliebige Kombination aus den folgenden Änderungen vorneh
 
 ![Konfigurationsblatt eines Pools für elastische Datenbanken](./media/sql-database-elastic-pool-manage-portal/configure-pool.png)
 
-## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: Verwalten von Pools für elastische Datenbanken und von in einem Pool zusammengefassten Datenbanken 
+## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: Verwalten von Pools für elastische Datenbanken und von in einem Pool zusammengefassten Datenbanken
 
 Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken und in einem Pool zusammengefassten Datenbanken in SQL-Datenbank mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) weiter. Weitere Informationen zum Erstellen und Verwalten logischer Server für Pools für elastische Datenbanken finden Sie unter [Erstellen und Verwalten logischer Server](sql-database-logical-servers.md). Weitere Informationen zum Erstellen und Verwalten von Firewallregeln finden Sie unter [Erstellen und Verwalten von Firewallregeln mit PowerShell](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
 
@@ -56,10 +57,8 @@ Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken 
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Legt Eigenschaften für eine Datenbank fest oder verschiebt eine vorhandene Datenbank in, aus oder zwischen Pools für elastische Datenbanken.|
 |[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|Entfernt eine Datenbank.|
 
-
 > [!TIP]
 > Das Erstellen zahlreicher Datenbanken in einem Pool für elastische Datenbanken kann eine Weile dauern, wenn dies über das Portal oder über PowerShell-Cmdlets erfolgt, die jeweils nur eine Einzeldatenbank erstellen. Informationen zum Automatisieren der Erstellung in einem Pool für elastische Datenbanken finden Sie unter [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).
->
 
 ## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Azure CLI: Verwalten von Pools für elastische Datenbanken und von in einem Pool zusammengefassten Datenbanken
 
@@ -100,18 +99,18 @@ Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken 
 
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
-|[Pools für elastische Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/elasticpools/createorupdate)|Erstellt einen neuen Pool für elastische Datenbanken oder aktualisiert einen vorhandenen elastischen Pool für elastische Datenbanken|
-|[Pools für elastische Datenbanken – Löschen](/rest/api/sql/elasticpools/delete)|Löscht den Pool für elastische Datenbanken.|
-|[Pools für elastische Datenbanken – Abrufen](/rest/api/sql/elasticpools/get)|Ruft einen Pool für elastische Datenbanken ab|
-|[Pools für elastische Datenbanken – Auflisten nach Server](/rest/api/sql/elasticpools/listbyserver)|Gibt eine Liste der Pools für elastische Datenbanken auf einem Server zurück.|
-|[Pools für elastische Datenbanken – Aktualisieren](/rest/api/sql/elasticpools/update)|Aktualisiert einen vorhandenen Pool für elastische Datenbanken|
-|[Pool für elastische Datenbanken – Aktivitäten](/rest/api/sql/elasticpoolactivities)|Gibt Aktivitäten des Pools für elastische Datenbanken zurück|
-|[Pool für elastische Datenbanken – Datenbankaktivitäten](/rest/api/sql/elasticpooldatabaseactivities)|Gibt Aktivitäten in Datenbanken in einem Pool für elastische Datenbanken zurück|
-|[Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
-|[Datenbanken – Abrufen](/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
-|[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
-|[Datenbanken – Auflisten nach Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
-|[Datenbanken – Aktualisieren](/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank|
+|[Pools für elastische Datenbanken – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_createorupdate)|Erstellt einen neuen Pool für elastische Datenbanken oder aktualisiert einen vorhandenen elastischen Pool für elastische Datenbanken|
+|[Pools für elastische Datenbanken – Löschen](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_delete)|Löscht den Pool für elastische Datenbanken.|
+|[Pools für elastische Datenbanken – Abrufen](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_get)|Ruft einen Pool für elastische Datenbanken ab|
+|[Pools für elastische Datenbanken – Auflisten nach Server](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|Gibt eine Liste der Pools für elastische Datenbanken auf einem Server zurück.|
+|[Pools für elastische Datenbanken – Aktualisieren](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|Aktualisiert einen vorhandenen Pool für elastische Datenbanken|
+|[Pool für elastische Datenbanken – Aktivitäten](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|Gibt Aktivitäten des Pools für elastische Datenbanken zurück|
+|[Pool für elastische Datenbanken – Datenbankaktivitäten](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|Gibt Aktivitäten in Datenbanken in einem Pool für elastische Datenbanken zurück|
+|[Datenbanken – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
+|[Datenbanken – Abrufen](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Ruft eine Datenbank ab|
+|[Datenbanken – Auflisten nach Pool für elastische Datenbanken](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
+|[Datenbanken – Auflisten nach Server](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
+|[Datenbanken – Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Aktualisiert eine vorhandene Datenbank|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

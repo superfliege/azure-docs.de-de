@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 734ee0e6ffb0dab660a2b63b431780208e0e0484
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 3c27aecf18fcb5e14347d8f02d71891b351292be
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165263"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341836"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Schutz von in Azure Stack bereitgestellten virtuellen Computern
 
@@ -98,7 +98,7 @@ Wichtige Überlegungen zum Sichern von VMs in Azure Stack:
     - Ziehen Sie gestaffelte Sicherungen in Betracht, wenn Sie eine große Anzahl neuer VMs integrieren (sofern eine Sicherung erforderlich ist).
     - Bewerten Sie Sicherungsprodukte, die effizient Sicherungsdaten erfassen und übertragen können, um Ressourceninhalte für die Lösung minimieren zu können.
     - Bewerten Sie Sicherungsprodukte, die Sicherungsdaten mit inkrementellen oder differenziellen Sicherungen effizient speichern, um die Notwendigkeit vollständiger Sicherungen für alle VMs in der Umgebung zu minimieren.
- - **Restore**
+ - **Wiederherstellen**
     - Sicherungsprodukte können virtuelle Datenträger, Anwendungsdaten auf einer vorhandenen VM oder die gesamte VM-Ressource mit den zugehörigen virtuellen Datenträgern wiederherstellen. Das benötigte Wiederherstellungsschema hängt davon ab, wie Sie die Anwendung wiederherstellen möchten, und wirkt sich auf den Zeitraum für die Wiederherstellung der Anwendung aus. Beispielsweise kann es einfacher sein, SQL Server über eine Vorlage erneut bereitzustellen und dann anstelle der gesamten VM oder Gruppe von VMs die Datenbanken wiederherzustellen.
 
 ### <a name="replicationmanual-failover"></a>Replikation und manuelles Failover

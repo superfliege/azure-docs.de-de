@@ -10,23 +10,21 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 3b4ab55f4bd8bbd66f2edc8c262524169c79d7f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975635"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340357"
 ---
 # <a name="what-is-bing-speech"></a>Was ist die Bing-Spracheingabe?
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Mit der cloudbasierten Bing-Spracheingabe-API von Microsoft können Entwickler komfortabel leistungsfähige Sprachfunktionen in ihre Anwendungen integrieren. Hierzu zählen beispielsweise die Steuerung per Sprachbefehl, Benutzerdialoge in natürlicher Sprache sowie Transkription und Diktat. Die Sprach-API von Microsoft unterstützt sowohl die *Spracherkennung* (Umwandlung von Sprache in Text) als auch die *Sprachsynthese* (Umwandlung von Text in Sprache).
 
 - Die **Spracherkennungs-API** wandelt gesprochene Sprache in Text um, der als Eingabe oder Befehl zur Steuerung Ihrer Anwendung verwendet werden kann.
 - Die **Sprachsynthese-API** wandelt Text in Audiostreams um, die für den Benutzer Ihrer Anwendung wiedergegeben werden können.
-
-> [!NOTE] 
-> Im Mai 2018 haben wir den neuen [Speech-Dienst](../speech-service/overview.md) als Public Preview veröffentlicht. Wir empfehlen Ihnen, diesen [kostenlos auszuprobieren](../speech-service/get-started.md).
 
 ## <a name="speech-to-text-speech-recognition"></a>Spracherkennung (Umwandlung von Sprache in Text)
 

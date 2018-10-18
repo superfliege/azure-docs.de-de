@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: c94b5d4800f5776b51247c6ec2f6662a6ab26abc
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 4ab558b680a0d00d1b9bdfbcb1529219f6c37b37
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140374"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319251"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts für C
 
@@ -143,6 +143,7 @@ Das SDK muss vor dem Erstellen der Geräteregistrierung erstellt werden.
 Gehen Sie bei Verwendung von TPM gemäß der Anleitung unter [Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des C-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst](./quick-create-simulated-device.md) vor, um in Ihrem Device Provisioning-Dienst einen Geräteregistrierungseintrag zu erstellen und den ersten Start zu simulieren.
 
 ### <a name="x509"></a>X **.** 509
+
 1. Wenn Sie ein Gerät beim Bereitstellungsdienst registrieren möchten, müssen Sie sich den Endorsement Key und die Registrierungs-ID des jeweiligen Geräts notieren. Die entsprechenden Angaben finden Sie im Bereitstellungstool des Client-SDKs. Führen Sie den folgenden Befehl aus, um das Zertifikat der Stammzertifizierungsstelle (für Registrierungsgruppen) und das untergeordnete Zertifikat (für die individuelle Registrierung) auszugeben:
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
@@ -185,4 +186,3 @@ Nachdem das Gerät mit dem Bereitstellungsdienst bereitgestellt wurde, verwendet
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```
-

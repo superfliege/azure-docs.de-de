@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c894fed56393e1504f54999e57bba6f9ffed27a7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288253"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318536"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Überwachung in Azure SQL Data Warehouse
 
@@ -112,7 +112,7 @@ Es wird dringend empfohlen, die Überwachung auf Serverebene und nicht auf Daten
 
 ## <a id="subheading-3"></a>Analysieren von Überwachungsprotokollen und -berichten
 
-###<a name="server-level-policy-audit-logs"></a>Überwachungsprotokolle der Richtlinie auf Serverebene
+### <a name="server-level-policy-audit-logs"></a>Überwachungsprotokolle der Richtlinie auf Serverebene
 Überwachungsprotokolle auf Serverebene werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben. Sie werden als Sammlung von Blobdateien in einem Container namens **sqldbauditlogs** gespeichert.
 
 Weitere Informationen zur Hierarchie des Speicherordners, zu Namenskonventionen und zum Protokollformat finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](https://go.microsoft.com/fwlink/?linkid=829599).
@@ -147,8 +147,8 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen:
 
 
 <br>
-###<a name="database-level-policy-audit-logs"></a>Überwachungsprotokolle der Richtlinie auf Datenbankebene
-Überwachungsprotokolle auf Datenbankebene werden im Azure-Speicherkonto, das Sie während der Einrichtung ausgewählt haben, in einer einzelnen Azure-Speichertabelle mit dem Präfix **SQLDBAuditLogs** zusammengefasst. Sie können Protokolldateien mit einem Tool wie [Azure Storage-Explorer](http://azurestorageexplorer.codeplex.com) anzeigen.
+### <a name="database-level-policy-audit-logs"></a>Überwachungsprotokolle der Richtlinie auf Datenbankebene
+Überwachungsprotokolle auf Datenbankebene werden im Azure-Speicherkonto, das Sie während der Einrichtung ausgewählt haben, in einer einzelnen Azure-Speichertabelle mit dem Präfix **SQLDBAuditLogs** zusammengefasst. Sie können Protokolldateien mithilfe eines Tools wie dem [Azure Storage-Explorer](http://azurestorageexplorer.codeplex.com) anzeigen.
 
 Eine vorkonfigurierte Dashboardberichtvorlage steht als [herunterladbares Excel-Arbeitsblatt](http://go.microsoft.com/fwlink/?LinkId=403540) zur Verfügung, mit dem Sie Protokolldaten schnell analysieren können. Damit Sie die Vorlage für Ihre Überwachungsprotokolle verwenden können, benötigen Sie Excel 2013 oder höher und Power Query, das [hier](http://www.microsoft.com/download/details.aspx?id=39379)heruntergeladen werden kann.
 

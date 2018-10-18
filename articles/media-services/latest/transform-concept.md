@@ -4,19 +4,19 @@ description: Wenn Sie Media Services verwenden, müssen Sie eine Transformation 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: b755e0573098d3dbed1bea18a40af634be609f76
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 214d4d3d11255e417f3df1e5f6e648b2a30225ea
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272079"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377307"
 ---
 # <a name="transforms-and-jobs"></a>Transformationen und Aufträge
 
@@ -78,5 +78,4 @@ Angenommen, Sie möchten den ersten Frame aller Ihrer Videos als Miniaturbild ex
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Streamen von Videodateien](stream-files-dotnet-quickstart.md)
+[Streamen von Videodateien](stream-files-dotnet-quickstart.md)

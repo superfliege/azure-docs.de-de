@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a4bd20f9f8a6a8317e161b1d84e948391cd08140
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d0e7c3f7aeb42fd1525519b7908b1be6fc48aa65
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034925"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362516"
 ---
 # <a name="keys-in-luis"></a>Schlüssel in LUIS
 LUIS verwendet zwei Schlüssel: [Erstellungs-](#programmatic-key) und [Endpunktschlüssel](#endpoint-key). Der Erstellungsschlüssel wird automatisch erstellt, wenn Sie Ihr LUIS-Konto erstellen. Wenn Sie Ihre LUIS-App veröffentlichen möchten, müssen Sie den [Endpunktschlüssel erstellen](luis-how-to-azure-subscription.md#create-luis-endpoint-key), ihn Ihrer LUIS-App [zuweisen](luis-how-to-manage-keys.md#assign-endpoint-key) und ihn [für Endpunktabfragen verwenden](#use-endpoint-key-in-query). 
@@ -60,7 +60,7 @@ Der LUIS-Endpunkt akzeptiert zwei Arten von Abfragen, die beide den Endpunktschl
 |[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>Wert der Abfragezeichenfolge für `subscription-key`<br><br>Ändern Sie den Wert Ihrer Endpunktabfrage für den `subscription-key` vom Erstellungsschlüssel (Startschlüssel) zum neuen Endpunktschlüssel, um das Schlüsselkontingent des LUIS-Endpunkts zu verwenden. Wenn Sie den Schlüssel erstellen und zuweisen, aber nicht den Wert in der Endpunktabfrage für „subscription-key“ ändern, nutzen Sie nicht das Kontingent Ihres Endpunktschlüssels.|
 |[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> Headerwert für `Ocp-Apim-Subscription-Key`<br><br>Ändern Sie den Wert Ihrer Endpunktabfrage für den `Ocp-Apim-Subscription-Key` vom Erstellungsschlüssel (Startschlüssel) zum neuen Endpunktschlüssel, um das Schlüsselkontingent des LUIS-Endpunkts zu verwenden. Wenn Sie den Schlüssel erstellen und zuweisen, aber nicht den Wert in der Endpunktabfrage für `Ocp-Apim-Subscription-Key` ändern, nutzen Sie nicht das Kontingent Ihres Endpunktschlüssels.|
 
-Die App-ID, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, die in den vorherigen URLs verwendet wurde, ist die öffentliche IoT-App für die [interaktive Demo](https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/). 
+Die App-ID, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, die in den vorherigen URLs verwendet wurde, ist die öffentliche IoT-App für die [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). 
 
 ## <a name="api-usage-of-ocp-apim-subscription-key"></a>Verwenden von Ocp-Apim-Subscription-Key über die API
 Die LUIS-APIs verwenden den Header `Ocp-Apim-Subscription-Key`. Der Headername ändert sich nicht, wenn Sie andere Schlüssel oder APIs verwenden. Legen Sie den Header für Erstellungs-APIs auf den Erstellungsschlüssel fest. Wenn Sie den Endpunkt verwenden, legen Sie den Header auf den Endpunktschlüssel fest. 

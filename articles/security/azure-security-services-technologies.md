@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 0addad1db4d9f897736a7793c5489897bca2cd38
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 32174af9edcd6da7b87b6b38c0824fa7f07aa8f9
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093425"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384886"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Bei Azure verfügbare Sicherheitsdienste und -technologien
 
@@ -33,7 +33,7 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 |Dienst|BESCHREIBUNG|
 |--------|--------|
 |[Azure&nbsp;Security&nbsp;Center](../security-center/security-center-intro.md)| Eine Cloudlösung für Workloadschutz, die einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads bietet|
-|[Azure-Schlüsseltresor](../key-vault/key-vault-overview.md)| Ein sicherer Kennwortspeicher für Kennwörter, Verbindungszeichenfolgen und andere Informationen, die Sie benötigen, damit Ihre Apps weiterhin funktionieren |
+|[Azure Key Vault](../key-vault/key-vault-overview.md)| Ein sicherer Kennwortspeicher für Kennwörter, Verbindungszeichenfolgen und andere Informationen, die Sie benötigen, damit Ihre Apps weiterhin funktionieren |
 |[Log Analytics](../log-analytics/log-analytics-overview.md)|Ein Überwachungsdienst, der Telemetrie- und andere Daten erfasst und eine Abfragesprache sowie ein Analysemodul bietet, mit denen Sie Einblicke in die Abläufe Ihrer Apps und Ressourcen erhalten. Er kann alleine oder in Verbindung mit anderen Diensten wie Security Center verwendet werden. |
 |[Dokumentation zu Azure Dev/Test Lab](../devtest-lab/devtest-lab-overview.md)|Ein Dienst, der Entwicklern und Testern dabei hilft, Umgebungen in Azure schnell zu erstellen und dabei unnötigen Aufwand zu minimieren und die Kosten unter Kontrolle zu halten  |
 
@@ -48,7 +48,7 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 | [Azure Storage – Shared Access-Signaturen](../storage/common/storage-dotnet-shared-access-signature-part-1.md)|Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto.  |
 |[Azure-Speicherkontenschlüssel](../storage/common/storage-create-storage-account.md)| Eine Zugriffssteuerungsmethode für Azure Storage, die für die Authentifizierung beim Zugreifen auf das Speicherkonto verwendet wird |
 |[Azure-Dateifreigaben mit SMB 3.0-Verschlüsselung](../storage/files/storage-files-introduction.md)|Eine Netzwerksicherheitstechnologie, die automatische Netzwerkverschlüsselung für das SMB-Dateifreigabeprotokoll (Server Message Block) ermöglicht |
-|[Azure-Speicheranalyse](https://docs.microsoft.com/en-us/rest/api/storageservices/Storage-Analytics)| Eine Protokollierungs- und Metrikgenerierungstechnologie für die Daten in Ihrem Speicherkonto |
+|[Azure-Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/Storage-Analytics)| Eine Protokollierungs- und Metrikgenerierungstechnologie für die Daten in Ihrem Speicherkonto |
 
 <!------>
 
@@ -58,8 +58,8 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 | [Azure&nbsp;SQL&nbsp;Firewall](../sql-database/sql-database-firewall-configure.md)|Ein Netzwerk-Zugriffssteuerungsfeature, das Schutz vor netzwerkbasierten Angriffen auf die Datenbank bietet |
 |[Azure&nbsp;SQL-Zellebenenverschlüsselung&nbsp;&nbsp;](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Eine Datenbanksicherheitstechnologie, die Verschlüsselung auf granularer Ebene bereitstellt  |
 | [Azure&nbsp;SQL-Verbindungsverschlüsselung&nbsp;](../sql-database/sql-database-control-access.md)|Zur Gewährleistung der Sicherheit steuert SQL-Datenbank den Zugriff mit Firewallregeln, die die Konnektivität nach IP-Adresse einschränken, Authentifizierungsmechanismen, die die Identitätsbestätigung durch Benutzer erfordern, und Autorisierungsmechanismen, die bestimmte Aktionen und Daten für Benutzer eingrenzen. |
-| [Azure SQL – Always Encrypted](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Schützt vertrauliche Daten wie Kreditkartennummern oder nationale Identifikationsnummern (etwa Sozialversicherungsnummern), die in Azure SQL-Datenbank oder SQL Server-Datenbanken gespeichert sind  |
-| [Azure&nbsp;SQL&nbsp;Transparent Data Encryption](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Ein Datenbanksicherheitsfeature, das den Speicher einer gesamten Datenbank verschlüsselt |
+| [Azure SQL – Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Schützt vertrauliche Daten wie Kreditkartennummern oder nationale Identifikationsnummern (etwa Sozialversicherungsnummern), die in Azure SQL-Datenbank oder SQL Server-Datenbanken gespeichert sind  |
+| [Azure&nbsp;SQL&nbsp;Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Ein Datenbanksicherheitsfeature, das den Speicher einer gesamten Datenbank verschlüsselt |
 | [Azure SQL – Datenbanküberwachung](../sql-database/sql-database-auditing.md)|Ein Datenbanküberwachungsfeature, das Datenbankereignisse verfolgt und diese in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto schreibt  |
 
 

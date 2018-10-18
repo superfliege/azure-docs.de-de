@@ -4,27 +4,27 @@ description: In diesem Thema wird gezeigt, wie mit Azure Media Services v3 eine 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cflower
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 05/17/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: d298070877a366d04b2df1ef8ac63b08f8771de0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3318020b54beb121ac48d993a8ce794ac8e377f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659572"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376634"
 ---
 # <a name="how-to-encode-with-a-custom-transform"></a>Codieren einer benutzerdefinierten Transformation
 
 Bei der Codierung mit Azure Media Services können Sie mit einer der empfohlenen integrierten Voreinstellungen basierend auf in der Branche bewährten Vorgehensweisen schnell einsteigen, wie im Tutorial [Hochladen, Codieren und Streamen von Videos mit APIs](stream-files-tutorial-with-api.md) gezeigt, oder Sie können eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen entwickeln. 
 
 > [!Note]
-> In Azure Media Services v3 werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies ist anders als bei den Voreinstellungen von REST v2 Media Encoder Standard. Beispielsweise würde die Bitrate in v2 mit 128 angegeben, aber in v3 mit 128.000.
+> In Azure Media Services v3 werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies ist anders als bei den Voreinstellungen von REST v2 Media Encoder Standard. Beispielsweise würde die Bitrate in V2 mit 128, in V3 jedoch mit 128.000 angegeben.
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 

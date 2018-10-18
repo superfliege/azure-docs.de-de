@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: cf21b11f76592f5df2d81e6bdc10413c79fe895e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 510bc258aae80582e85478936c3281198e89d755
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979225"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343162"
 ---
 # <a name="chunked-transfer-encoding"></a>Codierung für segmentierte Übertragung
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Für das Transkribieren von Sprache in Text können Sie die Audiodaten mit der Spracherkennungs-API von Microsoft als vollständigen Block senden oder in kleinere Audiosegmente unterteilen. Wenn Sie Audiodaten effizient streamen und die Transkriptionslatenz reduzieren möchten, empfehlen wir Ihnen die Verwendung der Codierung für die segmentierte Übertragung ([Chunked Transfer Encoding](https://en.wikipedia.org/wiki/Chunked_transfer_encoding)), um die Audiodaten an den Dienst zu streamen. Bei anderen Implementierungen kann es zu dazu kommen, dass von Benutzern eine höhere Latenz wahrgenommen wird. Weitere Informationen finden Sie auf der Seite [Audiodatenströme](../concepts.md#audio-streams).
 

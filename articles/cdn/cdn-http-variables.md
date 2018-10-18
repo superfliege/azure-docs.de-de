@@ -3,8 +3,8 @@ title: HTTP-Variablen für Azure CDN-Regel-Engine | Microsoft-Dokumentation
 description: HTTP-Variablen ermöglichen Ihnen das Abrufen von HTTP-Anforderungs- und -Antwortmetadaten.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: v-deasim
-ms.openlocfilehash: 36c1b20219fabd1b7c02247d9a93bb7b7cfc898d
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: magattus
+ms.openlocfilehash: 39084fd8408a123e8152ad96fa92025fd04ed42b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011457"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092812"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-Variablen für Azure CDN-Regel-Engine
 HTTP-Variablen stellen die Methoden für den Abruf von HTTP-Anforderungs- und -Antwortmetadaten bereit. Diese Metadaten können dann zur dynamischen Änderung einer Anforderung oder Antwort verwendet werden. Die Verwendung von HTTP-Variablen ist auf die folgenden Regel-Engine-Features beschränkt :
@@ -102,7 +102,7 @@ Die Trennzeichen sind in der folgenden Tabelle beschrieben.
 | / | Begrenzt eine HTTP-Variable oder ein Muster. |
 | // | Sucht und ersetzt alle Instanzen des angegebenen Musters. |
 | /= | Sucht und kopiert alle Vorkommen des angegebenen Musters und generiert sie erneut. |
-| dann | Konvertiert den der HTTP-Variablen zugeordneten Wert in Kleinbuchstaben. |
+| , | Konvertiert den der HTTP-Variablen zugeordneten Wert in Kleinbuchstaben. |
 | ^ | Konvertiert den der HTTP-Variablen zugeordneten Wert in Großbuchstaben. |
 | ,, | Konvertiert alle Instanzen des angegebenen Zeichens in dem der HTTP-Variablen zugeordneten Wert in Kleinbuchstaben. |
 | ^^ | Konvertiert alle Instanzen des angegebenen Zeichens in dem der HTTP-Variablen zugeordneten Wert in Großbuchstaben. |
@@ -174,7 +174,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="pattern-removal"></a>Musterentfernung
 Text, der einem bestimmten Muster entspricht, kann vom Anfang oder Ende des Werts einer Variablen entfernt werden.
 
-| Syntax | anzuzeigen. |
+| Syntax | Aktion |
 | ------ | ------ |
 | %{Variable#Pattern} | Text wird entfernt, wenn sich das angegebene Muster am Anfang des Werts einer Variablen befindet. |
 | %{Variable%Pattern} | Text wird entfernt, wenn sich das angegebene Muster am Ende des Werts einer Variablen befindet. |
@@ -195,7 +195,7 @@ In der folgenden Tabelle wird veranschaulicht, wie diese Syntax funktioniert.
 ### <a name="find-and-replace"></a>Suchen und Ersetzen
 Die Syntax für Suchen und Ersetzen ist in der folgenden Tabelle beschrieben.
 
-| Syntax | anzuzeigen. |
+| Syntax | Aktion |
 | ------ | ------ |
 | %{Variable/Find/Replace} | Suchen und Ersetzen des ersten Vorkommens des angegebenen Musters. |
 | %{Variable//Find/Replace} | Suchen und Ersetzen aller Vorkommen des angegebenen Musters. |
@@ -207,7 +207,7 @@ Die Syntax für Suchen und Ersetzen ist in der folgenden Tabelle beschrieben.
 ### <a name="find-and-rewrite"></a>Suchen und erneut generieren
 Für eine Abwandlung des Vorgangs „Suchen und Ersetzen“ verwenden Sie den Text, der dem angegebenen Muster entspricht, wenn es neu generiert wird. Die Syntax für Suchen und erneutes Generieren ist in der folgenden Tabelle beschrieben.
 
-| Syntax | anzuzeigen. |
+| Syntax | Aktion |
 | ------ | ------ |
 | %{Variable/=Find/Rewrite} | Sucht und kopiert alle Vorkommen des angegebenen Musters und generiert sie erneut. |
 | %{Variable/^Find/Rewrite} | Sucht und kopiert alle Vorkommen des angegebenen Musters, wenn es am Beginn der Variablen steht, und generiert sie erneut. |

@@ -3,19 +3,19 @@ title: 'Schnellstart: Analysieren eines lokalen Bilds – REST, C# – Maschinel
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung analysieren Sie ein lokales Bild mit der Maschinelles Sehen-API und C#.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: 572d352b04debca0ab3afdea6d86a7383370050f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 72b9663de0317620ca9760e3b1863ab60b37514a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634114"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343187"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c35-in-computer-vision"></a>Schnellstart: Analysieren eines lokalen Bilds mit der REST-API und C# in der Maschinelles Sehen-API
 

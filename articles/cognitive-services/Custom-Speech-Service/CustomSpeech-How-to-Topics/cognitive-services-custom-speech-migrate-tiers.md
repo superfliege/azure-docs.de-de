@@ -1,24 +1,25 @@
 ---
-title: Migrieren der Tarife von Endpunkten – Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: Es wird beschrieben, wie Sie Bereitstellungen von Custom Speech Service-Endpunkten aus den Tarifen S0 und S1 zu S2 migrieren.
+title: Migrieren der Tarife von Endpunkten für den Custom Speech Service in Azure | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie Bereitstellungen von Custom Speech Service-Endpunkten in Cognitive Services aus den Tarifen S0 und S1 zu S2 migrieren.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 07/05/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 560aa0a7b9748f75cdde99691db7f33e2fc10221
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a9bdb257137db0063d39f028a69e2164eccbdc31
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224850"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340459"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>Migrieren von Bereitstellungen zum neuen Preismodell
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Ab Juli 2017 wird für den Custom Speech Service ein [neues Preismodell](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/) angeboten. Das neue Modell ist *einfacher zu verstehen*, *die Kosten können leichter berechnet werden*, und es ist in Bezug auf die Skalierung *flexibler*. Für die Skalierung hat Microsoft das Konzept der Skalierungseinheit eingeführt. Jede Skalierungseinheit kann gleichzeitig fünf Anforderungen verarbeiten. Die Skalierung für gleichzeitige Anforderungen war im alten Modell für den Tarif S0 auf fünf gleichzeitige Anforderungen und für den Tarif S1 auf zwölf gleichzeitige Anforderungen festgelegt. Wir haben diese Grenzwerte aufgehoben, damit Sie in Bezug auf die Anforderungen Ihrer Anwendungsfälle flexibler vorgehen können.
 
 Bei der Nutzung eines alten S0- oder S1-Tarifs empfehlen wir Ihnen, Ihre vorhandenen Bereitstellungen zum neuen S2-Tarif zu migrieren. Der neue S2-Tarif deckt sowohl den Tarif S0 als auch den Tarif S1 ab. Die verfügbaren Optionen sind in der folgenden Abbildung dargestellt:

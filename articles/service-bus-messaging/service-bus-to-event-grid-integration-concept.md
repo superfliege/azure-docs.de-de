@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 9e7e853ad7562bf5d449479ad730a5dabd6a97b8
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2173a24eb3bbaafe9dcf25461eb5357ba3a6e7ad
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585423"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166898"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Übersicht über die Integration von Azure Service Bus in Event Grid
 
@@ -179,7 +179,7 @@ Als Nächstes können Sie sich die anderen Setupoptionen ansehen oder [sich verg
 * Informieren Sie sich ausführlicher über [Event Grid](https://docs.microsoft.com/azure/event-grid/).
 * Erfahren Sie mehr über [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
 * Informieren Sie sich ausführlicher über [Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
-* Erfahren Sie mehr über [Service Bus](https://docs.microsoft.com/azure/azure-functions/).
+* Erfahren Sie mehr über [Service Bus](https://docs.microsoft.com/azure/service-bus/).
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

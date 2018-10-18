@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: a6ad40f90e12bbf4dd85c3cbd22839d39a734ca1
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 5f76d18662105df6d278e09e047baa13773ab4ac
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391164"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319352"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Bereitstellen in Azure App Service mit dem Jenkins-Plug-In 
 
@@ -36,8 +36,10 @@ Wenn Sie noch nicht über einen Jenkins-Master verfügen, sollten Sie mit der [P
 * [Azure App Service](https://plugins.jenkins.io/azure-app-service) Version 0.1
 
 Mithilfe des Jenkins-Plug-Ins können Sie eine Web-App in einer beliebigen Sprache bereitstellen, die von Web-Apps unterstützt wird, wie beispielsweise C#, PHP, Java und Node.js. In diesem Tutorial wird eine [einfache Java-Web-App für Azure](https://github.com/azure-devops/javawebappsample) verwendet. Wählen Sie die Schaltfläche **Fork** (Verzweigen) in der rechten oberen Ecke der GitHub-Benutzeroberfläche aus, um das Repository in Ihr GitHub-Konto zu verzweigen.  
+
 > [!NOTE]
 > Das Java JDK und Maven sind zum Erstellen des Java-Projekts erforderlich. Installieren Sie diese Komponenten auf dem Jenkins-Master oder dem VM-Agent, wenn Sie diesen für Continuous Integration nutzen. Wenn Sie eine Java SE-Anwendung bereitstellen, wird ZIP auch auf dem Buildserver benötigt.
+>
 
 Melden Sie sich zum Installieren der Komponenten mithilfe von SSH bei der Jenkins-Instanz an, und führen Sie die folgenden Befehle aus:
 
@@ -48,7 +50,7 @@ sudo apt-get install -y maven
 
 Installieren Sie Docker auf dem Jenkins-Master oder dem VM-Agent, der für den Build verwendet wird, um in Web-App für Container bereitzustellen. Eine Anleitung hierzu finden Sie unter [Installieren von Docker unter Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
-##<a name="service-principal"></a> Hinzufügen eines Azure-Dienstprinzipals zu den Jenkins-Anmeldeinformationen
+## <a name="service-principal"></a> Hinzufügen eines Azure-Dienstprinzipals zu den Jenkins-Anmeldeinformationen
 
 Ein Azure-Dienstprinzipal ist für die Bereitstellung in Azure erforderlich. 
 

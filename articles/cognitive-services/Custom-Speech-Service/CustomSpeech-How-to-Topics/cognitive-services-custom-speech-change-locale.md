@@ -1,24 +1,25 @@
 ---
-title: Unterstützte Gebietsschemata und Sprachen – Custom Speech Service
-titlesuffix: Azure Cognitive Services
+title: Unterstützte Gebietsschemas und Sprachen in Custom Speech Service in Azure | Microsoft-Dokumentation
 description: Übersicht über die unterstützten Sprachen von Custom Speech Service in Cognitive Services
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 34af6673689244364ab3a1fe3f2a6ab056ea8598
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 8493aeb3c1c2436900ae626ad0f34cbe8b060163
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223954"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342167"
 ---
 # <a name="supported-locales-in-custom-speech-service"></a>Unterstützte Gebietsschemas in Custom Speech Service
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Der Custom Speech Service unterstützt derzeit die Anpassung von Modellen in der folgenden Gebietsschemas:
 
 | Modelltyp | Sprachunterstützung |

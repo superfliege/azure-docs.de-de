@@ -3,19 +3,19 @@ title: 'Schnellstart: Extrahieren von handschriftlichem Text – REST, C# – Ma
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und C#.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: bf7eae1bc7d0b0db1eaa37b2ab84dc21ef9712b7
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: f63cebd7a4af5b2289470ef34a80c8680aa981fd
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628574"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340340"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c35-in-computer-vision"></a>Schnellstart: Extrahieren von handschriftlichem Text mit der REST-API und C# in der Maschinelles Sehen-API
 
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte durch, um das Beispiel in Visual Studio zu er
     1. Wählen Sie **Newtonsoft.Json** aus, wenn das Paket angezeigt wird, aktivieren Sie das Kontrollkästchen neben dem Projektnamen, und klicken Sie dann auf **Installieren**.
 1. Ersetzen Sie den Code in `Program.cs` durch den folgenden Code, und nehmen Sie dann die folgenden Änderungen im Code vor, falls dies erforderlich ist:
     1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
-    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die Methode [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die Methode [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) aus der Azure-Region, aus der Sie Ihre Abonnementschlüssel abgerufen haben, falls erforderlich.
 1. Führen Sie das Programm aus.
 1. Geben Sie an der Eingabeaufforderung den Pfad zu einem lokalen Bild ein.
 
@@ -218,7 +218,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt sie bei erfolgreicher Ausführung im Konsolenfenster an, ähnlich wie im folgenden Beispiel:
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Konsolenfenster an, ähnlich wie im folgenden Beispiel:
 
 ```json
 {

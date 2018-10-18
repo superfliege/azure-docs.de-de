@@ -15,7 +15,7 @@
 ## Verwalten von Data Lake Analytics
 ### [Azure-Portal](data-lake-analytics-manage-use-portal.md)
 ### Befehlszeile
-#### [Azure-CLI](data-lake-analytics-manage-use-cli.md)
+#### [Azure-Befehlszeilenschnittstelle](data-lake-analytics-manage-use-cli.md)
 #### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
 ### SDKs
 #### [.NET](data-lake-analytics-manage-use-dotnet-sdk.md)
@@ -71,7 +71,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
-## [Python](https://docs.microsoft.com/en-us/python/api/overview/azure/data-lake-analytics?view=azure-python)
+## [Python](https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python)
 ## [REST](/rest/api/datalakeanalytics/)
 ## [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://docs.microsoft.com/cli/azure/dla)
 
@@ -83,6 +83,6 @@
 ## [Preise](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=data-lake-analytics)
-## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [Videos](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

@@ -1,24 +1,24 @@
 ---
-title: 'Tutorial: Erstellen eines Sprachmodells – Custom Speech Service'
-titlesuffix: Azure Cognitive Services
-description: In diesem Tutorial erfahren Sie, wie Sie mit Custom Speech Service ein Sprachmodell erstellen.
+title: 'Tutorial: Erstellen eines Sprachmodells mit Custom Speech Service – Microsoft Cognitives Services | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie mit Custom Speech Service ein Sprachmodell in Microsoft Cognitive Services erstellen.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: b7216688efb6a2124748cd08111d57b122085143
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6af2da9ffc7678a58fcf1c647ba89c586066d2ad
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219313"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339095"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Tutorial: Erstellen eines benutzerdefinierten Sprachmodells
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 In diesem Tutorial erstellen Sie ein benutzerdefiniertes Sprachmodell für Textabfragen oder Äußerungen, die Benutzer voraussichtlich in einer Anwendung verwenden (entweder per Sprache oder per Eingabe). Dieses benutzerdefinierte Sprachmodell kann mit modernsten Sprachmodellen von Microsoft kombiniert werden, um für Ihre App die Interaktion per Spracheingabe zu ermöglichen.
 

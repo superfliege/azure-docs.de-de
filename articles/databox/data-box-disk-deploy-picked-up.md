@@ -2,29 +2,23 @@
 title: Zurücksenden des Microsoft Azure Data Box-Datenträgers | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie Ihren Azure Data Box-Datenträger an Microsoft zurücksenden.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 783c837bbb9ce22e7354252523e6725753776836
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f971a1bed0391e809e19ff5bb0508d153319faf4
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011057"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094002"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden des Azure Data Box-Datenträgers und Überprüfen des Datenuploads in Azure
 
-Dies ist das letzte Tutorial der Reihe „Bereitstellen des Azure Data Box-Datenträgers“. In diesem Tutorial lernen Sie Folgendes:
+Dies ist das letzte Tutorial der Reihe „Bereitstellen des Azure Data Box-Datenträgers“. In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Senden des Data Box-Datenträgers an Microsoft

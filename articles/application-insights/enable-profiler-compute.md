@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb2ec0c0b77e71a54d1e7f852a22d82203abf7b6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424023"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091979"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Aktivieren von Application Insights Profiler für virtuelle Azure-Computer, Service Fabric und Azure Cloud Services
 
@@ -48,7 +48,7 @@ Zur vollständigen Aktivierung von Profiler müssen Sie die Konfiguration an dre
 
    ![Speicherort des Instrumentierungsschlüssels](./media/enable-profiler-compute/CopyAIKey.png)
 
-1. Wenden Sie anschließend das in „Aktivieren von Profiler“ beschriebene Verfahren an, um die Einrichtung der Application Insights-Instanz für Profiler abzuschließen. Sie müssen die Web-Apps nicht verknüpfen, da die Schritte speziell für die App Services-Ressource gelten. Stellen Sie sicher, dass Profiler im Bereich **Profiler konfigurieren** aktiviert ist.
+1. Wenden Sie anschließend das in [Aktivieren von Profiler](https://docs.microsoft.com/azure/application-insights/app-insights-profiler) beschriebene Verfahren an, um die Einrichtung der Application Insights-Instanz für Profiler abzuschließen. Sie müssen die Web-Apps nicht verknüpfen, da die Schritte speziell für die App Services-Ressource gelten. Stellen Sie sicher, dass Profiler im Bereich **Profiler konfigurieren** aktiviert ist.
 
 
 ## <a name="set-up-the-application-source-code"></a>Einrichten des Quellcodes der Anwendung

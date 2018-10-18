@@ -10,15 +10,17 @@ ms.component: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: fd974d153e9db48b25c1b732b9719c21b16b5e01
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77e60fe39f7cbb985ee0e7ed2785805e80c389ae
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948773"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341139"
 ---
 # <a name="what-is-translator-speech-api"></a>Was ist die Sprachübersetzungs-API?
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
+
 Mit der Sprachübersetzungs-API können Sie Anwendungen, Tools und Lösungen, die eine Sprachübersetzung für mehrere Sprachen erfordern, unabhängig vom Zielbetriebssystem oder den Entwicklungssprachen mit umfassenden Sprachübersetzungen in Echtzeit ausstatten. Die API kann sowohl für Sprache-zu-Sprache-Übersetzungen als auch für Sprache-zu-Text-Übersetzungen verwendet werden.
 
 Die Textübersetzungs-API ist ein Azure-Dienst und gehört zur [API-Sammlung von Azure Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive). Hierbei handelt es sich um eine Sammlung von Machine Learning- und KI-Algorithmen in der Cloud, die Sie direkt in Ihren Entwicklungsprojekten verwenden können.

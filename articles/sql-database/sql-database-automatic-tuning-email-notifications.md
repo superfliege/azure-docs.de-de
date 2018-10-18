@@ -11,19 +11,19 @@ author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 86639be7c4d934929272e6d578485bfc8bfb9cc9
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/15/2018
+ms.openlocfilehash: 1177703dc67e81e537d7682dcf9bbeb475748315
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064100"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353933"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-Mail-Benachrichtigungen zur automatischen Optimierung
 
 Die Optimierungsempfehlungen für SQL-Datenbank werden mit dem Feature [Automatische Optimierung](sql-database-automatic-tuning.md) von Azure SQL-Datenbank generiert. Diese Lösung überwacht und analysiert kontinuierlich die Workloads von SQL-Datenbanken und stellt Optimierungsempfehlungen für jede einzelne Datenbank im Hinblick auf Indexerstellung, Indexlöschung und Optimierung von Abfrageausführungsplänen bereit.
 
-Sie können die Empfehlungen zur automatischen Optimierung von SQL-Datenbank im [Azure-Portal](sql-database-advisor-portal.md) anzeigen oder mit [REST-API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor)-Aufrufen oder [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)- und [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction)-Befehlen abrufen. In diesem Artikel wird ein PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet.
+Sie können die Empfehlungen zur automatischen Optimierung von SQL-Datenbank im [Azure-Portal](sql-database-advisor-portal.md) anzeigen oder mit [REST-API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/databaserecommendedactions_listbydatabaseadvisor)-Aufrufen oder [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)- und [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction)-Befehlen abrufen. In diesem Artikel wird ein PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet.
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatisieren von E-Mail-Benachrichtigungen für Empfehlungen zur automatischen Optimierung
 
@@ -99,7 +99,7 @@ Bei mehreren Abonnements können Sie diese durch Trennzeichen getrennt in der $s
 #
 # Microsoft Azure SQL Database team, 2018-01-22.
 
-# Set subscriptions : IMPORTANT – REPLACE <SUBSCRIPTION_ID_WITH_DATABASES> WITH YOUR SUBSCRIPTION ID 
+# Set subscriptions : IMPORTANT – REPLACE <SUBSCRIPTION_ID_WITH_DATABASES> WITH YOUR SUBSCRIPTION ID
 $subscriptions = ("<SUBSCRIPTION_ID_WITH_DATABASES>", "<SECOND_SUBSCRIPTION_ID_WITH_DATABASES>", "<THIRD_SUBSCRIPTION_ID_WITH_DATABASES>")
 
 # Get credentials
@@ -112,8 +112,8 @@ $advisors = ("CreateIndex", "DropIndex");
 $results = @()
 
 # Loop through all subscriptions
-foreach($subscriptionId in $subscriptions) {    
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId    
+foreach($subscriptionId in $subscriptions) {
+    Select-AzureRmSubscription -SubscriptionId $subscriptionId
     $rgs = Get-AzureRmResourceGroup
 
     # Loop through all resource groups
@@ -122,7 +122,7 @@ foreach($subscriptionId in $subscriptions) {
 
         # Loop through all resource types
         foreach($resourceType in $resourceTypes) {
-            $resources = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType $resourceType    
+            $resources = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType $resourceType
 
             # Loop through all databases
             # Extract resource groups, servers and databases
@@ -141,7 +141,7 @@ foreach($subscriptionId in $subscriptions) {
                 if ($resourceId -match ".*/DATABASES/(?<content>.*)") {
                     $DatabaseName = $matches['content']
                 } else {
-                    continue 
+                    continue
                 }
 
                 # Skip if master
@@ -163,7 +163,7 @@ foreach($subscriptionId in $subscriptions) {
                             $results += $object
                         }
                     }
-                }                
+                }
             }
         }
     }
@@ -174,7 +174,7 @@ $table = $results | Format-List
 Write-Output $table
 ```
 
-Klicken Sie auf die Schaltfläche **Speichern** in der rechten oberen Ecke, um das Skript zu speichern. Wenn Sie mit dem Skript zufrieden sind, klicken Sie auf die Schaltfläche **Veröffentlichen**, um dieses Runbook zu veröffentlichen. 
+Klicken Sie auf die Schaltfläche **Speichern** in der rechten oberen Ecke, um das Skript zu speichern. Wenn Sie mit dem Skript zufrieden sind, klicken Sie auf die Schaltfläche **Veröffentlichen**, um dieses Runbook zu veröffentlichen.
 
 Sie können im Hauptbereich des Runbooks auf die Schaltfläche **Starten** klicken, um das Skript zu **testen**. Klicken Sie auf **Ausgabe**, um die Ergebnisse der Skriptausführung anzuzeigen. Diese Ausgabe wird der Inhalt Ihrer E-Mail sein. Eine Beispielausgabe vom Skript sehen Sie im folgenden Screenshot.
 
@@ -186,7 +186,7 @@ Mit den obigen Schritten wird das PowerShell-Skript zum Abrufen von Empfehlungen
 
 ## <a name="automate-the-email-jobs-with-microsoft-flow"></a>Automatisieren der E-Mail-Aufträge mit Microsoft Flow
 
-Zum Abschließen der Lösung erstellen Sie im letzten Schritt einen Automation-Flow in Microsoft Flow bestehend aus drei Aktionen (Aufträgen): 
+Zum Abschließen der Lösung erstellen Sie im letzten Schritt einen Automation-Flow in Microsoft Flow bestehend aus drei Aktionen (Aufträgen):
 
 1. **Azure Automation – Auftrag erstellen:** zum Ausführen des PowerShell-Skripts, mit dem die Empfehlungen zur automatischen Optimierung im Azure Automation-Runbook abgerufen werden
 2. **Azure Automation – Auftragsausgabe abrufen:** zum Abrufen der Ausgabe des ausgeführten PowerShell-Skripts
@@ -205,25 +205,28 @@ Voraussetzung für diesen Schritt ist die Registrierung und Anmeldung beim [Micr
 Im nächsten Schritt werden dem neu erstellten Flow drei Aufträge (Erstellen, Abrufen der Ausgabe und Senden der E-Mail) hinzugefügt. Führen Sie zum Hinzufügen der erforderlichen Aufträge zum Flow die folgenden Schritte aus:
 
 1. Erstellen Sie die Aktion für das Ausführen des PowerShell-Skripts zum Abrufen von Optimierungsempfehlungen.
-- Wählen Sie **+ Neuer Schritt** und dann im Bereich des Flows „Serie“ die Option **Aktion hinzufügen** aus.
-- Geben Sie im Suchfeld **Automation** ein, und wählen Sie in den Suchergebnissen **Azure Automation – Auftrag erstellen** aus.
-- Konfigurieren Sie im Bereich „Auftrag erstellen“ die Auftragseigenschaften. Bei dieser Konfiguration benötigen Sie Details Ihrer Azure-Abonnement-ID, der Ressourcengruppe und des Automation-Kontos, die Sie im Bereich **Automation-Konto** zuvor **notiert haben**. Weitere Informationen zu den in diesem Abschnitt verfügbaren Optionen finden Sie unter [Azure Automation – Auftrag erstellen](https://docs.microsoft.com/connectors/azureautomation/#create-job).
-- Schließen Sie diese Aktion ab, indem Sie auf **Flow speichern** klicken.
+
+   - Wählen Sie **+ Neuer Schritt** und dann im Bereich des Flows „Serie“ die Option **Aktion hinzufügen** aus.
+   - Geben Sie im Suchfeld **Automation** ein, und wählen Sie in den Suchergebnissen **Azure Automation – Auftrag erstellen** aus.
+   - Konfigurieren Sie im Bereich „Auftrag erstellen“ die Auftragseigenschaften. Bei dieser Konfiguration benötigen Sie Details Ihrer Azure-Abonnement-ID, der Ressourcengruppe und des Automation-Kontos, die Sie im Bereich **Automation-Konto** zuvor **notiert haben**. Weitere Informationen zu den in diesem Abschnitt verfügbaren Optionen finden Sie unter [Azure Automation – Auftrag erstellen](https://docs.microsoft.com/connectors/azureautomation/#create-job).
+   - Schließen Sie diese Aktion ab, indem Sie auf **Flow speichern** klicken.
 
 2. Erstellen Sie eine Aktion, um die Ausgabe des ausgeführten PowerShell-Skripts abzurufen.
-- Wählen Sie **+ Neuer Schritt** und dann im Bereich des Flows „Serie“ die Option **Aktion hinzufügen** aus.
-- Geben Sie im Suchfeld **Automation** ein, und wählen Sie in den Suchergebnissen **Azure Automation – Auftragsausgabe abrufen** aus. Weitere Informationen zu den in diesem Abschnitt verfügbaren Optionen finden Sie unter [Azure Automation – Auftragsausgabe abrufen](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
-- Geben Sie in die erforderlichen Felder (ähnlich wie bei der vorherigen Auftragserstellung) Ihre Azure-Abonnement-ID, die Ressourcengruppe und ein Automation-Konto (wie im Bereich „Automation-Konto“ eingegeben) ein.
-- Klicken Sie in das Feld **Auftrags-ID**, um das Menü **Dynamischer Inhalt** anzuzeigen. Wählen Sie in diesem Menü die Option **Auftrags-ID** aus.
-- Schließen Sie diese Aktion ab, indem Sie auf **Flow speichern** klicken.
+
+   - Wählen Sie **+ Neuer Schritt** und dann im Bereich des Flows „Serie“ die Option **Aktion hinzufügen** aus.
+   - Geben Sie im Suchfeld **Automation** ein, und wählen Sie in den Suchergebnissen **Azure Automation – Auftragsausgabe abrufen** aus. Weitere Informationen zu den in diesem Abschnitt verfügbaren Optionen finden Sie unter [Azure Automation – Auftragsausgabe abrufen](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
+   - Geben Sie in die erforderlichen Felder (ähnlich wie bei der vorherigen Auftragserstellung) Ihre Azure-Abonnement-ID, die Ressourcengruppe und ein Automation-Konto (wie im Bereich „Automation-Konto“ eingegeben) ein.
+   - Klicken Sie in das Feld **Auftrags-ID**, um das Menü **Dynamischer Inhalt** anzuzeigen. Wählen Sie in diesem Menü die Option **Auftrags-ID** aus.
+   - Schließen Sie diese Aktion ab, indem Sie auf **Flow speichern** klicken.
 
 3. Erstellen Sie eine Aktion zum Versenden von E-Mail-Nachrichten mithilfe der Office 365-Integration.
-- Wählen Sie **+ Neuer Schritt** und dann im Bereich des Flows „Serie“ die Option **Aktion hinzufügen** aus.
-- Geben Sie im Suchfeld **E-Mail senden** ein, und wählen Sie in den Suchergebnissen **Office 365 Outlook – E-Mail senden** aus.
-- Geben Sie im Feld **An** die E-Mail-Adresse ein, an die Sie die Benachrichtigungs-E-Mail senden möchten.
-- Geben Sie im Feld **Betreff** den Betreff der E-Mail ein, z.B. „E-Mail-Benachrichtigung mit Empfehlungen zur automatischen Optimierung“.
-- Klicken Sie in das Feld **Text**, um das Menü **Dynamischer Inhalt** anzuzeigen. Wählen Sie in diesem Menü unter **Auftragsausgabe abrufen** die Option **Inhalt** aus. 
-- Schließen Sie diese Aktion ab, indem Sie auf **Flow speichern** klicken.
+
+   - Wählen Sie **+ Neuer Schritt** und dann im Bereich des Flows „Serie“ die Option **Aktion hinzufügen** aus.
+   - Geben Sie im Suchfeld **E-Mail senden** ein, und wählen Sie in den Suchergebnissen **Office 365 Outlook – E-Mail senden** aus.
+   - Geben Sie im Feld **An** die E-Mail-Adresse ein, an die Sie die Benachrichtigungs-E-Mail senden möchten.
+   - Geben Sie im Feld **Betreff** den Betreff der E-Mail ein, z.B. „E-Mail-Benachrichtigung mit Empfehlungen zur automatischen Optimierung“.
+   - Klicken Sie in das Feld **Text**, um das Menü **Dynamischer Inhalt** anzuzeigen. Wählen Sie in diesem Menü unter **Auftragsausgabe abrufen** die Option **Inhalt** aus.
+   - Schließen Sie diese Aktion ab, indem Sie auf **Flow speichern** klicken.
 
 > [!TIP]
 > Um automatisierte E-Mail-Nachrichten an verschiedene Empfänger zu senden, erstellen Sie separate Flows. Ändern Sie in diesen zusätzlichen Flows die E-Mail-Adresse des Empfängers im Feld „An“ und die Betreffzeile der E-Mail im Feld „Betreff“. Durch das Erstellen neuer Runbooks in Azure Automation mit angepassten PowerShell-Skripts (z.B. durch Ändern der Azure-Abonnement-ID) können Sie weitere angepasste Automatisierungsszenarien erstellen. So können Sie z.B. E-Mails mit Empfehlungen zur automatischen Optimierung an verschiedene Empfänger für unterschiedliche Abonnements senden.
@@ -247,7 +250,7 @@ Die finale Ausgabe der automatisierten E-Mail sieht in etwa wie die folgende E-M
 
 Durch Anpassen des PowerShell-Skripts können Sie die Ausgabe und die Formatierung der automatisierten E-Mails an Ihre Bedürfnisse anpassen.
 
-Sie können die Lösung weiter anpassen, um E-Mail-Benachrichtigungen basierend auf einem bestimmten Optimierungsereignis zu erstellen, die abhängig von Ihren eigenen Szenarien an mehrere Empfänger für unterschiedliche Abonnements oder für Datenbanken gesendet werden. 
+Sie können die Lösung weiter anpassen, um E-Mail-Benachrichtigungen basierend auf einem bestimmten Optimierungsereignis zu erstellen, die abhängig von Ihren eigenen Szenarien an mehrere Empfänger für unterschiedliche Abonnements oder für Datenbanken gesendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

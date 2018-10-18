@@ -2,24 +2,18 @@
 title: Schnellstart für Microsoft Azure Data Box | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Data Box über das Azure-Portal schnell bereitstellen.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/04/2018
 ms.author: alkohli
-ms.openlocfilehash: fe15167a5e88dbc9a97383c9a074a32c91f4219a
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: a2f8d295ca161ff2263f53b8faa407c7a42a4c6b
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784636"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385839"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Schnellstart: Bereitstellen von Azure Data Box über das Azure-Portal
 
@@ -35,7 +29,7 @@ Vorbereitungen
     - Microsoft Enterprise Agreement (EA). Erfahren Sie mehr über [EA-Abonnements](https://azure.microsoft.com/pricing/enterprise-agreement/).
     - Cloud Solution Provider (CSP). Erfahren Sie mehr über das [Azure CSP-Programm](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
     - Nutzungsbasierte Bezahlung. Erfahren Sie mehr über Azure-[Abonnements mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/).
-    - Microsoft Azure Sponsorship. Erfahren Sie mehr über das [Azure Sponsorship-Programm](https://azure.microsoft.com/en-in/offers/ms-azr-0036p/). 
+    - Microsoft Azure Sponsorship. Erfahren Sie mehr über das [Azure Sponsorship-Programm](https://azure.microsoft.com/offers/ms-azr-0036p/). 
 
 - Sie haben Zugriff als Besitzer oder Mitwirkender auf das Abonnement (zum Erstellen einer Data Box-Bestellung erforderlich).
 - Überprüfen Sie die [Sicherheitsrichtlinien für Ihre Data Box](data-box-safety.md).

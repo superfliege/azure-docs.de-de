@@ -2,25 +2,18 @@
 title: Administratorhandbuch für das Azure Data Box-Portal | Microsoft-Dokumentation
 description: Beschreibt die Verwaltung von Azure Data Box über das Azure-Portal.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 4a76d59349c37a3dcc120e64f692881b461f58fb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 49c2258100e99742bcb2e22fbce7f05b69c70ef6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993464"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090721"
 ---
 # <a name="use-the-azure-portal-to-administer-your-data-box"></a>Verwalten Ihrer Data Box im Azure-Portal
 
@@ -37,13 +30,13 @@ Führen Sie die folgenden Schritte aus, um einen Auftrag zu stornieren.
 
 1.  Navigieren Sie zu **Übersicht > Abbrechen**. 
 
-    ![Stornieren eines Auftrags (1)](media/data-box-portal-admin/cancel-order1.png)
+    ![Abbrechen eines Auftrags (1)](media/data-box-portal-admin/cancel-order1.png)
 
 2.  Geben Sie einen Grund für den Abbruch an.  
 
-    ![Stornieren eines Auftrags (2)](media/data-box-portal-admin/cancel-order2.png)
+    ![Abbrechen eines Auftrags (2)](media/data-box-portal-admin/cancel-order2.png)
 
-3.  Nach Stornierung des Auftrags aktualisiert das Portal den Status des Auftrags und zeigt **Abgebrochen** an. 
+3.  Nach Abbruch des Auftrags aktualisiert das Portal den Status des Auftrags und zeigt **Abgebrochen** an. 
 
 ## <a name="clone-an-order"></a>Klonen eines Auftrags
 
@@ -81,11 +74,11 @@ Möglicherweise müssen Sie das Adressetikett herunterladen, wenn das E-Ink-Disp
 Führen Sie die folgenden Schritte aus, um ein Adressetikett herunterzuladen.
 1.  Navigieren Sie zu **Übersicht > Versandetikett herunterladen**. Diese Option steht erst zur Verfügung, nachdem das Gerät versendet wurde. 
 
-    ![Adressetikett herunterladen](media/data-box-portal-admin/download-shipping-label.png)
+    ![Versandetikett herunterladen](media/data-box-portal-admin/download-shipping-label.png)
 
 2.  Dadurch wird das folgende Rücksendeetikett heruntergeladen. Speichern Sie das Etikett, und drucken Sie es aus. Falten Sie das Etikett, und stecken Sie es in die Klarsichthülle am Gerät. Vergewissern Sie sich, dass das Etikett sichtbar ist. Entfernen Sie alle Etiketten, die vom vorherigen Versand noch auf dem Gerät vorhanden sind.
 
-    ![Beispiel für Adressetikett](media/data-box-portal-admin/example-shipping-label.png)
+    ![Beispiel für Versandetikett](media/data-box-portal-admin/example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Bearbeiten der Lieferadresse
 
@@ -131,7 +124,7 @@ Sobald sich der Gerätestatus im Portal ändert, werden Sie per E-Mail benachric
 |Daten kopieren     | Die Daten werden gerade kopiert. Verfolgen Sie den Kopierfortschritt Ihres Auftrags im Azure-Portal. <br> Warten Sie, bis der Datenkopiervorgang abgeschlossen ist. |
 |Abgeschlossen       |Der Auftrag wurde erfolgreich abgeschlossen.<br> Vergewissern Sie sich, dass sich Ihre Daten in Azure befinden, bevor Sie die lokalen Daten von Servern löschen.         |
 |Mit Fehlern abgeschlossen| Die Datenkopie wurde abgeschlossen, aber es sind Fehler beim Kopiervorgang aufgetreten. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle.   |
-|Abgebrochen            |Der Auftrag wurde storniert. <br> Entweder haben Sie den Auftrag storniert, oder es ist ein Fehler aufgetreten, und der Auftrag wurde durch den Dienst storniert. Wenn der Auftrag nicht binnen 90 Tagen erfüllt werden kann, wird er storniert, und Sie werden benachrichtigt.     |
+|Canceled            |Der Auftrag wurde abgebrochen. <br> Entweder haben Sie den Auftrag abgebrochen, oder es ist ein Fehler aufgetreten, und der Auftrag wurde durch den Dienst abgebrochen. Wenn der Auftrag nicht binnen 90 Tagen erfüllt werden kann, wird er storniert, und Sie werden benachrichtigt.     |
 |Bereinigen | Die Daten auf den Datenträgern des Geräts werden gelöscht. Die Gerätebereinigung gilt als abgeschlossen, wenn der Auftragsprotokollbericht im Azure-Portal verfügbar ist.|
 
 

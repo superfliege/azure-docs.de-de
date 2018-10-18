@@ -3,8 +3,8 @@ title: Löschen eines Azure CDN-Endpunkts | Microsoft Docs
 description: Erfahren Sie, wie alle zwischengespeicherten Inhalte aus einem Azure CDN-Endpunkt gelöscht werden.
 services: cdn
 documentationcenter: ''
-author: zhangmanling
-manager: erikre
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: mazha
-ms.openlocfilehash: 262a8f7385ba5f74d21991772599540260a145fc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: magattus
+ms.openlocfilehash: a3777533fc967e1974b99375496dd3777fa9fb3a
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765165"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093849"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Löschen eines Azure CDN-Endpunkts
 ## <a name="overview"></a>Übersicht

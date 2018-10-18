@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
 ms.topic: overview
 ms.date: 05/07/2018
-ms.openlocfilehash: 634abb107ce3578de4baccdfdec2c5bdde166f11
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 840ade08f7dffb23beb9541da63855c4ead374e7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668291"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386997"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Was sind Azure HDInsight und der Hadoop-Technologiestapel?
 
@@ -117,13 +117,13 @@ HDInsight-Cluster, z.B. Spark, HBase, Kafka, Hadoop und andere, unterstützen vi
 ## <a name="development-tools-for-hdinsight"></a>Entwicklungstools für HDInsight 
 Sie können HDInsight-Entwicklungstools wie IntelliJ, Eclipse, Visual Studio Code und Visual Studio verwenden, um HDInsight-Datenabfragen und -aufträge zu erstellen und zu übermitteln – mit nahtloser Integration in Azure.
 
-* [Azure-Toolkit für IntelliJ](https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-intellij-tool-plugin)
+* [Azure-Toolkit für IntelliJ](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin)
 
-* [Azure-Toolkit für Eclipse](https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin)
+* [Azure-Toolkit für Eclipse](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin)
 
-* [Azure HDInsight-Tools für VS Code](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-for-vscode?branch=pr-en-us-22999)
+* [Azure HDInsight-Tools für VS Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode?branch=pr-en-us-22999)
 
-* [Azure Data Lake-Tools für Visual Studio](https://docs.microsoft.com/en-us/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started)
+* [Azure Data Lake-Tools für Visual Studio](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started)
 
 ## <a name="business-intelligence-on-hdinsight"></a>Business Intelligence in HDInsight
 Bekannte Business Intelligence-Tools (BI) rufen Daten, die in HDInsight integriert sind, entweder über das Power Query-Add-In oder den Microsoft Hive ODBC-Treiber ab, analysieren sie und erstellen Berichte:

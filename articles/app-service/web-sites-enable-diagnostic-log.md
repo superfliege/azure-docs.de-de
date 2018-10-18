@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 37b11eea5c37103c0bc296a5f466658fbc77ed24
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 5cd56abd02c55dbf72c92ed070f9988fae2b6762
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145404"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365253"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -82,7 +82,7 @@ Sie können gleichzeitig eine Kombination aus Dateisystem-, Tabellen- und BLOB-S
 Obwohl alle drei Speicherorte dieselben grundlegenden Informationen zu protokollierten Ereignissen bieten, zeichnen **Table Storage** und **Blob Storage** mehr Informationen, wie Instanz-ID, Thread-ID und einen ausführlicheren Zeitstempel (Tick-Format), als die Protokollierung im **Dateisystem** auf.
 
 > [!NOTE]
-> In **Table Storage** oder **Blob Storage** gespeicherte Informationen können nur über Storage-Clients oder Anwendungen aufgerufen werden, die direkt mit diesen Speichersystemen arbeiten. Beispielsweise enthält Visual Studio 2013 einen Storage-Explorer, mit dem Table Storage oder Blob Storage erkundet werden können, und HDInsight kann auf die in Blob Storage gespeicherten Daten zugreifen. Sie können auch mithilfe der [Azure SDKs](https://azure.microsoft.com/en-us/downloads/)eine Anwendung schreiben, die auf den Azure-Speicher zugreift.
+> In **Table Storage** oder **Blob Storage** gespeicherte Informationen können nur über Storage-Clients oder Anwendungen aufgerufen werden, die direkt mit diesen Speichersystemen arbeiten. Beispielsweise enthält Visual Studio 2013 einen Storage-Explorer, mit dem Table Storage oder Blob Storage erkundet werden können, und HDInsight kann auf die in Blob Storage gespeicherten Daten zugreifen. Sie können auch mithilfe der [Azure SDKs](https://azure.microsoft.com/downloads/)eine Anwendung schreiben, die auf den Azure-Speicher zugreift.
 >
 > [!NOTE]
 > Diagnosen können auch über die Azure PowerShell mit dem Cmdlet **Set-AzureWebsite** aktiviert werden. Wenn Sie Azure PowerShell nicht installiert haben oder nicht zur Verwendung des Azure-Abonnements konfiguriert haben, finden Sie weitere Informationen unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
@@ -211,7 +211,7 @@ Beispielsweise würde ein Fehlerereignis in etwa wie im folgenden Beispiel ausse
 
 Bei der Protokollierung im Dateisystem erhalten Sie nur die grundlegendsten Informationen der drei verfügbaren Methoden, nämlich Zeit, Prozess-ID, Ereignisebene und Meldung.
 
-**Table Storage**
+**Tabellenspeicherung**
 
 Bei der Protokollierung im Tabellenspeicher werden zusätzliche Eigenschaften verwendet, um die Suche nach Daten in der Tabelle zu erleichtern und ausführlichere Informationen zum Ereignis anzugeben. Die folgenden Eigenschaften (Spalten) werden für jedes Element (Zeile) in der Tabelle angegeben.
 
@@ -229,7 +229,7 @@ Bei der Protokollierung im Tabellenspeicher werden zusätzliche Eigenschaften ve
 | Tid |Thread-ID des Threads, der das Ereignis erzeugt hat |
 | Message |Meldung zu den Ereignisdetails |
 
-**Blob Storage**
+**Blob-Speicher**
 
 Bei der Protokollierung in einem Blob-Speicher werden die Daten im CSV-Format (durch Kommas getrennte Werte) gespeichert. Ähnlich wie beim Tabellenspeicher werden zusätzliche Felder protokolliert, um ausführlichere Informationen zum Ereignis anzugeben. Die folgenden Eigenschaften werden für jede Zeile in der CSV-Datei angegeben:
 
