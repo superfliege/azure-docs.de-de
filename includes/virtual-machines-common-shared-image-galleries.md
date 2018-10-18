@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 6a64d85cc476c7494a1730959b96e9480115cd90
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 56f48f6676b3c878effe788316024e642c17ff5a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046366"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400341"
 ---
 Katalog mit geteilten Images ist ein Dienst, der Ihnen hilft, Ihre benutzerdefinierten VM-Images zu strukturieren und organisieren. Der Katalog mit geteilten Images bietet drei Hauptwertbeiträge
 - Einfache Verwaltung
@@ -146,7 +146,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 
 **F.** Kann ich eine Imageversion von einem speziellen Datenträger erstellen?
 
- A. Nein, zurzeit unterstützen wir keine speziellen Datenträger als Images. Wenn Sie einen speziellen Datenträger haben, müssen Sie [einen virtuellen Computers aus der VHD erstellen](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk), indem Sie den speziellen Datenträger einem neuen virtuellen Computer anfügen. Nachdem Sie einen virtuellen Computer haben, der ausgeführt wird, müssen Sie die Anweisungen befolgen, um ein verwaltetes Image aus der [Windows-VM] (https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-custom-images) oder [Linux-VM](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-custom-images)) zu erstellen. Nachdem Sie ein generalisiertes, verwaltetes Image haben, können Sie den Prozess zum Erstellen einer geteilten Imagebeschreibung und Imageversion starten.
+ A. Nein, zurzeit unterstützen wir keine speziellen Datenträger als Images. Wenn Sie einen speziellen Datenträger haben, müssen Sie [einen virtuellen Computers aus der VHD erstellen](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk), indem Sie den speziellen Datenträger einem neuen virtuellen Computer anfügen. Nachdem Sie einen virtuellen Computer haben, der ausgeführt wird, müssen Sie die Anweisungen befolgen, um ein verwaltetes Image aus der [Windows-VM] (https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) oder [Linux-VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)) zu erstellen. Nachdem Sie ein generalisiertes, verwaltetes Image haben, können Sie den Prozess zum Erstellen einer geteilten Imagebeschreibung und Imageversion starten.
 
 
 **F.** Kann ich einen Katalog mit geteilten Images, eine Imagedefinition und eine Imageversion über das Azure-Portal erstellen?
