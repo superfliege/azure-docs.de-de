@@ -11,26 +11,36 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 07/24/2018
+ms.date: 09/07/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: de1d29d3ab1b370257c3a2d6b6ff9f677197fc2a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190175"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303063"
 ---
 # <a name="email-notifications-in-pim"></a>E-Mail-Benachrichtigungen in PIM
 
-Wenn in Azure AD Privileged Identity Management (PIM) wichtige Ereignisse auftreten, werden E-Mail-Benachrichtigungen an den entsprechenden Administrator oder Benutzer gesendet. PIM sendet E-Mail-Benachrichtigungen z.B. bei folgenden Ereignissen:
+Wenn in Azure AD Privileged Identity Management (PIM) wichtige Ereignisse auftreten, werden E-Mail-Benachrichtigungen gesendet. PIM sendet E-Mail-Benachrichtigungen z.B. bei folgenden Ereignissen:
 
 - Wenn die Genehmigung für die Aktivierung einer privilegierten Rolle aussteht
-- Wenn die Aktivierung einer privilegierten Rolle genehmigt wird
+- Wenn die Aktivierungsanforderung einer privilegierten Rolle abgeschlossen wird
 - Wenn eine privilegierte Rolle aktiviert wird
 - Wenn eine privilegierte Rolle zugewiesen wird
 - Wenn Azure AD PIM aktiviert wird
+
+E-Mail-Benachrichtigungen werden an die folgenden Administratoren gesendet:
+
+- Administrator für privilegierte Rollen
+- Sicherheitsadministrator
+
+E-Mail-Benachrichtigungen werden auch an den Endbenutzer gesendet, der die privilegierte Rolle für die folgenden Ereignisse hat:
+
+- Wenn die Aktivierungsanforderung einer privilegierten Rolle abgeschlossen wird
+- Wenn eine privilegierte Rolle zugewiesen wird
 
 Ab Ende Juli 2018 weisen über PIM versendete E-Mail-Benachrichtigungen eine neue Absender-E-Mail-Adresse und ein neues Layout auf. Dieses Update wirkt sich sowohl auf PIM für Azure AD als auch auf PIM für Azure-Ressourcen aus. Bei allen Ereignissen, die zuvor eine E-Mail-Benachrichtigung ausgelöst haben, wird auch weiterhin eine gesendet. Einige E-Mails werden über aktualisierten Inhalt verfügen, der gezieltere Informationen bietet.
 

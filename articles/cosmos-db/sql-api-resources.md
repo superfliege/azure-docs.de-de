@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ba02e7760d7400b5168a902415f16c4b276b3a7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 0869881ace689d12272affb38d3689965e107e8f
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287952"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050931"
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Hierarchisches Azure Cosmos DB-Ressourcenmodell und zentrale Konzepte
 
@@ -214,7 +214,7 @@ Aufgrund seiner direkt in der Datenbank-Engine verankerten starken Bindung an Ja
 * Effiziente Implementierung der Nebenläufigkeitssteuerung, Wiederherstellung und automatischen Indizierung der JSON-Objektdiagramme direkt in der Datenbank-Engine
 * Natürliches Ausdrücken des Steuerungsablaufs, der Festlegung von Variablen, der Zuweisung und der Integration von Grundtypen zur Ausnahmeverarbeitung direkt mit Datenbanktransaktionen (im Sinne der JavaScript-Programmiersprache)
 
-Die auf Sammlungsebene registrierte JavaScript-Logik kann dann Datenbankvorgänge für die Dokumente der angegebenen Sammlung auslösen. Die auf JavaScript basierten gespeicherten Prozeduren und Trigger von Azure Cosmos DB werden implizit in eine umgebende ACID-Transaktion eingefasst, die die Momentaufnahmenisolation zwischen den Dokumenten in einer Sammlung einbezieht. Während des Ausführungsverlaufs wird die gesamte Transaktion abgebrochen, wenn JavaScript eine Ausnahme auslöst. Das sich ergebende Programmiermodell ist einfach, aber dennoch leistungsstark. JavaScript-Entwickler erhalten ein "beständiges" Programmiermodell, während sie weiterhin ihre vertrauten Sprachkonstruktr und Bibliotheksstammfunktionen verwenden können.   
+Die auf Sammlungsebene registrierte JavaScript-Logik kann dann Datenbankvorgänge für die Dokumente der angegebenen Sammlung auslösen. Die auf JavaScript basierten gespeicherten Prozeduren und Trigger von Azure Cosmos DB werden implizit in eine umgebende ACID-Transaktion eingefasst, die die Momentaufnahmenisolation zwischen den Dokumenten in einer Sammlung einbezieht. Während des Ausführungsverlaufs wird die gesamte Transaktion abgebrochen, wenn JavaScript eine Ausnahme auslöst. Das sich ergebende Programmiermodell ist einfach, aber dennoch leistungsstark. JavaScript-Entwickler erhalten ein „beständiges“ Programmiermodell, während sie weiterhin ihre vertrauten Sprachkonstrukte und Bibliotheksstammfunktionen verwenden können.   
 
 Die Möglichkeit zur direkten Ausführung von JavaScript innerhalb der Datenbank-Engine im gleichen Adressraum wie der Pufferpool gestattet die leistungsfähige und transaktionale Ausführung von Datenbankvorgängen für die Dokumente einer Sammlung. Des Weiteren werden alle Impedanzabweichungen zwischen den Typsystemen von Anwendung und Datenbank aufgrund der starken Bindung der Cosmos DB-Datenbank-Engine an JSON und JavaScript beseitigt.   
 
@@ -267,7 +267,7 @@ Der Client kann die obige JavaScript-Logik zur transaktionalen Ausführung über
         });
 
 
-Beachten Sie, dass kein Typsystemkonflikt vorliegt und keine "OR-Zuordnung" oder trickreiche Codegenerierungsmethode erforderlich ist, da die Datenbank JSON und JavaScript systemintern verarbeiten kann.   
+Beachten Sie, dass kein Typsystemkonflikt vorliegt und keine „OR-Zuordnung“ oder komplexe Codegenerierungsmethode erforderlich ist, da die Datenbank JSON und JavaScript nativ verarbeiten kann.   
 
 Gespeicherte Prozeduren und Trigger interagieren über ein klar definiertes Objektmodell, das den aktuellen Sammlungskontext offenlegt, mit einer Sammlung und den Dokumenten in einer Sammlung.  
 

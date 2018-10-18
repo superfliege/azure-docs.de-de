@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4ae5adaf37f49e9909fa80fd31f088ed6ee1b081
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 91b5c2c23445e5cd3445d1d5b640cb3ecb8e5e7a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450440"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301190"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatisieren von Application Insights-Prozessen mithilfe von Logic Apps
 
@@ -25,7 +25,7 @@ Ertappen Sie sich dabei, wie Sie wiederholt dieselben Abfragen von Ihren Telemet
 
 Mit dieser Integration können Sie zahlreiche Prozesse automatisieren, ohne eine einzige Codezeile zu schreiben. Mit dem Application Insights-Connector können Sie Logik-Apps erstellen und schnell beliebige Application Insights-Prozesse automatisieren. 
 
-Sie können auch weitere Aktionen hinzufügen. Das Logic Apps-Feature von Azure App Service ermöglicht Hunderte von Aktionen. So können Sie mit einer Logik-App beispielsweise automatisch eine E-Mail-Benachrichtigung senden oder einen Fehler in Visual Studio Team Services protokollieren. Darüber hinaus können Sie eine der zahlreichen verfügbaren [Vorlagen](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) verwenden, um die Erstellung Ihrer Logik-App zu beschleunigen. 
+Sie können auch weitere Aktionen hinzufügen. Das Logic Apps-Feature von Azure App Service ermöglicht Hunderte von Aktionen. So können Sie mit einer Logik-App beispielsweise automatisch eine E-Mail-Benachrichtigung senden oder einen Fehler in Azure DevOps protokollieren. Darüber hinaus können Sie eine der zahlreichen verfügbaren [Vorlagen](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) verwenden, um die Erstellung Ihrer Logik-App zu beschleunigen. 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Erstellen einer Logik-App für Application Insights
 

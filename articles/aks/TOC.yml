@@ -158,7 +158,7 @@ items:
       href: kube-advisor-tool.md
     - name: SSH-Knotenzugriff
       href: ssh.md
-- name: Verweis
+- name: Referenz
   items:
   - name: Azure-Befehlszeilenschnittstelle
     href: /cli/azure/aks

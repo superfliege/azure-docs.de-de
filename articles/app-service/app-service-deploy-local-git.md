@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: f461a9a7cc900ce5f8fdba7b255417b1790d3f4d
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: ae8739a65efbe7662a8f72e961d772fecaf4b527
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140981"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303693"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
 
@@ -101,10 +101,10 @@ Die Ausgabe enthält u.U. laufzeitspezifische Automatisierungen wie MSBuild für
 
 Navigieren Sie zu Ihrer App, um sicherzustellen, dass der Inhalt bereitgestellt wird.
 
-## <a name="deploy-from-local-git-with-vsts-builds"></a>Bereitstellen von einem lokalen Git mit VSTS-Builds
+## <a name="deploy-from-local-git-with-azure-devops-services-builds"></a>Bereitstellen über lokales Git mit Azure DevOps-Services-Builds
 
 > [!NOTE]
-> Damit App Service die erforderlichen Build- und Releasedefinitionen in Ihrem VSTS-Konto erstellt, muss Ihr Azure-Konto die Rolle **Besitzer** in Ihrem Azure-Abonnement aufweisen.
+> Damit App Service die erforderlichen Azure-Pipelines in Ihrer Azure DevOps Services-Organisation erstellt, muss Ihr Azure-Konto die Rolle **Besitzer** in Ihrem Azure-Abonnement aufweisen.
 >
 
 Zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver navigieren Sie zu Ihrer App im [Azure-Portal](https://portal.azure.com).
@@ -113,14 +113,14 @@ Klicken Sie im linken Navigationsbereich Ihrer App-Seite auf **Bereitstellungsce
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-Klicken Sie auf **Continuous Delivery mit VSTS** > **Weiter**.
+Klicken Sie auf **Azure DevOps Services Continuous Delivery** > **Weiter**.
 
 ![](media/app-service-deploy-local-git/vsts-build-server.png)
 
-Konfigurieren Sie auf der Seite **Konfigurieren** ein neues VSTS-Konto, oder geben Sie ein vorhandenes Konto an. Klicken Sie abschließend auf **Weiter**.
+Konfigurieren Sie auf der Seite **Konfigurieren** eine neue Azure DevOps Services-Organisation, oder geben Sie eine vorhandene Organisation an. Klicken Sie abschließend auf **Weiter**.
 
 > [!NOTE]
-> Wenn Sie ein vorhandenes VSTS-Konto verwenden möchten, das nicht aufgeführt wird, müssen Sie das [VSTS-Konto mit Ihrem Azure-Abonnement verknüpfen](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Wenn Sie eine vorhandene Azure DevOps Services-Organisation verwenden möchten, die nicht aufgeführt ist, müssen Sie [die Azure DevOps Services-Organisation mit Ihrem Azure-Abonnement verknüpfen](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 Wählen Sie auf der Seite **Test** aus, ob Auslastungstests aktiviert werden sollen, und klicken Sie dann auf **Weiter**.
 
@@ -128,7 +128,7 @@ Abhängig vom [Tarif](https://azure.microsoft.com/pricing/details/app-service/pl
 
 Überprüfen Sie auf der Seite **Zusammenfassung** die Optionen, und klicken Sie dann auf **Fertig stellen**.
 
-Es dauert einige Minuten, bis das VSTS-Konto betriebsbereit ist. Sobald dies der Fall ist, kopieren Sie die Git-Repository-URL in das Bereitstellungscenter.
+Es dauert einige Minuten, bis die Azure DevOps Services-Organisation bereit ist. Sobald dies der Fall ist, kopieren Sie die Git-Repository-URL in das Bereitstellungscenter.
 
 ![](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
@@ -138,7 +138,7 @@ Kehren Sie zum _lokalen Terminalfenster_ zurück, und fügen Sie Ihrem lokalen G
 git remote add vsts <url>
 ```
 
-Führen Sie einen Pushvorgang zum Azure-Remotespeicherort durch, um Ihre App mit dem folgenden Befehl bereitzustellen. Melden Sie sich nach Aufforderung durch die Git-Anmeldeinformationsverwaltung mit Ihrem visualstudio.com-Benutzerkonto an. Zusätzliche Authentifizierungsmethoden finden Sie in der [Übersicht zur VSTS-Authentifizierung](/vsts/git/auth-overview?view=vsts).
+Führen Sie einen Pushvorgang zum Azure-Remotespeicherort durch, um Ihre App mit dem folgenden Befehl bereitzustellen. Melden Sie sich nach Aufforderung durch die Git-Anmeldeinformationsverwaltung mit Ihrem visualstudio.com-Benutzerkonto an. Zusätzliche Authentifizierungsmethoden finden Sie in der [Übersicht über die Azure DevOps Services-Authentifizierung](/vsts/git/auth-overview?view=vsts).
 
 ```bash
 git push vsts master

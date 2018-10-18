@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: dc70a20667db7e59f0fe77ec4d84831cfb7e75a5
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d1d17ff331d3e770b77ce729904e57cf88ebc16c
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617217"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348567"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
@@ -51,7 +51,7 @@ Jeder Knotentyp ist eine separate Skalierungsgruppe und kann einzeln zentral hoc
 
 Ein Service Fabric-Cluster kann mehrere Knotentypen enthalten. In diesem Fall besteht der Cluster aus einem primären Knotentyp und einem oder mehreren nicht primären Knotentypen.
 
-Ein einzelner Knotentyp kann nicht ohne Weiteres 100 Knoten pro VM-Skalierungsgruppe überschreiten. Sie müssen ggf. VM-Skalierungsgruppen hinzufügen, um die angestrebte Skalierung zu erreichen. Außerdem können über die automatische Skalierung keine VM-Skalierungsgruppen hinzugefügt werden. Das Hinzufügen von VM-Skalierungsgruppen zu einem aktiven Cluster ist eine anspruchsvolle Aufgabe, die in der Regel dazu führt, dass Benutzer neue Cluster mit den entsprechenden Knotentypen bereitstellen, die zum Zeitpunkt der Erstellung bereitgestellt werden. 
+Ein einzelner Knotentyp kann nicht zuverlässig auf mehr als 100 Knoten pro VM-Skalierungsgruppe für Service Fabric-Anwendungen skaliert werden. Um zuverlässig mehr als 100 Knoten zu erreichen, müssen Sie weitere VM-Skalierungsgruppen hinzufügen.
 
 ### <a name="primary-node-type"></a>Primärer Knotentyp
 

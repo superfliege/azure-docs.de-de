@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/20/2017
-ms.author: mbullwin; aruna
-ms.openlocfilehash: 53a4d7fe1d92826b92866e170fd731edbd5ba1bf
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: aruna
+ms.author: mbullwin
+ms.openlocfilehash: 016d13a08ea3fe591529ad6dd29b25534d9c603d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869545"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303743"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Versionshinweise für Developer Analytics Tools
 
@@ -193,7 +194,7 @@ Das Dialogfeld für den HockeyApp-Upload wird geöffnet. Es ähnelt dem Dialogfe
 
 Beachten Sie, dass dieser Assistent ein neues Feld zum Angeben der App-Version enthält. Für universelle Windows-Apps werden die Informationen aus dem Manifest eingefügt. Für Windows Forms-Apps ist leider keine Funktion dieser Art vorhanden. Sie müssen die Informationen manuell angeben.
 
-Der Rest des Ablaufs ähnelt dem Ablauf für universelle Windows-Apps: Build und Optionen für die Veröffentlichung auswählen, Versionshinweise hinzufügen, Daten hochladen und die Verwaltung im HockeyApp-Portal durchführen.
+Der Rest des Ablaufs ähnelt dem Ablauf für universelle Windows-Apps: Auswählen von Azure Pipelines-Optionen, Hinzufügen von Versionshinweisen, Hochladen von Daten und Verwalten im HockeyApp-Portal.
 
 So einfach ist dieser Vorgang. Probieren Sie es aus, und teilen Sie uns Ihre Meinung mit.
 

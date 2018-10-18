@@ -2,24 +2,20 @@
 title: Azure Functions Runtime-Installation | Microsoft-Dokumentation
 description: Installieren der Vorschauversion 2 der Azure Functions-Laufzeit
 services: functions
-documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: ''
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: f8ce27bf28f73818932f2ac9056d4fdd573679e8
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 1ad1d2c74be97afcb62f3f8e8161111f4938f645
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
-ms.locfileid: "26290656"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093667"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Installieren der Vorschauversion 2 der Azure Functions-Laufzeit
 
@@ -54,7 +50,6 @@ Das Installationsprogramm für die Vorschauversion von Azure Functions Runtime f
     ![Installationsprogramm für die Vorschauversion der Azure Functions-Laufzeit][1]
 
 1. Klicken Sie auf **Weiter**.
-
 1. Nachdem Sie die **Lizenzbedingungen** gelesen haben, **aktivieren Sie das Kontrollkästchen** zum Akzeptieren der Lizenzbedingungen, und klicken Sie auf **Weiter**, um fortzufahren.
 1. Wählen Sie die Rollen aus, die Sie auf diesem Computer installieren möchten: **Functions-Verwaltungsrolle** und/oder **Functions-Workerrolle**. Klicken Sie dann auf **Weiter**.
 
@@ -107,7 +102,7 @@ Zum Abschließen der Installation der Azure Functions-Laufzeit müssen Sie die K
 
 So erstellen Sie Ihre erste Funktion in der Vorschauversion der Azure Functions-Laufzeit
 
-1. Navigieren Sie zum **Portal für die Azure Functions-Laufzeit** unter „https://<machinename>.<domain>“. Beispiel: „https://mycomputer.mydomain.com“.
+1. Navigieren Sie zum **Portal für die Azure Functions-Laufzeit** unter „https://<machinename>.<domain>“. Beispiel: https://mycomputer.mydomain.com
 1. Sie werden zur **Anmeldung** aufgefordert. Wenn Sie in einer Domäne bereitgestellt werden, verwenden Sie Ihren Benutzernamen und das zugehörige Kennwort für das Domänenkonto. Andernfalls verwenden Sie Ihren Benutzernamen und das Kennwort für Ihr lokales Konto, um sich am Portal anzumelden.
 
 ![Anmeldung am Portal für die Vorschauversion der Azure Functions-Laufzeit][14]

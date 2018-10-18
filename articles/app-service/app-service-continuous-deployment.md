@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 4d3f1c66c6403720bf02c80af1d6833dc3cee3f1
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: bd440e0ef017e2bf116e80ad049883e2338efddb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140955"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298946"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
-Dieser Artikel veranschaulicht das Konfigurieren von Continuous Deployment für [Azure App Service](app-service-web-overview.md). App Service ermöglicht Continuous Deployment aus BitBucket, GitHub und [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) durch Pullen der neuesten Updates aus Ihrem vorhandenen Repository in einen dieser Dienste.
+Dieser Artikel veranschaulicht das Konfigurieren von Continuous Deployment für [Azure App Service](app-service-web-overview.md). App Service ermöglicht Continuous Deployment aus Bitbucket, GitHub und [Azure DevOps Services](https://www.visualstudio.com/team-services/) durch Pullen der neuesten Updates aus Ihrem vorhandenen Repository in einen dieser Dienste.
 
 Informationen zum manuellen Konfigurieren von Continuous Deployment in einem Cloudrepository, das nicht im Azure-Portal aufgeführt wird, (etwa [GitLab](https://gitlab.com/)), finden Sie unter [Setting up continuous deployment using manual steps](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps) (Manuelles Einrichten von Continuous Deployment).
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-Veröffentlichen Sie Ihr vorbereitetes Repository in einem der unterstützten Dienste. Weitere Informationen zum Veröffentlichen Ihres Projekts in einem dieser Dienste finden Sie unter [Erstellen eines Repositorys (GitHub)], [Erstellen eines Repositorys (BitBucket)] und [Erste Schritte mit VSTS].
+Veröffentlichen Sie Ihr vorbereitetes Repository in einem der unterstützten Dienste. Weitere Informationen zum Veröffentlichen Ihres Projekts in einem dieser Dienste finden Sie unter [Erstellen eines Repositorys (GitHub)], [Erstellen eines Repositorys (Bitbucket)] und [Erste Schritte mit Azure DevOps Services].
 
 ## <a name="deploy-continuously-from-github"></a>Continuous Deployment aus GitHub
 
@@ -45,20 +45,20 @@ Wählen Sie auf der Seite **Buildanbieter** den Buildanbieter aus, und klicken S
 
 ### <a name="option-1-use-app-service-kudu-build-server"></a>Option 1: Verwenden des App Service-Kudu-Buildservers
 
-Wählen Sie auf der Seite **Konfigurieren** die Organisation, das Repository und den Branch aus, aus dem Continuous Deployment erfolgen soll. Klicken Sie auf **Weiter**, wenn Sie fertig sind.
+Wählen Sie auf der Seite **Konfigurieren** die Organisation, das Repository und den Branch aus, aus dem Continuous Deployment erfolgen soll. Klicken Sie abschließend auf **Weiter**.
 
-### <a name="option-2-use-vsts-continuous-delivery"></a>Option 2: Verwenden von Continuous Delivery mit VSTS
+### <a name="option-2-use-azure-devops-services-continuous-delivery"></a>Option 2: Verwenden von Continuous Delivery in Azure DevOps Services
 
 > [!NOTE]
-> Damit App Service die erforderlichen Build- und Releasedefinitionen in Ihrem VSTS-Konto erstellt, muss Ihr Azure-Konto die Rolle **Besitzer** in Ihrem Azure-Abonnement aufweisen.
+> Damit App Service die erforderlichen Azure-Pipelines in Ihrer Azure DevOps Services-Organisation erstellt, muss Ihr Azure-Konto die Rolle **Besitzer** in Ihrem Azure-Abonnement aufweisen.
 >
 
-Wählen Sie auf der Seite **Konfigurieren** im Abschnitt **Code** die Organisation, das Repository und den Branch aus, aus dem Continuous Deployment erfolgen soll. Klicken Sie auf **Weiter**, wenn Sie fertig sind.
+Wählen Sie auf der Seite **Konfigurieren** im Abschnitt **Code** die Organisation, das Repository und den Branch aus, aus dem Continuous Deployment erfolgen soll. Klicken Sie abschließend auf **Weiter**.
 
-Konfigurieren Sie auf der Seite **Konfigurieren** im Abschnitt **Build** ein neues VSTS-Konto, oder geben Sie ein vorhandenes Konto an. Klicken Sie auf **Weiter**, wenn Sie fertig sind.
+Konfigurieren Sie auf der Seite **Konfigurieren** im Abschnitt **Build** eine neue Azure DevOps Services-Organisation, oder geben Sie eine vorhandene Organisation an. Klicken Sie abschließend auf **Weiter**.
 
 > [!NOTE]
-> Wenn Sie ein vorhandenes VSTS-Konto verwenden möchten, das nicht aufgeführt wird, müssen Sie das [VSTS-Konto mit Ihrem Azure-Abonnement verknüpfen](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Wenn Sie eine vorhandene Azure DevOps Services-Organisation verwenden möchten, die nicht aufgeführt ist, müssen Sie [die Azure DevOps Services-Organisation mit Ihrem Azure-Abonnement verknüpfen](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 Wählen Sie auf der Seite **Test** aus, ob Auslastungstests aktiviert werden sollen, und klicken Sie dann auf **Weiter**.
 
@@ -90,11 +90,11 @@ Wählen Sie auf der Seite **Konfigurieren** das Repository und den Branch aus, a
 
 Wenn die Konfiguration abgeschlossen ist, werden neue Commits im ausgewählten Repository mithilfe von Continuous Deployment in Ihrer App Service-App bereitgestellt.
 
-## <a name="deploy-continuously-from-vsts"></a>Continuous Deployment aus VSTS
+## <a name="deploy-continuously-from-azure-devops-services"></a>Continuous Deployment von Azure DevOps Services
 
-Um Continuous Deployment mit VSTS zu aktivieren, navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer App Service-App-Seite.
+Um Continuous Deployment mit Azure DevOps Services zu aktivieren, navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer App Service-App-Seite.
 
-Klicken Sie im linken Menü auf **Bereitstellungscenter** > **VSTS** > **Weiter**. 
+Klicken Sie im linken Menü auf **Bereitstellungscenter** > **Azure DevOps Services** > **Weiter**. 
 
 ![](media/app-service-continuous-deployment/vsts-choose-source.png)
 
@@ -102,20 +102,20 @@ Wählen Sie auf der Seite **Buildanbieter** den Buildanbieter aus, und klicken S
 
 ### <a name="option-1-use-app-service-kudu-build-server"></a>Option 1: Verwenden des App Service-Kudu-Buildservers
 
-Wählen Sie auf der Seite **Konfigurieren** das VSTS-Konto, das Projekt, das Repository und den Branch aus, aus dem Continuous Deployment erfolgen soll. Klicken Sie auf **Weiter**, wenn Sie fertig sind.
+Wählen Sie auf der Seite **Konfigurieren** die Azure DevOps Services-Organisation, das Projekt, das Repository und den Branch aus, aus dem Continuous Deployment erfolgen soll. Klicken Sie abschließend auf **Weiter**.
 
-### <a name="option-2-use-vsts-continuous-delivery"></a>Option 2: Verwenden von Continuous Delivery mit VSTS
+### <a name="option-2-use-azure-devops-services-continuous-delivery"></a>Option 2: Verwenden von Continuous Delivery in Azure DevOps Services
 
 > [!NOTE]
-> Damit App Service die erforderlichen Build- und Releasedefinitionen in Ihrem VSTS-Konto erstellt, muss Ihr Azure-Konto die Rolle **Besitzer** in Ihrem Azure-Abonnement aufweisen.
+> Damit App Service die erforderlichen Azure-Pipelines in Ihrer Azure DevOps Services-Organisation erstellt, muss Ihr Azure-Konto die Rolle **Besitzer** in Ihrem Azure-Abonnement aufweisen.
 >
 
-Wählen Sie auf der Seite **Konfigurieren** im Abschnitt **Code** das VSTS-Konto, das Projekt, das Repository und den Branch aus, aus dem Continuous Deployment erfolgen soll. Klicken Sie auf **Weiter**, wenn Sie fertig sind.
+Wählen Sie auf der Seite **Konfigurieren** im Abschnitt **Code** die Azure DevOps Services-Organisation, das Projekt, das Repository und den Branch aus, aus dem Continuous Deployment erfolgen soll. Klicken Sie abschließend auf **Weiter**.
 
 > [!NOTE]
-> Wenn Sie ein vorhandenes VSTS-Konto verwenden möchten, das nicht aufgeführt wird, müssen Sie das [VSTS-Konto mit Ihrem Azure-Abonnement verknüpfen](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Wenn Sie eine vorhandene Azure DevOps Services-Organisation verwenden möchten, die nicht aufgeführt ist, müssen Sie [die Azure DevOps Services-Organisation mit Ihrem Azure-Abonnement verknüpfen](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
-Geben Sie auf der Seite **Konfigurieren** im Abschnitt **Build** das Sprachframework an, das VSTS zum Ausführen der Buildtasks für Ihr ausgewähltes Repository verwenden soll. Klicken Sie auf **Weiter**, wenn Sie fertig sind.
+Geben Sie auf der Seite **Konfigurieren** im Abschnitt **Build** das Sprachframework an, das Azure DevOps Services zum Ausführen der Buildtasks für Ihr ausgewähltes Repository verwenden soll. Klicken Sie abschließend auf **Weiter**.
 
 Wählen Sie auf der Seite **Test** aus, ob Auslastungstests aktiviert werden sollen, und klicken Sie dann auf **Weiter**.
 
@@ -131,7 +131,7 @@ Wenn die Konfiguration abgeschlossen ist, werden neue Commits im ausgewählten R
 
 Um Continuous Deployment zu deaktivieren, navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer App Service-App-Seite.
 
-Klicken Sie im linken Menü auf **Bereitstellungscenter** > **GitHub** oder **VSTS** oder **BitBucket** > **Trennen**.
+Klicken Sie im linken Menü auf **Bereitstellungscenter** > **GitHub** oder **Azure DevOps Services** oder **Bitbucket** > **Trennen**.
 
 ![](media/app-service-continuous-deployment/disable.png)
 
@@ -153,4 +153,4 @@ Klicken Sie im linken Menü auf **Bereitstellungscenter** > **GitHub** oder **VS
 
 [Erstellen eines Repositorys (GitHub)]: https://help.github.com/articles/create-a-repo
 [Erstellen eines Repositorys (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
-[Erste Schritte mit VSTS]: https://www.visualstudio.com/docs/vsts-tfs-overview
+[Erste Schritte mit Azure DevOps Services]: https://www.visualstudio.com/docs/vsts-tfs-overview

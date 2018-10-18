@@ -2,24 +2,20 @@
 title: Arbeiten mit Proxys in Azure Functions | Microsoft-Dokumentation
 description: Übersicht zum Verwenden von Azure Functions-Proxys
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 0e7fe474c3b247baa6550770c661af62e83b3737
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2aa8036149f4056f2d197f0712b86104f5cf2215
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "29933774"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095044"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -37,8 +33,8 @@ In diesem Abschnitt erfahren Sie, wie Sie einen Proxy im Functions-Portal erstel
 1. Öffnen Sie das [Azure-Portal], und navigieren Sie dann zu Ihrer Funktionen-App.
 2. Wählen Sie im linken Bereich **Neuer Proxy** aus.
 3. Geben Sie einen Namen für Ihren Proxy an.
-4. Konfigurieren Sie den in dieser Funktionen-App verfügbar gemachten Endpunkt durch Angeben von **Routenvorlage** und **HTTP-Methoden**. Diese Parameter verhalten sich entsprechend den Regeln für [HTTP-Triggern].
-5. Legen Sie für die **Back-End-URL** einen anderen Endpunkt fest. Dieser Endpunkt könnte eine Funktion in einer anderen Funktionen-App oder eine beliebige andere API sein. Der Wert muss nicht statisch sein und kann auf [Anwendungseinstellungen] und [Parameter aus der ursprünglichen Clientanforderung] verweisen.
+4. Konfigurieren Sie den in dieser Funktionen-App verfügbar gemachten Endpunkt durch Angeben von **Routenvorlage** und **HTTP-Methoden**. Diese Parameter verhalten sich entsprechend den Regeln für [HTTP-Trigger].
+5. Legen Sie für die **Back-End-URL** einen anderen Endpunkt fest. Dieser Endpunkt könnte eine Funktion in einer anderen Funktionen-App oder eine beliebige andere API sein. Der Wert muss nicht statisch sein und kann auf [Anwendungseinstellungen] und [Parameter von der ursprünglichen Clientanforderung] verweisen.
 6. Klicken Sie auf **Create**.
 
 Ihr Proxy ist jetzt als neuer Endpunkt in Ihrer Funktionen-App vorhanden. Aus Sicht eines Clients entspricht dies einem HttpTrigger in Azure Functions. Sie können Ihren neuen Proxy ausprobieren, indem Sie die Proxy-URL kopieren und mit Ihrem bevorzugten HTTP-Client testen.
@@ -49,13 +45,13 @@ Mit Azure Functions-Proxys können Sie Anforderungen an und Antworten vom Back-E
 
 ### <a name="modify-backend-request"></a>Ändern der Back-End-Anforderung
 
-Standardmäßig wird die Back-End-Anforderung als Kopie der ursprünglichen Anforderung initialisiert. Zusätzlich zum Festlegen der Back-End-URL können Sie die HTTP-Methode, Header und Abfragezeichenfolgen-Parameter ändern. Die geänderten Werte können auf [Anwendungseinstellungen] und [Parameter aus der ursprünglichen Clientanforderung] verweisen.
+Standardmäßig wird die Back-End-Anforderung als Kopie der ursprünglichen Anforderung initialisiert. Zusätzlich zum Festlegen der Back-End-URL können Sie die HTTP-Methode, Header und Abfragezeichenfolgen-Parameter ändern. Die geänderten Werte können auf [Anwendungseinstellungen] und [Parameter von der ursprünglichen Clientanforderung] verweisen.
 
 Back-End-Anforderungen können im Portal geändert werden, indem Sie auf der Proxydetailseite den Abschnitt *Außerkraftsetzung von Anforderung* erweitern. 
 
 ### <a name="modify-response"></a>Ändern der Antwort
 
-Standardmäßig wird die Clientantwort als Kopie der Back-End-Antwort initialisiert. Sie können Änderungen an Statuscode, Ursachentext, Headern und Text der Antwort vornehmen. Die geänderten Werte können auf [Anwendungseinstellungen], [Parameter aus der ursprünglichen Clientanforderung] und [Parameter aus der Back-End-Antwort] verweisen.
+Standardmäßig wird die Clientantwort als Kopie der Back-End-Antwort initialisiert. Sie können Änderungen an Statuscode, Ursachentext, Headern und Text der Antwort vornehmen. Die geänderten Werte können auf [Anwendungseinstellungen], [Parameter von der ursprünglichen Clientanforderung] und [Parameter der Back-End-Antwort] verweisen.
 
 Back-End-Anforderungen können im Portal geändert werden, indem Sie auf der Proxydetailseite den Abschnitt *Außerkraftsetzung von Antwort* erweitern. 
 
@@ -143,7 +139,7 @@ Die Proxys, die Sie konfigurieren, werden in einer Datei *proxies.json* gespeich
 
 Jeder Proxy hat einen Anzeigenamen, wie z.B. *proxy1* im vorherigen Beispiel. Das entsprechende Proxydefinitionsobjekt wird durch die folgenden Eigenschaften definiert:
 
-* **matchCondition**: Erforderlich – ein Objekt, das die Anforderungen definiert, die die Ausführung dieses Proxys auslösen. Es enthält zwei Eigenschaften, die es mit [HTTP-Triggern] gemeinsam hat:
+* **matchCondition**: Erforderlich – ein Objekt, das die Anforderungen definiert, die die Ausführung dieses Proxys auslösen. Es enthält zwei Eigenschaften, die es mit [HTTP-Trigger] gemeinsam hat:
     * _Methoden_: Ein Array der HTTP-Methoden, auf die der Proxy antwortet. Wenn es nicht angegeben wird, antwortet der Proxy auf alle HTTP-Methoden in der Route.
     * _route_: Erforderlich – definiert die Routenvorlage, mit der gesteuert wird, auf welche Anforderungs-URLs Ihr Proxy antwortet. Im Gegensatz zu HTTP-Triggern ist dies kein Standardwert.
 * **backendUri**: Die URL der Back-End-Ressource, zur der die Anforderung über einen Proxy gesendet werden soll. Dieser Wert kann auf Anwendungseinstellungen und Parameter aus der ursprünglichen Clientanforderung verweisen. Wenn diese Eigenschaft nicht enthalten ist, antwortet Azure Functions mit „HTTP 200 OK“.
@@ -236,12 +232,12 @@ Eine Beispielkonfiguration könnte folgendermaßen aussehen:
 > In diesem Beispiel wird der Antworttext direkt festgelegt, sodass keine `backendUri`-Eigenschaft erforderlich ist. Das Beispiel zeigt, wie Sie mit Azure Functions-Proxys APIs imitieren können.
 
 [Azure-Portal]: https://portal.azure.com
-[HTTP-Triggern]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
+[HTTP-Trigger]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [Definieren eines requestOverrides-Objekts]: #requestOverrides
 [Definieren eines responseOverrides-Objekts]: #responseOverrides
 [Anwendungseinstellungen]: #use-appsettings
 [Verwenden von Variablen]: #using-variables
-[Parameter aus der ursprünglichen Clientanforderung]: #request-parameters
-[Parameter aus der Back-End-Antwort]: #response-parameters
+[Parameter von der ursprünglichen Clientanforderung]: #request-parameters
+[Parameter der Back-End-Antwort]: #response-parameters

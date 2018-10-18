@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 42910675bcf512a3d6c76369adc9f41215420a78
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 18aa5ab16a1690fdcead46ebc15d72837f62612d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972290"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302468"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry in Azure
 
@@ -60,9 +60,9 @@ Bei Verwendung von Pivotal Cloud Foundry ist der Service Broker auch im Pivotal-
 
 ## <a name="related-resources"></a>Zugehörige Ressourcen
 
-### <a name="visual-studio-team-services-plugin"></a>Visual Studio Team Services-Plug-In
+### <a name="azure-devops-services-plugin"></a>Azure DevOps Services-Plug-In
 
-Cloud Foundry eignet sich gut für agile Softwareentwicklung, einschließlich der Verwendung von Continuous Integration (CI) und Continuous Delivery (CD). Wenn Sie Ihre Projekte mithilfe von Visual Studio Team Services (VSTS) verwalten und eine CI/CD-Pipeline für Cloud Foundry einrichten möchten, können Sie die [VSTS Cloud Foundry-Builderweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension) verwenden. Das Plug-In vereinfacht das Konfigurieren und Automatisieren von Bereitstellungen in Cloud Foundry unabhängig davon, ob die Ausführung in Azure oder einer anderen Umgebung erfolgt.
+Cloud Foundry eignet sich gut für agile Softwareentwicklung, einschließlich der Verwendung von Continuous Integration (CI) und Continuous Delivery (CD). Wenn Sie Ihre Projekte mithilfe von Azure DevOps Services verwalten und eine CI/CD-Pipeline für Cloud Foundry einrichten möchten, können Sie die [Azure DevOps Services-Cloud Foundry-Builderweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension) verwenden. Das Plug-In vereinfacht das Konfigurieren und Automatisieren von Bereitstellungen in Cloud Foundry unabhängig davon, ob die Ausführung in Azure oder einer anderen Umgebung erfolgt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: Angeben von Metriken und Platzierungseinstellungen in Azure-Microservices | Microsoft-Dokumentation
-description: Beschreiben eines Service Fabric-Diensts durch Angeben von Metriken, Platzierungseinschränkungen und anderen Platzierungsrichtlinien.
+title: Angeben von Metriken und Platzierungseinstellungen in Azure Service Fabric | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen Service Fabric-Dienst durch Angeben von Metriken, Platzierungseinschränkungen und anderen Platzierungsrichtlinien beschreiben.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 16e19a02bf12e30e81eb1743fc637bce435df914
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea781b5dbbf09c0a21fbcf781ae129295d02dbad
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210578"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054790"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurieren von Einstellungen des Clusterressourcen-Managers für Service Fabric-Dienste
 Der Clusterressourcen-Manager von Service Fabric ermöglicht eine detaillierte Steuerung der Regeln, die für jeden einzelnen benannten Dienst gelten. Jeder benannte Dienst kann Regeln für seine Zuordnung im Cluster angeben. Darüber hinaus kann jeder benannte Dienst die zu meldenden Metriken und deren jeweilige Bedeutung für den Dienst definieren. Zum Konfigurieren von Diensten müssen drei Aufgaben ausgeführt werden:

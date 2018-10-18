@@ -1,33 +1,34 @@
 ---
-title: "Kontinuierliche Überwachung der DevOps-Releasepipeline mit VSTS und Azure Application Insights | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Anweisungen zum schnellen Einrichten der kontinuierlichen Überwachung mit Application Insights."
+title: Kontinuierliches Überwachen der DevOps-Releasepipeline mit Azure DevOps und Azure Application Insights | Microsoft-Dokumentation
+description: Dieser Artikel enthält Anweisungen zum schnellen Einrichten der kontinuierlichen Überwachung mit Application Insights.
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/13/2017
 ms.service: application-insights
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5bfbdd0033f966422a84071a694845627827f016
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ecda8621640223f1c27f32834f2e4a098da4aba6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301622"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Hinzufügen der kontinuierlichen Überwachung zur Releasepipeline
 
-Visual Studio Team Services (VSTS) kann in Azure Application Insights integriert werden, um die kontinuierliche Überwachung Ihrer DevOps-Releasepipeline während des gesamten Lebenszyklus der Softwareentwicklung zu ermöglichen. 
+Azure DevOps Services kann in Azure Application Insights integriert werden, um die kontinuierliche Überwachung Ihrer DevOps-Releasepipeline während des gesamten Lebenszyklus der Softwareentwicklung zu ermöglichen. 
 
-VSTS unterstützt jetzt die kontinuierliche Überwachung, sodass Releasepipelines Überwachungsdaten von Application Insights und anderen Azure-Ressourcen integrieren können. Wenn eine Application Insights-Warnung erkannt wird, kann die Bereitstellung abgegrenzt bleiben oder zurückgesetzt werden, bis die Warnung aufgelöst wurde. Wenn alle Überprüfungen erfolgreich durchgeführt wurden, können Bereitstellungen vom Testen bis hin zur Produktion ohne manuellen Eingriff automatisch fortgesetzt werden. 
+Azure DevOps Services unterstützt jetzt kontinuierliche Überwachung, sodass Releasepipelines Überwachungsdaten von Application Insights und anderen Azure-Ressourcen integrieren können. Wenn eine Application Insights-Warnung erkannt wird, kann die Bereitstellung abgegrenzt bleiben oder zurückgesetzt werden, bis die Warnung aufgelöst wurde. Wenn alle Überprüfungen erfolgreich durchgeführt wurden, können Bereitstellungen vom Testen bis hin zur Produktion ohne manuellen Eingriff automatisch fortgesetzt werden. 
 
 ## <a name="configure-continuous-monitoring"></a>Konfigurieren der kontinuierlichen Überwachung
 
-1. Wählen Sie ein vorhandenes VSTS-Projekt aus.
+1. Wählen Sie ein vorhandenes Azure DevOps Services-Projekt aus.
 
 2. Zeigen Sie auf **Build und Release**. > Wählen Sie **Releases** aus. > Klicken Sie auf das **Pluszeichen** > **Releasedefinition erstellen**. > Suchen Sie nach **Überwachung** > **Azure App Service Deployment with Continuous Monitoring** (Azure App Service-Bereitstellung mit kontinuierlicher Überwachung).
 
-   ![Neue VSTS-Releasedefinition](.\media\app-insights-continuous-monitoring\001.png)
+   ![Neue Azure DevOps Services-Releasepipeline](.\media\app-insights-continuous-monitoring\001.png)
 
 3. Klicken Sie auf **Übernehmen**.
 
@@ -39,8 +40,8 @@ VSTS unterstützt jetzt die kontinuierliche Überwachung, sodass Releasepipeline
 
     | Parameter        | Wert |
    | ------------- |:-----|
-   | **Umgebungsname**      | Name, der die Umgebung der Releasedefinition beschreibt. |
-   | **Azure-Abonnement** | In dieser Dropdownliste werden alle mit dem VSTS-Konto verknüpften Azure-Abonnements eingetragen.|
+   | **Umgebungsname**      | Name, der die Umgebung der Releasepipeline beschreibt |
+   | **Azure-Abonnement** | In dieser Dropdownliste werden alle mit der Azure DevOps Services-Organisation verknüpften Azure-Abonnements eingetragen.|
    | **App Service-Name** | Abhängig von der sonstigen Auswahl muss möglicherweise für dieses Feld manuell ein neuer Wert eingetragen werden. |
    | **Ressourcengruppe**    | In diese Dropdownliste werden die verfügbaren Ressourcengruppen eingetragen. |
    | **Application Insights-Ressourcenname** | In diese Dropdownliste werden alle Application Insights-Ressourcen eingetragen, die der zuvor ausgewählten Ressourcengruppe entsprechen.
@@ -89,4 +90,4 @@ Wählen Sie zur Überwachung dieses Verhaltens die Option **Releases** aus. > Kl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum VSTS-Build und VSTS-Release finden Sie in diesen [Schnellstarts](https://docs.microsoft.com/vsts/build-release/).
+Weitere Informationen zu Azure Pipelines finden Sie in [diesen Schnellstarts](https://docs.microsoft.com/azure/devops/pipelines).

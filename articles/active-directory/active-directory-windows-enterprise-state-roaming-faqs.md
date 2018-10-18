@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: e6cb83eb6aaaea38686c63d0f3f70738efa4bcff
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 39d3913013d9528405191c5f052a943f1869048a
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630755"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026855"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Roaming von Einstellungen und Daten – Häufig gestellte Fragen
 Dieser Artikel enthält Antworten auf Fragen zur Synchronisierung von Einstellungen und App-Daten, die von IT-Administratoren häufig gestellt werden.
@@ -35,12 +35,12 @@ Dieser Artikel enthält Antworten auf Fragen zur Synchronisierung von Einstellun
 * *Kennwörter:*: Internet-Kennwörter, WLAN-Profile usw.
 * *Spracheinstellungen:*: Einstellungen für Tastaturlayouts, Systemsprache, Datum und Uhrzeit usw.
 * *Funktionen für die erleichterte Bedienung:*: Design mit hohem Kontrast, Sprachausgabe, Bildschirmlupe usw.
-* *Andere Windows-Einstellungen*: Beispielsweise Einstellungen für die Eingabeaufforderung und die Anwendungsliste.
+* *Andere Windows-Einstellungen*, z.B. Mauseinstellungen.
 
 **Anwendungsdaten**: Universelle Windows-Apps können Einstellungsdaten in einen Roamingordner schreiben. Alle Daten, die in diesen Ordner geschrieben werden, werden automatisch synchronisiert. App-Entwickler können eine App entwerfen, um diese Funktion zu nutzen. Weitere Informationen zur Entwicklung einer universellen Windows-App, die Roaming verwendet, finden Sie unter [Speichern und Abrufen von Einstellungen und anderen App-Daten](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) und im [Entwicklerblog zum Roaming von Windows 8-App-Daten](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Welches Konto wird für die Einstellungssynchronisierung verwendet?
-In Windows 8 und Windows 8.1 wurden für die Einstellungssynchronisierung immer Microsoft-Benutzerkonten verwendet. Unternehmensbenutzer hatten die Möglichkeit, ein Microsoft-Konto mit ihrem Active Directory-Domänenkonto zu verbinden, um Zugriff auf die Einstellungssynchronisierung zu erhalten. In Windows 10 wurde diese Funktion des verbundenen Microsoft-Kontos durch ein Framework mit primärem/sekundärem Konto ersetzt.
+In Windows 8.1 wurden für die Einstellungssynchronisierung immer Microsoft-Benutzerkonten verwendet. Unternehmensbenutzer hatten die Möglichkeit, ein Microsoft-Konto mit ihrem Active Directory-Domänenkonto zu verbinden, um Zugriff auf die Einstellungssynchronisierung zu erhalten. In Windows 10 wurde diese Funktion des verbundenen Microsoft-Kontos durch ein Framework mit primärem/sekundärem Konto ersetzt.
 
 Das primäre Konto ist als das Konto definiert, das zum Anmelden bei Windows verwendet wird. Dies kann ein Microsoft-Konto sein, ein Azure Active Directory-Konto (Azure AD), ein lokales Active Directory-Konto oder ein lokales Konto. Zusätzlich zum primären Konto können Windows 10-Benutzer ihrem Gerät ein oder mehrere sekundäre Cloudkonten hinzufügen. Bei einem sekundären Konto handelt es sich im Allgemeinen um ein Microsoft-Konto, ein Azure AD-Konto oder ein anderes Konto, z.B. Gmail oder Facebook. Diese sekundären Konten ermöglichen den Zugriff auf weitere Dienste, z.B. einmaliges Anmelden und den Windows Store, aber sie unterstützen keine Einstellungssynchronisierung.
 
@@ -59,7 +59,7 @@ Falls der Besitzer einer App nicht identifiziert werden kann, wird das Roaming b
 >
 
 ## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>Gewusst wie: Aktualisieren von Microsoft-Konto-Einstellungssynchronisierung unter Windows 8 auf Azure AD-Einstellungssynchronisierung unter Windows 10
-Wenn Sie der Active Directory-Domäne beigetreten ist und Windows 8 oder Windows 8.1 mit einem verbundenen Microsoft-Konto ausführen, werden Ihre Einstellungen über Ihr Microsoft-Konto synchronisiert. Nach der Aktualisierung auf Windows 10 werden Ihre Benutzereinstellungen weiterhin über das Microsoft-Konto synchronisiert, solange Sie der Domäne beigetreten sind und die Active Directory-Domäne keine Verbindung mit Azure AD herstellt.
+Wenn Sie der Active Directory-Domäne beigetreten sind und Windows 8.1 mit einem verbundenen Microsoft-Konto ausführen, werden Ihre Einstellungen über Ihr Microsoft-Konto synchronisiert. Nach der Aktualisierung auf Windows 10 werden Ihre Benutzereinstellungen weiterhin über das Microsoft-Konto synchronisiert, solange Sie der Domäne beigetreten sind und die Active Directory-Domäne keine Verbindung mit Azure AD herstellt.
 
 Falls die lokale Active Directory-Domäne eine Verbindung mit Azure AD herstellt, versucht Ihr das Gerät, die Einstellungen über das verbundene Azure AD-Konto zu synchronisieren. Wenn das Enterprise State Roaming vom Azure AD-Administrator nicht aktiviert wurde, beendet Ihr verbundenes Azure AD-Konto die Synchronisierung von Einstellungen. Wenn Sie Windows 10-Benutzer sind und sich mit einer Azure AD-Identität anmelden, beginnt die Synchronisierung von Windows-Einstellungen, sobald Ihr Administrator die Einstellungssynchronisierung über Azure AD aktiviert.
 
@@ -94,7 +94,7 @@ Administratoren können UE-V so konfigurieren, dass das Roaming nur für Daten v
 Es ist möglich, dass Microsoft in Zukunft nach Wegen suchen wird, wie UE-V fest in Windows integriert und erweitert werden kann, um das Roaming von Einstellungen über die Azure AD-Cloud zu ermöglichen.
 
 ## <a name="can-i-store-synced-settings-and-data-on-premises"></a>Können synchronisierte Einstellungen und Daten lokal gespeichert werden?
-Enterprise State Roaming speichert alle synchronisierten Daten in der Azure-Cloud. UE-V bietet eine Lösung für lokales Roaming.
+Enterprise State Roaming speichert alle synchronisierten Daten in der Microsoft-Cloud. UE-V bietet eine Lösung für lokales Roaming.
 
 ## <a name="who-owns-the-data-thats-being-roamed"></a>Wem gehören die Daten, für die das Roaming durchgeführt wird?
 Daten, für die Enterprise State Roaming verwendet wird, gehören den Unternehmen. Die Daten werden in einem Azure-Datencenter gespeichert. Alle Benutzerdaten werden sowohl bei der Übertragung als auch der Speicherung in der Cloud mithilfe des Azure Rights Management-Diensts von Azure Information Protection verschlüsselt. Dies ist eine Verbesserung im Vergleich zur Einstellungssynchronisierung basierend auf Microsoft-Konten, da dabei nur bestimmte vertrauliche Daten, z.B. Anmeldeinformationen von Benutzern, verschlüsselt werden, bevor sie das Gerät verlassen.

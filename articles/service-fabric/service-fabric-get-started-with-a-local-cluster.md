@@ -1,5 +1,5 @@
 ---
-title: Lokales Bereitstellen und Aktualisieren von Azure-Microservices | Microsoft Dokumentation
+title: Lokales Bereitstellen und Aktualisieren von Azure Service Fabric-Diensten | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen lokalen Service Fabric-Cluster einrichten, eine vorhandene Anwendung im Cluster bereitstellen und die Anwendung aktualisieren.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 244a26df25e39fd4000a8a2692edd8205e354582
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0243f6ca96b5e2c20b40bf6e0fc11e8d760db475
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643242"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053362"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>Erste Schritte beim Bereitstellen und Aktualisieren von Anwendungen im lokalen Cluster
 Das Azure Service Fabric-SDK umfasst eine vollständige lokale Entwicklungsumgebung, die Sie verwenden können, um schnell mit der Bereitstellung und Verwaltung von Anwendungen in einem lokalen Cluster zu beginnen. In diesem Artikel verwenden Sie Windows PowerShell, um einen lokalen Cluster zu erstellen, eine vorhandene Anwendung bereitzustellen und die Anwendung auf eine neue Version zu aktualisieren.

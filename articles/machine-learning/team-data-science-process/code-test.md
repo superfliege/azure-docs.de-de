@@ -1,5 +1,5 @@
 ---
-title: Data Science-Codetests in Azure mit dem Datensatz der UCI zur Vorhersage des Einkommens von Erwachsenen – Team Data Science-Prozess und Visual Studio Team Services
+title: Data Science-Codetests in Azure mit dem Dataset der UCI zur Vorhersage des Einkommens von Erwachsenen – Team Data Science-Prozess und Azure DevOps Services
 description: Data Science-Codetests in Azure mit Daten der UCI zur Vorhersage des Einkommens von Erwachsenen
 services: machine-learning, team-data-science-process
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: 46d156ce09b1ebcdcceb27ede6e7fa1595d30da6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ad0a8b5b0bb9afbbe626c9481961f20ccd4797bf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439496"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294694"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Data Science-Codetests in Azure mit dem Datensatz der UCI zur Vorhersage des Einkommens von Erwachsenen
 Dieser Artikel ist ein vorläufiger Leitfaden für das Testen von Code in einem Data Science-Workflow. Solche Tests bieten Data Scientists eine systematische und effiziente Möglichkeit, die Qualität und das erwartete Ergebnis ihres Codes zu überprüfen. Wir verwenden ein TDSP-Projekt (Team Data Science-Prozess) mit dem [UCI Adult Income-Dataset](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome). Dieses Projekt wurde zu einem früheren Zeitpunkt veröffentlicht, um zu zeigen, wie das Codetesting funktioniert. 
@@ -37,8 +37,8 @@ In diesem Artikel wird der Begriff „Komponententest“ durch den Begriff „Co
 
 Dieser Artikel bietet Verweise zu nützlichen Ressourcen.
 
-## <a name="visual-studio-team-services-for-the-testing-framework"></a>Visual Studio Team Services für das Testframework
-In diesem Artikel wird beschrieben, wie Sie das Testing mithilfe von Visual Studio Team Services (VSTS) durchführen und automatisieren. Sie können auch andere Tools verwenden. Wir zeigen Ihnen auch, wie Sie mithilfe von VSTS und Build-Agents einen automatischen Build einrichten. Als Build-Agents verwenden wir Azure Data Science Virtual Machines (DSVMs).
+## <a name="azure-devops-for-the-testing-framework"></a>Azure DevOps für das Testframework
+In diesem Artikel wird beschrieben, wie Sie Tests mithilfe von Azure DevOps durchführen und automatisieren. Sie können auch andere Tools verwenden. Wir zeigen Ihnen auch, wie Sie mithilfe von Azure DevOps und Build-Agents einen automatischen Build einrichten. Als Build-Agents verwenden wir Azure Data Science Virtual Machines (DSVMs).
 
 ## <a name="flow-of-code-testing"></a>Ablauf von Codetests
 Der gesamte Workflow für das Testen von Code in einem Data Science-Projekt sieht folgendermaßen aus: 
@@ -48,7 +48,7 @@ Der gesamte Workflow für das Testen von Code in einem Data Science-Projekt sieh
     
 ## <a name="detailed-steps"></a>Ausführliche Schritte
 
-Führen Sie die folgenden Schritte aus, um Codetests und einen automatischen Build einzurichten und auszuführen. Verwendet werden dabei ein Build-Agent und VSTS:
+Führen Sie die folgenden Schritte aus, um Codetests und einen automatischen Build mit einem Build-Agent und Azure DevOps einzurichten und auszuführen:
 
 1. Erstellen Sie ein Projekt in der Visual Studio-Desktopanwendung:
 
@@ -60,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um Codetests und einen automatischen Bui
 
     ![Projektmappen-Explorer](./media/code-test/solution_explorer_in_vs.PNG)
 
-1. Fügen Sie Ihren Projektcode in das VSTS-Projektcoderepository ein: 
+1. Fügen Sie Ihren Projektcode in das Azure DevOps-Projektcoderepository ein: 
 
     ![Projektcoderepository](./media/code-test/create_repo.PNG)
 
@@ -108,13 +108,13 @@ Führen Sie die folgenden Schritte aus, um Codetests und einen automatischen Bui
 
     ![Ausführen der Tests](./media/code-test/run_tests.PNG)
 
-1. Checken Sie Ihren Code mithilfe von Git-Befehlen in das Projektrepository ein. Die letzten von Ihnen ausgeführten Tätigkeiten spiegeln sich innerhalb kurzer Zeit in VSTS wider.
+1. Checken Sie Ihren Code mithilfe von Git-Befehlen in das Projektrepository ein. Die letzten von Ihnen ausgeführten Tätigkeiten spiegeln sich innerhalb kurzer Zeit in Azure DevOps wider.
 
     ![Git-Befehle zum Einchecken von Code](./media/code-test/git_check_in.PNG)
 
-    ![Letzte ausgeführte Tätigkeiten in VSTS](./media/code-test/git_check_in_most_recent_work.PNG)
+    ![Letzte ausgeführte Tätigkeiten in Azure DevOps](./media/code-test/git_check_in_most_recent_work.PNG)
 
-1. Richten Sie automatische Build- und Testvorgänge in VSTS ein:
+1. Richten Sie automatische Build- und Testvorgänge in Azure DevOps ein:
 
     a. Klicken Sie im Projektrepository auf **Erstellen und Freigeben** und dann auf **+Neu**, um einen neuen Buildprozess zu erstellen.
 
@@ -128,7 +128,7 @@ Führen Sie die folgenden Schritte aus, um Codetests und einen automatischen Bui
 
        ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
-    d. Benennen Sie den Build, und wählen Sie den Agent aus. Sie können hier den Standard-Agent verwenden, wenn Sie eine DSVM zum Abschließen des Buildprozesses verwenden möchten. Weitere Informationen zum Einrichten von Agents finden Sie unter [Build- und Release-Agents](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts).
+    d. Benennen Sie den Build, und wählen Sie den Agent aus. Sie können hier den Standard-Agent verwenden, wenn Sie eine DSVM zum Abschließen des Buildprozesses verwenden möchten. Weitere Informationen zum Einrichten von Agents finden Sie unter [Build- und Release-Agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
     
        ![Build and agent selections](./media/code-test/select_agent.PNG)
 
@@ -142,17 +142,17 @@ Führen Sie die folgenden Schritte aus, um Codetests und einen automatischen Bui
     
        ![PowerShell details](./media/code-test/powershell_scripts.PNG)
 
-    g. Wählen Sie **Speichern und in Warteschlange einreihen**, um den Builddefinitionsprozess abzuschließen.
+    g. Wählen Sie **Speichern und in Warteschlange einreihen** aus, um den Buildpipelinevorgang abzuschließen.
 
        !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
 
 Jetzt wird jedes Mal der Buildprozess gestartet, wenn ein neuer Commit per Push an das Coderepository übertragen wird. (Hier wird das master-Repository verwendet, Sie können aber jeden beliebigen Branch definieren.) Der Prozess führt die Datei **test1.py** auf dem Agent-Computer aus, um sicherzustellen, dass alle im Code definierten Elemente ordnungsgemäß ausgeführt werden. 
 
-Wenn die Warnungen nicht ordnungsgemäß eingerichtet wurden, erhalten Sie nach Abschluss des Buildprozesses eine Benachrichtigung per E-Mail. Sie können den Buildstatus auch in VSTS überprüfen. Wenn der Prozess nicht erfolgreich abgeschlossen wird, überprüfen Sie die Einzelheiten des Builds, um herauszufinden, welcher Bestandteil nicht richtig ist.
+Wenn die Warnungen nicht ordnungsgemäß eingerichtet wurden, erhalten Sie nach Abschluss des Buildprozesses eine Benachrichtigung per E-Mail. Sie können den Buildstatus auch in Azure DevOps überprüfen. Wenn der Prozess nicht erfolgreich abgeschlossen wird, überprüfen Sie die Einzelheiten des Builds, um herauszufinden, welcher Bestandteil nicht richtig ist.
 
 ![E-Mail-Benachrichtigung zur erfolgreichen Builderstellung](./media/code-test/email_build_succeed.PNG)
 
-![Benachrichtigung in VSTS zur erfolgreichen Builderstellung](./media/code-test/vs_online_build_succeed.PNG)
+![Benachrichtigung in Azure DevOps zur erfolgreichen Builderstellung](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Konkrete Beispiele für Komponententests für Data Science-Szenarien finden Sie im [UCI Income Prediction-Repository](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome).
@@ -161,5 +161,5 @@ Wenn die Warnungen nicht ordnungsgemäß eingerichtet wurden, erhalten Sie nach 
 ## <a name="references"></a>Referenzen
 * [Team Data Science-Prozess](https://aka.ms/tdsp)
 * [Visual Studio-Testtools](https://www.visualstudio.com/vs/features/testing-tools/)
-* [VSTS-Testressourcen](https://www.visualstudio.com/team-services/)
+* [Azure DevOps-Testressourcen](https://www.visualstudio.com/team-services/)
 * [Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

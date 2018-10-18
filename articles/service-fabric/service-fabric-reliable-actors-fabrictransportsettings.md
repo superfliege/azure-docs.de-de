@@ -1,5 +1,5 @@
 ---
-title: Ändern der FabricTransport-Einstellungen in Azure-Microservices | Microsoft-Dokumentation
+title: Ändern der FabricTransport-Einstellungen in Azure-Service Fabric-Akteuren | Microsoft-Dokumentation
 description: Erfahren Sie mehr über das Konfigurieren der Kommunikationseinstellungen von Akteuren in Azure Service Fabric.
 services: Service-Fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: f196859500d5de883a4de3f21b803c8f83e2f0b2
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: aa4339fa1fe4b21369004e748492ee71cbe6d616
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021411"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052138"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurieren von FabricTransport-Einstellungen für Reliable Actors
 
@@ -53,7 +53,7 @@ Das folgende Beispiel zeigt, wie der Standardwert der Einstellungen „FabricTra
 Sie können ein [Konfigurationspaket](service-fabric-application-and-service-manifests.md) verwenden, um die Standardkonfiguration zu ändern.
 
 > [!IMPORTANT]
-> Für Linux-Knoten müssen Zertifikate das PEM-Format aufweisen. Weitere Informationen zum Ermitteln und Konfigurieren von Zertifikaten für Linux finden Sie unter [Certificates and security on Linux clusters](./service-fabric-configure-certificates-linux.md) (Zertifikate und Sicherheit in Linux-Clustern). 
+> Auf Linux-Knoten müssen Zertifikate das PEM-Format aufweisen. Weitere Informationen zum Ermitteln und Konfigurieren von Zertifikaten für Linux finden Sie unter [Konfigurieren von Zertifikaten in Linux](./service-fabric-configure-certificates-linux.md). 
 > 
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Konfigurieren der FabricTransport-Einstellungen für den Akteurdienst

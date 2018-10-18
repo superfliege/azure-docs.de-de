@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 2530cb55cb054c02df5d55ccb86e959a061e2499
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0c2ae7e4cf0b19ab9e1c276504892a2a8aaa8dfc
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32155295"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297382"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-login"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -51,7 +51,7 @@ Sie können Konfigurationseinstellungen auch manuell bereitstellen Dies ist die 
 7. Klicken Sie nun auf die **Antwort-URLs**, bearbeiten Sie die **Antwort-URL**, fügen Sie die Anwendungs-URL (aus Schritt 1) ein, ändern Sie das Protokoll, damit das Protokoll **https://** (nicht „http://“) verwendet wird, und fügen Sie dann */.auth/login/aad/callback* an das Ende der URL an (z.B. `https://contoso.azurewebsites.net/.auth/login/aad/callback`). Klicken Sie auf **Speichern**.   
 8.  Kopieren Sie nun die **Anwendungs-ID** für die App. Bewahren Sie sie für die spätere Verwendung auf. Sie benötigen sie zum Konfigurieren Ihrer App Service-App.
 9. Schließen Sie die Seite **Registrierte App**. Klicken Sie auf der Seite **App-Registrierungen** oben auf die Schaltfläche **Endpunkte**, und kopieren Sie die **Verbundmetadatendokument**-URL. 
-10. Öffnen Sie ein neues Browserfenster, und navigieren Sie zu der URL, indem Sie sie einfügen und zur XML-Seite browsen. Oben im Dokument ist ein **EntityDescriptor**-Element. Dort muss ein **entityID**-Attribut gemäß `https://sts.windows.net/` gefolgt von einer GUID, die speziell für Ihren Mandanten gültig ist (Mandanten-ID), vorhanden sein. Kopieren Sie diesen Wert – er dient als Ihre **Aussteller-URL**. Später konfigurieren Sie Ihre Anwendung für seine Verwendung.
+10. Öffnen Sie ein neues Browserfenster, und navigieren Sie zu der URL, indem Sie sie einfügen und zur XML-Seite browsen. Am Anfang des Dokuments befindet sich ein **EntityDescriptor**-Element. Suchen Sie das **entityID**-Attribut, und kopieren Sie dessen Wert. Er dient als Ihre **Aussteller-URL**. Später konfigurieren Sie Ihre Anwendung für seine Verwendung.
 
 ### <a name="secrets"> </a>Hinzufügen von Azure Active Directory-Informationen zu Ihrer App Service-App
 1. Kehren Sie zurück zum [Azure-Portal], und navigieren Sie zu Ihrer App Service-App. Klicken Sie auf **Authentifizierung/Autorisierung**. Falls das Authentifizierungs-/Autorisierungsfeature nicht aktiviert ist, aktivieren Sie es über die Option **Ein**. Klicken Sie bei den Authentifizierungsanbietern auf **Azure Active Directory**, um Ihre App zu konfigurieren. (Optional:) Standardmäßig erfolgt die Authentifizierung über App Service, wobei jedoch der Zugriff auf die Inhalte Ihrer Website und APIs nicht autorisiert wird. Sie müssen die Benutzer in Ihrem App-Code autorisieren. Legen Sie für **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist.** die Option **Mit Azure Active Directory anmelden** fest. Diese Option erfordert, dass alle Anforderungen authentifiziert werden müssen. Alle nicht authentifizierten Anforderungen werden zur Authentifizierung an Azure Active Directory umgeleitet.

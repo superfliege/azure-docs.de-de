@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 8e68a90c347d4802a99072d6ee4492e01dab54ca
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9285b0ea50b7207aa40cea2dcab50f79863ffda9
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859975"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050186"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Verwenden der BulkExecutor-Java-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
@@ -46,7 +46,7 @@ Beginnen Sie jetzt mit der Arbeit mit Code, indem Sie eine Java-Beispielanwendun
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
-Das geklonte Repository enthält zwei Beispiele „bulkimport“ und „bulkupdate“ relativ zum Ordner „\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor“. Die Anwendung „bulkimport“ generiert zufällig Dokumente und importiert sie in Azure Cosmos DB. Die Anwendung „bulkupdate“ aktualisiert einige Dokumente in Azure Cosmos DB. In den nächsten Abschnitten sehen wir uns den Code in jeder dieser Beispiel-Apps an. 
+Das geklonte Repository enthält zwei Beispiele „bulkimport“ und „bulkupdate“ relativ zum Ordner „\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor“. Die Anwendung bulkimport generiert zufällig Dokumente und importiert sie in Azure Cosmos DB. Die Anwendung bulkupdate aktualisiert einige Dokumente in Azure Cosmos DB. In den nächsten Abschnitten sehen wir uns den Code in jeder dieser Beispiel-Apps an. 
 
 ## <a name="bulk-import-data-to-azure-cosmos-db"></a>Massenimport von Daten in Azure Cosmos DB
 

@@ -1,6 +1,6 @@
 ---
-title: Erstellen Ihres ersten Actor-basierten Azure-Microservice in C# | Microsoft-Dokumentation
-description: Dieses Tutorial führt Sie durch die Schritte zum Erstellen, Debuggen und Bereitstellen eines einfachen actorbasierten Diensts mithilfe von Service Fabric Reliable Actors.
+title: Erstellen eines akteurbasierten Diensts in Azure Service Fabric | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihren ersten akteurbasierten Dienst in C# mithilfe von Service Fabric Reliable Actors erstellen, debuggen und bereitstellen.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 32d3fa09c863c47753267e97e7c4730dff869887
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4ff896902c1a92c244c3bcd147c3daeeb9e49c77
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211404"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054754"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Erste Schritte mit Reliable Actors
 > [!div class="op_single_selector"]

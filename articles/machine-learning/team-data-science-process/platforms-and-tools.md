@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 0c5cfaad096b5702f321eead1f3da0d9225f4b53
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951140"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302859"
 ---
-# <a name="platforms-and-tools-for-data-science-team-projects"></a>Plattformen und Tools für Data Science-Teamprojekte
+# <a name="platforms-and-tools-for-data-science-projects"></a>Plattformen und Tools für Data Science-Projekte
 
 Microsoft bietet ein umfassendes Spektrum an Daten- und Analysediensten/-ressourcen für cloudbasierte und lokale Plattformen. Durch deren Bereitstellung können Sie die Effizienz und Skalierbarkeit Ihrer Data Science-Projekte verbessern. Der [Team Data Science-Prozess](overview.md) (TDSP) ist ein Leitfaden für Teams, die Data Science-Projekte gemeinschaftlich, auf nachvollziehbare Weise und mit Versionskontrolle implementieren möchten.  Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und deren Aufgaben in einem Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
 
@@ -126,7 +126,7 @@ Führen Sie den folgenden Bash-Befehl aus, um Git auf Computern unter Linux (Cen
 
 ### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Generieren öffentlicher SSH-Schlüssel auf Computern unter Linux (CentOS)
 
-Wenn Sie die Git-Befehle auf einem Computer unter Linux (CentOS) ausführen, müssen Sie Ihrem VSTS-Server den öffentlichen SSH-Schlüssel Ihres Computers hinzufügen, damit dieser vom VSTS-Server erkannt wird. Zunächst müssen Sie einen öffentlichen SSH-Schlüssel generieren und ihn den öffentlichen SSH-Schlüsseln auf der Seite mit der VSTS-Sicherheitseinstellung hinzufügen. 
+Wenn Sie die Git-Befehle auf einem Computer unter Linux (CentOS) ausführen, müssen Sie Ihrer Azure DevOps Services-Instanz den öffentlichen SSH-Schlüssel Ihres Computers hinzufügen, damit dieser von Azure DevOps Services erkannt wird. Zunächst müssen Sie einen öffentlichen SSH-Schlüssel generieren und ihn den öffentlichen SSH-Schlüsseln auf der Seite mit der Azure DevOps Services-Sicherheitseinstellung hinzufügen. 
 
 - Führen Sie zum Generieren des SSH-Schlüssels die beiden folgenden Befehle aus: 
 
@@ -136,7 +136,7 @@ Wenn Sie die Git-Befehle auf einem Computer unter Linux (CentOS) ausführen, mü
 ![](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - Kopieren Sie den gesamten SSH-Schlüssel (einschließlich *ssh-rsa*). 
-- Melden Sie sich bei Ihrem VSTS-Server an. 
+- Melden Sie sich bei Azure DevOps Services an. 
 - Klicken Sie rechts oben auf der Seite auf **<Ihr Name\>** und dann auf **Sicherheit**. 
     
     ![](./media/platforms-and-tools/resources-2-user-setting.png)

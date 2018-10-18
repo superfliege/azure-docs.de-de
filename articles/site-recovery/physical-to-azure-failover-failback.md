@@ -5,22 +5,22 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: raynew
-ms.openlocfilehash: 93f62bac3e2207caa265b3fca6634656d64b1491
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4036ab6e62f4738f4b2906eb7571dc5d0e972988
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918236"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391146"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für physische Server, die in Azure repliziert werden
 
-In diesem Tutorial wird das Ausführen eines Failovers eines physischen Servers in Azure beschrieben. Nach dem Failover erfolgt ein Failback des Servers zum lokalen Standort, sobald dieser verfügbar ist. 
+In diesem Tutorial wird das Ausführen eines Failovers eines physischen Servers in Azure beschrieben. Nach dem Failover erfolgt ein Failback des Servers zum lokalen Standort, sobald dieser verfügbar ist.
 
 ## <a name="preparing-for-failover-and-failback"></a>Vorbereiten für Failover und Failback
 
-Für physische Server, die mithilfe von Site Recovery nach Azure repliziert wurden, kann ein Failback nur als VMware-VMs erfolgen. Sie benötigen eine VMware-Infrastruktur, damit Sie ein Failback ausführen können. 
+Für physische Server, die mithilfe von Site Recovery nach Azure repliziert wurden, kann ein Failback nur als VMware-VMs erfolgen. Sie benötigen eine VMware-Infrastruktur, damit Sie ein Failback ausführen können.
 
 Failover und Failback weisen vier Phasen auf:
 
@@ -44,10 +44,10 @@ Failover und Failback weisen vier Phasen auf:
 
 1. Klicken Sie in **Einstellungen** > **Replizierte Elemente** auf den Computer > **Failover**.
 2. Wählen Sie in **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-   - **Neueste** (Standard): Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+   - **Neueste**: Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
    - **Letzte Verarbeitung:** Mit dieser Option wird ein Failover des Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
    - **Letzte App-Konsistenz:** Mit dieser Option wird ein Failover des Computers mithilfe des letzten App-konsistenten Wiederherstellungspunkts ausgeführt, der von Site Recovery verarbeitet wurde.
-   - **Benutzerdefiniert:** Geben Sie einen Wiederherstellungspunkt an.
+   - **Benutzerdefiniert**: Geben Sie einen Wiederherstellungspunkt an.
 
 3. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, wenn Site Recovery versuchen soll, den Quellcomputer herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
 4. Wenn Sie das Herstellen einer Verbindung mit der Azure-VM vorbereitet haben, stellen Sie eine Verbindung her, um sie nach dem Failover zu überprüfen.
@@ -55,7 +55,13 @@ Failover und Failback weisen vier Phasen auf:
 
 > [!WARNING]
 > Brechen Sie ein Failover in Bearbeitung nicht ab. Vor Beginn des Failovers wird die Replikation der Computer beendet. Wenn Sie ein Failover abbrechen, wird es beendet, ohne dass die Replikation des Computers erneut erfolgt.
-> Bei physischen Servern kann die zusätzliche Failoververarbeitung ca. 8 bis 10 Minuten dauern. 
+> Bei physischen Servern kann die zusätzliche Failoververarbeitung ca. 8 bis 10 Minuten dauern.
+
+## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
+
+Wenn Sie nach dem Failover per RDP/SSH eine Verbindung mit Azure-VMs herstellen möchten, müssen Sie die in dieser [Tabelle](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) zusammengefassten Anforderungen erfüllen.
+
+Führen Sie die [hier](site-recovery-failover-to-azure-troubleshoot.md) beschriebenen Schritte aus, um nach dem Failover ggf. Konnektivitätsprobleme zu beheben.
 
 ## <a name="create-a-process-server-in-azure"></a>Erstellen eines Prozessservers in Azure
 
@@ -120,4 +126,3 @@ Die Daten sollten nun wieder auf Ihrem lokalen Standort sein, aber sie werden ni
 2. Wählen Sie den Prozessserver, mit dem die replizierten Daten nach Azure gesendet werden, und klicken Sie auf **OK**.
 
 Nachdem das erneute Schützen abgeschlossen ist, wird der virtuelle Computer zurück nach Azure repliziert, und Sie können ggf. ein Failover ausführen.
-

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: d7cbeebff42bddd93cac35a0205d031a90bb4715
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: fea3455b31ff2ea7119fa4146aa84f855a3b6e35
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144636"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054671"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
 
@@ -57,7 +57,7 @@ Daher haben wir uns für die Entwicklung des Indizierungs-Untersystems von Cosmo
 Sie können die Kompromisse zwischen Speicherleistung, Schreib- und Abfrageleistung und Abfragekonsistenz durch Überschreiben der Standardindizierungsrichtlinie in einer Azure Cosmos DB-Sammlung anpassen. Sie können die folgenden Aspekte konfigurieren:
 
 * **Ein- oder Ausschließen von Dokumenten und Pfaden in den/aus dem Index**: Sie können bestimmte Dokumente aus dem Index ausschließen oder in den Index einschließen, wenn Sie die Dokumente in die Sammlung einfügen oder ersetzen. Sie können auch bestimmte JSON-Eigenschaften, auch *Pfade* genannt, die für Dokumente indiziert werden sollen, die in einem Index enthalten sind, ein- oder ausschließen. Pfade enthalten Platzhaltermuster.
-* **Konfigurieren verschiedener Indextypen**: Sie können für jeden eingeschlossenen Pfad den jeweils für eine Sammlung erforderlichen Indextyp angeben. Sie können den Indextyp basierend auf den Daten des Pfads, der erwarteten Abfragearbeitsauslastung und der numerischen/Zeichenfolgengenauigkeit angeben.
+* **Konfigurieren verschiedener Indextypen**: Sie können für jeden eingeschlossenen Pfad den jeweils für eine Sammlung erforderlichen Indextyp angeben. Sie können den Indextyp basierend auf den Daten des Pfads, der erwarteten Abfrageworkload und der numerischen/Zeichenfolgengenauigkeit angeben.
 * **Konfigurieren von Indexaktualisierungsmodi**: Azure Cosmos DB unterstützt die drei Indizierungsmodi „Konsistent“, „Verzögert“ und „Keine“. Sie können die Indizierungsmodi über die Indizierungsrichtlinie in einer Azure Cosmos DB-Sammlung konfigurieren. 
 
 Im folgenden Microsoft .NET-Codeausschnitt wird gezeigt, wie eine benutzerdefinierte Indizierungsrichtlinie beim Erstellen einer Sammlung festgelegt wird. In diesem Beispiel haben wir die Richtlinie mit einem Bereichsindex für Zeichenfolgen und Zahlen mit maximaler Genauigkeit festgelegt. Sie können diese Richtlinie verwenden, um ORDER BY-Abfragen für Zeichenfolgen auszuführen.

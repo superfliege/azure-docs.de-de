@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 020f9c8753b2b91b3336b304a1c92590f62be003
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2cae74224a9d59939175ac7e43d4d6b183ca3933
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42142387"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050743"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen
 Anwendungen können Unmengen an Daten generieren und speichern. Einige dieser Daten (etwa vom Computer generierte Ereignisdaten, Protokolle und Benutzersitzungsinformationen) sind allerdings nur für einen begrenzten Zeitraum relevant. Sobald die Daten von der Anwendung nicht mehr benötigt werden, können sie gefahrlos gelöscht werden, um den Speicherbedarf einer Anwendung zu verringern.
@@ -56,7 +56,7 @@ Die Gültigkeitsdauer ist in Cosmos DB-Sammlungen und für alle Dokumente standa
 
    **Aus**: Dokumente werden nicht automatisch gelöscht.  
    **on (no default)** (Ein (kein Standard)): Mit dieser Option wird der TTL-Wert auf „-1“ (unendlich) festgelegt. Dies bedeutet, dass Dokumente standardmäßig nicht ablaufen.  
-   **Ein**: Dokumente laufen „n“ Sekunden nach der letzten Änderung ab.  
+   **on** (Ein): Dokumente laufen n Sekunden nach der letzten Änderung ab.  
 
    ![Festlegen der Gültigkeitsdauer](./media/time-to-live/set-ttl-in-portal.png)
 

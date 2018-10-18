@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: e560eb9e0bbce09c541bfc66ea760ea3e636f841
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0807bc5df9d4ee8782ae017dbb7ed63c38a13443
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528713"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304678"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -73,7 +73,7 @@ Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speiche
   * [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr]
   * [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr]
   * [Anhang 4: Verwendung von Excel zur Anzeige von Metrik- und Protokollierungsdaten]
-  * [Anhang 5: Überwachung mit Application Insights für Visual Studio Team Services]
+  * [Anhang 5: Überwachung mit Application Insights für Azure DevOps]
 
 ## <a name="introduction"></a>Einführung
 Diese Anleitung zeigt Ihnen, wie Sie Funktionen wie Azure Storage Analytics, clientseitige Protokollierung in der Azure-Speicherclient-Bibliothek und andere Tools von Drittanbietern verwenden, um mit Azure-Speicher verbundene Probleme zu erkennen, zu diagnostizieren und zu beheben.
@@ -125,7 +125,7 @@ Sie können das [Azure-Portal](https://portal.azure.com) verwenden, um die Integ
 Das [Azure-Portal](https://portal.azure.com) kann auch Benachrichtigungen zu Vorfällen bereitstellen, die die verschiedenen Azure-Dienste beeinträchtigen.
 Hinweis: Diese Informationen waren bisher, zusammen mit Verlaufsdaten, auf dem [Azure-Dienstdashboard](http://status.azure.com)verfügbar.
 
-Während das [Azure-Portal](https://portal.azure.com) Zustandsinformationen innerhalb der Azure-Rechenzentren (Inside-out-Überwachung) sammelt, könnten Sie auch einen Outside-in-Ansatz in Erwägung ziehen, um synthetische Transaktionen zu generieren, die in regelmäßigen Abständen von mehreren Standorten aus auf Ihre in Azure gehostete Webanwendung zugreifen. Die von [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) und Application Insights für Visual Studio Team Services angebotenen Dienste sind Beispiele für diesen Ansatz. Weitere Informationen zu Application Insights für Visual Studio Team Services finden Sie in[Anhang 5: Überwachung mit Application Insights für Visual Studio Team Services](#appendix-5).
+Während das [Azure-Portal](https://portal.azure.com) Zustandsinformationen innerhalb der Azure-Rechenzentren (Inside-out-Überwachung) sammelt, könnten Sie auch einen Outside-in-Ansatz in Erwägung ziehen, um synthetische Transaktionen zu generieren, die in regelmäßigen Abständen von mehreren Standorten aus auf Ihre in Azure gehostete Webanwendung zugreifen. Die von [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) und Application Insights für Azure DevOps angebotenen Dienste sind Beispiele für diesen Ansatz. Weitere Informationen zu Application Insights für Azure DevOps finden Sie in [Anhang 5: Überwachung mit Application Insights für Azure DevOps](#appendix-5).
 
 ### <a name="monitoring-capacity"></a>Kapazitätsüberwachung
 Speichermetriken speichern nur Kapazitätsmetriken für den Blob-Dienst, weil Blobs in der Regel den größten Teil der gespeicherten Daten ausmachen. (Es ist zum Redaktionszeitpunkt nicht möglich, Speichermetriken zu verwenden, um die Kapazität Ihrer Tabellen und Warteschlangen zu überwachen.) Sie finden diese Daten in der Tabelle **$MetricsCapacityBlob** , wenn Sie die Überwachung für den Blob-Dienst aktiviert haben. Speichermetriken zeichnen diese Daten einmal täglich auf, und Sie können anhand des Wert von **RowKey** bestimmen, ob die Zeile eine Entität enthält, die sich auf Benutzerdaten (Wert **data**) oder Analysedaten (Wert **analytics**) bezieht. Jede gespeicherte Entität enthält Informationen zum verwendeten Speicheranteil (**Capacity**, gemessen in Bytes) sowie zur aktuellen Anzahl von Containern (**ContainerCount**) und Blobs (**ObjectCount**) im Speicherkonto. Weitere Informationen über die in der Tabelle **$MetricsCapacityBlob** gespeicherten Kapazitätsmetriken finden Sie unter [Tabellenschema der Speicher-Analytikmetriken](http://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -799,8 +799,8 @@ Um Speicherprotokollierungsdaten in Excel zu importieren, nachdem Sie diese aus 
 
 Wählen Sie in Schritt 1 des **Textimport-Assistenten** die Option **Semikolon** als einziges Trennzeichen und doppelte Anführungszeichen als **Textbegrenzungszeichen** aus. Klicken Sie anschließend auf **Fertigstellen** und wählen Sie aus, wo Sie die Datei in Ihrer Arbeitsmappe ablegen möchten.
 
-### <a name="appendix-5"></a>Anhang 5: Überwachung mit Application Insights für Visual Studio Team Services
-Sie können die Application Insights-Funktion für Visual Studio Team Services auch als Bestandteil der Leistungs- und Verfügbarkeitsüberwachung verwenden. Dieses Tool kann:
+### <a name="appendix-5"></a>Anhang 5: Überwachung mit Application Insights für Azure DevOps
+Sie können die Application Insights-Funktion für Azure DevOps auch als Bestandteil der Leistungs- und Verfügbarkeitsüberwachung verwenden. Dieses Tool kann:
 
 * Sicherstellen, dass Ihr Webdienst verfügbar und reaktionsschnell ist. Ob Ihre Anwendung eine Website ist, die einen Webdienst verwendet, oder eine Geräteanwendung: Sie kann Ihre URL alle paar Minuten von Standorten auf der ganzen Welt testen, und Ihnen mitteilen, ob es ein Problem gibt.
 * Leistungsprobleme oder Ausnahmen in Ihrem Webdienst schnell diagnostizieren. Finden Sie heraus, ob für CPU oder andere Ressourcen Stretching durchgeführt wird, gewinnen Sie Stapelnachverfolgungen aus Ausnahmen, und durchsuchen Sie ganz einfach Protokollablaufverfolgungen. Wenn die Leistung der Anwendung unter akzeptable Grenzwerte fällt, kann Microsoft Ihnen eine E-Mail senden. Sie können sowohl .NET- als auch Java-Webdienste überwachen.
@@ -865,7 +865,7 @@ Weitere Informationen finden Sie unter [Was ist Application Insights](../../appl
 [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr]: #appendix-2
 [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr]: #appendix-3
 [Anhang 4: Verwendung von Excel zur Anzeige von Metrik- und Protokollierungsdaten]: #appendix-4
-[Anhang 5: Überwachung mit Application Insights für Visual Studio Team Services]: #appendix-5
+[Anhang 5: Überwachung mit Application Insights für Azure DevOps]: #appendix-5
 
 <!--Image references-->
 [1]: ./media/storage-monitoring-diagnosing-troubleshooting/overview.png

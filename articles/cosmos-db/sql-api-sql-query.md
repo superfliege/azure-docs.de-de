@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: a3a1f376c36004851d6e64f2fa037bebfc24665b
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 766a2a9a2b71d9cd013f26b843d413d7603ab1fd
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287757"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051356"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Abfragen von Azure Cosmos DB-Daten mit SQL-Abfragen
 
@@ -1550,7 +1550,7 @@ Sie können nun beispielsweise Abfragen wie die folgende ausführen:
 ```json
     [4]
 ```
-Der Hauptunterschied zwischen den Cosmos DB-Funktionen und ANSI SQL besteht darin, dass die Funktionen sich gut für Daten ohne und mit gemischtem Schema einsetzen lassen. Wenn Sie beispielsweise ein Dokument haben, in dem die "Size"-Eigenschaft fehlt oder einen nicht numerischen Wert wie "unbekannt" aufweist, wird dieses Dokument übersprungen anstatt einen Fehler zurückzugeben.
+Der Hauptunterschied zwischen den Cosmos DB-Funktionen und ANSI SQL besteht darin, dass die Funktionen sich gut für Daten ohne und mit gemischtem Schema einsetzen lassen. Wenn Sie beispielsweise ein Dokument haben, in dem die Size-Eigenschaft fehlt oder einen nicht numerischen Wert wie „unbekannt“ aufweist, wird dieses Dokument übersprungen, anstatt einen Fehler zurückzugeben.
 
 ### <a name="type-checking-functions"></a>Funktionen für die Typprüfung
 Mit den Funktionen für die Typprüfung können Sie den Typ eines Ausdrucks in SQL-Abfragen prüfen. Typprüfungsfunktionen können verwendet werden, um den Typ von Eigenschaften innerhalb von Dokumenten während der Übertragung zu ermitteln, wenn dieser variabel oder unbekannt ist. Im Folgenden finden Sie eine Tabelle der unterstützten integrierten Typprüfungsfunktionen.

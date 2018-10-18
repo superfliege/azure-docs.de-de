@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen einer CI/CD-Pipeline in Azure mit Team Services | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie eine Visual Studio Team Services-Pipeline für Continuous Integration und Continuous Delivery erstellen, die eine Web-App in IIS auf einem virtuellen Windows-Computer in Azure bereitstellt.
+title: 'Tutorial: Erstellen einer CI/CD-Pipeline in Azure mit Azure DevOps Services | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie eine Azure DevOps Services-Pipeline für Continuous Integration und Continuous Delivery erstellen, die eine Web-App in IIS auf einem virtuellen Windows-Computer in Azure bereitstellt.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,33 +16,32 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b23cec90573c4be73a73daf0bc0e793da012585c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: d4edf0d22ce04eb2cb865d80c2b70f1bcc2169df
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932091"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301897"
 ---
-# <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Tutorial: Erstellen einer Continuous Integration-Pipeline mit Visual Studio Team Services und IIS
-Sie können zum Automatisieren der Erstellungs-, Test- und Bereitstellungsphasen der Anwendungsentwicklung eine Pipeline für Continuous Integration und Continuous Deployment (CI/CD) verwenden. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline mit Visual Studio Team Services und einem virtuellen Windows-Computer in Azure, auf dem IIS ausgeführt wird. Folgendes wird vermittelt:
+# <a name="tutorial-create-a-continuous-integration-pipeline-with-azure-devops-services-and-iis"></a>Tutorial: Erstellen einer Continuous Integration-Pipeline mit Azure DevOps Services und IIS
+Sie können zum Automatisieren der Erstellungs-, Test- und Bereitstellungsphasen der Anwendungsentwicklung eine Pipeline für Continuous Integration und Continuous Deployment (CI/CD) verwenden. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline mit Azure DevOps Services und einem virtuellen Windows-Computer in Azure, auf dem IIS ausgeführt wird. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Veröffentlichen einer ASP.NET-Webanwendung in einem Team Services-Projekt
-> * Erstellen einer Builddefinition, die durch Codecommits ausgelöst wird
+> * Veröffentlichen einer ASP.NET-Webanwendung in einem Azure DevOps Services-Projekt
+> * Erstellen einer Buildpipeline, die durch Codecommits ausgelöst wird
 > * Installieren und Konfigurieren von IIS auf einem virtuellen Computer in Azure
-> * Hinzufügen der IIS-Instanz zu einer Bereitstellungsgruppe in Team Services
-> * Erstellen einer Releasedefinition zum Veröffentlichen neuer Webbereitstellungspakete in IIS
+> * Hinzufügen der IIS-Instanz zu einer Bereitstellungsgruppe in Azure DevOps Services
+> * Erstellen einer Releasepipeline zum Veröffentlichen neuer Webbereitstellungspakete in IIS
 > * Testen der CI/CD-Pipeline
 
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.7.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren und Konfigurieren von Azure PowerShell) Informationen dazu.
+Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.7.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
+## <a name="create-a-project-in-azure-devops-services"></a>Erstellen eines Projekts in Azure DevOps Services
+Azure DevOps Services ermöglicht eine einfache Zusammenarbeit und Entwicklung ohne Verwendung einer lokalen Codeverwaltungslösung. Azure DevOps Services bietet Cloudcodetests und Erkenntnisse zu Builds und Anwendungen. Sie können das Repository für die Versionskontrolle und eine IDE auswählen, die sich am besten für die Codeentwicklung eignen. Für dieses Tutorial können Sie eine kostenlose Organisation nutzen, um eine grundlegende ASP.NET-Web-App und CI/CD-Pipeline zu erstellen. Wenn Sie noch nicht über eine Azure DevOps Services-Organisation verfügen, [erstellen Sie eine](http://go.microsoft.com/fwlink/?LinkId=307137).
 
-## <a name="create-project-in-team-services"></a>Erstellen eines Projekts in Team Services
-Visual Studio Team Services ermöglicht eine einfache Zusammenarbeit und Entwicklung ohne Wartung einer lokalen Codeverwaltungslösung. Team Services ermöglicht Cloudcodetests und bietet Erkenntnisse zu Builds und Anwendungen. Sie können das Repository für die Versionskontrolle und eine IDE auswählen, die sich am besten für die Codeentwicklung eignen. Für dieses Tutorial können Sie ein kostenloses Konto nutzen, um eine grundlegende ASP.NET-Web-App und CI/CD-Pipeline zu erstellen. Falls Sie noch kein Team Services-Konto besitzen, [erstellen Sie eins](http://go.microsoft.com/fwlink/?LinkId=307137).
+Erstellen Sie zum Verwalten des Codecommitprozesses, der Buildpipelines und der Releasepipelines wie folgt ein Projekt in Azure DevOps Services:
 
-Erstellen Sie zum Verwalten des Codecommitprozesses, der Builddefinitionen und der Releasedefinitionen wie folgt ein Projekt in Team Services:
-
-1. Öffnen Sie Ihr Team Services-Dashboard in einem Webbrowser, und klicken Sie auf **Neues Projekt**.
+1. Öffnen Sie Ihr Azure DevOps Services-Dashboard in einem Webbrowser, und wählen Sie **Neues Projekt** aus.
 2. Geben Sie für **Projektname** den Namen *myWebApp* ein. Übernehmen Sie alle anderen Standardwerte, um die *Git*-Versionskontrolle und den Arbeitselementprozess *Agile* zu verwenden.
 3. Wählen Sie die Option für **die Freigabe** für *Teammitglieder*, und wählen Sie anschließend **Erstellen**.
 5. Nachdem das Projekt erstellt wurde, wählen Sie die Option **Initialize with a README or gitignore** (Mit einer INFODATEI oder gitignore initialisieren) und anschließend **Initialisieren**.
@@ -50,11 +49,11 @@ Erstellen Sie zum Verwalten des Codecommitprozesses, der Builddefinitionen und d
 
 
 ## <a name="create-aspnet-web-application"></a>Erstellen einer ASP.NET-Webanwendung
-Im vorherigen Schritt haben Sie ein Projekt in Team Services erstellt. Im letzten Schritt wird Ihr neues Projekt in Visual Studio geöffnet. Sie verwalten Ihre Codecommits im **Team Explorer**-Fenster. Erstellen Sie eine lokale Kopie des neuen Projekts und anschließend wie folgt eine ASP.NET-Webanwendung aus einer Vorlage:
+Im vorherigen Schritt haben Sie ein Projekt in Azure DevOps Services erstellt. Im letzten Schritt wird Ihr neues Projekt in Visual Studio geöffnet. Sie verwalten Ihre Codecommits im **Team Explorer**-Fenster. Erstellen Sie eine lokale Kopie des neuen Projekts und anschließend wie folgt eine ASP.NET-Webanwendung aus einer Vorlage:
 
-1. Klicken Sie auf **Klonen**, um ein lokales Git-Repository Ihres Team Services-Projekts zu erstellen.
+1. Wählen Sie **Klonen** aus, um ein lokales Git-Repository Ihres Azure DevOps Services-Projekts zu erstellen.
     
-    ![Klonen eines Repositorys aus dem Team Services-Projekt](media/tutorial-vsts-iis-cicd/clone_repo.png)
+    ![Klonen eines Repositorys aus einem Azure DevOps Services-Projekt](media/tutorial-vsts-iis-cicd/clone_repo.png)
 
 2. Klicken Sie unter **Projektmappen** auf **Neu**.
 
@@ -69,33 +68,33 @@ Im vorherigen Schritt haben Sie ein Projekt in Team Services erstellt. Im letzte
     2. Klicken Sie auf **OK**, um die Projektmappe zu erstellen.
 5. Klicken Sie im **Team Explorer**-Fenster auf **Änderungen**.
 
-    ![Übernehmen lokaler Änderungen am Team Services-Git-Repository](media/tutorial-vsts-iis-cicd/commit_changes.png)
+    ![Übernehmen lokaler Änderungen am Azure Repos-Git-Repository](media/tutorial-vsts-iis-cicd/commit_changes.png)
 
 6. Geben Sie in das Textfeld für den Commit eine Nachricht ein, beispielsweise *Commit initialisieren*. Wählen Sie im Dropdownmenü die Option **Commit für alle und Sync** aus.
 
 
-## <a name="create-build-definition"></a>Erstellen einer Builddefinition
-In Team Services geben Sie mithilfe einer Builddefinition an, wie Ihre Anwendung erstellt werden soll. In diesem Tutorial erstellen wir eine grundlegende Definition, die den Quellcode verwendet und die Projektmappe und dann das Webbereitstellungspaket erstellt, mit dem wir die Web-App auf einem IIS-Server ausführen können.
+## <a name="create-build-pipeline"></a>Erstellen der Buildpipeline
+In Azure DevOps Services geben Sie mithilfe einer Buildpipeline an, wie Ihre Anwendung erstellt werden soll. In diesem Tutorial erstellen Sie eine grundlegende Pipeline, die den Quellcode verwendet und die Projektmappe und dann das Webbereitstellungspaket erstellt, mit dem Sie die Web-App auf einem IIS-Server ausführen können.
 
-1. Klicken Sie in Ihrem Team Services-Projekt im oberen Bereich auf **Build und Release** und anschließend auf **Builds**.
+1. Wählen Sie in Ihrem Azure DevOps Services-Projekt im oberen Bereich **Build und Release** und anschließend **Builds** aus.
 3. Klicken Sie auf **+ Neue Definition**.
 4. Wählen Sie die Vorlage **ASP.NET (VORSCHAU)** und anschließend **Übernehmen**.
 5. Übernehmen Sie alle Standardaufgabenwerte. Vergewissern Sie sich unter **Get sources** (Quellen abrufen), dass das Repository *myWebApp* und die *Hauptverzweigung* ausgewählt sind.
 
-    ![Erstellen einer Builddefinition im Team Services-Projekt](media/tutorial-vsts-iis-cicd/create_build_definition.png)
+    ![Erstellen einer Buildpipeline im Azure DevOps Services-Projekt](media/tutorial-vsts-iis-cicd/create_build_definition.png)
 
 6. Schieben Sie auf der Registerkarte **Trigger** den Schieberegler für **Diesen Auslöser aktivieren** auf *Aktiviert*.
-7. Speichern Sie die Builddefinition, und stellen Sie einen neuen Build in die Warteschlange, indem Sie **Speichern und in Warteschlange einreihen** und dann erneut **Speichern und in Warteschlange einreihen** auswählen. Übernehmen Sie die Standardwerte, und klicken Sie auf **Warteschlange**.
+7. Speichern Sie die Buildpipeline, und stellen Sie einen neuen Build in die Warteschlange, indem Sie **Speichern und in Warteschlange einreihen** und dann erneut **Speichern und in Warteschlange einreihen** auswählen. Übernehmen Sie die Standardwerte, und klicken Sie auf **Warteschlange**.
 
 Sie können zusehen, wie der Build auf einem gehosteten Agent geplant und dann erstellt wird. Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-![Erfolgreiche Erstellung des Team Services-Projekts](media/tutorial-vsts-iis-cicd/successful_build.png)
+![Erfolgreiche Erstellung des Azure DevOps Services-Projekts](media/tutorial-vsts-iis-cicd/successful_build.png)
 
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
-Um eine Plattform für die Ausführung Ihrer ASP.NET-Web-App zur Verfügung zu stellen, benötigen Sie einen virtuellen Windows-Computer mit IIS. Team Services verwendet einen Agent für die Interaktion mit der IIS-Instanz, wenn Sie für Ihren Code einen Commit ausführen und Builds ausgelöst werden.
+Um eine Plattform für die Ausführung Ihrer ASP.NET-Web-App zur Verfügung zu stellen, benötigen Sie einen virtuellen Windows-Computer mit IIS. Azure DevOps Services verwendet einen Agent für die Interaktion mit der IIS-Instanz, wenn Sie für Ihren Code einen Commit ausführen und Builds ausgelöst werden.
 
-Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) einen virtuellen Computer unter Windows Server 2016. Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *myVM* am Standort *USA, Osten* erstellt. Zudem werden die Ressourcengruppe *myResourceGroupVSTS* und unterstützende Netzwerkressourcen erstellt. Um Webdatenverkehr zu ermöglichen, ist TCP-Port *80* für den virtuellen Computer geöffnet. Geben Sie bei entsprechender Aufforderung einen Benutzernamen und ein Kennwort als Anmeldeinformationen für den virtuellen Computer ein:
+Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) einen virtuellen Computer unter Windows Server 2016. Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *myVM* am Standort *USA, Osten* erstellt. Zudem werden die Ressourcengruppe *myResourceGroupAzureDevOpsServices* und unterstützende Netzwerkressourcen erstellt. Um Webdatenverkehr zu ermöglichen, ist TCP-Port *80* für den virtuellen Computer geöffnet. Geben Sie bei entsprechender Aufforderung einen Benutzernamen und ein Kennwort als Anmeldeinformationen für den virtuellen Computer ein:
 
 ```powershell
 # Create user object
@@ -103,7 +102,7 @@ $cred = Get-Credential -Message "Enter a username and password for the virtual m
 
 # Create a virtual machine
 New-AzureRmVM `
-  -ResourceGroupName "myResourceGroupVSTS" `
+  -ResourceGroupName "myResourceGroupAzureDevOpsServices" `
   -Name "myVM" `
   -Location "East US" `
   -ImageName "Win2016Datacenter" `
@@ -135,9 +134,10 @@ Install-WindowsFeature Web-Server,Web-Asp-Net45,NET-Framework-Features
 
 
 ## <a name="create-deployment-group"></a>Erstellen einer Bereitstellungsgruppe
-Zum Übertragen des Webbereitstellungspakets an den IIS-Server per Pushvorgang definieren Sie eine Bereitstellungsgruppe in Team Services. Mit dieser Gruppe können Sie angeben, welche Server als Ziel der neuen Builds verwendet werden, wenn Sie für Ihren Code einen Commit in Team Services ausführen und Builds abgeschlossen werden.
 
-1. Klicken Sie in Team Services auf **Build und Release** und dann auf **Bereitstellungsgruppen**.
+Zum Übertragen des Webbereitstellungspakets an den IIS-Server per Push definieren Sie eine Bereitstellungsgruppe in Azure DevOps Services. Mit dieser Gruppe können Sie angeben, welche Server als Ziel der neuen Builds verwendet werden, wenn Sie für Ihren Code einen Commit in Azure DevOps Services ausführen und Builds abgeschlossen werden.
+
+1. Wählen Sie in Azure DevOps Services auf **Build und Release** und dann **Bereitstellungsgruppen** aus.
 2. Klicken Sie auf **Bereitstellungsgruppe hinzufügen**.
 3. Geben Sie einen Namen für die Gruppe an, z.B. *myIIS*, und klicken Sie dann auf **Erstellen**.
 4. Vergewissern Sie sich im Abschnitt **Computer registrieren**, dass *Windows* ausgewählt ist, und aktivieren Sie das Kästchen **Use a personal access token in the script for authentication** (Persönliches Zugriffstoken im Skript zur Authentifizierung verwenden).
@@ -145,36 +145,36 @@ Zum Übertragen des Webbereitstellungspakets an den IIS-Server per Pushvorgang d
 
 
 ### <a name="add-iis-vm-to-the-deployment-group"></a>Hinzufügen des virtuellen IIS-Computers zur Bereitstellungsgruppe
-Fügen Sie nach Erstellung der Bereitstellungsgruppe die einzelnen IIS-Instanzen zur Gruppe hinzu. Team Services generiert ein Skript, das auf dem virtuellen Computer einen Agent herunterlädt und konfiguriert, der wiederum neue Webbereitstellungspakete empfängt und dann auf IIS anwendet.
+Fügen Sie nach Erstellung der Bereitstellungsgruppe die einzelnen IIS-Instanzen zur Gruppe hinzu. Azure DevOps Services generiert ein Skript, das auf dem virtuellen Computer einen Agent herunterlädt und konfiguriert, der wiederum neue Webbereitstellungspakete empfängt und dann auf IIS anwendet.
 
-1. Kehren Sie zurück zur **PowerShell-Administratorsitzung** auf dem virtuellen Computer, fügenSie dort das aus Team Services kopierte Skript ein, und führen Sie es aus.
+1. Kehren Sie zurück zur **PowerShell-Administratorsitzung** auf dem virtuellen Computer, fügen Sie dort das aus Azure DevOps Services kopierte Skript ein, und führen Sie es aus.
 2. Wenn Sie aufgefordert werden, Tags für den Agent zu konfigurieren, klicken Sie auf *J*, und geben Sie *Web* ein.
 3. Wenn Sie zur Eingabe des Benutzerkontos aufgefordert werden, drücken Sie die *EINGABETASTE* , um die Standardwerte zu übernehmen.
 4. Warten Sie, bis die Ausführung des Skripts mit der Meldung *Service vstsagent.account.computername started successfully* (Dienst „vstsagent.account.computername“ wurde erfolgreich gestartet.) abgeschlossen wird.
 5. Öffnen Sie im Menü **Build und Release** auf der Seite **Bereitstellungsgruppen** die Bereitstellungsgruppe *myIIS*. Überprüfen Sie auf der Registerkarte **Computer**, ob Ihr virtueller Computer aufgeführt ist.
 
-    ![Der virtuelle Computer wurde zur Team Services-Bereitstellungsgruppe hinzugefügt.](media/tutorial-vsts-iis-cicd/deployment_group.png)
+    ![Der virtuelle Computer wurde der Azure DevOps Services-Bereitstellungsgruppe hinzugefügt.](media/tutorial-vsts-iis-cicd/deployment_group.png)
 
 
-## <a name="create-release-definition"></a>Erstellen einer Releasedefinition
-Erstellen Sie zum Veröffentlichen Ihrer Builds eine Releasedefinition in Team Services. Diese Definition wird bei der erfolgreichen Erstellung Ihrer Anwendung automatisch ausgelöst. Sie wählen die Bereitstellungsgruppe aus, an die Ihr Webbereitstellungspaket per Push übertragen werden soll, und definieren die entsprechenden IIS-Einstellungen.
+## <a name="create-release-pipeline"></a>Erstellen einer Releasepipeline
+Erstellen Sie zum Veröffentlichen Ihrer Builds eine Releasepipeline in Azure DevOps Services. Diese Pipeline wird bei der erfolgreichen Erstellung Ihrer Anwendung automatisch ausgelöst. Sie wählen die Bereitstellungsgruppe aus, an die Ihr Webbereitstellungspaket per Push übertragen werden soll, und definieren die entsprechenden IIS-Einstellungen.
 
-1. Klicken Sie auf **Build und Release** und dann auf **Builds**. Wählen Sie die Builddefinition, die Sie in einem vorherigen Schritt erstellt haben.
+1. Klicken Sie auf **Build und Release** und dann auf **Builds**. Wählen Sie die Buildpipeline aus, die Sie in einem vorherigen Schritt erstellt haben.
 2. Wählen Sie unter **Kürzlich abgeschlossen** den zuletzt abgeschlossenen Build aus, und klicken Sie dann auf **Release**.
-3. Klicken Sie auf **Ja**, um eine Releasedefinition zu erstellen.
+3. Wählen Sie **Ja** aus, um eine Releasepipeline zu erstellen.
 4. Wählen Sie die Vorlage **Leer** und dann **Weiter**.
-5. Überprüfen Sie, ob das Projekt und die Quellbuilddefinition mit Ihrem Projekt ausgefüllt werden.
+5. Überprüfen Sie, ob das Projekt und die Quellbuildpipeline mit Ihrem Projekt ausgefüllt werden.
 6. Aktivieren Sie das Kontrollkästchen **Continuous Deployment**, und klicken Sie dann auf **Erstellen**.
 7. Klicken Sie auf das Dropdownfeld neben **+ Aufgaben hinzufügen** und dann auf *Bereitstellungsgruppenphase hinzufügen*.
     
-    ![Hinzufügen einer Aufgabe zu einer Releasedefinition in Team Services](media/tutorial-vsts-iis-cicd/add_release_task.png)
+    ![Hinzufügen einer Aufgabe zur Releasepipeline in Azure DevOps Services](media/tutorial-vsts-iis-cicd/add_release_task.png)
 
 8. Klicken Sie neben **IIS Web App Deploy(Preview)** (IIS-Web-App-Bereitstellung (Vorschau)) auf **Hinzufügen** und danach auf **Schließen**.
 9. Wählen Sie die übergeordnete Aufgabe **Für Bereitstellungsgruppe ausführen**.
     1. Wählen Sie für **Bereitstellungsgruppe** die zuvor erstellte Bereitstellungsgruppe, z.B. *myIIS*.
     2. Klicken Sie im Feld **Computertags** auf **Hinzufügen**, und wählen Sie dann das Tag *Web* aus.
     
-    ![Bereitstellungsgruppe der Releasedefinition für IIS](media/tutorial-vsts-iis-cicd/release_definition_iis.png)
+    ![Releasepipeline-Bereitstellungsgruppenaufgabe für IIS](media/tutorial-vsts-iis-cicd/release_definition_iis.png)
  
 11. Wählen Sie die Aufgabe **Deploy: IIS Web App Deploy** (Bereitstellen: IIS-Web-App-Bereitstellung), um die Einstellungen der IIS-Instanz wie folgt zu konfigurieren:
     1. Geben Sie unter **Websitename** den Namen *Standardwebsite* ein.
@@ -185,12 +185,12 @@ Erstellen Sie zum Veröffentlichen Ihrer Builds eine Releasedefinition in Team S
 ## <a name="create-a-release-and-publish"></a>Erstellen und Veröffentlichen eines Release
 Sie können nun Ihr Webbereitstellungspaket als neues Release übertragen. In diesem Schritt erfolgt die Kommunikation mit dem Agent der einzelnen Instanzen, die Teil der Bereitstellungsgruppe sind. Darüber hinaus wird das Webbereitstellungspaket übertragen und IIS zur Ausführung der aktualisierten Webanwendung konfiguriert.
 
-1. Klicken Sie in Ihrer Releasedefinition auf **+ Release** und anschließend auf **Release erstellen**.
+1. Wählen Sie in Ihrer Releasepipeline **+ Release** und anschließend **Release erstellen** aus.
 2. Stellen Sie sicher, dass in der Dropdownliste der aktuelle Build und **Automatisierte Bereitstellung: nach der Releaseerstellung** ausgewählt sind. Klicken Sie auf **Erstellen**.
-3. Im oberen Bereich der Releasedefinition wird ein kleines Banner angezeigt, etwa *Release "Release-1" wurde erstellt*. Klicken Sie auf den Releaselink.
+3. Im oberen Bereich der Releasepipeline wird ein kleines Banner angezeigt, etwa *Release „Release-1“ wurde erstellt*. Klicken Sie auf den Releaselink.
 4. Öffnen Sie die Registerkarte **Protokolle**, um den Releasestatus anzuzeigen.
     
-    ![Erfolgreiche Übertragung des Team Services-Release und -Webbereitstellungspakets](media/tutorial-vsts-iis-cicd/successful_release.png)
+    ![Erfolgreiche Übertragung des Azure DevOps Services-Release- und -Webbereitstellungspakets](media/tutorial-vsts-iis-cicd/successful_release.png)
 
 5. Öffnen Sie nach Abschluss des Release einen Webbrowser, und geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers ein. Ihre ASP.NET-Webanwendung wird ausgeführt.
 
@@ -204,14 +204,14 @@ Ihre Webanwendung wird unter IIS ausgeführt. Testen Sie nun die gesamte CI/CD-P
 2. Navigieren Sie zu *myWebApp | Ansichten | Start | Index.cshtml*, und öffnen Sie die Datei.
 3. Bearbeiten Sie die Zeile 6 wie folgt:
 
-    `<h1>ASP.NET with VSTS and CI/CD!</h1>`
+    `<h1>ASP.NET with Azure DevOps Services and CI/CD!</h1>`
 
 4. Speichern Sie die Datei .
 5. Öffnen Sie das **Team Explorer**-Fenster, wählen Sie das Projekt *myWebApp* aus, und klicken Sie dann auf **Änderungen**.
 6. Geben Sie eine Commitnachricht ein, z.B. *Testen der CI/CD-Pipeline*, und wählen Sie dann im Dropdownmenü **Commit für alle und Sync**.
-7. In einem Team Services-Arbeitsbereich wird durch den Codecommit ein neuer Build ausgelöst. 
-    - Wählen Sie **Build und Release** und dann **Builds**. 
-    - Wählen Sie Ihre Builddefinition aus, und wählen Sie dann den Build **Queued & running** (In der Warteschlange und ausgeführt), um den Status des Builds zu überwachen.
+7. In einem Azure DevOps Services-Arbeitsbereich wird durch den Codecommit ein neuer Build ausgelöst. 
+    - Klicken Sie auf **Build und Release** und dann auf **Builds**. 
+    - Wählen Sie Ihre Buildpipeline aus, und wählen Sie dann den Build **In Warteschlange und aktuell ausgeführt** aus, um den Status des Builds zu überwachen.
 9. Nachdem der Build erfolgreich erstellt wurde, wird ein neues Release ausgelöst.
     - Klicken Sie auf **Build und Release** und dann auf **Releases**, um das Webbereitstellungspaket per Push an den virtuellen IIS-Computer zu übertragen. 
     - Klicken Sie auf das Symbol **Aktualisieren**, um den Status zu aktualisieren. Wenn in der Spalte *Umgebungen* ein grünes Häkchen angezeigt wird, wurde das Release erfolgreich in IIS bereitgestellt.
@@ -222,14 +222,14 @@ Ihre Webanwendung wird unter IIS ausgeführt. Testen Sie nun die gesamte CI/CD-P
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine ASP.NET-Webanwendung in Team Services erstellt und Build- und Releasedefinitionen konfiguriert, um mit jedem Codecommit neue Webbereitstellungspakete in IIS bereitzustellen. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine ASP.NET-Webanwendung in Azure DevOps Services erstellt und Build- und Releasepipelines konfiguriert, um mit jedem Codecommit neue Webbereitstellungspakete in IIS bereitzustellen. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
-> * Veröffentlichen einer ASP.NET-Webanwendung in einem Team Services-Projekt
-> * Erstellen einer Builddefinition, die durch Codecommits ausgelöst wird
+> * Veröffentlichen einer ASP.NET-Webanwendung in einem Azure DevOps Services-Projekt
+> * Erstellen einer Buildpipeline, die durch Codecommits ausgelöst wird
 > * Installieren und Konfigurieren von IIS auf einem virtuellen Computer in Azure
-> * Hinzufügen der IIS-Instanz zu einer Bereitstellungsgruppe in Team Services
-> * Erstellen einer Releasedefinition zum Veröffentlichen neuer Webbereitstellungspakete in IIS
+> * Hinzufügen der IIS-Instanz zu einer Bereitstellungsgruppe in Azure DevOps Services
+> * Erstellen einer Releasepipeline zum Veröffentlichen neuer Webbereitstellungspakete in IIS
 > * Testen der CI/CD-Pipeline
 
 Wechseln Sie zum nächsten Tutorial, um zu erfahren, wie Sie einen SQL&#92;IIS&#92;.NET-Stapel auf einem Paar von Windows-VMs installieren.

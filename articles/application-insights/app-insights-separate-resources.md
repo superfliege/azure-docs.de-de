@@ -1,8 +1,8 @@
 ---
 title: Trennen der Telemetrie von Entwicklung, Testen und Release in Azure Application Insights | Microsoft Docs
-description: "Leiten Sie Telemetriedaten für Entwicklungs-, Test- und Produktionsabläufe an verschiedene Ressourcen."
+description: Leiten Sie Telemetriedaten für Entwicklungs-, Test- und Produktionsabläufe an verschiedene Ressourcen.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8d95958bce0597bfb16ef1c6b99b72ce9134e66f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 88626c3a4bfd4a1ff3a2e9cbc8c3f2b1c5553295
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303624"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Trennen der Telemetriedaten von Entwicklung, Test und Produktion
 
@@ -37,7 +38,7 @@ Normalerweise entscheiden Sie sich in unterschiedlichen Szenarien für die Verwe
 * A | B-Tests: Verwenden Sie eine einzelne Ressource. Erstellen Sie einen Telemetrie-Initialisierer, um den Telemetriedaten eine Eigenschaft zum Identifizieren der Varianten hinzuzufügen.
 
 
-## <a name="dynamic-ikey"></a> Dynamischer Instrumentierungsschlüssel
+## <a name="dynamic-ikey"></a> Dynamischer Instrumentationsschlüssel
 
 Um das Ändern des ikeys beim Fortschreiten des Codes von einer Produktionsphase zur nächsten zu erleichtern, legen Sie ihn im Code statt in der Konfigurationsdatei fest.
 
@@ -139,7 +140,7 @@ Es gibt verschiedene Methoden, um die Eigenschaft "Anwendungsversion" festzulege
     Um das Generieren von Versionsnummern in MSBuild zu ermöglichen, legen Sie in "AssemblyReference.cs" die Version fest, z. B. `1.0.*`.
 
 ## <a name="version-and-release-tracking"></a>Versionsnachverfolgung
-Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinfo.config` über den Prozess Ihres Microsoft-Buildmoduls generiert wird. Fügen Sie in Ihrer CSPROJ-Datei Folgendes hinzu:  
+Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinfo.config` über den Prozess Ihrer Microsoft-Build-Engine generiert wird. Fügen Sie in Ihrer CSPROJ-Datei Folgendes hinzu:  
 
 ```XML
 
@@ -150,10 +151,10 @@ Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinf
 
 Wenn das Webmodul Application Insights über die Buildinformationen verfügt, fügt es jedem Telemetrieelement automatisch die **Anwendungsversion** als Eigenschaft hinzu. Dies ermöglicht es Ihnen, nach der Version zu filtern, wenn Sie [Diagnosesuchen](app-insights-diagnostic-search.md) durchführen oder [Metriken untersuchen](app-insights-metrics-explorer.md).
 
-Beachten Sie aber, dass die Buildversionsnummer nur vom Microsoft-Buildmodul generiert wird, und nicht vom Entwicklerbuild in Visual Studio.
+Beachten Sie aber, dass die Buildversionsnummer nur von der Microsoft-Build-Engine generiert wird, und nicht vom Entwicklerbuild in Visual Studio.
 
 ### <a name="release-annotations"></a>Versionsanmerkungen
-Bei Verwendung von Visual Studio Team Services können Sie Ihren Diagrammen einen [Anmerkungsmarker](app-insights-annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. In der folgenden Abbildung ist dargestellt, wie dieser Marker angezeigt wird.
+Bei Verwendung von Azure DevOps können Sie Ihren Diagrammen einen [Anmerkungsmarker](app-insights-annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. In der folgenden Abbildung ist dargestellt, wie dieser Marker angezeigt wird.
 
 ![Screenshot eines Beispiels für eine Versionsanmerkung in einem Diagramm](./media/app-insights-asp-net/release-annotation.png)
 ## <a name="next-steps"></a>Nächste Schritte

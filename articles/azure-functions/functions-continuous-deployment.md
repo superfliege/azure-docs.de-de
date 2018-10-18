@@ -4,26 +4,22 @@ description: Verwenden Sie Continuous Deployment-Funktionen von Azure App Servic
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: db10cd957f4dc59f787e2ac625355a96c888356e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735702"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301547"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Continuous Deployment für Azure Functions
-Mit Azure Functions können Sie Ihre Funktionen-App unter Verwendung von App Service-Continuous Integration problemlos bereitstellen. Functions kann in Bitbucket, Dropbox, GitHub und Visual Studio Team Services (VSTS) integriert werden. Dies ermöglicht einen Workflow, bei dem Funktionscodeaktualisierungen, die durch einen dieser integrierten Dienste erfolgt sind, die Bereitstellung in Azure auslösen. Sollten Sie noch nicht mit Azure Functions vertraut sein, sehen Sie sich zuerst die [Übersicht zu Azure Functions](functions-overview.md)an.
+Mit Azure Functions können Sie Ihre Funktionen-App unter Verwendung von App Service-Continuous Integration problemlos bereitstellen. Functions kann mit Bitbucket, Dropbox, GitHub und Azure DevOps integriert werden. Dies ermöglicht einen Workflow, bei dem Funktionscodeaktualisierungen, die durch einen dieser integrierten Dienste erfolgt sind, die Bereitstellung in Azure auslösen. Sollten Sie noch nicht mit Azure Functions vertraut sein, sehen Sie sich zuerst die [Übersicht zu Azure Functions](functions-overview.md)an.
 
 Die kontinuierliche Bereitstellung ist hervorragend für Projekte geeignet, bei denen häufig zahlreiche Beiträge integriert werden. Außerdem behalten Sie die Kontrolle über den Quellcode Ihrer Funktionen. Aktuell werden folgende Bereitstellungsquellen unterstützt:
 
@@ -33,7 +29,7 @@ Die kontinuierliche Bereitstellung ist hervorragend für Projekte geeignet, bei 
 * [Lokales Git-Repository](../app-service/app-service-deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
-* [Visual Studio Team Services](https://www.visualstudio.com/team-services/)
+* [Azure DevOps Services](https://www.visualstudio.com/team-services/)
 
 Bereitstellungen werden pro Funktionen-App konfiguriert. Nach Aktivierung von Continuous Deployment wird der Zugriff auf den Code im Portal auf *schreibgeschützt*festgelegt.
 
@@ -43,10 +39,10 @@ Die Bereitstellungsquelle und der darin enthaltene Funktionscode müssen vor der
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Um über VSTS bereitstellen zu können, müssen Sie zuerst Ihr VSTS-Konto mit Ihrem Azure-Abonnement verknüpfen. Weitere Informationen finden Sie unter [Einrichten der Abrechnung über das Azure-Portal](https://docs.microsoft.com/vsts/billing/set-up-billing-for-your-account-vs?view=vsts#set-up-billing-via-the-azure-portal).
+Damit eine Bereitstellung über Azure DevOps möglich ist, müssen Sie zuerst Ihre Azure DevOps-Organisation mit Ihrem Azure-Abonnement verknüpfen. Weitere Informationen finden Sie unter [Einrichten der Abrechnung für Ihre Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/billing/set-up-billing-for-your-organization-vs?view=vsts#set-up-billing-via-the-azure-portal).
 
 ## <a name="set-up-continuous-deployment"></a>Einrichten der fortlaufenden Bereitstellung
-Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktionen-App zu konfigurieren. Die folgenden Schritte beziehen sich auf die Integration mit einem GitHub-Repository. Für Visual Studio Team Services oder andere Bereitstellungsdienste gelten jedoch ähnliche Schritte.
+Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktionen-App zu konfigurieren. Die folgenden Schritte beziehen sich auf die Integration mit einem GitHub-Repository. Für Azure DevOps und andere Bereitstellungsdienste gelten jedoch ähnliche Schritte.
 
 1. Klicken Sie in der Funktionen-App im [Azure-Portal](https://portal.azure.com) auf **Plattformfeatures** und auf **Bereitstellungsoptionen**. 
    

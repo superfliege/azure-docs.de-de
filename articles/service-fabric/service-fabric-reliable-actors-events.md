@@ -1,5 +1,5 @@
 ---
-title: Ereignisse in Actor-basierten Azure-Microservices | Microsoft-Dokumentation
+title: Ereignisse in akteurbasierten Azure Service Fabric-Akteuren | Microsoft-Dokumentation
 description: Einführung in Ereignisse für Service Fabric Reliable Actors.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: ed920c8d4ff7254b19c6eef8f5961593bb56bacf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c228821383a1bfedf380f97e3411fdacc322a6f9
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207076"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054477"
 ---
 # <a name="actor-events"></a>Actor-Ereignisse
 Actor-Ereignisse bieten eine Möglichkeit zum Senden von Best-Effort-Nachrichten vom Actor an die Clients. Actor-Ereignisse dienen der Actor-Client-Kommunikation und sollten nicht für die Kommunikation zwischen Actors verwendet werden.

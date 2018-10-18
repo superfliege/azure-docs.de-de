@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666431"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025275"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -42,7 +42,7 @@ Die Größenanforderungen für den Konfigurationsserver richten sich nach der po
 | 12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz) |18 GB |600 GB |500 GB bis 1 TB |100 bis 150 Computer replizieren |
 | 16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) |32 GB |1 TB |1 TB bis 2 TB |150 bis 200 Computer replizieren |
 
-Wenn Sie mehr als eine VMware-VM replizieren, lesen Sie den Artikel [Überlegungen zur Kapazitätsplanung](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware). Führen Sie das [Bereitstellungsplanertool](site-recovery-deployment-planner.md) für die VMware-Replikation aus.
+Wenn Sie mehr als eine VMware-VM replizieren, lesen Sie den Artikel [Überlegungen zur Kapazitätsplanung](site-recovery-plan-capacity-vmware.md). Führen Sie das [Bereitstellungsplanertool](site-recovery-deployment-planner.md) für die VMware-Replikation aus.
 
 ## <a name="download-the-template"></a>Herunterladen der Vorlage
 
@@ -121,19 +121,19 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 1. Kann ich die VM, auf der der Konfigurationsserver installiert ist, für andere Zwecke einsetzen?
 
-    **Nein**. Es wird empfohlen, die VM ausschließlich als Konfigurationsserver einzusetzen. Vergewissern Sie sich, dass alle im [vorherigen Abschnitt](vmware-azure-deploy-configuration-server.md#Prerequisites) genannten Spezifikationen für eine effiziente Verwaltung von Notfallwiederherstellungen eingehalten werden.
+    **Nein**. Es wird empfohlen, die VM ausschließlich als Konfigurationsserver einzusetzen. Stellen Sie sicher, dass alle unter [Voraussetzungen](#prerequisites) genannten Spezifikationen für eine effiziente Verwaltung von Notfallwiederherstellungen eingehalten werden.
 2. Kann ich den Tresor, der bereits auf dem Konfigurationsserver registriert ist, mit einem neu erstellten Tresor austauschen?
 
     **Nein**, sobald ein Tresor beim Konfigurationsserver registriert ist, sind keine Änderungen daran möglich.
 3. Kann ich den gleichen Konfigurationsserver zum Schutz von physischen und virtuellen Computern verwenden?
 
-    **Ja**, ein Konfigurationsserver kann zum Replizieren von physischen und virtuellen Computern verwendet werden. Allerdings kann ein physischer Computer nur auf eine VMware-VM zurückgesetzt werden.
+    **Ja**, derselbe Konfigurationsserver kann zum Replizieren von physischen und virtuellen Computern verwendet werden. Allerdings kann ein physischer Computer nur auf eine VMware-VM zurückgesetzt werden.
 4. Welchen Zweck erfüllt ein Konfigurationsserver, und wo wird er eingesetzt?
 
-    Weitere Informationen zum Konfigurationsserver und seinen Funktionen finden Sie im [Artikel zu unserer Azure Site Recovery-Architektur](vmware-azure-architecture.md).
+    Weitere Informationen zu Konfigurationsservern und deren Funktionen finden Sie unter [Architektur der Replikation von VMware zu Azure](vmware-azure-architecture.md).
 5. Wo erhalte ich die neueste Version des Konfigurationsservers?
 
-    Den Artikel mit den einzelnen Schritten zum Durchführen eines Upgrades für den Konfigurationsserver finden Sie [im Portal](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Sie können das Tool auch direkt aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen.
+    Schritte für ein Upgrade des Konfigurationsservers über das Portal finden Sie unter [Aktualisieren des Konfigurationsservers](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Sie können das Tool auch direkt aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen.
 6. Wo kann ich die Passphrase für den Konfigurationsserver herunterladen?
 
     Informationen zum Herunterladen der Passphrase finden Sie in [diesem Artikel](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).
@@ -143,7 +143,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 ## <a name="upgrade-the-configuration-server"></a>Aktualisieren Sie den Konfigurationsserver
 
-Um den Konfigurationsserver auf die neueste Version zu aktualisieren, lesen Sie die [hier](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) aufgeführten Schritte.
+Um den Konfigurationsserver auf die neueste Version zu aktualisieren, befolgen Sie [diese Schritte](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 
 ## <a name="manage-the-configuration-server"></a>Verwalten des Konfigurationsservers
 

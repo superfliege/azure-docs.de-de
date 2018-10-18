@@ -3,7 +3,7 @@ title: Einrichten von Azure Key Vault mit End-to-End-Schlüsselrotation und Übe
 description: Dieser Artikel bietet Informationen zum Einrichten der Schlüsselrotation und Überwachen von Schlüsseltresorprotokollen.
 services: key-vault
 documentationcenter: ''
-author: swgriffith
+author: barclayn
 manager: mbaldwin
 tags: ''
 ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
@@ -11,24 +11,30 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/01/2018
-ms.author: stgriffi
-ms.openlocfilehash: 01f1f719545b554b22ef79b38f95087341c65e83
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.topic: conceptual
+ms.date: 06/12/2018
+ms.author: barclayn
+ms.openlocfilehash: bf3aba431e7b417b2213bc3410fd7722d7888d15
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31594119"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302016"
 ---
-# <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Einrichten von Azure Key Vault mit End-to-End-Schlüsselrotation und Überwachung
+# <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung
+
 ## <a name="introduction"></a>Einführung
-Nach Erstellen Ihres Schlüsseltresors können Sie Ihre Schlüssel und geheimen Schlüssel in diesem Tresor speichern. Ihre Anwendungen müssen Ihre Schlüssel und geheimen Schlüssel nicht mehr dauerhaft speichern, sondern fordern diese bei Bedarf aus dem Schlüsseltresor an. Dadurch können Sie Schlüssel und geheime Schlüssel ohne Auswirkungen auf das Verhalten Ihrer Anwendung aktualisieren, was eine Vielzahl von Möglichkeiten für die Verwaltung von Schlüsseln und geheimen Schlüsseln eröffnet.
+
+Nach dem Erstellen eines Schlüsseltresors können Sie Schlüssel und Geheimnisse in diesem Tresor speichern. Ihre Schlüssel und Geheimnisse müssen in Ihren Anwendungen nicht mehr dauerhaft gespeichert werden, sondern können bei Bedarf aus dem Tresor angefordert werden. Dadurch können Sie Schlüssel und geheime Schlüssel ohne Auswirkungen auf das Verhalten Ihrer Anwendung aktualisieren, was eine Vielzahl von Möglichkeiten für die Verwaltung von Schlüsseln und geheimen Schlüsseln eröffnet.
 
 >[!IMPORTANT]
 > Die Beispiele in diesem Artikel werden lediglich zur Veranschaulichung bereitgestellt. Sie sind nicht für Produktionszwecke vorgesehen. 
 
-Dieser Artikel bietet eine exemplarische Vorgehensweise anhand eines Beispiels der Nutzung von Azure Key Vault zum Speichern eines geheimen Schlüssels. In diesem Fall handelt es sich um einen Azure Storage-Kontoschlüssel, auf den eine Anwendung zugreift. Außerdem wird die Implementierung einer geplanten Rotation dieses Speicherkontoschlüssels demonstriert. Schließlich werden Sie durch eine Demonstration der Überwachung der Schlüsseltresorprotokolle und Auslösung von Warnungen begleitet, wenn unerwartete Anforderungen erfolgen.
+In diesem Artikel wird Folgendes beschrieben:
+
+- Ein Beispiel für die Verwendung von Azure Key Vault zum Speichern eines Geheimnisses. In diesem Tutorial handelt es sich bei dem gespeicherten Geheimnis um den Azure Storage-Kontoschlüssel, auf den eine Anwendung zugreift. 
+- Außerdem wird die Implementierung einer geplanten Rotation dieses Speicherkontoschlüssels demonstriert.
+- Es wird erläutert, wie die Überwachungsprotokolle des Schlüsseltresors überwacht und wie bei unerwarteten Anforderungen Warnungen ausgelöst werden.
 
 > [!NOTE]
 > In diesem Tutorial werden nicht die Einzelheiten der erstmaligen Einrichtung Ihres Schlüsseltresors behandelt. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie unter [Verwalten von Schlüsseltresor mit CLI](key-vault-manage-with-cli2.md).
@@ -36,6 +42,7 @@ Dieser Artikel bietet eine exemplarische Vorgehensweise anhand eines Beispiels d
 >
 
 ## <a name="set-up-key-vault"></a>Einrichten von Key Vault
+
 Damit eine Anwendung einen geheimen Schlüssel aus Key Vault abrufen kann, müssen Sie zuerst den geheimen Schlüssel erstellen und ihn in den Tresor hochladen. Starten Sie hierfür eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
 
 ```powershell
@@ -69,6 +76,7 @@ $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
 Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
+
 Rufen Sie als Nächstes den URI für den erstellten geheimen Schlüssel ab. Dieser wird in einem späteren Schritt verwendet, wenn Sie den Schlüsseltresor zum Abrufen des geheimen Schlüssels aufrufen. Führen Sie den folgenden PowerShell-Befehl aus, und notieren Sie den Wert „ID“, bei dem es sich um den URI des geheimen Schlüssels handelt:
 
 ```powershell
@@ -76,6 +84,7 @@ Get-AzureKeyVaultSecret –VaultName <vaultName>
 ```
 
 ## <a name="set-up-the-application"></a>Einrichten der Anwendung
+
 Da Sie nun über einen gespeicherten geheimen Schlüssel verfügen, können Sie diesen mithilfe von Code abrufen und verwenden. Hierfür sind mehrere Schritte erforderlich. Der erste und wichtigste Schritt ist die Registrierung Ihrer Anwendung in Azure Active Directory. Danach müssen Sie an Key Vault Informationen zu Ihrer Anwendung übermitteln, damit der Schlüsseltresor Anforderungen von Ihrer Anwendung empfangen kann.
 
 > [!NOTE]
@@ -83,29 +92,23 @@ Da Sie nun über einen gespeicherten geheimen Schlüssel verfügen, können Sie 
 >
 >
 
-Öffnen Sie die Registerkarte „Anwendungen“ von Azure Active Directory (AD).
+1. Navigieren Sie zu Azure Active Directory.
+2. Wählen Sie **App-Registrierungen** aus. 
+3. Wählen Sie **Registrierung einer neuen Anwendung** aus, um Ihrer Azure Active Directory-Instanz eine Anwendung hinzuzufügen.
 
-![„Anwendungen“ in Azure Active Directory öffnen](./media/keyvault-keyrotation/AzureAD_Header.png)
+    ![„Anwendungen“ in Azure Active Directory öffnen](./media/keyvault-keyrotation/azure-ad-application.png)
 
-Wählen Sie **Hinzufügen**, um Azure Active Directory eine Anwendung hinzuzufügen.
+4. Behalten Sie im Abschnitt **Erstellen** den Anwendungstyp **Webanwendung und/oder Web-API** bei, und geben Sie der Anwendung einen Namen. Geben Sie für die Anwendung eine **Anmelde-URL** ein. Diese Angabe ist für diese Demo beliebig.
 
-![„Hinzufügen“ auswählen](./media/keyvault-keyrotation/Azure_AD_AddApp.png)
+    ![Erstellen der Anwendungsregistrierung](./media/keyvault-keyrotation/create-app.png)
 
-Belassen Sie den Anwendungstyp als **Webanwendung und/oder Web-API**, und versehen Sie Ihre Anwendung mit einem Namen.
+5. Nachdem Azure Active Directory die Anwendung hinzugefügt wurde, gelangen Sie auf die Anwendungsseite. Wählen Sie **Einstellungen** und dann Eigenschaften aus. Kopieren Sie den Wert für **Anwendungs-ID**. Er wird in späteren Schritten benötigt.
 
-![Die Anwendung benennen](./media/keyvault-keyrotation/AzureAD_NewApp1.png)
+Generieren Sie dann einen Schlüssel für die Anwendung, damit diese mit Azure Active Directory interagieren kann. Sie können einen Schlüssel erstellen, indem Sie zum Abschnitt **Schlüssel** unter **Einstellungen** navigieren. Notieren Sie in Ihrer Azure Active Directory-Anwendung den neu generierten Schlüssel für die Verwendung in einem späteren Schritt. Beachten Sie, dass der Schlüssel nicht mehr verfügbar ist, nachdem Sie aus diesem Abschnitt navigieren. 
 
-Geben Sie für Ihre Anwendung eine **Anmelde-URL** und einen **App-ID-URI** ein. Diese Angaben sind für diese Demo beliebig und können später bei Bedarf geändert werden.
+![Azure Active Directory-App-Schlüssel](./media/keyvault-keyrotation/create-key.png)
 
-![Erforderliche URIs bereitstellen](./media/keyvault-keyrotation/AzureAD_NewApp2.png)
-
-Nachdem Azure Active Directory die Anwendung hinzugefügt wurde, gelangen Sie auf die Anwendungsseite. Klicken Sie auf die Registerkarte **Konfigurieren**, suchen Sie den Wert **Client-ID**, und kopieren Sie ihn. Notieren Sie die Client-ID für spätere Schritte.
-
-Generieren Sie dann einen Schlüssel für die Anwendung, damit diese mit Azure Active Directory interagieren kann. Sie können diesen im Abschnitt **Schlüssel** auf der Registerkarte **Konfiguration** erstellen. Notieren Sie in Ihrer Azure Active Directory-Anwendung den neu generierten Schlüssel für die Verwendung in einem späteren Schritt.
-
-![Azure Active Directory-App-Schlüssel](./media/keyvault-keyrotation/Azure_AD_AppKeys.png)
-
-Bevor Ihre Anwendung Aufrufe an den Schlüsseltresor durchführen kann, müssen Sie den Schlüsseltresor über Ihre Anwendung und deren Berechtigungen informieren. Der folgende Befehl verwendet den Namen des Schlüsseltresors und die Client-ID aus Ihrer Azure Active Directory-App und gewährt Ihrem Schlüsseltresor für die Anwendung den Zugriff **Abrufen**.
+Bevor Ihre Anwendung Aufrufe an den Schlüsseltresor durchführen kann, müssen Sie den Schlüsseltresor über Ihre Anwendung und deren Berechtigungen informieren. Der folgende Befehl verwendet den Namen des Schlüsseltresors und die Anwendungs-ID aus Ihrer Azure Active Directory-App und gewährt dem Schlüsseltresor für die Anwendung den Zugriff zum **Abrufen**.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
@@ -161,6 +164,7 @@ var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 Wenn Sie Ihre Anwendung ausführen, müssen Sie sich jetzt bei Azure Active Directory authentifizieren und dann den Wert Ihres geheimen Schlüssels aus Azure Key Vault abrufen.
 
 ## <a name="key-rotation-using-azure-automation"></a>Schlüsselrotation mithilfe von Azure Automation
+
 Es gibt verschiedene Optionen für die Implementierung einer Strategie für die Rotation von Werten, die Sie als geheime Azure Key Vault-Schlüssel speichern. Die Rotation geheimer Schlüssel kann im Rahmen eines manuellen Prozesses, programmgesteuert mithilfe von API-Aufrufen oder mithilfe eines Automatisierungsskripts erfolgen. Für diesen Artikel nutzen Sie Azure PowerShell zusammen mit Azure Automation, um einen Zugriffsschlüssel für das Azure Storage-Konto zu ändern. Anschließend aktualisieren Sie einen geheimen Schlüssel im Schlüsseltresor mit diesem neuen Schlüssel.
 
 Damit Azure Automation geheime Schlüsselwerte in Ihrem Schlüsseltresor festlegen kann, müssen Sie die Client-ID der Verbindung namens „AzureRunAsConnection“ abrufen, die erstellt wurde, als Sie Ihre Azure Automation-Instanz erstellt haben. Sie können diese ID abrufen, indem Sie in Ihrer Azure Automation-Instanz **Assets** auswählen. Dort wählen Sie **Verbindungen** und dann den Dienstprinzipal **AzureRunAsConnection** aus. Notieren Sie den Wert von **Anwendungs-ID**.
@@ -407,6 +411,7 @@ Fügen Sie eine Datei namens „project.json“ mit folgendem Inhalt hinzu:
        }
     }
 ```
+
 Dadurch wird Azure Functions beim **Speichern** die erforderlichen Binärdateien herunterladen.
 
 Wechseln Sie zur Registerkarte **Integrieren** , und versehen Sie den Parameter „Timer“ mit einem aussagekräftigen Namen, der in der Funktion verwendet werden soll. Im obigen Code wird erwartet, dass der Timer *myTimer*heißt. Geben Sie einen [CRON-Ausdruck](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON) wie folgt an: 0 \* \* \* \* \* für den Timer, der bewirkt, dass die Funktion einmal pro Minute ausgeführt wird.
@@ -418,6 +423,7 @@ Fügen Sie eine Ausgabe des Typs *Azure Blob Storage* hinzu. Diese zeigt auf die
 An diesem Punkt ist die Funktion fertig. Wechseln Sie zurück zur Registerkarte **Entwickeln**, und speichern Sie den Code. Überprüfen Sie das Ausgabefenster auf Kompilierungsfehler, und korrigieren Sie diese entsprechend. Falls die Kompilierung erfolgt, sollte der Code nun die Schlüsseltresorprotokolle minütlich überprüfen und alle neuen Ereignisse in die definierte Service Bus-Warteschlange übertragen. Immer wenn die Funktion ausgelöst wird, sollten Protokollinformationen im Protokollfenster ausgegeben werden.
 
 ### <a name="azure-logic-app"></a>Azure-Logik-App
+
 Als Nächstes müssen Sie eine Azure-Logik-App erstellen, die die Ereignisse verarbeitet, die die Funktion in die Service Bus-Warteschlange überträgt, den Inhalt analysiert und basierend auf einer erfüllten Bedingung eine E-Mail sendet.
 
 [Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) über **Neu &gt; Logik-App**.

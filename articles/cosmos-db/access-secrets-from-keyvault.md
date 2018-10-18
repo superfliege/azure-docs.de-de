@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
-ms.openlocfilehash: 11aac0ab4476494f74453ca64a1b77964197adaa
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: b090c1593b49bec4f51fea8d498860e8af8b2f4b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42751577"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053083"
 ---
 # <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>Verwenden von Key Vault zum Speichern von und Zugreifen auf Azure Cosmos DB-Schlüssel
 
@@ -56,7 +56,7 @@ Die folgenden Schritte sind erforderlich, Azure Cosmos DB-Zugriffsschlüssel in 
 
 ## <a name="create-an-azure-web-application"></a>Erstellen einer Azure-Webanwendung
 
-1. Erstellen Sie eine Azure-Webanwendung, oder laden Sie die Anwendung aus dem [GitHub-Repository](https://github.com/rsarosh/CosmosDB-KeyVault) herunter. Es ist eine einfache MVC-Anwendung.  
+1. Erstellen Sie eine Azure-Webanwendung, oder laden Sie die Anwendung aus dem [GitHub-Repository](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo) herunter. Es ist eine einfache MVC-Anwendung.  
 
 2. Entzippen Sie die heruntergeladene Anwendung, und öffnen Sie die Datei **HomeController.cs**. Aktualisieren Sie die Geheimnisse-ID in der folgenden Zeile:
 
@@ -87,11 +87,9 @@ Wenn Sie die Anwendung jetzt ausführen, können Sie das Geheimnis aus Key Vault
 
 ![Anwendung mit Geheimnis bereitgestellt](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
  
-Auf ähnliche Weise können Sie einen Benutzer für den Zugriff auf den Key Vault hinzufügen. Sie müssen sich selbst zum Key Vault hinzufügen, indem Sie auf „Zugriffsrichtlinien“ klicken und alle Berechtigungen gewähren, die Sie zum Ausführen der Anwendung über Visual Studio benötigen. Wenn diese Anwendung auf dem Desktop ausgeführt wird, nimmt sie Ihre Identität an.
+Auf ähnliche Weise können Sie einen Benutzer für den Zugriff auf den Key Vault hinzufügen. Sie müssen sich selbst zum Schlüsseltresor hinzufügen, indem Sie **Zugriffsrichtlinien** auswählen und alle Berechtigungen gewähren, die Sie zum Ausführen der Anwendung über Visual Studio benötigen. Wenn diese Anwendung auf dem Desktop ausgeführt wird, nimmt sie Ihre Identität an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Konfigurieren einer Firewall für Azure Cosmos DB finden Sie im Artikel [Firewallunterstützung](firewall-support.md).
 * Weitere Informationen zum Konfigurieren eines Dienstendpunkts für ein virtuelles Netzwerk, finden Sie im Artikel [Sicherer Zugriff auf ein Azure Cosmos DB-Konto durch Verwenden eines Azure Virtual Network-Dienstendpunkts](vnet-service-endpoint.md).
-
-

@@ -10,16 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: f5511486650d538bc136449c32babfd88efab86a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 99ed74a9664fbeeb65d90e51d0afcd97dd0b0ca0
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159633"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346492"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Remotedesktopgateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS
 
-Häufig nutzt das Remotedesktopgateway (RD-Gateway) die lokalen Netzwerkrichtliniendienste (Network Policy Services, NPS), um Benutzer zu authentifizieren. In diesem Artikel wird beschrieben, wie RADIUS-Anforderungen aus dem Remotedesktopgateway (über lokale NPS) an den Multi-Factor Authentication-Server weitergeleitet werden. Die Kombination von Azure MFA und RD-Gateway bedeutet, dass Ihre Benutzer von jedem Ort aus auf ihre Arbeitsumgebungen zugreifen können, während die sichere Authentifizierung ausgeführt wird. 
+Häufig nutzt das Remotedesktopgateway (RD-Gateway) die lokalen [Netzwerkrichtliniendienste (Network Policy Services, NPS)](https://docs.microsoft.com/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures), um Benutzer zu authentifizieren. In diesem Artikel wird beschrieben, wie RADIUS-Anforderungen aus dem Remotedesktopgateway (über lokale NPS) an den Multi-Factor Authentication-Server weitergeleitet werden. Die Kombination von Azure MFA und RD-Gateway bedeutet, dass Ihre Benutzer von jedem Ort aus auf ihre Arbeitsumgebungen zugreifen können, während die sichere Authentifizierung ausgeführt wird. 
 
 Verwenden Sie das RD-Gateway und RADIUS für die Integration in MFA-Server, da die Windows-Authentifizierung für Terminaldienste für Server 2012 R2 nicht unterstützt wird. 
 
@@ -28,6 +28,7 @@ Installieren Sie den Multi-Factor Authentication-Server auf einem separaten Serv
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein in die Domäne eingebundener Azure MFA-Server. Wenn Sie noch keinen Server installiert haben, können Sie die Schritte unter [Erste Schritte mit Azure Multi-Factor Authentication-Server](howto-mfaserver-deploy.md) ausführen.
+- Ein konfigurierter NPS-Server.
 - Ein Remotedesktopgateway, das mit Netzwerkrichtliniendiensten authentifiziert wird.
 
 ## <a name="configure-the-remote-desktop-gateway"></a>Konfigurieren des Remotedesktopgateways

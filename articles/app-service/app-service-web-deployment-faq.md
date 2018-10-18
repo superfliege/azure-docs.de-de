@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 54c99cc9dde6a9706c75401dd75b98f8f5de7cec
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ab8750e5824cf9f7635d11a6b2be332b2f9a761c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068069"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302587"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Bereitstellung von Web-Apps in Azure
 
@@ -62,7 +62,7 @@ Wenn diese Meldung angezeigt wird, ist es wahrscheinlich, dass Sie auf ein Daten
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Wie richte ich für meine App Service-Web-App die kontinuierliche Bereitstellung ein?
 
-Sie können die kontinuierliche Bereitstellung über mehrere Ressourcen einrichten, z.B. Visual Studio Team Services, OneDrive, GitHub, Bitbucket, Dropbox und andere Git-Repositorys. Diese Optionen sind im Portal verfügbar. [Kontinuierliche Bereitstellung in App Service](app-service-continuous-deployment.md) ist ein nützliches Tutorial, das erläutert, wie Sie die kontinuierliche Bereitstellung einrichten.
+Sie können Continuous Deployment über mehrere Ressourcen einrichten, z.B. Azure DevOps, OneDrive, GitHub, Bitbucket, Dropbox und andere Git-Repositorys. Diese Optionen sind im Portal verfügbar. [Kontinuierliche Bereitstellung in App Service](app-service-continuous-deployment.md) ist ein nützliches Tutorial, das erläutert, wie Sie die kontinuierliche Bereitstellung einrichten.
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Wie behebe ich Probleme mit der kontinuierlichen Bereitstellung über GitHub und Bitbucket?
 
@@ -85,9 +85,9 @@ Der Azure-Schnellstart hilft Ihnen bei der Bereitstellung Ihrer App, indem Sie d
 
 Informationen zu den Umständen, unter denen eine Anwendungsbereitstellung zu einem Neustart führen kann, finden Sie unter [Deployment vs. runtime issues](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts") (Probleme mit Bereitstellung oder Laufzeit). Wie im Artikel beschrieben, stellt App Service Dateien im Ordner „wwwroot“ bereit. Ihre App wird nie direkt neu gestartet.
 
-## <a name="how-do-i-integrate-visual-studio-team-services-code-with-app-service"></a>Wie integriere ich Visual Studio Team Services-Code in App Service?
+## <a name="how-do-i-integrate-azure-devops-code-with-app-service"></a>Wie integriere ich Azure DevOps-Code in App Service?
 
-Sie haben zwei Möglichkeiten für die kontinuierliche Bereitstellung mit Visual Studio Team Services:
+Sie haben zwei Möglichkeiten für Continuous Deployment mit Azure DevOps:
 
 *   Verwenden Sie ein Git-Projekt. Stellen Sie eine Verbindung über App Service her, indem Sie die Bereitstellungsoptionen für dieses Repository verwenden.
 *   Verwenden Sie ein TFVC-Projekt (Team Foundation Version Control). Führen Sie die Bereitstellung mithilfe des Build-Agents für App Service durch.
@@ -95,7 +95,7 @@ Sie haben zwei Möglichkeiten für die kontinuierliche Bereitstellung mit Visual
 Die kontinuierliche Codebereitstellung für beide Optionen hängt von vorhandenen Entwicklerworkflows und Eincheckverfahren ab. Weitere Informationen und Beispiele finden Sie in diesen Artikeln: 
 
 *   [Implement continuous deployment of your app to an Azure website](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs) (Implementieren der kontinuierlichen Bereitstellung Ihrer App in einer Azure-Website)
-*   [Set up a Visual Studio Team Services account so it can deploy to a web app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App) (Einrichten eines Visual Studio Team Services-Kontos, um die Bereitstellung in einer Web-App zu ermöglichen)
+*   [Einrichten einer Azure DevOps-Organisation für die Bereitstellung in einer Web-App](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
 
 ## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Wie verwende ich FTP oder FTPS zur Bereitstellung meiner App in App Service?
 

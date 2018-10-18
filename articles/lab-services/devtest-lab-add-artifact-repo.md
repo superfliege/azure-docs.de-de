@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen eines Git-Repositorys zu einem Lab in Azure DevTest Labs | Microsoft Docs
-description: Erfahren Sie, wie Sie ein GitHub- oder Visual Studio Team Services-Git-Repository für Ihre benutzerdefinierte Artefaktquelle in Azure DevTest Labs hinzufügen.
+description: Erfahren Sie, wie Sie ein GitHub- oder Azure DevOps Services-Git-Repository für Ihre benutzerdefinierte Artefaktquelle in Azure DevTest Labs hinzufügen.
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: spelluru
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 80724a7d8d2b5cec19bdbce27cdafd4a9c09eb47
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e6c6f36d877f220bcc8d83b75750f54f85dcc198
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452497"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299881"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Hinzufügen eines Git-Repositorys zum Speichern von benutzerdefinierten Artefakten und Resource Manager-Vorlagen
 
-Sie können für die VMs in Ihrem Lab [benutzerdefinierte Artefakte erstellen](devtest-lab-artifact-author.md) oder [eine benutzerdefinierte Testumgebung mithilfe von Azure Resource Manager-Vorlagen erstellen](devtest-lab-create-environment-from-arm.md). Sie müssen ein privates Git-Repository für die Artefakte oder Resource Manager-Vorlagen, die Ihr Team erstellt, hinzufügen. Das Repository kann auf [GitHub](https://github.com) oder bei [Visual Studio Team Services](https://visualstudio.com) gehostet werden.
+Sie können für die VMs in Ihrem Lab [benutzerdefinierte Artefakte erstellen](devtest-lab-artifact-author.md) oder [eine benutzerdefinierte Testumgebung mithilfe von Azure Resource Manager-Vorlagen erstellen](devtest-lab-create-environment-from-arm.md). Sie müssen ein privates Git-Repository für die Artefakte oder Resource Manager-Vorlagen, die Ihr Team erstellt, hinzufügen. Das Repository kann auf [GitHub](https://github.com) oder in [Azure DevOps Services](https://visualstudio.com) gehostet werden.
 
 Wir bieten ein [GitHub-Repository von Artefakten](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), die Sie in unveränderter oder angepasster Form für Ihre Labs bereitstellen können. Beim Anpassen oder Erstellen eines Artefakts können Sie das Artefakt nicht im öffentlichen Repository speichern. Sie müssen ein eigenes privates Repository für benutzerdefinierte Artefakte und die von Ihnen erstellten Artefakte erstellen. 
 
 Wenn Sie eine VM erstellen, können Sie die Resource Manager-Vorlage speichern, bei Bedarf anpassen und später verwenden, um weitere VMs zu erstellen. Sie müssen Ihr eigenes privates Repository zum Speichern der benutzerdefinierten Resource Manager-Vorlagen erstellen.  
 
 * Anweisungen zum Erstellen eines GitHub-Repositorys finden Sie unter [GitHub Bootcamp](https://help.github.com/categories/bootcamp/)(in englischer Sprache).
-* Anweisungen zum Erstellen eines Team Services-Projekts mit einem Git-Repository finden Sie unter [Herstellen einer Verbindung mit Visual Studio Team Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
+* Anweisungen zum Erstellen eines Azure DevOps Services-Projekts mit einem Git-Repository finden Sie unter [Herstellen einer Verbindung mit Azure DevOps Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
 
 Die folgende Abbildung zeigt ein mögliches Beispiel für ein Repository mit Artefakten in GitHub:  
 
 ![Beispiel: GitHub-Artefaktrepository](./media/devtest-lab-add-repo/devtestlab-github-artifact-repo-home.png)
 
 ## <a name="get-the-repository-information-and-credentials"></a>Abrufen von Repository- und Anmeldeinformationen
-Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wichtige Informationen aus dem Repository ab. In den folgenden Abschnitten wird beschrieben, wie Sie die erforderlichen Informationen für Repositorys abrufen, die auf GitHub oder in Visual Studio Team Services gehostet werden.
+Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wichtige Informationen aus dem Repository ab. In den folgenden Abschnitten wird beschrieben, wie Sie die erforderlichen Informationen für Repositorys abrufen, die auf GitHub oder in Azure DevOps Services gehostet werden.
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Abrufen der Klon-URL und des persönlichen Zugriffstokens für das GitHub-Repository
 
@@ -52,7 +52,7 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
 9. Schließen Sie GitHub.   
 10. Fahren Sie mit dem Abschnitt [Verbinden des Labs mit dem Repository](#connect-your-lab-to-the-repository) fort.
 
-### <a name="get-the-visual-studio-team-services-repository-clone-url-and-personal-access-token"></a>Abrufen der Klon-URL und des persönlichen Zugriffstokens für das Visual Studio Team Services-Repository
+### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Abrufen der Klon-URL und des persönlichen Zugriffstokens für Azure Repos
 
 1. Wechseln Sie zur Startseite Ihrer Teamsammlung (z.B. https://contoso-web-team.visualstudio.com)), und wählen Sie dann das Projekt aus.
 2. Wählen Sie auf der Startseite des Projekts **Code**.
@@ -79,9 +79,9 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
     ![Schaltfläche zum Hinzufügen eines Repositorys](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. Geben Sie auf der zweiten Seite **Repositorys** Folgendes an:
   1. **Name**: Geben Sie einen Namen für das Repository ein.
-  2. **Git-Klon-URL**. Geben Sie die Git-HTTPS-Klon-URL ein, die Sie zuvor aus GitHub oder Visual Studio Team Services kopiert haben.
+  2. **Git-Klon-URL**. Geben Sie die Git-HTTPS-Klon-URL ein, die Sie zuvor aus GitHub oder Azure DevOps Services kopiert haben.
   3. **Branch**. Um zu Ihren Definitionen zu gelangen, geben Sie den Branch an.
-  4. **Persönliches Zugriffstoken**. Geben Sie das persönliche Zugriffstoken ein, das sie zuvor aus GitHub oder Visual Studio Team Services abgerufen haben.
+  4. **Persönliches Zugriffstoken**. Geben Sie das persönliche Zugriffstoken ein, das Sie zuvor aus GitHub oder Azure DevOps Services abgerufen haben.
   5. **Ordnerpfade**. Geben Sie mindestens einen Ordnerpfad relativ zur Klon-URL an, der die Artefakt- oder Resource Manager-Vorlagendefinitionen enthält. Wenn Sie ein Unterverzeichnis angeben, müssen Sie den Schrägstrich im Ordnerpfad angeben.
 
      ![Bereich „Repositorys“](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)

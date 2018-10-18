@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 108abe45b4b296e0d7928f2da00a06ac43e1ccbe
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b7ce07547eccd52a8b10d4cffecaf1456778da4a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438782"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301207"
 ---
-# <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>Integrieren von Azure DevTest Labs in Ihre VSTS-Pipeline für Continuous Integration und Continuous Delivery
-Sie können die in Visual Studio Team Services (VSTS) installierte Erweiterung *Azure DevTest Labs Tasks* für eine einfache Integration von Azure DevTest Labs in Ihre CI/CD-Build- und Releasepipeline nutzen. Die Erweiterung installiert drei Aufgaben: 
+# <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Integrieren von Azure DevTest Labs in Ihre Azure DevOps-Pipeline für Continuous Integration und Continuous Delivery
+Sie können die in Azure DevOps installierte Erweiterung *Azure DevTest Labs Tasks* für eine einfache Integration von Azure DevTest Labs in Ihre CI/CD-Build- und -Releasepipeline nutzen. Die Erweiterung installiert drei Aufgaben: 
 * Erstellen einer VM
 * Erstellen eines benutzerdefinierten Images von einem virtuellen Computer
 * Löschen eines virtuellen Computers 
@@ -85,16 +85,16 @@ In diesem Abschnitt wird beschrieben, wie Sie die Azure Resource Manager-Vorlage
 
 1. Checken Sie das Skript in Ihr Quellcodeverwaltungssystem ein. Geben Sie dem Skript einen Namen wie z.B. **GetLabVMParams.ps1**.
 
-   Wenn Sie dieses Skript im Rahmen der Releasedefinition auf dem Agent ausführen und Aufgabenschritte wie z.B. *Azure-Dateikopiervorgang* und *PowerShell auf Zielcomputern* verwenden, erfasst das Skript die Werte, die Sie zum Bereitstellen Ihrer App in der VM benötigen. Normalerweise würden Sie diese Aufgaben zum Bereitstellen von Apps in einer Azure-VM verwenden. Die Aufgaben benötigen Werte wie z.B. den Namen der VM-Ressourcengruppe, die IP-Adresse und den vollqualifizierten Domänennamen (FQDN).
+   Wenn Sie dieses Skript im Rahmen der Releasepipeline auf dem Agent ausführen und Aufgabenschritte wie z.B. *Azure-Dateikopiervorgang* und *PowerShell auf Zielcomputern* verwenden, erfasst das Skript die Werte, die Sie zum Bereitstellen Ihrer App auf dem virtuellen Computer benötigen. Normalerweise würden Sie diese Aufgaben zum Bereitstellen von Apps in einer Azure-VM verwenden. Die Aufgaben benötigen Werte wie z.B. den Namen der VM-Ressourcengruppe, die IP-Adresse und den vollqualifizierten Domänennamen (FQDN).
 
-## <a name="create-a-release-definition-in-release-management"></a>Erstellen einer Releasedefinition in der Releaseverwaltung
-So erstellen Sie die Releasedefinition
+## <a name="create-a-release-pipeline-in-release-management"></a>Erstellen einer Releasepipeline in der Releaseverwaltung
+So erstellen Sie die Releasepipeline
 
 1. Wählen Sie im Hub **Build und Release** auf der Registerkarte **Releases** die Schaltfläche mit dem Pluszeichen (+) aus.
 1. Wählen Sie im Fenster **Releasedefinition erstellen** die Vorlage **Leer** aus, und klicken Sie dann auf **Weiter**.
-1. Klicken Sie auf **Später auswählen** und dann auf **Erstellen**, um eine neue Releasedefinition mit einer Standardumgebung ohne verknüpfte Artefakte zu erstellen.
-1. Um das Kontextmenü zu öffnen, klicken Sie in der neuen Releasedefinition auf die Auslassungspunkte (...) neben dem Umgebungsnamen, und wählen Sie dann **Variablen konfigurieren** aus. 
-1. Geben Sie im Fenster **Konfigurieren – Umgebung** die folgenden Werte für die Variablen ein, die Sie in den Releasedefinitionsaufgaben verwenden:
+1. Wählen Sie **Später auswählen** und dann **Erstellen** aus, um eine neue Releasepipeline mit einer Standardumgebung und ohne verknüpfte Artefakte zu erstellen.
+1. Um das Kontextmenü zu öffnen, wählen Sie in der neuen Releasepipeline die Auslassungspunkte (...) neben dem Umgebungsnamen und dann **Variablen konfigurieren** aus. 
+1. Geben Sie im Fenster **Konfigurieren – Umgebung** die folgenden Werte für die Variablen ein, die Sie in den Releasepipelineaufgaben verwenden:
 
    a. Geben Sie für **vmName** den Namen ein, den Sie der VM zugewiesen haben, als Sie die Resource Manager-Vorlage im Azure-Portal erstellt haben.
 
@@ -106,13 +106,13 @@ So erstellen Sie die Releasedefinition
 
 Der nächste Schritt bei der Bereitstellung besteht darin, die VM zu erstellen, die als „Golden Image“ für nachfolgende Bereitstellungen verwendet werden soll. Sie erstellen die VM in Ihrer Azure DevTest Labs-Instanz, indem Sie die speziell für diesen Zweck entwickelte Aufgabe verwenden. 
 
-1. Wählen Sie in der Releasedefinition **Aufgaben hinzufügen** aus.
+1. Wählen Sie in der Releasepipeline die Option **Aufgaben hinzufügen** aus.
 1. Fügen Sie auf der Registerkarte **Bereitstellen** die Aufgabe *Azure DevTest Labs – VM erstellen* hinzu. Konfigurieren Sie die Aufgabe wie folgt:
 
    > [!NOTE]
    > Um die VM für nachfolgende Bereitstellungen zu erstellen, wechseln Sie zu [Azure DevTest Labs Tasks](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
 
-   a. Wählen Sie für **Azure RM-Abonnement** in der Liste **Verfügbare Azure-Dienstverbindungen** eine Verbindung aus, oder erstellen Sie eine Verbindung mit eingeschränkteren Berechtigungen für Ihr Azure-Abonnement. Weitere Informationen finden Sie unter [Azure Resource Manager-Dienstendpunkt](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   a. Wählen Sie für **Azure RM-Abonnement** in der Liste **Verfügbare Azure-Dienstverbindungen** eine Verbindung aus, oder erstellen Sie eine Verbindung mit eingeschränkteren Berechtigungen für Ihr Azure-Abonnement. Weitere Informationen finden Sie unter [Azure Resource Manager-Dienstendpunkt](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
    b. Wählen Sie als **Lab-Name** den Namen der Instanz aus, die Sie zuvor erstellt haben.
 
@@ -135,14 +135,14 @@ Der nächste Schritt bei der Bereitstellung besteht darin, die VM zu erstellen, 
    ```
 
 1. Führen Sie das zuvor erstellte Skript aus, um die Details der DevTest Labs-VM zu erfassen. 
-1. Wählen Sie in der Releasedefinition **Aufgaben hinzufügen** aus, und fügen Sie dann auf der Registerkarte **Bereitstellen** eine *Azure PowerShell*-Aufgabe hinzu. Konfigurieren Sie die Aufgabe wie folgt:
+1. Wählen Sie in der Releasepipeline die Option **Aufgaben hinzufügen** aus, und fügen Sie dann auf der Registerkarte **Bereitstellen** eine *Azure PowerShell*-Aufgabe hinzu. Konfigurieren Sie die Aufgabe wie folgt:
 
    > [!NOTE]
    > Um die Details der DevTest Labs-VM zu erfassen, wechseln Sie zu [Bereitstellen: Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) und führen das Skript aus.
 
    a. Wählen Sie für **Azure-Verbindungstyp** die Option **Azure Resource Manager** aus.
 
-   b. Wählen Sie für **Azure RM-Abonnement** in der Liste **Verfügbare Azure-Dienstverbindungen** eine Verbindung aus, oder erstellen Sie eine Verbindung mit eingeschränkteren Berechtigungen für Ihr Azure-Abonnement. Weitere Informationen finden Sie unter [Azure Resource Manager-Dienstendpunkt](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   b. Wählen Sie für **Azure RM-Abonnement** in der Liste **Verfügbare Azure-Dienstverbindungen** eine Verbindung aus, oder erstellen Sie eine Verbindung mit eingeschränkteren Berechtigungen für Ihr Azure-Abonnement. Weitere Informationen finden Sie unter [Azure Resource Manager-Dienstendpunkt](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
    c. Wählen Sie als **Skripttyp** die Option **Skriptdatei** aus.
  
@@ -154,22 +154,22 @@ Der nächste Schritt bei der Bereitstellung besteht darin, die VM zu erstellen, 
       ```
       -labVmId '$(labVMId)'
       ```
-    Das Skript erfasst die erforderlichen Werte und speichert sie in Umgebungsvariablen innerhalb der Releasedefinition, sodass Sie in nachfolgenden Schritten einfach auf die Werte verweisen können.
+    Das Skript erfasst die erforderlichen Werte und speichert sie in Umgebungsvariablen innerhalb der Releasepipeline, sodass Sie in nachfolgenden Schritten einfach auf die Werte verweisen können.
 
 1. Stellen Sie Ihre App in der neuen DevTest Labs-VM bereit. Die Aufgaben, die Sie normalerweise zum Bereitstellen der App verwenden, sind *Azure-Dateikopiervorgang* und *PowerShell auf Zielcomputern*.
-   Die Informationen zur VM, die Sie für die Parameter dieser Aufgaben benötigen, werden in drei Konfigurationsvariablen innerhalb der Releasedefinition gespeichert: **labVmRgName**, **labVMIpAddress** und **labVMFqdn**. Wenn Sie nur mit der Erstellung einer DevTest Labs-VM und einem benutzerdefinierten Image experimentieren möchten, ohne eine App darin bereitzustellen, können Sie diesen Schritt überspringen.
+   Die Informationen zum virtuellen Computer, die Sie für die Parameter dieser Aufgaben benötigen, werden in drei Konfigurationsvariablen innerhalb der Releasepipeline gespeichert: **labVmRgName**, **labVMIpAddress** und **labVMFqdn**. Wenn Sie nur mit der Erstellung einer DevTest Labs-VM und einem benutzerdefinierten Image experimentieren möchten, ohne eine App darin bereitzustellen, können Sie diesen Schritt überspringen.
 
 ### <a name="create-an-image"></a>Erstellen eines Images
 
 Der nächste Schritt besteht darin, ein Image der neu bereitgestellten VM in Ihrer Azure DevTest Labs-Instanz zu erstellen. Sie können das Image anschließend dazu verwenden, um bei Bedarf Kopien der VM zu erstellen, wenn Sie eine Entwicklungsaufgabe ausführen oder einige Tests durchführen möchten. 
 
-1. Wählen Sie in der Releasedefinition **Aufgaben hinzufügen** aus.
+1. Wählen Sie in der Releasepipeline die Option **Aufgaben hinzufügen** aus.
 1. Fügen Sie auf der Registerkarte **Bereitstellen** die Aufgabe **Azure DevTest Labs – Benutzerdefiniertes Image erstellen** hinzu. Konfigurieren Sie ihn wie folgt:
 
    > [!NOTE]
    > Um das Image zu erstellen, wechseln Sie zu [Azure DevTest Labs Tasks](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
 
-   a. Wählen Sie für **Azure RM-Abonnement** in der Liste **Verfügbare Azure-Dienstverbindungen** eine Verbindung aus, oder erstellen Sie eine Verbindung mit eingeschränkteren Berechtigungen für Ihr Azure-Abonnement. Weitere Informationen finden Sie unter [Azure Resource Manager-Dienstendpunkt](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   a. Wählen Sie für **Azure RM-Abonnement** in der Liste **Verfügbare Azure-Dienstverbindungen** eine Verbindung aus, oder erstellen Sie eine Verbindung mit eingeschränkteren Berechtigungen für Ihr Azure-Abonnement. Weitere Informationen finden Sie unter [Azure Resource Manager-Dienstendpunkt](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
    b. Wählen Sie als **Lab-Name** den Namen der Instanz aus, die Sie zuvor erstellt haben.
 
@@ -185,17 +185,17 @@ Der nächste Schritt besteht darin, ein Image der neu bereitgestellten VM in Ihr
 
 Der letzte Schritt besteht darin, die VM zu löschen, die Sie in Ihrer Azure DevTest Labs-Instanz bereitgestellt haben. Normalerweise würden Sie die VM löschen, nachdem Sie die erforderlichen Entwicklungsaufgaben oder Tests auf der bereitgestellten VM ausgeführt haben. 
 
-1. Wählen Sie in der Releasedefinition **Aufgaben hinzufügen** aus, und fügen Sie dann auf der Registerkarte **Bereitstellen** eine Aufgabe *Azure DevTest Labs – VM löschen* hinzu. Konfigurieren Sie ihn wie folgt:
+1. Wählen Sie in der Releasepipeline die Option **Aufgaben hinzufügen** aus, und fügen Sie dann auf der Registerkarte **Bereitstellen** die Aufgabe *Azure DevTest Labs – VM löschen* hinzu. Konfigurieren Sie ihn wie folgt:
 
       > [!NOTE]
       > Um die VM zu löschen, wechseln Sie zu [Azure DevTest Labs Tasks](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
 
-   a. Wählen Sie für **Azure RM-Abonnement** in der Liste **Verfügbare Azure-Dienstverbindungen** eine Verbindung aus, oder erstellen Sie eine Verbindung mit eingeschränkteren Berechtigungen für Ihr Azure-Abonnement. Weitere Informationen finden Sie unter [Azure Resource Manager-Dienstendpunkt](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   a. Wählen Sie für **Azure RM-Abonnement** in der Liste **Verfügbare Azure-Dienstverbindungen** eine Verbindung aus, oder erstellen Sie eine Verbindung mit eingeschränkteren Berechtigungen für Ihr Azure-Abonnement. Weitere Informationen finden Sie unter [Azure Resource Manager-Dienstendpunkt](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
  
    b. Wenn Sie den Standardnamen der Umgebungsvariable geändert haben, die durch eine vorherige Aufgabe automatisch mit der ID der Lab-VM aufgefüllt wurde, bearbeiten Sie den Wert für **Lab-VM-ID**. Der Standardwert lautet **$(labVMId)**.
 
-1. Geben Sie einen Namen für die Releasedefinition ein, und speichern Sie sie.
-1. Erstellen Sie ein neues Release, wählen Sie den aktuellen Build aus, und stellen Sie ihn in der Einzelumgebung in der Definition bereit.
+1. Geben Sie einen Namen für die Releasepipeline ein, und speichern Sie sie.
+1. Erstellen Sie ein neues Release, wählen Sie den aktuellen Build aus, und stellen Sie ihn in der Einzelumgebung in der Pipeline bereit.
 
 Aktualisieren Sie in jeder Phase die Anzeige Ihrer DevTest Labs-Instanz im Azure-Portal, um die erstellte VM und das erstellte Image anzuzeigen und sich zu vergewissern, dass die VM wieder gelöscht wird.
 
@@ -207,5 +207,5 @@ Sie können jetzt das benutzerdefinierte Image verwenden, um bei Bedarf VMs zu e
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über das [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md).
 * Sehen Sie sich im [öffentlichen DevTest Labs-GitHub-Repository](https://github.com/Azure/azure-quickstart-templates) weitere Resource Manager-Schnellstartvorlagen für die DevTest Labs-Automatisierung an.
-* Zeigen Sie bei Bedarf die Seite [VSTS-Problembehandlung](https://docs.microsoft.com/vsts/build-release/actions/troubleshooting) an.
+* Sehen Sie sich bei Bedarf die Seite [Azure DevOps-Problembehandlung](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting) an.
  

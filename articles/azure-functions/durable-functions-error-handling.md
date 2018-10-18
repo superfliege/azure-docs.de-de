@@ -3,23 +3,19 @@ title: Fehlerbehandlung in Durable Functions – Azure
 description: Erfahren Sie, wie Sie Fehler in der Durable Functions-Erweiterung für Azure Functions behandeln.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 04/30/2018
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 944fab5ccc55bc9a697e870208338bd0e697672d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6bf9eb2cd2ebdf5f6d53e00923146bab49a142bf
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763304"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377904"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Fehlerbehandlung in Durable Functions (Azure Functions)
 
@@ -29,7 +25,7 @@ Durable Function-Orchestrierungen sind im Code implementiert und können die Fun
 
 Jede Ausnahme, die in einer Aktivitätsfunktion ausgelöst wird, wird zurück zur Orchestratorfunktion gemarshallt und als `FunctionFailedException` ausgelöst. Sie können Code zur Fehlerbehandlung und zur Kompensierung in der Orchestratorfunktion schreiben, der Ihren Bedürfnissen entspricht.
 
-Betrachten Sie beispielsweise die folgende Orchestratorfunktion, die Gelder von einem Konto auf ein anderes überträgt:
+Betrachten Sie beispielsweise die folgende Orchestratorfunktion, die Guthaben von einem Konto auf ein anderes überträgt:
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -72,7 +68,7 @@ Wenn der Aufruf der **CreditAccount**-Funktion (Kreditkonto) für das Zielkonto 
 
 ## <a name="automatic-retry-on-failure"></a>Automatische Wiederholung bei einem Fehler
 
-Wenn Sie Aktivitätsfunktionen oder untergeordnete Orchestrierungfunktionen aufrufen, können Sie eine automatische Wiederholungsrichtlinie angeben. Im folgenden Beispiel wird versucht, eine Funktion bis zu 3 Mal aufzurufen, mit 5 Sekunden Wartezeit zwischen den einzelnen Wiederholungsversuchen:
+Wenn Sie Aktivitätsfunktionen oder untergeordnete Orchestrierungsfunktionen aufrufen, können Sie eine Richtlinie für automatische Wiederholungen angeben. Im folgenden Beispiel wird versucht, eine Funktion bis zu 3-mal mit je 5 Sekunden Wartezeit zwischen den einzelnen Wiederholungsversuchen aufzurufen:
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -87,7 +83,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-Die `CallActivityWithRetryAsync`-API erstellt einen `RetryOptions`-Parameter. Untergeordnete Orchestrierungsaufrufe, die die `CallSubOrchestratorWithRetryAsync`-API verwenden, können ebendiese Wiederholungsrichtlinien verwenden.
+Die `CallActivityWithRetryAsync`-API erstellt einen `RetryOptions`-Parameter. Untergeordnete Orchestrierungsaufrufe, die die `CallSubOrchestratorWithRetryAsync`-API verwenden, können dieselben Wiederholungsrichtlinien verwenden.
 
 Es stehen mehrere Optionen zur Verfügung, um die automatische Wiederholungsrichtlinie anzupassen. Dazu zählen:
 
@@ -96,7 +92,7 @@ Es stehen mehrere Optionen zur Verfügung, um die automatische Wiederholungsrich
 * **Backoff-Koeffizient**: Der Koeffizient, der verwendet wird, um den Anstieg der Backoff-Intervalle zu bestimmen. Der Standardwert lautet 1.
 * **Max retry interval** (Maximales Wiederholungsintervall): die maximale Zeitspanne zwischen den Wiederholungsversuchen.
 * **Retry timeout** (Timeout wiederholen): die maximale Zeitspanne für das Ausführen von Wiederholungsversuchen. Das Standardverhalten ist das Wiederholen auf unbestimmte Zeit.
-* **Benutzerdefiniert**: Ein benutzerdefinierter Rückruf kann angegeben werden, der bestimmt, ob ein Funktionsaufruf wiederholt werden soll.
+* **Handle:** Es kann ein benutzerdefinierter Rückruf angegeben werden, der bestimmt, ob ein Funktionsaufruf wiederholt werden soll.
 
 ## <a name="function-timeouts"></a>Funktion-Timeouts
 

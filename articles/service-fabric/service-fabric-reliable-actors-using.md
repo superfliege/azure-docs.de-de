@@ -1,6 +1,6 @@
 ---
-title: Implementieren von Features in Azure Service Fabric-Actors | Microsoft-Dokumentation
-description: Beschreibt, wie Sie einen eigenen Actordienst schreiben, der Funktionen auf Dienstebene in gleicher Weise implementiert wie bei der Vererbung von StatefulService.
+title: Implementieren von Features in Azure Service Fabric-Akteuren | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen eigenen Akteurdienst schreiben, der Funktionen auf Dienstebene genauso implementiert wie bei der Vererbung von StatefulService.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,22 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 6aff9e9599d31942f994f3cb4e5e9219f33dc7e1
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 89161f3dad68c4b208f4badc548e2057c7ed58c1
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205519"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022048"
 ---
-# <a name="implementing-service-level-features-in-your-actor-service"></a>Implementieren von Features auf Dienstebene in Ihren Actordienst
-Wie in [Dienstebenen](service-fabric-reliable-actors-platform.md#service-layering) beschrieben, ist der Actordienst selbst ein zuverlässiger Dienst.  Sie können einen eigenen Dienst schreiben, der von `ActorService` abgeleitet ist und Funktionen auf Dienstebene auf die gleiche Weise implementiert wie bei der Vererbung von StatefulService. Beispiel:
+# <a name="implement-service-level-features-in-your-actor-service"></a>Implementieren von Features auf Dienstebene in Ihrem Akteurdienst
+
+Wie in [Dienstebenen](service-fabric-reliable-actors-platform.md#service-layering) beschrieben, ist der Actordienst selbst ein zuverlässiger Dienst. Sie können einen eigenen Dienst schreiben, der von `ActorService` abgeleitet ist. Sie können auch Features auf Dienstebene genauso implementieren wie beim Vererben eines zustandsbehafteten Diensts, z.B.:
 
 - Dienstsicherung und -wiederherstellung
 - Gemeinsame Verwendung von Funktionen für alle Akteure, z. B. ein Schaltkreisunterbrecher
 - Remoteprozeduraufrufe für den Akteurdienst selbst sowie für einzelne Akteure
 
-## <a name="using-the-actor-service"></a>Verwenden des Akteurdiensts
-Akteurinstanzen haben Zugriff auf den Akteurdienst, in dem sie ausgeführt werden. Über den Akteurdienst können Akteurinstanzen den Dienstkontext programmgesteuert abrufen. Der Dienstkontext enthält die Partitions-ID, den Dienstnamen, den Anwendungsnamen und andere spezifische Informationen für die Service Fabric-Plattform:
+## <a name="use-the-actor-service"></a>Verwenden des Akteurdiensts
+
+Akteurinstanzen haben Zugriff auf den Akteurdienst, in dem sie ausgeführt werden. Über den Akteurdienst können Akteurinstanzen den Dienstkontext programmgesteuert abrufen. Der Dienstkontext enthält die Partitions-ID, den Dienstnamen, den Anwendungsnamen und andere spezifische Informationen für die Azure Service Fabric-Plattform.
 
 ```csharp
 Task MyActorMethod()
@@ -50,7 +52,7 @@ CompletableFuture<?> MyActorMethod()
 }
 ```
 
-Wie alle Reliable Services muss der Akteurdienst mit einem Diensttyp in der Service Fabric-Laufzeit registriert werden. Damit der Akteurdienst Ihre Akteurinstanzen ausführen kann, muss auch Ihr Akteurtyp beim Akteurdienst registriert werden. Die `ActorRuntime` -Registrierungsmethode führt dies für Actors aus. Im einfachsten Fall müssen Sie nur den Akteurtyp registrieren, der Akteurdienst wird dann implizit mit den Standardeinstellungen verwendet:
+Wie alle Reliable Services muss der Akteurdienst mit einem Diensttyp in der Service Fabric-Laufzeit registriert werden. Damit der Akteurdienst Ihre Akteurinstanzen ausführen kann, muss auch Ihr Akteurtyp beim Akteurdienst registriert werden. Die `ActorRuntime` -Registrierungsmethode führt dies für Actors aus. Im einfachsten Fall müssen Sie nur den Akteurtyp registrieren, und der Akteurdienst verwendet dann die Standardeinstellungen.
 
 ```csharp
 static class Program
@@ -64,7 +66,7 @@ static class Program
 }
 ```
 
-Sie können auch ein Lambda verwenden, das von der Registrierungsmethode bereitgestellt wird, um selbst den Akteurdienst zu erstellen. So können Sie dann den Akteurdienst konfigurieren und explizit Akteurinstanzen erstellen, in die Sie Abhängigkeiten zu Ihrem Akteur über den Konstruktor einführen können:
+Sie können auch ein Lambda verwenden, das von der Registrierungsmethode bereitgestellt wird, um selbst den Akteurdienst zu erstellen. Anschließend können Sie den Akteurdienst konfigurieren und Akteurinstanzen explizit erstellen. Sie können dann Abhängigkeiten über den Konstruktor in den Akteur einführen.
 
 ```csharp
 static class Program
@@ -95,11 +97,13 @@ static class Program
 ```
 
 ## <a name="actor-service-methods"></a>Akteurdienstmethoden
-Der Akteurdienst implementiert `IActorService` (C#) oder `ActorService` (Java), womit wiederum `IService` (C#) oder `Service` (Java) implementiert wird. Dies ist die Schnittstelle, die für das Reliable Services-Remoting verwendet wird, das Remoteprozeduraufrufe von Dienstmethoden erlaubt. Sie enthält Methoden auf Dienstebene, die mit dem Dienstremoting aufgerufen werden können und Ihnen ermöglichen, Actors [aufzuzählen](service-fabric-reliable-actors-enumerate.md) und zu [löschen](service-fabric-reliable-actors-delete-actors.md).
+
+Der Akteurdienst implementiert `IActorService` (C#) oder `ActorService` (Java), mit denen wiederum `IService` (C#) bzw. `Service` (Java) implementiert wird. Diese Schnittstelle wird für das Reliable Services-Remoting verwendet, das Remoteprozeduraufrufe von Dienstmethoden erlaubt. Sie enthält Methoden auf Dienstebene, die mit dem Dienstremoting aufgerufen werden können. Verwenden Sie sie zum [Aufzählen](service-fabric-reliable-actors-enumerate.md) und [Löschen](service-fabric-reliable-actors-delete-actors.md) von Akteuren.
 
 
 ## <a name="custom-actor-service"></a>Benutzerdefinierter Akteurdienst
-Mit dem Lambda für die Akteurregistrierung können Sie einen eigenen benutzerdefinierten Akteurdienst registrieren, der von `ActorService` (C#) und `FabricActorService` (Java) abgeleitet wird. In diesem benutzerdefinierten Akteurdienst können Sie eigene Funktionen auf Dienstebene implementieren, indem Sie eine Dienstklasse erstellen, die `ActorService` (C#) oder `FabricActorService` (Java) erbt. Ein benutzerdefinierter Akteurdienst erbt die gesamte Laufzeitfunktionalität des Akteurs von `ActorService` (C#) oder `FabricActorService` (Java). Er kann zum Implementieren eigener Dienstmethoden verwendet werden.
+
+Mit dem Lambda für die Akteurregistrierung können Sie einen eigenen benutzerdefinierten Akteurdienst registrieren, der von `ActorService` (C#) und `FabricActorService` (Java) abgeleitet wird. Sie können dann eigene Funktionen auf Dienstebene implementieren, indem Sie eine Dienstklasse erstellen, die `ActorService` (C#) oder `FabricActorService` (Java) erbt. Ein benutzerdefinierter Akteurdienst erbt die gesamte Laufzeitfunktionalität des Akteurs von `ActorService` (C#) bzw. `FabricActorService` (Java). Er kann zum Implementieren eigener Dienstmethoden verwendet werden.
 
 ```csharp
 class MyActorService : ActorService
@@ -146,68 +150,78 @@ public class Program
 }
 ```
 
-## <a name="implementing-actor-backup-and-restore"></a>Implementieren der Sicherung und Wiederherstellung von Akteuren
-Der benutzerdefinierte Actordienst kann eine Methode zum Sichern von Actordaten bereitstellen. Diese nutzt die Vorteile des Remoting-Listeners, der bereits im `ActorService` enthalten ist.  Ein Beispiel finden Sie unter [Implementieren von Sicherung und Wiederherstellung von Actors](service-fabric-reliable-actors-backup-and-restore.md).
+## <a name="implement-actor-backup-and-restore"></a>Implementieren der Sicherung und Wiederherstellung von Akteuren
 
-## <a name="actor-using-remoting-v2interfacecompatible-stack"></a>Actor mit dem Remoting V2(InterfaceCompatible)-Stapel
-Der Remoting V2(InterfaceCompatible)-Stapel (auch als „V2_1“ bezeichnet) verfügt über alle Features des Remoting V2-Stapels und ist darüber hinaus ein Stapel, dessen Schnittstelle mit dem Remoting V1-Stapel kompatibel ist, der allerdings nicht mit V2 und V1 abwärtskompatibel ist. Um ohne Beeinträchtigung der Dienstverfügbarkeit ein Upgrade von V1 auf V2_1 durchzuführen, führen Sie die Schritte im folgenden [Artikel](#actor-service-upgrade-to-remoting-v2interfacecompatible-stack-without-impacting-service-availability) durch.
+Der benutzerdefinierte Actordienst kann eine Methode zum Sichern von Actordaten bereitstellen. Diese nutzt die Vorteile des Remoting-Listeners, der bereits im `ActorService` enthalten ist. Ein Beispiel finden Sie unter [Implementieren von Sicherung und Wiederherstellung von Actors](service-fabric-reliable-actors-backup-and-restore.md).
 
-Folgende Änderungen sind erforderlich, um den Remoting V2_1-Stapel verwenden zu können.
- 1. Fügen Sie das folgende Assembly-Attribut zu Actor-Schnittstellen hinzu.
+## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>Akteur, der einen Remoting V2-Stapel (schnittstellenkompatibel) verwendet
+
+Der Remoting V2-Stapel (schnittstellenkompatibel, auch als „V2_1“ bezeichnet) verfügt über alle Features des Remoting V2-Stapels. Die Schnittstelle ist mit dem Remoting V1-Stapel kompatibel, jedoch nicht abwärtskompatibel mit V2 und V1. Um ohne Auswirkungen auf die Dienstverfügbarkeit von V1 auf V2_1 zu aktualisieren, führen Sie die Schritte im nächsten Abschnitt aus.
+
+Folgende Änderungen sind erforderlich, um den Remoting V2_1-Stapel verwenden zu können:
+
+ 1. Fügen Sie Akteurschnittstellen das folgende assembly-Attribut hinzu.
+  
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
    ```
 
- 2. Erstellen und aktualisieren Sie ActorService- und Akteurclient-Projekte, sodass in ihnen der V2-Stapel verwendet wird.
+ 2. Erstellen und aktualisieren Sie den Akteurdienst und Akteurclientprojekte, sodass in ihnen nun der V2-Stapel verwendet wird.
 
-#### <a name="actor-service-upgrade-to-remoting-v2interfacecompatible-stack-without-impacting-service-availability"></a>Upgrade für den Actordienst auf den Remoting V2(InterfaceCompatible)-Stapel ohne Beeinträchtigung der Dienstverfügbarkeit
-Diese Änderung ist ein Upgrade in 2 Schritten. Führen Sie die Schritte in der Reihenfolge aus, in der sie aufgeführt sind.
+### <a name="actor-service-upgrade-to-remoting-v2-interface-compatible-stack-without-affecting-service-availability"></a>Upgrade für den Akteurddienst auf den Remoting V2-Stapel (schnittstellenkompatibel) ohne Beeinträchtigung der Dienstverfügbarkeit
 
-1.  Fügen Sie das folgende Assembly-Attribut zu Actor-Schnittstellen hinzu. Mit diesem Attribut werden zwei Listener für ActorService gestartet, der Listener V1 (vorhanden) und V2_1. Aktualisieren Sie ActorService mit dieser Änderung.
+Für diese Änderung wird ein Upgrade in zwei Schritten ausgeführt. Führen Sie die Schritte in dieser Reihenfolge aus.
+
+1. Fügen Sie Akteurschnittstellen das folgende assembly-Attribut hinzu. Mit diesem Attribut werden zwei Listener für den Akteurdienst gestartet, V1 (vorhanden) und der V2_1-Listener. Aktualisieren Sie den Akteurdienst mit dieser Änderung.
 
   ```csharp
   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
   ```
 
-2. Aktualisieren Sie ActorClients (Akteurclients), nachdem Sie das vorgenannte Upgrade abgeschlossen haben.
-Mit diesem Schritt wird sichergestellt, dass der Actorproxy den Remoting V2_1-Stapel verwendet.
+2. Aktualisieren Sie die Akteurclients, nachdem Sie das vorherige Upgrade abgeschlossen haben.
+Mit diesem Schritt wird sichergestellt, dass der Akteurproxy den Remoting V2_1-Stapel verwendet.
 
-3. Dieser Schritt ist optional. Ändern Sie das oben aufgeführte Attribut, um den V1-Listener zu entfernen.
+3. Dieser Schritt ist optional. Ändern Sie das zuvor genannte Attribut, um den V1-Listener zu entfernen.
 
     ```csharp
     [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
     ```
 
-## <a name="actor-using-remoting-v2-stack"></a>Akteur (Actor), der den Remoting V2-Stapel verwendet
-Ab dem 2.8-NuGet-Paket können Benutzer den Remoting V2-Stapel verwenden, der leistungsfähiger ist und Funktionalität wie etwa benutzerdefinierte Serialisierung bietet. Remoting V2 ist nicht abwärtskompatibel mit vorhandenen dem Remotingstapel (dieser wird jetzt als V1-Remotingstapel bezeichnet).
+## <a name="actor-that-uses-the-remoting-v2-stack"></a>Akteur, der den Remoting V2-Stapel verwendet
 
-Folgende Änderungen sind erforderlich, um den Remoting V2-Stapel verwenden zu können.
- 1. Fügen Sie das folgende Assembly-Attribut zu Actor-Schnittstellen hinzu.
+Ab Version 2.8 des NuGet-Pakets können Benutzer den Remoting V2-Stapel verwenden, der leistungsfähiger ist und Features wie benutzerdefinierte Serialisierung bietet. Remoting V2 ist nicht abwärtskompatibel mit dem vorhandenen Remotingstapel (dieser wird jetzt als V1-Remotingstapel bezeichnet).
+
+Die folgenden Änderungen sind erforderlich, um den Remoting V2-Stapel verwenden zu können.
+
+ 1. Fügen Sie Akteurschnittstellen das folgende assembly-Attribut hinzu.
+
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
    ```
 
- 2. Erstellen und aktualisieren Sie ActorService- und Akteurclient-Projekte, sodass in ihnen der V2-Stapel verwendet wird.
+ 2. Erstellen und aktualisieren Sie den Akteurdienst und Akteurclientprojekte, sodass in ihnen nun der V2-Stapel verwendet wird.
 
-#### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>ActorService-Upgrade auf den Remoting V2-Stapel, ohne dass die Dienstverfügbarkeit beeinträchtigt wird
-Diese Änderung ist ein Upgrade in 2 Schritten. Führen Sie die Schritte in der Reihenfolge aus, in der sie aufgeführt sind.
+### <a name="upgrade-the-actor-service-to-the-remoting-v2-stack-without-affecting-service-availability"></a>Upgrade des Akteurdiensts auf den Remoting V2-Stapel, ohne dass die Dienstverfügbarkeit beeinträchtigt wird
 
-1.  Fügen Sie das folgende Assembly-Attribut zu Actor-Schnittstellen hinzu. Mit diesem Attribut werden zwei Listener für ActorService gestartet, V1- (vorhandener) und V2-Listener. Aktualisieren Sie ActorService mit dieser Änderung.
+Für diese Änderung wird ein Upgrade in zwei Schritten ausgeführt. Führen Sie die Schritte in dieser Reihenfolge aus.
+
+1. Fügen Sie Akteurschnittstellen das folgende assembly-Attribut hinzu. Mit diesem Attribut werden zwei Listener für den Akteurdienst gestartet, V1 (vorhanden) und der V2-Listener. Aktualisieren Sie den Akteurdienst mit dieser Änderung.
 
   ```csharp
   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
   ```
 
-2. Aktualisieren Sie ActorClients (Akteurclients), nachdem Sie das vorgenannte Upgrade abgeschlossen haben.
-Mit diesem Schritt wird sichergestellt, dass der Akteur-Proxy den Remoting V2-Stapel verwendet.
+2. Aktualisieren Sie die Akteurclients, nachdem Sie das vorherige Upgrade abgeschlossen haben.
+Mit diesem Schritt wird sichergestellt, dass der Akteurproxy den Remoting V2-Stapel verwendet.
 
-3. Dieser Schritt ist optional. Ändern Sie das oben aufgeführte Attribut, um den V1-Listener zu entfernen.
+3. Dieser Schritt ist optional. Ändern Sie das zuvor genannte Attribut, um den V1-Listener zu entfernen.
 
     ```csharp
     [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
 * [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
 * [Actors API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)

@@ -1,10 +1,10 @@
 ---
 title: Verwalten von Paketerfassungen mit Azure Network Watcher – Azure-Portal | Microsoft-Dokumentation
-description: Auf dieser Seite wird erläutert, wie das Network Watcher-Feature zur Paketerfassung mithilfe des Azure-Portals verwaltet wird.
+description: Erfahren Sie, wie das Network Watcher-Feature zur Paketerfassung über das Azure-Portal verwaltet wird.
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
 ms.service: network-watcher
@@ -12,154 +12,93 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 09/10/2018
 ms.author: jdial
-ms.openlocfilehash: 18e5f8eda51f8834f6346eef3d7ad31bc556290a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 827a3c2f831c8e8fb459e494dcad58e3661e78bd
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090196"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348156"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal
 
-> [!div class="op_single_selector"]
-> - [Azure-Portal](network-watcher-packet-capture-manage-portal.md)
-> - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
-> - [Azure-CLI](network-watcher-packet-capture-manage-cli.md)
-> - [Azure-REST-API](network-watcher-packet-capture-manage-rest.md)
+Mithilfe der Paketerfassung von Network Watcher können Sie Sitzungen erfassen, um den eingehenden und ausgehenden Datenverkehr eines virtuellen Computers nachzuverfolgen. Für die Erfassungssitzung werden Filter bereitgestellt, um sicherzustellen, dass nur der gewünschte Datenverkehr erfasst wird. Mithilfe der Paketerfassung können Sie Netzwerkanomalien sowohl reaktiv als auch proaktiv diagnostizieren. Weitere Verwendungszwecke sind das Erfassen von Netzwerkstatistiken, das Gewinnen von Informationen zu Netzwerkangriffen, das Debuggen der Kommunikation zwischen Client und Server und vieles mehr. Durch die Möglichkeit zur Remoteauslösung von Paketerfassungen wird die manuelle Ausführung einer Paketerfassung auf einem gewünschten virtuellen Computer erleichtert. So lässt sich wertvolle Zeit sparen.
 
-Mithilfe der Paketerfassung von Network Watcher können Sie Sitzungen erfassen, um den eingehenden und ausgehenden Datenverkehr eines virtuellen Computers nachzuverfolgen. Für die Erfassungssitzung werden Filter bereitgestellt, um sicherzustellen, dass nur der gewünschte Datenverkehr erfasst wird. Mithilfe der Paketerfassung können Sie Netzwerkanomalien sowohl reaktiv als auch proaktiv diagnostizieren. Weitere Verwendungszwecke sind das Erfassen von Netzwerkstatistiken, das Gewinnen von Informationen zu Netzwerkangriffen, das Debuggen der Kommunikation zwischen Client und Server und vieles mehr. Durch die Möglichkeit zur Remoteauslösung von Paketerfassungen erleichtert diese Funktion die manuelle Ausführung einer Paketerfassung auf dem gewünschten Computer. So sparen Sie wertvolle Zeit.
-
-Dieser Artikel führt Sie durch die verschiedenen Verwaltungsaufgaben, die derzeit für die Paketerfassung verfügbar sind.
-
-- [**Starten einer Paketerfassung**](#start-a-packet-capture)
-- [**Beenden einer Paketerfassung**](#stop-a-packet-capture)
-- [**Löschen einer Paketerfassung**](#delete-a-packet-capture)
-- [**Herunterladen einer Paketerfassung**](#download-a-packet-capture)
+In diesem Artikel wird beschrieben, wie Sie eine Paketerfassung starten, beenden, herunterladen und löschen. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressourcen verfügen:
+Für die Paketerfassung sind folgende Verbindungen erforderlich:
+* Ausgehende Verbindung mit einem Speicherkonto über Port 443
+* Eingehende und ausgehende Verbindung mit 169.254.169.254
+* Eingehende und ausgehende Verbindung mit 168.63.129.16
 
-- Eine Instanz von Network Watcher in der Region, in der Sie eine Paketerfassung erstellen möchten
-- Einen virtuellen Computer mit aktivierter Paketerfassungserweiterung
-
-> [!IMPORTANT]
-> Für die Paketerfassung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
-
-### <a name="packet-capture-agent-extension-through-the-portal"></a>Erweiterung für Paketerfassungs-Agent über das Portal
-
-Navigieren Sie zum Installieren des VM-Agents für die Paketerfassung über das Portal zu Ihrem virtuellen Computer, klicken Sie auf **Erweiterungen** > **Hinzufügen**, und suchen Sie nach **Network Watcher Agent für Windows**.
-
-![Agent-Ansicht][agent]
-
-## <a name="packet-capture-overview"></a>Übersicht zur Paketerfassung
-
-Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und klicken Sie auf **Netzwerk** > **Network Watcher** > **Paketerfassung**.
-
-Auf der Übersichtsseite wird eine Liste mit allen vorhandenen Paketerfassungen angezeigt. Der Status spielt dabei keine Rolle.
-
-> [!NOTE]
-> Für die Paketerfassung sind folgende Verbindungen erforderlich:
-> * Ausgehende Verbindung mit dem Speicherkonto über Port 443
-> * Eingehende und ausgehende Verbindung mit 169.254.169.254
-> * Eingehende und ausgehende Verbindung mit 168.63.129.16
-
-![Übersichtsseite zur Paketerfassung][1]
+Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz, in dem sich die Netzwerkschnittstelle befindet, zugeordnet ist, stellen Sie sicher, dass Regeln definiert sind, die die oben genannten Ports zulassen. 
 
 ## <a name="start-a-packet-capture"></a>Starten einer Paketerfassung
 
-Klicken Sie auf **Hinzufügen**, um eine Paketerfassung zu erstellen.
+1. Browsen Sie zum [Azure-Portal](https://portal.azure.com), und wählen Sie **Alle Dienste** und dann **Network Watcher** im Abschnitt **Netzwerk** aus.
+2. Wählen Sie unter **Netzwerkdiagnosetools** die Option **Paketerfassung** aus. Alle vorhandenen Paketerfassungen werden unabhängig von ihrem Status aufgelistet.
+3. Wählen Sie **Hinzufügen** aus, um eine Paketerfassung zu erstellen. Sie können Werte für die folgenden Eigenschaften auswählen:
+   - **Abonnement:** das Abonnement, dem der virtuelle Computer zugeordnet ist, für den Sie die Paketerfassung erstellen möchten.
+   - **Ressourcengruppe:** die Ressourcengruppe des virtuellen Computers.
+   - **Virtueller Zielcomputer:** der virtuelle Computer, für den die Paketerfassung erstellt werden soll.
+   - **Paketerfassungsname:** ein Name für die Paketerfassung.
+   - **Speicherkonto oder Datei:** Wählen Sie **Speicherkonto**, **Datei** oder beide Werte aus. Wenn Sie **Datei** auswählen, wird die Erfassung in einen Pfad innerhalb des virtuellen Computers geschrieben.
+   - **Lokaler Dateipfad:** der lokale Pfad auf dem virtuellen Computer zum Speicherort für die Paketerfassung (nur gültig, wenn *Datei* ausgewählt ist). Der Pfad muss ein gültiger Pfad sein. Bei einem virtuellen Linux-Computer muss der Pfad mit */var/captures* beginnen.
+   - **Speicherkonten:** Wählen Sie ein vorhandenes Speicherkonto aus, wenn Sie zuvor *Speicherkonto* ausgewählt haben. Diese Option ist nur verfügbar, wenn Sie **Speicher** ausgewählt haben.
+   
+     > [!NOTE]
+     > Für Storage Premium-Konten wird das Speichern von Paketerfassungen derzeit nicht unterstützt.
 
-Folgende Eigenschaften können für eine Paketerfassung definiert werden:
+   - **Maximale Anzahl von Bytes pro Paket:** die Anzahl der Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
+   - **Maximale Anzahl von Bytes pro Sitzung:** die Gesamtzahl der erfassten Bytes. Wenn dieser Wert erreicht wird, wird die Paketerfassung beendet.
+   - **Zeitlimit (Sekunden):** das Zeitlimit, nach dem die Paketerfassung beendet wird. Der Standardwert ist 18.000 Sekunden.
+   - Filterung (optional). Wählen Sie **+ Filter hinzufügen** aus.
+     - **Protokoll:** das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.
+     - **Lokale IP-Adresse:** filtert die Paketerfassung für Pakete, deren lokale IP-Adresse mit diesem Wert übereinstimmt.
+     - **Lokaler Port:** filtert die Paketerfassung für Pakete, deren lokaler Port mit diesem Wert übereinstimmt.
+     - **Remote-IP-Adresse:** filtert die Paketerfassung für Pakete, deren Remote-IP-Adresse mit diesem Wert übereinstimmt.
+     - **Remoteport:** filtert die Paketerfassung für Pakete, deren Remoteport mit diesem Wert übereinstimmt.
+    
+    > [!NOTE]
+    > Bei den Werten für Port und IP-Adresse kann es sich um einen Einzelwert, einen Bereich von Werten oder einen Bereich handeln, z.B. 80–1024 für den Port. Sie können beliebig viele Filter definieren.
 
-**Haupteinstellungen**
+4. Klicken Sie auf **OK**.
 
-- **Abonnement**: Dieser Wert ist das verwendete Abonnement. Für jedes Abonnement wird eine Instanz von Network Watcher benötigt.
-- **Ressourcengruppe**: Die Ressourcengruppe des virtuellen Computers, für die der Vorgang durchgeführt werden soll.
-- **Virtueller Zielcomputer**: Der virtuelle Computer, auf dem die Paketerfassung durchgeführt wird.
-- **Paketerfassungsname**: Dieser Wert gibt den Namen der Paketerfassung an.
-
-**Erfassungskonfiguration**
-
-- **Lokaler Dateipfad**: Lokaler Pfad auf dem virtuellen Computer zum Speicherort für die Paketerfassung (nur gültig, wenn **[Datei]** ausgewählt ist). Sie müssen einen gültigen Pfad angeben. Bei einem virtuellen Linux-Computer muss der Pfad mit „/ var / captures“ beginnen.
-- **Speicherkonto:** Gibt an, ob die Paketerfassung in einem Speicherkonto gespeichert wird.
-- **Datei**: Gibt an, ob eine Paketerfassung lokal auf dem virtuellen Computer gespeichert wird.
-- **Speicherkonten**: Das ausgewählte Speicherkonto, unter dem die Paketerfassung gespeichert wird. Der Standardspeicherort ist „https://{Name des Speicherkontos}.blob.core.windows.net/network-watcher-logs/subscriptions/{Abonnement-ID}/resourcegroups/{Name der Ressourcengruppe}/providers/microsoft.compute/virtualmachines/{Name des virtuellen Computers}/{JJ}/{MM}/{TT}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap“. (Nur aktiviert, wenn **Storage** ausgewählt ist.)
-- **Lokaler Dateipfad**: Der lokale Dateipfad auf einem virtuellen Computer zum Speichern der Paketerfassung. (Nur aktiviert, wenn **Datei** ausgewählt ist.) Ein gültiger Pfad muss angegeben werden. Bei einem virtuellen Linux-Computer muss der Pfad mit */var/captures* beginnen.
-- **Maximale Anzahl von Bytes pro Paket**: Die Anzahl von Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
-- **Maximale Anzahl von Bytes pro Sitzung:** Die Gesamtanzahl der erfassten Bytes. Nachdem der Wert erreicht wurde, wird die Paketerfassung beendet.
-- **Zeitlimit (Sekunden)**: Legt ein Zeitlimit für die Beendigung der Paketerfassung fest. Der Standardwert ist 18000 Sekunden.
-
-> [!NOTE]
-> Für Storage Premium-Konten wird das Speichern von Paketerfassungen derzeit nicht unterstützt.
-
-**Filterung (optional)**
-
-- **Protokoll**: Das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.
-- **Lokale IP-Adresse**: Dieser Wert filtert bei der Paketerfassung nach den Paketen, deren lokale IP-Adresse mit diesem Filterwert übereinstimmt.
-- **Lokaler Port**: Dieser Wert filtert bei der Paketerfassung nach den Paketen, deren lokaler Port mit diesem Filterwert übereinstimmt.
-- **Remote-IP-Adresse**: Dieser Wert filtert bei der Paketerfassung nach den Paketen, deren Remote-IP-Adresse mit diesem Filterwert übereinstimmt.
-- **Remoteport**: Dieser Wert filtert bei der Paketerfassung nach den Paketen, deren Remoteport mit diesem Filterwert übereinstimmt.
+Nachdem das für die Paketerfassung festgelegte Zeitlimit abgelaufen ist, wird die Paketerfassung beendet und kann überprüft werden. Sie können eine Paketerfassungssitzung auch manuell beenden.
 
 > [!NOTE]
-> Bei den Werten für Port und IP-Adresse kann es sich um einen Einzelwert, einen Bereich von Werten oder einen Satz handeln (für den Port 80 bis 1.024). Sie können beliebig viele Filter definieren.
-
-Klicken Sie nach dem Einfügen der Werte auf **OK**, um die Paketerfassung zu erstellen.
-
-![Erstellen einer Paketerfassung][2]
-
-Nachdem das für die Paketerfassung festgelegte Zeitlimit abgelaufen ist, wird die Paketerfassung beendet und kann überprüft werden. Sie können Paketerfassungssitzungen auch manuell beenden.
+> Im Portal werden folgende Vorgänge automatisch durchgeführt:
+>  * Erstellen einer Network Watcher-Instanz in der Region, in der sich der ausgewählte virtuelle Computer befindet, sofern in der Region noch keine Network Watcher-Instanz vorhanden ist.
+>  * Hinzufügen der Erweiterung *AzureNetworkWatcherExtension* für virtuelle [Linux](../virtual-machines/linux/extensions-nwa.md)- oder [Windows](../virtual-machines/windows/extensions-nwa.md)-Computer, sofern sie noch nicht installiert ist.
 
 ## <a name="delete-a-packet-capture"></a>Löschen einer Paketerfassung
 
-Klicken Sie in der Paketerfassungsansicht auf das **Kontextmenü** (...), oder klicken Sie mit der rechten Maustaste, und klicken Sie dann auf **Löschen**, um die Paketerfassung zu beenden.
-
-![Löschen einer Paketerfassung][3]
+1. Wählen Sie in der Paketerfassungsansicht rechts neben der Paketerfassung die Option **...** aus, oder klicken Sie mit der rechten Maustaste auf eine vorhandene Paketerfassung, und wählen Sie **Löschen** aus.
+2. Sie werden aufgefordert, den Löschvorgang für die Paketerfassung zu bestätigen. Wählen Sie **Ja** aus.
 
 > [!NOTE]
-> Durch das Löschen einer Paketerfassung wird die Datei im Speicherkonto nicht gelöscht.
-
-Klicken Sie auf **Ja**, wenn die Aufforderung zum Bestätigen des Löschvorgangs angezeigt wird.
-
-![Bestätigung][4]
+> Durch das Löschen einer Paketerfassung wird die Erfassungsdatei im Speicherkonto oder auf dem virtuellen Computer nicht gelöscht.
 
 ## <a name="stop-a-packet-capture"></a>Beenden einer Paketerfassung
 
-Klicken Sie in der Paketerfassungsansicht auf das **Kontextmenü** (...), oder klicken Sie mit der rechten Maustaste, und klicken Sie dann auf **Beenden**, um die Paketerfassung zu beenden.
+Wählen Sie in der Paketerfassungsansicht rechts neben der Paketerfassung die Option **...** aus, oder klicken Sie mit der rechten Maustaste auf eine vorhandene Paketerfassung, und wählen Sie **Beenden** aus.
 
 ## <a name="download-a-packet-capture"></a>Herunterladen einer Paketerfassung
 
-Nachdem die Paketerfassungssitzung abgeschlossen wurde, wird die Erfassungsdatei in den Blobspeicher oder in eine lokale Datei auf dem virtuellen Computer hochgeladen. Der Speicherort der Paketerfassung wird beim Erstellen der Sitzung definiert. Ein nützliches Tool für den Zugriff auf diese in einem Speicherkonto gespeicherten Erfassungsdateien ist der Microsoft Azure Storage-Explorer, der hier heruntergeladen werden kann: http://storageexplorer.com/
+Nachdem die Paketerfassungssitzung abgeschlossen wurde, wird die Erfassungsdatei in den Blobspeicher oder in eine lokale Datei auf dem virtuellen Computer hochgeladen. Der Speicherort der Paketerfassung wird beim Erstellen der Paketerfassung definiert. Ein nützliches Tool für den Zugriff auf die in einem Speicherkonto gespeicherten Erfassungsdateien ist der Microsoft Azure Storage-Explorer, der [hier](http://storageexplorer.com/) heruntergeladen werden kann.
 
 Wenn ein Speicherkonto angegeben wird, werden Paketerfassungsdateien in einem Speicherkonto am folgenden Speicherort gespeichert:
+
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
+Wenn Sie bei der Erstellung der Erfassung die Option **Datei** ausgewählt haben, können Sie die Datei über den auf dem virtuellen Computer konfigurierten Pfad anzeigen oder herunterladen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden Sie unter [Erstellen einer durch Warnungen ausgelösten Paketerfassung](network-watcher-alert-triggered-packet-capture.md).
-
-Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](diagnose-vm-network-traffic-filtering-problem.md), um herauszufinden, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
-
-<!-- Image references -->
-[1]: ./media/network-watcher-packet-capture-manage-portal/figure1.png
-[2]: ./media/network-watcher-packet-capture-manage-portal/figure2.png
-[3]: ./media/network-watcher-packet-capture-manage-portal/figure3.png
-[4]: ./media/network-watcher-packet-capture-manage-portal/figure4.png
-[agent]: ./media/network-watcher-packet-capture-manage-portal/agent.png
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden Sie unter [Erstellen einer durch Warnungen ausgelösten Paketerfassung](network-watcher-alert-triggered-packet-capture.md).
+- Informationen zum Bestimmen, ob bestimmter eingehender oder ausgehender Datenverkehr für einen virtuellen Computer zulässig ist, finden Sie unter [Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers](diagnose-vm-network-traffic-filtering-problem.md).

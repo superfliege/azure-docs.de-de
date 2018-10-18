@@ -1,5 +1,5 @@
 ---
-title: Konvertieren von Azure Cloud Services-Apps in Microservices | Microsoft-Dokumentation
+title: Konvertieren von Azure Cloud Services-Apps in Service Fabric | Microsoft-Dokumentation
 description: In dieser Anleitung werden Cloud Services-Web- und -Workerrollen mit zustandslosen Service Fabric-Diensten verglichen, um die Migration von Cloud Services zu Service Fabric zu unterstützen.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c6bdd6f88c9008a8d9c15d22bdcf263190424649
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4eed3825d52fe52025077980e21f3763cc5751ac
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206681"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049948"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Anleitung zur Konvertierung von Web- und Workerrollen in zustandslose Service Fabric-Dienste
 In diesem Artikel wird beschrieben, wie Sie Ihre Cloud Services-Web- und -Workerrollen zu zustandslosen Service Fabric-Diensten migrieren. Dies ist für Anwendungen, deren allgemeine Architektur weitgehend gleich bleibt, der einfachste Migrationspfad von Cloud Services zu Service Fabric.
@@ -44,7 +44,7 @@ In Bezug auf das Konzept stellt eine Workerrolle eine zustandslose Workload dar.
 | ASP.NET Web Forms |Nein  |In ASP.NET Core 1 MVC konvertieren |
 | ASP.NET MVC |Per Migration |Upgrade auf ASP.NET Core 1 MVC |
 | ASP.NET-Web-API |Per Migration |Selbst gehosteten Server oder ASP.NET Core 1 verwenden |
-| ASP.NET Core 1 |Ja |N/V |
+| ASP.NET Core 1 |JA |N/V |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Einstiegspunkt-API und Lebenszyklus
 APIs von Workerrollen und Service Fabric-Diensten verfügen über ähnliche Einstiegspunkte: 

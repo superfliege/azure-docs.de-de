@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
-ms.openlocfilehash: 6800bf766deb2044d400f92dbe370fa15bdd5f00
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 87c9cd5955dda1a379733e5ad48d58f8361f0e6b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
-ms.locfileid: "26047601"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051475"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service
 
@@ -51,7 +51,7 @@ Hier werden alle Ihre hochgeladenen und importierten SSL-Zertifikate für diese 
 
 Klicken Sie im linken Navigationsbereich auf **Anwendungseinstellungen**.
 
-Fügen Sie eine App-Einstellung mit dem Namen `WEBSITE_LOAD_CERTIFICATES` hinzu, und legen Sie als Wert den Fingerabdruck des Zertifikats fest. Um mehrere Zertifikate zugänglich zu machen, verwenden Sie durch Trennzeichen getrennte Fingerabdruckwerte. Um alle Zertifikate zugänglich zu machen, legen Sie den Wert auf `*` fest. 
+Fügen Sie eine App-Einstellung mit dem Namen `WEBSITE_LOAD_CERTIFICATES` hinzu, und legen Sie als Wert den Fingerabdruck des Zertifikats fest. Um mehrere Zertifikate zugänglich zu machen, verwenden Sie durch Trennzeichen getrennte Fingerabdruckwerte. Um alle Zertifikate zugänglich zu machen, legen Sie den Wert auf `*` fest. Beachten Sie, dass hierbei das Zertifikat im Speicher `CurrentUser\My` abgelegt wird.
 
 ![Konfigurieren von App-Einstellungen](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5c2cd38001a9645011bbab84cff3b9366aa64b1d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3bd77891cc7508eeb1fee2152d37478c654a7e37
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206139"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294702"
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Muster und Szenarien für Service Fabric
 Benutzer, die umfangreiche Microservices mit Azure Service Fabric erstellen möchten, erhalten hier Informationen von den Experten, die diese PaaS (Platform-as-a-Service) konzipiert und erstellt haben. Beginnen Sie mit der richtigen Architektur, und erfahren Sie, wie Sie Ressourcen für Ihre Anwendung optimieren. Der Kurs [Service Fabric Patterns and Practices](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) (Service Fabric-Muster und -Methoden) gibt Antworten auf häufig gestellte Fragen von echten Kunden zu Service Fabric-Szenarien und Anwendungsbereichen.
@@ -72,7 +72,7 @@ Beschäftigen Sie sich mit rundenbasierten und interaktiven Spielen sowie mit de
 </table>
 
 ## <a name="continuous-delivery"></a>Continuous Delivery
-Machen Sie sich mit Konzepten wie Continuous Integration/Continuous Delivery mit Visual Studio Team Services, dem Workflow zum Erstellen/Packen/Veröffentlichen, der Einrichtung mehrerer Umgebungen und dem Packen/Freigeben von Diensten vertraut.
+Machen Sie sich mit Konzepten wie Continuous Integration/Continuous Delivery mit Azure Pipelines, dem Workflow zum Erstellen/Packen/Veröffentlichen, dem Einrichten mehrerer Umgebungen und dem Packen/Freigeben von Diensten vertraut.
 
 <table><tr><th>Video</th><th>PowerPoint-Folienstapel</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=78h5ofSGD_305167344">

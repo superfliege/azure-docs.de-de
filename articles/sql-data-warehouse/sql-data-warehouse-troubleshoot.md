@@ -10,15 +10,15 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: befb4cc075841d45cae769b5ddf924434e65eff3
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 3500754c7e9cb14ea86e9c0e562ec5f98fc1fc94
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307246"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377767"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Problembehandlung bei Azure SQL Data Warehouse
-Dieses Thema enthält allgemeine Fragen zur Problembehandlung.
+Dieser Artikel enthält allgemeine Fragen zur Problembehandlung.
 
 ## <a name="connecting"></a>Herstellen einer Verbindung
 | Problem | Lösung |
@@ -27,7 +27,7 @@ Dieses Thema enthält allgemeine Fragen zur Problembehandlung.
 | Der Serverprinzipal „MeinBenutzername“ kann unter dem aktuellen Sicherheitskontext nicht auf die Datenbank „Master“ zugreifen. Standardbenutzerdatenbank kann nicht geöffnet werden. Anmeldefehler. Fehler bei der Anmeldung für den Benutzer 'MeinBenutzername'. (Microsoft SQL Server, Fehler: 916) |Dieser Fehler tritt auf, wenn ein AAD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Masterdatenbank-Benutzer verfügt.  Zum Beheben dieses Problems geben Sie entweder das SQL Data Warehouse an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer der Masterdatenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse][Security overview]. |
 | CTAIP-Fehler |Dieser Fehler kann auftreten, wenn zwar eine Anmeldung für die SQL Server-Masterdatenbank erstellt wurde, dies jedoch in der SQL Data Warehouse-Datenbank unterlassen wurde.  Lesen Sie in diesem Fall den Artikel [Sichern einer Datenbank in SQL Data Warehouse][Security overview].  In diesem Artikel wird erläutert, wie Sie zunächst eine Anmeldung und einen Benutzer für die Masterdatenbank erstellen und anschließend in der SQL Data Warehouse-Datenbank einen Benutzer erstellen. |
 | Von der Firewall blockiert |Azure SQL-Datenbanken sind durch Firewalls auf Server- und Datenbankebene geschützt, um sicherzustellen, dass nur bekannte IP-Adressen Zugriff auf eine Datenbank haben. Firewalls sind standardmäßig sicher. Sie müssen daher eine IP-Adresse oder einen Adressbereich explizit aktivieren, bevor Sie eine Verbindung herstellen können.  Führen Sie die Schritte aus dem Abschnitt [Erstellen einer Firewallregel auf Serverebene im Azure-Portal][Configure server firewall access for your client IP] der [Bereitstellungsanweisungen][Provisioning instructions] aus, um Ihre Firewall für den Zugriff zu konfigurieren. |
-| Verbindung mit Tool oder Treiber kann nicht hergestellt werden |SQL Data Warehouse empfiehlt, zum Abfragen von Daten [SSMS][SSMS], [SSDT für Visual Studio][SSDT for Visual Studio] oder [sqlcmd][sqlcmd] zu verwenden. Ausführlichere Informationen zu Treibern und zum Herstellen einer Verbindung mit SQL Data Warehouse finden Sie in den Artikeln [Treiber für Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] und [Verbinden mit Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse]. |
+| Verbindung mit Tool oder Treiber kann nicht hergestellt werden |SQL Data Warehouse empfiehlt, zum Abfragen von Daten [SSMS][SSMS], [SSDT für Visual Studio][SSDT for Visual Studio] oder [sqlcmd][sqlcmd] zu verwenden. Weitere Informationen zu Treibern und zum Herstellen einer Verbindung mit SQL Data Warehouse finden Sie in den Artikeln [Treiber für Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] und [Verbinden mit Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse]. |
 
 ## <a name="tools"></a>Tools
 | Problem | Lösung |
@@ -56,7 +56,7 @@ Dieses Thema enthält allgemeine Fragen zur Problembehandlung.
 ## <a name="polybase"></a>PolyBase
 | Problem | Lösung |
 |:--- |:--- |
-| Fehler beim Laden aufgrund von umfangreichen Zeilen |Umfangreiche Zeilen werden für PolyBase derzeit nicht unterstützt.  Dies bedeutet, dass keine externen Tabellen zum Laden der Daten verwendet werden können, wenn die Tabelle VARCHAR(MAX), NVARCHAR(MAX) oder VARBINARY(MAX) enthält.  Ladevorgänge für umfangreiche Zeilen werden derzeit nur von Azure Data Factory (mit BCP), Azure Stream Analytics, SSIS, BCP oder der SQLBulkCopy-.NET-Klasse unterstützt. Die PolyBase-Unterstützung für umfangreiche Zeilen wird in einer zukünftigen Version hinzugefügt. |
+| Fehler beim Laden aufgrund von umfangreichen Zeilen |Umfangreiche Zeilen werden für PolyBase derzeit nicht unterstützt.  Dies bedeutet, dass keine externen Tabellen zum Laden der Daten verwendet werden können, wenn die Tabelle VARCHAR(MAX), NVARCHAR(MAX) oder VARBINARY(MAX) enthält.  Ladevorgänge für umfangreiche Zeilen werden derzeit nur über Azure Data Factory (mit BCP), Azure Stream Analytics, SSIS, BCP oder die SQLBulkCopy-.NET-Klasse unterstützt. Die PolyBase-Unterstützung für umfangreiche Zeilen wird in einer zukünftigen Version hinzugefügt. |
 | Fehler beim BCP-Ladevorgang einer Tabelle mit MAX-Datentyp |Es besteht das folgende bekannte Problem: VARCHAR(MAX), NVARCHAR(MAX) oder VARBINARY(MAX) müssen in manchen Szenarien am Ende der Tabelle angeordnet werden.  Versuchen Sie, die MAX-Spalten an das Ende der Tabelle zu verschieben. |
 
 ## <a name="differences-from-sql-database"></a>Unterschiede zu SQL-Datenbank
@@ -102,7 +102,7 @@ Für weitere Hilfe bei der Suche nach einer Lösung für Ihr Problem, stehen Ihn
 [Unsupported data types]: sql-data-warehouse-tables-data-types.md#unsupported-data-types
 [Overview]: sql-data-warehouse-tables-overview.md
 [Data types]: sql-data-warehouse-tables-data-types.md
-[Distribute]:/sql-data-warehouse-tables-distribute.md
+[Distribute]: sql-data-warehouse-tables-distribute.md
 [Index]: sql-data-warehouse-tables-index.md
 [Partition]: sql-data-warehouse-tables-partition.md
 [Statistics]: sql-data-warehouse-tables-statistics.md

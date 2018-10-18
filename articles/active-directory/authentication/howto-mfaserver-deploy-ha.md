@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 2097ce5cf249e7ff895769142d63b6cf47eed06d
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5d3833d3218a4b6252c9591bb67686ddc1c3cdf9
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161006"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298573"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurieren von Azure Multi-Factor Authentication-Server für Hochverfügbarkeit
 
@@ -29,7 +29,7 @@ Die Dienstarchitektur von Azure MFA Server umfasst mehrere Komponenten, die im f
 
 Ein MFA-Server ist ein Windows-Server, auf dem die Azure Multi-Factor Authentication-Software installiert ist. Die MFA Server-Instanz muss vom MFA-Dienst in Azure aktiviert werden. Sie können lokal auch mehrere MFA Server-Instanzen installieren.
 
-Der erste installierte MFA-Server wird nach der Aktivierung durch den Azure MFA-Dienst standardmäßig der MFA-Masterserver. Der MFA-Masterserver verfügt über eine beschreibbare Kopie der Datenbank „PhoneFactor.pfdata“. Alle danach installierten Instanzen von MFA Server werden als untergeordnete Server (Slaves) bezeichnet. Auf den untergeordneten MFA-Servern befindet sich eine replizierte schreibgeschützte Kopie der Datenbank „PhoneFactor.pfdata“. MFA-Server replizieren ihre Informationen mithilfe von Remoteprozeduraufrufen (RPC). Alle MFA-Server müssen gemeinsam einer Domäne angehören oder eigenständig sein, um Informationen zu replizieren.
+Der erste installierte MFA-Server wird nach der Aktivierung durch den Azure MFA-Dienst standardmäßig der MFA-Masterserver. Der MFA-Masterserver verfügt über eine beschreibbare Kopie der Datenbank „PhoneFactor.pfdata“. Alle danach installierten Instanzen von MFA Server werden als untergeordnete Server bezeichnet. Auf den untergeordneten MFA-Servern befindet sich eine replizierte schreibgeschützte Kopie der Datenbank „PhoneFactor.pfdata“. MFA-Server replizieren ihre Informationen mithilfe von Remoteprozeduraufrufen (RPC). Alle MFA-Server müssen gemeinsam einer Domäne angehören oder eigenständig sein, um Informationen zu replizieren.
 
 Sowohl der MFA-Master als auch untergeordnete MFA-Server kommunizieren mit dem MFA-Dienst, wenn eine zweistufige Authentifizierung erforderlich ist. Wenn z.B. ein Benutzer versucht, Zugriff auf eine Anwendung zu erhalten, die eine zweistufige Authentifizierung erfordert, wird der Benutzer zunächst von einem Identitätsanbieter wie Active Directory (AD) authentifiziert.
 

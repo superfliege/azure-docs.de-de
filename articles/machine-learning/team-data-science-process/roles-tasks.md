@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 8cec2c2b72b88a27c4a6c15b197e859b879bef43
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 3e0e9a59d7f77355077fc1f7781eb3be4dbe0532
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308523"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296702"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Rollen und Aufgaben im Team Data Science-Prozess
 
 Der Team Data Science-Prozess (TDSP) ist ein von Microsoft entwickeltes Framework, das eine strukturierte Methodik zum effizienten Erstellen von Predictive Analytics-Lösungen und von intelligenten Anwendungen bereitstellt. In diesem Artikel finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und zugeordneten Aufgaben in einem Data Science-Team, das diesen Prozess als Standard einsetzt. 
 
-Diese Einführung enthält Links zu Tutorials, die Anweisungen zum Einrichten der TDSP-Umgebung für die gesamte Data Science-Gruppe, Data Science-Teams und Projekte bereitstellen. Sie beschreibt ausführlich, wie Visual Studio Team Services (VSTS) in den Tutorials verwendet wird.  VSTS bietet eine Codehostingplattform und ein agiles Planungstools für die Verwaltung von Teamaufgaben, die Zugriffssteuerung und die Verwaltung der Repositorys. 
+Diese Einführung enthält Links zu Tutorials, die Anweisungen zum Einrichten der TDSP-Umgebung für die gesamte Data Science-Gruppe, Data Science-Teams und Projekte bereitstellen. Sie bietet eine ausführliche Hilfestellung mithilfe von Azure DevOps in den Tutorials. Azure DevOps bietet eine Codehostingplattform und ein agiles Planungstool für die Verwaltung von Teamaufgaben, die Zugriffssteuerung und die Verwaltung der Repositorys. 
 
 Mit diesen Informationen können Sie den TDSP auch auf Ihrer eigenen Codehostingplattform und in Ihrem eigenen flexiblen Planungstool implementieren. 
 
@@ -64,7 +64,7 @@ Die folgende Abbildung veranschaulicht die Aufgaben der obersten Ebene für die 
 Dieses Schema und der folgende, detailliertere Überblick über die den einzelnen Rollen im TDSP zugewiesenen Aufgaben helfen Ihnen je nach Ihrer Zuständigkeit innerhalb der Organisation bei der Auswahl des geeigneten Tutorials.
 
 > [!NOTE]
-> In den folgenden Anleitungen erfahren Sie, wie Sie eine TDSP-Umgebung einrichten und andere Data Science-Aufgaben in Visual Studio Team Services (VSTS) ausführen. Die Erläuterungen beziehen sich auf VSTS, da bei Microsoft auf diese Weise der TDSP implementiert wird. VSTS erleichtert die Zusammenarbeit, indem die Verwaltung von Arbeitselementen zur Nachverfolgung von Aufgaben sowie ein Codehostingdienst integriert sind, der die Freigabe von Dienstprogrammen, die Organisation der Versionen und die Bereitstellung von rollenbasierter Sicherheit ermöglicht. Sie können die hier beschriebenen Aufgaben im TDSP bei Bedarf auch mit einer anderen Plattform implementieren. Je nach Plattform sind in diesem Fall jedoch möglicherweise nicht alle Funktionen von VSTS verfügbar. 
+> In den folgenden Anleitungen erfahren Sie, wie Sie eine TDSP-Umgebung einrichten und andere Data Science-Aufgaben in Azure DevOps ausführen. Die Erläuterungen beziehen sich auf Azure DevOps, da bei Microsoft auf diese Weise der TDSP implementiert wird. Azure DevOps erleichtert die Zusammenarbeit, indem die Verwaltung von Arbeitselementen zur Nachverfolgung von Aufgaben sowie ein Codehostingdienst für die Freigabe von Hilfsprogrammen, die Organisation der Versionen und die Bereitstellung von rollenbasierter Sicherheit integriert sind. Sie können die hier beschriebenen Aufgaben im TDSP bei Bedarf auch mit einer anderen Plattform implementieren. Je nach Plattform sind in diesem Fall jedoch möglicherweise nicht alle Funktionen von Azure DevOps verfügbar. 
 >
 >Außerdem wird in diesen Anweisungen der [virtuelle Data Science-Computer (DSVM)](http://aka.ms/dsvm) als Analysedesktop in der Azure-Cloud verwendet, der über mehrere beliebte vorkonfigurierte Data Science-Tools verfügt und in verschiedenen Azure-Diensten und Microsoft-Software integriert ist. Sie können den DSVM oder eine beliebige Entwicklungsumgebung verwenden, um den TDSP zu implementieren. 
 
@@ -73,7 +73,7 @@ Dieses Schema und der folgende, detailliertere Überblick über die den einzelne
 
 Die folgenden Aufgaben werden vom Gruppenleiter (oder einem festgelegten TDSP-Systemadministrator) ausgeführt, um den TDSP zu übernehmen:
 
-- Erstellen Sie ein **Gruppenkonto** auf einer Codehostingplattform (z.B. Github, Git, VSTS usw.).
+- Erstellen Sie ein **Gruppenkonto** auf einer Codehostingplattform (GitHub, Git, Azure DevOps usw.).
 - Erstellen Sie im Gruppenkonto ein **Projektvorlagenrepository**. Führen Sie dafür ein Seeding aus dem vom TDSP-Team von Microsoft entwickelten Projektvorlagenrepository aus. Das Vorlagenrepository für das TDSP-Projekt von Microsoft 
     - stellt eine **standardisierte Verzeichnisstruktur** mit Verzeichnissen für Daten, Code und Dokumente sowie 
     - eine Gruppe von **standardisierten Dokumentvorlagen** für einen effizienten Data Science-Prozess bereit. 
@@ -86,10 +86,10 @@ Ausführliche Anleitungen finden Sie unter [Aufgaben des Gruppenleiters eines Da
 
 ## <a name="team-lead-tasks"></a>Aufgaben des Teamleiters
 
-Die folgenden Aufgaben werden vom Teamleiter (oder einem festgelegten Teamprojektadministrator) ausgeführt, um den TDSP zu übernehmen:
+Die folgenden Aufgaben werden vom Teamleiter (oder einem festgelegten Projektadministrator) ausgeführt, um den TDSP zu übernehmen:
 
-- Wenn Sie VSTS als Codehostingplattform für die Versionsverwaltung und Zusammenarbeit ausgewählt haben, erstellen Sie auf dem VSTS-Gruppenserver ein **Teamprojekt**. Andernfalls können Sie diese Aufgabe überspringen.
-- Erstellen Sie im Teamprojekt ein **Vorlagenrepository für das Teamprojekt**. Führen Sie dafür ein Seeding aus dem Vorlagenrepository für das Gruppenprojekt aus, das vom Gruppenleiter oder seinem Stellvertreter eingerichtet wurde. 
+- Wenn Sie Azure DevOps als Codehostingplattform für die Versionsverwaltung und Kollaboration ausgewählt haben, erstellen Sie in Azure DevOps Services für die Gruppe ein **Teamprojekt**. Andernfalls können Sie diese Aufgabe überspringen.
+- Erstellen Sie im Projekt ein **Projektvorlagenrepository**, und führen Sie dafür ein Seeding aus dem Vorlagenrepository für das Gruppenprojekt aus, das vom Gruppenleiter oder seinem Stellvertreter eingerichtet wurde. 
 - Erstellen Sie das **Dienstprogrammrepository für das Team**, und fügen Sie dem Repository die teamspezifischen Dienstprogramme hinzu. 
 - Optional: Erstellen Sie einen **[Azure-Dateispeicher](https://azure.microsoft.com/services/storage/files/)** zum Speichern von Datenassets, die für das gesamte Team nützlich sein können. Die anderen Teammitglieder können diesen freigegebenen Cloud-Dateispeicher auf ihren Analysedesktops bereitstellen.
 - Optional: Stellen Sie den Azure-Dateispeicher auf dem **virtuellen Data Science-Computer** (DSVM) des Teamleiters bereit, und fügen Sie Datenassets hinzu.
@@ -102,7 +102,7 @@ Ausführliche Anleitungen finden Sie unter [Aufgaben des Teamleiters eines Data 
 
 Die folgenden Aufgaben werden vom Projektleiter ausgeführt, um den TDSP zu übernehmen:
 
-- Erstellen Sie im Teamprojekt ein **Projektrepository**, und führen Sie dafür ein Seeding aus dem Vorlagenrepository für das Teamprojekt aus. 
+- Erstellen Sie im Projekt ein **Projektrepository**, und führen Sie dafür ein Seeding aus dem Vorlagenrepository für das Projekt aus. 
 - Optional: Erstellen Sie einen **Azure-Dateispeicher** zum Speichern von Projektdatenassets. 
 - Optional: Stellen Sie den Azure-Dateispeicher auf dem **virtuellen Data Science-Computer** (DSVM) des Projektleiters bereit, und fügen Sie Projektdatenassets hinzu.
 - Richten Sie **Sicherheitskontrollen** ein, indem Sie Projektmitglieder hinzufügen und ihre Berechtigungen konfigurieren. 
@@ -125,7 +125,7 @@ Ausführliche Anleitungen für die Integration in ein Projekt finden Sie unter [
  
 Mit diesen relevanten Anweisungen können Datenanalysten, Projektleiter und Teamleiter Arbeitselemente erstellen, um alle Aufgaben und Phasen innerhalb eines Projekts von Anfang bis Ende nachzuverfolgen. Mit Git wird die Zusammenarbeit der Datenanalysten gefördert. Außerdem wird sichergestellt, dass die während der Ausführung des Projekts entstandenen Artefakte mit Versionskontrolle ausgeführt und von allen Projektmitgliedern gemeinsam verwendet werden.
 
-Die Anweisungen für die Ausführung des Projekts wurden auf der Annahme entwickelt, dass sich sowohl die Arbeitselemente als auch die Git-Repositorys des Projekts auf VSTS befinden. Wenn in beiden Fällen VSTS verwendet wird, können Sie die Arbeitselemente und Git-Verzweigungen Ihres Projektrepositorys miteinander verknüpfen. Auf diese Weise können Sie leicht nachverfolgen, wie weit ein Arbeitselement bereits fortgeschritten ist. 
+Die Anweisungen für die Ausführung des Projekts wurden auf der Annahme entwickelt, dass sich sowohl die Arbeitselemente als auch die Git-Repositorys des Projekts auf Azure DevOps befinden. Wenn in beiden Fällen Azure DevOps verwendet wird, können Sie die Arbeitselemente und Git-Branches Ihres Projektrepositorys miteinander verknüpfen. Auf diese Weise können Sie leicht nachverfolgen, wie weit ein Arbeitselement bereits fortgeschritten ist. 
 
 Die folgende Abbildung zeigt den Workflow der Projektausführung mit dem TDSP:
 
@@ -141,7 +141,7 @@ Ausführliche Anleitungen zum Workflow der Projektausführung finden Sie unter [
 
 ## <a name="project-structure"></a>Projektstruktur
 
-Verwenden Sie dieses [Projektvorlagenrepository](https://github.com/Azure/Azure-TDSP-ProjectTemplate), um eine effiziente Projektausführung und Zusammenarbeit zu unterstützen. Dieses Repository bietet eine standardisierte Verzeichnisstruktur und Dokumentvorlagen, die Sie für Ihr eigenes TDSP-Projekt verwenden können.
+Verwenden Sie dieses [Projektvorlagenrepository](https://github.com/Azure/Azure-TDSP-ProjectTemplate), um eine effiziente Projektausführung und Zusammenarbeit zu unterstützen. Dieses Repository enthält eine standardisierte Verzeichnisstruktur und Dokumentvorlagen, die Sie für Ihr eigenes TDSP-Projekt verwenden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

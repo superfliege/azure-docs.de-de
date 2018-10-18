@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 36f0b1c0ac503efb13f69b489557af891e1286fa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d8c0effe8c23a852fb720ea263803efa5e6b15b5
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301488"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387186"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Business Intelligence-Partner für SQL Data Warehouse
 Für die Erstellung Ihrer eigenen End-to-End-Data Warehouse-Lösung können Sie auf eine Vielzahl branchenführender Tools zurückgreifen.  In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die Business Intelligence-Lösungen (BI) für die Datenverwaltung anbieten, die Azure SQL Data Warehouse unterstützen.
@@ -84,7 +84,7 @@ Weitere Informationen zu unseren anderen Partnern finden Sie unter [Partner für
 [yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
 
 <!--Marketplace Links -->
-[birst_marketplace]:https://azure.microsoft.com/en-gb/marketplace/partners/birst/birst/
+[birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 <!--[clearstory_marketplace]:-->
 <!--[dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner/--> [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ <!--[jinfonet_marketplace]:-->
 <!--[logianalytics_marketplace]:https://azure.microsoft.com/marketplace/partners/logi-analytics/logi-info-11/--> 

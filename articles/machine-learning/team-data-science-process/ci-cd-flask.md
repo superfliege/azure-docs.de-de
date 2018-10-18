@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jainr
-ms.openlocfilehash: 4d95fc25ed6f2f2efec8313e5b208b3cccbb619f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: b0368e742c990feed626a1c4982bfedc35785b49
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968790"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304287"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>DevOps für Anwendungen der Künstlichen Intelligenz (KI): Erstellen einer Continuous Integration-Pipeline in Azure mit der Docker und Kubernetes
 Für eine KI-Anwendung gibt es häufig zwei Arbeitsbereiche: Data Scientists, die Modelle für maschinelles Lernen erstellen, und App-Entwickler, die die Anwendung programmieren und den Endbenutzern zur Verfügung stellen. In diesem Artikel wird veranschaulicht, wie Sie eine Pipeline für Continuous Integration (CI) bzw. Continuous Delivery (CD) für eine KI-Anwendung implementieren. Eine KI-Anwendung ist eine Kombination aus Anwendungscode, der mit einem vortrainierten Modell für maschinelles Lernen (MK) eingebettet ist. In diesem Artikel wird ein vortrainiertes Modell aus einem privaten Azure Blob Storage-Konto genutzt, wobei auch ein AWS S3-Konto verwendet werden könnte. Zudem wird eine einfache Python Flask-Webanwendung in diesem Artikel verwendet.
@@ -35,7 +35,7 @@ Sie können den Quellcode von [GitHub](https://github.com/Azure/DevOps-For-AI-Ap
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 Im Folgenden sind die Voraussetzungen für die nachfolgend beschriebene CI/CD-Pipeline aufgeführt:
-* [Visual Studio Team Services-Konto](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student)
+* [Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 * [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Azure Container Service (AKS)-Cluster mit Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
 * [Azure Container Registy (ACR)-Konto](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
@@ -53,19 +53,19 @@ Unten sehen Sie die Pipelinearchitektur.
 
 ## <a name="steps-of-the-cicd-pipeline"></a>Schritte der CI/CD-Pipeline
 1. Entwickler arbeiten an der IDE ihrer Wahl am Anwendungscode.
-2. Sie comitten den Code an die Quellcodeverwaltung ihrer Wahl (VSTS bietet gute Unterstützung für verschiedene Quellcodeverwaltungen).
+2. Sie committen den Code bei der Quellcodeverwaltung ihrer Wahl (Azure DevOps bietet gute Unterstützung für verschiedene Quellcodeverwaltungen).
 3. Die Data Scientists arbeiten separat an der Entwicklung ihres Modells.
 4. Sobald sie mit dem Ergebnis zufrieden sind, veröffentlichen sie das Modell in einem Modellrepository. In diesem Fall wird ein Blob Storage-Konto verwendet. Dies könnte problemlos durch den Modellverwaltungsdienst von Azure ML Workbench über die REST-APIs ersetzt werden.
-5. Ein Build wird in VSTS basierend auf dem Commit in GitHub gestartet.
-6. Die VSTS-Buildpipeline pullt das neueste Modell aus dem Blobcontainer und erstellt einen Container.
-7. VSTS pusht das Image in ein privates Imagerepository in Azure Container Registry.
+5. Ein Build wird in Azure DevOps basierend auf dem Commit in GitHub gestartet.
+6. Die Azure DevOps-Buildpipeline pullt das neueste Modell aus dem Blobcontainer und erstellt einen Container.
+7. Azure DevOps pusht das Image in ein privates Imagerepository in Azure Container Registry.
 8. Nach einem festgelegten Zeitplan (nachts) wird die Releasepipeline gestartet.
 9. Das neueste Image aus ACR wird über den Kubernetes-Cluster in ACS gepullt und bereitgestellt.
 10. Die Benutzeranforderung der App erfolgt über den DNS-Server.
 11. Der DNS-Server übergibt die Anforderung an das Lastenausgleichsmodul und sendet die Antwort an den Benutzer zurück.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Details und Anweisungen zum Implementieren Ihrer eigenen CI/CD-Pipeline für Ihre Anwendung finden Sie im [Tutorial]((https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)).
+* Details und Anweisungen zum Implementieren Ihrer eigenen CI/CD-Pipeline für Ihre Anwendung finden Sie im [Tutorial](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md).
 
 ## <a name="references"></a>Referenzen
 * [Team Data Science-Prozess (TDSP)](https://aka.ms/tdsp)

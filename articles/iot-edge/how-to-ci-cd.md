@@ -8,20 +8,20 @@ ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 62d8d770f6b4c3a62a2395eb8c1505dbc3835c28
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5099ca70503ba2ed4ae8f4969a9199816c4986fb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047454"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302570"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge
 
-In diesem Artikel wird gezeigt, wie Sie die Features für Continuous Integration und Continuous Deployment von Visual Studio Team Services (VSTS) und Microsoft Team Foundation Server (TFS) zum schnellen und effizienten Erstellen, Testen und Bereitstellen von Anwendungen in Azure IoT Edge verwenden können. 
+In diesem Artikel wird gezeigt, wie Sie die Features für Continuous Integration und Continuous Deployment von Azure DevOps Services und Microsoft Team Foundation Server (TFS) zum schnellen und effizienten Erstellen, Testen und Bereitstellen von Anwendungen in Azure IoT Edge verwenden können. 
 
 In diesem Artikel wird Folgendes behandelt:
 * Erstellen und Einchecken einer IoT Edge-Beispielprojektmappe, die Komponententests enthält
-* Installieren der Azure IoT Edge-Erweiterung für Ihre VSTS
+* Installieren der Azure IoT Edge-Erweiterung für Ihr Azure DevOps
 * Konfigurieren von Continuous Integration (CI) zum Erstellen der Projektmappe und Ausführen der Komponententests
 * Konfigurieren von Continuous Deployment (CD) zum Bereitstellen der Projektmappe und Anzeigen von Antworten
 
@@ -277,31 +277,31 @@ In diesem Abschnitt erstellen Sie eine IoT Edge-Beispielprojektmappe mit Kompone
 
     ![Komponententest](./media/how-to-ci-cd/unit-test.png)
 
-7. Speichern Sie diese Projekte, und checken Sie sie dann in Ihr VSTS- oder TFS-Repository ein.
+7. Speichern Sie diese Projekte, und checken Sie sie dann in Ihr Azure DevOps- oder TFS-Repository ein.
     
 
 > [!NOTE]
-> Weitere Informationen zur Verwendung von VSTS -Coderepositorys finden Sie unter [Freigeben von Code mit Visual Studio und VSTS Git](https://docs.microsoft.com/vsts/git/share-your-code-in-git-vs?view=vsts).
+> Weitere Informationen zur Verwendung von Azure Repos finden Sie unter [Freigeben von Code mit Visual Studio und Azure-Repositorys](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
 
 
 ## <a name="configure-continuous-integration"></a>Konfigurieren von Continuous Integration
-In diesem Abschnitt erstellen Sie eine Builddefinition, die so konfiguriert ist, dass sie beim Einchecken von Änderungen der IoT Edge-Beispielprojektmappe automatisch ausgeführt wird und auch die darin enthaltenen Komponententests automatisch ausgeführt werden.
+In diesem Abschnitt erstellen Sie eine Buildpipeline, die so konfiguriert ist, dass sie beim Einchecken von Änderungen der IoT Edge-Beispielprojektmappe automatisch ausgeführt wird und auch die darin enthaltenen Komponententests automatisch ausgeführt werden.
 
-1. Melden Sie sich bei Ihrem VSTS-Konto an (**https://**_Ihr_Konto_**.visualstudio.com**), und öffnen Sie das Projekt, in das Sie die Beispiel-App eingecheckt haben.
+1. Melden Sie sich bei Ihrer Azure DevOps-Organisation (**https://**_Ihr_Konto_**.visualstudio.com**) an, und öffnen Sie das Projekt, in das Sie die Beispiel-App eingecheckt haben.
 
     ![Einchecken von Code](./media/how-to-ci-cd/init-project.png)
 
-1. Rufen Sie [Azure IoT Edge für VSTS](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) im VSTS Marketplace auf. Klicken Sie auf die Option für **Kostenlos erhalten**, und führen Sie die Schritte im Assistenten aus, um diese Erweiterung in Ihrem VSTS-Konto zu installieren oder auf Ihren TFS herunterzuladen.
+1. Besuchen Sie [Azure IoT Edge für Azure DevOps](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) im Azure DevOps Marketplace. Klicken Sie auf die Option **Kostenlos erhalten**, und führen Sie die Schritte im Assistenten aus, um diese Erweiterung in Ihrer Azure DevOps-Organisation zu installieren oder auf Ihren TFS herunterzuladen.
 
     ![Installieren der Erweiterung](./media/how-to-ci-cd/install-extension.png)
 
-1. Öffnen Sie in VSTS den Hub **Build &amp; Release**, und wählen Sie auf der Registerkarte **Builds** die Option **+ Neue Definition** aus. Wenn Sie bereits über Builddefinitionen verfügen, wählen Sie die Schaltfläche **+ Neu** aus. 
+1. Öffnen Sie in Azure DevOps den Hub **Build &amp; Release** (Erstellen und freigeben), und wählen Sie auf der Registerkarte **Builds** die Option **+ Neue Pipeline** aus. Wenn Sie bereits über Buildpipelines verfügen, wählen Sie die Schaltfläche **+ Neu** aus. 
 
     ![Neuer Build](./media/how-to-ci-cd/add-new-build.png)
 
-1. Wenn Sie dazu aufgefordert werden, wählen Sie den Quellentyp **VSTS-Git** aus. Anschließend wählen Sie das Projekt, das Repository und den Branch aus, in dem sich der Code befindet. Klicken Sie auf **Weiter**.
+1. Wenn Sie dazu aufgefordert werden, wählen Sie den Quellentyp **Azure DevOps-Git** aus. Anschließend wählen Sie das Projekt, das Repository und den Branch aus, in dem sich der Code befindet. Klicken Sie auf **Weiter**.
 
-    ![Auswählen des VSTS-Git](./media/how-to-ci-cd/select-vsts-git.png)
+    ![Auswählen des Azure DevOps-Git-Repositorys](./media/how-to-ci-cd/select-vsts-git.png)
 
 1. Wählen Sie im Fenster **Vorlage auswählen** die Option zum **Starten mit einem leeren Prozess** aus.
 
@@ -343,9 +343,9 @@ In diesem Abschnitt erstellen Sie eine Builddefinition, die so konfiguriert ist,
 
     ![Trigger](./media/how-to-ci-cd/configure-trigger.png)
 
-1. Speichern Sie die neue Builddefinition, und fügen Sie einen neuen Build zur Warteschlange hinzu. Klicken Sie auf die Schaltfläche **Speichern und in Warteschlange einreihen**.
+1. Speichern Sie die neue Buildpipeline, und fügen Sie der Warteschlange einen neuen Build hinzu. Klicken Sie auf die Schaltfläche **Speichern und in Warteschlange einreihen**.
 
-1. Wählen Sie in der daraufhin angezeigten Meldungsleiste den Link für den Build aus. Sie können auch zur Builddefinition wechseln, um den zuletzt in die Warteschlange gestellten Buildauftrag anzuzeigen.
+1. Wählen Sie in der daraufhin angezeigten Meldungsleiste den Link für den Build aus. Sie können auch zur Buildpipeline wechseln, um den zuletzt in die Warteschlange gestellten Buildauftrag anzuzeigen.
 
     ![Entwickeln](./media/how-to-ci-cd/build-def.png)
 

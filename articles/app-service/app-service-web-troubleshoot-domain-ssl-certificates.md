@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: genli
-ms.openlocfilehash: 59a9011edef49494288716ab16f30e28e440293b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5dd87c75638c3d084226becaace5c9454660c907
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195181"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303675"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Problembehandlung bei Domänen- und SSL-Zertifikatsproblemen in Azure-Web-Apps
 
@@ -167,7 +167,7 @@ Dieses Problem tritt aus einem der folgenden Gründe auf:
 
 - Sie sind nicht der Besitzer des Abonnements, sodass Sie nicht berechtigt sind, eine Domäne zu erwerben.
 
-    **Lösung**: [Fügen Sie die Rolle „Besitzer“](../billing/billing-add-change-azure-subscription-administrator.md) zu Ihrem Konto hinzu. Oder wenden Sie sich an den Abonnementadministrator, um die Berechtigung zum Erwerben einer Domäne zu erhalten.
+    **Lösung:** [Weisen Sie Ihrem Konto die Rolle „Besitzer“](../role-based-access-control/role-assignments-portal.md) zu. Oder wenden Sie sich an den Abonnementadministrator, um die Berechtigung zum Erwerben einer Domäne zu erhalten.
 - Sie haben das Limit für den Erwerb von Domänen für Ihr Abonnement erreicht. Das aktuelle Limit beläuft sich auf 20 Domänenkäufe.
 
     **Lösung**: Wenden Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um eine Erhöhung des Limits anzufordern.

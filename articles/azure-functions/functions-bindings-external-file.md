@@ -2,24 +2,20 @@
 title: Bindungen zu externen Dateien für Azure Functions (experimentell)
 description: Verwenden von Bindungen zu externen Dateien in Azure Functions
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: alkarche
-ms.openlocfilehash: 4e9c2c336df465d7488de84bd2a02cc5d9e42f30
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: be2d34202b88d0d424eb23c4e078c2fdc45c6ab6
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27607920"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093769"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions – Bindungen zu externen Dateien (experimentell)
 In diesem Artikel wird gezeigt, wie Dateien aus unterschiedlichen SaaS-Anbietern (z. B. Dropbox oder Google Drive) in Azure Functions verarbeitet werden können. Azure Functions unterstützt Trigger-, Eingabe- und Ausgabebindungen für externe Dateien. Diese Bindungen erstellen API-Verbindungen mit SaaS-Anbietern oder verwenden vorhandene API-Verbindungen aus der Ressourcengruppe Ihrer Funktionen-App.
@@ -162,7 +158,7 @@ Beispiel:
 "path": "images/{{20140101}}-{name}",
 ```
 
-Mit diesem Pfad wird eine Datei namens *{20140101}-soundfile.mp3* im Ordner *images* gefunden, und der Wert der Variablen `name` im Funktionscode lautet *soundfile.mp3*.
+Mit diesem Pfad wird eine Datei namens *{20140101}-soundfile.mp3* im Ordner *images* gefunden, und der Wert der Variable `name` im Funktionscode lautet *soundfile.mp3*.
 
 ## <a name="trigger---usage"></a>Trigger: Verwendung
 

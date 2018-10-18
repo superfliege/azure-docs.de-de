@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
-ms.openlocfilehash: ea9407208f1bf555cf1a6d166825896dec89ec29
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20531cb301cad23fbadb617bdf33e710a4481be4
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986835"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050033"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Gewusst wie: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen
 
@@ -34,7 +34,7 @@ Die Automatisierung einer ILB-ASE-Erstellung umfasst drei Schritte:
 
 1. Zuerst wird die Basis-ASE in einem virtuellen Netzwerk erstellt, indem anstelle einer öffentlichen VIP die Adresse eines internen Load Balancers verwendet wird.  Im Rahmen dieses Schritts wird der ILB-ASE ein Stammdomänenname zugewiesen.
 2. Nachdem die ILB-ASE erstellt wurde, wird ein SSL-Zertifikat hochgeladen.  
-3. Das hochgeladene SSL-Zertifikat wird der ILB-ASE explizit als SSL-Standardzertifikat zugewiesen.  Dieses SSL-Zertifikat wird für SSL-Datenverkehr zu Apps in der ILB-ASE verwendet, wenn die Apps mit der allgemeinen Stammdomäne adressiert werden, die der ASE zugewiesen ist (z.B. https://someapp.mycustomrootcomain.com).
+3. Das hochgeladene SSL-Zertifikat wird der ILB-ASE explizit als SSL-Standardzertifikat zugewiesen.  Dieses SSL-Zertifikat wird für SSL-Datenverkehr zu Apps in der ILB-ASE verwendet, wenn die Apps mit der allgemeinen Stammdomäne adressiert werden, die der ASE zugewiesen ist (z.B. https://someapp.mycustomrootcomain.com)).
 
 ## <a name="creating-the-base-ilb-ase"></a>Erstellen der Basis-ILB-ASE
 Eine Azure Resource Manager-Beispielvorlage und die zugeordnete Parameterdatei stehen auf [GitHub][quickstartilbasecreate] zur Verfügung.
@@ -55,7 +55,7 @@ Nachdem die Datei *azuredeploy.parameters.json* für eine ILB-ASE ausgefüllt wu
 Nachdem die Azure Resource Manager-Vorlage übermittelt wurde, dauert es einige Stunden, bis die ILB-ASE erstellt wird.  Nach Abschluss der Erstellung wird die ILB-ASE auf der Benutzeroberfläche des Portals in der Liste mit den App Service-Umgebungen für das Abonnement angezeigt, über das die Bereitstellung ausgelöst wurde.
 
 ## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Hochladen und Konfigurieren des SSL-Standardzertifikats
-Nach der Erstellung der ILB-ASE sollte ein SSL-Zertifikat der ASE als SSL-Standardzertifikat zugeordnet werden, das zum Herstellen von SSL-Verbindungen mit Apps verwendet wird.  Für das Beispiel mit der fiktiven Contoso Corporation gilt: Wenn das DNS-Standardsuffix der ASE *internal-contoso.com* lautet, ist für eine Verbindung mit *https://beliebige-app.internal-contoso.com* ein SSL-Zertifikat erforderlich, das für **.internal-contoso.com* gültig ist. 
+Nach der Erstellung der ILB-ASE sollte ein SSL-Zertifikat der ASE als SSL-Standardzertifikat zugeordnet werden, das zum Herstellen von SSL-Verbindungen mit Apps verwendet wird.  Für das Beispiel mit der fiktiven Contoso Corporation gilt: Wenn das DNS-Standardsuffix der ASE *internal-contoso.com* lautet, ist für eine Verbindung mit *https://some-random-app.internal-contoso.com* ein SSL-Zertifikat erforderlich, das für **.internal-contoso.com* gültig ist. 
 
 Es gibt viele Möglichkeiten, ein gültiges SSL-Zertifikat zu beschaffen, z.B. interne Zertifizierungsstellen, Erwerb eines Zertifikats von einem externen Aussteller und Verwendung eines selbstsignierten Zertifikats.  Unabhängig von der Quelle des SSL-Zertifikats müssen die folgenden Zertifikatattribute richtig konfiguriert werden:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 58c5826240b7c49ba29c0d8e86a2896e3ce2f7f7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6a618efc6860371883bff7ebb953880293ad3120
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838397"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303880"
 ---
 # <a name="project-lead-tasks"></a>Aufgaben eines Projektleiters
 
@@ -31,7 +31,7 @@ Ein **Projektleiter** verwaltet die täglichen Aktivitäten der einzelnen Datena
 
 Dieses Thema enthält derzeit die Aufgaben 1,2 und 6 dieses Workflows für Projektleiter.
 
->[AZURE.NOTE] Wir beschreiben in den folgenden Anweisungen die erforderlichen Schritte zum Einrichten einer TDSP-Teamumgebung für ein Projekt mithilfe von Visual Studio Team Services (VSTS). Wir geben an, wie diese Aufgaben mit VSTS erledigt werden können, da wir bei Microsoft den TDSP auf diese Weise implementieren. Wenn für Ihre Gruppe eine andere Plattform zum Hosten des Codes verwendet wird, ändern sich die vom Teamleiter auszuführenden Aufgaben in der Regel nicht. Sie müssen jedoch auf andere Weise ausgeführt werden.
+>[AZURE.NOTE] In den folgenden Anweisungen werden die erforderlichen Schritte zum Einrichten einer TDSP-Teamumgebung für ein Projekt per Azure DevOps beschrieben. Es wird angegeben, wie diese Aufgaben mit Azure DevOps erledigt werden können, da bei Microsoft der TDSP auf diese Weise implementiert wird. Wenn für Ihre Gruppe eine andere Plattform zum Hosten des Codes verwendet wird, ändern sich die vom Teamleiter auszuführenden Aufgaben in der Regel nicht. Sie müssen jedoch auf andere Weise ausgeführt werden.
 
 
 ## <a name="repositories-and-directories"></a>Repositorys und Verzeichnisse
@@ -50,27 +50,27 @@ Zum Erfüllen der Voraussetzungen müssen die dem Gruppenleiter und dem Teamleit
 
 Kurz zusammengefasst müssen die folgenden Anforderungen erfüllt sein, ehe Sie mit den Aufgaben des Teamleiters beginnen: 
 
-- Ihr **VSTS-Gruppenserver** (oder Gruppenkonto für eine andere Codehostingplattform) wurde von Ihrem Gruppenmanager eingerichtet.
+- Ihr **Azure DevOps-Gruppenserver** (oder ein Gruppenkonto für eine andere Codehostingplattform) wurde von Ihrem Gruppenmanager eingerichtet.
 - Ihr **TeamProjectTemplate-Repository** (R3) wurde unter Ihrem Gruppenkonto von Ihrem Teamleiter auf der Plattform zum Hosten von Code, die Sie verwenden möchten, eingerichtet .
 - Sie wurden von Ihrem Teamleiter zur Erstellung von Repositorys auf Ihrem Gruppenkonto für Ihr Team **autorisiert**.
 - Git muss auf Ihrem Computer installiert sein. Wenn Sie eine Data Science Virtual Machine (DSVM) verwenden, ist Git bereits installiert, sodass Sie gleich loslegen können. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.  
 - Bei Verwendung einer **Windows DSVM** muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei „README.md“ nach unten zum Abschnitt **Download and Install**, und klicken Sie auf den *neuesten Installer*. Dadurch gelangen Sie zur Seite mit dem neuesten Installer. Laden Sie den Installer mit der Erweiterung EXE herunter, und führen Sie ihn aus. 
-- Bei Verwendung einer **Linux DSVM** erstellen Sie auf Ihrer DSVM einen öffentlichen SSH-Schlüssel, den Sie dem VSTS-Server Ihrer Gruppe hinzufügen. Weitere Informationen zu SSH finden Sie im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
+- Bei Verwendung einer **Linux-DSVM** erstellen Sie auf Ihrer DSVM einen öffentlichen SSH-Schlüssel und fügen ihn Azure DevOps Services für Ihre Gruppe hinzu. Weitere Informationen zu SSH finden Sie im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
 
 
 ## <a name="1-create-a-project-repository-r5"></a>1. Erstellen Sie ein Projekt-Repository (R5)
 
-- Melden Sie sich mit Ihrem VSTS-Gruppenserver unter *https://\<VSTS-Servernamen\>. visualstudio.com* an. 
-- Klicken Sie unter **Zuletzt geöffnete Projekte und Teams** auf **Durchsuchen**. Ein eingeblendetes Fenster listet alle Teamprojekte auf dem VSTS-Server auf. 
+- Melden Sie sich bei Azure DevOps Services für Ihre Gruppe unter *https://\<Name des Azure DevOps-Services\>.visualstudio.com* an. 
+- Klicken Sie unter **Zuletzt geöffnete Projekte und Teams** auf **Durchsuchen**. In einem eingeblendeten Fenster werden alle Projekte bei Azure DevOps Services aufgelistet. 
 
     ![2](./media/project-lead-tasks/project-leads-2-create-project-repo.png)
 
-- Klicken Sie auf den Namen des Teamprojekts, in dem Sie Ihr Projektrepository erstellen möchten. Klicken Sie in diesem Beispiel auf **MyTeam**. 
-- Klicken Sie dann auf **Navigieren**, um zur Startseite des Teamprojekts **MyTeam** zu gelangen:
+- Klicken Sie auf den Namen des Projekts, in dem Sie Ihr Projektrepository erstellen möchten. Klicken Sie in diesem Beispiel auf **MyTeam**. 
+- Klicken Sie dann auf **Navigieren**, um zur Startseite des Projekts **MyTeam** zu gelangen:
 
     ![3](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
 
-- Klicken Sie auf **Zusammenarbeit auf Code**, um zur Git-Startseite des Teamprojekts zu gelangen.  
+- Klicken Sie auf **An Code zusammenarbeiten**, um zur Git-Startseite des Projekts zu gelangen.  
 
     ![4](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
 
@@ -87,33 +87,33 @@ Kurz zusammengefasst müssen die folgenden Anforderungen erfüllt sein, ehe Sie 
 
 ## <a name="2-seed-the-dsproject1-project-repository"></a>2. Seeding für das Projektrepository DSProject1 ausführen
 
-Die Aufgabe besteht darin, Seeding für das Projektrepository (R5) **DSProject1** von Ihrem Repository für Teamprojektvorlagen (R3) auszuführen. Das Seeding-Verfahren verwendet die Verzeichnisse D3 und D5 auf Ihrem lokalen DSVM als fortgeschrittene Stagingsites. Zusammenfassend ist der Seeding-Pfad: R3 -> D3 -> D5 -> R5.
+Die Aufgabe besteht darin, Seeding für das Projektrepository **DSProject1** (R5) von Ihrem Repository für Projektvorlagen (R3) auszuführen. Das Seeding-Verfahren verwendet die Verzeichnisse D3 und D5 auf Ihrem lokalen DSVM als fortgeschrittene Stagingsites. Zusammenfassend ist der Seeding-Pfad: R3 -> D3 -> D5 -> R5.
 
 Wenn Sie Ihr Projektrepository **DSProject1** anpassen möchten, um einige bestimmte Projektbedürfnisse zu erfüllen, müssen Sie dies im vorletzten Schritt des Verfahrens tun. Hier sehen Sie eine Zusammenfassung der Schritte, durch die der Inhalt des Projektrepositorys **DSProject1** angelegt wird. Die einzelnen Schritte entsprechen den Unterabschnitten im Seeding-Verfahren:
 
-- Klonen Sie das Vorlagenrepository für Teamprojekte zum lokalen Verzeichnis: Team R3 - geklont zu -> lokale D3.
+- Klonen Sie das Projektvorlagenrepository in das lokale Verzeichnis: Team R3 – geklont zu -> lokale D3.
 - Klonen Sie das Repository DSProject1 in ein lokales Verzeichnis: Team R5 - geklont zu -> lokale D5.
-- Kopieren Sie die Inhalte der geklonten Teamprojektvorlagen in den lokalen Klon des Repositorys DSProject1: D3 - Inhalte kopiert zu -> D5.
+- Kopieren Sie die Inhalte der geklonten Projektvorlagen in den lokalen Klon des Repositorys DSProject1: D3 – Inhalte kopiert zu -> D5.
 - (Optional) Anpassung der lokalen D5.
 - Übertragen Sie den Inhalt des lokalen DSProject1 mithilfe von Push in die TeamRepositorys: D5 - Inhalt zugefügt zu -> Team R5.
 
 
-### <a name="clone-your-team-project-template-repository-r3-to-a-directory-d3-on-your-local-machine"></a>Klonen Sie das Vorlagenrepository Ihres Teamprojekts (R3) in ein Verzeichnis (D3) auf dem lokalen Computer.
+### <a name="clone-your-project-template-repository-r3-to-a-directory-d3-on-your-local-machine"></a>Klonen Sie Ihr Projektvorlagenrepository (R3) in ein Verzeichnis (D3) auf dem lokalen Computer.
 
 Erstellen Sie ein Verzeichnis auf dem lokalen Computer:
 
 - *C:\GitRepos\MyTeamCommon* für Windows 
 - *$home/GitRepos/MyTeamCommon* für Linux
 
-Navigieren Sie in dieses Verzeichnis. Führen Sie dann den folgenden Befehl aus, um das Vorlagenrepository Ihres Teamprojekts auf Ihren lokalen Computer zu klonen. 
+Navigieren Sie in dieses Verzeichnis. Führen Sie dann den folgenden Befehl aus, um Ihr Projektvorlagenrepository auf Ihren lokalen Computer zu klonen. 
 
 **Windows**
             
     git clone <the HTTPS URL of the TeamProjectTemplate repository>
     
-Wenn Sie VSTS in der Regel als Codehostingplattform verwenden, lautet die *HTTPS-URL des Vorlagenrepositorys Ihres Teamprojekts*:
+Wenn Sie Azure DevOps als Codehostingplattform verwenden, lautet die *HTTPS-URL Ihres Projektvorlagenrepositorys* in der Regel:
 
- ***https://\<VSTS-Servername\>.visualstudio.com/\<Ihr Teamprojektname\>/_git/\<Name der Vorlagenrepository Ihres Teamprojekts\>***. 
+ ***https://\<Azure DevOps Services-Name\>.visualstudio.com/\<Name Ihres Projekts\>/_git/\<Name Ihres Projektvorlagenrepositorys\>***. 
 
 In diesem Beispiel sehen wir:
 
@@ -127,9 +127,9 @@ In diesem Beispiel sehen wir:
         
 ![8](./media/project-lead-tasks/project-leads-8-clone-team-project-template-linux.png)
 
-Wenn Sie VSTS in der Regel als Codehostingplattform verwenden, lautet die *SSH-URL des Vorlagenrepositorys des Teamprojekts*:
+Wenn Sie Azure DevOps als Codehostingplattform verwenden, lautet die *SSH-URL des Projektvorlagenrepositorys* in der Regel:
 
-***ssh://\<VSTS-Servername\>@\<VSTS-Servername\>.visualstudio.com:22/\<Ihr Teamprojektname>/_git/\<Name der Vorlagenrepository Ihres Teamprojekts\>.*** 
+***ssh://\<Azure DevOps Services-Name\>@\<Azure DevOps Services-Name\>.visualstudio.com:22/\<Name Ihres Projekts>/_git/\<Name Ihres Projektvorlagenrepositorys\>.*** 
 
 In diesem Beispiel sehen wir:
 
@@ -145,7 +145,7 @@ Navigieren Sie zum Verzeichnis **GitRepos**, und führen Sie dann den folgenden 
 
 ![9](./media/project-lead-tasks/project-leads-9-clone-project-repository.png)
 
-Wenn Sie VSTS in der Regel als Codehostingplattform verwenden, lautet die _HTTPS-URL des Projektrepositorys_ ***https://\<VSTS-Servername\>.visualstudio.com/\<Ihr Teamprojektname>/_git/<Ihr Projektrepositoryname\>***. In diesem Beispiel haben wir ***https://mysamplegroup.visualstudio.com/MyTeam/_git/DSProject1***.
+Wenn Sie Azure DevOps als Codehostingplattform verwenden, lautet die _HTTPS-URL des Projektrepositorys_ in der Regel ***https://\<Azure DevOps Services-Name\>.visualstudio.com/\<Name Ihres Projekts>/_git/<Name Ihres Projektrepositorys\>***. In diesem Beispiel haben wir ***https://mysamplegroup.visualstudio.com/MyTeam/_git/DSProject1***.
 
 **Linux**
 
@@ -153,7 +153,7 @@ Wenn Sie VSTS in der Regel als Codehostingplattform verwenden, lautet die _HTTPS
 
 ![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
 
-Wenn Sie VSTS in der Regel als Codehostingplattform verwenden, lautet die _SSH-URL des Projektrepositorys_ _ssh ist://<VSTS-Servername\>@<VSTS-Servername\>.visualstudio.com:22/<Your Team Project Name>/\_git/<Ihr Projektrepositoryname\>. In diesem Beispiel haben wir ***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
+Wenn Sie Azure DevOps als Codehostingplattform verwenden, lautet die _SSH-URL des Projektrepositorys_ in der Regel „ssh://<Azure DevOps Services-Name\>@<Azure DevOps Services-Name\>.visualstudio.com:22/<Your Project Name>/\_git/<Name Ihres Projektrepositorys\>“. In diesem Beispiel haben wir ***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
 
 ### <a name="copy-contents-of-d3-to-d5"></a>Kopieren Sie Inhalte von D3 auf D5 
 
@@ -184,11 +184,11 @@ Nun können Sie im Ordner _DSProject1_ alle Dateien (mit Ausnahme der Metadaten 
 
 ### <a name="customize-d5-if-you-need-to-optional"></a>Anpassen von D5 bei Bedarf (optional)
 
-Wenn das Projekt einige bestimmte Verzeichnisse oder Dokumente erfordert, die Sie nicht aus Ihren Teamprojektvorlagen (im vorherigen Schritt in Ihr D5-Verzeichnis kopiert) erhalten, können Sie den Inhalt von D5 jetzt anpassen. 
+Wenn das Projekt einige bestimmte Verzeichnisse oder Dokumente erfordert, die Sie nicht aus Ihren Projektvorlagen (im vorherigen Schritt in Ihr Verzeichnis D5 kopiert) erhalten, können Sie den Inhalt von D5 jetzt anpassen. 
 
-### <a name="add-contents-of-dsproject1-in-d5-to-r5-on-your-group-vsts-server"></a>Fügen Sie Inhalte von DSProject1 in D5 zu R5 auf Ihrem VSTS-Gruppenserver hinzu
+### <a name="add-contents-of-dsproject1-in-d5-to-r5-on-your-group-azure-devops-services"></a>Hinzufügen von Inhalten von DSProject1 in D5 zu R5 auf Ihrer Azure DevOps Services-Instanz
 
-Jetzt müssen Sie Inhalte in **_DSProject1_** mithilfe von Push auf das _R5_-Repository im Teamprojekt Ihres VSTS-Gruppenserver übertragen. 
+Jetzt müssen Sie Inhalte in **_DSProject1_** in das Repository _R5_ im Projekt Ihrer Azure DevOps Services-Instanz pushen. 
 
 
 - Wechseln Sie zum Verzeichnis **D5**. 

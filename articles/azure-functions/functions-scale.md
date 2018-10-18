@@ -13,16 +13,16 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4585b6d4e9e3f6c64e1c583b947f979b8edc5a74
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 5f597425fc3813f243950b16f5debbd63ce3a805
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830258"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113936"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
-Azure Functions wird in zwei verschiedenen Modi ausgeführt: als Verbrauchsplan und als Azure App Service-Plan. Der Verbrauchsplan weist bei Ausführung Ihres Codes automatisch Computeleistung zu. Ihre App wird horizontal hochskaliert, wenn dies zur Verarbeitung der Last erforderlich ist, und herunterskaliert, wenn der Code nicht ausgeführt wird. Für virtuelle Computer im Leerlauf müssen Sie nichts bezahlen und auch keine Kapazitäten im Voraus reservieren. Dieser Artikel konzentriert sich auf den Verbrauchsplan, ein [serverloses](https://azure.microsoft.com/overview/serverless-computing/) App-Modell. Weitere Informationen zur Funktionsweise von dedizierten App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+Azure Functions wird in zwei verschiedenen Modi ausgeführt: als Verbrauchsplan und als Azure App Service-Plan. Der Verbrauchsplan weist bei Ausführung Ihres Codes automatisch Computeleistung zu. Ihre App wird horizontal hochskaliert, wenn dies zur Verarbeitung der Last erforderlich ist, und herunterskaliert, wenn der Code nicht ausgeführt wird. Für virtuelle Computer im Leerlauf müssen Sie nichts bezahlen und auch keine Kapazitäten im Voraus reservieren. Dieser Artikel konzentriert sich auf den Verbrauchsplan, ein [serverloses](https://azure.microsoft.com/solutions/serverless/) App-Modell. Weitere Informationen zur Funktionsweise von dedizierten App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
 > [!NOTE]  
 > [Linux-Hosting](functions-create-first-azure-function-azure-cli-linux.md) ist derzeit nur im Rahmen eines App Service-Plans verfügbar.

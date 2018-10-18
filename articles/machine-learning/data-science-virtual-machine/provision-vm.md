@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782653"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298204"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Bereitstellen der Data Science Virtual Machine für Windows in Azure
 Die Microsoft Data Science Virtual Machine (DSVM) ist ein Image des virtuellen Windows Azure-Computers (VM). Sie ist vorinstalliert und mit verschiedenen Tools konfiguriert, die für Datenanalysen und Machine Learning verwendet werden. Die folgenden Tools sind enthalten:
@@ -40,7 +40,7 @@ Die Microsoft Data Science Virtual Machine (DSVM) ist ein Image des virtuellen W
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/). Eine Software für visuelles Data Mining und Machine Learning in Java.
   * [Apache Drill](https://drill.apache.org/). Eine schemalose SQL-Abfrage-Engine für Apache Hadoop, NoSQL und Cloud Storage.  Sie unterstützt ODBC- und JDBC-Schnittstellen für NoSQL- und Dateiabfragen mit BI-Standardtools wie Power BI, Microsoft Excel und Tableau.
 * Bibliotheken in R und Python zur Verwendung in Azure Machine Learning und anderen Azure-Diensten.
-* Git einschließlich Git Bash für den Einsatz mit Quellcoderepositorys einschließlich GitHub und Visual Studio Team Services. Git stellt mehrere gängige Linux-Befehlszeilenprogramme bereit, auf die sowohl in Git Bash als auch über eine Eingabeaufforderung zugegriffen werden kann. Beispiele sind awk, sed, perl, grep, find, wget und curl.
+* Git, einschließlich Git Bash, für die Arbeit mit Quellcoderepositorys einschließlich GitHub und Azure DevOps. Git stellt mehrere gängige Linux-Befehlszeilenprogramme bereit, auf die sowohl in Git Bash als auch über eine Eingabeaufforderung zugegriffen werden kann. Beispiele sind awk, sed, perl, grep, find, wget und curl.
 
 Der Data Science-Vorgang umfasst eine Aufgabensequenz:
 

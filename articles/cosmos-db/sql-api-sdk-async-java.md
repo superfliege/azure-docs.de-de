@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/16/2018
+ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 9852edfca26e78ad1b373418970dfe9c7ab477d8
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e90c5640e571aaf28e184e9439f6228e3a5bbc6b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144346"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023561"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -52,6 +52,13 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Unterstützung für einen Proxy wurde hinzugefügt.
+* Unterstützung für Ressourcentokenautorisierung wurde hinzugefügt.
+* Ein Problem beim Verarbeiten großer Partitionsschlüssel ([GitHub 63](https://github.com/Azure/azure-cosmosdb-java/issues/63)) wurde behoben.
+* Die Dokumentation wurde verbessert.
+* Das SDK wurde in feiner abgestimmte Module umstrukturiert.
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
 * Ein Fehler für nicht englische Gebietsschemas wurde behoben ([GitHub #51](https://github.com/Azure/azure-cosmosdb-java/issues/51)).
@@ -103,6 +110,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |5. September 2018|--- |
 | [2.0.1](#2.0.1) |16. August 2018|--- |
 | [2.0.0](#2.0.0) |20. Juni 2018|--- |
 | [1.0.2](#1.0.2) |18. Mai 2018|--- |

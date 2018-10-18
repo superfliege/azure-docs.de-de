@@ -1,5 +1,5 @@
 ---
-title: Ändern der KVSActorStateProvider-Einstellungen in Azure-Microservices | Microsoft-Dokumentation
+title: Ändern der KVSActorStateProvider-Einstellungen in Azure-Service Fabric-Akteuren | Microsoft-Dokumentation
 description: Erfahren Sie mehr über das Konfigurieren von statusbehafteten Azure Service Fabric Actors vom Typ „KVSActorStateProvider“
 services: Service-Fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: c01bcfecea8d79784b764e715f077c76e7d4be45
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 81c09d61a5213319fa01ef5cc7070ffe385bbab1
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017646"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049509"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurieren von Reliable Actors – KVSActorStateProvider
 Sie können die Standardkonfiguration von KVSActorStateProvider ändern, indem Sie die Datei „settings.xml“, die im Stammverzeichnis des Visual Studio-Pakets im Ordner „Config“ generiert wurde, für den betreffenden Actor ändern.
@@ -36,7 +36,7 @@ Replicator-Sicherheitskonfigurationen werden verwendet, um den während der Repl
 Standardmäßig wird die Replikationssicherheit durch einen leeren Sicherheitskonfigurationsabschnitt verhindert.
 
 > [!IMPORTANT]
-> Für Linux-Knoten müssen Zertifikate das PEM-Format aufweisen. Weitere Informationen zum Ermitteln und Konfigurieren von Zertifikaten für Linux finden Sie unter [Certificates and security on Linux clusters](./service-fabric-configure-certificates-linux.md) (Zertifikate und Sicherheit in Linux-Clustern). 
+> Auf Linux-Knoten müssen Zertifikate das PEM-Format aufweisen. Weitere Informationen zum Ermitteln und Konfigurieren von Zertifikaten für Linux finden Sie unter [Konfigurieren von Zertifikaten in Linux](./service-fabric-configure-certificates-linux.md). 
 > 
 
 ### <a name="section-name"></a>Name des Abschnitts

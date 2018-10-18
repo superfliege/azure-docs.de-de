@@ -1,6 +1,6 @@
 ---
-title: Herstellen einer Verbindung zwischen Azure Data Lake Store und VNets | Microsoft-Dokumentation
-description: Herstellen einer Verbindung zwischen Azure Data Lake Store und VNets
+title: Herstellen einer Verbindung zwischen Azure Data Lake Storage Gen1 und VNETs | Microsoft-Dokumentation
+description: Herstellen einer Verbindung zwischen Azure Data Lake Storage Gen1 und VNETs
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 4086ef6ce2a95e0467eda61116ac002cf53610b5
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 130d0154fc0558ae7284e8407ba88fda3a2a53d5
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300799"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391299"
 ---
-# <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Zugreifen auf Azure Data Lake Store von virtuellen Computern in einem Azure-VNet
-Bei Azure Data Lake Store handelt es sich um einen PaaS-Dienst, der unter öffentlichen Internet-IP-Adressen ausgeführt wird. Jeder Server, der eine Verbindung mit dem öffentlichen Internet herstellen kann, kann in der Regel auch eine Verbindung mit Azure Data Lake Store-Endpunkten herstellen. Standardmäßig können alle virtuellen Computer in Azure-VNets auf das Internet und damit auf Azure Data Lake Store zugreifen. Allerdings ist es möglich, virtuelle Computer in einem VNet so zu konfigurieren, dass sie nicht auf das Internet zugreifen können. Bei diesen virtuellen Computern ist auch der Zugriff auf Azure Data Lake Store eingeschränkt. Der Zugriff auf das öffentliche Internet kann für virtuelle Computer in Azure-VNETs mit einer der folgenden Methoden blockiert werden:
+# <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Zugreifen auf Azure Data Lake Storage Gen1 von virtuellen Computern in einem Azure-VNET
+Bei Azure Data Lake Storage Gen1 handelt es sich um einen PaaS-Dienst, der unter öffentlichen Internet-IP-Adressen ausgeführt wird. Jeder Server, der eine Verbindung mit dem öffentlichen Internet herstellen kann, kann in der Regel auch eine Verbindung mit Azure Data Lake Storage Gen1-Endpunkten herstellen. Standardmäßig können alle virtuellen Computer in Azure-VNETs auf das Internet und damit auf Azure Data Lake Storage Gen1 zugreifen. Allerdings ist es möglich, virtuelle Computer in einem VNet so zu konfigurieren, dass sie nicht auf das Internet zugreifen können. Bei diesen virtuellen Computern ist auch der Zugriff auf Azure Data Lake Storage Gen1 eingeschränkt. Der Zugriff auf das öffentliche Internet kann für virtuelle Computer in Azure-VNETs mit einer der folgenden Methoden blockiert werden:
 
 * Konfigurieren von Netzwerksicherheitsgruppen (NSG)
 * Konfigurieren von benutzerdefinierten Routen (User Defined Routes, UDR)
 * Austauschen von Routen, die den Zugriff auf das Internet blockieren, über BGP (Branchenstandardprotokoll für das dynamische Routing) bei Verwendung von ExpressRoute
 
-In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Azure Data Lake Store von virtuellen Azure-Computern aktivieren, deren Zugriff auf Ressourcen mit einer der drei obigen Methoden eingeschränkt wurde.
+In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Azure Data Lake Storage Gen1 von Azure-VMs aktivieren, deren Zugriff auf Ressourcen mit einer der zuvor aufgeführten Methoden eingeschränkt wurde.
 
-## <a name="enabling-connectivity-to-azure-data-lake-store-from-vms-with-restricted-connectivity"></a>Aktivieren von Verbindungen mit Azure Data Lake Store von virtuellen Computern mit eingeschränkter Konnektivität
-Um von diesen virtuellen Computern auf Azure Data Lake Store zugreifen zu können, müssen Sie sie für den Zugriff auf die IP-Adresse konfigurieren, unter der das Azure Data Lake Store-Konto verfügbar ist. Sie können die IP-Adressen für Ihre Data Lake Store-Konten ermitteln, indem Sie die DNS-Namen der Konten auflösen (`<account>.azuredatalakestore.net`). Zum Auflösen von DNS-Namen Ihrer Konten können Sie Tools wie **nslookup** nutzen. Öffnen Sie eine Eingabeaufforderung auf dem Computer, und führen Sie den folgenden Befehl aus:
+## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Aktivieren von Verbindungen mit Azure Data Lake Storage Gen1 von virtuellen Computern mit eingeschränkter Konnektivität
+Um von diesen virtuellen Computern auf Azure Data Lake Storage Gen1 zugreifen zu können, müssen Sie sie für den Zugriff auf die IP-Adresse konfigurieren, unter der das Azure Data Lake Storage Gen1-Konto verfügbar ist. Sie können die IP-Adressen für Ihre Data Lake Storage Gen1-Konten ermitteln, indem Sie die DNS-Namen der Konten auflösen (`<account>.azuredatalakestore.net`). Zum Auflösen von DNS-Namen Ihrer Konten können Sie Tools wie **nslookup** nutzen. Öffnen Sie eine Eingabeaufforderung auf dem Computer, und führen Sie den folgenden Befehl aus:
 
     nslookup mydatastore.azuredatalakestore.net
 
-Die Ausgabe sieht ungefähr wie folgt aus. Der Wert der **Address**-Eigenschaft ist die dem Data Lake Store-Konto zugeordnete IP-Adresse.
+Die Ausgabe sieht ungefähr wie folgt aus. Der Wert der **Address**-Eigenschaft ist die dem Data Lake Storage Gen1-Konto zugeordnete IP-Adresse.
 
     Non-authoritative answer:
     Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
@@ -42,15 +42,15 @@ Die Ausgabe sieht ungefähr wie folgt aus. Der Wert der **Address**-Eigenschaft 
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Aktivieren der Konnektivität von virtuellen Computern, deren Konnektivität mithilfe von Netzwerksicherheitsgruppen eingeschränkt wurde
-Wenn eine NSG-Regel zum Blockieren des Internetzugriffs verwendet wird, können Sie eine weitere NSG erstellen, die den Zugriff auf die Data Lake Store-IP-Adresse zulässt. Weitere Informationen zu Netzwerksicherheitsgruppen-Regeln finden Sie unter [Netzwerksicherheit](../virtual-network/security-overview.md). Anweisungen zum Erstellen von Netzwerksicherheitsgruppen finden Sie unter [Erstellen einer Netzwerksicherheitsgruppe](../virtual-network/tutorial-filter-network-traffic.md).
+Wenn eine NSG-Regel zum Blockieren des Internetzugriffs verwendet wird, können Sie eine weitere NSG erstellen, die den Zugriff auf die Data Lake Storage Gen1-IP-Adresse zulässt. Weitere Informationen zu Netzwerksicherheitsgruppen-Regeln finden Sie unter [Netzwerksicherheit](../virtual-network/security-overview.md). Anweisungen zum Erstellen von Netzwerksicherheitsgruppen finden Sie unter [Erstellen einer Netzwerksicherheitsgruppe](../virtual-network/tutorial-filter-network-traffic.md).
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Ermöglichen der Verbindungsherstellung von virtuellen Computern, deren Konnektivität mithilfe von UDR oder ExpressRoute eingeschränkt wurde
-Wenn der Internetzugriff mithilfe von benutzerdefinierten Routen oder über BGP ausgetauschten Routen blockiert wird, muss eine spezielle Route konfiguriert werden, damit virtuelle Computer in diesen Subnetzen auf Data Lake Store-Endpunkte zugreifen können. Weitere Informationen finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](../virtual-network/virtual-networks-udr-overview.md). Anleitungen zum Erstellen von benutzerdefinierten Routen finden Sie unter [Erstellen von benutzerdefinierten Routen (UDR) im Resource Manager mit PowerShell](../virtual-network/tutorial-create-route-table-powershell.md).
+Wenn der Internetzugriff mithilfe von benutzerdefinierten Routen oder über BGP ausgetauschten Routen blockiert wird, muss eine spezielle Route konfiguriert werden, damit virtuelle Computer in diesen Subnetzen auf Data Lake Storage Gen1-Endpunkte zugreifen können. Weitere Informationen finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](../virtual-network/virtual-networks-udr-overview.md). Anleitungen zum Erstellen von benutzerdefinierten Routen finden Sie unter [Erstellen von benutzerdefinierten Routen (UDR) im Resource Manager mit PowerShell](../virtual-network/tutorial-create-route-table-powershell.md).
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Ermöglichen der Verbindungsherstellung von virtuellen Computern, deren Konnektivität mithilfe von ExpressRoute eingeschränkt wurde
-Wenn eine ExpressRoute-Verbindung konfiguriert wird, können die lokalen Server über öffentliches Peering auf Data Lake Store zugreifen. Weitere Informationen zum Konfigurieren von ExpressRoute für öffentliches Peering stehen unter [ExpressRoute – FAQ](../expressroute/expressroute-faqs.md) zur Verfügung.
+Wenn eine ExpressRoute-Verbindung konfiguriert wird, können die lokalen Server über öffentliches Peering auf Data Lake Storage Gen1 zugreifen. Weitere Informationen zum Konfigurieren von ExpressRoute für öffentliches Peering stehen unter [ExpressRoute – FAQ](../expressroute/expressroute-faqs.md) zur Verfügung.
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Übersicht über Azure Data Lake Store](data-lake-store-overview.md)
-* [Sicherheit in Azure Data Lake Store](data-lake-store-security-overview.md)
+* [Übersicht über Azure Data Lake Storage Gen1](data-lake-store-overview.md)
+* [Sichern von in Azure Data Lake Storage Gen1 gespeicherten Daten](data-lake-store-security-overview.md)
 

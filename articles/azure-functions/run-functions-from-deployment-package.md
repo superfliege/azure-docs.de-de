@@ -5,27 +5,24 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.workload: na
-ms.date: 08/22/2018
+ms.date: 09/10/2018
 ms.author: glenga
-ms.openlocfilehash: 2b9cc3618bf21eac268e3c25f08b80124d52e6af
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a0e643397372e5b132119a7c23f251ecec876916
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669290"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346576"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Ausführen Ihrer Azure Functions aus einem Paket
 
 > [!NOTE]
-> Die in diesem Artikel beschriebene Funktionalität befindet sich derzeit in der Vorschau; sie ist für Functions unter Linux nicht verfügbar.
+> Die in diesem Artikel beschriebene Funktionalität ist für Functions unter Linux nicht verfügbar.
 
-In Azure können Sie Ihre Functions direkt aus der Bereitstellungspaketdatei in Ihrer Funktions-App ausführen. Die andere Option ist die Bereitstellung Ihrer Funktionsprojektdateien im `d:\home\site\wwwroot`-Verzeichnis Ihrer Funktions-App.
+In Azure können Sie Ihre Functions direkt aus der Bereitstellungspaketdatei in Ihrer Funktions-App ausführen. Die andere Option ist die Bereitstellung Ihrer Dateien im Verzeichnis `d:\home\site\wwwroot` Ihrer Funktions-App.
 
 Dieser Artikel beschreibt die Vorteile einer Ausführung Ihrer Functions aus einem Paket. Außerdem wir erläutert, wie Sie diese Funktionalität in Ihrer Funktions-App aktivieren.
 
@@ -37,13 +34,13 @@ Es gibt mehrere Vorteile bei der Ausführung aus einer Paketdatei:
 + Kann in einer Produktions-App (mit Neustart) bereitgestellt werden.
 + Sie können sich sicher sein, dass die Dateien, die in Ihrer App ausgeführt werden, sicher sind.
 + Verbessert die Leistung von [Azure Resource Manager-Bereitstellungen](functions-infrastructure-as-code.md).
-+ Kann die Kaltstartzeit von JavaScript-Funktionen reduzieren.
++ Kann Kaltstartzeiten verringern, insbesondere für JavaScript-Funktionen mit großen npm-Paketstrukturen.
 
 Weitere Informationen dazu finden Sie in [dieser Ankündigung](https://github.com/Azure/app-service-announcements/issues/84).
 
 ## <a name="enabling-functions-to-run-from-a-package"></a>Aktivieren von Funktionen zum Ausführen aus einem Paket
 
-Damit Ihre Funktions-App aus einem Paket ausgeführt werden kann, müssen Sie nur eine Einstellung `WEBSITE_RUN_FROM_ZIP` zu Ihren Einstellungen in der Funktions-App hinzufügen. Die Einstellung `WEBSITE_RUN_FROM_ZIP` kann einen der folgenden Werte aufweisen:
+Damit Ihre Funktions-App aus einem Paket ausgeführt werden kann, müssen Sie nur eine Einstellung `WEBSITE_RUN_FROM_PACKAGE` zu Ihren Einstellungen in der Funktions-App hinzufügen. Die Einstellung `WEBSITE_RUN_FROM_PACKAGE` kann einen der folgenden Werte aufweisen:
 
 | Wert  | BESCHREIBUNG  |
 |---------|---------|
@@ -59,9 +56,9 @@ Das folgende Beispiel zeigt eine Funktions-App, die so konfiguriert ist, dass Si
 
 ## <a name="integration-with-zip-deployment"></a>Integration mit einer ZIP-Bereitstellung
 
-[ZIP-Bereitstellung] [ Zip deployment for Azure Functions] ist eine Funktion von Azure App Service, mit dem Sie Ihr Funktions-App-Projekt im `wwwroot`-Verzeichnis bereitstellen können. Das Projekt ist als ZIP-Bereitstellungsdatei verpackt. Mit derselben API können Sie Ihr Paket im Ordner `d:\home\data\SitePackages` bereitstellen. Mit dem `WEBSITE_RUN_FROM_ZIP`-App-Einstellungswert von `1` kopieren die ZIP-Bereitstellungs-APIs Ihr Paket in den Ordner `d:\home\data\SitePackages`, anstatt die Dateien nach `d:\home\site\wwwroot` zu extrahieren. Außerdem wird die Datei `packagename.txt` erstellt. Die Funktions-App wird dann nach einem Neustart aus dem Paket heraus ausgeführt und `wwwroot` wird schreibgeschützt. Weitere Informationen zur ZIP-Bereitstellung finden Sie unter [ZIP-Bereitstellung für Azure Functions](deployment-zip-push.md).
+[ZIP-Bereitstellung] [ Zip deployment for Azure Functions] ist eine Funktion von Azure App Service, mit dem Sie Ihr Funktions-App-Projekt im `wwwroot`-Verzeichnis bereitstellen können. Das Projekt ist als ZIP-Bereitstellungsdatei verpackt. Mit derselben API können Sie Ihr Paket im Ordner `d:\home\data\SitePackages` bereitstellen. Mit dem `WEBSITE_RUN_FROM_PACKAGE`-App-Einstellungswert von `1` kopieren die ZIP-Bereitstellungs-APIs Ihr Paket in den Ordner `d:\home\data\SitePackages`, anstatt die Dateien nach `d:\home\site\wwwroot` zu extrahieren. Außerdem wird die Datei `packagename.txt` erstellt. Die Funktions-App wird dann nach einem Neustart aus dem Paket heraus ausgeführt und `wwwroot` wird schreibgeschützt. Weitere Informationen zur ZIP-Bereitstellung finden Sie unter [ZIP-Bereitstellung für Azure Functions](deployment-zip-push.md).
 
-## <a name="adding-the-websiterunfromzip-setting"></a>Hinzufügen der WEBSITE_RUN_FROM_ZIP-Einstellung
+## <a name="adding-the-websiterunfrompackage-setting"></a>Hinzufügen der Einstellung WEBSITE_RUN_FROM_PACKAGE
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 

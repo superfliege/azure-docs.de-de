@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: fd93f1ad83f6627f27534eca17f91c9fe9b2cc9f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: d9df71f6fa2f64544cbefc7d9aca8c153c86ac98
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667856"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094254"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Grundlegendes zur Verwendung virtueller Azure-Computer
-Durch das Analysieren Ihre Azure-Nutzungsdaten können aufschlussreiche Einblicke in die Verwendung gewonnen werden – Einblicke, die eine bessere Kostenverwaltung und Verteilung in Ihrer Organisation ermöglichen können. Dieses Dokument enthält fundierte Einblicke in die Nutzungsdetails von Azure Compute. Weitere Informationen zur allgemeinen Azure-Nutzung finden Sie unter [Grundlegendes zu Ihrer Rechnung](/billing/billing-understand-your-bill.md).
+Durch das Analysieren Ihre Azure-Nutzungsdaten können aufschlussreiche Einblicke in die Verwendung gewonnen werden – Einblicke, die eine bessere Kostenverwaltung und Verteilung in Ihrer Organisation ermöglichen können. Dieses Dokument enthält fundierte Einblicke in die Nutzungsdetails von Azure Compute. Weitere Informationen zur allgemeinen Azure-Nutzung finden Sie unter [Grundlegendes zu Ihrer Rechnung](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
 
 ## <a name="download-your-usage-details"></a>Herunterladen Ihrer Nutzungsdetails
 Um zu beginnen, [laden Sie Ihre Nutzungsdetails herunter](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). Die folgende Tabelle enthält Definitionen und Beispielwerte zur Nutzung virtueller Computer, die über den Azure Resource Manager bereitgestellt wurden. Dieses Dokument enthält keine Detailinformationen zu virtuellen Computern, die über das klassische Modell bereitgestellt wurden.
@@ -143,5 +143,6 @@ Im klassischen Modell wird die Abrechnung für Ressourcen auf der Ebene des Clou
 Storage Premium-fähige virtuelle Computer werden mit derselben Gebühr wie VMs, die nicht Storage Premium-fähig sind, berechnet. Nur die Speicherkosten unterscheiden sich. Weitere Informationen finden Sie auf der Seite mit der [Storage-Preisübersicht](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu den Nutzungsdetails finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](/billing/billing-understand-your-bill.md).
+Weitere Informationen zu den Nutzungsdetails finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](https://docs.microsoft.com/azure/billing/billing-understand-your-bill
+).
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 131ba3dfb8bd8ad8be893e26fcc22c5a0e65f145
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 010556dae1649754df5199fb81c10efcf4c5a226
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431639"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049999"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
@@ -173,7 +173,7 @@ Im Rahmen des Samplingprozesses können Sie Ansichten definieren und erstellen. 
 
 Klicken Sie im Fenster **Schema-Editor** in der Spalte **View Definitions** (Ansichtsdefinitionen) in der Zeile mit der Sammlung, für die das Sampling erstellt werden soll, auf **Hinzufügen**. Gehen Sie im Fenster **View Definitions** (Ansichtsdefinitionen) dann wie folgt vor:
 1. Klicken Sie auf **Neu**, geben Sie einen Namen für die Ansicht ein (z.B. „EmployeesfromSeattleView“), und klicken Sie dann auf **OK**.
-1. Geben Sie im Fenster **Ansicht bearbeiten** eine Azure Cosmos DB-Abfrage ein. Hierbei muss es sich um eine Azure Cosmos DB-SQL-Abfrage handeln, z. B. `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = “Seattle”`. Klicken Sie anschließend auf **OK**.
+1. Geben Sie im Fenster **Ansicht bearbeiten** eine Azure Cosmos DB-Abfrage ein. Hierbei muss es sich um eine Azure Cosmos DB-SQL-Abfrage handeln, z. B. `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = "Seattle"`. Klicken Sie anschließend auf **OK**.
 
 Sie können beliebig viele Ansichten erstellen. Nachdem Sie die Ansichten definiert haben, können Sie das Sampling für die Daten durchführen. 
 

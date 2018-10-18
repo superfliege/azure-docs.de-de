@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: subramar
-ms.openlocfilehash: 5092bf377f6ab213a2db52e01fb7b89ff0c218ce
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 6ebe83794f23ed3cf637f668d2810b9ba7521084
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127473"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295869"
 ---
 # <a name="production-readiness-checklist"></a>Prüfliste für die Produktionsbereitschaft
 
@@ -45,7 +45,7 @@ Sind Ihre Anwendung und Ihr Cluster bereit für den Produktionsdatenverkehr? Das
 15. Richten Sie ein Recovery Point Objective (RPO) für Ihren Dienst und einen [Notfallwiederherstellungsprozess](service-fabric-disaster-recovery.md) ein, und testen Sie ihn.
 16. Planen Sie die manuelle oder programmgesteuerte [Skalierung](service-fabric-cluster-scaling.md) Ihres Clusters.
 17. Planen Sie das [Patchen](service-fabric-patch-orchestration-application.md) der Clusterknoten. 
-18. Richten Sie eine CI/CD-Pipeline ein, sodass die letzten Änderungen fortlaufend getestet werden. Verwenden Sie dazu beispielsweise [VSTS](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) oder [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+18. Richten Sie eine CI/CD-Pipeline ein, sodass die letzten Änderungen fortlaufend getestet werden. Beispiel für die Verwendung von [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) oder [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
 19. Testen Sie Ihre Entwicklungs- und Stagingcluster unter Last mit dem [Fault Analysis Service](service-fabric-testability-overview.md), und induzieren Sie kontrolliertes [Chaos](service-fabric-controlled-chaos.md). 
 20. Planen Sie die [Skalierung](service-fabric-concepts-scalability.md) Ihrer Anwendungen. 
 

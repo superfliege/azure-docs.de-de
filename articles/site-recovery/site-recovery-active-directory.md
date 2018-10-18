@@ -9,18 +9,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: manayar
-ms.openlocfilehash: 3a2ad35a5382394a6886ed14dcc4f659762f2833
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 28ea6c58eed110cfb57f3feaa6b828289bd20e64
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172237"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054545"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Verwenden von Azure Site Recovery zum Schützen von Active Directory und DNS
 
 Für Unternehmensanwendungen, z.B. SharePoint, Dynamics AX und SAP, ist eine Active Directory- und DNS-Infrastruktur erforderlich, damit sie richtig funktionieren. Wenn Sie Notfallwiederherstellung für Anwendungen einrichten, müssen Sie häufig Active Directory und DNS vorrangig vor den anderen Anwendungskomponenten wiederherstellen, um eine ordnungsgemäße Anwendungsfunktionalität sicherzustellen.
 
-Sie können [Site Recovery](site-recovery-overview.md) verwenden, um einen Notfallwiederherstellungsplan für Active Directory zu erstellen. Wenn eine Unterbrechung auftritt, können Sie ein Failover einleiten. Sie können Active Directory in wenigen Minuten ausführen. Wenn Sie Active Directory für mehrere Anwendungen am primären Standort bereitgestellt haben, z.B. für SharePoint und SAP, sollten Sie ein Failover des gesamten Standorts durchführen. Sie können zuerst ein Failover von Active Directory mit Site Recovery ausführen. Führen Sie dann ein Failover der anderen Anwendungen mit anwendungsspezifischen Wiederherstellungsplänen aus.
+Sie können [Site Recovery](site-recovery-overview.md) verwenden, um einen Notfallwiederherstellungsplan für Active Directory zu erstellen. Wenn eine Unterbrechung auftritt, können Sie ein Failover einleiten. Sie können Active Directory in wenigen Minuten ausführen. Wenn Sie Active Directory für mehrere Anwendungen am primären Standort bereitgestellt haben, z.B. für SharePoint und SAP, sollten Sie ein Failover des gesamten Standorts durchführen. Sie können zuerst ein Failover von Active Directory mithilfe von Site Recovery ausführen. Führen Sie dann ein Failover der anderen Anwendungen mit anwendungsspezifischen Wiederherstellungsplänen aus.
 
 In diesem Artikel wird erläutert, wie eine Notfallwiederherstellungslösung für Active Directory erstellt wird. Die Voraussetzungen werden beschrieben, und es werden Failoveranweisungen bereitgestellt. Sie sollten mit Active Directory und Site Recovery vertraut sein, bevor Sie beginnen.
 

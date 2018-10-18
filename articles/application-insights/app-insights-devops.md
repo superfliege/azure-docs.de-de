@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a9a6e513d95df5dafba82556f74ec209529ff58d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e77389411e52853efb52252a17c8612f0480fa61
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294910"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298641"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Eingehende Diagnose für Web-Apps und Dienste mit Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Wofür benötigen Sie Application Insights?
@@ -152,7 +152,7 @@ Und wenn Application Insights eine Ausnahme protokolliert, können Sie den Daten
 Während des Debuggens haben Sie die Option, die Telemetrie auf dem Entwicklungscomputer zu behalten und sie in Visual Studio anzuzeigen, ohne sie an das Portal zu senden. Durch diese lokale Option vermeiden Sie beim Debuggen eventuelle Verwechslungen mit Produktionstelemetriedaten.
 
 ### <a name="build-annotations"></a>Anmerkungen zum Build
-Wenn Sie Visual Studio Team Services verwenden, um Ihre App zu erstellen und bereitzustellen, werden in den Diagrammen im Portal Bereitstellungsanmerkungen angezeigt. Wenn sich Ihre letzte Version auf die Metriken ausgewirkt hat, wird dies offensichtlich.
+Wenn Sie Azure DevOps verwenden, um Ihre App zu erstellen und bereitzustellen, werden in den Diagrammen im Portal Bereitstellungsanmerkungen angezeigt. Wenn sich Ihre letzte Version auf die Metriken ausgewirkt hat, wird dies offensichtlich.
 
 ![Anmerkungen zum Build](./media/app-insights-devops/070.png)
 

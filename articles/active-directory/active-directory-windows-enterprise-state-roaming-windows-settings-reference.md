@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 9a06ff345d1bf91efd1abff9960a1a6f9a681dce
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 40e67dfd4ffa427ac47198e88994762a4a45cc94
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223666"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023350"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
 Hier ist eine vollständige Liste mit allen Einstellungen angegeben, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird. 
@@ -44,10 +44,11 @@ Die folgenden Einstellungsgruppen sind für Endbenutzer verfügbar, um die Einst
 
 * Design: Desktophintergrund, Benutzerkachel, Taskleistenposition usw. 
 * Internet Explorer-Einstellungen: Browserverlauf, eingegebene URLs, Favoriten usw. 
-* Kennwörter: [Schließfach für Anmeldeinformationen](https://technet.microsoft.com/library/jj554668.aspx), einschließlich WLAN-Profile 
+* Kennwörter: Windows-Anmeldeinformationsverwaltung, einschließlich WLAN-Profile 
 * Spracheinstellungen: Wörterbuch, Einstellungen für Systemsprache 
 * Erleichterte Bedienung: Sprachausgabe, Bildschirmtastatur, Bildschirmlupe 
 * Weitere Windows-Einstellungen: siehe Details zu Windows-Einstellungen
+* Edge-Browser-Einstellung: Microsoft Edge-Favoriten, Leseliste und andere Einstellungen
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
@@ -73,7 +74,7 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **App-Daten**: einzelne Apps können Daten synchronisieren |Sync.sicherung |Sync.sicherung |Intern |
 | **App-Liste**: Liste der installierten Apps |X |Sicherung |Andere |
 | **Bluetooth**: alle Bluetooth-Einstellungen |X |X | |
-| **Eingabeaufforderung:** Standardeinstellungen für die Eingabeaufforderung |sync |X | |
+| **Eingabeaufforderung:** Standardeinstellungen für die Eingabeaufforderung |sync |X |Intern |
 | **Anmeldeinformationen**: Schließfach für Anmeldeinformationen |sync |sync |password |
 | **Datum, Uhrzeit und Region**: automatische Uhrzeit (Internetzeitsynchronisierung) |sync |sync |Language |
 | **Datum, Uhrzeit und Region**: 24-Stunden-Format |sync |X |Language |

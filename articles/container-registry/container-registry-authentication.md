@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30ca8fe89105584b1062c5a068e107bdfde154fc
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: be8adf9779c2d168c0ac7a0ed7dbc3e85935df68
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579519"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44293727"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
 
@@ -48,7 +48,7 @@ Dienstprinzipale ermöglichen auch monitorlose Verbindungen mit einer Registrier
 
   * *Leser*: Containerbereitstellungen aus einer Registrierung für Orchestrierungssysteme, z.B. Kubernetes, DC/OS und Docker Swarm. Sie können auch Pullvorgänge aus Containerregistrierungen in andere Azure-Dienste durchführen, z.B. [AKS](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) und weitere Dienste.
 
-  * *Mitwirkender*: Lösungen für Continuous Integration und Continuous Deployment wie Visual Studio Team Services (VSTS) oder Jenkins, mit denen Containerimages erstellt und per Pushvorgang in eine Registrierung übertragen werden.
+  * *Mitwirkender:* Lösungen für Continuous Integration und Continuous Deployment wie Azure DevOps oder Jenkins, mit denen Containerimages erstellt und per Pushvorgang in eine Registrierung übertragen werden.
 
 > [!TIP]
 > Sie können das Kennwort eines Dienstprinzipals neu generieren, indem Sie den Befehl [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) ausführen.

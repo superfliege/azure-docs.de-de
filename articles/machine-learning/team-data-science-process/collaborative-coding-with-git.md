@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: abb1c7a3f597804a84f06462b1e50bb5a63fb9b3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 78bbdb244d9bd52a06623f7a6fa3bca123ef3828
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837360"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300068"
 ---
 # <a name="collaborative-coding-with-git"></a>Gemeinsames Schreiben von Code mit Git
 
@@ -28,13 +28,13 @@ In diesem Artikel beschreiben wir die gemeinschaftliche Codeentwicklung für Dat
 
 ## 1. <a name='Linkaworkitemwithagitbranch-1'></a>Verknüpfen eines Arbeitselements mit einem Git-Branch 
 
-VSTS bietet eine einfache Möglichkeit zum Verbinden eines Arbeitselements (Story oder Aufgabe) mit einem Git-Branch. Dies ermöglicht Ihnen, Ihre Story oder Aufgabe direkt mit dem zugeordneten Code zu verknüpfen. 
+Azure DevOps Services bietet eine einfache Möglichkeit zum Verbinden eines Arbeitselements (Story oder Aufgabe) mit einem Git-Branch. Dies ermöglicht Ihnen, Ihre Story oder Aufgabe direkt mit dem zugeordneten Code zu verknüpfen. 
 
 Um ein Arbeitselement mit einer neuen Verzweigung zu verbinden, doppelklicken Sie auf das Arbeitselement, und klicken Sie im Popupfenster auf **Neue Verzweigung erstellen** unter **+ Link hinzufügen**.  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-Geben Sie die Informationen für diesen neuen Branch ein, etwa den Namen des Branches, das Git-Basisrepository und den Branch. Das ausgewählte Git-Repository muss das Repository für dasselbe Teamprojekt sein, dem das Arbeitselement angehört. Die Basisverzweigung kann die Hauptverzweigung oder eine andere vorhandene Verzweigung sein.
+Geben Sie die Informationen für diesen neuen Branch ein, etwa den Namen des Branches, das Git-Basisrepository und den Branch. Das ausgewählte Git-Repository muss das Repository für dasselbe Projekt sein, dem das Arbeitselement angehört. Die Basisverzweigung kann die Hauptverzweigung oder eine andere vorhandene Verzweigung sein.
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
@@ -70,11 +70,11 @@ Angenommen, Sie nehmen eine Änderung an der Verzweigung *data\_ingestion* für 
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 3. <a name='CreateapullrequestonVSTS-3'></a>Erstellen einer Pull-Anforderung auf VSTS 
+## 3. <a name='CreateapullrequestonVSTS-3'></a>Erstellen eines Pull Requests für Azure DevOps Services 
 
-Wenn Sie nach einigen Commits und Push-Vorgängen bereit sind, die aktuelle Verzweigung mit ihrer Basisverzweigung zusammenzuführen, können Sie eine **Pullanforderung** an den VSTS-Server senden. 
+Wenn Sie nach einigen Commits und Push-Vorgängen bereit sind, den aktuellen Branch mit ihrer Basisverzweigung zusammenzuführen, können Sie einen **Pull Request** an Azure DevOps Services senden. 
 
-Wechseln Sie zur Hauptseite Ihres Teamprojekts, und klicken Sie auf **CODE**. Wählen Sie den Branch, der zusammengeführt werden soll, und den Namen des Git-Repositorys, mit dem der Branch zusammengeführt werden soll, aus. Klicken Sie dann auf **Pullanforderungen**, klicken Sie auf **Neue Pullanforderung**, um eine Pullanforderungsüberprüfung zu erstellen, bevor die Arbeit an der Verzweigung mit der Basisverzweigung zusammengeführt wird.
+Wechseln Sie zur Hauptseite Ihres Projekts, und klicken Sie auf **CODE**. Wählen Sie den Branch, der zusammengeführt werden soll, und den Namen des Git-Repositorys, mit dem der Branch zusammengeführt werden soll, aus. Klicken Sie dann auf **Pullanforderungen**, klicken Sie auf **Neue Pullanforderung**, um eine Pullanforderungsüberprüfung zu erstellen, bevor die Arbeit an der Verzweigung mit der Basisverzweigung zusammengeführt wird.
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: b57b77f5adfa3fb73372ac8297f408fb339b5d79
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a032127d249f944d08cc6578a03f1a7e5a658361
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837428"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301088"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agile Entwicklung von Data Science-Projekten
 
@@ -31,7 +31,7 @@ Dieser Artikel enthält Anweisungen zu folgenden Aufgaben:
 2. **Hinzufügen von Arbeitselementen** zu Sprints. 
 
 > [!NOTE]
-> Die erforderlichen Schritte zum Einrichten einer TDSP-Teamumgebung mithilfe von Visual Studio Team Services (VSTS) werden in den folgenden Anweisungen beschrieben. Sie geben an, wie diese Aufgaben mit VSTS erledigt werden können, da TDSP auf diese Weise bei Microsoft implementiert wird.  Die Punkte (3) und (4) in der vorherigen Liste sind Vorteile, die Sie mit VSTS immer erhalten. Wenn für Ihre Gruppe eine andere Plattform zum Hosten des Codes verwendet wird, ändern sich die vom Teamleiter auszuführenden Aufgaben in der Regel nicht. Sie müssen aber auf andere Weise ausgeführt werden. Beispielsweise lässt sich der Punkt **Verknüpfen einer Arbeitsaufgabe mit einem Git-Branch** in Abschnitt 6 möglicherweise nicht so einfach umsetzen wie mit VSTS.
+> Die erforderlichen Schritte zum Einrichten einer TDSP-Teamumgebung mithilfe von Azure DevOps Services werden in den folgenden Anweisungen beschrieben. Sie geben an, wie diese Aufgaben mit Azure DevOps Services erledigt werden können, da TDSP auf diese Weise bei Microsoft implementiert wird.  Die Punkte (3) und (4) in der vorherigen Liste sind Vorteile, die Sie mit Azure DevOps Services immer erhalten. Wenn für Ihre Gruppe eine andere Plattform zum Hosten des Codes verwendet wird, ändern sich die vom Teamleiter auszuführenden Aufgaben in der Regel nicht. Sie müssen aber auf andere Weise ausgeführt werden. Beispielsweise lässt sich der Punkt **Verknüpfen einer Arbeitsaufgabe mit einem Git-Branch** in Abschnitt 6 möglicherweise nicht so einfach umsetzen wie mit Azure DevOps Services.
 >
 >
 
@@ -42,7 +42,7 @@ Die folgende Abbildung veranschaulicht einen typischen Workflow mit Sprintplanun
 
 ##  1. <a name='Terminology-1'></a>Terminologie 
 
-Im TDSP-Sprintplanungsframework gibt es vier häufig verwendete Typen von **Arbeitselementen**: **Feature**, **User Story**, **Aufgabe** und **Fehler**. Jedes Teamprojekt verwaltet ein einzelnes Backlog für alle Arbeitselemente. Es gibt kein Backlog auf Git-Repositoryebene unter einem Teamprojekt. Hier sind die Definitionen:
+Im TDSP-Sprintplanungsframework gibt es vier häufig verwendete Typen von **Arbeitselementen**: **Feature**, **User Story**, **Aufgabe** und **Fehler**. Jedes Projekt verwaltet ein einzelnes Backlog für alle Arbeitselemente. Es gibt kein Backlog auf Git-Repositoryebene unter einem Projekt. Hier sind die Definitionen:
 
 - **Feature:** Ein Feature entspricht einem Projektauftrag. Andere Aufträge eines Kunden werden als unterschiedliche Features betrachtet. Ebenso werden verschiedene Phasen eines Projekts bei einem Kunden am besten als unterschiedliche Features betrachtet. Wenn Sie zum Benennen Ihrer Features ein Schema wie ***Kundenname-Auftragsname*** verwenden, können Sie den Kontext des Projekts/Auftrags dem Namen entnehmen.
 - **Story:** Storys sind unterschiedliche Arbeitselemente, die zum vollständigen Abschließen eines Features (Projekts) erforderlich sind. Beispiele für Storys sind:
@@ -69,14 +69,14 @@ Im TDSP-Sprintplanungsframework gibt es vier häufig verwendete Typen von **Arbe
 
 ## 2. <a name='SprintPlanning-2'></a>Sprintplanung 
 
-Die Sprintplanung ist für die Projektpriorisierung sowie die Ressourcenplanung und -zuordnung nützlich. Viele Datenanalysten sind mit mehreren Projekten beschäftigt, die bis zum Abschluss mehrere Monate dauern können. Projekte schreiten häufig in verschiedenen Geschwindigkeiten voran. Auf dem VSTS-Server können Sie problemlos Arbeitselemente in Ihrem Teamprojekt erstellen, verwalten und nachverfolgen und eine Sprintplanung durchführen, um sicherzustellen, dass Ihre Projekte sich wie erwartet entwickeln. 
+Die Sprintplanung ist für die Projektpriorisierung sowie die Ressourcenplanung und -zuordnung nützlich. Viele Datenanalysten sind mit mehreren Projekten beschäftigt, die bis zum Abschluss mehrere Monate dauern können. Projekte schreiten häufig in verschiedenen Geschwindigkeiten voran. Auf dem Azure DevOps Services-Server können Sie problemlos Arbeitselemente in Ihrem Projekt erstellen, verwalten und nachverfolgen und eine Sprintplanung durchführen, um sicherzustellen, dass Ihre Projekte sich wie erwartet entwickeln. 
 
-Unter [diesem Link](https://www.visualstudio.com/en-us/docs/work/scrum/sprint-planning) finden Sie eine ausführliche Anleitung zur Sprintplanung in VSTS. 
+Unter [diesem Link](https://www.visualstudio.com/en-us/docs/work/scrum/sprint-planning) finden Sie eine ausführliche Anleitung zur Sprintplanung in Azure DevOps Services. 
 
 
 ## 3. <a name='AddFeature-3'></a>Hinzufügen eines Features  
 
-Nachdem Ihr Projektrepository in einem Teamprojekt erstellt wurde, wechseln Sie zur Seite **Übersicht** des Teams, und klicken Sie auf **Aufgaben verwalten**.
+Nachdem Ihr Projektrepository in einem Projekt erstellt wurde, wechseln Sie zur Seite **Übersicht** des Teams, und klicken Sie auf **Aufgaben verwalten**.
 
 ![2](./media/agile-development/2-sprint-team-overview.png)
 
@@ -161,11 +161,11 @@ In diesem Artikel wird erläutert, wie Sie eine Agile Data Science-Prozessvorlag
 
 Nach dem Erstellen der Data Science-Prozessvorlage können Sie Data Science-Arbeitselemente erstellen, die an den TDSP-Lebenszyklus angelehnt sind.
 
-1. Wenn Sie ein neues Teamprojekt erstellen, wählen Sie „Agile\AgileDataScienceProcess“ als **Arbeitselementprozess** aus:
+1. Wenn Sie ein neues Projekt erstellen, wählen Sie „Agile\AgileDataScienceProcess“ als **Arbeitselementprozess** aus:
 
     ![15](./media/agile-development/15-newproject.png)
 
-2. Navigieren Sie zu dem neu erstellten Teamprojekt, und klicken Sie auf **Arbeit** -> **Backlogs**.
+2. Navigieren Sie zu dem neu erstellten Projekt, und klicken Sie auf **Arbeit** -> **Backlogs**.
 
 3. Machen Sie „TDSP-Projekte“ sichtbar, indem Sie auf **Teameinstellungen konfigurieren** klicken und „TDSP-Projekte“ aktivieren. Speichern Sie anschließend Ihre Änderungen.
 
