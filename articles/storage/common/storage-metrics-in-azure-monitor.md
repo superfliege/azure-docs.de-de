@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 99a1832d82005fabd6f8b62aea6ad7722b317a13
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8fe4fdfa88a5aea4b8df49d9c00fa7f6b1768209
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367881"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363434"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-Metriken in Azure Monitor
 
@@ -403,7 +403,7 @@ Legacymetriken stehen parallel zu den von Azure Monitor verwalteten Metriken zur
 
 **Unterstützt Azure Storage Metriken für verwaltete oder nicht verwaltete Datenträger?**
 
-Nein. Die Metriken für Datenträger werden von Azure Compute unterstützt. Weitere Informationen finden Sie in [diesem Artikel](https://azure.microsoft.com/en-us/blog/per-disk-metrics-managed-disks/).
+Nein. Die Metriken für Datenträger werden von Azure Compute unterstützt. Weitere Informationen finden Sie in [diesem Artikel](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

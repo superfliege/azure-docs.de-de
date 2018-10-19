@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: f79b1d4c1afc4d5a516a46a9bf6cb1790034b279
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 58fd3afa37d965cfbe21dcf23823ddb8425442b9
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45987231"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116710"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Zeitsynchronisierung für Linux-VMs in Azure
 
@@ -44,7 +44,7 @@ VM-Interaktionen mit dem Host können sich auch auf die Uhr auswirken. Während 
 
 Ohne Zeitsynchronisierung würden sich auf dem virtuellen Computer Zeitfehler ansammeln. Wenn nur ein virtueller Computer vorhanden ist, sind die Auswirkungen möglicherweise nicht unbedingt erheblich, sofern die Workload keine genaue Zeitmessung erfordert. Aber in den meisten Fällen verfügen wir über mehrere, miteinander verbundene VMs, die Transaktionen anhand der Uhrzeit nachverfolgen, und die Uhrzeit muss in der gesamten Bereitstellung einheitlich sein. Bei unterschiedlichen Uhrzeiten der VMs kann es zu den folgenden Auswirkungen kommen:
 
-- Sicherheitsprotokolle wie Kerberos oder von Zertifikaten abhängige Technologien erfordern eine einheitliche Uhrzeit auf allen Systemen. 
+- Die Authentifizierung schlägt fehl. Sicherheitsprotokolle wie Kerberos oder von Zertifikaten abhängige Technologien erfordern eine einheitliche Uhrzeit auf allen Systemen.
 - Wenn Protokolle (oder andere Daten) zeitlich nicht genau übereinstimmen, lassen sich die Vorgänge in einem System nur sehr schwer nachvollziehen. Das gleiche Ereignis würde so aussehen, als wäre es zu verschiedenen Zeiten aufgetreten, was die Korrelation erschwert.
 - Wenn die Uhr ausgeschaltet ist, könnte die Abrechnung falsch erfolgen.
 

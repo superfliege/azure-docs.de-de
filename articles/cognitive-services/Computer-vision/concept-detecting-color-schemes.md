@@ -3,19 +3,19 @@ title: Erkennen von Farbschemas – Maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Konzepte zur Erkennung des Farbschemas in Bildern mithilfe der Maschinelles Sehen-API.
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: c01433ed3ef1279bf3db9bdcf76e57aad2208895
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.author: pafarley
+ms.openlocfilehash: 5d0cb6ca751c844846288e8fe26f6ae542e89831
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983596"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339491"
 ---
 # <a name="detecting-color-schemes"></a>Erkennen von Farbschemas
 

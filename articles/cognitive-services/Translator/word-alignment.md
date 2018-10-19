@@ -1,20 +1,21 @@
 ---
-title: Informationen zur Wortausrichtung mit der Microsoft-Textübersetzungs-API | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie über die Microsoft-Textübersetzungs-API Informationen zur Wortausrichtung erhalten.
+title: Informationen zur Wortausrichtung – Textübersetzungs-API
+titlesuffix: Azure Cognitive Services
+description: Es wird beschrieben, wie Sie über die Textübersetzungs-API Informationen zur Wortausrichtung erhalten.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9d8284db61235284ec0d5a1594c34687c89560e9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 16334dbcb4631bd927069620e73c1c4474ff99fa
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374371"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126257"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>Empfangen von Informationen zur Wortausrichtung
 

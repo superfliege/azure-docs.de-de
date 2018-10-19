@@ -3,19 +3,19 @@ title: Erkennen von Bildtypen – Maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Konzepte zur Erkennung von Bildtypen mithilfe der Maschinelles Sehen-API.
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: 1a76106caed514f56e897203fba5215b7e93d4ff
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.author: pafarley
+ms.openlocfilehash: ecdbdd60af41ee14070f2f45dfe50875e38ac3b3
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984825"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342003"
 ---
 # <a name="detecting-image-types"></a>Erkennen von Bildtypen
 

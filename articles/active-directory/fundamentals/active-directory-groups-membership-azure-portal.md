@@ -1,56 +1,84 @@
 ---
-title: Verwalten der Gruppen, denen Ihre Gruppe angehört, in Azure AD | Microsoft-Dokumentation
-description: Gruppen können in Azure Active Directory andere Gruppen enthalten. Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten.
+title: Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Gruppe in Azure Active Directory zu einer anderen Gruppe hinzufügen bzw. die Gruppe entfernen.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 10/10/2017
+ms.topic: conceptual
+ms.date: 08/28/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: 8a71677ae3ceb5617f0a817a8eff438d5e3f2774
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: c28fe5ef226fac993fde221b16bfa875ba4845ca
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860368"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579767"
 ---
-# <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Verwalten, welchen Gruppen eine Gruppe in Ihrem Azure Active Directory-Mandanten angehört
-Gruppen können in Azure Active Directory andere Gruppen enthalten. Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten.
+# <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Gewusst wie: Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory
+In diesem Artikel erfahren Sie mehr zum Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory.
 
-## <a name="how-do-i-find-the-groups-of-which-my-group-is-a-member"></a>Wie finde ich die Gruppen, in denen meine Gruppe Mitglied ist?
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators für das Verzeichnis an.
-2. Wählen Sie **Benutzer und Gruppen**.
+>[!Note]
+>Wenn Sie die übergeordnete Gruppe löschen möchten, finden Sie Informationen dazu unter [Aktualisieren oder Löschen einer Gruppe und ihre Mitglieder](active-directory-groups-delete-group.md).
 
-   ![Abbildung zum Öffnen des Blatts „Benutzer und Gruppen“](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
-1. Wählen Sie **Alle Gruppen** aus.
+## <a name="add-a-group-as-a-member-to-another-group"></a>Hinzufügen einer Gruppe als Mitglied zu einer anderen Gruppe
+Sie können eine bestehende Gruppe zu einer anderen bestehenden Gruppe hinzufügen, indem Sie eine Mitgliedergruppe (Untergruppe) und eine übergeordnete Gruppe erstellen. Die Mitgliedergruppe übernimmt die Attribute und Eigenschaften der übergeordneten Gruppe, wodurch Sie Zeit bei der Konfiguration sparen.
 
-   ![Abbildung zum Auswählen von Gruppen](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
-1. Wählen Sie eine Gruppe aus.
-2. Wählen Sie **Gruppenmitgliedschaften** aus.
+### <a name="to-add-a-group-as-a-member-to-another-group"></a>Hinzufügen einer Gruppe als Mitglied zu einer anderen Gruppe
 
-   ![Abbildung zum Öffnen des Blatts „Gruppenmitgliedschaften“](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-1. Um Ihre Gruppe als Mitglied einer anderen Gruppe hinzuzufügen, klicken Sie auf dem Blatt **Gruppe – Gruppenmitgliedschaften** auf den Befehl **Hinzufügen**.
-2. Wählen Sie auf dem Blatt **Gruppe auswählen** eine Gruppe aus, und klicken Sie dann im unteren Bereich des Blatts auf den Befehl **Auswählen**. Sie können Ihre Gruppe in einem Arbeitsschritt immer nur einer Gruppe hinzufügen. Das Feld **Benutzer** filtert die Anzeige basierend auf einem Abgleich Ihrer Eingabe mit einem beliebigen Teil eines Benutzer- oder Gerätenamens. In diesem Feld können keine Platzhalterzeichen verwendet werden.
+1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com) an.
 
-   ![Hinzufügen einer Gruppenmitgliedschaft](./media/active-directory-groups-membership-azure-portal/add-group-membership.png)
-8. Um Ihre Gruppe als Mitglied einer anderen Gruppe zu entfernen, wählen Sie auf dem Blatt **Gruppe – Gruppenmitgliedschaften** eine Gruppe aus.
-9. Wählen Sie den Befehl **Entfernen**, und bestätigen Sie Ihre Auswahl, wenn Sie dazu aufgefordert werden.
+2. Wählen Sie **Azure Active Directory** und dann **Gruppen** aus.
 
-   ![Befehl zum Entfernen der Mitgliedschaft](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
-10. Klicken Sie auf **Speichern**, wenn Sie die Bearbeitung der Gruppenmitgliedschaften für Ihre Gruppe abgeschlossen haben.
+3. Suchen und wählen Sie auf der Seite **Gruppen – Alle Gruppen** die Gruppe aus, die Mitglied einer anderen Gruppe werden soll. In dieser Übung verwenden wir die Gruppe **MDM-Richtlinie – Westen**.
+
+    >[!Note]
+    >Sie können Ihre Gruppe als Mitglied jeweils nur zu einer Gruppe hinzufügen. Darüber hinaus filtert das Feld **Gruppe auswählen** die Anzeige basierend auf einem Abgleich Ihrer Eingabe mit einem beliebigen Teil eines Benutzer- oder Gerätenamens. Platzhalterzeichen werden jedoch nicht unterstützt.
+
+    ![Seite „Gruppen – Alle Gruppen“ mit ausgewählter „MDM-Richtlinie – Westen“](media/active-directory-groups-membership-azure-portal/group-all-groups-screen.png)
+
+4. Wählen Sie auf der Seite **MDM-Richtlinie – Westen – Gruppenmitgliedschaften** die Option **Gruppenmitgliedschaften**, klicken Sie auf **Hinzufügen**, suchen Sie die Gruppe, zu der Ihre Gruppe gehören soll, und wählen Sie dann **Auswählen**. In dieser Übung verwenden wir die Gruppe **MDM-Richtlinie – Alle Org**.
+
+    Die Gruppe **MDM-Richtlinie – Westen** ist nun Mitglied der Gruppe **MDM-Richtlinie – Alle Org.** und übernimmt alle Eigenschaften und Konfigurationen der Gruppe „MDM-Richtlinie – Alle Org.“.
+
+    ![Erstellen einer Gruppenmitgliedschaft durch Hinzufügen einer Gruppe zu einer anderen Gruppe](media/active-directory-groups-membership-azure-portal/add-group-membership.png)
+
+5. Lesen Sie die Seite **MDM-Richtlinien – Westen – Gruppenmitgliedschaften**, um die Gruppe-Mitglied-Beziehung anzuzeigen.
+
+    ![Seite „MDM-Richtlinie – Westen – Gruppenmitgliedschaften“ mit Anzeige der übergeordneten Gruppe](media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
+
+6. Für eine detailliertere Ansicht der Gruppe-Mitglied-Beziehung wählen Sie die Gruppe (**MDM-Richtlinie – Alle Org.**) und schauen Sie sich die Seitendetails **MDM-Richtlinie – Westen** an.
+
+    ![Seite „Gruppenmitgliedschaft“, die sowohl das Mitglied als auch die Gruppendetails anzeigt](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
+
+## <a name="remove-a-member-group-from-another-group"></a>Entfernen einer Mitgliedergruppe aus einer anderen Gruppe
+Sie können eine vorhandene Mitgliedergruppe aus einer anderen Gruppe entfernen. Das Entfernen der Mitgliedschaft entfernt jedoch auch alle übernommenen Attribute und Eigenschaften für Ihre Benutzer.
+
+### <a name="to-remove-a-member-group-from-another-group"></a>Entfernen einer Mitgliedergruppe aus einer anderen Gruppe
+1. Suchen und wählen Sie auf der Seite **Gruppen – Alle Gruppen** die Gruppe aus, die als Mitglied einer anderen Gruppe entfernt werden soll. In dieser Übung verwenden wir wieder die Gruppe **MDM-Richtlinie – Westen**.
+
+2. Klicken Sie auf der Übersichtsseite für **MDM-Richtlinie – Westen** auf **Gruppenmitgliedschaften**.
+
+    ![Übersichtsseite „MDM-Richtlinie – Westen“](media/active-directory-groups-membership-azure-portal/group-membership-overview.png)
+
+3. Wählen Sie die Gruppe **MDM-Richtlinie – Alle Org.** auf der Seite **MDM-Richtlinie – Westen – Gruppenmitgliedschaften** aus, und wählen Sie dann **Entfernen** auf der Detailseite **MDM-Richtlinie – Westen**.
+
+    ![Seite „Gruppenmitgliedschaft“, die sowohl das Mitglied als auch die Gruppendetails anzeigt](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
+
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
-* [Anzeigen vorhandener Gruppen](active-directory-groups-view-azure-portal.md)
-* [Erstellen einer neuen Gruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md)
-* [Verwalten der Einstellungen einer Gruppe](active-directory-groups-settings-azure-portal.md)
-* [Verwalten der Mitglieder einer Gruppe](active-directory-groups-members-azure-portal.md)
-* [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](../users-groups-roles/groups-dynamic-membership.md)
+- [Anzeigen Ihrer Gruppen und Mitglieder](active-directory-groups-view-azure-portal.md)
+
+- [Erstellen einer einfachen Gruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md)
+
+- [Hinzufügen oder Entfernen von Mitgliedern zu/aus einer Gruppe](active-directory-groups-members-azure-portal.md)
+
+- [Bearbeiten Ihrer Gruppeneinstellungen](active-directory-groups-settings-azure-portal.md)
+
+- [Zuweisen von Lizenzen zu Benutzern nach Gruppe](../users-groups-roles/licensing-groups-assign.md)

@@ -3,19 +3,19 @@ title: Taggen von Bildern – Maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Konzepte zum Tagging von Bildern mithilfe der Maschinelles Sehen-API.
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: 159a1b9404f6ce635dcc8bb6007e52b7346ef98d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.author: pafarley
+ms.openlocfilehash: 0025cdcfaa64a262a5ca54ab4db5a84f6a5768ba
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982964"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338912"
 ---
 # <a name="tagging-images"></a>Taggen von Bildern
 

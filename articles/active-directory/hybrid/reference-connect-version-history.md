@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f3b80af1dfaca921efbe656356e85aeb353a576b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310679"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390311"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -112,7 +112,7 @@ Neue Features und Verbesserungen
 
 ### <a name="fixed-issues"></a>Behobene Probleme 
 
-- Mit dieser Version wird die SQL Server Express-Installation auf SQL Server 2012 SP4 aktualisiert, die u.a. Fehlerbehebungen für mehrere Sicherheitsrisiken bereitstellt.  [Hier](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information) finden Sie weitere Informationen zu SQL Server 2012 SP4.
+- Mit dieser Version wird die SQL Server Express-Installation auf SQL Server 2012 SP4 aktualisiert, die u.a. Fehlerbehebungen für mehrere Sicherheitsrisiken bereitstellt.  [Hier](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information) finden Sie weitere Informationen zu SQL Server 2012 SP4.
 - Verarbeitung von Synchronisierungsregeln: Synchronisierungsregeln für ausgehende Verknüpfungen ohne Verknüpfungsbedingung sollten nicht mehr angewendet werden, wenn die übergeordnete Synchronisierungsregel nicht mehr relevant ist.
 - Mehrere Fehlerbehebungen für Bedienungshilfen wurden auf die Synchronization Service Manager-Benutzeroberfläche und den Synchronisierungsregel-Editor angewendet.
 - Azure AD Connect-Assistent: Fehler beim Erstellen des AD Connector-Kontos, wenn sich Azure AD Connect in einer Arbeitsgruppe befindet

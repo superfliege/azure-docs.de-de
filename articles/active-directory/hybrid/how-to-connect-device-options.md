@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6993895b6f2b836308b8ed7c375212c3fae12768
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c21b4b8996d7dae62c2aa1937c2876a66f6f82bd
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305919"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320559"
 ---
-#<a name="azure-ad-connect-device-options"></a>Azure AD Connect: Geräteoptionen
+# <a name="azure-ad-connect-device-options"></a>Azure AD Connect: Geräteoptionen
 
 Die folgende Dokumentation enthält Informationen zu den verschiedenen Geräteoptionen, die in Azure AD Connect verfügbar sind. Mit Azure AD Connect lassen sich die beiden folgenden Vorgänge konfigurieren: 
 * **Azure AD Hybrid Join**: Wenn Ihre Umgebung lokalen AD-Speicherbedarf aufweist und Sie zudem die Funktionen von Azure Active Directory nutzen möchten, können Sie in Azure AD Hybrid eingebundene Geräte implementieren. Diese Geräte sind sowohl in Ihr lokales Active Directory als auch in Ihr Azure Active Directory eingebunden.
