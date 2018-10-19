@@ -1,71 +1,74 @@
 ---
-title: Informationen zu Bedrohungen in Azure Security Center | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie anhand von Informationen zu Bedrohungen in Azure Security Center potenzielle Bedrohungen auf Ihren virtuellen und physischen Computern identifizieren.
+title: Informationen zu Bedrohungen und Karte mit Sicherheitswarnungen in Azure Security Center | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie anhand von Informationen zu Bedrohungen und der Karte mit Sicherheitswarnungen in Azure Security Center potenzielle Bedrohungen auf Ihren virtuellen und physischen Computern identifizieren.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 8f1c6aa2e691a11e8920db8ca8bfdef5b8eb61b9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: d82d52e05d85fbd5197f84f032a55dd9c74f9d1f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434189"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714427"
 ---
-# <a name="threat-intelligence-in-azure-security-center"></a>Informationen zu Bedrohungen in Azure Security Center
-In diesem Artikel erfahren Sie, wie Sie anhand von Informationen zu Bedrohungen in Azure Security Center sicherheitsbezogene Probleme lösen.
+# <a name="security-alerts-map-and-threat-intelligence"></a>Karte mit Sicherheitswarnungen und Informationen zu Bedrohungen
+In diesem Artikel erfahren Sie, wie Sie sicherheitsbezogene Probleme mithilfe der Karte mit Sicherheitswarnungen und der auf Sicherheitsereignissen basierenden Informationen zu Bedrohungen in Azure Security Center lösen.
 
-## <a name="what-is-threat-intelligence"></a>Was sind Informationen zu Bedrohungen?
-Mithilfe der Option „Informationen zu Bedrohungen“ in Security Center können IT-Administratoren Sicherheitsrisiken für die Umgebung identifizieren. So können sie beispielsweise ermitteln, ob ein bestimmter Computer Teil eines Botnets ist. Computer können zu Knoten in einem Botnet werden, wenn Angreifer illegal Schadsoftware installieren, die diesen Computer heimlich mit einem Steuerknoten verbindet. Die Informationen zu Bedrohungen ermöglichen auch die Erkennung potenzieller Bedrohungen aus Kommunikationskanälen wie dem Darknet.
+## <a name="how-the-security-alerts-map-works"></a>Funktionsweise der Karte mit Sicherheitswarnungen
+Security Center stellt Ihnen eine Karte bereit, mit deren Hilfe Sie Sicherheitsrisiken für die Umgebung identifizieren können. So können sie beispielsweise ermitteln, ob ein bestimmter Computer Teil eines Botnets ist und woher die Bedrohung stammt. Computer können zu Knoten in einem Botnet werden, wenn Angreifer illegal Schadsoftware installieren, die heimlich mit Befehls- und Steuerelementen interagiert, die das Botnet verwalten. 
 
-Für den Aufbau dieser Informationen zu Bedrohungen werden in Security Center Daten aus mehreren Quellen von Microsoft herangezogen. Security Center nutzt diese Daten zur Erkennung potenzieller Bedrohungen für Ihre Umgebung. Der Bereich **Informationen zu Bedrohungen** umfasst drei wichtige Optionen:
+Zum Erstellen dieser Karte werden in Security Center Daten aus mehreren Quellen von Microsoft herangezogen. Security Center nutzt diese Daten zur Darstellung potenzieller Bedrohungen für Ihre Umgebung. 
 
-- Arten der erkannten Bedrohungen
-- Ursprung der Bedrohung
-- Threat Intelligence-Karte
-
-
-## <a name="when-should-you-use-threat-intelligence"></a>Verwenden von Informationen zu Bedrohungen
 Einer der Schritte bei der [Reaktion auf Sicherheitsvorfälle](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide#incident-response) ist die Ermittlung des Schweregrads für die betroffenen Systeme. In dieser Phase sollten Sie die folgenden Aufgaben durchführen:
 
 - Bestimmen der Art des Angriffs.
-- Bestimmen des Angriffsursprungs.
+- Bestimmen des Ursprungs des Angriffs.
 - Bestimmen der Absicht des Angriffs. Wurde Ihre Organisation gezielt angegriffen, um bestimmte Informationen zu erlangen, oder war es ein ungezielter Angriff?
 - Ermitteln der betroffenen Systeme.
 - Ermitteln der Dateien, auf die zugegriffen wurde, und Bestimmen der Vertraulichkeit dieser Dateien.
 
-Bei diesen Aufgaben können Sie auf die Informationen zu Bedrohungen in Security Center zurückgreifen.
+Bei diesen Aufgaben können Sie auf die Karte mit Sicherheitswarnungen in Security Center zurückgreifen.
 
-## <a name="access-the-threat-intelligence"></a>Zugreifen auf die Informationen zu Bedrohungen
-Wählen Sie zunächst den Arbeitsbereich aus, in dem sich Ihre Informationen befinden, um die aktuellen Informationen zu Bedrohungen für Ihre Umgebung zu visualisieren. Wenn Sie nicht über mehrere Arbeitsbereiche verfügen, wird die Arbeitsbereichsauswahl umgangen, und Sie gelangen direkt zum Dashboard **Informationen zu Bedrohungen**. So greifen Sie auf das Dashboard zu:
+## <a name="access-the-security-alerts-map"></a>Zugreifen auf die Karte mit Sicherheitswarnungen
+Öffnen Sie die Karte mit Sicherheitswarnungen, um die aktuellen Bedrohungen für Ihre Umgebung darzustellen:
+
+1. Öffnen Sie das Dashboard **Security Center**.
+2. Wählen Sie im linken Bereich unter **Bedrohungsschutz** die Option **Sicherheitshinweise zuordnen** aus. Die Karte wird geöffnet.
+3. Um weitere Informationen zu einer Warnung und Schritte zur Behebung anzuzeigen, klicken Sie auf den Punkt für die Warnung auf der Karte, und folgen Sie den Anweisungen. 
+ 
+Die Karte mit Sicherheitswarnungen basiert auf Warnungen. Diese Warnungen basieren auf Aktivitäten, bei denen der Netzwerkkommunikation eine IP-Adresse zugeordnet wurde, die erfolgreich aufgelöst wurde, und zwar unabhängig davon, ob die IP-Adresse eine bekannte riskante IP-Adresse (z.B. ein bekannter Crypto-Miner ) oder eine IP-Adresse ist, die zuvor nicht als riskant erkannt wurde. Die Karte enthält Warnungen für alle Abonnements, die Sie zuvor in Azure ausgewählt haben. 
+
+Die Warnungen auf der Karte werden entsprechend dem geografischen Standort angezeigt, der als deren Ursprung erkannt wurde, und sind nach Schweregrad farbcodiert. 
+    ![Informationen zu Bedrohungen](./media/security-center-threat-intel/security-center-alert-map.png)
+
+## <a name="viewing-the-event-based-threat-intelligence-dashboard"></a>Anzeigen des ereignisbasierten Dashboards mit Informationen zu Bedrohungen
+Um die Karte mit Informationen zu Bedrohungen basierend auf Rohereignissen für die Sicherheit anzuzeigen, können Sie das folgende Verfahren ausführen. Auf dieser Karte werden nur Ereignisse angezeigt, bei denen eine als Risiko angesehene IP-Adresse beteiligt ist, z.B. die IP-Adresse eines bekannten Botnets.
 
 1. Öffnen Sie das Dashboard **Security Center**.
 
-1. Wählen Sie im linken Bereich unter **Bedrohungsschutz** die Option **Informationen zu Bedrohungen** aus. Eine Karte wird geöffnet.
+1. Wählen Sie im linken Bereich unter **Bedrohungsschutz** die Option **Sicherheitshinweise zuordnen** aus. Die Karte wird geöffnet.
+2. Klicken Sie in der oberen rechten Ecke auf****  die entsprechende Option für das Wechseln zur Karte mit Sicherheitsereignissen.
+3. Wählen Sie den Arbeitsbereich aus, für den Sie das Dashboard anzeigen möchten.
+4. Wählen Sie am oberen Rand der Karte **Klassische Threat Intelligence-Benutzeroberfläche** aus. Das Dashboard **Informationen zu Bedrohungen** wird geöffnet.
 
-    ![Threat Intelligence-Karte](./media/security-center-threat-intel/security-center-threat-intel.png)
-
-1. Wählen Sie am oberen Rand der Karte **Klassische Threat Intelligence-Benutzeroberfläche** aus. Das Dashboard **Informationen zu Bedrohungen** wird geöffnet.
-
-    ![Dashboard „Informationen zu Bedrohungen“](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
-
-    > [!NOTE]
-    > Wenn in der Spalte ganz rechts **UPGRADE PLAN** (PLAN UPGRADEN) angezeigt wird, wird für diesen Arbeitsbereich das kostenlose Abonnement verwendet. Führen Sie ein Upgrade auf „Standard“ durch, um das Feature verwenden zu können. Wenn in der Spalte ganz rechts **REQUIRES UPDATE** (UPDATE ERFORDERLICH) angezeigt wird, aktualisieren Sie [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), um das Feature verwenden zu können. Weitere Informationen zum Tarif finden Sie unter „Azure Security Center-Preise“.
-    >
-1. Falls Sie mehrere Arbeitsbereiche untersuchen müssen, priorisieren Sie die Untersuchung anhand der Spalte **Schädliche IP**. Sie enthält die aktuelle Anzahl schädlicher IP-Adressen in diesem Arbeitsbereich. Wählen Sie den gewünschten Arbeitsbereich aus. Das Dashboard **Informationen zu Bedrohungen** wird angezeigt.
+   > [!NOTE]
+   > Wenn in der Spalte ganz rechts **UPGRADE PLAN** (PLAN UPGRADEN) angezeigt wird, wird für diesen Arbeitsbereich das kostenlose Abonnement verwendet. Führen Sie ein Upgrade auf „Standard“ durch, um das Feature verwenden zu können. Wenn in der Spalte ganz rechts **REQUIRES UPDATE** (UPDATE ERFORDERLICH) angezeigt wird, aktualisieren Sie [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), um das Feature verwenden zu können. Weitere Informationen zum Tarif finden Sie unter „Azure Security Center-Preise“.
+   >
+5. Falls Sie mehrere Arbeitsbereiche untersuchen müssen, priorisieren Sie die Untersuchung anhand der Spalte **Schädliche IP**. Sie enthält die aktuelle Anzahl schädlicher IP-Adressen in diesem Arbeitsbereich. Wählen Sie den gewünschten Arbeitsbereich aus. Das Dashboard **Informationen zu Bedrohungen** wird angezeigt.
 
     ![Informationen zu Bedrohungen](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
 
-1. Das Dashboard ist in vier Kacheln unterteilt:
+6. Das Dashboard ist in vier Kacheln unterteilt:
 
     a.  **Bedrohungstypen**. Hier sind die Arten von Bedrohungen zusammengefasst, die im ausgewählten Arbeitsbereich erkannt wurden.
 
