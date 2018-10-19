@@ -9,14 +9,16 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2018
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: 12b46b4abaa17fe9dd0e9055bca5463312bbd15d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 696843363bc6617bb11c01cdccb9dbbb7b719a82
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298199"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -72,6 +74,34 @@ Wir arbeiten an RFC-Vorschlägen für das [Korrelations-HTTP-Protokoll](https://
 Der Standard definiert außerdem zwei Schemata an `Request-Id`-Generierungen, nämlich flache und hierarchische Schemata. Beim flachen Schema ist ein bekannter `Id`-Schlüssel für die Sammlung `Correlation-Context` definiert.
 
 Application Insights definiert die [Erweiterung](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) für das Korrelations-HTTP-Protokoll. Er verwendet `Request-Context`-Name/Wert-Paare, die die vom unmittelbaren Aufrufer oder Aufgerufenen verwendete Sammlung von Eigenschaften propagieren. Das Application Insights SDK legt mithilfe dieses Header die Felder `dependency.target` und `request.source` fest.
+
+### <a name="w3c-distributed-tracing"></a>W3C – Verteilte Ablaufverfolgung
+
+Wir gehen über zu (W3C-Format für verteilte Ablaufverfolgung)[https://w3c.github.io/distributed-tracing/report-trace-context.html]. Dieses definiert:
+- `traceparent` – trägt eine global eindeutige Vorgangs-ID sowie einen eindeutigen Bezeichner des Aufrufs.
+- `tracestate` – trägt einen für das Ablaufverfolgungssystem spezifischen Kontext.
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-classic-apps"></a>Aktivieren der Unterstützung für die verteilte Ablaufverfolgung von W3C für ASP.NET Classic-Apps
+
+Diese Funktion ist in den Paketen „Microsoft.ApplicationInsights.Web“ und „Microsoft.ApplicationInsights.DependencyCollector“ verfügbar, beginnend mit Version 2.8.0-beta1.
+Es ist standardmäßig **aus**, ändern Sie also zum Aktivieren `ApplicationInsights.config`:
+
+* Fügen Sie unter `RequestTrackingTelemetryModule` das `EnableW3CHeadersExtraction`-Element mit dem Wert `true` hinzu.
+* Fügen Sie unter `DependencyTrackingTelemetryModule` das `EnableW3CHeadersInjection`-Element mit dem Wert `true` hinzu.
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Aktivieren der Unterstützung für die verteilte Ablaufverfolgung von W3C für ASP.NET Core-Apps
+
+Diese Funktion befindet sich in „Microsoft.ApplicationInsights.AspNetCore“ mit Version 2.5.0-beta1 sowie in „Microsoft.ApplicationInsights.DependencyCollector“ Version 2.8.0-beta1.
+Es ist standardmäßig **aus**, legen Sie also zum Aktivieren `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` auf `true` fest:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddApplicationInsightsTelemetry(o => 
+        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
+    // ....
+}
+```
 
 ## <a name="open-tracing-and-application-insights"></a>OpenTracing und Application Insights
 
@@ -134,4 +164,6 @@ telemetry.getContext().getDevice().setRoleName("My Component Name");
 - [Schreiben benutzerdefinierter Telemetriedaten](app-insights-api-custom-events-metrics.md)
 - Integrieren Sie alle Komponenten Ihres Mikroservices in Application Insights. Überprüfen Sie die [unterstützten Plattformen](app-insights-platforms.md).
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](application-insights-data-model.md).
-- Informationen zum Erweitern und Filtern von Telemetriedaten finden Sie [hier](app-insights-api-filtering-sampling.md).
+- Informationen zum [Erweitern und Filtern von Telemetriedaten](app-insights-api-filtering-sampling.md).
+- [Konfigurationsreferenz für Application Insights](app-insights-configuration-with-applicationinsights-config.md)
+

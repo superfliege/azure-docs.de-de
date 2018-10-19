@@ -1,20 +1,21 @@
 ---
-title: Glossar für Custom Vision Service – Azure Cognitive Services | Microsoft-Dokumentation
+title: Glossar – Custom Vision Service
+titlesuffix: Azure Cognitive Services
 description: Glossar für Custom Vision Service.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: anroth
-ms.openlocfilehash: 871617ce3c1c5a84df746c0c7d87c113b3a6f354
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ae68db3de5d1f7eaacbe355133b9b7b61f145f04
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374746"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363410"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>Glossar für Custom Vision Service
 
@@ -60,9 +61,9 @@ Nachdem Sie Ihre Klassifizierung trainiert haben, können Sie unter Verwendung d
 
 Wenn Ihre Klassifizierung neue zu klassifizierende Bilder akzeptiert, speichert sie die Bilder für Sie. Mit diesen Bildern können Sie die Genauigkeit Ihrer Klassifizierung verbessern, indem Sie falsch vorhergesagte Bilder mit den korrekten Tags versehen. Außerdem können Sie Ihre Klassifizierung mithilfe dieser neuen Bilder neu trainieren.
 
-## <a name="precision"></a>Genauigkeit
+## <a name="precision"></a>Precision
 
-Wie hoch ist die Wahrscheinlichkeit, dass Ihre Klassifizierung ein zu klassifizierendes Bild korrekt klassifiziert? Wie viel Prozent aller Bilder, mit denen die Klassifizierung (Hunde und Ponys) trainiert wurde, hat das Modell korrekt erkannt? Bei 99 korrekten Tags und 100 Bildern ergibt sich eine Genauigkeit von 99 Prozent.
+Wenn Sie ein Bild klassifizieren, wie hoch ist die Wahrscheinlichkeit, dass Ihre Klassifizierung das Bild richtig klassifiziert? Wie viel Prozent aller Bilder, mit denen die Klassifizierung (Hunde und Ponys) trainiert wurde, hat das Modell korrekt erkannt? Bei 99 korrekten Tags und 100 Bildern ergibt sich eine Genauigkeit von 99 Prozent.
 
 ## <a name="recall"></a>Recall (Trefferquote)
 
@@ -74,18 +75,18 @@ Es gibt zwei Arten von Einstellungen: Einstellungen auf Projektebene und Einstel
 
 - Einstellungen auf Projektebene: 
   
-  Einstellungen auf Projektebene gelten für ein Projekt oder eine Klassifizierung. Sie umfassen Folgendes:
+  Einstellungen auf Projektebene gelten für ein Projekt oder eine Klassifizierung. Hierzu gehören folgende Berechtigungen:
 
    - Projektdomäne
    - Projektname
    - Projektbeschreibung
-   - Verwendung:
+   - Syntax:
       - Anzahl von Trainingsbildern
       - Anzahl erstellter Tags
       - Anzahl erstellter Iterationen
 
 - Einstellungen auf Benutzerebene: 
    - Abonnementschlüssel: einer für das Training, einer für die Auswertung/Vorhersage
-   - Verwendung:
+   - Syntax:
       - Anzahl erstellter Projekte
       - Anzahl ausgeführter Aufrufe der Auswertungs-/Vorhersage-API

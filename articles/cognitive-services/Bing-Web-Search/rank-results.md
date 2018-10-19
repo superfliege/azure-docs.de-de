@@ -1,40 +1,41 @@
 ---
-title: Verwenden der Rangfolge zum Anzeigen der Webantworten | Microsoft-Dokumentation
-description: Hier wird gezeigt, wie Sie die Rangfolge zum Anzeigen der von der Bing-Websuche-API zurückgegebenen Antworten verwenden.
+title: Verwenden von Rangfolgen zur Anzeige von Suchergebnissen – Bing-Websuche-API
+titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie mithilfe von Rangfolgen Suchergebnisse aus der Bing-Websuche-API anzeigen können.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: BBF87972-B6C3-4910-BB52-DE90893F6C71
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 750146f3bb28b94594a71733b68f092880360c5a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d362d3aa131ba2ddfec8c7873352c634e7ce099c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376987"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124200"
 ---
-# <a name="using-ranking-to-display-results"></a>Verwenden der Rangfolge zum Anzeigen von Ergebnissen  
+# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Verwenden von Rangfolgen zur Anzeige von Ergebnissen der Bing-Websuche-API  
 
 Jede Suchantwort enthält eine [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)-Antwort, die angibt, wie die Suchergebnisse angezeigt werden müssen. Anhand der Rangfolgeantwort werden die Ergebnisse für eine herkömmliche Suchergebnisseite nach Hauptbereichsinhalt und Randleisteninhalt gruppiert. Wenn Sie die Ergebnisse nicht in einem herkömmlichen Hauptbereichs- und Randleistenformat anzeigen, müssen Sie dem Hauptbereichsinhalt höhere Sichtbarkeit als dem Randleisteninhalt zuweisen.  
-  
+
 Innerhalb jeder Gruppe (Hauptbereich oder Randleiste) gibt das [Items](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items)-Array die Reihenfolge an, in der die Inhalte angezeigt werden müssen. Jedes Element bietet die beiden folgenden Möglichkeiten zur Angabe des Ergebnisses in einer Antwort.  
-  
+
 -   `answerType` und `resultIndex`: Das `answerType`-Feld bezeichnet die Antwort (z.B. Webseite oder News) und `resultIndex` bezeichnet ein Ergebnis in der Antwort (z.B. einen News-Artikel). Der Index ist nullbasiert.  
-  
+
 -   `value`: Das `value`-Feld enthält eine ID, die entweder der ID einer Antwort oder eines Ergebnisses in der Antwort entspricht. Die ID ist entweder in der Antwort oder den Ergebnissen enthalten, jedoch nicht in beidem.  
-  
+
 Die Verwendung der ID ist einfacher, da nur die Rangfolgen-ID mit der ID einer Antwort oder eines ihrer Ergebnisse übereinstimmen muss. Wenn ein Antwortobjekt ein `id`-Feld enthält, werden alle Ergebnisse der Antwort zusammen angezeigt. Enthält beispielsweise das `News`-Objekt das `id`-Feld, werden alle News-Artikel zusammen angezeigt. Wenn das `News`-Objekt das `id`-Feld nicht enthält, weist jeder News-Artikel ein `id`-Feld auf, und in der Rangfolgeantwort sind die News-Artikel mit den Ergebnissen aus anderen Antworten gemischt.  
-  
+
 Die Verwendung von `answerType` und `resultIndex` ist etwas komplizierter. Sie verwenden `answerType`, um die Antwort anzugeben, in der die anzuzeigenden Ergebnisse enthalten sind. Dann verwenden Sie `resultIndex` zum Indizieren über die Ergebnisse der Antwort, um das anzuzeigende Ergebnis abzurufen. (Der Wert für `answerType` ist der Name des Felds im [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse)-Objekt.) Wenn alle Ergebnisse der Antwort zusammen angezeigt werden sollen, weist das Element der Rangfolgeantwort kein `resultIndex`-Feld auf.  
 
 ## <a name="ranking-response-example"></a>Beispiel einer Rangfolgeantwort
 
 Nachfolgend sehen Sie ein Beispiel für [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse). Da die Webantwort kein `id`-Feld enthält, werden alle Webseiten einzeln basierend auf der Rangfolge angezeigt (jede Webseite enthält ein `id`-Feld). Da die Bilder, Videos und Antworten verwandter Suchvorgänge das `id`-Feld enthalten, werden die Ergebnisse jeder dieser Antworten zusammen basierend auf der Rangfolge angezeigt.
-  
+
 ```json
 {  
     "_type" : "SearchResponse",
@@ -203,19 +204,19 @@ Nachfolgend sehen Sie ein Beispiel für [RankingResponse](https://docs.microsoft
     }
 }  
 ```  
-  
+
 Basierend auf dieser Rangfolgeantwort werden im Hauptbereich die folgenden Suchergebnisse angezeigt:  
-  
--   Das Ergebnis der ersten Webseite 
+
+-   Das Ergebnis der ersten Webseite
 -   Alle Bilder  
 -   Die Ergebnisse der zweiten und dritten Webseite  
 -   Alle Videos  
 -   Die Ergebnisse der vierten, fünften und sechsten Webseite  
-  
+
 In der Randleiste werden die folgenden Suchergebnisse angezeigt:  
-  
+
 -   Alle verwandten Suchvorgänge  
-  
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

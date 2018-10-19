@@ -1,23 +1,26 @@
 ---
-title: Web-API-Schnittstelle in der Knowledge Exploration Service-API | Microsoft-Dokumentation
-description: Verwenden Sie die Web-API-Schnittstelle, um eine umfangreiche, semantische Suchfunktion in der Knowledge Exploration Service (KES)-API in Cognitive Services zu erstellen.
+title: Web-API-Schnittstelle – Knowledge Exploration Service-API
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die Web-API-Schnittstelle, um eine umfangreiche, semantische Suchfunktion in der Knowledge Exploration Service (KES)-API zu erstellen.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 16c5680eb4f249a5d37e6b90eea92cfff7090eef
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5be39e8dce6aeeef32d20273c56650620d6fe986
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372955"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122024"
 ---
 # <a name="web-api-interface"></a>Web-API-Schnittstelle
+
 Die vom Knowledge Exploration Service erstellten Modelldateien können über eine Reihe von Web-APIs gehostet und abgerufen werden.  Die APIs können über den [`host_service`](CommandLine.md#host_service-command)-Befehl auf einem lokalen Computer gehostet oder mithilfe des [`deploy_service`](CommandLine.md#deploy_service-command)-Befehls für einen Azure-Clouddienst bereitgestellt werden.  Durch beide Ansätze werden die folgenden API-Endpunkte verfügbar gemacht:
+
 * [*interpret*](interpretMethod.md) – interpretiert die Zeichenfolge einer Abfrage in natürlicher Sprache. Gibt mit Anmerkungen versehene Interpretationen zurück, mit denen sich die Benutzereingabe im Suchfeld vorhersagen und automatisch vervollständigen lässt.
 * [*evaluate*](evaluateMethod.md) – wertet die Ausgabe eines strukturierten Abfrageausdrucks aus und gibt diese zurück.
 * [*calchistogram* ](calchistogramMethod.md) – berechnet ein Histogramm von Attributwerten für Objekte, die von einem strukturierten Abfrageausdruck zurückgegeben werden.

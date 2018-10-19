@@ -1,22 +1,23 @@
 ---
-title: Filterung von Obszönitäten mit der Microsoft-Textübersetzungs-API | Microsoft-Dokumentation
-description: Verwenden Sie die Filterung von Obszönitäten in der Microsoft-Textübersetzungs-API.
+title: Filtern von Obszönitäten – Textübersetzungs-API
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die Filterung von Obszönitäten in der Textübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a7172e1e8aa336c011fb06e93fc5c4b54d26a3cd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 87814571e6f1c20b219020651eb798fa49a28deb
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374347"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127932"
 ---
-# <a name="how-to-add-profanity-filtering-with-the-microsoft-translator-text-api"></a>Hinzufügen der Filterung von Obszönitäten mit der Microsoft-Textübersetzungs-API
+# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Hinzufügen der Filterung von Obszönitäten mit der Textübersetzungs-API
 
 In der Regel behält der Übersetzungsdienst Obszönitäten, die im Quelltext vorhanden sind, in der Übersetzung bei. Der Grad an Obszönitäten und der Kontext, bei dem Wörter als obszön angesehen werden, unterscheiden sich je nach Kultur. Daher kann der Obszönitätsgrad in der Zielsprache unter Umständen verstärkt oder reduziert werden.
 
@@ -27,7 +28,7 @@ Für die Translate()-Methode wird der Parameter „options“ verwendet, der das
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>Akzeptierte Werte für ProfanityAction und Beispiele
 |ProfanityAction-Wert | Aktion | Beispiel: Ausgangssprache – Japanisch | Beispiel: Zielsprache – Englisch|
 | :---|:---|:---|:---|
-| NoAction | Standardeinstellung. Entspricht dem Fall, in dem die Option nicht festgelegt wird. Die Obszönität wird aus der Ausgangs- in die Zielsprache übernommen. | 彼は変態です。 | He is a jerk. (Er ist ein Vollidiot.) |
+| NoAction | Standard. Entspricht dem Fall, in dem die Option nicht festgelegt wird. Die Obszönität wird aus der Ausgangs- in die Zielsprache übernommen. | 彼は変態です。 | He is a jerk. (Er ist ein Vollidiot.) |
 | Marked | Obszöne Wörter werden in die XML-Tags \<profanity> … \</profanity> gesetzt. | 彼は変態です。 | He is a \<profanity>jerk\</profanity>. |
 | Deleted | Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff bereitgestellt. | 彼は。 | He is a. (Er ist ein.) |
 

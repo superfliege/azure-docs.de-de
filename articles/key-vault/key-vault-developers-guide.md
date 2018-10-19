@@ -5,16 +5,16 @@ services: key-vault
 author: bryanla
 manager: mbaldwin
 ms.service: key-vault
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/12/2017
+ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: d8554d235fdfeb5b192ddf1268e60b7bc32aabe7
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 3dc80c97a43c35295deacefc37a76471912c9b42
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42142366"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603990"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -53,11 +53,9 @@ Im Video erwähnte Ressourcen:
 
 ## <a name="creating-and-managing-key-vaults"></a>Erstellen und Verwalten von Schlüsseltresoren
 
-Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mithilfe von MSI (Managed Service Identity, verwaltete Dienstidentität) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
+Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mithilfe der verwalteten Identitäten für Azure-Ressourcen kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
-Weitere Informationen zu MSI finden Sie im Artikel [Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/msi-overview).
-
-Weitere Informationen zur Arbeit mit AAD finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
+Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Verwaltete Identitäten – Übersicht](../active-directory/managed-identities-azure-resources/overview.md). Weitere Informationen zur Arbeit mit AAD finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
 
 Bevor Sie mit Schlüsseln, Geheimnissen oder Zertifikaten in Ihrem Schlüsseltresor arbeiten können, müssen Sie diesen über die CLI, PowerShell, Azure Resource Manager-Vorlagen oder REST erstellen und verwalten. Die jeweilige Vorgehensweise wird in den folgenden Artikeln beschrieben:
 
@@ -110,14 +108,14 @@ Die Key Vault-Verwaltungs-API und die Key Vault-Objekt-API sind in Node.js getre
 ### <a name="quick-start-guides"></a>Schnellstarthandbücher
 
 - [Erstellen eines Schlüsseltresors](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-- [Erste Schritte mit Key Vault in Node.js](https://azure.microsoft.com/resources/samples/key-vault-node-getting-started/)
+- [Erste Schritte mit Key Vault in Node.js](https://github.com/Azure-Samples/key-vault-node-getting-started)
 
 ### <a name="code-examples"></a>Codebeispiele
 
 Vollständige Beispiele für die Verwendung von Key Vault mit Ihren Anwendungen finden Sie hier:
 
-- [Azure Key Vault-Codebeispiele](http://www.microsoft.com/download/details.aspx?id=45343): .NET-Beispielanwendung *HelloKeyVault* und ein Azure-Webdienstbeispiel. 
-- [Verwenden von Azure Key Vault in einer Webanwendung](key-vault-use-from-web-application.md) In diesem Tutorial erfahren Sie, wie Sie Azure Key Vault in einer Webanwendung in Azure verwenden. 
+- [Azure Key Vault-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=key-vault) – Codebeispiele für Azure Key Vault. 
+- [Verwenden von Azure Key Vault in einer Webanwendung](quick-create-net.md) In diesem Tutorial erfahren Sie, wie Sie Azure Key Vault in einer Webanwendung in Azure verwenden. 
 
 ## <a name="how-tos"></a>Vorgehensweisen
 
@@ -131,7 +129,7 @@ Die folgenden Artikel und Szenarien bieten aufgabenspezifische Anleitungen für 
 - [Bereitstellen von Zertifikaten für VMs aus Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) : Eine in einer VM in Azure ausgeführte Cloudanwendung benötigt ein Zertifikat. Wie wird dieses Zertifikat derzeit für eine solche VM bereitgestellt?
 - [Einrichten des Schlüsseltresors mit End-to-End-Schlüsselrotation und Überwachung](key-vault-key-rotation-log-monitoring.md) bietet eine exemplarische Vorgehensweise zum Einrichten der Schlüsselrotation und Protokollüberwachung mit Azure Key Vault.
 - [Deploying Azure Web App Certificate through Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) (Bereitstellen von Azure-Web-App-Zertifikaten über Key Vault) enthält schrittweise Anleitungen zum Bereitstellen von Zertifikaten, die im Schlüsseltresor gespeichert sind, im Rahmen des [App Service Certificate](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)-Angebots.
-- [Grant permission to many applications to access a key vault](key-vault-group-permissions-for-apps.md) (Erteilen von Berechtigungen für viele Anwendungen für den Zugriff auf einen Schlüsseltresor):Die Key Vault-Zugriffssteuerungsrichtlinie unterstützt nur 16 Einträge. Sie können aber eine Azure Active Directory-Sicherheitsgruppe erstellen. Fügen Sie dieser Sicherheitsgruppe alle zugeordneten Dienstprinzipale hinzu, und gewähren Sie dieser Sicherheitsgruppe dann Zugriff auf Key Vault.
+- [Erteilen von Berechtigungen für viele Anwendungen für den Zugriff auf einen Schlüsseltresor](key-vault-group-permissions-for-apps.md): Die Key Vault-Zugriffssteuerungsrichtlinie unterstützt bis zu 1024 Einträge. Sie können aber eine Azure Active Directory-Sicherheitsgruppe erstellen. Fügen Sie dieser Sicherheitsgruppe alle zugeordneten Dienstprinzipale hinzu, und gewähren Sie dieser Sicherheitsgruppe dann Zugriff auf Key Vault.
 - Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltresoren mit Azure finden Sie in den [Beispielen für Azure Resource Manager-Vorlagen für Key Vault von Ryan Jones](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 - [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](key-vault-soft-delete-cli.md) enthält Informationen zur Verwendung und zum Lebenszyklus eines Schlüsseltresors und verschiedener Schlüsseltresorobjekte, für den bzw. die vorläufiges Löschen aktiviert ist.
 - [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](key-vault-soft-delete-powershell.md) enthält Informationen zur Verwendung und zum Lebenszyklus eines Schlüsseltresors und verschiedener Schlüsseltresorobjekte, für den bzw. die vorläufiges Löschen aktiviert ist.

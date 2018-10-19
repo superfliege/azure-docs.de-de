@@ -10,14 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/09/2018
-ms.author: sdash ; mbullwin
-ms.openlocfilehash: c97b45616a58035dd5a1d7e832212fb90694ccce
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.topic: conceptual
+ms.date: 09/13/2018
+ms.reviewer: sdash
+ms.author: mbullwin
+ms.openlocfilehash: cf5f85d4f7e9dbe1278e9dc4290967d781b398f3
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632822"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
 Nachdem Sie die Web-App oder Website an einen beliebigen Server bereitgestellt haben, können Sie Tests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
@@ -31,11 +33,6 @@ Es gibt zwei Arten von Verfügbarkeitstests:
 
 Sie können bis zu 100 Verfügbarkeitstests pro Anwendungsressource erstellen.
 
-
-> [!NOTE] 
-> * Die Standorte für Verfügbarkeitstests wurden vor kurzem in Azure-Rechenzentren verlegt. Diese Verlegung ermöglicht es uns, dem wachsenden Netzwerk von Azure-Rechenzentren Standorte hinzuzufügen.  
-> * Tests müssen nicht aktualisiert werden. Alle Tests werden migriert und an den neuen Standorten ausgeführt. 
->* Weitere Informationen finden Sie im [Dienstupdate](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/01/24/application-insights-availability-monitoring-test-locations-updated/).
 
 ## <a name="create"></a>Öffnen einer Ressource für Ihre Verfügbarkeitstestberichte
 
@@ -53,15 +50,17 @@ Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht�
 ![Mindestens die URL der Website eintragen](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 * **Die URL** kann eine beliebige Webseite sein, die Sie testen möchten, aber sie muss über das öffentliche Internet sichtbar sein. Die URL kann eine Abfragezeichenfolge enthalten. So können Sie beispielsweise Ihre Datenbank abfragen. Wenn die URL in eine Umleitung aufgelöst wird, werden bis zu 10 Umleitungen verfolgt.
-* **Abhängige Anforderungen analysieren**: Wenn diese Option aktiviert ist, werden beim Test Bilder, Skripts, Formatdateien und andere Dateien angefordert, die Teil der zu testenden Webseite sind. Die aufgezeichnete Antwortzeit enthält auch die Zeit, die zum Abrufen dieser Dateien erforderlich ist. Der Test schlägt fehl, wenn alle diese Ressourcen innerhalb des Zeitlimits für den gesamten Test nicht erfolgreich heruntergeladen werden können. 
-
-    Wenn die Option nicht aktiviert ist, wird beim Test nur die Datei unter der von Ihnen angegebenen URL angefordert.
+* **Abhängige Anforderungen analysieren**: Wenn diese Option aktiviert ist, werden beim Test Bilder, Skripts, Formatdateien und andere Dateien angefordert, die Teil der zu testenden Webseite sind. Die aufgezeichnete Antwortzeit enthält auch die Zeit, die zum Abrufen dieser Dateien erforderlich ist. Der Test schlägt fehl, wenn alle diese Ressourcen innerhalb des Zeitlimits für den gesamten Test nicht erfolgreich heruntergeladen werden können. Wenn die Option nicht aktiviert ist, wird beim Test nur die Datei unter der von Ihnen angegebenen URL angefordert.
 
 * **Enable retries** (Wiederholungen aktivieren): Wenn diese Option aktiviert ist, wird der Test nach kurzer Zeit wiederholt, falls er fehlschlägt. Nur wenn drei aufeinander folgende Versuche scheitern, wird ein Fehler gemeldet. Nachfolgende Tests werden dann in der üblichen Häufigkeit ausgeführt. Die Wiederholung wird bis zum nächsten Erfolg vorübergehend eingestellt. Diese Regel wird an jedem Teststandort unabhängig angewendet. Wir empfehlen Ihnen, diese Option zu verwenden. Im Durchschnitt treten ca. 80% der Fehler bei einer Wiederholung nicht mehr auf.
 
 * **Testhäufigkeit**: Legt fest, wie oft der Test von jedem Teststandort aus ausgeführt wird. Mit einer Standardfrequenz von fünf Minuten und fünf Teststandorten wird Ihre Website im Durchschnitt jede Minute getestet.
 
 * **Teststandorte** sind die Orte, von denen aus unsere Server Webanforderungen an Ihre URL senden. Wählen Sie mehrere aus, damit Sie Probleme mit der Website von Netzwerkproblemen unterscheiden können. Sie können bis zu 16 Standorte auswählen.
+
+> [!NOTE] 
+> * Wir empfehlen dringend, Tests von mehreren Standorten aus durzuführen, um falsche Alarme zu verhindern, die durch vorübergehende Probleme mit einem bestimmten Standort ausgelöst werden.
+> * Das Aktivieren der Option „Abhängige Anforderungen analysieren“ resultiert in einer strengeren Überprüfung. Der Test könnte bei Fällen fehlschlagen, was möglicherweise nicht auffällt, wenn Sie den Standort manuell durchsuchen.
 
 * **Erfolgskriterien**:
 
@@ -70,58 +69,6 @@ Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht�
     **HTTP-Antwort**: Der zurückgegebene Statuscode, der als Erfolg gezählt wird. 200 ist der Code, der angibt, dass eine normale Webseite zurückgegeben wurde.
 
     **Inhaltsübereinstimmung**: Eine Zeichenfolge, zum Beispiel „Willkommen!“ Wir vergewissern uns, dass in jeder Antwort eine exakte Übereinstimmung unter Berücksichtigung der Groß-und Kleinschreibung vorkommt. Dies muss eine Zeichenfolge in Klartext, ohne Platzhalter sein. Vergessen Sie nicht, diese zu aktualisieren, wenn sich der Seiteninhalt ändert.
-* **Warnungen** werden standardmäßig an Sie gesendet, wenn innerhalb von fünf Minuten an drei Standorten Fehler auftreten. Bei einem Fehler an einem Standort handelt es sich wahrscheinlich um ein Netzwerkproblem und nicht um ein Problem mit Ihrer Website. Sie können den Schwellenwert auf eine engere oder weitere Überwachung einstellen oder den Empfänger der E-Mails ändern.
-
-    Sie können einen [Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) einrichten, der bei einer Warnung aufgerufen wird. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Eigenschaften übergeben werden.)
-
-### <a name="test-more-urls"></a>Testen weiterer URLs
-Fügen Sie weitere Tests hinzu. Neben dem Testen der Startseite können Sie zum Beispiel auch sicherstellen, dass die Datenbank ausgeführt wird, indem Sie eine Such-URL testen.
-
-
-## <a name="monitor"></a>Anzeigen der Verfügbarkeitstestergebnisse
-
-Klicken Sie nach einigen Minuten auf **Aktualisieren**, um die Testergebnisse anzuzeigen. 
-
-![Ergebnisübersicht im Startblatt](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
-
-Das Punktdiagramm zeigt Stichproben der Testergebnisse an, die Diagnosedetails zu Testschritten enthalten. Die Test-Engine speichert Diagnosedetails für Tests mit Fehlern. Für erfolgreiche Tests werden Diagnosedetails für eine Teilmenge der Ausführungen gespeichert. Bewegen Sie den Mauszeiger über einen der grünen oder roten Punkte, um Zeitstempel, Dauer, Standort und Name des Tests anzuzeigen. Klicken Sie auf einen Punkt im Punktdiagramm, um die Details des Testergebnisses anzuzeigen.  
-
-Wählen Sie einen bestimmten Test oder Standort aus, oder verringern Sie den Zeitraum, um weitere Ergebnisse um den gewünschten Zeitraum anzuzeigen. Verwenden Sie den Suchexplorer, um Ergebnisse von allen Ausführungen anzuzeigen, oder Analytics-Abfragen, um benutzerdefinierte Berichte für diese Daten auszuführen.
-
-Zusätzlich zu den reinen Ergebnissen gibt es im Metrik-Explorer zwei Verfügbarkeitsmetriken: 
-
-1. Verfügbarkeit: Prozentsatz der erfolgreichen Tests für alle Testausführungen 
-2. Testdauer: Durchschnittliche Testdauer für alle Ausführungen
-
-Sie können Filter auf den Testnamen oder Standort anwenden, um Trends eines bestimmten Tests und/oder Standorts zu analysieren.
-
-## <a name="edit"></a> Überprüfen und Bearbeiten der Tests
-
-Wählen Sie auf der Seite „Zusammenfassung“ einen bestimmten Test aus. Auf dieser Seite werden die jeweiligen Ergebnisse angezeigt, und Sie können den Test bearbeiten oder vorübergehend deaktivieren.
-
-![Webtest bearbeiten oder deaktivieren](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
-
-Eventuell möchten Sie Verfügbarkeitstests oder die damit verknüpften Warnungsregeln deaktivieren, während Sie Ihren Dienst warten. 
-
-## <a name="failures"></a>Wenn Sie Fehler finden ...
-Klicken Sie auf einen roten Punkt.
-
-![Auf einen roten Punkt klicken](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
-
-
-Mit einem Verfügbarkeitstestergebnis können Sie folgende Aktionen ausführen:
-
-* Untersuchen Sie die vom Server erhaltene Antwort.
-* Diagnostizieren Sie Fehler mit serverseitigen Telemetriedaten, die beim Verarbeiten der Instanz der fehlerhaften Anforderung erfasst wurden.
-* Erstellen Sie in Git oder VSTS ein Problem oder eine Arbeitsaufgabe, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
-* Öffnen Sie das Webtestergebnis in Visual Studio.
-
-*Sieht gut aus, wird jedoch als fehlerhaft gemeldet?* Unter [Häufig gestellte Fragen](#qna) finden Sie Möglichkeiten zum Verringern von Störungen.
-
-
-> [!TIP]
-> Es wird empfohlen, Tests an mindestens zwei Standorten auszuführen, um eine zuverlässige Überwachung sicherzustellen.
->
 
 ## <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 Sie können ein Szenario überwachen, das eine Sequenz mit mehreren URLs umfasst. Wenn Sie zum Beispiel eine Verkaufswebsite überwachen, können Sie testen, ob das Hinzufügen von Artikeln zum Einkaufswagen ordnungsgemäß funktioniert.
@@ -176,20 +123,6 @@ Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
 
     Legen Sie die Teststandorte, Häufigkeit und Warnungsparameter auf die gleiche Weise wie für Ping-Tests fest.
 
-#### <a name="3-see-the-results"></a>3. Anzeigen der Ergebnisse
-
-Zeigen Sie die Testergebnisse und alle Fehler auf die gleiche Weise wie für die Tests mit einer einzelnen URL an.
-
-Außerdem können Sie die Testergebnisse herunterladen, um sie in Visual Studio anzuzeigen.
-
-#### <a name="too-many-failures"></a>Treten zu viele Fehler auf?
-
-* Eine häufige Ursache für Fehler ist, dass der Test zu lange ausgeführt wird. Er darf nicht länger als zwei Minuten ausgeführt werden.
-
-* Denken Sie daran, dass alle Ressourcen einer Seite richtig geladen werden müssen, damit der Test erfolgreich ist. Dazu gehören auch Skripts, Stylesheets, Bilder usw.
-
-* Der Webtest muss vollständig im WEBTEST-Skript enthalten sein: Sie können keine codierten Funktionen im Test verwenden.
-
 ### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>Einfügen von Zeiten und Zufallszahlen in einen mehrstufigen Test
 Angenommen, Sie testen ein Tool, das zeitabhängige Daten, wie z. B. Bestände, aus einem externen Feed abruft. Beim Aufzeichnen eines Webtests müssen Sie bestimmte Zeiten verwenden, aber als Parameter des Tests – StartTime und EndTime – festlegen.
 
@@ -212,6 +145,87 @@ Webtest-Plug-Ins sind eine Möglichkeit zum Parametrisieren von Zeiten.
     ![Verwenden Sie im Testparameter "{{Plug-In-Name}}".](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-name.png)
 
 Laden Sie nun den Test in das Portal hoch. Bei jeder Ausführung des Tests werden die dynamischen Werte verwendet.
+
+
+## <a name="monitor"></a>Anzeigen der Verfügbarkeitstestergebnisse
+
+Klicken Sie nach einigen Minuten auf **Aktualisieren**, um die Testergebnisse anzuzeigen. 
+
+![Ergebnisübersicht im Startblatt](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
+
+Das Punktdiagramm zeigt Stichproben der Testergebnisse an, die Diagnosedetails zu Testschritten enthalten. Die Test-Engine speichert Diagnosedetails für Tests mit Fehlern. Für erfolgreiche Tests werden Diagnosedetails für eine Teilmenge der Ausführungen gespeichert. Bewegen Sie den Mauszeiger über einen der grünen oder roten Punkte, um Zeitstempel, Dauer, Standort und Name des Tests anzuzeigen. Klicken Sie auf einen Punkt im Punktdiagramm, um die Details des Testergebnisses anzuzeigen.  
+
+Wählen Sie einen bestimmten Test oder Standort aus, oder verringern Sie den Zeitraum, um weitere Ergebnisse um den gewünschten Zeitraum anzuzeigen. Verwenden Sie den Suchexplorer, um Ergebnisse von allen Ausführungen anzuzeigen, oder Analytics-Abfragen, um benutzerdefinierte Berichte für diese Daten auszuführen.
+
+Zusätzlich zu den reinen Ergebnissen gibt es im Metrik-Explorer zwei Verfügbarkeitsmetriken: 
+
+1. Verfügbarkeit: Prozentsatz der erfolgreichen Tests für alle Testausführungen 
+2. Testdauer: Durchschnittliche Testdauer für alle Ausführungen
+
+Sie können Filter auf den Testnamen oder Standort anwenden, um Trends eines bestimmten Tests und/oder Standorts zu analysieren.
+
+## <a name="edit"></a> Überprüfen und Bearbeiten der Tests
+
+Wählen Sie auf der Seite „Zusammenfassung“ einen bestimmten Test aus. Auf dieser Seite werden die jeweiligen Ergebnisse angezeigt, und Sie können den Test bearbeiten oder vorübergehend deaktivieren.
+
+![Webtest bearbeiten oder deaktivieren](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
+
+Eventuell möchten Sie Verfügbarkeitstests oder die damit verknüpften Warnungsregeln deaktivieren, während Sie Ihren Dienst warten. 
+
+## <a name="failures"></a>Wenn Sie Fehler finden ...
+Klicken Sie auf einen roten Punkt.
+
+![Auf einen roten Punkt klicken](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
+
+Aus einem Verfügbarkeitstestergebnis können Sie die Transaktionsdetails für alle Komponenten ablesen. Mögliche nächste Schritte:
+
+* Untersuchen Sie die vom Server erhaltene Antwort.
+* Diagnostizieren Sie den Fehler mit korrelierten, serverseitigen Telemetriedaten, die während der Verarbeitung des fehlgeschlagenen Verfügbarkeitstests gesammelt wurden.
+* Erstellen Sie in Git oder VSTS ein Problem oder eine Arbeitsaufgabe, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
+* Öffnen Sie das Webtestergebnis in Visual Studio.
+
+Weitere Informationen zur End-to-End-Transaktionsdiagnoseerfahrung finden Sie [hier](app-insights-transaction-diagnostics.md).
+
+Klicken Sie auf die Zeile „Ausnahme“, um die Details der serverseitigen Ausnahme anzuzeigen, die zum Fehlschlagen des synthetischen Verfügbarkeitstest geführt hat. Sie können auch die [Debugmomentaufnahme](app-insights-snapshot-debugger.md) abrufen, um eine umfangreichere Diagnose auf Codeebene durchzuführen.
+
+![Serverseitige Diagnose](./media/app-insights-monitor-web-app-availability/open-instance-4.png)
+
+## <a name="alerts"></a> Verfügbarkeitswarnungen
+Sie können die folgenden Typen von Warnungsregeln für Verfügbarkeitsdaten haben und dabei die klassische Warnungserfahrung verwenden:
+1. X von Y Standorten melden Fehler in einem Zeitraum
+2. Der aggregierte Prozentsatz der Verfügbarkeit fällt unter einen Schwellenwert
+3. Die durchschnittliche Testdauer steigt über einen Schwellenwert
+
+### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Warnung bei X von Y Standorten, die Fehler melden
+Die Warnungsregel „X von Y Standorten“ ist in der [neuen einheitlichen Warnungserfahrung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) standardmäßig aktiviert, wenn Sie einen neuen Verfügbarkeitstest erstellen. Sie können sich dagegen entscheiden, indem Sie die „klassische“ Option auswählen oder die Warnungsregel deaktivieren.
+
+![Erstellen einer Erfahrung](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
+
+**Wichtig**: Mit den [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), **müssen** der Schweregrad der Warnungsregel sowie die Benachrichtigungseinstellungen mit [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) in der Warnungserfahrung konfiguriert werden. Ohne die folgenden Schritten erhalten Sie nur portalinterne Benachrichtigungen. 
+
+1. Nach dem Speichern des Verfügbarkeitstests klicken Sie auf den Namen des neuen Tests, um seine Details aufzurufen. Klicken Sie auf „Warnung bearbeiten“ ![Nach dem Speichern bearbeiten](./media/app-insights-monitor-web-app-availability/editaftersave.png).
+
+2. Legen Sie den gewünschten Schweregrad, die Regelbeschreibung und vor allem die Aktionsgruppe fest, die über die Benachrichtigungseinstellungen verfügt, die Sie für diese Warnungsregel verwenden möchten.
+![Nach dem Speichern bearbeiten](./media/app-insights-monitor-web-app-availability/setactiongroup.png)
+
+
+> [!NOTE]
+> * Konfigurieren Sie die Aktionsgruppen so, dass sie Benachrichtigungen empfangen, wenn die Warnung ausgelöst wird, indem Sie die oben beschriebenen Schritte ausführen. Ohne diese Schritte erhalten Sie nur portalinterne Benachrichtigungen, wenn die Regel ausgelöst wird.
+>
+### <a name="alert-on-availability-metrics"></a>Warnung bei Verfügbarkeitsmetriken
+Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) können Sie sowohl bei segmentierter aggregierter Verfügbarkeit als auch bei Testdauermetriken warnen:
+
+1. Wählen Sie eine Application Insights-Ressource in der Metrikenerfahrung aus, und wählen Sie eine Verfügbarkeitsmetrik aus: ![Verfügbarkeitsmetrikenauswahl](./media/app-insights-monitor-web-app-availability/selectmetric.png).
+
+2. Wenn Sie die Option „Warnungen“ über das Menü konfigurieren, gelangen Sie zur neuen Erfahrung, wo Sie bestimmte Tests oder Standorte auswählen können, für die Warnungsregeln eingerichtet werden sollen. Sie können hier außerdem die Aktionsgruppen für diese Warnungsregel konfigurieren.
+    ![Konfiguration von Verfügbarkeitswarnungen](./media/app-insights-monitor-web-app-availability/availabilitymetricalert.png)
+
+### <a name="alert-on-custom-analytics-queries"></a>Warnung bei benutzerdefinierten Analyseabfragen
+Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) können Sie bei [benutzerdefinierten Protokollabfragen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log) warnen. Mit benutzerdefinierten Abfragen können Sie bei jeder beliebigen Bedingung warnen, die Ihnen hilft, das zuverlässigste Signal für Verfügbarkeitsprobleme abzurufen. Dies ist insbesondere anwendbar, wenn Sie benutzerdefinierte Verfügbarkeitsergebnisse mithilfe des TrackAvailability SDKs senden. 
+
+> [!Tip]
+> * Die Metriken zu Verfügbarkeitsdaten umfassen alle benutzerdefinierten Verfügbarkeitsergebnisse, die Sie möglicherweise durch Aufrufen unseres TrackAvailability SDKs übermitteln. Sie können die Unterstützung für Warnungen bei Metriken verwenden, um bei benutzerdefinierten Verfügbarkeitsergebnissen zu warnen.
+>
 
 ## <a name="dealing-with-sign-in"></a>Umgang mit der Anmeldung
 Wenn sich Benutzer bei Ihrer App anmelden, stehen Ihnen verschiedene Optionen für die Anmeldungssimulation zur Verfügung, damit Sie Seiten testen können, die auf die Anmeldung folgen. Der verwendete Ansatz hängt vom Typ der von der App bereitgestellten Sicherheit ab.
@@ -249,11 +263,10 @@ Wenn bei Ihrem Test die Anmeldung mit OAuth erforderlich ist, lautet die allgeme
 * Parametrisieren Sie die Token, indem Sie den Parameter festlegen, wenn das Token vom Authentifikator zurückgegeben wird, und ihn in der Abfrage an die Website verwenden.
   (Visual Studio versucht, den Test zu parametrisieren, aber die Token werden nicht richtig parametrisiert.)
 
-
 ## <a name="performance-tests"></a>Leistungstests
 Sie können für Ihre Website einen Auslastungstest durchführen. Wie beim Verfügbarkeitstest auch, können Sie entweder einfache Anforderungen oder Anforderungen mit mehreren Schritten von unseren weltweit vorhandenen Punkten senden. Im Gegensatz zu einem Verfügbarkeitstest werden viele Anforderungen gesendet, um mehrere gleichzeitige Benutzer zu simulieren.
 
-Öffnen Sie auf dem Blatt „Übersicht“ die Option **Einstellungen** > **Leistungstests**. Wenn Sie einen Test erstellen, können Sie eine Verbindung mit einem Visual Studio Team Services-Konto herstellen bzw. ein Konto erstellen.
+Öffnen Sie auf dem Blatt „Übersicht“ die Option **Einstellungen** > **Leistungstests**. Wenn Sie einen Test erstellen, können Sie eine Verbindung mit einem Azure DevOps-Konto herstellen bzw. eins erstellen.
 
 Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
@@ -268,50 +281,68 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 * [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Verfügbarkeitstests](app-insights-powershell.md#add-an-availability-test).
 * Richten Sie einen [Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) ein, der bei einer Warnung aufgerufen wird.
 
-## <a name="qna"></a>Fragen? Probleme?
+## <a name="qna"></a> Häufig gestellte Fragen (FAQ)
+
+* *Die Website sieht korrekt aus, aber ich sehe Testfehler. Warum warnt mich Application Insights?*
+
+    * Hat Ihr Test „Abhängige Anforderungen analysieren“ aktiviert? Dies führt zu einer strengen Überprüfung von Ressourcen wie Skripts, Bildern usw. Diese Typen von Fehlern machen sich in einem Browser möglicherweise nicht bemerkbar. Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird. Deaktivieren Sie einfach in der Testkonfiguration die Option „Abhängige Anforderungen analysieren“, um solche Ressourcenfehler vom Test auszuschließen. 
+
+    * Stellen Sie sicher, dass die Konfigurationsoption „Enable retries for test failures" (Wiederholungen bei Testfehlern zulassen) aktiviert ist, um Störungen infolge vorübergehender Netzwerkprobleme zu verringern. Sie können den Test auch an mehreren Standorten durchführen und den Schwellenwert der Warnungsregel entsprechen verwalten, um zu verhindern, dass standortspezifische Probleme übermäßige Warnungen auslösen.
+
+    * Klicken Sie auf einen der roten Punkte in der Verfügbarkeitserfahrung oder auf einen Verfügbarkeitsfehler im Such-Explorer, um die Details anzuzeigen, warum wir den Fehler gemeldet haben. Das Testergebnis, zusammen mit der korrelierten, serverseitigen Telemetrie (sofern aktiviert), sollte ihnen zu einem besseren Verständnis verhelfen, warum der Test fehlgeschlagen ist. Häufige Ursachen für vorübergehende Probleme sind Netzwerk- oder Verbindungsprobleme. 
+
+    * Kam es beim Test zum Timeout? Wir brechen Tests nach 2 Minuten ab. Wenn Ihr Ping- oder mehrstufiger Test länger als zwei Minuten dauert, melden wir ihn als Fehler. Erwägen Sie, den Test in mehrere aufzuteilen, die sich schneller abschließen lassen.
+
+    * Haben allel Standorte Fehler gemeldet oder nur einige? Wenn nur einige Standorte Fehler gemeldet haben, kann es an Netzwerk-/CDN-Problemen liegen. Auch in diesem Fall sollte das Klicken auf die roten Punkte Ihnen zu einem besseren Verständnis verhelfen, warum der Standort Fehler gemeldet hat.
+
+* *Ich habe keine E-Mail erhalten, als die Warnung ausgelöst oder behoben wurde, oder beides?*
+
+    Überprüfen Sie die klassische Warnungskonfiguration, um zu bestätigen, dass Ihre E-Mail-Adresse direkt aufgeführt ist, oder dass eine Verteilerliste, deren Mitglied Sie sind, für den Empfang von Benachrichtigungen konfiguriert ist. Ist dies der Fall, überprüfen Sie die Konfiguration der Verteilerliste, um zu bestätigen, dass sie externe E-Mails empfangen kann. Überprüfen Sie außerdem, ob Ihr E-Mail-Administrator eventuell Richtlinien konfiguriert hat, die dieses Problem verursachen können.
+
+* *Ich habe die Webhookbenachrichtigung nicht empfangen.*
+
+    Überprüfen Sie, ob die Anwendung, die die Webhookbenachrichtigung empfängt, verfügbar ist und die Webhookanforderungen erfolgreich verarbeitet. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook).
+
 * *Zeitweiliger Testfehler aufgrund einer Protokollverletzung?*
 
     Der Fehler („protocol violation..CR must be followed by LF“) weist auf ein Problem mit dem Server (oder mit Abhängigkeiten) hin. Er wird angezeigt, wenn falsch formatierte Header in der Antwort festgelegt werden. Der Fehler kann durch Lastenausgleichsmodule oder CDNs verursacht werden. Genauer gesagt geben einige Header unter Umständen das Zeilenende nicht mit CRLF an, was gegen die HTTP-Spezifikation verstößt. Daher schlägt die Validierung auf .NET-WebRequest-Ebene fehl. Überprüfen Sie die Antwort, um Header zu ermitteln, die gegen diese Spezifikation verstoßen.
     
     Hinweis: Bei der URL tritt in Browsern mit einer nicht so strengen Validierung von HTTP-Headern unter Umständen kein Fehler auf. Eine ausführliche Erläuterung des Problems finden Sie in diesem Blogbeitrag: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/.  
-* *Die Website sieht korrekt aus, aber ich sehe Testfehler.*
-
-    * Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird. Deaktivieren Sie einfach in der Testkonfiguration die Option „Abhängige Anforderungen analysieren“, um solche Ressourcenfehler vom Test auszuschließen. 
-
-    * Stellen Sie sicher, dass die Konfigurationsoption „Enable retries for test failures" (Wiederholungen bei Testfehlern zulassen) aktiviert ist, um Störungen infolge vorübergehender Netzwerkprobleme zu verringern. Sie können den Test auch an mehreren Standorten durchführen und den Schwellenwert der Warnungsregel entsprechen verwalten, um zu verhindern, dass standortspezifische Probleme übermäßige Warnungen auslösen.
     
 * *Ich sehe keine zugehörigen serverseitigen Telemetriedaten zum Diagnostizieren von Testfehlern.*
     
-    Wenn Sie Application Insights für Ihre serverseitige Anwendung eingerichtet haben, liegt dies möglicherweise daran, dass [Sampling](app-insights-sampling.md) in Betrieb ist.
+    Wenn Sie Application Insights für Ihre serverseitige Anwendung eingerichtet haben, liegt dies möglicherweise daran, dass [Sampling](app-insights-sampling.md) in Betrieb ist. Wählen Sie ein anderes Verfügbarkeitsergebnis aus.
+
 * *Kann ich Code aus meinem Webtest aufrufen?*
 
     Nein. Die Schritte des Tests müssen in der Webtest-Datei enthalten sein. Und Sie können keine anderen Webtests aufrufen oder Schleifen verwenden. Aber es gibt mehrere hilfreiche Plug-Ins.
+
 * *Wird HTTPS unterstützt?*
 
     Wir unterstützen TLS 1.1 und TLS 1.2.
 * *Gibt es einen Unterschied zwischen „Webtests“ und „Verfügbarkeitstests“?*
 
     Die beiden Begriffe sind austauschbar. „Verfügbarkeitstests“ ist ein allgemeinerer Begriff, der neben den mehrstufigen Webtests auch die einzelnen URL-Pingtests enthält.
+    
 * *Ich möchte Verfügbarkeitstests auf unserem internen Server verwenden, der hinter einer Firewall ausgeführt wird.*
 
     Es gibt zwei mögliche Lösungen:
     
     * Konfigurieren Sie die Firewall so, dass eingehende Anforderungen von den [IP-Adressen der Webtest-Agents](app-insights-ip-addresses.md) zugelassen werden.
     * Schreiben Sie eigenen Code zum regelmäßigen Testen Ihres internen Servers. Führen Sie den Code als Hintergrundprozess auf einem Testserver hinter Ihrer Firewall aus. Die Ergebnisse des Testvorgangs können an Application Insights gesendet werden, indem die [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)-API im Core SDK-Paket verwendet wird. Hierfür ist es erforderlich, dass Ihr Testserver Zugriff in ausgehender Richtung auf den Application Insights-Erfassungsendpunkt hat. Dies ist aber ein deutlich geringeres Sicherheitsrisiko als bei der Alternativlösung, bei der eingehende Anforderungen zugelassen werden. Die Ergebnisse werden nicht auf den Blättern der Verfügbarkeitswebtests angezeigt, sondern als Verfügbarkeitsergebnisse in Analytics, Search und Metrik-Explorer.
+
 * *Fehler beim Hochladen eines Webtests mit mehreren Schritten*
 
-    Die Größenbeschränkung beträgt 300 K.
+    Einige Gründe, warum dies geschehen kann:
+    * Die Größenbeschränkung beträgt 300 K.
+    * Schleifen werden nicht unterstützt.
+    * Verweise auf andere Webtests werden nicht unterstützt.
+    * Datenquellen werden nicht unterstützt.
 
-    Schleifen werden nicht unterstützt.
-
-    Verweise auf andere Webtests werden nicht unterstützt.
-
-    Datenquellen werden nicht unterstützt.
 * *Test mit mehreren Schritten wird nicht abgeschlossen*
 
-    Pro Test können maximal 100 Anforderungen verwendet werden.
+    Pro Test können maximal 100 Anforderungen verwendet werden. Der Test wird außerdem beendet, wenn seine Ausführung länger als zwei Minuten dauert.
 
-    Der Test wird beendet, wenn die Ausführung länger als zwei Minuten dauert.
 * *Wie kann ich einen Test mit Clientzertifikaten durchführen?*
 
     Dies wird leider nicht unterstützt.

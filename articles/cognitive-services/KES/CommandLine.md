@@ -1,23 +1,26 @@
 ---
-title: Knowledge Exploration Service-Befehlszeilenschnittstelle | Microsoft-Dokumentation
-description: Mithilfe der KES-Befehlszeilenschnittstelle können Sie Index- und Grammatikdateien aus strukturierten Daten erstellen und diese dann als Webdienste in Microsoft Cognitive Services bereitstellen.
+title: Befehlszeilenschnittstelle – Knowledge Exploration Service-API
+titlesuffix: Azure Cognitive Services
+description: Mithilfe der Befehlszeilenschnittstelle können Sie Index- und Grammatikdateien aus strukturierten Daten erstellen und diese dann als Webdienste bereitstellen.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 71a6f5ac93e5605182a55de1bae9a99c5c3eddf4
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136354"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127146"
 ---
 # <a name="command-line-interface"></a>Befehlszeilenschnittstelle
-Über die KES-Befehlszeilenschnittstelle können Index- und Grammatikdateien aus strukturierten Daten erstellt und dann als Webdienste bereitgestellt werden.  Die allgemeine Syntax sieht wie folgt aus: `kes.exe <command> <required_args> [<optional_args>]`.  Sie können `kes.exe` ohne Argumente ausführen, um eine Liste von Befehlen anzuzeigen, oder `kes.exe <command>`, um eine Liste von Argumenten anzuzeigen, die für den angegebenen Befehl verfügbar sind.  Im Folgenden finden Sie eine Liste der verfügbaren Befehle:
+
+Über die KES-Befehlszeilenschnittstelle (Knowledge Exploration Service) können Index- und Grammatikdateien aus strukturierten Daten erstellt und dann als Webdienste bereitgestellt werden.  Die allgemeine Syntax sieht wie folgt aus: `kes.exe <command> <required_args> [<optional_args>]`.  Sie können `kes.exe` ohne Argumente ausführen, um eine Liste von Befehlen anzuzeigen, oder `kes.exe <command>`, um eine Liste von Argumenten anzuzeigen, die für den angegebenen Befehl verfügbar sind.  Im Folgenden finden Sie eine Liste der verfügbaren Befehle:
+
 * build_index
 * build_grammar
 * host_service
