@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jomolesk
-ms.openlocfilehash: 20aa842fb8168bc28a388c817f4e4eedbdd63ebd
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: eb8db75a8ff5af11b98ee2c61628f923a8422153
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726642"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299932"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-fedramp"></a>Azure Blueprint Automation – PaaS-Webanwendung für FedRAMP
 
@@ -28,7 +28,7 @@ Diese Referenzarchitektur, die zugehörige Anleitung für die Implementierung vo
 ## <a name="architecture-diagram-and-components"></a>Architekturdiagramm und Komponenten
 Diese Lösung stellt eine Referenzarchitektur für eine PaaS-Webanwendung mit einem Azure SQL-Datenbank-Back-End bereit. Die Webanwendung wird in einer isolierten Azure App Service-Umgebung gehostet. Hierbei handelt es sich um eine private, dedizierte Umgebung in einem Azure-Datencenter. In der Umgebung wird ein Lastenausgleich für den Datenverkehr der Webanwendung für die VMs durchgeführt, die von Azure verwaltet werden. Diese Architektur umfasst auch Netzwerksicherheitsgruppen, ein Application Gateway, Azure DNS und einen Load Balancer. Darüber hinaus bietet Operations Management Suite Echtzeitanalyse von Systemintegrität und Sicherheit. **In Azure werden das Konfigurieren einer VPN- oder ExpressRoute-Verbindung für die Verwaltung und der Datenimport in das Subnetz der Referenzarchitektur empfohlen.**
 
-![PaaS-Webanwendung für ein FedRAMP-Referenzarchitekturdiagramm](images/fedramp-paaswa-architecture.png?raw=true) „PaaS-Webanwendung für ein FedRAMP-Referenzarchitekturdiagramm“
+![PaaS-Webanwendung für FedRAMP – Diagramm zur Referenzarchitektur](images/fedramp-paaswa-architecture.png?raw=true "PaaS-Webanwendung für FedRAMP – Diagramm zur Referenzarchitektur")
 
 Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungsarchitektur finden Sie im Abschnitt [Bereitstellungsarchitektur](#deployment-architecture).
 
@@ -73,7 +73,7 @@ Die Verwendung von ASUs für diese Architektur ist für die folgenden Steuerelem
 
 Der Abschnitt [Anleitungen und Empfehlungen](#guidance-and-recommendations) enthält zusätzliche Informationen zu ASEs.
 
-**Azure-Web-App**: [Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/) ermöglichen Kunden das Erstellen und Hosten von Webanwendungen in der Programmiersprache ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Visual Studio Team Services oder ein anderes beliebiges Git-Repository.
+**Azure-Web-App**: [Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/) ermöglichen Kunden das Erstellen und Hosten von Webanwendungen in der Programmiersprache ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes beliebiges Git-Repository.
 
 ### <a name="virtual-network"></a>Virtual Network
 Die Architektur definiert ein privates virtuelles Netzwerk mit dem Adressraum 10.200.0.0/16.

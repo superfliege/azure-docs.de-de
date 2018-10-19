@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: storage
+author: roygara
+ms.service: storage
+ms.topic: include
+ms.date: 09/15/2018
+ms.author: rogarana
+ms.custom: include file
+ms.openlocfilehash: 88a9348ea7d6282b7410d5a323fd482dc82416c6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979108"
+---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Sichern nicht verwalteter Azure-VM-Datenträger mithilfe inkrementeller Momentaufnahmen
 ## <a name="overview"></a>Übersicht
 Azure Storage bietet die Möglichkeit, Momentaufnahmen von Blobs zu erstellen. Momentaufnahmen erfassen den Blobzustand zum jeweiligen Zeitpunkt. In diesem Artikel wird ein Szenario beschrieben, in dem Sie Sicherungen von Datenträgern des virtuellen Computers mithilfe von Momentaufnahmen verwalten können. Wenn Sie Azure Backup und den Wiederherstellungsdienst nicht verwenden, und eine benutzerdefinierte Sicherungsstrategie für die Datenträger Ihres virtuellen Computers erstellen möchten, können Sie diese Methodik anwenden.
@@ -62,7 +79,7 @@ In diesem Abschnitt wird ein Szenario beschrieben, das eine benutzerdefinierte S
 
 Stellen Sie sich eine Azure-VM der DS-Serie mit angefügtem Storage Premium-P30-Datenträger vor. Der P30-Datenträger *mypremiumdisk* wird in einem Storage Premium-Konto namens *mypremiumaccount* gespeichert. Ein Standardspeicherkonto namens *mybackupstdaccount* wird zum Speichern der Sicherung von *mypremiumdisk* verwendet. Wir würden gerne alle 12 Stunden eine Momentaufnahme von *mypremiumdisk* speichern.
 
-Informationen zum Erstellen von Speicherkonto und Datenträgern finden Sie unter [Informationen zu Azure-Speicherkonten](../articles/storage/storage-create-storage-account.md).
+Informationen zum Erstellen eines Speicherkontos finden Sie unter [Speicherkonto erstellen](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 
 Informationen zum Sichern von Azure-VMs finden Sie unter [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](../articles/backup/backup-azure-vms-introduction.md).
 

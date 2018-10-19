@@ -1,26 +1,27 @@
 ---
-title: Referenz zur Microsoft-Textübersetzungs-API Version 3.0 | Microsoft-Dokumentation
-description: Referenzdokumentation für die Microsoft-Textübersetzungs-API Version 3.0
+title: Referenz für die Textübersetzungs-API Version 3.0
+titlesuffix: Azure Cognitive Services
+description: Referenzdokumentation für die Textübersetzungs-API Version 3.0
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: cfaa9584e833b137b417d9074fbfcf606eb21388
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9282d8af30cbfb3346394bcd71510faf8d8c8a21
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374498"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129385"
 ---
-#<a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
+# <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
 ## <a name="whats-new"></a>Neuerungen
 
-Version 3 der Microsoft-Textübersetzungs-API umfasst eine moderne JSON-basierte Web-API. Sie ermöglicht eine bessere Nutzung und Leistung, indem vorhandene Features zu einer geringeren Zahl von Vorgängen zusammengefasst und neue Features bereitgestellt werden.
+Version 3 der Textübersetzungs-API umfasst eine moderne JSON-basierte Web-API. Sie ermöglicht eine bessere Nutzung und Leistung, indem vorhandene Features zu einer geringeren Zahl von Vorgängen zusammengefasst und neue Features bereitgestellt werden.
 
  * Transliteration zur Konvertierung von Text in einer Sprache aus einem Skript in ein anderes Skript.
  * Übersetzung in mehrere Sprachen innerhalb einer Anforderung.
@@ -70,7 +71,7 @@ Zusammenfassung: Eine Clientanforderung für die Translator-API enthält einen A
 
 <table width="100%">
   <th width="30%">Header</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>Ocp-Apim-Subscription-Key</td>
     <td>*Verwendung mit Cognitive Services-Abonnement, wenn Sie Ihren geheimen Schlüssel übergeben*.<br/>Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.</td>

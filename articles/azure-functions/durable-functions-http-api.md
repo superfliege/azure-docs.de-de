@@ -3,23 +3,19 @@ title: HTTP-APIs in Durable Functions – Azure
 description: Es wird beschrieben, wie Sie HTTP-APIs in der Erweiterung „Durable Functions“ für Azure Functions implementieren.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 09/29/2017
+ms.topic: conceptual
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3c000e268c4c926991c3f1928f226065a436c6d2
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c6d7268a8501c602354d21edc5a0feaae9b1a0b2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36264884"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575473"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP-APIs in Durable Functions (Azure Functions)
 
@@ -49,6 +45,7 @@ Diese Beispielfunktion erzeugt die folgenden JSON-Antwortdaten. Der Datentyp all
 | statusQueryGetUri |Status-URL der Orchestrierungsinstanz |
 | sendEventPostUri  |URL der Orchestrierungsinstanz für die „Ereignisauslösung“ |
 | terminatePostUri  |URL der Orchestrierungsinstanz für die „Beendigung“ |
+| rewindPostUri     |URL der Orchestrierungsinstanz für den „Rücklauf“ |
 
 Hier eine Beispielantwort:
 
@@ -56,13 +53,14 @@ Hier eine Beispielantwort:
 HTTP/1.1 202 Accepted
 Content-Length: 923
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 
 {
     "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
+    "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
 > [!NOTE]
@@ -114,7 +112,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 Das Functions 2.0-Format verfügt über die gleichen Parameter, aber es gibt eine leichte Abweichung beim URL-Präfix:
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
+GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
 #### <a name="response"></a>response
@@ -125,6 +123,7 @@ Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 * **HTTP 202 (Accepted)**: Die angegebene Instanz befindet sich in der Bearbeitung.
 * **HTTP 400 (Bad Request)**: Für die angegebene Instanz ist ein Fehler aufgetreten, oder sie wurde beendet.
 * **HTTP 404 (Not Found)**: Die angegebene Instanz ist nicht vorhanden, oder die Ausführung wurde noch nicht gestartet.
+* **HTTP 500 (Internal Server Error)**: Für die angegebene Instanz ist ein Fehler mit einer unbehandelten Ausnahme aufgetreten.
 
 Die Antwortnutzlast für die Fälle **HTTP 200** und **HTTP 202** ist ein JSON-Objekt mit den folgenden Feldern:
 
@@ -210,7 +209,7 @@ GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connecti
 Das Functions 2.0-Format verfügt über die gleichen Parameter, aber es gibt eine leichte Abweichung beim URL-Präfix: 
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 #### <a name="response"></a>response
@@ -267,7 +266,7 @@ Hier ist ein Beispiel für Antwortnutzlasten einschließlich des Orchestrierungs
 ```
 
 > [!NOTE]
-> Dieser Vorgang kann in Bezug auf Azure Storage-E/A-Vorgänge sehr teuer sein, wenn die Instanztabelle viele Zeilen umfasst. Weitere Informationen zur Instanztabelle finden Sie in der Dokumentation [Leistung und Skalierbarkeit in Durable Functions (Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-perf-and-scale#instances-table).
+> Dieser Vorgang kann in Bezug auf Azure Storage-E/A-Vorgänge sehr teuer sein, wenn die Instanztabelle viele Zeilen umfasst. Weitere Informationen zur Instanztabelle finden Sie in der Dokumentation [Leistung und Skalierbarkeit in Durable Functions (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table).
 > 
 
 ### <a name="raise-event"></a>Auslösen eines Ereignisses (Raise event)
@@ -285,7 +284,7 @@ POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{e
 Das Functions 2.0-Format verfügt über die gleichen Parameter, aber es gibt eine leichte Abweichung beim URL-Präfix:
 
 ```http
-POST /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
 ```
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
@@ -325,13 +324,13 @@ Dient zum Beenden einer ausgeführten Orchestrierungsinstanz.
 Für Functions 1.0 lautet das Anforderungsformat wie folgt:
 
 ```http
-DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 Das Functions 2.0-Format verfügt über die gleichen Parameter, aber es gibt eine leichte Abweichung beim URL-Präfix:
 
 ```http
-DELETE /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
@@ -351,7 +350,47 @@ Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 Hier ist eine Beispielanforderung angegeben, mit der eine ausgeführte Instanz beendet und als Grund **buggy** (fehlerhaft) angegeben wird:
 
 ```
-DELETE /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+```
+
+Die Antworten für diese API enthalten keinen Inhalt.
+
+## <a name="rewind-instance-preview"></a>Rewind-Instanz (Vorschau)
+
+Stellt eine fehlerhafte Orchestrierungsinstanz in den Zustand „Wird ausgeführt“ zurück, indem die letzten fehlerhaften Vorgänge erneut durchgeführt werden.
+
+#### <a name="request"></a>Anforderung
+
+Für Functions 1.0 lautet das Anforderungsformat wie folgt:
+
+```http
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+Das Functions 2.0-Format verfügt über die gleichen Parameter, aber es gibt eine leichte Abweichung beim URL-Präfix:
+
+```http
+POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
+
+| Feld       | Parametertyp  | Datentyp | BESCHREIBUNG |
+|-------------|-----------------|-----------|-------------|
+| reason      | Abfragezeichenfolge    | Zeichenfolge    | Optional. Gibt den Grund für das Zurückspulen der Orchestrierungsinstanz an. |
+
+#### <a name="response"></a>response
+
+Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
+
+* **HTTP 202 (Accepted)**: Die Anforderung zum Zurückspulen wurde zur Verarbeitung akzeptiert.
+* **HTTP 404 (Not Found)**: Die angegebene Instanz wurde nicht gefunden.
+* **HTTP 410 (Gone)**: Die angegebene Instanz wurde abgeschlossen oder abgebrochen.
+
+Hier ist eine Beispielanforderung angegeben, die eine fehlerhafte Instanz zurückspult und einen Grund für **fixed** (behoben) angibt:
+
+```
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 ```
 
 Die Antworten für diese API enthalten keinen Inhalt.

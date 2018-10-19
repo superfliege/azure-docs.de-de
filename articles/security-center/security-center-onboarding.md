@@ -3,23 +3,23 @@ title: Integrieren von Azure Security Center Standard für erhöhte Sicherheit |
 description: " Hier erfahren Sie, wie Sie Azure Security Center Standard für erhöhte Sicherheit integrieren. "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: a68c0ecc15f81efe6045f4c298b48f9809916297
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/02/2018
+ms.author: rkarlin
+ms.openlocfilehash: 50055befaa0a5f0bb03bda18e01edfb751e49369
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38479460"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379994"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Integrieren von Azure Security Center Standard für erhöhte Sicherheit
 Führen Sie ein Upgrade auf Security Center Standard durch, um von erhöhter Sicherheit und besserem Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads zu profitieren.  Sie können die Standard-Edition 60 Tage lang kostenlos testen. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
@@ -40,59 +40,40 @@ Sie können ein gesamtes Azure-Abonnement auf den Standard-Tarif upgraden, da di
 >
 >
 
-## <a name="upgrade-an-azure-subscription"></a>Upgraden eines Azure-Abonnements
-So führen Sie ein Upgrade aller Abonnements auf Standard durch:
-1. Klicken Sie im Hauptmenü von Security Center auf **Integration in erweiterte Sicherheit**.
-2. Unter **Integration in erweiterte Sicherheit** werden für die Integration geeignete Abonnements aufgeführt. Durch Klicken auf **Standardplan anwenden** können Sie alle aufgeführten Abonnements upgraden.
+## <a name="upgrade-an-azure-subscription-or-workspace"></a>Upgraden eines Azure-Abonnements oder -Arbeitsbereichs
+So upgraden Sie ein Abonnement oder einen Arbeitsbereich auf „Standard“
+1. Wählen Sie im Security Center im Hauptmenü die Option **Erste Schritte** aus.
+  ![Erste Schritte](./media/security-center-onboarding/get-started.png)
+2. Unter **Upgrade** werden von Security Center für die Integration geeignete Abonnements und Arbeitsbereiche aufgeführt. 
+   - Klicken Sie auf den erweiterbaren Bereich **Ihre Testversion anwenden**, um eine Liste aller Abonnements und Arbeitsbereiche mit einem Berechtigungsstatus für Ihre Testversion anzuzeigen.
+   -    Sie können Abonnements und Arbeitsbereiche aktualisieren, die keine Berechtigung für die Testversion haben.
+   -    Sie können berechtigte Arbeitsbereiche und Abonnements auswählen, um Ihre Testversion zu starten.
+3.  Klicken Sie auf **Testversion starten**, um Ihre Testversion für die ausgewählten Abonnements zu starten.
+  ![Auswählen des Abonnements](./media/security-center-onboarding/select-subscription.png)
 
-  ![Upgraden aller Abonnements][1]
-
-Wenn Sie nur ein bestimmtes Abonnement auf Standard upgraden möchten, klicken Sie für das gewünschte Abonnement unter **Onboarding** auf **Standardplan anwenden**. Wenn Sie eine Ressourcengruppe unter dem Abonnement auf Standard upgraden möchten, wählen Sie das Abonnement aus:
-1. Wählen Sie ein Abonnement aus.  **Sicherheitsrichtlinie** liefert Informationen zur im Abonnement enthaltenen Ressourcengruppe.
-2. Wählen Sie das Abonnement oder eine Ressourcengruppe aus.
-
-  ![Upgraden aller Abonnements][2]
-
-3. Wählen Sie **Standard** aus, um ein Upgrade von Free auf Standard durchzuführen.
-4. Wählen Sie **Speichern**aus.
-
-> [!NOTE]
-> Wenn Sie ein Abonnement auf Standard upgraden, wird die [automatische Bereitstellung](security-center-enable-data-collection.md) aktiviert, sofern sie zuvor deaktiviert war. Wir empfehlen die automatische Bereitstellung von Überwachungs-Agents.
->
->
-
-## <a name="upgrade-a-workspace"></a>Upgraden eines Arbeitsbereichs
-Wenn Sie „Standard“ auf den Arbeitsbereich anwenden, betrifft dies alle Ressourcen, die Berichte an den Arbeitsbereich senden.
-
-1. Kehren Sie zum Blatt **Onboarding** zurück.
-2. Wählen Sie einen Arbeitsbereich aus.
-
-  ![Upgraden eines Arbeitsbereichs][8]
-
-3. Wählen Sie **Standard** aus, um das Upgrade durchzuführen.  
-4. Wählen Sie **Speichern** aus.
 
    > [!NOTE]
-   > Es gibt ein Szenario, in dem möglicherweise nicht „Free“ oder „Standard“ auf Ihren Arbeitsbereich angewendet ist. Wenn Sie „Free“ auswählen, werden die Free-Funktionen von Security Center nur auf Ihre virtuellen Azure-Computer angewendet. Die Free-Funktionen werden nicht auf Ihre Azure-fremden Computer angewendet. Wenn Sie „Standard“ auswählen, werden die Standard-Funktionen auf alle virtuellen Azure-Computer und Azure-fremden Computer angewendet, die Berichte an den Arbeitsbereich senden. Wir empfehlen, „Standard“ anzuwenden, um die Sicherheit Ihrer Azure-basierten und Azure-fremden Ressourcen zu verbessern.
+   > Die Free-Funktionen von Security Center werden nur auf Ihre virtuellen Azure-Computer angewandt. Die Free-Funktionen werden nicht auf Ihre Azure-fremden Computer angewendet. Wenn Sie „Standard“ auswählen, werden die Standard-Funktionen auf alle virtuellen Azure-Computer und Azure-fremden Computer angewendet, die Berichte an den Arbeitsbereich senden. Wir empfehlen, „Standard“ anzuwenden, um die Sicherheit Ihrer Azure-basierten und Azure-fremden Ressourcen zu verbessern.
    >
    >
 
 ## <a name="onboard-non-azure-computers"></a>Integrieren Azure-fremder Computer
-Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwachen. Dazu müssen die entsprechenden Ressourcen jedoch zunächst integriert werden. Azure-fremde Computer können über das Blatt **Onboarding** oder über das Blatt **Compute** hinzugefügt werden. Beide Methoden werden hier Schritt für Schritt erläutert.
+Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwachen. Dazu müssen die entsprechenden Ressourcen jedoch zunächst integriert werden. Azure-fremde Computer können über das Blatt **Erste Schritte** oder über das Blatt **Compute** hinzugefügt werden. Beide Methoden werden hier Schritt für Schritt erläutert.
 
-### <a name="add-new-non-azure-computers-from-onboarding"></a>Hinzufügen neuer Azure-fremder Computer über „Onboarding“
+### <a name="add-new-non-azure-computers-from-getting-started"></a>Hinzufügen neuer Azure-fremder Computer über **Erste Schritte**
 
-1. Kehren Sie zu **Onboarding** zurück.   
-2. Klicken Sie auf **Do you want to add new non-Azure computers?** (Möchten Sie neue Azure-fremde Computer hinzufügen?).
+1. Kehren Sie zu **Erste Schritte** zurück.   
+2. Wählen Sie die Registerkarte **Erste Schritte** aus.
 
-  ![Hinzufügen eines Azure-fremden Computers][3]
+  ![Nicht-Azure](./media/security-center-onboarding/non-azure.png)
+
+3. Klicken Sie auf **Konfigurieren** unter **Neue Nicht-Azure-Computer hinzufügen**. Es wird eine Liste Ihrer Log Analytics-Arbeitsbereiche angezeigt. Die Liste enthält, falls zutreffend, den Standardarbeitsbereich, der von Security Center für Sie erstellt wurde, wenn die automatische Bereitstellung aktiviert wurde. Wählen Sie diesen Arbeitsbereich oder einen anderen Arbeitsbereich aus, den Sie verwenden möchten.
+
+  ![Hinzufügen eines Azure-fremden Computers][7]
 
 Gegebenenfalls bereits vorhandene Arbeitsbereiche werden unter **Add new Non-Azure computers** (Neue Azure-fremde Computer hinzufügen) aufgeführt. Sie können Computer einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich erstellen. Klicken Sie zum Erstellen eines neuen Arbeitsbereichs auf den Link zum **Hinzufügen eines neuen Arbeitsbereichs**.
 
-Beide Methoden werden hier Schritt für Schritt erläutert:
-
-- Erstellen eines neuen Arbeitsbereichs und Hinzufügen eines Computers
-- Auswählen eines vorhandenen Arbeitsbereichs und Hinzufügen eines Computers
+### <a name="add-new-non-azure-computers-from-compute"></a>Hinzufügen neuer Azure-fremder Computer über **Compute**
 
 **Erstellen eines neuen Arbeitsbereichs und Hinzufügen eines Computers**
 
@@ -122,7 +103,7 @@ Sie können einen Computer mithilfe des Workflows unter **Onboarding** hinzufüg
 
    ![Hinzufügen von Computern][7]
 
- Auf dem Blatt **Direkt-Agent** erhalten Sie einen Downloadlink für einen Windows- oder Linux-Agent sowie Schlüssel für Ihre Arbeitsbereichs-ID, die Sie zum Konfigurieren des Agents benötigen.   
+ Auf dem Blatt **Direkt-Agent** erhalten Sie einen Downloadlink für einen Windows- oder Linux-Agent sowie die Arbeitsbereichs-ID und zugehörige Schlüssel, die Sie zum Konfigurieren des Agents benötigen.   
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie gelernt, wie Sie Azure-basierte und Azure-fremde Ressourcen integrieren, um von der erhöhten Sicherheit von Security Center zu profitieren.  Informationen zu weiteren Möglichkeiten mit Ihren integrierten Ressourcen finden Sie unter den folgenden Links:
@@ -134,9 +115,9 @@ In diesem Artikel haben Sie gelernt, wie Sie Azure-basierte und Azure-fremde Res
 <!--Image references-->
 [1]: ./media/security-center-onboarding/onboard.png
 [2]: ./media/security-center-onboarding/onboard-subscription.png
-[3]: ./media/security-center-onboarding/add-non-azure-resource.png
+[3]: ./media/security-center-onboarding/get-started.png
 [4]: ./media/security-center-onboarding/create-workspace.png
 [5]: ./media/security-center-onboarding/overview.png
 [6]: ./media/security-center-onboarding/compute-blade.png
-[7]: ./media/security-center-onboarding/add-non-azure-computer.png
+[7]: ./media/security-center-onboarding/add-computer.png
 [8]: ./media/security-center-onboarding/onboard-workspace.png

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5060839be244f55700b40735e598964a0b7b6709
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: e5cfbc7ddc10edf9b21afce73e3b7f8795fcdac9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382044"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121956"
 ---
 # <a name="add-custom-html-to-the-map"></a>Hinzufügen von benutzerdefiniertem HTML-Code zu der Karte
 
-In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten HTML-Code, wie eine Bilddatei, zur Karte hinzufügen. 
+In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten HTML-Code, wie eine Bilddatei, zur Karte hinzufügen.
 
 ## <a name="understand-the-code"></a>Grundlegendes zum Code
 
@@ -33,11 +33,15 @@ Im letzten Codeblock wird die [addHtml](https://docs.microsoft.com/javascript/ap
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden: 
-* [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [addHtml](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addhtml)
-    
-Weitere Codebeispiele, die Sie zu Ihren Karten hinzufügen können, finden Sie in den folgenden Artikeln: 
-* [Anzeigen von Suchergebnissen](./map-search-location.md)
-* [Abrufen von Informationen von einer Koordinate](./map-get-information-from-coordinate.md)
+Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 
+> [!div class="nextstepaction"]
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+Weitere Codebeispiele, die Sie zu Ihren Karten hinzufügen können, finden Sie in den folgenden Artikeln:
+
+> [!div class="nextstepaction"]
+> [Anzeigen von Suchergebnissen](./map-search-location.md)
+
+> [!div class="nextstepaction"]
+> [Abrufen von Informationen von einer Koordinate](./map-get-information-from-coordinate.md)

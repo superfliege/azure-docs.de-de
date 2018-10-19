@@ -4,36 +4,20 @@ description: Erstellen eines selbstsignierten Stammzertifikats, Exportieren des 
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: b2f31761e4560cf4b9b9a5b92f5de9982a663a75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3ff7e754a55e15a8fa8a32f846efbbbe5025e46e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38651786"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297858"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generieren und Exportieren von Zertifikaten für Point-to-Site-Verbindungen mithilfe von MakeCert
 
-Punkt-zu-Standort-Verbindungen verwenden Zertifikate zur Authentifizierung. In diesem Artikel erfahren Sie, wie Sie mithilfe von MakeCert ein selbstsigniertes Stammzertifikat erstellen und Clientzertifikate generieren. Wenn Sie Informationen zu einzelnen Point-to-Site-Konfigurationsschritten benötigen (beispielsweise zum Hochladen von Stammzertifikaten), wählen Sie in der folgenden Liste einen der Artikel zum Konfigurieren einer Point-to-Site-Verbindung aus:
-
-> [!div class="op_single_selector"]
-> * [Erstellen selbstsignierter Zertifikate – PowerShell](vpn-gateway-certificates-point-to-site.md)
-> * [Erstellen selbstsignierter Zertifikate – MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
-> * [Konfigurieren einer Punkt-zu-Standort-Verbindung – Resource Manager – Azure-Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Konfigurieren einer Point-to-Site-Verbindung – Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [Konfigurieren einer Punkt-zu-Standort-Verbindung – klassisch – Azure-Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
-> 
-> 
+Punkt-zu-Standort-Verbindungen verwenden Zertifikate zur Authentifizierung. In diesem Artikel erfahren Sie, wie Sie mithilfe von MakeCert ein selbstsigniertes Stammzertifikat erstellen und Clientzertifikate generieren. Anleitungen für andere Zertifikate finden Sie unter [Zertifikate – PowerShell](vpn-gateway-certificates-point-to-site.md) oder [Zertifikate – Linux](vpn-gateway-certificates-point-to-site-linux.md).
 
 Wir empfehlen, Zertifikate unter Verwendung der [Windows 10-PowerShell-Schritte](vpn-gateway-certificates-point-to-site.md) zu erstellen. Diese MakeCert-Anweisungen werden lediglich als optionale Methode bereitgestellt. Die Zertifikate können jedoch unabhängig von der verwendeten Generierungsmethode unter jedem [unterstützten Clientbetriebssystem](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) installiert werden. Für MakeCert gelten allerdings folgende Einschränkungen:
 

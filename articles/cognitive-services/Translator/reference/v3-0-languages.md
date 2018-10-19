@@ -1,26 +1,27 @@
 ---
-title: Languages-Methode der Microsoft Textübersetzungs-API | Microsoft Docs
-description: Verwenden der Languages-Methode der Microsoft Textübersetzungs-API.
+title: Verwenden der Languages-Methode der Textübersetzungs-API
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die Languages-Methode der Textübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 93c06218a560faf439f05903438d021b372ce257
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 51f15bd9c75f24be0d477d10de55c93a51cfbf3f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376435"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129640"
 ---
-# <a name="text-api-30-languages"></a>Text-API 3.0: Languages
+# <a name="translator-text-api-30-languages"></a>Textübersetzungs-API 3.0: Languages
 
-Ruft die Gruppe der Sprachen ab, die zurzeit von anderen Vorgängen der Text-API unterstützt werden. 
+Ruft die Sprachen ab, die derzeit von anderen Vorgängen der Textübersetzungs-API unterstützt werden. 
 
-## <a name="request-url"></a>Anforderungs-URL
+## <a name="request-url"></a>Anfrage-URL
 
 Sendet eine `GET`-Anforderung an:
 ```HTTP
@@ -32,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
 <table width="100%">
-  <th width="20%">Abfrageparameter</th>
+  <th width="20%">Query parameter (Abfrageparameter)</th>
   <th>BESCHREIBUNG</th>
   <tr>
     <td>api-version</td>
@@ -266,11 +267,11 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
   <tr>
     <td>500</td>
-    <td>Unerwarteter Fehler. Wenn der Fehler weiterhin besteht, melden Sie Ihn mit Datum und Zeitpunkt des Fehlers, dem Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` sowie dem Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
+    <td>Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Server vorübergehend nicht erreichbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie Ihn mit Datum und Zeitpunkt des Fehlers, dem Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` sowie dem Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
+    <td>Der Server ist vorübergehend nicht verfügbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
   </tr>
 </table> 
 

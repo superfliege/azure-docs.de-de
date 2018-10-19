@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: d608378f9b3ff3179f9e37ef13f88c65a645d018
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ce3e8f31c7fee6afdeabf931485a49934e98f81b
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112985"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391350"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Notfallwiederherstellung mit Azure DNS und Traffic Manager
 
 Die Notfallwiederherstellung konzentriert sich auf die Wiederherstellung nach einem schwerwiegenden Ausfall der Anwendungsfunktionalität. Um sich für eine Notfallwiederherstellungs-Lösung zu entscheiden, müssen die Eigentümer von Unternehmen und Technologien zunächst den Grad der Funktionalität bestimmen, der während eines Notfalls erforderlich ist, z.B. nicht verfügbar, teilweise über reduzierte Funktionalität oder verzögerte Verfügbarkeit oder vollständig verfügbar.
 Die meisten Enterprise-Kunden entscheiden sich für eine Architektur für mehrere Regionen, um die Ausfallsicherheit gegenüber einem Failover auf Anwendungs- oder Infrastrukturebene zu gewährleisten. Kunden können verschiedene Ansätze wählen, um Failover und Hochverfügbarkeit über eine redundante Architektur zu erzielen. Im Folgenden finden Sie einige der gängigen Ansätze:
 
-- **Aktiv/Passiv mit Standbymodus „Verzögert betriebsbereit“**: Bei dieser Failoverlösung werden die in einer Standbyregion ausgeführten VMs und andere Appliances erst dann aktiv, wenn ein Failover erforderlich ist. Allerdings wird die Produktionsumgebung in Form von Sicherungen, VM-Images oder Ressourcen Manager-Vorlagen in einer anderen Region repliziert. Dieser Failovermechanismus ist kostengünstig, ein vollständiger Failovervorgang dauert jedoch länger.
+- **Aktiv/Passiv mit Standbymodus „Verzögert betriebsbereit“:** Bei dieser Failoverlösung werden die in einer Standbyregion ausgeführten VMs und andere Appliances erst dann aktiv, wenn ein Failover erforderlich ist. Allerdings wird die Produktionsumgebung in Form von Sicherungen, VM-Images oder Ressourcen Manager-Vorlagen in einer anderen Region repliziert. Dieser Failovermechanismus ist kostengünstig, ein vollständiger Failovervorgang dauert jedoch länger.
  
     ![Aktiv/Passiv mit Standbymodus „Verzögert betriebsbereit“](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     

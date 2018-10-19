@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 09/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 730b11fb5038e5d6c4f9b00fbc4eb07d673757f9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 7c0aa2d43001100a392f8882316b7998838d90b9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840988"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121939"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -27,9 +27,11 @@ Mit der horizontalen Hochskalierung können Sie einen Abfragepool mit bis zu sie
 
 Verarbeitungsworkloads werden unabhängig von der Anzahl von Abfragereplikaten in einem Abfragepool nicht auf Abfragereplikate verteilt. Ein einzelner Server fungiert als Verarbeitungsserver. Abfragereplikate bedienen ausschließlich Abfragen für die Modelle, die zwischen den einzelnen Abfragereplikaten im Abfragepool synchronisiert werden. 
 
-Beim horizontalen Hochskalieren werden dem Abfragepool inkrementell neue Abfragereplikate hinzugefügt. Es kann bis zu fünf Minuten dauern, bis neue Abfragereplikatressourcen in den Abfragepool aufgenommen werden und für den Empfang von Clientverbindungen und Abfragen bereit stehen. Wenn alle neuen Abfragereplikate einsatzbereit sind, kommen für neue Clientverbindungen alle Ressourcen im Abfragepool für den Lastenausgleich zum Einsatz. Bestehende Clientverbindungen werden nicht geändert; die Verbindung mit der bisherigen Ressource bleibt bestehen.  Beim horizontalen Herunterskalieren werden alle bestehenden Clientverbindungen mit einer Abfragepoolressource, die aus dem Abfragepool entfernt wird, beendet. Sie werden nach Abschluss des horizontalen Herunterskalierens mit einer der übrigen Abfragepoolressourcen neu verbunden.
+Beim horizontalen Hochskalieren werden dem Abfragepool inkrementell neue Abfragereplikate hinzugefügt. Es kann bis zu fünf Minuten dauern, bis neue Abfragereplikatressourcen in den Abfragepool aufgenommen werden. Wenn alle neuen Abfragereplikate einsatzbereit sind, kommen für neue Clientverbindungen alle Ressourcen im Abfragepool für den Lastenausgleich zum Einsatz. Bestehende Clientverbindungen werden nicht geändert; die Verbindung mit der bisherigen Ressource bleibt bestehen.  Beim horizontalen Herunterskalieren werden alle bestehenden Clientverbindungen mit einer Abfragepoolressource, die aus dem Abfragepool entfernt wird, beendet. Sie werden nach Abschluss des horizontalen Herunterskalierens mit einer der übrigen Abfragepoolressourcen neu verbunden, was bis zu fünf Minuten dauern kann.
 
 Bei der Verarbeitung von Modellen ist nach dem Abschluss der Verarbeitungsvorgänge eine Synchronisierung zwischen dem Verarbeitungsserver und den Abfragereplikaten erforderlich. Wenn Verarbeitungsvorgänge automatisiert werden, muss auch ein Synchronisierungsvorgang konfiguriert werden, der nach erfolgreicher Durchführung von Verarbeitungsvorgängen ausgeführt wird. Die Synchronisierung kann manuell im Portal oder mithilfe von PowerShell oder der REST-API ausgeführt werden. 
+
+### <a name="separate-processing-from-query-pool"></a>Getrennte Verarbeitung vom Abfragepool
 
 Zur Optimierung der Leistung bei Verarbeitungs- und Abfragevorgängen können Sie optional Ihren Verarbeitungsserver vom Abfragepool trennen. Nach der Trennung werden vorhandene und neue Clientverbindungen nur den Abfragereplikaten im Abfragepool zugewiesen. Wenn Verarbeitungsvorgänge nur eine kurze Zeit dauern, können Sie Ihren Verarbeitungsserver auch nur für den Zeitraum vom Abfragepool trennen, der zur Durchführung der Verarbeitungs- und Synchronisierungsvorgänge erforderlich ist, und ihn dann wieder in den Abfragepool aufnehmen. 
 
@@ -53,14 +55,13 @@ Die Anzahl der von Ihnen konfigurierbaren Abfragereplikate ist durch die Region,
 
 1. Klicken Sie im Portal auf **Horizontale Skalierung**. Wählen Sie mithilfe des Schiebereglers die Anzahl von Abfragereplikatservern aus. Die gewählte Anzahl von Replikaten kommt zu Ihrem bereits vorhandenen Server hinzu.
 
-2. Klicken Sie unter **Verarbeitungsserver vom Abfragepool trennen** auf „Ja“, um Ihren Verarbeitungsserver von Abfrageservern auszuschließen.
+2. Klicken Sie unter **Verarbeitungsserver vom Abfragepool trennen** auf „Ja“, um Ihren Verarbeitungsserver von Abfrageservern auszuschließen. Clientverbindungen, die die Standardverbindungszeichenfolge (ohne: rw) verwenden, werden an Replikate im Abfragepool umgeleitet. 
 
    ![Schieberegler für horizontales Hochskalieren](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
 3. Klicken Sie auf **Speichern**, um Ihre neuen Abfragereplikatserver bereitzustellen. 
 
 Tabellarische Modelle auf Ihrem primären Server werden mit den Replikatservern synchronisiert. Nach Abschluss der Synchronisierung beginnt der Abfragepool mit der Verteilung eingehender Abfragen auf die Replikatserver. 
-
 
 ## <a name="synchronization"></a>Synchronisierung 
 
@@ -88,8 +89,6 @@ Verwenden Sie [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/pow
 
 Verwenden Sie [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance), um die Synchronisierung auszuführen.
 
-
-
 ## <a name="connections"></a>Verbindungen
 
 Auf der Übersichtsseite des Servers werden zwei Servernamen angezeigt. Wenn Sie noch keine horizontale Hochskalierung für einen Server konfiguriert haben, funktionieren beide Servernamen gleich. Nach dem Konfigurieren der horizontalen Hochskalierung für einen Server müssen Sie den passenden Servernamen für den jeweiligen Verbindungstyp angeben. 
@@ -99,6 +98,12 @@ Für Endbenutzer-Clientverbindungen wie Power BI Desktop, Excel und benutzerdefi
 Für SSMS, SSDT und Verbindungszeichenfolgen in PowerShell, Azure Functions-Apps und AMO muss der **Name des Verwaltungsservers** verwendet werden. Der Name des Verwaltungsservers enthält einen speziellen `:rw`-Qualifizierer (Lesen/Schreiben). Sämtliche Verarbeitungsvorgänge finden auf dem Verwaltungsserver statt.
 
 ![Servernamen](media/analysis-services-scale-out/aas-scale-out-name.png)
+
+## <a name="troubleshoot"></a>Problembehandlung
+
+**Problem:** Benutzer erhalten die Fehlermeldung **Serverinstanz '\<Name des Servers>' im Verbindungsmodus 'ReadOnly' nicht gefunden.**
+
+**Lösung:** Wenn die Option **Verarbeitungsserver vom Abfragepool trennen** ausgewählt wird, werden Clientverbindungen, die die Standardverbindungszeichenfolge (ohne: rw) verwenden, an Abfragepoolreplikate umgeleitet. Wenn Replikate im Abfragepool noch nicht online sind, weil die Synchronisierung noch nicht abgeschlossen ist, können umgeleitete Clientverbindungen fehlschlagen. Um Verbindungsfehler zu verhindern, wählen Sie aus, dass der Verarbeitungsserver nicht vom Abfragepool getrennt wird, bis ein horizontaler Skalierungs- und Synchronisierungsvorgang abgeschlossen sind. Sie können die Metriken „Arbeitsspeicher“ und „QPU“ verwenden, um den Synchronisierungsstatus zu überwachen.
 
 ## <a name="related-information"></a>Verwandte Informationen
 

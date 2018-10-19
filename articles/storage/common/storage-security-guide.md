@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
 ms.component: common
-ms.openlocfilehash: 912ae17fb7bb5d5cecad0af5b53d817b2faeef02
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 268459fde7a622079656e637d2c51562cea358a4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522200"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730948"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 
@@ -85,7 +85,7 @@ Hier sind die wichtigsten Punkte, die Sie über die Verwendung von RBAC für den
 * Der Benutzer muss in Ihrem Azure Active Directory eingerichtet werden, damit Sie ihm eine Rolle zuweisen können.
 * Sie können einen Bericht darüber erstellen, wer wem welche Art des Zugriffs – und in welchem Bereich – mit PowerShell oder der Azure-Befehlszeilenschnittstelle gewährt/entzogen hat.
 
-#### <a name="resources"></a>angeben
+#### <a name="resources"></a>Ressourcen
 * [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
   Dieser Artikel beschreibt die rollenbasierte Steuerung des Zugriffs auf Azure Active Directory, und wie sie funktioniert.
@@ -142,20 +142,13 @@ Die Verwendung von Azure Key Vault stellt auch eine weitere Sicherheitsstufe fü
 
 Ein weiterer Vorteil der Verwendung von Azure Key Vault ist, dass Sie auch den Zugriff auf die Schlüssel mithilfe von Azure Active Directory steuern können. Dies bedeutet, dass Sie Zugriff auf die Reihe von Anwendungen gewähren können, die die Schlüssel aus Azure Key Vault abrufen müssen, und wissen, dass andere Anwendungen nicht auf die Schlüssel zugreifen können, ohne dass Sie ihnen die ausdrückliche Berechtigung gewähren.
 
-Hinweis: Sie sollten nur jeweils einen der Schlüssel gleichzeitig in allen Ihren Anwendungen verwenden. Wenn Sie „Key 1“ an einigen Stellen und „Key 2“ an anderen verwenden, können Sie die Verwendung der Schlüssel nicht wechseln, ohne dass einige Anwendungen den Zugriff verlieren.
+> [!NOTE]
+> Es wird empfohlen, in allen Ihren Anwendungen jeweils nur einen Schlüssel gleichzeitig zu verwenden. Wenn Sie „Key 1“ an einigen Stellen und „Key 2“ an anderen verwenden, können Sie die Verwendung der Schlüssel nicht wechseln, ohne dass einige Anwendungen den Zugriff verlieren.
 
-#### <a name="resources"></a>angeben
-* [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md#regenerate-storage-access-keys)
+#### <a name="resources"></a>Ressourcen
 
-  Dieser Artikel bietet einen Überblick über Speicherkonten und behandelt Anzeigen, Kopieren und Neugenerieren von Speicherzugriffsschlüsseln.
+* [Verwalten von Speicherkontoeinstellungen im Azure-Portal](storage-account-manage.md)
 * [Azure Storage Resource Provider REST-API-Referenz](https://msdn.microsoft.com/library/mt163683.aspx)
-
-  Dieser Artikel enthält Links zu bestimmten Artikeln über den Abruf von Speicherkontoschlüsseln und das erneute Generieren der Speicherkontoschlüssel für ein Azure-Konto mit der REST-API. Hinweis: Dies trifft auf Resource Manager-Speicherkonten zu.
-* [Vorgänge für Speicherkonten](https://msdn.microsoft.com/library/ee460790.aspx)
-
-  Dieser Artikel in der Storage Servicemanagement-REST-API-Referenz enthält Links zu bestimmten Artikeln zum Abrufen und erneuten Generieren der Speicherkontoschlüssel mithilfe der REST-API. Hinweis: Dies gilt für die klassischen Speicherkonten.
-
-  Dieser Artikel zeigt die Verwendung von Active Directory zur Steuerung des Zugriffs auf Ihre Azure Storage-Schlüssel in Azure Key Vault. Es wird auch die Verwendung eines Azure Automation-Auftrags zum erneuten Generieren der Schlüssel auf stündlicher Basis gezeigt.
 
 ## <a name="data-plane-security"></a>Sicherheit auf Datenebene
 Sicherheit auf Datenebene bezieht sich auf die Methoden zum Schützen der in Azure Storage gespeicherten Datenobjekte – Blobs, Warteschlangen, Tabellen und Dateien. Wir haben Methoden zum Verschlüsseln der Daten und die Sicherheit bei der Übertragung der Daten kennengelernt, aber wie steuern Sie den Zugriff auf die Objekte?
@@ -234,7 +227,7 @@ Wenn Sie eine SAS verwenden, die von einer gespeicherten Zugriffsrichtlinie abge
 
 Da Sie bei Verwendung einer SAS, die von einer gespeicherten Zugriffsrichtlinie abgeleitet ist, die SAS sofort widerrufen können, sollten Sie nach Möglichkeit immer die gespeicherte Zugriffsrichtlinie verwenden.
 
-#### <a name="resources"></a>angeben
+#### <a name="resources"></a>Ressourcen
 Weitere ausführliche Informationen zur Verwendung von SAS und gespeicherten Zugriffsrichtlinien mit Beispielen finden Sie in den folgenden Artikeln:
 
 * Dies sind die Referenzartikel.
@@ -300,7 +293,7 @@ Die clientseitige Verschlüsselung wird in Java und .NET-Speicherclientbibliothe
 
 Für die Verschlüsselung selbst können Sie Ihre eigenen Verschlüsselungsschlüssel generieren und verwalten. Sie können auch von der Azure Storage-Clientbibliothek generierte Schlüssel verwenden oder die Schlüssel von Azure Key Vault generieren lassen. Sie können Ihre Verschlüsselungsschlüssel in Ihrem lokalen Schlüsselspeicher oder in Azure Key Vault speichern. Azure Key Vault ermöglicht Ihnen, bestimmten Benutzern mit Active Directory Zugriff auf die geheimen Schlüssel in Azure Key Vault zu gewähren. Dies bedeutet, dass nicht jeder aus Azure Key Vault lesen und die Schlüssel abrufen kann, die Sie für die clientseitige Verschlüsselung verwenden.
 
-#### <a name="resources"></a>angeben
+#### <a name="resources"></a>Ressourcen
 * [Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure-Schlüsseltresor](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
   Dieser Artikel zeigt Ihnen die Verwendung der clientseitigen Verschlüsselung mit Azure Key Vault, z. B. zum Erstellen der KEK und deren Speicherung im Tresor mit PowerShell.
@@ -341,7 +334,7 @@ Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologie
 
 Dieses Feature stellt sicher, dass alle Daten auf den Datenträgern Ihrer virtuellen Computer in Azure Storage ruhend verschlüsselt sind.
 
-#### <a name="resources"></a>angeben
+#### <a name="resources"></a>Ressourcen
 * [Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Vergleich zwischen Azure Disk Encryption, SSE und clientseitiger Verschlüsselung
@@ -422,7 +415,7 @@ Drei Fälle interessieren uns.
 
 Sie können diese Protokolle mit dem Microsoft Message Analyzer anzeigen und analysieren. Er enthält Such- und Filterfunktionen. Stellen Sie sich z.B. vor, Sie möchten nach Instanzen von „GetBlob“ suchen, um festzustellen, ob die Verwendung Ihren Erwartungen entspricht, d.h. um sicherzustellen, dass niemand unzulässig auf Ihr Speicherkonto zugreift.
 
-#### <a name="resources"></a>angeben
+#### <a name="resources"></a>Ressourcen
 * [Speicheranalyse](../storage-analytics.md)
 
   Dieser Artikel bietet eine Übersicht über die Speicheranalyse und die Art, wie Sie sie aktivieren können.
@@ -477,7 +470,7 @@ Die einzelnen Zeilen haben folgende Bedeutung:
 * **ExposedHeaders** Diese Antwortheader sollten vom Browser für den Anforderungsaussteller verfügbar gemacht werden. In diesem Beispiel sind alle Header verfügbar, die mit „x-ms-meta-“ beginnen.
 * **MaxAgeInSeconds** Der maximale Zeitraum, für den ein Browser die Anforderung „preflight OPTIONS“ zwischenspeichert. (Weitere Informationen zur Preflight-Anforderung finden Sie im ersten Artikel unten.)
 
-#### <a name="resources"></a>angeben
+#### <a name="resources"></a>Ressourcen
 Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ressourcen.
 
 * [Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste](../storage-cors-support.md)
@@ -504,7 +497,7 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
 
    Microsoft überlässt dem einzelnen Kunden die Entscheidung, den FIPS-Modus zu aktivieren. Wir glauben, dass es für Kunden, die nicht den gesetzlichen Vorschriften der US-Regierung unterliegen, keinen zwingenden Grund gibt, den FIPS-Modus standardmäßig zu aktivieren.
 
-### <a name="resources"></a>angeben
+### <a name="resources"></a>Ressourcen
 * [Why We're Not Recommending "FIPS Mode" Anymore (Warum wir den „FIPS-Modus“ nicht mehr empfehlen)](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   Dieser Blogartikel bietet einen Überblick über FIPS und erläutert, warum der FIPS-Modus nicht mehr standardmäßig aktiviert ist.

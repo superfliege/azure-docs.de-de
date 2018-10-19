@@ -1,22 +1,24 @@
 ---
-title: Strukturierte Abfrageausdrücke in der Knowledge Exploration Service-API | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie strukturierte Abfrageausdrücke in der Knowledge Exploration Service-API (KES) in Cognitive Services verwenden können.
+title: Strukturierte Abfrageausdrücke – Knowledge Exploration Service-API
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie strukturierte Abfrageausdrücke in der Knowledge Exploration Service-API (KES) verwenden können.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 070ee311a1153bc9fb59870dce68f385a43b15f1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bdde2dfc9ab8e8ffdf7123c916538a8c98ecfce9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373178"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129166"
 ---
 # <a name="structured-query-expression"></a>Strukturierter Abfrageausdruck
+
 Ein strukturierter Abfrageausdruck gibt eine Gruppe von Vorgängen an, die anhand des Datenindex ausgewertet werden sollen.  Er besteht aus Attributabfrageausdrücken und übergeordneten Funktionen.  Mithilfe der [*evaluate*](evaluateMethod.md)-Methode können die Objekte berechnet werden, die dem Ausdruck entsprechen.  Im Folgenden finden Sie ein Beispiel aus dem Bereich wissenschaftlicher Veröffentlichungen, der von Jaime Teevan verfasste Veröffentlichungen seit dem Jahr 2013 zurückgibt.
 
 `And(Composite(Author.Name=='jaime teevan'),Y>=2013)`
@@ -24,6 +26,7 @@ Ein strukturierter Abfrageausdruck gibt eine Gruppe von Vorgängen an, die anhan
 Strukturierte Abfrageausdrücke können durch [*interpret*](interpretMethod.md)-Anforderungen abgerufen werden, bei denen die semantischen Ausgabe der einzelnen Interpretationen einen strukturierten Abfrageausdruck darstellt. Dieser gibt die Indexobjekte zurück, die der Eingabeabfrage in natürlicher Sprache entsprechen.  Alternativ können diese mithilfe der in diesem Abschnitt erläuterten Syntax manuell erstellt werden.
 
 ## <a name="attribute-query-expression"></a>Attributabfrageausdruck
+
 Ein Attributabfrageausdruck identifiziert eine Reihe von Objekten basierend darauf, ob diese einem bestimmten Attribut entsprechen.  Je nach Attributtyp und indiziertem Vorgang, der im [Schema](SchemaFormat.md) angegeben wird, werden verschiedene übereinstimmende Vorgänge unterstützt:
 
 | Typ | Vorgang | Beispiele |
@@ -45,9 +48,11 @@ Bei Attributen mit zugeordneten Synonymen kann ein Abfrageausdruck Objekte angeb
 
 
 ## <a name="functions"></a>Functions
+
 Es gibt eine Reihe von integrierten Funktionen, die die Erstellung von komplexeren Abfrageausdrücken über grundlegende Attributabfragen ermöglichen.
 
 ### <a name="and-function"></a>And-Funktion
+
 `And(expr1, expr2)`
 
 Gibt die Überschneidung der beiden Eingabeabfrageausdrücke zurück.
@@ -57,6 +62,7 @@ Das folgende Beispiel gibt wissenschaftliche Veröffentlichungen zurück, die im
 `And(Year=2000, Keyword=='information retrieval')`
 
 ### <a name="or-function"></a>Or-Funktion
+
 `Or(expr1, expr2)`
 
 Gibt die Kombination der beiden Eingabeabfrageausdrücke zurück.
@@ -66,6 +72,7 @@ Das folgende Beispiel gibt wissenschaftliche Veröffentlichungen zurück, die im
 `And(Year=2000, Or(Keyword='information retrieval', Keyword='user modeling'))`
 
 ### <a name="composite-function"></a>Composite-Funktion
+
 `Composite(expr)`
 
 Gibt eine Abfrage zurück, die einen inneren Ausdruck aus Abfragen mit untergeordneten Attributen eines gemeinsamen zusammengesetzten Attributs kapselt.  Für die Kapselung muss das zusammengesetzte Attribut aller übereinstimmenden Datenobjekte mindestens einen Wert aufweisen, der jeweils den inneren Ausdruck erfüllt.  Beachten Sie, dass ein Abfrageausdruck untergeordneter Attribute eines zusammengesetzten Attributs mit der Composite()-Funktion gekapselt werden muss, bevor er mit anderen Abfrageausdrücken kombiniert werden kann.

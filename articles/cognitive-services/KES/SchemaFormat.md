@@ -1,22 +1,24 @@
 ---
-title: Schemaformat in der Knowledge Exploration Service-API | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zum Schemaformat in der KES-API (Knowledge Exploration Service) in Cognitive Services.
+title: Schemaformat – Knowledge Exploration Service-API
+titlesuffix: Azure Cognitive Services
+description: Hier finden Sie Informationen zum Schemaformat in der KES-API (Knowledge Exploration Service).
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 3009392a5acb12a8f4df3d30a2cbe5e74f2172fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 07f5536641b55aadf9d8b2623bf4797b8dcd7bd5
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373195"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129249"
 ---
 # <a name="schema-format"></a>Schemaformat
+
 Das Schema wird in einer JSON-Datei angegeben, die die Attributstruktur der Objekte in der für die Indexerstellung verwendeten Datendatei beschreibt.  Für jedes Attribut gibt das Schema Name, Datentyp, optionale Vorgänge und die Liste der optionalen Synonyme an.  Ein Objekt kann 0 oder mehr Werte der einzelnen Attribute enthalten.  Im Folgenden wird ein vereinfachtes Beispiel aus einem Bereich wissenschaftlicher Veröffentlichungen vorgestellt:
 
 ``` json
@@ -36,6 +38,7 @@ Das Schema wird in einer JSON-Datei angegeben, die die Attributstruktur der Obje
 Attributnamen sind Bezeichner, bei denen die Groß-/Kleinschreibung berücksichtigt wird, die mit einem Buchstaben beginnen und ausschließlich aus Buchstaben (A-Z), Ziffern (0-9) und Unterstrichen (\_) bestehen.  Mit dem reservierten logprob-Attribut werden die Wahrscheinlichkeiten relativer natürlicher Logarithmen unter Objekten angegeben.
 
 ## <a name="attribute-type"></a>Attributtyp
+
 Es folgt eine Liste der unterstützten Attributdatentypen:
 
 | Typ | BESCHREIBUNG | Vorgänge | Beispiel |
@@ -60,11 +63,13 @@ GUID-Attribute dienen zur effizienten Darstellung von GUID-Werten mit Standardun
 Blobattribute werden verwendet, um potenziell große Datenblobs für Suchen zur Laufzeit mit dem entsprechenden Objekt ohne Unterstützung für Indizierungsvorgänge basierend auf dem Inhalt der Blobwerte zu codieren.
 
 ### <a name="composite-attributes"></a>Zusammengesetzte Attribute
+
 Zusammengesetzte Attribute werden verwendet, um eine Gruppierung von Attributwerten darzustellen.  Der Name der einzelnen untergeordneten Attribute beginnt mit den Namen des zusammengesetzten Attributs gefolgt von „.“.  Werte für zusammengesetzte Attribute werden als JSON-Objekt angegeben, das geschachtelte Attributwerte enthält.  Zusammengesetzte Attribute weisen möglicherweise mehrere Objektwerte auf.  Zusammengesetzte Attribute enthalten möglicherweise jedoch keine untergeordneten Attribute, die selbst zusammengesetzte Attribute sind.
 
 Im obigen Beispiel der wissenschaftlichen Veröffentlichungen kann der Dienst hierdurch Werke mit „harry shum“ abfragen, während die Suche gleichzeitig auf „microsoft“ festgelegt ist.  Ohne zusammengesetzte Attribute kann der Dienst nur Werke abfragen, bei denen einer der Autoren „harry shum“ und der andere Autor „microsoft“ ist.  Weitere Informationen finden Sie unter [Zusammengesetzte Abfragen](SemanticInterpretation.md#composite-function).
 
 ## <a name="attribute-operations"></a>Attributvorgänge
+
 Standardmäßig wird jedes Attribut zur Unterstützung aller Vorgänge indiziert, die im Attributdatentyp verfügbar sind.  Wenn ein bestimmter Vorgang nicht erforderlich ist, kann die Gruppe von indizierten Vorgängen explizit auf die Verringerung der Indexgröße festgelegt werden.  Im folgenden Ausschnitt des obigen Beispielschemas wird das Author.Id-Attribut indiziert, um nur den *equals*-Vorgang, jedoch nicht die zusätzliche *starts_with*- und *is_between*-Vorgänge für Int32-Attribute zu unterstützen.
 ```json
 {"name":"Author.Id", "type":"Int32", "operations":["equals"]}
@@ -73,6 +78,7 @@ Standardmäßig wird jedes Attribut zur Unterstützung aller Vorgänge indiziert
 Wenn ein Attribut innerhalb einer Grammatik verwiesen wird, muss der *starts_with*-Vorgang im Schema angegeben werden, damit der Dienst Vervollständigungen von Teilabfragen generieren kann.  
 
 ## <a name="attribute-synonyms"></a>Attributsynonyme
+
 In der Vielzahl der Fälle empfiehlt es sich, mittels eines Synonyms auf ein bestimmtes Zeichenfolgenattributwert zu verweisen.  Beispielsweise könnten Benutzer auf „Microsoft“ als „MSFT“ oder „MS“ verweisen.  In diesen Fällen kann die Attributdefinition den Namen einer Schemadatei angeben, die sich im selben Verzeichnis wie die Schemadatei befindet.  Jede Zeile in der Synonymdatei stellt einen Synonymeintrag im folgenden JSON-Format dar: `["<canonical>", "<synonym>"]`.  Im Beispielschema ist „AuthorName.syn“ eine JSON-Datei, die Synonymwerte für das Attribut „Author.Name“ enthält.
 
 `{"name":"Author.Name", "type":"String", "synonyms":"AuthorName.syn"}`

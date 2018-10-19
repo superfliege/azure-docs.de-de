@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 06365e4397075d18150095f7e77367f457e3308c
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190424"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423492"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
@@ -149,9 +149,9 @@ Einer der Vorteile der Verwendung von Azure ist, dass Sie Ihre Anwendungen in ve
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Das Azure-Portal ist eine webbasierte Anwendung, die zum Erstellen, Verwalten und Entfernen von Azure-Ressourcen und -Diensten verwendet werden kann. Das Azure-Portal finden Sie unter [Shell.Azure.com](https://portal.azure.com). Es enthält ein anpassbares Dashboard und Tools zum Verwalten der Azure-Ressourcen. Darüber hinaus werden Informationen zur Abrechnung für das Abonnement bereitgestellt. Weitere Informationen finden Sie unter [Übersicht über das Microsoft Azure-Portal](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) und [Verwalten von Azure-Ressourcen über das Portal](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+Das Azure-Portal ist eine webbasierte Anwendung, die zum Erstellen, Verwalten und Entfernen von Azure-Ressourcen und -Diensten verwendet werden kann. Das Azure-Portal finden Sie unter [portal.azure.com](https://portal.azure.com). Es enthält ein anpassbares Dashboard und Tools zum Verwalten der Azure-Ressourcen. Darüber hinaus werden Informationen zur Abrechnung für das Abonnement bereitgestellt. Weitere Informationen finden Sie unter [Übersicht über das Microsoft Azure-Portal](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) und [Verwalten von Azure-Ressourcen über das Portal](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
-### <a name="resources"></a>angeben
+### <a name="resources"></a>Ressourcen
 
 Bei Azure-Ressourcen handelt es sich um individuelle Compute-, Netzwerk-, Daten- oder App-Hosting-Dienste, die für ein Azure-Abonnement bereitgestellt wurden. Häufig verwendete Ressourcen sind virtuelle Computer, Speicherkonten oder SQL-Datenbanken. Azure-Dienste bestehen oft aus mehreren zusammengehörigen Azure-Ressourcen. Ein virtueller Azure-Computer kann beispielsweise Folgendes enthalten: VM, Speicherkonto, Netzwerkadapter und öffentliche IP-Adresse. Diese Ressourcen können einzeln oder als Gruppe erstellt, verwaltet und gelöscht werden. Azure-Ressourcen werden später in diesem Handbuch ausführlicher behandelt.
 
@@ -185,7 +185,7 @@ Administratoren können auf Azure PowerShell und die Azure CLI über eine browse
 
 ## <a name="azure-subscriptions"></a>Azure-Abonnements
 
-Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Azure-Abonnements verfügen über einen Kontoadministrator, der die volle Kontrolle über das Abonnement hat, und einen Dienstadministrator, der die Kontrolle über alle Dienste des Abonnements hat. Zusätzlich zu Administratoren kann einzelnen Konten über die rollenbasierte Zugriffssteuerung (RBAC) detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
+Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Azure-Abonnements verfügen über einen Kontoadministrator, der die volle Kontrolle über das Abonnement hat, und einen Dienstadministrator, der die Kontrolle über alle Dienste des Abonnements hat. Informationen über Administratoren für klassische Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../../billing/billing-add-change-azure-subscription-administrator.md). Zusätzlich zu Administratoren kann einzelnen Konten über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Auswählen und Aktivieren eines Azure-Abonnements
 
@@ -205,13 +205,9 @@ Wenn der Gutschriftbetrag überschritten wird, wird Ihr Dienst bis zum Beginn de
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Gewähren des administrativen Zugriffs auf ein Azure-Abonnement
 
-Es sind mehrere Kontoadministratorrollen verfügbar, die jederzeit geändert werden können. Zwei wichtige Rollen sind:
+Die rollenbasierte Zugriffssteuerung verfügt über mehrere integrierte Rollen, die Sie zum Zuweisen von Berechtigungen verwenden können. Um einen Benutzer zum Administrator eines Azure-Abonnements zu machen, weisen Sie ihm die Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) im Abonnementbereich zu. Durch die Rolle „Besitzer“ erhält der Benutzer vollständigen Zugriff auf alle Ressourcen im Abonnement, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren.
 
-- **Dienstadministrator**: Mit dieser Rolle sind Benutzer berechtigt, Azure-Dienste zu verwalten. Standardmäßig wird der Zugriff auf dasselbe Konto wie für den Kontoadministrator gewährt.
-
-- **Co-Administrator**: Mit dieser Rolle verfügen Sie über den gleichen Zugriff wie der Dienstadministrator. Es ist aber nicht möglich, damit die Zuordnung eines Abonnements zu Azure-Verzeichnissen zu ändern.
-
-Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../../billing/billing-add-change-azure-subscription-administrator.md).
+Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Anzeigen von Abrechnungsinformationen im Azure-Portal
 
@@ -232,10 +228,6 @@ Weitere Informationen finden Sie unter [Gewinnen von Einblicken in den Ressource
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Vorhersagen von Kosten mit dem Preisrechner
 
 Die Preise für die einzelnen Dienste in Azure sind unterschiedlich. Viele Azure-Dienste verfügen über die Tarife „Basic“, „Standard“ und „Premium“. Normalerweise hat jeder Tarif mehrere Preis- und Leistungsebenen. Mit dem [Online-Preisrechner](http://azure.microsoft.com/pricing/calculator) können Sie Preisschätzungen erstellen. Der Preisrechner ermöglicht Ihnen das flexible Schätzen von Kosten für eine einzelne Ressource oder eine Gruppe von Ressourcen.
-
-### <a name="set-up-billing-alerts"></a>Einrichten von Abrechnungswarnungen
-
-Nachdem Sie Ihre Anwendung oder Lösung in Azure bereitgestellt haben, können Sie Warnungen erstellen, die Sie per E-Mail benachrichtigen, wenn Sie sich den in der Warnung definierten Ausgabenlimits nähern. Weitere Informationen finden Sie unter [Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements](../../billing/billing-set-up-alerts.md).
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -307,21 +299,21 @@ Sie können den Umfang für den betriebsbedingten Zugriff auf Benutzerkonten fes
 
 Um Zugriff zu gewähren, weisen Sie dem Benutzer oder der Benutzergruppe eine Rolle zu. Es gibt viele vordefinierte Rollen. Sie können auch eigene benutzerdefinierte Rollen definieren.
 
-Hier sind einige Beispielrollen angegeben, die in Azure integriert sind:
+Im Folgenden werden einige Beispiele für [in Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md) aufgeführt:
 
 - **Besitzer**: Ein Benutzer mit dieser Rolle kann alles verwalten, z.B. auch den Zugriff.
 
 - **Leser**: Eine Benutzer mit dieser Rolle kann Ressourcen jedes Typs (mit Ausnahme von Geheimnissen) lesen, aber keine Änderungen vornehmen.
 
-- **Mitwirkender für virtuelle Computer**: Ein Benutzer mit dieser Rolle kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk, mit dem er verbunden ist, oder das Speicherkonto, unter dem sich die VHD-Datei befindet.
+- **Mitwirkender für virtuelle Computer:** Ein Benutzer mit dieser Rolle kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk, mit dem er verbunden ist, oder das Speicherkonto, unter dem sich die VHD-Datei befindet.
 
-- **SQL-DB-Mitwirkender**: Ein Benutzer mit dieser Rolle kann SQL-Datenbanken verwalten, aber nicht die sicherheitsbezogenen Richtlinien.
+- **SQL-DB-Mitwirkender:** Ein Benutzer mit dieser Rolle kann SQL-Datenbanken verwalten, aber nicht ihre sicherheitsbezogenen Richtlinien.
 
-- **SQL-Sicherheits-Manager**: Ein Benutzer mit dieser Rolle kann die sicherheitsbezogenen Richtlinien von SQL-Servern und -Datenbanken verwalten.
+- **SQL-Sicherheits-Manager:** Ein Benutzer mit dieser Rolle kann die sicherheitsbezogenen Richtlinien von SQL-Servern und -Datenbanken verwalten.
 
-- **Speicherkontomitwirkender**: Ein Benutzer mit dieser Rolle kann Speicherkonten verwalten, aber nicht den Zugriff auf die Speicherkonten.
+- **Speicherkontomitwirkender:** Ein Benutzer mit dieser Rolle kann Speicherkonten verwalten, aber nicht den Zugriff auf die Speicherkonten.
 
-Weitere Informationen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md).
+Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 

@@ -4,18 +4,20 @@ description: In diesem Artikel erfahren Sie, wie Daten aus Ihrer Azure IoT Centr
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/3/2018
-ms.topic: article
-ms.prod: azure-iot-central
+ms.date: 09/18/2018
+ms.topic: conceptual
+ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 3ca2bc56c03e5bbabbd9b2f17edc621bdd94b02f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 86128abd82ee41459a84fc7d9169042179807793
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622482"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034908"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportieren von Daten in Azure IoT Central
+
+*Dieses Thema gilt für Administratoren.*
 
 In diesem Artikel wird beschrieben, wie Sie in Azure IoT Central das Feature für den fortlaufenden Datenexport verwenden, um Daten regelmäßig in Ihr Azure Blob-Speicherkonto zu exportieren. Sie können **Messungen**, **Geräte** und **Gerätevorlagen** in Dateien mit dem Format [Apache AVRO](https://avro.apache.org/docs/current/index.html) exportieren. Die exportierten Daten können für die Analyse von kalten Datenpfaden verwendet werden, z.B. Trainingsmodelle in Azure Machine Learning oder die langfristige Trendanalyse in Microsoft Power BI.
 
@@ -33,10 +35,10 @@ In diesem Artikel wird beschrieben, wie Sie in Azure IoT Central das Feature fü
 
 ### <a name="measurements"></a>Messungen
 
-Die von Geräten gesendeten Messungen werden einmal pro Minute in Ihr Speicherkonto exportiert. Die Daten umfassen alle neuen Nachrichten, die während dieses Zeitraums von IoT Central von allen Geräten abgerufen wurden. Für die exportierten AVRO-Dateien wird dasselbe Format wie für die Nachrichtendateien verwendet, die bei der [IoT Hub-Nachrichtenweiterleitung](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) in Blobspeicher exportiert wurden.
+Die von Geräten gesendeten Messungen werden einmal pro Minute in Ihr Speicherkonto exportiert. Die Daten umfassen alle neuen Nachrichten, die während dieses Zeitraums von IoT Central von allen Geräten abgerufen wurden. Für die exportierten AVRO-Dateien wird dasselbe Format wie für die Nachrichtendateien verwendet, die bei der [IoT Hub-Nachrichtenweiterleitung](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) in Blobspeicher exportiert wurden.
 
 > [!NOTE]
-> Die Geräte, die die Messdaten senden, werden durch Geräte-IDs (siehe folgende Abschnitte) dargestellt. Exportieren Sie die Gerätemomentaufnahmen, um die Namen der Geräte zu erhalten. Korrelieren Sie die einzelnen Nachrichtendatensätze, indem Sie jeweils die **connectionDeviceId** verwenden, die mit der Geräte-ID übereinstimmt.
+> Die Geräte, die die Messdaten senden, werden durch Geräte-IDs (siehe folgende Abschnitte) dargestellt. Exportieren Sie die Gerätemomentaufnahmen, um die Namen der Geräte zu erhalten. Korrelieren Sie die einzelnen Nachrichtendatensätze, indem Sie jeweils die **connectionDeviceId** verwenden, die mit der **deviceId** des Gerätedatensatzes übereinstimmt.
 
 Im folgenden Beispiel wird ein Datensatz in einer decodierten AVRO-Datei angezeigt:
 
@@ -45,9 +47,9 @@ Im folgenden Beispiel wird ein Datensatz in einer decodierten AVRO-Datei angezei
     "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
     "Properties": {},
     "SystemProperties": {
-        "connectionDeviceId": "2383d8ba-c98c-403a-b4d5-8963859643bb",
+        "connectionDeviceId": "<connectionDeviceId>",
         "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "636614021491644195",
+        "connectionDeviceGenerationId": "<generationId>",
         "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
     },
     "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
@@ -56,10 +58,11 @@ Im folgenden Beispiel wird ein Datensatz in einer decodierten AVRO-Datei angezei
 
 ### <a name="devices"></a>Geräte
 
-Wenn der fortlaufende Datenexport zum ersten Mal aktiviert wird, wird eine einzelne Momentaufnahme mit allen Geräten exportiert. Die Momentaufnahme enthält Folgendes:
-- Geräte-IDs
-- Gerätenamen
-- Gerätevorlagen-IDs
+Wenn der fortlaufende Datenexport zum ersten Mal aktiviert wird, wird eine einzelne Momentaufnahme mit allen Geräten exportiert. Jedes Gerät enthält Folgendes:
+- `id` des Geräts in IoT Central
+- `name` des Geräts
+- `deviceId` von [Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
+- Gerätevorlageninformationen
 - Eigenschaftswerte
 - Einstellungswerte
 
@@ -73,15 +76,16 @@ Eine neue Momentaufnahme wird einmal pro Minute geschrieben. Die Momentaufnahme 
 >
 > Die Gerätevorlage, der die einzelnen Geräte zugewiesen sind, wird durch eine Gerätevorlagen-ID dargestellt. Exportieren Sie die Momentaufnahmen von Gerätevorlagen, um den Namen der Gerätevorlage zu erhalten.
 
-Jeder Datensatz in der decodierten AVRO-Datei sieht wie folgt aus:
+Ein Datensatz in der decodierten AVRO-Datei kann folgendermaßen aussehen:
 
 ```json
 {
-    "id": "2383d8ba-c98c-403a-b4d5-8963859643bb",
+    "id": "<id>",
     "name": "Refrigerator 2",
     "simulated": true,
+    "deviceId": "<deviceId>",
     "deviceTemplate": {
-        "id": "c318d580-39fc-4aca-b995-843719821049",
+        "id": "<template id>",
         "version": "1.0.0"
     },
     "properties": {
@@ -104,8 +108,10 @@ Jeder Datensatz in der decodierten AVRO-Datei sieht wie folgt aus:
 
 ### <a name="device-templates"></a>Gerätevorlagen
 
-Wenn der fortlaufende Datenexport zum ersten Mal aktiviert wird, wird eine einzelne Momentaufnahme mit allen Gerätevorlagen exportiert. Die Momentaufnahme enthält Folgendes: 
-- Gerätevorlagen-IDs
+Wenn der fortlaufende Datenexport zum ersten Mal aktiviert wird, wird eine einzelne Momentaufnahme mit allen Gerätevorlagen exportiert. Jede Gerätevorlage enthält Folgendes:
+- `id` der Gerätevorlage
+- `name` der Gerätevorlage
+- `version` der Gerätevorlage
 - Typen der Messdaten und Mindest- bzw. Maximalwerte
 - Typen der Eigenschaftsdaten und Standardwerte
 - Typen der Einstellungsdaten und Standardwerte
@@ -118,11 +124,11 @@ Eine neue Momentaufnahme wird einmal pro Minute geschrieben. Die Momentaufnahme 
 > [!NOTE]
 > Gerätevorlagen, die seit der letzten Momentaufnahme gelöscht wurden, werden nicht exportiert. Derzeit verfügen die Momentaufnahmen nicht über Indikatoren für gelöschte Gerätevorlagen.
 
-Jeder Datensatz in der decodierten AVRO-Datei sieht wie folgt aus:
+Ein Datensatz in der decodierten AVRO-Datei kann folgendermaßen aussehen:
 
 ```json
 {
-    "id": "c318d580-39fc-4aca-b995-843719821049",
+    "id": "<id>",
     "name": "Refrigerated Vending Machine",
     "version": "1.0.0",
     "measurements": {
@@ -209,16 +215,16 @@ Jeder Datensatz in der decodierten AVRO-Datei sieht wie folgt aus:
 
 4. Wählen Sie unter **Verwaltung** die Option **Datenexport**.
 
-   ![Konfigurieren des fortlaufenden Datenexports](media/howto-export-data/continuousdataexport.PNG)
-
 5. Wählen Sie im Dropdown-Listenfeld **Speicherkonto** Ihr Speicherkonto aus. Wählen Sie im Dropdown-Listenfeld **Container** Ihren Container aus. Geben Sie unter **Data to export** (Zu exportierende Daten) die Typen der zu exportierenden Daten an, indem Sie den Typ jeweils auf **Ein** festlegen.
 
 6. Legen Sie **Datenexport** auf **Ein** fest, um den fortlaufenden Datenexport zu aktivieren. Wählen Sie **Speichern**aus.
 
+  ![Konfigurieren des fortlaufenden Datenexports](media/howto-export-data/continuousdataexport.PNG)
+
 7. Nach einigen Minuten werden die Daten unter Ihrem Speicherkonto angezeigt. Navigieren Sie zu Ihrem Speicherkonto. Wählen Sie **Blobs durchsuchen** und dann Ihren Container aus. Es werden drei Ordner für die Exportdaten angezeigt. Die Standardpfade für die AVRO-Dateien mit den Exportdaten lauten:
-    - Messungen: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
-    - Geräte: {container}/devices/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
-    - Gerätevorlagen: {container}/deviceTemplates/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
+    - Meldungen: {container}/measurements/{hubname}/{JJJJ}/{MM}/{TT}/{hh}/{mm}/{dateiname}.avro
+    - Geräte: {container}/devices/{JJJJ}/{MM}/{TT}/{hh}/{mm}/{dateiname}.avro
+    - Gerätevorlagen: {container}/deviceTemplates/{JJJJ}/{MM}/{TT}/{hh}/{mm}/{dateiname}.avro
 
 ## <a name="read-exported-avro-files"></a>Lesen von exportierten AVRO-Dateien
 
@@ -280,7 +286,7 @@ def parse(filePath):
     transformed = pd.DataFrame()
 
     # The device ID is available in the id column.
-    transformed["device_id"] = devices["id"]
+    transformed["device_id"] = devices["deviceId"]
 
     # The template ID and version are present in a dictionary under
     # the deviceTemplate column.
@@ -395,7 +401,7 @@ public static async Task Run(string filePath)
                 {
                     // Get the field value directly. You can also yield return
                     // records and make the function IEnumerable<AvroRecord>.
-                    var deviceId = record.GetField<string>("id");
+                    var deviceId = record.GetField<string>("deviceId");
 
                     // The device template information is stored in a sub-record
                     // under the deviceTemplate field.
@@ -411,7 +417,7 @@ public static async Task Run(string filePath)
                     var fanSpeed = deviceSettingsRecord["fanSpeed"];
                     
                     Console.WriteLine(
-                        "ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
+                        "Device ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
                         deviceId,
                         templateId,
                         templateVersion,
@@ -524,8 +530,8 @@ const avro = require('avsc');
 async function parse(filePath) {
     const records = await load(filePath);
     for (const record of records) {
-        // Fetch the device ID from the id property.
-        const deviceId = record.id;
+        // Fetch the device ID from the deviceId property.
+        const deviceId = record.deviceId;
 
         // Fetch the template ID and version from the deviceTemplate property.
         const deviceTemplateId = record.deviceTemplate.id;
@@ -535,7 +541,7 @@ async function parse(filePath) {
         const fanSpeed = record.settings.device.fanSpeed;
 
         // Log the retrieved device ID and humidity.
-        console.log(`ID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
+        console.log(`deviceID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
     }
 }
 

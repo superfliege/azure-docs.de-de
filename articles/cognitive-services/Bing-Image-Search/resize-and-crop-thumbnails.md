@@ -1,25 +1,25 @@
 ---
-title: Ändern der Größe und Zuschneiden von Bing-Miniaturbildern | Microsoft Docs
-description: Hier wird erläutert, wie Sie die Größe von in einer Bing-Antwort enthaltenen Miniaturbildern ändern und diese Miniaturbilder zuschneiden können.
+title: Ändern der Größe und Zuschneiden von Bing-Miniaturbildern – Bing-Bildersuche-API
+description: Erfahren Sie, wie Sie die Größe von Miniaturbildern ändern und sie zuschneiden, die in einer Antwort der Bing-Bildersuche-API enthalten sind.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: F4FFAE91-A003-4F7C-8E60-83A142485E28
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 98c4caa50ca5e861f4276e26983ef501d17bd349
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: de82cc5554af91294dda3826dfb394cc94dbf3d0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41931338"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296226"
 ---
 # <a name="resizing-and-cropping-thumbnail-images"></a>Ändern der Größe und Zuschneiden von Miniaturbildern
 
-Bei der Verarbeitung einer Suchabfrage generiert Bing Miniaturansichtsinformationen für alle Bilder in der [Antwort](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#bing-image-search-response-format). Diese Informationen können zum Anzeigen aller oder eine Teilmenge der zurückgegebenen Miniaturansichten verwendet werden. Wenn Sie eine Teilmenge anzeigen, stellen Sie eine Möglichkeit bereit, die restlichen Bilder anzuzeigen. 
+Bei der Verarbeitung einer Suchabfrage generiert Bing Miniaturansichtsinformationen für alle Bilder in der [Antwort](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#bing-image-search-response-format). Diese Informationen können zum Anzeigen aller oder eine Teilmenge der zurückgegebenen Miniaturansichten verwendet werden. Wenn Sie eine Teilmenge anzeigen, stellen Sie eine Möglichkeit bereit, die restlichen Bilder anzuzeigen.
 
 
 <!-- Removing image until we can replace it with a sanatized version.
@@ -38,8 +38,8 @@ Verwenden Sie [imageInsightsToken](https://docs.microsoft.com/rest/api/cognitive
 
 ## <a name="resizing-and-cropping-thumbnails"></a>Ändern der Größe und Zuschneiden von Miniaturbildern
 
-Sie können auch die Größe von Miniaturbildern ändern und diese erweitern, z.B. wenn der Cursor darüber bewegt wird. 
+Sie können auch die Größe von Miniaturbildern ändern und diese erweitern, z.B. wenn der Cursor darüber bewegt wird.
 > [!NOTE]
-> Wenn das Bild erweitert wird, muss die Quelle angegeben werden. Hierzu können Sie beispielsweise den Host aus [hostPageDisplayUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-hostpagedisplayurl) extrahieren und unter dem Bild anzeigen. 
+> Wenn das Bild erweitert wird, muss die Quelle angegeben werden. Hierzu können Sie beispielsweise den Host aus [hostPageDisplayUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-hostpagedisplayurl) extrahieren und unter dem Bild anzeigen.
 
 [!INCLUDE [cognitive-services-bing-resize-crop-thumbnails](../../../includes/cognitive-services-bing-resize-crop-thumbnails.md)]

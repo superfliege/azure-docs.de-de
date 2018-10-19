@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 223c038155d16f41f1599aa76081560739cd7095
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 12decd07934b45c3f2e8b9b098af305303641176
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657375"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634777"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für SAP ASCS/SCS
 
@@ -305,7 +305,7 @@ Geben Sie in der [ASCS/SCS-Multi-SID-Vorlage][sap-templates-3-tier-multisid-xscs
   -  **Systemverfügbarkeit**: Wählen Sie **HA**.
   -  **Administratorbenutzername und Administratorkennwort**: Erstellen Sie einen neuen Benutzer, der verwendet werden kann, um sich am Computer anzumelden.
   -  **Neues oder vorhandenes Subnetz**: Legen Sie fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein vorhandenes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **vorhanden** aus.
-  -  **Subnetz-ID**: Legen Sie die ID des Subnetzes fest, mit dem die virtuellen Computer eine Verbindung herstellen sollen. Wählen Sie das Subnetz des VPN- oder virtuellen ExpressRoute-Netzwerks aus, um den virtuellen Computer mit dem lokalen Netzwerk zu verbinden. Die ID sieht normalerweise wie folgt aus:
+  -  **Subnetz-ID**: Wenn Sie den virtuellen Computer in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID sieht normalerweise wie folgt aus:
 
    /subscriptions/\<Abonnement-ID\>/resourceGroups/\<Ressourcengruppenname\>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks\>/subnets/\<Subnetzname\>
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 02d402b7de82631ce459c60cb42e5335c7e7cfe3
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 5c2a37f3753292c6db847a4a9152bd4506f8fa5e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003299"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580489"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection-Playbook
 
@@ -115,7 +115,7 @@ Dieser Abschnitt erläutert die Schritte, die Sie zum Testen der Sicherheitsrich
 
 ### <a name="user-risk-security-policy"></a>Benutzerrisiko-Sicherheitsrichtlinie
 
-Weitere Informationen finden Sie unter [Benutzerrisiko-Sicherheitsrichtlinie](overview.md#user-risk-security-policy).
+Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlinien zum Benutzerrisiko](howto-user-risk-policy.md).
 
 ![Benutzerrisiko](./media/playbook/02.png "Playbook")
 
@@ -140,7 +140,7 @@ Weitere Informationen finden Sie unter [Benutzerrisiko-Sicherheitsrichtlinie](ov
 
 ### <a name="sign-in-risk-security-policy"></a>Anmelderisiko-Sicherheitsrichtlinie
 
-Weitere Informationen finden Sie unter [Benutzerrisiko-Sicherheitsrichtlinie](overview.md#user-risk-security-policy).
+Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlinien zum Anmelderisiko](howto-sign-in-risk-policy.md).
 
 ![Anmelderisiko](./media/playbook/01.png "Playbook")
 

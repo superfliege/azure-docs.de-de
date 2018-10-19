@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: f47e85b47f262e30e9160f11604220aa8055be5d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 10867974c6f1c3fae6965b1888db3c4448b26a38
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701716"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364100"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopieren von Daten aus HBase mithilfe von Azure Data Factory 
 
@@ -43,9 +43,9 @@ Folgende Eigenschaften werden für den mit HBase verknüpften Dienst unterstütz
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **HBase** festgelegt werden. | JA |
-| host | IP-Adresse oder Hostname des HBase-Servers (d. h. `[clustername].azurehdinsight.net`， `192.168.222.160).  | JA |
+| host | IP-Adresse oder Hostname des HBase-Servers. (d. h. `[clustername].azurehdinsight.net`， `192.168.222.160).  | JA |
 | port | Der TCP-Port, den die HBase-Instanz verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 9090. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | Nein  |
-| httpPath | Die Teil-URL, die dem HBase-Server entspricht (d. h. `/hbaserest0`).  | Nein  |
+| httpPath | Die Teil-URL für den HBase-Server, z.B. `/hbaserest0` bei Verwendung von HDInsight-Clustern. | Nein  |
 | authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem HBase-Server verwendet werden soll. <br/>Zulässige Werte: **Anonymous**, **Basic** | JA |
 | username | Der Benutzername, der für die Verbindung mit der HBase-Instanz verwendet wird.  | Nein  |
 | password | Das Kennwort, das zum Benutzernamen gehört. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein  |
@@ -56,7 +56,7 @@ Folgende Eigenschaften werden für den mit HBase verknüpften Dienst unterstütz
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 >[!NOTE]
->Wenn Ihr Cluster keine beständigen Sitzungen wie HDInsight unterstützt, fügen Sie den Knotenindex explizit am Ende der Einstellung für den HTTP-Pfad hinzu (z. B. `/hbaserest0` anstelle von `/hbaserest`).
+>Wenn Ihr Cluster keine beständigen Sitzungen wie HDInsight unterstützt, fügen Sie den Knotenindex explizit am Ende der Einstellung für den HTTP-Pfad hinzu (z.B. `/hbaserest0` anstelle von `/hbaserest`).
 
 **Beispiel für HBase in HDInsights:**
 

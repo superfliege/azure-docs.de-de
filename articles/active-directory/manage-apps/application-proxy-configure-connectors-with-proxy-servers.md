@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2017
+ms.date: 09/12/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 7f9d74ce60d2a433f6bb63be4f131ac430452036
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e67428116c66c05d83efbb217d7ec81f75124051
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363413"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540840"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 
@@ -77,7 +77,7 @@ Da es nur um ausgehenden Datenverkehr geht, muss kein eingehender Zugriff durch 
 
 Wenn WPAD in der Umgebung aktiviert und richtig konfiguriert ist, kann der Connector den Proxyserver für ausgehenden Datenverkehr automatisch ermitteln und versuchen, ihn zu verwenden. Sie können den Connector aber auch explizit so konfigurieren, dass ein Proxy für ausgehenden Datenverkehr verwendet wird.
 
-Bearbeiten Sie hierfür die Datei „C:\Programme\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config“, und fügen Sie den Abschnitt *system.net* aus dem folgenden Codebeispiel hinzu. Legen Sie *proxyserver:8080* auf den Namen bzw. auf die IP-Adresse Ihres lokalen Proxyservers sowie auf den Port fest, an dem gelauscht wird.
+Bearbeiten Sie hierfür die Datei „C:\Programme\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config“, und fügen Sie den Abschnitt *system.net* aus dem folgenden Codebeispiel hinzu. Legen Sie *proxyserver:8080* auf den Namen bzw. auf die IP-Adresse Ihres lokalen Proxyservers sowie auf den Port fest, an dem gelauscht wird. Der Wert muss das Präfix „http://“ besitzen, auch wenn Sie eine IP-Adresse verwenden.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>

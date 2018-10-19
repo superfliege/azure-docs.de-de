@@ -1,21 +1,22 @@
 ---
-title: Durchführen eines Upgrades für die Bing-Bildersuche-API von v5 auf v7 | Microsoft-Dokumentation
-description: In diesem Artikel werden die Teile Ihrer Anwendung angegeben, die Sie zur Verwendung von Version 7 aktualisieren müssen.
+title: Upgrade der Bing-Bildersuche-API von Version 5 auf Version 7 – Bing-Bildersuche-API-Bild
+titleSuffix: Azure Cognitive Services
+description: In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7 der Bing-Bildersuche-API angegeben. Anhand dieses Leitfadens können Sie die Teile Ihrer Anwendung ermitteln, die Sie zur Verwendung von Version 7 aktualisieren müssen.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: 7F78B91F-F13B-40A4-B8A7-770FDB793F0F
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b4d785eafe9ced6fb12e2dac3282dfd286849eb6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 53713a629dbe2682ef393a3a5dbf7845b5075591
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373331"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296361"
 ---
 # <a name="image-search-api-upgrade-guide"></a>Leitfaden zur Durchführung eines Upgrades für die Bildersuche-API
 
@@ -34,7 +35,7 @@ In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7
 - Folgende Felder wurden zum `Error`-Objekt hinzugefügt:  
   - `subCode`&mdash;Teilt den Fehlercode nach Möglichkeit in separate Buckets auf
   - `moreDetails`&mdash;Zusätzliche Informationen über den Fehler, der im `message`-Feld beschrieben ist
-   
+
 
 - Die v5-Fehlercodes wurden durch die folgenden möglichen `code`- und `subCode`-Werte ersetzt.
 
@@ -74,28 +75,28 @@ Blockiert|InvalidRequest.Blocked
 ### <a name="query-parameters"></a>Abfrageparameter
 
 - Der Abfrageparameter `modulesRequested` wurde in [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules) umbenannt.  
-  
+
 - Die Anmerkungen wurden in Tags umbenannt. Weitere Informationen zum Abfrageparameter „modules“ für Tags finden Sie [hier](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules).  
 
 - Die Liste der unterstützten Märkte des Filterwerts „ShoppingSources“ wurde in das Gebietsschema „en-US“ geändert. Weitere Informationen finden Sie unter [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype).  
- 
+
 
 ### <a name="image-insights-changes"></a>Änderungen an Bildauswertungen
-  
+
 - Das Feld `annotations` von [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse) wurde in `imageTags` umbenannt.  
-  
+
 - Das Objekt `AnnotationModule` wurde in [ImageTagsModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetagsmodule) umbenannt.  
-  
+
 - Das Objekt `Annotation` wurde in [Tag](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#tag) umbenannt, und das Feld `confidence` wurde entfernt.  
-  
+
 - Das Feld `insightsSourcesSummary` des [Image](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image)-Objekts wurde in `insightsMetadata` umbenannt.  
-  
+
 - Das Objekt `InsightsSourcesSummary` wurde in [InsightsMetadata](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightsmetadata) umbenannt.  
-  
-- Der Endpunkt `https://api.cognitive.microsoft.com/bing/v7.0/images/details` wurde hinzugefügt. Verwenden Sie diesen Endpunkt, um anstelle des Endpunkts „/images/search“ Bildauswertungen anzufordern. Weitere Informationen finden Sie unter [Abrufen von Bildauswertungen](./image-insights.md). 
-  
+
+- Der Endpunkt `https://api.cognitive.microsoft.com/bing/v7.0/images/details` wurde hinzugefügt. Verwenden Sie diesen Endpunkt, um anstelle des Endpunkts „/images/search“ Bildauswertungen anzufordern. Weitere Informationen finden Sie unter [Abrufen von Bildauswertungen](./image-insights.md).
+
 - Die folgenden Abfrageparameter sind ab sofort nur noch mit dem Endpunkt `/images/details` gültig.  
-  
+
     -   [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken)  
     -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules)  
     -   [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl)  
@@ -104,52 +105,52 @@ Blockiert|InvalidRequest.Blocked
     -   [car](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#car)  
     -   [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  
     -   [ct](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#ct)  
-  
+
 - Das Objekt `ImageInsightsResponse` wurde in [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsights) umbenannt.  
-  
+
 - Die Datentypen der folgenden Felder im Objekt [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsights) wurden geändert.  
-  
+
     -   Der Typ des Felds `relatedCollections` wurde von `ImageGallery[]` in [RelatedCollectionsModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#relatedcollectionsmodule) geändert.  
-  
+
     -   Der Typ des Felds `pagesIncluding` wurde von `Image[]` in [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagesmodule) geändert.  
-  
+
     -   Der Typ des Felds `relatedSearches` wurde von `Query[]` in [RelatedSearchesModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#relatedsearchesmodule) geändert.  
-  
+
     -   Der Typ des Felds `recipes` wurde von `Recipe[]` in [RecipesModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#recipesmodule) geändert.  
-  
+
     -   Der Typ des Felds `visuallySimilarImages` wurde von `Image[]` in [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagesmodule) geändert.  
-  
+
     -   Der Typ des Felds `visuallySimilarProducts` wurde von `ProductSummaryImage[]` in [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagesmodule) geändert.  
-  
+
     -   Das Objekt `ProductSummaryImage` wurde entfernt, und die produktbezogenen Felder im Objekt [Image](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image) wurden verschoben. Das Objekt `Image` enthält nur produktbezogene Felder, wenn das Bild als Bestandteil von visuell ähnliche Produkten in einer Bildauswertungsantwort enthalten ist.  
-  
+
     -   Der Typ des Felds `recognizedEntityGroups` wurde von `RecognizedEntityGroup[]` in [RecognizedEntitiesModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#recognizedentitiesmodule) geändert.  
-  
+
 -   Das Feld `categoryClassification` von [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse) wurde in `annotations` umbenannt, und dessen Typ wurde in `AnnotationsModule` geändert.  
 
 ### <a name="images-answer"></a>Bildantwort
 
 -   Die Felder „displayShoppingSourcesBadges“ und „displayRecipeSourcesBadges“ wurden aus [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) entfernt.  
-  
+
 -   Das Feld `nextOffsetAddCount` von [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) wurde in `nextOffset` umbenannt. Die Art und Weise, wie Sie das Offset verwenden, wurde ebenfalls geändert. Vorher haben Sie den Abfrageparameter [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offset) auf den Wert `nextOffsetAddCount`, den vorherigen Offsetwert sowie die Anzahl der Bilder im Ergebnis festgelegt. Nun legen Sie `offset` auf den Wert `nextOffset` fest.  
-    
-  
+
+
 ## <a name="non-breaking-changes"></a>Geringfügige Änderungen
 
 ### <a name="query-parameters"></a>Abfrageparameter
-  
+
 - „Transparent“ wurde als möglicher [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype)-Filterwert hinzugefügt. Der Transparent-Filter gibt nur Bilder mit einem transparenten Hintergrund zurück.
 
 - „Any“ wurde als möglicher [license](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#license)-Filterwert hinzugefügt. Der Any-Filter gibt nur die unter Lizenz stehenden Bilder zurück.
-  
+
 - Die Abfrageparameter [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#maxfilesize) und [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#minfilesize) wurden hinzugefügt. Verwenden Sie diese Filter, um Bilder innerhalb eines Bereichs von Dateigrößen zurückzugeben.  
-  
+
 - Die Abfrageparameter [maxHeight](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#maxheight), [minHeight](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#minheight), [maxWidth](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#maxwidth) und [minWidth](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#minwidth) wurden hinzugefügt. Verwenden Sie diese Filter, um Bilder innerhalb eines Bereichs von Höhen und Breiten zurückzugeben.  
 
 ### <a name="object-changes"></a>Änderungen an Objekten
-  
+
 - Die Felder `description` und `lastUpdated` wurden zum Objekt [Offer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offer) hinzugefügt.  
-  
+
 - Das Feld `name` wurde zum Objekt [ImageGallery](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagegallery) hinzugefügt.  
-  
+
 - `similarTerms` wurde zum Objekt [Bilder](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) hinzugefügt. Dieses Feld enthält eine Liste von Benennungen, die in ihrer Bedeutung Ähnlichkeiten mit der Abfragezeichenfolge des Benutzers haben.  

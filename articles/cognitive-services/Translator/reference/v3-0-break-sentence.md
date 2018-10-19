@@ -1,28 +1,29 @@
 ---
-title: BreakSentence-Methode der Microsoft-Textübersetzungs-API | Microsoft-Dokumentation
-description: Verwenden Sie die BreakSentence-Methode der Microsoft-Textübersetzungs-API.
+title: BreakSentence-Methode der Textübersetzungs-API
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die BreakSentence-Methode der Textübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 8ce6644d21b397ea0e7f2e71e3c3a5a96638eec5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1202d49688bfd6aee50d1fa21c10423c071c6d92
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377538"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124982"
 ---
-# <a name="text-api-30-breaksentence"></a>Text-API 3.0: BreakSentence
+# <a name="translator-text-api-30-breaksentence"></a>Textübersetzungs-API 3.0: BreakSentence
 
 Erkennt die Positionierung von Satzgrenzen in einem Textabschnitt.
 
 ## <a name="request-url"></a>Anfrage-URL
 
-Senden Sie eine `POST`-Anforderung an:
+Sendet eine `POST`-Anforderung an:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
@@ -49,26 +50,26 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
   </tr>
 </table> 
 
-Anforderungsheader bestehen aus folgenden Elementen:
+Anforderungsheader enthalten Folgendes:
 
 <table width="100%">
   <th width="20%">Header</th>
   <th>BESCHREIBUNG</th>
   <tr>
     <td>_Eine Autorisierung_<br/>_Header_</td>
-    <td>*Erforderlicher Anforderungsheader*<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
+    <td>*Erforderlicher Anforderungsheader*.<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
     <td>Content-Typ</td>
-    <td>*Erforderlicher Anforderungsheader*<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`.</td>
+    <td>*Erforderlicher Anforderungsheader*.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*Erforderlicher Anforderungsheader*<br/>Die Länge des Anforderungstexts.</td>
+    <td>*Erforderlicher Anforderungsheader*.<br/>Die Länge des Anforderungstexts.</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optional*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header nur weglassen können, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens `ClientTraceId` einschließen.</td>
+    <td>*Optional*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
   </tr>
 </table> 
 
@@ -157,11 +158,11 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
   <tr>
     <td>500</td>
-    <td>Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie Folgendes an: Datum und Zeitpunkt der Entstehung, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` sowie dem Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
+    <td>Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Der Server ist vorübergehend nicht verfügbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie Folgendes an: Datum und Zeitpunkt der Entstehung, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` sowie dem Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
+    <td>Der Server ist vorübergehend nicht verfügbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
   </tr>
 </table> 
 

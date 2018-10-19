@@ -11,17 +11,21 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9507280bf5df1e63c81f0b2488b9676784c69812
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: abd1329f2ebac90bf846dfd5fc5b307ddb5e52bd
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260873"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095479"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.InfoBox“
-Ein Steuerelement, das ein Informationsfeld hinzugefügt.
+Ein Steuerelement, das ein Informationsfeld hinzugefügt. Das Feld enthält wichtigen Text oder Warnungen, damit die Benutzer ein besseres Verständnis der Werte erlangen, die sie angeben. Außerdem kann es einen Link zu einer URI bereitstellen, wenn weitere Informationen benötigt werden.
+
+## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
+![Microsoft.Common.InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
+
 
 ## <a name="schema"></a>Schema
 ```json

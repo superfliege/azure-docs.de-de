@@ -1,28 +1,21 @@
 ---
-title: 'Konfigurieren von ExpressRoute- und Site-to-Site-VPN-Verbindungen, die gleichzeitig bestehen können: Resource Manager: Azure | Microsoft-Dokumentation'
-description: Dieser Artikel führt Sie durch die Konfiguration von ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen, die für das Resource Manager-Modell gleichzeitig bestehen können.
-documentationcenter: na
+title: 'Konfigurieren von ExpressRoute- und Site-to-Site-VPN-Verbindungen, die gleichzeitig bestehen können: PowerShell: Azure | Microsoft-Dokumentation'
+description: Dieser Artikel führt Sie durch die Konfiguration von ExpressRoute- und Site-to-Site-VPN-Verbindungen, die für das Resource Manager-Modell gleichzeitig bestehen können, mithilfe von PowerShell.
 services: expressroute
 author: charwen
 manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c7717b14-3da3-4a6d-b78e-a5020766bc2c
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/17/2018
-ms.author: charwen,cherylmc,rambala
-ms.openlocfilehash: 0e69a85f320a0a8d77bd07fc0dedb77eb99efb36
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.topic: conceptual
+ms.date: 09/07/2018
+ms.author: charwen
+ms.openlocfilehash: c267e5002fbd603e4bb749550c19e8d022ce4d54
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41920056"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162341"
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]
 > * [PowerShell – Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell – klassisch](expressroute-howto-coexist-classic.md)
@@ -34,7 +27,7 @@ Das Konfigurieren paralleler Site-to-Site-VPN- und ExpressRoute-Verbindungen bie
 * Sie können ein Site-to-Site-VPN als sicheren Failoverpfad für ExpressRoute konfigurieren. 
 * Alternativ hierzu können Sie Site-to-Site-VPNs nutzen, um Standorte zu verbinden, die nicht per ExpressRoute verbunden sind. 
 
-Dieser Artikel enthält die Schritte für die Konfiguration beider Szenarien. Dieser Artikel gilt für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. 
+Dieser Artikel enthält die Schritte für die Konfiguration beider Szenarien. Dieser Artikel gilt für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. Sie können diese Szenarien auch über das Azure-Portal konfigurieren – für diese Vorgehensweise steht jedoch noch keine Dokumentation zur Verfügung.
 
 >[!NOTE]
 >Wenn Sie ein Site-to-Site-VPN über eine ExpressRoute-Verbindung erstellen möchten, lesen Sie [diesen Artikel](site-to-site-vpn-over-microsoft-peering.md).

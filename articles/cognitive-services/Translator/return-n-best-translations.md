@@ -1,20 +1,21 @@
 ---
-title: Zurückgeben von N besten Übersetzungen mit der Textübersetzungs-API von Microsoft | Microsoft-Dokumentation
+title: Zurückgeben von N besten Übersetzungen – Textübersetzungs-API
+titlesuffix: Azure Cognitive Services
 description: Zurückgeben von N besten Übersetzungen mit der Textübersetzungs-API von Microsoft
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 3eafe50f69ae1a6748342e64a414ecee4467d0d1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e1d310cecb41de00c1d3e3986fe715d1519ceeff
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374362"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123452"
 ---
 # <a name="how-to-return-n-best-translations"></a>Zurückgeben von N besten Übersetzungen
 
@@ -39,7 +40,7 @@ Die Signatur ist:
 | appId | **Erforderlich** Lassen Sie das Feld „appId“ leer, wenn sie den Autorisierungsheader verwenden. Geben Sie andernfalls eine Zeichenfolge mit „Bearer“ + „ “ + Zugriffstoken an.|
 | text | **Erforderlich** Eine Zeichenfolge, die den Text darstellt, der übersetzt werden soll. Die Textgröße darf 10.000 Zeichen nicht überschreiten.|
 | from | **Erforderlich** Eine Zeichenfolge, die den Code der Sprache darstellt, aus der der Text übersetzt werden soll. |
-| in: | **Erforderlich** Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll. |
+| zu | **Erforderlich** Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll. |
 | maxTranslations | **Erforderlich** Ein Integer, der die maximale Anzahl von Übersetzungen darstellt, die zurückgegeben werden sollen. |
 | options | **Optional** Ein TranslateOptions-Objekt, das die unten aufgeführten Werte enthält. Diese sind alle optional und entsprechen den Standardwerten für die häufigsten Einstellungen.
 

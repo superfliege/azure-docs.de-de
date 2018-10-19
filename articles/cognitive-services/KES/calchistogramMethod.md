@@ -1,20 +1,21 @@
 ---
-title: CalcHistogram-Methode in der Knowledge Exploration Service-API | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die CalcHistogram-Methode in der Knowledge Exploration Service-API (KES) in Cognitive Services verwenden können.
+title: CalcHistogram-Methode – Knowledge Exploration Service-API
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie die CalcHistogram-Methode in der Knowledge Exploration Service-API (KES) verwenden können.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6ed694b0cc9cf41b815cc54b9f6d12adb2b7cd64
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0ca43d6f6879198b8f80794c1948439e15f312ad
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373059"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122755"
 ---
 # <a name="calchistogram-method"></a>calchistogram-Methode
 Die *calchistogram*-Methode berechnet die Objekte, die einem strukturierten Abfrageausdruck entsprechen, und berechnet die Verteilung ihrer Attributwerte.

@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: tarcher
-ms.openlocfilehash: 76679ea0ff2c1e88d1923488717a245351437165
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 045250f0b0f97cbefe05b36f1c8d4480244a172d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036465"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575846"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Verwenden von Node.js-Modulen mit Azure-Anwendungen
 Dieses Dokument bietet Anweisungen zur Verwendung von Node.js-Modulen mit Anwendungen, die auf Azure gehostet werden. Sie erfahren, wie Sie sicherstellen können, dass eine Anwendung eine bestimmte Version eines Moduls sowie systemeigene Module von Azure verwendet.
@@ -38,7 +38,7 @@ Wenn Sie sich bereits mit Node.js-Modulen, **package.json**- und **npm-shrinkwra
 ## <a name="nodejs-modules"></a>Node.js-Module
 Module sind ladbare JavaScript-Pakete, die bestimmte Funktionen für die Anwendung bieten. Module werden normalerweise über das Befehlszeilentool **npm** installiert. Einige Module (wie das http-Modul) werden jedoch als Teil des Node.js-Pakets bereitgestellt.
 
-Wenn Module installiert werden, werden diese im Verzeichnis **node\_modules** im Stamm der Anwendungsverzeichnisstruktur gespeichert. Jedes Modul im Verzeichnis **node\_modules** behält sein eigenes **node\_modules**-Verzeichnis, das alle Module enthält, von denen es abhängt. Dieses Verhalten wiederholt sich für jedes Modul auf der Abhängigkeitskette. Durch diese Umgebung kann jedes installierte Modul seine eigenen Versionsanforderungen für die Module haben, von denen es abhängt. Dies kann jedoch zu einer sehr großen Verzeichnisstruktur führen.
+Wenn Module installiert werden, werden diese im Verzeichnis **node\_modules** im Stamm der Anwendungsverzeichnisstruktur gespeichert. Jedes Modul im Verzeichnis **node\_modules** behält sein eigenes Verzeichnis, das alle Module enthält, von denen es abhängt. Dieses Verhalten wiederholt sich für jedes Modul auf der Abhängigkeitskette. Durch diese Umgebung kann jedes installierte Modul seine eigenen Versionsanforderungen für die Module haben, von denen es abhängt. Dies kann jedoch zu einer sehr großen Verzeichnisstruktur führen.
 
 Wenn das Verzeichnis **node\_modules** als Teil der Anwendung bereitgestellt wird, vergrößert dies die Bereitstellung im Vergleich zur Verwendung einer Datei **package.json** oder **npm-shrinkwrap.json**. Dies garantiert jedoch, dass die Versionen der in der Produktion verwendeten Module identisch mit denen der Module aus der Entwicklung sind.
 
@@ -51,7 +51,7 @@ Azure App Service unterstützt nicht alle nativen Module, sodass beim Kompiliere
 
   * Überprüfen Sie vor dem Kompilieren, dass die Architektur der lokalen Installation von Node.js übereinstimmt und dass die Version so nah wie möglich an der in Azure verwendeten ist (die aktuellen Werte können zur Laufzeit mit den Eigenschaften **process.arch** und **process.version** geprüft werden).
 
-* Azure App Service kann für die Ausführung benutzerdefinierter Bash- oder Shell-Skripts während der Bereitstellung konfiguriert werden. So haben Sie die Möglichkeit, benutzerdefinierte Befehle auszuführen und exakt zu konfigurieren, wie **npm install** ausgeführt wird. Ein Video, in dem das Konfigurieren dieser Umgebung veranschaulicht wird, finden Sie unter [Benutzerdefinierte Website-Bereitstellungsskripts mit Kudu].
+* Azure App Service kann für die Ausführung benutzerdefinierter Bash- oder Shell-Skripts während der Bereitstellung konfiguriert werden. So haben Sie die Möglichkeit, benutzerdefinierte Befehle auszuführen und exakt zu konfigurieren, wie **npm install** ausgeführt wird. Ein Video, in dem das Konfigurieren dieser Umgebung veranschaulicht wird, finden Sie unter [Benutzerdefinierte Website-Bereitstellungsskripts mit Kudu](https://azure.microsoft.com/resources/videos/custom-web-site-deployment-scripts-with-kudu/).
 
 ### <a name="using-a-packagejson-file"></a>Verwenden einer package.json-Datei
 
@@ -85,10 +85,10 @@ Wenn die Anwendung für die Produktion bereit ist, können Sie die Versionsanfor
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie wissen, wie Sie Node.js-Module mit Azure verwenden, erfahren Sie nun, wie Sie [die Node.js-Version angeben], [eine Node.js-Web-App erstellen und bereitstellen](app-service/app-service-web-get-started-nodejs.md) und [die Azure-Befehlszeilenschnittstelle für Mac und Linux verwenden].
+Nachdem Sie wissen, wie Sie Node.js-Module mit Azure verwenden, erfahren Sie nun, wie Sie [die Node.js-Version angeben](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md), [eine Node.js-Web-App erstellen und bereitstellen](app-service/app-service-web-get-started-nodejs.md) und [die Azure-Befehlszeilenschnittstelle für Mac und Linux verwenden](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 Weitere Informationen finden Sie im [Node.js Developer Center](/nodejs/azure/).
 
-[die Node.js-Version angeben]: nodejs-specify-node-version-azure-apps.md
-[die Azure-Befehlszeilenschnittstelle für Mac und Linux verwenden]:cli-install-nodejs.md
-[Benutzerdefinierte Website-Bereitstellungsskripts mit Kudu]: https://channel9.msdn.com/Shows/Azure-Friday/Custom-Web-Site-Deployment-Scripts-with-Kudu-with-David-Ebbo
+[specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
+[How to use the Azure Command-Line Interface for Mac and Linux]:cli-install-nodejs.md
+[Custom Website Deployment Scripts with Kudu]: https://channel9.msdn.com/Shows/Azure-Friday/Custom-Web-Site-Deployment-Scripts-with-Kudu-with-David-Ebbo

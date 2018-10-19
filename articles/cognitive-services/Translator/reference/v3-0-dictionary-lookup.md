@@ -1,22 +1,23 @@
 ---
-title: Suchmethoden für das Wörterbuch der Microsoft Textübersetzungs-API | Microsoft-Dokumentation
-description: Verwenden Sie Suchmethode für das Wörterbuch der Microsoft Textübersetzungs-API.
+title: Textübersetzungs-API – Methode zur Wörterbuchsuche (Dictionary Lookup)
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die Methode zur Wörterbuchsuche der Textübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5a186f60dc099b095c00056d965aa92618c2c708
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 41b610f3504a8eb6619613e3ad0aa7c1c4cf9f66
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868084"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127840"
 ---
-# <a name="text-api-30-dictionary-lookup"></a>Text-API 3.0: Wörterbuchsuche
+# <a name="translator-text-api-30-dictionary-lookup"></a>Textübersetzungs-API 3.0: Wörterbuchsuche
 
 Die Suche stellt alternative Übersetzungen für ein Wort und eine kleine Anzahl von idiomatischen Ausdrücken bereit. Jede Übersetzung enthält die Wortart und eine Liste von Rückübersetzungen. Durch die Rückübersetzungen kann ein Benutzer die Übersetzung im Kontext nachvollziehen. Der Vorgang [Wörterbuchbeispiel](.\v3-0-dictionary-examples.md) ermöglicht das Ausführen eines Drilldowns, um Beispiele für die Verwendung jedes Übersetzungspaars anzuzeigen.
 
@@ -44,7 +45,7 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
     <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](.\v3-0-languages.md) als Quellsprache auswählen.</td>
   </tr>
   <tr>
-    <td>in:</td>
+    <td>zu</td>
     <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](.\v3-0-languages.md) als Zielsprache auswählen.</td>
   </tr>
 </table>

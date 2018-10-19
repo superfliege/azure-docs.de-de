@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
-ms.openlocfilehash: 8885eba0d69c869ad5d298094b835f0351d8d94d
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d05be48da296b0d088e38b4c7474103b02e6d5cd
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343200"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721074"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-analytics-for-uk-nhs"></a>Azure Security and Compliance Blueprint: Datenanalyse gemäß NHS (Vereinigtes Königreich)
 
@@ -29,7 +29,7 @@ Diese Lösung umfasst eine Analyseplattform, auf der Kunden ihre eigenen Analyse
 
 Azure bietet den Kunden verschiedene Dienste zur Berichterstellung und Analyse. Diese Lösung integriert Azure Analysis Services in Azure SQL-Datenbank, damit Daten schnell durchsucht werden und durch eine bessere Modellierung von Kundendaten schneller Ergebnisse geliefert werden können. Azure Analysis Services ist eine Form von maschinellem Lernen und ist darauf ausgerichtet, die Abfragegeschwindigkeit zu erhöhen, indem neue Beziehungen zwischen Datasets ermittelt werden. Wenn die Daten über verschiedene statistische Funktionen trainiert wurden, können bis zu sieben zusätzliche Abfragepools (mit dem Kundenserver acht) mit denselben tabellarischen Modellen synchronisiert werden, um die Abfrageworkload auszuweiten und die Antwortzeiten zu reduzieren.
 
-Für erweiterte Analysen und Berichterstattungen können Azure SQL-Datenbanken mit Columnstore-Indizes konfiguriert werden. Azure Analysis Services und Azure SQL-Datenbanken können abhängig von der Nutzung durch den Kunden zentral hoch- bzw. herunterskaliert oder vollständig ausgeschaltet werden. Jeglicher SQL-Datenverkehr wird mit SSL über selbstsignierte Zertifikate verschlüsselt. Azure empfiehlt als bewährte Methode die Verwendung einer vertrauenswürdigen Zertifizierungsstelle für erweiterte Sicherheit.
+Für erweiterte Analysen und Berichterstattungen können Azure SQL-Datenbanken mit Columnstore-Indizes konfiguriert werden. Azure Analytics Services und Azure SQL-Datenbanken können abhängig von der Nutzung durch den Kunden zentral hoch- bzw. herunterskaliert oder vollständig ausgeschaltet werden. Jeglicher SQL-Datenverkehr wird mit SSL über selbstsignierte Zertifikate verschlüsselt. Azure empfiehlt als bewährte Methode die Verwendung einer vertrauenswürdigen Zertifizierungsstelle für erweiterte Sicherheit.
 
 Sobald Daten in Azure SQL-Datenbank hochgeladen und von Azure Analysis Services trainiert wurden, werden sie sowohl von dem betrieblichen Benutzer als auch vom SQL- bzw. Datenadministrator über Power BI verarbeitet. Power BI zeigt Daten intuitiv an und erfasst Informationen für mehrere Datasets, um zusätzliche Erkenntnisse zu erhalten. Power BI weist ein hohes Maß an Flexibilität auf und kann in Azure SQL-Datenbank integriert werden. Dadurch wird sichergestellt, dass Kunden eine Konfiguration vornehmen können, damit dieser Dienst entsprechend der jeweiligen Geschäftsanforderungen die verschiedensten Szenarios verarbeiten kann.
 

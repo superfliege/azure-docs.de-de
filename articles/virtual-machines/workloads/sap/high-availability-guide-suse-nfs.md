@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 6ad943d2ae98093f7e5b94df59757ff603083cfe
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 99b7b83ca2d7f6f19df137e6ecf5deaf411e9a5e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668954"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634743"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -119,7 +119,7 @@ Sie können eine der Schnellstartvorlagen auf GitHub verwenden, um alle erforder
    4. Administratorbenutzername und Administratorkennwort  
       Es wird ein neuer Benutzer erstellt, der sich am Computer anmelden kann.
    5. Subnetz-ID  
-      Die ID des Subnetzes, mit dem die virtuellen Computer eine Verbindung herstellen sollen. Lassen Sie das Feld leer, wenn Sie ein neues virtuelles Netzwerk erstellen möchten. Wählen Sie alternativ das Subnetz des virtuellen VPN- oder ExpressRoute-Netzwerks aus, um den virtuellen Computer mit dem lokalen Netzwerk zu verbinden. Die ID hat normalerweise das folgende Format: /subscriptions/**&lt;Abonnement-ID&gt;**/resourceGroups/**&lt;Name der Ressourcengruppe&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;Name des virtuellen Netzwerks&gt;**/subnets/**&lt;Name des Subnetzes&gt;**
+      Wenn Sie die VM in einem vorhandenen VNet bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/**&lt;Abonnement-ID&gt;**/resourceGroups/**&lt;Name der Ressourcengruppe&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;Name des virtuellen Netzwerks&gt;**/subnets/**&lt;Name des Subnetzes&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Manuelles Bereitstellen von Linux über das Azure-Portal
 

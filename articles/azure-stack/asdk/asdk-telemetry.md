@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: bfd16901c5ce036719a1ed19e9a5b5c6ef52be93
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e50cb33acc95567a24afb19f88f88a3f586e0124
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257423"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224751"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack-Telemetriedaten
 
@@ -85,13 +85,13 @@ Die Telemetrieebenen sind kumulativ und in vier Ebenen (0–3) unterteilt:
 **1 (Standard)**. Sicherheitsdaten sowie grundlegende Integritäts- und Qualitätsdaten. Grundlegende Geräteinformationen wie qualitätsbezogene Daten, App-Kompatibilität, App-Nutzungsdaten und Daten der Sicherheitsebene. Wenn Sie die Telemetrieebene auf „Standard“ festlegen, wird die Azure Stack-Telemetrie aktiviert. Auf dieser Ebene werden unter anderem folgende Ebene erfasst:
 
 - **Grundlegende Geräteinformationen** zum Nachvollziehen der Arten und Konfigurationen nativer und virtualisierter Windows Server 2016-Instanzen im Ökosystem. Hierzu zählen unter anderem folgende Informationen:
- - Computerattribute wie OEM und Modell
- - Netzwerkattribute wie Anzahl und Geschwindigkeit von Netzwerkkarten
- - Prozessor- und Arbeitsspeicherattribute wie Anzahl von Kernen und Arbeitsspeichergröße
- - Speicherattribute wie Laufwerkanzahl, Art und Größe
+  - Computerattribute wie OEM und Modell
+  - Netzwerkattribute wie Anzahl und Geschwindigkeit von Netzwerkkarten
+  - Prozessor- und Arbeitsspeicherattribute wie Anzahl von Kernen und Arbeitsspeichergröße
+  - Speicherattribute wie Laufwerkanzahl, Art und Größe
 - **Telemetriefunktion** einschließlich hochgeladener Ereignisse (in Prozent), gelöschter Ereignisse und Zeitpunkt des letzten Uploads
 - **Qualitätsbezogene Informationen**, die Microsoft einen grundlegenden Einblick in die Leistung von Azure Stack geben. Ein Beispiel wäre etwa die Anzahl kritischer Warnungen für eine bestimmte Hardwarekonfiguration.
-- \*\*Kompatibilitätsdaten, die Aufschluss darüber geben, welche Ressourcenanbieter in einem System und auf einem virtuellen Computer installiert sind, und die Identifizierung möglicher Kompatibilitätsprobleme ermöglichen.
+- **Kompatibilitätsdaten**, die Aufschluss darüber geben, welche Ressourcenanbieter in einem System und auf einem virtuellen Computer installiert sind und die Identifizierung möglicher Kompatibilitätsprobleme ermöglichen.
 
 **2 (Erweitert)**. Zusätzliche Informationen, etwa zur Verwendung und Leistung des Betriebssystems und anderer Azure Stack-Dienste, sowie erweiterte Zuverlässigkeitsdaten und Daten der Ebenen „Standard“ und „Sicherheit“.
 

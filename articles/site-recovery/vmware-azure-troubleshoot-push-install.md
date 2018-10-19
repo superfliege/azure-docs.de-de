@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery – Problembehandlung für „VMware zu Azure“ | Microsoft-Dokumentation
-description: Beheben von Fehlern beim Replizieren von virtuellen Azure-Computern
+title: Beheben von Fehlern bei der Pushinstallation von Mobility Service während der Aktivierung der Replikation (VMware zu Azure) | Microsoft-Dokumentation
+description: Beheben Sie Fehler bei der Pushinstallation von Mobility Service, wenn Sie virtuelle Azure-Computer replizieren.
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,93 +8,95 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.author: ramamill
-ms.date: 07/06/2018
-ms.openlocfilehash: 8d5db03eeebb659414ea1f554e5b34c938fd2795
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 09/19/2018
+ms.openlocfilehash: 22c01f2bd9c763eeb681bf2d60e0ccffe1154d85
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952908"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497619"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
-In diesem Artikel wird beschrieben, wie häufige eventuell auftretende Fehler beim Installieren von Azure Site Recovery Mobility Service auf dem Quellserver zum Aktivieren des Schutzes behandelt werden.
+Die Installation von Mobility Service ist ein wichtiger Schritt bei der Aktivierung der Replikation. Der Erfolg dieses Schritts hängt ausschließlich davon ab, ob Sie die Voraussetzungen erfüllen und mit unterstützten Konfigurationen arbeiten. Im Folgenden werden die Gründe für die häufigsten Fehler aufgeführt, die bei der Installation von Mobility Service auftreten.
 
-## <a name="error-78007---the-requested-operation-could-not-be-completed"></a>Fehler 78007 – Der angeforderte Vorgang konnte nicht abgeschlossen werden.
-Dieser Fehler kann aus mehreren Gründen vom Dienst ausgelöst werden. Wählen Sie den entsprechenden Anbieterfehler aus, um das Problem weiter einzugrenzen.
+* Fehler bei Anmeldeinformationen/Berechtigungen
+* Verbindungsfehler
+* Nicht unterstützte Betriebssysteme
 
-* [Fehler 95103](#error-95103---protection-could-not-be-enabled-ep0854) 
-* [Fehler 95105](#error-95105---protection-could-not-be-enabled-ep0856) 
-* [Fehler 95107](#error-95107---protection-could-not-be-enabled-ep0858) 
-* [Fehler 95108](#error-95108---protection-could-not-be-enabled-ep0859) 
-* [Fehler 95117](#error-95117---protection-could-not-be-enabled-ep0865) 
-* [Fehler 95213](#error-95213---protection-could-not-be-enabled-ep0874) 
-* [Fehler 95224](#error-95224---protection-could-not-be-enabled-ep0883) 
-* [Fehler 95265](#error-95265---protection-could-not-be-enabled-ep0902) 
+Wenn Sie die Replikation aktivieren, versucht Azure Site Recovery, die Pushinstallation des Mobility Service-Agents auf Ihrem virtuellen Computer auszuführen. Im Rahmen dieses Vorgangs versucht der Konfigurationsserver, eine Verbindung mit dem virtuellen Computer herzustellen und den Agent zu kopieren. Folgen Sie der unten aufgeführten Schritt-für-Schritt-Anleitung zur Problembehandlung, um eine erfolgreiche Installation zu ermöglichen.
 
+## <a name="credentials-check-errorid-95107--95108"></a>Überprüfung der Anmeldeinformationen (Fehler-ID: 95107 & 95108)
 
-## <a name="error-95105---protection-could-not-be-enabled-ep0856"></a>Fehler 95105 – Der Schutz konnte nicht aktiviert werden (EP0856).
+* Überprüfen Sie, ob das beim Aktivieren der Replikation ausgewählte Benutzerkonto **gültig und korrekt** ist.
+* Azure Site Recovery benötigt **Administratorberechtigungen**, um die Pushinstallation ausführen zu können.
+  * Überprüfen Sie unter Windows, ob das Benutzerkonto auf dem Quellcomputer über lokalen oder domänenspezifischen Administratorzugriff verfügt.
+  * Wenn Sie kein Domänenkonto verwenden, müssen Sie die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer deaktivieren.
+    * Fügen Sie zum Deaktivieren der Remote-Benutzerzugriffssteuerung unter dem Registrierungsschlüssel „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System“ einen neuen DWORD-Eintrag hinzu: „LocalAccountTokenFilterPolicy“. Legen Sie den Wert auf 1 fest. Führen Sie zur Ausführung dieses Schritts den folgenden Befehl an der Eingabeaufforderung aus:
 
-**Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
---- | --- | ---
-95105 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0856**. <br> Entweder ist die **Datei- und Druckerfreigabe** auf dem Quellcomputer nicht zulässig, oder es bestehen Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellcomputer.| Die **Datei- und Druckerfreigabe** ist nicht aktiviert. | Lassen Sie die **Datei- und Druckerfreigabe** auf dem Quellcomputer in der Windows-Firewall zu. Wählen Sie auf dem Quellcomputer unter **Windows-Firewall** > **Eine App oder ein Feature durch die Windows-Firewall zulassen** die Option **Datei- und Druckerfreigabe für alle Profile** aus. </br> Überprüfen Sie außerdem, ob die unten aufgeführten Voraussetzungen erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.<br> Weitere Informationen zur [Problembehandlung bei WMI-Problemen](#troubleshoot-wmi-issues).
+         `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+  * Unter Linux müssen Sie das Stammkonto auswählen, um die Installation des Mobility Service-Agents erfolgreich ausführen zu können.
 
+Wenn Sie die Anmeldeinformationen des ausgewählten Benutzerkontos ändern möchten, folgen Sie den [hier](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) angegebenen Anweisungen.
 
-## <a name="error-95107---protection-could-not-be-enabled-ep0858"></a>Fehler 95107 – Der Schutz konnte nicht aktiviert werden (EP0858).
+## <a name="connectivity-check-errorid-95117--97118"></a>**Konnektivitätsprüfung (Fehler-ID: 95117 & 97118)**
 
-**Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
---- | --- | ---
-95107 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0858**. <br> Entweder sind die Anmeldeinformationen für das Installieren von Mobility Service falsch, oder das Benutzerkonto verfügt nicht über ausreichende Berechtigungen. | Die auf dem Quellcomputer angegebenen Benutzeranmeldeinformationen zum Installieren von Mobility Service sind falsch. | Stellen Sie sicher, dass die für den Quellcomputer auf dem Konfigurationsserver angegebenen Anmeldeinformationen richtig sind. <br> Navigieren Sie zum Hinzufügen oder Bearbeiten von Benutzeranmeldeinformationen zum Konfigurationsserver, und wählen Sie **Cspsconfigtool** > **Konto verwalten** aus. </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.
+* Stellen Sie sicher, dass Sie Ihren Quellcomputer über den Konfigurationsserver pingen können. Wenn Sie beim Aktivieren der Replikation einen Prozessserver für horizontales Skalieren ausgewählt haben, stellen Sie sicher, dass Sie Ihren Quellcomputer über den Prozessserver pingen können.
+  * Verwenden Sie in der Befehlszeile des Quellservercomputers wie unten gezeigt Telnet zum Pingen des Konfigurationsservers/Prozessservers für horizontales Skalieren mit dem HTTPS-Port (Standardport 9443), um festzustellen, ob Netzwerkkonnektivitätsprobleme bestehen oder der Port durch die Firewall blockiert wird.
 
+     `telnet <CS/ scale-out PS IP address> <port>`
 
-## <a name="error-95117---protection-could-not-be-enabled-ep0865"></a>Fehler 95117 – Der Schutz konnte nicht aktiviert werden (EP0865).
+  * Wenn Sie keine Verbindung herstellen können, lassen Sie den eingehenden Port 9443 auf dem Konfigurationsserver/Prozessserver für horizontales Skalieren zu.
+  * Überprüfen Sie den Status des Diensts **InMage Scout VX Agent – Sentinel/Outpost**. Starten Sie den Dienst, wenn er nicht ausgeführt wird.
 
-**Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
---- | --- | ---
-95117 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0865**. <br> Entweder wird der Quellcomputer nicht ausgeführt, oder es bestehen Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellcomputer. | Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellserver. | Überprüfen Sie die Verbindung zwischen dem Prozessserver und dem Quellserver. </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.|
+* Darüber hinaus gilt für **Linux-VMs** Folgendes:
+  * Überprüfen Sie, ob die aktuellen Versionen der Pakete openssh, openssh-server und openssl installiert sind.
+  * Stellen Sie unbedingt sicher, dass Secure Shell (SSH) auf Port 22 aktiviert ist und ausgeführt wird.
+  * Die SFTP-Dienste müssen ausgeführt werden. Gehen Sie wie folgt vor, um das SFTP-Subsystem und die Kennwortauthentifizierung in der Datei „sshd_config“ zu aktivieren:
+    * Melden Sie sich als Root-Benutzer an.
+    * Wechseln Sie zur Datei „/etc/ssh/sshd_config“, und suchen Sie die Zeile, die mit „PasswordAuthentication“ beginnt.
+    * Heben Sie die Auskommentierung der Zeile auf, und ändern Sie den Wert in „yes“.
+    * Suchen Sie die Zeile, die mit „Subsystem“ beginnt, und heben Sie die Auskommentierung der Zeile auf.
+    * Starten Sie den SSHD-Dienst neu.
+* Ein Verbindungsversuch könnte fehlschlagen, wenn nach einer bestimmten Zeit keine ordnungsgemäße Antwort erfolgt ist, oder es ist ein Fehler bei einer hergestellten Verbindung aufgetreten, weil der verbundene Host nicht reagiert hat.
+* Es kann sich um ein Verbindungs-, Netzwerk- oder Domänenproblem handeln. Es könnte sich auch um ein Problem beim Auflösen von DNS-Namen oder um ein Auslastungsproblem des TCP-Ports handeln. Überprüfen Sie, ob in Ihrer Domäne derartige bekannte Probleme vorkommen.
 
-## <a name="error-95103---protection-could-not-be-enabled-ep0854"></a>Fehler 95103 – Der Schutz konnte nicht aktiviert werden (EP0854).
+## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Überprüfung der Datei- und Druckerfreigabedienste (Fehler-ID: 95105 & 95106)
 
-**Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
---- | --- | ---
-95103 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0854**. <br> Entweder ist die Windows-Verwaltungsinstrumentation (WMI) auf dem Quellcomputer nicht zulässig, oder es bestehen Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellcomputer.| WMI ist in der Windows-Firewall blockiert. | Lassen Sie WMI in der Windows-Firewall zu. Wählen Sie unter **Windows-Firewall** > **Eine App oder ein Feature durch die Windows-Firewall zulassen** die Option **WMI für alle Profile** aus. </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.|
+Überprüfen Sie nach der Konnektivitätsprüfung, ob der Datei- und Druckerfreigabedienst auf Ihrem virtuellen Computer aktiviert ist.
 
-## <a name="error-95213---protection-could-not-be-enabled-ep0874"></a>Fehler 95213 – Der Schutz konnte nicht aktiviert werden (EP0874).
+**Windows 2008 R2 und vorherige Versionen**:
 
-**Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
---- | --- | ---
-95213 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer „%SourceIP;“ mit dem Fehlercode **EP0874**. <br> | Die Version des Betriebssystems wird auf dem Quellcomputer nicht unterstützt. <br>| Stellen Sie sicher, dass die Version des Betriebssystems auf dem Quellcomputer unterstützt wird. Weitere Informationen finden Sie in der [Supportmatrix](https://aka.ms/asr-os-support). </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](https://aka.ms/pushinstallerror) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.| 
+* Gehen Sie wie folgt vor, um die Datei- und Druckfreigabe über die Windows-Firewall zu aktivieren:
+  * Öffnen Sie die Systemsteuerung, und klicken Sie auf „System und Sicherheit“ -> „Windows-Firewall“. Klicken Sie im linken Bereich auf „Erweiterte Einstellungen“, und klicken Sie dann in der Konsolenstruktur auf „Eingehende Regeln“.
+  * Suchen Sie nach den Regeln „Datei- und Druckerfreigabe (NB-Sitzung eingehend)“ und „Datei- und Druckerfreigabe (SMB eingehend)“. Klicken Sie mit der rechten Maustaste auf jede Regel, und klicken Sie dann auf **Regel aktivieren**.
+* Gehen Sie wie folgt vor, um die Dateifreigabe mit der Gruppenrichtlinie zu aktivieren:
+  * Wechseln Sie zu „Start“, geben Sie „gpmc.msc“ ein, und starten Sie die Suche.
+  * Öffnen Sie im Navigationsbereich die folgenden Ordner: „Richtlinie für ,Lokaler Computer‘“, „Benutzerkonfiguration“, „Administrative Vorlagen“, „Windows-Komponenten“ und „Netzwerkfreigabe“.
+  * Doppelklicken Sie im Detailbereich auf **Verhindern, dass Benutzer Dateien in ihrem Profil freigeben**. Wenn Sie die Gruppenrichtlinieneinstellung deaktivieren und die Option zum Freigeben von Dateien für den Benutzer aktivieren möchten, klicken Sie auf „Deaktiviert“. Klicken Sie zum Speichern der Änderungen auf „OK“. Klicken Sie [hier](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)), um weitere Informationen zu erhalten.
 
+Um die Datei- und Druckerfreigabe in **höheren Versionen** zu aktivieren, folgen Sie den [hier](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) angegebenen Anweisungen.
 
-## <a name="error-95108---protection-could-not-be-enabled-ep0859"></a>Fehler 95108 – Der Schutz konnte nicht aktiviert werden (EP0859).
+## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Überprüfung der Konfiguration der Windows-Verwaltungsinstrumentation (Windows Management Instrumentation, WMI)
 
-**Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
---- | --- | ---
-95108 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0859**. <br>| Entweder sind die Anmeldeinformationen für das Installieren von Mobility Service falsch, oder das Benutzerkonto verfügt nicht über ausreichende Berechtigungen. <br>| Stellen Sie sicher, dass die bereitgestellten Anmeldeinformationen die Anmeldeinformationen für das **root**-Konto sind. Um Benutzeranmeldeinformationen hinzuzufügen oder zu bearbeiten, navigieren Sie zum Konfigurationsserver, und klicken Sie auf dem Desktop auf das Verknüpfungssymbol **Cspsconfigtool**. Klicken Sie auf **Konto verwalten**, um Anmeldeinformationen hinzuzufügen bzw. zu bearbeiten.|
+Aktivieren Sie nach der Überprüfung der Datei- und Druckerfreigabedienste den WMI-Dienst über die Firewall.
 
-## <a name="error-95265---protection-could-not-be-enabled-ep0902"></a>Fehler 95265 – Der Schutz konnte nicht aktiviert werden (EP0902).
+* Klicken Sie in der Systemsteuerung auf „Sicherheit“, und klicken Sie dann auf „Windows-Firewall“.
+* Klicken Sie auf „Einstellungen ändern“, und klicken Sie dann auf die Registerkarte „Ausnahmen“.
+* Aktivieren Sie im Fenster „Ausnahmen“ das Kontrollkästchen für die Windows-Verwaltungsinstrumentation (WMI), um den WMI-Datenverkehr durch die Firewall zu aktivieren. 
 
-**Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
---- | --- | ---
-95265 </br>**Meldung:** Die Pushinstallation von Mobility Service auf dem Quellcomputer wurde erfolgreich durchgeführt. Der Quellcomputer muss jedoch neu gestartet werden, damit einige Systemänderungen wirksam werden. <br>| Eine ältere Version von Mobility Service wurde bereits auf dem Server installiert.| Die Replikation des virtuellen Computers wird nahtlos fortgesetzt.<br> Starten Sie den Server während des nächsten Wartungsfensters neu, um die Vorteile der neuen Mobility Service-Erweiterungen zu erhalten.|
+Sie können den WMI-Datenverkehr durch die Firewall auch an der Eingabeaufforderung aktivieren. Verwenden Sie den folgenden Befehl: `netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+Weitere Artikel zur WMI-Problembehandlung finden Sie unter den folgenden Links.
 
-
-## <a name="error-95224---protection-could-not-be-enabled-ep0883"></a>Fehler 95224 – Der Schutz konnte nicht aktiviert werden (EP0883).
-
-**Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
---- | --- | ---
-95224 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer „%SourceIP;“ mit dem Fehlercode **EP0883**. Ein Neustart des Systems aufgrund einer vorherigen Installation bzw. eines Updates steht an.| Das System wurde nach der Deinstallation einer älteren bzw. inkompatiblen Version von Mobility Service nicht neu gestartet.| Stellen Sie sicher, dass keine Version von Mobility Service auf dem Server vorhanden ist. <br> Starten Sie den Server neu, und führen Sie den Auftrag zur Schutzaktivierung erneut aus.|
-
-## <a name="resource-to-troubleshoot-push-installation-problems"></a>Ressource zur Behandlung von Problemen bei der Pushinstallation
-
-#### <a name="troubleshoot-file-and-print-sharing-issues"></a>Behandeln von Problemen bei der Datei- und Druckerfreigabe
-* [Aktivieren oder Deaktivieren der Dateifreigabe mit der Gruppenrichtlinie](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
-* [Aktivieren der Datei- und Druckfreigabe über die Windows-Firewall](https://technet.microsoft.com/library/ff633412(v=ws.10).aspx)
-
-#### <a name="troubleshoot-wmi-issues"></a>Behandeln von WMI-Problemen
 * [Grundlegende WMI-Tests](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
 * [WMI-Problembehandlung](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
 * [Problembehandlung bei WMI-Skripts und WMI-Diensten](https://technet.microsoft.com/library/ff406382.aspx#H22)
+
+## <a name="unsupported-operating-systems"></a>Nicht unterstützte Betriebssysteme
+
+Eine andere häufige Ursache für Fehler ist ein nicht unterstütztes Betriebssystem. Stellen Sie sicher, dass Sie ein unterstütztes Betriebssystem/eine unterstützte Kernel-Version verwenden, um eine erfolgreiche Installation von Mobility Service zu ermöglichen.
+
+Informationen zu den von Azure Site Recovery unterstützten Betriebssystemen finden Sie in unserem [Dokument zur Unterstützungsmatrix](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Oracle Eloqua mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Oracle Eloqua mithilfe von Azure Data Factory (Vorschauversion) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Daten aus Oracle Eloqua mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 821e345933ba52ed2c71251bab3ba159e5412568
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 56160b8db3bad5ebd04fc30442833d36f1633ed1
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048372"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123520"
 ---
-# <a name="copy-data-from-oracle-eloqua-using-azure-data-factory"></a>Kopieren von Daten aus Oracle Eloqua mithilfe von Azure Data Factory
+# <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopieren von Daten aus Oracle Eloqua mithilfe von Azure Data Factory (Vorschauversion)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Oracle Eloqua zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -45,10 +45,10 @@ Folgende Eigenschaften werden für den mit Oracle Eloqua verknüpften Dienst unt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Eloqua** festgelegt werden. | Ja |
-| endpoint | Der Endpunkt des Eloqua-Servers. Eloqua unterstützt mehrere Rechenzentren. Um den Endpunkt zu bestimmen, melden Sie sich mit Ihren Anmeldeinformationen bei https://login.eloqua.com an, und kopieren Sie dann den Teil mit der **Basis-URL** aus der umgeleiteten URL nach dem Muster `xxx.xxx.eloqua.com`. | Ja |
-| username | Website- und Benutzername Ihres Eloqua-Kontos im Format `SiteName\Username` (Beispiel: `Eloqua\Alice`)  | Ja |
-| password | Das Kennwort, das zum Benutzernamen gehört. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| type | Die „type“-Eigenschaft muss auf **Eloqua** festgelegt werden. | JA |
+| endpoint | Der Endpunkt des Eloqua-Servers. Eloqua unterstützt mehrere Rechenzentren. Um den Endpunkt zu bestimmen, melden Sie sich mit Ihren Anmeldeinformationen bei https://login.eloqua.com an, und kopieren Sie dann den Teil mit der **Basis-URL** aus der umgeleiteten URL nach dem Muster `xxx.xxx.eloqua.com`. | JA |
+| username | Website- und Benutzername Ihres Eloqua-Kontos im Format `SiteName\Username` (Beispiel: `Eloqua\Alice`)  | JA |
+| password | Das Kennwort, das zum Benutzernamen gehört. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |
@@ -103,8 +103,8 @@ Legen Sie zum Kopieren von Daten aus Oracle Eloqua den Quelltyp in der Kopierakt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **EloquaSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Accounts"`. | Ja |
+| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **EloquaSource** festgelegt werden. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Accounts"`. | JA |
 
 **Beispiel:**
 

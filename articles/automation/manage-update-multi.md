@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 231a9876c7a84953a7d9a88b761a1da9475d1f48
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 23f86581b5ecc5257ccb246c7199eef4246efb08
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248140"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498231"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -50,7 +50,7 @@ Die Updateverwaltung wird für folgende Betriebssysteme unterstützt:
 
 Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.
 
-Diese Lösung unterstützt keinen OMS-Agent (Operations Management Suite) für Linux, der für die Berichterstattung an mehrere Azure Log Analytics-Arbeitsbereiche konfiguriert ist.
+Diese Lösung unterstützt keinen Log Analytics-Agent für Linux, der für die Berichterstattung an mehrere Azure Log Analytics-Arbeitsbereiche konfiguriert ist.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Aktivieren der Updateverwaltung für virtuelle Azure-Computer
 
@@ -127,6 +127,7 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
 
 - **Name**: Geben Sie einen eindeutigen Namen zur Identifizierung der Updatebereitstellung ein.
 - **Betriebssystem**: Wählen Sie **Windows** oder **Linux** aus.
+- **Zu aktualisierende Gruppen (Vorschau)**: Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management.md#using-dynamic-groups).
 - **Zu aktualisierende Computer**: Wählen Sie eine gespeicherte Suche, eine importierte Gruppe oder Computer aus, um die Computer auszuwählen, die Sie aktualisieren möchten. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Sie können den Integritätsstatus des Computers sehen, bevor Sie die Updatebereitstellung planen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
   ![Bereich „Neue Updatebereitstellung“](./media/manage-update-multi/update-select-computers.png)
@@ -141,13 +142,15 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
   - Tools
   - Aktualisierungen
 
-- **Auszuschließende Updates**: Bei Auswahl dieser Option wird die Seite **Ausschließen** geöffnet. Geben Sie die auszuschließenden KB-Artikel oder Paketnamen ein.
+- **Einzuschließende/auszuschließende Updates**: Öffnet die Seite **Einschließen/ausschließen**. Updates, die eingeschlossen oder ausgeschlossen werden sollen, befinden sich auf verschiedenen Registerkarten. Weitere Informationen zur Vorgehensweise beim Einschließen finden Sie unter [Verhalten beim Einschließen](automation-update-management.md#inclusion-behavior).
 
 - **Zeitplaneinstellungen**: Sie können das Standarddatum und die Standarduhrzeit (30 Minuten nach der aktuellen Zeit) übernehmen. Sie können auch eine andere Zeit angeben.
 
    Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Wählen Sie zum Einrichten eines sich wiederholenden Zeitplans unter **Wiederholung** die Option **Serie** aus.
 
    ![Dialogfeld „Zeitplaneinstellungen“](./media/manage-update-multi/update-set-schedule.png)
+
+- **Vor und nach dem Vorgang auszuführende Skripts**: Wählen Sie die Skripts aus, die vor und nach Ihrer Bereitstellung ausgeführt werden sollen. Weitere Informationen finden Sie unter [Verwalten von Pre- und Post-Skripts](pre-post-scripts.md).
 - **Wartungsfenster (Minuten)**: Geben Sie den Zeitraum an, in dem die Updatebereitstellung stattfinden soll. Mit dieser Einstellung können Sie sicherstellen, dass Änderungen in den von Ihnen festgelegten Wartungsfenstern ausgeführt werden.
 
 - **Neustartsteuerung**: Diese Einstellung bestimmt, wie Neustarts für die Updatebereitstellung behandelt werden.

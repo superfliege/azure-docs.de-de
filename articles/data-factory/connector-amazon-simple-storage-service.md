@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/25/2018
+ms.date: 09/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 3635e8bf1d9ba4061da5b8f416a3b755f7064000
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: bdbf0b74b6e851e0dd84ff5d9aafb84d878d8ea2
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045635"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542073"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +35,10 @@ Der Amazon S3-Connector unterstützt insbesondere das Kopieren von Dateien im je
 Um Daten von Amazon S3 zu kopieren, müssen Sie sicherstellen, dass Ihnen die folgenden Berechtigungen erteilt wurden:
 
 - `s3:GetObject` und `s3:GetObjectVersion` für Amazon S3-Objektvorgänge.
-- `s3:ListBucket` oder `s3:GetBucketLocation` für Amazon S3-Bucketvorgänge. Wenn Sie den Assistent zum Kopieren in Data Factory verwenden, ist außerdem `s3:ListAllMyBuckets` erforderlich.
+- `s3:ListBucket` oder `s3:GetBucketLocation` für Amazon S3-Bucketvorgänge. 
+
+>[!NOTE]
+>Bei der Verwendung von Data Factory GUI für die Dokumenterstellung ist die Berechtigung `s3:ListAllMyBuckets` auch für Vorgänge wie Testverbindung und Durchsuchen/Navigieren von Dateipfaden erforderlich. Wenn Sie diese Berechtigung nicht erteilen möchten, überspringen Sie die Testverbindung auf der Seite zur Erstellung verlinkter Dienste, und geben Sie den Pfad direkt in den Datensatzeinstellungen an.
 
 Ausführliche Informationen zur vollständigen Liste der Amazon S3-Berechtigungen finden Sie unter [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) (Angeben von Berechtigungen in einer Richtlinie).
 
@@ -51,9 +54,9 @@ Folgende Eigenschaften werden für den mit Amazon S3 verknüpften Dienst unterst
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **AmazonS3** festgelegt werden. | Ja |
-| accessKeyId | ID des geheimen Zugriffsschlüssels. |Ja |
-| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
+| type | Die type-Eigenschaft muss auf **AmazonS3** festgelegt werden. | JA |
+| accessKeyId | ID des geheimen Zugriffsschlüssels. |JA |
+| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |JA |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 >[!NOTE]
@@ -90,8 +93,8 @@ Legen Sie zum Kopieren von Daten aus Amazon S3 die type-Eigenschaft des Datasets
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf **AmazonS3Object** festgelegt werden. |Ja |
-| bucketName | Der Name des S3-Buckets. Der Platzhalterfilter wird nicht unterstützt. |Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **AmazonS3Object** festgelegt werden. |JA |
+| bucketName | Der Name des S3-Buckets. Der Platzhalterfilter wird nicht unterstützt. |JA |
 | key | Der **Name oder Platzhalterfilter** des S3-Objektschlüssels unter dem angegebenen Bucket. Ist nur anwendbar, wenn die prefix-Eigenschaft nicht angegeben ist. <br/><br/>Der Platzhalterfilter wird nur für den Dateinamen, aber nicht für den Ordner unterstützt. Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen).<br/>- Beispiel 1: `"key": "rootfolder/subfolder/*.csv"`<br/>- Beispiel 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält. |Nein  |
 | prefix | Präfix für den S3-Objektschlüssel. Objekte, deren Schlüssel mit diesem Präfix beginnen, werden ausgewählt. Ist nur anwendbar, wenn die key-Eigenschaft nicht angegeben ist. |Nein  |
 | Version | Die Version des S3-Objekts, wenn die S3-Versionsverwaltung aktiviert ist. |Nein  |
@@ -168,7 +171,7 @@ Legen Sie zum Kopieren von Daten aus Amazon S3 den Quelltyp in der Kopieraktivit
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **FileSystemSource** festgelegt werden. |Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **FileSystemSource** festgelegt werden. |JA |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf TRUE festgelegt und die Senke ein dateibasierter Speicher ist, wird ein leerer Ordner/Unterordner nicht in die Senke kopiert bzw. nicht in ihr erstellt.<br/>Zulässige Werte sind **true** (Standard) oder **false**. | Nein  |
 
 **Beispiel:**

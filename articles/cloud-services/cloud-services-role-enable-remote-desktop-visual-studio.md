@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 87c7029836bf28464fd48e17480119a4dcb1201c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 703e969fe31def329be60037cceba27864063b4e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146492"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304052"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services mit Visual Studio
 
@@ -30,7 +30,7 @@ Mit Remotedesktop können Sie auf den Desktop einer Rolle zugreifen, die in Azur
 
 Der Veröffentlichungs-Assistent, den Visual Studio für Clouddienste bereitstellt, umfasst eine Option zum Aktivieren von Remotedesktop während des Veröffentlichungsvorgangs mit Anmeldeinformationen, die Sie bereitstellen. Diese Option ist zur Verwendung beim Einsatz von Visual Studio 2017 Version 15.4 und früher geeignet.
 
-In Verbindung mit Visual Studio 2017 Version 15.5 und höher sollten Sie jedoch die Aktivierung von Remotedesktop über den Veröffentlichungs-Assistenten vermeiden, es sei denn, Sie arbeiten nur als einzelner Entwickler. Für jede Situation, in der das Projekt von anderen Entwicklern geöffnet werden könnte, aktivieren Sie stattdessen Remotedesktop über das Azure-Portal, über PowerShell oder von einer Releasedefinition in einem kontinuierlichen Bereitstellungsworkflow aus. Diese Empfehlung beruht auf einer Änderung der Art, wie Visual Studio über die Clouddienst-VM mit Remotedesktop kommuniziert. Dies wird in diesem Artikel erläutert.
+In Verbindung mit Visual Studio 2017 Version 15.5 und höher sollten Sie jedoch die Aktivierung von Remotedesktop über den Veröffentlichungs-Assistenten vermeiden, es sei denn, Sie arbeiten nur als einzelner Entwickler. Für jede Situation, in der das Projekt von anderen Entwicklern geöffnet werden könnte, aktivieren Sie stattdessen Remotedesktop über das Azure-Portal, über PowerShell oder von einer Releasepipeline in einem kontinuierlichen Bereitstellungsworkflow aus. Diese Empfehlung beruht auf einer Änderung der Art, wie Visual Studio über die Clouddienst-VM mit Remotedesktop kommuniziert. Dies wird in diesem Artikel erläutert.
 
 ## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>Konfigurieren von Remotedesktop über Visual Studio 2017 Version 15.4 und früher
 
@@ -82,9 +82,9 @@ Wenn Sie das Projekt gemeinsam mit einem Team nutzen, sollten Sie die Option im 
 
 ### <a name="deploying-from-a-build-server-with-visual-studio-2017-version-155-and-later"></a>Bereitstellen von einem Buildserver aus mit Visual Studio 2017 Version 15.5 und höher
 
-Sie können ein Clouddienstprojekt von einem Buildserver aus bereitstellen (z.B. mit Visual Studio Team Services), auf dem Visual Studio 2017 Version 15.5 oder höher im Build-Agent installiert ist. Mit dieser Anordnung erfolgt die Bereitstellung vom gleichen Computer aus, auf dem das Verschlüsselungszertifikat verfügbar ist.
+Sie können ein Clouddienstprojekt von einem Buildserver aus bereitstellen (z.B. mit Azure DevOps Services), auf dem Visual Studio 2017, Version 15.5 oder höher im Build-Agent installiert ist. Mit dieser Anordnung erfolgt die Bereitstellung vom gleichen Computer aus, auf dem das Verschlüsselungszertifikat verfügbar ist.
 
-Um die RDP-Erweiterung von Visual Studio Team Services zu verwenden, schließen Sie die folgenden Details in Ihre Builddefinition ein:
+Um die RDP-Erweiterung von Azure DevOps Services zu verwenden, schließen Sie die folgenden Details in Ihre Buildpipeline ein:
 
 1. Schließen Sie `/p:ForceRDPExtensionOverPlugin=true` in Ihre MSBuild-Argumente ein, um sicherzustellen, dass die Bereitstellung mit der RDP-Erweiterung anstelle des RDP-Plug-Ins funktioniert. Beispiel: 
 

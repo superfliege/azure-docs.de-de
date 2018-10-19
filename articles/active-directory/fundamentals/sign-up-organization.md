@@ -1,38 +1,43 @@
 ---
-title: Als Unternehmen für Azure Active Directory registrieren | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe eines Geschäfts-, Schul- oder Unikontos die Vorteile vorhandener Benutzerkonten, Richtlinien, Einstellungen oder lokaler Serverbereitstellungen, die Sie bereits besitzen, nutzen und die Effizienz zwischen der lokalen Identitätsinfrastruktur Ihres Unternehmens und Azure AD verbessern können.
+title: 'Gewusst wie: Registrieren für Azure Active Directory als Organisation | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie Ihre Organisation für die Verwendung von Azure und Azure Active Directory registrieren.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: a8d4781af0320f86eb5dd0b4b5e71c0ca7db5a18
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ccff64b88787291832b9d2ed84eb81919152d887
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064339"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364770"
 ---
-# <a name="how-to-sign-up-for-azure-ad-as-an-organization"></a>Registrieren für Azure Active Directory als Unternehmen
-Bis vor Kurzem war es nur mit einem Microsoft-Konto (Windows Live ID) möglich, sich für ein neues Microsoft Azure-Abonnement zu registrieren. Nun unterstützt Azure auch eine der beiden folgenden Kontomethoden zur Registrierung:
+# <a name="how-to-sign-up-for-azure-active-directory-as-an-organization"></a>Gewusst wie: Registrieren für Azure Active Directory als Organisation
+Registrieren Sie für Azure Active Directory (Azure AD) ein neues Microsoft Azure-Abonnement mit einer der folgenden Metoden:
 
-* **Microsoft-Konten** (von Ihnen für den privaten Gebrauch erstellt) – Bieten Zugriff auf alle für den normalen Computerbenutzer entwickelten Microsoft-Produkte und Clouddienste wie Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE oder Office 365. Wenn Sie sich für ein Outlook.com-Postfach registrieren, wird automatisch ein Microsoft-Konto erstellt. Nachdem ein Microsoft-Konto erstellt wurde, kann es für den Zugriff auf verbraucherbezogene Cloud-Dienste von Microsoft oder auf Azure verwendet werden. [Weitere Informationen](https://account.microsoft.com/account)
-* **Geschäfts- oder Schulkonten** (von einem Administrator zu Geschäfts-/Bildungszwecken vergeben) – Bieten Zugriff auf alle Clouddienste von Microsoft für kleine, mittlere und Großunternehmen, darunter Azure, Microsoft Intune oder Office 365. Wenn Sie sich als Unternehmen für einen dieser Dienste registrieren, wird in Azure Active Directory automatisch ein eigenes cloudbasiertes Verzeichnis für Ihr Unternehmen bereitgestellt. [Weitere Informationen](active-directory-administer.md)
-  
-    Nachdem das Verzeichnis erstellt wurde, kann ein Administrator Benutzer erstellen und ihnen auf Grundlage der Cloud-Dienstabonnements, auf die Sie Zugriff benötigen (z. B. Azure), Lizenzen zuweisen.
+- **Microsoft-Konto.** Verwenden Sie Ihr persönliches Microsoft-Konto, um Zugriff auf Azure und alle für den normalen Computerbenutzer entwickelten Microsoft-Produkte und Clouddienste wie Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE oder Office 365 zu erhalten. Wenn Sie sich für ein Outlook.com-Postfach registrieren, wird automatisch ein Microsoft-Konto erstellt. Weitere Informationen finden Sie in der [Übersicht zum Microsoft-Konto](https://account.microsoft.com/account).
 
-Möchten Sie sich als Organisation bei Azure anmelden? [**Jetzt registrieren**](https://azure.microsoft.com/pricing/purchase-options/)
+- **Geschäfts-, Schul- oder Unikonto.** Verwenden Sie Ihr Geschäfts-, Schul- oder Unikonto für den Zugriff auf alle kleinen, mittleren und Unternehmensclouddienste von Microsoft wie Azure, Microsoft Intune oder Office 365. Wenn Sie sich als Unternehmen für einen dieser Dienste registrieren, wird in Azure AD automatisch ein eigenes cloudbasiertes Verzeichnis für Ihr Unternehmen bereitgestellt. Weitere Informationen finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](active-directory-administer.md).
 
-**Weitere Ressourcen**
+    >[!Note]
+    Wenn Sie bereits Zugriff auf Azure AD haben, sollten Sie Ihr Geschäfts-, Schul- oder Unikonto verwenden. Verwenden Sie einfach den Kontotyp, der mit Ihrem Azure-Abonnement verknüpft ist.
 
-* [Microsoft Azure-Blog](https://azure.microsoft.com/blog/)
-* [Was ist Azure AD?](active-directory-whatis.md)
-* [Verwenden Ihrer lokalen Identitätsinfrastruktur in der Cloud](../connect/active-directory-aadconnect.md)
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Erwerb von Azure](https://azure.microsoft.com/pricing/purchase-options/)
+
+- [Registrieren für Azure Active Directory Premium-Editionen](active-directory-get-started-premium.md)
+
+- [Weitere Informationen zu Azure AD](active-directory-whatis.md)
+
+- [Verwenden Ihrer lokalen Identitätsinfrastruktur in der Cloud](../connect/active-directory-aadconnect.md)
+
+- [Besuchen Sie den Microsoft Azure-Blog](https://azure.microsoft.com/blog/)
 

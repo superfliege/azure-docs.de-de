@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 0830f4a6cffb8c1b2dacc8452e52477bb3a3ec91
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 1e6c71a68c4357d82d086f3e2ca098e4039def5a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43039367"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295756"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -27,7 +27,7 @@ Für dieses Tutorial wird ein **Azure-Abonnement** benötigt. Siehe [Kostenlose 
 
 ## <a name="create-a-data-lake-analytics-account"></a>Erstellen eines Data Lake Analytics-Kontos
 
-Nun erstellen Sie gleichzeitig ein Data Lake Analytics- und ein Data Lake Store-Konto.  Dieser Schritt ist einfach und dauert nur etwa 60 Sekunden.
+Nun erstellen Sie gleichzeitig ein Data Lake Analytics- und ein Azure Data Lake Storage Gen1-Konto.  Dieser Schritt ist einfach und dauert nur etwa 60 Sekunden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf **Ressource erstellen** >  **Daten + Analysen** > **Data Lake Analytics**.
@@ -36,14 +36,14 @@ Nun erstellen Sie gleichzeitig ein Data Lake Analytics- und ein Data Lake Store-
    * **Abonnement**: Wählen Sie das Azure-Abonnement aus, das für das Analytics-Konto verwendet wird.
    * **Ressourcengruppe**. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.
    * **Standort**: Wählen Sie ein Azure-Rechenzentrum für das Data Lake Analytics-Konto aus.
-   * **Data Lake Store**: Führen Sie die Anweisungen zum Erstellen eines neuen Data Lake Store-Kontos aus, oder wählen Sie ein vorhandenes Konto aus. 
+   * **Data Lake Storage Gen1**: Führen Sie die Anweisungen zum Erstellen eines neuen Data Lake Storage Gen1-Kontos aus, oder wählen Sie ein vorhandenes Konto aus. 
 4. Wählen Sie optional einen Tarif für Ihr Data Lake Analytics-Konto aus.
 5. Klicken Sie auf **Create**. 
 
 
 ## <a name="your-first-u-sql-script"></a>Ihr erstes U-SQL-Skript
 
-Der folgende Text ist ein sehr einfaches U-SQL-Skript. Es definiert lediglich ein kleines Dataset im Skript. Anschließend wird dieses Dataset als Datei mit dem Namen `/data.csv` in den standardmäßigen Data Lake Store geschrieben.
+Der folgende Text ist ein sehr einfaches U-SQL-Skript. Es definiert lediglich ein kleines Dataset im Skript. Anschließend wird dieses Dataset als Datei mit dem Namen `/data.csv` in das Data Lake Storage Gen1-Standardkonto geschrieben.
 
 ```
 @a  = 

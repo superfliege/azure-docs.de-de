@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: b261ec5fb0ad437202df1a8fd8683a095cb1bb96
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 03280f87b4b49b3e42091c6b1572a7f050afb336
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42146218"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983154"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Übersicht über Freigabemomentaufnahmen für Azure Files 
 Azure Files bietet die Möglichkeit, Freigabemomentaufnahmen von Dateifreigaben zu erstellen. Freigabemomentaufnahmen erfassen den Freigabestatus zum jeweiligen Zeitpunkt. In diesem Artikel erfahren Sie, welche Möglichkeiten Freigabemomentaufnahmen bieten und wie Sie in Ihrem speziellen Fall von ihnen profitieren können.
@@ -32,7 +32,7 @@ Nach dem Erstellen einer Dateifreigabe können Sie regelmäßig eine Freigabemom
 ## <a name="capabilities"></a>Funktionen
 Eine Freigabemomentaufnahme ist eine schreibgeschützte Kopie Ihrer Daten zu einem bestimmten Zeitpunkt. Sie können Momentaufnahmen mithilfe der REST-API erstellen, löschen und verwalten. Die gleichen Funktionen stehen auch in der Clientbibliothek, über die Azure-Befehlszeilenschnittstelle und im Azure-Portal zur Verfügung. 
 
-Sie können Momentaufnahmen einer Freigabe über die REST-API und über SMB anzeigen. Sie können die Liste mit den Versionen des Verzeichnisses oder der Datei abrufen und eine spezifische Version direkt als Laufwerk einbinden. 
+Sie können Momentaufnahmen einer Freigabe über die REST-API und über SMB anzeigen. Sie können die Liste mit den Versionen des Verzeichnisses oder der Datei abrufen und eine spezifische Version direkt als Laufwerk einbinden (nur für Windows verfügbar; siehe [Einschränkungen](#limits)). 
 
 Erstellte Freigabemomentaufnahmen können gelesen, kopiert oder gelöscht, aber nicht geändert werden. Es ist nicht möglich, eine vollständige Momentaufnahme in ein anderes Speicherkonto zu kopieren. Die Dateien müssen einzeln kopiert werden – beispielsweise mit AzCopy oder einem anderen Kopiermechanismus.
 
@@ -62,6 +62,8 @@ Momentaufnahmen zählen nicht zu Ihrem 5-TB-Freigabelimit. Es gibt keine Beschr�
 Derzeit sind in Azure Files maximal 200 Freigabemomentaufnahmen zulässig. Nach 200 Freigabemomentaufnahmen müssen ältere Freigabemomentaufnahmen gelöscht werden, damit neue Freigabemomentaufnahmen erstellt werden können. 
 
 Die Anzahl gleichzeitiger Aufrufe zum Erstellen von Freigabemomentaufnahmen ist nicht beschränkt. Für den Speicherplatz, den Freigabemomentaufnahmen einer bestimmten Dateifreigabe belegen können, gelten keine Einschränkungen. 
+
+Derzeit ist es nicht möglich, Freigabemomentaufnahmen unter Linux bereitzustellen. Das liegt daran, dass der Linux-SMB-Client das Bereitstellen von Momentaufnahmen nicht wie Windows unterstützt.
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Kopieren von Daten aus einer Freigabemomentaufnahme zurück in eine Freigabe
 Für Kopiervorgänge, die Dateien und Freigabemomentaufnahmen betreffen, gelten folgende Regeln:

@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: ec4260363aa0af3062a6d61db44a75d9ebd599db
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 5593f76511f43106d6743a158b051e118ef2a4a6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090743"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125254"
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
 
@@ -29,6 +29,29 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerrefere
 Eine `.fsx` -Datei ist ein F#-Skript. Sie können sich dies wie ein F#-Projekt vorstellen, das in einer einzelnen Datei enthalten ist. Die Datei enthält sowohl den Code für Ihr Programm (in diesem Fall Ihre Azure-Funktion) als auch Direktiven zum Verwalten von Abhängigkeiten.
 
 Bei Verwendung der Endung `.fsx` für eine Azure-Funktion werden die üblicherweise erforderlichen Assemblys automatisch für Sie eingebunden, sodass Sie sich auf die Funktion konzentrieren können und sich nicht mit Codebausteinen beschäftigen müssen.
+
+## <a name="folder-structure"></a>Ordnerstruktur
+
+Die Ordnerstruktur für ein F#-Skriptprojekt sieht wie folgt aus:
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - run.fsx
+ | | - function.json
+ | | - function.proj
+ | - MySecondFunction
+ | | - run.fsx
+ | | - function.json
+ | | - function.proj
+ | - host.json
+ | - extensions.csproj
+ | - bin
+```
+
+Die freigegebene Datei [host.json] (functions-host-json.md) kann zum Konfigurieren der Funktions-App verwendet werden. Jede Funktion verfügt über eine eigene Codedatei (FSX-Datei) sowie über eine eigene Bindungskonfigurationsdatei (function.json).
+
+Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
 ## <a name="binding-to-arguments"></a>Binden an Argumente
 Jede Bindung unterstützt eine Gruppe von Argumenten. Dies ist in der [Entwicklerreferenz zu Triggern und Bindungen in Azure Functions](functions-triggers-bindings.md) ausführlich beschrieben. Eine Argumentbindung, die von einem Blobtrigger beispielsweise unterstützt wird, ist ein POCO-Element. Dies kann mit einem F#-Eintrag ausgedrückt werden. Beispiel: 

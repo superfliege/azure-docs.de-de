@@ -4,17 +4,17 @@ description: DevOps-Continuous Deployment mit Azure Automation State Configurati
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0e49f2857468338f6e1f16462ed814893ea6e7
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 43f4a37ce0425503337cffa58570f3468fca6b29
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038313"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634251"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Anwendungsbeispiel: Continuous Deployment auf virtuellen Computern mit Azure Automation State Configuration und Chocolatey
 
@@ -182,7 +182,7 @@ Dieses Nuspec-Element muss auf Ihrem NuGet-Server kompiliert und gespeichert wer
 ## <a name="step-6-tying-it-all-together"></a>Schritt 6: Zusammenfügen des Gesamtbilds
 
 Jedes Mal, wenn eine Version den Qualitätssicherungstest besteht und für die Bereitstellung genehmigt wird, wird das Pakt erstellt, und nuspec und nupkg werden aktualisiert und auf dem NuGet-Server bereitgestellt. Darüber hinaus muss die Konfiguration (Schritt 4 oben) aktualisiert werden, damit sie mit der neuen Versionsnummer übereinstimmt. Sie muss an den Pullserver gesendet und kompiliert werden.
-Ab diesem Punkt liegt es an den virtuellen Computern, die von dieser Konfiguration abhängig sind, das Update abzurufen und zu installieren. Diese Updates sind einfach und umfassen nur ein oder zwei PowerShell-Codezeilen. Im Fall von Visual Studio Team Services sind einige davon in Buildaufgaben gekapselt, die in einem Build miteinander verkettet werden können. Dieser [Artikel](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) enthält hierzu weitere Details. In diesem [GitHub-Repository](https://github.com/Microsoft/vso-agent-tasks) finden Sie Details zu den verschiedenen verfügbaren Buildaufgaben.
+Ab diesem Punkt liegt es an den virtuellen Computern, die von dieser Konfiguration abhängig sind, das Update abzurufen und zu installieren. Diese Updates sind einfach und umfassen nur ein oder zwei PowerShell-Codezeilen. Im Fall von Azure DevOps sind einige davon in Buildaufgaben gekapselt, die in einem Build miteinander verkettet werden können. Dieser [Artikel](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) enthält hierzu weitere Details. In diesem [GitHub-Repository](https://github.com/Microsoft/vso-agent-tasks) finden Sie Details zu den verschiedenen verfügbaren Buildaufgaben.
 
 ## <a name="notes"></a>Hinweisen
 

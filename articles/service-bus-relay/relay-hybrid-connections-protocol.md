@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: clemensv
-ms.openlocfilehash: 306a21add76261dce99c954a2ba373e4b5047a75
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 913e702cc72472e81937bfe3b0939695daadc011
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895409"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543521"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay-Hybridverbindungsprotokoll
 
@@ -146,8 +146,8 @@ Der Abfragezeichenfolgenparameter verfügt über folgende Optionen.
 
 | Parameter        | Erforderlich | BESCHREIBUNG
 | ---------------- | -------- | -------------------------------------------
-| `sb-hc-action`   | Ja      | Für die Listener-Rolle muss der Parameter **sb-hc-action=listen** lauten.
-| `{path}`         | Ja      | Der URL-codierte Namespacepfad der vorkonfigurierten Hybridverbindung, für die dieser Listener registriert wird. Dieser Ausdruck wird an den festen Pfadteil `$hc/` angehängt.
+| `sb-hc-action`   | JA      | Für die Listener-Rolle muss der Parameter **sb-hc-action=listen** lauten.
+| `{path}`         | JA      | Der URL-codierte Namespacepfad der vorkonfigurierten Hybridverbindung, für die dieser Listener registriert wird. Dieser Ausdruck wird an den festen Pfadteil `$hc/` angehängt.
 | `sb-hc-token`    | Ja\*    | Der Listener muss ein gültiges URL-codiertes Service Bus Shared Access-Token für den Namespace bereitstellen, oder eine Hybridverbindung, die **Listen** (Lauschen) direkt verleiht.
 | `sb-hc-id`       | Nein       | Diese vom Client bereitgestellte optionale ID ermöglicht die End-to-End-Diagnoseablaufverfolgung.
 
@@ -243,8 +243,8 @@ Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren:
 
 | Parameter                   | Erforderlich | BESCHREIBUNG                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| sb-hc-statusCode        | Ja      | Numerischer HTTP-Statuscode.                |
-| sb-hc-statusDescription | Ja      | Ein visuell lesbarer Grund für die Ablehnung. |
+| sb-hc-statusCode        | JA      | Numerischer HTTP-Statuscode.                |
+| sb-hc-statusDescription | JA      | Ein visuell lesbarer Grund für die Ablehnung. |
 
 Der resultierende URI wird dann verwendet, um eine WebSocket-Verbindung herzustellen.
 
@@ -316,7 +316,7 @@ Der JSON-Inhalt für `request` lautet wie folgt:
 
 * **requestTarget**: Zeichenfolge. Diese Eigenschaft enthält das [„Anforderungsziel“ (RFC7230, Abschnitt 5.3)](https://tools.ietf.org/html/rfc7230#section-5.3) der Anforderung. Hierin ist der Abfragezeichenfolgen-Teil enthalten, aus dem ALLE Parameter mit dem Präfix `sb-hc-` entfernt werden.
 * **method**: Zeichenfolge. Dies ist die Methode der Anforderung gemäß [RFC7231, Abschnitt 4](https://tools.ietf.org/html/rfc7231#section-4). Die `CONNECT`-Methode darf NICHT verwendet werden.
-* **body**: Boolescher Wert. Gibt an, ob ein Frame oder mehrere Frames mit binärem Text folgen.
+* **body**: Boolescher Wert. Gibt an, ob ein einzelner Frame oder mehrere Frames mit binärem Text folgen.
 
 ``` JSON
 {
@@ -345,8 +345,8 @@ Wenn die Anforderung über den Steuerkanal empfangen wird, MUSS die Antwort entw
 
 Die Antwort ist ein JSON-Objekt mit dem Namen „response“. Die Regeln für die Verarbeitung des Textinhalts entsprechen genau der Verwendung der `request`-Nachricht und basieren auf der `body`-Eigenschaft.
 
-* **requestId**: Zeichenfolge. ERFORDERLICH. Der `id`-Eigenschaftswert der `request`-Nachricht, auf die geantwortet wird.
-* **statusCode**: Zahl. ERFORDERLICH. Ein numerischer HTTP-Statuscode, der das Ergebnis der Benachrichtigung angibt. Alle Statuscodes aus [RFC7231, Abschnitt 6](https://tools.ietf.org/html/rfc7231#section-6) sind zulässig, mit Ausnahme von [502 „Ungültiges Gateway“](https://tools.ietf.org/html/rfc7231#section-6.6.3) und [504 „Gatewaytimeout“](https://tools.ietf.org/html/rfc7231#section-6.6.5).
+* **requestId**: Zeichenfolge. REQUIRED. (ERFORDERLICH.) Der `id`-Eigenschaftswert der `request`-Nachricht, auf die geantwortet wird.
+* **statusCode**: Zahl. REQUIRED. (ERFORDERLICH.) Ein numerischer HTTP-Statuscode, der das Ergebnis der Benachrichtigung angibt. Alle Statuscodes aus [RFC7231, Abschnitt 6](https://tools.ietf.org/html/rfc7231#section-6) sind zulässig, mit Ausnahme von [502 „Ungültiges Gateway“](https://tools.ietf.org/html/rfc7231#section-6.6.3) und [504 „Gatewaytimeout“](https://tools.ietf.org/html/rfc7231#section-6.6.5).
 * **statusDescription**: Zeichenfolge. OPTIONAL. HTTP-Statuscode-Ursachentext gemäß [RFC7230, Abschnitt 3.1.2](https://tools.ietf.org/html/rfc7230#section-3.1.2)
 * **responseHeaders**: HTTP-Header, die in einer externen HTTP-Antwort festgelegt werden.
   Wie bei `request` auch, dürfen per RFC7230 definierte Header NICHT verwendet werden.

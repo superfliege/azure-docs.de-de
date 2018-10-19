@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: ea72e4ac778e52d4f6e4f5597d38a1de59ba43fc
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/14/2018
+ms.openlocfilehash: 193aa8f87a90eb7bbf1e2c49132ad480881d41fe
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348938"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633468"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption für virtuelle IaaS-Computer 
 Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel lernen Sie die Technologie „Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer“ kennen, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. 
@@ -78,7 +78,10 @@ Folgende Szenarien, Features und Technologien werden von der Lösung nicht unter
 * Virtuelle IaaS-Computer, die mithilfe der klassischen Methode zum Erstellen von virtuellen Computern erstellt werden
 * Aktivieren der Verschlüsselung für benutzerdefinierte Images auf virtuellen Linux-IaaS-Computern
 * Integration in den lokalen Schlüsselverwaltungsdienst
-* Azure Files (freigegebenes Dateisystem), Network File System (NFS), dynamische Volumes und virtuelle Windows-Computer, die mit softwarebasierten RAID-Systemen konfiguriert sind
+* Azure Files (freigegebenes Dateisystem)
+* Network File System (NFS)
+* Dynamische Volumes
+* Windows-VMs, die mit softwarebasierten RAID-Systemen konfiguriert sind
 
 ## <a name="encryption-features"></a>Verschlüsselungsfunktionen
 Beim Aktivieren und Bereitstellen von Azure Disk Encryption für virtuelle Azure-IaaS-Computer werden je nach bereitgestellter Konfiguration die folgenden Funktionen aktiviert:

@@ -1,23 +1,24 @@
 ---
-title: Häufig gestellte Fragen (FAQ) zur Bing-Websuche-API in Azure | Microsoft-Dokumentation
-description: Erhalten Sie Antworten zu häufig gestellten Fragen zur Bing-Websuche-API von Microsoft Cognitive Services in Azure.
+title: Häufig gestellte Fragen (FAQ) – Bing-Websuche-API
+titleSuffix: Azure Cognitive Services
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Bing-Websuche-API.
 services: cognitive-services
 author: v-jerkin
-manager: jhubbard
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 321f571c48f2231d1ced43848cdefd17adaa1a08
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b0b8fd3eb80d7418546788565402042de20ab3e7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373123"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129317"
 ---
-# <a name="frequently-asked-questions-faq-about-bing-web-search-api-cognitive-services"></a>Häufig gestellte Fragen (FAQ) zur Bing-Websuche-API (Cognitive Services)
- 
+# <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
+
  In diesem Artikel finden Sie Antworten zu häufig gestellten Fragen zu Konzepten, Code und Szenarios der Bing-Websuche-API für Microsoft Cognitive Services in Azure.
 
 ## <a name="response-headers-in-javascript"></a>Antwortheader in JavaScript
@@ -52,9 +53,9 @@ Lassen Sie das Fenster während der Nutzung der Tutorial-App geöffnet. Wenn Sie
 
 ## <a name="response-headers-in-production"></a>Antwortheader in einer Produktionsumgebung
 
-Der in der vorherigen Antwort erläuterte Ansatz mit CORS-Proxy ist für Entwicklung, Test und Lernen geeignet. 
+Der in der vorherigen Antwort erläuterte Ansatz mit CORS-Proxy ist für Entwicklung, Test und Lernen geeignet.
 
-In einer Produktionsumgebung sollten Sie jedoch ein serverseitiges Skript auf derselben Domäne wie die Webseite hosten, die die Bing-Websuche-API verwendet. Dieses Skript sollte die API-Aufrufe auf Anforderung des JavaScript auf der Webseite ausführen und alle Ergebnisse, einschließlich der Header, an den Client zurückgeben. Da die beiden Ressourcen (Seite und Skript) einen gemeinsamen Ursprung haben, wird CORS nicht aktiviert und die speziellen Header sind für das JavaScript auf der Webseite zugänglich. 
+In einer Produktionsumgebung sollten Sie jedoch ein serverseitiges Skript auf derselben Domäne wie die Webseite hosten, die die Bing-Websuche-API verwendet. Dieses Skript sollte die API-Aufrufe auf Anforderung des JavaScript auf der Webseite ausführen und alle Ergebnisse, einschließlich der Header, an den Client zurückgeben. Da die beiden Ressourcen (Seite und Skript) einen gemeinsamen Ursprung haben, wird CORS nicht aktiviert und die speziellen Header sind für das JavaScript auf der Webseite zugänglich.
 
 Dieser Ansatz schützt auch Ihren API-Schlüssel vor der Offenlegung, da dieser nur vom serverseitigen Skript benötigt wird. Das Skript kann eine andere Methode verwenden, um sicherzustellen, dass die Anforderung autorisiert ist.
 

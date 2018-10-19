@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: b2561f4b1b5ef27f389114c85f0646b968f7765e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: c7db8eaf57bf29e17b4543e99a44655030aa6172
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36269560"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979340"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Verwenden verwalteter Datenträger mit Resource Manager-Vorlagen
 
@@ -96,7 +96,7 @@ In Azure Managed Disks wird der Datenträger zu einer Ressource der obersten Ebe
 
 ### <a name="default-managed-disk-settings"></a>Standardeinstellungen für verwaltete Datenträger
 
-Sie brauchen zum Erstellen eines virtuellen Computers mit verwalteten Datenträgern keine Speicherkontoressource mehr. Außerdem können Sie die Ressource Ihres virtuellen Computers wie folgt aktualisieren. Beachten Sie insbesondere, dass `apiVersion` `2017-03-30` angibt und `osDisk` und `dataDisks` nicht mehr auf einen spezifischen URI für die VHD-Datei verweisen. Bei der Bereitstellung ohne Angabe von zusätzlichen Eigenschaften verwendet der Datenträger [Standard-LRS-Speicher](../articles/storage/common/storage-redundancy.md). Wenn kein Name angegeben wird, wird das Format `<VMName>_OsDisk_1_<randomstring>` für den Betriebssystemdatenträger und `<VMName>_disk<#>_<randomstring>` für jeden anderen Datenträger übernommen. Standardmäßig ist Azure Disk Encryption deaktiviert; Zwischenspeichern für den Betriebssystemdatenträger erfolgt mit Lese-/Schreibzugriff und für Datenträger ohne Zugriff. Wie Sie im unteren Beispiel sehen können, besteht immer noch eine Speicherkontoabhängigkeit. Diese wird allerdings nur für Diagnosespeicher und nicht für Datenträgerspeicher benötigt.
+Sie brauchen zum Erstellen eines virtuellen Computers mit verwalteten Datenträgern keine Speicherkontoressource mehr. Außerdem können Sie die Ressource Ihres virtuellen Computers wie folgt aktualisieren. Beachten Sie insbesondere, dass `apiVersion` `2017-03-30` angibt und `osDisk` und `dataDisks` nicht mehr auf einen spezifischen URI für die VHD-Datei verweisen. Bei der Bereitstellung ohne Angabe von zusätzlichen Eigenschaften verwendet der Datenträger einen auf der Größe des virtuellen Computers basierenden Speichertyp. Bei Verwendung einer Premium-fähigen VM-Größe (Größen, deren Name „s“ enthält, wie z. B. Standard_D2s_v3) verwendet das System beispielsweise Premium_LRS-Speicher. Verwenden Sie die SKU-Einstellung des Datenträgers, um einen Speichertyp anzugeben. Wenn kein Name angegeben wird, wird das Format `<VMName>_OsDisk_1_<randomstring>` für den Betriebssystemdatenträger und `<VMName>_disk<#>_<randomstring>` für jeden anderen Datenträger übernommen. Standardmäßig ist Azure Disk Encryption deaktiviert; Zwischenspeichern für den Betriebssystemdatenträger erfolgt mit Lese-/Schreibzugriff und für Datenträger ohne Zugriff. Wie Sie im unteren Beispiel sehen können, besteht immer noch eine Speicherkontoabhängigkeit. Diese wird allerdings nur für Diagnosespeicher und nicht für Datenträgerspeicher benötigt.
 
 ```json
 {

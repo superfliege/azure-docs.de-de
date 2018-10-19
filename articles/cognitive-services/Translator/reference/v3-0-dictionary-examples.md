@@ -1,28 +1,29 @@
 ---
-title: Methode für Wörterbuchbeispiele für die Microsoft-Textübersetzungs-API | Microsoft-Dokumentation
-description: Verwenden Sie die Methode für Wörterbuchbeispiele für die Microsoft-Textübersetzungs-API.
+title: Textübersetzungs-API – Methode für Wörterbuchbeispiele
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die Methode für Wörterbuchbeispiele der Textübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9960f3be42090edaec1df935d70e4c1a0d25b691
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1e6bd1b7ddb38d0fad33ab9d282f8edc4ff8c765
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377531"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129130"
 ---
-# <a name="text-api-30-dictionary-examples"></a>Text-API 3.0: Wörterbuchbeispiele
+# <a name="translator-text-api-30-dictionary-examples"></a>Textübersetzungs-API 3.0: Wörterbuchbeispiele
 
 Im Folgenden finden Sie Kontextbeispiele zur Verwendungen von Begriffen im Wörterbuch. Dieser Vorgang wird zusammen mit der [Wörterbuchsuche](.\v3-0-dictionary-lookup.md) verwendet.
 
 ## <a name="request-url"></a>Anfrage-URL
 
-Senden Sie eine `POST`-Anforderung an:
+Sendet eine `POST`-Anforderung an:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0
@@ -44,27 +45,27 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
     <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](.\v3-0-languages.md) als Quellsprache auswählen.</td>
   </tr>
   <tr>
-    <td>in:</td>
+    <td>zu</td>
     <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](.\v3-0-languages.md) als Zielsprache auswählen.</td>
   </tr>
 </table>
 
-Anforderungsheader bestehen aus folgenden Elementen:
+Anforderungsheader enthalten Folgendes:
 
 <table width="100%">
   <th width="20%">Header</th>
   <th>BESCHREIBUNG</th>
   <tr>
     <td>_Eine Autorisierung_<br/>_Header_</td>
-    <td>*Erforderlicher Anforderungsheader*<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
+    <td>*Erforderlicher Anforderungsheader*.<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
     <td>Content-Typ</td>
-    <td>*Erforderlicher Anforderungsheader*<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`.</td>
+    <td>*Erforderlicher Anforderungsheader*.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*Erforderlicher Anforderungsheader*<br/>Die Länge des Anforderungstexts.</td>
+    <td>*Erforderlicher Anforderungsheader*.<br/>Die Länge des Anforderungstexts.</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
@@ -80,7 +81,7 @@ Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt 
 
   * `Translation`: Eine Zeichenfolge, die den übersetzten Text angibt, der zuvor vom [Wörterbuchsuchvorgang](.\v3-0-dictionary-lookup.md) zurückgegeben wurde. Es sollte sich dabei um den Wert aus dem `normalizedTarget`-Feld der `translations`-Liste der Antwort der [Wörterbuchsuche](.\v3-0-dictionary-lookup.md) handeln. Dieser Dienst gibt Beispiele für ein bestimmtes Quelle-Ziel-Wortpaar zurück.
 
-Der folgende Code zeigt ein Beispiel:
+Im folgenden Code wird ein Beispiel veranschaulicht:
 
 ```json
 [
@@ -90,7 +91,7 @@ Der folgende Code zeigt ein Beispiel:
 
 Es gelten die folgenden Einschränkungen:
 
-* Das Array kann über höchstens 10 Elemente verfügen.
+* Das Array darf höchstens 10 Elemente enthalten.
 * Der Textwert eines Arrayelements kann 100 Zeichen (einschließlich Leerzeichen) nicht überschreiten.
 
 ## <a name="response-body"></a>Antworttext

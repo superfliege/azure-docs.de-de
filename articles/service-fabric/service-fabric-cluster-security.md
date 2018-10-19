@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 52730ae24f4917ab593914c390df798f7f58dbde
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142660"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541903"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
 Ein Azure Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. Es ist zwar möglich, einen ungeschützten Cluster zu erstellen, doch falls der Cluster Verwaltungsendpunkte im öffentlichen Internet verfügbar macht, können anonyme Benutzer eine Verbindung mit ihm herstellen. Nicht geschützte Cluster werden für Produktionsworkloads nicht unterstützt. 
@@ -92,6 +92,7 @@ Einige wichtige Punkte sind zu beachten:
 * Um Zertifikate für Cluster zu erstellen, die Produktionsworkloads ausführen, verwenden Sie einen korrekt konfigurierten Windows Server-Zertifikatsdienst oder den einer genehmigten [Zertifizierungsstelle](https://en.wikipedia.org/wiki/Certificate_authority) (Certificate Authority, CA).
 * Verwenden Sie niemals temporäre oder Testzertifikate, die Sie mithilfe von Tools wie MakeCert.exe in einer Produktionsumgebung erstellen.
 * Selbstsignierte Zertifikate können Sie nur in einem Testcluster verwenden. Verwenden Sie kein selbstsigniertes Zertifikat in der Produktion.
+* Achten Sie beim Generieren des Zertifikatfingerabdrucks darauf, dass Sie einen SHA-1-Fingerabdruck generieren. SHA-1 wird beim Konfigurieren der Client- und Clusterzertifikatfingerabdrücke verwendet.
 
 ### <a name="cluster-and-server-certificate-required"></a>Cluster- und Serverzertifikat (erforderlich)
 Diese Zertifikate (ein primäres und optional ein sekundäres Zertifikat) sind erforderlich, um einen Cluster zu schützen und nicht autorisierten Zugriff zu verhindern. Diese Zertifikate stellen Cluster- und Serverauthentifizierung bereit.

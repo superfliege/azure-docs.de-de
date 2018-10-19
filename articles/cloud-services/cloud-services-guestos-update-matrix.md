@@ -4,7 +4,6 @@ description: Die neueste Releaseneuigkeiten und SDK-Kompatibilität für das Azu
 services: cloud-services
 documentationcenter: na
 author: raiye
-manager: timlt
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2018
+ms.date: 9/13/2018
 ms.author: raiye
-ms.openlocfilehash: 2ee31e0a2d563ddf2aa63498b4ca280e4da26754
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 239482151384ff555d86e3d639bfe1d75b0d0ceb
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524857"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604891"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen. 
@@ -36,13 +35,16 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 >
 
 > [!IMPORTANT]
-> Seit dem Rollout im November werden nur noch die letzten zwei Versionen des Gastbetriebssystems unterstützt, und es sind nur noch diese zwei Versionen im Azure-Portal verfügbar.
+> Es werden nur noch die beiden neuesten Versionen des Gastbetriebssystems unterstützt, und im Azure-Portal sind nur noch diese beiden Versionen verfügbar.
 >
 >
 
 Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Entsprechende Informationen finden Sie [hier][cloud updates].
 
 ## <a name="news-updates"></a>Neuigkeiten
+
+###### <a name="september-12-2018"></a>**12. September 2018**
+Das Gastbetriebssystem für August wurde veröffentlicht.
 
 ###### <a name="august-3-2018"></a>**3. August 2018**
 Das Gastbetriebssystem für Juli wurde veröffentlicht.
@@ -86,23 +88,22 @@ Das Gastbetriebssystem für Oktober wurde veröffentlicht.
 Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 > [!NOTE]
-> Änderungen bei Datumsangaben mit einem * bleiben vorbehalten.
->
 > Das RDP-Kennwort für Betriebssystemfamilie 5 muss mindestens zehn Zeichen umfassen.
 >
 
-| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-5.21_201807-02 |3. August 2018 |Post 5.23 |TBD |
-| WA-GUEST-OS-5.20_201806-01 |3. Juli 2018 |Post 5.22 |TBD |
-|~~WA-GUEST-OS-5.19_201805-01~~ |1. Juni 2018 |3. August 2018 |TBD |
-|~~WA-GUEST-OS-5.18_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
-|~~WA-GUEST-OS-5.17_201803-01~~ |6. April 2018 |1. Juni 2018|TBD |
-|~~WA-GUEST-OS-5.16_201802-01~~ |12. März 2018 |4. Mai 2018 |TBD |
-|~~WA-GUEST-OS-5.15_201801-01~~ |4. Januar 2018 |6. April 2018 |TBD |
-|~~WA-GUEST-OS-5.14_201712-01~~ |4. Januar 2018 |12. März 2018 |TBD |
-|~~WA-GUEST-OS-5.13_201711-01~~ |14. Dezember 2017 |4. Januar 2018|TBD |
-|~~WA-GUEST-OS-5.12_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
+| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
+| --- | --- | --- |
+| WA-GUEST-OS-5.22_201808-01 |12. September 2018 |Post 5.24 |
+| WA-GUEST-OS-5.21_201807-02 |3. August 2018 |Post 5.23 |
+|~~WA-GUEST-OS-5.20_201806-01~~ |3. Juli 2018 |12. September 2018 |
+|~~WA-GUEST-OS-5.19_201805-01~~ |1. Juni 2018 |3. August 2018 |
+|~~WA-GUEST-OS-5.18_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
+|~~WA-GUEST-OS-5.17_201803-01~~ |6. April 2018 |1. Juni 2018|
+|~~WA-GUEST-OS-5.16_201802-01~~ |12. März 2018 |4. Mai 2018 |
+|~~WA-GUEST-OS-5.15_201801-01~~ |4. Januar 2018 |6. April 2018 |
+|~~WA-GUEST-OS-5.14_201712-01~~ |4. Januar 2018 |12. März 2018 |
+|~~WA-GUEST-OS-5.13_201711-01~~ |14. Dezember 2017 |4. Januar 2018|
+|~~WA-GUEST-OS-5.12_201710-02~~ |8. November 2017 |4. Januar 2018 |
 
 
 ## <a name="family-4-releases"></a>Releases von Familie 4
@@ -110,23 +111,19 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
-> [!NOTE]
-> Änderungen bei Datumsangaben mit einem * bleiben vorbehalten
->
->
-
-| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-4.56_201807-02 |3. August 2018 |Post 4.58 |TBD |
-| WA-GUEST-OS-4.55_201806-01 |3. Juli 2018 |Post 4.57 |TBD |
-|~~WA-GUEST-OS-4.54_201805-01~~ |1. Juni 2018 |3. August 2018 |TBD |
-|~~WA-GUEST-OS-4.53_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
-|~~WA-GUEST-OS-4.52_201803-01~~ |6. April 2018 |1. Juni 2018 |TBD |
-|~~WA-GUEST-OS-4.51_201802-01~~ |12. März 2018 |4. Mai 2018 |TBD |
-|~~WA-GUEST-OS-4.50_201801-01~~ |4. Januar 2018 |6. April 2018 |TBD |
-|~~WA-GUEST-OS-4.49_201712-01~~ |4. Januar 2018 |12. März 2018 |TBD |
-|~~WA-GUEST-OS-4.48_201711-01~~ |14. Dezember 2017 |4. Januar 2018 |TBD |
-|~~WA-GUEST-OS-4.47_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
+| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
+| --- | --- | --- |
+| WA-GUEST-OS-4.57_201808-01 |12. September 2018 |Post 4.59 |
+| WA-GUEST-OS-4.56_201807-02 |3. August 2018 |Post 4.58 |
+|~~WA-GUEST-OS-4.55_201806-01~~ |3. Juli 2018 |12. September 2018 |
+|~~WA-GUEST-OS-4.54_201805-01~~ |1. Juni 2018 |3. August 2018 |
+|~~WA-GUEST-OS-4.53_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
+|~~WA-GUEST-OS-4.52_201803-01~~ |6. April 2018 |1. Juni 2018 |
+|~~WA-GUEST-OS-4.51_201802-01~~ |12. März 2018 |4. Mai 2018 |
+|~~WA-GUEST-OS-4.50_201801-01~~ |4. Januar 2018 |6. April 2018 |
+|~~WA-GUEST-OS-4.49_201712-01~~ |4. Januar 2018 |12. März 2018 |
+|~~WA-GUEST-OS-4.48_201711-01~~ |14. Dezember 2017 |4. Januar 2018 |
+|~~WA-GUEST-OS-4.47_201710-02~~ |8. November 2017 |4. Januar 2018 |
 
 
 ## <a name="family-3-releases"></a>Releases von Familie 3
@@ -134,23 +131,19 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
-> [!NOTE]
-> Änderungen bei Datumsangaben mit einem * bleiben vorbehalten
->
->
-
-| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-3.63_201807-02 |3. August 2018 |Post 3.65 |TBD |
-| WA-GUEST-OS-3.62_201806-01 |3. Juli 2018 |Post 3.64 |TBD |
-|~~WA-GUEST-OS-3.61_201805-01~~ |1. Juni 2018 |3. August 2018 |TBD |
-|~~WA-GUEST-OS-3.60_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
-|~~WA-GUEST-OS-3.59_201803-01~~ |6. April 2018 |1. Juni 2018 |TBD |
-|~~WA-GUEST-OS-3.58_201802-01~~ |19. März 2018 |4. Mai 2018 |TBD |
-|~~WA-GUEST-OS-3.57_201801-01~~ |29. Januar 2018 |6. April 2018 |TBD |
-|~~WA-GUEST-OS-3.56_201712-01~~ |4. Januar 2018 |19. März 2018 |TBD |
-|~~WA-GUEST-OS-3.55_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |TBD |
-|~~WA-GUEST-OS-3.54_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
+| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
+| --- | --- | --- |
+| WA-GUEST-OS-3.64_201808-01 |12. September 2018 |Post 3.66 |
+| WA-GUEST-OS-3.63_201807-02 |3. August 2018 |Post 3.65 |
+|~~WA-GUEST-OS-3.62_201806-01~~ |3. Juli 2018 |12. September 2018 |
+|~~WA-GUEST-OS-3.61_201805-01~~ |1. Juni 2018 |3. August 2018 |
+|~~WA-GUEST-OS-3.60_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
+|~~WA-GUEST-OS-3.59_201803-01~~ |6. April 2018 |1. Juni 2018 |
+|~~WA-GUEST-OS-3.58_201802-01~~ |19. März 2018 |4. Mai 2018 |
+|~~WA-GUEST-OS-3.57_201801-01~~ |29. Januar 2018 |6. April 2018 |
+|~~WA-GUEST-OS-3.56_201712-01~~ |4. Januar 2018 |19. März 2018 |
+|~~WA-GUEST-OS-3.55_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |
+|~~WA-GUEST-OS-3.54_201710-02~~ |8. November 2017 |4. Januar 2018 |
 
 
 ## <a name="family-2-releases"></a>Releases von Familie 2
@@ -158,25 +151,21 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 Installierte .NET Framework-Versionen: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
-> [!NOTE]
-> Änderungen bei Datumsangaben mit einem * bleiben vorbehalten
->
->
-
-| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-2.76_201807-02 |3. August 2018 |Post 2.78 |TBD |
-| WA-GUEST-OS-2.75_201806-01 |3. Juli 2018 |Post 2.77 |TBD |
-|~~WA-GUEST-OS-2.74_201805-01~~ |1. Juni 2018 |3. August 2018|TBD |
-|~~WA-GUEST-OS-2.73_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
-|~~WA-GUEST-OS-2.72_201803-01~~ |6. April 2018 |1. Juni 2018 |TBD |
-|~~WA-GUEST-OS-2.71_201802-01~~ |12. März 2018 |4. Mai 2018 |TBD |
-|~~WA-GUEST-OS-2.70_201801-01~~ |29. Januar 2018 |6. April 2018 |TBD |
-|~~WA-GUEST-OS-2.69_201712-01~~ |4. Januar 2018 |12. März 2018 |TBD |
-|~~WA-GUEST-OS-2.68_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |TBD |
-|~~WA-GUEST-OS-2.67_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
-|~~WA-GUEST-OS-2.66_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |TBD |
-|~~WA-GUEST-OS-2.65_201708-01~~ |24. August 2017 |14. Dezember 2017 |TBD |
+| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
+| --- | --- | --- |
+| WA-GUEST-OS-2.77_201808-01 |12. September 2018 |Post 2.79 |
+| WA-GUEST-OS-2.76_201807-02 |3. August 2018 |Post 2.78 |
+|~~WA-GUEST-OS-2.75_201806-01~~ |3. Juli 2018 |12. September 2018 |
+|~~WA-GUEST-OS-2.74_201805-01~~ |1. Juni 2018 |3. August 2018|
+|~~WA-GUEST-OS-2.73_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
+|~~WA-GUEST-OS-2.72_201803-01~~ |6. April 2018 |1. Juni 2018 |
+|~~WA-GUEST-OS-2.71_201802-01~~ |12. März 2018 |4. Mai 2018 |
+|~~WA-GUEST-OS-2.70_201801-01~~ |29. Januar 2018 |6. April 2018 |
+|~~WA-GUEST-OS-2.69_201712-01~~ |4. Januar 2018 |12. März 2018 |
+|~~WA-GUEST-OS-2.68_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |
+|~~WA-GUEST-OS-2.67_201710-02~~ |8. November 2017 |4. Januar 2018 |
+|~~WA-GUEST-OS-2.66_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |
+|~~WA-GUEST-OS-2.65_201708-01~~ |24. August 2017 |14. Dezember 2017 |
 
 
 ## <a name="msrc-patch-updates"></a>MSRC-Patch-Updates
@@ -221,7 +210,7 @@ Im folgenden Beispiel steht 2 für die Familie, 12 für die Version, und "rel2" 
 In der Konfigurationszeichenfolge für ein Gastbetriebssystem sind dieselben Informationen eingebettet sowie ein Datum, das zeigt, welche MSRC-Patches in diesem Release berücksichtigt wurden. In diesem Beispiel wurden MSRC-Patches für Windows Server 2008 R2 bis einschließlich August 2012 integriert. Es werden nur Patches einbezogen, die ausdrücklich für diese Version von Windows Server gelten. Wenn beispielsweise ein MSRC-Patch für Microsoft Office gilt, wird er nicht berücksichtigt, da dieses Produkt kein Bestandteil des Windows Server-Basisimage ist.
 
 ## <a name="guest-os-system-update-process"></a>Updateprozess des Gastbetriebssystems
-Diese Seite enthält Informationen zu anstehenden Gastbetriebssystemreleases. Kunden haben uns mitgeteilt, dass sie wissen möchten, wann ein Release stattfindet, da ihre Clouddienstrollen neu gestartet werden, wenn sie auf "Automatisches Update" festgelegt sind. Gastbetriebssystemreleases werden in der Regel mindestens fünf (5) Tage nach dem MSRC-Updaterelease veröffentlicht, das am zweiten Dienstag jedes Monats auftritt. Neue Releases enthalten alle relevanten MSRC-Patches für jede Gastbetriebssystemfamilie.
+Diese Seite enthält Informationen zu anstehenden Gastbetriebssystemreleases. Kunden haben uns mitgeteilt, dass sie wissen möchten, wann ein Release stattfindet, da ihre Clouddienstrollen neu gestartet werden, wenn sie auf "Automatisches Update" festgelegt sind. Gastbetriebssystemreleases werden in der Regel mindestens zwei bis drei Wochen nach dem MSRC-Updaterelease veröffentlicht, das am zweiten Dienstag jedes Monats stattfindet. Neue Releases enthalten alle relevanten MSRC-Patches für jede Gastbetriebssystemfamilie.
 
 Für Microsoft Azure werden ständig Updates veröffentlicht. Das Gastbetriebssystem ist nur ein solches Update in der Pipeline. Ein Release kann durch viele Faktoren beeinflusst werden, die zu zahlreich sind, um hier aufgeführt zu werden. Darüber hinaus wird Azure auf Hunderttausenden von Computern ausgeführt. Daher ist es unmöglich, ein genaues Datum und eine Uhrzeit anzugeben, zu der Ihre Rollen neu gestartet werden. Wir arbeiten an einem Plan zur Begrenzung oder zeitlichen Planung von Neustarts.
 

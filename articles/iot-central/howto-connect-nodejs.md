@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 55ce85702804d99d806220d7f0a4ea0820975f4f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 8a5d880d0238e38fbbaa9de22fc1baf604f0fc07
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206036"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733463"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
 
@@ -121,7 +121,7 @@ In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementi
     var ConnectionString = require('azure-iot-device').ConnectionString;
     ```
 
-1. Fügen Sie die folgenden Variablendeklarationen zur Datei hinzu:
+1. Fügen Sie der Datei folgende Variablendeklarationen hinzu:
 
     ```javascript
     var connectionString = '{your device connection string}';
@@ -129,7 +129,11 @@ In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementi
     var client = clientFromConnectionString(connectionString);
     ```
 
-    Aktualisieren Sie den Platzhalter `{your device connection string}` mit der Verbindungszeichenfolge Ihres Geräts. Diesen Wert haben Sie beim Hinzufügen Ihres echten Geräts auf der Seite mit Details zur Verbindung kopiert. In diesem Beispiel wird `targetTemperature` auf NULL initialisiert, wobei Sie optional die aktuelle Ablesung vom Gerät oder den Wert vom Gerätezwilling übernehmen können. 
+  > [!NOTE]
+   > Azure IoT Central verwendet nun den Azure IoT Hub Device Provisioning-Dienst (Device Provisioning Service, DPS) für alle Geräteverbindungen. Führen Sie die Schritte zum [Abrufen der Verbindungszeichenfolge des Geräts](concepts-connectivity.md#getting-device-connection-string) aus, und fahren Sie anschließend mit dem Rest des Tutorials fort.
+
+
+    Aktualisieren Sie den Platzhalter `{your device connection string}` mit der Verbindungszeichenfolge des Geräts. In diesem Beispiel wird `targetTemperature` auf NULL initialisiert, wobei Sie optional die aktuelle Ablesung vom Gerät oder den Wert vom Gerätezwilling übernehmen können. 
 
 1. Fügen Sie zum Senden von Telemetrie-, Status- und Ereignismessungen an Ihre Azure IoT Central-Anwendung folgende Funktion zur Datei hinzu:
 

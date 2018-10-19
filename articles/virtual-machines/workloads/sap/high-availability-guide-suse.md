@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 238f411ca1a1bb1aa3c89a515edd2091162512a2
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 02a12cc9fc614a642a5dad37e21bd8343c669aad
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379758"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631139"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications
 
@@ -73,7 +73,7 @@ Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 * SAP-Hinweis [1999351] enthält Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP.
 * Das [WIKI der SAP-Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) enthält alle erforderlichen SAP-Hinweise für Linux.
 * [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP unter Linux (dieser Artikel)][deployment-guide]
+* [Bereitstellung von Azure Virtual Machines für SAP unter Linux][deployment-guide]
 * [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
 * [Best Practices für SUSE SAP HA][suse-ha-guide] Die Leitfäden enthalten alle erforderlichen Informationen, um NetWeaver HA und SAP HANA System Replication vor Ort einzurichten. Verwenden Sie diese Leitfäden als allgemeine Basis. Sie bieten wesentlich mehr Informationen.
 
@@ -149,7 +149,7 @@ Sie können eine der Schnellstartvorlagen auf GitHub verwenden, um alle erforder
    9. Administratorbenutzername und Administratorkennwort  
       Es wird ein neuer Benutzer erstellt, der sich am Computer anmelden kann.
    10. Subnetz-ID  
-   Die ID des Subnetzes, mit dem die virtuellen Computer eine Verbindung herstellen sollen.  Lassen Sie das Feld leer, wenn Sie ein neues virtuelles Netzwerk erstellen möchten oder dasselbe Subnetz auswählen möchten, das Sie im Rahmen der NFS-Serverbereitstellung verwendet oder erstellt haben. Die ID hat normalerweise das folgende Format: /subscriptions/**&lt;Abonnement-ID&gt;**/resourceGroups/**&lt;Name der Ressourcengruppe&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;Name des virtuellen Netzwerks&gt;**/subnets/**&lt;Name des Subnetzes&gt;**
+   Wenn Sie den virtuellen Computer in einem vorhandenen VNet bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/**&lt;Abonnement-ID&gt;**/resourceGroups/**&lt;Name der Ressourcengruppe&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;Name des virtuellen Netzwerks&gt;**/subnets/**&lt;Name des Subnetzes&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Manuelles Bereitstellen von Linux über das Azure-Portal
 

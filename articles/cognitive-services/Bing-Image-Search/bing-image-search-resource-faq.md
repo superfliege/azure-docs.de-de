@@ -1,23 +1,24 @@
 ---
-title: Häufig gestellte Fragen (FAQ) zur Bing-Bildersuche-API in Azure | Microsoft-Dokumentation
-description: Erhalten Sie Antworten zu häufig gestellten Fragen zur Bing-Bildersuche-API von Microsoft Cognitive Services in Azure.
+title: Häufig gestellte Fragen (FAQ) – Bing-Bildersuche-API
+titleSuffix: Azure Cognitive Services
+description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Konzepten, Code und Szenarien der Bing-Bildersuche-API.
 services: cognitive-services
 author: v-jerkin
-manager: jhubbard
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 15d3def94312fbde0bf3443cba54edfacafa7ab3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ea170f4751952288c7894cab9c5acda2bf443043
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372738"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295494"
 ---
-# <a name="frequently-asked-questions-faq-about-bing-image-search-api-cognitive-services"></a>Häufig gestellte Fragen (FAQ) zur Bing-Bildersuche-API (Cognitive Services)
- 
+# <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Häufig gestellte Fragen (FAQ) zur Bing-Bildersuche-API
+
 In diesem Artikel finden Sie Antworten zu häufig gestellten Fragen zu Konzepten, Code und Szenarios der Bing-Bildersuche-API für Microsoft Cognitive Services in Azure.
 
 ## <a name="response-headers-in-javascript"></a>Antwortheader in JavaScript
@@ -30,7 +31,7 @@ Die folgenden Header können als Antworten der Bing-Bildersuche-API auftreten.
 |`BingAPIs-Market`|Der Markt, der zur Erfüllung der Anforderung verwendet wurde|
 |`BingAPIs-TraceId`|Der Protokolleintrag auf den Bing-API-Server für diese Anforderung (für Unterstützung)|
 
-Es ist besonders wichtig, die Client-ID beibehalten und mit nachfolgenden Anforderungen zurückzugeben. Wenn Sie dies tun, verwendet die Suche den vergangenen Kontext in der Suchergebnisrangfolge und bietet auch eine konsistente Benutzererfahrung.
+Es ist besonders wichtig, die Client-ID beizubehalten und mit nachfolgenden Anforderungen zurückzugeben. Wenn Sie dies tun, verwendet die Suche den vergangenen Kontext in der Suchergebnisrangfolge und bietet auch eine konsistente Benutzererfahrung.
 
 Wenn Sie jedoch die Bing-Bildersuche-API von JavaScript aus aufrufen, kann es sein, dass die in Ihrem Browser integrierten Sicherheitsfunktionen (CORS) unterbinden, dass Sie auf die Werte dieser Header zuzugreifen können.
 
@@ -52,15 +53,15 @@ Lassen Sie das Fenster während der Nutzung der Tutorial-App geöffnet. Wenn Sie
 
 ## <a name="response-headers-in-production"></a>Antwortheader in einer Produktionsumgebung
 
-Der in der vorherigen Antwort erläuterte Ansatz mit CORS-Proxy ist für Entwicklung, Test und Lernen geeignet. 
+Der in der vorherigen Antwort erläuterte Ansatz mit CORS-Proxy ist für Entwicklung, Test und Lernen geeignet.
 
-In einer Produktionsumgebung sollten Sie jedoch ein serverseitiges Skript auf derselben Domäne wie die Webseite hosten, die die Bing-Websuche-API verwendet. Dieses Skript sollte die API-Aufrufe auf Anforderung des JavaScript auf der Webseite ausführen und alle Ergebnisse, einschließlich der Header, an den Client zurückgeben. Da die beiden Ressourcen (Seite und Skript) einen gemeinsamen Ursprung haben, wird CORS nicht aktiviert und die speziellen Header sind für das JavaScript auf der Webseite zugänglich. 
+In einer Produktionsumgebung sollten Sie jedoch ein serverseitiges Skript auf derselben Domäne wie die Webseite hosten, die die Bing-Websuche-API verwendet. Dieses Skript sollte die API-Aufrufe auf Anforderung des JavaScript auf der Webseite ausführen und alle Ergebnisse, einschließlich der Header, an den Client zurückgeben. Da die beiden Ressourcen (Seite und Skript) einen gemeinsamen Ursprung haben, wird CORS nicht aktiviert und die speziellen Header sind für das JavaScript auf der Webseite zugänglich.
 
 Dieser Ansatz schützt auch Ihren API-Schlüssel vor der Offenlegung, da dieser nur vom serverseitigen Skript benötigt wird. Das Skript kann eine andere Methode (z.B. den HTTP-Verweiser) verwenden, um sicherzustellen, dass die Anforderung autorisiert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? Erwägen Sie, eine Anforderung auf der [UserVoice-Website](https://cognitive.uservoice.com/forums/555907-bing-search) zu erstellen oder dafür abzustimmen.
+Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? Sie können gerne auf der [UserVoice-Website](https://cognitive.uservoice.com/forums/555907-bing-search) eine entsprechende Anforderung erstellen oder dafür abstimmen.
 
 ## <a name="see-also"></a>Weitere Informationen
 

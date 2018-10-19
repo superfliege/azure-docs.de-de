@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 6643db7b732cc5b01ce7602eb3d679c130c46720
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eab55f6e2bf909ccdbdb30a8ced34dbc58d3954a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972195"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721329"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 
@@ -41,9 +41,9 @@ Mit Microsoft Azure haben Sie folgende Möglichkeiten:
 
 - Schützen Ihres Unternehmens
 
-## <a name="scope"></a>Umfang
+## <a name="scope"></a>Bereich
 
-Der Schwerpunkt dieses Whitepapers liegt auf Sicherheitsfeatures und -funktionen, die die Kernkomponenten von Microsoft Azure unterstützen, z.B. [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction), [Microsoft Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/), [VM-Modell von Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/) und Tools und Infrastruktur für die allgemeine Verwaltung. In diesem Whitepaper werden die technischen Fähigkeiten von Microsoft Azure behandelt, die Ihnen als Kunde zur Verfügung stehen, um für die Sicherheit und den Schutz Ihrer Daten zu sorgen.
+Der Schwerpunkt dieses Whitepapers liegt auf Sicherheitsfeatures und -funktionen, die die Kernkomponenten von Microsoft Azure unterstützen. Hierzu zählen [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction), [Microsoft Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/), das [VM-Modell von Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/) sowie die Tools und Infrastruktur für die Verwaltung. In diesem Whitepaper werden die technischen Fähigkeiten von Microsoft Azure behandelt, die Ihnen als Kunde zur Verfügung stehen, um für die Sicherheit und den Schutz Ihrer Daten zu sorgen.
 
 Es ist wichtig, dass Kunden, die eine Umstellung auf die Cloud durchführen, sich der Bedeutung dieses Modells der gemeinsamen Verantwortung bewusst sind. Angebote von Cloudanbietern sind mit großen Vorteilen in Bezug auf die Sicherheit und Konformität verbunden, aber dies bedeutet nicht, dass der Kunde nicht mehr für den Schutz seiner Benutzer, Anwendungen und Dienstangebote verantwortlich ist.
 

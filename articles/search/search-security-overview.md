@@ -6,14 +6,14 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/06/2018
 ms.author: heidist
-ms.openlocfilehash: 888f7c3ced0ef48cff222bffdbf0f278fa5f42b3
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4b1307aa00fae26d7425c9a95ed673b11ba2e9b4
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285728"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092630"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Sicherheit und Datenschutz in Azure Search
 
@@ -23,9 +23,7 @@ Die Sicherheitsarchitektur von Azure Search umfasst physische Sicherheit, versch
 
 ## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Standardskonformität: ISO 27001, SOC 2, HIPAA
 
-Eine Teilliste der Standardskonformität umfasst SOC 2 Typ 2 und HIPAA für allgemein verfügbare Features. Features der Vorschauversion sind im Rahmen der allgemeinen Verfügbarkeit zertifiziert und dürfen nicht in Lösungen verwendet werden, für die bestimmte Standardanforderungen erfüllt werden müssen. Die Konformitätszertifizierung ist in [Übersicht der Microsoft Azure-Konformität](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) und [Trust Center](https://www.microsoft.com/en-us/trustcenter) dokumentiert. 
-
-Zertifizierung für die folgenden Standards wurde [im Juni 2018 angekündigt](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/).
+Azure Search ist wie [im Juni 2018 angekündigt](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/) für die folgenden Standards zertifiziert:
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [Konformität mit SOC 2 Type 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) Den vollständigen Bericht finden Sie im [SOC 2 Type II-Bericht für Azure und Azure Government](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
@@ -35,13 +33,15 @@ Zertifizierung für die folgenden Standards wurde [im Juni 2018 angekündigt](ht
 + [PCI-DSS Level 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [Australia IRAP Unclassified DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
+Die Standardkonformität gilt für allgemein verfügbare Features. Previewfunktionen werden beim Übergang in die allgemeine Verfügbarkeit zertifiziert und dürfen nicht in Lösungen, für die bestimmte Standardanforderungen erfüllt werden müssen, verwendet werden. Die Konformitätszertifizierung ist in [Übersicht der Microsoft Azure-Konformität](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) und [Trust Center](https://www.microsoft.com/en-us/trustcenter) dokumentiert. 
+
 ## <a name="encrypted-transmission-and-storage"></a>Verschlüsselte Übertragung und Speicherung
 
 Die Verschlüsselung erstreckt sich auf die gesamte Indexpipeline – von Verbindungen über die Übertragung bis hin zu indizierten in Azure Search gespeicherten Daten.
 
 | Sicherheitsebene | BESCHREIBUNG |
 |----------------|-------------|
-| Verschlüsselung während der Übertragung | Azure Search lauscht an HTTPS-Port 443. Verbindungen mit Azure-Diensten sind plattformweit verschlüsselt. |
+| Verschlüsselung während der Übertragung <br>(HTTPS/SSL/TLS) | Azure Search lauscht an HTTPS-Port 443. Verbindungen mit Azure-Diensten sind plattformweit verschlüsselt. <br/><br/>Alle Azure Search-Interaktionen zwischen Client und Dienst erfolgen über SSL/TLS 1.2.  Achten Sie darauf, TLS v1.2 für SSL-Verbindungen mit Ihrem Dienst zu verwenden.|
 | Verschlüsselung ruhender Daten | Die Verschlüsselung ist vollständig in den Indizierungsprozess integriert, ohne messbare Auswirkungen auf die Durchführungsdauer der Indizierung oder die Indexgröße. Sie wird automatisch auf die gesamte Indizierung angewendet, einschließlich auf inkrementelle Updates für einen nicht vollständig verschlüsselten Index (vor Januar 2018 erstellt).<br><br>Intern basiert die Verschlüsselung auf der [256-Bit-AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) von [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).|
 
 Die Verschlüsselung ist in Azure Search integriert, wobei Zertifikate und Schlüssel intern von Microsoft verwaltet und universell angewendet werden. Sie können die Verschlüsselung nicht aktivieren bzw. deaktivieren, eigene Schlüssel verwalten oder ersetzen oder Verschlüsselungseinstellungen im Portal oder programmgesteuert anzeigen. 

@@ -13,20 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 168ba57399b2649af29820f7321dd0151618346e
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 1daf04e3f878d0748bfa0904259c7b7187481843
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436479"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580485"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Verschieben eines virtuellen Windows-Computers in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe
-In diesem Artikel wird beschrieben, wie Sie einen virtuellen Windows-Computer zwischen Ressourcengruppen oder Abonnements verschieben. Das Verschieben zwischen Abonnements kann hilfreich sein, wenn Sie einen virtuellen Computer ursprünglich in einem persönlichen Abonnement erstellt haben und ihn nun in das Abonnement Ihres Unternehmens verschieben möchten, um weiterarbeiten zu können.
+In diesem Artikel wird beschrieben, wie Sie einen virtuellen Windows-Computer (VM) zwischen Ressourcengruppen oder Abonnements verschieben. Das Verschieben zwischen Abonnements kann hilfreich sein, wenn Sie einen virtuellen Computer ursprünglich in einem persönlichen Abonnement erstellt haben und ihn nun in das Abonnement Ihres Unternehmens verschieben möchten, um weiterarbeiten zu können.
 
 > [!IMPORTANT]
->Zum aktuellen Zeitpunkt können verwaltete Datenträger nicht verschoben werden. 
+>Zum aktuellen Zeitpunkt können Azure Managed Disks nicht verschoben werden. 
 >
 >Im Rahmen der Verschiebung werden neue Ressourcen-IDs erstellt. Nachdem die VM verschoben wurde, müssen Sie Ihre Tools und Skripts aktualisieren, damit die neuen Ressourcen-IDs verwendet werden. 
 > 
@@ -36,16 +36,15 @@ In diesem Artikel wird beschrieben, wie Sie einen virtuellen Windows-Computer zw
 
 ## <a name="use-powershell-to-move-a-vm"></a>Verschieben eines virtuellen Computers mithilfe von PowerShell
 
-Wenn Sie einen virtuellen Computer in eine andere Ressourcengruppe verschieben möchten, müssen Sie auch alle abhängigen Ressourcen verschieben. Für das Cmdlet „Move-AzureRMResource“ benötigen Sie die Ressourcen-ID jeder einzelnen Ressource. Verwenden Sie das Cmdlet [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource), um eine Liste der Ressourcen-IDs anzuzeigen.
+Wenn Sie einen virtuellen Computer in eine andere Ressourcengruppe verschieben möchten, müssen Sie auch alle abhängigen Ressourcen verschieben. Um eine Liste mit der Ressourcen-ID jeder dieser Ressourcen zu erhalten, verwenden Sie das Cmdlet [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource).
 
 ```azurepowershell-interactive
  Get-AzureRMResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
 ```
 
-Zum Verschieben eines virtuellen Computers müssen mehrere Ressourcen verschoben werden. Mithilfe der Ausgabe von Get-AzureRMResource können Sie eine durch Trennzeichen getrennte Liste der Ressourcen-IDs erstellen und diese an [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) übergeben, um sie auf das Ziel zu verschieben. 
+Sie können die Ausgabe des vorherigen Befehls als durch Trennzeichen getrennte Liste von Ressourcen-IDs an [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) verwenden, um jede Ressource an das Ziel zu verschieben. 
 
 ```azurepowershell-interactive
-
 Move-AzureRmResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```
@@ -59,7 +58,7 @@ Move-AzureRmResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" 
 ```
 
 
-Sie werden aufgefordert zu bestätigen, dass die angegebenen Ressourcen verschoben werden soll. 
+Wenn Sie aufgefordert werden, zu bestätigen, dass die angegebene Ressource verschoben werden soll, geben Sie **J** ein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können viele verschiedene Arten von Ressourcen zwischen Ressourcengruppen und Abonnements verschieben. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../resource-group-move-resources.md).    

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb820d124fd9b5e882cad538ad436532d7865fbc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: f1899817ee2d0efec4ab561a64f24e49cb173c29
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37923488"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720768"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler Hyper-V-Server für die Notfallwiederherstellung in Azure
 
@@ -60,13 +60,15 @@ Bereiten Sie VMM wie folgt für die Netzwerkzuordnung vor:
 ## <a name="verify-internet-access"></a>Überprüfen des Internetzugriffs
 
 1. Im Rahmen des Tutorials besteht die einfachste Konfiguration darin, dass die Hyper-V-Hosts und VMM-Server direkten Zugriff auf das Internet haben, ohne einen Proxy zu verwenden. 
-2. Stellen Sie sicher, dass Hyper-V-Hosts und ggf. der VMM-Server auf diese URLs zugreifen können: 
-
-    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
-    
+2. Stellen Sie sicher, dass Hyper-V-Hosts und ggf. der VMM-Server auf die erforderlichen URLs zugreifen können, die weiter unten angegeben sind.   
 3. Wenn Sie den Zugriff über die IP-Adresse steuern, stellen Sie Folgendes sicher:
     - Bei Verwendung von auf IP-Adressen basierenden Firewallregeln muss eine Verbindung mit [IP-Bereichen für das Azure-Rechenzentrum](https://www.microsoft.com/download/confirmation.aspx?id=41653) und dem HTTPS-Port (443) möglich sein.
     - Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements zu.
+    
+### <a name="required-urls"></a>Erforderliche URLs
+
+
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover

@@ -1,6 +1,6 @@
 ---
-title: Streamen von Daten aus Stream Analytics in Data Lake Store | Microsoft Docs
-description: Verwenden von Azure Stream Analytics zum Streamen von Daten in Azure Data Lake-Speicher
+title: Streamen von Daten aus Stream Analytics in Azure Data Lake Storage Gen1 | Microsoft-Dokumentation
+description: Verwenden von Azure Stream Analytics zum Streamen von Daten in Azure Data Lake Storage Gen1
 services: data-lake-store,stream-analytics
 documentationcenter: ''
 author: nitinme
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 396d514d0d75c43f20ab7b0fcdf8c7351cb3dd89
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0d9ddbeae3a666d3b3cf56f80ae633a7ecaa650a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213451"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294032"
 ---
-# <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Streamen von Daten aus Azure Storage-Blob in Data Lake-Speicher mit Azure Stream Analytics
-In diesem Artikel erfahren Sie, wie Sie Azure Data Lake-Speicher als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake-Speicher (Ausgabe) geschrieben werden.
+# <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Streamen von Daten aus Azure Storage Blob in Azure Data Lake Storage Gen1 mit Azure Stream Analytics
+In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Storage Gen1 als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake Storage Gen1 (Ausgabe) geschrieben werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
@@ -29,10 +29,10 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * **Azure Storage-Konto**. Sie verwenden einen Blobcontainer aus diesem Konto, um Daten für einen Stream Analytics-Auftrag einzugeben. Nehmen Sie für dieses Tutorial an, dass Sie über ein Speicherkonto namens **storageforasa** und in diesem Konto über einen Container namens **storageforasacontainer** verfügen. Nachdem Sie den Container erstellt haben, laden Sie eine Beispieldatendatei in diesen hoch. 
   
-* **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md)aus. Nehmen wir an, dass Sie über ein Data Lake Store-Konto namens **asadatalakestore** verfügen. 
+* **Ein Data Lake Storage Gen1-Konto.** Befolgen Sie die Anweisungen unter [Erste Schritte mit Azure Data Lake Storage Gen1 über das Azure-Portal](data-lake-store-get-started-portal.md). Nehmen wir an, dass Sie über ein Data Lake Storage Gen1-Konto namens **myadlsg1** verfügen. 
 
 ## <a name="create-a-stream-analytics-job"></a>Erstellen eines Stream Analytics-Auftrags
-Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle und ein Ausgabeziel enthält. In diesem Tutorial ist die Quelle ein Azure-Blobcontainer, und das Ziel ist der Data Lake-Speicher.
+Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle und ein Ausgabeziel enthält. In diesem Tutorial ist die Quelle ein Azure-Blobcontainer, und das Ziel ist Azure Data Lake Storage Gen1.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
@@ -67,9 +67,9 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
     Klicken Sie auf **Create**. Das Portal fügt die Eingabe hinzu und testet die Verbindung.
 
 
-## <a name="create-a-data-lake-store-output-for-the-job"></a>Erstellen einer Data Lake-Speicherausgabe für den Auftrag
+## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Erstellen einer Data Lake Storage Gen1-Ausgabe für den Auftrag
 
-1. Öffnen Sie die Seite für den Stream Analytics-Auftrag, klicken Sie auf die Registerkarte **Ausgaben**, und klicken Sie dann auf **Hinzufügen**.
+1. Öffnen Sie die Seite für den Stream Analytics-Auftrag, klicken Sie auf die Registerkarte **Ausgaben**, klicken Sie auf **Hinzufügen**, und wählen Sie **Data Lake Storage Gen1** aus.
 
     ![Hinzufügen einer Ausgabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.output.1.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
 
@@ -77,16 +77,15 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
     ![Hinzufügen einer Ausgabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.output.2.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
 
-    * Geben Sie unter **Ausgabealias** einen eindeutigen Namen für die Auftragsausgabe ein. Dies ist ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Data Lake-Speicher weiterzuleiten.
-    * Wählen Sie unter **Senke** die Option **Data Lake Store** aus.
-    * Sie werden aufgefordert, sich für den Zugriff auf das Data Lake Store-Konto zu autorisieren. Klicken Sie auf **Autorisieren**.
+    * Geben Sie unter **Ausgabealias** einen eindeutigen Namen für die Auftragsausgabe ein. Dies ist ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an dieses Data Lake Storage Gen1-Konto weiterzuleiten.
+    * Sie werden aufgefordert, den Zugriff auf das Data Lake Storage Gen1-Konto zu autorisieren. Klicken Sie auf **Autorisieren**.
 
 3. Geben Sie auf dem Blatt **Neue Ausgabe** die folgenden Werte ein.
 
     ![Hinzufügen einer Ausgabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.output.3.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
 
-    * Wählen Sie unter **Kontoname** das bereits erstellte Data Lake Store-Konto aus, an das die Auftragsausgabe gesendet werden soll.
-    * Geben Sie unter **Pfadpräfixmuster** den Dateipfad ein, in den Ihre Dateien im angegebenen Data Lake Store-Konto geschrieben werden.
+    * Wählen Sie unter **Kontoname** das bereits erstellte Data Lake Storage Gen1-Konto aus, an das die Auftragsausgabe gesendet werden soll.
+    * Geben Sie unter **Pfadpräfixmuster** den Dateipfad ein, in den Ihre Dateien im angegebenen Data Lake Storage Gen1-Konto geschrieben werden.
     * Wenn Sie ein Datumstoken im Pfadpräfix verwendet wird, können Sie das **Datumsformat** auswählen, mit dem Ihre Dateien sortiert werden.
     * Wenn Sie ein Uhrzeittoken im Pfadpräfix verwendet wird, können Sie das **Uhrzeitformat** auswählen, mit dem Ihre Dateien sortiert werden.
     * Wählen Sie unter **Ereignisserialisierungsformat** die Option **CSV** aus.
@@ -113,11 +112,11 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
     ![Überwachen des Auftrags](./media/data-lake-store-stream-analytics/run.query.3.png "Überwachen des Auftrags")
 
-5. Abschließend können Sie überprüfen, ob die Ausgabedaten des Auftrags im Data Lake Store-Konto verfügbar sind. 
+5. Abschließend können Sie überprüfen, ob die Ausgabedaten des Auftrags im Data Lake Storage Gen1-Konto verfügbar sind. 
 
     ![Überprüfen der Ausgabe](./media/data-lake-store-stream-analytics/run.query.4.png "Überprüfen der Ausgabe")
 
-    Beachten Sie, dass die Ausgabe im Daten-Explorer-Fenster gemäß der Angabe in den Data Lake Store-Ausgabeeinstellungen (`streamanalytics/job/output/{date}/{time}`) in einen Ordnerpfad geschrieben wird.  
+    Beachten Sie, dass die Ausgabe im Daten-Explorer-Fenster gemäß der Angabe in den Data Lake Storage Gen1-Ausgabeeinstellungen (`streamanalytics/job/output/{date}/{time}`) in einen Ordnerpfad geschrieben wird.  
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Erstellen eines HDInsight-Clusters für die Verwendung von Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Erstellen eines HDInsight-Clusters für die Verwendung von Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -2,19 +2,19 @@
 title: Übersicht über die Geschäftskontinuität mit Azure Database for MySQL
 description: Übersicht über die Geschäftskontinuität mit Azure Database for MySQL
 services: mysql
-author: kamathsun
-ms.author: sukamat
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 127255514c434717be07886b1b1739027d3a14ea
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8d0a8ac1aedcac26f6ac67e0e1f2a9d265a9b576
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263571"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714343"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Übersicht über die Geschäftskontinuität mit Azure Database for MySQL
 
@@ -32,7 +32,7 @@ Die folgende Tabelle vergleicht ERT und RPO für die verfügbaren Features:
 | Geowiederherstellung von georeplizierten Sicherungen | Nicht unterstützt | ERT < 12 Stunden<br/>RPO < 1 Stunde | ERT < 12 Stunden<br/>RPO < 1 Stunde |
 
 > [!IMPORTANT]
-> Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Es ist nicht möglich, einen gelöschten Server wiederherzustellen.
+> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Wiederherstellen eines Servers nach einem Benutzer- oder Anwendungsfehler
 
@@ -49,7 +49,7 @@ Eine Möglichkeit ist, einfach zu warten, bis der Server wieder online ist, wenn
 Die andere Option ist die Verwendung des Geowiederherstellungsfeatures von Azure Database for MySQL, das den Server mithilfe von georedundanten Sicherungen wiederherstellt. Auf diese Sicherungen kann selbst dann zugegriffen werden, wenn die Region, in der Ihr Server gehostet wird, offline ist. Sie können eine Wiederherstellung aus diesen Sicherungen in eine andere Region ausführen und den Server wieder online schalten.
 
 > [!IMPORTANT]
-> Die Geowiederherstellung ist nur möglich, wenn Sie den Server mit einem georedundanten Sicherungsspeicher bereitgestellt haben.
+> Die Geowiederherstellung ist nur möglich, wenn Sie den Server mit einem georedundanten Sicherungsspeicher bereitgestellt haben. Wenn Sie von lokal redundanten zu georedundanten Sicherungen für einen bestehenden Server wechseln möchten, müssen Sie mit „pg_dump“ ein Speicherabbild Ihres bestehenden Servers erstellen und ihn auf einem neu erstellten Server wiederherstellen, der mit georedundanten Sicherungen konfiguriert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

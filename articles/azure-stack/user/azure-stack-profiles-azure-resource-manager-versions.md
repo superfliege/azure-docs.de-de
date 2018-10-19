@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9d33ccf9262d4432ac7255121e97f318d00b5145
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: bc57d445c334baeb32dbffda814cb10a35956d03
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050648"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380215"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Von Profilen in Azure Stack unterstützte API-Versionen von Ressourcenanbietern
 
@@ -56,7 +56,7 @@ Eine Erklärung der API-Profile und des Rhythmus der Versionsveröffentlichung f
 
 Eine Liste mit den Versionen jedes einzelnen Ressourcentyps für die Anbieter im API-Profil finden Sie unter [Details zu 2018-03-01-hybrid](#details-for-the-2018-03-01-hybrid).
 
-## <a name="overview-of-2017-03-09-profile"></a>Übersicht über 2017-03-09-profile
+## <a name="overview-of-2018-03-01-hybrid"></a>Übersicht über 2018-03-01-hybrid
 
 | Ressourcenanbieter | Api-version |
 |------------------------------------------------|------------------------------|
@@ -76,7 +76,7 @@ Eine Liste mit den Versionen jedes einzelnen Ressourcentyps für die Anbieter im
 | Resources_Locks | 2016-09-01 |
 | Abonnements | 2016-06-1 |
 
-Eine Liste mit den Versionen jedes einzelnen Ressourcentyps für die Anbieter im API-Profil finden Sie unter [Details zu 2017-03-09-profile](#details-for-the-2017-03-09-profile).
+Eine Liste mit den Versionen jedes einzelnen Ressourcentyps für die Anbieter im API-Profil finden Sie unter [Details zu 2018-03-01-hybrid](#details-for-the-2018-03-01-hybrid).
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Details zu 2018-03-01-hybrid
 
@@ -231,7 +231,7 @@ Mit dem Speicherressourcenanbieter (Storage Resource Provider, SRP) können Sie 
 | Speicherkonten | 2016-01-01 |
 | Verwendungen | 2016-01-01 |
 
-## <a name="details-for-the-2017-03-09-profile"></a>Details zu 2017-03-09-profile
+## <a name="details-for-the-2018-03-01-hybrid"></a>Details zu 2018-03-01-hybrid
 
 ### <a name="microsoft-authorization"></a>Microsoft-Autorisierung
 

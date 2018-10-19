@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Drill mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Drill mithilfe von Azure Data Factory (Vorschauversion) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Daten aus Drill mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 31dcae5dde53a9a3933c15dcf3b6869ec943cbea
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 166dffc6f79784b9a62cea4cb545aee32001441d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050283"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124676"
 ---
-# <a name="copy-data-from-drill-using-azure-data-factory"></a>Kopieren von Daten aus Drill mithilfe von Azure Data Factory
+# <a name="copy-data-from-drill-using-azure-data-factory-preview"></a>Kopieren von Daten aus Drill mithilfe von Azure Data Factory (Vorschauversion)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Drill zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -45,8 +45,8 @@ Folgende Eigenschaften werden für den mit Drill verknüpften Dienst unterstütz
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Drill** festgelegt werden. | Ja |
-| connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Drill. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| type | Die „type“-Eigenschaft muss auf **Drill** festgelegt werden. | JA |
+| connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Drill. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 **Beispiel:**
@@ -101,8 +101,8 @@ Legen Sie zum Kopieren von Daten aus Drill den Quelltyp in der Kopieraktivität 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **DrillSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Ja |
+| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **DrillSource** festgelegt werden. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | JA |
 
 **Beispiel:**
 

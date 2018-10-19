@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 03/15/2018
-ms.openlocfilehash: af90fb4c89cf552d4c5637db08ef0acd9984b31b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/17/2018
+ms.openlocfilehash: 3c9e0acfe9f8ffb159cacf50923f249be175ea77
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264696"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981932"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Überwachen in Azure Database for MySQL
 Die Überwachung von Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung für Workloads. Azure Database for MySQL bietet verschiedene Metriken, die Einblicke in das Verhalten der Ressourcen ermöglichen, die dem MySQL-Server zugrunde liegen. 
@@ -31,11 +31,16 @@ Für Azure Database for MySQL sind folgende Metriken verfügbar:
 |memory_percent|Arbeitsspeicher in Prozent|Prozent|Die Arbeitsspeicherauslastung in Prozent|
 |io_consumption_percent|E/A in Prozent|Prozent|Die E/A-Auslastung in Prozent|
 |storage_percent|Speicher in Prozent|Prozent|Der verwendete Speicher relativ zum Maximalwert des Servers (in Prozent)|
-|storage_used|Verwendeter Speicher|Byte|Die Menge des verwendeten Speichers. Der vom Dienst verwendete Speicher umfasst die Datenbankdateien, Transaktionsprotokolle und Serverprotokolle.|
+|storage_used|Verwendeter Speicher|Byte|Die Menge des verwendeten Speichers. Der vom Dienst verwendete Speicher kann die Datenbankdateien, Transaktionsprotokolle und Serverprotokolle umfassen.|
+|serverlog_storage_percent|Serverprotokollspeicher in Prozent|Prozent|Der Prozentsatz des Serverprotokollspeichers, der aus dem maximalen Serverprotokollspeicher des Servers verwendet wird.|
+|serverlog_storage_usage|Verwendeter Serverprotokollspeicher|Byte|Die Menge des verwendeten Serverprotokollspeichers.|
+|serverlog_storage_limit|Begrenzung des Serverprotokollspeichers|Byte|Der maximale Serverprotokollspeicher für diesen Server.|
 |storage_limit|Speicherbegrenzung|Byte|Der maximale Speicher für diesen Server|
-|active_connections|Aktive Verbindungen gesamt|Count|Die Anzahl aktiver Verbindungen mit dem Server|
-|connections_failed|Fehlerhafte Verbindungen gesamt|Count|Die Anzahl von Verbindungsfehlern für den Server|
-
+|active_connections|Die aktiven Verbindungen.|Count|Die Anzahl aktiver Verbindungen mit dem Server|
+|connections_failed|Verbindungsfehler|Count|Die Anzahl von Verbindungsfehlern für den Server|
+|seconds_behind_master|Replikationsverzögerung in Sekunden|Count|Die Anzahl von Sekunden, die die Verzögerung des Replikatservers im Vergleich zum Masterserver angeben.|
+|network_bytes_egress|Netzwerk ausgehend|Byte|Ausgehender Netzwerkdatenverkehr über aktive Verbindungen.|
+|network_bytes_ingress|Netzwerk eingehend|Byte|Eingehender Netzwerkdatenverkehr über aktive Verbindungen.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-on-metric.md).

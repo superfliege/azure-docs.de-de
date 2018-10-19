@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 06/25/2018
 ms.author: genli
-ms.openlocfilehash: 09cfda3c2c790297b0961ecac92cba61c9e6de6f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: ce4a889cae852d333ea9862138f4d44471677c26
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754204"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544012"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -111,6 +111,8 @@ Schauen Sie sich zum besseren Verständnis der Schrittanleitung zur Konfiguratio
 > Diensttags für Speicher befinden sich in der Vorschau. Sie sind nur in bestimmten Regionen verfügbar. Eine Liste der Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).
 
 Wenn Sie verwaltete Azure-Datenträger verwenden, müssen Sie in den Firewalls möglicherweise einen weiteren Port öffnen (Port 8443).
+
+Wenn Ihr Subnetz keine Route für den ausgehenden Internetverkehr hat, müssen Sie außerdem einen Dienstendpunkt mit dem Diensttag „Microsoft.Storage“ zu Ihrem Subnetz hinzufügen. 
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)
 

@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 58108bd2851050e96df1b5453ce96856374b7163
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: bd75ecde75d0f22dc66f047cd063dd85807f6f33
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437034"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304440"
 ---
 # <a name="manage-access-for-external-users-using-rbac"></a>Verwalten des Zugriffs für externe Benutzer mithilfe der rollenbasierten Zugriffssteuerung
 
@@ -42,7 +42,7 @@ In folgenden beiden Szenarien wird die rollenbasierte Zugriffssteuerung im Allge
 RBAC-Rollen können nur von **Besitzern** des Abonnements zugeteilt werden. Daher muss der Administrator als ein Benutzer angemeldet sein, dem diese Rolle vorab zugewiesen wurde, oder der das Azure-Abonnement erstellt hat.
 
 Nachdem Sie sich als Administrator beim Azure-Portal angemeldet haben, wählen Sie „Abonnements“ und dann das gewünschte Abonnement aus.
-![Blatt „Abonnement“ im Azure-Portal](./media/role-assignments-external-users/0.png) Wenn der Administratorbenutzer das Azure-Abonnement erworben hat, wird der Benutzer standardmäßig als **Kontoadministrator** angezeigt. Dies ist die Abonnementrolle. Weitere Informationen zu den Azure-Abonnementrollen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](../billing/billing-add-change-azure-subscription-administrator.md).
+![Blatt „Abonnement“ im Azure-Portal](./media/role-assignments-external-users/0.png) Wenn der Administratorbenutzer das Azure-Abonnement erworben hat, wird der Benutzer standardmäßig als **Kontoadministrator** angezeigt. Dies ist die Abonnementrolle. Weitere Informationen zu den Azure-Abonnementrollen finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md).
 
 In diesem Beispiel ist der Benutzer „alflanigan@outlook.com“ der **Besitzer** des Abonnements „Free Trial“ im AAD-Mandanten „Default tenant Azure“. Da dieser Benutzer das Azure-Abonnement mit dem ursprünglichen Microsoft-Konto „Outlook“ (Microsoft-Konto = Outlook, Live usw.) erstellt hat, lautet der Standarddomänenname für alle weiteren Benutzer, die diesem Mandanten hinzugefügt werden, **\@alflaniganuoutlook.onmicrosoft.com**. Die Syntax der neuen Domäne wird gebildet, indem der Benutzername und der Domänenname des Benutzers, der den Mandanten erstellt hat, zusammengesetzt werden und die Erweiterung **„.onmicrosoft.com“** angefügt wird.
 Darüber hinaus können Benutzer sich mit einem benutzerdefinierten Domänennamen beim Mandanten anmelden, nachdem dieser Name dem neuen Mandanten hinzugefügt und in diesem überprüft wurde. Weitere Informationen zum Überprüfen eines benutzerdefinierten Domänennamens in einem Azure Active Directory-Mandanten finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Ihrem Verzeichnis](/active-directory/active-directory-add-domain).

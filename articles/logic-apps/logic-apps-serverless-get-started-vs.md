@@ -11,12 +11,12 @@ ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 08/01/2018
-ms.openlocfilehash: a69c129d5ae1405462e3a54a24cd2edbad2a86a7
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f5555d9a60934529bf8fed6db6a18dd783f46075
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126776"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297467"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Erstellen Ihrer ersten serverlosen App mit Azure Logic Apps und Azure Functions – Visual Studio
 
@@ -122,7 +122,7 @@ Führen Sie zum Erstellen Ihres Functions-Projekts und Ihrer Funktion mit JavaSc
 
 ## <a name="deploy-functions-from-visual-studio"></a>Bereitstellen von Funktionen aus Visual Studio
 
-Ihre Bereitstellungsvorlage stellt alle in Ihrer Projektmappe aus dem Git-Repository (angegeben durch Variablen in der Datei `azuredeploy.json`) verfügbaren Azure-Funktionen bereit. Wenn Sie Ihr Functions-Projekt in Ihrer Projektmappe erstellen, können Sie es in der Git-Quellcodeverwaltung, z. B. GitHub oder Visual Studio Team Services, überprüfen und dann die Variable `repo` so aktualisieren, dass die Vorlage Ihre Azure-Funktion bereitstellt.
+Ihre Bereitstellungsvorlage stellt alle in Ihrer Projektmappe aus dem Git-Repository (angegeben durch Variablen in der Datei `azuredeploy.json`) verfügbaren Azure-Funktionen bereit. Wenn Sie Ihr Functions-Projekt in Ihrer Projektmappe erstellen, können Sie es in die Git-Quellcodeverwaltung, z.B. GitHub oder Azure DevOps, einchecken und dann die Variable `repo` so ändern, dass die Vorlage Ihre Azure-Funktion bereitstellt.
 
 ## <a name="manage-logic-apps-and-view-run-history"></a>Verwalten von Logik-Apps und Anzeigen des Ausführungsverlaufs
 

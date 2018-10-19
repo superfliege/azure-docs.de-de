@@ -10,16 +10,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: dbb9261cfce0a8437cfe76121fa16aa87c4b3393
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 583d2ac5a8ac4c236612cdfe78595da1812c56fa
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786799"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730765"
 ---
 #   <a name="text-split-cognitive-skill"></a>Der Skill „Text teilen“
 
 Der Skill **Text teilen** unterteilt den Text in Blöcke. Sie können festlegen, ob Sie den Text in Sätze oder in Seiten einer bestimmten Länge aufteilen möchten. Dieser Skill ist besonders nützlich, wenn Sie eine maximale Textlänge in nachfolgenden Skills einhalten müssen. 
+
+> [!NOTE]
+> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen, das Extrahieren von Bildern und die Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -28,7 +31,7 @@ Microsoft.Skills.Text.SplitSkill
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
-| Parametername     | Beschreibung |
+| Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
 | textSplitMode      | Entweder „Seiten“ oder „Sätze“ | 
 | maximumPageLength | Wenn „textSplitMode“ auf „Seiten“ gesetzt ist, bezieht sich dies auf die maximale Seitenlänge, gemessen durch `String.Length`. Der Mindestwert ist 100. | 
@@ -37,14 +40,14 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
-| Parametername       | Beschreibung      |
+| Parametername       | BESCHREIBUNG      |
 |----------------------|------------------|
 | text  | Der Text, der in Teilzeichenfolgen aufgeteilt werden soll. |
 | languageCode  | (Optional) Der Sprachcode für das Dokument.  |
 
 ## <a name="skill-outputs"></a>Skillausgaben 
 
-| Parametername     | Beschreibung |
+| Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
 | textItems | Ein Array von Teilzeichenfolgen, die extrahiert wurden. |
 

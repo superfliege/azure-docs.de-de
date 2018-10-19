@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 338c2a197cb50091c3b272e0ce590341ffda1d7f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e9c42429a8feb60ade27afe998cb9a267f1603dd
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341082"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180903"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Microsoft-Konto mithilfe von Azure Active Directory B2C
 
@@ -25,23 +25,16 @@ Um ein Microsoft-Konto als Identitätsanbieter in Azure Active Directory (Azure 
 
 1. Melden Sie sich beim [Microsoft App-Registrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) mit den Anmeldeinformationen für Ihr Microsoft-Konto an.
 2. Wählen Sie oben rechts **App hinzufügen** aus.
-3. Geben Sie einen **Namen** für Ihre Anwendung an, und klicken Sie auf **Erstellen**.
-4. Kopieren Sie auf der Registrierungsseite den Wert für **Anwendungs-ID**. Sie verwenden ihn, um das Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren.
+3. Geben Sie einen **Namen** für Ihre Anwendung ein. Zum Beispiel *MSAapp1*.
+4. Wählen Sie **Neues Kennwort generieren** aus, und stellen Sie sicher, dass Sie das Kennwort kopieren, das für die Konfiguration des Identitätsanbieters verwendet werden soll. Kopieren Sie auch die **Anwendungs-ID**. 
 5. Wählen Sie **Plattform hinzufügen** und dann **Web** aus.
-6. Geben Sie `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` unter **Umleitungs-URLs** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z. B. „contosob2c“).
-7. Wählen Sie unter **Anwendungsgeheimnisse** die Option **Neues Kennwort generieren** aus. Kopieren Sie das neue Kennwort, das auf dem Bildschirm angezeigt wird. Sie benötigen es, um das Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Dieses Kennwort ist eine wichtige Anmeldeinformation.
+4. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` unter **Umleitungs-URLs** ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten.
+5. Wählen Sie **Speichern**aus.
 
 ## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>Konfigurieren eines Microsoft-Kontos als Identitätsanbieter
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-2. Vergewissern Sie sich, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie oben rechts im Azure-Portal zu diesem Verzeichnis wechseln. Wählen Sie die Abonnementinformationen aus, und klicken Sie dann auf **Verzeichnis wechseln**. 
-
-    ![Wechseln zu Ihrem Azure AD B2C-Mandanten](./media/active-directory-b2c-setup-msa-app/switch-directories.png)
-
-    Wählen Sie das Verzeichnis aus, das den Mandanten enthält.
-
-    ![Auswählen des Verzeichnisses](./media/active-directory-b2c-setup-msa-app/select-directory.png)
-
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
 3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
 4. Wählen Sie **Identitätsanbieter** und dann **Hinzufügen** aus.
 5. Geben Sie einen **Namen** an. Geben Sie z.B. *MSA* ein.

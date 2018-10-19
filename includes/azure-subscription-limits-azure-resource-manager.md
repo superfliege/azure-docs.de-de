@@ -5,15 +5,15 @@ services: billing
 author: rothja
 ms.service: billing
 ms.topic: include
-ms.date: 07/02/2018
+ms.date: 08/22/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: f47654d056a26f5a58b1ccc2c200f774bee1f19f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2d0fa179e7d1ae87372536d315175f1406baf21a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37348200"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979544"
 ---
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "37348200"
 | Gesamte Kerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Support kontaktieren |
 | VM-Kerne pro Serie (Dv2, F usw.) pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Support kontaktieren |
 | [Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |Unbegrenzt |Unbegrenzt |
-| [Speicherkonten](../articles/storage/common/storage-create-storage-account.md) pro Region und Abonnement |200 |200<sup>2</sup> |
+| [Speicherkonten](../articles/storage/common/storage-quickstart-create-account.md) pro Region und Abonnement |200 |200<sup>2</sup> |
 | [Ressourcengruppen](../articles/azure-resource-manager/resource-group-overview.md) pro Abonnement |980 |980 |
 | [Verfügbarkeitsgruppen](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) pro Abonnement |2.000 pro Region |2.000 pro Region |
 | Ressourcen-Manager-API-Lesevorgänge |15.000 pro Stunde |15.000 pro Stunde |
@@ -31,6 +31,7 @@ ms.locfileid: "37348200"
 | Eindeutige Tag-Berechnungen pro Abonnement<sup>3</sup> | 10.000 | 10.000 |
 | [Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement |Nicht anwendbar<sup>4</sup> |Nicht anwendbar<sup>4</sup> |
 | [Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement |Nicht anwendbar<sup>4</sup> |Nicht anwendbar<sup>4</sup> |
+| [Bereitstellungen auf Abonnementebene](../articles/azure-resource-manager/deploy-to-subscription.md) pro Standort | 800 | 800 |
 
 <sup>1</sup>Standardgrenzwerte variieren nach angebotenem Kategorietyp, z.B. kostenlose Testversion, nutzungsbasierte Bezahlung und Serie wie Dv2, F, G usw.
 

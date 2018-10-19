@@ -1,20 +1,21 @@
 ---
-title: Exportieren von Custom Vision Service-Modellen auf Mobilgeräte – Custom Vision Service – Azure Cognitive Services | Microsoft-Dokumentation
+title: Exportieren Ihres Modells auf Mobilgeräte – Custom Vision Service
+titlesuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Ihr Modell für die Erstellung von Mobilanwendungen exportieren.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: ce8f42d6239867dd217cddfc61a27d7835dc9c9b
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 50417e9e1722e69c24185c05ea5e286e6b13e8c7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378681"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364940"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>Exportieren Ihres Modells für die Verwendung mit Mobilgeräten
 
@@ -73,5 +74,5 @@ Integrieren Sie das exportierte Modell in eine Anwendung. Es sind mehrere Beispi
 * Beispiel für das [Verwenden des exportierten Core ML-Modells in einer iOS-Anwendung](https://go.microsoft.com/fwlink/?linkid=857726) für die Bildklassifizierung in Echtzeit mit Swift
 * iOS-Beispielanwendung für das [Verwenden des exportierten Core ML-Modells mit Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) für die Bildklassifizierung in Echtzeit 
 * Beispiel für das [Verwenden des exportierten Tensorflow-Modells in einer Android-Anwendung](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample) für die Bildklassifizierung in Echtzeit 
-* [Verwenden Ihres Tensorflow-Modells mit Windows](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/export-model-python)
-* Beispiel für das [Verwenden des exportierten ONNX-Modells mit Windows Machine Learning](https://azure.microsoft.com/en-us/resources/samples/cognitive-services-onnx-customvision-sample/)
+* [Verwenden Ihres Tensorflow-Modells mit Windows](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-model-python)
+* Beispiel für das [Verwenden des exportierten ONNX-Modells mit Windows Machine Learning](https://azure.microsoft.com/resources/samples/cognitive-services-onnx-customvision-sample/)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4c1696fc373975eb9857c40366829fbe6a535911
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141368"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391877"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -79,7 +79,10 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
 
     ![Kontrollkästchen für Berechtigungen](./media/api-management-howto-aad/api-management-with-aad005.png)
 
+1. Wählen Sie **Berechtigungen erteilen** aus, um Anwendungsberechtigungen zu genehmigen.
+
     Weitere Informationen zu Anwendungsberechtigungen und delegierten Berechtigungen finden Sie unter [Zugreifen auf die Graph-API][Accessing the Graph API].
+    
 1. Kopieren Sie im linken Bereich den Wert für **Anwendungs-ID**.
 
     ![Wert „Anwendungs-ID“](./media/api-management-howto-aad/application-id.png)
@@ -98,6 +101,7 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
     > Notieren Sie sich diesen Schlüssel. Nachdem Sie das Fenster für die Azure AD-Konfiguration geschlossen haben, ist eine Anzeige des Schlüssels nicht mehr möglich.
     > 
     > 
+
 1. Wechseln Sie zurück zu Ihrer API Management-Anwendung. 
 
     Fügen Sie den Schlüssel im Fenster **Identitätsanbieter hinzufügen** in das Textfeld **Clientgeheimnis** ein.
@@ -106,6 +110,7 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
     > Aktualisieren Sie unbedingt den **geheimen Clientschlüssel**, bevor der Schlüssel abläuft. 
     >  
     >
+
 1. Das Fenster **Identitätsanbieter hinzufügen** enthält auch das Textfeld **Zulässige Mandanten**. Geben Sie die in diesem Feld die Domänen der Azure AD-Instanzen ein, für die Sie den APIs der API Management-Dienstinstanz Zugriff gewähren möchten. Sie können mehrere Domänen durch neue Zeilen, Leerzeichen oder Kommas trennen.
 
     Sie können im Abschnitt **Zulässige Mandanten** mehrere Domänen angeben. Bevor sich Benutzer aus einer anderen Domäne als der ursprünglichen Domäne (der Domäne, in der die Anwendung registriert wurde) anmelden können, muss ein globaler Administrator dieser anderen Domäne der Anwendung Berechtigungen für den Verzeichnisdatenzugriff erteilen. Um Berechtigungen zu erteilen, müssen Sie als globaler Administrator folgendermaßen vorgehen:

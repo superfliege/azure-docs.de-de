@@ -1,25 +1,25 @@
 ---
-title: Anmerkungen zu dieser Version des Gesichtserkennungs-API-Diensts | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
+title: Anmerkungen zu dieser Version – Gesichtserkennungs-API-Dienst
+titleSuffix: Azure Cognitive Services
 description: Die Anmerkungen zu dieser Version des Gesichtserkennungs-API-Diensts umfassen einen Verlauf der Releaseänderungen verschiedener Versionen.
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 918b3ea5dbaaa44e4eee1a679354c7becffd4686
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6fd3d33d40b0ed142127e46dd7c9173de39947c7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377667"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121990"
 ---
 # <a name="face-api-release-notes"></a>Anmerkungen zu dieser Version der Gesichtserkennungs-API
 
-Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts von Microsoft.
+Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts.
 
 ### <a name="release-changes-in-may-2018"></a>Änderungen im Release vom Mai 2018
 

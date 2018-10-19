@@ -5,24 +5,20 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 08/08/2018
+ms.date: 09/08/2018
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: 270228e73243e6b2670e7ccb30765526a5db6463
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: d1e73af69d3220c0719bd05e3f160e20f8c02858
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142550"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715600"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -136,7 +132,7 @@ Bindungsdaten in der Datei *function.json*:
 }
 ```
 
-Der JavaScript-Skriptcode sieht wie folgt aus:
+Der JavaScript-Code sieht wie folgt aus:
 
 ```JavaScript
 module.exports = function (context, myTimer) {
@@ -144,9 +140,9 @@ module.exports = function (context, myTimer) {
 
     if(myTimer.isPastDue)
     {
-        context.log('Node.js is running late!');
+        context.log('Node is running late!');
     }
-    context.log('Node.js timer trigger function ran!', timeStamp);   
+    context.log('Node timer trigger function ran!', timeStamp);   
 
     context.done();
 };
@@ -195,10 +191,13 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf „in“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
 |**name** | – | Der Name der Variablen, die das Timerobjekt im Funktionscode darstellt. | 
 |**schedule**|**ScheduleExpression**|Ein [CRON-Ausdruck](#cron-expressions) oder ein [TimeSpan](#timespan)-Wert. `TimeSpan` kann nur für eine Funktionen-App verwendet werden, die in einem App Service-Plan ausgeführt wird. Sie können den Zeitplanausdruck in eine App-Einstellung einfügen und diese Eigenschaft auf den Namen der App-Einstellung festlegen, der wie in diesem Beispiel **%**-Zeichen als Wrapper verwendet: „%ScheduleAppSetting%“. |
-|**runOnStartup**|**RunOnStartup**|Wenn `true`, wird die Funktion beim Starten der Laufzeit aufgerufen. Die Laufzeit startet beispielsweise, wenn die Funktionen-App nach dem Leerlauf aufgrund von Inaktivität reaktiviert wird, wenn die Funktionen-App aufgrund von Funktionsänderungen neu gestartet wird und wenn die Funktionen-App horizontal hochskaliert wird. Deshalb sollte **runOnStartup** nur selten, wenn überhaupt, auf `true` festgelegt werden, da dadurch Code zu schwer vorhersehbaren Zeiten ausgeführt wird.|
+|**runOnStartup**|**RunOnStartup**|Wenn `true`, wird die Funktion beim Starten der Laufzeit aufgerufen. Die Laufzeit startet beispielsweise, wenn die Funktionen-App nach dem Leerlauf aufgrund von Inaktivität reaktiviert wird, wenn die Funktionen-App aufgrund von Funktionsänderungen neu gestartet wird und wenn die Funktionen-App horizontal hochskaliert wird. Daher sollte **runOnStartup** selten, wenn überhaupt, auf `true` festgelegt werden, insbesondere in der Produktionsumgebung. |
 |**useMonitor**|**UseMonitor**|Legen Sie diese Eigenschaft auf `true` oder `false` fest, um anzugeben, ob der Zeitplan überwacht werden soll. Durch die Überwachung des Zeitplans werden Zeitplantermine beibehalten, mit deren Hilfe sichergestellt werden kann, dass der Zeitplan richtig eingehalten wird, selbst wenn Instanzen der Funktionen-App neu gestartet werden. Wenn diese Eigenschaft nicht explizit festgelegt wird, lautet der Standardwert `true` für Zeitpläne mit einem Wiederholungsintervall von mehr als einer Minute. Bei Zeitplänen, die mehr als einmal pro Minute ausgelöst werden, lautet der Standardwert `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+> [!CAUTION]
+> Es wird empfohlen, **runOnStartup** in der Produktionsumgebung nicht auf `true` festzulegen. Bei Verwendung dieser Einstellung wird der Code zu schwer vorhersehbaren Zeiten ausgeführt. In bestimmten Produktionseinstellungen können diese zusätzlichen Ausführungen zu deutlich höheren Kosten für Anwendungen führen, die in nutzungsbasierten Tarifen gehostet werden. So wurde z. B. mit **runOnStartup** der Trigger aktiviert, der bei jeder Skalierung Ihrer Funktions-App aufgerufen wird. Stellen Sie sicher, dass Sie das Produktionsverhalten Ihrer Funktionen vollständig verstehen, bevor Sie **runOnStartup** in der Produktionsumgebung aktivieren.   
 
 ## <a name="usage"></a>Verwendung
 

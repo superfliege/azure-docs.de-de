@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 0750ea0877d5f27a8ceb091f8c3904048c9314aa
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/14/2018
+ms.openlocfilehash: ad8bf0217dcd07a7272a220f2d91ed6bc40523bc
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348275"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498588"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption – Voraussetzungen 
  Dieser Artikel „Azure Disk Encryption – Voraussetzungen“ thematisiert, was Sie beachten müssen, bevor Sie Azure Disk Encryption verwenden können. Azure Disk Encryption ist in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) integriert, um die Verwaltung von Verschlüsselungsschlüsseln zu erleichtern. Zum Konfigurieren von Azure Disk Encryption können Sie [Azure PowerShell](/powershell/azure/overview), die [Azure CLI](/cli/azure/) oder das [Azure-Portal](https://portal.azure.com) verwenden.
@@ -67,7 +67,7 @@ Ein Beispiel für Befehle, die verwendet werden können, um Datenträger einzubi
     - [Installieren und Konfigurieren von Azure PowerShell unter Windows](/powershell/azure/install-azurerm-ps) 
         - Installieren Sie PowerShellGet und Azure PowerShell, und laden Sie das AzureRM-Modul herunter. 
     - [Installieren und Konfigurieren von Azure PowerShell unter macOS und Linux](/powershell/azure/install-azurermps-maclinux)
-        -  Installieren Sie PowerShell Core und Azure PowerShell für .NET Core, und laden Sie das AzureRM.Netcore-Modul herunter.
+        -  Installieren Sie PowerShell Core und Azure PowerShell für .NET Core, und laden Sie das Az-Modul herunter.
 
 2. Überprüfen Sie, welche Versionen des AzureRM-Moduls installiert sind. [Aktualisieren Sie das Azure PowerShell-Modul](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module) bei Bedarf.
     -  Das AzureRM-Modul muss mindestens Version 6.0.0 aufweisen.
@@ -127,6 +127,9 @@ Wenn Sie bereits mit den Key Vault- und Azure AD-Voraussetzungen für Azure Disk
 1. Erstellen Sie bei Bedarf eine Ressourcengruppe.
 2. Erstellen eines Schlüsseltresors 
 3. Legen Sie die erweiterten Zugriffsrichtlinien für den Schlüsseltresor fest.
+
+>[!WARNING]
+>Stellen Sie vor dem Löschen eines Schlüsseltresors sicher, dass Sie keine vorhandenen virtuellen Computer damit verschlüsselt haben. Um einen Tresor vor dem versehentlichen Löschen zu schützen, [aktivieren Sie das vorläufige Löschen](../key-vault/key-vault-soft-delete-powershell.md#enabling-soft-delete) und eine [Ressourcensperre](../azure-resource-manager/resource-group-lock-resources.md) für den Tresor. 
  
 ## <a name="bkmk_KeyVault"></a> Erstellen einer Key Vault-Instanz 
 Azure Disk Encryption ist in [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement steuern und verwalten können. Sie können für Azure Disk Encryption einen neuen Schlüsseltresor erstellen oder einen bereits vorhandenen verwenden. Weitere Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit Azure Key Vault](../key-vault/key-vault-get-started.md) und [Schützen eines Schlüsseltresors](../key-vault/key-vault-secure-your-key-vault.md). Sie können eine Resource Manager-Vorlage, Azure PowerShell oder die Azure CLI verwenden, um einen Schlüsseltresor zu erstellen. 

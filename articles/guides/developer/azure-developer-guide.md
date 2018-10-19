@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 2c6db85763b448133d53b22c0600b27b533b2041
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d298cfe22328db68cfbb6b4c7fc82b2de0c186b1
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424227"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423594"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -58,7 +58,7 @@ Sie können Web-Apps, Back-Ends für mobile Apps und API-Apps erstellen.
 
 Da sich alle drei App-Typen die App Service-Runtime teilen, können Sie eine Website hosten, mobile Clients unterstützen und Ihre APIs in Azure verfügbar machen, und das alles vom gleichen Projekt oder der gleichen Lösung aus. Weitere Informationen zu App Service erhalten Sie unter [Was ist Azure Web-Apps?](../../app-service/app-service-web-overview.md).
 
-App Service wurde mit Blick auf DevOps entworfen. App Service unterstützt verschiedene Tools für die Veröffentlichung und Continuous Integration-Bereitstellungen, einschließlich GitHub-Webhooks, Jenkins, Visual Studio Team Services, TeamCity und andere.
+App Service wurde mit Blick auf DevOps entworfen. App Service unterstützt verschiedene Tools für die Veröffentlichung und Continuous Integration-Bereitstellungen, einschließlich GitHub-Webhooks, Jenkins, Azure DevOps, TeamCity und andere.
 
 Sie können Ihre vorhandenen Anwendungen zu App Service migrieren, indem Sie das [Onlinetool für die Migration](https://www.migratetoazure.net/) verwenden.
 
@@ -186,7 +186,7 @@ Wenn Ihre Anwendung in Azure eingerichtet ist und ausgeführt wird, müssen Sie 
 
 ### <a name="devops-integration"></a>DevOps-Integration
 
-Unabhängig davon, ob Azure VMs bereitstellt oder Ihre Web-Apps mit Continuous Integration veröffentlicht, ist Azure in die meisten der gängigen DevOps-Tools integrierbar. Dank der Unterstützung für Tools wie Jenkins, GitHub, Puppet, Chef, TeamCity, Ansible, VSTS u.a. können Sie mit den Tools arbeiten, über die Sie bereits verfügen, und die bisherige Benutzerfreundlichkeit maximieren.
+Unabhängig davon, ob Azure VMs bereitstellt oder Ihre Web-Apps mit Continuous Integration veröffentlicht, ist Azure in die meisten der gängigen DevOps-Tools integrierbar. Dank der Unterstützung für Tools wie Jenkins, GitHub, Puppet, Chef, TeamCity, Ansible, Azure DevOps u.a. können Sie mit den Tools arbeiten, über die Sie bereits verfügen, und die bisherige Benutzerfreundlichkeit maximieren.
 
 >**Jetzt testen:**[Testen Sie mehrere der DevOps-Integrationen](https://azure.microsoft.com/try/devops/).
 
@@ -261,7 +261,7 @@ Als Entwickler tauchen wir gern direkt in den Code ein und möchten so schnell w
 
 ### <a name="what-is-an-azure-account"></a>Was ist ein Azure-Konto?
 
-Um ein Azure-Abonnement erstellen zu können oder damit arbeiten zu können, müssen Sie über ein Azure-Konto verfügen. Ein Azure-Konto ist einfach eine Identität in Azure AD oder in einem Verzeichnis wie einer Geschäfts- oder Schulorganisation, die von Azure AD als vertrauenswürdig angesehen wird. Wenn Sie nicht einer solchen Organisation angehören, können Sie immer ein Abonnement erstellen, indem Sie Ihr Microsoft-Konto verwenden, das von Azure AD als vertrauenswürdig angesehen wird. Weitere Informationen zum Integrieren von lokalem Windows Server Active Directory in Azure AD finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../../active-directory/active-directory-aadconnect.md).
+Um ein Azure-Abonnement erstellen zu können oder damit arbeiten zu können, müssen Sie über ein Azure-Konto verfügen. Ein Azure-Konto ist einfach eine Identität in Azure AD oder in einem Verzeichnis wie einer Geschäfts- oder Schulorganisation, die von Azure AD als vertrauenswürdig angesehen wird. Wenn Sie nicht einer solchen Organisation angehören, können Sie immer ein Abonnement erstellen, indem Sie Ihr Microsoft-Konto verwenden, das von Azure AD als vertrauenswürdig angesehen wird. Weitere Informationen zum Integrieren von lokalem Windows Server Active Directory in Azure AD finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md).
 
 Jedes Azure-Abonnement weist eine Vertrauensstellung mit einer Azure AD-Instanz auf. Dies bedeutet, dass es diesem Verzeichnis bei der Authentifizierung von Benutzern, Diensten und Geräten vertraut. Mehrere Abonnements können dem gleichen Verzeichnis vertrauen, ein Abonnement vertraut jedoch nur einem Verzeichnis. Weitere Information finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -269,19 +269,7 @@ Zusätzlich zum Definieren individueller Azure-Kontoidentitäten, auch *Benutzer
 
 ### <a name="manage-your-subscriptions"></a>Verwalten Ihrer Abonnements
 
-Ein Abonnement ist eine logische Einheit von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Jedes zugeordnete Konto verfügt über eine Rolle in einem Abonnement. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Eine Liste der verfügbaren Abonnementangebote nach Typ finden Sie unter [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/).
-
-#### <a name="administrator-roles"></a>Administratorrollen
-
-Ein Azure-Abonnement verfügt über mehrere Kontoadministratorrollen, die Sie jederzeit zuweisen können.
-
--   **Kontoadministrator**: Diese Rolle verfügt über Vollzugriff auf das Abonnement und ist das Konto, das für die Abrechnung verantwortlich ist.
-
--   **Dienstadministrator**: Diese Rolle verfügt über die Kontrolle über alle Dienste im Abonnement. Standardmäßig handelt es sich dabei um dasselbe Konto wie beim Kontoadministrator.
-
--   **Co-Administrator**: Diese Rolle hat die gleichen Zugriffsrechte wie der Dienstadministrator, mit dem Unterschied, dass sie die Zuordnung des Abonnements zu einem Azure-Verzeichnis nicht ändern kann.
-
-Weitere Informationen zu Administratorrollen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../../billing/billing-add-change-azure-subscription-administrator.md#add-an-admin-for-a-subscription).
+Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Eine Liste der verfügbaren Abonnementangebote nach Typ finden Sie unter [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/). Azure-Abonnements verfügen über einen Kontoadministrator, der die vollständige Kontrolle über das Abonnement hat, und einen Dienstadministrator, der die Kontrolle über alle Dienste des Abonnements hat. Informationen über Administratoren für klassische Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../../billing/billing-add-change-azure-subscription-administrator.md). Zusätzlich zu Administratoren kann einzelnen Konten über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
 
 #### <a name="resource-groups"></a>Ressourcengruppen
 
@@ -293,11 +281,11 @@ Der Azure-Ressourcen-Explorer eignet sich hervorragend zum Visualisieren der Res
 
 Wenn Sie den Zugriff auf Azure-Ressourcen gewähren, ist es empfehlenswert, Benutzern so wenig Berechtigungen wie möglich zum Ausführen einer bestimmten Aufgabe bereitzustellen.
 
--   **Rollenbasierte Zugriffssteuerung (RBAC)**: In Azure können Sie Benutzerkonten (Prinzipalen) in einem angegebenen Bereich Zugriff gewähren: Abonnement, Ressourcengruppe oder einzelne Ressourcen. Mit RBAC können Sie eine Reihe von Ressourcen in einer Ressourcengruppe bereitstellen und einem bestimmten Benutzer oder einer bestimmten Gruppe Berechtigungen erteilen. Sie können auch den Zugriff auf nur die Ressourcen beschränken, die zur Zielressourcengruppe gehören. Sie können auch den Zugriff auf eine einzelne Ressource, z.B. einen virtuellen Computer oder ein virtuelles Netzwerk, gewähren. Um Zugriff zu gewähren, weisen Sie dem Benutzer, der Gruppe oder dem Dienstprinzipal eine Rolle zu. Es existieren viele vordefinierte Rollen, und Sie können auch Ihre eigenen benutzerdefinierten Rollen definieren.
+-   **Rollenbasierte Zugriffssteuerung (RBAC)**: In Azure können Sie Benutzerkonten (Prinzipalen) in einem angegebenen Bereich Zugriff gewähren: Abonnement, Ressourcengruppe oder einzelne Ressourcen. Mit RBAC können Sie eine Reihe von Ressourcen in einer Ressourcengruppe bereitstellen und einem bestimmten Benutzer oder einer bestimmten Gruppe Berechtigungen erteilen. Sie können auch den Zugriff auf nur die Ressourcen beschränken, die zur Zielressourcengruppe gehören. Sie können auch den Zugriff auf eine einzelne Ressource, z.B. einen virtuellen Computer oder ein virtuelles Netzwerk, gewähren. Um Zugriff zu gewähren, weisen Sie dem Benutzer, der Gruppe oder dem Dienstprinzipal eine Rolle zu. Es existieren viele vordefinierte Rollen, und Sie können auch Ihre eigenen benutzerdefinierten Rollen definieren. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)?](../../role-based-access-control/overview.md)
 
-    >**Verwendung**: Wenn Sie eine differenzierte Zugriffsverwaltung für Benutzer und Gruppen benötigen.
+    >**Einsatzgebiete**: Wenn Sie eine differenzierte Zugriffsverwaltung für Benutzer und Gruppen benötigen, oder wenn Sie einen Benutzer zum Besitzer eines Abonnements machen müssen.
 
-    >**Erste Schritte**: Weitere Informationen finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../../role-based-access-control/overview.md).
+    >**Erste Schritte**: Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 
 -   **Dienstprinzipalobjekte**: Zusätzlich zum Bereitstellen des Zugriffs für Benutzerprinzipale und Gruppen können Sie einem Dienstprinzipal den gleichen Zugriff gewähren.
 
@@ -322,9 +310,3 @@ Azure bietet eine Reihe von Abrechnungs-REST-APIs, die den Zugriff auf den Resso
 Obwohl es schwierig ist, Kosten im Voraus zu schätzen, verfügt Azure über einen [Preisrechner](https://azure.microsoft.com/pricing/calculator/), den Sie verwenden können, wenn Sie die Kosten bereitgestellter Ressourcen schätzen. Sie können auch das Blatt "Rechnung" in das Portal und die Abrechnung REST-APIs verwenden, zum Schätzen der künftiger Kosten basierend auf dem aktuellen Verbrauchs.
 
 >**Erste Schritte**: Weitere Informationen finden Sie unter [Verwenden der Azure-Abrechnungs-APIs, um programmgesteuerte Einblicke in die Nutzung Ihrer Azure-Ressourcen zu erlangen](../../billing-usage-rate-card-overview.md).
-
-#### <a name="set-up-billing-alerts"></a>Einrichten von Abrechnungswarnungen
-
-Nachdem Sie Ihre Anwendung oder Lösung in Azure bereitgestellt haben, können Sie Warnungen erstellen, die Sie per E-Mail benachrichtigen, wenn Sie sich den in der Warnung definierten Ausgabenlimits nähern.
-
->**Erste Schritte**: Weitere Informationen finden Sie unter [Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements](../../billing-set-up-alerts.md).

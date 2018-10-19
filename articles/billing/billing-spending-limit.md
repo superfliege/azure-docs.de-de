@@ -13,19 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: genli
-ms.openlocfilehash: 448622f0406eb709c8d94d60722edb4ef00f42de
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.author: cwatson
+ms.openlocfilehash: 614102d65407485d31963afa9185400938a7d95b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43670103"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423084"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Grundlegendes zum Azure-Ausgabenlimit und zu dessen Entfernung
 
 Mit dem Ausgabenlimit in Azure wird verhindert, dass Sie Ihren Gutschriftbetrag überschreiten. Für alle neuen Kunden, die sich für die Testversion oder für Angebote registrieren, die Gutschriften für mehrere Monate beinhalten, ist das Ausgabenlimit standardmäßig aktiviert. Das Ausgabenlimit beträgt 0 $. Es kann nicht geändert werden. Für Abonnementtypen wie Abonnements mit nutzungsbasierter Bezahlung oder Pläne mit finanzieller Verpflichtung ist das Ausgabenlimit nicht verfügbar. Eine vollständige Liste mit Azure-Angeboten sowie Informationen zur Verfügbarkeit des Ausgabenlimits finden Sie [hier](https://azure.microsoft.com/support/legal/offer-details/).
-
-**Sie möchten Abrechnungsbenachrichtigungen erhalten?** Siehe dazu [Einrichten von Abrechnungs- oder Guthabenbenachrichtigungen für Azure-Abonnements](billing-set-up-alerts.md).
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>Was passiert, wenn ich das Ausgabenlimit erreiche?
 
@@ -64,7 +62,7 @@ Führen Sie die folgenden Schritte aus, um das Ausgabenlimit zu entfernen:
 
 Das Ausgabenlimit könnte verhindern, dass Sie bestimmte Drittanbieterdienste und Microsoft-Dienste bereitstellen und verwenden können. Im Folgenden sind Szenarien aufgeführt, in denen Sie das Ausgabenlimit für Ihr Abonnement entfernen sollten.
 
-* Sie planen, Images von Erstanbietern wie Oracle und Dienste wie Visual Studio Team Services bereitzustellen. Mit diesem Szenario überschreiten Sie praktisch umgehend das Ausgabenlimit, sodass Ihr Abonnement deaktiviert wird.
+* Sie planen, Images von Erstanbietern wie Oracle und Dienste wie Azure DevOps Services bereitzustellen. Mit diesem Szenario überschreiten Sie praktisch umgehend das Ausgabenlimit, sodass Ihr Abonnement deaktiviert wird.
 * Sie verfügen über Dienste, für die es keinesfalls zu einer Unterbrechung kommen darf.
 * Sie verfügen über Dienste und Ressourcen mit Einstellungen wie virtuellen IP-Adressen, die nicht verloren gehen sollen. Wenn die Zuordnung der Dienste und Ressourcen aufgehoben wird, gehen diese Einstellungen verloren.
 
@@ -78,7 +76,7 @@ Dieses Feature ist nur verfügbar, wenn das Ausgabenlimit auf unbestimmte Zeit e
 
 ### <a name="how-do-i-set-a-custom-spending-limit"></a>Wie kann ich ein benutzerdefiniertes Ausgabenlimit festlegen?
 
-Derzeit stehen keine benutzerdefinierten Ausgabenlimits zur Verfügung. Sie können jedoch [Abrechnungsbenachrichtigungen zum Steuern Ihrer Ausgaben verwenden](billing-set-up-alerts.md).
+Ausgabenlimits von Kunden sind nicht verfügbar.
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>Können mit dem Ausgabenlimit alle Gebühren von Azure verhindert werden?
 

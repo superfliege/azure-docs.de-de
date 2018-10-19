@@ -1,20 +1,21 @@
 ---
-title: Microsoft Translator – Berichterstellung per Collaborative Translation Framework (CTF)
+title: Berichterstellung per Collaborative Translation Framework (CTF) – Textübersetzung
+titlesuffix: Azure Cognitive Services
 description: Es wird beschrieben, wie Sie die CTF-Berichterstellung (Collaborative Translation Framework) verwenden.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: cefc630a82a56703ba4942bcad18f6e0a38b1ee5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b3ac6e6d10fb0e70549cadfd7bf65220deb8f33
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374370"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126920"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Verwenden der CTF-Berichterstellung (Collaborative Translation Framework)
 
@@ -35,7 +36,7 @@ Der Endpunkt der CTF-Berichterstellungs-API lautet http://api.microsofttranslato
                         
 
 ## <a name="methods"></a>Methoden
-| Name |    Beschreibung|
+| NAME |    BESCHREIBUNG|
 |:---|:---|
 | GetUserTranslationCounts-Methode | Ruft die Anzahl von Übersetzungen ab, die vom Benutzer erstellt werden. |
 | GetUserTranslations-Methode | Ruft die Übersetzungen ab, die vom Benutzer erstellt werden. |
@@ -73,12 +74,12 @@ UserTranslationCount[]GetUserTranslationCounts(
 
 **Parameter**
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |:---|:---|
-| appId | **Erforderlich** Lassen Sie das Feld „appid“ bei Verwendung des Autorisierungsheaders leer, und geben Sie andernfalls eine Zeichenfolge mit „Bearer“ + „ “ + Zugriffstoken an.|
+| appId | **Erforderlich** Lassen Sie das Feld „appId“ leer, wenn sie den Autorisierungsheader verwenden. Geben Sie andernfalls eine Zeichenfolge mit „Bearer“ + „ “ + Zugriffstoken an.|
 | uriPrefix | **Optional** Eine Zeichenfolge, die das Präfix des URI für die Übersetzung enthält.|
 | from | **Optional** Eine Zeichenfolge, die den Sprachcode des Übersetzungstexts darstellt. |
-| to | **Optional** Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|
+| zu | **Optional** Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|
 | minRating| **Optional** Ein Integerwert, der für den niedrigsten Qualitätsgrad des übersetzten Texts steht. Die gültigen Werte reichen hierbei von -10 bis 10. Der Standardwert ist 1.|
 | maxRating| **Optional** Ein Integerwert, der für den höchsten Qualitätsgrad des übersetzten Texts steht. Die gültigen Werte reichen hierbei von -10 bis 10. Der Standardwert ist 1.|
 | user | **Optional** Eine Zeichenfolge, die zum Filtern des Ergebnisses basierend auf dem Absender der Übermittlung verwendet wird. |
@@ -95,14 +96,14 @@ UserTranslationCount[]GetUserTranslationCounts(
 
 Das Resultset enthält ein Array mit dem **UserTranslationCount**-Element. Jedes UserTranslationCount-Element enthält die folgenden Elemente:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 |:---|:---|
 | Count| Anzahl von abgerufenen Ergebnissen|
 | From | Quellsprache|
 | Rating| Bewertung, die vom Übermittler im AddTranslation()-Methodenaufruf angewendet wird|
 | To| Zielsprache|
 | Uri| Im AddTranslation()-Methodenaufruf angewendeter URI|
-| User| Benutzername|
+| Benutzer| Benutzername|
 
 **Ausnahmen**
 
@@ -144,12 +145,12 @@ UserTranslation[] GetUserTranslations (
 
 **Parameter**
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |:---|:---|
-| appId | **Erforderlich** Lassen Sie das Feld „appid“ bei Verwendung des Autorisierungsheaders leer, und geben Sie andernfalls eine Zeichenfolge mit „Bearer“ + „ “ + Zugriffstoken an.|
+| appId | **Erforderlich** Lassen Sie das Feld „appId“ leer, wenn sie den Autorisierungsheader verwenden. Geben Sie andernfalls eine Zeichenfolge mit „Bearer“ + „ “ + Zugriffstoken an.|
 | uriPrefix| **Optional** Eine Zeichenfolge, die das Präfix des URI für die Übersetzung enthält.|
 | from| **Optional** Eine Zeichenfolge, die den Sprachcode des Übersetzungstexts darstellt.|
-| to| **Optional** Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|
+| zu| **Optional** Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|
 | minRating| **Optional** Ein Integerwert, der für den niedrigsten Qualitätsgrad des übersetzten Texts steht. Die gültigen Werte reichen hierbei von -10 bis 10. Der Standardwert ist 1.|
 | maxRating| **Optional** Ein Integerwert, der für den höchsten Qualitätsgrad des übersetzten Texts steht. Die gültigen Werte reichen hierbei von -10 bis 10. Der Standardwert ist 1.|
 | user| **Optional. Eine Zeichenfolge, die zum Filtern des Ergebnisses basierend auf dem Absender der Übermittlung verwendet wird.**|
@@ -166,7 +167,7 @@ UserTranslation[] GetUserTranslations (
 
 Das Resultset enthält ein Array mit dem **UserTranslation**-Element. Jedes UserTranslation-Element enthält die folgenden Elemente:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 |:---|:---|
 | CreatedDateUtc| Erstellungsdatum des Eintrags mit AddTranslation()|
 | From| Quellsprache|

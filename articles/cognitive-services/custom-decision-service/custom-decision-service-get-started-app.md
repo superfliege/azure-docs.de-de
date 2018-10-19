@@ -1,20 +1,21 @@
 ---
-title: 'Aufrufen einer API über eine App: Azure Cognitive Services | Microsoft-Dokumentation'
-description: Einstieg in Azure Custom Decision Service beim Aufrufen der APIs über eine Smartphone-App
+title: Aufrufen einer API in einer App – Custom Decision Service
+titlesuffix: Azure Cognitive Services
+description: Hier wird beschrieben, wie Sie die Custom Decision Service-APIs über eine Smartphone-App aufrufen.
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: slivkins
-ms.reviewer: marcozo, alekh
-ms.openlocfilehash: 2d02b0deaaa701dd0b4818638827c04e2c946558
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e7df982c178bff19dcad8df1ba42a5a97904cd4c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378454"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365015"
 ---
 # <a name="call-api-from-an-app"></a>Aufrufen einer API in einer App
 
@@ -83,9 +84,9 @@ Zuletzt müssen Sie noch die Aktionssatz-API angeben, die eine Liste von Artikel
 </rss>
 ```
 
-Hier beschreibt jedes übergeordnete `<item>`-Element eine Aktion. Der `<link>` ist verpflichtend und wird von Custom Decision Service als Aktions-ID verwendet. Geben Sie `<date>` (im Standard-RSS-Format) an, wenn es mehr als 15 Artikel gibt. Es werden die 15 aktuellsten Artikel verwendet. Der `<title>` ist optional und wird verwendet, um textgebundene Features für den Artikel zu erstellen.
+Hier beschreibt jedes `<item>`-Element auf oberster Ebene einen Artikel. Der `<link>` ist verpflichtend und wird von Custom Decision Service als Aktions-ID verwendet. Geben Sie `<date>` (im Standard-RSS-Format) an, wenn es mehr als 15 Artikel gibt. Es werden die 15 aktuellsten Artikel verwendet. Der `<title>` ist optional und wird verwendet, um textgebundene Features für den Artikel zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Schließen Sie ein [Tutorial](custom-decision-service-tutorial-news.md) ab, um ein tiefergehendes Beispiel kennenzulernen.
+* Abschließen Sie eines [Tutorials](custom-decision-service-tutorial-news.md), um ein tiefergehendes Beispiel kennenzulernen.
 * Weitere Informationen zu den bereitgestellten Funktionen finden Sie in der [API-Referenz](custom-decision-service-api-reference.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 73a23ace23d2373e238c6887c4a41c6037d233de
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 12f7e466bdfd6d9b6cf1c36df4daf1e76cc417f2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189003"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729823"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem Windows IoT Core-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -48,7 +48,10 @@ Befolgen Sie zum Einrichten eines Windows IoT Core-Geräts die Anweisungen im au
 
 ### <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
-Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerätevorlage **Windows IoT Core** hinzu, und notieren Sie sich die Verbindungszeichenfolge des Geräts. Weitere Informationen finden Sie unter [Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-device.md).
+Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerätevorlage **Windows IoT Core** hinzu, und notieren Sie sich die Verbindungsdetails des Geräts (**Bereichs-ID, Geräte-ID und Primärschlüssel**). Weitere Informationen finden Sie unter [Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-device.md).
+
+ > [!NOTE]
+   > Azure IoT Central verwendet nun den Azure IoT Hub Device Provisioning-Dienst (Device Provisioning Service, DPS) für alle Geräteverbindungen. Führen Sie die Schritte zum [Abrufen der Verbindungszeichenfolge des Geräts](concepts-connectivity.md#getting-device-connection-string) aus, und fahren Sie anschließend mit dem Rest des Tutorials fort.
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>Vorbereiten des Windows 10 IoT Core-Geräts
 
@@ -66,7 +69,7 @@ Im Folgenden erfahren Sie, wie Sie die Clientanwendung aus dem vorherigen Schrit
 * Speichern Sie auf dem Desktop die Verbindungszeichenfolge in einer Textdatei namens „connection.string.iothub“.
 * Kopieren Sie die Textdatei in den Dokumentordner des Geräts: `[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
 
-Rufen Sie anschließend das [Windows-Geräteportal](https://docs.microsoft.com/en-us/windows/iot-core/manage-your-device/deviceportal) auf, indem Sie in einen beliebigen Browser „http://[Geräte-IP-Adresse]:8080“ eingeben.
+Rufen Sie anschließend das [Windows-Geräteportal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) auf, indem Sie in einen beliebigen Browser „http://[Geräte-IP-Adresse]:8080“ eingeben.
 
 In dieser Ansicht sollten Sie wie unten gezeigt folgende Vorgänge ausführen:
 1. Erweitern Sie auf der linken Seite den Knoten „Apps“.

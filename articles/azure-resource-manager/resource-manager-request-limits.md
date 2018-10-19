@@ -4,33 +4,31 @@ description: Beschreibt, wie eine Begrenzung von Azure Resource Manager-Anforder
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: e1047233-b8e4-4232-8919-3268d93a3824
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/10/2018
+ms.date: 09/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: f3dcb0c5036b2cfc38ef2a6a16269a8697bbd9e6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fdc98c6d88b18f770d1869acbea5998ad4571287
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358862"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981812"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
-Für jedes Abonnement und jeden Mandanten begrenzt Resource Manager Leseanforderungen auf 15.000 pro Stunde und Schreibanforderungen auf 1.200 pro Stunde. Diese Grenzwerte gelten für jede Azure Resource Manager-Instanz. In jeder Azure-Region sind mehrere Instanzen vorhanden, und Azure Resource Manager wird in allen Azure-Regionen bereitgestellt.  In der Praxis sind die Grenzwerte also effektiv sehr viel höher als die aufgeführten Grenzwerte, da Benutzeranforderungen in der Regel von vielen verschiedenen Instanzen verarbeitet werden.
+Für jedes Azure-Abonnement und jeden Azure-Mandanten erlaubt Resource Manager pro Stunde bis zu 12.000 Leseanforderungen und bis zu 1.200 Schreibanforderungen. Diese Grenzwerte gelten für die Prinzipal-ID, von der die Anforderungen stammen, sowie für die Abonnement-ID bzw. die Mandanten-ID. Falls Ihre Anforderungen von mehreren Prinzipal-IDs stammen, liegen die Grenzwerte für das Abonnement/den Mandanten über 12.000 bzw. 1.200 Anforderungen pro Stunde.
+
+Anforderungen werden entweder auf Ihr Abonnement oder auf Ihren Mandanten angewendet. Bei Abonnementanforderungen wird Ihre Abonnement-ID übergeben (etwa beim Abrufen der Ressourcengruppen in Ihrem Abonnement). In Mandantenanforderungen ist Ihre Abonnement-ID nicht enthalten (etwa beim Abrufen gültiger Azure-Standorte).
+
+Diese Grenzwerte gelten für jede Azure Resource Manager-Instanz. In jeder Azure-Region sind mehrere Instanzen vorhanden, und Azure Resource Manager wird in allen Azure-Regionen bereitgestellt.  In der Praxis sind die Grenzwerte also effektiv sehr viel höher als die aufgeführten Grenzwerte, da Benutzeranforderungen in der Regel von vielen verschiedenen Instanzen verarbeitet werden.
 
 Wenn Ihre Anwendung oder Ihr Skript diese Grenzwerte erreicht, müssen Sie die Anforderungen begrenzen. In diesem Artikel erfahren Sie, wie Sie Ihre verbleibenden Anforderungen bestimmen können, bevor der Grenzwert erreicht wird, und wie Sie reagieren können, wenn Sie den Grenzwert erreicht haben.
 
 Wenn Sie den Grenzwert erreichen, erhalten Sie den HTTP-Statuscode **429 Zu viele Anforderungen**.
-
-Die Anzahl von Anforderungen ist für Ihr Abonnement und Ihren Mandanten begrenzt. Wenn mehrere Anwendungen gleichzeitig in Ihrem Abonnement Anforderungen auslösen, werden die Anforderungen dieser Anwendungen addiert, um die Anzahl der verbleibenden Anforderungen zu bestimmen.
-
-Bei abonnementbezogenen Anforderungen wird Ihre Abonnement-ID übergeben, z.B. beim Abrufen der Ressourcengruppen in Ihrem Abonnement. Mandantenbezogene Anforderungen enthalten Ihre Abonnement-ID nicht, etwa beim Abrufen von gültigen Azure-Standorten.
 
 ## <a name="remaining-requests"></a>Verbleibende Anforderungen
 Sie können die Anzahl der verbleibenden Anforderungen durch Untersuchen der Antwortheader bestimmen. Jede Anforderung enthält Werte für die Anzahl der verbleibenden Lese- und Schreibanforderungen. Die folgende Tabelle beschreibt die Antwortheader, die Sie auf diese Werte untersuchen können:
@@ -62,7 +60,9 @@ $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/re
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-Wenn Sie die verbleibenden Anforderungen für das Debuggen anzeigen möchten, können Sie den **-Debug**-Parameter in Ihrem **PowerShell**-Cmdlet bereitstellen.
+Ein vollständiges PowerShell-Beispiel finden Sie unter [Check ARM Limits for a Given Subscription](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI) (Überprüfen der ARM-Grenzwerte für ein bestimmtes Abonnement).
+
+Wenn Sie zum Debuggen die übrigen Anforderungen anzeigen möchten, können Sie in Ihrem **PowerShell**-Cmdlet den Parameter **-Debug** angeben.
 
 ```powershell
 Get-AzureRmResourceGroup -Debug
@@ -144,5 +144,6 @@ Wenn der Grenzwert für Anforderungen erreicht ist, gibt Resource Manager den HT
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Ein vollständiges PowerShell-Beispiel finden Sie unter [Check ARM Limits for a Given Subscription](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI) (Überprüfen der ARM-Grenzwerte für ein bestimmtes Abonnement).
 * Weitere Informationen zu Grenzwerten und Kontingenten finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 * Informationen zum Arbeiten mit asynchronen REST-Anforderungen finden Sie unter [Nachverfolgen asynchroner Vorgänge in Azure](resource-manager-async-operations.md).

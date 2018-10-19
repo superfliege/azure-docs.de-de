@@ -1,25 +1,23 @@
 ---
-title: 'Microsoft Genomics: Leitfaden zur Problembehandlung | Microsoft-Dokumentation'
+title: 'Microsoft Genomics: Handbuch zur Problembehandlung'
 titleSuffix: Azure
 description: In diesem Artikel erfahren Sie mehr über Strategien für die Problembehandlung.
 keywords: troubleshooting, error, debugging
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: article
 ms.date: 07/18/2018
-ms.openlocfilehash: 9bd1690003fd37b6c2edd0f0421cf8d0e74f8cb5
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: bd946f84023345c68a01a48a4dc310b7afb68397
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144175"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735385"
 ---
-# <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
+# <a name="troubleshooting-guide-for-microsoft-genomics"></a>Handbuch zur Problembehandlung für Microsoft Genomics
 In dieser Übersicht werden Strategien beschrieben, um häufige Probleme bei der Verwendung des Diensts Microsoft Genomics zu behandeln. Allgemeine häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen](frequently-asked-questions-genomics.md). 
 
 

@@ -1,28 +1,26 @@
 ---
-title: Was ist die gruppenbasierte Lizenzierung in Azure AD? | Microsoft-Dokumentation
-description: Beschreibung der gruppenbasierten Lizenzierung in Azure Active Directory sowie ihrer Funktionsweise und bewährter Methoden
+title: Was ist die gruppenbasierte Lizenzierung in Azure Active Directory? | Microsoft-Dokumentation
+description: Lernen Sie mehr über die gruppenbasierte Lizenzierung in Azure Active Directory, ihre Funktionsweise und die entsprechenden Best Practices.
 services: active-directory
 keywords: Azure AD-Lizenzierung
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/13/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 5f5aab6a8514636e8be09deb773748080871b9d4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7848b52bcf5204a871920cbfab8a0e95223654d4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005230"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735900"
 ---
-# <a name="group-based-licensing-basics-in-azure-active-directory"></a>Grundlagen der gruppenbasierten Lizenzierung in Azure Active Directory
+# <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Was ist die gruppenbasierte Lizenzierung in Azure Active Directory?
 
 Für kostenpflichtige Microsoft-Clouddienste wie Office 365, Enterprise Mobility + Security, Dynamics 365 und ähnliche Produkte werden Lizenzen benötigt. Diese Lizenzen werden jedem Benutzer zugewiesen, der Zugriff auf diese Dienste benötigt. Administratoren verwalten Lizenzen über eines der Verwaltungsportale (Office, Azure) und PowerShell-Cmdlets. Azure Active Directory (Azure AD) ist die zugrunde liegende Infrastruktur, die die Identitätsverwaltung aller Microsoft-Clouddienste unterstützt. Azure AD speichert Informationen zum Lizenzzuweisungsstatus für Benutzer.
 

@@ -1,6 +1,6 @@
 | Ressource | Standardlimit | Hinweis |
 | --- | --- | --- |
-| Application Gateway |50 pro Abonnement | Maximal 100 |
+| Application Gateway |50 pro Abonnement | Maximal 1.000 |
 | Front-End-IP-Konfiguration |2 |1 öffentliche und 1 private |
 | Front-End-Ports |20 | |
 | Back-End-Adresspools |20 | |

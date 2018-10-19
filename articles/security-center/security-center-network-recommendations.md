@@ -1,9 +1,9 @@
 ---
-title: Schützen Ihres Netzwerks in Azure Security Center | Microsoft Docs
-description: Dieses Dokument behandelt Empfehlungen in Azure Security Center, die zum Schutz Ihres Azure-Netzwerks sowie zur Einhaltung von Sicherheitsrichtlinien beitragen.
+title: Schützen Ihrer Netzwerkressourcen in Azure Security Center | Microsoft-Dokumentation
+description: Dieses Dokument behandelt Empfehlungen in Azure Security Center, die zum Schutz Ihrer Azure-Netzwerkressourcen sowie zur Einhaltung von Sicherheitsrichtlinien beitragen.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
@@ -12,27 +12,119 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
-ms.author: terrylan
-ms.openlocfilehash: 12c00d6dfac6c9c2a377a8c142118ff6fd0af751
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 9/12/2018
+ms.author: rkarlin
+ms.openlocfilehash: b1f7120b3758e35d818aedbcc3b85feca44f8c33
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302271"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129657"
 ---
-# <a name="protecting-your-network-in-azure-security-center"></a>Schützen Ihres Netzwerks in Azure Security Center
-Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.  Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (Virtual Machines, VMs), Netzwerk, SQL und Anwendungen.
+# <a name="protect-your-network-resources-in-azure-security-center"></a>Schützen Ihrer Netzwerkressourcen in Azure Security Center
+Azure Security Center analysiert ständig den Sicherheitsstatus Ihrer Azure-Ressourcen anhand bewährter Methoden für Netzwerksicherheit. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Sichern und Schützen Ihrer Ressourcen unterstützen.
 
-In diesem Artikel werden Empfehlungen für virtuelle Computer behandelt.  Bei Netzwerkempfehlungen stehen Firewalls der nächsten Generation, Netzwerksicherheitsgruppen, das Konfigurieren von Regeln für den eingehenden Datenverkehr und vieles mehr im Mittelpunkt.  Entnehmen Sie der folgenden Tabelle, welche Netzwerkempfehlungen verfügbar sind und welche Aktionen jeweils ausgeführt werden, wenn Sie sie anwenden.
+Dieser Artikel behandelt Empfehlungen, die aus Sicht der Netzwerksicherheit auf Ihre Azure-Ressourcen zutreffen. Bei Netzwerkempfehlungen stehen Firewalls der nächsten Generation, Netzwerksicherheitsgruppen, Regeln für den eingehenden Datenverkehr mit übermäßigem JIT-VM-Zugriff und vieles mehr im Mittelpunkt. Eine Liste von Netzwerkempfehlungen und Aktionen zur Problembehebung finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
-## <a name="available-network-recommendations"></a>Verfügbare Netzwerkempfehlungen
-| Empfehlung | BESCHREIBUNG |
-| --- | --- |
-| [Firewall der nächsten Generation hinzufügen](security-center-add-next-generation-firewall.md) |Empfiehlt, dass Sie zum Verbessern Ihrer Sicherheitsmaßnahmen eine Firewall der nächsten Generation (NGFW) eines Microsoft-Partners hinzufügen |
-| [Datenverkehr nur durch Firewall der nächsten Generation leiten](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) |Empfiehlt, dass Sie die Regeln der Netzwerksicherheitsgruppe so konfigurieren, dass zu Ihrer VM eingehender Datenverkehr durch Ihre Firewall der nächsten Generation geleitet werden muss. |
-| [Netzwerksicherheitsgruppen in Subnetzen oder auf virtuellen Computern aktivieren](security-center-enable-network-security-groups.md) |Empfiehlt, dass Sie NSGs in Subnetzen oder auf virtuellen Computern aktivieren. |
-| [Zugriff über Endpunkt mit Internetzugriff einschränken](security-center-restrict-access-through-internet-facing-endpoints.md) |Empfiehlt Ihnen, Regeln für eingehenden Datenverkehr für NSGs zu konfigurieren. |
+> [!NOTE]
+> Die Seite **Netzwerk** ermöglicht Ihnen detaillierte Einblicke in die Integrität Ihrer Azure-Ressourcen aus Netzwerksicht. Die Netzwerkübersicht und adaptive Netzwerksteuerelemente stehen nur für Azure Security Center im Standard-Tarif zur Verfügung. [Wenn Sie den Free-Tarif verwenden, können Sie auf die Schaltfläche **Legacynetzwerk anzeigen** klicken und Empfehlungen für Netzwerkressourcen erhalten](#legacy-networking).
+>
+
+Die Seite **Netzwerk** bietet eine Übersicht über die Abschnitte, die Sie genauer prüfen können, um weitere Informationen über die Integrität Ihrer Netzwerkressourcen zu erhalten:
+
+- Netzwerkübersicht (nur im Standard-Tarif von Azure Security Center)
+- NSG-Härtung (in Kürze verfügbar; registrieren Sie sich für die Vorschauversion)
+- Empfehlungen für die Netzwerksicherheit
+- Blatt **Legacynetzwerk** (das frühere Blatt „Netzwerk“) 
+ 
+![Bereich „Netzwerk“](./media/security-center-network-recommendations/networking-pane.png)
+
+## <a name="network-map"></a>Netzwerkübersicht
+Die interaktive Netzwerkübersicht bietet eine grafische Darstellung mit Angaben zu Sicherheitsaspekten, die Empfehlungen und Einblicke zum Absichern Ihrer Netzwerkressourcen umfassen. Anhand der Übersicht können Sie die Netzwerktopologie Ihrer Azure-Workloads sowie Verbindungen zwischen Ihren virtuellen Computern und Subnetzen erkennen. Außerdem können Sie von der Übersicht aus genauere Informationen zu bestimmten Ressourcen und die Empfehlungen für diese Ressourcen anzeigen.
+
+So öffnen Sie die Netzwerkübersicht:
+
+1. Wählen Sie in Security Center unter „Ressourcensicherheit“ die Option **Netzwerk** aus.
+2. Klicken Sie unter **Netzwerkübersicht** auf **Topologie anzeigen**.
+ 
+Die Standardansicht der Topologie umfasst Folgendes:
+- Abonnements, die Sie in Azure ausgewählt haben. Die Übersicht unterstützt mehrere Abonnements.
+- Virtuelle Computer, Subnetze und VNETs vom Resource Manager-Ressourcentyp (klassische Azure-Ressourcen werden nicht unterstützt).
+- Nur Ressourcen, die [Netzwerkempfehlungen](security-center-recommendations.md) mit einem hohen oder mittleren Schweregrad aufweisen.  
+- Ressourcen mit Internetzugriff.
+- Die Übersicht ist für die in Azure ausgewählten Abonnements optimiert. Wenn Sie die Auswahl ändern, wird die Übersicht neu berechnet und entsprechend den neuen Einstellungen optimiert.  
+
+![Übersicht über die Netzwerktopologie](./media/security-center-network-recommendations/network-map-info.png)
+
+## <a name="understanding-the-network-map"></a>Grundlegendes zur Netzwerkübersicht
+
+In der Netzwerkübersicht können Ihre Azure-Ressourcen in der Ansicht **Topologie** und der Ansicht **Datenverkehr** angezeigt werden.
+
+### <a name="the-topology-view"></a>Topologieansicht
+
+Die Ansicht **Topologie** der Netzwerkübersicht bietet Ihnen folgende Einblicke in Ihre Netzwerkressourcen:
+- Im inneren Kreis sehen Sie alle VNETs in den ausgewählten Abonnements, der nächste Kreis zeigt alle Subnetze und der äußere Kreis alle virtuellen Computer.
+- Die Verbindungslinien zwischen den Ressourcen in der Übersicht geben an, welche Ressourcen miteinander verknüpft sind und wie Ihr Azure-Netzwerk strukturiert ist. 
+- Verwenden Sie die Indikatoren für den Schweregrad, um schnell einen Überblick über die Ressourcen zu erhalten, für die offene Empfehlungen aus Security Center vorhanden sind.
+- Sie können auf einzelne Ressourcen klicken, um genauere Informationen aufzurufen und die Details zu dieser Ressource sowie die jeweiligen Empfehlungen direkt und im Kontext der Netzwerkübersicht anzuzeigen.  
+- Wenn zu viele Ressourcen in der Übersicht angezeigt werden, verwendet Azure Security Center einen eigenen Algorithmus zum intelligenten Gruppieren Ihrer Ressourcen und hebt diejenigen hervor, die den kritischsten Zustand und die meisten Empfehlungen mit höchstem Schweregrad aufweisen. 
+
+Da die Übersicht interaktiv und dynamisch ist, kann auf jeden Knoten geklickt und die Ansicht anhand der Filter geändert werden:
+
+1. Sie können die Anzeige in der Netzwerkübersicht mithilfe der Filter am oberen Rand ändern. Sie können als Schwerpunkt der Übersicht Folgendes festlegen:
+   -  **Sicherheitsintegrität**: Sie können die Übersicht nach Schweregrad (Hoch, Mittel, Niedrig) Ihrer Azure-Ressourcen filtern.
+   - **Empfehlungen**: Sie können die Anzeige von Ressourcen basierend auf den Empfehlungen auswählen, die für diese Ressourcen aktiv sind. Sie können beispielsweise nur Ressourcen anzeigen, für die Security Center das Aktivieren von Netzwerksicherheitsgruppen empfiehlt.
+   - **Netzwerkzonen**: Standardmäßig werden in der Übersicht nur Ressourcen mit Internetzugriff angezeigt, Sie können jedoch auch interne virtuelle Computer auswählen.
+ 
+2. Sie können jederzeit auf **Zurücksetzen** in der oberen linken Ecke klicken, um die Übersicht in den Standardzustand zurückzusetzen.
+
+So zeigen Sie Detailinformationen zu einer Ressource an:
+1. Wenn Sie eine bestimmte Ressource in der Übersicht auswählen, wird der rechte Bereich geöffnet und zeigt allgemeine Informationen zur Ressource, verbundene Sicherheitslösungen (sofern vorhanden) und die für die Ressource relevanten Empfehlungen an. Dieses Verhalten ist für jeden ausgewählten Ressourcentyp gleich. 
+2. Wenn Sie auf einen Knoten in der Übersicht zeigen, können Sie allgemeine Informationen zur Ressource sehen, einschließlich Abonnement, Ressourcentyp und Ressourcengruppe.
+3. Verwenden Sie den Link, um die QuickInfo zu vergrößern und die Übersicht auf diesen bestimmten Knoten neu zu fokussieren. 
+4. Um die Fokussierung der Übersicht auf einen bestimmten Knoten aufzuheben, verkleinern Sie die Anzeige.
+
+### <a name="the-traffic-view"></a>Datenverkehrsansicht
+
+Die Ansicht **Datenverkehr** bietet Ihnen eine Übersicht über den gesamten möglichen Datenverkehr zwischen Ihren Ressourcen. Dadurch erhalten Sie eine visuellen Überblick über alle konfigurierten Regeln, die festlegen, welche Ressourcen mit wem kommunizieren können. Sie können so die vorhandene Konfiguration der Netzwerksicherheitsgruppen sehen und auch schnell mögliche riskante Konfigurationen innerhalb Ihrer Workloads erkennen.
+
+### <a name="uncover-unwanted-connections"></a>Entdecken unerwünschter Verbindungen
+
+Die Stärke dieser Ansicht ist die Fähigkeit, diese zulässigen Verbindungen zusammen mit den bestehenden Sicherheitsrisiken anzuzeigen, sodass Sie diesen Querschnitt der Daten für die erforderliche Verstärkung der Sicherheit Ihrer Ressourcen verwenden können. 
+
+Sie können beispielsweise zwei Computer erkennen, von denen Sie gar nicht wussten, dass diese miteinander kommunizieren können, und so die Workloads und Subnetze besser isolieren.
+
+### <a name="investigate-resources"></a>Untersuchen von Ressourcen
+
+So zeigen Sie Detailinformationen zu einer Ressource an:
+1. Wenn Sie eine bestimmte Ressource in der Übersicht auswählen, wird der rechte Bereich geöffnet und zeigt allgemeine Informationen zur Ressource, verbundene Sicherheitslösungen (sofern vorhanden) und die für die Ressource relevanten Empfehlungen an. Dieses Verhalten ist für jeden ausgewählten Ressourcentyp gleich. 
+2. Klicken Sie auf **Datenverkehr**, um die Liste des möglichen ausgehenden und eingehenden Datenverkehrs für die Ressource anzuzeigen. Dabei handelt es sich um eine umfassende Liste, wer mit der Ressource kommunizieren kann, mit wem die Ressource kommunizieren kann und über welche Protokolle und Ports die Kommunikation erfolgt.
+
+**Diese Daten basieren auf einer Analyse der Netzwerksicherheitsgruppen sowie erweiterten Machine Learning-Algorithmen, die mehrere Regeln analysieren, um deren Überkreuzungen und Interaktionen zu verstehen.** 
+
+![Übersicht über den Netzwerkdatenverkehr](./media/security-center-network-recommendations/network-map-traffic.png)
+
+## Legacynetzwerk <a name ="legacy-networking"></a>
+
+Wenn Sie nicht über Security Center im Standard-Tarif verfügen, wird in diesem Abschnitt erläutert, wie Sie kostenlose Netzwerkempfehlungen anzeigen können.
+
+Um auf diese Informationen zuzugreifen, klicken Sie auf dem Blatt „Netzwerk“ auf **Legacynetzwerk anzeigen**. 
+
+![Legacynetzwerk](./media/security-center-network-recommendations/legacy-networking.png)
+
+### <a name="internet-facing-endpoints-section"></a>Abschnitt „Endpunkte mit Internetzugriff“
+Im Abschnitt **Endpunkte mit Internetzugriff** werden die virtuellen Computer, die derzeit mit einem Endpunkt mit Internetzugriff konfiguriert sind, und der jeweilige Status angezeigt.
+
+Diese Tabelle enthält den Endpunktnamen, die Internet-IP-Adresse und den aktuellen Status der Netzwerksicherheitsgruppe und die NGFW-Empfehlungen. Die Tabelle ist nach Schweregrad sortiert.
+
+### <a name="networking-topology-section"></a>Abschnitt „Netzwerktopologie“
+Der Abschnitt **Netzwerktopologie** enthält eine hierarchische Ansicht der Ressourcen.
+
+Diese Tabelle ist nach Schweregrad sortiert (virtuelle Computer und Subnetze).
+
+In dieser Topologieansicht werden auf der ersten Ebene VNETs angezeigt. Die zweite Ebene zeigt Subnetze und die dritte Ebene die virtuellen Computer dieser Subnetze. Die rechte Spalte zeigt den aktuellen Status der Empfehlungen zu Netzwerksicherheitsgruppen für diese Ressourcen.
+
+Die dritte Ebene zeigt virtuelle Computer, ähnlich wie in der Beschreibung oben. Sie können auf eine beliebige Ressource klicken, um weitere Informationen zu erhalten oder die erforderliche Sicherheitskontrolle/-konfiguration anzuwenden.
 
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:

@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: b5484233c7d3d32e51098baad8c22ec51df8f0d8
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: dc0f4bd1e5b07e30f3c89807fbbbc908b3149810
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260616"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542530"
 ---
 # <a name="using-openfaas-on-aks"></a>Verwenden von OpenFaaS mit AKS
 
-[OpenFaaS][open-faas] ist ein Framework zum Erstellen von serverlosen Funktionen für Container. Das Open-Source-Projekt wurde bereits sehr umfassend in der Community eingesetzt. In diesem Dokument werden die Installation und Verwendung von OpenFaaS in einem Azure Kubernetes Service-Cluster (AKS) beschrieben.
+[OpenFaaS][open-faas] ist ein Framework zum Erstellen serverloser containerbasierter Funktionen. Das Open-Source-Projekt erfreut sich in der Community großer Beliebtheit. In diesem Dokument werden die Installation und Verwendung von OpenFaaS in einem Azure Kubernetes Service-Cluster (AKS) beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

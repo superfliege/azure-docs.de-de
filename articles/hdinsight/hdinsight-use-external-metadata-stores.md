@@ -8,13 +8,13 @@ ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: a2c992a47e40a4f8764f5950c65bb90f1cd9e066
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/14/2018
+ms.openlocfilehash: 7c58162048de341468b69a29c55edf346b376e9b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045142"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733813"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Verwenden von externen Metadatenspeichern in Azure HDInsight
 
@@ -29,11 +29,11 @@ Sie können einen Metastore für Ihre HDInsight-Cluster auf zwei Arten einrichte
 
 ## <a name="default-metastore"></a>Standardmetastore
 
-HDInsight stellt standardmäßig einen Metastore für jeden Clustertyp bereit. Sie können stattdessen einen benutzerdefinierten Metastore angeben. Beim Standardmetastore sind folgende Aspekte zu berücksichtigen:
-- Keine zusätzlichen Kosten. HDInsight stellt für jeden Clustertyp einen Metastore ohne zusätzliche Kosten bereit.
-- Jeder Standardmetastore ist Teil des Clusterlebenszyklus. Wenn Sie einen Cluster löschen, werden der jeweilige Metastore und die Metadaten ebenfalls gelöscht.
+HDInsight erstellt standardmäßig einen Metastore für jeden Clustertyp. Sie können stattdessen einen benutzerdefinierten Metastore angeben. Beim Standardmetastore sind folgende Aspekte zu berücksichtigen:
+- Keine zusätzlichen Kosten. HDInsight erstellt für jeden Clustertyp einen Metastore ohne zusätzliche Kosten.
+- Jeder Standardmetastore ist Teil des Clusterlebenszyklus. Wenn Sie einen Cluster löschen, werden der entsprechende Metastore und die jeweiligen Metadaten ebenfalls gelöscht.
 - Der Standardmetastore kann nicht für andere Cluster freigegeben werden.
-- Der Standardmetastore verwendet die Azure SQL-Basisdatenbank, die auf 5 DTUs (Datenbankübertragungseinheiten) begrenzt ist.
+- Der Standardmetastore verwendet die Azure SQL-Basisdatenbank, die auf fünf DTUs (Datenbankübertragungseinheiten) begrenzt ist.
 Dieser Standardmetastore wird normalerweise für relativ einfache Arbeitslasten verwendet, für die weder mehrere Cluster noch eine Beibehaltung von Metadaten über den Lebenszyklus des Clusters hinaus erforderlich sind.
 
 
@@ -46,11 +46,7 @@ HDInsight unterstützt auch benutzerdefinierte Metastores, der für Produktionsc
 - Die Kosten für einen Metastore (Azure SQL-Datenbank) richten sich nach der von Ihnen ausgewählten Leistungsstufe.
 - Sie können den Metastore nach Bedarf zentral hochskalieren.
 
-
 ![Anwendungsfall für den Hive-Metadatenspeicher in HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
-
-<!-- Image – Typical shared custom Metastore scenario in HDInsight (?) -->
-
 
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Auswählen eines benutzerdefinierten Metastore während der Clustererstellung
@@ -67,12 +63,14 @@ Sie können über das Azure-Portal oder die Ambari-Konfigurationen („Hive“ >
 
 Es folgen einige allgemeine bewährte Methoden für den Hive-Metastore in HDInsight:
 
-- Verwenden Sie wann immer möglich einen benutzerdefinierten Metastore, da dieser das Trennen von Computeressourcen (Ihre ausgeführten Cluster) und Metadaten (im Metastore gespeichert) erleichtert.
+- Verwenden Sie wann immer möglich einen benutzerdefinierten Metastore, um das Trennen von Computeressourcen (Ihre ausgeführten Cluster) und Metadaten (im Metastore gespeichert) zu erleichtern.
 - Beginnen Sie mit einem S2-Tarif, der 50 DTUs und 250 GB Speicher bietet. Wenn Sie einen Engpass feststellen, können Sie die Datenbank zentral hochskalieren.
-- Stellen Sie sicher, dass der Metastore, der für eine HDInsight-Clusterversion erstellt wurde, nicht über verschiedene HDInsight-Clusterversionen freigegeben wird. Verschiedene Hive-Versionen verwenden unterschiedliche Schemas. Beispielsweise können Sie einen Metastore nicht für Hive 1.2- und Hive 2.1-Cluster freigeben.
-- Sichern Sie Ihren benutzerdefinierten Metastore regelmäßig.
-- Belassen Sie den Metastore und den HDInsight-Cluster in derselben Region.
+- Wenn Sie mehreren HDInsight-Clustern Zugriff auf separate Daten gewähren möchten, verwenden Sie für den Metastore auf jedem Cluster eine eigene Datenbank. Wenn Sie einen Metastore für mehrere HDInsight-Cluster freigeben, bedeutet dies, dass die Cluster dieselben Metadaten und zugrunde liegenden Benutzerdatendateien verwenden.
+- Sichern Sie Ihren benutzerdefinierten Metastore regelmäßig. Die Azure SQL-Datenbank generiert Sicherungen automatisch, der Aufbewahrungszeitraum der Sicherungen variiert jedoch. Weitere Informationen finden Sie unter [Informationen zu automatischen Sicherungen von SQL-Datenbank](../sql-database/sql-database-automated-backups.md).
+- Um eine bessere Leistung und möglichst geringe Kosten für ausgehenden Netzwerkdatenverkehr zu erzielen, sollten sich der Metastore und der HDInsight-Cluster in derselben Region befinden.
 - Überwachen Sie den Metastore in Hinsicht auf Leistung und Verfügbarkeit. Verwenden Sie dazu Überwachungstools für die Azure SQL-Datenbank, wie z. B. das Azure-Portal oder Azure Log Analytics.
+- Wenn eine neue, höhere Version von Azure HDInsight anhand einer vorhandenen benutzerdefinierten Metastoredatenbank erstellt wird, aktualisiert das System das Metastoreschema unwiderruflich, ohne die Datenbank aus der Sicherung wiederherzustellen.
+- Falls Sie einen Metastore für mehrere Cluster freigeben, achten Sie darauf, dass alle Cluster die gleiche HDInsight-Version haben. Verschiedene Hive-Versionen verwenden unterschiedliche Schemas der Metastoredatenbank. So können Sie beispielsweise einen Metastore nicht für Hive 1.2- und Hive 2.1-Cluster freigeben. 
 
 ## <a name="oozie-metastore"></a>Oozie-Metastore
 

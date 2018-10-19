@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ea9ff8f93ede3b9ec5e7eed83c6049b0c23de7e8
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 94de5566db2395a3daf24c99a43cca6853e12cce
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205458"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736970"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -43,26 +43,34 @@ Vollständige Informationen zur Konfiguration finden Sie unter [Details zur MXCh
 
 ## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
-Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerätevorlage **MXChip** hinzu, und notieren Sie sich die Verbindungszeichenfolge des Geräts. Weitere Informationen finden Sie unter [Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-device.md).
+Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerätevorlage **MXChip** hinzu, und notieren Sie sich die Verbindungsdetails des Geräts (**Bereichs-ID, Geräte-ID und Primärschlüssel**).
+
+1. Fügen Sie über den Device Explorer ein **echtes Gerät** hinzu. Klicken Sie auf **+ Neu > Real** (Echt), um ein echtes Gerät hinzuzufügen.
+    * Geben Sie die Geräte-ID **<span style="color:Red">(muss in Kleinbuchstaben angegeben werden)</span>** ein, oder verwenden Sie die vorgeschlagene Geräte-ID.
+    * Geben Sie den Gerätenamen ein, oder verwenden Sie den vorgeschlagenen Namen.
+    
+    ![Gerät hinzufügen](media\concepts-connectivity\add-device.png)
+
+
+1. Rufen Sie Verbindungsdetails wie **Bereichs-ID, Geräte-ID und Primärschlüssel** für das hinzugefügte Gerät ab, indem Sie auf der Geräteseite auf **Verbinden** klicken.
+ 
+    ![Verbindungsdetails](media\concepts-connectivity\device-connect.PNG)
+
+3. Es ist wichtig, diese Details zu speichern, da bei der Vorbereitung des DevKit-Geräts vorübergehend Ihre Internetverbindung getrennt wird. 
+
 
 ### <a name="prepare-the-devkit-device"></a>Vorbereiten des DevKit-Geräts
 
 > [!NOTE]
 > Wenn Sie das Gerät bereits vorher verwendet, WLAN-Anmeldeinformationen gespeichert haben und das Gerät für ein anderes WLAN, eine andere Verbindungszeichenfolge oder eine andere Telemetriemessung neu konfigurieren möchten, drücken Sie am Board gleichzeitig die Tasten **A** und **B**. Wenn dies nicht funktioniert, drücken Sie **Rücksetztaste**, und wiederholen Sie den Vorgang.
 
-#### <a name="before-you-start-configuring-the-device"></a>Bevor Sie mit der Konfiguration des Geräts beginnen, führen Sie folgende Schritte durch:
-1. Navigieren Sie in Ihrer IoT Central-Anwendung unter **Beispiel-DevKits** in der rechten oberen Ecke zu `Device Explorer`-> `select MXChip Template` -> `Click on +New and choose **Real** Device` -> `Connect this device`. 
-2. Kopieren Sie die primäre Verbindungszeichenfolge.
-3. Speichern Sie unbedingt die Verbindungszeichenfolge, da bei der Vorbereitung des DevKit-Geräts Ihre Internetverbindung vorübergehend getrennt wird. 
 
 
 #### <a name="to-prepare-the-devkit-device"></a>So bereiten Sie das DevKit-Gerät vor
 
 
-1. Laden Sie die neueste vorgefertigte Azure IoT Central-Firmware für den MXChip von der Seite [Releases](https://github.com/Azure/iot-central-firmware/releases) in GitHub herunter. Der Downloaddateiname auf der Seite mit Releases sieht folgendermaßen aus: `AZ3166-IoT-Central-X.X.X.bin`.
-
+1. Laden Sie die neueste vorgefertigte Azure IoT Central-Firmware für den MXChip von der Seite [Releases](http://aka.ms/iotcentral-docs-MXChip-releases) in GitHub herunter.
 1. Stellen Sie über ein USB-Kabel eine Verbindung zwischen dem DevKit-Gerät und dem Entwicklungscomputer her. Unter Windows wird ein Datei-Explorer-Fenster für ein Laufwerk geöffnet, das dem Speicher auf dem DevKit-Gerät zugeordnet ist. Das Laufwerk heißt beispielsweise **AZ3166 (D:)**.
-
 1. Ziehen Sie die Datei **iotCentral.bin** auf das Laufwerksfenster. Wenn der Kopiervorgang abgeschlossen ist, wird das Gerät mit der neuen Firmware neu gestartet.
 
 1. Beim Neustart des DevKit-Geräts wird der folgende Bildschirm angezeigt:
@@ -75,7 +83,7 @@ Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerät
     ```
 
     > [!NOTE]
-    > Wenn auf dem Bildschirm andere Daten angezeigt werden, drücken Sie auf dem Gerät gleichzeitig die Tasten **A** und **B**, um das Gerät neu zu starten. 
+    > Wenn auf dem Bildschirm andere Daten angezeigt werden, setzen Sie das Gerät zurück, und drücken Sie auf dem Gerät gleichzeitig die Tasten **A** und **B**, um das Gerät neu zu starten. 
 
 1. Das Gerät befindet sich jetzt im Zugriffspunktmodus (Access Point, AP). Sie können von Ihrem Computer oder Mobilgerät aus eine Verbindung mit diesem WLAN-Zugriffspunkt herstellen.
 
@@ -89,7 +97,7 @@ Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerät
     - Den Namen Ihres WLAN. 
     - Das Kennwort für das WLAN.
     - Den auf dem Geräte-LCD angezeigten PIN-Code. 
-    - Die Verbindungszeichenfolge Ihres Geräts (diese sollten Sie gemäß diesen Schritten bereits gespeichert haben): Die Verbindungszeichenfolge finden Sie in der rechten oberen Ecke unter `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device`.
+    - Die Verbindungsdetails **Bereichs-ID, Geräte-ID und Primärschlüssel** Ihres Geräts. (Diese Details sollten Sie bereits gemäß der Anleitung gespeichert haben.)      
     - Wählen Sie alle verfügbaren Telemetriemessungen aus. 
 
 1. Nachdem Sie **Gerät konfiguriere** ausgewählt haben, wird diese Seite angezeigt:
@@ -99,7 +107,6 @@ Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerät
 1. Drücken Sie an Ihrem Gerät die **Rücksetztaste**.
 
 
-
 ## <a name="view-the-telemetry"></a>Anzeigen der Telemetrie
 
 Beim Neustart des DevKit-Geräts wird auf dem Gerätebildschirm Folgendes angezeigt:
@@ -107,6 +114,9 @@ Beim Neustart des DevKit-Geräts wird auf dem Gerätebildschirm Folgendes angeze
 * Die Anzahl gesendeter Telemetrienachrichten
 * Die Fehleranzahl
 * Die Anzahl der erhaltenen gewünschten Eigenschaften und die Anzahl der gesendeten gemeldeten Eigenschaften.
+
+> [!NOTE]
+> Sollte das Gerät in einer Anmeldeschleife hängen bleiben, überprüfen Sie, ob das Gerät in IoT Central *blockiert* ist, und *heben Sie die Blockierung des Geräts auf*, um eine Verbindung mit der App zu ermöglichen.
 
 Durch Schütteln des Geräts wird die Anzahl der gesendeten gemeldeten Eigenschaften inkrementell erhöht. Das Gerät sendet eine zufällige Zahl als Geräteeigenschaft **Nummer**.
 

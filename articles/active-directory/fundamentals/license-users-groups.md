@@ -1,97 +1,144 @@
 ---
-title: Lizenzieren von Benutzern in Azure AD | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie sich selbst und Ihre Benutzer in Azure Active Directory lizenzieren.
+title: Zuweisen oder Entfernen von Azure Active Directory-Lizenzen | Microsoft-Dokumentation
+description: Zuweisen oder Entfernen von Azure Active Directory-Lizenzen zu oder von Ihren Benutzern und Gruppen mit Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: quickstart
-ms.date: 08/22/2017
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: lizross
-ms.reviewer: jeffgilb
+ms.reviewer: jeffsta
 custom: it-pro
-ms.openlocfilehash: 6fc1d808fb712f7acb60e490663cb7301e22153c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e1b0b2f84c67e30c3bb998554dc662b002744003
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856088"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603886"
 ---
-# <a name="quickstart-license-users-in-azure-active-directory"></a>Schnellstart: Lizenzbenutzer in Azure Active Directory
-Bei lizenzbasierten Azure AD-Diensten wird ein Azure Active Directory-Abonnement (Azure AD) in Ihrem Azure-Mandanten aktiviert. Nach Aktivierung des Abonnements werden Dienstfunktionen von Azure AD-Administratoren verwaltet und von lizenzierten Benutzern verwendet. Wenn Sie Enterprise Mobility + Security, Azure AD Premium oder Azure AD Basic erwerben, wird Ihr Mandant mit dem Abonnement aktualisiert, einschließlich der Gültigkeitsdauer und der vorausbezahlten Lizenzen. Ihre Abonnementinformationen (einschließlich der Anzahl zugewiesener oder verfügbarer Lizenzen) stehen über das Azure-Portal unter **Azure Active Directory** zur Verfügung, indem Sie die Kachel **Lizenzen** öffnen. Das Blatt **Lizenzen** ist auch der beste Ort für die Verwaltung Ihrer Lizenzzuweisungen.
+# <a name="how-to-assign-or-remove-azure-active-directory-licenses"></a>Zuweisen oder Entfernen von Azure Active Directory-Lizenzen
+Viele Azure Active Directory (Azure AD)-Dienste erfordern, dass Sie ein Azure AD-Produkt aktivieren und jeden Ihrer Benutzer oder Gruppen (und zugehörige Mitglieder) für dieses Produkt lizenzieren. Nur Benutzer mit aktiven Lizenzen können auf die lizenzierten Azure AD-Dienste zugreifen und diese nutzen.
 
-Zwar ist nur der Erwerb eines Abonnements erforderlich, um kostenpflichtige Funktionen zu konfigurieren, doch Sie müssen Benutzerlizenzen für kostenpflichtige Azure AD-Features zuweisen. Allen Benutzern, die Zugriff haben sollen oder über kostenpflichtige Azure AD-Features verwaltet werden, muss eine Lizenz zugewiesen werden. Eine Lizenzzuweisung ist eine Zuordnung zwischen einem Benutzer und einem erworbenen Dienst wie Azure AD Premium, Basic oder Enterprise Mobility + Security.
+## <a name="available-product-editions"></a>Verfügbare Produkteditionen
+Für das Azure AD-Produkt sind verschiedene Editionen verfügbar.
 
-Mit [gruppenbasierter Lizenzzuweisung](active-directory-licensing-whatis-azure-portal.md) können Sie Regeln wie die Folgenden einrichten:
-* Alle Benutzer in Ihrem Verzeichnis erhalten automatisch eine Lizenz.
-* Alle Benutzer mit der entsprechenden Position erhalten eine Lizenz.
-* Sie können die Entscheidung an andere Manager in der Organisation (mit [Self-Service-Gruppen](../users-groups-roles/groups-self-service-management.md)) delegieren.
+- Azure AD Free
 
-> [!TIP]
-> Ausführliche Informationen zur Lizenzzuweisung zu Gruppen (einschließlich erweiterter Szenarien und Office 365-Lizenzierungsszenarien) finden Sie unter [Zuweisen von Lizenzen zu einer Gruppe von Benutzern in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md).
+- Azure AD Basic
 
-## <a name="assign-licenses-to-users-and-groups"></a>Zuweisen von Lizenzen zu Benutzern und Gruppen
-Sie sollten zunächst bei aktivem Abonnement sich selbst eine Lizenz zuweisen und Ihren Browser aktualisieren, um sicherzustellen, dass Sie alle in Ihrem Abonnement enthaltenen, erwarteten Funktionen sehen können. Im nächsten Schritt weisen Sie den Benutzern Lizenzen zu, die auf kostenpflichtige Azure AD-Features zugreifen müssen. Eine einfache Möglichkeit zum Zuweisen von Lizenzen besteht darin, Benutzergruppen statt einzelnen Benutzern Lizenzen zuzuweisen. Wenn Sie einer Gruppe Lizenzen zuweisen, wird allen Mitgliedern der Gruppe eine Lizenz zugewiesen. Wenn Benutzer der Gruppe hinzugefügt oder aus der Gruppe entfernt werden, wird die entsprechende Lizenz automatisch zugewiesen oder entfernt. 
+- Azure AD Premium 1 (Azure AD P1)
 
-> [!NOTE]
-> Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem Benutzer eine Lizenz zugewiesen werden kann, muss der Administrator die Eigenschaft **Verwendungsstandort** für den Benutzer angeben. Sie können diese Eigenschaft im Azure-Portal unter **Benutzer** &gt; **Profil** &gt; **Einstellungen** festlegen. Bei Verwendung der Gruppenlizenzzuweisung erben alle Benutzer, deren Verwendungsstandort nicht angegeben ist, den Standort des Verzeichnisses.
+- Azure AD Premium 2 (Azure AD P2)
 
-Um eine Lizenz zuzuweisen, wählen Sie unter **Azure Active Directory** &gt; **Lizenzen** &gt; **Alle Produkte** mindestens ein Produkt aus, und klicken Sie auf der Befehlsleiste auf **Zuweisen**.
+Spezifische Informationen zu jeder Produktedition und den zugehörigen Lizenzdetails finden Sie unter [Welche Lizenz benötige ich?](../authentication/concept-sspr-licensing.md).
 
-![Auswählen einer zuzuweisenden Lizenz](./media/license-users-groups/select-license-to-assign.png)
+## <a name="view-your-product-edition-and-license-details"></a>Anzeigen Ihrer Produktedition und den Lizenzdetails
+Sie können Ihre verfügbaren Produkte, einschließlich der einzelnen Lizenzen, einsehen und nach allen anstehenden Ablaufdaten und der Anzahl der verfügbaren Zuweisungen suchen.
 
-Auf dem Blatt **Benutzer und Gruppen** können Sie mehrere Benutzer oder Gruppen auswählen bzw. Servicepläne im Produkt deaktivieren. Über das Suchfeld am oberen Rand können Sie nach Benutzer- und Gruppennamen suchen.
+### <a name="to-find-your-product-and-license-details"></a>So finden Sie Ihr Produkt und die Lizenzdetails
+1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
 
-![Auswählen eines Benutzers oder einer Gruppe für die Lizenzzuweisung](./media/license-users-groups/select-user-for-license-assignment.png)
+2. Wählen Sie **Azure Active Directory** und dann **Lizenzen** aus.
 
-Wenn Sie einer Gruppe Lizenzen zuweisen, dauert es je nach Größe der Gruppe unter Umständen eine Weile, bis alle Benutzer die Lizenz geerbt haben. Sie können den Verarbeitungsstatus auf dem Blatt **Gruppe** auf der Kachel **Lizenzen** verfolgen.
+    Die Seite **Lizenzen** wird angezeigt.
 
-![Lizenzzuweisungsstatus](./media/license-users-groups/license-assignment-status.png)
+    ![Seite „Lizenzen“, die die Anzahl der gekauften Produkte und der zugewiesenen Lizenzen anzeigt](media/license-users-groups/license-details-blade.png)
+    
+3. Wählen Sie den Link **Gekaufte Produkte**, um die Seite **Produkte** anzuzeigen und die Details **Zugewiesen**, **Verfügbar** und **Bald ablaufend** für jede Produktedition anzuzeigen.
 
-Bei der Azure AD-Lizenzzuweisung können zwar Zuweisungsfehler auftreten, dies ist bei der Verwaltung von Azure AD- und Enterprise Mobility + Security-Produkten allerdings eher selten. Potenzielle Zuweisungsfehler sind beschränkt auf:
-- Zuweisungskonflikte: Treten auf, wenn einem Benutzer zuvor eine Lizenz zugewiesen war, die nicht mit der aktuellen Lizenz kompatibel ist. In diesem Fall muss die aktuelle Lizenz entfernt werden, um die neue Lizenz zuweisen zu können.
-- Überschreitung der verfügbaren Lizenzanzahl: Wenn die Anzahl der Benutzer in zugewiesenen Gruppen die Anzahl der verfügbaren Lizenzen überschreitet, gibt der Zuweisungsstatus für den Benutzer einen Zuweisungsfehler aufgrund fehlender Lizenzen an.
+    ![Seite „Produkte“ mit Informationen zu Produkteditionen und zugewiesenen Lizenzen](media/license-users-groups/license-products-blade-with-products.png)
 
-### <a name="azure-ad-b2b-collaboration-licensing"></a>Lizenzierung von Azure AD B2B-Kollaboration
+4. Wählen Sie den Namen einer Produktedition, um die lizenzierten Benutzer und Gruppen anzuzeigen.
 
-Mit B2B-Kollaboration können Sie Gastbenutzer in Ihren Azure AD-Mandanten einladen, um den Zugriff auf Azure AD-Dienste und beliebige Azure-Ressourcen, die Sie verfügbar machen, zu ermöglichen.  
+## <a name="assign-licenses-to-users-or-groups"></a>Zuweisen von Lizenzen zu Benutzern oder Gruppen
+Stellen Sie sicher, dass jeder, der einen lizenzierten Azure AD-Dienst nutzen muss, über die entsprechende Lizenz verfügt. Es liegt an Ihnen, ob Sie die Lizenzrechte einzelnen Benutzern oder einer ganzen Gruppe hinzufügen möchten.
 
-Es fallen Kosten für das Einladen von B2B-Benutzern und das Zuweisen zu einer Anwendung in Azure AD an. Bis zu 10 Apps pro Gastbenutzer und 3 einfache Berichte sind für B2B-Kollaborationsbenutzer auch kostenlos. Wenn Ihrem Gastbenutzer entsprechende Lizenzen im Azure AD-Mandanten des Partners zugewiesen wurden, wird er auch in Ihrem lizenziert.
+>![Hinweis] Die gruppenbasierte Lizenzierung ist ein öffentliches Vorschaufeature von Azure AD und mit jedem kostenpflichtigen Azure AD-Lizenzplan verfügbar. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Detaillierte Informationen zum Hinzufügen neuer Benutzer finden Sie unter [Hinzufügen oder Löschen von Benutzern in Azure Active Directory](add-users-azure-active-directory.md). Detaillierte Informationen zum Erstellen von Gruppen und Hinzufügen von Mitgliedern finden Sie unter [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md).
 
-Es ist nicht erforderlich, aber falls Sie den Zugriff auf kostenpflichtige Azure AD-Features ermöglichen möchten, müssen diese B2B-Gastbenutzer mit entsprechenden Azure AD-Lizenzen lizenziert werden. Ein einladender Mandant mit einer kostenpflichtigen Azure AD-Lizenz kann zusätzlichen fünf, zu dem Mandanten eingeladenen Gastbenutzern B2B-Kollaborationsbenutzerrechte zuweisen. Weitere Informationen und Szenarien finden Sie unter [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../b2b/licensing-guidance.md).
+### <a name="to-assign-a-license-to-a-specific-user"></a>Zuweisen einer Lizenz zu einem bestimmten Benutzer
+1. Wählen Sie auf der Seite **Produkte** den Namen der Edition aus, die Sie dem Benutzer zuweisen möchten. Zum Beispiel _Azure Active Directory Premium Plan 2_.
 
-## <a name="view-assigned-licenses"></a>Anzeigen zugewiesener Lizenzen
+    ![Seite „Produkte“mit hervorgehobener Produktedition](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-Eine Übersicht über zugewiesene und verfügbare Lizenzen finden Sie unter **Azure Active Directory** &gt; **Lizenzen** &gt; **Alle Produkte**.
+2. Wählen Sie auf der Seite **Azure Active Directory Premium Plan 2** die Option **Zuweisen**.
 
-![Anzeigen der Lizenzzusammenfassung](./media/license-users-groups/view-license-summary.png)
+    ![Seite „Produkte“ mit hervorgehobener Option „Zuweisen“](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-Eine detaillierte Liste mit zugewiesenen Benutzern und Gruppen erhalten Sie, indem Sie ein bestimmtes Produkt auswählen. Die Liste **Lizenzierte Benutzer** zeigt alle Benutzer, die derzeit eine Lizenz nutzen. Hier sehen Sie auch, ob die Lizenz dem Benutzer direkt zugewiesen wurde, oder ob er sie von einer Gruppe geerbt hat.
+3. Wählen Sie auf der Seite **Zuweisen** **Benutzer und Gruppen**, und suchen und wählen Sie dann den Benutzer, dem Sie die Lizenz zuweisen. Beispielsweise _Mary Parker_.
 
-![Anzeigen der Lizenzdetails](./media/license-users-groups/view-license-detail.png)
+    ![Seite „Lizenz hinzufügen“ mit den hervorgehobenen Optionen „Suchen“ und „Auswählen“](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-Analog dazu finden Sie unter **Lizenzierte Gruppen** eine Liste aller Gruppen, denen Lizenzen zugewiesen wurden. Wählen Sie einen Benutzer oder eine Gruppe aus, um das Blatt **Lizenzen** zu öffnen, das alle Lizenzen anzeigt, die dem jeweiligen Objekt zugewiesen wurden.
+4. Wählen Sie **Zuordnungsoptionen**, stellen Sie sicher, dass die entsprechenden Lizenzoptionen aktiviert sind, und wählen Sie dann **OK**.
+
+    ![Seite „Lizenzoption“ mit allen in der Edition verfügbaren Optionen](media/license-users-groups/license-option-blade-assignments.png)
+
+    Die Seite **Lizenz zuweisen** wird aktualisiert, um anzuzeigen, dass ein Benutzer ausgewählt ist und dass die Zuweisungen konfiguriert sind.
+
+    >[!NOTE]
+    >Nicht alle Microsoft-Dienste sind an allen Standorten verfügbar. Bevor einem Benutzer eine Lizenz zugewiesen werden kann, müssen Sie den **Nutzungsspeicherort** angeben. Sie können diesen Wert im Bereich **Azure Active Directory &gt; Benutzer &gt; Profil &gt; Einstellungen** in Azure AD festlegen.
+
+5. Wählen Sie **Zuweisen** aus.
+
+    Der Benutzer wird der Liste der lizenzierten Benutzer hinzugefügt und hat Zugriff auf die enthaltenen Azure AD-Dienste.
+
+### <a name="to-assign-a-license-to-an-entire-group"></a>Zuweisen einer Lizenz zur gesamten Gruppe
+1. Wählen Sie auf der Seite **Produkte** den Namen der Edition aus, die Sie dem Benutzer zuweisen möchten. Zum Beispiel _Azure Active Directory Premium Plan 2_.
+
+    ![Blatt „Produkte“mit hervorgehobener Produktedition](media/license-users-groups/license-products-blade-with-product-highlight.png)
+
+2. Wählen Sie auf der Seite **Azure Active Directory Premium Plan 2** die Option **Zuweisen**.
+
+    ![Seite „Produkte“ mit hervorgehobener Option „Zuweisen“](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
+
+3. Wählen Sie auf der Seite **Zuweisen** **Benutzer und Gruppen**, und suchen und wählen Sie dann die Gruppe, der Sie die Lizenz zuweisen. Beispielsweise _MDM-Richtlinie – Westen_.
+
+    ![Seite „Lizenz hinzufügen“ mit den hervorgehobenen Optionen „Suchen“ und „Auswählen“](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+
+4. Wählen Sie **Zuordnungsoptionen**, stellen Sie sicher, dass die entsprechenden Lizenzoptionen aktiviert sind, und wählen Sie dann **OK**.
+
+    ![Seite „Lizenzoption“ mit allen in der Edition verfügbaren Optionen](media/license-users-groups/license-option-blade-group-assignments.png)
+
+    Die Seite **Lizenz zuweisen** wird aktualisiert, um anzuzeigen, dass ein Benutzer ausgewählt ist und dass die Zuweisungen konfiguriert sind.
+
+    >[!NOTE]
+    >Nicht alle Microsoft-Dienste sind an allen Standorten verfügbar. Bevor einer Gruppe eine Lizenz zugewiesen werden kann, müssen Sie den **Nutzungsspeicherort** für alle Mitglieder angeben. Sie können diesen Wert im Bereich **Azure Active Directory &gt; Benutzer &gt; Profil &gt; Einstellungen** in Azure AD festlegen. Jeder Benutzer, dessen Verwendungsstandort nicht angegeben ist, erbt den Standort des Mandanten.
+
+5. Wählen Sie **Zuweisen** aus.
+
+    Die Gruppe wird der Liste der lizenzierten Gruppen hinzugefügt und alle Mitglieder haben Zugriff auf die enthaltenen Azure AD-Dienste.
+
 
 ## <a name="remove-a-license"></a>Entfernen einer Lizenz
+Sie können eine Lizenz von einem Benutzer oder einer Gruppe auf der Seite **Lizenzen** entfernen.
 
-Navigieren Sie zum Entfernen einer Lizenz zum gewünschten Benutzer oder zur gewünschten Gruppe, und öffnen Sie die Kachel **Lizenzen**. Wählen Sie die Lizenz aus, und klicken Sie auf **Entfernen**.
+### <a name="to-remove-a-license-from-a-specific-user"></a>Entfernen einer Lizenz von einem bestimmten Benutzer
+1. Wählen Sie auf der Seite **Lizenzierte Benutzer** für die Produktedition den Benutzer aus, der die Lizenz nicht mehr besitzen soll. Beispielsweise _Alain Charon_.
 
-![Entfernen einer Lizenz](./media/license-users-groups/remove-license.png)
+2. Wählen Sie **Lizenz entfernen** aus.
 
-Lizenzen, die der Benutzer von einer Gruppe geerbt hat, können nicht direkt entfernt werden. Entfernen Sie stattdessen den Benutzer aus der Gruppe, von der er die Lizenz erbt.
+    ![Seite „Lizenzierte Benutzer“ mit hervorgehobener Option „Lizenz entfernen“](media/license-users-groups/license-products-user-blade-with-remove-option-highlight.png)
 
+### <a name="to-remove-a-license-from-a-group"></a>Entfernen einer Lizenz aus einer Gruppe
+1. Wählen Sie auf der Seite **Lizenzierte Gruppen** für die Produktedition die Gruppe aus, der die Lizenz nicht mehr besitzen soll. Beispielsweise _MDM-Richtlinie – Westen_.
+
+2. Wählen Sie **Lizenz entfernen** aus.
+
+    ![Seite „Lizenzierte Gruppe“ mit hervorgehobener Option „Lizenz entfernen“](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+
+>[!Important]
+>Lizenzen, die ein Benutzer von einer Gruppe geerbt hat, können nicht direkt entfernt werden. Stattdessen müssen Sie den Benutzer aus der Gruppe entfernen, aus der er die Lizenz erbt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Schnellstartanleitung haben Sie erfahren, wie Lizenzen für Benutzer und Gruppen im Azure AD-Verzeichnis zugewiesen werden. 
+Nachdem Sie Ihre Lizenzen zugewiesen haben, können Sie die folgenden Prozesse ausführen:
 
-Über den folgenden Link können Sie mit dem Azure-Portal Zuweisungen von Abonnementlizenzen in Azure AD konfigurieren.
+- [Bestimmen und Beheben von Lizenzzuweisungsproblemen](../users-groups-roles/licensing-groups-resolve-problems.md)
 
-> [!div class="nextstepaction"]
-> [Zuweisen von Azure AD-Lizenzen](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Overview) 
+- [Hinzufügen von lizenzierten Benutzern zur Lizenzierung zu einer Gruppe](../users-groups-roles/licensing-groups-migrate-users.md)
+
+- [Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
+
+- [Hinzufügen oder Ändern von Profilinformationen](active-directory-users-profile-azure-portal.md)

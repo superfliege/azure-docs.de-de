@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 68e655490470db6aade53c6f3523d0c9d87c3fbd
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 393543bbb1891e14ed67487aff26a7bda1eebcd5
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123464"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304236"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen für die Bereitstellung von Logik-Apps
 
@@ -173,7 +173,7 @@ Wenn Sie über ein vorhandenes Ressourcengruppenprojekt verfügen, können Sie I
 
 ## <a name="deploy-a-logic-app-template"></a>Bereitstellen einer Logik-App-Vorlage
 
-Sie können Ihre Vorlage mithilfe beliebiger Tools bereitstellen, wie etwa PowerShell, REST-API, [Visual Studio Team Services Release Management](#team-services) oder Vorlagenbereitstellung über das Azure-Portal.
+Sie können Ihre Vorlage mithilfe beliebiger Tools bereitstellen, wie etwa PowerShell, REST-API, [Azure DevOps Release Management](#team-services) oder die Vorlagenbereitstellung über das Azure-Portal.
 Es empfiehlt sich auch, eine [Parameterdatei](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) zu erstellen, um die Werte für den Parameter zu speichern.
 Erfahren Sie mehr über das [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und PowerShell](../azure-resource-manager/resource-group-template-deploy.md) oder [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
@@ -185,13 +185,13 @@ Um OAuth-Verbindungen zu autorisieren, öffnen Sie die Logik-App im Designer fü
 Ein Beispielskript hierfür finden Sie auf GitHub im Projekt [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) .
 
 <a name="team-services"></a>
-## <a name="visual-studio-team-services-release-management"></a>Releaseverwaltung in Visual Studio Team Services
+## <a name="azure-devops-release-management"></a>Azure DevOps Release Management
 
-Ein häufiges Szenario für die Bereitstellung und Verwaltung einer Umgebung ist die Verwendung eines Tools wie Releaseverwaltung in Visual Studio Team Services mit einer Bereitstellungsvorlage für Logik-Apps. Visual Studio Team Services enthält eine Aufgabe für die [Bereitstellung von Azure-Ressourcengruppen](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) , die jeder Build- oder Versionspipeline hinzugefügt werden kann. Sie benötigen einen [Dienstprinzipal](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) , um die Bereitstellung zu autorisieren, und können dann die Versionsdefinition generieren.
+Ein häufiges Szenario für die Bereitstellung und Verwaltung einer Umgebung ist die Verwendung eines Tools wie Azure DevOps Release Management mit einer Bereitstellungsvorlage für Logik-Apps. Azure DevOps enthält eine Aufgabe für die [Bereitstellung von Azure-Ressourcengruppen](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup), die jeder Build- oder Releasepipeline hinzugefügt werden kann. Sie benötigen einen [Dienstprinzipal](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/), um die Bereitstellung zu autorisieren. Anschließend können Sie die Releasepipeline generieren.
 
-1. Wählen Sie in der Releaseverwaltung **Leer** aus, damit Sie eine leere Definition erstellen können.
+1. Wählen Sie in Release Management **Leer** aus, um eine leere Pipeline zu erstellen.
 
-    ![Erstellen einer leeren Definition][1]
+    ![Erstellen einer leeren Pipeline][1]
 
 2. Wählen Sie alle hierzu benötigten Ressourcen aus. Dabei ist wahrscheinlich die Logik-App-Vorlage enthalten, die manuell oder im Rahmen des Erstellungsprozesses generiert wird.
 3. Fügen Sie eine Aufgabe für die **Bereitstellung von Azure-Ressourcengruppen** hinzu.

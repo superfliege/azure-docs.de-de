@@ -10,14 +10,22 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: b05b824d8d35351030ca466566f14e4249d4b99d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 399c7b000360a73a9bab06b046be21c9d93a1c70
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626619"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367123"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung
+
+Dieser Artikel beschreibt einige Probleme, die möglicherweise in Ihrer Time Series Insights-Umgebung auftreten. Er stellt mögliche Ursachen und Lösungen dar.
+
+## <a name="video"></a>Video: 
+
+### <a name="in-this-video-we-cover-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>In diesem Video werden allgemeine Herausforderungen und Lösungen behandelt, mit denen Time Series Insights-Kunden zu tun haben.</br>
+
+> [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
 ## <a name="problem-1-no-data-is-shown"></a>Problem 1: Es werden keine Daten angezeigt.
 Es gibt verschiedene mögliche Gründe, aus denen Ihre Daten im [Azure Time Series Insights-Explorer](https://insights.timeseries.azure.com) nicht angezeigt werden:
@@ -31,7 +39,7 @@ Azure Time Series Insights unterstützt nur JSON-Daten. JSON-Beispiele finden Si
    ![Berechtigung zur Verbindung mit dem IoT Hub-Dienst](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
 
    Wie in der vorherigen Abbildung dargestellt, würden die Richtlinien **iothubowner** und **service** funktionieren, da beide die Berechtigung **Dienstverbindung** einschließen.
-   
+
 * Für einen Event Hub müssen Sie einen Schlüssel mit der Berechtigung **Lauschen** bereitstellen.
 
    ![Event Hub-Lauschberechtigung](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)

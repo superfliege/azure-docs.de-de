@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 6d4c21867b0b46508f348300ae2b9553a75d23b2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 883aecaa82f1a83af22bf345d364c2b43776e559
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782569"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732208"
 ---
 # <a name="storage-accounts"></a>Speicherkonten
 
@@ -27,7 +27,7 @@ Sie müssen über ein **primäres** Speicherkonto verfügen. Darüber hinaus kö
 >[!NOTE]
 > Reine Blobkonten sind als **primäre** Konten nicht zulässig. 
 
-Wir empfehlen die Verwendung von GPv2, damit Sie zwischen „heißen“ und „kalten“ Speicherebenen wählen können. Weitere Informationen zu Speicherkonten finden Sie unter [Optionen für Azure Storage-Konten](../../storage/common/storage-account-options.md). 
+Wir empfehlen die Verwendung von GPv2, damit Sie zwischen „heißen“ und „kalten“ Speicherebenen wählen können. Weitere Informationen zu Speicherkonten finden Sie in der [Übersicht über Azure Storage-Konten](../../storage/common/storage-account-overview.md). 
 
 ## <a name="assets-in-a-storage-account"></a>Medienobjekte in einem Speicherkonto
 

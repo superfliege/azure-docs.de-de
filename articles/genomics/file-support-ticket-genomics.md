@@ -1,23 +1,21 @@
 ---
 title: 'Microsoft Genomics: Senden einer Supportanfrage | Microsoft-Dokumentation'
 titleSuffix: Azure
-description: Weitere Informationen zum Senden eines Supporttickets
+description: Diese Übersicht beschreibt, wie Sie sich mit einer Supportanfrage an Microsoft Genomics wenden. Das kann hilfreich sein, wenn Sie Ihr Problem nicht mithilfe des Leitfadens zur Problembehandlung oder der FAQ beheben können.
 keywords: Problembehandlung, Fehler, Debuggen, Support
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: article
 ms.date: 05/23/2018
-ms.openlocfilehash: b50de691c9ac6085a416405ece600afcb5575e92
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5e33f5b22012b297cdceacbe38425934f0f65b4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659417"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734368"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Kontaktaufnahme mit dem Microsoft Genomics-Support
 Diese Übersicht beschreibt, wie Sie sich mit einer Supportanfrage an Microsoft Genomics wenden. Das kann hilfreich sein, wenn Sie Ihr Problem nicht mithilfe des [Leitfadens zur Problembehandlung](troubleshooting-guide-genomics.md) oder der [FAQ](frequently-asked-questions-genomics.md) beheben können. 
@@ -26,7 +24,7 @@ Diese Übersicht beschreibt, wie Sie sich mit einer Supportanfrage an Microsoft 
 ## <a name="file-a-support-ticket-through-the-azure-portal"></a>Senden eines Supporttickets über das Azure-Portal
 Melden Sie sich zuerst im Azure-Portal in Ihrem Azure-Konto an. Klicken Sie oben rechts auf das Fragezeichen, und wählen Sie `Help + support` aus.
 
-![Kontaktaufnahme mit dem Support über das Azure-Portal](./media/file-support-ticket/genomics-contact-support.png "Kontaktaufnahme mit dem Support über das Azure-Portal") 
+![Kontaktaufnahme mit dem Support über das Azure-Portal](./media/file-support-ticket/genomics-contact-support.png "Contact support on Azure portal") 
 
 
 

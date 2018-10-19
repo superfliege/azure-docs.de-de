@@ -1,27 +1,27 @@
 ---
-title: Überwachung der Dateiintegrität in Azure Security Center (Vorschau) | Microsoft-Dokumentation
+title: Überwachung der Dateiintegrität in Azure Security Center | Microsoft-Dokumentation
 description: " Erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center aktivieren. "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2018
-ms.author: terrylan
-ms.openlocfilehash: 722a4fd11f35f04ed22d73638f07d15c49ea3c26
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 09/21/2018
+ms.author: rkarlin
+ms.openlocfilehash: 56aa756230dc908157a5a3d244d379215935cd2f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161833"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124115"
 ---
-# <a name="file-integrity-monitoring-in-azure-security-center-preview"></a>Überwachung der Dateiintegrität in Azure Security Center (Vorschau)
+# <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
 
 ## <a name="what-is-fim-in-security-center"></a>Was ist die Überwachung der Dateiintegrität in Security Center?
@@ -182,6 +182,14 @@ Unter **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten
   ![Festlegen von „Aktiviert“ auf „Falsch“][19]
 
 6. Wählen Sie **Speichern**aus.
+
+## <a name="folder-and-path-monitoring-using-wildcards"></a>Ordner- und Pfadüberwachung mithilfe von Platzhaltern
+
+Verwenden Sie Platzhalter, um die verzeichnisübergreifende Nachverfolgung zu vereinfachen. Beim Konfigurieren der Ordnerüberwachung mithilfe von Platzhaltern gelten die folgenden Regeln:
+-   Platzhalter werden zum Nachverfolgen mehrerer Dateien benötigt.
+-   Platzhalter können nur im letzten Segment eines Pfads verwendet werden, z.B. „C:\Ordner\Datei“ oder „/etc/*.conf“.
+-   Wenn eine Umgebungsvariable einen ungültigen Pfad enthält, ist die Überprüfung zwar erfolgreich, bei der Ausführung der Inventur tritt jedoch ein Fehler für den Pfad auf.
+-   Vermeiden Sie beim Festlegen des Pfads die Verwendung allgemeiner Pfade wie „c:\*.*“, da in diesem Fall zu viele Ordner durchlaufen werden müssen.
 
 ## <a name="disable-fim"></a>Deaktivieren der Überwachung der Dateiintegrität
 Sie können die Überwachung der Dateiintegrität deaktivieren. Die Überwachung der Dateiintegrität verwendet die Azure-Lösung „Änderungsnachverfolgung“, um Änderungen in Ihrer Umgebung nachzuverfolgen und zu identifizieren. Wenn Sie die Überwachung der Dateiintegrität deaktivieren, wird die Lösung für die Änderungsnachverfolgung aus dem ausgewählten Arbeitsbereich entfernt.

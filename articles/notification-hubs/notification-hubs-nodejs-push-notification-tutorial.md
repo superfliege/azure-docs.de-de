@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 7463d41382c59e4f7f03b58dbcbc3f5c45e9d15c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 49ee6b7fabe78c2328a2a772347c612ad38cfe7a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778357"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091726"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -46,7 +46,7 @@ Weitere Informationen zu Notification Hubs finden Sie im Abschnitt [Nächste Sch
 Azure Notification Hubs bieten eine einfache, plattformübergreifende und skalierbare Infrastruktur für den Versand von Pushbenachrichtigungen an mobile Geräte. Ausführliche Informationen zur Dienstinfrastruktur finden Sie auf der Seite [Übersicht über Benachrichtigungshubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) .
 
 ## <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
-Der erste Schritt in diesem Tutorial besteht im Erstellen einer neuen leeren Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][nodejswebsite], [Node.js-Clouddienst][Node.js Cloud Service] mithilfe von Windows PowerShell oder [Website mit WebMatrix].
+Der erste Schritt in diesem Tutorial besteht im Erstellen einer neuen leeren Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][nodejswebsite], [Node.js-Clouddienst][Node.js Cloud Service] mithilfe von Windows PowerShell oder [Website mit WebMatrix][webmatrix].
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>Konfigurieren der Anwendung für Notification Hubs
 Um Azure Notification Hubs verwenden zu können, müssen Sie das Node.js-Paket [azure](https://www.npmjs.com/package/azure) herunterladen und verwenden. Dieses Paket enthält eine Reihe von Bibliotheken, die mit den REST-Pushbenachrichtigungsdiensten kommunizieren.
@@ -71,7 +71,7 @@ Das **NotificationHubService** -Objekt ermöglicht Ihnen das Arbeiten mit Notifi
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-Führen Sie die folgenden Schritte im [Azure-Portal]l durch, um den Wert für **connectionstring** zu erhalten:
+Führen Sie die folgenden Schritte im [Azure-Portal] durch, um den Wert für **connectionstring** zu erhalten:
 
 1. Klicken Sie im linken Navigationsbereich auf **Durchsuchen**.
 2. Wählen Sie **Notification Hubs**, und wählen Sie den gewünschten Hub für das Beispiel aus. Wenn Sie Hilfe beim Erstellen eines neuen Notification Hubs benötigen, lesen Sie das Tutorial [Erste Schritte mit Notification Hubs für Windows Store-Apps](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
@@ -205,10 +205,11 @@ Mit den obigen Beispielcodeausschnitten können Sie problemlos eine Dienstinfras
 [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
 [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
-[Website mit WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
+[Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-[nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
+[nodejswebsite]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs
+[webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure-Portal]: https://portal.azure.com

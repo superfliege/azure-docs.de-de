@@ -9,14 +9,14 @@ keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamische
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 12/12/2017
+ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 9f538b48918bdde923c6dbf3999302e45b955035
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 54ac616f97ba034893721ff62fc6157dd045b5f8
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092409"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126822"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -36,10 +36,24 @@ In diesem Artikel wird davon ausgegangen, dass Sie die folgenden Artikel bereits
 In Visual Studio wird mit der **Azure Functions**-Projektvorlage ein C#-Klassenbibliotheksprojekt erstellt, das die folgenden Dateien enthält:
 
 * [host.json](functions-host-json.md): Speichert Konfigurationseinstellungen, die sich auf alle Funktionen im Projekt auswirken, wenn es lokal oder in Azure ausgeführt wird.
-* [local.settings.json](functions-run-local.md#local-settings-file): Speichert App-Einstellungen und Verbindungszeichenfolgen, die verwendet werden, wenn das Projekt lokal ausgeführt wird.
+* [local.settings.json](functions-run-local.md#local-settings-file): Speichert App-Einstellungen und Verbindungszeichenfolgen, die verwendet werden, wenn das Projekt lokal ausgeführt wird. Diese Datei enthält Geheimnisse und wird nicht in Ihrer Funktions-App in Azure veröffentlicht. Stattdessen müssen Sie [Ihrer Funktions-App App-Einstellungen hinzufügen](functions-develop-vs.md#function-app-settings).
+
+Wenn Sie das Projekt erstellen, wird eine Ordnerstruktur, ähnlich wie im folgenden Beispiel, im Buildausgabeverzeichnis generiert:
+
+```
+<framework.version>
+ | - bin
+ | - MyFirstFunction
+ | | - function.json
+ | - MySecondFunction
+ | | - function.json
+ | - host.json
+```
+
+Dieses Verzeichnis wird in Ihrer Funktions-App in Azure bereitgestellt. Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen werden [dem Projekt als NuGet-Pakete hinzugefügt](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017).
 
 > [!IMPORTANT]
-> Im Buildprozess wird für jede Funktion eine Datei vom Typ *function.json* erstellt. Die Datei *function.json* ist nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. Verwenden Sie zum Deaktivieren einer Funktion das Attribut[Disable](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs). Fügen Sie beispielsweise die boolesche App-Einstellung „MY_TIMER_DISABLED“ hinzu, und wenden Sie `[Disable("MY_TIMER_DISABLED")]` auf Ihre Funktion an. Anschließend können Sie sie durch Änderung der App-Einstellung aktivieren und deaktivieren.
+> Im Buildprozess wird für jede Funktion eine Datei vom Typ *function.json* erstellt. Die Datei *function.json* ist nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. Informationen zum Deaktivieren einer Funktion finden Sie unter [Gewusst wie: Deaktivieren von Funktionen](disable-function.md#functions-2x---c-class-libraries).
 
 ## <a name="methods-recognized-as-functions"></a>Methoden, die als Funktionen erkannt werden
 

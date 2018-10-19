@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: d0b802842d60d68bab36e87913a84c5e40b8e431
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 28706ad77f48ae826b621ebdd920d26f3b87178a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206070"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731978"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung
 
@@ -50,7 +50,7 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
 
 1. Wählen Sie die Registerkarte **Dashboard**.
 
-1. Aktivieren Sie **Entwurfsmodus**.
+1. Klicken Sie auf **Vorlage bearbeiten**.
 
     ![Entwurfsmodus aktiviert](media/howto-use-device-sets/image3.png)
 
@@ -58,9 +58,6 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
 
 1. So fügen Sie eine Kachel mit einem Link hinzu
     1. Wählen Sie im rechten Bereich **Link** aus.
-
-        ![Auswählen von „Link“](media/howto-use-device-sets/image6.png)
-
     1. Geben Sie für Ihren Link einen **Titel** ein.
     1. Wählen Sie eine URL, die beim Klicken auf den Link geöffnet werden soll.
     1. Geben Sie für den Link eine Beschreibung ein, die unter dem **Titel** angezeigt wird.
@@ -87,38 +84,26 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
     > [!NOTE]
     > Sie können mehrere Bilder, Links und Raster hinzufügen.
   
-    1. Deaktivieren Sie **Entwurfsmodus**.
+    1. Klicken Sie auf **Fertig**.
 
     ![Entwurfsmodus ausschalten](media/howto-use-device-sets/image10.png)
 
 
 ### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurieren einer Standortkarte im Gerätegruppen-Dashboard 
-Sie können eine Standortkarte hinzufügen, um die Standorte Ihrer Gerätegruppen in einer Karte zu visualisieren. 
+Sie können eine Standortkarte hinzufügen, um die Standorte Ihrer Gerätegruppen in einer Karte zu visualisieren.
 
 Damit Sie Ihrem Gerätegruppen-Dashboard eine Standortkarte hinzufügen können, müssen Sie sicherstellen, dass die Standorteigenschaft in der Gerätevorlage konfiguriert ist. Weitere Informationen finden Sie unter [Erstellen einer von Azure Maps unterstützten Standorteigenschaft](howto-set-up-template.md).
 
 
-1. Wählen Sie im Gerätegruppen-Dashboard „Karte“ aus der Bibliothek aus. 
+1. Wählen Sie im Dashboard für Gerätegruppen „Karte“ aus der Bibliothek aus.
 
     ![Gerätegruppen-Dashboard – Karten](media/howto-use-device-sets/LocationMaps1.png)
 
-
 2. Geben Sie einen Titel ein, und wählen Sie die Standorteigenschaft aus, die Sie zuvor als Teil Ihrer Geräteeigenschaft konfiguriert haben.
-
-    ![Dashboardkarten konfigurieren](media/howto-use-device-sets/LocationMaps2.png)
-
 3. Nach dem Speichern wird in der Kartenkachel der Standort Ihrer Geräte in der Gerätegruppe angezeigt.
-
-    ![Dashboardkarten speichern](media/howto-use-device-sets/LocationMaps3.png)
-
-
-5. Wenn ein Benutzer das Gerätegruppen-Dashboard anzeigt, sieht er jetzt alle von Ihnen konfigurierten Kacheln, einschließlich der Standortkarte, in der er die visualisierten Gerätestandorte auf einen Blick erfassen kann. 
-
-    ![Dashboardkarten – Benutzeransicht](media/howto-use-device-sets/LocationMaps4.png)
-
-    Sie können die Karte auf die gewünschte Größe ändern.
-
-    Durch Klicken auf einen Pin auf der Karte werden Geräteinformationen, Name und Standort angezeigt. Sie können auf das Popupfenster klicken, um zur Seite „Geräteeigenschaft“ zu wechseln.  
+4. Wenn ein Benutzer das Gerätegruppen-Dashboard anzeigt, sieht er jetzt alle von Ihnen konfigurierten Kacheln, einschließlich der Standortkarte, in der er die visualisierten Gerätestandorte auf einen Blick erfassen kann. 
+    
+[!NOTE] Sie können die Karte auf die gewünschte Größe ändern. Durch Klicken auf einen Pin auf der Karte werden Geräteinformationen, Name und Standort angezeigt. Sie können auf das Popupfenster klicken, um zur Seite „Geräteeigenschaft“ zu wechseln.  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfigurieren der Liste für Ihre Gerätegruppe

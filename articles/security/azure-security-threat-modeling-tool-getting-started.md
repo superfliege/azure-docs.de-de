@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 73d6b42e7a97d6041f6213a1f7d060806734d763
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 340c92d2830069a9d957f4ece79416a707062629
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
-ms.locfileid: "26754185"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096773"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Erste Schritte mit dem Threat Modeling Tool
 
@@ -86,7 +86,7 @@ Was Ricardo gerade eben Cristina gezeigt hat, ist ein **[Datenflussdiagramm](htt
 
 ## <a name="analyzing-threats"></a>Analysieren von Bedrohungen
 
-Nachdem er auf der Menüleiste mit den Symbolen auf die Analyseansicht (Datei mit Lupe) geklickt hat, gelangt er zu einer Liste generierter Bedrohungen, die das Threat Modeling Tool basierend auf der Standardvorlage gefunden hat. Diese befolgt den DSL-Ansatz **[STRIDE (Spoofing, Tampering, Info Disclosure, Denial of Service and Elevation of Privilege, dt. Spoofing, Manipulation, Veröffentlichung von Informationen, Denial of Service, Rechteerweiterungen)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Die Idee ist, dass Software mit einer vorhersagbaren Gruppe von Bedrohungen geliefert wird, die mithilfe dieser sechs Kategorien gefunden werden können.
+Nachdem er auf der Menüleiste mit den Symbolen auf die Analyseansicht (Datei mit Lupe) geklickt hat, gelangt er zu einer Liste generierter Bedrohungen, die das Threat Modeling Tool basierend auf der Standardvorlage gefunden hat. Diese befolgt den DSL-Ansatz **[STRIDE (Spoofing, Tampering, Info Disclosure, Denial of Service and Elevation of Privilege, dt. Spoofing, Manipulation, Veröffentlichung von Informationen, Nichtanerkennung, Denial of Service, Rechteerweiterungen)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Die Idee ist, dass Software mit einer vorhersagbaren Gruppe von Bedrohungen geliefert wird, die mithilfe dieser sechs Kategorien gefunden werden können.
 
 Diese Methode ist vergleichbar mit dem Absichern Ihres Hauses, indem sichergestellt wird, dass alle Türen und Fenster über einen Sperrmechanismus verfügen, ehe Sie eine Alarmanlage hinzufügen oder dem Dieb nachjagen.
 

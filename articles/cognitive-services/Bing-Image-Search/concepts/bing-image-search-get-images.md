@@ -1,5 +1,6 @@
 ---
-title: Abrufen von Bildern aus dem Web mit der Bing-Bildersuche-API | Microsoft-Dokumentation
+title: Abrufen von Bildern aus dem Web – Bing-Bildersuche-API
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie die Bing-Bildersuche-API, um nach Bildern zu suchen und diese aus dem Web abzurufen.
 services: cognitive-services
 author: aahill
@@ -10,16 +11,16 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: c379cc2dfbe53f83e4d79500cd947879407c8d55
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: c21741ebb8f68797b31a2ba1de4bb6f0f8d32cb7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "40082575"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297126"
 ---
-# <a name="getting-images-from-the-web-with-the-bing-image-search-api"></a>Abrufen von Bildern aus dem Web mit der Bing-Bildersuche-API
+# <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Abrufen von Bildern aus dem Web mit der Bing-Bildersuche-API
 
-Mit der Bing-Bildersuche-REST-API können Sie Bilder aus dem Web abrufen, die sich auf den Suchbegriff des Benutzers beziehen, indem Sie die folgende GET-Anforderung senden:
+Wenn Sie mit der Bing-Bildersuche-REST-API Bilder aus dem Web abrufen, erhalten Sie Bilder, die sich auf Ihren Suchbegriff beziehen, indem Sie die folgende GET-Anforderung senden:
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&mkt=en-us HTTP/1.1
@@ -35,7 +36,7 @@ Host: api.cognitive.microsoft.com
 > * Lassen Sie den Client-ID-Header weg, falls Sie zuvor noch keine APIs für die Bing-Suche aufgerufen haben. Binden Sie die Client-ID nur ein, wenn Sie bereits eine Bing-API aufgerufen haben, mit der eine Client-ID für die Kombination aus Benutzer und Gerät zurückgegeben wurde.
 > * Bilder müssen in der Reihenfolge angezeigt werden, die von der Antwort vorgegeben wird.
 
-## <a name="getting-images-from-a-specific-web-domain"></a>Abrufen von Bildern aus einer bestimmten Webdomäne
+## <a name="get-images-from-a-specific-web-domain"></a>Abrufen von Bildern aus einer bestimmten Webdomäne
 
 Wenn Sie Bilder aus einer bestimmten Domäne abrufen möchten, verwenden Sie den Abfrageoperator [site:](http://msdn.microsoft.com/library/ff795613.aspx).
 
@@ -44,7 +45,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 ```
 
 > [!NOTE]
-> Antworten auf Abfragen, für die der Operator `site:` verwendet wird, können unter Umständen nicht jugendfreien Inhalt enthalten, und zwar unabhängig von der Einstellung [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch). Verwenden Sie `site:` nur, wenn Sie sich den Inhalt der Domäne kennen.
+> Antworten auf Abfragen, für die der Operator `site:` verwendet wird, können unter Umständen nicht jugendfreien Inhalt enthalten, und zwar unabhängig von der Einstellung [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch). Verwenden Sie `site:` nur, wenn Sie den Inhalt der Domäne kennen.
 
 Das folgende Beispiel zeigt, wie Sie von ContosoSailing.com kleine Bilder abrufen, die Bing in der letzten Woche gefunden hat.  
 
@@ -57,9 +58,9 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```
 
-## <a name="filtering-images"></a>Filtern von Bildern
+## <a name="filter-images"></a>Filtern von Bildern
 
- Die Bildersuche-API gibt standardmäßig alle Bilder zurück, die für die Abfrage relevant sind. Wenn Sie die von Bing zurückgegebenen Bilder filtern möchten (um beispielsweise nur Bilder mit einem durchsichtigen Hintergrund oder einer bestimmten Größe zurückzugeben), können Sie die folgenden Abfrageparameter verwenden:
+ Die Bildersuche-API gibt standardmäßig alle Bilder zurück, die für die Abfrage relevant sind. Wenn Sie die von Bing zurückgegebenen Bilder filtern möchten (um z. B. nur Bilder mit einem durchsichtigen Hintergrund oder einer bestimmten Größe zurückzugeben), verwenden Sie die folgenden Abfrageparameter:
 
 * [aspect](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#aspect): Filtert Bilder nach Seitenverhältnis (beispielsweise Standard oder Breitbild).
 * [color](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#color): Filtert Bilder nach dominanter Farbe oder Schwarzweiß.
@@ -72,8 +73,8 @@ Host: api.cognitive.microsoft.com
 
 Wenn Sie Bilder aus einer bestimmten Domäne abrufen möchten, verwenden Sie den Abfrageoperator [site:](http://msdn.microsoft.com/library/ff795613.aspx).
 
-    > [!NOTE]
-    > Responses to queries using the `site:` operator may include adult content regardless of the [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) setting. Only use `site:` if you are aware of the content on the domain.
+ > [!NOTE]
+ > Antworten auf Abfragen, für die der Operator `site:` verwendet wird, können unter Umständen nicht jugendfreien Inhalt enthalten, und zwar unabhängig von der Einstellung [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch). Verwenden Sie `site:` nur, wenn Sie den Inhalt der Domäne kennen.
 
 Das folgende Beispiel zeigt, wie Sie von ContosoSailing.com kleine Bilder abrufen, die Bing in der letzten Woche gefunden hat.  
 
@@ -88,7 +89,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="bing-image-search-response-format"></a>Format von Antworten der Bing-Bildersuche
 
-Die Antwortnachricht von Bing enthält eine [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images)-Antwort mit einer Liste mit Bildern, die von Azure Cognitive Services als für die Abfrage relevant ermittelt wurden. Jedes [Image](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image)-Objekt der Liste enthält die folgenden Informationen zum Bild: URL, Größe, Abmessungen, Codierungsformat, URL für eine Miniaturansicht des Bilds und die Abmessungen der Miniaturansicht.
+Die Antwortnachricht von Bing enthält eine [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images)-Antwort mit einer Liste mit Bildern, die von Cognitive Services als für die Abfrage relevant ermittelt wurden. Jedes [Image](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image)-Objekt der Liste enthält die folgenden Informationen zum Bild: URL, Größe, Abmessungen, Codierungsformat, URL für eine Miniaturansicht des Bilds und die Abmessungen der Miniaturansicht.
 
 ```json
 {

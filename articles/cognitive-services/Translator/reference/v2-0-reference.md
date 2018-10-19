@@ -1,34 +1,34 @@
 ---
-title: Referenz zur Text-API Version 2.0 von Microsoft Translator | Microsoft-Dokumentation
-titleSuffix: Cognitive Services
-description: Referenzdokumentation für die Text-API Version 2.0 von Microsoft Translator
+title: Textübersetzungs-API Version 2.0
+titleSuffix: Azure Cognitive Services
+description: Referenzdokumentation für die Textübersetzungs-API Version 2.0
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: e32e28608d2fecf27b61acff74af7eb6849f0ba1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 57058e9a86a338738315a08f218978e20fae95e2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377762"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127855"
 ---
 # <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
 
 > [!IMPORTANT]
 > Diese Version der Textübersetzungs-API ist als veraltet markiert. [Sehen Sie sich die Dokumentation für Version 3 der Textübersetzungs-API an](v3-0-reference.md).
 
-Die Microsoft-Textübersetzungs-API Version 2 kann nahtlos in Ihre Anwendungen, Websites, Tools oder andere Lösungen integriert werden, damit Benutzererlebnisse in mehreren Sprachen zur Verfügung stehen. Durch Nutzung von Industriestandards kann die API auf jeder Hardwareplattform und mit jedem Betriebssystem verwendet werden, um Sprachübersetzungen und andere sprachbezogene Vorgänge wie Textsprachenerkennung oder Sprachsynthese durchzuführen. Hier finden Sie weitere Informationen zur Microsoft-Textübersetzungs-API.
+Die Textübersetzungs-API, Version 2, kann nahtlos in Ihre Anwendungen, Websites, Tools oder andere Lösungen integriert werden, damit Benutzererlebnisse in mehreren Sprachen zur Verfügung stehen. Durch Nutzung von Industriestandards kann die API auf jeder Hardwareplattform und mit jedem Betriebssystem verwendet werden, um Sprachübersetzungen und andere sprachbezogene Vorgänge wie Textsprachenerkennung oder Sprachsynthese durchzuführen. Hier finden Sie weitere Informationen zur Microsoft-Textübersetzungs-API.
 
 ## <a name="getting-started"></a>Erste Schritte
-Für den Zugriff auf die Textübersetzungs-API von Microsoft müssen Sie sich [bei Microsoft Azure registrieren](../translator-text-how-to-signup.md).
+Für den Zugriff auf die Textübersetzungs-API müssen Sie sich bei [Microsoft Azure registrieren](../translator-text-how-to-signup.md).
 
 ## <a name="authorization"></a>Autorisierung
-Alle Aufrufe an die Microsoft-Textübersetzungs-API erfordern einen Abonnementschlüssel für die Authentifizierung. Die API unterstützt zwei Authentifizierungsmodi:
+Alle Aufrufe an die Textübersetzungs-API erfordern einen Abonnementschlüssel für die Authentifizierung. Die API unterstützt zwei Authentifizierungsmodi:
 
 * Verwendung eines Zugriffstokens Verwenden Sie den unter **Schritt 9** angegebenen Abonnementschlüssel, um ein Zugriffstoken zu generieren. Stellen Sie dazu eine POST-Anforderung an den Authentifizierungsdienst. Ausführliche Informationen dazu finden Sie in der Tokendienst-Dokumentation. Übergeben Sie das Zugriffstoken mithilfe des Autorisierungsheaders oder des Abfrageparameters „query_token“ an den Übersetzerdienst. Das Zugriffstoken ist für 10 Minuten gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie weiterhin das gleiche Zugriffstoken für wiederholte Anforderungen innerhalb dieser 10 Minuten.
 
@@ -44,7 +44,7 @@ Wenn Sie keine Obszönitäten in der Übersetzung wünschen, auch wenn diese im 
 
 |ProfanityAction    |Aktion |Beispielquelle (Japanisch)  |Beispielübersetzung (Deutsch)  |
 |:--|:--|:--|:--|
-|NoAction   |Standard. So als wäre die Option nicht festgelegt. Die Obszönitäten werden von der Ausgangs- in die Zielsprache übergeben.        |彼はジャッカスです。     |Er ist ein Trottel.   |
+|NoAction   |Standard. Entspricht dem Fall, in dem die Option nicht festgelegt wird. Die Obszönitäten werden von der Ausgangs- in die Zielsprache übergeben.        |彼はジャッカスです。     |Er ist ein Trottel.   |
 |Markiert     |Obszöne Begriffe werden von den XML-Tags <profanity> und </profanity> umschlossen.     |彼はジャッカスです。 |Er ist ein <profanity>Trottel</profanity>.    |
 |Deleted (Gelöscht)    |Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff gestellt.     |彼はジャッカスです。 |Er ist ein.   |
 
@@ -81,7 +81,7 @@ Anforderungsinhaltstyp: application/xml
 |appid  |(leer)    |Erforderlich. Wenn der Header „Authorization“ oder „Ocp-Apim-Subscription-Key“ verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die „Bearer“ + „ „ (Leerzeichen) + „access_token“ enthält.|query|Zeichenfolge|
 |text|(leer)   |Erforderlich. Eine Zeichenfolge, die den Text darstellt, der übersetzt werden soll. Die Textgröße darf 10.000 Zeichen nicht überschreiten.|query|Zeichenfolge|
 |from|(leer)   |Optional. Eine Zeichenfolge, die den Sprachcode des Übersetzungstexts darstellt. Z.B. „en“ für Englisch|query|Zeichenfolge|
-|in:|(leer) |Erforderlich. Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
+|zu|(leer) |Erforderlich. Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
 |contentType|(leer)    |Optional. Das Format des Texts, der übersetzt wird. Die unterstützten Formate sind text/plain (Standard) und text/html. Jede HTML muss ein wohlgeformtes vollständiges Element sein.|query|Zeichenfolge|
 |category|(leer)   |Optional. Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet „general“.|query|Zeichenfolge|
 |Autorisierung|(leer)  |Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken: „Bearer“ + „ „ (Leerzeichen) + „access_token“.|Header|Zeichenfolge|
@@ -347,7 +347,7 @@ Verwenden Sie die `Detect`-Methode, um die Sprache einer ausgewählten Textpassa
 
 Der Anforderungs-URI ist `https://api.microsofttranslator.com/V2/Http.svc/Detect`.
 
-**Rückgabewert:** Eine Zeichenfolge, die den Sprachcode mit zwei Zeichen für den angegebenen Text enthält. zu erstellen und zu verwalten.
+**Rückgabewert:** Eine Zeichenfolge, die den Sprachcode mit zwei Zeichen für den angegebenen Text enthält. .
 
 ### <a name="response-class-status-200"></a>Antwortklasse (Status 200)
 
@@ -452,7 +452,7 @@ Anforderungsinhaltstyp: application: xml
 |originalText|(leer)|Erforderlich. Eine Zeichenfolge, die Text enthält, aus dem übersetzt wird. Die Zeichenfolge besitzt eine maximale Länge von 1000 Zeichen.|query|Zeichenfolge|
 |translatedText|(leer) |Erforderlich. Eine Zeichenfolge, die übersetzten Text in der Zielsprache enthält. Die Zeichenfolge besitzt eine maximale Länge von 2000 Zeichen.|query|Zeichenfolge|
 |from|(leer)   |Erforderlich. Eine Zeichenfolge, die den Sprachcode des Übersetzungstexts darstellt. en = englisch, de = deutsch etc...|query|Zeichenfolge|
-|in:|(leer)|Erforderlich. Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
+|zu|(leer)|Erforderlich. Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
 |rating|(leer) |Optional. Ein Integer, der die Qualitätsbewertung für diese Zeichenfolge darstellt. Ein Wert zwischen –10 and 10. Der Standardwert lautet 1.|query|integer|
 |contentType|(leer)    |Optional. Das Format des Texts, der übersetzt wird. Die unterstützten Formate sind „text/plain“ und „text/html“. Jede HTML muss ein wohlgeformtes vollständiges Element sein.   |query|Zeichenfolge|
 |category|(leer)|Optional. Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet „general“.|query|Zeichenfolge|
@@ -548,7 +548,7 @@ Der Anforderungs-URI ist `https://api.microsofttranslator.com/V2/Http.svc/BreakS
 **Rückgabewert:** Ein Integerarray, das die Längenwerte der Sätze darstellt. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte die Länge jedes Satzes.
 
 ### <a name="response-class-status-200"></a>Antwortklasse (Status 200)
-Ein Integerarray stellt die Länge der Sätze dar. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte die Länge jedes Satzes.
+Ein Integerarray stellt die Länge der Sätze dar. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze.
 
 integer
 
@@ -655,7 +655,7 @@ Anforderungsinhaltstyp: application/xml
 |appid|(leer)|Erforderlich. Wenn der Header `Authorization` oder `Ocp-Apim-Subscription-Key` verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
 |text|(leer)|Erforderlich. Eine Zeichenfolge, die den Text darstellt, der übersetzt werden soll. Die Textgröße darf 10.000 Zeichen nicht überschreiten.|query|Zeichenfolge|
 |from|(leer)|Erforderlich. Eine Zeichenfolge, die den Sprachcode des Übersetzungstexts darstellt.|query|Zeichenfolge|
-|in: |(leer)    |Erforderlich. Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
+|zu |(leer)    |Erforderlich. Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
 |maxTranslations|(leer)|Erforderlich. Ein Integer, der die Höchstanzahl der Übersetzungen darstellt, die zurückgegeben werden sollen.|query|integer|
 |Autorisierung| (leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Zeichenfolge| Header|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, falls das Feld `appid` oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|

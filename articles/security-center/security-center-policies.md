@@ -3,26 +3,28 @@ title: Festlegen von Sicherheitsrichtlinien in Azure Security Center | Microsoft
 description: Dieser Artikel enthält Informationen zur Konfiguration der Sicherheitsrichtlinien in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2018
-ms.author: terrylan
-ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: c68b55beba445b7f5d30efe7155a47e7f6f76690
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756990"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161287"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Festlegen von Sicherheitsrichtlinien in Azure Security Center
 Dieser Artikel enthält Informationen zur Konfiguration der Sicherheitsrichtlinien in Security Center.
+
+Anweisungen zum Einrichten von Richtlinien mit PowerShell finden Sie unter [Schnellstartanleitung: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe des Azure RM-PowerShell-Moduls](../azure-policy/assign-policy-definition-ps.md).
 
 ## <a name="how-security-policies-work"></a>Funktionsweise von Sicherheitsrichtlinien
 Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Standardsicherheitsrichtlinie. In Security Center können Sie die Richtlinien bearbeiten und die Einhaltung überwachen.
@@ -37,13 +39,12 @@ Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements
 
 1. Melden Sie sich beim Azure-Portal an.
 
-2. Wählen Sie im Dashboard **Security Center** unter **Allgemein** die Option **Sicherheitsrichtlinie**.
+2. Wählen Sie im Dashboard **Security Center** unter **RICHTLINIE UND KONFORMITÄT** die Option **Sicherheitsrichtlinie**.
 
 3. Wählen Sie das Abonnement aus, für das Sie eine Sicherheitsrichtlinie aktivieren möchten.
 
-4. Wählen Sie im Abschnitt **Richtlinienkomponenten** die Option **Sicherheitsrichtlinie**.  
-    Dies ist die Standardrichtlinie, die von Security Center zugewiesen wird. Sie können die verfügbaren Sicherheitsempfehlungen aktivieren oder deaktivieren.
-
+4. Aktivieren Sie die gewünschten Richtlinien für das Abonnement. Sie erhalten zu jeder aktivierten Richtlinie Empfehlungen. 
+  ![Liste mit Richtlinien](./media/security-center-policies/policies.png)
 5. Wählen Sie **Speichern**, wenn Sie die Bearbeitung abgeschlossen haben.
 
 ## <a name="available-security-policy-definitions"></a>Verfügbare Sicherheitsrichtliniendefinitionen

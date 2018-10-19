@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c681e5f68299c03685dd7722f8dc671e49026f78
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ad75b333fc7d5d37a4ac074727e4d54b67bd0321
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43303883"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45637193"
 ---
 #### <a name="expressroute-limits"></a>Einschränkungen für ExpressRoute
 Für ExpressRoute-Ressourcen gelten pro Abonnement die folgenden Einschränkungen.
 
-| Ressource | Standardlimit |
+| Ressource | Standard-/maximales Limit |
 | --- | --- |
 | ExpressRoute-Verbindungen pro Abonnement |10 |
 | ExpressRoute-Verbindungen pro Region und Abonnement (Azure Resource Manager) |10 |

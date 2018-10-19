@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 09/19/2018
 ms.author: terrylan
-ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 309dddcea1022d9f14c1d4492f5564f2a4ad3b6f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146762"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498503"
 ---
 # <a name="azure-network-security-overview"></a>Übersicht über die Netzwerksicherheit in Azure
 
-Azure verfügt über eine robuste Netzwerkinfrastruktur zur Unterstützung der Konnektivitätsanforderungen Ihrer Anwendungen und Dienste. Netzwerkkonnektivität ist zwischen Ressourcen in Azure, zwischen lokalen und in Azure gehosteten Ressourcen und zu und aus dem Internet und Azure möglich.
+Netzwerksicherheit kann als der Prozess zum Schutz von Ressourcen vor unbefugtem Zugriff oder einem Angriff durch Anwenden von Steuerelementen für den Netzwerkdatenverkehr definiert werden. Ziel ist, dafür zu sorgen, dass nur berechtigter Datenverkehr zugelassen wird. Azure verfügt über eine robuste Netzwerkinfrastruktur zur Unterstützung der Konnektivitätsanforderungen Ihrer Anwendungen und Dienste. Netzwerkkonnektivität ist zwischen Ressourcen in Azure, zwischen lokalen und in Azure gehosteten Ressourcen und zu und aus dem Internet und Azure möglich.
 
 In diesem Artikel werden einige der in Azure angebotenen Optionen im Bereich Netzwerksicherheit erläutert. Sie erhalten Informationen zu folgenden Bereichen:
 
@@ -77,7 +77,11 @@ Weitere Informationen:
 
 #### <a name="asc-just-in-time-vm-access"></a>Just-in-Time-VM-Zugriff in ASC
 
-In [Azure Security Center](../security-center/security-center-just-in-time.md) können die Netzwerksicherheitsgruppen auf virtuellen Computern verwaltet und der Zugriff auf die virtuellen Computer gesperrt werden, bis ein Benutzer mit den entsprechenden [RBAC](../role-based-access-control/overview.md)-Berechtigungen (rollenbasierte Zugriffssteuerung) den Zugriff anfordert. Nachdem der Benutzer erfolgreich autorisiert wurde, nimmt ASC Änderungen an den Netzwerksicherheitsgruppen vor, um den Zugriff auf ausgewählte Ports für den angegebenen Zeitraum zu ermöglichen. Nach Ablauf des Zeitraums werden die NSGs auf ihren vorherigen gesicherten Status zurückgesetzt.
+In [Azure Security Center](../security-center/security-center-intro.md) können die Netzwerksicherheitsgruppen auf virtuellen Computern verwaltet und der Zugriff auf die virtuellen Computer gesperrt werden, bis ein Benutzer mit den entsprechenden [RBAC](../role-based-access-control/overview.md)-Berechtigungen (rollenbasierte Zugriffssteuerung) den Zugriff anfordert. Nachdem der Benutzer erfolgreich autorisiert wurde, nimmt ASC Änderungen an den Netzwerksicherheitsgruppen vor, um den Zugriff auf ausgewählte Ports für den angegebenen Zeitraum zu ermöglichen. Nach Ablauf des Zeitraums werden die NSGs auf ihren vorherigen gesicherten Status zurückgesetzt.
+
+Weitere Informationen:
+
+* [Azure Security Center – Just-In-Time](../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>Dienstendpunkte
 

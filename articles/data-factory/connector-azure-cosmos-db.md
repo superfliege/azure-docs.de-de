@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1afd64fbd7019164f0e1f5c850f2dcd8250cdbfc
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: db2f3086da41e990e6f87d8086d6e8defa447532
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600335"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543437"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Cosmos DB mithilfe von Azure Data Factory
 
@@ -34,10 +34,14 @@ Sie können Daten aus Azure Cosmos DB in einen beliebigen unterstützten Senkend
 
 Der Azure Cosmos DB-Connector unterstützt insbesondere Folgendes:
 
-- Cosmos DB [SQL-API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- Kopieren von Daten aus der/ in die Cosmos DB [SQL-API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- Schreiben in die Cosmos DB als INSERT oder UPSERT.
 - Importieren oder Exportieren von JSON-Dokumenten im jeweiligen Zustand oder Kopieren von Daten aus bzw. in ein tabellarisches Dataset (z.B. eine SQL-Datenbank, CSV-Dateien) Informationen zum Kopieren von Daten in ihrem jeweiligen Zustand in bzw. aus JSON-Dateien oder in eine andere bzw. aus einer anderen Cosmos DB-Sammlung finden Sie unter [Importieren oder Exportieren von JSON-Dokumenten](#importexport-json-documents).
 
 Data Factory wird mit der [Cosmos DB-BulkExecutor-Bibliothek](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) integriert, um beim Schreiben in Cosmos DB die beste Leistung zu erzielen.
+
+>[!TIP]
+>Sehen Sie sich [dieses Video](https://youtu.be/5-SRNiC_qOU) an, das das Kopieren von Daten aus dem Azure Blob Storage in die Cosmos DB erläutert und Überlegungen zur Leistungsoptimierung beim Einlesen von Daten in die Cosmos DB im Allgemeinen beschreibt.
 
 ## <a name="getting-started"></a>Erste Schritte
 

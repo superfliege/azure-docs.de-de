@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 52dfac826de86f67b3143cce49c35088547c4b39
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0bd894e99fd575fca734a101a1cde0f0a2979682
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171771"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983755"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Einschränkungen in Azure-Datenbank für PostgreSQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben.
@@ -47,10 +47,7 @@ Das Azure-System benötigt fünf Verbindungen, um den Azure Database for Postgre
 - Die Verringerung der Größe des Serverspeichers wird zurzeit nicht unterstützt.
 
 ### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
-- Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt.
-
-### <a name="subscription-management"></a>Abonnementverwaltung
-- Die dynamische Verschiebung von Servern zwischen Abonnement- und Ressourcengruppen wird zurzeit nicht unterstützt.
+- Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt. Wenn Sie auf die nächste Hauptversion upgraden möchten, führen Sie eine [Sicherung und Wiederherstellung](./howto-migrate-using-dump-and-restore.md) auf einem Server aus, der mit der neuen Engine-Version erstellt wurde.
 
 ### <a name="vnet-service-endpoints"></a>VNET-Dienstendpunkte
 - VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.

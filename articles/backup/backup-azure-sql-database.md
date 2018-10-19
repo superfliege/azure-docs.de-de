@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aab0ac2dfba47741eaf5a75ef46d9ca5f8873d50
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433564"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434244"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Sichern von SQL Server-Datenbanken in Azure
 
@@ -823,6 +823,10 @@ Lösen Sie eine vollständige Sicherung aus. Protokollsicherungen starten wie er
 ### <a name="can-i-protect-sql-always-on-availability-groups-where-the-primary-replica-is-on-premises"></a>Kann ich SQL Always On-Verfügbarkeitsgruppen mit einem lokalen primären Replikat schützen?
 
 Nein. Azure Backup schützt SQL Server-Instanzen, die in Azure ausgeführt werden. Wenn eine Verfügbarkeitsgruppe auf Azure und lokale Computer verteilt ist, kann die Verfügbarkeitsgruppe nur geschützt werden, wenn das primäre Replikat in Azure ausgeführt wird. Außerdem schützt Azure Backup nur die Knoten, die in derselben Azure-Region ausgeführt werden wie der Recovery Services-Tresor.
+
+### <a name="can-i-protect-sql-always-on-availability-groups-which-are-spread-across-azure-regions"></a>Kann ich SQL Always On-Verfügbarkeitsgruppen schützen, die über Azure-Regionen verteilt sind?
+Der Azure Backup Recovery Services-Tresor kann alle Knoten erkennen und schützen, die sich in der gleichen Region wie der Recovery Services-Tresor befinden. Wenn sich Ihre SQL Always On-Verfügbarkeitsgruppe über mehrere Azure-Regionen erstreckt, müssen Sie die Sicherung von der Region aus konfigurieren, die über den primären Knoten verfügt. Azure Backup kann alle Datenbanken in der Verfügbarkeitsgruppe gemäß der Sicherungseinstellung erkennen und schützen. Wenn die Sicherung nicht entsprechend der Einstellung erfolgt, tritt bei den Sicherungen ein Fehler auf, und Sie erhalten eine Fehlermeldung.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

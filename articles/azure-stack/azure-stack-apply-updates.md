@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 09/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: da8261d27ae7fad3c5ff30e4e1cce3f1bca2b70a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 8e4c86a3c9ff40f23a2a758b450d685b81dabc1a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035332"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091899"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Anwenden von Updates in Azure Stack
 
@@ -42,7 +42,7 @@ Das folgende Verfahren zeigt, wie Updatepakete im Administratorportal importiert
 > [!IMPORTANT]
 > Es wird dringend empfohlen, dass Sie die Benutzer über alle Wartungsvorgänge unterrichten und normale Wartungsfenster so weit wie möglich außerhalb der Geschäftszeiten planen. Wartungsvorgänge können sowohl Benutzerworkloads als auch Portalvorgänge beeinträchtigen.
 
-1. Klicken Sie im Administratorportal auf **Weitere Dienste**. Klicken Sie anschließend in der Kategorie **Daten und Speicher** auf **Speicherkonten**. (Oder beginnen Sie im Filterfeld mit der Eingabe von **Speicherkonten**, und wählen Sie dann die entsprechende Option aus.)
+1. Wählen Sie im Administratorportal **Alle Dienste** aus. Wählen Sie anschließend in der Kategorie **Daten und Speicher** die Option **Speicherkonten** aus. (Oder beginnen Sie im Filterfeld mit der Eingabe von **Speicherkonten**, und wählen Sie dann die entsprechende Option aus.)
 
     ![Hier sehen Sie, wo Sie Speicherkonten im Portal finden.](media/azure-stack-apply-updates/ApplyUpdates1.png)
 
@@ -65,7 +65,7 @@ Das folgende Verfahren zeigt, wie Updatepakete im Administratorportal importiert
 6. Klicken Sie unter **Blob hochladen** auf das Ordnersymbol, navigieren Sie zur EXE-Datei des Updatepakets, und klicken Sie dann im Explorer-Fenster auf **Öffnen**.
   
 7. Klicken Sie unter **Blob hochladen** auf **Hochladen**. 
- 
+  
     ![Hier sehen Sie, wo die einzelnen Paketdateien hochgeladen werden.](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
 8. Wiederholen Sie die Schritte 6 und 7 für die Dateien *Paketname.bin* und „Metadata.xml“. Falls die Datei „Supplemental Notice.txt“ enthalten ist, importieren Sie sie nicht.
@@ -74,6 +74,8 @@ Das folgende Verfahren zeigt, wie Updatepakete im Administratorportal importiert
 11. Um das Update zu installieren, wählen Sie das als **Bereit** markierte Paket aus. Klicken Sie dann entweder mit der rechten Maustaste auf das Paket, und wählen Sie **Jetzt aktualisieren**, oder klicken Sie im oberen Bereich auf die Aktion **Jetzt aktualisieren**.
 12. Wenn Sie auf „Update wird installiert...“ klicken, können Sie den Status im Bereich **Update run details** (Updateausführungsdetails) anzeigen. Hier können Sie auch auf **Download full logs** (Vollständige Protokolle herunterladen) klicken, um die Protokolldateien herunterzuladen.
 13. Wenn das Update abgeschlossen ist, wird auf der Kachel „Aktualisieren“ die aktualisierte Azure Stack-Version angezeigt.
+
+Sie können Updates manuell aus dem Speicherkonto löschen, nachdem sie in Azure Stack installiert wurden. Azure Stack führt in regelmäßigen Abständen eine Überprüfung auf ältere Updatepakete durch und entfernt diese aus dem Speicher. Es kann in Azure Stack bis zu zwei Wochen dauern, bis die alten Pakete entfernt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

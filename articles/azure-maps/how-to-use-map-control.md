@@ -8,21 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5b8703c218790549a0cf5a319345132a0eca66ce
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 45890b4bd474c010b2b086be0405b79d340aeebd
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025188"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603158"
 ---
-# <a name="how-to-use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
-Mit der clientseitigen JavaScript-Bibliothek des Kartensteuerelements können Sie Karten und eingebettete Azure Maps-Funktionen in Ihrer Web- oder Mobilanwendung rendern. 
+# <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
+
+Mit der clientseitigen JavaScript-Bibliothek des Kartensteuerelements können Sie Karten und eingebettete Azure Maps-Funktionen in Ihrer Web- oder Mobilanwendung rendern.
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Erstellen einer neuen Karte auf einer Webseite
 
 Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige JavaScript-Bibliothek des Kartensteuerelements verwenden.
 
-1. Erstellen Sie eine neue Datei, und geben Sie ihr den Namen „MapSearch.html“.
+1. Erstellen Sie eine neue Datei, und geben Sie ihr den Namen **MapSearch.html**.
 
 2. Fügen Sie die Verweise auf das Azure Maps-Stylesheet und die Skriptquelle dem `<head>`-Element der Datei hinzu:
 
@@ -30,17 +31,19 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
     <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
     ```
-    
-3. Fügen Sie zum Rendern einer neuen Karte in Ihrem Browser im `<style>`-Element einen **#map**-Verweis hinzu.
+
+3. Fügen Sie zum Rendern einer neuen Karte in Ihrem Browser im `<style>`-Element einen **#map**-Verweis hinzu:
 
     ```html
-    #map {
-                width: 100%;
-                height: 100%;
-            }
-    ``` 
-    
-4. Definieren Sie zum Initialisieren des Kartensteuerelements im HTML-Text einen neuen Abschnitt, und erstellen Sie ein Skript. Verwenden Sie Ihren eigenen Azure Maps-Kontoschlüssel im Skript. Wenn Sie ein Konto erstellen oder Ihren Schlüssel ermitteln müssen, lesen Sie die Informationen unter [How to manage your Azure Maps account and keys](how-to-manage-account-keys.md) (Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel).
+    <style>
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    ```
+
+4. Definieren Sie zum Initialisieren des Kartensteuerelements im HTML-Text einen neuen Abschnitt, und erstellen Sie ein Skript. Verwenden Sie Ihren eigenen Azure Maps-Kontoschlüssel im Skript. Wenn Sie ein Konto erstellen oder Ihren Schlüssel ermitteln müssen, lesen Sie die Informationen unter [Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel](how-to-manage-account-keys.md).
 
     ```html
     <div id="map">
@@ -54,12 +57,17 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
         </script>
     </div>
     ```
-    
+
 5. Öffnen Sie die Datei in Ihrem Webbrowser, und zeigen Sie die gerenderte Karte an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde gezeigt, wie Sie eine einfache Karte mit Ihrem Azure Maps-Schlüssel erstellen. Weitere Codebeispiele, die Sie zu Ihren Karten hinzufügen können, finden Sie in den folgenden Artikeln: 
+Erfahren Sie, wie eine Karte mit einem vollständigen Beispiel erstellen:
 
-* [Erstellen einer Karte](map-create.md)
-* [Auswählen eines Kartenstils](choose-map-style.md)
+> [!div class="nextstepaction"]
+> [Erstellen einer Karte](map-create.md)
+
+Erfahren Sie, wie Sie den Stil einer Karte auswählen:
+
+> [!div class="nextstepaction"]
+> [Auswählen eines Kartenstils](choose-map-style.md)

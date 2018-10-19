@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 57109848bf78311ea4d601b135c5dd304d613aeb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ece3511d0d3c12be13a649385ea9b6dd5c75bfe0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008126"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303709"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Erstellen und Bereitstellen eines Clouddiensts
 Das Azure-Portal bietet zwei Methoden zum Erstellen und Bereitstellen eines Clouddiensts: *Schnellerfassung* und *Benutzerdefiniert erstellen*.
@@ -27,7 +27,7 @@ Das Azure-Portal bietet zwei Methoden zum Erstellen und Bereitstellen eines Clou
 In diesem Thema wird erläutert, wie Sie die Schnellerfassungsmethode zum Erstellen eines neuen Clouddiensts und dann **Hochladen** verwenden, um ein Clouddienstpaket in Azure hochzuladen und bereitzustellen. Wenn Sie diese Methode verwenden, werden im Azure-Portal praktische Links zum Erfüllen aller Anforderungen zur Verfügung gestellt. Wenn Sie Ihren Cloud-Dienst bei der Erstellung auch bereitstellen möchten, können Sie beides mithilfe von Benutzerdefinierte Erstellung durchführen.
 
 > [!NOTE]
-> Wenn Sie Ihren Clouddienst aus Visual Studio Team Services (VSTS) veröffentlichen möchten, verwenden Sie die Schnellerstellung. Richten Sie die VSTS-Veröffentlichung dann über Azur-Schnellstart oder das Dashboard ein. Weitere Informationen finden Sie unter [Fortlaufende Bereitstellung für Azure mithilfe von Visual Studio Team Services][TFSTutorialForCloudService] oder in der Hilfe zur Seite **Schnellstart**.
+> Wenn Sie Ihren Clouddienst aus Azure DevOps veröffentlichen möchten, verwenden Sie die Schnellerstellung. Richten Sie die Azure DevOps-Veröffentlichung dann über den Azure-Schnellstart oder das Dashboard ein. Weitere Informationen finden Sie unter [Continuous Delivery für Azure mithilfe von Azure DevOps][TFSTutorialForCloudService] oder in der Hilfe zur Seite **Schnellstart**.
 >
 >
 

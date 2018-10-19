@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Presto mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Presto mithilfe von Azure Data Factory (Vorschau) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Daten aus Presto mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: jingwang
-ms.openlocfilehash: 4b3e022bd22242bdc246e1dd30aa6cc3e00134e0
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 29ac668ddb9d5df88d5f743630eaf2d9288b8727
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052622"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123435"
 ---
-# <a name="copy-data-from-presto-using-azure-data-factory"></a>Kopieren von Daten aus Presto mithilfe von Azure Data Factory
+# <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Kopieren von Daten aus Presto mithilfe von Azure Data Factory (Vorschau)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Presto zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -45,12 +45,12 @@ Folgende Eigenschaften werden für den mit Presto verknüpften Dienst unterstüt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Presto** festgelegt werden. | Ja |
-| host | IP-Adresse oder Hostname des Presto-Servers. (z.B. 192.168.222.160)  | Ja |
-| serverVersion | Die Version des Presto-Servers. (z.B. 0.148-t)  | Ja |
-| catalog | Der Katalogkontext für alle Anforderungen an den Server.  | Ja |
+| type | Die „type“-Eigenschaft muss auf **Presto** festgelegt werden. | JA |
+| host | IP-Adresse oder Hostname des Presto-Servers. (z.B. 192.168.222.160)  | JA |
+| serverVersion | Die Version des Presto-Servers. (z.B. 0.148-t)  | JA |
+| catalog | Der Katalogkontext für alle Anforderungen an den Server.  | JA |
 | port | Der TCP-Port, den der Presto-Server verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 8080.  | Nein  |
-| authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem Presto-Server verwendet werden soll. <br/>Zulässige Werte: **Anonymous**, **LDAP** | Ja |
+| authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem Presto-Server verwendet werden soll. <br/>Zulässige Werte: **Anonymous**, **LDAP** | JA |
 | username | Der Benutzername, der für die Verbindung mit dem Presto-Server verwendet werden soll.  | Nein  |
 | password | Das Kennwort, das zum Benutzernamen gehört. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein  |
 | enableSsl | Gibt an, ob die Verbindungen mit dem Server mit SSL verschlüsselt werden. Der Standardwert ist „false“.  | Nein  |
@@ -115,8 +115,8 @@ Legen Sie zum Kopieren von Daten aus Presto den Quelltyp in der Kopieraktivität
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **PrestoSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Ja |
+| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **PrestoSource** festgelegt werden. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | JA |
 
 **Beispiel:**
 

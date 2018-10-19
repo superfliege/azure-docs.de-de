@@ -1,31 +1,34 @@
 ---
-title: 'Microsoft-Textübersetzungs-API: Anpassen der Übersetzung | Microsoft-Dokumentation'
+title: Textübersetzungs-API – Anpassen der Übersetzung
+titlesuffix: Azure Cognitive Services
 description: Verwenden Sie den Microsoft Translator-Hub zum Erstellen Ihres eigenen Systems für die maschinelle Übersetzung mit der Terminologie und dem Stil, den Sie bevorzugen.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1db22a414c41f338c4e7fd6ce9dc7ac739fa9237
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d71158bc74ffe15f133cc637371ddc840ef9df9e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377515"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124333"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
-Die Vorschauversion des benutzerdefinierten Microsoft Translators ist ein Feature des Microsoft Translator-Diensts, mit dem Sie die erweiterte neuronale maschinelle Übersetzung von Microsoft Translator anpassen können, wenn Sie die Microsoft-Textübersetzungs-API (nur Version 3) zum Übersetzen verwenden. 
+Die Vorschauversion des benutzerdefinierten Microsoft Translators ist ein Feature des Microsoft Translator-Diensts, mit dem Sie die erweiterte neuronale maschinelle Übersetzung von Microsoft Translator anpassen können, wenn Sie die Textübersetzungs-API (nur Version 3) zum Übersetzen verwenden. 
 
-Das Feature kann mit der [Vorschauversion von Cognitive Services](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/) auch zum Anpassen der Sprachübersetzung verwendet werden.
+Das Feature kann mit der [Vorschauversion von Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/) auch zum Anpassen der Sprachübersetzung verwendet werden.
 
 ## <a name="custom-translator"></a>Benutzerdefinierter Translator
+
 Mit dem benutzerdefinierten Translator können Sie neuronale Übersetzungssysteme erstellen, die die Terminologie verstehen, die in Ihrem Unternehmen und der Branche verwendet wird. Das angepasste Übersetzungssystem wird dann in vorhandene Anwendungen, Workflows und Websites integriert. 
 
 ### <a name="how-does-it-work"></a>Wie funktioniert dies?
+
 Verwenden Sie zuvor übersetzte Dokumente (Broschüren, Webseiten, Dokumentationen usw.), um ein Übersetzungssystem zu erstellen, das die domänenspezifische Terminologie und den Stil besser als ein herkömmliches Übersetzungssystem widerspiegelt. Benutzer können Dokumente in den folgenden Dateiformaten hochladen: TMX, XLIFF, TXT, DOCX und XLSX.  
 
 Das System akzeptiert auch Daten, die parallel auf Dokumentebene parallel sind, jedoch noch nicht auf Satzebene ausgerichtet wurden. Wenn Sie über Zugriff auf Versionen mit dem gleichen Inhalt in mehreren Sprachen verfügen, die sich jedoch in separaten Dokumenten befinden, kann der benutzerdefinierte Translator Sätze über mehrere Dokumente hinweg automatisch abgleichen.  Das System kann auch einsprachige Daten in einer oder beiden Sprachen verwenden, um die parallelen Trainingsdaten zu ergänzen, um die Übersetzungen zu verbessern. 
@@ -47,10 +50,10 @@ Der ältere Microsoft Translator-Hub kann zum Übersetzen statistischer maschine
 |:-----|:----:|:----:|
 |Status des Anpassungsfeatures   | Allgemeine Verfügbarkeit  | Vorschau |
 | Version der Text-API  | Nur V2   | Nur V3 |
-| SMT-Anpassung | Ja   | Nein  | 
-| NMT-Anpassung | Nein     | Ja |
-| Neue einheitliche Anpassung der Sprachdienste | Nein     | Ja | 
-| [No Trace (Keine Ablaufverfolgung)](http://www.aka.ms/notrace) | Ja   | Ja | 
+| SMT-Anpassung | JA   | Nein  | 
+| NMT-Anpassung | Nein     | JA |
+| Neue einheitliche Anpassung der Sprachdienste | Nein     | JA | 
+| [No Trace (Keine Ablaufverfolgung)](http://www.aka.ms/notrace) | JA   | JA | 
 
 ## <a name="collaborative-translations-framework"></a>Framework für kollaborative Übersetzungen
 
@@ -60,5 +63,6 @@ Der ältere Microsoft Translator-Hub kann zum Übersetzen statistischer maschine
 >In der Translator-Hub-API stehen ähnliche Funktionen zur Verfügung. Siehe [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger). 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"]
 > [Set up a customized language system using Custom Translator (Einrichten eines angepassten Sprachsystems mit dem benutzerdefinierten Translator)](http://aka.ms/CustomTranslatorDocs)

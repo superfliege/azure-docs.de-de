@@ -1,27 +1,30 @@
 ---
-title: Grammatikformat in der Knowledge Exploration Service-API | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zum Grammatikformat in der KES-API (Knowledge Exploration Service) in Cognitive Services.
+title: Grammatikformat – Knowledge Exploration Service-API
+titlesuffix: Azure Cognitive Services
+description: Hier finden Sie Informationen zum Grammatikformat in der KES-API (Knowledge Exploration Service).
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: b64025be2f5a9708162da475c1f037d7f253d2c6
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 4b4010152622cd9a1d8111ac92dd1960e78d4601
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865752"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125152"
 ---
 # <a name="grammar-format"></a>Grammatikformat
+
 Bei der Grammatik handelt es sich um eine XML-Datei, die den gewichteten Satz von Abfragen in natürlicher Sprache angibt, die der Dienst interpretieren kann, und die angibt, wie diese Abfragen in natürlicher Sprache in Semantikabfrageausdrücke konvertiert werden.  Die Grammatiksyntax basiert auf [SRGS](http://www.w3.org/TR/speech-grammar/). Dabei handelt es sich um einen W3C-Standard für Spracherkennungsgrammatiken mit Erweiterungen zur Unterstützung von Datenindexintegration und Semantikfunktionen.
 
 In diesem Artikel werden die einzelnen syntaktischen Elemente beschrieben, die in einer Grammatik verwendet werden können.  Eine vollständige Grammatik, die die Verwendung dieser Elemente im Kontext veranschaulicht, finden Sie in [diesem Beispiel](#example).
 
-### <a name="grammar-element"></a>grammar-Element 
+### <a name="grammar-element"></a>grammar-Element
+
 Das `grammar`-Element ist das übergeordnete Element in der XML-Grammatikspezifikation.  Das erforderliche `root`-Attribut gibt den Namen der Stammregel an, die den Startpunkt der Grammatik definiert.
 
 ```xml
@@ -29,6 +32,7 @@ Das `grammar`-Element ist das übergeordnete Element in der XML-Grammatikspezifi
 ```
 
 ### <a name="import-element"></a>import-Element
+
 Das `import`-Element importiert eine Schemadefinition aus einer externen Datei, um Attributverweise zu ermöglichen. Das Element muss ein untergeordnetes Element des übergeordneten `grammar`-Elements sein und sich vor jeglichen `attrref`-Elementen befinden. Das erforderliche `schema`-Attribut gibt den Namen einer Schemadatei an, die sich im gleichen Verzeichnis befindet wie die XML-Grammatikdatei. Das erforderliche `name`-Element gibt das Schemaalias an, das nachfolgende `attrref`-Elemente verwenden, wenn sie auf in diesem Schema definierte Attribute verweisen.
 
 ```xml
@@ -36,6 +40,7 @@ Das `import`-Element importiert eine Schemadefinition aus einer externen Datei, 
 ```
 
 ### <a name="rule-element"></a>rule-Element
+
 Das `rule`-Element definiert eine Grammatikregel. Dabei handelt es sich um eine strukturelle Einheit, die einen Satz von Abfrageausdrücken angibt, die das System interpretieren kann.  Das Element muss ein untergeordnetes Element des übergeordneten `grammar`-Elements sein.  Das erforderliche `id`-Attribut gibt den Namen der Regel an, auf die in `grammar`- oder `ruleref`-Elementen verwiesen wird.
 
 Ein `rule`-Element definiert eine Gruppe zulässiger Erweiterungen.  Texttoken werden direkt mit der Eingabeabfrage abgeglichen.  `item`-Elemente geben Wiederholungen an und ändern Interpretationswahrscheinlichkeiten.  `one-of`-Elemente geben alternative Optionen an.  `ruleref`-Elemente ermöglichen die Erstellung komplexerer Erweiterungen auf der Grundlage einfacher Erweiterungen.  `attrref`-Elemente ermöglichen Abgleiche mit Attributwerten aus dem Index.  `tag`-Elemente geben die Semantik der Interpretation an und können die Interpretationswahrscheinlichkeit ändern.
@@ -45,6 +50,7 @@ Ein `rule`-Element definiert eine Gruppe zulässiger Erweiterungen.  Texttoken w
 ```
 
 ### <a name="example-element"></a>example-Element
+
 Das optionale `example`-Element gibt Beispielausdrücke an, die von der enthaltenden `rule`-Definition akzeptiert werden können.  Dies kann zu Dokumentationszwecken und/oder für automatisierte Tests verwendet werden.
 
 ```xml
@@ -52,6 +58,7 @@ Das optionale `example`-Element gibt Beispielausdrücke an, die von der enthalte
 ```
 
 ### <a name="item-element"></a>item-Element
+
 Das `item`-Element gruppiert eine Sequenz von Grammatikkonstrukten.  Damit können Wiederholungen der Erweiterungssequenz oder Alternativen in Verbindung mit dem `one-of`-Element angegeben werden.
 
 Wenn ein `item`-Element kein untergeordnetes Element eines `one-of`-Elements ist, kann es die Wiederholung der eingeschlossenen Sequenz angeben, indem dem `repeat`-Attribut eine Anzahl zugewiesen wird.  Die Anzahl „*n*“ (wobei *n* für eine ganze Zahl steht) gibt an, dass die Sequenz genau *n*-mal vorkommen muss.  Bei Verwendung der Anzahl „*m*-*n*“ kann die Sequenz zwischen *m*- und *n*-mal vorkommen (jeweils einschließlich).  Die Anzahl „*m*-“ gibt an, dass die Sequenz mindestens *m*-mal vorkommen muss.  Mit dem optionalen `repeat-logprob`-Attribut kann die Interpretationswahrscheinlichkeit für jede weitere Wiederholung geändert werden, die über den Mindestwert hinausgeht.
@@ -71,6 +78,7 @@ Wenn `item`-Elemente als untergeordnete Elemente eines `one-of`-Elements verwend
 ```
 
 ### <a name="one-of-element"></a>one-of-Element
+
 Das `one-of`-Element gibt alternative Erweiterungen für eines der untergeordneten `item`-Elemente an.  In einem `one-of`-Element dürfen sich nur `item`-Elemente befinden.  Relative Wahrscheinlichkeiten für die verschiedenen Optionen können über das `logprob`-Attribut in jedem untergeordneten `item`-Element angegeben werden.
 
 ```xml
@@ -82,6 +90,7 @@ Das `one-of`-Element gibt alternative Erweiterungen für eines der untergeordnet
 ```
 
 ### <a name="ruleref-element"></a>ruleref-Element
+
 Das `ruleref`-Element gibt gültige Erweiterungen über Verweise auf ein anderes `rule`-Element an.  Durch die Verwendung von `ruleref`-Elementen können komplexere Ausdrücke auf der Grundlage einfacherer Regeln erstellt werden.  Das erforderliche `uri`-Attribut gibt den Namen des referenzierten `rule`-Elements unter Verwendung der Syntax „#*Regelname*“ an.  Verwenden Sie zum Erfassen der Semantikausgabe der referenzierten Regel das optionale `name`-Attribut, um den Namen einer Variablen anzugeben, der die Semantikausgabe zugewiesen ist.
  
 ```xml
@@ -89,6 +98,7 @@ Das `ruleref`-Element gibt gültige Erweiterungen über Verweise auf ein anderes
 ```
 
 ### <a name="attrref-element"></a>attrref-Element
+
 Das `attrref`-Element verweist auf ein Indexattribut und ermöglicht Abgleiche mit Attributwerten aus dem Index.  Das erforderliche `uri`-Attribut gibt den Indexschemanamen und den Attributnamen unter Verwendung der Syntax „*Schemaname*#*Attributname*“ an.  Dabei muss ein vorangestelltes `import`-Element vorhanden sein, das das Schema mit dem Namen *Schemaname* importiert.  Der Attributname ist der Name eines im entsprechenden Schema definierten Attributs.
 
 Zusätzlich zum Abgleich mit der Benutzereingabe gibt das `attrref`-Element auch ein strukturiertes Abfrageobjekt als Ausgabe zurück, das die Teilmenge der Objekte im Index auswählt, die dem Eingabewert entsprechen.  Verwenden Sie das optionale `name`-Attribut, um den Namen der Variablen anzugeben, in der die Ausgabe des Abfrageobjekts gespeichert werden soll.  Das Abfrageobjekt kann mit anderen Abfrageobjekten kombiniert werden, um komplexere Ausdrücke zu erstellen.  Ausführliche Informationen finden Sie unter [Semantic Interpretation](SemanticInterpretation.md) (Semantikinterpretation).  
@@ -97,7 +107,8 @@ Zusätzlich zum Abgleich mit der Benutzereingabe gibt das `attrref`-Element auch
 <attrref uri="academic#Keyword" name="keyword"/>
 ```
 
-#### <a name="query-completion"></a>Abfragevervollständigung 
+#### <a name="query-completion"></a>Abfragevervollständigung
+
 Zur Unterstützung von Abfragevervollständigungen beim Interpretieren partieller Benutzerabfragen muss jedes Attribut „starts_with“ als Vorgang in der Schemadefinition enthalten.  Wenn ein Benutzerabfragepräfix vorhanden ist, gleicht `attrref` alle Werte im Index ab, die das Präfix vervollständigen, und gibt jeden vollständigen Wert als separate Interpretation der Grammatik zurück.  
 
 Beispiele:
@@ -105,6 +116,7 @@ Beispiele:
 * Der Abgleich von `<attrref uri="academic#Year" name="year"/>` mit dem Abfragepräfix „200“ generiert eine Interpretation für Dokumente des Jahres „2000“, eine Interpretation für Dokumente des Jahres „2001“ usw.
 
 #### <a name="matching-operations"></a>Abgleichvorgänge
+
 Neben exakten Übereinstimmungen unterstützen bestimmte Attributtypen über das optionale `op`-Attribut auch Präfix- und Ungleichheitsübereinstimmungen.  Ist im Index kein Objekt mit passendem Wert vorhanden, wird der Grammatikpfad blockiert, und der Dienst generiert keine Interpretationen, wenn er diesen Grammatikpfad durchläuft.   Das `op`-Attribut wird standardmäßig auf „eq“ festgelegt.
 
 ```xml
@@ -129,6 +141,7 @@ Beispiele:
 * `<attrref uri="academic#Year" op="starts_with" name="year"/>` führt einen Abgleich mit der Eingabezeichenfolge „20“ durch und gibt in einer einzelnen Interpretation Dokumente zurück, die zwischen 200 und 299, zwischen 2000 und 2999 usw. veröffentlicht wurden.  Hierbei handelt es sich um einen seltenen Anwendungsfall.
 
 ### <a name="tag-element"></a>tag-Element
+
 Das `tag`-Element gibt an, wie ein Pfad durch die Grammatik interpretiert werden soll.  Es enthält eine Reihe von Anweisungen, die jeweils mit einem Semikolon enden.  Bei einer Anweisung kann es sich um eine Zuweisung eines Literals oder einer Variable zu einer anderen Variable handeln.  Sie kann aber auch die Ausgabe einer Funktion mit null oder mehr Parametern einer Variablen zuweisen.  Jeder Funktionsparameter kann mit einem Literal oder einer Variablen angegeben werden.  Wenn die Funktion keine Ausgabe zurückgibt, erfolgt keine Zuweisung.  Der Variablenbereich ist für die enthaltende Regel lokal.
 
 ```xml
@@ -144,12 +157,13 @@ Einige Anweisungen ändern möglicherweise die Wahrscheinlichkeit eines Interpre
 Eine Liste mit unterstützten Semantikfunktionen finden Sie unter [Semantic Functions](SemanticInterpretation.md#semantic-functions) (Semantikfunktionen).
 
 ## <a name="interpretation-probability"></a>Interpretationswahrscheinlichkeit
+
 Die Wahrscheinlichkeit eines Interpretationspfads durch die Grammatik ist die kumulative Logarithmus-Wahrscheinlichkeit aller `<item>`-Elemente und Semantikfunktionen des Pfads.  Sie beschreibt die relative Wahrscheinlichkeit für die Übereinstimmung einer bestimmten Eingabesequenz.
 
 Bei einer Wahrscheinlichkeit *p* zwischen 0 und 1 kann die entsprechende Logarithmus-Wahrscheinlichkeit als log(*p*) berechnet werden, wobei „log()“ die natürliche Logarithmus-Funktion ist.  Mithilfe von Logarithmus-Wahrscheinlichkeiten kann das System durch einfache Addition die gemeinsame Wahrscheinlichkeit eines Interpretationspfads ermitteln.  Darüber hinaus wird dadurch ein Gleitkommaunterlauf vermieden, wie er bei solchen Berechnungen der gemeinsamen Wahrscheinlichkeit häufig zu beobachten ist.  Beachten Sie, dass die Logarithmus-Wahrscheinlichkeit immer ein negativer Gleitkommawert oder Null ist und höhere Werte eine höhere Wahrscheinlichkeit angeben.
 
-<a name="example"></a>
 ## <a name="example"></a>Beispiel
+
 Im Anschluss finden Sie ein XML-Beispiel aus dem Bereich wissenschaftlicher Veröffentlichungen, das die verschiedenen Grammatikelemente veranschaulicht:
 
 ```xml

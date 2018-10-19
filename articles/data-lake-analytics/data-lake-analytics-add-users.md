@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: 0386406f5fc81a007d55bd5358e7a6b333f63b04
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f48dc07e27c6cb01a842f1f6d720ed6476028ef7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048332"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542311"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Hinzufügen eines Benutzers im Azure-Portal
 
@@ -31,12 +31,12 @@ ms.locfileid: "43048332"
 Erteilen Sie je nach Bedarf „R-X“ oder „RWX“ für Ordner mit Eingabe- und Ausgabedaten.
 
 
-## <a name="optionally-add-the-user-to-the-azure-data-lake-store-role-reader-role"></a>Fügen Sie den Benutzer optional zur Azure Data Lake Store-Rolle **Leser** hinzu.
-1.  Suchen Sie nach Ihrem Azure Data Lake Store-Konto.
+## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>Fügen Sie den Benutzer optional zur Azure Data Lake Storage Gen1-Rolle **Leser** hinzu.
+1.  Suchen Sie Ihr Azure Data Lake Storage Gen1-Konto.
 2.  Klicken Sie auf **Benutzer**.
 3. Klicken Sie auf **Hinzufügen**.
 4.  Wählen Sie eine Azure RBAC-Rolle aus, die dieser Gruppe zugewiesen werden soll.
-5.  Weisen Sie die Rolle „Leser“ zu. Diese Rolle verfügt über die mindestens erforderlichen Berechtigungen zum Durchsuchen/Verwalten von Daten, die in ADLS gespeichert sind. Führen Sie eine Zuweisung zu dieser Rolle durch, wenn die Gruppe nicht zum Verwalten von Azure-Diensten vorgesehen ist.
+5.  Weisen Sie die Rolle „Leser“ zu. Diese Rolle verfügt über die mindestens erforderlichen Berechtigungen zum Durchsuchen/Verwalten von Daten, die in ADLSGen1 gespeichert sind. Führen Sie eine Zuweisung zu dieser Rolle durch, wenn die Gruppe nicht zum Verwalten von Azure-Diensten vorgesehen ist.
 6.  Geben Sie den Namen der Gruppe ein.
 7.  Klicken Sie auf **OK**.
 

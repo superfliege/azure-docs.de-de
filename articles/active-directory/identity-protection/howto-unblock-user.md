@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Identity Protection – Aufheben der Sperrung von Benutzern | Microsoft Docs
+title: Aufheben der Sperrung von Benutzern mit Azure Active Directory Identity Protection | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie die Blockierung von Benutzern aufheben, die durch eine Azure Active Directory Identity Protection-Richtlinie blockiert wurden.
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Benutzerblockierung aufheben
@@ -13,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 09/13/2018
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 1bfc70680ecef2ee4fe162f81aac71430c773740
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.reviewer: raluthra
+ms.openlocfilehash: f8bf983033407bbf597af15f18f28ecf33b7558f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005077"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631683"
 ---
-# <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory Identity Protection – Aufheben der Blockierung von Benutzern
+# <a name="how-to-unblock-users"></a>Gewusst wie: Aufheben der Sperrung von Benutzern
+
 Mit Azure Active Directory Identity Protection können Sie Richtlinien konfigurieren, um Benutzer zu blockieren, wenn die konfigurierten Bedingungen erfüllt sind. Ein blockierter Benutzer wendet sich zur Aufhebung der Blockierung in der Regel an den Helpdesk. In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie die Blockierung eines Benutzers aufheben.
 
 ## <a name="determine-the-reason-for-blocking"></a>Ermitteln der Ursache für die Blockierung
@@ -52,8 +53,8 @@ Zur Aufheben der Blockierung verdächtiger Anmeldungen stehen folgende Optionen 
 ## <a name="unblocking-accounts-at-risk"></a>Aufheben der Blockierung gefährdeter Konten
 Zur Aufheben der Blockierung gefährdeter Konten stehen folgende Optionen zur Verfügung:
 
-1. **Zurücksetzen des Kennworts:** Sie können das Kennwort des Benutzers zurücksetzen. Weitere Informationen finden Sie unter [Manuelle Kennwortzurücksetzung](overview.md#manual-secure-password-reset).
-2. **Schließen aller Risikoereignisse:** Die Benutzerrisikorichtlinie blockiert einen Benutzer, wenn die konfigurierte Benutzerrisikostufe für die Blockierung des Zugriffs erreicht wurde. Sie können die Risikostufe eines Benutzers verringern, indem Sie gemeldete Risikoereignisse manuell schließen. Weitere Informationen finden Sie unter [Manuelles Schließen von Risikoereignissen](overview.md#closing-risk-events-manually).
+1. **Zurücksetzen des Kennworts:** Sie können das Kennwort des Benutzers zurücksetzen. 
+2. **Schließen aller Risikoereignisse:** Die Benutzerrisikorichtlinie blockiert einen Benutzer, wenn die konfigurierte Benutzerrisikostufe für die Blockierung des Zugriffs erreicht wurde. Sie können die Risikostufe eines Benutzers verringern, indem Sie gemeldete Risikoereignisse manuell schließen. 
 3. **Ausschließen von der Richtlinie:** Wenn Sie vermuten, dass die aktuelle Konfiguration Ihrer Anmelderichtlinie Probleme für bestimmte Benutzer verursacht, können Sie diese Benutzer von der Richtlinie ausschließen. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 4. **Deaktivieren der Richtlinie:** Wenn Sie vermuten, dass Ihre Richtlinienkonfiguration Probleme für alle Benutzer verursacht, können Sie die Richtlinie deaktivieren. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 

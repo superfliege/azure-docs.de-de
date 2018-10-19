@@ -1,6 +1,6 @@
 ---
-title: Transkriptionsrichtlinien für das Speech-Training
-description: Informationen zur Textvorbereitung zum Anpassen von Akustik- und Sprachmodellen und Voicefonts für den Speech-Dienst.
+title: Transkriptionsrichtlinien zur Spracherkennungsdienst-Schulung
+description: Informationen zur Textvorbereitung zum Anpassen von Akustik- und Sprachmodellen und Voicefonts für den Spracherkennungsdienst.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: PanosPeriorellis
@@ -9,42 +9,42 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: db324b6c5444955debdc6a3e09906a0de47ff819
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: f9cb205b5111e981ee70adca715139402c9e31a4
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41929751"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721814"
 ---
-# <a name="transcription-guidelines-for-using-speech-service"></a>Transkriptionsrichtlinien zur Verwendung des Speech-Diensts
+# <a name="transcription-guidelines-for-using-the-speech-service"></a>Transkriptionsrichtlinien zur Verwendung des Spracherkennungsdiensts
 
 Zur Anpassung der **Spracherkennung** oder **Sprachsynthese** müssen Sie Text zusammen mit Sprache angeben. Jede Zeile im Text entspricht einer einzelnen Äußerung. Der Text sollte mit der Sprache so genau wie möglich übereinstimmen. Der Text wird als *Transkript* bezeichnet und muss in einem bestimmten Format erstellt werden.
 
-Der Speech-Dienst normalisiert die Eingabe, damit der Text konsistent bleibt. 
+Der Spracherkennungsdienst normalisiert die Eingabe, damit der Text konsistent bleibt. 
 
 In diesem Artikel werden beide Arten der Normalisierung beschrieben. Je nach Sprache weichen die Richtlinien geringfügig voneinander ab.
 
-## <a name="us-english-en-us"></a>Englisch (USA) (en-US)
+## <a name="us-english-en-us"></a>Englisch (USA) (en-us)
 
 Die Textdaten müssen mit einer Äußerung pro Zeile als Nur-Text unter ausschließlicher Verwendung des ASCII-Zeichensatzes geschrieben werden.
 
-Vermeiden Sie die Verwendung von erweiterten (Lateinisch-1) oder Unicode-Interpunktionszeichen. Diese Zeichen können unbeabsichtigt eingefügt werden, wenn die Daten in einem Textverarbeitungsprogramm vorbereitet oder aus Webseiten erfasst werden. Ersetzen Sie diese Zeichen durch entsprechende ASCII-Zeichen. Beispiel: 
+Vermeiden Sie die Verwendung von erweiterten (Lateinisch-1) oder Unicode-Interpunktionszeichen. Diese Zeichen können unbeabsichtigt eingefügt werden, wenn die Daten in einem Textverarbeitungsprogramm vorbereitet oder aus Webseiten erfasst werden. Ersetzen Sie die Zeichen durch entsprechende ASCII-Zeichen. Beispiel: 
 
 | Nicht zu verwendende Zeichen | Ersetzung |
 |----- | ----- |
-| “Hello world” (öffnendes und schließendes Anführungszeichen) | "Hello world" (doppelte Anführungszeichen) |
+| „Hello World“ (öffnende und schließende doppelte Anführungszeichen) | "Hello world" (doppelte Anführungszeichen) |
 | John’s day (einfaches Anführungszeichen rechts) | John's day (Apostroph) |
 | it was good—no, it was great! (Geviertstrich) | it was good--no, it was great! (Bindestriche) |
 
 ### <a name="text-normalization-rules-for-english"></a>Regeln für die Textnormalisierung für Englisch
 
-Der Speech-Dienst verwendet die folgenden Normalisierungsregeln.
+Der Spracherkennungsdienst verwendet die folgenden Normalisierungsregeln:
 
-*   Kleinschreibung des gesamten Texts
-*   Entfernen aller Interpunktionszeichen, mit Ausnahme von wortinternen Apostrophen
-*   Ausweitung von Zahlen auf die gesprochene Form, einschließlich Dollarangaben
+* Verwenden von Kleinbuchstaben für sämtlichen Text
+* Entfernen aller Interpunktionszeichen, mit Ausnahme von wortinternen Apostrophen
+* Ausweiten von Zahlen auf die gesprochene Form, einschließlich Dollarangaben
 
-Einige Beispiele (in englischer Sprache):
+Hier einige Beispiele:
 
 | Ursprünglicher Text | Nach der Normalisierung |
 |----- | ----- |
@@ -57,13 +57,13 @@ Einige Beispiele (in englischer Sprache):
 | Pi is about 3.14 | pi is about three point one four |
 | It costs $3.14 | it costs three fourteen |
 
-Wenden Sie die folgende Normalisierung auf Ihre Texttranskripte an.
+Wenden Sie die folgende Normalisierung auf Ihre Texttranskripte an:
 
-*   Abkürzungen sollten ausgeschrieben werden.
-*   Nicht standardmäßige numerische Zeichenfolgen (z.B. einige Datums- oder Rechnungsformen) müssen ausgeschrieben werden.
-*   Wörter mit nicht alphabetischen Zeichen oder gemischten alphanumerischen Zeichen müssen entsprechend ihrer Aussprache transkribiert werden.
-*   Behalten Sie Abkürzungen, die als Wörter ausgesprochen werden, unverändert bei, z.B. radar, laser, RAM, NATO.
-*   Schreiben Sie Abkürzungen, die als separate Buchstaben ausgesprochen werden, mit durch Leerzeichen getrennten Buchstaben, z.B. IBM, CPU, FBI, TBD, NaN. 
+* Abkürzungen sollten ausgeschrieben werden.
+* Nicht standardmäßige numerische Zeichenfolgen (z. B. einige Datums- oder Rechnungsformen) müssen ausgeschrieben werden.
+* Wörter mit nicht alphabetischen Zeichen oder gemischten alphanumerischen Zeichen müssen entsprechend ihrer Aussprache transkribiert werden.
+* Lassen Sie Abkürzungen, die als Wörter ausgesprochen werden, unverändert (z. B. „Radar“, „Laser“, „RAM“ oder „NATO“).
+* Schreiben Sie Abkürzungen, die als separate Buchstaben ausgesprochen werden, mit durch Leerzeichen getrennten Buchstaben (Beispiel: „IBM,“ „CPU,“ „FBI,“ „TBD,“ oder „NaN“). 
 
 Hier einige Beispiele:
 
@@ -80,7 +80,7 @@ Hier einige Beispiele:
 | play OU812 by Van Halen | play O U 8 1 2 by Van Halen |
 | UTF-8 with BOM | U T F 8 with BOM |
 
-## <a name="chinese-zh-cn"></a>Chinesisch (zh-CN)
+## <a name="chinese-zh-cn"></a>Chinesisch (zh-cn)
 
 Bei in Custom Speech Service hochgeladenen Textdaten muss die UTF-8-Codierung mit Bytereihenfolge-Marke verwendet werden. Die Datei sollte eine Äußerung pro Zeile enthalten.
 
@@ -88,19 +88,19 @@ Vermeiden Sie die Verwendung von Interpunktionszeichen halber Breite. Diese Zeic
 
 | Nicht zu verwendende Zeichen | Ersetzung |
 |----- | ----- |
-| “你好”(öffnendes und schließendes Anführungszeichen) | "你好" (doppelte Anführungszeichen) |
+| „你好“ (öffnende und schließende doppelte Anführungszeichen) | "你好" (doppelte Anführungszeichen) |
 | 需要什么帮助? (Fragezeichen) | 需要什么帮助？ |
 
 ### <a name="text-normalization-rules-for-chinese"></a>Regeln für die Textnormalisierung für Chinesisch
 
-Der Speech-Dienst verwendet die folgenden Normalisierungsregeln.
+Der Spracherkennungsdienst verwendet die folgenden Normalisierungsregeln:
 
-*   Entfernen aller Interpunktionszeichen
-*   Ausweitung von Zahlen auf die gesprochene Form
-*   Konvertieren von Buchstaben normaler Breite in Buchstaben halber Breite
-*   Großschreibung aller englischen Wörter
+* Entfernen aller Interpunktionszeichen
+* Ausweitung von Zahlen auf die gesprochene Form
+* Konvertieren von Buchstaben normaler Breite in Buchstaben halber Breite
+* Verwenden von Großbuchstaben für alle englischen Wörter
 
-Hier einige Beispiele.
+Hier einige Beispiele:
 
 | Ursprünglicher Text | Nach der Normalisierung |
 |----- | ----- |
@@ -112,12 +112,12 @@ Hier einige Beispiele.
 | 下午5:00的航班 | 下午 五点 的 航班 |
 | 我今年21岁 | 我 今年 二十 一 岁 |
 
-Wenden Sie vor dem Import die folgende Normalisierung auf den Text an.
+Bevor Sie Ihren Text importieren, wenden Sie die folgende Normalisierung an:
 
-*   Abkürzungen sollten ausgeschrieben werden (wie in gesprochener Form).
-*   Schreiben Sie numerische Zeichenfolgen wie in gesprochener Form aus.
+* Abkürzungen sollten ausgeschrieben werden (wie in gesprochener Form).
+* Schreiben Sie numerische Zeichenfolgen wie in gesprochener Form aus.
 
-Hier einige Beispiele.
+Hier einige Beispiele:
 
 | Ursprünglicher Text | Nach der Normalisierung |
 |----- | ----- |
@@ -129,19 +129,19 @@ Hier einige Beispiele.
 Bei in den Dienst zur **Spracherkennung** hochgeladenen Textdaten muss die UTF-8-Codierung mit Bytereihenfolge-Marke verwendet werden. Die Datei sollte eine Äußerung pro Zeile enthalten.
 
 > [!NOTE]
-> In diesen Beispielen wird Deutsch verwendet. Diese Richtlinien gelten jedoch für alle Sprachen außer für Englisch (USA) und Chinesisch.
+> Die folgenden Beispiele verwenden Deutsch. Die Richtlinien gelten jedoch für alle Sprachen außer für Englisch (USA) oder Chinesisch.
 
 ### <a name="text-normalization-rules-for-german"></a>Regeln für die Textnormalisierung für Deutsch
 
-Der Speech-Dienst verwendet die folgenden Normalisierungsregeln.
+Der Spracherkennungsdienst verwendet die folgenden Normalisierungsregeln:
 
-*   Kleinschreibung des gesamten Texts
-*   Entfernen aller Interpunktionszeichen, einschließlich verschiedener Typen von Anführungszeichen ("test", 'test', „test“ oder «test» können verwendet werden)
-*   Verwerfen aller Zeilen mit Sonderzeichen des Zeichensatzes ¢ ¤ ¥ ¦ § © ª ¬ ® ° ± ² µ × ÿ Ø¬¬
-*   Erweiterung von Zahlen in die Wortform, einschließlich Dollar-/Euroangaben
-*   Umlaute sind nur für a, o und u zulässig; andere werden durch „th“ ersetzt oder entfernt
+* Verwenden von Kleinbuchstaben für sämtlichen Text
+* Entfernen aller Interpunktionszeichen, einschließlich verschiedener Typen von Anführungszeichen ("test", 'test', „test“ oder «test» können verwendet werden)
+* Verwerfen aller Zeilen mit Sonderzeichen des Zeichensatzes ¢ ¤ ¥ ¦ § © ª ¬ ® ° ± ² µ × ÿ Ø¬¬
+* Erweitern von Zahlen in die Wortform, einschließlich Dollar-/Euroangaben
+* Zulassen von Umlauten nur für a, o und u; andere werden durch „th“ ersetzt oder entfernt
 
-Einige Beispiele:
+Hier einige Beispiele:
 
 | Ursprünglicher Text | Nach der Normalisierung |
 |----- | ----- |
@@ -149,17 +149,17 @@ Einige Beispiele:
 | ¡Eine Frage! | eine frage |
 | wir, haben | wir haben |
 
-Wenden Sie vor dem Import die folgende Normalisierung auf den Text an.
+Bevor Sie Ihren Text importieren, wenden Sie die folgende Normalisierung an:
 
-*   Als Dezimaltrennzeichen muss „,“ statt „.“ verwendet werden.
-*   Als Zeittrennzeichen zwischen Stunden und Minuten muss „:“ anstelle von „.“ verwendet werden, z.B. 12:00 Uhr.
-*   Abkürzungen wie „ca.“ werden nicht ersetzt. Es empfiehlt sich, die vollständige Form zu verwenden.
-*   Die vier wichtigsten mathematischen Operatoren werden entfernt: +, -, \*, /. Es wird empfohlen, sie durch die jeweilige Literalform zu ersetzen: plus, minus, mal, geteilt durch.
-*   Dasselbe gilt für die Vergleichsoperatoren (=, <, >): gleich, kleiner als, größer als.
-*   Verwenden Sie Brüche, z.B. 3/4, in Wortform, z.B. „drei viertel“ anstatt „¾“.
-*   Ersetzen Sie das €-Symbol durch die Wortform „Euro“.
+* Als Dezimaltrennzeichen muss „,“ statt „.“ verwendet werden.
+* Als Zeittrennzeichen zwischen Stunden und Minuten muss „:“ anstatt „.“ verwendet werden (Beispiel: 12:00 Uhr).
+* Abkürzungen wie „ca.“ werden nicht ersetzt. Es empfiehlt sich, die vollständige Form zu verwenden.
+* Die vier wichtigsten mathematischen Operatoren (+, -, \* und /) werden entfernt. Es wird empfohlen, sie durch die jeweilige Literalform zu ersetzen: „plus“, „minus“, „mal“ und „geteilt“.
+* Dieselbe Regel gilt für Vergleichsoperatoren (=, < und >). Wir empfehlen, sie durch „gleich“, „kleiner als“ und „grösser als“ zu ersetzen.
+* Verwenden Sie Brüche wie 3/4 in Wortform (Beispiel: „drei viertel“ anstatt ¾).
+* Ersetzen Sie das €-Symbol durch die Wortform „Euro“.
 
-Hier einige Beispiele.
+Hier einige Beispiele:
 
 | Ursprünglicher Text | Nach der Normalisierung durch den Benutzer | Nach der Normalisierung durch das System
 |--------  | ----- | -------- |
@@ -169,5 +169,5 @@ Hier einige Beispiele.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/)
 - [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)

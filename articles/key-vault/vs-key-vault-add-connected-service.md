@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: d2ab34b3737ec00e4adc464f6d2255203fb6ae08
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 9cf49ae97da3bf67300bdc222c86bb712aeaed37
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840618"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465791"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
 
@@ -39,7 +39,8 @@ Ausführliche Informationen zu den Änderungen, die durch verbundene Dienste in 
 
    ![Auswahl von „Schutz für Geheimnisse mit Azure Key Vault“](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-   Wenn Sie sich bei Visual Studio angemeldet haben und Ihrem Konto ein Azure-Abonnement zugeordnet ist, wird eine Seite mit einer Dropdownliste mit Ihren Abonnements angezeigt.
+   Wenn Sie sich bei Visual Studio angemeldet haben und Ihrem Konto ein Azure-Abonnement zugeordnet ist, wird eine Seite mit einer Dropdownliste mit Ihren Abonnements angezeigt. Stellen Sie sicher, dass Sie bei Visual Studio angemeldet sind und dass das Konto, mit dem Sie angemeldet sind, dasselbe Konto ist, das Sie für Ihr Azure-Abonnement verwenden.
+
 1. Wählen Sie das Abonnement, das Sie verwenden möchten, und wählen Sie dann einen neuen oder vorhandenen Schlüsseltresor aus, bzw. klicken Sie auf den Link „Bearbeiten“, um den automatisch generierten Namen zu ändern.
 
    ![Wählen Sie Ihr Abonnement aus.](media/vs-key-vault-add-connected-service/KeyVaultConnectedService3.PNG)

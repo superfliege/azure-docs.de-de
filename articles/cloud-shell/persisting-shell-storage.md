@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 9a22b14df18e10342bb2a872b82b94ab4ea62d0a
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 606b36be4a2bbeff8dd226f41341d60e23f0d988
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859866"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163276"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -42,9 +42,7 @@ Mit Bash in Cloud Shell können Sie den Befehl `clouddrive` ausführen, mit dem 
 #### <a name="prerequisites-for-manual-mounting"></a>Voraussetzungen für die manuelle Bereitstellung
 Sie können die Dateifreigabe aktualisieren, die Cloud Shell zugeordnet ist, indem Sie den Befehl `clouddrive mount` verwenden.
 
-Wenn Sie eine vorhandene Dateifreigabe bereitstellen, müssen die Speicherkonten folgende Voraussetzungen erfüllen:
-* Es muss sich um lokal redundanten Speicher oder georedundanten Speicher zur Unterstützung von Dateifreigaben handeln.
-* Das Speicherkonto muss sich in Ihrer zugewiesenen Region befinden. Beim Onboarding wird die Region, der Sie zugewiesen sind, in der Ressourcengruppe mit dem Namen `cloud-shell-storage-<region>` aufgelistet.
+Wenn Sie eine vorhandene Dateifreigabe einbinden, müssen sich die Speicherkonten in der ausgewählten Cloud Shell-Region befinden. Sie rufen den Standort durch Ausführen von `env` in Bash und Überprüfen der `ACC_LOCATION` ab.
 
 #### <a name="the-clouddrive-mount-command"></a>Befehl `clouddrive mount`
 

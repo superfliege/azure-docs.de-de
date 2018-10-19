@@ -1,20 +1,21 @@
 ---
-title: Testen und erneutes Trainieren eines Modells – Custom Vision Service – Azure Cognitive Services | Microsoft-Dokumentation
+title: Testen und erneutes Trainieren eines Modells – Custom Vision Service
+titlesuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie ein Bild testen und es dann zum erneuten Trainieren des Modells verwenden.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 1933b1a45844ac99308baebe59b49687a957abfa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5830257cf246e059cbccb654462f709df981e06b
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375267"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367949"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testen und erneutes Trainieren eines Modells mit Custom Vision Service
 
@@ -48,9 +49,9 @@ Führen Sie die folgenden Schritte aus, um das zuvor für das Training gesendete
 2. Zeigen Sie mit dem Mauszeiger auf ein Bild, um die Kategorien anzuzeigen, die von der Klassifizierung vorhergesagt wurden.
 
     > [!TIP]
-    > Die Bilder sind nach einer Rangfolge geordnet, sodass die Bilder, die der Klassifizierung den höchsten Gewinn bringen, oben angezeigt werden. Um eine andere Sortierung zu auszuwählen, verwenden Sie den Abschnitt __Sort__ (Sortieren).
+    > Die Bilder sind so nach einer Rangfolge geordnet, dass die Bilder, die für die Klassifizierung die höchste Bewertung erzielen, oben angezeigt werden. Wenn Sie eine andere Sortierung auswählen möchten, können Sie den Abschnitt __Sort__ (Sortieren) verwenden.
 
-    Um Ihren Trainingsdaten ein Bild hinzuzufügen, wählen Sie das Bild aus, wählen Sie die Kategorie aus, und wählen Sie dann __Save and close__ (Speichern und schließen) aus. Das Bild wird aus dem Bereich __Predictions__ (Vorhersagen) entfernt und den Trainingsbildern hinzugefügt. Sie können es anzeigen, indem Sie die Registerkarte __Training Images__ (Trainingsbilder) auswählen.
+    Um Ihren Trainingsdaten ein Bild hinzuzufügen, wählen Sie das Bild, die Kategorie und dann die Option __Save and close__ (Speichern und schließen) aus. Das Bild wird aus dem Bereich __Predictions__ (Vorhersagen) entfernt und den Trainingsbildern hinzugefügt. Sie können es anzeigen, indem Sie die Registerkarte __Training Images__ (Trainingsbilder) auswählen.
 
     ![Bild der Kategorienseite](./media/test-your-model/tag-image.png)
 

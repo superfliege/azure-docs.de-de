@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 09/12/2018
 ms.author: danlep
-ms.openlocfilehash: 1669d5a2237322f72dce3b172c32e7199900a4e0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 987cbcc642152a4077cc895ad06e43ac56113497
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038262"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544063"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -41,8 +41,8 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen alle VM-
 | Serie „Basic A“ | Basic_A0 (A0) |
 | A-Serie | Standard_A0 |
 | B-Serie | Alle |
-| M-Serie | Alle |
 
+Virtuelle Computer der M-Serie werden nur für Knoten mit niedriger Priorität unterstützt.
 
 
 ### <a name="pools-in-cloud-service-configuration"></a>Pools in der Clouddienstkonfiguration

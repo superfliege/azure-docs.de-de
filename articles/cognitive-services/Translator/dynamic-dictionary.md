@@ -1,22 +1,23 @@
 ---
-title: Dynamisches Wörterbuch der Textübersetzungs-API von Microsoft | Microsoft-Dokumentation
-description: Verwenden der Funktion für das dynamische Wörterbuch der Textübersetzungs-API von Microsoft.
+title: Dynamisches Wörterbuch der Textübersetzungs-API
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die Funktion für das dynamische Wörterbuch der Textübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: dbc754093827730b8709d67f314e5b327518ef50
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 56558a2da5f29611d90021e9efb292720d1cea35
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41929836"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128127"
 ---
-# <a name="how-to-use-the-dynamic-dictionary-feature-of-the-microsoft-translator-text-api"></a>Verwenden der Funktion für das dynamische Wörterbuch der Textübersetzungs-API von Microsoft
+# <a name="how-to-use-the-dynamic-dictionary-feature-of-the-translator-text-api"></a>Verwenden der Funktion für das dynamische Wörterbuch der Textübersetzungs-API
 
 Wenn Ihnen die Übersetzung eines Worts oder eines Ausdrucks bereits bekannt ist, können Sie diese als Markup in der Anforderung angeben. Das dynamische Wörterbuch ist nur für zusammengesetzte Substantive wie Eigennamen und Produktnamen sicher. 
 

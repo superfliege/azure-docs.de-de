@@ -1,23 +1,23 @@
 ---
-title: Microsoft-Textübersetzungs-API | Microsoft-Dokumentation
-titleSuffix: Cognitive Services
-description: Hier finden Sie Informationen zur Verwendung der Übersetzungsmethode der Microsoft-Textübersetzungs-API.
+title: Übersetzungsmethode der Textübersetzungs-API
+titleSuffix: Azure Cognitive Services
+description: Verwenden Sie die Übersetzungsmethode der Textübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: d8d5e1e2fac747fa733f1d92c08008b7eac2a1bc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1841730a39d29c5fe1f3451b7614818e924b339f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378393"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128756"
 ---
-# <a name="text-api-30-translate"></a>Text-API 3.0: Translate (Übersetzen)
+# <a name="translator-text-api-30-translate"></a>Textübersetzungs-API 3.0: Translate
 
 Übersetzt Text.
 
@@ -31,7 +31,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 ## <a name="request-parameters"></a>Anforderungsparameter
 
-Die folgenden Anforderungsparameter werden an die Abfragezeichenfolge übergeben:
+Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
 <table width="100%">
   <th width="20%">Query parameter (Abfrageparameter)</th>
@@ -45,7 +45,7 @@ Die folgenden Anforderungsparameter werden an die Abfragezeichenfolge übergeben
     <td>*Optionaler Parameter*.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die [unterstützten Sprachen](.\v3-0-languages.md) mithilfe des`translation`-Bereichs. Wenn kein `from`-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet.</td>
   </tr>
   <tr>
-    <td>in:</td>
+    <td>zu</td>
     <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `translation`-Bereich hinzugefügten [unterstützten Sprachen](.\v3-0-languages.md) als Zielsprache auswählen. Verwenden Sie z.B. `to=de` für die Übersetzung ins Deutsche.<br/>Durch Wiederholen des Parameters in der Abfragezeichenfolge ist es möglich, in mehrere Sprachen gleichzeitig zu übersetzen. Verwenden Sie z.B. `to=de&to=it` für die Übersetzung ins Deutsche und Italienische.</td>
   </tr>
   <tr>
@@ -92,7 +92,7 @@ Anforderungsheader enthalten Folgendes:
   <th width="20%">Header</th>
   <th>BESCHREIBUNG</th>
   <tr>
-    <td>_Ein Autorisierungs-_<br/>_header_</td>
+    <td>_Eine Autorisierung_<br/>_Header_</td>
     <td>*Erforderlicher Anforderungsheader*.<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -105,7 +105,7 @@ Anforderungsheader enthalten Folgendes:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optional*.<br/>Eine vom Client generierte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen `ClientTraceId`-Abfrageparameter miteinbeziehen.</td>
+    <td>*Optional*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens `ClientTraceId` einschließen.</td>
   </tr>
 </table> 
 
@@ -185,7 +185,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
   <tr>
     <td>403</td>
-    <td>Die Anforderung ist nicht autorisiert. Weitere Informationen finden Sie in der Fehlermeldung. Dies weist häufig darauf hin, dass alle kostenlosen Übersetzungen, die mit einem Testabonnement bereitgestellt wurden, aufgebraucht sind.</td>
+    <td>Die Anforderung ist nicht autorisiert. Weitere Informationen finden Sie in der Fehlermeldung. Diese weist oft darauf hin, dass alle kostenlosen Übersetzungen, die mit einer Testversion bereitgestellt wurden, aufgebraucht sind.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -193,7 +193,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
   <tr>
     <td>500</td>
-    <td>Unerwarteter Fehler. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
+    <td>Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
   </tr>
   <tr>
     <td>503</td>

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/26/2018
+ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 386c2ecfdac44158f5d87034657491fa9598e3ad
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: b621c6b9af60637e8bb818545746923c22926ac4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018224"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984976"
 ---
 # <a name="my-first-python-runbook"></a>Mein erstes Python-Runbook
 
@@ -92,15 +92,15 @@ In diesem Fall ist noch keine veröffentlichte Version vorhanden, da Sie das Run
 ## <a name="add-authentication-to-manage-azure-resources"></a>Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen
 
 Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist es aber noch nicht sonderlich hilfreich. Sie möchten damit ja eigentlich Azure-Ressourcen verwalten.
-Für die Verwaltung von Azure-Ressourcen muss das Skript bei der Authentifizierung die Anmeldeinformationen für Ihr [Automation-Konto](automation-offering-get-started.md) verwenden.
+Für die Verwaltung von Azure-Ressourcen muss das Skript bei der Authentifizierung die Anmeldeinformationen für Ihr Automation-Konto verwenden. Das [Azure Automation-Hilfsprogrammpaket](https://github.com/azureautomation/azure_automation_utility) vereinfacht die Authentifizierung und die Interaktion mit Azure-Ressourcen.
 
 > [!NOTE]
-> Das Automation-Konto muss mit der Dienstprinzipalfunktion erstellt worden sein, damit ein RunAs-Zertifikat vorhanden ist.
+> Das Automation-Konto muss mit dem Dienstprinzipalfeature erstellt worden sein, damit ein Zertifikat für das ausführende Konto vorhanden ist.
 > Wenn Ihr Automation-Konto nicht mit dem Dienstprinzipal erstellt wurde, können Sie die Authentifizierung mithilfe der unter [Authentifizieren bei den Azure-Verwaltungsbibliotheken für Python](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate) beschriebenen Methode durchführen.
 
 1. Öffnen Sie den Text-Editor, indem Sie im Bereich „MyFirstRunbook-Python“ auf **Bearbeiten** klicken.
 
-1. Fügen Sie für die Authentifizierung bei Azure den folgenden Code hinzu:
+2. Fügen Sie für die Authentifizierung bei Azure den folgenden Code hinzu:
 
    ```python
    import os
@@ -160,7 +160,7 @@ async_vm_start = compute_client.virtual_machines.start("MyResourceGroup", "TestV
 async_vm_start.wait()
 ```
 
-_MyResourceGroup_ ist der Name der Ressourcengruppe, die den virtuellen Computer enthält, und _TestVM_ ist der Name des virtuellen Computers, der gestartet werden soll. 
+_MyResourceGroup_ ist der Name der Ressourcengruppe, die den virtuellen Computer enthält, und _TestVM_ ist der Name des virtuellen Computers, der gestartet werden soll.
 
 Testen Sie das Runbook, und führen Sie es erneut aus, um zu ermitteln, ob der virtuelle Computer gestartet wird.
 

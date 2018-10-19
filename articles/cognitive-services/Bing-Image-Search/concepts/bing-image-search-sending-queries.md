@@ -1,6 +1,7 @@
 ---
-title: Senden von Abfragen an die Bing-Bildersuche-API | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Suchabfragen, die für die Bing-Bildersuche-API bestimmt sind, senden und anpassen.
+title: Senden von Bildabfragen – Bing-Bildersuche-API
+titleSuffix: Azure Cognitive Services
+description: Es wird beschrieben, wie Sie Suchabfragen, die für die Bing-Bildersuche-API bestimmt sind, anpassen.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,26 +11,26 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: d74f59ffcf095e639686a3ada3b09dac988fc544
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 5d2dcc60a8707394ec07a76e3286929db365c651
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "40082576"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296514"
 ---
-# <a name="sending-queries-to-the-bing-image-search-api"></a>Senden von Abfragen an die Bing-Bildersuche-API
+# <a name="send-queries-to-the-bing-image-search-api"></a>Senden von Abfragen an die Bing-Bildersuche-API
 
-Die Bing-Bildersuche-API bietet eine ähnliche Erfahrung wie „Bing.com/Images“: Sie können eine Suchabfrage eines Benutzers an Bing senden und eine Liste mit relevanten Bildern erhalten.
+Die Bing-Bildersuche-API bietet ähnliche Möglichkeiten wie „Bing.com/Images“. Sie können damit eine Suchabfrage an Bing senden und erhalten eine Liste der relevanten Bilder zurück.
 
-## <a name="using-and-suggesting-search-terms"></a>Verwenden und Vorschlagen von Suchbegriffen
+## <a name="use-and-suggest-search-terms"></a>Verwenden und Vorschlagen von Suchbegriffen
 
-Nachdem ein Suchbegriff eingegeben wurde, sollten Sie den Begriff mit einer URL-Codierung versehen, bevor Sie den Abfrageparameter [**q**](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) festlegen. Wenn ein Benutzer also beispielsweise *sailing dinghies* eingibt, legen Sie `q` auf `sailing+dinghies` oder `sailing%20dinghies` fest.
+Nachdem ein Suchbegriff eingegeben wurde, sollten Sie den Begriff mit einer URL-Codierung versehen, bevor Sie den Abfrageparameter [**q**](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) festlegen. Wenn Sie z. B. *sailing dinghies* eingeben, legen Sie `q` auf `sailing+dinghies` oder `sailing%20dinghies` fest.
 
-Wenn Ihre App über ein Suchfeld verfügt, in das Suchbegriffe eingegeben werden, können Sie die [Bing-Vorschlagssuche-API](../../bing-autosuggest/get-suggested-search-terms.md) zum Verbessern der Benutzerfreundlichkeit verwenden, indem in Echtzeit vorgeschlagene Suchbegriffe angezeigt werden. Die API gibt vorgeschlagene Abfragezeichenfolgen zurück, die auf Teilen von Suchbegriffen und Azure Cognitive Services basieren.
+Wenn Ihre App über ein Suchfeld verfügt, in das Suchbegriffe eingegeben werden, können Sie die [Bing-Vorschlagssuche-API](../../bing-autosuggest/get-suggested-search-terms.md) zum Verbessern der Benutzerfreundlichkeit verwenden. Die API kann vorgeschlagene Suchbegriffe in Echtzeit anzeigen. Die API gibt vorgeschlagene Abfragezeichenfolgen zurück, die auf Teilen von Suchbegriffen und Cognitive Services basieren.
 
-## <a name="pivoting-the-query"></a>Pivotieren der Abfrage
+## <a name="pivot-the-query"></a>Pivotieren der Abfrage
 
-Wenn die ursprüngliche Suchabfrage von Bing segmentiert werden kann, enthält das zurückgegebene [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images)-Objekt `pivotSuggestions`, die für Benutzer als optionale Suchbegriffe angezeigt werden können. Lautet die ursprüngliche Abfrage also beispielsweise *Microsoft Surface*, kann Bing die Abfrage in *Microsoft* und *Surface* segmentieren und dafür jeweils Pivotvorschläge anzeigen. Diese können für Benutzer als optionale Abfragebegriffe angezeigt werden.
+Wenn Bing die ursprüngliche Suchabfrage segmentieren kann, enthält das Objekt [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) den Wert `pivotSuggestions`. Pivotiertvorschläge können dem Benutzer als optionale Suchbegriffe angezeigt werden. Lautet die ursprüngliche Abfrage also beispielsweise *Microsoft Surface*, kann Bing die Abfrage in *Microsoft* und *Surface* segmentieren und dafür jeweils Pivotvorschläge anzeigen. Diese Vorschläge können dem Benutzer als optionale Abfragebegriffe angezeigt werden.
 
 Das folgende Beispiel veranschaulicht die Pivotvorschläge für *Microsoft Surface*:  
 
@@ -92,7 +93,7 @@ Das folgende Beispiel veranschaulicht die Pivotvorschläge für *Microsoft Surfa
 
 Das Feld `pivotSuggestions` enthält die Liste mit den Segmenten (Pivotwerte), in die die ursprüngliche Abfrage aufgeteilt wurde. Die Antwort enthält für jeden Pivotwert eine Liste mit Objekten vom Typ [Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query_obj), die wiederum vorgeschlagene Abfragen enthalten. Das Feld `text` enthält die vorgeschlagene Abfrage. Das Feld `displayText` enthält den Ausdruck, der den Pivotwert in der ursprünglichen Abfrage ersetzt. Beispiel: Veröffentlichungsdatum von Surface.
 
-Mit den Feldern `text` und `thumbnail` können Sie dem Benutzer die Pivotabfragezeichenfolgen anzeigen, falls dieser eigentlich nach der Pivotabfragezeichenfolge suchen wollte. Verwenden Sie die URL `webSearchUrl` oder `searchLink`, um die Miniaturansicht bzw. den Text klickbar zu machen. Verwenden Sie `webSearchUrl`, um den Benutzer zu den Bing-Suchergebnissen weiterzuleiten, oder `searchLink`, falls Sie eine eigene Ergebnisseite verwenden.
+Wenn der Benutzer nach der Pivotabfragezeichenfolge sucht, verwenden Sie die Felder `text` und `thumbnail`, um die Pivotabfragezeichenfolgen anzuzeigen. Verwenden Sie die URL `webSearchUrl` oder `searchLink`, damit das Miniaturbild bzw. der Text angeklickt werden können. Verwenden Sie `webSearchUrl`, um den Benutzer an die Bing-Suchergebnisse zu senden. Wenn Sie Ihre eigene Ergebnisseite angeben, verwenden Sie `searchLink`.
 
 <!-- Need a sanitized version of the image
 The following shows an example of the pivot queries.
@@ -100,9 +101,13 @@ The following shows an example of the pivot queries.
 ![Pivot suggestions](./media/cognitive-services-bing-images-api/bing-image-pivotsuggestion.GIF)
 -->
 
-## <a name="expanding-the-query"></a>Erweitern der Abfrage
+## <a name="expand-the-query"></a>Erweitern der Abfrage
 
-Wenn Bing die Abfrage erweitern kann, um die ursprüngliche Suche einzugrenzen, enthält das Objekt [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) das Feld `queryExpansions`. Für die Abfrage *Microsoft Surface* sind beispielsweise folgende erweiterte Abfragen denkbar: „Microsoft Surface **Pro 3**“, „Microsoft Surface **RT**“, „Microsoft Surface **Phone**“ und „Microsoft Surface **Hub**“.
+Wenn Bing die Abfrage erweitern kann, um die ursprüngliche Suche einzugrenzen, enthält das Objekt [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) das Feld `queryExpansions`. Wenn die Abfrage z. B. *Microsoft Surface* lautete, können die erweiterten Abfragen wie folgt aussehen:
+- Microsoft Surface **Pro 3**.
+- Microsoft Surface **RT**.
+- Microsoft Surface **Phone**.
+- Microsoft Surface **Hub**.
 
 Das folgende Beispiel zeigt die erweiterten Abfragen für *Microsoft Surface*:
 
@@ -144,7 +149,7 @@ Das folgende Beispiel zeigt die erweiterten Abfragen für *Microsoft Surface*:
 }
 ```
 
-Das Feld `queryExpansions` enthält eine Liste mit Objekten vom Typ [Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query_obj). Das Feld `text` enthält die erweiterte Abfrage und das Feld `displayText` den Erweiterungsausdruck. Mit den Feldern `text` und `thumbnail` können Sie dem Benutzer die erweiterten Abfragezeichenfolgen anzeigen, falls dieser eigentlich nach der erweiterten Abfragezeichenfolge suchen wollte. Verwenden Sie die URL `webSearchUrl` oder `searchLink`, um die Miniaturansicht bzw. den Text klickbar zu machen. Verwenden Sie `webSearchUrl`, um den Benutzer zu den Bing-Suchergebnissen weiterzuleiten, oder `searchLink`, falls Sie eine eigene Ergebnisseite verwenden.
+Das Feld `queryExpansions` enthält eine Liste mit Objekten vom Typ [Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query_obj). Das Feld `text` enthält die erweiterte Abfrage. Das Feld `displayText` enthält den Erweiterungsbegriff. Wenn der Benutzer nach der erweiterten Abfragezeichenfolge sucht, verwenden Sie die Felder `text` und `thumbnail`, um die erweiterte Abfragezeichenfolgen anzuzeigen. Verwenden Sie die URL `webSearchUrl` oder `searchLink`, damit das Miniaturbild bzw. der Text angeklickt werden können. Verwenden Sie `webSearchUrl`, um den Benutzer an die Bing-Suchergebnisse zu senden. Wenn Sie Ihre eigene Ergebnisseite angeben, verwenden Sie `searchLink`.
 
 <!-- Removing until we can replace with a sanitized image.
 The following shows an example Bing implementation that uses expanded queries. If the user clicks the Microsoft Surface Pro 3 link, they're taken to the Bing search results page, which shows them images of the Pro 3.

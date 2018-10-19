@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9b4801048c391aae6e95f4181464255ecf6151fc
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 4594685291396b8b80e62abe57be109f0abbd81d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359519"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126342"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge-Sicherheits-Manager
 
@@ -109,7 +109,7 @@ Die IoT Edge-Runtime verfolgt und meldet die Version des IoT Edge-Sicherheits-Da
 
 ### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>HSM-PAL (Hardware Security Module Platform Abstraction Layer)
 
-Die HSM-PAL abstrahiert alle Hardware-Vertrauensanker, damit Entwickler oder Benutzer von IoT Edge sich nicht mit deren Komplexität beschäftigen müssen.  Sie besteht aus einer Kombination von Anwendungsprogrammierschnittstelle (API) und domänenübergreifenden Kommunikationsverfahren, wie z.B. der Kommunikation zwischen einer Standardausführungsumgebung und einer Secure Enclave.  Die eigentliche Implementierung der HSM-PAL hängt von der verwendeten Sicherheitshardware ab.  Ihr Vorhandensein ermöglicht die Verwendung von praktisch jeder Sicherheitshardware für das IoT-Ökosystem.
+Die HSM-PAL abstrahiert alle Hardware-Vertrauensanker, damit Entwickler oder Benutzer von IoT Edge sich nicht mit deren Komplexität beschäftigen müssen.  Sie umfasst eine Kombination aus Anwendungsprogrammierschnittstelle (API) und domänenübergreifenden Kommunikationsverfahren (beispielsweise die Kommunikation zwischen einer Standardausführungsumgebung und einer Secure Enclave-Instanz).  Die eigentliche Implementierung der HSM-PAL hängt von der verwendeten Sicherheitshardware ab.  Ihr Vorhandensein ermöglicht die Verwendung von praktisch jeder Sicherheitshardware für das IoT-Ökosystem.
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>Sicherer Hardware-Vertrauensanker
 

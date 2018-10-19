@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0707726ec86b0a0c69d1ec752ebd6761327f3f0f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 713c0f676067cb32a84361dd7801031295e2244f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669482"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634437"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -33,13 +33,23 @@ Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agen
 
 Die folgenden Linux-Distributionen werden offiziell unterstützt. Der Linux-Agent kann jedoch auch auf anderen Distributionen ausgeführt werden, die hier nicht aufgeführt sind. Sofern nicht anders angegeben, werden alle Nebenversionen für jede aufgeführte Hauptversion unterstützt.  
 
-* Amazon Linux 2012.09 bis 2015.09 (x86/x64)
-* CentOS Linux 5, 6 und 7 (x86/x64)  
-* Oracle Linux 5, 6 und 7 (x86/x64)
-* Red Hat Enterprise Linux Server 5, 6 und 7 (x86/x64)
-* Debian GNU/Linux 6, 7 und 8 (x86/x64)
-* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
-* SUSE Linux Enterprise Server 11 und 12 (x86/x64)
+### <a name="64-bit"></a>64 Bit
+
+* CentOS 6 und 7
+* Amazon Linux 2017.09
+* Oracle Linux 6 und 7
+* Red Hat Enterprise Linux Server 6 und 7
+* Debian GNU/Linux 8 und 9
+* Ubuntu Linux 14.04 LTS, 16.04 LTS und 18.04 LTS
+* SUSE Linux Enterprise Server 12
+
+### <a name="32-bit"></a>32 Bit
+
+* CentOS 6
+* Oracle Linux 6
+* Red Hat Enterprise Linux Server 6
+* Debian GNU/Linux 8 und 9
+* Ubuntu Linux 14.04 LTS und 16.04 LTS
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 
@@ -146,6 +156,7 @@ Weitere Einschränkungen:
 Die Lösung für die Änderungsnachverfolgung weist derzeit die folgenden Probleme auf:
 
 * Hotfix-Updates werden für Computer mit Windows 10 Creators Update und Windows Server 2016 Core RS3 nicht erfasst.
+* Für Windows-Dateien erkennt die Änderungsnachverfolgung derzeit nicht, dass einem nachverfolgten Ordnerpfad eine neue Datei hinzugefügt wurde.
 
 ## <a name="change-tracking-data-collection-details"></a>Details zur Datensammlung für die Änderungsnachverfolgung
 

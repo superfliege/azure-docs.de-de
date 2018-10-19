@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: a295cad2bf1cafce4dc64909174e9417daa7918e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 370700f8d146dd626e6e13deceb09dcaea34a9f3
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235447"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983949"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -88,17 +88,17 @@ Einen umfassenden Artikel zum Erstellen von benutzerdefinierten Rollen und Zuwei
 
 **CI/CD-Integration und Automatisierung**
 ## <a name="does-devtest-labs-integrate-with-my-cicd-toolchain"></a>Lässt sich DevTest Labs in meine CI/CD-Toolkette integrieren?
-Wenn Sie Visual Studio Team Services verwenden, können Sie Ihre Releasepipeline in DevTest Labs mithilfe einer [DevTest Labs-Erweiterung für Aufgaben](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) automatisieren. Mit dieser Erweiterung können Sie u.a. folgende Aufgaben durchführen:
+Wenn Sie Azure DevOps verwenden, können Sie Ihre Releasepipeline in DevTest Labs mithilfe einer [DevTest Labs-Erweiterung für Aufgaben](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) automatisieren. Mit dieser Erweiterung können Sie u.a. folgende Aufgaben durchführen:
 
-* Automatisches Erstellen und Bereitstellen einer VM. Sie können die VM auch durch den Azure-Dateikopiervorgang oder durch PowerShell Team Services-Aufgaben mit dem neuesten Build konfigurieren.
+* Automatisches Erstellen und Bereitstellen einer VM. Sie können die VM auch durch den Azure-Dateikopiervorgang oder durch PowerShell Azure DevOps Services-Aufgaben mit dem neuesten Build konfigurieren.
 * Automatisches Erfassen des Zustands einer VM nach dem Testen, um zur weiteren Untersuchung einen Fehler auf derselben VM zu reproduzieren
 * Löschen der VM am Ende der Releasepipeline, wenn sie nicht mehr benötigt wird
 
-Die folgenden Blogbeiträge enthalten Anleitungen und Informationen zur Verwendung der Team Services-Erweiterung:
+Die folgenden Blogbeiträge enthalten Anleitungen und Informationen zur Verwendung der Azure DevOps Services-Erweiterung:
 
-* [DevTest Labs und die Visual Studio Team Services-Erweiterung](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
-* [Bereitstellen einer neuen VM in einem vorhandenen DevTest Labs-Lab über Team Services](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
-* [Verwenden der Team Services-Releaseverwaltung für Continuous Deployments in DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
+* [DevTest Labs und die Azure DevOps-Erweiterung](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
+* [Bereitstellen einer neuen VM in einem vorhandenen DevTest Labs-Lab über Azure DevOps Services](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+* [Verwenden der Azure DevOps Services-Releaseverwaltung für Continuous Deployments in DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
 Für andere Continuous Integration(CI)/Continuous Delivery(CD)-Toolketten können Sie dieselben Szenarien erreichen, indem Sie [Azure Resource Manager-Vorlagen](https://aka.ms/dtlquickstarttemplate) mit [Azure PowerShell-Cmdlets](../azure-resource-manager/resource-group-template-deploy.md) und [.NET SDKs](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) bereitstellen. Sie können auch [REST-APIs für DevTest Labs](http://aka.ms/dtlrestapis) zur Integration in Ihre Toolkette verwenden.  
 
@@ -112,7 +112,7 @@ Ein benutzerdefiniertes Image ist eine virtuelle Festplatte (VHD). Eine Formel i
 
 ## <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>Wie kann ich mehrere VMs gleichzeitig anhand derselben Vorlage erstellen?
 Sie haben zwei Optionen, um gleichzeitig mehrere VMs anhand derselben Vorlage zu erstellen:
-* Sie können die [Visual Studio Team Services-Erweiterung für Aufgaben](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) verwenden. 
+* Sie können die [Azure DevOps Tasks-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) verwenden. 
 * Sie können beim Erstellen einer VM [eine Resource Manager-Vorlage generieren](devtest-lab-add-vm.md#save-azure-resource-manager-template) und [die Resource Manager-Vorlage über Windows PowerShell bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Wie verschiebe ich meine vorhandenen Azure-VMs in mein DevTest Labs-Lab?
@@ -172,7 +172,7 @@ Sie können VMs aus Ihrem Lab im Azure-Portal löschen. Mit einem PowerShell-Skr
     # Get the VMs from that lab.
     $labVMs = Get-AzureRmResource | Where-Object {
               $_.ResourceType -eq 'microsoft.devtestlab/labs/virtualmachines' -and
-              $_.ResourceName -like "$($lab.ResourceName)/*"}
+              $_.Name -like "$($lab.Name)/*"}
 
     # Delete the VMs.
     foreach($labVM in $labVMs)

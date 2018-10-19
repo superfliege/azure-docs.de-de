@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: 309e817426fff1eb877ab02ae9aa16ddc8f5cf16
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: acb675d750eb54bdbdde8873f6994255a07eb229
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751896"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605911"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Sichern einer SharePoint-Farm in Azure Stack
 Die Vorgehensweise zum Sichern einer SharePoint-Farm auf Azure Stack mithilfe von Microsoft Azure Backup Server (MABS) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit MABS können Sie zudem lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.
@@ -22,8 +22,8 @@ Die Vorgehensweise zum Sichern einer SharePoint-Farm auf Azure Stack mithilfe vo
 Azure Backup für MABS unterstützt folgende Szenarios:
 
 | Workload | Version | SharePoint-Bereitstellung | Schutz und Wiederherstellung |
-| --- | --- | --- | --- | --- | --- |
-| SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Bereitstellung von SharePoint als physischer Server oder als virtueller Hyper-V-/VMware-Computer  <br> -------------- <br> SQL AlwaysOn | Schutz der SharePoint-Farm-Wiederherstellungsoptionen: Wiederherstellung von Farm, Datenbank und Datei oder Listenelement aus Datenträger-Wiederherstellungspunkten.  Farm und Datenbankwiederherstellung aus Azure-Wiederherstellungspunkten. |
+| --- | --- | --- | --- |
+| SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |SharePoint (bereitgestellt als virtueller Azure Stack-Computer) <br> -------------- <br> SQL AlwaysOn | Schutz der SharePoint-Farm-Wiederherstellungsoptionen: Wiederherstellung von Farm, Datenbank und Datei oder Listenelement aus Datenträger-Wiederherstellungspunkten.  Farm und Datenbankwiederherstellung aus Azure-Wiederherstellungspunkten. |
 
 ## <a name="before-you-start"></a>Vorbereitung
 Vor dem Sichern einer SharePoint-Farm in Azure müssen Sie ein paar Punkte bestätigen.

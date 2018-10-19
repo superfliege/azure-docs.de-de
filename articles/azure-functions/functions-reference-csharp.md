@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3bdb5bc2aa47a51cc95a4274fbf20ba5d0515130
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 9a75e7ed8ce25384d39afb22ef50b5453ef543ba
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094280"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129674"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions
 
@@ -35,6 +35,29 @@ Die C#-Skriptoberfläche für Azure Functions basiert auf dem [Azure WebJobs SDK
 Dank des *CSX*-Formats müssen Sie weniger Textbausteine schreiben und können sich ganz auf das Schreiben einer C#-Funktion konzentrieren. Anstatt sämtliche Informationen in einem Namespace und einer Klasse zu umschließen, definieren Sie einfach eine `Run`-Methode. Schließen Sie wie gewohnt alle Assemblyverweise und Namespaces am Anfang der Datei ein.
 
 Die *CSX*-Dateien einer Funktions-App werden kompiliert, wenn eine Instanz initialisiert wird. Dieser Kompilierungsschritt bedeutet, dass bestimmte Dinge, etwa ein Kaltstart, für C#-Skriptfunktionen im Vergleich zu C#-Klassenbibliotheken länger dauern. Dieser Kompilierungsschritt ist auch der Grund, warum C#-Skriptfunktionen im Azure-Portal bearbeitet werden können, während dies für C#-Klassenbibliotheken nicht möglich ist.
+
+## <a name="folder-structure"></a>Ordnerstruktur
+
+Die Ordnerstruktur für ein C#-Skriptprojekt sieht wie folgt aus:
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - run.csx
+ | | - function.json
+ | | - function.proj
+ | - MySecondFunction
+ | | - run.csx
+ | | - function.json
+ | | - function.proj
+ | - host.json
+ | - extensions.csproj
+ | - bin
+```
+
+Die freigegebene Datei [host.json] (functions-host-json.md) kann zum Konfigurieren der Funktions-App verwendet werden. Jede Funktion verfügt über eine eigene Codedatei (CSX-Datei) sowie über eine eigene Bindungskonfigurationsdatei (function.json).
+
+Die in [Version 2.x](functions-versions.md) der Functions-Laufzeit erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
 ## <a name="binding-to-arguments"></a>Binden an Argumente
 
@@ -336,8 +359,10 @@ Von einem einfachen Namen kann auf folgende Assemblys verwiesen (z.B. `#r "Assem
 ## <a name="referencing-custom-assemblies"></a>Verweisen von benutzerdefinierten Assemblys
 
 Um eine benutzerdefinierte Assembly zu verweisen, können Sie entweder eine *freigegebene* Assembly oder eine *private* Assembly verwenden:
-- Freigegebene Assemblys werden für alle Funktionen innerhalb einer Funktionen-App freigegeben. Um auf eine benutzerdefinierte Assembly zu verweisen, laden Sie die Assembly in einen Ordner namens `bin` im [Stammverzeichnis der Funktions-App](functions-reference.md#folder-structure) (wwwroot) hoch. 
-- Private Assemblys sind Bestandteil eines Kontexts einer bestimmten Funktion und unterstützen das Querladen von verschiedenen Versionen. Private Assemblys sollten in einen `bin`-Ordner im Funktionsverzeichnis hochgeladen werden. Verweisen Sie auf die Assemblys, indem Sie den Dateinamen verwenden, etwa `#r "MyAssembly.dll"`. 
+
+* Freigegebene Assemblys werden für alle Funktionen innerhalb einer Funktionen-App freigegeben. Um auf eine benutzerdefinierte Assembly zu verweisen, laden Sie die Assembly in einen Ordner namens `bin` im [Stammverzeichnis der Funktions-App](functions-reference.md#folder-structure) (wwwroot) hoch.
+
+* Private Assemblys sind Bestandteil eines Kontexts einer bestimmten Funktion und unterstützen das Querladen von verschiedenen Versionen. Private Assemblys sollten in einen `bin`-Ordner im Funktionsverzeichnis hochgeladen werden. Verweisen Sie auf die Assemblys, indem Sie den Dateinamen verwenden, etwa `#r "MyAssembly.dll"`.
 
 Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im Abschnitt zur [Paketverwaltung](#using-nuget-packages).
 

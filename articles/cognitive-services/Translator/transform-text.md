@@ -1,20 +1,21 @@
 ---
-title: Transformieren von Text mit der Microsoft-Textübersetzungs-API | Microsoft-Dokumentation
-description: Transformieren Sie Text mit der Microsoft-Textübersetzungs-API.
+title: Transformieren von Text – Textübersetzungs-API
+titlesuffix: Azure Cognitive Services
+description: Transformieren Sie Text mithilfe der Textübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 5aa88f471a33a668b8385e46c2105a3139c142cb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e5061e322b4f0edb416f321cefef73776b9165ff
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374338"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123945"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>Verwenden der TransformText-Methode
 
@@ -27,10 +28,10 @@ Die Methode ist ein RESTful-Dienst, für den „GET over HTTP“ verwendet wird.
 
 ## <a name="parameters"></a>Parameter
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |:---|:---|
-| Autorisierungsheader | **Erforderlich** HTTP-Header zum Identifizieren der Anwendung. Verwenden Sie den Schlüssel „Authorization“ und den Wert „Bearer“ + „ “ + Zugriffstoken. Ausführlichere Informationen finden Sie hier.|
-| language | **Erforderlich** Eine Zeichenfolge, die den Sprachcode darstellt. Dieser Parameter unterstützt nur Englisch mit **en** als Name der Sprache.|
+| Authorization header (Autorisierungsheader) | **Erforderlich** HTTP-Header zum Identifizieren der Anwendung. Verwenden Sie den Schlüssel „Authorization“ und den Wert „Bearer“ + „ “ + Zugriffstoken. Ausführlichere Informationen finden Sie hier.|
+| Language | **Erforderlich** Eine Zeichenfolge, die den Sprachcode darstellt. Dieser Parameter unterstützt nur Englisch mit **en** als Name der Sprache.|
 | category | **Optional** Eine Zeichenfolge, die die Kategorie oder Domäne der Übersetzung enthält. Dieser Parameter unterstützt nur die allgemeine Standardoption (**general**).|
 | sentence | **Erforderlich** Ein Satz, den Sie korrigieren möchten. |
 

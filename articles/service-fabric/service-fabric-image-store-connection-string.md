@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 7d164fea62afac83c4fe2216c56a9980d9279f3a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8a11f9c9ebc2dd0b0eabf7a34d5ef38ae4e29309
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207127"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719070"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>Grundlegendes zur ImageStoreConnectionString-Einstellung
 
-In einigen Teilen unserer Dokumentation erwähnen wir kurz den Parameter „ImageStoreConnectionString“, ohne zu beschreiben, was es damit auf sich hat. Nach dem Lesen eines Artikels wie [Bereitstellen und Entfernen von Anwendungen mit PowerShell][10] gewinnt man den Eindruck, dass man den Wert so, wie er im Clustermanifest des Zielclusters angezeigt wird, nur kopieren/einfügen muss. Die Einstellung muss also pro Cluster konfigurierbar sein, aber bei der Erstellung eines Clusters über das [Azure-Portal][11] gibt es keine Option zum Konfigurieren dieser Einstellung, und sie lautet immer „fabric:ImageStore“. Wo liegt also der Zweck dieser Einstellung?
+In einigen Teilen unserer Dokumentation erwähnen wir kurz den Parameter „ImageStoreConnectionString“, ohne zu beschreiben, was es damit auf sich hat. Artikel wie [Bereitstellen und Entfernen von Anwendungen mit PowerShell][10] vermitteln den Eindruck, dass Sie lediglich den im Clustermanifest des Zielclusters angezeigten Wert kopieren/einfügen. Die Einstellung muss also pro Cluster konfigurierbar sein, aber bei der Erstellung eines Clusters über das [Azure-Portal][11] gibt es keine Option zum Konfigurieren dieser Einstellung, und sie lautet immer „fabric:ImageStore“. Wo liegt also der Zweck dieser Einstellung?
 
 ![Clustermanifest][img_cm]
 
@@ -45,9 +45,9 @@ Durch das Hosten des Imagespeichers in einem Systemdienst innerhalb des Clusters
 
 Der Dateisystemanbieter wird während der Entwicklung anstelle des Imagespeicherdiensts für lokale One-Box-Cluster verwendet, um den Cluster etwas schneller zu starten. Der Unterschied ist in der Regel gering, aber für die meisten Entwickler eine nützliche Optimierung. Es ist auch mit den anderen Speicheranbietertypen möglich, einen lokalen One-Box-Cluster bereitzustellen, aber dazu besteht normalerweise kein Grund, weil der Entwicklungs-/Testworkflow unabhängig vom Anbieter gleich bleibt. Der Azure Storage-Anbieter ist nur für die Unterstützung alter Cluster bestimmt, die vor der Einführung des Imagespeicher-Dienstanbieters bereitgestellt wurden.
 
-Darüber hinaus sollten weder der Dateisystemanbieter noch der Azure Storage-Anbieter für die gemeinsame Verwendung eines Imagespeichers durch mehrere Cluster verwendet werden – dies führt zu einer Beschädigung der Clusterkonfigurationsdaten, da alle Cluster widersprüchliche Daten in den Imagespeicher schreiben können. Verwenden Sie zum Freigeben von bereitgestellten Anwendungspaketen zwischen mehreren Clustern stattdessen [SFPKG][12]-Dateien. Diese können in beliebige externe Speicher mit einem Download-URI hochgeladen werden.
+Darüber hinaus sollte weder der Dateisystemanbieter noch der Azure Storage-Anbieter als Methode für die gemeinsame Verwendung eines Imagespeichers durch mehrere Cluster verwendet werden – dies führt zu einer Beschädigung der Clusterkonfigurationsdaten, da die einzelnen Cluster widersprüchliche Daten in den Imagespeicher schreiben können. Verwenden Sie zum Freigeben von bereitgestellten Anwendungspaketen zwischen mehreren Clustern stattdessen [SFPKG][12]-Dateien. Diese können in beliebige externe Speicher mit einem Download-URI hochgeladen werden.
 
-Auch wenn ImageStoreConnectionString konfigurierbar ist, verwenden Sie daher in der Regel nur die Standardeinstellung. Beim Veröffentlichen in Azure mithilfe von Visual Studio wird der Parameter automatisch entsprechend für Sie festgelegt. Für die programmgesteuerte Bereitstellung für in Azure gehostete Cluster lautet die Verbindungszeichenfolge immer „fabric:ImageStore“. Im Zweifelsfall kann ihr Wert jedoch immer durch das Abrufen des Clustermanifests über [PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx) oder [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) überprüft werden. Sowohl lokale Test- als auch Produktionscluster sollten immer auch für die Verwendung des Anbieters für den Imagespeicherdienst konfiguriert werden.
+„ImageStoreConnectionString“ ist zwar konfigurierbar, Sie verwenden jedoch einfach die Standardeinstellung. Beim Veröffentlichen in Azure mithilfe von Visual Studio wird der Parameter automatisch entsprechend für Sie festgelegt. Für die programmgesteuerte Bereitstellung für in Azure gehostete Cluster lautet die Verbindungszeichenfolge immer „fabric:ImageStore“. Im Zweifelsfall kann ihr Wert jedoch immer durch das Abrufen des Clustermanifests über [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx) oder [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) überprüft werden. Sowohl lokale Test- als auch Produktionscluster sollten immer auch für die Verwendung des Anbieters für den Imagespeicherdienst konfiguriert werden.
 
 ### <a name="next-steps"></a>Nächste Schritte
 [Bereitstellen und Entfernen von Anwendungen mit PowerShell][10]

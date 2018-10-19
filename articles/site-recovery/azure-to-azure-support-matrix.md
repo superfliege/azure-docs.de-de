@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 0e9c5c7ebaaa0a51d723340751e8ea82bfb96b5e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444825"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433666"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -38,8 +38,8 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten bei 
 --- | --- | ---
 **Tresor über Ressourcengruppen hinweg verschieben** | Nicht unterstützt<br/><br/> Sie können den Recovery Services-Tresor nicht über Ressourcengruppen hinweg verschieben.
 **Verschieben von Compute-, Speicher- und Netzwerkressourcen über Ressourcengruppen hinweg** | Nicht unterstützt.<br/><br/> Wenn Sie eine VM oder zugehörige Komponenten wie Speicher bzw. Netzwerke verschieben, nachdem diese repliziert wurden, müssen Sie die Replikation deaktivieren und die Replikation für die VM erneut aktivieren.
-**Replizieren von Azure-VMs von einem Abonnement in ein anderes zur Notfallwiederherstellung** | Innerhalb des gleichen Azure Active Directory-Mandanten unterstützt.
-**Abonnementübergreifendes Migrieren von VMs** | Nicht unterstützt.
+**Replizieren von Azure-VMs von einem Abonnement in ein anderes zur Notfallwiederherstellung** | Innerhalb des gleichen Azure Active Directory-Mandanten unterstützt. Für klassische VMs nicht unterstützt.
+**Migrieren von VMs zwischen Regionen innerhalb der unterstützten geografischen Cluster (innerhalb und über Abonnements hinweg)** | Im gleichen Azure Active Directory-Mandanten für VMs mit dem Resource Manager-Bereitstellungsmodell unterstützt. Für VMs mit dem klassischen Bereitstellungsmodell nicht unterstützt.
 **Migrieren von VMs in derselben Region** | Nicht unterstützt.
 
 
@@ -60,8 +60,8 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 
 #### <a name="linux"></a>Linux
 
-- Red Hat Enterprise Linux 6.7, 6.8, 6.9, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5   
-- CentOS 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2, 7.3,7.4, 7.5
+- Red Hat Enterprise Linux 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5   
+- CentOS 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3,7.4, 7.5
 - Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Debian 7 [ (unterstützte Kernel-Versionen)](#supported-debian-kernel-versions-for-azure-virtual-machines)
@@ -69,7 +69,7 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 - SUSE Linux Enterprise Server 12 SP1, SP2, SP3 [ (unterstützte Kernelversionen)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
-- Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird
+- Oracle Enterprise Linux 6.4, 6.5, 6.6, 6.7, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird
 
 (Ein Upgrade von replizierenden Computern von SLES 11 SP3 auf SLES 11 SP4 wird nicht unterstützt. Wenn für einen replizierten Computer ein Upgrade von SLES 11 SP3 auf SLES 11 SP4 durchgeführt wurde, müssen Sie die Replikation deaktivieren und den Computer nach dem Upgrade erneut schützen.)
 
@@ -81,31 +81,33 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
+14.04 LTS | 9.19 | 3.13.0-24-generic bis 3.13.0-153-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-131-generic |
 14.04 LTS | 9.18 | 3.13.0-24-generic bis 3.13.0-151-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-128-generic |
 14.04 LTS | 9.17 | 3.13.0-24-generic bis 3.13.0-147-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-124-generic |
 14.04 LTS | 9.16 | 3.13.0-24-generic bis 3.13.0-144-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-119-generic |
-14.04 LTS | 9.15 | 3.13.0-24-generic bis 3.13.0-143-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-116-generic |
 |||
+16.04 LTS | 9.19 | 4.4.0-21-generic bis 4.4.0-131-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-30-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1019-azure|
 16.04 LTS | 9.18 | 4.4.0-21-generic bis 4.4.0-128-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure |
 16.04 LTS | 9.17 | 4.4.0-21-generic bis 4.4.0-124-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-41-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1016-azure |
 16.04 LTS | 9.16 | 4.4.0-21-generic bis 4.4.0-119-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-38-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1012-azure |
-16.04 LTS | 9.15 | 4.4.0-21-generic bis 4.4.0-116-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-37-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1012-azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Debian-Kernelversionen für virtuelle Azure-Computer
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-Debian 7 | 9.17,9.18 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
-Debian 7 | 9.15, 9.16 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.17, 9.18, 9.19 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.16 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
+Debian 8 | 9.19 | 3.16.0-4-amd64 bis 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.7-amd64 |
 Debian 8 | 9.17, 9.18 | 3.16.0-4-amd64 bis 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.6-amd64 |
-Debian 8 | 9.15, 9.16 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.5-amd64 |
+Debian 8 | 9.16 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.5-amd64 |
 
 ### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Unterstützte SUSE Linux Enterprise Server 12-Kernelversionen für Azure-VMs
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.19 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default bis 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.18 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default bis 4.4.138-94.39-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.17 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.88-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default bis 4.4.126-94.22-default |
 
@@ -124,7 +126,7 @@ Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geo
 Amerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2; USA, Mitte; USA, Norden-Mitte
 Europa | „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Frankreich, Mitte“, „Frankreich, Süden“
 Asien | Indien, Süden; Indien, Mitte; Asien, Südosten; Asien, Osten; Japan, Osten; Japan, Westen; Korea, Mitte; Korea, Süden
-Australien   | „Australien, Osten“, „Australien, Südosten“
+Australien   | Australien, Osten; Australien, Südosten; Australien, Mitte; Australien, Mitte 2
 Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizona“; „US GOV Texas“; „US DoD, Osten“; „US DoD, Mitte“
 Deutschland | „Deutschland, Mitte“; „Deutschland, Nordosten“
 China | „China, Osten“, „China, Norden“
@@ -147,6 +149,7 @@ Datenträger zu einer replizierten VM hinzufügen | Nicht unterstützt. Sie müs
 --- | --- | ---
 Größe | Jede Größe von virtuellen Azure-Computern mit mindestens 2 CPU-Kernen und 1 GB RAM | Weitere Informationen finden Sie unter [Größen für virtuelle Azure-Computer](../virtual-machines/windows/sizes.md).
 Verfügbarkeitsgruppen | Unterstützt | Wenn Sie die Standardoption beim Schritt „Replikation aktivieren“ im Verwaltungsportal verwenden, wird die Verfügbarkeitsgruppe automatisch basierend auf der Konfiguration der Quellregion erstellt. Sie können die Zielverfügbarkeitsgruppe jederzeit unter „Repliziertes Element“ > „Einstellungen“ > „Compute und Netzwerk“ > „Verfügbarkeitsgruppe“ ändern.
+Verfügbarkeitszonen | Nicht unterstützt | VMs, die in Verfügbarkeitszonen bereitgestellt werden, werden derzeit nicht unterstützt.
 Virtuelle Computer mit Hybridnutzungsvorteil (HUB) | Unterstützt | Wenn für den virtuellen Quellcomputer eine HUB-Lizenz aktiviert wurde, verwendet auch der virtuelle Computer für Testfailover oder Failover die HUB-Lizenz.
 VM-Skalierungsgruppen | Nicht unterstützt |
 Azure-Katalogimages – von Microsoft veröffentlicht | Unterstützt | Unterstützt, solange der virtuelle Computer unter einem von Site Recovery unterstützten Betriebssystem ausgeführt wird.
@@ -169,7 +172,8 @@ Verwaltete Standard-Datenträger | Unterstützt in Azure-Regionen, in denen Azur
 Verwaltete Premium-Datenträger | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. |
 Speicherplätze | Unterstützt |         
 Verschlüsselung ruhender Daten (SSE) | Unterstützt | SSE ist die Standardeinstellung für Speicherkonten.   
-Azure Disk Encryption (ADE) | Nicht unterstützt |
+Azure Disk Encryption (ADE) für Windows | VMs, die für die [Verschlüsselung mit der Azure AD-App aktiviert sind](https://aka.ms/ade-aad-app), werden unterstützt. |
+Azure Disk Encryption (ADE) für Linux | Nicht unterstützt |
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer hinzufügen oder entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer wieder aktivieren.
 Ausschließen von Datenträgern | Nicht unterstützt|   Temporäre Datenträger sind standardmäßig ausgeschlossen.
 Speicherplätze direkt  | Nicht unterstützt|
@@ -205,7 +209,7 @@ Authentifizierter Proxy | Nicht unterstützt | Wenn der virtuelle Computer einen
 Standort-zu-Standort-VPN mit lokalem Netzwerk (mit oder ohne ExpressRoute)| Unterstützt | Stellen Sie sicher, dass die UDRs und NSGs so konfiguriert sind, dass der Datenverkehr für die Sitewiederherstellung nicht lokal weitergeleitet wird. Weitere Informationen finden Sie im [Richtliniendokument für Netzwerke](site-recovery-azure-to-azure-networking-guidance.md).  
 VNet-zu-VNet-Verbindung | Unterstützt | Weitere Informationen finden Sie im [Richtliniendokument für Netzwerke](site-recovery-azure-to-azure-networking-guidance.md).  
 Dienstendpunkte im virtuellen Netzwerk | Unterstützt | Azure Storage-Firewalls für virtuelle Netzwerke werden nicht unterstützt. Das Gewähren des Zugriffs auf bestimmte virtuelle Azure-Netzwerke auf Cachespeicherkonten, die zum Speichern replizierter Daten verwendet werden, wird nicht unterstützt.
-Beschleunigter Netzwerkbetrieb | Nicht unterstützt | Ein virtueller Computer mit aktiviertem beschleunigtem Netzwerkbetrieb kann repliziert werden, auf dem virtuellen Failovercomputer ist der beschleunigte Netzwerkbetrieb allerdings nicht aktiviert. Außerdem wird beim Failback der beschleunigte Netzwerkbetrieb für den virtuellen Quellcomputer deaktiviert.
+Beschleunigter Netzwerkbetrieb | Unterstützt | Auf dem virtuellen Quellcomputer muss der beschleunigte Netzwerkbetrieb aktiviert sein. [Weitere Informationen](azure-vm-disaster-recovery-with-accelerated-networking.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

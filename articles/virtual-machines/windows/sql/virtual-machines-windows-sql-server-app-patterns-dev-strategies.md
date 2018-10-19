@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 6bfb3092d6b4776499f957183613c951174b1a50
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 18de5b3d71922effa72414a6a52b126a34076cf3
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754198"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722128"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Anwendungsmuster und Entwicklungsstrategien für SQL Server in Azure Virtual Machines
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -58,7 +58,7 @@ Dieser Artikel beschreibt mehrere Anwendungsmuster, die für einfache Anwendunge
 * Sie benötigen vollständige lokale Kompatibilität mit SQL Server, und Sie möchten vorhandene Anwendungen direkt nach Azure migrieren.
 * Sie möchten die Funktionen der Azure-Umgebung nutzen, die Azure SQL-Datenbank unterstützt jedoch nicht alle Features, die die Anwendung benötigt. Dies könnte die folgenden Bereiche umfassen:
   
-  * **Datenbankgröße**: Zum Zeitpunkt der Aktualisierung dieses Artikels unterstützt die SQL-Datenbank eine Datenbank mit bis zu 1TB an Daten. Wenn die Anwendung mehr als 1TB an Daten erfordert, und Sie keine benutzerdefinierten Shardinglösungen implementieren möchten, sollten Sie SQL Server auf einem virtuellen Azure-Computer verwenden. Aktuelle Informationen finden Sie unter [Erweitern von Azure SQL-Datenbankinstanzen](https://msdn.microsoft.com/library/azure/dn495641.aspx), [DTU-basiertes Kaufmodell für Azure SQL-Datenbank](../../../sql-database/sql-database-service-tiers-dtu.md) und [Auf virtuellen Kernen basierendes Kaufmodell für Azure SQL Datenbank (Vorschau)](../../../sql-database/sql-database-service-tiers-vcore.md).
+  * **Datenbankgröße**: Zum Zeitpunkt der Aktualisierung dieses Artikels unterstützt die SQL-Datenbank eine Datenbank mit bis zu 1TB an Daten. Wenn die Anwendung mehr als 1TB an Daten erfordert, und Sie keine benutzerdefinierten Shardinglösungen implementieren möchten, sollten Sie SQL Server auf einem virtuellen Azure-Computer verwenden. Aktuelle Informationen finden Sie unter [Scaling Out Azure SQL Database](https://msdn.microsoft.com/library/azure/dn495641.aspx) (Horizontales Hochskalieren von Azure SQL-Datenbank), [DTU-basierte Diensttarife](../../../sql-database/sql-database-service-tiers-dtu.md) und [vCore service tiers, Azure Hybrid Benefit, and migration](../../../sql-database/sql-database-service-tiers-vcore.md) (vCore-Diensttarife, Azure-Hybridvorteil und Migration).
   * **HIPAA-Konformität:** Kunden und unabhängige Softwarehersteller (ISVs) können [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md) anstelle von [Azure SQL-Datenbank](../../../sql-database/sql-database-technical-overview.md) auswählen, da SQL Server auf einem virtuellen Azure-Computer vom HIPAA Business Associate Agreement (BAA) abgedeckt wird. Weitere Informationen zur Kompatibilität finden Sie unter [Microsoft Azure Trust Center: Compliance](https://azure.microsoft.com/support/trust-center/compliance/).
   * **Features auf Instanzebene:** Derzeit unterstützt SQL-Datenbank keine Funktionen, die sich außerhalb der Datenbank befinden (z.B. verknüpfte Server, Agent-Aufträge, FileStream, Service Broker usw.). Weitere Informationen finden Sie unter [Azure SQL-Datenbank – allgemeine Einschränkungen und Leitlinien](https://msdn.microsoft.com/library/azure/ff394102.aspx).
 

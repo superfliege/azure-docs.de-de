@@ -9,15 +9,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 723006d37ed0570e32790a0bb70a3dce5a87ade8
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346622"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465808"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Überwachen von Ressourcengruppen mit Azure Monitor (Vorschauversion)
 
@@ -109,6 +109,11 @@ Für die Leistung gibt es einen eigenen Katalog mit Arbeitsmappen. Für App Serv
 In diesem Fall wird Ihnen bei Auswahl von „Bearbeiten“ angezeigt, dass diese Gruppe von Visualisierungen auf Azure Monitor-Metriken basiert.
 
  ![Screenshot der Leistungsansicht mit Azure-Metriken](.\media\resource-group-insights\0012-performance-metrics.png)
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="enabling-access-to-alerts"></a>Aktivieren des Zugriffs auf Warnungen
+Azure Monitor für Ressourcengruppen benötigt bestimmte Berechtigungen für den Zugriff auf den Warnungsstatus der Ressourcen in Ihrer Ressourcengruppe. Wenn beim Laden von Warnungen eine Fehlermeldung angezeigt wird, verfügen Sie nicht über ausreichende Berechtigungen. Bitten Sie Ihren Administrator, Ihnen die Rolle **Besitzer** oder **Mitwirkender** für das Abonnement zu gewähren, das die Ressourcengruppe enthält.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 311f4bd67081de567763783a9d86540eda36d9f8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 286e1f9d6f6ae09d98aa87b447df7a7524642a1f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786769"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45728998"
 ---
 #   <a name="shaper-cognitive-skill"></a>Der Skill „Shaper“
 
@@ -27,6 +27,8 @@ Standardmäßig unterstützt diese Methode Objekte, die nur über eine Ebene ver
 
 In der Antwort lautet der Ausgabename immer „output“. Intern kann die Pipeline „output“ einen anderen Namen zuordnen, wie „analyzedText“ in den folgenden Beispielen, aber der Skill „Shaper“ selbst gibt in der Antwort „output“ zurück. Dies kann wichtig sein, wenn Sie angereicherte Dokumente debuggen und die Namensdiskrepanz bemerken, oder wenn Sie einen benutzerdefinierten Skill erstellen und die Antwort selbst strukturieren.
 
+> [!NOTE]
+> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen sowie die Bildextraktion und Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill

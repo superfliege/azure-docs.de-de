@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: genli
-ms.openlocfilehash: 474400d92660b68fd7fef906216b8e37c6e8c94d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a9993942c20f2c33d944b74fb124a363d0663ced
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358913"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094632"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Fehler „RequestDisallowedByPolicy“ bei Azure-Ressourcenrichtlinien
 
@@ -51,7 +51,7 @@ Geben Sie in PowerShell diese Richtlinienkennung als `Id`-Parameter an, um Detai
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Geben Sie in Azure CLI 2.0 den Namen der Richtliniendefinition an:
+Geben Sie in der Azure CLI den Namen der Richtliniendefinition an:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment

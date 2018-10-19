@@ -6,14 +6,14 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/29/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: dd696330c9ee78ef84ac9fcf85946c837ad5b824
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 56f233afed8c403d19c9b668e98ecfec45470b64
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188011"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721618"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
@@ -54,7 +54,7 @@ Beim Bereitstellen des Solution Accelerators sind mehrere Optionen verfügbar, m
 | SKU    | `basic`, `standard`, `local` | Eine Bereitstellung des Typs _basic_ ist für Test- und Demonstrationszwecke vorgesehen. Dabei werden alle Microservices auf einem einzelnen virtuellen Computer bereitgestellt. Eine Bereitstellung des Typs _standard_ ist für die Produktion vorgesehen. Die Microservices werden auf mehreren virtuellen Computern bereitgestellt. Ein _lokale_ Bereitstellung konfiguriert einen Docker-Container für die Ausführung der Microservices auf Ihrem lokalen Computer und verwendet Azure-Dienste wie Storage und Cosmos DB in der Cloud. |
 | Laufzeit | `dotnet`, `java` | Wählt die Implementierung der Sprache für die Microservices aus. |
 
-Informationen zur Verwendung der lokalen Bereitstellung finden Sie unter [Lokales Ausführen der Remoteüberwachungslösung](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables).
+Informationen zur Verwendung der lokalen Bereitstellung finden Sie unter [Lokales Ausführen der Remoteüberwachungslösung](iot-accelerators-remote-monitoring-deploy-local.md).
 
 ## <a name="basic-vs-standard-deployments"></a>Gegenüberstellung von Basic- und Standard-Bereitstellung
 
@@ -69,9 +69,16 @@ Bei der Erstellung einer Basic-Lösung werden folgende Azure-Dienste kostenpflic
 |-------|--------------------------------|--------------|----------|
 | 1     | [Virtueller Linux-Computer](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 v2  | Hosten von Microservices |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1: Tarif „Standard“ | Geräteverwaltung und Kommunikation |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Speichern von Konfigurationsdaten und Gerätetelemetrie wie Regeln, Warnungen und Meldungen |  
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Speichern von Konfigurationsdaten, Regeln, Warnungen und anderer Cold Storage |  
 | 1     | [Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Speicher für VM und Streamingprüfpunkte |
 | 1     | [Webanwendung](https://azure.microsoft.com/services/app-service/web/)        |                 | Hosten der Front-End-Webanwendung |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Verwalten von Benutzeridentitäten und Sicherheit |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Anzeigen von Ressourcenspeicherorten |
+| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 Einheiten              | Aktivieren von Echtzeitanalysen |
+| 1     | [Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Umfangreiche Bereitstellung von Geräten |
+| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1-Einheit              | Speicher für Nachrichtendaten und ermöglicht eine detaillierte Telemetrieanalyse |
+
+
 
 ### <a name="standard"></a>Standard
 Die Standard-Bereitstellung ist für eine Produktionsumgebung geeignet und kann von einem Entwickler erweitert und an die jeweiligen Anforderungen angepasst werden. Für Zuverlässigkeit und Skalierbarkeit werden Anwendungsmicroservices als Docker-Container erstellt und über einen Orchestrator (standardmäßig [Kubernetes](https://kubernetes.io/)) bereitgestellt. Der Orchestrator ist für die Bereitstellung, Skalierung und Verwaltung der Anwendung zuständig.
@@ -82,10 +89,15 @@ Bei der Erstellung einer Standard-Lösung werden folgende Azure-Dienste kostenpf
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Virtuelle Linux-Computer](https://azure.microsoft.com/services/virtual-machines/)   | Standard D2 v2  | Ein Master und drei Agents zum Hosten von Microservices mit Redundanz |
 | 1     | [Azure Container Service](https://azure.microsoft.com/services/container-service/) |                 | Orchestrator [Kubernetes](https://kubernetes.io) |
-| 1     | [Azure IoT Hub][https://azure.microsoft.com/services/iot-hub/]                     | S2: Tarif „Standard“ | Geräteverwaltung und -steuerung |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2: Tarif „Standard“ | Geräteverwaltung und -steuerung |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Speichern von Konfigurationsdaten und Gerätetelemetrie wie Regeln, Warnungen und Meldungen |
 | 5     | [Azure-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | Vier für VM-Speicher, eins für die Streamingprüfpunkte |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Application Gateway über SSL |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Verwalten von Benutzeridentitäten und Sicherheit |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Anzeigen von Ressourcenspeicherorten |
+| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 Einheiten              | Aktivieren von Echtzeitanalysen |
+| 1     | [Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Umfangreiche Bereitstellung von Geräten |
+| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1-Einheit              | Speicher für Nachrichtendaten und ermöglicht eine detaillierte Telemetrieanalyse |
 
 > Preisinformationen für diese Dienste finden Sie [hier](https://azure.microsoft.com/pricing). Informationen zum Verbrauch sowie Abrechnungsdetails für Ihr Abonnement finden Sie im [Azure-Portal](https://portal.azure.com/).
 

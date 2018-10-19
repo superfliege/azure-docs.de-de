@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
-ms.author: vikdesai
-ms.openlocfilehash: 7329b06171bd538cc6e9aa8172380a2d4dd47dae
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: cwatson
+ms.openlocfilehash: 623856f05eed44eca3752d56f047f9bb282bdc8e
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204121"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392080"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure mithilfe der rollenbasierten Zugriffssteuerung
 
@@ -71,7 +71,7 @@ Die Rolle „Abrechnungsleser“ hat schreibgeschützten Zugriff auf Abrechnungs
 
 ## <a name="adding-users-to-other-roles"></a>Hinzufügen von Benutzern zu anderen Rollen
 
-Benutzer in anderen Rollen, z.B. „Besitzer“ oder „Mitwirkender“, können nicht nur auf Abrechnungsinformationen, sondern auch auf Azure-Dienste zugreifen. Informationen zum Verwalten dieser Rollen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](billing-add-change-azure-subscription-administrator.md).
+Benutzer in anderen Rollen, z.B. „Besitzer“ oder „Mitwirkender“, können nicht nur auf Abrechnungsinformationen, sondern auch auf Azure-Dienste zugreifen. Informationen zum Verwalten dieser Rollen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="who-can-access-the-account-centerhttpsaccountwindowsazurecom"></a>Wer kann auf das [Kontocenter](https://account.windowsazure.com) zugreifen?
 

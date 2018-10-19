@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwalten von Telemetrieregeln in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
+title: Erstellen und Verwalten von Telemetrieregeln in Ihre Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Azure IoT Central-Telemetrieregeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen.
 author: ankitgupta
 ms.author: ankitgup
@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5913df2d4dc286fad63760c95f54e0dbc717acdc
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 1b82ac3bf67370a2c39e85bf5691da38539edb74
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246523"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729319"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Telemetrieregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
+
+*Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
 
 Mithilfe von Azure IoT Central können Sie Ihre verbundenen Geräte remote überwachen. Azure IoT Central-Regeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und automatisch Aktionen aufzurufen, z. B. das Senden einer E-Mail oder das Auslösen von Microsoft Flow. Mit nur wenigen Mausklicks können Sie die Bedingung für die Überwachung Ihrer Gerätedaten definieren und die entsprechende Aktion konfigurieren. In diesem Artikel wird erläutert, wie Regeln zum Überwachen von Telemetriedaten erstellt werden, die vom Gerät gesendet werden.
 
@@ -36,9 +38,9 @@ Um eine Telemetrieregel zu erstellen, muss für die Gerätevorlage mindestens ei
 
     ![Noch keine Regeln](media\howto-create-telemetry-rules\Rules_Landing_Page.png)
 
-1. Klicken Sie auf der Registerkarte **Regeln** auf die Option **+ Neue Regel**, um die Regeltypen anzuzeigen, die Sie erstellen können.
+1. Klicken Sie auf der Registerkarte **Regeln** auf **Vorlage bearbeiten** und dann auf **+ Neue Regel**, um die Regeltypen anzuzeigen, die Sie erstellen können.
 
-1. Klicken Sie auf die Kachel **Telemetrie**, um eine Regel zum Überwachen von Gerätetelemetriedaten zu erstellen.
+1. Klicken Sie auf **Telemetrie**, um eine Regel zum Überwachen von Gerätetelemetriedaten zu erstellen.
 
     ![Regeltypen](media\howto-create-telemetry-rules\Rule_Types.png)
 
@@ -86,6 +88,8 @@ In diesem Abschnitt erfahren Sie, wie Aktionen eingerichtet werden, die ausgefü
    ![Konfigurieren einer Aktion](media\howto-create-telemetry-rules\Configure_Action.png)
 
 1. Um die neue Regel zu speichern, wählen Sie **Speichern** aus. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Telemetriedaten, die an Ihre Anwendung gesendet werden. Wenn die in der Regel festgelegte Bedingung erfüllt ist, löst die Regel die konfigurierte E-Mail-Aktion aus.
+
+1. Klicken Sie auf **Fertig**, um den Modus **Vorlage bearbeiten** zu beenden.
 
 Sie können der Regel auch andere Aktionen wie Microsoft Flow und Webhooks hinzufügen. Sie können bis zu fünf Aktionen pro Regel hinzufügen.
 

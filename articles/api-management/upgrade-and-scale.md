@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 99848cf4ba1e6e65a8c41c682916ca391128eb21
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 3f92eac79e9524aa6ded9f898d582ce46c99bf97
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42143667"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363291"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Aktualisieren und Skalieren einer Azure API Management-Instanz  
 
@@ -67,5 +67,5 @@ Sie können für alle Tarife ein Upgrade oder ein Downgrade durchführen. Beim U
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-*[Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen](api-management-howto-deploy-multi-region.md)
-*[Automatisches Skalieren einer Azure API Management-Dienstinstanz](api-management-howto-autoscale.md)
+- [Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen](api-management-howto-deploy-multi-region.md)
+- [Automatisches Skalieren einer Azure API Management-Instanz](api-management-howto-autoscale.md)

@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/6/2018
+ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: ddde297de49edb5f6543d03dfdb972771533301b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 20d2f289f4d40d773fde9f6b770dc49b87c34804
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576184"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297246"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell
 
@@ -54,6 +54,9 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 > [!IMPORTANT]
 > Für die Option zum Wiederherstellen von *einzelnen Dateien und Ordnern* wird .NET Framework 4.5.2 oder höher benötigt. Falls die Option *Individual Files and Folders* (Einzelne Dateien und Ordner) nicht angezeigt wird, müssen Sie .NET Framework auf Version 4.5.2 oder höher aktualisieren und es erneut versuchen.
 
+> [!TIP]
+> Die Option *Einzelne Dateien und Ordner* ermöglicht den schnellen Zugriff auf Daten des Wiederherstellungspunkts. Sie eignet sich für die Wiederherstellung einzelner Dateien mit Größen bis maximal 80 GB und bietet dabei Übertragungs-/Kopiergeschwindigkeiten von bis zu 6 MB/s während der Wiederherstellung. Die Option *Volume* stellt alle gesicherten Daten auf einem bestimmten Volume wieder her. Mit dieser Option erreichen Sie höhere Übertragungsgeschwindigkeiten (bis zu 60 MB/s), sodass sie sich ideal für das Wiederherstellen großer Daten oder ganzer Volumes eignet.
+
 5. Wählen Sie im Bereich **Volume und Datum auswählen** das Volume aus, dass die wiederherzustellenden Dateien bzw. Ordner enthält.
 
     Wählen Sie im Kalender einen Wiederherstellungspunkt aus. Sie können den Zustand eines beliebigen Wiederherstellungszeitpunkts wiederherstellen. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte verfügbar sind, müssen Sie nach dem Auswählen eines Datums im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt auswählen.
@@ -72,6 +75,7 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 8. Kopieren Sie in Windows-Explorer die wiederherzustellenden Dateien bzw. Ordner, und fügen Sie sie an einem lokalen Speicherort auf dem Server oder Computer ein. Sie können die Dateien direkt vom Wiederherstellungsvolume öffnen oder streamen und überprüfen, ob Sie die richtigen Versionen wiederherstellen.
 
     ![Kopieren und Einfügen von Dateien und Ordnern vom bereitgestellten Volume am lokalen Speicherort](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+
 
 9. Klicken Sie im Bereich **Dateien suchen und wiederherstellen** auf **Bereitstellung aufheben**, wenn Sie die Wiederherstellung der Dateien bzw. Ordner abgeschlossen haben. Klicken Sie anschließend auf **Ja**, um zu bestätigen, dass Sie die Bereitstellung des Volumes aufheben möchten.
 

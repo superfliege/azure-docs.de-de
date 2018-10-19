@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 9f84686f8689a40cf002035053236b415481488f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 496ffdcb5cc2e7b208a53dc8c1d8ba4c0818945f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838349"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719969"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Zugriff auf Datasets mit Python mithilfe der Azure Machine Learning Python-Clientbibliothek
 Die Vorschau von Microsoft Azure Machine Learning Python-Clientbibliothek kann einen sicheren Zugriff auf Ihre Azure Machine Learning-Datasets aus einer lokalen Python-Umgebung aktivieren und ermöglicht die Erstellung und Verwaltung von Datasets im Arbeitsbereich.
@@ -242,7 +242,7 @@ Wenn Ihre Daten bereits serialisiert sind, können Sie Folgendes verwenden:
         description='my description'
     )
 
-Die Python-Clientbibliothek kann einen Pandas DataFrame in die folgenden Formate serialisieren (Konstanten dafür sind in der `azureml.DataTypeIds` -Klasse):
+Die Python-Clientbibliothek kann einen Pandas DataFrame in die folgenden Formate serialisieren (Konstanten dafür sind in der `azureml.DataTypeIds`-Klasse):
 
 * PlainText
 * GenericCSV

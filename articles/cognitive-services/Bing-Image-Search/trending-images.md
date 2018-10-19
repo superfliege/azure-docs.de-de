@@ -1,23 +1,24 @@
 ---
-title: Durchsuchen des Internets nach beliebten Bildern | Microsoft-Dokumentation
-description: Zeigt, wie Sie das Web mithilfe der Bing-Bildersuche-API nach beliebten Bildern durchsuchen.
+title: Durchsuchen des Webs nach beliebten Bildern – Bing-Bildersuche-API
+titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie das Web mithilfe der Bing-Bildersuche-API nach beliebten Bildern durchsuchen.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: EAB92D35-5C0B-4A0A-8F49-02DF7FAD44B4
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b12524cd4c1896501820209b3a45746b8f38b210
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 00d992da1d061ddbbee59e93898a92b6701f1ffb
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372859"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296310"
 ---
-# <a name="get-trending-images"></a>Abrufen von beliebten Bildern  
+# <a name="get-trending-images-from-the-bing-image-search-api"></a>Abrufen von beliebten Bildern über die Bing-Bildersuche-API
 
 Um die heutigen beliebten Bilder zu erhalten, senden Sie die folgenden GET-Anforderung:  
 
@@ -38,7 +39,7 @@ Die API für beliebte Bilder unterstützt zurzeit nur die folgenden Märkte:
 - zh-CN (Chinesisch, China)
 
 Die Antwort enthält einen [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#trendingimages) -Objekt, das Bilder nach Kategorie aufgelistet. Verwenden Sie den `title`-Parameter der Kategorie, um die Bilder in Ihrer Benutzeroberfläche zu gruppieren. Die Kategorien können sich täglich ändern.  
-  
+
 ```json
 {
     "_type" : "TrendingImages",  
@@ -85,8 +86,8 @@ Die Antwort enthält einen [TrendingImages](https://docs.microsoft.com/rest/api/
     }]  
 }  
 ```  
-  
-Jede Kachel enthält ein Bild und die Optionen zum Abrufen verwandter Bilder. Um die verwandten Bilder zu erhalten, können Sie die Abfrage `text` verwenden, um die [Bildersuche-API](./search-the-web.md) aufzurufen und die verwandten Bilder selbst anzuzeigen. Alternativ können Sie die URL im `webSearchUrl` verwenden, um den Benutzer zur Seite der Bildersuchergebnisse von Bing zu leiten, auf der die verwandten Bilder zu finden sind. 
+
+Jede Kachel enthält ein Bild und die Optionen zum Abrufen verwandter Bilder. Um die verwandten Bilder zu erhalten, können Sie die Abfrage `text` verwenden, um die [Bildersuche-API](./search-the-web.md) aufzurufen und die verwandten Bilder selbst anzuzeigen. Alternativ können Sie die URL im `webSearchUrl` verwenden, um den Benutzer zur Seite der Bildersuchergebnisse von Bing zu leiten, auf der die verwandten Bilder zu finden sind.
 
 Wenn Sie die Bildersuche-API zum Abrufen der verwandten Bilder aufrufen, legen Sie für den [Id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id)-Abfrageparameter die ID im `id`-Feld fest. Durch die Angabe der ID wird sichergestellt, dass die Antwort das Bild (es ist das erste Bild in der Antwort) und die verwandten Bilder enthält. Legen Sie außerdem für den [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) -Abfrageparameter den Text im `text`-Feld des `query`-Objekts fest.
 

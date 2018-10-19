@@ -4,28 +4,43 @@ description: Es wird beschrieben, wie Sie eine Bewertung verfeinern, indem Sie f
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 37c4ce8638c8f0481151449317d6cd387b61b256
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9f95ffe47275cfda77efa294ca6e8ccebe0070eb
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622897"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158613"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Verfeinern einer Gruppe per Mapping von Gruppenabhängigkeiten
 
-Dieser Artikel beschreibt, wie Sie eine Gruppe verfeinern, indem Sie die Abhängigkeiten aller Computer in der Gruppe visualisieren. Sie verwenden diese Methode normalerweise, wenn Sie die Mitgliedschaften für eine vorhandene Gruppe durch eine Überprüfung der Gruppenabhängigkeiten vor dem Durchführen einer Bewertung verfeinern möchten. Durch das Optimieren einer Gruppe mithilfe der Visualisierung der Abhängigkeiten können Sie Ihre Migrationen zu Azure effektiv planen. Sie können alle ineinandergreifende Systeme ermitteln, die zusammen migriert werden müssen. So können Sie sicherstellen, dass Sie nichts übersehen und dass es bei der Migration zu Azure nicht zu unvorhergesehenen Ausfällen kommt. 
+Dieser Artikel beschreibt, wie Sie eine Gruppe verfeinern, indem Sie die Abhängigkeiten aller Computer in der Gruppe visualisieren. Sie verwenden diese Methode normalerweise, wenn Sie die Mitgliedschaften für eine vorhandene Gruppe durch eine Überprüfung der Gruppenabhängigkeiten vor dem Durchführen einer Bewertung verfeinern möchten. Durch das Optimieren einer Gruppe mithilfe der Visualisierung der Abhängigkeiten können Sie Ihre Migration zu Azure effizient planen. Ermitteln Sie alle unabhängigen Systeme, die zusammen migriert werden müssen. So können Sie sicherstellen, dass Sie nichts übersehen und dass es bei der Migration zu Azure nicht zu unvorhergesehenen Ausfällen kommt.
 
 
 > [!NOTE]
 > Gruppen, für die Sie Gruppenabhängigkeiten visualisieren möchten, sollten höchstens zehn Computer enthalten. Wenn mehr als zehn Computer in der Gruppe vorhanden sind, empfiehlt es sich, sie in kleinere Gruppen aufzuteilen, um die Visualisierung der Abhängigkeiten nutzen zu können.
 
 
-# <a name="prepare-the-group-for-dependency-visualization"></a>Vorbereiten der Gruppe für die Visualisierung der Abhängigkeiten
-Um Abhängigkeiten einer Gruppe anzuzeigen, müssen Sie auf allen lokalen Computern, die der Gruppe angehören, Agents herunterladen und installieren. Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) herunterzuladen und zu installieren.
+## <a name="prepare-for-dependency-visualization"></a>Vorbereiten für die Visualisierung der Abhängigkeiten
+Azure Migrate nutzt für die Visualisierung von Computerabhängigkeiten die Dienstzuordnungslösung in Log Analytics.
+
+### <a name="associate-a-log-analytics-workspace"></a>Zuordnen eines Log Analytics-Arbeitsbereichs
+Sie müssen jedem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analytics-Arbeitsbereich zuordnen, um die Abhängigkeitsvisualisierung nutzen zu können. Sie können einen Arbeitsbereich nur in dem Abonnement erstellen oder anfügen, in dem das Migrationsprojekt erstellt wird.
+
+- Um einem Projekt einen Log Analytics-Arbeitsbereich anzufügen, wechseln Sie unter **Overview** (Übersicht) zum Projektabschnitt **Essentials** (Zusammenfassung), und klicken Sie auf **Requires configuration** (Erfordert Konfiguration).
+
+    ![Zuordnen von Log Analytics-Arbeitsbereichen](./media/concepts-dependency-visualization/associate-workspace.png)
+
+- Wenn Sie einen neuen Arbeitsbereich erstellen, müssen Sie für diesen einen Namen angeben. Der Arbeitsbereich wird dann in demselben Abonnement erstellt wie das Migrationsprojekt und in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/), in der auch das Migrationsprojekt erstellt wurde.
+- Die Option **Use existing** (Vorhandene verwenden) listet nur diejenigen Arbeitsbereiche auf, die in Regionen erstellt wurden, in denen eine Dienstzuordnung verfügbar ist. Wenn Sie über einen Arbeitsbereich in einer Region ohne Dienstzuordnung verfügen, wird dieser in der Dropdown-Liste nicht angezeigt.
+
+> [!NOTE]
+> Den einem Migrationsprojekt zugeordneten Arbeitsbereich können Sie nicht ändern.
 
 ### <a name="download-and-install-the-vm-agents"></a>Herunterladen und Installieren der VM-Agents
+Um Abhängigkeiten einer Gruppe anzuzeigen, müssen Sie auf allen lokalen Computern, die der Gruppe angehören, Agents herunterladen und installieren. Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) herunterzuladen und zu installieren.
+
 1. Klicken Sie unter **Übersicht** auf **Verwalten** > **Gruppen**, und wechseln Sie zur gewünschten Gruppe.
 2. Klicken Sie in der Liste der Computer in der Spalte **Abhängigkeits-Agent** auf **Installation erforderlich**, um Anweisungen zum Herunterladen und Installieren der Agents anzuzeigen.
 3. Laden Sie auf der Seite **Abhängigkeiten** den Microsoft Monitoring Agent (MMA) herunter, und installieren Sie diesen sowie den Abhängigkeits-Agent auf allen VMs, die der Gruppe angehören.
@@ -37,8 +52,8 @@ Gehen Sie wie folgt vor, um den Agent auf einem Windows-Computer zu installieren
 
 1. Doppelklicken Sie auf den heruntergeladenen Agent.
 2. Klicken Sie auf der Seite **Willkommen**auf **Weiter**. Klicken Sie auf der Seite **Lizenzbedingungen** auf **Ich stimme zu**, um die Lizenzbedingungen zu akzeptieren.
-3. Behalten Sie unter **Zielordner** den Standardinstallationsordner bei, oder ändern Sie ihn, und klicken Sie anschließend auf **Weiter**. 
-4. Wählen Sie unter **Agent-Setupoptionen** die Optionen **Azure Log Analytics** > **Weiter**. 
+3. Behalten Sie unter **Zielordner** den Standardinstallationsordner bei, oder ändern Sie ihn, und klicken Sie anschließend auf **Weiter**.
+4. Wählen Sie unter **Agent-Setupoptionen** die Optionen **Azure Log Analytics** > **Weiter**.
 5. Klicken Sie auf **Hinzufügen**, um einen neuen Log Analytics-Arbeitsbereich hinzuzufügen. Fügen Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
 
 
@@ -56,7 +71,7 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-Erfahren Sie mehr zur Unterstützung des Abhängigkeit-Agents für die Betriebssysteme [Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) und [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems).
+Erfahren Sie mehr zur Unterstützung des Dependency-Agents für die Betriebssysteme [Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) und [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems).
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>Verfeinern der Gruppe anhand der Visualisierung der Abhängigkeiten
 Nachdem Sie die Agents auf allen Computern der Gruppe installiert haben, können Sie die Abhängigkeiten der Gruppe visualisieren und diese anhand der unten aufgeführten Schritte verfeinern.
@@ -66,7 +81,7 @@ Nachdem Sie die Agents auf allen Computern der Gruppe installiert haben, können
 3. In der Abhängigkeitsübersicht für die Gruppe werden die folgenden Informationen angezeigt:
     - Eingehende (Clients) und ausgehende TCP-Verbindungen (Server) von/zu allen Computern in der Gruppe
         - Die abhängigen Computer, auf denen keine MMA- und Abhängigkeits-Agents installiert sind, gruppiert nach Portnummern
-        - Die abhängigen Computer, auf denen MMA- und Abhängigkeits-Agents installiert sind, als separate Felder 
+        - Die abhängigen Computer, auf denen MMA- und Abhängigkeits-Agents installiert sind, als separate Felder
     - Innerhalb des Computers ausgeführte Prozesse können Sie einblenden, indem Sie das Feld für den jeweiligen Computer erweitern.
     - Eigenschaften wie der vollqualifizierte Domänenname, das Betriebssystem, die MAC-Adresse usw. für jeden Computer können Sie anzeigen, indem Sie auf das Feld für den jeweiligen Computer klicken.
 
@@ -86,5 +101,5 @@ Wenn Sie die Abhängigkeiten eines bestimmten Computers überprüfen möchten, d
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-[Weitere Informationen](concepts-assessment-calculation.md) zur Berechnung von Bewertungen
+- [Erfahren Sie mehr](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) über die häufig gestellten Fragen (FAQs) zur Visualisierung von Abhängigkeiten.
+- [Weitere Informationen](concepts-assessment-calculation.md) zur Berechnung von Bewertungen

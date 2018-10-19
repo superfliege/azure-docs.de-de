@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/10/2018
-ms.openlocfilehash: 510ca032f77da25238ec060d4122a25345c9fb90
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 6d08dbe1976363be414597401d7a4efbae82c9b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346647"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498435"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Voraussetzungen für Azure Disk Encryption (Vorgängerversion)
 
@@ -70,7 +70,7 @@ Ein Beispiel für Befehle, die verwendet werden können, um Datenträger einzubi
     - [Installieren und Konfigurieren von Azure PowerShell unter Windows](/powershell/azure/install-azurerm-ps) 
         - Installieren Sie PowerShellGet und Azure PowerShell, und laden Sie das AzureRM-Modul herunter. 
     - [Installieren und Konfigurieren von Azure PowerShell unter macOS und Linux](/powershell/azure/install-azurermps-maclinux)
-        -  Installieren Sie PowerShell Core und Azure PowerShell für .NET Core, und laden Sie das AzureRM.Netcore-Modul herunter.
+        -  Installieren Sie PowerShell Core und Azure PowerShell für .NET Core, und laden Sie das Az-Modul herunter.
 2. Installieren sie das [Azure Active Directory PowerShell-Modul](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module). 
 
      ```powershell

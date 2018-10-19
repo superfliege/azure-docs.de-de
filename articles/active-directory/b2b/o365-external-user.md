@@ -4,18 +4,18 @@ description: Erläutert die gemeinsame Verwendung von Ressourcen mit externen Pa
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/24/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7e0a65e4a5807cb9a6b39feecfd2d5b2643ea4a9
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: fc789283e56d220f0068277544cb6494e265ee39
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330709"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981917"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Externe Office 365-Freigaben und Azure Active Directory B2B-Zusammenarbeit
 
@@ -38,9 +38,14 @@ Um externe Freigaben in OneDrive/SharePoint Online mit der Azure AD B2B-Kollabor
 
 ![Die Einstellung der externen OneDrive/SharePoint Online-Freigabe](media/o365-external-user/odsp-sharing-setting.png)
 
+Nach dem Aktivieren der externen Freigabe ist die Option, in der SharePoint Online-Personenauswahl (SPO) nach vorhandenen Gastbenutzern zu suchen, gemäß dem Verhalten in älteren Versionen standardmäßig deaktiviert.
+
+Sie können dieses Feature mit der Einstellung „ShowPeoplePickerSuggestionsForGuestUsers“ auf Mandanten- und Websitesammlungsebene aktivieren. Sie können dieses Feature mithilfe der Cmdlets „Set-SPOTenant“ und „Set-SPOSite“ festlegen, damit Mitglieder das Verzeichnis nach allen vorhandenen Gastbenutzern durchsuchen können. Änderungen im Mandantenbereich wirken sich nicht auf bereits bereitgestellte SPO-Websites aus.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 * [Hinzufügen eines B2B-Zusammenarbeitsbenutzers zu einer Rolle](add-guest-to-role.md)
 * [Delegieren von Einladungen zur B2B-Zusammenarbeit](delegate-invitations.md)
 * [Dynamische Gruppen und B2B-Zusammenarbeit](use-dynamic-groups.md)
+* [Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit](troubleshoot.md)

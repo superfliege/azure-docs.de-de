@@ -1,218 +1,160 @@
 ---
-title: Collectorappliance in Azure Migrate | Microsoft-Dokumentation
-description: Bietet eine Übersicht über die Collectorappliance und deren Konfiguration.
-author: ruturaj
+title: Informationen zur Collectorappliance in Azure Migrate | Microsoft-Dokumentation
+description: Informationen zur Collectorappliance in Azure Migrate
+author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/25/2018
-ms.author: ruturajd
+ms.date: 09/28/2018
+ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 74caf0ab052e1f6558dc20d15d84c01177b3f9cb
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: b79045e54b9c2ee4846f2216704a419e0ff85501
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665579"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434431"
 ---
-# <a name="collector-appliance"></a>Collectorappliance
+# <a name="about-the-collector-appliance"></a>Informationen zur Collectorappliance
 
-[Azure Migrate](migrate-overview.md) bewertet lokale Workloads für die Migration zu Azure. Dieser Artikel enthält Informationen zur Verwendung der Collectorappliance.
+ Dieser Artikel enthält Informationen zum Azure Migrate-Collector.
+
+Der Azure Migrate-Collector ist eine einfache Appliance, die zum Ermitteln einer lokalen vCenter-Umgebung verwendet werden kann, damit vor der Migration zu Azure eine Überprüfung mit dem [Azure Migrate](migrate-overview.md)-Dienst durchgeführt werden kann.  
+
+
+## <a name="deploying-the-collector"></a>Bereitstellen des Collectors
+
+Sie können die Collectorappliance mithilfe einer OVF-Vorlage bereitstellen:
+
+- Laden Sie die OVF-Vorlage aus einem Azure Migrate-Projekt im Azure-Portal herunter. Importieren Sie die heruntergeladene Datei in vCenter Server, um die VM der Collectorappliance einzurichten.
+- VMware richtet über die OVF-Vorlage eine VM mit 4 Kernen, 8 GB RAM und einem Datenträger mit 80 GB ein. Das Betriebssystem ist Windows Server 2012 R2 (64-Bit).
+- Bei der Ausführung des Collectors werden einige Voraussetzungsprüfungen ausgeführt, um sicherzustellen, dass der Collector eine Verbindung mit Azure Migrate herstellen kann.
+
+- [Erfahren Sie mehr](tutorial-assessment-vmware.md#create-the-collector-vm) über das Erstellen des Collectors.
+
+
+## <a name="collector-prerequisites"></a>Voraussetzungen für den Collector
+
+Der Collector muss einige Voraussetzungsprüfungen bestehen, um sicherzustellen, dass er über das Internet eine Verbindung mit dem Azure Migrate-Dienst herstellen und ermittelte Daten hochladen kann.
+
+- **Internetverbindung prüfen**: Der Collector kann eine direkte Verbindung mit dem Internet herstellen oder über einen Proxy.
+    - Bei der Voraussetzungsprüfung wird die Konnektivität mit [erforderlichen und optionalen URLs](#connect-to-urls) überprüft.
+    - Wenn Sie eine direkte Verbindung mit dem Internet haben, müssen Sie lediglich sicherstellen, dass der Collector die erforderlichen URLs erreichen kann.
+    - Wenn Sie eine Verbindung über einen Proxy herstellen, sollten Sie die [nachfolgenden Anforderungen](#connect-via-a-proxy) beachten.
+- **Zeitsynchronisierung überprüfen**: Der Collector muss mit dem Internetzeitserver synchronisiert sein, um sicherzustellen, dass die Anforderungen an den Dienst authentifiziert werden.
+    - Die URL „portal.azure.com“ muss über den Collector erreichbar sein, damit die Uhrzeit überprüft werden kann.
+    - Wenn der Computer nicht synchronisiert wird, müssen Sie die Uhrzeit auf der Collector-VM an die aktuelle Uhrzeit anpassen. Öffnen Sie hierzu auf der VM eine Eingabeaufforderung für Administratoren, und führen Sie **w32tm /tz** zum Überprüfen der Zeitzone aus. Führen Sie **w32tm /resync** zum Synchronisieren der Zeit aus.
+- **Ausführung des Collectordiensts überprüfen**: Der Azure Migrate-Collectordienst sollte auf der Collector-VM ausgeführt werden.
+    - Dieser Dienst wird beim Hochfahren des Computers automatisch gestartet.
+    - Starten Sie den Dienst über die Einstellungen, falls er nicht ausgeführt wird.
+    - Der Collectordienst stellt eine Verbindung mit vCenter Server her, sammelt die VM-Metadaten und -Leistungsdaten und sendet diese an den Azure Migrate-Dienst.
+- **Installation von VMware PowerCLI 6.5 überprüfen**: Das PowerShell-Modul VMware PowerCLI 6.5 muss auf der Collector-VM installiert sein, damit eine Kommunikation mit vCenter Server möglich ist.
+    - Wenn der Collector auf die URLs zugreifen kann, die für die Installation des Moduls erforderlich sind, erfolgt die Installation automatisch während der Bereitstellung des Collectors.
+    - Wenn der Collector das Modul während der Bereitstellung nicht installieren kann, müssen Sie es [manuell installieren](#install-vwware-powercli-module-manually).
+- **Verbindung mit vCenter Server überprüfen**: Der Collector muss eine Verbindung mit vCenter Server herstellen und VMs, die zugehörigen Metadaten und Leistungsindikatoren abfragen können. [Überprüfen Sie die Voraussetzungen](#connect-to-vcenter-server) zum Herstellen einer Verbindung.
+
+
+### <a name="connect-to-the-internet-via-a-proxy"></a>Herstellen einer Verbindung mit dem Internet über einen Proxy
+
+- Wenn der Proxyserver eine Authentifizierung erfordert, können Sie den Benutzernamen und das Kennwort bei der Einrichtung des Collectors angeben.
+- Die IP-Adresse bzw. der FQDN des Proxyservers sollte das Format *http://IPaddress* oder *http://FQDN* aufweisen.
+- Es werden nur HTTP-Proxys unterstützt. HTTPS-basierte Proxyserver werden vom Collector nicht unterstützt.
+- Wenn es sich bei dem Proxyserver um einen abfangenden Proxy handelt, müssen Sie das Proxyzertifikat auf der Collector-VM importieren.
+    1. Rufen Sie auf der Collector-VM den Eintrag **Startmenü** > **Computerzertifikate verwalten** auf.
+    2. Suchen Sie im Tool „Zertifikate“ unter **Zertifikate – Lokaler Computer** nach **Vertrauenswürdige Herausgeber** > **Zertifikate**.
+
+        ![Tool „Zertifikate“](./media/concepts-intercepting-proxy/certificates-tool.png)
+
+    3. Kopieren Sie das Proxyzertifikat auf die Collector-VM. Möglicherweise müssen Sie das Zertifikat über Ihren Netzwerkadministrator abrufen.
+    4. Doppelklicken Sie auf das Zertifikat, um es zu öffnen, und klicken Sie anschließend auf **Zertifikat installieren**.
+    5. Wählen Sie im Zertifikatimport-Assistenten die Option **Lokaler Computer** als Speicherort aus.
+
+    ![Zertifikatspeicherort](./media/concepts-intercepting-proxy/certificate-store-location.png)
+
+    6. Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** > **Durchsuchen** > **Vertrauenswürdige Herausgeber** aus. Klicken Sie auf **Fertig stellen**, um das Zertifikat zu importieren.
+
+    ![Zertifikatspeicher](./media/concepts-intercepting-proxy/certificate-store.png)
+
+    7. Überprüfen Sie, ob das Zertifikat wie erwartet importiert wurde und ob die Voraussetzungsprüfung für die Internetkonnektivität wie erwartet funktioniert.
 
 
 
-## <a name="overview"></a>Übersicht
 
-Ein Azure Migrate-Collector ist eine einfache Appliance, die zum Ermitteln Ihrer lokalen vCenter-Umgebung genutzt werden kann. Diese Appliance ermittelt lokale virtuelle VMware-Computer und sendet Metadaten zu diesen Computern an den Azure Migrate-Dienst.
+### <a name="connect-to-urls"></a>Verbinden mit URLs
 
-Die Collectorappliance ist ein OVF-Paket, das Sie aus dem Azure Migrate-Projekt herunterladen können. Es instanziiert einen virtuellen VMware-Computer mit 4 Kernen, 8 GB RAM und einem Datenträger mit 80 GB. Das Betriebssystem der Appliance ist Windows Server 2012 R2 (64-Bit).
+Die Konnektivitätsprüfung wird durch das Herstellen einer Verbindung mit einer Liste von URLs durchgeführt.
 
-Sie können den Collector erstellen, indem Sie die Schritte in [Erstellen der Collector-VM](tutorial-assessment-vmware.md#create-the-collector-vm) ausführen.
+**URL** | **Details**  | **Voraussetzungsprüfung**
+--- | --- | ---
+*.portal.azure.com | Überprüft die Konnektivität mit dem Azure-Dienst und die Zeitsynchronisierung. | Zugriff auf URLs ist erforderlich.<br/><br/> Die Voraussetzungsprüfung schlägt fehl, wenn keine Konnektivität besteht.
+*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Wird zum Herunterladen des auf PowerShell basierenden vCenter PowerCLI-Moduls verwendet. | Zugriff auf URLs ist optional.<br/><br/> Die Voraussetzungsprüfung schlägt nicht fehl.<br/><br/> Die automatische Installation des Moduls auf der Collector-VM schlägt fehl. Sie müssen das Modul manuell installieren.
 
-## <a name="collector-communication-diagram"></a>Abbildung zur Kommunikation zwischen Collectors
+
+### <a name="install-vmware-powercli-module-manually"></a>Manuelles Installieren des VMware PowerCLI-Moduls
+
+1. Installieren Sie das Modul mit den [folgenden Schritten](https://blogs.vmware.com/PowerCLI/2017/04/powercli-install-process-powershell-gallery.html). In diesen Schritten wird sowohl die Online- als auch die Offline-Installation beschrieben.
+2. Wenn die Collector-VM offline ist und das Modul auf einem anderen Computer mit Internetzugriff installiert wird, müssen Sie die VMware.*-Dateien von diesem Computer auf die Collector-VM kopieren.
+3. Nach der Installation können Sie die Voraussetzungsprüfungen neu starten, um sicherzustellen, dass PowerCLI installiert wurde.
+
+### <a name="connect-to-vcenter-server"></a>Herstellen einer Verbindung mit vCenter Server
+
+Der Collector stellt eine Verbindung mit vCenter Server her und fragt VM-Metadaten und Leistungsindikatoren ab. Für das Herstellen der Verbindung benötigen Sie Folgendes:
+
+- Nur die vCenter Server-Versionen 5.5, 6.0 und 6.5 werden unterstützt.
+- Für die Ermittlung benötigen Sie ein schreibgeschütztes Konto mit den nachfolgend zusammengefassten Berechtigungen. Für die Ermittlung sind nur die Rechenzentren zugänglich, auf die mit dem Konto zugegriffen werden kann.
+- Sie stellen standardmäßig über einen FQDN oder eine IP-Adresse eine Verbindung mit vCenter Server her. Wenn vCenter Server auf einem anderen Port lauscht, stellen Sie mithilfe des Formulars *IPAddress:Port_Number* oder *FQDN:Port_Number* eine Verbindung her.
+- Die Statistikeinstellungen für vCenter Server müssen auf Ebene 3 festgelegt sein, damit Leistungsdaten für Speicher und Netzwerk gesammelt werden können.
+- Bei einer niedrigeren Ebene ist eine Ermittlung möglich, die Leistungsdaten werden jedoch nicht gesammelt. Einige Leistungsindikatoren werden möglicherweise gesammelt, andere werden jedoch auf 0 (null) festgelegt.
+- Wenn keine Leistungsdaten für Speicher und Netzwerk gesammelt werden, werden die Größenempfehlungen für die Bewertung basierend auf Leistungsdaten für CPU und Arbeitsspeicher sowie auf Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
+- Der Collector benötigt eine „Sichtverbindung“ mit dem vCenter-Server über das Netzwerk.
+
+#### <a name="account-permissions"></a>Kontoberechtigungen
+
+**Konto** | **Berechtigungen**
+--- | ---
+Mindestens ein Benutzerkonto mit Lesezugriff | Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt)   
+
+
+## <a name="collector-communications"></a>Kommunikation des Collectors
+
+In dem folgenden Diagramm und der folgenden Tabelle finden Sie eine Übersicht über die Kommunikation des Collectors.
 
 ![Abbildung zur Kommunikation zwischen Collectors](./media/tutorial-assessment-vmware/portdiagram.PNG)
 
 
-| Komponente      | Für die Kommunikation mit   | Erforderlicher Port                            | Grund                                   |
-| -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
-| Collector      | Azure Migrate-Dienst | TCP 443                                  | Der Collector sollte über SSL-Port 443 mit dem Dienst kommunizieren können. |
-| Collector      | vCenter Server        | Standard 443                             | Der Collector sollte über vCenter Server mit dem Dienst kommunizieren können. Standardmäßig stellt er über 443 eine Verbindung mit vCenter her. Wenn vCenter an einem anderen Port lauscht, muss dieser Port auf dem Collector als ausgehender Port konfiguriert werden. |
-| Collector      | RDP|   | TCP 3389 | Damit soll Ihnen die Verwendung des RDP auf dem Collectorcomputer ermöglicht werden. |
-
-
-
-
-
-## <a name="collector-pre-requisites"></a>Voraussetzungen für den Collector
-
-Der Collector muss einige Prüfungen auf erforderliche Komponenten bestehen, um sicherzustellen, dass er eine Verbindung mit dem Azure Migrate-Dienst herstellen und die ermittelten Daten hochladen kann. In diesem Artikel werden die einzelnen erforderlichen Komponenten behandelt und erläutert, warum sie erforderlich sind.
-
-### <a name="internet-connectivity"></a>Internetkonnektivität
-
-Die Collectorappliance muss mit dem Internet verbunden sein, um die ermittelten Computerinformationen zu senden. Der Computer kann mit einer der beiden folgenden Methoden mit dem Internet verbunden werden.
-
-1. Sie können den Collector so konfigurieren, dass er über direkten Internetzugriff verfügt.
-2. Sie können den Collector für die Verbindung über einen Proxyserver konfigurieren.
-    * Wenn der Proxyserver eine Authentifizierung erfordert, können Sie den Benutzernamen und das Kennwort in den Verbindungseinstellungen angeben.
-    * Die IP-Adresse bzw. der FQDN des Proxyservers muss im Format http://IPaddress oder http://FQDN angegeben werden. Nur HTTP-Proxys werden unterstützt.
-
-> [!NOTE]
-> HTTPS-basierte Proxyserver werden vom Collector nicht unterstützt.
-
-#### <a name="internet-connectivity-with-intercepting-proxy"></a>Internetkonnektivität mit abfangendem Proxy
-
-Wenn der Proxyserver, den Sie für die Verbindung mit dem Internet verwenden, ein abfangender Proxy ist, müssen Sie das Proxyzertifikat auf Ihrem virtuellen Collector-Computer importieren. Anhand der folgenden Schritte können Sie das Zertifikat auf dem virtuellen Collector-Computer importieren.
-
-1. Rufen Sie auf dem virtuellen Collector-Computer das **Startmenü**, und suchen und öffnen Sie **Computerzertifikate verwalten**.
-2. Suchen Sie im linken Bereich im Tool „Zertifikate“ unter **Zertifikate – Lokaler Computer** nach **Vertrauenswürdige Herausgeber**. Klicken Sie unter **Vertrauenswürdige Herausgeber** auf **Zertifikate**, um die Liste der Zertifikate im Bereich auf der rechten Seite anzuzeigen.
-
-    ![Tool „Zertifikate“](./media/concepts-intercepting-proxy/certificates-tool.png)
-
-3. Kopieren Sie Ihr Proxyzertifikat auf den virtuellen Collector-Computer. Möglicherweise müssen Sie sich an das Netzwerk-Administratorteam in Ihrer Organisation wenden, um dieses Zertifikat zu erhalten.
-4. Doppelklicken Sie auf das Zertifikat aus, um es zu öffnen. Klicken Sie auf **Zertifikat installieren**. Daraufhin wird der Zertifikatimport-Assistent gestartet.
-5. Wählen Sie im Zertifikatimport-Assistenten die Option **Lokaler Computer** als Speicherort. Klicken Sie auf **Weiter**.
-
-    ![Zertifikatspeicherort](./media/concepts-intercepting-proxy/certificate-store-location.png)
-
-6. Wählen Sie die Option **Alle Zertifikate in folgendem Speicher speichern**. Klicken Sie auf **Durchsuchen**, und wählen Sie aus der Liste der angezeigten Zertifikate **Vertrauenswürdige Herausgeber** aus. Klicken Sie auf **Weiter**.
-
-    ![Zertifikatspeicher](./media/concepts-intercepting-proxy/certificate-store.png)
-    
-7. Klicken Sie auf **Fertig stellen**. Daraufhin wird das Zertifikat importiert. 
-8. Sie haben die Möglichkeit, zu überprüfen, dass das Zertifikat importiert wurde, indem Sie das Tool „Zertifikate“ wie in Schritt 1 und 2 oben öffnen.
-9. Stellen Sie in der Azure Migrate Collector-App sicher, dass die Überprüfung der Voraussetzungen im Hinblick auf die Internetkonnektivität erfolgreich ist.
-
-
-#### <a name="whitelisting-urls-for-internet-connection"></a>Verwenden von URL-Whitelists für die Internetverbindung
-
-Die Überprüfung der Voraussetzungen ist erfolgreich, wenn der Collector über die angegebenen Einstellungen eine Verbindung mit dem Internet herstellen kann. Die Konnektivitätsprüfung wird durch das Herstellen einer Verbindung mit einer Liste von URLs wie in der folgenden Tabelle durchgeführt. Wenn Sie URL-basierte Firewallproxys zur Steuerung ausgehender Verbindungen verwenden, stellen Sie sicher, dass die folgenden erforderlichen Dienst-URLs zur Whitelist hinzugefügt werden:
-
-**URL** | **Zweck**  
---- | ---
-*.portal.azure.com | Erforderlich, um die Konnektivität mit dem Azure-Dienst zu überprüfen und Probleme mit der Zeitsynchronisation zu überprüfen.
-
-Bei der Überprüfung wird außerdem versucht, die Konnektivität mit den folgenden URLs zu überprüfen, die Überprüfung schlägt jedoch nicht fehl, wenn kein Zugriff möglich ist. Das Konfigurieren der Whitelist für die folgenden URLs ist optional, Sie müssen jedoch manuelle Schritte ausführen, um die Überprüfung der Voraussetzungen zu beschränken.
-
-**URL** | **Zweck**  | **Was geschieht ohne Whitelist?**
+**Collector kommuniziert mit** | **Port** | **Details**
 --- | --- | ---
-*.oneget.org:443 | Erforderlich, um das auf PowerShell basierende vCenter PowerCLI-Modul herunterzuladen. | PowerCLI-Installation schlägt fehl. Installieren Sie das Modul manuell.
-*.windows.net:443 | Erforderlich, um das auf PowerShell basierende vCenter PowerCLI-Modul herunterzuladen. | PowerCLI-Installation schlägt fehl. Installieren Sie das Modul manuell.
-*.windowsazure.com:443 | Erforderlich, um das auf PowerShell basierende vCenter PowerCLI-Modul herunterzuladen. | PowerCLI-Installation schlägt fehl. Installieren Sie das Modul manuell.
-*.powershellgallery.com:443 | Erforderlich, um das auf PowerShell basierende vCenter PowerCLI-Modul herunterzuladen. | PowerCLI-Installation schlägt fehl. Installieren Sie das Modul manuell.
-*.msecnd.net:443 | Erforderlich, um das auf PowerShell basierende vCenter PowerCLI-Modul herunterzuladen. | PowerCLI-Installation schlägt fehl. Installieren Sie das Modul manuell.
-*.visualstudio.com:443 | Erforderlich, um das auf PowerShell basierende vCenter PowerCLI-Modul herunterzuladen. | PowerCLI-Installation schlägt fehl. Installieren Sie das Modul manuell.
+Azure Migrate-Dienst | TCP 443 | Der Collector kommuniziert über SSL-Port 443 mit dem Azure Migrate-Dienst.
+vCenter Server | TCP 443 | Der Collector muss mit vCenter Server kommunizieren können.<br/><br/> Standardmäßig stellt er über Port 443 eine Verbindung mit vCenter her.<br/><br/> Wenn vCenter Server an einem anderen Port lauscht, sollte dieser Port auf dem Collector als ausgehender Port verfügbar sein.
+RDP | TCP 3389 |
 
-### <a name="time-is-in-sync-with-the-internet-server"></a>Mit dem Internetzeitserver synchronisierte Uhrzeit
 
-Der Collector muss mit dem Internetzeitserver synchronisiert sein, um sicherzustellen, dass die Anforderungen an den Dienst authentifiziert werden. Die URL „portal.azure.com“ muss über den Collector erreichbar sein, damit die Uhrzeit überprüft werden kann. Wenn der Computer nicht synchronisiert ist, müssen Sie die Uhrzeit auf dem virtuellen Collectorcomputer folgendermaßen an die aktuelle Uhrzeit anpassen:
+## <a name="securing-the-collector-appliance"></a>Sichern der Collectorappliance
 
-1. Öffnen Sie auf dem virtuellen Computer eine Administratoreingabeaufforderung.
-1. Führen Sie „w32tm /tz“ aus, um die Zeitzone zu überprüfen.
-1. Führen Sie „w32tm /resync“ aus, um die Zeit zu synchronisieren.
+Es wird empfohlen, die folgenden Schritte zum Sichern der Collectorappliance auszuführen:
 
-### <a name="collector-service-should-be-running"></a>Ausführung des Collectordiensts
+- Teilen Sie Administratorkennwörter nicht unbefugten Personen mit, und verlieren Sie sie nicht.
+- Fahren Sie die Appliance herunter, wenn Sie sie nicht verwenden.
+- Ordnen Sie die Appliance in einem geschützten Netzwerk an.
+- Löschen Sie nach Abschluss der Migration die Appliance-Instanz.
+- Darüber hinaus sollten Sie die Sicherungsdateien der Datenträger (VMDKs) löschen, da darauf möglicherweise vCenter-Anmeldeinformationen zwischengespeichert werden.
 
-Der Azure Migrate-Collectordienst muss auf dem Computer ausgeführt werden. Dieser Dienst wird beim Hochfahren des Computers automatisch gestartet. Wenn der Dienst nicht ausgeführt wird, können Sie den Dienst *Azure Migrate-Collector* über die Systemsteuerung starten. Der Collectordienst ist dafür zuständig, eine Verbindung mit dem vCenter-Server herzustellen, die Meta- und Leistungsdaten von Computern zu erfassen und diese an den Dienst zu senden.
+## <a name="os-license-in-the-collector-vm"></a>Betriebssystemlizenz auf der Collector-VM
 
-### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5
+Der Collector ist mit einer Windows Server 2012 R2-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum für Ihre Collector-VM abläuft, wird empfohlen, eine neue OVA-Datei herunterzuladen und eine neue Appliance zu erstellen.
 
-Das Powershell-Modul „VMware PowerCLI“ muss installiert sein, damit der Collector mit dem vCenter-Server kommunizieren und Abfragen für die Details und Leistungsdaten von Computern durchführen kann. Das Powershell-Modul wird im Rahmen der Überprüfung der Voraussetzungen automatisch heruntergeladen und installiert. Der automatische Download erfordert einige URLs in der Whitelist. Andernfalls müssen Sie den Zugriff bereitstellen, indem Sie sie entweder auf die Whitelist setzen oder das Modul manuell installieren.
+## <a name="updating-the-os-of-the-collector-vm"></a>Aktualisieren des Betriebssystems der Collector-VM
 
-Installieren Sie das Modul mit den folgenden Schritten manuell:
+Obwohl die Collectorappliance über eine 180 Tage lang gültige Evaluierungslizenz verfügt, müssen Sie das Betriebssystem auf der Appliance in regelmäßigen Zeitabständen aktualisieren, um zu verhindern, dass die Appliance automatisch heruntergefahren wird.
 
-1. Zum Installieren von PowerCLI im Collector ohne Internetverbindung führen Sie die Schritte unter [diesem Link](https://blogs.vmware.com/PowerCLI/2017/04/powercli-install-process-powershell-gallery.html) durch.
-2. Nachdem Sie das PowerShell-Modul auf einem anderen Computer mit Internetzugriff installiert haben, kopieren Sie die Dateien vom Typ „VMware.*“ von diesem Computer auf den Collectorcomputer.
-3. Starten Sie die Überprüfung der Voraussetzungen neu, und vergewissern Sie sich, dass PowerCLI installiert ist.
+- Wird der Collector 60 Tage lang nicht aktualisiert, beginnt er, den Computer automatisch herunterzufahren.
+- Während einer Ermittlung wird der Computer nicht ausgeschaltet, auch nicht nach 60 Tagen. Nach Abschluss der Ermittlung wird der Computer ausgeschaltet.
+- Wenn Sie den Collector länger als 60 Tage verwenden, wird empfohlen, den Computer durch die Ausführung von Windows-Updates stets auf dem neuesten Stand zu halten.
 
-## <a name="connecting-to-vcenter-server"></a>Herstellen einer Verbindung mit vCenter Server
-
-Der Collector muss eine Verbindung mit vCenter Server herstellen und in der Lage sein, eine Abfrage für die virtuellen Computer, deren Metadaten und Leistungsindikatoren durchzuführen. Diese Daten werden vom Projekt zum Berechnen einer Bewertung verwendet.
-
-1. Zur Verbindung mit vCenter Server kann ein schreibgeschütztes Konto mit Berechtigungen wie in der folgenden Tabelle verwendet werden, um die Ermittlung durchzuführen.
-
-    |Aufgabe  |Erforderliche Rolle/erforderliches Konto  |Berechtigungen  |
-    |---------|---------|---------|
-    |Collectorappliance-basierte Ermittlung    | Sie benötigen mindestens einen Benutzer mit Lesezugriff.        |Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt)         |
-
-2. Für die Ermittlung kann nur auf Rechenzentren zugegriffen werden, die für das angegebene vCenter-Konto zugänglich sind.
-3. Sie müssen den FQDN/die IP-Adresse für vCenter angeben, um die Verbindung mit dem vCenter-Server herzustellen. Die Verbindung wird standardmäßig über Port 443 hergestellt. Wenn Sie vCenter zum Lauschen an einer anderen Portnummer konfiguriert haben, können Sie diese als Teil der Serveradresse im Format „IPAdresse:Portnummer“ oder „FQDN:Portnummer“ angeben.
-4. Die Statistikeinstellungen für vCenter Server müssen vor der Bereitstellung auf Ebene 3 festgelegt werden. Bei einer niedrigeren Ebene wird die Ermittlung zwar abgeschlossen, die Leistungsdaten für Speicher und Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen für die Bewertung werden in diesem Fall basierend auf Leistungsdaten für CPU und Arbeitsspeicher sowie nur auf Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt. [Erfahren Sie mehr](./concepts-collector.md) dazu, welche Daten erfasst werden und wie sie sich auf die Bewertung auswirken.
-5. Der Collector benötigt eine „Sichtverbindung“ mit dem vCenter-Server über das Netzwerk.
-
-> [!NOTE]
-> Nur die vCenter Server-Versionen 5.5, 6.0 und 6.5 werden offiziell unterstützt.
-
-> [!IMPORTANT]
-> Wir empfehlen, für die Statistik die höchste allgemeine Ebene (3) festzulegen, damit alle Leistungsindikatoren ordnungsgemäß erfasst werden. Wenn Sie für vCenter eine niedrigere Ebene festgelegt haben, werden möglicherweise nur einige Leistungsindikatoren vollständig erfasst, und der Rest ist auf 0 festgelegt. Dadurch erhalten Sie in der Bewertung möglicherweise unvollständige Daten.
-
-### <a name="selecting-the-scope-for-discovery"></a>Auswählen des Bereichs für die Ermittlung
-
-Sobald die Verbindung mit vCenter besteht, können Sie einen Bereich für die Ermittlung auswählen. Durch die Auswahl eines Bereichs werden alle virtuellen Computer aus dem angegebenen vCenter-Inventurpfad ermittelt.
-
-1. Der Bereich kann entweder ein Rechenzentrum, ein Ordner oder ein ESXi-Host sein.
-2. Sie können jeweils nur einen Bereich auswählen. Zum Auswählen weiterer virtueller Computer können eine Ermittlung abschließen und den Ermittlungsprozess mit einem neuen Bereich neu starten.
-3. Sie können nur einen Bereich mit *weniger als 1500 virtuellen Computern* auswählen.
-
-## <a name="specify-migration-project"></a>Festlegen des Migrationsprojekts
-
-Sobald die lokale vCenter-Instanz verbunden und ein Bereich angegeben ist, können Sie jetzt die Details des Migrationsprojekt angeben, die für die Ermittlung und Bewertung verwendet werden müssen. Geben Sie Projekt-ID und -schlüssel an, und stellen Sie die Verbindung her.
-
-## <a name="start-discovery-and-view-collection-progress"></a>Starten der Ermittlung und Anzeigen des Sammlungsfortschritts
-
-Sobald die Ermittlung startet, werden die virtuellen vCenter-Computer ermittelt, und ihre Meta- und Leistungsdaten werden an den Server gesendet. Die Fortschrittsanzeige informiert Sie auch über die folgenden IDs:
-
-1. Collector-ID: Eine eindeutige ID, die an Ihren Collectorcomputer vergeben wird. Diese ID wird für einen Computer für verschiedene Ermittlungen beibehalten. Sie können diese ID bei Fehlern für das Melden des Problems an den Microsoft-Support verwenden.
-2. Sitzungs-ID: Eine eindeutige ID für den aktuell ausgeführten Sammlungsauftrag. Diese Sitzungs-ID finden Sie auch im Portal, wenn der Ermittlungsauftrag abgeschlossen wird. Diese ID wird für jeden Sammlungsauftrag geändert. Bei Fehlern können Sie diese ID dem Microsoft-Support melden.
-
-### <a name="what-data-is-collected"></a>Welche Daten werden gesammelt?
-
-Der Sammlungsauftrag ermittelt die folgenden statischen Metadaten zu den ausgewählten virtuellen Computern.
-
-1. Anzeigename des virtuellen Computers (in vCenter)
-2. Inventurpfad des virtuellen Computers (Host/Ordner in vCenter)
-3. IP-Adresse
-4. MAC-Adresse
-5. Betriebssystem
-5. Anzahl der Kerne, Datenträger, NICs
-6. Arbeitsspeichergröße, Datenträgergrößen
-7. Und Leistungsindikatoren des virtuellen Computers, Datenträgers und Netzwerks wie in der folgenden Tabelle aufgeführt.
-
-Die folgende Tabelle enthält die erfassten Leistungsindikatoren sowie die Bewertungsergebnisse, die betroffen sind, wenn ein bestimmter Indikator nicht erfasst wird.
-
-|Indikator                                  |Ebene    |Pro Gerät  |Auswirkungen auf die Bewertung                               |
-|-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |Nicht verfügbar                |Empfohlene VM-Größe und -Kosten                    |
-|mem.usage.average                        | 1       |Nicht verfügbar                |Empfohlene VM-Größe und -Kosten                    |
-|virtualDisk.read.average                 | 2       |2                 |Datenträgergröße, Speicherkosten und VM-Größe         |
-|virtualDisk.write.average                | 2       |2                 |Datenträgergröße, Speicherkosten und VM-Größe         |
-|virtualDisk.numberReadAveraged.average   | 1       |3                 |Datenträgergröße, Speicherkosten und VM-Größe         |
-|virtualDisk.numberWriteAveraged.average  | 1       |3                 |Datenträgergröße, Speicherkosten und VM-Größe         |
-|net.received.average                     | 2       |3                 |VM-Größe und Netzwerkkosten                        |
-|net.transmitted.average                  | 2       |3                 |VM-Größe und Netzwerkkosten                        |
-
-> [!WARNING]
-> Nach dem Festlegen einer höheren Statistikebene kann es bis zu einem Tag dauern, bis die Leistungsindikatordaten generiert werden. Die Ermittlung sollte deshalb erst nach einem Tag durchgeführt werden.
-
-### <a name="time-required-to-complete-the-collection"></a>Der Zeitaufwand für die Sammlung
-
-Der Collector ermittelt nur die Computerdaten und sendet sie an das Projekt. Das Projekt kann zusätzliche Zeit in Anspruch nehmen, bis die ermittelten Daten im Portal angezeigt werden und Sie mit dem Erstellen einer Bewertung beginnen können.
-
-Je nach Anzahl der virtuellen Computer im ausgewählten Bereich dauert das Senden der statischen Metadaten an das Projekt bis zu 15 Minuten. Sobald die statischen Metadaten im Portal verfügbar sind, können Sie die Liste der Computer im Portal anzeigen und mit der Gruppenerstellung beginnen. Eine Bewertung kann erst erstellt werden, wenn der Auftrag abgeschlossen ist und das Projekt die Daten verarbeitet hat. Nachdem der Sammlungsauftrag auf dem Collector abgeschlossen ist, kann es bis zu einer Stunde dauern, bis die Leistungsdaten im Portal verfügbar sind. Die Dauer hängt von der Anzahl der virtuellen Computer im ausgewählten Bereich ab.
-
-## <a name="locking-down-the-collector-appliance"></a>Sperren der Collectorappliance
-Wir empfehlen Ihnen, für die Collectorappliance fortlaufende Windows-Updates auszuführen. Wenn ein Collector 60 Tage lang nicht aktualisiert wird, beginnt er mit dem automatischen Herunterfahren des Computers. Wenn eine Ermittlung ausgeführt wird, wird der Computer auch beim Überschreiten der 60 Tage nicht ausgeschaltet. Nachdem der Ermittlungsauftrag abgeschlossen wurde, wird der Computer ausgeschaltet. Wenn Sie den Collector länger als 45 Tage verwenden, empfehlen wir Ihnen, den Computer durch die Ausführung von Windows-Updates stets auf dem neuesten Stand zu halten.
-
-Außerdem ist es ratsam, die folgenden Schritte auszuführen, um Ihre Appliance zu schützen:
-1. Teilen Sie Administratorkennwörter nicht unbefugten Personen mit, und verlieren Sie sie nicht.
-2. Fahren Sie die Appliance herunter, wenn Sie sie nicht verwenden.
-3. Ordnen Sie die Appliance in einem geschützten Netzwerk an.
-4. Löschen Sie die Instanz der Appliance, nachdem der Migrationsvorgang abgeschlossen wurde. Achten Sie auch darauf, die Sicherungsdateien der Datenträger (VMDKs) zu löschen, da darauf unter Umständen vCenter-Anmeldeinformationen zwischengespeichert werden.
-
-## <a name="how-to-upgrade-collector"></a>Gewusst wie: Durchführen eines Upgrades für den Collector
+## <a name="upgrading-the-collector-appliance-version"></a>Durchführen eines Upgrades für die Version der Collectorappliance
 
 Sie können ein Upgrade für den Collector auf die neueste Version durchführen, ohne die OVA-Datei erneut herunterladen zu müssen.
 
-1. Laden Sie das aktuelle [Upgradepaket](https://aka.ms/migrate/col/upgrade_9_14) (Version 1.0.9.14) herunter.
+1. Laden Sie das [aktuelle Upgradepaket](concepts-collector-upgrade.md) herunter
 2. Um sicherzustellen, dass der heruntergeladene Hotfix sicher ist, öffnen Sie das Befehlsfenster als Administrator, und führen Sie den folgenden Befehl zum Generieren des Hash für die ZIP-Datei aus. Der generierte Hash sollte mit dem für die betreffende Version genannten Hash übereinstimmen:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
@@ -222,47 +164,85 @@ Sie können ein Upgrade für den Collector auf die neueste Version durchführen,
 4. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, und wählen Sie „Alle extrahieren“ aus.
 5. Klicken Sie mit der rechten Maustaste auf „Setup.ps1“, und klicken Sie auf „Mit PowerShell ausführen“. Befolgen Sie dann die Anweisungen auf dem Bildschirm, um das Update zu installieren.
 
-### <a name="list-of-updates"></a>Liste der Updates
 
-#### <a name="upgrade-to-version-10914"></a>Upgrade auf Version 1.0.9.14
+## <a name="discovery-methods"></a>Ermittlungsmethoden
 
-Hashwerte für das [Upgradepaket 1.0.9.14](https://aka.ms/migrate/col/upgrade_9_14)
+Es gibt zwei Ermittlungsmethoden, die von der Collectorappliance verwendet werden: die einmalige Ermittlung und die kontinuierliche Ermittlung.
 
-**Algorithmus** | **Hashwert**
---- | ---
-MD5 | c5bf029e9fac682c6b85078a61c5c79c
-SHA1 | af66656951105e42680dfcc3ec3abd3f4da8fdec
-SHA256 | 58b685b2707f273aa76f2e1d45f97b0543a8c4d017cd27f0bdb220e6984cc90e
 
-#### <a name="upgrade-to-version-10913"></a>Upgrade auf Version 1.0.9.13
+### <a name="one-time-discovery"></a>Einmalige Ermittlung
 
-Hashwerte für das [Upgradepaket 1.0.9.13](https://aka.ms/migrate/col/upgrade_9_13)
+Der Collector kommuniziert einmalig mit vCenter Server, um Metadaten über die VMs zu sammeln. Er verwendet diese Methode:
 
-**Algorithmus** | **Hashwert**
---- | ---
-MD5 | 739f588fe7fb95ce2a9b6b4d0bf9917e
-SHA1 | 9b3365acad038eb1c62ca2b2de1467cb8eed37f6
-SHA256 | 7a49fb8286595f39a29085534f29a623ec2edb12a3d76f90c9654b2f69eef87e
+- Die Appliance ist nicht kontinuierlich mit dem Azure Migrate-Projekt verbunden.
+- In der lokalen Umgebung vorgenommene Änderungen werden nach Abschluss der Ermittlung in Azure Migrate nicht widergespiegelt. Sie müssen dieselbe Umgebung in demselben Projekt erneut ermitteln, um sämtliche Änderungen widerspiegeln zu können.
+- Für diese Ermittlungsmethode müssen Sie die Statistikeinstellungen in vCenter Server auf Ebene 3 festlegen.
+- Nachdem die Statistikeinstellungen auf Ebene 3 festgelegt wurden, dauert es bis zu einem Tag, bis die Leistungsindikatoren generiert werden. Daher wird empfohlen, die Ermittlung erst nach einem Tag durchzuführen.
+- Beim Sammeln von Leistungsdaten für eine VM verwendet die Appliance die in vCenter Server gespeicherten Verlaufsleistungsdaten. Sie erfasst den Leistungsverlauf des letzten Monats.
+- Azure Migrate erfasst für jede Metrik einen durchschnittlichen Leistungsindikator (im Vergleich zu einem Spitzenleistungsindikator).
 
-#### <a name="upgrade-to-version-10911"></a>Upgrade auf Version 1.0.9.11
+### <a name="continuous-discovery"></a>Kontinuierliche Ermittlung
 
-Hashwerte für das [Upgradepaket 1.0.9.11](https://aka.ms/migrate/col/upgrade_9_11)
+Die Collectorappliance ist kontinuierlich mit dem Azure Migrate-Projekt verbunden.
 
-**Algorithmus** | **Hashwert**
---- | ---
-MD5 | 0e36129ac5383b204720df7a56b95a60
-SHA1 | aa422ef6aa6b6f8bc88f27727e80272241de1bdf
-SHA256 | 5f76dbbe40c5ccab3502cc1c5f074e4b4bcbf356d3721fd52fb7ff583ff2b68f
+- Der Collector profiliert kontinuierlich die lokale Umgebung, um alle 20 Sekunden Echtzeit-Verwendungsdaten zu sammeln.
+- Dieses Modell ist für die Sammlung von Leistungsdaten nicht von den Statistikeinstellungen von vCenter Server abhängig.
+- Die Appliance führt für die 20-Sekunden-Stichproben ein Rollup aus und erstellt alle 15 Minuten einen einzelnen Datenpunkt.
+- Zum Erstellen des Datenpunkts wählt die Appliance den Spitzenwert aus den 20-Sekunden-Stichproben aus und sendet diesen an Azure.
+- Sie können die kontinuierliche Profilerstellung jederzeit über den Collector beenden.
 
-#### <a name="upgrade-to-version-1097"></a>Upgrade auf Version 1.0.9.7
+> [!NOTE]
+> Die Funktionalität der kontinuierlichen Ermittlung ist in der Vorschau. Wenn die Statistikeinstellungen von vCenter Server nicht auf Ebene 3 festgelegt sind, wird empfohlen, diese Methode zu verwenden.
 
-Hashwerte für das [Upgradepaket 1.0.9.7](https://aka.ms/migrate/col/upgrade_9_7)
 
-**Algorithmus** | **Hashwert**
---- | ---
-MD5 | 01ccd6bc0281f63f2a672952a2a25363
-SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
-SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
+## <a name="discovery-process"></a>Ermittlungsprozess
+
+Nach der Einrichtung der Appliance können Sie die Ermittlung durchführen. So funktioniert es:
+
+- Sie führen eine Ermittlung nach Bereich durch. Alle VMs im angegebenen vCenter-Inventarpfad werden ermittelt.
+    - Sie legen jeweils einen Bereich fest.
+    - Der Bereich kann bis zu 1.500 VMs umfassen.
+    - Der Bereich kann entweder ein Rechenzentrum, ein Ordner oder ein ESXi-Host sein.
+- Nach dem Herstellen einer Verbindung mit vCenter Server stellen Sie eine Verbindung her, indem Sie ein Migrationsprojekt für die Sammlung angeben.
+- VMs werden ermittelt, und die zugehörigen Metadaten und Leistungsdaten werden an Azure gesendet. Diese Aktionen sind Teil eines Sammlungsauftrags.
+    - Der Collectorappliance wird eine bestimmte Collector-ID zugeordnet, die ermittlungsübergreifend für einen bestimmten Computer beständig ist.
+    - Einem aktuell ausgeführten Sammlungsauftrag wird eine bestimmte Sitzungs-ID zugeordnet. Die ID ändert sich bei jedem Sammlungsauftrag und kann zur Problembehandlung verwendet werden.
+
+### <a name="collected-metadata"></a>Gesammelte Metadaten
+
+Die Collectorappliance ermittelt folgende statische Metadaten für VMs:
+
+- Anzeigename der VM (in vCenter Server)
+- Inventarpfad der VM (der Host/Ordner in vCenter Server)
+- IP-Adresse
+- MAC-Adresse
+- Betriebssystem
+- Anzahl der Kerne, Datenträger, NICs
+- Arbeitsspeichergröße, Datenträgergrößen
+- Leistungsindikatoren der VM, Datenträger und Netzwerk.
+
+#### <a name="performance-counters"></a>Leistungsindikatoren
+
+- **Einmalige Ermittlung**: Beachten Sie Folgendes, wenn die Leistungsindikatoren für eine einmalige Ermittlung gesammelt werden:
+
+    - Es kann bis zu 15 Minuten dauern, bis Konfigurationsmetadaten gesammelt und an das Projekt gesendet werden.
+    - Nach der Sammlung der Konfigurationsdaten kann es bis zu einer Stunde dauern, bis Leistungsdaten im verfügbar sind.
+    - Wenn die Metadaten im Portal verfügbar sind, wird die Liste der VMs angezeigt, und Sie können mit dem Erstellen von Gruppen für die Bewertung beginnen.
+- **Kontinuierliche Ermittlung**: Beachten Sie bei der kontinuierlichen Ermittlung Folgendes:
+    - Konfigurationsdaten für die VM sind eine Stunde nach Beginn der Ermittlung verfügbar
+    - Leistungsdaten sind nach zwei Stunden verfügbar.
+    - Warten Sie nach dem Starten der Ermittlung mindestens einen Tag, bis die Appliance ein Profil für die Umgebung erstellt hat, bevor Sie Bewertungen erstellen.
+
+**Leistungsindikator** | **Level** | **Ebene pro Gerät** | **Auswirkung auf die Bewertung**
+--- | --- | --- | ---
+cpu.usage.average | 1 | Nicht verfügbar | Empfohlene VM-Größe und -Kosten  
+mem.usage.average | 1 | Nicht verfügbar | Empfohlene VM-Größe und -Kosten  
+virtualDisk.read.average | 2 | 2 | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+virtualDisk.write.average | 2 | 2  | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+virtualDisk.numberReadAveraged.average | 1 | 3 |  Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+virtualDisk.numberWriteAveraged.average | 1 | 3 |   Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+net.received.average | 2 | 3 |  Berechnet die VM-Größe und Netzwerkkosten                        |
+net.transmitted.average | 2 | 3 | Berechnet die VM-Größe und Netzwerkkosten    
 
 ## <a name="next-steps"></a>Nächste Schritte
 

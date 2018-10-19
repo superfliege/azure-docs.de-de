@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus der Salesforce Marketing Cloud mithilfe von Azure Data Factory | Microsoft Docs
+title: Kopieren von Daten aus Salesforce Marketing Cloud mithilfe von Azure Data Factory (Vorschauversion) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Daten aus Salesforce Marketing Cloud mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: a68090ea32c7ba4155aa5474067c5cce6f1ee30b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 07c58ea964d6af1ffe1a447d8b52879753f1951c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055362"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123350"
 ---
-# <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Kopieren von Daten aus Salesforce Marketing Cloud mithilfe von Azure Data Factory
+# <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopieren von Daten aus Salesforce Marketing Cloud mithilfe von Azure Data Factory (Vorschauversion)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Salesforce Marketing Cloud-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -45,9 +45,9 @@ Folgende Eigenschaften werden für den mit Salesforce Marketing Cloud verknüpft
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **SalesforceMarketingCloud** festgelegt sein. | Ja |
-| clientId | Die Client-ID, die der Salesforce Marketing Cloud-Anwendung zugeordnet ist.  | Ja |
-| clientSecret | Der geheime Clientschlüssel, der der Salesforce Marketing Cloud-Anwendung zugeordnet ist. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der ADF-Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
+| type | Die type-Eigenschaft muss auf **SalesforceMarketingCloud** festgelegt sein. | JA |
+| clientId | Die Client-ID, die der Salesforce Marketing Cloud-Anwendung zugeordnet ist.  | JA |
+| clientSecret | Der geheime Clientschlüssel, der der Salesforce Marketing Cloud-Anwendung zugeordnet ist. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der ADF-Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | JA |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |
@@ -105,8 +105,8 @@ Legen Sie zum Kopieren von Daten aus Salesforce Marketing Cloud den Quelltyp in 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SalesforceMarketingCloudSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SalesforceMarketingCloudSource** festgelegt werden. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | JA |
 
 **Beispiel:**
 

@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Amazon Marketplace Web Service mit Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Amazon Marketplace Web Service mit Azure Data Factory (Vorschau) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Daten aus Amazon Marketplace Web Service mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: c456f87b451c5876653d704ec367629c2856a1f6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: bcda662790c1af72e28b8968142bab15f62e83bf
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052469"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127176"
 ---
-# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Marketplace Web Service mit Azure Data Factory
+# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Kopieren von Daten aus Amazon Marketplace Web Service mit Azure Data Factory (Vorschau)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Amazon Marketplace Web Service zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -45,13 +45,13 @@ Folgende Eigenschaften werden für den mit Amazon Marketplace Web Service verkn�
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **AmazonMWS** festgelegt werden. | Ja |
-| endpoint | Der Endpunkt des Amazon MWS-Servers (mws.amazonservices.com).  | Ja |
-| marketplaceID | Die Amazon Marketplace-ID, aus der Daten abgerufen werden sollen. Um Daten von mehreren Marketplace-IDs abzurufen, trennen Sie diese durch ein Komma (`,`). (d.h. A2EUQ1WTGCTBG2)  | Ja |
-| sellerID | Die Amazon-Verkäufer-ID.  | Ja |
-| mwsAuthToken | Das Amazon MWS-Authentifizierungstoken. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
-| accessKeyId | Die Zugriffsschlüssel-ID, mit der auf Daten zugegriffen wird.  | Ja |
-| secretKey | Der geheime Schlüssel, mit dem auf Daten zugegriffen wird. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| type | Die „type“-Eigenschaft muss auf **AmazonMWS** festgelegt werden. | JA |
+| endpoint | Der Endpunkt des Amazon MWS-Servers (mws.amazonservices.com).  | JA |
+| marketplaceID | Die Amazon Marketplace-ID, aus der Daten abgerufen werden sollen. Um Daten von mehreren Marketplace-IDs abzurufen, trennen Sie diese durch ein Komma (`,`). (d.h. A2EUQ1WTGCTBG2)  | JA |
+| sellerID | Die Amazon-Verkäufer-ID.  | JA |
+| mwsAuthToken | Das Amazon MWS-Authentifizierungstoken. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
+| accessKeyId | Die Zugriffsschlüssel-ID, mit der auf Daten zugegriffen wird.  | JA |
+| secretKey | Der geheime Schlüssel, mit dem auf Daten zugegriffen wird. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |
@@ -113,8 +113,8 @@ Legen Sie zum Kopieren von Daten aus Amazon Marketplace Web Service den Quelltyp
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **AmazonMWSSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Ja |
+| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **AmazonMWSSource** festgelegt werden. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | JA |
 
 **Beispiel:**
 

@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Zoho mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Zoho mithilfe von Azure Data Factory (Vorschauversion) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Daten aus Zoho mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: aa87e111bad1af03e2778bcbfc452c291bc72a81
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1e052b656f12a9059a5ee9d3ea21d0fa20fc00c6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049212"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123061"
 ---
-# <a name="copy-data-from-zoho-using-azure-data-factory"></a>Kopieren von Daten aus Zoho mithilfe von Azure Data Factory
+# <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Kopieren von Daten aus Zoho mithilfe von Azure Data Factory (Vorschauversion)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Zoho zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -45,9 +45,9 @@ Folgende Eigenschaften werden für den mit Zoho verknüpften Dienst unterstützt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Zoho** festgelegt werden. | Ja |
-| endpoint | Der Endpunkt des Zoho-Servers (`crm.zoho.com/crm/private`). | Ja |
-| accessToken | Das Zugriffstoken für die Zoho-Authentifizierung. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| type | Die „type“-Eigenschaft muss auf **Zoho** festgelegt werden. | JA |
+| endpoint | Der Endpunkt des Zoho-Servers (`crm.zoho.com/crm/private`). | JA |
+| accessToken | Das Zugriffstoken für die Zoho-Authentifizierung. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |
@@ -101,8 +101,8 @@ Legen Sie zum Kopieren von Daten aus Zoho den Quelltyp in der Kopieraktivität a
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **ZohoSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Accounts"`. | Ja |
+| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **ZohoSource** festgelegt werden. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Accounts"`. | JA |
 
 **Beispiel:**
 

@@ -1,25 +1,28 @@
 ---
-title: interpret-Methode in der Knowledge Exploration Service-API | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die interpret-Methode in der Knowledge Exploration Service-API (KES) in Cognitive Services verwenden können.
+title: Interpret-Methode – Knowledge Exploration Service-API
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie die Interpret-Methode in der Knowledge Exploration Service-API (KES) verwenden können.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: ef68d98dacf393abf8d030b9312217ea380947d2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45badbdbe1a7e1f2028a00d54458db35a4f7d440
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373179"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128006"
 ---
 # <a name="interpret-method"></a>interpret-Methode
+
 Die *interpret*-Methode akzeptiert eine Abfragezeichenfolge in natürlicher Sprache und gibt formatierte Interpretationen der Benutzerabsicht basierend auf der Grammatik und den Indexdaten zurück.  Als interaktives Suchfeature kann diese Methode aufgerufen werden, während die einzelnen Zeichen vom Benutzer eingegeben werden. Hierbei ist der Parameter *complete* auf 1 festgelegt, um Vorschläge der automatischen Vervollständigung zu aktivieren.
 
 ## <a name="request"></a>Anforderung
+
 `http://<host>/interpret?query=<query>[&<options>]`
 
 NAME|Wert| BESCHREIBUNG
@@ -33,6 +36,7 @@ timeout  | Zahl (default=1000) | Timeout in Millisekunden. Nur die vor Ablauf de
 Mithilfe der Parameter *count* und *offset* kann eine große Anzahl von Ergebnissen inkrementell über mehrere Anforderungen abgerufen werden.
 
 ## <a name="response-json"></a>Antwort (JSON)
+
 JSONPath     | BESCHREIBUNG
 ---------|---------
 $.query |Der *query*-Parameter aus der Anforderung.
@@ -47,6 +51,7 @@ $.interpretations[\*].rules[\*].output.value|Wert der semantischen Ausgabe.
 $.aborted | „true“, wenn ein Timeout bei der Anforderung aufgetreten ist.
 
 ### <a name="parse-xml"></a>XML-Analyse
+
 Bei der XML-Analyse wird die (abgeschlossene) Abfrage mit Informationen darüber versehen, inwiefern sie den Regeln in der Grammatik und den Attributen im Index entspricht.  Im Folgenden finden Sie ein Beispiel aus dem Bereich der wissenschaftlichen Veröffentlichungen:
 
 ```xml
@@ -65,6 +70,7 @@ Das `<rule>`-Element begrenzt den Bereich in der Abfrage entsprechend der Regel,
 Das `<attr>`-Element begrenzt den Bereich in der Abfrage entsprechend des Indexattributs, das durch das jeweilige `name`-Attribut angegeben ist.  Wenn die Übereinstimmung ein Synonym in der Eingabeabfrage beinhaltet, enthält das `canonical`-Attribut den kanonischen Wert entsprechend des Synonyms aus dem Index.
 
 ## <a name="example"></a>Beispiel
+
 Im Beispiel der wissenschaftlichen Veröffentlichungen gibt die folgende Anforderung bis zu zwei Vorschläge der automatischen Vervollständigung für die Präfixabfrage „papers by jaime“ zurück:
 
 `http://<host>/interpret?query=papers by jaime&complete=1&count=2`

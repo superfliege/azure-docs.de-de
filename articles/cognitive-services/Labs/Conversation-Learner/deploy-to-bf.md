@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bb977df92cf0ada1e50a929a9ea714313a70165a
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0bcb6262201b3399ca4d759bb306a570bea33b00
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171475"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578768"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Bereitstellen eines Unterhaltungslernmodul-Bots
 
@@ -94,9 +94,9 @@ Der Bot wird jetzt lokal ausgeführt.  Sie können mit dem Bot Framework-Emulato
 
 Sie können Ihren Unterhaltungslernmodul-Bot auf ähnliche Weise veröffentlichen wie jeden anderen Bot. Sie laden auf einer hohen Ebene Ihren Code auf eine gehostete Website hoch, legen die entsprechenden Konfigurationswerte fest und registrieren dann den Bot für verschiedene Kanäle. Ausführliche Anweisungen finden Sie in diesem Video, in dem gezeigt wird, wie Sie einen Bot mit Azure Bot Service veröffentlichen.
 
-Sobald der Bot bereitgestellt wurde und ausgeführt wird, können Sie verschiedene Kanäle wie Facebook, Teams, Skype usw. über eine Azure Bot-Kanalregistrierung mit dem Bot verbinden. Eine Dokumentation zu diesem Prozess finden Sie unter: https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration
+Sobald der Bot bereitgestellt wurde und ausgeführt wird, können Sie verschiedene Kanäle wie Facebook, Teams, Skype usw. über eine Azure Bot-Kanalregistrierung mit dem Bot verbinden. Eine Dokumentation zu diesem Prozess finden Sie unter: https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
 
-Im Folgenden finden Sie Schrittanleitungen zum Bereitstellen eines Unterhaltungslernmodul-Bots in Azure.  Bei diesen Anweisungen wird davon ausgegangen, dass Ihre Botquelle über eine cloudbasierte Quelle wie VSTS, GitHub, BitBucket oder OneDrive verfügbar ist und Ihr Bot für die dauerhafte Bereitstellung (Continuous Deployment) konfiguriert wird.
+Im Folgenden finden Sie Schrittanleitungen zum Bereitstellen eines Unterhaltungslernmodul-Bots in Azure.  Bei diesen Anweisungen wird davon ausgegangen, dass Ihre Botquelle über eine cloudbasierte Quelle wie Azure DevOps Services, GitHub, BitBucket oder OneDrive verfügbar ist und Ihr Bot für die dauerhafte Bereitstellung (Continuous Deployment) konfiguriert wird.
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 

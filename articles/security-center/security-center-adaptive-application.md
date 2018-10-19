@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2018
+ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8efb629575f94c8970dd68113eeb27a9dd36e643
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: cd5530cf27b88f0f1ccba392c0ea2d714fedcd66
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158754"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129776"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptive Anwendungssteuerungen in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Was sind adaptive Anwendungssteuerungen in Security Center?
-Mit adaptiven Anwendungssteuerungen lässt sich steuern, welche Anwendungen auf Ihren virtuellen Computern in Azure ausgeführt werden können. Dadurch können Sie Ihre virtuellen Computer unter anderem besser vor Schadsoftware schützen. Security Center nutzt Machine Learning, um die auf dem virtuellen Computer ausgeführten Anwendungen zu analysieren, und unterstützt Sie beim Anwenden von Whitelistregeln, die auf diesen Daten basieren. Dadurch können Sie Anwendungswhitelists deutlich einfacher konfigurieren und verwalten und profitieren außerdem von folgenden Möglichkeiten:
+Adaptive Anwendungssteuerungen sind eine intelligente, automatisierte End-to-End-Lösung für das Anwendungswhitelisting von Azure Security Center. Hiermit lässt sich steuern, welche Anwendungen auf Ihren virtuellen Computern in Azure ausgeführt werden können, wodurch Sie Ihre virtuellen Computer unter anderem besser vor Schadsoftware schützen können. Security Center nutzt Machine Learning, um die auf Ihren virtuellen Computern ausgeführten Anwendungen zu analysieren, und unterstützt Sie beim Anwenden der jeweiligen Whitelistregeln, die auf diesen Daten basieren. Dadurch können Sie Richtlinien für das Anwendungswhitelisting deutlich einfacher konfigurieren und verwalten und profitieren außerdem von folgenden Möglichkeiten:
 
 - Blockierung der Ausführung schädlicher Anwendungen oder Ausgabe einer Warnung beim Versuch, eine schädliche Anwendung auszuführen (auch bei Anwendungen, die möglicherweise von Antischadsoftwarelösungen nicht erfasst werden)
 - Einhaltung der Sicherheitsrichtlinie Ihrer Organisation, die die ausschließliche Verwendung von lizenzierter Software vorschreibt
@@ -35,18 +35,18 @@ Mit adaptiven Anwendungssteuerungen lässt sich steuern, welche Anwendungen auf 
 - Steuerung des Zugriffs auf sensible Daten im Rahmen der App-Nutzung durch die IT-Abteilung
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Aktivieren adaptiver Anwendungssteuerungen
-Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung in konfigurierten Gruppen zulässig ist. Dieses Feature steht nur für Windows-Computer (alle Versionen, klassisch oder Azure Resource Manager) zur Verfügung. Gehen Sie wie folgt vor, um das Anwendungswhitelisting in Security Center zu konfigurieren:
+Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung auf konfigurierten Gruppen virtueller Computer zulässig ist. Dieses Feature steht nur für Windows-Computer (alle Versionen, klassisch oder Azure Resource Manager) zur Verfügung. Gehen Sie wie folgt vor, um das Anwendungswhitelisting in Security Center zu konfigurieren:
 
 1. Öffnen Sie das Dashboard **Security Center**.
 2. Wählen Sie im linken Bereich unter **Erweiterter Cloudschutz** die Option **Adaptive Anwendungssteuerung**.
 
-    ![Verteidigung](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
+    ![Schutz](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
 
 Die Seite **Adaptive Anwendungssteuerung** wird angezeigt.
 
-![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+![Steuerung](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
-Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
+Der Abschnitt **VM-Gruppen** enthält drei Registerkarten:
 
 * **Konfiguriert**: Liste der Gruppen mit den virtuellen Computern, für die die Anwendungssteuerung bereits konfiguriert ist.
 * **Empfohlen**: Liste der Gruppen, für die die Anwendungssteuerung empfohlen wird. Security Center nutzt Machine Learning, um geeignete virtuelle Computer für die Anwendungssteuerung basierend darauf zu ermitteln, ob die virtuellen Computer konsistent die gleichen Anwendungen ausführen.
@@ -66,48 +66,49 @@ Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
 
   - **NAME**: Der Name des Abonnements und der Gruppe.
   - **VMs**: Die Anzahl virtueller Computer in der Gruppe.
-  - **ZUSTAND**: Der Zustand der Empfehlungen (in der Regel „Offen“).
+  - **STATUS**: Der Status der Empfehlungen.
   - **SCHWEREGRAD**: Der Schweregrad der Empfehlungen.
 
-2. Wählen Sie eine Gruppe aus, um die Option **Regeln zur Anwendungssteuerung erstellen** zu öffnen.
+2. Klicken Sie auf eine Gruppe, um die Option **Regeln zur Anwendungssteuerung erstellen** zu öffnen.
 
   ![Anwendungssteuerungsregeln](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
 
-3. Sehen Sie sich unter **VMs auswählen** die Liste mit den empfohlenen virtuellen Computern an, und heben Sie die Auswahl aller virtuellen Computer auf, auf die Sie die Anwendungssteuerung nicht anwenden möchten. Als Nächstes sehen Sie zwei Listen:
+3. Sehen Sie sich unter **VMs auswählen** die Liste mit den empfohlenen virtuellen Computern an, und heben Sie die Auswahl aller virtuellen Computer auf, auf die Sie eine Richtlinie für das Anwendungswhitelisting nicht anwenden möchten. Als Nächstes sehen Sie zwei Listen:
 
-  - **Recommended applications** (Empfohlene Anwendungen): Eine Liste mit Anwendungen, die häufig auf den virtuellen Computern in dieser Gruppe vorhanden sind und für die deshalb Anwendungssteuerungsregeln empfohlen werden.
-  - **More applications** (Weitere Anwendungen): Eine Liste mit Anwendungen, die weniger häufig auf den virtuellen Computern in dieser Gruppe vorhanden oder als Sicherheitslücken bekannt sind (siehe weiter unten) und vor der Anwendung der Regeln überprüft werden sollten.
+  - **Empfohlene Anwendungen**: Eine Liste mit Anwendungen, die häufig auf den virtuellen Computern in dieser Gruppe vorhanden sind und für die ein Zulassen der Ausführung empfohlen wird.
+  - **Weitere Anwendungen**: Eine Liste mit Anwendungen, die weniger häufig auf den virtuellen Computern in dieser Gruppe vorhanden oder als Sicherheitslücken bekannt sind (siehe weiter unten) und überprüft werden sollten.
 
 4. Überprüfen Sie die Anwendungen in den einzelnen Listen, und deaktivieren Sie die Kontrollkästchen aller Anwendungen, die Sie nicht anwenden möchten. Die Listen enthalten jeweils Folgendes:
 
-  - **NAME**: Die Zertifikatinformationen einer Anwendung oder der vollständige Anwendungspfad.
-  - **DATEITYPEN**: Der Anwendungsdateityp. Mögliche Optionen sind „EXE“, „Skript“ und „MSI“.
-  - **SICHERHEITSLÜCKE**: Ein Warnsymbol gibt an, ob die Anwendungen von einem Angreifer zur Umgehung des Anwendungswhitelistings verwendet werden können. Es empfiehlt sich, diese Anwendungen vor der Genehmigung zu überprüfen.
+  - **NAME**: Die Zertifikatinformationen oder der vollständige Pfad einer Anwendung.
+  - **DATEITYPEN**: Der Anwendungsdateityp. Dieser kann EXE, Script, MSI oder eine beliebige Permutation dieser Typen sein.
+  - **SICHERHEITSLÜCKE**: Ein Warnsymbol gibt an, ob eine bestimmte Anwendung von einem Angreifer zur Umgehung einer Lösung für Anwendungswhitelisting verwendet werden könnte. Es empfiehlt sich, diese Anwendungen vor der Genehmigung zu überprüfen.
   - **BENUTZER**: Benutzer, denen das Ausführen einer Anwendung ermöglicht werden sollte.
 
-5. Klicken Sie nach Abschluss Ihrer Auswahl auf **Erstellen**.
+5. Klicken Sie nach Abschluss Ihrer Auswahl auf **Erstellen**. <br>
+Nachdem Sie „Erstellen“ ausgewählt haben, erstellt Azure Security Center automatisch die entsprechenden Regeln basierend auf der integrierten Lösung für Anwendungswhitelisting auf Windows-Servern (AppLocker).
 
 
 > [!NOTE]
 > - Security Center zieht zur Erstellung einer Baseline sowie für die individuellen Empfehlungen pro VM-Gruppe die Daten eines Zeitraums von mindestens zwei Wochen heran. Bei neuen Kunden mit dem Standardtarif von Security Center werden VM-Gruppen zunächst auf der Registerkarte *Keine Empfehlung* angezeigt.
 > - Adaptive Anwendungssteuerungen in Security Center unterstützen keine virtuellen Computer, für die entweder über ein Gruppenrichtlinienobjekt oder eine lokale Sicherheitsrichtlinie bereits eine AppLocker-Richtlinie aktiviert wurde.
-> -  Aus Sicherheitsgründen versucht Security Center immer, eine Herausgeberregel für die Anwendungen zu erstellen, die in die Whitelist aufgenommen werden sollen. Eine Pfadregel für den vollständigen Pfad der spezifischen EXE-Datei wird nur erstellt, wenn eine Anwendung über keine Herausgeberinformationen verfügt (also nicht signiert ist).
+> -  Aus Sicherheitsgründen versucht Security Center immer, eine Herausgeberregel für Anwendungen zu erstellen, die als zulässig ausgewählt sind. Eine Pfadregel für den vollständigen Pfad der spezifischen Anwendung wird nur erstellt, wenn eine Anwendung über keine Herausgeberinformationen verfügt (also nicht signiert ist).
 >   
 
 ### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>Bearbeiten und Überwachen einer mit Anwendungssteuerung konfigurierten Gruppe
 
-1. Kehren Sie zur Seite **Adaptive Anwendungssteuerung** zurück, und klicken Sie unter **Groups of VMs** (VM-Gruppen) auf **KONFIGURIERT**, um eine mit Anwendungssteuerung konfigurierte Gruppe zu bearbeiten und zu überwachen:
+1. Kehren Sie zur Seite **Adaptive Anwendungssteuerung** zurück, und klicken Sie unter **VM-Gruppen** auf **KONFIGURIERT**, um eine Gruppe zu bearbeiten und zu überwachen, die mit einer Richtlinie für das Anwendungswhitelisting konfiguriert ist:
 
   ![Gruppen](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
 
   Die Liste enthält Folgendes:
 
-  - **NAME**: Der Name des Abonnements und der Gruppe.
+  - **Name**: Der Name des Abonnements und der Gruppe.
   - **VMs**: Die Anzahl virtueller Computer in der Gruppe.
-  - **MODUS**: Im Überwachungsmodus werden Versuche, eine nicht in der Whitelist enthaltene Anwendung auszuführen, protokolliert. Im Erzwingungsmodus wird die Ausführung von Anwendungen verhindert, die sich nicht in der Whitelist befinden.
-  - **PROBLEME**: Alle derzeitigen Verstöße.
+  - **Modus**: Im Überwachungsmodus werden Versuche, eine nicht in der Whitelist enthaltene Anwendung auszuführen, protokolliert. Im Erzwingungsmodus wird die Ausführung von Anwendungen verhindert, die sich nicht in der Whitelist befinden.
+  - **Warnungen**: Alle derzeitigen Verstöße.
 
-2. Wählen Sie eine Gruppe aus, um Änderungen auf der Seite **Richtlinie zur Anwendungssteuerung bearbeiten** vorzunehmen.
+2. Klicken Sie auf eine Gruppe, um Änderungen auf der Seite **Richtlinie zur Anwendungssteuerung bearbeiten** vorzunehmen.
 
   ![Schutz](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
 
@@ -116,61 +117,40 @@ Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
   - **Überwachen**: In diesem Modus werden die Regeln von der Anwendungssteuerungslösung nicht erzwungen und nur die Aktivitäten auf den geschützten virtuellen Computern überwacht. Dies empfiehlt sich, wenn Sie zuerst das allgemeine Verhalten untersuchen möchten, bevor Sie die Ausführung einer App auf dem virtuellen Zielcomputer blockieren.
   - **Erzwingen**: In diesem Modus werden die Regeln von der Anwendungssteuerungslösung erzwungen, und Anwendungen, deren Ausführung nicht zulässig ist, werden blockiert.
 
-  Wie bereits erwähnt, werden neue Anwendungssteuerungsrichtlinien standardmäßig immer im *Überwachungsmodus* konfiguriert. Unter **Policy extension** (Richtlinienerweiterung) können Sie eigene Anwendungspfade hinzufügen, die in die Whitelist aufgenommen werden sollen. Nach dem Hinzufügen dieser Pfade erstellt Security Center zusätzlich zu den bereits vorhandenen Regeln die entsprechenden Regeln für diese Anwendungen.
+   > [!NOTE]
+   > Wie bereits erwähnt, werden neue Anwendungssteuerungsrichtlinien standardmäßig immer im *Überwachungsmodus* konfiguriert. 
+   >
 
-  Im Abschnitt **Neue Probleme** werden alle aktuellen Verstöße aufgeführt.
+4. Unter **Richtlinienerweiterung** können Sie beliebige Anwendungspfade hinzufügen, die Sie zulassen möchten. Nachdem Sie diese Pfade hinzugefügt haben, aktualisiert Security Center die Richtlinie für das Anwendungswhitelisting auf den virtuellen Computern innerhalb der ausgewählten Gruppe und erstellt die entsprechenden Regeln für diese Anwendungen zusätzlich zu den bereits vorhandenen Regeln.
 
-  ![Probleme](./media/security-center-adaptive-application/security-center-adaptive-application-fig7.png)
+5. Überprüfen Sie die aktuellen Verstöße, die im Abschnitt **Letzte Warnungen** aufgeführt sind. Klicken Sie auf die einzelnen Zeilen, um zur Seite **Warnungen** in Azure Security Center umgeleitet zu werden, und zeigen Sie alle Warnungen an, die von Azure Security Center auf den zugeordneten virtuellen Computern erkannt wurden.
+  - **Warnungen**: Alle protokollierten Verstöße.
+  - **Anzahl virtueller Computer**: Die Anzahl virtueller Computer mit diesem Warnungstyp.
 
-  Diese Liste enthält:
-  - **PROBLEME**: Alle protokollierten Verstöße. Mögliche Optionen:
+6. Unter **Regeln für Herausgeberwhitelists**, **Regeln für Pfadwhitelists** und **Hashregeln für Whitelist** können Sie sehen, welche Regeln für Anwendungswhitelists auf den virtuellen Computern innerhalb einer Gruppe gemäß dem Regelsammlungstyp konfiguriert sind. Für jede Regel werden die folgenden Informationen angezeigt:
 
-      - **ViolationsBlocked**: Tritt auf, wenn sich die Lösung im Erzwingungsmodus befindet und versucht wird, eine Anwendung auszuführen, die nicht in der Whitelist enthalten ist.
-      - **ViolationsAudited**: Tritt auf, wenn sich die Lösung im Überwachungsmodus befindet und eine Anwendung ausgeführt wird, die nicht in der Whitelist enthalten ist.
+  - **Regel**: Die jeweiligen Parameter, nach denen eine Anwendung von AppLocker geprüft wird, um festzustellen, ob das Ausführen der Anwendung zulässig ist.
+  - **Dateityp**: Die Dateitypen, die durch eine bestimmte Regel abgedeckt sind. Dieser kann EXE, Script, MSI oder eine beliebige Permutation dieser Dateitypen sein.
+  - **Benutzer**: Name oder Anzahl der Benutzer, denen das Ausführen einer Anwendung gestattet ist, die durch eine Regel für Anwendungswhitelists abgedeckt ist.
 
- - **Anzahl OF VMS** (ANZAHL VIRTUELLER COMPUTER): Die Anzahl virtueller Computer mit diesem Problemtyp.
+   ![Whitelistregeln](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
 
-  Durch Klicken auf die einzelnen Zeilen gelangen Sie zur Seite [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Hier finden Sie Informationen zu allen virtuellen Computern mit dieser Art von Verstoß. Wenn Sie auf die drei Punkte am Zeilenende klicken, können Sie den entsprechenden Eintrag löschen. Der Abschnitt **Configured virtual machines** (Konfigurierte virtuelle Computer) enthält die virtuellen Computer, für die diese Regeln gelten.
+7. Klicken Sie auf die drei Punkte am Zeilenende, wenn Sie die entsprechende Regel löschen oder die berechtigten Benutzer bearbeiten möchten.
 
-  ![Konfigurierte virtuelle Computer](./media/security-center-adaptive-application/security-center-adaptive-application-fig8.png)
-
-  Unter **Regeln für Herausgeberwhitelists** enthält die Liste Folgendes:
-
-  - **REGEL**: Anwendungen, für die eine Herausgeberregel erstellt wurde – basierend auf den Zertifikatinformationen, die für die jeweilige Anwendung gefunden wurden.
-  - **DATEITYP**: Die Dateitypen, die durch eine bestimmte Herausgeberregel abgedeckt sind. Mögliche Optionen: „EXE“, „Skript“ oder „MSI“.
-  - **BENUTZER**: Anzahl von Benutzern, die zum Ausführen der einzelnen Anwendungen berechtigt sind.
-
-  Weitere Informationen finden Sie unter [Understanding the publisher rule condition in AppLocker](https://docs.microsoft.com/windows/device-security/applocker/understanding-the-publisher-rule-condition-in-applocker) (Grundlegendes zur Herausgeberregelbedingung in AppLocker).
-
-  ![Whitelistregeln](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
-
-  Wenn Sie auf die drei Punkte am Zeilenende klicken, können Sie die entsprechende Regel löschen oder die berechtigten Benutzer bearbeiten.
-
-  Im Abschnitt **Regeln für Pfadwhitelists** wird der vollständige Anwendungspfad (einschließlich des spezifischen Dateityps) für die Anwendungen aufgeführt, die nicht mit einem digitalen Zertifikat signiert, aber in den Whitelistregeln immer noch aktuell sind.
-
-  > [!NOTE]
-  > Aus Sicherheitsgründen versucht Security Center standardmäßig, eine Herausgeberregel für die ausführbaren Dateien zu erstellen, die in die Whitelist aufgenommen werden sollen. Eine Pfadregel für den vollständigen Pfad der spezifischen EXE-Datei wird nur erstellt, wenn eine ausführbare Datei über keine Herausgeberinformationen verfügt (also nicht signiert ist).
-
-  ![Regeln für Pfadwhitelists](./media/security-center-adaptive-application/security-center-adaptive-application-fig10.png)
-
-  Die Liste enthält Folgendes:
-  - **NAME**: Der vollständige Patch der ausführbaren Datei.
-  - **DATEITYP**: Die Dateitypen, die durch eine bestimmte Pfadregel abgedeckt sind. Mögliche Optionen: „EXE“, „Skript“ oder „MSI“.
-  - **BENUTZER**: Anzahl von Benutzern, die zum Ausführen der einzelnen Anwendungen berechtigt sind.
-
-  Wenn Sie auf die drei Punkte am Zeilenende klicken, können Sie die entsprechende Regel löschen oder die berechtigten Benutzer bearbeiten.
-
-4. Klicken Sie auf die Schaltfläche **Speichern**, nachdem Sie die Änderungen auf der Seite **Adaptive Anwendungssteuerung** vorgenommen haben. Klicken Sie auf **Verwerfen**, falls Sie die Änderungen nicht anwenden möchten.
+8. Nachdem Sie Änderungen an einer Richtlinie unter **Adaptive Anwendungssteuerung** vorgenommen haben, klicken Sie auf **Speichern**.
 
 ### <a name="not-recommended-list"></a>Liste für Elemente ohne Empfehlung
 
-Security Center empfiehlt das Anwendungswhitelisting nur für virtuelle Computer, die einen stabilen Satz von Anwendungen ausführen. Wenn sich die Anwendungen auf den zugeordneten virtuellen Computern immer wieder ändern, werden keine Empfehlungen erstellt.
+Security Center empfiehlt Richtlinien für das Anwendungswhitelisting nur für virtuelle Computer, die einen stabilen Satz von Anwendungen ausführen. Wenn sich die Anwendungen auf den zugeordneten virtuellen Computern immer wieder ändern, werden keine Empfehlungen erstellt.
 
 ![Empfehlung](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
 
 Die Liste enthält Folgendes:
 - **NAME**: Der Name des Abonnements und der Gruppe.
 - **VMs**: Die Anzahl virtueller Computer in der Gruppe.
+
+Azure Security Center ermöglicht Ihnen das Definieren einer Richtlinie für das Anwendungswhitelisting auch für nicht empfohlene Gruppen virtueller Computer. Befolgen Sie dieselben Prinzipien wie zuvor beschrieben, um eine Richtlinie für das Anwendungswhitelisting auch für diese Gruppen zu konfigurieren.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Anwendungen, die auf virtuellen Azure-Computern ausgeführt werden, mithilfe der adaptiven Anwendungssteuerung in Azure Security Center einer Whitelist hinzufügen. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:

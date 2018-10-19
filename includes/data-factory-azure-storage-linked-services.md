@@ -6,7 +6,7 @@ Sie können einen mit **Azure Storage verknüpften Dienst** verwenden, um ein Az
 | type |Die type-Eigenschaft muss auf **AzureStorage** |JA |
 | connectionString |Geben Sie Informationen, die zur Verbindung mit dem Azure-Speicher erforderlich sind, für die connectionString-Eigenschaft ein. |JA |
 
-Im folgenden Artikel finden Sie Schritte zum Anzeigen bzw. Kopieren des Kontoschlüssels für einen Azure-Speicher: [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account).
+Im folgenden Abschnitt finden Sie die Schritte zum Anzeigen/Kopieren des Kontoschlüssels für eine Azure Storage-Instanz: [Zugriffsschlüssel](../articles/storage/common/storage-account-manage.md#access-keys).
 
 **Beispiel:**  
 

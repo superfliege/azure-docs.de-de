@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 1fd5905b8ea3f87fe6cfc2a830b73b8120a717dd
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341476"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982877"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Beschränkungen in Azure Database for MySQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben. Sehen Sie sich auch die [allgemeinen Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) an, die für die MySQL-Datenbank-Engine gelten.
@@ -72,7 +72,7 @@ Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den f
 - Die Verringerung der Größe des Serverspeichers wird nicht unterstützt.
 
 ### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
-- Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt.
+- Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt. Wenn Sie auf die nächste Hauptversion upgraden möchten, [stellen Sie ein Speicherabbild auf einem Server wieder her](./concepts-migrate-dump-restore.md), der mit der neuen Engineversion erstellt wurde.
 
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 - Wenn Sie das PITR-Feature verwenden, wird der neue Server mit den gleichen Konfigurationen erstellt wie der Server, auf dem er basiert.
@@ -80,9 +80,6 @@ Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den f
 
 ### <a name="vnet-service-endpoints"></a>VNET-Dienstendpunkte
 - VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
-
-### <a name="subscription-management"></a>Abonnementverwaltung
-- Die dynamische Verschiebung von vorab erstellten Servern zwischen Abonnement- und Ressourcengruppen wird derzeit nicht unterstützt.
 
 ## <a name="current-known-issues"></a>Aktuelle bekannte Probleme
 - Die MySQL-Serverinstanz zeigt die falsche Serverversion an, nachdem die Verbindung hergestellt wurde. Um die richtige Engine-Version der Serverinstanzen abzurufen, verwenden Sie den Befehl `select version();`.

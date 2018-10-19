@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 6fe85d7ac527179ab39e89739f5744f3aa1ef8e2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617248"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297554"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Vorlage für Azure Security and Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
@@ -27,7 +27,7 @@ Diese Vorlage für Azure Security and Compliance enthält Anleitungen und Automa
 
 Diese Vorlage wurde vom UK National Cyber Security Centre (NCSC) überprüft und erfüllt die NCSC 14-Cloudsicherheitsprinzipien.
 
-Für die Architektur werden Azure-[Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)-Komponenten verwendet, um eine Umgebung bereitzustellen, mit der Kunden den Kostenaufwand und die Komplexität vermeiden können, die mit dem Kaufen von Softwarelizenzen und dem Verwalten der zugrunde liegenden Anwendungsinfrastruktur und Middleware oder Entwicklungstools und anderer Ressourcen verbunden ist. Kunden verwalten die Anwendungen und Dienste, die sie entwickeln, und konzentrieren sich auf die Bereitstellung des geschäftlichen Nutzens, während Microsoft Azure die anderen Azure-Ressourcen verwaltet, z.B. virtuelle Computer, Speicher und Netzwerk. So wird ein größerer Anteil der [geteilten Zuständigkeit](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) für die Verwaltung der Infrastruktur auf die Azure Platform verlagert. [Azure App Service](https://azure.microsoft.com/services/app-service/) bietet automatische Skalierung, Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Visual Studio Team Services oder ein anderes beliebiges Git-Repository als Standarddienst. Durch die Verwendung von App Services können sich Entwickler auf die Erzielung des geschäftlichen Nutzens konzentrieren, ohne dass der Aufwand für die Verwaltung der Infrastruktur anfällt. Es ist möglich, völlig neue Java-, PHP-, Node.js-, Python-, HTML- oder C#-Webanwendungen zu erstellen oder auch vorhandene Cloud- oder lokale Webanwendungen zu Azure App Service zu migrieren (hierfür ist aber die Durchführung von sorgfältigen Prüfungen und Tests zur Sicherstellung der Leistung erforderlich).
+Für die Architektur werden Azure-[Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)-Komponenten verwendet, um eine Umgebung bereitzustellen, mit der Kunden den Kostenaufwand und die Komplexität vermeiden können, die mit dem Kaufen von Softwarelizenzen und dem Verwalten der zugrunde liegenden Anwendungsinfrastruktur und Middleware oder Entwicklungstools und anderer Ressourcen verbunden ist. Kunden verwalten die Anwendungen und Dienste, die sie entwickeln, und konzentrieren sich auf die Bereitstellung des geschäftlichen Nutzens, während Microsoft Azure die anderen Azure-Ressourcen verwaltet, z.B. virtuelle Computer, Speicher und Netzwerk. So wird ein größerer Anteil der [geteilten Zuständigkeit](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) für die Verwaltung der Infrastruktur auf die Azure Platform verlagert. [Azure App Services](https://azure.microsoft.com/services/app-service/) bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes Git-Repository als Standarddienste. Durch die Verwendung von App Services können sich Entwickler auf die Erzielung des geschäftlichen Nutzens konzentrieren, ohne dass der Aufwand für die Verwaltung der Infrastruktur anfällt. Es ist möglich, völlig neue Java-, PHP-, Node.js-, Python-, HTML- oder C#-Webanwendungen zu erstellen oder auch vorhandene Cloud- oder lokale Webanwendungen zu Azure App Service zu migrieren (hierfür ist aber die Durchführung von sorgfältigen Prüfungen und Tests zur Sicherstellung der Leistung erforderlich).
 
 In dieser Vorlage liegt der Schwerpunkt auf der Bereitstellung einer webbasierten [Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)-Schnittstelle als sicheres Fundament für öffentliche Benutzer und Backoffice-Benutzer. Beim Entwurfsszenario dieser Vorlage wird die Nutzung von in Azure gehosteten webbasierten Diensten berücksichtigt, bei der ein öffentlicher Benutzer sensible Daten auf sichere Weise übermitteln, anzeigen und verwalten kann. Außerdem kann ein Backoffice-Bediener oder ein Mitarbeiter einer Behörde die sensiblen Daten sicher verarbeiten, die vom öffentlichen Benutzer übermittelt wurden. Anwendungsfälle für dieses Szenario können Folgendes umfassen:
 
@@ -103,7 +103,7 @@ Beim [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) 
 
 #### <a name="azure-app-service"></a>Azure App Service
 
-Für Azure-Web-Apps wird eine vollständig verwaltete Webhostingumgebung für Webanwendungen bereitgestellt, die in Java, PHP, Node.js, Python, HTML und C# entwickelt werden, ohne dass die Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über [Visual Studio Team Services](https://azure.microsoft.com/services/visual-studio-team-services/) oder ein beliebiges Git-basiertes Repository.
+Für Azure-Web-Apps wird eine vollständig verwaltete Webhostingumgebung für Webanwendungen bereitgestellt, die in Java, PHP, Node.js, Python, HTML und C# entwickelt werden, ohne dass die Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) oder ein anderes Git-Repository.
 
 App Service ist [mit ISO, SOC und PCI konform](https://www.microsoft.com/TrustCenter/) und kann Benutzer per [Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) oder Anmeldung für soziale Netzwerke ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication), [Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication), [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication) und [Microsoft-Authentifizierung](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)) authentifiziert werden.
 

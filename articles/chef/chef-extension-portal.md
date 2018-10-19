@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 52f34361d7c1f3dff47f2571a714b8be7764cc6f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e121cd038b8becee1e9c4c12659dbbee0696a9f1
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259602"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378651"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Installieren des Chef-Clients aus dem Azure-Portal
 Beim Erstellen oder Ändern einer Linux- oder Windows-VM im Azure-Portal können Sie dem virtuellen Computer die Chef-Erweiterung hinzufügen. Dieser Artikel führt Sie mithilfe eines neuen virtuellen Linux-Computers durch diesen Prozess.
@@ -81,17 +81,17 @@ In diesem Abschnitt verwenden Sie zuerst das Azure-Portal, um eine Linux-VM zu e
 
 1. Geben Sie auf der Registerkarte **Erweiterung installieren** die folgenden Werte an, und wählen Sie dann **OK** aus.
 
-    - **Chef Server-URL**: Geben Sie die Chef Server-URL ein, die den Namen der Organisation enthält. Für die Demo wurde *https://api.chef.io/organization/hessco* verwendet.
+    - **URL des Chef-Servers:** Geben Sie die URL des Chef-Servers ein, die den Namen der Organisation enthält, z.B. *https://api.chef.io/organization/hessco*.
     - **Chef-Knotenname**: Geben Sie den Namen des Chef-Knotens ein. Dies kann ein beliebiger Wert sein.
-    - **Ausführungsliste**: Geben Sie die Chef-Ausführungsliste ein, die dem Computer hinzugefügt wird. Dieser Wert kann leer sein.
-    - **Name des Überprüfungsclients**: Geben Sie den Namen des Chef-Überprüfungsclients ein. Für die Demo wurde *tarcher-validator* verwendet.
+    - **Ausführungsliste**: Geben Sie die Chef-Ausführungsliste ein, die dem Computer hinzugefügt wird. Dieser Wert kann leer bleiben.
+    - **Name des Überprüfungsclients**: Geben Sie den Namen des Chef-Überprüfungsclients ein. Beispiel: *Tarcher-Validierungssteuerelement*.
     - **Validierungsschlüssel**: Wählen Sie eine Datei aus, die den Validierungsschlüssel enthält, der beim Bootstrapping Ihrer Computer verwendet wird. 
-    - **Clientkonfigurationsdatei**: Wählen Sie eine Konfigurationsdatei für den Chef-Client aus. Dieser Wert kann leer sein.
-    - **Chef-Clientversion**: Geben Sie die Version des zu installierenden Chef-Clients ein. Ein leerer Wert führt dazu, dass die neueste Version installiert wird. Dieser Wert kann leer sein.
-    - **SSL-Überprüfungsmodus**: Wählen Sie entweder **Keine** oder **Peer**. Für die Demo wurde *keine* ausgewählt.
-    - **Chef-Umgebung**: Geben Sie die Chef-Umgebung ein, in der dieser Knoten ein Mitglied sein sollte. Dieser Wert kann leer sein.
-    - **Verschlüsseltes Databag-Geheimnis**: Wählen Sie eine Datei aus, die das Geheimnis für die verschlüsselte Databag enthält, auf die dieser Computer Zugriff haben sollte. Dieser Wert kann leer sein.
-    - **Chef-Server-SSL-Zertifikat**: Wählen Sie das SSL-Zertifikat aus, das Ihrer Chef-Server-Instanz zugewiesen ist. Dieser Wert kann leer sein.
+    - **Clientkonfigurationsdatei**: Wählen Sie eine Konfigurationsdatei für den Chef-Client aus. Dieser Wert kann leer bleiben.
+    - **Chef-Clientversion**: Geben Sie die Version des zu installierenden Chef-Clients ein. Dieser Wert kann leer bleiben. Ein leerer Wert führt dazu, dass die neueste Version installiert wird. 
+    - **SSL-Überprüfungsmodus**: Wählen Sie entweder **Keine** oder **Peer**. Für die Demo wurde *Keine* ausgewählt.
+    - **Chef-Umgebung**: Geben Sie die Chef-Umgebung ein, in der dieser Knoten ein Mitglied sein sollte. Dieser Wert kann leer bleiben.
+    - **Verschlüsseltes Databag-Geheimnis**: Wählen Sie eine Datei aus, die das Geheimnis für die verschlüsselte Databag enthält, auf die dieser Computer Zugriff haben sollte. Dieser Wert kann leer bleiben.
+    - **Chef-Server-SSL-Zertifikat**: Wählen Sie das SSL-Zertifikat aus, das Ihrer Chef-Server-Instanz zugewiesen ist. Dieser Wert kann leer bleiben.
 
     ![Installieren des Chef-Servers auf einem virtuellen Linux-Computer](./media/chef-extension-portal/install-extension.png)
 

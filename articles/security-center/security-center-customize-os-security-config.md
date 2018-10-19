@@ -3,23 +3,23 @@ title: Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Sec
 description: Dieser Artikel erläutert, wie Sie Security Center-Bewertungen anpassen.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2018
-ms.author: terrylan
-ms.openlocfilehash: f12441a960db9f1c45bca2a5b95f3669923c7e3d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.date: 18/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: 08174a6781772abdebd9e203a3433a1a4ac82859
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28200009"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378362"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau)
 
@@ -53,29 +53,27 @@ Um die standardmäßige Sicherheitskonfiguration von Betriebssystemen in Securit
 
 1.  Öffnen Sie das Dashboard **Security Center**.
 
-2.  Wählen Sie im linken Bereich **Sicherheitsrichtlinie**.  
-    Das Fenster **Security Center – Sicherheitsrichtlinie** wird geöffnet.
+2.  Wählen Sie im linken Bereich **Sicherheitsrichtlinie**.      
 
-    ![Sicherheitsrichtlinie – Liste](media/security-center-customize-os-security-config/open-security-policy.png)
+    ![Sicherheitsrichtlinie – Liste](media/security-center-customize-os-security-config/manual-provision.png)
 
-3.  Wählen Sie das Abonnement aus, das Sie anpassen möchten.
+3.  Klicken Sie in der Zeile des Abonnements, das Sie anpassen möchten, auf **Einstellungen bearbeiten**.
 
-4. Wählen Sie unter **Richtlinienkomponenten** die Option **Sicherheitskonfigurationen bearbeiten** aus.  
-    Das Fenster **Sicherheitskonfigurationen bearbeiten** wird geöffnet.
-
+4. Wählen Sie **Sicherheitskonfigurationen bearbeiten** aus.  
+    
     ![Das Fenster „Sicherheitskonfigurationen bearbeiten“](media/security-center-customize-os-security-config/blade.png)
 
-5. Führen Sie im rechten Bereich die Schritte zum Herunterladen, Bearbeiten und Hochladen der geänderten Datei aus.
+5. Befolgen Sie die Schritte zum Herunterladen, Bearbeiten und Hochladen der geänderten Datei.
 
    > [!NOTE]
    > Standardmäßig hat die Konfigurationsdatei, die Sie herunterladen, das *JSON*-Format. Anleitungen zum Ändern dieser Datei finden Sie unter [Anpassen der Konfigurationsdatei](#customize-the-configuration-file).
    >
 
-   Nachdem Sie die Datei erfolgreich gespeichert haben, wird die Konfiguration auf alle VMs und Computer angewendet, die mit allen Arbeitsbereichen im Abonnement verbunden sind. Der Vorgang nimmt üblicherweise nur wenige Minuten in Anspruch, kann aber je nach Größe der Infrastruktur auch länger dauern.
-
 6. Um die Änderung zu übernehmen, wählen Sie **Speichern** aus. Andernfalls wird die Richtlinie nicht gespeichert.
 
     ![Die Schaltfläche „Speichern“](media/security-center-customize-os-security-config/save-successfully.png)
+
+   Nachdem Sie die Datei erfolgreich gespeichert haben, wird die Konfiguration auf alle VMs und Computer angewandt, die mit den Arbeitsbereichen im Abonnement verbunden sind. Der Vorgang nimmt üblicherweise nur wenige Minuten in Anspruch, kann aber je nach Größe der Infrastruktur auch länger dauern.
 
 Sie können die aktuelle Richtlinienkonfiguration jederzeit auf den Standardzustand zurücksetzen. Wählen Sie zu diesem Zweck im Fenster **Regeln für Betriebssystem-Sicherheitskonfiguration bearbeiten** die Option **Zurücksetzen** aus. Bestätigen Sie den Vorgang, indem Sie im Popupfenster zur Bestätigung **Ja** auswählen.
 
@@ -116,9 +114,7 @@ Jede Kategorie hat einen eigenen Satz von Attributen. Sie können die folgenden 
 
 -   **state**: Diese Zeichenfolge kann die Optionen *Deaktiviert* oder *Aktiviert* enthalten. Bei dieser Private Preview-Version wird für die Zeichenfolge Groß-/Kleinschreibung beachtet.
 
-Dies sind die einzigen Felder, die konfiguriert werden können. Wenn Sie gegen das Dateiformat oder die Dateigröße verstoßen, können Sie die Änderung nicht speichern. Die folgende Fehlermeldung tritt auf, wenn die Datei nicht verarbeitet werden kann:
-
-![Fehlermeldung bei der Sicherheitskonfiguration](media/security-center-customize-os-security-config/invalid-json.png)
+Dies sind die einzigen Felder, die konfiguriert werden können. Wenn Sie gegen das Dateiformat oder die Dateigröße verstoßen, können Sie die Änderung nicht speichern. Sie werden in einer Fehlermeldung darüber informiert, dass Sie eine gültige JSON-Konfigurationsdatei hochladen müssen.
 
 Eine Liste weiterer möglicher Fehler finden Sie unter [Fehlercodes](#error-codes).
 
@@ -267,9 +263,7 @@ Beispiel einer neuen benutzerdefinierten Regel:
 
 ## <a name="file-upload-failures"></a>Fehler beim Hochladen von Dateien
 
-Wenn die übermittelte Konfigurationsdatei aufgrund von Fehlern bei Werten oder Formatierungen ungültig ist, wird ein Fehler angezeigt. Sie können einen detaillierten Fehlerbericht im CSV-Format herunterladen, um Fehler zu korrigieren, bevor Sie die korrigierte Konfigurationsdatei erneut übermitteln.
-
-![Meldung zu Fehler bei Speicheraktion](media/security-center-customize-os-security-config/invalid-configuration.png)
+Wenn die übermittelte Konfigurationsdatei aufgrund von Fehlern bei Werten oder Formatierungen ungültig ist, wird ein Fehler angezeigt, etwa **Fehler bei Aktion zum Speichern**. Sie können einen detaillierten Fehlerbericht im CSV-Format herunterladen, um Fehler zu korrigieren, bevor Sie die korrigierte Konfigurationsdatei erneut übermitteln.
 
 Beispiel einer Fehlerdatei:
 
@@ -288,7 +282,7 @@ Alle potenziellen Fehler sind in der folgenden Tabelle aufgeführt:
 | BaselineRuleEmptyProperty                | Die Eigenschaft *{0}* fehlt oder ist ungültig.                                                                                                       |
 | BaselineRuleIdNotInDefault               | Die Regel weist die Quelleigenschaft *Microsoft* auf, wurde aber im Standardregelsatz von Microsoft nicht gefunden.                                                   |
 | BaselineRuleIdNotUniqueError             | Die Regel-ID ist nicht eindeutig.                                                                                                                       |
-| BaselineRuleInvalidGuid                  | Die gefundene Eigenschaft *{0}* ist ungültig. Der Wert ist keine gültige GUID.                                                                             |
+| BaselineRuleInvalidGuid                  | Die Eigenschaft *{0}* wurde als ungültig ermittelt. Der Wert ist keine gültige GUID.                                                                             |
 | BaselineRuleInvalidHive                  | „Hive“ muss „LocalMachine“ sein.                                                                                                                   |
 | BaselineRuleNameNotUniqueError           | Der Regelname ist nicht eindeutig.                                                                                                                 |
 | BaselineRuleNotExistInConfigError        | Die Regel wurde in der neuen Konfiguration nicht gefunden. Regel kann nicht gelöscht werden.                                                                     |

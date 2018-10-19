@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/06/2015
+ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7d4bf0c5beeba22569e0000b28b007fb5b0ff68f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 70086cdff3ed313d2b6851139ca8c8a937426aab
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294175"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716790"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics
 Dieser Artikel zeigt, wie Sie Ihre Telemetriedaten aus [Azure Application Insights][start] mithilfe von [fortlaufendem Export][export] und [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) in eine Azure SQL-Datenbank verschieben. 
@@ -143,21 +143,21 @@ In diesem Beispiel verwenden wir Daten aus Seitenaufrufen. Überprüfen Sie zum 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Erstellen einer Azure Stream Analytics-Instanz
 Wählen Sie im [Azure-Portal](https://portal.azure.com/) den Azure Stream Analytics-Dienst aus, und erstellen Sie einen neuen Stream Analytics-Auftrag:
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA001.png)
+![Stream Analytics-Einstellungen](./media/app-insights-code-sample-export-sql-stream-analytics/SA001.png)
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/SA002.png)
 
 Wählen Sie nach dem Erstellen des neuen Auftrags die Option **Zu Ressource wechseln** aus.
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA003.png)
+![Stream Analytics-Einstellungen](./media/app-insights-code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>Hinzufügen einer neuen Eingabe
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA004.png)
+![Stream Analytics-Einstellungen](./media/app-insights-code-sample-export-sql-stream-analytics/SA004.png)
 
 Legen Sie den Auftrag so fest, dass er Eingaben vom Blob für den fortlaufenden Export erhält:
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA005.png)
+![Stream Analytics-Einstellungen](./media/app-insights-code-sample-export-sql-stream-analytics/SA0005.png)
 
 Jetzt benötigen Sie den primären Zugriffsschlüssel aus Ihrem Speicherkonto, den Sie zuvor notiert haben. Legen Sie diesen als Speicherkontoschlüssel fest.
 
