@@ -34,6 +34,7 @@
 ## Verwalten einer verwalteten Domäne
 ### [Verwalten einer verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 ### [Verwalten des DNS in einer verwalteten Domäne](active-directory-ds-admin-guide-administer-dns.md)
+### [Aktualisieren von E-Mail-Benachrichtigungen](active-directory-ds-notifications.md)
 ### Konfigurieren von sicherem LDAP für eine verwaltete Domäne
 #### [Aufgabe 1: Erwerben eines Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [Aufgabe 2: Exportieren des Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)

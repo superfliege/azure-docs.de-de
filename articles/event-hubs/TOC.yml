@@ -14,7 +14,7 @@ items:
   - name: Erstellen eines Ereignis-Hubs
     items:
     - name: Azure-Portal
-      href: event-hubs-quickstart-portal.md
+      href: event-hubs-create.md
     - name: Azure-Befehlszeilenschnittstelle
       href: event-hubs-quickstart-cli.md
     - name: Azure PowerShell
@@ -65,11 +65,11 @@ items:
     maintainContext: true
   - name: Event Hubs für Apache Kafka
     items:
-    - name: Apache Kafka MirrorMaker mit Event Hubs
+    - name: Spiegeln eines Kafka-Brokers in einem Apache Kafka-fähigen Event Hub
       href: event-hubs-kafka-mirror-maker-tutorial.md
-    - name: Apache Flink mit Event Hubs
+    - name: Verbinden von Apache Flink mit einem Apache Kafka-fähigen Event Hub
       href: event-hubs-kafka-flink-tutorial.md
-    - name: Akka Streams mit Event Hubs
+    - name: Verbinden von Akka Streams mit einem Apache Kafka-fähigen Event Hub
       href: event-hubs-kafka-akka-streams-tutorial.md
 - name: Beispiele
   href: event-hubs-samples.md
@@ -100,45 +100,36 @@ items:
     maintainContext: true
 - name: Anleitungen
   items:
-  - name: Erstellen eines Ereignis-Hubs
-    href: event-hubs-create.md
-  - name: Verwenden von IP-Verbindungsfiltern
-    href: event-hubs-ip-filtering.md
-  - name: Verwenden von Dienstendpunkten im virtuellen Netzwerk
-    href: event-hubs-service-endpoints.md
-  - name: Automatisches Skalieren von Durchsatzeinheiten
-    href: event-hubs-auto-inflate.md
+  - name: Erstellen eines Event Hubs anhand einer Resource Manager-Vorlage
+    href: event-hubs-resource-manager-namespace-event-hub.md
   - name: Event Hubs für Apache Kafka
     items:
     - name: Erstellen von Apache Kafka-fähigen Event Hubs
       href: event-hubs-create-kafka-enabled.md
     - name: Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Stream Analytics
       href: event-hubs-kafka-stream-analytics.md
-  - name: Verfügbare APIs
-    href: event-hubs-api-overview.md
-    items:
-    - name: .NET Standard
-      href: event-hubs-dotnet-standard-api-overview.md
-    - name: .NET Framework
-      href: event-hubs-dotnet-framework-api-overview.md
   - name: Erfassen von Ereignissen
     items:
     - name: Aktivieren von Event Hubs Capture über das Azure-Portal
       href: event-hubs-capture-enable-through-portal.md
     - name: Aktivieren von Event Hubs Capture mithilfe einer Resource Manager-Vorlage
       href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
+    - name: Erfassen von Event Hubs-Daten mithilfe von Python
+      href: event-hubs-capture-python.md
   - name: Verwalten
     items:
     - name: Überwachen von Event Hubs mit Azure-Überwachung
       href: event-hubs-metrics-azure-monitor.md
     - name: Event Hubs-Verwaltungsbibliotheken
       href: event-hubs-management-libraries.md
-    - name: Erfassen von Event Hubs-Daten mithilfe von Python
-      href: event-hubs-capture-python.md
-    - name: Streamen von Azure-Diagnosedaten mit Event Hubs
-      href: event-hubs-streaming-azure-diags-data.md
-    - name: Erstellen und Bereitstellen von Event Hubs anhand einer Resource Manager-Vorlage
-      href: event-hubs-resource-manager-namespace-event-hub.md
+  - name: Verwenden von IP-Filtern
+    href: event-hubs-ip-filtering.md
+  - name: Verwenden von Dienstendpunkten im virtuellen Netzwerk
+    href: event-hubs-service-endpoints.md
+  - name: Automatisches Skalieren von Durchsatzeinheiten
+    href: event-hubs-auto-inflate.md
+  - name: Streamen von Azure-Diagnosedaten mit Event Hubs
+    href: event-hubs-streaming-azure-diags-data.md
 - name: Verweis
   items:
   - name: Java
@@ -173,8 +164,6 @@ items:
     href: event-hubs-faq.md
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: Lernpfad
-    href: https://azure.microsoft.com/documentation/learning-paths/event-hubs/
   - name: Preise
     href: https://azure.microsoft.com/pricing/details/event-hubs/
   - name: Preisrechner
@@ -185,9 +174,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 87a0088b54385a0a1af225db6f285dbf892253e7
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 6771409eb0a6fe11ff6a30cb829d3b166d93d8e2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362788"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426682"
