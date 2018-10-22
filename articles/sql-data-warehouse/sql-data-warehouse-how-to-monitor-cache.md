@@ -24,7 +24,7 @@ Mithilfe von Azure Monitor können Sie Metriken des Gen2-Cache anzeigen, um Prob
 
 ![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
 
-Wählen Sie die Schaltfläche „Metriken“ aus, und geben Sie die Informationen für **Abonnement**, **Ressourcengruppe** **** , **Ressourcentyp** und **Ressourcenname** für Ihr Data Warehouse an.
+Wählen Sie die Schaltfläche „Metriken“ aus, und geben Sie die Informationen für **Abonnement**, **Ressourcengruppe**, **Ressourcentyp** und **Ressourcenname** für Ihr Data Warehouse an. **** 
 
 Die wesentlichen Metriken für die Problembehandlung des Gen2-Cache sind **Prozentsatz der Cachetreffer** und **Cacheverwendung in Prozent**. Konfigurieren Sie das Azure-Metrikdiagramm so, dass diese beiden Metriken angezeigt werden.
 
