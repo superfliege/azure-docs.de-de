@@ -112,7 +112,7 @@ In diesem Abschnitt erstellen Sie einen verknüpften Databricks-Dienst. Dieser v
 
     1.  Wählen Sie unter **Clusterversion** die Option **4.0** (mit Apache Spark 2.3.0, Scala 2.11).
 
-    1.  Wählen Sie für dieses Tutorial unter **General Purpose (HDD)** (Allgemein (HDD)) für **Cluster node type** (Clusterknotentyp) die Option **Standard\_D3\_v2**. 
+    1.  Wählen Sie für dieses Tutorial unter **General Purpose (HDD)** (Universell (HDD)) für **Cluster node type** (Clusterknotentyp) die Option **Standard\_D3\_v2**. 
     
     1.  Geben Sie für **Workers** die Zahl **2** ein.
     
