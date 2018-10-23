@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f52c6be81f63e0481cd087ba6f5ff9502d450a7b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3e73ed1e774b2054cc403598c227b48fc6c99c21
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376233"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645489"
 documentType: LandingData
 title: Azure Monitor-Dokumentation
 metadata:
@@ -91,8 +91,8 @@ sections:
     items:
     - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">Anzeigen oder Analysieren von gesammelten Daten</a>
     - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">Erstellen und Freigeben von Dashboards</a>
-    - html: <a href="monitor-tutorial-autoscale-performance-schedule">Durchführen der automatischen Skalierung basierend auf einem Zeitplan oder der Anwendungsleistung</a>
-    - html: <a href="monitor-tutorial-archive-monitoring-data">Archivieren von Überwachungsdaten</a>
+    - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule">Durchführen der automatischen Skalierung basierend auf einem Zeitplan oder der Anwendungsleistung</a>
+    - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data">Archivieren von Überwachungsdaten</a>
   - type: paragraph
     text: Es wird beschrieben, wie Sie die Leistung und Nutzung Ihrer Webanwendungen ständig verbessern können.
   - type: list

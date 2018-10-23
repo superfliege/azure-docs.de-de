@@ -244,7 +244,6 @@
 
 #### Bedingter Zugriff
 ##### [Der Kunde hat die Voraussetzungen der Geräteregistrierung nicht erfüllt.](active-directory-conditional-access.md)
-##### [Der Mandant wird aufgrund einer falschen Einstellung der Richtlinien für bedingten Zugriff blockiert.](active-directory-conditional-access-device-remediation.md)
 ##### [Wie und wann treten Regeln außerhalb des Unternehmensnetzwerks in Kraft?](https://aka.ms/calocation)
 ##### [Wie erhöht man die Anzahl von Geräten, bei denen ein Benutzer sich in Azure AD registrieren darf?](active-directory-azureadjoin-setup.md)
 ##### [Wie wird der bedingte Zugriff für Exchange Online eingerichtet?](https://aka.ms/csforexchange)
