@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 749dc6c2d329ae7055ee0a6adc429c378de51871
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 26c0353bddb9455b1bda8961f3c05e0f6c7cc176
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234391"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647713"
 documentType: LandingData
 title: Dokumentation für Azure Stack-Partner
 metadata:
@@ -27,14 +27,14 @@ sections:
 - title: Fünfminütiger Schnellstart
   items:
   - type: paragraph
-    text: Hier erfahren Sie, wie Sie ihre virtuellen und physischen Computer in Security Center integrieren und eine Verbindung mit Ihren Sicherheitslösungen herstellen.
+    text: Hier erfahren Sie, wie Sie das Validation-as-a-Service-Portal zum Planen von Tests für Ihre Hardware verwenden.
   - type: list
     style: icon48
     items:
     - image:
         src: media/i_account-management.svg
       text: Planen des ersten Tests mithilfe des Validation-as-a-Service-Portals
-      href: /azure/azure-stack/partner/azure-stack-vaas-schedule-your-first-test
+      href: /azure/azure-stack/partner/azure-stack-vaas-schedule-test-pass
 - title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
@@ -42,16 +42,6 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-test-vm">Bereitstellen des lokalen Agents und Testen virtueller Computer</a>
-    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-automate-with-powershell">Automatisieren der Azure Stack-Überprüfung mit PowerShell</a>
     - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-solution-new">Überprüfen einer neuen Azure Stack-Lösung</a>
     - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-oem-package">Überprüfen von OEM-Paketen</a>
     - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-microsoft-updates">Überprüfen der Softwareupdates von Microsoft</a>
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Validation-as-a-Service
-      html: <a href="/azure/azure-stack/partner/azure-stack-vaas-parameters">Konfigurationsdatei für die Überprüfung</a>
