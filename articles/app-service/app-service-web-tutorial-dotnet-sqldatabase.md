@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: b438ac221483fec7ea90847ec27a105a3f21ab78
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 783bf93c8507e76717a4293b2b29a9c11e9a1eed
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42117362"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353815"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
 
@@ -423,4 +423,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Im nächsten Tutorial erfahren Sie, wie Sie ganz einfach die Sicherheit Ihrer Verbindung mit Azure SQL-Datenbank verbessern.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Schützen der SQL-Datenbank-Verbindung mittels verwalteter Dienstidentität](app-service-web-tutorial-connect-msi.md)
+> [Access SQL Database securely using managed identities for Azure resources](app-service-web-tutorial-connect-msi.md) (Sicheres Zugreifen auf SQL-Datenbank mithilfe verwalteter Identitäten für Azure-Ressourcen)

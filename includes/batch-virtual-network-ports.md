@@ -1,28 +1,109 @@
-- Das virtuelle Netzwerk (VNet) muss sich in der gleichen **Azure-Region** und im gleichen **Azure-Abonnement** befinden wie das Batch-Konto.
+---
+title: Includedatei
+description: Includedatei
+services: batch
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
+ms.service: batch
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: ''
+ms.date: 10/05/2018
+ms.author: danlep
+ms.custom: include file
+ms.openlocfilehash: 9246dea7fa12e5ac9378203e96352e917679525b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312582"
+---
+### <a name="general-requirements"></a>Allgemeine Anforderungen
 
-- Für Pools, die mit einer VM-Konfiguration erstellt wurden, werden nur virtuelle Netzwerke unterstützt, die auf Azure Resource Manager basieren. Für Pools, die mit einer Clouddienstkonfiguration erstellt wurden, werden nur klassische virtuelle Netzwerke unterstützt.
-  
-- Um ein klassisches VNet verwenden zu können, muss das Dienstprinzipal `MicrosoftAzureBatch` über die rollenbasierte Zugriffssteuerungsrolle `Classic Virtual Machine Contributor` für das angegebene VNet verfügen. Zum Verwenden eines Azure Resource Manager-basierten VNet müssen Sie über die Berechtigungen zum Zugreifen auf das VNet und Bereitstellen von VMs im Subnetz verfügen.
+* Das VNET muss sich im gleichen Abonnement und in der gleichen Region befinden wie das für die Poolerstellung verwendete Batch-Konto.
 
-- Das für den Pool angegebene Subnetz muss über ausreichend nicht zugewiesene IP-Adressen verfügen, um die Anzahl virtueller Computer aufnehmen zu können, die für den Pool geplant sind, d. h. die Summe der `targetDedicatedNodes`- und `targetLowPriorityNodes`-Eigenschaften des Pools. Wenn das Subnetz nicht über ausreichend nicht zugewiesene IP-Adressen verfügt, belegt der Pool teilweise die Computeknoten und es tritt ein Anpassungsfehler auf. 
+* Der Pool, der das VNET verwendet, kann bis zu 4.096 Knoten umfassen.
 
-- Pools in der Konfiguration von virtuellen Computern, die in einem Azure VNET bereitgestellt wurden, ordnen automatisch zusätzliche Azure-Netzwerkressourcen zu. Die folgenden Ressourcen sind für 50 Poolknoten in einem VNET erforderlich: eine Netzwerksicherheitsgruppe, eine öffentliche IP-Adresse und ein Lastenausgleichsmodul. Diese Ressourcen werden in dem Abonnement durch [Kontingente](../articles/batch/batch-quota-limit.md) beschränkt, das das virtuelle Netzwerk enthält, das beim Erstellen des Batch-Pools bereitgestellt wurde.
+* Das für den Pool angegebene Subnetz muss über ausreichend nicht zugewiesene IP-Adressen verfügen, um die Anzahl virtueller Computer aufnehmen zu können, die für den Pool geplant sind, d. h. die Summe der `targetDedicatedNodes`- und `targetLowPriorityNodes`-Eigenschaften des Pools. Wenn das Subnetz nicht über ausreichend nicht zugewiesene IP-Adressen verfügt, belegt der Pool teilweise die Computeknoten und es tritt ein Anpassungsfehler auf. 
 
-- Das VNet muss eine Kommunikation vom Batch-Dienst aus zulassen, um Tasks auf den Computeknoten planen zu können. Dies kann durch die Überprüfung bestätigt werden, ob dem VNet Netzwerksicherheitsgruppen (NSGs) zugewiesen sind. Falls die Kommunikation mit den Computeknoten im angegebenen Subnetz durch eine Netzwerksicherheitsgruppe (NSG) verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest. 
+* Ihr Azure Storage-Endpunkt muss von jedem benutzerdefinierten DNS-Server aufgelöst werden, der Ihr VNET bedient. Insbesondere URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net` müssen auflösbar sein. 
 
-- Wenn das angegebene VNet über zugewiesene Netzwerksicherheitsgruppen (NSGs) und/oder eine Firewall verfügt, konfigurieren Sie die eingehenden und ausgehenden Ports, wie in den folgenden Tabellen gezeigt:
+Darüber hinaus gelten ggf. noch weitere VNET-Anforderungen. Diese hängen jedoch davon ab, ob sich der Batch-Pool in der Konfiguration des virtuellen Computers oder in der Cloud Services-Konfiguration befindet. Für neue Poolbereitstellungen in einem VNET wird die Konfiguration des virtuellen Computers empfohlen.
 
+### <a name="pools-in-the-virtual-machine-configuration"></a>Pools in der Konfiguration des virtuellen Computers
 
-  |    Zielport(s)    |    Quell-IP-Adresse      |   Quellport    |    Fügt Batch NSGs hinzu?    |    Erforderlich für die Verwendung des virtuellen Computers?    |    Aktion von Benutzer   |
-  |---------------------------|---------------------------|----------------------------|----------------------------|-------------------------------------|-----------------------|
-  |   <ul><li>Für Pools, die mit der Konfiguration des virtuellen Computers erstellt wurden: 29876, 29877</li><li>Für Pools, die mit der Clouddienstkonfiguration erstellt wurden: 29876, 29877: 10100, 20100, 30100</li></ul>        |    * <br /><br />Dafür ist zwar tatsächlich die Zulassung aller IP-Adressen erforderlich, der Batch-Dienst wendet jedoch auf allen im Rahmen der VM-Konfiguration erstellten virtuellen Computern eine NSG auf Netzwerkschnittstellenebene an, die alle nicht vom Batch-Dienst stammenden IP-Adressen herausfiltert. | * oder 443 |    Ja. Batch fügt NSGs auf der Ebene der Netzwerkschnittstellen (NIC) hinzu, die virtuellen Computern angefügt sind. Diese NSGs lassen nur Datenverkehr von IP-Adressen der Batch-Dienstrolle zu. Auch wenn Sie diese Ports für das Internet öffnen, wird der Datenverkehr am Netzwerkadapter blockiert. |    JA  |  Sie müssen keine NSG angeben, da der Batch nur Batch-IP-Adressen zulässt. <br /><br /> Wenn Sie jedoch eine NSG angeben, stellen Sie sicher, dass diese Ports für eingehenden Datenverkehr geöffnet sind.|
-  |    3389 (Windows), 22 (Linux)               |    Benutzercomputer, die für das Debuggen verwendet werden, sodass Sie remote auf den virtuellen Computer zugreifen können.    |   *  | Nein                                     |    Nein                     |    Fügen Sie Netzwerksicherheitsgruppen hinzu, wenn Sie den Remotezugriff (RDP oder SSH) auf den virtuellen Computer zulassen möchten.   |                                
+**Unterstützte VNETs:** Nur Azure Resource Manager-basierte VNETs
 
+**Subnetz-ID:** Verwenden Sie den *Ressourcenbezeichner* des Subnetzes, wenn Sie das Subnetz über die Batch-APIs angeben. Die Subnetz-ID hat folgendes Format:
 
-  |    Ausgehende Ports    |    Ziel    |    Fügt Batch NSGs hinzu?    |    Erforderlich für die Verwendung des virtuellen Computers?    |    Aktion von Benutzer    |
-  |------------------------|-------------------|----------------------------|-------------------------------------|------------------------|
-  |    443    |    Azure Storage    |    Nein     |    JA    |    Wenn Sie NSGs hinzufügen, stellen Sie sicher, dass dieser Port für den ausgehenden Datenverkehr geöffnet ist.    |
+  ```
+  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
+  ```
 
-   Stellen Sie außerdem sicher, dass Ihr Azure Storage-Endpunkt von benutzerdefinierten DNS-Servern aufgelöst werden kann, die Ihr VNET bedienen. Insbesondere URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net` müssen auflösbar sein. 
+**Berechtigungen:** Überprüfen Sie, ob Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres VNETs die VNET-Verwaltungsberechtigungen eines Benutzers einschränken.
 
-   Wenn Sie eine auf Resource Manager basierende NSG hinzufügen, können Sie [Diensttags](../articles/virtual-network/security-overview.md#service-tags) verwenden, um die Storage-IP-Adressen für die jeweilige Region für ausgehende Verbindungen auszuwählen. Beachten Sie, dass die Storage-IP-Adressen derselben Region wie Ihr Batch-Konto und das VNet zugeordnet sein müssen. Diensttags befinden sich in ausgewählten Azure-Regionen derzeit in der Vorschauphase.
+**Zusätzliche Netzwerkressourcen:** Batch ordnet in der Ressourcengruppe, die das VNET enthält, automatisch zusätzliche Netzwerkressourcen zu. Dabei ordnet Batch pro 50 dedizierten Knoten (oder pro 20 Knoten mit niedriger Priorität) jeweils eine Netzwerksicherheitsgruppe (NSG), eine öffentliche IP-Adresse und einen Load Balancer zu. Diese Ressourcen werden durch die [Ressourcenkontingente](../articles/azure-subscription-service-limits.md) des Abonnements beschränkt. Bei umfangreichen Pools muss ggf. eine Kontingenterhöhung für eine oder mehrere der Ressourcen angefordert werden.
+
+#### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
+
+Das Subnetz muss eingehende Kommunikation des Batch-Diensts zulassen, um Aufgaben auf den Computeknoten planen zu können, und ausgehende Kommunikation, um mit Azure Storage und anderen Ressourcen kommunizieren zu können. Für Pools in der Konfiguration des virtuellen Computers fügt Batch NSGs auf der Ebene der Netzwerkschnittstellen (NICs) hinzu, die an virtuelle Computer angefügt sind. Diese NSGs konfigurieren automatisch Eingangs- und Ausgangsregeln, um folgenden Datenverkehr zuzulassen:
+
+* Eingehender TCP-Datenverkehr an den Ports 29876 und 29877 von IP-Adressen der Batch-Dienstrolle 
+* Eingehender TCP-Datenverkehr am Port 22 (Linux-Knoten) oder Port 3389 (Windows-Knoten), um Remotezugriff zu ermöglichen
+* Ausgehender Datenverkehr an allen Ports zum virtuellen Netzwerk
+* Ausgehender Datenverkehr an allen Ports zum Internet
+
+> [!IMPORTANT]
+> Seien Sie vorsichtig, wenn Sie Eingangs- und Ausgangsregeln in von Batch konfigurierten NSGs ändern. Falls die Kommunikation mit den Computeknoten im angegebenen Subnetz durch eine Netzwerksicherheitsgruppe (NSG) verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest.
+
+Sie müssen keine NSGs auf der Subnetzebene angeben, da Batch eigene NSGs konfiguriert. Wenn das angegebene Subnetz allerdings über zugewiesene Netzwerksicherheitsgruppen (NSGs) und/oder eine Firewall verfügt, konfigurieren Sie die Eingangs- und Ausgangssicherheitsregeln gemäß den folgenden Tabellen. Konfigurieren Sie eingehenden Datenverkehr am Port 3389 (Windows) bzw. am Port 22 (Linux) nur, wenn Sie Remotezugriff auf die virtuellen Computer des Pools zulassen müssen. Dieser Schritt ist nicht erforderlich, um die virtuellen Computer des Pools verwenden zu können.
+
+**Eingangssicherheitsregeln**
+
+| Quell-IP-Adressen | Quellports | Ziel | Zielports | Protokoll | Aktion |
+| --- | --- | --- | --- | --- | --- |
+Beliebig <br /><br />Dafür ist zwar im Grunde die Zulassung aller IP-Adressen erforderlich, der Batch-Dienst wendet jedoch auf allen im Rahmen der VM-Konfiguration erstellten virtuellen Computern eine NSG auf Netzwerkschnittstellenebene an, die alle nicht vom Batch-Dienst stammenden IP-Adressen herausfiltert. | * | Beliebig | 29876–29877 | TCP | Zulassen |
+| Benutzercomputer, die zu Debuggingzwecken verwendet werden, um remote auf die virtuellen Computer des Pools zuzugreifen. | * | Beliebig |  3389 (Windows), 22 (Linux) | TCP | Zulassen |
+
+**Ausgangssicherheitsregeln**
+
+| Quelle | Quellports | Ziel | Zieldiensttag | Protokoll | Aktion |
+| --- | --- | --- | --- | --- | --- |
+| Beliebig | 443 | [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | Speicher (in der gleichen Region wie Ihr Batch-Konto und VNET)  | Beliebig | Zulassen |
+
+### <a name="pools-in-the-cloud-services-configuration"></a>Pools in der Cloud Services-Konfiguration
+
+**Unterstützte VNETs:** Nur klassische VNETs
+
+**Subnetz-ID:** Verwenden Sie den *Ressourcenbezeichner* des Subnetzes, wenn Sie das Subnetz über die Batch-APIs angeben. Die Subnetz-ID hat folgendes Format:
+
+  ```
+  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicVirtualNetwork /virtualNetworks/{network}/subnets/{subnet}
+  ```
+
+**Berechtigungen:** Der Dienstprinzipal `MicrosoftAzureBatch` muss für das angegebene VNET über die RBAC-Rolle `Classic Virtual Machine Contributor` verfügen.
+
+#### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
+
+Das Subnetz muss eingehende Kommunikation des Batch-Diensts zulassen, um Aufgaben auf den Computeknoten planen zu können, und ausgehende Kommunikation, um mit Azure Storage und anderen Ressourcen kommunizieren zu können.
+
+Sie müssen keine NSG angeben, da Batch nur eingehende Kommunikation von Batch-IP-Adressen an die Poolknoten konfiguriert. Wenn das angegebene Subnetz allerdings über zugewiesene NSGs und/oder eine Firewall verfügt, konfigurieren Sie die Eingangs- und Ausgangssicherheitsregeln gemäß den folgenden Tabellen. Falls die Kommunikation mit den Computeknoten im angegebenen Subnetz durch eine Netzwerksicherheitsgruppe (NSG) verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest.
+
+ Konfigurieren Sie eingehenden Datenverkehr am Port 3389 (Windows) bzw. am Port 22 (Linux) nur, wenn Sie Remotezugriff auf die Poolknoten zulassen müssen. Dieser Schritt ist nicht erforderlich, um die Poolknoten verwenden zu können.
+
+**Eingangssicherheitsregeln**
+
+| Quell-IP-Adressen | Quellports | Ziel | Zielports | Protokoll | Aktion |
+| --- | --- | --- | --- | --- | --- |
+Beliebig <br /><br />Dafür ist zwar im Grunde die Zulassung aller IP-Adressen erforderlich, der Batch-Dienst wendet jedoch auf der Ebene jedes Knotens eine ACL-Regel an, die alle nicht vom Batch-Dienst stammenden IP-Adressen herausfiltert. | * | Beliebig | 10100, 20100, 30100 | TCP | Zulassen |
+| Benutzercomputer, die zu Debuggingzwecken verwendet werden, um remote auf die virtuellen Computer des Pools zuzugreifen. | * | Beliebig |  3389 (Windows), 22 (Linux) | TCP | Zulassen |
+
+**Ausgangssicherheitsregeln**
+
+| Quelle | Quellports | Ziel | Zielports | Protokoll | Aktion |
+| --- | --- | --- | --- | --- | --- |
+| Beliebig | * | Beliebig | 443  | Beliebig | Zulassen |

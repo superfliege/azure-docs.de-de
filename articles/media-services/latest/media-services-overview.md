@@ -13,24 +13,17 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 09/25/2018
+ms.date: 10/16/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 3641806870c3eab0b3a05f538015a72d9a0b34ef
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 66c9b8297254b41156131d795376857029424e97
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221933"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377911"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Was ist Azure Media Services v3?
-
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
-> * [Version 2: allgemein verfügbar](../previous/media-services-overview.md)
-> * [Version 3: Vorschau](media-services-overview.md)
-
-> [!NOTE]
-> Die neueste Version von Azure Media Services liegt als Vorschau vor und kann als v3 bezeichnet werden.
 
 Azure Media Services ist eine cloudbasierte Plattform für die Erstellung von Lösungen, die Videostreaming in Broadcastqualität ermöglichen, Barrierefreiheit und Verteilung optimieren, Inhalte analysieren und vieles mehr. Ganz gleich, ob Sie ein Anwendungsentwickler sind oder in einem Callcenter, bei einer Regierungsbehörde oder in einem Unterhaltungsunternehmen arbeiten, Media Services unterstützt Sie bei der Erstellung von Anwendungen, die Medienerlebnisse von herausragender Qualität für ein breites Publikum auf den beliebtesten mobilen Geräten und Browsern von heute bieten. 
 
@@ -126,13 +119,14 @@ Microsoft generiert und unterstützt die folgenden Clientbibliotheken:
 |API-Referenzen|SDKs/Tools|Beispiele|
 |---|---|---|---|
 |[REST-Reference](https://aka.ms/ams-v3-rest-ref)|[REST SDK](https://aka.ms/ams-v3-rest-sdk)|[REST-Beispiele für Postman](https://github.com/Azure-Samples/media-services-v3-rest-postman)<br/>[Auf Azure Resource Manager basierte REST-API](https://github.com/Azure-Samples/media-services-v3-arm-templates)|
-|[Azure CLI-Referenz](https://aka.ms/ams-v3-cli-ref)|[Azure-CLI](https://aka.ms/ams-v3-cli)|[Beispiele für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)||
+|[Azure CLI-Referenz](https://aka.ms/ams-v3-cli-ref)|[Azure-Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli)|[Beispiele für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)||
 |[.NET-Referenz](https://aka.ms/ams-v3-dotnet-ref)|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-Beispiele](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)||
 ||[.NET Core SDK](https://aka.ms/ams-v3-dotnet-sdk) (Klicken Sie auf die Registerkarte **.NET CLI**.)|[.NET Core-Beispiele](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)||
 |[Java-Referenz](https://aka.ms/ams-v3-java-ref)|[Java SDK](https://aka.ms/ams-v3-java-sdk)||
 |[Node.js-Referenz](https://aka.ms/ams-v3-nodejs-ref)|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk)|[Beispiele für Node.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials)||
 |[Python-Referenz](https://aka.ms/ams-v3-python-ref)|[Python SDK](https://aka.ms/ams-v3-python-sdk)||
 |[Go-Referenz](https://aka.ms/ams-v3-go-ref)|[Go SDK](https://aka.ms/ams-v3-go-sdk)||
+|Ruby|[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
 ## <a name="next-steps"></a>Nächste Schritte
 

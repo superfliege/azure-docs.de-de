@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 2976a136bd04ac531bc54a0e9a6bed93d40fe06f
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 21e392332414d11c279969ed83eb2bdc1ade8eeb
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063947"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362924"
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen von Daten
 
@@ -37,7 +37,7 @@ Stellen Sie zunächst sicher, dass Sie die neueste Version von [Visual Studio Co
 ## <a name="configure-vs-code"></a>Konfigurieren von VS Code 
 
 ### <a name="mac-os"></a>**Mac OS**
-Für Mac OS müssen Sie OpenSSL installieren, da dies eine Voraussetzung für .Net Core ist. .Net Core wird von der mssql-Erweiterung verwendet. Öffnen Sie Ihr Terminal, und geben Sie die folgenden Befehle ein, um **brew** und **OpenSSL** zu installieren. 
+Für Mac OS müssen Sie OpenSSL installieren, da dies eine Voraussetzung für .NET Core ist. .NET Core wird von der mssql-Erweiterung verwendet. Öffnen Sie Ihr Terminal, und geben Sie die folgenden Befehle ein, um **brew** und **OpenSSL** zu installieren. 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

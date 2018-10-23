@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b3a3baaf22fa9c382bb45a5b2a2065ef7678faf5
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c3c0d9bb6da00272cc7da0ad9f4fae978552c39b
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855953"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352609"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
@@ -172,7 +172,7 @@ Bei Verwendung des Cmdlets **Get-MSolDevice** zur Überprüfung der Dienstdetail
 
 - Ein Objekt mit der **Geräte-ID**, die der ID auf dem Windows-Client entspricht, muss vorhanden sein.
 - Der Wert für **DeviceTrustType** muss **Domänenbeitritt** sein. Dies entspricht dem Status **Hybrid in Azure AD eingebunden** auf der Seite „Geräte“ im Azure AD-Portal.
-- Der Wert für **Aktiviert** muss für Geräte, die für den bedingten Zugriff verwendet werden, **True** sein. 
+- Für Geräte, die für den bedingten Zugriff verwendet werden, muss **Aktiviert** den Wert **True** und **DeviceTrustLevel** den Wert **Verwaltet** haben. 
 
 
 **So überprüfen Sie die Dienstdetails:**

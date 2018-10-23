@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d504e0488d35c5c606468faa35bece1318503b4
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: bc1b52b97897cb1c635fb16e6ef9692de1ca8a44
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498520"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167255"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Verwalten von Windows-Updates mithilfe von Azure Automation
 
@@ -116,7 +116,8 @@ Geben Sie unter **Warnungslogik** für **Schwellenwert** den Wert **1** ein. Kli
 
 #### <a name="runbook-alert"></a>Runbookwarnung
 
-Bei nicht erfolgreichen Bereitstellungen müssen Sie über den Fehler der Masterausführung benachrichtigt werden. Navigieren Sie im Azure-Portal zu **Überwachen**, und klicken Sie auf **Warnung erstellen**.
+Bei nicht erfolgreichen Bereitstellungen muss auf die Fehlerhaftigkeit des Masterrunbooks aufmerksam gemacht werden.
+Navigieren Sie im Azure-Portal zu **Überwachen**, und klicken Sie dann auf **Warnung erstellen**.
 
 Klicken Sie unter **1. Warnungsbedingung definieren** auf **Ziel auswählen**. Wählen Sie unter **Nach Ressourcentyp filtern** die Option **Automation-Konten** aus. Wählen Sie Ihr Automation-Konto aus, und klicken Sie auf **Fertig**.
 

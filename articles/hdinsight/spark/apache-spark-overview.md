@@ -9,16 +9,16 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/07/2018
 ms.author: jasonh
-ms.openlocfilehash: 9e4cb497a2dc81b9503b03fd2db27ff2538d424a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7bc7c95c0d15e0c33f7f9a705fb47d27f9daacec
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43039681"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378711"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Was ist Apache Spark in Azure HDInsight?
 
-*Apache Spark* ist ein Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen für die Analyse großer Datenmengen zu steigern. Apache Spark in Azure HDInsight ist Microsoft-Implementierung von Apache Hadoop in der Cloud. HDInsight vereinfacht das Erstellen und Konfigurieren eines Spark-Clusters in Azure. Spark-Cluster in HDInsight sind mit Azure Storage und mit Azure Data Lake Store kompatibel. Dadurch können Sie HDInsight Spark-Cluster für die Verarbeitung Ihrer in Azure gespeicherten Daten verwenden. Informationen zu den Komponenten und Versionen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md).
+*Apache Spark* ist ein Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen für die Analyse großer Datenmengen zu steigern. Apache Spark in Azure HDInsight ist die Microsoft-Implementierung von Apache Spark in der Cloud. HDInsight vereinfacht das Erstellen und Konfigurieren eines Spark-Clusters in Azure. Spark-Cluster in HDInsight sind mit Azure Storage und mit Azure Data Lake Store kompatibel. Dadurch können Sie HDInsight Spark-Cluster für die Verarbeitung Ihrer in Azure gespeicherten Daten verwenden. Informationen zu den Komponenten und Versionen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md).
 
 ![Spark: ein einheitliches Framework](./media/apache-spark-overview/hdinsight-spark-overview.png)
 

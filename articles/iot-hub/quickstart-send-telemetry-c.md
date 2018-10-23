@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/27/2018
 ms.author: wesmc
-ms.openlocfilehash: 77b76ac5b30c4f5f647c532dbc5db68b396b3d20
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 3fa4c536313375ed88f6f0223218a663d4be3eb3
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636140"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364774"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C)
 
@@ -118,25 +118,32 @@ In dieser Schnellstartanleitung bereiten Sie eine Entwicklungsumgebung vor, die 
 
 ## <a name="register-a-device"></a>Registrieren eines Geräts
 
-Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung herstellen zu können. In diesem Abschnitt verwenden Sie die Azure CLI mit der [IoT-Erweiterung](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest), um ein simuliertes Gerät zu registrieren.
+Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung herstellen zu können. In diesem Abschnitt verwenden Sie Azure Cloud Shell mit der [IoT-Erweiterung](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest), um ein simuliertes Gerät zu registrieren.
 
-1. Fügen Sie die IoT Hub-CLI-Erweiterung hinzu, und erstellen Sie die Geräteidentität. Ersetzen Sie `{YourIoTHubName}` durch den Namen, den Sie für Ihre IoT Hub-Instanz ausgewählt haben:
+1. Führen Sie die folgenden Befehle in Azure Cloud Shell aus, um die IoT Hub-CLI-Erweiterung hinzuzufügen und die Geräteidentität zu erstellen. 
+
+   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT Hub wählen.
+
+   **MyCDevice**: Der für das registrierte Gerät angegebene Name. Verwenden Sie „MyCDevice“ wie gezeigt. Wenn Sie für Ihr Gerät einen anderen Namen wählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyCDevice
+    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyCDevice
     ```
 
-    Wenn Sie einen anderen Namen für Ihr Gerät auswählen, aktualisieren Sie den Gerätenamen in den Beispielanwendungen, bevor sie ausgeführt werden.
+2. Führen Sie die folgenden Befehle in Azure Cloud Shell aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
 
-2. Führen Sie den folgenden Befehl aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
+   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT Hub wählen.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyCDevice --output table
+    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyCDevice --output table
     ```
 
-    Notieren Sie sich die Geräteverbindungszeichenfolge (`Hostname=...=`). Dieser Wert wird später in der Schnellstartanleitung benötigt.
+    Notieren Sie sich die Geräteverbindungszeichenfolge, die wie folgt aussieht:
 
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+
+    Dieser Wert wird später in der Schnellstartanleitung benötigt.
 
 ## <a name="send-simulated-telemetry"></a>Senden simulierter Telemetriedaten
 
@@ -156,19 +163,19 @@ Die Anwendung des simulierten Geräts stellt eine Verbindung mit einem gerätesp
     ```
     Ersetzen Sie den Wert der Konstanten `connectionString` durch die Geräteverbindungszeichenfolge, die Sie sich zuvor notiert haben. Speichern Sie Ihre Änderungen dann in **iothub_convenience_sample.c**.
 
-3. Navigieren Sie in einem Terminalfenster zum Projektverzeichnis *iothub_convenience_sample* in dem CMake-Verzeichnis, das Sie im Azure IoT C SDK erstellt haben.
+3. Navigieren Sie in einem lokalen Terminalfenster zum Projektverzeichnis *iothub_convenience_sample* in dem CMake-Verzeichnis, das Sie im Azure IoT C SDK erstellt haben.
 
     ```
     cd /azure-iot-sdk-c/cmake/iothub_client/samples/iothub_convenience_sample
     ```
 
-4. Führen Sie CMake über die folgende Befehlszeile aus, um das Beispiel mit dem aktualisierten `connectionString`-Wert zu erstellen:
+4. Führen Sie in Ihrem lokalen Terminalfenster CMake aus, um das Beispiel mit Ihrem aktualisierten Wert für `connectionString` zu erstellen:
 
     ```cmd/sh
     cmake --build . --target iothub_convenience_sample --config Debug
     ```
 
-5. Führen Sie den folgenden Befehl an einer Eingabeaufforderung aus, um die simulierte Geräteanwendung auszuführen:
+5. Führen Sie in einem lokalen Terminalfenster den folgenden Befehl aus, um die simulierte Geräteanwendung auszuführen:
 
     ```cmd/sh
     Debug\iothub_convenience_sample.exe
@@ -181,12 +188,14 @@ Die Anwendung des simulierten Geräts stellt eine Verbindung mit einem gerätesp
 ## <a name="read-the-telemetry-from-your-hub"></a>Lesen der Telemetriedaten aus Ihrem Hub
 
 
-In diesem Abschnitt verwenden Sie die Azure CLI mit der [IoT-Erweiterung](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest), um die Gerätenachrichten zu überwachen, die vom simulierten Gerät gesendet werden.
+In diesem Abschnitt verwenden Sie Azure Cloud Shell mit der [IoT-Erweiterung](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest), um die Gerätenachrichten zu überwachen, die von dem simulierten Gerät gesendet werden.
 
-1. Führen Sie den folgenden Befehl über die Azure CLI aus, um eine Verbindung mit Ihrer IoT Hub-Instanz herzustellen und Nachrichten zu lesen:
+1. Führen Sie über Azure Cloud Shell den folgenden Befehl aus, um eine Verbindung mit Ihrem IoT-Hub herzustellen und Nachrichten zu lesen:
+
+   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT Hub wählen.
 
     ```azurecli-interactive
-    az iot hub monitor-events --hub-name {YourIoTHubName} --output table
+    az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
 
     ![Lesen der Gerätenachrichten mithilfe der Azure CLI](media/quickstart-send-telemetry-c/read-device-to-cloud-messages-app.png)
@@ -199,7 +208,7 @@ In diesem Abschnitt verwenden Sie die Azure CLI mit der [IoT-Erweiterung](https:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine IoT Hub-Instanz eingerichtet, ein Gerät registriert, mit einer C-Anwendung simulierte Telemetriedaten an die Hub-Instanz gesendet und mithilfe der Azure CLI die Telemetriedaten aus der Instanz gelesen.
+In dieser Schnellstartanleitung haben Sie einen IoT-Hub eingerichtet, ein Gerät registriert, mit einer C-Anwendung simulierte Telemetriedaten an den Hub gesendet und mithilfe von Azure Cloud Shell die Telemetriedaten aus dem Hub gelesen.
 
 Weitere Informationen zum Entwickeln mit dem Azure IoT Hub C SDK finden Sie in der folgenden Schrittanleitung:
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/12/2018
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 6e3571fb54f12ef3bb5519f572b8af5bf9247e7d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 107852bd2c4ec0b932008b498dde4ea77f8071a3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032916"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116335"
 ---
 # <a name="what-is-azure-iot-edge"></a>Was ist Azure IoT Edge?
 
@@ -55,7 +55,7 @@ Mit der Azure IoT Edge-Laufzeit wird die benutzerdefinierte Logik und Cloudlogik
 * Ermöglichen der Kommunikation zwischen Modulen auf dem IoT Edge-Gerät
 * Ermöglichen der Kommunikation zwischen dem IoT Edge-Gerät und der Cloud
 
-![IoT Edge-Laufzeit sendet Erkenntnisse und Berichtsdaten an IoT Hub][1]
+![IoT Edge-Laufzeit sendet Erkenntnisse und Berichtsdaten an IoT Hub](./media/about-iot-edge/runtime.png)
 
 Sie können völlig frei entscheiden, wie Sie ein Azure IoT Edge-Gerät einsetzen. Die Laufzeit wird häufig zum Bereitstellen von KI-Komponenten für Gateways verwendet, mit denen Daten mehrerer anderer lokaler Geräte aggregiert und verarbeitet werden. Dies ist aber nur eine mögliche Einsatzoption. Bei Blattknotengeräten kann es sich auch um Azure IoT Edge-Geräte handeln. Dabei spielt es keine Rolle, ob sie mit einem Gateway oder direkt mit der Cloud verbunden sind.
 
@@ -71,15 +71,10 @@ Azure IoT Edge kann nahtlos in Azure IoT Solution Accelerators integriert werden
 * Senden Sie eine Workload an eine Gruppe von Geräten.
 * Überwachen Sie Workloads, die auf Geräten im Feld ausgeführt werden.
 
-![Telemetrie, Erkenntnisse und Aktionen von Geräten werden über die Cloud koordiniert.][2]
+![Telemetrie, Erkenntnisse und Aktionen von Geräten werden über die Cloud koordiniert.](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Probieren Sie diese Konzepte aus, indem Sie [IoT Edge auf einem simulierten Gerät bereitstellen][lnk-quickstart].
+Probieren Sie diese Konzepte aus, indem Sie [IoT Edge auf einem simulierten Gerät bereitstellen](quickstart.md).
 
-<!-- Images -->
-[1]: ./media/about-iot-edge/runtime.png
-[2]: ./media/about-iot-edge/cloud-interface.png
-
-<!-- Links -->
-[lnk-quickstart]: quickstart.md
+ 

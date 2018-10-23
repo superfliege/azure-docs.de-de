@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: tutorial
 ms.author: kefre
 ms.date: 09/21/2017
-ms.openlocfilehash: cca35d031e860e014c8fd84b0daf6b4d60d18046
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 36a8a49ee49636d186ca217ae223b1eebf9bb54b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985846"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340255"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>Tutorial: Maschinelles Sehen-API in Java
 
@@ -45,7 +45,9 @@ Dieses Tutorial wurde mit der NetBeans-IDE entwickelt. Insbesondere mit der **Ja
 
 Bevor Sie das Beispiel erstellen, müssen Sie die Maschinelles Sehen-API abonnieren, die zum Funktionsumfang von Azure Cognitive Services gehört. Informationen zu Abonnements und zur Schlüsselverwaltung finden Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/). In diesem Tutorial sind sowohl der Primär- als auch der Sekundärschlüssel gültig. 
 
-## <a name="download-the-tutorial-project"></a>Herunterladen des Tutorialprojekts
+## <a name="acquire-the-incomplete-tutorial-project"></a>Beziehen des unvollständigen Tutorialprojekts
+
+### <a name="download-the-tutorial-project"></a>Herunterladen des Tutorialprojekts
 
 1. Öffnen Sie das Repository [Tutorial: Maschinelles Sehen von Cognitive Services in Java](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial).
 1. Klicken Sie auf die Schaltfläche **Klonen oder Herunterladen**.
@@ -53,7 +55,7 @@ Bevor Sie das Beispiel erstellen, müssen Sie die Maschinelles Sehen-API abonnie
 
 Es ist nicht erforderlich, den Inhalt der ZIP-Datei zu extrahieren, da NetBeans das Projekt aus der ZIP-Datei importiert.
 
-## <a name="import-the-tutorial-project"></a>Importieren des Tutorialprojekts
+### <a name="import-the-tutorial-project"></a>Importieren des Tutorialprojekts
 
 Importieren Sie die Datei **cognitive-services-java-computer-vision-tutorial-master.zip** in NetBeans.
 
@@ -65,29 +67,27 @@ Importieren Sie die Datei **cognitive-services-java-computer-vision-tutorial-mas
 1. Doppelklicken Sie auf **MainFrame.java**, um die Datei in den NetBeans-Editor zu laden. Daraufhin wird die Registerkarte **Entwurf** der **MainFrame.java**-Datei angezeigt.
 1. Klicken Sie auf die Registerkarte **Quelle**, um den Java-Quellcode anzuzeigen.
 
-## <a name="build-and-run-the-tutorial-project"></a>Erstellen und Ausführen des Tutorialprojekts
+### <a name="build-and-run-the-tutorial-project"></a>Erstellen und Ausführen des Tutorialprojekts
 
 1. Drücken Sie **F6**, um die Tutorialanwendung zu erstellen und auszuführen.
 
     Klicken Sie in der Tutorialanwendung auf eine Registerkarte, um den Bereich für diese Funktion aufzurufen. Die Schaltflächen verfügen über leere Methoden, sodass sie keine Aktionen ausführen.
 
-    Unten im Fenster befinden sich die Felder **Abonnementschlüssel** und **Abonnementregion**. Diese Felder müssen mit einem gültigen Abonnementschlüssel und der richtigen Region für diesen Abonnementschlüssel ausgefüllt werden. Wie Sie einen Abonnementschlüssel erhalten, erfahren Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/). Wenn Sie Ihren Abonnementschlüssel im Rahmen der kostenlosen Testversion unter diesem Link abgerufen haben, ist der Standardwert **westcentralus** die richtige Region für Ihre Abonnementschlüssel.
+    Unten im Fenster befinden sich die Felder **Abonnementschlüssel** und **Abonnementregion**. Diese Felder müssen mit einem gültigen Abonnementschlüssel und der richtigen Region für diesen Abonnementschlüssel ausgefüllt werden. Wie Sie einen Abonnementschlüssel erhalten, erfahren Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/). Wenn Sie Ihren Abonnementschlüssel im Rahmen der kostenlosen Testversion unter diesem Link abgerufen haben, ist die Standardregion **westcentralus** die richtige Region für Ihre Abonnementschlüssel.
 
 1. Beenden Sie die Tutorialanwendung.
 
-## <a name="add-the-tutorial-code"></a>Hinzufügen des Tutorialcodes
+## <a name="add-the-tutorial-code-to-the-project"></a>Hinzufügen des Tutorialcodes zum Projekt
 
-Die Java Swing-Anwendung verfügt über sechs Registerkarten. Jede Registerkarte zeigt eine andere Funktion für maschinelles Sehen (Analysieren, OCR usw.) an. Die sechs Tutorialabschnitte stehen nicht in Abhängigkeit zueinander, sodass Sie nur einen Abschnitt, zwei Abschnitte oder alle sechs Abschnitte hinzufügen können. Außerdem lassen sich die Abschnitte in beliebiger Reihenfolge hinzufügen.
+Die Java Swing-Anwendung verfügt über sechs Registerkarten. Jede Registerkarte zeigt eine andere Funktion von Maschinelles Sehen (Analysieren, OCR usw.). Die sechs Tutorialabschnitte sind voneinander unabhängig, sodass Sie beliebig viele der Abschnitte hinzufügen können. Darüber hinaus können Sie die Abschnitte in beliebiger Reihenfolge hinzufügen.
 
-Lassen Sie uns anfangen.
+### <a name="analyze-an-image"></a>Analysieren von Bildern
 
-## <a name="analyze-an-image"></a>Analysieren von Bildern
-
-Die Analysefunktion für Maschinelles Sehen analysiert Bilder auf mehr als 2.000 erkennbare Objekte, Lebewesen, Landschaften und Aktionen. Sobald die Analyse abgeschlossen ist, gibt die Funktion ein JSON-Objekt zurück, das das Bild mit entsprechenden Tags, einer Farbanalyse, Beschriftungen und mehr beschreibt.
+Das Analysefeature von Maschinelles Sehen überprüft Bilder auf mehr als 2.000 erkennbare Objekte, Lebewesen, Landschaften und Aktionen. Sobald die Analyse abgeschlossen ist, gibt die Funktion ein JSON-Objekt zurück, das das Bild mit entsprechenden Tags, einer Farbanalyse, Beschriftungen und mehr beschreibt.
 
 Um die Analysefunktion der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-### <a name="analyze-step-1-add-the-event-handler-code-for-the-form-button"></a>Analyse – Schritt 1: Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
 
 Die Ereignishandlermethode **analyzeImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **AnalyzeImage** auf, um das Bild zu analysieren. Wenn **AnalyzeImage** zurückgegeben wird, zeigt die Methode die formatierte JSON-Antwort im Textbereich **Antwort** an, extrahiert die erste Beschriftung aus **JSONObject** und zeigt die Beschriftung sowie den Zuverlässigkeitsgrad an, dass die Beschriftung korrekt identifiziert wurde.
 
@@ -140,7 +140,7 @@ Kopieren Sie den folgenden Code und fügen Sie ihn in die Methode **analyzeImage
     }
 ```
 
-### <a name="analyze-step-2-add-the-wrapper-for-the-rest-api-call"></a>Analyse – Schritt 2: Hinzufügen des Wrappers für den REST-API-Aufruf
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Hinzufügen des Wrappers für den REST-API-Aufruf
 
 Die Methode **AnalyzeImage** dient als Wrapper für den REST-API-Aufruf zur Analyse von Bildern. Die Methode gibt ein **JSONObject**-Element zurück, das das Bild beschreibt, oder **NULL**, wenn ein Fehler aufgetreten ist.
 
@@ -201,17 +201,17 @@ Kopieren Sie die Methode **AnalyzeImage** und fügen Sie sie direkt unter der Me
     }
  ```
 
-### <a name="analyze-step-3-run-the-application"></a>Analyse – Schritt 3: Ausführen der Anwendung
+#### <a name="run-the-application"></a>Ausführen der Anwendung
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Geben Sie die URL zu dem zu analysierenden Bild ein, und klicken Sie dann auf die Schaltfläche **Bild analysieren**, um das Bild zu analysieren und das Ergebnis anzuzeigen.
 
-## <a name="recognize-a-landmark"></a>Erkennen von Wahrzeichen
+### <a name="recognize-a-landmark"></a>Erkennen von Wahrzeichen
 
 Die Funktion „Wahrzeichen“ für Maschinelles Sehen analysiert Bilder hinsichtlich Naturdenkmäler oder künstliche Wahrzeichen, wie z.B. Berge oder berühmte Gebäude. Sobald die Analyse abgeschlossen ist, gibt die Funktion ein JSON-Objekt zurück, das die im Bild gefundenen Wahrzeichen identifiziert.
 
 Um die Funktion „Wahrzeichen“ der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-### <a name="landmark-step-1-add-the-event-handler-code-for-the-form-button"></a>Wahrzeichen – Schritt 1: Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
 
 Die Ereignishandlermethode **landmarkImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **LandmarkImage** auf, um das Bild zu analysieren. Wenn **LandmarkImage** zurückgegeben wird, zeigt die Methode die formatierte JSON-Antwort im Textbereich **Antwort** an, extrahiert den ersten Wahrzeichennamen aus **JSONObject** und zeigt ihn im Fenster gemeinsam mit dem Zuverlässigkeitsgrad an, dass das Wahrzeichen korrekt identifiziert wurde.
 
@@ -264,7 +264,7 @@ Kopieren Sie den folgenden Code und fügen Sie ihn in die Methode **landmarkImag
     }
 ```
 
-### <a name="landmark-step-2-add-the-wrapper-for-the-rest-api-call"></a>Wahrzeichen – Schritt 2: Hinzufügen des Wrappers für den REST-API-Aufruf
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Hinzufügen des Wrappers für den REST-API-Aufruf
 
 Die Methode **LandmarkImage** dient als Wrapper für den REST-API-Aufruf zur Analyse von Bildern. Die Methode gibt ein **JSONObject**-Element zurück, das das im Bild gefundene Wahrzeichen beschreibt, oder **NULL**, wenn ein Fehler aufgetreten ist.
 
@@ -325,17 +325,17 @@ Kopieren Sie die Methode **LandmarkImage** und fügen Sie sie direkt unter der M
     }
 ```
 
-### <a name="landmark-step-3-run-the-application"></a>Wahrzeichen – Schritt 3: Ausführen der Anwendung
+#### <a name="run-the-application"></a>Ausführen der Anwendung
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Klicken Sie auf die Registerkarte **Wahrzeichen**, geben Sie eine URL zu einem Bild eines Wahrzeichens ein, und klicken Sie dann auf die Schaltfläche **Bild analysieren**, um ein Bild zu analysieren und das Ergebnis anzuzeigen.
 
-## <a name="recognize-celebrities"></a>Erkennen von Prominenten
+### <a name="recognize-celebrities"></a>Erkennen von Prominenten
 
 Die Funktion „Prominente“ für Maschinelles Sehen analysiert Bilder hinsichtlich berühmter Persönlichkeiten. Sobald die Analyse abgeschlossen ist, gibt die Funktion ein JSON-Objekt zurück, das die im Bild gefundenen Prominenten identifiziert.
 
 Um die Funktion „Prominente“ der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-### <a name="celebrities-step-1-add-the-event-handler-code-for-the-form-button"></a>Prominente – Schritt 1: Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
 
 Die Ereignishandlermethode **celebritiesImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **CelebritiesImage** auf, um das Bild zu analysieren. Wenn **CelebritiesImage** zurückgegeben wird, zeigt die Methode die formatierte JSON-Antwort im Textbereich **Antwort** an, extrahiert den ersten Prominentennamen aus **JSONObject** und zeigt ihn im Fenster gemeinsam mit dem Zuverlässigkeitsgrad an, dass der Prominente korrekt identifiziert wurde.
 
@@ -388,7 +388,7 @@ Kopieren Sie den folgenden Code und fügen Sie ihn in die Methode **celebritiesI
     }
 ```
 
-### <a name="celebrities-step-2-add-the-wrapper-for-the-rest-api-call"></a>Prominente – Schritt 2: Hinzufügen des Wrappers für den REST-API-Aufruf
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Hinzufügen des Wrappers für den REST-API-Aufruf
 
 Die Methode **CelebritiesImage** dient als Wrapper für den REST-API-Aufruf zur Analyse von Bildern. Die Methode gibt ein **JSONObject**-Element zurück, das den im Bild gefundenen Prominenten beschreibt, oder **NULL**, wenn ein Fehler aufgetreten ist.
 
@@ -449,17 +449,17 @@ Kopieren Sie die Methode **CelebritiesImage** und fügen Sie sie direkt unter de
     }
 ```
 
-### <a name="celebrities-step-3-run-the-application"></a>Prominente – Schritt 3: Ausführen der Anwendung
+#### <a name="run-the-application"></a>Ausführen der Anwendung
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Klicken Sie auf die Registerkarte **Prominente**, geben Sie eine URL zu einem Bild eines Prominenten ein, und klicken Sie dann auf die Schaltfläche **Bild analysieren**, um ein Bild zu analysieren und das Ergebnis anzuzeigen.
 
-## <a name="intelligently-generate-a-thumbnail"></a>Intelligentes Generieren einer Miniaturansicht
+### <a name="intelligently-generate-a-thumbnail"></a>Intelligentes Generieren einer Miniaturansicht
 
 Die Funktion „Miniaturansicht“ für maschinelles Sehen generiert Miniaturansichten aus Bildern. Mithilfe der Funktion **Intelligentes Zuschneiden** identifiziert die Funktion „Miniaturansicht“ den für ein Bild relevanten Bereich, und zentriert das Miniaturbild in diesem Bereich, um optisch ansprechendere Miniaturansichten zu generieren.
 
 Um die Funktion „Miniaturansicht“ der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-### <a name="thumbnail-step-1-add-the-event-handler-code-for-the-form-button"></a>Miniaturansicht – Schritt 1: Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
 
 Die Ereignishandlermethode **thumbnailImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **getThumbnailImage** auf, um die Miniaturansicht zu erstellen. Wenn **getThumbnailImage** zurückgegeben wird, zeigt die Methode die generierte Miniaturansicht an.
 
@@ -505,7 +505,7 @@ Kopieren Sie den folgenden Code und fügen Sie ihn in die Methode **thumbnailIma
     }
 ```
 
-### <a name="thumbnail-step-2-add-the-wrapper-for-the-rest-api-call"></a>Miniaturansicht – Schritt 2: Hinzufügen des Wrappers für den REST-API-Aufruf
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Hinzufügen des Wrappers für den REST-API-Aufruf
 
 Die Methode **getThumbnailImage** dient als Wrapper für den REST-API-Aufruf zur Analyse von Bildern. Die Methode gibt ein **BufferedImage**-Element zurück, das die Miniaturansicht enthält, oder **NULL**, wenn ein Fehler aufgetreten ist. Die Fehlermeldung wird im ersten Element des **jsonError**-Zeichenfolgearrays zurückgegeben.
 
@@ -572,17 +572,17 @@ Kopieren Sie die folgende Methode **getThumbnailImage** und fügen Sie sie direk
     }
 ```
 
-### <a name="thumbnail-step-3-run-the-application"></a>Miniaturansicht – Schritt 3: Ausführen der Anwendung
+#### <a name="run-the-application"></a>Ausführen der Anwendung
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Klicken Sie auf die Registerkarte **Miniaturansicht**, geben Sie eine URL zu einem Bild ein, und klicken Sie dann auf die Schaltfläche **Miniaturansicht generieren**, um ein Bild zu analysieren und das Ergebnis anzuzeigen.
 
-## <a name="read-printed-text-ocr"></a>Auslesen von gedrucktem Text (OCR)
+### <a name="read-printed-text-ocr"></a>Auslesen von gedrucktem Text (OCR)
 
 Die OCR-Funktion (Optical Character Recognition) für Maschinelles Sehen analysiert Bilder hinsichtlich gedrucktem Text. Nach Abschluss der Analyse gibt OCR ein JSON-Objekt zurück, das den Text und die Position des Textes im Bild enthält.
 
 Um die OCR-Funktion der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>OCR – Schritt 1: Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
 
 Die Ereignishandlermethode **ocrImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **OcrImage** auf, um das Bild zu analysieren. Wenn **OcrImage** zurückgegeben wird, zeigt die Methode den erkannten Text im formatierten JSON-Format im Textbereich **Antwort** an.
 
@@ -622,7 +622,7 @@ Kopieren Sie den folgenden Code und fügen Sie ihn in die Methode **ocrImageButt
     }
 ```
 
-### <a name="ocr-step-2-add-the-wrapper-for-the-rest-api-call"></a>OCR – Schritt 2: Hinzufügen des Wrappers für den REST-API-Aufruf
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Hinzufügen des Wrappers für den REST-API-Aufruf
 
 Die Methode **OcrImage** dient als Wrapper für den REST-API-Aufruf zur Analyse von Bildern. Die Methode gibt ein **JSONObject**-Element der vom Aufruf zurückgegebenen JSON-Daten zurück, oder **NULL**, wenn ein Fehler aufgetreten ist.
 
@@ -683,17 +683,17 @@ Kopieren Sie die folgende Methode **OcrImage** und fügen Sie sie direkt unter d
     }
 ```
 
-### <a name="ocr-step-3-run-the-application"></a>OCR – Schritt 3: Ausführen der Anwendung
+#### <a name="run-the-application"></a>Ausführen der Anwendung
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Klicken Sie auf die Registerkarte **OCR**, geben Sie eine URL zu einem Bild von gedrucktem Text ein, und klicken Sie dann auf die Schaltfläche **Bild lesen**, um ein Bild zu analysieren und das Ergebnis anzuzeigen.
 
-## <a name="read-handwritten-text-handwriting-recognition"></a>Lesen von handgeschriebenem Text (Schrifterkennung)
+### <a name="read-handwritten-text-handwriting-recognition"></a>Lesen von handgeschriebenem Text (Schrifterkennung)
 
 Die Funktion „Schrifterkennung“ für Maschinelles Sehen analysiert Bilder hinsichtlich handgeschriebenem Text. Nach Abschluss der Analyse gibt die Schrifterkennung ein JSON-Objekt zurück, das den Text und die Position des Textes im Bild enthält.
 
 Um die Funktion der Schrifterkennung der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 
-### <a name="handwriting-recognition-step-1-add-the-event-handler-code-for-the-form-button"></a>Schrifterkennung – Schritt 1: Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Hinzufügen des Ereignishandlercodes für die Formularschaltfläche
 
 Die Ereignishandlermethode **handwritingImageButtonActionPerformed** löscht das Formular, zeigt das in der URL angegebene Bild an und ruft dann die Methode **HandwritingImage** auf, um das Bild zu analysieren. Wenn **HandwritingImage** zurückgegeben wird, zeigt die Methode den erkannten Text im formatierten JSON-Format im Textbereich **Antwort** an.
 
@@ -733,7 +733,7 @@ Kopieren Sie den folgenden Code und fügen Sie ihn in die Methode **handwritingI
     }
 ```
 
-### <a name="handwriting-recognition-step-2-add-the-wrapper-for-the-rest-api-call"></a>Schrifterkennung – Schritt 2: Hinzufügen des Wrappers für den REST-API-Aufruf
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Hinzufügen des Wrappers für den REST-API-Aufruf
 
 Die Methode **HandwritingImage** dient als Wrapper für die beiden REST-API-Aufrufe zur Analyse von Bildern. Da die Schrifterkennung viel Zeit in Anspruch nimmt, wird ein zweistufiger Prozess verwendet. Beim ersten Aufruf wird das Bild zur Verarbeitung gesendet; der zweite Aufruf ruft den erkannten Text ab, wenn die Bearbeitung abgeschlossen ist.
 
@@ -841,7 +841,7 @@ Kopieren Sie die folgende Methode **HandwritingImage** und fügen Sie sie direkt
     }
 ```
 
-### <a name="handwriting-recognition-step-3-run-the-application"></a>Schrifterkennung – Schritt 3: Ausführen der Anwendung
+#### <a name="run-the-application"></a>Ausführen der Anwendung
 
 Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementschlüssel in das Feld **Abonnementschlüssel** ein und vergewissern Sie sich, dass Sie die richtige Region unter **Abonnementregion** ausgewählt haben. Klicken Sie auf die Registerkarte **Handgeschriebenen Text lesen**, geben Sie eine URL zu einem Bild von handgeschriebenem Text ein, und klicken Sie dann auf die Schaltfläche **Bild lesen**, um ein Bild zu analysieren und das Ergebnis anzuzeigen.
 

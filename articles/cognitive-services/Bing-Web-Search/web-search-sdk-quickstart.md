@@ -10,18 +10,16 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: cebeab562a54ec68b69eb6422685cc4b596ac223
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 04a70c2afbd499d3965e23487cd49540b38e08af
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127883"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318655"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Schnellstart: Verwenden des Bing-Websuche-SDK für C#
 
 Das Bing-Websuche-SDK erleichtert die Integration der Bing-Websuche in Ihre C#-Anwendung. In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Client instanziieren, eine Anforderung senden und die Antwort ausgeben.
-
-Möchten Sie den Code sofort sehen? Die [Beispiele zum Bing-Websuche-SDK für C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) sind auf GitHub verfügbar.
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -36,6 +34,9 @@ Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellst
 * [.Net Core SDK](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>Erstellen eines Projekts und Installieren der Abhängigkeiten
+
+> [!TIP]
+> Laden Sie den aktuellen Code als Visual Studio-Projektmappe von [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) herunter.
 
 Der erste Schritt ist die Erstellung eines neuen Konsolenprojekts. Falls Sie Hilfe beim Einrichten eines Konsolenprojekts benötigen, lesen Sie [Hallo Welt – Ihr erstes Programm (C#-Programmierhandbuch)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Um das Bing-Websuche-SDK in Ihrer Anwendung verwenden zu können, müssen Sie `Microsoft.Azure.CognitiveServices.Search.WebSearch` mithilfe des NuGet-Paket-Managers installieren.
 

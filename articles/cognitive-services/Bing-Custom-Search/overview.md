@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: overview
 ms.date: 09/29/2017
 ms.author: v-brapel
-ms.openlocfilehash: 2483bf36bb18af21bc454e08f3321b33094c43c8
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: f2946918f0c1a7a516788989042825e8f49d7b0b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814303"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318723"
 ---
 # <a name="what-is-bing-custom-search"></a>Was ist die benutzerdefinierte Bing-Suche?
 
@@ -29,7 +29,7 @@ Nach dem Definieren Ihrer Instanz können Sie die benutzerdefinierte Suche in Ih
 
 In der folgenden Abbildung ist dargestellt, wie einfach die benutzerdefinierte Suche integriert werden kann.
 
-![picture alt](./media/bcs-overview.png "Funktionsweise der benutzerdefinierten Bing-Suche")
+![picture alt](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/cognitive-services/Bing-Custom-Search/media/BCS-Overview.png "Funktionsweise der benutzerdefinierten Bing-Suche")
 
 ## <a name="adding-custom-search-box-suggestions"></a>Hinzufügen eines Felds für benutzerdefinierte Suchvorschläge
 

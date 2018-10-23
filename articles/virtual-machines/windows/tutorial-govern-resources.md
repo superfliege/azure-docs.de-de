@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: a785a18ac4aec3006397b6d681c476f8acf982a7
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 6377a54cc862bb5f62726c3ce91a41cc6eb0763d
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205672"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311387"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Tutorial: Informationen zur Verwaltung von virtuellen Windows-Computern mit Azure PowerShell
 
@@ -55,24 +55,19 @@ Zum Verwalten virtueller Computerlösungen gibt es drei ressourcenspezifische Ro
 * [Mitwirkender von virtuellem Netzwerk](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Mitwirkender von Speicherkonto](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, [eine Azure Active Directory-Gruppe zu erstellen](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md), um die Benutzer zusammenzufassen, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Zur Vereinfachung erstellen Sie in diesem Artikel eine Azure Active Directory-Gruppe ohne Mitglieder. Sie können diese Gruppe dennoch einer Rolle für einen bestimmten Bereich zuweisen. 
+Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, eine Azure Active Directory-Gruppe mit Benutzern zu verwenden, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Verwenden Sie in diesem Artikel entweder eine vorhandene Gruppe für die VM-Verwaltung, oder [erstellen Sie eine Azure Active Directory-Gruppe](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) über das Portal.
 
-Das folgende Beispiel erstellt eine Azure Active Directory-Gruppe mit dem Namen *VMDemoContributors* und dem E-Mail-Kontonamen *vmDemoGroup*. Der E-Mail-Kontoname dient als Alias für die Gruppe.
-
-```azurepowershell-interactive
-$adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
-  -MailNickName vmDemoGroup `
-  -MailEnabled $false `
-  -SecurityEnabled $true
-```
-
-Nachdem die Eingabeaufforderung zurückkehrt, dauert es einen Moment, bis die Gruppe in Azure Active Directory propagiert wurde. Warten Sie 20 oder 30 Sekunden, und weisen Sie dann mit dem Befehl [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) die neue Azure Active Directory-Gruppe der Rolle „Mitwirkender für virtuelle Computer“ für die Ressourcengruppe zu.  Wenn Sie den folgenden Befehl ausführen, bevor die Gruppe propagiert wurde, erhalten Sie die Fehlermeldung **Der Prinzipal „<guid>“ ist im Verzeichnis nicht enthalten**. Führen Sie den Befehl dann erneut aus.
+Nachdem Sie entweder eine neue Gruppe erstellt oder nach einer vorhandenen Gruppe gesucht haben, weisen Sie die Azure Active Directory-Gruppe mithilfe des Befehls [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) der Rolle „Mitwirkender für virtuelle Computer“ für die Ressourcengruppe zu.  
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+$adgroup = Get-AzureRmADGroup -DisplayName <your-group-name>
+
+New-AzureRmRoleAssignment -ObjectId $adgroup.id `
   -ResourceGroupName myResourceGroup `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
+
+Sollte der Fehler **Der Prinzipal <guid> ist im Verzeichnis nicht enthalten.** auftreten, wurde die neue Gruppe noch nicht innerhalb von Azure Active Directory verteilt. Führen Sie den Befehl dann erneut aus.
 
 In der Regel müssen Sie den Prozess für die Rollen *Mitwirkender von virtuellem Netzwerk* und *Mitwirkender von Speicherkonto* wiederholen, um sicherzustellen, dass die Benutzer den richtigen Rollen für die Verwaltung der bereitgestellten Ressourcen zugewiesen werden. In diesem Artikel können Sie diese Schritte überspringen.
 
@@ -125,7 +120,7 @@ New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
 
 ## <a name="deploy-the-virtual-machine"></a>Bereitstellen des virtuellen Computers
 
-Sie haben Rollen und Richtlinien zugewiesen und können daher Ihre Lösung bereitstellen. Die Standardgröße ist „Standard_DS1_v2“ – eine Ihrer zulässigen SKUs. Wenn Sie diesen Schritt ausführen, werden Sie aufgefordert, Anmeldeinformationen einzugeben. Die Werte, die Sie eingeben, werden als Benutzername und Kennwort für den virtuellen Computer konfiguriert.
+Sie haben Rollen und Richtlinien zugewiesen und können daher Ihre Lösung bereitstellen. Die Standardgröße ist „Standard_DS1_v2“ – eine Ihrer zulässigen SKUs. Wenn Sie diesen Schritt ausführen, werden Sie zur Eingabe von Anmeldeinformationen aufgefordert. Die Werte, die Sie eingeben, werden als Benutzername und Kennwort für den virtuellen Computer konfiguriert.
 
 ```azurepowershell-interactive
 New-AzureRmVm -ResourceGroupName "myResourceGroup" `
@@ -168,7 +163,7 @@ Um die Sperren zu testen, führen Sie den folgenden Befehl aus:
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-Es wird eine Fehlermeldung darüber angezeigt, dass der Löschvorgang aufgrund einer Sperre nicht ausgeführt werden kann. Die Ressourcengruppe kann nur gelöscht werden, wenn Sie die Sperren direkt entfernen. Dieser Schritt wird unter [Bereinigen von Ressourcen](#clean-up-resources) gezeigt.
+Es wird eine Fehlermeldung mit dem Hinweis angezeigt, dass der Löschvorgang aufgrund einer Sperre nicht ausgeführt werden kann. Die Ressourcengruppe kann nur gelöscht werden, wenn Sie die Sperren direkt entfernen. Dieser Schritt wird unter [Bereinigen von Ressourcen](#clean-up-resources) gezeigt.
 
 ## <a name="tag-resources"></a>Markieren von Ressourcen
 

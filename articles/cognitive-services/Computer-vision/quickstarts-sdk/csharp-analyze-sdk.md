@@ -3,25 +3,23 @@ title: 'Schnellstart: Analysieren eines Bilds – SDK, C# – Maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart analysieren Sie ein Bild mithilfe der Windows-C#-Clientbibliothek für Maschinelles Sehen.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: 0315b1c90eeae27d30a237aea76e66465818fba4
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.author: pafarley
+ms.openlocfilehash: 81a7b32ef2970efc7f53ec8d25350efb217d7b36
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056080"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343644"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Schnellstart: Analysieren eines Bilds mit dem Maschinelles Sehen SDK und C#
 
 In dieser Schnellstartanleitung analysieren Sie mithilfe der Windows-Clientbibliothek der Maschinelles Sehen-API ein lokales Bild und ein Remotebild, um visuelle Merkmale zu extrahieren.
-
-Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,6 +28,9 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
 * Das NuGet-Paket [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) mit der Clientbibliothek. Es ist nicht erforderlich, das Paket herunterzuladen. Unten ist die Installationsanleitung angegeben.
 
 ## <a name="analyzeimageasync-method"></a>AnalyzeImageAsync-Methode
+
+> [!TIP]
+> Laden Sie den aktuellen Code als Visual Studio-Projektmappe von [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) herunter.
 
 Die Methoden `AnalyzeImageAsync` und `AnalyzeImageInStreamAsync` umschließen die [Bildanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) für lokale Bilder bzw. Remotebilder. Sie können diese Methoden verwenden, um visuelle Merkmale basierend auf dem Bildinhalt zu extrahieren und die Merkmale auszuwählen, die zurückgegeben werden sollen. Zu den verfügbaren Merkmalen zählen beispielsweise:
 

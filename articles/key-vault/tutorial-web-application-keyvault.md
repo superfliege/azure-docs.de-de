@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: d1776fc2347eb1a1f03a834b6a5f847ef5c551e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 521b6423550bf3e2d0bc90212b7e3fe0cbeddfc4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948882"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167069"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Tutorial: Konfigurieren einer Azure-Webanwendung zum Lesen eines Geheimnisses aus Key Vault
 
@@ -126,10 +126,11 @@ Zwei NuGet-Pakete müssen für Ihre Webanwendung installiert sein. Führen Sie z
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Websitenamen.
 2. Klicken Sie auf **NuGet-Pakete für Projektmappe verwalten...**.
 3. Aktivieren Sie das Kontrollkästchen neben dem Suchfeld: **Vorabversion einbeziehen**
-4. Suchen Sie nach den beiden unten aufgeführten NuGet-Paketen, und lassen Sie zu, dass sie zu Ihrer Projektmappe hinzugefügt werden:
+4. Suchen Sie nach den drei unten aufgeführten NuGet-Paketen, und lassen Sie zu, dass sie Ihrer Projektmappe hinzugefügt werden:
 
     * [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication): Dieses Paket vereinfacht das Abrufen von Zugriffstoken für Szenarien mit Dienst-zu-Azure-Authentifizierung. 
     * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) enthält Methoden für die Interaktion mit Key Vault.
+    * [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) enthält `IConfiguration`-Erweiterungen für Azure Key Vault.
 
 5. Öffnen Sie `Program.cs` mithilfe des Projektmappen-Explorers, und ersetzen Sie den Inhalt der Datei „Program.cs“ durch den folgenden Code. Ersetzen Sie ```<YourKeyVaultName>``` durch den Namen Ihres Schlüsseltresors:
 
@@ -230,7 +231,7 @@ az webapp identity assign --name "WebKeyVault" --resource-group "ContosoResource
 ```
 
 >[!NOTE]
->Dieser Befehl entspricht dem Aufrufen des Portals und dem Festlegen der Einstellung **Identity/System assigned** (Identität/Vom System zugewiesen) auf **Ein** in den Webanwendungseigenschaften.
+>Dieser Befehl entspricht dem Aufrufen des Portals und dem Festlegen der Einstellung **Identität/Vom System zugewiesen** auf **Ein** in den Webanwendungseigenschaften.
 
 ## <a name="grant-rights-to-the-application-identity"></a>Gewähren von Berechtigungen für die Anwendungsidentität
 

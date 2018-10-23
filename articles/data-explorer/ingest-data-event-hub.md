@@ -2,18 +2,18 @@
 title: 'Schnellstart: Erfassen von Daten aus Event Hub im Azure-Daten-Explorer'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Daten aus Event Hub im Azure-Daten-Explorer erfassen (laden).
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: acc18b6414e62a1f8239562158b4b80219c5d7c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efaf551d134d339205d40966cb84f41b408559bd
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976821"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394177"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Schnellstart: Erfassen von Daten aus Event Hub im Azure-Daten-Explorer
 
@@ -23,7 +23,7 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zusätzlich zu einem Azure-Abonnement benötigen Sie zur Ausführung dieses Schnellstarts Folgendes:
+Zusätzlich zu einem Azure-Abonnement benötigen Sie zum Abschließen dieses Schnellstarts Folgendes:
 
 * [Einen Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
 
@@ -41,7 +41,7 @@ In diesem Schnellstart generieren Sie Beispieldaten und senden diese an einen Ev
 
 1. Wählen Sie die folgende Schaltfläche aus, um die Bereitstellung zu starten.
 
-    [![Bereitstellen in Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![In Azure bereitstellen](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     Über die Schaltfläche **In Azure bereitstellen** gelangen Sie zum Azure-Portal, um ein Bereitstellungsformular auszufüllen.
 
@@ -62,7 +62,7 @@ In diesem Schnellstart generieren Sie Beispieldaten und senden diese an einen Ev
     | Abonnement | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Event Hub verwenden möchten.|
     | Ressourcengruppe | *test-hub-rg* | Erstellen Sie eine neue Ressourcengruppe. |
     | Standort | *USA, Westen* | Wählen Sie für diesen Schnellstart die Option *USA, Westen* aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt.
-    | Namespacename | Ein eindeutiger Namespacename | Wählen Sie einen eindeutigen Namen, der Ihren Namespace identifiziert, beispielsweise *mytestnamespace*. For example, <bpt id="p1">*</bpt>mytestnamespace<ept id="p1">*</ept>. Der Domänenname *servicebus.windows.net* wird an den von Ihnen angegebenen Namen angefügt. Der Name darf nur Buchstaben, Zahlen und Bindestriche enthalten. Der Name muss mit einem Buchstaben beginnen und mit einem Buchstaben oder einer Zahl enden. Der Wert muss zwischen 6 und 50 Zeichen umfassen.
+    | Namespacename | Ein eindeutiger Namespacename | Wählen Sie einen eindeutigen Namen, der Ihren Namespace identifiziert. Beispiel: *mytestnamespace*. Der Domänenname *servicebus.windows.net* wird an den von Ihnen angegebenen Namen angefügt. Der Name darf nur Buchstaben, Zahlen und Bindestriche enthalten. Der Name muss mit einem Buchstaben beginnen und mit einem Buchstaben oder einer Zahl enden. Der Wert muss zwischen 6 und 50 Zeichen umfassen.
     | Event Hub-Name | *test-hub* | Der Event Hub befindet sich unter dem Namespace, der einen eindeutigen Bereichscontainer bereitstellt. Der Name des Event Hubs muss innerhalb des Namespaces eindeutig sein. |
     | Name der Consumergruppe | *test-group* | Durch Consumergruppen können mehrere verarbeitende Anwendungen jeweils über eine separate Ansicht des Ereignisdatenstroms verfügen. |
     | | |
@@ -187,7 +187,7 @@ Wenn Sie nicht vorhaben, Ihren Event Hub erneut zu verwenden, bereinigen Sie **t
 
     Wenn das linke Menü reduziert ist, wählen Sie ![Schaltfläche „Erweitern“](media/ingest-data-event-hub/expand.png) , um es zu erweitern.
 
-   ![Zu löschende Ressourcengruppe auswählen](media/ingest-data-event-hub/delete-resources-select.png)
+   ![Auswählen einer zu löschenden Ressourcengruppe](media/ingest-data-event-hub/delete-resources-select.png)
 
 1. Wählen Sie unter **test-resource-group** die Option **Ressourcengruppe löschen** aus.
 

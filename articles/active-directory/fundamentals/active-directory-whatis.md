@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 09/13/2018
 ms.custom: it-pro
-ms.openlocfilehash: 755c301651e7c49faa8b05b2b443c5cce1a03c90
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 08d32a99e2f1a77bcc7a5900b47e6771c33ec356
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364052"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393320"
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 Azure Active Directory (Azure AD) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Azure AD kombiniert Kernverzeichnisdienste, Anwendungszugriffsverwaltung und Identitätsschutz in einer einzigen Lösung und bietet eine standardbasierte Plattform, die Entwickler dabei unterstützt, die Zugriffssteuerung für ihre Apps auf Grundlage zentralisierter Richtlinien und Regeln bereitzustellen.
@@ -56,7 +56,7 @@ Weitere Informationen über Vereinbarungen zum Servicelevel finden Sie unter [Ve
 ## <a name="choose-an-edition"></a>Auswählen einer Edition
 Alle Microsoft Online-Unternehmensdienste nutzen für Anmelde- und andere Identitätsanforderungen Azure AD. Wenn Sie einen Microsoft Online-Unternehmensdienst (z.B. Office 365 oder Microsoft Azure) abonnieren, erhalten Sie automatisch Azure AD mit Zugriff auf alle Azure AD Free-Features. Mit Azure Active Directory Free können Sie Benutzer und Gruppen verwalten, Synchronisierungen mit lokalen Verzeichnissen ausführen, sich mittels einmaligem Anmelden (SSO) bei Azure, Office 365 und zahlreichen gängigen SaaS-Apps wie Salesforce, Workday, Concur, DocuSign, Google Apps, Box, ServiceNow, Dropbox anmelden. 
 
-Um Ihre Azure AD-Implementierung zu verbessern, können Sie auch kostenpflichtige Funktionen hinzufügen, indem Sie ein Upgrade auf Azure Active Directory Basic, Premium P1 oder Premium P2 ausführen. Die kostenpflichtigen Azure Ad-Editionen ergänzen Ihr kostenloses Verzeichnis. Sie bieten Funktionen für Unternehmen wie Self-Service, erweiterte Überwachung, Sicherheitsberichterstellung, Multi-Factor Authentication (MFA) und sicheren Zugriff für Ihre mobilen Mitarbeiter.
+Um Ihre Azure AD-Implementierung zu verbessern, können Sie auch kostenpflichtige Funktionen hinzufügen, indem Sie auf Azure Active Directory Basic, Premium P1 oder Premium P2 upgraden. Die kostenpflichtigen Azure Ad-Editionen ergänzen Ihr kostenloses Verzeichnis. Sie bieten Funktionen für Unternehmen wie Self-Service, erweiterte Überwachung, Sicherheitsberichterstellung, Multi-Factor Authentication (MFA) und sicheren Zugriff für Ihre mobilen Mitarbeiter.
 
 > [!NOTE]
 > Informationen zu den Preisoptionen für diese Editionen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/). Azure Active Directory Premium P1, Premium P2 und Azure Active Directory Basic werden derzeit in China nicht unterstützt. Wenn Sie weitere Informationen zur Azure AD-Preisgestaltung wünschen, können Sie sich an das Azure Active Directory-Forum wenden.

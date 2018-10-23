@@ -9,28 +9,32 @@ ms.service: mariadb
 ms.topic: overview
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 3649a173d5707179ca8547a8169b7d308c4f7f1c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 696ba68894b4ac5f73c234ea49883fd0aa3db4d5
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249161"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320916"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Was ist Azure Database for MariaDB?
-Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft-Cloud, der auf der Datenbank-Engine [MariaDB Community Edition](https://mariadb.org/download/) basiert. Dieser Dienst befindet sich in der öffentlichen Vorschau. Azure Database for MariaDB bietet Folgendes:
+
+Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Azure Database for MariaDB basiert auf der Datenbank-Engine [MariaDB Community Edition](https://mariadb.org/download/). Dieser Dienst befindet sich in der öffentlichen Vorschau. 
+
+Azure Database for MariaDB bietet Folgendes:
 
 - Integrierte Hochverfügbarkeit ohne zusätzliche Kosten.
 - Vorhersagbare Leistung inklusive nutzungsbasierter Bezahlung.
-- Bedarfsgerechte Skalierung in Sekundenschnelle
-- Gesicherte Datenbank zum Schutz sensibler Daten in Ruhe und Bewegung.
+- Bedarfsgerechte Skalierung in Sekundenschnelle.
+- Schutz von sensiblen Daten (sowohl in Ruhe als auch während der Übertragung).
 - Automatische Sicherungen und Point-in-Time-Wiederherstellung für bis zu 35 Tage.
 - Sicherheit und Konformität auf Unternehmensniveau.
 
-Diese Funktionen erfordern fast keine Administration und werden alle ohne zusätzliche Kosten bereitgestellt. Mit diesen Funktionen können Sie sich auf die schnelle Entwicklung von Apps und die Verkürzung des Zeitraums bis zur Markteinführung konzentrieren, anstatt wertvolle Zeit und Ressourcen für die Verwaltung von virtuellen Computern und der Infrastruktur aufwenden zu müssen. Darüber hinaus können Sie Ihre Anwendung weiterhin mit den Open-Source-Tools und der Plattform Ihrer Wahl entwickeln und mit der Geschwindigkeit und Effizienz liefern, die Ihr Unternehmen verlangt, ohne dass Sie sich dafür neue Fähigkeiten aneignen müssen.
+Der Verwaltungsaufwand für diese Funktionen ist minimal. Sie werden ohne zusätzliche Kosten bereitgestellt. Azure Database for MariaDB kann die Entwicklung Ihrer App sowie deren Markteinführung beschleunigen. Sie müssen weder wertvolle Zeit noch wertvolle Ressourcen aufwenden, um virtuelle Computer oder die Infrastruktur zu verwalten. Sie können Ihre Anwendung auch weiterhin unter Verwendung Ihrer bevorzugten Open-Source-Tools und Plattform entwickeln. Entwickeln Sie mit der Geschwindigkeit und Effizienz, die Ihr Unternehmen erfordert, und greifen Sie dabei auf Ihre bereits vorhandenen Kenntnisse zurück.
 
-Dieser Artikel bietet eine Einführung in die wesentlichen Konzepte und Features von Azure Database for MariaDB im Hinblick auf Leistung, Skalierbarkeit und Verwaltbarkeit sowie Links zu detaillierten Informationen. Diese Schnellstarts erleichtern Ihnen den Einstieg:
-- [Erstellen eines Servers für Azure Database for MariaDB mithilfe des Azure-Portals](quickstart-create-mariadb-server-database-using-azure-portal.md)
-- [Erstellen eines Servers für Azure Database for MariaDB mithilfe der Azure-Befehlszeilenschnittstelle](quickstart-create-mariadb-server-database-using-azure-cli.md)
+Informationen zu zentralen Konzepten und Features in Azure Database for MariaDB (einschließlich Leistung, Skalierbarkeit und Verwaltbarkeit) finden Sie in den folgenden Schnellstartanleitungen:
+
+- [Erstellen eines Azure Database for MariaDB-Servers über das Azure-Portal](quickstart-create-mariadb-server-database-using-azure-portal.md)
+- [Erstellen eines Azure Database for MariaDB-Servers mit der Azure-Befehlszeilenschnittstelle](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 <!--
 For a set of Azure CLI samples, see:
@@ -38,32 +42,38 @@ For a set of Azure CLI samples, see:
 -->
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Anpassen von Leistung und Skalierung in nur wenigen Sekunden
-Für den Azure Database for MariaDB-Dienst sind in der Vorschauversion verschiedene Dienstebenen verfügbar: „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter [Tarife](concepts-pricing-tiers.md).
+
+Für den Azure Database for MariaDB-Dienst sind in der Vorschauversion verschiedene Dienstebenen verfügbar: „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Dank dynamischer Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter [Tarife](concepts-pricing-tiers.md).
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
-Wie entscheiden Sie, wann Sie nach oben oder nach unten skalieren? Verwenden Sie die integrierten Features für Leistungsüberwachung und Warnungen in Kombination mit den Leistungsbewertungen nach virtuellen Kernen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens von virtuellen Kernen je nach Ihren derzeitigen oder erwarteten Leistungsanforderungen schnell bewerten. <!--See [Alerts](howto-alert-on-metric.md) for details.-->
+
+Wie entscheiden Sie, wann Sie hoch- oder herunterskalieren müssen? Sie können die integrierten Leistungsüberwachungs- und Warnungsfeatures von Azure Database for MariaDB verwenden – kombiniert mit V-Kern-basierten Leistungsbewertungen. Mit diesen Tools können Sie schnell die Auswirkungen des zentralen Hoch- oder Herunterskalierens von virtuellen Kernen auf der Grundlage Ihrer derzeitigen oder erwarteten Leistungsanforderungen bewerten. <!--See [Alerts](howto-alert-on-metric.md) for details.-->
 
 ## <a name="keep-your-app-and-business-running"></a>Aufrechterhalten von App-Ausführung und Geschäftskontinuität
-Durch die Unterstützung eines globalen Netzwerks von durch Microsoft verwaltete Rechenzentren stellt die branchenführende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel (SLA) von 99,99 % (während der öffentlichen Vorschauphase nicht angeboten) sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Mit jedem Azure Database for MariaDB-Server nutzen Sie die integrierte Sicherheit, die Fehlertoleranz und die Datensicherheit, die Sie andernfalls entwerfen oder kaufen, erstellen und verwalten müssten. Mit Azure Database for MariaDB können Sie über die Point-in-Time-Wiederherstellung den früheren Status eines Servers innerhalb der letzten 35 Tage wiederherstellen.
+
+Die branchenführende SLA von Azure mit einer Verfügbarkeit von 99,99 Prozent (nicht während der Public Preview-Phase) wird durch ein globales Netzwerk von durch Microsoft verwalteten Datencentern ermöglicht. Das Netzwerk sorgt dafür, dass Ihre App rund um die Uhr ausgeführt wird. Profitieren Sie von der integrierten Sicherheit, der Fehlertoleranz und dem Datenschutz in Azure Database for MariaDB. Mit Azure Database for MariaDB können Sie über die Point-in-Time-Wiederherstellung den früheren Status eines Servers innerhalb der letzten 35 Tage wiederherstellen.
 
 ## <a name="secure-your-data"></a>Sichern der Daten
-Azure Database for MariaDB führt die Tradition der Datensicherheit von Azure-Datenbankdiensten fort – mit Features zum Einschränken des Zugriffs, zum Schützen ruhender und bewegter Daten und zum Überwachen von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/en-us/trustcenter/security).
 
-Der Azure Database for MariaDB-Dienst verwendet Speicherverschlüsselung für ruhende Daten. Die Daten, einschließlich der Sicherungen, werden auf dem Datenträger verschlüsselt (mit Ausnahme von temporären Dateien, die von der Engine während der Ausführung von Abfragen erstellt werden). Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
+Azure-Datenbankdienste sind für ihren Datenschutz bekannt. Diese Tradition wird auch von Azure Database for MariaDB fortgeführt. Azure Database for MariaDB bietet Features zur Einschränkung des Zugriffs, zum Schutz von Daten (sowohl in Ruhe als auch während der Übertragung) sowie zur Überwachung von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/en-us/trustcenter/security).
 
-In der Standardeinstellung ist der Azure Database for MariaDB-Dienst so konfiguriert, dass [SSL-Verbindungssicherheit](./concepts-ssl-connection-security.md) für Daten bei Übertragungen innerhalb des Netzwerks erforderlich ist. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird. Wenn Ihre Clientanwendung keine SSL-Konnektivität unterstützt, können Sie optional die Erzwingung von SSL zum Herstellen einer Verbindung mit dem Datenbankdienst deaktivieren.
+Der Azure Database for MariaDB-Dienst verwendet Speicherverschlüsselung für ruhende Daten. Daten werden auf dem Datenträger verschlüsselt. Das gilt auch für Sicherungsdaten. (Temporäre Dateien, die von der Engine beim Ausführen von Abfragen erstellt werden, werden auf dem Datenträger nicht verschlüsselt.) Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren. Die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
+
+In der Standardeinstellung ist der Azure Database for MariaDB-Dienst so konfiguriert, dass für Daten während der Übertragung innerhalb des Netzwerks [SSL-Verbindungssicherheit](./concepts-ssl-connection-security.md) erforderlich ist. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird. Falls Ihre Clientanwendung keine SSL-Konnektivität unterstützt, können Sie optional die SSL-Anforderung deaktivieren, um eine Verbindung mit Ihrem Datenbankdienst herstellen zu können.
 
 ## <a name="contacts"></a>Kontakte
-Sollten Sie Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for MariaDB haben, senden Sie eine E-Mail an das zuständige Team ([@Ask Azure DB for MariaDB](mailto:AskAzureDBforMariaDB@service.microsoft.com)). Beachten Sie, dass es sich hierbei nicht um einen Alias für den technischen Support handelt.
+
+Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for MariaDB können an das [Team für Azure DB for MariaDB](mailto:AskAzureDBforMariaDB@service.microsoft.com) (kein Alias für den technischen Support) gesendet werden.
 
 Weitere Kontaktmöglichkeiten:
-- Wenn Sie den Azure-Support kontaktieren möchten, [fordern Sie im Azure-Portal ein Ticket an](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/forums/915439-azure-database-for-mariadb).
+- Wenn Sie den Azure-Support kontaktieren möchten, richten Sie im Azure-Portal eine [Anfrage an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Sollten Sie ein Problem mit Ihrem Konto haben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag in den [Azure-Feedbackforen](https://feedback.azure.com/forums/915439-azure-database-for-mariadb).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie nun eine Einführung in Azure Database for MariaDB erhalten haben, in der die Frage „Was ist Azure Database for MariaDB?“ beantwortet wurde, sind Sie für Folgendes bereit:
-- Auf der Seite mit der Preisgestaltung finden Sie Kostenvergleiche und Rechner. [Preise](https://azure.microsoft.com/pricing/details/mariadb/)
-- Legen Sie los, und erstellen Sie Ihren ersten Server. [Erstellen eines Servers für Azure Database for MariaDB mithilfe des Azure-Portals](quickstart-create-mariadb-server-database-using-azure-portal.md)
+
+Nach dieser Einführung in Azure Database for MariaDB können Sie mit Folgendem fortfahren:
+- Sehen Sie sich auf der [Seite mit der Preisgestaltung](https://azure.microsoft.com/pricing/details/mariadb/) Kostenvergleiche und -rechner an. 
+- [Erstellen Sie Ihren ersten Server.](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 <!--- - Build your first app using your preferred language: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md) --->

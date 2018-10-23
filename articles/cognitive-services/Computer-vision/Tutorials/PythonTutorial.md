@@ -10,18 +10,18 @@ ms.component: computer-vision
 ms.topic: tutorial
 ms.date: 02/25/2017
 ms.author: kefre
-ms.openlocfilehash: 59e88ecb253bc6da803ddf34a4a02229b99e259d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 046250d3d2142badaac35490eff27bcac220fea9
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981710"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344896"
 ---
 # <a name="tutorial-computer-vision-api-python"></a>Tutorial: Maschinelles Sehen-API in Python
 
 Im Tutorial wird veranschaulicht, wie Sie die Maschinelles Sehen-API in Python verwenden und Ihre Ergebnisse mithilfe beliebter Bibliotheken visualisieren. Nutzen Sie Jupyter, um das Tutorial durchzuarbeiten. Informationen zum Einstieg in interaktive Jupyter-Notebooks finden Sie in der [Jupyter-Dokumentation](http://jupyter.readthedocs.io/en/latest/index.html). 
 
-### <a name="opening-the-tutorial-notebook-in-jupyter"></a>Öffnen des Tutorial-Notebooks in Jupyter 
+## <a name="open-the-tutorial-notebook-in-jupyter"></a>Öffnen des Tutorial-Notebooks in Jupyter 
 
 1. Navigieren Sie zum [Tutorial-Notebook auf GitHub](https://github.com/Microsoft/Cognitive-Vision-Python). 
 2. Klicken Sie auf die grüne Schaltfläche, um das Tutorial zu klonen oder herunterzuladen. 
@@ -29,7 +29,7 @@ Im Tutorial wird veranschaulicht, wie Sie die Maschinelles Sehen-API in Python v
 4. Führen Sie an der Eingabeaufforderung den Befehl**jupyter notebook** aus. Jupyter wird gestartet.
 5. Klicken Sie im Jupyter-Fenster auf _Computer Vision API Example.ipynb_, um das Tutorial-Notebook zu öffnen. 
 
-### <a name="running-the-tutorial"></a>Ausführen des Tutorials
+## <a name="run-the-tutorial"></a>Ausführen des Tutorials
 
 Um dieses Notizbuch verwenden zu können, benötigen Sie einen Abonnementschlüssel für die Maschinelles Sehen-API. Besuchen Sie zur Registrierung die [Abonnementseite](https://azure.microsoft.com/try/cognitive-services/). Melden Sie sich auf der Seite „Anmelden“ mit Ihrem Microsoft-Konto an. Anschließend können Sie kostenlose Schlüssel abonnieren und abrufen. Fügen Sie Ihren Schlüssel nach Abschluss des Registrierungsvorgangs in den Variablenabschnitt des Notebooks ein (unten dargestellt). Entweder der Primär- oder der Sekundärschlüssel funktioniert. Achten Sie darauf, den Schlüssel in Anführungszeichen zu setzen, um ihn zu einer Zeichenfolge zu machen.
 

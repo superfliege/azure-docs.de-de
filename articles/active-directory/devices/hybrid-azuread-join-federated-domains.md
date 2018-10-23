@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2f020bdf79811c959e07d753231fc133fe597861
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855176"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352659"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen
 
@@ -124,7 +124,7 @@ Zum Konfigurieren einer Azure AD-Hybrideinbindung mithilfe von Azure AD Connect 
 
     a. Wählen Sie die Gesamtstruktur aus.
 
-    b. Wählen Sie den Authentifizierungsdienst aus. Sie müssen „AD FS-Server“ auswählen, sofern Ihre Organisation nicht ausschließlich Windows 10-Clients nutzt.
+    b. Wählen Sie den Authentifizierungsdienst aus. Sie müssen AD FS-Server auswählen – es sei denn, Ihre Organisation verfügt ausschließlich über Windows 10-Clients und Sie haben die Computer-/Gerätesynchronisierung konfiguriert, oder Ihre Organisation verwendet SeamlessSSO.
 
     c. Klicken Sie auf **Hinzufügen**, um die Anmeldeinformationen eines Unternehmensadministrators einzugeben.
 
@@ -194,7 +194,7 @@ Bei Verwendung des Cmdlets **Get-MSolDevice** zur Überprüfung der Dienstdetail
 
 - Ein Objekt mit der **Geräte-ID**, die der ID auf dem Windows-Client entspricht, muss vorhanden sein.
 - Der Wert für **DeviceTrustType** muss **Domänenbeitritt** sein. Dies entspricht dem Status **Hybrid in Azure AD eingebunden** auf der Seite „Geräte“ im Azure AD-Portal.
-- Der Wert für **Aktiviert** muss für Geräte, die für den bedingten Zugriff verwendet werden, **True** sein. 
+- Für Geräte, die für den bedingten Zugriff verwendet werden, muss **Aktiviert** den Wert **True** und **DeviceTrustLevel** den Wert **Verwaltet** haben. 
 
 
 **So überprüfen Sie die Dienstdetails:**

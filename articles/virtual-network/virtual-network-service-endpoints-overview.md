@@ -3,7 +3,7 @@ title: Dienstendpunkte von virtuellen Azure-Netzwerken | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie den direkten Zugriff auf Azure-Ressourcen aus einem virtuellen Netzwerk über Dienstendpunkte ermöglichen.
 services: virtual-network
 documentationcenter: na
-author: anithaa
+author: sumeetmittal
 manager: narayan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
-ms.author: anithaa
+ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 3bae20a7d6eea298dd09d24c0c5b53365784b3d0
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 77fad7b0035a9ba21d71e6c493a4f1a5bd9a2111
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239182"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395206"
 ---
 # <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
 
@@ -42,6 +42,7 @@ Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar:
 - **[Azure SQL Data Warehouse:](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion in allen Azure-Regionen mit öffentlichen Clouds verfügbar
 - **[Azure Service Bus:](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion verfügbar.
 - **[Azure Event Hubs:](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion verfügbar.
+- **[Azure Data Lake Storage Gen1:](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion verfügbar.
 
 Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -65,6 +66,10 @@ Dienstendpunkte bieten folgende Vorteile:
 
 - Der Dienstendpunkt eines virtuellen Netzwerk stellt die Identität Ihres virtuellen Netzwerks für den Azure-Dienst bereit. Nachdem Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert wurden, können Sie Ressourcen von Azure-Diensten auf Ihr virtuelles Netzwerk beschränken und auf diese Weise schützen, indem Sie den Ressourcen eine Regel für das virtuelle Netzwerk hinzufügen.
 - Heutzutage werden für Datenverkehr von Azure-Diensten aus einem virtuellen Netzwerk öffentliche IP-Adressen als Quell-IP-Adressen verwendet. Bei Verwendung von Dienstendpunkten wird für den Dienstdatenverkehr zu privaten virtuellen Netzwerk-Adressen als Quell-IP-Adressen gewechselt, wenn aus einem virtuellen Netzwerk auf den Azure-Dienst zugegriffen wird. Dieser Wechsel ermöglicht Ihnen den Zugriff auf die Dienste, ohne dass reservierte öffentliche IP-Adressen in IP-Firewalls verwendet werden müssen.
+
+>[!NOTE]
+> Wenn Sie Dienstendpunkte verwenden, werden die Quell-IP-Adressen der virtuellen Computer im Subnetz für Dienstdatenverkehr von öffentlichen IPv4-Adressen auf private IPv4-Adressen umgestellt. Bereits vorhandene Firewallregeln für Azure-Dienste, bei denen öffentliche Azure-IP-Adressen verwendet werden, funktionieren dadurch nicht mehr. Stellen Sie sicher, dass die Firewallregeln für Azure-Dienste diese Umstellung unterstützen, bevor Sie Dienstendpunkte einrichten. Unter Umständen kommt es während der Konfiguration von Dienstendpunkten auch zu einer vorübergehenden Unterbrechung des Dienstdatenverkehrs aus diesem Subnetz. 
+ 
 - __Schützen des Zugriffs auf Azure-Dienste aus der lokalen Umgebung__:
 
   Standardmäßig sind Azure-Dienstressourcen, die auf virtuelle Netzwerke beschränkt und so geschützt sind, über lokale Netzwerke nicht erreichbar. Wenn Sie Datenverkehr aus der lokalen Umgebung zulassen möchten, müssen Sie auch öffentliche IP-Adressen (meist NAT) aus der lokalen Umgebung bzw. per ExpressRoute zulassen. Diese IP-Adressen können über die Konfiguration der IP-Firewall für Azure-Dienstressourcen hinzugefügt werden.
@@ -87,6 +92,7 @@ Dienstendpunkte bieten folgende Vorteile:
 
   Die Umstellung der IP-Adresse wirkt sich nur auf Dienstdatenverkehr aus Ihrem virtuellen Netzwerk aus. Es ergeben sich keine Auswirkungen auf anderen Datenverkehr an bzw. von den öffentlichen IPv4-Adressen, die Ihren virtuellen Computern zugewiesen sind. Wenn Sie über vorhandene Firewallregeln mit öffentlichen Azure-IP-Adressen verfügen, funktionieren diese Regeln für Azure-Dienste nicht mehr, nachdem die Umstellung auf private virtuelle Netzwerk-Adressen durchgeführt wurde.
 - Bei Verwendung von Dienstendpunkten bleiben DNS-Einträge für Azure-Dienste unverändert und werden weiterhin in öffentliche IP-Adressen aufgelöst, die dem Azure-Dienst zugewiesen werden.
+
 - Netzwerksicherheitsgruppen (NSGs) mit Dienstendpunkten:
   - Da für NSGs ausgehender Internet-Datenverkehr standardmäßig zugelassen wird, ist auch der Datenverkehr aus Ihrem VNET zu Azure-Diensten zulässig. In Verbindung mit Dienstendpunkten funktioniert dies weiter wie bisher. 
   - Falls Sie den gesamten ausgehenden Internet-Datenverkehr verweigern und nur Datenverkehr für bestimmte Azure-Dienste zulassen möchten, können Sie hierfür [Diensttags](security-overview.md#service-tags) in Ihren NSGs verwenden. Sie können unterstützte Azure-Dienste als Ziel in Ihren NSG-Regeln angeben, und die Wartung der zugrunde liegenden IP-Adressen der einzelnen Tags wird von Azure bereitgestellt. Weitere Informationen finden Sie unter [Azure-Diensttags für NSGs](security-overview.md#service-tags). 

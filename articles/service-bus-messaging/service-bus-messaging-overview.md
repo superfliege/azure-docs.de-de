@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 08295ceeb2ebe94a96eaade0a6443f0f59212d60
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394028"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342206"
 ---
 # <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
 
@@ -95,9 +95,9 @@ Abonnenten können definieren, welche Nachrichten von einem Thema empfangen werd
 
 Sollte ein Fehler dazu führen, dass der Client das Ergebnis eines Sendevorgangs nicht mit Bestimmtheit ermitteln kann, sorgt die [Duplikaterkennung](duplicate-detection.md) für Klarheit: Der Absender kann die gleiche Nachricht erneut senden, und die Warteschlange oder das Thema verwirft mögliche Duplikate.
 
-### <a name="sas-rbac-and-msi"></a>SAS, RBAC und MSI
+### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC und verwaltete Identitäten für Azure-Ressourcen
 
-Service Bus unterstützt Sicherheitsprotokolle wie [Shared Access Signatures](service-bus-sas.md) (SAS), die [rollenbasierte Zugriffssteuerung](service-bus-role-based-access-control.md) (Role Based Access Control, RBAC) und die [verwaltete Dienstidentität](service-bus-managed-service-identity.md) (Managed Service Identity, MSI).
+Service Bus unterstützt Sicherheitsprotokolle wie [Shared Access Signatures](service-bus-sas.md) (SAS), die [rollenbasierte Zugriffssteuerung](service-bus-role-based-access-control.md) (Role Based Access Control, RBAC) und [verwaltete Identitäten für Azure-Ressourcen](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung
 

@@ -3,25 +3,23 @@ title: 'Schnellstart: Generieren einer Miniaturansicht – SDK, C# – Maschinel
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart generieren Sie eine Miniaturansicht aus einem Bild, indem Sie die Windows C#-Clientbibliothek von Maschinelles Sehen verwenden.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: 8fdbcf5bfe4d4fe60a2858b34b38c01d66e75d99
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.author: pafarley
+ms.openlocfilehash: 758021a9428672789923d1774f51fd319fe9885f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054811"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343111"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Schnellstart: Generieren einer Miniaturansicht mit dem Maschinelles Sehen SDK und C#
 
 In dieser Schnellstartanleitung generieren Sie eine Miniaturansicht aus einem Bild, indem Sie die Windows-Clientbibliothek der Maschinelles Sehen-API verwenden.
-
-Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,6 +28,9 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
 * Das NuGet-Paket [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) mit der Clientbibliothek. Es ist nicht erforderlich, das Paket herunterzuladen. Unten ist die Installationsanleitung angegeben.
 
 ## <a name="generatethumbnailasync-method"></a>GenerateThumbnailAsync-Methode
+
+> [!TIP]
+> Laden Sie den aktuellen Code als Visual Studio-Projektmappe von [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) herunter.
 
 Die Methoden `GenerateThumbnailAsync` und `GenerateThumbnailInStreamAsync` umschließen die [Bildanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) für lokale Bilder bzw. Remotebilder.  Sie können diese Methoden verwenden, um aus einem Bild eine Miniaturansicht zu generieren. Sie geben die Höhe und Breite an. Diese kann sich vom Seitenverhältnis des Eingabebilds unterscheiden. Für das maschinelle Sehen wird die intelligente Zuschneidefunktion verwendet, um die gewünschte Region zu identifizieren und basierend auf dieser Region Zuschneidekoordinaten zu generieren.
 

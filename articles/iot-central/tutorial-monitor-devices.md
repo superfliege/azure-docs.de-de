@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9a3b7383651d679b079818fb32bd8f98160d0a4c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 91a4fceaf5a3e573964919d365a67519b26278ca
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235480"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310623"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Tutorial: Überwachen Ihrer Geräte mithilfe von Azure IoT Central
 
@@ -61,7 +61,7 @@ Das Diagramm auf dem Dashboard zeigt einen Plot der Gerätetemperatur. Auf der K
 
 Verwenden Sie zum Ändern der Zieltemperatur des Geräts die Seite **Einstellungen**:
 
-1. Klicken Sie auf **Einstellungen**. Legen Sie den Wert für **Set Temperature** (Sollwerttemperatur) auf „100“ fest. Klicken Sie auf **Aktualisieren**, um die neue Zieltemperatur an das Gerät zu senden. Wenn das Gerät die Einstellungsänderung bestätigt, ändert sich der Status des Einstellungswerts in **Synchronisiert**:
+1. Klicken Sie auf **Einstellungen**. Legen Sie den Wert für **Set Temperature** (Sollwerttemperatur) auf „75“ fest. Klicken Sie auf **Aktualisieren**, um die neue Zieltemperatur an das Gerät zu senden. Wenn das Gerät die Einstellungsänderung bestätigt, ändert sich der Status des Einstellungswerts in **Synchronisiert**:
 
     ![Aktualisieren der Einstellungen](media/tutorial-monitor-devices/change_settings.png)
 

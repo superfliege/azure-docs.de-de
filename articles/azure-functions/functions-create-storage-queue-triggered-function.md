@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: bcaec2f49d58edfec6c41f35cb22a57289e12c8a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: fd2d19119c5be91942d9587a073be30d59c8fd6c
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858666"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113766"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Erstellen einer Funktion, die durch Azure Queue Storage ausgelöst wird
 
@@ -43,7 +43,7 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
 ## <a name="create-a-queue-triggered-function"></a>Erstellen einer Funktion mit Auslösung durch Warteschlange
 
-1. Erweitern Sie die Funktionen-App, und klicken Sie auf die Schaltfläche **+** neben **Functions**. Wenn dies die erste Funktion in Ihrer Funktions-App ist, klicken Sie auf **Im Portal** und anschließend auf **Weiter**. Fahren Sie andernfalls mit Schritt 3 fort.
+1. Erweitern Sie die Funktionen-App, und klicken Sie auf die Schaltfläche **+** neben **Functions**. Wenn dies die erste Funktion in Ihrer Funktions-App ist, wählen Sie **Im Portal** und dann **Weiter**. Fahren Sie andernfalls mit Schritt 3 fort.
 
    ![Schnellstartseite für Funktionen im Azure-Portal](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
 

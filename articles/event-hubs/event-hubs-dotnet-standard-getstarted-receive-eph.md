@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 03acd63ff00f0a3017297d1998289c8e68f0f290
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 5abb2447fa90ea5900afb86746cc17eff62c2d2e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918220"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166283"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost (EventProcessorHost) in .NET Standard
 
@@ -43,13 +43,18 @@ Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen N
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos  
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  
-2. Klicken Sie im Portal im Navigationsbereich auf der linken Seite auf **Ressource erstellen** > **Storage** > **Speicherkonto**.  
-3. Füllen Sie die Felder im Fenster „Speicherkonto“ aus, und klicken Sie dann auf **Erstellen**.
+2. Klicken Sie im linken Navigationsbereich des Portals auf **Ressource erstellen**, klicken Sie auf die Kategorie **Storage**, und klicken Sie anschließend auf **Speicherkonto – Blob, Datei, Tabelle, Warteschlange**.  
+3. Füllen Sie die Felder im Fenster **Speicherkonto erstellen** aus, und klicken Sie anschließend auf **Überprüfen + erstellen**. 
 
     ![Speicherkonto erstellen][1]
 
-4. Klicken Sie nach dem Anzeigen der Meldung **Die Bereitstellungen waren erfolgreich** auf den Namen des neuen Speicherkontos. Klicken Sie im Fenster **Zusammenfassung** auf **Blobs**. Klicken Sie oben auf **+ Container**, nachdem das Dialogfeld **Blob-Dienst** geöffnet wurde. Benennen Sie den Container, und schließen Sie **Blob-Dienst**.  
-5. Klicken Sie im linken Fenster auf **Zugriffsschlüssel**, und kopieren Sie den Namen des Speichercontainers, des Speicherkontos und den Wert von **key1**. Speichern Sie diese Werte im Editor oder an einem anderen temporären Speicherort.  
+4. Überprüfen Sie auf der Seite **Überprüfen + erstellen** die Werte für die Felder, und klicken Sie anschließend auf **Erstellen**. 
+5. Warten Sie, bis die Meldung **Bereitstellungen erfolgreich** angezeigt wird, und klicken Sie anschließend auf den Namen des neuen Speicherkontos. 
+6. Klicken Sie im Fenster **Zusammenfassung** auf **Blobs**. 
+7. Klicken Sie im oberen Bereich auf **+ Container**. Benennen Sie den Container.  
+8. Klicken Sie im linken Fenster auf **Zugriffsschlüssel**, und kopieren Sie den Namen des Speichercontainers, das Speicherkonto und den Wert von **key1**. 
+
+    Speichern Sie diese Werte im Editor oder an einem anderen temporären Speicherort.
 
 ## <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 

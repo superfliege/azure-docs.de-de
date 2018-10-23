@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a2b4c4824960c21011876a7c0adf029fc56d93d2
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 69a24dba752e4aa374e03e57ce197ae882647373
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419116"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378686"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code
 
-Erfahren Sie, wie Sie Azure Resource Manager-Vorlagen mit Visual Studio Code und der Erweiterung „Azure Resource Manager-Tools“ erstellen. Sie können Resource Manager-Vorlagen in Visual Studio Code auch ohne die Erweiterung erstellen, aber die Erweiterung verfügt über Optionen für die automatische Vervollständigung, die Ihnen die Entwicklung von Vorlagen vereinfachen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager](resource-group-overview.md).
+Hier erfahren Sie, wie Sie Visual Studio Code und die Erweiterung „Azure Resource Manager-Tools“ verwenden, um Azure Resource Manager-Vorlagen zu erstellen und zu bearbeiten. Sie können Resource Manager-Vorlagen in Visual Studio Code auch ohne die Erweiterung erstellen, aber die Erweiterung verfügt über Optionen für die automatische Vervollständigung, die Ihnen die Entwicklung von Vorlagen vereinfachen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager](resource-group-overview.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -55,9 +55,14 @@ Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherk
 
 ## <a name="edit-the-template"></a>Bearbeiten der Vorlage
 
-Um zu lernen, wie man eine Vorlage mit Visual Studio Code bearbeitet, fügen Sie ein weiteres Element in den Ausgabebereich ein.
+Fügen Sie dem Bereich `outputs` ein weiteres Element hinzu, um sich mit der Bearbeitung einer Vorlage über Visual Studio Code vertraut zu machen.
 
-1. Fügen Sie aus Visual Studio Code eine weitere Ausgabe zur exportierten Vorlage hinzu:
+1. Überprüfen Sie in Visual Studio Code den Wert von **kind**. Lautet der Wert **Storage**, ändern Sie ihn in **StorageV2**.
+
+    ```json
+    "kind": "StorageV2",
+    ```
+2. Fügen Sie der exportierten Vorlage eine weitere Ausgabe hinzu:
 
     ```json
     "storageUri": {
@@ -85,25 +90,17 @@ Um zu lernen, wie man eine Vorlage mit Visual Studio Code bearbeitet, fügen Sie
 
     ![Resource Manager-Vorlagen, Visual Studio Code, IntelliSense](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-2. Wählen Sie **Datei**>**Speichern** aus, um die Datei zu speichern.
+3. Wählen Sie **Datei**>**Speichern** aus, um die Datei zu speichern.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartanleitung verwenden Sie Azure Cloud Shell aus dem Azure-Portal. Cloud Shell unterstützt die Azure-Befehlszeilenschnittstelle (CLI) und Azure PowerShell. 
+Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartanleitung wird Azure Cloud Shell verwendet. Cloud Shell unterstützt die Azure-Befehlszeilenschnittstelle (CLI) und Azure PowerShell. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
-2. Wählen Sie oben rechts **Cloud Shell** aus, wie in der folgenden Abbildung dargestellt:
-
-    ![Azure-Portal, Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
-
-    Cloud Shell wird am unteren Fensterrand geöffnet.
-
-3. Klicken Sie in Cloud Shell oben links auf **PowerShell** oder **Bash**. Zur Verwendung der CLI müssen Sie eine Bash-Sitzung öffnen. Zur Ausführung von PowerShell müssen Sie eine PowerShell-Sitzung öffnen. Wählen Sie den nach unten gerichteten Pfeil, um zwischen Bash und PowerShell zu wechseln. In der folgenden Abbildung ist der Wechsel von PowerShell zu Bash dargestellt:
+1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
 
     ![Azure-Portal, Cloud Shell, CLI](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-
-    Bei einem Wechsel ist ein Neustart der Shell erforderlich.
-4. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus.
+2. Klicken Sie in Cloud Shell oben links auf **PowerShell** oder **Bash**. Zur Verwendung der CLI müssen Sie eine Bash-Sitzung öffnen. Zur Ausführung von PowerShell müssen Sie eine PowerShell-Sitzung öffnen. Wählen Sie den nach unten gerichteten Pfeil, um zwischen Bash und PowerShell zu wechseln. Betrachten Sie hierzu den vorherigen Screenshot. Bei einem Wechsel ist ein Neustart der Shell erforderlich.
+3. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus.
 
     # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
@@ -116,7 +113,7 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartan
     ---
 
     Sie müssen die Vorlagendatei hochladen, bevor Sie sie über die Shell bereitstellen können.
-5. Wählen Sie die Datei aus, die Sie zuvor in der Schnellstartanleitung gespeichert haben. Der Standardname lautet **azuredeploy.json**.
+5. Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Der Standardname lautet **azuredeploy.json**.
 6. Führen Sie aus Cloud Shell den Befehl **ls** aus, um zu überprüfen, ob die Datei erfolgreich hochgeladen wurde. Sie können auch den Befehl **Cat** verwenden, um den Inhalt der Vorlage zu überprüfen. In der folgenden Abbildung ist die Ausführung des Befehls über Bash dargestellt.  In einer PowerShell-Sitzung verwenden Sie die gleichen Befehle.
 
     # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
@@ -132,20 +129,30 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartan
 
     # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
     ```cli
-    az group create --name <ResourceGroupName> --location <AzureLocation>
-
-    az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file <TemplateFileName>
+    echo "Enter the Resource Group name:" &&
+    read resourceGroupName &&
+    echo "Enter the name for this deployment:" &&
+    read deploymentName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    az group create --name $resourceGroupName --location $location &&
+    az group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file "azuredeploy.json"
     ```
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
     ```powershell
-    New-AzureRmResourceGroup -Name <ResourceGroupName> -Location <AzureLocation>
-
-    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroupName> -TemplateFile <TemplateFileName>
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $resourceGroupName -TemplateFile "azuredeploy.json"
     ```
     
     ---
+
+    Aktualisieren Sie den Namen der Vorlagendatei, wenn Sie die Datei nicht unter dem Namen **azuredeploy.json** gespeichert haben.
 
     Der folgende Screenshot zeigt eine Beispielbereitstellung:
 
@@ -159,26 +166,25 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartan
     
     ---
 
-    Im Screenshot werden diese Werte verwendet:
-
-    - **&lt;ResourceGroupName>**: myresourcegroup0709. Es gibt zwei Darstellungen des Parameters.  Stellen Sie sicher, dass der gleiche Wert verwendet wird.
-    - **&lt;AzureLocation>**: eastus2
-    - **&lt;DeployName>**: mydeployment0709
-    - **&lt;TemplateFile>**: azuredeploy.json
-
-    In der Screenshotausgabe lautet der Name des Speicherkontos *3tqebj3slyfyestandardsa*. 
+    Der Speicherkontoname und die Speicher-URL im Ausgabeabschnitt sind auf dem Screenshot hervorgehoben. Den Speicherkontonamen benötigen Sie im nächsten Schritt.
 
 7. Führen Sie den folgenden CLI- oder PowerShell-Befehl zum Auflisten des neu erstellen Speicherkontos aus:
 
     # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
     ```cli
-    az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
+    echo "Enter the Resource Group name:" &&
+    read resourceGroupName &&
+    echo "Enter the Storage Account name:" &&
+    read storageAccountName &&
+    az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
     ```powershell
-    Get-AzureRmStorageAccount -ResourceGroupName <ResourceGroupName> -Name <StorageAccountName>
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
+    Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
     ```
     
     ---

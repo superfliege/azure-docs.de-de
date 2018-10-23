@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4155ea7c24746f9d3381f2d1e4a1e08a7a56206a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4e3b7aff97cbcebe34e6af4755900e8888c5e57d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049936"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352798"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten 
 
@@ -92,6 +92,8 @@ Wenn Ihre Organisation das nahtlose SSO verwenden möchte, müssen die folgenden
 Wenn Ihre Organisation die verwaltete Einrichtung (ohne Verbund) über lokales AD und nicht AD FS zum Herstellens eines Verbunds mit Azure AD verwendet, basiert die hybride Azure AD-Einbindung unter Windows 10 auf den Computerobjekten in AD, die mit Azure AD synchronisiert werden sollen. Stellen Sie sicher, dass alle Organisationseinheiten (OU), die die Computerobjekte enthalten, die hybrid in Azure AD eingebunden werden müssen, in der Azure AD Connect-Synchronisierungskonfiguration für die Synchronisierung aktiviert sind.
 
 Wenn Ihre Organisation für Windows 10-Geräte mit Version 1703 oder einer älteren Version Zugriff auf das Internet über einen ausgehenden Proxy benötigt, müssen Sie die automatische Ermittlung von Webproxys (Web Proxy Auto-Discovery, WPAD) implementieren, damit Windows 10-Computer bei Azure AD registriert werden können. 
+
+Ab Version 1803 von Windows 10 versucht das Gerät, die Azure AD-Hybrideinbindung unter Verwendung des synchronisierten Computers/Geräts durchzuführen, auch wenn die Azure AD-Hybrideinbindung durch ein Gerät in einer Verbunddomäne mit AD FS nicht erfolgreich war (sofern Azure AD Connect für die Synchronisierung des Computer-/Geräteobjekts mit Azure AD konfiguriert ist).
 
 ## <a name="configuration-steps"></a>Konfigurationsschritte
 

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: 46a9045cdf422ed4f14e5588b3342e8bfde2e4c8
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888098"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319335"
 ---
 # <a name="what-is-azure-relay"></a>Was ist Azure Relay?
 Mit dem Azure Relay-Dienst können Sie Dienste, die in Ihrem Unternehmensnetzwerk ausgeführt werden, auf sichere Weise in der öffentlichen Cloud verfügbar machen. Sie können dies durchführen, ohne eine Firewallverbindung zu öffnen oder grundlegende Änderungen an der Netzwerkinfrastruktur Ihres Unternehmens vorzunehmen. 
@@ -55,13 +55,13 @@ Ausführliche Informationen zum Hybridverbindungsprotokoll finden Sie im [Leitfa
 > [!NOTE]
 > Hybridverbindungen von Azure Relay ersetzt das alte Feature für Hybridverbindungen von BizTalk Services. Das Feature „Hybridverbindungen“ in BizTalk Services basierte auf Azure Service Bus WCF Relay. Die Funktion „Hybridverbindungen“ in Azure Relay ist eine Ergänzung des bereits vorhandenen WCF Relay-Features. Diese beiden Dienstfunktionen (WCF Relay und Hybridverbindungen) sind im Azure Relay-Dienst parallel vorhanden. Sie teilen sich ein allgemeines Gateway, sind jedoch andererseits verschiedene Implementierungen.
 
-## <a name="wcf-relay"></a>WCF Relay
+## <a name="wcf-relay"></a>WCF-Relay
 WCF Relay funktioniert mit dem vollständigen .NET Framework und für WCF. Sie erstellen eine Verbindung zwischen dem lokalen Dienst und dem Relaydienst mithilfe einer Sammlung von WCF-Bindungen vom Typ „Relay“. Im Prinzip werden die Relaybindungen neuen Transportbindungselementen zugeordnet, die entwickelt wurden, um WCF-Kanalkomponenten zu erstellen, die mit Service Bus in der Cloud integriert werden. Weitere Informationen finden Sie unter [Verwenden von Azure Relay-WCF-Relays mit .NET](relay-wcf-dotnet-get-started.md).
 
-## <a name="hybrid-connections-vs-wcf-relay"></a>Hybridverbindungen und WCF Relay
+## <a name="hybrid-connections-vs-wcf-relay"></a>Hybridverbindungen und WCF-Relay
 Hybridverbindungen und WCF Relay aktivieren beide die sichere Verbindung mit Objekten, die innerhalb eines Unternehmensnetzwerks vorhanden sind. Welcher Ansatz verwendet wird, richtet sich nach den jeweiligen Anforderungen. Dies ist in der folgenden Tabelle beschrieben:
 
-|  | WCF Relay | Hybridverbindungen |
+|  | WCF-Relay | Hybridverbindungen |
 | --- |:---:|:---:|
 | **WCF** |x | |
 | **.NET Core** | |x |
@@ -81,10 +81,9 @@ Im folgenden Diagramm ist dargestellt, wie eingehende Relayanforderungen vom Azu
 4. Das Gateway, das die Anforderung empfängt, sucht im Gatewayspeicher nach dem Relay. 
 5. Das Gateway leitet die Verbindungsanforderung an das richtige Gateway, das im Gatewayspeicher angegeben ist. 
 6. Das Gateway sendet eine Anforderung an den lauschenden Client, damit dieser einen temporären Kanal mit dem Gatewayknoten erstellt, der dem sendenden Client am nächsten liegt. 
-7. Der lauschende Client erstellt dann einen temporären Kanal und sendet eine Antwortnachricht an das Gateway, das dem sendenden Client am nächsten liegt.
-8. Das Gateway leitet die Antwortnachricht an den sendenden Client weiter. 
-
-Sobald die Relayverbindung besteht, können die Clients Nachrichten über den Gatewayknoten austauschen, die für das Rendezvous verwendet wird.
+7. Der lauschende Client erstellt einen temporären Kanal zu dem Gateway, das dem sendenden Client am nächsten liegt. Nachdem nun zwischen Clients eine Verbindung über ein Gateway besteht, können die Clients untereinander Nachrichten austauschen. 
+8. Das Gateway leitet alle Nachrichten vom lauschenden Client an den sendenden Client weiter. 
+9. Das Gateway leitet alle Nachrichten vom sendenden Client an den lauschenden Client weiter.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erste Schritte mit .NET-WebSockets](relay-hybrid-connections-dotnet-get-started.md)

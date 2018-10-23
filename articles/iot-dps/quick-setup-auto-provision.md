@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ce1586e472e1d1ea5ddd9ca5a426b1bea2b5b931
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 5533dacc4a782cbdb6026c4a4d5c5bed9e39147a
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42022532"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320151"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal
 
@@ -40,12 +40,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     * **Abonnement:** Wählen Sie das Abonnement aus, das Sie zum Erstellen dieser Instanz des Device Provisioning-Diensts verwenden möchten.
     * **Ressourcengruppe:** In diesem Feld können Sie eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe für die neue Instanz auswählen. Wählen Sie die Ressourcengruppe aus, die auch die weiter oben erstellte IoT Hub-Instanz enthält (beispielsweise **TestResources**). Wenn Sie alle verwandten Ressourcen in einer Gruppe zusammenfassen, können Sie sie zusammen verwalten. Wenn Sie beispielsweise die Ressourcengruppe löschen, werden alle Ressourcen in dieser Gruppe gelöscht. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-portal.md).
     * **Standort:** Wählen Sie den Standort aus, der Ihren Geräten am nächsten ist.
-    * **An Dashboard anheften:** Aktivieren Sie diese Option, um die Instanz an Ihr Dashboard anzuheften, damit sie leichter zu finden ist.
 
     ![Eingeben grundlegender Informationen zur Instanz Ihres Device Provisioning-Diensts auf dem Portalblatt](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
-4. Nachdem der Dienst erfolgreich bereitgestellt wurde, wird automatisch das Blatt mit der Zusammenfassung geöffnet.
+4. Klicken Sie auf die Benachrichtigungsschaltfläche, um die Erstellung der Ressourceninstanz zu überwachen. Klicken Sie nach erfolgreicher Bereitstellung des Diensts auf **An Dashboard anheften** und anschließend auf **Zu Ressource wechseln**.
 
+    ![Überwachen der Bereitstellungsbenachrichtigung](./media/quick-setup-auto-provision/pin-to-dashboard.png)
 
 ## <a name="link-the-iot-hub-and-your-device-provisioning-service"></a>Verknüpfen von IoT Hub und Ihrem Device Provisioning-Dienst
 

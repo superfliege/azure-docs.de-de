@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 67b80f539faab40884066f23aaf8a72ad7a6981b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ac18b8099b14f29579b35eb8dd2124d2d63f80d7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394404"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390073"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Für verbesserte Sicherheit und Verwaltung ermöglicht AKS Ihnen die Integration
 
 ### <a name="identity-and-security-management"></a>Identitäts- und Sicherheitsverwaltung
 
-Um den Zugriff auf Clusterressourcen zu beschränken, unterstützt AKS [die rollenbasierte Kubernetes-Zugriffssteuerung (RBAC, Role-Based Access Control )][kubernetes-rbac]. Mit RBAC können Sie steuern, wie der Zugriff auf Kubernetes-Ressourcen und -Namespaces erfolgen kann, und welche Berechtigungen für diese Ressourcen bestehen. Sie können auch einen AKS-Cluster für die Azure Active Directory-Integration (AD) konfigurieren. Mit der Azure AD-Integration kann der Kubernetes-Zugriff auf der Grundlage vorhandener Identität und Gruppenmitgliedschaft konfiguriert werden. Ihren vorhandenen Azure AD-Benutzern und -Gruppen kann der Zugriff auf AKS-Ressourcen und eine integrierte Anmeldeerfahrung gewährt werden.
+Um den Zugriff auf Clusterressourcen zu beschränken, unterstützt AKS [die rollenbasierte Kubernetes-Zugriffssteuerung (RBAC, Role-Based Access Control )][kubernetes-rbac]. Mit RBAC können Sie den Zugriff auf Kubernetes-Ressourcen und -Namespaces sowie die Berechtigungen für diese Ressourcen steuern. Sie können auch einen AKS-Cluster für die Azure Active Directory-Integration (AD) konfigurieren. Mit der Azure AD-Integration kann der Kubernetes-Zugriff auf der Grundlage vorhandener Identität und Gruppenmitgliedschaft konfiguriert werden. Ihren vorhandenen Azure AD-Benutzern und -Gruppen kann der Zugriff auf AKS-Ressourcen und eine integrierte Anmeldeerfahrung gewährt werden.
 
 Wie Sie Ihre AKS-Cluster sichern, erfahren Sie unter [Integrieren von Azure Active Directory in AKS – Vorschauversion][aks-aad].
 
@@ -123,12 +123,12 @@ Erfahren Sie mehr über die Bereitstellung und Verwaltung von AKS mit dem Azure 
 [aks-cli]: ./kubernetes-walkthrough.md
 [aks-gpu]: ./gpu-cluster.md
 [aks-http-routing]: ./http-application-routing.md
-[aks-networking]: ./networking-overview.md
+[aks-networking]: ./concepts-network.md
 [aks-portal]: ./kubernetes-walkthrough-portal.md
 [aks-scale]: ./tutorial-kubernetes-scale.md
 [aks-upgrade]: ./upgrade-cluster.md
-[azure-dev-spaces]: https://docs.microsoft.com/en-us/azure/dev-spaces/azure-dev-spaces
-[azure-devops]: https://docs.microsoft.com/en-us/azure/devops-project/overview
+[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces
+[azure-devops]: https://docs.microsoft.com/azure/devops-project/overview
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
 [container-health]: ../monitoring/monitoring-container-health.md

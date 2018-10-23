@@ -9,15 +9,15 @@ ms.date: 07/26/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 5e8eaca7f759842a8097184dafc1f3ea183b898c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7e8a12a215c94102f6b08262f129faebf9cfcde9
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993186"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115623"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>Einrichten der Service Fabric Mesh CLI
-Die Service Fabric Mesh CLI ist zum Bereitstellen und Verwalten von Ressourcen in Service Fabric Mesh erforderlich. 
+Die Service Fabric Mesh-Befehlszeilenschnittstelle (Command Line Interface, CLI) ist zum Bereitstellen und Verwalten von Ressourcen in Service Fabric Mesh erforderlich. 
 
 Für die Vorschauversion wird die Azure Service Fabric Mesh CLI als eine Erweiterung der Azure CLI bereitgestellt. Sie können sie in der Azure Cloud Shell oder in einer lokalen Installation der Azure CLI installieren. 
 

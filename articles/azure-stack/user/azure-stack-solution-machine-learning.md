@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: c195f2ee24b61a57c098d5214a37f65e80845074
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410203"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353715"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer Machine Learning-Edge-Lösung mit Azure und Azure Stack
 
@@ -210,7 +210,7 @@ Ordnen Sie die neue DSVM in derselben Ressourcengruppe wie das neu erstellte Spe
 
     d.  Wählen Sie unter **Diagnosespeicherkonto** das zuvor erstellte Speicherkonto aus.
 
-    e.  Hinweis: Wenn AAD für das Azure-Abonnement aktiviert und konfiguriert wurde, kann auch die verwaltete Dienstidentität aktiviert werden.
+    e.  Hinweis: Wenn AAD für das Azure-Abonnement aktiviert und konfiguriert wurde, können auch verwaltete Identitäten für Azure-Ressourcen aktiviert werden.
 
 2.  Klicken Sie auf **OK**.
 

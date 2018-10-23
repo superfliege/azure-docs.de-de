@@ -9,28 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: af06766d89804b2f3d0aaf061494fb836f6ec262
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 0199efbc1456206c67efb846b4381cae333e3749
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465604"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309041"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Erstellen einer Azure IoT Central-Anwendung
 
-Als _Ersteller_ verwenden Sie die Benutzeroberfläche von Azure IoT Central, um Ihre Microsoft Azure IoT Central-Anwendung zu definieren. In dieser Schnellstartanleitung wird Folgendes beschrieben:
-
-- Erstellen einer Azure IoT Central-Anwendung mit einer exemplarischen _Gerätevorlage_ und simulierten _Geräten_
-- Anzeigen der Features der Gerätevorlage **Refrigerated Vending Machine** (Gekühlter Verkaufsautomat) in Ihrer Anwendung
-- Anzeigen der Telemetriedaten und Analysen Ihrer simulierten **Kühlgeräte**
-
-In dieser Schnellstartanleitung zeigen Sie ein simuliertes **Kühlgerät** an, das auf einer Gerätevorlage basiert. Für das simulierte Gerät gilt Folgendes:
-
-* Es sendet Telemetriedaten wie Temperatur und Druck an Ihre Anwendung.
-* Es meldet Geräteeigenschaftswerte (beispielsweise einen Bewegungsalarm) an Ihre Anwendung.
-* Es verfügt über Geräteeinstellungen, die Sie in der Anwendung festlegen können (beispielsweise die Lüftergeschwindigkeit).
-
-Wenn Sie auf der Grundlage einer Gerätevorlage in einer Azure IoT Central-Anwendung ein simuliertes Gerät erstellen, können Sie anhand des simulierten Geräts Ihre Anwendung testen, bevor Sie eine Verbindung mit einem echten Gerät herstellen.
+Als _Ersteller_ verwenden Sie die Benutzeroberfläche von Azure IoT Central, um Ihre Microsoft Azure IoT Central-Anwendung zu definieren. In dieser Schnellstartanleitung wird gezeigt, wie Sie eine Azure IoT Central-Anwendung mit einer exemplarischen _Gerätevorlage_ und simulierten _Geräten_ erstellen.
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung
 

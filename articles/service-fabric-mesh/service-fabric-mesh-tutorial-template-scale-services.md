@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bf0b38c8c2d465abe9f2e129110df41c349c3d07
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4d6839fea3ce0eb74cdf87396716cdc69c0cd1a0
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055372"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165980"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Tutorial: Skalieren einer in Service Fabric Mesh ausgeführten Anwendung
 
-Dieses Tutorial ist der zweite Teil einer Reihe. Erfahren Sie, wie Sie die Anzahl der Dienstinstanzen einer Anwendung manuell skalieren, die [zuvor in Service Fabric Mesh bereitgestellt wurde](service-fabric-mesh-tutorial-template-deploy-app.md).  Wenn Sie fertig sind, müssen Sie.
+Dieses Tutorial ist der zweite Teil einer Reihe. Erfahren Sie, wie Sie die Anzahl der Dienstinstanzen einer Anwendung manuell skalieren, die [zuvor in Service Fabric Mesh bereitgestellt wurde](service-fabric-mesh-tutorial-template-deploy-app.md). Nach Abschluss des Tutorials verfügen Sie über einen Front-End-Dienst mit drei ausgeführten Instanzen sowie über einen Datendienst mit zwei ausgeführten Instanzen.
 
 Im zweiten Teil der Reihe lernen Sie Folgendes:
 
@@ -47,7 +47,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-* [Installieren Sie die Azure CLI und die Azure Service Fabric Mesh CLI lokal.](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)
+* [Installieren Sie die Azure- und die Azure Service Fabric Mesh-Befehlszeilenschnittstelle lokal.](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)
 
 ## <a name="manually-scale-your-services-in-or-out"></a>Manuelles horizontales Hoch- und Herunterskalieren Ihrer Dienste
 
@@ -69,7 +69,7 @@ In der Bereitstellungsvorlage für die Anwendungsressource weist jeder Dienst ei
 
 ### <a name="modify-the-deployment-template-parameters"></a>Ändern der Bereitstellungsvorlagenparameter
 
-Wenn Ihre Vorlage Werte enthält, die Sie nach Bereitstellen der Anwendung wahrscheinlich ändern werden, oder wenn Sie gerne die Möglichkeit hätten, die Werte pro Bereitstellung zu ändern (falls diese Vorlage für andere Bereitstellungen wiederverwendet werden soll), ist es empfehlenswert, die Werte mit Parametern zu versehen.
+Wenn Ihre Vorlage Werte enthält, die Sie nach Bereitstellen der Anwendung wahrscheinlich ändern werden, oder wenn Sie gerne die Möglichkeit hätten, die Werte pro Bereitstellung zu ändern (falls diese Vorlage für andere Bereitstellungen wiederverwendet werden soll), ist es empfehlenswert, die Werte zu parametrisieren.
 
 Zuvor wurde die Anwendung mit der [Bereitstellungsvorlage „mesh_rp.windows.json“](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) und der [Parameterdatei „mesh_rp.windows.parameter.json“](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) bereitgestellt.
 

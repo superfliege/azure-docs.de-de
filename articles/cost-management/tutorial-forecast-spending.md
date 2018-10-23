@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 587459be69fe250b3e73fb9eb9d5cd08cf2e7a42
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e1954ae9fcbb010c66e8a812e3e34477ac2bfc29
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953683"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395223"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Tutorial: Prognostizieren zukünftiger Ausgaben
 
@@ -35,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Cloudyn enthält Kostenprognoseberichte, anhand derer Sie Ausgaben basierend auf Ihrer Nutzung im Laufe der Zeit vorhersagen können. Der Hauptzweck besteht darin, Sie dabei zu unterstützen, sicherzustellen, dass Ihre Kostentrends die Erwartungen Ihrer Organisation nicht überschreiten. Die Berichte, die Sie verwenden, beziehen sich auf die aktuellen monatlichen vorhergesagten und jährlichen vorhergesagten Kosten. Beide zeigen, welche Ausgaben zu erwarten sind, wenn Ihre Nutzung mit der Nutzung innerhalb der letzten 30 Tage relativ konsistent bleibt.
 
-Der Bericht über die aktuellen monatlichen vorhergesagten Kosten zeigt die Kosten für Ihre Dienste. Er bezieht sich auf Kosten ab Anfang des Monats und des vorhergehenden Monats, um die voraussichtlichen Kosten anzuzeigen. Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Cost** > **Projection and Budget** > **Current Month Projected Cost**. Die folgende Abbildung zeigt ein Beispiel.
+Der Bericht über die aktuellen monatlichen vorhergesagten Kosten zeigt die Kosten für Ihre Dienste. Er bezieht sich auf Kosten ab Anfang des Monats und des vorhergehenden Monats, um die voraussichtlichen Kosten anzuzeigen. Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Costs** > **Projection and Budget** > **Current Month Projected Cost** (Kosten > Prognose und Budget > Vorhergesagte Kosten für den aktuellen Monat). Die folgende Abbildung zeigt ein Beispiel.
 
 ![Vorhergesagte Kosten für den aktuellen Monat](./media/tutorial-forecast-spending/project-month01.png)
 
@@ -47,7 +47,7 @@ Führen Sie die gleichen grundlegenden Schritte aus, um die Prognose der monatli
 
 Der Bericht über die vorhergesagten jährlichen Kosten zeigt die extrapolierten Kosten für Ihre Dienste für die nächsten 12 Monate an.
 
-Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Cost** > **Projection and Budget** > **Annual Projected Cost**. Die folgende Abbildung zeigt ein Beispiel.
+Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Costs** > **Projection and Budget** > **Annual Projected Cost** (Kosten > Prognose und Budget > Vorhergesagte jährliche Kosten). Die folgende Abbildung zeigt ein Beispiel.
 
 ![Bericht über die vorhergesagten jährlichen Kosten](./media/tutorial-forecast-spending/project-annual01.png)
 

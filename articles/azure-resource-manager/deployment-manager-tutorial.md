@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 10/04/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ae0d37dd8df9b076e72959e9036ba35d322e4e63
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5d18a1f86e1d870db64199c575450dd475590b55
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803714"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394465"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (Public Preview)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)
 
 Hier erfahren Sie, wie Sie Ihre Anwendungen mit dem [Azure-Bereitstellungs-Manager](./deployment-manager-overview.md) über mehrere Regionen hinweg bereitstellen. Um den Bereitstellungs-Manager verwenden zu können, müssen zwei Vorlagen erstellt werden:
 
@@ -30,7 +30,7 @@ Hier erfahren Sie, wie Sie Ihre Anwendungen mit dem [Azure-Bereitstellungs-Manag
 Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!div class="checklist"]
-> * Kennenlernen des Szenarios
+> * Das Szenario
 > * Herunterladen der Tutorialdateien
 > * Vorbereiten der Artefakte
 > * Erstellen der benutzerdefinierten verwalteten Identität
@@ -48,7 +48,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * Etwas Erfahrung mit der Entwicklung von [Azure Resource Manager-Vorlagen](./resource-group-overview.md).
-* Der Azure-Bereitstellungs-Manager befindet sich in der öffentlichen Vorschauphase. Füllen Sie das [Registrierungsblatt](https://aka.ms/admsignup) aus, um sich für die Verwendung des Azure-Bereitstellungs-Managers zu registrieren. 
+* Der Azure-Bereitstellungs-Manager befindet sich in der privaten Vorschauphase. Füllen Sie das [Registrierungsblatt](https://aka.ms/admsignup) aus, um sich für die Verwendung des Azure-Bereitstellungs-Managers zu registrieren. 
 * Azure PowerShell. Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Bereitstellungs-Manager-Cmdlets. Um diese vorab veröffentlichten Cmdlets installieren zu können, benötigen Sie die neueste Version von PowerShellGet. Informationen zum Beziehen der neuesten Version finden Sie unter [Installieren von PowerShellGet](/powershell/gallery/installing-psget). Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster. Öffnen Sie ein neues PowerShell-Fenster, und führen Sie den folgenden Befehl aus:
 

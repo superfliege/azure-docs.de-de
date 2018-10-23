@@ -2,24 +2,18 @@
 title: Einrichten der Azure Data Box | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Ihre Azure Data Box verkabeln und die Verbindung herstellen.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 10/03/2018
+ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: c3766713c87dd721f7e4c9a90624192cdb402be9
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785635"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393829"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Tutorial: Verkabeln und Herstellen einer Verbindung mit der Azure Data Box
 
@@ -91,6 +85,8 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät über die lokale Webbenutz
     - Wenn DHCP nicht aktiviert ist, wechseln Sie zu **Netzwerkschnittstellen festlegen**, und weisen Sie ggf. statische IP-Adressen zu.
 
     ![Gerätedashboard](media/data-box-deploy-set-up/data-box-dashboard-1.png)
+
+Nach dem Konfigurieren der Datennetzwerkschnittstellen können Sie auch die IP-Adresse einer der Schnittstellen (DATA 1 bis DATA 3) verwenden, um auf die lokale Webbenutzeroberfläche unter `https://<IP address of a data network interface>` zuzugreifen. 
 
 Sobald die Einrichtung des Geräts abgeschlossen ist, können Sie eine Verbindung mit den Gerätefreigaben herstellen und die Daten von Ihrem Computer auf das Gerät kopieren. 
 

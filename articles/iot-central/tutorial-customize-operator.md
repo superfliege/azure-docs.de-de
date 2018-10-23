@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9b8293196114f55f633e67cf19cd0c9e60f6398e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038288"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309459"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Tutorial: Anpassen der Azure IoT Central-Ansicht für Bediener
 
@@ -56,7 +56,7 @@ Als Ersteller können Sie definieren, welche Informationen auf einem Gerätedash
 
     ![Dashboardseite der Gerätevorlage](media/tutorial-customize-operator/dashboard.png)
 
-4. Klicken Sie auf **KPI**, um dem Dashboard eine Kachel hinzuzufügen:
+4. Klicken Sie auf **KPI**, um dem Dashboard eine KPI-Kachel (Key Performance Indicator) hinzuzufügen:
 
     ![Hinzufügen eines KPIs](media/tutorial-customize-operator/addkpi.png)
 
@@ -81,7 +81,7 @@ Als Ersteller können Sie definieren, welche Informationen auf einem Gerätedash
 
 ## <a name="configure-your-settings-layout"></a>Konfigurieren des Layouts Ihrer Einstellungen
 
-Als Ersteller können Sie auch die Darstellung der Geräteeinstellungen für Bediener konfigurieren. Bediener verwenden die Seite mit den Geräteeinstellungen, um ein Gerät zu konfigurieren. So kann ein Bediener auf der Einstellungsseite beispielsweise die Zieltemperatur für die Kühlanlage festlegen.
+Als Ersteller können Sie auch die Darstellung der Geräteeinstellungen für Bediener konfigurieren. Bediener verwenden die Seite mit den Geräteeinstellungen, um ein Gerät zu konfigurieren. So kann ein Bediener auf der Einstellungsseite beispielsweise die Zieltemperatur für die verbundene Klimaanlage festlegen.
 
 1. Wählen Sie **Einstellungen** und dann **Vorlage bearbeiten** aus, um das Layout der Einstellungen für Ihre verbundene Klimaanlage zu bearbeiten:
 
@@ -117,7 +117,7 @@ Neben dem Dashboard und den Einstellungen können Sie auch die Darstellung der G
 
 Im Modus **Vorlage bearbeiten** können Sie die Seiten „Dashboard“, „Einstellungen“ und „Eigenschaften“ für einen Bediener anpassen. Wenn Sie nicht im **Vorlage bearbeiten**-Modus sind, können Sie die Anwendung als Bediener anzeigen.
 
-1. Wenn Sie Ihre verbundene Klimaanlage als Bediener anzeigen möchten, müssen Sie auf **Fertig** klicken, um die Bearbeitung der Vorlage zu beenden. Damit kehren Sie zu einer Bedieneransicht des Geräts zurück.
+1. Wenn Sie Ihre verbundene Klimaanlage als Bediener anzeigen möchten, klicken Sie auf **Fertig**, um die Bearbeitung der Vorlage zu beenden und zur Bedieneransicht des Geräts zurückzukehren.
 
 2. Bearbeiten Sie zum Aktualisieren des Standorts dieses Geräts den Wert in der Kachel für den Standort, und klicken Sie anschließend auf **Speichern**:
 

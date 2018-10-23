@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c4ecb7c43a9a26385d5e6cef023c7219fb1120d3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a70bb09edb5ccaf4e216785933af80e2fcb2153a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38606162"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363605"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit Azure PowerShell
 Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bereitstellen der VM-Instanzen verwendet wird. Sie können ein benutzerdefiniertes VM-Image verwenden, um die Anzahl von Aufgaben zu reduzieren, nachdem VM-Instanzen bereitgestellt wurden. Dieses benutzerdefinierte VM-Image enthält alle erforderlichen Anwendungsinstallationen oder -konfigurationen. Für alle VM-Instanzen, die in der Skalierungsgruppe erstellt werden, wird das benutzerdefinierte VM-Image verwendet, und die VM-Instanzen sind für die Bereitstellung Ihres Anwendungsdatenverkehrs bereit. In diesem Tutorial lernen Sie Folgendes:
@@ -42,7 +42,7 @@ Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für die
 ## <a name="create-and-configure-a-source-vm"></a>Erstellen und Konfigurieren einer Quell-VM
 
 >[!NOTE]
-> In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein generalisiertes VM-Image erstellen und verwenden. Auf der Grundlage eines spezialisierten VM-Images kann keine Skalierungsgruppe erstellt werden.
+> In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein generalisiertes VM-Image erstellen und verwenden. Das Erstellen einer Skalierungsgruppe auf der Grundlage einer speziellen VHD wird nicht unterstützt.
 
 Erstellen Sie zuerst mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe und dann mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) eine VM. Diese VM wird dann als Quelle für ein benutzerdefiniertes VM-Image verwendet. Im folgenden Beispiel wird eine VM mit dem Namen *myCustomVM* in der Ressourcengruppe *myResourceGroup* erstellt. Geben Sie bei entsprechender Aufforderung einen Benutzernamen und ein Kennwort als Anmeldeinformationen für die VM ein:
 

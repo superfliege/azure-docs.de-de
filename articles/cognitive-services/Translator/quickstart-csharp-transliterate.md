@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 53ac3f4aa85e889c86d09927ece7df012427e4a9
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 7fa8c5dc76e59ec236d6b9662bd2ba41db0add0f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367592"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320406"
 ---
 # <a name="quickstart-transliterate-text-with-c35"></a>Schnellstart: Transliteration von Text mit C#
 
 In dieser Schnellstartanleitung konvertieren Sie mithilfe der Textübersetzungs-API Text in einer Sprache aus einem Skript in ein anderes.
-
-Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,6 +28,9 @@ Sie benötigen [Visual Studio 2017](https://www.visualstudio.com/downloads/), um
 Damit Sie die Textübersetzungs-API verwenden können, benötigen Sie darüber hinaus einen Abonnementschlüssel. Informationen hierzu finden Sie unter [Registrieren für die Textübersetzungs-API](translator-text-how-to-signup.md).
 
 ## <a name="transliterate-request"></a>Transliterationsanforderung (Transliterate)
+
+> [!TIP]
+> Rufen Sie den aktuellen Code von [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) ab.
 
 Der folgende Code konvertiert mithilfe der Methode für die [Transliteration](./reference/v3-0-transliterate.md) (Transliterate) Text in einer Sprache aus einem Skript in ein anderes Skript.
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/17/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: c50259f0df955c3a22edc979dfebc8bfb2059e16
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e705a0f57b598eb60932ca1056131cedc1416ffc
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987764"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394454"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -125,7 +125,7 @@ Wenn Sie eine Reservierung erwerben, leisten Sie eine einmalige Zahlung. Es gibt
 
 In den Berichten „Actual Cost Analysis“ (Analyse der Ist-Kosten) und „Analysis Over Time“ (Zeitbasierte Analyse) werden die vollen Beträge angezeigt, die sie für die Reservierung bezahlt haben (ab dem Monat des Erwerbs). Hiermit können Sie Ihre tatsächlichen Ausgaben für einen bestimmten Zeitraum anzeigen.
 
-Navigieren Sie im Cloudyn-Portal zu **Cost** > **Cost Analysis** (Kosten > Kostenanalyse), und wählen Sie dann entweder **Actual Cost Analysis** (Analyse der Ist-Kosten) oder **Actual Cost Over Time** (Zeitbasierte Analyse). Legen Sie als Nächstes die Filter fest. Filtern Sie beispielsweise nur den Azure/VM-Dienst, und gruppieren Sie nach dem Ressourcentyp und dem Preismodell. Sehen Sie sich die folgende Abbildung an:
+Navigieren Sie im Cloudyn-Portal zu **Costs** > **Cost Analysis** (Kosten > Kostenanalyse), und klicken Sie dann entweder auf **Actual Cost Analysis** (Analyse der Ist-Kosten) oder auf **Actual Cost Over Time** (Zeitbasierte Analyse). Legen Sie als Nächstes die Filter fest. Filtern Sie beispielsweise nur den Azure/VM-Dienst, und gruppieren Sie nach dem Ressourcentyp und dem Preismodell. Sehen Sie sich die folgende Abbildung an:
 
 ![Ist-Kosten der reservierten Instanz](./media/tutorial-optimize-reserved-instances/azure05.png)
 
@@ -143,7 +143,7 @@ Die amortisierten Kosten für reservierte Instanzen werden berechnet, indem die 
 
 Im Bericht zu den Ist-Kosten wurde für einen RI-Erwerb am 16. November eine Spitze von 747 US-Dollar angegeben. Im Bericht zu den amortisierten Kosten (siehe folgende Abbildung) sind am 16. November die Teilkosten für den Tag angegeben. Ab dem 17. November werden die amortisierten RI-Kosten in Höhe von 747/365 = 2,05 US-Dollar aufgeführt. Hierbei können Sie übrigens auch erkennen, dass die erworbene Reservierung nicht genutzt wird, und Sie können eine Optimierung erzielen, indem Sie zu einer anderen VM-Größe wechseln.
 
-Navigieren Sie zum Anzeigen zu **Cost** > **Cost Analysis** (Kosten > Kostenanalyse), und wählen Sie dann **Amortized Cost Analysis** (Analyse der amortisierten Kosten) oder **Amortized Cost Over Time** (Amortisierte Kosten im Zeitverlauf).
+Navigieren Sie zum Anzeigen zu **Costs** > **Cost Analysis** (Kosten > Kostenanalyse), und klicken Sie dann auf **Amortized Cost Analysis** (Analyse der amortisierten Kosten) oder auf **Amortized Cost Over Time** (Amortisierte Kosten im Zeitverlauf).
 
 ![Amortisierte Kosten der reservierten Instanz](./media/tutorial-optimize-reserved-instances/azure07.png)
 

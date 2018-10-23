@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 2c19a464a4437c3490b03baef6cc95a783a55c69
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: eb909384805c96ce656cacf86adceedc55613c0f
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858590"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113657"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Erstellen einer durch Azure Cosmos DB ausgelösten Funktion
 
@@ -50,7 +50,7 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Erstellen eines Azure Cosmos DB-Triggers
 
-1. Erweitern Sie die Funktionen-App, und klicken Sie auf die Schaltfläche **+** neben **Functions**. Wenn dies die erste Funktion in Ihrer Funktions-App ist, klicken Sie auf **Im Portal** und anschließend auf **Weiter**. Fahren Sie andernfalls mit Schritt 3 fort.
+1. Erweitern Sie die Funktionen-App, und klicken Sie auf die Schaltfläche **+** neben **Functions**. Wenn dies die erste Funktion in Ihrer Funktions-App ist, wählen Sie **Im Portal** und dann **Weiter**. Fahren Sie andernfalls mit Schritt 3 fort.
 
    ![Schnellstartseite für Funktionen im Azure-Portal](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 

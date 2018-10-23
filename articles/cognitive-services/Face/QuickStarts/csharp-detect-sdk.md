@@ -3,25 +3,23 @@ title: 'Schnellstart: Erkennen von Gesichtern in einem Bild – SDK, C#'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung führen Sie die Gesichtserkennung für ein Bild durch, indem Sie die Windows-C#-Clientbibliothek für die Gesichtserkennung in Cognitive Services verwenden.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: a9a7efd89f8e7462812064615d07acf12acbc3a3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.author: pafarley
+ms.openlocfilehash: b5fd10aaab28303079d3eef9c4c5c25207bb672e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364109"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344981"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-c35---face"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit C&#35; – Gesichtserkennung
 
 In dieser Schnellstartanleitung führen Sie eine Erkennung menschlicher Gesichter in einem Bild mithilfe der Windows-Clientbibliothek für die Gesichtserkennung durch.
-
-Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,9 +29,12 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="detectwithurlasync-method"></a>DetectWithUrlAsync-Methode
 
+> [!TIP]
+> Laden Sie den aktuellen Code als Visual Studio-Projektmappe von [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) herunter.
+
 Die Methoden `DetectWithUrlAsync` und `DetectWithStreamAsync` umschließen die [Face - Detect-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) für lokale Bilder bzw. Remotebilder. Sie können diese Methoden verwenden, um Gesichter in einem Bild zu erkennen und Gesichtsattribute zurückzugeben, z.B.:
 
-* Gesichtserkennungs-ID: Eindeutige ID, die in verschiedenen Gesichtserkennungs-API-Szenarien verwendet wird.
+* Gesichtserkennungs-API: Eindeutige ID, die in verschiedenen Gesichtserkennungs-API-Szenarien verwendet wird.
 * Gesichtsrechteck: Die Position des linken und oberen Rands sowie die Breite und Höhe, um die Position des Gesichts im Bild anzugeben.
 * Besondere Merkmale: Ein Array mit 27 Punkten zu Gesichtszügen, die auf die wichtigen Positionen von Gesichtskomponenten hinweisen.
 * Dies können Gesichtsattribute wie Alter, Geschlecht, Intensität des Lächelns, Kopfhaltung und Gesichtsbehaarung sein.

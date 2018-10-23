@@ -4,23 +4,21 @@ description: Beispiele für Azure Resource Manager-Vorlagen für das Web-Apps-Fe
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
-manager: timlt
-editor: ggailey777
 tags: azure-service-management
 ms.service: app-service
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: app-service
-ms.date: 02/26/2018
+ms.date: 10/15/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 155b47fc4c664701ec0f21bdc5ae34f3d7f666ff
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 627480fab7a28794a215642fda8e57280f19f19b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29933067"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345066"
 ---
 # <a name="azure-resource-manager-templates-for-web-apps"></a>Azure Resource Manager-Vorlagen für Web-Apps
 
@@ -29,15 +27,17 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für das 
 | | |
 |-|-|
 |**Bereitstellen einer Web-App**||
+| [App Service-Plan und einfache Linux-Web-App](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | Stellt eine für Linux konfigurierte Azure-Web-App bereit. |
+| [App Service-Plan und einfache Windows-Web-App](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | Stellt eine für Windows konfigurierte Azure-Web-App bereit. |
 | [Mit einem GitHub-Repository verknüpfte Web-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| Stellt eine Azure-Web-App bereit, die Code aus GitHub bezieht. |
 | [Web-App mit benutzerdefinierten Bereitstellungsslots](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Stellt eine Azure-Web-App mit benutzerdefinierten Bereitstellungsslots/-umgebungen bereit. |
 |**Konfigurieren einer Web-App**||
 | [Web-App-Zertifikat aus Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Stellt ein Azure-Web-App-Zertifikat auf der Grundlage eines Azure Key Vault-Geheimnisses bereit und verwendet es für die SSL-Bindung. |
 | [Web-App mit benutzerdefinierter Domäne](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| Stellt eine Azure-Web-App mit einem benutzerdefinierten Hostnamen bereit. |
 | [Web-App mit benutzerdefinierter Domäne und SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Stellt eine Azure-Web-App mit einem benutzerdefinierten Hostnamen bereit und ruft aus Key Vault ein Web-App-Zertifikat für die SSL-Bindung ab. |
-| [Web-App mit GoLang-Erweiterung](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Stellt eine Azure-Web-App mit der GoLang-Websiteerweiterung bereit. Dies ermöglicht die Ausführung von mit GoLang entwickelten Webanwendungen in Azure. |
+| [Web-App mit GoLang-Erweiterung](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Stellt eine Azure-Web-App mit der Golang-Websiteerweiterung bereit. Dies ermöglicht die Ausführung von mit Golang entwickelten Webanwendungen in Azure. |
 | [Web-App mit Java 8 und Tomcat 8](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Stellt eine Azure-Web-App mit aktiviertem Java 8 und Tomcat 8 bereit. Dies ermöglicht die Ausführung von Java-Anwendungen in Azure. |
-|**Linux-Web-App**||
+|**Linux-Web-App mit verbundenen Ressourcen**||
 | [Web-App unter Linux mit MySQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-mysql) | Stellt eine Azure-Web-App unter Linux mit Azure Database for MySQL bereit. |
 | [Web-App unter Linux mit PostgreSQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-postgresql) | Stellt eine Azure-Web-App unter Linux mit Azure Database for PostgreSQL bereit. |
 |**Web-App mit verbundenen Ressourcen**||

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc73bbd775da31faecf236716a2b028171438b7c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 841f82595257c97c15398347a3e1605219d1a534
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220886"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394424"
 ---
 # <a name="azure-resource-manager-overview"></a>Übersicht über den Azure-Ressourcen-Manager
 Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponenten. Dies können beispielsweise ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk oder eine Web-App, eine Datenbank, ein Datenbankserver und Drittanbieterdienste sein. Sie sehen diese Komponenten nicht als separate Entitäten, sondern als verwandte und voneinander abhängige Teile einer einzelnen Entität. Diese möchten Sie als Gruppe bereitstellen, verwalten und überwachen. Mit dem Azure-Ressourcen-Manager können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z.B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können. 
@@ -159,7 +159,7 @@ Nach dem Definieren der Vorlage können Sie die Ressourcen in Azure bereitstelle
 
 Wenn Sie einen komplexen Dienst in Azure bereitstellen, müssen Sie den Dienst vielleicht in mehreren Regionen bereitstellen und seine Integrität überprüfen, bevor Sie mit dem nächsten Schritt fortfahren. Koordinieren Sie mit dem [Azure-Bereitstellungs-Manager](deployment-manager-overview.md) eine phasenweise Einführung des Diensts. Mit der phasenweisen Einführung des Diensts können Sie mögliche Probleme finden, bevor er in allen Regionen bereitgestellt ist. Wenn Sie diese Vorsichtsmaßnahmen nicht benötigen, sind die Bereitstellungsvorgänge im vorherigen Abschnitt die bessere Option.
 
-Der Bereitstellungs-Manager ist derzeit als Public Preview verfügbar.
+Der Bereitstellungs-Manager befindet sich derzeit in der privaten Vorschauphase.
 
 ## <a name="tags"></a>Tags
 Der Ressourcen-Manager verfügt über eine Markierungsfunktion, mit der Sie Ressourcen gemäß Ihren Anforderungen für die Verwaltung oder Abrechnung kategorisieren können. Die Verwendung von Tags (Markierungen) kann ratsam sein, wenn Sie über eine komplexe Sammlung von Ressourcengruppen und Ressourcen verfügen und diese Ressourcen auf möglichst sinnvolle Weise visualisieren müssen. Beispielsweise können Sie Ressourcen markieren, die in Ihrer Organisation eine ähnliche Funktion haben oder zu derselben Abteilung gehören. Benutzer in Ihrer Organisation können mehrere Ressourcen erstellen, die ohne Tags später schwer zu identifizieren und zu verwalten sind. Es kann beispielsweise sein, dass Sie alle Ressourcen für ein bestimmtes Projekt löschen möchten. Wenn diese Ressourcen für das Projekt nicht mit Tags versehen sind, müssen Sie manuell danach suchen. Mit Tags lassen sich unter Umständen unnötige Kosten in Ihrem Abonnement vermeiden. 

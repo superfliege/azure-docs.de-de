@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: 8437b1c10facc28c5fd71b70dd7acf01b7d39e8e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 336756e72c6c07f52101ddd0cd99a6ef9744d3c3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42023134"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351760"
 ---
 # <a name="what-is-azure-event-hubs"></a>Was ist Azure Event Hubs?
 
@@ -70,7 +70,7 @@ Event Hubs bietet eine Funktion zur Abwicklung von Nachrichtendatenströmen, ver
 - **Partitionen:** Jeder Consumer liest nur eine bestimmte Teilmenge oder Partition des Nachrichtendatenstroms.
 - **Verbrauchergruppen:** Eine Ansicht (Status, Position oder Offset) einer vollständigen Event Hub-Instanz. Mithilfe von Consumergruppen können mehrere verarbeitende Anwendungen jeweils eine separate Ansicht des Ereignisdatenstroms aufweisen und den Datenstrom unabhängig voneinander in einem unabhängigen Tempo und mit eigenen Offsets lesen.
 - **Durchsatzeinheiten:** Vorab erworbene Einheiten von Kapazitäten, die die Durchsatzkapazität einer Event Hub-Instanz steuern.
-- **Ereignisempfänger:** Eine Entität, die Ereignisdaten von einem Event Hub liest. Alle Event Hubs-Consumer stellen über eine AMQP 1.0-Sitzung eine Verbindung her und Ereignisse werden über die Sitzung übermittelt, sobald sie verfügbar sind.
+- **Ereignisempfänger:** Eine Entität, die Ereignisdaten von einem Event Hub liest. Alle Event Hubs-Consumer stellen über eine AMQP 1.0-Sitzung eine Verbindung her und Ereignisse werden über die Sitzung übermittelt, sobald sie verfügbar sind. Alle Kafka-Consumer verwenden zur Verbindungsherstellung mindestens das Kafka-Protokoll 1.0.
 
 Die folgende Abbildung zeigt die Datenstromverarbeitungsarchitektur von Event Hubs:
 

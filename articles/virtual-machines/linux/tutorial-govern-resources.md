@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 2d19488d9b4d6ae6c71610788345b45c38e51cfa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 715a8e5bab9e5d16b8c0e54298101df856d51a9a
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968814"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309858"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Tutorial: Verwalten von virtuellen Azure-Computern mit der Azure CLI
 
@@ -27,7 +27,7 @@ ms.locfileid: "46968814"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die Azure-Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.30. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="understand-scope"></a>Der Bereich
 
@@ -55,19 +55,17 @@ Zum Verwalten virtueller Computerlösungen gibt es drei ressourcenspezifische Ro
 * [Mitwirkender von virtuellem Netzwerk](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Mitwirkender von Speicherkonto](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, [eine Azure Active Directory-Gruppe zu erstellen](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md), um die Benutzer zusammenzufassen, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Zur Vereinfachung erstellen Sie in diesem Artikel eine Azure Active Directory-Gruppe ohne Mitglieder. Sie können diese Gruppe dennoch einer Rolle für einen bestimmten Bereich zuweisen. 
+Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, eine Azure Active Directory-Gruppe mit Benutzern zu verwenden, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Verwenden Sie in diesem Artikel entweder eine vorhandene Gruppe für die VM-Verwaltung, oder [erstellen Sie eine Azure Active Directory-Gruppe](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) über das Portal.
 
-Das folgende Beispiel erstellt eine Azure Active Directory-Gruppe mit dem Namen *VMDemoContributors* und dem E-Mail-Kontonamen *vmDemoGroup*. Der E-Mail-Kontoname dient als Alias für die Gruppe.
-
-```azurecli-interactive
-adgroupId=$(az ad group create --display-name VMDemoContributors --mail-nickname vmDemoGroup --query objectId --output tsv)
-```
-
-Nachdem die Eingabeaufforderung zurückkehrt, dauert es einen Moment, bis die Gruppe in Azure Active Directory propagiert wurde. Warten Sie 20 oder 30 Sekunden, und weisen Sie dann mit dem Befehl [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) die neue Azure Active Directory-Gruppe der Rolle „Mitwirkender für virtuelle Computer“ für die Ressourcengruppe zu.  Wenn Sie den folgenden Befehl ausführen, bevor die Gruppe propagiert wurde, erhalten Sie die Fehlermeldung **Der Prinzipal „<guid>“ ist im Verzeichnis nicht enthalten**. Führen Sie den Befehl dann erneut aus.
+Nachdem Sie entweder eine neue Gruppe erstellt oder nach einer vorhandenen Gruppe gesucht haben, weisen Sie die neue Azure Active Directory-Gruppe mithilfe des Befehls [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) der Rolle „Mitwirkender für virtuelle Computer“ für die Ressourcengruppe zu.
 
 ```azurecli-interactive
+adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
+
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
+
+Sollte der Fehler **Der Prinzipal <guid> ist im Verzeichnis nicht enthalten.** auftreten, wurde die neue Gruppe noch nicht innerhalb von Azure Active Directory verteilt. Führen Sie den Befehl dann erneut aus.
 
 In der Regel müssen Sie den Prozess für die Rollen *Mitwirkender von virtuellem Netzwerk* und *Mitwirkender von Speicherkonto* wiederholen, um sicherzustellen, dass die Benutzer den richtigen Rollen für die Verwaltung der bereitgestellten Ressourcen zugewiesen werden. In diesem Artikel können Sie diese Schritte überspringen.
 
@@ -133,7 +131,7 @@ az policy definition show --name $locationDefinition --query parameters
 
 ## <a name="deploy-the-virtual-machine"></a>Bereitstellen des virtuellen Computers
 
-Sie haben Rollen und Richtlinien zugewiesen und können daher Ihre Lösung bereitstellen. Die Standardgröße ist „Standard_DS1_v2“ – eine Ihrer zulässigen SKUs. Der Befehl erstellt SSH-Schlüssel, falls sie nicht an einem Standardschlüsselspeicherort vorhanden sind.
+Sie haben Rollen und Richtlinien zugewiesen und können daher Ihre Lösung bereitstellen. Die Standardgröße ist „Standard_DS1_v2“ – eine Ihrer zulässigen SKUs. Der Befehl erstellt SSH-Schlüssel, sofern sie nicht an einem Standardspeicherort vorhanden sind.
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --generate-ssh-keys
@@ -171,7 +169,7 @@ Um die Sperren zu testen, führen Sie den folgenden Befehl aus:
 az group delete --name myResourceGroup
 ```
 
-Es wird eine Fehlermeldung darüber angezeigt, dass der Löschvorgang aufgrund einer Sperre nicht ausgeführt werden kann. Die Ressourcengruppe kann nur gelöscht werden, wenn Sie die Sperren direkt entfernen. Dieser Schritt wird unter [Bereinigen von Ressourcen](#clean-up-resources) gezeigt.
+Es wird eine Fehlermeldung mit dem Hinweis angezeigt, dass der Löschvorgang aufgrund einer Sperre nicht ausgeführt werden kann. Die Ressourcengruppe kann nur gelöscht werden, wenn Sie die Sperren direkt entfernen. Dieser Schritt wird unter [Bereinigen von Ressourcen](#clean-up-resources) gezeigt.
 
 ## <a name="tag-resources"></a>Markieren von Ressourcen
 

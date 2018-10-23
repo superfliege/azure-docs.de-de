@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: f2f2208f325728275706eeed9ff16e8afc3b11cf
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: fc4b2f153c89d4253bc3fdd9c5a49973baa38752
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166876"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310214"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -112,6 +112,8 @@ Beim Testen dieser Funktionalität per Remotedesktop wird der Link „Kennwort z
 * Die Kennwortzurücksetzung wird für Remotedesktop derzeit nicht unterstützt.
 
 Wenn der Windows-Sperrbildschirm mithilfe eines Registrierungsschlüssels oder einer Gruppenrichtlinie deaktiviert wurde, ist **Kennwort zurücksetzen** nicht verfügbar.
+
+Wenn die Richtlinie die Verwendung von STRG+ALT+ENTF vorschreibt oder Benachrichtigungen bei gesperrtem Bildschirm deaktiviert sind, funktioniert **Kennwort zurücksetzen** nicht. Diese Anforderung wird in Version 19H1 von Windows 10 behandelt.
 
 Das Azure AD-Überwachungsprotokoll enthält Informationen zur IP-Adresse und zum Clienttyp, für die das Kennwort zurückgesetzt wurde.
 

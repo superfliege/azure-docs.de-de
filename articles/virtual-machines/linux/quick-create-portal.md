@@ -13,41 +13,51 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/14/2018
+ms.date: 10/12/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fcc9f338ad69322091199ce9d5d2d1d6f9f2165e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 78b20b977685989c10ba61a48afee7808c46f227
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227281"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320627"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal
 
-Virtuelle Azure-Computer (VMs) können über das Azure-Portal erstellt werden. Bei dieser Methode können Sie die browserbasierte Benutzeroberfläche nutzen, um virtuelle Computer und ihre dazugehörigen Ressourcen zu erstellen. In dieser Schnellstartanleitung wird gezeigt, wie Sie über das Azure-Portal einen virtuellen Linux-Computer unter Ubuntu in Azure bereitstellen. Wenn Sie den virtuellen Computer in Aktion sehen möchten, stellen Sie anschließend eine SSH-Verbindung mit dem virtuellen Computer her und installieren den NGINX-Webserver.
+Virtuelle Azure-Computer (VMs) können über das Azure-Portal erstellt werden. Das Azure-Portal ist eine browserbasierte Benutzeroberfläche, über die Sie virtuelle Computer und die dazugehörigen Ressourcen erstellen können. In dieser Schnellstartanleitung wird gezeigt, wie Sie über das Azure-Portal einen virtuellen Linux-Computer unter Ubuntu 16.04 LTS bereitstellen. Wenn Sie den virtuellen Computer in Aktion sehen möchten, stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her und installieren den NGINX-Webserver.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
 
-Für diesen Schnellstart benötigen Sie ein SSH-Schlüsselpaar. Sie können diesen Schritt überspringen, wenn Sie bereits über ein vorhandenes SSH-Schlüsselpaar verfügen.
+Für diesen Schnellstart benötigen Sie ein SSH-Schlüsselpaar. Falls Sie bereits über ein SSH-Schlüsselpaar verfügen, können Sie diesen Schritt überspringen.
 
-Wenn Sie ein SSH-Schlüsselpaar erstellen und sich bei virtuellen Linux-Computern anmelden möchten, führen Sie den folgenden Befehl über eine Bash-Shell aus, und befolgen Sie die Anweisungen auf dem Bildschirm. Sie können beispielsweise [Azure Cloud Shell](../../cloud-shell/overview.md) oder das [Windows-Subsystem für Linux](/windows/wsl/install-win10) verwenden. Die Ausgabe des Befehls enthält den Dateinamen der Datei mit dem öffentlichen Schlüssel. Kopieren Sie den Inhalt der Datei mit dem öffentlichen Schlüssel (`cat ~/.ssh/id_rsa.pub`) in die Zwischenablage:
+Öffnen Sie eine Bash-Shell, und verwenden [ssh-keygen](https://www.ssh.com/ssh/keygen/), um ein SSH-Schlüsselpaar zu erstellen. Sollte auf Ihrem Computer keine Bash-Shell zur Verfügung stehen, können Sie auch [Azure Cloud Shell](https://shell.azure.com/bash) verwenden.  
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
+Der obige Befehl generiert öffentliche und private Schlüssel mit dem Standardnamen `id_rsa` in `~/.ssh directory`. Der Befehl gibt den vollständigen Pfad des öffentlichen Schlüssels zurück. Verwenden Sie den Pfad des öffentlichen Schlüssels, um mithilfe von `cat` seinen Inhalt anzuzeigen.
+
+```bash 
+cat ~/.ssh/id_rsa.pub
+```
+
+Speichern Sie die Ausgabe dieses Befehls. Sie wird benötigt, wenn Sie Ihr Administratorkonto für die Anmeldung bei Ihrem virtuellen Computer konfigurieren.
+
 Ausführlichere Informationen zum Erstellen von SSH-Schlüsselpaaren, u.a. zur Verwendung von PuTTy, finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](ssh-from-windows.md).
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+Wenn Sie Ihr SSH-Schlüsselpaar mithilfe von Cloud Shell erstellen, wird es in einer Azure-Dateifreigabe gespeichert, die [automatisch von Cloud Shell eingebunden](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) wird. Wenn Sie diese Dateifreigabe oder das Speicherkonto löschen, bevor Sie Ihre Schlüssel abgerufen haben, können Sie nicht mehr auf den virtuellen Computer zugreifen. 
 
-Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
+1. Klicken Sie links oben im Azure-Portal auf **Ressource erstellen**.
 
 1. Suchen Sie im Suchfeld oberhalb der Liste der Azure Marketplace-Ressourcen nach **Ubuntu Server 16.04 LTS** von Canonical, und klicken Sie auf **Erstellen**.
 
@@ -69,6 +79,10 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 1. Belassen Sie die übrigen Standardeinstellungen, und wählen Sie dann die Schaltfläche **Überprüfen + erstellen** am unteren Rand der Seite aus.
 
+1. Auf der Seite zum **Erstellen eines virtuellen Computers** werden die Details des virtuellen Computers angezeigt, den Sie erstellen möchten. Klicken Sie auf **Erstellen**, wenn Sie so weit sind.
+
+Die Bereitstellung des virtuellen Computers dauert ein paar Minuten. Fahren Sie nach Abschluss der Bereitstellung mit dem nächsten Abschnitt fort.
+
     
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
@@ -78,32 +92,29 @@ Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her.
 
     ![Portal 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. Übernehmen Sie auf der Seite zum **Herstellen der Verbindung mit dem virtuellen Computer** die Standardoptionen, um basierend auf dem DNS-Namen eine Verbindung über Port 22 herzustellen. Unter **Login using VM local account** (Anmelden mit einem lokalen VM-Konto) wird ein Verbindungsbefehl angezeigt. Klicken Sie auf die Schaltfläche, um den Befehl zu kopieren. Das folgende Beispiel zeigt den Befehl für die SSH-Verbindung:
+2. Übernehmen Sie auf der Seite zum **Herstellen der Verbindung mit dem virtuellen Computer** die Standardoptionen, um basierend auf der IP-Adresse eine Verbindung über den Port 22 herzustellen. Unter **Login using VM local account** (Anmelden mit einem lokalen VM-Konto) wird ein Verbindungsbefehl angezeigt. Klicken Sie auf die Schaltfläche, um den Befehl zu kopieren. Das folgende Beispiel zeigt den Befehl für die SSH-Verbindung:
 
     ```bash
-    ssh azureuser@myvm-123abc.eastus.cloudapp.azure.com
+    ssh azureuser@10.111.12.123
     ```
 
-3. Fügen Sie den Befehl für die SSH-Verbindung in eine Shell wie Azure Cloud Shell oder Bash unter Ubuntu oder Windows ein, um die Verbindung zu erstellen. 
+3. Verwenden Sie die gleiche Bash-Shell, die Sie auch zum Erstellen Ihres SSH-Schlüsselpaars verwendet haben (also beispielsweise [Azure Cloud Shell](https://shell.azure.com/bash) oder Ihre lokale Bash-Shell), und fügen Sie den SSH-Verbindungsbefehl ein, um eine SSH-Sitzung zu erstellen. 
 
 ## <a name="install-web-server"></a>Installieren des Webservers
 
-Wenn Sie den virtuellen Computer in Aktion sehen möchten, installieren Sie den NGINX-Webserver. Führen Sie die folgenden Befehle in Ihrer SSH-Sitzung aus, um Paketquellen zu aktualisieren und das neueste NGINX-Paket zu installieren:
+Wenn Sie den virtuellen Computer in Aktion sehen möchten, installieren Sie den NGINX-Webserver. Aktualisieren Sie über die SSH-Sitzung Ihre Paketquellen, und installieren Sie dann das aktuelle NGINX-Paket.
 
 ```bash
-# update packages
 sudo apt-get -y update
-
-# install NGINX
 sudo apt-get -y install nginx
 ```
 
-Verwenden Sie nach Abschluss des Vorgangs `exit` zum Beenden der SSH-Sitzung, und wechseln Sie zurück zu den VM-Eigenschaften im Azure-Portal.
+Geben Sie abschließend `exit` ein, um die SSH-Sitzung zu verlassen.
 
 
 ## <a name="view-the-web-server-in-action"></a>Anzeigen des Webservers in Aktion
 
-Nachdem NGINX installiert und Port 80 für den virtuellen Computer geöffnet wurde, ist der Zugriff auf den Webserver über das Internet möglich. Öffnen Sie einen Webbrowser, und geben Sie die öffentliche IP-Adresse der VM ein. Die öffentliche IP-Adresse befindet sich auf der Übersichtsseite des virtuellen Computers oder oben auf der Seite *Netzwerk*, auf der Sie die Eingangsportregel hinzufügen.
+Verwenden Sie einen beliebigen Webbrowser, um die Standardwillkommensseite von NGINX anzuzeigen. Geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers als Webadresse ein. Die öffentliche IP-Adresse finden Sie auf der Übersichtsseite für den virtuellen Computer sowie in der weiter oben verwendeten SSH-Verbindungszeichenfolge.
 
 ![NGINX-Standardwebsite](./media/quick-create-cli/nginx.png)
 

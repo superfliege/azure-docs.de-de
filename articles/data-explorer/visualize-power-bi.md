@@ -2,18 +2,18 @@
 title: 'Tutorial: Visualisieren von Daten aus Azure Data Explorer in Power BI'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Data Explorer mit Power BI verbinden und Daten visualisieren.
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 938d8d6e291ca432ef3f642a0aaec74d5dcf5bf5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fc2d96c4dc8184ba26001fd77732ce7c45253d5a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977144"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393711"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Tutorial: Visualisieren von Daten aus Azure Data Explorer in Power BI
 
@@ -108,7 +108,7 @@ Nachdem Sie eine Verbindung mit Azure Data Explorer hergestellt haben, bearbeite
 
     ![Filtern der Spalte](media/visualize-power-bi/filter-column.png)
 
-1. Klicken Sie auf den Pfeil für die Spalte **BeginLat**, deaktivieren Sie das Kontrollkästchen **NULL**, und klicken Sie dann auf **OK**.
+1. Klicken Sie mit der rechten Maustaste auf die Spaltenüberschrift **StormSummary**, und klicken Sie anschließend auf **Entfernen**.
 
     ![Entfernen der Spalte](media/visualize-power-bi/remove-column.png)
 

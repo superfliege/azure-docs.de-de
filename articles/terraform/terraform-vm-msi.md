@@ -1,6 +1,6 @@
 ---
-title: Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteter Dienstidentität
-description: Verwenden Sie ein Marketplace-Image, um einen virtuellen Terraform-Computer für Linux mit verwalteter Dienstidentität und Remotezustandsverwaltung zur einfachen Bereitstellung von Ressourcen in Azure zu erstellen.
+title: Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteter Identität
+description: Verwenden Sie ein Marketplace-Image, um einen virtuellen Terraform-Computer für Linux mit verwalteter Identität und Remotezustandsverwaltung zur einfachen Bereitstellung von Ressourcen in Azure zu erstellen.
 services: terraform
 ms.service: terraform
 keywords: Terraform, DevOps, MSI, VM, Remotezustand, Azure
@@ -9,16 +9,16 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 0136966576e3fbb22855d74cc1866e48b4ac24c9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1ec6228993c516ce2974c64bfa5b6dcdf63e7f91
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669386"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343825"
 ---
-# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteter Dienstidentität
+# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteten Identitäten für Azure-Ressourcen
 
-In diesem Artikel erfahren Sie, wie Sie mit einem [Terraform-Marketplace-Image](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) eine Ubuntu-Linux-VM (16.04 LTS) erstellen, auf der die neueste [Terraform](https://www.terraform.io/intro/index.html)-Version installiert ist und die mit der [verwalteten Dienstidentität (Managed Service Identity, MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) konfiguriert ist. Dieses Image konfiguriert außerdem ein Remote-Back-End, um die Verwaltung des [Remotezustands](https://www.terraform.io/docs/state/remote.html) mit Terraform zu ermöglichen. 
+In diesem Artikel erfahren Sie, wie Sie mit einem [Terraform-Marketplace-Image](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) eine Ubuntu-Linux-VM (16.04 LTS) erstellen, auf der die neueste [Terraform](https://www.terraform.io/intro/index.html)-Version installiert ist und die mithilfe [verwalteter Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) konfiguriert wurde. Dieses Image konfiguriert außerdem ein Remote-Back-End, um die Verwaltung des [Remotezustands](https://www.terraform.io/docs/state/remote.html) mit Terraform zu ermöglichen. 
 
 Das Terraform-Marketplace-Image vereinfacht den Einstieg in die Verwendung von Terraform in Azure, ohne dass Sie Terraform manuell installieren und konfigurieren müssen. 
 
@@ -79,13 +79,13 @@ Das Terraform-VM-Image führt die folgenden Schritte aus:
 
 Nachdem der virtuelle Computer erstellt wurde, können Sie sich über SSH bei diesem Computer anmelden. Verwenden Sie dazu die Kontoanmeldeinformationen, die Sie in Schritt 3 im Abschnitt „Grundlagen“ für die Textshellschnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool wie [PuTTY](http://www.putty.org/)herunterladen.
 
-Nachdem Sie über SSH eine Verbindung mit dem virtuellen Computer hergestellt haben, müssen Sie der verwalteten Dienstidentität auf dem virtuellen Computer Berechtigungen für Mitwirkende für das gesamte Abonnement erteilen. 
+Nachdem Sie über SSH eine Verbindung mit dem virtuellen Computer hergestellt haben, müssen Sie den verwalteten Identitäten für Azure-Ressourcen auf dem virtuellen Computer Berechtigungen vom Typ „Mitwirkender“ für das gesamte Abonnement erteilen. 
 
 Die Berechtigung für Mitwirkende ermöglicht der verwalteten Dienstidentität auf der VM die Verwendung von Terraform zum Erstellen von Ressourcen außerhalb der VM-Ressourcengruppe. Dazu müssen Sie lediglich einmal ein Skript ausführen. Verwenden Sie den folgenden Befehl:
 
 `. ~/tfEnv.sh`
 
-Das vorherige Skript verwendet den Mechanismus zur [interaktiven Anmeldung mit Azure CLI 2.0 ](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in), um die Authentifizierung bei Azure vorzunehmen und dem virtuellen Computer die Berechtigung für Mitwirkende der verwalteten Dienstidentität für das gesamte Abonnement zuzuweisen. 
+Das vorherige Skript verwendet den Mechanismus zur [interaktiven Anmeldung mit Azure CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in), um die Authentifizierung bei Azure vorzunehmen und der verwalteten Identität des virtuellen Computers die Berechtigung „Mitwirkender“ für das gesamte Abonnement zuzuweisen. 
 
  Der virtuelle Computer verfügt über ein Terraform-Back-End mit Remotezustand. Um dieses Back-End in Ihrer Terraform-Bereitstellung zu aktivieren, kopieren Sie die Datei „remoteState.tf“ aus dem Verzeichnis „tfTemplate“ in das Stammverzeichnis der Terraform-Skripts.  
 
