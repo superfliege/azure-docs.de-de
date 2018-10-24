@@ -16,12 +16,6 @@ items:
       href: text-moderation-quickstart-dotnet.md
     - name: Überprüfen des Videoinhalts
       href: video-moderation-api.md
-- name: Beispiele
-  items:
-  - name: .NET SDK-Beispiele
-    href: samples-dotnet.md
-  - name: REST-API-Beispiele in C#
-    href: samples-rest.md
 - name: Konzepte
   items:
   - name: Bildmoderation
@@ -36,48 +30,48 @@ items:
     href: workflow-api.md
 - name: Anleitungen
   items:
-  - name: Testen von Content Moderator
+  - name: Verwenden der Moderationsdienste
     items:
     - name: Moderations-APIs
       items:
-      - name: Bilder – API-Konsole
-        href: try-image-api.md
-      - name: Überprüfen von Bildern anhand benutzerdefinierter Listen
-        href: image-lists-quickstart-dotnet.md
-      - name: Benutzerdefinierte Bilder – API-Konsole
-        href: try-image-list-api.md
-      - name: Text – API-Konsole
-        href: try-text-api.md
-      - name: Überprüfen von Text anhand benutzerdefinierter Begriffe
-        href: term-lists-quickstart-dotnet.md
-      - name: Benutzerdefinierte Begriffe – API-Konsole
-        href: try-terms-list-api.md
+      - name: Verwenden des .NET SDK
+        items:
+        - name: Überprüfen von Bildern anhand benutzerdefinierter Listen
+          href: image-lists-quickstart-dotnet.md
+        - name: Überprüfen von Text anhand benutzerdefinierter Begriffe
+          href: term-lists-quickstart-dotnet.md
+      - name: Verwenden von REST-APIs
+        items:
+        - name: Bilder – API-Konsole
+          href: try-image-api.md
+        - name: Benutzerdefinierte Bilder – API-Konsole
+          href: try-image-list-api.md
+        - name: Text – API-Konsole
+          href: try-text-api.md
+        - name: Benutzerdefinierte Begriffe – API-Konsole
+          href: try-terms-list-api.md
+  - name: Verwenden des Überprüfungstools
+    items:
     - name: Überprüfen von APIs
       items:
-      - name: Aufträge – API-Konsole
-        href: try-review-api-job.md
-      - name: Aufträge – .NET
-        href: moderation-jobs-quickstart-dotnet.md
-      - name: Überprüfungen – API-Konsole
-        href: try-review-api-review.md
-      - name: Überprüfungen – .NET
-        href: moderation-reviews-quickstart-dotnet.md
-      - name: Videoüberprüfungen – .NET
-        href: video-reviews-quickstart-dotnet.md
-      - name: Videotranskript-Überprüfungen – .NET
-        href: video-transcript-reviews-quickstart-dotnet.md
-      - name: Workflows – API-Konsole
-        href: try-review-api-workflow.md
-  - name: Erste Content Moderator-Apps
-    items:
-    - name: Facebook-Inhaltsmoderation
-      href: facebook-post-moderation.md
-    - name: E-Commerce-Bildmoderation
-      href: ecommerce-retail-catalog-moderation.md
-    - name: Video- und Transkriptmoderation
-      href: video-transcript-moderation-review-tutorial-dotnet.md
-  - name: Überprüfungstool
-    items:
+      - name: Verwenden des .NET SDK
+        items:
+        - name: Aufträge – .NET
+          href: moderation-jobs-quickstart-dotnet.md
+        - name: Überprüfungen – .NET
+          href: moderation-reviews-quickstart-dotnet.md
+        - name: Videoüberprüfungen – .NET
+          href: video-reviews-quickstart-dotnet.md
+        - name: Videotranskript-Überprüfungen – .NET
+          href: video-transcript-reviews-quickstart-dotnet.md
+      - name: Verwenden von REST-APIs
+        items:
+        - name: Aufträge – API-Konsole
+          href: try-review-api-job.md
+        - name: Überprüfungen – API-Konsole
+          href: try-review-api-review.md
+        - name: Workflows – API-Konsole
+          href: try-review-api-workflow.md
     - name: Human in the Loop
       href: Review-Tool-User-Guide/human-in-the-loop.md
     - name: Verwenden von Einstellungen
@@ -98,6 +92,20 @@ items:
       href: Review-Tool-User-Guide/Workflows.md
     - name: Anzeigen des Dashboards
       href: Review-Tool-User-Guide/View-Dashboard.md
+  - name: Erste Content Moderator-Apps
+    items:
+    - name: Facebook-Inhaltsmoderation
+      href: facebook-post-moderation.md
+    - name: E-Commerce-Bildmoderation
+      href: ecommerce-retail-catalog-moderation.md
+    - name: Video- und Transkriptmoderation
+      href: video-transcript-moderation-review-tutorial-dotnet.md
+- name: Beispiele
+  items:
+  - name: .NET SDK-Beispiele
+    href: samples-dotnet.md
+  - name: REST-API-Beispiele in C#
+    href: samples-rest.md
 - name: Verweis
   items:
   - name: Content Moderator-API
@@ -134,9 +142,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: On-Demand-Webinar
     href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-ms.openlocfilehash: a6e9e2908a6365c1749e8a5d061779ebc37764e0
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d162bcaefdde1aceb171d2ad83b5386e54cea890
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428962"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944157"

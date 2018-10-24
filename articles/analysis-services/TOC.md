@@ -10,7 +10,7 @@
 ## [Erstellen eines Servers – PowerShell](analysis-services-create-powershell.md)
 ## [Konfigurieren der Serverfirewall – Portal](analysis-services-qs-firewall.md)
 
-# Tutorials
+# Lernprogramme
 
 ## [1. Hinzufügen eines Beispielmodells aus dem Portal](analysis-services-create-sample-model.md) 
 ## [2. Konfigurieren von Serveradministrator- und Benutzerrollen](tutorials/analysis-services-tutorial-roles.md)
@@ -38,8 +38,8 @@
 ### [Verwalten eines Servers](analysis-services-manage.md)
 ### [Überwachen von Servermetriken](analysis-services-monitor.md)
 ### [Einrichten der Diagnoseprotokollierung](analysis-services-logging.md)
-### [Erstellen eines Dienstprinzipals – Azure-Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [Erstellen eines Dienstprinzipals – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [Erstellen eines Dienstprinzipals – Azure-Portal](../active-directory/develop/howto-create-service-principal-portal.md)
+### [Erstellen eines Dienstprinzipals – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 ### [Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md)
 
 ## Modell
