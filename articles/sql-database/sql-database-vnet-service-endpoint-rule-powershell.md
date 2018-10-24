@@ -11,17 +11,17 @@ author: DhruvMsft
 ms.author: dmalik
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: 50e88dd11b8a883a4d2999ad2d0419cbf7176078
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: f21614757716b860c25436acfa7b6275cd848109
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161147"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868206"
 ---
-# <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database-and-sql-data-warehouse"></a>Verwenden von PowerShell zum Erstellen eines virtuellen Dienstendpunkts und einer Regel für Azure SQL-Datenbank und Azure SQL Data Warehouse
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Erstellen eines virtuellen Dienstendpunkts und einer VNet-Regel für SQL
 
-Sowohl [Azure SQL-Datenbank](sql-database-technical-overview.md) als auch [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unterstützen virtuelle Dienstendpunkte. 
+Sowohl [Azure SQL-Datenbank](sql-database-technical-overview.md) als auch [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unterstützen virtuelle Dienstendpunkte.
 
 > [!NOTE]
 > Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
@@ -36,52 +36,43 @@ Die Gründe für das Erstellen einer Regel werden in [Virtual Service endpoints 
 > [!TIP]
 > Wenn Sie nur den *Typnamen* des virtuellen Dienstendpunkts für SQL-Datenbank bewerten oder zu Ihrem Subnetz hinzufügen müssen, fahren Sie mit dem [direkteren PowerShell-Skript](#a-verify-subnet-is-endpoint-ps-100) fort.
 
-#### <a name="major-cmdlets"></a>Wichtige Cmdlets
+## <a name="major-cmdlets"></a>Wichtige Cmdlets
 
-In diesem Artikel wird das Cmdlet mit **New-AzureRmSqlServerVirtualNetworkRule** erläutert, das den Subnetzendpunkt zur Zugriffssteuerungsliste (access control list, ACL) Ihres Azure SQL-Datenbankservers hinzufügt und dadurch eine Regel erstellt.
+In diesem Artikel wird das Cmdlet **New-AzureRmSqlServerVirtualNetworkRule** erläutert, das den Subnetzendpunkt zur Zugriffssteuerungsliste (Access Control List, ACL) Ihres Azure SQL-Datenbankservers hinzufügt und dadurch eine Regel erstellt.
 
 Die folgende Liste zeigt die Abfolge von anderen *wichtigen* Cmdlets, die Sie ausführen müssen, um den Aufruf von **New-AzureRmSqlServerVirtualNetworkRule** vorzubereiten. In diesem Artikel werden diese Aufrufe in [script 3 "Virtual network rule" (Skript 3: virtuelle Netzwerkregel)](#a-script-30) ausgeführt.
 
 1. [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): Erstellt ein Subnetzobjekt.
-
 2. [New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): Erstellt Ihr virtuelles Netzwerk und weist diesem das Subnetz zu.
-
 3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): Weist Ihrem Subnetz einen virtuellen Dienstendpunkt zu.
-
 4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): Behält Updates bei, die für Ihr virtuelles Netzwerk durchgeführt wurden.
-
 5. [New-AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): Sobald Ihr Subnetz ein Endpunkt ist, wird dieses als virtuelle Netzwerkregel in die ACL Ihres Azure SQL-Datenbankservers hinzugefügt.
-    - Der Parameter **-IgnoreMissingVnetServiceEndpoint** wird ab AzureRM PowerShell-Modul Version 5.1.1 angeboten.
+   - Dieses Cmdlet bietet den Parameter **-IgnoreMissingVNetServiceEndpoint** ab Azure RM PowerShell-Modul Version 5.1.1.
 
-#### <a name="prerequisites-for-running-powershell"></a>Voraussetzungen für das Ausführen von PowerShell
+## <a name="prerequisites-for-running-powershell"></a>Voraussetzungen für das Ausführen von PowerShell
 
 - Sie können sich bereits bei Azure anmelden, z.B. über das [Azure-Portal][http-azure-portal-link-ref-477t].
 - Sie können bereits PowerShell-Skripts ausführen.
 
 > [!NOTE]
-> Vergewissern Sie sich, dass Dienstendpunkte für das VNET/Subnetz aktiviert sind, das Sie dem Server hinzufügen möchten, da andernfalls die VNET-Firewallregel nicht erstellt werden kann.
+> Vergewissern Sie sich, dass Dienstendpunkte für das VNet/Subnetz aktiviert sind, das Sie dem Server hinzufügen möchten, da andernfalls die VNet-Firewallregel nicht erstellt werden kann.
 
-#### <a name="one-script-divided-into-four-chunks"></a>Ein in vier Blöcke unterteiltes Skript
+## <a name="one-script-divided-into-four-chunks"></a>Ein in vier Blöcke unterteiltes Skript
 
 Das PowerShell-Beispielskript ist in eine Abfolge von kleineren Skripts unterteilt. Die Aufteilung erleichtert das Lernen und bietet Flexibilität. Die Skripts müssen in ihrer angegebenen Reihenfolge ausgeführt werden. Wenn Sie keine Zeit für das Ausführen der Skripts haben: Die tatsächliche Testausgabe wird nach Skript 4 angezeigt.
 
-
-
-
-
-
 <a name="a-script-10" />
 
-## <a name="script-1-variables"></a>Skript 1: Variablen
+### <a name="script-1-variables"></a>Skript 1: Variablen
 
 Dieses erste PowerShell-Skript weist Variablen Werte zu. Die nachfolgenden Skripts hängen von diesen Variablen ab.
 
 > [!IMPORTANT]
 > Bevor Sie dieses Skript ausführen, können Sie die Werte bei Bedarf bearbeiten. Wenn Sie beispielsweise bereits über eine Ressourcengruppe verfügen, sollten Sie den Namen Ihrer Ressourcengruppe dem zugewiesenen Wert entsprechend bearbeiten.
 >
->  Ihr Abonnementname sollte in das Skript eingefügt werden.
+> Ihr Abonnementname sollte in das Skript eingefügt werden.
 
-#### <a name="powershell-script-1-source-code"></a>Quellcode von PowerShell-Skript 1
+### <a name="powershell-script-1-source-code"></a>Quellcode von PowerShell-Skript 1
 
 ```powershell
 ######### Script 1 ########################################
@@ -119,20 +110,16 @@ $ServiceEndpointTypeName_SqlDb = 'Microsoft.Sql';  # Official type name.
 Write-Host 'Completed script 1, the "Variables".';
 ```
 
-
-
-
-
 <a name="a-script-20" />
 
-## <a name="script-2-prerequisites"></a>Skript 2: Voraussetzungen
+### <a name="script-2-prerequisites"></a>Skript 2: Voraussetzungen
 
 Dieses Skript bereitet Sie auf den nächsten Schritt vor, in dem die Endpunktaktion stattfindet. Dieses Skript erstellt die im Folgenden aufgelisteten Elemente für Sie, jedoch nur, wenn diese nicht bereits vorhanden sind. Sie können Skript 2 überspringen, wenn Sie sicher sind, dass diese Elemente bereits vorhanden sind:
 
 - Azure-Ressourcengruppe
 - Azure SQL-Datenbankserver
 
-#### <a name="powershell-script-2-source-code"></a>Quellcode von PowerShell-Skript 2
+### <a name="powershell-script-2-source-code"></a>Quellcode von PowerShell-Skript 2
 
 ```powershell
 ######### Script 2 ########################################
@@ -214,18 +201,13 @@ $sqlDbServer                 = $null;
 Write-Host 'Completed script 2, the "Prerequisites".';
 ```
 
-
-
-
-
-
 <a name="a-script-30" />
 
 ## <a name="script-3-create-an-endpoint-and-a-rule"></a>Skript 3: Erstellen eines Endpunkts und einer Regel
 
 Dieses Skript erstellt ein virtuelles Netzwerk mit einem Subnetz. Das Skript weist Ihrem Subnetz dann den Endpunkttyp **Microsoft.Sql** zu. Schließlich fügt das Skript Ihr Subnetz zu der Zugriffssteuerungsliste (ACL) Ihres SQL-Datenbankservers hinzu und erstellt dadurch eine Regel.
 
-#### <a name="powershell-script-3-source-code"></a>Quellcode von PowerShell-Skript 3
+### <a name="powershell-script-3-source-code"></a>Quellcode von PowerShell-Skript 3
 
 ```powershell
 ######### Script 3 ########################################
@@ -302,13 +284,8 @@ $vnetRuleObject2 = Get-AzureRmSqlServerVirtualNetworkRule `
 
 $vnetRuleObject2;
 
-Write-Host 'Completed script 3, the "Virtual-Netowrk-Rule".';
+Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 ```
-
-
-
-
-
 
 <a name="a-script-40" />
 
@@ -321,7 +298,7 @@ Dieses abschließende Skript löscht die Ressourcen, die das vorherige Skript zu
 
 Sie können Skript 4 jederzeit nach dem Abschluss von Skript 1 ausführen.
 
-#### <a name="powershell-script-4-source-code"></a>Quellcode von PowerShell-Skript 4
+### <a name="powershell-script-4-source-code"></a>Quellcode von PowerShell-Skript 4
 
 ```powershell
 ######### Script 4 ########################################
@@ -371,14 +348,14 @@ $yesno = Read-Host 'CAUTION !: Do you want to DELETE your Azure SQL Database ser
 if ('yes' -eq $yesno)
 {
     Write-Host "Remove the Azure SQL DB server.";
-    
+
     Remove-AzureRmSqlServer `
       -ServerName        $SqlDbServerName `
       -ResourceGroupName $ResourceGroupName `
       -ErrorAction       SilentlyContinue;
-    
+
     Write-Host "Remove the Azure Resource Group.";
-    
+
     Remove-AzureRmResourceGroup `
       -Name        $ResourceGroupName `
       -ErrorAction SilentlyContinue;
@@ -391,18 +368,13 @@ else
 Write-Host 'Completed script 4, the "Clean-Up".';
 ```
 
-
-
-
-
-
 <a name="a-actual-output" />
 
 ## <a name="actual-output-from-scripts-1-through-4"></a>Tatsächliche Ausgabe aus Skript 1 bis 4
 
 Als nächstes wird die Ausgabe des Testlaufs in abgekürztem Format angezeigt. Die Ausgabe kann hilfreich sein, falls Sie die PowerShell-Skripts jetzt nicht ausführen möchten.
 
-```
+```cmd
 [C:\WINDOWS\system32\]
 0 >> C:\Demo\PowerShell\sql-database-vnet-service-endpoint-powershell-s1-variables.ps1
 Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]: yes
@@ -413,7 +385,7 @@ Account               : xx@microsoft.com
 TenantId              : 11111111-1111-1111-1111-111111111111
 SubscriptionId        : 22222222-2222-2222-2222-222222222222
 SubscriptionName      : MySubscriptionName
-CurrentStorageAccount : 
+CurrentStorageAccount :
 
 
 
@@ -426,7 +398,7 @@ Creating your missing Resource Group - RG-YourNameHere.
 ResourceGroupName : RG-YourNameHere
 Location          : westcentralus
 ProvisioningState : Succeeded
-Tags              : 
+Tags              :
 ResourceId        : /subscriptions/22222222-2222-2222-2222-222222222222/resourceGroups/RG-YourNameHere
 
 Check whether your Azure SQL Database server already exists.
@@ -438,14 +410,12 @@ ResourceGroupName        : RG-YourNameHere
 ServerName               : mysqldbserver-forvnet
 Location                 : westcentralus
 SqlAdministratorLogin    : ServerAdmin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
-Tags                     : 
-Identity                 : 
+Tags                     :
+Identity                 :
 
 Completed script 2, the "Prerequisites".
-
-
 
 [C:\WINDOWS\system32\]
 0 >> C:\Demo\PowerShell\sql-database-vnet-service-endpoint-powershell-s3-vnet-rule.ps1
@@ -457,15 +427,13 @@ Persist the updates made to the virtual network > subnet.
 
 Get the subnet object.
 Add the subnet .Id as a rule, into the ACLs for your Azure SQL Database server.
-ProvisioningState Service       Locations      
------------------ -------       ---------      
+ProvisioningState Service       Locations
+----------------- -------       ---------
 Succeeded         Microsoft.Sql {westcentralus}
-                                               
+
 Verify that the rule is in the SQL DB ACL.
-                                               
+
 Completed script 3, the "Virtual-Network-Rule".
-
-
 
 [C:\WINDOWS\system32\]
 0 >> C:\Demo\PowerShell\sql-database-vnet-service-endpoint-powershell-s4-clean-up.ps1
@@ -482,10 +450,10 @@ ResourceGroupName        : RG-YourNameHere
 ServerName               : mysqldbserver-forvnet
 Location                 : westcentralus
 SqlAdministratorLogin    : ServerAdmin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
-Tags                     : 
-Identity                 : 
+Tags                     :
+Identity                 :
 
 Remove the Azure Resource Group.
 True
@@ -493,10 +461,6 @@ Completed script 4, the "Clean-Up".
 ```
 
 Hier endet das PowerShell-Hauptskript.
-
-
-
-
 
 <a name="a-verify-subnet-is-endpoint-ps-100" />
 
@@ -510,7 +474,7 @@ Falls Sie nicht sicher sind, ob Ihr Subnetz über den Typnamen **Microsoft.Sql**
 2. Zuweisen des Typnamens, wenn dieser nicht vorhanden ist (optional).
     - Das Skript fordert Sie zur *Bestätigung* auf, bevor der fehlende Typname angewendet wird.
 
-#### <a name="phases-of-the-script"></a>Phasen des Skripts
+### <a name="phases-of-the-script"></a>Phasen des Skripts
 
 Im Folgenden finden Sie die Phasen des PowerShell-Skripts:
 
@@ -522,7 +486,7 @@ Im Folgenden finden Sie die Phasen des PowerShell-Skripts:
 > [!IMPORTANT]
 > Bevor Sie dieses Skript ausführen, müssen Sie die Werte bearbeiten, die den $-Variablen am Anfang des Skripts zugewiesen sind.
 
-#### <a name="direct-powershell-source-code"></a>Direkter PowerShell-Quellcode
+### <a name="direct-powershell-source-code"></a>Direkter PowerShell-Quellcode
 
 In diesem PowerShell-Skript werden keine Aktualisierungen vorgenommen, es sei denn, Sie antworten mit „Ja“, wenn Sie zur Bestätigung aufgefordert werden. Das Skript kann den Typnamen **Microsoft.Sql** zu Ihrem Subnetz hinzufügen. Das Skript versucht dies jedoch nur, wenn das Subnetz keinen Typnamen besitzt.
 
@@ -618,7 +582,7 @@ for ($nn=0; $nn -lt $vnet.Subnets.Count; $nn++)
 { $vnet.Subnets[0].ServiceEndpoints; }  # Display.
 ```
 
-#### <a name="actual-output"></a>Tatsächliche Ausgabe
+### <a name="actual-output"></a>Tatsächliche Ausgabe
 
 Der folgende Block zeigt das tatsächliche Feedback (mit Schönheitskorrekturen) an.
 
@@ -633,7 +597,7 @@ Account               : xx@microsoft.com
 TenantId              : 11111111-1111-1111-1111-111111111111
 SubscriptionId        : 22222222-2222-2222-2222-222222222222
 SubscriptionName      : MySubscriptionName
-CurrentStorageAccount : 
+CurrentStorageAccount :
 
 
 ProvisioningState : Succeeded
@@ -644,12 +608,8 @@ Good: Subnet found, and is already tagged as an endpoint of type 'Microsoft.Sql'
 #>
 ```
 
-
-
-
 <!-- Link references: -->
 
 [sql-db-vnet-service-endpoint-rule-overview-735r]: sql-database-vnet-service-endpoint-rule-overview.md
 
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
-

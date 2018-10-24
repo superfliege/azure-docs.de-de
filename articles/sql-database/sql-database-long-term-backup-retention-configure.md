@@ -11,20 +11,22 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: 0a91139d92570a2ee2828f9295590d580902c501
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/04/2018
+ms.openlocfilehash: 1775e1810a164bfbdd1cddea9360674592cf446c
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164989"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857532"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank
 
-Sie können Azure SQL-Datenbank mit einer Richtlinie für die [langfristige Aufbewahrung der Sicherung](sql-database-long-term-retention.md) (Long-Term Retention, LTR) konfigurieren, um automatisch Sicherungen in Azure-Blobspeicher für bis zu zehn Jahre aufzubewahren. Sie können dann mit dem Azure-Portal oder mit PowerShell eine Datenbank anhand dieser Sicherungen wiederherstellen.
+In Azure SQL-Datenbank können Sie eine einzelne oder eine gruppierte Datenbank mit einer Richtlinie für die [langfristige Aufbewahrung von Sicherungen](sql-database-long-term-retention.md) (Long-Term Retention, LTR) konfigurieren, um automatisch Sicherungen in Azure Blob Storage für bis zu zehn Jahre aufzubewahren. Sie können dann mit dem Azure-Portal oder mit PowerShell eine Datenbank anhand dieser Sicherungen wiederherstellen.
+
+> [!IMPORTANT]
+> Die [verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) unterstützt derzeit keine langfristigen Aufbewahrung von Sicherungen.
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Konfigurieren von Richtlinien für die langfristige Aufbewahrung und Wiederherstellen von Sicherungen mithilfe des Azure-Portals
-
 In den folgenden Abschnitten wird erläutert, wie Sie mithilfe des Azure-Portals die langfristige Aufbewahrung konfigurieren, Sicherungen in der langfristigen Aufbewahrung anzeigen und Sicherungen aus der langfristigen Aufbewahrung wiederherstellen.
 
 ### <a name="configure-long-term-retention-policies"></a>Konfigurieren von Richtlinien für die langfristige Aufbewahrung
@@ -78,6 +80,24 @@ In den folgenden Abschnitten wird erläutert, wie Sie mithilfe von PowerShell di
 - [AzureRM.Sql-4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) oder höher
 - [AzureRM-6.1.0](https://www.powershellgallery.com/packages/AzureRM/6.1.0) oder höher
 > 
+
+### <a name="rbac-roles-to-manage-long-term-retention"></a>RBAC-Rollen zum Verwalten der langfristigen Aufbewahrung
+
+Zum Verwalten von LTR-Sicherungen müssen Sie über eine der folgenden Rollen verfügen: 
+- Besitzer des Abonnements
+- SQL Server-Mitwirkender im Bereich **Abonnement**
+- SQL-Datenbankmitwirkender im Bereich **Abonnement**
+
+Wenn eine präzisere Steuerung erforderlich ist, können Sie benutzerdefinierte RBAC-Rollen erstellen und diese im Bereich **Abonnement** zuweisen. 
+
+Für **Get-AzureRmSqlDatabaseLongTermRetentionBackup** und **Restore-AzureRmSqlDatabase** muss die Rolle über folgende Berechtigungen verfügen:
+
+Microsoft.Sql/locations/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read
+ 
+Für **Remove-AzureRmSqlDatabaseLongTermRetentionBackup** muss die Rolle über folgende Berechtigungen verfügen:
+
+Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
+
 
 ### <a name="create-an-ltr-policy"></a>Erstellen einer LTR-Richtlinie
 

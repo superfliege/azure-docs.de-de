@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 95c27bcc99f08cb1e4998e43a6a2abd508bee0ac
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228094"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869311"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>Replikation mit einer verwalteten SQL-Datenbank-Instanz
 
@@ -49,7 +49,7 @@ Im Allgemeinen müssen sich Verleger und Verteiler gemeinsam entweder in der Clo
 
    Bei dieser Konfiguration ist eine Azure SQL-Datenbank ein Abonnent. Diese Konfiguration unterstützt die Migration vom lokalen Standort zu Azure. In der Rolle des Abonnenten erfordert die SQL-Datenbank keine verwaltete Instanz. Sie können jedoch eine verwaltete SQL-Datenbank-Instanz als Schritt bei der Migration vom lokalen Standort zu Azure verwenden. Weitere Informationen zu Azure SQL-Datenbank-Abonnenten finden Sie unter [Replikation in SQL-Datenbank](replication-to-sql-database.md).
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 Für Verleger und Verteiler in Azure SQL-Datenbank ist Folgendes erforderlich:
 
@@ -76,21 +76,22 @@ Unterstützt:
 
 ## <a name="configure-publishing-and-distribution-example"></a>Konfigurieren eines Beispiels für Veröffentlichung und Verteilung
 
-1. [Erstellen Sie eine verwaltete Azure SQL-Datenbank-Instanz](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal) im Azure-Portal.
+1. [Erstellen Sie eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-create-tutorial-portal.md) im Azure-Portal.
+2. [Erstellen Sie ein Azure-Speicherkonto](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) für das Arbeitsverzeichnis.
 
-1. [Erstellen Sie ein Azure-Speicherkonto](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) für das Arbeitsverzeichnis. Achten Sie darauf, die Speicherkontoschlüssel zu kopieren. Siehe [Anzeigen und Kopieren von Speicherzugriffsschlüssel](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys).
-
-1. Erstellen Sie eine Datenbank für den Verleger.
+   Achten Sie darauf, die Speicherkontoschlüssel zu kopieren. Siehe [Anzeigen und Kopieren von Speicherzugriffsschlüssel](../storage/common/storage-account-manage.md#access-keys
+).
+3. Erstellen Sie eine Datenbank für den Verleger.
 
    Ersetzen Sie in den folgenden Beispielskripts `<Publishing_DB>` durch den Namen der Datenbank.
 
-1. Erstellen Sie einen Datenbankbenutzer mit SQL-Authentifizierung für den Verteiler. Siehe [Erstellen von Datenbankbenutzern](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Verwenden Sie ein sicheres Kennwort.
+4. Erstellen Sie einen Datenbankbenutzer mit SQL-Authentifizierung für den Verteiler. Siehe [Erstellen von Datenbankbenutzern](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Verwenden Sie ein sicheres Kennwort.
 
    Verwenden Sie in den folgenden Beispielskripts `<SQL_USER>` und `<PASSWORD>` als Datenbankbenutzer und Kennwort für dieses SQL Server-Konto.
 
-1. [Stellen Sie eine Verbindung zur verwalteten SQL-Datenbank-Instanz her](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
+5. [Stellen Sie eine Verbindung zur verwalteten SQL-Datenbank-Instanz her](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
 
-1. Führen Sie die folgende Abfrage aus, um den Verteiler und die Verteilungsdatenbank hinzuzufügen.
+6. Führen Sie die folgende Abfrage aus, um den Verteiler und die Verteilungsdatenbank hinzuzufügen.
 
    ```sql
    USE [master]
@@ -99,7 +100,7 @@ Unterstützt:
    EXEC sp_adddistributiondb @database = N'distribution';
    ```
 
-1. Aktualisieren Sie die folgende Abfrage, und führen Sie sie aus, um einen Verleger so zu konfigurieren, dass er eine bestimmte Verteilungsdatenbank verwendet.
+7. Aktualisieren Sie die folgende Abfrage, und führen Sie sie aus, um einen Verleger so zu konfigurieren, dass er eine bestimmte Verteilungsdatenbank verwendet.
 
    Ersetzen Sie `<SQL_USER>` und `<PASSWORD>` durch das SQL Server-Konto und -Kennwort.
 
@@ -107,7 +108,7 @@ Unterstützt:
 
    Ersetzen Sie `<STORAGE_CONNECTION_STRING>` durch die Verbindungszeichenfolge von der Registerkarte **Zugriffsschlüssel** Ihres Microsoft Azure Storage-Kontos.
 
-   Nachdem Sie die folgende Abfrage aktualisiert haben, führen Sie sie aus. 
+   Nachdem Sie die folgende Abfrage aktualisiert haben, führen Sie sie aus.
 
    ```sql
    USE [master]
@@ -121,7 +122,7 @@ Unterstützt:
    GO
    ```
 
-1. Konfigurieren Sie den Verleger für die Replikation. 
+8. Konfigurieren Sie den Verleger für die Replikation.
 
     Ersetzen Sie in der folgenden Abfrage `<Publishing_DB>` durch den Namen Ihrer Verlegerdatenbank.
 
@@ -155,15 +156,13 @@ Unterstützt:
                 @job_password = N'<PASSWORD>'
    ```
 
-1. Fügen Sie den Artikel, das Abonnement und den Pushabonnement-Agent hinzu. 
+9. Fügen Sie den Artikel, das Abonnement und den Pushabonnement-Agent hinzu.
 
    Aktualisieren Sie das folgende Skript, um diese Objekte hinzuzufügen.
 
-   Ersetzen Sie `<Object_Name>` durch den Namen des Objekts, das veröffentlicht werden soll.
-
-   Ersetzen Sie `<Object_Schema>` durch den Namen des Quellschemas. 
-
-   Ersetzen Sie die anderen Parameter in spitzen Klammern `<>` entsprechend den Werten in den vorherigen Skripts. 
+   - Ersetzen Sie `<Object_Name>` durch den Namen des Objekts, das veröffentlicht werden soll.
+   - Ersetzen Sie `<Object_Schema>` durch den Namen des Quellschemas.
+   - Ersetzen Sie die anderen Parameter in spitzen Klammern `<>` entsprechend den Werten in den vorherigen Skripts.
 
    ```sql
    EXEC sp_addarticle @publication = N'<Publication_Name>',
@@ -183,7 +182,7 @@ Unterstützt:
                 @subscriber_security_mode = 0,
                 @subscriber_login = N'<SQL_USER>',
                 @subscriber_password = N'<PASSWORD>',
-                @job_login = N'<SQL_USER>', 
+                @job_login = N'<SQL_USER>',
                 @job_password = N'<PASSWORD>'
    GO
    ```

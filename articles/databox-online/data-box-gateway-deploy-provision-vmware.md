@@ -83,9 +83,9 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 * VMware vSphere-Client auf Ihrem System zum Verwalten des ESXi-Hosts
 
 
-## <a name="provision-a-virtual-device-in-hypervisor"></a>Bereitstellen eines virtuellen Geräts in Hypervisor
+## <a name="provision-a-virtual-device-in-hypervisor"></a>Bereitstellen eines virtuellen Geräts in VMware
 
-Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor bereitzustellen.
+Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware bereitzustellen.
 
 1. Kopieren Sie das Image mit dem virtuellen Gerät auf Ihr System. Dies ist das virtuelle Image (zwei Dateien), das Sie über das Azure-Portal heruntergeladen haben. Notieren Sie sich den Speicherort, an den Sie das Image kopiert haben, da Sie es später noch benötigen.
 

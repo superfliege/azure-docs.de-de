@@ -15,93 +15,93 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9a9dc868c4f22f95ca5027e3c95513d176c69eac
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 9308c51c0ff5fc7278eab632f9d23f23cf016a2a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392398"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901667"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine Learning- und Data Science-Tools
-Die Data Science-VM (DSVM) verfügt über ein umfangreiches Angebot an Tools und Bibliotheken für Machine Learning in gängigen Sprachen wie Python, R und Julia. 
+Virtuelle Data Science-Computer in Azure verfügen über ein umfangreiches Angebot an Tools und Bibliotheken für Machine Learning (ML) in gängigen Sprachen wie Python, R und Julia. 
 
-Im Anschluss sind einige der Machine Learning-Tools und -Bibliotheken auf der DSVM aufgeführt. 
+Hier finden Sie einige der ML-Tools und -Bibliotheken für virtuelle Data Science-Computer. 
 
-## <a name="azure-machine-learning-servicehttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>SDK für den [Azure Machine Learning-Dienst](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml)
+## <a name="azure-machine-learninghttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) (SDK)
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   |   Der Azure Machine Learning-Dienst ist ein Clouddienst, den Sie zum Entwickeln und Bereitstellen von Machine Learning-Modellen verwenden können.  Sie können Ihre Modelle beim Erstellen, Trainieren, Skalieren und Verwalten mit dem Python-SDK nachverfolgen. Stellen Sie Modelle als Container bereit, und führen Sie sie in der Cloud, lokal oder in IoT Edge aus.   |
-| Unterstützte DSVM-Editionen     | Windows (Conda-Umgebung: AzureML), Linux (Conda-Umgebung: py36)    |
+| Was ist das?   |   Azure Machine Learning ist ein Clouddienst, den Sie zum Entwickeln und Bereitstellen von ML-Modellen verwenden können. Sie können Ihre Modelle beim Erstellen, Trainieren, Skalieren und Verwalten mit dem Python SDK nachverfolgen. Stellen Sie Modelle als Container bereit, und führen Sie sie in der Cloud, lokal oder in Azure IoT Edge aus.   |
+| Unterstützte Editionen     | Windows (Conda-Umgebung: AzureML), Linux (Conda-Umgebung: py36)    |
 | Typische Verwendung      | Allgemeine ML-Plattform      |
-| Konfiguration/Installation auf der DSVM      |  Installiert mit GPU-Unterstützung   |
-| Verwendung/Ausführung      | Als Python-SDK und Azure-Befehlszeilentool (AZ-CLI). Aktivieren Sie die Conda-Umgebung `AzureML` unter der Windows-Edition ODER `py36` unter der Linux-Edition.      |
-| Links zu Beispielen      | Beispiele für Jupyter-Notebooks sind im Verzeichnis `AzureML` unter Notebooks enthalten.  |
-| Verwandte Tools auf der DSVM      | Visual Studio Code, Jupyter   |
+| Konfiguration/Installation      |  Installiert mit GPU-Unterstützung   |
+| Verwendung/Ausführung      | Als Python SDK und Azure-Befehlszeilenschnittstelle. Aktivieren Sie die Conda-Umgebung `AzureML` für die Windows-Edition *oder* `py36` für die Linux-Edition.      |
+| Link zu Beispielen      | Exemplarische Jupyter-Notebooks finden Sie im Verzeichnis `AzureML` unter „notebooks“.  |
+| Verwandte Tools      | Visual Studio Code, Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   |    Schnelle, portable und verteilte Gradient-Boosted-Bibliothek (GBDT, GBRT oder GBM) für Python, R, Java, Scala, C++ und mehr. Geeignet für einen einzelnen Computer, Hadoop und Spark.    |
-| Unterstützte DSVM-Editionen     | Windows, Linux     |
+| Was ist das?   |    XGBoost ist eine schnelle, portable und verteilte Gradient Boosting-Bibliothek (GBDT, GBRT oder GBM) für Python, R, Java, Scala, C++ und mehr. Sie eignet sich für einen einzelnen Computer, für Hadoop und für Spark.    |
+| Unterstützte Editionen     | Windows, Linux     |
 | Typische Verwendung      | Allgemeine ML-Bibliothek      |
-| Konfiguration/Installation auf der DSVM      |  Installiert mit GPU-Unterstützung   |
+| Konfiguration/Installation      |  Installiert mit GPU-Unterstützung   |
 | Verwendung/Ausführung      | Als Python-Bibliothek (2.7 und 3.5), R-Paket und pfadbasiertes Befehlszeilentool (`C:\dsvm\tools\xgboost\bin\xgboost.exe` für Windows, `/dsvm/tools/xgboost/xgboost` für Linux)    |
 | Links zu Beispielen      | Beispiele stehen auf dem virtuellen Computer unter `/dsvm/tools/xgboost/demo` (Linux) bzw. unter `C:\dsvm\tools\xgboost\demo` (Windows) zur Verfügung.   |
-| Verwandte Tools auf der DSVM      | LightGBM, MXNet   |
+| Verwandte Tools      | LightGBM, MXNet   |
 
 
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   |   Vowpal Wabbit (VW) ist eine schnelle, Open Source-basierte Out-of-Core-Lernsystembibliothek.    |
-| Unterstützte DSVM-Editionen     | Windows, Linux     |
+| Was ist das?   |   Vowpal Wabbit (VW) ist eine schnelle, Open-Source-basierte Out-of-Core-Lernsystembibliothek.    |
+| Unterstützte Editionen     | Windows, Linux     |
 | Typische Verwendung      | Allgemeine ML-Bibliothek      |
-| Konfiguration/Installation auf der DSVM      |  MSI (Windows), apt-get (Linux) |
+| Konfiguration/Installation      |  MSI-Installationsprogramm (Windows), apt-get (Linux) |
 | Verwendung/Ausführung      | Als pfadbasiertes Befehlszeilentool (`C:\Program Files\VowpalWabbit\vw.exe` unter Windows, `/usr/bin/vw` unter Linux)    |
-| Links zu Beispielen      | [Beispiele für VowPal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
-| Verwandte Tools auf der DSVM      |LightGBM, MXNet, XGBoost   |
+| Link zu Beispielen      | [Beispiele für VowPal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
+| Verwandte Tools      |LightGBM, MXNet, XGBoost   |
 
 
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   |  Weka ist eine Sammlung von Machine Learning-Algorithmen für Data Mining. Die Algorithmen können entweder direkt auf ein Dataset angewendet oder über Ihren eigenen Java-Code aufgerufen werden. Weka enthält Tools für Datenvorverarbeitung, Klassifizierung, Regression, Clustering, Zuordnungsregeln und Visualisierung. |
-| Unterstützte DSVM-Editionen     | Windows, Linux     |
+| Was ist das?   |  Weka ist eine Sammlung von ML-Algorithmen für Data Mining. Die Algorithmen können entweder direkt auf ein Dataset angewendet oder über Ihren eigenen Java-Code aufgerufen werden. Weka enthält Tools für Datenvorverarbeitung, Klassifizierung, Regression, Clustering, Zuordnungsregeln und Visualisierung. |
+| Unterstützte Editionen     | Windows, Linux     |
 | Typische Verwendung      | Allgemeines ML-Tool     |
-| Verwendung/Ausführung      | Unter Windows finden Sie Weka im Startmenü. Melden Sie sich unter Linux mithilfe von X2Go an, und navigieren Sie anschließend zu „Anwendungen“ > „Entwicklung“ > „Weka“. |
-| Links zu Beispielen      | [Beispiele für Weka](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| Verwandte Tools auf der DSVM      |LightGBM, Rattle, XGBooost   |
+| Verwendung/Ausführung      | Unter Windows finden Sie Weka im Startmenü. Unter Linux finden Sie Weka nach der Anmeldung mit X2Go unter **Anwendungen** > **Entwicklung** > **Weka**. |
+| Link zu Beispielen      | [Beispiele für Weka](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| Verwandte Tools      |LightGBM, Rattle, XGBoost   |
 
 ## <a name="rattle"></a>Rattle
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   |   Eine grafische Benutzeroberfläche für Data Mining unter Verwendung von R.   |
-| Unterstützte DSVM-Editionen     | Windows, Linux     |
+| Was ist das?   |   Rattle ist eine grafische Benutzeroberfläche für Data Mining unter Verwendung von R.   |
+| Unterstützte Editionen     | Windows, Linux     |
 | Typische Verwendung      | Allgemeines UI-basiertes Data Mining-Tool für R    |
-| Verwendung/Ausführung      | UI-Tool. Starten Sie unter Windows eine Eingabeaufforderung, und führen Sie R und `rattle()` (innerhalb von R) aus. Stellen Sie unter Linux eine Verbindung über X2Go her, starten Sie ein Terminal, und führen Sie R und `rattle()` (innerhalb von R) aus. |
-| Links zu Beispielen      | [Rattle](https://togaware.com/onepager/) |
-| Verwandte Tools auf der DSVM      |LightGBM, Weka, XGBoost   |
+| Verwendung/Ausführung      | UI-Tool. Starten Sie unter Windows eine Eingabeaufforderung, und führen Sie R und anschließend `rattle()` (innerhalb von R) aus. Stellen Sie unter Linux eine Verbindung über X2Go her, starten Sie ein Terminal, und führen Sie R und anschließend `rattle()` (innerhalb von R) aus. |
+| Link zu Beispielen      | [Rattle](https://togaware.com/onepager/) |
+| Verwandte Tools      |LightGBM, Weka, XGBoost   |
 
 ## <a name="lightgbm"></a>LightGBM
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   | Ein schnelles, verteiltes Gradient-Boosted-Hochleistungsframework (GBDT, GBRT, GBM oder MART) auf der Grundlage von Entscheidungsstrukturalgorithmen für Rangfolgen, Klassifizierungen und viele andere Machine Learning-Aufgaben.    |
-| Unterstützte DSVM-Versionen      | Windows, Linux    |
+| Was ist das?   | LightGBM ist ein schnelles, verteiltes Gradient Boosting-Hochleistungsframework (GBDT, GBRT, GBM oder MART) auf der Grundlage von Entscheidungsstrukturalgorithmen. Es wird für Rangfolgen, Klassifizierungen und viele andere ML-Aufgaben verwendet.    |
+| Unterstützte Versionen      | Windows, Linux    |
 | Typische Verwendung      | Allgemeines Gradient-Boosted-Framework      |
-| Konfiguration/Installation auf der DSVM      | Unter Windows ist LightGBM als Python-Paket installiert. Unter Linux befindet sich die über die Befehlszeile ausführbare Datei unter `/opt/LightGBM/lightgbm`. Außerdem sind das R-Paket und Python-Pakete installiert.     |
-| Links zu Beispielen      | [Leitfaden zu LightGBM](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
-| Verwandte Tools auf der DSVM      | MXNet, XGBoost  |
+| Konfiguration/Installation      | Unter Windows ist LightGBM als Python-Paket installiert. Unter Linux befindet sich die über die Befehlszeile ausführbare Datei unter `/opt/LightGBM/lightgbm`. Außerdem sind das R-Paket und Python-Pakete installiert.     |
+| Link zu Beispielen      | [Leitfaden zu LightGBM](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
+| Verwandte Tools      | MXNet, XGBoost  |
 
 ## <a name="h2o"></a>H2O
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   | Eine Open Source-KI-Plattform für verteiltes, schnelles und skalierbares In-Memory-Machine Learning.  |
-| Unterstützte DSVM-Versionen      | Linux   |
-| Typische Verwendung      | Allgemeines verteiltes und skalierbares ML   |
-| Konfiguration/Installation auf der DSVM      | H2O ist unter `/dsvm/tools/h2o` installiert.      |
-| Verwendung/Ausführung      | Stellen Sie mithilfe von X2Go eine Verbindung mit dem virtuellen Computer her. Starten Sie ein neues Terminal, und führen Sie `java -jar /dsvm/tools/h2o/current/h2o.jar` aus. Stellen Sie dann über einen Webbrowser eine Verbindung mit `http://localhost:54321` her.      |
-| Links zu Beispielen      | Beispiele stehen auf dem virtuellen Computer in Jupyter im Verzeichnis `h2o` zur Verfügung.      |
-| Verwandte Tools auf der DSVM      | Apache Spark, MXNet, XGBoost, Sparkling Water, Deep Water    |
+| Was ist das?   | H2O ist eine Open-Source-KI-Plattform für verteiltes, schnelles und skalierbares In-Memory-ML.  |
+| Unterstützte Versionen      | Linux   |
+| Typische Verwendung      | Universelles verteiltes und skalierbares ML   |
+| Konfiguration/Installation      | H2O ist unter `/dsvm/tools/h2o` installiert.      |
+| Verwendung/Ausführung      | Stellen Sie über X2Go eine Verbindung mit dem virtuellen Computer her. Starten Sie ein neues Terminal, und führen Sie `java -jar /dsvm/tools/h2o/current/h2o.jar` aus. Stellen Sie dann über einen Webbrowser eine Verbindung mit `http://localhost:54321` her.      |
+| Link zu Beispielen      | Beispiele stehen auf dem virtuellen Computer in Jupyter im Verzeichnis `h2o` zur Verfügung.      |
+| Verwandte Tools      | Apache Spark, MXNet, XGBoost, Sparkling Water, Deep Water    |
 
-Auf der DSVM befinden sich noch einige andere ML-Bibliotheken wie etwa das beliebte `scikit-learn`-Paket, das im Rahmen der auf der DSVM installierten Anaconda Python-Distribution bereitgestellt wird. Sehen Sie sich mithilfe der entsprechenden Paket-Manager die Liste mit den verfügbaren Paketen für Python, R und Julia an. 
+Für virtuelle Data Science-Computer stehen noch weitere ML-Bibliotheken wie etwa das beliebte `scikit-learn`-Paket zur Verfügung, das im Rahmen der auf virtuellen Data Science-Computern installierten Anaconda Python-Distribution bereitgestellt wird. Führen Sie die entsprechenden Paket-Manager aus, um sich die Liste mit den verfügbaren Paketen für Python, R und Julia anzusehen.
