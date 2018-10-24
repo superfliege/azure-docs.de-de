@@ -7,219 +7,169 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6a981f112c97ee35b476c92f6f698e68a12a1363
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: d53bbd10cbe822a91f201b7ba702b27b5ac0a6f9
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336820"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887239"
 ---
-# <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen des Microsoft-Kontos (Microsoft Account, MSA) als Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
+# <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Microsoft-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel erfahren Sie, wie Sie die Anmeldung für Benutzer von einem Microsoft-Konto (MSA) mittels [benutzerdefinierter Richtlinien](active-directory-b2c-overview-custom.md) aktivieren.
+In diesem Artikel wird erläutert, wie Sie die Anmeldung für Benutzer über ein Microsoft-Konto mithilfe [benutzerdefinierter Richtlinien](active-directory-b2c-overview-custom.md) in Azure Active Directory (Azure AD) B2C aktivieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Führen Sie die Schritte im Artikel [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) aus.
 
-Diese Schritte umfassen:
+- Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) beschriebenen Schritte aus.
+- Erstellen Sie ein Microsoft-Konto unter [https://www.live.com/](https://www.live.com/), sofern Sie noch keines besitzen.
 
-1.  Erstellen einer Microsoft-Kontoanwendung.
-2.  Hinzufügen des Microsoft-Kontoanwendungsschlüssels zu Azure AD B2C
-3.  Hinzufügen des Anspruchsanbieters zu einer Richtlinie.
-4.  Registrieren des Microsoft-Kontoanspruchsanbieters bei einer User Journey.
-5.  Hochladen der Richtlinie in einen Azure AD B2C-Mandanten und deren Test.
+## <a name="add-an-application"></a>Hinzufügen einer Anwendung
 
-## <a name="create-a-microsoft-account-application"></a>Erstellen einer Microsoft-Kontoanwendung
-Um den Dienst „Microsoft-Konto“ als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Microsoft-Kontoanwendung erstellen und die entsprechenden Parameter bereitstellen. Sie benötigen ein Microsoft-Konto. Wenn Sie keines besitzen, rufen Sie [https://www.live.com/](https://www.live.com/) auf.
+Um ein Microsoft-Konto als Identitätsanbieter in Azure AD B2C verwenden zu können, müssen Sie eine Microsoft-Kontoanwendung hinzufügen.
 
-1.  Navigieren Sie zum [Microsoft-Portal für die Anwendungsregistrierung](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), und melden Sie sich mit den Anmeldeinformationen für Ihr Microsoft-Konto an.
-2.  Klicken Sie auf **App hinzufügen**.
+1. Melden Sie sich beim [Microsoft App-Registrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) mit den Anmeldeinformationen für Ihr Microsoft-Konto an.
+2. Wählen Sie oben rechts **App hinzufügen** aus.
+3. Geben Sie einen **Anwendungsnamen** ein, und klicken Sie dann auf **Erstellen**. 
+4. Wählen Sie **Neues Kennwort generieren** aus, und stellen Sie sicher, dass Sie das Kennwort kopieren, das für die Konfiguration des Identitätsanbieters verwendet werden soll. Kopieren Sie auch die **Anwendungs-ID**. 
+5. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` unter **Umleitungs-URLs** ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten.
+6. Wählen Sie **Speichern**aus.
 
-    ![Microsoft-Konto – App hinzufügen](media/active-directory-b2c-custom-setup-ms-account-idp/msa-add-new-app.png)
+## <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
 
-3.  Geben Sie einen **Namen** für Ihre Anwendung und eine **Kontakt-E-Mail**-Adresse ein, deaktivieren Sie **Wir unterstützen Sie bei den ersten Schritten.**, und klicken Sie auf **Erstellen**.
+Sie müssen das Kennwort speichern, das Sie generiert und zuvor in Ihrem Azure AD B2C-Mandanten aufgezeichnet haben.
 
-    ![Microsoft-Konto – Ihre Anwendung registrieren](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-name.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+4. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
+5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+6. Klicken Sie unter **Optionen** auf `Manual`.
+7. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `MSASecret`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
+8. Geben Sie im Feld **Geheimnis** das Kennwort ein, das Sie zuvor aufgezeichnet haben.
+9. Wählen Sie für **Schlüsselverwendung** die Option `Signature` aus.
+10. Klicken Sie auf **Create**.
 
-4.  Kopieren Sie den Wert unter **Anwendungs-ID**. Sie benötigen ihn, um das Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren.
+## <a name="add-a-claims-provider"></a>Hinzufügen eines Anspruchsanbieters
 
-    ![Microsoft-Konto – Wert von „Anwendungs-ID“ kopieren](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-id.png)
+Wenn Sie möchten, dass sich Benutzer mit einem Microsoft-Konto anmelden, müssen Sie das Konto als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde. 
 
-5.  Klicken Sie auf **Plattform hinzufügen**.
+Sie können Azure AD als Anspruchsanbieter definieren, indem Sie in der Erweiterungsdatei Ihrer Richtlinie das Element **ClaimsProvider** hinzufügen.
 
-    ![Microsoft-Konto – Plattform hinzufügen](media/active-directory-b2c-custom-setup-ms-account-idp/msa-add-platform.png)
-
-6.  Wählen Sie aus der Plattformliste **Web**.
-
-    ![Microsoft-Konto – „Web“ aus der Liste der Plattformen wählen](media/active-directory-b2c-custom-setup-ms-account-idp/msa-web.png)
-
-7.  Geben Sie im Feld `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`Umleitungs-URIs **den Wert** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z. B. „contosob2c“).
-
-    ![Microsoft-Konto – Umleitungs-URLs festlegen](media/active-directory-b2c-custom-setup-ms-account-idp/msa-redirect-url.png)
-
-8.  Klicken Sie im Abschnitt **Anwendungsgeheimnisse** auf **Neues Kennwort generieren**. Kopieren Sie das neue Kennwort, das auf dem Bildschirm angezeigt wird. Sie benötigen ihn, um das Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Dieses Kennwort ist eine wichtige Anmeldeinformation.
-
-    ![Microsoft-Konto – Neues Kennwort generieren](media/active-directory-b2c-custom-setup-ms-account-idp/msa-generate-new-password.png)
-
-    ![Microsoft-Konto – neues Kennwort kopieren](media/active-directory-b2c-custom-setup-ms-account-idp/msa-new-password.png)
-
-9.  Aktivieren Sie im Abschnitt **Erweiterte Optionen** das Kontrollkästchen **Live SDK-Unterstützung**. Klicken Sie auf **Speichern**.
-
-    ![Microsoft-Konto – Live SDK-Unterstützung](media/active-directory-b2c-custom-setup-ms-account-idp/msa-live-sdk-support.png)
-
-## <a name="add-the-microsoft-account-application-key-to-azure-ad-b2c"></a>Hinzufügen des Microsoft-Kontoanwendungsschlüssels zu Azure AD B2C
-Verbund mit Microsoft-Konten erfordert einen geheimen Clientschlüssel für das Microsoft-Konto, um Azure AD B2C im Auftrag der Anwendung zu vertrauen. Sie müssen Ihr Microsoft-Kontoanwendungsgeheimnis im Azure AD B2C-Mandanten speichern:   
-
-1.  Wechseln Sie zu Ihrem Azure AD B2C-Mandanten, und wählen Sie **B2C-Einstellungen** > **Framework für die Identitätsfunktion**.
-2.  Wählen Sie **Policy Keys** (Richtlinienschlüssel), um die in Ihrem Mandanten verfügbaren Schlüssel anzuzeigen.
-3.  Klicken Sie auf **+Hinzufügen**.
-4.  Verwenden Sie für **Optionen** die Option **Manuell**.
-5.  Verwenden Sie für **Name** den Wert `MSASecret`.  
-    Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
-6.  Geben Sie in das Feld **Geheimnis** Ihr Microsoft-Anwendungsgeheimnis aus https://apps.dev.microsoft.com ein.
-7.  Verwenden Sie für **Schlüsselverwendung**, die Option **Signatur**.
-8.  Klicken Sie auf **Erstellen**
-9.  Vergewissern Sie sich, dass Sie den Schlüssel `B2C_1A_MSASecret` erstellt haben.
-
-## <a name="add-a-claims-provider-in-your-extension-policy"></a>Hinzufügen eines Anspruchsanbieters in Ihrer Erweiterungsrichtlinie
-Wenn Sie möchten, dass Benutzer sich mithilfe des Microsoft-Kontos anmelden, müssen Sie das Microsoft-Konto als Anspruchsanbieter definieren. Das heißt, Sie müssen einen Endpunkt festlegen, mit dem Azure AD B2C kommuniziert. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde.
-
-Definieren Sie das Microsoft-Konto als Anspruchsanbieter, indem Sie den `<ClaimsProvider>`-Knoten in Ihrer Erweiterungsrichtliniendatei hinzufügen:
-
-1.  Öffnen Sie die Erweiterungsrichtliniendatei (TrustFrameworkExtensions.xml) von Ihrem Arbeitsverzeichnis aus. Wenn Sie einen XML-Editor benötigen, können Sie [Visual Studio Code](https://code.visualstudio.com/download), einen einfachen plattformübergreifenden Editor, ausprobieren.
-2.  Suchen Sie nach dem `<ClaimsProviders>`-Abschnitt.
-3.  Fügen Sie folgenden XML-Codeausschnitt unter dem `ClaimsProviders`-Element hinzu:
+1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*.
+2. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
+3. Fügen Sie ein neues Element **ClaimsProvider** wie folgt hinzu:
 
     ```xml
-<ClaimsProvider>
-    <Domain>live.com</Domain>
-    <DisplayName>Microsoft Account</DisplayName>
-    <TechnicalProfiles>
-    <TechnicalProfile Id="MSA-OIDC">
-        <DisplayName>Microsoft Account</DisplayName>
-        <Protocol Name="OpenIdConnect" />
-        <Metadata>
-        <Item Key="ProviderName">https://login.live.com</Item>
-        <Item Key="METADATA">https://login.live.com/.well-known/openid-configuration</Item>
-        <Item Key="response_types">code</Item>
-        <Item Key="response_mode">form_post</Item>
-        <Item Key="scope">openid profile email</Item>
-        <Item Key="HttpBinding">POST</Item>
-        <Item Key="UsePolicyInRedirectUri">0</Item>
-        <Item Key="client_id">Your Microsoft application client id</Item>
-        </Metadata>
-    <CryptographicKeys>
-        <Key Id="client_secret" StorageReferenceId="B2C_1A_MSASecret" />
-    </CryptographicKeys>
-    <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-        <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="sub" />
-        <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-        <OutputClaim ClaimTypeReferenceId="email" />
-        </OutputClaims>
-        <OutputClaimsTransformations>
-        <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
-        <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
-        <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
-        <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
-        </OutputClaimsTransformations>
-        <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
-    </TechnicalProfile>
-    </TechnicalProfiles>
-</ClaimsProvider>
-```
+    <ClaimsProvider>
+      <Domain>live.com</Domain>
+      <DisplayName>Microsoft Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="MSA-OIDC">
+          <DisplayName>Microsoft Account</DisplayName>
+          <Protocol Name="OpenIdConnect" />
+          <Metadata>
+            <Item Key="ProviderName">https://login.live.com</Item>
+            <Item Key="METADATA">https://login.live.com/.well-known/openid-configuration</Item>
+            <Item Key="response_types">code</Item>
+            <Item Key="response_mode">form_post</Item>
+            <Item Key="scope">openid profile email</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="client_id">Your Microsoft application client id</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_MSASecret" />
+          </CryptographicKeys>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="email" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
+          </OutputClaimsTransformations>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
 
-4.  Ersetzen Sie den `client_id`-Wert mit Ihrer Microsoft-Kontoanwendungsclient-ID.
-
+4.  Ersetzen Sie den Wert von **client_id** durch die Anwendungs-ID, die Sie zuvor aufgezeichnet haben.
 5.  Speichern Sie die Datei .
 
-## <a name="register-the-microsoft-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>Registrieren des Microsoft-Kontoanspruchsanbieters zum Registrieren oder Anmelden bei einer User Journey
+### <a name="upload-the-extension-file-for-verification"></a>Hochladen der Erweiterungsdatei zur Überprüfung
 
-An dieser Stelle wurde der Identitätsanbieter eingerichtet, ist jedoch auf keinem der Registrierungs-/Anmeldebildschirme vorhanden. Nun müssen Sie den Microsoft-Kontoidentitätsanbieter Ihrer Benutzer-`SignUpOrSignIn`-User Journey hinzufügen. Um ihn verfügbar zu machen, erstellen wir ein Duplikat einer vorhandenen Vorlagen-User Journey.  Dann fügen wir den Microsoft-Kontoidentitätsanbieter hinzu:
+Nun haben Sie Ihre Richtlinie so konfiguriert, dass Azure AD B2C mit Ihrem Microsoft-Konto kommunizieren kann. Versuchen Sie, die Erweiterungsdatei Ihrer Richtlinie hochzuladen, um sich zu vergewissern, dass soweit keine Probleme vorliegen.
 
-> [!NOTE]
->
->Wenn Sie vorher das `<UserJourneys>`-Element aus der Basisdatei Ihrer Richtlinie in die Erweiterungsdatei `TrustFrameworkExtensions.xml` kopiert haben, können Sie zu diesem Abschnitt springen.
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten auf der Seite **Benutzerdefinierten Richtlinien** die Option **Richtlinie hochladen** aus.
+2. Aktivieren Sie **Richtlinie überschreiben, sofern vorhanden**, und navigieren Sie dann zur Datei *TrustFrameworkExtensions.xml*, und wählen Sie die Datei aus.
+3. Klicken Sie auf **Hochladen**.
 
-1.  Öffnen Sie die Basisdatei Ihrer Richtlinie (z.B. „TrustFrameworkBase.xml“).
-2.  Suchen Sie das `<UserJourneys>`-Element, und kopieren Sie den gesamten Inhalt des `<UserJourneys>`-Knotens.
-3.  Öffnen Sie die Erweiterungsdatei (z.B. „TrustFrameworkExtensions.xml“), und suchen Sie nach dem Element `<UserJourneys>`. Wenn das Element nicht vorhanden ist, fügen Sie ein solches hinzu.
-4.  Fügen Sie den gesamten Inhalt des `<UserJourneys>`-Knotens ein, den Sie als untergeordnetes Element des `<UserJourneys>`-Elements kopiert haben.
+## <a name="register-the-claims-provider"></a>Registrieren des Anspruchsanbieters
 
-### <a name="display-the-button"></a>Anzeigen der Schaltfläche
-Das `<ClaimsProviderSelections>`-Element definiert die Liste der Anspruchsanbieter-Auswahloptionen und deren Reihenfolge.  Das `<ClaimsProviderSelection>`-Element entspricht einer Schaltfläche für einen Identitätsanbieter auf einer Registrierungs-/Anmeldeseite. Wenn Sie ein `<ClaimsProviderSelection>`-Element für das Microsoft-Konto hinzufügen, wird eine neue Schaltfläche angezeigt, wenn ein Benutzer zu der Seite gelangt. So fügen Sie dieses Element hinzu:
+Der Identitätsanbieter wurde nun eingerichtet, aber er ist auf keinem der Registrierungs- oder Anmeldebildschirme vorhanden. Um ihn verfügbar zu machen, erstellen Sie ein Duplikat einer vorhandenen User Journey-Vorlage und ändern diese dann so, dass sie ebenfalls das Microsoft-Konto als Identitätsanbieter aufweist.
 
-1.  Suchen Sie den `<UserJourney>`-Knoten, der `Id="SignUpOrSignIn"` in der User Journey enthält, die Sie kopiert haben.
-2.  Suchen Sie den `<OrchestrationStep>`-Knoten, der `Order="1"` enthält.
-3.  Fügen Sie folgenden XML-Codeausschnitt unter dem `<ClaimsProviderSelections>`-Knoten hinzu:
-
-```xml
-<ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
-```
-
-### <a name="link-the-button-to-an-action"></a>Verknüpfen der Schaltfläche mit einer Aktion
-Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Aktion verknüpfen. In diesem Fall soll bei der Aktion Azure AD B2C mit dem Microsoft-Konto kommunizieren, um ein Token zu empfangen. Verknüpfen Sie die Schaltfläche mit einer Aktion, indem Sie das technische Profil für Ihren Microsoft-Kontoanspruchsanbieter verknüpfen:
-
-1.  Suchen Sie `<OrchestrationStep>`, das `Order="2"` im `<UserJourney>`-Knoten enthält.
-2.  Fügen Sie folgenden XML-Codeausschnitt unter dem `<ClaimsExchanges>`-Knoten hinzu:
-
-```xml
-<ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
-```
-
-> [!NOTE]
->
->   * Stellen Sie sicher, dass `Id` den gleichen Wert wie `TargetClaimsExchangeId` im vorherigen Abschnitt hat.
->   * Stellen Sie sicher, dass für `TechnicalProfileReferenceId`-ID das technische Profil festgelegt ist, das Sie zuvor erstellt haben (MSA-OIDC).
-
-## <a name="upload-the-policy-to-your-tenant"></a>Hochladen der Richtlinie in Ihren Mandanten
-1.  Wechseln Sie im [Azure-Portal](https://portal.azure.com) in den [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und öffnen Sie das Blatt **Azure AD B2C**.
-2.  Wählen Sie **Framework für die Identitätsfunktion** aus.
-3.  Öffnen Sie das Blatt **Alle Richtlinien**.
-4.  Wählen Sie **Richtlinie hochladen** aus.
-5.  Aktivieren Sie das Kontrollkästchen **Richtlinie überschreiben, sofern vorhanden**.
-6.  **Laden** Sie „TrustFrameworkExtensions.xml“ hoch, und stellen Sie sicher, dass kein Fehler bei der Validierung auftritt.
-
-## <a name="test-the-custom-policy-by-using-run-now"></a>Testen der benutzerdefinierten Richtlinie mit „Jetzt ausführen“
-
-1.  Öffnen Sie die **Azure AD B2C-Einstellungen**, und navigieren Sie zu **Framework für die Identitätsfunktion**.
-> [!NOTE]
->
->**Jetzt ausführen** macht erforderlich, dass mindestens eine Anwendung im Mandanten vorab registriert wird. Informationen zum Registrieren von Anwendungen finden Sie in den Artikeln [Erste Schritte](active-directory-b2c-get-started.md) bzw. [Anwendungsregistrierung](active-directory-b2c-app-registration.md) zu Azure AD B2C.
-2.  Öffnen Sie **B2C_1A_signup_signin** – die benutzerdefinierte Richtlinie der vertrauenden Seite (Relying Party, RP), die Sie hochgeladen haben. Wählen Sie **Jetzt ausführen** aus.
-3.  Sie sollten sich mit dem Microsoft-Konto anmelden können.
-
-## <a name="optional-register-the-microsoft-account-claims-provider-to-profile-edit-user-journey"></a>[Optional] Registrieren des Microsoft-Kontoanspruchsanbieters bei der Profile-Edit-User Journey
-Vielleicht möchten Sie den Microsoft-Kontoidentitätsanbieter auch Ihrer Benutzer-`ProfileEdit`-User Journey hinzufügen. Um ihn verfügbar zu machen, wiederholen wir die letzten beiden Schritte:
+1. Öffnen Sie die Datei *TrustFrameworkBase.xml* aus dem Starter Pack.
+2. Suchen und kopieren Sie den gesamten Inhalt des Elements **UserJourney**, das `Id="SignUpOrSignIn"` umfasst.
+3. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*, und suchen Sie nach dem Element **UserJourneys**. Wenn das Element nicht vorhanden ist, fügen Sie ein solches hinzu.
+4. Fügen Sie den gesamten Inhalt des kopierten Elements **UserJourney** als untergeordnetes Element des Elements **UserJourneys** ein.
+5. Benennen Sie die ID der User Journey um. Beispiel: `SignUpSignInMSA`.
 
 ### <a name="display-the-button"></a>Anzeigen der Schaltfläche
-1.  Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie (z.B. TrustFrameworkExtensions.xml).
-2.  Suchen Sie den `<UserJourney>`-Knoten, der `Id="ProfileEdit"` in der User Journey enthält, die Sie kopiert haben.
-3.  Suchen Sie den `<OrchestrationStep>`-Knoten, der `Order="1"` enthält.
-4.  Fügen Sie folgenden XML-Codeausschnitt unter dem `<ClaimsProviderSelections>`-Knoten hinzu:
 
-```xml
-<ClaimsProviderSelection TargetClaimsExchangeId="MSAExchange" />
-```
+Das Element **ClaimsProviderSelection** entspricht einer Schaltfläche für einen Identitätsanbieter auf einem Registrierungs- oder Anmeldebildschirm. Wenn Sie ein **ClaimsProviderSelection**-Element für ein Microsoft-Konto hinzufügen, wird eine neue Schaltfläche angezeigt, wenn ein Benutzer zu der Seite gelangt.
+
+1. Suchen Sie in der Datei *TrustFrameworkExtensions.xml* nach dem Element **OrchestrationStep**, das `Order="1"` in der User Journey enthält, die Sie erstellt haben.
+2. Fügen Sie unter **ClaimsProviderSelects** das folgende Element hinzu. Legen Sie den Wert von **TargetClaimsExchangeId** auf einen geeigneten Wert (z. B. auf `MicrosoftAccountExchange`) fest:
+
+    ```XML
+    <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
+    ```
 
 ### <a name="link-the-button-to-an-action"></a>Verknüpfen der Schaltfläche mit einer Aktion
-1.  Suchen Sie `<OrchestrationStep>`, das `Order="2"` im `<UserJourney>`-Knoten enthält.
-2.  Fügen Sie folgenden XML-Codeausschnitt unter dem `<ClaimsExchanges>`-Knoten hinzu:
 
-```xml
-<ClaimsExchange Id="MSAExchange" TechnicalProfileReferenceId="MSA-OIDC" />
-```
+Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Aktion verknüpfen. In diesem Fall soll bei der Aktion Azure AD B2C mit einem Twitter-Konto kommunizieren, um ein Token zu empfangen.
 
-### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>Testen der benutzerdefinierten Profile-Edit-Richtlinie mit „Jetzt ausführen“
-1.  Öffnen Sie die **Azure AD B2C-Einstellungen**, und navigieren Sie zu **Framework für die Identitätsfunktion**.
-2.  Öffnen Sie **B2C_1A_ProfileEdit** – die benutzerdefinierte Richtlinie der vertrauenden Seite, die Sie hochgeladen haben. Wählen Sie **Jetzt ausführen** aus.
-3.  Sie sollten sich mit dem Microsoft-Konto anmelden können.
+1. Suchen Sie nach dem Element **OrchestrationStep**, das `Order="2"` in der User Journey enthält.
+2. Fügen Sie das folgende **ClaimsExchange**-Element hinzu, um sicherzustellen, dass Sie für **Id** den gleichen Wert verwenden, den Sie für **TargetClaimsExchangeId** verwendet haben:
 
-## <a name="download-the-complete-policy-files"></a>Herunterladen der vollständigen Richtliniendateien
-Optional: Sie sollten nach Abschluss der exemplarischen Vorgehensweise „Erste Schritte mit benutzerdefinierten Richtlinien“ Ihr Szenario mithilfe Ihrer eigenen Dateien mit benutzerdefinierten Richtlinien erstellen, anstatt diese Beispieldateien zu verwenden.  [Beispielrichtliniendateien zur Referenz](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-msa-app)
+    ```xml
+    <ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
+    ```
+    
+    Ändern Sie den Wert von **TechnicalProfileReferenceId** in die **Id** des technischen Profils, das Sie zuvor erstellt haben. Beispiel: `MSA-OIDC`.
+
+3. Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie die Datei zur Überprüfung erneut hoch.
+
+## <a name="create-an-azure-ad-b2c-application"></a>Erstellen einer Azure AD B2C-Anwendung
+
+Die Kommunikation mit Azure AD B2C erfolgt über eine Anwendung, die Sie in Ihrem Mandanten erstellen. In diesem Abschnitt werden optionale Schritte aufgeführt, die Sie ausführen können, um eine Testanwendung zu erstellen, falls Sie dies noch nicht getan haben.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+4. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
+5. Geben Sie einen Namen für Ihre Anwendung ein, z. B. *testapp1*.
+6. Wählen Sie für **Web-App/Web-API** die Option `Yes` aus, und geben Sie dann für die **Antwort-URL** die Zeichenfolge `https://jwt.ms` ein.
+7. Klicken Sie auf **Create**.
+
+## <a name="update-and-test-the-relying-party-file"></a>Aktualisieren und Testen der Datei der vertrauenden Seite
+
+Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die erstellte User Journey initiiert wird.
+
+1. Erstellen Sie in Ihrem Arbeitsverzeichnis eine Kopie der Datei *SignUpOrSignIn.xml*, und benennen Sie sie um. Benennen Sie die Datei z. B. in *SignUpSignInMSA.xml* um.
+2. Öffnen Sie die neue Datei, und aktualisieren Sie den Wert des Attributs **PolicyId** für **TrustFrameworkPolicy** mit einem eindeutigen Wert. Beispiel: `SignUpSignInMSA`.
+3. Aktualisieren Sie den Wert von **PublicPolicyUri** mit dem URI für die Richtlinie. Beispiel: `http://contoso.com/B2C_1A_signup_signin_msa`
+4. Ändern Sie den Wert des Attributs **ReferenceId** im Element **DefaultUserJourney** so, dass er der ID der neuen User Journey entspricht, die Sie erstellt haben (SignUpSignInMSA).
+5. Speichern Sie Ihre Änderungen, laden Sie die Datei hoch, und wählen Sie dann in der Liste die neue Richtlinie aus.
+6. Stellen Sie sicher, dass die von Ihnen erstellte Azure AD B2C-Anwendung im Feld **Anwendung auswählen** ausgewählt ist, und klicken Sie dann auf **Jetzt ausführen**, um sie zu testen.

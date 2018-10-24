@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 3a6fbc8410dbc5aec4522f0972a29c67527edb23
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: de89756a3f9ef1139e855da16c0343a9919b56cb
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038133"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585373"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef ist ein hervorragendes Tool zur Automatisierung und für Konfigurationen mit gewünschten Zuständen.
 
-Mit der aktuellen Veröffentlichung der Cloud-API bietet Chef eine nahtlose Integration in Azure und bietet Ihnen die Möglichkeit, den Konfigurationsstatus über einen einzelnen Befehl bereitzustellen und zu implementieren.
+Mit der aktuellen Veröffentlichung der Cloud-API bietet Chef eine nahtlose Integration in Azure und Ihnen die Möglichkeit, den Konfigurationsstatus über einen einzelnen Befehl bereitzustellen und zu implementieren.
 
 Anhand dieses Artikels richten Sie die Chef-Umgebung für die Bereitstellung virtueller Azure-Computer ein. Zudem werden Sie schrittweise durch die Erstellung einer Richtlinie und die anschließende Bereitstellung dieses „Cookbooks“ auf einem virtuellen Azure-Computer geführt.
 
@@ -42,7 +42,7 @@ Das folgende Diagramm zeigt die allgemeine Chef-Architektur:
 
 Die Architektur von Chef setzt sich aus drei Hauptkomponenten zusammen: Chef-Server, Chef-Client (Knoten) und Chef-Arbeitsstation.
 
-Der Chef-Server ist der Verwaltungspunkt, für den es zwei Optionen gibt: eine gehostete oder eine lokale Lösung. Wir werden eine gehostete Lösung verwenden.
+Der Chef-Server ist der Verwaltungspunkt, für den es zwei Optionen gibt: eine gehostete oder eine lokale Lösung. In diesem Tutorial verwenden wir eine gehostete Lösung.
 
 Der Chef-Client (Knoten) ist der Agent, der sich auf den Servern befindet, die Sie verwalten.
 
@@ -94,7 +94,7 @@ Im Stammverzeichnis von „C:\chef“ müssen sich jetzt vier Dateien (einschlie
 
 Die PEM-Dateien enthalten die privaten Schlüssel für die Organisation und Administration für die Kommunikation, während die Datei knife.rb die "knife"-Konfiguration enthält. Wir müssen die Datei knife.rb bearbeiten.
 
-Öffnen Sie die Datei in einem Editor Ihrer Wahl, und ändern Sie „cookbook_path“, indem Sie „/../“ aus dem Pfad entfernen, damit dieser wie weiter unten dargestellt aussieht.
+Öffnen Sie die Datei in einem Editor Ihrer Wahl, und ändern Sie „cookbook_path“, indem Sie „/../“ aus dem Pfad entfernen, damit dieser wie folgt aussieht:
 
     cookbook_path  ["#{current_dir}/cookbooks"]
 
@@ -109,7 +109,7 @@ Die Datei „knife.rb“ sollte jetzt etwa wie folgt aussehen:
 Diese Zeilen stellen sicher, dass Knife auf „C:\chef\cookbooks“ verweist und bei Azure-Vorgängen unsere Azure-Datei mit den Veröffentlichungseinstellungen verwendet.
 
 ## <a name="installing-the-chef-development-kit"></a>Installieren des Chef Development Kit
-Zum Einrichten der Chef-Arbeitsstation müssen Sie im nächsten Schritt das ChefDK (Chef Development Kit) [herunterladen und installieren](http://downloads.getchef.com/chef-dk/windows) .
+Zum Einrichten der Chef-Arbeitsstation müssen Sie im nächsten Schritt das ChefDK (Chef Development Kit) [herunterladen und installieren](http://downloads.getchef.com/chef-dk/windows).
 
 ![][7]
 
@@ -119,7 +119,9 @@ Vergewissern Sie sich, dass die PATH-Variable Einträge für „C:\opscode\chefd
 
 Wenn sie nicht vorhanden sind, stellen Sie sicher, dass Sie diese Pfade hinzufügen!
 
-*BEACHTEN SIE, DASS DIE REIHENFOLGE DER PFADE WICHTIG IST!* Wenn die "opscode"-Pfade nicht in der richtigen Reihenfolge angegeben sind, können Probleme auftreten.
+> [!NOTE]
+> Die Reihenfolge der Pfade ist wichtig! Wenn die "opscode"-Pfade nicht in der richtigen Reihenfolge angegeben sind, können Probleme auftreten. 
+> 
 
 Starten Sie die Arbeitsstation neu, bevor Sie fortfahren.
 

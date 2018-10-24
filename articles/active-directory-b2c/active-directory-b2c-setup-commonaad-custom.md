@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen eines mehrinstanzenfähigen Azure AD-Identitätsanbieters mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Einrichten der Anmeldung für einen mehrinstanzenfähigen Azure AD-Identitätsanbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Hinzufügen eines mehrinstanzenfähigen Azure AD-Identitätsanbieters mithilfe von benutzerdefinierten Richtlinien – Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -7,230 +7,201 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/14/2018
+ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 68eab85c7f67ad3af18c6066c29e1250e1be3d23
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: d341f7328eb4a977d266c25f6746d4173393b54e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344405"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887219"
 ---
-# <a name="azure-active-directory-b2c-allow-users-to-sign-in-to-a-multi-tenant-azure-ad-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Benutzern mithilfe von benutzerdefinierten Richtlinien die Anmeldung bei einem mehrinstanzenfähigen Azure AD-Identitätsanbieter ermöglichen
+# <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für einen mehrinstanzenfähigen Azure Active Directory-Identitätsanbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel wird erläutert, wie Sie die Anmeldung für Benutzer des mehrinstanzenfähigen Endpunkts für Azure Active Directory (Azure AD) mithilfe von [benutzerdefinierten Richtlinien](active-directory-b2c-overview-custom.md) aktivieren. Dadurch können Benutzer von mehreren Azure AD-Mandanten sich ohne Konfiguration eines technischen Anbieters für jeden Mandanten bei Azure AD B2C anmelden. Allerdings können sich Gastmitglieder in diesen Mandanten **nicht** anmelden. Dazu müssen Sie [jeden Mandanten einzeln konfigurieren](active-directory-b2c-setup-aad-custom.md).
+In diesem Artikel wird erläutert, wie Sie die Anmeldung für Benutzer des mehrinstanzenfähigen Endpunkts für Azure Active Directory (Azure AD) mithilfe [benutzerdefinierter Richtlinien](active-directory-b2c-overview-custom.md) in Azure AD B2C aktivieren. Dadurch können Benutzer von mehreren Azure AD-Mandanten sich ohne Konfiguration eines technischen Anbieters für jeden Mandanten bei Azure AD B2C anmelden. Allerdings können sich Gastmitglieder in diesen Mandanten **nicht** anmelden. Dazu müssen Sie [jeden Mandanten einzeln konfigurieren](active-directory-b2c-setup-aad-custom.md).
 
 >[!NOTE]
-> Wir verwenden „Contoso.com“ für den Azure AD-Mandanten der Organisation und „fabrikamb2c.onmicrosoft.com“ als den Azure AD B2C-Mandanten in den folgenden Anweisungen.
+>In den folgenden Anweisungen wird `Contoso.com` für den Azure AD-Mandanten der Organisation und `fabrikamb2c.onmicrosoft.com` als Azure AD B2C-Mandant verwendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie die Schritte im Artikel [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) aus.
+Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) beschriebenen Schritte aus.
 
-Diese Schritte umfassen:
-     
-1. Erstellen eines Azure Active Directory B2C-Mandanten (Azure AD B2C)
-1. Erstellen einer Azure AD B2C-Anwendung    
-1. Registrieren von zwei Richtlinienmodulanwendungen  
-1. Einrichten von Schlüsseln 
-1. Einrichten des Starter Pack
+## <a name="register-an-application"></a>Registrieren einer Anwendung
 
-## <a name="step-1-create-a-multi-tenant-azure-ad-app"></a>Schritt 1: Erstellen einer mehrinstanzenfähigen Azure AD-App
-
-Um die Anmeldung für Benutzer des Azure AD-Endpunkts für mehrere Mandanten aktivieren zu können, müssen Sie über eine mehrinstanzenfähige Anwendung verfügen, die in einem Ihrer Azure AD-Mandanten registriert ist. In diesem Artikel zeigen wir Ihnen, wie Sie eine mehrinstanzenfähige Azure AD-Anwendung in Ihrem Azure AD B2C-Mandanten erstellen. Dann können Sie die Anmeldung für Benutzer durch die Verwendung dieser mehrinstanzenfähigen Azure AD-Anwendung aktivieren.
+Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu aktivieren, müssen Sie eine Anwendung im Azure AD-Mandanten der Organisation registrieren.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie in der oberen Leiste Ihr Konto aus. Wählen Sie in der Liste **Verzeichnis** den Azure AD B2C-Mandanten für die Registrierung der Azure AD-Anwendung (fabrikamb2c.onmicrosoft.com) aus.
-1. Wählen Sie im linken Navigationsbereich **Weitere Dienste** aus, und suchen Sie nach „App-Registrierungen“.
-1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
-1. Geben Sie einen Namen für Ihre Anwendung ein (z.B. `Azure AD B2C App`).
-1. Wählen Sie **Web-App/API** als Anwendungstyp aus.
-1. Geben Sie für **Anmelde-URL** die folgende URL ein, in der `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten (`fabrikamb2c.onmicrosoft.com`) ersetzt wird:
-
-    >[!NOTE]
-    >Der Wert für „yourtenant“ muss in der **Anmelde-URL** in Kleinbuchstaben angegeben werden.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das den Azure AD-Mandanten der Organisation („contoso.com“) enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das Verzeichnis auswählen, das Ihren Mandanten enthält.
+3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
+4. Wählen Sie **Registrierung einer neuen Anwendung** aus.
+5. Geben Sie einen Namen für Ihre Anwendung ein. Beispiel: `Azure AD B2C App`.
+6. Wählen Sie als **Anwendungstyp** die Option `Web app / API` aus.
+7. Geben Sie als **Anmelde-URL** die folgende URL in Kleinbuchstaben ein, und ersetzen Sie dabei `your-tenant` durch den Namen Ihres Azure AD B2C-Mandanten („fabrikamb2c.onmicrosoft.com“):
 
     ```
-    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
     ```
+    
+8. Klicken Sie auf **Create**. Kopieren Sie die **Anwendungs-ID** zur späteren Verwendung.
+9. Wählen Sie die Anwendung aus, und wählen Sie dann **Einstellungen** aus.
+10. Wählen Sie **Schlüssel** aus, geben Sie die Schlüsselbeschreibung ein, wählen Sie eine Dauer aus, und klicken Sie dann auf **Speichern**. Kopieren Sie den angezeigten Wert des Schlüssels zur späteren Verwendung.
+11. Wählen Sie unter **Einstellungen** die Option **Eigenschaften** aus, legen Sie **Mehrinstanzenfähig** auf `Yes` fest, und klicken Sie dann auf **Speichern**.
 
-1. Speichern Sie die Anwendungs-ID.
-1. Wählen Sie die neu erstellte Anwendung aus.
-1. Wählen Sie auf dem Blatt **Einstellungen** die Option **Eigenschaften** aus.
-1. Legen Sie **Mehrinstanzenfähig** auf **Ja** fest.
-1. Wählen Sie auf dem Blatt **Einstellungen** die Option **Schlüssel** aus.
-1. Erstellen Sie einen neuen Schlüssel, und speichern Sie ihn. Sie werden ihn in den Schritten im nächsten Abschnitt verwenden.
+## <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
 
-## <a name="step-2-add-the-azure-ad-key-to-azure-ad-b2c"></a>Schritt 2: Hinzufügen des Azure AD-Schlüssels zu Azure AD B2C
+Sie müssen den von Ihnen erstellten Anwendungsschlüssel in Ihrem Azure AD B2C-Mandanten speichern.
 
-Sie müssen den Anwendungsschlüssel in den Azure AD B2C-Einstellungen registrieren. Gehen Sie dazu folgendermaßen vor:
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+2. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+3. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
+4. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+5. Klicken Sie unter **Optionen** auf `Manual`.
+6. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `ContosoAppSecret`.  Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
+7. Geben Sie im Feld **Geheimnis** den Anwendungsschlüssel ein, den Sie zuvor notiert haben.
+8. Wählen Sie für **Schlüsselverwendung** die Option `Signature` aus.
+9. Klicken Sie auf **Create**.
 
-1. Wechseln Sie zum Menü „Einstellungen“ für Azure AD B2C.
-1. Klicken Sie auf **Framework für die Identitätsfunktion** > **Richtlinienschlüssel**.
-1. Wählen Sie **+ Hinzufügen** aus.
-1. Wählen Sie diese Optionen aus, oder geben Sie sie ein:
-   * Wählen Sie **Manuell** aus.
-   * Wählen Sie für **Name** einen Namen aus, der mit dem Namen Ihres Azure AD-Mandanten übereinstimmt (z.B. `AADAppSecret`).  Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
-   * Fügen Sie Ihren Anwendungsschlüssel in das Textfeld **Secret** (Geheimer Schlüssel) ein.
-   * Wählen Sie **Signatur** aus.
-1. Klicken Sie auf **Erstellen**.
-1. Vergewissern Sie sich, dass Sie den Schlüssel `B2C_1A_AADAppSecret` erstellt haben.
+## <a name="add-a-claims-provider"></a>Hinzufügen eines Anspruchsanbieters
 
-## <a name="step-3-add-a-claims-provider-in-your-base-policy"></a>Schritt 3: Hinzufügen eines Anspruchsanbieters in Ihrer Basisrichtlinie
+Wenn Sie möchten, dass sich Benutzer mithilfe von Azure AD anmelden, müssen Sie Azure AD als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde. 
 
-Wenn Sie möchten, dass Benutzer sich mithilfe von Azure AD anmelden, müssen Sie Azure AD als Anspruchsanbieter definieren. Das heißt, Sie müssen einen Endpunkt festlegen, mit dem Azure AD B2C kommunizieren soll. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde. 
+Sie können Azure AD als Anspruchsanbieter definieren, indem Sie Azure AD in der Erweiterungsdatei Ihrer Richtlinie dem Element **ClaimsProvider** hinzufügen.
 
-Sie können Azure AD als Anspruchsanbieter definieren, indem Sie Azure AD in der Erweiterungsdatei Ihrer Richtlinie im `<ClaimsProvider>`-Knoten hinzufügen:
+1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*.
+2. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
+3. Fügen Sie ein neues **ClaimsProvider**-Element wie folgt hinzu:
 
-1. Öffnen Sie die Erweiterungsdatei (TrustFrameworkExtensions.xml) aus Ihrem Arbeitsverzeichnis.
-1. Suchen Sie nach dem Abschnitt `<ClaimsProviders>`. Wenn dieser nicht vorhanden sein sollte, fügen Sie ihn im Stammknoten hinzu.
-1. Fügen Sie einen neuen `<ClaimsProvider>`-Knoten wie folgt ein:
-
-```XML
-<ClaimsProvider>
-  <Domain>commonaad</Domain>
-  <DisplayName>Common AAD</DisplayName>
-  <TechnicalProfiles>
-    <TechnicalProfile Id="Common-AAD">
-      <DisplayName>Multi-Tenant AAD</DisplayName>
-      <Protocol Name="OpenIdConnect" />
-      <Metadata>
-        <!-- Update the Client ID below to the Application ID -->
-        <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
-        <Item Key="UsePolicyInRedirectUri">0</Item>
-        <Item Key="METADATA">https://login.microsoftonline.com/common/.well-known/openid-configuration</Item>
-        <Item Key="response_types">code</Item>
-        <Item Key="scope">openid</Item>
-        <Item Key="response_mode">form_post</Item>
-        <Item Key="HttpBinding">POST</Item>
-        <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
+    ```XML
+    <ClaimsProvider>
+      <Domain>commonaad</Domain>
+      <DisplayName>Common AAD</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="Common-AAD">
+          <DisplayName>Multi-Tenant AAD</DisplayName>
+          <Protocol Name="OpenIdConnect" />
+          <Metadata>
+            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
+            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="METADATA">https://login.microsoftonline.com/common/.well-known/openid-configuration</Item>
+            <Item Key="response_types">code</Item>
+            <Item Key="scope">openid</Item>
+            <Item Key="response_mode">form_post</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
         
-        <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
-        <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
+            <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
+            <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
 
-        <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
-        <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
+            <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
+            <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
+          </Metadata>
+          <CryptographicKeys>
+            <!-- Make sure to update the reference ID of the client secret below you just created (B2C_1A_AADAppSecret) -->
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_AADAppSecret" />
+          </CryptographicKeys>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
+            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
+            <OutputClaim ClaimTypeReferenceId="email" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
+          </OutputClaimsTransformations>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
 
-      </Metadata>
-      <CryptographicKeys>
-      <!-- Make sure to update the reference ID of the client secret below you just created (B2C_1A_AADAppSecret) -->
-        <Key Id="client_secret" StorageReferenceId="B2C_1A_AADAppSecret" />
-      </CryptographicKeys>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-        <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
-        <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="sub" />
-        <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-        <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
-        <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
-        <OutputClaim ClaimTypeReferenceId="email" />
-      </OutputClaims>
-      <OutputClaimsTransformations>
-        <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
-        <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
-        <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
-        <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
-      </OutputClaimsTransformations>
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
-    </TechnicalProfile>
-  </TechnicalProfiles>
-</ClaimsProvider>
-```
+4. Ändern Sie unter dem Element **ClaimsProvider** den Wert für **Domain** in einen eindeutigen Wert, der eine Unterscheidung von anderen Identitätsanbietern ermöglicht.
+5. Aktualisieren Sie unter dem Element **TechnicalProfile** den Wert für **DisplayName**. Dieser Wert wird auf dem Anmeldebildschirm auf der Schaltfläche „Anmelden“ angezeigt.
+6. Legen Sie **client_id** auf die Anwendungs-ID aus der Registrierung der mehrinstanzenfähigen Azure AD-App fest.
 
-1. Aktualisieren Sie im `<ClaimsProvider>`-Knoten den Wert für `<Domain>` in einen eindeutigen Wert, der eine Unterscheidung von anderen Identitätsanbietern ermöglicht.
-1. Aktualisieren Sie im `<TechnicalProfile>`-Knoten den Wert für `<DisplayName>`. Dieser Wert wird auf dem Anmeldebildschirm auf der Anmeldeschaltfläche angezeigt.
-1. Aktualisieren Sie den Wert für `<Description>`.
-1. Legen Sie `<Item Key="client_id">` auf die Anwendungs-ID aus der Registrierung der mehrinstanzenfähigen Azure AD-App fest.
-
-### <a name="step-31-restrict-access-to-a-specific-list-of-azure-ad-tenants"></a>Schritt 3.1 Beschränken des Zugriffs auf eine bestimmte Liste von Azure AD-Mandanten
+### <a name="restrict-access"></a>Beschränken des Zugriffs
 
 > [!NOTE]
-> Mit `https://sts.windows.net` als Wert für **ValidTokenIssuerPrefixes** können sich ALLE Azure AD-Benutzer bei Ihrer App anmelden.
+> Wenn `https://sts.windows.net` als Wert für **ValidTokenIssuerPrefixes** verwendet wird, können sich alle Azure AD-Benutzer bei Ihrer Anwendung anmelden.
 
-Sie müssen die Liste der gültigen Tokenaussteller aktualisieren und den Zugriff auf eine bestimmte Liste von Azure AD-Mandanten beschränken, über die sich Benutzer anmelden können. Zum Abrufen der Werte müssen Sie sich die Metadaten für jeden einzelnen Azure AD-Mandanten ansehen, über den sich die Benutzer anmelden können sollen. Das Format der Daten sieht wie folgt aus: `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, wobei `yourAzureADtenant` der Name Ihres Azure AD-Mandanten ist („contoso.com“ oder ein anderer Azure AD-Mandant).
-1. Öffnen Sie Ihren Browser, und navigieren Sie zur Metadaten-URL.
-1. Suchen Sie im Browser nach dem Objekt „Aussteller“, und kopieren Sie dessen Wert. Es sollte in etwa wie folgt aussehen: `https://sts.windows.net/{tenantId}/`.
-1. Fügen Sie den Wert für den Schlüssel `ValidTokenIssuerPrefixes` ein. Sie können mehrere Werte hinzufügen, indem Sie diese durch ein Komma trennen. Ein Beispiel dafür ist im obigen XML-Beispiel auskommentiert.
+Sie müssen die Liste der gültigen Tokenaussteller aktualisieren und den Zugriff auf eine bestimmte Liste von Azure AD-Mandanten beschränken, über die sich Benutzer anmelden können. Zum Abrufen der Werte müssen Sie sich die Metadaten für jeden einzelnen Azure AD-Mandanten ansehen, über den sich die Benutzer anmelden können sollen. Das Format der Daten sieht wie folgt aus: `https://login.windows.net/your-tenant/.well-known/openid-configuration`, wobei `your-tenant` der Name Ihres Azure AD-Mandanten ist („contoso.com“ oder ein anderer Azure AD-Mandant).
 
-## <a name="step-4-register-the-azure-ad-account-claims-provider"></a>Schritt 4: Registrieren des Azure AD-Kontoanspruchsanbieters
+1. Öffnen Sie Ihren Browser, navigieren Sie zur **METADATEN**-URL, suchen Sie nach dem **issuer**-Objekt, und kopieren Sie dessen Wert. Es sollte in etwa wie folgt aussehen: `https://sts.windows.net/tenant-id/`.
+2. Kopieren Sie den Wert für den Schlüssel **ValidTokenIssuerPrefixes**, und fügen Sie ihn ein. Sie können mehrere Werte hinzufügen, indem Sie diese durch ein Komma trennen. Ein Beispiel dafür ist im obigen XML-Beispiel auskommentiert.
 
-### <a name="step-41-make-a-copy-of-the-user-journey"></a>Schritt 4.1: Erstellen einer Kopie der User Journey
+### <a name="upload-the-extension-file-for-verification"></a>Hochladen der Erweiterungsdatei zur Überprüfung
 
-Nun müssen Sie den Azure AD-Identitätsanbieter zu einer Ihrer User Journeys hinzufügen. An dieser Stelle wurde der Identitätsanbieter eingerichtet, ist jedoch auf keinem der Registrierungs-/Anmeldebildschirme vorhanden.
+Nun haben Sie Ihre Richtlinie so konfiguriert, dass Azure AD B2C mit Ihrem Azure AD-Verzeichnis kommunizieren kann. Versuchen Sie, die Erweiterungsdatei Ihrer Richtlinie hochzuladen, um sich zu vergewissern, dass soweit keine Probleme vorliegen.
 
-Zu diesem Zweck erstellen wir ein Duplikat einer vorhandenen User Journey-Vorlage und ändern diese, damit sie ebenfalls einen Azure AD-Identitätsanbieter aufweist:
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten auf der Seite **Benutzerdefinierte Richtlinien** die Option **Richtlinie hochladen** aus.
+2. Aktivieren Sie **Richtlinie überschreiben, sofern vorhanden**, navigieren Sie dann zur Datei *TrustFrameworkExtensions.xml*, und wählen Sie die Datei aus.
+3. Klicken Sie auf **Hochladen**.
 
-1. Öffnen Sie die Basisdatei Ihrer Richtlinie (z.B. „TrustFrameworkBase.xml“).
-1. Suchen das Element `<UserJourneys>`, und kopieren Sie den gesamten `<UserJourney>`-Knoten, der `Id="SignUpOrSignIn"` enthält.
-1. Öffnen Sie die Erweiterungsdatei (z.B. „TrustFrameworkExtensions.xml“), und suchen Sie nach dem Element `<UserJourneys>`. Wenn das Element nicht vorhanden ist, fügen Sie ein solches hinzu.
-1. Fügen Sie den gesamten `<UserJourney>`-Knoten ein, die Sie als untergeordnetes Element des `<UserJourneys>`-Elements kopiert haben.
-1. Benennen Sie die ID der neuen User Journey (z.B. als `SignUpOrSignUsingAzureAD`). 
+## <a name="register-the-claims-provider"></a>Registrieren des Anspruchsanbieters
 
-### <a name="step-42-display-the-button"></a>Schritt 4.2: Anzeigen der Schaltfläche
+An dieser Stelle wurde der Identitätsanbieter eingerichtet, ist jedoch auf keinem der Registrierungs-/Anmeldebildschirme vorhanden. Um ihn verfügbar zu machen, erstellen Sie ein Duplikat einer vorhandenen User Journey-Vorlage und ändern diese dann so, dass sie ebenfalls Azure AD als Identitätsanbieter aufweist.
 
-Das Element `<ClaimsProviderSelection>` entspricht einer Schaltfläche für einen Identitätsanbieter auf einem Registrierungs-/Anmeldebildschirm. Wenn Sie ein `<ClaimsProviderSelection>`-Element für Azure AD hinzufügen, wird eine neue Schaltfläche angezeigt, wenn ein Benutzer zu der Seite gelangt. So fügen Sie dieses Element hinzu:
+1. Öffnen Sie die Datei *TrustFrameworkBase.xml* aus dem Starter Pack.
+2. Suchen und kopieren Sie den gesamten Inhalt des Elements **UserJourney**, das `Id="SignUpOrSignIn"` enthält.
+3. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*, und suchen Sie nach dem Element **UserJourneys**. Wenn das Element nicht vorhanden ist, fügen Sie ein solches hinzu.
+4. Fügen Sie den gesamten Inhalt des kopierten Elements **UserJourney** als untergeordnetes Element des Elements **UserJourneys** ein.
+5. Benennen Sie die ID der User Journey um. Beispiel: `SignUpSignInContoso`.
 
-1. Suchen Sie den `<OrchestrationStep>`-Knoten, der `Order="1"` in der von Ihnen erstellten User Journey enthält.
-1. Fügen Sie Folgendes hinzu:
+### <a name="display-the-button"></a>Anzeigen der Schaltfläche
+
+Das Element **ClaimsProviderSelection** entspricht einer Schaltfläche für einen Identitätsanbieter auf einem Registrierungs- oder Anmeldebildschirm. Wenn Sie ein **ClaimsProviderSelection**-Element für Azure AD hinzufügen, wird eine neue Schaltfläche angezeigt, wenn ein Benutzer zu der Seite gelangt.
+
+1. Suchen Sie nach dem Element **OrchestrationStep**, das `Order="1"` in der User Journey enthält, die Sie erstellt haben.
+2. Fügen Sie unter **ClaimsProviderSelects** das folgende Element hinzu. Legen Sie den Wert von **TargetClaimsExchangeId** auf einen geeigneten Wert (z. B. auf `AzureADExchange`) fest:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="AzureADExchange" />
     ```
 
-1. Legen Sie `TargetClaimsExchangeId` als entsprechenden Wert fest. Es wird empfohlen, der allgemein üblichen Konvention zu folgen: *\[NameDesAnspruchsanbieters\]Exchange*.
+### <a name="link-the-button-to-an-action"></a>Verknüpfen der Schaltfläche mit einer Aktion
 
-### <a name="step-43-link-the-button-to-an-action"></a>Schritt 4.3: Verknüpfen der Schaltfläche mit einer Aktion
+Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Aktion verknüpfen. In diesem Fall soll bei der Aktion Azure AD B2C mit Azure AD kommunizieren, um ein Token zu empfangen. Verknüpfen Sie die Schaltfläche mit einer Aktion, indem Sie das technische Profil für Ihren Azure AD-Anspruchsanbieter verknüpfen.
 
-Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Aktion verknüpfen. In diesem Fall soll bei der Aktion Azure AD B2C mit Azure AD kommunizieren, um ein Token zu empfangen. Dies gelingt Ihnen, indem Sie das technische Profil für Ihren Azure AD-Anspruchsanbieter verknüpfen:
-
-1. Suchen Sie `<OrchestrationStep>`, das `Order="2"` im `<UserJourney>`-Knoten enthält.
-1. Fügen Sie Folgendes hinzu:
+1. Suchen Sie nach dem Element **OrchestrationStep**, das `Order="2"` in der User Journey enthält.
+2. Fügen Sie das folgende **ClaimsExchange**-Element hinzu, um sicherzustellen, dass Sie für **Id** den gleichen Wert verwenden, den Sie für **TargetClaimsExchangeId** verwendet haben:
 
     ```XML
     <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
     ```
+    
+    Ändern Sie den Wert von **TechnicalProfileReferenceId** in die **Id** des technischen Profils, das Sie zuvor erstellt haben. Beispiel: `Common-AAD`.
 
-1. Aktualisieren Sie `Id` auf den gleichen Wert wie `TargetClaimsExchangeId` im vorherigen Abschnitt.
-1. Ändern Sie `TechnicalProfileReferenceId` in die ID des technischen Profils, das Sie zuvor erstellt haben („Common-AAD“).
+3. Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie die Datei zur Überprüfung erneut hoch.
 
-## <a name="step-5-create-a-new-rp-policy"></a>Schritt 5: Erstellen einer neuen RP-Richtlinie
+## <a name="create-an-azure-ad-b2c-application"></a>Erstellen einer Azure AD B2C-Anwendung
 
-Nun müssen Sie die Datei der vertrauenden Seite (Relying Party, RP) aktualisieren, die die gerade erstellte User Journey initiiert:
- 
-1. Erstellen Sie eine Kopie von der Datei „SignUpOrSignIn.xml“ in Ihrem Arbeitsverzeichnis, und benennen Sie sie um (z.B. „SignUpOrSignInWithAAD.xml“).  
-1. Öffnen Sie die neue Datei, und ändern Sie das `PolicyId`-Attribut für `<TrustFrameworkPolicy>` in einen eindeutigen Wert (z.B. SignUpOrSignInWithAAD). Dies ist der Name Ihrer Richtlinie (z.B. B2C\_1A\_SignUpOrSignInWithAAD). 
-1. Ändern Sie das `ReferenceId`-Attribut in `<DefaultUserJourney>`, sodass es der ID der neuen von Ihnen erstellten User Journey entspricht („SignUpOrSignUsingContoso“). 
-1. Speichern Sie die Änderungen, und laden Sie die Datei hoch. 
+Die Kommunikation mit Azure AD B2C erfolgt über eine Anwendung, die Sie in Ihrem Mandanten erstellen. In diesem Abschnitt werden optionale Schritte aufgeführt, die Sie ausführen können, um eine Testanwendung zu erstellen, falls Sie dies noch nicht getan haben.
 
-## <a name="step-6-upload-the-policy-to-your-tenant"></a>Schritt 6: Hochladen der Richtlinie zu Ihrem Mandanten
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+4. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
+5. Geben Sie einen Namen für die Anwendung ein, z. B. *testapp1*.
+6. Wählen Sie für **Web-App/Web-API** die Option `Yes` aus, und geben Sie dann für die **Antwort-URL** die Zeichenfolge `https://jwt.ms` ein.
+7. Klicken Sie auf **Create**.
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und wählen Sie anschließend **Azure AD B2C** aus.
-1. Wählen Sie **Framework für die Identitätsfunktion** aus.
-1. Wählen Sie die Option **Alle Richtlinien** aus.
-1. Wählen Sie **Richtlinie hochladen** aus.
-1. Aktivieren Sie das Kontrollkästchen **Richtlinie überschreiben, sofern vorhanden**.
-1. Laden Sie die Datei `TrustFrameworkExtensions.xml` und die RP-Datei (z. B. `SignUpOrSignInWithAAD.xml`) hoch, und stellen Sie sicher, dass die Dateien die Überprüfung bestehen.
+## <a name="update-and-test-the-relying-party-file"></a>Aktualisieren und Testen der Datei der vertrauenden Seite
 
-## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Schritt 7: Testen der benutzerdefinierten Richtlinie mit „Jetzt ausführen“
+Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die erstellte User Journey initiiert wird.
 
-1. Wählen Sie **Azure AD B2C-Einstellungen** und dann **Framework für die Identitätsfunktion** aus.
-    > [!NOTE]
-    > Für „Jetzt ausführen“ muss mindestens eine Anwendung vorab im Mandanten registriert werden. Informationen zum Registrieren von Anwendungen finden Sie in den Artikeln [Erste Schritte](active-directory-b2c-get-started.md) bzw. [Anwendungsregistrierung](active-directory-b2c-app-registration.md) zu Azure AD B2C.
-
-1. Öffnen Sie die benutzerdefinierte Richtlinie der vertrauenden Seite (Relying Party, RP), die Sie hochgeladen haben (*B2C\_1A\_SignUpOrSignInWithAAD*). Wählen Sie dann **Jetzt ausführen** aus.
-1. Sie sollten sich jetzt mit dem Azure AD-Konto anmelden können.
-
-## <a name="optional-step-8-register-the-azure-ad-account-claims-provider-to-the-profile-edit-user-journey"></a>(Optional) Schritt 8: Registrieren des Azure AD-Kontoanspruchsanbieters bei der Profile-Edit-User Journey
-
-Möglicherweise möchten Sie Ihrer `ProfileEdit`-User Journey auch den Azure AD-Kontoidentitätsanbieter hinzufügen. Wiederholen Sie die Schritte 4 bis 6, um die User Journey verfügbar zu machen. Wählen Sie dieses Mal den `<UserJourney>`-Knoten aus, der `Id="ProfileEdit"` enthält. Speichern Sie Ihre Richtlinie, laden Sie diese hoch, und testen Sie sie.
-
-## <a name="troubleshooting"></a>Problembehandlung
-
-Lesen Sie den Artikel zur [Problembehandlung](active-directory-b2c-troubleshoot-custom.md), um mehr zum Diagnostizieren von Problemen zu erfahren.
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Senden Sie uns Ihr Feedback an [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com).
+1. Erstellen Sie in Ihrem Arbeitsverzeichnis eine Kopie der Datei *SignUpOrSignIn.xml*, und benennen Sie sie um. Benennen Sie die Datei z. B. in *SignUpSignInContoso.xml* um.
+2. Öffnen Sie die neue Datei, und aktualisieren Sie den Wert des Attributs **PolicyId** für **TrustFrameworkPolicy** mit einem eindeutigen Wert. Beispiel: `SignUpSignInContoso`.
+3. Aktualisieren Sie den Wert von **PublicPolicyUri** mit dem URI für die Richtlinie. Beispiel: `http://contoso.com/B2C_1A_signup_signin_contoso`
+4. Ändern Sie den Wert des Attributs **ReferenceId** im Element **DefaultUserJourney** so, dass er der ID der neuen User Journey entspricht, die Sie erstellt haben (SignUpSignInContoso).
+5. Speichern Sie Ihre Änderungen, laden Sie die Datei hoch, und wählen Sie dann in der Liste die neue Richtlinie aus.
+6. Stellen Sie sicher, dass die von Ihnen erstellte Azure AD B2C-Anwendung im Feld **Anwendung auswählen** ausgewählt ist, und klicken Sie dann auf **Jetzt ausführen**, um sie zu testen.

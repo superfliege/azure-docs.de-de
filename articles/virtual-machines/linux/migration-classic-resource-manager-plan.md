@@ -124,19 +124,19 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
 
     Die aktuellen Azure Resource Manager-Kontingente können mithilfe der folgende Befehle mit der neuesten Version der Azure CLI überprüft werden:
 
-    **Compute***(Kerne, Verfügbarkeitsgruppen)*
+    **Compute** *(Kerne, Verfügbarkeitsgruppen)*
 
     ```bash
     az vm list-usage -l <azure-region> -o jsonc 
     ```
 
-    **Netzwerk***(virtuelle Netzwerke, statische öffentliche IP-Adressen, öffentliche IP-Adressen, Netzwerksicherheitsgruppen, Netzwerkschnittstellen, Lastenausgleichsmodule, Routingtabellen)*
+    **Netzwerk** *(virtuelle Netzwerke, statische öffentliche IP-Adressen, öffentliche IP-Adressen, Netzwerksicherheitsgruppen, Netzwerkschnittstellen, Lastenausgleichsmodule, Routingtabellen)*
     
     ```bash
     az network list-usages -l <azure-region> -o jsonc
     ```
 
-    **Storage***(Speicherkonto)*
+    **Storage** *(Speicherkonto)*
     
     ```bash
     az storage account show-usage

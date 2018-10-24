@@ -14,12 +14,12 @@ ms.component: users-groups-roles
 ms.date: 01/14/2018
 ms.author: curtand
 ms.custom: seohack1
-ms.openlocfilehash: 10851990f26124ae89945d4b56058115cacb81ee
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5beee2fae518fec23b65ff05a79281e0fc3f1417
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861415"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800739"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Migrieren lizenzierter Benutzer zu einer Gruppe für die Lizenzierung in Azure Active Directory
 
@@ -47,7 +47,7 @@ Der wichtigste zu beachtende Aspekt ist, dass Sie unbedingt eine Situation verme
 
 6. Erwägen Sie die Aufhebung direkter Zuweisungen. Dies kann gestaffelt, also nach und nach, erfolgen, um zunächst das Ergebnis für eine Teilmenge von Benutzern zu prüfen.
 
-  Sie können die ursprünglichen direkten Zuweisungen für Benutzer intakt lassen. Doch wenn die Benutzer ihre lizenzierte Gruppe verlassen, behalten sie die ursprüngliche Lizenz, was Sie möglicherweise nicht möchten.
+  Sie können die ursprünglichen direkten Zuweisungen für Benutzer beibehalten. Wenn die Benutzer jedoch ihre lizenzierten Gruppen verlassen, behalten sie die ursprüngliche Lizenz, was Sie möglicherweise nicht möchten.
 
 ## <a name="an-example"></a>Beispiel
 

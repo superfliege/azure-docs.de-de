@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: dc28263fca5c6854ffad12678b472804f074addd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 30b4a038c2ad9bd86f2ba78d52ed3754acec07f0
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035741"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785256"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal
 Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen im Format „*domänenname*.onmicrosoft.com“. Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können der Liste jedoch die Namen Ihrer Organisation hinzufügen. Durch das Hinzufügen von benutzerdefinierten Domänennamen können Sie Benutzernamen erstellen, die Ihren Benutzern vertraut sind, beispielsweise *alain@contoso.com*.
@@ -84,7 +84,7 @@ Nachdem Sie Ihren benutzerdefinierten Domänennamen registriert haben, müssen S
 
     ![Seite für Contoso mit DNS-Eintragsinformationen und der Schaltfläche „Überprüfen“](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 
-### <a name="common-verification-issues"></a>Häufige Probleme bei der Überprüfung
+## <a name="common-verification-issues"></a>Häufige Probleme bei der Überprüfung
 - Versuchen Sie Folgendes, wenn Azure AD einen benutzerdefinierten Domänennamen nicht überprüfen kann:
     - **Warten Sie mindestens eine Stunde, und versuchen Sie es dann noch einmal.** DNS-Einträge müssen weitergegeben (verteilt) werden, bevor Azure AD die Domäne überprüfen kann, und dieser Prozess kann eine Stunde oder auch länger dauern.
 
@@ -92,7 +92,9 @@ Nachdem Sie Ihren benutzerdefinierten Domänennamen registriert haben, müssen S
 
     Falls Sie den Eintrag auf der Website der Registrierungsstelle nicht aktualisieren können, müssen Sie ihn für eine Person mit den erforderlichen Berechtigungen freigeben, um den Eintrag hinzufügen und seine Richtigkeit überprüfen zu lassen.
 
-- **Stellen Sie sicher, dass der Domänenname nicht bereits in einem anderen Verzeichnis verwendet wird.** Ein Domänenname kann nur in einem Verzeichnis überprüft werden. Falls Ihr Domänenname gerade in einem anderen Verzeichnis überprüft wird, kann er daher nicht auch im neuen Verzeichnis überprüft werden. Um dieses Problem zu beheben, müssen Sie den Domänennamen aus dem alten Verzeichnis löschen. Weitere Informationen zum Löschen von Domänennamen finden Sie unter [Verwalten von benutzerdefinierten Domänennamen](../users-groups-roles/domains-manage.md). 
+- **Stellen Sie sicher, dass der Domänenname nicht bereits in einem anderen Verzeichnis verwendet wird.** Ein Domänenname kann nur in einem Verzeichnis überprüft werden. Falls Ihr Domänenname gerade in einem anderen Verzeichnis überprüft wird, kann er daher nicht auch im neuen Verzeichnis überprüft werden. Um dieses Problem zu beheben, müssen Sie den Domänennamen aus dem alten Verzeichnis löschen. Weitere Informationen zum Löschen von Domänennamen finden Sie unter [Verwalten von benutzerdefinierten Domänennamen](../users-groups-roles/domains-manage.md).
+
+- **Stellen Sie sicher, dass keine nicht verwalteten Power BI-Mandanten vorhanden sind.** Wenn Ihre Benutzer Power BI über die Self-Service-Registrierung aktiviert und einen nicht verwalteten Mandanten für Ihre Organisation erstellt haben, müssen Sie die Verwaltung als interner oder externer Administrator mithilfe von PowerShell übernehmen. Weitere Informationen zum Übernehmen eines nicht verwalteten Verzeichnisses finden Sie unter [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory](../users-groups-roles/domains-admin-takeover.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

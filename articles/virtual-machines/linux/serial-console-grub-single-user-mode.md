@@ -3,7 +3,7 @@ title: Serielle Azure-Konsole für den GRUB- und Einzelbenutzermodus | Microsoft
 description: Verwenden der seriellen Konsole für GRUB in Azure Virtual Machines.
 services: virtual-machines-linux
 documentationcenter: ''
-author: alsin
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,20 +14,40 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 059cb0cbc7e62af16dbf95693be421feebcc1ee0
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 150147a0fe0fdfcf2e6c9f2b780587749af1ded0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144383"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857906"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus
-Der Einzelbenutzermodus ist eine minimale Umgebung mit minimaler Funktionalität. Er kann bei der Untersuchung von Start- oder Netzwerkproblemen hilfreich sein, da weniger Dienste im Hintergrund ausgeführt werden können und je nach Ausführungsebene sogar ein Dateisystem nicht automatisch eingebunden werden kann. So können beispielsweise Probleme wie ein beschädigtes Dateisystem, eine fehlerhafte fstab-Datei oder eine Unterbrechung der Netzwerkkonnektivität (falsche iptables-Konfiguration) untersucht werden.
+GRUB steht für GRand Unified Bootloader. Mit GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
 
-Bei einigen Distributionen wird automatisch der Einzelbenutzermodus oder Notfallmodus aktiviert, wenn die VM nicht gestartet werden. Andere erfordern jedoch eine zusätzliche Einrichtung, bevor der Einzelbenutzer- oder Notfallmodus automatisch aktiviert werden kann.
+Der Einzelbenutzermodus ist eine minimale Umgebung mit minimaler Funktionalität. Dieser Modus kann beim Untersuchen von Start-, Dateisystem- oder Netzwerkproblemen hilfreich sein. Es können weniger Dienste im Hintergrund ausgeführt werden, und je nach Ausführungsebene kann auch ein Dateisystem nicht automatisch eingebunden werden.
 
-Damit Sie auf den Einzelbenutzermodus zugreifen können, müssen Sie sicherstellen, dass GRUB auf Ihrer VM aktiviert ist. Je nach Distribution müssen Sie möglicherweise einige Einrichtungsschritte durchführen, um sicherzustellen, dass GRUB aktiviert ist. 
+Der Einzelbenutzermodus ist auch in Situationen hilfreich, in denen Ihr virtueller Computer nur für die Anmeldung mit SSH-Schlüsseln konfiguriert werden kann. In diesem Fall können Sie den Einzelbenutzermodus verwenden, um ein Konto mit Kennwortauthentifizierung zu erstellen.
 
+Damit Sie in den Einzelbenutzermodus wechseln können, müssen Sie GRUB beim Starten Ihres virtuellen Computers aktivieren und dann die Startkonfiguration in GRUB ändern. Dies kann mithilfe der seriellen Konsole des virtuellen Computers erfolgen.
+
+## <a name="general-grub-access"></a>Allgemeiner GRUB-Zugriff
+Damit Sie auf GRUB zugreifen können, müssen Sie Ihren virtuellen Computer neu starten, während das Blatt für die serielle Konsole geöffnet ist. Einige Distributionen erfordern Tastatureingaben zum Anzeigen von GRUB, während andere Distributionen GRUB automatisch ein paar Sekunden lang anzeigen und Benutzereingaben über die Tastatur zulassen, um das Timeout abzubrechen. 
+
+Damit Sie auf den Einzelbenutzermodus zugreifen können, müssen Sie sicherstellen, dass GRUB auf Ihrer VM aktiviert ist. Je nach Distribution müssen Sie möglicherweise einige Einrichtungsschritte durchführen, um sicherzustellen, dass GRUB aktiviert ist. Distributionsspezifische Informationen finden Sie unten.
+
+### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Neustarten Ihres virtuellen Computers zum Zugreifen auf GRUB in der seriellen Konsole
+Sie können Ihren virtuellen Computer neu starten, während das Blatt für die serielle Konsole geöffnet ist, indem Sie einen Befehl „SysRq+`'b'`“ ausführen, wenn [SysRq](./serial-console-nmi-sysrq.md) aktiviert ist, oder indem Sie auf dem Blatt „Übersicht“ auf die Schaltfläche „Neu starten“ klicken. (Öffnen Sie den virtuellen Computer auf einer neuen Browserregisterkarte, um den Neustart auszuführen, ohne das Blatt für die serielle Konsole zu schließen.) Lesen Sie die distributionsspezifischen Anweisungen unten, um zu erfahren, was bei einem Neustart von GRUB zu erwarten ist.
+
+## <a name="general-single-user-mode-access"></a>Allgemeiner Zugriff auf den Einzelbenutzermodus
+Der manuelle Zugriff auf den Einzelbenutzermodus kann in Situationen erforderlich sein, in denen Sie kein Konto mit Kennwortauthentifizierung konfiguriert haben. Sie müssen die GRUB-Konfiguration ändern, um manuell in den Einzelbenutzermodus zu wechseln. Nachdem Sie dies getan haben, lesen Sie den Abschnitt [Verwenden des Einzelbenutzermodus zum Zurücksetzen oder Hinzufügen eines Kennworts](#-Use-Single-User-Mode-to-reset-or-add-a-password), um weitere Anweisungen zu erhalten.
+
+In Fällen, in denen der virtuelle Computer nicht gestartet werden kann, wird bei Distributionen häufig der Einzelbenutzermodus oder der Notfallmodus automatisch aktiviert. Andere erfordern jedoch eine zusätzliche Einrichtung, bevor der Einzelbenutzer- oder Notfallmodus automatisch aktiviert werden kann (z. B. das Einrichten eines Stammkennworts).
+
+### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>Verwenden des Einzelbenutzermodus zum Zurücksetzen oder Hinzufügen eines Kennworts
+Wenn Sie sich im Einzelbenutzermodus befinden, gehen Sie wie folgt vor, um einen neuen Benutzer mit sudo-Berechtigungen hinzuzufügen:
+1. Führen Sie `useradd <username>` aus, um einen Benutzer hinzuzufügen.
+1. Führen Sie `sudo usermod -a -G sudo <username>` aus, um dem neuen Benutzer Stammberechtigungen zu erteilen.
+1. Verwenden Sie `passwd <username>`, um das Kennwort für den neuen Benutzer festzulegen. Sie können sich dann als der neue Benutzer anmelden.
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>Zugriff für Red Hat Enterprise Linux (RHEL)
 RHEL aktiviert automatisch den Einzelbenutzermodus, wenn ein normaler Start nicht möglich ist. Wenn Sie keinen Stammzugriff für den Einzelbenutzermodus eingerichtet haben, haben Sie jedoch kein Stammkennwort und können sich nicht anmelden. Es ist eine Problemumgehung verfügbar (siehe „Manuelles Aktivieren des Einzelbenutzermodus“ unten), es wird jedoch empfohlen, zuerst den Stammzugriff einzurichten.
@@ -99,7 +119,14 @@ Befolgen Sie die obigen Anweisungen für RHEL, um den Einzelbenutzermodus in Cen
 Ubuntu-Images erfordern kein Stammkennwort. Wenn das System im Einzelbenutzermodus gestartet wird, können Sie es ohne zusätzliche Anmeldeinformationen verwenden. 
 
 ### <a name="grub-access-in-ubuntu"></a>GRUB-Zugriff in Ubuntu
-Halten Sie zum Zugreifen auf GRUB während des Starts der VM die ESC-TASTE gedrückt.
+Halten Sie zum Zugreifen auf GRUB während des Starts der VM die ESC-TASTE gedrückt. 
+
+Standardmäßig zeigen Ubuntu-Images den GRUB-Bildschirm nicht automatisch an. Dies können Sie durch Ausführen der folgenden Anweisungen ändern:
+1. Öffnen Sie `/etc/default/grub.d/50-cloudimg-settings.cfg` in einem Text-Editor Ihrer Wahl.
+1. Ändern Sie den Wert von `GRUB_TIMEOUT` in einen Wert ungleich null.
+1. Öffnen Sie `/etc/default/grub` in einem Text-Editor Ihrer Wahl.
+1. Kommentieren Sie die Zeile `GRUB_HIDDEN_TIMEOUT=1` aus.
+1. Führen Sie `sudo update-grub` aus.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Einzelbenutzermodus in Ubuntu
 Ubuntu aktiviert automatisch den Einzelbenutzermodus, wenn ein normaler Start nicht möglich ist. Um den Einzelbenutzermodus manuell zu aktivieren, gehen Sie wie folgt vor:
