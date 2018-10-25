@@ -2,21 +2,21 @@
 title: Häufig gestellte Fragen zu Azure Database Migration Service | Microsoft-Dokumentation
 description: Hier finden Sie häufig gestellte Fragen zur Durchführung von Datenbankmigrationen unter Verwendung von Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: ''
 ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/19/2018
-ms.openlocfilehash: 2fd5049b8b65620087e3c1ec42b6a5dcb0e0741a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.date: 10/09/2018
+ms.openlocfilehash: f1f67921e7eadded4292f244f5754c8f00341a15
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214102"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887103"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Häufig gestellte Fragen zu Azure Database Migration Service
 Dieser Artikel enthält häufig gestellte Fragen zur Verwendung von Azure Database Migration Service sowie entsprechende Antworten.
@@ -28,7 +28,7 @@ Azure Database Migration Service ist ein vollständig verwalteter Dienst, der di
 - Kontinuierliche Investition in reibungslose Migrationen
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>F: Welche Quelle-Ziel-Paare werden derzeit von Azure Database Migration Service unterstützt?
-Der Dienst unterstützt derzeit die Migration von SQL Server zu Azure SQL-Datenbank, und Sie können nun zum Azure-Portal wechseln, um Azure Database Migration Service für dieses Szenario zu verwenden. Weitere Quelle-Ziel-Paare wie Oracle zu Azure SQL-Datenbank sind im Rahmen einer eingeschränkten privaten Vorschauversion verfügbar. Interessenten für die eingeschränkte private Vorschauversion können sich [hier](https://aka.ms/dms-preview/) registrieren.
+Der Dienst unterstützt derzeit die Migration von SQL Server zu Azure SQL-Datenbank, und Sie können nun zum Azure-Portal wechseln, um Azure Database Migration Service für dieses Szenario zu verwenden. Weitere Quelle-Ziel-Paare (z.B. Oracle zu Azure SQL-Datenbank) sind im Rahmen einer eingeschränkten privaten Vorschauversion verfügbar. Interessenten für die eingeschränkte private Vorschauversion können sich [hier](https://aka.ms/dms-preview/) registrieren.
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>F: Inwiefern unterscheidet sich Azure Database Migration Service von anderen Microsoft-Datenbankmigrationstools wie DBA (Database Migration Assistant) oder SSMA (SQL Server Migration Assistant)?
 Azure Database Migration Service ist die bevorzugte Methode für bedarfsorientierte Datenbankmigrationen zu Microsoft Azure. Ausführlichere Informationen zu den Unterschieden zwischen Azure Database Migration Service und anderen Microsoft-Datenbankmigrationstools sowie Empfehlungen für die Verwendung des Diensts in verschiedenen Szenarien finden Sie im Blogbeitrag [Differentiating Microsoft’s Database Migration Tools and Services](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/) (Abgrenzung der Datenbankmigrationstools und -dienste von Microsoft).
@@ -53,15 +53,15 @@ Eine typische einfache Datenbankmigration umfasst Folgendes:
 Zur Gewährleistung reibungsloser Datenbankmigrationen mit Azure Database Migration Service müssen mehrere Voraussetzungen erfüllt werden. Einige der Voraussetzungen gelten für alle unterstützten Szenarien (Quelle-Ziel-Paare) des Diensts, andere nur für ein bestimmtes Szenario.
 Folgende Voraussetzungen von Azure Database Migration Service gelten für alle unterstützten Migrationsszenarien:
 - Erstellen Sie ein VNET für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Standort-zu-Standort-Konnektivität für Ihre lokalen Quellserver bietet.
-- Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln Ihres Azure Virtual Network (VNET) nicht die Kommunikationsports 443, 53, 9354, 445 und 12000 blockieren. Weitere Details zur Datenverkehrsfilterung mit NSG in Azure VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln Ihrer Azure Virtual Network-Instanz (VNet) nicht die Kommunikationsports 443, 53, 9354, 445 und 12000 blockieren. Weitere Details zur Datenverkehrsfilterung mit NSG in Azure VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Wenn Sie eine Firewall-Appliance vor Ihren Quelldatenbanken verwenden, müssen Sie möglicherweise Firewallregeln hinzufügen, damit Azure Database Migration Service auf die Quelldatenbanken für die Migration zugreifen kann.
  
 Eine Liste mit allen Voraussetzungen für spezifische Migrationsszenarien mit Azure Database Migration Service finden Sie auf docs.microsoft.com in den entsprechenden Tutorials der [Azure Database Migration Service-Dokumentation](https://docs.microsoft.com/azure/dms/dms-overview).
 
 ### <a name="q-how-do-i-find-the-ip-address-for-the-azure-database-migration-service-so-that-i-can-create-an-allow-list-for-the-firewall-rules-used-to-access-my-source-database-for-migration"></a>F: Wie finde ich die IP-Adresse für Azure Database Migration Service, damit ich eine Liste zugelassener IP-Adressen für die Firewallregeln erstellen kann, die für den Zugriff auf meine Quelldatenbank für die Migration verwendet werden?
-Möglicherweise müssen Firewallregeln hinzugefügt werden, damit Azure Database Migration Service auf Ihre Quelldatenbank für die Migration zugreifen kann. Die IP-Adresse für den Dienst ist zwar dynamisch, bei Verwendung von ExpressRoute wird sie allerdings privat durch Ihr Unternehmensnetzwerk zugewiesen. Die einfachste Möglichkeit zur Ermittlung der entsprechenden IP-Adresse besteht darin, in der Ressourcengruppe, in der sich auch Ihre bereitgestellte Azure Database Migration Service-Ressource befindet, nach der zugeordneten Netzwerkschnittstelle zu suchen. Der Name der Netzwerkschnittstellenressource beginnt üblicherweise mit dem NIC-Präfix, gefolgt von einer eindeutigen Zeichen- und Nummernfolge (Beispiel: NIC-jj6tnztnmarpsskr82rbndyp). Wenn Sie auf diese Netzwerkschnittstellenressource klicken, wird die IP-Adresse angezeigt, die auf der Ressourcenübersichtsseite im Azure-Portal in die Liste zugelassener IP-Adressen aufgenommen werden muss.
+Möglicherweise müssen Firewallregeln hinzugefügt werden, damit Azure Database Migration Service auf Ihre Quelldatenbank für die Migration zugreifen kann. Die IP-Adresse für den Dienst ist zwar dynamisch, bei Verwendung von Express Route wird sie allerdings privat durch Ihr Unternehmensnetzwerk zugewiesen. Die einfachste Möglichkeit zur Ermittlung der entsprechenden IP-Adresse besteht darin, in der Ressourcengruppe, in der sich auch Ihre bereitgestellte Azure Database Migration Service-Ressource befindet, nach der zugeordneten Netzwerkschnittstelle zu suchen. Der Name der Netzwerkschnittstellenressource beginnt üblicherweise mit dem NIC-Präfix, gefolgt von einer eindeutigen Zeichen- und Ziffernfolge (z.B. NIC-jj6tnztnmarpsskr82rbndyp). Wenn Sie auf diese Netzwerkschnittstellenressource klicken, wird die IP-Adresse angezeigt, die auf der Ressourcenübersichtsseite im Azure-Portal in die Liste zugelassener IP-Adressen aufgenommen werden muss.
 
-Gegebenenfalls müssen Sie der Zulassungsliste auch die Portquelle hinzufügen, an der SQL Server lauscht. Dies ist standardmäßig der Port 1433. Es kann jedoch sein, dass die SQL Server-Quellinstanz für das Lauschen an anderen Ports konfiguriert wurde. In diesem Fall müssen Sie diese Ports ebenfalls der Zulassungsliste hinzufügen. Den Port, an dem SQL Server lauscht, können Sie mithilfe einer Abfrage vom Typ „Dynamische Verwaltungssicht“ ermittelt:
+Gegebenenfalls müssen Sie der Zulassungsliste auch die Portquelle hinzufügen, an der SQL Server lauscht. Dies ist standardmäßig Port 1433. Es ist jedoch möglich, dass die SQL Server-Quellinstanz für das Lauschen an anderen Ports konfiguriert wurde. In diesem Fall müssen Sie diese Ports ebenfalls der Zulassungsliste hinzufügen. Den Port, an dem SQL Server lauscht, können Sie mithilfe einer Abfrage vom Typ „Dynamische Verwaltungssicht“ ermittelt:
 
 ```sql
     SELECT DISTINCT 

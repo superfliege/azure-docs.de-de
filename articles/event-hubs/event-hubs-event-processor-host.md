@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 672e31109b71a8a4238a05851a58a7c83e275b19
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 63cc8a698c9e383c4b5908286d28b51d89842bdc
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576311"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585695"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Übersicht über den Azure Event Hubs-Ereignisprozessorhost
 
@@ -45,7 +45,7 @@ Damit Sie dafür nicht Ihre eigene Lösung entwickeln müssen, umfasst Event Hub
 
 ## <a name="ieventprocessor-interface"></a>IEventProcessor-Schnittstelle
 
-Consumeranwendungen implementieren zuerst die [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Schnittstelle, die über vier Methoden verfügt: [OpenAsync, CloseAsync, ProcessErrorAsync und ProcessEventsAsnyc](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Diese Schnittstelle enthält den eigentlichen Code für die Nutzung der von Event Hubs gesendeten Ereignisse. Der folgende Code ist ein Beispiel für eine einfache Implementierung:
+Consumeranwendungen implementieren zuerst die [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Schnittstelle, die über vier Methoden verfügt: [OpenAsync, CloseAsync, ProcessErrorAsync und ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Diese Schnittstelle enthält den eigentlichen Code für die Nutzung der von Event Hubs gesendeten Ereignisse. Der folgende Code ist ein Beispiel für eine einfache Implementierung:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -88,7 +88,8 @@ Anschließend wird eine [EventProcessorHost](/dotnet/api/microsoft.azure.eventhu
 - **eventHubConnectionString:** die Verbindungszeichenfolge für den Event Hub, die über das Azure-Portal abgerufen werden kann. Diese Verbindungszeichenfolge muss über Berechtigungen zum **Lauschen** für den Event Hub verfügen.
 - **storageConnectionString:** das für die interne Ressourcenverwaltung verwendete Speicherkonto.
 
-Schließlich registrieren die Consumer die [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)-Instanz bei dem Event Hubs-Dienst. Durch die Registrierung wird der Event Hubs-Dienst angewiesen, dass eine Verarbeitung der Ereignisse aus einigen zugehörigen Partitionen durch die Consumeranwendung zu erwarten ist, uns dass der [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungscode bei jedem Übertragen von zu verarbeitenden Ereignissen aufgerufen werden soll.
+Schließlich registrieren die Consumer die [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)-Instanz bei dem Event Hubs-Dienst. Die Registrierung einer Ereignisprozessorklasse mit einer Instanz von EventProcessorHost startet die Ereignisverarbeitung. Durch die Registrierung wird der Event Hubs-Dienst angewiesen, dass eine Verarbeitung der Ereignisse aus einigen zugehörigen Partitionen durch die Consumeranwendung zu erwarten ist, uns dass der [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungscode bei jedem Übertragen von zu verarbeitenden Ereignissen aufgerufen werden soll. 
+
 
 ### <a name="example"></a>Beispiel
 
@@ -123,7 +124,7 @@ In diesem Beispiel übernimmt jeder Host den Besitz einer Partition für eine be
 
 Bei jedem Aufruf von [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) wird eine Sammlung von Ereignissen bereitgestellt. Die Verarbeitung dieser Ereignisse liegt in Ihrer Verantwortung. Es wird empfohlen, relativ schnell vorzugehen, möglichst wenige Verarbeitungsvorgänge durchzuführen. Verwenden Sie stattdessen Consumergruppen. Wenn Ereignisse in den Speicher geschrieben und einige Routingvorgänge durchgeführt werden sollen, empfiehlt es sich in der Regel, zwei Consumergruppen zu verwenden und zwei [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungen separat auszuführen.
 
-Zu einem Zeitpunkt während der Verarbeitung möchten Sie möglicherweise nachverfolgen, welche Daten Sie gelesen und abgeschlossen haben. Die Nachverfolgung ist wichtig: Wenn Sie das Lesen wieder aufnehmen, müssen Sie dann nicht zum Anfang des Datenstroms zurückkehren. In [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) wird diese Nachverfolgung durch Verwenden von *Prüfpunkten* vereinfacht. Ein Prüfpunkt ist eine Position (oder ein Offset) für eine bestimmte Partition in einer bestimmten Consumergruppe, bis zu der Sie die Nachrichten bereits verarbeitet haben. Das Markieren eines Prüfpunkts in **EventProcessorHost** erfolgt durch Aufrufen der [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync)-Methode für das [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext)-Objekt. Dieser Vorgang erfolgt in der Regel innerhalb der [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)-Methode, kann jedoch auch in [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) durchgeführt werden.
+Zu einem Zeitpunkt während der Verarbeitung möchten Sie möglicherweise nachverfolgen, welche Daten Sie gelesen und abgeschlossen haben. Die Nachverfolgung ist wichtig: Wenn Sie das Lesen wieder aufnehmen, müssen Sie dann nicht zum Anfang des Datenstroms zurückkehren. In [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) wird diese Nachverfolgung durch Verwenden von *Prüfpunkten* vereinfacht. Ein Prüfpunkt ist eine Position (oder ein Offset) für eine bestimmte Partition in einer bestimmten Consumergruppe, bis zu der Sie die Nachrichten bereits verarbeitet haben. Das Markieren eines Prüfpunkts in **EventProcessorHost** erfolgt durch Aufrufen der [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync)-Methode für das [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext)-Objekt. Dieser Vorgang erfolgt innerhalb der [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)-Methode, kann jedoch auch in [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) durchgeführt werden.
 
 ## <a name="checkpointing"></a>Setzen von Prüfpunkten
 
@@ -140,6 +141,7 @@ Wenn der Prüfpunkt ausgeführt wird, wird eine JSON-Datei mit partitionsspezifi
 Schließlich ermöglicht [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) ein sauberes Herunterfahren aller Partitionsleser und sollte beim Herunterfahren einer Instanz von [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) immer aufgerufen werden. Andernfalls kann dies zu Verzögerungen beim Starten anderer Instanzen von **EventProcessorHost** aufgrund von Leaseablauf und Epochenkonflikten führen. Die Epochenverwaltung wird in diesem [Blogbeitrag](https://blogs.msdn.microsoft.com/gyan/2014/09/02/event-hubs-receiver-epoch/) ausführlich erläutert.
 
 ## <a name="lease-management"></a>Leaseverwaltung
+Die Registrierung einer Ereignisprozessorklasse mit einer Instanz von EventProcessorHost startet die Ereignisverarbeitung. Die Hostinstanz ruft Leases für einige Partitionen des Event Hubs (möglicherweise auch für andere Hostinstanzen) in einer Weise ab, die zu einer gleichmäßigen Verteilung der Partitionen über alle Hostinstanzen führt. Für jede geleaste Partition erstellt die Hostinstanz eine Instanz der angegebenen Ereignisprozessorklasse, empfängt dann Ereignisse von dieser Partition und übergibt sie an die Ereignisprozessorinstanz. Wenn mehr Instanzen hinzugefügt und mehr Leases in Anspruch genommen werden, gleicht EventProcessorHost schließlich die Last zwischen allen Consumern aus.
 
 Wie zuvor erläutert, wird das Konzept der automatischen Skalierung von [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) durch die Nachverfolgungstabelle sehr vereinfacht. Wenn eine Instanz von **EventProcessorHost** gestartet wird, übernimmt sie so viele Leases wie möglich und beginnt mit dem Lesen von Ereignissen. Wenn die Leases kurz vor dem Ablauf stehen, versucht **EventProcessorHost**, sie durch eine Reservierung zu verlängern. Wenn die Leasedauer verlängert werden kann, setzt der Prozessor das Lesen fort. Wenn dies jedoch nicht der Fall ist, wird der Leser geschlossen und [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) aufgerufen. **CloseAsync** ist ein guter Zeitpunkt zum Ausführen letzter Bereinigungen für die entsprechende Partition.
 

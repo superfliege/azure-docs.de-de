@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/26/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 76da33a74ad95d7f074bc4efd3a8d9f97c19d612
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049609"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830311"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Verschieben von Daten in und aus Azure Storage
 Wenn Sie lokale Daten in Azure Storage verschieben möchten (oder umgekehrt), steht Ihnen eine Vielzahl von Methoden zur Verfügung. Es hängt vom jeweiligen Szenario ab, welche Methode für Sie am besten geeignet ist. Dieser Artikel bietet eine kurze Übersicht über die verschiedenen Szenarien und die jeweiligen Angebote.
@@ -38,7 +38,7 @@ Wenn Sie ein Befehlszeilenprogramm benötigen oder mit einem solchen Programm be
 ### <a name="azcopy"></a>AzCopy
 AzCopy ist ein Befehlszeilenprogramm, mit dem sehr effizient Daten in und aus Azure Storage kopiert werden können. Sie können auch Daten innerhalb eines Speicherkontos oder zwischen Speicherkonten kopieren. AzCopy ist unter [Windows](storage-use-azcopy.md) und unter [Linux](storage-use-azcopy-linux.md) verfügbar.
 
-Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) und [Übertragen von Daten mit AzCopy unter Linux](storage-use-azcopy-linux.md).
+Informationen zum Migrieren von lokalen Daten zu Azure Storage finden Sie unter [Tutorial: Migrieren von lokalen Daten in Cloudspeicher mit AzCopy](storage-use-azcopy-migrate-on-premises-data.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Azure PowerShell ist ein Modul, das Cmdlets für die Verwaltung von Diensten in Azure bereitstellt. Bei diesem Modul handelt es sich um eine aufgabenbasierte Befehlszeilenshell und Skriptsprache, die speziell für die Systemverwaltung entwickelt wurde.

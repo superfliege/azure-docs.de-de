@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 4ce65f1b5dd22da031ebf6730b5efad2d04f91a0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 681cafc60661e16d70deb862da71f6baf80509fd
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365586"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856529"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrieren von BizTalk Server-EDI-Lösungen zu BizTalk Services: Technische Anleitung
 
@@ -55,7 +55,7 @@ Die wichtigsten Unterschiede und Ähnlichkeiten zwischen einem EDI-Lösungsfluss
   
     In BizTalk Services wird die EDI-Nachricht nach der Verarbeitung durch die EDI-Empfangs-Bridge an einen externen Prozess weitergeleitet. Der externe Prozess kann in Microsoft Azure oder lokal ausgeführt werden. Durch den externen Prozess wird die Nachricht an die EDI-Sende-Bridge weitergeleitet. Die Sende-Bridge ruft die Nachricht aber nicht selbsttätig ab. Nach der Verarbeitung der Nachricht leitet die EDI-Sende-Bridge die Nachricht an den Handelspartner weiter.
 
-BizTalk Services bietet eine benutzerfreundliche Konfigurationsumgebung, in der Benutzer schnell und ohne Konfiguration von Microsoft Azure-Compute-Instanzen (Web- oder Workerrollen), Microsoft Azure SQL-Datenbanken oder Microsoft Azure-Speicherkonten eine B2B-Vereinbarung zwischen Handelspartnern erstellen und bereitstellen können. Bei komplexeren Szenarien müssen Workflows oder andere Arten der Dienstverarbeitung rund um einen Handelspartnervertrag (also vor oder nach der EDI-Bridgeverarbeitung des Handelspartnervertrags) eingebunden werden. Im Einzelnen umfasst die EDI-Nachrichtenverarbeitung in BizTalk Services folgende Ereignisse:
+BizTalk Services bietet eine benutzerfreundliche Konfigurationsumgebung, in der Benutzer schnell und ohne Konfiguration von Microsoft Azure-Compute-Instanzen (Web- oder Workerrollen), Microsoft Azure SQL-Datenbanken oder Microsoft Azure-Speicherkonten eine B2B-Vereinbarung zwischen Handelspartnern erstellen und bereitstellen können. Bei komplexeren Szenarien müssen Workflows oder andere Arten der Dienstverarbeitung rund um einen Handelspartnervertrag (also vor oder nach der EDI-Bridgeverarbeitung des Handelspartnervertrags) eingebunden werden. Im Einzelnen umfasst die EDI-Nachrichtenverarbeitung in BizTalk Services folgende Ereignisse:
 
 1. Eine EDI-Nachricht wird vom Handelspartner Fabrikam empfangen.  Für den EDI-Nachrichtenempfang von Handelspartnern unterstützt BizTalk Services Transportprotokolle wie FTP, SFTP, AS2 und HTTP/S.
 2. Die empfangsseitige Verarbeitung des Handelspartnervertrags disassembliert die EDI-Nachricht in das XML-Format.  Die disassemblierte EDI-Nachricht (im XML-Format) kann an Service Bus-Endpunkte (etwa an einen Service Bus Relay-Endpunkt, an ein Service Bus-Thema, an eine Service Bus-Warteschlange oder an eine BizTalk Services-Bridge) weitergeleitet werden.

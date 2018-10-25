@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: victorh
-ms.openlocfilehash: a9325dff84635955600bc78687ec0156495ae893
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d0a20de8738e8c7b2719a9de85d5fd16aa5778cf
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954380"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829681"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Verwalten von DNS-Zonen im Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Die klassische Azure CLI](dns-operations-dnszones-cli-nodejs.md)
+> * [Klassische Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli.md)
 
 In diesem Artikel wird gezeigt, wie DNS-Zonen mithilfe des Azure-Portals verwaltet werden. Sie können Ihre DNS-Zonen auch mithilfe der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli.md) oder mit Azure [PowerShell](dns-operations-dnszones.md) verwalten.
@@ -32,7 +32,7 @@ In diesem Artikel wird gezeigt, wie DNS-Zonen mithilfe des Azure-Portals verwalt
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
 1. Melden Sie sich auf dem Azure-Portal an.
-2. Klicken Sie im Hubmenü auf **Ressource erstellen > Netzwerk** und anschließend auf **DNS-Zone**, um das Blatt „DNS-Zone erstellen“ zu öffnen.
+2. Navigieren Sie im Hubmenü zu **Ressource erstellen > Netzwerk > DNS-Zone**, um das Blatt **DNS-Zone erstellen** zu öffnen.
 
     ![DNS-Zone](./media/dns-operations-dnszones-portal/openzone650.png)
 
@@ -51,13 +51,13 @@ In diesem Artikel wird gezeigt, wie DNS-Zonen mithilfe des Azure-Portals verwalt
 
 ## <a name="list-dns-zones"></a>Auflisten von DNS-Zonen
 
-Navigieren Sie im Azure-Portal zu **Weitere Dienste** > **Netzwerk** > **DNS-Zonen**. Jede DNS-Zone ist ihre eigene Ressource, und in dieser Ansicht können Informationen wie die Anzahl von Datensatzgruppen und Namenserver angezeigt werden. Die Spalte **NAMENSERVER** ist nicht in der Standardansicht enthalten, klicken Sie zum Hinzufügen auf **Spalten**, wählen Sie **Namenserver** aus, und klicken Sie auf **Fertig**.
+Navigieren Sie im Azure-Portal zu **Weitere Dienste** > **Netzwerk** > **DNS-Zonen**. Jede DNS-Zone stellt ihre eigene Ressource dar, und in dieser Ansicht können Informationen wie die Anzahl von Datensatzgruppen und Namenserver angezeigt werden. Die Spalte **NAMENSERVER** ist nicht in der Standardansicht enthalten. Um sie hinzuzufügen, klicken Sie auf **Spalten**, wählen Sie **Namenserver** aus, und klicken Sie dann auf **Fertig**.
 
 ![Auflisten von DNS-Zonen](./media/dns-operations-dnszones-portal/listzones.png)
 
 ## <a name="delete-a-dns-zone"></a>Löschen einer DNS-Zone
 
-Navigieren Sie zu einer DNS-Zone im Portal. Klicken Sie auf dem Blatt **DNS-Zone** auf **Zone löschen**. Sie werden aufgefordert, das Löschen der DNS-Zone zu bestätigen. Beim Löschen einer DNS-Zone werden auch alle in der Zone enthaltenen Datensätze gelöscht.
+Navigieren Sie zu einer DNS-Zone im Portal. Klicken Sie auf dem Blatt **DNS-Zone** auf **Zone löschen**. Sie werden dann aufgefordert, das Löschen der DNS-Zone zu bestätigen. Beim Löschen einer DNS-Zone werden auch alle in der Zone enthaltenen Datensätze gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

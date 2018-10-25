@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 3170ee1b48aa332a8730ba835396761ca5ef44c7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: b6d05c5e9bc59df9df7ef8840b70ab027b6e2f74
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287324"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269495"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
 
@@ -351,19 +351,13 @@ So implementieren Sie die Change Feed Processor-Bibliothek:
                     CollectionName = this.leaseCollectionName
                 };
             DocumentFeedObserverFactory docObserverFactory = new DocumentFeedObserverFactory();
-            ChangeFeedOptions feedOptions = new ChangeFeedOptions();
-
-            /* ie customize StartFromBeginning so change feed reads from beginning
-                can customize MaxItemCount, PartitonKeyRangeId, RequestContinuation, SessionToken and StartFromBeginning
-            */
-
-            feedOptions.StartFromBeginning = true;
-        
+       
             ChangeFeedProcessorOptions feedProcessorOptions = new ChangeFeedProcessorOptions();
 
             // ie. customizing lease renewal interval to 15 seconds
             // can customize LeaseRenewInterval, LeaseAcquireInterval, LeaseExpirationInterval, FeedPollDelay 
             feedProcessorOptions.LeaseRenewInterval = TimeSpan.FromSeconds(15);
+            feedProcessorOptions.StartFromBeginning = true;
 
             this.builder
                 .WithHostName(hostName)
@@ -435,11 +429,11 @@ Azure Functions verwendet die Standard-Verbindungsrichtlinie. Sie können den Ve
 
 Vergewissern sie sich, dass keine andere Funktion die gleiche Sammlung mit der gleichen Lease-Sammlung liest. Das ist mir passiert, und erst später habe ich festgestellt, dass die fehlenden Dokumente von meinen anderen Azure-Funktionen verarbeitet wurden, die ebenfalls die gleiche Lease-Dauer verwenden.
 
-Wenn Sie mehrere Azure-Funktionen zum Lesen des gleichen Änderungsfeeds erstellen, müsse sie verschiedene Lease-Sammlungen verwenden oder die leasePrefix-Konfiguration verwenden, wenn sie die gleiche Sammlung teilen sollen. Beim Einsatz der Change Feed Processor-Bibliothek können Sie allerdings mehrere Instanzen Ihrer Funktion starten, und das SDK übernimmt automatisch die Aufteilung der Dokumente auf die verschiedenen Instanzen.
+Wenn Sie mehrere Azure-Funktionen zum Lesen des gleichen Änderungsfeeds erstellen, müssen sie verschiedene Leasesammlungen oder die leasePrefix-Konfiguration verwenden, wenn sie die gleiche Sammlung freigeben möchten. Beim Einsatz der Change Feed Processor-Bibliothek können Sie allerdings mehrere Instanzen Ihrer Funktion starten, und das SDK übernimmt automatisch die Aufteilung der Dokumente auf die verschiedenen Instanzen.
 
 ### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>Mein Dokument wird jede Sekunde aktualisiert, ich erhalte aber beim Lauschen am Änderungsfeed nicht alle Änderungen in Azure Functions.
 
-Azure Functions fragt den Änderungsfeed alle 5 Sekunden ab, daher gehen alle Änderungen verloren, die zwischen den 5-Sekunden-Intervallen liegen. Azure Cosmos DB speichert alle 5 Sekunden nur eine Version, Sie erhalten also die fünfte Änderung am Dokument. Wenn Sie allerdings unter 5 Sekunden gehen möchten und den Änderungsfeed jede Sekunde abfragen möchten, können Sie die Abrufzeit „feedPollTime“ konfigurieren, siehe dazu [Azure Cosmos DB-Bindungen](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Sie ist in Millisekunden mit dem Standardwert 5000 definiert. Intervalle unterhalb einer Sekunde sind möglich, aber nicht ratsam, da die CPU-Belastung dadurch deutlich ansteigt.
+Azure Functions fragt den Änderungsfeed alle 5 Sekunden ab, daher gehen alle Änderungen verloren, die zwischen den 5-Sekunden-Intervallen liegen. Azure Cosmos DB speichert alle 5 Sekunden nur eine Version, Sie erhalten also die fünfte Änderung am Dokument. Wenn Sie allerdings unter 5 Sekunden bleiben und den Änderungsfeed jede Sekunde abfragen möchten, können Sie die Abrufzeit „feedPollTime“ konfigurieren. Weitere Informationen dazu finden Sie unter [Azure Cosmos DB-Bindungen](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Sie ist in Millisekunden mit dem Standardwert 5000 definiert. Intervalle unterhalb einer Sekunde sind möglich, aber nicht ratsam, da die CPU-Belastung dadurch deutlich ansteigt.
 
 ### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Ich habe ein Dokument in die Mongo-API-Sammlung eingefügt, aber wenn ich das Dokument im Änderungsfeed abrufe, hat es einen anderen ID-Wert. Was ist hier schiefgelaufen?
 
@@ -451,7 +445,7 @@ Bisher noch nicht, aber diese Funktionalität ist in Planung. Heute können Sie 
 
 ### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>Gibt es eine Möglichkeit, Löschvorgänge in Änderungsfeeds aufzunehmen?
 
-Aktuell protokollieren Änderungsfeeds keine Löschvorgänge. Änderungsfeeds werden fortlaufend verbessert, und diese Funktionalität ist in Planung. Heute können Sie einem Dokument eine schwache Markierung für einen Löschvorgang hinzufügen. Fügen Sie dem Dokument ein Attribut „gelöscht“ hinzu, legen Sie es auf „true“ fest, und legen Sie eine TTL für das Dokument fest, damit es automatisch gelöscht werden kann.
+Aktuell protokollieren Änderungsfeeds keine Löschvorgänge. Änderungsfeeds werden fortlaufend verbessert, und diese Funktionalität ist in Planung. Heute können Sie einem Dokument eine schwache Markierung für einen Löschvorgang hinzufügen. Fügen Sie dem Dokument ein Attribut „deleted“ (gelöscht) hinzu, legen Sie es auf TRUE fest, und legen Sie außerdem eine TTL für das Dokument fest, damit es automatisch gelöscht werden kann.
 
 ### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>Kann ich den Änderungsfeed für historische Dokumente lesen (z. B. Dokumente, die vor fünf Jahren hinzugefügt wurden)?
 

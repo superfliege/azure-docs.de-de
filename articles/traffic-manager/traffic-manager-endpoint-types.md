@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: 115511d15bc2366e49f6b3d1b89b513ea0ee5e90
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 06965c43408e943922048804099f8f28d69c8540
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398027"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248284"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-Endpunkte
 Mit Microsoft Azure Traffic Manager können Sie steuern, wie Datenverkehr im Netzwerk auf Anwendungsbereitstellungen in verschiedenen Rechenzentren verteilt wird. Sie konfigurieren jede Anwendungsbereitstellung in Traffic Manager als „Endpunkt“. Wenn Traffic Manager eine DNS-Anforderung empfängt, wählt er einen verfügbaren Endpunkt, der in der DNS-Antwort zurückgegeben wird. Traffic Manager trifft die Auswahl nach dem aktuellen Endpunktstatus und der Methode für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](traffic-manager-how-it-works.md).
 
 Es gibt drei Arten von Endpunkten, die von Traffic Manager unterstützt werden:
 * **Azure-Endpunkte** werden für Dienste verwendet, die unter Azure gehostet werden.
-* **Externe Endpunkte** werden für außerhalb von Azure gehostete Dienste verwendet – entweder lokal oder über einen anderen Hostinganbieter.
+* **Externe Endpunkte** werden für IPv4/IPv6-Adressen oder für außerhalb von Azure gehostete Dienste verwendet, die entweder lokal oder bei einem anderen Hostinganbieter ausgeführt werden.
 * **Geschachtelte Endpunkte** werden zum Kombinieren von Traffic Manager-Profilen verwendet, um flexiblere Schemas für das Routing von Datenverkehr zu erstellen. So können die Anforderungen von größeren und komplexeren Bereitstellungen erfüllt werden.
 
 Es gibt keine Einschränkung, wie Endpunkte unterschiedlichen Typs in einem Traffic Manager-Profil kombiniert werden können. Jedes Profil kann eine beliebige Mischung von Endpunkttypen enthalten.
@@ -37,8 +37,9 @@ In den folgenden Abschnitten werden die einzelnen Endpunkttypen ausführlicher b
 
 Azure-Endpunkte werden für Azure-basierte Dienste in Traffic Manager verwendet. Die folgenden Typen von Azure-Ressourcen werden unterstützt:
 
-* „Klassische“ IaaS-VMs und PaaS-Clouddienste
+* PaaS-Clouddienste.
 * Web-Apps
+* Web-App-Slots
 * PublicIPAddress-Ressourcen (können entweder direkt oder über einen Azure Load Balancer mit VMs verbunden werden) Der publicIpAddress-Ressource muss ein DNS-Name zugewiesen werden, damit sie in einem Traffic Manager-Profil verwendet werden kann.
 
 PublicIPAddress-Ressourcen sind Azure Resource Manager-Ressourcen. Diese sind in dem klassischen Bereitstellungsmodell nicht vorhanden. Daher werden sie nur in Azure Resource Manager-Oberflächen von Traffic Manager unterstützt. Die anderen Endpunkttypen werden über Resource Manager und das klassische Bereitstellungsmodell unterstützt.
@@ -47,11 +48,12 @@ Bei der Verwendung von Azure-Endpunkten erkennt Traffic Manager, wenn eine „kl
 
 ## <a name="external-endpoints"></a>Externe Endpunkte
 
-Externe Endpunkte werden für Dienste außerhalb von Azure verwendet. Beispielsweise ein Dienst, der lokal oder von einem anderen Anbieter gehostet wird. Externe Endpunkte können allein oder in Kombination mit Azure-Endpunkten in demselben Traffic Manager-Profil verwendet werden. Die Kombination von Azure-Endpunkten mit externen Endpunkten ermöglicht unterschiedliche Szenarios:
+Externe Endpunkte werden entweder für IPv4/IPv6-Adressen oder für Dienste außerhalb von Azure verwendet. Die Verwendung von IPv4/IPv6-Adressendpunkten ermöglicht es Traffic Manager, den Zustand von Endpunkten zu überprüfen, ohne dass für sie ein DNS-Name erforderlich ist. Dadurch kann Traffic Manager auf Abfragen mit A/AAAA-Einträgen reagieren, wenn dieser Endpunkt in einer Antwort zurückgegeben wird. Dienste außerhalb von Azure können einen Dienst beinhalten, der lokal oder bei einem anderen Anbieter gehostet wird. Externe Endpunkte können einzeln oder in Kombination mit Azure-Endpunkten im gleichen Traffic Manager-Profil verwendet werden, mit Ausnahme von Endpunkten, die als IPv4- oder IPv6-Adressen angegeben sind und nur externe Endpunkte sein können. Die Kombination von Azure-Endpunkten mit externen Endpunkten ermöglicht unterschiedliche Szenarios:
 
-* Verwenden Sie Azure zum Bereitstellen einer erhöhten Redundanz für eine vorhandene lokale Anwendung in einem Aktiv/Aktiv- oder Aktiv/Passiv-Failovermodell.
-* Erweitern Sie eine vorhandene lokale Anwendung zur Reduzierung der Anwendungslatenz für Benutzer auf der ganzen Welt auf zusätzliche geografische Standorte in Azure. Weitere Informationen finden Sie unter [Traffic Manager Leistungsdatenverkehrrouting](traffic-manager-routing-methods.md#performance).
-* Verwenden Sie Azure zum Bereitstellen zusätzlicher Kapazität für eine vorhandene lokale Anwendung, entweder fortlaufend oder als „Burst-to-Cloud“ für Spitzenlasten.
+* Bereitstellen einer erhöhten Redundanz für eine vorhandene lokale Anwendung in einem Aktiv/Aktiv- oder Aktiv/Passiv-Failovermodell mit Azure. 
+* Weiterleiten von Datenverkehr an Endpunkte, denen kein DNS-Name zugeordnet ist. Verringern Sie außerdem die allgemeine DNS-Nachschlagelatenzzeit, indem Sie die Notwendigkeit entfernen, eine zweite DNS-Abfrage auszuführen, um eine IP-Adresse eines DNS-Namens zurückzugeben. 
+* Verringern der Anwendungslatenz für Benutzer auf der ganzen Welt, Erweitern einer vorhandenen lokalen Anwendung auf zusätzliche geografische Standorte in Azure. Weitere Informationen finden Sie unter [Traffic Manager Leistungsdatenverkehrrouting](traffic-manager-routing-methods.md#performance).
+* Stellen Sie mit Azure zusätzliche Kapazität für eine vorhandene lokale Anwendung bereit, entweder fortlaufend oder als „Burst-to-Cloud“ für Spitzenlasten.
 
 In bestimmten Fällen ist es hilfreich, externe Endpunkte zum Verweisen auf Azure-Dienste zu verwenden (Beispiele unter [Häufig gestellte Fragen](traffic-manager-faqs.md#traffic-manager-endpoints)). Die Integritätsprüfungen werden dann mit der Rate der Azure-Endpunkte berechnet, nicht mit der Rate der externen Endpunkte. Wenn Sie den zugrunde liegenden Dienst beenden oder löschen, werden die entsprechenden Integritätsprüfungen im Gegensatz zu Azure-Endpunkten aber weiter berechnet, bis Sie den Endpunkt in Traffic Manager deaktivieren oder löschen.
 
@@ -71,7 +73,7 @@ Es gelten noch einige zusätzliche Aspekte in Bezug auf die Konfiguration von We
 
 Das Deaktivieren eines Endpunkts in Traffic Manager kann sehr hilfreich sein, um Datenverkehr vorübergehend von einem Endpunkt zu entfernen, der sich im Wartungsmodus befindet oder der erneut bereitgestellt wird. Sobald der Endpunkt wieder betriebsbereit ist, kann er erneut aktiviert werden.
 
-Endpunkte können per Traffic Manager-Portal, PowerShell, CLI oder REST-API aktiviert und deaktiviert werden, die im Resource Manager und dem klassischen Bereitstellungsmodell unterstützt werden.
+Endpunkte können über das Traffic Manager-Portal, PowerShell, die CLI oder die REST-API aktiviert und deaktiviert werden.
 
 > [!NOTE]
 > Das Deaktivieren eines Azure-Endpunkts hat nichts mit dessen Bereitstellungsstatus in Azure zu tun. Ein Azure-Dienst (z.B. eine VM oder eine Webanwendung) wird weiterhin ausgeführt und kann auch dann Datenverkehr empfangen, wenn er im Traffic Manager deaktiviert ist. Datenverkehr kann nicht über den Traffic Manager-Profil DNS-Namen, sondern direkt an die Dienstinstanz adressiert werden. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](traffic-manager-how-it-works.md).

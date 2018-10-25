@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: f5d5b8064821dfb1aa6d4e99d0152e364f9a83fe
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b05e23019e7b0a03965e51052bf334d0cbff041d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700517"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269342"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 in Microsoft Azure Service Bus: anforderungs-/antwortbasierte Vorgänge
 
@@ -142,6 +142,10 @@ Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |`lock-tokens`|UUID-Array|JA|Zu erneuernde Token für die Nachrichtensperre|  
+
+> [!NOTE]
+> Sperrtoken stellen die `DeliveryTag`-Eigenschaft für empfangene Nachrichten dar. Im folgenden Beispiel im [.NET SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) werden diese abgerufen. Das Token kann auch in den „DeliveryAnnotations“ als „x-opt-lock-token“ angezeigt werden. Dies ist jedoch nicht garantiert, und das `DeliveryTag` sollte bevorzugt werden. 
+> 
   
 #### <a name="response"></a>response  
 
@@ -365,7 +369,7 @@ Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
-|operation|Zeichenfolge|JA|`com.microsoft:peek-message`|  
+|operation|Zeichenfolge|JA|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nein |Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
 Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  

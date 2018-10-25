@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: f7c36fec7ff58c225e41899e8264ca1dde95ce7c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213247"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268003"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric-Umgebungsvariablen
 
@@ -37,7 +37,7 @@ Service Fabric verfügt über Umgebungsvariablen, die für jede Dienstinstanz fe
 | Fabric_NodeId                                | Knoten-ID des Knotens, auf dem der Prozess ausgeführt wird                            | bf865279ba277deb864a976fbf4c200e                                     |
 | Fabric_NodeIPOrFQDN                          | IP-Adresse oder FQDN des Knotens wie in der Manifestdatei des Clusters | „localhost“ oder 10.0.0.1                                                |
 | Fabric_NodeName                              | Name des Knotens, auf dem der Prozess ausgeführt wird                          | _Node_0                                                              |
-| Fabric_ServiceName                           | Der Name des Diensts, wenn dieser im ExclusiveProcess-Modus gehostet wird. Dieser Variablenwert ist nur verfügbar, wenn Sie den Dienst mit „ServicePackageActivationMode ExclusiveProcess“ erstellen.  | MeinDienst                                               |
+| Fabric_ServiceName                           | Der Fabric-URI-Name des Diensts, wenn dieser im ExclusiveProcess-Modus gehostet wird. Dieser Variablenwert ist nur verfügbar, wenn Sie den Dienst mit „ServicePackageActivationMode ExclusiveProcess“ erstellen.  | fabric:/MyApplication/MyService                                               |
 | Fabric_ServicePackageActivationId            | Aktivierungs-ID des Dienstpakets                                         | Eine GUID                                                               |
 | Fabric_ServicePackageName                    | Name des Dienstpakets, zu dem der Prozess gehört                     | Web1Pkg                                                              |
 
