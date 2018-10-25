@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: d3bcfb3369510bdbcf325eab41fb7eacf3e2a228
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: eef5d9b6878b46d402a91f3adbfd965c47493c25
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166317"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986480"
 ---
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden der Sprache Go zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Code in der Sprache [Go](https://golang.org/) (golang) eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Entwicklung unter Verwendung der Sprache Go vertraut sind, aber noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
@@ -34,7 +34,7 @@ Installieren Sie [Go](https://golang.org/doc/install) und den [reinen Go-Postgre
 2. Starten Sie die Eingabeaufforderung über das Startmenü.
 3. Erstellen Sie einen Ordner für Ihr Projekt, z. B. „`mkdir  %USERPROFILE%\go\src\postgresqlgo`“.
 4. Wechseln Sie zum Projektordner. Beispiel: `cd %USERPROFILE%\go\src\postgresqlgo`.
-5. Legen Sie die Umgebungsvariable für GOPATH so fest, dass sie auf das Quellcodeverzeichnis verweist. `set GOPATH=%USERPROFILE%\go`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+5. Legen Sie die Umgebungsvariable für GOPATH so fest, dass sie auf das Quellcodeverzeichnis verweist. `set GOPATH=%USERPROFILE%\go`.
 6. Installieren Sie den [reinen Go-Postgres-Treiber (pq)](https://github.com/lib/pq) durch Ausführen des Befehls `go get github.com/lib/pq`.
 
    Zusammenfassung: Installieren Sie Go, und führen Sie anschließend an der Eingabeaufforderung die folgenden Befehle aus:
@@ -98,9 +98,9 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 ## <a name="connect-and-create-a-table"></a>Herstellen einer Verbindung und Erstellen einer Tabelle
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und eine Tabelle zu erstellen, indem Sie eine **CREATE TABLE**-SQL-Anweisung gefolgt von **INSERT INTO**-SQL-Anweisungen zum Hinzufügen von Zeilen zur Tabelle nutzen.
 
-Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](http://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem PostgresSQL-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
+Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](https://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem PostgresSQL-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
 
-Mit dem Code wird die [sql.Open()](http://godoc.org/github.com/lib/pq#Open)-Methode aufgerufen, um eine Verbindung mit der Azure Database for PostgreSQL-Datenbank herzustellen, und die Verbindung wird mit der [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping)-Methode überprüft. Ein [Datenbankhandle](https://golang.org/pkg/database/sql/#DB) wird durchgängig für den Verbindungspool des Datenbankservers eingesetzt. Im Code wird die [Exec()](https://golang.org/pkg/database/sql/#DB.Exec)-Methode mehrfach aufgerufen, um mehrere SQL-Befehle auszuführen. Es wird jedes Mal eine benutzerdefinierte checkError()-Methode verwendet, um das Auftreten eines Fehlers zu überprüfen, und der Vorgang wird beendet, falls dies der Fall ist.
+Mit dem Code wird die [sql.Open()](https://godoc.org/github.com/lib/pq#Open)-Methode aufgerufen, um eine Verbindung mit der Azure Database for PostgreSQL-Datenbank herzustellen, und die Verbindung wird mit der [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping)-Methode überprüft. Ein [Datenbankhandle](https://golang.org/pkg/database/sql/#DB) wird durchgängig für den Verbindungspool des Datenbankservers eingesetzt. Im Code wird die [Exec()](https://golang.org/pkg/database/sql/#DB.Exec)-Methode mehrfach aufgerufen, um mehrere SQL-Befehle auszuführen. Es wird jedes Mal eine benutzerdefinierte checkError()-Methode verwendet, um das Auftreten eines Fehlers zu überprüfen, und der Vorgang wird beendet, falls dies der Fall ist.
 
 Ersetzen Sie die Parameter `HOST`, `DATABASE`, `USER` und `PASSWORD` durch Ihre eigenen Werte. 
 
@@ -164,9 +164,9 @@ func main() {
 ## <a name="read-data"></a>Lesen von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT**-SQL-Anweisung zu verbinden und zu lesen. 
 
-Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](http://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem PostgresSQL-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
+Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](https://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem PostgresSQL-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
 
-Mit dem Code wird die [sql.Open()](http://godoc.org/github.com/lib/pq#Open)-Methode aufgerufen, um eine Verbindung mit der Azure Database for PostgreSQL-Datenbank herzustellen, und die Verbindung wird mit der [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping)-Methode überprüft. Ein [Datenbankhandle](https://golang.org/pkg/database/sql/#DB) wird durchgängig für den Verbindungspool des Datenbankservers eingesetzt. Die SELECT-Abfrage wird ausgeführt, indem die [db.Query()](https://golang.org/pkg/database/sql/#DB.Query)-Methode aufgerufen wird, und die sich ergebenden Zeilen werden in einer Variablen vom Typ [rows](https://golang.org/pkg/database/sql/#Rows) gespeichert. Der Code liest die Spaltendatenwerte in der aktuellen Zeile mit der [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan)-Methode und führt eine Schleife für die Zeilen durch, indem der Iterator [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) verwendet wird, bis keine weiteren Zeilen mehr vorhanden sind. Die Spaltenwerte jeder Zeile werden auf der Konsole ausgegeben. Es wird jedes Mal eine benutzerdefinierte checkError()-Methode verwendet, um das Auftreten eines Fehlers zu überprüfen, und der Vorgang wird beendet, falls dies der Fall ist.
+Mit dem Code wird die [sql.Open()](https://godoc.org/github.com/lib/pq#Open)-Methode aufgerufen, um eine Verbindung mit der Azure Database for PostgreSQL-Datenbank herzustellen, und die Verbindung wird mit der [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping)-Methode überprüft. Ein [Datenbankhandle](https://golang.org/pkg/database/sql/#DB) wird durchgängig für den Verbindungspool des Datenbankservers eingesetzt. Die SELECT-Abfrage wird ausgeführt, indem die [db.Query()](https://golang.org/pkg/database/sql/#DB.Query)-Methode aufgerufen wird, und die sich ergebenden Zeilen werden in einer Variablen vom Typ [rows](https://golang.org/pkg/database/sql/#Rows) gespeichert. Der Code liest die Spaltendatenwerte in der aktuellen Zeile mit der [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan)-Methode und führt eine Schleife für die Zeilen durch, indem der Iterator [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) verwendet wird, bis keine weiteren Zeilen mehr vorhanden sind. Die Spaltenwerte jeder Zeile werden auf der Konsole ausgegeben. Es wird jedes Mal eine benutzerdefinierte checkError()-Methode verwendet, um das Auftreten eines Fehlers zu überprüfen, und der Vorgang wird beendet, falls dies der Fall ist.
 
 Ersetzen Sie die Parameter `HOST`, `DATABASE`, `USER` und `PASSWORD` durch Ihre eigenen Werte. 
 
@@ -232,9 +232,9 @@ func main() {
 ## <a name="update-data"></a>Aktualisieren von Daten
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und die Daten mit der SQL-Anweisung **UPDATE** zu aktualisieren.
 
-Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](http://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem Postgres-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
+Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](https://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem Postgres-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
 
-Mit dem Code wird die [sql.Open()](http://godoc.org/github.com/lib/pq#Open)-Methode aufgerufen, um eine Verbindung mit der Azure Database for PostgreSQL-Datenbank herzustellen, und die Verbindung wird mit der [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping)-Methode überprüft. Ein [Datenbankhandle](https://golang.org/pkg/database/sql/#DB) wird durchgängig für den Verbindungspool des Datenbankservers eingesetzt. Im Code wird die [Exec()](https://golang.org/pkg/database/sql/#DB.Exec)-Methode aufgerufen, um die SQL-Anweisung auszuführen, mit der die Tabelle aktualisiert wird. Eine benutzerdefinierte checkError()-Methode wird verwendet, um das Auftreten eines Fehlers zu überprüfen, und der Vorgang wird beendet, falls dies der Fall ist.
+Mit dem Code wird die [sql.Open()](https://godoc.org/github.com/lib/pq#Open)-Methode aufgerufen, um eine Verbindung mit der Azure Database for PostgreSQL-Datenbank herzustellen, und die Verbindung wird mit der [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping)-Methode überprüft. Ein [Datenbankhandle](https://golang.org/pkg/database/sql/#DB) wird durchgängig für den Verbindungspool des Datenbankservers eingesetzt. Im Code wird die [Exec()](https://golang.org/pkg/database/sql/#DB.Exec)-Methode aufgerufen, um die SQL-Anweisung auszuführen, mit der die Tabelle aktualisiert wird. Eine benutzerdefinierte checkError()-Methode wird verwendet, um das Auftreten eines Fehlers zu überprüfen, und der Vorgang wird beendet, falls dies der Fall ist.
 
 Ersetzen Sie die Parameter `HOST`, `DATABASE`, `USER` und `PASSWORD` durch Ihre eigenen Werte. 
 ```go
@@ -285,9 +285,9 @@ func main() {
 ## <a name="delete-data"></a>Löschen von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer **DELETE**-SQL-Anweisung zu verbinden und zu löschen. 
 
-Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](http://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem Postgres-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
+Der Code importiert drei Pakete: das [sql-Paket](https://golang.org/pkg/database/sql/), das [pq-Paket](https://godoc.org/github.com/lib/pq) als Treiber für die Kommunikation mit dem Postgres-Server und das [fmt-Paket](https://golang.org/pkg/fmt/) für die Ein- und Ausgabe in der Befehlszeile.
 
-Mit dem Code wird die [sql.Open()](http://godoc.org/github.com/lib/pq#Open)-Methode aufgerufen, um eine Verbindung mit der Azure Database for PostgreSQL-Datenbank herzustellen, und die Verbindung wird mit der [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping)-Methode überprüft. Ein [Datenbankhandle](https://golang.org/pkg/database/sql/#DB) wird durchgängig für den Verbindungspool des Datenbankservers eingesetzt. Im Code wird die [Exec()](https://golang.org/pkg/database/sql/#DB.Exec)-Methode aufgerufen, um die SQL-Anweisung auszuführen, die eine Zeile aus der Tabelle löscht. Eine benutzerdefinierte checkError()-Methode wird verwendet, um das Auftreten eines Fehlers zu überprüfen, und der Vorgang wird beendet, falls dies der Fall ist.
+Mit dem Code wird die [sql.Open()](https://godoc.org/github.com/lib/pq#Open)-Methode aufgerufen, um eine Verbindung mit der Azure Database for PostgreSQL-Datenbank herzustellen, und die Verbindung wird mit der [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping)-Methode überprüft. Ein [Datenbankhandle](https://golang.org/pkg/database/sql/#DB) wird durchgängig für den Verbindungspool des Datenbankservers eingesetzt. Im Code wird die [Exec()](https://golang.org/pkg/database/sql/#DB.Exec)-Methode aufgerufen, um die SQL-Anweisung auszuführen, die eine Zeile aus der Tabelle löscht. Eine benutzerdefinierte checkError()-Methode wird verwendet, um das Auftreten eines Fehlers zu überprüfen, und der Vorgang wird beendet, falls dies der Fall ist.
 
 Ersetzen Sie die Parameter `HOST`, `DATABASE`, `USER` und `PASSWORD` durch Ihre eigenen Werte. 
 ```go

@@ -11,12 +11,12 @@ ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 02/28/2018
-ms.openlocfilehash: d22eb6c6b56e24c2699bed8ac0a71a8192f0804e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4532b920fe1d4b20eb34f09fac4cb3b30ad36e6a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265036"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985391"
 ---
 # <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von Java zum Verbinden und Abfragen von Daten
 In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung einer Java-Anwendung und des JDBC-Treibers [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
@@ -31,8 +31,8 @@ Auf der [Seite mit den MySQL-Connector-Beispielen](https://dev.mysql.com/doc/con
 2. Stellen Sie sicher, dass die Sicherheit Ihrer Azure-Datenbank für MySQL-Verbindung so konfiguriert ist, dass die Firewall geöffnet ist und SSL-Einstellungen für Ihre Anwendung angepasst wurden, damit die Verbindungsherstellung erfolgreich ist.
 
 3. Rufen Sie den Connector „MySQL-Connector/J“ mit einer der folgenden Methoden ab:
-   - Verwenden Sie das Maven-Paket [mysql-connector-java](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22mysql%22%20AND%20a%3A%22mysql-connector-java%22), um die [mysql-Abhängigkeit](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.6) in die POM-Datei für Ihr Projekt aufzunehmen.
-   - Laden Sie den JDBC-Treiber [MySQL-Connector/J](https://dev.mysql.com/downloads/connector/j/) herunter, und nehmen Sie die JDBC-JAR-Datei (beispielsweise „mysql-connector-java-5.1.42-bin.jar“) in den Klassenpfad Ihrer Anwendung auf. Ausführlichere Informationen zu Klassenpfaden finden Sie bei Bedarf in der Dokumentation der Umgebung (beispielsweise [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) oder [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)).
+   - Verwenden Sie das Maven-Paket [mysql-connector-java](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22mysql%22%20AND%20a%3A%22mysql-connector-java%22), um die [mysql-Abhängigkeit](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.6) in die POM-Datei für Ihr Projekt aufzunehmen.
+   - Laden Sie den JDBC-Treiber [MySQL-Connector/J](https://dev.mysql.com/downloads/connector/j/) herunter, und nehmen Sie die JDBC-JAR-Datei (beispielsweise „mysql-connector-java-5.1.42-bin.jar“) in den Klassenpfad Ihrer Anwendung auf. Ausführlichere Informationen zu Klassenpfaden finden Sie bei Bedarf in der Dokumentation der Umgebung (beispielsweise [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) oder [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)).
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank für MySQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
@@ -233,7 +233,7 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>Aktualisieren von Daten
-Verwenden Sie den folgenden Code, um die Daten mit einer **UPDATE**-SQL-Anweisung zu ändern. Die [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html)-Methode wird verwendet, um eine Verbindung mit MySQL herzustellen. Die Methoden [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) und „executeUpdate()“ werden verwendet, um die Verbindung für die UPDATE-Anweisung herzustellen und sie vorzubereiten und auszuführen. 
+Verwenden Sie den folgenden Code, um die Daten mit einer **UPDATE**-SQL-Anweisung zu ändern. Die [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html)-Methode wird verwendet, um eine Verbindung mit MySQL herzustellen. Die Methoden [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) und „executeUpdate()“ werden verwendet, um die Verbindung für die UPDATE-Anweisung herzustellen und sie vorzubereiten und auszuführen. 
 
 Ersetzen Sie die Parameter „host“, „database“, „user“ und „password“ durch die Werte, die Sie beim Erstellen Ihres eigenen Servers und der Datenbank angegeben haben.
 
@@ -314,7 +314,7 @@ public class UpdateTable {
 ```
 
 ## <a name="delete-data"></a>Löschen von Daten
-Verwenden Sie den folgenden Code, um Daten mit einer **DELETE**-SQL-Anweisung zu entfernen. Die [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html)-Methode wird verwendet, um eine Verbindung mit MySQL herzustellen.  Die Methoden [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) und „executeUpdate()“ werden verwendet, um die Verbindung für die UPDATE-Anweisung herzustellen und sie vorzubereiten und auszuführen. 
+Verwenden Sie den folgenden Code, um Daten mit einer **DELETE**-SQL-Anweisung zu entfernen. Die [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html)-Methode wird verwendet, um eine Verbindung mit MySQL herzustellen.  Die Methoden [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) und „executeUpdate()“ werden verwendet, um die Verbindung für die UPDATE-Anweisung herzustellen und sie vorzubereiten und auszuführen. 
 
 Ersetzen Sie die Parameter „host“, „database“, „user“ und „password“ durch die Werte, die Sie beim Erstellen Ihres eigenen Servers und der Datenbank angegeben haben.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: d298cfe22328db68cfbb6b4c7fc82b2de0c186b1
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 4c56a1164a589af5d325d1378f331a7d0ee138b7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423594"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956439"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -162,7 +162,7 @@ Es ist wichtig, nicht nur zu wissen, wer Ihre Anwendungen verwendet, sondern auc
 
     >**Verwendung**: Wenn Sie SSO bereitstellen möchten, arbeiten Sie mit graphbasierten Daten, oder authentifizieren Sie domänenbasierte Benutzer.
 
-    >**Erste Schritte**: Weitere Informationen finden Sie im [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/develop/azure-ad-developers-guide.md).
+    >**Erste Schritte**: Weitere Informationen finden Sie im [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/develop/v1-overview.md).
 
 -   **App Service-Authentifizierung**: Wenn Sie App Service zum Hosten Ihrer App auswählen, erhalten Sie auch integrierte Unterstützung für Azure AD, zusammen mit Identitätsanbietern aus sozialen Netzwerken wie Facebook, Google, Microsoft und Twitter.
 
@@ -289,7 +289,7 @@ Wenn Sie den Zugriff auf Azure-Ressourcen gewähren, ist es empfehlenswert, Benu
 
 -   **Dienstprinzipalobjekte**: Zusätzlich zum Bereitstellen des Zugriffs für Benutzerprinzipale und Gruppen können Sie einem Dienstprinzipal den gleichen Zugriff gewähren.
 
-    > **Verwendung**: Wenn Sie programmgesteuert Azure-Ressourcen verwalten oder den Zugriff für Anwendungen gewähren. Weitere Informationen finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals](../../resource-group-create-service-principal-portal.md).
+    > **Verwendung**: Wenn Sie programmgesteuert Azure-Ressourcen verwalten oder den Zugriff für Anwendungen gewähren. Weitere Informationen finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 #### <a name="tags"></a>Tags
 

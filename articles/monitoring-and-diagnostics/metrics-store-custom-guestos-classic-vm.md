@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: cb803450f7765ae62292ff3afb7f32209b437f78
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 235eda231dfb0f936bf55c7c8d93a8f709fdf9bc
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978926"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954847"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Datenspeicher für einen virtuellen Windows-Computer (klassisch)
 
@@ -41,7 +41,7 @@ Der in diesem Artikel beschriebene Prozess funktioniert nur mit klassischen virt
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Erstellen Sie einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten unter Verwendung der Anweisungen unter [Erstellen eines Dienstprinzipals](../azure-resource-manager/resource-group-create-service-principal-portal.md). Beachten Sie Folgendes, während Sie diesen Prozess durchlaufen: 
+Erstellen Sie einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten unter Verwendung der Anweisungen unter [Erstellen eines Dienstprinzipals](../active-directory/develop/howto-create-service-principal-portal.md). Beachten Sie Folgendes, während Sie diesen Prozess durchlaufen: 
 - Erstellen Sie einen neuen geheimen Client für diese App.  
 - Speichern Sie den Schlüssel und die Client-ID für die Verwendung in späteren Schritten.
 

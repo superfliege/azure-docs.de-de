@@ -1,21 +1,21 @@
 ---
 title: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C++
-titleSuffix: Microsoft Cognitive Services
-description: >
-  Erfahren Sie, wie Sie Absichten anhand von gesprochener Sprache aus einer Datei oder über ein Mikrofon mit dem Speech SDK für C++ erkennen.
+titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie Absichten anhand von gesprochener Sprache aus einer Datei oder über ein Mikrofon mit dem Speech SDK für C++ erkennen.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: bbcea97918d377a6d40b95fe61592f7a79e8f5f4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 48fc330c62ec8f6ce8c25c79c85db622bcaa4282
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883787"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466493"
 ---
 # <a name="recognize-intents-from-speech-by-using-the-speech-sdk-for-c"></a>Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C++
 

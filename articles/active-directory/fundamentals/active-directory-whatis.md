@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 09/13/2018
 ms.custom: it-pro
-ms.openlocfilehash: 08d32a99e2f1a77bcc7a5900b47e6771c33ec356
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 406baeac60c7c0cdf5f74876e5fc29ea23d3d6f6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393320"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957546"
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 Azure Active Directory (Azure AD) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Azure AD kombiniert Kernverzeichnisdienste, Anwendungszugriffsverwaltung und Identitätsschutz in einer einzigen Lösung und bietet eine standardbasierte Plattform, die Entwickler dabei unterstützt, die Zugriffssteuerung für ihre Apps auf Grundlage zentralisierter Richtlinien und Regeln bereitzustellen.
@@ -74,7 +74,7 @@ Um Ihre Azure AD-Implementierung zu verbessern, können Sie auch kostenpflichtig
 Registrieren Sie sich für eine kostenlose 30-tägige Testversion, und stellen Sie Ihre erste Cloudlösung bereit. Weitere Informationen dazu finden Sie unter [Azure Active Directory Premium-Testversion](https://azure.microsoft.com/trial/get-started-active-directory/).
 
 ## <a name="as-a-developer-how-do-i-get-started"></a>Erste Schritte als Entwickler
-Registrieren Sie sich für eine kostenlose 30-tägige Testversion, und beginnen Sie mit der Integration Ihrer Apps in Azure AD. Weitere Informationen dazu finden Sie unter [Azure Active Directory Premium-Testversion](https://azure.microsoft.com/trial/get-started-active-directory/). Hilfreiche Tipps enthält auch das [Entwicklerhandbuch](../develop/azure-ad-developers-guide.md) für Azure Active Directory.
+Registrieren Sie sich für eine kostenlose 30-tägige Testversion, und beginnen Sie mit der Integration Ihrer Apps in Azure AD. Weitere Informationen dazu finden Sie unter [Azure Active Directory Premium-Testversion](https://azure.microsoft.com/trial/get-started-active-directory/). Hilfreiche Tipps enthält auch das [Entwicklerhandbuch](../develop/v1-overview.md) für Azure Active Directory.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Grundlagen der Azure-Identitäts- und Zugriffsverwaltung](identity-fundamentals.md)

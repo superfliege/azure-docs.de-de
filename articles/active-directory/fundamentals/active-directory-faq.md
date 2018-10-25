@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: eb9eebb4f5fff4a0c3dc7729387cfbc4b13a12f1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5ff9d1cf76188ff38f59e8b74d4bfd380c8c88e1
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294905"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408709"
 ---
 # <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -121,12 +121,12 @@ Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellt
 
 **A:** Für diese Situation stehen mehrere Optionen zur Verfügung.  Verwenden Sie die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR), sofern verfügbar.  Ob die SSPR funktioniert, hängt davon ab, wie sie konfiguriert ist.  Weitere Informationen finden Sie unter [Wie funktioniert das Portal für die Kennwortzurücksetzung?](../authentication/howto-sspr-deployment.md).
 
-Für Office 365-Benutzer kann der Administrator das Kennwort mithilfe der Anleitung unter [Administratoren: Benutzerkennwörter zurücksetzen](https://support.office.com/en-us/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US) zurücksetzen.
+Für Office 365-Benutzer kann der Administrator das Kennwort mithilfe der Anleitung unter [Administratoren: Benutzerkennwörter zurücksetzen](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US) zurücksetzen.
 
 Für Azure AD-Konten können Administratoren Kennwörter mit einer der folgenden Methoden zurücksetzen:
 
 - [Zurücksetzen der Konten im Azure-Portal](active-directory-users-reset-password-azure-portal.md)
-- [Verwenden von PowerShell](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
+- [Mithilfe von PowerShell](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
 
 
 - - -
@@ -180,7 +180,7 @@ Weitere Informationen finden Sie unter [Bereitstellen von in Azure AD integriert
 
 Weitere Informationen finden Sie unter
 
-* [Authentifizierungsszenarios für Azure AD](../develop/authentication-scenarios.md)
+* [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md)
 * [Active Directory-Authentifizierungsprotokolle](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 * [Wie funktioniert das einmalige Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)
 

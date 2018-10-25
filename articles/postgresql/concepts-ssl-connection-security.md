@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: f3efb99ddb47f167a0d9cbef064890e817a18841
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cc8bd25b58cf898169a4d84154f7f3f81966bb92
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186816"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985793"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Konfigurieren von SSL-Konnektivität in Azure-Datenbank für PostgreSQL
 Azure-Datenbank für PostgreSQL stellt Verbindungen zwischen Clientanwendungen und dem PostgreSQL-Dienst hauptsächlich mittels Secure Sockets Layer (SSL) her. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
@@ -58,7 +58,7 @@ Das erforderliche Zertifikat für die Kommunikation mit Ihrem Azure-Datenbank f�
 Zum Decodieren der Zertifikatdatei, die Ihre Anwendung für die sichere Verbindung mit dem Datenbankserver benötigt, müssen Sie OpenSSL auf dem lokalen Computer installieren.
 
 #### <a name="for-linux-os-x-or-unix"></a>Bei Linux, Mac OS X oder Unix
-Die OpenSSL-Bibliotheken finden Sie im Quellcode direkt bei der [OpenSSL Software Foundation](http://www.openssl.org). Die folgenden Anweisungen führen Sie durch die erforderlichen Schritte zum Installieren von OpenSSL auf Ihrem Linux-Computer. In diesem Artikel werden Befehle verwendet, die nachweislich auf Ubuntu 12.04 und höher ausgeführt werden.
+Die OpenSSL-Bibliotheken finden Sie im Quellcode direkt bei der [OpenSSL Software Foundation](https://www.openssl.org). Die folgenden Anweisungen führen Sie durch die erforderlichen Schritte zum Installieren von OpenSSL auf Ihrem Linux-Computer. In diesem Artikel werden Befehle verwendet, die nachweislich auf Ubuntu 12.04 und höher ausgeführt werden.
 
 Öffnen Sie eine Terminalsitzung, und laden Sie OpenSSL herunter.
 ```bash

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: b329fb1416d28b0732e7b9ea4612f5bac8580b3a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 62f71f29f813cd30c7d8e3c7f37f41677cf07364
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132646"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956373"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Schützen von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
 
@@ -104,7 +104,7 @@ Sie können diese Aufgabe über den Azure Ressource Manager mit PowerShell ausf�
 
 4. Achten Sie darauf, dass Sie die **Mandanten-ID** (GUID für Ihren Azure AD-Mandanten), die **Anwendungs-ID** und das von Ihnen verwendete Kennwort kopieren.
 
-Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 #### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>Teil 2: Erstellen einer Azure AD-Anwendungsidentität für Ihre Web-App oder API-App
 
@@ -176,7 +176,7 @@ Sobald Sie über die Client-ID und die Mandanten-ID verfügen, nehmen Sie diese 
 
 Für die automatische Bereitstellung einer leeren Web-App und einer Logik-App zusammen mit einer Azure Active Directory-Authentifizierung müssen Sie die [vollständige Vorlage hier anzeigen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json) oder hier auf **Bereitstellung in Azure** klicken:
 
-[![Bereitstellen in Azure](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
+[![In Azure bereitstellen](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
 #### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>Teil 3: Ausfüllen des Abschnitts für die Autorisierung in Ihrer Logik-App
 
@@ -247,7 +247,7 @@ Sie können die Standardauthentifizierung, z.B. einen Benutzernamen und ein Kenn
 
 Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein:
 
-`{"type": "basic", "username": "username", "password": "password"}`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+`{"type": "basic", "username": "username", "password": "password"}`.
 
 | Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 

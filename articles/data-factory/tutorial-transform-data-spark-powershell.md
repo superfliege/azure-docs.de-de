@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: c01da1b667f5a57e9597b77e21dcd9cc95340cb1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 21c2c9ab0300ed5eac9ceebbd88627ea091b3389
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43088225"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954469"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Spark-Aktivität und einem bedarfsgesteuerten verknüpften HDInsight-Dienst transformiert. In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -135,7 +135,7 @@ Aktualisieren Sie die Werte der folgenden Eigenschaften in der Definition des ve
 
 - **hostSubscriptionId**. Ersetzen Sie &lt;subscriptionID&gt; durch die ID Ihres Azure-Abonnements. Der bedarfsgesteuerte HDInsight-Cluster wird in diesem Abonnement erstellt. 
 - **tenant**. Ersetzen Sie &lt;tenantID&gt; durch die ID Ihres Azure-Mandanten. 
-- **servicePrincipalId**, **servicePrincipalKey**. Ersetzen Sie &lt;servicePrincipalID&gt; und &lt;servicePrincipalKey&gt; durch die ID und den Schlüssel Ihres Dienstprinzipals in Azure Active Directory. Dieser Dienstprinzipal muss Mitglied der Rolle „Mitwirkender“ in dem Abonnement oder der Ressourcengruppe sein, in dem bzw. der der Cluster erstellt wird. Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals](../azure-resource-manager/resource-group-create-service-principal-portal.md). 
+- **servicePrincipalId**, **servicePrincipalKey**. Ersetzen Sie &lt;servicePrincipalID&gt; und &lt;servicePrincipalKey&gt; durch die ID und den Schlüssel Ihres Dienstprinzipals in Azure Active Directory. Dieser Dienstprinzipal muss Mitglied der Rolle „Mitwirkender“ in dem Abonnement oder der Ressourcengruppe sein, in dem bzw. der der Cluster erstellt wird. Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals](../active-directory/develop/howto-create-service-principal-portal.md). 
 - **clusterResourceGroup**. Ersetzen Sie &lt;resourceGroupOfHDICluster&gt; durch den Namen der Ressourcengruppe, in der der HDInsight-Cluster erstellt werden muss. 
 
 > [!NOTE]

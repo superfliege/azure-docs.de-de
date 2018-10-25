@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d39cfddc42ea0e03f6b0f6c8d1c0160839742518
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 98edf224ebbd15f6acafdfeb28769eecb4edff40
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393909"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638117"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -131,7 +131,7 @@ Weitere Informationen zur Verwendung von benutzerdefinierten Erweiterungseigensc
 **Dienstkategorie**: Bedingter Zugriff  
 **Produktfunktion**: Identitätssicherheit und -schutz
 
-Die folgenden Apps wurden der Liste der [genehmigten Client-Apps](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference.md#approved-client-app-requirement) hinzugefügt:
+Die folgenden Apps wurden der Liste der [genehmigten Client-Apps](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement) hinzugefügt:
 
 - Microsoft To-Do
 

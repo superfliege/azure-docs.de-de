@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f8fe86712b59a896d1f431ef677f592ced382db8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306059"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406193"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitätssynchronisierung und Resilienz bei doppelten Attributen
 Die Resilienz bei doppelten Attributen ist ein Feature von Azure Active Directory, das der Beseitigung von Konflikten zwischen **UserPrincipalName** und **ProxyAddress** dient, die beim Ausführen eines Synchronisierungstools von Microsoft auftreten können.
@@ -122,7 +122,7 @@ Sie können Fehler bei der Verzeichnissynchronisierung im Office 365 Admin Cente
 
 ![Aktive Benutzer](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktive Benutzer")
 
-Eine Anleitung zum Anzeigen von Fehlern bei der Verzeichnissynchronisierung in Office 365 Admin Center finden Sie unter [Ermitteln von Fehlern der Verzeichnissynchronisierung in Office 365](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Eine Anleitung zum Anzeigen von Fehlern bei der Verzeichnissynchronisierung in Office 365 Admin Center finden Sie unter [Ermitteln von Fehlern der Verzeichnissynchronisierung in Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Fehlerbericht für die Identitätssynchronisierung
 Wenn dieses neue Verhalten bei einem Objekt mit einem Konflikt aufgrund eines doppelten Attributs angewendet wird, enthält die standardmäßige Fehlerberichts-E-Mail für die Identitätssynchronisierung, die an den Kontakt für technische Benachrichtigungen des Mandanten gesendet wird, eine entsprechende Benachrichtigung. Bei diesem Verhalten gibt es jedoch eine wichtige Änderung. In der Vergangenheit wurden Informationen zu einem Konflikt aufgrund eines doppelten Attributs in jeden nachfolgenden Fehlerbericht einbezogen, bis der Konflikt behoben wurde. Bei Verwendung des neuen Verhaltens erscheint die Fehlerbenachrichtigung für einen bestimmten Konflikt lediglich einmal (zu dem Zeitpunkt, zu dem das in Konflikt stehende Attribut isoliert wird).
@@ -173,5 +173,5 @@ Er sollte auf [https://aka.ms/duplicateattributeresiliency](https://aka.ms/dupli
 ## <a name="see-also"></a>Weitere Informationen
 * [Azure AD Connect-Synchronisierung](how-to-connect-sync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md)
-* [Ermitteln von Fehlern der Verzeichnissynchronisierung in Office 365](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [Ermitteln von Fehlern der Verzeichnissynchronisierung in Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

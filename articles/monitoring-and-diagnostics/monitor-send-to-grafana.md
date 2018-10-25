@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: de2c57949cb2087e41b79a225963225d340f12af
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b4fbd1248f91e0766cca66d1c51033a8b338c324
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263081"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957374"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen jetzt auch mit [Grafana](https://grafana.com/) überwachen, indem Sie das [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/plugins/grafana-azure-monitor-datasource) verwenden. Mit dem Plug-In werden Daten zur Anwendungsleistung, die mit dem Application Insights SDK gesammelt werden, sowie von Azure Monitor bereitgestellte Infrastrukturdaten erfasst. Sie können diese Daten dann in Ihrem Grafana-Dashboard anzeigen.
@@ -62,7 +62,7 @@ Nach der erfolgreichen Anmeldung sollte zu sehen sein, dass das Azure Monitor-Da
 
 Grafana nutzt einen Azure Active Directory-Dienstprinzipal zum Herstellen einer Verbindung mit Azure Monitor-APIs und Sammeln von Metrikdaten. Sie müssen einen Dienstprinzipal erstellen, um den Zugriff auf Ihre Azure-Ressourcen zu verwalten.
 
-1. Informationen zum Erstellen eines Dienstprinzipals finden Sie in [dieser Anleitung](../azure-resource-manager/resource-group-create-service-principal-portal.md). Kopieren Sie Ihre Mandanten-ID, Client-ID und einen geheimen Clientschlüssel.
+1. Informationen zum Erstellen eines Dienstprinzipals finden Sie in [dieser Anleitung](../active-directory/develop/howto-create-service-principal-portal.md). Kopieren Sie Ihre Mandanten-ID, Client-ID und einen geheimen Clientschlüssel.
 
 2. Informationen zum Zuweisen der Leserrolle zur Azure Active Directory-Anwendung finden Sie unter [Zuweisen einer Anwendung zur Rolle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role).     
 

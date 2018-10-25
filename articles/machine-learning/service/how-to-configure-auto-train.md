@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 33126c094a55bc57edd49a54fbc4f5acd7401998
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1aeb1315cfafbcdf3507a6e49d71e1f1e69b537c
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079003"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430186"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Konfigurieren von Experimenten mit automatisiertem maschinellem Lernen
 
@@ -147,7 +147,7 @@ Folgende Computeoptionen werden unterstützt:
 2.  Remotecomputer in der Cloud – [Azure Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (DSVM) unter Linux: Verwenden Sie diese Option, wenn Sie ein großes Dataset haben und auf einem großen Computer zentral hochskalieren möchten, der in der Azure-Cloud verfügbar ist. 
 3.  Azure Batch AI-Cluster: Bei dieser Option lässt sich ein verwaltetes Cluster so einrichten, dass es gleichzeitig horizontal hochskaliert und Iterationen des automatisierten maschinellen Lernens ausführt. 
 
-
+<a name='configure-experiment'/>
 ## <a name="configure-your-experiment-settings"></a>Konfigurieren der Experimenteinstellungen
 
 Es gibt mehrere Optionen, mit denen Sie Ihre Experimente mit automatisiertem maschinellem Lernen konfigurieren können. Diese Parameter werden beim Instanziieren eines `AutoMLConfig`-Objekts festgelegt.

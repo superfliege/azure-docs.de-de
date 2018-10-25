@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: 0e74406d79484483053ca7d4b89b096c3f70e298
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: eb046e62b5ed2d9512af0d25908c3253962f5a6a
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095123"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954668"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Verwenden von mehreren HDInsight-Clustern mit einem Azure Data Lake Store-Konto
 
@@ -47,7 +47,7 @@ In der Tabelle
 - **Dienstprinzipal** ist der Dienstprinzipal von Azure Active Directory (AAD), der mit dem Konto verknüpft ist.
 - **FINGRP** ist eine Benutzergruppe, die in AAD erstellt wurde, die Benutzer der Organisation „Finanzen“ enthält.
 
-Anweisungen zum Erstellen einer AAD-Anwendung (die auch einen Dienstprinzipal erstellt) finden Sie unter [Create an AAD application (Erstellen einer AAD-Anwendung)](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Anweisungen zum Erstellen einer Benutzergruppe in AAD finden Sie unter [Verwalten von Gruppen in Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Anweisungen zum Erstellen einer AAD-Anwendung (die auch einen Dienstprinzipal erstellt) finden Sie unter [Create an AAD application (Erstellen einer AAD-Anwendung)](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Anweisungen zum Erstellen einer Benutzergruppe in AAD finden Sie unter [Verwalten von Gruppen in Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Zu berücksichtigende Punkte:
 

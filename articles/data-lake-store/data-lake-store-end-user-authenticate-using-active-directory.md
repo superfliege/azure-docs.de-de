@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 2f0638b2449bfd582cb68e26d2043b7bc85342b6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125951"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954781"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Endbenutzerauthentifizierung mit Azure Data Lake Storage Gen1 mit Azure Active Directory
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Dieser Artikel erläutert, wie Sie eine **native Azure AD-Anwendung für die Aut
   
     ![Abrufen der AAD-Domäne](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Ihre Azure-Mandanten-ID. Informationen zum Abrufen der Mandanten-ID finden Sie unter [Abrufen der Mandanten-ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+* Ihre Azure-Mandanten-ID. Informationen zum Abrufen der Mandanten-ID finden Sie unter [Abrufen der Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
 
 ## <a name="end-user-authentication"></a>Authentifizierung von Endbenutzern
 Dieser Authentifizierungsmechanismus wird empfohlen, wenn sich ein Endbenutzer über Azure AD bei Ihrer Anwendung anmelden soll. Die Anwendung kann dann mit der gleichen Zugriffsstufe wie der angemeldete Endbenutzer auf Azure-Ressourcen zugreifen. Ihre Endbenutzer müssen ihre Anmeldeinformationen in regelmäßigen Abständen eingeben, um weiter Zugriff zu haben.
@@ -74,7 +74,7 @@ Ihre Anwendung kann Azure AD Benutzeranmeldeinformationen direkt bereitstellen. 
 
 ## <a name="step-1-create-an-active-directory-native-application"></a>Schritt 1: Erstellen einer nativen Active Directory-Anwendung
 
-Erstellen und Konfigurieren Sie eine native Azure AD-Anwendung für die Authentifizierung von Endbenutzern mit Data Lake Storage Gen1 mithilfe von Azure Active Directory. Anweisungen finden Sie unter [Erstellen einer Azure AD-Anwendung](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Erstellen und Konfigurieren Sie eine native Azure AD-Anwendung für die Authentifizierung von Endbenutzern mit Data Lake Storage Gen1 mithilfe von Azure Active Directory. Anweisungen finden Sie unter [Erstellen einer Azure AD-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md).
 
 Wenn Sie die Anweisungen unter diesem Link befolgen, stellen Sie sicher, dass Sie als Typ der Anwendung **Nativ** auswählen, wie auf dem folgenden Screenshot gezeigt:
 
@@ -82,7 +82,7 @@ Wenn Sie die Anweisungen unter diesem Link befolgen, stellen Sie sicher, dass Si
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Schritt 2: Abrufen von Anwendungs-ID und Umleitungs-URI
 
-Informationen zum Abrufen der Anwendungs-ID finden Sie unter [Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+Informationen zum Abrufen der Anwendungs-ID finden Sie unter [Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
 Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
 

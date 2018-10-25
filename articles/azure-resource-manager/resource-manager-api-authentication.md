@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: b841a1104a0cc1e74d9ab1f16ef39d3892ba7d55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69127702a7d8e7027e78a8e04a4e8e1bc3e36b65
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996688"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956339"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements
 ## <a name="introduction"></a>Einführung
@@ -94,7 +94,7 @@ Die Ergebnisse enthalten die AppID, die Sie beim Authentifizieren als Anwendung 
 ### <a name="optional-configuration---certificate-credential"></a>Optionale Konfiguration – Zertifikatanmeldeinformationen
 Azure AD unterstützt außerdem Zertifikatanmeldeinformationen für Anwendungen: Sie erstellen ein selbstsigniertes Zertifikat, behalten den privaten Schlüssel und fügen den öffentlichen Schlüssel der Azure AD-Anwendungsregistrierung hinzu. Zur Authentifizierung sendet Ihre Anwendung eine kleine Nutzlast an Azure AD, die mit Ihrem privaten Schlüssel signiert ist, und Azure AD überprüft die Signatur mithilfe des öffentlichen Schlüssels, den Sie registriert haben.
 
-Informationen zum Erstellen einer AD-App mit einem Zertifikat finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) oder unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md).
+Informationen zum Erstellen einer AD-App mit einem Zertifikat finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority) oder unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md).
 
 ## <a name="get-tenant-id-from-subscription-id"></a>Abrufen der Mandanten-ID ausgehend von der Abonnement-ID
 Um ein Token anzufordern, das zum Aufrufen von Resource Manager verwendet werden kann, benötigt Ihre Anwendung die Mandanten-ID des Azure AD-Mandanten, der das Azure-Abonnement hostet. In den meisten Fällen kennen Benutzer Ihre Abonnement-ID, unter Umständen kennen sie ihre Mandanten-ID für Azure Active Directory jedoch nicht. Fragen Sie den Benutzer nach der Abonnement-ID, um die Mandanten-ID abrufen zu können. Geben Sie die Abonnement-ID beim Senden einer Anforderung zum Abonnement an:
@@ -106,7 +106,7 @@ Die Anforderung schlägt fehl, da der Benutzer noch nicht angemeldet ist, aus de
 ## <a name="get-user--app-access-token"></a>Zugriffstoken für den Benutzer und die App abrufen
 Die Anwendung leitet den Benutzer mit einer OAuth 2.0-Autorisierungsanforderung zu Azure AD weiter, um die Anmeldeinformationen des Benutzers zu authentifizieren und einen Autorisierungscode zu erhalten. Die Anwendung verwendet den Autorisierungscode, um ein Zugriffstoken für Resource Manager zu erhalten. Die Methode [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) erstellt die Autorisierungsanforderung.
 
-Dieser Artikel beschreibt die REST-API-Anforderungen zum Authentifizieren des Benutzers. Sie können auch Hilfsbibliotheken verwenden, um die Authentifizierung in Ihrem Code durchzuführen. Weitere Informationen zu diesen Bibliotheken finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](../active-directory/active-directory-authentication-libraries.md). Informationen zum Integrieren der Identitätsverwaltung in eine Anwendung finden Sie im [Entwicklerleitfaden zu Azure Active Directory](../active-directory/develop/azure-ad-developers-guide.md).
+Dieser Artikel beschreibt die REST-API-Anforderungen zum Authentifizieren des Benutzers. Sie können auch Hilfsbibliotheken verwenden, um die Authentifizierung in Ihrem Code durchzuführen. Weitere Informationen zu diesen Bibliotheken finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](../active-directory/active-directory-authentication-libraries.md). Informationen zum Integrieren der Identitätsverwaltung in eine Anwendung finden Sie im [Entwicklerleitfaden zu Azure Active Directory](../active-directory/develop/v1-overview.md).
 
 ### <a name="auth-request-oauth-20"></a>Autorisierungsanforderung (OAuth 2.0)
 Geben Sie eine Open ID Connect/OAuth2.0-Autorisierungsanforderung an den Azure AD-Autorisierungsendpunkt aus:

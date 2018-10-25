@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c01440437eae3cb076627ab9f2221e33b833f472
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d36697e6b5765ecf35ed9b3add45cff6c33823a5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977235"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958217"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-using-a-rest-api"></a>Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikenspeicher mithilfe einer REST-API
 
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte Metriken für Azure-R
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Erstellen und Autorisieren eines Dienstprinzipals zur Ausgabe von Metriken 
 
-Erstellen Sie einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten unter Verwendung der Anweisungen unter [Erstellen eines Dienstprinzipals](../azure-resource-manager/resource-group-create-service-principal-portal.md). 
+Erstellen Sie einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten unter Verwendung der Anweisungen unter [Erstellen eines Dienstprinzipals](../active-directory/develop/howto-create-service-principal-portal.md). 
 
 Beachten Sie Folgendes, während Sie diesen Prozess durchlaufen: 
 

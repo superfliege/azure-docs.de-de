@@ -11,12 +11,12 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 926b35f49169c5a87e82996ba714aad40ba5244c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 557d4217819449cd0513d4a21e331e660e37037b
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29687318"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987680"
 ---
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden von Python zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von [Python](https://python.org) eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Außerdem wird gezeigt, wie Sie SQL-Anweisungen verwenden, um Daten in der Datenbank über macOS, Ubuntu Linux und Windows-Plattformen abzufragen, einzufügen, zu aktualisieren und zu löschen. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Python-Entwicklung vertraut sind und noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
@@ -31,7 +31,7 @@ Außerdem benötigen Sie:
 - Installation des [pip](https://pip.pypa.io/en/stable/installing/)-Pakets (pip ist bereits installiert, wenn Sie Binärdateien der Version Python 2 (mindestens 2.7.9) oder Python 3 (mindestens 3.4) verwenden, die Sie von [python.org](https://python.org) heruntergeladen haben.)
 
 ## <a name="install-the-python-connection-libraries-for-postgresql"></a>Installieren der Python-Verbindungsbibliotheken für PostgreSQL
-Installieren Sie das Paket [psycopg2](http://initd.org/psycopg/docs/install.html), um eine Verbindung herstellen und die Datenbank abfragen zu können. „psycopg2“ steht auf [PyPI](https://pypi.python.org/pypi/psycopg2/) in Form von [Wheel](http://pythonwheels.com/)-Paketen für die gängigsten Plattformen (Linux und OSX, Windows) zur Verfügung. Verwenden Sie „pip install“, um die Binärversion des Moduls mit allen Abhängigkeiten zu erhalten.
+Installieren Sie das Paket [psycopg2](http://initd.org/psycopg/docs/install.html), um eine Verbindung herstellen und die Datenbank abfragen zu können. „psycopg2“ steht auf [PyPI](https://pypi.python.org/pypi/psycopg2/) in Form von [Wheel](https://pythonwheels.com/)-Paketen für die gängigsten Plattformen (Linux und OSX, Windows) zur Verfügung. Verwenden Sie „pip install“, um die Binärversion des Moduls mit allen Abhängigkeiten zu erhalten.
 
 1. Starten Sie auf Ihrem eigenen Computer eine Befehlszeilenschnittstelle:
     - Starten Sie unter Linux die Bash-Shell.

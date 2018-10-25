@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 47589b8cb8aa6e8d1cacaa028948242431f02c44
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 0f2fa2bb8e20ce4cc187fe6f061d2d8c251c4673
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604789"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945211"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung einseitiger Apps mit Konten unter Verwendung von Azure Active Directory B2C
 
@@ -201,4 +201,4 @@ Sie können Ihr Azure AD B2C-Verzeichnis für weitere Azure AD B2C-Tutorials ver
 In diesem Tutorial haben Sie gelernt, wie Sie ein Azure AD B2C-Verzeichnis und Richtlinien erstellen und wie Sie die einseitige Beispiel-App für die Verwendung Ihres Azure AD B2C-Verzeichnisses aktualisieren. Im nächsten Tutorial erfahren Sie, wie Sie eine geschützte Web-API registrieren, konfigurieren und über eine Desktop-App aufrufen.
 
 > [!div class="nextstepaction"]
-> 
+> [Azure-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=active-directory-b2c&sort=0)

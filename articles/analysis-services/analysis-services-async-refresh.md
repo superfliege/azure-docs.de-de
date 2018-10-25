@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 883d03b9ffebf85815da7ae62546f75b3d72442f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e797f1faf249a1ad1eebbd46984829de5f087936
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441453"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958668"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchrones Aktualisieren mit der REST-API
 Durch Verwendung einer Programmiersprache, die REST-Aufrufe unterstützt, können Sie asynchrone Datenaktualisierungsvorgänge in Ihren tabellarischen Azure Analysis Services-Modellen durchführen. Dies schließt die Synchronisierung von schreibgeschützten Replikaten für die horizontale Skalierung von Abfragen ein. 
@@ -236,7 +236,7 @@ Für diese Form der Authentifizierung muss eine Azure-Anwendung mit den zugewies
 
 #### <a name="service-principal"></a>Dienstprinzipal
 
-Weitere Informationen zum Einrichten eines Dienstprinzipals und Zuweisen der erforderlichen Berechtigungen in Azure finden Sie unter [Erstellen eines Dienstprinzipals – Azure-Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md) und [Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md). Führen Sie nach Abschluss dieser Schritte die folgenden zusätzlichen Schritte aus:
+Weitere Informationen zum Einrichten eines Dienstprinzipals und Zuweisen der erforderlichen Berechtigungen in Azure finden Sie unter [Erstellen eines Dienstprinzipals – Azure-Portals](../active-directory/develop/howto-create-service-principal-portal.md) und [Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md). Führen Sie nach Abschluss dieser Schritte die folgenden zusätzlichen Schritte aus:
 
 1.  Suchen Sie im Codebeispiel **string authority = …**, und ersetzen Sie **common** durch die Mandanten-ID Ihrer Organisation.
 2.  Fügen Sie eine Auskommentierung ein, bzw. heben Sie die Auskommentierung auf, damit die ClientCredential-Klasse zum Instanziieren des cred-Objekts verwendet wird. Stellen Sie sicher, dass auf die Werte \<App ID> und \<App Key> auf sichere Weise zugegriffen wird, oder verwenden Sie die zertifikatbasierte Authentifizierung für Dienstprinzipale.

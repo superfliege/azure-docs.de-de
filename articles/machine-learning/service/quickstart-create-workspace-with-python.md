@@ -9,20 +9,22 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: cc348ca50b942b6b8b1474ed4dac4067d107a4af
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e4624b115143f9f2e6dd77aa8ee79597c86ba31c
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377998"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456192"
 ---
 # <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning
 
 In dieser Schnellstartanleitung verwenden Sie das Azure Machine Learning SDK für Python, um einen [Arbeitsbereich](concept-azure-machine-learning-architecture.md) für den Machine Learning-Dienst zu erstellen und zu verwenden. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning.
 
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
+
 In diesem Tutorial installieren Sie das Python SDK und führen Folgendes durch:
 
-* Erstellen eines Arbeitsbereichs in Ihrem Azure-Abonnement
+* Erstellen eines Arbeitsbereichs in Ihrem Azure-Abonnement.
 * Erstellen einer Konfigurationsdatei für diesen Arbeitsbereich zur späteren Verwendung in anderen Notebooks und Skripts
 * Schreiben von Code, der Werte im Arbeitsbereich protokolliert
 * Anzeigen der protokollierten Werte in Ihrem Arbeitsbereich

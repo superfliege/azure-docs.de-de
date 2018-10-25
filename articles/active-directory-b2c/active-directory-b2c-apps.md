@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e42bc63b0c2b6edf4dc0de204bbac5fe90071a67
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 7410dadabf9fda2eb36531991d1d7ff3c3747e2c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480511"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406516"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>In Azure Active Directory B2C verwendbare Anwendungstypen
 
@@ -88,11 +88,6 @@ Accept: application/json
 
 Die Web-API kann dann mit dem Token die Identität des API-Aufrufers überprüfen und Informationen über den Aufrufer aus Ansprüchen extrahieren, die im Token codiert sind. Informationen zu allen Arten von Token und zu den für eine App verfügbaren Ansprüchen finden Sie in der [Azure AD B2C-Tokenreferenz](active-directory-b2c-reference-tokens.md).
 
-> [!NOTE]
-> Azure AD B2C unterstützt derzeit nur Web-APIs, auf die von ihren eigenen bekannten Clients zugegriffen wird. Ihre vollständige Anwendung kann beispielsweise eine iOS-App, eine Android-Anwendung und eine Back-End-Web-API umfassen. Diese Architektur wird vollständig unterstützt. Das Erteilen des Zugriffs auf dieselbe Web-API an einen Partnerclient, beispielsweise eine andere iOS-Anwendung, wird derzeit nicht unterstützt. Alle Komponenten Ihrer vollständigen Anwendung müssen eine Anwendungs-ID gemeinsam verwenden.
->
->
-
 Eine Web-API kann Token von vielen Clienttypen empfangen, einschließlich Webanwendungen, Desktop- und mobilen Anwendungen, Single-Page-Anwendungen, serverseitigen Daemons und anderen Web-APIs. Hier sehen Sie ein Beispiel für den vollständigen Ablauf für eine Webanwendung, die eine Web-API aufruft:
 
 1. Die Webanwendung führt eine Richtlinie aus, und der Benutzer schließt die Benutzeroberfläche ab.
@@ -114,11 +109,6 @@ Weitere Informationen zum Schützen einer Web-API mit Azure AD B2C finden Sie in
 Auf Geräten installierte Anwendungen, z.B. mobile Anwendungen und Desktopanwendungen, benötigen häufig Zugriff auf Back-End-Dienste oder Web-APIs im Auftrag von Benutzern. Sie können Ihren nativen Anwendungen angepasste Oberflächen für die Identitätsverwaltung hinzufügen und Back-End-Dienste sicher aufrufen, indem Sie Azure AD B2C und den [Autorisierungscodeablauf von OAuth 2.0](active-directory-b2c-reference-oauth-code.md) verwenden.  
 
 Bei diesem Ablauf führt die Anwendung [Richtlinien](active-directory-b2c-reference-policies.md) aus und empfängt einen `authorization_code` von Azure AD, nachdem der Benutzer die Richtlinie abgeschlossen hat. Der `authorization_code` stellt die Berechtigung der Anwendung zum Aufrufen von Back-End-Diensten im Namen des derzeit angemeldeten Benutzers dar. Die Anwendung kann dann den `authorization_code` im Hintergrund gegen ein `id_token` und ein `refresh_token` austauschen.  Mit dem `id_token` kann die Anwendung sich in HTTP-Anforderungen bei einer Back-End-Web-API authentifizieren. Sie kann auch das `refresh_token` zum Abrufen eines neuen `id_token` verwenden, wenn ein älteres abläuft.
-
-> [!NOTE]
-> Azure AD B2C unterstützt derzeit nur Token, die für den Zugriff auf den eigenen Back-End-Webdienst einer Anwendung verwendet werden. Ihre vollständige Anwendung kann beispielsweise eine iOS-Anwendung, eine Android-Anwendung und eine Back-End-Web-API umfassen. Diese Architektur wird vollständig unterstützt. Das Gewähren des Zugriffs auf eine Partner-Web-API über OAuth 2.0-Zugriffstoken wird für Ihre iOS-Anwendung derzeit nicht unterstützt. Alle Komponenten Ihrer vollständigen Anwendung müssen eine Anwendungs-ID gemeinsam verwenden.
->
->
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 

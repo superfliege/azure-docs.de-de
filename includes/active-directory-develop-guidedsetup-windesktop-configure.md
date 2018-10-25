@@ -14,17 +14,19 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: fb521fc9d4927a953cdd66948101969dfc102de4
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b26b88d0e089217fa9915bdbdcb8f913731bcc67
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843474"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988192"
 ---
 ## <a name="register-your-application"></a>Anwendung registrieren
+
 Sie können Ihre Anwendung auf zwei Arten registrieren.
 
 ### <a name="option-1-express-mode"></a>Option 1: Expressmodus
+
 Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
 1. Navigieren Sie zum [Anwendungsregistrierungsportal von Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure).
 
@@ -37,12 +39,13 @@ Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
 5. Befolgen Sie die Anweisungen zum Abrufen der Anwendungs-ID, und fügen Sie sie in Ihren Code ein.
 
 ### <a name="option-2-advanced-mode"></a>Option 2: Erweiterter Modus
+
 Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformationen Ihrer Projektmappe hinzufügen möchten, führen Sie folgende Schritte aus:
 1. Falls Sie Ihre Anwendung noch nicht registriert haben, navigieren Sie zum [Anwendungsregistrierungsportal von Microsoft](https://apps.dev.microsoft.com/portal/register-app).
 
 2. Klicken Sie auf **App hinzufügen**.
 
-3. Geben Sie im Feld **Anwendungsname** einen Namen für Ihre Anwendung ein. 
+3. Geben Sie im Feld **Anwendungsname** einen Namen für Ihre Anwendung ein.
 
 4. Vergewissern Sie sich, dass das Kontrollkästchen **Guided Setup** (Geführtes Setup) deaktiviert ist, und klicken Sie anschließend auf **Erstellen**.
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: b936b42671c15a77a901f321ed3c51f1ba3639cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 57742d72c8be0dcd999bc8b73f6d598263429c12
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036591"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646574"
 ---
 # <a name="api-v2-migration-guide"></a>API v2-Migrationshandbuch
 Die [Endpunkt](https://aka.ms/v1-endpoint-api-docs)- und [Erstellungs](https://aka.ms/v1-authoring-api-docs)-APIs der Version 1 sind demnächst veraltet. In diesem Handbuch erfahren Sie, wie Sie zu den [Endpunkt](https://aka.ms/luis-endpoint-apis)- und [Erstellungs](https://aka.ms/luis-authoring-apis)-APIs der Version 2 migrieren. 
@@ -155,7 +155,7 @@ LUIS schlägt Äußerungen von vorhandenen [Endpunktäußerungen](luis-how-to-re
 Der JSON-Code der exportierten 1.x-App JSON enthält einige Bereiche, die Sie vor dem Importieren in [LUIS][LUIS] 2.0 ändern müssen. 
 
 ### <a name="prebuilt-entities"></a>Vordefinierte Entitäten 
-Die [vordefinierten Entitäten](luis-prebuilt-entities.md) wurden geändert. Stellen Sie sicher, dass Sie die vordefinierten Entitäten von v2 verwenden. Dazu gehört die Verwendung von [datetimeV2](luis-prebuilt-entities.md#use-a-prebuilt-datetimev2-entity) anstelle von datetime. 
+Die [vordefinierten Entitäten](luis-prebuilt-entities.md) wurden geändert. Stellen Sie sicher, dass Sie die vordefinierten Entitäten von v2 verwenden. Dazu gehört die Verwendung von [datetimeV2](luis-reference-prebuilt-datetimev2.md) anstelle von datetime. 
 
 ### <a name="actions"></a>Aktionen
 Die actions-Eigenschaft ist nicht mehr gültig. Sie sollte leer sein. 

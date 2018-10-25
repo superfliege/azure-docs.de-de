@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: ecc892a38d5e86a089085cd67a78ce7d00c86fd8
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 46740e925a5d4e94c314105aba4920caf01532e7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181115"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985607"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-Module
 
@@ -84,7 +84,7 @@ Die wichtigsten technischen Voraussetzungen für die Zertifizierung und Veröffe
 
 Die folgenden Artikel sind für Sie verfügbar, wenn Sie sich beim [Cloud Partner Portal](https://cloudpartner.azure.com/) angemeldet haben:
 
-- [Create an IoT Edge module offer (Erstellen eines IoT Edge-Modul-Angebots)](https://cloudpartner.azure.com/#documentation/create-iot-edge-module-offer): Beschreibung, wie mit dem Cloud Partner Portal ein neues IoT Edge-Modul-Angebot erstellt wird
+- [Create an IoT Edge module offer (Erstellen eines IoT Edge-Modul-Angebots)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer): Beschreibung, wie mit dem Cloud Partner Portal ein neues IoT Edge-Modul-Angebot erstellt wird
 - [IoT Edge module certification process (Zertifizierungsprozess für IoT Edge-Module)](https://cloudpartner.azure.com/#documentation/iot-edge-module-certification-process): Eine Zusammenfassung der Schritte und Anforderungen zum Zertifizieren eines IoT Edge-Moduls
 - [IoT Edge module FAQ (Häufig gestellte Fragen zu IoT Edge-Modulen)](https://cloudpartner.azure.com/#documentation/iot-edge-module-faq): Eine Liste mit häufig gestellten Fragen zu IoT Edge-Modulen
 

@@ -1,20 +1,21 @@
 ---
 title: Häufig gestellte Fragen zum Text-to-Speech-Dienst in Azure
-description: Hier erhalten Sie Antworten auf die am häufigsten gestellten Fragen zum Text-to-Speech-Dienst.
 titleSuffix: Azure Cognitive Services
+description: Hier erhalten Sie Antworten auf die am häufigsten gestellten Fragen zum Text-to-Speech-Dienst.
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 2068bcb796b660847d0ea9b1126e64a9003ca871
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f8d80ab189d8ed1f4b153e81963ef31cc5f685b8
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576849"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470046"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Häufig gestellte Fragen zu Text-to-Speech
 
@@ -63,4 +64,4 @@ Wir bieten weitere Dienste, um Sie bei der Erstellung von Skripts für die Aufze
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Problembehandlung](troubleshooting.md)
-* [Anmerkungen zu dieser Version](releasenotes.md)
+* [Versionshinweise](releasenotes.md)

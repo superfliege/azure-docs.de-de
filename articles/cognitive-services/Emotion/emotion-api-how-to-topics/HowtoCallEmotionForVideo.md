@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2687145a89c11efb4a3bcb1494a39806e9aae551
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 6c96ab18161230ffabd0703bdb6d0230bdc8d3ba
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238606"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026261"
 ---
 # <a name="example-call-emotion-api-for-video"></a>Beispiel: Aufrufen der Emotionen-API für Videos
 
@@ -46,7 +46,7 @@ Wenn Sie eine Clientbibliothek verwenden, wird der Abonnementschlüssel durch de
 ```
 var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
-Wie Sie einen Abonnementschlüssel erhalten, erfahren Sie unter [Abonnements] (https://azure.microsoft.com/try/cognitive-services/).
+Wie Sie einen Abonnementschlüssel erhalten, erfahren Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/).
 
 ### <a name="Step2">Schritt 2: Hochladen eines Videos in den Dienst und Überprüfen des Status</a>
 Die grundlegendste Art und Weise, einen Aufruf der Emotionen-API für Video auszuführen, ist das direkte Hochladen eines Videos. Dies erfolgt durch Senden einer POST-Anforderung des Inhaltstyps „application/octet-stream“ beim Lesen von Daten aus einer Videodatei. Die maximale Größe des Videos beträgt 100 MB.

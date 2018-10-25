@@ -14,17 +14,19 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 3cbcae9c02abaf11ded31304f97abdd74f905c6e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0c4908315bd7c0e4d83c7aba735cc4d102216a28
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843196"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988412"
 ---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
 ### <a name="test-with-node"></a>Testen mit Node
+
 Wenn Sie nicht Visual Studio verwenden, stellen Sie sicher, dass Ihr Webserver gestartet wurde.
+
 1. Konfigurieren Sie den Server zum Lauschen am TCP-Port, der auf dem Speicherort Ihrer Datei **index.html** basiert. Starten Sie für Node den Webserver, um über den Port zu lauschen, indem Sie an einer Eingabeaufforderung im Anwendungsordner die folgenden Befehle ausführen:
 
     ```bash
@@ -36,15 +38,14 @@ Wenn Sie nicht Visual Studio verwenden, stellen Sie sicher, dass Ihr Webserver g
 <p/><!-- -->
 
 ### <a name="test-with-visual-studio"></a>Testen mit Visual Studio
-Stellen Sie bei Verwendung von Visual Studio sicher, dass Sie die Projektlösung auswählen und **F5** drücken, um Ihr Projekt auszuführen. Der Browser wird geöffnet, und Sie werden zu „http://<span></span>localhost:{Port}“ weitergeleitet, wo die Schaltfläche **Anmelden** angezeigt wird.
 
+Stellen Sie bei Verwendung von Visual Studio sicher, dass Sie die Projektlösung auswählen und **F5** drücken, um Ihr Projekt auszuführen. Der Browser wird geöffnet, und Sie werden zu „http://<span></span>localhost:{Port}“ weitergeleitet, wo die Schaltfläche **Anmelden** angezeigt wird.
 
 ## <a name="test-your-application"></a>Testen Ihrer Anwendung
 
 Klicken Sie auf **Anmelden**, nachdem der Browser die Datei „index.html“ geladen hat. Sie werden aufgefordert, sich mit dem Microsoft Azure Active Directory (Azure AD) v2.0-Endpunkt anzumelden:
 
 ![Anmelden bei Ihrem JavaScript SPA-Konto](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
-
 
 ### <a name="provide-consent-for-application-access"></a>Zustimmen zum Anwendungszugriff
 
@@ -53,6 +54,7 @@ Bei der ersten Anmeldung bei Ihrer Anwendung werden Sie aufgefordert, Ihre Zusti
 ![Zustimmen zum Anwendungszugriff](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
 ### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
+
 Nach der Anmeldung sollten Ihre Benutzerprofilinformationen angezeigt werden, die in der Antwort der Microsoft Graph-API zurückgegeben werden.
 
 ![Erwartete Ergebnisse aus dem Microsoft Graph-API-Aufruf](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)

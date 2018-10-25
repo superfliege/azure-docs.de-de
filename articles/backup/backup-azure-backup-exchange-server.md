@@ -2,18 +2,18 @@
 title: Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
 description: Erfahren Sie, wie Sie einen Exchange-Server unter Azure Backup mit System Center 2012 R2 DPM sichern.
 services: backup
-author: MaanasSaran
+author: adigan
 manager: NKolli1
 ms.service: backup
-ms.topic: troubleshooting
-ms.date: 09/08/2017
+ms.topic: conceptual
+ms.date: 10/19/2018
 ms.author: adigan
-ms.openlocfilehash: 4edec499d12261add398e5a9297f039ecfb252e9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8fbe3e716971f4d82e6d24fb866334ffd626bf32
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605099"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945976"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
 In diesem Artikel wird beschrieben, wie Sie einen Server mit System Center 2012 R2 Data Protection Manager (DPM) konfigurieren, um einen Microsoft Exchange-Server in Azure Backup zu sichern.  
@@ -27,7 +27,7 @@ Zum erfolgreichen Registrieren des DPM-Servers für Azure Backup müssen Sie das
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsoft Azure Backup alle [Voraussetzungen](backup-azure-dpm-introduction.md#prerequisites) erfüllt sind. Zu diesen Voraussetzungen gehört Folgendes:
+Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsoft Azure Backup alle [Voraussetzungen](backup-azure-dpm-introduction.md#prerequisites-and-limitations) erfüllt sind. Zu diesen Voraussetzungen gehört Folgendes:
 
 * Auf der Azure-Website wurde ein Sicherungstresor erstellt.
 * Die Anmeldeinformationen für den Agent und den Tresor wurden auf den DPM-Server heruntergeladen.
