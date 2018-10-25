@@ -7,28 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/02/2018
 ms.author: andrl
-ms.openlocfilehash: 2da00f700f5cc234455cc686377e5863f1c35bdd
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 2280a3f6b2a67d392a109a5294e1509bcc804bc3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734470"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869923"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Festlegen und Abrufen des Durchsatzes für Azure Cosmos DB-Container und -Datenbank
 
-Sie können den Durchsatz für einen Azure Cosmos DB-Container oder eine Gruppe von Containern mithilfe des Azure-Portals oder der Client-SDKs festlegen. 
-
-**Bereitstellen von Durchsatz für einen einzelnen Container:** Wenn Sie den Durchsatz für eine Gruppe von Containern bereitstellen, wird dieser von allen diesen Containern gemeinsam genutzt. Die Bereitstellung des Durchsatzes für einzelne Container garantiert die Reservierung des Durchsatzes für diesen spezifischen Container. Beim Zuweisen von RUs pro Sekunde für einzelne Container können diese *mit fester Größe* oder *unbegrenzter Größe* erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 1.000 RU/s und einen [Partitionsschlüssel](partition-data.md) angeben. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden müssen, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen von unterschiedlichen Werten) auszuwählen. Durch Auswahl eines Partitionsschlüssels mit vielen unterschiedlichen Werten stellen Sie sicher, dass Container/Tabelle/Graph und Anforderungen von Azure Cosmos DB einheitlich skaliert werden können. 
-
-**Bereitstellen von Durchsatz für eine Gruppe von Containern oder eine Datenbank:** Die Bereitstellung des Durchsatzes für eine Datenbank ermöglicht die gemeinsame Nutzung des Durchsatzes für alle Container, die zu dieser Datenbank gehören. Innerhalb einer Azure Cosmos DB-Datenbank können Sie eine Gruppe von Containern verwenden, die sich den Durchsatz teilen, sowie Container, die über einen eigenen Durchsatz verfügen. Wenn Sie RUs pro Sekunde für eine Gruppe von Containern zuweisen, werden die Container dieser Gruppe als *unbegrenzte* Container behandelt und müssen einen Partitionsschlüssel aufweisen.
-
-Basierend auf dem bereitgestellten Durchsatz ordnet Azure Cosmos DB physische Partitionen zum Hosten Ihrer Container zu, und Daten werden gemäß ihrem Wachstum zwischen Partitionen aufgeteilt bzw. neu verteilt. Die Bereitstellung auf Container- und Datenbankebene wird gesondert angeboten. Für einen Wechsel zwischen diesen Bereitstellungsmethoden müssen Daten von der Quelle zum Ziel migriert werden. Dies bedeutet, dass Sie eine neue Datenbank oder eine neue Sammlung erstellen müssen und anschließend Daten mithilfe der [Bulk-Executor-Bibliothek](bulk-executor-overview.md) oder mithilfe von [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) migrieren müssen. Die folgende Abbildung zeigt die Bereitstellung des Durchsatzes auf verschiedenen Ebenen:
-
-![Bereitstellen von Anforderungseinheiten für einzelne Container und Gruppen von Containern](./media/request-units/provisioning_set_containers.png)
-
-Im nächsten Abschnitt lernen Sie die Schritte zum Konfigurieren des Durchsatzes auf unterschiedlichen Ebenen für ein Azure Cosmos DB-Konto kennen. 
+Sie können den Durchsatz für einen Azure Cosmos DB-Container oder eine Gruppe von Containern mithilfe des Azure-Portals oder der Client-SDKs festlegen. Dieser Artikel beschreibt die Schritte zum Konfigurieren des Durchsatzes in verschiedenen Granularitäten für ein Azure Cosmos DB-Konto.
 
 ## <a name="provision-throughput-by-using-azure-portal"></a>Bereitstellen des Durchsatzes mithilfe des Azure-Portals
 
@@ -45,7 +35,7 @@ Im nächsten Abschnitt lernen Sie die Schritte zum Konfigurieren des Durchsatzes
    |Datenbank-ID  |  Geben Sie einen eindeutigen Namen zur Identifizierung der Datenbank an. Eine Datenbank ist ein logischer Container für mindestens eine Sammlung. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder /, \\, #, ? noch nachgestellte Leerzeichen enthalten. |
    |Sammlungs-ID  | Geben Sie einen eindeutigen Namen zur Identifizierung der Sammlung an. Für Sammlungs-IDs gelten dieselben Zeichenanforderungen wie für Datenbanknamen. |
    |Speicherkapazität   | Dieser Wert gibt die Speicherkapazität der Datenbank an. Bei der Bereitstellung des Durchsatzes für eine einzelne Sammlung kann die Speicherkapazität **Fest (10 GB)** oder **Unbegrenzt** sein. Eine unbegrenzte Speicherkapazität setzt voraus, dass Sie einen Partitionsschlüssel für Ihre Daten festlegen.  |
-   |Throughput   | Jede Sammlung und Datenbank kann einen Durchsatz in Anforderungseinheiten pro Sekunde haben.  Bei fester Speicherkapazität beträgt der Mindestdurchsatz 400 Anforderungseinheiten pro Sekunde (RU/s), bei unbegrenzter Speicherkapazität ist der Mindestdurchsatz auf 1000 RU/s eingestellt.|
+   |Throughput   | Jede Sammlung und Datenbank kann einen Durchsatz in Anforderungseinheiten pro Sekunde haben.  Und eine Sammlung kann eine feste oder unbegrenzte Speicherkapazität haben. |
 
 6. Nachdem Sie Werte für diese Felder eingegeben haben, wählen Sie **OK**, um die Einstellungen zu speichern.  
 
@@ -198,6 +188,21 @@ int newThroughput = 500;
 offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
+
+## <a name="get-the-request-charge-using-cassandra-api"></a>Abrufen der Anforderungsgebühren mithilfe der Cassandra-API 
+
+Die Cassandra-API unterstützt eine Methode, um zusätzliche Informationen zu den Gebühren von Anforderungseinheiten für einen bestimmten Vorgang anzuzeigen. Die Gebühren für RU/s für den Einfügevorgang können beispielsweise wie folgt abgerufen werden:
+
+```csharp
+var insertResult = await tableInsertStatement.ExecuteAsync();
+ foreach (string key in insertResult.Info.IncomingPayload)
+        {
+            byte[] valueInBytes = customPayload[key];
+            string value = Encoding.UTF8.GetString(valueInBytes);
+            Console.WriteLine($“CustomPayload:  {key}: {value}”);
+        }
+```
+
 
 ## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Abrufen des Durchsatzes mit MongoDB-API-Portalmetriken
 

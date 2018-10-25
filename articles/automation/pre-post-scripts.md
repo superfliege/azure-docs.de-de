@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c906a771a63b3d8320eab1d2d57e8c34916e1d39
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 1c5bcca2571ffee9e1c20f0b7d2608b62c962177
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433191"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815340"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Verwalten von Pre- und Post-Skripts (Vorschauversion)
 
-Pre- und Post-Skripts (vor bzw. nach der Bereitstellung auszuführende Skripts) ermöglichen es Ihnen, vor (Pre-Aufgabe) und nach (Post-Aufgabe) einer Updatebereitstellung PowerShell-Runbooks in Ihrem Automation-Konto auszuführen. Pre- und Post-Skripts werden im Azure-Kontext und nicht lokal ausgeführt.
+Pre- und Post-Skripts (vor bzw. nach der Bereitstellung auszuführende Skripts) ermöglichen es Ihnen, vor (Pre-Aufgabe) und nach (Post-Aufgabe) einer Updatebereitstellung PowerShell-Runbooks in Ihrem Automation-Konto auszuführen. Pre- und Post-Skripts werden im Azure-Kontext und nicht lokal ausgeführt. Pre-Skripts werden zu Beginn der Updatebereitstellung ausgeführt. Post-Skripts werden am Ende der Bereitstellung sowie nach allen konfigurierten Neustarts ausgeführt.
 
 ## <a name="runbook-requirements"></a>Anforderungen für Runbooks
 

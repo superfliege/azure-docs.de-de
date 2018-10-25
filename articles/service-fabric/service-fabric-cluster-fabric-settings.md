@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/27/2018
+ms.date: 10/08/2018
 ms.author: aljo
-ms.openlocfilehash: ed904f7d4de9406e60de1652cefeb5bb84e5a1d8
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 7a80693090b92db55ad2feed52fdbb2a455e3c39
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144037"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884492"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 In diesem Artikel wird beschrieben, wie Sie die verschiedenen Fabric-Einstellungen für Ihren Service Fabric-Cluster anpassen. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei „ClusterConfig.json“ und ein Konfigurationsupgrade in Ihrem Cluster an. 
@@ -352,6 +352,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ApplicationUpgradeTimeout| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(360)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das Timeout für das Anwendungsupgrade. Wenn das Timeout kleiner als „ActivationTimeout“ ist, tritt für das Bereitstellungsmodul ein Fehler auf. |
 |ContainerServiceArguments|Zeichenfolge, Standardwert „-H localhost:2375 -H npipe://“|statischen|Service Fabric (SF) verwaltet den Docker-Daemon (außer auf Windows-Clientcomputern wie Win10). Diese Konfiguration ermöglicht Benutzern, benutzerdefinierte Argumente anzugeben, die beim Start an den Docker-Daemon übergeben werden sollen. Wenn Sie benutzerdefinierte Argumente angegeben, übergibt Service Fabric ausschließlich das Argument „--pidfile“ an die Docker-Engine. Benutzer sollten daher das Argument „--pidfile“ nicht in ihren benutzerdefinierten Argumenten angeben. Außerdem sollte mit den benutzerdefinierten Argumenten sichergestellt werden, dass der Docker-Daemon unter Windows an der Standard-Named Pipe (bzw. unter Linux am Unix-Domänensocket) lauscht, damit Service Fabric mit ihm kommunizieren kann.|
 |ContainerServiceLogFileMaxSizeInKb|Ganze Zahl, Standardwert 32768|statischen|Maximale Größe der Protokolldatei, die von Docker-Containern generiert wird.  Nur Windows|
+|ContainerImagesToSkip|Zeichenfolge, Imagenamen getrennt durch vertikale Linie, Standardwert: „“|statischen|Der Name von mindestens einem Containerimage, das nicht gelöscht werden soll.  Wird mit dem PruneContainerImages-Parameter verwendet.|
 |ContainerServiceLogFileNamePrefix|Zeichenfolge, Standardwert „sfcontainerlogs“|statischen|Dateinamenpräfix für Protokolldateien, die von Docker-Containern generiert werden.  Nur Windows|
 |ContainerServiceLogFileRetentionCount|Ganze Zahl, Standardwert 10|statischen|Anzahl der Protokolldateien, die von Docker-Container generiert werden, bevor Protokolldateien überschrieben werden.  Nur Windows|
 |CreateFabricRuntimeTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für den FabricCreateRuntime-Synchronisierungsaufruf. |
@@ -360,6 +361,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DeploymentMaxFailureCount|Ganze Zahl, Standardwert 20| Dynamisch|Die Anwendungsbereitstellung wird DeploymentMaxFailureCount Mal wiederholt, bevor ein Fehler für die Bereitstellung der betreffenden Anwendung auf dem Knoten auftritt.| 
 |DeploymentMaxRetryInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das maximale Wiederholungsintervall für die Bereitstellung. Bei jedem andauernden Fehler wird das Wiederholungsintervall wie folgt berechnet: Min( DeploymentMaxRetryInterval; Anzahl andauernder Fehler * DeploymentRetryBackoffInterval). |
 |DeploymentRetryBackoffInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Backoffintervall für den Fehler bei der Bereitstellung. Bei jedem Continuous Deployment-Fehler wiederholt das System die Bereitstellung bis zu MaxDeploymentFailureCount Mal. Das Wiederholungsintervall ist das Produkt aus dem Continuous Deployment-Fehler und dem Backoffintervall der Bereitstellung. |
+|DisableDockerRequestRetry|Boolesch, Standardwert FALSE |Dynamisch| Standardmäßig kommuniziert SF mit dem DD (Docker-Daemon) mit dem Timeout „DockerRequestTimeout“ für jede an ihn gesendete HTTP-Anforderung. Reagiert der DD nicht innerhalb dieses Zeitraums, sendet SF die Anforderung erneut, sofern für den übergeordneten Vorgang noch Zeit bleibt.  Bei Hyper-V-Containern benötigt der DD manchmal erheblich mehr Zeit zum Aufrufen oder Deaktivieren des Containers. In diesem Fall fordert der DD aus Sicht von SF ein Timeout an, und SF wiederholt den Vorgang. Manchmal scheint dies den Druck auf den DD zu erhöhen. Diese Konfiguration ermöglicht es, die Wiederholung zu deaktivieren und auf eine Reaktion des DD zu warten. |
 |EnableActivateNoWindow| Boolesch, Standardwert FALSE|Dynamisch| Der aktivierte Prozess wird im Hintergrund ohne Konsole erstellt. |
 |EnableContainerServiceDebugMode|Boolesch, Standardwert TRUE|statischen|Aktivieren/Deaktivieren der Protokollierung für Docker-Container.  Nur Windows|
 |EnableDockerHealthCheckIntegration|Boolesch, Standardwert TRUE|statischen|Ermöglicht die Integration von HEALTCHECK-Ereignissen des Docker-Tools in den Service Fabric-Systemintegritätsbericht. |
@@ -375,6 +377,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |NTLMAuthenticationPasswordSecret|SecureString, Standardwert „Common::SecureString("")“|statischen|Eine verschlüsselte Zeichenfolge, der verwendet wird, um das Kennwort für NTLM-Benutzer zu generieren. Muss festgelegt werden, wenn NTLMAuthenticationEnabled auf TRUE festgelegt ist. Wird vom Bereitsteller überprüft. |
 |NTLMSecurityUsersByX509CommonNamesRefreshInterval|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(3)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Umgebungsspezifische Einstellungen. Das regelmäßige Intervall, in dem das Hosting auf neue Zertifikate für die FileStoreService-NTLM-Konfiguration scannt. |
 |NTLMSecurityUsersByX509CommonNamesRefreshTimeout|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(4)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das Timeout für die Konfiguration von NTLM-Benutzern mit allgemeinen Zertifikatnamen. Die NTLM-Benutzer sind für FileStoreService-Freigaben erforderlich. |
+|PruneContainerImages|Boolesch, Standardwert FALSE|Dynamisch| Entfernen Sie nicht verwendete Anwendungscontainerimages aus Knoten. Wird die Registrierung eines Anwendungstyps im Service Fabric-Cluster aufgehoben, werden die von dieser Anwendung verwendeten Containerimages auf Knoten entfernt, auf die die Anwendung von Service Fabric heruntergeladen wurde. Die Bereinigung wird stündlich ausgeführt. Daher dauert es unter Umständen bis zu einer Stunde (zuzüglich der Zeit zum Bereinigen des Images), bis Images vom Cluster entfernt werden.<br>Von Service Fabric werden niemals Images heruntergeladen oder gelöscht, die nicht mit einer Anwendung in Zusammenhang stehen.  In keinem Zusammenhang stehende Images, die manuell heruntergeladen wurden, müssen explizit entfernt werden.<br>Images, die nicht gelöscht werden sollen, können im ContainerImagesToSkip-Parameter angegeben werden.| 
 |RegisterCodePackageHostTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für den FabricRegisterCodePackageHost-Synchronisierungsaufruf. Dies gilt für nur Multicode-Paketanwendungshosts wie FWP. |
 |RequestTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(30)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Dies stellt das Timeout für die Kommunikation zwischen dem Anwendungshost des Benutzers und dem Fabric-Prozess für verschiedene hostingbezogene Vorgänge dar, z. B. für Factoryregistrierung und Runtimeregistrierung. |
 |RunAsPolicyEnabled| Boolesch, Standardwert FALSE|statischen| Ermöglicht das Ausführen von Codepaketen als anderer lokaler Benutzer als der Benutzer, unter dem der Fabric-Prozess ausgeführt wird. Um diese Richtlinie zu aktivieren, muss Fabric als SYSTEM oder als Benutzer mit SeAssignPrimaryTokenPrivilege ausgeführt werden. |
@@ -420,6 +423,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |SharedLogId |string, Standardwert "" |statischen|Eindeutige GUID für den freigegebenen Protokollcontainer. Verwenden Sie "", wenn Sie den Standardpfad im Fabricdatenstamm nutzen. |
 |SharedLogPath |string, Standardwert "" |statischen|Pfad und Dateiname für den Speicherort des freigegebenen Protokollcontainers. Verwenden Sie "", um den Standardpfad im Fabricdatenstamm zu nutzen. |
 |SharedLogSizeInMB |Ganze Zahl, Standardwert 8192 |statischen|Die Anzahl an MB, die für den freigegebenen Protokollcontainer reserviert wird. |
+|SharedLogThrottleLimitInPercentUsed|Ganze Zahl, Standardwert 0 | statischen | Der Prozentsatz der Nutzung des freigegebenen Protokolls (inklusive Drosselung). Der Wert muss zwischen 0 und 100 liegen. Der Wert 0 bedeutet, dass der Standardprozentwert verwendet wird. Der Wert 100 bedeutet, dass überhaupt keine Drosselung stattfindet. Ein Wert zwischen 1 und 99 gibt den Prozentsatz der Protokollnutzung an, nach dessen Überschreitung eine Drosselung erfolgt. Beispiel: Hat das freigegebene Protokoll eine Größe von 10 GB und lautet der Wert 90, erfolgt die Drosselung, sobald 9 GB davon genutzt werden. Die Verwendung des Standardwerts wird empfohlen.|
 |WriteBufferMemoryPoolMaximumInKB | Ganze Zahl, Standardwert 0 |Dynamisch|Die Anzahl an KB, bis zu der der Schreibpuffer-Speicherpool anwachsen kann. Verwenden Sie 0, um keine Begrenzung anzugeben. |
 |WriteBufferMemoryPoolMinimumInKB |Ganze Zahl, Standardwert 8388608 |Dynamisch|Die Anzahl an KB, die anfänglich für den Schreibpuffer-Speicherpool reserviert wird. Verwenden Sie 0, um eine Begrenzung anzugeben. Der Standardwert muss mit SharedLogSizeInMB weiter unten konsistent sein. |
 
@@ -624,10 +628,13 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ## <a name="security"></a>Sicherheit
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
+|AADCertEndpointFormat|string, Standardwert ""|statischen|Format des AAD-Zertifizierungsendpunkts (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml) |
 |AADClientApplication|string, Standardwert ""|statischen|Der Name der nativen Clientanwendung oder -ID, die Fabric-Clients darstellt. |
 |AADClusterApplication|string, Standardwert ""|statischen|Web-API-Anwendungsname oder -ID, der bzw. die den Cluster darstellt. |
+|AADLoginEndpoint|string, Standardwert ""|statischen|AAD-Anmeldeendpunkt (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https://login.microsoftonline.us) |
 |AADTenantId|string, Standardwert ""|statischen|Mandanten-ID (GUID) |
 |AdminClientCertThumbprints|string, Standardwert ""|Dynamisch|Fingerabdrücke von Zertifikaten, die von Clients in der Rolle „Administrator“ verwendet werden. Es handelt sich um eine durch Kommas getrennte Liste. |
+|AADTokenEndpointFormat|string, Standardwert ""|statischen|AAD-Tokenendpunkt (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https://login.microsoftonline.us/{0}) |
 |AdminClientClaims|string, Standardwert ""|Dynamisch|Alle möglichen Ansprüche, die von Administratorclients erwartet werden. Gleiches Format wie ClientClaims. Diese Liste wird intern ClientClaims hinzugefügt. Es besteht daher keine Notwendigkeit, die gleichen Einträge auch ClientClaims hinzuzufügen. |
 |AdminClientIdentities|string, Standardwert ""|Dynamisch|Windows-Identitäten der Fabric-Clients in der Rolle „Administrator“. Wird verwendet, um privilegierte Fabric-Vorgänge zu autorisieren. Es handelt sich um eine durch Kommas getrennte Liste. Jeder Eintrag ist ein Domänenkonto- oder Gruppenname. Der Einfachheit halber wird dem Konto, das „fabric.exe“ ausführt, automatisch die Rolle „Administrator“ zugewiesen. Dies gilt auch für die Gruppe ServiceFabricAdministrators. |
 |CertificateExpirySafetyMargin|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(43200)|statischen|Geben Sie die Zeitspanne in Sekunden an. Sicherheitsspanne für den Zertifikatablauf. Der Status des Integritätsberichts des Zertifikats ändert sich aus „OK“ in „Warning“, wenn das Ablaufdatum diese Angabe überschreitet. Der Standardwert sind 30 Tage. |

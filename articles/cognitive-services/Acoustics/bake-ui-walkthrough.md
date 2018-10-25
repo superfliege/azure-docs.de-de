@@ -1,20 +1,21 @@
 ---
-title: Baken von Akustik mit Project Acoustics in Cognitive Services
+title: Durchführen eines Akustik-Bake-Vorgangs mit Project Acoustics
+titlesuffix: Azure Cognitive Services
 description: In diesem Dokument wird das Übermitteln eines Akustik-Bake-Vorgangs mithilfe der Unity-Editor-Erweiterung erläutert.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 0e16ec765ae3cbef8a941f43a149428ffdf5bd8d
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: c37e050cd762cb173d64f78b5267e4ad252d17a9
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181285"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902245"
 ---
 # <a name="bake-acoustics"></a>Baken von Akustik
 
@@ -199,15 +200,19 @@ Sobald Sie mit den Vorschaudaten zufrieden sind, können Sie die Registerkarte *
 1. Die Schaltfläche Bake, die zum Aufrufen dieser Seite verwendet wird.
 2. Eine kurze Beschreibung, welche Vorgänge Sie auf dieser Seite durchführen müssen.
 3. Felder zum Eingeben Ihrer Azure-Anmeldeinformationen, sobald Ihr Azure-Konto erstellt wurde. Weitere Informationen finden Sie unter [Create an Azure Batch Account (Erstellen eines Azure Batch-Kontos)](create-azure-account.md).
-4. Der Azure Batch-Computeknotentyp, der für die Berechnung verwendet werden soll. Der Knotentyp muss vom Standort Ihres Azure-Rechenzentrums unterstützt werden. Wenn Sie sich nicht sicher sind, behalten Sie den Wert **Standard_F8** bei.
-5. Die Anzahl der Knoten, die für diese Berechnung verwendet werden soll. Die Anzahl, die Sie hier eingeben, wirkt sich auf die Zeit aus, die für den Bake-Vorgang erforderlich ist, und wird von der Zuteilung Ihres Azure Batch-Kerns eingeschränkt. Die Standardzuteilung ermöglicht nur zwei Knoten mit acht Kernen oder einen Knoten mit 16 Kernen, kann jedoch erweitert werden. Weitere Informationen zu Einschränkungen bei der Kernzuteilung finden Sie unter [Create an Azure Batch Account (Erstellen eines Azure Batch-Kontos)](create-azure-account.md).
-6. Die Anzahl der Tests für Ihre Szene, die auf der Registerkarte **Probe** (Tests) berechnet wurde. Die Anzahl der Tests bestimmt die Anzahl der Simulationen, die in der Cloud ausgeführt werden müssen. Sie können nicht mehr Knoten als Tests angeben.
-7. Die Zeit, die voraussichtlich verstreicht, während Ihr Auftrag in der Cloud ausgeführt wird. Diese schließt die Startzeit der Knoten nicht ein. Sobald der Auftrag ausgeführt wird, bestimmt diese Zeit, wie lange die Ausführung dauern sollte, bis Sie die Ergebnisse erhalten. Beachten Sie, dass es sich dabei nur um eine Schätzung handelt.
-8. Die gesamte Computezeit, die für die Ausführung der Simulationen erforderlich ist. Diese entspricht der Computezeit für die Knoten, die in Azure verwendet werden. Weitere Informationen zur Verwendung dieses Werts finden Sie im Verlauf dieses Artikels unter [Schätzen der Bake-Kosten](#Estimating-bake-cost).
-9. Diese Meldung teilt Ihnen mit, wo die Ergebnisse des Bake-Vorgangs nach Abschluss des Auftrags gespeichert werden.
-10. (Nur für fortgeschrittene Benutzer) Wenn es erforderlich ist, dass Unity einen übermittelten Bake-Vorgang „vergisst“ (z.B., wenn Sie die Ergebnisse mit einem anderen Computer heruntergeladen haben), klicken Sie auf die Schaltfläche **Clear State** (Status löschen), um den übermittelten Auftrag zu vergessen. Das bedeutet, dass die Ergebnisdatei **nicht** heruntergeladen wird, wenn diese bereit ist, und dass dies **nicht dem Abbrechen des Auftrags entspricht**. Wenn der Auftrag bereits ausgeführt wird, wird er weiterhin in der Cloud ausgeführt.
-11. Klicken Sie auf die Schaltfläche „Bake“, um den Bake-Vorgang an die Cloud zu übermitteln. Während ein Auftrag ausgeführt wird, zeigt diese stattdessen **Cancel Job** (Auftrag abbrechen) an.
-12. Dieser Bereich zeigt den Status des Bake-Vorgangs an. Wenn dieser abgeschlossen ist, sollte dieser **Downloaded** (Heruntergeladen) anzeigen.
+4. Docker-Imagetag für das Akustiktoolset.
+5. Starten Sie das Azure-Portal, um Ihre Abonnements zu verwalten, die Nutzung zu überwachen und Abrechnungsinformationen anzuzeigen usw. 
+6. Der Azure Batch-Computeknotentyp, der für die Berechnung verwendet werden soll. Der Knotentyp muss vom Standort Ihres Azure-Rechenzentrums unterstützt werden. Wenn Sie sich nicht sicher sind, behalten Sie den Wert **Standard_F8s_v2** bei.
+7. Die Anzahl der Knoten, die für diese Berechnung verwendet werden soll. Die Anzahl, die Sie hier eingeben, wirkt sich auf die Zeit aus, die für den Bake-Vorgang erforderlich ist, und wird von der Zuteilung Ihres Azure Batch-Kerns eingeschränkt. Die Standardzuteilung ermöglicht nur zwei Knoten mit acht Kernen oder einen Knoten mit 16 Kernen, kann jedoch erweitert werden. Weitere Informationen zu Einschränkungen bei der Kernzuteilung finden Sie unter [Create an Azure Batch Account (Erstellen eines Azure Batch-Kontos)](create-azure-account.md).
+8. Aktivieren Sie dieses Kontrollkästchen, um Ihren Computepool so zu konfigurieren, dass er [Knoten mit niedriger Priorität](https://docs.microsoft.com/azure/batch/batch-low-pri-vms) verwendet. Computeknoten mit niedriger Priorität sind deutlich kostengünstiger, aber sie sind möglicherweise nicht immer verfügbar oder können jederzeit vorzeitig entfernt werden.
+9. Die Anzahl der Tests für Ihre Szene, die auf der Registerkarte **Probe** (Tests) berechnet wurde. Die Anzahl der Tests bestimmt die Anzahl der Simulationen, die in der Cloud ausgeführt werden müssen. Sie können nicht mehr Knoten als Tests angeben.
+10. Die Zeit, die voraussichtlich verstreicht, während Ihr Auftrag in der Cloud ausgeführt wird. Diese schließt die Startzeit der Knoten nicht ein. Sobald der Auftrag ausgeführt wird, bestimmt diese Zeit, wie lange die Ausführung dauern sollte, bis Sie die Ergebnisse erhalten. Beachten Sie, dass es sich dabei nur um eine Schätzung handelt.
+11. Die gesamte Computezeit, die für die Ausführung der Simulationen erforderlich ist. Diese entspricht der Computezeit für die Knoten, die in Azure verwendet werden. Weitere Informationen zur Verwendung dieses Werts finden Sie im Verlauf dieses Artikels unter [Schätzen der Bake-Kosten](#Estimating-bake-cost).
+12. Diese Meldung teilt Ihnen mit, wo die Ergebnisse des Bake-Vorgangs nach Abschluss des Auftrags gespeichert werden.
+13. (Nur für fortgeschrittene Benutzer) Wenn es erforderlich ist, dass Unity einen übermittelten Bake-Vorgang „vergisst“ (z.B., wenn Sie die Ergebnisse mit einem anderen Computer heruntergeladen haben), klicken Sie auf die Schaltfläche **Clear State** (Status löschen), um den übermittelten Auftrag zu vergessen. Das bedeutet, dass die Ergebnisdatei **nicht** heruntergeladen wird, wenn diese bereit ist, und dass dies **nicht dem Abbrechen des Auftrags entspricht**. Wenn der Auftrag bereits ausgeführt wird, wird er weiterhin in der Cloud ausgeführt.
+14. Klicken Sie auf die Schaltfläche „Bake“, um den Bake-Vorgang an die Cloud zu übermitteln. Während ein Auftrag ausgeführt wird, zeigt diese stattdessen **Cancel Job** (Auftrag abbrechen) an.
+15. Bereitet die Verarbeitung der Akustiksimulation auf einem lokalen Computer vor. Weitere Informationen finden Sie unter [Lokaler Bake-Vorgang](#Local-bake).  
+16. Dieser Bereich zeigt den Status des Bake-Vorgangs an. Wenn dieser abgeschlossen ist, sollte dieser **Downloaded** (Heruntergeladen) anzeigen.
 
 Vollständige Informationen zu aktiven Aufträgen, Computepools und Speicherplatz können Sie jederzeit im [Azure-Portal](https://portal.azure.com) abrufen.
 
@@ -217,13 +222,34 @@ Sobald Sie einen Bake-Vorgang gestartet haben, können Sie Unity schließen. Je 
 
 Die Azure-Anmeldeinformationen werden sicher auf Ihrem lokalen Computer gespeichert und Ihrem Unity-Editor zugeordnet. Sie werden nur verwendet, um eine sichere Verbindung mit Azure herzustellen.
 
-### <a name="Estimating-bake-cost"></a> Schätzen der Bake-Kosten
+### <a name="Estimating-bake-cost"></a> Schätzen der Bake-Kosten für Azure
 
-Wenn Sie einschätzen möchten, wie viel ein bestimmter Bake-Vorgang kosten wird, multiplizieren Sie den angezeigten Wert für **Estimated Compute Cost** (Geschätzte Computekosten) mit den stündlichen Kosten des ausgewählten **VM-Knotentyps** (in Ihrer lokalen Währung). Das Ergebnis umfasst nicht die Zeit, die erforderlich ist, um die Knoten bereit zu machen und auszuführen. Wenn Sie beispielsweise **Standard_F8** als Knotentyp ausgewählt haben (Kosten: 0,75 $/Stunde) und die geschätzte Computezeit 3 Stunden und 57 Minuten beträgt, betragen die geschätzten Kosten für die Ausführung des Auftrags „0,75 $ × 4 h = ~3,00 $“. Die tatsächlichen Kosten sind aufgrund der zusätzlichen Zeit für das Starten der Knoten wahrscheinlich etwas höher. Die stündlichen Kosten für Knoten finden Sie auf der Seite [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux) (klicken Sie auf die Kategorie „Computeoptimiert“ oder „High Performance Computing“).
+Wenn Sie einschätzen möchten, wie viel ein bestimmter Bake-Vorgang kosten wird, multiplizieren Sie den angezeigten Wert für **Estimated Compute Cost** (Geschätzte Computekosten) mit den stündlichen Kosten des ausgewählten **VM-Knotentyps** (in Ihrer lokalen Währung). Das Ergebnis umfasst nicht die Zeit, die erforderlich ist, um die Knoten bereit zu machen und auszuführen. Wenn Sie z. B. **Standard_F8s_v2** als Knotentyp ausgewählt haben (Kosten: 0,40 $/Stunde) und die geschätzte Computezeit 3 Stunden und 57 Minuten beträgt, betragen die geschätzten Kosten für die Ausführung des Auftrags „0,40 $ × ~4 h = ~1,60 $“. Die tatsächlichen Kosten sind aufgrund der zusätzlichen Zeit für das Starten der Knoten wahrscheinlich etwas höher. Die stündlichen Kosten für Knoten finden Sie auf der Seite [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux) (klicken Sie auf die Kategorie „Computeoptimiert“ oder „High Performance Computing“).
 
 ### <a name="reviewing-the-bake-results"></a>Überprüfen der Bake-Ergebnisse
 
 Überprüfen Sie nach dem Bake-Vorgang, ob die Voxels und Testpunkte sich an den erwarteten Positionen befinden, indem Sie das Runtime-Plug-In ausführen. Weitere Informationen finden Sie unter [Design Process Overview for Acoustics (Übersicht über den Entwurfsprozess für Akustik)](design-process.md).
+
+## <a name="Local-bake"></a>Lokaler Bake-Vorgang
+Der lokale Bake-Vorgang führt die Akustiksimulation auf Ihrem eigenen PC aus, anstatt sie in den Azure Batch-Computecluster zu verlagern. Dies kann eine geeignete Option zum Experimentieren mit der Akustik sein, ohne dass ein Azure-Abonnement erforderlich ist. Beachten Sie, dass die Akustiksimulation rechenintensiv ist und je nach Szenengröße, Simulationskonfiguration und Rohrechenleistung des verarbeitenden Computers lange dauern kann.
+
+### <a name="minimum-hardware-requirements"></a>Minimale Hardwareanforderungen
+64-Bit-Intel-Prozessor mit mindestens 8 Prozessorkernen und 32 GB RAM.
+
+Beispiel: Ein Computer mit Intel Xeon-Prozessor E5-1660 mit 8 Prozessorkernen, 3 GHz und 32 GB RAM:
+* Kleine Szene mit 100 Tests nimmt etwa 2 Stunden für einen einfachen Bake-Vorgang und etwa 32 Stunden für einen Bake-Vorgang mit hoher Auflösung in Anspruch.
+* Größere Szene mit 1000 Tests kann bis zu 20 Stunden für einen einfachen Bake-Vorgang und etwa 21 Tage für einen Bake-Vorgang mit hoher Auflösung in Anspruch nehmen.
+
+### <a name="setup-docker"></a>Einrichten von Docker
+Installieren und Konfigurieren von Docker auf dem PC, auf dem die Simulation verarbeitet werden soll –
+1. Installieren Sie das [Docker-Toolset](https://www.docker.com/products/docker-desktop).
+2. Starten Sie die Docker-Einstellungen, navigieren Sie zu den Optionen unter „Erweitert“ und konfigurieren Sie die Ressourcen so, dass diese über mindestens 8 GB RAM verfügen. Je mehr CPUs Sie Docker zuweisen können, desto schneller wird der Bake-Vorgang abgeschlossen. ![Beispiel zu Docker-Einstellungen](media/DockerSettings.png)
+3. Navigieren Sie zu „Freigegebene Laufwerke“ und aktivieren Sie die Freigabe für das Laufwerk, das für die Verarbeitung verwendet wird.![DockerDriveSharing](media/DockerSharedDrives.png)
+
+### <a name="run-local-bake"></a>Ausführen eines lokalen Bake-Vorgangs
+1. Klicken Sie auf die Registerkarte zum Vorbereiten des lokalen Bake-Vorgangs und wählen Sie einen Ordner aus, in dem die Eingabedateien und Ausführungsskripts gespeichert werden. Sie können den Bake-Vorgang dann auf jedem beliebigen Computer ausführen, solange er die minimalen Hardwareanforderungen erfüllt und Docker installiert ist, indem Sie den Ordner auf diesen Computer kopieren.
+2. Starten Sie die Simulation mit dem Skript „runlocalbake.bat“. Dieses Skript ruft das Project Acoustics-Docker-Image mit dem für die Simulationsbearbeitung notwendigen Toolset ab und startet die Simulation. 
+3. Nach Abschluss der Simulation kopieren Sie die resultierende ACE-Datei zurück in Ihr Unity-Projekt. Um sicherzustellen, dass Unity dies als Binärdatei erkennt, fügen Sie „.bytes“ an die Dateiendung an (z. B. „Scene1.ace.bytes“). Die ausführlichen Protokolle für die Simulation werden in der Datei „AcousticsLog.txt“ gespeichert. Wenn Probleme auftreten, teilen Sie diese Datei, um die Diagnose zu erleichtern.
 
 ## <a name="Data-Files"></a>Datendateien
 

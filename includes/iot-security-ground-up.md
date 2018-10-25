@@ -1,19 +1,19 @@
 ---
 title: Includedatei
 description: Includedatei
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
 ms.date: 04/24/2018
-ms.author: dobett
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 181432c3050bbc614898b1ddf779bc90239a35be
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 8137a292045377c5dccb69c21a8118d0dc17874e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39189356"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069933"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Sicherheit im Internet der Dinge von Anfang an
 
@@ -62,7 +62,9 @@ Azure IoT Hub-Richtlinien für die Zugriffssteuerung in der Cloud ermöglichen d
 Weitere Sicherheitsfeatures für Geräte:
 
 * Geräte akzeptieren keine unerwünschten Netzwerkverbindungen. Sie stellen alle Verbindungen und Routen nur in ausgehender Richtung her. Damit ein Gerät einen Befehl vom Back-End erhalten kann, muss das Gerät eine Verbindung initiieren, um eine Prüfung auf ausstehende Befehle durchzuführen, die verarbeitet werden müssen. Nachdem eine Verbindung zwischen dem Gerät und dem IoT Hub sicher eingerichtet wurde, können Nachrichten auf transparente Weise aus der Cloud an das Gerät und vom Gerät in die Cloud gesendet werden.
+
 * Geräte stellen Verbindungen nur mit bekannten Peerdiensten her bzw. richten Routen dafür ein, z.B. mit einem Azure IoT Hub.
+
 * Für die Autorisierung und Authentifizierung auf Systemebene werden gerätebezogene Identitäten verwendet, sodass Anmeldeinformationen und Berechtigungen nahezu sofort widerrufbar sind.
 
 ### <a name="secure-connectivity"></a>Sichere Verbindungen
@@ -76,7 +78,9 @@ Für die Skalierbarkeit ist es erforderlich, dass eine sichere Interoperabilitä
 Weitere Features für die Verbindungssicherheit:
 
 * Der Kommunikationspfad zwischen Geräten und dem Azure IoT Hub oder zwischen Gateways und dem Azure IoT Hub wird per branchenüblicher Transport Layer Security (TLS) geschützt, wobei der Azure IoT Hub mit dem X.509-Protokoll authentifiziert wird.
+
 * Um Geräte vor unerwünschten eingehenden Verbindungen zu schützen, öffnet der Azure IoT Hub keine Verbindung mit dem Gerät. Alle Verbindungen werden vom Gerät initiiert.
+
 * Der Azure IoT Hub speichert Nachrichten für Geräte dauerhaft und wartet, bis die Verbindung vom Gerät hergestellt wird. Diese Befehle werden zwei Tage lang gespeichert, damit auch Geräte, die aufgrund von bestimmten Stromversorgungs- oder Verbindungsaspekten nur sporadisch verbunden sind, diese Befehle erhalten. Azure IoT Hub verwaltet für jedes Gerät eine eigene Warteschlange.
 
 ### <a name="secure-processing-and-storage-in-the-cloud"></a>Sichere Verarbeitung und Speicherung in der Cloud
@@ -100,8 +104,13 @@ Sicherheitsmaßnahmen sind in die Solution Accelerators standardmäßig integrie
 Für jeden Solution Accelerator werden Instanzen von Azure-Diensten erstellt, z.B.:
 
 * [**Azure IoT Hub:**](https://azure.microsoft.com/services/iot-hub/) das Gateway, über das die Cloud mit Geräten verbunden wird. Sie können eine Skalierung auf Millionen von Verbindungen pro Hub durchführen und riesige Datenmengen mit Authentifizierung pro Gerät verarbeiten, um Ihre Lösung zu schützen.
+
 * [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): Ein skalierbarer, vollständig indizierter Datenbankdienst für semistrukturierte Daten, mit dem die Metadaten für die bereitgestellten Geräte verwaltet werden, z.B. Attribute, Konfiguration und Sicherheitseigenschaften. Azure Cosmos DB bietet eine Verarbeitung mit hoher Leistung und hohem Durchsatz, eine schemaagnostische Indizierung von Daten und eine umfassende SQL-Abfrageschnittstelle.
+
 * [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/)Datenstromverarbeitung in Echtzeit in der Cloud, mit der eine schnelle Entwicklung und Bereitstellung einer kostengünstigen Analyselösung ermöglicht wird, mit der Sie in Echtzeit basierend auf Geräte-, Sensor-, Infrastruktur- und Anwendungsdaten wichtige Einblicke erhalten. Die Daten aus diesem vollständig verwalteten Dienst können auf beliebige Volumina skaliert werden, während trotzdem ein hoher Durchsatz, eine geringe Latenz und Resilienz erzielt werden.
+
 * [**Azure App Services:**](https://azure.microsoft.com/services/app-service/) Cloudplattform für leistungsstarke mobile Apps und Web-Apps, für die eine Verbindung mit cloudbasierten oder lokalen Datenquellen hergestellt werden kann. Entwickeln Sie benutzerfreundliche mobile Apps für iOS, Android und Windows. Profitieren Sie von einer Integration in Ihre SaaS- (Software as a Service) und Unternehmensanwendungen und vom standardmäßigen Zugriff auf Dutzende von cloudbasierten Diensten und Unternehmensanwendungen. Programmieren Sie in Ihrer bevorzugten Sprache und IDE, z.B. .NET, Node.js, PHP, Python oder Java, um schneller als je zuvor Web-Apps und APIs zu entwickeln.
+
 * [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): Das Logic Apps-Feature von Azure App Service dient als Hilfe bei der Integration Ihrer IoT-Lösung in Ihre vorhandenen branchenspezifischen Systeme und bei der Automatisierung von Workflowprozessen. Mit Logik-Apps können Entwickler Workflows entwerfen, die über einen Auslöser gestartet werden und dann eine Reihe von Schritten ausführen – Regeln und Aktionen, für die leistungsfähige Connectors zur Integration in Ihre Geschäftsprozesse eingesetzt werden. Logik-Apps ermöglichen standardmäßig Verbindungen mit einem umfassenden Ökosystem von SaaS-, cloudbasierten und lokalen Anwendungen.
-* [**Azure Blob Storage:**](https://azure.microsoft.com/services/storage/) zuverlässiger, kostengünstiger Cloudspeicher für die Daten, die von Ihren Geräten an die Cloud gesendet werden.
+
+* [**Azure Blob Storage:**](https://azure.microsoft.com/services/storage/) zuverlässiger, kostengünstiger Cloudspeicher für die Daten, die von Ihren Geräten an die Cloud gesendet werden

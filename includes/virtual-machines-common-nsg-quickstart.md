@@ -5,26 +5,36 @@ services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d9c8a0e6a3bd6d79a11ee0d0dab0500a209e5571
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38943729"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888546"
 ---
-In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt.
+In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer, indem Sie einen Netzwerkfilter für ein Subnetz oder eine VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert wird, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt.
 
-Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. Sobald Sie über eine VM verfügen, die für die Bereitstellung von Webanforderungen über den standardmäßigen TCP-Port 80 konfiguriert ist (denken Sie auch an das Starten der richtigen Dienste und das Öffnen der erforderlichen Betriebssystem-Firewallregeln auf der VM), führen Sie die folgenden Schritte aus:
+Anhand des Beispiels in diesem Artikel wird veranschaulicht, wie Sie einen Netzwerkfilter erstellen, der den standardmäßigen TCP-Port 80 nutzt. (Es wird davon ausgegangen, dass Sie die entsprechenden Dienste bereits gestartet und alle Betriebssystem-Firewallregeln auf dem virtuellen Computer geöffnet haben.)
 
-1. Erstellen einer Netzwerksicherheitsgruppe
-2. Erstellen einer Datenverkehr-Eingangsregel mit diesen Angaben:
-   * Zielportbereich „80“
-   * Quellportbereich „*“ (beliebiger Quellport)
-   * Prioritätswert von weniger als 65.500 (um eine höhere Priorität als mit der standardmäßigen Catch-All-Verweigerungsregel für eingehenden Datenverkehr zu erzielen)
-3. Zuordnen der Netzwerksicherheitsgruppe zur VM-Netzwerkschnittstelle oder zum Subnetz
+Nach der Erstellung eines virtuellen Computers, der für die Bereitstellung von Webanforderungen über den standardmäßigen TCP-Port 80 konfiguriert ist, haben Sie folgende Möglichkeiten:
 
-Sie können komplexe Netzwerkkonfigurationen zur Sicherung Ihrer Umgebung mithilfe von Netzwerksicherheitsgruppen und Regeln erstellen. In unserem Beispiel werden nur ein oder zwei Regeln verwendet, die HTTP-Datenverkehr oder Remoteverwaltung zulassen. Weitere Informationen finden Sie im folgenden Abschnitt [Weitere Informationen](#more-information-on-network-security-groups) oder unter [Was ist eine Netzwerksicherheitsgruppe?](../articles/virtual-network/security-overview.md)
+1. Erstellen Sie eine Netzwerksicherheitsgruppe.
+
+2. Erstellen Sie eine Eingangssicherheitsregel, die Datenverkehr zulässt, und weisen Sie den folgenden Einstellungen Werte zu:
+
+   - **Zielportbereiche**: 80
+
+   - **Quellportbereiche**: * (beliebiger Quellport zulässig)
+
+   - **Prioritätswert**: Geben Sie einen Wert von maximal 65.500 und mit einer höheren Priorität als die standardmäßige Catch-All-Verweigerungsregel für eingehenden Datenverkehr ein.
+
+3. Ordnen Sie die Netzwerksicherheitsgruppe der VM-Netzwerkschnittstelle oder dem Subnetz zu.
+
+In diesem Beispiel wird zwar eine einfache Regel zum Zulassen von HTTP-Datenverkehr verwendet, Sie können aber auch Netzwerksicherheitsgruppen und -regeln nutzen, um komplexere Netzwerkkonfigurationen zu erstellen. 
+
+
+
 

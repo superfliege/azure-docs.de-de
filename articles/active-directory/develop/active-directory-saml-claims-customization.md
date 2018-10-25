@@ -1,6 +1,6 @@
 ---
-title: Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure Active Directory | Microsoft Docs
-description: Hier erfahren Sie, wie Sie im SAML-Token ausgestellte Ansprüche für Unternehmensanwendungen in Azure Active Directory anpassen.
+title: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen in Azure AD | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die Ansprüche im SAML-Token für Unternehmensanwendungen in Azure AD anpassen.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,20 +17,20 @@ ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 80842f7e99ee0c58f1615892f3c3c4adf03119b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5633dfbf59396e79226b196c2b699981409092ab
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956967"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902024"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-ad"></a>Gewusst wie: Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure AD
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
-Derzeit unterstützt Azure Active Directory einmaliges Anmelden für die meisten Unternehmensanwendungen, einschließlich bereits im Azure AD-App-Katalog integrierte Anwendungen sowie benutzerdefinierte Anwendungen. Wenn sich ein Benutzer mithilfe des SAML 2.0-Protokolls über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (über eine HTTP POST-Anfrage). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token enthalten Informationen über den Benutzer, die als „Ansprüche“ bezeichnet werden.
+Derzeit unterstützt Azure Active Directory (Azure AD) einmaliges Anmelden für die meisten Unternehmensanwendungen, einschließlich bereits im Azure AD-App-Katalog integrierter Anwendungen sowie benutzerdefinierter Anwendungen. Wenn sich ein Benutzer mithilfe des SAML 2.0-Protokolls über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (über eine HTTP POST-Anfrage). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token enthalten Informationen über den Benutzer, die als „Ansprüche“ bezeichnet werden.
 
-Im technischen Jargon bezeichnet ein Anspruch (Claim) Informationen über den Benutzer, die ein Identitätsanbieter im Benutzertoken übergibt. Im [SAML-Token](http://en.wikipedia.org/wiki/SAML_2.0) sind diese Daten in der Regel in der SAML-Attributanweisung enthalten. Die eindeutige ID des Benutzers wird normalerweise im SAML-Betreff dargestellt und auch als Namensbezeichner bezeichnet.
+Ein *Anspruch* (Claim) bezeichnet Informationen, die ein Identitätsanbieter über einen Benutzer in dem für diesen Benutzer ausgestellten Token angibt. Im [SAML-Token](http://en.wikipedia.org/wiki/SAML_2.0) sind diese Daten in der Regel in der SAML-Attributanweisung enthalten. Die eindeutige ID des Benutzers wird normalerweise im SAML-Betreff dargestellt und auch als Namensbezeichner bezeichnet.
 
-Standardmäßig stellt Azure Active Directory der Anwendung ein SAML-Token aus, das einen NameIdentifier-Anspruch enthält, dessen Wert dem Benutzernamen (also dem Benutzerprinzipalnamen) in Azure AD entspricht. Über diesen Wert kann der Benutzer eindeutig identifiziert werden. Das SAML-Token enthält auch zusätzliche Ansprüche, die E-Mail-Adresse des Benutzers, Vorname und Nachname enthält.
+Standardmäßig stellt Azure AD der Anwendung ein SAML-Token aus, das einen NameIdentifier-Anspruch enthält, dessen Wert dem Benutzernamen (also dem Benutzerprinzipalnamen) in Azure AD entspricht. Über diesen Wert kann der Benutzer eindeutig identifiziert werden. Das SAML-Token enthält auch zusätzliche Ansprüche, die E-Mail-Adresse des Benutzers, Vorname und Nachname enthält.
 
 Um die im SAML-Token für die Anwendung ausgestellten Ansprüche anzuzeigen oder zu bearbeiten, öffnen Sie die Anwendung im Azure-Portal. Aktivieren Sie anschließend im Abschnitt **Benutzerattribute** der Anwendung das Kontrollkästchen **Alle weiteren Benutzerattribute anzeigen und bearbeiten**.
 
@@ -38,7 +38,7 @@ Um die im SAML-Token für die Anwendung ausgestellten Ansprüche anzuzeigen oder
 
 Es gibt zwei Gründe dafür, dass Sie die im SAML-Token ausgegebenen Ansprüche möglicherweise bearbeiten müssen:
 * Die Anwendung wurde so geschrieben, dass sie einen anderen Satz an Anspruchs-URIs oder Anspruchswerten erfordert.
-* Die Anwendung wurde auf eine Weise bereitgestellt, die erfordert, dass es sich beim NameIdentifier-Anspruch nicht um den in Azure Active Directory gespeicherten Benutzernamen (also Benutzerprinzipalnamen) handelt.
+* Die Anwendung wurde auf eine Weise bereitgestellt, die erfordert, dass es sich beim NameIdentifier-Anspruch nicht um den in Azure AD gespeicherten Benutzernamen (also Benutzerprinzipalnamen) handelt.
 
 Sie können beliebige Standardwerte eines Anspruchs bearbeiten. Wählen Sie die Anspruchszeile in der Tabelle mit den SAML-Tokenattributen. Daraufhin wird der Abschnitt **Attribut bearbeiten** geöffnet, und Sie können den Anspruchsnamen und -wert sowie den dem Anspruch zugeordneten Namespace bearbeiten.
 
@@ -130,8 +130,9 @@ In SAML gibt es einige eingeschränkte Ansprüche. Wenn Sie diese Ansprüche hin
     | http://schemas.microsoft.com/identity/claims/scope |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Anwendungsverwaltung in Azure Active Directory](../manage-apps/what-is-application-management.md)
-* [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+
+* [Anwendungsverwaltung in Azure AD](../manage-apps/what-is-application-management.md)
+* [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure AD-Anwendungskatalog enthalten sind](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Problembehandlung bei SAML-basiertem einmaligem Anmelden](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->

@@ -2,19 +2,19 @@
 title: Includedatei
 description: Includedatei
 services: functions
-author: tdykstra
-manager: cfowler
+author: ggailey777
+manager: jeconnoc
 ms.service: functions
 ms.topic: include
-ms.date: 05/23/2018
-ms.author: tdykstra
+ms.date: 09/04/2018
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 5a818bf4078ce9cf38aa83e4af252eacf6e49982
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3320422396148cad3252c0e834e903b3853a9671
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38738946"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48812242"
 ---
 Der folgenden Tabelle können Sie entnehmen, wie Sie Unterstützung für diese Bindung in den einzelnen Entwicklungsumgebungen hinzufügen.
 
@@ -23,3 +23,5 @@ Der folgenden Tabelle können Sie entnehmen, wie Sie Unterstützung für diese B
 |Lokale Entwicklung – C#-Klassenbibliothek       | [Paket installieren](../articles/azure-functions/functions-triggers-bindings.md#c-class-library-with-visual-studio-2017) |
 |Lokale Entwicklung – C#-Skript, JavaScript, F# |[Erweiterung registrieren](../articles/azure-functions/functions-triggers-bindings.md#local-development-azure-functions-core-tools)         |
 |Entwicklung im Portal| [Automatisch](../articles/azure-functions/functions-triggers-bindings.md#azure-portal-development)    |
+
+Informationen zum Aktualisieren der vorhandenen Bindungserweiterungen im Portal ohne erneute Veröffentlichung Ihres Funktions-App-Projekts finden Sie unter [Manually install or update Azure Functions binding extensions from the portal](../articles/azure-functions/install-update-binding-extensions-manual.md) (Manuelles Installieren oder Aktualisieren von Azure Functions-Bindungserweiterungen über das Portal).

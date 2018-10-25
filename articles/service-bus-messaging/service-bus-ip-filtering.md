@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: ccb759a9151d734aa99a6f6b9c68e6072874dd84
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c6e9eef762d4a9eb95685d94c61ce10d499bb155
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394827"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884802"
 ---
 # <a name="use-ip-filters"></a>Verwenden von IP-Filtern
 
@@ -47,7 +47,9 @@ Wenn Sie beispielsweise Adressen im Bereich 70.37.104.0/24 zulassen und alle and
 > [!NOTE]
 > Das Ablehnen von IP-Adressen kann andere Azure-Dienste (etwa Azure Stream Analytics, Azure Virtual Machines oder den Device Explorer im Portal) an der Interaktion mit dem Service Bus hindern.
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNet-Regel mit Azure Resource Manager-Vorlagen
+### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNET-Regel mit Azure Resource Manager-Vorlagen
+
+> ![WICHTIG] Virtuelle Netzwerke werden nur im Tarif **Premium** von Service Bus unterstützt.
 
 Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Service Bus-Namespace eine VNET-Regel hinzufügen.
 

@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d94aaa93596a18cf92b745267a6be9966454e36f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1b9f1f1ff5e0a2a178b5a0b2a09f5513bf508b3f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971544"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079173"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0-Protokolle – OAuth 2.0-Autorisierungscodefluss
 
@@ -178,8 +178,10 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 | expires_in    | Gibt an, wie lange das Zugriffstoken (in Sekunden) gültig ist.                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | Die Bereiche, für die das Zugriffstoken gültig ist.                                                                                                                                                                                                                                                                                                                                                                                                         |
 | refresh_token | Ein Aktualisierungstoken von OAuth 2.0. Die App kann dieses Token verwenden, um zusätzliche Zugriffstoken nach Ablauf der aktuellen Zugriffstoken zu erhalten. Aktualisierungstoken sind langlebig und können verwendet werden, um den Zugriff auf Ressourcen für längere Zeit beizubehalten. Weitere Informationen zum Aktualisieren eines Zugriffstokens finden Sie [im Abschnitt weiter unten](#refresh-the-access-token). <br> **Hinweis:** Wird nur bei Anforderung des `offline_access`-Bereichs bereitgestellt.                                               |
-| id_token      | Ein unsigniertes JSON-Webtoken (JWT). Die App kann die Segmente dieses Tokens decodieren, um Informationen zum angemeldeten Benutzer abzurufen. Die App kann die Werte zwischenspeichern und sie anzeigen, sollte sich in Bezug auf Autorisierungs- und Sicherheitsgrenzen aber nicht darauf verlassen. Weitere Informationen zu ID-Token finden Sie unter [`id_token reference`](id-tokens.md). <br> **Hinweis:** Wird nur bei Anforderung des `openid`-Bereichs bereitgestellt. |
+| id_token      | JSON Web Token (JWT). Die App kann die Segmente dieses Tokens decodieren, um Informationen zum angemeldeten Benutzer abzurufen. Die App kann die Werte zwischenspeichern und sie anzeigen, sollte sich in Bezug auf Autorisierungs- und Sicherheitsgrenzen aber nicht darauf verlassen. Weitere Informationen zu ID-Token finden Sie unter [`id_token reference`](id-tokens.md). <br> **Hinweis:** Wird nur bei Anforderung des `openid`-Bereichs bereitgestellt. |
+
 #### <a name="error-response"></a>Fehlerantwort
+
 Fehlerantworten sehen wie folgt aus:
 
 ```json
@@ -234,7 +236,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>Aktualisieren des Zugriffstokens
 
-Zugriffstoken sind kurzlebig. Daher müssen Sie sie nach Ablauf aktualisieren, um weiterhin auf Ressourcen zuzugreifen. Dazu übermitteln Sie eine weitere `POST`-Anforderung an den `/token`-Endpunkt, dieses Mal unter Angabe des `refresh_token` statt des `code`:
+Zugriffstoken sind kurzlebig. Daher müssen Sie sie nach Ablauf aktualisieren, um weiterhin auf Ressourcen zuzugreifen. Dazu übermitteln Sie eine weitere `POST`-Anforderung an den `/token`-Endpunkt, dieses Mal unter Angabe des `refresh_token` statt des `code`.  Aktualisierungstoken sind für alle Berechtigungen gültig, für die Ihr Client bereits die Einwilligung erhalten hat. Daher kann ein Aktualisierungstoken, das für eine Anforderung für `scope=mail.read` ausgestellt wurde, zum Anfordern eines neuen Zugriffstokens für `scope=api://contoso.com/api/UseResource` verwendet werden.  
+
+Für Aktualisierungstoken werden keine Lebensdauern angegeben. Normalerweise verfügen Aktualisierungstoken über relativ lange Lebensdauern. In einigen Fällen laufen Aktualisierungstoken aber ab, werden widerrufen oder verfügen nicht über ausreichende Berechtigungen für die gewünschte Aktion. Von Ihrer Anwendung müssen [Fehler, die vom Tokenausstellungsendpunkt zurückgegeben werden](#error-codes-for-token-endpoint-errors), erwartet und richtig behandelt werden. 
 
 ```
 // Line breaks for legibility only

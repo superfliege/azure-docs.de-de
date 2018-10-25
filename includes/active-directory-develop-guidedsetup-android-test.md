@@ -1,31 +1,54 @@
-## <a name="test-your-code"></a>Testen Ihres Codes
+---
+title: Includedatei
+description: Includedatei
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/13/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 991709ee635872e33dc89dcededc7f6ac3b28ea3
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843334"
+---
+## <a name="test-your-app"></a>Testen Ihrer App
 
-1. Stellen Sie Ihren Code Ihrem Gerät/Geräteemulator bereit.
+1. Führen Sie Ihren Code auf Ihrem Gerät/Emulator aus.
 
-2. Wenn Sie Ihre Anwendung testen möchten, verwenden Sie für die Anmeldung ein Azure Active Directory-Konto (Geschäfts-, Schul- oder Unikonto) oder ein Microsoft-Konto (live.com, outlook.com). 
+2. Melden Sie sich mit einem Azure Active Directory-Konto (Geschäfts-, Schul- oder Unikonto) oder einem Microsoft-Konto (live.com, outlook.com) an. 
 
     ![Testen Ihrer Anwendung](media/active-directory-develop-guidedsetup-android-test/mainwindow.png)
     <br/><br/>
     ![Eingeben von Benutzername und Kennwort](media/active-directory-develop-guidedsetup-android-test/usernameandpassword.png)
 
-### <a name="provide-consent-for-application-access"></a>Zustimmen zum Anwendungszugriff
-Bei der ersten Anmeldung bei Ihrer Anwendung werden Sie zudem aufgefordert, Ihre Zustimmung zu geben, dass die Anwendung auf Ihr Profil zugreifen und Sie anmelden darf, wie hier gezeigt: 
+### <a name="consent-to-your-app"></a>Zustimmung zur App
+Wenn sich ein Benutzer zum ersten Mal bei Ihrer Anwendung anmeldet, wird er aufgefordert, den von der App benötigten Berechtigungen zuzustimmen, wie hier gezeigt: 
 
 ![Zustimmen zum Anwendungszugriff](media/active-directory-develop-guidedsetup-android-test/androidconsent.png)
 
 
-### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
-Nachdem Sie sich angemeldet haben, sollten die Ergebnisse angezeigt werden, die durch den Aufruf der Microsoft Graph-API zurückgegeben werden. Der Aufruf des **me**-Endpunkt der Microsoft Graph-API gibt das [Benutzerprofil](https://graph.microsoft.com/v1.0/me) zurück. Eine Liste der allgemeinen Microsoft Graph-Endpunkte finden Sie in der Entwicklerdokumentation mit einer [Übersicht über Microsoft Graph](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries).
+### <a name="success"></a>Erfolg!
+Nach der Anmeldung und Zustimmung zeigt die App die Antwort der Microsoft Graph-API an. Dieser spezifische Aufruf richtet sich an den Endpunkt **/me** und gibt das [Benutzerprofil](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_get) zurück. Eine Liste der anderen Microsoft Graph-Endpunkte finden Sie in der Entwicklerdokumentation mit einer [Übersicht über Microsoft Graph](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries).
 
 <!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
+### <a name="scopes-and-delegated-permissions"></a>Bereiche und delegierte Berechtigungen
 
-Die Microsoft Graph-API benötigt den Bereich *user.read*, um das Benutzerprofil zu lesen. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die im Anwendungsregistrierungsportal registriert wird. Andere Microsoft Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern unter Umständen zusätzliche Bereiche. Die Microsoft Graph-API benötigt den Bereich *Calendars.Read*, um die Kalender des Benutzers aufzuführen. 
+Die Microsoft Graph-API benötigt den Bereich *User.Read*, um das Benutzerprofil zu lesen. Dieser Bereich ist automatisch in jeder Anwendung enthalten, die im Anwendungsregistrierungsportal registriert wird. Für andere APIs sind zusätzliche Bereiche erforderlich. Die Microsoft Graph-API benötigt beispielsweise den Bereich *Calendars.Read*, um die Kalender des Benutzers aufzuführen. 
 
-Um auf die Kalender des Benutzers im Kontext einer Anwendung zugreifen zu können, müssen Sie den Informationen für die Anwendungsregistrierung die delegierte Berechtigung *Calendars.Read* hinzufügen. Fügen Sie dann dem Aufruf von `acquireTokenSilent` den Bereich *Calendars.Read* hinzu. 
+Um auf die Kalender des Benutzers zugreifen zu können, müssen Sie den Informationen für die Anwendungsregistrierung die delegierte Berechtigung *Calendars.Read* hinzufügen. Fügen Sie dann dem Aufruf von `acquireTokenSilent` den Bereich *Calendars.Read* hinzu. 
 
 >[!NOTE]
->Wenn Sie die Anzahl der Bereiche erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
+>Ihre Benutzer werden unter Umständen zu einer weiteren Zustimmung aufgefordert, wenn Sie Ihre App-Registrierung ändern.
 
 <!--end-collapse-->
 
