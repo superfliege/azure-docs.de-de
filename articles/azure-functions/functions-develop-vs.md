@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 39745991f7ab3b181f892bbaa59283d92737ecf3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 3ba8919a499da0db8e2deb626d8cf4d5067c1c25
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093872"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069176"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -96,7 +96,7 @@ So legen Sie die Speicherkonto-Verbindungszeichenfolge fest:
 
 3. Wiederholen Sie den vorherigen Schritt zum Hinzufügen von eindeutigen Schlüsseln zum **Values**-Array für alle anderen Verbindungen, die von Ihren Funktionen benötigt werden.
 
-## <a name="create-a-function"></a>Erstellen einer Funktion
+## <a name="add-a-function-to-your-project"></a>Hinzufügen einer Funktion zu Ihrem Projekt
 
 In vorab kompilierten Funktionen werden die von der Funktion verwendeten Bindungen durch Anwendung von Attributen im Code definiert. Bei der Verwendung von Azure Functions-Tools zum Erstellen von Funktionen aus den bereitgestellten Vorlagen werden diese Attribute für Sie angewendet. 
 
@@ -171,7 +171,9 @@ Drücken Sie F5, um Ihre Funktion zu testen. Akzeptieren Sie die entsprechende A
 
 Wenn das Projekt ausgeführt wird, können Sie Ihren Code wie eine bereitgestellte Funktion testen. Weitere Informationen finden Sie unter [Strategien zum Testen Ihres Codes in Azure Functions](functions-test-a-function.md). Bei der Ausführung im Debug-Modus werden in Visual Studio wie erwartet Haltepunkte erreicht. 
 
-Ein Beispiel zum Testen einer durch eine Warteschlange ausgelöste Funktion finden Sie im Tutorial [Erstellen einer Funktion, die durch Azure Queue Storage ausgelöst wird](functions-create-storage-queue-triggered-function.md#test-the-function).  
+<!---
+For an example of how to test a queue triggered function, see the [queue triggered function quickstart tutorial](functions-create-storage-queue-triggered-function.md#test-the-function).  
+-->
 
 Weitere Informationen über die Verwendung der Azure Functions Core-Tools finden Sie unter [Lokales Codieren und Testen von Azure-Funktionen](functions-run-local.md).
 
@@ -196,6 +198,20 @@ Sie können die Anwendungseinstellungen auch folgendermaßen verwalten:
 * [Mit dem Azure-Portal](functions-how-to-use-azure-function-app-settings.md#settings)
 * [Mit der `--publish-local-settings` Option „Veröffentlichen“ in Azure Functions Core Tools](functions-run-local.md#publish)
 * [Mit der Azure-Befehlszeilenschnittstelle](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 
+
+## <a name="monitoring-functions"></a>Überwachen von Funktionen
+
+Die empfohlene Methode zum Überwachen der Ausführung Ihrer Funktion in Azure ist die Integration in Azure Application Insights. Wenn Sie eine Funktions-App im Azure-Portal erstellen, wird diese Integration standardmäßig für Sie erledigt. Wenn Sie Ihre Funktions-App während der Veröffentlichung in Visual Studio erstellen, erfolgt die Integration Ihrer Funktions-App in Azure nicht. Stattdessen erhalten Sie integrierte Protokollierung, die jedoch nicht empfohlen wird.
+
+So aktivieren Sie Application Insights für Ihre Funktions-App in Azure
+
+1. Erstellen Sie eine Application Insights-Instanz im [Azure-Portal](https://portal.azure.com), und kopieren Sie den Instrumentierungsschlüssel. Weitere Informationen hierzu finden Sie unter [Manuelle Verbindung einer Application Insights-Ressource](functions-monitoring.md#manually-connect-an-app-insights-resource).  
+
+1. Fügen Sie den Einstellungen der Funktions-App in Azure eine App-Einstellung mit der Bezeichnung `APPINSIGHTS_INSTRUMENTATIONKEY` hinzu, wie unter [Funktionen-App-Einstellungen](#function-app-settings) beschrieben. Diese App-Einstellung enthält den Instrumentierungsschlüssel, den Sie im vorherigen Schritt erstellt haben.
+
+1. Entfernen Sie die App-Einstellung `AzureWebJobsDashboard` der Funktions-App in Azure, um die integrierte Protokollierung zu deaktivieren.  
+
+Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c3121f8b303d9f82ed949d598a942906d0d24f7e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e8f0077bf5a1a2911b3aec032fadacf31ad75463
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041022"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855271"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -130,15 +130,29 @@ Die folgende Tabelle enthält alle unterstützten Operatoren und deren Syntax f�
 | Geben Sie in | -in |
 | Not In | -notIn |
 
-### <a name="using-the--in-and--notin-operators"></a>Mithilfe der Operatoren „-In“ und „-notIn“
+### <a name="using-the--in-and--notin-operators"></a>Mithilfe der Operatoren „-in“ und „-notIn“
 
-Wenn Sie den Wert eines Benutzerattributs mit einer Reihe unterschiedlicher Werte vergleichen möchten, können Sie mit den Operatoren „-In“ oder „-notIn“. Verwenden Sie die Klammersymbole „[“ und „]“ für den Anfang und das Ende der Liste von Werten.
+Wenn Sie den Wert eines Benutzerattributs mit einer Reihe unterschiedlicher Werte vergleichen möchten, können Sie die Operatoren „-in“ oder „-notIn“ verwenden. Verwenden Sie die Klammersymbole „[“ und „]“ für den Anfang und das Ende der Liste von Werten.
 
  Im folgenden Beispiel wird der Ausdruck als „true“ ausgewertet, wenn der Wert von „user.department“ einem der Werte in der Liste entspricht:
 
 ```
-   user.department -In ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
+   user.department -in ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
 ```
+
+
+### <a name="using-the--match-operator"></a>Mithilfe des Operators „-match“ 
+Der Operator **-match** wird für Übereinstimmungen mit beliebigen regulären Ausdrücken verwendet. Beispiele:
+
+```
+user.displayName -match "Da.*"   
+```
+„Da“, „Dav“ und „David“ werden mit TRUE ausgewertet, „aDa“ hingegen mit FALSE.
+
+```
+user.displayName -match ".*vid"
+```
+„David“ wird mit TRUE ausgewertet, „Da“ hingegen mit FALSE.
 
 ## <a name="supported-values"></a>Unterstützte Werte
 

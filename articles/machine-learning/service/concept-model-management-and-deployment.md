@@ -1,6 +1,6 @@
 ---
-title: Verwalten und Bereitstellen von Modellen in Azure Machine Learning
-description: Erfahren Sie, wie Sie mit Azure Machine Learning Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen.
+title: Verwalten und Bereitstellen von Modellen in Azure Machine Learning Services
+description: Erfahren Sie, wie Sie mit Azure Machine Learning Services Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning Services trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,21 +9,21 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: d3e0b63d42ad8c6d4765f5120c26c5dfdf5ad6fb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166536"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885066"
 ---
-# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning"></a>Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning
+# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning Services
 
-In diesem Artikel lernen Sie, wie Sie mit Azure Machine Learning Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen. 
+In diesem Artikel lernen Sie, wie Sie mit Azure Machine Learning Services Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen. 
 
 Die folgende Abbildung veranschaulicht den gesamten Bereitstellungsworkflow: [ ![Bereitstellungsworkflow für Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 Der Bereitstellungsworkflow umfasst die folgenden Schritte:
-1. **Registrieren des Modells** in einer Registrierung, die in Ihrem Azure Machine Learning-Arbeitsbereich gehostet wird
+1. **Registrieren des Modells** in einer Registrierung, die in Ihrem Azure Machine Learning Services-Arbeitsbereich gehostet wird
 1. **Registrieren eines Images**, das ein Modell mit einem Bewertungsskript und Abhängigkeiten in einem portablen Container verbindet 
 1. **Bereitstellen des Images** als Webdienst in der Cloud oder auf Edgegeräten
 1. **Überwachen und Sammeln von Daten**
@@ -35,7 +35,7 @@ Jeder Schritt kann alleine oder als Teil eines einzelnen Bereitstellungsbefehls 
 
 ## <a name="step-1-register-model"></a>Schritt 1: Registrieren des Modells
 
-Die Modellregistrierung verfolgt alle Modelle in Ihrem Azure Machine Learning-Arbeitsbereich nach.
+Die Modellregistrierung verfolgt alle Modelle in Ihrem Azure Machine Learning Services-Arbeitsbereich nach.
 Die Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, wenn Sie ein Modell mit dem gleichen Namen wie ein bereits vorhandenes Modell registrieren, erhöht die Registrierung die Versionsnummer. Sie können beim Registrieren auch zusätzliche Metadatentags bereitstellen, die bei der Suche nach Modellen verwendet werden können.
 
 Sie können keine Modelle löschen, die von einem Image verwendet werden.
@@ -71,7 +71,7 @@ Für Ihre Images sind die folgenden [Bereitstellungsziele](how-to-deploy-and-whe
 * Azure-FPGA-Computer
 * Azure IoT Edge-Geräte
 
-Beim Bereitstellen Ihres Dienstes wird für die Rückschlussanforderung automatisch ein Lastenausgleich vorgenommen und der Cluster skaliert, um bei Bedarf Spitzen zu verarbeiten. [Telemetriedaten zu Ihrem Dienst](https://docs.microsoft.com/python/api/azureml-telemetry/azureml.telemetry?view=azure-ml-py) können im Azure Application Insights-Dienst erfasst werden, der mit Ihrem Arbeitsbereich verknüpft ist.
+Beim Bereitstellen Ihres Dienstes wird für die Rückschlussanforderung automatisch ein Lastenausgleich vorgenommen und der Cluster skaliert, um bei Bedarf Spitzen zu verarbeiten. [Telemetriedaten zu Ihrem Dienst](how-to-enable-app-insights.md) können im Azure Application Insights-Dienst erfasst werden, der mit Ihrem Arbeitsbereich verknüpft ist.
 
 ## <a name="step-4-monitor-models-and-collect-data"></a>Schritt 4: Überwachen des Modells und Sammeln von Daten
 

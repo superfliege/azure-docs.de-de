@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/30/2017
+ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: d67dbcef1b287ed9552d96338a2591b5f8319532
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 050a5a210ab10a557b149513a0416b188f4618ba
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434780"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Tutorial: Azure Active Directory-Integration mit Huddle
 
@@ -53,52 +53,43 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Huddle aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-huddle-from-the-gallery"></a>Hinzufügen von Huddle aus dem Katalog
+
 Zum Konfigurieren der Integration von Huddle in Azure AD müssen Sie Huddle über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Huddle aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Active Directory][1]
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-1. Geben Sie im Suchfeld den Suchbegriff **Huddle** ein.
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/huddle-tutorial/tutorial_huddle_search.png)
-
-1. Wählen Sie im Ergebnisbereich **Huddle** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld den Suchbegriff **Huddle** ein. Wählen Sie im Ergebnisbereich **Huddle** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/huddle-tutorial/tutorial_huddle_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Huddle mithilfe einer Testbenutzerin namens Britta Simon.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Huddle als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Huddle muss eine Linkbeziehung eingerichtet werden.
 
-Weisen Sie in Huddle den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
-
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Huddle müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-
-1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-
-1. **[Erstellen eines Huddle-Testbenutzers](#creating-a-huddle-test-user)**, um eine Entsprechung von Britta Simon in Huddle zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-
-1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-
-1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+3. **[Erstellen eines Huddle-Testbenutzers](#creating-a-huddle-test-user)**, um eine Entsprechung von Britta Simon in Huddle zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -110,73 +101,95 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on][4]
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_samlbase.png)
+2. Klicken Sie im oberen Bereich des Bildschirms auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
 
-1. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Huddle** aus:
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_general_300.png)
 
-    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_url.png)
+3. Klicken Sie im Dialogfeld **SSO-Methode auswählen** für den Modus **SAML** auf **Auswählen**, um einmaliges Anmelden zu aktivieren.
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `http://<company name>.huddle.com`.
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_general_301.png)
 
-    > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von Huddle](https://huddle.zendesk.com), um diesen Wert zu erhalten. 
+4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_general_302.png)
 
-    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_certificate.png) 
+5. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+    > [!NOTE]
+    > Ihre Huddle-Instanz wird von der Domäne, die Sie unten eingeben, automatisch erkannt.
 
-    ![Configure single sign-on](./media/huddle-tutorial/tutorial_general_400.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Huddle](./media/huddle-tutorial/tutorial_huddle_url.png)
 
-1. Klicken Sie im Abschnitt **Huddle-Konfiguration** auf **Huddle konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**. 
+    a. Geben Sie im Textfeld **Bezeichner** eine URL ein:
 
-    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_configure.png) 
-    
-1. Zum Konfigurieren des einmaligen Anmeldens bei Huddle müssen Sie das heruntergeladene **Zertifikat**, die **URL für den SAML-SSO-Dienst** und die **SAML-Entitäts-ID** an das [Kundensupportteam von Huddle](https://huddle.zendesk.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.  
-   
+    | | |
+    |--|--|
+    | `https://login.huddle.net`|
+    | `https://login.huddle.com`|
+    | |
+
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL folgendermaßen ein:
+
+    | | |
+    |--|--|
+    | `https://login.huddle.net/saml/browser-sso`|
+    | `https://login.huddle.com/saml/browser-sso`|
+    | `https://login.huddle.com/saml/idp-initiated-sso`|
+    | |
+
+    c. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für Huddle](./media/huddle-tutorial/tutorial_huddle_url1.png)
+
+    Geben Sie im Textfeld **Anmelde-URL** eine der URLs im folgenden Format ein:
+
+    | | |
+    |--|--|
+    | `https://<customsubdomain>.huddle.com`|
+    | `https://us.huddle.com`|
+    | |
+
+    > [!NOTE]
+    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von Huddle](https://huddle.zendesk.com), um diesen Wert zu erhalten.
+
+6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_certificate.png)
+
+7. Kopieren Sie im Abschnitt **Huddle einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_configure.png)
+
+8. Um einmaliges Anmelden seitens **Huddle** zu konfigurieren, müssen Sie das Zertifikat, das Sie heruntergeladen haben, sowie die URLs, die Sie aus dem Abschnitt **Huddle** **einrichten** im Azure-Portal kopiert haben, an das [Kundensupportteam von Huddle](https://huddle.zendesk.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+
     >[!NOTE]
-    > Das einmalige Anmelden muss vom Supportteam von Huddle aktiviert werden. Sie erhalten eine Benachrichtigung, sobald die Konfiguration abgeschlossen ist. 
-    > 
+    > Das einmalige Anmelden muss vom Supportteam von Huddle aktiviert werden. Sie erhalten eine Benachrichtigung, sobald die Konfiguration abgeschlossen ist.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
-   
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** aus, wählen Sie **Benutzer** aus, und wählen Sie dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Azure AD-Benutzer erstellen][100]
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+2. Wählen Sie im oberen Bereich des Bildschirms die Option **Neuer Benutzer** aus.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/huddle-tutorial/create_aaduser_01.png) 
 
-1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
-    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/huddle-tutorial/create_aaduser_02.png) 
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/huddle-tutorial/create_aaduser_03.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/huddle-tutorial/create_aaduser_02.png)
 
-1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/huddle-tutorial/create_aaduser_04.png) 
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** die Zeichenfolge **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+    c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+    d. Klicken Sie auf **Erstellen**.
 
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
-
-    d. Klicken Sie auf **Create**.
- 
 ### <a name="creating-a-huddle-test-user"></a>Erstellen eines Huddle-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Huddle anmelden können, müssen sie in Huddle bereitgestellt werden. Im Fall von Huddle ist die Bereitstellung eine manuelle Aufgabe.
@@ -184,59 +197,53 @@ Damit sich Azure AD-Benutzer bei Huddle anmelden können, müssen sie in Huddle 
 **Um die Benutzerbereitstellung zu konfigurieren, führen Sie die folgenden Schritte durch:**
 
 1. Melden Sie sich bei der **Huddle** -Unternehmenswebsite als Administrator an.
-1. Klicken Sie auf **Arbeitsbereich**.
-1. Klicken Sie auf **Personen \> Personen einladen**.
-   
-   ![Personen](./media/huddle-tutorial/IC787838.png "Personen")
 
-1. Führen Sie im Abschnitt **Neue Einladung erstellen** die folgenden Schritte aus:
-   
-   ![Neue Einladung](./media/huddle-tutorial/IC787839.png "Neue Einladung")
-   
-   a. Wählen Sie in der Liste **Team zum Einladen von Personen auswählen** die Option **Team** aus.
+2. Klicken Sie auf **Arbeitsbereich**.
 
-   b. Geben Sie die **E-Mail-Adresse** eines gültigen Azure AD-Kontos, das Sie bereitstellen möchten, in das Textfeld **Enter email address for people you'd like to invite** (E-Mail-Adresse für Personen eingeben, die Sie einladen möchten) ein.
+3. Klicken Sie auf **Personen \> Personen einladen**.
 
-   c. Klicken Sie auf **Einladen**.   
-   
+    ![Personen](./media/huddle-tutorial/IC787838.png "Personen")
+
+4. Führen Sie im Abschnitt **Neue Einladung erstellen** die folgenden Schritte aus:
+  
+    ![Neue Einladung](./media/huddle-tutorial/IC787839.png "Neue Einladung")
+  
+    a. Wählen Sie in der Liste **Team zum Einladen von Personen auswählen** die Option **Team** aus.
+
+    b. Geben Sie die **E-Mail-Adresse** eines gültigen Azure AD-Kontos, das Sie bereitstellen möchten, in das Textfeld **Enter email address for people you'd like to invite** (E-Mail-Adresse für Personen eingeben, die Sie einladen möchten) ein.
+
+    c. Klicken Sie auf **Einladen**.
+
     >[!NOTE]
-    > Der Besitzer des Azure AD-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird. 
-    > 
+    > Der Besitzer des Azure AD-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
 
 >[!NOTE]
->Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Huddle-Benutzerkonten oder mithilfe der von Huddle bereitgestellten APIs erstellen. 
-> 
+>Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Huddle-Benutzerkonten oder mithilfe der von Huddle bereitgestellten APIs erstellen.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Huddle gewähren.
 
-![Benutzer zuweisen][200] 
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
-**Um Britta Simon Huddle zuzuweisen, führen Sie die folgenden Schritte aus:**
+    ![Benutzer zuweisen][201]
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
-
-    ![Benutzer zuweisen][201] 
-
-1. Wählen Sie in der Anwendungsliste **Huddle** aus.
+2. Wählen Sie in der Anwendungsliste **Huddle** aus.
 
     ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_app.png) 
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-    ![Benutzer zuweisen][202] 
+    ![Benutzer zuweisen][202]
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann im unteren Bereich des Bildschirms auf die Schaltfläche **Auswählen**.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+6. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.

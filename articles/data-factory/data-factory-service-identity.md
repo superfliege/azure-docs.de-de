@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: ffe7337282d06dd9a7e22d6750ac98b3a56964bd
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: db0bc0cb64c0b6d7df9319c8d2c5850a27e767a1
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143134"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249212"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory-Dienstidentität
 
@@ -169,6 +169,6 @@ Type                  : ServicePrincipal
 Lesen Sie die folgenden Themen, die Ihnen zeigen, wann und wie Sie die Data Factory-Dienstidentität verwenden können:
 
 - [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md)
-- [Kopieren von Daten von/zu Azure Data Lake Store mit verwalteter Dienstidentitätsauthentifizierung](connector-azure-data-lake-store.md)
+- [Kopieren von Daten von/zu Azure Data Lake Store mit verwalteten Identitäten für die Ressourcenauthentifizierung mit Azure](connector-azure-data-lake-store.md)
 
-Unter [Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen](~/articles/active-directory/msi-overview.md) finden Sie weitere Informationen zur verwalteten Dienstidentität, auf der die Data Factory-Dienstidentität basiert. 
+Weitere Hintergründe zu verwalteten Identitäten für Azure-Ressourcen (auf denen Data Factory-Dienstidentitäten basieren) finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen – Übersicht](~/articles/active-directory/msi-overview.md). 

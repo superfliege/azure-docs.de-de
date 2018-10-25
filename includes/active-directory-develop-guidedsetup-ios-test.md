@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 97e032af71947340c7e3b0af3b9d0701c972144e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d8d7d5649ca1dc215f85f928d111ff1367c60bb5
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843321"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988273"
 ---
 ## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>Testen Sie das Abfragen der Microsoft Graph-API von Ihrer iOS-Anwendung aus
 
@@ -30,6 +30,7 @@ Um den Code im Simulator auszuführen, drücken Sie **STRG** + **R**.
 Wenn Sie Tests durchführen möchten, wählen Sie **Microsoft Graph-API aufrufen** aus. Geben Sie Ihren Benutzernamen und Ihr Kennwort ein, wenn Sie dazu aufgefordert werden.
 
 ### <a name="provide-consent-for-application-access"></a>Zustimmen zum Anwendungszugriff
+
 Bei der ersten Anmeldung bei Ihrer Anwendung werden Sie aufgefordert, Ihre Zustimmung zu geben, dass die Anwendung auf Ihr Profil zugreifen und Sie anmelden darf:
 
 ![Zustimmen zum Anwendungszugriff](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
@@ -42,7 +43,7 @@ Nach der Anmeldung sollten Benutzerprofilinformationen angezeigt werden, die vom
 
 Die Microsoft Graph-API benötigt den Bereich **user.read**, um das Benutzerprofil zu lesen. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die im Registrierungsportal registriert ist. Andere Microsoft Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern unter Umständen zusätzliche Bereiche. Die Microsoft Graph-API benötigt den Bereich **Calendars.Read**, um die Kalender des Benutzers aufzuführen.
 
-Um auf die Kalender des Benutzers im Kontext einer Anwendung zugreifen zu können, müssen Sie den Informationen für die Anwendungsregistrierung die delegierte Berechtigung **Calendars.Read** hinzufügen. Fügen Sie dann dem Aufruf von **acquireTokenSilent** den Bereich **Calendars.Read** hinzu. 
+Um auf die Kalender des Benutzers im Kontext einer Anwendung zugreifen zu können, müssen Sie den Informationen für die Anwendungsregistrierung die delegierte Berechtigung **Calendars.Read** hinzufügen. Fügen Sie dann dem Aufruf von **acquireTokenSilent** den Bereich **Calendars.Read** hinzu.
 
 >[!NOTE]
 >Wenn Sie die Anzahl der Bereiche erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.

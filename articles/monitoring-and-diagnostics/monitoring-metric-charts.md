@@ -8,20 +8,14 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: 21b0029ff12915c8416ad2366fbf6c45ddfaa288
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f82b4dff20e2b26e62889c41b3ff3c27bc86066a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978418"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901412"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor-Metrik-Explorer
-
-In dieser Vorgehensweise wird die Diagrammerstellungsoberfläche des Azure Monitor-Metrik-Explorers der nächsten Generation beschrieben, die zurzeit als öffentliche Vorschau verfügbar ist. Die neue Oberfläche unterstützt das Rendern von Diagrammen für mehrdimensionale und grundlegende Metriken ohne Dimensionen. Sie können Diagramme zeichnen, die Metriken aus unterschiedlichen Ressourcentypen, mehreren Ressourcengruppen und Abonnements überlagern. Mehrdimensionale Metrikdiagramme können durch Anwendung von Dimensionsfiltern sowie Gruppierung angepasst werden. Es können beliebige Diagramme, einschließlich benutzerdefinierter Diagramme, an Dashboards angeheftet werden.
-
-Informationen zur alten Benutzeroberfläche, die lediglich grundlegende Metriken ohne Dimensionen unterstützt, finden Sie im Abschnitt „Zugriff auf Metriken über das Portal“ im [Handbuch mit der Übersicht über Microsoft Azure-Metriken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
-
-## <a name="what-is-azure-monitor-metrics-explorer"></a>Was ist der Azure Monitor-Metrik-Explorer?
 
 Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portals, die das Zeichnen von Diagrammen, das visuelle Korrelieren von Trends und das Untersuchen von Spitzen und Tiefen in Metrikwerten ermöglicht. Der Metrik-Explorer ist ein wesentlicher Ausgangspunkt, um verschiedenste Leistungs- und Verfügbarkeitsprobleme bei Ihren in Azure gehosteten oder von Azure Monitor-Diensten überwachten Anwendungen und Infrastrukturen zu untersuchen. 
 
@@ -29,34 +23,29 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 
 Metriken in Microsoft Azure sind eine Reihe von gemessenen Werten und Zahlen, die im Laufe der Zeit gesammelt und gespeichert werden. Es gibt Standardmetriken (bzw. sogenannte „Plattformmetriken“) und benutzerdefinierte Metriken. Die Standardmetriken werden Ihnen von der Azure-Plattform selbst bereitgestellt. Standardmetriken stellen die Integritäts- und Nutzungsstatistik Ihrer Azure-Ressourcen dar. Benutzerdefinierte Metriken hingegen werden von Ihren Anwendungen mithilfe der [Application Insights-API für benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) an Azure gesendet. Zusammen mit anderen anwendungsspezifischen Metriken werden benutzerdefinierte Metriken in den Application Insights-Ressourcen gespeichert.
 
-
-
 ## <a name="how-do-i-create-a-new-chart"></a>Wie erstelle ich ein neues Diagramm?
 
-   > [!NOTE]
-   > Einige der Funktionen der alten Oberfläche „Metriken“ sind noch nicht im neuen Metrik-Explorer verfügbar. Solange die neue Oberfläche in der Vorschauversion verfügbar ist, können Sie weiterhin die alte (nichtdimensionale) Ansicht „Metriken“ von Azure Monitor verwenden. 
-
 1. Öffnen Sie das Azure-Portal.
-2. Navigieren Sie zur neuen Registerkarte **Überwachen**, und wählen Sie dann die Option **Metriken (Vorschau)** aus.
+2. Navigieren Sie zur neuen Registerkarte **Überwachen**, und wählen Sie dann die Option **Metriken** aus.
 
-   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/0001.png)
+   ![Abbildung "Metriken"](./media/monitoring-metric-charts/0001.png)
 
 3. Der **Metrikselektor** wird automatisch für Sie geöffnet. Wählen Sie eine Ressource aus der Liste aus, um die zugehörigen Metriken anzuzeigen. Nur Ressourcen mit Metriken werden in der Liste angezeigt.
 
-   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/0002.png)
+   ![Abbildung "Metriken"](./media/monitoring-metric-charts/0002.png)
 
    > [!NOTE]
    >Wenn Sie mehrere Azure-Abonnements besitzen, ruft der Metrik-Explorer die Ressourcen aller Abonnements ab, die in der Liste unter „Portaleinstellungen“ > „Nach Abonnements filtern“ ausgewählt sind. Um dies zu ändern, klicken Sie oben auf dem Bildschirm unter „Portaleinstellungen“ auf das Zahnradsymbol, und wählen Sie die Abonnements aus, die Sie verwenden möchten.
 
-4. Für einige Ressourcentypen (d. h. Speicherkonten und virtuelle Computer) müssen Sie vor der Auswahl einer Metrik einen **Namespace** auswählen. Jeder Namespace ist mit einer eigenen Gruppe von Metriken ausgestattet, die nur für den jeweiligen Namespace und nicht für andere Namespaces relevant sind.
+4. Für einige Ressourcentypen (Speicherkonten und virtuelle Computer) müssen Sie vor der Auswahl einer Metrik einen **Namespace** auswählen. Jeder Namespace ist mit einer eigenen Gruppe von Metriken ausgestattet, die nur für den jeweiligen Namespace und nicht für andere Namespaces relevant sind.
 
    Beispielsweise weist jede Azure Storage-Instanz Metriken für die Subdienste „Blobs“, „Dateien“, „Warteschlangen“ und „Tabellen“ auf, die alle zum Speicherkonto gehören. Die Metrik „Anzahl der Warteschlangenmeldungen“ gilt jedoch folgerichtig für den Subdienst „Warteschlange“ und nicht für andere Subdienste des Speicherkontos.
 
-   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/0003.png)
+   ![Abbildung "Metriken"](./media/monitoring-metric-charts/0003.png)
 
 5. Wählen Sie in der Liste eine Metrik aus. Wenn Sie einen Teil des Namens der gewünschten Metrik kennen, können Sie diesen bereits eingeben. Daraufhin wird eine gefilterte Liste der verfügbaren Metriken angezeigt:
 
-   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/0004.png)
+   ![Abbildung "Metriken"](./media/monitoring-metric-charts/0004.png)
 
 6. Nach der Auswahl einer Metrik wird das Diagramm mit der Standardaggregation für die ausgewählte Metrik gerendert. An dieser Stelle können Sie einfach außerhalb des **Metrikselektors** klicken, um ihn zu schließen. Optional können Sie auch in eine andere Aggregation des Diagramms wechseln. Bei einigen Metriken können Sie beim Wechseln der Aggregation auswählen, welcher Wert im Diagramm angezeigt werden soll. Beispielsweise können Sie zwischen den durchschnittlichen, minimalen und maximalen Werten wechseln. 
 

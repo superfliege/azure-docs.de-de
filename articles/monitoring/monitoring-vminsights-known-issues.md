@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 10/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 819c3e74355cf80c7a998abb8b02b10c9e077059
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47062767"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385090"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms"></a>Bekannte Probleme bei Azure Monitor for VMs
 
 Die folgende Aufstellung enthält bekannte Probleme beim Integritätsfeature von Azure Monitor for VMs:
 
+- Die Integritätsfunktion wird in alle VMs integriert, die mit dem Log Analytics-Arbeitsbereich verbunden sind, auch wenn das Onboarding von einer einzelnen VM aus gestartet und abgeschlossen wird.
+- Wenn eine Azure-VM nicht mehr existiert, weil sie entfernt oder gelöscht wurde, erscheint sie drei bis sieben Tage lang in der VM-Listenansicht. Wenn Sie auf den Zustand einer entfernten oder gelöschten VM klicken, wird darüber hinaus die Ansicht **Integritätsdiagnosen** geöffnet, die dann in eine Ladeschleife übergeht. Die Auswahl des Namens einer gelöschten VM startet ein Blatt mit der Meldung, dass die VM gelöscht wurde.
 - Zeitraum und Häufigkeit der Integritätskriterien können in dieser Version nicht geändert werden. 
 - Integritätskriterien können nicht deaktiviert werden. 
 - Nach dem Onboarding kann eine gewisse Zeit vergehen, ehe Daten in „Azure Monitor“ > „Virtual Machines“ > „Integrität“ oder auf dem VM-Ressourcenblatt > „Insights“ angezeigt werden.
@@ -36,9 +38,26 @@ Die folgende Aufstellung enthält bekannte Probleme beim Integritätsfeature von
 - Beim Herunterfahren von VMs werden einige ihrer Integritätskriterien zu einem kritischen Status aktualisiert, andere zu einem fehlerfreien Status, wobei der Netzwerkstatus der VMs kritisch gemeldet wird.
 - Der Schweregrad von Integritätswarnungen kann nicht geändert werden, sie können lediglich aktiviert oder deaktiviert werden.  Außerdem werden einige Schweregrade auf der Grundlage des Status von Integritätskriterien aktualisiert.
 - Das Ändern einer beliebigen Einstellung einer Instanz eines Integritätskriteriums führt zur Änderung der gleichen Einstellung in allen Instanzen von Integritätskriterien des gleichen Typs in der VM. Wenn beispielsweise der Schwellenwert der Instanz des Integritätskriteriums „verfügbarer Speicherplatz“, der dem logischen Laufwerk C: entspricht, geändert wird, gilt dieser Schwellenwert auch für alle anderen logischen Datenträger, die für die gleiche VM ermittelt wurden und überwacht werden.   
-- Die Schwellenwerte für einige Windows-Integritätskriterien, wie die Integrität des DNS-Clientdiensts, können nicht geändert werden, da ihr fehlerfreier Status bereits im Status **wird ausgeführt**, **verfügbar** des Diensts oder der Entität – je nach Kontext – gesperrt ist.  Stattdessen wird der Wert durch die Zahl 4 dargestellt – diese wird in einer kommenden Version in die eigentliche Anzeigezeichenfolge konvertiert.  
-- Schwellenwerte für einige Linux-Integritätskriterien lassen sich nicht ändern, wie etwa die Integrität von logischen Datenträgern, da für sie bereits die Auslösung bei fehlerhaftem Zustand festgelegt ist.  Diese Schwellenwerte zeigen an, ob etwas online/offline oder ein oder aus ist und werden durch die Werte 1 und 0 dargestellt und auch so angezeigt.
-- Das Aktualisieren des Ressourcengruppenfilters in einer beliebigen Ressourcengruppe bei Verwendung der Massenansicht in der Listenansicht Azure Monitor > „Virtual Machines“ > „Integrität“ > „Alle“ mit vorausgewähltem Abonnement und vorausgewählter Ressourcengruppe bewirkt, dass die Listenansicht **Kein Ergebnis** anzeigt.  Wechseln Sie zurück zur Registerkarte Azure Monitor > „Virtual Machines“ > „Integrität“, wählen Sie das gewünschte Abonnement und die gewünschte Ressourcengruppe aus, und navigieren Sie dann zur Listenansicht.
+- Schwellenwerte für die folgenden Integritätskriterien, die auf eine Windows-VM abzielen, sind nicht veränderbar, da ihr Integritätszustand bereits auf **laufend** oder **verfügbar** gesetzt ist. Bei Abfrage der [Workload-Monitor-API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager) zeigt der Integritätszustand den *Vergleichsoperator*-Wert von **LessThan** oder **GreaterThan** mit einem *Schwellenwert*-Wert von **4** für den Dienst oder die Entität, wenn:
+   - Integrität des DNS-Clientdiensts – Dienst wird nicht ausgeführt 
+   - Integrität des DHCP-Clientdiensts – Dienst wird nicht ausgeführt 
+   - Integrität des RPC-Diensts – Dienst wird nicht ausgeführt 
+   - Integrität des Windows-Firewalldiensts– Dienst wird nicht ausgeführt
+   - Integrität des Windows-Ereignisprotokolldiensts– Dienst wird nicht ausgeführt 
+   - Integrität des Serverdiensts – Dienst wird nicht ausgeführt 
+   - Integrität des Windows-Remoteverwaltungsdiensts– Dienst wird nicht ausgeführt 
+   - Dateisystemfehler oder Beschädigungen – Logischer Datenträger nicht verfügbar
+
+- Die Schwellenwerte für die folgenden Linux-Zustandskriterien sind nicht veränderbar, da ihr Integritätszustand bereits auf **wahr** gesetzt ist.  Der Integritätszustand zeigt den *Vergleichsoperator* mit einem Wert **LessThan** und *Schwellenwert* von **1**, wenn er von der Workload-Monitoring-API für die Entität abhängig von ihrem Kontext abgefragt wird:
+   - Status des logischen Datenträgers – Logischer Datenträger ist nicht online/verfügbar
+   - Datenträgerstatus – Datenträger ist nicht online/verfügbar
+   - Netzwerkadapterstatus – Netzwerkadapter ist deaktiviert  
+
+- Das Integritätskriterium **Gesamte CPU-Auslastung** in Windows zeigt einen Schwellenwert von **not equal to 4** vom Portal und bei einer Abfrage über die Workload-Monitoring-API, wenn die CPU-Auslastung größer als 95 % und die Länge der Systemwarteschlange größer als 15 ist. Diese Integritätskriterien kann in dieser Version nicht geändert werden.  
+- Konfigurationsänderungen, wie z.B. das Aktualisieren eines Schwellenwerts, dauern bis zu 30 Minuten, bis sie wirksam werden, obwohl das Portal oder die Workload-Monitor-API möglicherweise sofort aktualisiert werden.  
+- Integritätskriterien für einzelne Prozessoren und logische Prozessorstufen sind in Windows nicht verfügbar, nur **Gesamte CPU-Auslastung** ist für Windows-VMs verfügbar.  
+- Die für jedes Integritätskriterium definierten Warnregeln werden im Azure-Portal nicht angezeigt. Sie sind nur über die [Workload-Monitor-API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager) konfigurierbar, um eine Integritätswarnregel zu aktivieren oder zu deaktivieren.  
+- Die Zuweisung einer [Azur-Monitor-Aktionsgruppe](../monitoring-and-diagnostics/monitoring-action-groups.md) für Zustandswarnungen ist vom Azur-Portal aus nicht möglich. Sie müssen die API für die Benachrichtigungseinstellung verwenden, um eine Aktionsgruppe zu konfigurieren, die bei jeder Auslösung einer Integritätswarnung ausgelöst wird. Derzeit können Aktionsgruppen einer VM zugeordnet werden, sodass alle *Integritätswarnungen*, die für die VM ausgelöst wurden, die gleiche(n) Aktionsgruppe(n) ausgelöst haben. Es gibt kein Konzept für eine separate Aktionsgruppe für jede Integritätswarnregel, wie bei herkömmlichen Azure-Warnungen. Darüber hinaus werden nur Aktionsgruppen unterstützt, die so konfiguriert sind, dass sie durch Senden einer E-Mail oder SMS benachrichtigt werden, wenn Integritätswarnungen ausgelöst werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zu den Anforderungen und Methoden für die Aktivierung Ihrer virtuellen Computer finden Sie unter [Führen Sie das Onboarding von Azure Monitor for VMs durch](monitoring-vminsights-onboard.md).

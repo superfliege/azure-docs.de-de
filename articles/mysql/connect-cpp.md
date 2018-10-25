@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: C++
 ms.topic: quickstart
 ms.date: 04/12/2018
-ms.openlocfilehash: 0c017907378376c01e4a4a98190f73a9452b9a3d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6d9deba8c7e6317ab349f86d5a1730f05288ea35
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264951"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987663"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von Connector/C++ zum Herstellen einer Verbindung und zum Abfragen von Daten
 Dieser Schnellstart zeigt, wie Sie mit einer C#-Anwendung eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der C#-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
@@ -30,7 +30,7 @@ Außerdem benötigen Sie Folgendes:
 - Installieren von [.NET Framework](https://www.microsoft.com/net/download)
 - Installieren von [Visual Studio](https://www.visualstudio.com/downloads/)
 - Installieren von [MySQL-Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) 
-- Installieren von [Boost](http://www.boost.org/)
+- Installieren von [Boost](https://www.boost.org/)
 
 ## <a name="install-visual-studio-and-net"></a>Installieren von Visual Studio Code und .NET
 Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Entwicklung per .NET vertraut sind.

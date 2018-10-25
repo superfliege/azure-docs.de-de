@@ -1,6 +1,6 @@
 ---
 title: Verarbeiten von großen Nachrichten in Azure Logic Apps | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie große Nachrichten durch Blockerstellung (Segmentierung) in Logik-Apps verarbeiten können.
+description: Erfahren Sie, wie Sie große Nachrichten durch Blockerstellung (Segmentierung) in Azure Logic Apps verarbeiten können
 services: logic-apps
 documentationcenter: ''
 author: shae-hurst
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 6064db5455d92d15dca0e2a4a78285f0aeade904
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e6ac6a4aa46feb768df437ff9d5969b2b41092c3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299044"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041644"
 ---
-# <a name="handle-large-messages-with-chunking-in-logic-apps"></a>Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps
+# <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Verarbeiten von großen Nachrichten durch Blockerstellung in Azure Logic Apps
 
 Beim Verarbeiten von Nachrichten begrenzt Logic Apps Nachrichteninhalt auf eine maximale Größe. Dieser Grenzwert ermöglicht ein Verringern des Mehraufwands, der durch das Speichern und Verarbeiten von großen Nachrichten verursacht wird. Sollen Nachrichten verarbeitet werden, die größer sind, als dieser Grenzwert angibt, kann Logic Apps eine große Nachricht durch *Blockerstellung* in kleinere Nachrichten aufteilen. Auf diese Weise können Sie weiterhin große Dateien unter bestimmten Bedingungen mit Logic Apps übertragen. Bei der Kommunikation mit anderen Diensten über Connectors oder HTTP kann Logic Apps große Nachrichten verarbeiten, jedoch *nur* in Blöcken. Diese Bedingung bedeutet, dass auch Connectors Blockerstellung unterstützen müssen oder der zugrunde liegende HTTP-Nachrichtenaustausch zwischen Logic Apps und diesen Diensten Blockerstellung verwenden muss.
 

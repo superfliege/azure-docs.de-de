@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 3eb9d6851c30f11980d47d4e48b158217e41995d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 29e918733cc72010aa6aa5c0f42d613331eec2a2
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30233784"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044721"
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).
@@ -72,13 +72,13 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|json-to-xml|Stammelement|Ja|
+|json-to-xml|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
-|apply|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – always – Die Konvertierung immer anwenden.<br />– content-type-json – Nur konvertieren, wenn der Content-Type-Header der Antwort das Vorhandensein von JSON angibt.|Ja|N/V|
+|apply|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – always – Die Konvertierung immer anwenden.<br />– content-type-json – Nur konvertieren, wenn der Content-Type-Header der Antwort das Vorhandensein von JSON angibt.|JA|N/V|
 |consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn JSON im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein |true|
 |parse-date|Ist dieses Attribut auf `false` festgelegt, werden Datumswerte während der Transformation einfach kopiert.|Nein |true|
 
@@ -116,14 +116,14 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|xml-to-json|Stammelement|Ja|
+|xml-to-json|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
-|kind|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – javascript-friendly – Die konvertierte JSON hat ein für JavaScript-Entwickler verständliches Format.<br />– direct – Die konvertierte JSON spiegelt die Struktur des ursprünglichen XML-Dokuments wider.|Ja|N/V|
-|apply|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – always – Immer konvertieren.<br />– content-type-xml – Nur konvertieren, wenn der Content-Type-Header der Antwort das Vorhandensein von XML angibt.|Ja|N/V|
+|kind|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – javascript-friendly – Die konvertierte JSON hat ein für JavaScript-Entwickler verständliches Format.<br />– direct – Die konvertierte JSON spiegelt die Struktur des ursprünglichen XML-Dokuments wider.|JA|N/V|
+|apply|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – always – Immer konvertieren.<br />– content-type-xml – Nur konvertieren, wenn der Content-Type-Header der Antwort das Vorhandensein von XML angibt.|JA|N/V|
 |consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn XML im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein |true|
 
 ### <a name="usage"></a>Verwendung
@@ -152,14 +152,14 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|find-and-replace|Stammelement|Ja|
+|find-and-replace|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
-|from|Die zu suchende Zeichenfolge.|Ja|N/V|
-|To|Die Ersatzzeichenfolge. Geben Sie eine leere Ersatzzeichenfolge an, um die Suchzeichenfolge zu entfernen.|Ja|N/V|
+|from|Die zu suchende Zeichenfolge.|JA|N/V|
+|To|Die Ersatzzeichenfolge. Geben Sie eine leere Ersatzzeichenfolge an, um die Suchzeichenfolge zu entfernen.|JA|N/V|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
@@ -190,7 +190,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|redirect-content-urls|Stammelement|Ja|
+|redirect-content-urls|Stammelement|JA|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
@@ -254,7 +254,7 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|set-backend-service|Stammelement|Ja|
+|set-backend-service|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
@@ -390,7 +390,7 @@ Die `set-body`-Richtlinie kann so konfiguriert werden, dass Sie die [Liquid](htt
 
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|set-body|Stammelement Enthält den Text oder einen Ausdruck, der einen Text zurückgibt.|Ja|
+|set-body|Stammelement Enthält den Text oder einen Ausdruck, der einen Text zurückgibt.|JA|
 
 ### <a name="properties"></a>Eigenschaften
 
@@ -481,19 +481,33 @@ OriginalUrl.
 
  Weitere Informationen finden Sie unter [Richtlinienausdrücke](api-management-policy-expressions.md) und [Kontextvariable](api-management-policy-expressions.md#ContextVariables).
 
+> [!NOTE]
+> Mehrere Werte eines Headers sind zu einer CSV-Zeichenfolge verkettet, beispielsweise:  
+> `headerName: value1,value2,value3`
+>
+> Zu den Ausnahmen zählen standardisierte Header, deren Werte:
+> - Kommas (`User-Agent`, `WWW-Authenticate`, `Proxy-Authenticate`),
+> - Datumswerte (`Cookie`, `Set-Cookie`, `Warning`),
+> - oder ein Datum enthalten können (`Date`, `Expires`, `If-Modified-Since`, `If-Unmodified-Since`, `Last-Modified`, `Retry-After`).
+>
+> Bei Vorliegen dieser Ausnahmen werden mehrere Headerwerte nicht zu einer Zeichenfolge verkettet, sondern stattdessen als einzelne Header übergeben, beispielsweise:  
+>`User-Agent: value1`  
+>`User-Agent: value2`  
+>`User-Agent: value3`
+
 ### <a name="elements"></a>Elemente
 
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|set-header|Stammelement|Ja|
-|value|Der Wert für den zu setzenden Header. Fügen Sie bei mehreren Headern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Ja|
+|set-header|Stammelement|JA|
+|value|Der Wert für den zu setzenden Header. Fügen Sie bei mehreren Headern mit dem gleichen Namen weitere `value`-Elemente hinzu.|JA|
 
 ### <a name="properties"></a>Eigenschaften
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein |override|
-|name|Der Name des zu setzenden Headers.|Ja|N/V|
+|name|Der Name des zu setzenden Headers.|JA|N/V|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
@@ -545,15 +559,15 @@ OriginalUrl.
 
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|set-query-parameter|Stammelement|Ja|
-|value|Gibt den Wert des festzulegenden Abfrageparameters an. Fügen Sie bei mehreren Abfrageparametern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Ja|
+|set-query-parameter|Stammelement|JA|
+|value|Gibt den Wert des festzulegenden Abfrageparameters an. Fügen Sie bei mehreren Abfrageparametern mit dem gleichen Namen weitere `value`-Elemente hinzu.|JA|
 
 ### <a name="properties"></a>Eigenschaften
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |exists-action|Gibt die auszuführende Aktion an, wenn ein Abfrageparameter bereits vorhanden ist. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Parameters.<br />– skip – Ersetzt den vorhandenen Abfrageparameterwert nicht.<br />– append – Fügt den Wert an den vorhandenen Abfrageparameterwert an.<br />– delete – Entfernt den Abfrageparameter aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Abfrageparameter gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein |override|
-|name|Gibt den Namen des festzulegenden Abfrageparameters an.|Ja|N/V|
+|name|Gibt den Namen des festzulegenden Abfrageparameters an.|JA|N/V|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
@@ -624,13 +638,13 @@ OriginalUrl.
 
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|rewrite-uri|Stammelement|Ja|
+|rewrite-uri|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
-|Vorlage|Die eigentliche Webdienst-URL mit allen Abfrageparametern. Wenn Sie Ausdrücke verwenden, muss der gesamte Wert ein Ausdruck sein.|Ja|N/V|
+|Vorlage|Die eigentliche Webdienst-URL mit allen Abfrageparametern. Wenn Sie Ausdrücke verwenden, muss der gesamte Wert ein Ausdruck sein.|JA|N/V|
 |copy-unmatched-params|Gibt an, ob Abfrageparameter in der eingehenden Anforderung, die in der ursprünglichen URL-Vorlage nicht enthalten sind, der von der Umschreibevorlage festgelegten URL hinzugefügt werden.|Nein |true|
 
 ### <a name="usage"></a>Verwendung
@@ -638,7 +652,7 @@ OriginalUrl.
 
 -   **Richtlinienabschnitte**: inbound
 
--   **Richtlinienbereiche:** Produkt, API, Vorgang
+-   **Richtlinienbereiche**: global, Produkt, API, Vorgang
 
 ##  <a name="XSLTransform"></a> XML mithilfe von XSLT transformieren
  Die Richtlinie `Transform XML using an XSLT` wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.
@@ -693,9 +707,9 @@ OriginalUrl.
 
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|xsl-transform|Stammelement|Ja|
+|xsl-transform|Stammelement|JA|
 |Parameter|Wird verwendet, um in der Transformation verwendete Variablen zu definieren.|Nein |
-|xsl:stylesheet|Stylesheet-Stammelement. Für alle darunter definierten Elemente und Attribute gilt die standardmäßige [XSLT-Spezifikation](http://www.w3.org/TR/xslt)|Ja|
+|xsl:stylesheet|Stylesheet-Stammelement. Für alle darunter definierten Elemente und Attribute gilt die standardmäßige [XSLT-Spezifikation](http://www.w3.org/TR/xslt)|JA|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.

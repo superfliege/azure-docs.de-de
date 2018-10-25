@@ -1,20 +1,21 @@
 ---
 title: Erstellen eines benutzerdefinierten Aktivierungsworts
-description: Erfahren Sie, wie ein benutzerdefiniertes Aktivierungswort für das SDK für sprachaktivierte Geräte erstellt wird.
 titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie ein benutzerdefiniertes Aktivierungswort für das SDK für sprachaktivierte Geräte erstellt wird.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: erhopf
-ms.openlocfilehash: ab2bc9a83feadd9ece8876559e730e7bc955908a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 5f138aee9dfa91e285591e5d50c14465ad32b77d
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165469"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469077"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Erstellen eines benutzerdefinierten Aktivierungsworts mit dem Spracherkennungsdienst
 
@@ -52,10 +53,6 @@ Bevor Sie auf Ihrem Gerät ein benutzerdefiniertes Aktivierungswort verwenden k�
 1. Erstellen Sie ein neues Konto. Verwenden Sie dabei die E-Mail-Adresse, an die Ihre Einladung für Azure Active Directory gesendet wurde. 
 
     ![Erstellen eines neuen Kontos](media/speech-devices-sdk/wake-word-1.png)
- 
-1.  Nachdem Sie sich angemeldet haben, füllen Sie das Formular aus, und wählen Sie dann **Meine Reise beginnen** aus.
-
-    ![Erfolgreich angemeldet](media/speech-devices-sdk/wake-word-3.png)
  
 1. Die Seite **Custom Wake Word** (Benutzerdefiniertes Aktivierungswort) ist nicht für die Öffentlichkeit verfügbar. Folglich ist kein direkter Link vorhanden, über den Sie zu der Seite gelangen. Das Custom Speech-Feature erfordert ein Azure-Abonnement, das Feature „Benutzerdefiniertes Aktivierungswort“ hingegen nicht. Wenn die Fehlerseite **Keine Abonnements gefunden** angezeigt wird, ersetzen Sie einfach **"Subscriptions?errorMessage=No%20Subscriptions%20found"** durch "**customkws**" in der URL, und drücken Sie die EINGABETASTE. Die URL muss eine der folgenden URLs sein: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws oder https://northeurope.cris.ai/customkws abhängig von Ihrer Region.
 

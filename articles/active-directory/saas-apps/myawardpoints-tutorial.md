@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e3e3ff05836cb49d46a25ef3fa55d40a0bd134f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184559"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247753"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Tutorial: Azure Active Directory-Integration in My Award Points Top Sub/Top Team
 
@@ -50,7 +50,8 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von My Award Points Top Sub/Top Team aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -112,7 +113,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<SAMLENTITYID>`.
 
     > [!NOTE]
-    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com), um diesen Wert zu erhalten.
+    > Sie erhalten den Wert `<SAMLENTITYID>` in späteren Schritten in diesem Tutorial.
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
@@ -122,7 +123,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/myawardpoints-tutorial/tutorial_general_400.png)
 
-6. Zum Konfigurieren des einmaligen Anmeldens bei **My Award Points Top Sub/Top Team** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Supportteam von My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+6. Wählen Sie im Abschnitt **My Award Points Top Sub/Top Team-Konfiguration** die Option **My Award Points Top Sub/Top Team konfigurieren** aus, um das Fenster zum Konfigurieren der Anmeldung zu öffnen. Kopieren Sie die SAML-Entitäts-ID aus dem Abschnitt **Kurzübersicht**, und fügen Sie den Wert der SAML-Entitäts-ID mit der Anmelde-URL anstelle von `<SAMLENTITYID>` im Abschnitt **Domäne und URLs für My Award Points Top Sub/Top Team** im Azure-Portal ein.
+
+7. Zum Konfigurieren des einmaligen Anmeldens bei **My Award Points Top Sub/Top Team** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Supportteam von My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

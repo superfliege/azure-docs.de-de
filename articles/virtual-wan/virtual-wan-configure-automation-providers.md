@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/23/2018
+ms.date: 10/04/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: 7f70470880845fd4271ffdbb35af771ec433babc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0ea1b69b788255b1d8d24e17fcc1409d35a4fd36
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961942"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814320"
 ---
-# <a name="virtual-wan-partners-preview"></a>Virtual WAN-Partner (Vorschau)
+# <a name="virtual-wan-partners"></a>Virtual WAN-Partner
 
 In diesem Artikel erfahren Sie, wie Sie die Automatisierungsumgebung einrichten, um ein Zweigstellengerät (ein lokales VPN-Gerät oder SDWAN eines Kunden) für Azure Virtual WAN zu verbinden und zu konfigurieren. Wenn Sie Zweigstellengeräte anbieten, die VPN-Konnektivität über IPsec/IKEv2 oder IPsec/IKEv1 ermöglichen, ist dieser Artikel für Sie interessant.
 
@@ -37,7 +37,7 @@ Ein Zweigstellengerät (ein lokales VPN-Gerät des Kunden oder SDWAN CPE) verwen
   1. Normalerweise startet ein Virtual WAN-Benutzer den Prozess, indem er eine Virtual WAN-Ressource erstellt.
   2. Der Benutzer richtet einen dienstprinzipalbasierten Ressourcengruppenzugriff für das lokale System (Ihren Zweigstellencontroller oder Ihre VPN-Gerätebereitstellungssoftware) ein, um Zweigstelleninformationen in Azure Virtual WAN zu schreiben.
   3. Der Benutzer kann zu diesem Zeitpunkt entscheiden, sich bei Ihrer Benutzeroberfläche anzumelden und die Anmeldeinformationen für den Dienstprinzipal einzurichten. Sobald dies erfolgt ist, sollte Ihr Controller in der Lage sein, Zweigstelleninformationen mit der von Ihnen bereitgestellten Automatisierung hochzuladen. Das manuelle Gegenstück hierfür auf Azure-Seite ist „Standort erstellen“.
-  4. Sobald die Informationen zum Standort (Zweigstellengerät) in Azure verfügbar sind, ordnet der Benutzer den Standort einem Hub zu. Ein virtueller Hub ist ein von Microsoft verwaltetes virtuelles Netzwerk. Der Hub enthält verschiedene Dienstendpunkte zum Aktivieren der Konnektivität über Ihr lokales Netzwerk (vpnsite). Der Hub ist der Kern Ihres Netzwerks in einer Region. Es kann pro Azure-Region nur einen Hub geben, und der darin befindliche VPN-Endpunkt (VPN-Gateway) wird bei diesem Vorgang erzeugt. Das VPN-Gateway ist ein skalierbares Gateway, das je nach Bandbreiten- und Verbindungsbedarf entsprechend dimensioniert ist. Sie können die Erstellung von virtuellen Hubs und VPN-Gateways über Ihr Dashboard für Zweigstellengeräte-Controller automatisieren.
+  4. Sobald die Informationen zum Standort (Zweigstellengerät) in Azure verfügbar sind, ordnet der Benutzer den Standort einem Hub zu. Ein virtueller Hub ist ein von Microsoft verwaltetes virtuelles Netzwerk. Der Hub enthält verschiedene Dienstendpunkte zum Aktivieren der Konnektivität über Ihr lokales Netzwerk (vpnsite). Der Hub ist der Kern Ihres Netzwerks in einer Region. Es kann pro Azure-Region nur einen Hub geben, und der darin befindliche VPN-Endpunkt (VPN-Gateway) wird bei diesem Vorgang erzeugt. Das VPN Gateway ist ein skalierbares Gateway, das je nach Bandbreiten- und Verbindungsbedarf entsprechend dimensioniert ist. Sie können die Erstellung von virtuellen Hubs und VPN-Gateways über Ihr Dashboard für Zweigstellengeräte-Controller automatisieren.
   5. Sobald der virtuelle Hub dem Standort zugeordnet ist, wird eine Konfigurationsdatei erstellt, die der Benutzer manuell herunterladen kann. Hier kommt Ihre Automatisierung ins Spiel, die die Benutzererfahrung nahtlos macht. Anstatt dass der Benutzer das Zweigstellengerät manuell herunterladen und konfigurieren muss, können Sie die Automatisierung so einrichten, so nur noch wenige Mausklicks auf Ihrer Benutzeroberfläche nötig sind. Dadurch werden typische Verbindungsprobleme wie Nichtübereinstimmung gemeinsam verwendeter Schlüssel und von IPSec-Parametern, Lesbarkeit von Konfigurationsdateien usw. vermieden.
   6. Am Ende dieses Schritts in Ihrer Lösung steht dem Benutzer eine nahtlose Site-to-Site Verbindung zwischen Zweigstellengerät und virtuellem Hub zur Verfügung. Sie können auch zusätzliche Verbindungen über andere Hubs einrichten. Jede Verbindung ist ein Aktiv/Aktiv-Tunnel. Ihr Kunde kann für jede der Anbindungen an den Tunnel einen anderen Internetdienstanbieter wählen.
 

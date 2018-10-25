@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 255fe84f0d155902b2a3ac477a1e677efef42bb4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 720b8584c201826e55099ad31667478b6aa57b27
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386655"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024513"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -54,7 +54,8 @@ Es gibt Mindestversionen des Agents, um die bestmöglichen Ergebnisse zu erziele
 
 #### <a name="supported-oses"></a>Unterstützte Betriebssysteme
 
-Der Linux-Agent wird auf mehreren Betriebssystemen ausgeführt. Das Erweiterungsframework begrenzt jedoch die Anzahl der Betriebssysteme, die von Erweiterungen unterstützt werden. Weitere Informationen dazu finden Sie in diesem Artikel: https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems.
+Der Linux-Agent wird auf mehreren Betriebssystemen ausgeführt. Das Erweiterungsframework begrenzt jedoch die Anzahl der Betriebssysteme, die von Erweiterungen unterstützt werden. [hier finden Sie weitere Informationen](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+)
 
 Manche Erweiterung werden nicht auf allen Betriebssystemen unterstützt. In diesem Fall wird der Fehler *Error Code 51, 'Unsupported OS'* (Fehlercode 51, „Nicht unterstütztes Betriebssystem“) zurückgegeben. Überprüfen Sie die Dokumentation zu Erweiterungen auf Informationen zu Unterstützungsmöglichkeiten.
 

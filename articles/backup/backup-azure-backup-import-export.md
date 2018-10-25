@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: 5ef44ccf87bc5e40b57dc7fc997c9a827c93484b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b55c5bc6096186e338d6960190169d5f4acc777d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831453"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955132"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die Daten der Offlinesicherung in Azure hochzuladen.
@@ -54,7 +54,7 @@ Führen Sie vor der Initiierung des Workflows zur Offlinesicherung die folgenden
 * Der Computer, auf dem der Azure Backup-Agent ausgeführt wird, muss über Azure PowerShell 3.7.0 verfügen. Es wird empfohlen, die Sie [die Version 3.7.0 von Azure PowerShell herunterladen und installieren](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017).
 * Auf dem Computer mit dem Azure Backup-Agent müssen Microsoft Edge oder Internet Explorer 11 installiert und JavaScript aktiviert sein. 
 * Erstellen Sie ein Azure Storage-Konto in dem Abonnement, in dem sich auch der Recovery Services-Tresor befindet. 
-* Vergewissern Sie sich, dass Sie über die [erforderlichen Berechtigungen](../azure-resource-manager/resource-group-create-service-principal-portal.md) für die Erstellung der Azure Active Directory-Anwendung verfügen. Der Workflow zur Offlinesicherung erstellt eine Azure Active Directory-Anwendung in dem Abonnement, das dem Azure Storage-Konto zugeordnet ist. Die Anwendung dient dazu, Azure Backup sicheren und bereichsbezogenen Zugriff auf den Azure-Importdienst zu ermöglichen, der für den Workflow zur Offlinesicherung erforderlich ist. 
+* Vergewissern Sie sich, dass Sie über die [erforderlichen Berechtigungen](../active-directory/develop/howto-create-service-principal-portal.md) für die Erstellung der Azure Active Directory-Anwendung verfügen. Der Workflow zur Offlinesicherung erstellt eine Azure Active Directory-Anwendung in dem Abonnement, das dem Azure Storage-Konto zugeordnet ist. Die Anwendung dient dazu, Azure Backup sicheren und bereichsbezogenen Zugriff auf den Azure-Importdienst zu ermöglichen, der für den Workflow zur Offlinesicherung erforderlich ist. 
 * Registrieren Sie den Ressourcenanbieter „Microsoft.ImportExport“ bei dem Abonnement mit dem Azure Storage-Konto. So registrieren Sie den Ressourcenanbieter:
     1. Klicken Sie im Hauptmenü auf **Abonnements**.
     2. Wählen Sie bei Verwendung mehrerer Abonnements das Abonnement aus, das Sie für die Offlinesicherung verwenden. Falls Sie nur ein einzelnes Abonnement verwenden, wird Ihr Abonnement angezeigt.

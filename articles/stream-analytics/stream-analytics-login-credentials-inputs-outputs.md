@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: b49b4fecb6be70987e7e6736d78f224c03f719bf
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2dd5721ad0f45080a73172e150891cfb5f48d329
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30907278"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025768"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Austauschen von Anmeldeinformationen für Ein- und Ausgaben eines Stream Analytics-Auftrags
 
@@ -34,7 +34,7 @@ In diesem Abschnitt werden Sie durch die Schritte geführt, in denen Sie die Anm
 6. Suchen Sie nach dem Feld **Speicherkontoschlüssel**, fügen Sie Ihren neu generierten Schlüssel ein, und klicken Sie auf **Speichern**.    
 7. Wenn Sie die Änderungen speichern, wird automatisch ein Verbindungstest gestartet. Diesen können Sie sich auf der Registerkarte „Benachrichtigungen“ ansehen. Es gibt zwei Benachrichtigungen, wobei eine dem Speichern der Aktualisierung und die andere dem Testen der Verbindung entspricht:  
    ![Benachrichtigungen nach einem Bearbeiten des Schlüssels](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
-8. Wechseln Sie zum Abschnitt [Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung] (#start-your-job-from-the-last-stopped-time).
+8. Wechseln Sie zum Abschnitt [Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung](#start-your-job-from-the-last-stopped-time).
 
 ### <a name="event-hubs"></a>Event Hubs
 

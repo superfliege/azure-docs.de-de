@@ -1,28 +1,29 @@
 ---
-title: Transliterate-Methode der Microsoft-Textübersetzungs-API | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zur Verwendung der Transliterate-Methode der Microsoft-Textübersetzungs-API.
+title: Transliterate-Methode der Textübersetzungs-API
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die Transliterate-Methode der Textübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: fdd6fa9236f0c02685198b6de3228c444993dad6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377522"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018620"
 ---
-# <a name="text-api-30-transliterate"></a>Text API 3.0: Transliterate
+# <a name="translator-text-api-30-transliterate"></a>Textübersetzungs-API 3.0: Transliterate
 
 Konvertiert Text in einer Sprache aus einem Skript in ein anderes Skript.
 
 ## <a name="request-url"></a>Anfrage-URL
 
-Senden Sie eine `POST`-Anforderung an:
+Sendet eine `POST`-Anforderung an:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
@@ -30,11 +31,11 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 ## <a name="request-parameters"></a>Anforderungsparameter
 
-Die folgenden Anforderungsparameter werden an die Abfragezeichenfolge übergeben:
+Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
 <table width="100%">
-  <th width="20%">Abfrageparameter</th>
-  <th>Beschreibung</th>
+  <th width="20%">Query parameter (Abfrageparameter)</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>api-version</td>
     <td>*Erforderlicher Parameter*.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein.</td>
@@ -57,9 +58,9 @@ Anforderungsheader enthalten Folgendes:
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
-    <td>_Ein Autorisierungs-_<br/>_header_</td>
+    <td>_Eine Autorisierung_<br/>_Header_</td>
     <td>*Erforderlicher Anforderungsheader*.<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -72,7 +73,7 @@ Anforderungsheader enthalten Folgendes:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optional*.<br/>Ein vom Client erstellter GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
+    <td>*Optional*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
   </tr>
 </table> 
 
@@ -114,7 +115,7 @@ Eine JSON-Beispielantwort lautet wie folgt:
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>X-RequestId</td>
     <td>Der Wert, der vom Dienst für die Identifizierung der Anforderung generiert wird. Er wird zu Problembehandlungszwecken verwendet.</td>
@@ -127,7 +128,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 <table width="100%">
   <th width="20%">Statuscode</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
     <td>Erfolgreich.</td>
@@ -142,7 +143,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
   <tr>
     <td>403</td>
-    <td>Die Anforderung ist nicht autorisiert. Überprüfen Sie die detaillierte Fehlermeldung. Dies weist häufig darauf hin, dass alle kostenlosen Übersetzungen, die mit einem Testabonnement bereitgestellt wurden, aufgebraucht sind.</td>
+    <td>Die Anforderung ist nicht autorisiert. Weitere Informationen finden Sie in der Fehlermeldung. Diese weist oft darauf hin, dass alle kostenlosen Übersetzungen, die mit einer Testversion bereitgestellt wurden, aufgebraucht sind.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -150,11 +151,11 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   </tr>
   <tr>
     <td>500</td>
-    <td>Unerwarteter Fehler. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie Folgendes an: Datum und Uhrzeit des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
+    <td>Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Der Server ist vorübergehend nicht verfügbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie Folgendes an: Datum und Uhrzeit des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
+    <td>Der Server ist vorübergehend nicht verfügbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
   </tr>
 </table> 
 

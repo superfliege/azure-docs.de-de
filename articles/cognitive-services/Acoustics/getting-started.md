@@ -1,20 +1,21 @@
 ---
-title: Erste Schritte mit Project Acoustics in Cognitive Services
+title: Erste Schritte mit Project Acoustics
+titlesuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Plug-In in Ihr Unity-Projekt integrieren, die Szene hineinrendern („baken“) und Akustikparameter auf Soundquellen anwenden.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b80543b199d4b766c1a8800d2dff4cf5ed81f8cc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 62b6b40e6289ccca92c0a92d8bb7d0489dd44246
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181246"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902942"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Erste Schritte mit Project Acoustics
 In dieser Schnellstartanleitung erfahren Sie, wie Sie das Plug-In in Ihr Unity-Projekt integrieren, die Szene hineinrendern („baken“) und Akustikparameter auf Soundquellen anwenden. Für dieses Schnellstarttutorial müssen Sie zunächst ein [Azure Batch-Konto](create-azure-account.md) erstellen. Grundlegende Unity-Kenntnisse werden in dieser Anleitung vorausgesetzt.
@@ -93,9 +94,9 @@ Erstellen Sie eine Audioquelle. Klicken Sie auf das Kontrollkästchen neben **Sp
 ![Audioquelle](media/AudioSource.png)
 
 ## <a name="apply-post-bake-design"></a>Anwenden eines Designs nach dem Bakevorgang
-Sie können das Skript **AcousticsSourceCustomization** einer Soundquelle Ihrer Szene hinzufügen, um zusätzliche Quelldesignparameter zu aktivieren. Klicken Sie dazu auf **Add Component** (Komponente hinzufügen), und rufen Sie **Scripts (Skripts) > Acoustics Source Customization (Soundquelle anpassen)** auf:
+Sie können das Skript **AcousticsAdjust** einer Soundquelle Ihrer Szene hinzufügen, um zusätzliche Quelldesignparameter zu aktivieren. Klicken Sie dazu auf **Add Component** (Komponente hinzufügen), und wählen Sie **Scripts (Skripts) > Acoustics Adjust (Sound anpassen)** aus:
 
-![Anpassen der Soundquelle](media/SourceCustomization.png)
+![AcousticsAdjust](media/AcousticsAdjust.png)
 
 Auch für den **Microsoft Acoustics Mixer** sind Parameter verfügbar. Weitere Informationen zum Design nach dem Bakevorgang finden Sie unter [Designparameter](design-process.md).
 

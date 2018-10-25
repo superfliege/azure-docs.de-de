@@ -4,41 +4,61 @@ description: Dieser Artikel beschreibt, wie Azure Database for PostgreSQL Protok
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: bcca8ce8d11482dd8517992297b7e8a5b94ac8b1
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.topic: conceptual
+ms.date: 10/04/2018
+ms.openlocfilehash: 2a6744bdec48e59b820605bb4d1cc01d32702bcf
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435489"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867762"
 ---
-# <a name="server-logs-in-azure-database-for-postgresql"></a>Serverprotokolle in Azure-Datenbank für PostgreSQL 
-Azure-Datenbank für PostgreSQL generiert Abfragen und Fehlerprotokolle. Der Zugriff auf Transaktionsprotokolle wird jedoch nicht unterstützt. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. Weitere Informationen finden Sie unter [Fehlerberichterstattung und -protokollierung](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html).
+# <a name="server-logs-in-azure-database-for-postgresql"></a>Serverprotokolle in Azure Database for PostgreSQL 
+Azure-Datenbank für PostgreSQL generiert Abfragen und Fehlerprotokolle. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. (Der Zugriff auf Transaktionsprotokolle ist nicht enthalten.) 
 
-## <a name="access-server-logs"></a>Zugreifen auf Serverprotokolle
-Über das Azure-Portal, die [Azure CLI](howto-configure-server-logs-using-cli.md) und Azure-REST-APIs können Sie Azure PostgreSQL-Serverfehlerprotokolle auflisten und herunterladen.
+## <a name="configure-logging"></a>Konfigurieren der Protokollierung 
+Sie können die Protokollierung auf dem Server mithilfe von Serverparametern für die Protokollierung konfigurieren. Auf jedem neuen Server sind **log_checkpoints** und **log_connections** standardmäßig aktiviert. Es gibt zusätzliche Parameter, die Sie entsprechend Ihren Protokollierungsanforderungen anpassen können: 
 
-## <a name="log-retention"></a>Protokollaufbewahrung
-Mithilfe des mit Ihrem Server verknüpften Parameters **log\_retention\_period** können Sie die Beibehaltungsdauer für Systemprotokolle festlegen. Die Einheit für diesen Parameter wird in Tagen gemessen. Der Standardwert beträgt 3 Tage. Der Maximalwert beträgt 7 Tage. Ihrem Server muss genügend Speicher zugewiesen sein, damit die beibehaltenen Protokolldateien gespeichert werden können.
-Die Protokolldateien rotieren jede Stunde bzw. bei einer Größe von 100 MB, je nachdem, welcher Fall zuerst eintritt.
+![Azure Database for PostgreSQL – Protokollierungsparameter](./media/concepts-server-logs/log-parameters.png)
 
-## <a name="configure-logging-for-azure-postgresql-server"></a>Konfigurieren der Protokollierung für den Azure PostgreSQL-Server
-Sie können die Abfrage- und Fehlerprotokollierung für Ihren Server aktivieren. Fehlerprotokolle können Informationen über „auto-vacuum“, Verbindungen und Prüfpunkte enthalten.
+Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu PostgreSQL unter [Fehlerberichterstattung und -protokollierung](https://www.postgresql.org/docs/current/static/runtime-config-logging.html). Weitere Informationen dazu, wie Sie Azure Database for PostgreSQL-Parameter konfigurieren, finden Sie in der Dokumentation zum [Portal](howto-configure-server-parameters-using-portal.md) bzw. zur [Befehlszeilenschnittstelle](howto-configure-server-parameters-using-cli.md).
 
-Sie können die Abfrageprotokollierung für Ihre PostgreSQL-Datenbankinstanz durch Festlegung der folgenden zwei Serverparameter aktivieren: `log_statement` und `log_min_duration_statement`.
+## <a name="access-server-logs-through-portal-or-cli"></a>Zugreifen auf Serverprotokolle über das Portal oder die Befehlszeilenschnittstelle
+Wenn Sie Protokolle aktiviert haben, können Sie im Protokollspeicher von Azure Database for PostgreSQL über das [Azure-Portal](howto-configure-server-logs-in-portal.md), die [Azure-Befehlszeilenschnittstelle](howto-configure-server-logs-using-cli.md) und die Azure-REST-APIs auf sie zugreifen. Die Protokolldateien rotieren jede Stunde oder bei einer Größe von 100 MB, je nachdem, welcher Fall zuerst eintritt. Mithilfe des mit Ihrem Server verknüpften Parameters **log\_retention\_period** können Sie die Beibehaltungsdauer für diesen Protokollspeicher festlegen. Der Standardwert ist 3 Tage. Der Maximalwert beträgt 7 Tage. Ihrem Server muss genügend Speicher zugewiesen sein, damit die Protokolldateien gespeichert werden können. (Dieser retention-Parameter steuert nicht Azure-Diagnoseprotokolle.)
 
-Der Parameter **log\_statement** steuert, welche SQL-Anweisungen protokolliert werden. Es wird empfohlen, diesen Parameter auf ***Alle*** zu setzen, damit alle Anweisungen protokolliert werden. Der Standardwert lautet „Keine“.
 
-Der Parameter **log\_min\_duration\_statement** legt das Limit einer zu protokollierenden Anweisung in Millisekunden fest. Alle SQL-Anweisungen, die länger ausgeführt werden als die Parametereinstellung, werden protokolliert. Dieser Parameter ist deaktiviert und standardmäßig auf minus 1 (–1) festgelegt. Die Aktivierung dieses Parameters kann bei der Identifizierung nicht optimierter Abfragen in Ihren Anwendungen hilfreich sein.
+## <a name="diagnostic-logs"></a>Diagnoseprotokolle
+Azure Database for PostgreSQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle auf Ihrem PostgreSQL-Server aktiviert haben, können Sie diese an [Log Analytics](../log-analytics/log-analytics-queries.md), Event Hubs oder Azure Storage ausgegeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). 
 
-Mit dem Parameter **log\_min\_messages** können Sie steuern, welche Meldungsebenen in das Serverprotokoll geschrieben werden. Die Standardeinstellung lautet „WARNUNG“ 
 
-Weitere Informationen zu diesen Einstellungen finden Sie in der Dokumentation unter [Fehlerberichterstattung und -protokollierung](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html). Informationen speziell zur Konfiguration von Parametern für Azure Database for PostgreSQL-Server finden Sie unter [Anpassen der Serverkonfigurationsparameter mithilfe der Azure CLI](howto-configure-server-parameters-using-cli.md).
+In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. Je nach dem ausgewählten Ausgabeendpunkt können die enthaltenen Felder und ihre Reihenfolge variieren. 
+
+|**Feld** | **Beschreibung** |
+|---|---|
+| TenantId | Ihre Mandanten-ID |
+| SourceSystem | `Azure` |
+| TimeGenerated [UTC] | Zeitstempel für den Aufzeichnungsbeginn des Protokolls in UTC |
+| Typ | Typ des Protokolls Immer `AzureDiagnostics` |
+| SubscriptionId | GUID für das Abonnement, zu dem der Server gehört |
+| ResourceGroup | Name der Ressourcengruppe, zu der der Server gehört |
+| ResourceProvider | Name des Ressourcenanbieters Immer `MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceType | `Servers` |
+| ResourceId | Ressourcen-URI |
+| Ressource | Name des Servers |
+| Category (Kategorie) | `PostgreSQLLogs` |
+| NameVorgang | `LogEvent` |
+| errorLevel | Protokollierungsstufe, z.B.: LOG, ERROR, NOTICE |
+| Message | Primäre Protokollmeldung | 
+| Domäne | Serverversion, Beispiel: postgres-10 |
+| Detail | Sekundäre Protokollmeldung (falls zutreffend) |
+| ColumnName | Name der Spalte (falls zutreffend) |
+| SchemaName | Name des Schemas (falls zutreffend) |
+| DatatypeName | Name des Datentyps (falls zutreffend) |
+| LogicalServerName | Name des Servers | 
+| _ResourceId | Ressourcen-URI |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Informationen zum Zugriff auf Protokolle über die Befehlszeilenschnittstelle Azure CLI finden Sie unter [Konfigurieren der und Zugreifen auf die Serverprotokolle mithilfe der Azure CLI](howto-configure-server-logs-using-cli.md).
-- Weitere Informationen zu Serverparametern finden Sie unter [Anpassen der Serverkonfigurationsparameter über die Azure CLI](howto-configure-server-parameters-using-cli.md).
+- Informieren Sie sich über den Zugriff auf Protokolle über das [Azure-Portal](howto-configure-server-logs-in-portal.md) oder die [Azure-Befehlszeilenschnittstelle](howto-configure-server-logs-using-cli.md).
+- Erfahren Sie mehr über die [Preise für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: c29131720de8d6016d134fe7c0118fc3db9e22be
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433989"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985640"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Erstellen eines Stream Analytics-Auftrags zum Analysieren von Telefonanrufdaten und Visualisieren von Ergebnissen in einem Power BI-Dashboard
  
@@ -37,7 +37,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.  
 * Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.  
-* Laden Sie die App [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) zum Generieren von Anrufereignissen aus dem Microsoft Download Center herunter, oder rufen Sie den Quellcode auf [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) ab.  
+* Laden Sie die App [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) zum Generieren von Anrufereignissen aus dem Microsoft Download Center herunter, oder rufen Sie den Quellcode auf [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) ab.  
 
 ## <a name="create-an-azure-event-hub"></a>Erstellen eines Azure Event Hubs 
 
@@ -89,7 +89,7 @@ Bevor eine Anwendung Daten an Azure Event Hubs senden kann, muss der Event Hub m
 
 Vor dem Starten der TelcoGenerator-App sollten Sie diese so konfigurieren, dass Daten an die zuvor erstellten Azure Event Hubs gesendet werden.
 
-1. Extrahieren Sie den Inhalt der Datei [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip).  
+1. Extrahieren Sie den Inhalt der Datei [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip).  
 2. Öffnen Sie die Datei `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` in einem Text-Editor Ihrer Wahl. (Da mehr als eine CONFIG-Datei vorhanden ist, sollten Sie darauf achten, dass Sie die richtige Datei öffnen.)  
 
 3. Aktualisieren Sie das <appSettings>-Element in der CONFIG-Datei mit den folgenden Details:
@@ -260,7 +260,7 @@ Sie können eine Abfrage über den Abfrage-Editor testen, und Sie benötigen fü
 
 ## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>Einbetten Ihres Power BI-Dashboards in eine Webanwendung
 
-Für diesen Teil des Tutorials verwenden Sie eine [ASP.NET](http://asp.net/)-Beispielwebanwendung, die vom Power BI-Team zum Einbetten Ihres Dashboards erstellt wurde. Weitere Informationen zum Einbetten von Dashboards finden Sie im Artikel [Einbetten mit Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
+Für diesen Teil des Tutorials verwenden Sie eine [ASP.NET](https://asp.net/)-Beispielwebanwendung, die vom Power BI-Team zum Einbetten Ihres Dashboards erstellt wurde. Weitere Informationen zum Einbetten von Dashboards finden Sie im Artikel [Einbetten mit Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
 
 In diesem Tutorial führen wir die Schritte für den Benutzer aus, bei dem es sich um den Besitzer der Datenanwendung handelt. Navigieren Sie zum Einrichten der Anwendung zum GitHub-Repository [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples), und befolgen Sie die Anleitung im Abschnitt **User Owns Data** (Benutzer ist Besitzer der Daten). (Verwenden Sie die Umleitungs- und Startseiten-URLs im Unterabschnitt **integrate-dashboard-web-app**.) Da wir das Dashboard-Beispiel verwenden, können Sie den Beispielcode für „integrate-dashboard-web-app“ aus dem [GitHub-Repository](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app) nutzen.
 Nachdem die Anwendung in Ihrem Browser ausgeführt wird, können Sie das Dashboard, das Sie zuvor erstellt haben, mit diesen Schritten in die Webseite einbetten:

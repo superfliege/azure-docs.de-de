@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 43fd52dd04e679b9756c07e8c6e260323469026a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c1ef71ea2ec551335c3681760c181624334c3229
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126201"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043200"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schemaaktualisierungen für Azure Logic Apps – 1. Juni 2016
 
@@ -33,23 +33,23 @@ Informationen zum Durchführen des Upgrades für Ihre Logik-App vom Schema vom 1
 
 Dieses Schema enthält Bereiche, mit denen Sie Aktionen gruppieren oder schachteln können. Beispielsweise kann eine Bedingung eine andere Bedingung enthalten. Informieren Sie sich unter [Schleifen, Bereiche und Auflösen von Batches in Logik-Apps](../logic-apps/logic-apps-loops-and-scopes.md) über die Syntax von Bereichen, oder sehen Sie sich dieses einfache Beispiel zu Bereichen an:
 
-```
+```json
 {
-    "actions": {
-        "My_Scope": {
-            "type": "scope",
-            "actions": {                
-                "Http": {
-                    "inputs": {
-                        "method": "GET",
-                        "uri": "http://www.bing.com"
-                    },
-                    "runAfter": {},
-                    "type": "Http"
-                }
+   "actions": {
+      "Scope": {
+         "type": "Scope",
+         "actions": {                
+            "Http": {
+               "inputs": {
+                   "method": "GET",
+                   "uri": "http://www.bing.com"
+               },
+               "runAfter": {},
+               "type": "Http"
             }
-        }
-    }
+         }
+      }
+   }
 }
 ```
 
@@ -57,29 +57,29 @@ Dieses Schema enthält Bereiche, mit denen Sie Aktionen gruppieren oder schachte
 
 ## <a name="conditions-and-loops-changes"></a>Änderungen bei Bedingungen und Schleifen
 
-In den bisherigen Schemaversionen handelte es sich bei Bedingungen und Schleifen um Parameter, die einer einzelnen Aktion zugeordnet waren. Mit diesem Schema wird diese Einschränkung aufgehoben, sodass Bedingungen und Schleifen jetzt als Aktionstypen angezeigt werden. Informieren Sie sich unter [Schleifen, Bereiche und Auflösen von Batches in Logik-Apps](../logic-apps/logic-apps-loops-and-scopes.md) über Schleifen und Bereiche, oder sehen Sie sich dieses einfache Beispiel für eine Bedingungsaktion an:
+In den bisherigen Schemaversionen handelte es sich bei Bedingungen und Schleifen um Parameter, die einer einzelnen Aktion zugeordnet waren. Mit diesem Schema wird diese Einschränkung aufgehoben, sodass Bedingungen und Schleifen jetzt als Aktionstypen verfügbar sind. Erfahren Sie mehr über [Schleifen und Bereiche](../logic-apps/logic-apps-loops-and-scopes.md) und [Bedingungen](../logic-apps/logic-apps-control-flow-conditional-statement.md), oder arbeiten Sie dieses einfache Beispiel durch, das eine Bedingungsaktion zeigt:
 
-```
+```json
 {
-    "If_trigger_is_some-trigger": {
-        "type": "If",
-        "expression": "@equals(triggerBody(), 'some-trigger')",
-        "runAfter": { },
-        "actions": {
-            "Http_2": {
-                "inputs": {
-                    "method": "GET",
-                    "uri": "http://www.bing.com"
-                },
-                "runAfter": {},
-                "type": "Http"
-            }
-        },
-        "else": 
-        {
-            "if_trigger_is_another-trigger": "..."
-        }      
-    }
+   "Condition - If trigger is some trigger": {
+      "type": "If",
+      "expression": "@equals(triggerBody(), '<trigger-name>')",
+      "runAfter": {},
+      "actions": {
+         "Http_2": {
+            "inputs": {
+                "method": "GET",
+                "uri": "http://www.bing.com"
+            },
+            "runAfter": {},
+            "type": "Http"
+         }
+      },
+      "else": 
+      {
+         "Condition - If trigger is another trigger": {}
+      }  
+   }
 }
 ```
 
@@ -87,16 +87,14 @@ In den bisherigen Schemaversionen handelte es sich bei Bedingungen und Schleifen
 
 ## <a name="runafter-property"></a>runAfter-Eigenschaft
 
-Die `runAfter`-Eigenschaft ersetzt die `dependsOn`-Eigenschaft und ermöglicht eine höhere Genauigkeit beim Angeben der Ausführungsreihenfolge für Aktionen basierend auf dem Status vorheriger Aktionen.
+Die `runAfter`-Eigenschaft ersetzt die `dependsOn`-Eigenschaft und ermöglicht eine höhere Genauigkeit beim Angeben der Ausführungsreihenfolge für Aktionen basierend auf dem Status vorheriger Aktionen. Die Eigenschaft `dependsOn` gab an, ob „die Aktion ausgeführt wurde und erfolgreich war“, ausgehend vom Erfolg, Fehlschlag oder Überspringen der vorhergehenden Aktion, nicht aber von der gewünschten Anzahl der Ausführungen der Aktion. Die Eigenschaft `runAfter` bietet Flexibilität als ein Objekt, das alle Namen von Aktionen angibt, nach denen das Objekt ausgeführt wird. Außerdem wird mit dieser Eigenschaft ein Array mit Statusangaben definiert, die als Trigger zulässig sind. Wenn Sie beispielsweise eine Aktion nach erfolgreicher Ausführung von Aktion A und ebenfalls nach dem Erfolg oder Fehlschlag von Aktion B ausführen möchten, richten Sie die `runAfter`-Eigenschaft wie folgt ein:
 
-Die `dependsOn`-Eigenschaft war gleichbedeutend mit dem Vorgang „Aktion wurde ausgeführt und war erfolgreich“. Es spielte keine Rolle, wie oft eine Aktion ausgeführt werden sollte – basierend darauf, ob die vorherige Aktion erfolgreich war, nicht erfolgreich war oder übersprungen wurde. Die `runAfter`-Eigenschaft bietet diese Flexibilität in Form eines Objekts, mit dem die Namen aller Aktionen angegeben werden, nach denen das Objekt ausgeführt wird. Außerdem wird mit dieser Eigenschaft ein Array mit Statusangaben definiert, die als Trigger zulässig sind. Sie erstellen beispielsweise diese `runAfter`-Eigenschaft, wenn die Ausführung nach einem erfolgreichen Schritt A und auch nach einem erfolgreichen oder fehlgeschlagenen Schritt B erfolgen soll:
-
-```
+```json
 {
-    "...",
-    "runAfter": {
-        "A": ["Succeeded"],
-        "B": ["Succeeded", "Failed"]
+   // Other parts in action definition
+   "runAfter": {
+      "A": ["Succeeded"],
+      "B": ["Succeeded", "Failed"]
     }
 }
 ```
@@ -109,10 +107,12 @@ Um ein Upgrade auf die [neueste Schemaversion](https://schema.management.azure.c
 
 2. Navigieren Sie zu **Übersicht**. Wählen Sie in der Logik-App-Symbolleiste die Option **Schema aktualisieren**.
    
-    ![Auswählen von „Schema aktualisieren“][1]
+   ![Auswählen von „Schema aktualisieren“][1]
    
-    Die aktualisierte Definition wird zurückgegeben, und Sie können sie bei Bedarf kopieren und in eine Ressourcendefinition einfügen. 
-    Es wird **jedoch dringend empfohlen**, die Option **Speichern unter** zu wählen, um sicherzustellen, dass alle Verbindungsverweise in der aktualisierten Logik-App gültig sind.
+   Die aktualisierte Definition wird zurückgegeben, und Sie können sie bei Bedarf kopieren und in eine Ressourcendefinition einfügen. 
+
+   > [!IMPORTANT]
+   > *Achten Sie darauf,* **Speichern unter** auszuwählen, damit alle Verbindungsverweise in der aktualisierten Logik-App gültig bleiben.
 
 3. Wählen Sie in der Symbolleiste des Blatts für das Upgrade die Option **Speichern unter**.
 
@@ -125,17 +125,17 @@ Um ein Upgrade auf die [neueste Schemaversion](https://schema.management.azure.c
 
 6. *Optional*: Wählen Sie neben **Schema aktualisieren** die Option **Klonen**, um die vorherige Logik-App mit der neuen Schemaversion zu überschreiben. Dieser Schritt ist nur erforderlich, wenn Sie die Ressourcen-ID oder Anforderungstrigger-URL Ihrer Logik-App beibehalten möchten.
 
-### <a name="upgrade-tool-notes"></a>Hinweise zum Upgradetool
+## <a name="upgrade-tool-notes"></a>Hinweise zum Upgradetool
 
-#### <a name="mapping-conditions"></a>Zuordnungsbedingungen
+### <a name="mapping-conditions"></a>Zuordnungsbedingungen
 
-In der aktualisierten Definition gruppiert das Tool die „wahren“ und „falschen“ Verzweigungsaktionen so gut wie möglich als Bereiche. Insbesondere das Designermuster von `@equals(actions('a').status, 'Skipped')` sollte als `else`-Aktion angezeigt werden. Wenn vom Tool aber nicht erkennbare Muster ermittelt werden, werden ggf. für die „wahre“ und die „falsche“ Verzweigung separate Bedingungen erstellt. Sie können die Aktionen nach dem Upgrade bei Bedarf neu zuordnen.
+In der aktualisierten Definition gruppiert das Tool die „wahren“ und „falschen“ Verzweigungsaktionen so gut wie möglich als Bereiche. Insbesondere wird das Designermuster von `@equals(actions('a').status, 'Skipped')` als `else`-Aktion angezeigt. Wenn vom Tool aber nicht erkennbare Muster ermittelt werden, werden ggf. für die „wahre“ und die „falsche“ Verzweigung separate Bedingungen erstellt. Sie können die Aktionen nach dem Upgrade bei Bedarf neu zuordnen.
 
 #### <a name="foreach-loop-with-condition"></a>foreach-Schleife mit Bedingung
 
-Im neuen Schema können Sie die Filteraktion verwenden, um das Muster einer `foreach`-Schleife mit einer Bedingung pro Element zu replizieren. Diese Änderung sollte aber automatisch während des Upgrades durchgeführt werden. Die Bedingung wird zu einer Filteraktion vor der foreach-Schleife, um nur ein Array mit Elementen zurückzugeben, die die Bedingung erfüllen, und dieses Array wird an die foreach-Aktion übergeben. Ein Beispiel hierzu finden Sie unter [Schleifen, Bereiche und Auflösen von Batches in Logik-Apps](../logic-apps/logic-apps-loops-and-scopes.md).
+Im neuen Schema können Sie die Filteraktion verwenden, um das Muster zu replizieren, das eine **For each**-Schleife mit einer Bedingung pro Element verwendet. Allerdings erfolgt die Änderung automatisch, wenn Sie ein Upgrade ausführen. Die Bedingung wird zu einer Filteraktion, die vor der **For each**-Schleife erscheint und nur ein Array mit Elementen zurückgibt, die die Bedingung erfüllen. Dieses Array wird dann an die **For each**-Aktion übergeben. Ein Beispiel hierzu finden Sie unter [Schleifen, Bereiche und Auflösen von Batches in Logik-Apps](../logic-apps/logic-apps-loops-and-scopes.md).
 
-#### <a name="resource-tags"></a>Ressourcentags
+### <a name="resource-tags"></a>Ressourcentags
 
 Nach dem Upgrade sind die Ressourcentags nicht mehr vorhanden, sodass Sie sie für den aktualisierten Workflow zurücksetzen müssen.
 
@@ -157,20 +157,20 @@ Die `foreach`- und `until`-Schleifen sind auf eine einzelne Aktion beschränkt.
 
 Aktionen können jetzt über eine zusätzliche Eigenschaft mit dem Namen `trackedProperties` verfügen. Sie ist den Eigenschaften `runAfter` und `type` gleichgeordnet. Mit diesem Objekt werden bestimmte Aktionseingaben oder -ausgaben angegeben, die Sie im Rahmen der Ausgabe eines Workflows in die Azure-Diagnosetelemetrie einbeziehen möchten. Beispiel: 
 
-```
-{                
-    "Http": {
-        "inputs": {
-            "method": "GET",
-            "uri": "http://www.bing.com"
-        },
-        "runAfter": {},
-        "type": "Http",
-        "trackedProperties": {
-            "responseCode": "@action().outputs.statusCode",
-            "uri": "@action().inputs.uri"
-        }
-    }
+``` json
+{
+   "Http": {
+      "inputs": {
+         "method": "GET",
+         "uri": "http://www.bing.com"
+      },
+      "runAfter": {},
+      "type": "Http",
+      "trackedProperties": {
+         "responseCode": "@action().outputs.statusCode",
+         "uri": "@action().inputs.uri"
+      }
+   }
 }
 ```
 

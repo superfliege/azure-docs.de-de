@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 59856418adde1ea29a0513a1ca7c0c60531768d8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 4fd7617bf45608cdae15919a40920ea0d214acb8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036540"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407470"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus Azure Access Control Service
 
@@ -117,6 +117,9 @@ Dies ist der Zeitplan für die Deaktivierung von Access Control-Komponenten:
 - **2. April 2018**: Das klassische Azure-Portal ist vollständig deaktiviert, d.h. Namespaces für Access Control können nicht mehr über jede URL verwaltet werden. Zu diesem Zeitpunkt können Sie Ihre Access Control-Namespaces nicht deaktivieren oder aktivieren, löschen oder aufzählen. Das Access Control-Verwaltungsportal ist jedoch voll funktionsfähig und befindet sich unter „`https://\<namespace\>.accesscontrol.windows.net`“. Alle sonstigen Komponenten von Access Control arbeiten weiterhin normal.
 - **7. November 2018**: Alle Komponenten von Access Control werden endgültig heruntergefahren. Dazu zählen das Access Control-Verwaltungsportal, der Verwaltungsdienst, STS und das Tokentransformationsregel-Modul. Zu diesem Zeitpunkt tritt bei allen Anforderungen, die an Access Control (unter der Adresse „\<namespace\>.accesscontrol.windows.net“) gesendet werden, ein Fehler auf. Alle vorhandenen Apps und Dienste müssen vor diesem Zeitpunkt zu anderen Technologien migriert worden sein.
 
+> [!NOTE]
+> Eine Richtlinie deaktiviert Namespaces, die für eine bestimmte Zeit kein Token angefordert haben. Seit Anfang September 2018 beträgt dieser Zeitraum 14 Tage der Inaktivität, dieser wird aber in den kommenden Wochen auf 7 Tage Inaktivität verkürzt. Wenn Sie Access Control-Namespaces, die zurzeit deaktiviert sind, verwenden, können Sie [ACS PowerShell herunterladen und installieren](#download-and-install-acs-powershell), um die Namespaces wieder zu aktivieren.
+
 ## <a name="migration-strategies"></a>Migrationsstrategien
 
 Die folgenden Abschnitte beschreiben allgemeine Empfehlungen für die Migration von Access Control zu anderen Microsoft-Technologien.
@@ -207,7 +210,7 @@ Im Allgemeinen ist *Azure Active Directory wahrscheinlich die richtige Wahl für
 | Anpassbare Benutzeroberfläche für Startbereichsermittlung/Kontoauswahl | Code zum Herunterladen, der in Apps integriert werden kann | Nicht unterstützt |
 | Hochladen von benutzerdefinierten Tokensignaturzertifikaten | Unterstützt | Unterstützt |
 | Anpassen von Ansprüchen in Token |- Übergeben von Eingabeansprüchen von Identitätsanbietern<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten |- Übergeben von Ansprüchen von Verbundidentitätsanbietern nicht möglich<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch nicht möglich<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche nicht möglich<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten<br />- Ausstellen von Ausgabeansprüchen basierend auf den Eigenschaften von mit Azure AD synchronisierten Benutzern |
-| **Automation** | | |
+| **Automatisierung** | | |
 | Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst | Unterstützt über Microsoft Graph- und Azure AD Graph-API |
 
 Wenn Sie zu dem Urteil kommen, dass Azure AD den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, sollten Sie die zwei Möglichkeiten für die Integration Ihrer App in Azure AD beachten.
@@ -222,7 +225,7 @@ Um WS-Verbund oder WIF für die Integration mit Azure AD zu verwenden, empfehlen
 
 Eine andere Möglichkeit ist die Umsetzung [dieses Codebeispiels](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), aus dem sich etwas abweichende Anweisungen zum Einrichten des WS-Verbunds ergeben. Dieses Codebeispiel verwendet nicht WIF, sondern stattdessen ASP.NET 4.5-OWIN-Middleware. Die Anweisungen für die App-Registrierung gelten jedoch auch für Apps, die WIF nutzen, und es ist keine Azure AD Premium-Lizenz erforderlich. 
 
-Wenn Sie sich für diesen Ansatz entscheiden, müssen Sie mit dem [Rollover von Signaturschlüsseln in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover) vertraut sein. Dieser Ansatz verwendet den globalen Azure AD-Signaturschlüssel zum Ausstellen von Token. Standardmäßig aktualisiert WIF Signaturschlüssel nicht automatisch. Wenn Azure AD durch die globalen Signaturschlüssel wechselt, muss Ihre WIF-Implementierung entsprechend vorbereitet sein und die Änderungen akzeptieren. Weitere Informationen finden Sie unter [Wichtige Informationen zum Rollover von Signaturschlüsseln in Azure Active Directory](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx).
+Wenn Sie sich für diesen Ansatz entscheiden, müssen Sie mit dem [Rollover von Signaturschlüsseln in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover) vertraut sein. Dieser Ansatz verwendet den globalen Azure AD-Signaturschlüssel zum Ausstellen von Token. Standardmäßig aktualisiert WIF Signaturschlüssel nicht automatisch. Wenn Azure AD durch die globalen Signaturschlüssel wechselt, muss Ihre WIF-Implementierung entsprechend vorbereitet sein und die Änderungen akzeptieren. Weitere Informationen finden Sie unter [Wichtige Informationen zum Rollover von Signaturschlüsseln in Azure Active Directory](https://msdn.microsoft.com/library/azure/dn641920.aspx).
 
 Wenn die Integration in Azure AD über das OpenID Connect- oder das OAuth-Protokoll möglich ist, wird diese Vorgehensweise empfohlen. Unter [Azure Active Directory für Entwickler](https://aka.ms/aaddev) stehen ausführliche Dokumentationen und Anweisungen für die Integration von Azure AD in Ihre Webanwendung zur Verfügung.
 
@@ -258,7 +261,7 @@ Die folgende Tabelle vergleicht die für Webanwendungen relevanten Funktionen vo
 | Anpassbare Benutzeroberfläche für Startbereichsermittlung/Kontoauswahl | Code zum Herunterladen, der in Apps integriert werden kann | Vollständig anpassbare Benutzeroberfläche über benutzerdefiniertes CSS |
 | Hochladen von benutzerdefinierten Tokensignaturzertifikaten | Unterstützt | Benutzerdefinierte Signaturschlüssel, keine Zertifikate, unterstützt über benutzerdefinierte Richtlinien |
 | Anpassen von Ansprüchen in Token |- Übergeben von Eingabeansprüchen von Identitätsanbietern<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten |- Übergabe von Ansprüchen von Identitätsanbietern möglich; für einige Ansprüche sind benutzerdefinierte Richtlinien erforderlich<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch nicht möglich<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche über benutzerdefinierte Richtlinien<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten über benutzerdefinierte Richtlinien |
-| **Automation** | | |
+| **Automatisierung** | | |
 | Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst |- Erstellung von Benutzern zulässig über Azure AD Graph-API.<br />- B2C-Mandanten, -Anwendungen oder -Richtlinien können nicht programmgesteuert erstellt werden. |
 
 Wenn Sie zu dem Urteil gelangen, dass Azure AD B2C den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, lesen Sie zunächst die Informationen in den folgenden Ressourcen:
@@ -347,6 +350,10 @@ In diesen Fällen kann es sinnvoll sein, die Webanwendung zu einem anderen Cloud
 | ![Pingen](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) bietet zwei Lösungen, die ACS ähnlich sind. PingOne ist ein Cloudidentitätsdienst, der viele der Funktionen von ACS unterstützt, und PingFederate ist ein ähnliches lokales Identitätsprodukt, das höhere Flexibilität bietet. Weitere Details zur Verwendung dieser Produkte finden Sie in [Ping's ACS retirement guidance](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) (Ping-Leitfaden zur Einstellung von ACS). |
 
 Unser Ziel bei der Arbeit mit Ping Identity und Auth0 besteht darin, sicherzustellen, dass für alle Access Control-Kunden ein Migrationspfad für ihre Apps und Dienste besteht, der den erforderlichen Arbeitsaufwand bei der Umstellung von Access Control minimiert.
+
+#### <a name="passthrough-authentication"></a>Pass-Through-Authentifizierung
+
+Bei der Pass-Through-Authentifizierung mit willkürlicher Tokentransformation gibt es keine entsprechende Microsoft-Technologie zu ACS. Wenn Ihre Kunden diese Funktion benötigen, stellt Auth0 die am nächsten kommende Lösung dar.
 
 ## <a name="questions-concerns-and-feedback"></a>Fragen, Bedenken und Feedback
 

@@ -12,46 +12,46 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/11/2018
 ms.author: meirm
-ms.component: na
-ms.openlocfilehash: ad0a3b8e0ee5f1114ea1db95cfe2f4176b8e2ddb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.component: ''
+ms.openlocfilehash: ef3cc76c0188cb2a0d3236d462d0645e3e45040b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931989"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044279"
 ---
 # <a name="log-analytics-for-service-providers"></a>Log Analytics für Dienstanbieter
 Log Analytics unterstützt Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hosting-Anbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden. 
 
 Zwischen Großunternehmen und Dienstanbietern bestehen viele Gemeinsamkeiten, insbesondere wenn ein zentrales IT-Team für die Verwaltung der IT vieler unterschiedlicher Geschäftseinheiten verantwortlich ist. Der Einfachheit halber wird in diesem Dokument der Begriff *Dienstanbieter* verwendet, jedoch ist die gleiche Funktionalität für Unternehmen und andere Kunden verfügbar.
 
-Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) teilnehmen, ist Log Analytics einer der in einem [Azure CSP-Abonnement](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) verfügbaren Azure-Dienste. 
+Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) teilnehmen, ist Log Analytics einer der in [Azure CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) verfügbaren Azure-Dienste. 
 
 ## <a name="architectures-for-service-providers"></a>Architekturen für Dienstanbieter
 
-Log Analytics-Arbeitsbereiche stellen für Administratoren ein Verfahren zum Steuern von Protokollfluss und -isolierung und zum Erstellen einer Protokollarchitektur bereit, die den spezifischen Geschäftsanforderungen Rechnung trägt. [In diesem Artikel](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-manage-access) werden die allgemeinen Überlegungen zur Verwaltung von Arbeitsbereichen erläutert. Dienstanbieter müssen sich mit zusätzlichen Überlegungen befassen.
+Log Analytics-Arbeitsbereiche stellen für Administratoren ein Verfahren zum Steuern von Protokollfluss und -isolierung und zum Erstellen einer Protokollarchitektur bereit, die den spezifischen Geschäftsanforderungen Rechnung trägt. [In diesem Artikel](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) werden die allgemeinen Überlegungen zur Verwaltung von Arbeitsbereichen erläutert. Dienstanbieter müssen sich mit zusätzlichen Überlegungen befassen.
 
 Für Dienstanbieter gibt es im Hinblick auf Log Analytics-Arbeitsbereiche drei mögliche Architekturen:
 
 ### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Verteilt: Protokolle werden in Arbeitsbereichen gespeichert, die sich im Mandanten des Kunden befinden 
 
-Bei dieser Architektur wird der Arbeitsbereich in dem Mandanten des Kunden bereitgestellt, der für alle Protokolle dieses Kunden verwendet wird. Den Administratoren des Dienstanbieters wird mithilfe der [Azure Active Directory-Gastbenutzer (B2B)](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b) Zugriff auf diesen Arbeitsbereich erteilt. Der Administrator des Dienstanbieters muss im Azure-Portal zum Verzeichnis seines Kunden wechseln, um Zugriff auf diese Arbeitsbereiche zu erhalten.
+Bei dieser Architektur wird ein Arbeitsbereich in dem Mandanten des Kunden bereitgestellt, der für alle Protokolle dieses Kunden verwendet wird. Den Administratoren des Dienstanbieters wird mithilfe der [Azure Active Directory-Gastbenutzer (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) Zugriff auf diesen Arbeitsbereich erteilt. Der Administrator des Dienstanbieters muss im Azure-Portal zum Verzeichnis seines Kunden wechseln, um Zugriff auf diese Arbeitsbereiche zu erhalten.
 
 Diese Architektur bietet diese Vorzüge:
-* Der Kunde kann den Zugriff auf die Protokolle mithilfe seines eigenen [rollenbasierten Zugriffs](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview) steuern.
+* Der Kunde kann den Zugriff auf die Protokolle mithilfe seines eigenen [rollenbasierten Zugriffs](https://docs.microsoft.com/azure/role-based-access-control/overview) steuern.
 * Jeder Kunde kann andere Einstellungen für seinen Arbeitsbereich verwenden, etwa hinsichtlich Vermerkdauer und Datenbegrenzung.
 * Isolation zwischen Kunden im Hinblick auf behördliche Bestimmungen und Compliance.
 * Die Gebühr für jeden Arbeitsbereich wird im Abonnement des Kunden erfasst.
-* Protokolle können von Ressourcen jeder Art erfasst werden, nicht nur auf Agent-basierte Weise. Beispielsweise durch Azure-Überwachung.
+* Protokolle können von Ressourcen jeder Art erfasst werden, nicht nur auf Agent-basierte Weise. Beispielsweise Azure-Überwachungsprotokolle.
 
 Die Nachteile dieser Architektur sind:
 * Die gleichzeitige Verwaltung einer großen Anzahl von Kundenmandanten ist für den Dienstanbieter schwieriger.
 * Die Administratoren des Dienstanbieters müssen im Verzeichnis des Kunden bereitgestellt werden.
 * Der Dienstanbieter kann Daten nicht kundenübergreifend analysieren.
 
-### <a name="2-central---logs-are-stored-in-workspace-located-in-the-service-provider-tenant"></a>2. Zentral: Protokolle werden in einem Arbeitsbereich gespeichert, der sich im Mandanten des Dienstanbieters befindet
+### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. Zentral: Protokolle werden in einem Arbeitsbereich gespeichert, der sich im Mandanten des Dienstanbieters befindet
 
 Bei dieser Architektur werden die Protokolle nicht in den Mandanten des Kunden gespeichert, sondern nur an einem zentralen Speicherort in einem der Abonnements des Dienstanbieters. Die Agents, die auf den VMs des Kunden installiert sind, sind dafür konfiguriert, ihre Protokolle unter Verwendung der Arbeitsbereich-ID und des geheimen Schlüssels an diesen Arbeitsbereich zu senden.
 
@@ -64,7 +64,7 @@ Die Nachteile dieser Architektur sind:
 * Diese Architektur eignet sich nur für Agent-basierte VM-Daten, sie deckt PaaS-, SaaS- und Azure-Fabric-Datenquellen nicht ab.
 * Es kann schwierig sein, die Daten der Kunden zu trennen, wenn sie in einem einzelnen Arbeitsbereich zusammengeführt werden. Das einzig gute Verfahren dazu ist die Verwendung des FQDNs (vollqualifizierten Domänennamens) des Computers oder der Azure-Abonnement-ID. 
 * Alle Daten aller Kunden werden im gleichen Bereich mit einer einzelnen Rechnung und mit gleicher Vermerkdauer und gleichen Konfigurationseinstellungen gespeichert.
-* Azure-Fabric- und PaaS-Dienste, wie Azure-Diagnose und Azure-Überwachung, erfordern einen Arbeitsbereich im gleichen Mandanten wie die Ressource, sie können also keine Protokolle an den zentralen Arbeitsbereich senden.
+* Azure-Fabric- und PaaS-Dienste, wie Azure-Diagnose und Azure-Überwachungsprotokolle, erfordern einen Arbeitsbereich im gleichen Mandanten wie die Ressource, sie können also keine Protokolle an den zentralen Arbeitsbereich senden.
 * Alle VM-Agents von allen Kunden werden beim zentralen Arbeitsbereich mit der gleichen Arbeitsbereichs-ID und dem gleichen Schlüssel authentifiziert. Es gibt kein Verfahren, Protokolle eines bestimmten Kunden zu blockieren, ohne andere Kunden zu unterbrechen.
 
 
@@ -74,7 +74,7 @@ Die dritte Architektur stellt eine Mischung der zwei Optionen dar. Sie basiert a
 
 Es bestehen zwei Optionen zum Implementieren des zentralen Speicherorts in Log Analytics:
 
-1. Zentraler Arbeitsbereich: Der Dienstanbieter kann einen Arbeitsbereich in seinem Mandanten erstellen und ein Skript verwenden, das die [Abfrage-API](https://dev.loganalytics.io/) in Kombination mit der [Datensammlungs-API](log-analytics-data-collector-api.md) nutzt, um die Daten aus den verschiedenen Arbeitsbereichen an diesen zentralen Speicherort zu bringen. Eine weitere Option, die kein Skript einsetzt, ist die Verwendung der [Azure-Logik-App](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview).
+1. Zentraler Arbeitsbereich: Der Dienstanbieter kann einen Arbeitsbereich in seinem Mandanten erstellen und ein Skript verwenden, das die [Abfrage-API](https://dev.loganalytics.io/) in Kombination mit der [Datensammlungs-API](log-analytics-data-collector-api.md) nutzt, um die Daten aus den verschiedenen Arbeitsbereichen an diesen zentralen Speicherort zu bringen. Eine weitere Option, die kein Skript einsetzt, ist die Verwendung von [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 2. Power BI als zentraler Speicherort: Power BI kann als zentraler Speicherort dienen, wenn die verschiedenen Arbeitsbereiche mithilfe der Integration zwischen Log Analytics und [Power BI](log-analytics-powerbi.md) Daten an Power BI exportieren. 
 
@@ -84,4 +84,4 @@ Es bestehen zwei Optionen zum Implementieren des zentralen Speicherorts in Log A
 * Automatisieren Sie mit [PowerShell](log-analytics-powershell-workspace-configuration.md) die Erstellung von Arbeitsbereichen. 
 * Verwenden Sie [Warnungen](log-analytics-alerts.md) für die Integration in vorhandene Systeme.
 * Generieren Sie Zusammenfassungsberichte mit [Power BI](log-analytics-powerbi.md).
-
+* Überprüfen Sie den Prozess des [Konfigurierens von Log Analytics und Power BI zum Überwachen mehrerer CSP-Kunden](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)

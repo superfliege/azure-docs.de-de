@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 3f98b4e34c4c76efc33395530ef016b26e1ad523
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f6a574f169310f2779fb20353fda748e6893a4bd
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163038"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48016739"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>Einrichten der Sicherheitsinformation zur Verwendung einer E-Mail-Adresse (Vorschauversion)
 
@@ -46,7 +46,7 @@ Abhängig von den Einstellungen Ihrer Organisation werden Sie beim Anmelden mög
 
 3. Klicken Sie auf der Seite **Keep your account secure** (Konto schützen) auf **Fertig**.
 
-    Ihre Sicherheitsinformation wird aktualisiert, sodass bei der zweistufigen Überprüfung Ihre E-Mail-Adresse zur Bestätigung Ihrer Identität verwendet wird.
+    Ihre Sicherheitsinformationen werden aktualisiert, sodass bei der Kennwortzurücksetzung Ihre E-Mail-Adresse zur Bestätigung Ihrer Identität verwendet wird.
 
 ## <a name="additional-security-info-options"></a>Zusätzliche Sicherheitsinformationsoptionen
 

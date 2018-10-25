@@ -3,19 +3,18 @@ title: Hinzufügen von switch-Anweisungen zu Workflows – Azure Logic Apps | Mi
 description: Hier erfahren Sie, wie Sie switch-Anweisungen erstellen, die Workflowaktionen auf der Grundlage bestimmter Werte in Azure Logic Apps steuern.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: e15f89d4b7e33ce7e28676c219344f7d7d9cd465
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.topic: article
+ms.date: 10/08/2018
+ms.openlocfilehash: 27a73bddc2e7fb613950d78967d3100c7adcae41
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299615"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883838"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Erstellen von switch-Anweisungen, die Workflowaktionen auf der Grundlage bestimmter Werte in Azure Logic Apps ausführen
 
@@ -24,7 +23,7 @@ Fügen Sie eine Anweisung vom Typ *switch* hinzu, wenn Sie bestimmte Aktionen au
 Angenommen, Sie möchten, dass eine Logik-App verschiedene Schritte basierend auf einer Option ausführt, die in einer E-Mail ausgewählt ist. In diesem Beispiel überprüft die Logik-App den RSS-Feed einer Website auf neuen Inhalt. Wenn ein neues Element im RSS-Feed angezeigt wird, sendet die Logik-App eine E-Mail an eine genehmigende Person. Je nachdem, ob die genehmigende Person „Genehmigen“ oder „Ablehnen“ auswählt, führt die Logik-App unterschiedliche Schritte aus.
 
 > [!TIP]
-> Wie alle Programmiersprachen unterstützt die switch-Anweisung nur Gleichheitsoperatoren. Wenn Sie andere relationale Operatoren verwenden müssen – z.B. „größer als“ – verwenden Sie eine [Bedingungsanweisung](#conditions).
+> Wie alle Programmiersprachen unterstützt die switch-Anweisung nur Gleichheitsoperatoren. Wenn Sie andere relationale Operatoren verwenden müssen – z.B. „größer als“ – verwenden Sie eine [Bedingungsanweisung](../logic-apps/logic-apps-control-flow-conditional-statement.md).
 > Um deterministisches Ausführungsverhalten zu gewährleisten, müssen Fälle einen eindeutigen und statischen Wert anstelle von dynamischen Token oder Ausdrücken enthalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -33,45 +32,50 @@ Angenommen, Sie möchten, dass eine Logik-App verschiedene Schritte basierend au
 
 * Um dem Beispiel in diesem Artikel zu folgen, [erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- oder Office 365 Outlook-Konto.
 
-  1. Beim Hinzufügen der Aktion zum Senden einer E-Mail wählen Sie stattdessen **Genehmigungs-E-Mail senden**.
+  1. Beim Hinzufügen der Aktion zum Senden von E-Mail suchen Sie stattdessen diese Aktion, und wählen Sie sie aus: **Genehmigungs-E-Mail senden**.
 
      ![Auswählen von „Genehmigungs-E-Mail senden“](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
-  2. Füllen Sie die Pflichtfelder wie „E-Mail-Adresse“ für die Person aus, die die Genehmigungs-E-Mail erhält. 
+  1. Füllen Sie die Pflichtfelder wie „E-Mail-Adresse“ für die Person aus, die die Genehmigungs-E-Mail erhält. 
   Geben Sie unter **Benutzeroptionen** „Genehmigen, Ablehnen“ ein.
 
      ![Eingeben von E-Mail-Details](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
 
-## <a name="add-a-switch-statement"></a>Hinzufügen einer switch-Anweisung
+## <a name="add-switch-statement"></a>Hinzufügen einer switch-Anweisung
 
-1. Wählen Sie am Ende des Beispielworkflows die Option **+ Neuer Schritt** > **... Weitere** > **Parameter hinzufügen**. 
+1. Fügen Sie für dieses Beispiel am Ende Ihres Beispielworkflows eine switch-Anweisung hinzu. Wählen Sie nach dem letzten Schritt **Neuer Schritt** aus.
 
-   ![Hinzufügen einer switch-Anweisung](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
+   Wenn Sie eine switch-Anweisung zwischen Schritten hinzufügen möchten, bewegen Sie den Zeiger auf den Pfeil an der Stelle, an der Sie die switch-Anweisung hinzufügen möchten. Wählen Sie das daraufhin angezeigte **Pluszeichen** (**+**) aus, und wählen Sie dann **Aktion hinzufügen** aus.
+
+1. Geben Sie im Suchfeld den Begriff „switch“ als Filter ein. Wählen Sie diese Aktion aus: **Switch – steuern**
+
+   ![switch hinzufügen](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
    Eine switch-Anweisung wird mit einem Fall und einem Standardfall angezeigt. 
-   Eine switch-Anweisung erfordert neben dem Standardfall mindestens einen weiteren Fall. 
+   Eine switch-Anweisung erfordert normalerweise neben dem Standardfall mindestens einen weiteren Fall. 
 
-   Wenn Sie eine switch-Anweisung zwischen Schritten hinzufügen möchten, bewegen Sie den Zeiger auf den Pfeil an der Stelle, an der Sie die switch-Anweisung hinzufügen möchten. 
-   Wählen Sie das angezeigte **Pluszeichen** (**+**) und dann **Hinzufügen einer switch-Anweisung** aus.
+   ![Leere switch-Standardanweisung](./media/logic-apps-control-flow-switch-statement/empty-switch.png)
 
-4. Wählen Sie im **Aktivierungsfeld** das Feld **SelectedOption** aus, dessen Ausgabe die durchzuführende Aktion bestimmt. 
-   
-   Sie können das Feld in der Liste **Dynamischen Inhalt hinzufügen** auswählen, die angezeigt wird.
+1. Klicken Sie in das Feld **On**, so dass die dynamische Inhaltsliste angezeigt wird. Wählen Sie in dieser Aktivierungsliste das Feld **SelectedOption** aus, dessen Ausgabe die auszuführende Aktion bestimmt. 
 
-5. Zum Verarbeiten der Fälle, bei denen die genehmigende Person `Approve` oder `Reject` auswählt, fügen Sie einen weiteren Fall zwischen **Fall** und **Standard** hinzu. 
-   
-6. Fügen Sie den entsprechenden Fällen diese Aktionen hinzu:
+   ![„SelectedOption“ auswählen](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
+
+1. Zum Verarbeiten der Fälle, bei denen die genehmigende Person `Approve` oder `Reject` auswählt, fügen Sie einen weiteren Fall zwischen **Fall** und **Standard** hinzu. 
+
+   ![Weiteren Fall hinzufügen](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
+
+1. Fügen Sie den entsprechenden Fällen diese Aktionen hinzu:
 
    | Fallnr. | **SelectedOption** | Aktion |
-   |:------ |:-------------------|:------ |
+   |--------|--------------------|--------|
    | Fall 1 | **Genehmigen** | Fügen Sie die Outlook-Aktion **E-Mail senden** für das Senden von Details zum RSS-Element nur hinzu, wenn die genehmigende Person **Genehmigen** ausgewählt hat. |
    | Fall 2 | **Ablehnen** | Fügen Sie die Outlook-Aktion **E-Mail senden** hinzu, um andere genehmigende Personen zu darüber zu benachrichtigen, dass das RSS-Element abgelehnt wurde. |
-   | Standard | \<keine\> | Keine Aktion erforderlich. In diesem Beispiel ist der **Standardfall** leer, da **SelectedOption** nur zwei Optionen aufweist. |
-   |         |          |
+   | Standard | Keine | Keine Aktion erforderlich. In diesem Beispiel ist der **Standardfall** leer, da **SelectedOption** nur zwei Optionen aufweist. |
+   |||
 
-   ![switch-Anweisung](./media/logic-apps-control-flow-switch-statement/switch.png)
+   ![Fertig gestellte switch-Anweisung](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
 
-7. Speichern Sie Ihre Logik-App. 
+1. Speichern Sie Ihre Logik-App. 
 
    Zum manuellen Testen dieses Beispiels wählen Sie **Ausführen**, bis die Logik-App ein neues RSS-Element findet und eine Genehmigungs-E-Mail sendet. 
    Wählen Sie **Genehmigen** aus, um die Ergebnisse zu beobachten.
@@ -85,17 +89,17 @@ Da Sie nun eine Logik-App mit einer switch-Anweisung erstellt haben, sehen wir u
    "type": "Switch",
    "expression": "@body('Send_approval_email')?['SelectedOption']",
    "cases": {
-      "Case" : {
-         "actions" : {
-           "Send_an_email": { }
+      "Case": {
+         "actions": {
+           "Send_an_email": {}
          },
          "case" : "Approve"
       },
-      "Case_2" : {
-         "actions" : {
-           "Send_an_email_2": { }
+      "Case_2": {
+         "actions": {
+           "Send_an_email_2": {}
          },
-         "case" : "Reject"
+         "case": "Reject"
       }
    },
    "default": {
@@ -109,14 +113,14 @@ Da Sie nun eine Logik-App mit einer switch-Anweisung erstellt haben, sehen wir u
 }
 ```
 
-| Bezeichnung              | BESCHREIBUNG |
-| :----------------- | :---------- |
+| Bezeichnung | BESCHREIBUNG |
+|-------|-------------|
 | `"Switch"`         | Name der switch-Anweisung, den Sie zur besseren Lesbarkeit umbenennen können |
 | `"type": "Switch"` | Gibt an, dass die Aktion eine switch-Anweisung ist |
 | `"expression"`     | Gibt in diesem Beispiel die ausgewählte Option der genehmigenden Person an, für die weiter unten in der Definition für jeden Fall eine Auswertung erfolgt |
 | `"cases"` | Definiert eine beliebige Anzahl von Fällen. `"Case_*"` der jeweilige Standardname für jeden Fall, den Sie zur besseren Lesbarkeit ändern können |
-| `"case"` | Gibt den Wert des Falls an, der ein konstanter und eindeutiger Wert sein muss, den die switch-Anweisung für den Vergleich verwendet. Wenn keine Fälle dem Ergebnis des switch-Ausdrucks entsprechen, werden die Aktionen im Abschnitt `"default"` ausgeführt.
-|           |         |
+| `"case"` | Gibt den Wert des Falls an, der ein konstanter und eindeutiger Wert sein muss, den die switch-Anweisung für den Vergleich verwendet. Wenn keine Fälle dem Ergebnis des switch-Ausdrucks entsprechen, werden die Aktionen im Abschnitt `"default"` ausgeführt. | 
+| | | 
 
 ## <a name="get-support"></a>Support
 

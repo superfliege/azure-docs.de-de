@@ -9,14 +9,14 @@ keywords: azure functions, funktionen, ereignisverarbeitung, webhooks, dynamisch
 ms.service: azure-functions
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 08/10/2018
+ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: f0dc471e8875ad0d738fce10421c3586752148b9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 9e07cddb9d446ea24143d3a6dec5e310d3ed6f1c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092308"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802116"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -26,7 +26,35 @@ ms.locfileid: "44092308"
 
 Ihre Azure-Funktion sollte eine zustandslose Klassenmethode sein, die Eingaben verarbeitet und Ausgaben erzeugt. Obwohl Sie Instanzmethoden schreiben können, darf Ihre Funktion nicht von Instanzfeldern der Klasse abhängig sein. Alle Funktionsmethoden benötigen einen Zugriffsmodifizierer des Typs `public`.
 
-Sie können mehr als eine Funktion in ein Projekt einfügen. Vermeiden Sie es, Ihre Funktionen in separaten JAR-Dateien hinzuzufügen.
+## <a name="folder-structure"></a>Ordnerstruktur
+
+Die Ordnerstruktur für ein Java-Projekt sieht wie folgt aus:
+
+```
+FunctionsProject
+ | - src
+ | | - main
+ | | | - java
+ | | | | - FunctionApp
+ | | | | | - MyFirstFunction.java
+ | | | | | - MySecondFunction.java
+ | - target
+ | | - azure-functions
+ | | | - FunctionApp
+ | | | | - FunctionApp.jar
+ | | | | - host.json
+ | | | | - MyFirstFunction
+ | | | | | - function.json
+ | | | | - MySecondFunction
+ | | | | | - function.json
+ | | | | - bin
+ | | | | - lib
+ | - pom.xml
+```
+
+Die freigegebene Datei [host.json] (functions-host-json.md) kann zum Konfigurieren der Funktions-App verwendet werden. Jede Funktion verfügt über eine eigene Codedatei (JAVA-Datei) sowie über eine eigene Bindungskonfigurationsdatei („function.json“).
+
+Sie können mehr als eine Funktion in ein Projekt einfügen. Vermeiden Sie es, Ihre Funktionen in separaten JAR-Dateien hinzuzufügen. Die Funktions-App im Zielverzeichnis wird in Ihrer Funktions-App in Azure bereitgestellt.
 
 ## <a name="triggers-and-annotations"></a>Trigger und Anmerkungen
 
@@ -87,9 +115,15 @@ Mit der entsprechenden Datei `function.json`:
 
 ```
 
+## <a name="jdk-runtime-availability-and-support"></a>Verfügbarkeit und Unterstützung der JDK-Runtime 
+
+Laden Sie die [Azul Zulu for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf)-JDKs von [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) für die lokale Entwicklung von Java-Funktions-Apps herunter, und verwenden Sie sie. JDKs sind für Windows, Linux und macOS verfügbar, und mit einem [qualifizierten Supportplan](https://azure.microsoft.com/support/plans/) steht [Azure-Support](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) für Probleme bei der Entwicklung zur Verfügung.
+
 ## <a name="third-party-libraries"></a>Drittanbieterbibliotheken 
 
 Azure Functions unterstützt die Verwendung von Drittanbieterbibliotheken. Standardmäßig werden alle im Projekt angegebenen Abhängigkeiten in der Projektdatei `pom.xml` automatisch während des Ziels von `mvn package` gebündelt. Bibliotheken, die nicht in der Datei `pom.xml` als Abhängigkeiten angegeben sind, platzieren Sie in einem `lib`-Verzeichnis im Stammverzeichnis der Funktion. Abhängigkeiten im Verzeichnis `lib` werden dem Systemklassen-Ladeprogramm zur Laufzeit hinzugefügt.
+
+Die Abhängigkeit `com.microsoft.azure.functions:azure-functions-java-library` wird standardmäßig im Klassenpfad bereitgestellt und muss nicht in das Verzeichnis `lib` eingeschlossen werden.
 
 ## <a name="data-type-support"></a>Unterstützung von Datentypen
 
@@ -313,7 +347,7 @@ Da Ihr Code jetzt von diesen Umgebungsvariablen abhängig ist, können Sie sich 
 Weitere Informationen zur Java-Entwicklung für Azure Functions finden Sie in den folgenden Ressourcen:
 
 * [Bewährte Methoden für Azure Functions](functions-best-practices.md)
-* [Azure Functions developer reference (Azure Functions-Entwicklerreferenz) (Azure Functions-Entwicklerreferenz)](functions-reference.md)
+* [Entwicklerreferenz zu Azure Functions](functions-reference.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 - Lokale Entwicklung und Debuggen mit [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) und [Eclipse](functions-create-maven-eclipse.md). 
 * [Remote Debug Java Azure Functions with Visual Studio Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) (Remotedebuggen von Java Azure Functions mit Visual Studio Code)

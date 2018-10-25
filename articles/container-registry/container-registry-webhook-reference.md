@@ -2,18 +2,17 @@
 title: Referenz zu Azure Container Registry-Webhookschemas
 description: Referenz zur JSON-Nutzlast von Webhookanforderungen für Azure Container Registry.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
-ms.author: marsma
-ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: danlep
+ms.openlocfilehash: 8bae44215cdc17e9f1617c909ef197f2757fc114
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166006"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857753"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Referenz zu Azure Container Registry-Webhooks
 
@@ -151,7 +150,7 @@ Wird per Webhook ausgelöst, wenn ein Repository oder Manifest gelöscht wird. W
   }
 ```
 
-Beispiel: [Azure CLI 2.0](/cli/azure/acr)-Befehle, mit denen ein **delete**-Ereignis-Webhook ausgelöst wird:
+Beispiel: Befehle der [Azure-Befehlszeilenschnittstelle](/cli/azure/acr), mit denen ein **delete**-Ereigniswebhook ausgelöst wird:
 
 ```azurecli
 # Delete repository

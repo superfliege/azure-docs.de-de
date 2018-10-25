@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7b183a5b87d5777609deac02e4424d9451e9643
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: e3b9de282b95b27a04ac6d182b1045e18e65c5f6
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452495"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025904"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -57,7 +57,8 @@ Es gibt Mindestversionen des Agents, um die bestmöglichen Ergebnisse zu erziele
 
 #### <a name="supported-oses"></a>Unterstützte Betriebssysteme
 
-Der Windows-Gast-Agent wird auf mehreren Betriebssystemen ausgeführt. Das Erweiterungsframework begrenzt jedoch die Anzahl der Betriebssysteme, die von Erweiterungen unterstützt werden. Weitere Informationen dazu finden Sie in diesem Artikel: https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems.
+Der Windows-Gast-Agent wird auf mehreren Betriebssystemen ausgeführt. Das Erweiterungsframework begrenzt jedoch die Anzahl der Betriebssysteme, die von Erweiterungen unterstützt werden. [hier finden Sie weitere Informationen](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+)
 
 Manche Erweiterung werden nicht auf allen Betriebssystemen unterstützt. In diesem Fall wird der Fehler *Error Code 51, 'Unsupported OS'* (Fehlercode 51, „Nicht unterstütztes Betriebssystem“) zurückgegeben. Überprüfen Sie die Dokumentation zu Erweiterungen auf Informationen zu Unterstützungsmöglichkeiten.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 3cab4d87eacc7bce17da64cda213086c262179a8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aae0ec93f3de708096ff9546a3a4f4e090095a89
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206197"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041158"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors-Zustandsverwaltung
 Reliable Actors sind Singlethread-Objekte, die sich zum Kapseln von Logik und Zustand eignen. Da Akteure unter Reliable Services ausgeführt werden, können Sie den Zustand zuverlässig beibehalten, indem sie die gleichen Persistenz- und Replikationsmechanismen verwenden. Daher verlieren Akteure ihren Zustand nicht nach Fehlern, bei der Reaktivierung nach einer Garbage Collection oder beim Verschieben zwischen Knoten in einem Cluster aufgrund von Ressourcenausgleich oder Upgrades.
@@ -121,7 +121,7 @@ Hier finden einige empfohlene Vorgehensweisen und Tipps zur Problembehandlung f�
 Dies ist besonders wichtig für die Leistung und Ressourcennutzung Ihrer Anwendung. Bei jedem Schreibvorgang im „benannten Zustand“ eines Akteurs bzw. einer Aktualisierung davon, wird der gesamte, diesem „benannten Zustand“ entsprechende Wert serialisiert und über das Netzwerk an die sekundären Replikate gesendet.  Die sekundären Replikate schreiben ihn auf die lokale Festplatte und senden die Antwort zurück an das primäre Replikat. Wenn das primäre Replikat Bestätigungen von einem Quorum von sekundären Replikaten empfängt, schreibt es den Zustand auf seine lokale Festplatte. Nehmen wir beispielsweise an, dass der Wert eine Klasse mit 20 Membern und einer Größe von 1 MB ist. Auch wenn nur einer der Klassenmember mit einer Größe von 1 KB geändert wurde, bezahlen Sie letztendlich die Kosten der Serialisierung sowie der Netzwerk- und Datenträger-Schreibvorgänge für die Gesamtgröße von 1 MB. Wenn der Wert eine Auflistung (z.B. eine Liste, ein Array oder Wörterbuch) ist, fallen ebenso die Kosten für die vollständige Auflistung an, wenn Sie einen der zugehörigen Member ändern. Die StateManager-Schnittstelle der Akteurklasse ist wie ein Wörterbuch. Zusätzlich zu diesem Wörterbuch müssen Sie immer die Datenstruktur modellieren, die den Akteurzustand darstellt.
  
 ### <a name="correctly-manage-the-actors-life-cycle"></a>Vorschriftsmäßige Verwaltung des Akteur-Lebenszyklus
-Sie benötigen eindeutige Richtlinien zum Verwalten der Zustandsgröße in jeder Partition eines Akteurdiensts. Ihr Akteurdienst muss eine feste Anzahl von Akteuren aufweisen und diese soweit möglich wiederverwenden. Wenn Sie laufend neue Akteure erstellen, müssen Sie diese löschen, nachdem sie ihren Zweck erfüllt haben. Das Akteur-Framework speichert einige Metadaten zu jedem vorhandenen Akteur. Beim Löschen des gesamten Zustands eines Akteurs werden dessen Metadaten nicht entfernt. Sie müssen den Akteur löschen (siehe [Löschen von Akteuren und deren Zuständen](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)), um alle im System dazu gespeicherten Informationen zu entfernen. Als eine zusätzliche Überprüfung sollten Sie den Akteurdienst bisweilen abfragen (siehe [Aufzählen von Akteuren](service-fabric-reliable-actors-platform.md)), um sicherzustellen, dass die Anzahl von Akteuren innerhalb des erwarteten Bereichs liegt.
+Sie benötigen eindeutige Richtlinien zum Verwalten der Zustandsgröße in jeder Partition eines Akteurdiensts. Ihr Akteurdienst muss eine feste Anzahl von Akteuren aufweisen und diese nach Möglichkeit wiederverwenden. Wenn Sie laufend neue Akteure erstellen, müssen Sie diese löschen, nachdem sie ihren Zweck erfüllt haben. Das Akteur-Framework speichert einige Metadaten zu jedem vorhandenen Akteur. Beim Löschen des gesamten Zustands eines Akteurs werden dessen Metadaten nicht entfernt. Sie müssen den Akteur löschen (siehe [Löschen von Akteuren und deren Zuständen](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)), um alle im System dazu gespeicherten Informationen zu entfernen. Als eine zusätzliche Überprüfung sollten Sie den Akteurdienst bisweilen abfragen (siehe [Aufzählen von Akteuren](service-fabric-reliable-actors-enumerate.md)), um sicherzustellen, dass die Anzahl von Akteuren innerhalb des erwarteten Bereichs liegt.
  
 Sollten Sie jemals feststellen, dass die Größe der Datenbankdatei eines Akteurdiensts die erwartete Größe überschreitet, stellen Sie sicher, dass die hier angegebenen Richtlinien eingehalten werden. Wenn Sie diese Richtlinien einhalten und die dennoch Probleme mit der Größe der Datenbankdatei auftreten, [öffnen Sie ein Supportticket](service-fabric-support.md) beim Produktteam, um Hilfe zu erhalten.
 

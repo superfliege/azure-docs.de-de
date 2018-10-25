@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f6ad95eb45cc208fe2289cb2095214f98a0b250b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7d8bde6beeb4bd0c6234d7c5aa63be9e150953f5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442388"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427245"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -23,14 +23,14 @@ Im Assistenten zum Abrufen oder Importieren von Daten in Visual Studio werden Da
 
 |Datenquelle  |In-Memory  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL-Datenbank     |   Ja      |    Ja      |
-|Azure SQL Data Warehouse     |   Ja      |   Ja       |
-|Azure Blob Storage*     |   Ja       |    Nein       |
-|Azure Table Storage*    |   Ja       |    Nein       |
-|Azure Cosmos DB*     |  Ja        |  Nein         |
-|Azure Data Lake Store*     |   Ja       |    Nein       |
-|Azure HDInsight HDFS*     |     Ja     |   Nein        |
-|Azure HDInsight Spark*     |   Ja       |   Nein        |
+|Azure SQL-Datenbank     |   JA      |    JA      |
+|Azure SQL Data Warehouse     |   JA      |   JA       |
+|Azure Blob Storage*     |   JA       |    Nein       |
+|Azure Table Storage*    |   JA       |    Nein       |
+|Azure Cosmos DB*     |  JA        |  Nein         |
+|Azure Data Lake Store*     |   JA       |    Nein       |
+|Azure HDInsight HDFS*     |     JA     |   Nein        |
+|Azure HDInsight Spark*     |   JA       |   Nein        |
 ||||
 
 \* nur tabellarische Modelle mit Kompatibilitätsgrad 1400.

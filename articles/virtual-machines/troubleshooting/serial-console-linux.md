@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/11/2018
 ms.author: harijay
-ms.openlocfilehash: 642bf03ecef7f6db25c51671635d96ef7baed91a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: bccf53ed5554579f4ff0a864c38562b7b7f0d3ca
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411458"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885288"
 ---
 # <a name="virtual-machine-serial-console"></a>Serielle Konsole für virtuelle Computer
 
@@ -44,12 +44,12 @@ Die serielle Konsole für virtuelle Computer in Azure ermöglicht den Zugriff au
 
     ![](./media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
-* Spezifische Einstellungen für Linux-Distributionen finden Sie unter [Zugreifen auf die serielle Konsole für Linux](#Serial-Console-Linux-distro-availability).
+* Spezifische Einstellungen für Linux-Distributionen finden Sie unter [Verfügbarkeit der Linux-Distribution der seriellen Konsole](#serial-console-linux-distro-availability).
 
 
 
 ## <a name="get-started-with-serial-console"></a>Erste Schritte mit der seriellen Konsole
-Auf die serielle Konsole für virtuelle Computer kann nur über das [Azure-Portal](https://portal.azure.com) zugegriffen werden. Im Folgenden werden die Schritte für den Zugriff auf die serielle Konsole für virtuelle Computer über das Portal beschrieben. 
+Auf die serielle Konsole für virtuelle Computer kann nur über das [Azure-Portal](https://portal.azure.com) zugegriffen werden. Stellen Sie sicher, dass die zuvor aufgeführten [Voraussetzungen](#prerequisites) erfüllt sind. Im Folgenden werden die Schritte für den Zugriff auf die serielle Konsole für virtuelle Computer über das Portal beschrieben:
 
   1. Öffnen Sie das Azure-Portal.
   1. (Überspringen Sie diesen Abschnitt, wenn für Ihren virtuellen Computer ein Benutzer vorhanden ist, der die Kennwortauthentifizierung verwendet) Fügen Sie einen Benutzer mit Benutzername-/Kennwortauthentifizierung hinzu, indem Sie auf das Blatt „Kennwort zurücksetzen“ klicken.
@@ -206,7 +206,7 @@ A. Sie müssen auf der Ebene „Mitwirkender“ oder höher über Zugriff auf de
 
 **F: Meine serielle Konsole zeigt nichts an. Was soll ich tun?**
 
-A. Ihr Image ist wahrscheinlich nicht richtig für den Zugriff auf die serielle Konsole konfiguriert. Genauere Informationen dazu, wie Sie Ihr Image für die Aktivierung der seriellen Konsole konfigurieren, finden Sie unter [Zugreifen auf die serielle Konsole für Linux](#Access-Serial-Console-for-Linux).
+A. Ihr Image ist wahrscheinlich nicht richtig für den Zugriff auf die serielle Konsole konfiguriert. Genauere Informationen dazu, wie Sie Ihr Image für die Aktivierung der seriellen Konsole konfigurieren, finden Sie unter [Verfügbarkeit der Linux-Distribution der seriellen Konsole](#serial-console-linux-distro-availability).
 
 **F: Ist die serielle Konsole für VM-Skalierungsgruppen verfügbar?**
 

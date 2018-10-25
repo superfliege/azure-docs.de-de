@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b1485ff933df7991e1c112981ae10d93bf5613da
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061540"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405972"
 ---
 # <a name="azure-network-security"></a>Azure-Netzwerksicherheit
 
@@ -459,8 +459,6 @@ Wenn ein Client eine Verbindung mit einem Dienst herstellen möchte, muss zunäc
 Mit der Azure-Netzwerküberprüfung wird sichergestellt, dass das Azure-Netzwerk gemäß seiner Konfiguration funktioniert. Die Überprüfung kann durchgeführt werden, indem die verfügbaren Dienste und Features zum Überwachen des Netzwerks genutzt werden. Mit Azure Network Watcher können Sie auf eine Vielzahl von Protokollierungs- und Diagnosefunktionen zugreifen, die Ihnen die Erkenntnisse liefern, mit denen Sie den Leistungs- und Integritätszustand Ihres Netzwerks verstehen. Auf diese Funktionen kann per Portal, PowerShell, CLI, REST-API und SDK zugegriffen werden.
 
 Azure Operational Security bezieht sich auf die Dienste, Steuerelemente und Features, die für Benutzer zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Microsoft Azure zur Verfügung stehen. Azure Operational Security basiert auf einem Framework, mit dem die über verschiedene einzigartige Microsoft-Funktionen erworbenen Kenntnisse einbezogen werden, z.B. Microsoft Security Development Lifecycle (SDL), Microsoft Security Response Center-Programm und umfassende Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
-
--   [Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
 -   [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 

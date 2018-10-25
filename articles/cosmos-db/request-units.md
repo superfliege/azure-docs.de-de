@@ -7,33 +7,33 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 10/02/2018
 ms.author: rimman
-ms.openlocfilehash: 66beeb2cc724f75d17a4c155f1cdb888153e8fbf
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 23a3e629e12e2a4d417757c9fef5db804bb72c9e
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286764"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248753"
 ---
-# <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
+# <a name="throughput-and-request-units-in-azure-cosmos-db"></a>Durchsatz und Anforderungseinheiten in Azure Cosmos DB
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Mit Azure Cosmos DB müssen Sie keine virtuellen Computer mieten, Software bereitstellen oder Datenbanken überwachen. Azure Cosmos DB wird von Microsoft-Entwicklern betrieben und ständig überwacht, um erstklassige Verfügbarkeit, Leistung und Datensicherheit zu gewährleisten. Der Zugriff erfolgt über die APIs Ihrer Wahl: für Ihre Daten beispielsweise mit der [SQL](documentdb-introduction.md)-, [MongoDB](mongodb-introduction.md)- und [Table](table-introduction.md)-API und für Ihre Graphen mit der [Gremlin-API](graph-introduction.md). Alle APIs werden nativ unterstützt. 
+Azure Cosmos DB-Ressourcen werden basierend auf dem bereitgestellten Durchsatz und Speicherplatz abgerechnet. In Azure Cosmos DB wird der Durchsatz in **Anforderungseinheiten pro Sekunde (RU/s)** angegeben. Azure Cosmos DB unterstützt verschiedene APIs mit unterschiedlichen Vorgängen, die von einfachen Lese- und Schreibvorgängen bis hin zu komplexen Graphabfragen reichen. Jede Anforderung verbraucht Anforderungseinheiten gemäß der Menge des für die Anforderung erforderlichen Rechenaufwands. Die Anzahl von Anforderungseinheiten für einen Vorgang ist deterministisch. Sie können die Anzahl von Anforderungseinheiten, die von einem beliebigen Vorgang in Azure Cosmos DB verbraucht werden, über den Antwortheader nachverfolgen. Sie müssen einen Durchsatz von 100 RU/s reservieren, um eine vorhersagbare Leistung bereitstellen zu können. Sie können Ihre Durchsatzanforderungen mit dem [Anforderungseinheitenrechner](https://www.documentdb.com/capacityplanner) von Azure Cosmos DB schätzen.
 
-Die Währung von Azure Cosmos DB ist die *Anforderungseinheit* (Request Unit, RU). Mit Anforderungseinheiten ist es nicht mehr erforderlich, Kapazitäten für Lese- und Schreibvorgänge zu reservieren oder CPU, Arbeitsspeicher und IOPS bereitzustellen. Azure Cosmos DB unterstützt verschiedene APIs mit unterschiedlichen Vorgängen, die von einfachen Lese- und Schreibvorgängen bis hin zu komplexen Graphabfragen reichen. Da die Anforderungen sich unterscheiden, wird ihnen eine normalisierte Menge von Anforderungseinheiten zugewiesen, die auf dem Rechenaufwand basiert, der für die Verarbeitung der Anforderung erforderlich ist. Die Anzahl von Anforderungseinheiten für einen Vorgang ist deterministisch. Sie können die Anzahl von Anforderungseinheiten, die von einem beliebigen Vorgang in Azure Cosmos DB verbraucht werden, über einen Antwortheader nachverfolgen. 
+In Azure Cosmos DB können Sie Durchsatz in zwei Größen bereitstellen: 
 
-Um eine vorhersagbare Leistung bereitzustellen, reservieren Sie einen Durchsatz von 100 Anforderungseinheiten pro Sekunde. Sie können [Ihre Durchsatzanforderungen schätzen](request-units.md#estimating-throughput-needs), indem Sie den [Anforderungseinheitenrechner](https://www.documentdb.com/capacityplanner) von Azure Cosmos DB verwenden.
+1. **Azure Cosmos DB-Container:** Der für einen Container bereitgestellte Durchsatz ist ausschließlich für diesen Container reserviert. Beim Zuweisen von Durchsatz (RU/s) für einzelne Container können diese **mit fester Größe** oder **unbegrenzter Größe** erstellt werden. 
 
-![Durchsatzrechner][5]
+  Container mit fester Größe haben einen maximalen Durchsatz von 10.000 RU/s und ein Speicherlimit von 10 GB. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 1.000 RU/s und einen [Partitionsschlüssel](partition-data.md) angeben. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen unterschiedlicher Werte) auszuwählen. Durch Auswahl eines Partitionsschlüssels mit vielen unterschiedlichen Werten kann Azure Cosmos DB sicherstellen, dass Anforderungen für eine Sammlung, eine Tabelle oder einen Graph einheitlich skaliert werden. 
 
-Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
+2. **Azure Cosmos DB-Datenbank:** Der für eine Datenbank bereitgestellte Durchsatz wird von allen Containern in dieser Datenbank gemeinsam genutzt. Bei der Bereitstellung von Durchsatz auf Datenbankebene können Sie bestimmte Container ausschließen und stattdessen auf Containerebene Durchsätze für diese Container bereitstellen. Für den Durchsatz auf Datenbankebene müssen alle Sammlungen mit einem Partitionsschlüssel erstellt werden. Beim Zuweisen von Durchsatz auf Datenbankebene sollten die Container, die zu dieser Datenbank gehören, mit einem Partitionsschlüssel erstellt werden, da jede Sammlung ein **unbegrenzter** Container ist.  
 
-* Was sind Anforderungseinheiten und Anforderungsgebühren in Azure Cosmos DB?
-* Wie gebe ich die Kapazität der Anforderungseinheiten für einen Container oder eine Gruppe von Containern in Azure Cosmos DB an?
-* Wie schätze ich die benötigten Anforderungseinheiten für meine Anwendung?
-* Was geschieht, wenn ich die Kapazität der Anforderungseinheiten für einen Container oder eine Gruppe von Containern in Azure Cosmos DB überschreite?
+Basierend auf dem bereitgestellten Durchsatz ordnet Azure Cosmos DB physische Partitionen zum Hosten Ihrer Container zu, und Daten werden gemäß ihrem Wachstum zwischen Partitionen aufgeteilt. Die folgende Abbildung zeigt die Bereitstellung des Durchsatzes auf verschiedenen Ebenen:
 
-Azure Cosmos DB ist eine Datenbank mit mehreren Modellen. Beachten Sie daher, dass dieser Artikel für alle Datenmodelle und APIs in Azure Cosmos DB gilt. In diesem Artikel werden generische Begriffe wie *Container* verwendet, um ganz allgemein eine Sammlung oder einen Graph zu bezeichnen. Mit *Element* wird allgemein eine Tabelle, ein Dokument, ein Knoten oder eine Entität bezeichnet.
+  ![Bereitstellen von Anforderungseinheiten für einzelne Container und Gruppen von Containern](./media/request-units/provisioning_set_containers.png)
+
+> [!NOTE] 
+> Die Bereitstellung von Durchsatz auf Container- und Datenbankebene wird gesondert angeboten. Für einen Wechsel zwischen diesen Bereitstellungsmethoden müssen Daten von der Quelle zum Ziel migriert werden. Dies bedeutet, dass Sie eine neue Datenbank oder eine neue Sammlung erstellen müssen und anschließend Daten mithilfe der [Bulk-Executor-Bibliothek](bulk-executor-overview.md) oder mithilfe von [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) migrieren müssen.
 
 ## <a name="request-units-and-request-charges"></a>Anforderungseinheiten und Anforderungsgebühren
 
@@ -74,7 +74,6 @@ In der Tabelle unten ist beispielsweise angegeben, wie viele Anforderungseinheit
 | 4 KB | 500 | 500 | (500 * 1,3) + (500 * 7) = 4.150 RU/s
 | 64 KB | 500 | 100 | (500 * 10) + (100 * 48) = 9.800 RU/s
 | 64 KB | 500 | 500 | (500 * 10) + (500 * 48) = 29.000 RU/s
-
 
 ### <a name="use-the-request-unit-calculator"></a>Verwenden des Rechners für Anforderungseinheiten
 Um Ihre Schätzungen für den Durchsatz zu optimieren, können Sie den webbasierten [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner) verwenden. Der Rechner unterstützt Sie dabei, die erforderlichen Anforderungseinheiten für typische Vorgänge wie z.B. die folgenden einzuschätzen:
@@ -237,4 +236,5 @@ Wenn mehrere Clients kumulativ oberhalb der Anforderungsrate arbeiten, reicht da
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
+
 

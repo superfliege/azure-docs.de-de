@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 8adfd0b3d6d87834441ab87af194de141b77af34
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4b124b79eeacf0df5f1b9dff798ebeea20d82090
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093617"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044772"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen für die Workflowdefinitionssprache in Azure Logic Apps
 
@@ -62,7 +62,7 @@ Trigger besitzen auf oberster Ebene die folgenden Elemente (einige davon sind op
 
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*array-with-conditions*> | Array | Array mit mindestens einer [Bedingung](#trigger-conditions), die bestimmt, ob der Workflow ausgeführt wird | 
+| <*array-with-conditions*> | Array | Array mit mindestens einer [Bedingung](#trigger-conditions), die bestimmt, ob der Workflow ausgeführt wird. Derzeit nur für Trigger verfügbar. | 
 | <*runtime-config-options*> | JSON-Objekt | Sie können das Verhalten der Triggerlaufzeit ändern, indem Sie die Eigenschaften für `runtimeConfiguration` festlegen. Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](#runtime-config-options). | 
 | <*splitOn-expression*> | Zeichenfolge | Für Trigger, die ein Array zurückgeben, können Sie einen Ausdruck angeben, mit dem Arrayelemente für die Verarbeitung in mehrere Workflowinstanzen [aufgeteilt bzw. *aufgelöst*](#split-on-debatch) werden. | 
 | <*operation-option*> | Zeichenfolge | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
@@ -657,7 +657,7 @@ Dieser Trigger gibt an, dass eine eingehende Anforderung die HTTP POST-Methode v
 
 ## <a name="trigger-conditions"></a>Triggerbedingungen
 
-Für jeden Trigger können Sie ein Array mit Ausdrücken für Bedingungen einbinden, mit denen bestimmt wird, ob der Workflow ausgeführt werden soll. Öffnen Sie Ihre Logik-App im Codeansicht-Editor, um die `conditions`-Eigenschaft Ihrer Logik-App hinzuzufügen.
+Für jeden Trigger – und nur für Trigger – können Sie ein Array mit Ausdrücken für Bedingungen einbinden, mit denen bestimmt wird, ob der Workflow ausgeführt werden soll. Öffnen Sie Ihre Logik-App im Codeansicht-Editor, um die `conditions`-Eigenschaft einem Trigger in Ihrer Logik-App hinzuzufügen.
 
 Sie können beispielsweise angeben, dass ein Trigger nur dann ausgeführt wird, wenn eine Website einen internen Serverfehler zurückgibt. Hierzu verweisen Sie in der `conditions`-Eigenschaft auf den Statuscode des Triggers:
 
@@ -2318,7 +2318,7 @@ Sie können das Standardverhalten für Trigger und Aktionen mit der `operationOp
 
 ### <a name="change-trigger-concurrency"></a>Ändern der Triggerparallelität
 
-Standardmäßig werden Logik-App-Instanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Jede Triggerinstanz wird also ausgelöst, bevor die Ausführung der zuvor aktiven Logik-App-Instanz beendet ist. Mit diesem Limit wird die Anzahl von Anforderungen gesteuert, die auf Back-End-Systemen eingehen. 
+Standardmäßig werden Logik-App-Instanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Jede Triggerinstanz wird also ausgelöst, bevor die Ausführung der vorherigen Logik-App-Instanz beendet ist. Mit diesem Limit wird die Anzahl von Anforderungen gesteuert, die auf Back-End-Systemen eingehen. 
 
 Zum Ändern des Standardlimits können Sie entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer die `runtimeConfiguration.concurrency.runs`-Eigenschaft in der zugrunde liegenden Triggerdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). Diese Eigenschaft steuert die maximale Anzahl von Logik-App-Instanzen, die parallel ausgeführt werden können. 
 
@@ -2385,7 +2385,7 @@ Hier ist ein Beispiel angegeben, in dem gleichzeitige Ausführungen auf zehn Ite
 
 #### <a name="edit-in-logic-apps-designer"></a>Bearbeiten im Logik-App-Designer
 
-1. Wählen Sie in der Aktion **For each** oben rechts die Ellipsenschaltfläche (...) und dann **Einstellungen**.
+1. Wählen Sie in der Aktion **For each** oben rechts die Schaltfläche mit den Auslassungspunkten (...) und dann **Einstellungen** aus.
 
 2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Standard außer Kraft setzen** auf **Ein** fest. 
 
@@ -2399,7 +2399,7 @@ Standardmäßig werden Logik-App-Instanzen gleichzeitig oder parallel bis zum [S
 
 Auch für die Anzahl von Ausführungen, die sich im Wartezustand befinden können, gilt ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits), das Sie ändern können. Aber nachdem Ihre Logik-App das Limit für wartende Ausführungen erreicht hat, kann die Logic Apps-Engine keine neuen Ausführungen mehr akzeptieren. Anforderungs- und Webhook-Trigger geben Fehler vom Typ 429 zurück, und sich wiederholende Trigger beginnen damit, Abfrageversuche zu überspringen.
 
-Gehen Sie wie folgt vor, um das Standardlimit für wartende Ausführungen zu ändern: Fügen Sie in der zugrunde liegenden Triggerdefinition die `runtimeConfiguration.concurency.maximumWaitingRuns`-Eigenschaft hinzu, und legen Sie sie auf einen Wert zwischen `0` und `100` fest. 
+Gehen Sie wie folgt vor, um das Standardlimit für wartende Ausführungen zu ändern: Fügen Sie in der zugrunde liegenden Triggerdefinition die `runtimeConfiguration.concurency.maximumWaitingRuns`-Eigenschaft mit einem Wert zwischen `0` und `100` hinzu. 
 
 ```json
 "<trigger-name>": {

@@ -1,22 +1,23 @@
 ---
-title: Häufig gestellte Fragen zur Vorschlagssuche-API in Azure | Microsoft-Dokumentation
-description: Erhalten Sie Antworten zu häufig gestellten Fragen zur Vorschlagssuche-API von Azure Cognitive Services in Azure.
+title: Häufig gestellte Fragen (FAQ) – Bing-Vorschlagssuche-API
+titlesuffix: Azure Cognitive Services
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Bing-Vorschlagssuche-API.
 services: cognitive-services
 author: HeidiSteen
-manager: jhubbard
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/26/2017
 ms.author: heidist
-ms.openlocfilehash: 00b91728bcfec52ff30697f080d5c2619bab79a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84f1b0555922119e9de4addc3d51ac233e7bae65
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376859"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831362"
 ---
-# <a name="frequently-asked-questions-faq-about-autosuggest-api-cognitive-services"></a>Häufig gestellte Fragen zur Vorschlagssuche-API (Cognitive Services)
+# <a name="frequently-asked-questions-faq-about-bing-autosuggest-api"></a>Häufig gestellte Fragen (FAQ) zur Bing-Vorschlagssuche-API
  
  In diesem Artikel finden Sie Antworten zu häufig gestellten Fragen zu Konzepten, Code und Szenarios der Vorschlagssuche-API für Azure Cognitive Services.
 

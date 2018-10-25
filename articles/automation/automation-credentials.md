@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fa2bc2dd59a5c62becc7f5cd4c4c9633dac1a29
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: e5414a7607c036f1d60f58e1eb047da1e54f4db9
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42146903"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585339"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Anmeldeinformationsobjekte in Azure Automation
 
@@ -77,6 +77,9 @@ Mit der Funktion in der folgenden Tabelle wird auf Anmeldeinformationen in einem
 2. Klicken Sie auf den Bereich **Anmeldeinformationen**, um das Blatt **Anmeldeinformationen** zu öffnen.
 3. Klicken Sie oben im Blatt auf **Anmeldeinformationen hinzufügen** .
 4. Geben Sie die erforderlichen Daten ein, und klicken Sie auf **Erstellen** , um die neuen Anmeldeinformationen zu speichern.
+
+> [!NOTE]
+> Benutzerkonten, die mehrstufige Authentifizierung verwenden, werden in Azure Automation nicht unterstützt.
 
 ### <a name="to-create-a-new-credential-asset-with-windows-powershell"></a>So erstellen Sie ein neues Anmeldeinformationsobjekt mithilfe von Windows PowerShell
 

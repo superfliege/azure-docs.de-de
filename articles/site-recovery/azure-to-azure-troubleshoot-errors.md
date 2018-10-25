@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 86d6c77dab817cf755c34bdd699ee1158e852f37
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 040ace1eab4062c011ed82a59e7f5bfb789c256b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42139838"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945738"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsprobleme
 
@@ -158,8 +158,8 @@ Damit die Site Recovery-Replikation funktioniert, ist für die VM die ausgehende
 
 - **Lösung**
    - Wenn Sie einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen URLs oder Rechenzentrums-IP-Bereiche auf der Positivliste enthalten sind. Siehe hierzu die [Firewallproxy-Anleitung](https://aka.ms/a2a-firewall-proxy-guidance).
-   - Wenn Sie NSG-Regeln zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen Rechenzentrums-IP-Bereiche auf der Positivliste enthalten sind. Informationen hierzu unter [Networking guidance for replicating Azure virtual machines](https://aka.ms/a2a-nsg-guidance) (Netzwerkanleitung für die Replikation von virtuellen Azure-Computern).
-   - Führen Sie die Schritte im [Dokument mit der Netzwerkanleitung](site-recovery-azure-to-azure-networking-guidance.md) aus, um die [erforderlichen URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) bzw. die [erforderlichen IP-Bereiche](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) auf eine Positivliste zu setzen.
+   - Wenn Sie NSG-Regeln zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen Rechenzentrums-IP-Bereiche auf der Positivliste enthalten sind. Informationen hierzu unter [Networking guidance for replicating Azure virtual machines](azure-to-azure-about-networking.md) (Netzwerkanleitung für die Replikation von virtuellen Azure-Computern).
+   - Führen Sie die Schritte im [Dokument mit der Netzwerkanleitung](azure-to-azure-about-networking.md) aus, um die [erforderlichen URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) bzw. die [erforderlichen IP-Bereiche](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) auf eine Positivliste zu setzen.
 
 ### <a name="issue-2-site-recovery-configuration-failed-151072"></a>Problem 2: Fehler bei der Site Recovery-Konfiguration (151072)
 - **Mögliche Ursache** </br>

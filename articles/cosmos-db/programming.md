@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 8377b13014e2f97518bbc779ee809aaa10d6eb45
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 8452f84c1358c410cd0431416a5b65a88a8b903e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287443"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817101"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB-serverseitige Programmierung : gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen
 
@@ -39,7 +39,7 @@ Dieser Ansatz von *„JavaScript als modernes T-SQL“* befreit die Anwendungsen
   
   * Batchverarbeitung – Entwickler können Vorgänge wie Einlagen gruppieren und dann zusammen übermitteln. Der Aufwand für die Latenz des Netzwerkdatenverkehrs und der erhöhte Speicheraufwand beim Erstellen separater Transaktionen werden erheblich verringert. 
   * Vorkompilierung – Cosmos DB führt für gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen (UDFs) Vorkompilierungen durch, um den Aufwand der JavaScript-Kompilierung für die einzelnen Aufrufe zu vermeiden. Der Mehraufwand für die Erstellung des Bytecodes für die prozedurale Logik wird auf ein Minimum gesenkt.
-  * Sequenzierung – Viele Vorgänge benötigen einen Nebeneffekt (Auslöser oder Trigger), der möglicherweise die Ausführung eines oder vieler sekundärer Speichervorgänge einbezieht. Dies ist abgesehen von der der Atomarität effektiver, wenn der Vorgang auf den Server verlagert wird. 
+  * Sequenzierung: Viele Vorgänge benötigen einen Nebeneffekt (Auslöser oder Trigger), der möglicherweise die Ausführung eines oder vieler sekundärer Speichervorgänge einbezieht. Dies ist abgesehen von der der Atomarität effektiver, wenn der Vorgang auf den Server verlagert wird. 
 * **Kapselung:** Die Geschäftslogik kann mithilfe gespeicherter Prozeduren an einem Ort zusammengefasst werden, was zwei Vorteile mit sich bringt:
   * Es wird eine Abstraktionsschicht über den Rohdaten hinzugefügt, die es Datenarchitekten gestattet, ihre Anwendungen unabhängig von den Daten zu entwickeln. Diese Abstraktionsschicht ist aufgrund der komplizierten Annahmen, die bei der direkten Behandlung der Daten zur Anwendung hinzugefügt werden müssen, bei schemafreien Daten von Vorteil.  
   * Durch diese Abstraktion können Unternehmen ihre Daten schützen, indem sie den Zugriff über die Scripts optimieren.  
@@ -50,7 +50,7 @@ In diesem Tutorial wird das [Node.js SDK mit Q Promises](http://azure.github.io/
 
 ## <a name="stored-procedures"></a>Gespeicherte Prozeduren
 ### <a name="example-write-a-stored-procedure"></a>Beispiel: Schreiben einer gespeicherten Prozedur
-Beginnen wir mit einer einfachen gespeicherten Prozedur, die die Antwort "Hello World" zurückgibt.
+Beginnen wir mit einer einfachen gespeicherten Prozedur, die die Antwort „Hello World“ zurückgibt.
 
 ```javascript
 var helloWorldStoredProc = {
@@ -92,7 +92,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-Das Kontextobjekt bietet Zugriff auf alle Vorgänge, die für den Cosmos DB-Speicher ausgeführt werden können, sowie Zugriff auf die Anforderungs- und Antwortobjekte. In diesem Fall verwenden Sie das Antwortobjekt dazu, den Text der Antwort festzulegen, der an den Client zurückgesendet wurde. Weitere Informationen finden Sie in der [Dokumentation zum Azure Cosmos DB JavaScript-Server-SDK](https://azure.github.io/azure-cosmosdb-js-server/).  
+Das Kontextobjekt bietet Zugriff auf alle Vorgänge, die für den Cosmos DB-Speicher ausgeführt werden können, sowie Zugriff auf die Anforderungs- und Antwortobjekte. In diesem Fall verwenden Sie das Antwortobjekt dazu, den Text der Antwort festzulegen, der an den Client zurückgesendet wurde. Weitere Informationen finden Sie in der [Referenz zur Azure Cosmos DB JavaScript-Server-API](https://azure.github.io/azure-cosmosdb-js-server/).  
 
 Dieses Beispiel möchten wir jetzt erweitern und datenbankbezogenere Funktionen zur gespeicherten Prozedur hinzufügen. Gespeicherte Prozeduren können Dokumente und Anhänge innerhalb der Sammlung erstellen, aktualisieren, lesen, abfragen und löschen.    
 
@@ -503,7 +503,7 @@ client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
 ```
 
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript-Language Integrated Query (LINQ)-API
-Zusätzlich zu Abfragen mit der SQL-Grammatik von Azure Cosmos DB ermöglicht das serverseitige SDK die Durchführung optimierter Abfragen mithilfe einer flüssigen JavaScript-Schnittstelle, die keinerlei SQL-Kenntnisse voraussetzt. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie unter Verwendung einer Syntax, die mit den integrierten und weit verbreiteten JavaScript-Bibliotheken von ECMAScript5 wie Lodash vergleichbar ist, Prädikatfunktionen in verkettbare Funktionsaufrufe übergeben. Abfragen werden von der JavaScript-Laufzeit zur effizienten Ausführung mithilfe von Azure Cosmos DB-Indizes analysiert.
+Zusätzlich zu Abfragen mit der SQL-Grammatik von Azure Cosmos DB ermöglicht das [serverseitige SDK](https://azure.github.io/azure-cosmosdb-js-server/) die Durchführung optimierter Abfragen mithilfe einer flüssigen JavaScript-Schnittstelle, die keinerlei SQL-Kenntnisse voraussetzt. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie unter Verwendung einer Syntax, die mit den integrierten und weit verbreiteten JavaScript-Bibliotheken von ECMAScript5 wie Lodash vergleichbar ist, Prädikatfunktionen in verkettbare Funktionsaufrufe übergeben. Abfragen werden von der JavaScript-Laufzeit zur effizienten Ausführung mithilfe von Azure Cosmos DB-Indizes analysiert.
 
 > [!NOTE]
 > `__` (doppelter Unterstrich) ist ein Alias für `getContext().getCollection()`.
@@ -831,9 +831,8 @@ Sobald Sie eine oder mehrere gespeicherte Prozeduren, Trigger und benutzerdefini
 
 Weitere Informationen zur serverseitigen Azure Cosmos DB-Programmierung finden Sie auch in den folgenden Referenzen und Ressourcen:
 
-* [Azure Cosmos DB SDKs](sql-api-sdk-dotnet.md)
+* [Referenz zur Azure Cosmos DB JavaScript-Server-API](https://azure.github.io/azure-cosmosdb-js-server/)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
-* [JSON](http://www.json.org/) 
 * [JavaScript-ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
 * [Sichere und portable Erweiterbarkeit von Datenbanken](http://dl.acm.org/citation.cfm?id=276339) 
 * [Dienstorientierte Datenbankarchitektur](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 

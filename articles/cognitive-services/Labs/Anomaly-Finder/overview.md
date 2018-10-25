@@ -4,16 +4,16 @@ description: Verwenden Sie hoch entwickelte Algorithmen in der Anomaliesuche, um
 services: cognitive-services
 author: tonyxing
 ms.service: cognitive-services
-ms.technology: anomaly-detection
+ms.component: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: 2a0715d3becf695600ed84edbae38151acf055a8
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: c0c15f077a0a7dd302a377aa6f82ba2f8533d862
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48246841"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456251"
 ---
 # <a name="what-is-anomaly-finder"></a>Worum handelt es sich bei der Anomaliesuche?
 

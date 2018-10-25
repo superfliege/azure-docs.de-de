@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: d7c35b79dcdf75dbb3f891dc4c66cbf893b61c03
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5328ee7e3e3035ebce1ff9fccbfc6e9ccfd86ee8
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777687"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888395"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Vorbereiten eines CentOS-basierten virtuellen Computers für Azure
 * [Vorbereiten eines virtuellen CentOS 6.x-Computers für Azure](#centos-6x)
@@ -298,7 +298,7 @@ Die Vorbereitung eines virtuellen CentOS 7-Computers für Azure entspricht in et
    
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. Beim Erstellen eines Images von **VMWare, VirtualBox oder KVM**: Stellen Sie sicher, dass die Hyper-V-Treiber in „initramfs“ enthalten sind:
+10. Beim Erstellen eines Images von **VMware, VirtualBox oder KVM**: Stellen Sie sicher, dass die Hyper-V-Treiber in „initramfs“ enthalten sind:
    
    Bearbeiten Sie `/etc/dracut.conf`und fügen Sie Inhalt hinzu:
    

@@ -9,12 +9,12 @@ ms.reviewer: jasonh, sngun
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/21/2018
-ms.openlocfilehash: 1610e8173d90be3c0b50f05e64d0e84e1c21ad0e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 88c58175f4886d4796ed4e32b41d030c9ee441fc
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698042"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986887"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
 
@@ -44,7 +44,7 @@ In dieser Lösung werden zwei Datenströme verwendet. Mit Sensoren, die am Einga
 ### <a name="entry-data-stream"></a>Eingangsdatenstrom
 Der Eingangsdatenstrom enthält Informationen zu den Fahrzeugen, die in Mautstationen einfahren. Die Ereignisse des Ausgangsdatenstroms werden von einer Web-App, die in der Beispiel-App enthalten ist, live in eine Event Hub-Warteschlange gestreamt.
 
-| TollId | EntryTime | LicensePlate | State (Zustand) | Stellen | Modell | VehicleType | VehicleWeight | Toll | Tag |
+| TollId | EntryTime | LicensePlate | Zustand | Stellen | Modell | VehicleType | VehicleWeight | Toll | Tag |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -60,7 +60,7 @@ Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
 | TollId |Mauthäuschen-ID zur eindeutigen Identifizierung des Mauthäuschens |
 | EntryTime |Datum und Uhrzeit der Einfahrt des Fahrzeugs in das Mauthäuschen in UTC |
 | LicensePlate |Nummernschild des Fahrzeugs |
-| State (Zustand) |Bundesstaat (USA) |
+| Zustand |Bundesstaat (USA) |
 | Stellen |Der Fahrzeughersteller |
 | Modell |Modellnummer des Fahrzeugs |
 | VehicleType |1 für Privatfahrzeuge oder 2 für Nutzfahrzeuge |
@@ -109,7 +109,7 @@ Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
 | Abgelaufen |Der Registrierungsstatus des Fahrzeugs: „0“, wenn das Fahrzeug registriert ist, und „1“, wenn die Registrierung abgelaufen ist |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Einrichten der Umgebung für Azure Stream Analytics
-Sie benötigen ein Microsoft Azure-Abonnement, um diese Lösung durchzuarbeiten. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie eine [kostenlose Testversion anfordern](http://azure.microsoft.com/pricing/free-trial/).
+Sie benötigen ein Microsoft Azure-Abonnement, um diese Lösung durchzuarbeiten. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie eine [kostenlose Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 Stellen Sie sicher, dass Sie am Ende dieses Artikels die Anleitung zum Bereinigen Ihres Azure-Kontos befolgen, damit Sie Ihre Azure-Gutschrift bestmöglich nutzen können.
 

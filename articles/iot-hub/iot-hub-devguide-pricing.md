@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 672adba0b4b17a25c0c0a1da3596808f767e3fbd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac25fa1bcca9a49054f37d8799511fbc7d95645b
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632838"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584097"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub – Preisinformationen
 
-[Azure IoT Hub – Preise][lnk-pricing] enthält die allgemeinen Informationen zu den verschiedenen SKUs und die Preise für IoT Hub. Dieser Artikel enthält weitere Informationen dazu, wie die verschiedenen IoT Hub-Funktionen als Nachrichten von IoT Hub getaktet werden.
+[Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub) enthält die allgemeinen Informationen zu den verschiedenen SKUs und die Preise für IoT Hub. Dieser Artikel enthält weitere Informationen dazu, wie die verschiedenen IoT Hub-Funktionen als Nachrichten von IoT Hub getaktet werden.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -37,7 +37,7 @@ ms.locfileid: "34632838"
 | Vorgänge vom Typ „Aufträge pro Gerät“ | Auftragsvorgänge (z.B. Zwillingsupdates und Methoden) werden normal berechnet. Ein Auftrag, der zu 1000 Methodenaufrufen mit 1-KB-Anforderungen und Antworten mit leerem Textbereich führt, wird als 1000 Nachrichten berechnet. |
 
 > [!NOTE]
-> Bei allen Berechnungen der Größen wird die Nutzlastgröße in Byte berücksichtigt (Protokollframing wird ignoriert). Bei Nachrichten, die über Eigenschaften und Text verfügen, wird die Größe unabhängig vom Protokoll berechnet. Weitere Informationen finden Sie im [Entwicklerhandbuch für IoT-Messaging][lnk-message-size].
+> Bei allen Berechnungen der Größen wird die Nutzlastgröße in Byte berücksichtigt (Protokollframing wird ignoriert). Bei Nachrichten, die über Eigenschaften und Text verfügen, wird die Größe unabhängig vom Protokoll berechnet. Weitere Informationen finden Sie unter [IoT Hub-Nachrichtenformat](iot-hub-devguide-messages-construct.md).
 
 ## <a name="example-1"></a>Beispiel 1:
 
@@ -64,7 +64,3 @@ Diese Berechnung ergibt eine Gesamtsumme von 612 Nachrichten pro Tag.
 Das Lösungs-Back-End verbraucht 28 Nachrichten (14 KB/0,5 KB) für das Lesen vom Gerätezwilling sowie eine Nachricht für die Aktualisierung. Dies ergibt insgesamt 29 Nachrichten.
 
 Zusammen verbrauchen das Gerät und das Lösungs-Back-End also 641 Nachrichten pro Tag.
-
-
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[lnk-message-size]: iot-hub-devguide-messages-construct.md

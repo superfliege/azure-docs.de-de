@@ -1,32 +1,32 @@
 ---
-title: Verwalten von Azure-Kubernetes-Clustern mit der Webbenutzeroberfläche
-description: Erfahren Sie mehr über die Verwendung des integrierten Kubernetes-Dashboards mit Webbenutzeroberfläche mit Azure Kubernetes Service (AKS).
+title: Verwalten eines Azure Kubernetes Service-Clusters mit dem Webdashboard
+description: Erfahren Sie mehr über die Verwendung des integrierten Kubernetes-Dashboards mit Webbenutzeroberfläche zur Verwaltung eines Azure Kubernetes Service-Clusters (AKS).
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: af48af596e86e0eb09fe45deabe13beedef57cd2
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 9d953cdb82412c07fe0ed4bef75dece4a929cad9
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307924"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067583"
 ---
-# <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Zugriff auf das Kubernetes-Dashboard mit Azure Kubernetes Service (AKS)
+# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Zugreifen auf das Kubernetes-Webdashboard in Azure Kubernetes Service (AKS)
 
-Kubernetes enthält ein Webdashboard, das für einfache Verwaltungsvorgänge verwendet werden kann. In diesem Artikel wird erläutert, wie Sie mithilfe von Azure CLI auf das Kubernetes-Dashboard zugreifen können. Anschließend werden einige grundlegende Vorgänge im Dashboard vorgestellt. Weitere Informationen zum Kubernetes-Dashboard finden Sie unter [Kubernetes Web UI Dashboard (Kubernetes-Dashboard mit Webbenutzeroberfläche)][kubernetes-dashboard].
+Kubernetes enthält ein Webdashboard, das für einfache Verwaltungsvorgänge verwendet werden kann. In diesem Dashboard können Sie den Integritätsstatus und grundlegende Metriken für Ihre Anwendungen anzeigen, Dienste erstellen und bereitstellen und vorhandene Anwendungen bearbeiten. In diesem Artikel wird erläutert, wie Sie mithilfe von Azure CLI auf das Kubernetes-Dashboard zugreifen können. Anschließend werden einige grundlegende Vorgänge im Dashboard vorgestellt.
+
+Weitere Informationen zum Kubernetes-Dashboard finden Sie unter [Kubernetes Web UI Dashboard (Kubernetes-Dashboard mit Webbenutzeroberfläche)][kubernetes-dashboard].
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Bei den Schritten in diesem Dokument wird davon ausgegangen, dass Sie einen AKS-Cluster erstellt und eine `kubectl`-Verbindung mit dem Cluster hergestellt haben. Wenn Sie einen AKS-Cluster erstellen müssen, finden Sie weitere Informationen unter [AKS-Schnellstart][aks-quickstart].
 
-Außerdem muss mindestens Version 2.0.27 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
+Außerdem muss die Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
 
-## <a name="start-kubernetes-dashboard"></a>Starten des Kubernetes-Dashboards
+## <a name="start-the-kubernetes-dashboard"></a>Starten des Kubernetes-Dashboards
 
 Verwenden Sie den Befehl [az aks browse][az-aks-browse], um das Kubernetes-Dashboard zu starten. Im folgenden Beispiel wird das Dashboard für den Cluster namens *myAKSCluster* in der Ressourcengruppe namens *myResourceGroup* geöffnet:
 
@@ -34,7 +34,9 @@ Verwenden Sie den Befehl [az aks browse][az-aks-browse], um das Kubernetes-Dashb
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Der Befehl erstellt einen Proxy zwischen Ihrem Entwicklungssystem und der Kubernetes-API und öffnet einen Webbrowser mit dem Kubernetes-Dashboard.
+Der Befehl erstellt einen Proxy zwischen Ihrem Entwicklungssystem und der Kubernetes-API und öffnet einen Webbrowser mit dem Kubernetes-Dashboard. Wenn ein Webbrowser das Kubernetes-Dashboard nicht öffnet, kopieren Sie die in der Azure-Befehlszeilenschnittstelle angegebene URL-Adresse, in der Regel *http://127.0.0.1:8001*.
+
+![Die Übersichtsseite des Kubernetes-Webdashboards](./media/kubernetes-dashboard/dashboard-overview.png)
 
 ### <a name="for-rbac-enabled-clusters"></a>Für RBAC-fähige Cluster
 
@@ -53,48 +55,57 @@ kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-adm
 
 Sie können nun in Ihrem RBAC-fähigen Cluster auf das Kubernetes-Dashboard zugreifen. Verwenden Sie wie zuvor beschrieben den Befehl [az aks browse][az-aks-browse], um das Kubernetes-Dashboard zu starten.
 
-## <a name="run-an-application"></a>Ausführen einer Anwendung
+## <a name="create-an-application"></a>Erstellen einer Anwendung
 
-Klicken Sie im Kubernetes-Dashboard im rechten oberen Fenster auf die Schaltfläche **Erstellen**. Nennen Sie die Bereitstellung `nginx`, und geben Sie `nginx:latest` als Containerimagenamen ein. Klicken Sie unter **Dienst** auf **Extern**, und geben Sie für Port und Zielport jeweils `80` ein.
+Um zu demonstrieren, wie das Kubernetes-Dashboard die Komplexität von Verwaltungsaufgaben verringern kann, erstellen wir nun eine Anwendung. Sie können eine Anwendung über das Kubernetes-Dashboard erstellen, indem Sie Texteingaben oder eine YAML-Datei bereitstellen oder einen grafischen Assistenten verwenden.
 
-Klicken Sie abschließend auf **Bereitstellen**, um die Bereitstellung zu erstellen.
+Um eine Anwendung zu erstellen, führen Sie die folgenden Schritte aus:
 
-![Kubernetes-Dialogfeld für die Diensterstellung](./media/container-service-kubernetes-ui/create-deployment.png)
+1. Wählen Sie die Schaltfläche **Erstellen** in der rechten oberen Ecke aus.
+1. Um den grafischen Assistenten zu verwenden, wählen Sie **App erstellen** aus.
+1. Geben Sie einen Namen für die Bereitstellung an, z.B. *nginx*.
+1. Geben Sie den Namen des zu verwendenden Containerimages ein, z.B. *nginx:1.15.5*.
+1. Um Port 80 für Webdatenverkehr verfügbar zu machen, erstellen Sie einen Kubernetes-Dienst. Wählen Sie unter **Dienst** die Option **Extern** aus, und geben Sie für den Port und den Zielport jeweils **80** ein.
+1. Wenn Sie fertig sind, wählen Sie **Bereitstellen** aus, um die App zu erstellen.
 
-## <a name="view-the-application"></a>Anzeigen der Anwendung
+![Bereitstellen einer App im Kubernetes-Webdashboard](./media/kubernetes-dashboard/create-app.png)
 
-Der Anwendungsstatus kann im Kubernetes-Dashboard überprüft werden. Sobald die Anwendung ausgeführt wird, wird neben den einzelnen Komponenten jeweils ein grünes Kontrollkästchen angezeigt.
+Es dauert einen Moment, bis eine externe öffentliche IP-Adresse dem Kubernetes-Dienst zugewiesen wird. Wählen Sie auf der linken Seite unter **Discovery and Load Balancing** (Ermittlung und den Lastenausgleich) die Option **Dienste** aus. Der Dienst Ihrer Anwendung wird aufgeführt, einschließlich der *externen Endpunkte*, wie im folgenden Beispiel gezeigt:
 
-![Kubernetes-Pods](./media/container-service-kubernetes-ui/complete-deployment.png)
+![Anzeigen der Liste der Dienste und Endpunkte](./media/kubernetes-dashboard/view-services.png)
 
-Weitere Informationen zu den Anwendungspods erhalten Sie, indem Sie im linken Menü auf **Pods** klicken und den Pod **NGINX** auswählen. Hier stehen podspezifische Informationen (etwa zum Ressourcenverbrauch) zur Verfügung.
+Wählen Sie die Endpunktadresse aus, um ein Webbrowserfenster auf der NGINX-Standardseite zu öffnen:
 
-![Kubernetes-Ressourcen](./media/container-service-kubernetes-ui/running-pods.png)
+![Anzeigen der NGINX-Standardseite der bereitgestellten Anwendung](./media/kubernetes-dashboard/default-nginx.png)
 
-Klicken Sie zum Ermitteln der IP-Adresse der Anwendung im linken Menü auf **Dienste**, und wählen Sie den Dienst **NGINX** aus.
+## <a name="view-pod-information"></a>Anzeigen von Podinformationen
 
-![nginx-Ansicht](./media/container-service-kubernetes-ui/nginx-service.png)
+Das Kubernetes-Dashboard kann grundlegende Überwachungsmetriken und Informationen zur Problembehandlung wie z.B. Protokolle bereitstellen.
+
+Um weitere Informationen zu Ihren Anwendungspods anzuzeigen, wählen Sie im linken Menü **Pods** aus. Die Liste der verfügbaren Pods wird angezeigt. Wählen Sie Ihren *nginx*-Pod aus, um die Informationen anzuzeigen, etwa den Ressourcenverbrauch:
+
+![Anzeigen von Podinformationen](./media/kubernetes-dashboard/view-pod-info.png)
 
 ## <a name="edit-the-application"></a>Bearbeiten der Anwendung
 
-Über das Kubernetes-Dashboard können Sie nicht nur Anwendungen erstellen und anzeigen, sondern auch Anwendungsbereitstellungen bearbeiten und aktualisieren.
+Über das Kubernetes-Dashboard können Sie nicht nur Anwendungen erstellen und anzeigen, sondern auch Anwendungsbereitstellungen bearbeiten und aktualisieren. Um zusätzliche Redundanz für die Anwendung bereitzustellen, erhöhen Sie die Anzahl der NGINX-Replikate.
 
-Wenn Sie eine Bereitstellung bearbeiten möchten, klicken Sie im linken Menü auf **Bereitstellungen**, und wählen Sie die Bereitstellung **NGINX** aus. Klicken Sie anschließend auf der Navigationsleiste rechts oben auf **Bearbeiten**.
+So bearbeiten Sie eine Bereitstellung
 
-![Kubernetes-Schaltfläche „Edit“](./media/container-service-kubernetes-ui/view-deployment.png)
+1. Wählen Sie im linken Menü **Bereitstellungen** und dann Ihre *nginx*-Bereitstellung aus.
+1. Wählen Sie auf der Navigationsleiste rechts oben **Bearbeiten** aus.
+1. Suchen Sie den Wert `spec.replica` in der Nähe von Zeile 20. Um die Anzahl der Replikate für die Anwendung zu erhöhen, ändern Sie diesen Wert von *1* in *3*.
+1. Klicken Sie abschließend auf **Aktualisieren**.
 
-Suchen Sie nach dem `spec.replica`-Wert (müsste auf „1“ festgelegt sein), und ändern Sie ihn in „3“. Dadurch erhöht sich die Replikatanzahl der NGINX-Bereitstellung von 1 auf 3.
+![Bearbeiten der Bereitstellung zum Aktualisieren der Anzahl von Replikaten](./media/kubernetes-dashboard/edit-deployment.png)
 
-Klicken Sie abschließend auf **Aktualisieren**.
+Es dauert einige Zeit, bis die neuen Pods in einer Replikatgruppe erstellt werden. Wählen Sie im linken Menü **Replikatsätze** und dann Ihre *nginx*-Replikatgruppe aus. Die Liste der Pods entspricht nun der aktualisierten Replikatanzahl, wie in der folgenden Beispielausgabe gezeigt:
 
-![Kubernetes-Schaltfläche „Edit“](./media/container-service-kubernetes-ui/edit-deployment.png)
+![Anzeigen von Informationen zur Replikatgruppe](./media/kubernetes-dashboard/view-replica-set.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Kubernetes-Dashboard finden Sie in der Kubernetes-Dokumentation.
-
-> [!div class="nextstepaction"]
-> [Kubernetes Web UI (Dashboard)][kubernetes-dashboard] (Kubernetes-Webbenutzeroberfläche – Dashboard)
+Weitere Informationen zum Kubernetes-Dashboard finden Sie unter [Kubernetes-Dashboard mit Webbenutzeroberfläche][kubernetes-dashboard].
 
 <!-- LINKS - external -->
 [kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/

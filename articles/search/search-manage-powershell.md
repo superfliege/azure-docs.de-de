@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: 1d0024af3bbf9edfe8c43032878a8b61e35cea9c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: bae9e2dcb4320c1da4f1d8e3c6ad50ce90195544
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39000989"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958566"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Verwalten des Azure Search-Diensts mit PowerShell
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Zunächst müssen Sie sich mit dem folgenden Befehl in Azure anmelden:
 
 Geben Sie die E-Mail-Adresse Ihres Azure-Kontos und das Kennwort in das Anmeldedialogfeld von Microsoft Azure ein.
 
-Als Alternative steht die [Nicht interaktive Anmeldung mit einem Dienstprinzipal](../azure-resource-manager/resource-group-authenticate-service-principal.md)zur Verfügung.
+Als Alternative steht die [Nicht interaktive Anmeldung mit einem Dienstprinzipal](../active-directory/develop/howto-authenticate-service-principal-powershell.md)zur Verfügung.
 
 Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie Ihr Azure-Abonnement festlegen. Führen Sie den folgenden Befehl aus, um eine Liste Ihrer aktuellen Abonnements anzuzeigen.
 

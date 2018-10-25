@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9fdf332727c4d66af2d5394fb26e84f6ea9d963f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f5bd679c11139b7ac439247df81a7adb0b02b0fe
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440764"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426329"
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>Ergänzende Lektion – Unregelmäßige Hierarchien
 
@@ -44,11 +44,11 @@ Wenn Sie das Projekt „AW Internet Sales“ im Rahmen des Tutorials erstellt ha
 
     | Tabelle 1           | Column       | Filterrichtung   | Tabelle 2     | Column      | Aktiv |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
-    | FactResellerSales | OrderDateKey | Standard            | DimDate     | Datum        | Ja    |
+    | FactResellerSales | OrderDateKey | Standard            | DimDate     | Datum        | JA    |
     | FactResellerSales | DueDate      | Standard            | DimDate     | Datum        | Nein      |
     | FactResellerSales | ShipDateKey  | Standard            | DimDate     | Datum        | Nein      |
-    | FactResellerSales | ProductKey   | Standard            | DimProduct  | ProductKey  | Ja    |
-    | FactResellerSales | EmployeeKey  | Beide Tabellen | DimEmployee | EmployeeKey | Ja    |
+    | FactResellerSales | ProductKey   | Standard            | DimProduct  | ProductKey  | JA    |
+    | FactResellerSales | EmployeeKey  | Beide Tabellen | DimEmployee | EmployeeKey | JA    |
 
 5. Erstellen Sie in der Tabelle **DimEmployee** die folgenden [berechneten Spalten](../tutorials/aas-lesson-5-create-calculated-columns.md): 
 

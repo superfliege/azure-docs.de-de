@@ -1,20 +1,21 @@
 ---
-title: Abrufen von Videos aus der benutzerdefinierten Ansicht | Microsoft-Dokumentation
+title: Abrufen von Videos aus Ihrer benutzerdefinierten Ansicht – Benutzerdefinierte Bing-Suche
+titlesuffix: Azure Cognitive Services
 description: Hier finden Sie eine allgemeine Übersicht über das Abrufen von Videos aus Ihrer benutzerdefinierten Ansicht im Web mithilfe der benutzerdefinierten Bing-Suche.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 980081ae2f576aadd4ac31e29f0f77ddcb4e7f64
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5394f86e8a5d167830cb4061800f4cbf9a521713
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978798"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816409"
 ---
 # <a name="get-videos-from-your-custom-view"></a>Abrufen von Videos aus der benutzerdefinierten Ansicht
 

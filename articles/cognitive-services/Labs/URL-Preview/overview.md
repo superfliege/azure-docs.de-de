@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-url-preview
+ms.component: url-preview
 ms.topic: overview
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 5d0b8260bf1c58af915c1be18c32cec678f4f09c
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e3791c897722c9bbf50f58c126d7e4e573b2096f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869432"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465813"
 ---
 # <a name="what-is-project-url-preview"></a>Worum handelt es sich bei der Projekt-URL-Vorschau?
 Der URL-Vorschau-Endpunkt nutzt einen URL-Abfrageparameter und gibt eine JSON-Antwort mit dem Namen der Zielressource, einer kurzen Beschreibung und einem Link zu einem Bild, das in einer Vorschau angezeigt wird, zurück. Die Antwort hat außerdem das [isFamilyFriendly](url-preview-reference.md#query-parameters)-Flag, das angibt, ob die URL jugendgefährdende, raubkopierte oder andere illegale Inhalte enthält. 

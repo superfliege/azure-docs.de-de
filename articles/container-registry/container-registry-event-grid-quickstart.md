@@ -2,18 +2,17 @@
 title: 'Schnellstart: Senden von Azure Container Registry-Ereignissen an Event Grid'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Event Grid-Ereignisse für Ihre Containerregistrierung aktivieren, Containerimages mithilfe von Push übertragen und Ereignisse aus einer Beispielanwendung löschen.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
-ms.author: marsma
-ms.openlocfilehash: 6ff83885ba80f0399f7b085970b1191e8e4cd999
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.author: danlep
+ms.openlocfilehash: 88265ee6f8a340909880ba70bd9f37a49ef85bf5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746507"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857362"
 ---
 # <a name="quickstart-send-container-registry-events-to-event-grid"></a>Schnellstart: Senden von Containerregistrierungsereignissen an Event Grid
 
@@ -141,20 +140,20 @@ Nach Abschluss des Abonniervorgangs sollte die Ausgabe der folgenden ähneln:
 
 ## <a name="trigger-registry-events"></a>Auslösen von Registrierungsereignissen
 
-Da die Beispiel-App ausgeführt wird und Sie die Registrierung in Event Grid abonniert haben, können Sie nun Ereignisse generieren. In diesem Abschnitt wird beschrieben, wie Sie mithilfe von ACR Build ein Containerimage erstellen und dieses mithilfe von Push an die Registrierung übertragen. ACR Build ist ein Feature von Azure Container Registry, mit dem Sie Containerimages in der Cloud erstellen können, ohne dass dafür die Docker-Engine auf Ihrem lokalen Computer installiert sein muss.
+Da die Beispiel-App ausgeführt wird und Sie die Registrierung in Event Grid abonniert haben, können Sie nun Ereignisse generieren. In diesem Abschnitt wird beschrieben, wie Sie mithilfe von ACR Tasks ein Containerimage erstellen und in die Registrierung pushen. ACR Tasks ist ein Feature von Azure Container Registry, mit dem Sie Containerimages in der Cloud erstellen können, ohne dass dafür die Docker-Engine auf Ihrem lokalen Computer installiert sein muss.
 
 ### <a name="build-and-push-image"></a>Erstellen und Übermitteln des Images mithilfe von Push
 
-Führen Sie den unten genannten Azure CLI-Befehl aus, um ein Containerimage mithilfe der Inhalte eines GitHub-Repositorys zu erstellen. Standardmäßig überträgt ACR Build automatisch das erfolgreich erstellte Image mithilfe von Push an Ihre Registrierung, die dann das `ImagePushed`-Ereignis generiert.
+Führen Sie den unten genannten Azure CLI-Befehl aus, um ein Containerimage mithilfe der Inhalte eines GitHub-Repositorys zu erstellen. Standardmäßig pusht ACR Tasks automatisch das erfolgreich erstellte Image in Ihre Registrierung, die dann das `ImagePushed`-Ereignis generiert.
 
 ```azurecli-interactive
-az acr build --registry $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-Wenn ACR Build den Erstellungs- und anschließend den Pushvorgang für Ihr Image ausführt, sollte die Ausgabe in etwa wie im folgenden Beispiel aussehen. Die folgende Beispielausgabe wurde aus Gründen der Übersichtlichkeit gekürzt.
+Wenn ACR Tasks den Erstellungs- und den anschließenden Pushvorgang für Ihr Image ausführt, sollte die Ausgabe in etwa wie im folgenden Beispiel aussehen. Die folgende Beispielausgabe wurde aus Gründen der Übersichtlichkeit gekürzt.
 
 ```console
-$ az acr build -r $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+$ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 Sending build context to ACR...
 Queued a build with build ID: aa2
 Waiting for build agent...
@@ -227,10 +226,10 @@ Den Schemaverweis für Ereignismeldungen in Azure Container Registry finden Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben mit dieser Schnellstartanleitung eine Containerregistrierung bereitgestellt, ein Image mit ACR Build erstellt und dieses anschließend gelöscht sowie Registrierungsereignisse von Event Grid in einer Beispielanwendung verwendet. Im nächsten ACR Build-Tutorial erfahren Sie mehr über das Erstellen von Containerimages in der Cloud und über automatisierte Builds während der Aktualisierung des Basisimages:
+Sie haben mit diesem Schnellstart eine Containerregistrierung bereitgestellt, ein Image mit ACR Tasks erstellt und anschließend gelöscht und Registrierungsereignisse von Event Grid in einer Beispielanwendung verwendet. Im nächsten ACR Tasks-Tutorial erfahren Sie mehr über das Erstellen von Containerimages in der Cloud und über automatisierte Builds während der Aktualisierung des Basisimages:
 
 > [!div class="nextstepaction"]
-> [Erstellen von Containerimages in der Cloud mit ACR Build](container-registry-tutorial-quick-build.md)
+> [Erstellen von Containerimages in der Cloud mit ACR Tasks](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

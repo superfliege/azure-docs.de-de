@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 0e074e93ecbe80c3acf3481c0d33917fbe5090c6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ccc1fb20cb08cfd97d58984676ef4006e693118
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640905"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801946"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Suche
 
@@ -89,7 +89,7 @@ Um die richtige Anzahl von Iterationen aufzurufen, setzen Sie den Kontext auf `"
   }
 ```
 
-Wenn es sich bei Anmerkungen um Arrays oder Sammlungen von Zeichenfolgen handelt, empfiehlt es sich, für bestimmte Elemente statt auf das Array als Ganzes abzuzielen. Der Code im obigen Beispiel generiert unter jedem Knoten, der durch den Kontext repräsentiert wird, eine Anmerkung namens `"last"`. Wenn Sie auf diese Familie von Anmerkungen verweisen möchten, können Sie die Syntax `"/document/people/*/last"` verwenden. Wenn Sie auf eine bestimmte Anmerkung verweisen möchten, können Sie einen expliziten Index verwenden: `"/document/people/1/last`", um auf den Nachnamen der ersten im Dokument identifizierten Person zu verweisen. Beachten Sie, dass in dieser Syntax Arrays „1 indiziert“ sind.
+Wenn es sich bei Anmerkungen um Arrays oder Sammlungen von Zeichenfolgen handelt, empfiehlt es sich, für bestimmte Elemente statt auf das Array als Ganzes abzuzielen. Der Code im obigen Beispiel generiert unter jedem Knoten, der durch den Kontext repräsentiert wird, eine Anmerkung namens `"last"`. Wenn Sie auf diese Familie von Anmerkungen verweisen möchten, können Sie die Syntax `"/document/people/*/last"` verwenden. Wenn Sie auf eine bestimmte Anmerkung verweisen möchten, können Sie einen expliziten Index verwenden: `"/document/people/1/last`", um auf den Nachnamen der ersten im Dokument identifizierten Person zu verweisen. Beachten Sie, dass in dieser Syntax Arrays „0 indiziert“ sind.
 
 <a name="example-3"></a>
 

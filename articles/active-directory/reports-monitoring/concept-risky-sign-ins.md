@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4546734cd1b5bf2f4aaddc6477310128c9e62d51
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 38ae18dca08b50a90102149d7e44169c956a1c0e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140099"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869634"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
 
@@ -29,14 +29,23 @@ Azure AD erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten.
 
 Die erkannten Risikoereignisse werden zum Berechnen folgender Werte verwendet:
 
-- **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. Weitere Informationen finden Sie unter [Riskante Anmeldungen](../identity-protection/overview.md#risky-sign-ins). 
+- **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. Weitere Einzelheiten finden Sie unter [Konfigurieren der Richtlinie zum Anmelderisiko](../identity-protection/howto-sign-in-risk-policy.md). 
 
-- **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter [Benutzer mit Risikomarkierung](../identity-protection/overview.md#users-flagged-for-risk).  
+- **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Einzelheiten finden Sie unter [Konfigurieren der Richtlinie zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md).  
 
 Im [Azure-Portal](https://portal.azure.com) befinden sich die Sicherheitsberichte auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit**. 
 
 ![Riskante Anmeldungen](./media/concept-risky-sign-ins/10.png)
 
+## <a name="who-can-access-the-risky-sign-ins-report"></a>Wer hat Zugriff auf den Bericht über riskante Anmeldungen?
+
+Die Berichte über riskante Anmeldungen stehen für Benutzer mit den folgenden Rollen zur Verfügung:
+
+- Sicherheitsadministrator
+- Globaler Administrator
+- Sicherheit lesen
+
+Anweisungen zum Zuweisen von Administratorrollen zu einem Benutzer in Azure Active Directory finden Sie unter [Anzeigen und Zuweisen von Administratorrollen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal).
 
 ## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf einen Sicherheitsbericht?  
 
@@ -48,8 +57,6 @@ Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber var
 - Mit der Edition **Azure Active Directory Premium 1** wird dieses Modell erweitert, indem Sie zusätzlich jeweils einige zugrunde liegende Risikoereignisse untersuchen können, die für einen Bericht erkannt wurden. 
 
 - In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu allen zugrunde liegenden Risikoereignissen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
-
-
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – Free und Basic Edition
 
@@ -73,7 +80,7 @@ Basierend auf Ihrer Untersuchung der riskanten Anmeldung können Sie Azure Activ
 
 ![Riskante Anmeldungen](./media/concept-risky-sign-ins/21.png)
 
-Ausführlichere Informationen finden Sie unter [Manuelles Schließen von Risikoereignissen](../identity-protection/overview.md#closing-risk-events-manually).
+
 
 In diesem Bericht stehen Ihnen folgende Optionen zur Verfügung:
 
@@ -98,13 +105,13 @@ Der Bericht „Riskante Anmeldungen“ in den Premium Editionen von Azure Active
 
 Wenn Sie ein Risikoereignis auswählen, erhalten Sie eine ausführliche Berichtsansicht für das Risikoereignis und haben die folgenden Optionen:
 
-- Option zum Konfigurieren einer [Richtlinie zum Beheben des Benutzerrisikos](../identity-protection/overview.md#user-risk-security-policy)  
+- Option zum Konfigurieren einer [Richtlinie zum Beheben des Benutzerrisikos](../identity-protection/howto-user-risk-policy.md)  
 
 - Überprüfen der Erkennungszeitachse für das Risikoereignis  
 
 - Überprüfen einer Liste mit den Benutzern, für die dieses Risikoereignis erkannt wurde
 
-- [Manuelles Schließen von Risikoereignissen](../identity-protection/overview.md#closing-risk-events-manually) oder erneutes Aktivieren eines manuell geschlossenen Risikoereignisses 
+- Schließen Sie die Risikoereignisse manuell. 
 
 
 ![Riskante Anmeldungen](./media/concept-risky-sign-ins/457.png)
@@ -124,7 +131,7 @@ Wenn Sie einen Benutzer auswählen, erhalten Sie eine ausführliche Berichtsansi
 
 
 Wählen Sie in der Liste ein Risikoereignis aus, um es zu untersuchen.  
-Das Blatt **Details** wird für das Risikoereignis geöffnet. Auf dem Blatt **Details** können Sie ein [Risikoereignis manuell schließen](../identity-protection/overview.md#closing-risk-events-manually) oder ein manuell geschlossenes Risikoereignis wieder aktivieren. 
+Das Blatt **Details** wird für das Risikoereignis geöffnet. Auf dem Blatt **Details** können Sie ein Risikoereignis manuell schließen oder ein manuell geschlossenes Risikoereignis wieder aktivieren. 
 
 
 ![Riskante Anmeldungen](./media/concept-risky-sign-ins/325.png)

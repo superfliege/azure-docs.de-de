@@ -3,7 +3,7 @@ title: Bereitstellen eines virtuellen Computers mit C# und einer Resource Manage
 description: Erfahren Sie, wie Sie mit C# und einer Resource Manager-Vorlage einen virtuellen Azure-Computer bereitstellen.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
-ms.author: cynthn
-ms.openlocfilehash: e57505b4bd89a79af076dc4cf132c844ae0abd1d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: zarhoads
+ms.openlocfilehash: f3d83fa8ba5a78c7aacc7014e9ec50fb447bb1c6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31527823"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953687"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage
 In diesem Artikel wird gezeigt, wie Sie eine Azure Resource Manager-Vorlage mithilfe von C# bereitstellen. Mit der Vorlage, die Sie erstellen, wird ein einzelner virtueller Computer mit Windows Server in einem neuen virtuellen Netzwerk mit einem einzelnen Subnetz bereitgestellt.
@@ -185,7 +185,7 @@ Um Werte für die Ressourcenparameter anzugeben, die in der Vorlage definiert wu
 
 ### <a name="create-the-authorization-file"></a>Erstellen der Autorisierungsdatei
 
-Bevor Sie eine Vorlage bereitstellen können, stellen Sie sicher, dass Sie Zugriff auf einen [Active Directory-Dienstprinzipal](../../resource-group-authenticate-service-principal.md) haben. Vom Dienstprinzipal erhalten Sie ein Token zum Authentifizieren von Anforderungen an Azure Resource Manager. Sie müssen zudem die Anwendungs-ID, den Authentifizierungsschlüssel und die Mandanten-ID aufzeichnen. Sie benötigen diese Angaben für die Autorisierungsdatei.
+Bevor Sie eine Vorlage bereitstellen können, stellen Sie sicher, dass Sie Zugriff auf einen [Active Directory-Dienstprinzipal](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) haben. Vom Dienstprinzipal erhalten Sie ein Token zum Authentifizieren von Anforderungen an Azure Resource Manager. Sie müssen zudem die Anwendungs-ID, den Authentifizierungsschlüssel und die Mandanten-ID aufzeichnen. Sie benötigen diese Angaben für die Autorisierungsdatei.
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf *myDotnetProject* > **Hinzufügen** > **Neues Element**, und wählen Sie dann **Textdatei** in *Visual C#-Elemente* aus. Nennen Sie die Datei *azureauth.properties*, und klicken Sie dann auf **Hinzufügen**.
 2. Fügen Sie diese Autorisierungseigenschaften hinzu:

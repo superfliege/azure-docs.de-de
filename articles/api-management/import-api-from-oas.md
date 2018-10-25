@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: f5132215b1fda93c62c1fbea46c3266fcc44ec46
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: edef88694cc335a63ce279e96a204ed4b8fe7376
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307278"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469502"
 ---
 # <a name="import-an-openapi-specification"></a>Importieren einer OpenAPI-Spezifikation
 
@@ -65,11 +65,11 @@ Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management
 
 Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein einfacher Weg, die Vorgänge einer API anzuzeigen und zu testen.
 
+![Test-API](./media/api-management-get-started/01-import-first-api-01.png)
+
 1. Wählen Sie die API aus, die Sie im vorherigen Schritt erstellt haben.
 2. Wählen Sie die Registerkarte **Testen** aus.
-
-    ![Test-API](./media/api-management-get-started/test-api.png)
-1. Klicken Sie auf **GetSpeakers**.
+3. Klicken Sie auf **GetSpeakers**.
 
     Auf der Seite werden Felder für Abfrageparameter angezeigt, aber in diesem Fall sind keine vorhanden. Die Seite enthält auch Felder für die Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator, sodass der Schlüssel automatisch eingetragen wird.
 4. Klicken Sie auf **Senden**.

@@ -3,23 +3,22 @@ title: Hinzufügen bedingter Anweisungen zu Workflows – Azure Logic Apps | Mic
 description: Hier erfahren Sie, wie Sie Bedingungen erstellen, die Aktionen in Workflows in Azure Logic Apps steuern.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d4e69d33e07f484b4ccc5343786865230368c7ca
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.topic: article
+ms.date: 10/09/2018
+ms.openlocfilehash: 462a21c760f7dec727148f2a41dec9f508e24dbc
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096375"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885237"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Erstellen bedingter Anweisungen zum Steuern von Workflowaktionen in Azure Logic Apps
 
-Fügen Sie eine *bedingte Anweisung* hinzu, falls bestimmte Aktionen in Ihrer Logik-App erst nach dem Übergeben einer bestimmten Bedingung ausgeführt werden sollen. Diese Struktur vergleicht die Daten in Ihrem Workflow mit bestimmten Werten oder Feldern. Sie können verschiedene Aktionen definieren, die abhängig davon ausgeführt werden, ob die Daten die Bedingung erfüllen. Sie können Bedingungen ineinander schachteln.
+Fügen Sie eine *bedingte Anweisung* hinzu, falls bestimmte Aktionen in Ihrer Logik-App erst nach dem Übergeben einer bestimmten Bedingung ausgeführt werden sollen. Diese Kontrollstruktur vergleicht die Daten in Ihrem Workflow mit bestimmten Werten oder Feldern. Sie können verschiedene Aktionen angeben, die abhängig davon ausgeführt werden, ob die Daten die Bedingung erfüllen. Sie können Bedingungen ineinander schachteln.
 
 Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn neue Elemente auf dem RSS-Feed einer Website verfügbar gemacht werden. Sie können Bedingungsanweisung hinzufügen, um nur dann eine E-Mail zu senden, wenn das neue Element eine bestimmte Zeichenfolge enthält. 
 
@@ -34,19 +33,23 @@ Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn
 
 * Um dem Beispiel in diesem Artikel zu folgen, [erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- oder Office 365 Outlook-Konto.
 
-## <a name="add-a-condition"></a>Bedingung hinzufügen
+## <a name="add-condition"></a>Bedingung hinzufügen
 
 1. Öffnen Sie Ihre Logik-App im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> im Logik-App-Designer.
 
-2. Fügen Sie an der gewünschten Position eine Bedingung hinzu. 
+1. Fügen Sie an der gewünschten Position eine Bedingung hinzu. 
 
-   Um eine Bedingung zwischen Schritten hinzuzufügen, bewegen Sie den Zeiger auf den Pfeil an der Position, an der Sie die Bedingung hinzufügen möchten. Wählen Sie das angezeigte **Pluszeichen** (**+**) und dann **Bedingung hinzufügen** aus. Beispiel: 
+   Um eine Bedingung zwischen Schritten hinzuzufügen, bewegen Sie den Zeiger auf den Pfeil an der Position, an der Sie die Bedingung hinzufügen möchten. Wählen Sie das daraufhin angezeigte **Pluszeichen** (**+**) aus, und wählen Sie dann **Aktion hinzufügen** aus. Beispiel: 
 
-   ![Hinzufügen einer Bedingung zwischen Schritten](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
+   ![Hinzufügen einer Aktion zwischen Schritten](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   Wenn Sie eine Bedingung am Ende Ihres Workflows hinzufügen möchten, wählen Sie in Ihrer Logik-App unten die Option **+ Neuer Schritt** > **Bedingung hinzufügen**.
+   Wenn Sie eine Bedingung am Ende Ihres Workflows hinzufügen möchten, wählen Sie in Ihrer Logik-App unten die Option **+ Neuer Schritt** > **Aktion hinzufügen** aus.
 
-3. Erstellen Sie unter **Bedingung** Ihre Bedingung. 
+1. Geben Sie im Suchfeld den Begriff „Bedingung“ als Filter ein. Wählen Sie diese Aktion aus: **Bedingung – steuern**
+
+   ![Bedingung hinzufügen](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
+
+1. Erstellen Sie im Feld **Bedingung** Ihre Bedingung. 
 
    1. Geben Sie im linken Feld die Daten oder das Feld an, die verglichen werden sollen.
 
@@ -55,30 +58,34 @@ Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn
 
       ![Erstellen der Bedingung](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
 
-   2. Wählen Sie in der mittleren Liste den auszuführenden Vorgang aus. 
+   1. Wählen Sie im mittleren Feld den auszuführenden Vorgang aus. 
    Wählen Sie für dieses Beispiel die Option **enthält** aus. 
 
-   3. Geben Sie im rechten Feld einen Wert oder ein Feld als Suchkriterium an. 
+   1. Geben Sie im rechten Feld einen Wert oder ein Feld als Suchkriterium an. 
    Geben Sie für dieses Beispiel die Zeichenfolge **Microsoft** an.
 
    Hier ist die vollständige Bedingung:
 
    ![Vollständige Bedingung](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-5. Fügen Sie unter **Bei TRUE** und **Bei FALSE** die auszuführenden Schritte basierend darauf hinzu, ob die Bedingung erfüllt ist. Beispiel: 
+   Um Ihrer Bedingung eine weitere Zeile hinzuzufügen, wählen Sie **Hinzufügen** > **Zeile hinzufügen** aus. 
+   Um eine Gruppe mit Unterbedingungen hinzuzufügen, wählen Sie **Hinzufügen** > **Gruppe hinzufügen** aus. 
+   Um vorhandene Zeilen zu gruppieren, aktivieren Sie die Kontrollkästchen für die betreffenden Zeilen, wählen Sie für eine beliebige Zeile die Schaltfläche mit den Auslassungspunkten (...) aus, und wählen Sie dann **Gruppe erstellen** aus.
+
+1. Fügen Sie unter **Bei TRUE** und **Bei FALSE** die auszuführenden Schritte basierend darauf hinzu, ob die Bedingung erfüllt ist. Beispiel: 
 
    ![Bedingung mit „Bei TRUE“- und „Bei FALSE“-Pfaden](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
    > Sie können vorhandene Aktionen in die **Bei TRUE**- und **Bei FALSE**-Pfade ziehen.
 
-6. Speichern Sie Ihre Logik-App.
+1. Speichern Sie Ihre Logik-App.
 
 Diese Logik-App sendet jetzt nur eine E-Mail, wenn die neuen Elemente im RSS-Feed Ihre Bedingung erfüllen.
 
 ## <a name="json-definition"></a>JSON-Definition
 
-Da Sie nun eine Logik-App mit einer Bedingungsanweisung erstellt haben, sehen wir uns die allgemeine Codedefinition an, die der Bedingungsanweisung zugrunde liegt.
+So sieht die allgemeine Codedefinition hinter einer bedingten Anweisung aus:
 
 ``` json
 "actions": {
@@ -93,7 +100,8 @@ Da Sie nun eine Logik-App mit einer Bedingungsanweisung erstellt haben, sehen wi
       "and": [ 
         { 
           "contains": [ 
-            "@triggerBody()?['summary']", "Microsoft"
+            "@triggerBody()?['summary']", 
+            "Microsoft"
           ]
         } 
       ]

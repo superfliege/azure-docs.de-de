@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: f44bb7bd95ef405c65bb259a6d104475c2e283bd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297841"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955166"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Continuous Integration in Azure DevOps Services mit Bereitstellungsprojekten für Azure-Ressourcengruppen
 Zum Bereitstellen einer Azure-Vorlage führen Sie Aufgaben in verschiedenen Phasen aus: „Erstellen“, „Testen“, „Nach Azure kopieren“ (auch als „Staging“ bezeichnet) und „Vorlage bereitstellen“. Es gibt zwei Möglichkeiten zum Bereitstellen von Vorlagen für Azure DevOps Services. Da beide Verfahren zum gleichen Ergebnis führen, können Sie das Verfahren wählen, das am besten in Ihren Workflow passt.
@@ -92,7 +92,7 @@ Hier werden Sie durch die erforderlichen Schritte der Continuous Deployment-Konf
       Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
       
       `azure account show`
-   8. Verwenden Sie zum Ermitteln von Dienstprinzipal-ID, Dienstprinzipalschlüssel und Mandanten-ID die Vorgehensweise unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](resource-group-create-service-principal-portal.md) oder [Authentifizieren eines Dienstprinzipals mit dem Azure Resource Manager](resource-group-authenticate-service-principal.md).
+   8. Verwenden Sie zum Ermitteln von Dienstprinzipal-ID, Dienstprinzipalschlüssel und Mandanten-ID die Vorgehensweise unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](active-directory/develop/howto-create-service-principal-portal.md) oder [Authentifizieren eines Dienstprinzipals mit dem Azure Resource Manager](active-directory/develop/howto-authenticate-service-principal-powershell.md).
    9. Fügen Sie im Dialogfeld **Azure-Abonnement hinzufügen** die Werte für Dienstprinzipal-ID, Dienstprinzipalschlüssel und Mandanten-ID hinzu, und klicken Sie auf die Schaltfläche **OK**.
       
       Sie verfügen nun über einen gültigen Dienstprinzipal, den Sie zum Ausführen des Azure PowerShell-Skripts verwenden können.
@@ -181,7 +181,7 @@ Im Folgenden werden Sie durch die erforderlichen Schritte der Continuous Deploym
 7. Nachdem Sie alle erforderlichen Elemente eingegeben haben, speichern Sie die Buildpipeline und wählen oben **Neuen Build in Warteschlange** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Resource Manager und Azure-Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](azure-resource-manager/resource-group-overview.md).
+Weitere Informationen zum Azure-Ressourcen-Manager und Azure-Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](azure-resource-manager/resource-group-overview.md) .
 
 [0]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough1.png
 [1]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough2.png

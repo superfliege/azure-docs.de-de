@@ -1,19 +1,39 @@
-
+---
+title: Includedatei
+description: Includedatei
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/13/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 6e20ce083c415bced22231835cc616ede8f0dd04
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843351"
+---
 ## <a name="register-your-application"></a>Anwendung registrieren
 Es gibt zwei Methoden für die Registrierung Ihrer Anwendung. Diese werden in den beiden folgenden Abschnitten beschrieben.
 
-### <a name="option-1-express-mode"></a>Option 1: Expressmodus
-Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
+### <a name="option-1-express"></a>Option 1: Express
 1. Navigieren Sie zum [Anwendungsregistrierungsportal von Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
-2.  Geben Sie im Feld **Anwendungsname** einen Namen für Ihre Anwendung ein.
+2.  Geben Sie in **Anwendungsname** einen Namen für Ihre Anwendung ein.
 
 3. Vergewissern Sie sich, dass das Kontrollkästchen **Guided Setup** (Geführtes Setup) aktiviert ist, und klicken Sie anschließend auf **Erstellen**.
 
 4. Befolgen Sie die Anweisungen zum Abrufen der Anwendungs-ID, und fügen Sie sie in Ihren Code ein.
 
-### <a name="option-2-advanced-mode"></a>Option 2: Erweiterter Modus
-Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformationen Ihrer Projektmappe hinzufügen möchten, führen Sie folgende Schritte aus:
-1. Falls Sie Ihre Anwendung noch nicht registriert haben, navigieren Sie zum [Anwendungsregistrierungsportal von Microsoft](https://apps.dev.microsoft.com/portal/register-app).
+### <a name="option-2-advanced"></a>Option 2: Erweitert 
+1. Navigieren Sie zum [Anwendungsregistrierungsportal von Microsoft](https://apps.dev.microsoft.com/portal/register-app).
 2. Geben Sie im Feld **Anwendungsname** einen Namen für Ihre Anwendung ein. 
 
 3. Vergewissern Sie sich, dass das Kontrollkästchen **Guided Setup** (Geführtes Setup) deaktiviert ist, und klicken Sie anschließend auf **Erstellen**.
@@ -22,7 +42,7 @@ Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformation
 
 5. Öffnen Sie `MainActivity` unter **App** > **Java** > **{host}.{namespace}**. 
 
-6.  Ersetzen Sie in der folgenden Zeile *[Enter the application Id here]* durch die Anwendungs-ID, die Sie gerade registriert haben:
+6.  Ersetzen Sie *[Hier die Anwendungs-ID eingeben]* durch Ihre Anwendungs-/Client-ID:
 
     ```java
     final static String CLIENT_ID = "[Enter the application Id here]";
@@ -30,7 +50,7 @@ Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformation
 <!-- Workaround for Docs conversion bug -->
 7. Öffnen Sie unter **App** > **Manifests** die Datei *AndroidManifest.xml*.
 
-8. Fügen Sie im Knoten `manifest\application` die folgende Aktivität hinzu. Dadurch wird eine `BrowserTabActivity`-Aktivität hinzugefügt, die dem Betriebssystem das Fortsetzen der Anwendung nach Abschluss der Authentifizierung ermöglicht:
+8. Fügen Sie in `manifest\application` die folgende Aktivität hinzu. Die `BrowserTabActivity`-Aktivität, die Microsoft den Rückruf an Ihre Anwendung nach Abschluss der Authentifizierung ermöglicht:
 
     ```xml
     <!--Intent filter to capture System Browser calling back to our app after sign-in-->
@@ -49,4 +69,4 @@ Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformation
     </activity>
     ```
 <!-- Workaround for Docs conversion bug -->
-9. Ersetzen Sie im Knoten `BrowserTabActivity` die Zeichenfolge `[Enter the application Id here]` durch die Anwendungs-ID.
+9. Ersetzen Sie in `BrowserTabActivity` `[Enter the application Id here]` durch die Anwendungs-/Client-ID.

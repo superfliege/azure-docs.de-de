@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: e0d430ced1dbddbfca79806591c83c33e732eefd
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 43202e88482933aed7952f6cc97dcaf1e0dcb5e7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901713"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986031"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit
 
@@ -39,7 +39,7 @@ In diesem Tutorial simulieren Sie Telefonanrufdaten mithilfe einer Client-App, d
 Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 * Ein Azure-Konto.
-* Die App zum Generieren von Anrufereignissen [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), die im Microsoft Download Center heruntergeladen werden kann. Entzippen Sie dieses Paket in einem Ordner auf Ihrem Computer. Wenn Sie den Quellcode prüfen und die App in einem Debugger ausführen möchten, können Sie den Quellcode der App über [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) beziehen. 
+* Die App zum Generieren von Anrufereignissen [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), die im Microsoft Download Center heruntergeladen werden kann. Entzippen Sie dieses Paket in einem Ordner auf Ihrem Computer. Wenn Sie den Quellcode prüfen und die App in einem Debugger ausführen möchten, können Sie den Quellcode der App über [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) beziehen. 
 
     >[!NOTE]
     >Windows blockiert möglicherweise die heruntergeladene ZIP-Datei. Wenn Sie die Datei nicht entzippen können, klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie **Eigenschaften**. Wenn die Meldung „Die Datei stammt von einem anderen Computer. Der Zugriff wurde aus Sicherheitsgründen eventuell blockiert.“ angezeigt wird, wählen Sie die Option **Nicht mehr blockieren**, und klicken Sie dann auf **Übernehmen**.

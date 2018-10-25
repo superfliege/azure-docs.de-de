@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: msangapu
-ms.openlocfilehash: 0f2d4626308eed376b71f1b3df2f9e43f1b2a4f7
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 20ca63b7126a6800538129115ff339308c11d8c5
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130964"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867024"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Continuous Deployment mit Web-App für Container
 
@@ -42,7 +42,7 @@ Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der linken Seite au
 
 Klicken Sie auf den Namen der App, für die Sie Continuous Deployment mit Docker Hub konfigurieren möchten.
 
-Wählen Sie auf der Seite **Docker-Container** die Option **Ein** aus, und klicken Sie dann auf **Speichern**, um Continuous Deployment zu aktivieren.
+Wählen Sie auf der Seite **Containereinstellungen** die Option **Ein** aus, und wählen Sie dann **Speichern** aus, um Continuous Deployment zu aktivieren.
 
 ![Screenshot der App-Einstellung](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 
@@ -55,7 +55,7 @@ az webapp deployment container show-cd-url --name sname1 --resource-group rgname
 ```
 
 Notieren Sie sich die Webhook-URL. Sie benötigen sie im nächsten Abschnitt.
-`https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+`https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`.
 
 Sie können `publishingusername` und `publishingpwd` durch Herunterladen des Web-App-Veröffentlichungsprofils im Azure-Portal abrufen.
 

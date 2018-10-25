@@ -3,7 +3,7 @@ title: Serielle Azure-Konsole für SysRq- und NMI-Aufrufe | Microsoft-Dokumentat
 description: Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe auf virtuellen Azure-Computern.
 services: virtual-machines-linux
 documentationcenter: ''
-author: alsin
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6f46a1d6964af867b7b0671d020002d1c1de19ae
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9dcec525adf7676b23c6dec14dff07c6d419c085
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411486"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884641"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe
 
@@ -30,11 +30,11 @@ Sobald die SysRq-Sequenz übermittelt wurde, bestimmt die Kernelkonfiguration di
 
 Mit der seriellen Konsole in Azure können Sie einen SysRq-Befehl an einen virtuellen Azure-Computer senden. Verwenden Sie dazu das Tastatursymbol in der unten gezeigten Befehlsleiste.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Durch die Auswahl von „SysRq-Befehl senden“ wird ein Dialogfeld geöffnet. Hier werden entweder allgemeine SysRq-Optionen bereitgestellt, oder Sie können eine Sequenz von im Dialogfeld eingegebenen SysRq-Befehlen übernehmen.  Dadurch werden eine Reihe von SysRq-Befehlen zum Ausführen einer Operation auf höchster Stufe (z. B. ein sicherer Neustart mit `REISUB`) ermöglicht.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 Der SysRq-Befehl kann nicht auf virtuellen Computern verwendet werden, die angehalten wurden oder deren Kernel sich in einem nicht reaktionsfähigen Status befindet (z. B. Kernel panic).
 
@@ -103,8 +103,9 @@ Ein nicht maskierbarer Interrupt (NMI) dient dazu, ein Signal zu erstellen, das 
 
 Sie können mit der seriellen Konsole einen NMI an einen virtuellen Azure-Computer senden. Verwenden Sie dazu das Tastatursymbol in der unten gezeigten Befehlsleiste. Nach der Übermittlung des NMI bestimmt die Konfiguration des virtuellen Computers, wie das System reagiert.  Linux-Betriebssysteme können so konfiguriert werden, dass beim Empfang eines NMI ein Absturz erfolgt und ein Speicherabbild erstellt wird.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
+### <a name="enable-nmi"></a>Aktivieren von NMI
 Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstützen, können Sie beim Empfang dieses NMI einen „Panic“-Status aktivieren. Gehen Sie dazu wie folgt vor:
 1. Hinzufügen der folgenden Zeile zu */etc/sysctl.conf* <br>
     `kernel.panic_on_unrecovered_nmi=1`

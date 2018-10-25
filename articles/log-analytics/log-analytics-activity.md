@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dab2dd2b1d020a7619b18f330640b7f555a1f8c1
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: dd404bf8766082148a2c5a1ae55189f5f82f9021
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044381"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404068"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics
 
@@ -75,8 +75,7 @@ Führen Sie die folgenden Schritte aus, um die Log Analytics-Lösung für Aktivi
     3. Klicken Sie auf dem Blatt *SubscriptionName* auf **Verbinden**.  
         ![Abonnement verbinden](./media/log-analytics-activity/subscription-connect.png)
 
-Wenn Sie die Lösung über das OMS-Portal hinzufügen, wird die folgende Kachel angezeigt. Melden Sie sich beim Azure-Portal an, um ein Azure-Abonnement mit Ihrem Arbeitsbereich zu verbinden.  
-![Bewertung wird durchgeführt](./media/log-analytics-activity/tile-performing-assessment.png)
+Melden Sie sich beim Azure-Portal an, um ein Azure-Abonnement mit Ihrem Arbeitsbereich zu verbinden.  
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 

@@ -10,24 +10,25 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 388957fc5dac5cdab5bee34a4431eaa524e76a48
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 06e7d227511a9b651a905df3172f59a191acce01
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999901"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945670"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformieren von Daten mit dem Azure Machine Learning Data Prep SDK
 
 Das [Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) bietet andere Transformationsmethoden, mit denen Sie Ihre Daten bereinigen können. Diese Methoden ermöglichen ein einfaches Hinzufügen von Spalten, Herausfiltern von nicht benötigten Zeilen oder Spalten und Imputieren von fehlenden Werten.
 
 Derzeit sind Methoden für die folgenden Aufgaben verfügbar:
-- [Hinzufügen einer Spalte mithilfe eines Ausdrucks](#add-column-using-expression)
+- [Hinzufügen einer Spalte mithilfe eines Ausdrucks](#column)
 - [Imputieren von fehlenden Werten](#impute-missing-values)
 - [Ableiten einer Spalte nach Beispiel](#derive-column-by-example)
 - [Filterung](#filtering)
 - [Benutzerdefinierte Python-Transformationen](#custom-python-transforms)
 
+<a name=column>
 ## <a name="add-column-using-an-expression"></a>Hinzufügen einer Spalte mithilfe eines Ausdrucks
 
 Das Azure Machine Learning Data Prep SDK enthält `substring`-Ausdrücke, mit denen Sie einen Wert aus vorhandenen Spalten berechnen und anschließend in eine neue Spalte einfügen können. In diesem Beispiel werden Daten geladen, und es wird versucht, diesen Eingabedaten Spalten hinzuzufügen.

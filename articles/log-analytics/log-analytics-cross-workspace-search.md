@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d3fb6557571042be7db1380010738bacd72e50f5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: cc7bcefe43eed524f50fcad09d7fb31a80d22b83
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869499"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025802"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Ausführen ressourcenübergreifender Protokollsuchen in Log Analytics  
 
@@ -29,7 +29,7 @@ Mit Azure Log Analytics konnten Sie bislang nur Daten innerhalb des aktuellen Ar
 Sie können jetzt nicht nur Abfragen über mehrere Log Analytics-Arbeitsbereiche ausführen, sondern auch Daten aus einer bestimmten Application Insights-App in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement in Abfragen einbeziehen. Dies bietet Ihnen eine systemweite Ansicht Ihrer Daten.  Sie können diese Arten von Abfragen nur in [Log Analytics](log-analytics-log-search-portals.md#log-analytics-page) ausführen. Die Anzahl der Ressourcen (Log Analytics-Arbeitsbereiche und Application Insights-App), die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Abfragen über mehrere Log Analytics-Arbeitsbereiche und mit Application Insights
-Um einen anderen Arbeitsbereich in der Abfrage anzugeben, verwenden Sie die [*Arbeitsbereichs*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace())-ID, und verwenden Sie für eine App in Application Insights die [*App*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())-ID.  
+Um einen anderen Arbeitsbereich in der Abfrage anzugeben, verwenden Sie die [*Arbeitsbereichs*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression)-ID, und verwenden Sie für eine App in Application Insights die [*App*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)-ID.  
 
 ### <a name="identifying-workspace-resources"></a>Identifizieren von Arbeitsbereichsressourcen
 In den folgenden Beispielen werden Abfragen für Log Analytics-Arbeitsbereiche gezeigt, mit denen die zusammengefasste Anzahl von Protokollen aus der Tabelle „Update“ für einen Arbeitsbereich namens *contosoretail-it* zurückgegeben wird. 
@@ -104,4 +104,4 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich in der [Referenz zur Log Analytics-Suche](https://docs.loganalytics.io/docs/Language-Reference) über alle Optionen der Abfragesyntax, die in Log Analytics zur Verfügung stehen.    
+Informieren Sie sich in der [Referenz zur Log Analytics-Suche](https://docs.microsoft.com/azure/log-analytics/query-language/kusto) über alle Optionen der Abfragesyntax, die in Log Analytics zur Verfügung stehen.    

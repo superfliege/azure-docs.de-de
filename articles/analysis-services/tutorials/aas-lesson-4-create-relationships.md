@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5007e18db0af40621ab4b30a16d705d3a5b3915c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7e791514cc25c645775de260e7f190ee20812d4b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443816"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428489"
 ---
 # <a name="create-relationships"></a>Erstellen von Beziehungen
 
@@ -54,11 +54,11 @@ Bevor Sie mit der Erstellung Ihres Modells fortfahren, sollten Sie überprüfen,
   
     |Aktiv|Table|Verknüpfte Nachschlagetabelle|  
     |----------|---------|------------------------|  
-    |Ja|**DimCustomer [GeographyKey]**|**DimGeography [GeographyKey]**|  
-    |Ja|**DimProduct [ProductSubcategoryKey]**|**DimProductSubcategory [ProductSubcategoryKey]**|  
-    |Ja|**DimProductSubcategory [ProductCategoryKey]**|**DimProductCategory [ProductCategoryKey]**|  
-    |Ja|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
-    |Ja|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
+    |JA|**DimCustomer [GeographyKey]**|**DimGeography [GeographyKey]**|  
+    |JA|**DimProduct [ProductSubcategoryKey]**|**DimProductSubcategory [ProductSubcategoryKey]**|  
+    |JA|**DimProductSubcategory [ProductCategoryKey]**|**DimProductCategory [ProductCategoryKey]**|  
+    |JA|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
+    |JA|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
     Falls einige dieser Beziehungen fehlen, sollten Sie sicherstellen, dass Ihr Modell die folgenden Tabellen enthält: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory und FactInternetSales. Wenn Tabellen aus derselben Datenquellenverbindung zu unterschiedlichen Zeitpunkten importiert werden, werden zwischen diesen Tabellen keine Beziehungen erstellt, sondern dies muss anschließend manuell erfolgen. Falls keine Beziehungen angezeigt werden, bedeutet dies, dass in der Datenquelle keine Beziehungen vorhanden sind. Sie können sie im Datenmodell manuell erstellen.
 

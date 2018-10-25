@@ -1,0 +1,52 @@
+---
+title: Ausfüllen des Formulars „Angebotseinstellungen“ | Microsoft-Dokumentation
+description: Erläutert die verschiedenen Felder, die Werte im Formular Angebotseinstellungen für eine neue Dynamics 365 Business Central-Anwendung erfordern.
+services: Azure, Marketplace, Cloud Partner Portal,
+documentationcenter: ''
+author: v-miclar
+manager: Patrick.Butler
+editor: ''
+ms.assetid: ''
+ms.service: marketplace
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
+ms.topic: conceptual
+ms.date: 09/17/2018
+ms.author: pbutlerm
+ms.openlocfilehash: a050a8cfdd67f662786fc0b9b7ed5451c88dccb1
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48806653"
+---
+<a name="how-to-fill-out-the-offer-settings-form"></a>So füllen Sie das Formular „Angebotseinstellungen“ aus
+=======================================
+
+Das Formular für die Angebotseinstellungen ist ein grundlegendes Formular, in dem Sie die Angebotseinstellungen angeben.
+Die erforderlichen Felder werden nachfolgend beschrieben.
+
+### <a name="offer-id"></a>Angebots-ID
+
+`OfferId` ist ein eindeutiger Bezeichner für das Angebot innerhalb eines Herausgeberprofils.
+Diese ID wird in den Produkt-URLs angezeigt. Sie darf nur aus klein geschriebenen alphanumerischen Zeichen oder Bindestrichen (-) bestehen. Die ID darf nicht mit einem Bindestrich enden und darf höchstens 50 Zeichen umfassen. Beachten Sie, dass dieses Feld gesperrt wird, sobald ein Angebot online geschaltet wird.
+
+Wenn z. B. der Partner „Contoso“ eine Angebots-ID namens „sample-Web App“ erstellt, wird diese in AppSource wie folgt angezeigt:
+
+&emsp;`https://appsource.microsoft.com/marketplace/apps/contoso.sample-Web App?tab=Overview`
+
+
+### <a name="publisher-id"></a>Herausgeber-ID
+
+In dieser Dropdownliste können Sie das Herausgeberprofil auswählen, unter dem das Angebot veröffentlicht werden soll. Beachten Sie, dass dieses Feld gesperrt wird, sobald ein Angebot online geschaltet wird.
+
+
+### <a name="name"></a>NAME
+
+Dies ist der Anzeigename für Ihr(e) App/Angebot, der in Microsoft [AppSource](https://appsource.microsoft.com/) angezeigt wird. Er darf aus höchstens 50 Zeichen bestehen.
+
+> [!NOTE]
+> Der Kurzname muss mit dem im App-Manifest angegebenen Herausgebernamen übereinstimmen.
+
+Klicken Sie auf **Speichern**, um Ihre Eingaben zu speichern. Als Nächstes fügen Sie technische Informationen für Ihr Angebot hinzu.

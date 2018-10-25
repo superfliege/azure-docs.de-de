@@ -7,14 +7,14 @@ manager: carmonm
 keywords: Sicherung; Sichern;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/21/2018
+ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: 40a83b93443ebe1482f89a114505a1ba27b93bd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7ab88ce3565ccf79f20847a3a5e744c495d5fcb1
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445742"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884932"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
@@ -37,7 +37,7 @@ Wenn diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit d
 
  * **Linux**: Azure Backup unterstützt [eine Liste mit von Azure empfohlenen Verteilungen](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) mit Ausnahme von CoreOS Linux. Eine Liste mit den Linux-Betriebssystemen, die die Dateiwiederherstellung unterstützen, finden Sie unter [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](backup-azure-restore-files-from-vm.md#for-linux-os).
 
-    > [!NOTE] 
+    > [!NOTE]
     > Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird. Allerdings werden diese Distributionen nicht unterstützt.
     >
  * **Windows Server**, **Windows-Client**: Versionen vor Windows Server 2008 R2 oder Windows 7 werden nicht unterstützt.
@@ -46,10 +46,10 @@ Wenn diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit d
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Einschränkungen beim Sichern und Wiederherstellen eines virtuellen Computers
 Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen vertraut:
 
-* Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
+* Die Sicherung von virtuellen Computern mit mehr als 32 Datenträgern wird nicht unterstützt.
 * Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
 * Das Sichern von virtuellen Linux-Computern, die mit Linux Unified Key Setup (LUKS) verschlüsselt sind, wird nicht unterstützt.
-* Das Sichern von virtuellen Computern, die freigegebene Clustervolumes (Cluster Shared Volumes, CSV) oder eine Konfiguration für Dateiserver mit horizontaler Skalierung enthalten, wird nicht empfohlen. Wenn dies der Fall ist, wird ein Fehler bei CSV-Schreibern erwartet. Dafür müssen alle während einer Momentaufnahmenaufgabe in der Clusterkonfiguration enthaltenen virtuellen Computer berücksichtigt werden. Azure Backup unterstützt keine Multi-VM-Konsistenz. 
+* Das Sichern von virtuellen Computern, die freigegebene Clustervolumes (Cluster Shared Volumes, CSV) oder eine Konfiguration für Dateiserver mit horizontaler Skalierung enthalten, wird nicht empfohlen. Wenn dies der Fall ist, wird ein Fehler bei CSV-Schreibern erwartet. Dafür müssen alle während einer Momentaufnahmenaufgabe in der Clusterkonfiguration enthaltenen virtuellen Computer berücksichtigt werden. Azure Backup unterstützt keine Multi-VM-Konsistenz.
 * Im Netzwerk bereitgestellte und an einen virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
 * Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
 * Die regionsübergreifende Sicherung und Wiederherstellung wird nicht unterstützt.
@@ -62,6 +62,9 @@ Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen ve
   * Virtuelle Computer unter Load Balancer-Konfiguration (intern und extern)
   * Virtuelle Computer mit mehreren reservierten IP-Adressen
   * Virtuelle Computer mit mehreren Netzwerkadaptern
+
+  > [!NOTE]
+  > Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Dabei handelt es sich um eine neue Art von dauerhaftem Speicher für virtuelle Microsoft Azure-Computer. Dieser wird für verwaltete Datenträger im [Azure VM-Sicherungsstapel V2](backup-upgrade-to-vm-backup-stack-v2.md) unterstützt.
 
 ## <a name="create-a-recovery-services-vault-for-a-vm"></a>Erstellen eines Recovery Services-Tresors für einen virtuellen Computer
 Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle Sicherungen und Wiederherstellungspunkte gespeichert werden, die im Laufe der Zeit erstellt wurden. Der Recovery Services-Tresor enthält auch die Sicherungsrichtlinien, die den geschützten virtuellen Computern zugeordnet sind.
@@ -114,7 +117,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
    Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden, verwenden Sie weiterhin den georedundanten Speicher. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie „Lokal redundanter Speicher“ aus. Weitere Informationen zu Speicheroptionen finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
 
 1. Wenn Sie den Speicherreplikationstyp geändert haben, wählen Sie **Speichern**.
-    
+
 Nachdem Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Auswählen eines Sicherungsziels, Festlegen der Richtlinie und Definieren von zu schützenden Elementen
@@ -171,11 +174,11 @@ Nachdem die Sicherung erfolgreich aktiviert wurde, wird die Sicherungsrichtlinie
 Wenn Sie Probleme beim Registrieren des virtuellen Computers haben, überprüfen Sie die folgenden Informationen zum Installieren des VM-Agents und zu Netzwerkverbindungen. Die folgenden Informationen sind wahrscheinlich nicht erforderlich, wenn Sie in Azure erstellte virtuelle Computer schützen möchten. Wenn Sie jedoch Ihre virtuellen Computer zu Azure migriert haben, vergewissern Sie sich, dass Sie den VM-Agent ordnungsgemäß installiert haben und dass Ihr virtueller Computer mit dem virtuellen Netzwerk kommunizieren kann.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Installieren des VM-Agents auf dem virtuellen Computer
-Damit die Sicherungserweiterung funktioniert, muss der Azure-[VM-Agent](../virtual-machines/extensions/agent-windows.md) auf dem virtuellen Azure-Computer installiert sein. Wenn Ihr virtueller Computer über Azure Marketplace erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. 
+Damit die Sicherungserweiterung funktioniert, muss der Azure-[VM-Agent](../virtual-machines/extensions/agent-windows.md) auf dem virtuellen Azure-Computer installiert sein. Wenn Ihr virtueller Computer über Azure Marketplace erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden.
 
 Die folgenden Informationen werden für Situationen bereitgestellt, in denen Sie *keinen* in Azure Marketplace erstellten virtuellen Computer verwenden. **Angenommen, Sie haben einen virtuellen Computer aus einem lokalen Rechenzentrum migriert. In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen.**
 
-**Hinweis:** Nach der Installation des VM-Agents müssen Sie Azure PowerShell verwenden, um auch die ProvisionGuestAgent-Eigenschaft zu aktualisieren, damit Azure weiß, dass der Agent auf dem virtuellen Computer installiert ist. 
+**Hinweis:** Nach der Installation des VM-Agents müssen Sie Azure PowerShell verwenden, um auch die ProvisionGuestAgent-Eigenschaft zu aktualisieren, damit Azure weiß, dass der Agent auf dem virtuellen Computer installiert ist.
 
 Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, vergewissern Sie sich mithilfe der folgenden Tabelle, dass der Azure-VM-Agent auf dem virtuellen Computer ordnungsgemäß installiert ist. Die Tabelle enthält weitere Informationen zum VM-Agent für virtuelle Windows- und Linux-Computer.
 
@@ -206,16 +209,16 @@ Bei der Entscheidung, welche Option Sie verwenden, müssen Sie die Kompromisse z
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Whitelist der IP-Bereiche der Azure-Rechenzentren
 Ausführliche Informationen und Anweisungen zur Aufnahme der IP-Bereiche der Azure-Rechenzentren in eine Whitelist finden Sie auf der [Azure-Website](http://www.microsoft.com/en-us/download/details.aspx?id=41653).
 
-Mit [Diensttags](../virtual-network/security-overview.md#service-tags) können Sie Verbindungen zum Speichern bestimmter Regionen zulassen. Stellen Sie sicher, dass die Regel, die Zugriff auf das Speicherkonto zulässt, eine höhere Priorität hat, als die Regel, die den Internetzugriff blockiert. 
+Mit [Diensttags](../virtual-network/security-overview.md#service-tags) können Sie Verbindungen zum Speichern bestimmter Regionen zulassen. Stellen Sie sicher, dass die Regel, die Zugriff auf das Speicherkonto zulässt, eine höhere Priorität hat, als die Regel, die den Internetzugriff blockiert.
 
 ![NSG mit Speichertags für eine Region](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
 
-Das folgende Video führt Sie durch die Schrittanleitung zum Konfigurieren von Diensttags: 
+Das folgende Video führt Sie durch die Schrittanleitung zum Konfigurieren von Diensttags:
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
-> [!WARNING]
-> Speicherdiensttags sind nur in bestimmten Regionen und in der Vorschau verfügbar. Eine Liste der Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).
+> [!NOTE]
+> Eine Liste der Speicherdiensttags und Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).
 
 ### <a name="use-an-http-proxy-for-vm-backups"></a>Verwenden eines HTTP-Proxys für die Sicherung von virtuellen Computern
 Beim Sichern eines virtuellen Computers werden die Befehle für die Momentaufnahmenverwaltung von der Sicherungserweiterung auf der dem virtuellen Computer per HTTPS-API an Azure Storage gesendet. Leiten Sie den Datenverkehr der Sicherungserweiterung über den HTTP-Proxy, da dies die einzige Komponente ist, die für den Zugriff auf das öffentliche Internet konfiguriert ist.
@@ -291,7 +294,7 @@ HttpProxy.Port=<proxy port>
    * Wählen Sie für **Lokaler Port** die Option **Bestimmte Ports** aus. Geben Sie im folgenden Feld die Anzahl der konfigurierten Proxyports an.
    * Wählen Sie bei **Remoteport** die Option **Alle Ports** aus.
 
-Übernehmen Sie im weiteren Verlauf des Assistenten bis zum Ende die Standardeinstellungen. Geben Sie dann dieser Regel einen Namen. 
+Übernehmen Sie im weiteren Verlauf des Assistenten bis zum Ende die Standardeinstellungen. Geben Sie dann dieser Regel einen Namen.
 
 #### <a name="step-3-add-an-exception-rule-to-the-nsg"></a>Schritt 3: Hinzufügen einer Ausnahmeregel zur NSG
 Der folgende Befehl fügt der NSG eine Ausnahme hinzu. Diese Ausnahme lässt TCP-Datenverkehr von allen Ports unter 10.0.0.5 an alle Internetadressen über Port 80 (HTTP) oder 443 (HTTPS) zu. Falls Sie einen bestimmten Port im öffentlichen Internet benötigen, müssen Sie ```-DestinationPortRange``` diesen Port hinzufügen.

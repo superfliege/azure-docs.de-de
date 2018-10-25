@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: d348978924b4123944e019ef1a309633ee72b516
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046309"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804326"
 ---
-# <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Anmeldung per Smartphone ohne Kennwort mit der Microsoft Authenticator-App (Public Preview)
+# <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Telefonanmeldung ohne Kennwort mit der Microsoft Authenticator-App (Public Preview)
 
 Mit der Microsoft Authenticator-App können sich Benutzer bei jedem beliebigen Azure AD-Konto anmelden, ohne ein Kennwort zu verwenden. Ähnlich wie die Technologie von [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) nutzt Microsoft Authenticator die schlüsselbasierte Authentifizierung, um die Verwendung von Benutzeranmeldeinformationen zu ermöglichen, die an ein Gerät gebunden sind und auf biometrischen Daten oder einer PIN beruhen.
 
@@ -37,7 +37,7 @@ Bei der Public Preview-Version muss ein Administrator zunächst mithilfe von Pow
 
 ### <a name="steps-to-enable"></a>Schritte zum Aktivieren
 
-1. Installieren Sie die [Public Preview-Version des Azure Active Directory V2 PowerShell-Moduls](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.114).  
+1. Installieren Sie die [Public Preview-Version des Azure Active Directory V2 PowerShell-Moduls](https://www.powershellgallery.com/packages/AzureADPreview/).  
 2. Führen Sie in PowerShell die beiden folgenden Befehle aus:
    1. `Connect-AzureAD`
       1. Melden Sie sich im Authentifizierungsdialogfeld mit einem Konto im Mandanten an. Bei dem Konto muss es sich um einen Sicherheitsadministrator oder globalen Administrator handeln.

@@ -9,14 +9,14 @@ keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamische
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 05/24/2018
+ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: cc965073863375d76efb969ad66cf5750c9755bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 694dd98caadb12571c58f9d615cf75325654c772
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969426"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801304"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 
@@ -168,7 +168,7 @@ Dieser Abschnitt gilt nur für Functions 2.x. Bindungserweiterungen müssen in F
 
 Wenn Sie eine Funktion erstellen oder eine Bindung hinzufügen, erhalten Sie eine Meldung, wenn die Erweiterung für den Trigger bzw. die Bindung eine Registrierung erfordert. Reagieren Sie auf die Meldung, indem Sie auf **Installieren** klicken, um die Erweiterung zu registrieren. Die Installation kann bis zu 10 Minuten eines Verbrauchstarifs aufbrauchen.
 
-Sie müssen jede Erweiterung nur ein Mal für eine bestimmte Funktions-App installieren. 
+Sie müssen jede Erweiterung nur ein Mal für eine bestimmte Funktions-App installieren. Für unterstützte Bindungen, die im Portal nicht verfügbar sind, oder zum Aktualisieren einer installierten Erweiterung können Sie ferner [Azure Functions-Bindungserweiterungen aus dem Portal manuell installieren](install-update-binding-extensions-manual.md).  
 
 ### <a name="local-development-azure-functions-core-tools"></a>Lokale Entwicklung mit Azure Functions Core Tools
 
@@ -662,7 +662,7 @@ Weitere Informationen zu einer bestimmten Bindung finden Sie in den folgenden Ar
 - [Zeitgeber](functions-bindings-timer.md)
 - [Queue Storage](functions-bindings-storage-queue.md)
 - [Blob Storage](functions-bindings-storage-blob.md)
-- [Table Storage](functions-bindings-storage-table.md)
+- [Tabellenspeicherung](functions-bindings-storage-table.md)
 - [Event Hub](functions-bindings-event-hubs.md)
 - [Service Bus](functions-bindings-service-bus.md)
 - [Azure Cosmos DB](functions-bindings-cosmosdb.md)

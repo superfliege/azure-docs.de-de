@@ -5,63 +5,45 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/09/2017
+ms.date: 10/04/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: 1d92f68bbb5e8c001594e4f78f90cb10496aaf29
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.reviewer: mal
+ms.openlocfilehash: d80794511f334cd6dc5af418e24fc774b7d8728f
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984491"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867509"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration
 
-Mithilfe der Azure AD B2B-Zusammenarbeitsfunktionen können Sie Gastbenutzer für Ihren Azure AD-Mandanten einladen, um ihnen Zugriff auf Azure AD-Dienste und andere Ressourcen in Ihrer Organisation zu gewähren. Falls Sie den Zugriff auf kostenpflichtige Azure AD-Features ermöglichen möchten, müssen B2B-Zusammenarbeitsgastbenutzer mit entsprechenden Azure AD-Lizenzen lizenziert werden. 
+Mit der Azure Active Directory Business-to-Business-Kollaboration (Azure AD B2B-Kollaboration) können Sie externe Benutzer (oder „Gastbenutzer“) zur Verwendung Ihrer kostenpflichtigen Azure AD-Dienste einladen. Für jede kostenpflichtige Azure AD-Lizenz, die Sie einem Benutzer zuweisen, können Sie unter dem Kontingent für externe Benutzer bis zu fünf Gastbenutzer einladen.
 
-Dies gilt insbesondere in folgenden Fällen:
-* Für Gastbenutzer stehen ohne zusätzliche Lizenzen Azure AD Free-Funktionen zur Verfügung.
-* Wenn Sie B2B-Benutzern Zugriff auf kostenpflichtige Azure AD-Funktionen gewähren möchten, müssen Sie zur Unterstützung dieser B2B-Gastbenutzer über ausreichende Lizenzen verfügen.
-* Ein einladender Mandant mit einer kostenpflichtigen Azure AD-Lizenz besitzt B2B-Kollaborationsbenutzerrechte für weitere fünf B2B-Gastbenutzer, die für den Mandanten eingeladen wurden.
-* Der Kunde, der im Besitz des einladenden Mandanten ist, muss ermitteln, wie viele B2B-Kollaborationsbenutzer kostenpflichtige Azure AD-Funktionen benötigen. Je nachdem, welche kostenpflichtigen Azure AD-Features Sie für Ihre Gastbenutzer verwenden möchten, müssen Sie über genügend kostenpflichtige Azure AD-Lizenzen zur Unterstützung der B2B-Kollaborationsbenutzer im selben Verhältnis von 5:1 verfügen.
+Ein Gastbenutzer ist eine Person, die kein Mitglied Ihrer Organisation oder eines verbundenen Unternehmens Ihrer Organisation ist. Gastbenutzer sind durch ihre Beziehung zu Ihrer Organisation und nicht durch die Anmeldeinformationen definiert, mit denen sie sich anmelden. Tatsächlich kann sich ein Gastbenutzer entweder mit einer externen Identität oder mit Anmeldeinformationen Ihrer Organisation anmelden.
 
-Ein B2B-Zusammenarbeitsgastbenutzer wird von einem Partnerunternehmen als Benutzer hinzugefügt, nicht als Mitarbeiter Ihrer Organisation oder als Mitarbeiter eines anderen Unternehmens in Ihrem Großkonzern. Ein B2B-Gastbenutzer kann sich mit externen Anmeldeinformationen oder den Anmeldeinformationen Ihrer Organisation anmelden, wie in diesem Artikel beschrieben wird. 
+Folgende Personen sind *keine* Gastbenutzer:
+- Ihre Mitarbeiter, Auftragnehmer vor Ort oder Vertreter vor Ort
+- Mitarbeiter, Auftragnehmer oder Vertreter Ihrer Partner vor Ort
 
-Mit anderen Worten: Die B2B-Lizenzierung wird nicht abhängig von der Authentifizierungsmethode des Benutzers festgelegt, sondern anhand der Beziehung zwischen dem Benutzer und Ihrer Organisation. Wenn diese Benutzer keine Partner sind, werden sie hinsichtlich der Lizenzbestimmungen unterschiedlich behandelt. Sie werden für Lizenzierungszwecke nicht als B2B-Zusammenarbeitsbenutzer behandelt, selbst, wenn „Gast“ für „UserType“ festgelegt ist. Sie sollten ordnungsgemäß mit einer Lizenz pro Benutzer lizenziert werden. Zu diesen Benutzer gehören Folgenden:
-* Ihre Mitarbeiter
-* Mitarbeiter, die sich mit externen Identitäten anmelden
-* Ein Mitarbeiter eines anderen Unternehmens in Ihrem Großkonzern
+Die Lizenzierung von B2B-Gastbenutzern wird basierend auf dem Verhältnis von 1:5 automatisch berechnet und gemeldet. Derzeit ist es nicht möglich, Lizenzen für B2B-Gastbenutzer direkt Gastbenutzern zuzuweisen.
 
+In einigen Fällen wird ein Gastbenutzer nicht über das Kontingent für externe Benutzer mit dem Verhältnis von 1:5 gemeldet. Wenn ein Gastbenutzer bereits über eine kostenpflichtige Azure AD-Lizenz in seiner Organisation verfügt, verwendet er keine Ihrer B2B-Lizenzen für Gastbenutzer. Darüber hinaus können Gastbenutzer kostenlose Azure AD-Features ohne zusätzliche Lizenzanforderungen nutzen. Gastbenutzer haben Zugriff auf kostenlose Azure AD-Features, auch wenn sie über keine kostenpflichtigen Azure AD-Lizenzen verfügen. 
 
-## <a name="licensing-examples"></a>Beispiele für die Lizenzierung
-- Ein Kunde möchte für seinen Azure AD-Mandanten 100 B2B-Kollaborationsbenutzer einladen. Der Kunde weist die Zugriffsverwaltung und Bereitstellung für alle Benutzer zu, aber 50 Benutzer benötigen zusätzlich MFA und bedingten Zugriff. Dieser Kunde muss zehn Azure AD-Lizenzen vom Typ „Basic“ und zehn Azure AD-Lizenzen vom Typ „Premium P1“ erwerben, um alle B2B-Benutzer richtig abzudecken. Wenn der Kunde plant, Identity Protection-Features mit B2B-Benutzern zu verwenden, müssen Azure AD-Lizenzen vom Typ „Premium P2“ vorhanden sein, um die eingeladenen Benutzer in demselben Verhältnis von 5:1 abzudecken.
-- Ein Kunde verfügt über zehn Mitarbeiter, die derzeit alle über eine Azure AD-Lizenz vom Typ „Premium P1“ abgedeckt sind. Der Kunde möchte nun 60 B2B-Benutzer einladen, für die Multi-Factor Authentication (MFA) benötigt wird. Laut dem in der Lizenzierungsregel festgelegten Verhältnis von 5:1 muss der Kunde mindestens zwölf Azure AD-Lizenzen vom Typ „Premium P1“ besitzen, um alle 60 Benutzer für die B2B-Kollaboration abzudecken. Da bereits zehn Premium P1-Lizenzen für die zehn Mitarbeiter vorhanden sind, ist der Kunde im Besitz von Rechten, die ihm das Einladen von 50 B2B-Benutzern mit Premium P1-Features wie MFA ermöglichen. In diesem Beispiel müssen also zwei zusätzliche Premium P1-Lizenzen erworben werden, um die restlichen zehn Benutzer für die B2B-Kollaboration abzudecken.
+## <a name="examples-calculating-guest-user-licenses"></a>Beispiele: Berechnen der Lizenzen für Gastbenutzer
+Nachdem Sie bestimmt haben, wie viele Gastbenutzer Zugriff auf Ihre kostenpflichtigen Azure AD-Dienste benötigen, müssen Sie sicherstellen, dass Sie über genügend kostenpflichtige Azure AD-Lizenzen verfügen, um Gastbenutzer im erforderlichen Verhältnis von 1:5 abzudecken. Hier einige Beispiele:
 
-> [!NOTE]
-> Es ist noch nicht möglich, den B2B-Benutzern Lizenzen direkt zuzuweisen, um diese Benutzerrechte für die B2B-Kollaboration zu aktivieren.
+- Sie möchten 100 Gastbenutzer für Ihre Azure AD-Anwendungen oder Azure AD-Dienste einladen, und Sie möchten allen Gastbenutzern die Zugriffsverwaltung und Bereitstellung zuweisen. Sie möchten zudem für 50 dieser Gastbenutzer die mehrstufige Authentifizierung (MFA) und bedingten Zugriff festlegen. Für diese Kombination benötigen Sie 10 Azure AD Basic-Lizenzen und 10 Azure AD Premium P1-Lizenzen. Wenn Sie Identity Protection-Features für Ihre Gastbenutzer verwenden möchten, benötigen Sie Azure AD Premium P2-Lizenzen im gleichen Verhältnis von 1:5 für die Gastbenutzer.
+- Sie möchten 60 Gastbenutzer einladen, für die alle MFA erforderlich ist. Daher müssen Sie über mindestens 12 Azure AD Premium P1-Lizenzen verfügen. Sie haben 10 Mitarbeiter mit Azure AD Premium P1-Lizenzen, sodass entsprechend dem Lizenzierungsverhältnis von 1:5 bis zu 50 Gastbenutzer zulässig sind. Sie müssen zwei zusätzliche Premium P1-Lizenzen erwerben, um 10 zusätzliche Gastbenutzer abzudecken.
 
-Der Kunde, der im Besitz des einladenden Mandanten ist, muss ermitteln, wie viele B2B-Kollaborationsbenutzer kostenpflichtige Azure AD-Funktionen benötigen. Je nachdem, welche kostenpflichtigen Azure AD-Features Sie für Ihre Gastbenutzer verwenden möchten, müssen Sie über genügend kostenpflichtige Azure AD-Lizenzen zum Abdecken der B2B-Kollaborationsbenutzer im Verhältnis 5:1 verfügen. 
+## <a name="using-the-b2b-collaboration-api-to-invite-users-from-your-affiliates"></a>Verwenden der B2B-Kollaboration-API zum Einladen von Benutzern von Ihren Partnern
 
-## <a name="additional-licensing-details"></a>Weitere Details zur Lizenzierung
-- Es ist nicht erforderlich, B2B-Benutzerkonten tatsächlich Lizenzen zuzuweisen. Basierend auf dem Verhältnis von 5:1 wird die Lizenzierung automatisch berechnet und gemeldet.
-- Wenn im Mandanten keine kostenpflichtige Azure AD-Lizenz vorhanden ist, erhält jeder eingeladene Benutzer die Rechte, die für die Azure AD Free-Edition von Azure AD bereitgestellt werden.
-- Wenn ein B2B-Kollaborationsbenutzer bereits über eine kostenpflichtige Azure AD-Lizenz seiner Organisation verfügt, verbraucht er keine Lizenz des einladenden Mandanten für die B2B-Kollaboration.
+Per Definition ist ein B2B-Gastbenutzer ein externer Benutzer, den Sie zur Verwendung Ihrer kostenpflichtigen Azure AD-Anwendungen und Azure AD-Dienste einladen. Mitarbeiter, Auftragnehmer vor Ort oder Vertreter vor Ort Ihres Unternehmens oder eines Ihrer verbundenen Unternehmen sind nicht für die B2B-Kollaboration qualifiziert, auch wenn B2B-Features verwendet werden. Hier einige Beispiele: 
+- Sie möchten externe Anmeldeinformationen (z.B. die Identität eines sozialen Netzwerks) verwenden, um einen Benutzer einzuladen, der Mitarbeiter Ihrer Organisation ist. Dieses Szenario entspricht nicht den Lizenzanforderungen und ist nicht zulässig. Durch Verwendung externer Anmeldeinformationen wird aus einem Mitarbeiter kein externer Benutzer.  
+- Sie möchten B2B-APIs verwenden, um einen Benutzer aus einem der verbundenen Unternehmen Ihrer Organisation einzuladen. Obwohl der Benutzer in diesem Szenario über B2B-APIs eingeladen wird, gilt dies nicht als B2B-Zusammenarbeit. Das Szenario entspricht nicht den Lizenzanforderungen, da ein Benutzer eines verbundenen Unternehmens kein externer Benutzer ist. 
 
-## <a name="advanced-discussion-what-are-the-licensing-considerations-when-we-add-users-from-a-conglomerate-organization-as-members-using-your-apis"></a>Weiter gehende Fragen: Was muss bei der Lizenzierung beachtet werden, wenn wir mit Ihren APIs Benutzer aus einer Mischorganisation als Mitglieder hinzufügen?
-Ein B2B-Gastbenutzer ist ein Benutzer, der von einer Partnerorganisation für die Zusammenarbeit mit der Gastgeberorganisation eingeladen wird. In der Regel gilt jeder hiervon abweichende Fall auch dann nicht als B2B-Fall, wenn B2B-Features verwendet werden. Betrachten wir zwei spezielle Fälle:
-
-1. Ein Gastgeber lädt einen Mitarbeiter unter Verwendung einer Consumeradresse ein.
-  * Dieses Szenario ist nicht mit unseren Lizenzierungsrichtlinien konform und daher nicht zu empfehlen.
-
-2. Eine Gastgeberorganisation fügt einen Benutzer aus einer anderen Mischorganisation hinzu.
-  1. In diesem Fall wird der Benutzer mit B2B-APIs eingeladen, aber es handelt sich nicht um einen herkömmlichen B2B-Fall. Idealerweise sollten diese Organisationen die Benutzer der anderen Organisation als Mitglieder einladen (unsere API lässt dies zu). In diesem Fall müssen diesen Mitgliedern Lizenzen zugewiesen werden, damit sie auf die Ressourcen in der einladenden Organisation Zugriff haben.
-
-  2. Manche Organisationen möchten möglicherweise als Richtlinie festlegen, dass die Benutzer der anderen Organisation als Gast eingeladen werden. Für dieses Szenario gibt es zwei Fälle:
-      * Die Mischorganisation verwendet bereits Azure AD, und die eingeladenen Benutzer sind in der anderen Organisation lizenziert: In diesem Fall erwarten wir nicht, dass eingeladene Benutzer das weiter oben in diesem Dokument beschriebene Verhältnis von 1:5 einhalten müssen. 
-
-      * Die Mischorganisation verwendet nicht Azure AD oder verfügt über keine entsprechenden Lizenzen: Halten Sie in diesem Fall das weiter oben beschriebene Verhältnis von 1:5 ein.
+In beiden Szenarien ist die bessere Lösung, die Benutzer über die B2B-API als Mitglieder (invitedUserType =-Member) einzuladen und ihnen einzeln eine Azure AD-Lizenz zuzuweisen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
