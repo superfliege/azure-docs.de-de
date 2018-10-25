@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: eb72d92496addacd82e4d30df625b4f9c0c823e5
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521029"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470319"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -74,7 +74,7 @@ Die macOS-Keychain kann sich manchmal in einem Zustand befinden, der Probleme in
 7. Versuchen Sie, sich anzumelden.
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>Allgemeine Schritte zur Behandlung von Anmeldeproblemen
-* Wenn Sie unter macOS arbeiten und im Anmeldefenster nie das Dialogfeld „Warten auf Authentifizierung...“ angezeigt wird, versuchen Sie diese [Schritte](#Mac-Keychain-Errors).
+* Wenn Sie unter macOS arbeiten und im Anmeldefenster nie das Dialogfeld „Warten auf Authentifizierung...“ angezeigt wird, versuchen Sie diese [Schritte](#mac-keychain-errors).
 * Neustart von Storage-Explorer
 * Wenn das Fenster „Authentifizierung“ leer ist, warten Sie mindestens eine Minute, bevor Sie das Dialogfeld für die Authentifizierung schließen.
 * Stellen Sie sicher, dass Ihre Proxy- und Zertifikateinstellungen für Ihren Computer und den Storage-Explorer ordnungsgemäß konfiguriert sind.

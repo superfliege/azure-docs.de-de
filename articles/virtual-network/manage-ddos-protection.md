@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: 59cfcc72abee100b95cf17033083827fbb30f9f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 66b2930e06cef1a31602df3d358c78f42c8cd2cf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986692"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406363"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals
 
@@ -158,7 +158,7 @@ Für Berichte zur Entschärfung von Angriffen werden die NetFlow-Protokolldaten 
 
     - **In einem Speicherkonto archivieren**: Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **An einen Event Hub streamen**: Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe von Azure Event Hub. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Azure-Diagnoseprotokollen an Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **An Log Analytics senden**: Schreibt Protokolle in den Dienst Azure OMS Log Analytics. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **An Log Analytics senden**: Schreibt Protokolle in den Azure Log Analytics-Dienst. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Sowohl der inkrementelle Bericht als auch der Abschlussbericht zur Entschärfung enthält Felder zu den folgenden Bereichen:
 - Angriffsvektoren
@@ -180,8 +180,8 @@ Mit Protokollen zum Entschärfungsverlauf für Angriffe können Sie den verworfe
 
     - **In einem Speicherkonto archivieren**: Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **An einen Event Hub streamen**: Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe von Azure Event Hub. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Azure-Diagnoseprotokollen an Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **An Log Analytics senden**: Schreibt Protokolle in den Dienst Azure OMS Log Analytics. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-7. Zum Anzeigen der Verlaufsprotokolldaten im Azure Analytics-Dashboard können Sie das Beispieldashboard von https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip importieren.
+    - **An Log Analytics senden**: Schreibt Protokolle in den Azure Log Analytics-Dienst. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+1. Zum Anzeigen der Verlaufsprotokolldaten im Azure Analytics-Dashboard können Sie das Beispieldashboard von https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip importieren.
 
 Flussprotokolle enthalten die folgenden Felder: 
 - Quell-IP

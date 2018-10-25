@@ -17,12 +17,12 @@ ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: a2876ccdfe073a3c642304a1381faf77ae4a7d90
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 603da0add9efba4e68088bf0eb6ab919ec9988e2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144515"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955490"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Zertifizieren von AppSource für Azure Active Directory
 
@@ -32,7 +32,7 @@ Zum Auflisten einer eigenständigen SaaS-Anwendung auf AppSource muss Ihre Anwen
 
 ## <a name="guides-and-code-samples"></a>Anleitungen und Codebeispiele
 
-Wenn Sie weitere Informationen über die Integration Ihrer Anwendung in Azure AD mithilfe der Open ID-Verbindung wünschen, befolgen Sie unsere Anleitungen und Codebeispiele in [Azure Active Directory für Entwickler](azure-ad-developers-guide.md#get-started "Erste Schritte").
+Wenn Sie weitere Informationen über die Integration Ihrer Anwendung in Azure AD mithilfe der Open ID-Verbindung wünschen, befolgen Sie unsere Anleitungen und Codebeispiele in [Azure Active Directory für Entwickler](v1-overview.md#get-started "Erste Schritte").
 
 ## <a name="multi-tenant-applications"></a>Mehrinstanzenfähige Anwendungen
 
@@ -127,9 +127,9 @@ Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und un
 <!--Reference style links -->
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
-[AAD-Dev-Guide]: azure-ad-developers-guide.md
+[AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
-[AAD-QuickStart-Web-Apps]: azure-ad-developers-guide.md#get-started
+[AAD-QuickStart-Web-Apps]: v1-overview.md#get-started
 
 
 <!--Image references-->

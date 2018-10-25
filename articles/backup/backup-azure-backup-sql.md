@@ -6,14 +6,14 @@ author: adigan
 manager: Nkolli
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/27/2016
+ms.date: 10/18/2018
 ms.author: adigan
-ms.openlocfilehash: cebbe532b5d1b13588604c61ac10bf3c56a85e07
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 232885398c996d0c744ac55b6c6967fd398eec0b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604963"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945653"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Sichern von SQL Server in Azure als eine DPM-Workload
 Dieser Artikel führt Sie durch die Konfigurationsschritte für die Sicherung von SQL Server-Datenbanken mithilfe von Azure Backup.
@@ -27,7 +27,7 @@ Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und au
 3. Wiederherstellen der Datenbank aus Azure
 
 ## <a name="before-you-start"></a>Vorbereitung
-Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsoft Azure Backup alle [Voraussetzungen](backup-azure-dpm-introduction.md#prerequisites) erfüllt sind. Die Voraussetzungen umfassen Aufgaben wie das Erstellen eines Sicherungstresors, das Herunterladen von Tresoranmeldedaten, das Installieren des Azure Backup-Agents und das Registrieren des Servers beim Tresor.
+Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsoft Azure Backup alle [Voraussetzungen](backup-azure-dpm-introduction.md#prerequisites-and-limitations) erfüllt sind. Die Voraussetzungen umfassen Aufgaben wie das Erstellen eines Sicherungstresors, das Herunterladen von Tresoranmeldedaten, das Installieren des Azure Backup-Agents und das Registrieren des Servers beim Tresor.
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Erstellen einer Sicherungsrichtlinie zum Schutz von SQL Server-Datenbanken mithilfe von Azure
 1. Klicken Sie auf dem DPM-Server auf den Arbeitsbereich **Schutz** .

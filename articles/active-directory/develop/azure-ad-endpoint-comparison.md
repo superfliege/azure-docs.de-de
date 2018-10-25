@@ -17,12 +17,12 @@ ms.date: 09/27/2018
 ms.author: andret
 ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: b75b31ddfc77be5ed651e7b8484e41a4ae73d8d8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e393851535c36eb604d57cc4d7c7561a3ebb201b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406531"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955435"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Vergleich: Azure AD v2.0-Endpunkt und v1.0-Endpunkt
 
@@ -133,7 +133,7 @@ Folgendes wird Entwicklern derzeit empfohlen (vereinfacht dargestellt):
 
 * Wenn Sie in Ihrer Anwendung persönliche Microsoft-Konten unterstützen müssen, sollten Sie v2.0 verwenden. Zuvor sollten Sie sich jedoch mit den in diesem Artikel behandelten Einschränkungen vertraut machen.
 
-* Wenn Ihre Anwendung nur Microsoft-Geschäfts-, Schul- und Unikonten unterstützen muss, sollten Sie v2. 0 nicht verwenden. Informieren Sie sich stattdessen im [Leitfaden zu v1.0](azure-ad-developers-guide.md).
+* Wenn Ihre Anwendung nur Microsoft-Geschäfts-, Schul- und Unikonten unterstützen muss, sollten Sie v2. 0 nicht verwenden. Informieren Sie sich stattdessen im [Leitfaden zu v1.0](v1-overview.md).
 
 Der v2.0-Endpunkt wird weiterentwickelt, sodass die hier aufgeführten Einschränkungen beseitigt werden. Daher können Sie in Zukunft nur noch den v2.0-Endpunkt verwenden. Bis dahin können Sie mithilfe dieses Artikels feststellen, ob der v2.0-Endpunkt für Sie geeignet ist. Wir werden diesen Artikel immer wieder aktualisieren, damit er den aktuellen Status des v2.0-Endpunkts widerspiegelt. Vergleichen Sie nochmals Ihre Anforderungen mit den v2.0-Funktionen.
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 3a141bcde75872f2384aedf982ffef5cba9666a3
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d3f2efc0ae3dcf9bdcae3f82258b28b761944487
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843418"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988509"
 ---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
@@ -32,12 +32,15 @@ Wenn Sie Ihren Test ausführen möchten, verwenden Sie für die Anmeldung ein Mi
 ![Mit einem Microsoft-Konto anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
 #### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
+
 Nachdem Sie sich angemeldet haben, wird der Benutzer zur Startseite Ihrer Website umgeleitet. Die Startseite ist die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Auf der Startseite wird die Willkommensnachricht *„Hallo \<Benutzer“*, ein Link zum Abmelden und ein Link zum Anzeigen der Benutzeransprüche angezeigt. Über den Link für die Benutzeransprüche wird der vorher erstellte *Claims*-Controller durchsucht.
 
 ### <a name="browse-to-see-the-users-claims"></a>Navigieren zu den Benutzeransprüchen
+
 Um die Benutzeransprüche anzuzeigen, klicken Sie auf den Link zum Navigieren zur Controlleransicht. Diese ist nur für authentifizierte Benutzer verfügbar.
 
 #### <a name="view-the-claims-results"></a>Anzeigen der Anspruchsergebnisse
+
 Nachdem Sie die Controlleransicht aufgerufen haben, sollten Sie eine Tabelle mit den grundlegenden Eigenschaften des Benutzers sehen:
 
 |Eigenschaft |Wert |BESCHREIBUNG |
@@ -49,13 +52,15 @@ Nachdem Sie die Controlleransicht aufgerufen haben, sollten Sie eine Tabelle mit
 
 Darüber hinaus sollten Sie eine Tabelle aller Ansprüche sehen, die in der Authentifizierungsanforderung enthalten sind. Weitere Informationen finden Sie in der [Liste der im Azure AD-ID-Token enthaltenen Ansprüche](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
-
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Testen des Zugriffs auf eine Methode mit einem Authorize-Attribut (optional)
+
 Führen Sie die folgenden Schritte aus, um den Zugriff als anonymer Benutzer auf einen mit dem `Authorize`-Attribut geschützten Controller zu testen:
+
 1. Klicken Sie auf den Link zum Abmelden des Benutzers, und schließen Sie den Abmeldevorgang ab.
 2. Geben Sie nun im Browser „http://<span></span>localhost:{Port}/claims“ ein, um auf den mit dem `Authorize`-Attribut geschützten Controller zuzugreifen.
 
 #### <a name="expected-results-after-access-to-a-protected-controller"></a>Erwartete Ergebnisse nach dem Zugriff auf einen geschützten Controller
+
 Sie werden für die Verwendung der geschützten Controlleransicht zur Authentifizierung aufgefordert.
 
 ## <a name="advanced-options"></a>Erweiterte Optionen
@@ -70,6 +75,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 <!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Einschränken des Anmeldezugriffs auf Ihre Anwendung
+
 Wenn Sie die Anwendung nach dieser Anleitung erstellen, akzeptiert Ihre Anwendung standardmäßig sowohl Anmeldungen von persönlichen Konten (z.B. outlook.com, live.com u.a.) als auch von Geschäfts,- Schul- und Unikonten von Unternehmen oder Organisationen, die in Azure Active Directory integriert wurden. Diese Option wird für SaaS-Anwendungen empfohlen.
 
 Um die Anmeldung bei und den Benutzerzugriff auf Ihre Anwendung einzuschränken, stehen mehrere Optionen zur Verfügung:
@@ -88,6 +94,7 @@ Sie können den Anmeldezugriff auf bestimmte Benutzerkonten, die in einer Azure 
 2. Legen Sie den Wert des Parameters `ValidIssuers` auf die Liste der zulässigen Organisationen fest.
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Option 3: Überprüfen von Ausstellern mithilfe einer benutzerdefinierten Methode
+
 Sie können eine benutzerdefinierte Methode implementieren, um Aussteller mit dem **IssuerValidator**-Parameter zu überprüfen. Weitere Informationen zur Verwendung dieses Parameters finden Sie auf MSDN unter [TokenValidationParameters-Klasse](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx).
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

@@ -1,20 +1,20 @@
 ---
 title: Indizieren von Azure Table Storage mit Azure Search | Microsoft-Dokumentation
 description: Erfahren Sie, wie in Azure Table Storage gespeicherte Daten mit Azure Search indiziert werden.
-author: chaosrealm
-manager: jlembicz
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
-ms.author: eugenesh
-ms.openlocfilehash: a171bdd11cd2de030937927eef34d5ad9e0507af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 738518f94869a55cf80db1c87b8c74b167f5cce1
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182071"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406924"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Indizieren von Azure Table Storage mit Azure Search
 In diesem Artikel wird beschrieben, wie Sie Azure Search zum Indizieren von Daten verwenden, die in Azure Table Storage gespeichert sind.

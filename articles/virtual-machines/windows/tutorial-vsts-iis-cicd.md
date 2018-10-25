@@ -3,7 +3,7 @@ title: 'Tutorial: Erstellen einer CI/CD-Pipeline in Azure mit Azure DevOps Servi
 description: In diesem Tutorial erfahren Sie, wie Sie eine Azure DevOps Services-Pipeline für Continuous Integration und Continuous Delivery erstellen, die eine Web-App in IIS auf einem virtuellen Windows-Computer in Azure bereitstellt.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/12/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: d4edf0d22ce04eb2cb865d80c2b70f1bcc2169df
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4b4d514ec8bfd78b303a7f51c2a4072507da5be9
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301897"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471457"
 ---
 # <a name="tutorial-create-a-continuous-integration-pipeline-with-azure-devops-services-and-iis"></a>Tutorial: Erstellen einer Continuous Integration-Pipeline mit Azure DevOps Services und IIS
 Sie können zum Automatisieren der Erstellungs-, Test- und Bereitstellungsphasen der Anwendungsentwicklung eine Pipeline für Continuous Integration und Continuous Deployment (CI/CD) verwenden. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline mit Azure DevOps Services und einem virtuellen Windows-Computer in Azure, auf dem IIS ausgeführt wird. Folgendes wird vermittelt:

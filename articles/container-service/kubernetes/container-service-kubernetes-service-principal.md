@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: e3e3a981daf1273b8b2387cb1c665317f860b1d2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c370d25ed5d70887c8beecae8fea3528a259a0ea
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974866"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954571"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Einrichten eines Azure AD-Dienstprinzipals für einen Kubernetes-Cluster in Container Service
 
@@ -37,14 +37,14 @@ Sie können einen vorhandenen Azure AD-Dienstprinzipal verwenden, der die folgen
 * **Clientgeheimnis:** Muss ein Kennwort sein. Derzeit kann kein für die Zertifikatauthentifizierung eingerichteter Dienstprinzipal verwendet werden.
 
 > [!IMPORTANT]
-> Um einen Dienstprinzipal zu erstellen, müssen Sie über die Berechtigungen verfügen, um eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren und die Anwendung einer Rolle in Ihrem Abonnement zuzuweisen. [Überprüfen Sie im Portal](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions), ob Sie über die erforderlichen Berechtigungen verfügen.
+> Um einen Dienstprinzipal zu erstellen, müssen Sie über die Berechtigungen verfügen, um eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren und die Anwendung einer Rolle in Ihrem Abonnement zuzuweisen. [Überprüfen Sie im Portal](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions), ob Sie über die erforderlichen Berechtigungen verfügen.
 >
 
 ## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Option 1: Erstellen eines Dienstprinzipals in Azure AD
 
 Wenn Sie einen Azure AD-Dienstprinzipal erstellen möchten, bevor Sie Ihren Kubernetes-Cluster bereitstellen, bietet Azure dazu mehrere Möglichkeiten.
 
-Bei den folgenden Beispielbefehlen wird die [Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) verwendet. Alternativ dazu können Sie einen Dienstprinzipal auch mithilfe von [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md), im [Portal](../../azure-resource-manager/resource-group-create-service-principal-portal.md) oder mit anderen Methoden erstellen.
+Bei den folgenden Beispielbefehlen wird die [Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) verwendet. Alternativ dazu können Sie einen Dienstprinzipal auch mithilfe von [Azure PowerShell](../../active-directory/develop/howto-authenticate-service-principal-powershell.md), im [Portal](../../active-directory/develop/howto-create-service-principal-portal.md) oder mit anderen Methoden erstellen.
 
 ```azurecli
 az login

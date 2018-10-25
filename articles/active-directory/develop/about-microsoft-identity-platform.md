@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5e18a27579c577f914709e25cab1549387a965f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b96ee362f6169d386a58ee48878e40a42fc9ede
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966400"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987595"
 ---
 # <a name="about-microsoft-identity-platform"></a>Informationen zu Microsoft Identity Platform
 
@@ -37,7 +37,7 @@ Für Anwendungen, die die neuesten ADAL- und MSAL-Versionen verwenden, wird SSO 
 
 Die folgende Abbildung zeigt eine Übersicht der Microsoft-Identitätsbenutzeroberfläche. Dabei werden die App-Registrierungsbenutzeroberfläche, SDKs, Endpunkte und unterstützte Identitäten berücksichtigt.
 
-![Aktuelle Microsoft Identity Platform](./media/about-microsoft-identity-platform/microsoft-identity-platform-today.png)
+![Aktuelle Microsoft Identity Platform](./media/about-microsoft-identity-platform/microsoft-identity-platform-preview.png)
 
 Microsoft Identity Platform verfügt über zwei Endpunkte (v1.0 und v2.0) und zwei Gruppen von Clientbibliotheken für die Verarbeitung dieser Endpunkte. Berücksichtigen Sie bei der Entwicklung einer neuen Anwendung die Vorteile und den aktuellen Zustand der Endpunkte und der Authentifizierungsbibliotheken. Berücksichtigen Sie auch Folgendes:
 
@@ -61,5 +61,5 @@ Microsoft Identity Platform verfügt über zwei Endpunkte (v1.0 und v2.0) und zw
 
 Weitere Informationen zu v1. 0 und v2. 0.
 
-* [Informationen zu v1.0](azure-ad-developers-guide.md)
-* [Informationen zu v2.0](azure-ad-developers-guide.md)
+* [Informationen zu v1.0](v1-overview.md)
+* [Informationen zu v2.0](v2-overview.md)

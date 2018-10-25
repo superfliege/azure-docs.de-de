@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: e1c76f65df13811a3dc3028e627b7c19c1437fb5
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: d205a46c672523e029816b573742d991de79b2ae
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585542"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956730"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Store mit Azure HDInsight-Clustern
 
@@ -93,7 +93,7 @@ Das Hinzufügen eines Data Lake Store-Kontos als Zusatz und das Hinzufügen von 
 
 ## <a name="configure-data-lake-store-access"></a>Konfigurieren des Zugriffs auf Data Lake Store
 
-Um den Zugriff auf Data Lake Store von Ihrem HDInsight-Cluster aus zu konfigurieren, benötigen Sie einen Azure Active Directory-Dienstprinzipal (Azure AD). Nur ein Azure AD-Administrator kann einen Dienstprinzipal erstellen. Der Dienstprinzipal muss mit einem Zertifikat erstellt werden. Weitere Informationen finden Sie unter [Schnellstart: Einrichten von Hadoop-Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) und [Erstellen eines Dienstprinzipals mit selbst signiertem Zertifikat](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+Um den Zugriff auf Data Lake Store von Ihrem HDInsight-Cluster aus zu konfigurieren, benötigen Sie einen Azure Active Directory-Dienstprinzipal (Azure AD). Nur ein Azure AD-Administrator kann einen Dienstprinzipal erstellen. Der Dienstprinzipal muss mit einem Zertifikat erstellt werden. Weitere Informationen finden Sie unter [Schnellstart: Einrichten von Hadoop-Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) und [Erstellen eines Dienstprinzipals mit selbst signiertem Zertifikat](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
 
 > [!NOTE]
 > Wenn Sie Azure Data Lake Store als zusätzlichen Speicher für HDInsight-Cluster verwenden, wird dringend empfohlen, diesen Vorgang beim Erstellen des Clusters auszuführen, wie in diesem Artikel beschrieben. Das Hinzufügen von Azure Data Lake Store zu einem vorhandenen HDInsight-Cluster als zusätzlicher Speicher wird nicht unterstützt.

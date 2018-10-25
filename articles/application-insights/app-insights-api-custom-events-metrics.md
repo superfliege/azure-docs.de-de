@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3de3a7b15f2ebef549f925f6604956ca16f4551b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4e44a82969b0b91b04174d8643cf136abf14a575
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388091"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405241"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -154,7 +154,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 Die Telemetrie ist in der Tabelle `customEvents` in [Application Insights Analytics](app-insights-analytics.md) verfügbar. Jede Zeile stellt einen Aufruf von `trackEvent(..)` in der App dar.
 
-Wenn die [Stichprobenentnahme](app-insights-sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackEvent() nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl benutzerdefinierter Ereignisse sollten Sie daher Code wie `customEvent | summarize sum(itemCount)` verwenden.
+Wenn die [Stichprobenentnahme](app-insights-sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackEvent() nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl benutzerdefinierter Ereignisse sollten Sie daher Code wie `customEvents | summarize sum(itemCount)` verwenden.
 
 ## <a name="getmetric"></a>GetMetric
 

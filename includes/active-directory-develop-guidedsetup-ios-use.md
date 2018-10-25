@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 248f2575e284ae456578b071013e1a5501329116
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 06da33b91ef9846204b33ba2cb3dea40c75d425d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843179"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988274"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Verwenden der Microsoft Authentication Library (MSAL) zum Abrufen eines Tokens für die Microsoft Graph-API
 
@@ -29,17 +29,17 @@ ms.locfileid: "48843179"
 import UIKit
 import MSAL
 
-/// 😃 A View Controller that will respond to the events of the Storyboard.
+// A View Controller that will respond to the events of the Storyboard.
 class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate {
-    
-    // Update the below to your client ID you received in the portal. The below is for running the demo only
+
+    // Replace Your_Application_Id_Here with the client ID you received in the portal. The below is for running the demo only.
     let kClientID = "Your_Application_Id_Here"
-    
+
     // These settings you don't need to edit unless you wish to attempt deeper scenarios with the app.
     let kGraphURI = "https://graph.microsoft.com/v1.0/me/"
     let kScopes: [String] = ["https://graph.microsoft.com/user.read"]
     let kAuthority = "https://login.microsoftonline.com/common"
-    
+
     var accessToken = String()
     var applicationContext : MSALPublicClientApplication?
 
@@ -87,7 +87,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
         super.viewWillAppear(animated)
         signoutButton.isEnabled = !self.accessToken.isEmpty
     }
-    
+
     /**
      This button will invoke the authorization flow.
     */
@@ -204,17 +204,20 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Weitere Informationen
+
 #### <a name="getting-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
+
 Das Aufrufen der `acquireToken`-Methode führt zum Öffnen eines Browserfensters, in dem der Benutzer aufgefordert wird, sich anzumelden. Anwendungen erfordern in der Regel, dass sich ein Benutzer interaktiv anmeldet, wenn er erstmals auf eine geschützte Ressource zugreifen muss oder ein automatischer Vorgang zum Beziehen eines Tokens misslingt (wenn z.B. das Kennwort des Benutzers abgelaufen ist).
 
 #### <a name="getting-a-user-token-silently"></a>Automatisches Abrufen eines Benutzertokens
+
 Die Methode `acquireTokenSilent` verwaltet das Abrufen und Erneuern von Token ohne Eingreifen des Benutzers. Nachdem `acquireToken` zum ersten Mal ausgeführt wurde, ist `acquireTokenSilent` die übliche Methode zum Abrufen von Token, die für den Zugriff auf geschützte Ressourcen bei nachfolgenden Aufrufen verwendet werden, da Aufrufe zum Anfordern oder Verlängern von Token automatisch erfolgen.
 
 Irgendwann schlägt `acquireTokenSilent` fehl, z.B. wenn sich der Benutzer abgemeldet oder sein Kennwort auf einem anderen Gerät geändert hat. Wenn die MSAL feststellt, dass das Problem durch Anfordern einer interaktiven Aktion gelöst werden kann, löst sie eine `MSALErrorCode.interactionRequired`-Ausnahme aus. Ihre Anwendung kann diese Ausnahme auf zwei Arten handhaben:
 
-1.  Sofortiges Aufrufen von `acquireToken`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird. Dieses Muster wird in der Regel in Onlineanwendungen verwendet, in denen kein Offline-Inhalt in der Anwendung für den Benutzer verfügbar ist. Die Beispielanwendung, die durch dieses Schritt-für-Schritt-Setup erstellt wird, verwendet dieses Muster: Sie sehen es beim ersten Ausführen der Anwendung in Aktion. Da noch kein Benutzer die Anwendung verwendet hat, enthält `applicationContext.allAccounts().first` einen Nullwert, und eine ` MSALErrorCode.interactionRequired `-Ausnahme wird ausgelöst. Der Code im Beispiel behandelt dann die Ausnahme durch Aufrufen von `acquireToken`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird.
+1. Sofortiges Aufrufen von `acquireToken`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird. Dieses Muster wird in der Regel in Onlineanwendungen verwendet, in denen kein Offline-Inhalt in der Anwendung für den Benutzer verfügbar ist. Die Beispielanwendung, die durch dieses Schritt-für-Schritt-Setup erstellt wird, verwendet dieses Muster: Sie sehen es beim ersten Ausführen der Anwendung in Aktion. Da noch kein Benutzer die Anwendung verwendet hat, enthält `applicationContext.allAccounts().first` einen Nullwert, und eine ` MSALErrorCode.interactionRequired `-Ausnahme wird ausgelöst. Der Code im Beispiel behandelt dann die Ausnahme durch Aufrufen von `acquireToken`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird.
 
-2.  Anwendungen können dem Benutzer auch visuell zu verstehen geben, dass eine interaktive Anmeldung erforderlich ist, damit der Benutzer den richtigen Zeitpunkt zum Anmelden wählen oder die Anwendung `acquireTokenSilent` zu einem späteren Zeitpunkt wiederholen kann. Dies wird normalerweise verwendet, wenn der Benutzer andere Funktionen der Anwendung nutzen kann, ohne unterbrochen zu werden, z.B. wenn Offline-Inhalt in der Anwendung verfügbar ist. In diesem Fall kann der Benutzer entscheiden, wann er sich für den Zugriff auf die geschützte Ressource anmelden oder die veralteten Informationen aktualisieren möchte. Ihre Anwendung kann sich auch für einen Wiederholungsversuch von `acquireTokenSilent` entscheiden, wenn das Netzwerk wiederhergestellt wird, nachdem es vorübergehend nicht verfügbar war.
+2. Anwendungen können dem Benutzer auch visuell zu verstehen geben, dass eine interaktive Anmeldung erforderlich ist, damit der Benutzer den richtigen Zeitpunkt zum Anmelden wählen oder die Anwendung `acquireTokenSilent` zu einem späteren Zeitpunkt wiederholen kann. Dies wird normalerweise verwendet, wenn der Benutzer andere Funktionen der Anwendung nutzen kann, ohne unterbrochen zu werden, z.B. wenn Offline-Inhalt in der Anwendung verfügbar ist. In diesem Fall kann der Benutzer entscheiden, wann er sich für den Zugriff auf die geschützte Ressource anmelden oder die veralteten Informationen aktualisieren möchte. Ihre Anwendung kann sich auch für einen Wiederholungsversuch von `acquireTokenSilent` entscheiden, wenn das Netzwerk wiederhergestellt wird, nachdem es vorübergehend nicht verfügbar war.
 
 <!--end-collapse-->
 
@@ -287,6 +290,7 @@ Fügen Sie die folgende Methode zu `ViewController.swift` zum Abmelden des Benut
 
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-info-on-sign-out"></a>Weitere Informationen zum Abmelden
 
@@ -299,11 +303,12 @@ Obwohl die Anwendung in diesem Beispiel einen einzelnen Benutzer unterstützt, w
 
 Sobald der Benutzer die Authentifizierung durchgeführt hat, leitet der Browser den Benutzer wieder zurück zur Anwendung. Befolgen Sie den unten aufgeführten Schritte, um diesen Rückruf registrieren:
 
-1.  Öffnen Sie `AppDelegate.swift`, und importieren Sie MSAL:
+1. Öffnen Sie `AppDelegate.swift`, und importieren Sie MSAL:
 
 ```swift
 import MSAL
 ```
+
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
