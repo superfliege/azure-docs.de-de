@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d361b4165c1fbbf79321e3f6d2ade711f9173c56
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440150"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267214"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Weiterverteilen von Azure App Service in Azure Stack in Fehlerdomänen
 
@@ -48,8 +48,8 @@ Für die Neuverteilung der für den App Service-Ressourcenanbieter bereitgestell
 Führen Sie die folgenden Schritte aus, um die Skalierungsgruppen horizontal hochzuskalieren:
 
 1. Melden Sie sich beim Azure Stack-Administratorportal an.
-1. Wählen Sie **Weitere Dienste**.
-1. Wählen Sie unter „COMPUTE“ die Option **Skalierungsgruppen für virtuelle Computer** aus. Vorhandene Skalierungsgruppen, die im Rahmen der App Service-Bereitstellung bereitgestellt wurden, werden unter Angabe der Anzahl der Instanzen aufgeführt. Die folgende Bildschirmaufnahme zeigt ein Beispiel für Skalierungsgruppen.
+1. Wählen Sie **Alle Dienste** aus.
+2. Wählen Sie in der Kategorie **COMPUTE** die Option **Skalierungsgruppen für virtuelle Computer** aus. Vorhandene Skalierungsgruppen, die im Rahmen der App Service-Bereitstellung bereitgestellt wurden, werden unter Angabe der Anzahl der Instanzen aufgeführt. Die folgende Bildschirmaufnahme zeigt ein Beispiel für Skalierungsgruppen.
 
       ![Auf der Benutzeroberfläche „VM-Skalierungsgruppen“ aufgeführte Azure App Service-Skalierungsgruppen][1]
 

@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 49d5e307c51a6527ade63bac0276fa141ecb5c24
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1cbb46f5238c2019225ab724abaf49e878d19598
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222453"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353865"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
@@ -61,7 +61,7 @@ Im folgenden Abschnitt werden die erkennbaren Leistungsmuster genauer beschriebe
 
 Dieses erkennbare Leistungsmuster kombiniert Leistungsprobleme im Zusammenhang mit dem Erreichen geltender Ressourcen-, Worker- und Sitzungsgrenzwerte. Sobald dieses Leistungsproblem erkannt wird, gibt ein Beschreibungsfeld im Diagnoseprotokoll an, ob es mit Ressourcen-, Worker- oder Sitzungsgrenzwerten zusammenhängt.
 
-Ressourcen in SQL-Datenbank werden in der Regel als [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu)- oder [V-Kern](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore)-Ressourcen bezeichnet. Das Muster des Erreichens von „Ressourcengrenzwerten“ wird erkannt, wenn eine aufgetretene Verschlechterung der Abfrageleistung durch Erreichen eines der gemessenen Ressourcengrenzwerte verursacht wird.
+Ressourcen in SQL-Datenbank werden in der Regel als [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu)- oder [V-Kern](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore)-Ressourcen bezeichnet. Das Muster des Erreichens von „Ressourcengrenzwerten“ wird erkannt, wenn eine aufgetretene Verschlechterung der Abfrageleistung durch Erreichen eines der gemessenen Ressourcengrenzwerte verursacht wird.
 
 Die Ressourcengrenzwerte für Sitzungen beziehen sich auf die Anzahl der verfügbaren gleichzeitigen Anmeldungen bei der SQL-Datenbank-Instanz. Dieses Leistungsmuster wird dann erkannt, wenn Anwendungen, die mit den SQL-Datenbank-Instanzen verbunden sind, die Anzahl der verfügbaren gleichzeitigen Anmeldungen bei der Datenbank erreicht haben. Falls Anwendungen versuchen, mehr Sitzungen zu nutzen, als für eine Datenbank verfügbar sind, wird die Abfrageleistung beeinträchtigt.
 
@@ -73,7 +73,7 @@ Das Diagnoseprotokoll gibt Abfragehashes von Abfragen aus, die sich auf die Leis
 
 Wenn Sie die geltenden Sitzungsgrenzwerte erreicht haben, können Sie Ihre Anwendungen optimieren, indem Sie die Anzahl der Anmeldungen bei der Datenbank reduzieren. Wenn Sie die Anzahl der Anmeldungen von Ihrer Anwendung zur Datenbank nicht reduzieren können, erhöhen Sie ggf. den Tarif Ihrer Datenbank. Sie können Ihre Datenbank auch teilen und sie für eine ausgeglichenere Verteilung Ihrer Workload in mehrere Datenbanken verschieben.
 
-Weitere Vorschläge zum Beheben von Problemen mit Sitzungsgrenzwerten finden Sie unter [How to deal with the limits of SQL Database maximum logins (Umgang mit den maximalen Grenzwerten für Anmeldungen bei SQL-Datenbank)](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Unter [Ressourceneinschränkungen für SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits) finden Sie die geltenden Ressourcengrenzwerte für Ihren Abonnementtarif.
+Weitere Vorschläge zum Beheben von Problemen mit Sitzungsgrenzwerten finden Sie unter [How to deal with the limits of SQL Database maximum logins (Umgang mit den maximalen Grenzwerten für Anmeldungen bei SQL-Datenbank)](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits auf einem logischen Server](sql-database-resource-limits-logical-server.md).
 
 ## <a name="workload-increase"></a>Gestiegene Workload
 
@@ -237,7 +237,7 @@ Weitere Informationen finden Sie unter [Einführung in speicheroptimierte Tabell
 
 Dieses erkennbare Leistungsmuster zeigt eine aktuelle Leistungsminderung der Datenbankworkload im Vergleich zur Workloadbaseline der letzten sieben Tage. Der Grund dafür ist der Mangel an verfügbaren DTUs im Pool für elastische Datenbanken Ihres Abonnements. 
 
-Ressourcen für SQL-Datenbank werden üblicherweise als [DTU-Ressourcen](sql-database-service-tiers.md#what-are-database-transaction-units-dtus) bezeichnet, die aus einer Kombination von CPU- und E/A-Ressourcen (Daten- und Transaktionsprotokoll-E/A) bestehen. [Azure-Ressourcen für den Pool für elastische Datenbanken](sql-database-elastic-pool.md) dienen als Pool verfügbarer eDTU-Ressourcen, die zu Skalierungszwecken von mehreren Datenbanken gemeinsam genutzt werden. Wenn die verfügbaren eDTU-Ressourcen in Ihrem Pool elastischer Datenbanken nicht ausreichen, um alle Datenbanken im Pool zu unterstützen, wird das Problem „Mangel an DTUs im Pool für elastische Datenbanken“ vom System erkannt.
+Ressourcen für SQL-Datenbank werden üblicherweise als [DTU-Ressourcen](sql-database-service-tiers.md#dtu-based-purchasing-model) bezeichnet, die aus einer Kombination von CPU- und E/A-Ressourcen (Daten- und Transaktionsprotokoll-E/A) bestehen. [Azure-Ressourcen für den Pool für elastische Datenbanken](sql-database-elastic-pool.md) dienen als Pool verfügbarer eDTU-Ressourcen, die zu Skalierungszwecken von mehreren Datenbanken gemeinsam genutzt werden. Wenn die verfügbaren eDTU-Ressourcen in Ihrem Pool elastischer Datenbanken nicht ausreichen, um alle Datenbanken im Pool zu unterstützen, wird das Problem „Mangel an DTUs im Pool für elastische Datenbanken“ vom System erkannt.
 
 ### <a name="troubleshooting"></a>Problembehandlung
 

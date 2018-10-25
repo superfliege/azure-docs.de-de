@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 8e9d40451cd0d9c3a6505ee24ca02852d9d4c527
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: ef6b068e7a8b97713c54ddeea1817a6c379703c8
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423475"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804598"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Für Azure Stack verfügbare Azure Marketplace-Elemente
 
@@ -239,6 +239,7 @@ Microsoft Azure Stack unterstützt die folgenden virtuellen Computer und Lösung
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Müheloses und zuverlässiges Steuern, Überwachen und Verschlüsseln virtueller Computer. **Laden Sie alle CloudLink SecureVM-Elemente herunter.** | Dell EMC |
 | ![EventTracker SIEM](media/azure-stack-marketplace-azure-items/eventtracker.png) | [EventTracker SIEM](https://azuremarketplace.microsoft.com/marketplace/apps/eventtracker.eventtracker-siem)  | EventTracker SIEM ist eine umfassende Sicherheitsplattform, die erweiterte Sicherheitstools mit prüffähigen Konformitätsfunktionen bietet. | EventTracker |
 | ![f5](media/azure-stack-marketplace-azure-items/f5.png) | [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Erweiterter Lastenausgleich, globaler Serverlastenausgleich, Netzwerkfirewall, DNS, WAF und App-Zugriff. | F5 Networks |
+| ![FortiGate: Firewall der nächsten Generation](media/azure-stack-marketplace-azure-items/fortinetsquare.png) | [FortiGate: Firewall der nächsten Generation](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-fortigate-singlevm) | Firewalltechnologie, die umfassenden Inhalts- und Netzwerkschutz mit einer umfassenden Palette leistungsfähiger Sicherheitsfunktionen bietet. Anwendungskontrolle, Antivirenfunktionen, IPS, Webfilterung und VPNs sowie erweiterte Features wie die Verwaltung von Sicherheitsrisiken arbeiten zusammen, um die neuesten komplexen Sicherheitsbedrohungen zu identifizieren und zu entschärfen. | Fortinet |
 | ![Hortonworks Data Platform (HDP) Sandbox](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) Sandbox](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Unterstützt von HDP 2.5, der hundertprozentigen Open-Source-Plattform für Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari. | Hortonworks |
 | ![KEMP LoadMaster Load Balancer ADC Content Switch](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Layer 4-7 Application Delivery Controller (ADC) Load Balancer, Content Switch und Traffic Manager | KEMP Technologies Inc. |
 | ![NRI mPLAT Suite – Multi-Cloud Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT Suite – Multi-Cloud Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | Eine Verwaltungskonsole zum Überwachen, Konfigurieren, Bereitstellen, Automatisieren und Steuern einer Workload oder Cloud. | NRI |

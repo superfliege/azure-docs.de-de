@@ -2,18 +2,18 @@
 title: Includedatei
 description: Includedatei
 services: storage
-author: rogara
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26c3e8a096a3ee7bc5146759f8de62e5c1c7fed1
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 796614a9e60ccb7ab155bc986b39c04c781224e8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47389916"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874042"
 ---
 ## <a name="about-vhds"></a>Informationen zu VHDs
 
@@ -34,11 +34,11 @@ Um eine VHD-Quelldatei löschen zu können, müssen Sie die Lease entfernen, ind
 
 Azure-Datenträger sind auf eine Verfügbarkeit von 99,999% ausgelegt. Azure-Datenträger stellen durchgängig eine Dauerhaftigkeit auf Unternehmensniveau bereit, mit einer branchenweit führenden auf das Jahr umgerechneten Fehlerrate von NULL%.
 
-Es gibt drei Leistungsstufen, zwischen denen Sie beim Erstellen Ihrer Datenträger wählen können: Premium SSD-Datenträger, Standard SSD (Vorschau) und Standard-HDD-Speicher. Außerdem gibt es zwei Arten von Datenträgern: nicht verwaltet und verwaltet.
+Es gibt drei Leistungsstufen für Speicher, zwischen denen Sie beim Erstellen Ihrer Datenträger wählen können: SSD Premium-Datenträger, SSD Standard- und HDD Standard-Speicher. Außerdem gibt es zwei Arten von Datenträgern: nicht verwaltet und verwaltet.
 
 ### <a name="standard-hdd-disks"></a>Standard-HDD-Datenträger
 
-Standard-HDD-Datenträger basieren auf HDDs (Festplattenlaufwerken) und ermöglichen eine kosteneffiziente Speicherung. Standard-HDD-Speicher kann lokal in einem einzelnen Datencenter repliziert oder georedundant mit primärem und sekundärem Rechenzentrum verwendet werden. Weitere Informationen zur Speicherreplikation finden Sie unter [Azure Storage-Replikation](../articles/storage/common/storage-redundancy.md). 
+Standard-HDD-Datenträger basieren auf HDDs (Festplattenlaufwerken) und ermöglichen eine kosteneffiziente Speicherung. Standard-HDD-Speicher kann lokal in einem einzelnen Datencenter repliziert oder georedundant mit primärem und sekundärem Rechenzentrum verwendet werden. Weitere Informationen zur Speicherreplikation finden Sie unter [Azure Storage-Replikation](../articles/storage/common/storage-redundancy.md).
 
 Weitere Informationen zur Verwendung von Standard-HDD-Datenträgern finden Sie unter [Standard-Speicher und -Datenträger](../articles/virtual-machines/windows/standard-storage.md).
 

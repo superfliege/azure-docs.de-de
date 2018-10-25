@@ -3,19 +3,19 @@ title: Azure Event Hubs – IP-Verbindungsfilter | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe der IP-Filterung Verbindungen von bestimmten IP-Adressen mit Azure Event Hubs blockieren.
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2018
-ms.author: shvija
-ms.openlocfilehash: 6d96eac3ecd249de3ba0da82eff95c45e45fa02d
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.date: 10/08/2018
+ms.author: spelluru
+ms.openlocfilehash: c229a6f84096ecca892b74f7ce65cb831fa50be3
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746194"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886176"
 ---
 # <a name="use-ip-filters"></a>Verwenden von IP-Filtern
 
@@ -47,9 +47,12 @@ Wenn Sie beispielsweise Adressen im Bereich 70.37.104.0/24 zulassen und alle and
 > [!NOTE]
 > Das Ablehnen von IP-Adressen kann andere Azure-Dienste (etwa Azure Stream Analytics, Azure Virtual Machines oder den Device Explorer im Portal) an der Interaktion mit Event Hubs hindern.
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNet-Regel mit Azure Resource Manager-Vorlagen
+### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNET-Regel mit Azure Resource Manager-Vorlagen
 
-Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Event Hubs-Namespace eine VNet-Regel hinzufügen.
+> [!IMPORTANT]
+> Virtuelle Netzwerke werden in den Tarifen **Standard** und **Dediziert** von Event Hubs unterstützt. Sie werden nicht im Basic-Tarif unterstützt. 
+
+Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Event Hubs-Namespace eine VNET-Regel hinzufügen.
 
 Vorlagenparameter:
 

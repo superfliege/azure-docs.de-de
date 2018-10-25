@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 13bc82caf5e10f5b35df29d085349ec4c80628a2
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 61c91f7e1f2ba266be6453bb6e6fb25f3834485e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917451"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585895"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack-PKI-Zertifikatanforderungen
 
@@ -39,8 +39,8 @@ Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereits
 - Ihre Azure Stack-Infrastruktur muss über Netzwerkzugriff auf den im Zertifikat veröffentlichten Speicherort der Zertifikatsperrliste (Certificate Revocation List, CRL) der Zertifizierungsstelle verfügen. Bei dieser CRL muss es sich um einen HTTP-Endpunkt handeln.
 - Beim Rotieren von Zertifikaten müssen diese entweder von der gleichen internen Zertifizierungsstelle stammen, die auch zum Signieren der bei der Bereitstellung angegebenen Zertifikate verwendet wurde, oder von einer der oben angegebenen öffentlichen Zertifizierungsstellen.
 - Die Verwendung selbstsignierter Zertifikate wird nicht unterstützt.
-- Für Bereitstellung und Rotation können Sie entweder ein einziges Zertifikat verwenden, das alle Namespaces in den Feldern „Antragstellername“ und „Alternativer Antragstellername“ des Zertifikats abdeckt. ODER Sie können einzelne Zertifikate für jeden der folgenden Namespaces verwenden, die die Azure Stack-Dienste benötigen, deren Nutzung Sie planen. Hinweis: Beide Ansätze erfordern bei Bedarf Platzhalter für Endpunkte, z.B. **KeyVault** und **KeyVaultInternal**. 
-- Der Zertifikatsignaturalgorithmus darf nicht SHA1, sondern muss sicherer sein. 
+- Für Bereitstellung und Rotation können Sie entweder ein einziges Zertifikat verwenden, das alle Namespaces in den Feldern „Antragstellername“ und „Alternativer Antragstellername“ des Zertifikats abdeckt. ODER Sie können einzelne Zertifikate für jeden der folgenden Namespaces verwenden, die die Azure Stack-Dienste benötigen, deren Nutzung Sie planen. Beide Ansätze erfordern bei Bedarf die Verwendung von Platzhaltern für Endpunkte, z.B. **KeyVault** und **KeyVaultInternal**. 
+- Der Zertifikatsignaturalgorithmus muss 3DES sein. Der Algorithmus darf nicht SHA1 sein. Er muss sicherer sein. 
 - Das Zertifikatsformat muss PFX sein, da sowohl der öffentliche als auch der private Schlüssel für die Installation von Azure Stack benötigt werden. 
 - Die PFX-Zertifikatdateien müssen im Feld „Schlüsselverwendung“ einen Wert in „Digitale Signatur“ und „Schlüsselchiffrierung“ enthalten.
 - Die PFX-Zertifikatdateien müssen die Werte „Serverauthentifizierung (1.3.6.1.5.5.7.3.1)“ und „Clientauthentifizierung (1.3.6.1.5.5.7.3.2)“ im Feld „Erweiterte Schlüsselverwendung“ aufweisen.
@@ -76,6 +76,8 @@ Für Ihre Bereitstellung müssen die Werte [region] und [externalfqdn] mit der R
 | ACSQueue | *.queue.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Queue Storage | queue.&lt;Region>.&lt;FQDN> |
 | KeyVault | *.vault.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Key Vault | vault.&lt;Region>.&lt;FQDN> |
 | KeyVaultInternal | *.adminvault.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) |  Interner Schlüsseltresor |  adminvault.&lt;Region>.&lt;FQDN> |
+| Administratorerweiterungshost | *.adminhosting.\<Region>.\<FQDN> (SSL-Platzhalterzertifikate) | Administratorerweiterungshost | adminhosting.\<Region>.\<FQDN> |
+| Öffentlicher Erweiterungshost | *.hosting.\<Region>.\<FQDN> (SSL-Platzhalterzertifikate) | Öffentlicher Erweiterungshost | hosting.\<region>.\<fqdn> |
 
 Wenn Sie Azure Stack im Azure AD-Bereitstellungsmodus bereitstellen, müssen Sie nur die in der vorigen Tabelle aufgeführten Zertifikate anfordern. Wenn Sie jedoch Azure Stack mit dem AD FS-Bereitstellungsmodus bereitstellen, müssen Sie auch die in der folgenden Tabelle beschriebenen Zertifikate anfordern:
 

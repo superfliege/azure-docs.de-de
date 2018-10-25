@@ -6,18 +6,19 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: 4aaba753a8d61d60cb053a4aa164b5be0a3c50fa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: bc07d0e7aff2bf9263d89dffccc47ba806ff0fd1
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307607"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804207"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Integration des Azure Stack-Datencenters – Veröffentlichen von Endpunkten
+
 Azure Stack richtet für die eigenen Infrastrukturrollen virtuelle IP-Adressen (VIPs) ein. Diese VIPs stammen aus dem öffentlichen IP-Adresspool. Jede VIP wird durch eine Zugriffssteuerungsliste (Access Control List, ACL) auf der softwaredefinierten Netzwerkebene geschützt. Für zusätzlichen Schutz werden außerdem übergreifende ACLs für die physischen Switches (TORs und BMC) verwendet. Für jeden Endpunkt in der externen DNS-Zone, die zum Zeitpunkt der Bereitstellung angegeben wurde, wird ein DNS-Eintrag erstellt.
 
 
@@ -31,20 +32,21 @@ Eine Reihe von Infrastruktur-VIPs wird für die Veröffentlichung von Azure Stac
 
 Interne Infrastruktur-VIPs sind nicht aufgeführt, da sie zum Veröffentlichen von Azure Stack nicht benötigt werden.
 
-> [!NOTE]
+> [!Note]  
 > Benutzer-VIPs sind dynamisch und werden von den Benutzern selbst definiert. Der Azure Stack-Betreiber hat darauf keinen Einfluss.
-
 
 |Endpunkt (VIP)|A-Eintrag des DNS-Hosts|Protokoll|Ports|
 |---------|---------|---------|---------|
 |AD FS|Adfs.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Portal (Administrator)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015|
+|Administratorhosting | *.adminhosting.\<region>.\<fqdn> | HTTPS | 443 |
 |Azure Resource Manager (Administrator)|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
 |Portal (Benutzer)|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003|
 |Azure Resource Manager (Benutzer)|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
 |Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Zertifikatsperrliste|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP und UDP|53|
+|Hosting | *.hosting.\<region>.\<fqdn> | HTTPS | 443 |
 |Key Vault (Benutzer)|&#42;.vault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Key Vault (Administrator)|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Speicherwarteschlange|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
@@ -63,6 +65,8 @@ Interne Infrastruktur-VIPs sind nicht aufgeführt, da sie zum Veröffentlichen v
 
 Azure Stack unterstützt nur transparente Proxyserver. In einer Bereitstellung mit einem Uplink zwischen einem transparenten Proxy und einem herkömmlichen Proxyserver müssen für die ausgehende Kommunikation die folgenden Ports und URLs zugelassen werden:
 
+> [!Note]  
+> Azure Stack unterstützt nicht die Verwendung von Express Route, um die in der folgenden Tabelle aufgeführten Azure-Dienste zu erreichen.
 
 |Zweck|URL|Protokoll|Ports|
 |---------|---------|---------|---------|
@@ -74,6 +78,7 @@ Azure Stack unterstützt nur transparente Proxyserver. In einer Bereitstellung m
 |Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
 |NTP|     |UDP|123|
 |DNS|     |TCP<br>UDP|53|
+|CRL|     |HTTPS|443|
 |     |     |     |     |
 
 > [!Note]  

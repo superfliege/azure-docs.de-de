@@ -10,12 +10,12 @@ ms.date: 08/14/2018
 ms.author: patricka
 ms.reviewer: fiseraci
 keywords: ''
-ms.openlocfilehash: 8e59f2e7e2fceda7f30e12571cd9e2a552f76231
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: d46fd8f5ea00ee1fc1ee5f7bf09a15dd6af5ba50
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41946476"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785578"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Integration des Azure Stack-Datencenters: Syslog-Weiterleitung
 
@@ -23,8 +23,8 @@ Dieser Artikel veranschaulicht die Verwendung von Syslog zur Integration von Azu
 
 Ab dem Update 1805 verfügt Azure Stack über einen integrierten Syslog-Client, der nach seiner Konfiguration Syslog-Meldungen mit der Nutzlast in CEF (Common Event Format) ausgibt. 
 
-> [!IMPORTANT]
-> Die Syslog-Weiterleitung befindet sich in der Vorschauphase. Sie darf nicht in Produktionsumgebungen eingesetzt werden. 
+> [!IMPORTANT] 
+> Die Syslog-Weiterleitung befindet sich in der Vorschauphase. Sie darf nicht in Produktionsumgebungen eingesetzt werden.  
 
 Das folgende Diagramm zeigt die an der Syslog-Integration beteiligten Hauptkomponenten.
 
@@ -62,14 +62,14 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 
 Parameter für das Cmdlet *Set-SyslogServer*:
 
-| Parameter | BESCHREIBUNG | Typ |
-|---------|---------| ---------|
-| *ServerName* | FQDN oder IP-Adresse des Syslog-Servers | Zeichenfolge |
-|*NoEncryption*| Erzwingen, dass der Client Syslog-Meldungen in Klartext sendet | Flag | 
-|*SkipCertificateCheck*| Überspringen der Überprüfung des vom Syslog-Server beim ersten TLS-Handshake bereitgestellten Zertifikats | Flag |
-|*SkipCNCheck*| Überspringen der Überprüfung des Werts für den allgemeinen Namen des vom Syslog-Server beim ersten TLS-Handshake bereitgestellten Zertifikats | Flag |
-|*UseUDP*| Verwenden von Syslog mit UDP als Transportprotokoll |Flag |
-|*Remove*| Entfernen der Konfiguration des Servers vom Client und Beenden der Syslog-Weiterleitung| Flag |
+| Parameter | BESCHREIBUNG | Typ | Erforderlich |
+|---------|---------|---------|---------|
+|*ServerName* | FQDN oder IP-Adresse des Syslog-Servers | Zeichenfolge | Ja|
+|*NoEncryption*| Erzwingen, dass der Client Syslog-Meldungen in Klartext sendet | Flag | no|
+|*SkipCertificateCheck*| Überspringen der Überprüfung des vom Syslog-Server beim ersten TLS-Handshake bereitgestellten Zertifikats | Flag | no|
+|*SkipCNCheck*| Überspringen der Überprüfung des Werts für den allgemeinen Namen des vom Syslog-Server beim ersten TLS-Handshake bereitgestellten Zertifikats | Flag | no|
+|*UseUDP*| Verwenden von Syslog mit UDP als Transportprotokoll |Flag | no|
+|*Remove*| Entfernen der Konfiguration des Servers vom Client und Beenden der Syslog-Weiterleitung| Flag | no|
 
 Parameter für das Cmdlet *Set-SyslogClient*:
 | Parameter | BESCHREIBUNG | Typ |
@@ -86,6 +86,7 @@ In dieser Konfiguration leitet der Syslog-Client in Azure Stack die Meldungen ü
 > Microsoft empfiehlt dringend, diese Konfiguration für Produktionsumgebungen zu verwenden. 
 
 Zum Konfigurieren der Syslog-Weiterleitung mit TCP, gegenseitiger Authentifizierung und TLS 1.2-Verschlüsselung führen Sie diese beiden Cmdlets aus:
+
 ```powershell
 # Configure the server
 Set-SyslogServer -ServerName <FQDN or ip address of syslog server>
@@ -93,10 +94,11 @@ Set-SyslogServer -ServerName <FQDN or ip address of syslog server>
 # Provide certificate to the client to authenticate against the server
 Set-SyslogClient -pfxBinary <Byte[] of pfx file> -CertPassword <SecureString, password for accessing the pfx file>
 ```
+
 Das Clientzertifikat muss den gleichen Stamm aufweisen, wie das während der Bereitstellung von Azure Stack angegebene Zertifikat. Es muss auch einen privaten Schlüssel enthalten.
 
 ```powershell
-##Example on how to set your syslog client with the ceritificate for mutual authentication. 
+##Example on how to set your syslog client with the certificate for mutual authentication.
 ##Run these cmdlets from your hardware lifecycle host or privileged access workstation.
 
 $ErcsNodeName = "<yourPEP>"
@@ -138,15 +140,15 @@ Set-SyslogServer -ServerName <FQDN or ip address of syslog server>
 Wenn Sie die Integration Ihres Syslog-Servers mit dem Azure Stack-Client mithilfe eines selbst signierten und/oder nicht vertrauenswürdigen Zertifikats testen möchten, können Sie diese Flags verwenden, um die Serverüberprüfung durch den Client während des anfänglichen Handshakes zu überspringen.
 
 ```powershell
- #Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server
- Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCNCheck
+#Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server
+Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCNCheck 
  
- #Skip entirely the server certificate validation
- Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCertificateCheck
+#Skip entirely the server certificate validation
+Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCertificateCheck
 ```
+
 > [!IMPORTANT]
 > Microsoft rät von der Verwendung des Flags „SkipCertificateCheck“ für Produktionsumgebungen ab. 
-
 
 ### <a name="configuring-syslog-forwarding-with-tcp-and-no-encryption"></a>Konfigurieren der Syslog-Weiterleitung mit TCP ohne Verschlüsselung
 
@@ -155,6 +157,7 @@ In dieser Konfiguration leitet der Syslog-Client in Azure Stack die Meldungen ü
 ```powershell
 Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -NoEncryption
 ```
+
 > [!IMPORTANT]
 > Microsoft rät von der Verwendung dieser Konfiguration für Produktionsumgebungen ab. 
 
@@ -166,6 +169,7 @@ In dieser Konfiguration leitet der Syslog-Client in Azure Stack die Meldungen ü
 ```powershell
 Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -UseUDP
 ```
+
 UDP ohne Verschlüsselung ist zwar am einfachsten zu konfigurieren, bietet jedoch keinen Schutz vor Man-in-the-Middle- und Lauschangriffen. 
 
 > [!IMPORTANT]
@@ -218,13 +222,14 @@ Die CEF-Nutzlast basiert auf der folgenden Struktur, die Zuordnung für die einz
 ```CEF
 # Common Event Format schema
 CEF: <Version>|<Device Vendor>|<Device Product>|<Device Version>|<Signature ID>|<Name>|<Severity>|<Extensions>
-* Version: 0.0 
+* Version: 0.0
 * Device Vendor: Microsoft
 * Device Product: Microsoft Azure Stack
 * Device Version: 1.0
 ```
 
 ### <a name="cef-mapping-for-windows-events"></a>CEF-Zuordnung für die Windows-Ereignisse
+
 ```
 * Signature ID: ProviderName:EventID
 * Name: TaskName
@@ -232,7 +237,7 @@ CEF: <Version>|<Device Vendor>|<Device Product>|<Device Version>|<Signature ID>|
 * Extension: Custom Extension Name (for details, see the Custom Extension table below)
 ```
 
-Schweregradtabelle für Windows-Ereignisse: 
+Schweregradtabelle für Windows-Ereignisse:
 | CEF-Schweregradwert | Windows-Ereignisebene | Numerischer Wert |
 |--------------------|---------------------| ----------------|
 |0|Undefined|Wert: 0. Weist auf Protokolle auf allen Ebenen hin|
@@ -270,12 +275,14 @@ Tabelle der benutzerdefinierten Erweiterungen für Windows-Ereignisse in Azure S
 |MasVersion|0|
 
 ### <a name="cef-mapping-for-alerts-created"></a>CEF-Zuordnung für Warnungen erstellt
+
 ```
 * Signature ID: Microsoft Azure Stack Alert Creation : FaultTypeId
 * Name: FaultTypeId : AlertId
 * Severity: Alert Severity (for details, see alerts severity table below)
 * Extension: Custom Extension Name (for details, see the Custom Extension table below)
 ```
+
 Tabelle der Alarmschweregrade:
 | Severity | Ebene |
 |----------|-------|
@@ -289,6 +296,7 @@ Tabelle der benutzerdefinierten Erweiterungen für in Azure Stack erstellte Warn
 |MasEventDescription|BESCHREIBUNG: Das Benutzerkonto \<TestUser\> wurde für \<TestDomain\> erstellt. Es stellt ein potenzielles Sicherheitsrisiko dar. – PROBLEMBEHANDLUNG: Wenden Sie sich an den Support. Die Behebung dieses Problems muss durch den Kundendienst erfolgen. Versuchen Sie nicht, dieses Problem ohne dessen Hilfe zu beheben. Bevor Sie eine Supportanfrage stellen, starten Sie anhand der Anleitung aus https://aka.ms/azurestacklogfiles den Erfassungsprozess für Protokolldateien. |
 
 ### <a name="cef-mapping-for-alerts-closed"></a>CEF-Zuordnung für Warnungen geschlossen
+
 ```
 * Signature ID: Microsoft Azure Stack Alert Creation : FaultTypeId
 * Name: FaultTypeId : AlertId
@@ -299,6 +307,7 @@ Das folgende Beispiel zeigt eine Syslog-Meldung mit CEF-Nutzlast:
 ```
 2018:05:17:-23:59:28 -07:00 TestHost CEF:0.0|Microsoft|Microsoft Azure Stack|1.0|3|TITLE: User Account Created -- DESCRIPTION: A user account \<TestUser\> was created for \<TestDomain\>. It's a potential security risk. -- REMEDIATION: Please contact Support. Customer Assistance is required to resolve this issue. Do not try to resolve this issue without their assistance. Before you open a support request, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles|10
 ```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Azure Stack-Wartungsrichtlinie](azure-stack-servicing-policy.md)

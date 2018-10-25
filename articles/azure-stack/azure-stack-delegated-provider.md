@@ -3,7 +3,7 @@ title: Delegieren von Angeboten in Azure Stack | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie es anderen Personen ermöglichen, in Ihrem Auftrag Angebote zu erstellen und Benutzer zu registrieren.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
-ms.author: brenduns
+ms.date: 09/12/2018
+ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 112586d3ee5f49eab9adb72d41a210e2dd9828d8
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 77819c5592fe8b61ed4e3fcb5f874fc0bf5ca602
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41947935"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077983"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegieren von Angeboten in Azure Stack
 
@@ -113,7 +113,7 @@ Der nächste Schritt besteht darin, den Plan und das Angebot zu erstellen, den/d
 
 Melden Sie sich als delegierter Anbieter beim Benutzerportal an, und verwenden Sie das delegierte Angebot dann als Vorlage, um ein neues Angebot zu erstellen.
 
-1. Wählen Sie **Neu** > **Mandantenangebote + Pläne** > **Angebot**.
+1. Wählen Sie **+ Ressource erstellen** > **Mandantenangebote + Pläne** > **Angebot** aus.
 
     ![Erstellen eines neuen Angebots](media/azure-stack-delegated-provider/image5.png)
 
@@ -128,7 +128,7 @@ Melden Sie sich als delegierter Anbieter beim Benutzerportal an, und verwenden S
 
 4. Die öffentlichen delegierten Angebote werden jetzt nur über das delegierte Portal angezeigt. So suchen und ändern Sie diese URL:
 
-    a.  Wählen Sie **Durchsuchen** > **Weitere Dienste** > **Abonnements**. Wählen Sie dann das Abonnement des delegierten Anbieters aus. Beispiel: **DPSubscription** > **Eigenschaften**.
+    a.  Wählen Sie **Durchsuchen** > **Alle Dienste** aus, und wählen Sie dann unter der Kategorie **ALLGEMEIN** die Option **Abonnements** aus. Wählen Sie das Abonnement des delegierten Anbieters aus. Beispiel: **DPSubscription** > **Eigenschaften**.
 
     b.  Kopieren Sie die Portal-URL an einen anderen Ort, beispielsweise in Text-Editor.
 

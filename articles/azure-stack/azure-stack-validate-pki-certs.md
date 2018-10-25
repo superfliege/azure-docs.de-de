@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: e381d2ed3c6a972d776dd31f311fcebe2e35823a
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: f7079d54ccae32d06488d12d45d6035c7f372d63
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917082"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236606"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Überprüfen von Azure Stack-PKI-Zertifikaten
 
@@ -38,7 +38,7 @@ Das Readiness Checker-Tool führt folgende Zertifikatüberprüfungen durch:
 - **DNS-Namen**  
     Überprüft, ob das SAN relevante DNS-Namen für die einzelnen Endpunkte enthält oder ob ein unterstützender Platzhalter vorhanden ist.
 - **Schlüsselverwendung**  
-    Überprüft, ob die Schlüsselverwendung eine digitale Signatur und eine Schlüsselchiffrierung enthält und ob die erweiterte Schlüsselverwendung eine Serverauthentifizierung und eine Clientauthentifizierung enthält.
+    Überprüft, ob die Schlüsselverwendung eine digitale Signatur und eine Schlüsselchiffrierung enthält und ob die erweiterte Schlüsselverwendung Serverauthentifizierung und Clientauthentifizierung enthält.
 - **Schlüsselgröße**  
     Überprüft, ob die Schlüsselgröße mindestens 2.048 beträgt.
 - **Kettenreihenfolge**  
@@ -66,21 +66,20 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate für die Bereitstell
 
 1. Führen Sie an einer PowerShell-Eingabeaufforderung (5.1 oder höher) das folgende Cmdlet aus, um **AzsReadinessChecker** zu installieren:
 
-    ````PowerShell  
+    ```PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
-    ````
+    ```
 
 2. Erstellen Sie die Zertifikatverzeichnisstruktur. Im folgenden Beispiel können Sie für `<c:\certificates>` einen neuen Verzeichnispfad Ihrer Wahl angeben.
-
-    ````PowerShell  
+    ```PowerShell  
     New-Item C:\Certificates -ItemType Directory
     
-    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal'
+    $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal'
     
     $destination = 'c:\certificates'
     
     $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}
-    ````
+    ```
     
     > [!Note]  
     > Wenn Sie AD FS als Identitätssystem verwenden, sind AD FS und Graph erforderlich.
@@ -92,16 +91,15 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate für die Bereitstell
 
 3. Ändern Sie im PowerShell-Fenster die Werte von **RegionName** und **FQDN** entsprechend der Azure Stack-Umgebung, und führen Sie Folgendes aus:
 
-    ````PowerShell  
+    ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
-    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD 
-
-    ````
+    Start-AzsReadinessChecker  -extensionshostfeature -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD 
+    ```
 
 4. Überprüfen Sie die Ausgabe und ob alle Tests für alle Zertifikate erfolgreich waren. Beispiel: 
 
-    ````PowerShell
+    ```PowerShell  
     AzsReadinessChecker v1.1803.405.3 started
     Starting Certificate Validation
 
@@ -134,7 +132,7 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate für die Bereitstell
     AzsReadinessChecker Report location: 
     C:\AzsReadinessChecker\AzsReadinessReport.json
     AzsReadinessChecker Completed
-    ````
+    ```
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
@@ -144,7 +142,7 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate für die Bereitstell
 
  - „Andere Zertifikate“ wird übersprungen, wenn „Vertrauenskette“ nicht erfolgreich ist.
 
-    ````PowerShell  
+    ```PowerShell  
     Testing: ACSBlob\singlewildcard.pfx
         Read PFX: OK
         Signature Algorithm: OK
@@ -165,7 +163,7 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate für die Bereitstell
     AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
     AzsReadinessChecker Report location (for OEM): C:\AzsReadinessChecker\AzsReadinessChecker.log
     AzsReadinessChecker Completed
-    ````
+    ```
 
 **Lösung:** Folgen Sie den Toolanweisungen im Detailabschnitt unter den Tests des jeweiligen Zertifikats.
 
@@ -175,13 +173,13 @@ Gehen Sie folgendermaßen vor, um die Azure Stack-PKI-Zertifikate für Platform-
 
 1.  Führen Sie an einer PowerShell-Eingabeaufforderung (5.1 oder höher) das folgende Cmdlet aus, um **AzsReadinessChecker** zu installieren:
 
-    ````PowerShell  
+    ```PowerShell  
       Install-Module Microsoft.AzureStack.ReadinessChecker -force
-    ````
+    ```
 
 2.  Erstellen Sie eine geschachtelte Hashtabelle, die Pfade und ein Kennwort für jedes PaaS-Zertifikat enthält, das überprüft werden muss. Führen Sie im PowerShell-Fenster Folgendes aus:
 
-    ```PowerShell
+    ```PowerShell  
         $PaaSCertificates = @{
         'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
         'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
@@ -193,7 +191,7 @@ Gehen Sie folgendermaßen vor, um die Azure Stack-PKI-Zertifikate für Platform-
 
 3.  Ändern Sie die Werte von **RegionName** und **FQDN** entsprechend Ihrer Azure Stack-Umgebung, um die Überprüfung zu starten. Führen Sie anschließend Folgendes aus:
 
-    ```PowerShell
+    ```PowerShell  
     Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
     ```
 4.  Überprüfen Sie die Ausgabe und ob alle Tests für alle Zertifikate erfolgreich waren.

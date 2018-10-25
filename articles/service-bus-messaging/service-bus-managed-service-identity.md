@@ -1,6 +1,6 @@
 ---
-title: Verwaltete Dienstidentität mit Azure Service Bus – Vorschau | Microsoft-Dokumentation
-description: Verwenden von verwalteten Dienstidentitäten mit Azure Service Bus
+title: Verwaltete Identitäten für Azure-Ressourcen mit Azure Service Bus (Vorschau) | Microsoft-Dokumentation
+description: Verwenden von verwalteten Identitäten für Azure-Ressourcen mit Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
 author: spelluru
@@ -14,28 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: spelluru
-ms.openlocfilehash: c8722aeb9e957eb77dfc3dd975587717f91d5d1f
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 5532c86271fa6a5f2b573e005993a68ac0a9e248
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395626"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857073"
 ---
-# <a name="managed-service-identity-preview"></a>Verwaltete Dienstidentität (Vorschau)
+# <a name="managed-identities-for-azure-resources-with-service-bus"></a>Verwaltete Identitäten für Azure-Ressourcen mit Service Bus 
 
-Eine verwaltete Dienstidentität (Managed Service Identity, MSI) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.
+[Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.
 
-Die Azure-Plattform verwaltet diese Laufzeitidentität mit einer verwalteten Dienstidentität. Sie müssen keine Zugriffsschlüssel in Ihrem Anwendungscode speichern und schützen – weder für die Identität selbst noch für die Ressourcen, auf die zugegriffen werden muss. Eine Service Bus-Client-App, die in einer Azure App Service-Anwendung oder auf einem virtuellem Computer mit aktivierter MSI-Unterstützung ausgeführt wird, muss keine SAS-Regeln und -Schlüssel oder andere Zugriffstoken verarbeiten. Die Client-App benötigt nur die Endpunktadresse des Service Bus Messaging-Namespace. Wenn die App eine Verbindung herstellt, bindet Service Bus den MSI-Kontext an den Client. Der entsprechende Vorgang wird weiter unten in diesem Artikel in einem Beispiel gezeigt. 
-
-Nach der Zuordnung zu einer verwalteten Dienstidentität kann ein Service Bus-Client alle autorisierten Vorgänge ausführen. Die Autorisierung wird durch Zuordnung von Service Bus-Rollen zu verwalteten Dienstidentitäten gewährt. 
+Die Azure-Plattform verwaltet diese Laufzeitidentität mit verwalteten Identitäten. Sie müssen keine Zugriffsschlüssel in Ihrem Anwendungscode speichern und schützen – weder für die Identität selbst noch für die Ressourcen, auf die zugegriffen werden muss. Eine Service Bus-Client-App, die innerhalb einer Azure App Service-Anwendung oder in einem virtuellen Computer mit aktivierter Unterstützung für verwaltete Identitäten für Azure-Ressourcen ausgeführt wird, muss keine SAS-Regeln und -Schlüssel oder andere Zugriffstoken verarbeiten. Die Client-App benötigt nur die Endpunktadresse des Service Bus Messaging-Namespace. Wenn die App eine Verbindung herstellt, bindet Service Bus den Kontext der verwalteten Identität an den Client. Der entsprechende Vorgang wird weiter unten in diesem Artikel in einem Beispiel gezeigt. Nach der Zuordnung zu einer verwalteten Identität kann ein Service Bus-Client alle autorisierten Vorgänge ausführen. Die Autorisierung wird durch Zuordnung von Service Bus-Rollen zu einer verwalteten Identität gewährt. 
 
 ## <a name="service-bus-roles-and-permissions"></a>Service Bus-Rollen und -Berechtigungen
 
-In der ersten öffentlichen Vorschauversion können Sie eine verwaltete Dienstidentität nur zu den Rollen „Besitzer“ oder „Mitwirkender“ eines Service Bus-Namespace hinzufügen. Damit erhält die Identität vollständige Kontrolle über alle Entitäten im Namespace. Verwaltungsvorgänge, bei denen die Namespacetopologie geändert wird, werden anfänglich jedoch nur über Azure Resource Manager unterstützt, nicht über die native Service Bus-REST-Verwaltungsschnittstelle. Das bedeutet auch, dass Sie das .NET Framework-Clientobjekt [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) innerhalb einer verwalteten Dienstidentität nicht verwenden können.
+Sie können eine verwaltete Identität nur den Rollen „Besitzer“ oder „Mitwirkender“ eines Service Bus-Namespace hinzufügen. Damit erhält die Identität vollständige Kontrolle über alle Entitäten im Namespace. Verwaltungsvorgänge, bei denen die Namespacetopologie geändert wird, werden anfänglich jedoch nur über Azure Resource Manager unterstützt. Die Unterstützung erfolgt nicht über die native Service Bus-REST-Verwaltungsschnittstelle. Diese Unterstützung bedeutet auch, dass Sie das .NET Framework-Clientobjekt [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) innerhalb einer verwalteten Identität nicht verwenden können.
 
-## <a name="use-service-bus-with-a-managed-service-identity"></a>Verwenden von Service Bus mit einer verwalteten Dienstidentität
+## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Verwenden von Service Bus mit verwalteten Identitäten für Azure-Ressourcen
 
-Der folgende Abschnitt beschreibt die Schritte, die erforderlich sind, um eine Beispielanwendung zu erstellen und bereitzustellen, die mit einer verwalteten Dienstidentität ausgeführt wird. Zudem erläutert der Abschnitt, wie Sie dieser Identität Zugriff auf einen Service Bus Messaging-Namespace gewähren und wie die Anwendung mit den Service Bus-Entitäten interagiert, die diese Identität verwenden.
+Der folgende Abschnitt beschreibt die Schritte, die erforderlich sind, um eine Beispielanwendung zu erstellen und bereitzustellen, die mit einer verwalteten Identität ausgeführt wird. Zudem wird erläutert, wie Sie dieser Identität Zugriff auf einen Service Bus Messaging-Namespace gewähren und wie die Anwendung mit den Service Bus-Entitäten interagiert, die diese Identität verwenden.
 
 Diese Einführung beschreibt eine Webanwendung, die in [Azure App Service](https://azure.microsoft.com/services/app-service/) gehostet wird. Die Schritte für eine durch einen virtuellen Computer gehostete Anwendung sind ähnlich.
 
@@ -43,7 +41,7 @@ Diese Einführung beschreibt eine Webanwendung, die in [Azure App Service](https
 
 Der erste Schritt besteht darin, eine App Service-ASP.NET-Anwendung zu erstellen. Wenn Sie mit der Vorgehensweise in Azure nicht vertraut sind, befolgen Sie diese [Anleitung](../app-service/app-service-web-get-started-dotnet-framework.md). Anstatt jedoch, wie in diesem Tutorial gezeigt, eine MVC-Anwendung zu erstellen, erstellen Sie eine Web Forms-Anwendung.
 
-### <a name="set-up-the-managed-service-identity"></a>Einrichten der verwalteten Dienstidentität
+### <a name="set-up-the-managed-identity"></a>Einrichten der verwalteten Identität
 
 Nachdem Sie die Anwendung erstellt haben, navigieren Sie im Azure-Portal zu der neu erstellten Webanwendung (ebenfalls in der Anleitung gezeigt). Navigieren Sie dann zur Seite **Verwaltete Dienstidentität**, und aktivieren Sie das Feature: 
 
@@ -55,11 +53,11 @@ Wenn Sie das Feature aktiviert haben, wird in Ihrem Azure Active Directory eine 
 
 Als Nächstes [erstellen Sie einen Service Bus Messaging-Namespace](service-bus-create-namespace-portal.md) in einer der Azure-Regionen, die Vorschauunterstützung für die rollenbasierte Zugriffssteuerung bieten: **USA, Osten**, **USA, Osten 2** oder **Europa, Westen**. 
 
-Navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, und klicken Sie auf **Hinzufügen**, um die verwaltete Dienstidentität zur Rolle **Besitzer** hinzuzufügen. Suchen Sie hierzu im Bereich **Berechtigungen hinzufügen** im Feld **Auswählen** nach dem Namen der Webanwendung, und klicken Sie auf den entsprechenden Eintrag. Klicken Sie anschließend auf **Speichern**.
+Navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, und klicken Sie auf **Hinzufügen**, um die verwaltete Identität der Rolle **Besitzer** hinzuzufügen. Suchen Sie hierzu im Bereich **Berechtigungen hinzufügen** im Feld **Auswählen** nach dem Namen der Webanwendung, und klicken Sie auf den entsprechenden Eintrag. Klicken Sie anschließend auf **Speichern**.
 
 ![](./media/service-bus-managed-service-identity/msi2.png)
  
-Die verwaltete Dienstidentität der Webanwendung verfügt jetzt über Zugriff auf den Service Bus-Namespace und die zuvor erstellte Warteschlange. 
+Die verwaltete Identität der Webanwendung verfügt jetzt über Zugriff auf den Service Bus-Namespace und die zuvor erstellte Warteschlange. 
 
 ### <a name="run-the-app"></a>Ausführen der App
 
@@ -67,25 +65,24 @@ Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendun
 
 Die Seite „Default.aspx“ ist Ihre Zielseite. Sie finden den Code in der Datei „Default.aspx.cs“. Das Ergebnis ist eine kleine Webanwendung mit einigen wenigen Eingabefeldern sowie Schaltflächen zum **Senden** und **Empfangen**, mit denen eine Verbindung mit Service Bus hergestellt wird, um Nachrichten zu senden oder zu empfangen.
 
-Beachten Sie, wie das Objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) initialisiert wird. Der Code verwendet nicht den SAS-Tokenanbieter (Shared Access Signature), sondern erstellt mit dem Aufruf `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` einen Tokenanbieter für die verwaltete Dienstidentität. Daher müssen keine Geheimnisse aufbewahrt und verwendet werden. Der Flow vom MSI-Kontext zu Service Bus und der Autorisierungshandshake werden automatisch vom Tokenanbieter verarbeitet. Dies ist ein einfacheres Modell als die Verwendung von SAS.
+Beachten Sie, wie das Objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) initialisiert wird. Der Code verwendet nicht den SAS-Tokenanbieter (Shared Access Signature), sondern erstellt mit dem Aufruf `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` einen Tokenanbieter für die verwaltete Identität. Daher müssen keine Geheimnisse aufbewahrt und verwendet werden. Der Flow vom Kontext der verwalteten Identität zu Service Bus und der Autorisierungshandshake werden automatisch vom Tokenanbieter verarbeitet. Dies ist ein einfacheres Modell als die Verwendung von SAS.
 
-Nachdem Sie diese Änderungen vorgenommen haben, veröffentlichen Sie die Anwendung und führen sie aus. Eine einfache Möglichkeit, die richtigen Veröffentlichungsdaten zu erhalten, besteht darin, ein Veröffentlichungsprofil herunterzuladen und in Visual Studio zu importieren:
+Nachdem Sie diese Änderungen vorgenommen haben, veröffentlichen Sie die Anwendung und führen sie aus. Sie können die richtigen Veröffentlichungsdaten einfach abrufen, indem Sie ein Veröffentlichungsprofil herunterladen und dann in Visual Studio importieren:
 
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
-Um Nachrichten zu senden oder zu empfangen, geben Sie den Namen des Namespace und der von Ihnen erstellten Entität ein, und klicken Sie entweder auf **Senden** oder **Empfangen**.
+Um Nachrichten zu senden oder zu empfangen, geben Sie den Namen des Namespace und der von Ihnen erstellten Entität ein. Klicken Sie dann entweder auf **Senden** oder auf **Empfangen**.
 
 
 > [!NOTE]
-> - Die verwaltete Dienstidentität kann nur in der Azure-Umgebung, in App Services, auf virtuellen Azure-Computern und in Skalierungsgruppen verwendet werden. Für .NET-Anwendungen bietet die vom Service Bus-NuGet-Paket verwendete Bibliothek „Microsoft.Azure.Services.AppAuthentication“ eine Abstraktion über dieses Protokoll und unterstützt eine lokale Entwicklungsumgebung. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der Azure CLI 2.0 oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie unter [Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET](../key-vault/service-to-service-authentication.md).  
+> - Die verwaltete Identität kann nur in der Azure-Umgebung, in App Services, auf virtuellen Azure-Computern und in Skalierungsgruppen verwendet werden. Für .NET-Anwendungen bietet die vom Service Bus-NuGet-Paket verwendete Bibliothek „Microsoft.Azure.Services.AppAuthentication“ eine Abstraktion über dieses Protokoll und unterstützt eine lokale Entwicklungsumgebung. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der Azure CLI 2.0 oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie unter [Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET](../key-vault/service-to-service-authentication.md).  
 > 
-> - Verwaltete Dienstidentitäten funktionieren derzeit nicht mit App Service-Bereitstellungsslots.
+> - Verwaltete Identitäten funktionieren zurzeit nicht mit App Service-Bereitstellungsslots.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen.
+Weitere Informationen zum Service Bus-Messaging finden Sie in folgenden Themen:
 
-* [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 * [Verwenden von Service Bus-Themen und -Abonnements](service-bus-dotnet-how-to-use-topics-subscriptions.md)

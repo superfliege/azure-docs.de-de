@@ -3,22 +3,22 @@ title: Verwenden der Azure Stack-API | Microsoft-Dokumentation
 description: Informationen zum Abrufen einer Authentifizierung von Azure, um API-Anforderungen an Azure Stack zu richten
 services: azure-stack
 documentationcenter: ''
-author: cblackuk
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 10/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 3b89564bf17a9884640b51faa1c3966dce93f89a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 945c5df9aa76cef6d55b759e3cef7c00bf54e1c4
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346789"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078329"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -28,7 +28,7 @@ ms.locfileid: "37346789"
 
 Mit der Anwendungsprogrammierschnittstelle (API) können Sie Vorgänge wie das Hinzufügen einer VM zu einer Azure Stack-Cloud automatisieren.
 
-Die API erfordert Ihre Clientauthentifizierung beim Endpunkt der Microsoft Azure-Anmeldung. Der Endpunkt gibt einen Token zurück, das im Header jeder Anforderung verwendet wird, die an die Azure Stack-API gesendet wird. Microsoft Azure basiert auf OAuth 2.0.
+Die API erfordert die Authentifizierung Ihres Clients beim Microsoft Azure-Anmeldungsendpunkt. Der Endpunkt gibt einen Token zurück, das im Header jeder Anforderung verwendet wird, die an die Azure Stack-API gesendet wird. Microsoft Azure basiert auf OAuth 2.0.
 
 Dieser Artikel enthält Beispiele, in denen mithilfe des Hilfsprogramms **cURL** Azure Stack-Anforderungen erstellt werden. Die Anwendung cURL ist ein Befehlszeilenprogramm mit einer Bibliothek zum Übertragen von Daten. Diese Beispiele zeigen eine exemplarische Vorgehensweise zum Abrufen eines Tokens für den Zugriff auf die Azure Stack-API. Die meisten Programmiersprachen bieten OAuth 2.0-Bibliotheken, die eine stabile Tokenverwaltung aufweisen und Aufgaben wie das Aktualisieren des Tokens abwickeln.
 

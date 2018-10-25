@@ -1,31 +1,30 @@
 ---
-title: Grundlegendes zu Azure Stack-Sicherheitsmaßnahmen | Microsoft-Dokumentation
+title: Grundlegendes zu Azure Stack-Sicherheitsmaßnahmen
 description: Als Dienstadministrator erhalten Sie Informationen zu Sicherheitsmaßnahmen, die auf Azure Stack angewendet werden
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: PatAltimore
 manager: femila
 editor: ''
-ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
-ms.author: mabrigg
-ms.openlocfilehash: a3bd314a1df3c45c76b2e3a5acb31c1474d0fdf5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 10/9/2018
+ms.author: patricka
+ms.openlocfilehash: 32c268c1e4a0ff4d17c5b03f0ffd33b0ddf5b927
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011252"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901480"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Sicherheitsstatus der Azure Stack-Infrastruktur
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-Sicherheitsüberlegungen und Konformitätsbestimmungen gehören zu den wichtigsten Beweggründen für die Verwendung von Hybrid Clouds. Azure Stack wurde für diese Szenarien konzipiert, und es ist wichtig, bei der Einführung von Azure Stack über die bereits vorhandenen Sicherheitsmaßnahmen informiert zu sein.
+Sicherheitsüberlegungen und Konformitätsbestimmungen gehören zu den wichtigsten Beweggründen für die Verwendung von Hybrid Clouds. Azure Stack ist für diese Szenarien konzipiert. Dieser Artikel beschreibt die Sicherheitsmaßnahmen für Azure Stack.
 
 In Azure Stack sind zwei Sicherheitsstatusebenen vorhanden. Die erste Ebene ist die Azure Stack-Infrastruktur, die sämtliche Komponenten von den Hardwarekomponenten bis hin zum Azure Resource Manager umfasst. Die erste Ebene beinhaltet das Administrator- und Mandantenportal. Die zweite Ebene besteht aus den Workloads, die von Mandanten erstellt, bereitgestellt und verwaltet werden. Die zweite Ebene beinhaltet Elemente wie virtuelle Computer und App Service-Websites.
 
@@ -51,14 +50,14 @@ Alle externen Infrastrukturendpunkte, z.B. die REST-Endpunkte oder das Azure Sta
 Für diese externen Endpunkte können zwar selbstsignierte Zertifikate verwendet werden, doch Microsoft rät dringend von deren Verwendung ab. 
 
 ## <a name="secret-management"></a>Verwaltung von Geheimnissen
-In der Azure Stack-Infrastruktur werden zahlreiche Geheimnisse eingesetzt, wie z.B. Kennwörter. Die meisten von ihnen werden automatisch gedreht, da sie gruppenverwaltete Dienstkonten sind, die alle 24 Stunden gedreht werden.
+In der Azure Stack-Infrastruktur werden zahlreiche Geheimnisse eingesetzt, wie z.B. Kennwörter. Die meisten von ihnen werden automatisch rotiert, da sie gruppenverwaltete Dienstkonten sind, die alle 24 Stunden rotiert werden.
 
-Die verbleibenden Geheimnisse, die keine gruppenverwalteten Dienstkonten sind, können manuell mit einem Skript im privilegierten Endpunkt gedreht werden.
+Die verbleibenden Geheimnisse, die keine gruppenverwalteten Dienstkonten sind, können manuell mit einem Skript im privilegierten Endpunkt rotiert werden.
 
 ## <a name="code-integrity"></a>Codeintegrität
 Azure Stack nutzt die neuesten Sicherheitsfeatures von Windows Server 2016. Eines davon ist Windows Defender Device Guard. Dieses Tool bietet Anwendungswhitelists und stellt sicher, dass nur autorisierter Code innerhalb der Azure Stack-Infrastruktur ausgeführt wird. 
 
-Autorisierter Code ist entweder von Microsoft oder dem OEM-Partner signiert und in der Liste der zulässigen Software enthalten, die in einer von Microsoft definierten Richtlinie angegeben ist. Anders gesagt kann nur Software ausgeführt werden, die zur Ausführung in der Azure Stack-Infrastruktur genehmigt wurde. Jeder Versuch, nicht autorisierten Code auszuführen, wird blockiert, und eine Überwachung wird generiert.
+Autorisierter Code wurde von Microsoft oder dem OEM-Partner signiert. Der signierte autorisierte Code befindet sich in der Liste der zulässigen Software, die in einer von Microsoft definierten Richtlinie angegeben wird. Anders gesagt kann nur Software ausgeführt werden, die zur Ausführung in der Azure Stack-Infrastruktur genehmigt wurde. Jeder Versuch, nicht autorisierten Code auszuführen, wird blockiert, und eine Überwachung wird generiert.
 
 Die Device Guard-Richtlinie verhindert auch die Ausführung von Drittanbieter-Agents oder -Software in der Azure Stack-Infrastruktur.
 
@@ -84,6 +83,20 @@ Netzwerk-ACLs werden in drei Ebenen durchgesetzt:
 2.  Softwaredefiniertes Netzwerk
 3.  Host- und VM-Betriebssystemfirewalls
 
+## <a name="regulatory-compliance"></a>Compliance
+
+Azure Stack hat eine formale Bewertung durch ein drittanbieterunabhängiges Überwachungsunternehmen durchlaufen. Infolgedessen ist Dokumentation darüber verfügbar, wie die Azure Stack-Infrastruktur die geltenden Kontrollen aus mehreren wichtigen Compliancestandards erfüllt. Die Dokumentation ist keine Zertifizierung von Azure Stack aufgrund der Standards, die mehrere personal- und prozessbezogene Sicherheitsmaßnahmen beinhalten. Vielmehr können Kunden diese Dokumentation nutzen, um ihren Zertifizierungsprozess zu beschleunigen.
+
+Die Bewertungen umfassen die folgenden Standards:
+
+- [PCI-DSS](https://www.pcisecuritystandards.org/pci_security/) richtet sich an die Zahlungskartenbranche.
+- [CSA Cloud Control Matrix](https://cloudsecurityalliance.org/group/cloud-controls-matrix/#_overview) ist eine umfassende Zuordnung über mehrere Standards hinweg, z.B. FedRAMP Moderate, ISO27001, HIPAA, HITRUST, ITAR, NIST SP800-53 und andere.
+- [FedRAMP High](https://www.fedramp.gov/fedramp-releases-high-baseline/) für Behörden.
+
+Die Dokumentation zur Compliance finden Sie im [Microsoft Service Trust-Portal](https://servicetrust.microsoft.com/ViewPage/Blueprint). Die Compliancehandbücher sind eine geschützte Ressource. Sie müssen sich daher mit den Anmeldeinformationen Ihres Azure-Clouddiensts anmelden.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erfahren Sie, wie Sie Ihre Geheimnisse in Azure Stack rotieren.](azure-stack-rotate-secrets.md)
+- [PCI-DSS- und CSA CCM-Dokumente für Azure Stack](https://servicetrust.microsoft.com/ViewPage/TrustDocuments)
+- [DoD- und NIST-Dokumente für Azure Stack](https://servicetrust.microsoft.com/ViewPage/Blueprint)

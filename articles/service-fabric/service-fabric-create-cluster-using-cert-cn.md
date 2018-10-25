@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: c4c60cccb890c883e9e57c9f146cc93aae99f224
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 191471d3538a9151827ee24a5887aa559383345b
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142759"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785663"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Bereitstellen eines Service Fabric-Clusters mit allgemeinem Zertifikatnamen anstelle eines Fingerabdrucks
 Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Clusterzertifikatrollover oder die Verwaltung erschwert. Mehrere Zertifikate können jedoch den gleichen allgemeinen Namen oder den gleichen Antragsteller haben.  Cluster mit allgemeinen Zertifikatnamen vereinfachen die Zertifikatverwaltung. In diesem Artikel wird beschrieben, wie Sie einen Service Fabric-Cluster für die Verwendung des allgemeinen Zertifikatnamens (anstelle des Zertifikatfingerabdrucks) bereitstellen.

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 59b637e6887a645430d902cd846cacda13b14cfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6042aa4dd8b26a0986737edc3c89b8e165ae970a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972809"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067702"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Azure CLI in Azure Stack
 
@@ -168,7 +168,8 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
 
 1. Melden Sie sich bei der Azure Stack-Umgebung an, indem Sie den Befehl `az login` ausführen. Sie können sich entweder als Benutzer oder als [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects) an der Azure Stack-Umgebung anmelden. 
 
-   * Anmeldung als *Benutzer*: Sie können entweder den Benutzernamen und das Kennwort direkt im Befehl `az login` eingeben oder die Authentifizierung über einen Browser ausführen. Sie müssen das letztgenannte Verfahren wählen, wenn für Ihr Konto mehrstufige Authentifizierung (Multi-Factor Authentication) aktiviert ist.
+    * AAD-Umgebungen
+      * Anmeldung als *Benutzer*: Sie können entweder den Benutzernamen und das Kennwort direkt im Befehl `az login` eingeben oder die Authentifizierung über einen Browser ausführen. Sie müssen das letztgenannte Verfahren wählen, wenn für Ihr Konto mehrstufige Authentifizierung (Multi-Factor Authentication) aktiviert ist.
 
       ```azurecli
       az login \
@@ -179,7 +180,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
       > [!NOTE]
       > Wenn für Ihr Benutzerkonto die mehrstufige Authentifizierung aktiviert ist, können Sie den Befehl `az login command` verwenden, ohne den Parameter `-u` anzugeben. Durch die Ausführung des Befehls erhalten Sie eine URL und einen Code für die Authentifizierung.
    
-   * Anmeldung als *Dienstprinzipal*: [Erstellen Sie einen Dienstprinzipal über das Azure-Portal](azure-stack-create-service-principals.md) oder die CLI, und weisen Sie ihm eine Rolle zu, bevor Sie sich anmelden. Melden Sie sich anschließend mit dem folgenden Befehl an:
+      * Anmeldung als *Dienstprinzipal*: [Erstellen Sie einen Dienstprinzipal über das Azure-Portal](azure-stack-create-service-principals.md) oder die CLI, und weisen Sie ihm eine Rolle zu, bevor Sie sich anmelden. Melden Sie sich anschließend mit dem folgenden Befehl an:
 
       ```azurecli
       az login \
@@ -188,6 +189,22 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
         -u <Application Id of the Service Principal> \
         -p <Key generated for the Service Principal>
       ```
+    * AD FS-Umgebungen
+
+        * Melden Sie sich als *Dienstprinzipal* an: 
+          1.    Bereiten Sie die PEM-Datei vor, die für die Anmeldung des Dienstprinzipals verwendet werden soll.
+                * Exportieren Sie auf dem Clientcomputer, auf dem der Prinzipal erstellt wurde, das Dienstprinzipalzertifikat als PFX-Datei mit dem privaten Schlüssel (Sie finden diesen unter „cert:\CurrentUser\My“, der Zertifikatname trägt den gleichen Namen wie der Prinzipal).
+
+                *   Konvertieren Sie die PFX-Datei in eine PEM-Datei (mit dem OpenSSL-Hilfsprogramm).
+
+          1.    Melden Sie sich bei der Befehlszeilenschnittstelle an. :
+                ```azurecli
+                az login --service-principal \
+                 -u <Client ID from the Service Principal details> \
+                 -p <Certificate's fully qualified name. Eg. C:\certs\spn.pem>
+                 --tenant <Tenant ID> \
+                 --debug 
+                ```
 
 ## <a name="test-the-connectivity"></a>Testen der Konnektivität
 

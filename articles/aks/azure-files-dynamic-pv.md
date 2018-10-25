@@ -1,28 +1,34 @@
 ---
-title: Verwenden von Azure Files mit AKS
-description: Verwenden von Azure-Datenträgern mit AKS
+title: Dynamisches Erstellen eines Files-Volumes für mehrere Pods in Azure Kubernetes Service (AKS)
+description: Erfahren Sie, wie Sie dynamisch ein persistentes Volume mit Azure Files für die Verwendung mit mehreren gleichzeitigen Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: dfc9171f54effe3da7a0f13695ab233d561357d4
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 022ffeaf75f8f03447b931ed9c3a474286a17f89
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285684"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067804"
 ---
-# <a name="persistent-volumes-with-azure-files"></a>Persistente Volumes mit Azure Files
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure Files in Azure Kubernetes Service (AKS)
 
-Ein persistentes Volume ist ein Speicherelement, das für die Verwendung in einem Kubernetes-Cluster erstellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch erstellt werden. In diesem Dokument wird die **dynamische Erstellung** einer Azure-Dateifreigabe als persistentes Volume beschrieben.
+Ein persistentes Volume stellt ein Speicherelement dar, das für die Verwendung in Kubernetes-Pods bereitgestellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden. Wenn mehrere Pods gleichzeitig Zugriff auf dasselbe Speichervolume benötigen, können Sie Azure Files verwenden, um mithilfe des [Server Message Block-Protokolls (SMB)][smb-overview] eine Verbindung herzustellen. Dieser Artikel zeigt Ihnen, wie Sie dynamisch eine Azure Files-Freigabe erstellen, die von mehreren Pods in einem AKS-Cluster (Azure Kubernetes Service) verwendet wird.
 
-Weitere Informationen zu persistenten Kubernetes-Volumes, z.B. zur statischen Erstellung, finden Sie unter [Persistente Kubernetes-Volumes][kubernetes-volumes].
+Weitere Informationen zu persistenten Kubernetes-Volumes finden Sie unter [Persistente Kubernetes-Volumes][kubernetes-volumes].
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+
+Außerdem muss die Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Bei der dynamischen Erstellung einer Azure-Dateifreigabe als Kubernetes-Volume kann ein beliebiges Speicherkonto verwendet werden, solange es sich in der AKS-Ressourcengruppe des **Knotens** befindet. Dies ist die Gruppe mit dem Präfix *MC_*, die durch die Bereitstellung der Ressourcen für den AKS-Cluster erstellt wurde. Rufen Sie den Namen der Ressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab.
+Bei der dynamischen Erstellung einer Azure Files-Freigabe als Kubernetes-Volume kann ein beliebiges Speicherkonto verwendet werden, solange es sich in der AKS-Ressourcengruppe des **Knotens** befindet. Dies ist die Gruppe mit dem Präfix *MC_*, die durch die Bereitstellung der Ressourcen für den AKS-Cluster erstellt wurde. Rufen Sie den Namen der Ressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab.
 
 ```azurecli
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -77,7 +83,7 @@ Damit die Azure-Plattform die erforderlichen Speicherressourcen erstellen kann, 
 
 ```yaml
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: system:azure-cloud-provider
@@ -86,7 +92,7 @@ rules:
   resources: ['secrets']
   verbs:     ['get','create']
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: system:azure-cloud-provider
@@ -154,11 +160,18 @@ metadata:
   name: mypod
 spec:
   containers:
-    - name: myfrontend
-      image: nginx
-      volumeMounts:
-      - mountPath: "/mnt/azure"
-        name: volume
+  - name: mypod
+    image: nginx:1.15.5
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/azure"
+      name: volume
   volumes:
     - name: volume
       persistentVolumeClaim:
@@ -175,9 +188,9 @@ Sie verfügen nun über einen ausgeführten Pod mit Ihrem Azure-Datenträger, de
 
 ```
 Containers:
-  myfrontend:
+  mypod:
     Container ID:   docker://053bc9c0df72232d755aa040bfba8b533fa696b123876108dec400e364d2523e
-    Image:          nginx
+    Image:          nginx:1.15.5
     Image ID:       docker-pullable://nginx@sha256:d85914d547a6c92faa39ce7058bd7529baacab7e0cd4255442b04577c4d1f424
     State:          Running
       Started:      Wed, 15 Aug 2018 22:22:27 +0000
@@ -189,7 +202,7 @@ Containers:
 Volumes:
   volume:
     Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
-    ClaimName:  azurefile2
+    ClaimName:  azurefile
     ReadOnly:   false
 [...]
 ```
@@ -244,7 +257,7 @@ spec:
   - file_mode=0777
   - uid=1000
   - gid=1000
-  ```
+```
 
 Bei Verwendung eines Clusters der Version 1.8.0 bis 1.8.4 kann ein Sicherheitskontext angegeben werden, indem der Wert *runAsUser* auf *0* festgelegt wird. Weitere Informationen zum Sicherheitskontext für Pods finden Sie unter [Konfigurieren eines Sicherheitskontexts][kubernetes-security-context].
 
@@ -267,6 +280,7 @@ Informieren Sie sich über persistente Kubernetes-Volumes bei Verwendung von Azu
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 [pv-static]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#static
 [kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+[smb-overview]: /windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview
 
 <!-- LINKS - internal -->
 [az-group-create]: /cli/azure/group#az-group-create
@@ -277,3 +291,7 @@ Informieren Sie sich über persistente Kubernetes-Volumes bei Verwendung von Azu
 [az-storage-key-list]: /cli/azure/storage/account/keys#az-storage-account-keys-list
 [az-storage-share-create]: /cli/azure/storage/share#az-storage-share-create
 [mount-options]: #mount-options
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show

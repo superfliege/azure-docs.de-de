@@ -9,20 +9,22 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: cbeee643ee4a2705d3f0202a7206e10fbcc5acab
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214940"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831618"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI
 
 ## <a name="overview"></a>Übersicht
 
-**Der Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI bietet eine schlüsselfertige Bereitstellung einer Azure PaaS-Lösung, um zu zeigen, wie Gesundheitsdaten sicher erfasst, gespeichert und analysiert werden können und wie mit ihnen interagiert werden kann, während es gleichzeitig möglich ist, die Konformitätsanforderungen der Branche zu erfüllen. Der Entwurf hilft, den Umstieg auf die Cloud und ihre Nutzung für Kunden mit Daten zu beschleunigen, die Regulierungen unterliegen.**
+**Azure-Blaupause für Sicherheit und Compliance: HIPAA/HITRUST-Gesundheitsdaten und -KI bietet eine schlüsselfertige Bereitstellung einer Azure PaaS- und IaaS-Lösung, um zu zeigen, wie Gesundheitsdaten erfasst, gespeichert, analysiert und identifiziert werden können und wie mit ihnen interagiert und auf sichere Weise eine Lösung bereitgestellt werden kann, während es gleichzeitig möglich ist, die Konformitätsanforderungen der Branche zu erfüllen. Der Entwurf hilft, den Umstieg auf die Cloud und ihre Nutzung für Kunden mit Daten zu beschleunigen, die Regulierungen unterliegen.**
 
-Der Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI stellt Tools und Anleitungen zur Verfügung, die Sie beim Bereitstellen einer sicheren, für Health Insurance Portability and Accountability Act (HIPAA) und Health Information Trust Alliance (HITRUST) bereiten PaaS-Umgebung (Platform-as-a-Service) für die Erfassung, Speicherung, Analyse von und Interaktion mit persönlichen und nicht-persönlichen medizinischen Daten in einer sicheren, mehrschichtigen Cloudumgebung unterstützen, die als End-to-End-Lösung bereitgestellt wird. Der Plan präsentiert eine allgemeine Referenzarchitektur und soll dazu dienen, die Einführung von Microsoft Azure zu vereinfachen. Diese bereitgestellte Architektur veranschaulicht eine Lösung, die die Anforderungen von Organisationen erfüllt, die nach einem cloudbasierten Ansatz suchen, um die Belastungen und Kosten einer Bereitstellung zu verringern.
+Der Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI stellt Tools und Anleitungen zur Verfügung, die Sie beim Bereitstellen einer sicheren, für Health Insurance Portability and Accountability Act (HIPAA) und Health Information Trust Alliance (HITRUST) bereiten PaaS-Umgebung (Platform-as-a-Service) für die Erfassung, Speicherung, Analyse von und Interaktion mit persönlichen und nicht-persönlichen medizinischen Daten in einer sicheren, mehrschichtigen Cloudumgebung unterstützen, die als End-to-End-Lösung bereitgestellt wird. 
+
+Die IaaS-Lösung zeigt, wie eine lokale SQL-basierte Lösung in Azure migriert und eine PAW (Privileged Access Workstation) implementiert werden kann, um cloudbasierte Dienste und Lösungen sicher zu verwalten. Die IaaS-SQL Server-Datenbank fügt potenzielle Versuchsdaten hinzu, die in eine SQL-IaaS-VM importiert werden, und diese VM verwendet MSI-authentifizierten Zugriff, um mit einem SQL Azure-PaaS-Dienst zu interagieren. Beide Lösungen zeigen eine gemeinsame Referenzarchitektur und sollen die Verwendung von Microsoft Azure erleichtern. Diese bereitgestellte Architektur veranschaulicht eine Lösung, die die Anforderungen von Organisationen erfüllt, die nach einem cloudbasierten Ansatz suchen, um die Belastungen und Kosten einer Bereitstellung zu verringern.
 
 ![](images/components.png)
 
@@ -38,23 +40,15 @@ Mit diesem Entwurf soll eine modulare Grundlage geschaffen werden, auf der sich 
 
 ## <a name="deploying-the-automation"></a>Bereitstellen der Automatisierung
 
-- Befolgen Sie die Anweisungen im Installationsleitfaden, um die Lösung bereitzustellen. 
+- Befolgen Sie die Anweisungen im [Installationsleitfaden](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md), um die Lösung bereitzustellen. 
 
-[![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
-
-Eine schnelle Übersicht über die Funktionsweise dieser Lösung finden Sie in diesem [Video](https://aka.ms/healthblueprintvideo), in dem die Bereitstellung erklärt und gezeigt wird.
+- Eine schnelle Übersicht über die Funktionsweise dieser Lösung finden Sie in diesem [Video](https://aka.ms/healthblueprintvideo), in dem die Bereitstellung erklärt und gezeigt wird.
 
 - Häufig gestellte Fragen (FAQ) finden Sie in der Anleitung [FAQ](https://aka.ms/healthblueprintfaq).
 
 -   **Architekturdiagramm.** Das Diagramm zeigt die für den Entwurf verwendete Referenzarchitektur und das Anwendungsfall-Beispielszenario.
 
--   **Bereitstellungsvorlagen**. In dieser Bereitstellung werden [Azure Resource Manager-Vorlagen](/azure/azure-resource-manager/resource-group-overview#template-deployment) verwendet, um die Komponenten der Architektur automatisch in Microsoft Azure bereitzustellen, indem während des Setups Konfigurationsparameter angegeben werden.
-
--   **[Automatisierte Bereitstellungsskripts](https://aka.ms/healthblueprintdeploy)**. Diese Skripts unterstützen die Bereitstellung der Lösung. Zu den Skripts gehören:
-
-
--   Ein Skript zur Modulinstallation und zur Einrichtung für [globale Administratoren](/azure/active-directory/active-directory-assign-admin-roles-azure-portal). Mit diesem Skript werden die erforderlichen PowerShell-Module und globalen Administratorrollen installiert und wird geprüft, ob diese ordnungsgemäß konfiguriert sind. 
--   Für die Bereitstellung der Lösung wird ein PowerShell-Installationsskript verwendet, das über eine ZIP-Datei zur Verfügung gestellt wird, die vordefinierte Demofunktionen enthält.
+-   [IaaS-Erweiterung](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md): Diese Lösung zeigt, wie eine lokale SQL-basierte Lösung in Azure migriert und eine PAW (Privileged Access Workstation) implementiert werden kann, um cloudbasierte Dienste und Lösungen sicher zu verwalten. 
 
 ## <a name="solution-components"></a>Lösungskomponenten
 
@@ -70,7 +64,7 @@ Die grundlegende Architektur besteht aus den folgenden Komponenten:
 # <a name="architectural-diagram"></a>Architekturdiagramm
 
 
-![](images/refarch.png)
+![](images/ra2.png)
 
 ## <a name="roles"></a>Rollen
 
