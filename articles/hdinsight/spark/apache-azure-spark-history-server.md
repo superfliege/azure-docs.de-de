@@ -168,7 +168,7 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagnose**, 
 ### <a name="data-skew"></a>Datenschiefe
 Klicken Sie auf die Registerkarte **Datenschiefe**, und die entsprechenden Aufgaben mit Abweichungen werden basierend auf den angegebenen Parametern angezeigt. 
 
-+ **Parameter festlegen**: Im ersten Abschnitt werden die Parameter angezeigt, die verwendet werden, um Datenschiefe zu erkennen. Die integrierte Regel lautet: „Task-Datenlesevorgänge“ > 3 * „Durchschnittliche Task-Datenlesevorgänge“, und „Task-Datenlesevorgänge“ > 10 MB. Wenn Sie eine eigene Regel für Aufgaben mit Abweichungen definieren möchten, können Sie Ihre Parameter auswählen, und die Abschnitte **Schiefe Phase** und **Abweichungsdiagramm Char** werden entsprechend aktualisiert.
++ **Parameter festlegen**: Im ersten Abschnitt werden die Parameter angezeigt, die verwendet werden, um Datenschiefe zu erkennen. Die integrierte Regel lautet: „Task-Datenlesevorgänge“ > 3 „Durchschnittliche Task-Datenlesevorgänge“, und „Task-Datenlesevorgänge“ > 10 MB. Wenn Sie eine eigene Regel für Aufgaben mit Abweichungen definieren möchten, können Sie Ihre Parameter auswählen, und die Abschnitte **Schiefe Phase** und **Abweichungsdiagramm Char** werden entsprechend aktualisiert.
 
 + **Schiefe Phase**: Im zweiten Abschnitt werden die Phasen angezeigt, die Aufgaben mit Abweichungen enthalten, die den oben angegebenen Kriterien entsprechen. Wenn es in einer Phase mehr als eine Aufgaben mit Abweichungen gibt, wird in der Tabelle der schiefen Phasen nur die am Aufgabe mit der größten Abweichung angezeigt (z. B. mit dem größten Wert der Datenschiefe).
 
@@ -181,7 +181,7 @@ Klicken Sie auf die Registerkarte **Datenschiefe**, und die entsprechenden Aufga
 ### <a name="time-skew"></a>Zeitabweichung
 Auf der Registerkarte **Zeitabweichung** werden Aufgaben mit Abweichungen basierend auf der Ausführungszeit der Aufgabe angezeigt. 
 
-+ **Parameter festlegen**: Im ersten Abschnitt werden die Parameter angezeigt, die verwendet werden, um Zeitabweichung zu erkennen. Die Standardkriterien zum Erkennen von Zeitabweichungen sind: Ausführungszeit der Aufgabe > 3 * durchschnittliche Ausführungszeit und die Ausführungszeit der Aufgabe > 30 Sekunden. Sie können die Parameter basierend auf Ihren Anforderungen ändern. Unter **Schiefe Phase** und **Abweichungsdiagramm** werden, genau wie auf der Registerkarte **Datenschiefe** oben, die entsprechenden Phasen und Aufgabeninformationen angezeigt.
++ **Parameter festlegen**: Im ersten Abschnitt werden die Parameter angezeigt, die verwendet werden, um Zeitabweichung zu erkennen. Die Standardkriterien zum Erkennen von Zeitabweichungen sind: Ausführungszeit der Aufgabe > 3 durchschnittliche Ausführungszeit und die Ausführungszeit der Aufgabe > 30 Sekunden. Sie können die Parameter basierend auf Ihren Anforderungen ändern. Unter **Schiefe Phase** und **Abweichungsdiagramm** werden, genau wie auf der Registerkarte **Datenschiefe** oben, die entsprechenden Phasen und Aufgabeninformationen angezeigt.
 
 + Klicken Sie auf **Zeitabweichung**, wird das gefilterte Ergebnis im Abschnitt **Schiefe Phase** entsprechend den im Abschnitt **Parameter festlegen** angegebenen Parametern angezeigt. Klicken Sie auf ein Element im Abschnitt **Schiefe Phase**, wird das entsprechende Diagramm in Abschnitt 3 entworfen, und die Aufgabendetails werden im rechten unteren Bereich angezeigt.
 
