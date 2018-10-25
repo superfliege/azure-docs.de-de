@@ -1,20 +1,21 @@
 ---
-title: 'Benutzerdefinierte Bing-Suche: Definieren einer benutzerdefinierten Ansicht | Microsoft Docs'
+title: Definieren einer benutzerdefinierten Ansicht – Benutzerdefinierte Bing-Suche
+titlesuffix: Azure Cognitive Services
 description: Enthält Informationen zum Erstellen einer Website und vertikaler Suchdienste
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 59fef9a370ca56080d06f0920ed5409c141683a4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a74e6a6a90a242d4d1b2fd71a5fc6cf949ea55cb
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980660"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815255"
 ---
 # <a name="configure-your-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Suche
 
@@ -94,9 +95,9 @@ Im Portal können Sie die Rangfolge anpassen, um die Ergebnisse zu bearbeiten, d
   
 - Verstärken. Zeigt Inhalte aus der Domäne oder Unterseite weiter oben in den Suchergebnissen an. Sie wählen aus, ob Inhalt aus der Domäne oder Unterseite, zu der die Webseite gehört, verstärkt werden soll. [Weitere Informationen finden Sie hier.](#boosting-and-demoting)  
   
-- Tiefer stufen. Stuft Inhalte aus der Domäne oder Unterseite tiefer und zeigt sie weiter unten in den Suchergebnissen an. Sie wählen aus, ob Inhalt aus der Domäne oder Unterseite, zu der die Webseite gehört, tiefer gestuft werden soll. [Weitere Informationen](#boosting-and-demoting)  
+- Tiefer stufen. Stuft Inhalte aus der Domäne oder Unterseite tiefer und zeigt sie weiter unten in den Suchergebnissen an. Sie wählen aus, ob Inhalt aus der Domäne oder Unterseite, zu der die Webseite gehört, tiefer gestuft werden soll. [Weitere Informationen](#boosting-and-demoting).  
   
-- Oben anheften. Definieren Sie die Webseite, die in den Ergebnissen ganz oben angezeigt wird, wenn die Abfragezeichenfolge des Benutzers der angehefteten Abfragezeichenfolge den zugehörigen Übereinstimmungsbedingung entspricht. Die Liste „Aktiv“ muss die Webseite nicht enthalten, damit Sie sie anheften können. [Weitere Informationen](#pin-to-top)
+- Oben anheften. Definieren Sie die Webseite, die in den Ergebnissen ganz oben angezeigt wird, wenn die Abfragezeichenfolge des Benutzers der angehefteten Abfragezeichenfolge den zugehörigen Übereinstimmungsbedingung entspricht. Die Liste „Aktiv“ muss die Webseite nicht enthalten, damit Sie sie anheften können. [Weitere Informationen](#pin-to-top).
 
 Das Anpassen der Rangfolge ist nicht für die Bildersuche und die Videosuche verfügbar.
 

@@ -1,20 +1,21 @@
 ---
-title: interpret-Methode in der Academic Knowledge-API | Microsoft-Dokumentation
+title: Interpret-Methode – Academic Knowledge-API
+titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die interpret-Methode, um formatierte Interpretationen von Benutzerabfragezeichenfolgen auf der Grundlage von Academic Graph-Daten und der Academic-Grammatik in Microsoft Cognitive Services zurückzugeben.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a46c792f14fabf6562666d1067ef880bd505741f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e16a772caa5fba632f8544094e2d8b57ed4ca765
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372827"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902568"
 ---
 # <a name="interpret-method"></a>interpret-Methode
 
@@ -30,11 +31,11 @@ Um ein interaktives Erlebnis zu ermöglichen, können Sie diese Methode nach jed
 
 NAME     | Wert | Erforderlich?  | BESCHREIBUNG
 ---------|---------|---------|---------
-**query**    | Textzeichenfolge | Ja | Vom Benutzer eingegeben Abfrage.  Wenn der complete-Parameter auf 1 gesetzt ist, wird die Abfrage als Präfix für die Generierung von Vorschlägen zur automatischen Vervollständigung der Abfrage interpretiert.        
+**query**    | Textzeichenfolge | JA | Vom Benutzer eingegeben Abfrage.  Wenn der complete-Parameter auf „1“ gesetzt ist, wird die Abfrage als Präfix für die Generierung von Vorschlägen der automatischen Vervollständigung für Abfragen interpretiert.        
 **model**    | Textzeichenfolge | Nein   | Der Name des Modells, das Sie abfragen möchten.  Derzeit wird als Standardwert *latest* verwendet.        
 **complete** | 0 oder 1 | Nein <br>Standard: 0  | 1 bedeutet, dass Vorschläge für die automatische Vervollständigung basierend auf der Grammatik und Diagrammdaten generiert werden.         
 **count**    | Number | Nein <br>Standard: 10 | Maximale Anzahl der zurückzugebenden Interpretationen.         
-**offset**   | Number | Nein <br>Standard: 0  | Index der ersten zurückzugebenden Interpretation. Zum Beispiel gibt *count=2&offset=0* die Interpretationen 0 und 1 zurück. *count=2&offset=2* gibt die Interpretationen 2 und 3 zurück.       
+**offset**   | Number | Nein <br>Standard: 0  | Index der ersten zurückzugebenden Interpretation. Zum Beispiel gibt *count=2&offset=0* die Interpretationen „0“ und „1“ zurück. *count=2&offset=2* gibt die Interpretationen 2 und 3 zurück.       
 **timeout**  | Number | Nein <br>Standard: 1.000 | Timeout in Millisekunden. Nur die vor Ablauf des Timeouts gefundenen Interpretationen werden zurückgegeben.
 <br>
   
@@ -50,7 +51,7 @@ NAME     | BESCHREIBUNG
 **interpretations[x].rules[y].output**  |Ausgabe der Regel.
 **interpretations[x].rules[y].output.type** |Der Datentyp der Ausgabe der Regel.  Für die Academic Knowledge-API gibt es nur „query“
 **interpretations[x].rules[y].output.value**  |Die Ausgabe der Regel. In der Academic Knowledge-API ist dies eine Abfrageausdruck-Zeichenfolge, die an die evaluate- und calchistogram-Methoden weitergegeben werden kann.
-**aborted** | „true“, wenn eine Zeitüberschreitung bei der Anforderung aufgetreten ist.
+**aborted** | „true“, wenn ein Timeout bei der Anforderung aufgetreten ist.
 
 <br>
 #### <a name="example"></a>Beispiel:

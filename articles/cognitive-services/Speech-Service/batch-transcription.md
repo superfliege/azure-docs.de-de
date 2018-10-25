@@ -4,20 +4,20 @@ description: Beispiele
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
-ms.technology: Speech to Text
+ms.component: Speech
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 860b58a18fbc14532a8591fc753453d60492d3c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8f9a033ebf9cdfdb96ae8511b14202e49ec0a85e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981371"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884458"
 ---
 # <a name="batch-transcription"></a>Batch-Transkription
 
-Die Batch-Transkription ist optimal geeignet, wenn Sie über große Audiodatenmengen verfügen. Sie können im asynchronen Modus auf Audiodateien verweisen und Transkriptionen zurückerhalten.
+Die Batch-Transkription ist optimal geeignet, wenn Sie über große Audiodatenmengen verfügen. Sie können im asynchronen Modus über den URI auf Audiodateien verweisen und Transkriptionen zurückerhalten.
 
 ## <a name="batch-transcription-api"></a>Batch-Transkriptions-API
 
@@ -59,7 +59,7 @@ Bei Audiodatenströmen in Stereo wird der linke und rechte Kanal während der Tr
 
 ## <a name="authorization-token"></a>Autorisierungstoken
 
-Wie bei allen Features des vereinheitlichten Spracherkennungsdiensts erstellen Sie einen Abonnementschlüssel im [Azure-Portal](https://portal.azure.com) anhand der Anleitung unter [Erste Schritte](get-started.md). Wenn Sie das Abrufen von Transkriptionen aus unseren Baselinemodellen planen, müssen Sie nichts weiter tun. 
+Wie bei allen Features des Spracherkennungsdiensts erstellen Sie einen Abonnementschlüssel im [Azure-Portal](https://portal.azure.com) anhand der Anleitung unter [Erste Schritte](get-started.md). Wenn Sie das Abrufen von Transkriptionen aus unseren Baselinemodellen planen, müssen Sie nichts weiter tun. 
 
 Wenn Sie ein benutzerdefiniertes Modell anpassen und verwenden möchten, müssen Sie diesen Abonnementschlüssel wie folgt im Custom Speech-Portal hinzufügen:
 

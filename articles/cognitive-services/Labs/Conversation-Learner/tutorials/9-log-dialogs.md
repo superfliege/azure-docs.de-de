@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6ceeb9683a979256a8a52347fc74ab758fd1d348
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4663fc377e795e603bd2484ec4cf98578408501f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171434"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248380"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Protokollieren von Dialogen in einem Unterhaltungslernmodell
 
@@ -76,7 +76,7 @@ Jetzt sind zwei Aktionen vorhanden.
 
 Fügen Sie einen weiteren Beispieldialog hinzu:
 
-1. Klicken Sie auf „Neue Aktion“ und dann auf „Neuer Trainingsdialog“.
+1. Klicken Sie auf „Trainingsdialoge“ und dann auf „Neuer Trainingsdialog“.
 2. Geben Sie „Wie ist das Wetter in Seattle?“ ein. Beachten Sie, dass Seattle als eine Entität gekennzeichnet ist.
 5. Klicken Sie auf „Bewertungsaktionen“. 
 6. Wählen Sie „Das Wetter in $Stadt ist wahrscheinlich sonnig“ aus.
@@ -86,7 +86,7 @@ Fügen Sie einen weiteren Beispieldialog hinzu:
 Hier wird davon ausgegangen, dass dieser Bot für Benutzer bereitgestellt wurde.
 
 1. Klicken Sie auf „Dialoge protokollieren“.
-2. Klicken Sie auf „Neue Chatsitzung“.
+2. Klicken Sie auf „Neuen Dialog protokollieren“.
     - Dadurch wird der Bot so dargestellt, wie er dem Benutzer im Webchat-Steuerelement auf der linken Seite der Benutzeroberfläche angezeigt würde. Den weißen Bereich auf der rechten Seite können Sie ignorieren.
 3. Geben Sie „hallo“ ein.
 4. Botantwort: „welche Stadt?“
@@ -97,10 +97,10 @@ Hier wird davon ausgegangen, dass dieser Bot für Benutzer bereitgestellt wurde.
 
 Starten Sie eine neue Sitzung:
 
-2. Klicken Sie auf „Neue Chatsitzung“.
+2. Klicken Sie auf „Neuen Dialog protokollieren“.
 3. Geben Sie „Vorhersage für Boston“ ein.
 4. Botantwort: „welche Stadt?“
-2. Klicken Sie auf „Training abgeschlossen“.
+2. Klicken Sie auf „Tests abgeschlossen“.
 
 Nehmen Sie nun Korrekturen am zweiten Dialog vor:
 
@@ -132,7 +132,7 @@ Nehmen Sie nun Korrekturen am anderen Dialog vor:
 7. Geben Sie „Boston“ ein. Doppelklicken Sie, um Boston als eine Entität zu kennzeichnen (falls noch nicht geschehen).
 8. Klicken Sie auf „Bewertungsaktionen“.
 9. Wählen Sie „Das Wetter in $Stadt ist wahrscheinlich sonnig“ durch Klicken aus.
-10. Klicken Sie auf „Training abgeschlossen“.
+10. Klicken Sie auf „Done Teaching“ (Training abgeschlossen).
 
 ![](../media/tutorial9_addnewaction.PNG)
 

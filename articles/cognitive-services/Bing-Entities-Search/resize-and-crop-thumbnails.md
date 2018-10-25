@@ -1,22 +1,22 @@
 ---
-title: Anpassen der Größe und Zuschneiden von Bing-Miniaturansichten | Microsoft-Dokumentation
-description: Erläutert das Anpassen der Größe und Zuschneiden von Miniaturansichten, die von einer Bing-Antwort zurückgegeben werden.
+title: Ändern der Größe und Zuschneiden von Miniaturbildern – Bing-Entitätssuche
+titlesuffix: Azure Cognitive Services
+description: Erläutert das Anpassen der Größe und Zuschneiden von Miniaturansichten, die von einer Antwort der Bing-Entitätssuche zurückgegeben werden.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: B61F24B6-58AA-45E6-8E7B-0E9C9CA0925A
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2017
 ms.author: scottwhi
-ms.openlocfilehash: a3c66481f1cbbcf019edfb3ce908b34cc1805a0e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4015b897985ebc4e962fcb876a17431bc7838a1f
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372682"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815476"
 ---
-# <a name="resizing-and-cropping-thumbnail-images"></a>Anpassen der Größe und Zuschneiden von Miniaturansichten
+# <a name="resizing-and-cropping-thumbnail-images"></a>Ändern der Größe und Zuschneiden von Miniaturbildern
 
 [!INCLUDE [cognitive-services-bing-resize-crop-thumbnails](../../../includes/cognitive-services-bing-resize-crop-thumbnails.md)]

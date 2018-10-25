@@ -1,20 +1,21 @@
 ---
-title: Bekannte Probleme mit dem Acoustics-Plug-In – Cognitive Services
+title: Bekannte Probleme mit dem Project Acoustics-Plug-In
+titlesuffix: Azure Cognitive Services
 description: Bei Verwendung der Designervorschau für Project Acoustics können die folgenden bekannten Probleme auftreten.
 services: cognitive-services
 author: kylestorck
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: c19b19cab33ae868f11ded0b7ce87dac99269596
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6d3605b579a44dccb259bef281392cbfe2b9f916
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431986"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902151"
 ---
 # <a name="known-issues"></a>Bekannte Probleme
 Bei Verwendung der Designervorschau für Project Acoustics können die folgenden bekannten Probleme auftreten.
@@ -23,17 +24,9 @@ Bei Verwendung der Designervorschau für Project Acoustics können die folgenden
 
 Wenn Sie eine Szene umbenennen, werden nicht alle zu dieser Szene gehörenden akustischen Parameter automatisch an die neue Szene übertragen. Sie bleiben jedoch in der alten ASSET-Datei erhalten. Suchen Sie nach der Datei **Szenenname_Akustikparameter.asset** im Verzeichnis **Editor** neben Ihrer Szenendatei. Benennen Sie Ihre Datei entsprechend dem neuen Szenennamen um.
 
-## <a name="the-default-path-for-the-acousticsdata-folder-in-probes-tab-is-an-absolute-path"></a>Beim Standardpfad für den Ordner „AcousticsData“ auf der Registerkarte „Tests“ handelt es sich um einen absoluten Pfad
-
-Standardmäßig sollte hier eigentlich ein relativer Pfad angezeigt werden, um die gemeinsame Nutzung von Projekten durch mehrere Projektmitarbeiter zu erleichtern. Sie können dieses Problem umgehen, indem Sie den Pfad in ein relatives Projektverzeichnis ändern.
-
 ## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>Voxel haben zur Laufzeit eine andere Größe als während der Szenenvorschau
 
 Wenn Sie auf der Registerkarte **Tests** eine **Berechnung** durchführen und die Voxel anzeigen, anschließend einen Bake-Vorgang durchführen und die Voxel zur Laufzeit für dieselbe Szene anzeigen, weisen die Voxel unterschiedliche Größen auf. Bei den Voxel vor dem Bake-Vorgang handelt es sich um die in der Simulation verwendeten Voxel. Die zur Laufzeit angezeigten Voxel werden für die Interpolation zwischen Testpunkten verwendet. Dies kann eine Unstimmigkeit verursachen, bei der Portale zur Laufzeit offen zu sein scheinen, jedoch tatsächlich nicht offen sind.
-
-## <a name="uwp-builds-not-working"></a>UWP-Builds funktionieren nicht
-
-Bei den neuesten Versionen von Unity (2018.2 und höher) werden UWP-Builds nicht erfolgreich ausgeführt. Die Ausführungsphase des Builds blockiert, und die Fehlermeldung „Unity extensions are not yet initialized“ (Unity-Erweiterungen noch nicht initialisiert) wird angezeigt. Dieses Problem wird mit [diesem Unity-Problem](https://fogbugz.unity3d.com/default.asp?1070491_1rgf14bakv5u779d) nachverfolgt.
 
 ## <a name="unity-crashes-when-closing-project"></a>Unity stürzt beim Schließen des Projekts ab
 
@@ -49,6 +42,9 @@ Stellen Sie sicher, dass für die Scripting Runtime Version in den Player-Einste
 ## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>Ich habe beim Herstellen einer Verbindung mit Azure Authentifizierungsprobleme
 
 Vergewissern Sie sich, dass Sie die richtigen Anmeldeinformationen für Ihr Azure-Konto verwendet haben, dass Ihr Konto den im Bake-Vorgang angeforderten Knotentyp unterstützt und dass Ihre Systemuhr stimmt.
+
+## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>Das Abbrechen eines Bake-Vorgangs lässt die Registerkarte für den Bake-Vorgang im Zustand „Wird gelöscht“.
+Project Acoustics bereinigt alle Azure-Ressourcen für einen Auftrag nach erfolgreichem Abschluss oder Abbruch, was bis zu 5 Minuten dauern kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erste Schritte mit der [Integration von Akustik in das Unity-Projekt](getting-started.md)

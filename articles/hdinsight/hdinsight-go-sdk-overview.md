@@ -7,17 +7,17 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 9/21/2018
 ms.author: tyfox
-ms.openlocfilehash: bb7cdbc340c6e9763277d5cdacc0cfb510fdc0db
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8beb75748c2e9fe3f71ad321c4cd523e344fb90c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046396"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901905"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK – Vorschau
 
 ## <a name="overview"></a>Übersicht
-Das HDInsight Go SDK bietet Klassen und Funktionen, mit denen Sie Ihre HDInsight-Cluster verwalten können. Es enthält Vorgänge zum Erstellen, Löschen, Aktualisieren, Auflisten, Skalieren, Ausführen von Skriptaktionen, Überwachen, Abrufen der Eigenschaften von HDInsight-Clustern und mehr.
+Das HDInsight Go SDK bietet Klassen und Funktionen, mit denen Sie Ihre HDInsight-Cluster verwalten können. Es enthält Vorgänge zum Erstellen, Löschen, Aktualisieren, Auflisten, Ändern der Größe, Ausführen von Skriptaktionen, Überwachen, Abrufen der Eigenschaften von HDInsight-Clustern und mehr.
 
 > [!NOTE]
 >GoDoc-Referenzmaterial für dieses SDK ist auch [hier verfügbar](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
@@ -325,9 +325,9 @@ client.Update(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 client.Update(context.Background(), "SDKTestRG", "SDKTest", hdi.ClusterPatchParameters{map[string]*string{"tag1Name" : to.StringPtr("tag1Value"), "tag2Name" : to.StringPtr("tag2Value")}})
 ```
 
-### <a name="scale-cluster"></a>Skalieren von Clustern
+### <a name="resize-cluster"></a>Ändern der Clustergröße
 
-Sie können die Anzahl von Workerknoten für einen Cluster skalieren, indem Sie wie folgt eine neue Größe angeben:
+Sie können die Anzahl von Workerknoten für einen Cluster ändern, indem Sie wie folgt eine neue Größe angeben:
 
 ```golang
 client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ClusterResizeParameters{<Num of Worker Nodes (int)>})
@@ -437,7 +437,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>Auflisten des Ausführungsverlaufs aller Skripts
 
-Auf ähnliche Weise wie Sie `ClusterClient` zur Verwendung für Verwaltungsvorgänge erstellt haben, müssen Sie `ScriptExecutionHistoryClient` für diesen Vorgang erstellen. Wenn Sie den oben genannten Abschnitt zur Authentifizierung abgeschlossen haben, können Sie `ScriptActionsClient` wie folgt erstellen:
+Für diesen Vorgang müssen Sie `ScriptExecutionHistoryClient` erstellen. Die Vorgehensweise ist dabei ähnlich wie bei der Erstellung von `ClusterClient`. Wenn Sie den oben genannten Abschnitt zur Authentifizierung abgeschlossen haben, können Sie `ScriptActionsClient` wie folgt erstellen:
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)

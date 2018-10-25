@@ -1,20 +1,21 @@
 ---
-title: 'Project URL Preview-Referenz: Microsoft Cognitive Services | Microsoft Docs'
+title: Referenz zu Project URL Preview
+titlesuffix: Azure Cognitive Services
 description: Referenz für den Project URL Preview-Endpunkt.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: reference
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 46c011d62b6ae51f5f7d292345e6ece0e27a8541
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: rosh
+ms.openlocfilehash: 3416fd9bc63c48e976d0b00f42ec9f8119a40eb8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865874"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870807"
 ---
 # <a name="project-url-preview-v7-reference"></a>Referenz zu Project URL Preview v7
 
@@ -52,7 +53,7 @@ Die maximale Länge der Abfrage-URL beträgt 2.048 Zeichen. Um sicherzustellen, 
 Informationen zur zulässigen Verwendung und Anzeige der Ergebnisse finden Sie unter [Verwendungs- und Anzeigeanforderungen](use-display-requirements.md). 
 
 > [!NOTE]
-> Einige Anforderungsheader, die für andere Suche APIs eine Bedeutung besitzen, haben keinen Einfluss auf die URL-Vorschau.
+> Einige Anforderungsheader, die für andere Such-APIs eine Bedeutung besitzen, haben keinen Einfluss auf die URL-Vorschau.
 > - Pragma: Der Aufrufer hat keine Kontrolle darüber, ob die URL-Vorschau den Cache verwendet.
 > - User-Agent: Zurzeit stellt die URL Preview-API keine unterschiedlichen Antworten für Aufrufe bereit, die von PCs, Laptops oder mobilen Geräten ausgehen.
 
@@ -66,7 +67,7 @@ Die folgenden Header kann eine Anforderung und Antwort möglicherweise enthalten
 |<a name="market" />BingAPIs-Market|Antwortheader.<br /><br /> Der von der Anforderung verwendete Markt. Das Format lautet \<Sprachcode\>-\<Ländercode\>. Beispiel: en-US.|  
 |<a name="traceid" />BingAPIs-TraceId|Antwortheader.<br /><br /> Die ID des Protokolleintrags, der die Details der Anforderung enthält. Erfassen Sie diese ID, wenn ein Fehler auftritt. Wenn Sie das Problem nicht ermitteln und beheben können, übermitteln Sie diese ID und weitere Informationen an das Supportteam.|  
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Erforderlicher Anforderungsheader.<br /><br /> Der Abonnementschlüssel, den Sie bei der Registrierung für diesen Dienst in [Cognitive Services](https://www.microsoft.com/cognitive-services/) erhalten haben.|  
-|<a name="clientid" />X-MSEdge-ClientID|Optionaler Anforderungs- und Antwortheader.<br /><br /> Bing verwendet diesen Header, um Benutzern bei Aufrufen der Bing-API ein konsistentes Verhalten bereitzustellen. Bing testet häufig neue Funktionen und Verbesserungen und verwendet dabei die Client-ID als Schlüssel für die Zuweisung von Datenverkehr an verschiedene Flights. Wenn Sie für einen Benutzer bei unterschiedlichen Anforderungen nicht dieselbe Client-ID verwenden, weist Bing den Benutzer möglicherweise mehreren widersprüchlichen Flights zu. Die Zuweisung zu mehreren widersprüchlichen Flights kann zu einer inkonsistenten Benutzererfahrung führen. Weist die zweite Anforderung beispielsweise eine andere Flight-Zuweisung als die erste auf, kann dies zu einer unerwarteten Benutzererfahrung führen. Außerdem kann Bing die Client-ID zur Anpassung der Webergebnisse an den Suchverlauf dieser Client-ID verwenden. Dies führt zu einer noch besseren Benutzererfahrung.<br /><br /> Bing verwendet den Header auch, um die Rangfolge der Ergebnisse zu verbessern, indem die Aktivität einer Client-ID analysiert wird. Durch die verbesserte Relevanz erhöht sich die Qualität der von Bing-APIs bereitgestellten Ergebnisse, was wiederum zu höheren Durchklickraten für den API-Consumer führt.<br /><br />Die folgenden Grundregeln gelten bei der Verwendung dieses Headers.<br /><ul><li>Jeder Benutzer, der die Anwendung auf dem Gerät verwendet, muss über eine eindeutige, von Bing generierte Client-ID verfügen.<br /><br/>Wenn Sie diesen Header nicht in die Anforderung einfügen, generiert Bing eine ID, die im Antwortheader „X-MSEdge-ClientID“ zurückgegeben wird. Der einzige Zeitpunkt, bei dem dieser Header NICHT in eine Anforderung eingeschlossen werden sollte, ist bei der erstmaligen Verwendung der App auf dem Gerät.<br /><br/></li><li>Verwenden Sie die Client-ID für jede Anforderung der Bing-API, die die App für diesen Benutzer auf dem Gerät durchführt.<br /><br/></li><li>**ACHTUNG:** Vergewissern Sie sich, dass die Client-ID nicht mit authentifizierbaren Benutzerkontoinformationen verknüpft werden kann.</li><br/><li>Behalten Sie die Client-ID bei. Verwenden Sie ein permanentes HTTP-Cookie, um sicherzustellen, dass die ID in einer Browser-App bei allen Sitzungen verwendet wird. Verwenden Sie kein Sitzungscookie. Verwenden Sie für andere Apps wie z.B. mobile Apps den permanenten Speicher des Geräts, um die ID beizubehalten.<br /><br/>Rufen Sie bei der nächsten Verwendung der App auf dem Gerät durch den Benutzer die gespeicherte Client-ID ab.</li></ul><br /> **HINWEIS:** Bing-Antworten können diesen Header enthalten, müssen es aber nicht. Enthält die Antwort diesen Header, erfassen Sie die Client-ID, und verwenden Sie sie für alle nachfolgenden Bing-Anforderungen des Benutzers auf diesem Gerät.<br /><br /> **HINWEIS:** Wenn Sie den Header „X-MSEdge-ClientID“ einfügen, dürfen Sie in die Anforderung keine Cookies einschließen.|  
+|<a name="clientid" />X-MSEdge-ClientID|Optionaler Anforderungs- und Antwortheader.<br /><br /> Bing verwendet diesen Header, um Benutzern beim Aufrufen der Bing-API ein konsistentes Verhalten bereitzustellen. Bing testet häufig neue Funktionen und Verbesserungen und verwendet dabei die Client-ID als Schlüssel für die Zuweisung von Datenverkehr an verschiedene Flights. Wenn Sie für einen Benutzer bei unterschiedlichen Anforderungen nicht dieselbe Client-ID verwenden, weist Bing den Benutzer möglicherweise mehreren widersprüchlichen Flights zu. Die Zuweisung zu mehreren widersprüchlichen Flights kann zu einer inkonsistenten Benutzererfahrung führen. Weist die zweite Anforderung beispielsweise eine andere Flight-Zuweisung als die erste auf, kann dies zu einer unerwarteten Benutzererfahrung führen. Außerdem kann Bing die Client-ID zur Anpassung der Webergebnisse an den Suchverlauf dieser Client-ID verwenden. Dies führt zu einer noch besseren Benutzererfahrung.<br /><br /> Bing verwendet den Header auch, um die Rangfolge der Ergebnisse zu verbessern, indem es die Aktivität der Client-ID analysiert. Durch die verbesserte Relevanz erhöht sich die Qualität der von Bing-APIs bereitgestellten Ergebnisse, was wiederum zu höheren Durchklickraten für den API-Consumer führt.<br /><br />Die folgenden Grundregeln gelten bei der Verwendung dieses Headers.<br /><ul><li>Jeder Benutzer, der die Anwendung auf dem Gerät verwendet, muss über eine eindeutige, von Bing generierte Client-ID verfügen.<br /><br/>Wenn Sie diesen Header nicht in die Anforderung einfügen, generiert Bing eine ID, die im Antwortheader „X-MSEdge-ClientID“ zurückgegeben wird. Der einzige Zeitpunkt, bei dem dieser Header NICHT in eine Anforderung eingeschlossen werden sollte, ist bei der erstmaligen Verwendung der App auf dem Gerät.<br /><br/></li><li>Verwenden Sie die Client-ID für jede Anforderung der Bing-API, die die App für diesen Benutzer auf dem Gerät durchführt.<br /><br/></li><li>**ACHTUNG:** Vergewissern Sie sich, dass die Client-ID nicht mit authentifizierbaren Benutzerkontoinformationen verknüpft werden kann.</li><br/><li>Behalten Sie die Client-ID bei. Verwenden Sie ein permanentes HTTP-Cookie, um sicherzustellen, dass die ID in einer Browser-App bei allen Sitzungen verwendet wird. Verwenden Sie kein Sitzungscookie. Verwenden Sie für andere Apps wie z.B. mobile Apps den permanenten Speicher des Geräts, um die ID beizubehalten.<br /><br/>Rufen Sie bei der nächsten Verwendung der App auf dem Gerät durch den Benutzer die gespeicherte Client-ID ab.</li></ul><br /> **HINWEIS:** Bing-Antworten können diesen Header enthalten, müssen es aber nicht. Enthält die Antwort diesen Header, erfassen Sie die Client-ID, und verwenden Sie sie für alle nachfolgenden Bing-Anforderungen des Benutzers auf diesem Gerät.<br /><br /> **HINWEIS:** Wenn Sie den Header „X-MSEdge-ClientID“ einfügen, dürfen Sie in die Anforderung nicht gleichzeitig Cookies einschließen.|  
 |<a name="clientip" />X-MSEdge-ClientIP|Optionaler Anforderungsheader.<br /><br /> Die IPv4- oder IPv6-Adresse des Clientgeräts. Die IP-Adresse wird verwendet, um den Standort des Benutzers zu ermitteln. Bing verwendet die Standortinformationen für ein sicheres Suchverhalten.<br /><br />  Verschleiern Sie nicht die Adresse (z.B. durch Ändern des letzten Oktetts in 0). Durch Verschleiern der Adresse befindet sich Ihr Standort nicht in der Nähe des tatsächlichen Gerätestandorts, wodurch Bing möglicherweise fehlerhafte Ergebnisse anzeigt.|  
 <br /><br /></li></ul>   
 
@@ -76,9 +77,9 @@ Die Anforderung kann die folgenden Abfrageparameter enthalten. Die erforderliche
   
 |NAME|Wert|Typ|Erforderlich|  
 |----------|-----------|----------|--------------|  
-|<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter [Marktcodes](#market-codes).<br /><br /> **HINWEIS:** Die URL Preview-API unterstützt zurzeit nur die geografische Region USA und die Sprache Englisch.<br /><br />|Zeichenfolge|Ja|  
-|<a name="query" />q|Die URL, für die eine Vorschau angezeigt werden soll.|Zeichenfolge|Ja|  
-|<a name="responseformat" />responseFormat|Der Medientyp, der für die Antwort verwendet werden soll. Die folgenden Werte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich:<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Der Standardwert ist JSON. Weitere Informationen zu den JSON-Objekten, die die Antwort enthält, finden Sie unter [Antwortobjekte](#response-objects).<br /><br />  Wenn Sie JsonLd angeben, enthält der Antworttext die JSON-LD-Objekte, die die Suchergebnisse enthalten. Informationen zu JSON-LD finden Sie unter [JSON-LD](http://json-ld.org/).|Zeichenfolge|Nein |
+|<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter [Marktcodes](#market-codes).<br /><br /> **HINWEIS:** Die URL Preview-API unterstützt zurzeit nur die geografische Region USA und die Sprache Englisch.<br /><br />|Zeichenfolge|JA|  
+|<a name="query" />q|Die URL, für die eine Vorschau angezeigt werden soll.|Zeichenfolge|JA|  
+|<a name="responseformat" />responseFormat|Der Medientyp, der für die Antwort verwendet werden soll. Die folgenden Werte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Der Standardwert ist JSON. Weitere Informationen zu den JSON-Objekten, die die Antwort enthält, finden Sie unter [Antwortobjekte](#response-objects).<br /><br />  Wenn Sie JsonLd angeben, enthält der Antworttext die JSON-LD-Objekte, die die Suchergebnisse enthalten. Informationen zu JSON-LD finden Sie unter [JSON-LD](http://json-ld.org/).|Zeichenfolge|Nein |
 |<a name="safesearch"/>safeSearch|Ungültige, nicht jugendfreie Inhalte oder illegale Inhalte. Diese werden mit dem Fehlercode 400 blockiert, und das Flag *isFamilyFriendly* wird nicht zurückgegeben. <p>Für legale nicht jugendfreie Inhalte wird das Verhalten unten beschrieben. Es wird der Statuscode 200 zurückgegeben, und das Flag *IsFamilyFriendly* wird auf „false“ festgelegt.<ul><li>safeSearch=strict: Titel, Beschreibung, URL und Bild werden nicht zurückgegeben.</li><li>safeSearch=moderate: Titel, URL und Beschreibung werden abgerufen, das beschreibende Bild aber nicht.</li><li>safeSearch=off: Alle Antwortobjekte/-elemente (Titel, URL, Beschreibung und Bild) werden abgerufen.</li></ul> |Zeichenfolge|Nicht erforderlich. </br> Standardmäßig wird safeSearch=strict verwendet.| 
 
 ## <a name="response-objects"></a>Antwortobjekte  
@@ -95,7 +96,7 @@ Definiert den aufgetretenen Fehler.
   
 |Element|BESCHREIBUNG|Typ|  
 |-------------|-----------------|----------|  
-|<a name="error-code" />Code|Der Fehlercode, der die Kategorie des Fehlers angibt. Eine Liste der möglichen Codes finden Sie unter [Fehlercodes](#error-codes).|Zeichenfolge|  
+|<a name="error-code" />code|Der Fehlercode, der die Kategorie des Fehlers angibt. Eine Liste der möglichen Codes finden Sie unter [Fehlercodes](#error-codes).|Zeichenfolge|  
 |<a name="error-message" />message|Eine Beschreibung des Fehlers.|Zeichenfolge|  
 |<a name="error-moredetails" />moreDetails|Eine Beschreibung, die zusätzliche Informationen zum Fehler enthält.|Zeichenfolge|  
 |<a name="error-parameter" />parameter|Der Abfrageparameter in der Anforderung, der den Fehler verursacht hat.|Zeichenfolge|  

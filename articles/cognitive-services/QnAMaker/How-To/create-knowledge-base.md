@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 274c2289c75f44c5a1c8dd3799612a23f46a6d67
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c9d36014bc364d8b016221e6b9ff380b0bd4b8ed
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037693"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854166"
 ---
 # <a name="create-a-knowledge-base"></a>Erstellen einer Wissensdatenbank
 
@@ -28,9 +28,7 @@ Mit QnA Maker ist es einfach, Ihre vorhandenen Datenquellen beim Erstellen einer
 
 ## <a name="steps"></a>Schritte
 
-1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen am [QnA Maker-Portal](https://qnamaker.ai) an, und wählen Sie **Neuen Dienst erstellen** aus.
-
-    ![Erstellen der Knowledge Base ](../media/qnamaker-how-to-create-kb/create-new-service.png)
+1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen am [QnA Maker-Portal](https://qnamaker.ai) an, und wählen Sie **Wissensdatenbank erstellen** aus.
 
 2. Wenn Sie noch keinen QnA Maker-Dienst erstellt haben, wählen Sie **Create a QnA service** (QnA-Dienst erstellen) aus. 
 

@@ -1,20 +1,21 @@
 ---
-title: Endpunkt für die Entitätssuche | Microsoft-Dokumentation
-description: Überblick über den API-Endpunkt für die Entitätssuche.
+title: Endpunkt für die Bing-Entitätssuche
+titlesuffix: Azure Cognitive Services
+description: Überblick über den API-Endpunkt für die Bing-Entitätssuche.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: v-gedod
-ms.openlocfilehash: a2557c6000445544b3b47a05d7d356ccaa9928b4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d781a4b3cd0119f5624b4dd20b514894ea339414
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372763"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816581"
 ---
 # <a name="entity-search-endpoint"></a>Endpunkt für die Entitätssuche
 Die **API für die Entitätssuche** umfasst einen Endpunkt, der basierend auf einer Abfrage Entitäten aus dem Internet zurückgibt.
@@ -33,7 +34,7 @@ Weitere Informationen zu Headern, Parametern, Marktcodes, Antwortobjekten, Fehle
 Die Antwort auf eine Entitätssuchanforderung enthält die Ergebnisse als JSON-Objekten. Beispiele für Ergebnisse finden Sie unter [Erste Schritte](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/quick-start).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die **Bing**-APIs unterstützen Suchaktionen, die Ergebnisse entsprechend ihrem Typ zurückgeben. Alle Suchendpunkte geben Ergebnisse als JSON-Antwortobjekte zurück.  Alle Endpunkte unterstützt Abfragen, die eine bestimmte Sprache und/oder die Position von Längengrad, Breitengrad und Suchradius zurückgeben.
+Die **Bing**-APIs unterstützen Suchaktionen, die Ergebnisse gemäß ihrem Typ zurückgeben. Alle Suchendpunkte geben Ergebnisse als JSON-Antwortobjekte zurück.  Alle Endpunkte unterstützen Abfragen, die eine bestimmte Sprache und/oder einen bestimmten Ort nach Längengrad, Breitengrad und Suchradius zurückgeben.
 
 Vollständige Informationen zu den Parametern, die von jedem Endpunkt unterstützt werden, finden Sie auf den Referenzseiten für jeden Typ.
 Beispiele für die Verwendung der API für die Entitätssuche finden Sie unter [Erste Schritte](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/quick-start) und [Anpassen der Größe und Zuschneiden von Miniaturansichten](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/resize-and-crop-thumbnails).

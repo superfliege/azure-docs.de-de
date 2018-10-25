@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: fb9193066c9501341efb779b9f9e2ccace02cccf
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: d0ad7093249bea761e0a36c6fffab8cdd151a662
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888203"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268020"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>Verwenden der Eigenschaft „Erwartete Entität“ von Aktionen
 
@@ -25,7 +25,7 @@ In diesem Tutorial wird das Feld „Erwartete Entität“ von Aktionen veranscha
 
 [![Tutorial 4 – Vorschau](http://aka.ms/cl-tutorial-04-preview)](http://aka.ms/blis-tutorial-04)
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
     npm run tutorial-general
@@ -63,9 +63,10 @@ Wenn das Feld „Erwartete Entität“ einer Aktion auf „$entity“ festgelegt
 2. Geben Sie im Feld „Antwort“ die Frage „Wie lautet Ihr Name?“ ein.
 3. Geben Sie im Feld „Erwartete Entitäten“ die Zeichenfolge „$name“ ein. Klicken Sie auf Speichern.
     - Dieser Wert bedeutet Folgendes: Wenn diese Frage gestellt wird und für die Benutzerantwort keine Entitäten erkannt werden, sollte der Bot davon ausgehen, dass die gesamte Antwort des Benutzers diese Entität ist.
+    - Die Entität wird automatisch als disqualifizierende Entität hinzugefügt. 
 2. Klicken Sie auf „Aktionen“, und klicken Sie dann auf „Neue Aktion“, um eine zweite Aktion zu erstellen.
 3. Geben Sie im Feld „Antwort“ die Grußformel „Hallo $name“ ein.
-    - Die Entität wird automatisch als erforderliche Entität hinzugefügt. 
+    - Die Entität wird automatisch als erforderliche Entität hinzugefügt.
 4. Klicken Sie auf Speichern.
 
 Jetzt sind zwei Aktionen vorhanden.
@@ -111,7 +112,7 @@ In den folgenden Beispielen wird die Heuristik „erwartete Entität“ ausgelö
 2. Geben Sie „Hallo“ ein.
 3. Geben Sie als Antwort auf die Frage „Wie lautet Ihr Name?“ den Satz „Ich heiße Frank“ ein.
     - Der gesamte Ausdruck wird hervorgehoben. Das liegt daran, dass das statistische Modell keinen Namen gefunden hat, sodass die Heuristik ausgelöst und die gesamte Antwort als Namensentität ausgewählt wurde.
-2. Um dies zu korrigieren, klicken Sie auf den markierten Ausdruck, und klicken Sie dann auf das rote X. 
+2. Um dies zu korrigieren, klicken Sie auf den markierten Ausdruck, und klicken Sie dann auf das rote Papierkorbsymbol. 
 3. Klicken Sie zum Auswählen auf „Frank“, und klicken Sie dann auf „name“.
 2. Klicken Sie auf „Bewertungsaktionen“.
 3. Wählen Sie „Hallo $name“ aus.

@@ -1,22 +1,27 @@
 ---
-title: analyze-Methode in der API für die linguistische Analyse | Microsoft-Dokumentation
+title: Analyze-Methode – API für linguistische Analyse
+titlesuffix: Azure Cognitive Services
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe der analyze-Methode in der API für linguistische Analyse bestimmte Eingaben in natürlicher Sprache analysieren.
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
-ms.openlocfilehash: b17a00f31845bfa05572dff7ca94e9a1ffd69586
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 87df00ae5ca12b168f2e1c03850da2e94cec350b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373210"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239301"
 ---
 # <a name="analyze-method"></a>analyze-Methode
+
+> [!IMPORTANT]
+> Die Vorschauversion für die linguistische Analyse wurde am 9. August 2018 außer Betrieb genommen. Es wird empfohlen, [Azure Machine Learning-Textanalysemodule](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) für die Textverarbeitung und -analyse zu verwenden.
 
 Mit der REST-API **analyze** kann eine bestimmte Eingabe in natürlicher Sprache analysiert werden.
 Dies kann beispielsweise lediglich die Suche nach [Sätzen und Token](Sentences-and-Tokens.md) innerhalb dieser Eingabe, die Suche nach [Wortarttags](POS-tagging.md) oder die Suche nach der [Konstituentenstruktur](Constituency-Parsing.md) beinhalten.
@@ -35,12 +40,12 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 NAME | Typ | Erforderlich | BESCHREIBUNG
 -----|-------|----------|------------
-**language**    | Zeichenfolge | Ja | Die zwei Buchstaben des ISO-Sprachcodes, der für die Analyse verwendet werden soll. Beispiel: „en“ für Englisch.
-**analyzerIds** | Liste von Zeichenfolgen | Ja | Liste von GUIDs der Analysetools, die angewendet werden sollen. Weitere Informationen finden Sie in der Dokumentation zu Analysetools.
-**text**        | Zeichenfolge | Ja | Die zu analysierende Rohdateneingabe. Hierbei kann es sich um eine kurze Zeichenfolge handeln, z.B. ein Wort oder einen Ausdruck, einen vollständigen Satz oder einen ganzen Absatz bzw. eine ganze Abhandlung.
+**language**    | Zeichenfolge | JA | Die zwei Buchstaben des ISO-Sprachcodes, der für die Analyse verwendet werden soll. Beispiel: „en“ für Englisch.
+**analyzerIds** | Liste von Zeichenfolgen | JA | Liste von GUIDs der Analysetools, die angewendet werden sollen. Weitere Informationen finden Sie in der Dokumentation zu Analysetools.
+**text**        | Zeichenfolge | JA | Die zu analysierende Rohdateneingabe. Hierbei kann es sich um eine kurze Zeichenfolge handeln, z.B. ein Wort oder einen Ausdruck, einen vollständigen Satz oder einen ganzen Absatz bzw. eine ganze Abhandlung.
 
-<br>
 ## <a name="response-json"></a>Antwort (JSON)
+
 Ein Array von Analyseausgaben, eines für jedes in der Anforderung angegebene Attribut.
 
 Die Ergebnisse sehen wie folgt aus:
@@ -138,8 +143,6 @@ Um das Token zu finden, das dem jeweiligen Wortarttag entspricht, sollten Sie au
 Das Ergebnis ist eine Liste von Zeichenfolgen, eine Analysestruktur für jeden in der Eingabe gefundenen Satz.
 Die Analysestrukturen werden in eingeklammerter Form dargestellt.
 
-<br>
-
 ## <a name="example"></a>Beispiel
 
 `POST /analyze`
@@ -151,7 +154,7 @@ Anforderungstext: JSON-Nutzlast
   "analyzerIds": [
     "4FA79AF1-F22C-408D-98BB-B7D7AEEF7F04",
     "22A6B758-420F-4745-8A3C-46835A67C0D2" ],
-  "text": "Hi, Tom! How are you today?" 
+  "text": "Hi, Tom! How are you today?"
 }
 ```
 
@@ -159,13 +162,12 @@ Antwort: JSON
 ```json
 [
   {
-    "analyzerId": "4FA79AF1-F22C-408D-98BB-B7D7AEEF7F04", 
+    "analyzerId": "4FA79AF1-F22C-408D-98BB-B7D7AEEF7F04",
     "result": [ ["NNP",",","NNP","."], ["WRB","VBP","PRP","NN","."] ]
   },
   {
-    "analyzerId": "22A6B758-420F-4745-8A3C-46835A67C0D2", 
+    "analyzerId": "22A6B758-420F-4745-8A3C-46835A67C0D2",
     "result":["(TOP (S (NNP Hi) (, ,) (NNP Tom) (. !)))","(TOP (SBARQ (WHADVP (WRB How)) (SQ (VP (VBP are)) (NP (PRP you)) (NN today) (. ?))))"]
   }
 ]
 ```
-

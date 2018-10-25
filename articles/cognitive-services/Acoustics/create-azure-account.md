@@ -1,20 +1,21 @@
 ---
-title: Einrichten von Azure-Konten für Acoustics – Cognitive Services
+title: Einrichten von Azure-Konten für Project Acoustics
+titlesuffix: Azure Cognitive Services
 description: Befolgen Sie diese Anleitung zum Einrichten von Azure Batch- und Storage-Konten, die für die Verwendung mit Acoustics erforderlich sind.
 services: cognitive-services
 author: ashtat
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: d5e78df2cb17e8275aef3694dda90a705ef4bdaa
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 05f7c435ca61930da6270c54e71c784f1b7aebcc
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181227"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900622"
 ---
 # <a name="create-an-azure-batch-account"></a>Erstellen eines Azure Batch-Kontos
 Befolgen Sie diese Anleitung zum Einrichten von Azure Batch- und Storage-Konten, die für die Verwendung mit Acoustics erforderlich sind. Informationen zum Unity-Plug-In, das im Rahmen von Project Acoustics entwickelt wurde, finden Sie unter [Was ist Acoustics](what-is-acoustics.md). Informationen dazu, wie Acoustics in das Unity-Projekt eingebunden wird, finden Sie unter [Erste Schritte](getting-started.md).  

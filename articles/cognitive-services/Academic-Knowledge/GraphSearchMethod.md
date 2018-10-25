@@ -1,20 +1,21 @@
 ---
-title: graph search-Methode in der Academic Knowledge-API | Microsoft-Dokumentation
-description: Verwenden Sie die graph search-Methode in der Academic Knowledge-API, um eine Reihe von akademischen Entitäten basierend auf bestimmten Diagrammmustern in Microsoft Cognitive Services zurückzugeben.
+title: Graph Search-Methode – Academic Knowledge-API
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die graph search-Methode in der Academic Knowledge-API, um eine Reihe von akademischen Entitäten basierend auf bestimmten Diagrammmustern zurückzugeben.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: d811db117c934c0d41fbfea1220d241cc022e4a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 83f29106d72f564f894c968102b703ab6bb5d8c2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372747"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902382"
 ---
 # <a name="graph-search-method"></a>graph search-Methode
 
@@ -30,7 +31,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 ## <a name="request-parameters"></a>Anforderungsparameter  
 NAME     | Wert | Erforderlich?  | BESCHREIBUNG
 -----------|-----------|---------|--------
-**mode**       | Textzeichenfolge | Ja | Der Name des Modus, den Sie verwenden möchten. Der Wert lautet entweder *json* oder *lambda*.
+**mode**       | Textzeichenfolge | JA | Der Name des Modus, den Sie verwenden möchten. Der Wert lautet entweder *json* oder *lambda*.
 
 Die graph search-Methode muss über eine HTTP POST-Anforderung aufgerufen werden. The POST-Anforderung muss den Content-Type-Header enthalten: **application/json**.
 

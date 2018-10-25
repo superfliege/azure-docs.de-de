@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: 1ab7aa9ecdd51809f6e1d82958f21b78b16e7e63
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: a39ae42ba2344cb39318809e2f120e01a75344d7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859556"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025785"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android
 
@@ -905,7 +905,7 @@ Zum Aktivieren der Authentifizierung in Ihrer App sind vier Schritte erforderlic
 * Schränken Sie die Tabellenberechtigungen ausschließlich auf authentifizierte Benutzer im App Service-Back-End ein.
 * Fügen Sie Ihrer App Authentifizierungscode hinzu.
 
-Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die SID eines authentifizierten Benutzers verwenden, um Anfragen zu verändern.  Weitere Informationen finden Sie unter [Erste Schritte mit Authentifizierungen] und in der Dokumentation des Server-SDK.
+Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die SID eines authentifizierten Benutzers verwenden, um Anfragen zu verändern.  Weitere Informationen finden Sie unter [Erste Schritte mit der Authentifizierung] und in der Dokumentation des Server-SDK.
 
 ### <a name="caching"></a>Authentifizierung: Serverfluss
 
@@ -988,7 +988,7 @@ dependencies {
 }
 ```
 
-Rufen Sie die ID des angemeldeten Benutzers mit der **getUserId**-Methode aus einem **MobileServiceUser** ab. Ein Beispiel zur Verwendung von „Futures“ zum Abrufen der asynchronen APIs für die Anmeldung finden Sie unter [Erste Schritte mit Authentifizierungen].
+Rufen Sie die ID des angemeldeten Benutzers mit der **getUserId**-Methode aus einem **MobileServiceUser** ab. Ein Beispiel zur Verwendung von „Futures“ zum Abrufen der asynchronen APIs für die Anmeldung finden Sie unter [Erste Schritte mit der Authentifizierung].
 
 > [!WARNING]
 > Bei dem erwähnten URL-Schema muss die Groß-/Kleinschreibung beachtet werden.  Stellen Sie sicher, dass alle Vorkommen von `{url_scheme_of_you_app}` die gleiche Groß-/Kleinschreibung aufweisen.
@@ -1220,7 +1220,7 @@ private class ProgressFilter implements ServiceFilter {
             public void onSuccess(ServiceFilterResponse response) {
                 runOnUiThread(new Runnable() {
                     @Override
-                    pubic void run() {
+                    public void run() {
                         if (mProgressBar != null)
                             mProgressBar.setVisibility(ProgressBar.GONE);
                     }
@@ -1290,7 +1290,7 @@ Dieser Code muss vor dem Erstellen eines Verweises auf den mobilen Client mithil
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [Mobile Services SDK for Android]: http://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure portal]: https://portal.azure.com
-[Erste Schritte mit Authentifizierungen]: app-service-mobile-android-get-started-users.md
+[Erste Schritte mit der Authentifizierung]: app-service-mobile-android-get-started-users.md
 [1]: https://static.javadoc.io/com.google.code.gson/gson/2.8.5/com/google/gson/JsonObject.html
 [2]: http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
 [3]: https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.5

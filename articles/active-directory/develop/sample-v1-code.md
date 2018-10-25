@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a8d1c94ac4357c7833f6db7cb9b4eaffa00c0396
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 46b66a6e718f18b76db6332487c350c2c199c342
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963797"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957773"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory-Codebeispiele (v1.0-Endpunkt)
 
@@ -39,7 +39,7 @@ Informationen zum grundlegenden Szenario für jeden Beispieltyp finden Sie unter
 
 Schreiben Sie auch Beiträge zu unseren Beispielen auf GitHub. Wie das geht, erfahren Sie unter [Microsoft Azure Active Directory – Beispiele und Dokumentation](https://github.com/Azure-Samples?page=3&query=active-directory).
 
-## <a name="single-page-applications"></a>Single-Page-Webanwendung
+## <a name="single-page-applications"></a>Single-Page-Webanwendungen
 
 Dieses Beispiel zeigt, wie Sie eine Single-Page-Webanwendung schreiben, die mit Azure AD gesichert ist.
 
@@ -125,7 +125,7 @@ Beispiele und Lernprogramme, die verschiedene Verwendungsmuster für die Microso
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Entwicklerhandbuch zu Azure Active Directory](azure-ad-developers-guide.md)
+[Entwicklerhandbuch zu Azure Active Directory](v1-overview.md)
 
 [Azure Active Directory-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md)
 

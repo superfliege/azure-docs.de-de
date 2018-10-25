@@ -4,17 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Lernen Sie die Unterschiede zwischen Bing-Spracheingabe und dem Spracherkennungsdienst aus Entwicklersicht kennen und migrieren Sie Ihre Anwendung, um den Spracherkennungsdienst zu nutzen.
 services: cognitive-services
 author: wsturman
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: e72cf547ac911b22a03cae6032351c8c0f22de8e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: baf9b9cd9b3f57c1d708dd404d59c036df6c169f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884848"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466646"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Spracherkennungsdienst
 
@@ -89,7 +90,7 @@ Informationen zur Unterstützung von Spracherkennungsdienst, SDK und API finden 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Kostenloses Testen des Spracherkennungsdiensts](get-started.md)
-* [Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Spracherkennungsdienst-SDK](quickstart-csharp-uwp.md)
+* [Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Spracherkennungs-SDK](quickstart-csharp-uwp.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Spracherkennungsdienst: Anmerkungen zu dieser Version](releasenotes.md)

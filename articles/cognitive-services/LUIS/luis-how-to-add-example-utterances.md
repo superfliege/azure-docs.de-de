@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 387668263a6bab6e12a21adf04aebfbbf108a006
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036489"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888287"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Hinzufügen von Beispieläußerungen und -beschriftungen bei Entitäten
 
@@ -92,12 +92,12 @@ Fügen Sie der Listenentität ein Synonym hinzu, indem Sie das Wort bzw. den Aus
 
 Wählen Sie in der Äußerung das Synonym, z.B. `aqua` für Wasser, und anschließend den Namen der Entität in der Dropdownliste aus, z.B. **Drink**. Wählen Sie dann **Set as synonym** (Als Synonym festlegen) und dann das Listenelement mit der synonymen Bedeutung aus, wie etwa **Wasser**.
 
-![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit der hervorgehoben Option „Create a new synonym“ (Neues Synonym erstellen)](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
+![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit der hervorgehoben Option „Create a new normalized view“ (Neue normalisierte Ansicht erstellen)](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
 
 ## <a name="create-new-item-for-list-entity"></a>Erstellen eines neuen Elements für die Listenentität
-Fügen Sie der Listenentität ein neues Element hinzu, indem Sie das Wort bzw. den Ausdruck in der Äußerung auswählen. Wenn Sie der Getränkeliste das Wort `tea` als neues Element hinzufügen möchten, führen Sie die folgenden Schritte durch:
+Fügen Sie der Listenentität ein neues Element hinzu, indem Sie das Wort bzw. den Ausdruck in der Äußerung auswählen. Wenn Sie der Mitarbeiterliste das Wort `Bob Smith` als neues Element hinzufügen möchten, führen Sie die folgenden Schritte durch:
 
-Wählen Sie in der Äußerung das Wort für das neue Listenelement aus, z.B. `tea`, wählen Sie anschließend den Namen der Listenentität in der Dropdownliste aus, z.B. **Drink**, und wählen Sie dann **Create a new synonym** (Neues Synonym erstellen) aus. 
+Wählen Sie in der Äußerung das Wort oder den Ausdruck für das neue Listenelement aus, z. B. `Bob Smith`, wählen Sie anschließend den Namen der Listenentität in der Dropdownliste aus, z. B. **Employee**, und wählen Sie dann **Create a new normalized view** (Neue normalisierte Ansicht erstellen) aus. 
 
 ![Screenshot: Hinzufügen eines neuen Listenelements](./media/luis-how-to-add-example-utterances/list-entity-create-new-item.png)
 

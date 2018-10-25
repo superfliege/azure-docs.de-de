@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: shvija
-ms.openlocfilehash: 27052759ccc4664ea95ea19cb52bebeec6fec5ae
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6d5b52c8a5dd0306a349cac5e67eecc809005c6f
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803357"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429183"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Empfangen von Ereignissen von Azure Event Hubs mithilfe von Node.js
 
@@ -37,7 +37,7 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 - Ein aktives Azure-Konto. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen.
 
 ## <a name="create-a-namespace-and-event-hub"></a>Erstellen eines Namespace und eines Event Hubs
-Zuerst erstellen Sie über das Azure-Portal einen Event Hubs-Namespace mit einem Event Hub. Besitzen Sie noch keinen, können Sie diese Entitäten anhand der Anweisungen unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md) erstellen.
+Zunächst erstellen Sie über das Azure-Portal einen Event Hubs-Namespace mit einem Event Hub. Besitzen Sie noch keinen, können Sie diese Entitäten anhand der Anweisungen unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md) erstellen.
 
 ## <a name="create-a-storage-account-and-container"></a>Erstellen eines Speicherkontos und Containers
 Um den Ereignisprozessorhost verwenden zu können, benötigen Sie ein Azure Storage-Konto. Statusinformationen, etwa Leases auf Partitionen und Prüfpunkte im Ereignisstream, werden über einen Azure Storage-Container zwischen den Empfängern freigegeben. Befolgen Sie die Anweisungen [in diesem Artikel](../storage/common/storage-quickstart-create-account.md), um ein Azure Storage-Konto zu erstellen.
@@ -57,7 +57,7 @@ Das von Ihnen geklonte SDK enthält mehrere Beispiele, die veranschaulichen, wie
 
 1. Öffnen Sie das Projekt in Visual Studio Code. 
 2. Erstellen Sie im Ordner **processor** eine Datei mit dem Namen **.env**. Kopieren Sie Beispielumgebungsvariablen aus der Datei **sample.env** im Stammordner, und fügen Sie sie ein.
-3. Konfigurieren Sie die Verbindungszeichenfolge und den Namen Ihres Event Hubs sowie den Speicherendpunkt. Die Verbindungszeichenfolge für Ihren Event Hub können Sie im Azure-Portal auf der Event Hub-Seite unter **RootManageSharedAccessKey** aus **Verbindungszeichenfolge – Primärschlüssel** kopieren. Ausführliche Schritte finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](event-hubs-quickstart-portal.md#create-an-event-hubs-namespace).
+3. Konfigurieren Sie die Verbindungszeichenfolge und den Namen Ihres Event Hubs sowie den Speicherendpunkt. Die Verbindungszeichenfolge für Ihren Event Hub können Sie im Azure-Portal auf der Event Hub-Seite unter **RootManageSharedAccessKey** aus **Verbindungszeichenfolge – Primärschlüssel** kopieren. Ausführliche Schritte finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md#create-an-event-hubs-namespace).
 4. Navigieren Sie in der Azure-Befehlszeilenschnittstelle zum Ordnerpfad **processor**. Führen Sie die folgenden Befehle aus, um Knotenpakete zu installieren und das Projekt zu erstellen:
 
     ```nodejs
