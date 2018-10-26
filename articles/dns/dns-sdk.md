@@ -1,5 +1,5 @@
 ---
-title: Erstellen von DNS-Zonen und Ressourceneintragssätzen für Azure DNS mithilfe des .NET SDK | Microsoft-Dokumentation
+title: Erstellen von DNS-Zonen und Ressourceneintragssätzen für Azure DNS mithilfe des .NET SDK | Microsoft Docs
 description: Enthält Informationen zum Erstellen von DNS-Zonen und Ressourceneintragssätzen in Azure DNS mithilfe des .NET SDK.
 services: dns
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: 7acc0fa4c3654c96ac0f8f1baed7ea5b7b306376
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: a814c543b9f4bfe6717e639342d82ed13dac35b0
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829768"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954605"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Erstellen von DNS-Zonen und -Ressourceneintragssätzen mithilfe des .NET SDK
 
@@ -28,7 +28,7 @@ Sie können die Vorgänge zum Erstellen, Löschen oder Aktualisieren von DNS-Zon
 
 Normalerweise wird der programmgesteuerte Zugriff auf Azure-Ressourcen über ein dediziertes Konto und nicht über Ihre eigenen Benutzeranmeldeinformationen gewährt. Diese dedizierten Konten werden als „Dienstprinzipalkonten“ bezeichnet. Zum Verwenden des Azure DNS SDK-Beispielprojekts müssen Sie zuerst ein Dienstprinzipalkonto erstellen und diesem die richtigen Berechtigungen zuweisen.
 
-1. Führen Sie diese [Anleitungsschritte](../azure-resource-manager/resource-group-authenticate-service-principal.md) aus, um ein Dienstprinzipalkonto zu erstellen (für das Azure DNS SDK-Beispielprojekt wird die kennwortbasierte Authentifizierung vorausgesetzt).
+1. Führen Sie diese [Anleitungsschritte](../active-directory/develop/howto-authenticate-service-principal-powershell.md) aus, um ein Dienstprinzipalkonto zu erstellen (für das Azure DNS SDK-Beispielprojekt wird die kennwortbasierte Authentifizierung vorausgesetzt).
 2. Erstellen Sie eine Ressourcengruppe ([Anleitung](../azure-resource-manager/resource-group-template-deploy-portal.md)).
 3. Verwenden Sie Azure RBAC, um dem Dienstprinzipalkonto Berechtigungen vom Typ „DNS Zone Contributor“ (DNS-Zone – Mitwirkender) für die Ressourcengruppe zu gewähren ([Anleitung](../role-based-access-control/role-assignments-portal.md)).
 4. Bearbeiten Sie die Datei „program.cs“ wie folgt, wenn Sie das Azure DNS SDK-Beispielprojekt verwenden:

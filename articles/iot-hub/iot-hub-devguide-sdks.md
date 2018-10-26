@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dobett
-ms.openlocfilehash: 1eeb0afdd5ffcbe00357914d6a98c8d0b3d452ec
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: d58c86c17cdab360f37a09b28bdf705cb781a620
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017958"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023821"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Verstehen und Verwenden von Azure IoT Hub SDKs
 
@@ -44,7 +44,7 @@ Azure IoT Hub Device SDK für C wurde in ANSI C (C99) geschrieben und ist auf Po
 
 * Installation über [apt-get, MBED, Arduino-IDE oder Nuget](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [Quellcode](https://github.com/Azure/azure-iot-sdk-c)
-* [API-Referenz](https://azure.github.io/azure-iot-sdk-c/index.html)
+* [API-Referenz](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 * [Modulreferenz](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_module_client.h)
 
 Azure IoT Hub Device SDK für Java: 
@@ -65,13 +65,13 @@ Azure IoT Hub Device SDK für Python:
 
 * Installation über [pip](https://pypi.python.org/pypi/azure-iothub-device-client/)
 * [Quellcode](https://github.com/Azure/azure-iot-sdk-python)
-* API-Referenz: siehe [C-API-Referenz](https://azure.github.io/azure-iot-sdk-c/index.html)
+* API-Referenz: siehe [C-API-Referenz](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 Azure IoT Hub Device SDK für iOS: 
 
 * Installation über [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient)
 * [Beispiele](https://github.com/Azure-Samples/azure-iot-samples-ios)
-* API-Referenz: siehe [C-API-Referenz](https://azure.github.io/azure-iot-sdk-c/index.html)
+* API-Referenz: siehe [C-API-Referenz](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 > [!NOTE]
 > In den „Readme“-Dateien in den GitHub-Repositorys finden Sie Informationen zum Verwenden sprach- und plattformspezifischer Paket-Manager zum Installieren von Binärdateien und Abhängigkeiten auf Ihrem Entwicklungscomputer.

@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: 4c4ff981560fc4025c6bf782df71e648a1356c3f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: dd3b693271326c85688a275a65b67ad6257220e3
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248141"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024761"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Azure IoT-Geräte-SDK für C – weitere Informationen zu IoTHubClient
 
@@ -27,7 +27,7 @@ Am Ende dieses Artikels werden verschiedene Themen besprochen, u.a. weitere Info
 
 Zur Erläuterung dieser Themen verwenden wir die **IoTHubClient**-SDK-Beispiele. Sehen Sie sich für weitere Informationen die Anwendungen **iothub\_client\_sample\_http** und **iothub\_client\_sample\_amqp** an, die im Azure IoT-Geräte-SDK für C enthalten sind. Alles nachfolgend Beschriebene wird in diesen Beispielen veranschaulicht.
 
-Das [**Azure IoT-Geräte-SDK für C**](https://github.com/Azure/azure-iot-sdk-c) finden Sie im GitHub-Repository und ausführliche Informationen zur API in der [C-API-Referenz](https://azure.github.io/azure-iot-sdk-c/index.html).
+Das [**Azure IoT-Geräte-SDK für C**](https://github.com/Azure/azure-iot-sdk-c) finden Sie im GitHub-Repository und ausführliche Informationen zur API in der [C-API-Referenz](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-lower-level-apis"></a>Die Low-Level-APIs
 

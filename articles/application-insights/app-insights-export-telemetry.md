@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 31d7f0fd70edf7bbf05a3a180baa6cc078e02ba1
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: bc505aa9dc2258a8752d1986489957c401e4e4c4
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585474"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023505"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
@@ -39,7 +39,7 @@ Nachdem Ihre Daten vom Fortlaufende Export in den Speicher kopiert wurden (wo si
 
 2. Wählen Sie die Telemetriedatentypen aus, die Sie exportieren möchten.
 
-3. Erstellen oder wählen Sie ein [Azure-Speicherkonto] (../storage/common/storage-introduction.md), in dem Sie die Daten speichern möchten. Weitere Informationen zu Preisoptionen für Speicher finden Sie auf der [Seite mit offiziellen Preisen](https://azure.microsoft.com/pricing/details/storage/).
+3. Erstellen oder wählen Sie ein [Azure-Speicherkonto](../storage/common/storage-introduction.md), in dem Sie die Daten speichern möchten. Weitere Informationen zu Preisoptionen für Speicher finden Sie auf der [Seite mit offiziellen Preisen](https://azure.microsoft.com/pricing/details/storage/).
 
     > [!Warning]
     > Der Speicherort wird standardmäßig auf die gleiche geografische Region festgelegt, in der sich auch Ihre Application Insights-Ressource befindet. Wenn Sie die Daten in einer anderen Region speichern, fallen möglicherweise Übertragungsgebühren an.
