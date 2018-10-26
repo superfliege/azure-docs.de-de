@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 46e12378812788d147c903046b50a93c13119f2f
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: ee3dafe55799c46231aa3ca7c19684d905a057de
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444587"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815425"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ Zudem können Sie Daten aus jedem unterstützten Quelldatenspeicher nach Blob St
 Dieser Blob Storage-Connector unterstützt insbesondere Folgendes:
 
 - Kopieren von Daten in bzw. aus Azure Storage-Konten für allgemeine Zwecke und heißen/kalten Blob Storage. 
-- Kopieren von Blobs mithilfe des Kontoschlüssels, der Dienst-SAS, des Dienstprinzipals oder mit Authentifizierung der verwalteten Dienstidentität.
+- Kopieren von Blobs mithilfe des Kontoschlüssels, der Dienst-SAS, des Dienstprinzipals oder verwalteter Identitäten für Azure-Ressourcenauthentifizierungen.
 - Kopieren von Blobs aus Block-, Anfüge- oder Seitenblobs und Kopieren von Daten ausschließlich in Blockblobs. Azure Storage Premium wird als Senke nicht unterstützt, da dieser Dienst über Seitenblobs funktioniert.
 - Kopieren von Blobs im jeweiligen Zustand oder Analysieren bzw. Generieren von Blobs mit den [unterstützten Dateiformaten und Komprimierungscodecs](supported-file-formats-and-compression-codecs.md).
 
@@ -47,7 +47,7 @@ Der Azure Blob-Connector unterstützt die folgenden Authentifizierungstypen (Det
 - [Kontoschlüsselauthentifizierung](#account-key-authentication)
 - [SAS-Authentifizierung (Shared Access Signature)](#shared-access-signature-authentication)
 - [Dienstprinzipalauthentifizierung](#service-principal-authentication)
-- [Authentifizierung der verwalteten Dienstidentität](#managed-service-identity-authentication)
+- [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity)
 
 >[!NOTE]
 >HDInsight, Azure Machine Learning und die Azure SQL Data Warehouse PolyBase-Last unterstützen nur Authentifizierung mit dem Azure Blob Storage-Kontoschlüssel.
@@ -91,7 +91,7 @@ Für die Verwendung der Authentifizierung mit dem Speicherkontoschlüssel werden
 Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Sie können eine SAS verwenden, um einem Client für einen bestimmten Zeitraum eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu gewähren. Sie müssen die Zugriffsschlüssel für Ihr Konto nicht freigeben. Die SAS ist ein URI, dessen Abfrageparameter alle erforderlichen Informationen für den authentifizierten Zugriff auf eine Speicherressource enthalten. Um mit der SAS auf Speicherressourcen zuzugreifen, muss der Client diese nur an den entsprechenden Konstruktor bzw. die entsprechende Methode übergeben. Weitere Informationen zu Shared Access Signatures finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
-> Data Factory unterstützt jetzt sowohl **SAS (Shared Access Signatures) für Dienste** als auch für **Konten**. Weitere Informationen zu diesen beiden SAS-Arten und ihrer Erstellung finden Sie unter [Arten von Shared Access Signatures](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). 
+> Data Factory unterstützt jetzt **SAS (Shared Access Signatures) für Dienste** sowie für **Konten**. Weitere Informationen zu diesen beiden SAS-Arten und ihrer Erstellung finden Sie unter [Arten von Shared Access Signatures](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). 
 
 > [!TIP]
 > Um eine Dienst-SAS für Ihr Speicherkonto zu generieren, können Sie die folgenden PowerShell-Befehle ausführen. Ersetzen Sie die Platzhalter, und gewähren Sie die erforderliche Berechtigung.
@@ -191,13 +191,13 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Authentifizierung der verwalteten Dienstidentität
+### <a name="managed-identity"></a>Verwaltete Identitäten für Azure-Ressourcenauthentifizierung
 
-Eine Data Factory kann einer [verwalteten Dienstidentität](data-factory-service-identity.md) zugeordnet werden, die diese bestimmte Data Factory darstellt. Sie können diese Dienstidentität direkt für die Blob Storage-Authentifizierung verwenden, ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals. Sie erlaubt dieser bestimmten Factory den Zugriff auf und das Kopieren von Daten aus Ihrem bzw. in Ihren Blob Storage.
+Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese Dienstidentität direkt für die Blob Storage-Authentifizierung verwenden, ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals. Sie erlaubt dieser bestimmten Factory den Zugriff auf und das Kopieren von Daten aus Ihrem bzw. in Ihren Blob Storage.
 
 Informationen zur MSI-Authentifizierung für Azure Storage im Allgemeinen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mithilfe von Azure Active Directory](../storage/common/storage-auth-aad.md).
 
-Führen Sie die folgenden Schritte aus, um die Authentifizierung der verwalteten Dienstidentität zu verwenden:
+Um verwaltete Identitäten für die Azure-Ressourcenauthentifizierung zu verwenden, gehen Sie folgendermaßen vor:
 
 1. [Rufen Sie die Data Factory-Dienstidentität](data-factory-service-identity.md#retrieve-service-identity) ab, indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde.
 
@@ -214,8 +214,8 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
 | serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. |JA |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder die selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
->[!NOTE]
->Authentifizierung der verwalteten Dienstidentität wird nur durch den verknüpften Dienst vom Typ „AzureBlobStorage“unterstützt, nicht jedoch vom vorherigen verknüpften Dienst vom Typ „AzureStorage“. 
+> [!NOTE]
+> Verwaltete Identitäten für die Azure-Ressourcenauthentifizierung werden nur vom verknüpften Dienst des Typs „AzureBlobStorage“ unterstützt, nicht jedoch vom vorherigen verknüpften Dienst des Typs „AzureStorage“. 
 
 **Beispiel:**
 

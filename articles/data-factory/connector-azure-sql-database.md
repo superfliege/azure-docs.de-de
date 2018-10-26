@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/05/2018
+ms.date: 09/12/2018
 ms.author: jingwang
-ms.openlocfilehash: afb4cbafeb29800b1f5b1c837da301e2944d678b
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: e50d1696fdc22916f5ac4699bd17ddc21a82a148
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842531"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815867"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL-Datenbank mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -33,7 +33,7 @@ Sie können Daten aus Azure SQL-Datenbank in beliebige unterstützte Senkendaten
 
 Der Azure SQL-Datenbank-Connector unterstützt insbesondere folgende Funktionen:
 
-- Kopieren von Daten mit SQL-Authentifizierung und Azure Active Directory-Anwendungstokenauthentifizierung (Azure AD) mit Dienstprinzipal oder verwalteter Dienstidentität (Managed Service Identität, MSI)
+- Kopieren von Daten mit SQL-Authentifizierung und Azure Active Directory-Anwendungstokenauthentifizierung (Azure AD) mit einem Dienstprinzipal oder verwalteten Identitäten für Azure-Ressourcen.
 - Als Quelle das Abrufen von Daten mithilfe einer SQL-Abfrage oder gespeicherten Prozedur
 - Als Senke das Anfügen von Daten an die Zieltabelle oder Aufrufen einer gespeicherten Prozedur mit benutzerdefinierter Logik während des Kopiervorgangs
 
@@ -64,7 +64,7 @@ Weitere Voraussetzungen und JSON-Beispiele für die verschiedenen Authentifizier
 
 - [SQL-Authentifizierung](#sql-authentication)
 - [Azure AD-Anwendungstokenauthentifizierung: Dienstprinzipal](#service-principal-authentication)
-- [Azure AD-Anwendungstokenauthentifizierung: Verwaltete Dienstidentität](#managed-service-identity-authentication)
+- [Azure AD-Anwendungstokenauthentifizierung: Verwaltete Identitäten für Azure-Ressourcen](#managed-identity)
 
 >[!TIP]
 >Wenn ein Fehler mit dem Fehlercode „UserErrorFailedToConnectToSqlServer“ auftritt und eine Meldung wie „Das Sitzungslimit für die Datenbank ist XXX und wurde erreicht“ angezeigt wird, fügen Sie `Pooling=false` zu Ihrer Verbindungszeichenfolge hinzu, und versuchen Sie es erneut.
@@ -146,9 +146,9 @@ Um die Azure AD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzip
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Identitätsauthentifizierung des verwalteten Diensts
+### <a name="managed-identity"></a>Verwaltete Identitäten für Azure-Ressourcenauthentifizierung
 
-Eine Data Factory kann einer [verwalteten Dienstidentität](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese Dienstidentität für die Azure SQL-Datenbank-Authentifizierung verwenden. Die angegebene Factory kann mithilfe dieser Identität auf Daten in Ihrer Datenbank zuzugreifen und diese kopieren.
+Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese Dienstidentität für die Azure SQL-Datenbank-Authentifizierung verwenden. Die angegebene Factory kann mithilfe dieser Identität auf Daten in Ihrer Datenbank zuzugreifen und diese kopieren.
 
 Um die Azure AD-Anwendungstokenauthentifizierung basierend auf der MSI zu verwenden, gehen Sie folgendermaßen vor:
 
@@ -201,7 +201,7 @@ Um die Azure AD-Anwendungstokenauthentifizierung basierend auf der MSI zu verwen
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Azure SQL-Datenbank-Dataset unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Azure SQL-Datenbank-Dataset unterstützt werden.
 
 Legen Sie zum Kopieren von Daten aus bzw. nach Azure SQL-Datenbank die **type**-Eigenschaft des Datasets auf **AzureSqlTable** fest. Folgende Eigenschaften werden unterstützt:
 
@@ -568,6 +568,9 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 ```
 
 Das Feature der gespeicherten Prozedur nutzt [Tabellenwertparameter](https://msdn.microsoft.com/library/bb675163.aspx).
+
+>[!NOTE]
+>Wenn Sie durch Aufrufen einer gespeicherten Prozedur in den Datentyp „Money/Smallmoney“ schreiben, werden die Werte unter Umständen gerundet. Geben Sie den entsprechenden Datentyp im Tabellenwertparameter nicht als „Money/Smallmoney“, sondern als „Decimal“ an, um dies zu vermeiden. 
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Datentypzuordnung für Azure SQL-Datenbank
 

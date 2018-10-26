@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: jingwang
-ms.openlocfilehash: d500bc9c910858341d7fdacb4d85bffc8be215e1
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: d8bbc3a5e4ac14ed60fcd6e5f19bdf1df03455a6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338761"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817023"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher nach Az
 
 Der Azure Data Lake Store-Connector unterstützt insbesondere Folgendes:
 
-- Kopieren von Dateien mit **Dienstprinzipalauthentifizierung** oder **verwalteter Dienstidentitätsauthentifizierung**.
+- Kopieren von Dateien mit Authentifizierung über **Dienstprinzipal** oder **verwaltete Identitäten für Azure-Ressourcen**.
 - Kopieren von Dateien im jeweiligen Zustand oder Analysieren bzw. Generieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md)
 
 > [!IMPORTANT]
@@ -65,7 +65,7 @@ Folgende Eigenschaften werden für den mit Azure Data Lake Store verknüpften Di
 Weitere Eigenschaften und JSON-Beispiele für die verschiedenen Authentifizierungstypen finden Sie in den folgenden Abschnitten:
 
 - [Verwenden der Dienstprinzipalauthentifizierung](#using-service-principal-authentication)
-- [Verwenden der verwalteten Dienstidentitätsauthentifizierung](#using-managed-service-identity-authentication)
+- [Verwenden verwalteter Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity)
 
 ### <a name="using-service-principal-authentication"></a>Verwenden der Dienstprinzipalauthentifizierung
 
@@ -114,11 +114,11 @@ Folgende Eigenschaften werden unterstützt:
 }
 ```
 
-### <a name="using-managed-service-identity-authentication"></a>Verwenden der verwalteten Dienstidentitätsauthentifizierung
+### <a name="managed-identity"></a> Verwenden verwalteter Identitäten für Azure-Ressourcenauthentifizierung
 
-Eine Data Factory kann einer [verwalteten Dienstidentität](data-factory-service-identity.md) zugeordnet werden, die diese bestimmte Data Factory darstellt. Sie können diese Dienstidentität direkt für die Data Lake Store-Authentifizierung verwenden, ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals. Sie erlaubt dieser bestimmten Factory den Zugriff auf und das Kopieren von Daten von/zu Ihrem Data Lake Store.
+Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese Dienstidentität direkt für die Data Lake Store-Authentifizierung verwenden, ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals. Sie erlaubt dieser bestimmten Factory den Zugriff auf und das Kopieren von Daten von/zu Ihrem Data Lake Store.
 
-So verwenden Sie die verwaltete Dienstidentitätsauthentifizierung:
+So verwenden Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizierung:
 
 1. [Rufen Sie die Data Factory-Dienstidentität](data-factory-service-identity.md#retrieve-service-identity) ab, indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde.
 2. Gewähren Sie der Dienstidentität auf dieselbe Weise Zugriff auf Data Lake Store wie beim Dienstprinzipal, und beachten Sie dabei die folgenden Hinweise.

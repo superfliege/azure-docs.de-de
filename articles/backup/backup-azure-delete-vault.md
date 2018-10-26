@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/6/2018
 ms.author: markgal
-ms.openlocfilehash: 4dc5b006be8599177fb908fe022a3a821b137e12
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e5bc68b55fdefc07b9764b8393ea6f4062468252
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422942"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816462"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
 
@@ -90,6 +90,12 @@ So löschen Sie einen Recovery Services-Tresor:
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
+   Der Tresor muss leer sein, bevor Sie ihn löschen können. Andernfalls erhalten Sie eine Fehlermeldung: „Der Tresor kann nicht gelöscht werden, weil sich im Tresor vorhandene Ressourcen befinden“. Der folgende Befehl zeigt, wie Sie einen Container in einem Tresor entfernen:
+
+   ```powershell
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
+   ```
+   
 1. Melden Sie sich bei Ihrem Abonnement im Azure-Portal an, und überprüfen Sie, ob der Tresor gelöscht wurde.
 
 
