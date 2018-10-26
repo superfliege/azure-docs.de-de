@@ -3,7 +3,7 @@ title: Unterstützung für Azure Marketplace und AppSource | Azure
 description: Supportinformationen und Links für Azure Marketplace und AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: ellacroi
+author: yijenj
 manager: nunoc
 editor: ''
 ms.assetid: ''
@@ -12,27 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/02/2018
-ms.author: ellacroi
-ms.openlocfilehash: 0007396ad6d5fc16177d76683f959591e9830ac3
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.date: 10/05/2018
+ms.author: yijenj
+ms.openlocfilehash: 884432d5604868ad2307a7d7ababa3e5a004a982
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782075"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854064"
 ---
 # <a name="support-for-the-marketplace"></a>Support für Marketplace  
 Die Supportoptionen für Marketplace.  
 
 ## <a name="onboarding"></a>Onboarding
 
-[Öffnen Sie ein Ticket](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820) für „Marketplace-Onboarding“ beim Microsoft-Support, um alle Probleme bei den ersten Schritten zu beheben.
+Öffnen Sie bei Microsoft ein Ticket für [Marketplace-Herausgebersupport](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820), wenn Sie ein Onboarding-Problem oder ein Problem bei den ersten Schritten haben.
 
 ## <a name="cloud-partner-portal"></a>Cloudpartnerportal  
 
 | Supportkanal | BESCHREIBUNG | Verfügbarkeit |  
 |:--- |:--- |:--- |  
-| Support<ul> <li>Um Unterstützung zu erhalten, besuchen Sie die Seite zum Erstellen eines Incidents unter [go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975).</li> </ul> | Support für das Cloud-Partnerportal | Support ist zu jeder Zeit verfügbar (Tag und Nacht). |  
+| Um Unterstützung zu erhalten, besuchen Sie die Seite zum Erstellen eines Incidents unter [Marketplace-Support](https://go.microsoft.com/fwlink/?linkid=844975).</li> </ul> | Support für das Cloud-Partnerportal | Support ist von 6:00 Uhr bis 18:00 Uhr UTC−8 verfügbar. |  
 
 ## <a name="technical"></a>Technisch  
 
@@ -41,7 +41,8 @@ Die Supportoptionen für Marketplace.
 | Slack: [join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Slack-Umgebung zur Unterstützung von Partnern bei technischen Problemen. In dieser Umgebung arbeiten derzeit mehr als 350 Partner. |  
 | MSDN-Foren: Marketplace unter [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network-Forum. |  
 | Stack Overflow: Azure unter [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow-Umgebung für Lösungen und Antworten auf allgemeine Fragen zu Azure Marketplace<ul> <li>Stack Overflow: Azure Marketplace unter [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager unter [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtuelle Computer in Azure unter [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: Container in Azure unter [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
-| Support für AppSource: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Unterstützung durch Veröffentlichen von Dynamics-Apps für Sie |
+| Support für AppSource: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Unterstützung beim Veröffentlichen von Dynamics-Apps |
+
 ## <a name="marketing-resources"></a>Marketingressourcen  
 
 | Supportkanal | BESCHREIBUNG | Verfügbarkeit |  
