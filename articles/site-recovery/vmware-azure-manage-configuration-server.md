@@ -2,57 +2,82 @@
 title: Verwalten des Konfigurationsservers für die VMware-Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie einen vorhandenen Konfigurationsserver für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery verwalten.
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 0935867e835fe88568f1cdce1ea8dfcea14a451a
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 35cce4e9e0b722e8ee1b2ea42a79f18a987033f0
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669314"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078643"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Verwalten des Konfigurationsservers für virtuelle VMware-Computer
 
 Sie richten einen lokalen Konfigurationsserver ein, wenn Sie [Azure Site Recovery](site-recovery-overview.md) für die Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure verwenden. Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen VMware-Umgebung und Azure und verwaltet die Datenreplikation. In diesem Artikel werden häufige Aufgaben zur Verwaltung des Konfigurationsservers nach dessen Bereitstellung zusammengefasst.
 
-
-
-## <a name="modify-vmware-settings"></a>Ändern von VMware-Einstellungen
+## <a name="access-configuration-server"></a>Zugreifen auf den Konfigurationsserver
 
 Sie können wie folgt auf den Konfigurationsserver zugreifen:
-    - Melden Sie sich bei der VM an, auf der er bereitgestellt wird, und starten Sie den Azure Site Recovery Configuration Manager über die Desktopverknüpfung.
-    - Alternativ können Sie remote über **https://*ConfigurationServerName*/:44315 /** auf den Konfigurationsserver zugreifen. Melden Sie sich mit Administratoranmeldeinformationen an.
 
-### <a name="modify-vmware-server-settings"></a>Ändern von VMware-Servereinstellungen
+* Melden Sie sich bei dem virtuellen Computer an, auf dem er bereitgestellt wird, und starten Sie den **Azure Site Recovery Configuration Manager** über die Desktopverknüpfung.
+* Alternativ können Sie remote über „https://*Name des Konfigurationsservers*/:44315/“ auf den Konfigurationsserver zugreifen. Melden Sie sich mit Administratoranmeldeinformationen an.
 
-1. Um dem Konfigurationsserver einen anderen VMware-Server zuzuordnen, wählen Sie nach dem Anmelden **vCenter-Server/vSphere ESXi-Server hinzufügen** aus.
+## <a name="modify-vmware-server-settings"></a>Ändern von VMware-Servereinstellungen
+
+1. Klicken Sie nach dem [Anmelden](#access-configuration-server) auf **vCenter-Server/vSphere ESXi-Server hinzufügen**, um dem Konfigurationsserver einen anderen VMware-Server zuzuordnen.
 2. Geben Sie die Eigenschaften ein, und wählen Sie dann **OK** aus.
 
+## <a name="modify-credentials-for-automatic-discovery"></a>Ändern der Anmeldeinformationen für die automatische Ermittlung
 
-### <a name="modify-credentials-for-automatic-discovery"></a>Ändern der Anmeldeinformationen für die automatische Ermittlung
-
-1. Wenn Sie die Anmeldeinformationen für die Verbindung mit dem VMware-Server für die automatische Ermittlung von VMware-VMs ändern möchten, klicken Sie nach dem Anmelden auf **Bearbeiten**.
+1. Wenn Sie die Anmeldeinformationen für die Verbindungsherstellung mit dem VMware-Server für die automatische Ermittlung von VMware-VMs ändern möchten, wählen Sie nach dem [Anmelden](#access-configuration-server) das Konto aus, und klicken Sie auf **Bearbeiten**.
 2. Geben Sie die neuen Anmeldeinformationen ein, und klicken Sie dann auf **OK**.
 
     ![Ändern von VMware](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
 
+Die Anmeldeinformationen können auch über „CSPSConfigtool.exe“ geändert werden.
+
+1. Melden Sie sich beim Konfigurationsserver an, und starten Sie „CSPSConfigtool.exe“.
+2. Wählen Sie das Konto aus, das Sie ändern möchten, und klicken Sie auf **Bearbeiten**.
+3. Geben Sie die geänderten Anmeldeinformationen ein, und klicken Sie auf **OK**.
 
 ## <a name="modify-credentials-for-mobility-service-installation"></a>Ändern der Anmeldeinformationen für die Installation von Mobility Service
 
 Ändern Sie die Anmeldeinformationen für die automatische Installation von Mobility Service auf VMware-VMs, die Sie für die Replikation aktivieren möchten.
 
-1. Wählen Sie nach der Anmeldung **VM-Anmeldeinformationen verwalten** aus.
-2. Geben Sie die neuen Anmeldeinformationen ein, und klicken Sie dann auf **OK**.
+1. Klicken Sie nach dem [Anmelden](#access-configuration-server) auf **VM-Anmeldeinformationen verwalten**.
+2. Wählen Sie das Konto aus, das Sie ändern möchten, und klicken Sie auf **Bearbeiten**.
+3. Geben Sie die neuen Anmeldeinformationen ein, und klicken Sie dann auf **OK**.
 
     ![Ändern der Anmeldeinformationen für Mobility Service](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
+
+Anmeldeinformationen können auch über „CSPSConfigtool.exe“ geändert werden.
+
+1. Melden Sie sich beim Konfigurationsserver an, und starten Sie „CSPSConfigtool.exe“.
+2. Wählen Sie das Konto aus, das Sie ändern möchten, und klicken Sie auf **Bearbeiten**.
+3. Geben Sie die neuen Anmeldeinformationen ein, und klicken Sie auf **OK**.
+
+## <a name="add-credentials-for-mobility-service-installation"></a>Hinzufügen von Anmeldeinformationen für die Installation von Mobility Service
+
+Gehen Sie wie folgt vor, falls Sie im Rahmen der OVF-Bereitstellung des Konfigurationsservers keine Anmeldeinformationen hinzugefügt haben:
+
+1. Klicken Sie nach dem [Anmelden](#access-configuration-server) auf **VM-Anmeldeinformationen verwalten**.
+2. Klicken Sie auf **VM-Anmeldeinformationen hinzufügen**.
+    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+3. Geben Sie die neuen Anmeldeinformationen ein, und klicken Sie auf **Hinzufügen**.
+
+Anmeldeinformationen können auch über „CSPSConfigtool.exe“ hinzugefügt werden.
+
+1. Melden Sie sich beim Konfigurationsserver an, und starten Sie „CSPSConfigtool.exe“.
+2. Klicken Sie auf **Hinzufügen**, geben Sie die neuen Anmeldeinformationen ein, und klicken Sie anschließend auf **OK**.
 
 ## <a name="modify-proxy-settings"></a>Ändern von Proxyeinstellungen
 
 Ändern Sie die Proxyeinstellungen, die vom Konfigurationsservercomputer für den Internetzugriff in Azure verwendet werden. Ändern Sie die Einstellungen auf beiden Computern, wenn Sie zusätzlich zum Standardprozessserver, der auf dem Konfigurationsservercomputer ausgeführt wird, über einen weiteren Prozessservercomputer verfügen.
 
-1. Wählen Sie nach der Anmeldung beim Konfigurationsserver **Konnektivität verwalten** aus.
+1. Klicken Sie nach der [Anmeldung](#access-configuration-server) beim Konfigurationsserver auf **Konnektivität verwalten**.
 2. Aktualisieren Sie die Proxywerte. Klicken Sie auf **Speichern**, um die Einstellungen zu aktualisieren.
 
 ## <a name="add-a-network-adapter"></a>Hinzufügen eines Netzwerkadapters
@@ -60,7 +85,7 @@ Sie können wie folgt auf den Konfigurationsserver zugreifen:
 Die OVF-Vorlage (Open Virtualization Format) stellt die Konfigurationsserver-VM mit einem einzelnen Netzwerkadapter bereit.
 
 - Sie können [der VM einen zusätzlichen Adapter hinzufügen](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), müssen diesen Schritt aber vor der Registrierung des Konfigurationsservers im Tresor durchführen.
-- Nach dem Registrieren des Konfigurationsservers im Tresor fügen Sie einen Adapter in den Eigenschaften des virtuellen Computers hinzu. Dann müssen Sie den Server erneut im Tresor registrieren.
+- Nach dem Registrieren des Konfigurationsservers im Tresor fügen Sie einen Adapter in den Eigenschaften des virtuellen Computers hinzu. Danach müssen Sie den Server [erneut im Tresor registrieren](#reregister-a-configuration-server-in-the-same-vault).
 
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Erneutes Registrieren eines Konfigurationsservers im selben Tresor
@@ -87,8 +112,24 @@ Sie können den Konfigurationsserver bei Bedarf im selben Tresor erneut registri
   ```
           net stop obengine
           net start obengine
-  ```
-  
+   ```
+
+
+## <a name="register-a-configuration-server-with-a-different-vault"></a>Registrieren eines Konfigurationsservers in einem anderen Tresor
+
+> [!WARNING]
+> In den nachfolgenden Schritten wird die Zuordnung des Konfigurationsservers zum aktuellen Tresor getrennt und die Replikation aller geschützten virtuellen Computer unter dem Konfigurationsserver beendet.
+
+1. Melden Sie sich beim Konfigurationsserver an.
+2. Öffnen Sie als Administrator ein PowerShell-Eingabefenster, und führen Sie den folgenden Befehl aus:
+
+    ```
+    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+    net stop dra
+    ```
+3. Starten Sie das Browserportal der Konfigurationsserver-Appliance über die Verknüpfung auf Ihrem Desktop.
+4. Führen Sie die Registrierungsschritte aus. Diese sind ähnlich wie bei der [Registrierung](vmware-azure-tutorial.md#register-the-configuration-server) eines neuen Konfigurationsservers.
+
 ## <a name="upgrade-the-configuration-server"></a>Aktualisieren Sie den Konfigurationsserver
 
 Sie führen Updaterollups aus, um den Konfigurationsserver zu aktualisieren. Updates können für maximal N-4 Versionen angewendet werden. Beispiel: 
@@ -102,7 +143,7 @@ Aktualisieren Sie den Server wie folgt:
 
 1. Gehen Sie im Tresor zu **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
 2. Wenn ein Update verfügbar ist, wird ein Link in der Spalte **Agent-Version** angezeigt.
-    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
+    ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Laden Sie die Datei mit dem Update-Installer auf den Konfigurationsserver herunter.
 
     ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update1.png)

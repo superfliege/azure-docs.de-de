@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: a85fb6ce211e6089f67cb2e2f265fbda06a25b10
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 9ae0892d7de8a431227218ffc6db03eca20fcbdd
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735086"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585712"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 Dieser Artikel enthält ausführliche Anweisungen zum Verwenden des Azure Import/Export-Diensts, um große Datenmengen sicher aus Azure Blob Storage zu exportieren. Für diesen Dienst müssen Sie leere Laufwerke an das Azure-Rechenzentrum senden. Der Dienst exportiert Daten aus Ihrem Speicherkonto auf die Laufwerke und versendet diese dann zurück.
@@ -60,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
 3. Gehen Sie unter **Auftragsdetails** wie folgt vor:
 
     - Wählen Sie das Speicherkonto aus, das die zu exportierenden Daten enthält. Verwenden Sie ein Speicherkonto in der Nähe Ihres Standorts.
-    - Der Abgabeort wird automatisch basierend auf der Region des ausgewählten Speicherkontos aufgefüllt. 
+    - Der Ablageort wird automatisch basierend auf der Region des ausgewählten Speicherkontos mit Daten aufgefüllt. 
     - Geben Sie die Blobdaten an, die Sie von Ihrem Speicherkonto auf Ihr leeres Laufwerk bzw. Ihre leeren Laufwerke exportieren möchten. 
     - Wählen Sie für die Blobdaten im Speicherkonto **Alle exportieren** aus.
     

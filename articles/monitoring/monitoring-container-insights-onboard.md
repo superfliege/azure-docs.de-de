@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: df145ebe6276c911ef3064e3f8ff7a23a2faa870
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 9fa0df0bbf363a7c751de460fd98740b4314f996
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423033"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831193"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Onboardingmethoden für Azure Monitor für Container
 In diesem Artikel wird beschrieben, wie Azure Monitor für Container eingerichtet und verwendet wird, um die Leistung von Workloads zu überwachen, die in Kubernetes-Umgebungen bereitgestellt und von [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) gehostet werden.
@@ -39,8 +39,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 Die Leistungsüberwachung beruht auf einem containerbasierten Log Analytics-Agent für Linux, der Leistungs- und Ereignisdaten von allen Knoten im Cluster sammelt. Der Agent wird automatisch bereitgestellt und beim angegebenen Log Analytics-Arbeitsbereich registriert, nachdem Sie die Containerüberwachung aktiviert haben. 
 
 >[!NOTE] 
->Wenn Sie bereits einen AKS-Cluster bereitgestellt haben, können Sie die Überwachung mithilfe der Azure-Befehlszeilenschnittstelle oder einer bereitgestellten Azure Resource Manager-Vorlage aktivieren (siehe weiter unten in diesem Artikel). Sie können mit `kubectl` kein Upgrade für den Agent durchführen oder diesen löschen, bereitstellen oder erneut bereitstellen. 
->
+>Wenn Sie bereits einen AKS-Cluster bereitgestellt haben, können Sie die Überwachung mithilfe der Azure-Befehlszeilenschnittstelle oder einer bereitgestellten Azure Resource Manager-Vorlage aktivieren (siehe weiter unten in diesem Artikel). Sie können mit `kubectl` kein Upgrade für den Agent durchführen oder diesen löschen, bereitstellen oder erneut bereitstellen. Die Vorlage muss in derselben Ressourcengruppe wie der Cluster bereitgestellt werden.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
@@ -71,6 +70,18 @@ Der folgende Schritt aktiviert die Überwachung Ihres AKS-Clusters mithilfe der 
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+```
+
+Die Ausgabe ähnelt der folgenden:
+
+```azurecli
+provisioningState       : Succeeded
+```
+
+Wenn Sie die Integration in einen vorhandenen Arbeitsbereich vorziehen, geben Sie mit dem folgenden Befehl den entsprechenden Arbeitsbereich an:
+
+```azurecli
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG --workspace-resource-id <ExistingWorkspaceResourceID> 
 ```
 
 Die Ausgabe ähnelt der folgenden:
@@ -124,6 +135,10 @@ Diese Methode umfasst zwei JSON-Vorlagen. Eine Vorlage gibt die Konfiguration zu
 * Ressourcen-ID des AKS-Containers 
 * Ressourcengruppe, in der der Cluster bereitgestellt wird
 * Log Analytics-Arbeitsbereich und -Region, in der der Arbeitsbereich erstellt wird 
+
+>[!NOTE]
+>Die Vorlage muss in derselben Ressourcengruppe wie der Cluster bereitgestellt werden.
+>
 
 Der Log Analytics-Arbeitsbereich muss manuell erstellt werden. Arbeitsbereiche können über den [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../log-analytics/log-analytics-quick-create-workspace.md) eingerichtet werden.
 

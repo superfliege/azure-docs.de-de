@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2017
+ms.date: 10/3/2018
 ms.author: yurid
-ms.openlocfilehash: 7a7314b3aebd32c4a909bda4c88c5d43ab5df9f0
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f139f2f967edc03419f41f8c903c71b9ab9e6fcb
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161440"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044432"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie Azure Security Center verwenden, um Sicherheitswarnungen zu verwalten und auf diese zu reagieren.
@@ -57,6 +57,7 @@ Im unteren Bereich dieser Seite werden Details zu den einzelnen Warnungen angeze
 * **Datum**: Das Datum, an dem das Ereignis aufgetreten ist.
 * **Zustand**: Der aktuelle Zustand für diese Warnung. Es gibt zwei Arten von Zuständen:
   * **Aktiv**: Die Sicherheitswarnung wurde erkannt.
+  * **Verworfen**: Die Sicherheitswarnung wurde vom Benutzer verworfen. Dieser Status wird üblicherweise für Warnungen verwendet, die untersucht und behoben oder als harmlos eingestuft wurden.
 * **Schweregrad**: Gibt den Schweregrad an („Hoch“, „Mittel“ oder „Niedrig“).
 
 > [!NOTE]

@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: heidist
-ms.openlocfilehash: c24cccde507873424e3c51d584f5cd094df2b876
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8abcc90bf72544e6226d6c8487d2951b60ea6d29
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641168"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802151"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic** oder **Standard** erfolgt.
@@ -55,15 +55,15 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und a
 
 ## <a name="document-limits"></a>Dokumentgrenzwerte 
 
-In den meisten Regionen ist die Dokumentanzahl bei den Azure Search-Tarifen (Basic, S1, S2, S3, S3 HD) für alle Dienste, die nach November/Dezember 2017 erstellt wurden, unbegrenzt. In diesem Abschnitt sind die Regionen angegeben, in denen Grenzwerte gelten. Außerdem wird erläutert, wie Sie ermitteln, ob Ihr Dienst betroffen ist. 
+Ab Oktober 2018 gelten für neue Dienste, die in einem kostenpflichtigen Tarif (Basic, S1, S2, S3, S3 HD) in einer beliebigen Region erstellt werden, keine Dokumentgrenzwerte mehr. In den meisten Regionen können zwar bereits seit November/Dezember 2017 beliebig viele Dokumente verwendet werden, es gab jedoch noch fünf Regionen, in denen weiterhin Dokumentgrenzwerte galten. Je nachdem, wann und wo Sie einen Suchdienst erstellt haben, verwenden Sie möglicherweise einen Dienst, für den noch Dokumentgrenzwerte gelten.
 
 Überprüfen Sie auf der Kachel „Nutzung“ auf der Übersichtsseite Ihres Diensts, ob Dokumentgrenzwerte für Ihren Dienst gelten. Die Dokumentanzahl ist entweder unbegrenzt, oder es gilt ein Grenzwert basierend auf dem Tarif dafür.
 
   ![Kachel „Nutzung“](media/search-limits-quotas-capacity/portal-usage-tile.png)
 
-### <a name="regions-and-services-having-document-limits"></a>Regionen und Dienste mit Dokumentgrenzwerten
+### <a name="regions-previously-having-document-limits"></a>Regionen, für die noch Dokumentgrenzwerte galten
 
-Dienste mit Grenzwerten wurden entweder vor Ende 2017 erstellt oder werden in Rechenzentren ausgeführt, die Cluster mit geringerer Kapazität zum Hosten von Azure Search-Diensten verwenden. Betroffene Rechenzentren befinden sich in den folgenden Regionen:
+Sollte im Portal ein Dokumentgrenzwert angegeben sein, wurde Ihr Dienst entweder vor Ende 2017 oder in einem Rechenzentrum erstellt, in dem Azure Search-Dienste in Clustern mit geringerer Kapazität gehostet werden:
 
 + Australien (Osten)
 + Asien, Osten
@@ -76,6 +76,8 @@ Für Dienste, die Dokumentgrenzwerten unterliegen, gelten die folgenden Obergren
 |  Kostenlos | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
 |  10.000 |1 Mio. |15 Millionen pro Partition oder 180 Millionen pro Dienst |60 Millionen pro Partition oder 720 Millionen pro Dienst |120 Millionen pro Partition oder 1,4 Milliarden pro Dienst |1 Millionen pro Index oder 200 Millionen pro Partition |
+
+Sollten für den Dienst Einschränkungen gelten, die Sie behindern, erstellen Sie einen neuen Dienst, und veröffentlichen Sie anschließend sämtliche Inhalte erneut für diesen Dienst. Es gibt keinen Mechanismus, mit dem Sie Ihren Dienst nahtlos im Hintergrund auf neuer Hardware bereitstellen können.
 
 > [!Note] 
 > Bei S3 High Density-Diensten, die nach Ende 2017 erstellt wurden, wurde das Limit „200 Millionen Dokumente pro Partition“ entfernt, das Limit „1 Million Dokumente pro Index“ bleibt jedoch bestehen.

@@ -1,6 +1,6 @@
 ---
 title: Azure SQL-Datenbank-Dienstebenen – DTU | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Diensttarife für Einzeldatenbanken und Pools für elastische Datenbanken, um verschiedene Computegrößen und Speichergrößen bereitzustellen.
+description: Hier erfahren Sie mehr über die Diensttarife für Einzeldatenbanken und für in einem Pool zusammengefasste Datenbanken, um verschiedene Computegrößen und Speichergrößen bereitzustellen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -11,22 +11,25 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 2f9362a6d771df3cdb11855844025bc8d9ea732e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/04/2018
+ms.openlocfilehash: a9e274cea7543fc3361b1f2d0a60fc18176b6248
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162371"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831312"
 ---
-# <a name="choosing-a-dtu-based-service-tier-compute-size-and-storage-resources"></a>Auswählen eines DTU-basierten Diensttarifs, einer Computegröße und Speicherressourcen 
+# <a name="dtu-based-service-tiers"></a>DTU-basierte Diensttarife
 
-Diensttarife unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Diensttarife ermöglichen das flexible Wechseln von Computegrößen ohne Ausfallzeiten. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Diensttarif und Computegröße auf Stundenbasis abgerechnet.
+DTU-basierte Diensttarife unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Diensttarife ermöglichen das flexible Wechseln von Computegrößen ohne Ausfallzeiten. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Diensttarif und Computegröße auf Stundenbasis abgerechnet.
 
 > [!IMPORTANT]
-> Für die verwaltete SQL-Datenbank-Instanz, die sich derzeit in der öffentlichen Vorschauphase befindet, wird das DTU-basierte Kaufmodell nicht unterstützt. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md). 
+> Für die verwaltete SQL-Datenbank-Instanz, die sich derzeit in der öffentlichen Vorschauphase befindet, wird das DTU-basierte Kaufmodell nicht unterstützt. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md).
 
-## <a name="choosing-a-dtu-based-service-tier"></a>Auswählen einer DTU-basierten Dienstebene
+> [!NOTE]
+> Weitere Informationen zu den V-Kern-basierten Diensttarifen finden Sie unter [Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen](sql-database-service-tiers-vcore.md). Weitere Informationen zu den Unterschieden zwischen DTU-basierten Diensttarifen und V-Kern-basierten Diensttarifen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-service-tiers.md).
+
+## <a name="compare-the-dtu-based-service-tiers"></a>Vergleich der DTU-basierten Diensttarife
 
 Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Geschäftskontinuität, Speicher und Leistung ab.
 ||Basic|Standard|Premium|
@@ -43,7 +46,7 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Begrenzungen für Einzeldatenbank-DTUs und Speicher
 
-Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Was sind DTUs und eDTUs?](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
+Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers.md#dtu-based-purchasing-model).
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: | --: |
@@ -76,14 +79,17 @@ Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 Physische Merkmale (CPU, Arbeitsspeicher, E/A), die jedem DTU-Measure zugeordnet sind, werden mithilfe eines Vergleichstests kalibriert, der eine realitätsnahe Datenbankworkload simuliert.
 
 ### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korrelieren von Vergleichstestergebnissen mit realer Datenbankleistung
+
 Wichtig ist der Hinweis, dass alle Vergleichstests nur repräsentativen und informativen Charakter haben. Die mit der Vergleichstestanwendung erzielten Transaktionsraten entsprechen nicht denjenigen, die mit anderen Anwendungen erzielt werden. Der Vergleichstest umfasst eine Zusammenstellung verschiedener Typen von Transaktionen, die auf ein Schema angewendet werden, das einen Bereich von Tabellen und Datentypen enthält. Während für den Vergleichstest dieselben grundlegenden Vorgänge ausgeführt werden, die für alle OLTP-Workloads üblich sind, wird keine spezifische Klasse von Datenbank oder Anwendung abgebildet. Ziel des Vergleichstests ist das Bereitstellen eines vernünftigen Richtwerts für die relative Leistung einer Datenbank, der bei einer Hoch- oder Herunterskalierung der Computegröße erwartet werden kann. In der Praxis haben Datenbanken eine unterschiedliche Größe und Komplexität, müssen verschiedene Kombinationen von Workloads bewältigen und reagieren auf unterschiedliche Weise. Beispielsweise kann eine E/A-intensive Anwendung E/A-Schwellenwerte früher erreichen, oder eine CPU-intensive Anwendung kann CPU-Grenzwerte früher erreichen. Es gibt keine Garantie, dass eine bestimmte Datenbank bei steigender Last auf die gleiche Weise wie im Vergleichstest skaliert wird.
 
 Der Vergleichstest und seine Methoden werden nachstehend ausführlich beschrieben.
 
 ### <a name="benchmark-summary"></a>Übersicht über den Vergleichstest
+
 ASDB misst die Leistung einer Kombination grundlegender Datenbankvorgänge, die bei OLTP-Workloads (Online Transaction Processing, Onlinetransaktionsverarbeitung) am häufigsten vorkommen. Obwohl der Vergleichstest speziell für das Cloud Computing konzipiert ist, wurden das Datenbankschema, der Datenbestand und Transaktionen so gestaltet, dass sie für die grundlegenden Elemente der am häufigsten vorkommenden OLTP-Workloads repräsentativ sind.
 
 ### <a name="schema"></a>Schema
+
 Das Schema zeichnet sich durch ausreichende Vielfalt und Komplexität aus, um eine Vielzahl von Vorgängen zu unterstützen. Der Vergleichstest wird auf eine Datenbank angewendet, die aus sechs Tabellen besteht. Die Tabellen gehören zu drei Kategorien: feste Größe, Skalierung und anwachsend. Es gibt zwei Tabellen mit fester Größe, drei Skalierungstabellen und eine anwachsende Tabelle. Die Tabellen mit fester Größe haben eine konstante Anzahl von Zeilen. Die Skalierungstabellen haben eine Kardinalität, die proportional zur Datenbankleistung ist, sich jedoch während des Vergleichstests nicht ändert. Die anwachsende Tabelle hat anfänglich dieselbe Größe wie eine Skalierungstabelle, doch ihre Kardinalität ändert sich im Verlauf des Vergleichstests, da Zeilen eingefügt und gelöscht werden.
 
 Das Schema enthält eine Kombination von Datentypen, wie z. B. ganze Zahl, numerisch, Zeichen und Datum/Uhrzeit. Das Schema enthält primäre und sekundäre Schlüssel, aber keine Fremdschlüssel, was bedeutet, dass es keine Einschränkungen der referentiellen Integrität zwischen Tabellen gibt.
@@ -93,6 +99,7 @@ Ein Datengenerierungsprogramm erzeugt die Daten für die ursprüngliche Datenban
 Die Datenbankgröße basiert auf einem "Skalierungsfaktor". Der Skalierungsfaktor (abgekürzt SF) bestimmt die Kardinalität der Skalierungs- und anwachsenden Tabellen. Wie im folgenden Abschnitt "Benutzer und Geschwindigkeit" beschrieben, werden die Datenbankgröße, Anzahl der Benutzer und maximale Leistung allesamt proportional zueinander skaliert.
 
 ### <a name="transactions"></a>Transaktionen
+
 Die Workload besteht aus neun Transaktionstypen, wie in der folgenden Tabelle dargestellt. Jede Transaktion ist darauf ausgelegt, eine bestimmte Gruppe von Systemmerkmalen in der Datenbank-Engine und in der Systemhardware in starker Abgrenzung zu den anderen Transaktionen hervorzuheben. Dieser Ansatz erleichtert das Bewerten der Auswirkung verschiedener Komponenten auf die Gesamtleistung. Beispielsweise erzeugt die Transaktion "Leseintensiv" eine hohe Anzahl von Lesevorgängen auf dem Datenträger.
 
 | Transaktionstyp | BESCHREIBUNG |
@@ -108,6 +115,7 @@ Die Workload besteht aus neun Transaktionstypen, wie in der folgenden Tabelle da
 | CPU-intensiv |SELECT, speicherintern, relativ hohe CPU-Last, schreibgeschützt |
 
 ### <a name="workload-mix"></a>Kombination von Workloads
+
 Transaktionen werden zufällig aus einer gewichteten Verteilung in der folgenden Kombination ausgewählt. Die Kombination weist ein Verhältnis von Lese- zu Schreibvorgängen von ca. 2:1 auf.
 
 | Transaktionstyp | % der Kombination |
@@ -123,38 +131,41 @@ Transaktionen werden zufällig aus einer gewichteten Verteilung in der folgenden
 | CPU-intensiv |10 |
 
 ### <a name="users-and-pacing"></a>Benutzer und Geschwindigkeit
+
 Die Workload des Vergleichstests stammt von einem Tool, das Transaktionen über verschiedene Verbindungen übermittelt, um das Verhalten vieler gleichzeitiger Benutzer zu simulieren. Obwohl alle Verbindungen und Transaktionen computergeneriert sind, bezeichnen wir diese Verbindungen der Einfachheit halber als "Benutzer". Obwohl jeder Benutzer unabhängig von allen anderen Benutzern operiert, führen alle Benutzer denselben Zyklus der unten aufgeführten Schritte aus:
 
 1. Herstellen einer Datenbankverbindung.
 2. Wiederholen bis zur Aufforderung zum Beenden:
-   * Auswählen einer Transaktion nach dem Zufallsprinzip (aus gewichteter Verteilung)
-   * Ausführen der ausgewählten Transaktion und Messen der Antwortzeit
-   * Warten auf eine Geschwindigkeitsverzögerung
+   - Auswählen einer Transaktion nach dem Zufallsprinzip (aus gewichteter Verteilung)
+   - Ausführen der ausgewählten Transaktion und Messen der Antwortzeit
+   - Warten auf eine Geschwindigkeitsverzögerung
 3. Schließen der Datenbankverbindung
 4. Beenden
 
 Die Geschwindigkeitsverzögerung (in Schritt 2c) wird nach dem Zufallsprinzip ausgewählt, hat aber eine Verteilung mit durchschnittlich 1,0 Sekunden. Daher kann jeder Benutzer durchschnittlich höchstens eine Transaktion pro Sekunde generieren.
 
 ### <a name="scaling-rules"></a>Skalierungsregeln
+
 Die Anzahl der Benutzer wird von der Größe der Datenbank (in Skalierungsfaktoreinheiten) bestimmt. Für alle fünf Skalierungsfaktoreinheiten gibt es einen Benutzer. Aufgrund der Geschwindigkeitsverzögerung kann ein Benutzer durchschnittlich höchstens eine Transaktion pro Sekunde generieren.
 
 Beim Skalierungsfaktor 500 (SF=500) hat die Datenbank 100 Benutzer und kann eine maximale Rate von 100 Transaktionen pro Sekunde (TPS) erreichen. Zum Erreichen einer höheren TPS-Rate sind mehr Benutzer und eine größere Datenbank erforderlich.
 
 ### <a name="measurement-duration"></a>Messdauer
+
 Ein gültiger Vergleichstestlauf erfordert eine stabile Messdauer von mindestens einer Stunde.
 
 ### <a name="metrics"></a>Metriken
+
 Die Hauptmetriken im Vergleichstest sind Durchsatz und Antwortzeit.
 
-* Der Durchsatz ist die wesentliche Messgröße im Vergleichstest. Der Durchsatz wird als Transaktionen pro Zeiteinheit gemeldet, wobei alle Transaktionstypen gezählt werden.
-* Die Antwortzeit ist ein Maß für die Vorhersagbarkeit von Leistung. Die Einschränkung der Antwortzeit variiert je nach Dienstklasse, wobei höhere Dienstklassen strengere Anforderungen an die Antwortzeit haben (siehe unten).
+- Der Durchsatz ist die wesentliche Messgröße im Vergleichstest. Der Durchsatz wird als Transaktionen pro Zeiteinheit gemeldet, wobei alle Transaktionstypen gezählt werden.
+- Die Antwortzeit ist ein Maß für die Vorhersagbarkeit von Leistung. Die Einschränkung der Antwortzeit variiert je nach Dienstklasse, wobei höhere Dienstklassen strengere Anforderungen an die Antwortzeit haben (siehe unten).
 
 | Dienstklasse | Durchsatzmaß | Anforderung an die Antwortzeit |
 | --- | --- | --- |
 | Premium |Transaktionen pro Sekunde |95. Perzentil bei 0,5 Sekunden |
 | Standard |Transaktionen pro Minute |90. Perzentil bei 1,0 Sekunden |
 | Basic |Transaktionen pro Stunde |80. Perzentil bei 2,0 Sekunden |
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

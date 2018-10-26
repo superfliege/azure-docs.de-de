@@ -4,33 +4,34 @@ description: Dieser Artikel erläutert Ihnen die verschiedenen Methoden für das
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: timlt
-editor: ''
-ms.assetid: db1efbf6-6762-4c7a-ac99-675d4eeb54d0
+manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2017
+ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 03f1cc3a34fa8a472dcab9654b65cc97b8473993
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: be429e7d3ae847eec6dc4fd5ad6b9c3e5d76d5b5
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398616"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785408"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager-Routingmethoden
 
-Azure Traffic Manager unterstützt vier Methoden für das Datenverkehrsrouting, um zu bestimmen, wie Netzwerkverkehr an die verschiedenen Dienstendpunkte weitergeleitet wird. Traffic Manager wendet die Methode für das Datenverkehrsrouting auf jede empfangene DNS-Abfrage an. Mit der Methode für das Datenverkehrsrouting wird festgelegt, welcher Endpunkt in der DNS-Antwort zurückgegeben wird.
+Azure Traffic Manager unterstützt sechs Methoden für das Datenverkehrsrouting, um zu bestimmen, wie Netzwerkverkehr an die verschiedenen Dienstendpunkte weitergeleitet wird. Der Traffic Manager wendet für jedes Profil die Datenverkehrsrouting-Methode an, die ihm in der jeweils empfangenen DNS-Abfrage zugeordnet ist. Mit der Methode für das Datenverkehrsrouting wird festgelegt, welcher Endpunkt in der DNS-Antwort zurückgegeben wird.
 
 Vier Methoden für das Datenverkehrsrouting sind in Traffic Manager verfügbar:
 
 * **[Priorität](#priority):** Wählen Sie **Priorität** aus, wenn Sie einen primären Dienstendpunkt für sämtlichen Datenverkehr verwenden möchten. Stellen Sie Backups bereit, falls der primäre Endpunkt nicht verfügbar ist.
 * **[Gewichtet](#weighted):** Wählen Sie **Gewichtet**, wenn Sie Datenverkehr über eine Gruppe von Endpunkten verteilen möchten - gleichmäßig oder gemäß einer von Ihnen definierten Gewichtung.
 * **[Leistung](#performance):** Wählen Sie **Leistung** aus, wenn sich Ihre Endpunkte an unterschiedlichen geografischen Standorten befinden und Endbenutzer an den „nächstgelegenen“ Endpunkt (im Hinblick auf die geringste Netzwerklatenz) weitergeleitet werden sollen.
-* **[Geographisch](#geographic):** Wählen Sie **Geographisch** aus, damit Benutzer auf bestimmte Endpunkte (Azure, Extern oder Geschachtelt) geleitet werden, je nach dem geografischen Ursprungsort ihrer DNS-Abfrage. Dadurch können Traffic Manager-Kunden Szenarien unterstützen, in denen die Kenntnis der geografischen Region eines Benutzers und das Routing auf der Grundlage dieser Kenntnis wichtig sind. Zu Beispielen dafür gehören die Einhaltung von Datenhoheitsmandaten, die Verortung von Inhalten und Benutzererfahrungen und das Messen von Datenverkehr aus verschiedenen Regionen.
+* **[Geographisch](#geographic):** Wählen Sie **Geographisch** aus, damit Benutzer auf bestimmte Endpunkte (Azure, Extern oder Geschachtelt) geleitet werden, je nach dem geografischen Ursprungsort ihrer DNS-Abfrage. Dadurch können Traffic Manager-Kunden Szenarien unterstützen, in denen die Kenntnis der geografischen Region eines Benutzers und das Routing auf der Grundlage dieser Kenntnis wichtig sind. Beispiele dafür bilden etwa die Einhaltung von Datenhoheitsmandaten, die Verortung von Inhalten und Benutzererfahrungen und das Messen von Datenverkehr aus verschiedenen Regionen.
+* **[MultiValue](#multivalue):** Wählen Sie **MultiValue** für Traffic Manager-Profile aus, die nur IPv4/IPv6-Adressen als Endpunkte enthalten können. Wenn eine Abfrage für dieses Profil empfangen wird, werden alle fehlerfreien Endpunkte zurückgegeben.
+* **[Subnetz](#subnet):** Wählen Sie die Datenverkehrsrouting-Methode **Subnetz** aus, um Gruppen von Endbenutzer-IP-Adressbereichen einem bestimmten Endpunkt in einem Traffic Manager-Profil zuzuordnen. Wenn eine Anforderung empfangen wird, wird der Endpunkt zurückgegeben, der für die Quell-IP-Adresse dieser Anforderung zugeordnet ist. 
+
 
 Alle Traffic Manager-Profile beinhalten die Überwachung der Endpunktintegrität sowie automatisches Endpunktfailover. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md). Ein einzelnes Traffic Manager-Profil kann nur eine einzige Methode für das Datenverkehrsrouting verwenden. Sie können jederzeit eine andere Methode für das Datenverkehrsrouting für Ihr Profil auswählen. Änderungen werden innerhalb einer Minute angewendet, und es entstehen keine Ausfallzeiten. Methoden für das Datenverkehrsrouting können durch Verwendung geschachtelter Traffic Manager-Profile kombiniert werden. Durch die Schachtelung können ausgefeilte und flexible Konfigurationen für das Datenverkehrsrouting erstellt werden, um die Anforderungen größerer und komplexer Anwendungen zu erfüllen. Weitere Informationen finden Sie unter [Geschachtelte Traffic Manager-Profile](traffic-manager-nested-profiles.md).
 
@@ -38,7 +39,7 @@ Alle Traffic Manager-Profile beinhalten die Überwachung der Endpunktintegrität
 
 Wenn Organisationen die Zuverlässigkeit ihrer Dienste gewährleisten möchten, stellen sie häufig einen oder mehrere Sicherungsdienste bereit, für den Fall, dass der primäre Dienst ausfällt. Mithilfe der prioritätsbasierten Methode für das Datenverkehrsrouting können Azure-Kunden dieses Failovermuster problemlos implementieren.
 
-![Prioritätsbasierte Methode für das Datenverkehrsrouting in Azure Traffic Manager][1]
+![Prioritätsbasierte Methode für das Datenverkehrsrouting in Azure Traffic Manager](media/traffic-manager-routing-methods/priority.png)
 
 Das Traffic Manager-Profil enthält eine Prioritätenliste mit Dienstendpunkten. Standardmäßig sendet Traffic Manager den gesamten Datenverkehr an den primären Endpunkt (mit der höchsten Priorität). Wenn der primäre Endpunkt nicht verfügbar ist, leitet Traffic Manager den Datenverkehr an den sekundären Endpunkt weiter. Wenn weder der primäre noch der sekundäre Endpunkt verfügbar sind, wird der Datenverkehr an den dritten Endpunkt gesendet usw. Ob ein Endpunkt verfügbar ist, hängt vom konfigurierten Status (aktiviert oder deaktiviert) sowie von der fortlaufenden Endpunktüberwachung ab.
 
@@ -46,10 +47,10 @@ Das Traffic Manager-Profil enthält eine Prioritätenliste mit Dienstendpunkten.
 
 Mit Azure Resource Manager wird die Endpunktpriorität mithilfe der für jeden Endpunkt definierten Prioritätseigenschaft explizit konfiguriert. Für diese Eigenschaft wird ein Wert zwischen 1 und 1000 festgelegt. Niedrigere Werte stellen eine höhere Priorität dar. Der gleiche Prioritätswert kann nicht für mehrere Endpunkte konfiguriert werden. Diese Eigenschaft kann optional festgelegt werden. Wird sie nicht festgelegt, wird eine Standardpriorität basierend auf der Endpunktreihenfolge verwendet.
 
-##<a name = "weighted"></a>Gewichtete Methode für das Datenverkehrsrouting
+## <a name = "weighted"></a>Gewichtete Methode für das Datenverkehrsrouting
 Bei der gewichteten Methode für das Datenverkehrsrouting wird der Datenverkehr gleichmäßig verteilt oder eine vordefinierte Gewichtung verwendet.
 
-![Gewichtete Methode für das Datenverkehrsrouting in Azure Traffic Manager][2]
+![Gewichtete Methode für das Datenverkehrsrouting in Azure Traffic Manager](media/traffic-manager-routing-methods/weighted.png)
 
 Bei der gewichteten Methode für das Datenverkehrsrouting wird jedem Endpunkt im Rahmen der Traffic Manager-Profilkonfiguration eine Gewichtung zugewiesen. Die Gewichtung ist eine Ganzzahl zwischen 1 und 1000. Dieser Parameter ist optional. Wenn er nicht angegeben wird, wird die Standardgewichtung 1 verwendet. Je höher die Gewichtung, desto höher die Priorität.
 
@@ -61,7 +62,7 @@ Durch die gewichtete Methode werden einige nützliche Szenarios ermöglicht:
 * Anwendungsmigration zu Azure: Erstellen Sie ein Profil mit Azure- und externen Endpunkten. Passen Sie die Gewichtung der Endpunkte so an, dass die neuen Endpunkte bevorzugt werden.
 * Erweiterung in die Cloud für zusätzliche Kapazität: Erweitern Sie eine lokale Bereitstellung schnell in die Cloud, indem Sie diese hinter einem Traffic Manager-Profil zur Verfügung stellen. Wenn Sie zusätzliche Kapazität in der Cloud benötigen, können Sie weitere Endpunkte hinzufügen oder aktivieren. Geben Sie dann an, welcher Teil des Datenverkehrs an jeden Endpunkt gesendet wird.
 
-Das Azure-Ressourcen-Manager-Portal unterstützt die Konfiguration von gewichtetem Datenverkehrsrouting.  Gewichtungen können mithilfe der Resource Manager-Versionen von Azure PowerShell, der Befehlszeilenschnittstelle und den REST-APIs konfiguriert werden.
+Neben der Verwendung des Azure-Portals haben Sie auch die Möglichkeit, Gewichtungen mithilfe von Azure PowerShell, über die Befehlszeilenschnittstelle oder mithilfe von REST-APIs zu konfigurieren.
 
 Hinweis: DNS-Antworten werden sowohl von Clients als auch von den rekursiven DNS-Servern zwischengespeichert, die von diesen Clients für ihre DNS-Abfragen verwendet werden. Dieses Zwischenspeichern hat möglicherweise Auswirkungen auf die gewichtete Datenverkehrsverteilungen. Wenn die Anzahl von Clients und rekursiven DNS-Servern hoch ist, funktioniert die Verteilung des Datenverkehrs wie erwartet. Wenn die Anzahl von Clients oder rekursiven DNS-Servern jedoch gering ist, kann diese Zwischenspeicherung die Verteilung des Datenverkehrs massiv verzerren.
 
@@ -77,11 +78,11 @@ Diese Auswirkungen der DNS-Zwischenspeicherung gelten für alle DNS-basierten Sy
 
 Die Reaktionsfähigkeit vieler Anwendungen kann verbessert werden, indem Sie Endpunkte an mindestens zwei Standorten auf der ganzen Welt bereitstellen und Datenverkehr an den Standort weiterleiten, der Ihnen am nächsten liegt. Diese Möglichkeit bietet die leistungsorientierte Methode für das Datenverkehrsrouting.
 
-![Leistungsorientierte Methode für das Datenverkehrsrouting in Azure Traffic Manager][3]
+![Leistungsorientierte Methode für das Datenverkehrsrouting in Azure Traffic Manager](media/traffic-manager-routing-methods/performance.png)
 
 Der nächstgelegene Endpunkt ist nicht unbedingt derjenige, der geografisch am nächsten liegt. Vielmehr wird mit dieser Methode für das Datenverkehrsrouting der nächstgelegene Endpunkt durch die Messung der Netzwerklatenz bestimmt. Traffic Manager überwacht anhand einer Internetlatenztabelle die Roundtripzeit zwischen IP-Adressbereichen und den einzelnen Azure-Rechenzentren.
 
-In dieser Internetlatenztabelle sucht der Dienst nach der IP-Quelladresse der eingehenden DNS-Abfrage. Er wählt aus, welcher verfügbare Endpunkt im Azure-Rechenzentrum die geringste Latenz für diesen IP-Adressbereich aufweist, und gibt diesen Endpunkt in der DNS-Antwort zurück.
+In dieser Internetlatenztabelle sucht der Dienst nach der IP-Quelladresse der eingehenden DNS-Abfrage. Anschließend wählt der Traffic Manager den im Azure-Datencenter verfügbaren Endpunkt mit der niedrigsten Wartezeit für diesen IP-Adressbereich aus und gibt diesen Endpunkt in der DNS-Antwort zurück.
 
 Wie unter [Funktionsweise von Traffic Manager Works](traffic-manager-how-it-works.md) bereits beschrieben, erhält Traffic Manager DNS-Abfragen nicht direkt von Clients. Vielmehr erhält er DNS-Abfragen vom rekursiven DNS-Dienst, für deren Verwendung die Clients konfiguriert sind. Daher handelt es sich bei der IP-Adresse, die zur Ermittlung des nächstgelegenen Endpunkts verwendet wird, nicht um die IP-Adresse eines Clients, sondern um die IP-Adresse des zugehörigen rekursiven DNS-Diensts. In der Praxis lässt sich diese IP-Adresse für diesen Zweck gut verwenden.
 
@@ -104,7 +105,7 @@ Wenn ein Profil für geografisches Routing konfiguriert ist, muss jedem Endpunkt
 - Welt – jede Region
 - Regionale Gruppierung - zum Beispiel Afrika, Naher Osten, Australien/Pazifik usw. 
 - Land/Region - zum Beispiel Irland, Peru, Hongkong (SAR) usw. 
-- Bundesland/Provinz: z.B. USA-Kalifornien, Australien-Queensland, Kanada-Alberta usw. (Hinweis: Diese Granularitätsstufe wird nur für Bundesländer/Provinzen in Australien, Kanada, dem Vereinigten Königreich und den USA unterstützt).
+- Bundesland/Provinz: zum Beispiel USA-Kalifornien, Australien-Queensland, Kanada-Alberta usw. (Hinweis: Diese Granularitätsstufe wird nur für Bundesstaaten/Provinzen in Australien, Kanada und den USA unterstützt.)
 
 Wenn einem Endpunkt eine Region oder eine Reihe von Regionen zugewiesen ist, werden alle Anforderungen aus diesen Regionen nur an den betreffenden Endpunkt geroutet. Traffic Manager verwendet die IP-Quelladresse der DNS-Abfrage, um die Region zu bestimmen, aus der eine Benutzerabfrage stammt - üblicherweise handelt es sich um die IP-Adresse des lokalen DNS-Auflösers, der die Abfrage im Auftrag des Benutzers ausführt.  
 
@@ -124,17 +125,18 @@ Traffic Manager liest die IP-Quelladresse der DNS-Abfrage und entscheidet, aus w
 
 Wie unter [Funktionsweise von Traffic Manager Works](traffic-manager-how-it-works.md) bereits beschrieben, erhält Traffic Manager DNS-Abfragen nicht direkt von Clients. Vielmehr erhält er DNS-Abfragen vom rekursiven DNS-Dienst, für deren Verwendung die Clients konfiguriert sind. Daher handelt es sich bei der IP-Adresse, die zur Ermittlung der Region verwendet wird, nicht um die IP-Adresse eines Clients, sondern um die IP-Adresse des zugehörigen rekursiven DNS-Diensts. In der Praxis lässt sich diese IP-Adresse für diesen Zweck gut verwenden.
 
+## <a name = "multivalue"></a>Routingmethode „MultiValue“ für Datenverkehr
+Mit der Routingmethode **MultiValue** für Datenverkehr können Sie mehrere fehlerfreie Endpunkte in einer einzelnen DNS-Abfrageantwort abrufen. Dadurch kann der Aufrufer clientseitige Wiederholungsversuche mit anderen Endpunkten ausführen, falls ein zurückgegebener Endpunkt nicht reagiert. Dieses Muster kann zur Erhöhung der Verfügbarkeit eines Diensts beitragen und bei einer neuen DNS-Abfrage zum Abrufen eines fehlerfreien Endpunkts die Wartezeit verkürzen. Die Routingmethode „MultiValue“ funktioniert nur, wenn alle Endpunkte vom Typ „Extern“ und als IPv4- oder IPv6-Adressen angegeben sind. Wenn eine Abfrage für dieses Profil empfangen wird, werden alle fehlerfreien Endpunkte unter Berücksichtigung einer konfigurierbaren maximalen Rückgabeanzahl zurückgegeben.
+
+## <a name = "subnet"></a>Routingmethode „Subnetz“ für Datenverkehr
+Mit der Routingmethode **Subnetz** für Datenverkehr können Sie eine Gruppe von Endbenutzer-IP-Adressbereichen bestimmten Endpunkten in einem Profil zuordnen. Wenn der Traffic Manager danach eine DNS-Abfrage für dieses Profil empfängt, untersucht er die Quell-IP-Adresse der Anforderung (in den meisten Fällen ist das die ausgehende IP-Adresse der vom Aufrufer verwendeten DNS-Auflösung), um zu bestimmen, welchem Endpunkt sie zugeordnet ist, und gibt den entsprechenden Endpunkt in der Abfrageantwort zurück. Die IP-Adresse, die einem Endpunkt zugeordnet wird, kann in Form von CIDR-Bereichen (etwa 1.2.3.0/24) oder als Adressbereich (etwa 1.2.3.4-5.6.7.8) angegeben werden. Die einem Endpunkt zugeordneten IP-Adressbereiche müssen innerhalb des Profils eindeutig sein und dürfen sich nicht mit der IP-Adressgruppe eines anderen Endpunkts im gleichen Profil überschneiden.
+Sollten keine Endpunkte vorhanden sein, denen die IP-Adresse zugeordnet werden kann, sendet der Traffic Manager eine NODATA-Antwort. Es empfiehlt sich daher dringend, alle möglichen IP-Adressbereiche für Ihre Endpunkte anzugeben.
+Die Routingmethode „Subnetz“ kann verwendet werden, um Benutzern, die eine Verbindung über einen bestimmten IP-Adressraum herstellen, ein anderes Erlebnis zu bieten. So kann ein Kunde mithilfe der Routingmethode „Subnetz“ beispielsweise sämtliche Anforderungen, die von der Konzernzentrale ausgehen, an einen anderen Endpunkt weiterleiten, um etwa eine interne Version einer App zu testen. Ein weiteres Szenario wäre etwa die Bereitstellung einer anderen Erfahrung für Benutzer, die eine Verbindung über einen bestimmten ISP herstellen, um beispielsweise Benutzer eines bestimmten ISP zu blockieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie mithilfe der [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)
 
-Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
-
-<!--Image references-->
-[1]: ./media/traffic-manager-routing-methods/priority.png
-[2]: ./media/traffic-manager-routing-methods/weighted.png
-[3]: ./media/traffic-manager-routing-methods/performance.png
 
 
 

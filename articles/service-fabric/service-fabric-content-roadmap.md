@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: d4b27feab5c1bb5913d2ba26f7f43aca9a899aa0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: c55e67e24c8f5ff6e243c67b614592874b2cc459
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697668"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870654"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Service Fabric bietet allerdings eine große Oberfläche, und es gibt viel darüber zu erfahren.  Dieser Artikel enthält eine Zusammenfassung von Service Fabric und beschreibt die grundlegenden Konzepte, Programmiermodelle, Cluster, den Anwendungslebenszyklus und die Systemüberwachung. Eine Einführung und eine Anleitung zum Erstellen von Microservices mit Service Fabric finden Sie unter [Übersicht](service-fabric-overview.md) und [Was sind Microservices?](service-fabric-overview-microservices.md). Dieser Artikel enthält keine umfassende Liste der Inhalte, aber Links zu Artikeln zur Übersicht und zu den ersten Schritten für die einzelnen Bereiche von Service Fabric. 
@@ -73,7 +73,7 @@ Innerhalb einer Partition besitzen zustandslose benannte Dienste Instanzen, wohi
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Zustandslose und zustandsbehaftete Microservices für Service Fabric
 Service Fabric ermöglicht es Ihnen, Anwendungen zu erstellen, die aus Microservices oder Containern bestehen. Zustandslose Microservices (z.B. Protokollgateways und Webproxys) behalten über die Anforderung und ihre Antwort vom Dienst hinaus keinen veränderbaren Zustand bei. Ein zustandsloser Dienst ist zum Beispiel die Workerrolle in Azure Cloud Services. Zustandsbehaftete Microservices (z.B. Benutzerkonten, Datenbanken, Geräte, Einkaufswagen und Warteschlangen) behalten einen veränderbaren, autoritativen Zustand über die Anforderung und ihre Antwort hinaus bei. Heutige Internetanwendungen bestehen aus einer Kombination aus zustandslosen und zustandsbehafteten Microservices. 
 
-Eine wichtiger Unterschied bei Service Fabric ist der starke Schwerpunkt auf die Erstellung von zustandsbehafteten Diensten. Dies kann entweder über [integrierte Programmiermodelle](service-fabric-choose-framework.md) oder zustandsbehaftete Dienste in Containern erfolgen. Die [Anwendungsszenarios](service-fabric-application-scenarios.md) beschreiben die Szenarios, in denen zustandsbehaftete Dienste verwendet werden.
+Ein zentraler Unterschied von Service Fabric ist der starke Fokus auf die Erstellung zustandsbehafteter Dienste. Dies kann entweder über [integrierte Programmiermodelle](service-fabric-choose-framework.md) oder zustandsbehaftete Dienste in Containern erfolgen. Die [Anwendungsszenarios](service-fabric-application-scenarios.md) beschreiben die Szenarios, in denen zustandsbehaftete Dienste verwendet werden.
 
 Warum sollte man sowohl zustandsbehaftete als auch zustandslose Microservices haben? Die beiden wichtigsten Gründe sind:
 
@@ -84,7 +84,7 @@ Warum sollte man sowohl zustandsbehaftete als auch zustandslose Microservices ha
 Service Fabric bietet verschiedene Methoden zum Schreiben und Verwalten von Diensten. Dienste können die Service Fabric-APIs verwenden, um Features und Anwendungsframeworks der Plattform umfassend zu nutzen. Ein Dienste kann außerdem ein beliebiges kompiliertes ausführbares Programm sein, das in einer beliebigen Sprache geschrieben und auf einem Service Fabric-Cluster gehostet wird. Weitere Informationen finden Sie unter [Unterstützte Programmiermodelle](service-fabric-choose-framework.md).
 
 ### <a name="containers"></a>Container
-Standardmäßig werden Dienste von Service Fabric als Prozesse bereitgestellt und aktiviert. Service Fabric kann Dienste auch in [Containern](service-fabric-containers-overview.md) bereitstellen. Wichtig ist, dass Sie in derselben Anwendung Dienste in Prozessen und Dienste in Containern mischen können. Service Fabric unterstützt die Bereitstellung von Linux-Containern und Windows-Containern unter Windows Server 2016. Sie können vorhandene Anwendungen, zustandslose Dienste oder zustandsbehaftete Dienste in Containern bereitstellen. 
+Standardmäßig werden Dienste von Service Fabric als Prozesse bereitgestellt und aktiviert. Service Fabric kann Dienste auch in [Containern](service-fabric-containers-overview.md) bereitstellen. Wichtig ist, dass Sie in derselben Anwendung Dienste in Prozessen und Dienste in Containern mischen können. Service Fabric unterstützt die Bereitstellung von Linux-Containern sowie von Windows-Containern unter Windows Server 2016. Sie können vorhandene Anwendungen, zustandslose Dienste oder zustandsbehaftete Dienste in Containern bereitstellen. 
 
 ### <a name="reliable-services"></a>Reliable Services
 [Reliable Services](service-fabric-reliable-services-introduction.md) ist ein schlankes Framework zum Schreiben von Diensten, die sich in die Service Fabric-Plattform integrieren lassen und von allen Features der Plattform profitieren. Reliable Services können zustandslos sein (ähnlich wie die meisten Dienstplattformen, z.B. Webserver oder Workerrollen in Azure Cloud Services). Der Zustand wird in einer externen Lösung, z.B. Azure DB oder Azure Table Storage, gespeichert. Reliable Services können auch zustandsbehaftet sein, wobei der Zustand mithilfe von Reliable Collections direkt im Dienst gespeichert wird. Der Status wird durch Replikation als [hochverfügbar](service-fabric-availability-services.md) festgelegt und durch [Partitionierung](service-fabric-concepts-partitioning.md) verteilt. Die Verwaltung erfolgt automatisch durch Service Fabric.
@@ -104,7 +104,7 @@ Bei einer [ausführbaren Gastanwendungsdatei](service-fabric-guest-executables-i
 ## <a name="application-lifecycle"></a>Anwendungslebenszyklus
 Ähnlich wie auf anderen Plattformen durchläuft eine Anwendung auf Service Fabric normalerweise die folgenden Phasen: Entwurf, Entwicklung, Test, Bereitstellung, Upgrade, Wartung und Deinstallation. Service Fabric bietet erstklassige Unterstützung für den gesamten Anwendungslebenszyklus von Cloudanwendungen: von der Entwicklung über die Bereitstellung, die tägliche Verwaltung und die Wartung bis zur endgültigen Außerbetriebnahme. Das Dienstmodell ermöglicht die unabhängige Beteiligung verschiedener Rollen am Anwendungslebenszyklus. [Service Fabric-Anwendungslebenszyklus](service-fabric-application-lifecycle.md) bietet eine Übersicht über die APIs und wie sie von den verschiedenen Rollen während der Phasen des Service Fabric-Anwendungslebenszyklus verwendet werden. 
 
-Der gesamte App-Lebenszyklus kann mithilfe von [PowerShell-Cmdlets](/powershell/module/ServiceFabric/), [CLI-Befehle](service-fabric-sfctl.md), [C#-APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java-APIs](/java/api/system.fabric) und [REST-APIs](/rest/api/servicefabric/). verwaltet werden. Sie können auch Continuous Integration/Continuous Deployment-Pipelines mit Tools wie [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) oder [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) einrichten.
+Der gesamte App-Lebenszyklus kann mithilfe von [PowerShell-Cmdlets](/powershell/module/ServiceFabric/), [CLI-Befehle](service-fabric-sfctl.md), [C#-APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java-APIs](/java/api/system.fabric._application_management_client) und [REST-APIs](/rest/api/servicefabric/). verwaltet werden. Sie können auch Continuous Integration-/Continuous Deployment-Pipelines mit Tools wie [Azure Pipelines](service-fabric-set-up-continuous-integration.md) oder [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) einrichten.
 
 Das folgende Microsoft Virtual Academy-Video beschreibt die Verwaltung des Anwendungslebenszyklus: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
 <img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">

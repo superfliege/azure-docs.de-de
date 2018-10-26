@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: f9e3f190decdc907cf57a0235b9d7142081bd2f1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f199e6615109278764b9fcc75346da9ee6171cfa
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208028"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815646"
 ---
 # <a name="scaling-service-fabric-clusters"></a>Skalieren von Service Fabric-Clustern
 Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. Cluster können Tausende von Knoten enthalten. Nach dem Erstellen eines Service Fabric-Clusters können Sie den Cluster horizontal (Änderung der Anzahl von Knoten) oder vertikal (Änderung der Ressourcen von Knoten) skalieren.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -75,6 +75,10 @@ Aufgrund dieser Einschränkungen ist es ggf. ratsam, [stärker angepasste Modell
 Mit eigenständigen Clustern können Sie Service Fabric-Cluster lokal oder über den Cloudanbieter Ihrer Wahl bereitstellen.  Knotentypen bestehen je nach Bereitstellung aus physischen oder virtuellen Computern. Verglichen mit Clustern, die in Azure ausgeführt werden, ist der Prozess zum Skalieren eines eigenständigen Clusters etwas aufwändiger.  Sie müssen die Anzahl von Knoten im Cluster manuell ändern und dann ein Upgrade für die Clusterkonfiguration durchführen.
 
 Durch das Entfernen von Knoten werden möglicherweise mehrere Upgrades initiiert. Einige Knoten sind mit dem Tag `IsSeedNode=”true”` gekennzeichnet und können durch Abfragen des Clustermanifests mit [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) ermittelt werden. Das Entfernen solcher Knoten dauert möglicherweise länger als bei anderen Knoten, da die Seed-Knoten in einem solchen Szenario verschoben werden müssen. Der Cluster muss mindestens drei primäre Knotentypen verwalten.
+
+> [!WARNING]
+> Die für den Cluster angegebene Knotenanzahl sollte mindestens der [Clustergröße der Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) entsprechen. Andernfalls besteht die Gefahr, dass die Replizierung von Service Fabric-Systemdiensten im Cluster beeinträchtigt und der Cluster destabilisiert oder sogar gelöscht wird.
+>
 
 Beachten Sie beim Skalieren eines eigenständigen Clusters die folgenden Richtlinien:
 - Das Ersetzen primärer Knoten muss für jeden Knoten einzeln ausgeführt werden. Das Entfernen und Hinzufügen in Batches ist nicht möglich.

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/10/2018
+ms.date: 10/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e901d147d757a046d50927d6f2651b0a74657b1f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: ab90b4431a0f8d3a4ee70869e053174f89f23dba
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288188"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785214"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Speicher- und Parallelitätsgrenzwerte – Azure SQL Data Warehouse
 Zeigen Sie die Speicher- und Parallelitätsgrenzwerte an, die den verschiedenen Leistungsstufen und Ressourcenklassen in Azure SQL Data Warehouse zugewiesen sind. Weitere Informationen – auch darüber, wie Sie diese Funktionen in Ihren Workloadverwaltungsplan übernehmen – finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md). 
@@ -27,10 +27,11 @@ Die folgenden Tabellen zeigen die maximale Kapazität für das Data Warehouse au
 
 ### <a name="gen2"></a>Gen2
 
-Gen2 stellt 2,5-mal mehr Arbeitsspeicher pro Abfrage bereit als Gen1. Diesem zusätzlichen Speicher verdankt Gen2 seine schnelle Ausführungsleistung.  Die Leistungsstufen für Gen2 erstrecken sich von DW1000c bis DW30000c. 
+Gen2 stellt 2,5-mal mehr Arbeitsspeicher pro Abfrage bereit als Gen1. Diesem zusätzlichen Speicher verdankt Gen2 seine schnelle Ausführungsleistung.  Die Leistungsstufen für Gen2 erstrecken sich von DW500c bis DW30000c. 
 
 | Leistungsstufe | Serverknoten | Verteilungen pro Serverknoten | Arbeitsspeicher pro Data Warehouse (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
+| DW500c            | 1             | 60                             |   300                          |
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
 | DW2000c           | 4             | 15                             |  1200                          |
@@ -75,6 +76,7 @@ Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die P
 
 | Service Level | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+| DW500c        | 20                         |   20                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
@@ -90,7 +92,7 @@ Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die P
 **Dynamische Ressourcenklassen**
 
 > [!NOTE]
-> Die Ressourcenklasse „smallrc“ in Gen2 fügt mit steigenden Servicelevels dynamisch Arbeitsspeicher hinzu und unterstützt lediglich max. 32 gleichzeitige Abfragen.  Die von „smallrc“ verwendeten Parallelitätsslots und Arbeitsspeicher erhöhen sich damit mit steigenden Servicelevels. 
+> Die Ressourcenklasse „,smallrc“ in Gen2 fügt mit steigenden Servicelevels dynamisch Arbeitsspeicher hinzu und unterstützt lediglich maximal 32 (DW1000c) bzw. 20 (DW500c) gleichzeitige Abfragen.  Wird die Instanz über DW1500c hinaus skaliert, erhöhen sich die von „smallrc“ verwendeten Parallelitätsslots und Arbeitsspeicher mit steigenden Servicelevels. 
 >
 >
 
@@ -98,6 +100,7 @@ Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die P
 
 | Service Level | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | Durch „smallrc“ verwendete Slots | Durch „mediumrc“ verwendete Slots | Durch „largerc“ verwendete Slots | Durch „xlargerc“ verwendete Slots |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
+| DW500c        | 20                         |   20                        | 1                     |  2                     |  4                    |  14                    |
 | DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
 | DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |
 | DW2000c       | 32                         |   80                        | 2                     |  8                     |  17                   |  56                    |

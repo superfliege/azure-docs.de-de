@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 7712196caefeea8a62045d432d762fbd16f42011
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 7682a733c5630c16d9684ec3cb9e7757b03a8b1b
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33893965"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855934"
 ---
 # <a name="azure-database-security-checklist"></a>Checkliste für die Sicherheit der Azure-Datenbank
 
@@ -61,7 +61,7 @@ Die Azure-Datenbank ist eine robuste Datenbankplattform mit einem vollständigen
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können den Schutz Ihrer Datenbank vor schädlichen Benutzern oder nicht autorisiertem Zugriff mit wenigen einfachen Schritten verbessern. In diesem Tutorial lernen Sie Folgendes:
 
-- Einrichten von [Firewallregeln](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) für den Server oder die Datenbank.
+- Einrichten von [Firewallregeln](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) für den Server und/oder die Datenbank
 - Schützen von Daten durch [Verschlüsselung](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption).
 - Aktivieren der [SQL-Datenbanküberwachung](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
 

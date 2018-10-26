@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2b6dfe7c8f8ac8d7207659b848abecd04f56c232
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: f0da25410fe81a93501df940ffbb0e115456a9e8
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181441"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247806"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics-Edge-Aufträge (Vorschau)
 
@@ -37,16 +37,13 @@ Der Pfad aller UDF-Pakete hat das Format `/UserCustomCode/CLR/*`. Dynamic Link L
 
 |**UDF-Typ (C#)**  |**Azure Stream Analytics-Typ**  |
 |---------|---------|
-|Bool  |  bigint   |
-|int32  |  bigint   |
-|int64  |  bigint   |
-|Gleitkommawert  |  double   |
+|lang  |  bigint   |
 |double  |  double   |
 |Zeichenfolge  |  nvarchar(max)   |
 |dateTime  |  dateTime   |
 |struct  |  IRecord   |
 |object  |  IRecord   |
-|Array  |  IArray   |
+|Array<object>  |  IArray   |
 |dictionary<Zeichenfolge, Objekt>  |  IRecord   |
 
 ## <a name="codebehind"></a>CodeBehind
@@ -116,12 +113,12 @@ Erweitern Sie den Abschnitt mit der **benutzerdefinierten Codekonfiguration**, u
  |**Einstellung**  |**Empfohlener Wert**  |
  |---------|---------|
  |Assemblyquelle  | Vorhandene Assemblypakete aus der Cloud.    |
- |Ressource  |  Wählen Sie Daten aus dem aktuellem Konto aus.   |
+ |Ressource  |  Wählen Sie Daten aus dem aktuellen Konto aus.   |
  |Abonnement  |  Wählen Sie Ihr Abonnement aus.   |
  |Speicherkonto  |  Wählen Sie Ihr Speicherkonto aus.   |
  |Container  |  Wählen Sie den Container aus, den Sie in Ihrem Speicherkonto erstellt haben.   |
 
-![Auftragskonfiguration für Azure Stream Analytics auf IoT Edge in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
+![Konfiguration von Azure Stream Analytics-Edge-Aufträgen in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
 
 ## <a name="limitations"></a>Einschränkungen
 Für die Vorschauversion für benutzerdefinierte Funktionen gelten derzeit folgende Einschränkungen:
