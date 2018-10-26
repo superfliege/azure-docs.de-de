@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 287dcdedede5cab575aa0b9a73ec3e122556dc93
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 99efd29165f381b9038758c3384774a65da91501
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900722"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649413"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrisieren von verknüpften Diensten in Azure Data Factory
 
@@ -27,6 +27,10 @@ Sie können mithilfe der Data Factory-Benutzeroberfläche im Azure-Portal oder e
 
 > [!TIP]
 > Es wird empfohlen, Kennwörter oder Geheimnisse nicht zu parametrisieren. Speichern Sie stattdessen alle Verbindungszeichenfolgen in Azure Key Vault, und parametrisieren Sie den *geheimen Namen*.
+
+Das folgende Video enthält eine siebenminütige Einführung und Demonstration dieses Features:
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
 ## <a name="supported-data-stores"></a>Unterstützte Datenspeicher
 
