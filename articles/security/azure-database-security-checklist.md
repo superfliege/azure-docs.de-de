@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 7682a733c5630c16d9684ec3cb9e7757b03a8b1b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: f6e8ed1725b7ba2a0cba8523ae03c0306337aba0
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855934"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402506"
 ---
 # <a name="azure-database-security-checklist"></a>Checkliste für die Sicherheit der Azure-Datenbank
 
@@ -46,7 +46,7 @@ Es wird empfohlen, den Artikel [Azure Database Security Best Practices (Bewährt
 |Checklistenkategorie| BESCHREIBUNG|
 | ------------ | -------- |
 |**Schützen von Daten**||
-| <br> Verschlüsselung von Daten während der Übertragung| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol) für die Datenverschlüsselung beim Verschieben von Daten in die Netzwerke.</li><li>Die Datenbank erfordert sichere Kommunikation von Clients auf der Grundlage des Protokolls [Tabular Data Stream (TDS)](https://msdn.microsoft.com/en-in/library/dd357628.aspx) über Transport Layer Security (TLS).</li></ul> |
+| <br> Verschlüsselung von Daten während der Übertragung| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol) für die Datenverschlüsselung beim Verschieben von Daten in die Netzwerke.</li><li>Die Datenbank erfordert sichere Kommunikation von Clients auf der Grundlage des Protokolls [Tabular Data Stream (TDS)](https://msdn.microsoft.com/library/dd357628.aspx) über Transport Layer Security (TLS).</li></ul> |
 |<br>Verschlüsselung ruhender Daten| <ul><li>[Transparente Datenverschlüsselung](http://go.microsoft.com/fwlink/?LinkId=526242), wenn inaktive Daten physisch in digitaler Form gespeichert werden.</li></ul>|
 |**Steuern des Zugriffs**||  
 |<br> Datenbankzugriff | <ul><li>[Authentifizierung](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) (Azure Active Directory-Authentifizierung, AD-Authentifizierung) verwendet von Azure Active Directory verwaltete Identitäten.</li><li>[Autorisierung](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) erteilt Benutzern die minimal erforderlichen Berechtigungen.</li></ul> |
