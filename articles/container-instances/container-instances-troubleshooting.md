@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 6f57bc41cddc997a69f92ba4e8ca66faaeb29738
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d2e4491f2ee21deedd674a5a8a64e4dd99149924
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424601"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079352"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
@@ -89,11 +89,24 @@ Wenn das Image nicht abgerufen werden kann, werden in der Ausgabe von [az contai
 ],
 ```
 
-## <a name="container-continually-exits-and-restarts"></a>Container wird fortlaufend beendet und neu gestartet
+## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Container wird fortlaufend beendet und neu gestartet (kein Vorgang mit langer Ausführungsdauer)
 
-Wenn Ihr Container bis zum Ende ausgeführt und anschließend neu gestartet wird, müssen Sie unter Umständen für [Neustartrichtlinie](container-instances-restart-policy.md) entweder **OnFailure** oder **Never** festlegen. Wenn Sie **OnFailure** festlegen und der Container weiterhin neu gestartet wird, liegt unter Umständen ein Problem mit der Anwendung oder dem Skript vor, die bzw. das im Container ausgeführt wird.
+Bei Containergruppen ist standardmäßig eine [Neustartrichtlinie](container-instances-restart-policy.md) mit der Einstellung **Immer** festgelegt, sodass Container in der Containergruppe immer neu gestartet werden, nachdem sie bis zum Abschluss ausgeführt wurden. Wenn Sie taskbasierte Container ausführen möchten, müssen Sie diese Option eventuell in **OnFailure** oder **Never** ändern. Wenn Sie **OnFailure** festlegen und der Container weiterhin neu gestartet wird, liegt unter Umständen ein Problem mit der Anwendung oder dem Skript vor, die bzw. das im Container ausgeführt wird.
 
-Die Container Instances-API enthält eine `restartCount`-Eigenschaft. Die Anzahl von Neustarts für einen Container können Sie mit dem Befehl [az container show][az-container-show] in der Azure CLI überprüfen. In der folgenden (gekürzten) Beispielausgabe sehen Sie die `restartCount`-Eigenschaft am Ende der Ausgabe.
+Bei der Ausführung von Containergruppen ohne Prozesse mit langer Ausführungsdauer werden Images möglicherweise wiederholt beendet und neu gestartet, wie etwa bei Ubuntu oder Alpine. Das Herstellen einer Verbindung über [EXEC](container-instances-exec.md) funktioniert nicht, da der Container keinen Prozess aufweist, der diesen aktiv hält. Um dies zu beheben, schließen Sie einen Befehl wie den Folgenden in Ihre Containergruppenbereitstellung ein, damit der Container weiterhin ausgeführt wird.
+
+```azurecli-interactive
+## Deploying a Linux container
+az container create -g MyResourceGroup --name myapp --image ubuntu --command-line "tail -f /dev/null"
+```
+
+```azurecli-interactive 
+## Deploying a Windows container
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image windowsservercore:ltsc2016
+ --command-line "ping -t localhost"
+```
+
+Die Container Instances-API und das Azure-Portal enthalten eine `restartCount`-Eigenschaft. Die Anzahl von Neustarts für einen Container können Sie mit dem Befehl [az container show][az-container-show] in der Azure CLI überprüfen. In der folgenden (gekürzten) Beispielausgabe können Sie die `restartCount`-Eigenschaft am Ende der Ausgabe sehen.
 
 ```json
 ...

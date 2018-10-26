@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 5a62d4b0b324d8b2536e408132210f07f08e8bb8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e796feaf8ef25eaa91b7db810a11a67da13e9df1
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958695"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237176"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Bereitstellen von Webdiensten in Azure Container Instances 
 
@@ -33,9 +33,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure Machine Learning-Arbeitsbereich und das Azure Machine Learning SDK für Python müssen installiert sein. Unter [Schnellstart: erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md) erfahren Sie, wie Sie diese Komponenten installieren.
+- Ein Azure Machine Learning Service-Arbeitsbereich und das Azure Machine Learning SDK für Python müssen installiert sein. Unter [Schnellstart: erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md) erfahren Sie, wie Sie diese Komponenten installieren.
 
-- Das Azure Machine Learning-Arbeitsbereichsobjekt.
+- Das Azure Machine Learning Service-Arbeitsbereichsobjekt
 
     ```python
     from azureml.core import Workspace

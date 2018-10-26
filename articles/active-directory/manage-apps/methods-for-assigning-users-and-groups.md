@@ -5,25 +5,23 @@ services: active-directory
 documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 10/01/2018
 ms.author: barbkess
-ms.openlocfilehash: d357a9a7f249127289a256685d9555f777742b68
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c4aa311018603b32e854d3d3423d342350e6520d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354818"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044483"
 ---
-# <a name="how-to-assign-users-and-groups-to-an-application"></a>Zuweisen von Benutzern und Gruppen zu einer Anwendung
-
-Damit Benutzer eine der folgenden Aktionen für eine bestimmte Anwendung durchführen können, müssen Sie **sie zunächst der Anwendung zuweisen**, um ihnen Zugriff darauf zu gewähren:
+# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory
+In diesem Artikel wird das Zuweisen von Benutzern oder Gruppen zu einer Anwendung in Azure Active Directory (Azure AD) veranschaulicht. Benutzer müssen zuerst zu einer Anwendung zugewiesen werden, bevor ein Administrator ihnen Zugriff für Folgendes gewähren kann:
 
 -   Zugriff auf eine Anwendung durch **direktes Navigieren zur URL der Anwendung** (wird auch als vom Dienstanbieter initiierte Anmeldung bezeichnet).
 
@@ -33,17 +31,19 @@ Damit Benutzer eine der folgenden Aktionen für eine bestimmte Anwendung durchf�
 
 -   Eine Anwendung wird in ihrem [Startprogramm für Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) angezeigt.
 
-## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Methoden zum Zuweisen von Anwendungen mit Azure Active Directory 
+## <a name="prerequisties"></a>Voraussetzungen
+Bevor Sie einer Anwendung Benutzer und Gruppen zuweisen können, müssen Sie die Benutzerzuweisung erfordern. So fordern Sie eine Benutzerzuweisung an
 
-Zum Zuweisen von Anwendungen mit Azure Active Directory stehen 3 Möglichkeiten zur Verfügung:
+1. Melden Sie sich beim Azure-Portal mit dem Administratorkonto an.
+2. Klicken Sie im Hauptmenü auf den Eintrag **Alle Dienste**.
+3. Wählen Sie das Verzeichnis aus, das Sie für die Anwendung verwenden.
+4. Klicken Sie auf die Registerkarte **Unternehmensanwendungen**.
+5. Wählen Sie die Anwendung aus der Liste der Programme aus, die diesem Verzeichnis zugeordnet sind.
+6. Klicken Sie auf die Registerkarte **Eigenschaften**.
+7. Legen Sie **Benutzerzuweisung erforderlich?** auf „Ja“ fest.
+8. Klicken Sie oben auf der Seite auf die Schaltfläche **Speichern**.
 
--   [Direktes Zuweisen eines Benutzers zu einer Anwendung als Administrator](#assign-a-user-directly-as-an-administrator)
-
--   [Direktes Zuweisen einer Gruppe zu einer Anwendung als Administrator](#assign-a-group-directly-to-an-application-as-an-administrator)
-
--   [Aktivieren des Self-Service-Anwendungszugriffs, um Benutzern die Suche ihrer eigenen Anwendungen zu ermöglichen](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
-
-## <a name="assign-a-user-directly-as-an-administrator"></a>Direktes Zuweisen eines Benutzers als Administrator
+## <a name="assign-users"></a>Benutzer zuweisen
 
 Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus:
 
@@ -81,7 +81,7 @@ Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus
 
 Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen mit den Verfahren starten, die im Abschnitt mit der Lösungsbeschreibung beschrieben wurden.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Direktes Zuweisen einer Gruppe zu einer Anwendung als Administrator
+## <a name="assign-groups"></a>Zuweisen von Gruppen
 
 Führen Sie die folgenden Schritte aus, um einer Anwendung eine oder mehrere Gruppen direkt zuzuweisen:
 
@@ -119,9 +119,9 @@ Führen Sie die folgenden Schritte aus, um einer Anwendung eine oder mehrere Gru
 
 Nach kurzer Zeit können die Benutzer in den ausgewählten Gruppen diese Anwendungen mit den Verfahren starten, die im Abschnitt mit der Lösungsbeschreibung beschrieben wurden. Bei dynamischen Gruppen kann bei der Verarbeitung dieser Zuweisungen eine zusätzliche Verzögerung entstehen, bevor sie für Benutzer in den zugewiesenen Gruppen angezeigt werden.
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Aktivieren des Self-Service-Anwendungszugriffs, um Benutzern die Suche ihrer eigenen Anwendungen zu ermöglichen
+## <a name="enable-self-service-application-access"></a>Aktivieren von Self-Service-Anwendungszugriff
 
-Der Self-Service-Anwendungszugriff bietet die Möglichkeit, dass Benutzer Anwendungen selbst ermitteln können und dass die entsprechende Geschäftseinheit den Zugriff auf diese Anwendungen optional genehmigen kann. Sie können festlegen, dass die Mitarbeiter der Geschäftseinheit direkt über ihren Zugriffsbereich die den Benutzern zugewiesenen Anmeldeinformationen für Anwendungen mit einmaligem Anmelden per Kennwort verwalten können.
+Der Self-Service-Anwendungszugriff bietet die Möglichkeit, dass Benutzer Anwendungen selbst ermitteln können und die entsprechende Geschäftseinheit den Zugriff auf diese Anwendungen optional genehmigen kann. Sie können festlegen, dass die Mitarbeiter der Geschäftseinheit direkt über ihren Zugriffsbereich die den Benutzern zugewiesenen Anmeldeinformationen für Anwendungen mit einmaligem Anmelden per Kennwort verwalten können.
 
 Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff auf eine Anwendung zu aktivieren:
 

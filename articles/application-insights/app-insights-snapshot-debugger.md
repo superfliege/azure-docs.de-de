@@ -10,21 +10,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2018
+ms.date: 10/10/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: d4c27c8297fb5a2ad13a245279a206d00fc4f8b1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 6dd39fddd99f5f8ea9329f21c271ed4c1063362d
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144124"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078969"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 
 Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger (Vorschau) in [Azure Application Insights](app-insights-overview.md) überwacht die Ausnahmetelemetrie aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](app-insights-asp-net-exceptions.md).
 
 Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Öffnen Sie zum Verbessern Ihrer Debugleistung mit Quellcode die Momentaufnahmen mit Visual Studio 2017 Enterprise, indem Sie [die Momentaufnahmedebugger-Erweiterung für Visual Studio herunterladen](https://aka.ms/snapshotdebugger). In Visual Studio können Sie auch [Andockpunkte festlegen, um interaktiv Momentaufnahmen zu erstellen](https://aka.ms/snappoint), ohne auf eine Ausnahme zu warten.
+
+Debugmomentaufnahmen werden sieben Tage lang gespeichert. Diese Aufbewahrungsrichtlinie wird für jede Anwendung separat festgelegt. Wenn Sie diesen Wert erhöhen möchten, können Sie eine Erhöhung anfordern, indem Sie einen Supportfall im Azure-Portal eröffnen.
 
 Die Momentaufnahmesammlung ist für folgende Anwendungen verfügbar:
 * .NET Framework- und ASP.NET-Anwendungen, die mit .NET Framework 4.5 oder höher ausgeführt werden
@@ -191,9 +193,12 @@ Die folgenden Umgebungen werden unterstützt:
 
 ## <a name="grant-permissions"></a>Erteilen von Berechtigungen
 
-Besitzer des Azure-Abonnements können Momentaufnahmen überprüfen. Anderen Benutzern muss durch einen Besitzer eine entsprechende Berechtigung erteilt werden.
+Der Zugriff auf Momentaufnahmen wird durch die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) geschützt. Um eine Momentaufnahme zu überprüfen, muss Ihnen zuerst die erforderliche Rolle durch einen Abonnementbesitzer zugewiesen werden.
 
-Weisen Sie hierzu den Benutzern, die Momentaufnahmen untersuchen, die Rolle `Application Insights Snapshot Debugger` zu. Abonnementbesitzer können diese Rolle einzelnen Benutzern oder Gruppen für die Application Insights-Zielressource oder für die dazugehörige Ressourcengruppe oder das dazugehörige Abonnement zuweisen.
+> [!NOTE]
+> Weder Besitzer noch Mitwirkende erhalten diese Rolle automatisch. Wenn sie Momentaufnahmen anzeigen möchten, müssen sie sich die Rolle selbst zuweisen.
+
+Abonnementbesitzer sollten Benutzern, die Momentaufnahmen untersuchen, die Rolle `Application Insights Snapshot Debugger` zuweisen. Abonnementbesitzer können diese Rolle einzelnen Benutzern oder Gruppen für die Application Insights-Zielressource oder für die dazugehörige Ressourcengruppe oder das dazugehörige Abonnement zuweisen.
 
 1. Navigieren Sie im Azure-Portal zu der Application Insights-Ressource.
 1. Klicken Sie auf **Zugriffssteuerung (IAM)**.

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8a2e06d2e6cf3e470d4e0909e5559ac0411292fd
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: bc16b71ad20e2cf2bc61a046336fe6a3618bc403
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307112"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269563"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps
 
@@ -82,7 +82,7 @@ Für die Arbeit mit Zeichenfolgen können Sie folgende Zeichenfolgenfunktionen u
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Gibt die Anfangsposition für eine Teilzeichenfolge zurück. | 
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Gibt die Anfangsposition des letzten Vorkommens einer Teilzeichenfolge zurück. | 
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Ersetzt eine Teilzeichenfolge durch die angegebene Zeichenfolge und gibt die aktualisierte Zeichenfolge zurück. | 
-| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Gibt ein Array zurück, das sämtliche Zeichen aus einer Zeichenfolge enthält und in dem die einzelnen Zeichen mit einem bestimmten Trennzeichen getrennt werden. | 
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Gibt ein Array mit Teilzeichenfolgen, die durch Trennzeichen getrennt sind, aus einer größeren Zeichenfolge basierend auf einem angegebenen Trennzeichen in der ursprünglichen Zeichenfolge zurück. | 
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Überprüft, ob eine Zeichenfolge mit einer bestimmten Teilzeichenfolge beginnt. | 
 | [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Gibt Zeichen aus einer Zeichenfolge zurück, beginnend mit der angegebenen Position. | 
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Gibt eine Zeichenfolge in Kleinbuchstaben zurück. | 
@@ -493,7 +493,7 @@ addDays('<timestamp>', <days>, '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | JA | Zeichenfolge | Die Zeichenfolge, die den Zeitstempel enthält | 
 | <*days*> | JA | Ganze Zahl  | Die positive oder negative Anzahl von Tagen, die hinzugefügt werden sollen | 
-| <*format*> | Nein  | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
+| <*format*> | Nein  | Zeichenfolge | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 ||||| 
 
 | Rückgabewert | Typ | BESCHREIBUNG | 
@@ -3016,32 +3016,32 @@ Es wird dieses Array mit den restlichen Elementen zurückgegeben: `[1,2,3]`
 
 ### <a name="split"></a>split
 
-Gibt ein Array zurück, das alle Zeichen aus einer Zeichenfolge enthält und in dem je zwei Zeichen durch ein *Trennzeichen* getrennt sind.
+Gibt ein Array mit Teilzeichenfolgen, die durch Trennzeichen getrennt sind, basierend auf einem angegebenen Trennzeichen in der ursprünglichen Zeichenfolge zurück. 
 
 ```
-split('<text>', '<separator>')
+split('<text>', '<delimiter>')
 ```
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG | 
 | --------- | -------- | ---- | ----------- | 
-| <*text*> | JA | Zeichenfolge | Die Zeichenfolge, die die voneinander zu trennenden Zeichen enthält |  
-| <*separator*> | JA | Zeichenfolge | Das Trennzeichen, das zwischen den einzelnen Zeichen im resultierenden Array steht. | 
+| <*text*> | JA | Zeichenfolge | Die Zeichenfolge, die auf Grundlage des angegebenen Trennzeichens in der ursprünglichen Zeichenfolge in Teilzeichenfolgen unterteilt wird |  
+| <*delimiter*> | JA | Zeichenfolge | Das Zeichen in der ursprünglichen Zeichenfolge, das als Trennzeichen verwendet wird | 
 ||||| 
 
 | Rückgabewert | Typ | BESCHREIBUNG | 
 | ------------ | ---- | ----------- | 
-| [<*char1*><*separator*><*char2*><*separator*>...] | Array | Das resultierende Array, das aus allen Zeichen der angegebenen Zeichenfolge erstellt wurde |
+| [<*substring1*>,<*substring2*>,...] | Array | Ein Array mit Teilzeichenfolgen aus der ursprünglichen Zeichenfolge, das durch Trennzeichen getrennt ist |
 |||| 
 
 *Beispiel* 
 
-In diesem Beispiel wird ein Array aus der angegebenen Zeichenfolge erstellt, wobei je zwei Zeichen mit einem Komma als Trennzeichen getrennt werden:
+Dieses Beispiel erstellt ein Array mit Teilzeichenfolgen aus der angegebenen Zeichenfolge basierend auf dem angegebenen Zeichen als Trennzeichen: 
 
 ```
-split('abc', ',')
+split('a_b_c', '_')
 ```
 
-Dies ist das zurückgegebene Ergebnis: `[a, b, c]`
+Dieses Array wird als Ergebnis zurückgegeben: `["a","b","c"]`
 
 <a name="startOfDay"></a>
 

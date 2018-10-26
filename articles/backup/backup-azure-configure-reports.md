@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von Berichten für Azure Backups
-description: Konfigurieren von Power BI-Berichten für Azure Backup mithilfe von Recovery Services-Tresor
+title: Konfigurieren von Berichten für Azure Backup
+description: Erfahren Sie, wie Sie Power BI-Berichte für Azure Backup mit einem Recovery Services-Tresor konfigurieren.
 services: backup
 author: adiganmsft
 manager: shivamg
@@ -9,148 +9,151 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c59653bf3709f7798fd92a44fa420b99f2cbc6b6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 0c1d7a404ffd9b4da4868f56a5e17300495b57db
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733563"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269359"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
-In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für Azure Backup mithilfe des Recovery Services-Tresors beschrieben, und es wird gezeigt, wie Sie auf diese Berichte mithilfe von PowerBI zugreifen können. Nachdem Sie diese Schritte ausgeführt haben, können Sie direkt in Power BI alle Berichte anzeigen, Berichte anpassen und erstellen. 
+Dieser Artikel erläutert die Schritte zum Konfigurieren von Berichten für Azure Backup mit dem Recovery Services-Tresor. Außerdem erfahren Sie, wie Sie mit Power BI auf Berichte zugreifen. Nachdem Sie diese Schritte abgeschlossen haben, können Sie direkt Power BI aufrufen, um Berichte anzuzeigen, anzupassen und zu erstellen.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
-1. Azure Backup-Berichte werden für die Sicherung von virtuellen Azure-Computern und für die Sicherung von Dateien/Ordnern in der Cloud mit dem Azure Recovery Services-Agent unterstützt.
-2. Berichte über Azure SQL, DPM und Azure Backup Server werden derzeit nicht unterstützt.
-3. Sie können die Berichte in allen Tresoren mit allen Abonnements anzeigen, sofern für alle Tresore dasselbe Speicherkonto verwendet wird. Das ausgewählte Speicherkonto muss sich in derselben Region wie der Recovery Services-Tresor befinden.
-4. Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. In Power BI können Sie die Berichte auch ad hoc aktualisieren. In diesem Fall werden die aktuellsten Daten im Kundenspeicherkonto zum Rendern der Berichte verwendet. 
+- Azure Backup-Berichte werden für die Sicherung von Azure-VMs und Dateien/Ordnern in der Cloud mit dem Azure Recovery Services-Agent unterstützt.
+- Berichte für die Azure SQL-Datenbank, Data Protection Manager und Azure Backup Server werden derzeit nicht unterstützt.
+- Sie können die Berichte für verschiedene Tresore und Abonnements anzeigen, sofern für alle Tresore dasselbe Speicherkonto konfiguriert ist. Das ausgewählte Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
+- Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. Sie können Berichte in Power BI auch ad hoc aktualisieren. In diesem Fall werden die neuesten Daten im Kundenspeicherkonto zum Rendern von Berichten verwendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-quickstart-create-account.md), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
-2. [Erstellen Sie ein Power BI-Konto](https://powerbi.microsoft.com/landing/signin/), um mit dem Power BI-Portal Ihre eigenen Berichte anzuzeigen, anzupassen und zu erstellen.
-3. Wenn noch keine Registrierung vorhanden ist, registrieren Sie als Ressourcenanbieter **Microsoft.insights** mit einem Abonnement für ein Speicherkonto und für Recovery Services-Tresor, um die Übertragung von Berichtsdaten an das Speicherkonto zu aktivieren. Um dies zu tun, wechseln Sie zu Azure-Portal > Abonnement > Ressourcenanbieter, und markieren Sie den Anbieter, für den die Registrierung durchgeführt werden soll. 
+- Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-quickstart-create-account.md), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
+- [Erstellen Sie ein Power BI-Konto](https://powerbi.microsoft.com/landing/signin/), um im Power BI-Portal Ihre eigenen Berichte anzuzeigen, anzupassen und zu erstellen.
+- Registrieren Sie den Ressourcenanbieter **Microsoft.insights**, falls er noch nicht registriert ist. Verwenden Sie die Abonnements für das Speicherkonto und den Recovery Services-Tresor, damit die Berichtsdaten an das Speicherkonto übermittelt werden können. Öffnen Sie zum Registrieren das Azure-Portal, wählen Sie **Abonnement** > **Ressourcenanbieter** aus, und markieren Sie den gewünschten Anbieter.
 
 ## <a name="configure-storage-account-for-reports"></a>Konfigurieren des Speicherkontos für Berichte
-Mit den folgenden Schritten konfigurieren Sie das Speicherkonto für Recovery Services-Tresore mithilfe von Azure Portal. Es handelt sich dabei um eine nur einmal durchzuführende Konfiguration. Nachdem das Speicherkonto konfiguriert ist, können sie direkt in Power BI Berichte über das Inhaltspaket und die Nutzung anzeigen.
-1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit dem nächsten Schritt fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben und sich im Azure-Portal befinden, klicken Sie auf **Alle Dienste**.
+Diese Schritte zeigen, wie Sie das Speicherkonto für einen Recovery Services-Tresor über das Azure-Portal konfigurieren. Diese Konfiguration wird einmalig ausgeführt. Wenn das Speicherkonto konfiguriert wurde, können Sie direkt Power BI öffnen, um das Inhaltspaket anzuzeigen und Berichte zu verwenden.
+1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, fahren Sie mit dem nächsten Schritt fort. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, wählen Sie im Azure-Portal **Alle Dienste** aus.
 
    * Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein.
-   * Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wenn **Recovery Services-Tresore**angezeigt wird, klicken Sie auf den Eintrag.
+   * Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
 
       ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-vms-encryption/browse-to-rs-vaults.png) <br/>
 
-     Die Liste mit den Recovery Services-Tresoren wird angezeigt. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus.
+   * Die Liste mit den Recovery Services-Tresoren wird angezeigt. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus.
 
      Das ausgewählte Tresor-Dashboard wird geöffnet.
-2. Klicken Sie in der unter dem Tresor angezeigten Liste im Abschnitt „Überwachung und Berichte“ auf das Element **Sicherungsberichte**, um das Speicherkonto für Berichte zu konfigurieren.
+2. Wählen Sie in der Liste der Elemente, die unter dem Tresor angezeigt wird, im Abschnitt **Überwachung und Berichte** **Sicherungsberichte** aus, um das Speicherkonto für Berichte zu konfigurieren.
 
       ![Wählen Sie in „Sicherungsberichte“ das Menüelement „Schritt 2“](./media/backup-azure-configure-reports/backup-reports-settings.PNG)
-3. Klicken Sie auf dem Blatt „Sicherungsberichte“ auf den Link **Diagnoseeinstellungen**. Dadurch wird die Benutzeroberfläche für Diagnoseeinstellungen geöffnet, die zum Übertragen der Daten per Push an das Speicherkonto des Kunden verwendet wird.
+3. Wählen Sie auf dem Blatt **Sicherungsberichte** den Link **Diagnoseeinstellungen** aus. Dadurch wird die Benutzeroberfläche **Diagnoseeinstellungen** geöffnet, die zum Übertragen der Daten mithilfe von Push an das Speicherkonto des Kunden verwendet wird.
 
       ![Schritt 3: Aktivieren der Diagnose](./media/backup-azure-configure-reports/backup-azure-configure-reports.png)
-4. Klicken Sie auf den Link **Diagnose aktivieren**. Dadurch wird die Benutzeroberfläche zum Konfigurieren des Speicherkontos geöffnet. 
+4. Wählen Sie **Diagnose aktivieren** aus, um eine Benutzeroberflächen zum Konfigurieren eines Speicherkontos zu öffnen. 
 
       ![Schritt 4: Aktivieren der Diagnose](./media/backup-azure-configure-reports/enable-diagnostics.png)
-5. Geben Sie den Einstellungsnamen im Feld **Name** ein, und aktivieren Sie das Kontrollkästchen **In einem Speicherkonto archivieren**, damit die Berichtsdaten an das Speicherkonto übermittelt werden können.
+5. Geben Sie im Feld **Name** einen Einstellungsnamen ein. Aktivieren Sie das Kontrollkästchen **In einem Speicherkonto archivieren**, damit die Berichtsdaten an das Speicherkonto übermittelt werden können.
 
       ![Schritt 5: Aktivieren der Diagnose](./media/backup-azure-configure-reports/select-setting-name.png)
-6. Klicken Sie in der Speicherkontoauswahl in der Liste für das Speichern der Berichtsdaten auf das entsprechende Abonnement und Speicherkonto, und klicken Sie auf **OK**.
+6. Wählen Sie **Speicherkonto**, in der Liste zum Speichern der Berichtsdaten das entsprechende Abonnement und Speicherkonto und dann **OK** aus.
 
       ![Schritt 6: Auswählen des Speicherkontos](./media/backup-azure-configure-reports/select-subscription-sa.png)
-7. Aktivieren Sie im Protokollabschnitt das Kontrollkästchen **AzureBackupReport**, und wählen Sie mit dem Schieberegler die Aufbewahrungsdauer für diese Berichtsdaten aus. Die Berichtsdaten werden für den mit diesem Schieberegler ausgewählten Zeitraum im Speicherkonto beibehalten.
+7. Aktivieren Sie im Abschnitt **Protokoll** das Kontrollkästchen **AzureBackupReport**. Verwenden Sie den Schieberegler, um einen Aufbewahrungszeitraum für diese Berichtsdaten auszuwählen. Die Berichtsdaten werden für den mit dem Schieberegler ausgewählten Zeitraum im Speicherkonto aufbewahrt.
 
       ![Schritt 7: Speichern des Speicherkontos](./media/backup-azure-configure-reports/save-diagnostic-settings.png)
-8. Überprüfen Sie alle Änderungen, und klicken Sie oben auf die Schaltfläche **Speichern**, wie in der obigen Abbildung gezeigt. Dadurch wird sichergestellt, dass alle Änderungen gespeichert werden und das Speicherkonto nun für das Speichern von Berichtsdaten konfiguriert ist.
+8. Überprüfen Sie alle Änderungen, und wählen Sie **Speichern** aus. Dadurch wird sichergestellt, dass alle Änderungen gespeichert werden und das Speicherkonto nun für das Speichern von Berichtsdaten konfiguriert ist.
 
-9. In der Tabelle mit den Diagnoseeinstellungen sollte nun die neue, aktivierte Einstellung für den Tresor angezeigt werden. Wird sie nicht angezeigt, aktualisieren Sie die Tabelle, um die aktualisierte Einstellung anzuzeigen.
+9. Die Tabelle **Diagnoseeinstellungen** zeigt nun die neue, aktivierte Einstellung für den Tresor an. Falls sie nicht sichtbar ist, aktualisieren Sie die Tabelle, um die aktualisierte Einstellung anzuzeigen.
 
       ![Schritt 9: Anzeigen der Diagnoseeinstellung](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> Nachdem Sie die Speicherung der Berichte im Konto konfiguriert haben **warten Sie 24 Stunden**, bis die erste Pushübertragung von Daten abgeschlossen ist. Importieren Sie das Azure Backup-Inhaltspaket erst nach diesem Zeitraum in Power BI. Weitere Informationen finden Sie im [Abschnitt mit häufig gestellten Fragen](#frequently-asked-questions). 
+> Nachdem Sie die Berichte durch Speichern des Speicherkontos konfiguriert haben, warten Sie *24 Stunden*, bis der erste Datenpush abgeschlossen ist. Importieren Sie das Azure Backup-Inhaltspaket erst danach in Power BI. Weitere Informationen finden Sie im Bereich [Häufig gestellte Fragen](#frequently-asked-questions). 
 >
 >
 
 ## <a name="view-reports-in-power-bi"></a>Anzeigen von Berichten in Power BI 
-Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfiguriert wurde, dauert es etwa 24 Stunden, bis die ersten Daten an das Speicherkonto übermittelt werden. Nach Ablauf von 24 Stunden nach dem Konfigurieren des Speicherkontos können Sie mit den folgenden Schritten Berichte in Power BI anzeigen:
+Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfiguriert wurde, dauert es etwa 24 Stunden, bis die ersten Daten an das Speicherkonto übermittelt werden. 24 Stunden nach Einrichten des Speicherkontos können Sie anhand der folgenden Schritte Berichte in Power BI anzeigen.
 1. Melden Sie sich bei Power BI [an](https://powerbi.microsoft.com/landing/signin/).
-2. Klicken Sie auf **Daten abrufen**, und klicken Sie dann in der Bibliothek des Inhaltspakets unter **Dienste** auf **Abrufen**. Folgen Sie den Schritten, die in der [Power BI-Dokumentation für den Zugriff auf das Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/) beschrieben werden.
+2. Wählen Sie **Daten abrufen** aus. Wählen Sie in der **Inhaltspaketbibliothek** unter **Dienste** **Abrufen** aus. Befolgen Sie die Schritte in der [Power BI-Dokumentation für den Zugriff auf das Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
 
      ![Importieren eines Inhaltspakets](./media/backup-azure-configure-reports/content-pack-import.png)
-3. Geben Sie **Azure Backup** in die Suchleiste ein, und klicken Sie auf **Jetzt abrufen**.
+3. Geben Sie in der Leiste **Suche** **Azure Backup** ein, und wählen Sie **Jetzt holen** aus.
 
       ![Abrufen eines Inhaltspakets](./media/backup-azure-configure-reports/content-pack-get.png)
-4. Geben Sie den Namen des in Schritt 5 konfigurierten Speicherkontos ein, und klicken Sie auf die Schaltfläche **Weiter**.
+4. Geben Sie den Namen des Speicherkonto ein, das in Schritt 5 konfiguriert wurde, und wählen Sie **Weiter** aus.
 
     ![Den Namen des Speicherkontos erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Geben Sie den Speicherkontoschlüssel für dieses Speicherkonto ein. Sie können [die Speicherzugriffsschlüssel anzeigen und kopieren](../storage/common/storage-account-manage.md#access-keys), indem Sie im Azure-Portal zu Ihrem Speicherkonto navigieren. 
+5. Geben Sie den Speicherkontoschlüssel für dieses Speicherkonto ein. Zum [Anzeigen und Kopieren der Speicherzugriffsschlüssel](../storage/common/storage-account-manage.md#access-keys) navigieren Sie im Azure-Portal zu Ihrem Speicherkonto. 
 
      ![Speicherkonto erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      
-6. Klicken Sie auf die Schaltfläche **Anmelden**. Nach der erfolgreichen Anmeldung erhalten Sie eine Benachrichtigung über den **Datenimport**.
+6. Wählen Sie **Anmelden**. Nach der erfolgreichen Anmeldung wird eine Benachrichtigung über den Datenimport angezeigt.
 
     ![Importieren eines Inhaltspakets](./media/backup-azure-configure-reports/content-pack-importing-data.png) <br/>
     
-    Nach einiger Zeit ist der Import abgeschlossen, und Sie erhalten eine **Erfolgsbenachrichtigung**. Wenn viele Daten im Speicherkonto vorhanden sind, kann das Importieren des Inhaltspakets eine gewisse Zeit beanspruchen.
+    Nach Abschluss des Imports erscheint die Benachrichtigung **Erfolgreich**. Wenn viele Daten im Speicherkonto vorhanden sind, kann der Import des Inhaltspakets einige Zeit dauern.
     
     ![Erfolgreicher Import des Inhaltspakets](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
     
-7. Nachdem die Daten erfolgreich importiert wurden, wird das **Azure Backup**-Inhaltspaket im Navigationsbereich in **Apps** angezeigt. In der Liste werden jetzt das Dashboard, die Berichte und das Dataset von Azure Backup angezeigt, wobei die neu importierten Berichte mit einem Stern gekennzeichnet sind. 
+7. Wenn die Daten erfolgreich importiert wurden, wird das **Azure Backup**-Inhaltspaket im Navigationsbereich in **Apps** angezeigt. Unter **Dashboards**, **Berichte** und **Datasets** zeigt die Liste nun „Azure Backup“ mit einem gelben Stern an, der auf neu importierte Berichte hinweist.
 
      ![Azure Backup-Inhaltspaket](./media/backup-azure-configure-reports/content-pack-azure-backup.png) <br/>
      
-8. Klicken Sie unter „Dashboards“ auf **Azure Backup**. Es wird eine Reihe angehefteter Schlüsselberichte angezeigt.
+8. Wählen Sie unter **Dashboards** **Azure Backup** aus. Daraufhin wird eine Reihe angehefteter Schlüsselberichte angezeigt.
 
       ![Azure Backup-Dashboard](./media/backup-azure-configure-reports/azure-backup-dashboard.png) <br/>
-9. Um alle Berichte anzuzeigen, klicken Sie auf einen beliebigen Bericht im Dashboard.
+9. Um alle Berichte anzuzeigen, wählen Sie einen beliebigen Bericht im Dashboard aus.
 
       ![Azure Backup-Auftragsintegrität](./media/backup-azure-configure-reports/azure-backup-job-health.png) <br/>
-10. Klicken Sie auf die Registerkarten in den Berichten, um die Berichte in diesem Bereich anzuzeigen.
+10. Wählen Sie jede Registerkarte in den Berichten aus, um die Berichte in diesem Bereich anzuzeigen.
 
       ![Azure Backup-Berichtsregisterkarten](./media/backup-azure-configure-reports/reports-tab-view.png)
 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-1. **Wie überprüfe ich, ob bereits Berichtsdaten an das Speicherkonto übermittelt werden?**
+
+**Wie überprüfe ich, ob bereits Berichtsdaten an ein Speicherkonto übermittelt werden?**
     
-    Sie können zum konfigurierten Speicherkonto wechseln und Container auswählen. Wenn der Container einen Eintrag für „insights-logs-azurebackupreport“ aufweist, bedeutet dies, dass Berichtsdaten übermittelt werden.
+   Öffnen Sie das konfigurierte Speicherkonto, und wählen Sie Container aus. Wenn der Container einen Eintrag für „insights-logs-azurebackupreport“ aufweist, bedeutet dies, dass Berichtsdaten übermittelt werden.
 
-2. **Wie häufig werden die Daten an das Speicherkonto und das Azure Backup-Inhaltspaket in Power BI per Push übermittelt?**
+**Wie oft werden Daten an das Speicherkonto und das Azure Backup-Inhaltspaket in Power BI mithilfe von Push übertragen?**
 
-   Nach dem Aktivieren dauert es etwa 24 Stunden, bis Daten an das Speicherkonto per Push übermittelt werden. Die Häufigkeit, mit der die Daten nach dem ersten Übermitteln aktualisiert werden, ist der folgenden Abbildung zu entnehmen. 
-      * Daten bezüglich **Aufträgen, Warnungen, Sicherungselementen, Tresoren, geschützten Servern und Richtlinien** werden während des Protokollierens per Push an das Speicherkonto des Kunden übermittelt.
-      * Daten bezüglich des **Speichers** werden alle 24 Stunden per Push an das Speicherkonto des Kunden übermittelt.
+   Nach dem Aktivieren dauert es etwa 24 Stunden, bis Daten mithilfe von Push an ein Speicherkonto übertragen werden. Nach dem ersten Push gelten für die Aktualisierungshäufigkeit der Daten die Angaben in der folgenden Abbildung. 
+      
+* Daten zu **Aufträgen**, **Warnungen**, **Sicherungselementen**, **Tresoren**, **geschützten Servern** und **Richtlinien** werden beim Protokollieren mithilfe von Push an das Speicherkonto des Kunden übertragen.
+      
+* Daten bezüglich des **Speichers** werden alle 24 Stunden mithilfe von Push an das Speicherkonto des Kunden übertragen.
    
-    ![Übermittlungshäufigkeit von Azure Backup-Berichtsdaten](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+   ![Übermittlungshäufigkeit von Azure Backup-Berichtsdaten](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
 
-  Power BI verfügt über eine [täglich geplante Aktualisierung](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Sie können die Daten in Power BI für das Inhaltspaket manuell aktualisieren.
+* Power BI verfügt über eine [täglich geplante Aktualisierung](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Sie können die Daten in Power BI für das Inhaltspaket manuell aktualisieren.
 
-3. **Wie lange kann ich die Berichte aufbewahren?** 
+**Wie lange kann ich Berichte aufbewahren?**
 
-   Beim Konfigurieren des Speicherkontos können Sie den Aufbewahrungszeitraum für die Berichtsdaten im Speicherkonto auswählen (siehe Schritt 6 im obigen Abschnitt zum Konfigurieren des Speicherkontos für Berichte). Darüber hinaus können Sie die [Berichte in Excel analysieren](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) und sie gemäß Ihren Anforderungen über einen längeren Zeitraum hinweg aufbewahren. 
+   Beim Einrichten eines Speicherkontos können Sie einen Aufbewahrungszeitraum für Berichtsdaten auswählen. Führen Sie Schritt 6 im vorherigen Abschnitt „Konfigurieren des Speicherkontos für Berichte“ aus. Außerdem können Sie [Berichte in Excel analysieren](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) und sie Ihren Anforderungen entsprechend für einen längeren Zeitraum aufbewahren.
 
-4. **Sehe ich nach dem Konfigurieren des Speicherkontos alle meine Daten in Berichten?**
+**Werden alle meine Daten in Berichten nach dem Konfigurieren des Speicherkontos angezeigt?**
 
-   Alle Daten, die nach dem **Konfigurieren des Speicherkontos** generiert wurden, werden per Push an das Speicherkonto übermittelt und stehen in den Berichten zur Verfügung. Die **in Arbeit befindlichen Aufträge werden nicht per Push übermittelt** an die Berichterstellung. Nach dem Abschluss oder dem Scheitern des Auftrags wird dieser an die Berichte gesendet.
+   Alle Daten, die nach der Konfiguration des Speicherkontos generiert werden, werden mithilfe von Push an das Speicherkonto übertragen und stehen in den Berichten zur Verfügung. Aufträge, die sich in Bearbeitung befinden, werden nicht mithilfe von Push für die Berichterstellung übertragen. Wenn ein Auftrag abgeschlossen wird oder fehlschlägt, wird er an die Berichte gesendet.
 
-5. **Ich habe bereits das Speicherkonto konfiguriert, sodass es Berichte anzeigt. Kann ich die Konfiguration ändern, um ein anderes Speicherkonto zu verwenden?** 
+**Ich habe das Speicherkonto bereits konfiguriert, sodass Berichte angezeigt werden. Kann ich die Konfiguration ändern, um ein anderes Speicherkonto zu verwenden?**
 
-   Ja, Sie können die Konfiguration ändern und auf ein anderes Speicherkonto zeigen. Sie müssen während der Verbindung mit dem Azure Backup-Inhaltspaket das neu konfigurierte Speicherkonto verwenden. Sobald ein anderes Speicherkonto konfiguriert ist, werden neue Daten an dieses Speicherkonto übermittelt. Die älteren Daten (von vor der Konfigurationsänderung) verbleiben jedoch auf dem älteren Speicherkonto.
+   Ja, Sie können die Konfiguration ändern und auf ein anderes Speicherkonto zeigen. Verwenden Sie beim Verbinden mit dem Azure Backup-Inhaltspaket das neu konfigurierte Speicherkonto. Sobald ein anderes Speicherkonto konfiguriert ist, werden neue Daten an dieses Speicherkonto übermittelt. Daten, die vor der Konfigurationsänderung stammen, verbleiben im älteren Speicherkonto.
 
-6. **Kann ich Berichte über alle Tresore und Abonnements anzeigen?** 
+**Kann ich Berichte für verschiedene Tresore und Abonnements anzeigen?**
 
-   Ja, Sie können dasselbe Speicherkonto für verschiedene Tresore konfigurieren, um tresorübergreifende Berichte anzuzeigen. Sie können auch dasselbe Speicherkonto für Tresore in verschiedenen Abonnements verwenden. Dieses Speicherkonto können Sie dann bei der Verbindung mit dem Azure Backup-Inhaltspaket in Power BI verwenden, um die Berichte anzuzeigen. Allerdings muss sich das ausgewählte Speicherkonto in derselben Region befinden wie der Recovery Services-Tresor.
+   Ja, Sie können dasselbe Speicherkonto für verschiedene Tresore konfigurieren, um tresorübergreifende Berichte anzuzeigen. Sie können auch dasselbe Speicherkonto für Tresore in verschiedenen Abonnements verwenden. Dieses Speicherkonto lässt sich dann beim Verbinden mit dem Azure Backup-Inhaltspaket in Power BI verwenden, um die Berichte anzuzeigen. Das ausgewählte Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
    
 ## <a name="troubleshooting-errors"></a>Problembehandlung
 | Fehlerdetails | Lösung |
 | --- | --- |
-| Nach dem Einrichten des Speicherkontos für Backup-Berichte wird unter **Speicherkonto** weiterhin **Nicht konfiguriert** angezeigt. | Wenn das Speicherkonto erfolgreich konfiguriert wurde, werden die Berichtsdaten trotz dieses Problems übertragen. Um dieses Problem zu beheben, wechseln Sie im Azure-Portal zu „Alle Dienste“ > „Diagnoseeinstellungen“ > „RS-Tresor“ > „Einstellung bearbeiten“. Löschen Sie die zuvor konfigurierte Einstellung, und erstellen Sie auf demselben Blatt eine neue Einstellung. Legen Sie dieses Mal das Feld **Name** auf **service** fest. Damit sollte das konfigurierte Speicherkonto angezeigt werden. |
-|Nach dem Importieren des Azure Backup-Inhaltspakets in Power BI wird der Fehler **404 - Container nicht gefunden** ausgelöst. | Wie in diesem Dokument beschrieben, müssen Sie nach dem Konfigurieren von Berichten im Recovery Services-Tresor 24 Stunden warten, bis sie korrekt in Power BI angezeigt werden. Wenn Sie versuchen, früher als 24 Stunden danach auf die Berichte zuzugreifen, erhalten Sie diesen Fehler, da noch nicht genügend Daten für gültige Berichte vorhanden sind. |
+| Nach dem Einrichten des Speicherkontos für Backup-Berichte wird unter **Speicherkonto** weiterhin **Nicht konfiguriert** angezeigt. | Wenn das Speicherkonto erfolgreich konfiguriert wurde, werden die Berichtsdaten trotz dieses Problems übertragen. Um dieses Problem zu beheben, öffnen Sie das Azure-Portal, und wählen Sie **Alle Dienste** > **Diagnoseeinstellungen** > **Recovery Services-Tresor** > **Einstellung bearbeiten** aus. Löschen Sie die zuvor konfigurierte Einstellung, und erstellen Sie auf demselben Blatt eine neue Einstellung. Wählen Sie diesmal im Feld **Name** die Option **Dienst** aus. Nun wird das konfigurierte Speicherkonto angezeigt. |
+|Nach dem Import des Azure Backup-Inhaltspakets in Power BI wird die Fehlermeldung „404: Container wurde nicht gefunden.“ angezeigt. | Wie bereits erwähnt, werden Berichte erst 24 Stunden nach ihrer Konfiguration im Recovery Services-Tresor korrekt in Power BI angezeigt. Wenn Sie vor Ablauf dieser 24 Stunden versuchen, auf die Berichte zuzugreifen, wird diese Fehlermeldung angezeigt, weil noch nicht alle Daten zum Anzeigen gültiger Berichte vorhanden sind. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie das Speicherkonto konfiguriert und das Azure Backup-Inhaltspaket importiert haben, sind die nächsten Schritte das Anpassen dieser Berichte und das Verwenden des Reportingdatenmodells für das Erstellen von Berichten. Weitere Informationen finden Sie in den folgenden Artikeln.
+Nachdem Sie das Speicherkonto konfiguriert und das Azure Backup-Inhaltspaket importiert haben, müssen Sie die Berichte anpassen und Berichte mithilfe eines Datenmodells zur Berichterstellung erstellen. Weitere Informationen finden Sie in den folgenden Artikeln.
 
-* [Using Azure Backup reporting data model (Verwenden des Reportingdatenmodells von Azure Backup)](backup-azure-reports-data-model.md)
-* [Filtering reports in Power BI (Filtern von Berichten in Power BI)](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
+* [Verwenden eines Datenmodells für die Azure Backup-Berichterstellung](backup-azure-reports-data-model.md)
+* [Filtern von Berichten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
 * [Erstellen von Berichten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
 

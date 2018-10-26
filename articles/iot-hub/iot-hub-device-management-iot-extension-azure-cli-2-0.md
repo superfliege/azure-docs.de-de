@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: e36b8a680f0dc5bf6b438ab00620d4f2a5b9770c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c5d4299d2d391a25bfab579f5f78da3718afc24c
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980592"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043004"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Verwenden der IoT-Erweiterung für Azure CLI für die Verwaltung von Azure IoT Hub-Geräten
 
@@ -27,8 +27,8 @@ ms.locfileid: "46980592"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Verwaltungsoption          | Aufgabe                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| Verwaltungsoption          | Aufgabe  |
+|----------------------------|-----------|
 | Direkte Methoden             | Lassen Sie ein Gerät beispielsweise mit dem Senden von Nachrichten beginnen oder dies beenden, oder starten Sie es neu.                                        |
 | Gewünschte Eigenschaften von Gerätezwillingen    | Setzen Sie ein Gerät in bestimmte Status, stellen Sie z.B. das Leuchten einer grünen LED ein, oder legen Sie das Telemetriesendeintervall auf 30 Minuten fest.         |
 | Berichtete Eigenschaften von Gerätezwillingen   | Rufen Sie den berichteten Status eines Geräts ab. Das Gerät meldet z.B., das die LED jetzt blinkt.                                    |
@@ -49,17 +49,19 @@ Sie führen Azure CLI und die IoT-Erweiterung für Azure CLI mit verschiedenen V
 
 ## <a name="what-you-need"></a>Voraussetzungen
 
-- Abschluss des Tutorials [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md), in dem die folgenden Anforderungen behandelt werden:
+* Schließen Sie das Tutorial [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md) ab, in dem die folgenden Anforderungen behandelt werden:
+
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
   - Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.
 
-- Stellen Sie sicher, dass Ihr Gerät im Verlauf dieses Tutorials mit der Clientanwendung ausgeführt wird.
+* Stellen Sie sicher, dass Ihr Gerät im Verlauf dieses Tutorials mit der Clientanwendung ausgeführt wird.
 
-- [Python 2.7x oder Python 3.x](https://www.python.org/downloads/)
-- Die Azure-Befehlszeilenschnittstelle Installationsinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –version`, um dies zu überprüfen. 
-- Installieren Sie die IoT-Erweiterung. Die einfachste Möglichkeit ist die Ausführung von `az extension add --name azure-cli-iot-ext`. In der [Infodatei zur IoT-Erweiterung](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) werden mehrere Wege zum Installieren der Erweiterung beschrieben.
+* [Python 2.7x oder Python 3.x](https://www.python.org/downloads/)
 
+* Die Azure-Befehlszeilenschnittstelle Installationsinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –version`, um dies zu überprüfen. 
+
+* Installieren Sie die IoT-Erweiterung. Die einfachste Möglichkeit ist die Ausführung von `az extension add --name azure-cli-iot-ext`. In der [Infodatei zur IoT-Erweiterung](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) werden mehrere Wege zum Installieren der Erweiterung beschrieben.
 
 ## <a name="log-in-to-your-azure-account"></a>Melden Sie sich bei Ihrem Azure-Konto an.
 
@@ -72,7 +74,10 @@ az login
 ## <a name="direct-methods"></a>Direkte Methoden
 
 ```bash
-az iot hub invoke-device-method --device-id <your device id> --hub-name <your hub name> --method-name <the method name> --method-payload <the method payload>
+az iot hub invoke-device-method --device-id <your device id> \
+  --hub-name <your hub name> \
+  --method-name <the method name> \
+  --method-payload <the method payload>
 ```
 
 ## <a name="device-twin-desired-properties"></a>Gewünschte Eigenschaften von Gerätezwillingen
@@ -80,7 +85,8 @@ az iot hub invoke-device-method --device-id <your device id> --hub-name <your hu
 Legen Sie mit folgendem Befehl für die gewünschte Eigenschaft ein Intervall von 3.000 fest:
 
 ```bash
-az iot hub device-twin update -n <your hub name> -d <your device id> --set properties.desired.interval = 3000
+az iot hub device-twin update -n <your hub name> \
+  -d <your device id> --set properties.desired.interval = 3000
 ```
 
 Diese Eigenschaft kann von Ihrem Gerät gelesen werden.
@@ -106,7 +112,10 @@ az iot hub device-twin show --hub-name <your hub name> --device-id <your device 
 Fügen Sie mit folgendem Befehl dem Gerät eine Feldrolle „temperature&humidity“ hinzu:
 
 ```bash
-az iot hub device-twin update --hub-name <your hub name> --device-id <your device id> --set tags = '{"role":"temperature&humidity"}}'
+az iot hub device-twin update \
+  --hub-name <your hub name> \
+  --device-id <your device id> \
+  --set tags = '{"role":"temperature&humidity"}}'
 ```
 
 ## <a name="device-twin-queries"></a>Gerätezwillingabfragen
@@ -114,13 +123,15 @@ az iot hub device-twin update --hub-name <your hub name> --device-id <your devic
 Fragen Sie mit folgendem Befehl Geräte mit einem Rollentag „temperature&humidity“ ab:
 
 ```bash
-az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
+az iot hub query --hub-name <your hub name> \
+  --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
 Fragen Sie mit folgendem Befehl alle Geräte außer denen mit einem Rollentag „temperature&humidity“ ab:
 
 ```bash
-az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
+az iot hub query --hub-name <your hub name> \
+  --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

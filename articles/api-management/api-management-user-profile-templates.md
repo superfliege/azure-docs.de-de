@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: c56cefb3c62787f1bc2561aecec719cdbbc3b1c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c4128c4c643b1410faf3753f8178cfcda654b2ae
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22983445"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268953"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Benutzerprofilvorlagen in Azure API Management
 Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des Entwicklerportals mit einem Satz von Vorlagen anzupassen, die den Inhalt konfigurieren. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und dem Editor Ihrer Wahl (beispielsweise [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) sowie verschiedenen lokalisierten [Zeichenfolgenressourcen](api-management-template-resources.md#strings), [Glyphen](api-management-template-resources.md#glyphs) und [Seitensteuerelementen](api-management-page-controls.md) an Ihre Bedürfnisse anpassen.  
@@ -35,7 +35,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 -   [Kontoinformationen aktualisieren](#UpdateAccountInfo)  
   
 > [!NOTE]
->  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund der kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="Profile"></a> Profil  
  Mit der Vorlage **Profil** können Sie den Benutzerprofilabschnitt der Benutzerprofilseite im Entwicklerportal anpassen.  
@@ -102,18 +102,18 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Die Vorlagen [Profil](#Profile), [Anwendungen](#Applications) und [Abonnements](#Subscriptions) nutzen das gleiche Datenmodell und empfangen die gleichen Vorlagendaten.  
   
-|Eigenschaft|Typ|Beschreibung|  
+|Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|firstName|string|Vorname des aktuellen Benutzers.|  
-|lastName|string|Nachname des aktuellen Benutzers.|  
-|companyName|string|Der Unternehmensname des aktuellen Benutzers.|  
-|addresserEmail|string|E-Mail-Adresse des aktuellen Benutzers.|  
-|developersUsageStatisticsLinkk|string|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
+|firstName|Zeichenfolge|Vorname des aktuellen Benutzers.|  
+|lastName|Zeichenfolge|Nachname des aktuellen Benutzers.|  
+|companyName|Zeichenfolge|Der Unternehmensname des aktuellen Benutzers.|  
+|addresserEmail|Zeichenfolge|E-Mail-Adresse des aktuellen Benutzers.|  
+|developersUsageStatisticsLinkk|Zeichenfolge|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
 |subscriptions|Sammlung von [Subscription](api-management-template-data-model-reference.md#Subscription)-Entitäten.|Die Abonnements für den aktuellen Benutzer.|  
 |Anwendungen|Sammlung von [Application](api-management-template-data-model-reference.md#Application)-Entitäten.|Die Anwendungen des aktuellen Benutzers.|  
-|changePasswordUrl|string|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
-|changeNameOrEmailUrl|string|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
-|canChangePassword|Boolescher Wert|Gibt an, ob der aktuelle Benutzer sein Kennwort ändern kann.|  
+|changePasswordUrl|Zeichenfolge|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
+|changeNameOrEmailUrl|Zeichenfolge|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
+|canChangePassword|boolean|Gibt an, ob der aktuelle Benutzer sein Kennwort ändern kann.|  
 |isSystemUser|Boolescher Wert|Gibt an, ob der aktuelle Benutzer ein Mitglied einer der integrierten [Gruppen](api-management-key-concepts.md#groups) ist.|  
   
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
@@ -323,18 +323,18 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Die Vorlagen [Profil](#Profile), [Anwendungen](#Applications) und [Abonnements](#Subscriptions) nutzen das gleiche Datenmodell und empfangen die gleichen Vorlagendaten.  
   
-|Eigenschaft|Typ|Beschreibung|  
+|Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|firstName|string|Vorname des aktuellen Benutzers.|  
-|lastName|string|Nachname des aktuellen Benutzers.|  
-|companyName|string|Der Unternehmensname des aktuellen Benutzers.|  
-|addresserEmail|string|E-Mail-Adresse des aktuellen Benutzers.|  
-|developersUsageStatisticsLinkk|string|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
+|firstName|Zeichenfolge|Vorname des aktuellen Benutzers.|  
+|lastName|Zeichenfolge|Nachname des aktuellen Benutzers.|  
+|companyName|Zeichenfolge|Der Unternehmensname des aktuellen Benutzers.|  
+|addresserEmail|Zeichenfolge|E-Mail-Adresse des aktuellen Benutzers.|  
+|developersUsageStatisticsLinkk|Zeichenfolge|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
 |subscriptions|Sammlung von [Subscription](api-management-template-data-model-reference.md#Subscription)-Entitäten.|Die Abonnements für den aktuellen Benutzer.|  
 |Anwendungen|Sammlung von [Application](api-management-template-data-model-reference.md#Application)-Entitäten.|Die Anwendungen des aktuellen Benutzers.|  
-|changePasswordUrl|string|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
-|changeNameOrEmailUrl|string|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
-|canChangePassword|Boolescher Wert|Gibt an, ob der aktuelle Benutzer sein Kennwort ändern kann.|  
+|changePasswordUrl|Zeichenfolge|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
+|changeNameOrEmailUrl|Zeichenfolge|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
+|canChangePassword|boolean|Gibt an, ob der aktuelle Benutzer sein Kennwort ändern kann.|  
 |isSystemUser|Boolescher Wert|Gibt an, ob der aktuelle Benutzer ein Mitglied einer der integrierten [Gruppen](api-management-key-concepts.md#groups) ist.|  
   
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
@@ -486,18 +486,18 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Die Vorlagen [Profil](#Profile), [Anwendungen](#Applications) und [Abonnements](#Subscriptions) nutzen das gleiche Datenmodell und empfangen die gleichen Vorlagendaten.  
   
-|Eigenschaft|Typ|Beschreibung|  
+|Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|firstName|string|Vorname des aktuellen Benutzers.|  
-|lastName|string|Nachname des aktuellen Benutzers.|  
-|companyName|string|Der Unternehmensname des aktuellen Benutzers.|  
-|addresserEmail|string|E-Mail-Adresse des aktuellen Benutzers.|  
-|developersUsageStatisticsLinkk|string|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
+|firstName|Zeichenfolge|Vorname des aktuellen Benutzers.|  
+|lastName|Zeichenfolge|Nachname des aktuellen Benutzers.|  
+|companyName|Zeichenfolge|Der Unternehmensname des aktuellen Benutzers.|  
+|addresserEmail|Zeichenfolge|E-Mail-Adresse des aktuellen Benutzers.|  
+|developersUsageStatisticsLinkk|Zeichenfolge|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
 |subscriptions|Sammlung von [Subscription](api-management-template-data-model-reference.md#Subscription)-Entitäten.|Die Abonnements für den aktuellen Benutzer.|  
 |Anwendungen|Sammlung von [Application](api-management-template-data-model-reference.md#Application)-Entitäten.|Die Anwendungen des aktuellen Benutzers.|  
-|changePasswordUrl|string|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
-|changeNameOrEmailUrl|string|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
-|canChangePassword|Boolescher Wert|Gibt an, ob der aktuelle Benutzer sein Kennwort ändern kann.|  
+|changePasswordUrl|Zeichenfolge|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
+|changeNameOrEmailUrl|Zeichenfolge|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
+|canChangePassword|boolean|Gibt an, ob der aktuelle Benutzer sein Kennwort ändern kann.|  
 |isSystemUser|Boolescher Wert|Gibt an, ob der aktuelle Benutzer ein Mitglied einer der integrierten [Gruppen](api-management-key-concepts.md#groups) ist.|  
   
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
@@ -567,7 +567,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ```  
   
 ##  <a name="UpdateAccountInfo"></a> Kontoinformationen aktualisieren  
- Die Vorlage **Kontoinformationen aktualisieren** ermöglicht Ihnen die Anpassung der Seite **Kontoinformationen aktualisieren** im Entwicklerportal.  
+ Die Vorlage **Kontoinformationen aktualisieren** ermöglicht Ihnen die Seite **Kontoinformationen aktualisieren** im Entwicklerportal anzupassen.  
   
  ![Vorlagen für die Seite mit Informationen zum Benutzerkonto im Entwicklerportal](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM-Vorlagen für die Seite mit Informationen zum Benutzerkonto im Entwicklerportal")  
   

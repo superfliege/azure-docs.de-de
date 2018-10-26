@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e9598cb464360e35a86b6fe35d8c965a5e7fb51d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a2a9845f82f1a81f3e187edbbb2deaa2300b3be
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963031"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585916"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL
 
@@ -250,7 +250,7 @@ Erforderliche Schritte:
 1. Aktivieren des Brokermodus im Anwendungscode für den MS SDK-Aufruf
 2. Festlegen eines neuen Umleitungs-URIs und Bereitstellen dieses URIs in Ihrer App und App-Registrierung
 3. Registrieren eines URL-Schemas
-4. iOS9-Unterstützung: Hinzufügen einer Berechtigung zur Datei „info.plist“
+4. Hinzufügen einer Berechtigung zur Datei „info.plist“
 
 #### <a name="step-1-enable-broker-mode-in-your-application"></a>Schritt 1: Aktivieren des Brokermodus in Ihrer Anwendung
 
@@ -307,12 +307,16 @@ Für die Unterstützung der zertifikatbasierten Authentifizierung muss in Ihrer 
 
 Beispiel: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
-#### <a name="step-4-ios9-add-a-configuration-parameter-to-your-app"></a>Schritt 4: iOS9: Hinzufügen eines Konfigurationsparameters zu Ihrer App
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Schritt 4: Hinzufügen eines Konfigurationsparameters zu Ihrer App
 
-ADAL prüft mithilfe von „–CanOpenURL:“, ob der Broker auf dem Gerät installiert ist. Unter iOS9 wurden die Schemas, die von einer Anwendung abgefragt werden können, von Apple fest vorgegeben. Daher muss „msauth“ in `info.plist file`dem Abschnitt „LSApplicationQueriesSchemes“ hinzugefügt werden.
+ADAL prüft mithilfe von „–CanOpenURL:“, ob der Broker auf dem Gerät installiert ist. Unter iOS 9 wurden die Schemas, die von einer Anwendung abgefragt werden können, von Apple fest vorgegeben. Daher muss „msauth“ in `info.plist file`dem Abschnitt „LSApplicationQueriesSchemes“ hinzugefügt werden.
 
 ```
-<key>LSApplicationQueriesSchemes</key> <array><string>msauth</string></array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>msauth</string>
+    </array>
+
 ```
 
 ### <a name="youve-configured-sso"></a>Sie haben SSO konfiguriert!

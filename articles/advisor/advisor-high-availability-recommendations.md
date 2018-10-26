@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: makohli
-ms.openlocfilehash: 7bd0737e7fb26af95eed63696d1ac07c88a9dec4
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 2216b915c47ea05d3303ca02e51e976490ea36c6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42139837"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068353"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Advisor-Empfehlungen für Hochverfügbarkeit
 
@@ -67,6 +67,10 @@ Wenn sich alle Endpunkte in einem Traffic Manager-Profil, das für das Näherung
 
 Wenn ein Traffic Manager-Profil für das geografische Routing konfiguriert ist, wird der Datenverkehr basierend auf definierten Regionen an die Endpunkte weitergeleitet. Wenn eine Region ausfällt, ist kein vordefiniertes Failover verfügbar. Durch das Konfigurieren eines Endpunkts mit der regionalen Gruppierung „Alle (Welt)“ wird das Verwerfen von Datenverkehr vermieden und die Dienstverfügbarkeit verbessert. Advisor ermittelt Traffic Manager-Profile, die für das geografische Routing konfiguriert sind und keinen Endpunkt haben, der mit der regionalen Gruppierung „Alle (Welt)“ konfiguriert ist, und empfiehlt, diese Konfiguration zu ändern.
 
+## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-in-the-event-of-accidental-overwrite-or-deletion"></a>Speichern und Wiederherstellen von Daten bei versehentlichem Überschreiben oder Löschen durch vorläufiges Löschen in Ihrem Azure Storage-Konto
+
+Aktivieren Sie [vorläufiges Löschen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) in Ihrem Speicherkonto, sodass gelöschte Blobs in einen vorläufig gelöschten Zustand übergehen, anstatt endgültig gelöscht zu werden. Wenn Daten überschrieben werden, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Zustand der überschriebenen Daten zu speichern. So können Sie Daten nach einer versehentlichen Löschung oder Überschreibung wiederherstellen. Der Advisor identifiziert Azure Storage-Konten, bei denen das vorläufige Löschen deaktiviert ist und schlägt vor, es zu aktivieren.
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zu Hochverfügbarkeit
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie [Advisor](https://aka.ms/azureadvisordashboard).
@@ -78,7 +82,7 @@ Wenn ein Traffic Manager-Profil für das geografische Routing konfiguriert ist, 
 Weitere Informationen zu Advisor-Empfehlungen finden Sie unter:
 * [Einführung in Azure Advisor](advisor-overview.md)
 * [Erste Schritte mit Advisor](advisor-get-started.md)
-* [Advisor-Empfehlungen zu Kosten](advisor-performance-recommendations.md)
+* [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
 * [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
 * [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 

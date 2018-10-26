@@ -1,5 +1,5 @@
 ---
-title: Erstellen von DNS-Zonen und Ressourceneintragssätzen für Azure DNS mithilfe des .NET SDK | Microsoft Docs
+title: Erstellen von DNS-Zonen und Ressourceneintragssätzen für Azure DNS mithilfe des .NET SDK | Microsoft-Dokumentation
 description: Enthält Informationen zum Erstellen von DNS-Zonen und Ressourceneintragssätzen in Azure DNS mithilfe des .NET SDK.
 services: dns
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: 14860ae48e520f86ce9d5bea739605d1a4baf0c7
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 7acc0fa4c3654c96ac0f8f1baed7ea5b7b306376
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173192"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829768"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Erstellen von DNS-Zonen und -Ressourceneintragssätzen mithilfe des .NET SDK
 
@@ -33,7 +33,7 @@ Normalerweise wird der programmgesteuerte Zugriff auf Azure-Ressourcen über ein
 3. Verwenden Sie Azure RBAC, um dem Dienstprinzipalkonto Berechtigungen vom Typ „DNS Zone Contributor“ (DNS-Zone – Mitwirkender) für die Ressourcengruppe zu gewähren ([Anleitung](../role-based-access-control/role-assignments-portal.md)).
 4. Bearbeiten Sie die Datei „program.cs“ wie folgt, wenn Sie das Azure DNS SDK-Beispielprojekt verwenden:
 
-   * Fügen Sie die richtigen Werte für „tenantId“, „clientId“ (auch als Konto-ID bezeichnet), „secret“ (Kennwort des Dienstprinzipalkontos) und „subscriptionId“ gemäß Schritt 1 ein.
+   * Fügen Sie die richtigen Werte für `tenantId`, `clientId` (auch als Konto-ID bezeichnet), `secret` (Kennwort des Dienstprinzipalkontos) und `subscriptionId` gemäß Schritt 1 ein.
    * Geben Sie den Ressourcengruppennamen ein, den Sie in Schritt 2 gewählt haben.
    * Geben Sie einen DNS-Zonennamen Ihrer Wahl ein.
 
@@ -59,7 +59,7 @@ using Microsoft.Azure.Management.Dns.Models;
 
 ## <a name="initialize-the-dns-management-client"></a>Initialisieren des DNS-Verwaltungsclients
 
-*DnsManagementClient* enthält die Methoden und Eigenschaften, die für die Verwaltung von DNS-Zonen und Ressourceneintragssätzen erforderlich sind.  Mit dem folgenden Code wird die Anmeldung am Dienstprinzipalkonto durchgeführt und ein DnsManagementClient-Objekt erstellt.
+Der `DnsManagementClient` enthält die Methoden und Eigenschaften, die für die Verwaltung von DNS-Zonen und Ressourceneintragssätzen erforderlich sind.  Mit dem folgenden Code wird die Anmeldung am Dienstprinzipalkonto durchgeführt und ein `DnsManagementClient`-Objekt erstellt.
 
 ```cs
 // Build the service credentials and DNS management client
@@ -72,7 +72,7 @@ dnsClient.SubscriptionId = subscriptionId;
 
 Für die Erstellung einer DNS-Zone wird zuerst ein Zone-Objekt erstellt, das die DNS-Zonenparameter enthält. Da DNS-Zonen nicht mit einer bestimmten Region verknüpft sind, wird der Standort auf „global“ festgelegt. In diesem Beispiel wird der Zone auch ein [Azure Resource Manager-„Tag“](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) hinzugefügt.
 
-Für die eigentliche Erstellung oder Aktualisierung der Zone in Azure DNS wird das Zonenobjekt, das die Zonenparameter enthält, an die *DnsManagementClient.Zones.CreateOrUpdateAsyc* -Methode übergeben.
+Für die eigentliche Erstellung oder Aktualisierung der Zone in Azure DNS wird das Zonenobjekt, das die Zonenparameter enthält, an die `DnsManagementClient.Zones.CreateOrUpdateAsyc`-Methode übergeben.
 
 > [!NOTE]
 > DnsManagementClient unterstützt drei Betriebsmodi: synchron („CreateOrUpdate“), asynchron („CreateOrUpdateAsync“) oder asynchron mit Zugriff auf die HTTP-Antwort („CreateOrUpdateWithHttpMessagesAsync“).  Sie können je nach Ihren Anwendungsanforderungen einen beliebigen Modus auswählen.
@@ -98,7 +98,7 @@ var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneN
 
 DNS-Einträge werden als Ressourceneintragssatz verwaltet. Ein Ressourceneintragssatz ist eine Gruppe von Einträgen mit demselben Namen und Eintragstyp in einer Zone.  Der Name des Ressourceneintragssatzes ist relativ zum Zonennamen, nicht zum vollqualifizierten DNS-Namen.
 
-Zum Erstellen oder Aktualisieren eines Ressourceneintragssatzes wird ein „RecordSet“-Parameterobjekt erstellt und an *DnsManagementClient.RecordSets.CreateOrUpdateAsync*übergeben. Wie bei DNS-Zonen auch, werden drei Betriebsmodi unterstützt: synchron („CreateOrUpdate“), asynchron („CreateOrUpdateAsync“) oder asynchron mit Zugriff auf die HTTP-Antwort („CreateOrUpdateWithHttpMessagesAsync“).
+Zum Erstellen oder Aktualisieren eines Ressourceneintragssatzes wird ein RecordSet-Parameterobjekt erstellt und an `DnsManagementClient.RecordSets.CreateOrUpdateAsync` übergeben. Wie bei DNS-Zonen auch, werden drei Betriebsmodi unterstützt: synchron („CreateOrUpdate“), asynchron („CreateOrUpdateAsync“) oder asynchron mit Zugriff auf die HTTP-Antwort („CreateOrUpdateWithHttpMessagesAsync“).
 
 Ebenfalls wie bei DNS-Zonen verfügen Vorgänge für Ressourceneintragssätze über Unterstützung der optimistischen Nebenläufigkeit.  Da in diesem Beispiel weder „If-Match“ noch „If-None-Match“ angegeben ist, wird der Ressourceneintragssatz immer erstellt.  Mit diesem Aufruf werden alle vorhandenen Ressourceneintragssätze mit demselben Namen und Eintragstyp in dieser DNS-Zone überschrieben.
 
@@ -122,7 +122,7 @@ var recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName
 
 ## <a name="get-zones-and-record-sets"></a>Abrufen von Zonen und Ressourceneintragssätzen
 
-Mit den Methoden *DnsManagementClient.Zones.Get* und *DnsManagementClient.RecordSets.Get* werden einzelne Zonen bzw. Ressourceneintragssätze abgerufen. Ressourceneintragssätze werden anhand des Typs, Namens und der Zone (und Ressourcengruppe) bestimmt, in der sie sich befinden. Zonen werden anhand des Namens und der Ressourcengruppe bestimmt, in der sie sich befinden.
+Die Methoden `DnsManagementClient.Zones.Get` und `DnsManagementClient.RecordSets.Get` rufen einzelne Zonen bzw. Ressourceneintragssätze ab. Ressourceneintragssätze werden anhand des Typs, Namens und der Zone (und Ressourcengruppe) bestimmt, in der sie sich befinden. Zonen werden anhand des Namens und der Ressourcengruppe bestimmt, in der sie sich befinden.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
@@ -165,4 +165,4 @@ while (page.NextPageLink != null)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Laden Sie das Azure [DNS .NET SDK-Beispielprojekt](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True) herunter, in dem weitere Beispiele für die Verwendung des Azure DNS .NET SDK enthalten sind, z.B. Beispiele für andere DNS-Eintragstypen.
+Laden Sie das [Azure DNS .NET SDK-Beispielprojekt](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True) herunter, in dem weitere Beispiele für die Verwendung des Azure DNS .NET SDK enthalten sind, z.B. für andere DNS-Eintragstypen.

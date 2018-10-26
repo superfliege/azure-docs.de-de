@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: ba0d81761904be74632f8f0025488b7f501bd715
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 59b52163ba7f5abd53c60264f10f5352e3e4f6cd
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185998"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067787"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Häufig gestellte Fragen zu Solution Accelerators für die Remoteüberwachung
 
@@ -37,6 +37,10 @@ Jede Bereitstellungsoption entspricht unterschiedlichen Anforderungen. Die Basic
 ### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Wie konfiguriere ich eine dynamische Zuordnung auf dem Dashboard?
 
 Weitere Informationen finden Sie unter [Aktualisieren des Zuordnungsschlüssels zum Anzeigen von Geräten in einer dynamischen Zuordnung](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
+
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Wo finde ich Informationen über die Vorgängerversion der Lösung für die Remoteüberwachung?
+
+Die Vorversion des Solution Accelerators für Remoteüberwachung war unter dem Namen vorkonfigurierte IoT Suite-Lösung für die Remoteüberwachung bekannt. Sie finden die archivierte Dokumentation unter [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
 
 ### <a name="next-steps"></a>Nächste Schritte
 

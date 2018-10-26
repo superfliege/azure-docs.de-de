@@ -1,26 +1,18 @@
 ---
-title: Verwalten von DNS-Ressourceneintragssätzen und -Einträgen in Azure DNS | Microsoft-Dokumentation
+title: Verwalten von DNS-Ressourceneintragssätzen und -Einträgen in Azure DNS
 description: Mit Azure DNS können Sie beim Hosten Ihrer Domäne DNS-Ressourceneintragssätze und -Einträge verwalten.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 18ed44a1-7bfe-454f-964e-922ad978264a
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: e24aa8d0fb72147b0ac30e7c495b598d6e9ea96f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451391"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853707"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal
 
@@ -120,3 +112,4 @@ Sie können den SOA- und NS-Ressourceneintragssatz am Zonen-Apex (Name = „\@�
 * Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
 * Weitere Informationen zum Automatisieren von DNS finden Sie unter [Erstellen von DNS-Zonen und -Datensatzgruppen mithilfe des .NET SDK](dns-sdk.md).
 * Weitere Informationen zu Reverse-DNS-Einträgen finden Sie unter [Übersicht über Reverse-DNS und die Unterstützung in Azure](dns-reverse-dns-overview.md).
+* Weitere Informationen zu Azure DNS-Aliaseinträgen finden Sie unter [Azure DNS-Aliaseinträge – Übersicht](dns-alias.md).

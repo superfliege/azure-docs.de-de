@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1fb19c7b74d059d83cc5a51a158dcc6ba9bede23
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 3cb44779f376dca1844f42f346ed0fa3bfaa93cf
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306269"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269444"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -47,7 +47,7 @@ Nein, mehrere Connectors für die gleichen AD-Domäne werden nicht unterstützt.
 **F: Kann ich die Azure AD Connect-Datenbank von der lokalen Datenbank auf eine SQL Server-Remoteinstanz verschieben?**   
 Ja, in den folgenden Schritten finden Sie einen allgemeinen Leitfaden dazu. Wir arbeiten derzeit an einem ausführlicheren Dokument.
 1. Sichern Sie die LocalDB-Datenbank ADSync.
-Die einfachste Möglichkeit hierzu ist die Verwendung von SQL Server Management Studio, das auf demselben Computer wie Azure AD Connect installiert ist. Stellen Sie eine Verbindung mit *(localdb)\.\ADSync* her, und sichern Sie dann die Datenbank ADSync.
+Die einfachste Möglichkeit hierzu ist die Verwendung von SQL Server Management Studio, das auf demselben Computer wie Azure AD Connect installiert ist. Stellen Sie eine Verbindung mit *(LocalDb).\ADSync* her, und sichern Sie dann die Datenbank ADSync.
 
 2. Stellen Sie die Datenbank ADSync in der SQL Server-Remoteinstanz wieder her.
 

@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 09/10/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3f4907d99b25df31ac7f081282cebe700f55b62
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423741"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887563"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -53,7 +53,9 @@ Wenn Sie ein Batch-Konto erstellen, bei dem der Poolzuordnungsmodus auf **Benutz
 | [Anwendungen](batch-application-packages.md) pro Batch-Konto |20 |
 | Anwendungspakete pro Anwendung. |40 |
 | Maximale Lebensdauer von Tasks | 7 Tage<sup>1</sup> |
-| Serverknoten im Pool mit aktivierter Kommunikation zwischen den Knoten | 100 |
+| Computeknoten im [Pool mit aktivierter Kommunikation zwischen den Knoten](batch-mpi.md) | 100 |
+| Dedizierte Computeknoten im [mit benutzerdefinierten VM-Images erstellten Pool](batch-custom-images.md) | 2500 |
+| Computeknoten mit niedriger Priorität im [mit benutzerdefinierten VM-Images erstellten Pool](batch-custom-images.md) | 1000 |
 
 <sup>1</sup> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt sieben Tage. Abgeschlossene Tasks bleiben unbegrenzt lange erhalten. Daten für Tasks, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
 

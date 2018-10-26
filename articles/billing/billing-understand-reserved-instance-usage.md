@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 09/28/2018
 ms.author: cwatson
-ms.openlocfilehash: c81db66637a4c56a36b6995ad8df0fe1967d08ef
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 1edf87d9ec334845f82c3c0c20c958e27f01e87a
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391669"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585219"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung
 
@@ -62,9 +62,11 @@ Filtern Sie nach **Zusätzliche Informationen**, und geben Sie Ihre **Reservieru
 4. Die **Verbrauchseinheit-ID** ist die Verbrauchseinheit-ID für die Reservierung. Die Kosten für diese Verbrauchseinheit betragen 0,00 USD. Diese Verbrauchseinheit-ID wird für beliebige VMs angezeigt, die für den Reservierungsrabatt qualifiziert sind.
 5. Standard_DS1_v2 ist eine vCPU-VM, und der virtuelle Computer wird ohne Azure-Hybridvorteil bereitgestellt. Diese Verbrauchseinheit deckt somit die zusätzlichen Kosten der Windows-Software ab. Die Verbrauchseinheit, die einer VM der D-Serie mit einem Kern entspricht, finden Sie unter [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md). Wenn Sie Anspruch auf den Azure-Hybridvorteil haben, werden diese zusätzlichen Kosten nicht angewendet.
 
-## <a name="usage-for-sql-database-reserved-capacity-reservations"></a>Nutzung von Reservierungen von SQL-Datenbank-Kapazitäten
+## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Nutzung von Reservierungen von SQL-Datenbank- und Cosmos DB-Kapazitäten
 
-In den folgenden Abschnitten wird davon ausgegangen, dass Sie eine SQL-Datenbank-Gen 4-Instanz in der Region „USA, Osten“ ausführen und Ihre Reservierungsinformationen mit den Angaben in der folgenden Tabelle übereinstimmen:
+In den folgenden Abschnitten wird der Nutzungsbericht anhand von Azure SQL-Datenbank beschrieben. Mit denselben Schritten können Sie auch die Nutzung für Azure Cosmos DB abrufen. 
+
+Es wird davon ausgegangen, dass Sie eine SQL-Datenbank-Gen 4-Instanz in der Region „USA, Osten“ ausführen und Ihre Reservierungsinformationen mit den Angaben in der folgenden Tabelle übereinstimmen:
 
 | Feld | Wert |
 |---| --- |
@@ -75,7 +77,7 @@ In den folgenden Abschnitten wird davon ausgegangen, dass Sie eine SQL-Datenbank
 
 ### <a name="statement-section-of-csv-file"></a>Kostenaufstellungsabschnitt der CSV-Datei
 
-Filtern Sie nach den Namen der Verbrauchseinheit **Nutzung reservierter Instanzen**. Die Anzeige sollte in etwa wie im folgenden Screenshot aussehen:
+Filtern Sie nach der Messung **Nutzung reservierter Instanzen**. Wählen Sie dann die entsprechende **Kategorie für Messung** aus: Azure SQL-Datenbank oder Azure Cosmos DB. Die Anzeige sollte in etwa wie im folgenden Screenshot aussehen:
 
 ![CSV-Datei zu reservierten SQL-Datenbank-Kapazitäten](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
@@ -106,3 +108,5 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 
 Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+

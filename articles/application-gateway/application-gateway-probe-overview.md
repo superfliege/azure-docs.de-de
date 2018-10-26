@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: b34e5317a35d694e8521e73b0846da973661d9df
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529681"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018708"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Systemüberwachung des Application Gateways – Übersicht
 
@@ -96,7 +96,7 @@ Die folgende Tabelle enthält Definitionen der Eigenschaften eines benutzerdefin
 
 Wenn sich eine Netzwerksicherheitsgruppe (NSG) in einem Application Gateway-Subnetz befindet, müssen die Portbereiche 65503 - 65534 im Application Gateway-Subnetz für eingehenden Datenverkehr geöffnet sein. Diese Ports sind erforderlich, damit die Back-End-Integritäts-API verwendet werden kann.
 
-Außerdem kann die Internetkonnektivität in ausgehender Richtung nicht blockiert werden, und Datenverkehr vom AzureLoadBalancer-Tag muss zugelassen werden.
+Außerdem kann die Internetkonnektivität in ausgehender Richtung nicht blockiert werden, und eingehender Datenverkehr vom AzureLoadBalancer-Tag muss zugelassen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich mit der Systemüberwachung von Application Gateway vertraut gemacht haben, können Sie einen [benutzerdefinierten Integritätstest](application-gateway-create-probe-portal.md) im Azure-Portal oder einen [benutzerdefinierten Integritätstest](application-gateway-create-probe-ps.md) mit PowerShell und dem Azure Resource Manager-Bereitstellungsmodell konfigurieren.

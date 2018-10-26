@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 230a4df2c43e8d5e6ae1a5a7e8188cf207461022
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 11b6766533da65f55430d55bd8aa0b7067783e0c
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057695"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267469"
 ---
 # <a name="how-to-close-active-risk-events"></a>Anleitung: Schließen von aktiven Risikoereignissen
 
@@ -47,7 +47,7 @@ Zum Schließen von aktiven Risikoereignissen haben Sie folgende Optionen:
 
 ## <a name="require-password-reset-with-a-user-risk-policy"></a>Kennwortzurücksetzung über eine Richtlinie zum Benutzerrisiko anfordern
 
-Durch Konfigurieren der [Richtlinie zum Benutzerrisiko für bedingten Zugriff](howto-user-risk-policy.md) können Sie eine Kennwortänderung erfordern, wenn eine festgelegte Benutzerrisikostufe automatisch erkannt wurde. 
+Durch Konfigurieren der [Richtlinie zum Benutzerrisiko für bedingten Zugriff](howto-user-risk-policy.md) können Sie eine Kennwortänderung erzwingen, wenn eine festgelegte Benutzerrisikostufe automatisch erkannt wurde. 
 
 ![Kennwort zurücksetzen](./media/howto-close-active-risk-events/13.png)
 

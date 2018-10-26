@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 46105ee92a5c98cb8180b2499d0ad295702aac43
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 85fea195b05bea8a1db70f8b5b81cabdfe7c6c72
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953368"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041508"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Bring Your Own Key für Apache Kafka in Azure HDInsight (Vorschauversion)
 
@@ -35,17 +35,37 @@ Sie können für das sichere Rotieren der Schlüssel im Schlüsseltresor das Azu
 
    ![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität im Azure-Portal](./media/apache-kafka-byok/user-managed-identity-portal.png)
 
-2. Erstellen oder importieren Sie eine Azure Key Vault-Instanz.
+2. Importieren Sie einen vorhandenen Schlüsseltresor, oder erstellen Sie einen neuen.
 
    HDInsight unterstützt nur Azure Key Vault. Falls Sie einen eigenen Schlüsseltresor besitzen, können Sie Ihre Schlüssel in Azure Key Vault importieren. Denken Sie daran, dass für die Schlüssel „Soft Delete“ (Vorläufig löschen) und „Do Not Purge“ (Nicht bereinigen) aktiviert sein muss. Die Funktionen „Soft Delete“ (Vorläufig löschen) und „Do Not Purge“ (Nicht bereinigen) sind über die REST-, .NET-/C#-, PowerShell- und Azure CLI-Schnittstelle verfügbar.
 
    Befolgen Sie zum Erstellen eines neuen Schlüsseltresors die Schnellstartanleitung für [Azure Key Vault](../../key-vault/key-vault-get-started.md). Weitere Informationen zum Importieren vorhandener Schlüsseln finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../../key-vault/about-keys-secrets-and-certificates.md).
 
+   Wählen Sie zum Erstellen eines neuen Schlüssels **Generieren/Importieren** im Menü **Schlüssel** unter **Einstellungen** aus.
+
+   ![Generieren eines neuen Schlüssels in Azure Key Vault](./media/apache-kafka-byok/kafka-create-new-key.png)
+
+   Legen Sie **Optionen** auf **Generieren** fest, und benennen Sie den Schlüssel.
+
+   ![Generieren eines neuen Schlüssels in Azure Key Vault](./media/apache-kafka-byok/kafka-create-a-key.png)
+
+   Wählen Sie den Schlüssel, den Sie erstellt haben, aus der Liste der Schlüssel aus.
+
+   ![Azure Key Vault-Schlüsselliste](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+
+   Wenn Sie Ihren eigenen Schlüssel für die Verschlüsselung des Kafka-Clusters verwenden, müssen Sie die Schlüssel-URI angeben. Kopieren Sie den **Schlüsselbezeichner**, und speichern sie ihn, bis Sie zum Erstellen des Clusters bereit sind.
+
+   ![Kopieren des Schlüsselbezeichners](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+   
 3. Fügen Sie eine verwaltete Identität zur Key Vault-Zugriffsrichtlinie hinzu.
 
    Erstellen Sie eine neue Azure Key Vault-Zugriffsrichtlinie.
 
    ![Erstellen einer neuen Azure Key Vault-Zugriffsrichtlinie](./media/apache-kafka-byok/add-key-vault-access-policy.png)
+
+   Wählen Sie unter **Prinzipal auswählen** die von Ihnen erstellte benutzerseitig zugewiesene verwaltete Identität aus.
+
+   ![Festlegen der Option „Prinzipal auswählen“ für die Azure Key Vault-Zugriffsrichtlinie](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
 
    Aktivieren Sie unter **Schlüsselberechtigungen** die Optionen **Abrufen**, **Schlüssel entpacken** und **Schlüssel packen**.
 
@@ -55,17 +75,13 @@ Sie können für das sichere Rotieren der Schlüssel im Schlüsseltresor das Azu
 
    ![Festlegen der Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png)
 
-   Wählen Sie unter **Prinzipal auswählen** die von Ihnen erstellte benutzerseitig zugewiesene verwaltete Identität aus.
-
-   ![Festlegen der Option „Prinzipal auswählen“ für die Azure Key Vault-Zugriffsrichtlinie](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
-
 4. Erstellen des HDInsight-Clusters
 
    Sie können nun einen neuen HDInsight-Cluster erstellen. BYOK kann während der Clustererstellung nur auf neue Cluster angewendet werden. Die Verschlüsselung kann für BYOK-Cluster nicht entfernt werden, und BYOK kann nicht zu vorhandenen Clustern hinzugefügt werden.
 
    ![Kafka-Datenträgerverschlüsselung im Azure-Portal](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
 
-   Geben Sie während der Clustererstellung die vollständige Schlüssel-URL (einschließlich Schlüsselversion) an. Beispiel: `myakv.azure.com/KEK1/v1`. Darüber hinaus müssen Sie die verwaltete Identität dem Cluster zuweisen und den Schlüssel-URI angeben.
+   Geben Sie während der Clustererstellung die vollständige Schlüssel-URL (einschließlich Schlüsselversion) an. Beispiel: `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Darüber hinaus müssen Sie die verwaltete Identität dem Cluster zuweisen und den Schlüssel-URI angeben.
 
 ## <a name="faq-for-byok-to-kafka"></a>Häufig gestellte Fragen zu BYOK in Kafka
 

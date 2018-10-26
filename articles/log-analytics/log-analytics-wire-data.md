@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 32e76d1593f8bda0ebf745e76373908970aeb181
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9ee388e8d33d293240e70ccf79ec8d3c445dffd1
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124168"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269156"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0-Lösung (Vorschauversion) in Log Analytics
 
@@ -30,8 +30,8 @@ Daten zur Kommunikation sind konsolidierte Netzwerk- und Leistungsdaten, die von
 
 Zusätzlich zum OMS-Agent verwendet die Wire Data-Lösung Microsoft Dependency-Agents, die Sie auf Computern in Ihrer IT-Infrastruktur installieren. Dependency-Agents überwachen Netzwerkdaten, die für die Netzwerkschichten 2 und 3 des [OSI-Modells](https://en.wikipedia.org/wiki/OSI_model) an ihre Computer und von ihnen gesendet werden, z.B. die verschiedenen verwendeten Protokolle und Ports. Die Daten werden dann mit Agents an Log Analytics gesendet.  
 
-> [!NOTE]
-> Sie können die vorherige Version der Wire Data-Lösung nicht neuen Arbeitsbereichen hinzufügen. Wenn Sie die ursprüngliche Wire Data-Lösung aktiviert haben, können Sie diese Lösung weiterhin verwenden. Um jedoch Wire Data 2.0 zu verwenden, müssen Sie zuerst die ursprüngliche Version entfernen.
+>[!NOTE]
+>Sie haben die Dienstzuordnung bereits bereitgestellt oder möchten die Dienstzuordnung bzw. [Azure Monitor für VMs](../monitoring/monitoring-vminsights-overview.md) verwenden? Es gibt ein neues Verbindungsmetrik-Dataset, das gesammelt und in Log Analytics gespeichert wird und ähnliche Informationen wie Wire Data zur Verfügung stellt.
 
 Standardmäßig protokolliert Log Analytics Daten für CPU, Arbeitsspeicher, Datenträger sowie Netzwerkleistungsdaten von Leistungsindikatoren, die in Windows und Linux integriert sind. Zudem werden Daten von anderen Leistungsindikatoren protokolliert, die Sie angeben können. Die Erfassung von Netzwerkdaten und anderen Daten wird für jeden Agent in Echtzeit durchgeführt, einschließlich der vom Computer verwendeten Subnetze und Anwendungsebenenprotokolle.  Wire Data untersucht Netzwerkdaten auf Anwendungsebene und nicht unten auf der TCP-Transportebene.  Die Lösung betrachtet keine einzelnen ACKs und SYNs.  Sobald der Handshake abgeschlossen ist, wird er als Liveverbindung betrachtet und als „Verbunden“ gekennzeichnet. Diese Liveverbindung bleibt so lange bestehen, wie beide Seiten zustimmen, dass der Socket offen ist und Daten in beide Richtungen übertragen werden können.  Sobald eine Seite die Verbindung schließt, wird sie als „Getrennt“ markiert.  Aus diesem Grund wird nur die Bandbreite von erfolgreich abgeschlossenen Paketen gezählt, während erneut gesendete oder fehlerhafte Pakete nicht gemeldet werden.
 
@@ -200,6 +200,9 @@ Führen Sie die folgenden Schritte aus, um die Wire Data-Lösung für Ihre Arbei
 1. Aktivieren Sie die Log Analytics-Lösung für Aktivitätsprotokolle in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) oder entsprechend den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Schritten.
 2. Installieren Sie den Dependency-Agent auf jedem Computer, von dem Sie Daten abrufen möchten. Der Dependency-Agent kann Verbindungen zu unmittelbaren Nachbarn überwachen, sodass Sie nicht auf jedem Computer einen Agent benötigen.
 
+> [!NOTE]
+> Sie können die vorherige Version der Wire Data-Lösung nicht neuen Arbeitsbereichen hinzufügen. Wenn Sie die ursprüngliche Wire Data-Lösung aktiviert haben, können Sie diese Lösung weiterhin verwenden. Um jedoch Wire Data 2.0 zu verwenden, müssen Sie zuerst die ursprüngliche Version entfernen.
+> 
 ### <a name="install-the-dependency-agent-on-windows"></a>Installieren des Dependency-Agents unter Windows
 
 Zum Installieren oder Deinstallieren des Agent sind Administratorrechte erforderlich.

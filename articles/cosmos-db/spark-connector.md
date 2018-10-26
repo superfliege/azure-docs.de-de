@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: e7ed0049e64a7740063f2fab7bdfddff38d45ed9
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 26479ade27b18e817d7ad03d70d27b0cef687e8d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287709"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269410"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB
  
@@ -83,7 +83,7 @@ Führen Sie die folgenden Schritte aus, um mit dem pyDocumentDB SDK eine Verbind
 
 6. Geben Sie im Dialogfeld **Notizbuch erstellen**  einen benutzerfreundlichen Namen ein, und wählen Sie **Python** als Sprache aus. Wählen Sie aus der Dropdownliste den Cluster aus, den Sie zuvor erstellt haben, und klicken Sie auf **Erstellen**.  
 
-7. Führen Sie einige Spark-Abfragen durch. Verwenden Sie dafür die Flugbeispieldaten, die im Azure Cosmos DB-Konto „doctorwho“ gehostet werden. Dieses Konto ist öffentlich zugänglich. Die HTML-Version des Notizbuchs wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Laden Sie die Repositorydateien herunter, und navigieren Sie zu `\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html`. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und ausführen. Im folgenden Abschnitt wird die Funktionalität der Codeblöcke genau beschrieben.
+7. Führen Sie einige Spark-Abfragen aus. Verwenden Sie dafür die Flugbeispieldaten, die im Azure Cosmos DB-Konto „doctorwho“ gehostet werden. Dieses Konto ist öffentlich zugänglich. Die HTML-Version des Notizbuchs wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Laden Sie die Repositorydateien herunter, und navigieren Sie zu `\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html`. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und ausführen. Im folgenden Abschnitt wird die Funktionalität der Codeblöcke genau beschrieben.
 
 Die folgenden Codeausschnitte veranschaulichen, wie Sie das pyDocumentDB SDK importieren und eine Abfrage im Spark-Kontext ausführen. Wie im Codeausschnitt deutlich wird, enthält das pyDocumentDB SDK die Verbindungsparameter, die zum Herstellen einer Verbindung mit dem Azure Cosmos DB-Konto erforderlich sind. Es importiert die erforderlichen Bibliotheken und konfiguriert den Hauptschlüssel sowie den Host, um den Azure Cosmos DB-Client (pydocumentdb.document_client) zu erstellen.
 
@@ -179,7 +179,7 @@ Die Kommunikation zwischen Spark und Azure Cosmos DB verläuft erheblich schnell
 
 4. Extrahieren Sie die Inhalte des Twitter-Feedbeispiels, und öffnen Sie die Datei „config.py“. Aktualisieren Sie die Werte „masterKey“, „host“, „databaseId“, „collectionId“ und „preferredlocations“.  
 
-5. Navigieren Sie zu `http://apps.twitter.com/`, und registrieren Sie das Twitter-Feedskript als neue Anwendung. Nachdem Sie einen Namen und einen Anwendungstyp für Ihre App ausgewählt haben, erhalten Sie einen **Verbraucherschlüssel, ein Verbrauchergeheimnis, ein Zugriffstoken und ein Zugriffstokengeheimnis**. Kopieren Sie diese Werte, und aktualisieren Sie sie in der Datei „config.py“, um der Anwendung programmgesteuerten Zugriff auf Twitter bereitzustellen.   
+5. Navigieren Sie zu `http://apps.twitter.com/`, und registrieren Sie die Twitter-Feedanwendung. Nachdem Sie einen Namen für Ihre Anwendung ausgewählt haben, erhalten Sie einen **Verbraucherschlüssel, ein Verbrauchergeheimnis, ein Zugriffstoken und ein Zugriffstokengeheimnis**. Kopieren Sie diese Werte, und aktualisieren Sie sie in der Datei „config.py“, um der Twitter-Feedanwendung programmgesteuerten Zugriff auf Twitter bereitzustellen.   
 
 6. Speichern Sie die Datei „config.py“. Öffnen Sie eine Eingabeaufforderung, und führen Sie die Python-Anwendung mit folgendem Befehl aus:
 

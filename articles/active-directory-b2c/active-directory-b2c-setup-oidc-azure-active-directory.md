@@ -1,84 +1,76 @@
 ---
-title: Hinzufügen eines Azure AD-Anbieters mithilfe integrierter Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie einen Open ID Connect-Identitätsanbieter (Azure AD) hinzufügen.
+title: Einrichten der Anmeldung bei Azure Active Directory-Konten mittels einer integrierten Richtlinie in Azure Active Directory B2C | Microsoft-Dokumentation
+description: Einrichten der Anmeldung bei Azure Active Directory-Konten mittels einer integrierten Richtlinie in Azure Active Directory B2C
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e09ad89f3225af9de40781fafc022c8326f80619
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5f51fbff11412324ad167d49202f7215cefb5ac2
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338637"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49076917"
 ---
-# <a name="azure-active-directory-b2c-sign-in-using-azure-ad-accounts-through-a-built-in-policy"></a>Azure Active Directory B2C: Anmelden mithilfe von Azure AD-Konten über eine integrierte Richtlinie
+# <a name="set-up-sign-in-azure-active-directory-accounts-a-built-in-policy-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung bei Azure Active Directory-Konten mittels einer integrierten Richtlinie in Azure Active Directory B2C
 
 >[!NOTE]
 > Dieses Feature befindet sich in der Phase der öffentlichen Vorschau. Verwenden Sie dieses Feature nicht in Produktionsumgebungen.
 
-In diesem Artikel erfahren Sie, wie Sie die Anmeldung für Benutzer einer bestimmten Azure Active Directory-Organisation (Azure AD) mittels integrierter Richtlinien aktivieren.
+In diesem Artikel erfahren Sie, wie Sie die Anmeldung für Benutzer einer bestimmten Azure Active Directory-Organisation (Azure AD) mittels einer integrierten Richtlinie in Azure AD B2C aktivieren.
 
 ## <a name="create-an-azure-ad-app"></a>Erstellen einer Azure AD-App
 
 Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu aktivieren, müssen Sie eine Anwendung im Azure AD-Mandanten der Organisation registrieren.
 
 >[!NOTE]
-> Wir verwenden „Contoso.com“ für den Azure AD-Mandanten der Organisation und „fabrikamb2c.onmicrosoft.com“ als den Azure AD B2C-Mandanten in den folgenden Anweisungen.
+>In den folgenden Anweisungen wird `Contoso.com` für den Azure AD-Mandanten der Organisation und `fabrikamb2c.onmicrosoft.com` als Azure AD B2C-Mandant verwendet.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie in der oberen Leiste Ihr Konto aus. Wählen Sie in der **Verzeichnisliste** den Azure AD-Mandanten der Organisation aus, bei dem Sie Ihre Anwendung registrieren möchten (contoso.com).
-1. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, und suchen Sie nach „App-Registrierungen“.
-1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
-1. Geben Sie einen Namen für Ihre Anwendung ein (z.B. `Azure AD B2C App`).
-1. Wählen Sie **Web-App/API** als Anwendungstyp aus.
-1. Geben Sie für **Anmelde-URL** die folgende URL ein, in der `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten (`fabrikamb2c`) ersetzt wird:
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten der Organisation („contoso.com“) enthält, indem Sie im oberen Menü auf den Verzeichnis- und Abonnementfilter klicken und das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
+3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
+4. Wählen Sie **Registrierung einer neuen Anwendung** aus.
+5. Geben Sie einen Namen für Ihre Anwendung ein. Beispiel: `Azure AD B2C App`.
+6. Wählen Sie als **Anwendungstyp** die Option `Web app / API` aus.
+7. Geben Sie als **Anmelde-URL** die folgende URL in Kleinbuchstaben ein, und ersetzen Sie dabei `your-tenant` durch den Namen Ihres Azure AD B2C-Mandanten („fabrikamb2c.onmicrosoft.com“):
 
-    >[!NOTE]
-    >Der Wert für „yourtenant“ muss in der **Anmelde-URL** in Kleinbuchstaben angegeben werden.
-
-    ```Console
-    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    ```
+    https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
     ```
 
-1. Speichern Sie die Anwendungs-ID, die Sie im nächsten Abschnitt als Client-ID verwenden werden.
-1. Wählen Sie auf dem Blatt **Einstellungen** die Option **Schlüssel** aus.
-1. Geben Sie eine **Schlüsselbeschreibung** im Abschnitt **Kennwörter** ein, und legen Sie die **Dauer** auf „Läuft nie ab“ fest. 
-1. Klicken Sie auf **Speichern**, und notieren Sie sich den daraus ergebenden **Wert** des Schlüssels, den Sie im nächsten Abschnitt als Clientgeheimnis verwenden werden.
+    Alle URLs sollten jetzt [b2clogin.com](b2clogin.md) verwenden.
+
+8. Klicken Sie auf **Create**. Kopieren Sie die **Anwendungs-ID** zur späteren Verwendung.
+9. Wählen Sie die Anwendung und dann **Einstellungen** aus.
+10. Wählen Sie **Schlüssel** aus, geben Sie die Schlüsselbeschreibung ein, wählen Sie eine Dauer aus, und klicken Sie dann auf **Speichern**. Kopieren Sie den angezeigten Wert des Schlüssels zur späteren Verwendung.
 
 ## <a name="configure-azure-ad-as-an-identity-provider-in-your-tenant"></a>Konfigurieren von Azure AD als Identitätsanbieter in Ihrem Mandanten
 
-1. Wählen Sie in der oberen Leiste Ihr Konto aus. Wählen Sie in der Liste **Verzeichnis** den Azure AD B2C-Mandanten (fabrikamb2c.onmicrosoft.com) aus.
-1. [Wechseln Sie zum Azure AD B2C-Einstellungenmenü](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) im Azure-Portal.
-1. Klicken Sie im Azure AD B2C-Einstellungenmenü auf **Identitätsanbieter**.
-1. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
-1. Geben Sie als **Name** einen aussagekräftigen Namen für die Konfiguration des Identitätsanbieters ein. Geben Sie beispielsweise „Contoso Azure AD“ ein.
-1. Klicken Sie auf **Identitätsanbietertyp**, wählen Sie **Open ID Connect** aus, und klicken Sie auf **OK**.
-1. Klicken Sie auf **Diesen Identitätsanbieter einrichten**.
-1. Geben Sie für **Metadaten-URL** die folgende URL ein, in der `yourtenant` durch den Namen Ihres Azure AD-Mandanten (z.B. `contoso.com`) ersetzt wird:
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das den Azure AD B2C-Mandanten („fabrikamb2c.onmicrosoft.com“) enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen, das Ihren Azure AD B2C-Mandanten enthält.
+2. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+3. Wählen Sie **Identitätsanbieter** und dann **Hinzufügen** aus.
+4. Geben Sie einen **Namen** ein. Geben Sie beispielsweise „Contoso Azure AD“ ein.
+5. Klicken Sie auf **Identitätsanbietertyp**, wählen Sie **OpenID Connect (Vorschau)** aus, und klicken Sie dann auf **OK**.
+6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**.
+7. Geben Sie für **Metadaten-URL** die folgende URL ein, in der `your-tenant` durch den Namen Ihres Azure AD-Mandanten ersetzt wird:
 
-    ```Console
-    https://login.microsoftonline.com/yourtenant/.well-known/openid-configuration
     ```
-1. Geben Sie für **Client-ID** und **Clientgeheimnis** Anwendungs-ID und Schlüssel aus dem vorherigen Abschnitt ein.
-1. Behalten Sie den Standardwert für **Bereich** bei, der auf `openid` festgelegt sein sollte.
-1. Behalten Sie den Standardwert für **Antworttyp** bei, der auf `code` festgelegt sein sollte.
-1. Behalten Sie den Standardwert für **Antwortmodus** bei, der auf `form_post` festgelegt sein sollte.
-1. Geben Sie optional einen Wert für **Domäne** ein (z.B. `ContosoAD`). Dieser Wert wird zum Verweis auf diesen Identitätsanbieter mit *domain_hint* in der Anforderung verwendet. 
-1. Klicken Sie auf **OK**.
-1. Klicken Sie auf **Ansprüche dieses Identitätsanbieters zuordnen**.
-1. Geben Sie für **Benutzer-ID** `oid` ein.
-1. Geben Sie für **Anzeigename** `name` ein.
-1. Geben Sie für **Vorname** `given_name` ein.
-1. Geben Sie für **Nachname** `family_name` ein.
-1. Geben Sie für **E-Mail** `unique_name` ein.
-1. Klicken Sie auf **OK** und dann auf **Erstellen**, um Ihre Konfiguration zu speichern.
+    https://login.microsoftonline.com/your-tenant/.well-known/openid-configuration
+    ```
+8. Geben Sie für die **Client-ID** die Anwendungs-ID und für **Clientgeheimnis** den Schlüsselwert ein, die Sie beide zuvor notiert haben.
+9. Geben Sie optional einen Wert für **Domänenhinweis** ein (z.B. `ContosoAD`). Dieser Wert wird zum Verweis auf diesen Identitätsanbieter mit *domain_hint* in der Anforderung verwendet. 
+10. Klicken Sie auf **OK**.
+11. Wählen Sie **Ansprüche dieses Identitätsanbieters zuordnen** aus, und legen Sie die folgenden Ansprüche fest:
+    
+    - Geben Sie für **Benutzer-ID** `oid` ein.
+    - Geben Sie für **Anzeigename** `name` ein.
+    - Geben Sie für **Vorname** `given_name` ein.
+    - Geben Sie für **Nachname** `family_name` ein.
+    - Geben Sie für **E-Mail** `unique_name` ein.
 
-## <a name="next-steps"></a>Nächste Schritte
-
-Fügen Sie den neu erstellten Azure AD-Identitätsanbieter einer integrierten Richtlinie hinzu, und senden Sie Feedback an [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com).
+12. Klicken Sie auf **OK** und dann auf **Erstellen**, um die Konfiguration zu speichern.

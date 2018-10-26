@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fa5eeaad6ec98bb7ce725e1bf4c977cb2d5398a6
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 52dd9d0ab5a22b702ad7d55d91b860d57e81f607
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448610"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267765"
 ---
 # <a name="manage-analysis-services"></a>Verwalten von Analysis Services
 Nachdem Sie in Azure einen Analysis Services-Server erstellt haben, müssen Sie möglicherweise sofort oder zu einem späteren Zeitpunkt einige Verwaltungsaufgaben ausführen. Sie können z. B. Daten aktualisieren, steuern, wem Zugriff auf die Modelle auf dem Server gewährt wird, oder die Integrität des Servers überwachen. Einige Verwaltungsaufgaben können nur im Azure-Portal, andere in SQL Server Management Studio (SSMS) und bestimmte sowohl im Portal als auch in SSMS ausgeführt werden.
@@ -46,7 +46,7 @@ Verwenden Sie die neueste Version von SSMS, um alle aktuellen Features zu erhalt
     > Es empfiehlt sich der Authentifizierungstyp **Active Directory: universell mit MFA-Unterstützung**.
 
     > [!NOTE]
-    > Wenn Sie sich über ein entsprechendes Konto (Microsoft-Konto, Live ID, Yahoo, Gmail usw.) anmelden, belassen Sie das Kennwortfeld leer. Nachdem Sie auf „Verbinden“ geklickt haben, werden Sie zur Eingabe des Kennworts aufgefordert.
+    > Wenn Sie sich mit einem Microsoft-Konto, Live ID, Yahoo, Gmail usw. anmelden, lassen Sie das Kennwortfeld leer. Nachdem Sie auf „Verbinden“ geklickt haben, werden Sie zur Eingabe des Kennworts aufgefordert.
 
     **Windows-Authentifizierung**, um Ihre Windows-Domäne\Ihren Benutzernamen und Ihr Kennwort als Anmeldeinformationen zu verwenden.
 

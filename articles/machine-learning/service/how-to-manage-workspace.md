@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen
-description: Hier erfahren Sie, wie Sie Azure Machine Learning-Arbeitsbereiche im Azure-Portal erstellen, anzeigen und löschen.
+title: Erstellen und Verwalten von Azure Machine Learning Service-Arbeitsbereichen
+description: Hier erfahren Sie, wie Sie Azure Machine Learning Service-Arbeitsbereiche im Azure-Portal erstellen, anzeigen und löschen.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
-ms.openlocfilehash: 7d01a2e3ebd46315966c82a43a17ffc5b329b829
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c0bb27dccdaf25da818d5d54a8634556a95da737
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954346"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238675"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen
+# <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning Service-Arbeitsbereichen
 
-In diesem Artikel wird erläutert, wie Sie [**Azure Machine Learning-Arbeitsbereiche**](concept-azure-machine-learning-architecture.md#workspace) im Azure-Portal für den [Azure Machine Learning-Dienst](overview-what-is-azure-ml.md) erstellen, anzeigen und löschen.  Sie können Arbeitsbereiche auch mit der [CLI](reference-azure-machine-learning-cli.md) oder mit [Python-Code](http://aka.ms/aml-sdk) erstellen und löschen.
+In diesem Artikel wird erläutert, wie Sie [**Azure Machine Learning Service-Arbeitsbereiche**](concept-azure-machine-learning-architecture.md#workspace) im Azure-Portal für [Azure Machine Learning Service](overview-what-is-azure-ml.md) erstellen, anzeigen und löschen.  Sie können Arbeitsbereiche auch mit der [CLI](reference-azure-machine-learning-cli.md) oder mit [Python-Code](http://aka.ms/aml-sdk) erstellen und löschen.
 
 Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -30,17 +30,17 @@ Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Si
 
 1. Wählen Sie links oben im Portal die Option **Alle Dienste** aus. 
 
-1. Geben Sie **Machine Learning-Arbeitsbereich** ins Filterfeld **Alle Dienste** ein.  
+1. Geben Sie **Machine Learning Service-Arbeitsbereich** in das Filterfeld **Alle Dienste** ein.  
 
-   ![Suchen nach „Azure Machine Learning-Arbeitsbereich“](media/how-to-manage-workspace/allservices-search1.png)
+   ![Suchen nach dem Azure Machine Learning Service-Arbeitsbereich](media/how-to-manage-workspace/allservices-search1.png)
 
-1. Wählen Sie in den Filterergebnissen **Machine Learning-Arbeitsbereich** aus, um eine Liste Ihrer Arbeitsbereiche anzuzeigen. 
+1. Wählen Sie in den Filterergebnissen **Machine Learning Service-Arbeitsbereich** aus, um eine Liste Ihrer Arbeitsbereiche anzuzeigen. 
 
-   ![Suchen nach „Azure Machine Learning-Arbeitsbereich“](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Suchen nach dem Azure Machine Learning Service-Arbeitsbereich](media/how-to-manage-workspace/allservices-search.PNG)
 
 1. Durchsuchen Sie die Liste der gefundenen Arbeitsbereiche. Sie können basierend auf Abonnement, Ressourcengruppen und Standorten filtern.  
 
-   ![Liste der Azure Machine Learning-Arbeitsbereiche](media/how-to-manage-workspace/allservices_view_workspace.PNG)
+   ![Liste mit Azure Machine Learning Service-Arbeitsbereichen](media/how-to-manage-workspace/allservices_view_workspace.PNG)
 
 1. Wählen Sie den eben erstellten Arbeitsbereich aus, um seine Eigenschaften anzuzeigen.
 

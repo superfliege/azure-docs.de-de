@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect Sync: Verzeichniserweiterungen | Microsoft Docs'
+title: 'Azure AD Connect Sync: Verzeichniserweiterungen | Microsoft-Dokumentation'
 description: Dieses Thema beschreibt das Verzeichniserweiterungsfeature in Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4809a413ce40532cc0367945fd902188f065baaa
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9c40cfd9b15f2ae6398b70effc4f4d38111cfe1e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306029"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886064"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: Verzeichniserweiterungen
 Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Azure AD Graph-API-Verzeichniserweiterungen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) oder über [Microsoft Graph](https://graph.microsoft.io/) genutzt werden. Sie können die verfügbaren Attribute mithilfe von [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) bzw. des [Microsoft Graph-Testers](https://developer.microsoft.com/graph/graph-explorer) anzeigen.
@@ -28,6 +28,9 @@ Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Di
 Derzeit können diese Attribute von keiner Office 365-Workload genutzt werden.
 
 Sie konfigurieren im Installations-Assistenten im Pfad der benutzerdefinierten Einstellungen, welche zusätzlichen Attribute synchronisiert werden sollen.
+
+>[!NOTE]
+>Im Feld „Verfügbare Attribute“ muss die Groß-/Kleinschreibung beachtet werden.
 
 ![Schemaerweiterungs-Assistent](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

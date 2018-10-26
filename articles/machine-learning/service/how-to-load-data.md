@@ -10,20 +10,18 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 436ff9d318dc311efe27352a8b2ac91cfb5be618
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 91db32b7056a0cf211e6293a891d58e0239ca499
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221323"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237584"
 ---
-#<a name="load-and-read-data-with-azure-machine-learning"></a>Laden und Lesen von Daten mit Azure Machine Learning
+# <a name="load-and-read-data-with-azure-machine-learning"></a>Laden und Lesen von Daten mit Azure Machine Learning
 
 Verwenden Sie das [Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py), um verschiedene Typen von Eingabedaten zu laden. 
 
-Um Ihre Daten zu laden, sind zwei Ansätze möglich:
-+ Angeben des Datendateityps und der Parameter
-+ Automatisches Erkennen eines Dateityps mithilfe der intelligenten SDK-Lesefunktionalität
+Geben Sie den Datendateityp und die Parameter an, um Ihre Daten zu laden.
 
 ## <a name="use-text-line-data"></a>Verwenden von Textzeilendaten 
 Eine der einfachsten Möglichkeiten zum Laden von Daten besteht darin, diese als Textzeilen zu lesen.
@@ -151,11 +149,11 @@ dataflow.head(5)
 Beispielausgabe:
 ||Column1|Column2|Column3|Column4|Column5|Column6|Column7|Column8|
 |------|------|------|-----|------|-----|-------|----|-----|
-|0|Hoba|Iron, IVB|60000000.0|Gefunden|1920.0|http://www.lpi.usra.edu/meteor/metbull.php?cod..(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. |-19.58333|17.91667|
-|1|Cape York|Iron, IIIAB|58200000.0|Gefunden|1818.0|http://www.lpi.usra.edu/meteor/metbull.php?cod..(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. |76.13333|-64.93333|
-|2|Campo del Cielo|Iron, IAB-MG|50000000.0|Gefunden|1576.0|http://www.lpi.usra.edu/meteor/metbull.php?cod..(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. |-27.46667|-60.58333|
-|3|Canyon Diablo|Iron, IAB-MG|30000000.0|Gefunden|1891.0|http://www.lpi.usra.edu/meteor/metbull.php?cod..(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. |35.05000|-111.03333|
-|4|Armanty|Iron, IIIE|28000000.0|Gefunden|1898.0|http://www.lpi.usra.edu/meteor/metbull.php?cod..(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. |47.00000|88.00000|
+|0|Hoba|Iron, IVB|60000000.0|Gefunden|1920.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |-19.58333|17.91667|
+|1|Cape York|Iron, IIIAB|58200000.0|Gefunden|1818.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |76.13333|-64.93333|
+|2|Campo del Cielo|Iron, IAB-MG|50000000.0|Gefunden|1576.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |-27.46667|-60.58333|
+|3|Canyon Diablo|Iron, IAB-MG|30000000.0|Gefunden|1891.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |35.05000|-111.03333|
+|4|Armanty|Iron, IIIE|28000000.0|Gefunden|1898.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |47.00000|88.00000|
 
 Sie haben das erste Arbeitsblatt der Excel-Datei geladen. Sie können das gleiche Ergebnis erzielen, indem Sie explizit den Namen der Tabelle angeben, die geladen werden soll. Wenn Sie stattdessen das zweite Blatt laden möchten, können Sie den Namen als Argument angeben. Beispiel: 
 ```python
@@ -347,12 +345,8 @@ dataflow.to_pandas_dataframe().head()
 
 ||FMID|MarketName|Website|street|city|County|
 |----|------|-----|----|----|----|----|
-|0|1012063|Caledonia Farmers Market Association - Danville|https://sites.google.com/site/caledoniafarmers..(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. ||Danville|Caledonia|
+|0|1012063|Caledonia Farmers Market Association - Danville|https://sites.google.com/site/caledoniafarmers... ||Danville|Caledonia|
 |1|1011871|Stearns Homestead Farmers' Market|http://Stearnshomestead.com |6975 Ridge Road|Parma|Cuyahoga|
 |2|1011878|100 Mile Market|http://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
 |3|1009364|106 S. Main Street Farmers Market|http://thetownofsixmile.wordpress.com/ |106 S. Main Street|Six Mile|||
-|4|1010691|10th Steet Community Farmers Market|http://agrimissouri.com/mo-grown/grodetail.php..(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. |10th Street and Poplar|Lamar|Barton|
-
-## <a name="use-smart-reading"></a>Verwenden der intelligenten Lesefunktion
-
-Verwenden Sie die intelligente SDK-Lesefunktionalität, um den Typ einer Datei automatisch erkennen zu lassen.
+|4|1010691|10th Steet Community Farmers Market|http://agrimissouri.com/mo-grown/grodetail.php... |10th Street and Poplar|Lamar|Barton|

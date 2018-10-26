@@ -8,22 +8,22 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1915c4bc6cd611479c7575179d8fe64def8895eb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3a7284555fb592956d4e1dc3f56137c88d108e1
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956376"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584392"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>Senden von Nachrichten zwischen Geräten und der Cloud per IoT Hub
 
-IoT Hub ermöglicht die bidirektionale Kommunikation mit Ihren Geräten. Nutzen Sie IoT Hub-Messaging, um mit Ihren Geräten zu kommunizieren, indem Nachrichten von Ihren Geräten an Ihr Lösungs-Back-End und Befehle vom IoT-Lösungs-Back-End an Ihre Geräte gesendet werden. Erfahren Sie mehr zum [IoT Hub-Nachrichtenformat](../iot-hub/iot-hub-devguide-messages-construct.md).
+IoT Hub ermöglicht die bidirektionale Kommunikation mit Ihren Geräten. Nutzen Sie IoT Hub-Messaging, um mit Ihren Geräten zu kommunizieren, indem Nachrichten von Ihren Geräten an Ihr Lösungs-Back-End und Befehle vom IoT-Lösungs-Back-End an Ihre Geräte gesendet werden. Erfahren Sie mehr zum [IoT Hub-Nachrichtenformat](iot-hub-devguide-messages-construct.md).
 
 ## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>Senden von D2C-Nachrichten an IoT Hub
 
-IoT Hub verfügt über einen integrierten Dienstendpunkt, der von Back-End-Diensten verwendet werden kann, um Telemetrienachrichten von Ihren Geräten zu lesen. Dieser Endpunkt ist kompatibel mit [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), und Sie können IoT Hub-Standard-SDKs nutzen, um [Lesevorgänge auf diesem integrierten Endpunkt durchzuführen]((https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin)).
+IoT Hub verfügt über einen integrierten Dienstendpunkt, der von Back-End-Diensten verwendet werden kann, um Telemetrienachrichten von Ihren Geräten zu lesen. Dieser Endpunkt ist kompatibel mit [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), und Sie können IoT Hub-Standard-SDKs nutzen, um [Lesevorgänge auf diesem integrierten Endpunkt durchzuführen](iot-hub-devguide-messages-read-builtin.md).
 
-IoT Hub unterstützt auch [benutzerdefinierte Endpunkte](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints), die von Benutzern definiert werden können, um Gerätetelemetriedaten und Ereignisse an Azure-Dienste zu senden, indem die [Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md) verwendet wird.
+IoT Hub unterstützt auch [benutzerdefinierte Endpunkte](iot-hub-devguide-endpoints.md#custom-endpoints), die von Benutzern definiert werden können, um Gerätetelemetriedaten und Ereignisse an Azure-Dienste zu senden, indem die [Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md) verwendet wird.
 
 ## <a name="sending-cloud-to-device-messages-from-iot-hub"></a>Senden von C2D-Nachrichten von IoT Hub
 
@@ -38,9 +38,11 @@ Die wichtigsten Eigenschaften beim IoT Hub-Messaging sind eine zuverlässige und
 Sie verwenden D2C-Nachrichten zum Senden von Zeitreihen-Telemetriedaten und Warnungen von Ihrer Geräte-App und von C2D-Nachrichten für unidirektionale Nachrichten an Ihre Geräte-App.
 
 * Wenn Sie eine Entscheidungshilfe zur Wahl zwischen D2C-Nachrichten, gemeldeten Eigenschaften und Dateiuploads benötigen, helfen Ihnen die Informationen im [Leitfaden zur D2C-Kommunikation](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance) weiter.
+
 * Wenn Sie eine Entscheidungshilfe zur Wahl zwischen C2D-Nachrichten, gewünschten Eigenschaften und direkten Methoden benötigen, helfen Ihnen die Informationen im [Leitfaden zur C2D-Kommunikation](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance) weiter.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr zur [Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md) von IoT Hub.
+
 * Erfahren Sie mehr über das IoT Hub-[C2D-Messaging](iot-hub-devguide-messages-c2d.md).

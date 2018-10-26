@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 10/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 9281c5fe04e3f29d1e3425edb4841dfaca1cd9e2
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6974350c6abbc6c5f5a8e10b22e91796e2564b08
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294831"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268058"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Tutorial: Azure Active Directory-Integration mit G Suite
 
@@ -51,6 +51,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
 1.  **F: Unterstützt diese Integration Google Cloud Platform-SSO-Integration in Azure AD?**
     
     A: Ja. Für Google Cloud Platform und Google Apps wird dieselbe Authentifizierungsplattform verwendet. Um die Integration von GCP vorzunehmen, müssen Sie daher SSO mit Google Apps konfigurieren.
@@ -79,25 +80,26 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-g-suite-from-the-gallery"></a>Hinzufügen von G Suite aus dem Katalog
+
 Zum Konfigurieren der Integration von G Suite in Azure AD müssen Sie G Suite aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um G Suite aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![image](./media/google-apps-tutorial/selectazuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Blatt „Unternehmensanwendungen“][2]
+    ![image](./media/google-apps-tutorial/a_select_app.png)
     
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Schaltfläche „Neue Anwendung“][3]
+    ![image](./media/google-apps-tutorial/a_new_app.png)
 
-1. Geben Sie **G Suite** in das Suchfeld ein, wählen Sie im Ergebnisbereich den Eintrag **G Suite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie **G Suite** in das Suchfeld ein, wählen Sie im Ergebnisbereich den Eintrag **G Suite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![G Suite in der Ergebnisliste](./media/google-apps-tutorial/tutorial_googleapps_addfromgallery.png)
+     ![image](./media/google-apps-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -121,17 +123,23 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 **Um einmaliges Anmelden von Azure AD mit G Suite zu konfigurieren, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **G Suite** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **G Suite** **Einmaliges Anmelden** aus.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![image](./media/google-apps-tutorial/b1_b2_select_sso.png)
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+2. Klicken Sie oben im Bildschirm auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/google-apps-tutorial/tutorial_googleapps_samlbase.png)
+      ![image](./media/google-apps-tutorial/b1_b2_saml_ssso.png)
 
-1. Führen Sie im Abschnitt **Domäne und URLs für G Suite** die folgenden Schritte aus, wenn Sie die Konfiguration für **Gmail** vornehmen möchten:
+3. Klicken Sie im Dialogfeld **SSO-Methode auswählen** für den Modus **SAML** auf **Auswählen**, um einmaliges Anmelden zu aktivieren.
 
-    ![SSO-Informationen zur Domäne und zu den URLs für G Suite](./media/google-apps-tutorial/tutorial_googleapps_urlgmail.png)
+    ![image](./media/google-apps-tutorial/b1_b2_saml_sso.png)
+
+4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+
+    ![image](./media/google-apps-tutorial/b1-domains_and_urlsedit.png)
+
+5. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`.
 
@@ -142,50 +150,55 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     | `google.com` |
     | `http://google.com` |
     | `http://google.com/a/<yourdomain.com>` |
+
+    ![image](./media/google-apps-tutorial/b1-domains_and_urls.png)
  
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam für G Suite](https://www.google.com/contact/), um diese Werte zu erhalten.
 
-1. Führen Sie im Abschnitt **Domäne und URLs für G Suite** die folgenden Schritte aus, wenn Sie die Konfiguration für **Google Cloud Platform** vornehmen möchten:
+6. Die G Suite-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![SSO-Informationen zur Domäne und zu den URLs für G Suite](./media/google-apps-tutorial/tutorial_googleapps_url1.png)
+    ![image](./media/google-apps-tutorial/i3-attribute.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `.
-
-    b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein: 
-    | |
-    |--|
-    | `google.com/a/<yourdomain.com>` |
-    | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+7. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
-    > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam für G Suite](https://www.google.com/contact/), um diese Werte zu erhalten. 
+    a. Klicken Sie auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+    ![image](./media/google-apps-tutorial/i2-attribute.png)
 
-    ![Downloadlink für das Zertifikat](./media/google-apps-tutorial/tutorial_googleapps_certificate.png) 
+    ![image](./media/google-apps-tutorial/i4-attribute.png)
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+    b. Wählen Sie in der Liste **Quellattribut** den Attributwert aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/google-apps-tutorial/tutorial_general_400.png)
+    c. Klicken Sie auf **Speichern**.
 
-1. Klicken Sie im Abschnitt **G Suite-Konfiguration** auf **G Suite konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, URL für den SAML-SSO-Dienst und URL für Kennwortänderung** aus dem Abschnitt **Kurzübersicht**.
+8. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![G Suite-Konfiguration](./media/google-apps-tutorial/tutorial_googleapps_configure.png) 
+    ![image](./media/google-apps-tutorial/certificatebase64.png)
 
-1. Öffnen Sie eine neue Registerkarte in Ihrem Browser, und melden Sie sich bei der [G Suite-Verwaltungskonsole](http://admin.google.com/) mit Ihrem Administratorkonto an.
+9. Kopieren Sie im Abschnitt **G Suite einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-1. Klicken Sie auf **Sicherheit**. Wenn der Link nicht angezeigt wird, kann er unter dem Menü **Weitere Steuerelemente** im unteren Bereich des Bildschirms versteckt sein.
+    Beachten Sie, dass für die URL ggf. Folgendes angezeigt wird:
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+    ![image](./media/google-apps-tutorial/d1_saml.png) 
+
+10. Öffnen Sie eine neue Registerkarte in Ihrem Browser, und melden Sie sich bei der [G Suite-Verwaltungskonsole](http://admin.google.com/) mit Ihrem Administratorkonto an.
+
+11. Klicken Sie auf **Sicherheit**. Wenn der Link nicht angezeigt wird, kann er unter dem Menü **Weitere Steuerelemente** im unteren Bereich des Bildschirms versteckt sein.
    
     ![Klicken Sie auf "Sicherheit".][10]
 
-1. Klicken Sie auf der Seite **Sicherheit** auf **Einmaliges Anmelden (SSO) einrichten**.
+12. Klicken Sie auf der Seite **Sicherheit** auf **Einmaliges Anmelden (SSO) einrichten**.
    
     ![Klicken Sie auf "SSO".][11]
 
-1. Führen Sie die folgenden Konfigurationsänderungen durch:
+13. Führen Sie die folgenden Konfigurationsänderungen durch:
    
     ![Konfigurieren von SSO][12]
    
@@ -203,78 +216,66 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     g. Klicken Sie auf **Änderungen speichern**.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![image](./media/google-apps-tutorial/d_users_and_groups.png)
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Schaltfläche „Azure Active Directory“](./media/google-apps-tutorial/create_aaduser_01.png)
+    ![image](./media/google-apps-tutorial/d_adduser.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/google-apps-tutorial/create_aaduser_02.png)
+    ![image](./media/google-apps-tutorial/d_userproperties.png)
 
-1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Schaltfläche „Hinzufügen“](./media/google-apps-tutorial/create_aaduser_03.png)
+    c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/google-apps-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
-
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="create-a-g-suite-test-user"></a>Erstellen eines G-Suite-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in G Suite Software. G Suite unterstützt die automatische Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt keine Aktion an. Wenn ein Benutzer nicht bereits in G Suite-Software vorhanden ist, wird ein neuer Benutzer erstellt, sobald Sie versuchen, auf G Suite-Software zuzugreifen.
 
+>[!NOTE]
+>Stellen Sie sicher, dass Ihr Benutzer bereits in G Suite vorhanden ist, wenn die Bereitstellung in Azure AD vor dem Testen des einmaligen Anmeldens nicht aktiviert wurde.
+
 >[!NOTE] 
 >Setzen Sie sich mit dem [Supportteam von Google](https://www.google.com/contact/) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+
+
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf G Suite gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
-**Um Britta Simon zu G Suite zuzuweisen, führen Sie die folgenden Schritte aus:**
+    ![image](./media/google-apps-tutorial/d_all_applications.png)
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+2. Wählen Sie in der Anwendungsliste den Eintrag **G Suite** aus.
 
-    ![Benutzer zuweisen][201] 
+    ![image](./media/google-apps-tutorial/d_all_proapplications.png)
 
-1. Wählen Sie in der Anwendungsliste den Eintrag **G Suite** aus.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![G Suite-Link in der Anwendungsliste](./media/google-apps-tutorial/tutorial_googleapps_app.png)  
+    ![image](./media/google-apps-tutorial/d_leftpaneusers.png)
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+4. Wählen Sie die Schaltfläche **Hinzufügen** und dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Link „Benutzer und Gruppen“][202]
+    ![image](./media/google-apps-tutorial/d_assign_user.png)
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
-
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
-
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
-
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+5. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
@@ -290,18 +291,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 
 <!--Image references-->
 
-[1]: ./media/googleapps-tutorial/tutorial_general_01.png
-[2]: ./media/googleapps-tutorial/tutorial_general_02.png
-[3]: ./media/googleapps-tutorial/tutorial_general_03.png
-[4]: ./media/googleapps-tutorial/tutorial_general_04.png
-
-[100]: ./media/googleapps-tutorial/tutorial_general_100.png
-
-[200]: ./media/googleapps-tutorial/tutorial_general_200.png
-[201]: ./media/googleapps-tutorial/tutorial_general_201.png
-[202]: ./media/googleapps-tutorial/tutorial_general_202.png
-[203]: ./media/googleapps-tutorial/tutorial_general_203.png
-[10]: ./media/googleapps-tutorial/gapps-security.png
-[11]: ./media/googleapps-tutorial/security-gapps.png
-[12]: ./media/googleapps-tutorial/gapps-sso-config.png
+[10]: ./media/google-apps-tutorial/gapps-security.png
+[11]: ./media/google-apps-tutorial/security-gapps.png
+[12]: ./media/google-apps-tutorial/gapps-sso-config.png
 

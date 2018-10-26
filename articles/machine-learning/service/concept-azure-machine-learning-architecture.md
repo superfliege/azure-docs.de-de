@@ -9,18 +9,18 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3011fa85dbac2135f4d9113c6b76a8b667ee4013
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952126"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237975"
 ---
 # <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>Architektur und Konzepte: Wie funktioniert der Azure Machine Learning-Dienst? 
 
 In diesem Dokument werden die Architektur und Konzepte für den Azure Machine Learning-Dienst beschrieben. Im folgenden Diagramm sind die wichtigsten Komponenten des Diensts und der allgemeine Workflow für seine Nutzung dargestellt: 
 
-[![Azure Machine Learning – Architektur und Workflow](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![Azure Machine Learning Service – Architektur und Workflow](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 Für den Workflow werden in der Regel diese Schritte ausgeführt:
 
@@ -41,7 +41,7 @@ Für den Workflow werden in der Regel diese Schritte ausgeführt:
 
 ## <a name="workspace"></a>Arbeitsbereich
 
-Der Arbeitsbereich ist die Ressource der obersten Ebene für den Azure Machine Learning-Dienst. Es ist ein zentraler Ort für die Arbeit mit allen Artefakten, die Sie bei der Verwendung von Azure Machine Learning erstellen.
+Der Arbeitsbereich ist die Ressource der obersten Ebene für den Azure Machine Learning-Dienst. Er bietet einen zentralen Ort für die Arbeit mit allen Artefakten, die Sie bei der Verwendung von Azure Machine Learning Service erstellen.
 
 Im Arbeitsbereich wird eine Liste mit Computezielen geführt, die zum Trainieren Ihres Modells verwendet werden können. Außerdem wird der Verlauf der Trainingsläufe gespeichert, z.B. Protokolle, Metriken, Ausgabe und eine Momentaufnahme Ihrer Skripts. Diese Informationen werden verwendet, um zu ermitteln, welcher Trainingslauf das beste Modell ergibt.
 
@@ -49,7 +49,7 @@ Modelle werden unter dem Arbeitsbereich registriert. Ein registriertes Modell un
 
 Sie können mehrere Arbeitsbereiche erstellen, und jeder Arbeitsbereich kann von mehreren Benutzern gemeinsam genutzt werden. Bei einem freigegebenen Arbeitsbereich steuern Sie den Zugriff auf den Arbeitsbereich, indem Sie Benutzern die folgenden Rollen zuweisen:
 
-* Besitzer
+* Owner (Besitzer)
 * Mitwirkender
 * Leser
 
@@ -71,15 +71,15 @@ Die folgende Abbildung enthält eine Taxonomie des Arbeitsbereichs:
 
 Im einfachsten Fall ist ein Modell ein Codeabschnitt, für den eine Eingabe verwendet wird, um eine Ausgabe zu erzeugen. Die Erstellung eines Machine Learning-Modells umfasst die Auswahl eines Algorithmus, die Bereitstellung der zugehörigen Daten und die Optimierung von Hyperparametern. Das Training ist ein iterativer Prozess, bei dem ein trainiertes Modell mit den während des Trainingsprozesses erlernten Informationen erzeugt wird.
 
-Ein Modell wird erzeugt, indem in Azure Machine Learning eine Ausführung erfolgt. Sie können auch ein Modell verwenden, das außerhalb von Azure Machine Learning trainiert wurde. Ein Modell kann unter einem Azure Machine Learning-Arbeitsbereich registriert werden.
+Ein Modell wird erzeugt, indem in Azure Machine Learning eine Ausführung erfolgt. Sie können auch ein Modell verwenden, das außerhalb von Azure Machine Learning trainiert wurde. Ein Modell kann unter einem Azure Machine Learning Service-Arbeitsbereich registriert werden.
 
-Azure Machine Learning ist „framework-agnostisch“. Sie können beim Erstellen eines Modells ein beliebiges gängiges Machine Learning-Framework verwenden, z.B. scikit-learn, xgboost, PyTorch, TensorFlow, Chainer und CNTK.
+Azure Machine Learning Service ist frameworkunabhängig. Sie können beim Erstellen eines Modells ein beliebiges gängiges Machine Learning-Framework verwenden, z.B. scikit-learn, xgboost, PyTorch, TensorFlow, Chainer und CNTK.
 
-Ein Beispiel für das Trainieren eines Modells finden Sie im Dokument [Schnellstart: Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md).
+Ein Beispiel für das Trainieren eines Modells finden Sie im Dokument [Schnellstart: Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](quickstart-get-started.md).
 
 ### <a name="model-registry"></a>Modellregistrierung
 
-Die Modellregistrierung verfolgt alle Modelle in Ihrem Azure Machine Learning-Arbeitsbereich nach. 
+Die Modellregistrierung verfolgt alle Modelle in Ihrem Azure Machine Learning Service-Arbeitsbereich nach. 
 
 Die Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, wenn Sie ein Modell mit dem gleichen Namen wie ein bereits vorhandenes Modell registrieren, geht die Registrierung davon aus, dass es sich um eine neue Version handelt. Die Version wird inkrementiert, und das neue Modell wird unter dem Namen registriert.
 

@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 10/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 32f93f383ec4044afb0696fcef1705c9ed65d673
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f79fa096484edc34294ea0a69584e12788dba647
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38578916"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043396"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Zuordnen benutzerdefinierter Felder zum Event Grid-Schema
 
@@ -43,9 +43,9 @@ Wenn Sie ein benutzerdefiniertes Thema erstellen, geben Sie an, wie Felder aus I
 
 * Der `--input-schema`-Parameter gibt den Typ des Schemas an. Die verfügbaren Optionen lauten *cloudeventv01schema*, *customeventschema* und *eventgridschema*. Der Standardwert ist „eventgridschema“. Wenn Sie eine benutzerdefinierte Zuordnung zwischen Ihrem Schema und dem Event Grid-Schema erstellen, verwenden Sie „customeventschema“. Wenn Ereignisse im CloudEvents-Schema vorhanden sind, verwenden Sie „cloudeventv01schema“.
 
-* Der `--input-mapping-default-values`-Parameter gibt Standardwerte für Felder im Event Grid-Schema an. Sie können Standardwerte für *subject*, *eventtype* und *dataversion* festlegen. In der Regel verwenden Sie diesen Parameter, wenn Ihr benutzerdefiniertes Schema kein Feld enthält, das einem dieser drei Felder entspricht. Sie können z.B. angeben, dass „dataversion“ immer auf **1.0** festgelegt wird.
+* Der `--input-mapping-default-values`-Parameter gibt Standardwerte für Felder im Event Grid-Schema an. Sie können Standardwerte für `subject`, `eventtype` und `dataversion` festlegen. In der Regel verwenden Sie diesen Parameter, wenn Ihr benutzerdefiniertes Schema kein Feld enthält, das einem dieser drei Felder entspricht. Sie können z.B. angeben, dass die Dataversion immer auf **1.0** festgelegt wird.
 
-* Der `--input-mapping-fields`-Parameter ordnet Felder aus Ihrem Schema dem Event Grid-Schema zu. Werte werden in mit Leerzeichen getrennten Schlüssel-Wert-Paaren angegeben. Verwenden Sie als Schlüsselnamen den Namen des Event Grid-Felds. Als Wert verwenden Sie den Namen Ihres Felds. Sie können Schlüsselnamen für *id*, *topic*, *eventtime*, *subject*, *eventtype* und *dataversion* verwenden.
+* Der `--input-mapping-fields`-Parameter ordnet Felder aus Ihrem Schema dem Event Grid-Schema zu. Werte werden in mit Leerzeichen getrennten Schlüssel-Wert-Paaren angegeben. Verwenden Sie als Schlüsselnamen den Namen des Event Grid-Felds. Als Wert verwenden Sie den Namen Ihres Felds. Sie können Schlüsselnamen für `id`, `topic`, `eventtime`, `subject`, `eventtype` und `dataversion` verwenden.
 
 Das folgende Beispiel erstellt ein benutzerdefiniertes Thema mit einigen zugeordneten und einigen Standardfeldern:
 
@@ -58,7 +58,7 @@ az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
   -g myResourceGroup \
-  --input-schema customeventschema
+  --input-schema customeventschema \
   --input-mapping-fields eventType=myEventTypeField \
   --input-mapping-default-values subject=DefaultSubject dataVersion=1.0
 ```
@@ -69,13 +69,14 @@ Wenn Sie das benutzerdefinierte Thema abonnieren, geben Sie das Schema an, das S
 
 Die Beispiele in diesem Abschnitt verwenden einen Queue Storage-Instanz für den Ereignishandler. Weitere Informationen finden Sie unter [Weiterleiten von benutzerdefinierten Ereignissen an Azure Queue Storage](custom-event-to-queue-storage.md).
 
-Das folgende Beispiel abonniert ein Event Grid-Thema und verwendet das Event Grid-Standardschema:
+Das folgende Beispiel abonniert ein Event Grid-Thema und verwendet das Event Grid-Schema:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
   --topic-name demotopic \
   -g myResourceGroup \
   --name eventsub1 \
+  --event-delivery-schema eventgridschema \
   --endpoint-type storagequeue \
   --endpoint <storage-queue-url>
 ```
@@ -100,9 +101,9 @@ Sie können jetzt ein Ereignis an das benutzerdefinierte Thema senden und die Er
 endpoint=$(az eventgrid topic show --name demotopic -g myResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name demotopic -g myResourceGroup --query "key1" --output tsv)
 
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/mapeventfields.json)'")
+event='[ { "myEventTypeField":"Created", "resource":"Users/example/Messages/1000", "resourceData":{"someDataField1":"SomeDataFieldValue"} } ]'
 
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 Sehen Sie sich jetzt Ihre Queue Storage-Instanz an. Die beiden Abonnements haben Ereignisse in verschiedenen Schemas übermittelt.

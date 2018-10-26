@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: cwatson
-ms.openlocfilehash: 405e0d5184880a00c07de55bd968210fa28e45fc
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 76f4a52b702a609d7181b9c6c0f2ce600d8a6aac
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393076"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267986"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktur von Azure-Dashboards
 In diesem Dokument wird die Struktur eines Azure-Dashboards beschrieben. Dabei wird das folgende Dashboard als Beispiel verwendet:
@@ -326,7 +326,7 @@ Das __parts__-Objekt enthält eine Eigenschaft für jeden Teil. Der Name der Eig
 Jedes einzelne „part“-Objekt verfügt über ein __position__- und __metadata__-Objekt.
 
 ### <a name="the-position-object"></a>Das „position“-Objekt
-Die __position__-Eigenschaft enthält die Informationen zu Größe und Position des Teils und wird mit __x__, __y__, __rowSpan__ und __colSpan__ angegeben. Die Werte beziehen sich auf Rastereinheiten. Diese Rastereinheiten sind sichtbar, wenn sich das Dashboard wie hier gezeigt im Anpassungsmodus befindet. Wenn eine Kachel eine Breite von zwei Rastereinheiten und eine Höhe von einer Rastereinheit haben soll und in der oberen linken Ecke des Dashboards platziert sein soll, sieht das „position“-Objekt wie folgt aus:
+Die __position__-Eigenschaft enthält die Informationen zu Größe und Position des Teils und wird mit __x__, __y__, __rowSpan__ und __colSpan__ angegeben. Die Werte beziehen sich auf Rastereinheiten. Diese Rastereinheiten sind sichtbar, wenn sich das Dashboard wie hier gezeigt im Anpassungsmodus befindet. Wenn eine Kachel eine Breite von zwei Rastereinheiten und eine Höhe von einer Rastereinheit haben und sich oben links im Dashboard befinden soll, sieht das „position“-Objekt wie folgt aus:
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 

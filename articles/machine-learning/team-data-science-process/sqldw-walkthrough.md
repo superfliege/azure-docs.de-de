@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: deguhath
-ms.openlocfilehash: 6178c4a55d24bb37aae787129c9a0d390a2e536b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 192af40df3a8bc0545c9c3a86792e7eb8cb31de9
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226225"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586103"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse
 In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit SQL Data Warehouse (SQL DW) für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt voraus, ob ein Trinkgeld für eine Fahrt bezahlt wird. Zudem werden Modelle für Multiklassenklassifizierung und Regression behandelt, die die Verteilung der gezahlten Trinkgeldbeträge vorhersagen.
@@ -28,7 +28,7 @@ In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines
 Das Verfahren folgt dem Workflow des [Team Data Science-Prozesses (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) . Wir zeigen das Einrichten einer Data Science-Umgebung, das Laden der Daten in SQL Data Warehouse und wie entweder SQL Data Warehouse oder ein IPython Notebook zum Untersuchen der Daten und Entwickeln von Modellierungsfeatures verwendet werden. Anschließend zeigen wir das Erstellen und Bereitstellen eines Modells mit Azure Machine Learning.
 
 ## <a name="dataset"></a>Das Dataset „NYC Taxi Trips“
-Die „NYC Taxi Trips“-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit Aufzeichnungen von mehr als 173 Millionen einzelner Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort, jeweils mit Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
+Die „NYC Taxi Trips“-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit Aufzeichnungen von mehr als 173 Millionen einzelner Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort, jeweils mit Uhrzeit, die anonymisierte Lizenznummer des Fahrers („Hack“) und die eindeutige ID des Taxis („Medallion“). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
 1. Die Datei **trip_data.csv** enthält Fahrtendetails wie die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
    
@@ -442,7 +442,7 @@ In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmte
 | 4 |85765 |
 
 ### <a name="exploration-compute-and-compare-trip-distance"></a>Durchsuchen: Berechnen und Vergleichen der Fahrtlängen
-In diesem Beispiel werden die Werte von "longitude" und "latitude" für Start- und Zielort in SQL-Geografiepunkte konvertiert. Anschließend werden anhand dieser SQL-Geografiepunkte die Fahrtentfernung berechnet und eine zufällige Stichprobe der Ergebnisse für den Vergleich ausgegeben. Im Beispiel werden die Ergebnisse anhand der zuvor durchgeführten Bewertung der Datenqualität auf gültige Koordinaten begrenzt.
+In diesem Beispiel werden die Werte von „longitude“ und „latitude“ für Start- und Zielort in SQL-Geografiepunkte konvertiert. Anschließend werden anhand dieser SQL-Geografiepunkte die Fahrtentfernung berechnet und eine zufällige Stichprobe der Ergebnisse für den Vergleich ausgegeben. Im Beispiel werden die Ergebnisse anhand der zuvor durchgeführten Bewertung der Datenqualität auf gültige Koordinaten begrenzt.
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
     SET ANSI_NULLS ON
