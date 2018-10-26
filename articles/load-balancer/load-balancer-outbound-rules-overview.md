@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/8/2018
 ms.author: kumud
-ms.openlocfilehash: 63c193b4757c28f809a33b917058df36467d4db4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 15783822631a5372b181f2d65746664d90b389da
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163017"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883957"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln
 
@@ -39,7 +39,7 @@ Mit Ausgangsregeln können Sie steuern:
 
 Ausgangsregeln erweitern das in Artikel [Ausgehende Verbindungen](load-balancer-outbound-connections.md) beschriebene [Szenario 2](load-balancer-outbound-connections.md#lb). Die Rangfolge der Szenarien bleibt unverändert.
 
-## <a name="outbound-rule"></a>Ausgangsregel
+## <a name="outbound-rule"></a>Ausgehende Regel
 
 Wie alle Load Balancer-Regeln folgen auch die Ausgangsregeln der gleichen vertrauten Syntax wie Lastenausgleichsregeln und NAT-Eingangsregeln:
 
@@ -151,7 +151,7 @@ Ausgangsregeln führen kein neues Konzept zum Definieren der VM-Gruppe ein, für
 Sie können eine Ausgangsregel verwenden, um ausgehende Verbindungen so zu konfigurieren, dass sie scheinbar von einem bestimmten Satz öffentlicher IP-Adressen stammen, um Whitelistszenarien zu vereinfachen.  Diese öffentliche Quell-IP-Adresse kann die gleiche sein, die von einer Lastenausgleichsregel verwendet wird, oder ein anderer Satz öffentlicher IP-Adressen, als der von einer Lastenausgleichsregel verwendete.  
 
 1. Erstellen Sie ein [Präfix für öffentliche IP-Adressen](https://aka.ms/lbpublicipprefix) (oder öffentliche IP-Adressen aus einem Präfix für öffentliche IP-Adressen).
-2. Erstellen Sie eine öffentliche Load Balancer Standard-Instanz.
+2. Erstellen einer öffentlichen Load Balancer Standard-Instanz
 3. Erstellen Sie Front-Ends, die auf das gewünschte Präfix für öffentliche IP-Adressen (oder öffentliche IP-Adressen) verweisen.
 4. Verwenden Sie einen vorhandenen Back-End-Pool erneut, oder erstellen Sie einen neuen Back-End-Pool, und stellen Sie die VMs in einem Back-End-Pool der öffentlichen Load Balancer-Instanz bereit.
 5. Konfigurieren Sie eine Ausgangsregel in der öffentlichen Load Balancer-Instanz, um NAT für ausgehenden Datenverkehr für diese VMs über die Front-Ends zu programmieren.
@@ -180,10 +180,10 @@ Definieren Sie eine öffentliche Load Balancer Standard-Instanz, stellen Sie die
 
 #### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>NAT für ausgehenden Datenverkehr für interne Load Balancer Standard-Szenarien
 
-Beim Verwenden einer internen Load Balancer Standard-Instanz ist die NAT für ausgehenden Datenverkehr erst verfügbar, wenn eine öffentliche Load Balancer Standard-Instanz konfiguriert wurde. Sie können dies mit einer Ausgangsregel ändern, indem Sie eine ausgehende Verbindung für VMs hinter einer internen Load Balancer Standard-Instanz erstellen.
+Beim Verwenden einer internen Load Balancer Standardinstanz ist die NAT für ausgehenden Datenverkehr erst verfügbar, nachdem die ausgehende Konnektivität explizit deklariert wurde. Sie können die ausgehende Konnektivität mit einer Ausgangsregel definieren, indem Sie mithilfe dieser Schritte ausgehende Konnektivität für VMs hinter einer internen Load Balancer-Standardinstanz erstellen:
 
-1. Erstellen Sie eine öffentliche Load Balancer Standard-Instanz.
-2. Erstellen Sie einen Back-End-Pool, und stellen Sie die VMs in einem Back-End-Pool der öffentlichen Load Balancer-Instanz bereit.
+1. Erstellen Sie eine öffentliche Load Balancer Standardinstanz.
+2. Erstellen Sie einen Back-End-Pool, und stellen Sie die VMs über die interne Load Balancer-Instanz hinaus in einem Back-End-Pool der öffentlichen Load Balancer-Instanz bereit.
 3. Konfigurieren Sie eine Ausgangsregel in der öffentlichen Load Balancer-Instanz, um die NAT für ausgehenden Datenverkehr für diese VMs zu programmieren.
 
 #### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>Aktivieren von TCP- und UDP-Protokollen für NAT für ausgehenden Datenverkehr mit einer öffentlichen Load Balancer Standard-Instanz
@@ -212,6 +212,6 @@ Beim Verwenden einer internen Load Balancer Standard-Instanz ist die NAT für au
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zur Verwendung von [Load Balancer für ausgehende Verbindungen](load-balancer-outbound-connections.md)
-- Weitere Informationen zu [Load Balancer Standard](load-balancer-standard-overview.md)
+- Erfahren Sie mehr über [Load Balancer Standard](load-balancer-standard-overview.md).
 - Weitere Informationen zur [bidirektionalen TCP-Zurücksetzung bei Leerlauftimeout](load-balancer-tcp-reset.md)
 - [Konfigurieren von Ausgangsregeln mit der Azure CLI 2.0](configure-load-balancer-outbound-cli.md)

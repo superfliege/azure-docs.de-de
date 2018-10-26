@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6831f67a33d114ca5c42ddacf8ef4de704e21711
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036955"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830989"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Verwenden von Begriffslisten, um das Signal von Wortlisten zu verstärken
 
@@ -46,7 +46,7 @@ Sie können Ihrer LUIS-App Features hinzufügen, um ihre Genauigkeit zu verbesse
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Über die Schaltfläche mit den Auslassungspunkten (***...***) am Ende jeder Zeile einer Begriffsliste lassen sich Begriffslisten bearbeiten, löschen oder deaktivieren.
+> Sie können eine Begriffsliste aus der kontextbezogenen Symbolleiste auf der Seite **Begriffslisten** löschen oder deaktivieren.
 
 ## <a name="pattern-regular-expression-feature"></a>Musterfeature (regulärer Ausdruck) 
 **Dieses Feature ist veraltet**. Neue Musterfeature können LUIS nicht hinzugefügt werden. Vorhandene Musterfeatures werden bis Mai 2018 unterstützt. Leisten Sie im [Recognizers-Text-Github-Repository](https://github.com/Microsoft/Recognizers-Text) Ihren Beitrag zu standardmäßigen regulären Ausdrücken von LUIS in PR-Übereinstimmung. 

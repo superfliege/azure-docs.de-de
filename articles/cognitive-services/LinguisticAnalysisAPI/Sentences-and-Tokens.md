@@ -1,22 +1,27 @@
 ---
-title: Sätze und Token in der API für linguistische Analyse | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Trennung und Tokenisierung in der API für linguistische Analyse in Cognitive Services.
+title: Sätze und Token – API für linguistische Analyse
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie mehr über die Trennung und Tokenisierung in der API für linguistische Analyse.
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ROBOTS: NOINDEX
+ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084041"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237873"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Trennung und Tokenisierung von Sätzen
+
+> [!IMPORTANT]
+> Die Vorschauversion für die linguistische Analyse wurde am 9. August 2018 außer Betrieb genommen. Es wird empfohlen, [Azure Machine Learning-Textanalysemodule](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) für die Textverarbeitung und -analyse zu verwenden.
 
 ## <a name="background-and-motivation"></a>Hintergrund und Motivation
 
@@ -52,7 +57,8 @@ Der erste Satz könnte auf folgende Weise geschrieben werden: „Whatdidyousay?�
 
 Es gibt einige Knackpunkte.
 Zunächst einmal sollte die Zeichensetzung in vielen Fällen (jedoch nicht immer) von dem ihm umgebenden Kontext getrennt werden.
-Zudem weist die englische Sprache *Kontraktionen* wie „didn’t“ oder „it’s“ auf, bei denen Wörter komprimiert und auf diese Weise abgekürzt werden. Das Ziel des Tokenizers ist es, die Zeichensequenz in Wörter zu segmentieren.
+Zudem weist die englische Sprache *Kontraktionen* wie „didn’t“ oder „it’s“ auf, bei denen Wörter komprimiert und auf diese Weise abgekürzt werden.
+Das Ziel des Tokenizers ist es, die Zeichensequenz in Wörter zu segmentieren.
 
 Kehren wir zu den oben aufgeführten Beispielsätzen zurück.
 Jetzt haben wir einen Punkt in die Leerräume (&middot;) zwischen die einzelnen Token eingefügt.
@@ -61,9 +67,10 @@ Jetzt haben wir einen Punkt in die Leerräume (&middot;) zwischen die einzelnen 
 - I &middot; did &middot; n't &middot; hear &middot; about &middot; the &middot; director &middot; 's &middot; „ &middot; new &middot; proposal &middot; . &middot; “
 - It &middot; 's &middot; important &middot; to &middot; Mr. &middot; and &middot; Mrs. &middot; Smith &middot; .
 
-Beachten Sie, dass es sich bei den meisten Token um Wörter handelt, die im Wörterbuch vorgefunden werden können (z.B. *important*, *director*).
+Beachten Sie, dass es sich bei den meisten Token um Wörter handelt, die im Wörterbuch vorgefunden werden können (z. B. *important*, *director*).
 Andere Token hingegen bestehen ausschließlich aus Satzzeichen.
-Zu guter Letzt gibt es ungewöhnlichere Token, die z.B. Kontraktionen wie *n’t* für *not* und besitzanzeigende Formen wie *’s* darstellen. Dank dieser Tokenisierung können beispielsweise das Wort *didn’t* und die Phrase *did not* konsistenter behandelt werden.
+Zu guter Letzt gibt es ungewöhnlichere Token, die z.B. Kontraktionen wie *n’t* für *not* und besitzanzeigende Formen wie *’s* darstellen.
+Dank dieser Tokenisierung können das Wort *didn’t* und die Phrase *did not* konsistenter behandelt werden.
 
 ## <a name="specification"></a>Spezifikation
 

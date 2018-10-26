@@ -1,27 +1,31 @@
 ---
-title: Part-of-Speech-Tagging in der API für linguistische Analyse | Microsoft-Dokumentation
-description: Erfahren Sie, wie im Rahmen der Wortartmarkierung (Part-of-Speech-Tagging) in Microsoft Cognitive Services die Kategorie oder die Wortart der einzelnen Wörter des Texts identifiziert wird.
+title: Part-of-Speech-Tagging – API für linguistische Analyse
+description: Erfahren Sie, wie die Wortartmarkierung (Part-of-Speech-Tagging) in der API für linguistische Analyse die Kategorie oder die Wortart der einzelnen Wörter des Texts identifiziert.
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
-ms.openlocfilehash: 90fd5b05c2dabdac88c6c8da288ab629177be38d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ROBOTS: NOINDEX
+ms.openlocfilehash: a01fcea4ae6c8950d578bacefc2f064586d7306b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082637"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238516"
 ---
 # <a name="part-of-speech-tagging"></a>Part-of-Speech-Tagging
+
+> [!IMPORTANT]
+> Die Vorschauversion für die linguistische Analyse wurde am 9. August 2018 außer Betrieb genommen. Es wird empfohlen, [Azure Machine Learning-Textanalysemodule](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) für die Textverarbeitung und -analyse zu verwenden.
 
 ## <a name="background-and-motivation"></a>Hintergrund und Motivation
 
 Nachdem Sie einen Text in Sätze und Token segmentiert haben, besteht der nächste Analyseschritt darin, die Kategorie oder die Wortart der einzelnen Wörter zu identifizieren.
-Hierzu gehören Kategorien wie etwa *Nomen* (in der Regel Personen, Orte, Gegenstände, Konzepte etc.) und *Verben* (in der Regel Aktionen, Zustandsänderungen etc.). Bei einigen Wörtern lässt sich die Wortart eindeutig bestimmen (*Sumpf* ist beispielsweise tatsächlich nur ein Nomen), bei vielen anderen Wörtern ist die Wortart jedoch schwieriger zu erkennen.
+Hierzu gehören Kategorien wie etwa *Nomen* (in der Regel Personen, Orte, Gegenstände, Konzepte etc.) und *Verben* (in der Regel Aktionen, Zustandsänderungen etc.). Bei einigen Wörtern lässt sich die Wortart eindeutig bestimmen (*Sumpf* ist beispielsweise nur ein Nomen), bei vielen anderen Wörtern ist die Wortart jedoch schwieriger zu erkennen.
 So könnte *table* ein Tisch zum Arbeiten (oder ein 2D-Layout von Zahlen) sein, jedoch auch den Ausdruck „table a discussion“ (eine Diskussion eröffnen) meinen.
 
 ## <a name="list-of-part-of-speech-tags"></a>Liste der Wortarttags
@@ -45,7 +49,7 @@ So könnte *table* ein Tisch zum Arbeiten (oder ein 2D-Layout von Zahlen) sein, 
 | IN | Präposition oder subordinierende Konjunktion| in, innerhalb, falls, bei, ob |
 | JJ | Adjektiv oder Ordnungszahl | neunte, hübsch, scheußlich, multimodal |
 | JJR | Adjektiv, Komparativ | besser, schneller, günstiger |
-| JJS | Adjektiv, Superlativ | beste, schnellste, günstigste | 
+| JJS | Adjektiv, Superlativ | beste, schnellste, günstigste |
 | LS | Listenelementmarkierung | (a) (b), 1 2, A B, A. B. |
 | MD | Modales Hilfsverb | können, sollen, werden, könnten, sollten |
 | NN | Gattungsname, Singular oder Stoffname | Kartoffel, Geld, Schuh |

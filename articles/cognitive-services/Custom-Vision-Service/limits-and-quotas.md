@@ -1,20 +1,21 @@
 ---
-title: Grenzen und Kontingente für Custom Vision Service – Azure Cognitive Services | Microsoft-Dokumentation
-description: Informationen zu den Grenzen und Kontingenten für den Custom Vision Service von Azure Cognitive Services
+title: Grenzwerte und Kontingente – Custom Vision Service
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie über Grenzwerte und Kontingente für Custom Vision Service.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: anroth
-ms.openlocfilehash: 44666d5d7f2a51e4017c704205d21b1f6d06908c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ce06effbce12abb6271e050829d3218f4fbbfbf4
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377634"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902858"
 ---
 # <a name="limits-and-quotas"></a>Grenzen und Kontingente
 
@@ -25,7 +26,8 @@ Projektressourcen, die eingeschränkten Testabonnements entstammen, werden Ihren
 ||**Eingeschränkte Testversion**|**F0 (Azure)**|**S0 (Azure)**|
 |-----|-----|-----|-----|
 |Projekte|2|2|100|
-|Trainingsbilder pro Projekt|5.000|5.000|50.000|
+|Trainingsbilder pro Projekt, Klassifizierung|5.000|5.000|50.000|
+|Trainingsbilder pro Projekt, Objekterkennung|5.000|5.000|10.000|
 |Vorhersagen pro Monat|10.000 |10.000|Unbegrenzt|
 |Tags pro Projekt|50|50|250|
 |Iterationen |10|10|10|

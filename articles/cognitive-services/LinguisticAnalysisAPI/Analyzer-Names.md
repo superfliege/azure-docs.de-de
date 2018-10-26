@@ -1,22 +1,27 @@
 ---
-title: Benennungsstruktur im Analysetool in der API für die linguistische Analyse | Microsoft-Dokumentation
-description: Erfahren Sie, wie die API für die linguistische Analyse ihr Benennungsstruktur für Analysetools verwendet, um Flexibilität und Genauigkeit zu ermöglichen.
+title: Benennungsstruktur im Analysetool – API für die linguistische Analyse
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie die Benennungsstruktur des Analysetools der API für die linguistische Analyse sowohl Flexibilität als auch Genauigkeit ermöglicht.
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
-ms.openlocfilehash: 2729b7126e82862660fc8e1a995cc87ae996ea03
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: f8c7aba2b853f3916c2d01d94d49090a4b3e36a0
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372987"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237230"
 ---
 # <a name="analyzer-names"></a>Analysetoolnamen
+
+> [!IMPORTANT]
+> Die Vorschauversion für die linguistische Analyse wurde am 9. August 2018 außer Betrieb genommen. Es wird empfohlen, [Azure Machine Learning-Textanalysemodule](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) für die Textverarbeitung und -analyse zu verwenden.
 
 Wir verwenden eine etwas komplizierte Benennungsstruktur für Analysetools, um sowohl Flexibilität bei den Analysetools als auch Genauigkeit beim Verstehen der Bedeutung der Benennung zu ermöglichen.
 Namen für Analysetools bestehen aus vier Teilen: eine ID, eine Variante, eine Spezifikation und eine Implementierung.

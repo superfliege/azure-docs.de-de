@@ -4,7 +4,7 @@ description: Lastenausgleich in Konfigurationen mit primären und sekundären IP
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
+manager: jpconnock
 editor: na
 ms.assetid: 244907cd-b275-4494-aaf7-dcfc4d93edfe
 ms.service: load-balancer
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3b7971fec0aa0c354476073b01699f516f9439cc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 73f19293fc9dd0f68752e7b38a12a826b8f52b0c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637377"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248567"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mithilfe des Azure-Portals
 
@@ -181,7 +181,7 @@ Konfigurieren Sie für jede Website (contoso.com und fabrikam.com) die Lastenaus
 
 4. Behalten Sie für **Port** und **Back-End-Port** den Standardwert **80** bei.
 
-5. Wählen Sie unter **Floating IP (Direct Server Return)** die Option **Aktiviert**.
+5. Wählen Sie unter **Floating IP (Direct Server Return)** die Option **Deaktiviert** aus.
 
 6. <a name="step6-6"></a>Wählen Sie **OK**.
 

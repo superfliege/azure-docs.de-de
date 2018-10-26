@@ -3,18 +3,17 @@ title: Häufig gestellte Fragen zu Azure Application Gateway
 description: Diese Seite enthält Antworten auf häufig gestellte Fragen zu Azure Application Gateway.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 9/6/2018
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b2a550c902e85caf02f05fcbbe5dd7b02acd0cc
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986675"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868852"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -22,15 +21,15 @@ ms.locfileid: "46986675"
 
 **F: Was ist Application Gateway?**
 
-Azure Application Gateway ist ein ADC (Application Delivery Controller) als Dienst und bietet verschiedene Lastenausgleichsfunktionen auf Ebene 7 für Ihre Anwendung. Er bietet einen hoch verfügbaren und skalierbaren Dienst, der vollständig von Azure verwaltet wird.
+Azure Application Gateway ist ein ADC (Application Delivery Controller) als Dienst und bietet verschiedene Lastenausgleichsfunktionen auf Schicht 7 für Ihre Anwendung. Er bietet einen hoch verfügbaren und skalierbaren Dienst, der vollständig von Azure verwaltet wird.
 
 **F: Welche Funktionen werden von Application Gateway unterstützt?**
 
-Application Gateway unterstützt SSL-Abladung und End-to-End-SSL, Web Application-Firewall, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, Multi-Site-Hosting und vieles mehr. Eine vollständige Liste der unterstützten Funktionen finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
+Application Gateway unterstützt automatische Skalierung, SSL-Abladung und End-to-End-SSL, Web Application-Firewall, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, Multi-Site-Hosting und vieles mehr. Eine vollständige Liste der unterstützten Funktionen finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
 
 **F: Was ist der Unterschied zwischen Application Gateway und Azure Load Balancer?**
 
-Application Gateway ist ein Lastenausgleich auf Ebene 7, was bedeutet, dass es nur mit Webdatenverkehr (HTTP/HTTPS/WebSocket) funktioniert. Es unterstützt Funktionen wie SSL-Beendigung, cookiebasierte Sitzungsaffinität und Roundrobin für den Lastenausgleich von Datenverkehr. Load Balancer, bewirkt einen Lastenausgleich des Datenverkehrs auf Ebene 4 (TCP/UDP).
+Application Gateway ist ein Lastenausgleich auf Ebene 7, was bedeutet, dass es nur mit Webdatenverkehr (HTTP/HTTPS/WebSocket) funktioniert. Es unterstützt Funktionen wie SSL-Beendigung, cookiebasierte Sitzungsaffinität und Roundrobin für den Lastenausgleich von Datenverkehr. Load Balancer bewirkt einen Lastenausgleich des Datenverkehrs auf Schicht 4 (TCP/UDP).
 
 **F: Welche Protokolle werden von Application Gateway unterstützt?**
 
@@ -72,32 +71,34 @@ Listener werden gemäß der Anzeigereihenfolge verarbeitet. Wenn also ein grundl
 
 Wenn Sie eine öffentliche IP-Adresse als Endpunkt verwenden, können diese Informationen auf der öffentlichen IP-Adressressource oder im Portal auf der Seite „Übersicht“ für Application Gateway gefunden werden. Für die interne IP-Adressen können diese Informationen auf der Seite „Übersicht“ gefunden werden.
 
-**F: Ändert sich die IP-Adresse oder der DNS während der Lebensdauer von Application Gateway?**
+**F: Ändert sich die IP-Adresse oder der DNS-Name während der Lebensdauer von Application Gateway?**
 
-Die VIP kann sich ändern, wenn das Gateway vom Kunden beendet und gestartet wird. Der zugeordnete DNS von Application Gateway ändert sich während des Lebenszyklus des Gateways nicht. Daher wird empfohlen, einen CNAME-Alias zu verwenden und damit auf die DNS-Adresse von Application Gateway zu verweisen.
+Die VIP kann sich ändern, wenn das Application Gateway beendet und gestartet wird. Der zugeordnete DNS-Name von Application Gateway ändert sich während des Lebenszyklus des Gateways nicht. Daher wird empfohlen, einen CNAME-Alias zu verwenden und damit auf die DNS-Adresse von Application Gateway zu verweisen.
 
 **F: Unterstützt Application Gateway statische IP-Adressen?**
 
-Nein, Application Gateway unterstützt keine statischen öffentlichen IP-Adressen, statische interne IP-Adressen werden dagegen unterstützt.
+Ja, die Application Gateway V2-SKU unterstützt statische öffentliche IP-Adressen. Die V1-SKU unterstützt statische interne IP-Adressen.
 
 **F: Unterstützt Application Gateway mehrere öffentliche IP-Adressen auf dem Gateway?**
 
-Nur eine öffentliche IP-Adresse wird auf einer Application Gateway-Instanz unterstützt.
+Nur eine öffentliche IP-Adresse wird von einem Application Gateway unterstützt.
 
 **F: Wie groß soll ich mein Subnetz für Application Gateway auslegen?**
 
 Application Gateway nutzt eine private IP-Adresse pro Instanz sowie eine weitere private IP-Adresse, wenn eine private Front-End-IP-Konfiguration konfiguriert ist. Darüber hinaus reserviert Azure die ersten vier IP-Adressen sowie die letzte IP-Adresse in jedem Subnetz für die interne Verwendung.
-Wenn Application Gateway beispielsweise auf drei Instanzen festgelegt und keine private Front-End-IP-Konfiguration vorhanden ist, ist eine Größe von mindestens /29 für das Subnetz erforderlich. In diesem Fall verwendet Application Gateway drei IP-Adressen. Wenn Sie drei Instanzen und eine IP-Adresse für die private Front-End-IP-Konfiguration haben, ist eine Größe von mindestens /28 für das Subnetz erforderlich, da vier IP-Adressen erforderlich sind.
+Wenn ein Application Gateway beispielsweise auf drei Instanzen festgelegt und keine private Front-End-IP-Konfiguration vorhanden ist, ist eine Größe von mindestens /29 für das Subnetz erforderlich. In diesem Fall verwendet das Application Gateway drei IP-Adressen. Wenn Sie drei Instanzen und eine IP-Adresse für die private Front-End-IP-Konfiguration haben, ist eine Größe von mindestens /28 für das Subnetz erforderlich, da vier IP-Adressen erforderlich sind.
 
 **F: Werden X-Forwarded-For-Header von Application Gateway unterstützt?**
 
-Ja, Application Gateway fügt X-Forwarded-For-, X-Forwarded-Proto- und X-Forwarded-Port-Header in die Anforderung ein, die an das Back-End weitergeleitet wird. Das Format für den X-Forwarded-For-Header ist eine durch Trennzeichen getrennte Liste der Form „IP:Port“. Die gültigen Werte für X-Forwarded-Proto sind „http“ und „https“. X-Forwarded-Port gibt den Port an, an dem die Anforderung Application Gateway erreicht hat.
+Ja, Application Gateway fügt X-Forwarded-For-, X-Forwarded-Proto- und X-Forwarded-Port-Header in die Anforderung ein, die an das Back-End weitergeleitet wird. Das Format für den X-Forwarded-For-Header ist eine durch Trennzeichen getrennte Liste der Form „IP:Port“. Die gültigen Werte für X-Forwarded-Proto sind „http“ und „https“. X-Forwarded-Port gibt den Port an, an dem die Anforderung das Application Gateway erreicht hat.
 
 Application Gateway fügt auch den X-Original-Hostheader ein, der den ursprünglichen Hostheader enthält, mit dem die Anforderung eingegangen ist. Dieser Header ist nützlich in Szenarien wie der Azure-Websiteintegration. Dabei wird der eingehende Hostheader modifiziert, bevor der Datenverkehr zum Back-End weitergeleitet wird.
 
 **F: Wie lange dauert das Bereitstellen eines Application Gateway? Funktioniert das Application Gateway nach einer Aktualisierung immer noch?**
 
-Die Ausführung neuer Application Gateway-Bereitstellungen kann bis zu 20 Minuten dauern. Beim Vornehmen von Änderungen an Größe/Anzahl der Instanzen wird der Betrieb nicht unterbrochen, und das Gateway bleibt währenddessen aktiv.
+Die Ausführung neuer Bereitstellungen von Application Gateway V1-SKU kann bis zu 20 Minuten dauern. Beim Vornehmen von Änderungen an Größe/Anzahl der Instanzen wird der Betrieb nicht unterbrochen, und das Gateway bleibt währenddessen aktiv.
+
+Die Bereitstellung von V2-SKUs nimmt etwa fünf bis sechs Minuten in Anspruch.
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -117,7 +118,7 @@ Nein, aber Sie können weitere Application Gateway-Instanzen im Subnetz bereitst
 
 Netzwerksicherheitsgruppen werden im Application Gateway-Subnetz mit folgenden Einschränkungen unterstützt:
 
-* Ausnahmen müssen für eingehenden Verkehr an den Ports 65503-65534 angegeben werden. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Sie werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten, einschließlich der Kunden dieser Gateways, keine Änderungen an diesen Endpunkten vornehmen.
+* Ausnahmen müssen für eingehenden Datenverkehr an den Ports 65503 bis 65534 für die Application Gateway V1-SKU und an den Ports 65200 bis 65535 für die V2-SKU eingerichtet werden. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Sie werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten, einschließlich der Kunden dieser Gateways, keine Änderungen an diesen Endpunkten vornehmen.
 
 * Die ausgehende Internetverbindung kann nicht blockiert sein.
 
@@ -163,7 +164,7 @@ Das Feld „Host“ gibt den Namen an, an den die Überprüfung zu senden ist. N
 
 **F: Kann ich für den Application Gateway-Zugriff einige wenige Quell-IPs in eine Positivliste aufnehmen?**
 
-Dieses Szenario können Sie mithilfe von Netzwerksicherheitsgruppen im Application Gateway-Subnetz erreichen. Die folgenden Einschränkungen sollten für das Subnetz festgelegt werden (nach ihrer Priorität geordnet):
+Dieses Szenario können Sie mithilfe von Netzwerksicherheitsgruppen im Application Gateway-Subnetz umsetzen. Die folgenden Einschränkungen sollten für das Subnetz festgelegt werden (nach ihrer Priorität geordnet):
 
 * Zulassen des eingehenden Datenverkehrs von Quell-IP/-IP-Adressbereich.
 
@@ -183,7 +184,9 @@ Nein, dies wird nicht unterstützt.
 
 **F: Wie unterstützt Application Gateway Hochverfügbarkeit und Skalierbarkeit?**
 
-Application Gateway unterstützt Szenarios mit Hochverfügbarkeit, wenn zwei oder mehr Instanzen bereitgestellt werden. Azure verteilt diese Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Application Gateway unterstützt Skalierbarkeit durch Hinzufügen mehrerer Instanzen des gleichen Gateways, um die Last zu teilen.
+Die Application Gateway V1-SKU unterstützt Szenarios mit Hochverfügbarkeit, wenn zwei oder mehr Instanzen bereitgestellt werden. Azure verteilt diese Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Die V1-SKU unterstützt Skalierbarkeit durch Hinzufügen mehrerer Instanzen des gleichen Gateways, um die Last zu teilen.
+
+Die V2-SKU stellt automatisch sicher, dass neue Instanzen über Fehlerdomänen und Updatedomänen hinweg verteilt werden. Wenn Zonenredundanz gewählt wurde, werden die neuesten Instanzen darüber hinaus über Verfügbarkeitszonen hinweg verteilt, um Resilienz gegen Zonenausfälle zu erreichen.
 
 **F: Wie erziele ich mit Application Gateway ein rechenzentrumsübergreifendes DR-Szenario?**
 
@@ -191,7 +194,7 @@ Kunden können Datenverkehr mithilfe von Traffic Manager auf mehrere Application
 
 **F: Wird automatische Skalierung unterstützt?**
 
-Nein, aber Application Gateway verfügt über eine Durchsatzmetrik, die verwendet werden kann, um Sie zu warnen, wenn ein Schwellenwert erreicht wird. Das manuelle Hinzufügen von Instanzen oder Ändern der Größe startet das Gateway nicht neu und wirkt sich nicht auf vorhandenen Datenverkehr aus.
+Ja, die Application Gateway V2-SKU unterstützt automatische Skalierung. Weitere Informationen finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway (öffentliche Vorschau)](application-gateway-autoscaling-zone-redundant.md).
 
 **F: Werden durch das manuelle Hoch- oder Herunterskalieren Ausfallzeiten verursacht?**
 
@@ -199,7 +202,7 @@ Es gibt keine Ausfallzeiten, da Instanzen auf Upgrade- und Fehlerdomänen vertei
 
 **F: Unterstützt Application Gateway den Verbindungsausgleich?**
 
-Ja. Sie können den Verbindungsausgleich konfigurieren, um die Mitglieder in einem Back-End-Pool ohne Unterbrechung zu ändern. Dadurch können vorhandene Verbindungen weiterhin an ihr vorheriges Ziel gesendet werden, bis die jeweilige Verbindung geschlossen wird oder ein konfigurierbares Zeitlimit abläuft. Beachten Sie, dass der Verbindungsausgleich nur auf die Beendigung der aktuellen aktiven Verbindungen wartet. Application Gateway kennt den Status der Anwendungssitzung nicht.
+Ja. Sie können den Verbindungsausgleich konfigurieren, um die Mitglieder in einem Back-End-Pool ohne Unterbrechung zu ändern. Dadurch können vorhandene Verbindungen weiterhin an ihr vorheriges Ziel gesendet werden, bis die jeweilige Verbindung geschlossen wird oder ein konfigurierbares Zeitlimit abläuft. Verbindungsausgleich wartet nur auf die Beendigung der aktuellen aktiven Verbindungen. Application Gateway kennt den Status der Anwendungssitzung nicht.
 
 **F: In welchen Größen ist Application Gatewaxy verfügbar?**
 
@@ -359,13 +362,13 @@ Für Application Gateway sind Überwachungsprotokolle verfügbar. Klicken Sie im
 
 **F: Kann ich mit Application Gateway Warnungen einrichten?**
 
-Ja, Application Gateway unterstützt Warnungen. Warnungen werden anhand von Metriken konfiguriert. Application Gateway verfügt derzeit über die Metrik „Durchsatz“, mit der Warnungen konfiguriert werden können. Weitere Informationen zu Warnungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Ja, Application Gateway unterstützt Warnungen. Warnungen werden für Metriken konfiguriert. Weitere Informationen zu Metriken in Application Gateway finden Sie unter [Application Gateway-Metriken](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics). Weitere Informationen zu Warnungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
-**F: Wie analysieren ich-Datenverkehrsstatistiken für Application Gateway?**
+**F: Wie lassen sich Datenverkehrsstatistiken für Application Gateway analysieren?**
 
 Sie können Zugriffsprotokolle über eine Reihe von Mechanismen wie Azure Log Analytics, Excel, Power BI usw. anzeigen und analysieren.
 
-Wir haben auch eine Resource Manager-Vorlage veröffentlicht, die die beliebte [GoAccess](https://goaccess.io/)-Protokollanalyse für Application Gateway Access Logs installiert und ausführt. GoAccess stellt wertvolle HTTP-Datenverkehrsstatistiken wie eindeutige Besucher, angeforderte Dateien, Hosts, Betriebssysteme, Browser, HTTP-Statuscodes und vieles mehr zur Verfügung. Weitere Informationen finden Sie in der [Infodatei im Resource Manager-Vorlagenordner in GitHub](https://aka.ms/appgwgoaccessreadme).
+Wir haben auch eine Resource Manager-Vorlage veröffentlicht, die die beliebte [GoAccess](https://goaccess.io/)-Protokollanalyse für Application Gateway Access Logs installiert und ausführt. GoAccess stellt wertvolle HTTP-Datenverkehrsstatistiken wie eindeutige Besucher, angeforderte Dateien, Hosts, Betriebssysteme, Browser, HTTP-Statuscodes und vieles mehr zur Verfügung. Weitere Informationen finden Sie in der [Infodatei im Resource Manager-Vorlagenordner auf GitHub](https://aka.ms/appgwgoaccessreadme).
 
 **F: Die Back-End-Integrität gibt den Status „Unbekannt“ zurück. Was kann die Ursache sein?**
 

@@ -1,19 +1,19 @@
 ---
 title: Includedatei
 description: Includedatei
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
-ms.date: 04/24/2018
-ms.author: dobett
+ms.date: 08/07/2018
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 1137f1dac9570b56dc202194e5f94dfd72c31c9f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 64c7525be9bd44b0d33fdcd8da717e9fe893e057
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39029998"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49070184"
 ---
 # <a name="internet-of-things-security-architecture"></a>Internet der Dinge – Sicherheitsarchitektur
 
@@ -185,7 +185,7 @@ In jeder Kategorie der Azure IoT-Architektur wird in diesem Beispiel versucht, d
 
 Hier sind einige Beispiele für Bedrohungen in dieser Kategorie aufgeführt:
 
-Spoofing: Ein Angreifer kann kryptografische Schlüsseldaten von einem Gerät entwenden, entweder auf Software- oder Hardwareebene, und dann mit einem anderen physischen oder virtuellen Gerät unter der Identität des Geräts zugreifen, von dem die Schlüsseldaten gestohlen wurden.
+**Spoofing**: Ein Angreifer kann kryptografische Schlüsseldaten von einem Gerät entwenden, entweder auf Software- oder Hardwareebene, und dann mit einem anderen physischen oder virtuellen Gerät unter der Identität des Geräts zugreifen, von dem die Schlüsseldaten gestohlen wurden.
 
 **Denial of Service:** Ein Gerät kann so manipuliert werden, dass es nicht mehr funktionsfähig ist oder kommunizieren kann, indem Funkfrequenzen gestört oder Kabel durchschnitten werden. Beispielsweise liefert eine Überwachungskamera, deren Stromversorgung oder Netzwerkverbindung absichtlich unterbrochen wurde, überhaupt keine Daten mehr.
 

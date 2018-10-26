@@ -1,20 +1,29 @@
 ---
-title: 'Custom Vision Service: Anmerkungen zu dieser Version'
+title: Anmerkungen zu dieser Version – Custom Vision Service
+titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
+ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 8423051fa5169eb8acddc7297e36188e297cb9e4
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288655"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901326"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service: Anmerkungen zu dieser Version
+
+## <a name="october-9-2018"></a>9. Oktober 2018
+- Objekterkennung geht in die kostenpflichtige Vorschauphase. Sie können jetzt Objekterkennungsprojekte mit einer Azure-Ressource erstellen.
+- Der Website wurde die Funktion „In Azure verschieben“ hinzugefügt, um das Upgrade eines begrenzten Testprojekts zu vereinfachen, sodass es mit einem Azure- Ressourcenlinkprojekt (F0 oder S0) verknüpft werden kann. Sie finden diese Funktion auf der Seite „Einstellungen“ für Ihr Produkt.  
+- Export nach ONNX 1.2 wurde hinzugefügt, um die Windows 2018-Oktober-Update-Version von Windows-ML zu unterstützen.
+Fehlerbehebungen, einschließlich für den ONNX-Export mit Sonderzeichen. 
+
 
 ## <a name="august-14-2018"></a>14. August 2018
 - Widget „Erste Schritte“ zur Website customvision.ai hinzugefügt, um Benutzer durch das Projekttraining zu begleiten. 
