@@ -326,12 +326,6 @@
 
 ## [Problembehandlung](fundamentals/active-directory-troubleshooting-support-howto.md)
 
-## Bereitstellen eines Proof of Concept (PoC) für Azure AD
-### [PoC-Playbook: Einführen](active-directory-playbook-intro.md)
-### [PoC-Playbook: Bestandteile](active-directory-playbook-ingredients.md)
-### [PoC-Playbook: Implementierung](active-directory-playbook-implementation.md)
-### [PoC-Playbook: Bausteine](active-directory-playbook-building-blocks.md)
-
 # Verweis
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure PowerShell-Cmdlets](/powershell/azure/overview)
