@@ -11,15 +11,15 @@ ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 0311fed95adf7005512f0b675031ab90657c963a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a04a372e52c682af428938514eac5d5e0f4274f0
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159957"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093713"
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Azure Site Recovery-Bereitstellungsplaner für „VMware zu Azure“
 Dieser Artikel ist der Leitfaden zum Azure Site Recovery-Bereitstellungsplaner für Bereitstellungen von „VMware zu Azure“ in der Produktion.
@@ -85,7 +85,7 @@ Das Tool verfügt über zwei Hauptphasen: die Profilerstellung und die Berichter
 | Serveranforderung | BESCHREIBUNG|
 |---|---|
 |Profilerstellung und Messung des Durchsatzes| <ul><li>Betriebssystem: Windows Server 2016 oder Windows Server 2012 R2<br>(idealerweise mindestens basierend auf [Empfohlene Größen für den Konfigurationsserver](https://aka.ms/asr-v2a-on-prem-components))</li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, 300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Zugriff auf Azure über das Internet von diesem Server</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li><li>Die Einstellungen für die VMware vCenter-Statistikebene können auf 1 oder eine höhere Stufe festgelegt werden.</li><li>vCenter-Port zulassen (Standard 443): Der Site Recovery-Bereitstellungsplaner verwendet diesen Port zum Verbinden mit dem vCenter-Server/ESXi-Host.</ul></ul>|
-| Berichterstellung | Windows-PC oder Windows-Server mit Excel 2013 oder höher.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) ist nur erforderlich, wenn Sie die Option „-User“ im Berichtsgenerierungsbefehl zum Abrufen der neuesten VM-Konfigurationsinformationen der virtuellen Computer übergeben. Bei Übergabe der Option „-User“ stellt der Planer für die Bereitstellung eine Verbindung mit dem vCenter-Server her. Lassen Sie zu, dass der vCenter-Port (Standard 443) die Verbindung mit dem vCenter-Server herstellt.</li>|
+| Berichterstellung | Windows-PC oder Windows-Server mit Excel 2013 oder höher.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) ist nur erforderlich, wenn Sie die Option „-User“ im Berichtsgenerierungsbefehl zum Abrufen der neuesten VM-Konfigurationsinformationen der virtuellen Computer übergeben. Der Planer für die Bereitstellung stellt eine Verbindung mit dem vCenter-Server her. Lassen Sie zu, dass der vCenter-Port (Standard 443) die Verbindung mit dem vCenter-Server herstellt.</li>|
 | Benutzerberechtigungen | Leseberechtigung für das Benutzerkonto, das zum Zugreifen auf den VMware vCenter-Server/VMware vSphere ESXi-Host während der Profilerstellung verwendet wird |
 
 > [!NOTE]

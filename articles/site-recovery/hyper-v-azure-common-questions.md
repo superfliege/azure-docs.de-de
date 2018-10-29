@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 09/12/2018
+ms.date: 10/10/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721907"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319726"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Allgemeine Fragen zur Replikation von Hyper-V in Azure
 
@@ -37,7 +37,7 @@ Sie benötigen ein Azure-Abonnement, einen Recovery Services-Tresor, ein Speiche
 Sie benötigen ein LRS- oder GRS-Speicherkonto. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. Storage Premium wird unterstützt.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Benötigt mein Azure-Konto Berechtigungen zum Erstellen von virtuellen Computern?
-Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replikationsberechtigungen. Wenn nicht, benötigen Sie Berechtigungen zum Erstellen einer Azure-VM in der Ressourcengruppe und dem virtuellen Netzwerk, die Sie beim Konfigurieren von Site Reocvery angeben, und Schreibberechtigungen für das ausgewählte Speicherkonto. [Weitere Informationen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)
+Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replikationsberechtigungen. Wenn nicht, benötigen Sie Berechtigungen zum Erstellen einer Azure-VM in der Ressourcengruppe und dem virtuellen Netzwerk, die Sie beim Konfigurieren von Site Reocvery angeben, und Schreibberechtigungen für das ausgewählte Speicherkonto. [Weitere Informationen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 ### <a name="is-replication-data-sent-to-site-recovery"></a>Werden Replikationsdaten an Site Recovery gesendet?
 Nein. Site Recovery fängt replizierte Daten nicht ab und besitzt keine Informationen dazu, was auf Ihren virtuellen Computern ausgeführt wird. Replikationsdaten werden zwischen Hyper-V-Hosts und Azure-Speicher ausgetauscht. Site Recovery hat keine Möglichkeit, diese Daten abzufangen. Nur die Metadaten, die zum Orchestrieren von Replikation und Failover erforderlich sind, werden an den Site Recovery-Dienst gesendet.  
@@ -104,7 +104,7 @@ Sie können jede App oder Arbeitsauslastung, auf einer Hyper-V-VM ausführen, di
 
 ### <a name="whats-the-replication-process"></a>Was ist ein Replikationsprozess?
 
-1. Wenn die erste Replikation ausgelöst wird, wird eine Momentaufnahme der Hyper-V-VM erstellt.
+1. Wenn die erste Replikation ausgelöst wird, wird eine Hyper-V-Momentaufnahme für den virtuellen Computer erstellt.
 2. Virtuelle Festplatten auf der VM werden nacheinander repliziert, bis alle in Azure kopiert wurden. Die Dauer ist abhängig von der Größe der VM und von der Netzwerkbandbreite. Erfahren Sie, wie die Netzwerkbandbreite vergrößert werden kann.
 3. Falls während der ersten Replikation Datenträgeränderungen auftreten, werden die Änderungen mit dem Replication Tracker für Hyper-V-Replikate in Form von Hyper-V-Replikationsprotokollen (.hrl) nachverfolgt. Diese Protokolldateien befinden sich im gleichen Ordner wie die Datenträger. Jeder Datenträger verfügt über eine zugeordnete HRL-Datei, die an den sekundären Speicher gesendet wird. Beachten Sie, dass die Momentaufnahme- und Protokolldateien Festplattenressourcen belegen, während die anfängliche Replikation durchgeführt wird.
 4. Nach Abschluss der ersten Replikation wird die Momentaufnahme des virtuellen Computers gelöscht.
@@ -135,7 +135,7 @@ Wenn Sie zu Azure replizieren, erreicht der Replikationsdatenverkehr die öffent
 
 Für die Replikation muss auf einer Hyper-V-VM ein unterstütztes Betriebssystem ausgeführt werden. Darüber hinaus muss der virtuelle Computer die Anforderungen für Azure-VMs erfüllen. [Erfahren Sie mehr](hyper-v-azure-support-matrix.md#replicated-vms) in der Unterstützungsmatrix.
 
-###<a name="how-often-can-i-replicate-to-azure"></a>Wie oft kann ich zu Azure replizieren?
+### <a name="how-often-can-i-replicate-to-azure"></a>Wie oft kann ich zu Azure replizieren?
 
 Hyper-V-VMs können alle 30 Sekunden (außer bei Storage Premium), alle 5 Minuten oder alle 15 Minuten repliziert werden.
 
@@ -206,7 +206,4 @@ Sobald Ihre lokale Infrastruktur wieder funktioniert und ausgeführt werden kann
 5. Nachdem Failbacks für die Workloads ausgeführt wurden, aktivieren Sie die umgekehrte Replikation, sodass die lokalen VMs erneut in Azure replizieren.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Kann ich ein Failback zu einem anderen Speicherort ausführen?
-Ja, wenn Sie ein Failover zu Azure ausgeführt haben, können Sie ein Failback zu einem anderen Speicherort ausführen, wenn der ursprüngliche nicht verfügbar ist. [Weitere Informationen](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment)
-
-
-
+Ja, wenn Sie ein Failover zu Azure ausgeführt haben, können Sie ein Failback zu einem anderen Speicherort ausführen, wenn der ursprüngliche nicht verfügbar ist. [Weitere Informationen](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment).

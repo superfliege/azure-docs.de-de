@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: raynew
-ms.openlocfilehash: 25db7d1f0a546cb5c6071ec4d625a7a52867053a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: f6f1ceb4f9afaaeb0a436879802144bdebc06280
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433922"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378651"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Unterstützungsmatrix für die Replikation von VMware-VMs und physischen Servern in Azure
 
@@ -64,7 +64,7 @@ Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem u
 --- | ---
 Computereinstellungen | Computer, die in Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#azure-vm-requirements) erfüllen.
 Windows-Betriebssystem | Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1. </br></br>  [Windows Server 2008 mit mindestens SP2 – 32-Bit und 64-Bit](migrate-tutorial-windows-server-2008.md) (nur Migration). </br></br> Windows 2016 Nano Server wird nicht unterstützt.
-Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11<b>\*\*</b>, 6.1 bis 6.10<b>\*\*</b>, 7.0 bis 7.5 <br/><br/>CentOS: 5.2 bis 5.11<b>\*\*</b>, 6.1 bis 6.10<b>\*\*</b>, 7.0 bis 7.5 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (unterstützte Kernel-Versionen)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2, SP3 [ (unterstützte Kernelversionen)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 SP4* </br></br>Oracle Enterprise Linux 6.4, 6.5, 6.6, 6.7, unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird. <br/><br/></br>* *Das Upgrade replizierter Computer von SUSE Linux Enterprise Server 11 SP3 auf SP4 wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, und aktivieren Sie sie nach dem Upgrade erneut.*</br></br><b>\*\*</b> *Eine Erläuterung der Unterstützung für Linux und Open-Source-Technologie in Azure finden Sie unter [Unterstützung für virtuelle Linux-Computer in Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure). Mit Azure Site Recovery können Sie für Linux-Server in Azure ein Failover durchführen und diese ausführen, Linux-Anbieter können den Support jedoch auf die Versionen ihrer Distributionen einschränken, die noch nicht das Ende ihrer Lebensdauer erreicht haben.*
+Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11<b>\*\*</b>, 6.1 bis 6.10<b>\*\*</b>, 7.0 bis 7.5 <br/><br/>CentOS: 5.2 bis 5.11<b>\*\*</b>, 6.1 bis 6.10<b>\*\*</b>, 7.0 bis 7.5 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (unterstützte Kernel-Versionen)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2, SP3 [ (unterstützte Kernelversionen)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 SP4* </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird. <br/><br/></br>* *Das Upgrade replizierter Computer von SUSE Linux Enterprise Server 11 SP3 auf SP4 wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, und aktivieren Sie sie nach dem Upgrade erneut.*</br></br><b>\*\*</b> *Eine Erläuterung der Unterstützung für Linux und Open-Source-Technologie in Azure finden Sie unter [Unterstützung für virtuelle Linux-Computer in Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure). Mit Azure Site Recovery können Sie für Linux-Server in Azure ein Failover durchführen und diese ausführen, Linux-Anbieter können den Support jedoch auf die Versionen ihrer Distributionen einschränken, die noch nicht das Ende ihrer Lebensdauer erreicht haben.*
 
 
 >[!NOTE]

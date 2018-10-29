@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 0e9c5c7ebaaa0a51d723340751e8ea82bfb96b5e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 49773e076ed8bb06ff76f9f654b914a709051fb5
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433666"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378617"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -69,7 +69,7 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 - SUSE Linux Enterprise Server 12 SP1, SP2, SP3 [ (unterstützte Kernelversionen)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
-- Oracle Enterprise Linux 6.4, 6.5, 6.6, 6.7, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird
+- Oracle Linux 6.4, 6.5, 6.6, 6.7, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird
 
 (Ein Upgrade von replizierenden Computern von SLES 11 SP3 auf SLES 11 SP4 wird nicht unterstützt. Wenn für einen replizierten Computer ein Upgrade von SLES 11 SP3 auf SLES 11 SP4 durchgeführt wurde, müssen Sie die Replikation deaktivieren und den Computer nach dem Upgrade erneut schützen.)
 
@@ -81,7 +81,7 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-14.04 LTS | 9.19 | 3.13.0-24-generic bis 3.13.0-153-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-131-generic |
+14.04 LTS | 9.19 | 3.13.0-24-generic bis 3.13.0-153-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-131-generic, |
 14.04 LTS | 9.18 | 3.13.0-24-generic bis 3.13.0-151-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-128-generic |
 14.04 LTS | 9.17 | 3.13.0-24-generic bis 3.13.0-147-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-124-generic |
 14.04 LTS | 9.16 | 3.13.0-24-generic bis 3.13.0-144-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-119-generic |
@@ -209,7 +209,7 @@ Authentifizierter Proxy | Nicht unterstützt | Wenn der virtuelle Computer einen
 Standort-zu-Standort-VPN mit lokalem Netzwerk (mit oder ohne ExpressRoute)| Unterstützt | Stellen Sie sicher, dass die UDRs und NSGs so konfiguriert sind, dass der Datenverkehr für die Sitewiederherstellung nicht lokal weitergeleitet wird. Weitere Informationen finden Sie im [Richtliniendokument für Netzwerke](site-recovery-azure-to-azure-networking-guidance.md).  
 VNet-zu-VNet-Verbindung | Unterstützt | Weitere Informationen finden Sie im [Richtliniendokument für Netzwerke](site-recovery-azure-to-azure-networking-guidance.md).  
 Dienstendpunkte im virtuellen Netzwerk | Unterstützt | Azure Storage-Firewalls für virtuelle Netzwerke werden nicht unterstützt. Das Gewähren des Zugriffs auf bestimmte virtuelle Azure-Netzwerke auf Cachespeicherkonten, die zum Speichern replizierter Daten verwendet werden, wird nicht unterstützt.
-Beschleunigter Netzwerkbetrieb | Unterstützt | Auf dem virtuellen Quellcomputer muss der beschleunigte Netzwerkbetrieb aktiviert sein. [Weitere Informationen](azure-vm-disaster-recovery-with-accelerated-networking.md)
+Beschleunigter Netzwerkbetrieb | Unterstützt | Auf dem virtuellen Quellcomputer muss der beschleunigte Netzwerkbetrieb aktiviert sein. [Weitere Informationen](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
