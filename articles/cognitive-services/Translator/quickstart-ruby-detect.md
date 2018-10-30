@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: Identifizieren der Textsprache – Textübersetzung, Ruby'
+title: 'Schnellstart: Identifizieren der Textsprache, Ruby: Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart bestimmen Sie die Sprache des Quelltexts. Dazu verwenden Sie die Textübersetzungs-API mit Ruby.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: e2b138b5c28047487da2ca7a72169a10a125eaf5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: ee6792358e6d5852c259b8045f77df24d14a6397
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121702"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644865"
 ---
-# <a name="quickstart-identify-language-from-text-with-ruby"></a>Schnellstart: Identifizieren der Textsprache mit Ruby
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-ruby"></a>Schnellstart: Identifizieren der Textsprache mit der Textübersetzungs-REST-API (Ruby)
 
 In dieser Schnellstartanleitung bestimmen Sie mithilfe der Textübersetzungs-API die Sprache des Quelltexts.
 

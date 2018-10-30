@@ -1,5 +1,5 @@
 ---
-title: Erkennen und Umranden von Gesichtern in einem Bild – Gesichtserkennungs-API, C#
+title: 'Tutorial: Erkennen und Umranden von Gesichtern in einem Bild mit dem .NET SDK und C#'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine Windows-App, die die Gesichtserkennungs-API verwendet, um Gesichter in einem Bild zu erkennen und zu umranden.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: pafarley
-ms.openlocfilehash: ba850c1d4f9d8018f333662eead56f8e91b3fbd7
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: df5e46270275ca08a8499607fbad4c1161382fab
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340952"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956493"
 ---
-# <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>Tutorial: Erstellen einer WPF-App zum Erkennen und Umranden von Gesichtern in einem Bild
+# <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image-using-the-net-sdk"></a>Tutorial: Erstellen einer WPF-App zum Erkennen und Umranden von Gesichtern in einem Bild unter Verwendung des .NET SDK
 
 In diesem Tutorial erstellen Sie eine WPF-Anwendung (Windows Presentation Foundation), für die der Gesichtserkennungsdienst über die zugehörige .NET-Clientbibliothek genutzt wird. Die App erkennt Gesichter in einem Bild, zeichnet einen Rahmen um jedes Gesicht und zeigt eine Beschreibung des Gesichts in der Statusleiste an. Der vollständige Beispielcode ist auf GitHub unter [Detect and frame faces in an image on Windows](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) (Erkennen und Umranden von Gesichtern in einem Bild unter Windows) verfügbar.
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 7fb4182c0b5149a9006a30ad34782ad968e16758
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f5465040f7dc0efd90591050ed9953149aca34b0
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38595587"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456438"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Erstellen einer neuen Azure API Management-Dienstinstanz
 
@@ -29,11 +29,13 @@ In dieser Schnellstartanleitung werden die Schritte zum Erstellen einer neuen AP
 
 ![Neue Instanz](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
 
-## <a name="log-in-to-azure"></a>Anmelden bei Azure
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-new-service"></a>Erstellen eines neuen Diensts
+
+![Neue Azure API Management-Instanz](./media/get-started-create-service-instance/00-CreateResource-01.png)
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen** > **Enterprise Integration** > **API Management**.
 
@@ -43,15 +45,16 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
     ![Neue Instanz](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
 
-    | Einstellung      | Empfohlener Wert  | Beschreibung              |
-    | ------------ |  ------- | ---------------------------------|
-    |**Name**|Eindeutiger Name für Ihren API Management-Dienst| Den Namen können Sie später nicht mehr ändern. Der Name des Diensts wird verwendet, um einen Standarddomänennamen in der Form *{Name}.azure-api.net* zu generieren. Wenn Sie einen benutzerdefinierten Domänennamen verwenden möchten, lesen Sie [Configure a custom domain name](configure-custom-domain.md) (Konfigurieren eines benutzerdefinierten Domänennamens). <br/> Der Dienstname wird verwendet, um auf den Dienst und die entsprechende Azure-Ressource zu verweisen.|
-    |**Abonnement**|Ihr Abonnement | Das Abonnement, unter dem diese neue Dienstinstanz erstellt wird. Sie können aus den verschiedenen Azure-Abonnements, auf die Sie Zugriff haben, ein Abonnement auswählen.|
-    |**Ressourcengruppe**|*apimResourceGroup*|Sie können eine neue oder eine vorhandene Ressource auswählen. Eine Ressourcengruppe ist eine Sammlung von Ressourcen mit gleichem Lebenszyklus, gleichen Berechtigungen und gleichen Richtlinien. [Hier](../azure-resource-manager/resource-group-overview.md#resource-groups) erhalten Sie weitere Informationen.|
-    |**Location**|*USA, Westen*|Wählen Sie die geografische Region in Ihrer Nähe aus. Im Dropdownlistenfeld werden nur die verfügbaren Regionen für den API Management-Dienst angezeigt. |
-    |**Name der Organisation**|Der Name Ihrer Organisation|Dieser Name wird an verschiedenen Stellen verwendet, u.a. im Titel des Entwicklerportals und im Absender von Benachrichtigungs-E-Mails.|
-    |**Administrator-E-Mail**|*admin@org.com*|Legen Sie die E-Mail-Adresse fest, an die alle Benachrichtigungen von **API Management** gesendet werden.|
-    |**Preisstufe**|*Entwickler*|Legen Sie den Tarif **Entwickler** fest, um den Dienst zu bewerten. Dieser Tarif ist nicht für die Produktion bestimmt. Weitere Informationen zum Skalieren der API Management-Tarife finden Sie unter [Upgrade and scale an API Management instance](upgrade-and-scale.md) (Upgraden und Skalieren einer API Management-Instanz).|
+    | Einstellung                 | Empfohlener Wert                               | Beschreibung                                                                                                                                                                                                                                                                                                                         |
+|-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**                | Eindeutiger Name für Ihren API Management-Dienst | Den Namen können Sie später nicht mehr ändern. Der Name des Diensts wird verwendet, um einen Standarddomänennamen in der Form *{Name}.azure-api.net* zu generieren. Wenn Sie einen benutzerdefinierten Domänennamen verwenden möchten, lesen Sie [Configure a custom domain name](configure-custom-domain.md) (Konfigurieren eines benutzerdefinierten Domänennamens). <br/> Der Dienstname wird verwendet, um auf den Dienst und die entsprechende Azure-Ressource zu verweisen. |
+| **Abonnement**        | Ihr Abonnement                             | Das Abonnement, unter dem diese neue Dienstinstanz erstellt wird. Sie können aus den verschiedenen Azure-Abonnements, auf die Sie Zugriff haben, ein Abonnement auswählen.                                                                                                                                                            |
+| **Ressourcengruppe**      | *apimResourceGroup*                           | Sie können eine neue oder eine vorhandene Ressource auswählen. Eine Ressourcengruppe ist eine Sammlung von Ressourcen mit gleichem Lebenszyklus, gleichen Berechtigungen und gleichen Richtlinien. [Hier](../azure-resource-manager/resource-group-overview.md#resource-groups)erhalten Sie weitere Informationen.                                                                                                  |
+| **Location**            | *USA, Westen*                                    | Wählen Sie die geografische Region in Ihrer Nähe aus. Im Dropdownlistenfeld werden nur die verfügbaren Regionen für den API Management-Dienst angezeigt.                                                                                                                                                                                                          |
+| **Name der Organisation**   | Der Name Ihrer Organisation                 | Dieser Name wird an verschiedenen Stellen verwendet, u.a. im Titel des Entwicklerportals und im Absender von Benachrichtigungs-E-Mails.                                                                                                                                                                                                             |
+| **Administrator-E-Mail** | *admin@org.com*                               | Legen Sie die E-Mail-Adresse fest, an die alle Benachrichtigungen von **API Management** gesendet werden.                                                                                                                                                                                                                                              |
+| **Preisstufe**        | *Developer*                                   | Legen Sie den Tarif **Entwickler** fest, um den Dienst zu bewerten. Dieser Tarif ist nicht für die Produktion bestimmt. Weitere Informationen zum Skalieren der API Management-Tarife finden Sie unter [Upgrade and scale an API Management instance](upgrade-and-scale.md) (Upgraden und Skalieren einer API Management-Instanz).                                                                                                                                    |
+
 3. Wählen Sie **Erstellen**.
 
     > [!TIP]
@@ -63,13 +66,18 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 Wenn die Ressourcengruppe und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit den folgenden Schritten entfernen:
 
+1. Wählen Sie im Azure-Portal **Alle Dienste** aus.
+2. Geben Sie `resource groups` in das Suchfeld ein, und klicken Sie auf das Ergebnis.
 
-1. Klicken Sie im Azure-Portal auf ![Pfeil](./media/get-started-create-service-instance/arrow.png)zu erstellen und zu verwalten.
-2. Klicken Sie auf **Ressourcengruppen**.
-3. Suchen Sie Ihre Ressourcengruppe.
-4. Klicken Sie auf „. zu erstellen und zu verwalten. .“ , und löschen Sie die Gruppe.
+    ![Ressourcengruppennavigation](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 
-![cleanup](./media/get-started-create-service-instance/cleanup.png)
+3. Suchen Sie nach Ihrer Ressourcengruppe, und klicken Sie darauf.
+4. Klicken Sie auf **Ressourcengruppe löschen**.
+
+    ![Ressourcengruppennavigation](./media/get-started-create-service-instance/00-DeleteResource-02.png)
+
+5. Bestätigen Sie den Löschvorgang, indem Sie den Namen Ihrer Ressourcengruppe eingeben.
+6. Klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

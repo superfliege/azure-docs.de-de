@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 787fdea047f9e7d77ca0a156f1c41fa50fd2fa48
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4ed816b117d11dd38e6a8ea5191171b812db0f1c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801470"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023201"
 ---
 # <a name="what-is-bing-news-search"></a>Worum handelt es sich bei der Bing-News-Suche?
 
@@ -265,7 +265,7 @@ Wenn es andere Artikel gibt, die sich auf einen Nachrichtenartikel beziehen, kan
 
 Der Artikel [Erstellen Ihrer ersten Anforderung](./quickstart.md) ermöglicht einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung.
 
-Machen Sie sich mit der Referenz für die [Bing-News-Suche-API v7] (https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) vertraut. Die Referenz enthält die Liste mit den Endpunkten, Headern und Abfrageparametern, die Sie zum Anfordern von Suchergebnissen verwenden können. Darüber hinaus finden Sie dort Definitionen der Antwortobjekte.
+Machen Sie sich mit der Referenz für die [Bing-News-Suche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) vertraut. Die Referenz enthält die Liste mit den Endpunkten, Headern und Abfrageparametern, die Sie zum Anfordern von Suchergebnissen verwenden können. Darüber hinaus finden Sie dort Definitionen der Antwortobjekte.
 
 Informationen zur Verbesserung der Benutzerfreundlichkeit für das Suchfeld finden Sie unter [Bing-Vorschlagssuche-API](../bing-autosuggest/get-suggested-search-terms.md). Während ein Benutzer den Abfragebegriff eingibt, können Sie diese API aufrufen, um relevante Abfragebegriffe zu erhalten, die von anderen Benutzern verwendet wurden.
 

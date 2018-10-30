@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bd41244192efa1333bc90bec8c00f38aaaa7f612
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 446d9ead47e9d9380a608933ced3793e99241622
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714988"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026329"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
 
@@ -33,7 +33,7 @@ In diesem Tutorial wird veranschaulicht, wie lokale VMs und physische Server in 
 Dies ist das dritte Tutorial in einer Reihe. In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben:
 
 1. [Vorbereiten von Azure](tutorial-prepare-azure.md)
-2. Bereiten Sie lokale [VMware](vmware-azure-tutorial-prepare-on-premises.md)- oder [Hyper-V]-Server (hyper-v-prepare-on-premises-tutorial.md) vor.
+2. Bereiten Sie lokale [VMware](vmware-azure-tutorial-prepare-on-premises.md)- oder [Hyper-V](hyper-v-prepare-on-premises-tutorial.md)-Server vor.
 
 Bevor Sie beginnen, empfiehlt sich eine Überprüfung der [VMware](vmware-azure-architecture.md)- oder [Hyper-V](hyper-v-azure-architecture.md)-Architektur für die Notfallwiederherstellung.
 
@@ -138,8 +138,8 @@ Einige Schritte können im Rahmen des Migrationsvorgangs mithilfe der integriert
     - Wenn Sie Hyper-V-VMs zu Azure migrieren, installieren Sie nach der Migration den Azure-VM-Agent auf der Azure-VM.
 - Entfernen Sie manuell alle Site Recovery-Anbieter/-Agents von der VM. Wenn Sie VMware-VMs oder physische Server migrieren [deinstallieren Sie den Mobility Service von der Azure-VM][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer].
 - Beachten Sie zur Steigerung der Resilienz Folgendes:
-    - Schützen Sie Daten, indem Sie Azure-VMs mit dem Azure Backup-Dienst sichern. [Weitere Informationen]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)
-    - Sorgen Sie für die kontinuierliche Ausführung und Verfügbarkeit von Workloads, indem Sie Azure-VMs mithilfe von Site Recovery in eine sekundäre Region replizieren. [Weitere Informationen](azure-to-azure-quickstart.md)
+    - Schützen Sie Daten, indem Sie Azure-VMs mit dem Azure Backup-Dienst sichern. [Weitere Informationen]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
+    - Sorgen Sie für die kontinuierliche Ausführung und Verfügbarkeit von Workloads, indem Sie Azure-VMs mithilfe von Site Recovery in eine sekundäre Region replizieren. [Weitere Informationen](azure-to-azure-quickstart.md).
 - Beachten Sie zur Steigerung der Sicherheit Folgendes:
     - Sperren und beschränken Sie den Zugriff von eingehendem Datenverkehr mit der [Just-in-Time-Verwaltung]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time) im Azure Security Center.
     - Beschränken Sie den Netzwerkdatenverkehr mithilfe von [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview) auf Verwaltungsendpunkte.

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 17f06a08388720c4483ef1c187edf20ec8359121
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 50f5662fa574b512ab607e17dbdfcf1861e2f5c6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386382"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954908"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Tutorial: Anbieten hoch verfügbarer SQL-Datenbanken
 
@@ -63,30 +63,28 @@ Mit den Schritten in diesem Abschnitt stellen Sie mithilfe der [Azure Stack-Schn
 - Eine VM (Windows Server 2016), die als Dateifreigabenzeuge für den Cluster konfiguriert ist.
 - Eine Verfügbarkeitsgruppe, die die VMs für SQL und den Dateifreigabenzeugen enthält.  
 
-1. Melden Sie sich beim Verwaltungsportal an:
-    - Bei einer integrierten Systembereitstellung variiert die Portaladresse basierend auf der Region und dem externen Domänennamen Ihrer Lösung. Sie weist das Format https://adminportal.&lt;*Region*&gt;.&lt;*FQDN*&gt; auf.
-    - Wenn Sie das Azure Stack Development Kit (ASDK) verwenden, lautet die Benutzerportaladresse [https://adminportal.local.azurestack.external](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Klicken Sie auf **\+** **Ressource erstellen** > **Benutzerdefiniert** und dann auf **Vorlagenbereitstellung**.
 
-   ![Benutzerdefinierte Vorlagenbereitstellung](media/azure-stack-tutorial-sqlrp/custom-deployment.png)
+   ![Benutzerdefinierte Vorlagenbereitstellung](media/azure-stack-tutorial-sqlrp/1.png)
 
 
 3. Klicken Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** auf **Vorlage bearbeiten** > **Schnellstartvorlage**, und wählen Sie dann aus der Dropdownliste der verfügbaren benutzerdefinierten Vorlagen die Vorlage **sql-2016-alwayson** aus. Klicken Sie auf **OK** und dann auf **Speichern**.
 
-   ![Auswählen der Schnellstartvorlage](./media/azure-stack-tutorial-sqlrp/quickstart-template.png)
-
+   [![](media/azure-stack-tutorial-sqlrp/2-sm.PNG "Auswählen der Schnellstartvorlage")](media/azure-stack-tutorial-sqlrp/2-lg.PNG#lightbox)
 
 4. Klicken Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** auf **Parameter bearbeiten**, und sehen Sie sich die Standardwerte an. Ändern Sie die Werte nach Bedarf, um alle erforderlichen Parameterinformationen anzugeben, und klicken Sie dann auf **OK**.<br><br> Mindestangaben:
 
     - Geben Sie komplexe Kennwörter für die Parameter ADMINPASSWORD, SQLSERVERSERVICEACCOUNTPASSWORD und SQLAUTHPASSWORD an.
     - Geben Sie das DNS-Suffix für Reverse-Lookups für den Parameter DNSSUFFIX in Kleinbuchstaben ein (**azurestack.external** bei ASDK-Installationen).
     
-    ![Benutzerdefinierte Bereitstellungsparameter](./media/azure-stack-tutorial-sqlrp/edit-parameters.png)
+   [![](media/azure-stack-tutorial-sqlrp/3-sm.PNG "Bearbeiten von benutzerdefinierten Bereitstellungsparametern")](media/azure-stack-tutorial-sqlrp/3-lg.PNG#lightbox)
 
 5. Wählen Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** das gewünschte Abonnement aus. Erstellen Sie dann eine neue Ressourcengruppe für die benutzerdefinierte Bereitstellung, oder wählen Sie eine vorhandene Ressourcengruppe aus.<br><br> Wählen Sie als Nächstes den Standort der Ressourcengruppe (**lokal** bei ASDK-Installationen), und klicken Sie auf **Erstellen**. Die Einstellungen für die benutzerdefinierte Bereitstellung werden überprüft, und dann wird die Bereitstellung gestartet.
 
-    ![Benutzerdefinierte Bereitstellungsparameter](./media/azure-stack-tutorial-sqlrp/create-deployment.png)
+    [![](media/azure-stack-tutorial-sqlrp/4-sm.PNG "Erstellen einer benutzerdefinierten Bereitstellung")](media/azure-stack-tutorial-sqlrp/4-lg.PNG#lightbox)
 
 
 6. Klicken Sie im Verwaltungsportal auf **Ressourcengruppen** und dann auf den Namen der Ressourcengruppe, die Sie für die benutzerdefinierte Bereitstellung erstellt haben (in diesem Beispiel: **resource-group**). Überprüfen Sie den Status der Bereitstellung, um sicherzustellen, dass alle Bereitstellungen erfolgreich abgeschlossen wurden.<br><br>Überprüfen Sie danach die Ressourcengruppenelemente, und wählen Sie das Element **SQLPIPsql\<Ressourcengruppenname\>** für die öffentliche IP-Adresse aus. Notieren Sie sich die öffentliche IP-Adresse und den vollqualifizierten Domänennamen (FQDN) der öffentlichen IP-Adresse des Lastenausgleichsmoduls. Diese Informationen müssen Sie an einen Azure Stack-Bediener weitergeben, damit dieser einen SQL-Hostserver mit dieser SQL-Always On-Verfügbarkeitsgruppe erstellen kann.
@@ -94,16 +92,16 @@ Mit den Schritten in diesem Abschnitt stellen Sie mithilfe der [Azure Stack-Schn
    > [!NOTE]
    > Die Vorlagenbereitstellung dauert mehrere Stunden.
 
-   ![Benutzerdefinierte Bereitstellungsparameter](./media/azure-stack-tutorial-sqlrp/deployment-complete.png)
+   ![Benutzerdefinierte Bereitstellung abgeschlossen](./media/azure-stack-tutorial-sqlrp/5.png)
 
 ### <a name="enable-automatic-seeding"></a>Aktivieren des automatischen Seedings
 Nachdem die Vorlage erfolgreich bereitgestellt und die SQL-Always On-Verfügbarkeitsgruppe damit erstellt wurde, müssen Sie in jeder SQL Server-Instanz in der Verfügbarkeitsgruppe das [automatische Seeding](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) aktivieren. 
 
 Wenn Sie eine Verfügbarkeitsgruppe mit automatischem Seeding erstellen, erstellt SQL Server automatisch und ohne jegliches manuelles Eingreifen die sekundären Replikate für jede Datenbank in der Gruppe, um die Hochverfügbarkeit der Always On-Datenbanken sicherzustellen.
 
-Verwenden Sie diese SQL-Befehle, um das automatische Seeding für die Always On-Verfügbarkeitsgruppe zu konfigurieren.
+Verwenden Sie diese SQL-Befehle, um das automatische Seeding für die Always On-Verfügbarkeitsgruppe zu konfigurieren. Ersetzen Sie je nach Bedarf \<InstanceName\> durch den Namen der primären SQL Server-Instanz und „<availability_group_name>“ durch den Namen der Always On-Verfügbarkeitsgruppe. 
 
-Auf der primären SQL Server-Instanz (ersetzen Sie <InstanceName> durch den Namen der primären SQL Server-Instanz):
+Auf der primären SQL Server-Instanz:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
@@ -114,7 +112,7 @@ Auf der primären SQL Server-Instanz (ersetzen Sie <InstanceName> durch den Name
 
 >  ![Skript für die primäre SQL Server-Instanz](./media/azure-stack-tutorial-sqlrp/sql1.png)
 
-Auf den sekundären SQL Server-Instanzen (ersetzen Sie <availability_group_name> durch den Namen der Always On-Verfügbarkeitsgruppe):
+Auf sekundären SQL Server-Instanzen:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
@@ -156,9 +154,8 @@ Nachdem die SQL-Always On-Verfügbarkeitsgruppe durch einen Azure Stack-Bediener
 > [!NOTE]
 > Führen Sie diese Schritte als Mandantenbenutzer im Azure Stack-Benutzerportal mit einem Abonnement aus, das SQL Server-Funktionen (Microsoft.SQLAdapter-Dienst) bereitstellt.
 
-1. Melden Sie sich beim Benutzerportal an:
-    - Bei einer integrierten Systembereitstellung variiert die Portaladresse basierend auf der Region und dem externen Domänennamen Ihrer Lösung. Sie weist das Format https://portal.&lt;*Region*&gt;.&lt;*FQDN*&gt; auf.
-    - Wenn Sie das Azure Stack Development Kit (ASDK) verwenden, lautet die Benutzerportaladresse [https://portal.local.azurestack.external](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Klicken Sie auf **\+** **Ressource erstellen** > **Daten \+ Speicher** und dann auf **SQL-Datenbank**.<br><br>Geben Sie die erforderlichen Datenbankeigenschaften – Name, Sortierung, maximale Größe – sowie das Abonnement, die Ressourcengruppe und den Standort für die Bereitstellung an. 
 

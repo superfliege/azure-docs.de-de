@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-Skriptbeispiel – Erstellen einer Linux-VM mit OMS-Überwachung | Microsoft-Dokumentation
-description: Azure CLI-Skriptbeispiel – Erstellen einer Linux-VM mit OMS-Überwachung
+title: Azure CLI-Skriptbeispiel – Erstellen einer Linux-VM mit Azure-Überwachung | Microsoft-Dokumentation
+description: Azure CLI-Skriptbeispiel – Erstellen einer Linux-VM mit Azure-Überwachung
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 92bc86a1db4aca563a089e20c3e19557517f2d9b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: cedb8d9c2ef4acd9d7a896153bce6be790ed83a3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932618"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407963"
 ---
-# <a name="monitor-a-vm-with-operations-management-suite"></a>Überwachen einer VM mit der Operations Management Suite
+# <a name="monitor-a-vm-with-azure-monitoring"></a>Überwachen einer VM mit Azure-Überwachung
 
-Dieses Skript erstellt eine Azure-VM, installiert den OMS-Agent (Operations Management Suite) und registriert das System bei einem OMS-Arbeitsbereich. Nach Ausführung des Skripts wird der virtuelle Computer in der OMS-Konsole angezeigt.
+Mit diesem Skript wird ein virtueller Azure-Computer erstellt, der Log Analytics-Agent installiert und das System in einem Log Analytics-Arbeitsbereich registriert. Nach Ausführung des Skripts wird der virtuelle Computer in der Konsole angezeigt.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -51,7 +51,7 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Erstellt den virtuellen Computer und verbindet diesen mit der Netzwerkkarte, dem virtuellen Netzwerk, dem Subnetz und der NSG. Dieser Befehl legt außerdem das zu verwendende VM-Image und die Administratoranmeldeinformationen fest.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Führt einen VM-Erweiterungs-Agent für einen virtuellen Computer aus. In diesem Fall wird die Operations Management Suite-Agent-Erweiterung verwendet, um den OMS-Agent zu installieren und die VM in einem OMS-Arbeitsbereich zu registrieren. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Führt einen VM-Erweiterungs-Agent für einen virtuellen Computer aus. In diesem Fall wird die Log Analytics-Agent-Erweiterung verwendet, um den Log Analytics-Agent zu installieren und die VM in einem Log Analytics-Arbeitsbereich zu registrieren. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

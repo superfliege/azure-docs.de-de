@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen eines Bildklassifizierungsprojekts – Custom Vision Service, Python'
+title: 'Tutorial: Erstellen eines Bildklassifizierungsprojekts mit dem Custom Vision SDK für Python'
 titlesuffix: Azure Cognitive Services
 description: Erstellen Sie ein Projekt, fügen Sie Kategorien hinzu, laden Sie Bilder hoch, trainieren Sie Ihr Projekt, und machen Sie eine Vorhersage, die den Standardendpunkt verwendet.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 14b805a60637a889698132e169d5a41670a8bce0
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 96125ba1c54f742bb9ddf32a1588173217be0766
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363376"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953111"
 ---
-# <a name="tutorial-create-an-image-classification-project-using-the-custom-vision-service-with-python"></a>Tutorial: Erstellen eines Bildklassifizierungsprojekts mit Custom Vision Service und Python
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-python"></a>Tutorial: Erstellen eines Bildklassifizierungsprojekts mit dem Custom Vision SDK für Python
 
 Erfahren Sie, wie ein Projekt zur Bildklassifizierung mit dem Custom Vision Service und einem einfachen Python-Skript erstellt wird. Nach der Erstellung können Sie Tags hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und Bilder programmgesteuert überprüfen. Verwenden Sie dieses Open-Source-Beispiel als Vorlage zum Erstellen Ihrer eigenen App mithilfe der Custom Vision-API.
 

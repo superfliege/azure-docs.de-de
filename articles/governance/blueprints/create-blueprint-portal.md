@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 7af0d4819d4044f4cccc43cde1cffe7dff7982a7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 6b7ca276f3273faa485d08633061f882493f72f7
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056436"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647271"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definieren und Zuweisen einer Azure-Blaupause im Portal
 
@@ -42,7 +42,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
    ![Erstellen einer Blaupause](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Geben Sie einen **Blaupausenname** wie z.B. „MyBlueprint“ (Buchstaben und Zahlen – bis zu 48 Zeichen, jedoch keine Leerzeichen oder Sonderzeichen) für die Blaupause an, aber lassen Sie die **Blaupausenbeschreibung** vorerst leer.  Klicken Sie im Feld **Speicherort der Definition** auf die Auslassungspunkte rechts, wählen Sie die [Verwaltungsgruppe](../management-groups/overview.md) aus, in der Sie die Blaupause speichern möchten, und klicken Sie auf **Auswählen**.
+1. Geben Sie einen **Blaupausenname** wie z.B. „MyBlueprint“ (Buchstaben und Zahlen – bis zu 48 Zeichen, jedoch keine Leerzeichen oder Sonderzeichen) für die Blaupause an, aber lassen Sie die **Blaupausenbeschreibung** vorerst leer.  Klicken Sie im Feld **Speicherort der Definition** auf die Auslassungspunkte auf der rechten Seite, wählen Sie die [Verwaltungsgruppe](../management-groups/overview.md) aus, in der Sie die Blaupause speichern möchten, und klicken Sie auf **Auswählen**.
 
    > [!NOTE]
    > Blaupausendefinitionen können nur in Verwaltungsgruppen gespeichert werden. Führen Sie zum Erstellen Ihrer ersten Verwaltungsgruppe [diese Schritte](../management-groups/create.md) aus.
@@ -111,7 +111,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
    ![Artefakt – Resource Manager-Vorlage](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. Ihre abgeschlossene Blaupause sollte wie folgt aussehen. Beachten Sie, dass jedes Artefakt „_x_ von _y_ Parametern aufgefüllt“ unter der Spalte _Parameter_ aufweist. Die **dynamischen Parameter** werden während jeder Zuweisung der Blaupause festgelegt, und der einzelne **statische Parameter** der Rollenzuweisung wurde bereits konfiguriert.
+1. Ihre abgeschlossene Blaupause sollte wie folgt aussehen. Beachten Sie, dass jedes Artefakt „_x_ von _y_ Parametern aufgefüllt“ unter der Spalte _Parameter_ aufweist. Die **dynamischen Parameter** werden jeweils beim Zuweisen der Blaupause festgelegt.
 
    ![Abgeschlossene Blaupause](./media/create-blueprint-portal/completed-blueprint.png)
 
@@ -226,7 +226,7 @@ Blaupausen können aus einem Abonnement entfernt werden, wenn sie nicht mehr ben
 
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./concepts/lifecycle.md).
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./concepts/parameters.md) vertraut.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./concepts/sequencing-order.md) anpassen.
-- Erfahren Sie, wie Sie[Ressourcen in Blaupausen sperren](./concepts/resource-locking.md).
+- Erfahren Sie, wie Sie die [Abfolge von Blueprints](./concepts/sequencing-order.md) anpassen können.
+- Erfahren Sie, wie Sie [Ressourcen in Blueprints sperren](./concepts/resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](./how-to/update-existing-assignments.md).
-- Beheben Sie bei der Blaupausenzuweisung auftretende Probleme mithilfe der [allgemeinen Lösungsanleitung](./troubleshoot/general.md).
+- Beheben Sie Probleme bei der Blueprintzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](./troubleshoot/general.md).

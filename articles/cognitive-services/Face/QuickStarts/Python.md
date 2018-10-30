@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Gesichtern in einem Bild – Gesichtserkennungs-API, Python'
+title: 'Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Python'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart verwenden Sie die Gesichtserkennungs-API mit Python, um Gesichter in einem Bild zu erkennen.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: pafarley
-ms.openlocfilehash: 581c2a7d4508833647d4dbb9861000fddd75cde8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 76a9260d534057e3a03f8c8f1d7420329713ea80
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339580"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957274"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-python"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit Python
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-python"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Python
 
 In diesem Schnellstart verwenden Sie die Gesichtserkennungs-API, um menschliche Gesichter in einem Remotebild zu erkennen. Die erkannten Gesichter werden mit Rechtecken gekennzeichnet sowie mit dem Geschlecht und Alter der jeweiligen Person überlagert. Die Syntax für ein lokales Bild finden Sie unter [Maschinelles Sehen: Analysieren eines lokalen Bildes mit Python](../../Computer-vision/QuickStarts/python-disk.md).
 

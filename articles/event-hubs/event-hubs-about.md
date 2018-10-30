@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: 336756e72c6c07f52101ddd0cd99a6ef9744d3c3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 5493819efb32fa594cf27695b2ab5d1273225756
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351760"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429892"
 ---
 # <a name="what-is-azure-event-hubs"></a>Was ist Azure Event Hubs?
 
@@ -81,8 +81,13 @@ Die folgende Abbildung zeigt die Datenstromverarbeitungsarchitektur von Event Hu
 
 In den folgenden Artikeln finden Sie Informationen zu den ersten Schritten mit Event Hubs:
 
-* [Verarbeiten von Ereignisdatenströmen](event-hubs-quickstart-portal.md)
-* [Event Hubs-Features im Überblick](event-hubs-features.md)
-* [Häufig gestellte Fragen](event-hubs-faq.md)
+1. **Erstellen eines Event Hubs**: [Azure-Portal](event-hubs-create.md), [Azure CLI](event-hubs-quickstart-cli.md), [Azure PowerShell](event-hubs-quickstart-powershell.md), [Azure Resource Manager-Vorlage](event-hubs-resource-manager-namespace-event-hub.md)
+2. **Senden von Ereignissen an einen Event Hub**: [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [Node.js](event-hubs-node-get-started-send.md), [Go](event-hubs-go-get-started-send.md), [C](event-hubs-c-getstarted-send.md)
+3. **Empfangen von Ereignissen von einem Event Hub**: [.NET Standard](event-hubs-dotnet-standard-getstarted-receive-eph.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [Node.js](event-hubs-node-get-started-receive.md), [Go](event-hubs-go-get-started-receive-eph.md), [Apache Storm](event-hubs-storm-getstarted-receive.md)   
+
+Weitere Informationen zu Event Hubs finden Sie in den folgenden Artikeln:
+
+- [Event Hubs-Features im Überblick](event-hubs-features.md)
+- [Häufig gestellte Fragen zu Event Hubs](event-hubs-faq.md)
 
 

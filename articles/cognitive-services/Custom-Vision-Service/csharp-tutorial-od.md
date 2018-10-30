@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen eines Objekterkennungsprojekts in C# – Custom Vision Service'
+title: 'Tutorial: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für C# – Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Erstellen Sie ein Projekt, fügen Sie Tags hinzu, laden Sie Bilder hoch, und erstellen Sie eine Vorhersage mit dem Standardendpunkt.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: areddish
-ms.openlocfilehash: d04fb86abbc0f174e895c166d97fc5467831206f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 222a17f1d39bc52d1e5ff34e421d0203d80dd1bd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366912"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958500"
 ---
-# <a name="tutorial-use-custom-vision-api-to-build-an-object-detection-project-in-c"></a>Tutorial: Verwenden der Custom Vision-API zum Erstellen eines Objekterkennungsprojekts in C#
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-c"></a>Tutorial: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für C#
 
 Erfahren Sie, wie Sie eine grundlegende Windows-Anwendung verwenden können, die die Custom Vision-API zum Erstellen eines Objekterkennungsprojekts verwendet. Nachdem es erstellt wurde, können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Open-Source-Beispiel als Vorlage zum Erstellen Ihrer eigenen App für Windows, indem Sie die Custom Vision-API verwenden.
 

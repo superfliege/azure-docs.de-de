@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 86b1cc50128cd74f4a11ff599c1ca26ce5ae5117
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 6b8b6994b810db939a5e690d16d3c5d2f1a0825f
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067839"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945398"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Offlinemigration von SQL Server zu Azure SQL-Datenbank mit DMS
 Mit Azure Database Migration Service können Sie die Datenbanken von einer lokalen SQL Server-Instanz zu [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/) migrieren. In diesem Tutorial migrieren Sie die Datenbank **Adventureworks2012**, die in einer lokalen Instanz von SQL Server 2016 (oder höher) wiederhergestellt wurde, mithilfe von Azure Database Migration Service zu einer Azure SQL-Datenbank.
@@ -30,6 +30,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Ausführen der Migration
 > * Überwachen der Migration
 > * Laden Sie einen Migrationsbericht herunter.
+
+[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
+
+In diesem Artikel wird eine Offlinemigration von SQL Server zu Azure SQL-Datenbank beschrieben. Informationen zur Onlinemigration finden Sie unter [Onlinemigration von SQL Server zu Azure SQL-Datenbank mit DMS](tutorial-sql-server-azure-sql-online.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Tutorial benötigen Sie Folgendes:

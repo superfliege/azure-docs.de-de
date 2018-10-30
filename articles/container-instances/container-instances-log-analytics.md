@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 62457fe5b0336cb6ae6ac4fc63f4884ed14cf9d3
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: dc6aab03ec3e0ec47026c7d435ea538612c7bffb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856036"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405598"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Protokollierung für Containerinstanzen mit Azure Log Analytics
 
@@ -100,7 +100,7 @@ Sie sollten kurz nach Ausgabe des Befehls eine Antwort von Azure mit den Bereits
 
 Nach der Bereitstellung der Containergruppe kann es bis zu 10 Minuten dauern, bis die ersten Protokolleinträge im Azure-Portal angezeigt werden. Öffnen Sie zum Anzeigen der Protokolle der Containergruppe Ihren Log Analytics-Arbeitsbereich, und führen Sie die folgenden Schritte aus:
 
-1. Wählen Sie in der Übersicht **OMS-Arbeitsbereich** die Option **Protokollsuche** aus.
+1. Wählen Sie in der Übersicht **OMS-Arbeitsbereich** die Option **Protokollsuche** aus. OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.  
 1. Klicken Sie unter **Weitere Abfragen zum Ausprobieren** auf den Link **Alle gesammelten Daten**.
 
 Von der Abfrage `search *` sollten mehrere Ergebnisse angezeigt werden. Falls anfangs keine Ergebnisse angezeigt werden, warten Sie einige Minuten, und klicken Sie dann auf die Schaltfläche **AUSFÜHREN**, um die Abfrage erneut auszuführen. Standardmäßig werden Protokolleinträge als Listenansicht angezeigt. Wählen Sie **Tabelle**, um die Protokolleinträge in einem komprimierten Format anzuzeigen. Sie können dann eine Zeile erweitern, um den Inhalt eines einzelnen Protokolleintrags anzuzeigen.

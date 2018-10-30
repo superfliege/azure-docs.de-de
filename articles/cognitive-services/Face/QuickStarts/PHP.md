@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Gesichtern in einem Bild – Gesichtserkennungs-API, PHP'
+title: 'Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und PHP'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart verwenden Sie die Gesichtserkennungs-API mit PHP, um Gesichter in einem Bild zu erkennen.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 62434efdaf161463de7492535a49cf879da32e43
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: be322cafc381dbc6e8b7cf03cd65e1dd5f9c9ad4
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339660"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954900"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-php"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit PHP
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und PHP
 
 In dieser Schnellstartanleitung führen Sie die Gesichtserkennung für menschliche Gesichter in einem Bild durch, indem Sie die Gesichtserkennungs-API verwenden.
 

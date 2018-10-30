@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a95675d5e37adec5fb1f1542daad329484a2a4c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1d38b563e2a272acdbaa4ea0c2a169a04e798d12
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092609"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649396"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -217,7 +217,7 @@ A.  Nach Abschluss des Kopierens der Daten in Azure werden die Daten gemäß den
 ## <a name="audit-report"></a>Überwachungsbericht
 
 ### <a name="how-does-azure-data-box-service-help-support-customers-chain-of-custody-procedure"></a>Wie unterstützt der Azure Data Box-Dienst für Kunden das Verfahren zur Rückverfolgbarkeit?
-A.  Der Azure Data Box-Dienst stellt nativ Berichte zur Verfügung, die Sie für Ihre Dokumentation zur Rückverfolgbarkeit verwenden können. Die Prüf- und Kopierprotokolle sind in Ihrem Speicherkonto in Azure verfügbar, und der Auftragsverlauf kann im Azure-Portal heruntergeladen werden, nachdem der Auftrag ausgeführt wurde.
+A.  Der Azure Data Box-Dienst stellt nativ Berichte zur Verfügung, die Sie für Ihre Dokumentation zur Rückverfolgbarkeit verwenden können. Die Prüf- und Kopierprotokolle sind in Ihrem Speicherkonto in Azure verfügbar, und Sie können im Azure-Portal [den Auftragsverlauf herunterladen](data-box-portal-admin.md#download-order-history), nachdem der Auftrag ausgeführt wurde.
 
 
 ### <a name="what-type-of-reporting-is-available-to-support-chain-of-custody"></a>Welche Art der Berichterstellung ist zur Unterstützung von Rückverfolgbarkeit verfügbar?
@@ -230,7 +230,7 @@ A.  Die folgende Art der Berichterstellung ist zur Unterstützung von Rückverfo
 - Bereinigung des Data Box-Geräts (gemäß NIST 800-88R1-Standards) nach Kopieren der Daten in Ihr Azure Storage-Konto
 
 ### <a name="are-the-carrier-tracking-logs--from-upsdhl-available"></a>Stehen die Sendungsverfolgungsprotokolle des Zustelldiensts (UPS/DHL) zur Verfügung? 
-A.  Die Sendungsverfolgungsprotokolle des Zustelldiensts werden im Bericht mit dem Data Box-Überwachungsprotokoll erfasst. Dieser Bericht steht Ihnen zur Verfügung, nachdem das Gerät an das Azure-Rechenzentrum zurückgesendet wurde und die Daten auf den Datenträgern des Geräts bereinigt wurden. Bei dringendem Bedarf können Sie auch direkt die Website des Zustelldiensts besuchen, die Sendungsverfolgungsnummer eingeben und die Sendungsverfolgungsinformationen abrufen.
+A.  Die Sendungsverfolgungsprotokolle des Zustelldiensts werden im Data Box-Auftragsverlauf erfasst. Dieser Bericht steht Ihnen zur Verfügung, nachdem das Gerät an das Azure-Rechenzentrum zurückgesendet wurde und die Daten auf den Datenträgern des Geräts bereinigt wurden. Bei dringendem Bedarf können Sie auch direkt die Website des Zustelldiensts besuchen, die Sendungsverfolgungsnummer eingeben und die Sendungsverfolgungsinformationen abrufen.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Kann ich die Data Box selbst zum Azure-Rechenzentrum transportieren? 
 A.  Nein. Derzeit nimmt das Azure-Rechenzentrum die Zustellung der Data Box von Kunden oder von anderen Zustelldiensten als UPS/DHL nicht an.

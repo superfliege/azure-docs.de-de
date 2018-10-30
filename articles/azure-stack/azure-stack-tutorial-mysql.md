@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: ea3e6c2e616f2618200c1e3904786abd72bbd75d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 84aaa5534c629554074544b4bb56ae8da8825397
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376804"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986450"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Tutorial: Anbieten hoch verfügbarer MySQL-Datenbanken
 
@@ -65,16 +65,15 @@ Führen Sie die Schritte in diesem Abschnitt aus, um den MySQL Server-Cluster mi
 - Eine öffentliche IP-Adresse (für die primäre MySQL-Cluster-VM)
 - Drei Linux-VMs zum Hosten des MySQL-Clusters
 
-1. Melden Sie sich beim Verwaltungsportal an:
-    - Bei einer integrierten Systembereitstellung variiert die Portaladresse basierend auf der Region und dem externen Domänennamen Ihrer Lösung. Sie weist das Format https://adminportal.&lt;*Region*&gt;.&lt;*FQDN*&gt; auf.
-    - Wenn Sie das Azure Stack Development Kit (ASDK) verwenden, lautet die Portaladresse [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Klicken Sie auf **\+** **Ressource erstellen** > **Compute** und dann auf **MySQL with Replication**.
 
-   ![Benutzerdefinierte Vorlagenbereitstellung](media/azure-stack-tutorial-mysqlrp/createcluster1.png)
+   ![Benutzerdefinierte Vorlagenbereitstellung](media/azure-stack-tutorial-mysqlrp/1.png)
 
 3. Geben Sie auf der Seite **Grundlagen** grundlegende Informationen zur Bereitstellung an. Überprüfen Sie die Standardwerte, ändern Sie diese nach Bedarf, und klicken Sie auf **OK**.<br><br>Mindestangaben:
-   - Name der Bereitstellung (Standardwert: mysql).
+   - Name der Bereitstellung (Standardwert: mymysql)
    - Kennwort des Root-Benutzers für die Anwendung. Geben Sie ein aus 12 Zeichen bestehendes alphanumerisches Kennwort **ohne Sonderzeichen** ein.
    - Name der Anwendungsdatenbank (Standardwert: bitnami).
    - Anzahl der zu erstellenden MySQL-Datenbankreplikat-VMs (Standardwert: 2).
@@ -82,22 +81,22 @@ Führen Sie die Schritte in diesem Abschnitt aus, um den MySQL Server-Cluster mi
    - Wählen Sie die zu verwendende Ressourcengruppe aus, oder erstellen Sie eine neue.
    - Wählen Sie den Standort aus (Standardwert: „lokal“ für ASDK).
 
-   ![Grundlagen der Bereitstellung](media/azure-stack-tutorial-mysqlrp/createcluster2.png)
+   [![](media/azure-stack-tutorial-mysqlrp/2-sm.PNG "Grundlagen der Bereitstellung")](media/azure-stack-tutorial-mysqlrp/2-lg.PNG#lightbox)
 
 4. Geben Sie auf dem Blatt **Umgebungskonfiguration** die folgenden Informationen an, und klicken Sie anschließend auf **OK**. 
    - Kennwort oder öffentlicher SSH-Schlüssel für die SSH-Authentifizierung (Secure Shell). Wenn Sie ein Kennwort verwenden, muss dieses Buchstaben und Ziffern enthalten. Sonderzeichen **können** verwendet werden.
    - VM-Größe (Standardwert: D1 v2 Standard-VMs).
    - Datenträgergröße in GB. Klicken Sie auf **OK**.
 
-   ![Umgebungskonfiguration](media/azure-stack-tutorial-mysqlrp/createcluster3.png)
+   [![](media/azure-stack-tutorial-mysqlrp/3-sm.PNG "Umgebungskonfiguration")](media/azure-stack-tutorial-mysqlrp/3-lg.PNG#lightbox)
 
 5. Überprüfen Sie die **Zusammenfassung** der Bereitstellung. Optional können Sie die benutzerdefinierten Vorlagen und Parameter herunterladen. Klicken Sie dann auf **OK**.
 
-   ![Zusammenfassung](media/azure-stack-tutorial-mysqlrp/createcluster4.png)
+   [![](media/azure-stack-tutorial-mysqlrp/4-sm.PNG "Zusammenfassung")](media/azure-stack-tutorial-mysqlrp/4-lg.PNG#lightbox)
 
 6. Klicken Sie auf der Seite **Kaufen** auf **Erstellen**, um die Bereitstellung zu starten.
 
-   ![Kaufen](media/azure-stack-tutorial-mysqlrp/createcluster4.png)
+   ![Kaufen](media/azure-stack-tutorial-mysqlrp/5.png)
 
     > [!NOTE]
     > Die Bereitstellung dauert etwa eine Stunde. Stellen Sie sicher, dass die Bereitstellung abgeschlossen ist und der MySQL-Cluster vollständig konfiguriert wurde, bevor Sie fortfahren. 
@@ -110,11 +109,11 @@ Standardmäßig ist für MySQL kein öffentlicher Zugriff auf den virtuellen Hos
 
 1. Navigieren Sie im Administratorportal zu der Ressourcengruppe, die beim Bereitstellen des MySQL-Clusters erstellt wurde, und wählen Sie die Netzwerksicherheitsgruppe (**default-subnet-sg**) aus:
 
-   ![öffnen](media/azure-stack-tutorial-mysqlrp/nsg1.png)
+   ![öffnen](media/azure-stack-tutorial-mysqlrp/6.png)
 
 2. Wählen Sie **Eingangssicherheitsregeln** aus, und klicken Sie auf **Hinzufügen**.<br><br>Geben Sie **3306** als **Zielportbereich** ein, und geben Sie optional eine Beschreibung in die Felder **Name** und **Beschreibung** ein. Klicken Sie auf „Hinzufügen“, um das Dialogfeld für die Eingangssicherheitsregel zu schließen.
 
-   ![öffnen](media/azure-stack-tutorial-mysqlrp/nsg2.png)
+   ![öffnen](media/azure-stack-tutorial-mysqlrp/7.png)
 
 ### <a name="configure-external-access-to-the-mysql-cluster"></a>Konfigurieren des externen Zugriffs auf den MySQL-Cluster
 Bevor der MySQL-Cluster als Azure Stack-MySQL Server-Host hinzugefügt werden kann, muss der externe Zugriff aktiviert werden.
@@ -167,9 +166,8 @@ Nachdem der MySQL-Cluster durch einen Azure Stack-Bediener erstellt, konfigurier
 > [!NOTE]
 > Führen Sie diese Schritte als Mandantenbenutzer im Azure Stack-Benutzerportal mit einem Abonnement aus, das MySQL Server-Funktionen (Microsoft.MySQLAdapter-Dienst) bereitstellt.
 
-1. Melden Sie sich beim Benutzerportal an:
-    - Bei einer integrierten Systembereitstellung variiert die Portaladresse basierend auf der Region und dem externen Domänennamen Ihrer Lösung. Sie weist das Format https://portal.&lt;*Region*&gt;.&lt;*FQDN*&gt; auf.
-    - Wenn Sie das Azure Stack Development Kit (ASDK) verwenden, lautet die Benutzerportaladresse [https://portal.local.azurestack.external](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Klicken Sie auf **\+** **Ressource erstellen** > **Daten \+ Speicher** und dann auf **MySQL-Datenbank**.<br><br>Geben Sie die erforderlichen Datenbankeigenschaften – Name, Sortierung – sowie das Abonnement und den Standort für die Bereitstellung an. 
 

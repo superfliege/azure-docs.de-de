@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: ca00a414402c1cfdef55cfbde9291688f091bf77
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095918"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638239"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Vergleichen von Azure Data Factory mit Data Factory Version 1
 In diesem Artikel wird Data Factory mit Data Factory Version 1 verglichen. Eine Einführung in Data Factory finden Sie unter [Einführung in Azure Data Factory](introduction.md). Eine Einführung in Data Factory Version 1 finden Sie unter [Einführung in Azure Data Factory](v1/data-factory-introduction.md). 
@@ -62,7 +62,7 @@ Mit der [ForEach](control-flow-for-each-activity.md)-Aktivität wird eine wieder
 Die [Until](control-flow-until-activity.md)-Aktivität erfüllt die gleiche Funktion wie eine do-until-Schleifenstruktur in Programmiersprachen. Sie führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als `true` ausgewertet wird. In Data Factory können Sie einen Timeoutwert für die Until-Aktivität angeben.  
 
 ### <a name="trigger-based-flows"></a>Triggerbasierte Abläufe
-Pipelines können nach Bedarf oder zeitgesteuert ausgelöst werden. Der Artikel [Pipelineausführung und Trigger in Azure Data Factory](concepts-pipeline-execution-triggers.md) enthält ausführliche Informationen zu Triggern. 
+Pipelines können nach Bedarf (ereignisbasiert, d.h. Blogbeitrag) oder zeitgesteuert ausgelöst werden. Der Artikel [Pipelineausführung und Trigger in Azure Data Factory](concepts-pipeline-execution-triggers.md) enthält ausführliche Informationen zu Triggern. 
 
 ### <a name="invoking-a-pipeline-from-another-pipeline"></a>Aufrufen einer Pipeline über eine andere Pipeline
 Mit der [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md) kann eine Data Factory-Pipeline eine andere Pipeline aufrufen.

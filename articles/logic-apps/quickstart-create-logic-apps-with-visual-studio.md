@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 07/31/2018
-ms.openlocfilehash: b8961edebd80d5f36d844734e3c93a4bd3b1f0cf
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6783c59b354e0eebc7fa6d8f67985b8d7b72c22a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42162132"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645830"
 ---
 # <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen und Automatisieren von Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -148,6 +148,10 @@ Bevor Sie Ihre Logik-App ausführen können, müssen Sie sie aus Visual Studio i
 
    ![Ausgabe des Bereitstellungsstatus](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
 
+   Wenn für die gewählten Connectors eine Eingabe von Ihnen erforderlich ist, wird ggf. im Hintergrund ein PowerShell-Fenster geöffnet, um zur Eingabe der benötigten Kennwörter oder geheimen Schlüssel aufzufordern. Nachdem Sie diese Informationen eingegeben haben, wird die Bereitstellung fortgesetzt.
+   
+   ![Bereitstellung – powershell_window](./media/quickstart-create-logic-apps-with-visual-studio/logic-apps-powershell-window.png)
+   
    Nach Abschluss der Bereitstellung befindet sich Ihre Logik-App im Azure-Portal im Livezustand und prüft den RSS-Feed gemäß Ihrem angegebenen Zeitplan (jede Minute). 
    Falls der RSS-Feed über neue Elemente verfügt, sendet Ihre Logik-App für jedes neue Element eine E-Mail. 
    Andernfalls wartet Ihre Logik mit einer erneuten Prüfung bis zum nächsten Intervall. 

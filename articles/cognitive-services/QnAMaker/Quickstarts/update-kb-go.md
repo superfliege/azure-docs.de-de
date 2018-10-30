@@ -1,25 +1,31 @@
 ---
-title: 'Schnellstart: Go-Update der Wissensdatenbank – QnA Maker'
+title: 'Schnellstart: Aktualisieren einer Wissensdatenbank – REST, Go – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie eine Wissensdatenbank in Go für QnA Maker aktualisieren.
+description: In dieser REST-basierten Schnellstartanleitung wird Schritt für Schritt das programmgesteuerte Aktualisieren des Beispiels für eine QnA Maker-Wissensdatenbank beschrieben. Mit der JSON-Definition, die Sie zum Aktualisieren einer Wissensdatenbank verwenden, können Sie Frage/Antwort-Paare hinzufügen, ändern oder löschen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b447b77eb1fdd9135f7d15a791414d166194b2dd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5275184994dce446a7ca572a049f3860c4782139
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389308"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646880"
 ---
-# <a name="update-a-knowledge-base"></a>Aktualisieren einer Wissensdatenbank
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-go"></a>Schnellstart: Aktualisieren einer Wissensdatenbank in QnA Maker mithilfe von Go
 
-Der folgende Code aktualisiert mithilfe der Methode zum [Aktualisieren](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) eine vorhandene Wissensdatenbank.
+In dieser Schnellstartanleitung wird das programmgesteuerte Aktualisieren einer vorhandenen QnA Maker-Wissensdatenbank Schritt für Schritt beschrieben.  Mit diesem JSON-Code können Sie eine Wissensdatenbank aktualisieren, indem Sie neue Datenquellen hinzufügen oder Datenquellen ändern oder löschen.
+
+Diese API entspricht dem Bearbeiten und anschließenden Verwenden der Schaltfläche **Speichern und trainieren** im QnA Maker-Portal.
+
+In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
+* [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600): Das Modell für die Wissensdatenbank ist im JSON-Code definiert, der im Text der API-Anforderung gesendet wird. 
+* [Abrufen von Vorgangsdetails](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Go-Projekt.
 2. Fügen Sie den unten stehenden Code hinzu.
@@ -191,7 +197,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>Abrufen des Anforderungsstatus
 
-Sie können die Methode für [Vorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) aufrufen, um den Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank zu prüfen. Sie können dem Beispielcode für die Methoden zum [Erstellen](#Create) oder [Aktualisieren](#Update) entnehmen, wie diese Methode verwendet wird.
+Sie können die Methode für [Vorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) aufrufen, um den Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank zu prüfen. Der Beispielcode für die Schnellstartanleitung [Erstellen](create-new-kb-go.md) zeigt, wie diese Methode verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

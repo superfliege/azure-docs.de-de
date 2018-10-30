@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen eines Bildklassifizierungsprojekts – Custom Vision Service, Java'
+title: 'Tutorial: Erstellen eines Bildklassifizierungsprojekts mit dem Custom Vision SDK für Java'
 titlesuffix: Azure Cognitive Services
 description: Erstellen Sie ein Projekt, fügen Sie Kategorien hinzu, laden Sie Bilder hoch, trainieren Sie Ihr Projekt, und machen Sie eine Vorhersage, die den Standardendpunkt verwendet.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 9a7f50e0eb33016d6a2d8f28be047b327135c51f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e302fc580d9c83d269f0deedd051a3ea23bd274e
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367354"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957212"
 ---
-# <a name="tutorial-build-an-image-classification-project-with-java"></a>Tutorial: Erstellen eines Bildklassifizierungsprojekts mit Java
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Tutorial: Erstellen eines Bildklassifizierungsprojekts mit dem Custom Vision SDK für Java
 
-Erfahren Sie, wie Sie ein Projekt zur Bildklassifizierung mit dem Custom Vision Service und Java erstellen. Nach der Erstellung können Sie Tags hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL des Projekts für Vorhersagen abrufen und das Projekt für das programmgesteuerte Testen eines Bilds verwenden. Verwenden Sie dieses Open-Source-Beispiel als Vorlage zum Erstellen Ihrer eigenen App mithilfe der Custom Vision-API.
+Erfahren Sie, wie Sie ein Projekt zur Bildklassifizierung mit dem Custom Vision Service und Java erstellen. Nach der Erstellung können Sie Tags hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und Bilder programmgesteuert überprüfen. Verwenden Sie dieses Open-Source-Beispiel als Vorlage zum Erstellen Ihrer eigenen App mithilfe der Custom Vision-API.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

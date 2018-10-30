@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 10/19/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 4729e08399132243543c6f4e1cadd537d185e9e3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ba77fc4596d9bb245b3cea2538804b1816e9ad14
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166252"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466969"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>Tutorial: Transformieren von Daten mit Azure Data Box Edge (Vorschauversion)
 
 In diesem Tutorial wird beschrieben, wie Sie die Computerolle für Data Box Edge konfigurieren. Nachdem die Computerolle konfiguriert wurde, kann Data Box Edge die Daten vor dem Senden an Azure transformieren.
 
-Dieser Vorgang kann ca. 30 bis 45 Minuten dauern. 
+Dieser Vorgang kann ca. 30 bis 45 Minuten dauern.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -31,7 +31,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Überprüfen der Datentransformation und -übertragung
 
 > [!IMPORTANT]
-> Data Box Edge befindet sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen. 
+> Data Box Edge befindet sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +48,8 @@ Eine ausführliche Anleitung finden Sie unter [Erstellen eines IoT Hubs](https:/
 
 ![Erstellen einer IoT Hub-Ressource](./media/data-box-edge-deploy-configure-compute/create-iothub-resource-1.png)
 
-Beachten Sie Folgendes, wenn die Edge-Computerolle nicht eingerichtet ist: 
+Beachten Sie Folgendes, wenn die Edgecomputing-Rolle nicht eingerichtet ist:
+
 - Die IoT Hub-Ressource verfügt nicht über IoT-Geräte oder IoT Edge-Geräte.
 - Sie können keine lokalen Edge-Freigaben erstellen. Beim Hinzufügen einer Freigabe ist die Option zum Erstellen einer lokalen Freigabe für Edge-Compute nicht aktiviert.
 
@@ -91,12 +92,12 @@ Führen Sie die folgenden Schritte aus, um die Computerolle auf dem Gerät einzu
 
     ![Einrichten einer Computerolle](./media/data-box-edge-deploy-configure-compute/setup-compute-8.png) 
 
-Auf diesem Edge-Gerät sind aber keine benutzerdefinierten Module vorhanden. Sie können diesem Gerät jetzt ein benutzerdefiniertes Modul hinzufügen.
+Auf diesem Edge-Gerät sind aber keine benutzerdefinierten Module vorhanden. Sie können diesem Gerät jetzt ein benutzerdefiniertes Modul hinzufügen. Informationen zum Erstellen eines benutzerdefinierten Moduls finden Sie unter [Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge (Vorschau)](data-box-edge-create-iot-edge-module.md).
 
 
 ## <a name="add-a-custom-module"></a>Hinzufügen eines benutzerdefinierten Moduls
 
-In diesem Abschnitt fügen Sie dem IoT Edge-Gerät ein benutzerdefiniertes Modul hinzu. 
+In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie in [Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge (Vorschau)](data-box-edge-create-iot-edge-module.md) erstellt haben, ein benutzerdefiniertes Modul hinzu. 
 
 In diesem Verfahren wird ein Beispiel verwendet, in dem für das verwendete benutzerdefinierte Modul Dateien von einer lokalen Freigabe auf dem Edge-Gerät auf eine Cloudfreigabe auf dem Gerät verschoben werden. Die Cloudfreigabe überträgt die Dateien dann per Pushvorgang an das Azure-Speicherkonto, das der Cloudfreigabe zugeordnet ist. 
 
@@ -133,11 +134,26 @@ In diesem Verfahren wird ein Beispiel verwendet, in dem für das verwendete benu
 
         ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
  
-    2. Geben Sie die Einstellungen für das benutzerdefinierte IoT Edge-Modul an. Geben Sie den **Namen** Ihres Moduls und den **Image-URI** an. 
+    2. Geben Sie die Einstellungen für das benutzerdefinierte IoT Edge-Modul an. Geben Sie unter **Name** den Namen Ihres Moduls und unter **Image-URI** den Image-URI für das entsprechende Containerimage an. 
     
         ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-7.png) 
 
-    3. Geben Sie unter **Optionen für Containererstellung** die lokalen Bereitstellungspunkte für die Edge-Module, die Sie in den vorherigen Schritten kopiert haben, für die Cloud und die lokale Freigabe an. (Es ist wichtig, dass Sie diese Pfade nutzen und keine neuen erstellen.) Diese Freigaben werden den entsprechenden Containerbereitstellungspunkten zugeordnet. Geben Sie hier auch alle Umgebungsvariablen für Ihr Modul an.
+    3. Geben Sie unter **Optionen für Containererstellung** die lokalen Bereitstellungspunkte für die Edge-Module, die Sie in den vorherigen Schritten kopiert haben, für die Cloud und die lokale Freigabe an. (Es ist wichtig, dass Sie diese Pfade nutzen und keine neuen erstellen.) Die lokalen Bereitstellungspunkte werden dem entsprechenden Eingabeordnerpfad (**InputFolderPath**) und Ausgabeordnerpfad (**OutputFolderPath**) zugeordnet, die Sie beim [Aktualisieren des Moduls mit benutzerdefiniertem Code](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code) im Modul angegeben haben. 
+    
+        Sie können das unten bereitgestellte Beispiel kopieren und in **Optionen für Containererstellung** einfügen: 
+        
+        ```
+        {
+         "HostConfig": {
+          "Binds": [
+           "/home/hcsshares/mysmblocalshare:/home/LocalShare",
+           "/home/hcsshares/mysmbshare1:/home/CloudShare"
+           ]
+         }
+        }
+        ```
+
+        Geben Sie hier auch alle Umgebungsvariablen für Ihr Modul an.
 
         ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-8.png) 
  
@@ -146,6 +162,8 @@ In diesem Verfahren wird ein Beispiel verwendet, in dem für das verwendete benu
         ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
  
 6.  Legen Sie unter **Routen angeben** die Routen zwischen den Modulen fest. Geben Sie in diesem Fall den Namen der lokalen Freigabe an, über die Daten per Pushvorgang an die Cloudfreigabe übertragen werden. Klicken Sie auf **Weiter**.
+
+    Die Route kann durch folgende Routenzeichenfolge ersetzt werden:       "route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"
 
     ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
  

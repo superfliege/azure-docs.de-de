@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cad92cb36f3e5e038186e9b97f30bed9525e2fea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d65a593286ecd1ee394536033e85febb1dbc6f37
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978742"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229263"
 documentType: LandingData
-title: Azure Cost Management – Dokumentation
+title: Azure-Kostenverwaltung – Dokumentation
 metadata:
-  title: Cost Management-Dokumentation – Tutorials, API-Referenz | Microsoft-Dokumentation
+  title: Dokumentation für Kostenverwaltung – Tutorials, API-Referenz | Microsoft-Dokumentation
   description: Azure Cost Management ist eine Lösung für die Kostenverwaltung, mit der Sie die Azure-Ausgaben überwachen und steuern und die Ressourcennutzung optimieren können. In unseren Schnellstarts und Tutorials wird beschrieben, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.
   services: cost-management
   author: bandersmsft
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/14/2019
+  ms.date: 10/29/2018
   ms.author: banders
 abstract:
   description: Azure Cost Management ist eine Lösung für die Kostenverwaltung, mit der Sie die Azure-Ausgaben überwachen und steuern und die Ressourcennutzung optimieren können. In unseren Schnellstarts und Tutorials wird beschrieben, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.

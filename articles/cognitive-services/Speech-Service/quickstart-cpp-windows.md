@@ -1,20 +1,21 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in C++ unter Windows mit dem Cognitive Services Speech SDK'
-titleSuffix: Microsoft Cognitive Services
-description: Erfahren Sie, wie Sie Sprache in C++ unter Windows Desktop mit dem Cognitive Services Speech SDK erkennen können.
+title: 'Schnellstart: Erkennen von Sprache in C++ unter Windows mit dem Spracherkennungsdienst-SDK'
+titleSuffix: Azure Cognitive Services
+description: Hier erfahren Sie, wie Sie mit dem Spracherkennungsdienst-SDK Sprache in C++ unter Windows Desktop erkennen.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
+ms.component: speech-service
 ms.topic: quickstart
 ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 2adad78760c1d12da688106c45e86c91a8b13f91
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ddac12c6414365f8d20c42d324695be9855774dc
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339354"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469866"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter Windows mit dem Speech SDK
 

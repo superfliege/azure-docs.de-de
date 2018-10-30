@@ -1,36 +1,29 @@
 ---
-title: Verwalten von Azure-Dateifreigaben mit Azure Storage-Explorer
-description: Es wird beschrieben, wie Sie Azure Storage-Explorer zum Verwalten von Azure Files verwenden.
+title: 'Schnellstart: Verwalten von Azure-Dateifreigaben mit dem Azure Storage-Explorer'
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Azure Files mithilfe des Azure Storage-Explorers verwalten.
 services: storage
 author: wmgries
 ms.service: storage
-ms.topic: get-started-article
-ms.date: 02/27/2018
+ms.topic: quickstart
+ms.date: 10/18/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 949d96bb1b5ffdc948737d4a47ffa14b2e344b5e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f86a86fd9858fcc6f0b78256da1e96effbcbe68c
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574730"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944217"
 ---
-# <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Verwalten von Azure-Dateifreigaben mit Azure Storage-Explorer 
-[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. In diesem Artikel werden die Grundlagen der Arbeit mit Azure-Dateifreigaben per [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) Schritt für Schritt beschrieben. Storage-Explorer ist ein beliebtes Clienttool, das für Windows, macOS und Linux verfügbar ist. Sie können Storage-Explorer zum Verwalten von Azure-Dateifreigaben und anderen Speicherressourcen verwenden.
+# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit dem Azure Storage-Explorer
+In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit dem Azure Storage-Explorer beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
 
-Für diese Schnellstartanleitung muss Storage-Explorer installiert sein. Sie können die Anwendung unter [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) herunterladen und dann installieren.
-
-In diesem Artikel werden folgende Vorgehensweisen behandelt:
-
-> [!div class="checklist"]
-> * Erstellen einer Ressourcengruppe und eines Speicherkontos
-> * Erstellen einer Azure-Dateifreigabe 
-> * Erstellen eines Verzeichnisses
-> * Hochladen einer Datei
-> * Herunterladen einer Datei
-> * Erstellen und Verwenden einer Freigabemomentaufnahme
+Der Azure Storage-Explorer ist ein beliebtes Clienttool, das für Windows, macOS und Linux verfügbar ist. Sie können Storage-Explorer zum Verwalten von Azure-Dateifreigaben und anderen Speicherressourcen verwenden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+Für diese Schnellstartanleitung muss Storage-Explorer installiert sein. Sie können die Anwendung unter [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) herunterladen und dann installieren.
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 Sie können Storage-Explorer nicht verwenden, um neue Ressourcen zu erstellen. Erstellen Sie das Speicherkonto für diese Demo über das [Azure-Portal](https://portal.azure.com/). 
@@ -49,7 +42,7 @@ Melden Sie sich für diese Schnellstartanleitung mit Ihrem Azure-Konto an. Wähl
 ![Screenshot: Fenster „Microsoft Azure Storage-Explorer – Verbinden“](./media/storage-how-to-use-files-storage-explorer/connect-to-azure-storage-1.png)
 
 ### <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe
-Gehen Sie wie folgt vor, um Ihre erste Azure-Dateifreigabe unter dem Speicherkonto *storageacct<random number>* zu erstellen:
+Gehen Sie wie folgt vor, um Ihre erste Azure-Dateifreigabe unter dem Speicherkonto `storageacct<random number>` zu erstellen:
 
 1. Erweitern Sie das Speicherkonto, das Sie erstellt haben.
 2. Klicken Sie mit der rechten Maustaste auf **Dateifreigaben**, und wählen Sie anschließend **Dateifreigabe erstellen**.  
@@ -57,13 +50,12 @@ Gehen Sie wie folgt vor, um Ihre erste Azure-Dateifreigabe unter dem Speicherkon
 
 3. Geben Sie für die Dateifreigabe *myshare* ein, und drücken Sie die EINGABETASTE.
 
-> [!IMPORTANT]  
-> Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten (ein Bindestrich am Anfang ist nicht zulässig). Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten (ein Bindestrich am Anfang ist nicht zulässig). Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 Nachdem die Dateifreigabe erstellt wurde, wird im rechten Bereich eine Registerkarte für Ihre Dateifreigabe geöffnet. 
 
-## <a name="work-with-the-contents-of-an-azure-file-share"></a>Verwenden des Inhalts einer Azure-Dateifreigabe
-Nachdem Sie nun eine Azure-Dateifreigabe erstellt haben, können Sie die Dateifreigabe mit SMB unter [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) oder [macOS](storage-how-to-use-files-mac.md) bereitstellen. Alternativ hierzu können Sie mit Ihrer Azure-Dateifreigabe arbeiten, indem Sie die Azure CLI verwenden. Die Nutzung der Azure CLI hat gegenüber einer Bereitstellung der Dateifreigabe per SMB den Vorteil, dass für alle Anforderungen, die per Azure CLI gesendet werden, die Datei-REST-API genutzt wird. Sie können die Datei-REST-API zum Erstellen, Ändern und Löschen von Dateien und Verzeichnissen auf Clients verwenden, die nicht über SMB-Zugriff verfügen.
+## <a name="use-your-azure-file-share"></a>Verwenden Ihrer Azure-Dateifreigabe
+Nachdem Sie nun eine Azure-Dateifreigabe erstellt haben, können Sie die Dateifreigabe mit SMB unter [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) oder [macOS](storage-how-to-use-files-mac.md) bereitstellen. Alternativ können Sie für die Arbeit mit Ihrer Azure-Dateifreigabe auch den Azure Storage-Explorer verwenden. Die Nutzung des Azure Storage-Explorers hat gegenüber der Einbindung der Dateifreigabe per SMB den Vorteil, dass für alle Anforderungen, die per Azure Storage-Explorer gesendet werden, die Datei-REST-API verwendet wird. Sie können die Datei-REST-API zum Erstellen, Ändern und Löschen von Dateien und Verzeichnissen auf Clients verwenden, die nicht über SMB-Zugriff verfügen.
 
 ### <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
 Mit dem Hinzufügen eines Verzeichnisses wird eine hierarchische Struktur zum Verwalten Ihrer Dateifreigabe bereitgestellt. Sie können in Ihrem Verzeichnis mehrere Ebenen erstellen. Allerdings müssen Sie sicherstellen, dass übergeordnete Verzeichnisse vorhanden sind, bevor Sie Unterverzeichnisse erstellen können. Für den Pfad „myDirectory/mySubDirectory“ müssen Sie beispielsweise zuerst das Verzeichnis *myDirectory* erstellen. Erstellen Sie anschließend *mySubDirectory*. 
@@ -89,41 +81,12 @@ Klicken Sie zum Herunterladen der Kopie einer Datei Ihrer Dateifreigabe mit der 
 
 Der Status des Downloads wird unten im Fenster im Bereich **Aktivitäten** angezeigt.
 
-## <a name="create-and-modify-share-snapshots"></a>Erstellen und Ändern von Freigabemomentaufnahmen
-Mit einer Momentaufnahme wird eine Kopie einer Azure-Dateifreigabe für einen bestimmten Zeitpunkt erstellt. Momentaufnahmen von Dateifreigaben ähneln anderen Technologien, mit denen Sie unter Umständen bereits vertraut sind:
-- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme wie NTFS und ReFS
-- Momentaufnahmen vom Typ [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) für Linux-Systeme
-- Momentaufnahmen vom Typ [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) für macOS
-
-Gehen Sie wie folgt vor, um eine Freigabemomentaufnahme zu erstellen:
-
-1. Wählen Sie die Registerkarte für die Dateifreigabe *myshare*.
-2. Wählen Sie im oberen Menü die Option **Momentaufnahme erstellen**. (Je nach Größe des Storage-Explorer-Fensters müssen Sie unter Umständen zuerst **Mehr** wählen, um diese Option anzuzeigen.)  
-    ![Screenshot: Schaltfläche „Momentaufnahme erstellen“ im Kontext](media/storage-how-to-use-files-storage-explorer/create-share-snapshot-1.png)
-
-### <a name="list-and-browse-share-snapshots"></a>Auflisten und Durchsuchen von Freigabemomentaufnahmen
-Nachdem die Momentaufnahme erstellt wurde, können Sie **View Snapshots for File Share** (Momentaufnahmen für Dateifreigabe anzeigen) wählen, um die Momentaufnahmen für die Freigabe aufzulisten. (Je nach Größe des Storage-Explorer-Fensters müssen Sie unter Umständen zuerst **Mehr** wählen, um diese Option anzuzeigen.) Doppelklicken Sie auf eine Freigabemomentaufnahme, um sie zu durchsuchen.
-
-![Screenshot: Fenster zum Durchsuchen von Momentaufnahmen](media/storage-how-to-use-files-storage-explorer/list-browse-snapshots-1.png)
-
-### <a name="restore-from-a-share-snapshot"></a>Wiederherstellen von einer Freigabemomentaufnahme
-Sie müssen zuerst eine Datei aus der aktiven Azure-Dateifreigabe löschen, um demonstrieren zu können, wie eine Datei aus einer Freigabemomentaufnahme wiederhergestellt wird. Navigieren Sie zum Ordner *myDirectory*, klicken Sie mit der rechten Maustaste auf die hochgeladene Datei, und wählen Sie anschließend die Option **Löschen**. Stellen Sie diese Datei wie folgt aus der Freigabemomentaufnahme wieder her:
-
-1. Wählen Sie **View Snapshots for File Share** (Momentaufnahmen für Dateifreigabe anzeigen). (Je nach Größe des Storage-Explorer-Fensters müssen Sie unter Umständen zuerst **Mehr** wählen, um diese Option anzuzeigen.)
-2. Doppelklicken Sie in der Liste mit den Freigabemomentaufnahmen auf die Freigabemomentaufnahme.
-3. Durchsuchen Sie die Momentaufnahme, bis Sie die gelöschte Datei gefunden haben. Wählen Sie die Dateifreigabe und dann die Option **Momentaufnahme wiederherstellen**. (Je nach Größe des Storage-Explorer-Fensters müssen Sie unter Umständen zuerst **Mehr** wählen, um diese Option anzuzeigen.) Es wird ein Fenster mit einer Warnung geöffnet, dass der Inhalt der Dateifreigabe beim Wiederherstellen der Datei überschrieben wird und der Vorgang nicht rückgängig gemacht werden kann. Klicken Sie auf **OK**.
-4. Die Datei sollte sich jetzt an ihrem ursprünglichen Ort unter der aktiven Azure-Dateifreigabe befinden.
-
-### <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
-Navigieren Sie zur [Liste mit den Freigabemomentaufnahmen](#list-and-browse-share-snapshots), um eine Freigabemomentaufnahme zu löschen. Klicken Sie mit der rechten Maustaste auf die Freigabemomentaufnahme, die Sie löschen möchten, und wählen Sie dann die Option **Löschen**.
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Sie können Storage-Explorer nicht nutzen, um Ressourcen zu entfernen. Sie können das [Azure-Portal](https://portal.azure.com/) verwenden, um die Bereinigung für diese Schnellstartanleitung durchzuführen. 
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Verwalten von Dateifreigaben mit dem Azure-Portal](storage-how-to-use-files-portal.md)
-- [Verwalten von Dateifreigaben mit Azure PowerShell](storage-how-to-use-files-powershell.md)
-- [Verwalten von Dateifreigaben mit der Azure CLI](storage-how-to-use-files-cli.md)
-- [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
+
+> [!div class="nextstepaction"]
+> [Was ist Azure Files?](storage-files-introduction.md)

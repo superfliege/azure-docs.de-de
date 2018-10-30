@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 4c3354786d7320caee0dfe2f0eca44909d77f2fe
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386850"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426871"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Schnellstart: Erstellen eines Speicherkontos in Azure Data Lake Storage Gen2 (Vorschauversion)
 
@@ -87,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal eine Ressource
 Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „General Purpose v2“ über das Azure-Portal erstellen möchten:
 
 > [!NOTE]
-> Der hierarchische Namespace ist nur in „USA, Osten“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Europa, Norden“, „Europa, Westen“, „Asien, Südosten“ und „Australien, Osten“ aktiviert. Achten Sie darauf, beim Erstellen des Speicherkontos einen dieser beiden Standorte anzugeben.
+> Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen, aber in keiner der privaten Regionen zur Verfügung. In Sovereign Clouds ist er nicht verfügbar.
 
 1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Alle Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
 2. Geben Sie einen Namen für Ihr Speicherkonto ein.
@@ -135,7 +135,7 @@ Starten Sie anschließend Ihre Shell neu.
 Wenn Sie eine neue Ressourcengruppe mithilfe von PowerShell erstellen möchten, verwenden Sie den Befehl [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
 
 > [!NOTE]
-> Der hierarchische Namespace ist nur in „USA, Osten“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Europa, Norden“, „Europa, Westen“, „Asien, Südosten“ und „Australien, Osten“ aktiviert. Achten Sie darauf, beim Erstellen des Speicherkontos einen dieser beiden Standorte anzugeben.
+> > Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen, aber in keiner der privaten Regionen zur Verfügung. In Sovereign Clouds ist er nicht verfügbar.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -196,7 +196,7 @@ az group create \
 ```
 
 > [!NOTE]
-> Der hierarchische Namespace ist nur in „USA, Osten“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Europa, Norden“, „Europa, Westen“, „Asien, Südosten“ und „Australien, Osten“ aktiviert. Achten Sie darauf, beim Erstellen des Speicherkontos einen dieser beiden Standorte anzugeben.
+> > Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen, aber in keiner der privaten Regionen zur Verfügung. In Sovereign Clouds ist er nicht verfügbar.
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Erstellen eines Speicherkontos vom Typ „Allgemein v2 (GPv2)“
 

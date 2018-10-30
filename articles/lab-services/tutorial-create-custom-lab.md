@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5a93feec7996fc0ebf742b8d62b159dca5f1c1ed
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3eecfdf4bc2e6bf6798a6b3845cdc2e2e243341
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636986"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467428"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs
 In diesem Tutorial erstellen Sie ein Lab über das Azure-Portal. Ein Lab-Administrator richtet ein Lab in einer Organisation ein, erstellt VMs im Lab und konfiguriert Richtlinien. Lab-Benutzer (z.B. Entwickler und Tester) fordern virtuelle Computer im Lab an, stellen eine Verbindung mit ihnen her und nutzen sie. 
@@ -55,7 +55,7 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
 1. Klicken Sie auf der Seite **DevTest Lab** auf der Symbolleiste auf **+ Hinzufügen**. 
 
     ![Schaltfläche „Hinzufügen“](./media/tutorial-create-custom-lab/add-vm-to-lab-button.png)
-1. Suchen Sie auf der Seite **Basis wählen** mit dem Stichwort **Ubuntu**, und wählen Sie in der Liste eines der Basisimages aus. 
+1. Suchen Sie auf der Seite **Basis wählen** mit einem Stichwort (z.B. Windows, Ubuntu), und wählen Sie in der Liste eines der Basisimages aus. 
 1. Gehen Sie auf der Seite **Virtueller Computer** wie folgt vor: 
     1. Geben Sie in **Name des virtuellen Computers** einen Namen für den virtuellen Computer ein. 
     2. Geben Sie für **Benutzername** den Namen des Benutzers ein, der Zugriff auf den virtuellen Computer hat. 
@@ -71,6 +71,9 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
 
         ![Status der VM-Erstellung](./media/tutorial-create-custom-lab/vm-creation-status.png)
 1. Nach ihrer Erstellung sehen Sie sie in der Liste **Abrufbare virtuelle Computer**. 
+
+    > [!NOTE] 
+    > Beim Hinzufügen einer Linux-VM zu einem Lab können Sie den SSH- und RDP-Zugriff auf die VM aktivieren. Wenn Sie den Zugriff nicht beim Erstellen der VM aktivieren, können Sie manuell Regeln in der Netzwerksicherheitsgruppe hinzufügen, die der VM zugeordnet ist, um Ports für SSH und RDP zu öffnen.
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>Hinzufügen eines Benutzers zur Rolle „Lab-Benutzer“
 

@@ -3,7 +3,7 @@ title: Importieren und Verwalten Ihrer ersten API in Azure API Management | Micr
 description: Erfahren sie, wie Sie Ihre erste API mit API Management importieren und veröffentlichen.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: cf913c0aaf7dd9957f21452caf8e43a9e3c8b2db
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093401"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467394"
 ---
 # <a name="import-and-publish-your-first-api"></a>Importieren und Veröffentlichen Ihrer ersten API 
 
@@ -73,9 +73,11 @@ In diesem Abschnitt wird gezeigt, wie Sie eine Back-End-API mit OpenAPI-Spezifik
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testen der neuen APIM-API im Azure-Portal
 
+![Testen der API](./media/api-management-get-started/01-import-first-api-01.png)
+
 Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein einfacher Weg, die Vorgänge einer API anzuzeigen und zu testen.  
 1. Wählen Sie die API aus, die Sie im vorherigen Schritt erstellt haben (auf der Registerkarte **APIs**).
-2. Wählen Sie die Registerkarte **Testen** aus.  ![Test-API](./media/api-management-get-started/test-api.png)
+2. Wählen Sie die Registerkarte **Testen** aus.
 3. Klicken Sie auf **GetSpeakers**.
     Auf der Seite werden Felder für Abfrageparameter angezeigt (in diesem Fall keine) sowie Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Der Schlüssel wird automatisch eingefügt.
 4. Klicken Sie auf **Senden**.
@@ -87,7 +89,8 @@ Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein ei
 Vorgänge können auch über das **Entwicklerportal** aufgerufen werden, um APIs zu testen.
 
 1. Navigieren Sie zum **Entwicklerportal**.
-![Entwicklerportal](./media/api-management-get-started/developer-portal.png)
+
+ ![Entwicklerportal](./media/api-management-get-started/developer-portal.png)
 
 2. Wählen Sie **APIS** aus, klicken Sie auf **Demo Conference API** und dann auf **GetSpeakers**.
     

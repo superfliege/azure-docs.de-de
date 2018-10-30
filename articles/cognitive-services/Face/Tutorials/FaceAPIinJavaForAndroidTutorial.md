@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erkennen und Umranden von Gesichtern in einem Bild – Gesichtserkennungs-API, Java für Android'
+title: 'Tutorial: Erkennen und Umranden von Gesichtern in einem Bild mit dem Android SDK'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine einfache Android-App, die mithilfe der Gesichtserkennungs-API Gesichter in einem Bild erkennt und umrandet.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 08344e21d4f425a021bdefe840390ede8b3fb01e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 99b2734745df722f45443b5347ae6dd054c8aa31
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342380"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957036"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Tutorial: Erstellen einer Android-App zum Erkennen und Umranden von Gesichtern in einem Bild
 

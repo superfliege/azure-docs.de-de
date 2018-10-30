@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 96ed5c17501aeb195ee584ce6d41a84fc2118bac
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 5bb840be119f5eac380c44e2cf45b3f73a9d981e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376651"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985708"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Tutorial: Analysieren von Videos mit Azure Media Services 
 
@@ -33,9 +33,6 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 > * Ausführen der App
 > * Untersuchen der Ausgabe
 > * Bereinigen von Ressourcen
-
-> [!Note]
-> Verwenden Sie das Azure-Portal, so wie in der [Übersicht über das Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md) beschrieben, um Ihr Media Services-Konto auf 10 S3 reservierte Einheiten für Medien.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -71,6 +68,9 @@ Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 4. Übermitteln des Auftrags
 5. Überprüfen des Auftragsstatus
 6. Herunterladen der durch die Auftragsausführung entstandenen Dateien 
+
+> [!NOTE]
+> Wenn Sie Voreinstellungen eines Video- oder Audioanalysetools verwenden möchten, legen Sie über das Azure-Portal für Ihr Konto zehn reservierte Einheiten für Medien (S3) fest. Weitere Informationen finden Sie unter [Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md).
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>Starten der Verwendung von Media Services-APIs mit dem .NET SDK
 

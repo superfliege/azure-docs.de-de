@@ -1,23 +1,23 @@
 ---
 title: 'Schnellstart: Aktualisieren einer Wissensdatenbank – REST, C# – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung wird das programmgesteuerte Aktualisieren des Beispiels für eine QnA Maker-Wissensdatenbank Schritt für Schritt beschrieben. Mit der JSON-Definition, die Sie zum Aktualisieren einer Wissensdatenbank verwenden, können Sie Frage/Antwort-Paare hinzufügen, ändern oder löschen.
+description: In dieser REST-basierten Schnellstartanleitung wird das programmgesteuerte Aktualisieren des Beispiels für eine QnA Maker-Wissensdatenbank Schritt für Schritt beschrieben. Mit der JSON-Definition, die Sie zum Aktualisieren einer Wissensdatenbank verwenden, können Sie Frage/Antwort-Paare hinzufügen, ändern oder löschen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 9fa57a02f11461a3ea9a08b7b1b101b143924037
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 463fb4bc1cfd6ba7a7fc4df2fcde53bda7767488
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801692"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648230"
 ---
-# <a name="quickstart-update-a-qna-maker-knowledge-base-in-c"></a>Schnellstart: Aktualisieren einer QnA Maker-Wissensdatenbank in C#
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-c"></a>Schnellstart: Aktualisieren einer Wissensdatenbank in QnA Maker mithilfe von C#
 
 In dieser Schnellstartanleitung wird das programmgesteuerte Aktualisieren einer vorhandenen QnA Maker-Wissensdatenbank Schritt für Schritt beschrieben.  Mit diesem JSON-Code können Sie eine Wissensdatenbank aktualisieren, indem Sie neue Datenquellen hinzufügen oder Datenquellen ändern oder löschen.
 
@@ -43,11 +43,11 @@ Falls Sie noch keine Wissensdatenbank besitzen, können Sie für diese Schnellst
 
 [!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)] 
 
-## <a name="add-required-dependencies"></a>Hinzufügen der erforderlichen Abhängigkeiten
+## <a name="add-required-dependencies"></a>Hinzufügen von erforderlichen Abhängigkeiten
 
 [!INCLUDE [Add required dependencies to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-dependencies.md)] 
 
-## <a name="add-required-constants"></a>Hinzufügen der erforderlichen Konstanten
+## <a name="add-required-constants"></a>Hinzufügen von erforderlichen Konstanten
 
 [!INCLUDE [Add required constants to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-constants.md)] 
 
@@ -60,8 +60,8 @@ Falls Sie noch keine Wissensdatenbank besitzen, können Sie für diese Schnellst
 Fügen Sie nach den Konstanten die folgende Definition für das Update der Wissensdatenbank hinzu. Die Updatedefinition enthält drei Abschnitte:
 
 * Hinzufügen
-* Aktualisieren
-* Löschen
+* aktualisieren
+* delete
 
 Jeder Abschnitt kann in derselben einzelnen Anforderung an die API verwendet werden. 
 

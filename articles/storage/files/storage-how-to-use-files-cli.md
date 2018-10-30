@@ -1,38 +1,37 @@
 ---
-title: Verwalten von Azure-Dateifreigaben mit der Azure CLI
-description: Es wird beschrieben, wie Sie Azure Files mit der Azure CLI verwalten.
+title: 'Schnellstart: Verwalten von Azure-Dateifreigaben mit der Azure CLI'
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Azure Files mit der Azure CLI verwalten.
 services: storage
 author: wmgries
 ms.service: storage
-ms.topic: get-started-article
-ms.date: 03/26/2018
+ms.topic: quickstart
+ms.date: 10/18/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: de48789c42ccd2d7e090af6f430f323b16416e9c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: aab248ac7c9adf7d996406ec35e0317594ce0b68
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389784"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945017"
 ---
-# <a name="manage-azure-file-shares-using-azure-cli"></a>Verwalten von Azure-Dateifreigaben mit der Azure CLI
-[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können unter Windows, Linux und macOS bereitgestellt werden. In diesem Artikel werden die Grundlagen der Arbeit mit Azure-Dateifreigaben per Azure CLI Schritt für Schritt beschrieben. In diesem Artikel werden folgende Themen erläutert: 
-
-> [!div class="checklist"]
-> * Erstellen einer Ressourcengruppe und eines Speicherkontos
-> * Erstellen einer Azure-Dateifreigabe 
-> * Erstellen eines Verzeichnisses
-> * Hochladen einer Datei 
-> * Herunterladen einer Datei
-> * Erstellen und Verwenden einer Freigabemomentaufnahme
+# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit der Azure CLI
+In dieser Anleitung werden die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit der Azure CLI Schritt für Schritt beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie sich für die lokale Installation und Nutzung der Azure CLI entscheiden, müssen Sie für die Schritte dieses Artikels Azure CLI Version 2.0.4 oder höher ausführen. Führen Sie den Befehl **az --version** aus, um Ihre Azure CLI-Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+Wenn Sie sich für die lokale Installation und Nutzung der Azure CLI entscheiden, müssen Sie für die Schritte dieses Artikels Azure CLI Version 2.0.4 oder höher ausführen. Führen Sie den Befehl **az --version** aus, um Ihre Azure CLI-Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
 
 Standardmäßig wird für Azure CLI-Befehle JSON-Code (JavaScript Object Notation) zurückgegeben. JSON ist die Standardmethode zum Senden und Empfangen der Nachrichten von REST-APIs. Um die Verwendung von JSON-Antworten zu ermöglichen, wird in einigen Beispielen dieses Artikels für Azure CLI-Befehle der Parameter *query* verwendet. Für diesen Parameter wird die [JMESPath-Abfragesprache](http://jmespath.org/) zum Analysieren des JSON-Codes genutzt. Weitere Informationen zur Verwendung der Ergebnisse von Azure CLI-Befehlen per JMESPath-Abfragesprache erhalten Sie im [JMESPath-Tutorial](http://jmespath.org/tutorial.html).
+
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+Öffnen Sie bei der lokalen Verwendung der Azure CLI eine Eingabeaufforderung, und melden Sie sich bei Azure an, sofern noch nicht geschehen.
+
+```bash 
+az login
+```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Falls Sie nicht bereits über eine Azure-Ressourcengruppe verfügen, können Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. 
@@ -77,15 +76,26 @@ az storage share create \
     --name "myshare" 
 ```
 
-> [!IMPORTANT]  
-> Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten (ein Bindestrich am Anfang ist nicht zulässig). Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten (ein Bindestrich am Anfang ist nicht zulässig). Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
-## <a name="work-with-the-contents-of-an-azure-file-share"></a>Verwenden des Inhalts einer Azure-Dateifreigabe
-Nachdem Sie nun eine Azure-Dateifreigabe erstellt haben, können Sie die Dateifreigabe per SMB unter [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) oder [macOS](storage-how-to-use-files-mac.md) bereitstellen. Alternativ hierzu können Sie mit Ihrer Azure-Dateifreigabe arbeiten, indem Sie die Azure CLI verwenden. Die Nutzung der Azure CLI hat gegenüber einer Bereitstellung der Dateifreigabe per SMB den Vorteil, dass für alle Anforderungen, die per Azure CLI gesendet werden, die Datei-REST-API genutzt wird. Sie können die Datei-REST-API verwenden, um Dateien und Verzeichnisse auf Ihrer Dateifreigabe an den folgenden Orten zu erstellen, zu ändern und zu löschen:
+## <a name="use-your-azure-file-share"></a>Verwenden Ihrer Azure-Dateifreigabe
+Azure Files bietet zwei Methoden für die Arbeit mit Dateien und Ordnern in Ihrer Azure-Dateifreigabe: das [SMB-Protokoll (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) nach Industriestandard und das [REST-Protokoll „File“](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api). 
 
-- Bash Azure Cloud Shell (Bereitstellung von Dateifreigaben per SMB ist nicht möglich)
-- Clients, die keine SMB-Freigaben bereitstellen können (z.B. lokale Clients, für die Port 445 nicht blockiert ist)
-- Serverlose Szenarien, z.B. bei [Azure Functions](../../azure-functions/functions-overview.md)
+Informationen zum Einbinden einer Dateifreigabe mit SMB finden Sie im folgenden Dokument für Ihr jeweiliges Betriebssystem:
+- [Linux](storage-how-to-use-files-linux.md)
+- [macOS](storage-how-to-use-files-mac.md)
+- [Windows](storage-how-to-use-files-windows.md)
+
+### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Verwenden einer Azure-Dateifreigabe mit dem REST-Protokoll „File“ 
+Das REST-Protokoll „File“ kann direkt verwendet werden (d.h. Sie können REST-HTTP-Aufrufe selbst erstellen). Gängiger ist jedoch die Verwendung der Azure CLI, des [AzureRM PowerShell-Moduls](storage-how-to-use-files-powershell.md) oder eines Azure Storage SDK. Bei allen diesen Methoden steht ein praktischer Wrapper um das REST-Protokoll „File“ in der Skript-/Programmiersprache Ihrer Wahl zur Verfügung.  
+
+Die meisten Benutzer werden ihre Azure-Dateifreigabe in Azure Files wahrscheinlich über das SMB-Protokoll nutzen, da sie so die bereits vorhandenen Anwendungen und Tools verwenden können, die sie erwarten. Es gibt jedoch auch Gründe, die für die Verwendung der REST-API „File“ sprechen:
+
+- Sie durchsuchen Ihre Dateifreigabe über Bash in Azure Cloud Shell. (In diesem Fall können Dateifreigaben nicht über SMB eingebunden werden.)
+- Sie müssen ein Skript oder eine Anwendung über einen Client ausführen, der keine SMB-Freigaben einbinden kann (beispielsweise ein lokaler Client, für den die Blockierung von Port 445 nicht aufgehoben wurde).
+- Sie nutzen serverlose Ressourcen, etwa [Azure Functions](../../azure-functions/functions-overview.md). 
+
+Die folgenden Beispiele zeigen, wie Sie mit dem AzureRM PowerShell-Modul Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. 
 
 ### <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
 Verwenden Sie den Befehl [`az storage directory create`](/cli/azure/storage/directory#az_storage_directory_create), um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen:
@@ -176,84 +186,6 @@ az storage file list \
 
 Der Befehl `az storage file copy start` ist für Dateiverschiebungen zwischen Azure-Dateifreigaben und Azure-Blobspeichercontainern zwar gut geeignet, aber wir empfehlen Ihnen, für größere Verschiebungen AzCopy zu verwenden. (Mit „größer“ ist hier die Anzahl oder Größe von zu verschiebenden Dateien gemeint.) Informieren Sie sich über [AzCopy für Linux](../common/storage-use-azcopy-linux.md) und [AzCopy für Windows](../common/storage-use-azcopy.md). AzCopy muss lokal installiert sein. AzCopy ist in Cloud Shell nicht verfügbar. 
 
-## <a name="create-and-modify-share-snapshots"></a>Erstellen und Ändern von Freigabemomentaufnahmen
-Eine weitere nützliche Aufgabe, die Sie mit einer Azure-Dateifreigabe durchführen können, ist die Erstellung von Freigabemomentaufnahmen. Mit einer Momentaufnahme wird eine Kopie einer Azure-Dateifreigabe für einen bestimmten Zeitpunkt erstellt. Freigabemomentaufnahmen ähneln einigen Betriebssystemtechnologien, mit denen Sie unter Umständen bereits vertraut sind:
-- Momentaufnahmen vom Typ [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) für Linux-Systeme
-- Momentaufnahmen vom Typ [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) für macOS
-- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme wie NTFS und ReFS
-
-Sie können eine Freigabemomentaufnahme erstellen, indem Sie den Befehl [`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot) verwenden:
-
-```azurecli-interactive
-SNAPSHOT=$(az storage share snapshot \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare" \
-    --query "snapshot" | tr -d '"')
-```
-
-### <a name="browse-share-snapshot-contents"></a>Durchsuchen des Inhalts einer Freigabemomentaufnahme
-Sie können den Inhalt einer Freigabemomentaufnahme durchsuchen, indem Sie den Zeitstempel der Freigabemomentaufnahme, die Sie mit der Variablen `$SNAPSHOT` erfasst haben, an den Befehl `az storage file list` übergeben:
-
-```azurecli-interactive
-az storage file list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
-    --snapshot $SNAPSHOT \
-    --output table
-```
-
-### <a name="list-share-snapshots"></a>Auflisten von Freigabemomentaufnahmen
-Verwenden Sie den folgenden Befehl, um eine Liste mit den Momentaufnahmen anzuzeigen, die Sie für Ihre Freigabe erstellt haben:
-
-```azurecli-interactive
-az storage share list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --include-snapshot \
-    --query "[? name=='myshare' && snapshot!=null]" | tr -d '"'
-```
-
-### <a name="restore-from-a-share-snapshot"></a>Wiederherstellen von einer Freigabemomentaufnahme
-Sie können eine Datei mit dem zuvor verwendeten Befehl `az storage file copy start` wiederherstellen. Löschen Sie zuerst die Datei „SampleUpload.txt“, die Sie hochgeladen haben, damit Sie sie aus der Momentaufnahme wiederherstellen können:
-
-```azurecli-interactive
-# Delete SampleUpload.txt
-az storage file delete \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
-    --path "myDirectory/SampleUpload.txt"
-
-# Build the source URI for a snapshot restore
-URI=$(az storage account show \
-    --resource-group "myResourceGroup" \
-    --name $STORAGEACCT \
-    --query "primaryEndpoints.file" | tr -d '"')
-
-URI=$URI"myshare/myDirectory/SampleUpload.txt?sharesnapshot="$SNAPSHOT
-
-# Restore SampleUpload.txt from the share snapshot
-az storage file copy start \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --source-uri $URI \
-    --destination-share "myshare" \
-    --destination-path "myDirectory/SampleUpload.txt"
-```
-
-### <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
-Mit dem Befehl [`az storage share delete`](/cli/azure/storage/share#az_storage_share_delete) können Sie eine Freigabemomentaufnahme löschen. Verwenden Sie die Variable, die den `$SNAPSHOT`-Verweis auf den Parameter `--snapshot` enthält:
-
-```azurecli-interactive
-az storage share delete \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare" \
-    --snapshot $SNAPSHOT
-```
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie den Vorgang abgeschlossen haben, können Sie den Befehl [`az group delete`](/cli/azure/group#delete) verwenden, um die Ressourcengruppe und alle dazugehörigen Ressourcen zu entfernen: 
 
@@ -288,7 +220,6 @@ Alternativ hierzu können Sie auch Ressourcen einzeln entfernen.
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Verwalten von Dateifreigaben mit dem Azure-Portal](storage-how-to-use-files-portal.md)
-- [Verwalten von Dateifreigaben mit Azure PowerShell](storage-how-to-use-files-powershell.md)
-- [Verwalten von Dateifreigaben mit Storage-Explorer](storage-how-to-use-files-storage-explorer.md)
-- [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
+
+> [!div class="nextstepaction"]
+> [Was ist Azure Files?](storage-files-introduction.md)

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/18/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d48374d7919be3d141ea199e8238a220dbfe0332
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419524"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945789"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Tutorial: Erstellen einer Azure Resource Manager-Vorlage für die Bereitstellung eines verschlüsselten Speicherkontos
 
@@ -40,8 +40,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* [Visual Studio Code](https://code.visualstudio.com/).
-* Die Erweiterung „Azure Resource Manager-Tools“. Informationen zur Installation finden unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* [Visual Studio Code](https://code.visualstudio.com/) mit der [Erweiterung „Azure Resource Manager-Tools“](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
@@ -56,7 +55,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherk
 3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
 4. Wählen Sie **Datei**>**Speichern unter** aus, um die Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
 
-## <a name="understand-the-format"></a>Verstehen des Formats
+## <a name="understand-the-schema"></a>Grundlegendes zum Schema
 
 Reduzieren Sie in VS Code die Vorlage auf die Stammebene. Sie besitzen die einfachste Struktur mit den folgenden Elementen:
 
@@ -69,7 +68,7 @@ Reduzieren Sie in VS Code die Vorlage auf die Stammebene. Sie besitzen die einfa
 * **resources**: Geben Sie die Ressourcentypen an, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden.
 * **outputs**: Geben Sie die Werte an, die nach der Bereitstellung zurückgegeben werden.
 
-## <a name="use-parameters-in-template"></a>Verwenden von Parametern in der Vorlage
+## <a name="use-parameters"></a>Verwenden von Parametern
 
 Mit Parametern können Sie die Bereitstellung anpassen, indem Sie Werte angeben, die für eine bestimmte Umgebung maßgeschneidert sind. Sie verwenden die in der Vorlage definierten Parameter beim Festlegen von Werten für das Speicherkonto.
 
@@ -90,7 +89,7 @@ So verwenden Sie die in der Vorlage definierten Parameter:
 "name": "[parameters('storageAccountType')]"
 ```
 
-## <a name="use-variables-in-template"></a>Verwenden von Variablen in der Vorlage
+## <a name="use-variables"></a>Verwenden von Variablen
 
 Mit Variablen können Sie Werte erstellen, die in der ganzen Vorlage verwendet werden können. Variablen helfen Ihnen, die Komplexität der Vorlagen zu verringern.
 
@@ -117,9 +116,7 @@ In diesem Tutorial wird eine Vorlage zum Erstellen eines verschlüsselten Speich
 
     ![Resource Manager: Vorlagenreferenz -> Speicherkonto](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
-    resource-manager-template-resources-reference-storage-accounts
-1. Untersuchen Sie die verschlüsselungsbezogenen Informationen.  
-1. Fügen Sie im properties-Element der Ressourcendefinition für das Speicherkonto den folgenden JSON-Code ein:
+4. Suchen Sie die verschlüsselungsbezogenen Definitionsinformationen.  
 
     ```json
     "encryption": {
@@ -131,11 +128,9 @@ In diesem Tutorial wird eine Vorlage zum Erstellen eines verschlüsselten Speich
         }
     }
     ```
-    Dieser Teil aktiviert die Verschlüsselungsfunktion des Blobspeicherdiensts.
-
-Ändern Sie die Vorlage in Visual Studio Code, sodass das endgültige Ressourcenelement wie folgt aussieht:
-
-![Verschlüsselte Speicherkontoressourcen der Resource Manager-Vorlage](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+5. Ändern Sie die Vorlage in Visual Studio Code, sodass das endgültige Ressourcenelement wie folgt aussieht:
+    
+    ![Verschlüsselte Speicherkontoressourcen der Resource Manager-Vorlage](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 

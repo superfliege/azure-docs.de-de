@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: fc4b2f153c89d4253bc3fdd9c5a49973baa38752
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 79a6636043499cffb7eded409cdc27c56de98e33
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310214"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430220"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -118,6 +118,8 @@ Wenn die Richtlinie die Verwendung von STRG+ALT+ENTF vorschreibt oder Benachrich
 Das Azure AD-Überwachungsprotokoll enthält Informationen zur IP-Adresse und zum Clienttyp, für die das Kennwort zurückgesetzt wurde.
 
 ![Beispiel: Kennwortzurücksetzung auf dem Anmeldebildschirm im Azure AD-Überwachungsprotokoll](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+Wenn sich Ihre Windows 10-Computer hinter einem Proxyserver oder einer Firewall befinden, sollte HTTPS-Datenverkehr (443) zu „passwordreset.microsoftonline.com“ und „ajax.aspnetcdn.com“ zugelassen werden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

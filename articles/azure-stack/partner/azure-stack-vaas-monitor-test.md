@@ -1,6 +1,6 @@
 ---
-title: Überwachen eines Tests mit Azure Stack Validation-as-a-Service | Microsoft-Dokumentation
-description: Überwachen eines Tests mit Azure Stack Validation-as-a-Service
+title: Überwachen und Verwalten von Tests im Azure Stack VaaS-Portal | Microsoft-Dokumentation
+description: Überwachen und verwalten Sie Tests im Azure Stack VaaS-Portal.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,124 +10,140 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 2dc4d3f2855864ff80648b5b9635ff28c0dacbb7
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 03efe32e7a9a29318e4f97ce5636616fad443284
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163328"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956662"
 ---
-# <a name="monitor-a-test-with-azure-stack-validation-as-a-service"></a>Überwachen eines Tests mit Azure Stack Validation-as-a-Service
+# <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Überwachen und Verwalten von Tests im VaaS-Portal
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Die Ausführung eines Tests kann auf der Seite **Vorgänge** für aktive oder abgeschlossene Testsammlungen überwacht werden. Auf dieser Seite sind Details zum Status des Tests und seiner Vorgänge aufgeführt.
+Nach dem Planen von Tests für Ihre Azure Stack-Lösung beginnt VaaS (Validation-as-a-Service) mit dem Melden des Testausführungsstatus. Diese Informationen sind im VaaS-Portal zusammen mit Aktionen (etwa Neuplanen und Abbrechen von Tests) verfügbar.
 
-## <a name="monitor-a-test"></a>Überwachen eines Tests
+## <a name="navigate-to-the-workflow-tests-summary-page"></a>Navigieren zur Zusammenfassungsseite für Workflowtests
 
-1. Wählen Sie eine Lösung aus.
+1. Wählen Sie auf dem Lösungsdashboard eine vorhandene Lösung mit mindestens einem Workflow aus.
 
-2. Klicken Sie auf einer beliebigen Workflowkachel auf **Verwalten**.
+    ![Workflowkacheln](media/tile_all-workflows.png)
 
-3. Klicken Sie auf einen Workflow, um die zugehörige Seite mit der Testzusammenfassung zu öffnen.
+1. Wählen Sie auf der Workflowkachel die Option **Verwalten** aus. Auf der nächsten Seite sind die für die ausgewählte Lösung erstellten Workflows aufgeführt.
 
-4. Erweitern Sie das Kontextmenü **[...]** für eine beliebige Testsammlungsinstanz.
+1. Wählen Sie den Namen eines Workflows aus, um die zugehörige Testzusammenfassung zu öffnen.
 
-5. Klicken Sie auf **View Operations** (Vorgänge anzeigen).
+## <a name="change-workflow-parameters"></a>Ändern von Workflowparametern
 
-![Alt text](media\image4.png)
+Sie können für jeden Workflowtyp die bei der Workflowerstellung angegebenen [Testparameter](azure-stack-vaas-parameters.md#test-parameters) bearbeiten.
 
-Für abgeschlossene Tests können Protokolle von der Seite mit der Testzusammenfassung heruntergeladen werden. Klicken Sie dazu im Kontextmenü **[...]** eines Tests auf **Protokolle herunterladen**. Azure Stack-Partner können bei fehlerhaften Tests mithilfe dieser Protokolle Probleme debuggen.
+1. Wählen Sie auf der Testzusammenfassungsseite die Schaltfläche **Bearbeiten** aus.
 
-## <a name="open-the-test-pass-summary"></a>Öffnen der Zusammenfassung des Testdurchlaufs
+1. Weitere Informationen finden Sie unter [Allgemeine Workflowparameter für Validation-as-a-Service in Azure Stack](azure-stack-vaas-parameters.md).
 
-1. Öffnen Sie das Portal. 
-2. Wählen Sie den Namen einer vorhandenen Lösung aus, die zuvor ausgeführte oder geplante Tests enthält.
+1. Wählen Sie **Übermitteln** aus, um die Werte zu speichern.
 
-    ![Verwalten von Testdurchläufen](media/managetestpasses.png)
+> [!NOTE]
+> Im Workflow **Testdurchlauf** müssen Sie die Testauswahl fertig stellen und die Seite „Überprüfen“ aufrufen, damit Sie die neuen Parameterwerte speichern können.
 
-3. Klicken Sie im Bereich **Test Passes** (Testdurchläufe) auf **Verwalten**.
-4. Wählen Sie den Testdurchlauf aus, um die Zusammenfassung des Testdurchlaufs zu öffnen. Sie können den Testnamen, das Erstellungs- und Ausführungsdatum, die Testdauer und das Ergebnis (erfolgreich oder fehlerhaft) überprüfen.
-5. Klicken Sie auf [ **. .  .** ].
+### <a name="add-tests-test-pass-only"></a>Hinzufügen von Tests (nur „Testdurchlauf“)
 
-### <a name="test-pass-summary"></a>Zusammenfassung des Testdurchlaufs
+In Workflows vom Typ **Testdurchlauf** können Sie über die Schaltflächen **Tests hinzufügen** und **Bearbeiten** neue Tests im Workflow planen.
+
+> [!TIP]
+> Wählen Sie **Tests hinzufügen**, wenn Sie nur neue Tests planen möchten, aber keine Parameter für einen Workflow vom Typ **Testdurchlauf** bearbeiten müssen.
+
+## <a name="managing-test-instances"></a>Verwalten von Testinstanzen
+
+Bei inoffiziellen Ausführungen (d.h. beim Workflow **Testdurchlauf**) werden auf der Testzusammenfassungsseite die für die Azure Stack-Lösung geplanten Tests aufgeführt.
+
+Bei offiziellen Ausführungen (d.h. bei Workflows vom Typ **Validierung**) werden auf der Testzusammenfassungsseite die Tests aufgeführt, die zum Abschließen der Überprüfung der Azure Stack-Lösung erforderlich sind. Auf dieser Seite werden die Validierungstests geplant.
+
+In jeder geplanten Testinstanz werden die folgenden Informationen angezeigt:
 
 | Column | BESCHREIBUNG |
 | --- | --- |
-| Testname | Der Name des Tests. Verweist auf die Validierungsnummer. |
-| Erstellt | Zeitpunkt, zu der der Testdurchlauf erstellt wurde |
-| Gestartet | Zeitpunkt, zu der der Testdurchlauf ausgeführt wurde |
-| Duration | Die Ausführungsdauer des Testdurchlaufs |
-| Status | Das Ergebnis (erfolgreich oder fehlerhaft) des Testdurchlaufs |
-| Agent-Name | Der vollqualifizierte Domänenname des Agents |
-| Vorgänge gesamt | Die Gesamtanzahl von Vorgängen, die im Testdurchlauf versucht wurden |
-| Passed operations (Bestandene Vorgänge) | Die Anzahl von Vorgängen, die im Testdurchlauf bestanden haben |
-|  Fehlerhafte Vorgänge | Die Anzahl von Vorgängen, bei denen Fehler aufgetreten sind |
+| Testname | Name und Version des Tests |
+| Category (Kategorie) | Der Zweck des Tests |
+| Erstellt | Der Zeitpunkt, zu dem der Test geplant wurde |
+| Gestartet | Der Zeitpunkt, zu dem die Ausführung des Tests gestartet wurde |
+| Duration | Die Ausführungsdauer des Tests |
+| Status | Der Status oder das Ergebnis des Tests. Vor oder während der Ausführung lautet der Status `Pending` oder `Running`. Nach der Ausführung lautet der Status `Cancelled`, `Failed`, `Aborted` oder `Succeeded`. |
+| Agent-Name | Der Name des Agents, der den Test ausgeführt hat |
+| Vorgänge gesamt | Die Gesamtanzahl von Vorgängen, die im Test versucht wurden |
+| Passed operations (Bestandene Vorgänge) | Die Anzahl erfolgreicher Vorgänge im Test |
+|  Fehlerhafte Vorgänge | Die Anzahl fehlerhafter Vorgänge im Test |
 
-### <a name="group-columns-in-the-test-pass-summary"></a>Gruppieren der Spalten in der Zusammenfassung des Testdurchlaufs
+### <a name="actions"></a>Aktionen
 
-Sie können eine Spalte auswählen und in die Kopfzeile ziehen, um eine Gruppe für den Spaltenwert zu erstellen.
+Für jede Testinstanz werden ausführbare Aktionen aufgelistet, wenn Sie in der Tabelle der Testinstanzen auf das jeweilige Kontextmenü **[...]** klicken.
 
-## <a name="reschedule-a-test"></a>Neuplanen eines Tests
+#### <a name="view-information-about-the-test-definition"></a>Anzeigen von Information zur Testdefinition
 
-1. [Öffnen Sie die Zusammenfassung des Testdurchlaufs.](#open-the-test-pass-summary)
-2. Klicken Sie auf **Reschedule** (Neu planen), um den Testdurchlauf neu zu planen.
-3. Geben Sie das Kennwort des Cloudadministrators für Ihre Azure Stack-Instanz ein.
-4. Geben Sie die Diagnosespeicher-Zeichenfolge ein, die Sie beim Einrichten Ihres Kontos definiert haben.
-5. Planen Sie den Test neu.
+Wählen Sie im Kontextmenü **Information anzeigen** aus, um allgemeine Informationen zur Testdefinition anzuzeigen. Diese ist für alle Testinstanzen mit dem gleichen Namen und der gleichen Version identisch.
 
-## <a name="cancel-a-test"></a>Abbrechen eines Tests
-
-1. [Öffnen Sie die Zusammenfassung des Testdurchlaufs.](#open-the-test-pass-summary)
-2. Wählen Sie **Abbrechen** aus.
-
-## <a name="get-test-information"></a>Abrufen von Testinformationen
-
-1. [Öffnen Sie die Zusammenfassung des Testdurchlaufs.](#open-the-test-pass-summary)
-2. Klicken Sie auf **View information** (Informationen anzeigen), um den Testdurchlauf neu zu planen.
-
-**Testinformationen**
-
-| NAME | BESCHREIBUNG |
+| Testeigenschaft | BESCHREIBUNG |
 | -- | -- |
-| Testname | Der Name des Tests, z.B. „OEM Update on Azure Stack 1806 RC Validation“ |
-| Testversion | Die Version des Tests, z.B. 5.1.4.0 |
-| Herausgeber | Der Herausgeber des Tests, etwa Microsoft |
-| Category (Kategorie) | Die Kategorie des Tests, z.B. **Functional** (Funktion) oder **Reliability** (Zuverlässigkeit) |
-| Target services (Zieldienste) | Die getesteten Dienste, z.B. VirtualMachines |
+| Testname | Der Name des Tests. |
+| Testversion | Die Version des Tests |
+| Herausgeber | Der Herausgeber des Tests |
+| Category (Kategorie) |  Der Zweck des Tests |
+| Target services (Zieldienste) | Die Azure Stack-Dienste, die getestet werden |
 | BESCHREIBUNG | Die Beschreibung des Tests |
-| Estimated duration (minutes) (Geschätzte Dauer (Minuten)) | Die Dauer der Testausführung in Minuten |
-| Links | Ein Link zur GitHub-Problemverfolgung |
+| Estimated duration (minutes) (Geschätzte Dauer (Minuten)) | Die erwartete Ausführungsdauer des Tests |
+| Links | Alle relevanten Informationen zum Test oder zu Ansprechpartnern |
 
-## <a name="get-test-parameters"></a>Abrufen der Testparameter
+#### <a name="view-test-instance-parameters"></a>Anzeigen der Testinstanzparameter
 
-1. [Öffnen Sie die Zusammenfassung des Testdurchlaufs.](#open-the-test-pass-summary)
-2. Klicken Sie auf **View parameters** (Parameter anzeigen), um den Testdurchlauf neu zu planen.
+Wählen Sie im Kontextmenü die Option **View parameters** (Parameter anzeigen), um die Parameter anzuzeigen, die der Testinstanz zum geplanten Zeitpunkt zur Verfügung gestellt werden. Vertrauliche Zeichenfolgen wie Kennwörter werden nicht angezeigt. Diese Aktion ist nur für geplante Tests verfügbar.
 
-**Parameter**
+Dieses Fenster enthält die folgenden Metadaten für alle Testinstanzen:
 
-| NAME | BESCHREIBUNG |
+| Testinstanzeigenschaft | BESCHREIBUNG |
 | -- | -- |
-| Testname | Der Name des Tests, z.B. „oemupdate1806test“ |
-| Testversion | Die Version des Tests, z.B. 5.1.4.0 |
-| Test instance ID (Testinstanz-ID) | Eine GUID zum Identifizieren der spezifischen Instanz des Tests, z.B. „20b20645-b400-4f0d-bf6f-1264d866ada9“ |
-| cloudAdminUser | Der Name des Kontos, das als Cloudadministrator verwendet wird, etwa **cloudadmin** |
-| DiagnosticsContainerName | Die ID des Diagnosecontainers, z.B. „04dd3815-5f35-4158-92ea-698027693080“ |
+| Testname | Der Name des Tests. |
+| Testversion | Die Version des Tests |
+| Test instance ID (Testinstanz-ID) | Eine GUID, die die spezifische Instanz des Tests angibt |
 
-## <a name="get-test-operations"></a>Abrufen von Testvorgängen
+#### <a name="view-test-instance-operations"></a>Anzeigen der Testinstanzvorgänge
 
-1. [Öffnen Sie die Zusammenfassung des Testdurchlaufs.](#open-the-test-pass-summary)
-2. Klicken Sie auf **View operations** (Vorgänge anzeigen), um den Testdurchlauf neu zu planen. Der Bereich mit der Zusammenfassung der Vorgänge wird geöffnet.
+Wählen Sie im Kontextmenü die Option **View operations** (Vorgänge anzeigen) aus, um den ausführlichen Status von Vorgängen anzuzeigen, die während des Tests ausgeführt wurden. Diese Aktion ist nur für geplante Tests verfügbar.
 
-## <a name="get-test-logs"></a>Abrufen von Testprotokollen
+![View operations (Vorgänge anzeigen)](media/manage-test_context-menu-operations.png)
 
-1. [Öffnen Sie die Zusammenfassung des Testdurchlaufs.](#open-the-test-pass-summary)
-2. Klicken Sie auf **Protokolle herunterladen**, um den Testdurchlauf neu zu planen.  
-    Eine ZIP-Datei namens „ReleaseYYYY-MM-DD.zip“, die die Protokolle enthält, wird heruntergeladen.
+#### <a name="download-logs-for-a-completed-test-instance"></a>Herunterladen von Protokollen für eine abgeschlossene Testinstanz
+
+Wählen Sie im Kontextmenü die Option **Protokolle herunterladen** aus, um eine Datei vom Typ `.zip` der Protokolle herunterzuladen, die während der Testausführung ausgegeben wurden. Diese Aktion ist nur für abgeschlossene Tests verfügbar, d.h. Tests mit dem Status `Cancelled`, `Failed`, `Aborted` oder `Succeeded`.
+
+#### <a name="reschedule-a-test-instance-or-schedule-a-test"></a>Neuplanen einer Testinstanz oder Planen eines Tests
+
+Die Planung von Tests über die Verwaltungsseite hängt vom Workflowtyp ab, in dem der Test ausgeführt wird.
+
+##### <a name="test-pass-workflow"></a>Workflow „Testdurchlauf“
+
+Im Workflow „Testdurchlauf“ werden beim **Neuplanen** einer Testinstanz die gleichen Parameter wie bei der ursprünglichen Testinstanz verwendet. Das ursprüngliche Ergebnis (einschließlich der Protokolle) wird *ersetzt*. Bei der Neuplanung müssen vertrauliche Zeichenfolgen wie Kennwörter erneut eingegeben werden.
+
+1. Wählen Sie im Kontextmenü die Option **Reschedule** (Neu planen) aus, um eine Eingabeaufforderung zum Neuplanen der Testinstanz zu öffnen.
+
+1. Geben Sie alle erforderlichen Parametern ein.
+
+1. Wählen Sie **Senden** aus, um die Testinstanz neu zu planen und die vorhandene Instanz zu ersetzen.
+
+##### <a name="validation-workflows"></a>Validierungsworkflows
+
+[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+
+#### <a name="cancel-a-test-instance"></a>Abbrechen einer Testinstanz
+
+Ein geplanter Test kann abgebrochen werden, wenn sein Status `Pending` oder `Running` lautet.  
+
+1. Wählen Sie im Kontextmenü die Option **Abbrechen** aus, um eine Eingabeaufforderung zum Abbrechen der Testinstanz zu öffnen.
+
+1. Wählen Sie **Senden** aus, um die Testinstanz abzubrechen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr zu [Validation-as-a-Service in Azure Stack](https://docs.microsoft.com/azure/azure-stack/partner).
+- [Problembehandlung für Validation-as-a-Service](azure-stack-vaas-troubleshoot.md)

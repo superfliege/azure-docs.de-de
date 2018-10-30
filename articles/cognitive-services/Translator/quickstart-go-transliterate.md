@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: Konvertieren eines Textskripts – Textübersetzung, Go'
+title: 'Schnellstart: Konvertieren eines Textskripts, Go: Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart konvertieren Sie Text in einer Sprache aus einem Skript in ein anderes. Dazu verwenden Sie die Textübersetzungs-API mit Go.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: c4930e03f5d366eb3f21b44c5be90c20230065c3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: fd41eff65c312c125594bb3251f9c4fe74108eaf
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126750"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648359"
 ---
-# <a name="quickstart-transliterate-text-with-go"></a>Schnellstart: Transliteration von Text mit Go
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-go"></a>Schnellstart: Transliteration von Text mit der Textübersetzungs-REST-API (Go)
 
 In dieser Schnellstartanleitung konvertieren Sie mithilfe der Textübersetzungs-API Text in einer Sprache aus einem Skript in ein anderes.
 

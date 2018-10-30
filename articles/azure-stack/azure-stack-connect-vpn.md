@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: scottnap
-ms.openlocfilehash: dcbe222d8dd3d3c658e5778fdc4bc1cc01b5c12d
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: bcdd5b6d28a6c08b7b36e170fcb7d184fcf65eb0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078884"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024459"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Herstellen einer Verbindung von Azure Stack mit Azure über ein VPN
 
@@ -37,15 +37,13 @@ Vergewissern Sie sich vor dem Durchführen der Verbindungskonfiguration, dass Si
 
 ### <a name="vpn-connection-diagram"></a>VPN-Verbindungsdiagramm
 
-Das folgende Diagramm zeigt die endgültige Verbindungskonfiguration:
+Die folgende Abbildung zeigt die endgültige Verbindungskonfiguration:
 
 ![Konfiguration einer Site-to-Site-VPN-Verbindung](media/azure-stack-connect-vpn/image2.png)
 
 ### <a name="network-configuration-example-values"></a>Beispielwerte für Netzwerkkonfiguration
 
-Die Tabelle mit den Beispielen für die Netzwerkkonfiguration enthält die Werte, die für die Beispiele in diesem Artikel verwendet werden. Sie können diese Werte verwenden oder sie zum besseren Verständnis der Beispiele in diesem Artikel heranziehen.
-
-**Beispiele für Netzwerkkonfiguration**
+Die Tabelle mit den Beispielen für die Netzwerkkonfiguration enthält die Werte, die für die Beispiele in diesem Artikel verwendet werden. Sie können diese Werte verwenden oder sie zum besseren Verständnis der Beispiele in diesem Artikel heranziehen:
 
 |   |Azure Stack|Azure|
 |---------|---------|---------|
@@ -57,17 +55,17 @@ Die Tabelle mit den Beispielen für die Netzwerkkonfiguration enthält die Werte
 
 ## <a name="create-the-network-resources-in-azure"></a>Erstellen der Netzwerkressourcen in Azure
 
-Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisungen zeigen, wie die Ressourcen mithilfe des [Azure-Portals](http://portal.azure.com/) erstellt werden.
+Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisungen zeigen, wie die Ressourcen mithilfe des [Azure-Portals](https://portal.azure.com/) erstellt werden.
 
 ### <a name="create-the-virtual-network-and-virtual-machine-vm-subnet"></a>Erstellen des Subnetzes für das virtuelle Netzwerk und virtuelle Computer (VM)
 
-1. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](http://portal.azure.com/) an.
+1. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie im Benutzerportal auf **+ Ressource erstellen**.
 3. Wechseln Sie zu **Marketplace**, und wählen Sie dann **Netzwerk** aus.
 4. Wählen Sie **Virtuelles Netzwerk** aus.
 5. Verwenden Sie als **Name**, **Adressraum**, **Subnetzname** und **Subnetzadressbereich** für Azure die Werte aus der Netzwerk-Konfigurationstabelle.
 6. Erstellen Sie entweder eine neue **Ressourcengruppe**, oder wählen Sie **Use existing** (Vorhandene verwenden) auswählen, wenn Sie bereits über eine verfügen.
-7. Wählen Sie den **Standort** Ihres virtuellen Netzwerks aus.  Wenn Sie die Beispielwerte verwenden, wählen Sie **USA, Osten** oder einen anderen Standort Ihrer Wahl aus.
+7. Wählen Sie den **Standort** Ihres virtuellen Netzwerks aus.  Wenn Sie die Beispielwerte verwenden, wählen Sie **USA, Osten** oder einen anderen Standort aus.
 8. Wählen Sie die Option **An Dashboard anheften** aus.
 9. Klicken Sie auf **Erstellen**.
 
@@ -79,7 +77,7 @@ Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisu
 4. Der Name des Subnetzes wird standardmäßig auf **GatewaySubnet** festgelegt.
 
    >[!IMPORTANT]
-   >Gatewaysubnetze sind spezielle Subnetze und **müssen** diesen spezifischen Namen besitzen, damit sie richtig funktionieren.
+   >Gatewaysubnetze sind spezielle Subnetze und müssen diesen spezifischen Namen besitzen, damit sie ordnungsgemäß funktionieren.
 
 5. Vergewissern Sie sich, dass im Feld **Adressbereich** die Adresse **10.100.1.0/24** angegeben ist.
 6. Wählen Sie **OK**, um das Gatewaysubnetz zu erstellen.
@@ -102,7 +100,7 @@ Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisu
 2. Wechseln Sie zu **Marketplace**, und wählen Sie dann **Netzwerk** aus.
 3. Wählen Sie in der Ressourcenliste den Eintrag für das **lokale Netzwerkgateway** aus.
 4. Geben Sie unter **Name** den Namen **Azs-GW** ein.
-5. Geben Sie unter **IP-Adresse** die öffentliche IP-Adresse für Ihr Gateway des virtuellen Azure Stack-Netzwerks ein, die in der Netzwerk-Konfigurationstabelle oben aufgelistet ist.
+5. Geben Sie unter **IP-Adresse** die öffentliche IP-Adresse für Ihr Gateway des virtuellen Azure Stack-Netzwerks ein, die in der Netzwerkkonfigurationstabelle oben aufgelistet ist.
 6. Geben Sie unter **Adressraum** für Azure Stack den Adressraum **10.1.0.0/24** und **10.1.1.0/24** für **AzureVNet** ein.
 7. Vergewissern Sie sich, dass Ihr **Abonnement**, die **Ressourcengruppe** und der **Speicherort** richtig sind, und klicken Sie auf **Erstellen**.
 
@@ -116,10 +114,10 @@ Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisu
 6. Wählen Sie im Bereich **Einstellungen** die Option **Gateway des virtuellen Netzwerks** aus, und wählen Sie anschließend **Azure-GW** aus.
 7. Wählen Sie **Gateway des lokalen Netzwerks** aus, und wählen Sie dann **Azs-GW** aus.
 8. Geben Sie unter **Verbindungsname** den Namen **Azure-Azs** ein.
-9. Geben Sie unter **Gemeinsam verwendeter Schlüssel (PSK)** den Wert **12345** ein. Klicken Sie auf **OK**.
+9. Geben Sie unter **Gemeinsam verwendeter Schlüssel (PSK)** den Wert **12345** ein, und wählen Sie **OK** aus.
 
    >[!NOTE]
-   >Falls Sie einen anderen Wert für den gemeinsam verwendeten Schlüssel nutzen, sollten Sie nicht vergessen, dass er dem Wert für den gemeinsam verwendeten Schlüssel entsprechen *muss*, den Sie am anderen Ende der Verbindung erstellt haben.
+   >Falls Sie einen anderen Wert für den gemeinsam verwendeten Schlüssel nutzen, sollten Sie nicht vergessen, dass er dem Wert für den gemeinsam verwendeten Schlüssel entsprechen muss, den Sie am anderen Ende der Verbindung erstellt haben.
 
 10. Überprüfen Sie den Bereich **Zusammenfassung**, und klicken Sie auf **OK**.
 
@@ -131,10 +129,10 @@ Erstellen Sie jetzt einen virtuellen Computer in Azure, und platzieren Sie ihn i
 2. Wechseln Sie zu **Marketplace**, und wählen Sie dann **Compute** aus.
 3. Wählen Sie in der Liste mit den VM-Images das Image **Windows Server 2016 Datacenter Oval** aus.
 4. Geben Sie im Bereich **Grundlagen** unter **Name** den Namen **AzureVM** ein.
-5. Geben Sie einen gültigen Benutzernamen und ein gültiges Kennwort ein. Mit diesem Konto melden Sie sich am virtuellen Computer an, nachdem dieser erstellt wurde.
+5. Geben Sie einen gültigen Benutzernamen und ein gültiges Kennwort ein. Mit diesem Konto melden Sie sich beim virtuellen Computer an, nachdem dieser erstellt wurde.
 6. Geben Sie Werte für **Abonnement**, **Ressourcengruppe** und **Speicherort** an, und wählen Sie anschließend **OK**.
 7. Wählen Sie im Bereich **Größe** für diese Instanz eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
-8. Im Abschnitt **Einstellungen** können Sie die Standardeinstellungen verwenden. Überprüfen Sie Folgendes, bevor Sie „OK“ wählen:
+8. Im Abschnitt **Einstellungen** können Sie die Standardeinstellungen verwenden. Überprüfen Sie Folgendes, bevor Sie **OK** wählen:
 
    * Das virtuelle Netzwerk **AzureVnet** ist ausgewählt.
    * Das Subnetz ist auf **10.100.0.0/24** festgelegt.
@@ -156,7 +154,7 @@ Ein Dienstadministrator kann sich als Benutzer anmelden, um die Pläne, Angebote
 1. Verwenden Sie ein Benutzerkonto für die Anmeldung beim Benutzerportal.
 2. Klicken Sie im Benutzerportal auf **+ Ressource erstellen**.
 
-    ![Neues virtuelles Netzwerk erstellen](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
+    ![Neues virtuelles Netzwerk erstellen](media/azure-stack-connect-vpn/image3.png)
 
 3. Wechseln Sie zu **Marketplace**, und wählen Sie dann **Netzwerk** aus.
 4. Wählen Sie **Virtuelles Netzwerk** aus.
@@ -173,9 +171,9 @@ Ein Dienstadministrator kann sich als Benutzer anmelden, um die Pläne, Angebote
 2. Wählen Sie im Bereich **Einstellungen** die Option **Subnetze** aus.
 3. Wählen Sie **Gatewaysubnetz**, um dem virtuellen Netzwerk ein Gatewaysubnetz hinzuzufügen.
 
-    ![Gatewaysubnetz hinzufügen](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
+    ![Gatewaysubnetz hinzufügen](media/azure-stack-connect-vpn/image4.png)
 
-4. Der Subnetzname ist standardmäßig auf **GatewaySubnet** festgelegt. Gateway-Subnetz sind speziell. Sie müssen den Namen *GatewaySubnet* verwenden, um ordnungsgemäß zu funktionieren.
+4. Der Subnetzname ist standardmäßig auf **GatewaySubnet** festgelegt. Sie müssen den Namen **GatewaySubnet** verwenden, damit Gatewaysubnetze ordnungsgemäß funktionieren.
 5. Überprüfen Sie, ob die unter **Adressbereich** angegebene Adresse **10.1.1.0/24** lautet.
 6. Wählen Sie **OK**, um das Gatewaysubnetz zu erstellen.
 
@@ -195,9 +193,9 @@ Ein Dienstadministrator kann sich als Benutzer anmelden, um die Pläne, Angebote
 
 Es gibt Unterschiede zwischen einem *Gateway des lokalen Netzwerks* in Azure Stack und in einer Azure-Bereitstellung.
 
-In einer Azure-Bereitstellung stellt ein lokales Netzwerkgateway ein lokales physisches Gerät (am Benutzerstandort) dar, für das Sie eine Verbindung mit einem Gateway für virtuelle Netzwerke in Azure herstellen. In Azure Stack sind beide Enden der Verbindung aber Gateways für virtuelle Netzwerke.
+In einer Azure-Bereitstellung stellt ein lokales Netzwerkgateway ein lokales physisches Gerät (am Benutzerstandort) dar, für das Sie eine Verbindung mit einem Gateway für virtuelle Netzwerke in Azure herstellen. In Azure Stack sind jedoch beide Enden der Verbindung Gateways für virtuelle Netzwerke.
 
-Etwas allgemeiner betrachtet wird mit der Ressource des lokalen Netzwerkgateways immer das Remotegateway am anderen Ende der Verbindung angegeben.
+Ganz allgemein wird mit der Ressource des lokalen Netzwerkgateways immer das Remotegateway am anderen Ende der Verbindung angegeben.
 
 ### <a name="create-the-local-network-gateway-resource"></a>Erstellen der Ressource des lokalen Netzwerkgateways
 
@@ -206,9 +204,9 @@ Etwas allgemeiner betrachtet wird mit der Ressource des lokalen Netzwerkgateways
 3. Wechseln Sie zu **Marketplace**, und wählen Sie dann **Netzwerk** aus.
 4. Wählen Sie in der Ressourcenliste den Eintrag für das **lokale Netzwerkgateway** aus.
 5. Geben Sie unter **Name** den Namen **Azure-GW** ein.
-6. Geben Sie unter **IP-Adresse** die öffentliche IP-Adresse für das Gateway des virtuellen Netzwerks in Azure **Azure-GW-PiP** ein. Diese Adresse wird weiter oben in der Netzwerk-Konfigurationstabelle angezeigt.
+6. Geben Sie unter **IP-Adresse** die öffentliche IP-Adresse für das Gateway für virtuelle Netzwerke in Azure **Azure-GW-PiP** ein. Diese Adresse wird weiter oben in der Netzwerk-Konfigurationstabelle angezeigt.
 7. Geben Sie unter **Adressraum** für den Adressraum des zuvor erstellten Azure VNets **10.100.0.0/24** und **10.100.1.0/24** ein.
-8. Vergewissern Sie sich, dass Ihr **Abonnement**, die **Ressourcengruppe** und der **Speicherort** richtig sind, und klicken Sie auf **Erstellen**.
+8. Vergewissern Sie sich, dass die Werte für **Abonnement**, **Ressourcengruppe** und **Speicherort** richtig sind, und wählen Sie **Erstellen** aus.
 
 ### <a name="create-the-connection"></a>Erstellen der Verbindung
 
@@ -225,17 +223,17 @@ Etwas allgemeiner betrachtet wird mit der Ressource des lokalen Netzwerkgateways
 
 ### <a name="create-a-virtual-machine-vm"></a>Erstellen eines virtuellen Computers (VM)
 
-Zum Überprüfen der VPN-Verbindung müssen Sie zwei VMs erstellen: eine in Azure und eine in Azure Stack. Nachdem Sie diese virtuellen Computer erstellt haben, können Sie sie zum Senden und Empfangen von Daten über den VPN-Tunnel verwenden.
+Erstellen Sie zum Überprüfen der VPN-Verbindung zwei virtuelle Computer: einen in Azure und einen in Azure Stack. Nachdem Sie diese virtuellen Computer erstellt haben, können Sie sie zum Senden und Empfangen von Daten über den VPN-Tunnel verwenden.
 
 1. Wählen Sie im Azure-Portal die Option **+ Ressource erstellen**.
 2. Wechseln Sie zu **Marketplace**, und wählen Sie dann **Compute** aus.
 3. Wählen Sie in der Liste mit den VM-Images das Image **Windows Server 2016 Datacenter Oval** aus.
 4. Geben Sie im Bereich **Grundlagen** unter **Name** den Namen **Azs-VM** ein.
-5. Geben Sie einen gültigen Benutzernamen und ein gültiges Kennwort ein. Mit diesem Konto melden Sie sich am virtuellen Computer an, nachdem dieser erstellt wurde.
+5. Geben Sie einen gültigen Benutzernamen und ein gültiges Kennwort ein. Mit diesem Konto melden Sie sich beim virtuellen Computer an, nachdem dieser erstellt wurde.
 6. Geben Sie Werte für **Abonnement**, **Ressourcengruppe** und **Speicherort** an, und wählen Sie anschließend **OK**.
 7. Wählen Sie im Bereich **Größe** für diese Instanz eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 8. Übernehmen Sie im Bereich **Einstellungen** die Standardeinstellungen. Stellen Sie sicher, dass das virtuelle Netzwerk **Azs-VNet** ausgewählt ist. Stellen Sie sicher, dass das Subnetz auf **10.1.0.0/24** festgelegt ist. Wählen Sie dann **OK**aus.
-9. Überprüfen Sie die Einstellungen im Bereich **Zusammenfassung**, und klicken Sie anschließend auf **OK**.
+9. Überprüfen Sie die Einstellungen im Abschnitt **Zusammenfassung**, und wählen Sie anschließend **OK** aus.
 
 ## <a name="test-the-connection"></a>Testen der Verbindung
 
@@ -254,10 +252,10 @@ Nachdem die Site-to-Site-Verbindung hergestellt wurde, sollten Sie sicherstellen
 3. Suchen Sie in der Liste mit den virtuellen Computern nach dem zuvor erstellten Computer **Azs-VM**, und wählen Sie ihn aus.
 4. Wählen Sie im Bereich für den virtuellen Computer die Option **Verbinden**. Öffnen Sie anschließend die Datei „Azs-VM.rdp“.
 
-     ![Schaltfläche „Verbinden“](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
+     ![Schaltfläche „Verbinden“](media/azure-stack-connect-vpn/image17.png)
 
 5. Melden Sie sich mit dem Konto an, das Sie beim Erstellen des virtuellen Computers konfiguriert haben.
-6. Öffnen Sie ein **Windows PowerShell**-Fenster mit erhöhten Rechten.
+6. Öffnen Sie eine Windows PowerShell-Eingabeaufforderung mit erhöhten Rechten.
 7. Geben Sie **ipconfig /all** ein.
 8. Suchen Sie in der Ausgabe die **IPv4-Adresse**, und speichern Sie diese zur späteren Verwendung. Diese Adresse wird später von Azure aus gepingt. In der Beispielumgebung wird die Adresse **10.1.0.4** verwendet, in Ihrer Umgebung lautet sie aber unter Umständen anders. Sie sollte innerhalb des zuvor erstellten Subnetzes **10.1.0.0/24** liegen.
 9. Zum Erstellen einer Firewallregel, zulässt, dass der virtuelle Computer auf Pings reagiert, führen Sie den folgenden PowerShell-Befehl aus:
@@ -288,15 +286,15 @@ Nachdem die Site-to-Site-Verbindung hergestellt wurde, sollten Sie sicherstellen
 
 10. Pingen Sie vom virtuellen Computer in Azure den virtuellen Computer in Azure Stack durch den Tunnel. Hierzu pingen Sie die DIP-Adresse, die Sie für „Azs-VM“ erfasst haben. In der Beispielumgebung wird die Adresse **10.1.0.4** verwendet. Achten Sie jedoch darauf, dass Sie die Adresse pingen, die Sie in Ihrem Lab notiert haben. Das Ergebnis sollte in etwa wie im folgenden Screenshot aussehen:
 
-    ![Ping erfolgreich](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
+    ![Ping erfolgreich](media/azure-stack-connect-vpn/image19b.png)
 
-11. Wenn Sie eine Antwort vom virtuellen Remotecomputer erhalten, war der Test erfolgreich! Sie können das Fenster für den virtuellen Computer schließen.
+11. Wenn Sie eine Antwort vom virtuellen Remotecomputer erhalten, war der Test erfolgreich. Sie können das Fenster für den virtuellen Computer schließen.
 
-Außerdem sollten Sie einen eingehenderen Test der Datenübertragung durchführen. Ein Beispiel hierfür ist das Kopieren von Dateien unterschiedlicher Größe in beiden Richtungen.
+Außerdem sollten Sie einen eingehenderen Test der Datenübertragung durchführen. Kopieren Sie beispielsweise Dateien unterschiedlicher Größe in beide Richtungen.
 
 ### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Anzeigen der Datenübertragungsstatistik über die Gatewayverbindung
 
-Im Bereich **Verbindung** können Sie die Datenmenge ermitteln, die über die Site-to-Site-Verbindung übertragen wird. Mit diesem Test können Sie auch überprüfen, ob der soeben gesendete Ping tatsächlich die VPN-Verbindung durchlaufen hat.
+Im Abschnitt **Verbindung** können Sie die Datenmenge ermitteln, die über die Site-to-Site-Verbindung übertragen wird. Mit diesem Test können Sie auch überprüfen, ob der soeben gesendete Ping tatsächlich die VPN-Verbindung durchlaufen hat.
 
 1. Verwenden Sie Ihr Benutzerkonto zur Anmeldung beim Benutzerportal, während Sie beim virtuellen Benutzercomputer in Azure Stack angemeldet sind.
 2. Wechseln Sie zu **Alle Ressourcen**, und wählen Sie die Verbindung **Azs-Azure** aus. **Verbindungen** wird angezeigt.

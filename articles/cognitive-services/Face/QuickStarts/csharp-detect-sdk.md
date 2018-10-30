@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Gesichtern in einem Bild – SDK, C#'
+title: 'Schnellstart: Erkennen von Gesichtern in einem Bild mit dem .NET SDK und C#'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung führen Sie die Gesichtserkennung für ein Bild durch, indem Sie die Windows-C#-Clientbibliothek für die Gesichtserkennung in Cognitive Services verwenden.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: b5fd10aaab28303079d3eef9c4c5c25207bb672e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: a4b0b8b277ed6bc6e2bc3c7549d1e67d5f18c615
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344981"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954962"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-c35---face"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit C&#35; – Gesichtserkennung
+# <a name="quickstart-detect-faces-in-an-image-using-the-net-sdk-with-c"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit dem .NET SDK und C#
 
 In dieser Schnellstartanleitung führen Sie eine Erkennung menschlicher Gesichter in einem Bild mithilfe der Windows-Clientbibliothek für die Gesichtserkennung durch.
 

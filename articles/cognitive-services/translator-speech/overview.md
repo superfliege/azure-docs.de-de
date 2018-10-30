@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 77e60fe39f7cbb985ee0e7ed2785805e80c389ae
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 641081e4a01aa5810d569795c10e967e4b46568e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341139"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023576"
 ---
 # <a name="what-is-translator-speech-api"></a>Was ist die Sprachübersetzungs-API?
 
@@ -34,7 +34,7 @@ Bei Sprache-zu-Sprache-Übersetzungen bietet der Dienst die Möglichkeit, Sprach
 Die Sprachübersetzungs-API verwendet für die Bereitstellung eines Vollduplex-Kommunikationskanals zwischen dem Client und dem Server das WebSocket-Protokoll. 
 
 ## <a name="about-microsoft-translator"></a>Informationen zu Microsoft Translator
-Microsoft Translator ist ein cloudbasierter Übersetzungsdienst. Das Herzstück dieses Diensts bilden die [Textübersetzungs-API] (https://www.microsoft.com/en-us/translator/translatorapi.aspx) und die Sprachübersetzungs-API, die in verschiedensten Produkten und Diensten von Microsoft zum Einsatz kommen und in Anwendungen und Workflows von Tausenden von Unternehmen auf der ganzen Welt genutzt werden, die mit ihren Inhalten ein globales Publikum erreichen möchten.
+Microsoft Translator ist ein cloudbasierter Übersetzungsdienst. Das Herzstück dieses Diensts bilden die [Textübersetzungs-API](https://www.microsoft.com/en-us/translator/translatorapi.aspx) und die Sprachübersetzungs-API, die in verschiedensten Produkten und Diensten von Microsoft zum Einsatz kommen und in Anwendungen und Workflows von Tausenden von Unternehmen auf der ganzen Welt genutzt werden, die mit ihren Inhalten ein globales Publikum erreichen möchten.
 
 Weitere Informationen zum Microsoft Translator-Dienst finden Sie [hier](https://www.microsoft.com/en-us/translator/home.aspx).
 

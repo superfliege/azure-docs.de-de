@@ -1,20 +1,20 @@
 ---
 title: Suchen mit Azure Maps | Microsoft-Dokumentation
 description: Suchen nach einem Point of Interest in der Nähe mit Azure Maps
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 761674c5839f0513532355116db07604f9e9d9dc
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 10fb30b77cc3cd18cbb6b3def9682349474fba71
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816819"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645813"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Suchen nach Points of Interest in der Nähe mit Azure Maps
 
@@ -116,11 +116,10 @@ Bei der Kartensteuerelement-API handelt es sich um eine praktische Clientbibliot
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     In diesem Segment wird die Kartensteuerelement-API für den Schlüssel Ihres Azure Maps-Kontos initialisiert. **Atlas** ist der Namespace, der die API und die zugehörigen visuellen Komponenten enthält. **Atlas.Map** stellt das Steuerelement für ein visuelles Element und eine interaktive Webkarte bereit.
 
 4. Speichern Sie die Änderungen in der Datei, und öffnen Sie die HTML-Seite in einem Browser. Dies ist die einfachste Karte, die Sie durch das Aufrufen von **atlas.map** mit Ihrem Kontoschlüssel erstellen können.
@@ -148,14 +147,14 @@ In diesem Abschnitt wird veranschaulicht, wie mit der Such-API von Maps ein Poin
     var client = new atlas.service.Client(MapsAccountKey);
     ```
 
-3. Alle Funktionen der Karte sollten erst geladen werden, nachdem die Karte geladen wurde. Sie können dies sicherstellen, indem Sie alle Kartenfunktionen im eventListener-Block der Karte anordnen. Fügen Sie die folgenden Codezeilen ein, um der Karte einen [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) hinzuzufügen. So stellen Sie sicher, dass die Karte vollständig geladen wird, bevor Funktionalitäten hinzugefügt werden.
+3. Alle Funktionen der Karte sollten erst geladen werden, nachdem die Karte geladen wurde. Sie können dies sicherstellen, indem Sie alle Kartenfunktionen im eventListener-Block der Karte anordnen. Fügen Sie die folgenden Codezeilen ein, um der Karte einen [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzuzufügen. So stellen Sie sicher, dass die Karte vollständig geladen wird, bevor Funktionalitäten hinzugefügt werden.
     
     ```JavaScript
-         map.addEventListener("load", function() {
+         map.events.add("load", function() {
          });
     ```
 
-4. Fügen Sie den folgenden Skriptblock **im eventListener zum Laden der Karte** hinzu, um die Abfrage zu erstellen. Hier wird der Dienst für die Fuzzysuche (eine einfache Such-API des Suchdiensts) verwendet. Der Dienst für die Fuzzysuche behandelt die meisten Fuzzyeingaben wie eine beliebige Kombination aus Adress- und POI-Token (Point of Interest). Er sucht innerhalb des angegebenen Radius nach Tankstellen in der Nähe. Die Antwort wird dann im GeoJSON Format analysiert und in Punktfeatures konvertiert, die der Karte als Stecknadeln hinzugefügt werden. Im letzten Teil des Skripts werden mithilfe der Maps-Eigenschaft [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) Kameragrenzen für die Karte hinzugefügt.
+4. Fügen Sie den folgenden Skriptblock **in den Ereignissen zum Laden der Karte** hinzu, um die Abfrage zu erstellen. Hier wird der Dienst für die Fuzzysuche (eine einfache Such-API des Suchdiensts) verwendet. Der Dienst für die Fuzzysuche behandelt die meisten Fuzzyeingaben wie eine beliebige Kombination aus Adress- und POI-Token (Point of Interest). Er sucht innerhalb des angegebenen Radius nach Tankstellen in der Nähe. Die Antwort wird dann im GeoJSON Format analysiert und in Punktfeatures konvertiert, die der Karte als Stecknadeln hinzugefügt werden. Im letzten Teil des Skripts werden mithilfe der Maps-Eigenschaft [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) Kameragrenzen für die Karte hinzugefügt.
 
     ```JavaScript
 
@@ -190,8 +189,8 @@ In diesem Abschnitt wird veranschaulicht, wie mit der Such-API von Maps ein Poin
             map.setCameraBounds({
                bounds: geojsonResponse.getGeoJsonResults().bbox,
                padding: 50
-            );
-        });
+            });
+    });
     ```
 5. Speichern Sie die Datei **MapSearch.html**, und aktualisieren Sie den Browser. Nun sollte die Karte auf Seattle zentriert angezeigt werden, und die Standorte von Tankstellen in der Umgebung sollten mit runden blauen Markierungen gekennzeichnet sein.
 
@@ -254,7 +253,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
 > * Suchen eines Point of Interest in der Nähe mithilfe des Suchdiensts
 
-Sie können auf das Codebeispiel für dieses Tutorial hier zugreifen:
+Das Codebeispiel für dieses Tutorial finden Sie hier:
 
 > [Search location with Azure Maps](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/search.html) (Suchen nach dem Standort mit Azure Maps)
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/24/2018
+ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1940fb210481dc75fe48d110776185e90cb3e42f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991044"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987431"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken
 
@@ -51,11 +51,11 @@ Nach dem Aktivieren der Diagnoseprotokollierung kann es noch einige Minuten daue
 5. Da die Protokolle in diesem Beispiel von Log Analytics gespeichert werden, geben Sie **Firewall log analytics** als Name ein.
 6. Klicken Sie auf **An Log Analytics senden**, um Ihren Arbeitsbereich zu konfigurieren. Sie können auch Event Hubs und ein Speicherkonto verwenden, um die Diagnoseprotokolle zu speichern.
 7. Klicken Sie unter **Log Analytics** auf **Konfigurieren**.
-8. Klicken Sie auf der Seite „OMS-Arbeitsbereiche“ auf **Neuen Arbeitsbereich erstellen**.
-9. Geben Sie auf der Seite **Log Analytics-Arbeitsbereich** den Namen **firewall-oms** für den neuen **OMS-Arbeitsbereich** ein.
+8. Klicken Sie auf der Seite „Log Analytics-Arbeitsbereiche“ auf **Neuen Arbeitsbereich erstellen**.
+9. Geben Sie auf der Seite **Log Analytics-Arbeitsbereich** den Namen **firewall-oms** für den neuen **Log Analytics-Arbeitsbereich** ein.
 10. Wählen Sie Ihr Abonnement aus, verwenden Sie die vorhandene Ressourcengruppe für die Firewall (**Test-FW-RG**), und wählen Sie den Standort **USA, Osten** sowie den Tarif **Free** aus.
 11. Klicken Sie auf **OK**.
-   ![Starten des Konfigurationsprozesses][1]
+   ![Starten des Konfigurationsprozesses][1] OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.  
 12. Klicken Sie unter **Protokoll** auf **AzureFirewallApplicationRule** und **AzureFirewallNetworkRule**, um Protokolle für Anwendungs- und Netzwerkregeln zu erfassen.
    ![Speichern der Diagnoseeinstellungen][2]
 13. Klicken Sie auf **Speichern**.
@@ -95,6 +95,8 @@ Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzei
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Anzeigen und Analysieren der Netzwerk- und Anwendungsregelprotokolle
 
 Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) erfasst die Leistungsindikator- und Ereignisprotokolldateien. Die Anwendung umfasst Visualisierungen und leistungsfähige Suchfunktionen zum Analysieren Ihrer Protokolle.
+
+Azure Firewall-Log Analytics-Beispielabfragen finden Sie unter [Azure Firewall Log Analytics samples](log-analytics-samples.md) (Azure Firewall-Log Analytics-Beispiele).
 
 Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Protokolleinträge für Zugriffs- und Leistungsprotokolle abrufen. Nachdem Sie die JSON-Dateien heruntergeladen haben, können Sie diese in das CSV-Format konvertieren oder in Excel, Power BI oder einem anderen Datenvisualisierungstool anzeigen.
 

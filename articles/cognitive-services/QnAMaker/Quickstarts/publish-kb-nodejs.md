@@ -1,28 +1,28 @@
 ---
 title: 'Schnellstart: Veröffentlichen einer Wissensdatenbank: REST, Node.js – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung wird das programmgesteuerte Veröffentlichen Ihrer Wissensdatenbank (Knowledge Base, KB) Schritt für Schritt beschrieben. Bei der Veröffentlichung wird die aktuelle Version der Wissensdatenbank per Push an einen dedizierten Azure Search-Index übertragen und ein Endpunkt erstellt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
+description: In dieser Schnellstartanleitung wird das programmgesteuerte Veröffentlichen Ihrer Wissensdatenbank (Knowledge Base, KB) Schritt für Schritt beschrieben. Bei der Veröffentlichung wird die aktuelle Version der Wissensdatenbank per Pushvorgang an einen dedizierten Azure Search-Index übertragen und ein Endpunkt erstellt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: c70b90a6e465c72193f63afd7ab9106579e2c634
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e1e349f4ddbebdd9df38d7f0babf50d726241d4f
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886609"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648733"
 ---
-# <a name="quickstart-publish-a-qna-maker-knowledge-base-in-nodejs"></a>Schnellstart: Veröffentlichen einer QnA Maker-Wissensdatenbank in Node.js
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>Schnellstart: Veröffentlichen einer Wissensdatenbank in QnA Maker mit Node.js
 
-In dieser Schnellstartanleitung wird das programmgesteuerte Veröffentlichen Ihrer Wissensdatenbank (Knowledge Base, KB) Schritt für Schritt beschrieben. Bei der Veröffentlichung wird die aktuelle Version der Wissensdatenbank per Push an einen dedizierten Azure Search-Index übertragen und ein Endpunkt erstellt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
+In dieser Schnellstartanleitung wird das programmgesteuerte Veröffentlichen Ihrer Wissensdatenbank (Knowledge Base, KB) Schritt für Schritt beschrieben. Bei der Veröffentlichung wird die aktuelle Version der Wissensdatenbank per Pushvorgang an einen dedizierten Azure Search-Index übertragen und ein Endpunkt erstellt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
 
 In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
-* [Veröffentlichen](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe): Diese API erfordert keine Informationen im Anforderungstext.
+* [Veröffentlichen](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe): Für diese API sind keine Informationen im Text der Anforderung erforderlich.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,7 +40,7 @@ Falls Sie noch keine Wissensdatenbank besitzen, können Sie für diese Schnellst
 
 Erstellen Sie eine Datei mit dem Namen `publish-knowledge-base.js`.
 
-## <a name="add-required-dependencies"></a>Hinzufügen der erforderlichen Abhängigkeiten
+## <a name="add-required-dependencies"></a>Hinzufügen von erforderlichen Abhängigkeiten
 
 Fügen Sie am Anfang von `publish-knowledge-base.js` die folgenden Zeilen ein, um dem Projekt die erforderlichen Abhängigkeiten hinzuzufügen:
 
@@ -60,7 +60,7 @@ Fügen Sie im Anschluss an die oben genannten Konstanten die Wissensdatenbank-ID
 
 ## <a name="add-supporting-functions"></a>Hinzufügen von unterstützenden Funktionen
 
-Fügen Sie als Nächstes die folgenden unterstützenden Funktionen hinzu.
+Als Nächstes fügen Sie die folgenden unterstützenden Funktionen hinzu.
 
 1. Fügen Sie die folgende Funktion zum Ausgeben von JSON in einem lesbaren Format hinzu:
 
@@ -88,7 +88,7 @@ Fügen Sie zum Verwalten der Anforderung und der Antwort die folgende Funktion h
 
 Erstellen Sie das Programm, und führen Sie es aus. Die Anforderung wird automatisch an die QnA Maker-API gesendet, um die KB zu veröffentlichen. Anschließend wird die Antwort im Konsolenfenster angezeigt.
 
-Sobald Ihre Wissensdatenbank veröffentlicht wurde, können Sie sie mit einer Clientanwendung oder einem Chatbot über den Endpunkt abfragen. 
+Nachdem Ihre Wissensdatenbank veröffentlicht wurde, können Sie sie vom Endpunkt mit einer Clientanwendung oder einem Chatbot abfragen. 
 
 ```bash
 node publish-knowledge-base.js

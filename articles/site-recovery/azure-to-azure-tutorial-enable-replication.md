@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0404774f1cb347ceead8b78d1a9a6506712dea5c
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: ab79201442fe9c7334525972c34eba86daf27e99
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069096"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457424"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Einrichten einer Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Azure-Region
 
@@ -27,6 +27,9 @@ In diesem Tutorial wird erläutert, wie Sie die Notfallwiederherstellung in eine
 > * Überprüfen der Zielressourceneinstellungen
 > * Einrichten des ausgehenden Zugriffs für VMs
 > * Aktivieren der Replikation für eine VM
+
+> [!NOTE]
+> In diesem Tutorial werden für Benutzer die Schritte beschrieben, mit denen mit möglichst geringem Anpassungsaufwand die Replikation aktiviert wird. Falls Sie mehr zu den verschiedenen Aspekten der Notfallwiederherstellung erfahren möchten, z.B. Netzwerküberlegungen, Automatisierung oder Problembehandlung, helfen Ihnen die Gewusst wie-Dokumente für Azure-VMs weiter.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -193,7 +196,7 @@ Klicken Sie neben den Verschlüsselungseinstellungen auf „Anpassen“, um die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die Notfallwiederherstellung für eine Azure-VM konfiguriert. Als Nächstes wird Ihre Konfiguration getestet.
+In diesem Tutorial haben Sie die Notfallwiederherstellung für eine Azure-VM konfiguriert. Der nächste Schritt ist das Testen Ihrer Konfiguration, indem Sie einen DR-Drill initiieren.
 
 > [!div class="nextstepaction"]
 > [Durchführen eines Notfallwiederherstellungsverfahrens](azure-to-azure-tutorial-dr-drill.md)

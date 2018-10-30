@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 10/24/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: ff52c0fa647dd0e86b22bcfdf7af04062a135f94
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 9f9464874230538bf2976b47896dae8e67c9744f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392804"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024391"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Tutorial: Rendern einer Szene mit Azure Batch 
 
@@ -31,7 +31,7 @@ In diesem Tutorial rendern Sie eine 3ds Max-Szene mit Batch, indem Sie den [Arno
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein Abonnement mit nutzungsbasierter Bezahlung oder eine andere Azure-Kaufoption, um die Renderinganwendungen in Batch auf nutzungsbasierter Basis zu verwenden. Nutzungsbasierte Lizenzierung wird nicht unterstützt, wenn Sie ein kostenloses Azure-Angebot verwenden, das mit monetären Gutschriften verbunden ist.
+Sie benötigen ein Abonnement mit nutzungsbasierter Bezahlung oder eine andere Azure-Kaufoption, um die Renderinganwendungen in Batch auf nutzungsbasierter Basis zu verwenden. **Nutzungsbasierte Lizenzierung wird nicht unterstützt, wenn Sie ein kostenloses Azure-Angebot verwenden, das mit monetären Gutschriften verbunden ist.**
 
 Die 3ds Max-Beispielszene für dieses Tutorial ist auf [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) zusammen mit einem Bash-Beispielskript und JSON-Konfigurationsdateien zu finden. Die 3ds Max-Szene stammt aus den [Autodesk 3ds Max-Beispieldateien](http://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-Beispieldateien sind unter einer Creative Commons Attribution-NonCommercial-Share Alike-Lizenz verfügbar. Copyright © Autodesk, Inc.)
 
@@ -175,7 +175,7 @@ az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2018-11-15
+    --expiry 2019-11-15
 ```
 
 Notieren Sie sich das vom Befehl zurückgegebene Token. Es sieht in etwa wie folgt aus. Sie verwenden dieses Token in einem späteren Schritt.

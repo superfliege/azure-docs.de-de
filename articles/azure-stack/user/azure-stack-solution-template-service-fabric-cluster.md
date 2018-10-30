@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: mattbriggs
+ms.date: 10/22/2018
+ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0b5f7442604dd31f730b0105d19231407e2b6f1a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804428"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946112"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Bereitstellen eines Service Fabric-Clusters in Azure Stack
 
@@ -48,7 +48,7 @@ Folgendes ist für die Bereitstellung des Service Fabric-Clusters erforderlich:
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Hinzufügen eines Geheimnisses zu Key Vault
-Für die Bereitstellung eines Service Fabric-Clusters müssen Sie die richtige *Geheimnis-ID* oder URL von Key Vault für den Service Fabric-Cluster angeben. Die Azure Resource Manager-Vorlage akzeptiert eine Key Vault-Instanz als Eingabe und ruft dann das Clusterzertifikat während der Installation des Service Fabric-Clusters ab. 
+Für die Bereitstellung eines Service Fabric-Clusters müssen Sie die richtige *Geheimnis-ID* oder URL von Key Vault für den Service Fabric-Cluster angeben. Für die Azure Resource Manager-Vorlage wird ein Key Vault-Element als Eingabe verwendet. Anschließend ruft die Vorlage das Clusterzertifikat ab, wenn der Service Fabric-Cluster installiert wird.
 
 > [!IMPORTANT]  
 > Sie müssen PowerShell verwenden, um Key Vault ein Geheimnis für die Verwendung mit Service Fabric hinzuzufügen. Verwenden Sie nicht das Portal.  
@@ -139,7 +139,7 @@ Weitere Informationen finden Sie unter [Verwalten von Key Vault in Azure Stack m
    - Quellschlüsseltresor: Geben Sie die gesamte Zeichenfolge der Key Vault-ID (*keyVault id*) aus den Skriptergebnissen an. 
    - Cluster Certificate URL (Clusterzertifikat-URL): Geben Sie die gesamte URL der Geheimnis-ID (*Secret Id*) aus den Skriptergebnissen an. 
    - Cluster Certificate thumbprint (Clusterzertifikatfingerabdruck): Geben Sie den *Clusterzertifikatfingerabdruck* aus den Skriptergebnissen an.
-   - Admin Client Certificate Thumbprints (Fingerabdrücke des Administratorclientzertifikats): Geben Sie den *Fingerabdruck des Administratorclientzertifikats* an, den Sie unter „Voraussetzungen“ erstellt haben. 
+   - Admin Client Certificate Thumbprints (Fingerabdrücke des Administratorclientzertifikats): Geben Sie den *Fingerabdruck des Administratorclientzertifikats* an, der unter „Voraussetzungen“ erstellt wurde. 
 
    ![Skriptausgabe](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
 

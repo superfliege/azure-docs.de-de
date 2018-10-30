@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7573746b91f057d83a299d54801785118cc1c878
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 36b9a2e710a2a7f34ee9374e89f3fb19cc591ac3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380130"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429591"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Tutorial: Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 
@@ -61,7 +61,9 @@ Der Container kann jetzt erstellt und in einer Service Fabric-Anwendung verpackt
 ## <a name="create-an-azure-sql-db"></a>Erstellen einer Azure SQL-Datenbank
 Wenn Sie die Fabrikam Fiber CallCenter-Anwendung in der Produktion ausführen, müssen die Dateien dauerhaft in einer Datenbank gespeichert werden. Derzeit besteht keine Möglichkeit, die dauerhafte Speicherung von Daten in einem Container sicherzustellen. Daher können Sie Produktionsdaten in SQL Server nicht in einem Container speichern.
 
-Wir empfehlen [Azure SQL-Datenbank](/azure/sql-database/sql-database-get-started-powershell). Führen Sie zum Einrichten und Ausführen einer verwalteten SQL Server-Datenbank in Azure das folgende Skript aus.  Ändern Sie die Skriptvariablen nach Bedarf. *clientIP* ist die IP-Adresse Ihres Entwicklungscomputers.  Hinter einer Unternehmensfirewall entspricht die IP-Adresse Ihres Entwicklungscomputers unter Umständen nicht der IP-Adresse, die über das Internet verfügbar gemacht wird.  Sie können die Serverfirewallregel für die SQL-Datenbank auch über das [Azure-Portal](https://portal.azure.com) festlegen. Dadurch wird die IP-Adresse Ihres Computers aufgeführt.
+Wir empfehlen [Azure SQL-Datenbank](/azure/sql-database/sql-database-get-started-powershell). Führen Sie zum Einrichten und Ausführen einer verwalteten SQL Server-Datenbank in Azure das folgende Skript aus.  Ändern Sie die Skriptvariablen nach Bedarf. *clientIP* ist die IP-Adresse Ihres Entwicklungscomputers.
+
+Hinter einer Unternehmensfirewall entspricht die IP-Adresse Ihres Entwicklungscomputers unter Umständen nicht der IP-Adresse, die über das Internet verfügbar gemacht wird. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und suchen Sie im Abschnitt „SQL-Datenbanken“ nach Ihrer Datenbank, um zu überprüfen, ob die Datenbank über die richtige IP-Adresse für die Firewallregel verfügt. Klicken Sie auf ihren Namen und dann im Abschnitt „Übersicht“ auf „Serverfirewall festlegen“. „Client-IP-Adresse“ ist die IP-Adresse Ihres Entwicklungscomputers. Stellen Sie sicher, dass sie mit der IP-Adresse unter der Regel „AllowClient“ übereinstimmt.
 
 ```powershell
 $subscriptionID="<subscription ID>"

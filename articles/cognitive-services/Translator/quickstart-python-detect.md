@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: Identifizieren der Textsprache – Textübersetzung, Python'
+title: 'Schnellstart: Identifizieren der Textsprache, Python: Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart bestimmen Sie die Sprache des Quelltexts. Dazu verwenden Sie die Textübersetzungs-API mit Python.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 31fb36421dd2aef21f77b4941771e4d3db813730
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 669118ed925c961aeb1d99c9e794f6702b29a83b
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124999"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644907"
 ---
-# <a name="quickstart-identify-language-from-text-with-python"></a>Schnellstart: Identifizieren der Textsprache mit Python
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-python"></a>Schnellstart: Identifizieren der Textsprache mit der Textübersetzungs-REST-API (Python)
 
 In dieser Schnellstartanleitung bestimmen Sie mithilfe der Textübersetzungs-API die Sprache des Quelltexts.
 

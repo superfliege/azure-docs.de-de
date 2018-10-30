@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: Abrufen der unterstützten Sprachen – Textübersetzung, Ruby'
+title: 'Schnellstart: Abrufen von unterstützten Sprachen, Ruby: Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart rufen Sie eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab. Dazu verwenden Sie die Textübersetzungs-API mit Ruby.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: f000d2c4c1519f26b4d82a36803b86f016716c5e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 02ebeae83464aa9770854fd06468b3731d6b8549
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121837"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645268"
 ---
-# <a name="quickstart-get-supported-languages-with-ruby"></a>Schnellstart: Abrufen der unterstützten Sprachen mit Ruby
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-ruby"></a>Schnellstart: Abrufen von unterstützten Sprachen mit der Textübersetzungs-REST-API (Ruby)
 
 In dieser Schnellstartanleitung rufen Sie mit der Textübersetzungs-API eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab.
 

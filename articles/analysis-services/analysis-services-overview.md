@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d09fcde90cf182bc8197c579718ecef7c5ce1eed
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3cdc4a8a670b5af43e72b38d7a3b6d9aafdac348
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394526"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429438"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -81,29 +81,34 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |Brasilien Süd     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Kanada, Mitte    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |USA (Ost)     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|USA (Ost) 2     |     B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>1    |
+|USA (Ost) 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
+|USA (Ost) 2     |     S8, S9   |    1    |
 |USA Nord Mitte     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA (Mitte)     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA Süd Mitte     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA, Westen-Mitte   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|USA (Westen)     |    B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>2  |
-|USA, Westen 2    |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9  |    3<br>1     |
+|USA (Westen)     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
+|USA (Westen)     |    S8, S9   |    2  |
+|USA, Westen 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
+|USA, Westen 2    |    S8, S9  |    1     |
 
 ### <a name="europe"></a>Europa
 
 |Region  | Unterstützte Pläne | Abfragereplikate (nur Standard-Pläne) |
 |---------|---------|:---------:|
 |Nordeuropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
-|UK, Süden   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Europa, Westen     |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9    |    7<br>1     |
+|UK, Süden     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|Europa, Westen     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
+|Europa, Westen    |   S8, S9  |  1  |
 
 ### <a name="asia-pacific"></a>Asien-Pazifik 
 
 |Region  | Unterstützte Pläne | Abfragereplikate (nur Standard-Pläne) |
 |---------|---------|:---------:|
+|Australien (Osten)     |    B1, B2, S0, S1, S2, S4     |    3     |
+|Australien (Osten)     |    S8, S9    |    1     |
 |Australien, Südosten     | B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Australien (Osten)     |    B1, B2, S0, S1, S2, S4    <br>S8, S9    |    3<br>1     |
-|Japan, Osten  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Japan, Osten     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
 |Indien, Westen     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
@@ -184,9 +189,11 @@ Weitere Informationen zur Sicherheit in Azure finden Sie im [Microsoft Trust Cen
 
 ![BI-Entwicklertools](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
-### <a name="sql-server-data-tools-ssdt-for-visual-studio"></a>SQL Server Data Tools (SSDT) für Visual Studio
+### <a name="visual-studio"></a>Visual Studio
 
-Modelle können mit dem kostenlosen [SQL Server Data Tools (SSDT) für Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) entwickelt und bereitgestellt werden. SSDT beinhaltet Analysis Services-Projektvorlagen, die Sie bei der Einrichtung unterstützen. SSDT beinhaltet nun die modernen datenabrufbezogenen Datenquellenabfrage- und Mashup-Funktionen für tabellarische Modelle mit Kompatibilitätsgrad 1400. Wenn Sie mit dem Datenabruf in Power BI Desktop und Excel 2016 vertraut sind, wissen Sie bereits, wie einfach sich hochgradig angepasste Datenquellenabfragen erstellen lassen. Microsoft Analysis Services-Projekte sind auch für Visual Studio als installierbares VSIX-Paket verfügbar. Sie können es [vom Marketplace herunterladen](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+Modelle können mit dem kostenlosen [SQL Server Data Tools (SSDT) für Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) entwickelt und bereitgestellt werden. SSDT beinhaltet Analysis Services-Projektvorlagen, die Sie bei der Einrichtung unterstützen. SSDT beinhaltet nun die modernen datenabrufbezogenen Datenquellenabfrage- und Mashup-Funktionen für tabellarische Modelle mit Kompatibilitätsgrad 1400. Wenn Sie mit dem Datenabruf in Power BI Desktop und Excel 2016 vertraut sind, wissen Sie bereits, wie einfach sich hochgradig angepasste Datenquellenabfragen erstellen lassen. 
+
+Bei Verwendung von Visual Studio 2017 sind Microsoft Analysis Services-Projekte als kostenloses installierbares VSIX-Paket verfügbar. Sie können es [vom Marketplace herunterladen](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 

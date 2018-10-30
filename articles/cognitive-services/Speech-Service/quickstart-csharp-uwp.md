@@ -1,20 +1,21 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in C# in einer UWP-App mit dem Cognitive Services Speech SDK'
-titleSuffix: Microsoft Cognitive Services
-description: Erfahren Sie, wie Sie Sprache in einer UWP-App mit dem Cognitive Services Speech SDK erkennen können.
+title: 'Schnellstart: Erkennen von Sprache in C# in einer UWP-App mit dem Spracherkennungsdienst-SDK'
+titleSuffix: Azure Cognitive Services
+description: Hier erfahren Sie, wie Sie mit dem Spracherkennungsdienst-SDK Sprache in einer UWP-App erkennen.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: d9a90869e060d2f8f1a1c522a4528e74841caada
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 1c6e0521f37e85bcb3395de0ad1e9d463125e17f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339613"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469797"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Speech SDK
 

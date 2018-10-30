@@ -1,24 +1,30 @@
 ---
-title: 'Schnellstart: Python-Update der Wissensdatenbank – QnA Maker'
-description: Hier erfahren Sie, wie Sie eine Wissensdatenbank in Python für QnA Maker aktualisieren.
+title: 'Schnellstart: Aktualisieren einer Wissensdatenbank – REST, Python – QnA Maker'
+description: In dieser REST-basierten Schnellstartanleitung wird Schritt für Schritt das programmgesteuerte Aktualisieren des Beispiels für eine QnA Maker-Wissensdatenbank beschrieben. Mit der JSON-Definition, die Sie zum Aktualisieren einer Wissensdatenbank verwenden, können Sie Frage/Antwort-Paare hinzufügen, ändern oder löschen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: d58e12df30ab1b45e460cf8a4ea098d350164ec3
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 35ef0222de6093e7bae3b41377db2ea3fd3c3d75
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031933"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645913"
 ---
-# <a name="update-a-knowledge-base-in-python"></a>Aktualisieren einer Wissensdatenbank in Python
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-python"></a>Schnellstart: Aktualisieren einer Wissensdatenbank in QnA Maker mithilfe von Python
 
-Der folgende Code aktualisiert mithilfe der Methode zum [Aktualisieren](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) eine vorhandene Wissensdatenbank.
+In dieser Schnellstartanleitung wird das programmgesteuerte Aktualisieren einer vorhandenen QnA Maker-Wissensdatenbank Schritt für Schritt beschrieben.  Mit diesem JSON-Code können Sie eine Wissensdatenbank aktualisieren, indem Sie neue Datenquellen hinzufügen oder Datenquellen ändern oder löschen.
+
+Diese API entspricht dem Bearbeiten und anschließenden Verwenden der Schaltfläche **Speichern und trainieren** im QnA Maker-Portal.
+
+In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
+* [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600): Das Modell für die Wissensdatenbank ist im JSON-Code definiert, der im Text der API-Anforderung gesendet wird. 
+* [Abrufen von Vorgangsdetails](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

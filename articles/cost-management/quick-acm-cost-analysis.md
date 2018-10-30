@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 12b7a605350b07565660e9e4d1334b286aa5ac00
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079105"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471287"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
 Voraussetzung für die Kontrolle und Optimierung von Azure-Kosten sind Kenntnisse über die Kostenstellen in Ihrer Organisation. Außerdem sollte bekannt sein, wie hoch die Kosten für Ihre Dienste sind und für welche Umgebungen und Systeme diese Aufwendungen genutzt werden. Der Überblick über sämtliche Kosten ist entscheidend, um Ausgabestrukturen Ihrer Organisation genau nachvollziehen zu können. Ausgabestrukturen können verwendet werden, um Kontrollmechanismen wie Budgets zu erzwingen.
 
-In diesem Schnellstart ermitteln Sie mithilfe der Kostenanalyse Azure-Kosten, die für Ihre Organisation anfallen, und analysieren diese. Durch die Anzeige aggregierter Kosten nach Organisationen können Sie ermitteln, wo Kosten im Zeitverlauf anfallen, und Ausgabentrends nachvollziehen. Mithilfe der akkumulierten Kosten können Sie unter Berücksichtigung von Budgets Kostenschätzungen für monatliche, vierteljährliche oder jährliche Zeiträume erstellen. Ein Budget hilft, finanziellen Zwänge einzuhalten. Mithilfe eines Budgets können Sie zudem die täglichen oder monatlichen Kosten anzeigen, um Ausgabenunregelmäßigkeiten zu vermeiden. Des Weiteren können Sie die Daten des aktuellen Berichts herunterladen, um diese noch genauer zu analysieren oder sie in externen Systemen zu verwenden.
+In diesem Schnellstart ermitteln Sie mithilfe der Kostenanalyse Azure-Kosten, die für Ihre Organisation anfallen, und analysieren diese. Durch die Anzeige aggregierter Kosten nach Organisationen können Sie ermitteln, wo Kosten im Zeitverlauf anfallen, und Ausgabentrends nachvollziehen. Mithilfe der akkumulierten Kosten können Sie unter Berücksichtigung von Budgets Kostenschätzungen für monatliche, vierteljährliche oder jährliche Zeiträume erstellen. Ein Budget trägt zur Einhaltung finanzieller Vorgaben bei. Mithilfe eines Budgets können Sie zudem die täglichen oder monatlichen Kosten anzeigen, um Ausgabenunregelmäßigkeiten zu vermeiden. Des Weiteren können Sie die Daten des aktuellen Berichts herunterladen, um diese noch genauer zu analysieren oder sie in externen Systemen zu verwenden.
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
@@ -34,21 +34,25 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
 Die Kostenanalyse steht allen [EA-Kunden (Enterprise Agreement)](https://azure.microsoft.com/pricing/enterprise-agreement/) zur Verfügung. Zum Aufrufen von Kostendaten benötigen Sie für einen oder mehrere der folgenden Bereiche mindestens Lesezugriff.
 
-- Der Bereich *Abrechnungskonto* wird unter https://ea.azure.com definiert, und es wird Unternehmensadministrator-Zugriff benötigt. Es ist keine Enterprise Agreement-Einstellung als Voraussetzung erforderlich. Die Abrechnungsinformationen in der Kostenanalyse werden für alle Abonnements im Enterprise Agreement-Dokument zusammengefasst. Das Abrechnungskonto wird häufig als *Enterprise Agreement* oder *Registrierung* bezeichnet.
 
-- Der Bereich *Abteilung* ist unter https://ea.azure.com definiert, und es ist Zugriff vom Typ „Abteilungsadministrator“ erforderlich. Die Einstellung **Gebühren anzeigen** für Abteilungsadministratoren muss im Enterprise Agreement-Portal aktiviert sein. Die Abrechnungsinformationen in der Kostenanalyse werden für alle Abonnements des Registrierungskontos zusammengefasst, die mit der Abteilung verknüpft sind.
+|**Umfang**|**Definiert unter**|**Erforderlicher Zugriff für umfangsbezogene Kostenanalyse**|**Erforderliche EA-Einstellung**|**Konsolidierungsziel der Abrechnungsdaten**|
+|---                |---                  |---                   |---            |---           |
+|Abrechnungskonto<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|Unternehmensadministrator|Keine|Alle Abonnements aus dem Enterprise Agreement|
+|Abteilung|[https://ea.azure.com ](https://ea.azure.com )|Abteilungsadministrator|„Gebühren anzeigen“ aktiviert (für Abteilungsadministratoren)|Alle Abonnements, die zu einem Registrierungskonto gehören, das mit der Abteilung verknüpft ist|
+|Registrierungskonto<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|Kontobesitzer|„Gebühren anzeigen“ aktiviert (für Kontobesitzer)|Alle Abonnements aus dem Registrierungskonto|
+|Verwaltungsgruppe|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-Leser (oder Leser)|„Gebühren anzeigen“ aktiviert (für Kontobesitzer)|Alle Abonnements unter der Verwaltungsgruppe|
+|Abonnement|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-Leser (oder Leser)|„Gebühren anzeigen“ aktiviert (für Kontobesitzer)|Alle Ressourcen/Ressourcengruppen im Abonnement|
+|Ressourcengruppe|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-Leser (oder Leser)|„Gebühren anzeigen“ aktiviert (für Kontobesitzer)|Alle Ressourcen in der Ressourcengruppe|
 
-- Der Bereich *Registrierungskonto* wird unter https://ea.azure.com definiert, und es ist Zugriff vom Typ „Kontobesitzer“ erforderlich. Die Einstellung **Gebühren anzeigen** für Kontobesitzer muss im Enterprise Agreement-Portal aktiviert sein. Die Abrechnungsinformationen in der Kostenanalyse werden für alle Abonnements zusammengefasst, die zum Registrierungskonto gehören. Das Registrierungskonto wird häufig als *Kontobesitzer* bezeichnet.
+<sup>1</sup> Das Abrechnungskonto wird häufig als Enterprise Agreement oder Registrierung bezeichnet.
 
-- Der Bereich *Verwaltungsgruppe* wird unter https://portal.azure.com definiert, und es ist Zugriff vom Typ „Cost Management-Leser“ (Leser) erforderlich. Die Einstellung **Gebühren anzeigen** für Kontobesitzer muss im Enterprise Agreement-Portal aktiviert sein. Die Abrechnungsinformationen in der Kostenanalyse werden für alle Abonnements unterhalb der Verwaltungsgruppe zusammengefasst.
-
-- Der Bereich *Abonnement* wird unter https://portal.azure.com definiert, und es ist Zugriff vom Typ „Cost Management-Leser“ (Leser) erforderlich. Die Einstellung **Gebühren anzeigen** für Kontobesitzer muss im Enterprise Agreement-Portal aktiviert sein. Abrechnungsinformationen in der Kostenanalyse werden für alle Ressourcen und Ressourcengruppen des Abonnements zusammengefasst.
-
-- Der Bereich *Ressourcengruppe* wird unter https://portal.azure.com definiert, und es ist Zugriff vom Typ „Cost Management-Leser“ (Leser) erforderlich. Die Einstellung **Gebühren anzeigen** für Kontobesitzer muss im Enterprise Agreement-Portal aktiviert sein. Abrechnungsinformationen in der Kostenanalyse werden für alle Ressourcen der Ressourcengruppe zusammengefasst.
-
-
+<sup>2</sup> Das Registrierungskonto wird häufig als Kontobesitzer bezeichnet.
 
 Weitere Informationen zur Konfiguration der Einstellungen **Gebühren anzeigen (Abteilungsadministrator)** und **Gebühren anzeigen (Kontobesitzer)** finden Sie unter [Aktivieren des Zugriffs auf Kosten](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
+
+
+
+
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

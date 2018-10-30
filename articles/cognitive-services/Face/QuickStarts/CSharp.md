@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Gesichtern in einem Bild – Gesichtserkennungs-API mit C#'
+title: 'Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und C#'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart führen Sie die Gesichtserkennung für ein Bild aus, indem Sie die Gesichtserkennungs-API mit C# verwenden.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 080e616067bb0b8a640ded6faec184030314d79a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5a3b3e70a12f70874bf54e8f01a0f8baf3eec845
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341020"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954520"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-c"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit C#
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-c"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und C#
 
 In dieser Schnellstartanleitung führen Sie die Gesichtserkennung für menschliche Gesichter in einem Bild durch, indem Sie die Gesichtserkennungs-API verwenden.
 

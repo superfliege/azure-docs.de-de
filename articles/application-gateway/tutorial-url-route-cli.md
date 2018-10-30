@@ -7,15 +7,15 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2402dd2adb27abb784c34a2a3569e8f6e4a60f77
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f683d63683e903d947d0789a16a8efa48196d36a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954788"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026193"
 ---
 # <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Tutorial: Weiterleiten von Webdatenverkehr basierend auf der URL mit der Azure CLI
 
@@ -30,10 +30,9 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen von Listenern, URL-Pfadzuordnung und Regeln
 > * Erstellen von skalierbaren Back-End-Pools
 
-
 ![URL-Routingbeispiel](./media/tutorial-url-route-cli/scenario.png)
 
-Sie können dieses Tutorial auch mit [Azure PowerShell](tutorial-url-route-powershell.md) durcharbeiten.
+Dieses Tutorial kann auch mit [Azure PowerShell](tutorial-url-route-powershell.md) oder mit dem [Azure-Portal](create-url-route-portal.md) durchgearbeitet werden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

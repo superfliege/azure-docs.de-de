@@ -1,5 +1,5 @@
 ---
-title: Überprüfen von Softwareupdates von Microsoft mit Azure Stack Validation-as-a-Service | Microsoft-Dokumentation
+title: Überprüfen von Softwareupdates von Microsoft mit Validation-as-a-Service in Azure Stack | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Softwareupdates von Microsoft mit Validation-as-a-Service überprüfen.
 services: azure-stack
 documentationcenter: ''
@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 6ef8c0486a694ac44c53375b24893812b10343e4
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 7fcc7d5a1d87fe93d32772dbbb84f1d3c91d5631
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158482"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648784"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>Überprüfen der Softwareupdates von Microsoft
 
@@ -26,38 +26,22 @@ ms.locfileid: "44158482"
 
 Microsoft veröffentlicht in regelmäßigen Abständen Updates für die Azure Stack-Software. Diese Updates werden Azure Stack-Partnern vor der öffentlichen Bereitstellung zur Verfügung gestellt, damit diese die Updates zusammen mit ihren Lösungen überprüfen und Feedback an Microsoft senden können.
 
-## <a name="test-an-existing-solution"></a>Testen einer vorhandenen Lösung
+[!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
-1. Melden Sie sich beim [Validierungsportal](https://azurestackvalidation.com) an.
+## <a name="apply-monthly-update"></a>Anwenden des monatlichen Updates
 
-2. Wählen Sie eine vorhandene Lösung aus, für die das Microsoft-Update angewendet wurde, und klicken Sie auf der Kachel **Paketvalidierung** auf **Starten**.
+[!INCLUDE [azure-stack-vaas-workflow-section_update-azs](includes/azure-stack-vaas-workflow-section_update-azs.md)]
 
-    ![Paketvalidierung](media/image3.png)
+## <a name="create-a-workflow"></a>Erstellen eines Workflows
 
-3. Geben Sie den Validierungsnamen ein.
+Bei der Überprüfung von Updates wird der gleiche Workflow verwendet wie bei der **Paketvalidierung**. Gehen Sie wie unter [Erstellen eines Paketvalidierungsworkflows](azure-stack-vaas-validate-oem-package.md#create-a-package-validation-workflow) beschrieben vor.
 
-4. Geben Sie die URL zum OEM-Paket an, das bei der Bereitstellung für die Lösung installiert wurde. Verwenden Sie die URL für das im Azure-Blobdienst gespeicherte Paket. Weitere Informationen finden Sie unter [Set up your validation as a service account](azure-stack-vaas-set-up-account.md#create-an-azure-storage-blob-to-store-logs) (Einrichten eines Validation-as-a-Service-Kontos).
+## <a name="run-tests"></a>Ausführen von Tests
 
-5. Klicken Sie auf **Hochladen**, um Ihre Bereitstellungskonfigurationsdatei hinzuzufügen. Informationen zum Hochladen der Bereitstellungskonfigurationsdatei finden Sie unter [Überprüfen einer neuen Azure Stack-Lösung](azure-stack-vaas-validate-solution-new.md).
+Bei der Überprüfung von Updates wird der gleiche Workflow verwendet wie bei der **Paketvalidierung**. Gehen Sie wie unter [Ausführen von Paketvalidierungstests](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests) beschrieben vor.
 
-6. Die Bereitstellungskonfigurationsdatei muss anschließend mit der richtigen Umgebungsparameterdatei angepasst werden. Weitere Einzelheiten finden Sie unter [Workflow common parameters for Azure Stack validation as a service](azure-stack-vaas-parameters.md#environment-parameters) (Allgemeine Workflowparameter für Azure Stack Validation-as-a-Service).
-
-    > [!Note]   
-    > Die Bereitstellungskonfigurationsdatei kann durch Hinzufügen allgemeiner Testparameter weiter angepasst werden. Weitere Informationen finden Sie unter [Workflow common parameters for Azure Stack validation as a service](azure-stack-vaas-parameters.md) (Allgemeine Workflowparameter für Azure Stack Validation-as-a-Service).
-
-7. Die Benutzernamen und die Kennwörter für den Mandantenbenutzer, den Dienstadministrator und den Cloudadministrator müssen manuell eingegeben werden.
-
-8. Geben Sie die URL zu Azure Storage Blob ein, um die Diagnoseprotokolle zu speichern. Weitere Informationen finden Sie unter [Set up your validation as a service account](azure-stack-vaas-set-up-account.md#create-an-azure-storage-blob-to-store-logs) (Einrichten eines Validation-as-a-Service-Kontos).
-
-    > [!Note]  
-    > Zum Bezeichnen des Workflows können beschreibende Tags eingegeben werden.
-
-10. Klicken Sie auf **Übermitteln**, um den Workflow zu speichern.
-
-Der Lösungsworkflow wird ungefähr 24 Stunden lang ausgeführt. Fügen Sie einen Link oder eine Anweisung zum Planen der Tests hinzu. Löschen Sie die Angaben im Tool.
-
-Weitere Informationen zum Überwachen des Status einer Validierungsausführung finden Sie unter [Monitor a test with Azure Stack validation as a service](azure-stack-vaas-monitor-test.md) (Überwachen eines Tests mit Azure Stack Validation-as-a-Service).
+Bei der Überprüfung von Updates muss keine Paketsignierung angefordert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr zu [Validation-as-a-Service in Azure Stack](https://docs.microsoft.com/azure/azure-stack/partner).
+- [Überwachen und Verwalten von Tests im VaaS-Portal](azure-stack-vaas-monitor-test.md)

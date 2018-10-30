@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 90d82abb6570028308b8d516a868fa981c75eb94
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: b1893d9713f70ee7553392a320fec52fe5c88f3c
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066988"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458053"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Durchführen eines Notfallwiederherstellungsverfahrens für virtuelle Azure-Computer in einer sekundären Azure-Region
 
@@ -26,12 +26,13 @@ In diesem Tutorial wird erläutert, wie ein Notfallwiederherstellungsverfahren f
 > * Überprüfen der Voraussetzungen
 > * Ausführen eines Testfailovers für eine einzelne VM
 
-
+> [!NOTE]
+> In diesem Tutorial wird für Benutzer beschrieben, wie mit möglichst wenigen Schritten eine Übung für die Notfallwiederherstellung durchgeführt werden kann. Falls Sie mehr zu den verschiedenen Aspekten zur Durchführung einer Übung für die Notfallwiederherstellung erfahren möchten, z.B. Netzwerküberlegungen, Automatisierung oder Problembehandlung, helfen Ihnen die Gewusst wie-Dokumente für Azure-VMs weiter.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Bevor Sie ein Testfailover ausführen, empfehlen wir Ihnen, die VM-Eigenschaften zu überprüfen, um sicherzustellen, dass sie den Erwartungen entsprechen.  Die VM-Einstellungen finden Sie unter **Replizierte Elemente**. Das Blatt **Zusammenfassung** enthält Informationen zu den Einstellungen und zum Status der Computer.
-- Es wird empfohlen, ein separates Azure-VM-Netzwerk für das Testfailover zu nutzen und nicht das Standardnetzwerk, das bei der Aktivierung der Replikation eingerichtet wurde.
+- **Es wird empfohlen, ein separates Azure-VM-Netzwerk für das Testfailover zu nutzen**, und nicht das Standardnetzwerk, das bei der Aktivierung der Replikation eingerichtet wurde.
 
 
 ## <a name="run-a-test-failover"></a>Ausführen eines Testfailovers

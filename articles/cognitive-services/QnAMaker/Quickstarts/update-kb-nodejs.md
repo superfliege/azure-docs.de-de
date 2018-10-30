@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 3bbc55b3bb064b2cf4b140a395e99209b71a5ce1
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 1b92589fe01f171b732c04057dc290f0f32cb31a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816227"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647815"
 ---
-# <a name="quickstart-update-a-qna-maker-knowledge-base-in-nodejs"></a>Schnellstart: Aktualisieren einer QnA Maker-Wissensdatenbank in Node.js
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-nodejs"></a>Schnellstart: Aktualisieren einer Wissensdatenbank in QnA Maker mithilfe von Node.js
 
 In dieser Schnellstartanleitung wird das programmgesteuerte Aktualisieren einer vorhandenen QnA Maker-Wissensdatenbank Schritt für Schritt beschrieben.  Mit diesem JSON-Code können Sie eine Wissensdatenbank aktualisieren, indem Sie neue Datenquellen hinzufügen oder Datenquellen ändern oder löschen.
 
@@ -45,7 +45,7 @@ Erstellen Sie eine Datei mit dem Namen `update-knowledge-base.js`.
 
 ## <a name="add-the-required-dependencies"></a>Hinzufügen der erforderlichen Abhängigkeiten
 
-Fügen Sie am Anfang von `update-knowledge-base.js` die folgenden Zeilen ein, um dem Projekt die erforderlichen Abhängigkeiten hinzuzufügen:
+Fügen Sie oben in der Datei `update-knowledge-base.js` die folgenden Zeilen hinzu, um dem Projekt die erforderlichen Abhängigkeiten hinzuzufügen:
 
 [!code-nodejs[Add the dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/update-knowledge-base/update-knowledge-base.js?range=1-4 "Add the dependencies")]
 
@@ -65,8 +65,8 @@ Fügen Sie im Anschluss an die oben genannten Konstanten die Wissensdatenbank-ID
 Fügen Sie nach den Konstanten die folgende Definition für das Update der Wissensdatenbank hinzu. Die Updatedefinition enthält drei Abschnitte:
 
 * Hinzufügen
-* Aktualisieren
-* Löschen
+* aktualisieren
+* delete
 
 Jeder Abschnitt kann in derselben einzelnen Anforderung an die API verwendet werden. 
 
@@ -75,7 +75,7 @@ Jeder Abschnitt kann in derselben einzelnen Anforderung an die API verwendet wer
 
 ## <a name="add-supporting-functions"></a>Hinzufügen von unterstützenden Funktionen
 
-Fügen Sie als Nächstes die folgenden unterstützenden Funktionen hinzu.
+Als Nächstes fügen Sie die folgenden unterstützenden Funktionen hinzu.
 
 1. Fügen Sie die folgende Funktion zum Ausgeben von JSON in einem lesbaren Format hinzu:
 
@@ -142,7 +142,7 @@ Mit der folgenden Methode wird die Wissensdatenbank aktualisiert, und der Status
 
 ## <a name="run-the-program"></a>Ausführen des Programms
 
-Geben Sie den folgenden Befehl an einer Befehlszeile ein, um das Programm auszuführen. Die Anforderung wird an die QnA Maker-API gesendet, um die Wissensdatenbank zu aktualisieren, und dann werden die Ergebnisse alle 30 Sekunden abgefragt. Jede Antwort wird im Konsolenfenster ausgegeben.
+Geben Sie den folgenden Befehl in einer Befehlszeile ein, um das Programm auszuführen. Die Anforderung wird an die QnA Maker-API gesendet, um die Wissensdatenbank zu aktualisieren, und dann werden die Ergebnisse alle 30 Sekunden abgefragt. Jede Antwort wird im Konsolenfenster ausgegeben.
 
 ```bash
 node update-knowledge-base.js

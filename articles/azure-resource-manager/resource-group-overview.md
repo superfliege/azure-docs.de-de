@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 841f82595257c97c15398347a3e1605219d1a534
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 2c5d0dc322a4a56f0de9bd3c1af7efc158131a89
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394424"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954214"
 ---
 # <a name="azure-resource-manager-overview"></a>Übersicht über den Azure-Ressourcen-Manager
 Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponenten. Dies können beispielsweise ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk oder eine Web-App, eine Datenbank, ein Datenbankserver und Drittanbieterdienste sein. Sie sehen diese Komponenten nicht als separate Entitäten, sondern als verwandte und voneinander abhängige Teile einer einzelnen Entität. Diese möchten Sie als Gruppe bereitstellen, verwalten und überwachen. Mit dem Azure-Ressourcen-Manager können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z.B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können. 
@@ -64,6 +64,30 @@ Die folgenden Vorschläge helfen Ihnen, bei der Arbeit mit Lösungen die Vorteil
 Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
 
 Weitere Empfehlungen zum Erstellen von Resource Manager-Vorlagen, die Sie global in Azure, unabhängigen Azure-Clouds und Azure Stack finden Sie unter [Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](templates-cloud-consistency.md).
+
+## <a name="quickstarts-and-tutorials"></a>Schnellstarts und Tutorials
+
+Verwenden Sie die folgenden Schnellstartanleitungen und Tutorials, um zu erfahren, wie Sie Resource Manager-Vorlagen entwickeln:
+
+- Schnellstarts
+
+    |Titel|BESCHREIBUNG|
+    |------|-----|
+    |[Verwenden des Azure-Portals](./resource-manager-quickstart-create-templates-use-the-portal.md)|Enthält Informationen zum Generieren einer Vorlage mit dem Portal und zum Prozess zur Bearbeitung und Bereitstellung der Vorlage.|
+    |[Verwenden von Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Enthält Informationen zur Verwendung von Visual Studio Code zum Erstellen und Bearbeiten von Vorlagen und zur Verwendung der Azure Cloud Shell zum Bereitstellen von Vorlagen.|
+    |[Verwenden von Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Enthält Informationen zur Verwendung von Visual Studio zum Erstellen, Bearbeiten und Bereitstellen von Vorlagen.|
+
+- Lernprogramme
+
+    |Titel|BESCHREIBUNG|
+    |------|-----|
+    |[Nutzen der Vorlagenreferenz](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|Enthält Informationen zur Verwendung der Vorlagenreferenz zum Entwickeln von Vorlagen. Im Tutorial ermitteln Sie das Speicherkontoschema und verwenden die Informationen zum Erstellen eines verschlüsselten Speicherkontos.|
+    |[Erstellen mehrerer Instanzen](./resource-manager-tutorial-create-multiple-instances.md)|Enthält Informationen zum Erstellen mehrerer Instanzen von Azure-Ressourcen. Im Tutorial erstellen Sie mehrere Instanzen des Speicherkontos.|
+    |[Festlegen der Reihenfolge für die Ressourcenbereitstellung](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|Enthält Informationen zu Ressourcenabhängigkeiten. In diesem Tutorial erstellen Sie ein virtuelles Netzwerk, einen virtuellen Computer und die abhängigen Azure-Ressourcen. Sie erfahren, wie die Abhängigkeiten definiert werden.|
+    |[Verwenden von Bedingungen](./resource-manager-tutorial-use-conditions.md)|Enthält Informationen zur Bereitstellung von Ressourcen basierend auf einigen Parameterwerten. In diesem Tutorial definieren Sie eine Vorlage, um ein neues Speicherkonto zu erstellen, oder verwenden ein vorhandenes Speicherkonto basierend auf dem Wert eines Parameters.|
+    |[Integrieren von Key Vault](./resource-manager-tutorial-use-key-vault.md)|Enthält Informationen zum Abrufen von Geheimnissen/Kennwörtern aus Azure Key Vault. In diesem Tutorial erstellen Sie einen virtuellen Computer.  Das Administratorkennwort für den virtuellen Computer wird aus einer Key Vault-Instanz abgerufen.|
+    |[Erstellen verknüpfter Vorlagen](./resource-manager-tutorial-create-linked-templates.md)|Enthält Informationen zum Modularisieren von Vorlagen und Aufrufen von anderen Vorlagen aus einer Vorlage. In diesem Tutorial erstellen Sie ein virtuelles Netzwerk, einen virtuellen Computer und die abhängigen Ressourcen.  Das abhängige Speicherkonto wird in einer verknüpften Vorlage definiert. |
+    |[Verwenden von sicheren Bereitstellungsmethoden](./deployment-manager-tutorial.md)|Enthält Informationen zum Azure-Bereitstellungs-Manager. |
 
 ## <a name="resource-groups"></a>Ressourcengruppen
 Beim Definieren der Ressourcengruppe sind einige wichtige Faktoren zu beachten:
@@ -214,9 +238,9 @@ Die vollständige Liste mit den Rollen und zulässigen Aktionen finden Sie unter
 
 Es kann vorkommen, dass Sie Codeabschnitte oder Skripts ausführen möchten, mit denen auf Ressourcen zugegriffen wird, ohne dabei aber die Anmeldeinformationen eines Benutzers zu verwenden. Stattdessen möchten Sie für die Anwendung eine Identität erstellen, die als Dienstprinzipal bezeichnet wird, und die entsprechende Rolle für den Dienstprinzipal zuweisen. Mit Resource Manager können Sie Anmeldeinformationen für die Anwendung erstellen und die Anwendung programmgesteuert authentifizieren. Informationen zur Erstellung von Dienstprinzipalen finden Sie unter den folgenden Themen:
 
-* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](resource-group-authenticate-service-principal.md)
+* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md)
-* [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](resource-group-create-service-principal-portal.md)
+* [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md)
 
 Sie können kritische Ressourcen auch explizit sperren, um zu verhindern, dass sie von Benutzern gelöscht oder geändert werden. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](resource-group-lock-resources.md).
 

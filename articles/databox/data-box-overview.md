@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 10/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 1beecd4c37ef333464e96b93294c25d182ffdf91
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 731730aae59fa654394bf01a139af0088c207774
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49090805"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955336"
 ---
 # <a name="what-is-azure-data-box"></a>Was ist Azure Data Box?
 
@@ -62,7 +62,7 @@ Das Data Box-Gerät weist in dieser Version folgende Merkmale auf.
 | Dimensionen                                              | Gerät – Breite: 309,0 mm, Höhe: 430,4 mm, Tiefe: 502,0 mm |            
 | Platzbedarf im Rack                                              | 7 HE bei seitlicher Platzierung im Rack (kann nicht im Rack montiert werden)|
 | Erforderliche Kabel                                         | 1 Netzkabel (inbegriffen) <br> 2 RJ45-Kabel <br> 2 SFP+-Twinax-Kupferkabel|
-| Speicherkapazität                                        | 100 TB <br> 80 TB nutzbare Kapazität nach Aktivierung von RAID-5-Schutz|
+| Speicherkapazität                                        | Das Gerät mit 100 TB hat nach der Aktivierung von RAID-5-Schutz 80 TB nutzbare Kapazität.|
 | Netzwerkschnittstellen                                      | 2 1-GbE-Schnittstellen: MGMT, DATA 3. <br> MGMT: Zur Verwaltung, nicht vom Benutzer konfigurierbar, dient zur erstmaligen Einrichtung <br> DATA3: Für Daten, vom Benutzer konfigurierbar und standardmäßig dynamisch <br> MGMT und DATA 3 sind auch in der 10-GbE-Ausführung möglich <br> 2 10-GbE-Schnittstellen: DATA 1, DATA 2 <br> Beide für Daten vorgesehen, als dynamisch (Standard) oder statisch konfigurierbar |
 | Datenübertragungsmedien                                     | RJ45, SFP+-Kupferkabel (10 GbE)  |
 | Sicherheit                                                | Widerstandsfähiges Gerätegehäuse mit manipulationssicheren Spezialschrauben <br> Manipulationsgeschütztes Etikett auf der Unterseite des Geräts|

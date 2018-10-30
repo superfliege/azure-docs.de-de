@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwenden der Azure Video Indexer-API'
+title: Verwenden der Video Indexer-API
 titlesuffix: Azure Cognitive Services
 description: In diesem Artikel wird veranschaulicht, wie Sie in die Verwendung der Video Indexer-API einsteigen.
 services: cognitive services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 10/20/2018
 ms.author: juliako
-ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 401811ec8803f3ede5a829dc96edc1e7f15e5ee0
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985564"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637747"
 ---
-# <a name="tutorial-use-the-video-indexer-api"></a>Tutorial: Verwenden der Azure Video Indexer-API
+# <a name="use-the-video-indexer-api"></a>Verwenden der Video Indexer-API
 
 > [!Note]
 > Die v1-API von Video Indexer gilt ab dem 1. August 2018 als veraltet. Es ist ratsam, jetzt die v2-API von Video Indexer zu verwenden. <br/>Eine Anleitung zur Entwicklung mit den v2-APIs für Video Indexer finden Sie [hier](https://api-portal.videoindexer.ai/). 
@@ -51,6 +51,9 @@ In diesem Artikel wird veranschaulicht, wie Entwickler die [Video Indexer-API](h
     Nachdem das Abonnement eingerichtet wurde, werden Ihr Abonnement und Ihre Primär- und Sekundärschlüssel angezeigt. Die Schlüssel sollten geschützt werden. Die Schlüssel sollten nur von Ihrem Servercode verwendet werden. Sie sollten nicht auf Clientseite (.js, .html usw.) verfügbar sein.
 
     ![Registrieren](./media/video-indexer-use-apis/video-indexer-api03.png)
+
+> [!TIP]
+> Video Indexer-Benutzer können einen einzelnen Abonnementschlüssel verwenden, um eine Verbindung mit mehreren Video Indexer-Konten herzustellen. Sie können diese Video Indexer-Konten dann mit unterschiedlichen Media Services-Konten verknüpfen.
 
 ## <a name="obtain-access-token-using-the-authorization-api"></a>Abrufen von Zugriffstoken mit der Authorization-API
 
@@ -224,4 +227,4 @@ Debug.WriteLine(playerWidgetLink);
 
 [Untersuchen der von der v2-API erstellten Azure Video Indexer-Ausgabe](video-indexer-output-json.md)
 
-[Was ist Video Indexer?](video-indexer-overview.md)
+[What is Video Indexer? (preview)](video-indexer-overview.md) (Was ist Video Indexer? (Vorschauversion))

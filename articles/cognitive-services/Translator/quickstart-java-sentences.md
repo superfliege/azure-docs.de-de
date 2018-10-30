@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: Ermitteln der Satzlänge – Textübersetzung, Java'
+title: 'Schnellstart: Abrufen von Satzlängen, Java: Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung ermitteln Sie die Länge von Sätzen im Text. Dazu verwenden Sie die Textübersetzungs-API mit Java in Cognitive Services.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: d0459b04bbd0dbbda3dab80623a39742a6f843b2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 3ea4c3a6463b831fe960bf6aec9e4c1151f8424d
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122621"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644874"
 ---
-# <a name="quickstart-get-sentence-lengths-with-java"></a>Schnellstart: Ermitteln der Satzlänge mit Java
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-java"></a>Schnellstart: Abrufen von Satzlängen mit der Textübersetzungs-REST-API (Java)
 
 In dieser Schnellstartanleitung ermitteln Sie mithilfe der Textübersetzungs-API die Länge von Sätzen im Text.
 

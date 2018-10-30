@@ -1,20 +1,21 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in C# mit .NET Core unter Windows mit dem Cognitive Services Speech SDK'
-titleSuffix: Microsoft Cognitive Services
-description: Erfahren Sie, wie die Spracherkennung in C# mit .NET Core unter Windows mit dem Cognitive Services Speech SDK funktioniert.
+title: 'Schnellstart: Erkennen von Sprache in C# mit .NET Core unter Windows mit dem Spracherkennungsdienst-SDK'
+titleSuffix: Azure Cognitive Services
+description: Hier erfahren Sie, wie die Spracherkennung in C# mit .NET Core unter Windows mit dem Spracherkennungsdienst-SDK funktioniert.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
 ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 04cdfd487036e79eccbb4fb879902a12e077d104
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 891de4700470931d8eaec3e2a3bb7ca2110e48dd
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341649"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469134"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C# mit .NET Core unter Windows mit dem Speech SDK
 

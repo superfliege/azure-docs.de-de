@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6d178fe3caa121c51ef081708ca440113871938e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 249e286b16b78643c33b567f705a4c92991f5553
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996909"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404867"
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Überwachen eines Kubernetes-Clusters mit Log Analytics
 
@@ -149,7 +149,7 @@ Um die Containerlösung über das [Log Analytics-Portal](https://mms.microsoft.c
 
 Suchen Sie im Log Analytics-Portal die Zusammenfassungskachel **Container** auf dem Dashboard. Klicken Sie auf die Kachel, um Details anzuzeigen, z.B. Containerereignisse, Fehler, Status, Imageinventar sowie CPU- und Arbeitsspeicherauslastung. Detaillierte Informationen erhalten Sie, wenn Sie auf eine Zeile auf einer Kachel klicken oder eine [Protokollsuche](../../log-analytics/log-analytics-log-searches.md) durchführen.
 
-![Containerdashboard im OMS-Portal](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
+![Containerdashboard im Azure-Portal](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
 Im Azure-Portal navigieren Sie zu **Log Analytics** und wählen den Namen Ihres Arbeitsbereichs aus. Klicken Sie zum Anzeigen der Zusammenfassungskachel **Container** auf **Lösungen** > **Container**. Klicken Sie auf die Kachel, um Details anzuzeigen.
 

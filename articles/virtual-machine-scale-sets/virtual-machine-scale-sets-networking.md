@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 43aa74e7250f4825702e249032db1566346ab558
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 6ed3488218a5b813478fa18f7bb05dcfb07a319c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831210"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955150"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
 
@@ -50,10 +50,26 @@ Der beschleunigte Netzwerkbetrieb von Azure ermöglicht die E/A-Virtualisierung 
 ## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Erstellen einer Skalierungsgruppe, die auf einen vorhandenen Azure Load Balancer verweist
 Wenn eine Skalierungsgruppe über das Azure-Portal erstellt wird, wird für die meisten Konfigurationsoptionen ein neuer Load Balancer erstellt. Wenn Sie eine Skalierungsgruppe erstellen möchten, die auf einen vorhandenen Load Balancer verweisen soll, können Sie hierfür die Befehlszeilenschnittstelle verwenden. Das folgende Beispielskript erstellt einen Load Balancer und anschließend eine Skalierungsgruppe, die darauf verweist:
 ```bash
-az network lb create -g lbtest -n mylb --vnet-name myvnet --subnet mysubnet --public-ip-address-allocation Static --backend-pool-name mybackendpool
+az network lb create \
+    -g lbtest \
+    -n mylb \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --public-ip-address-allocation Static \
+    --backend-pool-name mybackendpool
 
-az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username negat --ssh-key-value /home/myuser/.ssh/id_rsa.pub --upgrade-policy-mode Automatic --instance-count 3 --vnet-name myvnet --subnet mysubnet --lb mylb --backend-pool-name mybackendpool
-
+az vmss create \
+    -g lbtest \
+    -n myvmss \
+    --image Canonical:UbuntuServer:16.04-LTS:latest \
+    --admin-username negat \
+    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
+    --upgrade-policy-mode Automatic \
+    --instance-count 3 \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --lb mylb \
+    --backend-pool-name mybackendpool
 ```
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Erstellen einer Skalierungsgruppe, die auf ein Application Gateway verweist
@@ -91,7 +107,7 @@ Um benutzerdefinierte DNS-Server in einer Azure-Vorlage zu konfigurieren, fügen
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Erstellen einer Skalierungsgruppe mit konfigurierbaren Domänennamen für virtuelle Computer
-Um mithilfe der CLI eine Skalierungsgruppe mit einem benutzerdefinierten DNS-Namen für virtuelle Computer zu erstellen, fügen Sie dem Befehl **vmss create** das Argument **--vm-domain-name** mit einer Zeichenfolgendarstellung des Domänennamens hinzu.
+Um mithilfe der Befehlszeilenschnittstelle eine Skalierungsgruppe mit einem benutzerdefinierten DNS-Namen für virtuelle Computer zu erstellen, fügen Sie dem Befehl **virtual machine scale set create** das Argument **--vm-domain-name** mit dem Domänennamen als Zeichenfolge hinzu.
 
 Um den Domänennamen in einer Azure-Vorlage zu konfigurieren, fügen Sie dem Abschnitt **networkInterfaceConfigurations** der Skalierungsgruppe eine Eigenschaft vom Typ **dnsSettings** hinzu. Beispiel: 
 
@@ -155,23 +171,35 @@ Um mithilfe der CLI die öffentlichen IP-Adressen aufzulisten, die den virtuelle
 
 Verwenden Sie den Befehl _Get-AzureRmPublicIpAddress_, um mit PowerShell öffentliche IP-Adressen für Skalierungsgruppen aufzulisten. Beispiel: 
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 Sie können die öffentlichen IP-Adressen auch abfragen, indem Sie direkt auf die Ressourcen-ID der Konfiguration der öffentlichen IP-Adresse verweisen. Beispiel: 
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-Abfragen der öffentlichen IP-Adressen, die virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, über den [Azure-Ressourcen-Explorer](https://resources.azure.com) oder mithilfe der Azure-REST-API (ab Version **2017-03-30**).
+Die öffentlichen IP-Adressen, die virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, können auch durch Abfragen des [Azure-Ressourcen-Explorers](https://resources.azure.com) oder der Azure-REST-API (ab Version **2017-03-30**) angezeigt werden.
 
-Wenn Sie die öffentlichen IP-Adressen für eine Skalierungsgruppe mithilfe des Ressourcen-Explorers ermitteln möchten, sehen Sie sich den Abschnitt **publicipaddresses** unter Ihrer Skalierungsgruppe an. Beispiel: https://resources.azure.com/subscriptions/_your_sub_id_/resourceGroups/_your_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_your_vmss_/publicipaddresses
+So fragen Sie den [Azure-Ressourcen-Explorer](https://resources.azure.com) ab:
 
-```
+1. Öffnen Sie den [Azure-Ressourcen-Explorer](https://resources.azure.com) in einem Webbrowser.
+1. Erweitern Sie *Abonnements* auf der linken Seite, indem Sie daneben auf *+* klicken. Falls sich unter *Abonnements* nur ein einzelnes Element befindet, ist der Bereich möglicherweise bereits erweitert.
+1. Erweitern Sie Ihr Abonnement.
+1. Erweitern Sie Ihre Ressourcengruppe.
+1. Erweitern Sie *Anbieter*.
+1. Erweitern Sie *Microsoft.Compute*.
+1. Erweitern Sie *virtualMachineScaleSets*.
+1. Erweitern Sie Ihre Skalierungsgruppe.
+1. Klicken Sie auf *publicipaddresses*.
+
+So fragen Sie die Azure-REST-API ab:
+
+```bash
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30
 ```
 
-Beispielausgabe:
+Beispielausgabe des [Azure-Ressourcen-Explorers](https://resources.azure.com) und der Azure-REST-API:
 ```json
 {
   "value": [
@@ -289,12 +317,14 @@ Das folgende Beispiel ist ein Skalierungsgruppen-Netzwerkprofil mit mehreren NIC
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>Netzwerksicherheitsgruppe und Anwendungssicherheitsgruppen pro Skalierungsgruppe
+Mithilfe von [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) können Sie ein- und ausgehenden Datenverkehr von Azure-Ressourcen in einem virtuellen Azure-Netzwerk unter Verwendung von Sicherheitsregeln filtern. Mithilfe von [Anwendungssicherheitsgruppen](../virtual-network/security-overview.md#application-security-groups) können Sie die Netzwerksicherheit von Azure-Ressourcen steuern und sie als Erweiterung Ihrer Anwendungsstruktur gruppieren.
+
 Netzwerksicherheitsgruppen können direkt auf eine Skalierungsgruppe angewendet werden. Hierzu muss dem Abschnitt mit den Netzwerkschnittstellenkonfigurationen der Skalierungsgruppen-VM-Eigenschaften ein Verweis hinzugefügt werden.
 
 Anwendungssicherheitsgruppen (ASGs) können auch direkt für eine Skalierungsgruppe angegeben werden. Hierzu muss dem Abschnitt mit den IP-Konfigurationen der Netzwerkschnittstelle in den VM-Eigenschaften der Skalierungsgruppe ein Verweis hinzugefügt werden.
 
 Beispiel:  
-```
+```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
         {
@@ -334,6 +364,42 @@ Beispiel:
     ]
 }
 ```
+
+Verwenden Sie den Befehl `az vmss show`, um zu überprüfen, ob Ihre Netzwerksicherheitsgruppe Ihrer Skalierungsgruppe zugeordnet ist. Im folgenden Beispiel wird `--query` verwendet, um die Ergebnisse zu filtern und in der Ausgabe nur den relevanten Abschnitt anzuzeigen.
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].networkSecurityGroup
+
+[
+  {
+    "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/nsgName",
+    "resourceGroup": "myResourceGroup"
+  }
+]
+```
+
+Verwenden Sie den Befehl `az vmss show`, um zu überprüfen, ob Ihre Anwendungssicherheitsgruppe Ihrer Skalierungsgruppe zugeordnet ist. Im folgenden Beispiel wird `--query` verwendet, um die Ergebnisse zu filtern und in der Ausgabe nur den relevanten Abschnitt anzuzeigen.
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].ipConfigurations[].applicationSecurityGroups
+
+[
+  [
+    {
+      "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationSecurityGroups/asgName",
+      "resourceGroup": "myResourceGroup"
+    }
+  ]
+]
+```
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu virtuellen Azure-Netzwerken erhalten Sie unter [Azure Virtual Network](../virtual-network/virtual-networks-overview.md).

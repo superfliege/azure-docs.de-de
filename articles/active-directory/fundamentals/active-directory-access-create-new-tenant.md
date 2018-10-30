@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
 custom: it-pro
-ms.openlocfilehash: 8ef68c8afcf61a1a11c341a679443071aece9812
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: eacb2e7c52adae9de0b74c3dade59446cc8459ed
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363002"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023548"
 ---
 # <a name="quickstart-access-azure-active-directory-to-create-a-new-tenant"></a>Schnellstart: Zugreifen auf Azure Active Directory zum Erstellen eines neuen Mandanten
 Sie können alle Verwaltungsaufgaben über das Azure Active Directory-Portal (Azure AD-Portal) ausführen. Dazu gehört auch das Erstellen eines neuen Mandanten für Ihre Organisation. 
@@ -25,14 +25,7 @@ In diesem Schnellstart erfahren Sie, wie Sie das Azure-Portal und Azure Active D
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie beginnen, müssen die folgenden Voraussetzungen erfüllt sein:
-
-- Ihre Organisation muss über eine gültige Azure AD-Lizenz verfügen.
-
-- Sie müssen ein globaler Administrator sein.
-
-## <a name="sign-in-to-the-azure-portal"></a>Anmelden im Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 Melden Sie sich mit dem Konto eines globalen Administrators im [Azure-Portal](https://portal.azure.com/) Ihrer Organisation an.
 
 ![Screenshot des Azure-Portals](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
@@ -76,3 +69,5 @@ Wenn Sie diese Anwendung nicht mehr verwenden möchten, können Sie den Mandante
 - Der Artikel [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md) erläutert, wie Sie Gruppen und Mitglieder hinzufügen.
 
 - Erfahren Sie mehr über [rollenbasierten Zugriff mit Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md) und [bedingten Zugriff](../../role-based-access-control/conditional-access-azure-management.md), um den Zugriff auf die Anwendungen und Ressourcen Ihrer Organisation zu verwalten.
+
+- Weitere Informationen zu Azure AD finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md). Dieser Artikel enthält allgemeine Lizenzierungsinformationen sowie Details zu Terminologie und zugehörigen Features.

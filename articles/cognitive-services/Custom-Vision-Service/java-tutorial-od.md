@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen eines Objekterkennungsprojekts – Custom Vision-API, Java'
+title: 'Tutorial: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Java: Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Erstellen Sie ein Projekt, fügen Sie Kategorien hinzu, laden Sie Bilder hoch, trainieren Sie Ihr Projekt, und machen Sie eine Vorhersage, die den Standardendpunkt verwendet.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 661242e4962a8218c48d7ea66d8a6f728b5154c8
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: d4af3315cfca18da594730cc402236684f81bfc8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365024"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957334"
 ---
-# <a name="tutorial-build-an-object-detection-project-with-java"></a>Tutorial: Erstellen eines Objekterkennungsprojekts mit Java
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Tutorial: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Java
 
 Erkunden Sie eine grundlegende Java-Anwendung, die die Maschinelles Sehen-API zum Erstellen eines Objekterkennungsprojekts verwendet. Nachdem es erstellt wurde, können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Open-Source-Beispiel als Vorlage zum Erstellen Ihrer eigenen App mithilfe der Custom Vision-API.
 

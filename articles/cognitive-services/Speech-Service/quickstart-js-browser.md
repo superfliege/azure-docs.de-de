@@ -1,31 +1,32 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in JavaScript in einem Browser mit dem Cognitive Services Speech SDK'
-titleSuffix: Microsoft Cognitive Services
-description: Erfahren Sie, wie Sie Sprache in JavaScript in einem Browser mit dem Cognitive Services Speech SDK erkennen.
+title: 'Schnellstart: Erkennen von Sprache in JavaScript in einem Browser mit dem Spracherkennungsdienst-SDK'
+titleSuffix: Azure Cognitive Services
+description: Hier finden Sie Informationen zum Erkennen von Sprache in JavaScript in einem Browser mit dem Spracherkennungsdienst-SDK.
 services: cognitive-services
 author: fmegen
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
-ms.date: 09/24/2018
+ms.component: speech-service
+ms.topic: quickstart
+ms.date: 10/12/2018
 ms.author: fmegen
-ms.openlocfilehash: 75dcda643741e3aeb1238f82128e4c5b058be840
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b01746c20dbef7726f129badac045c1fb440f602
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883657"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467462"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>Schnellstart: Erkennen von Sprache in JavaScript in einem Browser mit dem Cognitive Services Speech SDK
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Schnellstart: Erkennen von Sprache in JavaScript in einem Browser mit dem Spracherkennungsdienst-SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Dieser Artikel enthält Informationen zur Erstellung einer Website mithilfe der JavaScript-Bindung des Cognitive Services Speech SDK zum Umwandeln von Sprache in Text.
-Die Anwendung basiert auf dem Microsoft Cognitive Services Speech SDK ([Download von Version 1.0.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Die Anwendung basiert auf dem Microsoft Cognitive Services Speech SDK. ([Version 1.0.1 herunterladen](https://aka.ms/csspeech/jsbrowserpackage))
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Abonnementschlüssel für den Spracherkennungsdienst. Mehr erfahren Sie unter [Kostenloses Testen des Spracherkennungsdiensts](get-started.md).
+* Ein Abonnementschlüssel für den Spracherkennungsdienst. Weitere Informationen finden Sie unter [Kostenloses Testen des Spracherkennungsdiensts](get-started.md).
 * Ein PC oder Mac mit einem funktionierenden Mikrofon
 * Ein Texteditor
 * Eine aktuelle Version von Chrome oder Microsoft Edge
