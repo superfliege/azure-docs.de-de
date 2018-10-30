@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 696843363bc6617bb11c01cdccb9dbbb7b719a82
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298199"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341122"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -105,17 +105,19 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="open-tracing-and-application-insights"></a>OpenTracing und Application Insights
 
-Aufbau von [OpenTracing](http://opentracing.io/)- und Application Insights-Datenmodellen 
+Die [OpenTracing-Datenmodellspezifikation](http://opentracing.io/) und Application Insights-Datenmodelle sind in folgender Weise zugeordnet:
 
-- `request`, `pageView` entspricht **Span** mit `span.kind = server`
-- `dependency` entspricht **Span** mit `span.kind = client`
-- `id` einer `request` und `dependency` entspricht **Span.Id**
-- `operation_Id` entspricht **TraceId**
-- `operation_ParentId` entspricht **Reference** vom Typ `ChildOf`
+| Application Insights                  | OpenTracing                                      |
+|------------------------------------   |-------------------------------------------------  |
+| `Request`, `PageView`                 | `Span` mit `span.kind = server`                  |
+| `Dependency`                          | `Span` mit `span.kind = client`                  |
+| `Id` der `Request` und `Dependency`    | `SpanId`                                          |
+| `Operation_Id`                        | `TraceId`                                         |
+| `Operation_ParentId`                  | `Reference` vom Typ `ChildOf` (die übergeordnete Spanne)   |
 
-Informationen zu den Application Insights-Typen und zum Datenmodell finden Sie unter [Datenmodell](application-insights-data-model.md).
+Weitere Informationen zum Datenmodell von Application Insights finden Sie unter [Datenmodell](application-insights-data-model.md). 
 
-Definitionen von OpenTracing-Konzepten finden Sie unter [Spezifikation](https://github.com/opentracing/specification/blob/master/specification.md) und [Semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
+Definitionen von OpenTracing-Konzepten finden Sie in den [Spezifikationen](https://github.com/opentracing/specification/blob/master/specification.md) und [semantischen Konventionen](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) für OpenTracing.
 
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetriekorrelation in .NET

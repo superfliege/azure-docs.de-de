@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 221d0d8a78a46cad9f1994e9313b21e2867d9563
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 4407322dd415a7c8b2ef8b7ff470a247b8d68f69
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145418"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319454"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Verwalten von Preisen und Datenvolumen in Application Insights
 
 > [!NOTE]
 > Dieser Artikel beschreibt, wie die Datennutzung in Application Insights analysiert wird.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
-> - [Überwachen der Nutzung und der geschätzten Kosten](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem beschreibt er, wie Sie Ihr Preismodell ändern können.
+> - [Überwachen der Nutzung und der geschätzten Kosten](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem wird beschrieben, wie Sie Ihr Preismodell ändern können.
 
 Die Preise für [Azure Application Insights][start] basieren auf dem Datenvolumen pro Anwendung. Jede Application Insights-Ressource wird als separater Dienst abgerechnet und auf der Rechnung für Ihr Azure-Abonnement aufgeführt.
 
@@ -159,6 +159,10 @@ Sie können mit der Azure-Ressourcenverwaltung ein Skript schreiben, um den Tari
 ## <a name="limits-summary"></a>Zusammenfassung der Grenzwerte
 
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
+
+## <a name="disable-daily-cap-e-mails"></a>Deaktivieren der E-Mails zur täglichen Obergrenze
+
+Um die E-Mails zum täglichen Volumenobergrenze zu ändern, klicken Sie im Abschnitt **Konfigurieren** Ihrer Application Insights-Ressource auf der Seite **Nutzung und geschätzte Kosten** auf **Tägliche Obergrenze**. Es gibt Einstellungen zum Senden von E-Mail bei Erreichen der Obergrenze sowie zum Senden bei Erreichen einer anpassbaren Warnstufe. Wenn Sie alle E-Mails zur täglichen Volumenobergrenze deaktivieren möchten, deaktivieren Sie beide Kontrollkästchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

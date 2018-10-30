@@ -5,16 +5,16 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/1/2018
+ms.date: 10/16/2018
 ms.author: victorh
-ms.openlocfilehash: e4b69e6fa587a5d375a1684c982715f8a7ea8166
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b0bde770e33a08832e7d3a93a745bbba44b04f87
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579628"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353338"
 ---
-# <a name="configure-app-service-web-apps-with-application-gateway"></a>Konfigurieren von App Service-Web-Apps mit Application Gateway 
+# <a name="configure-app-service-web-apps-with-application-gateway"></a>Konfigurieren von App Service-Web-Apps mit Application Gateway
 
 Mit Application Gateway können Sie eine Azure-Web-App oder einen anderen mehrinstanzenfähigen Dienst als Back-End-Poolmitglied einrichten. In diesem Artikel erfahren Sie, wie Sie eine Azure-Web-App mit Application Gateway konfigurieren. Das erste Beispiel zeigt, wie Sie ein bereits vorhandenes Anwendungsgateway für die Verwendung einer Web-App als Back-End-Poolmitglied konfigurieren. Das zweite Beispiel zeigt, wie Sie ein neues Anwendungsgateway mit einer Web-App als Back-End-Poolmitglied erstellen.
 
@@ -41,7 +41,7 @@ Add-AzureRmApplicationGatewayProbeConfig -name webappprobe2 -ApplicationGateway 
 # Retrieve the newly added probe
 $probe = Get-AzureRmApplicationGatewayProbeConfig -name webappprobe2 -ApplicationGateway $gw
 
-# Configure an existing backend http settings 
+# Configure an existing backend http settings
 Set-AzureRmApplicationGatewayBackendHttpSettings -Name appGatewayBackendHttpSettings -ApplicationGateway $gw -PickHostNameFromBackendAddress -Port 80 -Protocol http -CookieBasedAffinity Disabled -RequestTimeout 30 -Probe $probe
 
 # Add the web app to the backend pool
@@ -116,7 +116,7 @@ $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Pu
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 
 # Create a new rule
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool 
+$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
 # Define the application gateway SKU to use
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -141,7 +141,7 @@ Id                       : /subscriptions/<subscription_id>/resourceGroups/Conto
 Etag                     : W/"00000d5b-54ed-4907-bae8-99bd5766d0e5"
 ResourceGuid             : 00000000-0000-0000-0000-000000000000
 ProvisioningState        : Succeeded
-Tags                     : 
+Tags                     :
 PublicIpAllocationMethod : Dynamic
 IpAddress                : xx.xx.xxx.xx
 PublicIpAddressVersion   : IPv4
@@ -154,6 +154,12 @@ DnsSettings              : {
                                 "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
                             }
 ```
+
+## <a name="restrict-access"></a>Beschränken des Zugriffs
+
+Die in diesen Beispielen bereitgestellten Web-Apps verwenden öffentliche IP-Adressen, auf die aus dem Internet direkt zugegriffen werden kann. Dies hilft bei der Problembehandlung, wenn Sie von einem neuen Feature erfahren und neue Sachen ausprobieren. Wenn Sie jedoch ein Feature in einer Produktionsumgebung bereitstellen möchten, ist es sinnvoll, stärkere Einschränkungen vorzusehen.
+
+Eine Möglichkeit, wie Sie den Zugriff auf Ihre Web-Apps einschränken können, besteht in der Verwendung von [Statischen Azure App Service-IP-Einschränkungen](../app-service/app-service-ip-restrictions.md). Beispielsweise können Sie die Web-App so einschränken, dass sie nur Datenverkehr vom Anwendungsgateway empfängt. Verwenden Sie die IP-Einschränkungsfunktion von App Service, um die Anwendungsgateway-VIP als einzige Adresse aufzulisten, auf die zugegriffen werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

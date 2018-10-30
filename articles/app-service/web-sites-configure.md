@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 84bd2019e9586fa008560dba07119323ecb7f02e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293715"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115521"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurieren von Web-Apps in Azure App Service
 
@@ -73,6 +73,7 @@ Aus technischen Gründen werden durch Aktivierung von Java für Ihre App die Opt
 Dieser Abschnitt enthält Name-Wert-Paare, die Ihre Web-App beim Start lädt. 
 
 * Bei .NET-Apps werden diese Einstellungen zur Laufzeit in die `AppSettings` der .NET-Konfiguration eingefügt, wobei vorhandene Einstellungen überschrieben werden. 
+* Wenn Sie bei App Service unter Linux oder Web-App für Container eine verschachtelte JSON-Schlüsselstruktur im Namen verwenden, wie etwa `ApplicationInsights:InstrumentationKey`, müssen Sie `ApplicationInsights__InstrumentationKey` als Schlüsselnamen verwenden. Beachten Sie also, dass jeder `:` durch `__` (d.h. doppelten Unterstrich) ersetzt werden muss.
 * PHP-, Python-, Java- und Node-Anwendungen können auf diese Einstellungen als Umgebungsvariablen zur Laufzeit zugreifen. Für jede App-Einstellung werden zwei Umgebungsvariablen erstellt: eine mit dem Namen, der für die App-Einstellung eingegeben wurde, und eine weitere mit dem Präfix APPSETTING_. Beide enthalten denselben Wert.
 
 App-Einstellungen werden bei der Speicherung stets verschlüsselt (encrypted-at-rest).

@@ -5,25 +5,27 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/27/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e164488a1bf176d5b6c0e28a84cd1ec22cae4cce
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 8882a44b0b6db1b3c23c017a072ebddfe9aa20f5
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423577"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090870"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Importieren einer Power BI Desktop-Datei
 
 Sie können ein Datenmodell in einer Power BI Desktop-Datei (PBIX-Datei) in Azure Analysis Services importieren. Modellmetadaten, zwischengespeicherte Daten und Datenquellenverbindungen werden importiert. Berichte und Visualisierungen werden nicht importiert. Importierte Datenmodelle aus Power BI Desktop haben den Kompatibilitätsgrad 1400.
 
+> [!IMPORTANT]
+> Dieses Feature ist veraltet. Es kann in einem zukünftigen Update entfernt oder erheblich geändert werden. Wir empfehlen, dieses Feature in neuen und vorhandenen Projekten nicht mehr zu verwenden, um die Kompatibilität mit kommenden Updates aufrecht zu erhalten. Bei komplexeren Modellentwicklungen und -tests ist es sinnvoll, Visual Studio (SSDT) und SQL Server Management Studio (SSMS) zu verwenden.
+
 **Einschränkungen**   
 
-- Der Importvorgang aus einer PBIX-Datei verwendet das Webdesigner-Feature im Portal, das als **Vorschauversion** vorliegt. Die Funktionalität ist daher eingeschränkt. Bei komplexeren Modellentwicklungen und -tests ist es sinnvoll, Visual Studio (SSDT) und SQL Server Management Studio (SSMS) zu verwenden.
-- Wenn Ihr Datenmodell mit Power BI Desktop-Update vom Juli 2018 (2.60.5169.3201) oder danach erstellt wurde, stellen Sie sicher, dass keine Previewfunktionen aktiviert sind. Previewfunktionen werden noch nicht in Azure Analysis Services unterstützt.  
-Wenn der folgende Fehler beim Importieren ausgelöst wird, sind für die PBIX-Datei Previewfunktionen aktiviert, die noch nicht in Azure Analysis Services unterstützt werden.
+
+- Wenn Ihr Datenmodell mit Power BI Desktop-Update vom Juli 2018 (2.60.5169.3201) oder danach erstellt wurde, stellen Sie sicher, dass keine Previewfunktionen aktiviert sind. Previewfunktionen werden noch nicht in Azure Analysis Services unterstützt. Wenn der folgende Fehler beim Importieren ausgelöst wird, sind für die PBIX-Datei Previewfunktionen aktiviert, die noch nicht in Azure Analysis Services unterstützt werden.
 
     ![Kompatibilitätsgradwarnung](./media/analysis-services-import-pbix/aas-import-pbix-cl-warning.png)   
 - Sie benötigen Serveradministratorberechtigungen zum Importieren aus einer PBIX-Datei.

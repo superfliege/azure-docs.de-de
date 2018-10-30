@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 2c08522df598bd5c6313c3f026efe48e1c4a2c56
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f426982163a5e49264bc4f222f6869d9cbb40c89
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449358"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166065"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
@@ -57,6 +57,12 @@ Sie können einen leeren App Service-Plan erstellen; Sie können einen Plan aber
 
 Sie können eine App in einen anderen App Service-Plan verschieben, solange sich der Quellplan und der Zielplan in der _gleichen Ressourcengruppe und geografischen Region_ befinden.
 
+> [!NOTE]
+> Azure stellt jeden neuen App Service-Plan in einer Bereitstellungseinheit bereit, die intern als Webspace bezeichnet wird. Jede Region kann viele Webspaces aufweisen, Ihre App kann sich jedoch nur zwischen Plänen bewegen, die im gleichen Webspace erstellt wurden. Eine App Service-Umgebung ist ein isolierter Webspace, so dass Apps zwischen verschiedenen Plänen innerhalb der gleichen App Service-Umgebung verschoben werden können, jedoch nicht zwischen Plänen in verschiedenen App Service-Umgebungen.
+>
+> Beim Erstellen eines Plans können Sie nicht den gewünschten Webspace angeben, es ist aber möglich, sicherzustellen, dass ein Plan im gleichen Webspace wie ein vorhandener Plan erstellt wird. Kurzgefasst werden alle mit der gleichen Kombination aus Ressourcengruppe und Region erstellten Pläne im gleichen Webspace bereitgestellt. Wenn Sie beispielsweise einen Plan in Ressourcengruppe A und Region B erstellt haben, wird jeder Plan, den Sie nachfolgend in Ressourcengruppe A und Region B erstellen, im gleichen Webspace bereitgestellt. Beachten Sie, dass für Pläne keine Möglichkeit zum Wechsel in andere Webspaces besteht. Sie können einen Plan also nicht „in den gleichen Webspace“ wie einen anderen Plan verschieben, indem Sie ihn in eine andere Ressourcengruppe verschieben.
+> 
+
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der App, die Sie verschieben möchten.
 
 1. Suchen Sie im Menü nach dem Abschnitt **App Service-Plan**.
@@ -67,16 +73,7 @@ Sie können eine App in einen anderen App Service-Plan verschieben, solange sich
 
 1. Wählen Sie in der Auswahlfunktion **App Service-Plan** einen vorhandenen Plan aus, in den Sie die App verschieben möchten.   
 
-> [!IMPORTANT]
-> Die Seite **App Service-Plan auswählen** wird anhand der folgenden Kriterien gefiltert: 
-> - In derselben Ressourcengruppe vorhanden 
-> - In derselben geografischen Region vorhanden 
-> - Im selben Webspace vorhanden  
-> 
-> Ein _Webspace_ ist ein logisches Konstrukt in App Service, das eine Gruppierung von Serverressourcen definiert. Eine geografische Region (z.B. „USA, Westen“) enthält viele Webspaces, um Kunden zuzuordnen, die App Service verwenden. Zurzeit können Sie App Service-Ressourcen nicht zwischen verschiedenen Webspaces verschieben. 
-> 
-
-[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
+Auf der Seite **App Service-Plan auswählen** werden nur Pläne angezeigt, die sich in der gleichen Ressourcengruppe und geografischen Region wie der App Service-Plan der aktuellen App befinden.
 
 Jeder Plan hat einen eigenen Tarif. Wenn Sie beispielsweise eine Website aus einem **Free**-Tarif in einen **Standard**-Tarif verschieben, können alle zugewiesenen Apps die Features und Ressourcen des **Standard**-Tarifs nutzen. Allerdings bedeutet das Verschieben einer App von einem Plan mit einem höheren Tarif in einen Plan mit einem niedrigeren Tarif, dass Sie keinen Zugriff mehr auf bestimmte Features haben. Wenn Ihre Anwendung ein Feature verwendet, das im Zielplan nicht verfügbar ist, erhalten Sie eine Fehlermeldung, die anzeigt, welches Feature verwendet wird, das nicht verfügbar ist. 
 

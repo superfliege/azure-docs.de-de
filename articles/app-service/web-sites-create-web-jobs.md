@@ -4,7 +4,7 @@ description: Erfahren Sie, wie mithilfe von WebJobs Hintergrundaufgaben in Web-A
 services: app-service
 documentationcenter: ''
 author: ggailey777
-manager: erikre
+manager: jeconnoc
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2017
-ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: c3a41733dd193d10349a0126bfa9c25ce4ba56e7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.date: 10/16/2018
+ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
+ms.openlocfilehash: 901cf32557e0a437e938ceb50ecd500c69c8c3be
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577676"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364029"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Ausführen von Hintergrundaufgaben mit WebJobs in Azure App Service
 
@@ -44,7 +44,7 @@ Die folgende Tabelle beschreibt die Unterschiede zwischen *fortlaufenden* und *a
 | Unterstützen Remotedebuggen. | Bieten keine Unterstützung für Remotedebuggen.|
 
 > [!NOTE]
-> Nach 20 Minuten Inaktivität kann bei einer Web-App ein Timeout auftreten. Der Timer wird nur durch Anforderungen an die SCM-Website (Bereitstellung) oder die Web-App-Seiten im Portal zurückgesetzt. Dies ist nicht durch Anforderungen an den tatsächlichen Standort möglich. Wenn Ihre App fortlaufende oder geplante WebJobs ausführt, aktivieren Sie **Always On**, um sicherzustellen, dass die WebJobs zuverlässig ausgeführt werden. Dieses Feature steht nur in den [Tarifen](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) „Basic“, „Standard“ und „Premium“ zur Verfügung.
+> Nach 20 Minuten Inaktivität kann bei einer Web-App ein Timeout auftreten. Der Zeitgeber wird nur durch Anforderungen an die eigentliche Web-App zurückgesetzt. Das Anzeigen der Konfiguration der App im Azure-Portal oder das Senden von Anforderungen an die Website mit erweiterten Tools (https://<app_name>.scm.azurewebsites.net) führt nicht zum Zurücksetzen des Zeitgebers. Wenn Ihre App fortlaufende oder geplante WebJobs ausführt, aktivieren Sie **Always On**, um sicherzustellen, dass die WebJobs zuverlässig ausgeführt werden. Dieses Feature steht nur in den [Tarifen](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) „Basic“, „Standard“ und „Premium“ zur Verfügung.
 
 ## <a name="acceptablefiles"></a>Unterstützte Dateitypen für Skripts oder Programme
 
