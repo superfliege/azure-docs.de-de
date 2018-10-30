@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 057af5e0e5b467ab60e8de7534e9f4428b96c3dc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 668882b8b39052c3c8e7d7b72c881a64c5c05a10
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298318"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321797"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
 
@@ -173,16 +173,14 @@ Mehr Granularität bietet die aktualisierte Liste der [IP-Bereiche für Microsof
 
 Weitere Informationen finden Sie im Artikel [Voraussetzungen für Azure AD Connect](../hybrid/how-to-connect-install-prerequisites.md) unter „Konnektivität“.
 
-
-
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Neustarten des Azure AD Connect-Synchronisierungsdiensts
 
 Führen Sie zum Beheben von Konnektivitätsproblemen oder anderen vorübergehenden Problemen mit dem Dienst einen Neustart des Azure AD Connect-Synchronisierungsdiensts durch:
 
    1. Klicken Sie als Administrator auf dem Server, auf dem Azure AD Connect ausgeführt wird, auf **Start**.
-   2. Geben Sie **services.msc** in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
-   3. Suchen Sie nach dem Eintrag **Microsoft Azure AD Sync**.
-   4. Klicken Sie mit der rechten Maustaste auf den Diensteintrag, klicken Sie auf **Neu starten**, und warten Sie, bis der Vorgang abgeschlossen wurde.
+   1. Geben Sie **services.msc** in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
+   1. Suchen Sie nach dem Eintrag **Microsoft Azure AD Sync**.
+   1. Klicken Sie mit der rechten Maustaste auf den Diensteintrag, klicken Sie auf **Neu starten**, und warten Sie, bis der Vorgang abgeschlossen wurde.
 
    ![Neustarten des Azure AD Sync-Diensts][Service restart]
 
@@ -193,15 +191,15 @@ Durch Ausführen dieser Schritte wird erneut eine Verbindung mit dem Clouddienst
 Deaktivieren Sie zum Beheben von Konnektivitätsproblemen das Kennwortrückschreibenfeature, und aktivieren Sie es anschließend wieder:
 
    1. Öffnen Sie den Konfigurations-Assistenten für Azure AD Connect als Administrator.
-   2. Geben Sie unter **Mit Azure AD verbinden** Ihre Anmeldeinformationen für globale Azure AD-Administratoren ein.
-   3. Geben Sie unter **Mit AD DS verbinden** Ihre Anmeldeinformationen für Administratoren der AD Domain Services ein.
-   4. Klicken Sie unter **Eindeutige Identifizierung der Benutzer** auf die Schaltfläche **Weiter**.
-   5. Deaktivieren Sie unter **Optionale Features** das Kontrollkästchen **Kennwortrückschreiben**.
-   6. Klicken Sie auf den restlichen Seiten des Assistenten jeweils auf **Weiter**, ohne Änderungen vorzunehmen, bis Sie zur Seite **Bereit zur Konfiguration** gelangen.
-   7. Vergewissern Sie sich, dass auf der Seite **Bereit zur Konfiguration** die Option **Kennwortrückschreiben** als **deaktiviert** angezeigt wird, und klicken Sie dann auf die grüne Schaltfläche **Konfigurieren**, um Ihre Änderungen zu übernehmen.
-   8. Deaktivieren Sie unter **Fertig** die Option **Jetzt synchronisieren**, und klicken Sie auf **Fertig stellen**, um den Assistenten zu schließen.
-   9. Öffnen Sie den Konfigurations-Assistenten für Azure AD Connect erneut.
-   10. Wiederholen Sie die Schritte 2 bis 8, aktivieren Sie diesmal jedoch auf der Seite **Optionale Features** die Option **Kennwortrückschreiben**, um den Dienst wieder zu aktivieren.
+   1. Geben Sie unter **Mit Azure AD verbinden** Ihre Anmeldeinformationen für globale Azure AD-Administratoren ein.
+   1. Geben Sie unter **Mit AD DS verbinden** Ihre Anmeldeinformationen für Administratoren der AD Domain Services ein.
+   1. Klicken Sie unter **Eindeutige Identifizierung der Benutzer** auf die Schaltfläche **Weiter**.
+   1. Deaktivieren Sie unter **Optionale Features** das Kontrollkästchen **Kennwortrückschreiben**.
+   1. Klicken Sie auf den restlichen Seiten des Assistenten jeweils auf **Weiter**, ohne Änderungen vorzunehmen, bis Sie zur Seite **Bereit zur Konfiguration** gelangen.
+   1. Vergewissern Sie sich, dass auf der Seite **Bereit zur Konfiguration** die Option **Kennwortrückschreiben** als **deaktiviert** angezeigt wird, und klicken Sie dann auf die grüne Schaltfläche **Konfigurieren**, um Ihre Änderungen zu übernehmen.
+   1. Deaktivieren Sie unter **Fertig** die Option **Jetzt synchronisieren**, und klicken Sie auf **Fertig stellen**, um den Assistenten zu schließen.
+   1. Öffnen Sie den Konfigurations-Assistenten für Azure AD Connect erneut.
+   1. Wiederholen Sie die Schritte 2 bis 8, aktivieren Sie diesmal jedoch auf der Seite **Optionale Features** die Option **Kennwortrückschreiben**, um den Dienst wieder zu aktivieren.
 
 Durch Ausführen dieser Schritte wird erneut eine Verbindung mit dem Clouddienst hergestellt, und mögliche Unterbrechungen werden behoben.
 
@@ -215,10 +213,11 @@ Es empfiehlt sich, vor diesem Schritt zunächst die beiden zuvor beschriebenen S
 
 > [!WARNING]
 > Falls Sie die integrierten Synchronisierungsregeln angepasst haben, *sichern Sie diese, bevor Sie mit dem Upgrade fortfahren, und stellen Sie die Anpassungen nach dem Upgrade manuell wieder bereit*.
+>
 
-   1. Laden Sie die neueste Version von Azure AD Connect aus dem [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771) herunter.
-   2. Da Sie Azure AD Connect bereits installiert haben, müssen Sie ein direktes Upgrade Ihrer Azure AD Connect-Installation auf die aktuelle Version durchführen.
-   3. Führen Sie das heruntergeladene Paket aus, und folgen Sie den Bildschirmanweisungen zum Aktualisieren Ihres Azure AD Connect-Computers.
+1. Laden Sie die neueste Version von Azure AD Connect aus dem [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771) herunter.
+1. Da Sie Azure AD Connect bereits installiert haben, müssen Sie ein direktes Upgrade Ihrer Azure AD Connect-Installation auf die aktuelle Version durchführen.
+1. Führen Sie das heruntergeladene Paket aus, und folgen Sie den Bildschirmanweisungen zum Aktualisieren Ihres Azure AD Connect-Computers.
 
 Durch Ausführen der vorherigen Schritte wird erneut eine Verbindung mit dem Clouddienst hergestellt, und mögliche Unterbrechungen werden behoben.
 
@@ -228,34 +227,33 @@ Wenn das Problem durch Installieren der aktuellen Version des Azure AD Connect-S
 
 Azure AD Connect benötigt für das Kennwortrückschreiben die Active Directory-Berechtigung **Kennwort zurücksetzen**. Ob Azure AD Connect für ein bestimmtes lokales Active Directory-Benutzerkonto über diese erforderliche Berechtigung verfügt, können Sie mithilfe des Windows-Features „Effektive Berechtigung“ ermitteln:
 
-   1. Melden Sie sich beim Azure AD Connect-Server an, und starten Sie den **Synchronization Service Manager**, indem Sie auf **Start** > **Synchronisierungsdienst** klicken.
-   2. Wählen Sie auf der Registerkarte **Connectors** den lokalen Connector **Active Directory Domain Services** aus, und klicken Sie anschließend auf **Eigenschaften**.  
-
+1. Melden Sie sich beim Azure AD Connect-Server an, und starten Sie den **Synchronization Service Manager**, indem Sie auf **Start** > **Synchronisierungsdienst** klicken.
+1. Wählen Sie auf der Registerkarte **Connectors** den lokalen Connector **Active Directory Domain Services** aus, und klicken Sie anschließend auf **Eigenschaften**.  
    ![Effektive Berechtigung: Schritt 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
-   3. Klicken Sie im Popupfenster auf die Registerkarte **Mit Active Directory-Gesamtstruktur verbinden**, und notieren Sie sich die Eigenschaft **Benutzername**. Bei dieser Eigenschaft handelt es sich um das AD DS-Konto, das von Azure AD Connect für die Verzeichnissynchronisierung verwendet wird. Damit Azure AD Connect das Kennwortrückschreiben durchführen kann, muss das AD DS-Konto über die Berechtigung „Kennwort zurücksetzen“ verfügen.  
+1. Klicken Sie im Popupfenster auf die Registerkarte **Mit Active Directory-Gesamtstruktur verbinden**, und notieren Sie sich die Eigenschaft **Benutzername**. Bei dieser Eigenschaft handelt es sich um das AD DS-Konto, das von Azure AD Connect für die Verzeichnissynchronisierung verwendet wird. Damit Azure AD Connect das Kennwortrückschreiben durchführen kann, muss das AD DS-Konto über die Berechtigung „Kennwort zurücksetzen“ verfügen.  
    
    ![Effektive Berechtigung: Schritt 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
-   4. Melden Sie sich bei einem lokalen Domänencontroller an, und starten Sie die Anwendung **Active Directory-Benutzer und -Computer**.
-   5. Klicken Sie auf **Ansicht**, und vergewissern Sie sich, dass die Option **Erweiterte Features** aktiviert ist.  
+1. Melden Sie sich bei einem lokalen Domänencontroller an, und starten Sie die Anwendung **Active Directory-Benutzer und -Computer**.
+1. Klicken Sie auf **Ansicht**, und vergewissern Sie sich, dass die Option **Erweiterte Features** aktiviert ist.  
    
    ![Effektive Berechtigung: Schritt 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
-   6. Suchen Sie nach dem Active Directory-Benutzerkonto, das Sie überprüfen möchten. Klicken Sie mit der rechten Maustaste auf das Konto, und klicken Sie anschließend auf **Eigenschaften**.  
+1. Suchen Sie nach dem Active Directory-Benutzerkonto, das Sie überprüfen möchten. Klicken Sie mit der rechten Maustaste auf das Konto, und klicken Sie anschließend auf **Eigenschaften**.  
    
    ![Effektive Berechtigung: Schritt 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
 
-   7. Navigieren Sie im Popupfenster zur Registerkarte **Sicherheit**, und klicken Sie auf **Erweitert**.  
+1. Navigieren Sie im Popupfenster zur Registerkarte **Sicherheit**, und klicken Sie auf **Erweitert**.  
    
    ![Effektive Berechtigung: Schritt 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
    
-   8. Navigieren Sie im Popupfenster mit den erweiterten **Sicherheitseinstellungen für den Administratorzur** Registerkarte **Effektiver Zugriff**.
-   9. Klicken Sie auf **Benutzer auswählen**, wählen Sie das von Azure AD Connect verwendete AD DS-Konto aus (siehe Schritt 3), und klicken Sie anschließend auf **Effektiven Zugriff anzeigen**.  
-   
+1. Navigieren Sie im Popupfenster mit den erweiterten **Sicherheitseinstellungen für den Administratorzur** Registerkarte **Effektiver Zugriff**.
+1. Klicken Sie auf **Benutzer auswählen**, wählen Sie das von Azure AD Connect verwendete AD DS-Konto aus (siehe Schritt 3), und klicken Sie anschließend auf **Effektiven Zugriff anzeigen**.
+
    ![Effektive Berechtigung: Schritt 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
-   10. Scrollen Sie nach unten, und suchen Sie nach **Kennwort zurücksetzen**. Ist der Eintrag mit einem Häkchen versehen, ist das AD DS-Konto zum Zurücksetzen des Kennworts für das ausgewählte Active Directory-Benutzerkonto berechtigt.  
+1. Scrollen Sie nach unten, und suchen Sie nach **Kennwort zurücksetzen**. Ist der Eintrag mit einem Häkchen versehen, ist das AD DS-Konto zum Zurücksetzen des Kennworts für das ausgewählte Active Directory-Benutzerkonto berechtigt.  
    
    ![Effektive Berechtigung: Schritt 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
@@ -285,8 +283,6 @@ Damit wir Sie bestmöglich unterstützen können, geben Sie bitte so viele Detai
     * Handelt es sich um einen reinen Cloudbenutzer?
 * **Lizenzierung:** Verfügt der Benutzer über eine Azure AD Premium- oder Azure AD Basic-Lizenz?
 * **Anwendungsereignisprotokoll:** Wenn Sie das Kennwortrückschreiben verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, fügen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server als ZIP-Datei bei.
-
-
 
 [Service restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "Neustarten des Azure AD Sync-Diensts"
 [Support code]: ./media/active-directory-passwords-troubleshoot/supportcode.png "Der Unterstützungscode befindet sich am rechten unteren Rand des Fensters."

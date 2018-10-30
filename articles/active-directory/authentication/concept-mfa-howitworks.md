@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 46c99011a22f855f6faf53e03169b2d1e4c6ce85
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 4a90dc1d97121426e7b161b1d5c92df78b0925a6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669006"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114157"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Funktionsweise: Azure Multi-Factor Authentication
 
@@ -42,23 +42,13 @@ Multi-Factor Authentication ist Teil der folgenden Angebote:
 > [!NOTE]
 > Ab dem 1. September 2018 können Neukunden Azure Multi-Factor Authentication nicht mehr als eigenständiges Angebot erwerben. Multi-Factor Authentication ist in Azure AD Premium-Lizenzen weiterhin ein verfügbares Feature.
 
-### <a name="auth-provider-or-mfa-license"></a>Authentifizierungsanbieter oder MFA-Lizenz
-
-Wenn Sie Azure AD Premium oder ein anderes Lizenzpaket haben, das Azure AD Premium umfasst, verfügen Sie bereits über Azure MFA. Ihre Organisation benötigt keine weiteren Komponenten, um die zweistufige Überprüfung für alle Benutzer zu implementieren. Sie müssen nur einem Benutzer eine Lizenz zuweisen und können dann MFA aktivieren.
-
-Wenn Sie nicht über Lizenzen verfügen, die Azure MFA enthalten, oder nicht über genügend Lizenzen für alle Benutzer, können Sie einen [MFA-Authentifizierungsanbieter](concept-mfa-authprovider.md) erstellen, um den vollständigen Funktionsumfang von MFA auf die Benutzer auszuweiten, die ihn benötigen.
-
-> [!IMPORTANT]
-> Wenn Sie nicht über genügend Lizenzen für all Ihre Benutzer verfügen, können Sie einen Multi-Factor Authentication-Anbieter mit Bezahlung pro Benutzer erstellen, um Lizenzen für den Rest Ihrer Organisation bereitzustellen. Erstellen Sie keinen Multi-Factor Authentication-Anbieter mit Bezahlung pro Authentifizierung. Wenn Sie es tun, bezahlen Sie möglicherweise für die Überprüfung von Anforderungen von Benutzern, die bereits über Lizenzen verfügen.
-
 ## <a name="supportability"></a>Unterstützungsmöglichkeiten
 
 Die meisten Benutzer sind daran gewöhnt, für die Authentifizierung lediglich Kennwörter zu verwenden. Daher ist es wichtig, dass Ihre Organisation das Bewusstsein für diesen Prozess bei sämtlichen Benutzern fördert. So lassen sich Anrufe beim Helpdesk aufgrund kleinerer Probleme im Zusammenhang mit MFA reduzieren. In einigen Szenarien muss MFA jedoch vorübergehend deaktiviert werden. Befolgen Sie die unten stehenden Richtlinien für den Umgang mit diesen Szenarien:
 
 * Schulen Sie Ihre Supportmitarbeiter für Szenarien, in denen Benutzer sich nicht anmelden können, da sie keinen Zugriff auf ihre Authentifizierungsmethoden haben, oder diese nicht ordnungsgemäß funktionieren.
    * Mit Richtlinien für bedingten Zugriff für den Azure MFA-Dienst können Ihre Supportmitarbeiter einen Benutzer einer Gruppe hinzufügen, die von einer MFA erfordernden Richtlinie ausgeschlossen ist.
-   * Supportmitarbeiter können für Benutzer von Azure MFA-Server eine temporäre Einmalumgehung aktivieren, um einem Benutzer die Authentifizierung ohne zweistufige Überprüfung zu ermöglichen. Die Umgehung ist vorübergehend und läuft nach einer angegebenen Anzahl von Sekunden ab.
-   * Mit Richtlinien für bedingten Zugriff für den Azure MFA-Dienst können Ihre Supportmitarbeiter einen Benutzer einer Gruppe hinzufügen, die von einer MFA erfordernden Richtlinie ausgeschlossen ist.
+   * Supportmitarbeiter können für Benutzer von Azure MFA-Server eine temporäre Einmalumgehung aktivieren, um einem Benutzer die Authentifizierung ohne zweistufige Überprüfung zu ermöglichen. Die Umgehung ist vorübergehend und läuft nach einer angegebenen Anzahl von Sekunden ab.   
 * Erwägen Sie die Verwendung von vertrauenswürdigen IP-Adressen oder benannten Orten als Möglichkeit, die Aufforderungen zur zweistufigen Überprüfung zu minimieren. Mit diesem Feature können Administratoren eines verwalteten oder Verbundmandanten die zweistufige Überprüfung für Benutzer umgehen, die sich über einen vertrauenswürdigen Netzwerkstandort wie das Intranet ihrer Organisation anmelden.
 * Stellen Sie [Azure AD Identity Protection](../active-directory-identityprotection.md) bereit, und lösen Sie die zweistufige Überprüfung auf Risikoereignissen basierend aus.
 

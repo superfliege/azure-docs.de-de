@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 766f617f3534ffaccdc326e7de8155adb84a69ce
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a66a7537632aac2190cd39f13665bcd8d4ed6ce7
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162142"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114984"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -111,17 +111,33 @@ Bevor Sie beginnen, sollten Sie die folgenden Einschränkungen beachten:
 * Die maximale Dateigröße beträgt 5 MB.
 * Authentifizierungsnachrichten sollten kürzer als 20 Sekunden sein. Bei Nachrichten mit einer Länge von mehr als 20 Sekunden ist die Überprüfung unter Umständen nicht erfolgreich. Der Benutzer reagiert möglicherweise erst dann, wenn die Nachricht zu Ende ist, sodass bei der Überprüfung ein Timeout auftritt.
 
+### <a name="custom-message-language-behavior"></a>Benutzerdefiniertes Nachrichtensprachenverhalten
+
+Wenn für den Benutzer eine benutzerdefinierte Sprachnachricht wiedergegeben wird, hängt die Sprache der Meldung von diesen Faktoren ab:
+
+* Sprache des aktuellen Benutzers.
+   * Vom Browser des Benutzers erkannte Sprache.
+   * Andere Authentifizierungsszenarios verhalten sich möglicherweise anders.
+* Die Sprache jeglicher verfügbarer benutzerdefinierter Nachrichten.
+   * Diese Sprache wird vom Administrator ausgewählt, wenn eine benutzerdefinierte Nachricht hinzugefügt wird.
+
+Wenn beispielsweise nur eine benutzerdefinierte Nachricht in der Sprache Deutsch vorhanden ist:
+
+* Ein Benutzer, der sich in deutscher Sprache authentifiziert, hört dann die benutzerdefinierte deutsche Nachricht.
+* Ein Benutzer, der sich in Englisch authentifiziert, hört dann die englische Standardnachricht.
+
 ### <a name="set-up-a-custom-message"></a>Einrichten einer benutzerdefinierten Nachricht
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Navigieren Sie zu **Azure Active Directory** > **MFA Server** > **Einstellungen für Telefonanruf**.
+1. Navigieren Sie zu **Azure Active Directory** > **MFA Server** > **Einstellungen für Telefonanruf**.
 
    ![Aufzeichnen benutzerdefinierter Sprachnachrichten](./media/howto-mfa-mfasettings/phonecallsettings.png)
 
-3. Wählen Sie **Begrüßung hinzufügen**.
-4. Wählen Sie den Begrüßungstyp aus. Wählen Sie die Sprache aus.
-5. Wählen Sie eine MP3- oder WAV-Audiodatei zum Hochladen aus.
-6. Wählen Sie **Hinzufügen**.
+1. Wählen Sie **Begrüßung hinzufügen**.
+1. Wählen Sie den Begrüßungstyp aus. 
+1. Wählen Sie die Sprache aus.
+1. Wählen Sie eine MP3- oder WAV-Audiodatei zum Hochladen aus.
+1. Wählen Sie **Hinzufügen**.
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Zwischenspeichern in Azure Multi-Factor Authentication
 
@@ -200,10 +216,10 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Aktivieren des Features „Vertrauenswürdige IPs“ mit Diensteinstellungen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** aus.
+2. Wählen Sie im linken Bereich **Azure Active Directory** > **Benutzer** aus.
 3. Wählen Sie **Multi-Factor Authentication** aus.
 4. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
-5. Wählen Sie auf der Seite **Diensteinstellungen** unter **Vertrauenswürdige IPs** eine der folgenden beiden Optionen aus:
+5. Wählen Sie auf der Seite **Diensteinstellungen** unter **Vertrauenswürdige IPs** eine (oder beide) der folgenden zwei Optionen aus:
    
    * **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen:** Aktivieren Sie zum Auswählen dieser Option das Kontrollkästchen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:<br/>
 
@@ -306,11 +322,11 @@ Das Feature _Multi-Factor Authentication speichern_ für Geräte und Browser, di
 
 ### <a name="how-the-feature-works"></a>Funktionsweise des Features
 
-Durch das Feature „Multi-Factor Authentication speichern“ wird ein permanentes Cookie im Browser festgelegt, wenn ein Benutzer die Option **Die nächsten X Tage nicht erneut fragen** auswählt. Der Benutzer wird von diesem Browser bis zum Ablauf des Cookies nicht erneut zur Multi-Factor Authentication aufgefordert. Wenn der Benutzer einen anderen Browser auf dem gleichen Gerät öffnet oder seine Cookies löscht, wird er wieder zur Überprüfung aufgefordert. 
+Durch das Feature „Multi-Factor Authentication speichern“ wird ein permanentes Cookie im Browser festgelegt, wenn ein Benutzer die Option **Die nächsten X Tage nicht erneut fragen** auswählt. Der Benutzer wird von diesem Browser bis zum Ablauf des Cookies nicht erneut zur Multi-Factor Authentication aufgefordert. Wenn der Benutzer einen anderen Browser auf dem gleichen Gerät öffnet oder seine Cookies löscht, wird er wieder zur Überprüfung aufgefordert.
 
-Die Option **Die nächsten X Tage nicht erneut fragen** wird in Nicht-Browseranwendungen nicht angezeigt, unabhängig davon, ob diese die moderne Authentifizierung unterstützen. Diese Apps verwenden _Aktualisierungstoken_, die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens überprüft Azure AD, ob die letzte zweistufige Überprüfung innerhalb der angegebenen Anzahl von Tagen durchgeführt wurde. 
+Die Option **Die nächsten X Tage nicht erneut fragen** wird in Nicht-Browseranwendungen nicht angezeigt, unabhängig davon, ob diese die moderne Authentifizierung unterstützen. Diese Apps verwenden _Aktualisierungstoken_, die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens überprüft Azure AD, ob die letzte zweistufige Überprüfung innerhalb der angegebenen Anzahl von Tagen durchgeführt wurde.
 
-Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps, die normalerweise jedes Mal dazu auffordern. Das Feature erhöht die Anzahl der Authentifizierungen für Clients mit moderner Authentifizierung, die normalerweise alle 90 Tage zur Authentifizierung auffordern.
+Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps, die normalerweise jedes Mal dazu auffordern. Das Feature erhöht die Anzahl der Authentifizierungen für Clients mit moderner Authentifizierung, die normalerweise alle 90 Tage zur Authentifizierung auffordern. Die Anzahl der Authentifizierungen kann sich auch erhöhen, wenn mit bedingten Zugriffsrichtlinien kombiniert wird.
 
 >[!IMPORTANT]
 >Die Funktion **Multi-Factor Authentication speichern** ist nicht kompatibel mit dem AD FS-Feature **Angemeldet bleiben**, bei dem Benutzer die zweistufige Überprüfung für AD FS über Azure Multi-Factor Authentication Server oder eine Lösung zur mehrstufigen Authentifizierung von Drittanbietern ausführen.

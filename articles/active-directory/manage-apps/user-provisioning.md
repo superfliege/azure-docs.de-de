@@ -14,14 +14,15 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 680cea983fb7435bf4492fc295e29f3a234a4323
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 935fef5ea988908787ae04688985606acec41bfd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356068"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387276"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
+
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Was ist eine automatisierte Benutzerbereitstellung für SaaS-Apps?
 Azure Active Directory (Azure AD) ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen von Benutzeridentitäten in Cloudanwendungen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), wie z.B. Dropbox, Salesforce und ServiceNow.
 
@@ -42,6 +43,7 @@ Azure Active Directory (Azure AD) ermöglicht Ihnen das automatisierte Erstellen
 * Berichterstellung und Aktivitätsprotokolle unterstützen Sie bei der Überwachung und Problembehandlung.
 
 ## <a name="why-use-automated-provisioning"></a>Argumente für die automatisierte Bereitstellung
+
 Nachfolgend werden einige Gründe aufgeführt, die für die Verwendung dieser Funktion sprechen:
 
 * Vermeiden von Kosten, Ineffizienz und Fehlern, die in Zusammenhang mit manuellen Bereitstellungsvorgängen auftreten.
@@ -69,6 +71,7 @@ Der **Azure AD-Bereitstellungsdienst** stellt Benutzer für SaaS-Apps und andere
 Azure AD unterstützt standardmäßig verschiedene beliebte SaaS-Apps und Personalsysteme und bietet allgemeine Unterstützung für Apps, die bestimmte Teile des SCIM 2.0-Standards implementieren.
 
 ### <a name="pre-integrated-applications"></a>Vorab integrierte Anwendungen
+
 Eine Aufstellung aller Anwendungen, für die Azure AD einen vorab integrierten Bereitstellungsconnector unterstützt, finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung](../saas-apps/tutorial-list.md).
 
 Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungsunterstützung für zusätzliche Anwendungen anzufordern, senden Sie uns eine Nachricht über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
@@ -77,6 +80,7 @@ Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungs
 > Damit eine Anwendung die automatisierte Benutzerbereitstellung unterstützt, müssen zunächst die erforderlichen APIs für die Benutzerverwaltung bereitgestellt werden, die externen Programmen die Automatisierung der Erstellung, Wartung und Entfernung von Benutzern ermöglichen. Daher sind nicht alle SaaS-Apps mit diesem Feature kompatibel. Für Apps, die Benutzerverwaltungs-APIs unterstützen, kann das Azure AD-Entwicklerteam anschließend einen Bereitstellungsconnector erstellen. Diese Tätigkeit wird in Abhängigkeit von den Anforderungen bestehender und potenzieller Kunden priorisiert. 
 
 ### <a name="connecting-applications-that-support-scim-20"></a>Verbinden von Anwendungen mit SCIM 2.0-Unterstützung
+
 Informationen zum generischen Verbinden von Anwendungen, die SCIM 2.0-basierte APIs für die Benutzerverwaltung implementieren, finden Sie unter [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](use-scim-to-provision-users-and-groups.md).
 
     
@@ -124,26 +128,28 @@ Die Bereitstellung wird auf der Registerkarte **Bereitstellung** des Anwendungsv
 Wenn Azure AD das Quellsystem ist, verwendet der Bereitstellungsdienst das [Feature „Differenzielle Abfragen“ der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query), um Benutzer und Gruppen zu überwachen. Der Bereitstellungsdienst führt eine erste Synchronisierung für das Quellsystem und das Zielsystem aus, gefolgt von regelmäßigen inkrementellen Synchronisierungen. 
 
 ### <a name="initial-sync"></a>Erste Synchronisierung
+
 Nachdem der Bereitstellungsdienst gestartet wurde, umfasst die erste jemals durchgeführte Synchronisierung Folgendes:
 
 1. Abfragen aller Benutzer und Gruppen aus dem Quellsystem und Abrufen aller Attribute, die in den [Attributzuordnungen](customize-application-attributes.md) definiert sind.
 2. Filtern der zurückgegebenen Benutzer und Gruppen, indem alle konfigurierten [Zuweisungen](assign-user-or-group-access-portal.md) oder [attributbasierten Bereichsfilter](define-conditional-rules-for-provisioning-user-accounts.md) verwendet werden.
 3. Wenn für einen Benutzer ermittelt wird, dass er zugewiesen ist oder in den Bereich für die Bereitstellung fällt, sendet der Dienst eine Anfrage zu einem übereinstimmenden Benutzer an das Zielsystem, indem die angegebenen [Abgleichattribute](customize-application-attributes.md#understanding-attribute-mapping-properties) verwendet werden. Beispiel: Wenn der userPrincipal-Name auf dem Quellsystem das übereinstimmende Attribut ist und dem userName auf dem Zielsystem zugeordnet ist, fragt der Bereitstellungsdienst beim Zielsystem userNames ab, die mit den Werten von userPrincipal-Namen auf dem Quellsystem übereinstimmen.
-4. Wenn auf dem Zielsystem kein übereinstimmender Benutzer gefunden wird, wird er erstellt, indem die vom Quellsystem zurückgegebenen Attribute verwendet werden.
-5. Falls ein übereinstimmender Benutzer gefunden wird, wird er aktualisiert, indem die vom Quellsystem bereitgestellten Attribute verwendet werden.
+4. Wenn auf dem Zielsystem kein übereinstimmender Benutzer gefunden wird, wird er erstellt, indem die vom Quellsystem zurückgegebenen Attribute verwendet werden. Nachdem das Benutzerkonto erstellt wurde, erkennt der Bereitstellungsdienst die ID des Zielsystems für den neuen Benutzer und speichert diese zwischen, die verwendet wird, um alle zukünftigen Vorgänge für diesen Benutzer auszuführen.
+5. Falls ein übereinstimmender Benutzer gefunden wird, wird er aktualisiert, indem die vom Quellsystem bereitgestellten Attribute verwendet werden. Nachdem das Benutzerkonto zugeordnet wurde, erkennt der Bereitstellungsdienst die ID des Zielsystems für den neuen Benutzer und speichert diese zwischen, die verwendet wird, um alle zukünftigen Vorgänge für diesen Benutzer auszuführen.
 6. Wenn die Attributzuordnungen „Referenzattribute“ enthalten, führt der Dienst auf dem Zielsystem zusätzliche Updates durch, um die referenzierten Objekte zu erstellen und zu verknüpfen. Ein Benutzer kann auf dem Zielsystem beispielsweise über das Attribut „Manager“ verfügen, das mit einem anderen Benutzer verknüpft ist, der im Zielsystem erstellt wurde.
 7. Legen Sie am Ende der ersten Synchronisierung einen Grenzwert fest, der als Startpunkt für die nachfolgenden inkrementellen Synchronisierungen dient.
 
 Einige Anwendungen, z.B. ServiceNow, Google Apps und Box, unterstützen nicht nur die Bereitstellung von Benutzern, sondern auch die Bereitstellung von Gruppen und ihrer Mitglieder. Wenn die Gruppenbereitstellung in den [Zuordnungen](customize-application-attributes.md) aktiviert ist, synchronisiert der Bereitstellungsdienst die Benutzer und Gruppen und anschließend die Gruppenmitgliedschaften. 
 
 ### <a name="incremental-syncs"></a>Inkrementelle Synchronisierungen
+
 Nach der ersten Synchronisierung gilt für alle nachfolgenden Synchronisierungen Folgendes:
 
 1. Fragen Sie vom Quellsystem alle Benutzer und Gruppen ab, die aktualisiert wurden, seitdem der letzte Grenzwert gespeichert wurde.
 2. Filtern der zurückgegebenen Benutzer und Gruppen, indem alle konfigurierten [Zuweisungen](assign-user-or-group-access-portal.md) oder [attributbasierten Bereichsfilter](define-conditional-rules-for-provisioning-user-accounts.md) verwendet werden.
 3. Wenn für einen Benutzer ermittelt wird, dass er zugewiesen ist oder in den Bereich für die Bereitstellung fällt, sendet der Dienst eine Anfrage zu einem übereinstimmenden Benutzer an das Zielsystem, indem die angegebenen [Abgleichattribute](customize-application-attributes.md#understanding-attribute-mapping-properties) verwendet werden.
-4. Wenn auf dem Zielsystem kein übereinstimmender Benutzer gefunden wird, wird er erstellt, indem die vom Quellsystem zurückgegebenen Attribute verwendet werden.
-5. Falls ein übereinstimmender Benutzer gefunden wird, wird er aktualisiert, indem die vom Quellsystem bereitgestellten Attribute verwendet werden.
+4. Wenn auf dem Zielsystem kein übereinstimmender Benutzer gefunden wird, wird er erstellt, indem die vom Quellsystem zurückgegebenen Attribute verwendet werden. Nachdem das Benutzerkonto erstellt wurde, erkennt der Bereitstellungsdienst die ID des Zielsystems für den neuen Benutzer, die verwendet wird, um alle zukünftigen Vorgänge für diesen Benutzer auszuführen, und speichert diese zwischen.
+5. Falls ein übereinstimmender Benutzer gefunden wird, wird er aktualisiert, indem die vom Quellsystem bereitgestellten Attribute verwendet werden. Nachdem das Benutzerkonto zugeordnet wurde, erkennt der Bereitstellungsdienst die ID des Zielsystems für den neuen Benutzer, die verwendet wird, um alle zukünftigen Vorgänge für diesen Benutzer auszuführen, und speichert diese zwischen.
 6. Wenn die Attributzuordnungen „Referenzattribute“ enthalten, führt der Dienst auf dem Zielsystem zusätzliche Updates durch, um die referenzierten Objekte zu erstellen und zu verknüpfen. Ein Benutzer kann auf dem Zielsystem beispielsweise über das Attribut „Manager“ verfügen, das mit einem anderen Benutzer verknüpft ist, der im Zielsystem erstellt wurde.
 7. Wenn ein Benutzer, der sich zuvor im Bereich für die Bereitstellung befunden hat, aus dem Bereich entfernt (und die Zuweisung aufgehoben) wird, deaktiviert der Dienst den Benutzer im Zielsystem per Update.
 8. Wenn ein Benutzer, der sich zuvor im Bereich für die Bereitstellung befunden hat, im Quellsystem deaktiviert oder vorläufig gelöscht wird, deaktiviert der Dienst den Benutzer im Zielsystem per Update.
@@ -160,7 +166,8 @@ Der Bereitstellungsdienst fährt damit fort, so lange nacheinander inkrementelle
 * Eine neue erste Synchronisierung wird aufgrund einer Änderung in den Attributzuordnungen oder Bereichsfiltern ausgelöst. Hierdurch werden ebenfalls alle gespeicherten Grenzwerte gelöscht und alle Quellobjekte erneut ausgewertet.
 * Der Bereitstellungsprozess wird aufgrund einer hohen Fehlerrate in Quarantäne versetzt (siehe unten) und verbleibt mehr als vier Wochen lang in diesem Zustand. In diesem Fall wird der Dienst automatisch deaktiviert.
 
-### <a name="errors-and-retries"></a>Fehler und Wiederholungen 
+### <a name="errors-and-retries"></a>Fehler und Wiederholungen
+
 Wenn ein einzelner Benutzer im Zielsystem aufgrund eines Fehlers nicht hinzugefügt, aktualisiert oder gelöscht werden kann, wird während des nächsten Synchronisierungszyklus versucht, den Vorgang zu wiederholen. Falls für den Benutzer weiterhin ein Fehler auftritt, wird die Häufigkeit der Wiederholungen allmählich verringert, bis schließlich nur noch ein Versuch pro Tag durchgeführt wird. Zum Beheben des Fehlers müssen Administratoren die [Überwachungspfade](check-status-user-account-provisioning.md) auf Ereignisse vom Typ „Process Escrow“ (Prozesshinterlegung) prüfen, um die Grundursache zu ermitteln, und dann entsprechende Maßnahmen ergreifen. Beispiele für häufig auftretende Fehler sind:
 
 * Für Benutzer ist auf dem Quellsystem ein bestimmtes Attribut nicht angegeben, das auf dem Zielsystem erforderlich ist.
@@ -169,6 +176,7 @@ Wenn ein einzelner Benutzer im Zielsystem aufgrund eines Fehlers nicht hinzugef�
 Diese Fehler können behoben werden, indem die Attributwerte für den betroffenen Benutzer im Quellsystem oder die Attributzuordnungen angepasst werden, um Konflikte zu vermeiden.   
 
 ### <a name="quarantine"></a>Quarantäne
+
 Falls die meisten oder alle Aufrufe an das Zielsystem dauerhaft aufgrund eines Fehlers nicht erfolgreich sind (z.B. bei ungültigen Administratoranmeldeinformationen), wird der Bereitstellungsauftrag in den Zustand „Quarantäne“ versetzt. Dies ist im [Zusammenfassungsbericht für die Bereitstellung](check-status-user-account-provisioning.md) angegeben. Wenn im Azure-Portal E-Mail-Benachrichtigungen konfiguriert wurden, wird auch eine E-Mail gesendet. 
 
 In der Quarantäne wird die Häufigkeit der inkrementellen Synchronisierungen allmählich auf einmal pro Tag verringert. 
@@ -219,26 +227,52 @@ Zusammenfassung der Faktoren, die sich auf die Dauer bis zum Abschluss einer **e
 * Die Anzahl und Größe der zugewiesenen Gruppen. Das Synchronisieren zugewiesener Gruppen dauert länger als das Synchronisieren von Benutzern. Sowohl die Anzahl als auch die Größe der zugewiesenen Gruppen beeinflussen die Leistung. Wenn für eine Anwendung [Zuordnungen für die Synchronisierung von Gruppenobjekten aktiviert sind](customize-application-attributes.md#editing-group-attribute-mappings), werden zusätzlich zu den Benutzern auch Gruppeneigenschaften wie Gruppennamen und Mitgliedschaften synchronisiert. Diese zusätzlichen Synchronisierungen dauern länger als die ausschließliche Synchronisierung von Benutzerobjekten.
 
 
-##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Wie kann ich feststellen, ob Benutzer ordnungsgemäß bereitgestellt werden?
+## <a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Wie kann ich feststellen, ob Benutzer ordnungsgemäß bereitgestellt werden?
 
 Alle vom Benutzerbereitstellungsdienst ausgeführten Vorgänge werden in den Azure AD-Überwachungsprotokollen erfasst. Dazu zählen alle Lese- und Schreibvorgänge in den Quell- und Zielsystemen sowie die Angabe, welche Benutzerdaten im Rahmen des jeweiligen Vorgangs gelesen oder geschrieben wurden.
 
 Informationen zum Lesen der Überwachungsprotokolle im Azure-Portal finden Sie in der [Anleitung zur Erstellung von Bereitstellungsberichten](check-status-user-account-provisioning.md).
 
 
-##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>Wie kann ich Probleme bei der Benutzerbereitstellung behandeln?
+## <a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>Wie kann ich Probleme bei der Benutzerbereitstellung behandeln?
 
 Einen szenariobasierten Leitfaden zur Problembehandlung bei der automatischen Benutzerbereitstellung finden Sie unter [Probleme bei der Konfiguration und Bereitstellung von Benutzern für eine Anwendung](application-provisioning-config-problem.md).
 
 
-##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>Welche Best Practices gibt es für das Rollout der automatischen Benutzerbereitstellung?
+## <a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>Welche Best Practices gibt es für das Rollout der automatischen Benutzerbereitstellung?
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
 Einen ausführlichen exemplarischen Bereitstellungsplan für die ausgehende Benutzerbereitstellung einer Anwendung finden Sie im [Identitätsbereitstellungsleitfaden für die Benutzerbereitstellung](https://aka.ms/userprovisioningdeploymentplan).
 
+## <a name="more-frequently-asked-questions"></a>Weitere häufig gestellte Fragen
+
+### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-b2b-users-in-azure-ad"></a>Funktioniert automatische Benutzerbereitstellung für SaaS-Apps mit B2B-Benutzern in Azure AD?
+
+Ja, der Azure AD-Benutzerbereitstellungsdienst kann zum Bereitstellen von B2B (oder Gast)-Benutzern in Azure AD für SaaS-Anwendungen verwendet werden.
+
+Damit B2B-Benutzer sich bei der SaaS-Anwendung mithilfe von Azure AD anmelden können, muss jedoch die SAML-basierte Funktion der SaaS-Anwendung für einmaliges Anmelden auf eine bestimmte Weise konfiguriert sein. Weitere Informationen zum Konfigurieren von SaaS-Anwendungen, sodass sie Anmeldungen von B2B-Benutzern unterstützen, finden Sie unter [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+
+### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Funktioniert automatische Benutzerbereitstellung für SaaS-Apps mit dynamischen Gruppen in Azure AD?
+
+Ja. Wenn der Azure AD-Benutzerbereitstellungsdienst so konfiguriert ist, dass er „nur zugewiesene Benutzer und Gruppen synchronisiert“, kann er Benutzer in einer SaaS-Anwendung bereitstellen oder ihre Bereitstellung aufheben, basierend darauf, ob sie Mitglieder einer [dynamischen Gruppe](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]) sind oder nicht. Dynamische Gruppen funktionieren auch mit der Option „Alle Benutzer und Gruppen synchronisieren“.
+
+Die Verwendung dynamischer Gruppen kann jedoch die Gesamtleistung der End-to-End-Benutzerbereitstellung aus dem Azure AD in SaaS-Anwendungen beeinträchtigen. Wenn Sie dynamische Gruppen verwenden, berücksichtigen Sie diese Einschränkungen und Empfehlungen:
+
+* Wie schnell ein Benutzer in einer dynamischen Gruppe bereitgestellt oder seine Bereitstellung in einer SaaS-Anwendung aufgehoben wird, hängt davon ab, wie schnell die dynamische Gruppe Änderungen an der Mitgliedschaft auswerten kann. Informationen, wie Sie den Verarbeitungsstatus einer dynamischen Gruppe überprüfen, finden Sie unter [Überprüfen des Verarbeitungsstatus für eine Mitgliedschaftsregel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule).
+
+* Bei Verwendung dynamischer Gruppen muss bei den Regeln sorgfältig die Benutzerbereitstellung und Aufhebung von Benutzerbereitstellungen berücksichtigt werden, weil ein Verlust der Mitgliedschaft zu einem Aufhebungsereignis der Bereitstellung führt.
+
+### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>Funktioniert automatische Benutzerbereitstellung für SaaS-Apps mit geschachtelten Gruppen in Azure AD?
+
+Nein. Wenn der Azure AD-Benutzerbereitstellungsdienst auf „Nur zugewiesene Benutzer und Gruppen synchronisieren“ konfiguriert ist, kann er Benutzer, die sich in geschachtelten Gruppen befinden, weder lesen noch bereitstellen. Er kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder der explizit zugewiesenen Gruppe sind.
+
+Dies ist eine Einschränkung „gruppenbasierter Zuweisungen zu Anwendungen“, die sich auch auf das einmalige Anmelden auswirkt und unter [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps ) beschrieben ist.
+
+Als Problemumgehung sollten Sie die Gruppen, die die Benutzer enthalten, die bereitgestellt werden sollen, explizit zuweisen (oder auf andere Weise [den Bereich festlegen](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)).
 
 ## <a name="related-articles"></a>Verwandte Artikel
+
 * [Liste der Tutorials zur Integration von SaaS-Apps](../saas-apps/tutorial-list.md)
 * [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](customize-application-attributes.md)
 * [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md)

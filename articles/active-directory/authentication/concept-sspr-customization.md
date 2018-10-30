@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 69f6ed7814feacbd5adf60325aae123d388ffb61
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f523e2e2d55a34825bbb76a5a879c7c046b6b554
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222787"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318961"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung
 
@@ -55,7 +55,9 @@ AD FS-Administratoren (Active Directory Federation Services) können einen Link 
 
 Um der AD FS-Anmeldeseite einen Link hinzuzufügen, verwenden Sie den folgenden Befehl auf dem AD FS-Server. Benutzer können diese Seite verwenden, um den SSPR-Workflow einzugeben.
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>" ```
+``` powershell
+Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
+```
 
 ## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Anpassen des Aussehens und Verhaltens der Anmeldeseite und des Zugriffsbereichs
 
@@ -65,8 +67,8 @@ Die von Ihnen ausgewählten Grafiken werden in den folgenden Situationen angezei
 
 * Nachdem ein Benutzer seinen Benutzernamen eingegeben hat
 * Wenn der Benutzer auf die angepasste URL zugreift:
-    * Durch Übergeben des *whr*-Parameters an die Seite zum Zurücksetzen des Kennworts, z.B. „https://login.microsoftonline.com/?whr=contoso.com“
-    * Durch Übergeben des *username*-Parameters an die Seite zum Zurücksetzen des Kennworts, z.B. „https://login.microsoftonline.com/?username=admin@contoso.com“
+    * Durch Übergeben des `whr`-Parameters an die Seite zum Zurücksetzen des Kennworts, z. B. „https://login.microsoftonline.com/?whr=contoso.com“
+    * Durch Übergeben des `username`-Parameters an die Seite zum Zurücksetzen des Kennworts, z. B. „https://login.microsoftonline.com/?username=admin@contoso.com“
 
 Im Artikel [Schnellstart: Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure AD](../fundamentals/customize-branding.md) finden Sie ausführliche Informationen zum Konfigurieren von Unternehmensbranding.
 

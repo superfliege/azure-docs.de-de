@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: a54403b7794d26d87c810f5cd20050db35c078f1
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3ba8c93d158a6ff80c3db788924503e9d4e87242
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054328"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378118"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Gewusst wie: Konfigurieren der Richtlinie zum Benutzerrisiko
 
@@ -41,7 +41,7 @@ Alle Risikoereignisse, die für einen Benutzer erkannt und nicht gelöst wurden,
 Die Richtlinie zum Benutzerrisiko ist eine automatisierte Antwort, die Sie für eine bestimmte Benutzerrisikostufe konfigurieren können. Mit einer Richtlinie zum Benutzerrisiko können Sie den Zugriff auf Ihre Ressourcen blockieren oder eine Kennwortänderung erzwingen, um für ein Benutzerkonto den bereinigten Zustand wiederherzustellen.
 
 
-## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Wie greife ich auf die Richtlinie zum Anmelderisiko zu?
+## <a name="how-do-i-access-the-user-risk-policy"></a>Wie greife ich auf die Richtlinie zum Benutzerrisiko zu?
    
 Die Richtlinie zum Anmelderisiko befindet sich auf der [Azure AD Identity Protection-Seite](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy) im Abschnitt **Konfigurieren**.
    

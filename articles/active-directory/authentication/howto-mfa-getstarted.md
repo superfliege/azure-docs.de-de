@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0408b26e687dd31c408dbccc68f56e8198016c8f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: bd2f796ab2feee4bb862d8de2c44efc742163f06
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664787"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167527"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Bereitstellen von cloudbasierter Azure Multi-Factor Authentication
 
@@ -24,15 +24,15 @@ Die ersten Schritte mit Azure Multi-Factor Authentication (Azure MFA) sind sehr 
 Stellen zu zuerst sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * Ein globales Administratorkonto in Ihrem Azure AD-Mandanten. Wenn Sie Hilfe bei diesem Schritt benötigen, lesen Sie unseren Artikel [Erste Schritte mit Azure AD](../get-started-azure-ad.md).
-* Den Benutzern sind die richtigen Lizenzen zugewiesen. Weitere Informationen finden Sie unter [Beziehen von Azure Multi-Factor Authentication](concept-mfa-licensing.md).
+* Den Benutzern sind die richtigen Lizenzen zugewiesen. Weitere Informationen finden Sie im Artikel [Beziehen von Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 
 ## <a name="choose-how-to-enable"></a>Auswählen der Art und Weise der Aktivierung
 
 **Aktiviert mit der Richtlinie für bedingten Zugriff** – Diese Methode wird in diesem Artikel erläutert. Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung mit der Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure MFA in der Cloud und ist eine Premium-Funktion von Azure AD.
 
-Aktiviert durch Azure AD Identity Protection – Diese Methode nutzt die Risikorichtlinie von Azure AD Identity Protection, um die zweistufige Überprüfung ausschließlich auf Basis des Anmelderisikos für alle Cloudanwendungen zu erzwingen. Diese Methode erfordert die Azure Active Directory P2-Lizenzierung. Weitere Informationen zu dieser Methode finden Sie unter [Azure Active Directory Identity Protection](../identity-protection/overview.md#risky-sign-ins).
+**Aktiviert durch Azure AD Identity Protection** – Diese Methode nutzt die Risikorichtlinie von Azure AD Identity Protection, um die zweistufige Überprüfung ausschließlich auf Basis des Anmelderisikos für alle Cloudanwendungen zu erzwingen. Diese Methode erfordert die Azure Active Directory P2-Lizenzierung. Weitere Informationen zu dieser Methode finden Sie unter [Gewusst wie: Konfigurieren von Richtlinien zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md).
 
-Aktiviert durch Ändern des Benutzerstatus – Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu erfordern. Dies funktioniert sowohl für Azure MFA in der Cloud als auch für Azure MFA Server. Diese Methode erfordert, dass Benutzer **jedes Mal**, wenn sie sich anmelden, die zweistufige Überprüfung durchführen, und überschreibt Richtlinien für bedingten Zugriff. Weitere Informationen zu dieser Methode finden Sie in [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](howto-mfa-userstates.md).
+**Aktiviert durch Ändern des Benutzerstatus** – Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu erfordern. Dies funktioniert sowohl für Azure MFA in der Cloud als auch für Azure MFA Server. Diese Methode erfordert, dass Benutzer **jedes Mal**, wenn sie sich anmelden, die zweistufige Überprüfung durchführen, und überschreibt Richtlinien für bedingten Zugriff. Weitere Informationen zu dieser Methode finden Sie in [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](howto-mfa-userstates.md).
 
 > [!Note]
 > Weitere Informationen zu Lizenzen und Preisen finden Sie auf den Preisgestaltungsseiten von [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
@@ -54,16 +54,16 @@ Melden Sie sich mit dem globalen Administratorkonto am [Azure-Portal](https://po
 
 Bevor Sie die Azure Multi-Factor Authentication aktivieren, muss Ihre Organisation festlegen, welche Überprüfungsoptionen zugelassen werden. Für den Zweck dieser Übung aktivieren Sie „Auf Telefon anrufen“ und „Textnachricht an Telefon“, da es sich um generische Optionen handelt, die die meisten verwenden können. Weitere Informationen zu Authentifizierungsmethoden und deren Verwendung finden Sie im Artikel [Was sind Authentifizierungsmethoden?](concept-authentication-methods.md)
 
-1. Navigieren Sie zu **Azure Active Directory**, **Benutzer**, **Multi-Factor Authentication**
-   ![Zugreifen auf das Multi-Factor Authentication-Portal über das Blatt „Azure AD-Benutzer“ im Azure-Portal](media/howto-mfa-getstarted/users-mfa.png) 
-2. Navigieren Sie in der neuen Registerkarte, die geöffnet wird, zu **Diensteinstellungen**
-3. Aktivieren Sie unter **Überprüfungsoptionen** die folgenden Kontrollkästchen für Methoden, die den Benutzern zur Verfügung stehen sollen:
-   * Auf Telefon anrufen
-   * Textnachricht an Telefon
+1. Wechseln Sie zu **Azure Active Directory**, **Benutzer**, **Multi-Factor Authentication**.
+
+   ![Zugreifen auf das Multi-Factor Authentication-Portal über das Blatt „Azure AD-Benutzer“ im Azure-Portal](media/howto-mfa-getstarted/users-mfa.png)
+
+1. Navigieren Sie auf der neuen Registerkarte, die geöffnet wird, zu **Diensteinstellungen**.
+1. Aktivieren Sie unter **Überprüfungsoptionen** alle Kontrollkästchen für Methoden, die den Benutzern zur Verfügung stehen sollen.
 
    ![Konfigurieren von Überprüfungsmethoden, in der Registerkarte „Diensteinstellung“ von Multi-Factor Authentication](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
-4. Klicken Sie im Menü „Einstellungen“ auf **Speichern**
+4. Klicken Sie auf **Speichern**.
 5. Schließen Sie die Registerkarte **Diensteinstellungen**.
 
 ### <a name="create-conditional-access-policy"></a>Erstellen der Richtlinie für den bedingten Zugriff
@@ -71,23 +71,23 @@ Bevor Sie die Azure Multi-Factor Authentication aktivieren, muss Ihre Organisati
 1. Melden Sie sich mit dem globalen Administratorkonto am [Azure-Portal](https://portal.azure.com) an.
 1. Navigieren Sie zu **Azure Active Directory**  > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
-1. Geben Sie einen aussagekräftigen Namen für die Richtlinie an.
-1. Unter **Benutzer und Gruppen**.
+1. Geben Sie einen aussagekräftigen Namen für Ihre Richtlinie an.
+1. Unter **Benutzer und Gruppen**:
    * Wählen Sie auf der Registerkarte **Einschließen** das Optionsfeld **Alle Benutzer**.
    * EMPFOHLEN: Aktivieren Sie auf der Registerkarte **Ausschließen** das Kontrollkästchen für **Benutzer und Gruppen** und wählen Sie eine Gruppe, die für Ausschlüsse verwendet werden soll, wenn Benutzer keinen Zugriff auf ihre Authentifizierungsmethoden haben.
    * Klicken Sie auf **Fertig**.
-1. Wählen Sie unter **Cloud-Apps** das Optionsfeld **Alle Cloud-Apps** aus.
+1. Aktivieren Sie unter **Cloud-Apps** das Optionsfeld **Alle Cloud-Apps**.
    * OPTIONAL:  Wählen Sie auf der Registerkarte **Ausschließen** Cloud-Apps, für die Ihre Organisation keine MFA benötigt.
    * Klicken Sie auf **Fertig**.
-1. Im Abschnitt **Bedingungen**.
+1. Im Abschnitt **Bedingungen**:
    * OPTIONAL: Wenn Sie die Azure Identity Protection aktiviert haben, können Sie entscheiden, ob das Anmelderisiko als Teil der Richtlinie ausgewertet werden soll.
    * Optional: Wenn Sie vertrauenswürdige Speicherorte oder benannte Orte konfiguriert haben, können Sie angeben, ob diese in die Richtlinie ein- oder von dieser ausgeschlossen werden.
-1. Stellen Sie unter **Gewähren** sicher, dass das Optionsfeld **Zugriff gewähren** ausgewählt ist.
+1. Stellen Sie unter **Gewähren** sicher, dass das Optionsfeld **Zugriff gewähren** aktiviert ist.
     * Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication erforderlich**.
     * Klicken Sie auf **Auswählen**.
 1. Überspringen Sie den Abschnitt **Sitzung**.
-1. Legen Sie den Umschalter **Richtlinie aktivieren** auf **Ein** fest.
-1. Klicken Sie auf **Erstellen**
+1. Legen Sie die Umschaltfläche **Richtlinie aktivieren** auf **Ein** fest.
+1. Klicken Sie auf **Create**.
 
 ![Erstellen Sie eine Richtlinie für bedingten Zugriff, um MFA für Azure-Portal-Benutzer in der Pilotgruppe zu aktivieren.](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
@@ -105,6 +105,8 @@ Um zu prüfen, ob Ihre Richtlinie für bedingten Zugriff funktioniert, testen Si
 ## <a name="next-steps"></a>Nächste Schritte
 
 Herzlichen Glückwunsch, Sie haben Azure Multi-Factor Authentication in der Cloud eingerichtet.
+
+Warum wurde ein Benutzer aufgefordert oder nicht aufgefordert, MFA auszuführen? Informationen finden Sie im Abschnitt [„Azure AD-Anmeldungenbericht“ im Dokument „Berichte in Azure Multi-Factor Authentication“](howto-mfa-reporting.md#azure-ad-sign-ins-report).
 
 Wie Sie zusätzliche Einstellungen wie vertrauenswürdige IP-Adressen, benutzerdefinierte Sprachnachrichten und Betrugswarnungen konfigurieren, erfahren Sie im Artikel [Konfigurieren von Azure Multi-Factor Authentication-Einstellungen](howto-mfa-mfasettings.md).
 

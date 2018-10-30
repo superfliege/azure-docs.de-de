@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 74bcd1e795186eba652d2da986c290e1989dd1d1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bc7999d56da8398b4f54b0144a595ee7c2e2ea35
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041573"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115109"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
@@ -43,7 +43,7 @@ Apps, die in Azure Active Directory (Azure AD) integriert werden, müssen bei ei
 | `appId` | Bezeichnerzeichenfolge | Gibt den eindeutigen Bezeichner für die App an, die einer App von Azure AD zugewiesen wird. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
 | `appRoles` | Arraytyp | Gibt Auflistung der Rollen an, die von einer App deklariert werden können. Diese Rollen können Benutzern, Gruppen oder Dienstprinzipalen zugewiesen werden. Weitere Beispiele und Informationen finden Sie unter [Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token](howto-add-app-roles-in-azure-ad-apps.md). | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
 | `groupMembershipClaims` | Zeichenfolge | Eine Bitmaske, die den in einem Benutzer- oder OAuth 2.0-Zugriffstoken ausgegebenen Anspruch `groups` konfiguriert, der von der App erwartet wird. Die Bitmaskenwerte sind:<br>0: Keine<br>1: Sicherheitsgruppen und Azure AD-Rollen<br>2: Reserviert<br>4: Reserviert<br>Durch das Festlegen der Bitmaske auf 7 werden alle Sicherheitsgruppen, Verteilergruppen und Azure AD-Verzeichnisrollen abgerufen, bei denen der angemeldete Benutzer ein Mitglied ist. | `1` |
-| `optionalClaims` | Zeichenfolge | Die optionalen Ansprüche, die im Token vom Sicherheitstokendienst für diese spezifische App zurückgegeben werden. Weitere Informationen finden Sie unter [Optionale Ansprüche](active-directory-optional-claims.md). | `null` |
+| `optionalClaims` | Zeichenfolge | Die optionalen Ansprüche, die im Token vom Sicherheitstokendienst für diese spezifische App zurückgegeben werden.<br>Zu diesem Zeitpunkt können Apps, die sowohl persönliche Konten als auch Azure AD unterstützen (registriert über das App-Registrierungsportal), keine optionalen Ansprüche verwenden. Apps, die nur für Azure AD unter Verwendung des Endpunkts v2.0 registriert sind, können jedoch die optionalen Ansprüche abrufen, die sie im Manifest angefordert haben. Weitere Informationen finden Sie unter [Optionale Ansprüche](active-directory-optional-claims.md). | `null` |
 | `id` | Bezeichnerzeichenfolge | Ein eindeutiger Bezeichner für die App im Verzeichnis. Diese ID ist nicht der Bezeichner, der verwendet wird, um die App in einer Protokolltransaktion zu bezeichnen. Sie dient dazu, in Verzeichnisabfragen auf das Objekt zu verweisen. | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
 | `identifierUris` | Zeichenfolgenarray | Benutzerdefinierte URIs, die eine Web-App innerhalb des zugehörigen Azure AD-Mandanten oder innerhalb einer überprüften benutzerdefinierten Domäne eindeutig identifizieren, wenn es sich um eine mehrinstanzenfähige App handelt. | <code>[<br>&nbsp;&nbsp;"https://MyRegistererdApp"<br>]</code> |
 | `informationalUrls` | Zeichenfolge | Gibt die Links zu den Nutzungsbedingungen und Datenschutzbestimmungen der App an. Die Nutzungsbedingungen und Datenschutzbestimmungen werden auf der Oberfläche für die Benutzerzustimmung angezeigt. Weitere Informationen finden Sie unter [Nutzungsbedingungen und Datenschutzerklärung für registrierte Azure Active Directory-Apps](howto-add-terms-of-service-privacy-statement.md). | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |

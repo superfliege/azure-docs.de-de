@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 20c824da82d6e3e66bfa2d7447c8a9573cbdce69
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8809a5a8b4f76d6e33bbb934e13931e86f2d681c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985812"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091767"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B-Zusammenarbeit: API und Anpassung
 
@@ -79,7 +79,7 @@ Weitere Informationen finden Sie unter https://graph.microsoft.io/docs/authoriza
 
 
 ## <a name="powershell"></a>PowerShell
-Sie können jetzt PowerShell verwenden, um externe Benutzer ganz einfach in eine Organisation einzuladen und dieser hinzuzufügen. Erstellen Sie eine Einladung mit dem Cmdlet:
+Sie können PowerShell verwenden, um externe Benutzer ganz einfach in eine Organisation einzuladen und dieser hinzuzufügen. Erstellen Sie eine Einladung mit dem Cmdlet:
 
 ```
 New-AzureADMSInvitation
@@ -92,7 +92,25 @@ Sie können die folgenden Optionen verwenden:
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
-Sie können sich auch die Einladungs-API-Referenz in [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) ansehen.
+### <a name="invitation-status"></a>Einladungsstatus
+
+Nachdem Sie einem externen Benutzer eine Einladung gesendet haben, können Sie mithilfe des Cmdlets **Get-AzureADUser** feststellen, ob er sie angenommen hat. Die folgenden Eigenschaften von „Get-AzureADUser“ werden aufgefüllt, wenn einem externen Benutzer eine Einladung gesendet wird:
+
+* **UserState** zeigt an, ob der Status der Einladung **PendingAcceptance** (Annahme ausstehend) oder **Accpeted** (Angenommen) ist.
+* **UserStateChangedOn** zeigt den Zeitstempel der neuesten Änderungen der Eigenschaft **UserState** an.
+
+Sie können dann mithilfe der Option **Filter** die Ergebnisse nach **UserState** filtern. Das folgende Beispiel zeigt, wie Sie Ergebnisse so filtern, dass nur Benutzer mit einer ausstehenden Einladung angezeigt werden. Das Beispiel zeigt außerdem die Option **Format-List**, mit der Sie die anzuzeigenden Eigenschaften angeben können. 
+ 
+```
+Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
+```
+
+> [!NOTE]
+> Stellen Sie sicher, dass Sie die neueste Version des AzureAD PowerShell-Moduls oder des AzureADPreview PowerShell-Moduls verwenden. 
+
+## <a name="see-also"></a>Weitere Informationen
+
+Sehen Sie sich die Einladungs-API-Referenz in [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

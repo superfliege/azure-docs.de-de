@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: e8d85144b89d81e67d5ac225f0b6467230608ce0
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 3cd0a88747379edb15385014fcc93287d95295e0
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106370"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114038"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von PowerShell
 
@@ -175,6 +175,9 @@ So weisen Sie eine benutzerzugewiesene verwaltete Identität einem vorhandenen v
    ```
 3. Rufen Sie zunächst die VM-Eigenschaften mithilfe des Cmdlets `Get-AzureRmVM` ab. Weisen Sie dem virtuellen Azure-Computer anschließend eine benutzerzugewiesene verwaltete Identität zu, und verwenden Sie dazu die Switches `-IdentityType` und `-IdentityID` im Cmdlet [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm).  Der Wert für den Parameter `-IdentityId` ist die `Id`, die Sie im vorherigen Schritt notiert haben.  Ersetzen Sie `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte.
 
+   > [!WARNING]
+   > Um alle zuvor vom Benutzer zugewiesenen verwalteten Identitäten zu erhalten, die dem virtuellen Computer zugewiesen sind, fragen Sie die Eigenschaft `Identity` des VM-Objekts ab (z. B. `$vm.Identity`).  Wenn vom Benutzer zugewiesene verwaltete Identitäten zurückgegeben werden, nehmen Sie diese in den folgenden Befehl auf, zusammen mit der neuen vom Benutzer zugewiesenen verwalteten Identität, die Sie der VM zuweisen möchten.
+
    ```powershell
    $vm = Get-AzureRmVM -ResourceGroupName <RESOURCE GROUP> -Name <VM NAME>
    Update-AzureRmVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
@@ -189,7 +192,7 @@ So weisen Sie eine benutzerzugewiesene verwaltete Identität einem vorhandenen v
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Entfernen einer vom Benutzer zugewiesenen verwalteten Identität von einer Azure-VM
 
-Wenn Ihr virtueller Computer mehrere benutzerzugewiesene Identitäten umfasst, können Sie mit den folgenden Befehlen alle bis auf die letzte Identität entfernen. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VM NAME>` durch Ihre eigenen Werte. `<USER ASSIGNED IDENTITY NAME>` ist die Namenseigenschaft der benutzerzugewiesenen verwalteten Identität, die weiterhin auf dem virtuellen Computer festgelegt sein sollte. Diese Informationen finden Sie im Identitätsabschnitt der VM mithilfe von `az vm show`:
+Wenn Ihr virtueller Computer mehrere benutzerzugewiesene Identitäten umfasst, können Sie mit den folgenden Befehlen alle bis auf die letzte Identität entfernen. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VM NAME>` durch Ihre eigenen Werte. `<USER ASSIGNED IDENTITY NAME>` ist die Namenseigenschaft der benutzerzugewiesenen verwalteten Identität, die weiterhin auf dem virtuellen Computer festgelegt sein sollte. Diese Informationen finden Sie durch Abfragen der Eigenschaft `Identity` des VM-Objekts.  Beispiel: `$vm.Identity`:
 
 ```powershell
 $vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm

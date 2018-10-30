@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: a4ea483104a28e436ac35b50b962d3a153483789
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3e3b608d3928536d654a594c42cbcc955d620d98
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804173"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321732"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
@@ -27,7 +27,7 @@ In diesem Artikel sind die Kennwortrichtlinien und Komplexitätsanforderungen be
 
 Mit einer Zwei-Gate-Richtlinie haben **Administratoren nicht die Möglichkeit, Sicherheitsfragen zu verwenden**.
 
- Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elementen bestehen, z.B. eine E-Mail-Adresse *und* eine Telefonnummer. Eine Zwei-Gate-Richtlinie gilt in folgenden Situationen:
+Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elementen bestehen, z.B. eine E-Mail-Adresse *und* eine Telefonnummer. Eine Zwei-Gate-Richtlinie gilt in folgenden Situationen:
 
 * Alle folgenden Administratorrollen sind betroffen:
   * Helpdesk-Administrator
@@ -50,29 +50,17 @@ Mit einer Zwei-Gate-Richtlinie haben **Administratoren nicht die Möglichkeit, S
   * CRM-Dienstadministrator
   * Power BI-Dienstadministrator
 
-* Wenn 30 Tage in einem Testabonnement abgelaufen sind.
-
-  oder
-
-* Es ist eine benutzerdefinierte Domäne vorhanden, z.B. contoso.com.
-
-  oder
-
+* Wenn 30 Tage in einem Testabonnement abgelaufen sind, oder
+* Es ist eine benutzerdefinierte Domäne vorhanden, z.B. contoso.com, oder
 * Azure AD Connect synchronisiert Identitäten aus Ihrem lokalen Verzeichnis.
 
 ### <a name="exceptions"></a>Ausnahmen
 
 Eine Ein-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus einem Element bestehen, z.B. eine E-Mail-Adresse *oder* eine Telefonnummer. Eine Ein-Gate-Richtlinie gilt in folgenden Situationen:
 
-* Für ein Testabonnement sind noch keine 30 Tage vergangen.
-
-  oder
-
-* Es ist keine benutzerdefinierte Domäne vorhanden (*.onmicrosoft.com).
-
-  and
-
-  Azure AD Connect synchronisiert keine Identitäten.
+* Für ein Testabonnement sind noch keine 30 Tage vergangen, oder
+* Es ist keine benutzerdefinierte Domäne vorhanden (*.onmicrosoft.com), und
+* Azure AD Connect synchronisiert keine Identitäten.
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName-Richtlinien, die für alle Benutzerkonten gelten
 
@@ -80,7 +68,7 @@ Jedes Benutzerkonto, das sich bei Azure AD anmeldet, muss über ein eindeutiges,
 
 | Eigenschaft | UserPrincipalName-Richtlinien |
 | --- | --- |
-| Zulässige Zeichen |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> \. - \_ ! \# ^ \~</li></ul> |
+| Zulässige Zeichen |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
 | Unzulässige Zeichen |<ul> <li>Jedes\@\"-Zeichen, das nicht den Benutzernamen und die Domäne trennt.</li> <li>Darf keinen Punkt (.) unmittelbar vor dem \@\"-Symbol enthalten.</li></ul> |
 | Längenbeschränkungen |<ul> <li>Die Gesamtlänge darf 113 Zeichen nicht überschreiten.</li><li>Vor dem \@\"-Symbol sind bis zu 64 Zeichen zulässig.</li><li>Nach dem \@\"-Symbol sind bis zu 48 Zeichen zulässig.</li></ul> |
 
@@ -117,7 +105,7 @@ Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installie
 ### <a name="check-the-expiration-policy-for-a-password"></a>Überprüfen der Ablaufrichtlinie für ein Kennwort
 
 1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
-2. Führen Sie einen der folgenden Befehle aus:
+1. Führen Sie einen der folgenden Befehle aus:
 
    * Um festzustellen, ob für das Kennwort eines bestimmten Benutzers festgelegt ist, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN, z. B. *aprilr@contoso.onmicrosoft.com*) oder der Benutzer-ID des zu überprüfenden Benutzers aus: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * Um die Einstellung **Kennwort läuft nie ab** für alle Benutzer anzuzeigen, führen Sie das folgende Cmdlet aus: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -125,7 +113,7 @@ Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installie
 ### <a name="set-a-password-to-expire"></a>Festlegen, dass ein Kennwort abläuft
 
 1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
-2. Führen Sie einen der folgenden Befehle aus:
+1. Führen Sie einen der folgenden Befehle aus:
 
    * Um für das Kennwort eines Benutzers festzulegen, dass es abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN) oder der Benutzer-ID des Benutzers aus: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
    * Um für die Kennwörter aller Benutzer in der Organisation festzulegen, dass sie ablaufen, verwenden Sie das folgende Cmdlet: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None`
@@ -133,7 +121,7 @@ Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installie
 ### <a name="set-a-password-to-never-expire"></a>Festlegen, dass ein Kennwort nicht abläuft
 
 1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
-2. Führen Sie einen der folgenden Befehle aus:
+1. Führen Sie einen der folgenden Befehle aus:
 
    * Um für das Kennwort eines Benutzers festzulegen, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN) oder der Benutzer-ID des Benutzers aus: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`
    * Um für die Kennwörter aller Benutzer in einer Organisation festzulegen, dass sie nie ablaufen, führen Sie das folgende Cmdlet aus: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration`
