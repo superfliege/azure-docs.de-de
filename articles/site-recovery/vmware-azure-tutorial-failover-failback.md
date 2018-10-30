@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7e586e7e3ec8c16dcd215dbc11251d1b9fe928e1
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391367"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457061"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für VMware-VMs und physische Server, die nach Azure repliziert werden.
 
@@ -67,7 +67,7 @@ Failover und Failback weisen vier Phasen auf:
 1. Klicken Sie unter **Einstellungen** > **Replizierte Elemente** auf VM > **Failover**.
 
 2. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-   - **Neueste** : Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+   - **Neueste**: Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
    - **Letzte Verarbeitung:** Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
    - **Letzte App-Konsistenz:** Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten App-konsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde.
    - **Benutzerdefiniert**: Geben Sie einen Wiederherstellungspunkt an.
@@ -93,13 +93,12 @@ Führen Sie die [hier](site-recovery-failover-to-azure-troubleshoot.md) beschrie
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>Vorbereitung auf erneuten Schutz der Azure-VM
 
-### <a name="create-a-process-server-in-azure"></a>Erstellen eines Prozessservers in Azure
+- Sie können zu Testzwecken den lokalen Prozessserver verwenden (integrierter Prozessserver), der im Rahmen des Setups automatisch auf dem Konfigurationsserver installiert wird, **wenn Sie über eine Azure ExpressRoute-Verbindung verfügen**.
 
-Der Prozessserver empfängt Daten von der Azure-VM und sendet Daten an den lokalen Standort. Zwischen dem Prozessserver und dem geschützten virtuellen Computer ist ein Netzwerk mit geringer Wartezeit erforderlich.
+> [!IMPORTANT]
+> Wenn Sie eine VPN-Verbindung zwischen Ihrer lokalen Umgebung und Azure hergestellt haben, müssen Sie eine Azure-VM als Prozessserver für das erneute Schützen und das Failback einrichten. Um einen Prozessserver in Azure einzurichten, befolgen Sie die Anweisungen in [diesem Artikel](vmware-azure-set-up-process-server-azure.md).
 
-- Wenn Sie über eine Azure ExpressRoute-Verbindung verfügen, können Sie zu Testzwecken den lokalen Prozessserver verwenden (integrierter Prozessserver), der automatisch auf dem Konfigurationsserver installiert wird.
-- Wenn Sie über eine VPN-Verbindung verfügen oder Sie das Failback in einer Produktionsumgebung ausführen, müssen Sie eine Azure-VM als Azure-basierten Prozessserver für Failback einrichten.
-- Um einen Prozessserver in Azure einzurichten, befolgen Sie die Anweisungen in [diesem Artikel](vmware-azure-set-up-process-server-azure.md).
+Weitere Informationen zu den Voraussetzungen für das erneute Schützen und das Failback finden Sie in [diesem Abschnitt] ](vmware-azure-reprotect.md##before-you-begin). 
 
 ### <a name="configure-the-master-target-server"></a>Konfigurieren des Masterzielservers
 

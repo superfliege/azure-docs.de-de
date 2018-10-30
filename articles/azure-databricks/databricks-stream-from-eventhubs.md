@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: a06ee5b03521fa2e0a711f5194cf01b32e7cea37
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 4a70801fa11316fbd023f348981743639fe111dc
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308695"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024415"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Tutorial: Streamen von Daten an Azure Databricks unter Verwendung von Event Hubs
 
@@ -102,7 +102,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
     * Geben Sie einen Namen für den Cluster ein.
     * Erstellen Sie im Rahmen dieses Artikels einen Cluster mit der Runtime **4.0**.
-    * Aktivieren Sie das Kontrollkästchen **Terminate after ____ minutes of inactivity** (Nach ___ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
+    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach _ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
 
     Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
 
@@ -246,7 +246,7 @@ Fügen Sie im Notebook **SendTweetsToEventHub** den folgenden Code ein, und erse
     eventHubClient.get().close()
 ```
 
-Drücken Sie **UMSCHALT+EINGABE**, um das Notebook auszuführen. Die Ausgabe sieht in etwa wie im folgenden Codeausschnitt aus. Jedes Ereignis der Ausgabe ist ein Tweet, der in Event Hubs erfasst wird und den Begriff „Azure“ enthält.
+Drücken Sie **UMSCHALT+EINGABE** , um das Notebook auszuführen. Die Ausgabe sieht in etwa wie im folgenden Codeausschnitt aus. Jedes Ereignis der Ausgabe ist ein Tweet, der in Event Hubs erfasst wird und den Begriff „Azure“ enthält.
 
     Sent event: @Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence
 
