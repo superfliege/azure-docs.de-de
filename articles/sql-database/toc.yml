@@ -329,32 +329,30 @@ items:
       href: sql-database-monitor-tune-overview.md
     - name: Intelligente Leistung
       items:
-      - name: Abfragen
+      - name: Optimierungsratgeber
         items:
-        - name: Intelligente Abfrageverarbeitung
-          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-        - name: Adaptive Abfrageverarbeitung
-          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
-      - name: Überwachung und Optimierung
-        items:
-        - name: 'Database Advisor: Empfehlungen zur Leistung'
-          href: sql-database-advisor.md
         - name: Optimierungsaktionen und -empfehlungen
           href: sql-database-performance.md
-        - name: Anwendung von Empfehlungen zur Leistung
-          href: sql-database-advisor-portal.md
-      - name: Intelligent Insights
-        items:
-        - name: Übersicht über Intelligent Insights
-          href: sql-database-intelligent-insights.md
-        - name: Diagnoseprotokollierung
-          href: sql-database-metrics-diag-logging.md
-        - name: Verwenden des Diagnoseprotokolls
-          href: sql-database-intelligent-insights-use-diagnostics-log.md
         - name: Query Performance Insight
           href: sql-database-query-performance.md
-        - name: Behandeln von Problemen mit der Leistung
+        - name: 'Database Advisor: Empfehlungen zur Leistung'
+          href: sql-database-advisor.md
+        - name: Anwendung von Empfehlungen zur Leistung
+          href: sql-database-advisor-portal.md
+      - name: Erweiterte Überwachung
+        items:
+        - name: 'Azure SQL-Analyse: Überwachung'
+          href: https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql
+        - name: Protokollierung der Diagnosetelemetrie
+          href: sql-database-metrics-diag-logging.md
+      - name: Automatisierte Problembehandlung
+        items:
+        - name: Intelligent Insights-Informationen zur Leistung
+          href: sql-database-intelligent-insights.md
+        - name: Behandeln von Leistungsproblemen mithilfe von Intelligent Insights
           href: sql-database-intelligent-insights-troubleshoot-performance.md
+        - name: Verwenden des Intelligent Insights-Diagnoseprotokolls
+          href: sql-database-intelligent-insights-use-diagnostics-log.md
       - name: Automatische Optimierung
         items:
         - name: Übersicht über die automatische Optimierung
@@ -363,6 +361,12 @@ items:
           href: sql-database-automatic-tuning-enable.md
         - name: Aktivieren von E-Mail-Benachrichtigungen
           href: sql-database-automatic-tuning-email-notifications.md
+      - name: Intelligente Abfrageverarbeitung
+        items:
+        - name: Intelligente Abfrageverarbeitung
+          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
+        - name: Adaptive Abfrageverarbeitung
+          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
     - name: Manuelles Optimieren
       items:
       - name: Manuelles Optimieren
@@ -634,9 +638,9 @@ items:
     href: /azure/architecture/
   - name: Kundenstimmen
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 416f74c395f331de6af749f3de1d3a3e966b8b35
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c5e7a5265a7667acf462085f81c4b53c8d86236b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650059"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50221477"

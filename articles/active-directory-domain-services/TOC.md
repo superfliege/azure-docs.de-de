@@ -24,44 +24,45 @@
 ## [Enable Azure AD Domain Services using PowerShell (Aktivieren von Azure AD Domain Services mit PowerShell)](active-directory-ds-enable-using-powershell.md)
 ## [Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit einer verwalteten Domäne](active-directory-ds-scoped-synchronization.md)
 ## [Schützen Ihrer verwalteten Domäne](active-directory-ds-secure-your-domain.md)
-## Beitreten zu einer verwalteten Domäne
-### [Virtueller Windows Server-Computer](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [Virtueller Windows Server-Computer aus einer Vorlage](active-directory-ds-join-windows-vm-template.md)
-### [CentOS](active-directory-ds-join-centos-linux-vm.md)
-### [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
-### [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
-### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
-## Verwalten einer verwalteten Domäne
-### [Verwalten einer verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
-### [Verwalten des DNS in einer verwalteten Domäne](active-directory-ds-admin-guide-administer-dns.md)
-### [Aktualisieren von E-Mail-Benachrichtigungen](active-directory-ds-notifications.md)
-### Konfigurieren von sicherem LDAP für eine verwaltete Domäne
-#### [Aufgabe 1: Erwerben eines Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md)
-#### [Aufgabe 2: Exportieren des Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
-#### [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne über das Azure-Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
-#### [Aufgabe 4: Konfigurieren von DNS für den Zugriff auf die verwaltete Domäne über das Internet](active-directory-ds-ldaps-configure-dns.md)
-#### [Aufgabe 5: Binden an die verwaltete Domäne und Sperren des Secure LDAP-Zugriffs](active-directory-ds-ldaps-bind-lockdown.md)
-#### [Problembehandlung für Secure LDAP](active-directory-ds-ldaps-troubleshoot.md)
-
-### [Erstellen einer Organisationseinheit für eine verwaltete Domäne](active-directory-ds-admin-guide-create-ou.md)
-### [Erstellen eines gruppenverwalteten Dienstkontos in einer verwalteten Domäne](active-directory-ds-create-gmsa.md)
-### [Verwalten von Gruppenrichtlinien für eine verwaltete Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
-### [Konfigurieren von Kennwortrichtlinien für eine verwaltete Domäne](active-directory-ds-password-policy.md)
+## [Erstellen einer Organisationseinheit für eine verwaltete Domäne](active-directory-ds-admin-guide-create-ou.md)
+## [Erstellen eines gruppenverwalteten Dienstkontos in einer verwalteten Domäne](active-directory-ds-create-gmsa.md)
+## [Verwalten von Gruppenrichtlinien für eine verwaltete Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
+## [Konfigurieren von Kennwortrichtlinien für eine verwaltete Domäne](active-directory-ds-password-policy.md)
 ## [Auswählen eines virtuellen Netzwerks](active-directory-ds-networking.md)
 ## Bereitstellen von Anwendungen
 ### [Konfigurieren der Unterstützung für die Profilsynchronisierung für SharePoint Server](active-directory-ds-enable-sharepoint-profile-sync.md)
 ### [Konfigurieren der eingeschränkten Kerberos-Delegierung](active-directory-ds-enable-kcd.md)
 ### [Bereitstellen eines Azure AD-Anwendungsproxys](active-directory-ds-deploy-azure-app-proxy.md)
 ## [Löschen einer verwalteten Domäne](active-directory-ds-disable-aadds.md)
-## Problembehandlung
-### [Häufig gestellte Fragen](active-directory-ds-faqs.md)
-### [Handbuch zur Problembehandlung](active-directory-ds-troubleshooting.md)
-### [Problembehandlung für Warnungen](active-directory-ds-troubleshoot-alerts.md)
-#### [Korrigieren einer fehlerhaften NSG-Konfiguration](active-directory-ds-troubleshoot-nsg.md)
-#### [Wiederherstellen fehlender Dienstprinzipale](active-directory-ds-troubleshoot-service-principals.md)
-#### [Fehler im Zusammenhang mit Secure LDAP](active-directory-ds-troubleshoot-ldaps.md)
-### [Beheben von Fehlern durch nicht übereinstimmende Mandanten](active-directory-ds-mismatched-tenant-error.md)
-### [Angehaltene Domänen](active-directory-ds-suspension.md)
+
+# Beitreten zu einer verwalteten Domäne
+## [Virtueller Windows Server-Computer](active-directory-ds-admin-guide-join-windows-vm-portal.md)
+## [Virtueller Windows Server-Computer aus einer Vorlage](active-directory-ds-join-windows-vm-template.md)
+## [CentOS](active-directory-ds-join-centos-linux-vm.md)
+## [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
+## [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
+## [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
+# Verwalten einer verwalteten Domäne
+## [Verwalten einer verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
+## [Verwalten des DNS in einer verwalteten Domäne](active-directory-ds-admin-guide-administer-dns.md)
+## [Aktualisieren von E-Mail-Benachrichtigungen](active-directory-ds-notifications.md)
+# Konfigurieren von sicherem LDAP für eine verwaltete Domäne
+## [Aufgabe 1: Erwerben eines Zertifikats für Secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md)
+## [Aufgabe 2: Exportieren des Zertifikats für Secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
+## [Aufgabe 3: Aktivieren von Secure LDAP für die verwaltete Domäne über das Azure-Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+## [Aufgabe 4: Konfigurieren von DNS für den Zugriff auf die verwaltete Domäne über das Internet](active-directory-ds-ldaps-configure-dns.md)
+## [Aufgabe 5: Binden an die verwaltete Domäne und Sperren des Secure LDAP-Zugriffs](active-directory-ds-ldaps-bind-lockdown.md)
+## [Problembehandlung für Secure LDAP](active-directory-ds-ldaps-troubleshoot.md)
+
+# Problembehandlung
+## [Häufig gestellte Fragen](active-directory-ds-faqs.md)
+## [Handbuch zur Problembehandlung](active-directory-ds-troubleshooting.md)
+## [Problembehandlung für Warnungen](active-directory-ds-troubleshoot-alerts.md)
+### [Korrigieren einer fehlerhaften NSG-Konfiguration](active-directory-ds-troubleshoot-nsg.md)
+### [Wiederherstellen fehlender Dienstprinzipale](active-directory-ds-troubleshoot-service-principals.md)
+### [Fehler im Zusammenhang mit Secure LDAP](active-directory-ds-troubleshoot-ldaps.md)
+## [Beheben von Fehlern durch nicht übereinstimmende Mandanten](active-directory-ds-mismatched-tenant-error.md)
+## [Angehaltene Domänen](active-directory-ds-suspension.md)
 
 
 # Verweis

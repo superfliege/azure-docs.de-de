@@ -90,11 +90,11 @@ Linear Regressionsalgorithmen gehen davon aus, dass Datentrends einer geraden Li
 
 ![Nicht lineare Klassengrenze][1]
 
-***Nicht lineare Klassengrenze****– Die Verwendung eines linearen Klassifizierungsalgorithmus würde zu einer verringerten Genauigkeit führen.*
+***Nicht lineare Klassengrenze*** *– Die Verwendung eines linearen Klassifizierungsalgorithmus würde zu einer verringerten Genauigkeit führen.*
 
 ![Daten mit einem nicht linearen Trend][2]
 
-***Daten mit einem nicht linearen Trend****– Die Verwendung einer linearen Regressionsmethode würde wesentlich höhere Fehler erzeugen als nötig.*
+***Daten mit einem nicht linearen Trend*** *– Die Verwendung einer linearen Regressionsmethode würde wesentlich höhere Fehler erzeugen als nötig.*
 
 Trotz ihrer Gefahren sind lineare Algorithmen als erster Ansatzpunkt sehr beliebt. Sie sind tendenziell algorithmisch einfach und lassen sich schnell trainieren.
 
@@ -169,7 +169,7 @@ Obwohl es verwirrenderweise „Regression“ im Namen trägt, handelt es sich be
 
 ![Logistische Regression mit zweiklassigen Daten mit nur einem Merkmal][4]
 
-***Eine logistische Regression mit zweiklassigen Daten mit nur einem Merkmal****– die Klassengrenze ist der Punkt, an dem die logistische Kurve gleich nah an beiden Klassen ist*
+***Eine logistische Regression mit zweiklassigen Daten mit nur einem Merkmal*** *– die Klassengrenze ist der Punkt, an dem die logistische Kurve gleich nah an beiden Klassen ist*
 
 ### <a name="trees-forests-and-jungles"></a>Bäume, Wälder und Dschungel
 
