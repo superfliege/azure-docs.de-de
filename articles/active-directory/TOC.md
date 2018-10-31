@@ -4,7 +4,6 @@
 ## [Was ist Azure Active Directory?](fundamentals/active-directory-whatis.md)
 ## [Informationen zur Azure-Identitätsverwaltung](fundamentals/identity-fundamentals.md)
 ## [Grundlegendes zu Azure-Identitätslösungen](fundamentals/understand-azure-identity-solutions.md)
-## [Auswählen einer Hybrididentitätslösung](choose-hybrid-identity-solution.md)
 ## [Zuordnen von Azure-Abonnements](fundamentals/active-directory-how-subscriptions-associated-directory.md)
 ## [Überlegungen zu Residenz und Daten](fundamentals/active-directory-data-storage-eu.md)
 ## [Häufig gestellte Fragen](fundamentals/active-directory-faq.md)
@@ -47,7 +46,6 @@
 ### [Hinzufügen neuer Benutzer zu Azure AD](fundamentals/add-users-azure-active-directory.md)
 ### [Verwalten von Benutzerprofilen](fundamentals/active-directory-users-profile-azure-portal.md)
 ### [Zurücksetzen von Benutzerkennwörtern](fundamentals/active-directory-users-reset-password-azure-portal.md)
-### [Freigeben von Konten](active-directory-sharing-accounts.md)
 ### [Zuweisen von Benutzern zu Administratorrollen](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis (B2B)](b2b/what-is-b2b.md)
 #### [Administratoren, die B2B-Benutzer hinzufügen](b2b/add-users-administrator.md)
@@ -320,11 +318,15 @@
 
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## [Bereitstellen von AD FS in Azure](hybrid/how-to-connect-fed-azure-adfs.md)
-### [Hochverfügbarkeit](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Ändern des Signaturhashalgorithmus](active-directory-federation-sha256-guidance.md)
+
 
 ## [Problembehandlung](fundamentals/active-directory-troubleshooting-support-howto.md)
+
+## Bereitstellen eines Proof of Concept (PoC) für Azure AD
+### [PoC-Playbook: Einführen](active-directory-playbook-intro.md)
+### [PoC-Playbook: Bestandteile](active-directory-playbook-ingredients.md)
+### [PoC-Playbook: Implementierung](active-directory-playbook-implementation.md)
+### [PoC-Playbook: Bausteine](active-directory-playbook-building-blocks.md)
 
 # Verweis
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=active-directory)
