@@ -20,13 +20,13 @@ ms.locfileid: "44056822"
 ---
 # <a name="work-with-batch-ai-clusters"></a>Arbeiten mit Batch AI-Clustern 
 
-In diesem Artikel wird das Arbeiten mit Clustern in Azure Batch AI erläutert. Eingeführt werden das Konzept von Clustern, die möglichen Arten von Konfigurationen und Beispiele. In den meisten Beispielen zum Erstellen und Verwalten eines Clusters wird in diesem Artikel die Azure-Befehlszeilenschnittstelle verwendet. Sie können zum Arbeiten mit Clustern jedoch auch andere Tools verwenden, z.B. das Azure-Portal und die Azure Batch AI-SDKs.
+In diesem Artikel wird das Arbeiten mit Clustern in Azure Batch AI erläutert. Eingeführt werden das Konzept von Clustern, die möglichen Arten von Konfigurationen und Beispiele. In den meisten Beispielen zum Erstellen und Verwalten eines Clusters wird in diesem Artikel die Azure-Befehlszeilenschnittstelle verwendet. Sie können zum Arbeiten mit Clustern jedoch auch andere Tools verwenden, z. B. das Azure-Portal und die Azure Batch AI-SDKs.
 
 Ein Batch AI-Cluster ist eine von mehreren Ressourcen in diesem Dienst. In der [Übersicht über Ressourcen in Batch AI](resource-concepts.md) erhalten Sie Informationen zum Bereich von Clustern im Dienst.
 
 ## <a name="introduction-to-clusters"></a>Einführung in Cluster
 
-Ein Cluster in Batch AI enthält die Computeressourcen zum Ausführen von Machine Learning-Aufträgen und KI-Trainingsaufträgen. Alle Knoten in einem Cluster haben die gleiche VM-Größe und das gleiche Betriebssystemimage. Batch AI umfasst viele Optionen zum Erstellen von Clustern, die an unterschiedliche Anforderungen angepasst sind. Normalerweise richten Sie jeweils einen Cluster für jede Kategorie der zum Abschließen eines Projekts erforderlichen Verarbeitungsleistung ein. Sie können die Anzahl der Knoten in einem Cluster je nach Nachfrage und Budget zentral hoch- und herunterskalieren. Cluster können in einem Team bereitgestellt und freigegeben werden, oder Einzelpersonen können jeweils einen eigenen Cluster bereitstellen. 
+Ein Cluster in Batch AI enthält die Computerressourcen zum Ausführen von Machine Learning-Aufträgen und KI-Trainingsaufträgen. Alle Knoten in einem Cluster haben die gleiche VM-Größe und das gleiche Betriebssystemimage. Batch AI umfasst viele Optionen zum Erstellen von Clustern, die an unterschiedliche Anforderungen angepasst sind. Normalerweise richten Sie jeweils einen Cluster für jede Kategorie der zum Abschließen eines Projekts erforderlichen Verarbeitungsleistung ein. Sie können die Anzahl der Knoten in einem Cluster je nach Nachfrage und Budget zentral hoch- und herunterskalieren. Cluster können in einem Team bereitgestellt und freigegeben werden, oder Einzelpersonen können jeweils einen eigenen Cluster bereitstellen. 
 
 Jeder Cluster ist in einer Batch AI-Ressource enthalten, die als *Arbeitsbereich* bezeichnet wird. Vor der Bereitstellung von Clustern müssen Sie daher einen Batch AI-Arbeitsbereich einrichten. Bei Verwendung der Azure-Befehlszeilenschnittstelle können Sie beispielsweise mit dem Befehl [az batchai workspace create](/cli/azure/batchai/workspace?view=azure-cli-latest#az-batchai-workspace-create) einen Arbeitsbereich einrichten. 
 
