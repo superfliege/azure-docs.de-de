@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 590f9e2a9cf531a1124f9cb132791f2956227d9c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a88a0d9105942502b634f3be7c3279167ea590c6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046048"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393251"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Erste Schritte mit der Microsoft Authenticator-App
 
@@ -25,7 +25,7 @@ Die Microsoft Authenticator-App bietet eine zusätzliche Sicherheitsstufe für I
 
 Wenn Sie die App für die zweistufige Überprüfung verwenden, gibt es zwei Möglichkeiten:
 
-- **Benachrichtigung**. Die App sendet eine Benachrichtigung an Ihr Gerät. Stellen Sie sicher, dass die Informationen in der Benachrichtigung richtig sind, und wählen Sie **Überprüfen** aus. Wenn Sie die Benachrichtigung nicht kennen, wählen Sie **Ablehnen** aus.
+- **Benachrichtigung**. Die App sendet eine Benachrichtigung an Ihr Gerät. Stellen Sie sicher, dass die Informationen in der Benachrichtigung richtig sind, und wählen Sie **Überprüfen** aus. Wenn Sie die Benachrichtigung nicht kennen, wählen Sie **Ablehnen** aus. Nachdem Sie auf **Ablehnen** geklickt haben, können Sie die Anforderung auch als betrügerisch markieren.
 
 - **Prüfcode**. Nachdem Sie Ihren Benutzernamen und Ihr Kennwort eingegeben haben, können Sie die App öffnen und den auf dem Bildschirm **Konten** angezeigten Prüfcode in den Anmeldebildschirm kopieren. Der Prüfcode fungiert als zweite Authentifizierungsmethode.
 

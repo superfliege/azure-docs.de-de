@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 02e7d9d26b389e82365f3447cceb5566244236f1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 618437d0007668800e0a14e8233db1676be2a364
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440907"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379262"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Tutorial: Azure Active Directory-Integration mit LinkedIn Learning
 
@@ -110,7 +110,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-1. Klicken Sie auf **ODER klicken Sie hier, um einzelne Felder aus dem Formular zu laden und zu kopieren**, und kopieren Sie die **Entitäts-ID** und **Assertion Consumer Access(ACS)-URL**.
+1. Klicken Sie auf **, ODER klicken Sie hier, um einzelne Felder aus dem Formular zu laden und zu kopieren**, und kopieren Sie die **Entitäts-ID** und **Assertion Consumer Service (ACS)-URL**.
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
@@ -120,9 +120,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
     a. Geben Sie im Textfeld **Bezeichner** die **Entitäts-ID** ein, die Sie aus dem LinkedIn-Portal kopiert haben. 
 
-    b. Geben Sie im Feld **Antwort-URL** den Wert für **Assertion Consumer Access (ACS) Url** ein, den Sie aus dem LinkedIn-Portal kopiert haben.
+    b. Geben Sie in das Textfeld **Antwort-URL** den Wert für **Assertion Consumer Service (ACS)-URL** ein, den Sie aus dem LinkedIn-Portal kopiert haben.
 
-1. Wenn Sie das einmalige Anmelden im Modus **SP-initiiert** konfigurieren möchten, klicken Sie im Konfigurationsabschnitt auf die Option „Erweiterte URL-Einstellungen anzeigen“, und konfigurieren Sie die Anmelde-URL nach folgendem Muster:
+1. Wenn Sie das einmalige Anmelden im Modus **SP-initiiert** konfigurieren möchten, klicken Sie im Konfigurationsabschnitt auf die Option „Erweiterte URL-Einstellungen anzeigen“, wo Sie Ihre Anmelde-URL angeben.  Um Ihre Anmelde-URL zu erstellen, kopieren Sie die **Assertion Consumer Service (ACS)-URL**, und ersetzen dabei „/saml/“ durch „/login/“.   Danach sollte die Anmelde-URL folgendes Muster aufweisen:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 

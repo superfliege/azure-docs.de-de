@@ -8,192 +8,185 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3b565c8d-35e2-482a-b2f4-bf8fd7d8731f
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2018
+ms.date: 10/09/2018
 ms.author: jeedes
-ms.openlocfilehash: f5aa724e9848c9794eef093aef15b0aaed9cae97
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 535f59b1b0dc56b183c8a019d101b4fd4f1bfad6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435759"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116124"
 ---
-# <a name="integrate-azure-active-directory-with-box"></a>Integrieren von Azure Active Directory in Box
+# <a name="tutorial-azure-active-directory-integration-with-box"></a>Tutorial: Azure Active Directory-Integration mit Box
 
-In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in Box integrieren.
+In diesem Tutorial erfahren Sie, wie Sie Box in Azure Active Directory (Azure AD) integrieren.
 
-Die Integration von Azure AD in Box bietet Ihnen die folgenden Vorteile:
+Die Integration von Box in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Box haben soll.
-- Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Box anzumelden (einmaliges Anmelden, SSO).
-- Sie können Ihre Konten an einem zentralen Ort, im Azure-Portal, verwalten.
+- Sie können Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Box anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Konfigurieren der Azure AD-Integration in Box benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Box-SSO-fähiges Abonnement
+- Ein Box-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
-> Es wird *nicht* empfohlen, zum Testen der Schritte in diesem Tutorial eine Produktionsumgebung zu verwenden.
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlungen:
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. 
-
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Box aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="add-box-from-the-gallery"></a>Hinzufügen von Box aus dem Katalog
-Um die Integration von Azure AD in Box zu konfigurieren, fügen Sie Box wie folgt aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzu:
+## <a name="adding-box-from-the-gallery"></a>Hinzufügen von Box aus dem Katalog
+Zum Konfigurieren der Integration von Box in Azure AD müssen Sie Box aus dem Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Wählen Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) die Option **Azure Active Directory** aus. 
+**Führen Sie die folgenden Schritte aus, um Box aus dem Katalog hinzuzufügen:**
 
-    ![Schaltfläche „Azure Active Directory“][1]
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
+    ![image](./media/box-tutorial/selectazuread.png)
 
-    ![Fenster „Unternehmensanwendungen“][2]
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+
+    ![image](./media/box-tutorial/a_select_app.png)
     
-1. Klicken Sie oben im Fenster auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Schaltfläche „Neue Anwendung“][3]
+    ![image](./media/box-tutorial/a_new_app.png)
 
-1. Geben Sie im Suchfeld **Box** ein, wählen Sie in der Ergebnisliste **Box** aus, und klicken Sie dann auf **Hinzufügen**.
+4. Geben Sie im Suchfeld **Box** ein, wählen Sie im Ergebnisbereich **Box** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Box in der Ergebnisliste](./media/box-tutorial/tutorial_box_search.png)
-### <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+     ![image](./media/box-tutorial/tutorial_Box_addfromgallery.png)
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Box anhand einer Testbenutzerin mit dem Namen „Britta Simon“.
 
-Damit das einmalige Anmelden funktioniert, muss Azure AD den Box-Benutzer und sein Gegenstück in Azure AD identifizieren. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Box muss eine Linkbeziehung eingerichtet werden.
+Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Box als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Box muss eine Linkbeziehung hergestellt werden.
 
-Um die Linkbeziehung herzustellen, weisen Sie als *Benutzernamen* in Box den Wert von *Benutzername* in Azure AD zu.
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Box müssen Sie die folgenden Bausteine ausführen:
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Box führen Sie die Hauptschritte (Hauptelemente) in den nächsten fünf Abschnitten aus.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Box-Testbenutzers](#create-a-box-test-user)**, um eine Entsprechung von Britta Simon in Box zu erhalten, die mit ihrer Benutzerdarstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigurieren Sie das einmalige Anmelden in Ihrer Box-Anwendung, indem Sie die folgenden Schritte ausführen:
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Box-Anwendung.
 
-1. Wählen Sie im Azure-Portal im Fenster der Anwendungsintegration für **Box** die Option **Einmaliges Anmelden** aus.
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens in Azure AD mit Box die folgenden Schritte aus:**
 
-    ![Link „Einmaliges Anmelden“][4]
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Box** die Option **Einmaliges Anmelden** aus.
 
-1. Wählen Sie im Fenster **Einmaliges Anmelden** im Feld **SSO-Mode****SAML-basierte Anmeldung** aus.
- 
-    ![Fenster „Einmaliges Anmelden“](./media/box-tutorial/tutorial_box_samlbase.png)
+    ![image](./media/box-tutorial/b1_b2_select_sso.png)
 
-1. Gehen Sie unter **Domäne und URLs für Box** folgendermaßen vor:
+2. Klicken Sie im Dialogfeld **SSO-Methode auswählen** für den Modus **SAML** auf **Auswählen**, um einmaliges Anmelden zu aktivieren.
 
-    ![SSO-Informationen unter „Domäne und URLs für Box“](./media/box-tutorial/url3.png)
+    ![image](./media/box-tutorial/b1_b2_saml_sso.png)
 
-    a. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: *https://\<Unterdomäne>.box.com*.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    b. Geben Sie **box.net** in das Textfeld **Bezeichner** ein.
-     
+    ![image](./media/box-tutorial/b1-domains_and_urlsedit.png)
+
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.account.box.com`
+
+    b. Geben Sie in das Textfeld **Bezeichner** eine URL ein:`box.net`
+
+    ![image](./media/box-tutorial/tutorial_box_url.png)
+
     > [!NOTE] 
-    > Die vorangehenden Werte sind keine echten Werte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire), um diese Werte zu erhalten. 
+    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire), um diesen Wert zu erhalten.
+ 
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um die **Verbundmetadaten-XML** herunterzuladen, und speichern Sie sie auf Ihrem Computer.
 
-1. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+    ![image](./media/box-tutorial/tutorial_Box_certificate.png)
 
-    ![Downloadlink für das Zertifikat](./media/box-tutorial/tutorial_box_certificate.png) 
+6. Um SSO für Ihre Anwendung zu konfigurieren, gehen Sie wie unter [Setting Up SSO on your own](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown) (Einrichten von SSO) beschrieben vor. 
 
-1. Wählen Sie **Speichern**aus.
-
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/box-tutorial/tutorial_general_400.png)
-    
-1. Um SSO für Ihre Anwendung zu konfigurieren, gehen Sie wie unter [Setting Up SSO on your own](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown) (Einrichten von SSO) beschrieben vor.
-
-> [!NOTE] 
-> Falls Sie die SSO-Einstellungen für Ihr Box-Konto nicht aktivieren können, müssen Sie sich möglicherweise an das [Kundensupportteam von Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) wenden und die heruntergeladene XML-Datei bereitstellen.
-
-> [!TIP]
-> Zum Einrichten der App können Sie eine Kurzversion der vorstehenden Anweisungen im [Azure-Portal](https://portal.azure.com) lesen. Nachdem Sie diese App über den Abschnitt **Active Directory** > **Unternehmensanwendungen** hinzugefügt haben, navigieren Sie zur Registerkarte **Einmaliges Anmelden**, und rufen Sie unten im Abschnitt **Konfiguration** die eingebettete Dokumentation auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie unter [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
->
+>[!NOTE]
+>Wenn Sie die SSO-Einstellungen für Ihr Box-Konto nicht konfigurieren können, müssen Sie die heruntergeladene **Verbundmetadaten-XML**-Datei an das [Box-Supportteam](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt erstellen Sie im Azure-Portal wie folgt einen Testbenutzer mit dem Namen Britta Simon:
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf **Azure Active Directory**.
+    ![image](./media/box-tutorial/d_users_and_groups.png)
 
-    ![Link „Azure Active Directory“](./media/box-tutorial/create_aaduser_01.png)
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-1. Um die Liste der aktuellen Benutzer anzuzeigen, wählen Sie **Benutzer und Gruppen** > **Alle Benutzer** aus.
+    ![image](./media/box-tutorial/d_adduser.png)
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/box-tutorial/create_aaduser_02.png)
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-1. Wählen Sie oben im Fenster **Alle Benutzer** die Option **Hinzufügen** aus.
+    ![image](./media/box-tutorial/d_userproperties.png)
 
-    ![Schaltfläche „Hinzufügen“](./media/box-tutorial/create_aaduser_03.png)
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    Das Fenster **Benutzer** wird geöffnet.
-
-1. Gehen Sie im Fenster **Benutzer** wie folgt vor:
-
-    ![Fenster „Benutzer“](./media/box-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Erstellen**.
  
 ### <a name="create-a-box-test-user"></a>Erstellen eines Testbenutzers in Box
 
-In diesem Abschnitt erstellen Sie eine Testbenutzerin mit dem Namen Britta Simon in Box. Box unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Wenn ein Benutzer nicht bereits vorhanden ist, wird beim Versuch, auf Box zuzugreifen, ein neuer Benutzer erstellt. Zum Erstellen des Benutzers ist keine Aktion Ihrerseits erforderlich.
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens „Britta Simon“ in Box. Box unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Box ein neuer Benutzer erstellt.
+>[!Note]
+>Setzen Sie sich mit dem [Supportteam von Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Box gewähren. Führen Sie hierzu folgende Schritte aus:
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Box gewähren.
 
-![Zuweisen der Benutzerrolle][200]
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
-1. Öffnen Sie im Azure-Portal die **Anwendungsansicht**, navigieren Sie zur **Verzeichnisansicht**, und wählen Sie dann **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+    ![image](./media/box-tutorial/d_all_applications.png)
 
-    ![Links „Unternehmensanwendungen“ und „Alle Anwendungen“][201] 
+2. Wählen Sie in der Anwendungsliste die Option **Box**aus.
 
-1. Wählen Sie in der Liste **Anwendungen** den Eintrag **Box** aus.
+    ![image](./media/box-tutorial/tutorial_Box_app.png)
 
-    ![Link „Box“](./media/box-tutorial/tutorial_box_app.png)  
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-1. Wählen Sie auf der linken Seite **Benutzer und Gruppen**.
+    ![image](./media/box-tutorial/d_leftpaneusers.png)
 
-    ![Link „Benutzer und Gruppen“][202]
+4. Wählen Sie die Schaltfläche **Hinzufügen** und dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-1. Wählen Sie **Hinzufügen** und dann im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**.
+    ![image](./media/box-tutorial/d_assign_user.png)
 
-    ![Bereich „Zuweisung hinzufügen“][203]
+4. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-1. Wählen Sie im Fenster **Benutzer und Gruppen** in der Liste **Benutzer** die Option **Britta Simon** aus.
-
-1. Wählen Sie die Schaltfläche **Auswählen** aus.
-
-1. Wählen Sie auf der Seite **Zuweisung hinzufügen** die Option **Zuweisen** aus.
+5. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel **Box** klicken, wird die Anmeldeseite für die Anmeldung bei Ihrer Box-Anwendung geöffnet.
+Wenn Sie im Zugriffsbereich die Kachel **Box** auswählen, wird die Anmeldeseite für die Anmeldung bei Ihrer Box-Anwendung angezeigt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -201,19 +194,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel **Box** klicken, wird die Anmeldeseit
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurieren der Benutzerbereitstellung](box-userprovisioning-tutorial.md)
 
-
-
-<!--Image references-->
-
-[1]: ./media/box-tutorial/tutorial_general_01.png
-[2]: ./media/box-tutorial/tutorial_general_02.png
-[3]: ./media/box-tutorial/tutorial_general_03.png
-[4]: ./media/box-tutorial/tutorial_general_04.png
-
-[100]: ./media/box-tutorial/tutorial_general_100.png
-
-[200]: ./media/box-tutorial/tutorial_general_200.png
-[201]: ./media/box-tutorial/tutorial_general_201.png
-[202]: ./media/box-tutorial/tutorial_general_202.png
-[203]: ./media/box-tutorial/tutorial_general_203.png
 
