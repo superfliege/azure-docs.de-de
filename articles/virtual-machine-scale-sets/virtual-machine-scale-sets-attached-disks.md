@@ -3,7 +3,7 @@ title: Skalierungsgruppen für an virtuelle Azure-Computer angefügte Datenträg
 description: Erfahren Sie, wie Sie angefügte Datenträger mit VM-Skalierungsgruppen verwenden.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
-ms.author: negat
-ms.openlocfilehash: cfe49e7f4e3692518c890b48582a2f4a6aa16faa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: manayar
+ms.openlocfilehash: 551d90661f845aa98a41ed7de0b75c657c234f52
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952459"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741401"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
 Zur Erweiterung des verfügbaren Speicherplatzes unterstützen [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) VM-Instanzen mit angefügten Datenträgern. Datenträger können einer Skalierungsgruppe beim Erstellen der Skalierungsgruppe oder zu einem späteren Zeitpunkt hinzugefügt werden.
@@ -32,7 +32,7 @@ Zur Erweiterung des verfügbaren Speicherplatzes unterstützen [Azure-VM-Skalier
 ## <a name="create-and-manage-disks-in-a-scale-set"></a>Erstellen und Verwalten von Datenträgern in einer Skalierungsgruppe
 Ausführliche Informationen zum Erstellen einer Skalierungsgruppe mit angefügten Datenträgern, zum Vorbereiten und Formatieren sowie zum Hinzufügen und Entfernen von Datenträgern finden Sie in den folgenden Tutorials:
 
-- [Azure-CLI](tutorial-use-disks-cli.md)
+- [Azure-Befehlszeilenschnittstelle](tutorial-use-disks-cli.md)
 - [Azure PowerShell](tutorial-use-disks-powershell.md)
 
 Im weiteren Verlauf dieses Artikels werden bestimmte Verwendungsfälle behandelt – beispielsweise Service Fabric-Cluster, die Datenträger benötigen, oder das Anfügen vorhandener Datenträger mit Inhalt an eine Skalierungsgruppe.

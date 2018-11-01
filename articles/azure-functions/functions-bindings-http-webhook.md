@@ -3,20 +3,20 @@ title: HTTP-Trigger und -Bindungen in Azure Functions
 description: Hier wird erläutert, wie HTTP-Trigger und -Bindungen in Azure Functions verwendet werden.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Computing, serverlose Architektur, HTTP, API, REST
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
-ms.author: glenga
-ms.openlocfilehash: e989152ece19168138597a96d1246ec64498ce69
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.author: cshoe
+ms.openlocfilehash: 333e73af3578cdc363e7ede08ca52207cfd0fdb0
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227553"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248902"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>HTTP-Trigger und -Bindungen in Azure Functions
 
@@ -44,7 +44,7 @@ Die HTTP-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Htt
 
 Mit dem HTTP-Trigger können Sie eine Funktion mit einer HTTP-Anforderung aufrufen. Sie können einen HTTP-Trigger zum Erstellen von serverlosen APIs und zum Antworten auf Webhooks verwenden. 
 
-Standardmäßig gibt ein HTTP-Trigger in Functions 1.x den HTTP-Statuscode 200 „OK“ ohne Text oder in Functions 2.x den HTTP-Statuscode 204 „No Content“ ohne Text zurück. Um diese Antwort zu ändern, konfigurieren Sie eine [HTTP-Ausgabebindung](#http-output-binding).
+Standardmäßig gibt ein HTTP-Trigger in Functions 1.x den HTTP-Statuscode 200 „OK“ ohne Text oder in Functions 2.x den HTTP-Statuscode 204 „No Content“ ohne Text zurück. Um diese Antwort zu ändern, konfigurieren Sie eine [HTTP-Ausgabebindung](#output).
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 
@@ -64,9 +64,9 @@ Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md
 [FunctionName("HttpTriggerCSharp")]
 public static async Task<HttpResponseMessage> Run(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]HttpRequestMessage req, 
-    TraceWriter log)
+    ILogger log)
 {
-    log.Info("C# HTTP trigger function processed a request.");
+    log.LogInformation("C# HTTP trigger function processed a request.");
 
     // parse query parameter
     string name = req.GetQueryNameValuePairs()
@@ -121,10 +121,11 @@ C#-Skriptcode für die Bindung an `HttpRequestMessage`:
 ```csharp
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 {
-    log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
+    log.LogInformation($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
 
     // parse query parameter
     string name = req.GetQueryNameValuePairs()
@@ -148,8 +149,9 @@ Sie können anstelle von `HttpRequestMessage` auch an ein benutzerdefiniertes Ob
 ```csharp
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
-public static string Run(CustomObject req, TraceWriter log)
+public static string Run(CustomObject req, ILogger log)
 {
     return "Hello " + req?.name;
 }
@@ -388,7 +390,7 @@ So kann der Funktionscode zwei Parameter in der Adresse unterstützen: _category
 
 ```csharp
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
-                                                TraceWriter log)
+                                                ILogger log)
 {
     if (id == null)
         return  req.CreateResponse(HttpStatusCode.OK, $"All {category} items were requested.");
