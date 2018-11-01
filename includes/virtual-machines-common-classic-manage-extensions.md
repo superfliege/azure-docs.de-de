@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: d14cfb82ae74f85425dbd3e8a365e8b99969641d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226571"
+---
 ## <a name="using-vm-extensions"></a>Verwenden von VM-Erweiterungen
 Azure-VM-Erweiterungen implementieren Verhaltensweisen oder Features, mit denen andere Programme auf virtuellen Azure-Computern verwendet werden können. Die Erweiterung **WebDeployForVSDevTest** ermöglicht Visual Studio etwa die Webbereitstellung von Lösungen auf Ihrem virtuellen Azure-Computer. Sie bieten aber auch die Möglichkeit zur Interaktion mit dem virtuellen Computer, um ein anderes Verhalten zu unterstützen. So können Sie beispielsweise die VM-Zugriffserweiterungen von PowerShell, die Azure-Befehlszeilenschnittstelle und REST-Clients verwenden, um die Remotezugriffswerte auf Ihrem virtuellen Azure-Computer zurückzusetzen oder zu ändern.
 

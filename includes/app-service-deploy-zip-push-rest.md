@@ -1,3 +1,16 @@
+---
+author: cephalin
+ms.service: app-service
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: cephalin
+ms.openlocfilehash: ed771d1817e7ee1161e0f94ec9eefb5d2dfb3e23
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50737231"
+---
 ## <a name="rest"></a>Bereitstellen einer ZIP-Datei mit REST-APIs 
 
 Sie können die [REST-APIs des Bereitstellungsdiensts](https://github.com/projectkudu/kudu/wiki/REST-API) verwenden, um die ZIP-Datei in Ihrer App in Azure bereitzustellen. Senden Sie zum Bereitstellen eine POST-Anforderung an „https://<app_name>.scm.azurewebsites.net/api/zipdeploy“. Die POST-Anforderung muss die ZIP-Datei im Nachrichtentext enthalten. Die Anmeldeinformationen für die Bereitstellung für Ihre App werden in der Anforderung mithilfe von HTTP-Standardauthentifizierung bereitgestellt. Weitere Informationen finden Sie in der [.zip push deployment reference](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file) (Referenz zur ZIP-Push-Bereitstellung). 

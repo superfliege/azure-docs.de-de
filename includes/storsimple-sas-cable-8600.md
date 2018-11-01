@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 792589f4aa2a80c05378224ffe4e4d1dad2f935c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165206"
+---
 <!--author=alkohli last changed:02/22/16-->
 
 #### <a name="to-attach-the-sas-cables"></a>So schließen Sie die SAS-Kabel an
@@ -7,7 +20,7 @@
    
     **Rückseite des primären Gehäuses und des EBOD-Gehäuses**
    
-   | Bezeichnung | Beschreibung |
+   | Bezeichnung | BESCHREIBUNG |
    |:--- |:--- |
    | 1 |Primäres Gehäuse |
    | 2 |EBOD-Gehäuse |
@@ -17,7 +30,7 @@
    
     **Position des Aufklebers mit der Seriennummer**
    
-   | Bezeichnung | Beschreibung |
+   | Bezeichnung | BESCHREIBUNG |
    |:--- |:--- |
    | 1 |Lasche des Gehäuses |
 3. Im nächsten Schritt verwenden Sie die mitgelieferten SAS-Kabel, um das EBOD-Gehäuse folgendermaßen mit dem primären Gehäuse zu verbinden:
@@ -30,10 +43,10 @@
       
       **SAS-Verkabelung**
       
-      | Bezeichnung | Beschreibung |
+      | Bezeichnung | BESCHREIBUNG |
       |:--- |:--- |
       | Eine Datei |Primäres Gehäuse |
-      | B |EBOD-Gehäuse |
+      | b |EBOD-Gehäuse |
       | 1 |Controller 0 |
       | 2 |Controller 1 |
       | 3 |EBOD-Controller 0 |
