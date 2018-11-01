@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/14/2018
+ms.date: 10/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: fbdb52b1b2dee682021fd822d584551f41f723ff
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cec57f2dafaddfa2ebc492f0cb92755b1f65607f
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778510"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251021"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
 ## <a name="general"></a>Allgemein
@@ -67,10 +67,10 @@ Navigieren Sie zu **[Azure-Portal]** > **Notification Hubs-Namespaces** oder **N
 
 ## <a name="design-and-development"></a>Entwurf und Entwicklung
 ### <a name="which-server-side-platforms-do-you-support"></a>Welche dienstseitigen Plattformen werden unterstützt?
-Server-SDKs sind für .NET, Java, Node.js, PHP und Python verfügbar. Die APIs von Notification Hubs basieren auf REST-Schnittstellen, sodass Sie direkt mit REST-APIs arbeiten können, wenn Sie andere Plattformen verwenden oder weitere Abhängigkeiten vermeiden möchten. Weitere Informationen finden Sie auf der [Seite zu REST-APIs von Notification Hubs].
+Server-SDKs sind für .NET, Java, Node.js, PHP und Python verfügbar. Die APIs von Notification Hubs basieren auf REST-Schnittstellen, sodass Sie direkt mit REST-APIs arbeiten können, wenn Sie andere Plattformen verwenden oder weitere Abhängigkeiten vermeiden möchten. Weitere Informationen finden Sie auf der [REST-APIs für Notification Hubs].
 
 ### <a name="which-client-platforms-do-you-support"></a>Welche Clientplattformen werden unterstützt?
-Pushbenachrichtigungen werden für [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-gcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (via Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) und [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)), [Chrome Apps](notification-hubs-chrome-push-notifications-get-started.md) und [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) unterstützt. Weitere Informationen finden Sie auf der [Seite mit Einführungstutorials für Notification Hubs].
+Pushbenachrichtigungen werden für [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-gcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (via Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) und [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)), [Chrome Apps](notification-hubs-chrome-push-notifications-get-started.md) und [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) unterstützt. Weitere Informationen finden Sie auf der [Einführungstutorials für Notification Hubs].
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Werden SMS-, E-Mail- oder Webbenachrichtigungen unterstützt?
 Notification Hubs wurde primär zum Senden von Benachrichtigungen an mobile Apps entwickelt. E-Mail- oder SMS-Funktionen stehen nicht zur Verfügung. Sie können allerdings Drittanbieterplattformen mit diesen Funktionen in Notification Hubs integrieren, um native Pushbenachrichtigungen unter Verwendung von [Mobile Apps] zu senden.
@@ -142,7 +142,7 @@ Wenn Sie über eine weltweit verwendete Anwendung verfügen, können Sie den Not
 Registrierungen über das App-Back-End sind hilfreich, wenn Sie Clients vor der Registrierung authentifizieren müssen. Sie sind auch hilfreich, wenn Sie über Tags verfügen, die vom App-Back-End auf der Grundlage der App-Logik erstellt oder geändert werden müssen. Weitere Informationen finden Sie im [Leitfaden zur Back-End-Registrierung] und im [Leitfaden zur Back-End-Registrierung 2].
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>Welches Sicherheitsmodell gilt für die Übermittlung von Pushbenachrichtigungen?
-Azure Notification Hubs verwendet ein auf [Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) basierendes Sicherheitsmodell. Sie können die SAS-Token auf der Namespace-Stammebene oder auf der granularen Notification Hub-Ebene verwenden. Für SAS-Token können verschiedene Autorisierungsregeln festgelegt werden, um beispielsweise Nachrichtenberechtigungen zu senden oder auf Benachrichtigungsberechtigungen zu lauschen. Weitere Informationen finden Sie im [Dokument zum Sicherheitsmodell von Notification Hubs].
+Azure Notification Hubs verwendet ein auf [Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) basierendes Sicherheitsmodell. Sie können die SAS-Token auf der Namespace-Stammebene oder auf der granularen Notification Hub-Ebene verwenden. Für SAS-Token können verschiedene Autorisierungsregeln festgelegt werden, um beispielsweise Nachrichtenberechtigungen zu senden oder auf Benachrichtigungsberechtigungen zu lauschen. Weitere Informationen finden Sie im [Sicherheitsmodell von Notification Hubs].
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>Wie sollte ich vertrauliche Nutzlasten in Pushbenachrichtigungen behandeln?
 Alle Benachrichtigungen werden über den PNS der Plattform an die Zielgeräte übermittelt. Wenn eine Benachrichtigung an Azure Notification Hubs gesendet wird, wird sie verarbeitet und an den jeweiligen PNS übergeben.
@@ -184,10 +184,10 @@ Alle Notification Hubs-Verwaltungsvorgänge werden in Vorgangsprotokollen erfass
 
 ## <a name="monitoring-and-troubleshooting"></a>Überwachung und Problembehandlung
 ### <a name="what-troubleshooting-capabilities-are-available"></a>Welche Funktionen für die Problembehandlung stehen zur Verfügung?
-Azure Notification Hubs bietet verschiedene Problembehandlungsfeatures – insbesondere für das häufig auftretende Problem verworfener Benachrichtigungen. Ausführliche Informationen finden Sie im [Whitepaper zur Problembehandlung für Notification Hubs].
+Azure Notification Hubs bietet verschiedene Problembehandlungsfeatures – insbesondere für das häufig auftretende Problem verworfener Benachrichtigungen. Ausführliche Informationen finden Sie im [Problembehandlung für Notification Hubs].
 
 ### <a name="what-telemetry-features-are-available"></a>Welche Telemetriefunktionen stehen zur Verfügung?
-Azure Notification Hubs ermöglicht die Anzeige von Telemetriedaten im [Azure-Portal]. Ausführliche Informationen zu den Metriken finden Sie auf der Seite [Metrics].
+Azure Notification Hubs ermöglicht die Anzeige von Telemetriedaten im [Azure-Portal]. Ausführliche Informationen zu den Metriken finden Sie auf der Seite [Notification Hubs-Metriken].
 
 > [!NOTE]
 > Wenn Benachrichtigungen erfolgreich waren, bedeutet das einfach, dass Pushbenachrichtigungen an den externen PNS (beispielsweise APNS für Apple oder GCM für Google) übermittelt wurden. Der PNS hat die Aufgabe, die Benachrichtigungen an Zielgeräte zu übermitteln. In der Regel macht der PNS Übermittlungsmetriken nicht für Dritte verfügbar.  
@@ -204,16 +204,16 @@ Wir bieten außerdem die Möglichkeit, Telemetriedaten programmgesteuert zu expo
 [Fallstudie: Seattle Times]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
 [Fallstudie: Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [Fallstudie: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
-[Seite zu REST-APIs von Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[Seite mit Einführungstutorials für Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[REST-APIs für Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
+[Einführungstutorials für Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Erste Schritte mit Notification Hubs für Chrome-Apps]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
 [Mobile Services Pricing]: http://azure.microsoft.com/pricing/details/mobile-services/
 [Leitfaden zur Back-End-Registrierung]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Leitfaden zur Back-End-Registrierung 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
-[Dokument zum Sicherheitsmodell von Notification Hubs]: https://msdn.microsoft.com/library/azure/dn495373.aspx
+[Sicherheitsmodell von Notification Hubs]: https://msdn.microsoft.com/library/azure/dn495373.aspx
 [Tutorial zu sicheren Pushbenachrichtigungen mit Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[Whitepaper zur Problembehandlung für Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
-[Metrics]: https://msdn.microsoft.com/library/dn458822.aspx
+[Problembehandlung für Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[Notification Hubs-Metriken]: ../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Metrikbeispiel für Notification Hubs]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [Vorgehensweise: Massenhaftes Exportieren und Ändern von Registrierungen]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure-Portal]: https://portal.azure.com
