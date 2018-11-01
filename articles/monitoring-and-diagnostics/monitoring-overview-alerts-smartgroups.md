@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 58a66cfdfaada34981ef166635b0d04e2e6e8f61
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 57ec7c13cdf5c2e44abf23dc0452e5eab3eb77ff
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976880"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412617"
 ---
 # <a name="smart-groups"></a>Intelligente Gruppen
 Eine häufige Herausforderung beim Umgang mit Warnungen ist das Durchsuchen der nicht relevanten Informationen, um die relevanten Warnungen zu ermitteln – intelligente Gruppen sind als Lösung für dieses Problem vorgesehen.  
@@ -44,7 +44,7 @@ Die folgenden Zustände werden für intelligente Gruppen unterstützt.
 
 Die Detailseite für die intelligente Gruppe wird angezeigt, wenn Sie auf eine intelligente Gruppe klicken. Sie enthält Details zur intelligenten Gruppe (einschließlich der Gründe ihre Erstellung) und ermöglicht Ihnen das Ändern des Status.
  
-![Details der intelligenten Gruppe](media/monitoring-overview-unified-alerts/smart-group-detail.png)
+![Details der intelligenten Gruppe](media/monitoring-overview-alerts-smartgroups/smart-group-detail.png)
 
 
 Die Detailseite für die intelligente Gruppe enthält die folgenden Abschnitte.
