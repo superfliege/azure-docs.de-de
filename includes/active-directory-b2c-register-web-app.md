@@ -1,3 +1,16 @@
+---
+author: PatAltimore
+ms.service: active-directory-b2c
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: patricka
+ms.openlocfilehash: 4d5c8373f2a8f02ccfbe51cb970ab08744950e7e
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133814"
+---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
 Verwenden Sie zum Registrieren der Webanwendung die in der Tabelle angegebenen Einstellungen.
@@ -7,8 +20,8 @@ Verwenden Sie zum Registrieren der Webanwendung die in der Tabelle angegebenen E
 | Einstellung      | Beispielwert  | BESCHREIBUNG                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **Name** | Contoso B2C-App | Geben Sie einen **Namen** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. | 
-| **Web-App/Web-API einschließen** | Ja | Wählen Sie **Ja** für eine Webanwendung. |
-| **Impliziten Fluss zulassen** | Ja | Wählen Sie **Ja** aus, wenn Ihre Anwendung [OpenID Connect-Anmeldung](../articles/active-directory-b2c/active-directory-b2c-reference-oidc.md) verwendet. |
+| **Web-App/Web-API einschließen** | JA | Wählen Sie **Ja** für eine Webanwendung. |
+| **Impliziten Fluss zulassen** | JA | Wählen Sie **Ja** aus, wenn Ihre Anwendung [OpenID Connect-Anmeldung](../articles/active-directory-b2c/active-directory-b2c-reference-oidc.md) verwendet. |
 | **Antwort-URL** | `https://localhost:44316` | Antwort-URLs sind Endpunkte, an denen Azure AD B2C von Ihrer Anwendung angeforderte Token zurückgibt. Geben Sie [eine passende](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-web-app-or-api-reply-url) **Antwort-URL** ein. In diesem Beispiel ist Ihre App lokal und lauscht an Port 44316. |
 
 Klicken Sie auf **Erstellen** , um Ihre Anwendung zu registrieren.

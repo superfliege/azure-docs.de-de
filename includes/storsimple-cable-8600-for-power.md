@@ -1,9 +1,22 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 8e6db54853efcba4d648c1d3bc793a9d1ce57441
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166016"
+---
 <!--author=alkohli last changed: 9/16/15-->
 
 
 #### <a name="to-cable-your-device-for-power"></a>So verkabeln Sie das Gerät für die Stromversorgung
 > [!NOTE]
-> Zu beiden Gehäusen des StorSimple-Geräts gehören redundante Stromversorgungs- und Kühleinheiten (Power and Cooling Modules, PCMs). Für jedes Gehäuse müssen die PCMs installiert und mit unterschiedlichen Stromquellen verbunden sein, um eine hohe Verfügbarkeit sicherzustellen.
+> Zu beiden Gehäusen des StorSimple-Geräts gehören redundante Stromversorgungs- und Kühleinheiten (Power and Cooling Modules, PCMs). Für jedes Gehäuse müssen die PCMs installiert und mit unterschiedlichen Stromquellen verbunden sein, um Hochverfügbarkeit sicherzustellen.
 > 
 > 
 
@@ -19,7 +32,7 @@
 10. Vergewissern Sie sich, dass die Verbindung zwischen dem EBOD-Controller und dem Gerätecontroller aktiv ist, indem Sie überprüfen, ob die vier LEDs neben dem SAS-Anschluss am EBOD-Controller grün leuchten.
     
     > [!IMPORTANT]
-    > Damit eine hohe Verfügbarkeit des Systems sichergestellt ist, empfiehlt es sich dringend, sich strikt an das im folgenden Diagramm dargestellte Stromverkabelungsschema zu halten.
+    > Damit die Hochverfügbarkeit des Systems sichergestellt ist, empfiehlt es sich dringend, sich strikt an das im folgenden Diagramm dargestellte Stromverkabelungsschema zu halten.
     > 
     > 
     
@@ -27,7 +40,7 @@
     
     **Stromverkabelung**
     
-    | Bezeichnung | Beschreibung |
+    | Bezeichnung | BESCHREIBUNG |
     |:--- |:--- |
     | 1 |Primäres Gehäuse |
     | 2 |PCM 0 |

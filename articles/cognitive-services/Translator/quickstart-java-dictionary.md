@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 40eca25e7bb10a845db1ebbd0f8075cd5ec354f6
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 4d828161408a06175c917affb0eef9290b575051
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647067"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416661"
 ---
 # <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-java"></a>Schnellstart: Ermitteln alternativer Übersetzungen mit der Textübersetzungs-REST-API (Java)
 
@@ -23,7 +23,7 @@ In dieser Schnellstartanleitung suchen Sie mithilfe der Textübersetzungs-API De
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Kompilieren und Ausführen des Codes benötigen Sie [JDK 7 oder 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Sie können Ihre bevorzugte Java-Entwicklungsumgebung verwenden, ein Text-Editor funktioniert jedoch auch.
+Zum Kompilieren und Ausführen des Codes benötigen Sie [JDK 7 oder 8](https://aka.ms/azure-jdks). Sie können Ihre bevorzugte Java-Entwicklungsumgebung verwenden, ein Text-Editor funktioniert jedoch auch.
 
 Damit Sie die Textübersetzungs-API verwenden können, benötigen Sie darüber hinaus einen Abonnementschlüssel. Informationen hierzu finden Sie unter [Registrieren für die Textübersetzungs-API](translator-text-how-to-signup.md).
 

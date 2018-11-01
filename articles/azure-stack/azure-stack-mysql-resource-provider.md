@@ -11,19 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2018
+ms.date: 10/25/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 24ba595413cde07c420a94de234d7926e0eb0e7f
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.reviewer: quying
+ms.openlocfilehash: 635948c28ffe5d5eaece372976e58d26e17214e3
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311060"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084229"
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Verwenden von MySQL-Datenbanken in Microsoft Azure Stack
-
-Sie können die MySQL-Ressourcenanbieter-API einsetzen, um MySQL-Datenbanken zu verwenden, die in Azure Stack bereitgestellt werden. Weitere Informationen über die Ressourcenanbieter-API finden Sie unter [Windows Azure Pack MySQL Resource Provider REST API Reference](https://msdn.microsoft.com/library/dn528442.aspx) (Referenz zur MySQL-Ressourcenanbieter-REST-API für Windows Azure Pack).
 
 MySQL-Datenbanken, die häufig auf Websites verwendet werden, unterstützen zahlreiche Websiteplattformen. Beispielsweise können Sie WordPress-Webseiten mit der Web-Apps-Plattform als Dienst-Add-On (PaaS) erstellen.
 
@@ -37,7 +35,7 @@ Nachdem Sie den Ressourcenanbieter bereitgestellt haben, können Sie folgende Sc
 Der Ressourcenanbieter verfügt über folgenden Komponenten:
 
 * **Den virtuellen Computer des MySQL-Ressourcenanbieteradapters**, einem virtuellen Windows Server-Computer, der die Anbieterdienste ausführt.
-* **Den Ressourcenanbieter selbst**, der Anforderungen der und Zugriffe auf Datenbankressourcen verarbeitet.
+* **Dem Ressourcenanbieter selbst**, der Anforderungen der und Zugriffe auf Datenbankressourcen verarbeitet.
 * **Servern, die MySQL Server hosten**, die Kapazität für Datenbanken bereitstellen und als „Hostserver“ bezeichnet werden. Sie können MySQL-Instanzen selbst erstellen oder Zugriff auf externe MySQL-Instanzen gewähren. Im [Azure Stack-Schnellstartkatalog](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/mysql-standalone-server-windows) finden Sie eine Beispielvorlage mit folgenden Funktionen:
 
   * Erstellen eines MySQL-Servers

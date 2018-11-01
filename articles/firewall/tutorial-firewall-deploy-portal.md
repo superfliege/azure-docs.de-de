@@ -3,18 +3,17 @@ title: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Firewall über das Azure-Portal bereitstellen und konfigurieren.
 services: firewall
 author: vhorne
-manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 10/30/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8fb459d197c15cf7760a924c7161fed59cc1caac
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 47a04df843ec307b54cc1d6597f9a3cf8668e291
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801878"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238827"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -31,7 +30,7 @@ Die konfigurierten Firewallregeln werden auf den Netzwerkdatenverkehr angewendet
 
 Anwendungs- und Netzwerkregeln werden in *Regelsammlungen* gespeichert. Eine Regelsammlung ist eine Liste von Regeln mit gleicher Aktion und Priorität.  Eine Netzwerkregelsammlung ist eine Liste von Netzwerkregeln; eine Anwendungsregelsammlung ist eine Liste von Anwendungsregeln.
 
-Azure Firewall verfügt über NAT-Regeln, Netzwerkregeln und Anwendungsregeln. Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](rule-processing.md).
+Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](rule-processing.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -42,8 +41,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Konfigurieren von Anwendungsregeln
 > * Konfigurieren von Netzwerkregeln
 > * Testen der Firewall
-
-
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -56,32 +53,32 @@ In diesem Tutorial erstellen Sie ein einzelnes VNet mit drei Subnetzen:
 
 In diesem Tutorial wird eine vereinfachte Netzwerkkonfiguration verwendet, um die Bereitstellung zu vereinfachen. Für Produktionsbereitstellungen empfiehlt sich die Verwendung eines [Hub- und Spoke-Modells](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), bei dem sich die Firewall in einem eigenen VNet befindet und die Workloadserver sich in mittels Peering verknüpften VNets in der gleichen Region mit mindestens einem Subnetz befinden.
 
-
-
 ## <a name="set-up-the-network-environment"></a>Einrichten der Netzwerkumgebung
+
 Erstellen Sie zunächst eine Ressourcengruppe für die Ressourcen, die zum Bereitstellen der Firewall benötigt werden. Erstellen Sie dann ein VNet, Subnetze und Testserver.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
-1. Klicken Sie auf der Startseite des Azure-Portals auf **Ressourcengruppen** und anschließend auf **Hinzufügen**.
-2. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge **Test-FW-RG** ein.
-3. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-4. Wählen Sie unter **Ressourcengruppenstandort** einen Standort aus. Alle weiteren Ressourcen, die Sie erstellen, müssen sich am gleichen Standort befinden.
-5. Klicken Sie auf **Create**.
 
+1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+2. Klicken Sie auf der Startseite des Azure-Portals auf **Ressourcengruppen** und anschließend auf **Hinzufügen**.
+3. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge **Test-FW-RG** ein.
+4. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
+5. Wählen Sie unter **Ressourcengruppenstandort** einen Standort aus. Alle weiteren Ressourcen, die Sie erstellen, müssen sich am gleichen Standort befinden.
+6. Klicken Sie auf **Create**.
 
 ### <a name="create-a-vnet"></a>Erstellen eines VNET
+
 1. Klicken Sie auf der Startseite des Azure-Portals auf **Alle Dienste**.
 2. Klicken Sie unter **Netzwerk** auf **Virtuelle Netzwerke**.
 3. Klicken Sie auf **Hinzufügen**.
 4. Geben Sie unter **Name** die Zeichenfolge **Test-FW-VN** ein.
 5. Geben Sie unter **Adressraum** die Zeichenfolge **10.0.0.0/16** ein.
-7. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-8. Klicken Sie unter **Ressourcengruppe** auf **Vorhandene verwenden**, und wählen Sie anschließend **Test-FW-RG** aus.
-9. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
-10. Geben Sie unter **Subnetz** als **Name** die Zeichenfolge **AzureFirewallSubnet** ein. Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
-11. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/24** ein.
-12. Lassen Sie die restlichen Standardeinstellungen unverändert, und klicken Sie auf **Erstellen**.
+6. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
+7. Klicken Sie unter **Ressourcengruppe** auf **Vorhandene verwenden**, und wählen Sie anschließend **Test-FW-RG** aus.
+8. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
+9. Geben Sie unter **Subnetz** als **Name** die Zeichenfolge **AzureFirewallSubnet** ein. Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
+10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/24** ein.
+11. Lassen Sie die restlichen Standardeinstellungen unverändert, und klicken Sie auf **Erstellen**.
 
 > [!NOTE]
 > Die Mindestgröße des Subnetzes AzureFirewallSubnet beträgt /25.
@@ -138,13 +135,11 @@ Wiederholen Sie diesen Prozess, um einen weiteren virtuellen Computer namens **S
 
 Konfigurieren Sie die **Einstellungen** für den virtuellen Computer „Srv-Work“ mit den Angaben aus der folgenden Tabelle. Die restliche Konfiguration ist mit der Konfiguration des virtuellen Computers „Srv-Jump“ identisch.
 
-
 |Einstellung  |Wert  |
 |---------|---------|
 |Subnetz|Workload-SN|
 |Öffentliche IP-Adresse|Keine|
 |Öffentliche Eingangsports hinzufügen|Keine öffentlichen Eingangsports|
-
 
 ## <a name="deploy-the-firewall"></a>Bereitstellen der Firewall
 
@@ -168,7 +163,6 @@ Konfigurieren Sie die **Einstellungen** für den virtuellen Computer „Srv-Work
    Die Bereitstellung dauert einige Minuten.
 4. Navigieren Sie nach Abschluss der Bereitstellung zur Ressourcengruppe **Test-FW-RG**, und klicken Sie auf die Firewall **Test-FW01**.
 6. Notieren Sie sich die private IP-Adresse. Diese wird später für die Erstellung der Standardroute benötigt.
-
 
 ## <a name="create-a-default-route"></a>Erstellen einer Standardroute
 
@@ -200,9 +194,7 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 18. Geben Sie unter **Adresse des nächsten Hops** die private IP-Adresse für die Firewall ein, die Sie sich zuvor notiert haben.
 19. Klicken Sie auf **OK**.
 
-
 ## <a name="configure-application-rules"></a>Konfigurieren von Anwendungsregeln
-
 
 1. Öffnen Sie **Test-FW-RG**, und klicken Sie auf die Firewall **Test-FW01**.
 2. Klicken Sie auf der Seite **Test-FW01** unter **Einstellungen** auf **Regeln**.
@@ -244,7 +236,6 @@ In diesem Tutorial konfigurieren Sie zu Testzwecken die primäre und sekundäre 
 6. Klicken Sie auf **Speichern**. 
 7. Starten Sie den virtuellen Computer **Srv-Work** neu.
 
-
 ## <a name="test-the-firewall"></a>Testen der Firewall
 
 1. Überprüfen Sie im Azure-Portal die Netzwerkeinstellungen für den virtuellen Computer **Srv-Work**, und notieren Sie sich die private IP-Adresse.
@@ -267,7 +258,6 @@ Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Sie können die Firewallressourcen für das nächste Tutorial behalten oder die Ressourcengruppe **Test-FW-RG** löschen, wenn Sie sie nicht mehr benötigen. Dadurch werden alle firewallbezogenen Ressourcen gelöscht.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

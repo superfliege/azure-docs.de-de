@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 910225e74fcd4655a9eff711d3ac1316d948c2b3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ba77ec34e7887f676ea3df101e87c1ea80fceec5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886193"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414793"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Fragen zum Azure VM Backup-Dienst
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten von Azure VM Backup vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -48,7 +48,7 @@ Ja. Selbst wenn ein Computer heruntergefahren ist, funktionieren Sicherungen, un
 Ja. Sie können einen Sicherungsauftrag in der Phase „Momentaufnahme wird erstellt...“ abbrechen. **Ein Auftrag kann nicht abgebrochen werden, wenn eine Datenübertragung von der Momentaufnahme stattfindet**.
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Ich habe für meine gesicherten, verwalteten Datenträger-VMs die Ressourcengruppensperre aktiviert. Funktionieren meine Sicherungen auch weiterhin?
-Wenn der Benutzer die Ressourcengruppe sperrt, kann der Backup-Dienst die älteren Wiederherstellungspunkte nicht löschen. Aus diesem Grund fangen neue Backups an fehlzuschlagen, da ein Grenzwert von maximal 18 Wiederherstellungspunkten gilt, der vom Back-End vorgegeben wird. Wenn Ihre Sicherungen nach der Ressourcengruppensperre mit einem internen Fehler fehlschlagen, befolgen Sie diese [Schritte zum Entfernen der Wiederherstellungspunktsammlung](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock).
+Wenn der Benutzer die Ressourcengruppe sperrt, kann der Backup-Dienst die älteren Wiederherstellungspunkte nicht löschen. Aus diesem Grund fangen neue Backups an fehlzuschlagen, da ein Grenzwert von maximal 18 Wiederherstellungspunkten gilt, der vom Back-End vorgegeben wird. Wenn Ihre Sicherungen nach der Ressourcengruppensperre mit einem internen Fehler fehlschlagen, befolgen Sie diese [Schritte zum Entfernen der Wiederherstellungspunktsammlung](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-portal-created-by-backup-service).
 
 ### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Berücksichtigt die Sicherungsrichtlinie die Sommerzeit (Daylight Saving Time, DST)?
 Nein. Denken Sie daran, dass Datum und Uhrzeit auf dem lokalen Computer in Ihrer lokalen Uhrzeit und unter Berücksichtigung der Sommerzeit angezeigt werden. Daher kann die für geplante Sicherungen konfigurierte Zeit aufgrund der DST von Ihrer lokalen Uhrzeit abweichen.

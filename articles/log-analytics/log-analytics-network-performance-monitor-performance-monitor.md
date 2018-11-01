@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 1254afc1ad1c513c18d565be8a6543a6ee0ae94b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 17a15ca00d7343064bde84860de91b62ff136cfe
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040590"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414116"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netzwerkleistungsmonitor-Lösung: Leistungsüberwachung
 
@@ -33,12 +33,12 @@ Die Systemmonitorfunktion im [Netzwerkleistungsmonitor](log-analytics-network-pe
 - Überwachen der Integrität des Netzwerks ohne SNMP.
 
 
-![Netzwerkleistungsmonitor](media/log-analytics-network-performance-monitor/npm-performance-monitor.png)
+![Netzwerkleistungsmonitor](media/log-analytics-network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>Konfiguration
 Öffnen Sie die [Netzwerkleistungsmonitor-Lösung](log-analytics-network-performance-monitor.md), und wählen Sie die Schaltfläche **Konfigurieren** aus, um die Konfiguration für den Netzwerkleistungsmonitor zu öffnen.
 
-![Konfigurieren des Netzwerkleistungsmonitors](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![Konfigurieren des Netzwerkleistungsmonitors](media/log-analytics-network-performance-monitor-performance-monitor/npm-configure-button.png)
 
 ### <a name="create-new-networks"></a>Erstellen neuer Netzwerke
 
@@ -120,21 +120,21 @@ Die Drilldownseite zeigt an, dass die Netzwerkverbindung **DMZ2-DMZ1** fehlerhaf
 
 Auf der Drilldownseite werden alle Subnetzwerkverbindungen der Netzwerkverbindung **DMZ2-DMZ1** angezeigt. Die Latenz beider Subnetzwerkverbindungen hat den Schwellenwert überschritten und bewirkt die Fehlerhaftigkeit der Netzwerkverbindung. Sie können auch die Latenztrends der beiden Subnetzwerkverbindungen anzeigen. Verwenden Sie das Zeitauswahl-Steuerelement im Diagramm, um sich auf den gewünschten Zeitraum zu konzentrieren. Sie können sehen, zu welcher Tageszeit die Latenz ihren Höchstwert erreicht hat. Später können Sie die Protokolle für diesen Zeitraum durchsuchen, um das Problem zu untersuchen. Wählen Sie **Knotenverbindungen anzeigen** aus, um einen weiteren Drilldown auszuführen. 
  
- ![Seite „Subnetzwerkverbindungen“](media/log-analytics-network-performance-monitor/subnetwork-links.png) 
+ ![Seite „Subnetzwerkverbindungen“](media/log-analytics-network-performance-monitor-performance-monitor/subnetwork-links.png) 
 
 Ähnlich wie bei der vorherigen Seite werden auf der Drilldownseite der jeweiligen Subnetzwerkverbindung die enthaltenen Knotenverbindungen aufgeführt. Hier können Sie ähnliche Aktionen ausführen wie im vorherigen Schritt. Wählen Sie **Topologie anzeigen** aus, um die Topologie zwischen den beiden Knoten anzuzeigen. 
  
- ![Seite „Knotenverbindungen“](media/log-analytics-network-performance-monitor/node-links.png) 
+ ![Seite „Knotenverbindungen“](media/log-analytics-network-performance-monitor-performance-monitor/node-links.png) 
 
 Auf der Topologiekarte werden alle Pfade zwischen den beiden ausgewählten Knoten dargestellt. Sie können die Hop-by-Hop-Topologie der Routen zwischen zwei Knoten in der Topologiekarte grafisch darstellen. So wissen Sie genau, wie viele Routen zwischen den beiden Knoten vorhanden sind und welche Pfade die Datenpakete verwenden. Leistungsengpässe im Netzwerk werden rot dargestellt. Um eine fehlerhafte Netzwerkverbindung bzw. ein fehlerhaftes Netzwerkgerät zu ermitteln, untersuchen Sie in der Topologiekarte die rot gekennzeichneten Elemente. 
 
- ![Topologiedashboard mit Topologiekarte](media/log-analytics-network-performance-monitor/topology-dashboard.png) 
+ ![Topologiedashboard mit Topologiekarte](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard.png) 
 
 Sie können die Paketverluste, Latenz und Anzahl der Hops in jedem Pfad im Bereich **Aktion** überprüfen. Verwenden Sie die Scrollleiste, um die Details der fehlerhaften Pfade anzuzeigen. Verwenden Sie die Filter, um die Pfade mit dem fehlerhaften Hop auszuwählen, sodass die Topologie nur für die ausgewählten Pfade dargestellt wird. Mit dem Mausrad können Sie die Topologiekarte vergrößern oder verkleinern. 
 
 In der folgenden Abbildung werden die Grundursachen für die Problembereiche des jeweiligen Abschnitts des Netzwerks in den roten Pfaden und Hops angezeigt. Wählen Sie einen Knoten in der Topologiekarte aus, um die Eigenschaften des Knotens einschließlich FQDN und IP-Adresse anzuzeigen. Durch Auswählen eines Hops wird die IP-Adresse des Hops angezeigt. 
  
-![Topologiekarte mit ausgewählten Knoteneigenschaften](media/log-analytics-network-performance-monitor/topology-dashboard-root-cause.png) 
+![Topologiekarte mit ausgewählten Knoteneigenschaften](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Mit [Protokollsuchen](log-analytics-log-searches.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.

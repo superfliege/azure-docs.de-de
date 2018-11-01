@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 36f59e1c405ef9e5cf69a19e49d69a3adfdc4636
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 42fc3dfb48c041ba187e2034eed81183dba02cb4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298182"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413876"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-java"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK und Java
 
@@ -25,7 +25,7 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen die aktuelle Version des [Java Development Kits (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+Sie benötigen die aktuelle Version des [Java Development Kits (JDK)](https://aka.ms/azure-jdks).
 
 Installieren Sie die Abhängigkeit für das Bing-Bildersuche-SDK mithilfe von Maven, Gradle oder anderen Systemen zum Verwalten von Abhängigkeiten. Die Maven-POM-Datei erfordert die folgende Deklaration:
 

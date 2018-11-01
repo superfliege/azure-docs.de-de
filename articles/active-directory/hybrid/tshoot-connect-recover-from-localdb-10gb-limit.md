@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e78e7b5b4dba0bfea4f3398ca20b381a291fe44f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 410559ab03f0e0be71f2eba27ed71c9f7cf05862
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46307819"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238538"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Wiederherstellen nach einem Problem aufgrund der LocalDB-Obergrenze von 10 GB
 Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Identitätsdaten. Sie können entweder die mit Azure AD Connect installierte SQL Server 2012 Express LocalDB-Standardinstanz oder Ihre eigene vollständige Version von SQL Server verwenden. In SQL Server Express gilt eine Größenbeschränkung von 10 GB. Wenn Sie LocalDB verwenden und dieser Grenzwert erreicht ist, kann Azure AD Connect Synchronization Service nicht mehr ordnungsgemäß gestartet oder synchronisiert werden. In diesem Artikel werden die Schritte zur Wiederherstellung beschrieben.
@@ -71,7 +71,7 @@ Der Name der für Azure AD Connect erstellten Datenbank lautet **ADSync**. Um ei
 
 3. Navigieren Sie zum Ordner `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`.
 
-4. Starten Sie das Hilfsprogramm **sqlcmd** mithilfe des Befehls `./SQLCMD.EXE -S “(localdb)\.\ADSync” -U <Username> -P <Password>`. Verwenden Sie dabei die Anmeldeinformationen eines Systemadministrators oder des Datenbankbesitzers.
+4. Starten Sie das Hilfsprogramm **sqlcmd** mithilfe des Befehls `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`. Verwenden Sie dabei die Anmeldeinformationen eines Systemadministrators oder des Datenbankbesitzers.
 
 5. Geben Sie zum Verkleinern der Datenbank an der sqlcmd-Eingabeaufforderung (1>) `DBCC Shrinkdatabase(ADSync,1);` gefolgt von `GO` in der nächsten Zeile ein.
 

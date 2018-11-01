@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: 41dd8ad721329c4c4d2761c9e4a37c640251dac3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0c30ffec58b1542fa80cf0c9873a0e6df8641104
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125277"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232544"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Dateisystemen mit Azure Logic Apps
 
@@ -64,7 +64,7 @@ In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie e
 
    ![Erstellen der Verbindung](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Eigenschaft | Erforderlich | Wert | Beschreibung | 
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
    | -------- | -------- | ----- | ----------- | 
    | **Verbindungsname** | JA | <*verbindungsname*> | Der gewünschte Name für die Verbindung. | 
    | **Stammordner** | JA | <*Name des Stammordners*> | Der Stammordner für Ihr Dateisystem – beispielsweise ein lokaler Ordner auf dem Computer, auf dem das lokale Datengateway installiert ist, oder der Ordner für eine Netzwerkfreigabe, auf die der Computer zugreifen kann. <p>Beispiel: `\\PublicShare\\DropboxFiles` <p>Der Stammordner ist der übergeordnete Hauptordner, der bei allen dateibezogenen Aktionen für relative Pfade verwendet wird. | 
@@ -99,7 +99,7 @@ Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Bes
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-* Zur Optimierung von Azure Logic Apps und Connectors können Sie auf der [Azure Logic Apps-Website für Benutzerfeedback](http://aka.ms/logicapps-wish) über Ideen abstimmen oder selbst Ideen einreichen.
+* Zur Optimierung von Azure Logic Apps und Connectors können Sie auf der [Azure Logic Apps-Website für Benutzerfeedback](https://aka.ms/logicapps-wish) über Ideen abstimmen oder selbst Ideen einreichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

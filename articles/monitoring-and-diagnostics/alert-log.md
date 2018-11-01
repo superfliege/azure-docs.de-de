@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 627c0ee5a2fab333b8a120867ab54ea76bc66823
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976838"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419366"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor  
 
@@ -34,26 +34,26 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
 
 ### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Erstellen einer Protokollwarnungsregel mit dem Azure-Portal
 1. Wählen Sie im [Portal](https://portal.azure.com/) die Option **Monitor** und im Abschnitt „MONITOR“ dann **Warnungen** aus.  
-    ![Überwachung](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
+    ![Überwachung](media/alert-log/AlertsPreviewMenu.png)
 
 1. Wählen Sie die Schaltfläche **Neue Warnungsregel** aus, um eine neue Warnung in Azure zu erstellen.
-    ![Warnung hinzufügen](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+    ![Warnung hinzufügen](media/alert-log/AlertsPreviewOption.png)
 
 1. Der aus drei Teilen bestehende Abschnitt „Warnung erstellen“ wird angezeigt: *Warnungsbedingung definieren*, *Warnungsdetails definieren* und *Aktionsgruppe definieren*.
 
-    ![Erstellen einer Regel](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
+    ![Erstellen einer Regel](media/alert-log/AlertsPreviewAdd.png)
 
 1.  Definieren Sie die Warnungsbedingung, indem Sie auf den Link **Ressource auswählen** klicken und dann durch Auswahl einer Ressource das Ziel angeben. Filtern Sie, indem Sie die Optionen _Abonnement_, _Ressourcentyp_ und schließlich die erforderliche Option _Ressource_ auswählen. 
 
     >[!NOTE]
 
     > Überprüfen Sie beim Erstellen einer Protokollwarnung das für die ausgewählte Ressource verfügbare **Protokoll**signal, bevor Sie den Vorgang fortsetzen.
-    ![Auswählen einer Ressource](./media/monitor-alerts-unified/Alert-SelectResourceLog.png)
+    ![Auswählen einer Ressource](media/alert-log/Alert-SelectResourceLog.png)
 
  
 1. *Protokollwarnungen:* Stellen Sie sicher, dass als **Ressourcentyp** eine Analysequelle wie *Log Analytics* oder *Application Insights* und der Signaltyp **Protokoll** ausgewählt sind, und klicken Sie nach Auswahl der entsprechenden **Ressource** auf *Fertig*. Klicken Sie als Nächstes auf die Schaltfläche **Kriterien hinzufügen**, um die Liste mit den für die Ressource verfügbaren Signaloptionen und die Option **Benutzerdefinierte Protokollsuche** für den ausgewählten Protokollüberwachungsdienst (z.B. *Log Analytics* oder *Application Insights*) aus der Signalliste anzuzeigen.
 
-   ![Auswählen einer Ressource – benutzerdefinierte Protokollsuche](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
+   ![Auswählen einer Ressource – benutzerdefinierte Protokollsuche](media/alert-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
@@ -61,7 +61,7 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
 
 1.  *Protokollwarnungen*: Wenn Sie diese Option ausgewählt haben, können im Feld **Suchabfrage** Abfragen für Warnungen angegeben werden. Ist die Abfragesyntax falsch, wird eine Fehlermeldung in ROT angezeigt. Wenn die Abfragesyntax korrekt ist, werden für die angegebene Abfrage Referenzverlaufsdaten als Diagramm angezeigt. Dabei besteht die Möglichkeit, das Zeitfenster von den letzten sechs Stunden bis zur letzten Woche anzupassen.
 
- ![Konfigurieren einer Warnungsregel](./media/monitor-alerts-unified/AlertsPreviewAlertLog.png)
+ ![Konfigurieren einer Warnungsregel](media/alert-log/AlertsPreviewAlertLog.png)
 
  > [!NOTE]
 
@@ -69,7 +69,7 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
 
     >  Wenn Sie als Typ für die Metrikmessung Protokollwarnungen mit Application Insights verwenden, können Sie angeben, nach welcher Variablen die Daten gruppiert werden sollen. Verwenden Sie dazu die Option **Aggregieren auf**, wie hier zu sehen:
 
-    ![Option „Aggregieren auf“](./media/monitor-alerts-unified/aggregate-on.png)
+    ![Option „Aggregieren auf“](media/alert-log/aggregate-on.png)
 
 1.  *Protokollwarnungen*: Ist die Visualisierung eingerichtet, kann die **Warnungslogik** aus den angezeigten Optionen „Bedingung“, „Aggregation“ und schließlich „Schwellenwert“ ausgewählt werden. Geben Sie schließlich über die Option **Zeitraum** den Zeitraum für die Bewertung der angegebenen Bedingung in der Logik an. Legen Sie durch Auswahl der **Häufigkeit** außerdem fest, wie oft die Warnung ausgeführt werden soll.
 **Protokollwarnungen** können auf Folgendem basieren:
@@ -83,7 +83,7 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
 
     - **Warnungen unterdrücken**: Wenn Sie die Unterdrückung für die Warnungsregel aktivieren, werden Aktionen für die Regel nach dem Erstellen einer neuen Warnung für einen vorher festgelegten Zeitraum deaktiviert. Die Regel wird weiter ausgeführt und erstellt Warnungsdatensätze, wenn die Kriterien erfüllt sind. Dies erspart Ihnen die Zeit, das Problem zu beheben, ohne doppelte Aktionen durchzuführen.
 
-        ![Unterdrücken von Warnungen für Protokollwarnungen](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
+        ![Unterdrücken von Warnungen für Protokollwarnungen](media/alert-log/AlertsPreviewSuppress.png)
 
         > [!TIP]
         > Geben Sie einen größeren Wert für das Unterdrücken von Warnungen als für die Häufigkeit der Warnung an, um sicherzustellen, dass Benachrichtigungen ohne Überlappung beendet werden.
@@ -98,19 +98,19 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
     - **E-Mail-Benachrichtigung**: Überschreibt den *E-Mail-Betreff* in der E-Mail, die über die Aktionsgruppe gesendet wurde, wenn mindestens eine E-Mail-Aktion in der genannten Aktionsgruppe vorhanden ist. Der Text der E-Mail kann nicht geändert werden, und dieses Feld ist **nicht** für E-Mail-Adressen vorgesehen.
     - **Benutzerdefinierte JSON-Nutzlast einschließen**: Diese Option überschreibt den von Aktionsgruppen verwendeten JSON-Webhook, wenn mindestens eine Webhookaktion in der genannten Aktionsgruppe vorhanden ist. Der Benutzer kann das JSON-Format angeben, das für alle in zugewiesenen Aktionsgruppen konfigurierte Webhooks verwendet werden soll. Weitere Informationen zu Webhookformaten finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](monitor-alerts-unified-log-webhook.md). Die Option „Webhook anzeigen“ bietet die Möglichkeit, das Format anhand von JSON-Beispieldaten zu überprüfen.
 
-        ![Aktionsüberschreibungen für Protokollwarnungen](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
+        ![Aktionsüberschreibungen für Protokollwarnungen](media/alert-log/AlertsPreviewOverrideLog.png)
 
 
 1. Wenn alle Felder gültig sind und mit einem grünen Häkchen versehen sind, kann auf die Schaltfläche **Warnungsregel erstellen** geklickt werden, wodurch eine Warnung in Azure Monitor unter „Warnungen“ erstellt wird. Alle Warnungen können über das Dashboard „Warnungen“ angezeigt werden.
 
-    ![Regelerstellung](./media/monitor-alerts-unified/AlertsPreviewCreate.png)
+    ![Regelerstellung](media/alert-log/AlertsPreviewCreate.png)
 
     Innerhalb weniger Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
 
 Benutzer können ihre Analyseabfrage auch auf der Seite [Logs Analytics im Azure-Portal](../log-analytics/log-analytics-log-search-portals.md#log-analytics-page
 ) abschließen und dann über die Schaltfläche „Warnung festlegen“ eine Warnung erstellen. Anschließend können sie den Anweisungen ab Schritt 6 im obigen Tutorial folgen.
 
- ![Log Analytics – Warnung festlegen](./media/monitor-alerts-unified/AlertsAnalyticsCreate.png)
+ ![Log Analytics – Warnung festlegen](media/alert-log/AlertsAnalyticsCreate.png)
 
 ### <a name="view--manage-log-alerts-in-azure-portal"></a>Anzeigen und Verwalten von Warnungen im Azure-Portal
 
@@ -122,7 +122,7 @@ Benutzer können ihre Analyseabfrage auch auf der Seite [Logs Analytics im Azure
 
 
 1. Wählen Sie in der oberen Leiste die Schaltfläche **Regeln verwalten** aus, um zum Abschnitt „Regelverwaltung“ zu navigieren, wobei alle erstellten Warnungsregeln sowie deaktivierte Warnungen aufgeführt sind.
-    ![Verwalten von Warnungsregeln](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![Verwalten von Warnungsregeln](media/alert-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Verwalten von Protokollwarnungen mithilfe von Azure-Ressourcenvorlagen
 Derzeit können Protokollwarnungen mit zwei verschiedenen Ressourcenvorlagen erstellt werden, je nachdem, auf welcher Analyseplattform die Warnung basieren soll (d. h. Log Analytics oder Application Insights).

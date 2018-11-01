@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: aa7962e3659618b8c5a4f161d667c5e90477acc9
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8be0e909ea391ed1b66fc78349cc2283d009e8cb
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347646"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240374"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
 Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen von Anwendungen Fehler auftreten, überprüfen Sie die folgenden Optionen, um zu ermitteln, ob der Microsoft Azure AD-Anwendungsproxy ordnungsgemäß funktioniert:
@@ -43,7 +43,7 @@ Wenn Sie den Pfad so ändern, dass er referenzierten Inhalt enthält, Benutzer a
 
 Wenn während der Connector-Installation durch den Assistenten ein Fehler bei der Registrierung auftritt, haben Sie zwei Möglichkeiten, um den Grund dafür anzuzeigen. Sehen Sie entweder im Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle\Microsoft\AadApplicationProxy\Connector\Admin** nach, oder führen Sie den folgenden Windows PowerShell-Befehl aus:
 
-    Get-EventLog application –source “Microsoft AAD Application Proxy Connector” –EntryType “Error” –Newest 1
+    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
 
 Sobald Sie den Connectorfehler im Ereignisprotokoll gefunden haben, beheben Sie das Problem anhand dieser Tabelle mit häufig auftretenden Fehlern:
 

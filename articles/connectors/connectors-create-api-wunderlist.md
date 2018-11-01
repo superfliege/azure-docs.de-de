@@ -11,12 +11,12 @@ ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 7226b59504c7112c039061ab0c184fe14f6e59d0
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918670"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230166"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Überwachen und Verwalten von Wunderlist mithilfe von Azure Logic Apps
 
@@ -37,9 +37,9 @@ Mit Azure Logic Apps und dem Wunderlist-Connector können Sie automatisierte Auf
 
    Ihre Anmeldeinformationen autorisieren Ihre Logik-App zur Erstellung einer Verbindung mit Ihrem Wunderlist-Konto sowie zum Zugriff auf das Konto.
 
-* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Die Logik-App, in der Sie auf Ihr Wunderlist-Konto zugreifen möchten. Um mit einem Wunderlist-Trigger zu beginnen, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um eine Wunderlist-Aktion zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z.B. dem **Wiederholungstrigger**.
+* Die Logik-App, in der Sie auf Ihr Yammer-Konto zugreifen möchten. Um mit einem Wunderlist-Trigger zu beginnen, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um eine Wunderlist-Aktion zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z.B. dem **Wiederholungstrigger**.
 
 ## <a name="connect-to-wunderlist"></a>Herstellen einer Verbindung mit Wunderlist
 
@@ -52,13 +52,13 @@ Mit Azure Logic Apps und dem Wunderlist-Connector können Sie automatisierte Auf
    * Geben Sie im Fall einer leeren Logik-App im Suchfeld die Zeichenfolge „wunderlist“ als Filter ein. 
    Wählen Sie in der Triggerliste den gewünschten Trigger aus. 
 
-     oder
+     Oder
 
    * Für vorhandene Logik-Apps: 
    
-     * Wählen Sie im letzten Schritt zum Hinzufügen einer Aktion die Option **Neuer Schritt** aus. 
+     * Wählen Sie im letzten Schritt zum Hinzufügen einer Aktion **Neuer Schritt** aus. 
 
-       oder
+       Oder
 
      * Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. 
      Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) und dann **Aktion hinzufügen** aus.
@@ -77,7 +77,7 @@ Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Bes
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 0e8db8779958afe1fd3cf4bf12f2a6fd4a97c61c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164857"
+---
 <!--author=alkohli last changed: 9/16/15-->
 
 #### <a name="to-cable-for-power"></a>So verkabeln Sie das Gerät für die Stromversorgung
@@ -6,7 +19,7 @@
 3. Schließen Sie die Netzkabel an die Rack-PDUs an, wie in der folgenden Abbildung dargestellt. Stellen Sie sicher, dass die beiden PCMs separate Stromquellen verwenden.
    
    > [!IMPORTANT]
-   > Damit eine hohe Verfügbarkeit des Systems sichergestellt ist, empfiehlt es sich dringend, sich strikt an das im folgenden Diagramm dargestellte Stromverkabelungsschema zu halten. 
+   > Damit die Hochverfügbarkeit des Systems sichergestellt ist, empfiehlt es sich dringend, sich strikt an das im folgenden Diagramm dargestellte Stromverkabelungsschema zu halten. 
    > 
    > 
    
@@ -14,7 +27,7 @@
    
     **Stromverkabelung eines 8100-Geräts**
    
-   | Bezeichnung | Beschreibung |
+   | Bezeichnung | BESCHREIBUNG |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |Controller 1 |

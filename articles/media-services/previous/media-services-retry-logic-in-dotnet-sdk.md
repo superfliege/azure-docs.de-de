@@ -2,7 +2,7 @@
 title: Wiederholungslogik im Media Services SDK für .NET | Microsoft Docs
 description: Dieses Thema enthält eine Übersicht über die Wiederholungslogik im Media Services SDK für .NET.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 34125712c59938b3a74e7cdc150f3f16b694b92f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0a4c9db8da046e901241bc383098013b2acc6bb2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785939"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242261"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Wiederholungslogik im Media Services SDK für .NET
 Bei der Arbeit mit Microsoft Azure-Diensten können vorübergehende Fehler auftreten. Wenn ein vorübergehender Fehler auftritt, ist der Vorgang in der Regel nach ein paar Wiederholungsversuchen erfolgreich. Das Media Services SDK für .NET implementiert die Wiederholungslogik zum Behandeln von vorübergehenden Fehlern, die mit Ausnahmen und Fehlern in Verbindung stehen, die durch Webanforderungen, das Ausführen von Abfragen, das Speichern von Änderungen und Speichervorgänge hervorgerufen werden.  Standardmäßig führt das Media Services SDK für .NET vier Wiederholungsversuche aus, bevor es die Ausnahme zu Ihrer Anwendung erneut auslöst. Der Code in Ihrer Anwendung muss diese Ausnahme dann ordnungsgemäß behandeln.  
@@ -38,13 +38,13 @@ Die folgende Tabelle beschreibt die Ausnahmen, die das Media Services SDK für .
 
 | Ausnahme | Webanforderung | Speicher | Abfragen | SaveChanges |
 | --- | --- | --- | --- | --- |
-| WebException<br/>Weitere Informationen finden Sie im Abschnitt [WebException-Statuscodes](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus). |Ja |Ja |Ja |Ja |
-| DataServiceClientException<br/> Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nein  |Ja |Ja |Ja |
-| DataServiceQueryException<br/> Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nein  |Ja |Ja |Ja |
-| DataServiceRequestException<br/> Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nein  |Ja |Ja |Ja |
-| DataServiceTransportException |Nein  |Nein  |Ja |Ja |
-| TimeoutException |Ja |Ja |Ja |Nein  |
-| SocketException |Ja |Ja |Ja |Ja |
+| WebException<br/>Weitere Informationen finden Sie im Abschnitt [WebException-Statuscodes](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus). |JA |Ja |Ja |JA |
+| DataServiceClientException<br/> Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nein  |Ja |Ja |JA |
+| DataServiceQueryException<br/> Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nein  |Ja |Ja |JA |
+| DataServiceRequestException<br/> Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nein  |Ja |Ja |JA |
+| DataServiceTransportException |Nein  |Nein  |Ja |JA |
+| TimeoutException |JA |Ja |JA |Nein  |
+| SocketException |JA |Ja |Ja |JA |
 | StorageException |Nein  |Ja |Nein  |Nein  |
 | IOException |Nein  |Ja |Nein  |Nein  |
 
@@ -53,18 +53,18 @@ Die folgende Tabelle zeigt, für welche WebException-Fehlercodes die Wiederholun
 
 | Status | Webanforderung | Speicher | Abfragen | SaveChanges |
 | --- | --- | --- | --- | --- |
-| ConnectFailure |Ja |Ja |Ja |Ja |
-| NameResolutionFailure |Ja |Ja |Ja |Ja |
-| ProxyNameResolutionFailure |Ja |Ja |Ja |Ja |
-| SendFailure |Ja |Ja |Ja |Ja |
-| PipelineFailure |Ja |Ja |Ja |Nein  |
-| ConnectionClosed |Ja |Ja |Ja |Nein  |
-| KeepAliveFailure |Ja |Ja |Ja |Nein  |
-| UnknownError |Ja |Ja |Ja |Nein  |
-| ReceiveFailure |Ja |Ja |Ja |Nein  |
-| RequestCanceled |Ja |Ja |Ja |Nein  |
-| Timeout |Ja |Ja |Ja |Nein  |
-| ProtocolError <br/>Die Wiederholung bei ProtocolError wird von der HTTP-Statuscodebehandlung gesteuert. Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ja |Ja |Ja |Ja |
+| ConnectFailure |JA |Ja |Ja |JA |
+| NameResolutionFailure |JA |Ja |Ja |JA |
+| ProxyNameResolutionFailure |JA |Ja |Ja |JA |
+| SendFailure |JA |Ja |Ja |JA |
+| PipelineFailure |JA |Ja |JA |Nein  |
+| ConnectionClosed |JA |Ja |JA |Nein  |
+| KeepAliveFailure |JA |Ja |JA |Nein  |
+| UnknownError |JA |Ja |JA |Nein  |
+| ReceiveFailure |JA |Ja |JA |Nein  |
+| RequestCanceled |JA |Ja |JA |Nein  |
+| Timeout |JA |Ja |JA |Nein  |
+| ProtocolError <br/>Die Wiederholung bei ProtocolError wird von der HTTP-Statuscodebehandlung gesteuert. Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |JA |Ja |Ja |JA |
 
 ### <a name="HTTPStatusCode"></a> HTTP-Fehlerstatuscodes
 Wenn Abfrage- und SaveChanges-Vorgänge DataServiceClientException, DataServiceQueryException, oder DataServiceQueryException ausgeben, wird der HTTP-Fehlerstatuscode in der StatusCode-Eigenschaft zurückgegeben.  Die folgende Tabelle zeigt, für welche Fehlercodes die Wiederholungslogik implementiert ist.  
@@ -72,13 +72,13 @@ Wenn Abfrage- und SaveChanges-Vorgänge DataServiceClientException, DataServiceQ
 | Status | Webanforderung | Speicher | Abfragen | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |Nein  |Ja |Nein  |Nein  |
-| 403 |Nein  |Ja<br/>Behandeln von Wiederholungen mit längeren Wartezeiten. |Nein  |Nein  |
-| 408 |Ja |Ja |Ja |Ja |
-| 429 |Ja |Ja |Ja |Ja |
-| 500 |Ja |Ja |Ja |Nein  |
-| 502 |Ja |Ja |Ja |Nein  |
-| 503 |Ja |Ja |Ja |Ja |
-| 504 |Ja |Ja |Ja |Nein  |
+| 403 |Nein  |JA<br/>Behandeln von Wiederholungen mit längeren Wartezeiten. |Nein  |Nein  |
+| 408 |JA |Ja |Ja |JA |
+| 429 |JA |Ja |Ja |JA |
+| 500 |JA |Ja |JA |Nein  |
+| 502 |JA |Ja |JA |Nein  |
+| 503 |JA |Ja |Ja |JA |
+| 504 |JA |Ja |JA |Nein  |
 
 Wenn Sie einen Blick auf die tatsächliche Implementierung s Media Services SDKs für die .NET-Wiederholungslogik werfen möchten, gehen Sie unter [azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling).
 

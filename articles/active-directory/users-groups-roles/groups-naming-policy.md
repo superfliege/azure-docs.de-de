@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 111be7d3ee00f2b40ace3bfe4efdacc5029ccf77
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2857f95eff0b2d039a1a3c7bbe566a8ed3ca4fea
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239133"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243128"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory (Vorschau)
 
@@ -49,7 +49,7 @@ Sie können Zeichenfolgen verwenden, damit Gruppen in der globalen Adressliste u
 
 #### <a name="user-attributes"></a>Benutzerattribute
 
-Anhand von Attributen können Sie und Ihre Benutzer einfacher erkennen, für welche Abteilung, welches Büro oder welche geografische Region die Gruppe erstellt wurde. Wenn Sie z.B. eine Benennungsrichtlinie mit `PrefixSuffixNamingRequirement = “GRP [GroupName] [Department]”` und `User’s department = Engineering` festlegen, würde ein erzwungener Gruppenname „GRP Meine Gruppe Engineering“ lauten. Unterstützte Azure AD-Attribute sind \[Department\], \[Company\], \[Office\], \[StateOrProvince\], \[CountryOrRegion \], \[Title\]. Nicht unterstützte Benutzerattribute werden wie feste Zeichenfolgen behandelt – z.B. „\[postalCode\]“. Erweiterungsattribute und benutzerdefinierte Attribute werden nicht unterstützt.
+Anhand von Attributen können Sie und Ihre Benutzer einfacher erkennen, für welche Abteilung, welches Büro oder welche geografische Region die Gruppe erstellt wurde. Wenn Sie z.B. eine Benennungsrichtlinie mit `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` und `User’s department = Engineering` festlegen, würde ein erzwungener Gruppenname „GRP Meine Gruppe Engineering“ lauten. Unterstützte Azure AD-Attribute sind \[Department\], \[Company\], \[Office\], \[StateOrProvince\], \[CountryOrRegion \], \[Title\]. Nicht unterstützte Benutzerattribute werden wie feste Zeichenfolgen behandelt – z.B. „\[postalCode\]“. Erweiterungsattribute und benutzerdefinierte Attribute werden nicht unterstützt.
 
 Es wird empfohlen, Attribute zu verwenden, die Werte für alle Benutzer in Ihrer Organisation enthalten, aber keine langen Werte aufweisen.
 

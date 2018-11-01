@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef72829d507d6a471ec9a8972ead262da7f7b582
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4362a6b936c52319f6f6fc625370733f3c84e361
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068694"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158855"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
 In diesem Artikel werden verschiedene lokale und Azure Active Directory (Azure AD)-Topologien beschrieben, die Azure AD Connect-Synchronisierung als Schlüsselintegrationslösung verwenden. In diesem Artikel werden sowohl unterstützte als auch nicht unterstützte Konfigurationen beschrieben.
@@ -87,7 +87,7 @@ Das Verbinden mehrerer Azure AD Connect-Synchronisierungsserver mit einem einzel
 ### <a name="multiple-forests-separate-topologies"></a>Mehrere Gesamtstrukturen, separate Topologien
 ![Option: Benutzer werden nur einmal für alle Verzeichnisse dargestellt](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
-![Abbildung mehrerer Gesamtstrukturen und separater Topologien](./media/plan-connect-topologies/MultiForestSeperateTopologies.png)
+![Abbildung mehrerer Gesamtstrukturen und separater Topologien](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
 
 In dieser Umgebung werden alle lokalen Gesamtstrukturen als getrennte Entitäten behandelt. Kein Benutzer ist in einer anderen Gesamtstruktur vorhanden. Jede Gesamtstruktur verfügt über eine eigene Exchange-Organisation, und es gibt keine GALSync zwischen den Gesamtstrukturen. Diese Topologie kann beispielsweise nach einer Fusion/Übernahme oder in einer Organisation vorliegen, in der jede Geschäftseinheit unabhängig agiert. Diese Gesamtstrukturen befinden sich in der gleichen Organisation in Azure AD und werden mit einer einheitlichen GAL angezeigt. In der vorherigen Abbildung wird jedes Objekt in jeder Gesamtstruktur einmal im Metaverse dargestellt und im Azure AD-Mandanten aggregiert.
 

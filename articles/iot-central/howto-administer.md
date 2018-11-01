@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1bb0bc0aa7ad6bbbad502832ba8e0a96f36de428
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 25b4777be4257933b84d58d0f10cf12571de9590
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268299"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155319"
 ---
 # <a name="administer-your-iot-central-application"></a>Verwalten Ihrer Azure IoT Central-Anwendung
 
@@ -33,7 +33,7 @@ Im Abschnitt **Verwaltung** können Sie Folgendes tun:
 
 Im Abschnitt **Verwaltung** gibt es ein sekundäres Navigationsmenü mit Links zu verschiedenen Verwaltungsaufgaben.
 
-Um auf den Abschnitt **Verwaltung** zugreifen und diesen verwenden zu können, muss Ihnen die Rolle **Administrator** für eine Azure IoT Central-Anwendung zugewiesen sein. Wenn Sie eine Azure IoT Central-Anwendung erstellen, wird Ihnen automatisch die Rolle **Administrator** für die jeweilige Anwendung zugewiesen. Im Abschnitt *Verwalten von Benutzern* in diesem Artikel wird erläutert, wie Sie anderen Benutzern die Rolle **Administrator** zuweisen.
+Um auf den Abschnitt **Verwaltung** zugreifen und diesen verwenden zu können, muss Ihnen die Rolle **Administrator** für eine Azure IoT Central-Anwendung zugewiesen sein. Wenn Sie eine Azure IoT Central-Anwendung erstellen, wird Ihnen automatisch die Rolle **Administrator** für die jeweilige Anwendung zugewiesen. Im Abschnitt [Verwalten von Benutzern](#manage-users) in diesem Artikel wird erläutert, wie Sie anderen Benutzern die Rolle **Administrator** zuweisen.
 
 ## <a name="change-application-name"></a>Ändern des Anwendungsnamens
 

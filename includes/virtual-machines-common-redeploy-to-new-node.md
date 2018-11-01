@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 1c3996c3f40da496af0cd795d0873864667a1f19
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227035"
+---
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 1. Wählen Sie den virtuellen Computer aus, der erneut bereitgestellt werden soll, und klicken Sie dann auf dem Blatt *Einstellungen* auf die Schaltfläche *Erneut bereitstellen*. Unter Umständen müssen Sie nach unten scrollen, um den Abschnitt **Support und Problembehandlung** anzuzeigen, in dem die Schaltfläche „Erneut bereitstellen“ enthalten ist, wie im folgenden Beispiel gezeigt:
    

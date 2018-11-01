@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Einbinden eines virtuellen Windo
 description: Einbinden eines virtuellen Windows Server-Computers in Azure AD DS
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
-ms.author: maheshu
-ms.openlocfilehash: f9ee68fda3bb5e0f5302c8d5c96da0515c05ce1d
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 753818526ad637db0baa13c92e92d2725b19dbf8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503399"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158325"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
 In diesem Artikel wird veranschaulicht, wie Sie mit dem Azure-Portal einen neuen virtuellen Windows Server-Computer bereitstellen. Anschließend erfahren Sie, wie Sie den virtuellen Computer in eine verwaltete Domäne von Azure Active Directory Domain Services (Azure AD DS) einbinden.
@@ -30,7 +30,7 @@ In diesem Artikel wird veranschaulicht, wie Sie mit dem Azure-Portal einen neuen
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>Schritt 1: Erstellen eines virtuellen Windows Server-Computers
 Führen Sie folgende Schritte durch, um einen virtuellen Windows-Computer zu erstellen, der in das virtuelle Netzwerk eingebunden wird, in dem Sie Azure AD DS aktiviert haben:
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 2. Wählen Sie oben im linken Bereich die Option **Neu**.
 3. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**.
 

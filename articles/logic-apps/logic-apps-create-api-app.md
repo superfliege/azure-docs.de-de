@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: a761e384a356a0cbf5531eee7340ddbbd1526909
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122245"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233513"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
 
@@ -41,7 +41,7 @@ Sie können Ihre APIs in [Azure App Service](../app-service/app-service-web-over
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> API-App-Beispiele für Logik-Apps finden Sie im [Azure Logic Apps GitHub-Repository](http://github.com/logicappsio) oder [Blog](http://aka.ms/logicappsblog).
+> API-App-Beispiele für Logik-Apps finden Sie im [Azure Logic Apps GitHub-Repository](http://github.com/logicappsio) oder [Blog](https://aka.ms/logicappsblog).
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Wie unterscheiden sich benutzerdefinierte APIs von benutzerdefinierten Connectors?
 
@@ -230,7 +230,7 @@ Um Ihre benutzerdefinierten APIs allen Benutzern in Logic Apps, Microsoft Flow u
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-* Zur Optimierung von Logic Apps können Sie auf der Website für [Benutzerfeedback zu Logic Apps](http://aka.ms/logicapps-wish) über Ideen abstimmen oder selbst Ideen einreichen. 
+* Zur Optimierung von Logic Apps können Sie auf der Website für [Benutzerfeedback zu Logic Apps](https://aka.ms/logicapps-wish) über Ideen abstimmen oder selbst Ideen einreichen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

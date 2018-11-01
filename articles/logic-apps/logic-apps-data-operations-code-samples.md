@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/25/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8ac3d4ba9b9ae1268cef9d4ee255021004924377
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39393017"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229962"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Codebeispiele für Datenvorgänge in Azure Logic Apps
 
@@ -185,7 +185,7 @@ Für das [Beispiel zur Aktion **Create HTML table**](../logic-apps/logic-apps-pe
 
 <a name="filter-array-action-example"></a>
 
-## <a name="filter-array"></a>Filter array
+## <a name="filter-array"></a>Array filtern
 
 Für das [Beispiel zur Aktion **Filter array**](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) können Sie die folgenden Aktionsdefinitionen verwenden:
 
@@ -267,7 +267,7 @@ Für das [Beispiel zur Aktion **Join**](../logic-apps/logic-apps-perform-data-op
 
 <a name="parse-json-action-example"></a>
 
-## <a name="parse-json"></a>Parse JSON
+## <a name="parse-json"></a>JSON-Analyse
 
 Für das [Beispiel zur Aktion **Parse JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) können Sie die folgenden Aktionsdefinitionen verwenden:
 
@@ -370,7 +370,7 @@ Für das [Beispiel zur Aktion **Select**](../logic-apps/logic-apps-perform-data-
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
-ms.openlocfilehash: e597ba5236fb2d7fea8649f423c4a952b01f87ee
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9b66dad87708ad127186b0bbbc39965fe90b6b75
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599620"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416153"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -82,6 +82,10 @@ Sie können ASP.NET Core jederzeit beenden, indem Sie im Terminal `Ctrl+C` drüc
 ## <a name="deploy-apps-to-azure"></a>Bereitstellen von Apps für Azure
 
 In diesem Schritt stellen Sie das Projekt für zwei App Service-Apps bereit. Eine ist das Front-End-App und die andere ist die Back-End-App.
+
+### <a name="configure-a-deployment-user"></a>Konfigurieren eines Bereitstellungsbenutzers
+
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user-no-h.md)]
 
 ### <a name="create-azure-resources"></a>Erstellen von Azure-Ressourcen
 

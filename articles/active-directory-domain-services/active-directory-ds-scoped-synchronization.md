@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Bereichsbezogene Synchronisierun
 description: Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit Ihren verwalteten Domänen
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: maheshu
-ms.openlocfilehash: a6f56a9c855e296fb49b1c24d09189177175c9d6
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.author: ergreenl
+ms.openlocfilehash: 7726a28e0254f4316759c3d8c74f57db6a9e399e
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041865"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242193"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit Ihrer verwalteten Domäne
 In diesem Artikel erfahren Sie, wie Sie konfigurieren können, dass nur bestimmte Benutzerkonten aus Ihrem Azure AD-Verzeichnis mit der von Azure AD Domain Services verwalteten Domäne synchronisiert werden.
@@ -65,7 +65,7 @@ Führen Sie die folgenden Schritte aus, um die gruppenbasierte bereichsbezogene 
 3. Speichern Sie das [Skript im folgenden Abschnitt](active-directory-ds-scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) in einer Datei namens ```Select-GroupsToSync.ps1```. Führen Sie das folgende Skript aus:
 
   ```powershell
-  .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", “GroupName1”, “GroupName2”)
+  .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
   ```
 
   > [!WARNING]

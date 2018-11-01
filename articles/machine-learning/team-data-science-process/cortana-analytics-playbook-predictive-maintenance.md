@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 2a5d8540dba491dec8b2da227b0e84c10ff09c77
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 8f42ee996dae476de3744239d4cc5f053722d52b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394998"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093210"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -414,7 +414,6 @@ Der letzte Abschnitt dieses Leitfadens enthält eine Liste mit den PdM-Lösungsv
 
 | # | Titel | BESCHREIBUNG |
 |--:|:------|-------------|
-| 1 | [Azure Predictive Maintenance Machine Learning Sample](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) (Azure Predictive Maintenance – Beispiel für Machine Learning) |PdM-Beispiel für die Vorhersage eines Fehlers innerhalb der nächsten N Zeiteinheiten. Dieses Beispiel wurde als Azure ML Workbench-Projekt erstellt und ist der ideale Einstieg für PdM-Anfänger. [Hier finden Sie weitere Dokumentation](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance) zu diesem Beispiel.|
 | 2 | [Azure Predictive Maintenance Solution Template](https://github.com/Azure/AI-PredictiveMaintenance) (Azure Predictive Maintenance-Lösungsvorlage) | Eine Open-Source-Lösungsvorlage zur Veranschaulichung von ML-Modellierung in einer vollständigen Azure-Infrastruktur, die Szenarien für Predictive Maintenance im Kontext von IoT-Remoteüberwachung unterstützen kann. |
 | 3 | [Deep Learning for Predictive Maintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) (Deep Learning für Predictive Maintenance) | Azure Notebook mit einer Demolösung für die Verwendung von LSTM-Netzwerken (Long Short-Term Memory) – einer Klasse von wiederkehrenden neuronalen Netzwerken – für Predictive Maintenance mit einem [Blogbeitrag für dieses Beispiel](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Predictive Maintenance Modeling Guide in R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) (Predictive Maintenance – Leitfaden zur Modellierung in R) | Leitfaden zur PdM-Modellierung mit Skripts in R.|

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/09/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: cde364cb5231c1cc0b1947da35994862cf45b571
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 267e398305939048014038b7350b2a10481fdfbd
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042160"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238725"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten
 
@@ -92,9 +92,9 @@ Ab **Windows 10 1709** können Sie diese Aufgabe über **Einstellungen -> Konten
  
 Darüber hinaus können Sie Benutzer auch über die Eingabeaufforderung hinzufügen:
 
-- Wenn Ihre Mandantenbenutzer aus der lokalen Active Directory-Umgebung synchronisiert werden, verwenden Sie `net localgroup administrators /add “Contoso\username”`.
+- Wenn Ihre Mandantenbenutzer aus der lokalen Active Directory-Umgebung synchronisiert werden, verwenden Sie `net localgroup administrators /add "Contoso\username"`.
 
-- Wenn Ihre Mandantenbenutzer in Azure AD erstellt werden, verwenden Sie `net localgroup administrators /add “AzureAD\UserUpn”`.
+- Wenn Ihre Mandantenbenutzer in Azure AD erstellt werden, verwenden Sie `net localgroup administrators /add "AzureAD\UserUpn"`.
 
 
 ## <a name="considerations"></a>Überlegungen 

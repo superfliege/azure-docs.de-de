@@ -2,7 +2,7 @@
 title: Azure Media Services-Ausgabemetadaten-Schema | Microsoft Docs
 description: Dieses Thema enthält eine Übersicht über das Azure Media Services-Ausgabemetadaten-Schema.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 4babceb9454a229903c54aab7083c5e5ed138b8e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e92bcd412071d1a991a0bd3ec7b28df9f509c54c
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783829"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250885"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
 ## <a name="overview"></a>Übersicht
@@ -79,7 +79,7 @@ Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird.
 | --- | --- | --- |
 | **Name**<br/><br/> Erforderlich |**xs:string** |Name der Eingabequelldatei. |
 
-## <a name="VideoTracks "></a> „VideoTracks“-Element
+## <a name="VideoTracks "></a> VideoTracks-Element
 Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Das **VideoTracks**-Element stellt eine Sammlung aller Videotitel dar.  
 
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  

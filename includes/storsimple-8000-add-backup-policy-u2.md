@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 0541b15743cff16ec0d19f8b450150c5430afb8d
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164878"
+---
 <!--author=alkohli last changed: 02/10/17-->
 
 #### <a name="to-add-a-storsimple-backup-policy"></a>So fügen Sie eine StorSimple-Sicherungsrichtlinie hinzu
@@ -6,7 +19,7 @@
 
 2. Klicken Sie auf dem Blatt **Sicherungsrichtlinie** auf der Befehlsleiste auf **+ Richtlinie hinzufügen**.
    
-    ![Hinzufügen einer Sicherungsrichtlinie](./media/storsimple-8000-add-backup-policy-u2/addbupol1.png)
+    ![Sicherungsrichtlinie hinzufügen](./media/storsimple-8000-add-backup-policy-u2/addbupol1.png)
 
 3. Führen Sie auf dem Blatt **Sicherungsrichtlinie erstellen** die folgenden Schritte aus:
    
@@ -20,7 +33,7 @@
 
    4. Zum Definieren eines Zeitplans für diese Sicherungsrichtlinie klicken Sie auf **Erster Zeitplan** und ändern dann die folgenden Parameter:
 
-       ![Hinzufügen einer Sicherungsrichtlinie](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
+       ![Sicherungsrichtlinie hinzufügen](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
 
        1. Wählen Sie als **Momentaufnahmetyp** die Option **Cloud** oder **Lokal** aus.
 
@@ -34,9 +47,9 @@
 
    5. Klicken Sie auf **Erstellen**, um eine Sicherungsrichtlinie zu erstellen.
 
-       ![Hinzufügen einer Sicherungsrichtlinie](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
+       ![Sicherungsrichtlinie hinzufügen](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
    
    6. Sie werden benachrichtigt, wenn die Sicherungsrichtlinie erstellt wurde. Die neu hinzugefügte Richtlinie wird in der Tabellenansicht auf dem Blatt **Sicherungsrichtlinie** angezeigt.
 
-       ![Hinzufügen einer Sicherungsrichtlinie](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
+       ![Sicherungsrichtlinie hinzufügen](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
 

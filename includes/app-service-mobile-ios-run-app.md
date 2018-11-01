@@ -1,3 +1,16 @@
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: 1d1d593b7305e0cd9899f4ec388cb441ced90b10
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50134059"
+---
 1. Rufen Sie auf dem Mac das [Azure-Portal] auf. Klicken Sie auf **Alle Dienste** > **App Services** und dann auf das Back-End, das Sie soeben erstellt haben. Wählen Sie in den Einstellungen der mobilen App Ihre bevorzugte Sprache aus:
 
     - Objective-C &ndash; **Schnellstart** > **iOS (Objective-C)**

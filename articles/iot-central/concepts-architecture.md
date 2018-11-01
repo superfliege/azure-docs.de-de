@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 44408e7b6ad1a068f265bf7b78d973e6aae3001b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 564ea3efe35a1054b8c905cff4b7f4c739cc9216
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628758"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156373"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-Architektur
 
@@ -79,7 +79,7 @@ Eine Gerätevorlage gibt Folgendes an:
 
 Eine Anwendung kann ein oder mehrere simulierte und echte Geräte basierend auf den einzelnen Gerätevorlagen verwenden.
 
-## <a name="rbac"></a>RBAC
+## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
 
 Ein Administrator kann mithilfe der vordefinierten Rollen [Zugriffsregeln für eine Azure IoT Central-Anwendung definieren](howto-administer.md). Ein Administrator kann Benutzern Rollen zuweisen, die bestimmen, auf welche Anwendungsbereiche der Benutzer Zugriff hat.
 

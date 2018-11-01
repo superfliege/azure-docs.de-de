@@ -1,25 +1,18 @@
 ---
 title: Konfigurieren eines Site-to-Site-VPN über Microsoft-Peering für Azure ExpressRoute | Microsoft-Dokumentation
 description: Konfigurieren Sie IPsec-/IKE-Verbindungen mit Azure über eine ExpressRoute-/Microsoft-Peeringverbindung mithilfe eines Site-to-Site-VPN-Gateways.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/06/2017
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 86e101ee78cfa709c6957c7658f103ce787a6351
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 5fb4a4034a744b8b2b769a1cfd2d9df12ea90dde
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110853"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240905"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurieren eines Site-to-Site-VPN über ExpressRoute-/Microsoft-Peering
 
@@ -29,12 +22,13 @@ Dieser Artikel hilft Ihnen bei der Konfiguration einer sicheren, verschlüsselte
 
 Sie können Microsoft-Peering nutzen, um einen Site-to-Site-IPsec/IKE-VPN-Tunnel zwischen den von Ihnen ausgewählten lokalen Netzwerken und Azure VNets einzurichten.
 
-  ![Übersicht über die Konnektivität](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
-
->[!NOTE]
+  >[!NOTE]
 >Wenn Sie ein Site-to-Site-VPN über Microsoft-Peering einrichten, werden Ihnen die Kosten für das VPN-Gateway und den VPN-Ausgang in Rechnung gestellt. Weitere Informationen finden Sie unter [VPN Gateway: Preise](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
+
+  ![Übersicht über die Konnektivität](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
+
 
 Für Hochverfügbarkeit und Redundanz können Sie mehrere Tunnel über die beiden MSEE-PE-Paare einer ExpressRoute-Verbindung konfigurieren und einen Lastenausgleich zwischen den Tunneln aktivieren.
 
@@ -112,7 +106,7 @@ sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 
 Um zu bestätigen, dass Sie den richtigen Satz von Präfixen erhalten, können Sie eine Querprüfung durchführen. Die folgende Ausgabe des Azure PowerShell-Befehls listet die über Microsoft-Peering angekündigten Präfixe für jeden der Dienste und für jede der Azure-Regionen auf:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmBgpServiceCommunity
 ```
 
@@ -487,13 +481,13 @@ Konfigurieren Sie Ihre Firewall und Filterung entsprechend Ihren Anforderungen.
 
 Der Status von IPsec-Tunneln kann auf dem Azure-VPN-Gateway mithilfe von PowerShell-Befehlen überprüft werden:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
 ```
 
 Beispielausgabe:
 
-```powershell
+```azurepowershell
 ConnectionStatus        : Connected
 EgressBytesTransferred  : 17734660
 IngressBytesTransferred : 10538211
@@ -501,13 +495,13 @@ IngressBytesTransferred : 10538211
 
 Um den Status der Tunnel auf den Azure-VPN-Gatewayinstanzen unabhängig zu überprüfen, verwenden Sie das folgende Beispiel:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
 ```
 
 Beispielausgabe:
 
-```powershell
+```azurepowershell
 Tunnel                           : vpn2local1_52.175.250.191
 ConnectionStatus                 : Connected
 IngressBytesTransferred          : 4877438
@@ -623,13 +617,13 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 
 Überprüfen Sie auf dem Azure-VPN-Gateway den Status des BGP-Peers:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
 ```
 
 Beispielausgabe:
 
-```powershell
+```azurepowershell
   Asn ConnectedDuration LocalAddress MessagesReceived MessagesSent Neighbor    RoutesReceived State    
   --- ----------------- ------------ ---------------- ------------ --------    -------------- -----    
 65010 00:57:19.9003584  10.2.0.228               68           72   172.16.0.10              2 Connected
@@ -639,13 +633,13 @@ Beispielausgabe:
 
 Um die Liste der Netzwerkpräfixe zu überprüfen, die über eBGP vom lokalen VPN-Konzentrator empfangen wurden, können Sie nach dem Attribut „Origin“ filtern:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
 ```
 
 In der Beispielausgabe ist die ASN 65010 die autonome BGP-Systemnummer im lokalen VPN.
 
-```powershell
+```azurepowershell
 AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 ------ ------------ -------      -------     ------ ----------  ------
 65010  10.2.0.228   10.1.10.0/25 172.16.0.10 EBgp   172.16.0.10  32768
@@ -654,13 +648,13 @@ AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 
 So zeigen Sie die Liste der angekündigten Routen an
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
 ```
 
 Beispielausgabe:
 
-```powershell
+```azurepowershell
 AsPath LocalAddress Network        NextHop    Origin SourcePeer Weight
 ------ ------------ -------        -------    ------ ---------- ------
        10.2.0.229   10.2.0.0/24    10.2.0.229 Igp                  0
@@ -694,7 +688,7 @@ Total number of prefixes 4
 
 Die Liste der Netzwerke, die dem Azure-VPN-Gateway vom lokalen Cisco CSR1000 angekündigt wurden, kann mit dem folgenden Befehl angezeigt werden:
 
-```powershell
+```
 csr1#show ip bgp neighbors 10.2.0.228 advertised-routes
 BGP table version is 7, local router ID is 172.16.0.10
 Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,

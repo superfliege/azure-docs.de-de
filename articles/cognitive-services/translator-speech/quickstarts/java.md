@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 4147e164434109a90a2a044565a1fb0b2e1b48bf
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ebff07a68975f3629b57df4cfc8a5bbcf564ce27
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386501"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412923"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>Schnellstart: Sprachübersetzungs-API mit Java 
 <a name="HOLTop"></a>
@@ -26,7 +26,7 @@ In diesem Artikel wird gezeigt, wie Sie mit der Sprachübersetzungs-API gesproch
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Kompilieren und Ausführen des Codes benötigen Sie [JDK 7 oder 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Sie können auch eine Java-Entwicklungsumgebung verwenden, ein Text-Editor ist jedoch ausreichend.
+Zum Kompilieren und Ausführen des Codes benötigen Sie [JDK 7 oder 8](https://aka.ms/azure-jdks). Sie können auch eine Java-Entwicklungsumgebung verwenden, ein Text-Editor ist jedoch ausreichend.
 
 Sie benötigen die folgenden Dateien:
 - [javax.websocket-api-1.1.jar (oder höher)](https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 78e3bec0d00336ce7cedc1434bf6ad7c65435969
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 995e93290e7c305e217c1f44609d383f69d83a9a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978181"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420556"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets
 Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
@@ -29,7 +29,7 @@ In dieser exemplarischen Vorgehensweise verwenden wir den [Azure-Ressourcen-Expl
 1. Stellen Sie eine neue Skalierungsgruppe mit grundlegenden Einstellungen für die automatischen Skalierung bereit. In diesem Artikel wird die Windows-Skalierungsgruppe aus dem Azure-Schnellstartkatalog mit einer Standardvorlage für die automatische Skalierung verwendet. Die Linux-Skalierung erfolgt in gleicher Weise.
 2. Navigieren Sie nach dem Erstellen der Skalierungsgruppe mithilfe des Azure-Ressourcen-Explorers zur Ressource der Skalierungsgruppe. Unter dem Microsoft.Insights-Knoten wird Folgendes angezeigt:
 
-    ![Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Azure Explorer](media/insights-advanced-autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
     Durch die Ausführung der Vorlage wurde eine Standardeinstellung für die automatische Skalierung mit dem Namen **autoscalewad** erstellt. Auf der rechten Seite wird die vollständige Definition dieser Einstellung für die automatische Skalierung angezeigt. In diesem Fall verfügt die Standardeinstellung für die automatische Skalierung über eine CPU%-basierte Regel für horizontales Hoch- und Herunterskalieren.  
 
@@ -58,11 +58,11 @@ In dieser exemplarischen Vorgehensweise verwenden wir den [Azure-Ressourcen-Expl
 
 5. Stellen Sie sicher, dass Sie sich im Ressourcen-Explorer im Modus **Lesen/Schreiben** befinden.
 
-    ![Autoscalewad, Standardeinstellung für die automatische Skalierung](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
+    ![Autoscalewad, Standardeinstellung für die automatische Skalierung](media/insights-advanced-autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
 6. Klicken Sie auf "Bearbeiten". **Ersetzen** Sie das profiles-Element in der Einstellung für die automatische Skalierung durch folgende Konfiguration:
 
-    ![Profile](./media/insights-advanced-autoscale-vmss/profiles.png)
+    ![Profile](media/insights-advanced-autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {

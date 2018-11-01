@@ -5,7 +5,7 @@ services: media-services
 documentationcenter: ''
 author: Juliako
 writer: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 7b4077747d4c9ec581496786063fc8fbe0c6b247
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 06f219b9cf7d17e80699aebc1082b14e2de45c8b
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785949"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240221"
 ---
 # <a name="streaming-endpoints-overview"></a>Streamingendpunkte – Übersicht 
 
@@ -69,30 +69,30 @@ Wenn Ihr Streamingendpunkt der **Version 1.0** mindestens eine Premium-Streaming
 |Typ|StreamingEndpointVersion|ScaleUnits|CDN|Abrechnung|SLA| 
 |--------------|----------|-----------------|-----------------|-----------------|-----------------|    
 |Klassisch|1.0|0|Nicht verfügbar|Kostenlos|Nicht verfügbar|
-|Standard-Streamingendpunkt|2,0|0|Ja|Kostenpflichtig|Ja|
-|Premium-Streamingeinheiten|1.0|>0|Ja|Kostenpflichtig|Ja|
-|Premium-Streamingeinheiten|2.0|>0|Ja|Kostenpflichtig|Ja|
+|Standard-Streamingendpunkt|2,0|0|JA|Kostenpflichtig|JA|
+|Premium-Streamingeinheiten|1.0|>0|JA|Kostenpflichtig|JA|
+|Premium-Streamingeinheiten|2.0|>0|JA|Kostenpflichtig|JA|
 
 ### <a name="features"></a>Features
 
 Feature|Standard|Premium
 ---|---|---
-Erste 15 Tage kostenlos| Ja |Nein 
+Erste 15 Tage kostenlos| JA |Nein 
 Throughput |Bis zu 600 Mbit/s, wenn Azure CDN nicht verwendet wird. Wird mit CDN skaliert.|200 Mbit/s pro Streamingeinheit. Wird mit CDN skaliert.
 SLA | 99,9|99,9 (200 Mbit/s pro Streamingeinheit).
 CDN|Azure CDN, CDN eines Drittanbieters oder kein CDN.|Azure CDN, CDN eines Drittanbieters oder kein CDN.
 Die Abrechnung erfolgt anteilsmäßig| Täglich|Täglich
-Dynamische Verschlüsselung|Ja|Ja
-Dynamische Paketerstellung|Ja|Ja
+Dynamische Verschlüsselung|JA|JA
+Dynamische Paketerstellung|JA|JA
 Skalieren|Automatische Skalierung bis zum Zieldurchsatz.|Zusätzliche Streamingeinheiten
-IP-Filterung/G20/Benutzerdefinierter Host|Ja|Ja
-Progressiver Download|Ja|Ja
+IP-Filterung/G20/Benutzerdefinierter Host|JA|JA
+Progressiver Download|JA|JA
 Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Professionelle Nutzung.<br/>Wenn Sie glauben, dass Ihre Anforderungen über „Standard“ hinausgehen. Kontaktieren Sie uns (amsstreaming@microsoft.com), wenn Sie eine Zielgruppe von mehr als 50.000 Teilnehmern gleichzeitig erwarten.
 
 
 ## <a name="migration-between-types"></a>Migration zwischen Typen
 
-From | Zu | anzuzeigen.
+From | Zu | Aktion
 ---|---|---
 Klassisch|Standard|Muss abonnieren
 Klassisch|Premium| Skalierung (Zusätzliche Streamingeinheiten)

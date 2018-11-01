@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 3e63a4c05fde570e598ba05c65fb99cec0427711
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f1dd07756ca484171a3d662df35493efbe5a5ee7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226416"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415612"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -49,7 +49,7 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 * **Stellen Sie sicher, dass Port 445 geöffnet ist**: Das SMB-Protokoll erfordert dass TCP-Port 445 geöffnet ist. Wenn Port 445 gesperrt ist, sind keine Verbindungen möglich. Mithilfe des Cmdlets `Test-NetConnection` können Sie überprüfen, ob Ihre Firewall Port 445 blockiert. Denken Sie daran, `your-storage-account-name` durch den entsprechenden Namen für Ihr Speicherkonto zu ersetzen.
 
     ```PowerShell
-    Test-NetConnection -ComputerName <your-storage-account-name>.core.windows.net -Port 445
+    Test-NetConnection -ComputerName <your-storage-account-name>.file.core.windows.net -Port 445
     
     ```
 
@@ -293,5 +293,5 @@ Nach der Erstellung dieses Registrierungsschlüssels müssen Sie den Server neu 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure Files finden Sie unter diesen Links:
 - [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
-* [HÄUFIG GESTELLTE FRAGEN](../storage-files-faq.md)
+* [Häufig gestellte Fragen](../storage-files-faq.md)
 * [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 367829c269bd1d96e6aa5fab1be008483a4ab5ab
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: dc9c11e2c0d5642e31eace2a4dcb6065d990e25d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115500"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413654"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric für Visual Studio Code
 
@@ -50,7 +50,7 @@ Die folgenden Voraussetzungen müssen in allen Umgebungen installiert werden.
 
 Die folgenden Voraussetzungen müssen für die Java-Entwicklung installiert werden:
 
-* [Java SDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (Version 1.8)
+* [Java SDK](https://aka.ms/azure-jdks) (Version 1.8)
 * [Gradle](https://gradle.org/install/)
 * [Debugger für Java VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Wird zum Debuggen von Java-Diensten benötigt. Das Debuggen von Java-Diensten wird nur unter Linux unterstützt. Sie können installieren, indem Sie auf das Symbol „Erweiterungen“ in der **Aktivitätsleiste** in VS Code klicken und die Erweiterung suchen, oder aber über den Visual Studio Code Marketplace.
 

@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/14/2017
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8f8cab985ebc20290a94df34a9268ad2c1f169d3
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 99dfda23ee18bf9abb0172a2875c5564755780d6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411480"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412651"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Erneutes Bereitstellen eines virtuellen Linux-Computers in einem neuen Azure-Knoten
 Wenn Sie Schwierigkeiten mit der Problembehandlung bei SSH oder dem Anwendungszugriff auf einen virtuellen Linux-Computer in Azure haben, lassen sich diese u.U. durch erneutes Bereitstellen des virtuellen Computers beseitigen. Wenn Sie einen virtuellen Computer erneut bereitstellen, wird er innerhalb der Azure-Infrastruktur auf einen neuen Knoten verschoben und dann wieder eingeschaltet. Dabei werden alle Ihre Konfigurationsoptionen und zugehörigen Ressourcen beibehalten. In diesem Artikel erfahren Sie, wie ein virtueller Computer mithilfe der Azure-Befehlszeilenschnittstelle oder dem Azure-Portal erneut bereitgestellt wird.
@@ -28,7 +28,7 @@ Wenn Sie Schwierigkeiten mit der Problembehandlung bei SSH oder dem Anwendungszu
 
 
 ## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
-Installieren Sie die neueste Version von [Azure CLI](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei Ihrem Azure-Konto an.
+Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2), und melden Sie sich mithilfe von [az login](/cli/azure/reference-index#az_login) bei Ihrem Azure-Konto an.
 
 Stellen Sie mit [az vm redeploy](/cli/azure/vm#az_vm_redeploy) Ihren virtuellen Computer erneut bereit. Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* erneut bereitgestellt:
 
@@ -37,7 +37,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>Verwenden der klassischen Azure-Befehlszeilenschnittstelle
-Installieren Sie die [neueste Version von Azure CLI](../../cli-install-nodejs.md), und melden Sie sich bei Ihrem Azure-Konto an. Stellen Sie sicher, dass Sie sich im Resource Manager-Modus befinden (`azure config mode arm`).
+Installieren Sie die [neueste Version der Azure-Befehlszeilenschnittstelle](../../cli-install-nodejs.md), und melden Sie sich bei Ihrem Azure-Konto an. Stellen Sie sicher, dass Sie sich im Resource Manager-Modus befinden (`azure config mode arm`).
 
 Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* erneut bereitgestellt:
 

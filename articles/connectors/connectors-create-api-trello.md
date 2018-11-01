@@ -11,12 +11,12 @@ ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 4ae8d3dff108f14844c31d7b9d0b0871326832a3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046148"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229331"
 ---
 # <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Überwachen und Verwalten von Trello mit Azure Logic Apps
 
@@ -52,7 +52,7 @@ Sie können Trigger verwenden, die Antworten von Ihrem Trello-Konto erhalten und
 
    Oder
 
-   Wählen Sie für vorhandene Logik-App im letzten Schritt zum Hinzufügen einer Aktion **Neuer Schritt** aus. 
+   Wählen Sie für vorhandene Logik-Apps im letzten Schritt zum Hinzufügen einer Aktion die Option **Neuer Schritt** aus. 
    Geben Sie im Suchfeld den Begriff „trello“ als Filter ein. 
    Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
@@ -70,7 +70,7 @@ Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Bes
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

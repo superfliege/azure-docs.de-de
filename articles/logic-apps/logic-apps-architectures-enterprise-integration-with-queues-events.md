@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 8fbc84b4016659b6d0d6ce9ec47c05a0b241c3d9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 5b58f4b71d8d9f3ca91d8cefc6215073fd836765
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855373"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093665"
 ---
 # <a name="enterprise-integration-architecture-with-queues-and-events"></a>Unternehmensintegrationsarchitektur mit Warteschlangen und Ereignissen
 
@@ -26,7 +26,7 @@ Diese Reihe beschreibt die wiederverwendbaren Komponenten, die für die Erstellu
 
 ## <a name="architecture-components"></a>Komponenten der Architektur
 
-Diese Architektur basiert auf der im Artikel [Referenzarchitektur: einfache Unternehmensintegration](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md) beschriebenen Architektur. Diese [Empfehlungen](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md#recommendations) für die Architektur gelten auch hier, aus Gründen der Übersichtlichkeit sind diese Empfehlungen in diesem Artikel jedoch nicht im Abschnitt [Empfehlungen](#recommendations) aufgeführt. Diese Unternehmensintegrationsarchitektur umfasst folgende Komponenten:
+Diese Architektur basiert auf der im Artikel [Referenzarchitektur: einfache Unternehmensintegration](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration) beschriebenen Architektur. Diese [Empfehlungen](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration#recommendations) für die Architektur gelten auch hier, aus Gründen der Übersichtlichkeit sind diese Empfehlungen in diesem Artikel jedoch nicht im Abschnitt [Empfehlungen](#recommendations) aufgeführt. Diese Unternehmensintegrationsarchitektur umfasst folgende Komponenten:
 
 - **Ressourcengruppe**: Eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) ist ein logischer Container für Azure-Ressourcen.
 
@@ -143,4 +143,4 @@ Der Event Grid-Dienst sichert die Ereignisübermittlung durch einen Validierungs
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über die [einfache Unternehmensintegration](logic-apps-architectures-simple-enterprise-integration.md).
+* Erfahren Sie mehr über die [einfache Unternehmensintegration](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration).

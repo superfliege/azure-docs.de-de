@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5b6c0938fce928f2141eac1a03d43005a2247e74
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b152ea46c9d744f557157b2dac7478c8513d97fd
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730809"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243145"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Tutorial: Erstellen einer Data Factory mit Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -61,7 +61,7 @@ Hier sind die Schritte angegeben, die Sie im Rahmen dieser exemplarischen Vorgeh
 5. Nach der Veröffentlichung verwenden Sie die Blätter im Azure-Portal und die App für die Überwachung und Verwaltung, um die Pipeline zu überwachen. 
   
 ### <a name="prerequisites"></a>Voraussetzungen
-1. Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind. Sie können auch oben in der Dropdownliste die Option **Übersicht und Voraussetzungen** wählen, um zum Artikel zu wechseln. Nachdem Sie alle Voraussetzungen erfüllt haben, können Sie zurück zu diesem Artikel wechseln, indem Sie in der Dropdownliste die Option **Visual Studio** wählen.
+1. Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus. Sie können auch oben in der Dropdownliste die Option **Übersicht und Voraussetzungen** wählen, um zum Artikel zu wechseln. Nachdem Sie alle Voraussetzungen erfüllt haben, können Sie zurück zu diesem Artikel wechseln, indem Sie in der Dropdownliste die Option **Visual Studio** wählen.
 2. Zum Erstellen von Data Factory-Instanzen müssen Sie Mitglied der Rolle [Data Factory-Mitwirkender](../../role-based-access-control/built-in-roles.md#data-factory-contributor) auf Abonnement- bzw. Ressourcengruppenebene sein.  
 3. Folgendes muss auf Ihrem Computer installiert sein:
    * Visual Studio 2013 oder Visual Studio 2015

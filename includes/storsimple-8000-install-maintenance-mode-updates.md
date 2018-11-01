@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 560c9c177bfa693580979101e5b9343fcff7fe40
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166495"
+---
 ### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Installieren von Wartungsmodus-Updates über Windows PowerShell für StorSimple
 
 Wenn Sie Wartungsmodus-Updates auf einem StorSimple-Gerät anwenden, werden alle E/A-Anforderungen angehalten. Dienste wie NVRAM (Non-Volatile Random Access Memory) oder der Clusterdienst werden beendet. Beide Controller werden neu gestartet, wenn Sie diesen Modus starten oder beenden. Wenn Sie diesen Modus beenden, werden alle Dienste fortgesetzt und funktionieren fehlerfrei. (Dies kann einige Minuten dauern.)

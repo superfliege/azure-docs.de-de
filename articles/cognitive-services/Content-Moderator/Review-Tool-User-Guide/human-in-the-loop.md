@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: 1c08b30c0e59aac21d24f75d88530ba51b67d6b4
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2e1a912f2d2aa8a6f9b165524351f2a16232537c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023932"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212198"
 ---
 # <a name="human-in-the-loop"></a>Human-in-the-Loop
 
@@ -31,3 +31,5 @@ Das Tool für die Überprüfung durch Personen in Verbindung mit den computerges
 5. Hinzufügen von Überprüfungen durch den Menschen zu beliebigen APIs oder Geschäftsprozessen durch einfaches Erstellen eines Konnektors
 6. Verwenden von Standardkonnektoren zum Überprüfen von Ergebnissen von Microsoft PhotoDNA, aus Textanalysen und der Gesichtserkennungs-API
 7. Abrufen von Leistungsmetriken zu Ihren Inhaltsmoderationsprozessen
+
+![Content Moderator-Tool für die Überprüfung von Videos](../images/video-review-default-view.png)
