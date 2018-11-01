@@ -3,7 +3,7 @@ title: Azure Application Insights-Trichter
 description: In diesem Artikel wird erläutert, wie Sie Trichter dazu verwenden können, sich über die Interaktionen der Kunden mit Ihrer Anwendung zu informieren.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,13 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: 8478106fd68f6fcc65dff832b5cb27ca8db5f5bd
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.pm_owner: daviste;NumberByColors
+ms.reviewer: mbullwin
+ms.author: daviste
+ms.openlocfilehash: 3d4d6ba7e185b1cc5fdcee1633a11e579d8194e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093720"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413960"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Informieren Sie sich mit Application Insights-Trichtern darüber, wie die Kunden Ihre Anwendung verwenden
 
@@ -38,7 +40,7 @@ Im Folgenden werden die Schritte zum Erstellen ihres Trichters beschrieben.
 Der folgende Screenshot enthält ein Beispiel für die Art der Daten, die mit dem Trichter-Tool generiert werden. Die Besitzer von Fabrikam können erkennen, dass während der letzten 90 Tage 54,3 Prozent der Kunden, die die Homepage aufgerufen haben, ein Kundenticket erstellt haben. Außerdem ist erkennbar, dass 2.700 Kunden über die Homepage zum Index gelangt sind. Dies kann auf ein Aktualisierungsproblem hindeuten.
 
 
-![Screenshot: Trichter-Tool mit Daten](./media/app-insights-understand-usage-patterns/funnel1.png)
+![Screenshot: Trichter-Tool mit Daten](media/usage-funnels/funnel1.png)
 
 ### <a name="funnels-features"></a>Trichter-Features
 Der obige Screenshot enthält fünf hervorgehobene Bereiche. Dies sind Features des Trichters. In der folgenden Liste werden die einzelnen Bereiche des Screenshots näher beschrieben:
