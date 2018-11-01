@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 10/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cb004745cfbc6af185a06c4787fb34326eccc69a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 25352d12e578c289ccb4ab8aab60dc55a444762e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382556"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413501"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen JWT-Tokenaussteller in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -52,7 +52,7 @@ Die Elemente **InputClaims**, **OutputClaims** und **PersistClaims** sind leer o
 | id_token_lifetime_secs | Nein  | Lebensdauern von ID-Token. Der Standardwert ist 3.600 Sekunden (1 Stunde). Der Mindestwert (inklusive) ist 300 Sekunden (5 Minuten). Der Höchstwert (inklusive) ist 86.400 Sekunden (24 Stunden). | 
 | refresh_token_lifetime_secs | Nein  | Lebensdauern von Aktualisierungstoken. Der maximale Zeitraum, vor dessen Verstreichen ein Aktualisierungstoken verwendet werden kann, um ein neues Zugriffstoken zu erwerben, wenn Ihrer Anwendung der offline_access-Bereich gewährt wurde. Der Standardwert ist 1.209.600 Sekunden (14 Tage). Der Mindestwert (inklusive) ist 86.400 Sekunden (24 Stunden). Der Höchstwert (inklusive) ist 7.776.000 Sekunden (90 Tage). | 
 | rolling_refresh_token_lifetime_secs | Nein  | Lebensdauer für gleitendes Fenster des Aktualisierungstokens. Nach Ablauf dieses Zeitraums muss der Benutzer sich erneut authentifizieren – unabhängig von der Gültigkeitsdauer des zuletzt von der Anwendung erworbenen Aktualisierungstokens. Wenn Sie keine Lebensdauer mit gleitendem Fenster erzwingen möchten, legen Sie den Wert von allow_infinite_rolling_refresh_token auf `true` fest. Der Standardwert ist 7.776.000 Sekunden (90 Tage). Der Mindestwert (inklusive) ist 86.400 Sekunden (24 Stunden). Der Höchstwert (inklusive) ist 31.536.000 Sekunden (365 Tage). | 
-| rolling_refresh_token_lifetime_secs | Nein  | Bei einer Festlegung auf `true` läuft die Lebensdauer für gleitendes Fenster des Aktualisierungstokens nie ab. |
+| allow_infinite_rolling_refresh_token | Nein  | Bei einer Festlegung auf `true` läuft die Lebensdauer für gleitendes Fenster des Aktualisierungstokens nie ab. |
 | IssuanceClaimPattern | JA | Steuert den Ausstelleranspruch (iss). Einer der Werte:<ul><li>AuthorityAndTenantGuid: Der Ausstelleranspruch enthält Ihren Domänennamen, z.B. `login.microsoftonline` oder `tenant-name.b2clogin.com`, und die Mandanten-ID https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/.</li><li>AuthorityWithTfp: Der Ausstelleranspruch enthält Ihren Domänennamen, z.B. `login.microsoftonline` oder `tenant-name.b2clogin.com`, Ihre Mandanten-ID und den Richtliniennamen der vertrauenden Seite. https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> | 
 | AuthenticationContextReferenceClaimPattern | Nein  | Steuert den Wert des `acr`-Anspruchs.<ul><li>None: Azure AD B2C stellt den acr-Anspruch nicht aus.</li><li>PolicyId: Der `acr`-Anspruch enthält den Namen der Richtlinie.</li></ul>Die Optionen zum Festlegen dieses Werts sind „TFP“ (Vertrauensframework-Richtlinie) und „ACR“ (Authentifizierungskontext-Referenz). Es wird empfohlen, diesen Wert auf „TFP“ festzulegen. Um den Wert festzulegen, stellen Sie sicher, dass das `<Item>` mit dem `Key="AuthenticationContextReferenceClaimPattern"` vorhanden ist und der Wert `None` lautet. Fügen Sie in Ihrer Richtlinie der vertrauenden Seite das <OutputClaims>-Element wie folgt hinzu: `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Stellen Sie außerdem sicher, dass die Richtlinie den Anspruchstyp `<ClaimType Id="trustFrameworkPolicy"> <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` enthält. | 
 
