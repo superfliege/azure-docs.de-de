@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Media Services-Auftragsbenachrichtigungen mit
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a61fe157-81b1-45c1-89f2-224b7ef55869
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 564fc25699c3ae627804d49bfdc40ae9dd559269
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b3ce3731f19565bfe950d03a2bbc980dda55a7f4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33784489"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238657"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
 Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können Media Services-Auftragsbenachrichtigungen mit Azure-Webhooks oder [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) überwachen. In diesem Artikel wird die Verwendung von Webhooks veranschaulicht.
@@ -60,7 +60,7 @@ Im Abschnitt [Anwendungseinstellungen](media-services-dotnet-how-to-use-azure-fu
 |NAME|Definition|Beispiel| 
 |---|---|---|
 |SigningKey |Ein Signaturschlüssel| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | Eine Webhook-Endpunktadresse Nachdem die Webhookfunktion erstellt wurde, können Sie die URL aus dem Link **Funktions-URL abrufen** kopieren. | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.|
+|WebHookEndpoint | Eine Webhook-Endpunktadresse Nachdem die Webhookfunktion erstellt wurde, können Sie die URL aus dem Link **Funktions-URL abrufen** kopieren. | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
 ## <a name="create-a-function"></a>Erstellen einer Funktion
 

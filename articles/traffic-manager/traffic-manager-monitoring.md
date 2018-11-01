@@ -4,9 +4,6 @@ description: In diesem Artikel wird beschrieben, wie Traffic Manager die Endpunk
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: fff25ac3-d13a-4af9-8916-7c72e3d64bc7
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 64f3595206c580d0d177622d23aa49753100d3c0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 15b609bbf4ab048722f2512371eeffece92b3245
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221093"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138139"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -140,7 +137,7 @@ Wenn ein Endpunkt den Status „Heruntergestuft“ aufweist, wird er nicht mehr 
 * **Leistung**. Der Endpunkt, der dem Endbenutzer am nächsten liegt, wird zurückgegeben. Wenn dieser Endpunkt nicht verfügbar ist, verschiebt Traffic Manager den Datenverkehr an die Endpunkte in der nächstgelegenen Azure-Region. Sie können alternative Failoverpläne für das leistungsorientierte Datenverkehrsrouting mithilfe von [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region) konfigurieren.
 * **Geografisch**. Der zugeordnete Endpunkt zum Bereitstellen des geografischen Standorts basierend auf den IPs der Abfrageanforderung wird zurückgegeben. Falls dieser Endpunkt nicht verfügbar ist, wird kein anderer Endpunkt für das Failover ausgewählt, da ein geografischer Standort nur einem Endpunkt eines Profils zugeordnet werden kann (weitere Details unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)). Als bewährte Methode bei der Verwendung des geografischen Routings empfehlen wir Kunden, geschachtelte Traffic Manager-Profile mit mehr als einem Endpunkt zu verwenden.
 * **MultiValue**: Mehrere Endpunkte, die IPv4/IPv6-Adressen zugeordnet sind, werden zurückgegeben. Wenn eine Abfrage für dieses Profil empfangen wird, werden fehlerfreie Endpunkte basierend auf dem von Ihnen angegebenen Wert für die **maximale Datensatzanzahl in einer Antwort** zurückgegeben. Die Standardanzahl der Antworten sind zwei Endpunkte.
-* **Subnetz**: Der Endpunkt, der einem Satz von IP-Adressbereichen zugeordnet ist, wird zurückgegeben. Wenn eine Anforderung von dieser IP-Adresse empfangen wird, ist der zurückgegebene Endpunkt derjenige, der für diese IP-Adresse zugeordnet ist. 
+* **Subnetz**: Der Endpunkt, der einem Satz von IP-Adressbereichen zugeordnet ist, wird zurückgegeben. Wenn eine Anforderung von dieser IP-Adresse empfangen wird, ist der zurückgegebene Endpunkt derjenige, der für diese IP-Adresse zugeordnet ist. 
 
 Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md).
 

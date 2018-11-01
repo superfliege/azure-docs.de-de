@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: b9c4c2595bb7d5347397bff95c90fbdc91902bcd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696447"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242289"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 
@@ -55,7 +55,7 @@ Als global verteilter Datenbankdienst mit mehreren Modellen erleichtert Azure Co
 * **Sicherstellen der AlwaysOn-Verfügbarkeit**
     * SLA mit einer Verfügbarkeit von 99,99 Prozent für alle Datenbankkonten mit einer einzelnen Region und eine Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen
     * Nehmen Sie die Bereitstellung für höhere Verfügbarkeit und bessere Leistung in einer beliebigen Anzahl von [Azure-Regionen](https://azure.microsoft.com/regions) vor.
-    * Legen Sie dynamisch Prioritäten für Regionen fest und [simulieren Sie den Ausfall](regional-failover.md) einer oder mehrerer Regionen garantiert ohne Datenverluste, um die End-to-End-Verfügbarkeit für die gesamte App (über die Datenbank hinaus) zu testen. 
+    * Legen Sie dynamisch Prioritäten für Regionen fest und [simulieren Sie den Ausfall](high-availability.md) einer oder mehrerer Regionen garantiert ohne Datenverluste, um die End-to-End-Verfügbarkeit für die gesamte App (über die Datenbank hinaus) zu testen. 
 
 * **Korrektes Schreiben global verteilter Anwendungen**
     * Fünf klar definierte, praktische und intuitive [Konsistenzmodelle](consistency-levels.md) bieten ein Spektrum an hoher SQL-ähnlicher Konsistenz bis hin zu gelockerter NoSQL-ähnlicher letztlicher Konsistenz – und sämtliche Abstufungen dazwischen. 

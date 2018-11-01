@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: c125f503166e3f63599dbd09acf42c69fab8d2ce
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 7576c479b9e3e443b048a9295c0ff0f30d4b9423
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044653"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240323"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Data Science mit einer Linux Data Science Virtual Machine in Azure
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen. Bei der Linux Data Science Virtual Machine (DSVM) handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten sind im Thema [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das VM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Sie können die VM bei Bedarf leicht zentral hochskalieren und beenden, wenn sie nicht verwendet wird. Diese Ressource ist also sowohl flexibel als auch kosteneffizient.
 
-Die Data Science-Aufgaben, die in dieser exemplarischen Vorgehensweise veranschaulicht werden, basieren auf den Schritten unter [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/data-science-process/). Dieser Prozess ermöglicht einen systematischen Data Science-Ansatz, mit dem Teams von Data Scientists bei der Erstellung von intelligenten Anwendungen effektiv miteinander kommunizieren können. Der Data Science-Prozess bietet zudem ein iteratives Framework für Data Science, das vom Benutzer verfolgt werden kann.
+Die Data Science-Aufgaben, die in dieser exemplarischen Vorgehensweise veranschaulicht werden, basieren auf den Schritten unter [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview). Dieser Prozess ermöglicht einen systematischen Data Science-Ansatz, mit dem Teams von Data Scientists bei der Erstellung von intelligenten Anwendungen effektiv miteinander kommunizieren können. Der Data Science-Prozess bietet zudem ein iteratives Framework für Data Science, das vom Benutzer verfolgt werden kann.
 
 In dieser exemplarischen Vorgehensweise analysieren wir das Dataset [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Hierbei handelt es sich um eine Gruppe von E-Mails, die entweder als „Spam“ oder „Ham“ (also kein Spam) gekennzeichnet sind, und außerdem sind einige statistische Daten zum Inhalt der E-Mails enthalten. Diese statistischen Daten werden im übernächsten Abschnitt beschrieben.
 

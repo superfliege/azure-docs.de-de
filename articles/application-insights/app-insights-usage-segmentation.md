@@ -3,7 +3,7 @@ title: Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights | 
 description: Demografische Analyse der Benutzer Ihrer Web-App.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,14 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/24/2018
-ms.reviewer: daviste
-ms.author: mbullwin
-ms.openlocfilehash: 2bc10a292855832b7ddb9b8e3a59fbe0f17d8dc6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: 6fd8adab93f5741afe6d3eab0c50ca50a327fbff
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093807"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140331"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights
 
@@ -48,10 +49,10 @@ Untersuchen Sie verschiedene Benutzergruppen, indem Sie die Abfrageoptionen oben
 * Verwendet von: Wählen Sie benutzerdefinierte Ereignisse und Seitenansichten.
 * Während: Wählen Sie einen Zeitbereich.
 * Von: Wählen Sie, wie Datenbuckets erstellt werden, entweder anhand einer Zeitspanne oder einer anderen Eigenschaft, z.B. Browser oder Ort.
-* Teilen nach: Wählen Sie eine Eigenschaft, anhand derer die Daten aufgeteilt oder segmentiert werden. 
-* Filter hinzufügen: Beschränken Sie die Abfrage auf bestimmte Benutzer, Sitzungen oder Ereignisse basierend auf deren Eigenschaften, z.B. Browser oder Ort. 
- 
-## <a name="saving-and-sharing-reports"></a>Speichern und Freigeben von Berichten 
+* Teilen nach: Wählen Sie eine Eigenschaft, anhand derer die Daten aufgeteilt oder segmentiert werden. 
+* Filter hinzufügen: Beschränken Sie die Abfrage auf bestimmte Benutzer, Sitzungen oder Ereignisse basierend auf deren Eigenschaften, z.B. Browser oder Ort. 
+ 
+## <a name="saving-and-sharing-reports"></a>Speichern und Freigeben von Berichten 
 Sie können Benutzerberichte entweder privat nur für Sie selbst im Abschnitt „Meine Berichte“ oder im Abschnitt „Freigegebene Berichte“ für alle Benutzer speichern, die Zugriff auf diese Application Insights-Ressource haben.
 
 Wenn Sie einen Link zu einem Benutzer-, Sitzungs oder Ereignisbericht teilen möchten, klicken Sie auf der Symbolleiste auf **Teilen**, und kopieren Sie den Link.

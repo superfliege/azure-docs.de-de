@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 5c916f847bf5098145c3ed14fad87c7669d916c8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3c97c89bde40357981d82dce8dd53febff25c8f3
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222691"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239881"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 Da Sie in einer hochgradig vernetzten Welt leben, werden Sie irgendwann Teil **sozialer Netzwerke**. Sie verwenden diese Netzwerke, um mit Freunden, Kollegen und der Familie in Kontakt zu bleiben oder auch, um das, was Sie bewegt, mit Menschen mit den gleichen Interessen zu teilen.
@@ -233,7 +233,7 @@ Was geschieht, wenn sich die Situation positiv entwickelt, und Benutzer aus eine
 
 Aber Moment mal... Sie stellen bald fest, dass die Benutzerfreundlichkeit Ihrer Plattform für sie nicht optimal ist; sie sind zu weit von Ihrer Betriebsregion entfernt, sodass unmögliche Wartezeiten auftreten, und Sie möchten diese Benutzer nicht verlieren. Wenn es doch nur eine einfache Möglichkeit zum **Erweitern Ihrer globalen Reichweite** gäbe... aber es gibt sie!
 
-Mithilfe von Cosmos DB können Sie [Ihre Daten global replizieren](../cosmos-db/tutorial-global-distribution-sql-api.md), das auch noch transparent und mit nur ein paar Mausklicks; und die Auswahl der verfügbaren Regionen erfolgt automatisch anhand des [Clientcodes](../cosmos-db/tutorial-global-distribution-sql-api.md). Dies bedeutet zugleich, dass Sie mit [mehreren Failoverregionen](regional-failover.md) arbeiten können. 
+Mithilfe von Cosmos DB können Sie [Ihre Daten global replizieren](../cosmos-db/tutorial-global-distribution-sql-api.md), das auch noch transparent und mit nur ein paar Mausklicks; und die Auswahl der verfügbaren Regionen erfolgt automatisch anhand des [Clientcodes](../cosmos-db/tutorial-global-distribution-sql-api.md). Dies bedeutet zugleich, dass Sie mit [mehreren Failoverregionen](high-availability.md) arbeiten können. 
 
 Wenn Sie Ihre Daten global replizieren, müssen Sie zugleich sicherstellen, dass dies allen Ihren Kunden zugute kommt. Wenn Sie ein Web-Front-End verwenden oder von mobilen Clients aus auf APIs zugreifen, können Sie [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) bereitstellen und Ihre Azure App Service-Instanz in allen gewünschten Regionen klonen. Verwenden Sie eine Leistungskonfiguration zur Unterstützung Ihrer erweiterten globalen Abdeckung. Wenn Ihre Clients auf Ihr Front-End oder Ihre APIs zugreifen, werden sie zum nächstgelegenen App Service weitergeleitet, der seinerseits eine Verbindung mit dem lokalen Cosmos DB-Replikat herstellt.
 

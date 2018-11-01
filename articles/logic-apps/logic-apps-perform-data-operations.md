@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 7e62986569888ebbcd9f17b4eb4cfb2c70411d4a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 93c24f88fcd6a002493933ef71c5c80bd2ff8c10
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39393057"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231643"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Durchführen von Datenvorgängen in Azure Logic Apps
 
@@ -70,7 +70,7 @@ Sie benötigen Folgendes, um die Beispiele in diesem Artikel verwenden zu könne
 
 <a name="compose-action"></a>
 
-## <a name="compose-action"></a>Aktion „Compose“
+## <a name="compose-action"></a>Compose-Aktion
 
 Zum Erstellen eines einzelnen Ausgabe, z.B. eines JSON-Objekts aus mehreren Eingaben, können Sie die Aktion **Datenvorgänge – Compose** verwenden. Ihre Eingaben können unterschiedliche Typen aufweisen, z.B. Integer, boolesche Wert, Arrays, JSON-Objekte und andere native Typen, die von Azure Logic Apps unterstützt werden. Beispiele hierfür sind Binärdateien und XML. Anschließend können Sie die Ausgabe in Aktionen verwenden, die nach der Aktion **Compose** folgen. Die Aktion **Compose** kann Ihnen beim Erstellen des Workflows Ihrer Logik-App auch das wiederholte Eingeben der gleichen Angaben ersparen. 
 
@@ -492,7 +492,7 @@ Sie können sich vergewissern, dass mit der Aktion **Parse JSON** die erwarteten
 
 <a name="select-action"></a>
 
-## <a name="select-action"></a>Aktion „Select“
+## <a name="select-action"></a>Aktion select
 
 Verwenden Sie die Aktion **Datenvorgänge – Select**, um ein Array mit JSON-Objekten zu erstellen, die aus Werten eines vorhandenen Arrays erstellt wurden. Sie können beispielsweise ein JSON-Objekt für jeden Wert eines Integer-Arrays erstellen, indem Sie Folgendes angeben: die Eigenschaften, über die jedes JSON-Objekt verfügen muss, und die Vorgehensweise beim Zuordnen der Werte im Quellarray zu diesen Eigenschaften. Sie können die Komponenten in diesen JSON-Objekten zwar ändern, aber das Ausgabearray weist immer die gleiche Anzahl von Elementen wie das Quellarray auf.
 
@@ -567,7 +567,7 @@ Sie können sich vergewissern, dass mit der Aktion **Select** die erwarteten Erg
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

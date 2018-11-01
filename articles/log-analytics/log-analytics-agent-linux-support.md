@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 01b3fe57cd52149c5c1191345b42bd8544202652
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 3f23464776036a8c91b180d46341782fddb9d5e8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404578"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140958"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -161,17 +161,9 @@ Heben Sie unter dem Ausgabe-Plug-In die Auskommentierung des folgenden Abschnitt
 * Der während der Integration angegebene Proxy war falsch.
 * Die Dienstendpunkte für Log Analytics und Azure Automation sind nicht in der Whitelist in Ihrem Rechenzentrum enthalten. 
 
-<<<<<<< HEAD
-### <a name="resolutions"></a>Lösungen
-1. Führen Sie das Onboarding in Log Analytics mit dem Log Analytics-Agent für Linux erneut durch, indem Sie den folgenden Befehl mit aktivierter Option `-v` ausführen. Dies ermöglicht die ausführliche Ausgabe des Agents, der die Verbindung über den Proxy herstellt, an Log Analytics. 
-`/opt/microsoft/omsagent/bin/omsadmin.sh -w <Log Analytics Workspace ID> -s <Log Analytics Workspace Key> -p <Proxy Conf> -v`
-
-  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-=======
 ### <a name="resolution"></a>Lösung
 1. Führen Sie das Onboarding im Log Analytics-Dienst mit dem Log Analytics-Agent für Linux erneut durch, indem Sie den folgenden Befehl mit aktivierter Option `-v` ausführen. Dies ermöglicht die ausführliche Ausgabe des Agents, der die Verbindung über den Proxy herstellt, an den Log Analytics-Dienst. 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
->>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
 2. Lesen Sie den Abschnitt [Aktualisieren der Proxyeinstellungen](log-analytics-agent-manage.md#update-proxy-settings), um sicherzustellen, dass der Agent ordnungsgemäß für die Kommunikation über einen Proxyserver konfiguriert wurde.    
 * Vergewissern Sie sich, dass die folgenden Log Analytics-Endpunkte in der Whitelist enthalten sind:
@@ -193,11 +185,7 @@ Heben Sie unter dem Ausgabe-Plug-In die Auskommentierung des folgenden Abschnitt
 
 1. Überprüfen Sie die Uhrzeit auf dem Linux-Server mit dem Befehl „date“. Wenn die Zeit um +/-15 Minuten von der aktuellen Uhrzeit abweicht ist, tritt bei der Integration ein Fehler auf. Aktualisieren Sie zur Behebung dieses Problems das Datum und/oder die Zeitzone des Linux-Servers. 
 2. Überprüfen Sie, ob die aktuelle Version des Log Analytics-Agents für Linux installiert ist.  Die neueste Version benachrichtigt Sie nun darüber, ob der Onboardingfehler durch die Zeitabweichung verursacht wird.
-<<<<<<< HEAD
-3. Führen Sie das Onboarding gemäß den obigen Installationsanweisungen in diesem Thema mit korrekten Daten für die Arbeitsbereich-ID und den Arbeitsbereichsschlüssel erneut durch.
-=======
 3. Führen Sie gemäß den Installationsanweisungen weiter oben in diesem Artikel das Onboarding erneut mit korrekten Daten für die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel durch.
->>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
 ## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problem: In der Protokolldatei sind direkt nach der Integration die Fehler 500 und 404 enthalten.
 Dies ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in einen Log Analytics-Arbeitsbereich auftritt. Gesendete Daten und die Ausführung des Diensts sind davon nicht betroffen.
@@ -206,17 +194,6 @@ Dies ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in ein
 
 ### <a name="probable-causes"></a>Mögliche Ursachen
 
-<<<<<<< HEAD
-- Beim Onboarding in Log Analytics ist ein Fehler aufgetreten.
-- Die Verbindung mit Log Analytics ist blockiert.
-- Daten für den Log Analytics-Agent für Linux werden gesichert.
-
-### <a name="resolutions"></a>Lösungen
-1. Vergewissern Sie sich, dass das Onboarding in Log Analytics erfolgreich war, indem Sie überprüfen, ob die folgende Datei vorhanden ist: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`.
-2. Erneutes Onboarding mithilfe der Befehlszeilenanweisungen `omsadmin.sh`
-3. Wenn Sie einen Proxy verwenden, lesen Sie die Proxylösungsschritte weiter oben.
-4. In einigen Fällen, wenn der Log Analytics-Agent für Linux nicht mit dem Dienst kommunizieren kann, werden Daten auf dem Agent bis zur vollständigen Puffergröße von 50 MB in eine Warteschlange gestellt. Der Log Analytics-Agent für Linux sollte mit dem folgenden Befehl neu gestartet werden: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
-=======
 - Fehler beim Onboarding zum Log Analytics-Dienst
 - Die Verbindung mit dem Log Analytics-Dienst ist blockiert.
 - Daten des Log Analytics-Agents für Linux werden gesichert.
@@ -226,10 +203,9 @@ Dies ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in ein
 2. Erneutes Onboarding mithilfe der Befehlszeilenanweisungen `omsadmin.sh`
 3. Wenn Sie einen Proxy verwenden, lesen Sie die Proxylösungsschritte weiter oben.
 4. In einigen Fällen, wenn der Log Analytics-Agent für Linux nicht mit dem Dienst kommunizieren kann, werden Daten auf dem Agent bis zur vollständigen Puffergröße von 50 MB in eine Warteschlange gestellt. Der Agent sollte mit dem folgenden Befehl neu gestartet werden: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
->>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
     >[!NOTE]
-    >This issue is fixed in agent version 1.1.0-28 and later.
+    >Dieses Problem wurde ab der Agent-Version 1.1.0-28 behoben.
 
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problem: Weitergeleitete Syslog-Nachrichten werden nicht angezeigt. 

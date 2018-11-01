@@ -14,19 +14,19 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: fe2b02b2495b4f37cbc90e1ddbeaca43b41d008c
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0154aac14168c9d897698a15e31b3124b208db46
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843145"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50142763"
 ---
 ## <a name="add-the-applications-registration-to-your-code"></a>Hinzufügen der Registrierung der Anwendung zu Ihrem Code
 
 In diesem Schritt müssen Sie die Anwendungs-/Client-ID Ihrem Projekt hinzufügen.
 
-1.  Öffnen Sie `MainActivity` (unter `app` > `java` > *`{host}.{namespace}`*).
-2.  Ersetzen Sie die Zeile, die mit `final static String CLIENT_ID` beginnt, durch:
+1. Öffnen Sie `MainActivity` (unter `app` > `java` > *`{host}.{namespace}`*).
+2. Ersetzen Sie die Zeile, die mit `final static String CLIENT_ID` beginnt, durch:
 ```java
 final static String CLIENT_ID = "[Enter the application Id here]";
 ```
@@ -49,4 +49,3 @@ final static String CLIENT_ID = "[Enter the application Id here]";
     </intent-filter>
 </activity>
 ```
-

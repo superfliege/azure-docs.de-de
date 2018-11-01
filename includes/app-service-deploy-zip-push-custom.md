@@ -1,3 +1,16 @@
+---
+author: cephalin
+ms.service: app-service
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: cephalin
+ms.openlocfilehash: 79fb8517ec6880e8a3eae0e74275567a24644b87
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50132770"
+---
 ## <a name="deployment-customization"></a>Anpassung von Bereitstellungen
 
 Der Bereitstellungsprozess geht von der Annahme aus, dass die ZIP-Datei, die Sie per Push übertragen, eine ausführungsbereite App enthält. Standardmäßig werden keine Anpassungen ausgeführt. Um den gleichen Buildprozess zu ermöglichen, der Ihnen bei Continuous Integration zur Verfügung steht, fügen Sie Ihren Anwendungseinstellungen Folgendes hinzu:

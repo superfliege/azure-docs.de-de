@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: glenga
-ms.openlocfilehash: 31fe0f85b258524b4ac0af03ec19a91a93e1463b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 35bd3bfad0fe53590380e7935e885b438398bda9
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968873"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086089"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 
@@ -137,9 +137,11 @@ Es wird eine Funktion mit folgendem Code erstellt:
 #r "Newtonsoft.Json"
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-public static void Run(JObject eventGridEvent, TraceWriter log)
+using Microsoft.Extensions.Logging;
+
+public static void Run(JObject eventGridEvent, ILogger log)
 {
-    log.Info(eventGridEvent.ToString(Formatting.Indented));
+    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
 }
 ```
 
@@ -164,6 +166,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 
 namespace LifeCycleEventSpike
 {
@@ -186,9 +189,9 @@ namespace LifeCycleEventSpike
         }
 
         [FunctionName("Sample_Hello")]
-        public static string SayHello([ActivityTrigger] string name, TraceWriter log)
+        public static string SayHello([ActivityTrigger] string name, ILogger log)
         {
-            log.Info($"Saying hello to {name}.");
+            log.LogInformation($"Saying hello to {name}.");
             return $"Hello {name}!";
         }
 
@@ -196,11 +199,11 @@ namespace LifeCycleEventSpike
         public static async Task<HttpResponseMessage> HttpStart(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
             [OrchestrationClient]DurableOrchestrationClient starter,
-            TraceWriter log)
+            ILogger log)
         {
             // Function input comes from the request content.
             string instanceId = await starter.StartNewAsync("Sample", null);
-            log.Info($"Started orchestration with ID = '{instanceId}'.");
+            log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
             return starter.CreateCheckStatusResponse(req, instanceId);
         }
     }
@@ -256,7 +259,7 @@ Wenn Sie `Sample_HttpStart` mit Postman oder in Ihrem Browser aufrufen, beginnt 
 In der folgenden Liste wird das Schema für Lebenszyklusereignisse erläutert:
 
 * **id**: eindeutiger Bezeichner für das Event Grid-Ereignis.
-* **subject**: Pfad zum Ereignisbetreff. `durable/orchestrator/{orchestrationRuntimeStatus}`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. `{orchestrationRuntimeStatus}` kann `Running`, `Completed`, `Failed` und `Terminated` sein.  
+* **subject**: Pfad zum Ereignisbetreff. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` kann `Running`, `Completed`, `Failed` und `Terminated` sein.  
 * **data**: spezielle Durable Functions-Parameter.
     * **hubName**: Name des [TaskHub](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs).
     * **functionName**: Name der Orchestratorfunktion.

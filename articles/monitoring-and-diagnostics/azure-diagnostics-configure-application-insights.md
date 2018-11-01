@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 3e1f4076c7a90cbb348f31b7b92e745fff79a04f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f2a48756252f538adc7d813aafe6dbfbf3a270b5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262136"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416681"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights
 Cloud Services, Virtual Machines, VM-Skalierungsgruppen und Service Fabric verwenden die Azure-Diagnoseerweiterung zum Sammeln von Daten.  Die Azure-Diagnose sendet die Daten an Azure Storage-Tabellen.  Sie können jedoch auch alle oder einen Teil der Daten mithilfe der Azure-Diagnoseerweiterung 1.5 oder höher an andere Speicherorte weiterleiten.
@@ -77,11 +77,11 @@ Ein Kanal verhält sich wie ein Filter und ermöglicht es Ihnen, bestimmte Proto
 
 Die folgende Abbildung zeigt diese Beziehung.
 
-![Öffentliche Diagnosekonfiguration](./media/azure-diagnostics-configure-applicationinsights/AzDiag_Channels_App_Insights.png)
+![Öffentliche Diagnosekonfiguration](media/azure-diagnostics-configure-application-insights/AzDiag_Channels_App_Insights.png)
 
 Die folgende Abbildung fasst die Konfigurationswerte und deren Funktionsweise zusammen. Sie können in die Konfiguration mehrere Senken auf unterschiedlichen Ebenen der Hierarchie einschließen. Die Senke der obersten Ebene verhält sich wie eine globale Einstellung, und die für das einzelne Element angegebene Senke verhält sich wie eine Korrektur der globalen Einstellung.
 
-![Konfiguration von Diagnosesenken mit Application Insights](./media/azure-diagnostics-configure-applicationinsights/Azure_Diagnostics_Sinks.png)
+![Konfiguration von Diagnosesenken mit Application Insights](media/azure-diagnostics-configure-application-insights/Azure_Diagnostics_Sinks.png)
 
 ## <a name="complete-sink-configuration-example"></a>Vollständiges Beispiel für eine Senkenkonfiguration
 Hier sehen Sie ein vollständiges Beispiel für eine öffentliche Konfigurationsdatei, die Folgendes ausführt:

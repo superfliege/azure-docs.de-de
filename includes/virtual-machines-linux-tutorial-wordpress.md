@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 5df1f7ff44a1603dd03d1d803ae9960dc124781e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227338"
+---
 ## <a name="install-wordpress"></a>Installieren von WordPress
 
 Installieren Sie zum Ausprobieren des Stapels eine Beispiel-App. Als Beispiel wird in den folgenden Schritten die Open Source-Plattform [WordPress](https://wordpress.org/) zum Erstellen von Websites und Blogs installiert. Sie können auch andere Workloads wie [Drupal](http://www.drupal.org) und [Moodle](https://moodle.org/) ausprobieren. 
@@ -24,7 +37,7 @@ Erstellen Sie in einem Arbeitsverzeichnis die Textdatei `wordpress.sql`, um die 
 sudo sensible-editor wordpress.sql
 ```
 
-Fügen Sie die folgenden Befehle hinzu, und ersetzen Sie dabei *yourPassword* durch ein Datenbankkennwort Ihrer Wahl. (Ändern Sie die anderen Werte nicht.) Wenn Sie zuvor zur Überprüfung der Kennwortsicherheit eine MySQL-Sicherheitsrichtlinie eingerichtet haben, stellen Sie sicher, dass das Kennwort die Sicherheitsanforderungen erfüllt. Speichern Sie die Datei.
+Fügen Sie die folgenden Befehle hinzu, und ersetzen Sie dabei *yourPassword* durch ein Datenbankkennwort Ihrer Wahl. (Ändern Sie die anderen Werte nicht.) Wenn Sie zuvor zur Überprüfung der Kennwortsicherheit eine MySQL-Sicherheitsrichtlinie eingerichtet haben, stellen Sie sicher, dass das Kennwort die Sicherheitsanforderungen erfüllt. Speichern Sie die Datei .
 
 ```sql
 CREATE DATABASE wordpress;

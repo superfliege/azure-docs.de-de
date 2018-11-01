@@ -1,4 +1,16 @@
-
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: b397d77b525bdb63f2531634e397ec210d4a6202
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165630"
+---
 #### <a name="to-configure-remote-management-on-cloud-appliance"></a>So konfigurieren Sie die Remoteverwaltung auf dem Cloudgerät
 
 1. Klicken Sie in Ihrem StorSimple-Geräte-Manager-Dienst auf **Geräte**. Wählen Sie in der Liste der mit dem Dienst verbundenen Geräte Ihr Cloudgerät aus, und klicken Sie darauf.

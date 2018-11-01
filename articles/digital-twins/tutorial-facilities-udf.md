@@ -5,14 +5,14 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: 1e5cb18b4e526cd0a0607f5bc93788fcf07430e1
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: cf45cb8de0e40dfe5f5772dcb1a0be2aa7585fd6
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364234"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156679"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Tutorial: Bereitstellen des Gebäudes und Überwachen der Arbeitsbedingungen mit Azure Digital Twins
 
@@ -161,7 +161,7 @@ Suchen Sie in der Beispieldatei *provisionSample.yaml* nach einem Abschnitt, der
             }
         ```
         
-        Die geänderte benutzerdefinierte Funktion sucht nach einer Bedingung, unter der ein Raum verfügbar ist und die Kohlendioxid- und Temperaturwerte den akzeptablen Grenzwerten entsprechen. Sie generiert eine Benachrichtigung mit der Anweisung `parentSpace.Notify(JSON.stringigy(alert));`, wenn diese Bedingung erfüllt ist. Die Funktion legt den Wert des überwachten Gebäudebereichs mit der entsprechenden Meldung fest, unabhängig davon, ob die Bedingung erfüllt ist.
+        Die geänderte benutzerdefinierte Funktion sucht nach einer Bedingung, unter der ein Raum verfügbar ist und die Kohlendioxid- und Temperaturwerte den akzeptablen Grenzwerten entsprechen. Sie generiert eine Benachrichtigung mit der Anweisung `parentSpace.Notify(JSON.stringify(alert));`, wenn diese Bedingung erfüllt ist. Die Funktion legt den Wert des überwachten Gebäudebereichs mit der entsprechenden Meldung fest, unabhängig davon, ob die Bedingung erfüllt ist.
     
     1. Speichern Sie die Datei . 
     

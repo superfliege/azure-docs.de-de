@@ -3,19 +3,19 @@ title: Was ist die Academic Knowledge-API?
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Academic Knowledge-API, um Benutzerabfragen zu interpretieren und umfassende Informationen aus Academic Graph abzurufen.
 services: cognitive-services
-author: mvorvoreanu
+author: darrine
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
 ms.topic: overview
-ms.date: 03/27/2017
-ms.author: mivorvor
-ms.openlocfilehash: d08cd7124b232e50365e72753eba97c6309f401c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.date: 10/30/2018
+ms.author: darrine
+ms.openlocfilehash: aa945eb8f0b79a6b0760650bd34dba55d80ef3a4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901209"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240357"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge-API
 
@@ -32,13 +32,10 @@ Die Academic Knowledge-API umfasst vier zusammengehörige REST-Endpunkte:
   1. **interpret**: Interpretiert die Zeichenfolge einer Benutzerabfrage in natürlicher Sprache. Gibt mit Anmerkungen versehene Interpretationen zurück, mit denen sich die Benutzereingabe im Suchfeld vorhersagen und automatisch vervollständigen lässt.  
   2. **evaluate**: Wertet einen Abfrageausdruck aus und gibt Academic Knowledge-Entitäten als Ergebnis zurück.  
   3. **calchistogram**: Berechnet ein Histogramm der Verteilung von Attributwerten für die akademischen Entitäten, die von einem Abfrageausdruck zurückgegeben werden (etwa die Verteilung von Zitaten nach Jahr für einen bestimmten Autor).  
-  4. **graph search**: Sucht nach einem angegebenen Graphmuster und gibt die passenden Entitäten als Ergebnis zurück.
-
+  
 Gemeinsam bieten diese API-Methoden umfangreiche semantische Suchfunktionen. Nach Angabe einer Benutzerabfragezeichenfolge liefert die Methode **interpret** eine mit Anmerkungen versehene Version der Abfrage sowie einen strukturierten Abfrageausdruck und vervollständigt optional die Benutzerabfrage auf der Grundlage der Semantik der zugrunde liegenden akademischen Daten. Wenn ein Benutzer also beispielsweise die Zeichenfolge *latent s* eingibt, kann die Methode **interpret** eine Reihe von nach Rangfolge sortierten Interpretationen bereitstellen und dem Benutzer Suchvorschläge für den Forschungsbereich *latent semantic analysis*, für das Dokument *latent structure analysis* oder für andere Entitätsausdrücke anzeigen, die mit *latent s* beginnen. Auf der Grundlage dieser Informationen gelangt der Benutzer schnell zu den gewünschten Suchergebnissen.
 
 Mit der Methode **evaluate** kann ein Satz übereinstimmender Dokumententitäten aus der akademischen Wissensdatenbank abgerufen werden, und die Methode **calchistogram** ermöglicht die Berechnung der Verteilung von Attributwerten für einen Satz von Dokumententitäten, die zur weiteren Filterung der Suchergebnisse genutzt werden können.        
-
-Die Methode **graph search** besitzt zwei Modi: *json* und *lambda*. Im Modus *json* können Graphmusterabgleiche auf der Grundlage der durch ein JSON-Objekt angegebenen Graphmuster durchgeführt werden. Im Modus *lambda* können beim Durchlaufen des Graphs serverseitige Berechnungen auf der Grundlage der vom Benutzer angegebenen Lambdaausdrücke durchgeführt werden.
 
 ## <a name="getting-started"></a>Erste Schritte 
 Eine ausführliche Dokumentation finden Sie in den Unterthemen auf der linken Seite.  Zur besseren Lesbarkeit der Beispiele enthalten die REST-API-Aufrufe Zeichen (etwa Leerzeichen), die nicht im URL-Format codiert wurden.  In Ihrem Code muss allerdings die korrekte URL-Codierung verwendet werden.

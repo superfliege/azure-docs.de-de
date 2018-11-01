@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: 6911e06dc023027ab32b99387b9f7d3f5e708f86
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165254"
+---
 ## <a name="configure-your-application-to-access-azure-storage"></a>Konfigurieren der Anwendung für den Zugriff auf Azure Storage
 Es gibt zwei Möglichkeiten, um Ihre Anwendung für den Zugriff auf die Storage-Dienste zu authentifizieren:
 
@@ -25,11 +38,11 @@ Hier sehen Sie ein Beispiel einer Verbindungszeichenfolge bei Authentifizierung 
 
 ### <a name="shared-access-signatures-sas"></a>Shared Access Signatures (SAS)
 Die empfohlene Methode für eine mobile Anwendung zum Authentifizieren einer Anforderung durch einen Client bei einem Azure Storage-Dienst ist die Nutzung einer Shared Access Signature (SAS). SAS ermöglicht es Ihnen, dem Client mit einem angegebenen Satz von Berechtigungen für einen bestimmten Zeitraum Zugriff auf eine Ressource zu gewähren.
-Als Speicherkontobesitzer müssen Sie eine SAS für Ihre mobilen Clients erstellen. Zum Generieren der SAS sollten Sie wahrscheinlich einen separaten Dienst schreiben, der die SAS generiert, die an Ihre Clients verteilt werden. Zu Testzwecken können Sie mit dem [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com) oder mit dem [Azure-Portal](https://portal.azure.com) eine SAS erstellen. Bei der Erstellung der SAS können Sie das Zeitintervall angeben, in dem die SAS gültig ist, sowie die Berechtigungen, die die SAS dem Client erteilt.
+Als Speicherkontobesitzer müssen Sie eine SAS für Ihre mobilen Clients erstellen. Zum Generieren der SAS sollten Sie wahrscheinlich einen separaten Dienst schreiben, der die SAS generiert, die an Ihre Clients verteilt werden. Zu Testzwecken können Sie mit dem [Microsoft Azure Storage-Explorer](http://storageexplorer.com) oder mit dem [Azure-Portal](https://portal.azure.com) eine SAS erstellen. Bei der Erstellung der SAS können Sie das Zeitintervall angeben, in dem die SAS gültig ist, sowie die Berechtigungen, die die SAS dem Client erteilt.
 
-Das folgende Beispiel zeigt die Verwendung des Microsoft Azure-Speicher-Explorers zum Erstellen einer SAS.
+Das folgende Beispiel zeigt die Verwendung des Microsoft Azure Storage-Explorers zum Erstellen einer SAS.
 
-1. Wenn Sie es nicht bereits getan haben, [installieren Sie den Microsoft Azure-Speicher-Explorer](http://storageexplorer.com)
+1. Wenn Sie es nicht bereits getan haben, [installieren Sie den Microsoft Azure Storage-Explorer](http://storageexplorer.com)
 2. Stellen Sie eine Verbindung mit Ihrem Abonnement her.
 3. Klicken Sie auf das Speicherkonto und auf die Registerkarte „Aktionen“ unten links. Klicken Sie auf „Shared Access Signature abrufen“, um eine „Verbindungszeichenfolge“ für Ihre SAS zu generieren.
 4. Hier ist ein Beispiel für eine SAS-Verbindungszeichenfolge, die Lese- und Schreibberechtigungen auf Dienst-, Container- und Objektebene für den Blobdienst des Speicherkontos gewährt.

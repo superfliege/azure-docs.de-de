@@ -11,12 +11,12 @@ ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 90af33574093cfbe529093c7091ee6988f043aa6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 78b1eb6272fa97ef392e97723454d29cf56bb4bf
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052021"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230504"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Senden von E-Mails von Ihrem SMTP-Konto mithilfe von Azure Logic Apps
 
@@ -56,9 +56,9 @@ Mit Azure Logic Apps und dem SMTP-Connector (Simple Mail Transfer Protocol) kön
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
    | **Verbindungsname** | JA | Ein Name für die Verbindung mit Ihrem SMTP-Server | 
-   | **SMTP-Serveradresse** | Ja | Die Adresse Ihres SMTP-Servers | 
-   | **Benutzername** | Ja | Der Benutzername für Ihr SMTP-Konto | 
-   | **Kennwort** | Ja | Das Kennwort für Ihr SMTP-Konto | 
+   | **SMTP-Serveradresse** | JA | Die Adresse Ihres SMTP-Servers | 
+   | **Benutzername** | JA | Der Benutzername für Ihr SMTP-Konto | 
+   | **Kennwort** | JA | Das Kennwort für Ihr SMTP-Konto | 
    | **SMTP-Serverport** | Nein  | Ein bestimmter Port auf Ihrem SMTP-Server, den Sie verwenden möchten | 
    | **SSL aktivieren?** | Nein  | Aktivieren oder Deaktivieren der SSL-Verschlüsselung | 
    |||| 
@@ -74,7 +74,7 @@ Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Bes
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

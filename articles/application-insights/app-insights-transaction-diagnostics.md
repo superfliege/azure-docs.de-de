@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: df88e9025da305701dc7168f663cad2e8f5ac738
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5b52fd41fc3e37078bbddc721c0c54af2c430b43
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819493"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419230"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Einheitliche komponentenübergreifende Transaktionsdiagnose
 
@@ -38,7 +38,7 @@ Komponenten sind unabhängig bereitstellbare Teile Ihrer verteilten Anwendung/Mi
 ## <a name="transaction-diagnostics-experience"></a>Oberfläche zur Transaktionsdiagnose
 Diese Ansicht ist in vier Hauptteile gegliedert: eine Ergebnisliste, ein komponentenübergreifendes Transaktionsdiagramm, eine Liste der Zeitabfolge für die gesamte Telemetrie für diesen Vorgang und den Detailbereich für ein bestimmtes auf der linken Seite ausgewähltes Telemetrieelement.
 
-![Hauptbestandteile](media/app-insights-e2eTxn-diagnostics/4partsCrossComponent.png)
+![Hauptbestandteile](media/app-insights-transaction-diagnostics/4partsCrossComponent.png)
 
 ## <a name="cross-component-transaction-chart"></a>Komponentenübergreifendes Transaktionsdiagramm
 
@@ -57,19 +57,19 @@ Aufrufe an andere Komponenten weisen zwei Zeilen auf : Eine Zeile stellt den aus
 
 Dieser Abschnitt zeigt eine flache Listenansicht in einer zeitlichen Abfolge der gesamten Telemetrie für diese Transaktion. Er zeigt auch die benutzerdefinierten Ereignisse und Ablaufverfolgungen, die im Transaktionsdiagramm nicht angezeigt werden. Sie können diese Liste hinsichtlich der von einer bestimmten Komponente/eines Aufrufs generierten Telemetrie filtern. Sie können in dieser Liste beliebige Telemetrieelemente auswählen, um die entsprechenden [Details auf der rechten Seite](#details-of-the-selected-telemetry) anzuzeigen.
 
-![Zeitliche Abfolge der gesamten Telemetrie](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
+![Zeitliche Abfolge der gesamten Telemetrie](media/app-insights-transaction-diagnostics/allTelemetryDrawerOpened.png)
 
 ## <a name="details-of-the-selected-telemetry"></a>Details zur ausgewählten Telemetrie
 
 Dieser reduzierbare Bereich zeigt die Details jedes ausgewählte Elements aus dem Transaktionsdiagramm oder der Liste. Mit "Alle anzeigen" wird eine Liste der erfassten Standardattribute angezeigt. Eventuelle benutzerdefinierte Attribute werden separat unterhalb des Standardsatzes aufgeführt. Klicken Sie auf die „...“ unten dem Stapelüberwachungsfenster, um eine Option zum Kopieren der Ablaufverfolgung zu erhalten. Klicken Sie auf „Profiler-Überwachungen öffnen“ oder „Debugmomentaufnahme öffnen“, um die Diagnose auf Codeebene in den entsprechenden Detailbereichen anzuzeigen.
 
-![Ausnahmedetail](media/app-insights-e2eTxn-diagnostics/exceptiondetail.png)
+![Ausnahmedetail](media/app-insights-transaction-diagnostics/exceptiondetail.png)
 
 ## <a name="search-results"></a>Suchergebnisse
 
 Dieser reduzierbare Bereich zeigt die anderen Ergebnisse an, die den Filterkriterien entsprechen. Klicken Sie auf ein beliebiges Ergebnis, um die entsprechenden Details in den drei oben aufgeführten Abschnitten zu aktualisieren. Wir versuchen, Stichproben zu finden, die höchstwahrscheinlich die Details aller Komponenten enthalten, auch wenn die Stichprobenentnahme in irgendeiner dieser Komponenten wirksam sind. Diese sind als „vorgeschlagene“ Beispiele dargestellt.
 
-![Suchergebnisse](media/app-insights-e2eTxn-diagnostics/searchResults.png)
+![Suchergebnisse](media/app-insights-transaction-diagnostics/searchResults.png)
 
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler und Momentaufnahmedebugger
 
@@ -79,7 +79,7 @@ Setzen Sie sich bei Problemen mit dem Profiler unter **serviceprofilerhelp@micro
 
 Setzen Sie sich bei Problemen mit dem Momentaufnahmedebugger unter **snapshothelp@microsoft.com** mit uns in Verbindung.
 
-![Profilerintegration](media/app-insights-e2eTxn-diagnostics/profilerTraces.png)
+![Profilerintegration](media/app-insights-transaction-diagnostics/profilerTraces.png)
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

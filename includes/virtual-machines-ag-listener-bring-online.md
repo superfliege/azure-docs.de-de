@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227427"
+---
 1. Erweitern Sie im Failovercluster-Manager **Rollen**, und markieren Sie dann Ihre Verfügbarkeitsgruppe.  
 
 2. Klicken Sie auf der Registerkarte **Ressourcen** mit der rechten Maustaste auf den Listenernamen, und klicken Sie dann auf **Eigenschaften**.

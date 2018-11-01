@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 0efce9fbbbd241f335f08bb258b6ba343982fdb9
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c0f2802bae366637fd93d47e33619746b7142f53
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299187"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231626"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Erstellen von Variablen für das Speichern und Verwalten von Werten in Azure Logic Apps
 
@@ -65,15 +65,15 @@ Sie können eine Variable erstellen und ihren Datentyp und Anfangswert deklarier
 
 3. Geben Sie im Suchfeld den Begriff „Variablen“ als Filter ein. Wählen Sie in der Liste die Aktion **Variablen – Variable initialisieren** aus.
 
-   ![Auswählen der Aktion](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
+   ![Aktion select](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
 4. Geben Sie diese Informationen für Ihre Variable an:
 
-   | Eigenschaft | Erforderlich | Wert |  Beschreibung |
+   | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
-   | Name | Ja | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
-   | Type | Ja | <*Variablentyp*> | Der Datentyp für die Variable | 
-   | Value | Nein  | <*Anfangswert*> | Der Anfangswert für die Variable <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den Anfangswert für Ihre Variable kennen. | 
+   | NAME | JA | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
+   | Typ | JA | <*Variablentyp*> | Der Datentyp für die Variable | 
+   | Wert | Nein  | <*Anfangswert*> | Der Anfangswert für die Variable <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den Anfangswert für Ihre Variable kennen. | 
    ||||| 
 
    ![Initialisieren einer Variablen](./media/logic-apps-create-variables-store-values/initialize-variable.png)
@@ -205,9 +205,9 @@ Um eine Variable um einen konstanten Wert zu erhöhen oder zu *inkrementieren*, 
 
 3. Geben Sie diese Informationen zum schrittweisen Erhöhen Ihrer Variable an:
 
-   | Eigenschaft | Erforderlich | Wert |  Beschreibung |
+   | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
-   | Name | Ja | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
+   | NAME | JA | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
    | Wert | Nein  | <*Inkrementwert*> | Der zum Erhöhen der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Erhöhung Ihrer Variablen kennen. | 
    |||| 
 
@@ -325,9 +325,9 @@ Um eine Variable um einen konstanten Wert zu verringern oder zu *dekrementieren*
 
 Für die Aktion **Variablenwert verringern** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Wert |  Beschreibung |
+| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
-| Name | Ja | <*Variablenname*> | Der Name für die zu verringernde Variable | 
+| NAME | JA | <*Variablenname*> | Der Name für die zu verringernde Variable | 
 | Wert | Nein  | <*Inkrementwert*> | Der zum Verringern der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Verringerung Ihrer Variablen kennen. | 
 ||||| 
 
@@ -362,8 +362,8 @@ Für die Aktion **Variable festlegen** gibt es folgende Eigenschaften:
 
 | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG | 
 |----------|----------|-------|--------------| 
-| NAME | Ja | <*Variablenname*> | Der Name für die zu ändernde Variable | 
-| Wert | Ja | <*Neuer-Wert*> | Der Wert, der der Variable zugewiesen werden soll. Beide müssen den gleichen Datentyp aufweisen. | 
+| NAME | JA | <*Variablenname*> | Der Name für die zu ändernde Variable | 
+| Wert | JA | <*Neuer-Wert*> | Der Wert, der der Variable zugewiesen werden soll. Beide müssen den gleichen Datentyp aufweisen. | 
 ||||| 
 
 > [!NOTE]
@@ -418,10 +418,10 @@ Bei Variablen, die Strings oder Arrays speichern, können Sie den Wert einer Var
 
 Für die Aktionen **An ... anfügen** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Wert |  Beschreibung | 
+| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG | 
 |----------|----------|-------|--------------| 
-| Name | Ja | <*Variablenname*> | Der Name für die zu ändernde Variable | 
-| Wert | Ja | <*Anzufügender-Wert*> | Der anzufügende Wert, der von einem beliebigen Typ sein kann. | 
+| NAME | JA | <*Variablenname*> | Der Name für die zu ändernde Variable | 
+| Wert | JA | <*Anzufügender-Wert*> | Der anzufügende Wert, der von einem beliebigen Typ sein kann. | 
 |||||  
 
 Wenn Sie vom Designer in den Code-View-Editor wechseln, erscheint die Aktion **An Arrayvariable anfügen** innerhalb Ihrer Logik-App-Definition, die im JSON-Format vorliegt.
@@ -456,7 +456,7 @@ In diesem Beispiel wird eine Arrayvariable erstellt und ein weiterer Wert als le
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

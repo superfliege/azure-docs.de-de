@@ -1,3 +1,16 @@
+---
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: dobett
+ms.openlocfilehash: 3cd97c521fa11a0c9f214274fe31229e48f53baf
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165957"
+---
 > [!div class="op_single_selector"]
 > * [Raspberry Pi-Websimulator](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)   
 > * [Simuliertes Gerät mit .NET](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)

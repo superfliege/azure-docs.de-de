@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: c10482029e6cfce7063d205161fed54030919c48
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166046"
+---
 #### <a name="to-stop-and-start-a-cloud-appliance"></a>Beenden und starten eines Cloudgeräts
 
 1. Zum Beenden eines Cloudgeräts wechseln Sie zum virtuellen Computer für Ihr Cloudgerät.

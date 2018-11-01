@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 59a6a94e2906413423a4ae03a7c1c115b2ec0cc0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd3be916587ab884ea5579234a6189af54b53797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046165"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209206"
 ---
 # <a name="manage-cluster-scaling-to-accommodate-changing-demand"></a>Verwalten der Clusterskalierung bei sich änderndem Bedarf
 
@@ -63,4 +63,4 @@ Die folgende Grafik zeigt die Abfolge der nächsten Schritte. Weitere Details fi
 
 Sie haben nun einen horizontalen Skalierungsvorgang für Ihren Azure-Daten-Explorer-Cluster konfiguriert. Fügen Sie eine weitere Regel für einen Vorgang zum horizontalen Herunterskalieren hinzu. So kann Ihr Cluster basierend auf Auslastungsmetriken, die Sie angeben, dynamisch skaliert werden.
 
-Wenn Sie Hilfe bei Clusterskalierungsproblemen benötigen, erstellen Sie eine Supportanforderung im [Azure-Portal](https://portal.azure.com).
+Wenn Sie Hilfe bei Clusterskalierungsproblemen benötigen, erstellen Sie eine Supportanforderung im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

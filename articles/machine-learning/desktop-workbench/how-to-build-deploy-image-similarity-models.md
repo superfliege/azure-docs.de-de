@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 05/20/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 371903e1ee080d2b98fd46ac4d6d9838416e1335
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b1b4e3e19adb38a69e16aaa98300972df3bb71a8
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973421"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093648"
 ---
 # <a name="build-and-deploy-image-similarity-models-with-azure-machine-learning"></a>Erstellen und Bereitstellen von Ähnlichkeitsmodellen für Bilder mit Azure Machine Learning
 
@@ -38,7 +38,7 @@ Beim Erstellen und Bereitstellen dieses Modell mit AMLPCV durchlaufen Sie die fo
 7. Webdienstbereitstellung
 8. Webdienst-Auslastungstests
 
-Das [CNTK](https://www.microsoft.com/cognitive-toolkit/) wird als Deep Learning-Framework verwendet, das Training erfolgt lokal auf einem GPU-gestützten Computer wie der [Deep Learning Data Science-VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview), und die Bereitstellung verwendet die Azure ML Operationalization CLI.
+Das [CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) wird als Deep Learning-Framework verwendet, das Training erfolgt lokal auf einem GPU-gestützten Computer wie der [Deep Learning Data Science-VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview), und die Bereitstellung verwendet die Azure ML Operationalization CLI.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

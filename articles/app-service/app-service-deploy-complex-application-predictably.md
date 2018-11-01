@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 049f5211e800dace4b8968cd9e3db9ad968f8813
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c4071da60ed1311d8dd75d6a369c48cf711778cb
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050745"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243213"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Vorhersagbares Bereitstellen von Microservices in Azure
 Dieses Tutorial zeigt, wie eine aus [Microservices](https://en.wikipedia.org/wiki/Microservices) bestehende Anwendung in [Azure App Service](https://azure.microsoft.com/services/app-service/) als eine Einheit und in vorhersagbarer Weise mithilfe von JSON-Ressourcengruppenvorlagen und PowerShell-Skripts bereitgestellt wird. 
@@ -103,7 +103,7 @@ Hier werden nicht alle Details des JSON-Formats beschrieben, aber der Abschnitt 
 ### <a name="parameters"></a>Parameter
 Sehen Sie sich den Parameterabschnitt an. Dort erkennen Sie, dass die meisten dieser Parameter deshalb vorhanden sind, weil die Schaltfläche **Deploy to Azure** Sie zur Eingabe aufgefordert hat. Die Website hinter der Schaltfläche **Deploy to Azure** füllt die Eingabebenutzeroberfläche mit den Parametern, die in „azuredeploy.json“ definiert wurden. Diese Parameter werden in den Ressourcendefinitionen verwendet, z. B. als Ressourcennamen, Eigenschaftswerte usw.
 
-### <a name="resources"></a>angeben
+### <a name="resources"></a>Ressourcen
 Im Ressourcenknoten sehen Sie, dass vier Ressourcen der obersten Ebene definiert wurden, einschließlich einer SQL Server-Instanz, eines App Service-Plans und zwei Web-Apps. 
 
 #### <a name="app-service-plan"></a>App Service-Plan
@@ -148,7 +148,7 @@ Die App-Einstellungen werden auch als geschachtelte Ressource definiert.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-Im `properties`-Element für `config/appsettings` sind zwei App-Einstellungen im Format `“<name>” : “<value>”` vorhanden.
+Im `properties`-Element für `config/appsettings` sind zwei App-Einstellungen im Format `"<name>" : "<value>"` vorhanden.
 
 * `PROJECT` ist eine [KUDU-Einstellung](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) , die der Azure-Bereitstellung mitteilt, welches Projekt in einer Visual Studio-Projektmappe mit mehreren Projekten verwendet werden soll. Später erfahren Sie, wie die Quellcodeverwaltung konfiguriert wird, aber da sich der ToDoApp-Code in einer Visual Studio-Projektmappe mit mehreren Projekten befindet, ist diese Einstellung erforderlich.
 * `clientUrl` ist einfach eine App-Einstellung, die vom Anwendungscode verwendet wird.
@@ -158,7 +158,7 @@ Die Verbindungszeichenfolgen werden auch als geschachtelte Ressource definiert.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-Im `properties`-Element für `config/connectionstrings` ist jede Verbindungszeichenfolge auch als Name-Wert-Paar im Format `“<name>” : {“value”: “…”, “type”: “…”}` definiert. Mögliche Werte für das `type`-Element sind `MySql`, `SQLServer`, `SQLAzure` und `Custom`.
+Im `properties`-Element für `config/connectionstrings` ist jede Verbindungszeichenfolge auch als Name-Wert-Paar im Format `"<name>" : {"value": "…", "type": "…"}` definiert. Mögliche Werte für das `type`-Element sind `MySql`, `SQLServer`, `SQLAzure` und `Custom`.
 
 > [!TIP]
 > Eine endgültige Liste mit den Typen von Verbindungszeichenfolgen erhalten Sie, indem Sie den folgenden Befehl in Azure PowerShell ausführen: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")

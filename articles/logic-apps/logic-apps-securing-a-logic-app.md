@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 11/22/2016
-ms.openlocfilehash: 1307b6df22c51af9710d44abb23178d65e3507aa
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0fe35b67a424caedcea2c71885d1757943ace9d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377393"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232595"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Schützen des Zugriffs in Azure Logic Apps
 
@@ -168,7 +168,7 @@ Sie könnten einige Aspekte einer Workflowdefinition für umgebungsübergreifend
 
 ### <a name="using-parameters-and-secure-parameters"></a>Verwenden von Parametern und sicheren Parametern
 
-Für den Zugriff auf den Wert eines Ressourcenparameters zur Laufzeit bietet die [Workflowdefinitionssprache](http://aka.ms/logicappsdocs) einen `@parameters()`-Vorgang. Darüber hinaus können Sie [Parameter in der Ressourcenbereitstellungsvorlage angeben](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Wenn Sie jedoch den Parametertyp als `securestring` angeben, wird der Parameter nicht mit dem Rest der Ressourcendefinition zurückgegeben und auf ihn kann nicht durch Anzeigen der Ressource nach der Bereitstellung zugegriffen werden.
+Für den Zugriff auf den Wert eines Ressourcenparameters zur Laufzeit bietet die [Workflowdefinitionssprache](https://aka.ms/logicappsdocs) einen `@parameters()`-Vorgang. Darüber hinaus können Sie [Parameter in der Ressourcenbereitstellungsvorlage angeben](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Wenn Sie jedoch den Parametertyp als `securestring` angeben, wird der Parameter nicht mit dem Rest der Ressourcendefinition zurückgegeben und auf ihn kann nicht durch Anzeigen der Ressource nach der Bereitstellung zugegriffen werden.
 
 > [!NOTE]
 > Wenn der Parameter im Header oder Text einer Anforderung verwendet wird, kann der Parameter durch den Zugriff auf den Ausführungsverlauf und die ausgehende HTTP-Anforderung sichtbar sein. Achten Sie darauf, dass Sie Ihre Richtlinien für den Zugriff auf Inhalte entsprechend festlegen.

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8cc654fca8e645253ffc79ef808075bdbe887530
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 31ee14369cc3f1c03d13c59e1239aa567bce3552
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043293"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419774"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungsteilen in Log Analytics
 Mit dem Ansicht-Designer in Azure Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen aus Ihrem Log Analytics-Arbeitsbereich darstellen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
@@ -50,7 +50,7 @@ Die nächsten Abschnitte beschreiben die Kacheltypen und ihre Eigenschaften ausf
 ## <a name="list-of-queries-part"></a>Komponente mit der Liste der Abfragen
 Das Teil mit der Liste der Abfragen zeigt eine Liste der Protokollsuchabfragen an. Sie können einzelne Abfragen auswählen, um die Ergebnisse anzuzeigen. Die Ansicht enthält standardmäßig eine einzelne Abfrage, und Sie können **+ Abfrage** wählen, um zusätzliche Abfragen hinzuzufügen.
 
-![Ansicht der Liste der Abfragen](media/log-analytics-view-designer/view-list-queries.png)
+![Ansicht der Liste der Abfragen](media/log-analytics-view-designer-parts/view-list-queries.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -66,7 +66,7 @@ Das Teil mit der Liste der Abfragen zeigt eine Liste der Protokollsuchabfragen a
 ## <a name="number-and-list-part"></a>Teil mit Zahl und Liste
 Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
-![Ansicht der Liste der Abfragen](media/log-analytics-view-designer/view-number-list.png)
+![Ansicht der Liste der Abfragen](media/log-analytics-view-designer-parts/view-number-list.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -95,7 +95,7 @@ Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus ei
 ## <a name="two-numbers-and-list-part"></a>Teil mit zwei Zahlen und Liste
 Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus getrennten Protokollsuchabfragen angeben. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
-![Ansicht mit zwei Zahlen und Liste](media/log-analytics-view-designer/view-two-numbers-list.png)
+![Ansicht mit zwei Zahlen und Liste](media/log-analytics-view-designer-parts/view-two-numbers-list.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -126,7 +126,7 @@ Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus getrennte
 ## <a name="donut-and-list-part"></a>Teil mit Ringdiagramm und Liste
 Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar.
 
-![Ansicht mit Ringdiagramm und Liste](media/log-analytics-view-designer/view-donut-list.png)
+![Ansicht mit Ringdiagramm und Liste](media/log-analytics-view-designer-parts/view-donut-list.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -167,7 +167,7 @@ Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollab
 ## <a name="two-timelines-and-list-part"></a>Teil mit zwei Zeitachsen und Liste
 Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an. In einer Legende wird eine einzelne Zahl dargestellt, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
-![Ansicht mit zwei Zeitachsen und Liste](media/log-analytics-view-designer/view-two-timelines-list.png)
+![Ansicht mit zwei Zeitachsen und Liste](media/log-analytics-view-designer-parts/view-two-timelines-list.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -199,7 +199,7 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 ## <a name="information-part"></a>Komponente mit Informationen
 Die Kopfzeile zeigt statischen Text und einen optionalen Link. Die Liste zeigt mindestens ein Element mit einer statischen Kachel und Text.
 
-![Ansicht mit Informationen](media/log-analytics-view-designer/view-information.png)
+![Ansicht mit Informationen](media/log-analytics-view-designer-parts/view-information.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -220,7 +220,7 @@ Die Kopfzeile zeigt statischen Text und einen optionalen Link. Die Liste zeigt m
 ## <a name="line-chart-callout-and-list-part"></a>Teil mit Liniendiagramm, Legende und Liste
 Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf und eine Legende mit einem zusammengefassten Wert an. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
-![Ansicht mit Liniendiagramm, Legende und Liste](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![Ansicht mit Liniendiagramm, Legende und Liste](media/log-analytics-view-designer-parts/view-line-chart-callout-list.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -260,7 +260,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 ## <a name="line-chart-and-list-part"></a>Teil mit Liniendiagramm und Liste
 Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
-![Ansicht mit Liniendiagramm und Liste](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![Ansicht mit Liniendiagramm und Liste](media/log-analytics-view-designer-parts/view-line-chart-callout-list.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -296,7 +296,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 ## <a name="stack-of-line-charts-part"></a>Komponente mit Liniendiagrammstapel
 Der Liniendiagrammstapel zeigt drei separate Liniendiagramme mit mehreren Reihen aus einer Protokollabfrage im Verlauf an, wie hier dargestellt:
 
-![Liniendiagrammstapel](media/log-analytics-view-designer/view-stack-line-charts.png)
+![Liniendiagrammstapel](media/log-analytics-view-designer-parts/view-stack-line-charts.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |

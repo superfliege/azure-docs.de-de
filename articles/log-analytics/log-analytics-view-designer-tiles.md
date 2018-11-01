@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 1c9c93c198b4d88da55ecd241e096e73e4a40d5d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: aa9e91614152aed6a04fa748521991920a0ed569
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042184"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413059"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Referenzleitfaden zu Ansicht-Designer-Kacheln in Log Analytics
 Mit dem Ansicht-Designer in Azure Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen in Ihrem Log Analytics-Arbeitsbereich darstellen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Kacheln.
@@ -47,7 +47,7 @@ Die nächsten Abschnitte beschreiben die Kacheltypen und ihre Eigenschaften ausf
 ## <a name="number-tile"></a>Kachel „Zahl“
 Die Kachel **Zahl** zeigt sowohl die Anzahl von Datensätzen einer Protokollabfrage als auch eine Legende an.
 
-![Kachel „Zahl“](media/log-analytics-view-designer/tile-number.png)
+![Kachel „Zahl“](media/log-analytics-view-designer-tiles/tile-number.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -65,7 +65,7 @@ Die Kachel **Zahl** zeigt sowohl die Anzahl von Datensätzen einer Protokollabfr
 ## <a name="two-numbers-tile"></a>Kachel „Zwei Zahlen“
 Diese Kachel zeigt die Anzahl von Datensätzen aus zwei verschiedenen Protokollabfragen sowie jeweils eine Bezeichnung an.
 
-![Kachel „Zwei Zahlen“](media/log-analytics-view-designer/tile-two-numbers.png)
+![Kachel „Zwei Zahlen“](media/log-analytics-view-designer-tiles/tile-two-numbers.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -86,7 +86,7 @@ Diese Kachel zeigt die Anzahl von Datensätzen aus zwei verschiedenen Protokolla
 ## <a name="donut-tile"></a>Kachel „Ring“
 Die Kachel **Ring** zeigt eine einzelne Zahl an, die eine Spalte mit Werten in einer Protokollabfrage zusammenfasst. Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar.
 
-![Kachel „Ring“](media/log-analytics-view-designer/tile-donut.png)
+![Kachel „Ring“](media/log-analytics-view-designer-tiles/tile-donut.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -110,7 +110,7 @@ Die Kachel **Ring** zeigt eine einzelne Zahl an, die eine Spalte mit Werten in e
 ## <a name="line-chart-tile"></a>Kachel „Liniendiagramm“
 Diese Kachel ist ein Liniendiagramm, das mehrere Datenreihen aus einer Protokollabfrage im zeitlichen Verlauf anzeigt. 
 
-![Kachel mit Liniendiagramm und Legende](media/log-analytics-view-designer/tile-line-chart.png)
+![Kachel mit Liniendiagramm und Legende](media/log-analytics-view-designer-tiles/tile-line-chart.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -131,7 +131,7 @@ Diese Kachel ist ein Liniendiagramm, das mehrere Datenreihen aus einer Protokoll
 ## <a name="line-chart-and-callout-tile"></a>Kachel mit Liniendiagramm und Legende
 Diese Kachel umfasst sowohl ein Liniendiagramm mit mehreren Datenreihen aus einer Protokollabfrage im zeitlichen Verlauf als auch eine Legende mit einem zusammengefassten Wert. 
 
-![Kachel mit Liniendiagramm und Legende](media/log-analytics-view-designer/tile-line-chart-callout.png)
+![Kachel mit Liniendiagramm und Legende](media/log-analytics-view-designer-tiles/tile-line-chart-callout.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |
@@ -156,7 +156,7 @@ Diese Kachel umfasst sowohl ein Liniendiagramm mit mehreren Datenreihen aus eine
 ## <a name="two-timelines-tile"></a>Kachel „Zwei Zeitachsen“
 Die Kachel **Zwei Zeitachsen** zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an. Für jede Reihe wird eine Legende angezeigt. 
 
-![Kachel „Zwei Zeitachsen“](media/log-analytics-view-designer/tile-two-timelines.png)
+![Kachel „Zwei Zeitachsen“](media/log-analytics-view-designer-tiles/tile-two-timelines.png)
 
 | Einstellung | BESCHREIBUNG |
 |:--- |:--- |

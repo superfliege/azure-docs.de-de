@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6882dd56ee96e1fcab5926b77f11ce928bf950b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442354"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139508"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien
 
@@ -41,7 +41,7 @@ Im Vergleich zum herkömmlichen Ansatz, bei dem sich Vorlagenseiten im Besitz de
 Sie können beliebig viele Inhaltsseiten bereitstellen, indem Sie entsprechende HTML5/CSS-Dateien erstellen.
 
 > [!NOTE]
-> Aus Sicherheitsgründen ist die Nutzung von JavaScript für die Anpassung derzeit blockiert. Zum Aufheben der Blockierung für JavaScript ist die Verwendung eines benutzerdefinierten Domänennamens für Ihren Azure AD B2C-Mandanten erforderlich.
+> Aus Sicherheitsgründen ist die Nutzung von JavaScript für die Anpassung derzeit blockiert. 
 
 Geben Sie in Ihren HTML5/CSS-Vorlagen jeweils ein *anchor*-Element an, das dem erforderlichen `<div id=”api”>`-Element im HTML-Code oder auf der Inhaltsseite (unten dargestellt)Inhaltsseite entspricht. Für Azure AD B2C müssen alle Inhaltsseiten über dieses spezifische div-Element verfügen.
 

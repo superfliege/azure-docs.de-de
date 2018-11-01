@@ -3,18 +3,18 @@ title: Definieren eines neuen Gerätetyps in Azure IoT Central | Microsoft-Dokum
 description: In diesem Tutorial für Ersteller erfahren Sie, wie Sie in Ihrer Azure IoT Central-Anwendung einen neuen Gerätetyp definieren. Sie definieren die Telemetriedaten, den Zustand, die Eigenschaften und die Einstellungen für den Typ.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 04/16/2018
+ms.date: 10/12/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 246d7f837fdf72ddb2d24139d2d3d83fcd43b640
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 8c69a863d8719a0e4eba30a6d5a619210e7f95b8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310647"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156033"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -269,7 +269,7 @@ Einstellungen Eigenschaften und Befehle sind unterschiedliche Werte, die in eine
     | Mindestwert        | 20              |
     | Maximalwert        | 200             |
     | Anfangswert        | 80              |
-    | Beschreibung          | Set the target temperature for the air conditioner |
+    | BESCHREIBUNG          | Set the target temperature for the air conditioner |
 
     Klicken Sie anschließend auf **Speichern**:
 
@@ -335,7 +335,7 @@ Einstellungen Eigenschaften und Befehle sind unterschiedliche Werte, die in eine
     | Anzeigename         | Firmware version        |
     | Feldname           | firmwareVersion         |
     | Datentyp            | text                    |
-    | Beschreibung          | Die Firmwareversion der Klimaanlage |
+    | BESCHREIBUNG          | Die Firmwareversion der Klimaanlage |
 
     ![Konfigurieren der Firmwareversion](./media/tutorial-define-device-type/configureproperties3.png)
     
@@ -377,7 +377,7 @@ Verwenden Sie _Befehle_, damit ein Operator Befehle direkt auf dem Gerät ausfü
     | Feldname           | Echo            |
     | Standardzeitlimit      | 30              |
     | Typ anzeigen         | text            |
-    | Beschreibung          | Gerätebefehl  |  
+    | BESCHREIBUNG          | Gerätebefehl  |  
 
     Sie können zusätzliche Eingaben für den Befehl hinzufügen, indem Sie unter **Eingabefelder** auf **+** klicken.
 

@@ -3,7 +3,7 @@ title: Schützen Ihrer verwalteten Azure Active Directory Domain Services-Domän
 description: Schützen Ihrer verwalteten Domäne
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 6b4665b5-4324-42ab-82c5-d36c01192c2a
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: maheshu
-ms.openlocfilehash: 20579f7abd6cd815377c3e97d820a3e5490e0f95
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.author: ergreenl
+ms.openlocfilehash: 1dea3def00423ecf092562aa47c76258316194a9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902518"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159059"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Schützen Ihrer verwalteten Azure AD Domain Services-Domäne
 Dieser Artikel unterstützt Sie beim Schützen Ihrer verwalteten Domäne. Sie können die Verwendung unsicherer Verschlüsselungssammlungen und die Synchronisierung von NTLM-Anmeldeinformationshashes deaktivieren.
@@ -58,4 +58,4 @@ Set-AzureRmResource -Id $DomainServicesResource.ResourceId -Properties $security
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Grundlegendes zu Synchronisierung in Azure AD Domain Services](active-directory-ds-synchronization.md)
+* [Grundlegendes zur Synchronisierung in Azure AD Domain Services](active-directory-ds-synchronization.md)

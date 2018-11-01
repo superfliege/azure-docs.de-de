@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 286f8e560ec653ed4f4f1cad5a2ae27b940f8d15
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ca412e94f65c7e1ed9a547ec9dcabc62fac7d42f
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781779"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741826"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Vorschau: Erzwingen des Azure AD-Kennwortschutzes für Windows Server Active Directory
 
@@ -33,16 +33,6 @@ Es gibt drei Softwarekomponenten, die den Azure AD-Kennwortschutz bilden:
 * Die DC-Agent-Kennwortfilter-DLL empfängt Anforderungen zur Kennwortüberprüfung vom Betriebssystem und leitet sie an den Azure AD-Kennwortschutz-DC-Agent-Dienst weiter, der lokal auf dem Domänencontroller ausgeführt wird.
 
 ![Zusammenspiel der Komponenten des Azure AD-Kennwortschutzes](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
-
-## <a name="requirements"></a>Anforderungen
-
-* Alle Computer, auf denen Azure AD-Kennwortschutzkomponenten einschließlich Domänencontrollern installiert sind, müssen Windows Server 2012 oder höher ausführen.
-* Alle Computer, auf denen Azure AD-Kennwortschutzkomponenten, einschließlich Domänencontrollern, installiert sind, müssen über eine Installation der Universal C Runtime verfügen. Dies wird vorzugsweise erreicht, indem der Computer über Windows Update mit allen Patches versehen wird. Andernfalls kann ein geeignetes betriebssystemspezifisches Updatepaket installiert werden. Weitere Informationen finden Sie unter [Update for Universal C Runtime in Windows](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows) (Update für Universal C Runtime in Windows).
-* Netzwerkkonnektivität muss zwischen mindestens einem Domänencontroller in jeder Domäne und mindestens einem Server bestehen, der den Azure AD-Kennwortschutz-Proxydienst hostet.
-* Auf jedem Active Directory-Domänencontroller, der die Funktion zum Schutz von Passwörtern nutzt, muss der DC-Agent installiert sein.
-* Alle Active Directory-Domänen, die die DC-Agent-Dienst-Software ausführen, müssen DFSR für die SYSVOL-Replikation verwenden.
-* Ein globales Administratorkonto zum Registrieren des Azure AD-Kennwortschutz-Proxydienstes bei Azure AD.
-* Ein Konto mit Administratorrechten der Active Directory-Domäne in der Gesamtstruktur-Stammdomäne.
 
 ### <a name="license-requirements"></a>Lizenzanforderungen
 
@@ -70,7 +60,6 @@ Es gibt zwei erforderliche Installer für den Azure AD-Kennwortschutz, die vom [
 * Es wird empfohlen, den DC-Agent auf allen Domänencontrollern zu installieren, um den zwangsweisen Kennwortschutz zu gewährleisten. 
 * Azure AD-Kennwortschutz ist kein Echtzeit-Richtlinienanwendungs-Modul. Zwischen einer Änderung der Kennwortrichtlinien-Konfiguration und dem Zeitpunkt, zu dem sie alle Domänencontroller erreicht und dort ihre Durchsetzung erzwungen wird, kann eine Verzögerung auftreten.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen des Kennwortschutzes für Azure AD](howto-password-ban-bad-on-premises.md)
+[Bereitstellen des Kennwortschutzes für Azure AD](howto-password-ban-bad-on-premises-deploy.md)

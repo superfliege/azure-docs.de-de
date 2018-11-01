@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: b4fbd1248f91e0766cca66d1c51033a8b338c324
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 75b1edf80f1dad5f0db48c11329effe080760820
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957374"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413144"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen jetzt auch mit [Grafana](https://grafana.com/) überwachen, indem Sie das [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/plugins/grafana-azure-monitor-datasource) verwenden. Mit dem Plug-In werden Daten zur Anwendungsleistung, die mit dem Application Insights SDK gesammelt werden, sowie von Azure Monitor bereitgestellte Infrastrukturdaten erfasst. Sie können diese Daten dann in Ihrem Grafana-Dashboard anzeigen.
@@ -37,13 +37,13 @@ Führen Sie die folgenden Schritte aus, um einen Grafana-Server über Azure Mark
 ## <a name="log-in-to-grafana"></a>Anmelden an Grafana
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**. Eine Liste mit den neu erstellten Ressourcen wird angezeigt.
 
-    ![Grafana-Ressourcengruppenobjekte](.\media\monitor-how-to-grafana\grafana1.png)
+    ![Grafana-Ressourcengruppenobjekte](media/monitor-send-to-grafana/grafana1.png)
 
     Wenn Sie die Netzwerksicherheitsgruppe auswählen (hier *grafana-nsg*), sehen Sie, dass Port 3000 zum Zugreifen auf den Grafana-Server verwendet wird.
 
 2. Wechseln Sie zurück zur Liste mit den Ressourcen, und wählen Sie **Öffentliche IP-Adresse**. Verwenden Sie die Werte in diesem Fenster, und geben Sie *http://<IP address>:3000* oder *<DNSName>:3000* in Ihrem Browser ein. Eine Anmeldeseite für den zuvor erstellten Grafana-Server wird angezeigt.
 
-    ![Grafana-Anmeldebildschirm](.\media\monitor-how-to-grafana\grafana2.png)
+    ![Grafana-Anmeldebildschirm](media/monitor-send-to-grafana/grafana2.png)
 
 3. Melden Sie sich mit dem Benutzernamen *admin* und dem zuvor erstellten Grafana-Serveradministratorkennwort an.
 
@@ -51,7 +51,7 @@ Führen Sie die folgenden Schritte aus, um einen Grafana-Server über Azure Mark
 
 Nach der erfolgreichen Anmeldung sollte zu sehen sein, dass das Azure Monitor-Datenquellen-Plug-In bereits vorhanden ist.
 
-![Anzeige des Azure Monitor-Plug-Ins in Grafana](.\media\monitor-how-to-grafana\grafana3.png)
+![Anzeige des Azure Monitor-Plug-Ins in Grafana](media/monitor-send-to-grafana/grafana3.png)
 
 1. Wählen Sie die Option **Datenquelle hinzufügen**, um Azure Monitor und Application Insights zu konfigurieren.
 
@@ -70,7 +70,7 @@ Grafana nutzt einen Azure Active Directory-Dienstprinzipal zum Herstellen einer 
 
 4. Nachdem Sie alle diese Informationen eingegeben haben, können Sie **Speichern** wählen. Die API wird dann von Grafana getestet. Es wird in etwa folgende Meldung angezeigt:  
 
-    ![Anzeige des Azure Monitor-Plug-Ins in Grafana](.\media\monitor-how-to-grafana\grafana4-1.png)
+    ![Anzeige des Azure Monitor-Plug-Ins in Grafana](media/monitor-send-to-grafana/grafana4-1.png)
 
 > [!NOTE]
 > Bei der Konfiguration des Plug-Ins können Sie angeben, gegen welche Azure Cloud (Öffentlich, Azure US-Regierung, Azure Deutschland oder Azure China) das Plug-In konfiguriert werden soll.
@@ -83,7 +83,7 @@ Grafana nutzt einen Azure Active Directory-Dienstprinzipal zum Herstellen einer 
 
 2. Wählen Sie im neuen Dashboard die Option **Graph**. Sie können auch andere Diagrammoptionen ausprobieren, aber in diesem Artikel wird *Graph* als Beispiel verwendet.
 
-    ![Grafana: Neues Dashboard](.\media\monitor-how-to-grafana\grafana5.png)
+    ![Grafana: Neues Dashboard](media/monitor-send-to-grafana/grafana5.png)
 
 3. Im Dashboard wird ein leeres Diagramm angezeigt.
 
@@ -93,14 +93,14 @@ Grafana nutzt einen Azure Active Directory-Dienstprinzipal zum Herstellen einer 
 
 Unten ist ein einfaches Dashboard mit zwei Diagrammen angegeben. Im linken Diagramm wird der CPU-Prozentsatz der beiden VMs angezeigt. Im rechten Diagramm werden die Transaktionen in einem Azure Storage-Konto unterteilt nach Transaktions-API-Typ angezeigt.
 
-![Grafana-Beispiel mit zwei Diagrammen](.\media\monitor-how-to-grafana\grafana6.png)
+![Grafana-Beispiel mit zwei Diagrammen](media/monitor-send-to-grafana/grafana6.png)
 
 
 ## <a name="optional-create-dashboard-playlists"></a>Optional: Erstellen von Dashboard-Wiedergabelisten
 
 Eines der vielen nützlichen Features von Grafana ist die Dashboard-Wiedergabeliste. Sie können mehrere Dashboards erstellen und einer Wiedergabeliste hinzufügen und dann ein Intervall für die Anzeige jedes Dashboards konfigurieren. Wählen Sie **Play** (Wiedergabe), um den Durchlauf der Dashboards zu verfolgen. Sie können sie beispielsweise auf einem großen Monitor an der Wand als „Statusübersicht“ für Ihre Gruppe anzeigen.
 
-![Grafana-Beispiel für eine Wiedergabeliste](.\media\monitor-how-to-grafana\grafana7.png)
+![Grafana-Beispiel für eine Wiedergabeliste](media/monitor-send-to-grafana/grafana7.png)
 
 
 ## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Optional: Überwachen Ihrer benutzerdefinierten Metriken auf demselben Grafana-Server
@@ -117,7 +117,7 @@ Hier sind einige gute Referenzartikel zur Verwendung von Telegraf, InfluxDB, Pro
  - [A monitoring solution for Docker hosts, containers, and containerized services](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/) (Eine Überwachungslösung für Docker-Hosts, -Container und -Dienste in Containern)
 
 Hier ist eine Abbildung mit einem vollständigen Grafana-Dashboard angegeben, das Metriken aus Azure Monitor und Application Insights enthält.
-![Grafana-Beispiel für Metriken](.\media\monitor-how-to-grafana\grafana8.png)
+![Grafana-Beispiel für Metriken](media/monitor-send-to-grafana/grafana8.png)
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
