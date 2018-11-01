@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a95cdbb48371cf960211f55bf077cea9db783db5
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 3c8202f762c65d72417020b0524e415e55076eb0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248328"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415261"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -43,11 +43,11 @@ Gehen Sie dazu wie folgt vor:
 1. Wählen Sie im Azure-Portal die Option **Überwachen** > **Warnungen**.
 2. Klicken Sie oben im Fenster **Warnungen** auf **Neue Warnungsregel**.
 
-     ![Neue Warnungsregel](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+     ![Neue Warnungsregel](media/alert-activity-log/AlertsPreviewOption.png)
 
      Das Fenster **Regel erstellen** wird angezeigt.
 
-      ![Optionen für neue Warnungsregel](./media/monitoring-activity-log-alerts-new-experience/create-new-alert-rule-options.png)
+      ![Optionen für neue Warnungsregel](media/alert-activity-log/create-new-alert-rule-options.png)
 
 3. Geben Sie unter **Warnungsbedingung definieren** die folgenden Informationen an, und klicken Sie auf **Fertig**.
 
@@ -57,7 +57,7 @@ Gehen Sie dazu wie folgt vor:
 
     > Sie können eine Ressource, eine Ressourcengruppe oder ein gesamtes Abonnement für das Aktivitätsprotokollsignal auswählen.
 
-    **Beispielansicht für Warnungsziel** ![Ziel auswählen](./media/monitoring-activity-log-alerts-new-experience/select-target.png)
+    **Beispielansicht für Warnungsziel** ![Ziel auswählen](media/alert-activity-log/select-target.png)
 
     - Klicken Sie unter **Zielkriterien** auf **Kriterien hinzufügen**. Daraufhin werden alle verfügbaren Signale für das Ziel angezeigt, einschließlich der Signale aus verschiedenen Kategorien von **Aktivitätsprotokoll**, wobei der Kategoriename an den Namen für den **Monitordienst** angehängt wird.
 
@@ -67,7 +67,7 @@ Gehen Sie dazu wie folgt vor:
 
     **Anzeige „Kriterien hinzufügen“**
 
-    ![Kriterien hinzufügen](./media/monitoring-activity-log-alerts-new-experience/add-criteria.png)
+    ![Kriterien hinzufügen](media/alert-activity-log/add-criteria.png)
 
     **Verlaufszeit**: Die für den ausgewählten Vorgang verfügbaren Ereignisse können über die letzten 6/12/24 Stunden oder über die letzte Woche aufgezeichnet werden.
 
@@ -79,7 +79,7 @@ Gehen Sie dazu wie folgt vor:
 
         Beispielsignaldiagramm mit angewandter Warnungslogik:
 
-        ![ ausgewählten Kriterien](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
+        ![ ausgewählten Kriterien](media/alert-activity-log/criteria-selected.png)
 
 4. Geben Sie unter **define alert rules details** (Informationen zu Warnungsregeln definieren) die folgenden Details an:
 
@@ -99,20 +99,20 @@ Gehen Sie dazu wie folgt vor:
 
 Alternativ ist eine einfache Analogie zum Verständnis der Bedingungen, unter denen Warnungsregeln für das Aktivitätsprotokoll erstellt werden können, die Untersuchung oder Filterung von Ereignissen über das [Aktivitätsprotokoll im Azure-Portal](monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal). In Azure Monitor – Aktivitätsprotokoll können Sie erforderliche Ereignisse filtern oder finden und dann eine Warnung mit der Schaltfläche **Aktivitätsprotokollwarnung hinzufügen** erstellen. Befolgen Sie dann ab Schritt 4 die erforderlichen Schritte wie im obigen Tutorial beschrieben.
     
- ![ Hinzufügen einer Warnung aus dem Aktivitätsprotokoll](./media/monitoring-activity-log-alerts-new-experience/add-activity-log.png)
+ ![ Hinzufügen einer Warnung aus dem Aktivitätsprotokoll](media/alert-activity-log/add-activity-log.png)
     
 
 ### <a name="view-and-manage-in-azure-portal"></a>Anzeigen und Verwalten im Azure-Portal
 
 1. Klicken Sie im Azure-Portal auf **Überwachen** > **Warnungen** und dann oben links im Fenster auf **Regeln verwalten**.
 
-    ![ Verwalten von Warnungsregeln](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![ Verwalten von Warnungsregeln](media/alert-activity-log/manage-alert-rules.png)
 
     Die Liste mit den verfügbaren Regeln wird angezeigt.
 
 2. Suchen Sie nach der zu ändernden Aktivitätsprotokollregel.
 
-    ![ Suche nach Regel für Aktivitätsprotokollwarnungen](./media/monitoring-activity-log-alerts-new-experience/searth-activity-log-rule-to-edit.png)
+    ![ Suche nach Regel für Aktivitätsprotokollwarnungen](media/alert-activity-log/searth-activity-log-rule-to-edit.png)
 
     Sie können die verfügbaren Filter _Abonnement_, _Ressourcengruppe_, _Ressource_, _Signaltyp_ oder _Status_ verwenden, um die Aktivitätsregel zu ermitteln, die Sie bearbeiten möchten.
 
@@ -122,7 +122,7 @@ Alternativ ist eine einfache Analogie zum Verständnis der Bedingungen, unter de
 
 3.  Wählen Sie die Regel aus, und doppelklicken Sie darauf, um die Regeloptionen zu bearbeiten. Nehmen Sie die erforderlichen Änderungen vor, und klicken Sie dann auf **Speichern**.
 
-    ![ Verwalten von Warnungsregeln](./media/monitoring-activity-log-alerts-new-experience/activity-log-rule-edit-page.png)
+    ![ Verwalten von Warnungsregeln](media/alert-activity-log/activity-log-rule-edit-page.png)
 
 4.  Sie können eine Regel deaktivieren, aktivieren oder löschen. Wählen Sie oben im Fenster die entsprechende Option, nachdem Sie die Regel wie in Schritt 2 beschrieben ausgewählt haben.
 

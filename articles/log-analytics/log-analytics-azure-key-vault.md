@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: 1c72421be6cfb266293c98d9ad06bd6adb35019b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: be0a12bbb84db1e4016bd7126a38e750e6c0c3ad
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043582"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412821"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Azure Key Vault Analytics-Lösung in Log Analytics
 
-![Key Vault-Symbol](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
+![Key Vault-Symbol](media/log-analytics-azure-key-vault/key-vault-analytics-symbol.png)
 
 Sie können die Azure Key Vault-Lösung in Log Analytics verwenden, um AuditEvent-Protokolle von Azure Key Vault zu überprüfen.
 
@@ -46,10 +46,10 @@ Gehen Sie folgendermaßen vor, um die Azure Key Vault-Lösung zu installieren un
 1. Wechseln Sie im Azure-Portal zu der zu überwachenden Key Vault-Ressource.
 2. Wählen Sie *Diagnoseprotokolle*, um die folgende Seite zu öffnen.
 
-   ![Abbildung der Kachel „Azure Key Vault“](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics01.png)
+   ![Abbildung der Kachel „Azure Key Vault“](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
 3. Klicken Sie auf *Diagnose aktivieren*, um die folgende Seite zu öffnen.
 
-   ![Abbildung der Kachel „Azure Key Vault“](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics02.png)
+   ![Abbildung der Kachel „Azure Key Vault“](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. Um die Diagnose zu aktivieren, klicken Sie unter *Status* auf *Ein*.
 5. Klicken Sie auf das Kontrollkästchen *An Log Analytics senden*.
 6. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich, oder erstellen Sie einen Arbeitsbereich.
@@ -81,7 +81,7 @@ Die folgende Tabelle enthält die Datensammlungsmethoden und andere Details dazu
 ## <a name="use-azure-key-vault"></a>Verwenden von Azure Key Vault
 Zeigen Sie nach der [Installation der Lösung](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) die Key Vault-Daten an, indem Sie in Log Analytics auf der Seite **Übersicht** auf die Kachel **Azure Key Vault** klicken.
 
-![Abbildung der Kachel „Azure Key Vault“](./media/log-analytics-azure-keyvault/log-analytics-keyvault-tile.png)
+![Abbildung der Kachel „Azure Key Vault“](media/log-analytics-azure-key-vault/log-analytics-keyvault-tile.png)
 
 Nachdem Sie auf die Kachel **Übersicht** geklickt haben, können Sie Zusammenfassungen der Protokolle anzeigen und einen Drilldown zu Details für die folgenden Kategorien durchführen:
 
@@ -90,9 +90,9 @@ Nachdem Sie auf die Kachel **Übersicht** geklickt haben, können Sie Zusammenfa
 * Durchschnittliche Ausführungslatenz nach Vorgang
 * Quality of Service für Vorgänge mit der Anzahl von Vorgängen, die mehr als 1.000 ms dauern, sowie eine Liste der Vorgänge, die mehr als 1.000 ms dauern
 
-![Abbildung des Azure Key Vault-Dashboards](./media/log-analytics-azure-keyvault/log-analytics-keyvault01.png)
+![Abbildung des Azure Key Vault-Dashboards](media/log-analytics-azure-key-vault/log-analytics-keyvault01.png)
 
-![Abbildung des Azure Key Vault-Dashboards](./media/log-analytics-azure-keyvault/log-analytics-keyvault02.png)
+![Abbildung des Azure Key Vault-Dashboards](media/log-analytics-azure-key-vault/log-analytics-keyvault02.png)
 
 ### <a name="to-view-details-for-any-operation"></a>So zeigen Sie Details zu einzelnen Vorgängen an
 1. Klicken Sie auf der Seite **Übersicht** auf die Kachel **Azure Key Vault**.

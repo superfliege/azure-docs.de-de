@@ -9,12 +9,12 @@ ms.date: 11/13/2017
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ecda8621640223f1c27f32834f2e4a098da4aba6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 75401614b6892402083af5192b691f00d82c8d05
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301622"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413620"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Hinzufügen der kontinuierlichen Überwachung zur Releasepipeline
 
@@ -28,13 +28,13 @@ Azure DevOps Services unterstützt jetzt kontinuierliche Überwachung, sodass Re
 
 2. Zeigen Sie auf **Build und Release**. > Wählen Sie **Releases** aus. > Klicken Sie auf das **Pluszeichen** > **Releasedefinition erstellen**. > Suchen Sie nach **Überwachung** > **Azure App Service Deployment with Continuous Monitoring** (Azure App Service-Bereitstellung mit kontinuierlicher Überwachung).
 
-   ![Neue Azure DevOps Services-Releasepipeline](.\media\app-insights-continuous-monitoring\001.png)
+   ![Neue Azure DevOps Services-Releasepipeline](media/app-insights-vsts-continuous-monitoring/001.png)
 
 3. Klicken Sie auf **Übernehmen**.
 
 4. Wählen Sie neben dem roten Ausrufezeichen den blauen Text aus, um die Option **Umgebungsaufgaben anzeigen** anzuzeigen.
 
-   ![Umgebungsaufgaben anzeigen](.\media\app-insights-continuous-monitoring\002.png)
+   ![Umgebungsaufgaben anzeigen](media/app-insights-vsts-continuous-monitoring/002.png)
 
    Es wird ein Dialogfeld für die Konfiguration geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus.
 
@@ -60,7 +60,7 @@ Azure DevOps Services unterstützt jetzt kontinuierliche Überwachung, sodass Re
 
 3. Ändern Sie den **Schwellenwert** für die Verfügbarkeit entsprechend Ihren Servicelevelanforderungen.
 
-   ![Ändern der Warnung](.\media\app-insights-continuous-monitoring\003.png)
+   ![Ändern der Warnung](media/app-insights-vsts-continuous-monitoring/003.png)
 
 4. Wählen Sie **OK** > **Speichern** aus. > Geben Sie einen beschreibenden Kommentar ein. > Klicken Sie auf **OK**.
 
@@ -68,13 +68,13 @@ Azure DevOps Services unterstützt jetzt kontinuierliche Überwachung, sodass Re
 
 1. Klicken Sie auf **Pipeline**. > Wählen Sie abhängig von der Phase, für die ein Gate zur kontinuierlichen Überwachung erforderlich ist, das Symbol für die **Bedingungen vor der Bereitstellung** oder die **Bedingungen nach der Bereitstellung** aus.
 
-   ![Bedingungen vor der Bereitstellung](.\media\app-insights-continuous-monitoring\004.png)
+   ![Bedingungen vor der Bereitstellung](media/app-insights-vsts-continuous-monitoring/004.png)
 
 2. Legen Sie **Gates** auf **Aktiviert** > **Approval gates** (Genehmigungsgates) fest. > Klicken Sie auf **Hinzufügen**.
 
 3. Wählen Sie **Azure Monitor** aus. (Über diese Option können Sie auf Warnungen von Azure Monitor sowie von Application Insights zugreifen.)
 
-    ![Azure Monitor](.\media\app-insights-continuous-monitoring\005.png)
+    ![Azure Monitor](media/app-insights-vsts-continuous-monitoring/005.png)
 
 4. Geben Sie einen Wert für **Gates Timeout** (Gatetimeout) ein.
 
@@ -86,7 +86,7 @@ Nachdem Sie Bereitstellungsgates hinzugefügt haben, schützt eine Warnung in Ap
 
 Wählen Sie zur Überwachung dieses Verhaltens die Option **Releases** aus. > Klicken Sie mit der rechten Maustaste auf den Releasenamen, und wählen Sie **Öffnen** > **Protokolle** aus.
 
-![Protokolle](.\media\app-insights-continuous-monitoring\006.png)
+![Protokolle](media/app-insights-vsts-continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

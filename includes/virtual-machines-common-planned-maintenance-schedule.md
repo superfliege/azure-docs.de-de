@@ -1,5 +1,16 @@
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: c7fe0d6f8e03501cca7a8b98f95286b6a21c0476
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227122"
+---
 ## <a name="multi-and-single-instance-vms"></a>Mehrfach- und Einzelinstanz-VMs
 Für viele Kunden von Azure ist es entscheidend, dass sie planen können, wann für ihre VMs die geplante Wartung durchgeführt wird. Der Grund ist die Ausfallzeit von ca. 15 Minuten, zu der es bei der Wartung kommt. Sie können Verfügbarkeitsgruppen nutzen, um zu steuern, wann bereitgestellte VMs einer geplanten Wartung unterzogen werden.
 
