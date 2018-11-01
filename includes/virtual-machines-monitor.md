@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 109f4621af3e3ca617dfe521575d9352f22c5917
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227121"
+---
 Sie können viele Möglichkeiten zum Überwachen Ihrer VMs nutzen, indem Sie Diagnose- und Protokolldaten sammeln, anzeigen und analysieren. Zum einfachen [Überwachen](../articles/azure-monitor/overview.md) Ihrer VM können Sie im Azure-Portal die Übersichtsseite für die VM verwenden. Sie können [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) verwenden, um die Diagnose für Ihre VMs so zu konfigurieren, dass zusätzliche Metrikdaten gesammelt werden. Sie können auch anspruchsvollere Überwachungsoptionen nutzen, z.B. [Application Insights](../articles/application-insights/app-insights-overview.md) und [Log Analytics](../articles/log-analytics/log-analytics-queries.md).
 
 ## <a name="diagnostics-and-metrics"></a>Diagnose und Metriken 
