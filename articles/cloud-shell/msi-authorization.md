@@ -1,5 +1,5 @@
 ---
-title: Verwenden von MSI in Azure Cloud Shell | Microsoft-Dokumentation
+title: Verwenden verwalteter Identitäten für Azure-Ressourcen in Azure Cloud Shell | Microsoft-Dokumentation
 description: Authentifizieren von Code mit MSI in Azure Cloud Shell
 services: azure
 documentationcenter: ''
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: juluk
-ms.openlocfilehash: 99577faf7328dc773a9da5f7c1227aa63600aa0a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fe77deeedc34bf769065e34ac2f81d631b0004d6
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31516284"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352947"
 ---
-# <a name="use-msi-in-azure-cloud-shell"></a>Verwenden von MSI in Azure Cloud Shell
+# <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Verwenden verwalteter Identitäten für Azure-Ressourcen in Azure Cloud Shell
 
-Azure Cloud Shell unterstützt die Autorisierung mit verwalteten Dienstidentitäten. Nutzen Sie diese Option, um Zugriffstoken für die sichere Kommunikation mit Azure-Diensten abzurufen.
+Azure Cloud Shell unterstützt die Autorisierung mit verwalteten Identitäten für Azure-Ressourcen. Nutzen Sie diese Option, um Zugriffstoken für die sichere Kommunikation mit Azure-Diensten abzurufen.
 
-## <a name="about-managed-service-identity-msi"></a>Informationen zu verwalteten Dienstidentitäten
+## <a name="about-managed-identities-for-azure-resources"></a>Informationen zu verwalteten Identitäten für Azure-Ressourcen
 Eine gängige Herausforderung beim Erstellen von Cloudanwendungen ist die sichere Verwaltung der Anmeldeinformationen, die für die Authentifizierung bei Clouddiensten im Code enthalten sein müssen. In Cloud Shell müssen Sie möglicherweise den Abruf von Anmeldeinformationen aus dem Schlüsseltresor authentifizieren, die ein Skript möglicherweise benötigt.
 
-Mithilfe von MSI (Managed Service Identity, verwaltete Dienstidentität) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
+Mithilfe der verwalteten Identitäten für Azure-Ressourcen kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
 ## <a name="acquire-access-token-in-cloud-shell"></a>Abrufen eines Zugriffstokens in Cloud Shell
 

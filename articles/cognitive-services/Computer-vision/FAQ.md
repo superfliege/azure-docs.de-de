@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
-ms.openlocfilehash: 5c0a4e981a290b9a758c8401a75e546c61618b45
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 55b474d0edbb8dc01b9f35d4f8799e53e37862df
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983900"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166371"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Häufig gestellte Fragen zur Maschinelles Sehen-API
 
@@ -44,7 +44,7 @@ ms.locfileid: "45983900"
 | Dänisch (da-DK)  | Niederländisch (nl-NL)     | Englisch           | Finnisch (fi-FI)            |Französisch (fr-FR)
 | Deutsch (de-DE)  | Griechisch (el-GR)     | Ungarisch (hu-HU) | Italienisch (it-IT)            | Japanisch (ja-JP)
 | Koreanisch (ko-KR)  | Norwegisch (nb-NO) | Polnisch (pl-PL)    | Portugiesisch (pt-BR) (pt-PT) | Russisch (ru-RU)
-| Spanisch (es-ES)   | Schwedisch (sv-SV)     | Türkisch (tr-TU)   |                            |
+| Spanisch (es-ES)   | Schwedisch (sv-SV)     | Türkisch (tr-TR)   |                            |
 
 -----
 

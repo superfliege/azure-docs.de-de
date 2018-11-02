@@ -4,28 +4,28 @@ description: Dieses Thema bietet eine Übersicht über Livestreaming mit Azure M
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: e9ecf1ba3022ca057fa09bad2413aa19d902ae23
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972178"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378135"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
 Beim Bereitstellen von Livestreamingereignissen mit Azure Media Services sind häufig die folgenden Komponenten beteiligt:
 
 * Eine Kamera, mit der ein Ereignis übertragen wird.
-* Ein Liveencoder, der Signale von der Kamera (oder einem anderen Gerät, z.B. Laptop) in Streams konvertiert, die an den Livestreamingdienst Media Services gesendet werden. Die Signale können auch Werbeblöcke und -einblendungen gemäß dem Standard SCTE-35 enthalten. 
+* Ein Liveencoder, der Signale von der Kamera (oder einem anderen Gerät, z. B. Laptop) in Streams konvertiert, die an den Livestreamingdienst gesendet werden. Die Signale können auch Werbeblöcke und -einblendungen gemäß dem Standard SCTE-35 enthalten. 
 * Mit dem Livestreamingdienst Media Services können Sie die Inhalte erfassen, in einer Vorschau anzeigen, packen, aufzeichnen, verschlüsseln und zur weiteren Verteilung an Ihre Kunden oder ein CDN senden.
 
 Dieser Artikel bietet einen detaillierten Überblick und enthält Diagramme der wichtigsten Komponenten für Livestreaming mit Media Services.
@@ -40,6 +40,17 @@ Mit Media Services können Sie Ihre zu übermittelnden Inhalte mithilfe der (**d
 
 Auf Wunsch können Sie auch die **dynamische Filterung** anwenden, mit der Sie die Anzahl der Spuren, Formate und Bitraten steuern können, die an die Player gesendet werden. Media Services unterstützt auch das Einfügen von Werbeeinblendungen.
 
+### <a name="new-live-encoding-improvements"></a>Neue Verbesserungen bei der Livecodierung
+
+Die folgenden neuen Verbesserungen wurden in der neuesten Version vorgenommen.
+
+- Neuer Modus mit geringer Latenz für den Livebetrieb (10 Sekunden für den End-to-End-Vorgang).
+- Verbesserte RTMP-Unterstützung (höhere Stabilität und bessere Unterstützung für Quellcodierer).
+- Sichere RTMPS-Erfassung.
+
+    Bei der Erstellung eines Liveereignisses erhalten Sie jetzt vier Erfassungs-URLs. Die vier Erfassungs-URLs sind nahezu identisch und verfügen über das gleiche Streamingtoken (AppId). Nur der Portnummernteil unterscheidet sich. Zwei der URLs dienen als primäre URL und Backup-URL für RTMPS.   
+- Unterstützung der 24-Stunden-Transcodierung. 
+- Verbesserte Unterstützung für Werbeeinblendungen in RTMP über SCTE35.
 
 ## <a name="liveevent-types"></a>LiveEvent-Typen
 
@@ -73,25 +84,25 @@ In der folgenden Tabelle werden die Features der beiden LiveEvent-Typen verglich
 
 | Feature | LiveEvent „Pass-Through“ | LiveEvent „Basic“ |
 | --- | --- | --- |
-| Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |Ja |
+| Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |JA |
 | Maximale Auflösung, Anzahl der Ebenen |4Kp30  |720p, 6 Ebenen, 30 fps |
 | Eingabeprotokolle |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Preis |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“. |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximale Laufzeit |Rund um die Uhr |Rund um die Uhr |
-| Unterstützung für das Einfügen von Slates |Nein  |Ja |
-| Unterstützung für Werbeeinblendungen über API|Nein  |Ja |
-| Unterstützung für Werbeeinblendungen über SCTE-35 Inband|Ja |Ja |
-| Pass-Through-CEA-608/708-Untertitel |Ja |Ja |
-| Möglichkeit zum Wiederherstellen nach kurzen Unterbrechungen im Beitrag |Ja |Nein (LiveEvent beginnt Slating nach 6 Sekunden ohne Eingabedaten)|
-| Unterstützung für nicht einheitliche Eingabe-GOPs |Ja |Nein, Eingabe muss aus festen zweisekündigen GOPs bestehen |
-| Unterstützung für Eingaben mit variable Bildwiederholrate |Ja |Nein, Eingabe muss eine feste Bildfrequenz aufweisen.<br/>Kleinere Abweichungen, beispielsweise bei Szenen mit viel Bewegung, werden toleriert. Der Encoder kann aber nicht bis auf 10 Frames pro Sekunde zurückfallen. |
+| Unterstützung für das Einfügen von Slates |Nein  |JA |
+| Unterstützung für Werbeeinblendungen über API|Nein  |JA |
+| Unterstützung für Werbeeinblendungen über SCTE-35 Inband|JA |JA |
+| Pass-Through-CEA-608/708-Untertitel |JA |JA |
+| Möglichkeit zum Wiederherstellen nach kurzen Unterbrechungen im Beitrag |JA |Nein (LiveEvent beginnt Slating nach 6 Sekunden ohne Eingabedaten)|
+| Unterstützung für nicht einheitliche Eingabe-GOPs |JA |Nein, Eingabe muss aus festen zweisekündigen GOPs bestehen |
+| Unterstützung für Eingaben mit variable Bildwiederholrate |JA |Nein, Eingabe muss eine feste Bildfrequenz aufweisen.<br/>Kleinere Abweichungen, beispielsweise bei Szenen mit viel Bewegung, werden toleriert. Der Encoder kann aber nicht bis auf 10 Frames pro Sekunde zurückfallen. |
 | Automatische Abschaltung des LiveEvents, wenn der Eingabefeed verloren geht |Nein  |Nach 12 Stunden, wenn kein LiveOutput erfolgt |
 
 ## <a name="liveevent-states"></a>LiveEvent-Status 
 
 Der aktuelle Zustand eines LiveEvents. Mögliche Werte sind:
 
-|State (Zustand)|BESCHREIBUNG|
+|Zustand|BESCHREIBUNG|
 |---|---|
 |**Beendet**| Dies ist der anfängliche Status des LiveEvents nach seiner Erstellung (es sei denn, im Portal wurde automatisches Starten gewählt). In diesem Status werden keine Gebühren berechnet. In diesem Zustand können die LiveEvent-Eigenschaften aktualisiert werden, aber Streaming ist nicht zulässig.|
 |**Wird gestartet**| Das LiveEvent wird gestartet. In diesem Status werden keine Gebühren berechnet. In diesem Status sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, wird das LiveEvent in den Zustand „Stopped“ (Angehalten) zurückgesetzt.|

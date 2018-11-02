@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/19/2018
 ms.author: rajanaki
-ms.openlocfilehash: 9f0a299fb8221554a3b0c9a19a616d5ba7613a67
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 06a7e23eb16cf6296a8997273ea8d554851600c3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574402"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456489"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische Aktualisierung von Mobility Service in der Replikation zwischen Azure-Standorten
 
@@ -61,6 +61,19 @@ Wenn Sie die Replikation für einen virtuellen Computer aktiveren, indem Sie ent
 
 > [!Note] 
 > Bei beiden Optionen werden Sie benachrichtigt, welches Automatisierungskonto für die Verwaltung der Updates verwendet wird. Wenn Sie dieses Feature zum ersten Mal in einem Tresor aktivieren, wird ein neues Automatisierungskonto erstellt. Alle nachfolgend im selben Tresor aktivierten Replikationen verwenden das zuvor erstellte.
+
+### <a name="manage-manually"></a>Manuelles Verwalten
+
+1. Wenn für den auf Ihren virtuellen Azure-Computern installierten Mobility Service neue Updates verfügbar sind, wird eine Benachrichtigung mit dem Hinweis angezeigt, dass ein neues Update für den Site Recovery-Replikations-Agent verfügbar ist. Sie können es per Klick installieren.
+
+     ![Fenster „Replizierte Elemente“](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+3. Klicken Sie auf die Benachrichtigung, um die Auswahlseite für virtuelle Computer zu öffnen.
+4. Wählen Sie die virtuellen Computer aus, für die Sie Mobility Service aktualisieren möchten, und wählen Sie anschließend **OK**.
+
+     ![VM-Liste mit replizierten Elementen](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+
+Der Aktualisierungsauftrag für Mobility Service wird für jeden ausgewählten virtuellen Computer gestartet.
+
 
 ## <a name="common-issues--troubleshooting"></a>Allgemeine Probleme und Problembehandlung
 

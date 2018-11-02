@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 99df133b9f626f970189df578c6d107086b9dab9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854999"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365620"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -44,7 +44,7 @@ Viele Partnerlösungen werden mithilfe von Resource Manager-Vorlagen im Abonneme
 
 Um einen global eindeutigen Bezeichner (GUID) hinzuzufügen, nehmen Sie an der Hauptvorlagendatei eine einzige Änderung vor:
 
-1. Erstellen Sie eine GUID (z. B. eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. [Erstellen Sie eine GUID](#create-guids) (z. B. eb7927c8-dd66-43e1-b0cf-c346a422063), und [registrieren Sie die GUID](#register-guids-and-offers).
 
 1. Öffnen Sie die Resource Manager-Vorlage.
 
@@ -55,6 +55,8 @@ Um einen global eindeutigen Bezeichner (GUID) hinzuzufügen, nehmen Sie an der H
 1. Überprüfen Sie die Vorlage auf Fehler.
 
 1. Veröffentlichen Sie die Vorlage in den entsprechenden Repositorys erneut.
+
+1. [Überprüfen Sie den Erfolg der GUID in der Vorlagenbereitstellung](#verify-the-guid-deployment).
 
 ### <a name="sample-template-code"></a>Beispielcode der Vorlage
 
@@ -99,6 +101,24 @@ Wenn Sie Ihre GUID mithilfe der Azure CLI anfügen, legen Sie die Umgebungsvaria
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
+## <a name="create-guids"></a>Erstellen von GUIDs
+
+Eine GUID ist ein eindeutiger Verweis mit 32 Hexadezimalziffern. Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Es wird empfohlen, die Sie das [GUID-Generatorformular von Azure Storage](https://aka.ms/StoragePartners) nutzen. Wenn Sie den GUID-Generator von Azure Storage jedoch nicht verwenden möchten, gibt es mehrere [Online-GUID-Generatoren](https://www.bing.com/search?q=guid%20generator), die Sie verwenden können.
+
+> [!Note]
+> Es wird dringend empfohlen, dass Sie das [GUID-Generatorformular von Azure Storage](https://aka.ms/StoragePartners) verwenden, um Ihre GUID zu erstellen. Weitere Informationen finden Sie in den [häufig gestellten Fragen](#faq).
+
+Erstellen Sie für jedes Angebot und jeden Distributionskanal eine eindeutige GUID. Wenn Sie mithilfe einer Vorlage zwei Lösungen bereitstellen, die jeweils im Azure Marketplace und auf GitHub verfügbar sind, müssen Sie vier GUIDS erstellen:
+
+*   Angebot A im Azure Marketplace 
+*   Angebot A auf GitHub
+*   Angebot B im Azure Marketplace 
+*   Angebot B auf GitHub
+
+Die Berichterstellung erfolgt über den Partnerwert (Microsoft-Partner-ID) und die GUID. 
+
+Sie können GUIDs auch auf einer differenzierteren Ebene (z. B. pro SKU) nachverfolgen (wobei SKUs Varianten eines Angebots sind).
 
 ## <a name="register-guids-and-offers"></a>Registrieren von GUIDs und Angeboten
 
@@ -183,21 +203,6 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="create-guids"></a>Erstellen von GUIDs
-
-Eine GUID ist ein eindeutiger Verweis mit 32 Hexadezimalziffern. Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Es gibt mehrere [Online-GUID-Generatoren](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E), die Sie verwenden können.
-
-Erstellen Sie für jedes Angebot und jeden Distributionskanal eine eindeutige GUID. Wenn Sie mithilfe einer Vorlage zwei Lösungen bereitstellen, die jeweils im Azure Marketplace und auf GitHub verfügbar sind, müssen Sie vier GUIDS erstellen:
-
-*   Angebot A im Azure Marketplace 
-*   Angebot A auf GitHub
-*   Angebot B im Azure Marketplace 
-*   Angebot B auf GitHub
-
-Die Berichterstellung erfolgt über den Partnerwert (Microsoft-Partner-ID) und die GUID. 
-
-Sie können GUIDs auch auf einer differenzierteren Ebene (z. B. pro SKU) nachverfolgen (wobei SKUs Varianten eines Angebots sind).
-
 ## <a name="notify-your-customers"></a>Benachrichtigen der Kunden
 
 Partner sollten ihre Kunden über Bereitstellungen informieren, die eine Nachverfolgung mithilfe von Resource Manager-GUIDs verwenden. Microsoft erstellt für den Partner Berichte über die Azure-Nutzung, die mit diesen Bereitstellungen verknüpft ist. Die folgenden Beispiele enthalten Inhalte, die Sie für die Benachrichtigung Ihrer Kunden über diese Bereitstellungen verwenden können. Ersetzen Sie in den Beispielen \<PARTNER> durch den Namen Ihres Unternehmens. Der Partner muss sicherstellen, dass die Benachrichtigung den eigenen Richtlinien für Datenschutz und Datensammlung entspricht, und Optionen für Kunden vorsehen, die von der Nachverfolgung ausgenommen werden möchten. 
@@ -275,3 +280,7 @@ Kunden können ihre Nutzung einzelner Ressourcen oder benutzerdefinierter Ressou
 **Ist diese Nachverfolgungsmethode mit dem digitalen Partner des Eintrags (Digital Partner of Record, DPOR) vergleichbar?**
 
 Diese neue Methode für das Verbinden von Bereitstellung und Nutzung mit der Lösung eines Partners stellt einen Mechanismus zum Verknüpfen einer Partnerlösung mit der Azure-Nutzung bereit. Mit DPOR soll ein Beratungspartner (Systemintegrator) oder Verwaltungspartner (Managed Services Provider) dem Azure-Abonnement eines Kunden zugeordnet werden.   
+
+**Was ist der Vorteil bei der Verwendung des GUID-Generatorformulars von Azure Storage?**
+
+Das GUID-Generatorformular von Azure Storage generiert eine GUID garantiert im erforderlichen Format. Wenn Sie außerdem eine der Verfolgungsmethoden von Azure Storage für die Datenebene verwenden, können Sie dieselbe GUID für die Verfolgung der Marketplace-Steuerungsebene verwenden. Auf diese Weise können Sie eine einzelne einheitliche GUID für die Partnerzuordnung nutzen, ohne separate GUIDs verwalten zu müssen.

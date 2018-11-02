@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: 17354891b50138911f36314620f0c826db4b5dac
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: dcf4e9fa9435d8f20784b20f3873d408adb78c20
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833664"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469825"
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Erstellen vieler Machine Learning-Modelle und Webdienst-Endpunkte in nur einem Experiment mit PowerShell
 Dies ist ein Beispiel für ein häufiges Machine Learning-Problem: Sie möchten viele Modelle erstellen, die denselben Trainingsworkflow haben und für die derselbe Algorithmus verwendet wird. Aber Sie möchten, dass die Modelle unterschiedliche Trainingsdatasets als Eingabe haben. In diesem Artikel erfahren Sie, wie Sie dies in größerem Umfang in Azure Machine Learning Studio mit nur einem Experiment durchführen.
@@ -29,7 +29,7 @@ Angenommen, Sie besitzen eine Fahrradvermietung als globales Franchise-Unternehm
 
 Sie können das Modell einmalig trainieren, indem Sie eine zusammengefasste Version mit allen Datasets aller Standorte verwenden. Aber jeder Ihrer Standorte hat eine einzigartige Umgebung. Daher besteht ein besserer Ansatz darin, das Regressionsmodell separat zu trainieren, indem das Dataset für jeden Standort genutzt wird. Auf diese Weise können in jedem trainierten Modell die unterschiedlichen Ladengrößen, das Volumen, die Geografie, die Einwohnerzahl, die Fahrradfreundlichkeit der Verkehrsinfrastruktur und weitere Aspekte berücksichtigt werden.
 
-Dies wäre vermutlich der beste Ansatz. Sie möchten in Azure Machine Learning aber nicht 1.000 Trainingsexperimente erstellen müssen, also ein Experiment pro Standort. Dies ist nicht nur viel zu aufwändig, sondern auch eine ineffiziente Vorgehensweise, da alle Experimente mit Ausnahme des Trainingsdatasets die gleichen Komponenten aufweisen würden.
+Dies wäre vermutlich der beste Ansatz. Sie möchten in Azure Machine Learning aber nicht 1.000 Trainingsexperimente erstellen müssen, also ein Experiment pro Standort. Dies ist nicht nur viel zu aufwendig, sondern auch eine ineffiziente Vorgehensweise, da alle Experimente mit Ausnahme des Trainingsdatasets die gleichen Komponenten aufweisen würden.
 
 Glücklicherweise können Sie hierfür die [Azure Machine Learning-API für das erneute Trainieren](retrain-models-programmatically.md) verwenden und die Aufgabe mit [Azure Machine Learning PowerShell](powershell-module.md) automatisieren.
 

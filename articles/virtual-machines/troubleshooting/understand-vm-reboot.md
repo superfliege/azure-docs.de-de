@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: dd9a2c6a5b2183d4909b6bcfd24dc1fae401c785
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fa316ee47e6fdabacf22e1e419bfd501620dd83d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412625"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429149"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Informationen zum Systemneustart für virtuelle Azure-Computer
 
@@ -73,7 +73,7 @@ Zu weiteren Szenarien, in denen in der Regel der virtuelle Computer neu gestarte
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center und Windows Update
 Azure Security Center überprüft virtuelle Windows- und Linux-Computer täglich auf fehlende Betriebssystemupdates. Security Center ruft eine Liste mit verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (Windows Server Update Services) ab – je nachdem, welcher Dienst für einen virtuellen Windows-Computer konfiguriert ist. Darüber hinaus prüft Security Center auch die neuesten Updates für Linux-Systeme. Falls auf Ihrem virtuellen Computer ein Systemupdate fehlt, empfiehlt Security Center die Anwendung von Systemupdates. Die Anwendung dieser Systemupdates wird über das Security Center im Azure-Portal gesteuert. Nachdem Sie einige Updates angewendet haben, sind unter Umständen Neustarts der virtuellen Computer erforderlich. Weitere Informationen finden Sie unter [Anwenden von Systemupdates in Azure Security Center](../../security-center/security-center-apply-system-updates.md).
 
-Wie bei lokalen Servern erzwingt auch Azure nicht, dass Updates von Windows Update auf virtuelle Azure-Computer mit Windows angewendet werden, da diese Computer durch ihre Benutzer verwaltet werden sollen. Es empfiehlt sich jedoch, die Einstellung für automatische Windows-Updates aktiviert zu lassen. Die automatische Installation von Updates über Windows Update kann auch dazu führen, dass Neustarts durchgeführt werden, nachdem die Updates angewendet wurden. Weitere Informationen finden Sie unter [Windows Update: FAQ](https://support.microsoft.com/help/12373/windows-update-faq).
+Wie bei lokalen Servern überträgt Azure Updates von Windows Update nicht per Push auf virtuelle Windows-Computer, da diese Computer durch ihre Benutzer verwaltet werden sollen. Es empfiehlt sich jedoch, die Einstellung für automatische Windows-Updates aktiviert zu lassen. Die automatische Installation von Updates über Windows Update kann auch dazu führen, dass Neustarts durchgeführt werden, nachdem die Updates angewendet wurden. Weitere Informationen finden Sie unter [Windows Update: FAQ](https://support.microsoft.com/help/12373/windows-update-faq).
 
 ### <a name="other-situations-affecting-the-availability-of-your-vm"></a>Andere Situationen mit Einfluss auf die Verfügbarkeit von virtuellen Computern
 Es gibt andere Fälle, in denen Azure die Verwendung eines virtuellen Computers aktiv anhalten kann. Sie erhalten E-Mail-Benachrichtigungen, bevor eine solche Aktion durchgeführt wird, damit Sie die zugrunde liegenden Probleme lösen können. Beispiele für Probleme, die sich auf die Verfügbarkeit von virtuellen Computern auswirken, sind Sicherheitsverstöße und der Ablauf von Zahlungsmethoden.

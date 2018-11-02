@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 68eb567235897641d5d4027160f62c5aa6e7e4f9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26500f3e557a27046edc5c833b8c8d88ae266e68
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963388"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408998"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Diagnoseprotokollierung für Azure Cosmos DB
 
@@ -356,11 +356,14 @@ Diagnoseprotokolle werden zwei Stunden nach Ausführung des Azure Cosmos DB-Vorg
 
 Wenn Sie beim Aktivieren der Diagnoseprotokollierung die Option **An Log Analytics senden** ausgewählt haben, werden Diagnosedaten aus Ihrem Container innerhalb von zwei Stunden an Log Analytics weitergeleitet. Wenn Sie sofort nach dem Aktivieren der Protokollierung Log Analytics anzeigen, sehen Sie keine Daten. Warten Sie zwei Stunden, und wiederholen Sie den Vorgang. 
 
-Bevor Sie Ihre Protokolle anzeigen, sollten Sie überprüfen, ob Ihr Log Analytics-Arbeitsbereich für die Verwendung der neuen Log Analytics-Abfragesprache aktualisiert wurde. Um dies zu überprüfen, öffnen Sie das [Azure-Portal](https://portal.azure.com), wählen Sie ganz links **Log Analytics** aus, und wählen Sie dann den Arbeitsbereichsnamen wie in der folgenden Abbildung dargestellt aus. Die Seite **OMS-Arbeitsbereich** wird angezeigt:
+Bevor Sie Ihre Protokolle anzeigen, sollten Sie überprüfen, ob Ihr Log Analytics-Arbeitsbereich für die Verwendung der neuen Log Analytics-Abfragesprache aktualisiert wurde. Um dies zu überprüfen, öffnen Sie das [Azure-Portal](https://portal.azure.com), wählen Sie ganz links **Log Analytics** aus, und wählen Sie dann den Arbeitsbereichsnamen wie in der folgenden Abbildung dargestellt aus. Die Seite **Log Analytics-Arbeitsbereich** wird angezeigt:
 
 ![Log Analytics im Azure-Portal](./media/logging/azure-portal.png)
 
-Wenn die folgende Meldung auf der Seite **OMS-Arbeitsbereich** angezeigt wird, wurde Ihr Arbeitsbereich nicht für die Verwendung der neuen Sprache aktualisiert. Weitere Informationen zum Upgrade auf die neue Abfragesprache finden Sie unter [Upgrade des Azure Log Analytics-Arbeitsbereichs auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md). 
+>[!NOTE]
+>OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.  
+
+Wenn die folgende Meldung auf der Seite **Log Analytics-Arbeitsbereich** angezeigt wird, wurde Ihr Arbeitsbereich nicht für die Verwendung der neuen Sprache aktualisiert. Weitere Informationen zum Upgrade auf die neue Abfragesprache finden Sie unter [Upgrade des Azure Log Analytics-Arbeitsbereichs auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md). 
 
 ![Log Analytics-Upgrademeldung](./media/logging/upgrade-notification.png)
 

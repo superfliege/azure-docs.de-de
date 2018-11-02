@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 0b731e94675992e59f79b61a2f3a15fa20bdf8a7
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 70372f30ffaea1fafda3f76d4754489ae89a0a7c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143633"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390175"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -96,6 +96,9 @@ Wir arbeiten an einer optimierten Lösung, derzeit müssen Sie jedoch das Upgrad
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Kann ich die angefügten Datenträger in einem Clusterknotentyp (VM-Skalierungsgruppe) verschlüsseln?
 Ja.  Weitere Informationen finden Sie unter [Erstellen eines Clusters mit angefügten Datenträgern](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [Verschlüsseln von Datenträgern (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) und [Verschlüsseln von Datenträgern (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
 
+### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Kann ich virtuelle Computer mit niedriger Priorität in einem Clusterknotentyp verwenden (VM-Skalierungsgruppe)?
+Nein. Virtuelle Computer mit niedriger Priorität werden nicht unterstützt. 
+
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Welche Verzeichnisse und Prozesse muss ich ausschließen, wenn ein Antivirenprogramm in meinem Cluster ausgeführt wird?
 
 | **Vom Virenschutz ausgeschlossene Verzeichnisse** |
@@ -123,7 +126,7 @@ Ja.  Weitere Informationen finden Sie unter [Erstellen eines Clusters mit angef�
 Nachfolgend werden die Möglichkeiten für Ihre Anwendung zum Abrufen von Anmeldeinformationen für die Authentifizierung bei Key Vault aufgeführt:
 
 A. Während des Erstellungs-/Packauftrags Ihrer Anwendungen können Sie ein Zertifikat in das Datenpaket Ihrer Service Fabric-App pullen und dieses für die Authentifizierung bei Key Vault verwenden.
-B: Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/how-to-use-vm-token) abzurufen und dann [Ihre geheimen Schlüssel aus KeyVault](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0) abzurufen.
+B: Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token) abzurufen und dann [Ihre geheimen Schlüssel aus KeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0) abzurufen.
 
 ## <a name="application-design"></a>Anwendungsentwurf
 

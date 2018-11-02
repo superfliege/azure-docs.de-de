@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 1db1b8ee7ba3611f8d1d69f711f1ec72308c7d06
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 15d46f16c78b8fa757d7810542b3d6bfa9a95f3c
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833327"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465626"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen
 **Was sind Cortana Intelligence-Wettbewerbe?**
@@ -59,7 +59,7 @@ Nein. Wir ermutigen Datenbegeisterte, jeden Data Science-Interessierten und ande
 
 * **Datenentwickler**, **Datenexperten**, **BI**- und **Analyseexperten**: Personen, die für die Produktion von Daten- und Analyseinhalten zur Verwendung durch andere Benutzer verantwortlich sind
 * **Data Stewards**: Personen, die sich mit den Daten auskennen und wissen, was sie bedeuten und welchem Zweck sie dienen
-* **Studenten** & **Forscher**: Personen, die über akademische Programme an Universitäten derzeit datenbezogene Fähigkeiten erlernen, oder Teilnehmer von MOOC-Kursen (Massive Open Online Courses)
+* **Studenten** und **Forscher**: Personen, die sich über akademische Programme an Universitäten derzeit datenbezogene Fähigkeiten aneignen, oder Teilnehmer von MOOC-Kursen (Massive Open Online Courses)
 
 **Kann ich mit meinen Kollegen zusammen als Team teilnehmen?**
 

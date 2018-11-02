@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 1442e3af26ae87e645cf207228ed1197b2afdd4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cde668fdeda7e484585a457a46fc5c25ce6ea6ae
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111788"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310537"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen aus Azure
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anweisungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
@@ -44,26 +44,28 @@ Die API verwendet Twilio-Verben; so weist beispielsweise das Verb **&lt;Say&gt;*
 
 Nachfolgend finden Sie eine Liste mit Twilio-Verben.  Andere Verben und Funktionen werden in der [Dokumentation zur Twilio Markup Language](http://www.twilio.com/docs/api/twiml)erläutert.
 
-* **&lt;Dial&gt;**: Verbindet den Anrufer mit einem anderen Telefon.
-* **&lt;Gather&gt;**: Erfasst Ziffern, die über die Telefontasten eingegeben werden.
-* **&lt;Hangup&gt;**: Beendet einen Anruf.
-* **&lt;Play&gt;**: Gibt eine Audiodatei wieder.
-* **&lt;Pause&gt;**: Wartet ohne Ton für eine angegebene Anzahl von Sekunden.
-* **&lt;Record&gt;**: Zeichnet die Stimme des Anrufers auf und gibt eine URL einer Datei mit der Aufzeichnung zurück.
-* **&lt;Redirect&gt;**: Überträgt die Steuerung eines Anrufs oder einer SMS an die TwiML an einer anderen URL.
-* **&lt;Reject&gt;**: Lehnt einen bei Ihrer Twilio-Nummer eingehenden Anruf ab, ohne dass Ihnen Kosten entstehen.
-* **&lt;Say&gt;**: Konvertiert Text in Sprache für einen Anruf.
-* **&lt;Sms&gt;**: Sendet eine SMS-Nachricht.
+* `<Dial>`: Verbindet den Anrufer mit einem anderen Telefon.
+* `<Gather>`: Erfasst Ziffern, die über die Telefontasten eingegeben werden.
+* `<Hangup>`: Beendet einen Anruf.
+* `<Play>`: Gibt eine Audiodatei wieder.
+* `<Pause>`: Wartet ohne Ton für eine angegebene Anzahl von Sekunden.
+* `<Record>`: Zeichnet die Stimme des Anrufers auf und gibt eine URL einer Datei mit der Aufzeichnung zurück.
+* `<Redirect>`: Überträgt die Steuerung eines Anrufs oder einer SMS an die TwiML an einer anderen URL.
+* `<Reject>`: Lehnt einen bei Ihrer Twilio-Nummer eingehenden Anruf ab, ohne dass Ihnen Kosten entstehen.
+* `<Say>`: Konvertiert Text in Sprache für einen Anruf.
+* `<Sms>`: Sendet eine SMS-Nachricht.
 
-### <a id="TwiML"></a>TwiML
+### <a name="twiml"></a>TwiML
 TwiML ist ein Satz XML-basierter Anweisungen auf Grundlage der Twilio-Verben, die Twilio anweisen, wie ein Anruf oder eine SMS verarbeitet werden soll.
 
 Die TwiML im folgenden Beispiel konvertiert den Text **Hello World** in Sprache.
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-      <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+  <Say>Hello World</Say>
+</Response>
+```
 
 Wenn eine Anwendung die Twilio-API aufruft, ist einer der API-Parameter die URL, die die TwiML-Antwort zurückgibt. Zu Entwicklungszwecken können Sie die von Twilio zur Verfügung gestellten URLs verwenden, um die von Ihren Anwendungen verwendeten TwiML-Antworten bereitzustellen. Sie können auch Ihre eigenen URLs hosten, um TwiML-Antworten zu generieren; eine weitere Option ist die Verwendung des **TwiMLResponse** -Objekts.
 
@@ -82,15 +84,17 @@ Informationen zum Erstellen eines ersten Azure-Projekts finden Sie unter [Erstel
 Twilio stellt einen Satz .NET-Hilfsbibliotheken zur Verfügung, die verschiedene Aspekte von Twilio abdecken, um eine einfache und problemlose Interaktion mit der Twilio-REST-API und Twilio Client zum Generieren von TwiML-Antworten zu bieten.
 
 Twilio stellt .NET-Entwicklern fünf Bibliotheken zur Verfügung:
-Bibliothek|Beschreibung
----|---
-Twilio.API|Die Twilio-Hauptbibliothek, die die Twilio-REST-API in einer benutzerfreundlichen .NET-Bibliothek verpackt. Diese Bibliothek steht für .NET, Silverlight und Windows Phone 7 zur Verfügung.
-Twilio.TwiML|Stellt eine für .NET geeignete Methode zum Generieren von TwiML-Markup zur Verfügung.
-Twilio.MVC|Für Entwickler, die mit ASP.NET MVC arbeiten, enthält diese Bibliothek einen TwilioController, TwiML ActionResult und ein Anforderungsvalidierungsattribut.
-Twilio.WebMatrix|Für Entwickler, die mit dem kostenlosen WebMatrix-Entwicklungstool von Microsoft arbeiten, enthält diese Bibliothek Razor-Syntaxhilfsprogramme für verschiedene Twilio-Aktionen.
-Twilio.Client.Capability|Enthält den Capability-Tokengenerator zur Verwendung mit dem Twilio Client-JavaScript-SDK.
 
-Beachten Sie, dass alle Bibliotheken .NET 3.5, Silverlight 4 oder Windows Phone 7 oder höher erfordern.
+| Bibliothek | BESCHREIBUNG |
+| --- | --- |
+| Twilio.API | Die Twilio-Hauptbibliothek, die die Twilio-REST-API in einer benutzerfreundlichen .NET-Bibliothek verpackt. Diese Bibliothek steht für .NET, Silverlight und Windows Phone 7 zur Verfügung. |
+| Twilio.TwiML | Stellt eine für .NET geeignete Methode zum Generieren von TwiML-Markup zur Verfügung. |
+| Twilio.MVC | Für Entwickler, die mit ASP.NET MVC arbeiten, enthält diese Bibliothek einen TwilioController, TwiML ActionResult und ein Anforderungsvalidierungsattribut. |
+| Twilio.WebMatrix | Für Entwickler, die mit dem kostenlosen WebMatrix-Entwicklungstool von Microsoft arbeiten, enthält diese Bibliothek Razor-Syntaxhilfsprogramme für verschiedene Twilio-Aktionen. |
+| Twilio.Client.Capability | Enthält den Capability-Tokengenerator zur Verwendung mit dem Twilio Client-JavaScript-SDK. |
+
+> [!Important]
+> Alle Bibliotheken erfordern .NET 3.5, Silverlight 4 oder Windows Phone 7 oder höher.
 
 Die Beispiele in diesem Leitfaden verwenden die Twilio.API-Bibliothek.
 
@@ -114,26 +118,28 @@ Standardmäßig installiert Microsoft Visual Studio 2010 NuGet Version 1.2. Für
 ## <a id="howto_make_call"></a>Tätigen von ausgehenden Anrufen
 Nachfolgend wird erläutert, wie Sie einen ausgehenden Anruf mit der **CallResource**-Klasse tätigen. Dieser Code verwendet eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort (Twilio Markup Language). Geben Sie Ihre Werte für die Telefonnummern **to** und **rom** ein, und stellen Sie sicher, dass Sie die **from**-Telefonnummer für Ihr Twilio-Konto verifizieren, bevor Sie den Code ausführen.
 
-    // Use your account SID and authentication token instead
-    // of the placeholders shown here.
-    const string accountSID = "your_twilio_account";
-    const string authToken = "your_twilio_authentication_token";
+```csharp
+// Use your account SID and authentication token instead
+// of the placeholders shown here.
+const string accountSID = "your_twilio_account";
+const string authToken = "your_twilio_authentication_token";
 
-    // Initialize the TwilioClient.
-    TwilioClient.Init(accountSID, authToken);
+// Initialize the TwilioClient.
+TwilioClient.Init(accountSID, authToken);
 
-    // Use the Twilio-provided site for the TwiML response.
-    var url = "http://twimlets.com/message";
-    url = $"{url}?Message%5B0%5D=Hello%20World";
+// Use the Twilio-provided site for the TwiML response.
+var url = "http://twimlets.com/message";
+url = $"{url}?Message%5B0%5D=Hello%20World";
 
-    // Set the call From, To, and URL values to use for the call.
-    // This sample uses the sandbox number provided by
-    // Twilio to make the call.
-    var call = CallResource.Create(
-        to: new PhoneNumber("+NNNNNNNNNN"),
-        from: new PhoneNumber("NNNNNNNNNN"),
-        url: new Uri(url));
-        }
+// Set the call From, To, and URL values to use for the call.
+// This sample uses the sandbox number provided by
+// Twilio to make the call.
+var call = CallResource.Create(
+    to: new PhoneNumber("+NNNNNNNNNN"),
+    from: new PhoneNumber("NNNNNNNNNN"),
+    url: new Uri(url));
+    }
+```
 
 Weitere Informationen zu den an die **CallResource.Create**-Methode übergebenen Parametern finden Sie unter [http://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls].
 
@@ -142,117 +148,124 @@ Wie bereits erwähnt, verwendet dieser Code eine von Twilio bereitgestellte Webs
 ## <a id="howto_send_sms"></a>Senden von SMS-Nachrichten
 Der folgende Screenshot zeigt, wie Sie eine SMS-Nachricht mit der **MessageResource**-Klasse senden. Die **from** -Nummer wird von Twilio für Testkonten zum Senden von SMS-Nachrichten bereitgestellt. Die **to** -Nummer muss für Ihr Twilio-Konto verifiziert werden, bevor Sie den Code ausführen.
 
-    // Use your account SID and authentication token instead
-    // of the placeholders shown here.
-    const string accountSID = "your_twilio_account";
-    const string authToken = "your_twilio_authentication_token";
+```csharp
+// Use your account SID and authentication token instead
+// of the placeholders shown here.
+const string accountSID = "your_twilio_account";
+const string authToken = "your_twilio_authentication_token";
 
-    // Initialize the TwilioClient.
-    TwilioClient.Init(accountSID, authToken);
+// Initialize the TwilioClient.
+TwilioClient.Init(accountSID, authToken);
 
-    try
-    {
-        // Send an SMS message.
-        var message = MessageResource.Create(
-            to: new PhoneNumber("+12069419717"),
-            from: new PhoneNumber("+14155992671"),
-            body: "This is my SMS message.");
-    }
-    catch (TwilioException ex)
-    {
-        // An exception occurred making the REST call
-        Console.WriteLine(ex.Message);
-    }
+try
+{
+    // Send an SMS message.
+    var message = MessageResource.Create(
+        to: new PhoneNumber("+12069419717"),
+        from: new PhoneNumber("+14155992671"),
+        body: "This is my SMS message.");
+}
+catch (TwilioException ex)
+{
+    // An exception occurred making the REST call
+    Console.WriteLine(ex.Message);
+}
+```
 
 ## <a id="howto_provide_twiml_responses"></a>Vorgehensweise: Bereitstellen von TwiML-Antworten von der eigenen Website
 Wenn Ihre Anwendung einen Anruf an die Twilio-API initiiert – z.B. über die **CallResource.Create**-Methode –, sendet Twilio Ihre Anforderung an eine URL, von der die Rückgabe einer TwiML-Antwort erwartet wird. Das Beispiel in [Tätigen von ausgehenden Anrufen](#howto_make_call) verwendet die von Twilio bereitgestellte URL [http://twimlets.com/message][twimlet_message_url] für die Rückgabe der Antwort.
 
 > [!NOTE]
-> TwiML wurde für die Verwendung durch Webdienste konzipiert, kann jedoch im Browser angezeigt werden. Klicken Sie z.B. auf [http://twimlets.com/message][twimlet_message_url], um ein leeres &lt;Response&gt;-Element anzuzeigen, oder klicken Sie auf [http://twimlets.com/message?Message%5B0%5D=Hello%20World](http://twimlets.com/message?Message%5B0%5D=Hello%20World), um ein &lt;Response&gt;-Element mit einem &lt;Say&gt;-Element anzuzeigen.
->
+> TwiML wurde für die Verwendung durch Webdienste konzipiert, kann jedoch im Browser angezeigt werden. Klicken Sie z. B. auf [http://twimlets.com/message][twimlet_message_url], um ein leeres `<Response>`-Element anzuzeigen. Ein weiteres Beispiel: Klicken Sie auf [http://twimlets.com/message?Message%5B0%5D=Hello%20World](http://twimlets.com/message?Message%5B0%5D=Hello%20World), um ein `<Response>`-Element mit einem &lt;Say&gt;-Element anzuzeigen.
 >
 
 Anstelle der von Twilio bereitgestellten URL können Sie auch Ihre eigene URL-Website für die Rückgabe von HTTP-Antworten erstellen. Sie können die Website mit jeder Sprache erstellen, die HTTP-Antworten zurückgibt. In diesem Thema wird davon ausgegangen, dass Sie die URL von einem generischen ASP.NET-Handler hosten.
 
 Der folgende ASP.NET-Handler erstellt eine TwiML-Antwort, die beim Anruf **Hello World** sagt.
 
-    using System.Text;
-    using System.Web;
+```csharp
+using System.Text;
+using System.Web;
 
-    namespace WebRole1
+namespace WebRole1
+{
+    /// <summary>
+    /// Summary description for Handler1
+    /// </summary>
+    public class Handler1 : IHttpHandler
     {
-        /// <summary>
-        /// Summary description for Handler1
-        /// </summary>
-        public class Handler1 : IHttpHandler
+        public void ProcessRequest(HttpContext context)
         {
-            public void ProcessRequest(HttpContext context)
-            {
-                const string twiMLResponse =
-                    "<Response><Say>Hello World.</Say></Response>";
-                
-                context.Response.Clear();
-                context.Response.ContentType = "text/xml";
-                context.Response.ContentEncoding = Encoding.UTF8;
-                context.Response.Write(twiMLResponse);
-                context.Response.End();
-            }
+            const string twiMLResponse =
+                "<Response><Say>Hello World.</Say></Response>";
 
-            public bool IsReusable
+            context.Response.Clear();
+            context.Response.ContentType = "text/xml";
+            context.Response.ContentEncoding = Encoding.UTF8;
+            context.Response.Write(twiMLResponse);
+            context.Response.End();
+        }
+
+        public bool IsReusable
+        {
+            get
             {
-                get
-                {
-                    return false;
-                }
+                return false;
             }
         }
     }
+}
+```
     
 Wie das vorstehende Beispiel zeigt, handelt es sich bei der TwiML-Antwort einfach um ein XML-Dokument. Die Twilio.TwiML-Bibliothek enthält Klassen, die TwiML für Sie generieren. Das folgende Beispiel generiert die gleiche Antwort wie oben, jedoch unter Verwendung der **VoiceResponse**-Klasse.
 
-    using System.Web;
-    using Twilio.TwiML;
+```csharp
+using System.Web;
+using Twilio.TwiML;
 
-    namespace WebRole1
+namespace WebRole1
+{
+    /// <summary>
+    /// Summary description for Handler1
+    /// </summary>
+    public class Handler1 : IHttpHandler
     {
-        /// <summary>
-        /// Summary description for Handler1
-        /// </summary>
-        public class Handler1 : IHttpHandler
+
+        public void ProcessRequest(HttpContext context)
         {
+            var twiml = new VoiceResponse();
+            twiml.Say("Hello World.");
 
-            public void ProcessRequest(HttpContext context)
+            context.Response.Clear();
+            context.Response.ContentType = "text/xml";
+            context.Response.Write(twiml.ToString());
+            context.Response.End();
+        }
+
+        public bool IsReusable
+        {
+            get
             {
-                var twiml = new VoiceResponse();
-                twiml.Say("Hello World.");
-
-                context.Response.Clear();
-                context.Response.ContentType = "text/xml";
-                context.Response.Write(twiml.ToString());
-                context.Response.End();
-            }
-
-            public bool IsReusable
-            {
-                get
-                {
-                    return false;
-                }
+                return false;
             }
         }
     }
+}
+```
 
-Weitere Informationen zu TwiML finden Sie auf [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml).
+Weitere Informationen zu TwiML finden Sie unter [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml).
 
 Nachdem Sie das Verfahren zur Bereitstellung von TwiML-Antworten eingerichtet haben, können Sie diese URL an die **CallResource.Create**-Methode übergeben. Beispiel: Ihre Webanwendung „MyTwiML“ ist in einem Azure-Clouddienst bereitgestellt, und der Name des ASP.NET-Handlers lautet „mytwiml.ashx“. In diesem Fall kann die URL wie im folgenden Codebeispiel gezeigt an **CallResource.Create** übergeben werden:
 
-    // This sample uses the sandbox number provided by Twilio to make the call.
-    // Place the call.
-    var call = CallResource.Create(
-        to: new PhoneNumber("+NNNNNNNNNN"),
-        from: new PhoneNumber("NNNNNNNNNN"),
-        url: new Uri("http://<your_hosted_service>.cloudapp.net/MyTwiML/mytwiml.ashx"));
-        }
+```csharp
+// This sample uses the sandbox number provided by Twilio to make the call.
+// Place the call.
+var call = CallResource.Create(
+    to: new PhoneNumber("+NNNNNNNNNN"),
+    from: new PhoneNumber("NNNNNNNNNN"),
+    url: new Uri("http://<your_hosted_service>.cloudapp.net/MyTwiML/mytwiml.ashx"));
+    }
+```
 
 Weitere Informationen zur Verwendung von Twilio in Azure mit ASP.NET finden Sie unter [Tätigen von Telefonanrufen mithilfe von Twilio in einer Webrolle in Azure][howto_phonecall_dotnet].
 

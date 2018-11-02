@@ -9,17 +9,17 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: e7274e4507d901a209ed5832e98ca630feefda4f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3cd9b5a2bfed49ee712b89040477389ba9ea7715
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31420094"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389631"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalieerkennung in Azure Stream Analytics
 
 > [!IMPORTANT]
-> Diese Funktionalität befindet sich in der Vorschauphase. Es wird nicht empfohlen, sie mit Produktionsworkloads zu verwenden.
+> Diese Funktionalität ist allmählich überholt, wird aber durch neue Funktionen ersetzt. Weitere Informationen finden Sie im Blogbeitrag [Acht neue Features in Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/).
 
 Der Operator **AnomalyDetection** kann zum Erkennen verschiedener Anomalietypen in Ereignisdatenströmen verwendet werden. Beispielsweise kann eine langsame Abnahme des freien Arbeitsspeichers über einen langen Zeitraum Anzeichen eines Speicherlecks sein, oder die Anzahl der Webdienstanforderungen, die in einem Bereich stabil sind, kann sich möglicherweise dramatisch erhöhen oder verringern.  
 
@@ -133,7 +133,7 @@ Sehen wir uns die Ungewöhnlichkeitsberechnung im Detail an (es wird angenommen,
 
 Nachdem der Ungewöhnlichkeitswert für das eingehende Ereignis berechnet wurde, wird ein Martingalwert basierend auf dem Ungewöhnlichkeitswert berechnet (Details zur Berechnung des Martingalwerts finden Sie im [Machine Learning-Blog](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)). Dieser Martingalwert wird als Anomaliebewertung zurückgegeben. Der Martingalwert nimmt als Reaktion auf ungewöhnliche Werte langsam zu, wodurch der Detektor robust gegenüber sporadischen Veränderungen bleibt und Fehlalarme verringert werden. Es verfügt auch über eine nützliche Eigenschaft: 
 
-Wahrscheinlichkeit [t ist so vorhanden, dass M<sub>t</sub> > λ ] < 1/λ, wobei M<sub>t</sub> der Martingalwert zum Zeitpunkt t und λ ein reeller Wert ist. Z.B. bei einer Warnung, wenn M<sub>t</sub>>100, dann ist die Wahrscheinlichkeit von falsch positiven Warnungen kleiner als 1/100.  
+Wahrscheinlichkeit [t existiert, daher ist M<sub>t</sub> > λ ] < 1/λ, wobei M<sub>t</sub> der Martingalwert zum Zeitpunkt t und λ ein Realwert ist. Z.B. bei einer Warnung, wenn M<sub>t</sub>>100, dann ist die Wahrscheinlichkeit von falsch positiven Warnungen kleiner als 1/100.  
 
 ## <a name="guidance-for-using-the-bi-directional-level-change-detector"></a>Anleitung für die Verwendung des bidirektionalen Niveauändernungsdetektors 
 
@@ -243,7 +243,7 @@ Wenn der Eingabedatenstrom nicht einheitlich ist, kann der Aggregationsschritt h
 ## <a name="references"></a>Referenzen
 
 * [Anomaly Detection – Using Machine Learning to Detect Abnormalities in Time Series Data](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) (Anomalieerkennung: Verwenden von Machine Learning zum Erkennen von Auffälligkeiten in Zeitreihendaten)
-* [Machine Learning Anomaly Detection-API](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
+* [Machine Learning Anomaly Detection-API](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
 * [Time Series Anomaly Detection](https://msdn.microsoft.com/library/azure/mt775197.aspx) (Anomalieerkennung in Zeitreihen)
 
 ## <a name="next-steps"></a>Nächste Schritte

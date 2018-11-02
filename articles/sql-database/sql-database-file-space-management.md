@@ -12,25 +12,35 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: a46192c79d32ddf5f178541c3be128893e8f6109
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 306e541ad67d6b44d2d3cc4cd2f73aa09d629d0c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159940"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954752"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz in Azure SQL-Datenbank
 Dieser Artikel beschreibt verschiedene Arten von Speicherplatz in der Azure SQL-Datenbank und Schritte, die ausgeführt werden können, wenn der für Datenbanken und Pools für elastische Datenbanken zugewiesene Speicherplatz explizit verwaltet werden muss.
 
 ## <a name="overview"></a>Übersicht
 
-In Azure SQL-Datenbank messen die meisten im Azure-Portal angezeigten Speicherplatzmetriken und die folgenden APIs die Anzahl von verwendeten Datenseiten für Datenbanken und Pool für elastische Datenbanken:
+In Azure SQL-Datenbank gibt es Workloadmuster, bei denen die Zuordnung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann. Dieser Fall kann eintreten, wenn der Platzbedarf zunimmt und Daten daraufhin gelöscht werden. Der Grund dafür ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.
+
+Die Überwachung der Dateispeicherplatzverwendung und die Verkleinerung von Datendateien können in folgenden Szenarien erforderlich sein:
+- Ermöglichen von Datenwachstum in einem Pool für elastische Datenbanken, wenn der den Datenbanken zugeordnete Dateispeicherplatz die maximale Poolgröße erreicht
+- Ermöglichen der Verringerung der maximalen Größe einer einzelnen Datenbank oder eines Pools für elastische Datenbanken
+- Ermöglichen der Änderung einer einzelnen Datenbank oder eines Pools für elastische Datenbanken, um einen anderen Diensttarif oder eine andere Leistungsstufe mit einer geringeren maximalen Größe zu verwenden
+
+### <a name="monitoring-file-space-usage"></a>Überwachen der Dateispeicherplatzverwendung
+Bei den meisten Speicherplatzmetriken, die im Azure-Portal und über die folgenden APIs angezeigt werden, wird lediglich die Größe der verwendeten Datenseiten ermittelt:
 - Azure Resource Manager-basierte Metrik-APIs einschließlich PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+
+Bei den folgenden APIs wird jedoch auch die Größe des Speicherplatzes ermittelt, der Datenbanken und Pools für elastische Datenbanken zugeordnet ist:
 - T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-Es gibt Workloadmuster, bei denen die Zuteilung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann.  Dies kann auftreten, wenn der Platzbedarf zunimmt und die Daten anschließend gelöscht werden.  Der Grund ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.  In diesen Szenarien kann der zugeordnete Speicherplatz für eine Datenbank oder einen Pool die unterstützten Grenzwerte übersteigen und das Datenwachstum sowie Änderungen des Diensttarifs und der Computegröße verhindern. Außerdem kann die Verkleinerung von Datendateien erzwungen werden, um dieses Problem zu lösen.
+### <a name="shrinking-data-files"></a>Verkleinern von Datendateien
 
 Der SQL-Datenbankdienst verkleinert Datendateien aufgrund der möglichen Auswirkungen auf die Datenbankleistung nicht automatisch, um ungenutzten zugewiesenen Speicherplatz freizugeben.  Kunden können Datendateien aber jederzeit selbst verkleinern, indem sie die Schritte unter [Freigeben von ungenutztem zugewiesenem Speicherplatz](#reclaim-unused-allocated-space) ausführen. 
 
@@ -100,7 +110,7 @@ Es wichtig, dass Sie mit den folgenden Speicherplatzmengen vertraut sind, damit 
 |**Genutzter Speicherplatz**|Die Summierung des Datenspeicherplatzes, der von allen Datenbanken im Pool für elastische Datenbanken verwendet wird.||
 |**Zugeordneter Datenspeicherplatz**|Die Summierung des Datenspeicherplatzes, der von allen Datenbanken im Pool für elastische Datenbanken zugeordnet wird.||
 |**Zugeordneter Datenspeicherplatz (ungenutzt)**|Die Differenz zwischen der Menge an zugeordnetem Datenspeicherplatz und dem Datenspeicherplatz, der von allen Datenbanken im Pool für elastische Datenbanken verwendet wird.|Diese Menge gibt die maximale Menge von Speicherplatz an, der für den Pool für elastische Datenbanken zugeordnet wird und freigegeben werden kann, indem die Datenbank-Datendateien verkleinert werden.|
-|**Maximale Datengröße**|Die maximale Menge an Datenspeicherplatz, der vom Pool für elastische Datenbanken für alle seine Datenbanken verwendet werden kann.|Der zugeordnete Speicherplatz des Pools für elastische Datenbanken darf die maximale Größe des Pools nicht überschreiten.  Wenn dies der Fall ist, kann zugeordneter Speicherplatz, der nicht genutzt wird, freigegeben werden, indem Datenbank-Datendateien verkleinert werden.|
+|**Maximale Datengröße**|Die maximale Menge an Datenspeicherplatz, der vom Pool für elastische Datenbanken für alle seine Datenbanken verwendet werden kann.|Der zugeordnete Speicherplatz des Pools für elastische Datenbanken darf die maximale Größe des Pools nicht überschreiten.  In diesem Fall kann zugeordneter Speicherplatz, der nicht genutzt wird, freigegeben werden, indem Datenbank-Datendateien verkleinert werden.|
 ||||
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Abfragen von Speicherplatzinformationen für einen Pools für elastische Datenbanken
@@ -121,7 +131,7 @@ ORDER BY end_time DESC
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Zugeordneter Datenspeicherplatz für Pool für elastische Datenbanken und ungenutzter zugeordneter Speicherplatz
 
-Ändern Sie das folgende PowerShell-Skript, um eine Tabelle zurückzugeben, in der der zugeordnete Speicherplatz und der ungenutzte zugeordnete Speicherplatz für jede Datenbank eines Pools für elastische Datenbanken aufgeführt ist. Die Tabelle ordnet Datenbanken absteigend von der größten Menge an ungenutztem zugeordnetem Speicherplatz zur geringsten Menge an ungenutztem zugeordnetem Speicherplatz.  Als Einheit für das Abfrageergebnis wird MB verwendet.  
+Ändern Sie das folgende PowerShell-Skript, um eine Tabelle zurückzugeben, in der der zugeordnete Speicherplatz und der ungenutzte zugeordnete Speicherplatz für jede Datenbank eines Pools für elastische Datenbanken aufgeführt ist. Die Datenbanken in der Tabelle werden absteigend sortiert – von der größten Menge an ungenutztem zugeordnetem Speicherplatz zur geringsten Menge an ungenutztem zugeordnetem Speicherplatz.  Als Einheit für das Abfrageergebnis wird MB verwendet.  
 
 Die Abfrageergebnisse zum Bestimmen des für jede Datenbank im Pool zugeordneten Speicherplatzes können addiert werden, um den gesamten Speicherplatz zu ermitteln, der für den Pool für elastische Datenbanken zugeordnet ist. Der zugewiesene Speicherplatz des Pools für elastische Datenbanken darf die maximale Größe des Pools nicht überschreiten.  
 
@@ -191,17 +201,35 @@ ORDER BY end_time DESC
 
 ## <a name="reclaim-unused-allocated-space"></a>Freigeben von ungenutztem zugewiesenem Speicherplatz
 
-Nachdem die Datenbanken für das Freigeben von ungenutztem zugeordnetem Speicherplatz ermittelt wurden, können Sie den folgenden Befehl ändern, um die Datendateien für jede Datenbank zu verkleinern.
+### <a name="dbcc-shrink"></a>DBCC-Verkleinerung
+
+Nachdem die Datenbanken für das Freigeben von ungenutztem zugeordnetem Speicherplatz ermittelt wurden, können Sie den Namen der Datenbank im folgenden Befehl ändern, um die Datendateien für die einzelnen Datenbanken zu verkleinern.
 
 ```sql
 -- Shrink database data space allocated.
 DBCC SHRINKDATABASE (N'db1')
 ```
 
+Dieser Befehl kann die Datenbankleistung beeinträchtigen, während er ausgeführt wird, und sollte daher nur zu Zeiten mit geringer Auslastung ausgeführt werden.  
+
 Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
 
-> [!IMPORTANT] 
-> Ziehen Sie auch in Betracht, Datenbankindizes neu zu erstellen. Nach dem Verkleinern von Datenbankdateien können Indizes fragmentiert werden und bei der Leistungsoptimierung nicht mehr effektiv eingesetzt werden. In diesem Fall sollten die Indizes neu erstellt werden. Weitere Informationen zum Fragmentieren und Neuerstellen von Indizes finden Sie unter [Neuorganisieren und Neuerstellen von Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+### <a name="auto-shrink"></a>Automatisches Verkleinern
+
+Alternativ kann für die Datenbank auch das automatische Verkleinern aktiviert werden.  Automatisches Verkleinern vereinfacht die Dateiverwaltung und wirkt sich im Vergleich zu SHRINKDATABASE oder SHRINKFILE weniger stark auf die Datenbankleistung aus.  Insbesondere beim Verwalten von Pools für elastische Datenbanken mit zahlreichen Datenbanken kann automatisches Verkleinern äußerst hilfreich sein.  Verglichen mit SHRINKDATABASE und SHRINKFILE ist das automatische Verkleinern allerdings beim Freigeben von Dateispeicherplatz unter Umständen weniger effizient.
+Wenn Sie automatisches Verkleinern aktivieren möchten, ändern Sie im folgenden Befehl den Namen der Datenbank.
+
+
+```sql
+-- Enable auto-shrink for the database.
+ALTER DATABASE [db1] SET AUTO_SHRINK ON
+```
+
+Weitere Informationen zu diesem Befehl finden Sie in den Optionen für [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017). 
+
+### <a name="rebuild-indexes"></a>Neuerstellen von Indizes
+
+Nach dem Verkleinern von Datenbankdateien sind Indizes möglicherweise fragmentiert und verlieren ihre leistungsoptimierende Wirkung. Im Falle einer Leistungsbeeinträchtigung empfiehlt es sich daher ggf., die Datenbankindizes neu zu erstellen. Weitere Informationen zum Fragmentieren und Neuerstellen von Indizes finden Sie unter [Neuorganisieren und Neuerstellen von Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

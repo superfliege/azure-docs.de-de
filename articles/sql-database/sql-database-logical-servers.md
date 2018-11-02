@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: effaa9b0b3fec36974a2bc850eeb1f36181ca0c7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/19/2018
+ms.openlocfilehash: 6432c6b2c1c224f44b962df63e1502729f69e57f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166434"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470658"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Logischer Azure SQL-Datenbankserver und dessen Verwaltung.
 
@@ -27,7 +27,7 @@ Ein logischer Server fungiert als zentraler Verwaltungspunkt für mehrere einzel
 
 Ein logischer Server ist ein logisches Konstrukt, das von einer SQL Server-Instanz unterschieden wird, mit der Sie möglicherweise in der lokalen Welt vertraut sind. Insbesondere der SQL-Datenbankdienst gibt keine Garantie bezüglich des Speicherorts der Datenbanken in Bezug auf ihre logischen Server, und bietet kein Zugriff oder Funktion auf Instanzebene. Ein Server in einer verwalteten Azure SQL-Datenbank-Instanz ähnelt dagegen einer SQL Server-Instanz, mit der Sie möglicherweise in der lokalen Welt vertraut sind.
 
-Wenn Sie einen logischen Server erstellen, geben Sie ein Serveranmeldekonto und -kennwort an, mit dem Sie Administratorrechte für die Masterdatenbank auf diesem Server und alle auf diesem Server erstellte Datenbanken haben. Bei diesem anfänglichen Konto handelt es sich um ein SQL-Anmeldekonto. Azure SQL-Datenbank unterstützt für die Authentifizierung die SQL-Authentifizierung und die Azure Active Directory-Authentifizierung. Weitere Informationen zu Anmeldungen und Authentifizierungen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](sql-database-manage-logins.md). Windows-Authentifizierung wird nicht unterstützt. 
+Wenn Sie einen logischen Server erstellen, geben Sie ein Serveranmeldekonto und -kennwort an, mit dem Sie Administratorrechte für die Masterdatenbank auf diesem Server und alle auf diesem Server erstellte Datenbanken haben. Bei diesem anfänglichen Konto handelt es sich um ein SQL-Anmeldekonto. Azure SQL-Datenbank unterstützt für die Authentifizierung die SQL-Authentifizierung und die Azure Active Directory-Authentifizierung. Weitere Informationen zu Anmeldungen und Authentifizierungen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](sql-database-manage-logins.md). Windows-Authentifizierung wird nicht unterstützt.
 
 Ein logischer Azure Datenbankserver:
 
@@ -38,19 +38,19 @@ Ein logischer Azure Datenbankserver:
 - beteiligt sich an der [rollenbasierten Zugriffssteuerung (role-based access control, RBAC) in Azure](/azure/role-based-access-control/overview) – Datenbanken, Pools für elastische Datenbanken und Data Warehouses innerhalb eines Servers erben dessen Zugriffsrechte
 - ist ein oberes Element der Identität von Datenbanken, Pools für elastische Datenbanken und Data Warehouses für Zwecke der Azure-Ressourcenverwaltung (siehe das URL-Schema für Datenbanken und Pools)
 - stellt in einer Region Ressourcen zusammen
-- bietet eine Verbindungsendpunkt für den Datenbankzugriff (<serverName>.database.windows.net)
-- bietet Zugriff auf Metadaten bezüglich der darin enthaltenen Ressourcen über DMVs (dynamic management views), indem eine Verbindung mit einer Masterdatenbank hergestellt wird 
-- stellt den Bereich für Verwaltungsrichtlinien bereit, die für seine Datenbanken gelten – Anmeldungen, Firewall, Überwachung, Bedrohungserkennung usw. 
+- bietet eine Verbindungsendpunkt für den Datenbankzugriff (`<serverName>`.database.windows.net)
+- bietet Zugriff auf Metadaten bezüglich der darin enthaltenen Ressourcen über DMVs (dynamic management views), indem eine Verbindung mit einer Masterdatenbank hergestellt wird
+- stellt den Bereich für Verwaltungsrichtlinien bereit, die für seine Datenbanken gelten: Anmeldungen, Firewall, Überwachung, Bedrohungserkennung usw.
 - ist durch ein Kontingent innerhalb des übergeordneten Abonnements eingeschränkt (standardmäßig sechs Server pro Abonnement – [siehe Grenzwerte für Abonnements hier](../azure-subscription-service-limits.md))
 - stellt den Bereich für Datenbank- und DTU- bzw. V-Kern-Kontingente für die darin enthaltenen Ressourcen (z.B. 45.000 DTU) bereit
-- ist der Versionsverwaltungsbereich für Funktionen, die in enthaltenen Ressourcen aktiviert wurden 
+- ist der Versionsverwaltungsbereich für Funktionen, die in enthaltenen Ressourcen aktiviert wurden
 - Serverebenenprinzipal-Anmeldungen können alle Datenbanken auf einem Server verwalten
 - kann Anmeldungen enthalten, die denen in SQL-Instanzen vor Ort ähnlich sind und die über Zugriff auf eine oder mehrere Datenbanken auf dem Server verfügen und denen beschränkte Administratorrechte zugewiesen werden können. Weitere Informationen finden Sie unter [Logins (Anmeldungen)](sql-database-manage-logins.md).
 - Die Standardsortierung für alle auf einem logischen Server erstellten Benutzerdatenbanken ist `SQL_LATIN1_GENERAL_CP1_CI_AS`, wobei `LATIN1_GENERAL` für Englisch (USA), `CP1` für Codepage 1252, `CI` für keine Unterscheidung von Groß-/Kleinschreibung und `AS` für die Unterscheidung nach Akzent steht.
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe des Azure-Portals
 
-Sie können die Ressourcengruppe der Azure SQL-Datenbank im Voraus oder beim Erstellen des Servers selbst erstellen. Es existieren mehrere Methoden zum Erhalten eines Formulars für einen neuen SQL-Server. Sie erhalten ein solches entweder durch das Erstellen eines neuen SQL-Servers oder als Teil der Erstellung einer neuen Datenbank. 
+Sie können die Ressourcengruppe der Azure SQL-Datenbank im Voraus oder beim Erstellen des Servers selbst erstellen. Es existieren mehrere Methoden zum Erhalten eines Formulars für einen neuen SQL-Server. Sie erhalten ein solches entweder durch das Erstellen eines neuen SQL-Servers oder als Teil der Erstellung einer neuen Datenbank.
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>Erstellen eines leeren SQL-Servers (logischen Servers)
 
@@ -58,7 +58,7 @@ Um mithilfe des [Azure-Portals](https://portal.azure.com) einen Azure SQL-Datenb
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>Erstellen einer leeren oder einer Beispiel-SQL-Datenbank
 
-Zum Erstellen einer Azure SQL-Datenbank mithilfe des [Azure-Portals](https://portal.azure.com) navigieren Sie zu einem leeren SQL-Datenbank-Formular, und stellen Sie die erforderlichen Informationen bereit. Sie können die Ressourcengruppe und den logischen Server der Azure SQL-Datenbank im Voraus oder beim Erstellen der Datenbank selbst erstellen. Sie können eine leere Datenbank oder eine Beispieldatenbank basierend auf Adventure Works LT erstellen. 
+Zum Erstellen einer Azure SQL-Datenbank mithilfe des [Azure-Portals](https://portal.azure.com) navigieren Sie zu einem leeren SQL-Datenbank-Formular, und stellen Sie die erforderlichen Informationen bereit. Sie können die Ressourcengruppe und den logischen Server der Azure SQL-Datenbank im Voraus oder beim Erstellen der Datenbank selbst erstellen. Sie können eine leere Datenbank oder eine Beispieldatenbank basierend auf Adventure Works LT erstellen.
 
   ![Datenbankerstellung 1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -69,19 +69,16 @@ Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstelle
 
 ### <a name="manage-an-existing-sql-server"></a>Verwalten eines vorhandenen SQL-Servers
 
-Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z.B. über eine bestimmte Seite der SQL-Datenbank, die Seite der **SQL-Server** oder die Seite **All resources** (Alle Ressourcen). 
+Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z.B. über eine bestimmte Seite der SQL-Datenbank, die Seite der **SQL-Server** oder die Seite **All resources** (Alle Ressourcen).
 
-Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Datenbanken**, und klicken Sie auf die Datenbank, die Sie verwalten möchten. Der folgende Screenshot zeigt, wie Sie beginnen, über die Seite **Übersicht** für eine Datenbank eine Firewall auf Serverebene für eine Datenbank festzulegen. 
+Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Datenbanken**, und klicken Sie auf die Datenbank, die Sie verwalten möchten. Der folgende Screenshot zeigt, wie Sie beginnen, über die Seite **Übersicht** für eine Datenbank eine Firewall auf Serverebene für eine Datenbank festzulegen.
 
-   ![Serverfirewallregel](./media/sql-database-get-started-portal/server-firewall-rule.png) 
+   ![Serverfirewallregel](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
 > [!IMPORTANT]
 > Informationen zum Konfigurieren der Leistungseigenschaften für eine Datenbank finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
->
-
 > [!TIP]
 > Eine Schnellstartanleitung zum Azure-Portal finden Sie unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](sql-database-get-started-portal.md).
->
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von PowerShell
 
@@ -164,7 +161,6 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[sys.database_firewall_rules (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Gibt Informationen zu den Firewalleinstellungen auf Datenbankebene im Zusammenhang mit Ihrer Microsoft Azure SQL-Datenbank zurück. |
 |[sp_delete_database_firewall_rule (Azure SQL-Datenbank)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Entfernt die Firewalleinstellung auf Datenbankebene von Ihrer Azure SQL-Datenbank oder SQL Data Warehouse. |
 
-
 > [!TIP]
 > Eine Schnellstartanleitung mit SQL Server Management Studio unter Microsoft Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](sql-database-connect-query-ssms.md). Eine Schnellstartanleitung mit Visual Studio Code unter macOS, Linux oder Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen von Daten](sql-database-connect-query-vscode.md).
 
@@ -174,21 +170,22 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
-|[Servers - Create Or Update](/rest/api/sql/servers/createorupdate)|Erstellt oder aktualisiert einen neuen Server.|
-|[Servers - Delete](/rest/api/sql/servers/delete)|Löscht eine SQL Server-Instanz.|
-|[Servers - Get](/rest/api/sql/servers/get)|Ruft einen Server ab.|
-|[Servers - List](/rest/api/sql/servers/list)|Gibt eine Serverliste zurück.|
-|[Servers - List By Resource Group](/rest/api/sql/servers/listbyresourcegroup)|Gibt eine Liste aller Server in einer Ressourcengruppe zurück.|
-|[Server - Update](/rest/api/sql/servers/update)|Aktualisiert einen vorhandenen Server.|
-|[Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
-|[Datenbanken – Abrufen](/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
-|[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
-|[Datenbanken – Auflisten nach Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
-|[Datenbanken – Aktualisieren](/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank.|
-|[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|Erstellt oder aktualisiert eine Firewallregel.|
-|[Firewall Rules - Delete](/rest/api/sql/firewallrules/delete)|Löscht eine Firewallregel.|
-|[Firewall Rules - Get](/rest/api/sql/firewallrules/get)|Ruft eine Firewallregel ab.|
-|[Firewall Rules - List By Server](/rest/api/sql/firewallrules/listbyserver)|Gibt eine Liste von Firewallregeln zurück.|
+|[Servers - Create Or Update](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Erstellt oder aktualisiert einen neuen Server.|
+|[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/delete)|Löscht eine SQL Server-Instanz.|
+|[Servers - Get](https://docs.microsoft.com/rest/api/sql/servers/get)|Ruft einen Server ab.|
+|[Servers - List](https://docs.microsoft.com/rest/api/sql/servers/list)|Gibt eine Serverliste zurück.|
+|[Servers - List By Resource Group](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Gibt eine Liste aller Server in einer Ressourcengruppe zurück.|
+|[Server - Update](https://docs.microsoft.com/rest/api/sql/servers/update)|Aktualisiert einen vorhandenen Server.|
+|[Datenbanken – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
+|[Databases - Delete](https://docs.microsoft.com/rest/api/sql/databases/delete)|Löscht eine Datenbank.|
+|[Datenbanken – Abrufen](https://docs.microsoft.com/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
+|[Datenbanken – Auflisten nach Pool für elastische Datenbanken](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
+|[Datenbanken – Auflisten nach Server](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
+|[Datenbanken – Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank.|
+|[Firewall Rules - Create Or Update](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Erstellt oder aktualisiert eine Firewallregel.|
+|[Firewall Rules - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Löscht eine Firewallregel.|
+|[Firewall Rules - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Ruft eine Firewallregel ab.|
+|[Firewall Rules - List By Server](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Gibt eine Liste von Firewallregeln zurück.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

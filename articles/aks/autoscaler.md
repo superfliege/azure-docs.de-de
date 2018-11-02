@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 3bac6534f43d62e6eb9381b8513025ba9117ed04
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: e16c82f7c49bf90fc074732d0a989b9de94a52c5
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857005"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49375850"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Cluster Autoscaler in Azure Kubernetes Service (AKS) – Vorschauversion
 
@@ -26,11 +26,22 @@ In diesem Artikel wird beschrieben, wie Sie Cluster Autoscaler auf den Agent-Kno
 > Die Cluster Autoscaler-Integration in Azure Kubernetes Service (AKS) befindet sich derzeit in der **Vorschauversion**. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 >
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites-and-considerations"></a>Voraussetzungen und Überlegungen
 
 In diesem Dokument wird davon ausgegangen, dass Sie über einen RBAC-fähigen AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, finden Sie weitere Informationen im [Schnellstart zu Azure Kubernetes Service (AKS)][aks-quick-start].
 
  Für die Verwendung von Cluster Autoscaler muss Ihr Cluster mit Kubernetes v1.10.x oder höher verwendet werden und RBAC-fähig sein. Informationen zum Durchführen eines Upgrades für Ihren Cluster finden Sie im Artikel zum [Durchführen eines Upgrades für AKS-Cluster][aks-upgrade].
+
+Definieren Sie die Ressourcenanforderungen für Ihre Pods. Die automatische Clusterskalierung prüft die Ressourcenanforderungen von den Pods und nicht die derzeit in Verwendung befindlichen Ressourcen, wie dies bei der horizontalen automatischen Podskalierung der Fall ist. Definieren Sie im Abschnitt `spec: containers` Ihrer Bereitstellungsdefinition die Anforderungen für CPU und Arbeitsspeicher. Im folgenden Codeausschnitt zum Beispiel sind eine halbe vCPU und 64MB Arbeitsspeicher auf dem Knoten erforderlich:
+
+  ```yaml
+  resources:
+    requests:
+      cpu: 500m
+      memory: 64Mb
+  ```
+
+Bei Verwendung der automatischen Clusterskalierung sollten Sie die manuelle Skalierung der Knotenanzahl vermeiden. Die automatische Clusterskalierung ist dann möglicherweise nicht in der Lage, die richtige Menge an Computeressourcen zu bestimmen, und gerät in Konflikt mit der Knotenanzahl, die Sie manuell definiert haben.
 
 ## <a name="gather-information"></a>Sammeln von Informationen
 
@@ -127,7 +138,7 @@ metadata:
   name: cluster-autoscaler
   namespace: kube-system
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: cluster-autoscaler
@@ -168,7 +179,7 @@ rules:
   verbs: ["get", "list", "watch"]
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: cluster-autoscaler
@@ -186,7 +197,7 @@ rules:
   verbs: ["delete","get","update"]
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: cluster-autoscaler
@@ -203,7 +214,7 @@ subjects:
     namespace: kube-system
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: cluster-autoscaler
@@ -221,7 +232,7 @@ subjects:
     namespace: kube-system
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: extensions/v1
 kind: Deployment
 metadata:
   labels:

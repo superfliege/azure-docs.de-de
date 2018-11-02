@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6477879953dc2bb2c7503eb0b2d4b5effa7b6a11
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 911d62fc2baa50cce6d40f8b5bcc455f308d21d7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024654"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309654"
 ---
 # <a name="manage-credentials"></a>Verwalten von Anmeldeinformationen
 
@@ -66,11 +66,11 @@ Notieren Sie auch Ihren Regionsbezeichner für Ihren API-Endpunkt. Beispielsweis
 
 ### <a name="resource-id"></a>Ressourcen-ID
 
-Wir haben diesen Abschnitt im Abschnitt [Verwenden des Azure-Kontos mit dem Prüfungstool und der Überprüfungs-API](credentials.md#how-to-use-your-azure-account-with-the-review-tool) behandelt. Dieses Feld ist in der Regel leer, es sei denn, Sie fügen ihm Ihre Azure-Ressourcen-ID wie im vorherigen Abschnitt erläutert hinzu.
+Diese Gruppe von Feldern wurde im vorherigen Abschnitt behandelt: [Verwenden des Azure-Kontos mit Überprüfungstool und API](credentials.md#use-the-azure-account-with-the-review-tool-and-review-api). Dieses Feld ist in der Regel leer, es sei denn, Sie fügen ihm Ihre Azure-Ressourcen-ID wie im vorherigen Abschnitt erläutert hinzu.
 
 ### <a name="workflows"></a>Workflows
 
-Wir haben diese Felder im vorherigen Abschnitt zum [Verwenden des Azure-Schlüssels zum Ausführen von Workflows](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool) behandelt. Standardmäßig verwendet das Prüfungstool seinen automatisch generierten Testversionsschlüssel für die Ausführung der Workflows. Damit wird Folgendes angezeigt. Die anderen beiden Felder ermöglichen die Verwendung von Benennungs- und Bilderlisten für die Vorgänge „Fenstertext“ bzw. „Bild auswerten“.
+Diese Gruppe von Feldern wurde im vorherigen Abschnitt behandelt: [Verwenden des Azure-Kontos mit den Workflows im Überprüfungstool](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool). Standardmäßig verwendet das Prüfungstool seinen automatisch generierten Testversionsschlüssel für die Ausführung der Workflows. Damit wird Folgendes angezeigt. Die anderen beiden Felder ermöglichen die Verwendung von Benennungs- und Bilderlisten für die Vorgänge „Fenstertext“ bzw. „Bild auswerten“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

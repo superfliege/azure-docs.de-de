@@ -4,9 +4,6 @@ description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu T
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: 8c3d632063c8ed9347aa870d0971cc09dc1a658e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d784bf3637c83c724c3616a1a42b66c4914b4ff7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129538"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987238"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -32,7 +29,7 @@ Traffic Manager arbeitet, wie unter [Funktionsweise von Traffic Manager](../traf
 Traffic Manager bietet daher keinen Endpunkt und keine IP-Adresse für die Verbindungsherstellung von Clients. Wenn für einen Dienst eine statische IP-Adresse benötigt wird, muss diese im Dienst und nicht in Traffic Manager konfiguriert werden.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Welche Arten von Datenverkehr können mithilfe von Traffic Manager weitergeleitet werden?
-Wie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md) beschrieben, kann ein Traffic Manager-Endpunkt ein beliebiger Dienst mit Internetzugriff sein, der innerhalb oder außerhalb von Azure gehostet wird. Daher kann mithilfe von Traffic Manager Datenverkehr vom öffentlichen Internet an eine Gruppe von Endpunkten weitergeleitet werden, die auch über Internetzugriff verfügen. Bei Endpunkten innerhalb eines privaten Netzwerks (z.B. eine interne Version von [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) oder bei DNS-Anforderungen von Benutzern über solche internen Netzwerke kann Traffic Manager nicht für diese Art von Datenverkehr verwendet werden.
+Wie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md) beschrieben, kann ein Traffic Manager-Endpunkt ein beliebiger Dienst mit Internetzugriff sein, der innerhalb oder außerhalb von Azure gehostet wird. Daher kann mithilfe von Traffic Manager Datenverkehr vom öffentlichen Internet an eine Gruppe von Endpunkten weitergeleitet werden, die auch über Internetzugriff verfügen. Bei Endpunkten innerhalb eines privaten Netzwerks (etwa eine interne Version von [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) oder bei DNS-Anforderungen von Benutzern über solche internen Netzwerke kann Traffic Manager nicht zur Weiterleitung des Datenverkehrs verwendet werden.
 
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Unterstützt Traffic Manager persistente Sitzungen?
@@ -87,7 +84,7 @@ Wenn eine DNS-Abfrage bei Traffic Manager eingeht, legt er in der Antwort einen 
 Sie können die DNS-TTL pro Profil auf minimal 0 und maximal 2.147.483.647 Sekunden festlegen (der mit [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt ) kompatible Maximalbereich). Der TTL-Wert 0 bedeutet, dass Downstream-DNS-Resolver Abfrageantworten nicht zwischenspeichern und alle Abfragen zur Auflösung an den Traffic Manager-DNS-Server gesendet werden.
 
 ### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Wie kann ich das Volumen an mein Profil gerichteter Abfragen nachvollziehen? 
-Eine der vom Traffic Manager bereitgestellten Metriken ist die Anzahl der Abfragen, die von einem Profil beantwortet werden. Sie können diese Informationen in Form einer Profilebenenaggregation erhalten oder weiter aufschlüsseln, um das Volumen von Abfragen anzuzeigen, wo bestimmte Endpunkte zurückgegeben wurden. Darüber hinaus können Sie Warnungen einrichten, damit Sie benachrichtigt werden, wenn das Volumen der Antworten auf Abfragen die von Ihnen festgelegten Bedingungen überschreitet. Weitere Informationen finden Sie unter [Traffic Manager-Metriken und -Warnungen](traffic-manager-metrics-alerts.md).
+Eine der von Traffic Manager bereitgestellten Metriken ist die Anzahl von Abfragen, die von einem Profil beantwortet werden. Sie können diese Informationen in Form einer Profilebenenaggregation erhalten oder weiter aufschlüsseln, um das Volumen von Abfragen anzuzeigen, wo bestimmte Endpunkte zurückgegeben wurden. Darüber hinaus können Sie Warnungen einrichten, damit Sie benachrichtigt werden, wenn das Volumen der Antworten auf Abfragen die von Ihnen festgelegten Bedingungen überschreitet. Weitere Informationen finden Sie unter [Traffic Manager-Metriken und -Warnungen](traffic-manager-metrics-alerts.md).
 
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Geografische Methode für das Datenverkehrsrouting in Traffic Manager
 
@@ -128,7 +125,7 @@ Allen Endpunkten in einem Profil mit geografischem Routing muss mindestens eine 
 
 ###  <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Warum wird es Kunden dringend empfohlen, in einem Profil mit aktiviertem geografischem Routing geschachtelte Profile anstelle von Endpunkten zu erstellen? 
 
-Beim geografischen Routingtyp kann eine Region nur einem Endpunkt innerhalb eines Profils zugeordnet sein. Wenn der betreffende Endpunkt kein geschachtelter Typ mit zugeordnetem untergeordnetem Profil ist, fährt Traffic Manager auch bei nicht intaktem Integritätsstatus des betreffenden Endpunkts fort, Verkehr an den Endpunkt zu senden, da die Alternative, gar keinen Verkehr zu senden, nicht besser ist. Traffic Manager führt auch dann kein Failover zu einem anderen Endpunkt aus, wenn die zugeordnete Region dem nicht mehr intakten Endpunkt „übergeordnet“ ist (z.B. erfolgt kein Failover auf einen anderen Endpunkt mit der Region „Europa“, wenn ein Endpunkt mit der Region „Spanien“ nicht mehr intakt ist). Dies erfolgt, um sicherzustellen, dass Traffic Manager die geografischen Grenzen beachtet, die Kunden in ihren Profilen konfiguriert haben. Um den Vorzug des Failovers auf einen anderen Endpunkt nutzen zu können, wenn die Integrität eines Endpunkts nicht mehr intakt ist, wird empfohlen, dass geografische Regionen geschachtelten Profilen, die mehrere Endpunkte enthalten, anstelle von einzelnen Endpunkten zugeordnet werden. Wenn ein Endpunkt innerhalb des untergeordneten Profils ausfällt, kann auf diese Weise ein Failover des Datenverkehrs auf einen anderen Endpunkt innerhalb des gleichen geschachtelten untergeordneten Profils erfolgen.
+Bei der geografischen Routingmethode kann eine Region nur einem einzelnen Endpunkt innerhalb eines Profils zugeordnet sein. Wenn der betreffende Endpunkt kein geschachtelter Typ mit zugeordnetem untergeordnetem Profil ist, fährt Traffic Manager auch bei nicht intaktem Integritätsstatus des betreffenden Endpunkts fort, Verkehr an den Endpunkt zu senden, da die Alternative, gar keinen Verkehr zu senden, nicht besser ist. Traffic Manager führt auch dann kein Failover zu einem anderen Endpunkt aus, wenn die zugeordnete Region dem nicht mehr intakten Endpunkt „übergeordnet“ ist (z.B. erfolgt kein Failover auf einen anderen Endpunkt mit der Region „Europa“, wenn ein Endpunkt mit der Region „Spanien“ nicht mehr intakt ist). Dies erfolgt, um sicherzustellen, dass Traffic Manager die geografischen Grenzen beachtet, die Kunden in ihren Profilen konfiguriert haben. Um den Vorzug des Failovers auf einen anderen Endpunkt nutzen zu können, wenn die Integrität eines Endpunkts nicht mehr intakt ist, wird empfohlen, dass geografische Regionen geschachtelten Profilen, die mehrere Endpunkte enthalten, anstelle von einzelnen Endpunkten zugeordnet werden. Wenn ein Endpunkt innerhalb des untergeordneten Profils ausfällt, kann auf diese Weise ein Failover des Datenverkehrs auf einen anderen Endpunkt innerhalb des gleichen geschachtelten untergeordneten Profils erfolgen.
 
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Gibt es Einschränkungen hinsichtlich der API-Version, die diesen Routingtyp unterstützt?
 
@@ -141,19 +138,19 @@ Das Subnetzrouting ermöglicht die Differenzierung der für bestimmte, durch die
 Ein weiterer Grund für die Verwendung der Subnetzroutingmethode ist die Kombination mit anderen Profilen in einem verschachtelten Profilsatz. Wenn Sie beispielsweise für das Geofencing Ihrer Benutzer die geografische Routingmethode, für einen bestimmten ISP aber eine andere Routingmethode verwenden möchten, können Sie ein Profil mit einer Subnetzroutingmethode als übergeordnetes Profil verwenden und diesen ISP außer Kraft setzen, um ein bestimmtes Unterprofil zu verwenden, und das geografische Standardprofil für alle anderen Benutzer verwenden.
 
 ### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Wie erkennt Traffic Manager die IP-Adresse des Endbenutzers?
-Endbenutzergeräte verwenden in der Regel einen DNS-Resolver, um das DNS-Lookup für sie durchzuführen. Die ausgehende IP dieser Resolver wird von Traffic Manager als Quell-IP betrachtet. Darüber hinaus prüft die Subnetzroutingmethode auch, ob es EDNS0 Extended Client Subnet-Informationen (ECS) gibt, die mit der Anforderung übergeben wurden. Wenn ECS-Informationen vorhanden sind, wird das Routing anhand dieser Adresse bestimmt. Sind keine ECS-Informationen vorhanden, wird die Quell-IP der Abfrage für Routingzwecke verwendet.
+Endbenutzergeräte verwenden in der Regel einen DNS-Resolver, um das DNS-Lookup für sie durchzuführen. Die ausgehende IP-Adresse dieser Resolver wird von Traffic Manager als Quell-IP-Adresse betrachtet. Darüber hinaus prüft die Subnetzroutingmethode auch, ob es EDNS0 Extended Client Subnet-Informationen (ECS) gibt, die mit der Anforderung übergeben wurden. Wenn ECS-Informationen vorhanden sind, wird das Routing anhand dieser Adresse bestimmt. Sind keine ECS-Informationen vorhanden, wird die Quell-IP der Abfrage für Routingzwecke verwendet.
 
 ### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Wie kann ich bei der Verwendung von Subnetzrouting IP-Adressen angeben?
-Die IP-Adresse, die einem Endpunkt zugeordnet werden soll, kann auf zwei Arten angegeben werden. Erstens können Sie die Quad-gepunktete dezimale Oktettnotation mit Start- und Endadresse verwenden, um den Bereich festzulegen (z. B. 1.2.3.4-5.6.7.8 oder 3.4.5.6-3.4.5.5.5.6). Zweitens können Sie den Bereich in der CIDR-Notation angeben (z. B. 1.2.3.3.0/24). Sie können mehrere Bereiche angeben und beide Notationstypen in einem Bereichssatz verwenden. Es gelten ein paar Einschränkungen.
+Die IP-Adresse, die einem Endpunkt zugeordnet werden soll, kann auf zwei Arten angegeben werden. Erstens können Sie die Quad-gepunktete dezimale Oktettnotation mit Start- und Endadresse verwenden, um den Bereich festzulegen (beispielsweise 1.2.3.4-5.6.7.8 oder 3.4.5.6-3.4.5.5.5.6). Zweitens können Sie den Bereich in der CIDR-Notation angeben (Beispiel: 1.2.3.3.0/24). Sie können mehrere Bereiche angeben und beide Notationstypen in einem Bereichssatz verwenden. Es gelten ein paar Einschränkungen.
 -   Es dürfen keine Überschneidung der Adressbereiche vorliegen, da jede IP nur einem einzigen Endpunkt zugeordnet werden kann.
 -   Die Startadresse darf nicht größer als die Endadresse sein.
--   Im Falle der CIDR-Notation sollte die IP-Adresse vor dem „/“ die Startadresse dieses Bereichs sein (z. B. ist 1.2.3.3.0/24 gültig, 1.2.3.4.4/24 aber NICHT).
+-   Im Falle der CIDR-Notation sollte die IP-Adresse vor dem Schrägstrich (/) die Startadresse dieses Bereichs sein. So ist beispielsweise ist 1.2.3.3.0/24 gültig, 1.2.3.4.4/24 dagegen NICHT.
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Wie kann ich bei der Verwendung von Subnetzrouting einen Fallbackendpunkt angeben?
 Wenn in einem Profil mit Subnetzrouting einem Endpunkt keine Subnetze zugeordnet sind, werden an diesen alle Anforderung weitergeleitet, die nicht mit anderen Endpunkten übereinstimmt. Es wird dringend empfohlen, dass Sie in Ihrem Profil einen solchen Fallbackendpunkt einrichten, da Traffic Manager eine NXDOMAIN-Antwort zurückgibt, wenn eine Anforderung eintrifft, die keinem Endpunkt zugeordnet werden kann oder deren zugeordneter Endpunkt fehlerhaft ist.
 
 ### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Was geschieht, wenn ein Endpunkt in einem Profil vom Typ Subnetzrouting deaktiviert ist?
-Wenn in einem Profil mit Subnetzrouting ein Endpunkt deaktiviert ist, verhält sich Traffic Manager so, als ob dieser Endpunkt und die darin enthaltenen Subnetzzuordnungen nicht existieren würden. Wird eine Abfrage empfangen, die mit der IP-Adresszuordnung übereinstimmen würde, der entsprechende Endpunkt aber deaktiviert ist, gibt Traffic Manager einen Fallbackendpunkt (einen Endpunkt ohne Zuordnung) oder, wenn ein solcher Endpunkt nicht vorhanden ist, eine NXDOMAIN-Antwort zurück.
+Wenn in einem Profil mit Subnetzrouting ein Endpunkt deaktiviert ist, verhält sich Traffic Manager so, als ob dieser Endpunkt und die darin enthaltenen Subnetzzuordnungen nicht existieren würden. Wenn eine Abfrage empfangen wird, die mit der IP-Adresszuordnung übereinstimmen würde, der entsprechende Endpunkt aber deaktiviert ist, gibt Traffic Manager einen Fallbackendpunkt (einen Endpunkt ohne Zuordnung) oder, wenn ein solcher Endpunkt nicht vorhanden ist, eine NXDOMAIN-Antwort zurück.
 
 ## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Routingmethode „MultiValue“ für Datenverkehr in Traffic Manager
 
@@ -162,7 +159,7 @@ Das MultiValue-Routing gibt mehrere fehlerfreie Endpunkte in einer einzigen Abfr
 Eine weitere Verwendung für die MultiValue-Routingmethode sind Endpunkte, die sowohl IPv4- als auch IPv6-Adressen umfassen, und für die Sie dem Anrufer beide Optionen zur Auswahl geben möchten, wenn er eine Verbindung zum Endpunkt herstellt.
 
 ### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Wie viele Endpunkte werden zurückgegeben, wenn das MultiValue-Routing verwendet wird?
-Sie können die maximale Anzahl der zurückzugebenden Endpunkte angeben, und MultiValue gibt beim Empfang einer Abfrage maximal diese Anzahl von fehlerfreien Endpunkten zurück. Der maximal mögliche Wert für diese Konfiguration ist 10.
+Sie können die maximale Anzahl zurückzugebender Endpunkte angeben, und MultiValue gibt beim Empfang einer Abfrage maximal diese Anzahl von fehlerfreien Endpunkten zurück. Der maximal mögliche Wert für diese Konfiguration ist 10.
 
 ### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Erhalte ich den gleichen Satz von Endpunkten, wenn das MultiValue-Routing verwendet wird?
 Wir können nicht garantieren, dass bei jeder Abfrage der gleiche Satz von Endpunkten zurückgegeben wird. Dies wird auch dadurch beeinflusst, dass einige der Endpunkte fehlerhaft werden könnten, sodass sie dann nicht mehr in die Antwort einbezogen werden.
@@ -170,13 +167,13 @@ Wir können nicht garantieren, dass bei jeder Abfrage der gleiche Satz von Endpu
 ## <a name="real-user-measurements"></a>Benutzer-Realmessungen
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Welche Vorteile hat die Verwendung von Benutzer-Realmessungen?
-Wenn Sie die Routingmethode „Leistung“ verwenden, wählt Traffic Manager für Ihre Endbenutzer die beste Azure-Region aus, mit der eine Verbindung hergestellt werden kann. Hierzu werden die Quell-IP und das EDNS-Clientsubnetz (falls übergeben) untersucht und mit den Intelligence-Daten zur Netzwerklatenz des Diensts abgeglichen. Mithilfe von Benutzer-Realmessungen wird dies für Ihre Endbenutzer verbessert, indem deren Erfahrungen zu dieser Latenztabelle einen Beitrag leisten. Außerdem wird sichergestellt, dass diese Tabelle in adäquater Weise die Endbenutzernetzwerke widerspiegelt, aus denen die Endbenutzer Verbindungen mit Azure herstellen. Dies führt zu einer höheren Genauigkeit beim Routing für Ihre Endbenutzer.
+Wenn Sie die Routingmethode „Leistung“ verwenden, wählt Traffic Manager für Ihre Endbenutzer die beste Azure-Region aus, mit der eine Verbindung hergestellt werden kann. Hierzu werden die Quell-IP und das EDNS-Clientsubnetz (falls übergeben) untersucht und mit den Intelligence-Daten zur Netzwerklatenz des Diensts abgeglichen. Mithilfe von Benutzer-Realmessungen wird dies für Ihre Endbenutzer verbessert, indem deren Erfahrungen zu dieser Latenztabelle einen Beitrag leisten. Außerdem wird sichergestellt, dass diese Tabelle in adäquater Weise die Endbenutzernetzwerke widerspiegelt, aus denen die Endbenutzer Verbindungen mit Azure herstellen. Dies führt zu einer höheren Genauigkeit beim Routing Ihres Endbenutzers.
 
 ### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>Kann ich Benutzer-Realmessungen auch für andere Regionen als Azure-Regionen verwenden?
 Bei Benutzer-Realmessungen wird nur die Latenz bei der Erreichung von Azure-Regionen gemessen und gemeldet. Wenn Sie das leistungsbasierte Routing für Endpunkte verwenden, die in anderen Regionen als Azure-Regionen gehostet werden, können Sie trotzdem von diesem Feature profitieren. Sie verfügen so nämlich über mehr Latenzinformationen zur repräsentativen Azure-Region, die Sie für die Zuordnung zu diesem Endpunkt ausgewählt haben.
 
 ### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Welche Routingmethode profitiert von Benutzer-Realmessungen?
-Die zusätzlichen Informationen, die mit Benutzer-Realmessungen ermittelt werden, gelten nur für Profile, für die die Routingmethode „Leistung“ verwendet wird. Beachten Sie, dass der Link für „Benutzer-Realmessungen“ für alle Profile verfügbar ist, wenn Sie das Azure-Portal zum Anzeigen verwenden.
+Die zusätzlichen Informationen, die mit Benutzer-Realmessungen ermittelt werden, gelten nur für Profile, für die die Routingmethode „Leistung“ verwendet wird. Der Link für Benutzer-Realmessungen steht in allen Profilen zur Verfügung, wenn Sie das Azure-Portal verwenden.
 
 ### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Muss ich Benutzer-Realmessungen für jedes Profil separat aktivieren?
 Nein. Sie müssen sie nur einmal pro Abonnement aktivieren. Alle gemessenen und gemeldeten Latenzinformationen sind dann für alle Profile verfügbar.
@@ -190,12 +187,12 @@ Sie können Benutzer-Realmessungen auch deaktivieren, indem Sie Ihren Schlüssel
 Ja. Benutzer-Realmessungen sind so konzipiert, dass Daten erfasst werden können, die über unterschiedliche Arten von Endbenutzerclients gesammelt werden. Diese häufig gestellten Fragen werden aktualisiert, wenn neue Arten von Clientanwendungen unterstützt werden.
 
 ### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Wie viele Messungen werden jeweils durchgeführt, wenn meine Webseite mit aktivierten Benutzer-Realmessungen gerendert wird?
-Wenn Benutzer-Realmessungen mit dem angegebenen JavaScript-Code für Messungen verwendet werden, führt jeder Renderingvorgang der Seite dazu, dass sechs Messungen durchgeführt werden. Diese werden dann an den Traffic Manager-Dienst gemeldet. Beachten Sie, dass Ihnen dieses Feature basierend auf der Anzahl von Messungen berechnet wird, die an den Traffic Manager-Dienst gemeldet werden. Wenn der Benutzer beispielsweise von Ihrer Webseite weg navigiert, während die Messungen durchgeführt werden, und dies vor dem Melden der Ergebnisse geschieht, werden diese Messungen nicht für die Abrechnung herangezogen.
+Wenn Benutzer-Realmessungen mit dem angegebenen JavaScript-Code für Messungen verwendet werden, führt jeder Renderingvorgang der Seite dazu, dass sechs Messungen durchgeführt werden. Diese werden dann an den Traffic Manager-Dienst gemeldet. Dieses Feature wird Ihnen basierend auf der Anzahl von Messungen in Rechnung gestellt, die an den Traffic Manager-Dienst gemeldet werden. Wenn der Benutzer beispielsweise von Ihrer Webseite weg navigiert, während die Messungen durchgeführt werden, und dies vor dem Melden der Ergebnisse geschieht, werden diese Messungen nicht für die Abrechnung herangezogen.
 
 ### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Kommt es zu einer Verzögerung, bevor das Skript für Benutzer-Realmessungen auf meiner Webseite ausgeführt wird?
 Nein. Vor dem Aufrufen des Skripts kommt es nicht zu einer programmierten Verzögerung.
 
-### <a name="can-i-use-configure-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Kann ich Benutzer-Realmessungen nur für die Azure-Regionen verwenden, für die ich Messungen durchführen möchte?
+### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Kann ich Benutzer-Realmessungen auf die Azure-Regionen begrenzen, für die ich Messungen durchführen möchte?
 Nein. Bei jedem Aufruf wird mit dem Skript für Benutzer-Realmessungen eine Gruppe von sechs Azure-Regionen gemessen, die vom Dienst bestimmt wird. Diese Gruppe ändert sich zwischen den einzelnen Aufrufen, und wenn eine große Zahl dieser Aufrufe erfolgt, werden durch die Messungen unterschiedliche Azure-Regionen abgedeckt.
 
 ### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Kann ich die Anzahl von durchgeführten Messungen auf einen bestimmten Wert beschränken?
@@ -223,10 +220,10 @@ Wenn der bereitgestellte JavaScript-Code für Messungen verwendet wird, sind fü
 Nein. Die Verwendung von Traffic Manager ist nicht erforderlich. Der Routingbereich von Traffic Manager ist vom Bereich für die Benutzer-Realmessungen getrennt, und es ist zwar hilfreich, wenn beide unter derselben Webeigenschaft angeordnet sind, aber dies muss nicht zwingend der Fall sein.
 
 ### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Muss ich für die Verwendung mit Benutzer-Realmessungen einen Dienst in den Azure-Regionen hosten?
-Nein. Es ist nicht erforderlich, serverseitige Komponenten in Azure zu hosten, damit Benutzer-Realmessungen funktionieren. Das Bild mit dem einzelnen Pixel, das vom JavaScript für die Messungen heruntergeladen wird, und der Dienst, der in den verschiedenen Azure-Regionen ausgeführt wird, wird von Azure gehostet und verwaltet. 
+Nein. Es ist nicht erforderlich, serverseitige Komponenten in Azure zu hosten, um Benutzer-Realmessungen verwenden zu können. Das Bild mit dem einzelnen Pixel, das vom JavaScript für die Messungen heruntergeladen wird, und der Dienst, der in den verschiedenen Azure-Regionen ausgeführt wird, wird von Azure gehostet und verwaltet. 
 
 ### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Erhöht sich meine Azure-Bandbreitenauslastung, wenn ich Benutzer-Realmessungen verwende?
-Wie schon in der vorherigen Antwort erwähnt: Die serverseitigen Komponenten von Benutzer-Realmessungen befinden sich im Besitz von Azure und werden auch von Azure verwaltet. Dies bedeutet, dass sich Ihre Azure-Bandbreitenauslastung nicht erhöht, wenn Sie Benutzer-Realmessungen verwenden. Beachten Sie, dass dies nicht für die Bandbreitenauslastung außerhalb der abgerechneten Gebühren von Azure gilt. Wir verringern die Bandbreite, indem wir ein Bild mit nur einem Pixel herunterladen, um die Latenz einer Azure-Region zu messen. 
+Wie schon in der vorherigen Antwort erwähnt: Die serverseitigen Komponenten von Benutzer-Realmessungen befinden sich im Besitz von Azure und werden auch von Azure verwaltet. Dies bedeutet, dass sich Ihre Azure-Bandbreitenauslastung nicht erhöht, wenn Sie Benutzer-Realmessungen verwenden. Dies gilt nicht für die Bandbreitennutzung außerhalb der Azure-Gebührenabrechnung. Wir verringern die Bandbreite, indem wir ein Bild mit nur einem Pixel herunterladen, um die Latenz einer Azure-Region zu messen. 
 
 ## <a name="traffic-view"></a>Datenverkehrsansicht
 
@@ -290,7 +287,7 @@ Ja. Stagingslots des Clouddiensts können in Traffic Manager als externe Endpunk
 
 Traffic Manager stellt derzeit keine IPv6-adressierbaren Nameserver zur Verfügung. Traffic Manager kann jedoch weiterhin von IPv6-Clients verwendet werden, die IPv6-Endpunkte verbinden. Ein Client erstellt keine DNS-Anfragen direkt an Traffic Manager. Stattdessen verwendet der Client einen rekursiven DNS-Dienst. Ein reiner IPv6-Client sendet Anforderungen an den rekursiven DNS-Dienst über IPv6. Der rekursive Dienst sollte anschließend in der Lage sein, die Traffic Manager-Namensserver per IPv4 zu kontaktieren.
 
-Traffic Manager antwortet mit dem DNS-Namen oder der IP-Adresse des Endpunkts. Um einen IPv6-Endpunkt zu unterstützen, gibt es zwei Möglichkeiten. Sie können den Endpunkt als DNA-Namen mit einem zugehörigen AAAA-Eintrag hinzufügen. Traffic Manager überprüft die Integrität dieses Endpunkts und gibt ihn als CNAME-Eintragstyp in der Abfrageantwort zurück. Sie können diesen Endpunkt auch direkt über die IPv6-Adresse hinzufügen, und Traffic Manager gibt einen Datensatz vom Typ AAAA in der Abfrageantwort zurück. 
+Traffic Manager antwortet mit dem DNS-Namen oder der IP-Adresse des Endpunkts. Um einen IPv6-Endpunkt zu unterstützen, gibt es zwei Möglichkeiten. Sie können den Endpunkt als DNS-Name mit einem zugehörigen AAAA-Eintrag hinzufügen. Traffic Manager überprüft die Integrität dieses Endpunkts und gibt ihn als CNAME-Eintragstyp in der Abfrageantwort zurück. Sie können diesen Endpunkt auch direkt über die IPv6-Adresse hinzufügen, und Traffic Manager gibt einen Datensatz vom Typ AAAA in der Abfrageantwort zurück. 
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Kann ich Traffic Manager mit mehr als einer Web-App in derselben Region verwenden?
 
@@ -334,7 +331,7 @@ Traffic Manager kann keine Zertifikatüberprüfung bereitstellen. Dazu zählt Fo
 * Clientzertifikate werden nicht unterstützt.
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Verwende ich beim Hinzufügen eines Endpunkts eine IP-Adresse oder einen DNS-Namen?
-Traffic Manager unterstützt das Hinzufügen von Endpunkten auf drei Arten: als DNS-Name, als IPv4-Adresse und als IPv6-Adresse. Wenn der Endpunkt als IPv4- oder IPv6-Adresse hinzugefügt wird, ist die Abfrageantwort vom Eintragstyp A bzw. AAAA. Wenn der Endpunkt als DNS-Name hinzugefügt wird, ist die Abfrageantwort vom Eintragstyp CNAME. Beachten Sie, dass das Hinzufügen von Endpunkten als IPv4- oder IPv6-Adresse nur zulässig ist, wenn der Endpunkt vom Typ „Extern“ ist.
+Traffic Manager unterstützt das Hinzufügen von Endpunkten auf drei Arten: als DNS-Name, als IPv4-Adresse und als IPv6-Adresse. Wenn der Endpunkt als IPv4- oder IPv6-Adresse hinzugefügt wird, ist die Abfrageantwort vom Eintragstyp A bzw. AAAA. Wenn der Endpunkt als DNS-Name hinzugefügt wird, ist die Abfrageantwort vom Eintragstyp CNAME. Das Hinzufügen von Endpunkten als IPv4- oder IPv6-Adresse ist nur bei Endpunkten vom Typ **Extern** zulässig.
 Alle Routingmethoden und Überwachungseinstellungen werden von den drei Endpunktadressierungsarten unterstützt.
 
 ### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Welche Arten von IP-Adressen kann ich beim Hinzufügen eines Endpunkts verwenden?
@@ -353,10 +350,10 @@ Für Profile mit einer beliebigen Routingmethode außer „MultiValue“:
 |Eingehende Abfrageanforderung|    Endpunkttyp|  Bereitgestellte Antwort|
 |--|--|--|
 |BELIEBIG |  A/AAAA/CNAME |  Zielendpunkt| 
-|A |    A/CNAME | Zielendpunkt|
-|A |    AAAA |  NODATA |
+|Eine Datei |    A/CNAME | Zielendpunkt|
+|Eine Datei |    AAAA |  NODATA |
 |AAAA | AAAA/CNAME |  Zielendpunkt|
-|AAAA | A | NODATA |
+|AAAA | Eine Datei | NODATA |
 |CNAME |    CNAME | Zielendpunkt|
 |CNAME  |A/AAAA | NODATA |
 |
@@ -365,7 +362,7 @@ Für Profile mit der Routingmethode „MultiValue“:
 |Eingehende Abfrageanforderung|    Endpunkttyp | Bereitgestellte Antwort|
 |--|--|--|
 |BELIEBIG |  Kombination aus A und AAAA | Zielendpunkte|
-|A |    Kombination aus A und AAAA | Nur Zielendpunkte vom Typ A|
+|Eine Datei |    Kombination aus A und AAAA | Nur Zielendpunkte vom Typ A|
 |AAAA   |Kombination aus A und AAAA|     Nur Zielendpunkte vom Typ AAAA|
 |CNAME |    Kombination aus A und AAAA | NODATA |
 

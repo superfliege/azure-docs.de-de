@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 43945dc8810151eb701aa9e1aa1be47d4fbb0491
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6c730455e2d8b590a4e4b9ca0392985918678bf4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125643"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167697"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriken und Integritätsdiagnosen für Standard Load Balancer
 
-Azure Standard Load Balancer bietet Ihren Ressourcen die folgenden Diagnosefunktionen:
-* **Mehrdimensionale Metriken**: Stellt neue mehrdimensionale Diagnosefunktionen sowohl für öffentliche als auch für interne Load Balancer-Konfigurationen bereit. Sie können Ihre Load Balancer-Ressourcen überwachen, verwalten und hinsichtlich Fehlern behandeln.
+Azure Load Balancer Standard bietet Ihren Ressourcen die folgenden Diagnosefunktionen:
+* **Mehrdimensionale Metriken**: Stellt neue mehrdimensionale Diagnosefunktionen über [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) sowohl für öffentliche als auch für interne Load Balancer-Konfigurationen bereit. Sie können Ihre Load Balancer-Ressourcen überwachen, verwalten und hinsichtlich Fehlern behandeln.
 
 * **Ressourcenintegrität**: Die Seite „Load Balancer“ im Azure-Portal und die Seite „Ressourcenintegrität“ (unter „Monitor“) stellen den Abschnitt „Ressourcenintegrität“ für die öffentliche Load Balancer-Konfiguration von Standard Load Balancer bereit.
 
@@ -219,6 +219,7 @@ In der folgenden Tabelle sind die verschiedenen Ressourcenintegritätsstatus und
 
 - Weitere Informationen finden Sie unter [Load Balancer Standard](load-balancer-standard-overview.md).
 - Weitere Informationen zu Ihren [ausgehenden Verbindungen für Load Balancer](https://aka.ms/lboutbound)
-- Informieren Sie sich über die [Azure Monitor-REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics/).
+- Weitere Informationen finden Sie unter [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
+- Weitere Informationen finden Sie unter [Azure Monitor REST-API](https://docs.microsoft.com/rest/api/monitor/) und [Abrufen von Metriken über die REST-API](https://docs.microsoft.com/rest/api/monitor/metrics/metrics_list).
 
 

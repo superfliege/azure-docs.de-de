@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 56f233afed8c403d19c9b668e98ecfec45470b64
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ddb0b5b1a0847200caa7d8d04ecdc9dab4c41d14
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721618"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956696"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
@@ -71,7 +71,7 @@ Bei der Erstellung einer Basic-Lösung werden folgende Azure-Dienste kostenpflic
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1: Tarif „Standard“ | Geräteverwaltung und Kommunikation |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Speichern von Konfigurationsdaten, Regeln, Warnungen und anderer Cold Storage |  
 | 1     | [Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Speicher für VM und Streamingprüfpunkte |
-| 1     | [Webanwendung](https://azure.microsoft.com/services/app-service/web/)        |                 | Hosten der Front-End-Webanwendung |
+| 1     | [Web Application](https://azure.microsoft.com/services/app-service/web/)        |                 | Hosten der Front-End-Webanwendung |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Verwalten von Benutzeridentitäten und Sicherheit |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Anzeigen von Ressourcenspeicherorten |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 Einheiten              | Aktivieren von Echtzeitanalysen |
@@ -81,14 +81,14 @@ Bei der Erstellung einer Basic-Lösung werden folgende Azure-Dienste kostenpflic
 
 
 ### <a name="standard"></a>Standard
-Die Standard-Bereitstellung ist für eine Produktionsumgebung geeignet und kann von einem Entwickler erweitert und an die jeweiligen Anforderungen angepasst werden. Für Zuverlässigkeit und Skalierbarkeit werden Anwendungsmicroservices als Docker-Container erstellt und über einen Orchestrator (standardmäßig [Kubernetes](https://kubernetes.io/)) bereitgestellt. Der Orchestrator ist für die Bereitstellung, Skalierung und Verwaltung der Anwendung zuständig.
+Die Standard-Bereitstellung ist für eine Produktionsumgebung geeignet und kann von einem Entwickler erweitert und an die jeweiligen Anforderungen angepasst werden. Wenn Sie eine produktionsbereite, auf Skalierbarkeit und Erweiterbarkeit ausgelegte Architektur anpassen möchten, verwenden Sie die Bereitstellungsoption „Standard“. Anwendungsmicroservices werden als Docker-Container erstellt und mithilfe von Azure Kubernetes Service (AKS) bereitgestellt. Der Orchestrator ist für die Bereitstellung, Skalierung und Verwaltung der Anwendung zuständig.
+
 
 Bei der Erstellung einer Standard-Lösung werden folgende Azure-Dienste kostenpflichtig in Ihrem Azure-Abonnement bereitgestellt:
 
 | Count | Ressource                                     | SKU/Größe      | Verwendung |
 |-------|----------------------------------------------|-----------------|----------|
-| 4     | [Virtuelle Linux-Computer](https://azure.microsoft.com/services/virtual-machines/)   | Standard D2 v2  | Ein Master und drei Agents zum Hosten von Microservices mit Redundanz |
-| 1     | [Azure Container Service](https://azure.microsoft.com/services/container-service/) |                 | Orchestrator [Kubernetes](https://kubernetes.io) |
+| 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Nutzen Sie einen vollständig verwalteten Orchestrierungsdienst für Kubernetes-Container mit standardmäßig drei Agents.|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2: Tarif „Standard“ | Geräteverwaltung und -steuerung |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Speichern von Konfigurationsdaten und Gerätetelemetrie wie Regeln, Warnungen und Meldungen |
 | 5     | [Azure-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | Vier für VM-Speicher, eins für die Streamingprüfpunkte |

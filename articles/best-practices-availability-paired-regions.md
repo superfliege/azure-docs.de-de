@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 5678b8408eac303d9036d21612f60fafc325425d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 983a551da26e08797b2a65f609cff17954a52828
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801912"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954811"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare
 
@@ -33,6 +33,7 @@ Abbildung 1: Azure-Regionspaare
 | Brasilien |Brasilien, Süden 2 |USA Süd Mitte |
 | Kanada |Kanada, Mitte |Kanada, Osten |
 | China |China, Norden |China, Osten|
+| China |China, Norden 2 |China, Osten 2|
 | Europa |Nordeuropa |Europa, Westen |
 | Frankreich |Frankreich, Mitte|Frankreich, Süden|
 | Deutschland |Deutschland, Mitte |Deutschland, Nordosten |

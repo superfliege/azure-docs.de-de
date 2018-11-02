@@ -4,22 +4,21 @@ description: Versionsanmerkungen zu Media Services
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: 3ca2d7af-1cf0-45fa-9585-3b73f3ee057d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: cdfd19f2dfd599eacaa0759b63c94767e760a874
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 531cdf9a69e0ecfa2d2d8ae02f8f88fd5f400479
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142761"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378940"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 Diese Versionsanmerkungen zu Azure Media Services bieten eine Übersicht über Änderungen im Vergleich zu früheren Versionen und bekannte Probleme.
@@ -45,6 +44,16 @@ Diese Versionsanmerkungen zu Azure Media Services bieten eine Übersicht über �
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST-API-Versionsverlauf
 Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [Azure Media Services – REST-API-Referenz].
+
+## <a name="october-2018"></a>Oktober 2018
+
+### <a name="cmaf-support"></a>CMAF-Unterstützung
+
+CMAF- und „cbcs“-Verschlüsselungsunterstützung für Apple HLS- (iOS 11 und höher) und MPEG-DASH-Player, die CMAF unterstützen.
+
+### <a name="web-vtt-thumbnail-sprites"></a>Web VTT-Miniaturbild-Sprites
+
+Sie können jetzt mit Media Services Web VTT-Miniaturbild-Sprites mit unseren APIs der Version 2 zu erstellen. Weitere Informationen finden Sie unter [Generieren eines Miniaturbild-Sprite](generate-thumbnail-sprite.md).
 
 ## <a name="july-2018"></a>Juli 2018
 
@@ -533,9 +542,6 @@ Die folgende Funktion war im November-Release des SDK neu:
 * Unterstützung der asynchronen Methode
   
     * Für alle Methoden wurde asynchrone Unterstützung hinzugefügt.
-
-## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 31f23e3f8e792c6b61870c640f99ec3392a940d3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 96bbb221f5fa133ee88a09d489627e3d2f9b0713
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211173"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409185"
 ---
 # <a name="monitoring-the-cluster-and-platform"></a>Überwachen des Clusters und der Plattform
 
@@ -91,7 +91,7 @@ Eine Liste der Leistungsindikatordaten, die bei der Verwendung von Service Fabri
 Im Folgenden werden zwei allgemeine Verfahren vorgestellt, mit denen Sie die Sammlung von Leistungsdaten für Ihren Cluster einrichten können:
 
 * **Verwendung eines Agents**  
-Dies ist die bevorzugte Methode zur Sammlung von Leistungsdaten von einem Computer, da Agents in der Regel über eine Liste möglicher Leistungsmetriken verfügen, die gesammelt werden können. Zudem ist es ein relativ einfacher Vorgang, um die zu sammelnden oder zu ändernden Metriken auszuwählen. Lesen Sie die Artikel [Vorgehensweise zum Konfigurieren der OMS für Service Fabric](service-fabric-diagnostics-event-analysis-oms.md) und [Einrichten des Windows-Agents für die OMS](../log-analytics/log-analytics-windows-agent.md), um mehr über den OMS-Agent zu erfahren. Dabei handelt es sich um einen Überwachungs-Agent, der Leistungsdaten für Cluster-VMs und bereitgestellte Container abrufen kann.
+Dies ist die bevorzugte Methode zur Sammlung von Leistungsdaten von einem Computer, da Agents in der Regel über eine Liste möglicher Leistungsmetriken verfügen, die gesammelt werden können. Zudem ist es ein relativ einfacher Vorgang, um die zu sammelnden oder zu ändernden Metriken auszuwählen. Lesen Sie die Artikel zum [Konfigurieren des Log Analytics-Agents für Service Fabric](service-fabric-diagnostics-event-analysis-oms.md) und zum [Einrichten des Log Analytics-Agents](../log-analytics/log-analytics-windows-agent.md), um mehr über den Log Analytics-Agent zu erfahren. Dabei handelt es sich um einen Überwachungs-Agent, der Leistungsdaten für Cluster-VMs und bereitgestellte Container abrufen kann.
 
 * **Konfigurieren der Diagnose zum Schreiben von Leistungsindikatoren in eine Tabelle**  
 Für Cluster in Azure bedeutet dies, dass die Konfiguration der Azure-Diagnose geändert wird, um die entsprechenden Leistungsindikatoren von den VMs in Ihrem Cluster abzurufen, und dass diese aktiviert wird, um bei der Bereitstellung von Containern Docker-Statistiken abzurufen. Weitere Informationen zum Einrichten der Sammlung von Leistungsindikatoren finden Sie unter [Konfigurieren von Leistungsindikatoren in WAD](service-fabric-diagnostics-event-aggregation-wad.md).

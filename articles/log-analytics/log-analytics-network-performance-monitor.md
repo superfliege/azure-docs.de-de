@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: e12c513f8812381897804412616be1ef7c743a3d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: fc5ab802b39597d72f01f756c9bdb16597862e3c
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044092"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638200"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -65,17 +65,17 @@ Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter 
 
 ### <a name="where-to-install-the-agents"></a>Bestimmen des Installationsorts für die Agents 
 
-* **Systemmonitor**: Installieren Sie Operations Management Suite-Agents auf mindestens einem Knoten, der mit den einzelnen Subnetzwerken verbunden ist, über die Sie die Netzwerkkonnektivität mit anderen Subnetzwerken überwachen möchten.
+* **Systemmonitor:** Installieren Sie Log Analytics-Agents auf mindestens einem Knoten, der mit den einzelnen Subnetzwerken verbunden ist, über die Sie die Netzwerkkonnektivität mit anderen Subnetzwerken überwachen möchten.
 
     Zur Überwachung einer Netzwerkverbindung installieren Sie an beiden Endpunkten der Verbindung Agents. Sollten Sie sich hinsichtlich der Topologie Ihres Netzwerks nicht sicher sein, installieren Sie die Agents auf Servern mit kritischen Workloads, zwischen denen Sie die Netzwerkleistung überwachen möchten. Wenn Sie also beispielsweise die Netzwerkverbindung zwischen einem Webserver und einem Server mit SQL überwachen möchten, installieren Sie auf beiden Servern einen Agent. Agents überwachen nicht die eigentlichen Hosts, sondern die Netzwerkkonnektivität (Verbindungen) zwischen Hosts. 
 
-* **Dienstkonnektivitätsmonitor**: Installieren Sie einen Operations Management Suite-Agent auf jedem Knoten, von dem aus Sie die Netzwerkkonnektivität mit dem Dienstendpunkt überwachen möchten. Sie möchten beispielsweise die Netzwerkkonnektivität mit Office 365 von Ihren Bürostandorten mit den Bezeichnungen O1, O2 und O3 überwachen. Installieren Sie den Operations Management Suite-Agent auf jeweils mindestens einem Knoten in O1, O2 und O3. 
+* **Dienstkonnektivitätsmonitor**: Installieren Sie einen Log Analytics-Agent auf jedem Knoten, von dem aus Sie die Netzwerkkonnektivität mit dem Dienstendpunkt überwachen möchten. Sie möchten beispielsweise die Netzwerkkonnektivität mit Office 365 von Ihren Bürostandorten mit den Bezeichnungen O1, O2 und O3 überwachen. Installieren Sie den Log Analytics-Agent auf jeweils mindestens einem Knoten in O1, O2 und O3. 
 
-* **ExpressRoute-Monitor**: Installieren Sie mindestens einen Operations Management Suite-Agent in Ihrem virtuellen Azure-Netzwerk. Installieren Sie außerdem mindestens einen Agent in Ihrem lokalen-Subnetzwerk, das über privates ExpressRoute-Peering verbunden ist.  
+* **ExpressRoute-Monitor**: Installieren Sie mindestens einen Log Analytics-Agent in Ihrem virtuellen Azure-Netzwerk. Installieren Sie außerdem mindestens einen Agent in Ihrem lokalen-Subnetzwerk, das über privates ExpressRoute-Peering verbunden ist.  
 
-### <a name="configure-operations-management-suite-agents-for-monitoring"></a>Konfigurieren der Operations Management Suite-Agents für die Überwachung 
+### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurieren von Log Analytics-Agents für die Überwachung 
 
-Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwerkleistung zwischen Quell- und Ziel-Agents zu überwachen. Bei der Überwachung im Systemmonitor und im Dienstkonnektivitätsmonitor kann zwischen dem TCP- und dem ICMP-Protokoll gewählt werden. Für den ExpressRoute-Monitor steht nur TCP als Überwachungsprotokoll zur Verfügung. Stellen Sie sicher, dass die Firewall die Kommunikation zwischen den für die Überwachung verwendeten Operations Management Suite-Agents über das ausgewählte Protokoll zulässt. 
+Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwerkleistung zwischen Quell- und Ziel-Agents zu überwachen. Bei der Überwachung im Systemmonitor und im Dienstkonnektivitätsmonitor kann zwischen dem TCP- und dem ICMP-Protokoll gewählt werden. Für den ExpressRoute-Monitor steht nur TCP als Überwachungsprotokoll zur Verfügung. Stellen Sie sicher, dass die Firewall die Kommunikation zwischen den für die Überwachung verwendeten Log Analytics-Agents über das ausgewählte Protokoll zulässt. 
 
 * **TCP-Protokoll**: Wenn Sie sich für TCP als Überwachungsprotokoll entschieden haben, öffnen Sie den Firewallport für die Agents, die für den Netzwerkleistungsmonitor und ExpressRoute-Monitor verwendet werden, um sicherzustellen, dass die Agents eine Verbindung miteinander herstellen können. Um den Port zu öffnen, führen Sie das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript) ohne Parameter in einem PowerShell-Fenster mit Administratorrechten aus.
 
@@ -109,7 +109,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
 
    ![Kachel des Netzwerkleistungsmonitors](media/log-analytics-network-performance-monitor/npm-config.png)
 
-4. Auf der Seite **Setup** finden Sie die Option zum Installieren von Operations Management Suite-Agents sowie zum Konfigurieren der Agents für die Überwachung in der Ansicht **Allgemeine Einstellungen**. Wenn Sie Operations Management Suite-Agents installiert und konfiguriert haben, wählen Sie (wie bereits erläutert) die Ansicht **Setup** aus, um die Funktion zu konfigurieren, die Sie verwenden möchten. 
+4. Auf der Seite **Setup** finden Sie die Option zum Installieren von Log Analytics-Agents sowie zum Konfigurieren der Agents für die Überwachung in der Ansicht **Allgemeine Einstellungen**. Wenn Sie Log Analytics-Agents installiert und konfiguriert haben, wählen Sie (wie bereits erläutert) die Ansicht **Setup** aus, um die Funktion zu konfigurieren, die Sie verwenden möchten. 
 
    **Systemmonitor**: Wählen Sie in der Systemmonitor-**Standardregel** aus, welches Protokoll für synthetische Transaktionen verwendet werden soll, und wählen Sie dann **Speichern und fortfahren** aus. Diese Protokollauswahl gilt nur für die vom System generierte Standardregel. Sie müssen das Protokoll jedes Mal explizit auswählen, wenn Sie eine Systemmonitorregel erstellen. Sie können jederzeit zu den Einstellungen der **Standardregel** auf der Registerkarte **Systemmonitor** wechseln und das Protokoll später ändern (diese wird nach Abschluss der Tag-0-Konfiguration angezeigt). Sollten Sie die Systemmonitorfunktion nicht benötigen, können Sie die **Standardregel** über die Standardregeleinstellungen auf der Registerkarte **Systemmonitor** deaktivieren.
 
@@ -135,7 +135,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
     
 Die Überwachung für diese Peerings ist zunächst deaktiviert. Wählen Sie jedes Peering aus, das Sie überwachen möchten, und konfigurieren Sie die Überwachung in der Detailansicht auf der rechten Seite. Wählen Sie zum Speichern der Konfiguration **Speichern** aus. Weitere Informationen finden Sie im Artikel „Konfigurieren der ExpressRoute-Überwachung“. 
 
-Nach Abschluss der Einrichtung dauert es zwischen 30 Minuten und einer Stunde, bis die Daten aufgefüllt wurden. Während die Lösung Daten aus Ihrem Netzwerk aggregiert, wird auf der Kachel **Übersicht** des Netzwerkleistungsmonitors die Meldung *Für die Lösung ist eine weitere Konfiguration erforderlich.* angezeigt. Nachdem die Daten gesammelt und indiziert wurden, ändert sich die Kachel **Übersicht** und informiert Sie in einer Zusammenfassung über die Integrität Ihres Netzwerks. Anschließend können Sie die Überwachung der Knoten, auf denen die Operations Management Suite-Agents installiert sind, sowie die in Ihrer Umgebung ermittelten Subnetze bearbeiten.
+Nach Abschluss der Einrichtung dauert es zwischen 30 Minuten und einer Stunde, bis die Daten aufgefüllt wurden. Während die Lösung Daten aus Ihrem Netzwerk aggregiert, wird auf der Kachel **Übersicht** des Netzwerkleistungsmonitors die Meldung *Für die Lösung ist eine weitere Konfiguration erforderlich.* angezeigt. Nachdem die Daten gesammelt und indiziert wurden, ändert sich die Kachel **Übersicht** und informiert Sie in einer Zusammenfassung über die Integrität Ihres Netzwerks. Daraufhin können Sie die Überwachung der Knoten, auf denen Log Analytics-Agents installiert sind, sowie die Subnetze, die in Ihrer Umgebung ermittelt wurden, bearbeiten.
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Bearbeiten von Überwachungseinstellungen für Subnetze und Knoten 
 
@@ -144,7 +144,7 @@ Alle Subnetze mit mindestens einem installierten Agent werden auf der Registerka
 
 So aktivieren bzw. deaktivieren Sie die Überwachung bestimmter Subnetzwerke:
 
-1. Aktivieren oder deaktivieren Sie das Kontrollkästchen neben der  **Subnetzwerk-ID**. Stellen Sie dann sicher, dass  **Zur Überwachung verwenden** nach Bedarf aktiviert oder deaktiviert ist. Sie können mehrere Subnetze aktivieren oder deaktivieren. Deaktivierte Subnetzwerke werden nicht überwacht, da die Agents dahingehend aktualisiert werden, dass sie keine Pings anderer Agents mehr ausführen. 
+1. Aktivieren oder deaktivieren Sie das Kontrollkästchen neben der **Subnetzwerk-ID**. Stellen Sie dann sicher, dass **Zur Überwachung verwenden** je nach Bedarf aktiviert oder deaktiviert ist. Sie können mehrere Subnetze aktivieren oder deaktivieren. Deaktivierte Subnetzwerke werden nicht überwacht, da die Agents dahingehend aktualisiert werden, dass sie keine Pings anderer Agents mehr ausführen. 
 2. Wählen Sie die Knoten aus, die Sie in einem bestimmten Subnetz überwachen möchten. Wählen Sie das Subnetzwerk aus der Liste aus, und verschieben Sie die erforderlichen Knoten zwischen den Listen, die nicht überwachte und überwachte Knoten enthalten. Sie können dem Subnetzwerk eine benutzerdefinierte Beschreibung hinzufügen.
 3. Wählen Sie zum Speichern der Konfiguration **Speichern** aus. 
 
@@ -176,7 +176,7 @@ Die folgende Tabelle zeigt Datensammlungsmethoden und andere Details, wie Daten 
  
 
  
-Die Lösung nutzt synthetische Transaktionen, um die Integrität des Netzwerks zu bewerten. Operations Management Suite-Agents, die an verschiedenen Punkten im Netzwerk installiert sind, tauschen TCP- oder ICMP Echo-Pakete miteinander aus. Ob die Agents TCP-Pakete oder ICMP Echo verwenden, hängt davon ab, welches Protokoll Sie für die Überwachung ausgewählt haben. Dabei erhalten Agents Informationen zur Roundtripzeit und ggf. zu Paketverlust. Jeder Agent führt zudem in regelmäßigen Abständen eine Routenverfolgung (Traceroute) zu anderen Agents aus, um alle zu testenden Routen im Netzwerk zu ermitteln. Anhand dieser Daten können die Agents die Netzwerklatenz und die Paketverluste herleiten. Die Tests werden alle fünf Sekunden wiederholt. Daten werden von den Agents für etwa drei Minuten aggregiert, bevor sie in den Log Analytics-Dienst hochgeladen werden.
+Die Lösung nutzt synthetische Transaktionen, um die Integrität des Netzwerks zu bewerten. Log Analytics-Agents, die an verschiedenen Punkten im Netzwerk installiert sind, tauschen TCP- oder ICMP Echo-Pakete miteinander aus. Ob die Agents TCP-Pakete oder ICMP Echo verwenden, hängt davon ab, welches Protokoll Sie für die Überwachung ausgewählt haben. Dabei erhalten Agents Informationen zur Roundtripzeit und ggf. zu Paketverlust. Jeder Agent führt zudem in regelmäßigen Abständen eine Routenverfolgung (Traceroute) zu anderen Agents aus, um alle zu testenden Routen im Netzwerk zu ermitteln. Anhand dieser Daten können die Agents die Netzwerklatenz und die Paketverluste herleiten. Die Tests werden alle fünf Sekunden wiederholt. Daten werden von den Agents für etwa drei Minuten aggregiert, bevor sie in den Log Analytics-Dienst hochgeladen werden.
 
 
 
@@ -257,9 +257,9 @@ Alle im Dashboard des Netzwerkleistungsmonitors und auf den Drilldownseiten graf
 
 Der Netzwerkleistungsmonitor verwendet die Warnfunktionen von [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
 
-Dies bedeutet, dass alle Warnungen mithilfe von [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview) verwaltet werden.  
+Das bedeutet, dass alle Benachrichtigungen mithilfe von [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview) verwaltet werden.  
 
-Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über OMS zu erstellen: 
+Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über Log Analytics zu erstellen: 
 1. Es wird ein Link angezeigt, der Sie zum Azure-Portal umleitet. Klicken Sie darauf, um das Portal aufzurufen.
 2. Klicken Sie auf die Kachel für die Netzwerkleistungsmonitor-Lösung. 
 3. Navigieren Sie zu „Konfigurieren“.  
@@ -271,7 +271,11 @@ Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über das Azure-Portal
 3. Wenn Sie sich für Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. [Hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) erfahren Sie, wie Sie eine Aktionsgruppe erstellen. 
 4. Nachdem die Warnung erfolgreich erstellt wurde, können Sie über den Link „Warnungen verwalten“ Ihre Warnungen verwalten. 
 
-##<a name="pricing"></a>Preise
+Wenn Sie eine Warnung erstellen, erstellt NPM eine abfragebasierte Warnungsregel in Azure Monitor. Diese Abfrage wird standardmäßig alle fünf Minuten ausgelöst. Die ersten 250 Protokollwarnungsregeln von Azure Monitor sind kostenlos. Jede weitere Protokollwarnungsregel wird gemäß den [Warnungspreisen auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/en-us/pricing/details/monitor/) abgerechnet.
+Benachrichtigungen werden separat abgerechnet (siehe [Benachrichtigungspreise auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/en-us/pricing/details/monitor/)).
+
+
+## <a name="pricing"></a>Preise
 
 Informationen zu Preisen sind [online](log-analytics-network-performance-monitor-pricing-faq.md) verfügbar.
 

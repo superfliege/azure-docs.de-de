@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 56b01855a5996bb62f721bda2bfc207684227854
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1ec587f4a4519f86efceb7cefa0acb372035a9a9
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146599"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318213"
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Konfigurieren Ihres Azure-Projekts in Visual Studio zur Verwendung mehrerer Dienstkonfigurationen
 
@@ -75,8 +75,9 @@ Zum Erstellen einer Verbindungszeichenfolge wählen Sie **Einstellung hinzufüge
 Wählen Sie für neue oder vorhandene Verbindungszeichenfolgen **...** * rechts neben dem Feld **Wert** aus, um das Dialogfeld **Speicherkonto-Verbindungszeichenfolge erstellen** zu öffnen:
 
 1. Wählen Sie unter **Verbindung herstellen über** die Option **Ihr Abonnement**aus, um ein Speicherkonto aus einem Abonnement auszuwählen. Visual Studio ruft dann die Anmeldeinformationen des Speicherkontos automatisch aus der `.publishsettings`-Datei ab.
-1. Mit der Option **Manuell eingegebene Anmeldeinformationen** können Sie den Kontonamen und -schlüssel mithilfe von Informationen aus dem Azure-Portal direkt angeben. Kopieren des Kontoschlüssels: a. Navigieren Sie im Azure-Portal zum Speicherkonto, und wählen Sie **Schlüssel verwalten**.
-    2. Um den Kontoschlüssel zu kopieren, navigieren Sie im Azure-Portal zu dem Speicherkonto, wählen **Einstellungen > Zugriffsschlüssel** aus und verwenden die Schaltfläche „Kopieren“, um den primären Zugriffsschlüssel in die Zwischenablage zu kopieren.
+1. Mit der Option **Manuell eingegebene Anmeldeinformationen** können Sie den Kontonamen und -schlüssel mithilfe von Informationen aus dem Azure-Portal direkt angeben. Kopieren des Kontoschlüssels:
+    1. Navigieren Sie im Azure-Portal zum Speicherkonto, und wählen Sie **Schlüssel verwalten**.
+    1. Um den Kontoschlüssel zu kopieren, navigieren Sie im Azure-Portal zu dem Speicherkonto, wählen **Einstellungen > Zugriffsschlüssel** aus und verwenden die Schaltfläche „Kopieren“, um den primären Zugriffsschlüssel in die Zwischenablage zu kopieren.
 1. Wählen Sie eine der Verbindungsoptionen aus. Bei **Benutzerdefinierte Endpunkte angeben** werden Sie aufgefordert, bestimmte URLs für Blobs, Tabellen und Warteschlangen anzugeben. Benutzerdefinierte Endpunkte ermöglichen Ihnen die Verwendung [benutzerdefinierter Domänen](storage/blobs/storage-custom-domain-name.md) und eine genauere Steuerung des Zugriffs. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](./storage/common/storage-configure-connection-string.md).
 1. Wählen Sie **OK** und dann **Datei > Speichern**, um die Konfiguration mit der neuen Verbindungszeichenfolge zu aktualisieren.
 

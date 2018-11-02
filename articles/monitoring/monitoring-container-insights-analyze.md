@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 6df7d42bc291713a815cac9f719f53136ed35b19
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 430145119721ac947162d3b661377290a0ae2c11
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956671"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637997"
 ---
-## <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container
+# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container
 Das Anzeigen der Leistung von AKS-Clustern (Azure Kubernetes Service) kann mit Azure Monitor für Container in zwei Perspektiven erfolgen, direkt auf einem AKS-Cluster oder für alle AKS-Cluster in einem Abonnement in Azure Monitor. 
 
 Dieser Artikel soll Ihr Verständnis für die Benutzererfahrung in den beiden Perspektiven schärfen und aufzeigen, wie Sie erkannte Probleme schnell bewerten, untersuchen und beheben.
@@ -109,6 +109,10 @@ Auf der Registerkarte **Knoten** folgt die Zeilenhierarchie dem Kubernetes-Objek
 
 ![Beispiel für eine Kubernetes-Knotenhierarchie in der Leistungsansicht](./media/monitoring-container-insights-analyze/containers-nodes-view.png)
 
+Auf einem erweiterten Knoten können Sie per Drilldown von dem Pod oder Container, der auf dem Knoten ausgeführt wird, zum Controller navigieren, um für diesen Controller gefilterte Leistungsdaten anzuzeigen. Klicken Sie auf den Wert in der Spalte **Controller** für den spezifischen Knoten.   
+
+![Exemplarischer Drilldownvorgang vom Knoten zum Controller in der Leistungsansicht](./media/monitoring-container-insights-analyze/drill-down-node-controller.png)
+
 Im oberen Bereich der Seite können Sie Controller oder Container auswählen und den Status sowie die Ressourcenauslastung für diese Objekte überprüfen.  Wenn Sie stattdessen die Arbeitsspeicherauslastung überprüfen möchten, wählen Sie aus der Dropdownliste **Metrik** die Option **Arbeitsspeicher RSS** oder **Arbeitssatz für Arbeitsspeicher** aus. **Arbeitsspeicher RSS** wird nur für die Kubernetes-Version 1.8 und höher unterstützt. Andernfalls werden Werte für **Min&nbsp;%** als *NaN&nbsp;%* angezeigt. Dieser numerische Datentypwert stellt einen nicht definierten oder nicht darstellbaren Wert dar. 
 
 ![Leistungsansicht zu den Containerknoten](./media/monitoring-container-insights-analyze/containers-node-metric-dropdown.png)
@@ -144,7 +148,9 @@ In dieser Ansicht können Sie die Leistungsintegrität Ihrer Controller ansehen.
 
 ![Leistungsansicht des Controllers <Name>](./media/monitoring-container-insights-analyze/containers-controllers-view.png)
 
-Die Zeilenhierarchie beginnt mit einem Controller und erweitert den Controller. Sie sehen mindestens einen Container. Wenn Sie einen Pod erweitern, wird in der letzten Zeile der Container angezeigt, der im Pod gruppiert ist.  
+Die Zeilenhierarchie beginnt mit einem Controller. Wenn Sie einen Controller erweitern, wird mindestens ein Pod angezeigt.  Wenn Sie einen Pod erweitern, wird in der letzten Zeile der Container angezeigt, der mit dem Pod verknüpft ist. Von einem erweiterten Controller aus können Sie per Drilldown zu dem Knoten navigieren, auf dem er ausgeführt wird, um für diesen Controller gefilterte Leistungsdaten anzuzeigen. Klicken Sie auf den Wert in der Spalte **Knoten** für den spezifischen Controller.   
+
+![Exemplarischer Drilldownvorgang vom Knoten zum Controller in der Leistungsansicht](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
 
 Die folgende Tabelle beschreibt die Informationen, die bei der Anzeige von Controllern erscheinen:
 
@@ -178,6 +184,10 @@ Wählen Sie im Selektor **Container** aus.
 Hier können Sie die Leistungsintegrität Ihrer Azure Kubernetes-Container anzeigen.  
 
 ![Leistungsansicht des Controllers <Name>](./media/monitoring-container-insights-analyze/containers-containers-view.png)
+
+Von einem Container aus können Sie per Drilldown zu einem Pod oder Knoten navigieren, um für das entsprechende Objekt gefilterte Leistungsdaten anzuzeigen. Klicken Sie auf den Wert in der Spalte **Pod** oder **Knoten** für den spezifischen Container.   
+
+![Exemplarischer Drilldownvorgang vom Knoten zum Controller in der Leistungsansicht](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
 
 Die folgende Tabelle beschreibt die Informationen, die bei der Anzeige von Containern erscheinen:
 

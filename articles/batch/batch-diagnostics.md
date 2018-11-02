@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 98bd088d4995bd1444b059531dc5b19d0283f551
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c045d82e47d2554c2767e6f52491c780618abc2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965533"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409525"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung
 
@@ -85,7 +85,7 @@ Andere optionale Ziele für Diagnoseprotokolle:
 
 * Streamen Sie Batch-Diagnoseprotokolle an einen [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs können mit einem beliebigen Echtzeitanalyse-Anbieter Millionen Ereignisse pro Sekunde erfassen und anschließend transformieren und speichern. 
 
-* Senden Sie Diagnoseprotokolle an [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Hier können Sie sie im OMS-Portal (Operations Management Suite) analysieren oder zur Analyse in Power BI oder Excel exportieren.
+* Senden Sie Diagnoseprotokolle an [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Hier können Sie sie analysieren oder zur Analyse in Power BI oder Excel exportieren.
 
 > [!NOTE]
 > Beim Speichern oder Verarbeiten von Diagnoseprotokolldaten mit Azure-Diensten fallen unter Umständen zusätzliche Kosten an. 

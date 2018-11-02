@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: fa8605f4822ff0ee5ba25ee0baca4fb2fec83b17
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 56a1ebcfbb6dda9bc96aa241bd2b8d753022181a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497602"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385854"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
@@ -35,7 +35,7 @@ Azure Key Vault ist ein Tool zum sicheren Speichern und Zugreifen auf Geheimniss
 
 Grundsätzlich gibt es drei Möglichkeiten für die Authentifizierung bei Key Vault
 
-1. **Mithilfe der [verwalteten Dienstidentität](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)** (**Empfohlene und bewährte Methode**): Wenn Sie eine App auf einem virtuellen Computer in Azure bereitstellen, können Sie Ihrem virtuellen Computer eine Identität zuweisen, die Zugriff auf Key Vault hat. Sie können Identitäten auch anderen Azure-Ressourcen zuweisen, die [hier](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) aufgeführt sind. Der Vorteil bei diesem Ansatz ist, dass die App bzw. der Dienst die Rotation des ersten Geheimnisses nicht verwaltet. Die Identität wird von Azure automatisch gedreht. 
+1. **Mithilfe der [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)** (**Empfohlene und bewährte Methode**): Wenn Sie eine App auf einem virtuellen Computer in Azure bereitstellen, können Sie Ihrem virtuellen Computer eine Identität zuweisen, die Zugriff auf Key Vault hat. Sie können Identitäten auch anderen Azure-Ressourcen zuweisen, die [hier](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) aufgeführt sind. Der Vorteil bei diesem Ansatz ist, dass die App bzw. der Dienst die Rotation des ersten Geheimnisses nicht verwaltet. Die Identität wird von Azure automatisch gedreht. 
 2. **Mithilfe von Dienstprinzipal und Zertifikat:** Die zweite Option besteht darin, einen Dienstprinzipal und ein zugehöriges Zertifikat zu verwenden, das Zugriff auf Key Vault hat. Die Verantwortung für die Rotation des Zertifikats liegt beim Anwendungsbesitzer oder -entwickler, weshalb dies nicht empfohlen wird.
 3. **Mithilfe von Dienstprinzipal und Geheimnis:** Die dritte Option (nicht die bevorzugte Option) besteht darin, einen Dienstprinzipal und ein Geheimnis zur Authentifizierung beim Key Vault zu verwenden.
 

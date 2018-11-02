@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 46f8602583329a0516edb9af59e53754ca349555
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6aa7f8c3b9d21d9c55aee3ce49f2bc140769a855
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336803"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408063"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
 
@@ -63,9 +63,9 @@ App Service bietet einen integrierten Tokenspeicher. Dabei handelt es sich um ei
 - Beiträge in der Facebook-Chronik des authentifizierten Benutzers zu veröffentlichen
 - Unternehmensdaten des authentifizierten Benutzers aus der Azure Active Directory Graph-API oder sogar Microsoft Graph zu lesen,
 
-werden die ID-, Zugriffs- und Aktualisierungstoken für die authentifizierte Sitzung zwischengespeichert und sind nur für den zugehörigen Benutzer zugänglich.  
-
 In der Regel müssen Sie Code schreiben, um diese Token in Ihrer Anwendung zu erfassen, speichern und aktualisieren. Mit dem Tokenspeicher [rufen Sie die Token bei Bedarf einfach ab](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) und [weisen App Service an, sie zu aktualisieren](app-service-authentication-how-to.md#refresh-access-tokens), wenn sie ungültig werden. 
+
+werden die ID-, Zugriffs- und Aktualisierungstoken für die authentifizierte Sitzung zwischengespeichert und sind nur für den zugehörigen Benutzer zugänglich.  
 
 Wenn Sie in Ihrer App nicht mit Token arbeiten müssen, können Sie den Tokenspeicher deaktivieren.
 
@@ -80,7 +80,7 @@ App Service nutzt die [Verbundidentität](https://en.wikipedia.org/wiki/Federate
 | Anbieter | Anmeldungsendpunkt |
 | - | - |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
-| [Microsoft-Konto](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoftaccount` |
+| [Microsoft-Konto](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |

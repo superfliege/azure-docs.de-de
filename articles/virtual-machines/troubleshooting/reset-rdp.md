@@ -1,5 +1,5 @@
 ---
-title: Zurücksetzen des Kennworts oder der Remotedesktopkonfiguration auf einem virtuellen Windows-Computer | Microsoft Docs
+title: Zurücksetzen von Remotedesktopdienste oder dem zugehörigen Administratorkennwort auf einer Windows-VM | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie das Kennwort für ein Konto oder Remotedesktopdienste auf einem virtuellen Windows-Computer mit dem Azure-Portal oder Azure PowerShell zurücksetzen.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,52 +12,45 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
-ms.date: 03/23/2018
+ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 08461811203232d5db1ae9c8f34f4ac180b6b0ce
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 470834da9e9a571594789dedcbb0a67b55abd799
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268298"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953711"
 ---
-# <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM
-Wenn Sie keine Verbindung mit einem virtuellen Windows-Computer möglich ist, können Sie das lokale Administratorkennwort oder die Konfiguration des Remotedesktopdiensts zurücksetzen (für Windows-Domänencontroller nicht unterstützt). Das Kennwort kann entweder über das Azure-Portal oder über die VM-Zugriffserweiterung in Azure PowerShell zurückgesetzt werden. Sobald Sie sich beim virtuellen Computer angemeldet haben, müssen Sie das Kennwort für diesen Benutzer zurücksetzen.  
-Wenn Sie PowerShell verwenden, stellen Sie sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert](/powershell/azure/overview) ist und Sie bei Ihrem Azure-Abonnement angemeldet sind. Sie können diese Schritte auch für virtuelle Computer durchführen, die mit dem [klassischen Bereitstellungsmodell](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp) erstellt wurden.
+# <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Zurücksetzen von Remotedesktopdienste oder dem zugehörigen Administratorkennwort auf einer Windows-VM
+Wenn Sie keine Verbindung mit einem virtuellen Windows-Computer herstellen können, können Sie Ihr lokales Administratorkennwort oder die Konfiguration von Remotedesktopdienste zurücksetzen (für Windows-Domänencontroller nicht unterstützt). Das Kennwort kann entweder über das Azure-Portal oder über die VM-Zugriffserweiterung in Azure PowerShell zurückgesetzt werden. Setzen Sie das Kennwort für diesen lokalen Administrator zurück, nachdem Sie sich am virtuellen Computer angemeldet haben.  
+Wenn Sie PowerShell verwenden, sollten Sie sicherstellen, dass das [neueste PowerShell-Modul installiert und konfiguriert](/powershell/azure/overview) ist und Sie bei Ihrem Azure-Abonnement angemeldet sind. Sie können diese Schritte auch für virtuelle Computer durchführen, die mit dem [klassischen Bereitstellungsmodell](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp) erstellt wurden.
 
-## <a name="ways-to-reset-configuration-or-credentials"></a>Methoden zum Zurücksetzen der Konfiguration oder der Anmeldeinformationen
-Sie können Remotedesktopdienste und -Anmeldeinformationen auf verschiedene Weise zurücksetzen, je nach Ihren Anforderungen:
+Sie können Remotedesktopdienste und die Anmeldeinformationen wie folgt zurücksetzen:
 
-- [Zurücksetzen mithilfe des Azure-Portals](#azure-portal)
-- [Zurücksetzen mithilfe von Azure PowerShell](#vmaccess-extension-and-powershell)
+- [Zurücksetzen über das Azure-Portal](#reset-by-using-the-azure-portal)
+- [Zurücksetzen mit der VMAccess-Erweiterung und PowerShell](#reset-by-using-the-vmaccess-extension-and-powershell)
 
-## <a name="azure-portal"></a>Azure-Portal
-Klicken Sie zum Erweitern des Portalmenüs oben links auf die drei Balken und dann auf **Virtuelle Computer**:
-
-![Navigieren Sie zu Ihrem virtuellen Azure-Computer](./media/reset-rdp/Portal-Select-VM.png)
+## <a name="reset-by-using-the-azure-portal"></a>Zurücksetzen über das Azure-Portal
+Melden Sie sich am Azure-Portal an, und wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer**.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Zurücksetzen des Kennworts eines lokalen Administratorkontos**
 
-Wählen Sie Ihren virtuellen Windows-Computer aus, und klicken Sie dann auf **Support und Problembehandlung** > **Zurücksetzen des Kennworts**. Das Blatt zum Zurücksetzen des Kennworts wird angezeigt:
+Wählen Sie Ihre Windows-VM und dann unter **Support + Problembehandlung** die Option **Kennwort zurücksetzen**. Das Fenster **Kennwort zurücksetzen** wird angezeigt.
 
-![Seite „Zurücksetzen des Kennworts“](./media/reset-rdp/Portal-RM-PW-Reset-Windows.png)
+Wählen Sie **Kennwort zurücksetzen**, geben Sie einen Benutzernamen und ein Kennwort ein, und wählen Sie dann **Aktualisieren**. Versuchen Sie erneut, eine Verbindung mit Ihrem virtuellen Computer herzustellen.
 
-Geben Sie den Benutzernamen und ein neues Kennwort ein, und klicken Sie anschließend auf **Aktualisieren**. Versuchen Sie erneut, eine Verbindung mit Ihrem virtuellen Computer herzustellen.
+### <a name="reset-the-remote-desktop-services-configuration"></a>**Zurücksetzen der Konfiguration für Remotedesktopdienste**
 
-### <a name="reset-the-remote-desktop-service-configuration"></a>**Zurücksetzen der Konfiguration des Remotedesktopdiensts**
+Wählen Sie Ihre Windows-VM und dann unter **Support + Problembehandlung** die Option **Kennwort zurücksetzen**. Das Fenster **Kennwort zurücksetzen** wird angezeigt. 
 
-Wählen Sie Ihren virtuellen Windows-Computer aus, und klicken Sie dann auf **Support und Problembehandlung** > **Zurücksetzen des Kennworts**. Das Blatt zum Zurücksetzen des Kennworts wird angezeigt. 
-
-![Zurücksetzen der RDP-Konfiguration](./media/reset-rdp/Portal-RM-RDP-Reset.png)
-
-Wählen Sie im Dropdownmenü **Nur Konfiguration zurücksetzen** aus, und klicken Sie dann auf **Aktualisieren**. Versuchen Sie erneut, eine Verbindung mit Ihrem virtuellen Computer herzustellen.
+Wählen Sie **Reset configuration only** (Nur Konfiguration zurücksetzen) und dann **Aktualisieren**. Versuchen Sie erneut, eine Verbindung mit Ihrem virtuellen Computer herzustellen.
 
 
-## <a name="vmaccess-extension-and-powershell"></a>VMAccess-Erweiterung und PowerShell
-Stellen Sie mit dem Cmdlet `Connect-AzureRmAccount` sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert](/powershell/azure/overview) ist und Sie bei Ihrem Azure-Abonnement angemeldet sind.
+## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Zurücksetzen mit der VMAccess-Erweiterung und PowerShell
+Stellen Sie mit dem Cmdlet [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert ist](/powershell/azure/overview) und Sie bei Ihrem Azure-Abonnement angemeldet sind.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Zurücksetzen des Kennworts eines lokalen Administratorkontos**
-Sie setzen das Administratorkennwort oder den Benutzernamen mithilfe des PowerShell-Cmdlets [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) zurück. Die typeHandlerVersion muss 2.0 oder höher sein, da Version 1 veraltet ist. 
+Sie setzen das Administratorkennwort oder den Benutzernamen mithilfe des PowerShell-Cmdlets [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) zurück. Die Einstellung `typeHandlerVersion` muss 2.0 oder höher lauten, da Version 1 veraltet ist. 
 
 ```powershell
 $SubID = "<SUBSCRIPTION ID>" 
@@ -71,9 +64,9 @@ Set-AzureRmVMAccessExtension -ResourceGroupName $RgName -Location $Location -VMN
 ```
 
 > [!NOTE] 
-> Wenn Sie einen anderen Namen als das aktuelle lokale Administratorkonto auf dem virtuellen Computer eingeben, fügt die VMAccess-Erweiterung ein lokales Administratorkonto mit diesem Namen hinzu und weist diesem Konto das angegebene Kennwort zu. Wenn das lokale Administratorkonto auf dem virtuellen Computer vorhanden ist, wird das Kennwort zurückgesetzt, und wenn es deaktiviert ist, wird es durch die VMAccess-Erweiterung aktiviert.
+> Wenn Sie einen anderen Namen als das aktuelle lokale Administratorkonto auf dem virtuellen Computer eingeben, fügt die VMAccess-Erweiterung ein lokales Administratorkonto mit diesem Namen hinzu und weist dem Konto das angegebene Kennwort zu. Wenn das lokale Administratorkonto auf Ihrem virtuellen Computer vorhanden ist, setzt die VMAccess-Erweiterung das Kennwort zurück. Wenn das Konto deaktiviert ist, wird es von der VMAccess-Erweiterung aktiviert.
 
-### <a name="reset-the-remote-desktop-service-configuration"></a>**Zurücksetzen der Konfiguration des Remotedesktopdiensts**
+### <a name="reset-the-remote-desktop-services-configuration"></a>**Zurücksetzen der Konfiguration für Remotedesktopdienste**
 Sie setzen den Remotezugriff auf Ihren virtuellen Computer mit dem PowerShell-Cmdlet [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) zurück. Im folgenden Beispiel wird die Zugriffserweiterung `myVMAccess` in der VM `myVM` in der Ressourcengruppe `myResourceGroup` zurückgesetzt:
 
 ```powershell
@@ -81,14 +74,14 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" 
 ```
 
 > [!TIP]
-> Zu jedem Zeitpunkt kann eine VM nur einen einzelnen VM-Zugriffs-Agent haben. Sie können für das Festlegen der Eigenschaften des VM-Zugriffs-Agents die Option `-ForceRerun` verwenden. Verwenden Sie bei Verwendung von `-ForceRerun` unbedingt denselben Namen für den VM-Zugriffs-Agent, den Sie in vorherigen Befehlen verwendet haben.
+> Zu jedem Zeitpunkt kann eine VM nur einen einzelnen VM-Zugriffs-Agent haben. Verwenden Sie die Option `-ForceRerun`, um die Eigenschaften für den VM-Zugriffs-Agent festzulegen. Stellen Sie bei Verwendung von `-ForceRerun` sicher, dass Sie den gleichen Namen für den VM-Zugriffs-Agent verwenden, den Sie ggf. bereits in vorherigen Befehlen genutzt haben.
 
-Wenn Sie weiterhin nicht remote auf den virtuellen Computer zugreifen können, finden Sie weitere Schritte unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Wenn die Verbindung zum Windows-Domänencontroller getrennt wird, müssen Sie sie aus einer Domänencontrollersicherung wiederherstellen.
+Wenn Sie weiterhin nicht remote auf den virtuellen Computer zugreifen können, helfen Ihnen die Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) weiter. Wenn die Verbindung zum Windows-Domänencontroller getrennt wird, müssen Sie sie aus einer Domänencontrollersicherung wiederherstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Falls die Erweiterung für den Zugriff auf virtuelle Computer nicht reagiert und Sie das Kennwort nicht zurücksetzen können, können Sie [das lokale Windows-Kennwort offline zurücksetzen](../windows/reset-local-password-without-agent.md). Bei dieser Methode handelt es sich um einen fortgeschritteneren Prozess, bei dem Sie die virtuelle Festplatte des problematischen virtuellen Computers mit einem anderen virtuellen Computer verbinden müssen. Führen Sie zunächst die in diesem Artikel dokumentierten Schritte aus. Die Methode zur Offlinezurücksetzung des Kennworts sollte nur als letzter Ausweg verwendet werden.
+Falls die Erweiterung für den Zugriff auf virtuelle Computer nicht reagiert und Sie das Kennwort nicht zurücksetzen können, können Sie [das lokale Windows-Kennwort offline zurücksetzen](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Dies ist eine anspruchsvollere Methode, bei der Sie die virtuelle Festplatte des problematischen virtuellen Computers mit einem anderen virtuellen Computer verbinden müssen. Führen Sie zunächst die in diesem Artikel dokumentierten Schritte aus. Die Methode zur Offlinezurücksetzung des Kennworts sollte nur genutzt werden, wenn diese Schritte nicht funktionieren.
 
-[Azure-VM-Erweiterungen und Features](../extensions/features-windows.md)
+[Informationen zu Azure-VM-Erweiterungen und -Features](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [Herstellen einer Verbindung mit einem virtuellen Azure-Computer über RDP oder SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx)
 

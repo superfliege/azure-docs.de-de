@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5b906b4a90dbceb62c6f2381d0ffa8bc1bee7ef1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1ed76b0505747831363ea829f1cb91b3e056282a
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033820"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352445"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand
 
@@ -93,11 +93,11 @@ Wählen Sie **Computer verwalten** aus. Dadurch wird die Seite **Computer verwal
 
 ### <a name="all-available-machines"></a>Alle verfügbaren Computer
 
-Um die Lösung für alle verfügbaren Computer zu aktivieren, wählen Sie **Auf allen verfügbaren Computern aktivieren** aus. Dadurch wird das Steuerelement für das einzelne Hinzufügen von Computern deaktiviert. Mit dieser Aufgabe werden alle Namen der Computer hinzugefügt, die Berichte für den Arbeitsbereich und die Computergruppe der gespeicherten Suchabfrage erstellen.
+Um die Lösung für alle verfügbaren Computer zu aktivieren, wählen Sie **Auf allen verfügbaren Computern aktivieren** aus. Dadurch wird das Steuerelement für das einzelne Hinzufügen von Computern deaktiviert. Mit dieser Aufgabe werden alle Namen der Computer hinzugefügt, die Berichte für den Arbeitsbereich und die Computergruppe der gespeicherten Suchabfrage erstellen. Wenn diese Option aktiviert ist, wird die Schaltfläche **Computer verwalten** deaktiviert.
 
 ### <a name="all-available-and-future-machines"></a>Alle verfügbaren und zukünftigen Computer
 
-Um die Lösung für alle verfügbaren und alle zukünftigen Computer zu aktivieren, wählen Sie **Auf allen verfügbaren und zukünftigen Computern aktivieren** aus. Mit dieser Option werden die gespeicherte Suchvorgänge und Bereichskonfigurationen aus dem Arbeitsbereich gelöscht. Daraufhin wird die Lösung für alle Azure- und Nicht-Azure-Computer geöffnet, die Berichte für den Arbeitsbereich erstellen.
+Um die Lösung für alle verfügbaren und alle zukünftigen Computer zu aktivieren, wählen Sie **Auf allen verfügbaren und zukünftigen Computern aktivieren** aus. Mit dieser Option werden die gespeicherte Suchvorgänge und Bereichskonfigurationen aus dem Arbeitsbereich gelöscht. Daraufhin wird die Lösung für alle Azure- und Nicht-Azure-Computer geöffnet, die Berichte für den Arbeitsbereich erstellen. Wenn diese Option aktiviert ist, wird die Schaltfläche **Computer verwalten** deaktiviert.
 
 ### <a name="selected-machines"></a>Ausgewählte Computer
 
@@ -120,13 +120,13 @@ Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführe
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie links auf der Seite „Automation-Konto“ im Abschnitt **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
 
-1. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
+2. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
 
    ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
 
    Sie werden gefragt, ob Sie fortfahren möchten.
 
-1. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt unter **Benachrichtigungen** im Menü nachverfolgen.
+3. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt unter **Benachrichtigungen** im Menü nachverfolgen.
 
 Wenn Sie die Lösung „Updateverwaltung“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 

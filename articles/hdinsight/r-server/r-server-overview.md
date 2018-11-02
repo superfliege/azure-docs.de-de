@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: af143ef1ec79868294af7d7511548dc54f8ceb8d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af7a0d01fcf9df42da79a6529c8d4b0e31d73aa1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049269"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985487"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Einführung in ML Services und Open-Source-R-Funktionen in HDInsight
 
@@ -102,7 +102,7 @@ Wenn Sie diese Option auswählen, müssen Sie zur Verwendung mit dem Webdienst a
 
 ### <a name="score-on-premises"></a>Lokale Bewertung
 
-Um nach der Erstellung Ihres Modells eine lokale Bewertung durchzuführen, können Sie das Modell in R serialisieren, herunterladen, deserialisieren und anschließend für die Bewertung neuer Daten verwenden. Sie können die Bewertung für neue Daten durchführen, indem Sie den weiter oben unter [Bewertung in HDInsight](#scoring-in-hdinsight) beschriebenen Ansatz verwenden oder [Webdienste](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) nutzen.
+Um nach der Erstellung Ihres Modells eine lokale Bewertung durchzuführen, können Sie das Modell in R serialisieren, herunterladen, deserialisieren und anschließend für die Bewertung neuer Daten verwenden. Sie können die Bewertung für neue Daten durchführen, indem Sie den weiter oben unter [Bewertung in HDInsight](#score-in-hdinsight) beschriebenen Ansatz verwenden oder [Webdienste](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) nutzen.
 
 ## <a name="maintain-the-cluster"></a>Verwalten des Clusters
 

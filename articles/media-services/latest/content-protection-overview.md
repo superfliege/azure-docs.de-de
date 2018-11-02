@@ -4,21 +4,21 @@ description: In diesem Artikel finden Sie eine Übersicht über die Content Prot
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 2a3e94d37a926bd36b780b45eb3d6cb29fb73597
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f8ef92a335dd6faee076356dbffc873b08afbdc0
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521753"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394272"
 ---
 # <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz
 
@@ -149,9 +149,7 @@ Das Beispiel veranschaulicht die folgenden Schritte:
 
 2. Erstellen Sie einen StreamingLocator, der so konfiguriert ist, dass er ein verschlüsseltes Objekt streamen kann. 
 
-  In diesem Beispiel wird **StreamingPolicyName** auf **PredefinedStreamingPolicy.SecureStreaming** festgelegt, wodurch der Umschlag und die CENC-Verschlüsselung unterstützt sowie zwei symmetrische Schlüssel für StreamingLocator festgelegt werden. 
-
-  Wenn Sie auch mit FairPlay verschlüsseln möchten, legen Sie **StreamingPolicyName** auf **PredefinedStreamingPolicy.SecureStreamingWithFairPlay** fest.
+  Sie können z. B. „StreamingLocator.StreamingPolicyName“ auf die Richtlinie „Predefined_MultiDrmCencStreaming“ festlegen. Diese Richtlinie gibt an, dass zwei Inhaltsschlüssel (Umschlag und CENC) generiert und für den Locator festgelegt werden sollen. Daher werden die Umschlag-, PlayReady- und Widevine-Verschlüsselungen angewendet (der Schlüssel wird dem Client basierend auf den konfigurierten DRM-Lizenzen bereitgestellt). Wenn Sie den Stream auch mit CBCS (FairPlay) verschlüsseln möchten, verwenden Sie „Predefined_MultiDrmStreaming“.
 
 3. Erstellen Sie einen Testtoken.
 

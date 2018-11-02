@@ -11,12 +11,12 @@ ms.topic: article
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 91bec065b2c83eac6b646ae6a55bc1ae0aae01db
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3f30a62a2f351aecabc37206607c3e28ec5e3ab5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226890"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353357"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -76,6 +76,23 @@ In Visual Studio:
 
     ![Screenshot des Dialogfelds „Tools > Optionen“](media/common/VerbositySetting.PNG)
     
+Dieser Fehler tritt möglicherweise auf, wenn Sie versuchen, eine mehrstufige Dockerfile zu verwenden. Die ausführliche Ausgabe sieht dann wie folgt aus:
+
+```cmd
+$ azds up
+Using dev space 'default' with target 'AksClusterName'
+Synchronizing files...6s
+Installing Helm chart...2s
+Waiting for container image build...10s
+Building container image...
+Step 1/12 : FROM [imagename:tag] AS base
+Error parsing reference: "[imagename:tag] AS base" is not a valid repository/tag: invalid reference format
+Failed to build container image.
+Service cannot be started.
+```
+
+Dies liegt daran, dass AKS-Knoten eine ältere Version von Docker ausführen, die mehrstufige Builds nicht unterstützt. Sie müssen Ihre Dockerfile neu schreiben, um mehrstufige Builds zu vermeiden.
+
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Bei der DNS-Namensauflösung tritt für eine öffentliche URL, die einem Dev Spaces-Dienst zugeordnet ist, ein Fehler auf.
 
 Wenn die DNS-Namensauflösung fehlschlägt, wird Ihnen unter Umständen der Fehler „Page cannot be displayed“ (Die Seite kann nicht angezeigt werden.) oder „This site cannot be reached“ (Diese Website ist nicht erreichbar.) im Webbrowser angezeigt, wenn Sie versuchen, eine Verbindung mit einer URL herzustellen, die einem Dev Spaces-Dienst zugeordnet ist.
@@ -206,6 +223,14 @@ Jemand, der als Besitzer oder Mitwirkender Zugriff auf das Azure-Abonnement hat,
 ```cmd
 az provider register --namespace Microsoft.DevSpaces
 ```
+
+## <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>„Fehler: Bereiter Tiller-Pod konnte nicht gefunden werden“ beim Starten von Dev Spaces
+
+### <a name="reason"></a>Grund
+Dieser Fehler tritt auf, wenn der Helm-Client nicht mehr mit dem im Cluster ausgeführten Tiller-Pod kommunizieren kann.
+
+### <a name="try"></a>Versuchen Sie Folgendes:
+Ein Neustart der Agent-Knoten in Ihrem Cluster behebt in der Regel dieses Problem.
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev Spaces scheint meine vorhandene Dockerfile nicht zum Erstellen eines Containers zu verwenden 
 

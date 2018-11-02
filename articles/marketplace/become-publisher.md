@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7aadb7b89cf1b338a257846882e34ff796df74b2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 35feb1b2aa593d403b3b54781ddbba41964d15e5
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580717"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394832"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Weg zum Cloud Marketplace-Herausgeber
 
@@ -42,7 +42,7 @@ Für die Teilnahme am Cloud-Marketplace von Microsoft ist eine Mitgliedschaft be
 *   Um sich beim Microsoft Partner Network zu registrieren, besuchen Sie die [Seite „Mitgliedschaft“](https://partner.microsoft.com/membership), und befolgen Sie die Schritte zum Starten Ihrer Registrierung.  
 
 Notieren Sie sich nach der Registrierung die Microsoft Partner Network-ID für Ihre Organisation. Sie werden diese bei Schritt 3 benötigen, wenn Sie Ihr Marketplace-Registrierungsformular übermitteln.
-*   Informationen über die Vorteile des Microsoft Partner Network finden Sie [hier](https://partner.microsoft.com/en-us/commercial).
+*   Informationen über die Vorteile des Microsoft Partner Network finden Sie [hier](https://partner.microsoft.com/commercial).
 *   Wenn Ihre Organisation bereits Mitglied ist, können Sie dieser während der Registrierung beitreten. Wenn Sie [Partner Center](https://partnercenter.microsoft.com/partner/home) verwenden, können Sie die ID in Ihrem Partner Center-Konto einsehen. Wenn Sie [Partner Membership Center (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx) verwenden, können Sie diese in Ihrem Partner Membership Center-Konto einsehen. 
 
 ---  
@@ -54,18 +54,18 @@ Mit einem Microsoft-Konto (z.B. *@outlook.com oder @live.com*) können Sie auf e
 [! IMPORTANT] Beachten Sie, dass Sie nicht mit einem Microsoft-Konto auf das Portal zugreifen können, das Ihrer geschäftlichen E-Mail-Adresse zugeordnet ist.
 
 >[!Note]
->Wenn Sie bereits über ein Microsoft-Konto verfügen, lesen Sie die [Richtlinien zum Erstellen einer Microsoft-ID zum Verwalten eines Marketplace-Kontos](https://review.docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account), um festzustellen, ob es für die Veröffentlichung im Marketplace verwendet werden kann. 
+>Wenn Sie bereits über ein Microsoft-Konto verfügen, lesen Sie die [Richtlinien zum Erstellen einer Microsoft-ID zum Verwalten eines Marketplace-Kontos](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account), um festzustellen, ob es für die Veröffentlichung im Marketplace verwendet werden kann. 
 
->Benutzer mit einem Azure Active Directory-Verbundfirmenkonto sollten [diesen Artikel](https://review.docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) lesen, bevor sie Ihr vorhandenes Microsoft-Konto erstellen oder verwenden.
+>Benutzer mit einem Azure Active Directory-Verbundfirmenkonto sollten [diesen Artikel](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) lesen, bevor sie Ihr vorhandenes Microsoft-Konto erstellen oder verwenden.
 
-*   Unterstützung bei der Erstellung oder Verwaltung Ihres Microsoft-Kontos finden Sie auf den [Supportseiten für Microsoft-Konten](https://support.microsoft.com/en-us/products/microsoft-account?category=manage-account).
+*   Unterstützung bei der Erstellung oder Verwaltung Ihres Microsoft-Kontos finden Sie auf den [Supportseiten für Microsoft-Konten](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 
 
 ---  
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3. Übermitteln des Marketplace-Registrierungsformulars  
 | 15 Minuten |  
-Füllen Sie dieses kurze [Registrierungsformular](https://azuremarketplace.microsoft.com/en-us/sell/signup) aus, um ein Marketplace-Herausgeber zu werden. Die in diesem Formular übermittelten Informationen werden zur Erstellung eines Herausgeberkontos im Cloud-Partnerportal verwendet, mit dem Sie Marketplace-Angebote erstellen, veröffentlichen und verwalten können.
+Füllen Sie dieses kurze [Registrierungsformular](https://azuremarketplace.microsoft.com/sell/signup) aus, um ein Marketplace-Herausgeber zu werden. Die in diesem Formular übermittelten Informationen werden zur Erstellung eines Herausgeberkontos im Cloud-Partnerportal verwendet, mit dem Sie Marketplace-Angebote erstellen, veröffentlichen und verwalten können.
 
 Sie werden zur Angabe der folgenden Informationen aufgefordert:
 *   Details zu Ihrer Organisation, einschließlich Ihrer Microsoft Partner Network-ID (diese finden Sie entweder in [Partner Center](https://partnercenter.microsoft.com/partner/home) oder in [Partner Membership Center](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx))
@@ -80,24 +80,24 @@ Unser Marketplace-Onboardingteam überprüft die Details zu Ihrer Marketplace-Re
 Über das [Cloud-Partnerportal](https://cloudpartner.azure.com) können Sie Marketplace-Angebote erstellen, veröffentlichen und verwalten. Nachdem Sie die Willkommens-E-Mail als Bestätigung erhalten haben, können Sie sich mit Ihrem Microsoft-Konto direkt beim [Cloud-Partnerportal](https://cloudpartner.azure.com) anmelden, um weitere technische Informationen zum Veröffentlichen im Marketplace und Erstellen Ihres Angebots zu erhalten. 
 *   Weitere Informationen zur Verwendung des Cloud-Partnerportals finden Sie im [Artikel zu den ersten Schritten im Abschnitt mit den relevanten Informationen](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal). Sie müssen beim Cloud-Partnerportal angemeldet sein, um auf diese Informationen zugreifen zu können.
 *   Wenn Sie Fragen haben oder einen Anruf planen möchten, um eine Übersicht über das Onboarding zu erhalten, lesen Sie die anderen Artikel in diesem Herausgeberleitfaden, oder öffnen Sie im Cloud-Partnerportal unter „Problemtyp > Marketplace-Onboarding“ eine Supportanfrage.
-*   Wenn Sie keine Willkommens-E-Mail erhalten haben, suchen Sie in Ihrem Spamordner nach einer E-Mail mit der Betreffzeile „Willkommen beim Microsoft Azure Marketplace!“. Wenn keine E-Mail in Ihrem Spam-Ordner vorhanden ist, [wenden Sie sich an den Microsoft-Support](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Klicken Sie auf der Supportseite auf „Problemtyp > Marketplace-Onboarding“.  Unser Marketplace-Onboardingteam für Herausgeber hilft Ihnen bei jeglichen Anfragen gerne weiter. 
+*   Wenn Sie keine Willkommens-E-Mail erhalten haben, suchen Sie in Ihrem Spamordner nach einer E-Mail mit der Betreffzeile „Willkommen beim Microsoft Azure Marketplace!“. Wenn keine E-Mail in Ihrem Spam-Ordner vorhanden ist, [wenden Sie sich an den Microsoft-Support](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Klicken Sie auf der Supportseite auf „Problemtyp > Marketplace-Onboarding“.  Unser Marketplace-Onboardingteam für Herausgeber hilft Ihnen bei jeglichen Anfragen gerne weiter. 
 
 
 ## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5. Registrieren beim Dev Center (nur für die Transaktionsveröffentlichungsoption) 
 | 5–10 Tage |  
-Für Angebote, bei denen die Transaktionsveröffentlichungsoption verwendet wird, ist ein [Dev Center](https://developer.microsoft.com/en-us/store/register)-Konto erforderlich. Dieses umfasst virtuelle Computer, Azure-Apps und SaaS-Apps, die für den Vertrieb über Azure konfiguriert sind. Die [Dev Center](https://developer.microsoft.com/en-us/store/register)-Kontodetails werden von Microsoft zur Überprüfung von rechtlichen Informationen, steuerlichen Angaben und Finanzdaten Ihrer Organisation verwendet. Diese werden wiederum für Auszahlungszwecke benötigt, wenn Sie Ihre Softwarelizenzierungsgebühren über den Azure Marketplace verkaufen und abrechnen. 
+Für Angebote, bei denen die Transaktionsveröffentlichungsoption verwendet wird, ist ein [Dev Center](https://developer.microsoft.com/store/register)-Konto erforderlich. Dieses umfasst virtuelle Computer, Azure-Apps und SaaS-Apps, die für den Vertrieb über Azure konfiguriert sind. Die [Dev Center](https://developer.microsoft.com/store/register)-Kontodetails werden von Microsoft zur Überprüfung von rechtlichen Informationen, steuerlichen Angaben und Finanzdaten Ihrer Organisation verwendet. Diese werden wiederum für Auszahlungszwecke benötigt, wenn Sie Ihre Softwarelizenzierungsgebühren über den Azure Marketplace verkaufen und abrechnen. 
 
-Der [Dev Center](https://developer.microsoft.com/en-us/store/register)-Registrierungsprozess kann gestartet werden, bevor Sie Ihr Angebot im Cloud-Partnerportal erstellt haben, muss jedoch abgeschlossen sein, bevor Sie Ihr Marketplace-Angebot veröffentlichen. Aufgrund des durchschnittlichen Zeitaufwands für die Durchführung dieses Schritts (5–10 Tage) wird empfohlen, diesen Prozess schnellstmöglich in die Wege zu leiten, wenn Sie die Transaktionsveröffentlichungsoption verwenden möchten. 
+Der [Dev Center](https://developer.microsoft.com/store/register)-Registrierungsprozess kann gestartet werden, bevor Sie Ihr Angebot im Cloud-Partnerportal erstellt haben, muss jedoch abgeschlossen sein, bevor Sie Ihr Marketplace-Angebot veröffentlichen. Aufgrund des durchschnittlichen Zeitaufwands für die Durchführung dieses Schritts (5–10 Tage) wird empfohlen, diesen Prozess schnellstmöglich in die Wege zu leiten, wenn Sie die Transaktionsveröffentlichungsoption verwenden möchten. 
 
-Die Person, die sich beim [Dev Center](https://developer.microsoft.com/en-us/store/register) registriert, muss ein offizieller Vertreter Ihrer Organisation sein und persönliche Informationen zur Überprüfung ihrer Identität bereitstellen. Registrieren Sie sich mit Ihrem Microsoft-Konto, das Sie in Schritt 2 erstellt haben, und verwenden Sie das Microsoft-Konto, mit dem Sie auf das Cloud-Partnerportal zugegriffen haben.
+Die Person, die sich beim [Dev Center](https://developer.microsoft.com/store/register) registriert, muss ein offizieller Vertreter Ihrer Organisation sein und persönliche Informationen zur Überprüfung ihrer Identität bereitstellen. Registrieren Sie sich mit Ihrem Microsoft-Konto, das Sie in Schritt 2 erstellt haben, und verwenden Sie das Microsoft-Konto, mit dem Sie auf das Cloud-Partnerportal zugegriffen haben.
 
-*   Um sich für ein [Dev Center](https://developer.microsoft.com/en-us/store/register)-Konto zu registrieren, [beginnen Sie hier mit dem Registrierungsvorgang](https://developer.microsoft.com/en-us/store/register).
+*   Um sich für ein [Dev Center](https://developer.microsoft.com/store/register)-Konto zu registrieren, [beginnen Sie hier mit dem Registrierungsvorgang](https://developer.microsoft.com/store/register).
 *   Weitere Informationen zum Erstellen eines Microsoft-Kontos finden Sie im Abschnitt *Erstellen eines Microsoft-Kontos*.
  
-Nach Abschluss der [Dev Center](https://developer.microsoft.com/en-us/store/register)-Registrierung verknüpfen Sie Ihr Cloud-Partnerprofil mit Ihrem [Dev Center](https://developer.microsoft.com/en-us/store/register)-Konto (weitere Details finden Sie in den hier aufgeführten Schritten). Dieser Schritt muss vor der Veröffentlichung Ihres Transaktionsangebots ausgeführt werden. 
+Nach Abschluss der [Dev Center](https://developer.microsoft.com/store/register)-Registrierung verknüpfen Sie Ihr Cloud-Partnerprofil mit Ihrem [Dev Center](https://developer.microsoft.com/store/register)-Konto (weitere Details finden Sie in den hier aufgeführten Schritten). Dieser Schritt muss vor der Veröffentlichung Ihres Transaktionsangebots ausgeführt werden. 
 
 >[!Note]
->Um die Developer Center-Registrierungsgebühr in Höhe von 99 US-Dollar zu umgehen, füllen Sie das Marketplace-Registrierungsformular aus – Sie erhalten dann eine E-Mail mit Ihrem Werbeaktionscode. 
+>Um die Developer Center-Registrierungsgebühr in Höhe von 99 US-Dollar zu umgehen, füllen Sie das [Marketplace-Registrierungsformular](https://azuremarketplace.microsoft.com/en-us/sell/signup) aus – Sie erhalten dann eine E-Mail mit Ihrem Werbeaktionscode. 
 
 >[!Important]
 >Stellen Sie vor der Erstellung eines Microsoft Dev Center-Kontos sicher, dass Ihre Organisation noch kein Dev Center-Konto besitzt, um zu verhindern, dass doppelte Konten erstellt werden. Weitere Informationen finden Sie im Abschnitt [Registrieren bei Dev Center](https://docs.microsoft.com/azure/marketplace/register-dev-center).

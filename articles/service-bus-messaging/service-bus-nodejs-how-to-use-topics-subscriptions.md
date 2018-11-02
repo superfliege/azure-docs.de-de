@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 10/16/2018
 ms.author: spelluru
-ms.openlocfilehash: f13e46b310f4f9048b38ab50ce0241d1b2b3161b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 00ae254a9e9d40ec88802f2f46666aff72cb242a
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395694"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377649"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Verwenden von Service Bus-Themen und -Abonnements mit Node.js
 
@@ -73,7 +73,7 @@ var azure = require('azure');
 ### <a name="set-up-a-service-bus-connection"></a>Einrichten einer Service Bus-Verbindung
 Das Azure-Modul liest die Umgebungsvariable `AZURE_SERVICEBUS_CONNECTION_STRING` für die Verbindungszeichenfolge, die Sie weiter oben im Schritt „Abrufen der Anmeldeinformationen“ abgerufen haben. Wenn diese Umgebungsvariable nicht festgelegt wurde, müssen Sie beim Aufrufen von `createServiceBusService` die Kontoinformationen angeben.
 
-Ein Beispiel zum Festlegen der Umgebungsvariablen für einen Azure-Clouddienst finden Sie unter [Node.js-Clouddienst mit Speicher][Node.js Cloud Service with Storage].
+Ein Beispiel zum Festlegen der Umgebungsvariablen für einen Azure Cloud Service finden Sie unter [Festlegen von Umgebungsvariablen](../container-instances/container-instances-environment-variables.md#azure-cli-example).
 
 
 
@@ -242,7 +242,7 @@ Um eine Nachricht an ein Service Bus-Thema zu senden, muss die Anwendung die Met
 Nachrichten, die an Service Bus-Themen gesendet werden, sind **BrokeredMessage**-Objekte.
 Objekte vom Typ **BrokeredMessage** besitzen eine Reihe von Standardeigenschaften (wie etwa `Label` und `TimeToLive`), ein Wörterbuch zur Speicherung benutzerdefinierter, anwendungsspezifischer Eigenschaften und einen aus Zeichenfolgendaten bestehenden Nachrichtentext. Eine Anwendung kann den Nachrichtentext festlegen, indem sie einen Zeichenfolgenwert an `sendTopicMessage` übergibt. Erforderliche Standardeigenschaften werden mit Standardwerten gefüllt.
 
-Das folgende Beispiel zeigt, wie Sie fünf Testnachrichten an `MyTopic` senden. Der Eigenschaftswert `messagenumber` jeder Nachricht variiert gemäß der Iteration der Schleife. (Dadurch wird bestimmt, welche Abonnements die Nachricht erhalten.)
+Das folgende Beispiel zeigt, wie Sie fünf Testnachrichten an `MyTopic` senden. Der Eigenschaftswert `messagenumber` jeder Nachricht variiert gemäß der Iteration der Schleife. (Diese Eigenschaft bestimmt, welche Abonnements die Nachricht erhalten.)
 
 ```javascript
 var message = {
@@ -268,7 +268,7 @@ Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im 
 ## <a name="receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
 Nachrichten werden von einem Abonnement über die Methode `receiveSubscriptionMessage` des Objekts **ServiceBusService** empfangen. Nachrichten werden nach dem Lesen standardmäßig aus dem Abonnement gelöscht. Sie können jedoch den optionalen Parameter `isPeekLock` auf **true** festlegen, um die Nachricht zu lesen (einen kurzen Blick darauf zu werfen) und zu sperren, ohne sie aus dem Abonnement zu löschen.
 
-Das Standardverhalten für das Lesen und Löschen der Nachricht als Teil des Empfangsvorgangs ist das einfachste Modell. Es wird am besten für Szenarios eingesetzt, bei denen es eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da die Nachricht von Service Bus als verarbeitet gekennzeichnet wurde, wird die vor dem Absturz verarbeitete Nachricht nicht berücksichtigt, wenn die Anwendung neu gestartet und die Verarbeitung von Nachrichten wieder aufgenommen wird.
+Das Standardverhalten für das Lesen und Löschen der Nachricht im Rahmen des Empfangsvorgangs ist das einfachste Modell. Es wird am besten für Szenarios eingesetzt, bei denen eine Anwendung tolerieren kann, wenn eine Nachricht bei einem Fehler nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da die Nachricht von Service Bus als verarbeitet gekennzeichnet wurde, wird die vor dem Absturz verarbeitete Nachricht nicht berücksichtigt, wenn die Anwendung neu gestartet und die Verarbeitung von Nachrichten wieder aufgenommen wird.
 
 Wenn der Parameter `isPeekLock` auf **true** festgelegt ist, wird der Empfangsvorgang zu einem zweistufigen Vorgang. Dadurch können Anwendungen ohne Toleranz für fehlende Nachrichten unterstützt werden. Wenn Service Bus eine Anforderung erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie an die Anwendung zurück.
 Nachdem die Anwendung die Nachricht verarbeitet hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt sie die zweite Phase des Empfangsprozesses durch Aufruf der Methode **deleteMessage** durch, und stellt die Nachricht bereit, die als Parameter gelöscht werden soll. Die Methode **deleteMessage** markiert die Nachricht als verarbeitet und entfernt sie aus dem Abonnement.

@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 13268ec865ec72fce23df550619b199389096360
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 1738f02d28a4eb9ff5cbb51c73bc50ddf3c9a68b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056505"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231337"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
 In diesem Artikel wird gezeigt, wie Sie aus einer Logik-App auf Ihre lokalen SAP-Ressourcen zugreifen, indem Sie den SAP ECC-Connector (ERP Central Component) verwenden. Der SAP ECC-Connector unterstützt die Nachrichten- oder Datenintegration in SAP Netweaver-basierten Systemen über Intermediate Document (IDoc), Business Application Programming Interface (BAPI) oder Remote Function Call (RFC).
 
-Der SAP ECC-Connector verwendet die <a href="https://help.sap.com/saphelp_nwpi71/helpdata/en/e9/23c80d66d08c4c8c044a3ea11ca90f/frameset.htm">SAP-NCo-Bibliothek (.NET Connector)</a> und stellt diese Vorgänge oder Aktionen bereit:
+Der SAP ECC-Connector verwendet die <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP-NCo-Bibliothek (.NET Connector)</a> und stellt diese Vorgänge oder Aktionen bereit:
 
 - **An SAP senden**: Hiermit senden Sie IDoc-Funktionen oder rufen BAPI-Funktionen über tRFC in SAP-Systemen auf.
 - **Von SAP empfangen**: Hiermit empfangen Sie IDoc- oder BAPI-Funktionsaufrufe von SAP-Systemen über tRFC.
@@ -44,7 +44,7 @@ Um diesem Artikel weiter folgen zu können, benötigen Sie Folgendes:
 
 * Laden Sie das neueste [lokalen Datengateway](https://www.microsoft.com/download/details.aspx?id=53127) auf einem lokalen Computer herunter, und installieren Sie es. Bevor Sie fortfahren, sollten Sie prüfen, ob Ihr Gateway im Azure-Portal eingerichtet ist. Das Gateway hilft Ihnen, sicher auf lokale Daten und Ressourcen vor Ort zuzugreifen. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem lokalen SAP-System in Logik-Apps mit dem SAP-Connector](../logic-apps/logic-apps-gateway-install.md).
 
-* Laden Sie die neueste SAP-Clientbibliothek herunter, zurzeit <a href="https://softwaredownloads.sap.com/file/0020000000086282018" target="_blank">SAP-Connector (NCo) 3.0.20.0 für Microsoft .NET Framework 4.0 und Windows 64bit (x64)</a>, und installieren Sie es auf demselben Computer wie das lokale Datengateway. Installieren Sie diese Version oder eine höhere aus folgenden Gründen:
+* Laden Sie die neueste SAP-Clientbibliothek herunter, zurzeit <a href="https://softwaredownloads.sap.com/file/0020000001865512018" target="_blank">SAP-Connector (NCo) 3.0.21.0 für Microsoft .NET Framework 4.0 und Windows 64bit (x64)</a>, und installieren Sie es auf demselben Computer wie das lokale Datengateway. Installieren Sie diese Version oder eine höhere aus folgenden Gründen:
 
   * Bei früheren SAP-NCo-Versionen konnte es zu einem Deadlock kommen, wenn mehrere IDoc-Nachrichten gleichzeitig gesendet werden. 
   Dadurch werden auch alle späteren Nachrichten blockiert, die an das SAP-Ziel gesendet werden, und es kommt zu einem Timeout der Nachricht.
@@ -396,7 +396,7 @@ Zurzeit sind für den SAP-Connector folgende Probleme und Einschränkungen bekan
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

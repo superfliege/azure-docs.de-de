@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 0cb8a185407c7b180a170f1f9b9d76aa28a24de5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6eaa4859ea6346390514325980835750d8e4b6d5
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031627"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365559"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrieren einer Knowledge Base durch Exportieren und Importieren
 Auf der \\\Build\-Konferenz am 7. Mai 2018 wurde die allgemeine Verfügbarkeit von QnA Maker angekündigt. Für die allgemein verfügbare Version von QnA Maker wurde eine neue Architektur in Azure erstellt. Die mit der kostenlosen Vorschauversion von QnA Maker erstellten Knowledge Bases müssen zur allgemein verfügbaren Version von Maker migriert werden. Die Vorschauversion von QnA Maker wird im November 2018 eingestellt. Weitere Informationen zu den Änderungen in der allgemein verfügbaren Version von QnA Maker finden Sie im [Blogbeitrag](https://aka.ms/qnamakerga-blog) zur Ankündigung der allgemeinen Verfügbarkeit von QnA Maker.
 
-QnA Maker verfügt jetzt über ein [Preismodell](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/qna-maker/).
+QnA Maker verfügt jetzt über ein [Preismodell](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/).
 
 Voraussetzungen
 > [!div class="checklist"]
@@ -38,9 +38,7 @@ Voraussetzungen
 
     ![Herunterladen der Knowledge Base](../media/qnamaker-how-to-migrate-kb/preview-download.png)
 
-4. Melden Sie sich mit Ihren Azure-Anmeldeinformationen im [QnA Maker-Portal](https://qnamaker.ai) an, und klicken Sie auf **Neuen Dienst erstellen**.
-
-    ![Erstellen der Knowledge Base ](../media/qnamaker-how-to-create-kb/create-new-service.png)
+4. Melden Sie sich mit Ihren Azure-Anmeldeinformationen am [QnA Maker-Portal](https://qnamaker.ai) an, und klicken Sie auf **Wissensdatenbank erstellen**.
     
 5. Wenn Sie noch keinen QnA Maker-Dienst erstellt haben, wählen Sie **Create a QnA service** (QnA-Dienst erstellen) aus. Wählen Sie andernfalls einen QnA Maker-Dienst in den Dropdownlisten in Schritt 2 aus. Wählen Sie einen QnA Maker-Dienst als Host für die Knowledge Base aus.
 

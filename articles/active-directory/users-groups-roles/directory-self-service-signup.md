@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/28/2018
+ms.date: 10/16/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 99c5e99fa3bd33ef42e8df6ceba5be4be2cd1249
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 30b86d7938279133c303ad4eae840f520a4900e6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37870562"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394679"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Was ist die Self-Service-Registrierung für Azure Active Directory?
 Dieser Artikel beschreibt die Self-Service-Registrierung und deren Unterstützung in Azure Active Directory (Azure AD). Wenn Sie einen Domänennamen von einem nicht verwalteten Azure AD-Mandanten übernehmen möchten, lesen Sie [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator](domains-admin-takeover.md).
@@ -44,32 +44,39 @@ Administratoren stehen derzeit zwei Self-Service-Steuerungsmöglichkeiten zur Ve
 ### <a name="how-can-i-control-these-capabilities"></a>Wie können diese Funktionen gesteuert werden?
 Ein Administrator kann diese Funktionen mit den folgenden Parametern des Azure AD-Cmdlets „Set-MsolCompanySettings“ konfigurieren:
 
-* **AllowEmailVerifiedUsers** steuert, ob ein Benutzer ein nicht verwaltetes Verzeichnis erstellen oder diesem beitreten kann. Wenn Sie diesen Parameter auf „$false“ festlegen, können dem Verzeichnis keine über E-Mail verifizierten Benutzer beitreten.
-* **AllowAdHocSubscriptions** steuert, ob Benutzern das Ausführen der Self-Service-Registrierung erlaubt ist. Wenn Sie diesen Parameter auf "$false" festlegen, können Benutzer keine Self-Service-Registrierung ausführen. 
+* **AllowEmailVerifiedUsers** steuert, ob ein Benutzer ein Verzeichnis erstellen oder diesem beitreten kann. Wenn Sie diesen Parameter auf „$false“ festlegen, können dem Verzeichnis keine über E-Mail verifizierten Benutzer beitreten.
+* **AllowAdHocSubscriptions** steuert, ob Benutzern das Ausführen der Self-Service-Registrierung erlaubt ist. Wenn Sie diesen Parameter auf "$false" festlegen, können Benutzer keine Self-Service-Registrierung ausführen.
   
-  > [!NOTE]
-  > Testregistrierungen für Flow und PowerApps werden durch die Einstellung **AllowAdHocSubscriptions** nicht gesteuert. Weitere Informationen finden Sie in den folgenden Artikeln:
-  > * [Wie kann ich verhindern, dass Benutzer mit der Verwendung von Power BI beginnen?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-  > * [Flow in Ihrer Organisation – häufig gestellte Fragen](https://docs.microsoft.com/flow/organization-q-and-a)
+„AllowEmailVerifiedUsers“ und „AllowAdHocSubscriptions“ sind verzeichnisweite Einstellungen, die auf ein verwaltetes oder ein nicht verwaltetes Verzeichnis angewendet werden können. Hier sehen Sie ein Beispiel:
+
+* Ihr Administrator verwendet ein Verzeichnis mit einer verifizierten Domäne, z. B. „contoso.com“.
+* Sie verwenden B2B-Zusammenarbeit aus einem anderen Verzeichnis, um einen Benutzer, der noch nicht vorhanden ist (userdoesnotexist@contoso.com), in das Basisverzeichnis von „constoso.com“ einzuladen.
+* Für das Basisverzeichnis ist der Parameter „AllowEmailVerifiedUsers“ aktiviert.
+
+Wenn die oben genannten Bedingungen erfüllt sind, wird ein Mitgliedsbenutzer im Basisverzeichnis und ein B2B-Gastbenutzer im einladenden Verzeichnis erstellt.
+
+Testregistrierungen für Flow und PowerApps werden durch die Einstellung **AllowAdHocSubscriptions** nicht gesteuert. Weitere Informationen finden Sie in den folgenden Artikeln:
+
+* [Wie kann ich verhindern, dass Benutzer mit der Verwendung von Power BI beginnen?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
+* [Flow in Ihrer Organisation – häufig gestellte Fragen](https://docs.microsoft.com/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>Wie funktionieren diese Steuerungsmöglichkeiten zusammen?
 Diese beiden Parameter können zusammen verwendet werden, um eine genauere Steuerung der Self-Service-Registrierung zu definieren. Der folgende Befehl erlaubt Benutzern beispielsweise die Self-Service-Registrierung, jedoch nur, wenn die Benutzer bereits über ein Konto in Azure AD verfügen (d.h. dass für Benutzer, für die zuerst ein über E-Mail verifiziertes Konto erstellt werden müsste, die Self-Service-Registrierung nicht erlaubt ist):
 
-````
+````powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
 ````
+
 Im folgenden Flussdiagramm werden die verschiedenen Kombinationen für diese Parameter und die resultierenden Bedingungen für das Verzeichnis und die Self-Service-Registrierung erläutert.
 
-![][1]
+![Steuerelemente für die Self-Service-Registrierung](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
 Weitere Informationen und Beispiele zum Verwenden dieser Parameter finden Sie unter [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure AD](../fundamentals/add-custom-domain.md)
 * [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure-Cmdlet-Referenz](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
-
-<!--Image references-->
-[1]: ./media/directory-self-service-signup/SelfServiceSignUpControls.png

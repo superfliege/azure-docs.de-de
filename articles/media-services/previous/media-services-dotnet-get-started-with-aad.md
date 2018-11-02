@@ -4,21 +4,21 @@ description: In diesem Thema wird gezeigt, wie die Azure Active Directory (Azure
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: b8f58f4010590dc40d5e8dc7ac1b634f161a807d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e36673c7baa03e1bcf36c149851e6455cea798fe
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33784569"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945568"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API mit .NET
 
@@ -29,7 +29,7 @@ Ab windowsazure.mediaservices 4.0.0.4 unterstützt Azure Media Services auf Azur
 - Ein Azure-Konto. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). 
 - Media Services-Konto. Weitere Informationen finden Sie unter [Erstellen eines Azure Media Services-Kontos mithilfe des Azure-Portals](media-services-portal-create-account.md).
 - Das neueste [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices)-Paket.
-- Vertrautheit mit dem Thema [Accessing Azure Media Services API with AAD authentication overview (Übersicht über den Zugriff auf die Azure Media Services-API mit AAD-Authentifizierung)](media-services-use-aad-auth-to-access-ams-api.md). 
+- Vertrautheit mit dem Thema [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
 
 Bei Verwendung der Azure AD-Authentifizierung mit Azure Media Services können Sie auf zwei Arten authentifizieren:
 
@@ -97,14 +97,14 @@ Im folgenden Codebeispiel wird eine **CloudMediaContext**-Instanz erstellt:
 
 Das folgende Beispiel zeigt, wie das Azure AD-Token und der Kontext erstellt werden:
 
-    namespace AADAuthSample
+    namespace AzureADAuthSample
     {
         class Program
         {
             static void Main(string[] args)
             {
                 // Specify your Azure AD tenant domain, for example "microsoft.onmicrosoft.com".
-                var tokenCredentials = new AzureAdTokenCredentials("{YOUR AAD TENANT DOMAIN HERE}", AzureEnvironments.AzureCloudEnvironment);
+                var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", AzureEnvironments.AzureCloudEnvironment);
     
                 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
     
@@ -158,7 +158,7 @@ Im folgenden Codebeispiel wird eine **CloudMediaContext**-Instanz erstellt:
     
 Das folgende Beispiel zeigt, wie das Azure AD-Token und der Kontext erstellt werden:
 
-    namespace AADAuthSample
+    namespace AzureADAuthSample
     {
     
         class Program

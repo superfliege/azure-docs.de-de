@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 50055befaa0a5f0bb03bda18e01edfb751e49369
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d5a4cfa3a91b82aa0f5b1725f86c732fecf632d4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379994"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405445"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Integrieren von Azure Security Center Standard für erhöhte Sicherheit
 Führen Sie ein Upgrade auf Security Center Standard durch, um von erhöhter Sicherheit und besserem Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads zu profitieren.  Sie können die Standard-Edition 60 Tage lang kostenlos testen. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
@@ -82,6 +82,8 @@ Gegebenenfalls bereits vorhandene Arbeitsbereiche werden unter **Add new Non-Azu
    ![Hinzufügen eines neuen Arbeitsbereichs][4]
 
 2. Klicken Sie unter **Sicherheit und Überwachung** auf **OMS-Arbeitsbereich**, um einen neuen Arbeitsbereich zu erstellen.
+> [!NOTE]
+> OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.
 3. Geben Sie unter **OMS-Arbeitsbereich** die Informationen für Ihren Arbeitsbereich ein.
 4. Klicken Sie unter **OMS-Arbeitsbereich** auf **OK**.  Nachdem Sie auf „OK“ geklickt haben, erhalten Sie einen Downloadlink für einen Windows- oder Linux-Agent sowie Schlüssel für Ihre Arbeitsbereichs-ID, die Sie zum Konfigurieren des Agents benötigen.
 5. Klicken Sie unter **Sicherheit und Überwachung** auf **OK**.

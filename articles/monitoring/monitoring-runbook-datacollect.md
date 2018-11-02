@@ -1,6 +1,6 @@
 ---
 title: Sammeln von Log Analytics-Daten mit einem Runbook in Azure Automation | Microsoft-Dokumentation
-description: Dieses ausführliche Tutorial führt Sie die durch die Erstellung eines Runbooks in Azure Automation für das Sammeln von Daten im OMS-Repository für die Analyse durch Log Analytics.
+description: In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie ein Runbook in Azure Automation erstellen, um Daten im Repository für die Analyse durch Log Analytics zu sammeln.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: d3e8e876a6c01123d65c1e8df13328bdd5fad71f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347725"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409508"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Sammeln von Daten in Log Analytics mit einem Azure Automation-Runbook
 Sie können in Log Analytics eine erhebliche Menge an Daten aus unterschiedlichen Quellen sammeln, einschließlich [Datenquellen](../log-analytics/log-analytics-data-sources.md) auf Agents sowie [von Azure gesammelte Daten](../log-analytics/log-analytics-azure-storage.md).  Es gibt jedoch Fälle, in denen Sie Daten sammeln müssen, auf die Sie über diese Standardquellen keinen Zugriff erhalten.  Sie können in diesen Situationen die [HTTP-Datensammler-API](../log-analytics/log-analytics-data-collector-api.md) verwenden, um Daten von einem REST-API-Client an Log Analytics zu senden.  Eine gängige Methode zum Durchführen dieser Datensammlung stellt die Verwendung eines Runbooks in Azure Automation dar.   
@@ -56,7 +56,7 @@ Der PowerShell-Katalog bietet jedoch eine schnelle Möglichkeit, ein Modul direk
 
 
 ## <a name="2-create-automation-variables"></a>2. Erstellen von Automation-Variablen
-[Automation-Variablen](..\automation\automation-variables.md) enthalten Werte, die von allen Runbooks in Ihrem Automation-Konto verwendet werden können.  Sie machen die Runbooks flexibler, da Sie diese Werte ändern können, ohne das eigentliche Runbook zu bearbeiten. Jede Anforderung von der HTTP-Datensammler-API erfordert die ID und den Schlüssel des OMS-Arbeitsbereichs. Für das Speichern solcher Informationen eignen sich besonders variable Ressourcen.  
+[Automation-Variablen](..\automation\automation-variables.md) enthalten Werte, die von allen Runbooks in Ihrem Automation-Konto verwendet werden können.  Sie machen die Runbooks flexibler, da Sie diese Werte ändern können, ohne das eigentliche Runbook zu bearbeiten. Jede Anforderung von der HTTP-Datensammler-API erfordert die ID und den Schlüssel des Log Analytics-Arbeitsbereichs. Für das Speichern solcher Informationen eignen sich besonders variable Ressourcen.  
 
 ![Variables](media/monitoring-runbook-datacollect/variables.png)
 
@@ -69,7 +69,7 @@ Der PowerShell-Katalog bietet jedoch eine schnelle Möglichkeit, ein Modul direk
 | NAME | WorkspaceId | WorkspaceKey |
 | Typ | Zeichenfolge | Zeichenfolge |
 | Wert | Fügen Sie die Arbeitsbereichs-ID Ihres Log Analytics-Arbeitsbereichs ein. | Fügen Sie den primären oder sekundären Schlüssel Ihres Log Analytics-Arbeitsbereichs ein. |
-| Verschlüsselt | Nein  | Ja |
+| Verschlüsselt | Nein  | JA |
 
 
 

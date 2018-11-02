@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 10/15/2018
 ms.author: tamram
-ms.openlocfilehash: 6ee80aa7b7a58e2f02ed36d3c0c4b1a0889a906f
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: ae6f7646192b7bee8cbd836f1eff3814c26a6b46
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831465"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427326"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 Eine Übersicht über die Azure AD-Authentifizierung über SMB für Azure Files finden Sie unter [Übersicht über die Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau)](storage-files-active-directory-overview.md).
 
-## <a name="workflow-overview"></a>Übersicht über Workflow
+## <a name="overview-of-the-workflow"></a>Übersicht über den Workflow
 Bevor Sie Azure AD über SMB für Azure Files aktivieren, vergewissern Sie sich, dass Ihre Azure AD- und Azure Storage-Umgebung ordnungsgemäß konfiguriert sind. Es wird empfohlen, dass Sie die [Voraussetzungen](#prerequisites) durchgehen, um sicherzustellen, dass Sie alle erforderlichen Schritte ausgeführt haben. 
 
 Als nächstes gewähren Sie Zugriff auf Azure Files-Ressourcen mit Azure AD-Anmeldeinformationen, indem Sie die folgenden Schritte ausführen: 
@@ -34,6 +34,9 @@ Das folgende Diagramm veranschaulicht den End-to-End-Workflow zur Aktivierung de
 ![Diagramm mit Azure AD über SMB für Azure Files-Workflow](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen 
+
+Bevor Sie Azure AD über SMB für Azure Files aktivieren, sollten Sie sicherstellen, dass Sie die folgenden Voraussetzungen erfüllt haben:
+
 1.  **Wählen Sie einen Azure AD-Mandanten aus oder erstellen Sie einen.**
 
     Sie können einen neuen oder vorhandenen Mandanten für die Azure AD-Authentifizierung über SMB verwenden. Der Mandant und die Dateifreigabe, auf die Sie zugreifen möchten, müssen dem gleichen Abonnement zugeordnet sein.
@@ -57,7 +60,7 @@ Das folgende Diagramm veranschaulicht den End-to-End-Workflow zur Aktivierung de
 
     Wählen Sie eine neue oder vorhandene Dateifreigabe aus, die mit demselben Abonnement wie Ihr Azure AD-Mandant verbunden ist. Weitere Informationen zum Erstellen einer neuen Dateifreigabe finden Sie unter [Erstellen einer Dateifreigabe in Azure Files](storage-how-to-create-file-share.md). 
 
-    Der Azure AD-Mandant muss in einer Region bereitgestellt werden, die für die Vorschau von Azure AD über SMB unterstützt wird. Die Vorschau ist in allen öffentlichen Bereichen verfügbar, mit Ausnahme von: USA, Westen, USA, Westen 2, USA, Süden-Mitte, USA, Osten, USA, Osten 2, USA Mitte, USA, Norden-Mitte, Australien, Osten, Europa, Westen, Europa, Norden.
+    Der Azure AD-Mandant muss in einer Region bereitgestellt werden, die für die Vorschau von Azure AD über SMB unterstützt wird. Die Vorschau ist in allen öffentlichen Regionen verfügbar, mit Ausnahme von: „USA, Westen“, „USA, Westen 2“, „USA, Süden-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Norden-Mitte“, „Australien, Osten“, „Europa, Westen“, „Europa, Norden“.
 
     Für eine optimale Leistung empfiehlt Microsoft, dass sich Ihre Dateifreigabe in derselben Region befindet wie der virtuelle Computer, von dem aus Sie auf die Freigabe zugreifen möchten.
 
@@ -65,20 +68,29 @@ Das folgende Diagramm veranschaulicht den End-to-End-Workflow zur Aktivierung de
 
     Um sicherzustellen, dass Ihr virtueller Computer und die Dateifreigabe richtig konfiguriert sind, versuchen Sie, die Dateifreigabe mit Ihrem Speicherkontenschlüssel einzubinden. Weitere Informationen finden Sie unter [Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows](storage-how-to-use-files-windows.md).
 
-## <a name="enable-azure-ad-authentication"></a>Aktivieren der Azure AD-Authentifizierung
-Nachdem Sie die [Voraussetzungen](#prerequisites) erfüllt haben, können Sie die Azure AD-Authentifizierung über SMB aktivieren.
+## <a name="enable-azure-ad-authentication-for-your-account"></a>Aktivieren der Azure AD-Authentifizierung für Ihr Konto
 
-### <a name="step-1-enable-azure-ad-authentication-over-smb-for-your-storage-account"></a>Schritt 1: Aktivieren der Azure AD-Authentifizierung über SMB für Ihr Speicherkonto
-Zur Aktivierung der Azure AD-Authentifizierung über SMB für Azure Files können Sie eine Eigenschaft für Speicherkonten festlegen, die nach dem 29. August 2018 mit dem Azure Storage Resource Provider von PowerShell oder mit der Azure CLI erstellt wurden. Das Festlegen der Eigenschaft im Azure-Portal wird für die Vorschauversion nicht unterstützt. 
-
-Wenn Sie diese Eigenschaft festlegen, wird das Speicherkonto bei der zugehörigen Bereitstellung von Azure AD Domain Services registriert. Die Azure AD-Authentifizierung über SMB ist dann für alle neuen und vorhandenen Dateifreigaben im Speicherkonto aktiviert. 
+Zur Aktivierung der Azure AD-Authentifizierung über SMB für Azure Files können Sie eine Eigenschaft für Speicherkonten festlegen, die nach dem 24. September 2018 mit dem Azure-Portal, Azure PowerShell oder der Azure CLI erstellt wurden. Wenn Sie diese Eigenschaft festlegen, wird das Speicherkonto bei der zugehörigen Bereitstellung von Azure AD Domain Services registriert. Die Azure AD-Authentifizierung über SMB ist dann für alle neuen und vorhandenen Dateifreigaben im Speicherkonto aktiviert. 
 
 Beachten Sie, dass Sie die Azure AD-Authentifizierung über SMB erst dann aktivieren können, wenn Sie Azure AD Domain Services erfolgreich bei Ihrem Azure AD-Mandanten bereitgestellt haben. Weitere Informationen finden Sie unter [Voraussetzungen](#prerequisites).
 
-**PowerShell**  
-Installieren Sie das PowerShell-Modul `AzureRM.Storage 6.0.0-preview`, um die Azure AD-Authentifizierung über SMB zu aktivieren. Weitere Informationen zum Installieren von PowerShell finden Sie unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+### <a name="azure-portal"></a>Azure-Portal
 
-Rufen Sie anschließend [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) auf, und legen Sie für den Parameter **EnableAzureFilesAadIntegrationForSMB** den Wert **true** fest. Denken Sie im folgenden Beispiel daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen.
+Führen Sie diese Schritte aus, um die Azure AD-Authentifizierung über SMB mit dem [Azure-Portal](https://portal.azure.com) zu aktivieren:
+
+1. Navigieren Sie im Azure-Portal zu Ihrem vorhandenen Speicherkonto, oder [erstellen Sie ein Speicherkonto](../common/storage-quickstart-create-account.md).
+2. Wählen Sie im Abschnitt **Einstellungen** die Option **Konfiguration**.
+3. Aktivieren Sie **Azure Active Directory-Authentifizierung für Azure Files (Vorschau)**.
+
+In der folgenden Abbildung ist dargestellt, wie Sie die Azure AD-Authentifizierung über SMB für Ihr Speicherkonto aktivieren.
+
+![Aktivieren der Azure AD-Authentifizierung über SMB im Azure-Portal](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
+  
+### <a name="powershell"></a>PowerShell  
+
+Installieren Sie zuerst das Modul `AzureRM.Storage 6.0.0-preview`, um die Azure AD-Authentifizierung über SMB mit Azure PowerShell zu aktivieren. Weitere Informationen zum Installieren von PowerShell finden Sie unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+
+Erstellen Sie als Nächstes ein neues Speicherkonto, und rufen Sie anschließend [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) auf, und legen Sie den Parameter **EnableAzureFilesAadIntegrationForSMB** auf **true** fest. Denken Sie im folgenden Beispiel daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen.
 
 ```powershell
 # Create a new storage account
@@ -90,37 +102,40 @@ New-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
     -EnableAzureFilesAadIntegrationForSMB $true
 
 # Update an existing storage account
-# Supported for storage accounts created after August 29, 2018 only
+# Supported for storage accounts created after September 24, 2018 only
 Set-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Name "<storage-account-name>" `
     -EnableAzureFilesAadIntegrationForSMB $true```
 ```
 
-**BEFEHLSZEILENSCHNITTSTELLE (CLI)**  
-Zur Aktivierung der Azure AD-Authentifizierung über SMB mit der Azure CLI 2.0 installieren Sie zunächst die Erweiterung *storage-preview*:
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-```azurecli-interactive
+Zur Aktivierung der Azure AD-Authentifizierung über SMB mit der Azure CLI 2.0 installieren Sie zunächst die Erweiterung `storage-preview`:
+
+```cli-interactive
 az extension add --name storage-preview
 ```
-
-Rufen Sie anschließend [az storage account update](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) auf, und legen Sie für die `--file-aad`-Eigenschaft den Wert **true** fest. Denken Sie im folgenden Beispiel daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen.
+  
+Als Nächstes erstellen Sie ein neues Speicherkonto und rufen dann [az storage account update](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) auf und legen die `--file-aad`-Eigenschaft auf **true** fest. Denken Sie im folgenden Beispiel daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen.
 
 ```azurecli-interactive
 # Create a new storage account
 az storage account create -n <storage-account-name> -g <resource-group-name> --file-aad true
 
 # Update an existing storage account
-# Supported for storage accounts created after August 29, 2018 only
+# Supported for storage accounts created after September 24, 2018 only
 az storage account update -n <storage-account-name> -g <resource-group-name> --file-aad true
 ```
 
-### <a name="step-2-assign-access-permissions-to-an-identity"></a>Schritt 2: Zuweisen von Zugriffsberechtigungen zu einer Identität 
-Für den Zugriff auf Ressourcen von Azure Files mit Azure AD-Anmeldeinformationen muss eine Identität (Benutzer, Gruppe oder Dienstprinzipal) über die erforderlichen Berechtigungen auf der Freigabeebene verfügen. Die schrittweise Anleitung unten zeigt, wie Sie einer Identität Lese-, Schreib- oder Löschberechtigungen für eine Dateifreigabe zuweisen.
+## <a name="assign-access-permissions-to-an-identity"></a>Zuweisen von Zugriffsberechtigungen zu einer Identität 
+
+Für den Zugriff auf Ressourcen von Azure Files mit Azure AD-Anmeldeinformationen muss eine Identität (Benutzer, Gruppe oder Dienstprinzipal) über die erforderlichen Berechtigungen auf der Freigabeebene verfügen. Die Anleitung in diesem Abschnitt zeigt, wie Sie einer Identität Lese-, Schreib- oder Löschberechtigungen für eine Dateifreigabe zuweisen.
 
 > [!IMPORTANT]
 > Die vollständige administrative Kontrolle über eine Dateifreigabe, einschließlich der Möglichkeit, einer Identität eine Rolle zuzuweisen, erfordert die Verwendung des Speicherkontenschlüssels. Die administrative Kontrolle wird mit Azure AD-Anmeldeinformationen nicht unterstützt. 
 
-#### <a name="step-21-define-a-custom-role"></a>Schritt 2.1: Definieren einer benutzerdefinierten Rolle
+### <a name="define-a-custom-role"></a>Definieren einer benutzerdefinierten Rolle
+
 Zur Erteilung von Berechtigungen auf Freigabeebene definieren Sie eine benutzerdefinierte RBAC-Rolle, und weisen Sie sie einer Identität zu, wobei Sie sie auf eine bestimmte Dateifreigabe beschränken. Dieser Prozess ähnelt der Angabe von Windows Share-Berechtigungen, bei denen Sie die Art des Zugriffs eines bestimmten Benutzers auf eine Dateifreigabe angeben.  
 
 Die in den folgenden Abschnitten gezeigten Vorlagen bieten entweder Lese- oder Änderungsberechtigungen für eine Dateifreigabe. Erstellen Sie eine JSON-Datei, und kopieren Sie die entsprechende Vorlage in diese Datei, um eine benutzerdefinierte Rolle zu definieren. Weitere Informationen zum Definieren von benutzerdefinierten RBAC-Rollen finden Sie unter [Benutzerdefinierte Rollen in Azure](../../role-based-access-control/custom-roles.md).
@@ -172,19 +187,39 @@ Die folgende benutzerdefinierte Rollenvorlage bietet Leseberechtigungen auf Frei
 }
 ```
 
-#### <a name="step-22-create-the-custom-role-and-assign-it-to-the-target-identity"></a>Schritt 2.2: Erstellen der benutzerdefinierten Rolle und Zuordnen zur Zielidentität
-Verwenden Sie anschließend PowerShell oder die Azure CLI, um die Rolle zu erstellen und sie einer Azure AD-Identität zuzuweisen. 
+### <a name="create-the-custom-role"></a>Erstellen der benutzerdefinierten Rolle
 
-**PowerShell**  
-Installieren Sie das PowerShell-Modul `AzureRM.Storage 6.0.0-preview`, um die Azure AD-Authentifizierung über SMB zu aktivieren. Weitere Informationen zum Installieren von PowerShell finden Sie unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+Verwenden Sie PowerShell oder die Azure CLI, um die benutzerdefinierte Rolle zu erstellen. 
 
-Der folgende PowerShell-Befehl erstellt eine benutzerdefinierte Rolle und weist die Rolle einer Azure AD-Identität zu, die auf dem Anmeldenamen basiert. Weitere Informationen zum Zuweisen von RBAC-Rollen mit PowerShell finden Sie unter [Verwalten des Zugriffs mit RBAC und Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+#### <a name="powershell"></a>PowerShell
 
-Wenn Sie das folgende Beispielskript ausführen, denken Sie daran, Platzhalterwerte durch eigene Werte zu ersetzen.
+Mit dem folgenden PowerShell-Befehl wird eine benutzerdefinierte Rolle basierend auf einer der Beispielvorlagen erstellt.
 
 ```powershell
 #Create a custom role based on the sample template above
 New-AzureRmRoleDefinition -InputFile "<custom-role-def-json-path>"
+```
+
+#### <a name="cli"></a>Befehlszeilenschnittstelle (CLI) 
+
+Mit dem folgenden Azure CLI-Befehl wird eine benutzerdefinierte Rolle basierend auf einer der Beispielvorlagen erstellt.
+
+```azurecli-interactive
+#Create a custom role based on the sample templates above
+az role definition create --role-definition "<Custom-role-def-JSON-path>"
+```
+
+### <a name="assign-the-custom-role-to-the-target-identity"></a>Zuweisen der benutzerdefinierten Rolle zur Zielidentität
+
+Als Nächstes verwenden Sie PowerShell oder die Azure CLI, um einer Azure AD-Identität die benutzerdefinierte Rolle zuzuweisen. 
+
+#### <a name="powershell"></a>PowerShell
+
+Mit dem folgenden PowerShell-Befehl wird veranschaulicht, wie Sie die verfügbaren benutzerdefinierten Rollen auflisten und dann basierend auf dem Anmeldenamen einer Azure AD-Identität eine benutzerdefinierte Rolle zuweisen. Weitere Informationen zum Zuweisen von RBAC-Rollen mit PowerShell finden Sie unter [Verwalten des Zugriffs mit RBAC und Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+
+Denken Sie beim Ausführen des folgenden Beispielskripts daran, Platzhalterwerte durch eigene Werte zu ersetzen (einschließlich der Klammern).
+
+```powershell
 #Get the name of the custom role
 $FileShareContributorRole = Get-AzureRmRoleDefinition "<role-name>"
 #Constrain the scope to the target file share
@@ -193,21 +228,20 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzureRmRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-**BEFEHLSZEILENSCHNITTSTELLE (CLI)**  
-Der folgende CLI 2.0-Befehl erstellt eine benutzerdefinierte Rolle und weist die Rolle einer Azure AD-Identität zu, die auf dem Anmeldenamen basiert. Weitere Informationen zum Zuweisen von RBAC-Rollen mit Azure CLI finden Sie unter [Verwalten des Zugriffs mit RBAC und Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
+#### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
+  
+Mit dem folgenden CLI 2.0-Befehl wird veranschaulicht, wie Sie die verfügbaren benutzerdefinierten Rollen auflisten und dann basierend auf dem Anmeldenamen einer Azure AD-Identität eine benutzerdefinierte Rolle zuweisen. Weitere Informationen zum Zuweisen von RBAC-Rollen mit Azure CLI finden Sie unter [Verwalten des Zugriffs mit RBAC und Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
 
-Wenn Sie das folgende Beispielskript ausführen, denken Sie daran, Platzhalterwerte durch eigene Werte zu ersetzen.
+Denken Sie beim Ausführen des folgenden Beispielskripts daran, Platzhalterwerte durch eigene Werte zu ersetzen (einschließlich der Klammern).
 
 ```azurecli-interactive
-#Create a custom role based on the sample templates above
-az role definition create --role-definition "<Custom-role-def-JSON-path>"
 #List the custom roles
 az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
 #Assign the custom role to the target identity
 az role assignment create --role "<custome-role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 ```
 
-### <a name="step-3-configure-ntfs-permissions-over-smb"></a>Schritt 3: Konfigurieren von NTFS-Berechtigungen über SMB 
+## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurieren von NTFS-Berechtigungen über SMB 
 Nachdem Sie mit RBAC Berechtigungen auf Freigabeebene zugewiesen haben, müssen Sie die richtigen NTFS-Berechtigungen auf Stamm-, Verzeichnis- oder Dateiebene zuweisen. Stellen Sie sich die Berechtigungen auf der Freigabeebene als allgemeinen Gatekeeper vor, der bestimmt, ob ein Benutzer auf die Freigabe zugreifen kann, während die NTFS-Berechtigungen auf einer detaillierteren Ebene agieren, um zu bestimmen, welche Operationen der Benutzer auf der Verzeichnis- oder Dateiebene ausführen kann. 
 
 Azure Files unterstützt den vollständigen Satz an grundlegenden und erweiterten NTFS-Berechtigungen. Sie können NTFS-Berechtigungen für Verzeichnisse und Dateien in einer Azure-Dateifreigabe anzeigen und konfigurieren, indem Sie die Freigabe einbinden und dann den Windows-Befehl [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) oder [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) ausführen. 
@@ -227,14 +261,15 @@ Die folgenden Berechtigungsgruppen werden im Stammverzeichnis einer Dateifreigab
 - NT AUTHORITY\SYSTEM:(F)
 - CREATOR OWNER:(OI)(CI)(IO)(F)
 
-#### <a name="step-31-mount-an-azure-file-share-from-the-command-prompt"></a>Schritt 3.1: Einbinden einer Azure-Dateifreigabe über die Eingabeaufforderung
+### <a name="mount-a-file-share-from-the-command-prompt"></a>Bereitstellen einer Dateifreigabe über die Eingabeaufforderung
+
 Verwenden Sie den Windows-Befehl **net use**, um die Azure-Dateifreigabe zu aktivieren. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen. Weitere Informationen zum Einbinden von Dateifreigaben finden Sie unter [Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows](storage-how-to-use-files-windows.md).
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
 ```
 
-#### <a name="step-32-configure-ntfs-permissions-with-icacls"></a>Schritt 3.2: Konfigurieren von NTFS-Berechtigungen mit icacls
+### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurieren von NTFS-Berechtigungen mit icacls
 Verwenden Sie den folgenden Windows-Befehl, um allen Verzeichnissen und Dateien unter der Dateifreigabe, einschließlich des Stammverzeichnisses, vollständige Berechtigungen zu erteilen. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen.
 
 ```
@@ -243,7 +278,8 @@ icacls <mounted-drive-letter> /grant <user-email>:(f)
 
 Weitere Informationen zur Verwendung von icacls zum Festlegen von NTFS-Berechtigungen und zu den verschiedenen Arten von unterstützten Berechtigungen finden Sie unter [Befehlszeilenreferenz für icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
-### <a name="step-4-mount-an-azure-file-share-from-a-domain-joined-vm"></a>Schritt 4: Einbinden einer Azure-Dateifreigabe von einem domänengebundenen virtuellen Computer 
+## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Bereitstellen einer Dateifreigabe von einem in eine Domäne eingebundenen virtuellen Computer 
+
 Jetzt können Sie überprüfen, ob Sie die obigen Schritte erfolgreich abgeschlossen haben, indem Sie Ihre Azure AD-Anmeldeinformationen verwenden, um auf eine Azure-Dateifreigabe von einem domänengebundenen virtuellen Computer aus zuzugreifen. Melden Sie sich zunächst mit der Azure AD-Identität, für die Sie Berechtigungen erteilt haben, beim virtuellen Computer an, wie in der folgenden Abbildung gezeigt.
 
 ![Screenshot mit dem Azure AD-Anmeldebildschirm für die Benutzerauthentifizierung](media/storage-files-active-directory-enable/azure-active-directory-authentication-dialog.png)
@@ -257,6 +293,7 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 Sie haben jetzt erfolgreich die Azure AD-Authentifizierung über SMB aktiviert und eine benutzerdefinierte Rolle zugewiesen, die den Zugriff auf eine Dateifreigabe für eine Azure AD-Identität ermöglicht. Befolgen Sie die Anweisungen in Schritt 2 und 3, um weiteren Benutzern den Zugriff auf Ihre Dateifreigabe zu ermöglichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen über Azure Files und die Verwendung von Azure AD über SMB finden Sie in den folgenden Ressourcen:
 
 - [Einführung in Azure Files](storage-files-introduction.md)

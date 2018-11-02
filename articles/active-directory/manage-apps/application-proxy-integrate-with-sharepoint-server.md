@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/06/2017
+ms.date: 10/19/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: fcd02e264d5e85b1bef7e75d2a6375d6bf5e18c0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ad0ab8790c9d66dbba87d466e9661ef8cf33eef3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363948"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456897"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy
 
@@ -194,7 +194,7 @@ Mit dem letzten Schritt stellen Sie sicher, dass SharePoint die Website anhand d
 
 3. Wählen Sie in der Dropdownliste neben **Alternate Access Mapping Collection** (Alternative Zugriffszuordnungssammlung) die Option **Change Alternate Access Mapping Collection** (Alternative Zugriffszuordnungssammlung ändern).
 4. Wählen Sie Ihre Website aus, z.B. **SharePoint – 80**.
-5. Sie können wählen, ob Sie die veröffentlichte URL entweder als interne URL oder als öffentliche URL hinzufügen möchten. In diesem Beispiel wird eine öffentliche URL als Extranet verwendet.
+5. Sie können wählen, ob Sie die veröffentlichte URL entweder als interne URL oder als öffentliche URL hinzufügen möchten. In diesem Beispiel wird eine öffentliche URL als Extranet verwendet. Wenn Sie einen benutzerdefinierten Port verwenden, nehmen Sie diesen unbedingt in die URL auf.
 6. Klicken Sie unter dem Pfad **Extranet** auf **Öffentliche URLs bearbeiten**, und geben Sie dann die externe URL ein, die beim Veröffentlichen der Anwendung erstellt wurde. Geben Sie z.B. **https://sharepoint-iddemo.msappproxy.net** ein.
 
   ![Eingeben des Pfads](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)

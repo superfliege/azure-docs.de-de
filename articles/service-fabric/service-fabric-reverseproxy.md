@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 521a7b90b971ff3ba867945a4713b1f6dc8dbebc
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 04f233384ad0d02cb5b7056df1e5fdfc74b9bec8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503518"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344624"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -156,9 +156,12 @@ Für Dienste, die in Containern ausgeführt werden, können Sie die Umgebungsvar
 ```
 Für den lokalen Cluster wird `Fabric_NodeIPOrFQDN` standardmäßig auf „localhost“ festgelegt. Starten Sie den lokalen Cluster mit dem Parameter `-UseMachineName`, um sicherzustellen, dass Container den Reverseproxy erreichen können, der auf dem Knoten ausgeführt wird. Weitere Informationen finden Sie unter [Konfigurieren der Entwicklerumgebung zum Debuggen von Containern](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
 
+Service Fabric-Dienste, die innerhalb von Docker Compose-Containern ausgeführt werden, erfordern eine spezielle HTTP- oder HTTPS-Konfiguration für den *Abschnitt „Ports“* in der „docker-compose.yml“. Weitere Informationen finden Sie unter [Docker Compose-Bereitstellungsunterstützung in Azure Service Fabric](service-fabric-docker-compose.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einrichten und Konfigurieren eines Reverseproxys in einem Cluster](service-fabric-reverseproxy-setup.md)
 * [Einrichten der Weiterleitung an einen sicheren HTTP-Dienst mit dem Reverseproxy](service-fabric-reverseproxy-configure-secure-communication.md)
+* [Diagnostizieren von Reverseproxyereignissen](service-fabric-reverse-proxy-diagnostics.md)
 * Ein Beispiel für die HTTP-Kommunikation zwischen Diensten finden Sie im [Beispielprojekt auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Remoteprozeduraufrufe mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
 * [Web-API, die OWIN in Reliable Services verwendet](service-fabric-reliable-services-communication-webapi.md)

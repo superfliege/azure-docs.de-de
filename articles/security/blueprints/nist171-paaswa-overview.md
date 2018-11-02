@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: a073c0ddfe9f75984d2aa47e51d04c7217589dc5
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e7851b39327e61f1676ae0cf1c3bff3de75b56bd
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433853"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409270"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Vorlage für Azure Security and Compliance: PaaS-Webanwendungen gemäß NIST Special Publication 800-171
 
@@ -22,7 +22,7 @@ ms.locfileid: "47433853"
 
 Diese Vorlage für Azure Security and Compliance enthält eine Anleitung, mit der Kunden eine PaaS-Webanwendung (Platform-as-a-Service) in Azure bereitstellen können, die eine Teilmenge der NIST SP 800-171-Kontrollmechanismen implementiert. Diese Lösung veranschaulicht die Möglichkeiten von Kunden, bestimmte Sicherheits- und Konformitätsanforderungen zu erfüllen. Sie dient auch als Grundlage für Kunden für die Erstellung und Konfiguration ihrer eigenen Webanwendung in Azure.
 
-Diese Referenzarchitektur, die zugehörige Implementierungsanleitung und das Bedrohungsmodell sollen Kunden als Grundlage für die Anpassung an ihre spezifischen Anforderungen dienen. Sie sollten nicht unverändert in einer Produktionsumgebung verwendet werden. Die Bereitstellung dieser Architektur ohne Änderungen ist unzureichend, um die Anforderungen von NIST SP 800-171 vollständig zu erfüllen. Kunden sind dafür verantwortlich, angemessene Sicherheits- und Compliance-Bewertungen für jede Lösung durchzuführen, die mit dieser Architektur erstellt wurde. Die Anforderungen variieren je nach den Gegebenheiten der Implementierung des jeweiligen Kunden.
+Diese Referenzarchitektur, die zugehörige Implementierungsanleitung und das Bedrohungsmodell sollen Kunden als Grundlage für die Anpassung an ihre spezifischen Anforderungen dienen. Sie sollten nicht unverändert in einer Produktionsumgebung verwendet werden. Die Bereitstellung dieser Architektur ohne Änderungen ist unzureichend, um die Anforderungen von NIST SP 800-171 vollständig zu erfüllen. Kunden sind dafür verantwortlich, angemessene Sicherheits- und Konformitätsbewertungen für jede Lösung durchzuführen, die mit dieser Architektur erstellt wurde. Die Anforderungen variieren je nach den Gegebenheiten der Implementierung des jeweiligen Kunden.
 
 ## <a name="architecture-diagram-and-components"></a>Architekturdiagramm und Komponenten
 
@@ -30,7 +30,7 @@ Diese Blaupause für Azure Security and Compliance stellt eine Referenzarchitekt
 
 Für erweiterte Analysen und Berichterstattungen können Azure SQL-Datenbanken mit Columnstore-Indizes konfiguriert werden. Azure SQL-Datenbanken können abhängig von der Nutzung durch den Kunden zentral hoch- bzw. herunterskaliert oder vollständig ausgeschaltet werden. Jeglicher SQL-Datenverkehr wird mit SSL über selbstsignierte Zertifikate verschlüsselt. Azure empfiehlt als bewährte Methode die Verwendung einer vertrauenswürdigen Zertifizierungsstelle für erweiterte Sicherheit.
 
-Die Lösung verwendet Azure Storage-Konten, die Kunden für die Verwendung von Speicherdienstverschlüsselung konfigurieren können, um die Vertraulichkeit ruhender Daten zu wahren. Azure speichert drei Kopien der Daten im ausgewählten Rechenzentrum eines Kunden, um Resilienz zu gewährleisten. Der georedundante Speicher sorgt dafür, dass Daten in einem sekundären Rechenzentrum Hunderte Kilometer entfernt repliziert und in Form von drei Kopien in diesem Rechenzentrum erneut gespeichert werden. Durch diese Konstellation wird ein unerwünschtes Ereignis im primären Rechenzentrum des Kunden verhindert, das zu einem Verlust von Daten führt.
+Die Lösung verwendet Azure Storage-Konten, die Kunden für die Verwendung von Speicherdienstverschlüsselung konfigurieren können, um die Vertraulichkeit ruhender Daten zu wahren. Azure speichert drei Kopien der Daten im ausgewählten Rechenzentrum eines Kunden, um Resilienz zu gewährleisten. Der georedundante Speicher sorgt dafür, dass Daten in einem sekundären Rechenzentrum Hunderte Kilometer entfernt repliziert und in Form von drei Kopien in diesem Rechenzentrum erneut gespeichert werden. Dadurch wird ein unerwünschtes Ereignis im primären Rechenzentrum des Kunden verhindert, das zu einem Verlust von Daten führt.
 
 Für höhere Sicherheit werden alle Ressourcen in dieser Lösung als Ressourcengruppe über Azure Resource Manager verwaltet. Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure Active Directory (Azure AD) dient zur Steuerung des Zugriffs auf bereitgestellte Ressourcen. Zu diesen Ressourcen zählen Kundenschlüssel in Azure Key Vault. Die Systemintegrität wird durch Azure Monitor überwacht. Kunden konfigurieren diesen Überwachungsdienst zur Erfassung von Protokollen. Die Systemintegrität wird auf einem einzigen, benutzerfreundlichen Dashboard angezeigt.
 
@@ -180,7 +180,7 @@ Azure-Dienste protokollieren umfassend die System- und Benutzeraktivitäten sowi
 - **Aktivitätsprotokolle:** [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
 - **Diagnoseprotokolle:** [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von den einzelnen Ressourcen ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure Storage-Protokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle. Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Benutzer können den Aufbewahrungszeitraum, bis zu 730 Tage, so konfigurieren, dass die spezifischen Anforderungen erfüllt werden.
 
-**Azure Log Analytics**: Protokolle werden zur Verarbeitung, Speicherung und Dashboardanzeige in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) konsolidiert. Nach der Erfassung der Daten werden diese für jeden Datentyp in den Arbeitsbereichen der Microsoft Operations Management Suite in separaten Tabellen organisiert. Auf diese Weise können alle Daten zusammen analysiert werden, unabhängig von der zugehörigen ursprünglichen Quelle. Azure Security Center wird in Log Analytics integriert. Kunden können mithilfe von Log Analytics-Abfragen auf ihre Sicherheitsereignisdaten zugreifen und diese mit Daten von anderen Diensten kombinieren.
+**Azure Log Analytics**: Protokolle werden zur Verarbeitung, Speicherung und Dashboardanzeige in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) konsolidiert. Nach der Erfassung der Daten werden diese in separaten Tabellen für die einzelnen Datentypen in den Log Analytics-Arbeitsbereichen organisiert. Auf diese Weise können alle Daten zusammen analysiert werden, unabhängig von der zugehörigen ursprünglichen Quelle. Azure Security Center wird in Log Analytics integriert. Kunden können mithilfe von Log Analytics-Abfragen auf ihre Sicherheitsereignisdaten zugreifen und diese mit Daten von anderen Diensten kombinieren.
 
 Die folgenden Log Analytics-[Verwaltungslösungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) sind in dieser Architektur enthalten:
 -   [Active Directory-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Mit der Active Directory-Lösung für die Integritätsüberprüfung können Sie in regelmäßigen Abständen die Risiken und die Integrität Ihrer Serverumgebungen bewerten. Sie stellt eine priorisierte Liste von Empfehlungen bereit, die spezifisch für Ihre bereitgestellte Serverinfrastruktur gelten.

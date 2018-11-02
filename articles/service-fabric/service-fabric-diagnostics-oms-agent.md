@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 3d7cf50bd2c845764aa2c3ac3b3db6891ff5c8d8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e440cca59bde1c845bc99ef137c18242e888ee06
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993849"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230096"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Leistungsüberwachung mit Log Analytics
 
@@ -66,7 +66,7 @@ Den Log Analytics-Agent fügen Sie Ihrem Cluster am besten über die VM-Skalieru
 
 ## <a name="add-the-agent-via-the-resource-manager-template"></a>Hinzufügen des Agents über die Resource Manager-Vorlage
 
-Resource Manager-Beispielvorlagen zum Bereitstellen eines Azure Log Analytics-Arbeitsbereichs sowie zum Hinzufügen eines Agents zu den einzelnen Knoten stehen für [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) und [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) zur Verfügung.
+Resource Manager-Beispielvorlagen zum Bereitstellen eines Azure Log Analytics-Arbeitsbereichs sowie zum Hinzufügen eines Agents zu den einzelnen Knoten stehen für [Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) und [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) zur Verfügung.
 
 Sie können diese Vorlage herunterladen und anpassen, um einen Cluster bereitzustellen, der Ihre Anforderungen am besten erfüllt.
 
@@ -86,7 +86,7 @@ Jetzt haben Sie den Log Analytics-Agent hinzugefügt und können im Log Analytic
 
 6. Schließen Sie das Blatt „Erweiterte Einstellungen“.
 
-7. Klicken Sie unter der Überschrift „Allgemein“ auf **Übersicht**.
+7. Klicken Sie unter der Überschrift „Allgemein“ auf **Zusammenfassung des Arbeitsbereichs**.
 
 8. Sie sehen Kacheln in Form eines Graphs für jede der aktivierten Lösungen, auch eine für Service Fabric. Klicken Sie auf den Graph **Service Fabric**, um mit der Service Fabric-Analyse-Lösung fortzufahren.
 
@@ -100,4 +100,4 @@ Jetzt haben Sie den Log Analytics-Agent hinzugefügt und können im Log Analytic
 
 * Erfassen Sie relevante [Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md). Lesen Sie zum Konfigurieren des Log Analytics-Agents für das Erfassen von bestimmten Leistungsindikatoren [Konfigurieren von Datenquellen](../log-analytics/log-analytics-data-sources.md#configuring-data-sources).
 * Konfigurieren Sie Log Analytics für die Einrichtung von [automatisierten Warnungen](../log-analytics/log-analytics-alerts.md) bei der Erkennung und Diagnose.
-* Alternativ können Sie Leistungsindikatoren über die [Azure Diagnostics-Erweiterung erfassen und an Application Insights senden](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template).
+* Alternativ können Sie Leistungsindikatoren über die [Azure Diagnostics-Erweiterung erfassen und an Application Insights senden](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).

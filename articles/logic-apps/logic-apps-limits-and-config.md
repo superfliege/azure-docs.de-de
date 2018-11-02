@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 09/26/2018
-ms.openlocfilehash: c557c3e34fc4588b8bf13d69159a144d059b039e
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.date: 10/11/2018
+ms.openlocfilehash: 1ae350e74a9b56aaaa72b38a9e3a43bddfbefefc
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452450"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232272"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -111,9 +111,22 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
 Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten oder Auslastungstests ausgeführt werden sollen, bei denen diese Grenzwerte möglicherweise überschritten werden, [bitten Sie das Logic Apps-Team](mailto://logicappsemail@microsoft.com) um Unterstützung im Hinblick auf Ihre Anforderungen.
 
+<a name="sftp"></a>
+
+## <a name="ftp-sftp-and-sftp-ssh-limits"></a>Grenzwerte für FTP, SFTP und SFTP-SSH
+
+### <a name="file-size"></a>Dateigröße
+
+| NAME | Begrenzung | Notizen |
+|------|-------|-------|
+| FTP | 50 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. | 
+| SFTP | 50 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [SFTP-SSH connector](../connectors/connectors-sftp-ssh.md) oder [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. | 
+| SFTP-SSH | 1 GB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. | 
+|||| 
+
 <a name="request-limits"></a>
 
-## <a name="http-request-limits"></a>Grenzwerte für HTTP-Anforderungen
+## <a name="http-limits"></a>HTTP-Grenzwerte
 
 Diese Grenzwerte gelten für eine einzelne HTTP-Anforderung oder einen einzelnen synchronen Connectoraufruf:
 
@@ -156,6 +169,15 @@ Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie übe
 | Anzahl von benutzerdefinierten Connectors | 1.000 pro Azure-Abonnement | 
 | Anzahl der Anforderungen pro Minute für jede von einem benutzerdefinierten Connector erstellte Verbindung | 500 Anforderungen pro Verbindung |
 |||| 
+
+<a name="managed-identity"></a>
+
+## <a name="managed-identities"></a>Verwaltete Identitäten
+
+| NAME | Begrenzung | 
+| ---- | ----- | 
+| Anzahl von Logik-Apps mit vom System zugewiesenen verwalteten Identitäten pro Azure-Abonnement | 10 | 
+|||
 
 <a name="integration-account-limits"></a>
 
@@ -310,7 +332,7 @@ Um die Aufrufe zu unterstützen, die [Connectors](../connectors/apis-list.md) du
 >
 > * Erstellen Sie eine [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), die eine Verbindung mit Ressourcen in einem virtuellen Azure-Netzwerk herstellen kann. 
 > 
-> * Wenn Sie API Management bereits verwenden, können Sie diesen Dienst für das Szenario nutzen. Weitere Informationen finden Sie unter [Einfache Unternehmensintegrationsarchitektur](http://aka.ms/aisarch).
+> * Wenn Sie API Management bereits verwenden, können Sie diesen Dienst für das Szenario nutzen. Weitere Informationen finden Sie unter [Einfache Unternehmensintegrationsarchitektur](https://aka.ms/aisarch).
 
 | Logic Apps-Bereich | Ausgehende IP-Adresse | 
 |-------------------|-------------|  

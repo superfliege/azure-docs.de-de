@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/10/2018
+ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8cac3c8d3a1877ad7c93efc0954c2f07ecaa0a29
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: ea926a64e3df853d6845266ff20255b76d9ff387
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42141336"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386721"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -28,6 +28,8 @@ Um Ihre Lösung bereitzustellen, können Sie entweder eine Einzelvorlage oder ei
 Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen und Vorlagen wiederverwenden.
 
 Bei Verwendung verknüpfter Vorlagen erstellen Sie eine Hauptvorlage, in der während der Bereitstellung Parameterwerte empfangen werden. Die Hauptvorlage enthält alle verknüpften Vorlagen und übergibt bei Bedarf Werte an diese Vorlagen.
+
+Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](./resource-manager-tutorial-create-linked-templates.md).
 
 ## <a name="link-or-nest-a-template"></a>Verknüpfen oder Schachteln einer Vorlage
 
@@ -86,7 +88,7 @@ Verwenden Sie zum Schachteln der Vorlage mit der Hauptvorlage die **template**-E
 > [!NOTE]
 > Für geschachtelte Vorlagen können Sie keine Parameter oder Variablen verwenden, die in der geschachtelten Vorlage definiert sind. Sie können Parameter und Variablen über die Hauptvorlage verwenden. Im vorherigen Beispiel wird mit `[variables('storageName')]` kein Wert aus der geschachtelten Vorlage abgerufen, sondern aus der Hauptvorlage. Diese Einschränkung gilt nicht für externe Vorlagen.
 >
-> Sie können die Funktion `reference` nicht im Ausgabeabschnitt einer verschachtelten Vorlage verwenden. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage.
+> Sie können die Funktion `reference` nicht im Ausgabeabschnitt einer geschachtelten Vorlage verwenden. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage.
 
 Die geschachtelten Vorlage erfordert [dieselben Eigenschaften](resource-group-authoring-templates.md) wie eine Standardvorlage.
 
@@ -101,7 +103,7 @@ Um eine externe Vorlage und Parameterdatei zu verknüpfen, verwenden Sie **templ
      "name": "linkedTemplate",
      "type": "Microsoft.Resources/deployments",
      "properties": {
-       "mode": "incremental",
+       "mode": "Incremental",
        "templateLink": {
           "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
           "contentVersion":"1.0.0.0"
@@ -119,7 +121,9 @@ Sie müssen die `contentVersion`-Eigenschaft für die Vorlage oder die Parameter
 
 ### <a name="external-template-and-inline-parameters"></a>Externe Vorlage und Inlineparameter
 
-Alternativ können Sie den Parameter inline bereitstellen. Um einen Wert von der Hauptvorlage an die verknüpfte Vorlage zu übergeben, verwenden Sie **parameters**.
+Alternativ können Sie den Parameter inline bereitstellen. Sie können nicht sowohl Inlineparameter als auch einen Link auf eine Parameterdatei verwenden. Bei der Bereitstellung tritt ein Fehler auf, wenn sowohl `parametersLink` als auch `parameters` angegeben sind.
+
+Um einen Wert von der Hauptvorlage an die verknüpfte Vorlage zu übergeben, verwenden Sie **parameters**.
 
 ```json
 "resources": [
@@ -128,7 +132,7 @@ Alternativ können Sie den Parameter inline bereitstellen. Um einen Wert von der
      "name": "linkedTemplate",
      "type": "Microsoft.Resources/deployments",
      "properties": {
-       "mode": "incremental",
+       "mode": "Incremental",
        "templateLink": {
           "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
           "contentVersion":"1.0.0.0"
@@ -199,7 +203,7 @@ Die Hauptvorlage stellt die verknüpfte Vorlage bereit und ruft den zurückgegeb
             "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
             "properties": {
-                "mode": "incremental",
+                "mode": "Incremental",
                 "templateLink": {
                     "uri": "[uri(deployment().properties.templateLink.uri, 'helloworld.json')]",
                     "contentVersion": "1.0.0.0"
@@ -397,7 +401,7 @@ Die folgende Vorlage wird mit der vorherigen Vorlage verknüpft. Es werden drei 
 
 Nach der Bereitstellung können Sie die Ausgabewerte mit dem folgenden PowerShell-Skript abrufen:
 
-```powershell
+```azurepowershell-interactive
 $loopCount = 3
 for ($i = 0; $i -lt $loopCount; $i++)
 {
@@ -407,9 +411,11 @@ for ($i = 0; $i -lt $loopCount; $i++)
 }
 ```
 
-Oder mit folgendem Skript für die Azure-Azure-Befehlszeilenschnittstelle:
+Oder ein Azure CLI-Skript in einer Bash-Shell:
 
-```azurecli
+```azurecli-interactive
+#!/bin/bash
+
 for i in 0 1 2;
 do
     name="linkedTemplate$i";
@@ -440,7 +446,7 @@ Im folgenden Beispiel wird veranschaulicht, wie ein SAS-Token beim Verknüpfen m
       "name": "linkedTemplate",
       "type": "Microsoft.Resources/deployments",
       "properties": {
-        "mode": "incremental",
+        "mode": "Incremental",
         "templateLink": {
           "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -455,16 +461,18 @@ Im folgenden Beispiel wird veranschaulicht, wie ein SAS-Token beim Verknüpfen m
 
 In PowerShell rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgenden Befehlen bereit. Beachten Sie, dass der Parameter **containerSasToken** in der Vorlage definiert ist. Es handelt sich nicht um einen Parameter im Befehl **New-AzureRmResourceGroupDeployment**.
 
-```powershell
+```azurepowershell-interactive
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
 $url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
 New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-In der Azure-Befehlszeilenschnittstelle rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgendem Code bereit:
+Für die Azure CLI in einer Bash-Shell rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgendem Code bereit:
 
-```azurecli
+```azurecli-interactive
+#!/bin/bash
+
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
 connection=$(az storage account show-connection-string \
     --resource-group ManageGroup \
@@ -497,6 +505,7 @@ Die folgenden Beispiele zeigen gängige Nutzungsszenarien für verknüpften Vorl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](./resource-manager-tutorial-create-linked-templates.md).
 * Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](resource-group-define-dependencies.md).
 * Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md).
 * Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure PowerShell](resource-group-template-deploy.md) oder [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure-CLI](resource-group-template-deploy-cli.md).

@@ -1,28 +1,29 @@
 ---
-title: 'Sprachunterstützung: Spracherkennungs-API'
-titleSuffix: Azure Cognitive Services
-description: Eine Liste der von der Spracherkennungs-API unterstützten natürlichen Sprachen.
+title: Unterstützte Sprachen der Bing-Spracheingabe | Microsoft-Dokumentation
+titlesuffix: Azure Cognitive Services
+description: Hier finden Sie eine Liste der Sprachen, die von der Bing-Spracheingabe unterstützt werden.
 services: cognitive-services
 author: zhouwangzw
-manager: cgronlun
+manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: eeb0f475193a43ab8b0b0ca562364cbdef8a21d2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 961bc2f5d8d619c5a1815b0f4be3b837f72513f4
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433139"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340034"
 ---
-# <a name="language-and-region-support-for-speech-api"></a>Sprach- und Regionsunterstützung für die Spracherkennungs-API
+# <a name="supported-languages"></a>Unterstützte Sprachen
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 ## <a name="interactive-and-dictation-mode"></a>Interaktiver Modus und Diktatmodus
 
-Die Microsoft-Spracherkennungs-API unterstützt in den Modi `interactive` und `dictation` die folgenden Sprachen:
+Die Microsoft-Spracherkennungs-API unterstützt in den Modi `interactive` und `dictation` die folgenden Sprachen: 
 
 |Code | Sprache | Code | Sprache |
 |-----|-----|-----|-----|
@@ -40,12 +41,11 @@ Die Microsoft-Spracherkennungs-API unterstützt in den Modi `interactive` und `d
 | es-MX | Spanisch (Mexiko) |zh-CN | Chinesisch (Mandarin, vereinfacht)  |
 | fi-FI | Finnisch (Finnland) |zh-HK | Chinesisch (Hongkong SAR) |
 | fr-CA | Französisch (Kanada) | zh-TW | Chinesisch (Mandarin, Taiwanesisch)|
-| fr-FR | Französisch (Frankreich) | gu-IN | Gujarati (Indien) |
-| ta-IN |Tamil (Indien) | te-IN | Telugu (Indien) |
+| fr-FR | Französisch (Frankreich) | ||
 
 ## <a name="conversation-mode"></a>Konversationsmodus
 
-Die Microsoft-Spracherkennungs-API unterstützt im Modus `conversation` die folgenden Sprachen:
+Die Microsoft-Spracherkennungs-API unterstützt im Modus `conversation` die folgenden Sprachen: 
 
 | Code | Sprache | Code | Sprache |
 |-----|-----|-----|-----|

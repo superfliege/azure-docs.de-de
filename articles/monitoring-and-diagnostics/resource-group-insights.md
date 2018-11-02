@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 4b24ab406cc9cdbc3ce03ee203ec034843d5630a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465808"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986422"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Überwachen von Ressourcengruppen mit Azure Monitor (Vorschauversion)
 
@@ -113,7 +113,12 @@ In diesem Fall wird Ihnen bei Auswahl von „Bearbeiten“ angezeigt, dass diese
 ## <a name="troubleshooting"></a>Problembehandlung
 
 ### <a name="enabling-access-to-alerts"></a>Aktivieren des Zugriffs auf Warnungen
-Azure Monitor für Ressourcengruppen benötigt bestimmte Berechtigungen für den Zugriff auf den Warnungsstatus der Ressourcen in Ihrer Ressourcengruppe. Wenn beim Laden von Warnungen eine Fehlermeldung angezeigt wird, verfügen Sie nicht über ausreichende Berechtigungen. Bitten Sie Ihren Administrator, Ihnen die Rolle **Besitzer** oder **Mitwirkender** für das Abonnement zu gewähren, das die Ressourcengruppe enthält.
+
+Damit in Azure Monitor für Ressourcengruppen Warnungen angezeigt werden, muss ein Benutzer, der für dieses Abonnement über die Rolle „Besitzer“ oder „Mitwirkender“ verfügt, Azure Monitor für Ressourcengruppen für eine beliebige Ressourcengruppe des Abonnements öffnen. Dadurch können alle Benutzer, die über Lesezugriff verfügen, in Azure Monitor für Ressourcengruppen Warnungen für alle Ressourcengruppen des Abonnements anzeigen. Falls Sie über eine Rolle vom Typ „Besitzer“ oder „Mitwirkender“ verfügen, aktualisieren Sie diese Seite in einigen Minuten.
+
+Azure Monitor für Ressourcengruppen nutzt das Warnungsverwaltungssystem von Azure Monitor, um den Warnungsstatus abzurufen. Die Warnungsverwaltung ist standardmäßig nicht für alle Ressourcengruppen und Abonnements konfiguriert und kann nur von einem Benutzer mit einer Rolle vom Typ „Besitzer“ oder „Mitwirkender“ aktiviert werden. Die Aktivierung kann auf zwei Arten durchgeführt werden:
+* Öffnen von Azure Monitor für Ressourcengruppen für eine beliebige Ressourcengruppe des Abonnements
+* Navigieren zum Abonnement, Klicken auf **Ressourcenanbieter** und Klicken auf die Option zum **Registrieren für „Alerts.Management**“
 
 ## <a name="next-steps"></a>Nächste Schritte
 

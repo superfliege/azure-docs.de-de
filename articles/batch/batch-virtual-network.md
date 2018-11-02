@@ -1,48 +1,43 @@
 ---
 title: Bereitstellen eines Azure Batch-Pools in einem virtuellen Netzwerk | Microsoft-Dokumentation
-description: Sie können einen Batch-Pool in einem virtuellen Netzwerk erstellen, damit Computeknoten sicher mit anderen VMs (z.B. Dateiserver) im Netzwerk kommunizieren können.
+description: Hier erfahren Sie, wie Sie einen Batch-Pool in einem virtuellen Netzwerk erstellen, damit Computeknoten sicher mit anderen VMs (z. B. Dateiserver) im Netzwerk kommunizieren können.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 10/05/2018
 ms.author: danlep
-ms.openlocfilehash: 9e8bd6819601cc4436e3432ee390f2ae82a0d94a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ef37d482e86e4ae05d3f14c78404dc395792b236
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145873"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091953"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk
 
-
 Beim Erstellen eines Azure Batch-Pools können Sie einen Pool in einem von Ihnen angegebenen Subnetz eines [virtuellen Azure-Netzwerks](../virtual-network/virtual-networks-overview.md) (VNET) bereitstellen. In diesem Artikel wird erklärt, wie Sie einen Batch-Pool in einem VNET einrichten. 
-
-
 
 ## <a name="why-use-a-vnet"></a>Gründe für die Verwendung eines VNETs
 
-
 Ein Azure Batch-Pool verfügt über Einstellung, durch die Computeknoten miteinander kommunizieren können, z.B. zum Ausführen von Tasks mit mehreren Instanzen. Für diese Einstellungen ist kein separates VNET erforderlich. Allerdings können die Knoten standardmäßig nicht mit VMs kommunizieren, die Teil des Batch-Pools sind, wie etwa Lizenzserver und Dateiserver. Um die sichere Kommunikation zwischen Computeknoten und VMs oder lokalen Netzwerken zu ermöglichen, können Sie den Pool in einem Subnetz eines Azure VNETs bereitstellen. 
-
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Authentifizierung**. Zur Verwendung eines Azure VNETs muss die Batch-Client-API die Azure Active Directory-Authentifizierung verwenden. Die Azure Batch-Unterstützung für Azure AD ist unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md) dokumentiert. 
 
-* **Ein Azure VNET** Um ein VNET mit mindestens einem Subnetz vorzubereiten, können Sie das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle (CLI) oder andere Methoden verwenden. Um ein auf Azure Resource Manager basiertes VNET zu erstellen, lesen Sie die Informationen unter [Create, change, or delete a virtual network](../virtual-network/manage-virtual-network.md#create-a-virtual-network) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks). Um ein klassischen VNET zu erstellen, können Sie sich unter [Erstellen eines (klassischen) virtuellen Netzwerks mit mehreren Subnetzen](../virtual-network/create-virtual-network-classic.md) informieren.
+* **Ein Azure VNET** Im folgenden Abschnitt finden Sie Informationen zu den Anforderungen und der Konfiguration des VNET. Um ein VNET mit mindestens einem Subnetz vorzubereiten, können Sie das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle (CLI) oder andere Methoden verwenden.  
+  * Um ein auf Azure Resource Manager basiertes VNET zu erstellen, lesen Sie die Informationen unter [Create, change, or delete a virtual network](../virtual-network/manage-virtual-network.md#create-a-virtual-network) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks). Ein auf Resource Manager basierendes VNET wird für neue Bereitstellungen empfohlen und wird nur für Pools in der Konfiguration des virtuellen Computers unterstützt.
+  * Um ein klassischen VNET zu erstellen, können Sie sich unter [Erstellen eines (klassischen) virtuellen Netzwerks mit mehreren Subnetzen](../virtual-network/create-virtual-network-classic.md) informieren. Ein klassisches VNET wird nur für Pools in der Cloud Services-Konfiguration unterstützt.
 
-### <a name="vnet-requirements"></a>VNET-Anforderungen
+## <a name="vnet-requirements"></a>VNET-Anforderungen
+
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
-    
+
 ## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Erstellen eines Pools mit einem VNET im Portal
 
 Wenn Sie Ihr VNET erstellt und einem Subnetz zugewiesen haben, können Sie einen Batch-Pool mit diesem VNET erstellen. Führen Sie die folgenden Schritte aus, um einen Pool im Azure-Portal zu erstellen: 
-
-
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Batch-Konto. Das Konto muss sich im gleichen Abonnement und der gleichen Region wie die Ressourcengruppe befinden, die das VNET enthält, das Sie verwenden möchten. 
 2. Wählen Sie links im Fenster **Einstellungen** die Menüoption **Pools** aus.

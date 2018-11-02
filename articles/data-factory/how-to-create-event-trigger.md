@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 38fbb62de60bc5604210c8ad7339368a04967c27
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: f744e379521fe62f4b3fbbad0cc524ccb3e1b18d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867051"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429387"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt
 
@@ -71,23 +71,26 @@ Die folgende Tabelle enthält eine Übersicht über die Schemaelemente, die mit 
 | **JSON-Element** | **Beschreibung** | **Typ** | **Zulässige Werte** | **Erforderlich** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **scope** | Die Ressourcen-ID von Azure Resource Manager im Speicherkonto. | Zeichenfolge | Azure Resource Manager-ID | JA |
-| **events** | Der Ereignistyp, die diesen Trigger auslöst. | Array    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Ja, eine beliebige Kombination. |
-| **blobPathBeginsWith** | Der Blobpfad muss mit dem Muster, beginnen, das für das Auslösen des Triggers vorgesehen ist. Beispielsweise löst „/records/blobs/december/“ nur den Trigger für Blobs im Ordner „december“ im Container „records“ aus. | Zeichenfolge   | | Es muss mindestens eine dieser Eigenschaften angegeben werden: blobPathBeginsWith, blobPathEndsWith. |
-| **blobPathEndsWith** | Der Blobpfad muss mit dem Muster enden, das für das Auslösen des Triggers vorgesehen ist. „December/boxes.csv“ löst z.B. nur den Trigger für Blobs mit der Bezeichnung „boxes“ im Ordner „december“ aus. | Zeichenfolge   | | Es muss mindestens eine dieser Eigenschaften angegeben werden: blobPathBeginsWith, blobPathEndsWith. |
+| **events** | Der Ereignistyp, die diesen Trigger auslöst. | Array    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Ja (beliebige Kombination dieser Werte). |
+| **blobPathBeginsWith** | Der Blobpfad muss mit dem angegebenen Muster beginnen, damit der Trigger ausgelöst wird. `/records/blobs/december/` löst den Trigger beispielsweise nur für Blobs im Ordner `december` unter dem Container `records` aus. | Zeichenfolge   | | Geben Sie einen Wert für mindestens eine der folgenden Eigenschaften an: `blobPathBeginsWith` oder `blobPathEndsWith`. |
+| **blobPathEndsWith** | Der Blobpfad muss mit dem angegebenen Muster enden, damit der Trigger ausgelöst wird. `december/boxes.csv` löst den Trigger beispielsweise nur für Blobs namens `boxes` aus, die sich in einem Ordner namens `december` befinden. | Zeichenfolge   | | Geben Sie einen Wert für mindestens eine der folgenden Eigenschaften an: `blobPathBeginsWith` oder `blobPathEndsWith`. |
 
 ## <a name="examples-of-event-based-triggers"></a>Beispiele für ereignisbasierte Trigger
 
 Dieser Abschnitt enthält Beispiele für die Einstellungen für ereignisbasierte Trigger.
 
--   **Blobpfad beginnt mit**(„/cntainername/") –empfängt Ereignisse für einen beliebigen Blob im Container.
--   **Blobpfad beginnt mit**(„/Containername/Blobs/Ordnername“): Empfängt Ereignisse für beliebige Blobs im Container „Containername“ im Ordner „Ordnername“.
--   **Blobpfad beginnt mit**(„/Containername/Blobs/Ordnername/datei.txt“): Empfängt Ereignisse für ein Blob mit der Bezeichnung „datei.txt“ im Container „Containername“ im Ordner „Ordnername“.
--   **Blobpfad endet mit**("file.txt") – empfängt Ereignisse für einen Blob mit der Bezeichnung datei.txt in einem beliebigen Pfad.
--   **Blobpfad endet mit**(„/Containername/Blobs/datei.txt“): Empfängt Ereignisse für ein Blob mit der Bezeichnung „datei.txt“ im Container „Containername“.
--   **Blobpfad endet mit**(„/foldername/file.txt“) – empfängt Ereignisse für einen Blob mit der Bezeichnung datei.txt im Ornder „foldername“ in einem beliebigen Container.
+> [!IMPORTANT]
+> Sie müssen das Segment `/blobs/` des Pfads wie in den folgenden Beispielen gezeigt immer dann einbeziehen, wenn Sie Container und Ordner, Container und Datei oder Container, Ordner und Datei angeben.
 
-> [!NOTE]
-> Sie müssen das Segment `/blobs/` des Pfads immer dann einbeziehen, wenn Sie Container und Ordner, Container und Datei oder Container, Ordner und Datei angeben.
+| Eigenschaft | Beispiel | Beschreibung |
+|---|---|---|
+| **Blobpfad beginnt mit** | `/containername/` | Empfängt Ereignisse für ein beliebiges Blob im Container. |
+| **Blobpfad beginnt mit** | `/containername/blobs/foldername/` | Empfängt Ereignisse für ein beliebiges Blob im Container `containername` und Ordner `foldername`. |
+| **Blobpfad beginnt mit** | `/containername/blobs/foldername/subfoldername/` | Sie können auch auf einen Unterordner verweisen. |
+| **Blobpfad beginnt mit** | `/containername/blobs/foldername/file.txt` | Empfängt Ereignisse für ein Blob namens `file.txt` im Ordner `foldername` unter dem Container `containername`. |
+| **Blobpfad endet mit** | `file.txt` | Empfängt Ereignisse für ein Blob namens `file.txt` unter einem beliebigen Pfad. |
+| **Blobpfad endet mit** | `/containername/blobs/file.txt` | Empfängt Ereignisse für ein Blob namens `file.txt` unter dem Container `containername`. |
+| **Blobpfad endet mit** | `foldername/file.txt` | Empfängt Ereignisse für ein Blob namens `file.txt` im Ordner `foldername` unter einem beliebigen Container. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Detaillierte Informationen zu Triggern finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#triggers).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: db4f83d0d407ad3d9e895759ea2a687662f5620a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053294"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362601"
 ---
 # <a name="introduction-to-auto-scaling"></a>Einführung in die automatische Skalierung
 Die automatische Skalierung ist eine weitere Funktion von Service Fabric, mit der Ihre Dienste basierend auf der Last, die von Diensten gemeldet wird, oder basierend auf ihrer Ressourcennutzung dynamisch skaliert werden können. Die automatische Skalierung bietet eine hervorragende Flexibilität und ermöglicht die Bereitstellung zusätzlicher Instanzen oder Partitionen Ihres Diensts bei Bedarf. Der gesamte Prozess der automatischen Skalierung ist automatisiert und transparent. Sobald Sie Ihre Richtlinien für einen Dienst eingerichtet haben, müssen Sie keine manuellen Skalierungsvorgänge auf Dienstebene mehr durchführen. Die automatische Skalierung kann während der Erstellung des Diensts oder zu einem beliebigen Zeitpunkt durch Aktualisieren des Diensts aktiviert werden.
@@ -120,7 +120,7 @@ Der zweite Trigger basiert auf der Last aller Partitionen eines Diensts. Metrikl
 * Der _obere Lastschwellenwert_ ist ein Wert, der bestimmt, wann der Dienst **horizontal hochskaliert wird**. Wenn die durchschnittliche Last aller Partitionen des Diensts höher als dieser Wert ist, wird der Dienst horizontal hochskaliert.
 * Das _Skalierungsintervall_ bestimmt, wie oft der Trigger überprüft wird. Sobald der Trigger überprüft wurde, wird der Mechanismus angewendet, wenn eine Skalierung erforderlich ist. Wenn keine Skalierung erforderlich ist, wird keine Aktion ausgeführt. In beiden Fällen wird der Trigger erst wieder überprüft, wenn das Skalierungsintervall erneut abläuft.
 
-Dieser Trigger kann für zustandsbehaftete und zustandslose Dienste verwendet werden. Der einzige Mechanismus, der mit diesem Trigger verwendet werden kann, ist „AddRemoveIncrementalNamedParitionScalingMechanism“. Wenn der Dienst horizontal hochskaliert wird, wird eine neue Partition hinzugefügt, und wenn der Dienst horizontal herunterskaliert wird, wird eine vorhandene Partition entfernt. Es gibt Einschränkungen, die überprüft werden, wenn der Dienst erstellt oder aktualisiert wird, und die Erstellung/Aktualisierung des Diensts schlägt fehl, wenn diese Bedingungen nicht erfüllt sind:
+Dieser Trigger kann für zustandsbehaftete und zustandslose Dienste verwendet werden. Der einzige Mechanismus, der mit diesem Trigger verwendet werden kann, ist „AddRemoveIncrementalNamedPartitionScalingMechanism“. Wenn der Dienst horizontal hochskaliert wird, wird eine neue Partition hinzugefügt, und wenn der Dienst horizontal herunterskaliert wird, wird eine vorhandene Partition entfernt. Es gibt Einschränkungen, die überprüft werden, wenn der Dienst erstellt oder aktualisiert wird, und die Erstellung/Aktualisierung des Diensts schlägt fehl, wenn diese Bedingungen nicht erfüllt sind:
 * Ein benanntes Partitionsschema muss für den Dienst verwendet werden.
 * Partitionsnamen müssen aufeinanderfolgende ganze Zahlen sein, z.B. „0“, „1“, ...
 * Der Name der ersten Partition muss „0“ sein.
@@ -137,7 +137,7 @@ Wie beim Mechanismus, der die Skalierung durch Hinzufügen oder Entfernen von In
 * Die _minimale Anzahl von Instanzen_ definiert die Untergrenze für die Skalierung. Wenn die Anzahl von Partitionen des Diensts diesen Grenzwert erreicht, wird der Dienst unabhängig von der Last nicht horizontal herunterskaliert.
 
 > [!WARNING] 
-> Bei Verwendung von „AddRemoveIncrementalNamedParitionScalingMechanism“ mit „stateful“-Diensten wird Service Fabric Partitionen **ohne Benachrichtigung oder Warnung** hinzufügen oder entfernen. Die Neupartitionierung von Daten wird nicht durchgeführt, wenn ein Skalierungsmechanismus ausgelöst wird. Beim zentralen Hochskalieren sind die neuen Partitionen leer, und beim zentralen Herunterskalieren wird die **Partition zusammen mit allen darin enthaltenen Daten gelöscht**.
+> Bei Verwendung von „AddRemoveIncrementalNamedPartitionScalingMechanism“ mit „stateful“-Diensten wird Service Fabric Partitionen **ohne Benachrichtigung oder Warnung** hinzufügen oder entfernen. Die Neupartitionierung von Daten wird nicht durchgeführt, wenn ein Skalierungsmechanismus ausgelöst wird. Beim zentralen Hochskalieren sind die neuen Partitionen leer, und beim zentralen Herunterskalieren wird die **Partition zusammen mit allen darin enthaltenen Daten gelöscht**.
 
 ## <a name="setting-auto-scaling-policy"></a>Festlegen der Richtlinie für die automatische Skalierung
 
@@ -146,7 +146,7 @@ Wie beim Mechanismus, der die Skalierung durch Hinzufügen oder Entfernen von In
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>
-        <AddRemoveIncrementalNamedParitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
+        <AddRemoveIncrementalNamedPartitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
@@ -155,7 +155,7 @@ Wie beim Mechanismus, der die Skalierung durch Hinzufügen oder Entfernen von In
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
 AveragePartitionLoadScalingTrigger trigger = new AverageServiceLoadScalingTrigger();
-PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedParitionScalingMechanism();
+PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedPartitionScalingMechanism();
 mechanism.MaxPartitionCount = 4;
 mechanism.MinPartitionCount = 1;
 mechanism.ScaleIncrement = 1;
@@ -171,7 +171,7 @@ await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/Se
 ```
 ### <a name="using-powershell"></a>Verwenden von PowerShell
 ```posh
-$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedParitionScalingMechanism
+$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
 $mechanism.MaxPartitionCount = 3
 $mechanism.ScaleIncrement = 2

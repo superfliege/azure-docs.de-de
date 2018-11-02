@@ -1,6 +1,6 @@
 ---
-title: Migrieren von lokalen AD FS-Apps zu Azure | Microsoft-Dokumentation
-description: Dieser Artikel soll Organisationen als Hilfe dienen und beschreiben, wie lokale Anwendungen zu Azure AD migriert werden. Der Schwerpunkt liegt hierbei auf SaaS-Verbundanwendungen.
+title: Verschieben von Apps aus AD FS in Azure AD | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, wie Organisationen Anwendungen in Azure AD verschieben können. Der Schwerpunkt liegt hierbei auf SaaS-Anwendungen.
 services: active-directory
 author: barbkess
 manager: mtillman
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903027"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959059"
 ---
-# <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrieren von lokalen AD FS-Apps zu Azure 
+# <a name="move-applications-from-ad-fs-to-azure-ad"></a>Verschieben von Anwendungen aus AD FS in Azure AD 
 
-In diesem Artikel werden die Grundlagen der Migration von lokalen Anwendungen zu Azure Active Directory (Azure AD) beschrieben. Der Schwerpunkt liegt auf SaaS-Verbundanwendungen. 
+In diesem Artikel erfahren Sie, wie Anwendungen von AD FS in Azure Active Directory (Azure AD) verschoben werden. Der Schwerpunkt liegt auf SaaS-Verbundanwendungen. 
 
 Dieser Artikel enthält keine Schritt-für-Schritt-Anleitung. Es enthält eine konzeptuelle Anleitung zur Durchführung der Migration, indem erläutert wird, wie lokale Konfigurationen in Azure AD übersetzt werden können. Außerdem werden allgemeine Szenarien behandelt.
 
@@ -31,7 +31,7 @@ Wenn Sie über ein lokales Verzeichnis mit Benutzerkonten verfügen, ist die Wah
 
 Wie die meisten anderen Organisationen auch, befinden Sie sich wahrscheinlich auf dem Weg zur Einführung von Cloudanwendungen und -identitäten. Vielleicht funktionieren Office 365 und Azure AD Connect bei Ihnen schon. Vielleicht haben Sie cloudbasierte SaaS-Anwendungen für einige wichtige Workloads eingerichtet, aber noch nicht für alle.  
 
-Viele Organisationen nutzen SaaS- oder benutzerdefinierte Branchen-Apps (Line-of-Business, LOB) im direkten Verbund mit einem lokalen Anmeldedienst, z.B. Active Directory-Verbunddienste (AD FS), neben Office 365- und Azure AD-basierten Apps. In diesem Migrationsleitfaden wird beschrieben, warum und wie lokale Anwendungen zu Azure AD migriert werden.
+Viele Organisationen nutzen SaaS- oder benutzerdefinierte Branchen-Apps (Line-of-Business, LOB) im direkten Verbund mit einem lokalen Anmeldedienst, z.B. Active Directory-Verbunddienste (AD FS), neben Office 365- und Azure AD-basierten Apps. In diesem Leitfaden erfahren Sie, warum und wie Sie Ihre Anwendungen in Azure AD verschieben.
 
 >[!NOTE]
 >Der Leitfaden enthält ausführliche Informationen zur Konfiguration und Migration von SaaS-Apps sowie allgemeine Informationen zu benutzerdefinierten Branchen-Apps. Eine ausführlichere Anleitung für benutzerdefinierte Branchen-Apps ist für die Zukunft geplant.
@@ -40,9 +40,9 @@ Viele Organisationen nutzen SaaS- oder benutzerdefinierte Branchen-Apps (Line-of
 
 ![Apps, die per Azure AD-Verbund verknüpft sind](media/migrate-adfs-apps-to-azure/migrate2.png)
 
-## <a name="reasons-for-migrating-apps-to-azure-ad"></a>Gründe für das Migrieren von Apps zu Azure AD
+## <a name="reasons-for-moving-apps-to-azure-ad"></a>Gründe für das Verschieben von Apps in Azure AD
 
-Für Organisationen, die bereits AD FS, Ping oder einen anderen lokalen Authentifizierungsanbieter verwenden, hat die Migration von Apps zu Azure AD die folgenden Vorteile:
+Für Organisationen, die bereits AD FS, Ping oder einen anderen lokalen Authentifizierungsanbieter verwenden, hat das Verschieben von Apps in Azure AD folgende Vorteile:
 
 **Höhere Zugriffssicherheit**
 - Konfigurieren Sie präzise Zugriffssteuerungen pro Anwendung, einschließlich Azure Multi-Factor Authentication, indem Sie den [bedingten Zugriff in Azure AD](../active-directory-conditional-access-azure-portal.md) verwenden. Die Richtlinien können auf SaaS- und benutzerdefinierte Apps genauso angewendet werden, wie Sie dies ggf. bereits für Office 365 durchführen.
@@ -61,7 +61,7 @@ Für Organisationen, die bereits AD FS, Ping oder einen anderen lokalen Authenti
 - Sie können in den Genuss der Azure AD-Vorteile kommen und Ihre lokale Lösung für die Authentifizierung beibehalten. Auf diese Weise bleiben Ihnen Vorteile wie lokale Lösungen für die Multi-Factor Authentication, Protokollierung und Überwachung erhalten. 
 
 **Hilfe beim Außerkraftsetzen des lokalen Identitätsanbieters**
-- Für Organisationen, die das Produkt für die lokale Authentifizierung aussondern möchten, ermöglicht die Migration von Apps zu Azure AD einen einfacheren Übergang, indem einige Arbeitsschritte abgegeben werden können. 
+- Organisationen, die das Produkt für die lokale Authentifizierung außer Kraft setzen möchten, ermöglicht die Verschiebung von Apps in Azure AD einen einfacheren Übergang, da dadurch einige Arbeitsschritte entfallen. 
 
 ## <a name="mapping-types-of-apps-on-premises-to-types-of-apps-in-azure-ad"></a>Zuordnen von lokalen App-Typen zu Apps in Azure AD
 Die meisten Apps können basierend auf dem verwendeten Anmeldetyp einigen bestimmten Kategorien zugeordnet werden. Anhand dieser Kategorien wird bestimmt, wie die App in Azure AD dargestellt wird.
@@ -126,8 +126,8 @@ In der folgenden Tabelle werden die wichtigen IdP-Konfigurationselemente zum Kon
 |Bezeichner/</br>„Aussteller“|Bezeichner des IdP aus App-Sicht (auch als „Aussteller-ID“ bezeichnet).</br></br>Im SAML-Token wird der Wert als **Issuer**-Element angezeigt.|Der Bezeichner für AD FS ist normalerweise der Verbunddienstbezeichner in der AD FS-Verwaltung unter **Dienst** > **Verbunddiensteigenschaften bearbeiten**. Beispiel: http&#58;//fs.contoso.com/adfs/services/trust|Der entsprechende Wert für Azure AD basiert auf dem Muster, bei dem der Wert für „{Mandanten-ID}“ durch die Mandanten-ID ersetzt wird. Sie finden ihn im Azure-Portal unter **Azure Active Directory** > **Eigenschaften** als **Verzeichnis-ID**: https&#58;//sts.windows.net/{Mandanten-ID}/|
 |IdP- </br>Verbund- </br>metadata|Speicherort der öffentlich verfügbaren Verbundmetadaten des IdP. (Einige Apps verwenden Verbundmetadaten als Alternative zur individuellen Konfiguration der URLs, des Bezeichners und des Tokensignaturzertifikats durch den Administrator.)|Sie finden die URL für die AD FS-Verbundmetadaten in der AD FS-Verwaltung unter **Dienst** > **Endpunkte** > **Metadaten** > **Typ: Verbundmetadaten**. Beispiel: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Der entsprechende Wert für Azure AD basiert auf dem Muster „https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml“. Hierbei wird der Wert für „{TenantDomainName}“ durch den Namen Ihres Mandanten im Format „contoso.onmicrosoft.com“ ersetzt. </br></br>Weitere Informationen finden Sie unter [Verbundmetadaten](../develop/azure-ad-federation-metadata.md).
 
-## <a name="migrating-saas-apps"></a>Migrieren von SaaS-Apps
-Das Migrieren von SaaS-Apps aus AD FS oder einem anderen Identitätsanbieter zu Azure AD ist derzeit ein manueller Prozess. App-spezifische Anleitungen finden Sie in der [Liste mit den Tutorials zur Integration von im Marketplace enthaltenen SaaS-Apps](../saas-apps/tutorial-list.md).
+## <a name="moving-saas-apps"></a>Verschieben von SaaS-Apps
+Das Verschieben von SaaS-Apps aus AD FS oder einem anderen Identitätsanbieter in Azure AD ist derzeit ein manueller Prozess. App-spezifische Anleitungen finden Sie in der [Liste mit den Tutorials zur Integration von im Marketplace enthaltenen SaaS-Apps](../saas-apps/tutorial-list.md).
 
 In den Tutorials zur Integration wird vorausgesetzt, dass Sie eine Greenfield-Integration durchführen. Es gibt einige wichtige spezifische Konzepte für die Migration, die Sie kennen sollten, wenn Sie für Ihre Apps die Planung, Bewertung, Konfiguration und Umstellung durchführen:  
 - Einige Apps können unter Umständen leicht migriert werden. Aber für Apps mit komplexeren Anforderungen, z.B. benutzerdefinierten Ansprüchen, ist unter Umständen zusätzlicher Konfigurationsaufwand in Azure AD bzw. Azure AD Connect erforderlich.
@@ -135,7 +135,7 @@ In den Tutorials zur Integration wird vorausgesetzt, dass Sie eine Greenfield-In
 - Nachdem Sie ermittelt haben, dass zusätzliche Ansprüche erforderlich sind, sollten Sie sicherstellen, dass sie in Azure AD verfügbar sind. Überprüfen Sie die Konfiguration der Azure AD Connect-Synchronisierung, um sich zu vergewissern, dass ein erforderliches Attribut, z.B. **samAccountName**, mit Azure AD synchronisiert wird.
 - Nachdem diese Attribute in Azure AD verfügbar sind, können Sie Regeln für die Anspruchsausstellung in Azure AD hinzufügen, um diese Attribute als Ansprüche in ausgestellte Token einzubinden. Sie fügen diese Regeln in den **SSO**-Eigenschaften der App in Azure AD hinzu.
 
-### <a name="assess-what-can-be-migrated"></a>Bewerten, welche Elemente migriert werden können
+### <a name="assess-what-can-be-moved"></a>Bewerten, welche Elemente verschoben werden können
 SAML 2.0-Anwendungen können entweder über den Azure AD-Anwendungskatalog auf dem Marketplace oder als Anwendungen in Azure AD integriert werden, die nicht über den Marketplace angeboten werden.  
 
 Bei einigen Konfigurationen sind zusätzliche Schritte für die Konfiguration in Azure AD erforderlich, und einige andere Konfigurationen werden derzeit nicht unterstützt. Sehen Sie sich die aktuelle Konfiguration Ihrer einzelnen Apps an, um zu ermitteln, was verschoben werden kann. Suchen Sie vor allem nach Folgendem:
@@ -144,8 +144,8 @@ Bei einigen Konfigurationen sind zusätzliche Schritte für die Konfiguration in
 - Ausgestellte SAML-Tokenversionen
 - Andere Konfigurationselemente, z.B. Ausstellungsautorisierungsregeln oder Zugriffssteuerungsrichtlinien und Regeln für die mehrstufige Authentifizierung (zusätzliche Authentifizierung)
 
-#### <a name="what-can-be-migrated-today"></a>Elemente, die derzeit migriert werden können
-Zu den derzeit leicht zu migrierenden Apps gehören SAML 2.0-Apps, für die der Standardsatz von Konfigurationselementen und Ansprüchen verwendet wird. Diese Apps können aus folgenden Elementen bestehen:
+#### <a name="what-can-be-moved-today"></a>Was aktuell verschoben werden kann
+Zu den Apps, die nach aktuellem Stand problemlos verschoben werden können, zählen unter anderem SAML 2.0-Apps, für die der Standardsatz von Konfigurationselementen und Ansprüchen verwendet wird. Diese Apps können aus folgenden Elementen bestehen:
 - Benutzerprinzipalname.
 - E-Mail-Adresse.
 - Vorname

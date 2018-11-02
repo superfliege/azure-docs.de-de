@@ -2,18 +2,17 @@
 title: Einbinden eines gitRepo-Volumes in Azure Container Instances
 description: Hier erfahren Sie, wie Sie ein gitRepo-Volume einbinden, um ein Git-Repository in Ihren Containerinstanzen zu klonen.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: marsma
-ms.openlocfilehash: 34036c5ec9ccd8c502104ce862e4749c59be62b9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: danlep
+ms.openlocfilehash: af1fbe66c805517c07975b2e4cf6e13e87ec661c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105327"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388271"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Einbinden eines gitRepo-Volumes in Azure Container Instances
 
@@ -90,17 +89,17 @@ Beispiel: Der `--gitrepo-url`-Parameter der Azure CLI für ein privates GitHub-R
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
-Für ein VSTS-Git-Repository geben Sie einen Benutzernamen (Sie können wie im folgenden Beispiel „vstsuser“ verwenden) in Kombination mit einem gültigen PAT an:
+Für ein Azure Repos Git-Repository geben Sie einen Benutzernamen (Sie können wie im folgenden Beispiel „azurereposuser“ verwenden) in Kombination mit einem gültigen PAT an:
 
 ```azurecli
---gitrepo-url https://vstsuser:abcdef1234fdsa4321abcdef@vstsaccountname.visualstudio.com/_git/some-private-repository
+--gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 
-Weitere Informationen über persönliche Zugriffstoken für GitHub und VSTS finden Sie unter:
+Weitere Informationen über persönliche Zugriffstoken für GitHub und Azure Repos finden Sie unter:
 
 GitHub: [Creating a personal access token for the command line][pat-github] (Erstellen eines persönlichen Zugriffstokens für die Befehlszeile)
 
-VSTS: [Create personal access tokens to authenticate access][pat-vsts] (Erstellen von persönlichen Zugriffstoken zur Authentifizierung des Zugriffs)
+Azure Repos: [Create personal access tokens to authenticate access][pat-repos] (Erstellen von persönlichen Zugriffstoken zur Authentifizierung des Zugriffs)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -113,7 +112,7 @@ Erfahren Sie, wie andere Volumetypen in Azure Container Instances bereitgestellt
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
 [pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[pat-vsts]: https://docs.microsoft.com/vsts/organizations/accounts/use-personal-access-tokens-to-authenticate
+[pat-repos]: https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

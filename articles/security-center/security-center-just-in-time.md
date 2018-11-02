@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 98533e3c1454867ff09c53902f0f575d198452a3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124149"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320338"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features
 
@@ -111,6 +111,33 @@ Unter **Konfiguration des JIT-VM-Zugriffs** können Sie auch einen neuen Port, f
 > [!NOTE]
 >Wenn der JIT-VM-Zugriff für eine VM aktiviert ist, erstellt das Azure Security Center Regeln zum Ablehnen von sämtlichem eingehenden Datenverkehr für die ausgewählten Ports in den Netzwerksicherheitsgruppen, die ihr zugeordnet sind. Die Regeln weisen entweder die höchste Priorität in Ihren Netzwerksicherheitsgruppen auf oder eine niedrigere Priorität als bereits vorhandene Regeln. Dies hängt von einer Analyse des Azure Security Center ab, mit der bestimmt wird, ob eine Regel sicher ist.
 >
+
+
+## <a name="set-just-in-time-within-a-vm"></a>Festlegen von Just-In-Time innerhalb eines virtuellen Computers
+
+Um den Rollout des Just-In-Time-Zugriffs auf Ihre virtuellen Computer zu vereinfachen, können Sie einen virtuellen Computer so einrichten, dass er nur den direkten Just-In-Time-Zugriff innerhalb des virtuellen Computers gestattet.
+
+1. Wählen Sie im Azure-Portal die Option für **virtuelle Computer** aus.
+2. Klicken Sie auf den virtuellen Computer, den Sie auf den Just-In-Time-Zugriff beschränken möchten.
+3. Klicken Sie im Menü auf **Konfiguration**.
+4. Klicken Sie unter **Just-In-Time-Zugriff** auf **Just-In-Time-Richtlinie aktivieren**. 
+
+Dies ermöglicht den Just-In-Time-Zugriff auf den virtuellen Computer mit den folgenden Einstellungen:
+
+- Windows-Server:
+    - RDP-Port 3389
+    - 3 Stunden Zugriff
+    - Zulässige Quell-IP-Adressen auf „Pro Anforderung“ festgelegt
+- Linux-Server:
+    - SSH-Port 22
+    - 3 Stunden Zugriff
+    - Zulässige Quell-IP-Adressen auf „Pro Anforderung“ festgelegt
+     
+Wenn für einen virtuellen Computer bereits Just-In-Time aktiviert ist, können Sie auf der Konfigurationsseite sehen, dass Just-In-Time aktiviert ist. Zudem können Sie über den Link die Richtlinie im Azure Security Center öffnen, um die Einstellungen anzuzeigen und zu ändern.
+
+![JIT-Konfiguration im virtuellen Computer](./media/security-center-just-in-time/jit-vm-config.png)
+
+
 ## <a name="requesting-access-to-a-vm"></a>Anfordern des Zugriffs auf einen virtuellen Computer
 
 So fordern Sie Zugriff auf einen virtuellen Computer an:

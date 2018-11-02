@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/27/2018
+ms.date: 10/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d9cf46a1fd28985d9ca98d173bbef17380b7de21
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 7d044559d72b07dc86a5ee1c2269452a9059de61
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354392"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471508"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
@@ -42,6 +42,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.AAD/locations/operationresults/read |  |
 > | Aktion | Microsoft.AAD/Operations/read |  |
 > | Aktion | Microsoft.AAD/register/action | Registriert einen Domänendienst. |
+> | Aktion | Microsoft.AAD/unregister/action | Hebt die Registrierung des Domänendiensts auf. |
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
@@ -665,6 +666,26 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.BingMaps/mapApis/regenerateKey/action | Generiert den Schlüssel neu. |
 > | Aktion | Microsoft.BingMaps/mapApis/Write | Schreibvorgang |
 > | Aktion | Microsoft.BingMaps/Operations/read | Beschreibung des Vorgangs. |
+
+## <a name="microsoftblueprint"></a>Microsoft.Blueprint
+
+> [!div class="mx-tdCol2BreakAll"]
+> | Aktionstyp | Vorgang | Beschreibung |
+> | --- | --- | --- |
+> | Aktion | Microsoft.Blueprint/blueprintAssignments/delete | Löscht Blaupausenartefakte. |
+> | Aktion | Microsoft.Blueprint/blueprintAssignments/read | Liest Blaupausenartefakte. |
+> | Aktion | Microsoft.Blueprint/blueprintAssignments/write | Erstellt oder aktualisiert Blaupausenartefakte. |
+> | Aktion | Microsoft.Blueprint/blueprints/artifacts/delete | Löscht Blaupausenartefakte. |
+> | Aktion | Microsoft.Blueprint/blueprints/artifacts/read | Liest Blaupausenartefakte. |
+> | Aktion | Microsoft.Blueprint/blueprints/artifacts/write | Erstellt oder aktualisiert Blaupausenartefakte. |
+> | Aktion | Microsoft.Blueprint/blueprints/delete | Löscht Blaupausen. |
+> | Aktion | Microsoft.Blueprint/blueprints/read | Liest Blaupausen. |
+> | Aktion | Microsoft.Blueprint/blueprints/versions/artifacts/read | Liest Blaupausenartefakte. |
+> | Aktion | Microsoft.Blueprint/blueprints/versions/delete | Löscht Blaupausen. |
+> | Aktion | Microsoft.Blueprint/blueprints/versions/read | Liest Blaupausen. |
+> | Aktion | Microsoft.Blueprint/blueprints/versions/write | Erstellt oder aktualisiert Blaupausen. |
+> | Aktion | Microsoft.Blueprint/blueprints/write | Erstellt oder aktualisiert Blaupausen. |
+> | Aktion | Microsoft.Blueprint/register/action | Registriert den Blaupausenressourcenanbieter. |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -1610,9 +1631,12 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.DataFactory/factories/integrationruntimes/monitoringdata/read | Ruft die Überwachungsdaten für alle Integration Runtimes ab. |
 > | Aktion | Microsoft.DataFactory/factories/integrationruntimes/nodes/delete | Löscht den Knoten für die angegebene Integration Runtime. |
 > | Aktion | Microsoft.DataFactory/factories/integrationruntimes/nodes/ipAddress/action | Gibt die IP-Adresse für den angegebenen Knoten der Integration Runtime zurück. |
+> | Aktion | Microsoft.DataFactory/factories/integrationruntimes/nodes/read | Liest den Knoten für die angegebene Integration Runtime. |
 > | Aktion | Microsoft.DataFactory/factories/integrationruntimes/nodes/write | Aktualisiert einen selbstgehosteten Integration Runtime-Knoten. |
+> | Aktion | Microsoft.DataFactory/factories/integrationruntimes/queryactivityruns/action | Fragt die Aktivitätsausführungen für die angegebene Integration Runtime ab. |
 > | Aktion | Microsoft.DataFactory/factories/integrationruntimes/read | Liest alle Integration Runtimes. |
 > | Aktion | Microsoft.DataFactory/factories/integrationruntimes/regenerateauthkey/action | Generiert die Authentifizierungsschlüssel für die angegebene Integration Runtime neu. |
+> | Aktion | Microsoft.DataFactory/factories/integrationruntimes/removelinks/action | Entfernt verknüpfte Integration Runtime-Verweise aus der angegebenen Integration Runtime. |
 > | Aktion | Microsoft.DataFactory/factories/integrationruntimes/start/action | Startet alle Integration Runtimes. |
 > | Aktion | Microsoft.DataFactory/factories/integrationruntimes/stop/action | Beendet alle Integration Runtimes. |
 > | Aktion | Microsoft.DataFactory/factories/integrationruntimes/synccredentials/action | Synchronisiert die Anmeldeinformationen für die angegebene Integration Runtime. |
@@ -1983,7 +2007,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.DevTestLab/labs/users/secrets/read | Dient zum Lesen von Geheimnissen. |
 > | Aktion | Microsoft.DevTestLab/labs/users/secrets/write | Dient zum Hinzufügen oder Ändern von Geheimnissen. |
 > | Aktion | Microsoft.DevTestLab/labs/users/serviceFabrics/delete | Löscht Service Fabrics. |
-> | Aktion | Microsoft.DevTestLab/labs/users/serviceFabrics/ListApplicableSchedules/action | Listet alle anwendbaren Zeitpläne auf. |
+> | Aktion | Microsoft.DevTestLab/labs/users/serviceFabrics/ListApplicableSchedules/action | Listet die anwendbaren Zeitpläne zum Starten/Beenden auf, sofern vorhanden. |
 > | Aktion | Microsoft.DevTestLab/labs/users/serviceFabrics/read | Liest Service Fabrics. |
 > | Aktion | Microsoft.DevTestLab/labs/users/serviceFabrics/schedules/delete | Dient zum Löschen von Zeitplänen. |
 > | Aktion | Microsoft.DevTestLab/labs/users/serviceFabrics/schedules/Execute/action | Dient zum Ausführen eines Zeitplans. |
@@ -1999,7 +2023,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/delete | Dient zum Löschen virtueller Computer. |
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/DetachDataDisk/action | Dient zum Trennen des angegebenen Datenträgers vom virtuellen Computer. |
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/GetRdpFileContents/action | Ruft eine Zeichenfolge ab, die den Inhalt der RDP-Datei für den virtuellen Computer darstellt. |
-> | Aktion | Microsoft.DevTestLab/labs/virtualMachines/ListApplicableSchedules/action | Listet alle anwendbaren Zeitpläne auf. |
+> | Aktion | Microsoft.DevTestLab/labs/virtualMachines/ListApplicableSchedules/action | Listet die anwendbaren Zeitpläne zum Starten/Beenden auf, sofern vorhanden. |
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/read | Dient zum Lesen virtueller Computer. |
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/Redeploy/action | Stellt einen virtuellen Computer erneut bereit. |
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/Resize/action | Ändert die Größe eines virtuellen Computers. |
@@ -2010,7 +2034,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/schedules/write | Dient zum Hinzufügen oder Ändern von Zeitplänen. |
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/Start/action | Dient zum Starten eines virtuellen Computers. |
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/Stop/action | Dient zum Beenden eines virtuellen Computers. |
-> | Aktion | Microsoft.DevTestLab/labs/virtualMachines/TransferDisks/action | Hiermit übertragen Sie den Besitz der VM-Datenträger an sich selbst. |
+> | Aktion | Microsoft.DevTestLab/labs/virtualMachines/TransferDisks/action | Überträgt den Besitz aller an den virtuellen Computer angefügten Datenträger auf den aktuellen Benutzer. |
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/UnClaim/action | Hiermit geben Sie den Besitz eines vorhandenen virtuellen Computers frei. |
 > | Aktion | Microsoft.DevTestLab/labs/virtualMachines/write | Dient zum Hinzufügen oder Ändern virtueller Computer. |
 > | Aktion | Microsoft.DevTestLab/labs/virtualNetworks/delete | Dient zum Löschen virtueller Netzwerke. |
@@ -2122,6 +2146,13 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > [!div class="mx-tdCol2BreakAll"]
 > | Aktionstyp | Vorgang | Beschreibung |
 > | --- | --- | --- |
+> | Aktion | Microsoft.EventGrid/domains/delete | Löscht eine Domäne. |
+> | Aktion | Microsoft.EventGrid/domains/listKeys/action | Listet die Schlüssel für eine Domäne auf. |
+> | Aktion | Microsoft.EventGrid/domains/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Metriken für Domänen ab. |
+> | Aktion | Microsoft.EventGrid/domains/read | Liest eine Domäne. |
+> | Aktion | Microsoft.EventGrid/domains/regenerateKey/action | Generiert einen Schlüssel für eine Domäne neu. |
+> | Aktion | Microsoft.EventGrid/domains/topics/read | Liest ein Domänenthema. |
+> | Aktion | Microsoft.EventGrid/domains/write | Erstellt oder aktualisiert eine Domäne. |
 > | Aktion | Microsoft.EventGrid/eventSubscriptions/delete | Löscht eventSubscription. |
 > | Aktion | Microsoft.EventGrid/eventSubscriptions/getFullUrl/action | Ruft die vollständige URL für das Ereignisabonnement ab. |
 > | Aktion | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für Ereignisabonnements ab. |
@@ -2132,15 +2163,21 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Themen ab. |
 > | Aktion | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für Themen. |
 > | Aktion | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Metriken für Themen ab. |
-> | Aktion | Microsoft.EventGrid/register/action | Registriert das eventSubscription für den EventGrid-Ressourcenanbieter und ermöglicht die Erstellung von Event Grid-Ressourcen. |
+> | Aktion | Microsoft.EventGrid/locations/operationResults/read | Liest das Ergebnis eines regionalen Vorgangs. |
+> | Aktion | Microsoft.EventGrid/locations/operationsStatus/read | Liest den Status eines regionalen Vorgangs. |
+> | Aktion | Microsoft.EventGrid/operationResults/read | Liest das Ergebnis eines Vorgangs. |
+> | Aktion | Microsoft.EventGrid/operationsStatus/read | Liest den Status eines Vorgangs. |
+> | Aktion | Microsoft.EventGrid/register/action | Registriert das Abonnement für den EventGrid-Ressourcenanbieter. |
 > | Aktion | Microsoft.EventGrid/topics/delete | Löschen eines Themas |
-> | Aktion | Microsoft.EventGrid/topics/listKeys/action | Listet Schlüssel für das Thema auf. |
+> | Aktion | Microsoft.EventGrid/topics/listKeys/action | Listet die Schlüssel für ein Thema auf. |
 > | Aktion | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Themen ab. |
 > | Aktion | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für Themen. |
 > | Aktion | Microsoft.EventGrid/topics/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Metriken für Themen ab. |
 > | Aktion | Microsoft.EventGrid/topics/read | Liest ein Thema. |
-> | Aktion | Microsoft.EventGrid/topics/regenerateKey/action | Generiert erneut einen Schlüssel für das Thema. |
+> | Aktion | Microsoft.EventGrid/topics/regenerateKey/action | Generiert einen Schlüssel für ein Thema neu. |
 > | Aktion | Microsoft.EventGrid/topics/write | Erstellt oder aktualisiert ein Thema. |
+> | Aktion | Microsoft.EventGrid/topictypes/eventtypes/read | Liest die von einem Thementyp unterstützten Ereignistypen. |
+> | Aktion | Microsoft.EventGrid/topictypes/read | Liest einen Thementyp. |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
@@ -2711,8 +2748,10 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | DataAction | Microsoft.LogAnalytics/logs/Heartbeat/read | Hiermit lesen Sie Daten aus der Heartbeat-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/IISAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der IISAssessmentRecommendation-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/InboundConnection/read | Hiermit lesen Sie Daten aus der InboundConnection-Tabelle. |
+> | DataAction | Microsoft.LogAnalytics/logs/KubeEvents/read | Liest Daten aus der Tabelle „KubeEvents“. |
 > | DataAction | Microsoft.LogAnalytics/logs/KubeNodeInventory/read | Hiermit lesen Sie Daten aus der KubeNodeInventory-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/KubePodInventory/read | Hiermit lesen Sie Daten aus der KubePodInventory-Tabelle. |
+> | DataAction | Microsoft.LogAnalytics/logs/KubeServices/read | Liest Daten aus der Tabelle „KubeServices“. |
 > | DataAction | Microsoft.LogAnalytics/logs/LinuxAuditLog/read | Hiermit lesen Sie Daten aus der LinuxAuditLog-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/MAApplication/read | Hiermit lesen Sie Daten aus der MAApplication-Tabelle. |
 > | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealth/read | Hiermit lesen Sie Daten aus der MAApplicationHealth-Tabelle. |
@@ -3033,6 +3072,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | --- | --- | --- |
 > | DataAction | Microsoft.Maps/accounts/data/read | Gewährt Datenlesezugriff auf ein Maps-Konto. |
 > | Aktion | Microsoft.Maps/accounts/delete | Löscht ein Maps-Konto. |
+> | Aktion | Microsoft.Maps/accounts/eventGridFilters/delete | Löscht einen Event Grid-Filter. |
+> | Aktion | Microsoft.Maps/accounts/eventGridFilters/read | Ruft einen Event Grid-Filter ab. |
+> | Aktion | Microsoft.Maps/accounts/eventGridFilters/write | Erstellt oder aktualisiert einen Event Grid-Filter. |
 > | Aktion | Microsoft.Maps/accounts/listKeys/action | Führt Schlüssel für ein Maps-Konto auf. |
 > | Aktion | Microsoft.Maps/accounts/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
 > | Aktion | Microsoft.Maps/accounts/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
@@ -3739,6 +3781,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktionstyp | Vorgang | Beschreibung |
 > | --- | --- | --- |
 > | Aktion | Microsoft.OperationalInsights/linkTargets/read | Listet vorhandene Konten auf, die keinem Azure-Abonnement zugeordnet sind. Verwenden Sie eine Kunden-ID, die von diesem Vorgang in der Eigenschaft für die Kunden-ID des Vorgangs „Arbeitsbereich erstellen“ zurückgegeben wird, um dieses Azure-Abonnement mit einem Arbeitsbereich zu verknüpfen. |
+> | Aktion | microsoft.operationalinsights/operations/read | Listet alle verfügbaren OperationalInsights-REST-API-Vorgänge auf. |
 > | Aktion | Microsoft.OperationalInsights/register/action | Dient zum Registrieren eines Abonnements bei einem Ressourcenanbieter. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/analytics/query/action | Führt eine Suche mit der neuen Engine aus. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/analytics/query/schema/read | Rufen Sie das Suchschema V2 ab. |
@@ -3751,6 +3794,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.OperationalInsights/workspaces/datasources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/datasources/write | Dient zum Erstellen/Aktualisieren von Datenquellen unter einem Arbeitsbereich. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/delete | Löscht einen Arbeitsbereich. Wenn der Arbeitsbereich bei seiner Erstellung mit einem vorhandenen Arbeitsbereich verknüpft war, wird der Arbeitsbereich, mit dem er verknüpft war, nicht gelöscht. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/gateways/delete | Entfernt ein für den Arbeitsbereich konfiguriertes Gateway. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/generateregistrationcertificate/action | Generiert ein Registrierungszertifikat für den Arbeitsbereich. Dieses Zertifikat wird verwendet, um Microsoft System Center Operation Manager mit dem Arbeitsbereich zu verbinden. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/intelligencepacks/disable/action | Deaktiviert ein Intelligence Pack für einen bestimmten Arbeitsbereich. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/intelligencepacks/enable/action | Aktiviert ein Intelligence Pack für einen bestimmten Arbeitsbereich. |
@@ -3813,8 +3857,10 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.OperationalInsights/workspaces/query/Heartbeat/read | Hiermit lesen Sie Daten aus der Heartbeat-Tabelle. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/query/IISAssessmentRecommendation/read | Hiermit lesen Sie Daten aus der IISAssessmentRecommendation-Tabelle. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/query/InboundConnection/read | Hiermit lesen Sie Daten aus der InboundConnection-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/KubeEvents/read | Liest Daten aus der Tabelle „KubeEvents“. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/query/KubeNodeInventory/read | Hiermit lesen Sie Daten aus der KubeNodeInventory-Tabelle. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/query/KubePodInventory/read | Hiermit lesen Sie Daten aus der KubePodInventory-Tabelle. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/query/KubeServices/read | Liest Daten aus der Tabelle „KubeServices“. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/query/LinuxAuditLog/read | Hiermit lesen Sie Daten aus der LinuxAuditLog-Tabelle. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/query/MAApplication/read | Hiermit lesen Sie Daten aus der MAApplication-Tabelle. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/query/MAApplicationHealth/read | Hiermit lesen Sie Daten aus der MAApplicationHealth-Tabelle. |
@@ -3920,16 +3966,20 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.OperationalInsights/workspaces/query/WUDOAggregatedStatus/read | Hiermit lesen Sie Daten aus der WUDOAggregatedStatus-Tabelle. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/query/WUDOStatus/read | Hiermit lesen Sie Daten aus der WUDOStatus-Tabelle. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/read | Ruft einen vorhandenen Arbeitsbereich ab. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/regeneratesharedkey/action | Generiert den angegebenen gemeinsam verwendeten Schlüssel des Arbeitsbereichs neu. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/savedSearches/delete | Löscht eine gespeicherte Suchabfrage. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/savedSearches/read | Ruft eine gespeicherte Suchabfrage ab. |
+> | Aktion | microsoft.operationalinsights/workspaces/savedsearches/results/read | Ruft die Ergebnisse gespeicherter Suchvorgänge ab. Veraltet |
 > | Aktion | Microsoft.OperationalInsights/workspaces/savedSearches/write | Erstellt eine gespeicherte Suchabfrage. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/schema/read | Ruft das Suchschema für den Arbeitsbereich ab.  Ein Suchschema umfasst die verfügbar gemachten Felder und die dazugehörigen Typen. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/search/action | Führt eine Suchabfrage aus. |
+> | Aktion | microsoft.operationalinsights/workspaces/search/read | Ruft Suchergebnisse ab. Veraltet. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/sharedKeys/action | Ruft die gemeinsam verwendeten Schlüssel für den Arbeitsbereich ab. Diese Schlüssel werden verwendet, um Microsoft Operational Insights-Agents mit dem Arbeitsbereich zu verbinden. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/sharedKeys/read | Ruft die gemeinsam verwendeten Schlüssel für den Arbeitsbereich ab. Diese Schlüssel werden verwendet, um Microsoft Operational Insights-Agents mit dem Arbeitsbereich zu verbinden. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/delete | Löscht eine Speicherkonfiguration. Daraufhin werden von Microsoft Operational Insights keine Daten mehr aus dem Speicherkonto gelesen. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/read | Ruft eine Speicherkonfiguration ab. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/write | Erstellt eine neue Speicherkonfiguration. Diese Konfigurationen werden dazu verwendet, Daten von einem Speicherort in einem vorhandenen Speicherkonto abzurufen. |
+> | Aktion | Microsoft.OperationalInsights/workspaces/upgradetranslationfailures/read | Ruft das Übersetzungsfehlerprotokoll für das Upgrade der Suche für den Arbeitsbereich ab. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/usages/read | Ruft Nutzungsdaten für einen Arbeitsbereich ab, einschließlich der durch den Arbeitsbereich gelesenen Datenmenge. |
 > | Aktion | Microsoft.OperationalInsights/workspaces/write | Erstellt einen neuen Arbeitsbereich oder stellt eine Verknüpfung mit einem vorhandenen Arbeitsbereich her, indem die Kunden-ID für den vorhandenen Arbeitsbereich bereitgestellt wird. |
 
@@ -4234,7 +4284,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Resourcehealth/healthevent/Resolved/action | Zeigt die Änderung des Integritätszustands für die angegebene Ressource an. |
 > | Aktion | Microsoft.Resourcehealth/healthevent/Updated/action | Zeigt die Änderung des Integritätszustands für die angegebene Ressource an. |
 > | Aktion | Microsoft.ResourceHealth/impactedResources/read | Ruft betroffene Ressourcen für das angegebene Abonnement ab. |
+> | Aktion | Microsoft.ResourceHealth/Operations/read | Ruft die verfügbaren Vorgänge für Microsoft ResourceHealth ab. |
 > | Aktion | Microsoft.ResourceHealth/register/action | Hiermit wird das Abonnement für Microsoft ResourceHealth registriert. |
+> | Aktion | Microsoft.ResourceHealth/unregister/action | Hebt die Registrierung des Abonnements für Microsoft ResourceHealth auf. |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
@@ -4358,6 +4410,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Security/securityStatuses/read | Ruft den Sicherheitsintegritätsstatus für Azure-Ressourcen ab. |
 > | Aktion | Microsoft.Security/securityStatusesSummaries/read | Ruft die Zusammenfassungen der Sicherheitsstatus für den Bereich ab. |
 > | Aktion | Microsoft.Security/tasks/read | Ruft alle verfügbaren Sicherheitsempfehlungen ab. |
+> | Aktion | Microsoft.Security/unregister/action | Hebt die Registrierung des Abonnements für das Azure Security Center auf. |
 > | Aktion | Microsoft.Security/webApplicationFirewalls/delete | Löscht eine Web Application Firewall. |
 > | Aktion | Microsoft.Security/webApplicationFirewalls/read | Ruft die Web Application Firewalls ab. |
 > | Aktion | Microsoft.Security/webApplicationFirewalls/write | Erstellt eine neue Web Application Firewall oder aktualisiert eine bereits vorhandene. |
@@ -4534,6 +4587,8 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/locations/instanceFailoverGroups/write | Erstellt eine Failovergruppe einer Instanz mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Tags für die angegebene Failovergruppe einer Instanz. |
 > | Aktion | Microsoft.Sql/locations/interfaceEndpointProfileAzureAsyncOperation/read | Gibt die Details eines asynchronen Azure-Vorgangs für einen bestimmten Schnittstellenendpunkt zurück. |
 > | Aktion | Microsoft.Sql/locations/interfaceEndpointProfileOperationResults/read | Gibt die Details des angegebenen Schnittstellenendpunkt-Vorgangs zurück. |
+> | Aktion | Microsoft.Sql/locations/jobAgentAzureAsyncOperation/read | Ruft den Status eines Auftrags-Agent-Vorgangs ab. |
+> | Aktion | Microsoft.Sql/locations/jobAgentOperationResults/read | Ruft die Ergebnisse eines Auftrags-Agent-Vorgangs ab. |
 > | Aktion | Microsoft.Sql/locations/longTermRetentionBackups/read | Listet die Sicherungen zur langfristigen Aufbewahrung für jede Datenbank auf jedem Server an einem Speicherort auf. |
 > | Aktion | Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read | Listet die Sicherungen zur langfristigen Aufbewahrung für jede Datenbank auf jedem Server auf. |
 > | Aktion | Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete | Löscht eine Sicherung zur langfristigen Aufbewahrung. |
@@ -4552,6 +4607,8 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/managedInstances/administrators/delete | Löscht einen vorhandenen Administrator einer verwalteten Instanz. |
 > | Aktion | Microsoft.Sql/managedInstances/administrators/read | Ruft eine Liste der Administratoren für verwaltete Instanzen ab. |
 > | Aktion | Microsoft.Sql/managedInstances/administrators/write | Erstellt oder aktualisiert den Administrator für verwaltete Instanzen mit den angegebenen Parametern. |
+> | Aktion | Microsoft.Sql/managedInstances/databases/backupShortTermRetentionPolicies/read | Ruft eine kurzfristige Aufbewahrungsrichtlinie für eine verwaltete Datenbank ab. |
+> | Aktion | Microsoft.Sql/managedInstances/databases/backupShortTermRetentionPolicies/write | Aktualisiert eine kurzfristige Aufbewahrungsrichtlinie für eine verwaltete Datenbank. |
 > | Aktion | Microsoft.Sql/managedInstances/databases/delete | Löscht eine vorhandene verwaltete Datenbank. |
 > | Aktion | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
 > | Aktion | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
@@ -4585,6 +4642,8 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/logDefinitions/read | Ruft die verfügbaren Protokolle für verwaltete Instanzen ab. |
 > | Aktion | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/metricDefinitions/read | Dient zum Zurückgeben verfügbarer Metriken für verwaltete Instanzen. |
 > | Aktion | Microsoft.Sql/managedInstances/read | Gibt die Liste der verwalteten Instanzen zurück oder ruft die Eigenschaften für die angegebene verwaltete Instanz ab. |
+> | Aktion | Microsoft.Sql/managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies/read | Ruft eine kurzfristige Aufbewahrungsrichtlinie für eine gelöschte verwaltete Datenbank ab. |
+> | Aktion | Microsoft.Sql/managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies/write | Aktualisiert eine kurzfristige Aufbewahrungsrichtlinie für eine gelöschte verwaltete Datenbank. |
 > | Aktion | Microsoft.Sql/managedInstances/restorableDroppedDatabases/read | Gibt eine Liste der wiederherstellbaren gelöschten verwalteten Datenbanken zurück. |
 > | Aktion | Microsoft.Sql/managedInstances/securityAlertPolicies/read | Dient zum Abrufen von Details zur Richtlinie zur Bedrohungserkennung bei verwalteten Servern, die für einen bestimmten verwalteten Server konfiguriert ist. |
 > | Aktion | Microsoft.Sql/managedInstances/securityAlertPolicies/write | Dient zum Ändern der Richtlinie zur Bedrohungserkennung bei verwalteten Servern für einen bestimmten verwalteten Server. |
@@ -4773,6 +4832,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/servers/interfaceEndpointProfiles/delete | Löscht das angegebene Schnittstellenendpunktprofil. |
 > | Aktion | Microsoft.Sql/servers/interfaceEndpointProfiles/read | Gibt die Eigenschaften für das angegebene Schnittstellenendpunktprofil zurück. |
 > | Aktion | Microsoft.Sql/servers/interfaceEndpointProfiles/write | Erstellt ein Schnittstellenendpunktprofil mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Tags für das angegebene Schnittstellenendpunktprofil. |
+> | Aktion | Microsoft.Sql/servers/jobAgents/delete | Löscht einen Auftrags-Agent von Azure SQL-Datenbank. |
+> | Aktion | Microsoft.Sql/servers/jobAgents/read | Ruft einen Auftrags-Agent von Azure SQL-Datenbank ab. |
+> | Aktion | Microsoft.Sql/servers/jobAgents/write | Erstellt oder aktualisiert einen Auftrags-Agent von Azure SQL-Datenbank. |
 > | Aktion | Microsoft.Sql/servers/keys/delete | Löscht einen vorhandenen Serverschlüssel. |
 > | Aktion | Microsoft.Sql/servers/keys/read | Gibt die Liste der Serverschlüssel zurück oder ruft die Eigenschaften für den angegebenen Serverschlüssel ab. |
 > | Aktion | Microsoft.Sql/servers/keys/write | Erstellt einen Schlüssel mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Serverschlüssel. |

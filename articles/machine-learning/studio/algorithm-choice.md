@@ -226,7 +226,7 @@ Wenn Sie ein sehr spezielles Ziel haben, könnten Sie Glück haben. In der Samml
 
 ![PCA-basierte Erkennung von Anomalien][8]
 
-***PCA-basierte Erkennung von Anomalien****– die überwiegende Mehrheit der Daten liegt in einer stereotypen Verteilung; von dieser Verteilung erheblich abweichende Punkte sind verdächtig*
+***PCA-basierte Erkennung von Anomalien*** *– die überwiegende Mehrheit der Daten liegt in einer stereotypen Verteilung; von dieser Verteilung erheblich abweichende Punkte sind verdächtig*
 
 ![Mittels K-Means gruppiertes Dataset][9]
 

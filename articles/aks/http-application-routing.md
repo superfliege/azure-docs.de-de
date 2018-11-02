@@ -8,18 +8,21 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 8934852fe3d95d0a96af0283c30bba4b3bdb411b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c2f68afb685cb04d456e06cadf378bd1c3ebb1fb
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345878"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384972"
 ---
 # <a name="http-application-routing"></a>HTTP-Anwendungsrouting
 
 Die Lösung für das HTTP-Anwendungsrouting ermöglicht einen einfachen Zugriff auf Anwendungen, die in Ihrem AKS-Cluster (Azure Kubernetes Service) bereitgestellt sind. Bei Aktivierung konfiguriert die Lösung einen Eingangscontroller in Ihrem AKS-Cluster. Darüber hinaus erstellt die Lösung bei der Bereitstellung von Anwendungen auch öffentlich zugängliche DNS-Namen für Anwendungsendpunkte.
 
 Wenn Sie dieses Add-On aktivieren, erstellt es eine DNS-Zone in Ihrem Abonnement. Weitere Informationen zu den DNS-Kosten finden Sie unter [Azure DNS – Preise][dns-pricing].
+
+> [!CAUTION]
+> Das Add-On für HTTP-Anwendungsrouting ist so ausgelegt, dass Sie schnell einen Eingangscontroller erstellen und auf Ihre Anwendungen zugreifen können. Dieses Add-On wird für die Produktion nicht empfohlen. Informationen zu produktionsreifen Eingangsbereitstellungen mit mehreren Replikaten und TLS-Unterstützung finden Sie unter [Erstellen eines HTTPS-Eingangscontrollers](https://docs.microsoft.com/azure/aks/ingress-tls).
 
 ## <a name="http-routing-solution-overview"></a>Übersicht über die HTTP-Routinglösung
 
@@ -88,6 +91,13 @@ spec:
       containers:
       - image: r.j3ss.co/party-clippy
         name: party-clippy
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         tty: true
         command: ["party-clippy"]
         ports:

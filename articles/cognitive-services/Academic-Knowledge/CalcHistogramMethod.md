@@ -1,20 +1,21 @@
 ---
-title: calcHistogram -Methode in der Academic Knowledge-API | Microsoft-Dokumentation
-description: Verwenden Sie die calcHistogram-Methode, um die Verteilung von Attributwerten für einen Satz von Dokumententitäten in Microsoft Cognitive Services zu berechnen.
+title: CalcHistogram-Methode – Academic Knowledge-API
+titlesuffix: Azure Cognitive Services
+description: Verwenden Sie die CalcHistogram-Methode, um die Verteilung von Attributwerten für einen Satz von Dokumententitäten zu berechnen.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: e0b773fb9791ee638c8cfdbbc9dca40543e50ec0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 915e2e5a67d068c418ce50eee9d84dc66e61ee00
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372795"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321290"
 ---
 # <a name="calchistogram-method"></a>calchistogram-Methode
 
@@ -31,13 +32,15 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 NAME  |Wert | Erforderlich?  |BESCHREIBUNG
 -----------|----------|--------|----------
-**expr**    |Textzeichenfolge | Ja  |Ein Abfrageausdruck, der die Entitäten angibt, über die Histogramme berechnet werden sollen.
+**expr**    |Textzeichenfolge | JA  |Ein Abfrageausdruck, der die Entitäten angibt, über die Histogramme berechnet werden sollen.
 **model** |Textzeichenfolge | Nein  |Wählen Sie den Namen des Modells aus, das Sie abfragen möchten.  Derzeit wird als Standardwert *latest* verwendet.
 **attributes** | Textzeichenfolge | Nein <br>Standard: | Eine durch Kommas getrennte Liste, die die Attributwerte in einer Antwort angibt. Bei den Attributnamen wird zwischen Groß- und Kleinschreibung unterschieden.
 **count** |Number | Nein <br>Standard: 10 |Anzahl der zurückzugebenden Ergebnisse.
 **offset**  |Number | Nein <br>Standardwert: 0 |Index des ersten zurückzugebenden Ergebnisses.
-<br>
+**timeout**  |Number | Nein <br>Standard: 1000 |Timeout in Millisekunden. Nur die vor Ablauf des Timeouts gefundenen Interpretationen werden zurückgegeben.
+
 ## <a name="response-json"></a>Antwort (JSON)
+
 NAME | BESCHREIBUNG
 --------|---------
 **expr**  |Der „expr“-Parameter aus der Anforderung.
@@ -50,9 +53,9 @@ NAME | BESCHREIBUNG
 **histograms[x].histogram[y].value** |  Ein Wert für das Attribut.
 **histograms[x].histogram[y].logprob**  |Gesamtwahrscheinlichkeit natürlicher Logarithmen der übereinstimmenden Elemente bei diesem Attributwert.
 **histograms[x].histogram[y].count**  |Die Anzahl der übereinstimmenden Entitäten bei diesem Attributwert.
-**aborted** | „true“, wenn eine Zeitüberschreitung bei der Anforderung aufgetreten ist.
+**aborted** | „true“, wenn ein Timeout bei der Anforderung aufgetreten ist.
 
- <br>
+
 #### <a name="example"></a>Beispiel:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4

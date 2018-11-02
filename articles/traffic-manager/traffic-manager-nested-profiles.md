@@ -4,22 +4,19 @@ description: Dieser Artikel erläutert das Feature der geschachtelten Profile vo
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: f1b112c4-a3b1-496e-90eb-41e235a49609
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 10/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1ac4ec2775ca9f690f5adf4f939908f8cee3f715
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 876305c7195a186671c30c4bdd9bb0c6b5331e9a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111698"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648597"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Geschachtelte Traffic Manager-Profile
 
@@ -66,9 +63,7 @@ Die folgende Abbildung veranschaulicht diese Konfiguration:
 
 ## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Beispiel 3: Priorisierte Failoverregionen im leistungsorientierten Datenverkehrsrouting
 
-Mit dem Standardverhalten der leistungsorientierten Methode für das Datenverkehrsrouting soll eine Überlastung des nächstgelegenen Endpunkts und dadurch eine kaskadierende Serie von Ausfällen vermieden werden. Wenn bei einem Endpunkt ein Fehler auftritt, wird der gesamte Datenverkehr, der an diesen Endpunkt geleitet worden wäre, gleichmäßig auf die anderen Endpunkte in allen Regionen verteilt.
-
-![Leistungsorientierte Methode für das Datenverkehrsrouting mit Standardfailover][5]
+Bei Verwendung der Datenverkehrsrouting-Methode „Leistung“ werden die Endbenutzer standardmäßig an den „nächstgelegenen“ Endpunkt (im Hinblick auf die geringste Netzwerklatenz) weitergeleitet, wenn sich Ihre Endpunkte an unterschiedlichen geografischen Standorten befinden.
 
 Angenommen, Sie möchten für den Datenverkehr nach Europa, Westen, ein Failover in die Region USA, Westen, durchführen und Datenverkehr nur dann an andere Regionen weiterleiten, wenn keiner der beiden Endpunkte verfügbar ist. Diese Lösung können Sie mit einem untergeordneten Profil mit der prioritätsbasierten Methode für das Datenverkehrsrouting erstellen.
 
@@ -102,7 +97,7 @@ Die Überwachungseinstellungen in einem Traffic Manager-Profil gelten für alle 
 
 Weitere Informationen zu [Traffic Manager-Profilen](traffic-manager-overview.md)
 
-Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
+Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

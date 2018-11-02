@@ -1,6 +1,6 @@
 ---
-title: Weiterleiten von Azure Media Services-Ereignissen an einen benutzerdefinierten Webendpunkt | Microsoft-Dokumentation
-description: Verwenden Sie Azure Event Grid zum Abonnieren des Ereignisses einer Media Services-Auftragsstatusänderung.
+title: Überwachen von Azure Media Services-Ereignissen mit Event Grid über die CLI | Microsoft-Dokumentation
+description: In diesem Artikel wird gezeigt, wie Sie ein Abonnement für Event Grid abschließen können, um Azure Media Services-Ereignisse zu überwachen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,22 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: e7268a066acf41c454de0c66aa21603199d85a60
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8145b4eb3c39511eb9cd0ed052c36b8338191d4f
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034840"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389495"
 ---
-# <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Weiterleiten von Azure Media Services-Ereignissen an einen benutzerdefinierten Webendpunkt mithilfe der CLI
+# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Erstellen und Überwachen von Media Services-Ereignissen mit Event Grid über die Azure CLI
 
-Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel abonnieren Sie Azure Media Services-Ereignisse zur Auftragsstatusänderung mithilfe der Azure CLI und lösen das Ereignis zum Anzeigen der Ergebnisse aus. 
-
-Ereignisse werden üblicherweise an einen Endpunkt gesendet, der auf das Ereignis reagiert (beispielsweise ein Webhook oder eine Azure-Funktion). In diesem Tutorial erfahren Sie, wie Sie einen Webhook erstellen und festlegen.
-
-Nach Abschluss der Schritte in diesem Artikel sehen Sie, dass die Ereignisdaten an einen Endpunkt gesendet wurden.
+Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel verwenden Sie die Azure CLI, um Ereignisse für Ihr Azure Media Services-Konto zu abonnieren. Anschließend lösen Sie Ereignisse aus, um das Ergebnis anzuzeigen. Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. In diesem Artikel senden Sie Ereignisse an eine Web-App, die die Nachrichten sammelt und anzeigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,147 +31,88 @@ Nach Abschluss der Schritte in diesem Artikel sehen Sie, dass die Ereignisdaten 
 
 - Installieren Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Für diesen Artikel ist die Azure CLI-Version 2.0 oder höher erforderlich. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Sie können ebenso [Azure Cloud Shell](https://shell.azure.com/bash) verwenden.
 
-## <a name="enable-event-grid-resource-provider"></a>Aktivieren des Event Grid-Ressourcenanbieters
+## <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
 
-Als Erstes müssen Sie sicherstellen, dass Sie den Event Grid-Ressourcenanbieter in Ihrem Abonnement aktiviert haben. 
+Vor dem Abonnieren der Ereignisse für das Media Services-Konto erstellen wir zunächst den Endpunkt für die Ereignisnachricht. Der Endpunkt führt in der Regel Aktionen auf der Grundlage der Ereignisdaten aus. In diesem Artikel stellen Sie eine [vorgefertigte Web-App](https://github.com/Azure-Samples/azure-event-grid-viewer) bereit, die die Ereignismeldungen anzeigt. Die bereitgestellte Lösung umfasst einen App Service-Plan, eine App Service-Web-App und Quellcode von GitHub.
 
-Führen Sie im **Azure**-Portal folgende Schritte aus:
+1. Wählen Sie **Deploy to Azure** (In Azure bereitstellen), um die Lösung für Ihr Abonnement bereitzustellen. Geben Sie im Azure-Portal Werte für die Parameter an.
 
-1. Wechseln Sie zu „Abonnements“.
-2. Wählen Sie Ihr Abonnement aus.
-3. Klicken Sie unter „Einstellungen“ auf „Ressourcenanbieter“.
-4. Suchen Sie nach „Event Grid“.
-5. Stellen Sie sicher, dass Event Grid registriert ist. Falls nicht, klicken Sie auf die Schaltfläche **Registrieren**.  
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-## <a name="create-a-generic-azure-function-webhook"></a>Erstellen eines generischen Azure Function-Webhooks 
+1. Die Bereitstellung kann einige Minuten dauern. Nach erfolgreichem Abschluss der Bereitstellung können Sie Ihre Web-App anzeigen und sich vergewissern, dass sie ausgeführt wird. Navigieren Sie hierzu in einem Webbrowser zu `https://<your-site-name>.azurewebsites.net`.
 
-### <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
+Wenn Sie zur Seite „Azure Event Grid Viewer“ wechseln, werden Sie erkennen, dass sie noch nicht über Ereignisse verfügt.
+   
+[!INCLUDE [event-grid-register-provider-portal.md](../../../includes/event-grid-register-provider-portal.md)]
 
-Bevor Sie den Even Grid-Artikel abonnieren, erstellen Sie einen Endpunkt, der die Nachrichten sammelt, damit Sie sie anzeigen können.
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Erstellen Sie eine Funktion, die durch einen generischen Webhook ausgelöst wird, wie im Artikel [Generischer Webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function) beschrieben. In diesem Tutorial wird **C#**-Code verwendet.
+Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an, und starten Sie **CloudShell**, um CLI-Befehle auszuführen, wie in den nächsten Schritten gezeigt.
 
-Sobald der Webhook erstellt ist, kopieren Sie die URL, indem Sie oben im **Azure**-Portalfenster auf den Link *Funktions-URL abrufen* klicken. Der letzte Teil der URL ist nicht erforderlich (*&clientID=default*).
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-![Erstellen eines Webhooks](./media/job-state-events-cli-how-to/generic_webhook_files.png)
+Wenn Sie die CLI lokal installieren und verwenden möchten, erfordert dieses Thema die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
-### <a name="validate-the-webhook"></a>Validieren des Webhooks
+## <a name="set-the-azure-subscription"></a>Einrichten des Azure-Abonnements
 
-Wenn Sie Ihren eigenen Webhook-Endpunkt bei Event Grid registrieren, wird Ihnen eine POST-Anforderung mit einem einfachen Validierungscode gesendet, damit Sie den Besitz des Endpunkts nachweisen können. Ihre App muss durch Rückgabe desselben Validierungscodes reagieren. Event Grid übermittelt keine Ereignisse an Webhook-Endpunkte, welche die Validierung nicht erfolgreich abgeschlossen haben. Weitere Informationen finden Sie unter [Event Grid – Sicherheit und Authentifizierung](https://docs.microsoft.com/azure/event-grid/security-authentication). Dieser Abschnitt legt zwei Teile fest, die für die Validierung definiert werden müssen.
+Geben Sie im folgenden Befehle die ID des Azure-Abonnements an, das Sie für das Media Services-Konto verwenden möchten. Sie können eine Liste der Abonnements anzeigen, auf die Sie Zugriff haben, indem Sie zu [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) navigieren.
 
-#### <a name="update-the-source-code"></a>Aktualisieren des Quellcodes
-
-Nachdem Sie den Webhook erstellt haben, wird im Browser die Datei **run.csx** angezeigt. Ersetzen Sie den Standardcode durch den folgenden Code. 
-
-```csharp
-#r "Newtonsoft.Json"
-
-using System;
-using System.Net;
-using Newtonsoft.Json;
-
-public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
-{
-    log.Info($"Webhook was triggered!");
-
-    string jsonContent = await req.Content.ReadAsStringAsync();
-    string eventGridValidation = 
-        req.Headers.FirstOrDefault( x => x.Key == "Aeg-Event-Type" ).Value?.FirstOrDefault();
-
-    dynamic eventData = JsonConvert.DeserializeObject(jsonContent);
-
-    log.Info($"event: {eventData}");
-
-    if (eventGridValidation != String.Empty)
-    {
-        if (eventData[0].data.validationCode !=String.Empty && eventData[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent")
-        {
-            return req.CreateResponse(HttpStatusCode.OK, new 
-            {
-                validationResponse = eventData[0].data.validationCode
-            });
-        }
-    }
-    
-    log.Info(jsonContent);
-
-    return req.CreateResponse(HttpStatusCode.OK);
-}
+```azurecli-interactive
+az account set --subscription mySubscriptionId
 ```
+ 
+[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
-#### <a name="update-test-request-body"></a>Aktualisieren des Testanforderungstexts
+## <a name="subscribe-to-media-services-events"></a>Abonnieren von Media Services-Ereignissen
 
-Auf der rechten Seite des **Azure**-Portalfensters sehen Sie zwei Registerkarten: **Dateien anzeigen** und **Testen**. Wählen Sie die Registerkarte **Testen** aus. Geben Sie im Feld **Anforderungstext** folgenden JSON-Code ein. Sie können ihn unverändert einfügen, da keine Werte geändert werden müssen.
+Sie abonnieren einen Artikel, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten. Im folgenden Beispiel wird das von Ihnen erstellte Media Services-Konto abonniert. Außerdem wird die URL der von Ihnen erstellten Website als Endpunkt für Ereignisbenachrichtigungen übergeben. 
 
-```json
-[{
-  "id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
-  "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "subject": "",
-  "data": {
-    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
-  },
-  "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
-  "eventTime": "2017-08-06T22:09:30.740323Z"
-}
-]
-```
+Ersetzen Sie `<event_subscription_name>` durch einen eindeutigen Namen für Ihr Ereignisabonnement. Verwenden Sie für `<resource_group_name>` und `<ams_account_name>` die Werte, die Sie beim Erstellen des Media Services-Kontos verwendet haben. Geben Sie für den `<endpoint_URL>` die URL Ihrer Web-App an, und fügen Sie `api/updates` der URL der Startseite hinzu. Durch die Angabe des Endpunkts beim Abonnieren übernimmt Event Grid die Weiterleitung von Ereignissen an diesen Endpunkt. 
 
-Klicken Sie oben im Fenster auf **Speichern und ausführen**.
+1. Abrufen der Ressourcen-ID
 
-![Anforderungstext](./media/job-state-events-cli-how-to/generic_webhook_test.png)
+    ```azurecli-interactive
+    amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
+    ```
 
-## <a name="register-for-the-event-grid-subscription"></a>Registrieren für das Event Grid-Abonnement 
+    Beispiel: 
 
-Sie abonnieren einen Artikel, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten. Im folgenden Beispiel wird das von Ihnen erstellte Media Services-Konto abonniert. Außerdem wird die URL des von Ihnen erstellten Azure Function-Webhooks als Endpunkt für Ereignisbenachrichtigungen übergeben. 
+    ```
+    amsResourceId=$(az ams account show --name amsaccount --resource-group amsResourceGroup --query id --output tsv)
+    ```
 
-Ersetzen Sie `<event_subscription_name>` durch einen eindeutigen Namen für Ihr Ereignisabonnement. Verwenden Sie für `<resource_group_name>` und `<ams_account_name>` die Werte, die Sie beim Erstellen des Media Services-Kontos verwendet haben. Fügen Sie für `<endpoint_URL>` Ihre Endpunkt-URL ein. Entfernen Sie *&clientID=default* aus der URL. Durch die Angabe eines Endpunkts beim Abonnieren übernimmt Event Grid die Weiterleitung von Ereignissen an diesen Endpunkt. 
+2. Abonnieren der Ereignisse
 
-```cli
-amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
+    ```azurecli-interactive
+    az eventgrid event-subscription create \
+    --resource-id $amsResourceId \
+    --name <event_subscription_name> \
+    --endpoint <endpoint_URL>
+    ```
 
-az eventgrid event-subscription create \
-  --resource-id $amsResourceId \
-  --name <event_subscription_name> \
-  --endpoint <endpoint_URL>
-```
+    Beispiel: 
 
-Der ID-Wert der Media Services-Kontoressource sieht etwa wie folgt aus:
+    ```
+    az eventgrid event-subscription create --resource-id $amsResourceId --name amsTestEventSubscription --endpoint https://amstesteventgrid.azurewebsites.net/api/updates/
+    ```    
 
-```
-/subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amstestaccount
-```
+    > [!TIP]
+    > Möglicherweise erhalten Sie eine Warnung über einen Überprüfungshandshake. Warten Sie ein paar Minuten und der Handshake sollte bestätigt werden.
 
-## <a name="test-the-events"></a>Testen der Ereignisse
+Anschließend werden Ereignisse ausgelöst, um zu sehen, wie Event Grid die Nachricht an Ihren Endpunkt weiterleitet.
 
-Führen Sie einen Codierungsauftrag aus, z.B. wie im Schnellstart [Streamen von Videodateien](stream-files-dotnet-quickstart.md) beschrieben.
+## <a name="send-an-event-to-your-endpoint"></a>Senden eines Ereignisses an Ihren Endpunkt
 
-Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpunkt gesendet, den Sie beim Abonnieren konfiguriert haben. Navigieren Sie zum zuvor erstellten Webhook. Klicken Sie auf **Überwachen** und **Aktualisieren**. Die Statusänderungsereignisse des Auftrags werden angezeigt: „Queued“ (In Warteschlange), „Scheduled“ (Geplant), „Processing“ (Wird verarbeitet), „Finished“ (Abgeschlossen), „Error“ (Fehler), „Canceled“ (Abgebrochen), „Canceling“ (Wird abgebrochen).  Weitere Informationen finden Sie unter [Media Services-Ereignisschemas](media-services-event-schemas.md).
+Sie können Ereignisse für das Media Services-Konto auslösen, indem Sie einen Codierungsauftrag ausführen. Sie können [dieser Schnellstartanleitung](stream-files-dotnet-quickstart.md) folgen, um eine Datei zu codieren und mit dem Senden von Ereignissen zu beginnen. 
 
-Das folgende Beispiel zeigt das Schema des JobStateChange-Ereignisses:
+Zeigen Sie wieder Ihre Web-App an. Wie Sie sehen, wurde ein Abonnementüberprüfungsereignis an sie gesendet. Event Grid sendet das Überprüfungsereignis, damit der Endpunkt bestätigen kann, dass er Ereignisdaten empfangen möchte. Der Endpunkt muss `validationResponse` auf `validationCode` festlegen. Weitere Informationen finden Sie unter [Event Grid – Sicherheit und Authentifizierung](../../event-grid/security-authentication.md). Sie können den Web-App-Code anzeigen, um zu sehen, wie das Abonnement überprüft wird.
 
-```json
-[{
-  "topic": "/subscriptions/<subscription id>/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/<job id>",
-  "eventType": "Microsoft.Media.JobStateChange",
-  "eventTime": "2018-04-20T21:17:26.2534881",
-  "id": "<id>",
-  "data": {
-    "previousState": "Scheduled",
-    "state": "Processing"
-  },
-  "dataVersion": "1.0",
-  "metadataVersion": "1"
-}]
-```
+> [!TIP]
+> Klicken Sie auf das Augensymbol, um die Ereignisdaten zu erweitern. Aktualisieren Sie die Seite nicht, wenn Sie alle Ereignisse anzeigen möchten.
 
-![Testen von Ereignissen](./media/job-state-events-cli-how-to/test_events.png)
+![Anzeigen des Abonnementereignisses](./media/monitor-events-portal/view-subscription-event.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Reagieren auf Ereignisse](reacting-to-media-services-events.md)
+[Hochladen, Codieren und Streamen](stream-files-tutorial-with-api.md)
 
-## <a name="see-also"></a>Weitere Informationen
-
-[Azure-CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

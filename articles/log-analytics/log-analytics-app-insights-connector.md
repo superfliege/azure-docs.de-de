@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4157b812fbb17b524a21814f41e0e4ec43e39e70
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 7c6d91da0634e7f847af01d1c057607ab095cdf6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042086"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408207"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-Connector-Verwaltungslösung (Vorschau)
 
@@ -58,8 +58,8 @@ Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten fü
 ## <a name="configuration"></a>Konfiguration
 
 1. Aktivieren Sie die Lösung Azure-Web-Apps-Analyse in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) oder mit den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Schritten.
-2. Klicken Sie im OMS-Portal auf **Einstellungen** &gt; **Daten** &gt; **Application Insights**.
-3. Wählen Sie unter **Abonnement auswählen** ein Abonnement aus, das über Application Insights-Ressourcen verfügt, und wählen Sie dann unter **Anwendungsname** mindestens eine Anwendung aus.
+2. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Alle Dienste**, um Application Insights zu öffnen. Suchen Sie dann nach „Application Insights“. 
+3. Wählen Sie unter **Abonnements** ein Abonnement aus, das über Application Insights-Ressourcen verfügt, und wählen Sie dann unter **Name** mindestens eine Anwendung aus.
 4. Klicken Sie auf **Speichern**.
 
 Innerhalb von ca. 30 Minuten sind die Daten verfügbar, und die Application Insights-Kachel wird mit Daten aktualisiert. Dies ist in der folgenden Abbildung dargestellt:
@@ -133,7 +133,7 @@ Komponenten der Perspektive werden je nach Suchabfrage aktualisiert. Dies bedeut
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Pivotieren zu einer App im Azure-Portal
 
-Die Blätter des Application Insights-Connectors sind so konzipiert, dass Sie zur ausgewählten Application Insights-App pivotieren können, *wenn Sie das OMS-Portal verwenden*. Sie können die Lösung als allgemeine Überwachungsplattform zur Unterstützung der Problembehandlung einer App verwenden. Wenn Sie in einer Ihrer verbundenen Anwendungen ein potenzielles Problem erkennen, können Sie entweder in der Log Analytics-Suche einen Drilldown dafür durchführen oder direkt zur Application Insights-App pivotieren.
+Die Blätter des Application Insights-Connectors sind so konzipiert, dass Sie zur ausgewählten Application Insights-App pivotieren können, *wenn Sie das Azure-Portal verwenden*. Sie können die Lösung als allgemeine Überwachungsplattform zur Unterstützung der Problembehandlung einer App verwenden. Wenn Sie in einer Ihrer verbundenen Anwendungen ein potenzielles Problem erkennen, können Sie entweder in der Log Analytics-Suche einen Drilldown dafür durchführen oder direkt zur Application Insights-App pivotieren.
 
 Klicken Sie zum Pivotieren auf die Auslassungspunkte (**…**) am Ende einer Zeile, und wählen Sie die Option **In Application Insights öffnen**.
 

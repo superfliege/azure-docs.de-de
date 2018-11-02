@@ -1,21 +1,21 @@
 ---
 title: Indizieren einer Azure Cosmos DB-Datenquelle für Azure Search | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Indexer mit einer Azure Cosmos DB-Datenquelle erstellen.
-author: chaosrealm
-manager: jlembicz
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 05/29/2018
-ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: 8206c076f9e89753adb16854a7d981c0f80c4a3a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c74563ba98835403f12a4df048d7ff358014b826
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640335"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406669"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Verbinden von Cosmos DB mit Azure Search mithilfe von Indexern
 
@@ -97,7 +97,8 @@ Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Fe
 * **type**: Muss `documentdb` lauten.
 * **Anmeldeinformationen**:
   
-  * **ConnectionString**: Erforderlich. Geben Sie die Verbindungsinformationen zu Ihrer Azure Cosmos DB-Datenbank im folgenden Format an: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`. Fügen Sie für MongoDB-Sammlungen **ApiKind=MongoDb** der Verbindungszeichenfolge hinzu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`. 
+  * **ConnectionString**: Erforderlich. Geben Sie die Verbindungsinformationen zu Ihrer Azure Cosmos DB-Datenbank im folgenden Format an: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`. Fügen Sie für MongoDB-Sammlungen **ApiKind=MongoDb** der Verbindungszeichenfolge hinzu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`.
+  Vermeiden Sie Portnummern in der Endpunkt-URL. Wenn Sie die Portnummer einfügen, kann Azure Search Ihre Azure Cosmos DB-Datenbank nicht indizieren.
 * **Container**:
   
   * **Name**: Erforderlich. Geben Sie die ID der zu indizierenden Datenbanksammlung an.

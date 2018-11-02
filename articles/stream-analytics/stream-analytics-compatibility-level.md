@@ -7,13 +7,13 @@ ms.author: jasonh
 manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/03/2018
-ms.openlocfilehash: 136b21f026d208c09b50dfa8601de692e518774e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 10/15/2018
+ms.openlocfilehash: 661aa85a200d4eafa1c521b06f6e12378d61e93e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699109"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343584"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
  
@@ -68,5 +68,5 @@ Beim Kompatibilitätsgrad 1.1 wurden die folgenden grundlegenden Änderungen ein
   * **Aktuelle Version:** Es erfolgt keine automatische Typumwandlung nach oben mehr für Zeichenfolgenwerte mit Informationen zu Datum/Uhrzeit/Zeitzone in den Typ DateTime. Daher werden die Zeitzoneninformationen beibehalten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Leitfaden zur Behandlung von Problemen bei Azure Stream Analytics](stream-analytics-troubleshooting-guide.md)
+* [Problembehandlung von Azure Stream Analytics-Eingaben](stream-analytics-troubleshoot-input.md)
 * [Stream Analytics-Blatt „Ressourcenintegrität“](stream-analytics-resource-health.md)

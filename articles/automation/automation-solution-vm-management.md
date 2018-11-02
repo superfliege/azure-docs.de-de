@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/1/2018
+ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2f990f22d762c5f95d3274b740caf30691ded90e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 642fc66bff763105e9d5463886474703a9a50781
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409843"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376702"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -33,6 +33,8 @@ Die aktuelle Lösung hat die folgenden Einschränkungen:
 
 > [!NOTE]
 > Wenn Sie die Lösung für klassische virtuelle Computer verwenden, werden alle Ihre VMs nacheinander nach Clouddienst verarbeitet. Die parallele Auftragsverarbeitung wird für verschiedene Clouddienste weiterhin unterstützt.
+>
+> Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn die Lösung zum Starten/Beenden ausgeführt wird, erhalten Sie möglicherweise Fehler, da sie Cmdlets zur Verwaltung klassischer Ressourcen enthält. Weitere Informationen zu CSP finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,7 +44,7 @@ Für die Runbooks für diese Lösung wird ein [ausführendes Azure-Konto](automa
 
 Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit dem Automation-Konto hinzuzufügen und anschließend die Variablen zum Anpassen der Lösung zu konfigurieren.
 
-1. Wählen Sie in einem Automation-Konto unter **Zugehörige Ressourcen** **VM starten/beenden** aus. Dort können Sie **Weitere Informationen anzeigen und Lösung aktivieren** anklicken. Wenn Sie bereits eine Lösung zum Starten/Beenden von VMs installiert haben, können Sie auf **Lösung verwalten** klicken, um zu einer Liste der installierten Lösungen zu gelangen und diese dort auszuwählen.
+1. Wählen Sie in einem Automation-Konto unter **Zugehörige Ressourcen** die Option **VM starten/beenden** aus. Dort können Sie **Weitere Informationen anzeigen und Lösung aktivieren** anklicken. Wenn Sie bereits eine Lösung zum Starten/Beenden virtueller Computer bereitgestellt haben, können Sie diese auswählen, indem Sie auf **Lösung verwalten** klicken und sie in der Liste auswählen.
 
    ![Aktivieren über ein Automation-Konto](./media/automation-solution-vm-management/enable-from-automation-account.png)
 
@@ -64,7 +66,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    - Wählen Sie einen **Tarif**aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Log Analytics wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert und der Tarif „Pro GB“ ist die einzige Option.
 
 5. Klicken Sie nach dem Bereitstellen der erforderlichen Informationen auf der Seite **Log Analytics-Arbeitsbereich** auf **Erstellen**. Sie können den Status unter **Benachrichtigungen** über das Menü nachverfolgen, und nach Abschluss des Vorgangs gelangen Sie zurück zur Seite **Lösung hinzufügen**.
-6. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Automation-Konto** aus. Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, können Sie ein neues Automation- Konto erstellen, das diesem zugeordnet wird, oder ein vorhandenes Automation-Konto auswählen, das nicht bereits mit einem Log Analystics-Arbeitsbereich verknüpft ist. Wählen Sie ein vorhandenes Automation-Konto aus, oder klicken Sie auf **Automation-Konto erstellen**, und geben Sie auf der Seite **Automation-Konto hinzufügen** Folgendes an:
+6. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Automation-Konto** aus. Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, können Sie ein neues Automation-Konto erstellen, das diesem zugeordnet wird, oder ein vorhandenes Automation-Konto auswählen, das nicht bereits mit einem Log Analytics-Arbeitsbereich verknüpft ist. Wählen Sie ein vorhandenes Automation-Konto aus, oder klicken Sie auf **Automation-Konto erstellen**, und geben Sie auf der Seite **Automation-Konto hinzufügen** Folgendes an:
    - Geben Sie im Feld **Name** den Namen des Automation-Kontos ein.
 
     Alle anderen Optionen werden basierend auf dem Log Analytics-Arbeitsbereich automatisch aufgefüllt. Diese Optionen können nicht geändert werden. Ein ausführendes Azure-Konto ist die Standardmethode für die Authentifizierung von Runbooks in dieser Lösung. Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und das Automation-Konto wird erstellt. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
@@ -74,9 +76,9 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    ![Seite „Parameter“ für die Lösung](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
    Hier erhalten Sie folgende Aufforderung:
-   - Geben Sie einen Wert für die Zielressourcengruppennamen(**Target ResourceGroup Names**) ein. Dies sind Namen von Ressourcengruppen mit VMs, die mit dieser Lösung verwaltet werden. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Die Verwendung eines Platzhalterzeichens wird unterstützt, wenn Sie einen Vorgang für VMs in allen Ressourcengruppen des Abonnements durchführen möchten. Dieser Wert wird in den Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames** gespeichert.
-   - Geben Sie die **VM Exclude List (string)** (VM-Ausschlussliste (Zeichenfolge)) an. Dies ist der Name von einem oder mehreren virtuellen Computern der Zielressourcengruppe. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Platzhalter können verwendet werden. Dieser Wert wird in der Variablen **External_ExcludeVMNames** gespeichert.
-   - Wählen Sie einen **Zeitplan** aus. Dies ist ein wiederkehrendes Datum und eine Uhrzeit zum Starten und Beenden der VMs in den Zielressourcengruppen. Der Zeitplan ist standardmäßig für den Zeitpunkt 30 Minuten nach der aktuellen Uhrzeit konfiguriert. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedule) weiter.
+   - Geben Sie einen Wert für die Zielressourcengruppennamen(**Target ResourceGroup Names**) ein. Dies sind Werte von Ressourcengruppen mit virtuellen Computern, die mit dieser Lösung verwaltet werden. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Die Verwendung eines Platzhalterzeichens wird unterstützt, wenn Sie einen Vorgang für VMs in allen Ressourcengruppen des Abonnements durchführen möchten. Dieser Wert wird in den Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames** gespeichert.
+   - Geben Sie die **VM Exclude List (string)** (VM-Ausschlussliste (Zeichenfolge)) an. Dies ist der Wert von einem oder mehreren virtuellen Computern der Zielressourcengruppe. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Platzhalter können verwendet werden. Dieser Wert wird in der Variablen **External_ExcludeVMNames** gespeichert.
+   - Wählen Sie einen **Zeitplan** aus. Dieser Wert ist ein wiederkehrendes Datum und eine Uhrzeit zum Starten und Beenden der virtuellen Computer in den Zielressourcengruppen. Der Zeitplan ist standardmäßig für den Zeitpunkt 30 Minuten nach der aktuellen Uhrzeit konfiguriert. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedule) weiter.
    - Um **E-Mail-Benachrichtigungen** von einer Aktionsgruppe zu empfangen, übernehmen Sie den Standardwert **Ja**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie **Nein** auswählen, sich aber zu einem späteren Zeitpunkt entscheiden, dass Sie E-Mail-Benachrichtigungen erhalten möchten, können Sie die erstellte [Aktionsgruppe](../monitoring-and-diagnostics/monitoring-action-groups.md) mit gültigen E-Mail-Adressen, die durch Komma getrennt sind, aktualisieren. Außerdem müssen Sie die folgenden Warnungsregeln aktivieren:
 
      - AutoStop_VM_Child
@@ -94,7 +96,7 @@ Die Lösung umfasst drei unterschiedliche Szenarien. Es handelt sich um folgende
 
 ### <a name="scenario-1-startstop-vms-on-a-schedule"></a>Szenario 1: Starten/Beenden von VMs nach Zeitplan
 
-Dies ist die Standardkonfiguration bei der ersten Bereitstellung der Lösung. Beispielsweise können Sie sie so konfigurieren, dass alle VMs in einem Abonnement zum Feierabend beendet und am Morgen wieder gestartet werden, wenn Sie wieder ins Büro kommen. Wenn Sie die Zeitpläne **Scheduled-StartVM** und **Scheduled-StopVM** während der Bereitstellung konfigurieren, werden Ziel-VMs nach diesen Zeitplänen gestartet und beendet. Die Lösung kann auch so konfiguriert werden, dass VMs nur beendet werden. Informationen zum Konfigurieren eines benutzerdefinierten Zeitplans finden Sie unter [Ändern der Zeitpläne für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedules).
+Dieses Szenario ist die Standardkonfiguration bei der ersten Bereitstellung der Lösung. Beispielsweise können Sie sie so konfigurieren, dass alle VMs in einem Abonnement zum Feierabend beendet und am Morgen wieder gestartet werden, wenn Sie wieder ins Büro kommen. Wenn Sie die Zeitpläne **Scheduled-StartVM** und **Scheduled-StopVM** während der Bereitstellung konfigurieren, werden Ziel-VMs nach diesen Zeitplänen gestartet und beendet. Die Lösung kann auch so konfiguriert werden, dass VMs nur beendet werden. Informationen zum Konfigurieren eines benutzerdefinierten Zeitplans finden Sie unter [Ändern der Zeitpläne für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedules).
 
 > [!NOTE]
 > Die Zeitzone entspricht Ihrer aktuellen Zeitzone zum Zeitpunkt der Konfiguration des Parameters für den geplanten Zeitpunkt. Sie wird in Azure Automation aber im UTC-Format gespeichert. Sie müssen keine Zeitzonenkonvertierung durchführen, da dies während der Bereitstellung verarbeitet wird.
@@ -112,7 +114,7 @@ Sie können die Aktion entweder für ein Abonnement und eine Ressourcengruppe od
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Festlegen der Aktionen zum Starten und Beenden über eine VM-Liste
 
 1. Führen Sie das Runbook **ScheduledStartStop_Parent** aus. Legen Sie dabei den Parameter ACTION auf **start** fest, fügen Sie eine durch Trennzeichen getrennte Liste von VMs im Parameter *VMList* hinzu, und legen Sie den Parameter WHATIF auf **True** fest. Zeigen Sie eine Vorschau für die Änderungen an.
-1. Konfigurieren Sie den Parameter **External_ExcludeVMNames** mit einer durch Kommas getrennten Liste von VMs (VM1,VM2,VM3).
+1. Konfigurieren Sie den Parameter **External_ExcludeVMNames** mit einer durch Kommas getrennten Liste von VMs (VM1, VM2, VM3).
 1. In diesem Szenario werden die Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupnames** nicht berücksichtigt. Für dieses Szenario müssen Sie Ihren eigenen Automation-Zeitplan erstellen. Ausführliche Informationen finden Sie unter [Planen eines Runbooks in Azure Automation](../automation/automation-schedules.md).
 
 > [!NOTE]
@@ -120,20 +122,20 @@ Sie können die Aktion entweder für ein Abonnement und eine Ressourcengruppe od
 
 ### <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a>Szenario 2: Starten/Beenden von VMs der Reihe nach mithilfe von Tags
 
-In einer Umgebung mit mehreren Komponenten auf mehreren VMs, die eine verteilte Workload unterstützen, spielt die Reihenfolge, in der Komponenten nacheinander gestartet und beendet werden, eine wichtige Rolle. Führen Sie hierzu die folgenden Schritte aus:
+In einer Umgebung mit mehreren Komponenten auf mehreren VMs, die eine verteilte Workload unterstützen, spielt die Reihenfolge, in der Komponenten nacheinander gestartet und beendet werden, eine wichtige Rolle. Führen Sie zum Erreichen dieses Szenarios die folgenden Schritte aus:
 
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Festlegen der Aktionen zum Starten und Beenden für ein Abonnement und eine Ressourcengruppe
 
-1. Fügen Sie ein **SequenceStart**- und ein **SequenceStop**-Tag mit einer positiven ganzen Zahl den VMs hinzu, die in den Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames** als Ziel angegeben sind. Die Aktionen zum Starten und Beenden werden in aufsteigender Reihenfolge durchgeführt. Informationen zum Markieren von VMs finden Sie unter [Markieren eines virtuellen Windows-Computers in Azure](../virtual-machines/windows/tag.md) und [Markieren eines virtuellen Linux-Computers in Azure](../virtual-machines/linux/tag.md).
+1. Fügen Sie ein **sequencestart**- und ein **sequencestop**-Tag mit einer positiven ganzen Zahl den virtuellen Computern hinzu, die in den Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames** als Ziel angegeben sind. Die Aktionen zum Starten und Beenden werden in aufsteigender Reihenfolge durchgeführt. Informationen zum Markieren von VMs finden Sie unter [Markieren eines virtuellen Windows-Computers in Azure](../virtual-machines/windows/tag.md) und [Markieren eines virtuellen Linux-Computers in Azure](../virtual-machines/linux/tag.md).
 1. Ändern Sie die Zeitpläne **Sequenced-StartVM** und **Sequenced-StopVM** in das Datum und den Zeitpunkt, die Ihren Anforderungen entsprechen, und aktivieren Sie die Zeitpläne.
 1. Führen Sie das Runbook **SequencedStartStop_Parent** aus. Legen Sie dabei den Parameter ACTION auf **start** und den Parameter WHATIF auf **True** fest, um für die Änderungen eine Vorschau anzuzeigen.
 1. Zeigen Sie für die Aktion eine Vorschau an, und nehmen Sie alle erforderlichen Änderungen vor, bevor Sie die Implementierung für Produktions-VMs durchführen. Nach Abschluss des Vorgangs können Sie das Runbook manuell ausführen, wobei Sie den Parameter auf **False** festlegen, oder Sie können die Automation-Zeitpläne **Sequenced-StartVM** und **Sequenced-StopVM** entsprechend Ihrem vorgegebenen Zeitplan automatisch ausführen.
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Festlegen der Aktionen zum Starten und Beenden über eine VM-Liste
 
-1. Fügen Sie VMs, die der Variablen **VMList** hinzugefügt werden sollen, ein **SequenceStart**- und ein **SequenceStop**-Tag mit einem positiven Integerwert hinzu. 
+1. Fügen Sie virtuellen Computern, die der Variablen **VMList** hinzugefügt werden sollen, ein **sequencestart**- und ein **sequencestop**-Tag mit einem positiven Integerwert hinzu. 
 1. Führen Sie das Runbook **SequencedStartStop_Parent** aus. Legen Sie dabei den Parameter ACTION auf **start** fest, fügen Sie eine durch Trennzeichen getrennte Liste von VMs im Parameter *VMList* hinzu, und legen Sie den Parameter WHATIF auf **True** fest. Zeigen Sie eine Vorschau für die Änderungen an.
-1. Konfigurieren Sie den Parameter **External_ExcludeVMNames** mit einer durch Kommas getrennten Liste von VMs (VM1,VM2,VM3).
+1. Konfigurieren Sie den Parameter **External_ExcludeVMNames** mit einer durch Kommas getrennten Liste von VMs (VM1, VM2, VM3).
 1. In diesem Szenario werden die Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupnames** nicht berücksichtigt. Für dieses Szenario müssen Sie Ihren eigenen Automation-Zeitplan erstellen. Ausführliche Informationen finden Sie unter [Planen eines Runbooks in Azure Automation](../automation/automation-schedules.md).
 1. Zeigen Sie für die Aktion eine Vorschau an, und nehmen Sie alle erforderlichen Änderungen vor, bevor Sie die Implementierung für Produktions-VMs durchführen. Nach Abschluss des Vorgangs können Sie das monitoring-and-diagnostics/monitoring-action-groups-Runbook manuell ausführen, wobei Sie den Parameter auf **False** festlegen, oder Sie können die Automation-Zeitpläne **Sequenced-StartVM** und **Sequenced-StopVM** entsprechend Ihrem vorgegebenen Zeitplan automatisch ausführen.
 
@@ -141,7 +143,7 @@ In einer Umgebung mit mehreren Komponenten auf mehreren VMs, die eine verteilte 
 
 Diese Lösung kann einen Beitrag zur Verwaltung der Kosten für die Ausführung von VMs in Ihrem Abonnement leisten, indem Azure-VMs, die außerhalb der Spitzenzeiten (z.B. nach Geschäftsschluss) nicht verwendet werden, ausgewertet und automatisch beendet werden, wenn die Prozessorauslastung unter x% liegt.
 
-Standardmäßig ist die Lösung so vorkonfiguriert, dass die Metrik zur CPU-Auslastung in Prozent ausgewertet wird, um zu ermitteln, ob die durchschnittliche Auslastung kleiner oder gleich 5% ist. Dies wird mit den folgenden Variablen gesteuert und kann geändert werden, wenn die Standardwerte nicht Ihren Anforderungen entsprechen:
+Standardmäßig ist die Lösung so vorkonfiguriert, dass die Metrik zur CPU-Auslastung in Prozent ausgewertet wird, um zu ermitteln, ob die durchschnittliche Auslastung kleiner oder gleich 5% ist. Dieses Szenario wird mit den folgenden Variablen gesteuert und kann geändert werden, wenn die Standardwerte nicht Ihren Anforderungen entsprechen:
 
 - External_AutoStop_MetricName
 - External_AutoStop_Threshold
@@ -159,7 +161,7 @@ Sie können die Aktion entweder für ein Abonnement und eine Ressourcengruppe od
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Festlegen der Aktionen zum Starten und Beenden über eine VM-Liste
 
 1. Führen Sie das Runbook **AutoStop_CreateAlert_Parent** aus. Legen Sie dabei den Parameter ACTION auf **start** fest, fügen Sie eine durch Trennzeichen getrennte Liste von VMs im Parameter *VMList* hinzu, und legen Sie den Parameter WHATIF auf **True** fest. Zeigen Sie eine Vorschau für die Änderungen an.
-1. Konfigurieren Sie den Parameter **External_ExcludeVMNames** mit einer durch Kommas getrennten Liste von VMs (VM1,VM2,VM3).
+1. Konfigurieren Sie den Parameter **External_ExcludeVMNames** mit einer durch Kommas getrennten Liste von VMs (VM1, VM2, VM3).
 1. In diesem Szenario werden die Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupnames** nicht berücksichtigt. Für dieses Szenario müssen Sie Ihren eigenen Automation-Zeitplan erstellen. Ausführliche Informationen finden Sie unter [Planen eines Runbooks in Azure Automation](../automation/automation-schedules.md).
 
 Nachdem Sie einen Zeitplan zum Beenden von VMs basierend auf der CPU-Auslastung erstellt haben, müssen Sie nun einen der folgenden Zeitpläne aktivieren, um sie zu starten.
@@ -173,7 +175,7 @@ Diese Lösung umfasst vorkonfigurierte Runbooks, Zeitpläne und die Integration 
 
 ### <a name="runbooks"></a>Runbooks
 
-In der folgenden Tabelle sind die mit dieser Lösung in Ihrem Automation-Konto bereitgestellten Runbooks aufgeführt. Es ist nicht ratsam, am Runbookcode Änderungen vorzunehmen. Schreiben Sie stattdessen Ihr eigenes Runbook, um neue Funktionen nutzen zu können.
+In der folgenden Tabelle sind die mit dieser Lösung in Ihrem Automation-Konto bereitgestellten Runbooks aufgeführt. Nehmen Sie am Runbookcode keine Änderungen vor. Schreiben Sie stattdessen Ihr eigenes Runbook, um neue Funktionen nutzen zu können.
 
 > [!IMPORTANT]
 > Führen Sie keine Runbooks aus, an deren Name der Zusatz „child“ angefügt ist.
@@ -183,17 +185,17 @@ Alle übergeordneten Runbooks enthalten den Parameter _WhatIf_. Bei der Festlegu
 |Runbook | Parameter | BESCHREIBUNG|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Wird über das übergeordnete Runbook aufgerufen. Dieses Runbook erstellt für das AutoStop-Szenario Warnungen pro Ressource.|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: TRUE oder FALSE  | Erstellt oder aktualisiert Azure-Warnungsregeln auf VMs im Zielabonnement oder den Zielressourcengruppen. <br> VMList: Durch Kommas getrennte Liste mit VMs. Beispiel: _vm1,vm2,vm3_.<br> *WhatIf* überprüft die Runbooklogik ohne Ausführung.|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: TRUE oder FALSE  | Erstellt oder aktualisiert Azure-Warnungsregeln auf VMs im Zielabonnement oder den Zielressourcengruppen. <br> VMList: Durch Kommas getrennte Liste mit VMs. Beispiel: _vm1, vm2, vm3_.<br> *WhatIf* überprüft die Runbooklogik ohne Ausführung.|
 |AutoStop_Disable | none | Deaktiviert AutoStop-Warnungen und den Standardzeitplan.|
 |AutoStop_StopVM_Child | WebHookData | Wird über das übergeordnete Runbook aufgerufen. Warnungsregeln rufen dieses Runbook auf, um den virtuellen Computer zu beenden.|
 |Bootstrap_Main | none | Wird einmal zum Einrichten von Bootstrapkonfigurationen wie webhookURI verwendet, auf die normalerweise nicht über Azure Resource Manager zugegriffen werden kann. Dieses Runbook wird nach der erfolgreichen Bereitstellung automatisch entfernt.|
 |ScheduledStartStop_Child | VMName <br> Aktion: Starten oder Beenden <br> ResourceGroupName | Wird über das übergeordnete Runbook aufgerufen. Führt für den geplanten Beendigungsvorgang eine Aktion zum Starten oder Beenden aus.|
-|ScheduledStartStop_Parent | Aktion: Starten oder Beenden <br>VMList <br> WhatIf: TRUE oder FALSE | Dies wirkt sich auf alle virtuellen Computer des Abonnements aus. Bearbeiten Sie **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames**, damit die Ausführung nur für diese Zielressourcengruppen erfolgt. Sie können zudem bestimmte VMs ausschließen, indem Sie die Variable **External_ExcludeVMNames** aktualisieren.<br> VMList: Durch Kommas getrennte Liste mit VMs. Beispiel: _vm1,vm2,vm3_.<br> _WhatIf_ überprüft die Runbooklogik ohne Ausführung.|
-|SequencedStartStop_Parent | Aktion: Starten oder Beenden <br> WhatIf: TRUE oder FALSE<br>VMList| Erstellen Sie auf jeder VM, für die Sie die Aktivität zum Starten/Beenden verwenden möchten, Tags mit den Namen **SequenceStart** und **SequenceStop**. Der Wert des Tags muss eine positive ganze Zahl (1, 2, 3) sein, die der Reihenfolge entspricht, in der das Starten oder Beenden durchgeführt werden soll. <br> VMList: Durch Kommas getrennte Liste mit VMs. Beispiel: _vm1,vm2,vm3_. <br> _WhatIf_ überprüft die Runbooklogik ohne Ausführung. <br> **Hinweis:** VMs müssen sich in Ressourcengruppen befinden, die in Azure Automation-Variablen als „External_Start_ResourceGroupNames“, „External_Stop_ResourceGroupNames“ und „External_ExcludeVMNames“ definiert sind. Diese müssen über die entsprechenden Tags verfügen, damit Aktionen wirksam werden.|
+|ScheduledStartStop_Parent | Aktion: Starten oder Beenden <br>VMList <br> WhatIf: TRUE oder FALSE | Diese Einstellung wirkt sich auf alle virtuellen Computer des Abonnements aus. Bearbeiten Sie **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames**, damit die Ausführung nur für diese Zielressourcengruppen erfolgt. Sie können zudem bestimmte VMs ausschließen, indem Sie die Variable **External_ExcludeVMNames** aktualisieren.<br> VMList: Durch Kommas getrennte Liste mit VMs. Beispiel: _vm1, vm2, vm3_.<br> _WhatIf_ überprüft die Runbooklogik ohne Ausführung.|
+|SequencedStartStop_Parent | Aktion: Starten oder Beenden <br> WhatIf: TRUE oder FALSE<br>VMList| Erstellen Sie auf jeder VM, für die Sie die Aktivität zum Starten/Beenden verwenden möchten, Tags mit den Namen **sequencestart** und **sequencestop**. Bei diesen Tagnamen wird zwischen Groß- und Kleinschreibung unterschieden. Der Wert des Tags muss eine positive ganze Zahl (1, 2, 3) sein, die der Reihenfolge entspricht, in der das Starten oder Beenden durchgeführt werden soll. <br> VMList: Durch Kommas getrennte Liste mit VMs. Beispiel: _vm1, vm2, vm3_. <br> _WhatIf_ überprüft die Runbooklogik ohne Ausführung. <br> **Hinweis:** VMs müssen sich in Ressourcengruppen befinden, die in Azure Automation-Variablen als „External_Start_ResourceGroupNames“, „External_Stop_ResourceGroupNames“ und „External_ExcludeVMNames“ definiert sind. Diese müssen über die entsprechenden Tags verfügen, damit Aktionen wirksam werden.|
 
 ### <a name="variables"></a>Variables
 
-In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen aufgeführt. Sie sollten nur Variablen ändern, die über das Präfix **External** verfügen. Wenn Sie Variablen mit dem Präfix **Internal** ändern, hat dies unerwünschte Auswirkungen.
+In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen aufgeführt. Ändern Sie nur Variablen, die über das Präfix **External** verfügen. Wenn Sie Variablen mit dem Präfix **Internal** ändern, hat dies unerwünschte Auswirkungen.
 
 |Variable | BESCHREIBUNG|
 |---------|------------|
@@ -215,17 +217,17 @@ In allen Szenarien müssen die Variablen **External_Start_ResourceGroupNames**, 
 
 ### <a name="schedules"></a>Zeitpläne
 
-In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten Standardzeitpläne aufgeführt. Sie können sie ändern oder Ihre eigenen benutzerdefinierten Zeitpläne erstellen. Standardmäßig sind alle deaktiviert, mit Ausnahme von **Scheduled_StartVM** und **Scheduled_StopVM**.
+In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten Standardzeitpläne aufgeführt. Sie können sie ändern oder Ihre eigenen benutzerdefinierten Zeitpläne erstellen. Standardmäßig sind alle Zeitpläne deaktiviert, mit Ausnahme von **Scheduled_StartVM** und **Scheduled_StopVM**.
 
 Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappenden Zeitplanaktionen führen kann. Am besten ermitteln Sie, welche Optimierungen Sie ausführen möchten, und nehmen dann die entsprechenden Änderungen vor. Weitere Erläuterungen finden Sie in den Beispielszenerien im Übersichtsabschnitt.
 
 |Zeitplanname | Frequency | BESCHREIBUNG|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Alle 8 Stunden | Führt das Runbook „AutoStop_CreateAlert_Parent“ alle acht Stunden aus. Hiermit werden dann die VM-basierten Werte unter „External_Start_ResourceGroupNames“, „External_Stop_ResourceGroupNames“ und „External_ExcludeVMNames“ in Azure Automation-Variablen beendet. Alternativ hierzu können Sie mithilfe des Parameters „VMList“ eine durch Kommas getrennte Liste mit VMs angeben.|
-|Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter _Stop_ jeden Tag zum angegebenen Zeitpunkt aus. Beendet automatisch alle VMs, für die die Regeln der Ressourcenvariablen erfüllt werden. Es ist ratsam, den dazugehörigen Zeitplan zu aktivieren (**Scheduled-StartVM**).|
-|Scheduled_StartVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter _Start_ jeden Tag zum angegebenen Zeitpunkt aus. Startet automatisch alle VMs, die die Regeln der entsprechenden Variablen erfüllen. Es ist ratsam, den dazugehörigen Zeitplan zu aktivieren (**Scheduled-StopVM**).|
-|Sequenced-StopVM | 01:00 Uhr (UTC), jeden Freitag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter _Stop_ jeden Freitag zum angegebenen Zeitpunkt aus. Beendet der Reihe nach (in aufsteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStop**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Es ist ratsam, den dazugehörigen Zeitplan zu aktivieren (**Sequenced-StartVM**).|
-|Sequenced-StartVM | 13:00 Uhr (UTC), jeden Montag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter _Start_ jeden Montag zum angegebenen Zeitpunkt aus. Startet der Reihe nach (in absteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStart**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Es ist ratsam, den dazugehörigen Zeitplan zu aktivieren (**Sequenced-StopVM**).|
+|Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter _Stop_ jeden Tag zum angegebenen Zeitpunkt aus. Beendet automatisch alle VMs, für die die Regeln der Ressourcenvariablen erfüllt werden. Aktivieren Sie den dazugehörigen Zeitplan (**Scheduled-StartVM**).|
+|Scheduled_StartVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter _Start_ jeden Tag zum angegebenen Zeitpunkt aus. Startet automatisch alle VMs, die die Regeln der entsprechenden Variablen erfüllen. Aktivieren Sie den dazugehörigen Zeitplan (**Scheduled-StopVM**).|
+|Sequenced-StopVM | 01:00 Uhr (UTC), jeden Freitag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter _Stop_ jeden Freitag zum angegebenen Zeitpunkt aus. Beendet der Reihe nach (in aufsteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStop**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StartVM**).|
+|Sequenced-StartVM | 13:00 Uhr (UTC), jeden Montag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter _Start_ jeden Montag zum angegebenen Zeitpunkt aus. Startet der Reihe nach (in absteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStart**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StopVM**).|
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 
@@ -279,8 +281,8 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatens
 
 |Abfragen | BESCHREIBUNG|
 |----------|----------|
-|Suchen nach Aufträgen für das Runbook „ScheduledStartStop_Parent“, die erfolgreich abgeschlossen wurden | search Category == "JobLogs" &#124; where ( RunbookName_s == "ScheduledStartStop_Parent" ) &#124; where ( ResultType == "Completed" ) &#124; summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc|
-|Suchen nach Aufträgen für das Runbook „SequencedStartStop_Parent“, die erfolgreich abgeschlossen wurden | search Category == "JobLogs" &#124; where ( RunbookName_s == "SequencedStartStop_Parent" ) &#124; where ( ResultType == "Completed" ) &#124; summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc
+|Suchen nach Aufträgen für das Runbook „ScheduledStartStop_Parent“, die erfolgreich abgeschlossen wurden | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Suchen nach Aufträgen für das Runbook „SequencedStartStop_Parent“, die erfolgreich abgeschlossen wurden | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
 
 ## <a name="viewing-the-solution"></a>Anzeigen der Lösung
 
@@ -295,6 +297,9 @@ Hier können Sie eine weiter gehende Analyse der Auftragsdatensätze durchführe
 ## <a name="configure-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
 
 Um E-Mail-Benachrichtigungen nach dem Bereitstellen der Projektmappe zu ändern, bearbeiten Sie die Aktionsgruppe, die während der Bereitstellung erstellt wurde.  
+
+> [!NOTE]
+> Abonnements in der Azure Government Cloud unterstützen die E-Mail-Funktionalität dieser Lösung nicht.
 
 Navigieren Sie im Azure-Portal zu „Überwachung“ > „Aktionsgruppen“. Wählen Sie die Aktionsgruppe mit dem Titel **StartStop_VM_Notication** aus.
 
@@ -317,10 +322,10 @@ Bei der Verwaltung der Zeitpläne für das Starten und Herunterfahren werden bei
 Die Lösung kann auch so konfiguriert werden, dass VMs zu einem bestimmten Zeitpunkt beendet werden. Gehen Sie hierzu wie folgt vor:
 
 1. Vergewissern Sie sich, dass Sie die Ressourcengruppen für die zu beendenden VMs in der Variablen **External_Start_ResourceGroupNames** hinzugefügt haben.
-1. Erstellen Sie Ihren eigenen Zeitplan für den Zeitpunkt, an dem die VMs heruntergefahren werden sollen.
-1. Navigieren Sie zum Runbook **ScheduledStartStop_Parent**, und klicken Sie auf **Zeitplan**. Dadurch können Sie den Zeitplan auswählen, den Sie im vorherigen Schritt erstellt haben.
-1. Wählen Sie **Parameter und Ausführungseinstellungen** aus, und legen Sie den Parameter ACTION auf „Stop“ fest.
-1. Klicken Sie zum Speichern der Änderungen auf **OK** .
+2. Erstellen Sie Ihren eigenen Zeitplan für den Zeitpunkt, an dem die VMs heruntergefahren werden sollen.
+3. Navigieren Sie zum Runbook **ScheduledStartStop_Parent**, und klicken Sie auf **Zeitplan**. Dadurch können Sie den Zeitplan auswählen, den Sie im vorherigen Schritt erstellt haben.
+4. Wählen Sie **Parameter und Ausführungseinstellungen** aus, und legen Sie den Parameter ACTION auf „Stop“ fest.
+5. Klicken Sie zum Speichern der Änderungen auf **OK** .
 
 ## <a name="update-the-solution"></a>Aktualisieren der Lösung
 

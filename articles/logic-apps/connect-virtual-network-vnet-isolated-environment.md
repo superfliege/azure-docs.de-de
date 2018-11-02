@@ -1,6 +1,6 @@
 ---
-title: Verbinden mit Azure Virtual Networks über Azure Logic Apps
-description: Um von Azure Logic Apps aus auf Azure Virtual Networks zuzugreifen, können Sie private, dedizierte und isolierte Integrationsdienstumgebungen erstellen, die Logik-Apps und andere Ressourcen vom öffentlichen oder „globalen“ Azure getrennt halten.
+title: Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps über eine Integrationsdienstumgebung (ISE)
+description: Erstellen Sie eine Integrationsdienstumgebung (Integration Service Environment, ISE), damit Logik-Apps und Integrationskonten auf virtuelle Azure-Netzwerke zugreifen und dabei trotzdem privat und vom öffentlichen oder globalen Azure-Dienst isoliert bleiben können.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,23 +9,21 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/25/2018
-ms.openlocfilehash: 354c31014448b914b33d2bef5483efc78092f726
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d9a849fb5556332fab39467c270360c09c774cc9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391920"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231779"
 ---
-# <a name="create-isolated-environments-to-access-azure-virtual-networks-from-azure-logic-apps"></a>Erstellen isolierter Umgebungen für den Zugriff auf Azure Virtual Networks aus Azure Logic Apps
+# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps über eine Integrationsdienstumgebung (ISE)
 
 > [!NOTE]
 > Diese Funktion befindet sich in der *privaten Vorschau*. Um den Zugriff anzufordern, [erstellen Sie Ihre Beitrittsanforderung hier](https://aka.ms/iseprivatepreview).
 
-Für Integrationsszenarien, in denen Ihre Logik-Apps und Integrationskonten Zugriff auf ein [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) benötigen, können Sie eine [ *Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erstellen, die eine Verknüpfung mit Ihrem virtuellen Netzwerk herstellt und den Logic Apps-Dienst in Ihrem Netzwerk bereitstellt. Beim Erstellen von Logik-Apps und Integrationskonten wählen Sie diese Integrationsdienstumgebung als deren Standort aus. Ihre Logik-Apps und Integrationskonten können dann direkt auf Ressourcen wie virtuelle Computer (VMs), Server, Systeme und Dienste in Ihrem virtuellen Netzwerk zugreifen. 
+Für Integrationsszenarien, in denen Ihre Logik-Apps und Integrationskonten Zugriff auf ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen, können Sie eine [*Integrationsdienstumgebung*  (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erstellen. Hierbei handelt es sich um eine private, isolierte Umgebung, die dedizierten Speicher und andere Ressourcen verwendet, die vom öffentlichen oder *globalen* Logic Apps-Dienst getrennt sind. Diese Trennung trägt auch dazu bei, jegliche Auswirkungen anderer Azure-Mandanten auf die Leistung Ihrer Apps zu verringern. Sie können diese ISE mit Ihrem virtuellen Azure-Netzwerk verknüpfen. Daraufhin wird der Logic Apps-Dienst in Ihrem virtuellen Netzwerk bereitgestellt. Wählen Sie diese Integrationsdienstumgebung beim Erstellen einer Logik-App oder eines Integrationskontos als Standort aus. Ihre Logik-App bzw. Ihr Integrationskonto kann dann direkt auf Ressourcen wie virtuelle Computer (VMs), Server, Systeme und Dienste in Ihrem virtuellen Netzwerk zugreifen. 
 
 ![Auswählen der Integrationsdienstumgebung](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
-
-Ihre Integrationsdienstumgebung ist eine private und isolierte Umgebung, die dedizierten Speicher und andere Ressourcen verwendet, die getrennt vom öffentlichen oder *globalen* Logic Apps-Dienst vorhanden sind. Diese Trennung trägt auch dazu bei, jegliche Auswirkungen anderer Azure-Mandanten auf die Leistung Ihrer Apps zu verringern. 
 
 In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
@@ -193,7 +191,7 @@ Um Logik-Apps zu erstellen, die Ihre Integrationsdienstumgebung verwenden, führ
 
   * Benutzerdefinierter Connector
 
-  Bei lokalen Systemen, die sich nicht in einem virtuellen Netzwerk befinden oder keine Integrationsdienstumgebungs-Connectors haben, können Sie immer noch eine Verbindung herstellen, nachdem Sie [das lokale Datengateway eingerichtet haben und es verwenden](../logic-apps/logic-apps-gateway-install.md).
+  Bei lokalen Systemen, die sich nicht in einem virtuellen Netzwerk befinden oder keine Integrationsdienstumgebungs-Connectors aufweisen, können Sie immer noch eine Verbindung herstellen, nachdem Sie [das lokale Datengateway eingerichtet haben und es verwenden](../logic-apps/logic-apps-gateway-install.md).
 
 <a name="create-integration-account-environment"></a>
 
@@ -208,7 +206,7 @@ Führen Sie zum Erstellen eines Integrationskontos, das eine Integrationsdienstu
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">Azure Logic Apps-Forum</a>.
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die <a href="http://aka.ms/logicapps-wish" target="_blank">Website für Logic Apps-Benutzerfeedback</a>.
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die <a href="https://aka.ms/logicapps-wish" target="_blank">Website für Logic Apps-Benutzerfeedback</a>.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,7 +4,6 @@ description: Liste der Updates für Azure-Gastbetriebssystemreleases
 services: cloud-services
 documentationcenter: na
 author: raiye
-manager: timlt
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
@@ -12,20 +11,64 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2018
+ms.date: 10/16/2018
 ms.author: raiye
-ms.openlocfilehash: aa7ee049177fccbcca7d648ca749eb9fb35a0f53
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 7540f12f888108ed7091cece575b6d25131ef47b
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522304"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377513"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
+## <a name="september-2018-guest-os"></a>Gastbetriebssystem für September 2018
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 18-09 | [4457131] | Sicherheitsupdates für Windows 10 | 5.23 | 11. September 2018 |
+| Rel 18-09 | [4457145] | Nur Windows-Sicherheit | 2.78 | 11. September 2018 |
+| Rel 18-09 | [4457140] | Nur Windows-Sicherheit | 3.65 | 11. September 2018 |
+| Rel 18-09 | [4457143] | Nur Windows-Sicherheit | 4.58 | 11. September 2018 |
+| Rel 18-09 | [4457055], [4457030] | .NET 3.5, 4.5 – Sicherheit | 2.78 | 11. September 2018 |
+| Rel 18-09 | [4457053], [4457029] | .NET 3.5, 4.x Security | 3.65 | 11. September 2018 |
+| Rel 18-09 | [4457056], [4457028] | .NET 3.5, 4.x Security | 4.58 | 11. September 2018 |
+| Rel 18-09 | [4457146] | Blinken | 3.65, 4.58, 5.23 | 11. September 2018 |
+| Rel 18-09 | [4457426] | Internet Explorer | 2.78, 3.65, 4.58 | 11. September 2018 |
+| N/V | [4343900] | Nicht sicherheitsrelevanter Rollup für August | 2.78 | 14. August 2018 |
+| N/V | [4344152] | Nicht sicherheitsrelevanter Rollup für .NET 3.5 für August | 2.78 | 14. August 2018 |
+| N/V | [4344149] | Nicht sicherheitsrelevanter Rollup für .NET 4x für August | 2.78 | 14. August 2018 |
+| N/V | [4343901] | Nicht sicherheitsrelevanter Rollup für August | 3.65 | 14. August 2018 |
+| N/V | [4344150] | Nicht sicherheitsrelevanter Rollup für .NET 3.5 für August | 3.65 | 14. August 2018 |
+| N/V | [4344148] | Nicht sicherheitsrelevanter Rollup für .NET 4x für August | 3.65 | 14. August 2018 |
+| N/V | [4343898] | Nicht sicherheitsrelevanter Rollup für August | 4.58 | 14. August 2018 |
+| N/V | [4344153] | Nicht sicherheitsrelevanter Rollup für .NET 3.5 für August | 4.58 | 14. August 2018 |
+| N/V | [4344147] | Nicht sicherheitsrelevanter Rollup für .NET 4x für August | 4.58 | 14. August 2018 |
 
-## <a name="july-guest-os"></a>Gastbetriebssystem Juli
+## <a name="august-2018-guest-os"></a>Gastbetriebssystem für August 2018
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 18-08 | [4343887] | Sicherheitsupdates für Windows 10 | 5.22 | 14. August 2018 |
+| Rel 18-08 | [4343899] | Nur Windows-Sicherheit | 2.77 | 14. August 2018 |
+| Rel 18-08 | [4343896] | Nur Windows-Sicherheit | 3.64 | 14. August 2018 |
+| Rel 18-08 | [4343888] | Nur Windows-Sicherheit | 4.57 | 14. August 2018 |
+| Rel 18-08 | [4344177], [4344173] | .NET 3.5, 4.5 – Sicherheit | 2.77 | 14. August 2018 |
+| Rel 18-08 | [4344175], [4344172] | .NET 3.5, 4.x Security | 3.64 | 14. August 2018 |
+| Rel 18-08 | [4344178], [4344171] | .NET 3.5, 4.x Security | 4.57 | 14. August 2018 |
+| Rel 18-08 | [4346742], [4346739] | .NET 3.5, 4.x OOB-Version | 3.64 | 30. Juli 2018 |
+| Rel 18-08 | [4346745], [4346408] | .NET 3.5, 4.x OOB-Version | 4.57 | 30. Juli 2018 |
+| Rel 18-08 | [4343902] | Blinken | 3.64, 4.57, 5.22 | 14. August 2018 |
+| Rel 18-08 | [4343205] | Internet Explorer | 2.77, 3.64, 4.57 | 14. August 2018 |
+| N/V | [4338818] |Nicht sicherheitsrelevanter Rollup für Juli |2.77 | 10. Juli 2018 |
+| N/V | [4019990] |D3D Compiler-Update für .NET |2.77 | 10. Juli 2018 |
+| N/V | [4338830] |Nicht sicherheitsrelevanter Rollup für Juli |3.64 | 10. Juli 2018 |
+| N/V | [4338421] |Nicht sicherheitsrelevanter Rollup für .NET 3.5 für Juli |3.64 | 10. Juli 2018 |
+| N/V | [4338416] |Nicht sicherheitsrelevanter Rollup für .NET 4x für Juli |3.64 | 10. Juli 2018 |
+| N/V | [4338815] |Nicht sicherheitsrelevanter Rollup für Juli |4.57 | 10. Juli 2018 |
+| N/V | [4338424] |Nicht sicherheitsrelevanter Rollup für .NET 3.5 für Juli |3.64 | 10. Juli 2018 |
+| N/V | [4338415] |Nicht sicherheitsrelevanter Rollup für .NET 4x für Juli |3.64 | 10. Juli 2018 |
+
+## <a name="july-2018-guest-os"></a>Gastbetriebssystem für Juli 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 18-07 | [4338814] |Sicherheitsupdates für Windows 10 |5.21 |10. Juli 2018 |
@@ -45,7 +88,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4284855] |Nicht sicherheitsrelevanter Rollup für Juni |3.63 |12. Juni 2018 |
 | N/V | [4284815] |Nicht sicherheitsrelevanter Rollup für Juni |4.56 |12. Juni 2018 |
 
-## <a name="june-guest-os"></a>Gastbetriebssystem Juni
+## <a name="june-2018-guest-os"></a>Gastbetriebssystem für Juni 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 18-06 | [4284880] |Sicherheitsupdates für Windows 10 |5.20 |12. Juni 2018 |
@@ -70,7 +113,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4096417] |Nicht sicherheitsrelevante .NET 4.5x-Release für Mai |4.55 |8. Mai 2018 |
 | N/V | [4132216] |SSU für Mai |5.20 |8. Mai 2018 |
 
-## <a name="may-guest-os"></a>Gastbetriebssystem Mai
+## <a name="may-2018-guest-os"></a>Gastbetriebssystem für Mai 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 18-05 | [4103721], [4103727], [4103723] |Sicherheitsupdates für Windows 10 |5.19 |8. Mai 2018 |
@@ -90,7 +133,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4093753] |Zeitzonenupdate |2.74, 3.61, 4.74 |10. April 2018 |
 
 
-## <a name="april-guest-os"></a>Gastbetriebssystem April
+## <a name="april-2018-guest-os"></a>Gastbetriebssystem für April 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 18-04 | [4093119] |Sicherheitsupdates für Windows 10 |5.18 |10. April 2018 |
@@ -104,7 +147,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4088877] |Nicht sicherheitsrelevanter Rollup für März |3.60 |13. März 2018 |
 | N/V | [4088876] |Nicht sicherheitsrelevanter Rollup für März |4.53 |13. März 2018 |
 
-## <a name="march-guest-os"></a>Gastbetriebssystem März
+## <a name="march-2018-guest-os"></a>Gastbetriebssystem für März 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel. 18-03 | [4088787], [4088776] |Sicherheitsupdates für Windows 10 |5.17 |13. März 2018 |
@@ -117,7 +160,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4074837] |Zeitzonenupdate |2.72, 3.59, 4.52 |13. Februar 2018 |
 
 
-## <a name="february-guest-os"></a>Gastbetriebssystem Februar
+## <a name="february-2018-guest-os"></a>Gastbetriebssystem für Februar 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel. 18-02 | [4074590], [4074588] |Sicherheitsupdates für Windows 10 |5.16 |13. Februar 2018 |
@@ -131,7 +174,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4054175], [4054171] |.NET-Rollup für Januar |3.58 |4. Januar 2018 |
 | N/V | [4054177], [4054170] |.NET-Rollup für Januar |4.51 |4. Januar 2018 |
 
-## <a name="january-guest-os"></a>Gastbetriebssystem Januar
+## <a name="january-2018-guest-os"></a>Gastbetriebssystem für Januar 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 18-01 | [4056898], [4056897], [4056899] |Nur Windows-Sicherheit |2.70, 3.57, 4.50 |3. Januar 2018 |
@@ -143,7 +186,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 
 
 
-## <a name="december-guest-os"></a>Gastbetriebssystem Dezember
+## <a name="december-2017-guest-os"></a>Gastbetriebssystem für Dezember 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 17-12 | [4053579], [4054517] |Sicherheitsupdates für Windows 10 |4.49, 5.14 |12. Dezember 2017 |
@@ -155,7 +198,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4048958] |Nicht sicherheitsrelevanter Rollup für November |4.49 |14. November 2017 |
 | N/V | [4049068] |Zeitzonenupdate Dezember |2.69, 3.56, 4.49 |12. Dezember 2017 |
 
-## <a name="november-guest-os"></a>Gastbetriebssystem November
+## <a name="november-2017-guest-os"></a>Gastbetriebssystem für November 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 17-11 | [4048953] |Windows 10-Updates |5.13 |14. November 2017 |
@@ -169,7 +212,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [3191565] |Update für Windows Management Framework 5.1  |3.55 |14. November 2017 |
 | N/V | [3191564] |Update für Windows Management Framework 5.1  |4.48 |14. November 2017 |
 
-## <a name="october-guest-os"></a>Gastbetriebssystem Oktober
+## <a name="october-2017-guest-os"></a>Gastbetriebssystem für Oktober 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 17-10 | [4041691] |Windows 10-Updates |5.12 |10. Oktober 2017 |
@@ -183,7 +226,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4040979] |Nicht sicherheitsrelevanter .NET-Rollup für September |3.54 |12. September 2017 |
 | N/V | [4040981] |Nicht sicherheitsrelevanter .NET-Rollup für September |4.47 |12. September 2017 |
 
-## <a name="september-guest-os"></a>Gastbetriebssystem September
+## <a name="september-2017-guest-os"></a>Gastbetriebssystem für September 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 17-09 | [4038782] |Windows 10-Updates |5.11 |12. September 2017 |
@@ -195,7 +238,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4034665] |Nicht sicherheitsrelevanter Rollup für August |5.11 |8. August 2017 |
 | N/V | [4034681] |Nicht sicherheitsrelevanter Rollup für August |4.46 |8. August 2017 |
 
-## <a name="august-guest-os"></a>Gastbetriebssystem August
+## <a name="august-2017-guest-os"></a>Gastbetriebssystem für August 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4034658] |Windows 10-Updates |5.10 |8. August 2017 |
@@ -209,7 +252,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-07 | [4025331] |Nicht sicherheitsrelevanter Rollup für Juli |3.52 |11. Juli 2017 |
 | Rel 17-07 | [4025336] |Nicht sicherheitsrelevanter Rollup für Juli |4.45 |11. Juli 2017 |
 
-## <a name="july-guest-os"></a>Gastbetriebssystem Juli
+## <a name="july-2017-guest-os"></a>Gastbetriebssystem für Juli 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4025339] |Windows 10-Updates |5.9 |11. Juli 2017 |
@@ -223,7 +266,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4022724] |Nicht sicherheitsrelevanter Rollup für Juni |3.51 |13. Juni 2017 |
 | N/V | [4022726] |Nicht sicherheitsrelevanter Rollup für Juni |4.44 |13. Juni 2017 |
 
-## <a name="june-guest-os"></a>Gastbetriebssystem Juni
+## <a name="june-2017-guest-os"></a>Gastbetriebssystem für Juni 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel. 17-06 | [4019472] |WS 2016 OS Qualitätsverbesserungen |5.8 |9. Mai 2017 |
@@ -251,7 +294,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4014510] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
 | N/V | [4014512] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
 
-## <a name="may-guest-os"></a>Gastbetriebssystem Mai
+## <a name="may-2017-guest-os"></a>Gastbetriebssystem für Mai 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 17-05 | [4019472] |WS 2016 OS Qualitätsverbesserungen |5.7 | 9. Mai 2017 |
@@ -279,7 +322,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [4015550] |Nicht sicherheitsrelevanter Rollup für April |4.42 | 11. April 2017 |
 | N/V | [4013418] |Wartungsstapelaktualisierung |5.7 | 14. März 2017 |
 
-## <a name="april-guest-os"></a>Gastbetriebssystem April
+## <a name="april-2017-guest-os"></a>Gastbetriebssystem für April 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 17-04 |  [4015217]  |WS 2016 OS Qualitätsverbesserungen | 5.6 | 11. April 2017 |
@@ -299,7 +342,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-04 |  [4012217]  |März 2017: monatliches Sicherheitsqualitätsrollup für Windows Server 2012 |3.48 | 11. April 2017 |
 | Rel 17-04 |  [4012216]  |März 2017: monatliches Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.41 | 11. April 2017 |
 
-## <a name="march-guest-os"></a>Gastbetriebssystem März
+## <a name="march-2017-guest-os"></a>Gastbetriebssystem für März 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 17-03 |  [4013429] |Verbesserungen und Fehlerbehebungen | 5.5 | 14. März 2017 |
@@ -313,12 +356,12 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |  [3205401] |Dezember 2016: monatlicher Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.40 |14. März 2017 |
 | N/V |  [3211320] |Wartungsstapelupdate für Windows 10 (Version 1607) und Windows Server 2016: 24. Januar 2017 |5.5 |14. März 2017 |
 
-## <a name="january-guest-os"></a>Gastbetriebssystem Januar
+## <a name="january-2017-guest-os"></a>Gastbetriebssystem für Januar 2017
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS17-004 | [3216771] |Sicherheitsupdate für den Subsystemdienst für die lokale Sicherheitsautorität |2.59 |10. Januar 2017 |
 
-## <a name="december-guest-os"></a>Gastbetriebssystem Dezember
+## <a name="december-2016-guest-os"></a>Gastbetriebssystem für Dezember 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-144 |[3204059] |Kumulatives Sicherheitsupdate für Internet Explorer |2.58, 3.46, 4.39 |13. Dezember 2016 |
@@ -335,7 +378,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3197877] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows Server 2012 |3,46 |13. Dezember 2016 |
 | N/V |[3197874] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.39 |13. Dezember 2016 |
 
-## <a name="november-guest-os"></a>Gastbetriebssystem November
+## <a name="november-2016-guest-os"></a>Gastbetriebssystem für November 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-129 |[3199057] |Kumulatives Sicherheitsupdate für Microsoft Edge |5.3 |8. November 2016 |
@@ -360,7 +403,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3199986] |Wartungsstapelupdate für Windows 10 (Version 1607): 27. Oktober 2016 |5.3 |8. November 2016 |
 | N/V |[3197954] |Kumulatives Update für Windows 10 (Version 1607) und Windows Server 2016: 27. Oktober 2016 |5.3 |8. November 2016 |
 
-## <a name="october-guest-os"></a>Gastbetriebssystem Oktober
+## <a name="october-2016-guest-os"></a>Gastbetriebssystem für Oktober 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-118 |[3192887] |Kumulatives Sicherheitsupdate für Internet Explorer |4.37, 3.44, 2.56 |11. Oktober 2016 |
@@ -375,7 +418,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3185279] |September 2016: Updaterollup für Windows 8.1 und Windows Server 2012 R2 |4.37 |11. Oktober 2016 |
 | N/V |[3194798] |Kumulatives Update für Windows 10 Version 1607 und Windows Server 2016 |5,2 |11. Oktober 2016 |
 
-## <a name="september-guest-os"></a>Gastbetriebssystem September
+## <a name="september-2016-guest-os"></a>Gastbetriebssystem für September 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-104 |[3183038] |Kumulatives Sicherheitsupdate für Internet Explorer |4.36, 3.43, 2.55 |13. September 2016 |
@@ -392,7 +435,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3179575] |Updaterollup vom August 2016 für Windows Server 2012 |3.43 |13. September 2016 |
 | N/V |[3179574] |Updaterollup vom August 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.36 |13. September 2016 |
 
-## <a name="august-guest-os"></a>Gastbetriebssystem August
+## <a name="august-2016-guest-os"></a>Gastbetriebssystem für August 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-095 |[3177356] |Kumulatives Sicherheitsupdate für Internet Explorer |4.35, 3.42, 2.54 |9. August 2016 |
@@ -406,7 +449,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3172615] |Updaterollup vom Juli 2016 für Windows Server 2012 |3.42 |9. August 2016 |
 | N/V |[3172614] |Updaterollup vom Juli 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.35 |9. August 2016 |
 
-## <a name="july-guest-os"></a>Gastbetriebssystem Juli
+## <a name="july-2016-guest-os"></a>Gastbetriebssystem für Juli 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-084 |[3169991] |Kumulatives Sicherheitsupdate für Internet Explorer |4.34, 3.41, 2.53 |12. Juli 2016 |
@@ -422,7 +465,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3161606] |Updaterollup vom Juni 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.34 |12. Juli 2016 |
 | N/V |[3139923] |Windows Installer-Reparatur (MSI) nicht möglich, wenn das MSI-Paket auf einer HTTP-Freigabe in Windows installiert wird |4.34 |12. Juli 2016 |
 
-## <a name="june-guest-os"></a>Gastbetriebssystem Juni
+## <a name="june-2016-guest-os"></a>Gastbetriebssystem für Juni 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-035 |[3141780] |Sicherheitsupdate für .NET Framework zum Unterbinden einer Umgehung von Sicherheitsfunktionen |4.33, 3.40, 2.52 |14. Juni 2016 |
@@ -449,7 +492,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3156418] |Updaterollup vom Mai 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.33 |14. Juni 2016 |
 | N/V |[3153731] |DST-Update vom Mai 2016 für Aserbaidschan, Chile, Haiti und Marokko in Windows |4.33, 3.40, 2.52 |14. Juni 2016 |
 
-## <a name="may-guest-os"></a>Gastbetriebssystem Mai
+## <a name="may-2016-guest-os"></a>Gastbetriebssystem für Mai 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-051 |[3155533] |Kumulatives Sicherheitsupdate für Internet Explorer |4.32, 3.39, 2.51 |10. Mai 2016 |
@@ -467,7 +510,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3123245] |Update verbessert die Identifikation der Portauslastung in Windows Server 2012 R2.  |4.32 |10. Mai 2016 |
 | N/V |[Disable RC4] | Microsoft-Sicherheitsempfehlung: Update zum Deaktivieren von RC4  |4.32, 3.39, 2.51 |10. Mai 2016 |
 
-## <a name="april-guest-os"></a>Gastbetriebssystem April
+## <a name="april-2016-guest-os"></a>Gastbetriebssystem für April 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-037 |[3148531] |Kumulatives Sicherheitsupdate für Internet Explorer |4.31, 3.38, 2.50 |12. April 2016 |
@@ -478,7 +521,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS16-047 |[3148527] |Sicherheitsupdate für Sicherheitskontenverwaltungs-Remoteprotokoll |4.31, 3.38, 2.50 |12. April 2016 |
 | MS16-048 |[3148528] |Sicherheitsupdate für CSRSS |4.31, 3.38 |12. April 2016 |
 
-## <a name="march-guest-os"></a>Gastbetriebssystem März
+## <a name="march-2016-guest-os"></a>Gastbetriebssystem für März 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-023 |[3142015] |Kumulatives Sicherheitsupdate für Internet Explorer |4.30, 3.37, 2.49 |8. März 2016 |
@@ -491,7 +534,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS16-033 |[3143142] |Sicherheitsupdate für Windows USB-Massenspeichergerät-Klassentreiber zum Unterbinden von Rechteerweiterungen |4.30, 3.37, 2.49 |8. März 2016 |
 | MS16-034 |[3143145] |Sicherheitsupdate für Windows-Kernelmodustreiber zum Unterbinden von Rechteerweiterungen |4.30, 3.37, 2.49 |8. März 2016 |
 
-## <a name="february-guest-os"></a>Gastbetriebssystem Februar
+## <a name="february-2016-guest-os"></a>Gastbetriebssystem für Februar 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-009 |[3134220] |Kumulatives Sicherheitsupdate für Internet Explorer |4.29, 3.36, 2.48 |9. Februar 2016 |
@@ -506,7 +549,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Neuveröffentlichung – MS15-118 |[3104507] |Sicherheitsupdates für .NET Framework, um Erhöhung von Berechtigungen zu beheben |4.29, 3.36, 2.48 |9. Februar 2016 |
 | Neuveröffentlichung – MS15-128 |[3104503] |Sicherheitsupdate für Microsoft Graphics Component, um Remotecodeausführung zu beheben |4.29, 3.36, 2.48 |9. Februar 2016 |
 
-## <a name="january-guest-os"></a>Gastbetriebssystem Januar
+## <a name="january-2016-guest-os"></a>Gastbetriebssystem für Januar 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS16-001 |[3124903] |Kumulatives Sicherheitsupdate für Internet Explorer |4.28, 3.35, 2.47 |12. Januar 2016 |
@@ -519,7 +562,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Microsoft-Sicherheitsempfehlung |[3123479] |Veraltung des SHA-1-Hashalgorithmus für das Microsoft-Programm für Stammzertifikate |4.28, 3.35, 2.47 |12. Januar 2016 |
 | Microsoft-Sicherheitsempfehlung |[2736233] |Updates für ActiveX-Killbits |4.28, 3.35, 2.47 |12. Januar 2016 |
 
-## <a name="december-guest-os"></a>Gastbetriebssystem Dezember
+## <a name="december-2015-guest-os"></a>Gastbetriebssystem für Dezember 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-124 |[3116180] |Kumulatives Sicherheitsupdate für Internet Explorer |4.27, 3.34, 2.46 |8. Dezember 2015 |
@@ -531,7 +574,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-134 |[3108669] |Sicherheitsupdate für Windows Media Center, um Remotecodeausführung zu beheben |4.27, 3.34, 2.46 |8. Dezember 2015 |
 | MS15-135 |[3119075] |Sicherheitsupdate für Windows Kernelmodustreiber, um Erhöhung von Berechtigungen zu beheben |4.27, 3.34, 2.46 |8. Dezember 2015 |
 
-## <a name="november-guest-os"></a>Gastbetriebssystem November
+## <a name="november-2015-guest-os"></a>Gastbetriebssystem für November 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-112 |[3104517] |Kumulatives Sicherheitsupdate für Internet Explorer |4.26, 3.33, 2.45 |10. November 2015 |
@@ -545,7 +588,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-122 |[3105256] |Sicherheitsupdate für Kerberos, um Umgehung der Sicherheitsfunktion zu beheben. |4.26, 3.33, 2.45 |10. November 2015 |
 | Microsoft-Sicherheitsempfehlung |[3097966] |Versehentlich offengelegte digitale Zertifikate können spoofing |4.26, 3.33, 2.45 |10. November 2015 |
 
-## <a name="october-guest-os"></a>Gastbetriebssystem Oktober
+## <a name="october-2015-guest-os"></a>Gastbetriebssystem für Oktober 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-106 |[3096441] |Kumulatives Sicherheitsupdate für Internet Explorer |4.25, 3.32, 2.44 |13. Oktober 2015 |
@@ -554,7 +597,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-111 |[3096447] |Sicherheitsupdate für Windows-Kernel, um Erhöhung von Berechtigungen zu beheben |4.25, 3.32, 2.44 |13. Oktober 2015 |
 | Microsoft-Sicherheitsempfehlung |[3092627] |Update von September 2015 zur Behebung von Windows- oder Anwendungsabstürzen nach Installation von Security Update 3076895 |4.25, 3.32, 2.44 |13. Oktober 2015 |
 
-## <a name="september-guest-os"></a>Gastbetriebssystem September
+## <a name="september-2015-guest-os"></a>Gastbetriebssystem für September 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-093 |[3088903] |Sicherheitsupdate für Internet Explorer |4.24, 3.31, 2.43 |8. September 2015 |
@@ -566,7 +609,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-102 |[3089657] |Schwachstellen im Windows-Task-Management können Erhöhung von Berechtigungen ermöglichen. |4.24, 3.31, 2.43 |8. September 2015 |
 | MS15-105 |[3091287] |Sicherheitsanfälligkeit im Windows-Hyper-V kann Umgehung von Sicherheitsfunktionen ermöglichen. |4.24 |8. September 2015 |
 
-## <a name="august-guest-os"></a>Gastbetriebssystem August
+## <a name="august-2015-guest-os"></a>Gastbetriebssystem für August 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-079 |[3082442] |Kumulatives Sicherheitsupdate für Internet Explorer |4.23, 3.30, 2.42 |11. August 2015 |
@@ -578,7 +621,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-089 |[3060716] |Schwachstellen in Microsoft Windows können Erhöhung von Berechtigungen ermöglichen. |4.23, 3.30, 2.42 |11. August 2015 |
 | MS15-090 |[3076949] |Schwachstelle in WebDAV kann Offenlegung von Informationen ermöglichen. |4.23, 3.30, 2.42 |11. August 2015 |
 
-## <a name="july-guest-os"></a>Gastbetriebssystem Juli
+## <a name="july-2015-guest-os"></a>Gastbetriebssystem für Juli 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-065 |[3076321] |Kumulatives Sicherheitsupdate für Internet Explorer |4.22, 3.29, 2.41 |14. Juli 2015 |
@@ -595,7 +638,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-077 |[3077657] |Sicherheitsanfälligkeit im ATM-Schriftartentreiber kann Erhöhung von Berechtigungen ermöglichen |4.22, 3.29, 2.41 |14. Juli 2015 |
 | Nicht verfügbar |[3057154] |Aktualisierung der eingeschränkten Verwendung der DES-Verschlüsselung |4.22, 3.29, 2.41 |14. Juli 2015 |
 
-## <a name="june-guest-os"></a>Gastbetriebssystem Juni
+## <a name="june-2015-guest-os"></a>Gastbetriebssystem für Juni 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-056 |[3058515] |Kumulatives Sicherheitsupdate für Internet Explorer |4.21, 3.28, 2.40 |9. Juni 2015 |
@@ -605,7 +648,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-062 |[3062577] |Sicherheitsanfälligkeit in Active Directory Federation Services kann Erhöhung von Berechtigungen ermöglichen |4.21, 3.28, 2.40 |9. Juni 2015 |
 | MS15-063 |[3063858] |Sicherheitsanfälligkeit im Windows-Kernel kann Erhöhung von Berechtigungen ermöglichen |4.21, 3.28, 2.40 |9. Juni 2015 |
 
-## <a name="may-guest-os"></a>Gastbetriebssystem Mai
+## <a name="may-2015-guest-os"></a>Gastbetriebssystem für Mai 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-043 |[3049563] |Kumulatives Sicherheitsupdate für Internet Explorer |4.20, 3.27, 2.39 |12. Mai 2015 |
@@ -628,12 +671,12 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-042 |[3047234] |Sicherheitsanfälligkeit in Windows Hyper-V kann Denial-of-Service-Angriffe ermöglichen |4.20, 3.27, 2.39 |17. April 2015 |
 | Nicht verfügbar |[3045755] |Update zur Verbesserung der PKU2U-Authentifizierung |4.20, 3.27, 2.39 |17. April 2015 |
 
-## <a name="april-guest-os"></a>Gastbetriebssystem April
+## <a name="april-2015-guest-os"></a>Gastbetriebssystem für April 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | [MS15-034] |[3042553] |Sicherheitsanfälligkeit in HTTP.sys kann Remotecodeausführung ermöglichen |4.19, 3.26, 2.38 |17. April 2015 |
 
-## <a name="march-guest-os"></a>Gastbetriebssystem März
+## <a name="march-2015-guest-os"></a>Gastbetriebssystem für März 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-018 |[3032359] |Kumulatives Sicherheitsupdate für Internet Explorer |4.18, 3.25, 2.37 |N/V |
@@ -653,7 +696,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 >
 >
 
-## <a name="february-guest-os"></a>Gastbetriebssystem Februar
+## <a name="february-2015-guest-os"></a>Gastbetriebssystem für Februar 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-009 |[3034682] |Sicherheitsupdate für Internet Explorer |4.17, 3.24, 2.36 |N/V |
@@ -664,7 +707,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-016 |[3029944] |Sicherheitsanfälligkeit in Microsoft-Grafikkomponente kann Offenlegung von Informationen ermöglichen |4.17, 3.24, 2.36 |N/V |
 | N/V |[3004375] |Update zur Verbesserung der Windows-Befehlszeilenüberwachung<p/>**Hinweis**: Dies wird installiert, aber der Registrierungsschlüssel zum Aktivieren ist deaktiviert. |4.17, 3.24, 2.36 |N/V |
 
-## <a name="january-guest-os"></a>Gastbetriebssystem Januar
+## <a name="january-2015-guest-os"></a>Gastbetriebssystem für Januar 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | MS15-001 |[3023266] |Sicherheitsanfälligkeit in Windows Application Compatibility-Cache kann Erhöhung der Berechtigungen ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
@@ -680,7 +723,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-002 |[3020393] |Sicherheitsanfälligkeit im Windows-Telnetdienst kann Remotecodeausführung ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
 
 
-## <a name="december-guest-os"></a>Gastbetriebssystem Dezember
+## <a name="december-2014-guest-os"></a>Gastbetriebssystem für Dezember 2014
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | N/V |[3013776] |System stürzt ab, wenn Sie ein Domänenkonto zum Starten einer Anwendung verwenden |4.15, 3.22, 2.34 |13. Januar 2015 |
@@ -695,6 +738,74 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[2999802] |In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | N/V |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
 
+[4457131]: http://support.microsoft.com/kb/4457131
+[4457145]: http://support.microsoft.com/kb/4457145
+[4457140]: http://support.microsoft.com/kb/4457140
+[4457143]: http://support.microsoft.com/kb/4457143
+[4457055]: http://support.microsoft.com/kb/4457055
+[4457030]: http://support.microsoft.com/kb/4457030
+[4457053]: http://support.microsoft.com/kb/4457053
+[4457029]: http://support.microsoft.com/kb/4457029
+[4457056]: http://support.microsoft.com/kb/4457056
+[4457028]: http://support.microsoft.com/kb/4457028
+[4457146]: http://support.microsoft.com/kb/4457146
+[4457426]: http://support.microsoft.com/kb/4457426
+[4343900]: http://support.microsoft.com/kb/4343900
+[4344152]: http://support.microsoft.com/kb/4344152
+[4344149]: http://support.microsoft.com/kb/4344149
+[4343901]: http://support.microsoft.com/kb/4343901
+[4344150]: http://support.microsoft.com/kb/4344150
+[4344148]: http://support.microsoft.com/kb/4344148
+[4343898]: http://support.microsoft.com/kb/4343898
+[4344153]: http://support.microsoft.com/kb/4344153
+[4344147]: http://support.microsoft.com/kb/4344147
+
+[4457131]: http://support.microsoft.com/kb/4457131
+[4457145]: http://support.microsoft.com/kb/4457145
+[4457140]: http://support.microsoft.com/kb/4457140
+[4457143]: http://support.microsoft.com/kb/4457143
+[4457055]: http://support.microsoft.com/kb/4457055
+[4457030]: http://support.microsoft.com/kb/4457030
+[4457053]: http://support.microsoft.com/kb/4457053
+[4457029]: http://support.microsoft.com/kb/4457029
+[4457056]: http://support.microsoft.com/kb/4457056
+[4457028]: http://support.microsoft.com/kb/4457028
+[4457146]: http://support.microsoft.com/kb/4457146
+[4457426]: http://support.microsoft.com/kb/4457426
+[4343900]: http://support.microsoft.com/kb/4343900
+[4344152]: http://support.microsoft.com/kb/4344152
+[4344149]: http://support.microsoft.com/kb/4344149
+[4343901]: http://support.microsoft.com/kb/4343901
+[4344150]: http://support.microsoft.com/kb/4344150
+[4344148]: http://support.microsoft.com/kb/4344148
+[4343898]: http://support.microsoft.com/kb/4343898
+[4344153]: http://support.microsoft.com/kb/4344153
+[4344147]: http://support.microsoft.com/kb/4344147
+
+[4343887]: http://support.microsoft.com/kb/4343887
+[4343899]: http://support.microsoft.com/kb/4343899
+[4343896]: http://support.microsoft.com/kb/4343896
+[4343888]: http://support.microsoft.com/kb/4343888
+[4344177]: http://support.microsoft.com/kb/4344177
+[4344173]: http://support.microsoft.com/kb/4344173
+[4344175]: http://support.microsoft.com/kb/4344175
+[4344172]: http://support.microsoft.com/kb/4344172
+[4344178]: http://support.microsoft.com/kb/4344178
+[4344171]: http://support.microsoft.com/kb/4344171
+[4346742]: http://support.microsoft.com/kb/4346742
+[4346739]: http://support.microsoft.com/kb/4346739
+[4346745]: http://support.microsoft.com/kb/4346745
+[4346408]: http://support.microsoft.com/kb/4346408
+[4343902]: http://support.microsoft.com/kb/4343902
+[4343205]: http://support.microsoft.com/kb/4343205
+[4338818]: http://support.microsoft.com/kb/4338818
+[4019990]: http://support.microsoft.com/kb/4019990
+[4338830]: http://support.microsoft.com/kb/4338830
+[4338421]: http://support.microsoft.com/kb/4338421
+[4338416]: http://support.microsoft.com/kb/4338416
+[4338815]: http://support.microsoft.com/kb/4338815
+[4338424]: http://support.microsoft.com/kb/4338424
+[4338415]: http://support.microsoft.com/kb/4338415
 
 
 [4338814]: http://support.microsoft.com/kb/4338814
@@ -1303,7 +1414,6 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [3057839]:http://support.microsoft.com/kb/3057839
 [3062577]:http://support.microsoft.com/kb/3062577
 [3063858]:http://support.microsoft.com/kb/3063858
-
 
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx

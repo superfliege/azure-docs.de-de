@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell
-ms.openlocfilehash: 99d34d59bb9d55ff074d454fe4544917c4e91110
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a80895db8a89b8d9392d0ed067b95daa23474d8b
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205986"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113868"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Packen und Bereitstellen einer vorhandenen ausführbaren Datei für Service Fabric
 Beim Packen einer vorhandenen ausführbaren Datei als [ausführbare Gastanwendungsdatei](service-fabric-guest-executables-introduction.md) können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Mit Visual Studio werden die Anwendungspaketstruktur und Manifestdateien mit der neuen Projektvorlage für Sie erstellt.
@@ -168,7 +168,9 @@ Im obigen Beispiel führt „SetupEntryPoint“ eine Batchdatei mit dem Namen `L
 </EntryPoint>
 ```
 
-Mit dem Element `EntryPoint` in der Dienstmanifestdatei wird angegeben, wie der Dienst gestartet werden soll. Das Element `ExeHost` gibt die ausführbare Datei (und die Argumente) an, die zum Starten des Diensts verwendet werden soll.
+Mit dem Element `EntryPoint` in der Dienstmanifestdatei wird angegeben, wie der Dienst gestartet werden soll.
+
+Das Element `ExeHost` gibt die ausführbare Datei (und die Argumente) an, die zum Starten des Diensts verwendet werden soll. Sie können optional das Attribut `IsExternalExecutable="true"` zu `ExeHost` hinzufügen, um anzugeben, dass das Programm eine externe ausführbare Datei außerhalb des Codepakets ist. Beispiel: `<ExeHost IsExternalExecutable="true">`.
 
 * `Program` gibt den Namen der ausführbaren Datei an, die zum Starten des Diensts verwendet werden soll.
 * `Arguments` gibt die Argumente an, die an die ausführbare Datei übergeben werden sollen. Dies kann eine Liste von Parametern mit Argumenten sein.

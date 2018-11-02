@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 011654dcbad21c3e8cea51d6ab98eeca461e4685
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 7caa98b65b35d1eb1a000f1e9099fbf8eb3f8861
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068824"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406040"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Aktivieren und Überprüfen der Kubernetes-Masterknotenprotokolle in Azure Kubernetes Service (AKS)
 
@@ -37,9 +37,12 @@ Log Analytics wird im Azure-Portal aktiviert und verwaltet. Öffnen Sie zum Akti
 1. Wählen Sie in der Liste der verfügbaren Protokolle die Protokolle aus, die Sie aktivieren möchten, z.B. *kube-apiserver*, *kube-controller-manager* und *kube-scheduler*. Sie können zurückkehren und die gesammelten Protokolle ändern, nachdem Log Analytics aktiviert wurde.
 1. Wenn Sie fertig sind, wählen Sie **Speichern** aus, um die Sammlung der ausgewählten Protokolle zu aktivieren.
 
-Der folgende Screenshot eines Beispielportals zeigt das Fenster *Diagnoseeinstellungen* und dann die Option zum Erstellen eines OMS-Arbeitsbereichs:
+Der folgende Screenshot eines Beispielportals zeigt das Fenster *Diagnoseeinstellungen* und dann die Option zum Erstellen eines Log Analytics-Arbeitsbereichs:
 
-![Aktivieren eines OMS-Arbeitsbereichs für Log Analytics für einen AKS-Cluster](media/view-master-logs/enable-oms-log-analytics.png)
+![Aktivieren eines Log Analytics-Arbeitsbereichs für Log Analytics für einen AKS-Cluster](media/view-master-logs/enable-oms-log-analytics.png)
+
+>[!NOTE]
+>OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet. 
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Planen eines Testpods im AKS-Cluster
 
@@ -75,7 +78,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Anzeigen der gesammelten Protokolle
 
-Es kann einige Minuten dauern, bis die Diagnoseprotokolle aktiviert und im OMS-Arbeitsbereich angezeigt werden. Wählen Sie im Azure-Portal die Ressourcengruppe für Ihren Log Analytics-Arbeitsbereich aus, z.B. *myResourceGroup*, wählen Sie dann Ihre Log Analytics-Ressource aus, z.B. *myAKSLogs*.
+Es kann einige Minuten dauern, bis die Diagnoseprotokolle aktiviert und im Log Analytics-Arbeitsbereich angezeigt werden. Wählen Sie im Azure-Portal die Ressourcengruppe für Ihren Log Analytics-Arbeitsbereich aus, z.B. *myResourceGroup*, wählen Sie dann Ihre Log Analytics-Ressource aus, z.B. *myAKSLogs*.
 
 ![Auswählen des Log Analytics-Arbeitsbereichs für Ihren AKS-Cluster](media/view-master-logs/select-log-analytics-workspace.png)
 

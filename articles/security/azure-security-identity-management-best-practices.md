@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: f6640e7d179199fbfb5b0c2b0c384729b6f53bcf
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b1002d046014abd15452489e343ecf7c30b00d73
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498248"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311336"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -113,7 +113,7 @@ Es gibt mehrere Optionen, um eine zweistufige Überprüfung zu erzwingen. Die be
 
 Im Folgenden werden Optionen und Vorteile der zweistufigen Überprüfung beschrieben:
 
-**Option 1**: [Aktivieren Sie Azure MFA durch Ändern des Benutzerstatus](../active-directory/authentication/howto-mfa-userstates.md#enable-azure-mfa-by-changing-user-status).   
+**Option 1**: [Aktivieren Sie Azure MFA durch Ändern des Benutzerstatus](../active-directory/authentication/howto-mfa-userstates.md).   
 **Vorteil**: Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu erfordern. Sie funktioniert sowohl mit der [mehrstufigen Azure-Authentifizierung in der Cloud als auch mit Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md). Diese Methode erfordert, dass Benutzer jedes Mal, wenn sie sich anmelden, die zweistufige Überprüfung durchführen, und überschreibt Richtlinien für bedingten Zugriff.
 
 **Option 2**: [Aktivieren Sie Multi-Factor Authentication mit Richtlinie für bedingten Zugriff](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access).   
@@ -121,7 +121,7 @@ Im Folgenden werden Optionen und Vorteile der zweistufigen Überprüfung beschri
 
 Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung einer Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure Multi-Factor Authentication in der Cloud und ist eine Premium-Funktion von Azure AD. Weitere Informationen zu dieser Methode finden Sie unter [Bereitstellen von cloudbasierter Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md).
 
-**Option 3**: Aktivieren Sie Multi-Factor Authentication mit Richtlinien für bedingten Zugriff durch die Auswertung von Benutzer und Anmelderisiko durch [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md).   
+**Option 3**: Aktivieren Sie Multi-Factor Authentication mit Richtlinien für bedingten Zugriff durch die Auswertung von Benutzer und Anmelderisiko durch [Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md).   
 **Vorteil**: Diese Option ermöglicht Ihnen:
 
 - Ermitteln potenzieller Sicherheitsrisiken für Identitäten Ihrer Organisation.
@@ -131,7 +131,7 @@ Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre B
 Diese Methode nutzt die Risikobewertung von Azure AD Identity Protection, um die Notwendigkeit der zweistufigen Überprüfung auf Basis des Benutzers und Anmelderisikos für alle Cloudanwendungen zu bestimmen. Diese Methode erfordert die Azure Active Directory P2-Lizenzierung. Weitere Informationen zu dieser Methode finden Sie unter [Azure Active Directory Identity Protection](../active-directory/identity-protection/overview.md).
 
 > [!Note]
-> Option 1, Aktivierung von Multi-Factor Authentication durch Ändern des Benutzerstatus, überschreibt die Bedingungsrichtlinien. Da die Optionen 2 und 3 Richtlinien für bedingten Zugriff verwenden, können Sie Option 1 nicht mit ihnen zusammen verwenden.
+> Option 1, Aktivierung von Multi-Factor Authentication durch Ändern des Benutzerstatus, überschreibt die bedingten Zugriffsrichtlinien. Da die Optionen 2 und 3 Richtlinien für bedingten Zugriff verwenden, können Sie Option 1 nicht mit ihnen zusammen verwenden.
 
 Organisationen, die keine zusätzliche Schicht zur Identitätssicherung hinzufügen, etwa die zweistufige Überprüfung, sind anfälliger für Angriffe mit dem Ziel des Diebstahls von Anmeldeinformationen. Ein Angriff mit gestohlenen Anmeldeinformationen kann zum Kompromittieren der Daten führen.
 

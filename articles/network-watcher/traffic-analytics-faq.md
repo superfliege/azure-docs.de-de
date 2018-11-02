@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578309"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402759"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Datenverkehrsanalysen
 
@@ -77,9 +77,9 @@ Ja.
 
 Ja. Wenn Sie einen bestehenden Arbeitsbereich auswählen, vergewissern Sie sich, dass dieser in die neue Abfragesprache geändert wurde. Wenn Sie kein Upgrade des Arbeitsbereichs ausführen möchten, müssen Sie einen neuen Arbeitsbereich anlegen. Weitere Informationen über die neue Abfragesprache finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md).
 
-## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-operations-management-suite-workspace-be-in-a-different-subscription"></a>Kann mein Azure Storage-Konto zu einem Abonnement und mein Operations Management Suite-Arbeitsbereich zu einem anderen Abonnement gehören?
+## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Kann mein Azure Storage-Konto zu einem Abonnement und mein Log Analytics-Arbeitsbereich zu einem anderen Abonnement gehören?
 
-Ja, Ihr Azure Storage-Konto kann zu einem Abonnement und Ihr Operations Management Suite-Arbeitsbereich zu einem anderen Abonnement gehören.
+Ja, Ihr Azure Storage-Konto kann zu einem Abonnement und Ihr Log Analytics-Arbeitsbereich zu einem anderen Abonnement gehören.
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Kann ich unformatierte Protokolle in einem anderen Abonnement speichern?
 
@@ -115,7 +115,7 @@ Wenn das Problem bestehen bleibt, wenden Sie sich an das [User Voice-Forum](http
 
 Ggf. wird diese Meldung auf folgenden Gründen angezeigt:
 - Traffic Analytics wurde vor Kurzem aktiviert, und es wurde ggf. noch keine ausreichende Datenmenge aggregiert, um aussagekräftige Erkenntnisse zu gewinnen.
-- Sie verwenden die kostenlose Version des Operations Management Suite-Arbeitsbereichs, dessen Kontingentgrenzwerte überschritten wurden. Sie benötigen möglicherweise einen Arbeitsbereich mit größerer Kapazität.
+- Sie verwenden die kostenlose Version des Log Analytics-Arbeitsbereichs, dessen Kontingentgrenzwerte überschritten wurden. Sie benötigen möglicherweise einen Arbeitsbereich mit größerer Kapazität.
     
 Wenn das Problem bestehen bleibt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     

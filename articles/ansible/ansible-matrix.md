@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: f574203f31a21f945115296693f04cff649614c6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a71f28413028efe3547df7c464ec852fe2161f63
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165635"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649940"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Matrix der Ansible-Module und -Versionen
 
@@ -128,7 +128,7 @@ In diesem Artikel werden die Ansible-Module für Azure aufgelistet, die Azure-Cl
 | azure_rm_autoscale_facts            | -            | -                         | -          | JA          | JA                                 | 
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Einführung in die Playbookrolle für Azure
-Die [Playbookrolle „azure_preview_module“](https://galaxy.ansible.com/Azure/azure_preview_modules/) ist die umfassendste Rolle, sie enthält alle neuesten Azure-Module. Die Updates und Fehlerbehebungen erfolgen schneller als für das offizielle Ansible-Release. Wenn Sie Ansible zum Bereitstellen von Azure-Ressourcen verwenden, wird empfohlen, die Rolle „azure_preview_module“ zu installieren.
+Die [Playbookrolle „azure_preview_module“](https://galaxy.ansible.com/Azure/azure_preview_modules/) ist die umfassendste Rolle, sie enthält alle neuesten Azure-Module. Die Updates und Fehlerbehebungen erfolgen schneller als für das offizielle Ansible-Release. Wenn Sie Ansible zum Bereitstellen von Azure-Ressourcen verwenden, wird empfohlen, die Playbookrolle „azure_preview_module“ zu installieren.
 
 Die Playbookrolle „azure_preview_module“ wird alle drei Wochen veröffentlicht.
 

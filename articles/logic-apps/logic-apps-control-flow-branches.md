@@ -3,19 +3,18 @@ title: Erstellen oder Verknüpfen paralleler Verzweigungen – Azure Logic Apps 
 description: Vorgehensweise zum Erstellen oder Verknüpfen paralleler Verzweigungen für Workflows in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 2a8dcd82b67ee64e5687d8687415056b0aab39aa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.topic: article
+ms.date: 10/10/2018
+ms.openlocfilehash: 68f7df2ab004477fae5df1d200fcd44929465e93
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298854"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233122"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Erstellen oder Verknüpfen paralleler Verzweigungen für Workflowaktionen in Azure Logic Apps
 
@@ -32,33 +31,44 @@ Standardmäßig werden Ihre Aktionen in Logik-App-Workflows nacheinander ausgef�
 
 <a name="parallel-branches"></a>
 
-## <a name="add-a-parallel-branch"></a>Hinzufügen einer parallelen Verzweigung
+## <a name="add-parallel-branch"></a>Hinzufügen einer parallelen Verzweigung
 
 Zum gleichzeitigen Ausführen unabhängiger Schritte können Sie neben einem vorhandenen Schritt parallele Verzweigungen hinzufügen. 
 
 ![Paralleles Ausführen von Schritten](media/logic-apps-control-flow-branches/parallel.png)
 
-Ihre Logik-App wartet, bis alle Verzweigungen abgeschlossen sind, bevor der Workflow fortgesetzt wird.
-Parallele Verzweigungen werden nur ausgeführt, wenn ihre `runAfter`-Eigenschaftswerte dem Status des abgeschlossenen übergeordneten Schritts entsprechen. Beispielsweise wird die Ausführung von sowohl `branchAction1` als auch `branchAction2` nur festgelegt, wenn `parentAction` mit dem Status `Succeded` abgeschlossen wird.
+Ihre Logik-App wartet, bis alle Verzweigungen abgeschlossen sind, bevor der Workflow fortgesetzt wird. Parallele Verzweigungen werden nur ausgeführt, wenn ihre `runAfter`-Eigenschaftswerte dem Status des abgeschlossenen übergeordneten Schritts entsprechen. Beispielsweise wird die Ausführung von sowohl `branchAction1` als auch `branchAction2` nur festgelegt, wenn `parentAction` mit dem Status `Succeded` abgeschlossen wird.
 
 > [!NOTE]
 > Bevor Sie beginnen, muss Ihre Logik-App bereits über einen Schritt verfügen, dem Sie parallele Verzweigungen hinzufügen können.
 
 1. Öffnen Sie Ihre Logik-App im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> im Logik-App-Designer.
 
-2. Bewegen Sie den Mauszeiger auf den Pfeil über dem Schritt, dem Sie parallele Verzweigungen hinzufügen möchten.
-
-3. Wählen Sie das **Pluszeichen** (**+**), wählen Sie **Hinzufügen einer parallelen Verzweigung**, und wählen Sie das Element aus, das Sie hinzufügen möchten.
+1. Bewegen Sie den Zeiger auf den Pfeil über dem Schritt, dem Sie parallele Branches hinzufügen möchten. Wählen Sie das daraufhin angezeigte **Pluszeichen** (**+**) aus, und wählen Sie dann **Parallelen Branch hinzufügen** aus. 
 
    ![Hinzufügen einer parallelen Verzweigung](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
-   Ihr ausgewähltes Element wird jetzt in einer parallelen Verzweigung angezeigt.
+1. Suchen Sie über das Suchfeld nach der gewünschten Aktion, und wählen Sie sie aus.
 
-4. Fügen Sie für jede parallele Verzweigung die gewünschten Schritte hinzu. Um einer parallelen Verzweigung eine sequenzielle Aktion hinzuzufügen, bewegen Sie die Maus unter die Aktion, der Sie die sequenzielle Aktion hinzufügen möchten. Wählen Sie das **Pluszeichen** (**+**) und den Schritt, den Sie hinzufügen möchten.
+   ![Suchen und Auswählen der gewünschten Aktion](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
-   ![Hinzufügen eines sequenziellen Schritts zu einer parallelen Verzweigung](media/logic-apps-control-flow-branches/add-sequential-action-parallel-branch.png)
+   Ihre ausgewählte Aktion wird jetzt z. B. im parallelen Branch angezeigt:
 
-5. [Verknüpfen Sie Ihre parallelen Verzweigungen](#join-branches), um Verzweigungen wieder zusammenführen. 
+   ![Suchen und Auswählen der gewünschten Aktion](media/logic-apps-control-flow-branches/added-parallel-branch.png)
+
+1. Fügen Sie für jeden parallelen Branch die gewünschten Schritte hinzu. Um einem Branch eine weitere Aktion hinzuzufügen, bewegen Sie den Mauszeiger unter die Aktion, an der Sie eine sequenzielle Aktion hinzufügen möchten. Wählen Sie das daraufhin angezeigte **Pluszeichen** (**+**) und dann **Aktion hinzufügen** aus.
+
+   ![Hinzufügen einer sequenziellen Aktion zu einem parallelen Branch](media/logic-apps-control-flow-branches/add-sequential-action.png)
+
+1. Suchen Sie über das Suchfeld nach der gewünschten Aktion, und wählen Sie sie aus.
+
+   ![Suchen und Auswählen der sequenziellen Aktion](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+
+   Ihre ausgewählte Aktion wird jetzt z. B. im aktuellen Branch angezeigt:
+
+   ![Suchen und Auswählen der sequenziellen Aktion](media/logic-apps-control-flow-branches/added-sequential-action.png)
+
+[Verknüpfen Sie Ihre parallelen Verzweigungen](#join-branches), um Verzweigungen wieder zusammenführen. 
 
 <a name="parallel-json"></a>
 
@@ -69,17 +79,17 @@ Wenn Sie in der Codeansicht arbeiten, können Sie die parallele Struktur stattde
 ``` json
 {
   "triggers": {
-    "myTrigger": { }
+    "myTrigger": {}
   },
   "actions": {
     "parentAction": {
       "type": "<action-type>",
-      "inputs": { },
+      "inputs": {},
       "runAfter": {}
     },
     "branchAction1": {
       "type": "<action-type>",
-      "inputs": { },
+      "inputs": {},
       "runAfter": {
         "parentAction": [
           "Succeeded"
@@ -88,7 +98,7 @@ Wenn Sie in der Codeansicht arbeiten, können Sie die parallele Struktur stattde
     },
     "branchAction2": {
       "type": "<action-type>",
-      "inputs": { },
+      "inputs": {},
       "runAfter": {
         "parentAction": [
           "Succeeded"
@@ -110,11 +120,17 @@ Um parallele Verzweigungen zusammenführen fügen Sie einfach einen Schritt im u
 
 1. Suchen oder öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.azure.com) im Logik-App-Designer. 
 
-2. Fügen Sie den auszuführenden Schritt unter den parallelen Verzweigungen hinzu, die Sie verknüpfen möchten.
+1. Wählen Sie unter den parallelen Branches, die Sie verknüpfen möchten, **Neuer Schritt** aus. 
 
-   ![Hinzufügen eines Schritts zum Verknüpfen paralleler Verzweigungen](media/logic-apps-control-flow-branches/join-steps.png)
+   ![Hinzufügen eines zu verknüpfenden Schritts](media/logic-apps-control-flow-branches/add-join-step.png)
+
+1. Suchen und wählen Sie im Suchfeld die gewünschte Aktion als Schritt aus, der die Branches verknüpft.
+
+   ![Suchen und Auswählen der Aktion, die parallele Branches verknüpft](media/logic-apps-control-flow-branches/join-steps.png)
 
    Ihre parallelen Verzweigungen sind jetzt zusammengeführt.
+
+   ![Verknüpfte Branches](media/logic-apps-control-flow-branches/joined-branches.png)
 
 <a name="join-json"></a>
 
@@ -171,7 +187,7 @@ Wenn Sie in der Codeansicht arbeiten, können Sie die Verknüpfungsstruktur stat
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Featurevorschläge übermitteln oder darüber abstimmen möchten, besuchen Sie die [Website für Azure Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Featurevorschläge übermitteln oder darüber abstimmen möchten, besuchen Sie die [Website für Azure Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,23 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 10/4/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: fd3ff0087ee51c392d9cebb32c8bcc969f9a4601
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: caaee4cb155fc05b78bc47f1e53c79ecb0597183
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48241235"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341938"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenz zur Azure Blockchain Workbench-Konfiguration
 
  Azure Blockchain Workbench-Anwendungen sind Mehrparteienworkflows, die durch Konfigurationsmetadaten und intelligenten Vertragscode definiert sind. Konfigurationsmetadaten definieren die allgemeinen Workflows und das Interaktionsmodell der Blockchainanwendung. Intelligente Verträge stellen die Geschäftslogik der Blockchainanwendung dar. Mithilfe von Konfigurationsdaten und Smart Contract-Code generiert Workbench Benutzeroberflächen von Blockchainanwendungen.
 
-In den Konfigurationsmetadaten sind für jede Blockchainanwendung die folgenden Informationen festgelegt: 
+In den Konfigurationsmetadaten sind für jede Blockchainanwendung die folgenden Informationen festgelegt:
 
 * Name und Beschreibung der Blockchainanwendung
 * Eindeutige Rollen für Benutzer, die innerhalb der Blockchainanwendung agieren oder teilnehmen können.
@@ -73,17 +73,44 @@ Unterstützte Datentypen:
 
 | Typ | BESCHREIBUNG |
 |-------|-------------|
-| address  | Blockchainadresstyp, z.B. *Verträge* oder *Benutzer* |
+| address  | Blockchainadresstyp, z. B. *Verträge* oder *Benutzer*. |
+| Array    | Array mit einer Ebene vom Typ „Int“, „bool“, „money“ oder „time“. Arrays können statisch oder dynamisch sein. Verwenden Sie **ElementType**, um den Datentyp der Elemente im Array anzugeben. Siehe hierzu die [Beispielkonfiguration](#example-configuration-of-type-array). |
 | bool     | Boolean-Datentyp |
-| contract | Adresse des Vertragstyps |
-| enum     | Aufgelisteter Satz von benannten Werten. Wenn Sie den enum-Typ verwenden, geben Sie auch eine Liste von „EnumValues“ an. Jeder Wert darf maximal 255 Zeichen lang sein. Gültige Zeichen für den Wert sind Groß-/Kleinbuchstaben (A-Z, a-z) und Zahlen (0-9). |
+| contract | Adresse vom Typ „Vertrag“ |
+| enum     | Aufgelisteter Satz von benannten Werten. Wenn Sie den enum-Typ verwenden, geben Sie auch eine Liste von „EnumValues“ an. Jeder Wert darf maximal 255 Zeichen lang sein. Gültige Zeichen für den Wert sind Groß-/Kleinbuchstaben (A-Z, a-z) und Zahlen (0-9). Informationen hierzu finden Sie unter [Beispielkonfiguration und Verwendung in Solidity](#example-configuration-of-type-enum). |
 | int      | Integer-Datentyp |
 | money    | Money-Datentyp |
 | state    | Workflowstatus |
-| Zeichenfolge   | String-Datentyp |
-| user     | Adresse des Benutzertyps |
+| Zeichenfolge  | String-Datentyp Maximal 4000 Zeichen Siehe hierzu die [Beispielkonfiguration](#example-configuration-of-type-string). |
+| user     | Adresse vom Typ „Benutzer“ |
 | time     | Time-Datentyp |
 |`[ Application Role Name ]`| Ein beliebiger in der Anwendungsrolle festgelegter Name. Legt fest, dass Benutzer zu diesem Rollentyp gehören müssen. |
+
+### <a name="example-configuration-of-type-array"></a>Beispielkonfiguration vom Typ „Array“
+
+```json
+{
+  "Name": "Quotes",
+  "Description": "Market quotes",
+  "DisplayName": "Quotes",
+  "Type": {
+    "Name": "array",
+    "ElementType": {
+        "Name": "int"
+    }
+  }
+}
+```
+
+#### <a name="using-a-property-of-type-array"></a>Verwenden einer Eigenschaft vom Typ „Array“
+
+Wenn Sie eine Eigenschaft vom Typ „Array“ in der Konfiguration definieren, müssen Sie eine explizite Get-Funktion angeben, um die öffentliche Eigenschaft des Arraytyps in Solidity zurückzugeben. Beispiel: 
+
+```
+function GetQuotes() public constant returns (int[]) {
+     return Quotes;
+}
+```
 
 ### <a name="example-configuration-of-type-string"></a>Beispielkonfiguration vom Typ Zeichenfolge
 

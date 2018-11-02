@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: a73a288852eea713623b65324853761e10fad282
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220465"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408080"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Einrichten von Log Analytics für einen Cluster
 
@@ -80,7 +80,7 @@ Sie können [diese Beispielvorlage](https://github.com/Azure-Samples/service-fab
 
 * Erstellen eines neuen Service Fabric-Clusters mit 5 Knoten
 * Erstellen eines Log Analytics-Arbeitsbereichs und einer Service Fabric-Lösung
-* Konfigurieren des OMS-Agents zum Erfassen und Senden von 2 Beispielleistungsindikatoren an den Arbeitsbereich
+* Konfigurieren des Log Analytics-Agents zum Erfassen und Senden von zwei Beispielleistungsindikatoren an den Arbeitsbereich
 * Konfigurieren von WAD zum Erfassen von Service Fabric und Senden an Azure Storage-Tabellen (WADServiceFabric*EventTable)
 * Konfigurieren des Log Analytics-Arbeitsbereichs zum Lesen der Ereignisse aus diesen Tabellen
 

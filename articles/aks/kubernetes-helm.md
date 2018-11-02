@@ -3,18 +3,16 @@ title: Bereitstellen von Containern mit Helm in Kubernetes in Azure
 description: Verwenden Sie das Helm-Paketerstellungstool, um Container in einem AKS-Cluster (Azure Kubernetes Service) bereitzustellen.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 10/01/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: dd2deba25615373765dd3492d03c1ba547c8ba8c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2c74e3ffaa5ced0925b5ad0edfc357afb375803e
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055133"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363962"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)
 
@@ -26,32 +24,11 @@ Dieser Artikel veranschaulicht die Konfiguration und Verwendung von Helm in eine
 
 Bei den Schritten in diesem Dokument wird davon ausgegangen, dass Sie einen AKS-Cluster erstellt und eine `kubectl`-Verbindung mit dem Cluster hergestellt haben. Informationen hierzu finden Sie in der [AKS-Schnellstartanleitung][aks-quickstart].
 
-## <a name="install-helm-cli"></a>Installieren der Helm-CLI
-
-Bei der Helm-Befehlszeilenschnittstelle handelt es sich um einen Client, der auf Ihrem Entwicklungssystem ausgeführt wird und es Ihnen ermöglicht, Anwendungen zu starten, zu beenden und mit Helm zu verwalten.
-
-Wenn Sie Azure Cloud Shell verwenden, ist die Helm-CLI bereits installiert. Wenn Sie die Helm-Befehlszeilenschnittstelle auf einem Mac installieren möchten, verwenden Sie `brew`. Informationen zu weiteren Installationsoptionen finden Sie unter [Installing Helm][helm-install-options] (Installieren von Helm).
-
-```console
-brew install kubernetes-helm
-```
-
-Ausgabe:
-
-```
-==> Downloading https://homebrew.bintray.com/bottles/kubernetes-helm-2.9.1.high_sierra.bottle.tar.gz
-######################################################################## 100.0%
-==> Pouring kubernetes-helm-2.9.1.high_sierra.bottle.tar.gz
-==> Caveats
-Bash completion has been installed to:
-  /usr/local/etc/bash_completion.d
-==> Summary
-🍺  /usr/local/Cellar/kubernetes-helm/2.9.1: 50 files, 66.2MB
-```
+Sie müssen auch die Helm-Befehlszeilenschnittstelle installieren, bei der es sich um einen Client handelt, der auf Ihrem Entwicklungssystem ausgeführt wird und es Ihnen ermöglicht, Anwendungen zu starten, zu beenden und mit Helm zu verwalten. Wenn Sie Azure Cloud Shell verwenden, ist die Helm-CLI bereits installiert. Installationsanweisungen für Ihre lokale Plattform finden Sie unter [Installieren von Helm][helm-install].
 
 ## <a name="create-a-service-account"></a>Erstellen eines Dienstkontos
 
-Vor der Bereitstellung von Helm in einem RBAC-fähigen Cluster benötigen Sie ein Dienstkonto und eine Rollenbindung für den Tiller-Dienst. Weitere Informationen zum Sichern von Helm/Tiller in einem RBAC-fähigen Cluster finden Sie unter [Tiller, Namespaces und RBAC][tiller-rbac]. Überspringen Sie diesen Schritt, wenn Ihr Cluster nicht RBAC-fähig ist.
+Vor der Bereitstellung von Helm in einem RBAC-fähigen AKS-Cluster benötigen Sie ein Dienstkonto und eine Rollenbindung für den Tiller-Dienst. Weitere Informationen zum Sichern von Helm/Tiller in einem RBAC-fähigen Cluster finden Sie unter [Tiller, Namespaces und RBAC][tiller-rbac]. Überspringen Sie diesen Schritt, wenn Ihr AKS-Cluster nicht RBAC-fähig ist.
 
 Erstellen Sie eine Datei namens `helm-rbac.yaml`, und fügen Sie den folgenden YAML-Code ein:
 
@@ -62,7 +39,7 @@ metadata:
   name: tiller
   namespace: kube-system
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: tiller
@@ -76,10 +53,10 @@ subjects:
     namespace: kube-system
 ```
 
-Erstellen Sie das Dienstkonto und die Rollenbindung mithilfe des Befehls `kubectl create`:
+Erstellen Sie das Dienstkonto und die Rollenbindung mithilfe des Befehls `kubectl apply`:
 
 ```console
-kubectl create -f helm-rbac.yaml
+kubectl apply -f helm-rbac.yaml
 ```
 
 ## <a name="secure-tiller-and-helm"></a>Schützen von Tiller und Helm
@@ -96,7 +73,7 @@ Verwenden Sie den Befehl [helm init][helm-init], um Tiller in einem AKS-Cluster 
 helm init --service-account tiller
 ```
 
-Wenn Sie TLS/SSL zwischen Helm und Tiller konfiguriert haben, stellen Sie wie im folgenden Beispiel dargestellt die `--tiller-tls-`-Parameter und die Namen Ihrer eigenen Zertifikate bereit:
+Wenn Sie TLS/SSL zwischen Helm und Tiller konfiguriert haben, stellen Sie wie im folgenden Beispiel dargestellt die `--tiller-tls-*`-Parameter und die Namen Ihrer eigenen Zertifikate bereit:
 
 ```console
 helm init \
@@ -227,6 +204,16 @@ $ helm list
 
 NAME             REVISION    UPDATED                     STATUS      CHART              NAMESPACE
 wishful-mastiff  1           Thu Jul 12 15:53:56 2018    DEPLOYED    wordpress-2.1.3  default
+```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie ein Helm-Diagramm bereitstellen, werden eine Reihe von Kubernetes-Ressourcen erstellt. Diese Ressourcen enthalten Pods, Bereitstellungen und Dienste. Um diese Ressourcen zu bereinigen, verwenden Sie den Befehl `helm delete`. Geben Sie dabei den Namen Ihrer Version an, die Sie mit dem vorherigen Befehl `helm list` ermittelt haben. Im folgenden Beispiel wird die Version namens *wishful mastiff* gelöscht:
+
+```console
+$ helm delete wishful-mastiff
+
+release "wishful-mastiff" deleted
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

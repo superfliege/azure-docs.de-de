@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 10/13/2017
 ms.author: devinb
-ms.openlocfilehash: 90dd5df4a607568e2f3a60791da2948af7ce4e50
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: cd88dec2ad79ad9f4b4c004866060be86b777cd9
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24002929"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311183"
 ---
 # <a name="troubleshoot-visual-studio-2017-development-with-docker"></a>Problembehandlung bei der Entwicklung mit Docker in Visual Studio 2017
 
@@ -33,9 +33,13 @@ So lösen Sie dieses Problem:
 1. Wählen Sie **Freigegebene Laufwerke**, und geben Sie das Laufwerk an, auf dem sich das Projekt befindet.
 
 > [!NOTE]
-> Wenn Dateien als freigegeben angezeigt werden, müssen Sie möglicherweise noch auf den Link „Anmeldeinformationen zurücksetzen...“ im unteren Bereich des Dialogfelds klicken, um die Freigabe des Volumes erneut zu aktivieren.
+> Wenn Dateien als freigegeben angezeigt werden, müssen Sie möglicherweise noch auf den Link „Anmeldeinformationen zurücksetzen...“ im unteren Bereich des Dialogfelds klicken, um die Freigabe des Volumes erneut zu aktivieren. Zur Fortsetzung nach dem Zurücksetzen der Anmeldeinformationen müssen Sie möglicherweise Visual Studio neu starten.
 
 ![Freigegebene Laufwerke](./media/vs-azure-tools-docker-troubleshooting-docker-errors/shareddrives.png)
+
+## <a name="mounts-denied"></a>Verweigerte Einbindungen
+
+Wenn Sie Docker für macOS verwenden, tritt möglicherweise ein Fehler auf, der sich auf den Ordner „/usr/local/share/dotnet/sdk/NuGetFallbackFolder“ bezieht. Fügen Sie den Ordner der Registerkarte für die Dateifreigabe in Docker hinzu.
 
 ## <a name="unable-to-start-debugging"></a>Starten des Debuggens nicht möglich
 

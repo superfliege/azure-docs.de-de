@@ -10,48 +10,50 @@ ms.component: design
 ms.date: 10/07/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a6eedc0bac7aab69a9138f4f63d0d9d802e74dfc
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 428b9970471c9365812639e251810c571698a574
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228104"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49425955"
 ---
 # <a name="change-a-maintenance-schedule"></a>Ändern des Wartungszeitplans 
 
 ## <a name="portal"></a>Portal
-Ein Wartungszeitplan kann jederzeit aktualisiert oder geändert werden. Wenn die ausgewählte Instanz allerdings gerade einen aktiven Wartungszyklus durchläuft, werden die Einstellungen gespeichert und erst im nächsten erkannten Wartungszeitraum wieder aktiviert. Weitere Informationen zum Überwachen Ihrer Data Warehouse-Daten während eines aktiven Verwaltungsereignisses finden Sie [hier](https://docs.microsoft.com/azure/service-health/resource-health-overview). 
+Ein Wartungszeitplan kann jederzeit aktualisiert oder geändert werden. Falls die ausgewählte Instanz gerade einen aktiven Wartungszyklus durchläuft, werden die Einstellungen gespeichert. Sie werden dann im nächsten identifizierten Wartungszeitraum angewendet. Weitere Informationen zum Überwachen Ihrer Data Warehouse-Daten während eines aktiven Verwaltungsereignisses finden Sie [hier](https://docs.microsoft.com/azure/service-health/resource-health-overview). 
 
-In der Vorschau werden Sie gebeten, zwei Wartungsfenster in einem Zeitraum von sieben Tagen festzulegen. Jedes Wartungsfenster kann zwischen 3 und 8 Stunden umfassen, wobei 3 Stunden die derzeit kürzeste verfügbare Option ist. Es kann jederzeit eine Wartung innerhalb eines ermittelten Wartungsfenster ausgeführt werden, aber außerhalb dieses Zeitfensters erfolgt keine Wartung ohne vorherige Ankündigung. Während der Dienst neuen Code für Ihr Data Warehouse bereitstellt, ist außerdem die Konnektivität eingeschränkt. 
+Während der Vorschauphase von Azure-Wartungszeitplänen wählen Sie zwei Wartungsfenster innerhalb eines Zeitraums von sieben Tagen aus. Jedes Wartungsfenster kann zwischen drei und acht Stunden umfassen. Innerhalb eines Wartungsfensters kann die Wartung zu einem beliebigen Zeitpunkt erfolgen. Außerhalb eines Zeitfensters ist dagegen eine vorherige Benachrichtigung erforderlich. Darüber hinaus geht kurzzeitig die Konnektivität verloren, während der Dienst neuen Code in Ihrem Datawarehouse bereitstellt. 
 
-## <a name="identifying-the-primary-and-secondary-windows"></a>Ermitteln der primären und sekundären Fenster
+## <a name="identifying-the-primary-and-secondary-windows"></a>Angeben des primären und sekundären Fensters
 
-Die primären und sekundären Fenster müssen verschiedene Tage abdecken: z.B. das primäre Fenster Dienstag bis Donnerstag und das sekundäre Fenster Samstag und Sonntag
+Primäre und sekundäre Fenster müssen jeweils separate Tagesbereiche besitzen. Ein Beispiel wäre etwa ein primäres Fenster von Dienstag bis Donnerstag und ein sekundäres Fenster von Samstag bis Sonntag.
 
-Führen Sie die folgenden Schritte aus, um den Wartungszeitplan zu ändern, der auf Ihr Data Warehouse im Portal angewendet wurde.
+Führen Sie die folgenden Schritte aus, um den Wartungszeitplan für Ihr Data Warehouse zu ändern:
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2.  Wählen Sie das Data Warehouse aus, das Sie aktualisieren möchten. Die Seite wird auf dem Blatt „Übersicht“ geöffnet. 
-3.  Sie können auf die Seite mit den Einstellungen für den Wartungszeitplan zugreifen, indem Sie entweder auf dem Blatt „Übersicht“ auf den Zusammenfassungslink für den Wartungszeitplan (Vorschau) klicken oder indem Sie auf die Option „Wartungszeitplan“ links im Ressourcenmenü klicken.  
+3.  Klicken Sie auf dem Übersichtsblatt auf den Link **Maintenance Schedule (preview) summary** (Wartungszeitplan (Vorschauversion) – Zusammenfassung), um die Seite mit den Wartungszeitplaneinstellungen zu öffnen. Alternativ können Sie auch im Ressourcenmenü auf der linken Seite auf **Wartungszeitplan** klicken.  
 
     ![Optionen auf dem Blatt „Übersicht“](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 
-4. Sie können die bevorzugte Zeitspanne (in Tagen) für Ihr primäres Wartungsfenster über die Optionsfelder oben auf der Seite ermitteln. Dadurch bestimmen Sie, ob Ihr primäres Fenster Werktage oder Wochenendtage abdeckt. Durch Ihre Auswahl werden die folgenden Werte aus den einzelnen Dropdownmenüs entsprechend angepasst. Während der Vorschauphase unterstützen einige Regionen ggf. noch nicht alle verfügbaren Tage. Diese Werte werden in den kommenden Monate aktualisiert.
+4. Geben Sie mithilfe der Optionen im oberen Seitenbereich die bevorzugte Zeitspanne (in Tagen) für Ihr primäres Wartungsfenster an. Dadurch bestimmen Sie, ob Ihr primäres Fenster Werktage oder Wochenendtage abdeckt. Die Dropdownwerte werden auf der Grundlage Ihrer Auswahl aktualisiert. Während der Vorschauphase unterstützen einige Regionen ggf. noch nicht alle verfügbaren Optionen für **Tag**.
 
    ![Blatt „Wartungseinstellungen“](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
-5. Wählen Sie beliebige primäre und sekundäre Wartungsfenster aus. Wählen Sie dafür einen Tag, die Startzeit und ein Zeitfenster aus den jeweiligen Dropdownmenüs aus. Die Zusammenfassung des Zeitplans unten auf dem Blatt wird anhand der aus den Dropdownmenüs ausgewählten Werte aktualisiert.
+5. Wählen Sie über die Dropdown-Listenfelder Ihr bevorzugtes primäres und sekundäres Wartungsfenster aus:
+   - **Tag**: Der bevorzugte Tag, an dem die Wartungsarbeiten innerhalb des ausgewählten Zeitfensters durchgeführt werden sollen.
+   - **Startzeit**: Die bevorzugte Startzeit für das Wartungsfenster.
+   - **Zeitfenster**: Die bevorzugte Dauer des Zeitfensters.
 
-#### <a name="dropdown-options"></a>Dropdownmenüs
-- Tag: bevorzugter Tag, an dem innerhalb des ausgewählten Zeitfensters die Wartungsarbeiten durchgeführt werden soll
-- Startzeit: bevorzugte Startzeit des Wartungsfensters
-- Zeitfenster: bevorzugter Umfang des Zeitfensters
+   Der Bereich **Zusammenfassung des Zeitplans** am unteren Rand des Blatts wird anhand der ausgewählten Werte aktualisiert. 
+  
+6. Wählen Sie **Speichern**aus. Eine Meldung bestätigt, dass Ihr neuer Zeitplan jetzt aktiv ist. 
 
-  Wenn Sie Ihre Wartungsfenster ausgewählt haben, klicken Sie auf „Speichern“. Dann wird eine Nachricht angezeigt, in der bestätigt wird, das Ihr Wartungszeitplan jetzt aktiv ist. Wenn Sie einen Zeitplan in einer Region speichern, in der noch keine Wartungszeitpläne unterstützt werden, wird die folgende Meldung angezeigt. Ihre Einstellungen werden gespeichert und übernommen, sobald das Feature auch in Ihrer Region verfügbar ist.    
+   Wenn Sie einen Zeitplan in einer Region speichern, in der keine Wartungszeitpläne unterstützt werden, wird die folgende Meldung angezeigt. Ihre Einstellungen werden gespeichert und angewendet, sobald das Feature auch in Ihrer Region verfügbar ist.    
 
-    ![Meldung „In Region noch nicht aktiv“](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
+   ![Meldung zur regionalen Verfügbarkeit](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Weitere Informationen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) zu Webhookaktionen für Protokollwarnungsregeln
-- [Weitere Informationen](https://docs.microsoft.com/azure/service-health/service-health-overview) zu Azure Service Health
+- [Informieren Sie sich ausführlicher](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) über Webhookaktionen für Protokollwarnungsregeln.
+- [Informieren Sie sich ausführlicher](https://docs.microsoft.com/azure/service-health/service-health-overview) über Azure Service Health.
 
 

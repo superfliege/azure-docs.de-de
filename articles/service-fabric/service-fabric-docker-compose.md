@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 43845a55589be9550e64b4a491b7d3675fb22e8c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ff846717287fb2b125b549f6ca0de6c7908d4c35
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641780"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344812"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker Compose-Bereitstellungsunterstützung in Azure Service Fabric (Vorschau)
 
@@ -122,6 +122,15 @@ Diese Vorschauversion unterstützt nur einen Teil der verfügbaren Konfiguration
 * Volumen & Bereitstellen > Volumen
 
 Der Cluster muss für das Erzwingen von Ressourcengrenzwerten wie in [Service Fabric-Ressourcengovernance](service-fabric-resource-governance.md) beschrieben eingerichtet werden. Alle anderen Docker Compose-Direktiven werden in dieser Vorschauversion nicht unterstützt.
+
+### <a name="ports-section"></a>Abschnitt „Ports“
+
+Geben Sie entweder das HTTP- oder HTTPS-Protokoll im Abschnitt „Ports“ an, das vom Listener für den Service Fabric-Dienst verwendet wird. Dadurch wird sichergestellt, dass das Endpunktprotokoll ordnungsgemäß mit dem Naming Service veröffentlicht wird, damit der Reverseproxy die Anforderungen weiterleiten kann:
+* Geben Sie **/http** an, um zu unsicheren Service Fabric Compose-Diensten weiterzuleiten. Beispiel: - **"80:80/http"**.
+* Geben Sie **/https** an, um zu sicheren Service Fabric Compose-Diensten weiterzuleiten. Beispiel: - **"443:443/https"**.
+
+> [!NOTE]
+> Die Syntax der Portabschnitte für /http und /https ist spezifisch für Service Fabric, um die ordnungsgemäße URL für den Service Fabric Listener zu registrieren.  Wenn die Docker Compose-Dateisyntax programmgesteuert überprüft wird, kann dies zu einem Validierungsfehler führen.
 
 ## <a name="servicednsname-computation"></a>ServiceDnsName-Berechnung
 

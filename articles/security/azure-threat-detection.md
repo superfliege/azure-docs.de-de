@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9b688ca6faaa7e0d84dff0ae28e2a9b8b8279490
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 33a9cc0a7b3d18004e19d73a0d9b91bf33cdb055
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856877"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408828"
 ---
 # <a name="azure-advanced-threat-detection"></a>Erweiterte Bedrohungserkennung von Azure
 
-Azure enthält integrierte Funktionen zur erweiterten Bedrohungserkennung über Dienste wie Azure Active Directory (Azure AD), Azure Operations Management Suite (OMS) und Azure Security Center. Diese Auflistung von Sicherheitsdiensten und -funktionen bietet eine einfache und schnelle Möglichkeit zu verstehen, was innerhalb Ihrer Azure-Bereitstellungen abläuft.
+Azure enthält integrierte Funktionen zur erweiterten Bedrohungserkennung über Dienste wie Azure Active Directory (Azure AD), Azure Log Analytics und Azure Security Center. Diese Auflistung von Sicherheitsdiensten und -funktionen bietet eine einfache und schnelle Möglichkeit zu verstehen, was innerhalb Ihrer Azure-Bereitstellungen abläuft.
 
 Azure bietet eine Vielzahl von Optionen zum Konfigurieren und Anpassen der Sicherheit, um den Anforderungen Ihrer App-Bereitstellungen zu entsprechen. In diesem Artikel wird beschrieben, wie Sie diese Anforderungen erfüllen.
 
@@ -71,25 +71,25 @@ PIM ermöglicht Folgendes:
 
 -   Abrufen von Warnungen und Berichten zu Azure AD-Administratoren und Just-In-Time-Administratorzugriff (JIT) auf Microsoft-Onlinedienste, z.B. Office 365 und Intune
 
--   Abrufen von Berichten zum Administratorzugriffsverlauf und zu Änderungen bei Administratorzuweisungen
+-   Abrufen von Berichten zum Administratorzugriffsverlauf und zu Änderungen bei Administratorzuweisungen.
 
--   Aktivieren von Benachrichtigungen zum Zugriff auf eine privilegierte Rolle
+-   Aktivieren von Benachrichtigungen zum Zugriff auf eine privilegierte Rolle.
 
-## <a name="operations-management-suite"></a>Operations Management Suite
+## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist eine cloudbasierte IT-Verwaltungslösung von Microsoft, die das Verwalten und Schützen Ihrer lokalen und cloudbasierten Infrastruktur erleichtert. Da OMS als cloudbasierter Dienst implementiert wird, ist die Lösung mit minimalen Investitionen in Infrastrukturdienste schnell betriebsbereit. Neue Sicherheitsfeatures werden automatisch bereitgestellt, sodass Sie Kosten für die laufende Wartung und für Upgrades sparen.
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist eine cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen die Verwaltung und den Schutz Ihrer lokalen und cloudbasierten Infrastruktur erleichtert. Da Log Analytics als cloudbasierter Dienst implementiert wird, ist die Lösung mit minimalen Investitionen in Infrastrukturdienste schnell betriebsbereit. Neue Sicherheitsfeatures werden automatisch bereitgestellt, sodass Sie Kosten für die laufende Wartung und für Upgrades sparen.
 
-Zusätzlich zur Bereitstellung wertvoller Dienste kann OMS in System Center-Komponenten wie [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) integriert werden, um Ihre bestehenden Investitionen für die Sicherheitsverwaltung auf die Cloud zu erweitern. Durch die Kombination von System Center und OMS können Sie vollständig vom Hybrid-Management profitieren.
+Zusätzlich zur Bereitstellung wertvoller Dienste kann Log Analytics in System Center-Komponenten wie [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) integriert werden, um Ihre bestehenden Investitionen für die Sicherheitsverwaltung auf die Cloud zu erweitern. Durch die Kombination von System Center und Log Analytics können Sie vollständig vom Hybrid-Management profitieren.
 
 ### <a name="holistic-security-and-compliance-posture"></a>Ganzheitlicher Ansatz für den Sicherheits- und Konformitätsstatus
 
-Das [OMS-Dashboard für Sicherheit und Überwachung](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) ermöglicht mit integrierten Suchabfragen für relevante Probleme, die Ihre Aufmerksamkeit erfordern, einen umfassenden Einblick in die Lage der IT-Sicherheit Ihres Unternehmens. Das Dashboard für Sicherheit und Überwachung ist die Startseite für alle Aspekte, die sich in OMS auf die Sicherheit beziehen. Hier erhalten Sie einen allgemeinen Überblick über den Sicherheitszustand Ihres Computers. Sie können auch alle Ereignisse der letzten 24 Stunden, 7 Tage oder für einen anderen benutzerdefinierten Zeitraum anzeigen.
+Das [Log Analytics-Dashboard für Sicherheit und Überwachung](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) bietet dank integrierter Suchabfragen für relevante Probleme, die Ihre Aufmerksamkeit erfordern, einen umfassenden Einblick in die Lage der IT-Sicherheit Ihres Unternehmens. Das Dashboard „Sicherheit und Überwachung“ ist die Startseite für sämtliche Sicherheitsaspekte in Log Analytics. Hier erhalten Sie einen allgemeinen Überblick über den Sicherheitszustand Ihres Computers. Sie können auch alle Ereignisse der letzten 24 Stunden, 7 Tage oder für einen anderen benutzerdefinierten Zeitraum anzeigen.
 
-OMS-Dashboards helfen Ihnen dabei, den Gesamtsicherheitsstatus einer beliebigen Umgebung schnell und einfach im Kontext von IT-Vorgängen wie den Folgenden zu verstehen, z.B. Bewertung von Softwareupdates, Antischadsoftwarebewertung und Konfigurationsgrundwerte. Die Sicherheitsprotokolldaten sind leicht zugänglich, um die Überwachungsprozesse für Sicherheit und Konformität zu optimieren.
+Log Analytics hilft Ihnen dabei, den Gesamtsicherheitsstatus einer beliebigen Umgebung schnell und einfach im Kontext von IT-Vorgängen zu erfassen. Hierzu zählen unter anderem die Bewertung von Softwareupdates, Antischadsoftwarebewertungen und Konfigurationsgrundwerte. Die Sicherheitsprotokolldaten sind leicht zugänglich, um die Überwachungsprozesse für Sicherheit und Konformität zu optimieren.
 
-![OMS-Dashboard „Sicherheit und Überwachung“](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
+![Das Log Analytics-Dashboard „Sicherheit und Überwachung“](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
-Das OMS-Dashboard „Sicherheit und Überwachung“ ist in vier Hauptkategorien unterteilt:
+Das Log Analytics-Dashboard „Sicherheit und Überwachung“ ist in vier Hauptkategorien unterteilt:
 
 -   **Sicherheitsdomänen:** Ermöglichen es Ihnen, die Sicherheitsdatensätze in Abhängigkeit der Zeit näher zu untersuchen. Außerdem können Sie die Bereiche Bewertung von Schadsoftware, Updatebewertung, Anzeige der Netzwerksicherheit, Informationen zu Identität und Zugriff und Anzeige von Computern mit Sicherheitsereignissen nutzen und schnell auf das Azure Security Center-Dashboard zugreifen.
 
@@ -102,25 +102,25 @@ Das OMS-Dashboard „Sicherheit und Überwachung“ ist in vier Hauptkategorien 
 -   **Allgemeine Sicherheitsabfragen:** Diese Option liefert eine Liste mit den gängigsten Sicherheitsabfragen, die Sie zum Überwachen der Umgebung verwenden können. Wenn Sie eine Abfrage auswählen, wird der Suchbereich geöffnet, und die Ergebnisse der Abfrage werden angezeigt.
 
 ### <a name="insight-and-analytics"></a>Insight und Analytics
-Im Mittelpunkt von [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) steht das OMS-Repository, das von Azure gehostet wird.
+Im Mittelpunkt von [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) steht das Repository, das von Azure gehostet wird.
 
 ![Diagramm zu Insight und Analytics](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 Sie sammeln Daten von verbundenen Quellen im Repository, indem Sie Datenquellen konfigurieren und Ihrem Abonnement Lösungen hinzufügen.
 
-![OMS-Dashboard ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Das Log Analytics-Dashboard ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 Für Datenquellen und Lösungen werden jeweils separate Datensatztypen mit eigenen Eigenschaften erstellt, aber Sie können sie mit Abfragen für das Repository trotzdem zusammen analysieren. Sie können die gleichen Tools und Methoden verwenden, um mit den unterschiedlichsten Daten zu arbeiten, die über verschiedene Quellen erfasst werden.
 
 
-Der größte Teil der Interaktion mit Log Analytics erfolgt über das OMS-Portal, das in jedem Browser ausgeführt werden kann und Ihnen Zugriff auf Konfigurationseinstellungen und verschiedene Tools bietet, mit denen Sie die gesammelten Daten analysieren und mit den Daten agieren können. Im Portal können Sie Folgendes nutzen:
+Der größte Teil der Interaktion mit Log Analytics erfolgt über das Azure-Portal, das in jedem Browser verwendet werden kann und Ihnen Zugriff auf Konfigurationseinstellungen und verschiedene Tools bietet, mit denen Sie die gesammelten Daten analysieren und entsprechend reagieren können. Im Portal können Sie Folgendes nutzen:
 * [Protokollsuchen](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches), mit denen Sie Abfragen zum Analysieren von gesammelten Daten erstellen.
 * [Dashboards](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards), die Sie mit grafischen Ansichten Ihrer wertvollsten Suchen anpassen können.
 * [Lösungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), mit denen zusätzliche Funktionen und Analysetools bereitgestellt werden.
 
 ![Analysetools](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-Lösungen fügen Log Analytics weitere Funktionalität hinzu. Sie werden primär in der Cloud ausgeführt und ermöglichen die Analyse von Daten, die im OMS-Repository gesammelt wurden. Lösungen definieren ggf. auch neue Datensatztypen, die gesammelt und mit Protokollsuchvorgängen oder über eine zusätzliche Benutzeroberfläche analysiert werden können, die von der Lösung im OMS-Dashboard bereitgestellt wird.
+Lösungen fügen Log Analytics weitere Funktionalität hinzu. Sie werden primär in der Cloud ausgeführt und ermöglichen die Analyse von Daten, die im Log Analytics-Repository gesammelt wurden. Lösungen definieren ggf. auch neue Datensatztypen, die gesammelt und mit Protokollsuchvorgängen oder über eine zusätzliche Benutzeroberfläche analysiert werden können, die von der Lösung auf dem Log Analytics-Dashboard bereitgestellt wird.
 
 Das Dashboard „Sicherheit und Überwachung“ ist ein Beispiel für diese Arten von Lösungen.
 
@@ -150,7 +150,7 @@ Sicherheitswarnungen werden in Security Center zusammen mit Empfehlungen zur Lö
 
 Für Security Center werden professionelle Sicherheitsanalysen genutzt, die weit über signaturbasierte Ansätze hinausgehen. Bahnbrechende Neuerungen der Big Data- und [Machine Learning](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)-Technologie werden genutzt, um Ereignisse übergreifend für die gesamte Cloud-Fabric auszuwerten. Mit der erweiterten Analyse können Bedrohungen erkannt werden, die mit manuellen Ansätzen und der Vorhersage zur Entwicklung von Angriffen nicht identifiziert werden können. Diese Arten von Lösungen für die Sicherheitsanalyse werden in den nächsten Abschnitten beschrieben.
 
-### <a name="threat-intelligence"></a>Informationen zu Bedrohungen
+### <a name="threat-intelligence"></a>Bedrohungsanalyse
 
 Microsoft verfügt über Zugriff auf eine große Menge von Informationen zu globalen Bedrohungen.
 
@@ -321,9 +321,9 @@ Die API zur Erkennung von Anomalien ist eine effektive und effiziente Lösung f�
 
 - IT-Abteilungen benötigen Tools zum zeitnahen Überwachen von Ereignissen, Fehlercodes, Nutzungsprotokollen und Leistung (CPU, Arbeitsspeicher usw.).
 
--   Für Online Commerce-Websites sollen Kundenaktivitäten, Seitenaufrufe, Klicks usw. nachverfolgt werden.
+-   Online Commerce-Websites möchten Kundenaktivitäten, Seitenaufrufe, Klicks usw. nachverfolgen.
 
--   Für Versorgungsunternehmen sollen der Verbrauch von Wasser, Gas, Strom und anderen Ressourcen nachverfolgt werden.
+-   Versorgungsunternehmen möchten den Verbrauch von Wasser, Gas, Strom und anderen Ressourcen nachverfolgen.
 
 -   Für Einrichtungs- und Gebäudemanagementdienste sollen Temperatur, Feuchtigkeit, Datenverkehr usw. überwacht werden.
 

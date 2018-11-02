@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
 ms.author: pullabhk
-ms.openlocfilehash: 1f3b81c31dc566e5e3011167eee00145f6791cb1
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d38da87bae07dadb10894593dd41ded22f5f162d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616908"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638306"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -45,7 +45,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
 4. Wählen Sie im Dropdownmenü **Wiederherstellungspunkt auswählen** den Wiederherstellungspunkt mit den gewünschten Dateien aus. Standardmäßig ist der letzte Wiederherstellungspunkt bereits ausgewählt.
 
-5. Klicken Sie auf **Ausführbare Datei herunterladen** (bei einem virtuellen Microsoft Azure-Computer) oder **Skript herunterladen** (bei einem virtuellen Linux-Azure-computer), um die Software zum Kopieren von Dateien aus dem Wiederherstellungspunkt herunterzuladen.
+5. Klicken Sie auf **Ausführbare Datei herunterladen** (bei einem virtuellen Microsoft Azure-Computer) oder **Skript herunterladen** (bei einem virtuellen Linux-Azure-Computer), um die Software zum Kopieren von Dateien aus dem Wiederherstellungspunkt herunterzuladen.
 
     ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/download-executable.png)
 

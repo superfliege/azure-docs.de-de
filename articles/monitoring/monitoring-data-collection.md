@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8d3e0874637bc3f13905c6038349b34c18b5fe56
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406039"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637796"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Von Azure Monitor gesammelte Überwachungsdaten
 [Azure Monitor](../azure-monitor/overview.md) ist ein Dienst, der Sie bei der Überwachung Ihrer Anwendungen und der Ressourcen, auf denen sie aufbauen, unterstützt. Im Zentrum dieser Funktionalität steht die Speicherung von Telemetriedaten und weiteren Daten aus überwachten Ressourcen. Dieser Artikel enthält eine vollständige Beschreibung der Weise, in der diese Daten von Azure Monitor gespeichert und verwendet werden.
@@ -108,7 +108,7 @@ Dies sind einige der Aufgaben, die Sie mit Metriken ausführen können:
 
 
 ### <a name="viewing-metrics"></a>Anzeigen von Metriken
-Metriken in Azure werden im Azure Monitor-Metrikspeicher gesammelt. Dieser ist eine Zeitreihendatenbank, die für den schnellen Abruf optimiert ist und Metrikwerte 93 Tage lang speichert. Kopieren Sie Metriken zur langfristigen Analyse und Trendanalyse nach Log Analytics.
+Metriken in Azure werden in der Azure Monitor-Metrikdatenbank gesammelt. Dieser ist eine Zeitreihendatenbank, die für den schnellen Abruf optimiert ist und Metrikwerte 93 Tage lang speichert. Kopieren Sie Metriken zur langfristigen Analyse und Trendanalyse nach Log Analytics.
 
 Metrikdaten werden auf vielfältige Weise verwendet, wie oben beschrieben. Verwenden Sie den [Metrik-Explorer](../monitoring-and-diagnostics/monitoring-metric-charts.md), um die Daten in Ihrem Metrikspeicher direkt zu analysieren und die Werte mehrerer Metriken im zeitlichen Verlauf in Diagrammen darzustellen. Sie können die Diagramme interaktiv nutzen oder an ein Dashboard anheften, um sie mit anderen Visualisierungstools anzuzeigen. Zudem haben Sie die Möglichkeit, Metriken mit der [REST-API für die Azure-Überwachung](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) abzurufen.
 
@@ -173,7 +173,7 @@ Sie können Metriken in Log Analytics kopieren, um komplexe Analysen mit anderen
 Eine Anleitung zum Sammeln von Metriken aus Azure-Ressourcen finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics](../log-analytics/log-analytics-azure-storage.md). Informationen zum Sammeln von Ressourcenmetriken aus Azure-PaaS-Ressourcen finden Sie unter [Konfigurieren der Sammlung von Azure-PaaS-Ressourcenmetriken mit Log Analytics](../log-analytics/log-analytics-collect-azurepass-posh.md).
 
 ### <a name="logs-to-metrics"></a>Protokolle auf Metriken
-Wie oben beschrieben, sind Metriken reaktionsschneller als Protokolle, sodass Sie Warnungen mit geringerer Wartezeit und zu geringeren Kosten erstellen können. Log Analytics sammelt eine bedeutende Menge an numerischen Daten, die für Metriken geeignet wären, aber nicht im Azure-Metrikspeicher gespeichert sind.  Ein häufiges Beispiel sind aus Agents und Verwaltungslösungen gesammelte Leistungsdaten. Einige dieser Werte können in den Metrikspeicher kopiert werden, wo sie für Warnungen und Analysen mit dem Metrik-Explorer zur Verfügung stehen.
+Wie oben beschrieben, sind Metriken reaktionsschneller als Protokolle, sodass Sie Warnungen mit geringerer Wartezeit und zu geringeren Kosten erstellen können. Log Analytics sammelt eine bedeutende Menge an numerischen Daten, die für Metriken geeignet wären, aber nicht in der Azure-Metrikdatenbank gespeichert sind.  Ein häufiges Beispiel sind aus Agents und Verwaltungslösungen gesammelte Leistungsdaten. Einige dieser Werte können in die Metrikdatenbank kopiert werden, wo sie für Warnungen und Analysen mit dem Metrik-Explorer zur Verfügung stehen.
 
 Erläuterungen zu diesem Feature finden Sie unter [Erstellen von Metrikwarnungen für Protokolle in Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md). Die Liste der unterstützten Werte finden Sie unter [Unterstützte Metriken von Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
 

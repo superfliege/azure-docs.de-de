@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/13/2018
+ms.date: 10/16/2018
 ms.author: raiye
-ms.openlocfilehash: 239482151384ff555d86e3d639bfe1d75b0d0ceb
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 5a9f8e332aae72d6fb0ce2f697a41391a51c44b6
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604891"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376668"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen. 
@@ -43,6 +43,9 @@ Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Ent
 
 ## <a name="news-updates"></a>Neuigkeiten
 
+###### <a name="october-12-2018"></a>**12. Oktober 2018**
+Das Gastbetriebssystem für September wurde veröffentlicht.
+
 ###### <a name="september-12-2018"></a>**12. September 2018**
 Das Gastbetriebssystem für August wurde veröffentlicht.
 
@@ -58,28 +61,6 @@ Das Gastbetriebssystem für Mai wurde veröffentlicht.
 ###### <a name="may-4-2018"></a>**4. Mai 2018**
 Das Gastbetriebssystem für April wurde veröffentlicht.
 
-###### <a name="april-6-2018"></a>**6. April 2018**
-Das Gastbetriebssystem für März wurde veröffentlicht.
-
-###### <a name="march-19-2018"></a>**19. März 2018**
-Das Gast-BS für Februar wurde veröffentlicht.
-
-###### <a name="january-29-2018"></a>**29. Januar 2018**
-Das Januar-Gastbetriebssystem wurde für die Betriebssystemfamilien 2 (WA-GUEST-OS-2.70_201801-01) und 3 (WA-GUEST-OS-3.57_201801-01) veröffentlicht.
-
-###### <a name="january-4-2018"></a>**4. Januar 2018**
-Das Januar-Gastbetriebssystem wurde für Betriebssystemfamilien vom Typ 4 (WA-GUEST-OS-4.50_201801-01) und 5 (WA-GUEST-OS-5.15_201801-01) veröffentlicht und enthält wichtige Sicherheitspatches.  
-
-###### <a name="january-4-2018"></a>**4. Januar 2018**
-Das Gastbetriebssystem für Dezember wurde veröffentlicht.
-
-###### <a name="december-14-2017"></a>**14. Dezember 2017**
-Das Gastbetriebssystem für November wurde veröffentlicht.
-
-###### <a name="november-8-2017"></a>**8. November 2017**
-Das Gastbetriebssystem für Oktober wurde veröffentlicht.
-
-
 
 ## <a name="releases"></a>Releases
 ## <a name="family-5-releases"></a>Releases von Familie 5
@@ -93,18 +74,12 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
+| WA-GUEST-OS-5.23_201809-01 |12. Oktober 2018 |Post 5.25 |
 | WA-GUEST-OS-5.22_201808-01 |12. September 2018 |Post 5.24 |
-| WA-GUEST-OS-5.21_201807-02 |3. August 2018 |Post 5.23 |
+|~~WA-GUEST-OS-5.21_201807-02~~ |3. August 2018 |12. Oktober 2018 |
 |~~WA-GUEST-OS-5.20_201806-01~~ |3. Juli 2018 |12. September 2018 |
 |~~WA-GUEST-OS-5.19_201805-01~~ |1. Juni 2018 |3. August 2018 |
 |~~WA-GUEST-OS-5.18_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
-|~~WA-GUEST-OS-5.17_201803-01~~ |6. April 2018 |1. Juni 2018|
-|~~WA-GUEST-OS-5.16_201802-01~~ |12. März 2018 |4. Mai 2018 |
-|~~WA-GUEST-OS-5.15_201801-01~~ |4. Januar 2018 |6. April 2018 |
-|~~WA-GUEST-OS-5.14_201712-01~~ |4. Januar 2018 |12. März 2018 |
-|~~WA-GUEST-OS-5.13_201711-01~~ |14. Dezember 2017 |4. Januar 2018|
-|~~WA-GUEST-OS-5.12_201710-02~~ |8. November 2017 |4. Januar 2018 |
-
 
 ## <a name="family-4-releases"></a>Releases von Familie 4
 **Windows Server 2012 R2**
@@ -113,18 +88,12 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
+| WA-GUEST-OS-4.58_201809-01 |12. Oktober 2018 |Post 4.60 |
 | WA-GUEST-OS-4.57_201808-01 |12. September 2018 |Post 4.59 |
-| WA-GUEST-OS-4.56_201807-02 |3. August 2018 |Post 4.58 |
+|~~WA-GUEST-OS-4.56_201807-02~~ |3. August 2018 |12. Oktober 2018 |
 |~~WA-GUEST-OS-4.55_201806-01~~ |3. Juli 2018 |12. September 2018 |
 |~~WA-GUEST-OS-4.54_201805-01~~ |1. Juni 2018 |3. August 2018 |
 |~~WA-GUEST-OS-4.53_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
-|~~WA-GUEST-OS-4.52_201803-01~~ |6. April 2018 |1. Juni 2018 |
-|~~WA-GUEST-OS-4.51_201802-01~~ |12. März 2018 |4. Mai 2018 |
-|~~WA-GUEST-OS-4.50_201801-01~~ |4. Januar 2018 |6. April 2018 |
-|~~WA-GUEST-OS-4.49_201712-01~~ |4. Januar 2018 |12. März 2018 |
-|~~WA-GUEST-OS-4.48_201711-01~~ |14. Dezember 2017 |4. Januar 2018 |
-|~~WA-GUEST-OS-4.47_201710-02~~ |8. November 2017 |4. Januar 2018 |
-
 
 ## <a name="family-3-releases"></a>Releases von Familie 3
 **Windows Server 2012**
@@ -133,18 +102,12 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
+| WA-GUEST-OS-3.65_201809-01 |12. Oktober 2018 |Post 3.67 |
 | WA-GUEST-OS-3.64_201808-01 |12. September 2018 |Post 3.66 |
-| WA-GUEST-OS-3.63_201807-02 |3. August 2018 |Post 3.65 |
+|~~WA-GUEST-OS-3.63_201807-02~~ |3. August 2018 |12. Oktober 2018 |
 |~~WA-GUEST-OS-3.62_201806-01~~ |3. Juli 2018 |12. September 2018 |
 |~~WA-GUEST-OS-3.61_201805-01~~ |1. Juni 2018 |3. August 2018 |
 |~~WA-GUEST-OS-3.60_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
-|~~WA-GUEST-OS-3.59_201803-01~~ |6. April 2018 |1. Juni 2018 |
-|~~WA-GUEST-OS-3.58_201802-01~~ |19. März 2018 |4. Mai 2018 |
-|~~WA-GUEST-OS-3.57_201801-01~~ |29. Januar 2018 |6. April 2018 |
-|~~WA-GUEST-OS-3.56_201712-01~~ |4. Januar 2018 |19. März 2018 |
-|~~WA-GUEST-OS-3.55_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |
-|~~WA-GUEST-OS-3.54_201710-02~~ |8. November 2017 |4. Januar 2018 |
-
 
 ## <a name="family-2-releases"></a>Releases von Familie 2
 **Windows Server 2008 R2 SP1**
@@ -153,20 +116,12 @@ Installierte .NET Framework-Versionen: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
+| WA-GUEST-OS-2.78_201809-01 |12. Oktober 2018 |Post 2.80 |
 | WA-GUEST-OS-2.77_201808-01 |12. September 2018 |Post 2.79 |
-| WA-GUEST-OS-2.76_201807-02 |3. August 2018 |Post 2.78 |
+|~~WA-GUEST-OS-2.76_201807-02~~ |3. August 2018 |12. Oktober 2018 |
 |~~WA-GUEST-OS-2.75_201806-01~~ |3. Juli 2018 |12. September 2018 |
 |~~WA-GUEST-OS-2.74_201805-01~~ |1. Juni 2018 |3. August 2018|
 |~~WA-GUEST-OS-2.73_201804-01~~ |4. Mai 2018 |3. Juli 2018 |
-|~~WA-GUEST-OS-2.72_201803-01~~ |6. April 2018 |1. Juni 2018 |
-|~~WA-GUEST-OS-2.71_201802-01~~ |12. März 2018 |4. Mai 2018 |
-|~~WA-GUEST-OS-2.70_201801-01~~ |29. Januar 2018 |6. April 2018 |
-|~~WA-GUEST-OS-2.69_201712-01~~ |4. Januar 2018 |12. März 2018 |
-|~~WA-GUEST-OS-2.68_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |
-|~~WA-GUEST-OS-2.67_201710-02~~ |8. November 2017 |4. Januar 2018 |
-|~~WA-GUEST-OS-2.66_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |
-|~~WA-GUEST-OS-2.65_201708-01~~ |24. August 2017 |14. Dezember 2017 |
-
 
 ## <a name="msrc-patch-updates"></a>MSRC-Patch-Updates
 Die Liste der Patches, die in den einzelnen monatlichen Gastbetriebssystemreleases enthalten sind, steht [hier][patches] zur Verfügung.
@@ -189,7 +144,7 @@ Das Fenster zwischen dem **Deaktivierungsdatum** und dem **Ablaufdatum** bietet 
 
 Wenn das **Ablaufdatum** überschritten ist, wird jeder Clouddienst, der dieses Gastbetriebssystem weiterhin verwendet, angehalten oder gelöscht bzw. es wird ein Upgrade erzwungen. Erfahren Sie [hier][retirepolicy] mehr über die Deaktivierungsrichtlinie.
 
-## <a name="guest-os-family-version-explanation"></a>Erläuterung zu den Versionen der Gast-BS-Familie
+## <a name="guest-os-family-version-explanation"></a>Erläuterung zu den Versionen der Gastbetriebssystemfamilie
 Die Gastbetriebssystemfamilien basieren auf veröffentlichten Versionen von Microsoft Windows Server. Das Gastbetriebssystem ist das zugrunde liegende Betriebssystem, auf dem Azure Cloud Services ausgeführt wird. Jedes Gastbetriebssystem verfügt über eine Familien-, eine Versions- und eine Releasenummer.
 
 * **Guest OS family**  

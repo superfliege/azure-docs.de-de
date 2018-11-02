@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: srrengar
-ms.openlocfilehash: f99206fe673f69c78bf130026207ed58344ccea5
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: bc86ef5a32e08bc00b5a2fa53dccb8d6313f167b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324424"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230984"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Leistungsüberwachung mit der Microsoft Azure-Diagnoseerweiterung
 
-In diesem Artikel erfahren Sie, wie Sie die Erfassung von Leistungsindikatoren über die Microsoft Azure-Diagnoseerweiterung für Windows-Cluster einrichten. Für Linux-Cluster muss der [OMS-Agent](service-fabric-diagnostics-oms-agent.md) eingerichtet werden, um Leistungsindikatoren für die Knoten zu erfassen. 
+In diesem Artikel erfahren Sie, wie Sie die Erfassung von Leistungsindikatoren über die Microsoft Azure-Diagnoseerweiterung für Windows-Cluster einrichten. Für Linux-Cluster muss der [Log Analytics-Agent](service-fabric-diagnostics-oms-agent.md) eingerichtet werden, um Leistungsindikatoren für die Knoten zu erfassen. 
 
  > [!NOTE]
 > Die Microsoft Azure-Diagnoseerweiterung muss in Ihrem Cluster bereitgestellt sein, damit diese Schritte funktionieren. Falls sie nicht eingerichtet ist, helfen Ihnen die Informationen unter [Ereignisaggregation und -sammlung mit der Microsoft Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md) weiter.  
@@ -115,7 +115,7 @@ Hier ist ein Beispiel für eine Konfiguration mit dem Leistungsindikator für *T
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. Nachdem der Rollout des Upgrades abgeschlossen ist (Dauer: 15 bis 45 Minuten), sollten die Leistungsindikatoren per Microsoft Azure-Diagnose erfasst und an die Tabelle „WADPerformanceCountersTable“ in dem Speicherkonto gesendet werden, das dem Cluster zugeordnet ist. Sie können die Leistungsindikatoren in Application Insights anzeigen, indem Sie [die AI-Senke der Resource Manager-Vorlage hinzufügen](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template).
+5. Nachdem der Rollout des Upgrades abgeschlossen ist (Dauer: 15 bis 45 Minuten), sollten die Leistungsindikatoren per Microsoft Azure-Diagnose erfasst und an die Tabelle „WADPerformanceCountersTable“ in dem Speicherkonto gesendet werden, das dem Cluster zugeordnet ist. Sie können die Leistungsindikatoren in Application Insights anzeigen, indem Sie [die AI-Senke der Resource Manager-Vorlage hinzufügen](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfassen Sie weitere Leistungsindikatoren für Ihren Cluster. Eine Liste mit Leistungsindikatoren, die Sie erfassen sollten, finden Sie unter [Leistungsmetriken](service-fabric-diagnostics-event-generation-perf.md).

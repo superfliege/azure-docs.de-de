@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3b014ce4c91d1dc9fae744ef4b528c98f9f787b3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a353fe3803b2d93c151559076960df06eb260bfe
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164318"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426412"
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>Überwachen eines Azure Container Service-Clusters mit Log Analytics
 
@@ -69,7 +69,7 @@ Weitere Informationen zur Containerlösung finden Sie unter [Log Analytics-Conta
 
 ### <a name="obtain-your-workspace-id-and-key"></a>Abrufen von Arbeitsbereichs-ID und -Schlüssel
 Damit der Log Analytics-Agent mit dem Dienst kommunizieren kann, muss er mit einer Arbeitsbereichs-ID und einem Arbeitsbereichsschlüssel konfiguriert werden. Um die Arbeitsbereichs-ID und den Schlüssel zu erhalten, müssen Sie unter <https://mms.microsoft.com> ein Konto erstellen.
-Führen Sie die entsprechenden Schritte aus, um ein Konto zu erstellen. Nachdem Sie das Konto erstellt haben, müssen Sie Ihre ID und Ihren Schlüssel abrufen. Klicken Sie hierzu wie unten gezeigt auf **Einstellungen** > **Verbundene Quellen** > **Linux-Server**.
+Führen Sie die entsprechenden Schritte aus, um ein Konto zu erstellen. Ist die Erstellung des Kontos abgeschlossen, können Sie Ihre ID und den Schlüssel abrufen, indem Sie auf das Blatt **Log Analytics** und dann auf den Namen Ihres Arbeitsbereichs klicken. Wählen Sie dann wie nachfolgend gezeigt **Erweiterte Einstellungen**, **Verbundene Quellen** und dann **Linux-Server**, um die erforderlichen Informationen anzuzeigen.
 
  ![](media/container-service-monitoring-oms/image5.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 38a026e8995bb7384c866dcd2f12588ca816009f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205772"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232493"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Nachdem nun Ereignisse in Azure Storage aggregiert werden, können Sie als Näch
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Bereitstellen der Diagnoseerweiterung über Azure Resource Manager
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Erstellen eines Clusters mit der Diagnoseerweiterung
-Wenn Sie einen Cluster mithilfe von Resource Manager erstellen möchten, müssen Sie der vollständigen Resource Manager-Vorlage vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+Wenn Sie einen Cluster mithilfe von Resource Manager erstellen möchten, müssen Sie der vollständigen Resource Manager-Vorlage vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
 Öffnen Sie die Datei „azuredeploy.json“ und suchen nach **IaaSDiagnostics**, um die Diagnoseeinstellung in der Resource Manager-Vorlage anzuzeigen. Klicken Sie zum Erstellen eines Clusters mit dieser Vorlage einfach auf die Schaltfläche **In Azure bereitstellen** (unter dem oben angegebenen Link).
 
@@ -223,7 +223,7 @@ Protokolle aus zusätzlichen Kanälen sind auch für die Sammlung verfügbar; im
 >Dieser Kanal hat ein sehr hohes Ereignisvolumen, sodass bei Aktivierung der Sammlung von Ereignissen aus diesem ausführlichen Kanal schnell zahlreiche Ablaufverfolgungen erstellt werden, und kann viel Speicherkapazität verbrauchen. Aktivieren Sie dies also nur, wenn es unbedingt erforderlich ist.
 
 
-Um **Basisdaten und Messagingkanal** unserer Empfehlung für umfassende Protokollierung zu aktivieren, würde die `EtwManifestProviderConfiguration` in `WadCfg` Ihrer Vorlage wie folgt aussehen:
+Um den **Basisbetriebskanal** unserer Empfehlung für umfassende Protokollierung bei geringstmöglichen Störungen zu aktivieren, würde die `EtwManifestProviderConfiguration` in `WadCfg` Ihrer Vorlage wie folgt aussehen:
 
 ```json
   "WadCfg": {
@@ -251,7 +251,7 @@ Um **Basisdaten und Messagingkanal** unserer Empfehlung für umfassende Protokol
               {
                 "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
                 "scheduledTransferLogLevelFilter": "Information",
-                "scheduledTransferKeywordFilter": "4611686018427387928",
+                "scheduledTransferKeywordFilter": "4611686018427387904",
                 "scheduledTransferPeriod": "PT5M",
                 "DefaultEvents": {
                   "eventDestination": "ServiceFabricSystemEventTable"
@@ -292,7 +292,7 @@ Wenn Sie eine Application Insights-Senke verwenden (siehe dazu den folgenden Abs
 
 ## <a name="send-logs-to-application-insights"></a>Senden von Protokollen an Application Insights
 
-Das Senden von Überwachungs- und Diagnosedaten an Application Insights (AI) kann als Teil der WAD-Konfiguration erfolgen. Wenn Sie AI für die Ereignisanalyse und -visualisierung verwenden, finden Sie unter [Hinzufügen der AI-Senke zur Resource Manager-Vorlage](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template) weitere Informationen zum Einrichten einer AI-Senke als Teil von „WadCfg“.
+Das Senden von Überwachungs- und Diagnosedaten an Application Insights (AI) kann als Teil der WAD-Konfiguration erfolgen. Wenn Sie AI für die Ereignisanalyse und -visualisierung verwenden, finden Sie unter [Hinzufügen der AI-Senke zur Resource Manager-Vorlage](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template) weitere Informationen zum Einrichten einer AI-Senke als Teil von „WadCfg“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
