@@ -51,7 +51,7 @@ So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
 6. Überprüfen Sie die **Wiederherstellungsauswahl**. Überprüfen Sie Datum und Uhrzeit der wiederhergestellten Sicherungskopie sowie die Quelle, aus der die Sicherungskopie erstellt wurde. Wenn die Auswahl fehlerhaft ist, klicken Sie auf **Abbrechen** , und navigieren Sie zur Registerkarte "Wiederherstellung", um dort den richtigen Wiederherstellungspunkt auszuwählen. Wenn die Auswahl richtig ist, klicken Sie auf **Weiter**.
 
     ![Zusammenfassung zur externen DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
-7. Wählen Sie **An anderem Speicherort wiederherstellen**aus. **Durchsuchen** und den richtigen Speicherort für die Wiederherstellung auswählen.
+7. Wählen Sie **An anderem Speicherort wiederherstellen**aus. Klicken Sie auf **Durchsuchen**, um den richtigen Speicherort für die Wiederherstellung auszuwählen.
 
     ![Alternativer Speicherort für externe DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
 8. Wählen Sie die gewünschte Option aus: **Kopie erstellen**, **Überspringen** oder **Überschreiben**.
