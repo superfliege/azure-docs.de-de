@@ -1,26 +1,27 @@
 ---
 title: Informationen zur Sprachübersetzung
+titlesuffix: Azure Cognitive Services
 description: Übersicht über die Funktionen der Sprachübersetzung
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: erhopf
-ms.openlocfilehash: f3c22589270ccee2c60ca5ea5b15047d9c81fabe
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165436"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469142"
 ---
 # <a name="about-the-speech-translation-api"></a>Informationen zur Sprachübersetzungs-API
 
-Mit der Sprach-API von Microsoft können Sie End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen zu Ihren Anwendungen, Tools und Geräten hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden.
+Mit der Speech-Dienst-API können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden.
 
-Mit der Sprachübersetzungs-API von Microsoft streamen Clientanwendungen Spracheingaben an den Dienst und empfangen einen Stream mit Ergebnissen. Diese Ergebnisse umfassen den erkannten Text in der Quellsprache und die zugehörige Übersetzung in der Zielsprache. Vorläufige Übersetzungen können so lange bereitgestellt werden, bis eine Äußerung vollständig ist. Zu diesem Zeitpunkt wird dann eine finale Übersetzung zur Verfügung gestellt.
+Mit der Sprachübersetzungs-API streamen Clientanwendungen Spracheingaben an den Dienst und empfangen einen Stream mit Ergebnissen. Diese Ergebnisse umfassen den erkannten Text in der Quellsprache und die zugehörige Übersetzung in der Zielsprache. Vorläufige Übersetzungen können so lange bereitgestellt werden, bis eine Äußerung vollständig ist. Zu diesem Zeitpunkt wird dann eine finale Übersetzung zur Verfügung gestellt.
 
 Optional kann eine synthetisierte Audioversion der finalen Übersetzung vorbereitet werden, wodurch eine korrekte Speech-to-Speech-Übersetzung ermöglicht wird.
 

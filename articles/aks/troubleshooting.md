@@ -7,19 +7,19 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287538"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025343"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 Beim Erstellen oder Verwalten von AKS-Clustern können gelegentlich Probleme auftreten. In diesem Artikel werden einige allgemeine Probleme und Schritte zur Problembehandlung ausführlich erläutert.
 
 ### <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-issues"></a>Wo finde ich im Allgemeinen Informationen zum Debuggen von Problemen mit Kubernetes?
 
-[Hier] (https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) ist ein offizieller Link zur Problembehandlung von Kubernetes-Clustern.)
+[Hier](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) ist ein offizieller Link zur Problembehandlung von Kubernetes-Clustern.
 [Hier](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md) finden Sie einen Link zu einem Leitfaden zur Problembehandlung, das von einem Microsoft-Techniker veröffentlicht wurde und sich mit der Problembehandlung von Pods, Knoten, Clustern usw. befasst.
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>Während der Erstellung oder Durchführung eines Upgrades erhalte ich die Fehlermeldung, dass das Kontingent überschritten wurde. Wie sollte ich vorgehen? 

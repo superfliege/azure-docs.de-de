@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 3154a2f8b283f68ec3e10ba621ccba3ee6d77de2
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 82cfa9e62dcc6b3a72dcb1ccf97f1f52a88a75c4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44324749"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404102"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure
 Dieser Artikel enthält eine Liste mit verfügbaren [Verwaltungslösungen](monitoring-solutions.md) von Microsoft sowie Links zur entsprechenden ausführlichen Dokumentation.  Außerdem finden Sie hier Informationen zur jeweiligen Methode und Häufigkeit der Datensammlung in Log Analytics.  Anhand der Informationen in diesem Artikel können Sie sich über die verschiedenen verfügbaren Lösungen informieren sowie den Datenfluss und die Verbindungsanforderungen für unterschiedliche Verwaltungslösungen nachvollziehen. 
@@ -34,12 +34,12 @@ Erläuterung der Spalten:
 - **Operations Manager**: Gleicher Agent wie Microsoft Monitoring Agent. In dieser Konfiguration besteht eine [Verbindung mit einer Operations Manager-Verwaltungsgruppe](../log-analytics/log-analytics-om-agents.md), die wiederum mit Log Analytics verbunden ist. 
 -  **Azure Storage**: Die Lösung sammelt Daten aus einem Azure-Speicherkonto. 
 - **Operations Manager erforderlich?**: Für die Datensammlung durch die Verwaltungslösung wird eine verbundene Operations Manager-Verwaltungsgruppe benötigt. 
-- **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten**: Wenn der Agent [mit einer SCOM-Verwaltungsgruppe verbunden](../log-analytics/log-analytics-om-agents.md) ist, werden Daten vom Verwaltungsserver an Log Analytics gesendet. In diesem Fall muss der Agent nicht direkt mit Log Analytics verbunden sein. Falls diese Spalte keinen Eintrag enthält, werden Daten vom Agent direkt an Log Analytics gesendet, auch wenn der Agent mit einer SCOM-Verwaltungsgruppe verbunden ist. Dazu muss er entweder mit Log Analytics oder über ein [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) kommunizieren können.
+- **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten**: Wenn der Agent [mit einer SCOM-Verwaltungsgruppe verbunden](../log-analytics/log-analytics-om-agents.md) ist, werden Daten vom Verwaltungsserver an Log Analytics gesendet. In diesem Fall muss der Agent nicht direkt mit Log Analytics verbunden sein. Falls diese Spalte keinen Eintrag enthält, werden Daten vom Agent direkt an Log Analytics gesendet, auch wenn der Agent mit einer SCOM-Verwaltungsgruppe verbunden ist. Dazu muss er über das [Log Analytics-Gateway](../log-analytics/log-analytics-oms-gateway.md) mit Log Analytics kommunizieren können.
 - **Sammlungshäufigkeit**: Gibt an, wie häufig Daten von der Verwaltungslösung gesammelt werden. 
 
 
 
-| **Verwaltungslösung** | **Plattform** | **Microsoft Monitoring Agent** | **Operations Manager-Agent** | **Azure-Speicher** | **Operations Manager erforderlich?** | **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten** | **Sammlungshäufigkeit** |
+| **Verwaltungslösung** | **Plattform** | **Microsoft Monitoring Agent** | **Operations Manager-Agent** | **Azure Storage** | **Operations Manager erforderlich?** | **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten** | **Sammlungshäufigkeit** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Aktivitätsprotokollanalyse](../log-analytics/log-analytics-activity.md) | Azure | | | | | | Bei Benachrichtigung |
 | [AD-Bewertung](../log-analytics/log-analytics-ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 Tage |
@@ -52,7 +52,7 @@ Erläuterung der Spalten:
 | [Application Insights-Connector (Vorschau)](../log-analytics/log-analytics-app-insights-connector.md) | Azure | | | |  |  | Bei Benachrichtigung |
 | [Automation Hybrid Worker](../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | – |
 | [Azure Application Gateway-Analyse](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | Bei Benachrichtigung |
-| **Verwaltungslösung** | **Plattform** | **Microsoft Monitoring Agent** | **Operations Manager-Agent** | **Azure-Speicher** | **Operations Manager erforderlich?** | **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten** | **Sammlungshäufigkeit** |
+| **Verwaltungslösung** | **Plattform** | **Microsoft Monitoring Agent** | **Operations Manager-Agent** | **Azure Storage** | **Operations Manager erforderlich?** | **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten** | **Sammlungshäufigkeit** |
 | [Azure-Netzwerksicherheitsgruppen-Analyse (Veraltet)](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | Bei Benachrichtigung |
 | [Azure SQL Analytics (Vorschau)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 Minute |
 | [Sicherung](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | Bei Benachrichtigung |
@@ -64,7 +64,7 @@ Erläuterung der Spalten:
 | [Bewertung von Schadsoftware](../log-analytics/log-analytics-malware.md) |Windows |&#8226; |&#8226; | | |&#8226; |Stündlich |
 | [Netzwerkleistungsmonitor](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP-Handshakes werden alle fünf Sekunden gesendet, Daten alle drei Minuten |
 | [Office 365-Analyse (Vorschau)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |Bei Benachrichtigung |
-| **Verwaltungslösung** | **Plattform** | **Microsoft Monitoring Agent** | **Operations Manager-Agent** | **Azure-Speicher** | **Operations Manager erforderlich?** | **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten** | **Sammlungshäufigkeit** |
+| **Verwaltungslösung** | **Plattform** | **Microsoft Monitoring Agent** | **Operations Manager-Agent** | **Azure Storage** | **Operations Manager erforderlich?** | **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten** | **Sammlungshäufigkeit** |
 | [Service Fabric-Analysen](../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 Minuten |
 | [Dienstzuordnung](../operations-management-suite/operations-management-suite-service-map.md) | Windows und Linux | &#8226; | &#8226; |  |  |  | 15 Sekunden |
 | [SQL-Bewertung](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 Tage |

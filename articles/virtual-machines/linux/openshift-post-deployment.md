@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 05/09/2018
 ms.author: haroldw
-ms.openlocfilehash: d400512c2e96e0e24bbf965b2e201adf92ccbb0f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 39febceff58127fb9777ace6e3063fbe41605b79
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434890"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426446"
 ---
 # <a name="post-deployment-tasks"></a>Aufgaben nach der Bereitstellung
 
@@ -82,7 +82,7 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
 
   ![App-Registrierung](media/openshift-post-deployment/app-registration.png)
 
-6.  Klicken Sie auf „Schritt 1: API auswählen“ und dann auf **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Klicken Sie im unteren Bereich auf **Auswählen**.
+6.  Klicken Sie auf „Schritt 1: API auswählen“ und dann auf **Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Klicken Sie im unteren Bereich auf **Auswählen**.
 
   ![App-Registrierung: API auswählen](media/openshift-post-deployment/app-registration-select-api.png)
 
@@ -174,7 +174,7 @@ In der OpenShift-Konsole werden nun zwei Authentifizierungsoptionen angezeigt: �
 
 ## <a name="monitor-openshift-with-log-analytics"></a>Überwachen von OpenShift mit Log Analytics
 
-Wenn Sie OpenShift mit Log Analytics überwachen möchten, können Sie zwei Optionen verwenden: OMS-Agent-Installation auf dem VM-Host oder OMS-Container. In diesem Artikel erfahren Sie, wie Sie den OMS-Container bereitstellen.
+Wenn Sie OpenShift mit Log Analytics überwachen möchten, können Sie zwei Optionen verwenden: Log Analytics-Agent-Installation auf dem VM-Host oder Log Analytics-Container. In diesem Artikel erfahren Sie, wie Sie den Log Analytics-Container bereitstellen.
 
 ## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>Erstellen eines OpenShift-Projekts für Log Analytics und Festlegen des Benutzerzugriffs
 
@@ -276,7 +276,7 @@ Stellen Sie die Geheimnisdatei bereit:
 oc create -f ocp-secret.yml
 ```
 
-Stellen Sie den OMS-Agent-Daemon-Satz bereit:
+Stellen Sie den Daemonsatz des Log Analytics-Agents bereit:
 
 ```bash
 oc create -f ocp-omsagent.yml

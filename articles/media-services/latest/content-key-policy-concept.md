@@ -1,0 +1,106 @@
+---
+title: Richtlinien für Inhaltsschlüssel in Azure Media Services | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, was Richtlinien für Inhaltsschlüssel sind und wie sie in Azure Media Services verwendet werden.
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: ''
+ms.topic: article
+ms.date: 10/22/2018
+ms.author: juliako
+ms.openlocfilehash: 9a5ef8df9b1ca87430fb5e8d1da94f1899c4a856
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985861"
+---
+# <a name="content-key-policies"></a>Richtlinien für Inhaltsschlüssel
+
+Mit Azure Media Services können Sie Ihre Medien ab dem Zeitpunkt, an dem sie Ihren Computer verlassen, während des gesamten Prozesses der Speicherung, Verarbeitung und Übermittlung sichern. Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients.
+
+In Azure Media Services v3 können Sie mithilfe von Richtlinien für Inhaltsschlüssel angeben, wie der Inhaltsschlüssel an Endclients über die Media Services-Schlüsselbereitstellungskomponente übermittelt werden soll. Weitere Informationen finden Sie unter [Übersicht über den Inhaltsschutz](content-protection-overview.md).
+
+## <a name="contentkeypolicies-definition"></a>ContentKeyPolicies-Definition
+
+Die folgende Tabelle enthält die Eigenschaften von ContentKeyPolicy und die jeweiligen Definitionen.
+
+|NAME|Typ|BESCHREIBUNG|
+|---|---|---|
+|id|Zeichenfolge|Vollqualifizierte Ressourcen-ID für die Ressource.|
+|name|Zeichenfolge|Der Name der Ressource.|
+|properties.created |Zeichenfolge|Das Erstellungsdatum der Richtlinie.|
+|properties.description |Zeichenfolge|Eine Beschreibung der Richtlinie.|
+|properties.lastModified    |Zeichenfolge|Das Datum der letzten Änderung der Richtlinie.|
+|properties.options |ContentKeyPolicyOption[]|Die Optionen für die Schlüsselrichtlinie.|
+|properties.policyId    |Zeichenfolge|Die ID der Legacyrichtlinie.|
+|type   |Zeichenfolge|Der Typ der Ressource.|
+
+Die vollständige Definition finden Sie unter [Richtlinien für Inhaltsschlüssel](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
+
+## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
+
+Media Services unterstützt die folgenden OData-Abfrageoptionen für ContentKeyPolicies: 
+
+* $filter 
+* $orderby 
+* $top 
+* $skiptoken 
+
+Operatorbeschreibung:
+
+* Eq = equal to (ist gleich)
+* Ne = not equal to (ist nicht gleich)
+* Ge = Greater than or equal to (ist größer als oder gleich)
+* Le = Less than or equal to (ist kleiner als oder gleich)
+* Gt = Greater than (größer als)
+* Lt = Less than (kleiner als)
+
+### <a name="filteringordering"></a>Filterung/Sortierung
+
+Die folgende Tabelle zeigt, wie diese Optionen auf die StreamingPolicy-Eigenschaften angewendet werden können: 
+
+|NAME|Filter|Reihenfolge|
+|---|---|---|
+|id|||
+|name|Eq, ne, ge, le, gt, lt|Aufsteigend und absteigend|
+|properties.created |Eq, ne, ge, le, gt, lt|Aufsteigend und absteigend|
+|properties.description |Eq, ne, ge, le, gt, lt||
+|properties.lastModified    |Eq, ne, ge, le, gt, lt|Aufsteigend und absteigend|
+|properties.options |||
+|properties.policyId    |Eq, ne||
+|type   |||
+
+### <a name="pagination"></a>Paginierung
+
+Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. Derzeit ist die Seitengröße 10.
+
+> [!TIP]
+> Sie sollten immer den Link „Weiter“ verwenden, um die Sammlung zu durchlaufen, und keine bestimmte Seitengröße als Referenz verwenden.
+
+Wenn eine Abfrageantwort viele Elemente enthält, gibt der Dienst eine \@odata.nextLink-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Sie können die Seitengröße nicht konfigurieren. 
+
+Wenn während des Durchlaufens der Sammlung StreamingPolicy-Objekte erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen übernommen (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde.) 
+
+Im folgenden C#-Beispiel wird gezeigt, wie alle ContentKeyPolicies im Konto durchlaufen werden.
+
+```csharp
+var firstPage = await MediaServicesArmClient.ContentKeyPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
+
+var currentPage = firstPage;
+while (currentPage.NextPageLink != null)
+{
+    currentPage = await MediaServicesArmClient.ContentKeyPolicies.ListNextAsync(currentPage.NextPageLink);
+}
+```
+
+REST-Beispiele finden Sie unter [Richtlinien für Inhaltsschlüssel – Liste](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](protect-with-aes128.md)
+
+[Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts](protect-with-drm.md)

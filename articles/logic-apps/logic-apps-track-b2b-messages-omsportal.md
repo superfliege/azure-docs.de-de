@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 06/19/2018
-ms.openlocfilehash: 5bf5385824eb9b711a2fee547c29d24d7ef5a01d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 666c998a781f13ea2a26ccfc0b94aeead0308f5b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125767"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405683"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Nachverfolgen der B2B-Kommunikation mit Azure Log Analytics
 
@@ -27,7 +27,7 @@ Nachdem Sie über Ihr Integrationskonto die B2B-Kommunikation zwischen zwei lauf
 * Ausführliche Fehlerbeschreibung für Fehler
 * Suchfunktionen
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 * Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
@@ -40,9 +40,9 @@ Nachdem Sie über Ihr Integrationskonto die B2B-Kommunikation zwischen zwei lauf
 >  
 > Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>Hinzufügen der Logic Apps-B2B-Lösung zu Log Analytics
+## <a name="add-the-logic-apps-b2b-solution-to-azure"></a>Hinzufügen der Lösung B2B-Logik-App-Verwaltung zu Azure
 
-Damit Log Analytics B2B-Nachrichten für Ihre Logik-App nachverfolgen kann, müssen Sie die Lösung **B2B-Logik-App-Verwaltung** dem OMS-Portal hinzufügen. Weitere Informationen zum Hinzufügen von Lösungen zu Log Analytics finden Sie [hier](../log-analytics/log-analytics-quick-create-workspace.md).
+Damit Log Analytics B2B-Nachrichten für Ihre Logik-App nachverfolgen kann, müssen Sie Log Analytics die Lösung **B2B-Logik-App-Verwaltung** hinzufügen. Weitere Informationen zum Hinzufügen von Lösungen zu Log Analytics finden Sie [hier](../log-analytics/log-analytics-quick-create-workspace.md).
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste** aus. Suchen Sie nach „Log Analytics“, und wählen Sie die Option **Log Analytics** aus, wie hier zu sehen:
 
@@ -52,7 +52,7 @@ Damit Log Analytics B2B-Nachrichten für Ihre Logik-App nachverfolgen kann, müs
 
    ![Auswählen Ihres Log Analytics-Arbeitsbereichs](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. Wählen Sie unter **Verwaltung** die Option **Übersicht** aus.
+3. Wählen Sie unter **Verwaltung** die Option **Zusammenfassung des Arbeitsbereichs** aus.
 
    ![Wählen Sie das Log Analytics-Portal aus.](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 

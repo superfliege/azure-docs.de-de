@@ -17,18 +17,21 @@ ms.date: 06/06/2017
 ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: ce29c6a9df49721ca23f84da3f1c97bcc83ab4a7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a231b79bebd9684281edea48dfe7cf5f57ccdacb
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580401"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986014"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer Stellvertreter-Benutzeridentität im Im-Auftrag-Fluss
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
+
 Der Im-Auftrag-Fluss (On-Behalf-Of, OBO) von OAuth 2.0 wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum eine andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den Downstream-Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) abgesichert werden.
 
 > [!IMPORTANT]
-> Öffentliche Clients, die die [implizite OAuth 2.0-Gewährung](v1-oauth2-implicit-grant-flow.md) verwenden, können den OBO-Fluss nicht verwenden. Diese Clients müssen ihr Zugriffstoken an einen vertraulichen Client der mittleren Ebene übergeben, um OBO-Flüsse auszuführen. Weitere Informationen dazu, welche Clients OBO-Aufrufe ausführen können, finden Sie unter [Clienteinschränkungen](#client-limitations).
+> Seit Mai 2018 kann ein `id_token` nicht für den OBO-Fluss verwendet werden. SPAs müssen ein **Zugriffstoken** an einen vertraulichen Client der mittleren Ebene übergeben, um OBO-Flüsse auszuführen. Unter [Einschränkungen](#client-limitations) finden Sie ausführliche Informationen dazu, welche Clients OBO-Aufrufe ausführen können.
 
 ## <a name="on-behalf-of-flow-diagram"></a>„Im Auftrag von“-Ablauf
 Es wird davon ausgegangen, dass der Benutzer in einer Anwendung authentifiziert wurde, die den [Autorisierungscode-Vergabefluss von OAuth 2.0](v1-protocols-oauth-code.md) verwendet. In diesem Fall verfügt die Anwendung über ein Zugriffstoken (Token A), das die Benutzeransprüche und die Genehmigung für den Zugriff auf die API der mittleren Ebene enthält (API A). API A muss nun eine authentifizierte Anfrage an die nachgelagerte Web-API stellen (API B).
@@ -43,6 +46,9 @@ Die folgenden Schritte entsprechen dem Im-Auftrag-von-Ablauf und werden anhand d
 3. Der Azure AD-Tokenausstellungs-Endpunkt überprüft mit Token A die Anmeldeinformationen von API A und stellt das Zugriffstoken für API B aus (Token B).
 4. Token B wird im Autorisierungsheader der Anforderung an die API B festgelegt.
 5. API B gibt die Daten aus der gesicherten Ressource zurück.
+
+>[!NOTE]
+>Der audience-Anspruch in einem Zugriffstoken, der zum Anfordern eines Token für einen nachgeschalteten Dienst verwendet wird, muss die ID des Diensts aufweisen, der die OBO-Anforderung stellt, und das Token muss mit dem globalen Azure Active Directory-Signaturschlüssel signiert werden (dies ist die Standardeinstellung für Anwendungen, die über **App-Registrierungen** im Portal registriert werden).
 
 ## <a name="register-the-application-and-service-in-azure-ad"></a>Registrieren der Anwendung und des Diensts in Azure AD
 Registrieren der Clientanwendungen des Diensts auf der mittleren Ebene in Azure AD.
@@ -82,8 +88,8 @@ Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zug
 
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
-| Assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
+| grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JWT-Zugriffstoken verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
+| Assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken. |
 | client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Klicken Sie zum Ermitteln der App-ID im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis und den Anwendungsnamen. |
 | client_secret |required | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein. |
 | resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, den Anwendungsnamen, **Alle Einstellungen** und **Eigenschaften**. |
@@ -114,7 +120,7 @@ Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die
 
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
+| grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JWT-Zugriffstoken verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | Assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
 | client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Klicken Sie zum Ermitteln der App-ID im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis und den Anwendungsnamen. |
 | client_assertion_type |required |Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
@@ -201,6 +207,52 @@ GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.windows.net
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
 ```
+## <a name="service-to-service-calls-using-a-saml-assertion-obtained-with-an-oauth20-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe mit einer SAML-Assertion, die mit einem OAuth 2.0-On-Behalf-Of-Fluss abgerufen wird
+
+Einige OAuth-basierte Webdienste benötigen Zugriff auf andere Webdienst-APIs, die SAML-Assertionen in nicht interaktiven Flüssen akzeptieren.  Azure Active Directory kann es eine SAML-Assertion als Antwort auf einen On-Behalf-Of-Fluss mit einem SAML-basierten Webdienst als Zielressource bereitstellen. 
+
+>[!NOTE] 
+>Dies ist eine nicht standardmäßige Erweiterung für den OAuth 2.0-On-Behalf-Of-Fluss, der einer OAuth2-basierten Anwendung Zugriff auf Webdienst-API-Endpunkte ermöglicht, die SAML-Token nutzen.  
+
+>[!TIP]
+>Wenn Sie einen geschützten SAML-Webdienst über eine Front-End-Anwendung aufrufen, können Sie einfach die API aufrufen und einen normalen interaktiven Authentifizierungsfluss initiieren, der die vorhandene Sitzung eines Benutzers verwendet.  Sie müssen lediglich einen OBO-Fluss in Erwägung ziehen, wenn ein Dienst-zu-Dienst-Aufruf ein SAML-Token für die Bereitstellung des Benutzerkontexts erfordert.
+
+### <a name="obtain-a-saml-token-using-an-obo-request-with-a-shared-secret"></a>Abrufen eines SAML-Token anhand einer OBO-Anforderung mit einem gemeinsamen Geheimnis
+Eine Dienst-zu-Dienst-Anforderung zum Abrufen einer SAML-Assertion weist die folgenden Parameter auf:
+
+| Parameter |  | BESCHREIBUNG |
+| --- | --- | --- |
+| grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
+| Assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken.|
+| client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Klicken Sie zum Ermitteln der App-ID im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis und den Anwendungsnamen. |
+| client_secret |required | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein. |
+| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Dies ist die Ressource, die die Zielgruppe des SAML-Token darstellt.  Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, den Anwendungsnamen, **Alle Einstellungen** und **Eigenschaften**. |
+| requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
+| requested_token_type | required | Gibt den Typ des angeforderten Token an.  Abhängig von den Anforderungen der Ressource, auf die zugegriffen wird, kann der Wert „urn:Ietf:params:oauth:token-type:saml2“ oder „urn:Ietf:params:oauth:token-type:saml1“ lauten. |
+
+
+Die Antwort enthält einen UTF8- und Base64url-codierten SAML-Token. 
+
+SubjectConfirmationData für eine SAML-Assertion, die von einem OBO-Aufruf stammen: Wenn die Zielanwendung einen Empfängerwert in SubjectConfirmationData erfordert, muss diese als Antwort-URL ohne Platzhalter in der Konfiguration der Ressourcenanwendung festgelegt werden.
+
+Der SubjectConfirmationData-Knoten kann kein InResponseTo-Attribut enthalten, da er nicht Teil einer SAML-Antwort ist.  Die Anwendung, die das SAML-Token empfängt, muss die SAML-Assertion ohne InResponseTo-Attribut akzeptieren können.
+
+Zustimmung: Um ein SAML-Token zu empfangen, das Benutzerdaten zu einem OAuth-Fluss enthält, muss Ihre Zustimmung erteilt worden sein.  Unter https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent finden Sie Informationen zu Berechtigungen und zum Einholen der Zustimmung des Administrators.
+
+### <a name="response-with-saml-assertion"></a>Antwort mit SAML-Assertion
+
+| Parameter | BESCHREIBUNG |
+| --- | --- |
+| token_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750))](http://www.rfc-editor.org/rfc/rfc6750.txt). |
+| scope |Der durch das Token gewährte Zugriffsbereich. |
+| expires_in |Gibt an, wie lange das Zugriffstoken gültig ist (in Sekunden). |
+| expires_on |Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
+| resource |Der App-ID-URI des empfangenden Diensts (geschützte Ressource). |
+| access_token |Die SAML-Assertion wird im Parameter „access_token“ zurückgegeben. |
+| refresh_token |Das Aktualisierungstoken. Der aufrufende Dienst kann dieses Token verwenden, um nach Ablauf der aktuellen SAML-Assertion ein neues Zugriffstoken anzufordern. |
+
+token_type: Bearer expires_in:3296 ext_expires_in:0 expires_on:1529627844 resource:https://api.contoso.com access_token: <Saml assertion> issued_token_type:urn:ietf:params:oauth:token-type:saml2 refresh_token: <Refresh token>
+
 ## <a name="client-limitations"></a>Clienteinschränkungen
 Öffentliche Clients mit Platzhaltern in Antwort-URLs können `id_token` nicht für OBO-Flüsse verwenden. Allerdings kann ein vertraulicher Client weiterhin Zugriffstoken einlösen, die über den Fluss für die implizite Gewährung erworben wurden, selbst wenn der öffentliche Client einen Umleitungs-URI mit einem Platzhalter registriert hat.
 

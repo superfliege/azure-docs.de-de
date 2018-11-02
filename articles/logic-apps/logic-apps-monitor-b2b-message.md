@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 07/21/2017
-ms.openlocfilehash: fd48dfaf7b863ab026da1758751509d9911ae01e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 63aa455851633d1e49fd1b26861aaac8a670ef15
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948008"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404783"
 ---
 # <a name="monitor-b2b-messages-and-set-up-logging-for-integration-accounts-in-azure-logic-apps"></a>Überwachen von B2B-Nachrichten und Einrichten der Protokollierung für Integrationskonten in Azure Logic Apps
 
@@ -58,7 +58,9 @@ Die Protokollierung kann entweder direkt über Ihr Integrationskonto oder [über
 
    1. Wählen Sie **An Log Analytics senden** aus. 
    2. Wählen Sie unter **Log Analytics** die Option **Konfigurieren** aus. 
-   3. Wählen Sie unter **OMS-Arbeitsbereiche** den Log Analytics-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
+   3. Wählen Sie unter **OMS-Arbeitsbereiche** den Log Analytics-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten. 
+   > [!NOTE]
+   > OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet. 
    4. Wählen Sie unter **Protokoll** die Kategorie **IntegrationAccountTrackingEvents** aus.
    5. Wählen Sie **Speichern** aus.
 
@@ -93,6 +95,8 @@ Die Protokollierung kann entweder direkt über Ihr Integrationskonto oder [über
    1. Wählen Sie **An Log Analytics senden** aus. 
    2. Wählen Sie unter **Log Analytics** die Option **Konfigurieren** aus. 
    3. Wählen Sie unter **OMS-Arbeitsbereiche** den Log Analytics-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
+   > [!NOTE]
+   > OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.
    4. Wählen Sie unter **Protokoll** die Kategorie **IntegrationAccountTrackingEvents** aus.
    5. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
@@ -129,6 +133,6 @@ Azure unterstützt die folgenden Nachverfolgungsschematypen. Mit Ausnahme des Ty
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Nachverfolgen von B2B-Nachrichten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "Nachverfolgen von B2B-Nachrichten in OMS")
+* [Nachverfolgen von B2B-Nachrichten in Azure Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "Nachverfolgen von B2B-Nachrichten in Azure Log Analytics")
 * [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 

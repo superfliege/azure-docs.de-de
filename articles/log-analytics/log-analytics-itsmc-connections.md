@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 190e173e035716431c92533e42ded97e147f21a7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4faea38817a546dbab02064d22a0813362f77b3d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409202"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416459"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
 Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](log-analytics-itsmc-overview.md).
@@ -57,7 +57,7 @@ Verwenden Sie das folgende Verfahren zum Verbinden Ihrer System Center Service M
 
 2.  Klicken Sie unter **ARBEITSBEREICHSDATENQUELLEN** auf **ITSM-Verbindungen**.
 
-    ![Neue Verbindung](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Neue Verbindung](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. Klicken Sie oben im rechten Bereich auf **Hinzufügen**.
 
@@ -78,7 +78,7 @@ Verwenden Sie das folgende Verfahren zum Verbinden Ihrer System Center Service M
 | **Daten synchronisieren** | Geben Sie die Anzahl der vergangenen Tage ein, aus denen die Daten abgerufen werden sollen. **Maximaler Grenzwert**: 120 Tage. |
 | **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt Log Analytics die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert. |
 
-![Service Manager-Verbindung](./media/log-analytics-itsmc/service-manager-connection.png)
+![Service Manager-Verbindung](media/log-analytics-itsmc-connections/service-manager-connection.png)
 
 **Bei erfolgreicher Verbindung und Synchronisierung**:
 
@@ -128,14 +128,14 @@ Verwenden Sie das folgende Verfahren, um die Hybridverbindung zu konfigurieren, 
 2. Klicken Sie auf **Einstellungen** > **Netzwerk**.
 3. Klicken Sie unter **Hybrid Connections** auf **Endpunkte der Hybridverbindung konfigurieren**.
 
-    ![Hybridverbindung – Netzwerk](./media/log-analytics-itsmc/itsmc-hybrid-connection-networking-and-end-points.png)
+    ![Hybridverbindung – Netzwerk](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
 4. Klicken Sie auf dem Blatt **Hybrid Connections** auf **Hybridverbindung hinzufügen**.
 
-    ![Hybridverbindung hinzufügen](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-add.png)
+    ![Hybridverbindung hinzufügen](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-add.png)
 
 5. Klicken Sie auf dem Blatt **Hybridverbindungen hinzufügen** auf **Neue Hybridverbindung erstellen**.
 
-    ![Neue Hybridverbindung](./media/log-analytics-itsmc/itsmc-create-new-hybrid-connection.png)
+    ![Neue Hybridverbindung](media/log-analytics-itsmc-connections/itsmc-create-new-hybrid-connection.png)
 
 6. Geben Sie die folgenden Werte ein:
 
@@ -146,14 +146,14 @@ Verwenden Sie das folgende Verfahren, um die Hybridverbindung zu konfigurieren, 
     - **Standort:** Wählen Sie den Standort aus.
     -  **Namen**: Legen Sie einen Namen für den Service Bus fest, falls Sie ihn erstellen.
 
-    ![Hybridverbindungswerte](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-values.png)
+    ![Hybridverbindungswerte](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. Klicken Sie auf **OK**, um das Blatt **Hybridverbindung erstellen** zu schließen und mit der Erstellung der Hybridverbindung zu beginnen.
 
     Sobald die Hybridverbindung erstellt wurde, wird sie unter dem Blatt angezeigt.
 
 7. Nachdem die Hybridverbindung erstellt wurde, wählen Sie die Verbindung aus, und klicken Sie auf **Ausgewählte Hybridverbindung hinzufügen**.
 
-    ![Neue Hybridverbindung](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-added.png)
+    ![Neue Hybridverbindung](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-added.png)
 
 #### <a name="configure-the-listener-setup"></a>Konfigurieren der Listener-Einrichtung
 
@@ -171,14 +171,14 @@ Verwenden Sie das folgende Verfahren, um die Listener-Einrichtung für die Hybri
 
 Ihre Hybridverbindung wurde hergestellt.
 
-![erfolgreiche Hybridverbindung](./media/log-analytics-itsmc/itsmc-hybrid-connection-listener-set-up-successful.png)
+![erfolgreiche Hybridverbindung](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
 
 > Nach dem Herstellen der Hybridverbindung überprüfen testen Sie die Verbindung, indem Sie die bereitgestellte Service Manager-Web-App aufrufen. Stellen Sie sicher, dass die Verbindung erfolgreich ist, bevor Sie versuchen, in Azure eine Verbindung mit dem ITSMC herzustellen.
 
 Die folgende Beispielabbildung zeigt die Details einer erfolgreichen Verbindung:
 
-![Hybridverbindungstest](./media/log-analytics-itsmc/itsmc-hybrid-connection-test.png)
+![Hybridverbindungstest](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-test.png)
 
 ## <a name="connect-servicenow-to-it-service-management-connector-in-azure"></a>Verbinden von ServiceNow mit dem ITSM-Connector in Azure
 
@@ -209,7 +209,7 @@ Verwenden Sie das folgende Verfahren, um eine ServiceNow-Verbindung zu erstellen
 1. Navigieren Sie im Azure-Portal zu **Alle Ressourcen**, und suchen Sie nach **ServiceDesk(YourWorkspaceName)**.
 
 2.  Klicken Sie unter **ARBEITSBEREICHSDATENQUELLEN** auf **ITSM-Verbindungen**.
-    ![Neue Verbindung](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Neue Verbindung](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. Klicken Sie oben im rechten Bereich auf **Hinzufügen**.
 
@@ -232,7 +232,7 @@ Verwenden Sie das folgende Verfahren, um eine ServiceNow-Verbindung zu erstellen
 | **Daten synchronisieren** | Geben Sie die Anzahl der vergangenen Tage ein, aus denen die Daten abgerufen werden sollen. **Maximaler Grenzwert**: 120 Tage. |
 | **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt der ITSMC die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert. |
 
-![ServiceNow-Verbindung](./media/log-analytics-itsmc/itsm-connection-servicenow-connection-latest.png)
+![ServiceNow-Verbindung](media/log-analytics-itsmc-connections/itsm-connection-servicenow-connection-latest.png)
 
 **Bei erfolgreicher Verbindung und Synchronisierung**:
 
@@ -304,7 +304,7 @@ Verwenden Sie das folgende Verfahren, um eine Provance-Verbindung zu erstellen:
 1. Navigieren Sie im Azure-Portal zu **Alle Ressourcen**, und suchen Sie nach **ServiceDesk(YourWorkspaceName)**.
 
 2.  Klicken Sie unter **ARBEITSBEREICHSDATENQUELLEN** auf **ITSM-Verbindungen**.
-    ![Neue Verbindung](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Neue Verbindung](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. Klicken Sie oben im rechten Bereich auf **Hinzufügen**.
 
@@ -326,7 +326,7 @@ Verwenden Sie das folgende Verfahren, um eine Provance-Verbindung zu erstellen:
 | **Daten synchronisieren** | Geben Sie die Anzahl der vergangenen Tage ein, aus denen die Daten abgerufen werden sollen. **Maximaler Grenzwert**: 120 Tage. |
 | **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt der ITSMC die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert.|
 
-![Provance-Verbindung](./media/log-analytics-itsmc/itsm-connections-provance-latest.png)
+![Provance-Verbindung](media/log-analytics-itsmc-connections/itsm-connections-provance-latest.png)
 
 **Bei erfolgreicher Verbindung und Synchronisierung**:
 
@@ -355,7 +355,7 @@ Verwenden Sie das folgende Verfahren, um eine Provance-Verbindung zu erstellen:
 1. Navigieren Sie im Azure-Portal zu **Alle Ressourcen**, und suchen Sie nach **ServiceDesk(YourWorkspaceName)**.
 
 2.  Klicken Sie unter **ARBEITSBEREICHSDATENQUELLEN** auf **ITSM-Verbindungen**.
-    ![Neue Verbindung](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Neue Verbindung](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. Klicken Sie oben im rechten Bereich auf **Hinzufügen**.
 
@@ -378,7 +378,7 @@ Verwenden Sie das folgende Verfahren, um eine Provance-Verbindung zu erstellen:
 | **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt der ITSMC die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert. |
 
 
-![Provance-Verbindung](./media/log-analytics-itsmc/itsm-connections-cherwell-latest.png)
+![Provance-Verbindung](media/log-analytics-itsmc-connections/itsm-connections-cherwell-latest.png)
 
 **Bei erfolgreicher Verbindung und Synchronisierung**:
 
@@ -396,7 +396,7 @@ Führen Sie folgende Schritte aus, um die Client-ID/den Schlüssel für Cherwell
 2. Klicken Sie auf **Sicherheit** > **Edit REST API client settings (REST-API-Clienteinstellungen bearbeiten)**.
 3. Wählen Sie **Create new client (Neuen Client erstellen)** > **Geheimer Clientschlüssel**.
 
-    ![Cherwell-Benutzer-ID](./media/log-analytics-itsmc/itsmc-cherwell-client-id.png)
+    ![Cherwell-Benutzer-ID](media/log-analytics-itsmc-connections/itsmc-cherwell-client-id.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

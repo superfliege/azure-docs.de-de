@@ -1,39 +1,42 @@
 ---
-title: Problembehandlung für das Cognitive Services Speech SDK
-description: Problembehandlung für das Cognitive Services-Sprach-SDK
-titleSuffix: Microsoft Cognitive Services
+title: Beheben von Problemen mit dem Speech-Geräte-SDK
+titleSuffix: Azure Cognitive Services
+description: Beheben Sie Probleme mit dem Speech-Geräte-SDK.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: ff8aba562cfd2d6d54c708ee7fdc4c6ca7185f29
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 9f0cea263262d83d9a95012f6cd09fa9acdc0141
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284121"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464570"
 ---
-# <a name="troubleshooting-speech-services-sdk"></a>Problembehandlung für das Sprachdienste-SDK
+# <a name="troubleshoot-the-speech-service-sdk"></a>Beheben von Problemen mit dem Speech-Geräte-SDK
 
-Dieser Artikel enthält Informationen zur Lösung von Problemen, die bei Verwendung des Sprach-SDK auftreten können.
+Dieser Artikel enthält Informationen zum Beheben von Problemen, die bei Verwendung des Speech-Geräte-SDK auftreten können.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Fehler `WebSocket Upgrade failed with an authentication error (403).`
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Fehler: Authentifizierungsfehler beim WebSocket-Upgrade (403)
 
-Sie verwenden möglicherweise den falschen Endpunkt für Ihre Region oder den Dienst. Prüfen Sie noch einmal den URI, um sicherzustellen, dass er korrekt ist. Lesen Sie außerdem den folgenden Abschnitt, da es sich auch um ein Problem mit dem Abonnementschlüssel oder dem Autorisierungstoken handeln kann.
+Sie verwenden möglicherweise den falschen Endpunkt für Ihre Region oder den Dienst. Prüfen Sie den URI, um sicherzustellen, dass er korrekt ist. 
 
-## <a name="error-http-403-forbidden-or-error-http-401-unauthorized"></a>Fehler `HTTP 403 Forbidden` oder Fehler `HTTP 401 Unauthorized`
+Außerdem kann ein Problem mit Ihrem Abonnementschlüssel oder Autorisierungstoken auftreten. Weitere Informationen finden Sie im nächsten Abschnitt.
 
-Dieser Fehler wird häufig durch Authentifizierungsprobleme verursacht. Verbindungsanforderungen ohne gültigen `Ocp-Apim-Subscription-Key` oder `Authorization`-Header werden mit dem Status 401 oder 403 abgelehnt.
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Fehler: „HTTP 403 Verboten“ oder „HTTP 401 Nicht autorisiert“
 
-* Wenn Sie einen Abonnementschlüssel für die Authentifizierung verwenden, kann Folgendes die Ursache sein:
+Dieser Fehler wird häufig durch Authentifizierungsprobleme verursacht. Verbindungsanforderungen ohne gültigen `Ocp-Apim-Subscription-Key` oder `Authorization`-Header werden mit dem Status 403 oder 401 abgelehnt.
+
+* Wenn Sie einen Abonnementschlüssel für die Authentifizierung verwenden, wird der Fehler möglicherweise aus folgendem Grund angezeigt:
 
     - Der Abonnementschlüssel fehlt oder ist ungültig.
     - Sie haben das Nutzungskontingent Ihres Abonnements überschritten.
 
-* Wenn Sie ein Autorisierungstoken für die Authentifizierung verwenden, kann Folgendes die Ursache sein:
+* Wenn Sie ein Authentifizierungstoken für die Authentifizierung verwenden, wird der Fehler möglicherweise aus folgendem Grund angezeigt:
 
     - Das Autorisierungstoken ist ungültig.
     - Das Autorisierungstoken ist abgelaufen.
@@ -68,7 +71,7 @@ Sie können überprüfen, ob Sie über einen gültigen Abonnementschlüssel verf
 Wenn Sie ein Autorisierungstoken für die Authentifizierung verwenden, führen Sie einen der folgenden Befehle aus, um sicherzustellen, dass das Autorisierungstoken noch gültig ist. Token sind 10 Minuten lang gültig.
 
 > [!NOTE]
-> Ersetzen Sie `YOUR_AUDIO_FILE` durch den Pfad zu Ihrer aufgezeichneten Audiodatei, `YOUR_ACCESS_TOKEN` durch das im vorherigen Schritt zurückgegebene Autorisierungstoken und `YOUR_REGION` durch die richtige Region.
+> Ersetzen Sie `YOUR_AUDIO_FILE` durch den Pfad Ihrer aufgezeichneten Audiodatei. Ersetzen Sie `YOUR_ACCESS_TOKEN` durch das im vorherigen Schritt zurückgegebene Autorisierungstoken. Ersetzen Sie `YOUR_REGION` durch die richtige Region.
 
 * PowerShell
 
@@ -83,12 +86,12 @@ Wenn Sie ein Autorisierungstoken für die Authentifizierung verwenden, führen S
       'Content-type' = 'audio/wav; codec=audio/pcm; samplerate=16000'
     }
     
-    # Read audio into byte array
+    # Read audio into byte array.
     $audioBytes = [System.IO.File]::ReadAllBytes("YOUR_AUDIO_FILE")
     
     $RecoResponse = Invoke-RestMethod -Method POST -Uri $SpeechServiceURI -Headers $RecoRequestHeader -Body $audioBytes
     
-    # Show the result
+    # Show the result.
     $RecoResponse
     ```
 
@@ -100,22 +103,23 @@ Wenn Sie ein Autorisierungstoken für die Authentifizierung verwenden, führen S
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Fehler `HTTP 400 Bad Request`
+## <a name="error-http-400-bad-request"></a>Fehler: HTTP 400 Ungültige Anforderung
 
-Dieser Fehler tritt gewöhnlich auf, wenn der Anforderungstext ungültige Audiodaten enthält. Nur das `WAV`-Format wird unterstützt. Prüfen Sie auch die Anforderungsheader, um sicherzustellen, dass geeignete Werte für `Content-Type` und `Content-Length` angegeben sind.
+Dieser Fehler tritt gewöhnlich auf, wenn der Anforderungstext ungültige Audiodaten enthält. Nur das WAV-Format wird unterstützt. Prüfen Sie auch die Anforderungsheader, um sicherzustellen, dass geeignete Werte für `Content-Type` und `Content-Length` angegeben sind.
 
-## <a name="error-http-408-request-timeout"></a>Fehler `HTTP 408 Request Timeout`
+## <a name="error-http-408-request-timeout"></a>Fehler: HTTP 408 Anforderungstimeout
 
 Der Fehler tritt wahrscheinlich auf, weil keine Audiodaten an den Dienst gesendet werden. Dieser Fehler kann auch durch Netzwerkprobleme verursacht werden.
 
-## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>Der `RecognitionStatus` in der Antwort ist `InitialSilenceTimeout`
+## <a name="recognitionstatus-in-the-response-is-initialsilencetimeout"></a>„RecognitionStatus“ in der Antwort ist „InitialSilenceTimeout“
 
-Das Problem ist in der Regel auf Audiodaten zurückzuführen. Beispiel: 
+Dieses Problem wird in der Regel durch Audiodaten verursacht. Dieser Fehler wird möglicherweise aus folgenden Gründen angezeigt:
 
-* Zu Beginn einer Audiodatei ist es über einen längeren Zeitraum still. Der Dienst beendet die Erkennung nach einigen Sekunden und gibt `InitialSilenceTimeout` zurück.
+* Zu Beginn einer Audiodatei ist es über einen längeren Zeitraum still. In diesem Fall beendet der Dienst die Erkennung nach einigen Sekunden und gibt `InitialSilenceTimeout` zurück.
+
 * Die Audiodatei verwendet ein nicht unterstütztes Codec-Format, wodurch die Audiodaten als Stille behandelt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Anmerkungen zu dieser Version](releasenotes.md)
+* [Lesen Sie die Anmerkungen zu dieser Version](releasenotes.md)
 

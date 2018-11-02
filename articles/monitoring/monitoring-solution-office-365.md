@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: e3620bbf92cab926d56c4de0817f833b61cf2b03
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d1fdec8e3a959aaeb68d4b63a1c71d6ef1ddd054
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125084"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406320"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -37,7 +37,7 @@ Folgendes ist erforderlich, bevor diese Lösung installiert und konfiguriert wir
 
 - Office 365-Organisationsabonnement.
 - Anmeldeinformationen für ein Benutzerkonto, das ein globaler Administrator ist.
-- Um Überwachungsdaten zu erhalten, müssen Sie [die Überwachung](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) in Ihrem Office 365-Abonnement konfigurieren.  Beachten Sie, dass die [Postfachüberwachung](https://technet.microsoft.com/library/dn879651.aspx) separat konfiguriert wird.  Sie können die Lösung auch installieren und andere Daten sammeln, wenn die Überwachung nicht konfiguriert ist.
+- Um Überwachungsdaten zu erhalten, müssen Sie [die Überwachung](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) in Ihrem Office 365-Abonnement konfigurieren.  Beachten Sie, dass die [Postfachüberwachung](https://technet.microsoft.com/library/dn879651.aspx) separat konfiguriert wird.  Sie können die Lösung auch installieren und andere Daten sammeln, wenn die Überwachung nicht konfiguriert ist.
  
 
 ## <a name="management-packs"></a>Management Packs
@@ -477,7 +477,7 @@ Sie können die Office 365-Verwaltungslösung mithilfe des in [Entfernen einer V
 
 ## <a name="data-collection"></a>Datensammlung
 ### <a name="supported-agents"></a>Unterstützte Agents
-Die Office 365-Lösung ruft keine Daten von den [OMS-Agents](../log-analytics/log-analytics-data-sources.md) ab.  Sie ruft Daten direkt aus Office 365 ab.
+Die Office 365-Lösung ruft keine Daten von [Log Analytics-Agents](../log-analytics/log-analytics-data-sources.md) ab.  Sie ruft Daten direkt aus Office 365 ab.
 
 ### <a name="collection-frequency"></a>Sammlungshäufigkeit
 Es kann einige Stunden dauern, bis die Daten gesammelt werden. Sobald die Sammlung begonnen hat, sendet Office 365 immer dann, wenn ein Datensatz erstellt wurde, eine [Webhookbenachrichtigung](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) mit detaillierten Daten an Log Analytics. Dieser Datensatz ist innerhalb weniger Minuten nach dem Empfang in Log Analytics verfügbar.

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: a4758e5597876112fa7a85850786491e22af8c83
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6d9d05a56376c07013fdea1c94b0a3262d2397c2
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037139"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026295"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Sicherer Zugriff auf ein Azure Cosmos DB-Konto durch Verwenden eines Azure Virtual Network-Dienstendpunkts
 
@@ -56,8 +56,8 @@ Nun lässt Ihr Azure Cosmos DB-Konto nur Zugriff aus diesem ausgewählten Subnet
 
 1. Suchen Sie auf dem Blatt **Alle Ressourcen** das Azure Cosmos DB-Konto, das Sie sichern möchten.  
 
-> [!NOTE]
-> Wenn für Ihr Azure Cosmos DB-Konto eine IP-Firewall konfiguriert ist, notieren Sie sich die Firewallkonfiguration, entfernen die IP-Firewall und aktivieren Sie dann den Dienstendpunkt. Wenn Sie den Dienstendpunkt aktivieren, ohne die Firewall zu deaktivieren, verliert der Datenverkehr aus diesem IP-Bereich die virtuelle IP-Identität und wird mit einer Fehlermeldung des IP-Filters gelöscht. Um diesen Fehler zu vermeiden, sollten Sie immer die Firewallregeln deaktivieren, sie kopieren, den Dienstendpunkt aus dem Subnetz aktivieren und danach die ACL des Subnetzes aus Cosmos DB. Nachdem Sie den Dienstendpunkt konfiguriert und die ACL hinzugefügt haben, können Sie die IP-Firewall bei Bedarf wieder aktivieren.
+   > [!NOTE]
+   > Wenn für Ihr Azure Cosmos DB-Konto eine IP-Firewall konfiguriert ist, notieren Sie sich die Firewallkonfiguration, entfernen die IP-Firewall und aktivieren Sie dann den Dienstendpunkt. Wenn Sie den Dienstendpunkt aktivieren, ohne die Firewall zu deaktivieren, verliert der Datenverkehr aus diesem IP-Bereich die virtuelle IP-Identität und wird mit einer Fehlermeldung des IP-Filters gelöscht. Um diesen Fehler zu vermeiden, sollten Sie immer die Firewallregeln deaktivieren, sie kopieren, den Dienstendpunkt aus dem Subnetz aktivieren und danach die ACL des Subnetzes aus Cosmos DB. Nachdem Sie den Dienstendpunkt konfiguriert und die ACL hinzugefügt haben, können Sie die IP-Firewall bei Bedarf wieder aktivieren.
 
 2. Bevor Sie den Virtual Network-Dienstendpunkt aktivieren, kopieren Sie die IP-Firewallinformationen für Ihr Azure Cosmos DB-Konto für die spätere Verwendung. Sie können die IP-Firewall nach der Konfiguration des Dienstendpunkts erneut aktivieren.  
 
@@ -97,9 +97,8 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
 
 1. Installieren Sie die neueste Version von [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), und [melden Sie sich an](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  Stellen Sie sicher, dass Sie sich die IP-Firewalleinstellungen notiert und die IP-Firewall vollständig gelöscht haben, bevor Sie einen Dienstendpunkt für das Konto aktivieren.
 
-
-> [!NOTE]
-> Wenn für Ihr Azure Cosmos DB-Konto eine IP-Firewall konfiguriert ist, notieren Sie sich die Firewallkonfiguration, entfernen die IP-Firewall und aktivieren Sie dann den Dienstendpunkt. Wenn Sie den Dienstendpunkt aktivieren, ohne die Firewall zu deaktivieren, verliert der Datenverkehr aus diesem IP-Bereich die virtuelle IP-Identität und wird mit einer Fehlermeldung des IP-Filters gelöscht. Um diesen Fehler zu vermeiden, sollten Sie immer die Firewallregeln deaktivieren, sie kopieren, den Dienstendpunkt aus dem Subnetz aktivieren und danach die ACL des Subnetzes aus Cosmos DB. Nachdem Sie den Dienstendpunkt konfiguriert und die ACL hinzugefügt haben, können Sie die IP-Firewall bei Bedarf wieder aktivieren.
+  > [!NOTE]
+  > Wenn für Ihr Azure Cosmos DB-Konto eine IP-Firewall konfiguriert ist, notieren Sie sich die Firewallkonfiguration, entfernen die IP-Firewall und aktivieren Sie dann den Dienstendpunkt. Wenn Sie den Dienstendpunkt aktivieren, ohne die Firewall zu deaktivieren, verliert der Datenverkehr aus diesem IP-Bereich die virtuelle IP-Identität und wird mit einer Fehlermeldung des IP-Filters gelöscht. Um diesen Fehler zu vermeiden, sollten Sie immer die Firewallregeln deaktivieren, sie kopieren, den Dienstendpunkt aus dem Subnetz aktivieren und danach die ACL des Subnetzes aus Cosmos DB. Nachdem Sie den Dienstendpunkt konfiguriert und die ACL hinzugefügt haben, können Sie die IP-Firewall bei Bedarf wieder aktivieren.
 
 2. Bevor Sie den Virtual Network-Dienstendpunkt aktivieren, kopieren Sie die IP-Firewallinformationen für Ihr Azure Cosmos DB-Konto für die spätere Verwendung. Sie werden die IP-Firewall nach der Konfiguration des Dienstendpunkts erneut aktivieren.  
 
@@ -132,7 +131,7 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
    $apiVersion = "2015-04-08"
    $acctName = "<Azure Cosmos DB account name>"
 
-   $cosmosDBConfiguration = Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+   $cosmosDBConfiguration = Get-AzureRmResource -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
      -Name $acctName
@@ -174,7 +173,7 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
    $cosmosDBProperties['isVirtualNetworkFilterEnabled'] = $accountVNETFilterEnabled
 
    Set-AzureRmResource `
-     -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
      -Name $acctName -Properties $CosmosDBProperties
@@ -184,7 +183,7 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
 
    ```powershell
    $UpdatedcosmosDBConfiguration = Get-AzureRmResource `
-     -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
      -Name $acctName
@@ -226,7 +225,7 @@ Ja, in verschiedenen Regionen erstellte Virtual Networks können durch die neue 
 
 Ja, es kann sowohl ein Virtual Network-Dienstendpunkt als auch eine Firewall vorhanden sein. Im Allgemeinen sollten Sie sicherstellen, dass der Zugriff auf das Portal immer aktiviert ist, bevor Sie einen Virtual Network-Dienstendpunkt konfigurieren, über den Sie die dem Container zugeordneten Metriken anzeigen können.
 
-### <a name="can-i-allow-access-to-other-azure-services-from-a-given-azure-region-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Kann ich den Zugriff auf andere Azure-Dienste von einer bestimmten Azure-Region zulassen, wenn der Dienstendpunktzugriff für Azure Cosmos DB aktiviert ist?  
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Kann ich „Verbindungen aus öffentlichen Azure-Rechenzentren akzeptieren“, wenn der Zugriff auf den Dienstendpunkt für Azure Cosmos DB aktiviert ist?  
 
 Dies ist nur erforderlich, wenn Sie den Zugriff auf Ihr Azure Cosmos DB-Konto über andere Azure-Erstanbieterdienste wie Azure Data Factory, Azure Search oder einen beliebigen anderen Dienst ermöglichen möchten, der in einer bestimmten Azure-Region bereitgestellt wurde.
 
@@ -270,7 +269,7 @@ Wenn Virtual Network-Dienstendpunkte aktiviert sind, verwenden die IP-Quelladres
 
 Azure Cosmos DB ist ein mehrinstanzfähiger Dienst mit einer öffentlichen IP-Adresse. Wenn Sie den Zugriff auf ein Subnetz eines Azure Virtual Network mithilfe eines Dienstendpunkts einschränken, wird der Zugriff für Ihr Azure Cosmos DB-Konto über das angegebene Azure Virtual Network und das zugehörige Subnetz eingeschränkt.  Das Azure Cosmos DB-Konto befindet sich nicht in diesem Azure Virtual Network. 
 
-### <a name="what-if-anything-will-be-logged-in-log-analyticsoms-if-it-is-enabled"></a>Was passiert, wenn Daten in Log Analytics oder OMS protokolliert werden, sofern diese Dienste aktiviert sind?  
+### <a name="what-if-anything-will-be-logged-in-log-analytics-if-it-is-enabled"></a>Was passiert, wenn Daten in Log Analytics protokolliert werden, sofern dieser Dienst aktiviert ist?  
 
 Azure Cosmos DB sendet Protokolle mit der IP-Adresse (ohne das letzte Oktett) per Push mit dem Status 403 für Anforderungen, die von der Zugriffssteuerungsliste blockiert werden.  
 

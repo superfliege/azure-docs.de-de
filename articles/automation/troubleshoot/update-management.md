@@ -4,20 +4,20 @@ description: Erfahren Sie, wie Sie Fehler mit Updateverwaltung beheben können.
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2e47320d5ad88edfa8ea6122f3a0abd104230974
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140327"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405225"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
-In diesem Artikel werden Lösungen zur Behebung von Problemen beschrieben, die bei Verwendung der Updateverwaltung auftreten können.
+In diesem Artikel werden Lösungen zum Beheben von Problemen beschrieben, die bei Verwendung der Updateverwaltung auftreten können.
 
 ## <a name="general"></a>Allgemein
 
@@ -87,7 +87,7 @@ The certificate presented by the service <wsid>.oms.opinsights.azure.com was not
 
 #### <a name="cause"></a>Ursache
 
-Es gibt möglicherweise einen Proxy, ein Gateway oder eine Firewall, wodurch eine Blockierung der Netzwerkkommunikation verursacht wird.
+Es gibt möglicherweise einen Proxy, ein Gateway oder eine Firewall, durch den bzw. die die Netzwerkkommunikation blockiert wird.
 
 #### <a name="resolution"></a>Lösung
 
@@ -110,6 +110,28 @@ Der Hybrid Runbook Worker konnte kein selbstsigniertes Zertifikat generieren.
 #### <a name="resolution"></a>Lösung
 
 Überprüfen Sie, ob das Systemkonto über Lesezugriff auf den Ordner **C:\ProgramData\Microsoft\Crypto\RSA** verfügt, und versuchen Sie es erneut.
+
+### <a name="hresult"></a>Szenario: Computer wird als nicht bewertet mit einer HResult-Ausnahme angezeigt
+
+#### <a name="issue"></a>Problem
+
+Für Ihren Computer wird **Nicht bewertet** unter **Konformität** und darunter wird eine Ausnahmemeldung angezeigt.
+
+#### <a name="cause"></a>Ursache
+
+Windows Update wurde auf dem Computer nicht ordnungsgemäß konfiguriert.
+
+#### <a name="resolution"></a>Lösung
+
+Doppelklicken Sie auf die rot angezeigte Ausnahme, um die vollständige Ausnahmemeldung anzuzeigen. Suchen Sie in der folgenden Tabelle nach möglichen Lösungen oder Aktionen:
+
+|Ausnahme  |Lösung oder Aktion  |
+|---------|---------|
+|`Exception from HRESULT: 0x……C`     | Suchen Sie den entsprechenden Fehlercode in der [Windows Update-Fehlercodeliste](https://support.microsoft.com/help/938205/windows-update-error-code-list), um weitere Details zur Ursache der Ausnahme zu erfahren.        |
+|`0x8024402C` oder `0x8024401C`     | Diese Fehler deuten auf Netzwerkkonnektivitätsprobleme hin. Stellen Sie sicher, dass Ihr Computer über die richtige Netzwerkkonnektivität für die Updateverwaltung verfügt. Im Abschnitt [Netzwerkplanung](../automation-update-management.md#ports) finden Sie eine Liste der erforderlichen Ports und Adressen.        |
+|`0x8024402C`     | Wenn Sie einen WSUS-Server verwenden, stellen Sie sicher, dass die Registrierungswerte für `WUServer` und `WUStatusServer` unter dem Registrierungsschlüssel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` den richtigen WSUS-Server aufweisen.        |
+|`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Stellen Sie sicher, dass der Windows Update-Dienst (wuauserv) ausgeführt wird und nicht deaktiviert ist.        |
+|Weitere generische Ausnahmen     | Suchen Sie im Internet nach möglichen Lösungen, und arbeiten Sie mit Ihrem lokalen IT-Support zusammen.         |
 
 ## <a name="linux"></a>Linux
 

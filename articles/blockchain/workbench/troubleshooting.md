@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ba6bfe8240c758806c4ff3e46ab08fdacad83db9
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e205fce8b718e68200face33447e37cd3317298f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240921"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405483"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Problembehandlung bei Azure Blockchain Workbench
 
@@ -24,7 +24,7 @@ Für das Debuggen durch Entwickler und zur Unterstützung ist ein PowerShell-Skr
 * Blockchain-Netzwerk wie Ethereum
 * Blockchain Workbench-Microservices
 * Application Insights
-* Azure-Überwachung (OMS)
+* Azure-Überwachung (Log Analytics)
 
 Anhand dieser Informationen können Sie die nächsten Schritte bestimmen und die Grundursache von Problemen ermitteln. 
 
@@ -52,9 +52,9 @@ Das Skript akzeptiert die folgenden Parameter:
 | ResourceGroupName | Name der Azure-Ressourcengruppe, in der Blockchain Workbench bereitgestellt wurde. | JA |
 | OutputDirectory | Pfad zum Erstellen der ZIP-Ausgabedatei. Wenn nicht angegeben, wird standardmäßig das aktuelle Verzeichnis verwendet. | Nein  |
 | LookbackHours | Die Anzahl der beim Abrufen von Telemetriedaten zu verwendenden Stunden. Der Standardwert ist 24 Stunden. Der Höchstwert ist 90 Stunden. | Nein  |
-| OmsSubscriptionId | Die Abonnement-ID für die OMS-Bereitstellung. Übergeben Sie diesen Parameter nur, wenn OMS für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
-| OmsResourceGroup |Die Ressourcengruppe, in der OMS bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn OMS für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
-| OmsWorkspaceName | Der OMS-Arbeitsbereichsname. Übergeben Sie diesen Parameter nur, wenn OMS für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird. | Nein  |
+| OmsSubscriptionId | Die Abonnement-ID für die Log Analytics-Bereitstellung. Übergeben Sie diesen Parameter nur, wenn Log Analytics für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
+| OmsResourceGroup |Die Ressourcengruppe, in der Log Analytics bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn Log Analytics für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
+| OmsWorkspaceName | Name des Log Analytics-Arbeitsbereichs. Übergeben Sie diesen Parameter nur, wenn Log Analytics für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird. | Nein  |
 
 ## <a name="what-is-collected"></a>Was wird gesammelt?
 

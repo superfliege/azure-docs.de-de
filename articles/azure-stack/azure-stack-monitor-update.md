@@ -5,27 +5,26 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 10/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: 8f384a79811c9a9b104acb98c8f6b6e162946ab8
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.reviewer: fiseraci
+ms.openlocfilehash: 76f3db3631e1d66413bdce8d3f2379c2735a2eaf
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41946557"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945602"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Überwachen von Änderungen in Azure Stack mithilfe des privilegierten Endpunkts
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-Sie können mit dem privilegierten Endpunkt den Status eines Azure Stack-Updatevorgangs überwachen und ein fehlerhaftes Update vom letzten erfolgreichen Schritt aus fortsetzen, sollte das Azure Stack-Portal nicht verfügbar sein.  Das Azure Stack-Portal ist die empfohlene Methode zum Verwalten von Updates in Azure Stack.
+Sie können mit dem [privilegierten Endpunkt](azure-stack-privileged-endpoint.md) den Status eines Azure Stack-Updatevorgangs überwachen und ein fehlerhaftes Update vom letzten erfolgreichen Schritt aus fortsetzen, falls das Azure Stack-Portal nicht verfügbar sein sollte.  Das Azure Stack-Portal ist die empfohlene Methode zum Verwalten von Updates in Azure Stack.
 
 Die folgenden neuen PowerShell-Cmdlets für die Updateverwaltung sind im Update 1710 für in Azure Stack integrierte Systeme enthalten.
 

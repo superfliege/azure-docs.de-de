@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7906323da8e9ee1571efe908084ae1433884e61
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8cfe8c309c11eb24bc6e7af9fc3ba3eef0422c35
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405987"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638215"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
 ## <a name="deploy-seamless-single-sign-on"></a>Bereitstellen des nahtlosen einmaligen Anmeldens
 
-Mit dem nahtlosen einmaligen Anmelden von Azure Active Directory (Azure AD Seamless Single Sign-On) werden Benutzer automatisch angemeldet, wenn sie an ihren mit dem Unternehmensnetzwerk verbundenen Unternehmens-Desktops arbeiten. Nahtloses SSO ermöglicht Ihren Benutzern einen einfachen Zugriff auf Ihre cloudbasierten Anwendungen, ohne dass zusätzliche lokale Komponenten erforderlich sind.
+Mit dem nahtlosen einmaligen Anmelden von Azure Active Directory (Azure AD Seamless Single Sign-On) werden Benutzer automatisch angemeldet, wenn sie an ihren mit dem Unternehmensnetzwerk verbundenen Unternehmens-Desktops arbeiten. Das nahtlose einmalige Anmelden (Single Sign-On, SSO) ermöglicht Ihren Benutzern einen einfachen Zugriff auf Ihre cloudbasierten Anwendungen, ohne dass zusätzliche lokale Komponenten erforderlich sind.
 
 Um die nahtlose einmalige Anmeldung bereitzustellen, führen Sie die folgenden Schritte aus:
 
@@ -44,11 +44,11 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 * **Verwenden Sie eine unterstützte Azure AD Connect-Topologie**: Stellen Sie sicher, dass Sie eine der [hier](plan-connect-topologies.md) beschriebenen, von Azure AD Connect unterstützten Topologien verwenden.
 
     >[!NOTE]
-    >Nahtloses einmaliges Anmelden (Single Sign-On, SSO) unterstützt mehrere AD-Gesamtstrukturen, unabhängig davon, ob AD-Vertrauensstellungen zwischen ihnen vorhanden sind.
+    >Das nahtlose einmalige Anmelden unterstützt mehrere AD-Gesamtstrukturen, unabhängig davon, ob AD-Vertrauensstellungen zwischen ihnen vorhanden sind.
 
 * **Richten Sie Anmeldeinformationen des Domänenadministrators ein:**: Sie benötigen Anmeldeinformationen des Domänenadministrators für jede Active Directory-Gesamtstruktur, die:
     * Sie über Azure AD Connect mit Azure AD synchronisieren.
-    * Benutzer enthält, für die Sie nahtloses SSO aktivieren möchten.
+    * Benutzer enthält, für die Sie das nahtlose einmalige Anmelden aktivieren möchten.
     
 * **Aktivieren Sie die moderne Authentifizierung**: Sie müssen die [moderne Authentifizierung](https://aka.ms/modernauthga) auf Ihrem Mandanten aktivieren, damit dieses Feature funktioniert.
 
@@ -56,7 +56,10 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
 ## <a name="step-2-enable-the-feature"></a>Schritt 2: Aktivieren des Features
 
-Aktivieren Sie nahtloses SSO über [Azure AD Connect](whatis-hybrid-identity.md).
+Aktivieren Sie das nahtlose einmalige Anmelden über [Azure AD Connect](whatis-hybrid-identity.md).
+
+>[!NOTE]
+> Sie können [das nahtlose einmalige Anmelden auch mithilfe von PowerShell aktivieren](tshoot-connect-sso.md#manual-reset-of-the-feature), wenn Azure AD Connect Ihre Anforderungen nicht erfüllt. Nutzen Sie diese Option, wenn Sie über mehr als eine Domäne pro Active Directory-Gesamtstruktur verfügen und die Domäne, für die das nahtlose einmalige Anmelden aktiviert werden soll, genauer bestimmen möchten.
 
 Wenn Sie Azure AD Connect neu installieren, wählen Sie den [benutzerdefinierten Installationspfad](how-to-connect-install-custom.md) aus. Aktivieren Sie auf der Seite **Benutzeranmeldung** die Option **Einmaliges Anmelden aktivieren**.
 
@@ -71,14 +74,14 @@ Wenn Sie bereits eine Installation von Azure AD Connect haben, wählen Sie in Az
 
 Fahren Sie mit dem Assistenten fort, bis Sie zur Seite **Einmaliges Anmelden aktivieren** gelangen. Geben Sie Anmeldeinformationen des Domänenadministrators für jede Active Directory-Gesamtstruktur an, die:
     * Sie über Azure AD Connect mit Azure AD synchronisieren.
-    * Benutzer enthält, für die Sie nahtloses SSO aktivieren möchten.
+    * Enthält Benutzer, für die Sie das nahtlose einmalige Anmelden aktivieren möchten.
 
 Nach Abschluss des Assistenten ist das nahtlose einmalige Anmelden für Ihren Mandanten aktiviert.
 
 >[!NOTE]
 > Die Anmeldeinformationen des Domänenadministrators werden weder in Azure AD Connect noch in Azure AD gespeichert. Sie werden nur für die Aktivierung des Features verwendet.
 
-Befolgen Sie diese Anweisungen, um zu überprüfen, ob die nahtlose SSO ordnungsgemäß aktiviert ist:
+Befolgen Sie diese Anweisungen, um zu überprüfen, ob das nahtlose einmalige Anmelden ordnungsgemäß aktiviert ist:
 
 1. Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory-Verwaltungscenter](https://aad.portal.azure.com) an.
 2. Wählen Sie im linken Bereich die Option **Azure Active Directory** aus.

@@ -1,22 +1,23 @@
 ---
-title: Verwenden von Sprachsynthese mit Spracherkennungsdiensten
+title: Verwenden von Text-to-Speech im Speech-Dienst
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Text-to-Speech im Spracherkennungsdienst verwenden.
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: 774425d19101e4d326f0d6435d56aff1b37a31f7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 162b690d4b371cfe76738cd83ce484a3062d139f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165044"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469915"
 ---
-# <a name="use-text-to-speech-in-speech-service"></a>Verwenden von „Sprachsynthese“ im Spracherkennungsdienst
+# <a name="use-text-to-speech-in-speech-service"></a>Verwenden von Text-to-Speech im Speech-Dienst
 
 Der Spracherkennungsdienst bietet Sprachsynthese-Funktionalität über eine einfache HTTP-Anforderung. Sie senden den zu sprechenden Text mit einer `POST`-Anweisung an den entsprechenden Endpunkt, und der Dienst gibt eine Audiodatei (`.wav`) mit synthetisierter Sprache zurück. Ihre Anwendung kann dieses Audio dann beliebig verwenden.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 7fc3e68e9d714ca95a28a28b470b1e1fdbff2c47
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 0be0d6c9613b4160a6c4c5cc3b63336fcf67d5c2
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870892"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025621"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
 
@@ -309,7 +309,7 @@ Wenn die Größe der Daten die Größe des Datenträgers überschreitet, verteil
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>Wo finde ich die Vorgängerversion des WAImportExport-Tools?
 
-Das WAImportExport-Tool verfügt über alle Funktionen, die das WAImportExport V1-Tool hatte. Das WAImportExport-Tool ermöglicht Benutzern, mehrere Quellen anzugeben und auf mehrere Laufwerke zu schreiben. Darüber hinaus lassen sich problemlos mehrere Quellspeicherorte, aus denen die Daten kopiert werden müssen, in einer einzigen CSV-Datei verwalten. Falls Sie jedoch SAS-Unterstützung benötigen oder eine einzelne Datenquelle auf einen einzelnen Datenträger kopieren möchten, können Sie das [WAImportExport V1-Tool herunterladen] (http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) und unter [Verwenden des Azure Import/Export-Tools (klassisches Bereitstellungsmodell)](storage-import-export-tool-how-to-v1.md) Hilfe zur Verwendung von WAImportExport V1 finden.
+Das WAImportExport-Tool verfügt über alle Funktionen, die das WAImportExport V1-Tool hatte. Das WAImportExport-Tool ermöglicht Benutzern, mehrere Quellen anzugeben und auf mehrere Laufwerke zu schreiben. Darüber hinaus lassen sich problemlos mehrere Quellspeicherorte, aus denen die Daten kopiert werden müssen, in einer einzigen CSV-Datei verwalten. Falls Sie jedoch SAS-Unterstützung benötigen oder eine einzelne Datenquelle auf einen einzelnen Datenträger kopieren möchten, können Sie das [WAImportExport V1-Tool herunterladen](http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409). In der [Referenz zu WAImportExport V1](storage-import-export-tool-how-to-v1.md) finden Sie Hilfe zur Verwendung von WAImportExport V1 finden.
 
 #### <a name="what-is-a-session-id"></a>Was ist eine Sitzungs-ID?
 
@@ -407,7 +407,7 @@ Das WAImportExport-Tool liest und schreibt Dateien Batch für Batch, wobei ein B
 * [Einrichten des Azure Import/Export-Tools](storage-import-export-tool-setup.md)
 * [Festlegen von Eigenschaften und Metadaten im Rahmen des Importprozesses](storage-import-export-tool-setting-properties-metadata-import.md)
 * [Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
-* [Kurzübersicht über häufig verwendete Befehle](storage-import-export-tool-quick-reference.md) 
+* [Kurzübersicht über häufig verwendete Befehle](storage-import-export-tool-quick-reference.md) 
 * [Überprüfen des Auftragsstatus mit Protokollkopiedateien](storage-import-export-tool-reviewing-job-status-v1.md)
 * [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [Reparieren eines Exportauftrags](storage-import-export-tool-repairing-an-export-job-v1.md)

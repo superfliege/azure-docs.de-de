@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: a9e274cea7543fc3361b1f2d0a60fc18176b6248
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 10/22/2018
+ms.openlocfilehash: 00e5a77bdf8554d473194b2e84947d7adb10df90
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831312"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955254"
 ---
 # <a name="dtu-based-service-tiers"></a>DTU-basierte Diensttarife
 
@@ -25,7 +25,6 @@ DTU-basierte Diensttarife unterscheiden sich durch eine Reihe von Computegröße
 
 > [!IMPORTANT]
 > Für die verwaltete SQL-Datenbank-Instanz, die sich derzeit in der öffentlichen Vorschauphase befindet, wird das DTU-basierte Kaufmodell nicht unterstützt. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md).
-
 > [!NOTE]
 > Weitere Informationen zu den V-Kern-basierten Diensttarifen finden Sie unter [Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen](sql-database-service-tiers-vcore.md). Weitere Informationen zu den Unterschieden zwischen DTU-basierten Diensttarifen und V-Kern-basierten Diensttarifen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-service-tiers.md).
 
@@ -33,7 +32,7 @@ DTU-basierte Diensttarife unterscheiden sich durch eine Reihe von Computegröße
 
 Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Geschäftskontinuität, Speicher und Leistung ab.
 ||Basic|Standard|Premium|
-| :-- | --: |--:| --:| --:| 
+| :-- | --: |--:| --:| --:|
 |Zielworkload|Entwicklung und Produktion|Entwicklung und Produktion|Entwicklung und Produktion||
 |Betriebszeit-SLA|99,99 %|99,99 %|99,99 %|Während der Vorschau nicht zutreffend|
 |Sicherungsaufbewahrung|7 Tage|35 Tage|35 Tage|
@@ -44,13 +43,16 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 |In-Memory-OLTP|N/V|N/V|Unterstützt|
 |||||
 
+> [!NOTE]
+> Sie können eine kostenlose Azure SQL-Datenbank mit dem Diensttarif „Basic“ in Verbindung mit einem kostenlosen Azure-Konto erhalten, um Azure zu erkunden. Weitere Informationen finden Sie unter [Mit dem kostenlosen Azure-Konto eine verwaltete Clouddatenbank erstellen](https://azure.microsoft.com/free/services/sql-database/).
+
 ## <a name="single-database-dtu-and-storage-limits"></a>Begrenzungen für Einzeldatenbank-DTUs und Speicher
 
 Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers.md#dtu-based-purchasing-model).
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: | --: |
-| Maximale Speichergröße | 2 GB | 1 TB | 4 TB  | 
+| Maximale Speichergröße | 2 GB | 1 TB | 4 TB  |
 | Maximale DTU-Anzahl | 5 | 3000 | 4000 | |
 ||||||
 
@@ -59,18 +61,17 @@ Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Begrenzungen für eDTUs in Pools für elastische Datenbanken, Speicher und in einem Pool zusammengefasste Datenbanken
 
-| | **Basic** | **Standard** | **Premium** | 
+| | **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: | --: |
-| Maximale Speichergröße pro Datenbank  | 2 GB | 1 TB | 1 TB | 
-| Maximale Speichergröße pro Pool | 156 GB | 4 TB | 4 TB | 
-| Maximale Anzahl von eDTUs pro Datenbank | 5 | 3000 | 4000 | 
-| Maximale Anzahl von eDTUs pro Pool | 1600 | 3000 | 4000 | 
-| Maximale Anzahl von Datenbanken pro Pool | 500  | 500 | 100 | 
+| Maximale Speichergröße pro Datenbank  | 2 GB | 1 TB | 1 TB |
+| Maximale Speichergröße pro Pool | 156 GB | 4 TB | 4 TB |
+| Maximale Anzahl von eDTUs pro Datenbank | 5 | 3000 | 4000 |
+| Maximale Anzahl von eDTUs pro Pool | 1600 | 3000 | 4000 |
+| Maximale Anzahl von Datenbanken pro Pool | 500  | 500 | 100 |
 ||||||
 
 > [!IMPORTANT]
 > Mehr als 1 TB Speicher im Premium-Tarif ist derzeit in allen Regionen verfügbar, mit Ausnahme von „USA, Westen-Mitte“, „China, Osten“, „US DoD, Mitte“, „Deutschland, Mitte“, „US DoD, Osten“, „US Gov, Südwesten“, „US Gov Iowa“, „Deutschland, Nordosten“ und „China, Norden“. In anderen Regionen ist der Speicher im Premium-Tarif auf 1 TB begrenzt. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 

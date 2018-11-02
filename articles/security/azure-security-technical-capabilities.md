@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: eab55f6e2bf909ccdbdb30a8ced34dbc58d3954a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 862143aec0ac54abb3c62677c5a1ab1c15007edb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721329"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405564"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 
@@ -398,17 +398,17 @@ Außerdem bietet die Checkliste Folgendes:
 
 Azure Operational Security basiert auf einem Framework, mit dem die über verschiedene einzigartige Microsoft-Funktionen erworbenen Kenntnisse einbezogen werden, z.B. Microsoft Security Development Lifecycle (SDL), Microsoft Security Response Center-Programm und umfassende Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
 
-### <a name="microsoft-operations-management-suiteoms"></a>Microsoft Operations Management Suite (OMS)
+### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
 
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist die IT-Verwaltungslösung für die Hybrid Cloud. Bei der eigenständigen Verwendung oder zur Erweiterung Ihrer vorhandenen Bereitstellung von System Center bietet Ihnen die OMS die maximale Flexibilität und Kontrolle für die cloudbasierte Verwaltung Ihrer Infrastruktur.
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist die IT-Verwaltungslösung für die Hybrid Cloud. Log Analytics kann eigenständig oder zur Erweiterung Ihrer vorhandenen System Center-Bereitstellung verwendet werden und bietet Ihnen maximale Flexibilität und Kontrolle für die cloudbasierte Verwaltung Ihrer Infrastruktur.
 
-![Microsoft Operations Management Suite (OMS)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-Mit der OMS können Sie jede Instanz in einer beliebigen Cloud, einschließlich lokaler Cloud, Azure, AWS, Windows Server, Linux, VMware und Openstack, zu geringeren Kosten als die Lösungen der Wettbewerber verwalten. Die primär für die Cloud konzipierte OMS bietet einen neuen Ansatz für die Verwaltung Ihres Unternehmens, bei dem es sich um die schnellste und kostengünstigste Möglichkeit handelt, um sich neuen geschäftlichen Herausforderungen zu stellen sowie neuen Workloads, Anwendungen und Cloudumgebungen nachzukommen.
+Mit Log Analytics können Sie beliebige Instanzen in beliebigen Clouds (einschließlich lokaler Cloud, Azure, AWS, Windows Server, Linux, VMware und Openstack) verwalten – und das zu geringeren Kosten als mit einer Lösung eines Mitbewerbers. Log Analytics wurde für cloudorientierte Umgebungen konzipiert und bietet dank eines neuen Ansatzes für die Verwaltung Ihres Unternehmens die schnellste und kostengünstigste Möglichkeit, um sich neuen geschäftlichen Herausforderungen zu stellen und neue Workloads, Anwendungen und Cloudumgebungen zu nutzen.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für OMS bereit. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt so Überwachungsdienste bereit. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 

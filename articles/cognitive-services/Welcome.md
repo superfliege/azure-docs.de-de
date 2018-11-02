@@ -9,12 +9,12 @@ ms.component: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: nitinme
-ms.openlocfilehash: 5fcd625edf913e6629bfedb7ce7a6b5fe204af28
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f7a68aab4959c3793c7688504d73d2b539a26f83
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901430"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025394"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
@@ -74,11 +74,11 @@ Azure Cognitive Services sind APIs, SDKs und Dienste, die Entwicklern beim Erste
 
 ## <a name="use-free-trials"></a>Verwenden kostenloser Testversionen
 
-[Registrieren für kostenlose Testversionen] (https://azure.microsoft.com/try/cognitive-services/ „Registrierungshilfe“) erfordert nur eine E-Mail und ein paar einfache Schritte. Sie benötigen ein Microsoft-Konto, wenn Sie noch keines besitzen. Sie erhalten für jede angeforderte API ein eindeutiges Schlüsselpaar. Der zweite Schlüssel dient nur als Ersatz. Geben Sie die geheimen Schlüssel niemals an andere Personen weiter. Testversionen verfügen sowohl über ein Ratenlimit (Transaktionen pro Sekunde oder Minute) als auch über eine Begrenzung der monatlichen Nutzung. Eine Transaktion ist einfach ein API-Aufruf. Sie können ein Upgrade auf einen kostenpflichtigen Tarif durchführen, um die Einschränkungen aufzuheben.
+Das [Registrieren für kostenlose Testversionen](https://azure.microsoft.com/try/cognitive-services/ "Registrierungshilfe") erfordert nur eine E-Mail und einige wenige einfache Schritte. Sie benötigen ein Microsoft-Konto, wenn Sie noch keines besitzen. Sie erhalten für jede angeforderte API ein eindeutiges Schlüsselpaar. Der zweite Schlüssel dient nur als Ersatz. Geben Sie die geheimen Schlüssel niemals an andere Personen weiter. Testversionen verfügen sowohl über ein Ratenlimit (Transaktionen pro Sekunde oder Minute) als auch über eine Begrenzung der monatlichen Nutzung. Eine Transaktion ist einfach ein API-Aufruf. Sie können ein Upgrade auf einen kostenpflichtigen Tarif durchführen, um die Einschränkungen aufzuheben.
 
 ## <a name="subscription-management"></a>Abonnementverwaltung
 
-Nachdem Sie sich mit Ihrem Microsoft-Konto angemeldet haben, können Sie auf [Meine Abonnements] (https://www.microsoft.com/cognitive-services/en-us/subscriptions „Meine Abonnements“) zugreifen, um die verwendeten Produkte, das verbleibende Kontingent und die Möglichkeit zum Hinzufügen von weiteren Produkten zu Ihrem Abonnement anzuzeigen.
+Nachdem Sie sich mit Ihrem Microsoft-Konto angemeldet haben, können Sie auf [Meine Abonnements](https://www.microsoft.com/cognitive-services/en-us/subscriptions "Meine Abonnements") zugreifen, um die verwendeten Produkte, das verbleibende Kontingent und die Möglichkeit zum Hinzufügen von weiteren Produkten zu Ihrem Abonnement anzuzeigen.
 
 ## <a name="upgrade-to-unlock-limits"></a>Durchführen eines Upgrades zum Aufheben von Einschränkungen
 

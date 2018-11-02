@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/20/2018
 ms.author: celested
-ms.reviewer: jeedes
+ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5633dfbf59396e79226b196c2b699981409092ab
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 4e80f5cb85a53281da9ec50a02d089f46e97dfde
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902024"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466715"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -49,21 +49,38 @@ Sie können Ansprüche (mit Ausnahme des NameIdentifier-Anspruchs) über das Kon
 ![Benutzerattribut bearbeiten][3]
 
 ## <a name="editing-the-nameidentifier-claim"></a>Bearbeiten des NameIdentifier-Anspruchs
+
 Falls die Anwendung mit einem anderen Benutzernamen bereitgestellt wurde, klicken Sie im Abschnitt **Benutzerattribute** auf die Dropdownliste **Benutzer-ID**. Dadurch wird ein Dialogfeld mit mehreren Optionen angezeigt:
 
 ![Benutzerattribut bearbeiten][4]
 
-Wählen Sie in der Dropdownliste die Option **user.mail** aus, um den NameIdentifier-Anspruch auf die E-Mail-Adresse des Benutzers im Verzeichnis festzulegen. Oder wählen Sie **user.onpremisessamaccountname** aus, um den SAM-Kontonamen des Benutzers festzulegen, der von der lokalen Azure AD-Instanz synchronisiert wurde.
+### <a name="attributes"></a>Attribute
 
-Sie können auch die spezielle **ExtractMailPrefix()**-Funktion verwenden, um das Domänensuffix von der E-Mail-Adresse, dem SAM-Kontonamen oder dem Benutzerprinzipalnamen zu entfernen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com).
+Wählen Sie die gewünschte Quelle für den Anspruch `NameIdentifier` (oder NameID) aus. Sie können aus folgenden Optionen auswählen:
 
-![Benutzerattribut bearbeiten][5]
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| E-Mail | Die E-Mail-Adresse des Benutzers. |
+| userprincipalName | Der Benutzerprinzipalname (UPN) des Benutzers. |
+| onpremisessamaccount | Der SAM-Kontoname der aus der lokalen Azure AD-Instanz synchronisiert wurde. |
+| objectID | Die objectID des Benutzers in Azure AD. |
+| EmployeeID | Die EmployeeID des Benutzers. |
+| Verzeichniserweiterungen | Verzeichniserweiterungen, die [über die Azure AD Connect-Synchronisierung aus dem lokalen Active Directory synchronisiert wurden](../hybrid/how-to-connect-sync-feature-directory-extensions.md). |
+| Erweiterungsattribute 1–15 | Die lokalen Erweiterungsattribute, die zur Erweiterung des Azure AD-Schemas verwendet werden. |
 
-Darüber hinaus wurde die **join()**-Funktion hinzugefügt, um die überprüfte Domäne mit dem Wert der Benutzer-ID zu verknüpfen. Wenn Sie in der Dropdownliste **Benutzer-ID** die join()-Funktion auswählen, legen Sie als Benutzer-ID zunächst eine E-Mail-Adresse oder einen Benutzerprinzipalnamen fest, und wählen Sie dann in der zweiten Dropdownliste Ihre überprüfte Domäne aus. Wenn Sie die E-Mail-Adresse und die überprüfte Domäne auswählen, extrahiert Azure AD den Benutzernamen aus dem ersten Wert „joe_smith“ aus joe_smith@contoso.com und fügt ihn an „contoso.onmicrosoft.com“ an. Siehe folgendes Beispiel:
+### <a name="transformations"></a>Transformationen
 
-![Benutzerattribut bearbeiten][6]
+Sie können auch die speziellen Funktionen für Anspruchstransformationen verwenden.
+
+| Funktion | BESCHREIBUNG |
+|----------|-------------|
+| **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse, dem SAM-Kontonamen oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
+| **join()** | Verknüpft ein Attribut mit einer überprüften Domäne. Wenn der ausgewählte Wert für die Benutzer-ID über eine Domäne verfügt, wird der Benutzername extrahiert, an den ausgewählte überprüfte Domäne angefügt werden soll. Wenn Sie z.B. die E-Mail-Adresse (joe_smith@contoso.com) als Wert für die Benutzer-ID und „contoso.onmicrosoft.com“ als überprüfte Domäne verwenden, erhalten Sie joe_smith@contoso.onmicrosoft.com. |
+| **ToLower()** | Konvertiert die Zeichen des ausgewählten Attributs in Kleinbuchstaben. |
+| **ToUpper()** | Konvertiert die Zeichen des ausgewählten Attributs in Großbuchstaben. |
 
 ## <a name="adding-claims"></a>Hinzufügen von Ansprüchen
+
 Wenn Sie einen Anspruch hinzufügen, können Sie den Attributnamen angeben (der nicht unbedingt wie bei der SAML-Spezifikation einem URI-Muster entsprechen muss). Legen Sie den Wert auf ein beliebiges Benutzerattribut fest, das im Verzeichnis gespeichert ist.
 
 ![Benutzerattribut hinzufügen][7]

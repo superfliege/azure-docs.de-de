@@ -1,19 +1,21 @@
 ---
-title: Anpassen der Aussprache mit den Spracherkennungsdiensten in Azure Cognitive Services
-description: Erfahren Sie, wie Sie die Aussprache mit den Spracherkennungsdiensten in Azure Cognitive Services anpassen.
+title: Anpassen der Aussprache mit dem Speech-Dienst
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie die Aussprache mit dem Speech Service anpassen.
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: a608d1e48112fbb2adb56191eeb7f168de507e77
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 93c8d3302444c7d764849fe41d529bc06696243f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423203"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466170"
 ---
 # <a name="enable-custom-pronunciation"></a>Aktivieren der benutzerdefinierten Aussprache
 Durch die benutzerdefinierte Aussprache können Sie die phonetische Form und Darstellung eines Worts oder einer Benennung definieren. Dies ist für die Verarbeitung angepasster Benennungen wie Produktnamen oder Akronymen hilfreich. Erforderlich ist lediglich eine Aussprachedatei (eine einfache TXT-Datei).

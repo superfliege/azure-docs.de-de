@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 13ff24c24a881297775fa5f65821e53ceb83c351
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 727cf523f2a505729377f36738657fc5489134a7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108758"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025989"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Ändern der StorSimple-Gerätekonfiguration
 
@@ -65,7 +65,7 @@ Ihr Gerät muss die Zeit synchronisieren, damit es sich beim Cloudspeicher-Diens
 
  Wählen Sie in der Dropdownliste Ihre Zeitzone aus. Sie können bis zu zwei NTP-Server (Network Time Protocol, Netzwerkzeitprotokoll) angeben:
 
- - **Primärer NTP-Server**: Die Konfiguration ist erforderlich und wird angegeben, wenn Sie das Gerät über Windows PowerShell für StorSimple konfigurieren. Sie können den standardmäßigen Windows-Server **time.windows.com** als Ihren NTP-Server angeben. Sie können die Konfiguration des primären NTP-Servers zwar über das Azure-Portal anzeigen, wenn Sie die Konfiguration ändern möchten, müssen Sie aber die Windows PowerShell-Schnittstelle verwenden. Verwenden Sie das Cmdlet `Set-HcsNTPClientServerAddress`, um den primären NTP-Server Ihres Geräts zu ändern. Weitere Informationen zur Syntax finden Sie unter dem Cmdlet [Set-HcsNTPClientServerAddress] (https://technet.microsoft.com/library/dn688138.aspx).
+ - **Primärer NTP-Server**: Die Konfiguration ist erforderlich und wird angegeben, wenn Sie das Gerät über Windows PowerShell für StorSimple konfigurieren. Sie können den standardmäßigen Windows-Server **time.windows.com** als Ihren NTP-Server angeben. Sie können die Konfiguration des primären NTP-Servers zwar über das Azure-Portal anzeigen, wenn Sie die Konfiguration ändern möchten, müssen Sie aber die Windows PowerShell-Schnittstelle verwenden. Verwenden Sie das Cmdlet `Set-HcsNTPClientServerAddress`, um den primären NTP-Server Ihres Geräts zu ändern. Weitere Informationen zur Syntax finden Sie unter dem Cmdlet [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx).
 
 - **Sekundärer NTP-Server**: Die Konfiguration ist optional. Sie können mit dem Azure-Portal einen sekundären NTP-Server konfigurieren.
 
@@ -83,7 +83,7 @@ Ein DNS-Server wird verwendet, wenn das Gerät versucht, mit dem Cloudspeicher-D
 
 ![DNS-Einstellungen in „Netzwerkeinstellungen“](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
 
-Für eine hohe Verfügbarkeit müssen bei der ersten Gerätebereitstellung sowohl den primären als auch den sekundäre DNS-Server konfigurieren.
+Für Hochverfügbarkeit müssen Sie bei der ersten Gerätebereitstellung sowohl den primären als auch den sekundäre DNS-Server konfigurieren.
 
 **Primärer DNS-Server**: Sie verwenden Windows PowerShell für StorSimple zur ersten Angabe des primären DNS-Servers während des Einrichtung. Sie können die Konfiguration des primären DNS-Servers nur über die Windows PowerShell-Schnittstelle ändern. Verwenden Sie das Cmdlet `Set-HcsDNSClientServerAddress`, um den primären DNS-Server Ihres Geräts zu ändern. Weitere Informationen zur Syntax finden Sie unter dem Cmdlet [Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx).
 
@@ -111,7 +111,7 @@ Auf dem Blatt **Netzwerkeinstellungen** können Sie jede der zu verwendenden Sch
 
 ![Konfigurieren von Netzwerkschnittstellen über die Netzwerkeinstellungen](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
 
-Um hohe Verfügbarkeit zu gewährleisten, sollte Ihr Gerät mindestens zwei iSCSI-Schnittstellen und zwei cloudfähige Schnittstellen haben. Es ist zwar nicht erforderlich, empfiehlt sich aber, nicht verwendete Schnittstellen zu deaktivieren.
+Um Hochverfügbarkeit zu gewährleisten, sollte Ihr Gerät mindestens zwei iSCSI-Schnittstellen und zwei cloudfähige Schnittstellen haben. Es ist zwar nicht erforderlich, empfiehlt sich aber, nicht verwendete Schnittstellen zu deaktivieren.
 
 Für jede Netzwerkschnittstelle werden die folgenden Parameter angezeigt:
 

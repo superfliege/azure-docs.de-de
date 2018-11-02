@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: 7d8325ce04a9fa7853fb622062022a6938375f96
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 2f6db23e02c836dea6d640757d12275b654ad468
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47430980"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024626"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Übersicht über die öffentliche IP-Adresse (klassisch) auf Instanzebene
 Eine öffentliche IP-Adresse auf Instanzebene (Instance-Level Public IP, ILPIP) ist eine öffentliche IP-Adresse, die Sie einer VM oder Cloud Services-Rolleninstanz direkt zuweisen können, statt sie dem Clouddienst zuzuweisen, in dem sich Ihre VM oder Rolleninstanz befindet. Eine ILPIP tritt nicht an die Stelle der virtuellen IP-Adresse (VIP), die Ihrem Clouddienst zugeordnet ist. Es ist vielmehr eine zusätzliche IP-Adresse, mit der Sie direkt eine Verbindung mit der VM oder Rolleninstanz herstellen können.
@@ -31,7 +31,7 @@ Eine öffentliche IP-Adresse auf Instanzebene (Instance-Level Public IP, ILPIP) 
 
 Wie in Abbildung 1 dargestellt, erfolgt der Zugriff auf den Clouddienst über eine VIP-Adresse, während auf die einzelnen virtuellen Computer normalerweise unter Angabe von VIP:&lt;Portnummer&gt; zugegriffen wird. Die Zuweisung einer ILPIP zu einem bestimmten virtuellen Computer ermöglicht es, über diese IP-Adresse direkt auf diesen virtuellen Computer zuzugreifen.
 
-Bei der Erstellung eines Clouddiensts in Azure werden automatisch entsprechende DNS-A-Einträge erstellt, um den Zugriff auf den Dienst über einen vollqualifizierten Domänennamen (FQDN) anstelle der tatsächlichen VIP-Adresse zuzulassen. Dasselbe geschieht für eine ILPIP, um den Zugriff auf die VM oder Rolleninstanz über den FQDN statt der ILPIP zu ermöglichen. Wenn Sie beispielsweise einen Clouddienst namens *contosoadservice* erstellen, eine Webrolle namens *contosoweb* mit zwei Instanzen konfigurieren und `domainNameLabel` in der CSCFG-Datei auf *WebPublicIP* festgelegt ist, registriert Azure die folgenden A-Einträge für die Instanzen:
+Bei der Erstellung eines Clouddiensts in Azure werden automatisch entsprechende DNS A-Datensätze für den Zugriff auf den Dienst über einen vollständig qualifizierten Domänennamen (FQDN) anstelle der tatsächlichen VIP-Adresse erstellt. Dasselbe geschieht für eine ILPIP, um den Zugriff auf die VM oder Rolleninstanz über den FQDN statt der ILPIP zu ermöglichen. Wenn Sie beispielsweise einen Clouddienst namens *contosoadservice* erstellen, eine Webrolle namens *contosoweb* mit zwei Instanzen konfigurieren und `domainNameLabel` in der CSCFG-Datei auf *WebPublicIP* festgelegt ist, registriert Azure die folgenden A-Einträge für die Instanzen:
 
 
 * WebPublicIP.0.contosoadservice.cloudapp.net
@@ -47,7 +47,7 @@ Bei der Erstellung eines Clouddiensts in Azure werden automatisch entsprechende 
 ## <a name="why-would-i-request-an-ilpip"></a>Warum kann es sinnvoll sein, eine ILPIP anzufordern?
 Wenn Sie über eine direkt zugewiesene IP-Adresse eine Verbindung mit Ihrer VM- oder Rolleninstanz herstellen möchten, anstatt VIP:&lt;Portnummer&gt; des Clouddiensts zu verwenden, fordern Sie eine ILPIP für die VM- oder Rolleninstanz an.
 
-* **Aktives FTP**: Wird einer VM eine ILPIP zugewiesen, kann die VM Datenverkehr an beliebigen Ports empfangen. Die VM benötigt keine Endpunkte, um Datenverkehr empfangen zu können.  Ausführlichere Informationen zum FTP-Protokoll finden Sie unter [File Transfer Protocol – Protocol overview] https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview).
+* **Aktives FTP**: Wird einer VM eine ILPIP zugewiesen, kann die VM Datenverkehr an beliebigen Ports empfangen. Die VM benötigt keine Endpunkte, um Datenverkehr empfangen zu können.  Ausführliche Informationen zum FTP-Protokoll finden Sie unter [File Transfer Protocol – Protocol overview](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) (FTP – Protokollübersicht).
 * **Ausgehende IP**: Der vom virtuellen Computer ausgehende Datenverkehr wird der ILPIP als Quelle zugeordnet, und durch die ILPIP wird die VM gegenüber externen Entitäten eindeutig identifiziert.
 
 > [!NOTE]

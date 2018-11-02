@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie eine große Anzahl lokaler Computer mit 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 5f02393e6c8d5e094443e418b3fe7439d73ff837
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 32bed3a60c40b93471b75b9d54dccd822ccc3be8
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325021"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025872"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
@@ -122,7 +122,7 @@ Wenn Sie über mehrere Projekte verfügen, müssen Sie die Collectorappliance nu
 1. Klicken Sie im Azure Migrate-Projekt auf **Erste Schritte** > **Ermitteln und bewerten** > **Computer ermitteln**.
 2. In **Computer ermitteln** stehen zwei Optionen für die Appliance zur Verfügung – klicken Sie zum Herunterladen der Ihren Anforderungen entsprechenden Appliance auf **Herunterladen**.
 
-    a. **Einmalige Ermittlung:** Die Appliance für dieses Modell kommuniziert mit vCenter Server, um Metadaten über die virtuellen Computer zu sammeln. Für die Sammlung von Leistungsdaten der virtuellen Computer bezieht es sich auf die in vCenter Server gespeicherten historischen Leistungsdaten und sammelt den Leistungsverlauf des letzten Monats. In diesem Modell sammelt Azure Migrate durchschnittliche Leistungsindikatoren (im Vergleich zu Spitzenleistungsindikatoren) für jede Metrik, [Weitere Informationen] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Da es sich nur um eine einmalige Ermittlung handelt, spiegeln sich Änderungen in der lokalen Umgebung nicht wider, wenn die Ermittlung abgeschlossen ist. Wenn sich die Änderungen widerspiegeln sollen, müssen Sie eine neue Ermittlung derselben Umgebung für dasselbe Projekt durchführen.
+    a. **Einmalige Ermittlung:** Die Appliance für dieses Modell kommuniziert mit vCenter Server, um Metadaten über die virtuellen Computer zu sammeln. Für die Sammlung von Leistungsdaten der virtuellen Computer bezieht es sich auf die in vCenter Server gespeicherten historischen Leistungsdaten und sammelt den Leistungsverlauf des letzten Monats. In diesem Modell sammelt Azure Migrate durchschnittliche Leistungsindikatoren (im Gegensatz zu Spitzenleistungsindikatoren) für jede Metrik. (Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected).) Da es sich nur um eine einmalige Ermittlung handelt, spiegeln sich Änderungen in der lokalen Umgebung nicht wider, wenn die Ermittlung abgeschlossen ist. Wenn sich die Änderungen widerspiegeln sollen, müssen Sie eine neue Ermittlung derselben Umgebung für dasselbe Projekt durchführen.
 
     b. **Kontinuierliche Ermittlung:** Die Appliance für dieses Modell erstellt kontinuierlich Profile der lokalen Umgebung zum Sammeln von Echtzeit-Nutzungsdaten für jeden virtuellen Computer. In diesem Modell werden Spitzenleistungsindikatoren für jede Metrik (CPU-Auslastung, Arbeitsspeicherauslastung usw.) gesammelt. Dieses Modell ist nicht von den Statistikeinstellungen von vCenter Server für die Sammlung von Leistungsdaten abhängig. Sie können die kontinuierliche Profilerstellung jederzeit von der Appliance aus beenden.
 
@@ -148,7 +148,17 @@ Wenn Sie über mehrere Projekte verfügen, müssen Sie die Collectorappliance nu
 
 #### <a name="one-time-discovery"></a>Einmalige Ermittlung
 
-Für OVA-Version 1.0.9.14
+<<<<<<< HEAD Für OVA-Version 1.0.9.15 (veröffentlicht am 23.10.2018)
+
+ <a name="algorithm--hash-value"></a>**Algorithmus** | **Hashwert**
+=======
+Für OVA-Version 1.0.9.15
+
+**Algorithmus** | **Hashwert**
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37 --- | --- MD5 | e9ef16b0c837638c506b5fc0ef75ebfa SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864 SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+
+<<<<<<< HEAD Für OVA-Version 1.0.9.14 (veröffentlicht am 24.8.2018) ======= Für OVA-Version 1.0.9.14
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
 
 **Algorithmus** | **Hashwert**
 --- | ---

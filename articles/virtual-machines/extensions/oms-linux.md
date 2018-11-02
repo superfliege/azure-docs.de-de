@@ -15,18 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: roiyz
-ms.openlocfilehash: b8a946588d09eb05e1609344318c91f76c7ee106
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: dc0d7857dbbbdc862878201ba9d47632d2b5affd
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452121"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404850"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics-VM-Erweiterung für Linux
 
 ## <a name="overview"></a>Übersicht
 
 Log Analytics bietet Überwachungs- und Warnungsfunktionen sowie Funktionen zum Beheben von Warnungen für cloudbasierte und lokale Ressourcen. Die Log Analytics-Agent-VM-Erweiterung für Linux wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen Log Analytics-Arbeitsbereich. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die Log Analytics-VM-Erweiterung für Linux.
+
+>[!NOTE]
+>Im Rahmen der laufenden Umstellung von der Microsoft Operations Management Suite (OMS) auf Azure Monitor wird der OMS-Agent für Windows bzw. Linux nun als Log Analytics-Agent für Windows bzw. Log Analytics-Agent für Linux bezeichnet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -80,9 +83,9 @@ Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung
 
 ```json
 {
-  "type": "extensions",
+  "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
@@ -101,11 +104,15 @@ Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung
 }
 ```
 
+>[!NOTE]
+>Bei dem oben angegebenen Schema wird davon ausgegangen, dass es auf der Stammebene der Vorlage platziert wird. Wenn Sie es in der Ressource des virtuellen Computers in der Vorlage einfügen, sollten die Eigenschaften `type` und `name` geändert werden, wie [weiter unten](#template-deployment) beschrieben.
+>
+
 ### <a name="property-values"></a>Eigenschaftswerte
 
 | NAME | Wert/Beispiel |
 | ---- | ---- |
-| apiVersion | 2015-06-15 |
+| apiVersion | 2018-06-01 |
 | Herausgeber | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
@@ -125,7 +132,7 @@ Im folgenden Beispiel wird davon ausgegangen, dass die VM-Erweiterung in der VM-
 {
   "type": "extensions",
   "name": "OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
@@ -150,7 +157,7 @@ Beim Platzieren des JSON-Codes für die Erweiterung im Stamm der Vorlage enthäl
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "<parentVmResource>/OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
@@ -206,13 +213,13 @@ Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokollier
 | 9 | Aktivierung zu früh aufgerufen | [Aktualisieren Sie den Azure Linux-Agent](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) auf die neueste verfügbare Version. |
 | 10 | VM ist bereits mit einem Log Analytics-Arbeitsbereich verbunden | Zum Verbinden der VM mit dem im Erweiterungsschema angegebenen Arbeitsbereich legen Sie „stopOnMultipleConnections“ in den öffentlichen Einstellungen auf FALSE fest, oder entfernen Sie diese Eigenschaft. Diese VM wird für jeden Arbeitsbereich, mit dem Sie verbunden ist, einmal in Rechnung gestellt. |
 | 11 | Ungültige Konfiguration der Erweiterung bereitgestellt | Folgen Sie den vorherigen Beispielen, um alle für die Bereitstellung erforderlichen Eigenschaftswerte festzulegen. |
-| 17 | Fehler bei der OMS-Paketinstallation | 
+| 17 | Fehler bei der Log Analytics-Paketinstallation | 
 | 19 | Fehler bei der OMI-Paketinstallation | 
 | 20 | Fehler bei der SCX-Paketinstallation |
 | 51 | Diese Erweiterung wird vom Betriebssystem der VM nicht unterstützt. | |
-| 55 | Es kann keine Verbindung mit dem OMS-Dienst hergestellt werden, oder die erforderlichen Pakete fehlen, oder der dpkg-Paket-Manager ist gesperrt.| Stellen Sie sicher, dass das System entweder Internetzugriff hat oder dass ein gültiger HTTP-Proxy bereitgestellt wurde. Überprüfen Sie außerdem die Richtigkeit der Arbeitsbereichs-ID, und stellen Sie sicher, dass die Hilfsprogramme cURL und Tar installiert sind. |
+| 55 | Es kann keine Verbindung mit dem Log Analytics-Dienst hergestellt werden, oder die erforderlichen Pakete fehlen, oder der dpkg-Paket-Manager ist gesperrt.| Stellen Sie sicher, dass das System entweder Internetzugriff hat oder dass ein gültiger HTTP-Proxy bereitgestellt wurde. Überprüfen Sie außerdem die Richtigkeit der Arbeitsbereichs-ID, und stellen Sie sicher, dass die Hilfsprogramme cURL und Tar installiert sind. |
 
-Weitere Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung für den OMS-Agent für Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
+Weitere Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung für den Log Analytics-Agent für Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
 
 ### <a name="support"></a>Support
 

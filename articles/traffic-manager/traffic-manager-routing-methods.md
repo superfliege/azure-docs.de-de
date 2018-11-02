@@ -4,7 +4,6 @@ description: Dieser Artikel erläutert Ihnen die verschiedenen Methoden für das
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: be429e7d3ae847eec6dc4fd5ad6b9c3e5d76d5b5
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: eb43b59a26bc9c1b514921a7b6dfa4b920a8fe5f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785408"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955217"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager-Routingmethoden
 
@@ -129,8 +128,11 @@ Wie unter [Funktionsweise von Traffic Manager Works](traffic-manager-how-it-work
 Mit der Routingmethode **MultiValue** für Datenverkehr können Sie mehrere fehlerfreie Endpunkte in einer einzelnen DNS-Abfrageantwort abrufen. Dadurch kann der Aufrufer clientseitige Wiederholungsversuche mit anderen Endpunkten ausführen, falls ein zurückgegebener Endpunkt nicht reagiert. Dieses Muster kann zur Erhöhung der Verfügbarkeit eines Diensts beitragen und bei einer neuen DNS-Abfrage zum Abrufen eines fehlerfreien Endpunkts die Wartezeit verkürzen. Die Routingmethode „MultiValue“ funktioniert nur, wenn alle Endpunkte vom Typ „Extern“ und als IPv4- oder IPv6-Adressen angegeben sind. Wenn eine Abfrage für dieses Profil empfangen wird, werden alle fehlerfreien Endpunkte unter Berücksichtigung einer konfigurierbaren maximalen Rückgabeanzahl zurückgegeben.
 
 ## <a name = "subnet"></a>Routingmethode „Subnetz“ für Datenverkehr
-Mit der Routingmethode **Subnetz** für Datenverkehr können Sie eine Gruppe von Endbenutzer-IP-Adressbereichen bestimmten Endpunkten in einem Profil zuordnen. Wenn der Traffic Manager danach eine DNS-Abfrage für dieses Profil empfängt, untersucht er die Quell-IP-Adresse der Anforderung (in den meisten Fällen ist das die ausgehende IP-Adresse der vom Aufrufer verwendeten DNS-Auflösung), um zu bestimmen, welchem Endpunkt sie zugeordnet ist, und gibt den entsprechenden Endpunkt in der Abfrageantwort zurück. Die IP-Adresse, die einem Endpunkt zugeordnet wird, kann in Form von CIDR-Bereichen (etwa 1.2.3.0/24) oder als Adressbereich (etwa 1.2.3.4-5.6.7.8) angegeben werden. Die einem Endpunkt zugeordneten IP-Adressbereiche müssen innerhalb des Profils eindeutig sein und dürfen sich nicht mit der IP-Adressgruppe eines anderen Endpunkts im gleichen Profil überschneiden.
-Sollten keine Endpunkte vorhanden sein, denen die IP-Adresse zugeordnet werden kann, sendet der Traffic Manager eine NODATA-Antwort. Es empfiehlt sich daher dringend, alle möglichen IP-Adressbereiche für Ihre Endpunkte anzugeben.
+Mit der Routingmethode **Subnetz** für Datenverkehr können Sie eine Gruppe von Endbenutzer-IP-Adressbereichen bestimmten Endpunkten in einem Profil zuordnen. Wenn der Traffic Manager danach eine DNS-Abfrage für dieses Profil empfängt, untersucht er die Quell-IP-Adresse der Anforderung (in den meisten Fällen ist das die ausgehende IP-Adresse der vom Aufrufer verwendeten DNS-Auflösung), um zu bestimmen, welchem Endpunkt sie zugeordnet ist, und gibt den entsprechenden Endpunkt in der Abfrageantwort zurück. 
+
+Die IP-Adresse, die einem Endpunkt zugeordnet wird, kann in Form von CIDR-Bereichen (etwa 1.2.3.0/24) oder als Adressbereich (etwa 1.2.3.4-5.6.7.8) angegeben werden. Die einem Endpunkt zugeordneten IP-Adressbereiche müssen innerhalb des Profils eindeutig sein und dürfen sich nicht mit der IP-Adressgruppe eines anderen Endpunkts im gleichen Profil überschneiden.
+Wenn Sie einen Endpunkt ohne Adressbereich definieren, funktioniert dieser als Fallback und verarbeitet den Datenverkehr aller verbleibenden Subnetze. Wenn kein Fallbackendpunkt enthalten ist, sendet der Traffic Manager eine NODATA-Antwort für undefinierte Bereiche. Daher wird dringend empfohlen, entweder einen Fallbackendpunkt zu definieren oder alle möglichen IP-Adressbereiche für alle Ihre Endpunkte anzugeben.
+
 Die Routingmethode „Subnetz“ kann verwendet werden, um Benutzern, die eine Verbindung über einen bestimmten IP-Adressraum herstellen, ein anderes Erlebnis zu bieten. So kann ein Kunde mithilfe der Routingmethode „Subnetz“ beispielsweise sämtliche Anforderungen, die von der Konzernzentrale ausgehen, an einen anderen Endpunkt weiterleiten, um etwa eine interne Version einer App zu testen. Ein weiteres Szenario wäre etwa die Bereitstellung einer anderen Erfahrung für Benutzer, die eine Verbindung über einen bestimmten ISP herstellen, um beispielsweise Benutzer eines bestimmten ISP zu blockieren.
 
 ## <a name="next-steps"></a>Nächste Schritte

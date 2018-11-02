@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 481fcb869004a6fca83fdf19c32c41010057de32
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: aa68bb0cb2e404072ef359591ce9309f8c27b631
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008194"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403984"
 ---
 # <a name="azure-operational-security-checklist"></a>Checkliste für Azure Operational Security
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Vor der Bereitstellung der Cloudanwendung in der Produktion ist es sinnvoll, eine Checkliste für die Bewertung Ihrer Anwendung zu verwenden. Hierbei wird eine Liste wichtiger und empfohlener Betriebssicherheitsaktionen überprüft, die Sie berücksichtigen müssen.
@@ -51,8 +51,7 @@ Diese Checkliste unterstützt Unternehmen bei verschiedenen operativen Sicherhei
 Viele Unternehmen haben ihre Cloudanwendungen erfolgreich in Azure bereitgestellt und betrieben. Bei den bereitgestellten Checklisten sind mehrere Checklisten hervorgehoben, die wichtig sind und Ihnen dabei helfen, die Wahrscheinlichkeit für erfolgreiche Bereitstellungen und unproblematische Vorgänge zu erhöhen. Diese betriebsbedingten und strategischen Überlegungen werden dringend für Ihre vorhandenen und neuen Anwendungsbereitstellungen in Azure empfohlen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument wurde die Sicherheits- und Überwachungslösung von OMS vorgestellt. Weitere Informationen zur Sicherheitslösung von OMS finden Sie in den folgenden Artikeln:
+Weitere Informationen zur Sicherheit finden Sie in den folgenden Artikeln:
 
-- [Operations Management Suite (OMS) – Übersicht](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview).
 - [Gestaltung und betriebsbedingte Sicherheit](https://www.microsoft.com/trustcenter/security/designopsecurity).
 - [Planungs- und Betriebshandbuch für Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide).

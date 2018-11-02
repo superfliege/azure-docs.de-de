@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7c01940c41067029bc3d47d19c2ded1d710cc2c6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972554"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470063"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage
 Azure Storage bietet ein mehrstufiges Sicherheitsmodell, mit dem Sie Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke sichern können.  Wenn Netzwerkregeln konfiguriert sind, können nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen.  Anwendungen, die aus einem zulässigen Netzwerk aufgerufen werden, erfordern für den Zugriff auf das Speicherkonto weiterhin eine ordnungsgemäße Autorisierung (einen gültigen Zugriffsschlüssel oder ein gültiges SAS-Token).
 
 > [!IMPORTANT]
-> Durch das Aktivieren von Firewallregeln für Ihr Storage-Konto wird der Zugriff auf eingehende Datenanforderungen, auch von anderen Azure-Diensten, blockiert.  Dies schließt das Portal, das Schreiben von Protokollen usw. mit ein.  Für beteiligte Dienste können Sie die Funktionalität erneut aktivieren, wie unten im Abschnitt [Ausnahmen](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) beschrieben.  Um auf das Portal zuzugreifen, müssen Sie dies von einem Computer innerhalb der von Ihnen eingerichteten vertrauenswürdigen Grenze (entweder IP oder VNET) aus tun.
+> Durch das Aktivieren von Firewallregeln für Ihr Storage-Konto wird der Zugriff auf eingehende Datenanforderungen, auch von anderen Azure-Diensten, blockiert.  Dies schließt das Portal, das Schreiben von Protokollen usw. mit ein.  Azure-Dienste, die in einem VNET ausgeführt werden, können Zugriff erhalten, indem Sie das Subnetz der Dienstinstanz zulassen.  Azure-Dienste, die nicht in einem VNET ausgeführt werden, werden durch die Firewall blockiert.  Eine begrenzte Anzahl von Szenarien kann über den weiter unten beschriebenen [Ausnahmen](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)-Mechanismus aktiviert werden.  Um auf das Portal zuzugreifen, müssen Sie dies von einem Computer innerhalb der von Ihnen eingerichteten vertrauenswürdigen Grenze (entweder IP oder VNET) aus tun.
 >
 
 ## <a name="scenarios"></a>Szenarien
@@ -188,7 +188,11 @@ Zulässige Internetadressbereiche können in [CIDR-Notation](https://tools.ietf.
 > Kleine Adressbereiche mit der Präfixgröße „/ 31“ oder „/ 32“ werden nicht unterstützt.  Diese Bereiche müssen mit einzelnen IP-Adressregeln konfiguriert werden.
 >
 
-IP-Netzwerkregeln sind nur für **öffentliche Internet**-IP-Adressen zulässig.  Für private Netzwerke reservierte IP-Adressbereiche (gemäß RFC 1918) sind in IP-Adressregeln nicht zulässig.  Private Netzwerke enthalten Adressen, die mit *10.\**, *172.16.\** und *192.168.\** beginnen.
+IP-Netzwerkregeln sind nur für **öffentliche Internet**-IP-Adressen zulässig.  Für private Netzwerke reservierte IP-Adressbereiche (wie in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) definiert) sind in IP-Adressregeln nicht zulässig.  Private Netzwerke enthalten Adressen, die mit *10.\**, *172.16.\** - *172.31.\** und *192.168.\** beginnen.
+
+> [!NOTE]
+> IP-Netzwerkregeln wirken sich nicht aus Anforderungen aus, die aus der gleichen Region stammen wie das Speicherkonto.  Verwenden Sie [Regeln für virtuelle Netzwerke](#grant-access-from-a-virtual-network), um Anforderungen aus der gleichen Region zuzulassen.
+>
 
 Derzeit werden nur IPv4-Adressen unterstützt.
 
@@ -285,11 +289,11 @@ Wenn die Ausnahme „Vertrauenswürdige Microsoft-Dienste“ aktiviert ist, wird
 
 |Dienst|Name des Ressourcenanbieters|Zweck|
 |:------|:---------------------|:------|
-|Azure Backup|Microsoft.Backup|Ausführen von Sicherungen und Wiederherstellungen von nicht verwalteten Datenträgern in IAAS-VMs. (nicht für verwaltete Datenträger erforderlich). [Weitere Informationen](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup)|
-|Azure DevTest Labs|Microsoft.DevTestLab|Erstellung benutzerdefinierter Images und Installation von Artefakten.  [Weitere Informationen](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview)|
-|Azure Event Grid|Microsoft.EventGrid|Aktivieren der Veröffentlichung von Blob Storage-Ereignissen.  [Weitere Informationen](https://docs.microsoft.com/azure/event-grid/overview)|
+|Azure Backup|Microsoft.Backup|Ausführen von Sicherungen und Wiederherstellungen von nicht verwalteten Datenträgern in IAAS-VMs. (nicht für verwaltete Datenträger erforderlich). [Weitere Informationen](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup).|
+|Azure DevTest Labs|Microsoft.DevTestLab|Erstellung benutzerdefinierter Images und Installation von Artefakten.  [Weitere Informationen](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview).|
+|Azure Event Grid|Microsoft.EventGrid|Aktivieren der Veröffentlichung von Blob Storage-Ereignissen.  [Weitere Informationen](https://docs.microsoft.com/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture.  [Weitere Informationen](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
-|Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs.  [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)|
+|Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs.  [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
 |Azure Monitor|Microsoft.Insights| Ermöglicht das Schreiben von Überwachungsdaten in ein gesichertes Speicherkonto. [Weitere Informationen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
 |
 

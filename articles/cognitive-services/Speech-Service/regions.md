@@ -1,23 +1,25 @@
 ---
-title: Regionen des Spracherkennungsdiensts
-description: Referenz für Regionen des Spracherkennungsdiensts.
+title: Regionen des Speech-Diensts
+titlesuffix: Azure Cognitive Services
+description: Referenz zu den Regionen des Speech-Diensts.
 services: cognitive-services
 author: mahilleb-msft
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: 01c76d80d6b2fd64165b126df01c391d7e18292f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a5fce6f9547a96da3ce482ce388e5ba2093f2af4
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887546"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468125"
 ---
-# <a name="regions-of-the-speech-service"></a>Regionen des Spracherkennungsdiensts
+# <a name="regions-of-the-speech-service"></a>Regionen des Speech-Diensts
 
-Der Spracherkennungsdienst ist in unterschiedlichen Regionen verfügbar.
+Der Speech-Dienst ist in unterschiedlichen Regionen verfügbar.
 Wenn Sie ein Abonnement erstellen, können Sie je nach Ihren Anforderungen eine verfügbare Region auswählen.
 
 Wenn Sie Ihr Abonnement verwenden, müssen Sie die ausgewählte Region berücksichtigen.
@@ -29,7 +31,7 @@ Details finden Sie unter [REST-APIs](rest-apis.md).
 
 ## <a name="speech-sdk"></a>Sprach-SDK
 
-Im [Speech SDK](speech-sdk.md) werden Regionen als Zeichenfolge angegeben (z.B. als Parameter für `SpeechConfig.FromSubscription` im Speech SDK für C#).
+Im [Speech-Dienst-SDK](speech-sdk.md) werden Regionen als Zeichenfolge angegeben (z.B. als Parameter für `SpeechConfig.FromSubscription` im Speech-SDK für C#).
 
 ### <a name="regions-for-speech-recognition-and-translation"></a>Regionen für die Spracherkennung und Übersetzung
 

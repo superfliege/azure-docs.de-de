@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
-ms.date: 09/10/2018
+ms.topic: conceptual
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 3ed10ac428b7ce2e528ccf46e34c1d394523bdec
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 92b4864f8991380740e6edb498328ce2eea98250
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042447"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650110"
 ---
 # <a name="entities-in-luis"></a>Entitäten in LUIS
 
@@ -61,6 +61,10 @@ In der Äußerung „Buche mir ein Ticket nach Paris“ ist „Paris“ eine Ent
 ## <a name="assign-entities-in-none-intent"></a>Zuweisen von Entitäten zur Absicht „Keine“
 In allen Absichten, einschließlich der Absicht **None**, sollten Entitäten eine Bezeichnung erhalten. Auf diese Weise kann LUIS mehr darüber erfahren, wo sich die Entitäten in den Äußerungen befinden und welche Wörter sich um die Entitäten herum befinden. 
 
+## <a name="entity-status-for-predictions"></a>Vorhersagen zum Entitätsstatus
+
+Weitere Informationen finden Sie unter [Vorhersagen zum Entitätsstatus](luis-how-to-add-example-utterances.md#entity-status-predictions). 
+
 ## <a name="types-of-entities"></a>Typen von Entitäten
 LUIS bietet viele Typen von Entitäten: vordefinierte Entitäten, benutzerdefinierte Entitäten, die durch maschinelles Lernen erworben wurden, und Listenentitäten.
 
@@ -93,7 +97,7 @@ LUIS bietet viele Typen von Entitäten: vordefinierte Entitäten, benutzerdefini
 Informieren Sie sich über die [Grenzwerte](luis-boundaries.md#model-boundaries), um zu erfahren, wie viele Entitäten jedes Typs Sie einem Modell hinzufügen können.
 
 ## <a name="entity-roles"></a>Entitätsrollen
-[Entitätsrollen](luis-concept-roles.md) werden nur in Mustern verwendet. 
+[Entitätsrollen](luis-concept-roles.md) gelten für benutzerdefinierte und vordefinierte Entitäten und werden nur in Mustern verwendet. 
 
 ## <a name="composite-vs-hierarchical-entities"></a>Hierarchische und zusammengesetzte Entitäten
 Zusammengesetzte Entitäten und hierarchische Entitäten verfügen jeweils über eine Über- und Unterordnungsbeziehung, und sie wurden durch maschinelles Lernen erworben. Durch maschinelles Lernen kann LUIS die Entitäten basierend auf unterschiedlichen Kontexten (Anordnung von Wörtern) verstehen. Zusammengesetzte Entitäten sind flexibler, da sie unterschiedliche Entitätstypen als untergeordnete Elemente zulassen. Bei einer hierarchischen Entität sind die untergeordneten Entitäten immer einfache Entitäten. 

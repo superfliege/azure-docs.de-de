@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 73978609d018eb43ab8031dc6e8261861e1ee3bf
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d0368584dfa461427fe1bad4273c993f0ece894a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402537"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413798"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-Monitor
 
@@ -30,7 +30,7 @@ Mit der ExpressRoute-Monitor-Funktion im [Netzwerkleistungsmonitor](log-analytic
 - Nachverfolgung von Bandbreitennutzung, Verlusten und Wartezeiten auf Ebene der Verbindung, des Peerings und von Azure Virtual Network für ExpressRoute
 - Erkennung der Netzwerktopologie Ihrer ExpressRoute-Leitungen
 
-![ExpressRoute-Monitor](media/log-analytics-network-performance-monitor/expressroute-intro.png)
+![ExpressRoute-Monitor](media/log-analytics-network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>Konfiguration 
 Öffnen Sie die [Netzwerkleistungsmonitor](log-analytics-network-performance-monitor.md)-Lösung, und wählen Sie die Schaltfläche **Konfigurieren** aus, um die Konfiguration für den Netzwerkleistungsmonitor zu öffnen.
@@ -55,7 +55,7 @@ Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter  [Netzwer
     >[!NOTE]
     > Es werden nur private Peerings ermittelt, die mit den virtuellen Netzwerken verbunden sind, die dem mit diesem Log Analytics-Arbeitsbereich verknüpften Abonnement zugeordnet sind. Wenn ExpressRoute mit virtuellen Netzwerken außerhalb des mit diesem Arbeitsbereich verknüpften Abonnements verbunden ist, erstellen Sie in diesen Abonnements einen Log Analytics-Arbeitsbereich. Verwenden Sie dann den Netzwerkleistungsmonitor zum Überwachen dieser Peerings. 
 
-    ![Konfiguration des ExpressRoute-Monitors](media/log-analytics-network-performance-monitor/expressroute-configure.png)
+    ![Konfiguration des ExpressRoute-Monitors](media/log-analytics-network-performance-monitor-expressroute/expressroute-configure.png)
  
  Nach Abschluss der Ermittlung werden die ermittelten privaten Peeringverbindungen in einer Tabelle aufgeführt. Die Überwachung für diese Peerings ist zunächst deaktiviert. 
 
@@ -68,7 +68,7 @@ Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter  [Netzwer
 5. Wählen Sie **Agents hinzufügen** aus, um die Überwachungs-Agents auszuwählen, die Sie zum Überwachen dieser Peeringverbindung verwenden möchten. Stellen Sie sicher, dass Sie auf beiden Seiten der Verbindung Agents hinzufügen. Es muss mindestens ein Agent im virtuellen Netzwerk mit diesem Peering verbunden sein. Darüber hinaus muss mindestens ein lokaler Agent mit diesem Peering verbunden sein. 
 6. Wählen Sie zum Speichern der Konfiguration **Speichern** aus. 
 
-   ![Konfiguration der ExpressRoute-Überwachung](media/log-analytics-network-performance-monitor/expressroute-configure-discovery.png)
+   ![Konfiguration der ExpressRoute-Überwachung](media/log-analytics-network-performance-monitor-expressroute/expressroute-configure-discovery.png)
 
 
 Nachdem Sie die Regeln aktiviert und Werte und Agents ausgewählt haben, warten Sie 30 bis 60 Minuten, bis die Werte aufgefüllt wurden und die Kacheln der **ExpressRoute-Überwachung** angezeigt werden. Sobald die Überwachungskacheln angezeigt werden, werden Ihre ExpressRoute-Leitungen und -Verbindungsressourcen vom Netzwerkleistungsmonitor überwacht. 
@@ -80,37 +80,37 @@ Nachdem Sie die Regeln aktiviert und Werte und Agents ausgewählt haben, warten 
 
 Das Dashboard des Netzwerkleistungsmonitors zeigt eine Übersicht über die Integrität von ExpressRoute-Leitungen und -Peeringverbindungen. 
 
-![Dashboard des Netzwerkleistungsmonitors](media/log-analytics-network-performance-monitor/npm-dashboard-expressroute.png) 
+![Dashboard des Netzwerkleistungsmonitors](media/log-analytics-network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
 
 ### <a name="circuits-list"></a>Verbindungsliste 
 
 Wählen Sie die Kachel „ExpressRoute-Leitungen“ aus, um eine Liste aller überwachten ExpressRoute-Leitungen anzuzeigen. Sie können eine Verbindung auswählen und deren Integritätsstatus, Trenddiagramme für den Paketverlust, Bandbreitennutzung und Latenz anzuzeigen. Die Diagramme sind interaktiv. Sie können ein benutzerdefiniertes Zeitfenster für das Zeichnen der Diagramme auswählen. Ziehen Sie die Maus über einen Bereich des Diagramms, um diesen zu vergrößern und detaillierte Datenpunkte anzuzeigen. 
 
-![Liste der ExpressRoute-Leitungen](media/log-analytics-network-performance-monitor/expressroute-circuits.png) 
+![Liste der ExpressRoute-Leitungen](media/log-analytics-network-performance-monitor-expressroute/expressroute-circuits.png) 
 
 ### <a name="trends-of-loss-latency-and-throughput"></a>Trends für Verlust, Wartezeit und Durchsatz 
 
 Die Diagramme für Bandbreitennutzung, Latenz und Verlust sind interaktiv. Sie können jeden Bereich dieser Diagramme mithilfe der Maussteuerung vergrößern. Außerdem können Sie die Daten für Bandbreite, Latenz und Verlust für andere Intervalle anzeigen. Wählen Sie in der linken oberen Ecke unter der Schaltfläche **Aktionen** die Option  **Datum/Uhrzeit** aus. 
 
-![ExpressRoute-Latenz](media/log-analytics-network-performance-monitor/expressroute-latency.png) 
+![ExpressRoute-Latenz](media/log-analytics-network-performance-monitor-expressroute/expressroute-latency.png) 
 
 ### <a name="peerings-list"></a>Peeringliste 
 
 Wählen Sie die Kachel **Private Peerings** auf dem Dashboard aus, um eine Liste aller Verbindungen mit virtuellen Netzwerken über privates Peering anzuzeigen. Hier können Sie eine virtuelle Netzwerkverbindung auswählen und deren Integritätsstatus, Trenddiagramme für Paketverlust, Bandbreitennutzung und Latenz anzeigen lassen. 
 
-![ExpressRoute-Peerings](media/log-analytics-network-performance-monitor/expressroute-peerings.png) 
+![ExpressRoute-Peerings](media/log-analytics-network-performance-monitor-expressroute/expressroute-peerings.png) 
 
 ### <a name="circuit-topology"></a>Verbindungstopologie 
 
 Wählen Sie die Kachel **Topologie** aus, um die Topologie der Verbindung anzuzeigen. Durch diese Aktion gelangen Sie zur Ansicht der Topologie für die ausgewählte Leitung oder das ausgewählte Peering. Das Topologiediagramm enthält die Latenz für jedes Segment im Netzwerk, außerdem wird jeder Schicht-3-Hop durch einen Knoten des Diagramms dargestellt. Durch das Auswählen eines Hops werden weitere Details zum Hop angezeigt. Um den Sichtbarkeitsgrad zu erhöhen, sodass lokale Hops eingeschlossen werden, bewegen Sie den Schieberegler unter **FILTER**. Das Bewegen des Schiebereglers nach links oder rechts vergrößert bzw. verkleinert die Anzahl der Hops im Topologiediagramm. Die Latenz ist für jedes Segment sichtbar, sodass eine schnellere Isolation von Segmenten mit hoher Latenz in Ihrem Netzwerk ermöglicht wird. 
 
-![ExpressRoute-Topologie](media/log-analytics-network-performance-monitor/expressroute-topology.png)
+![ExpressRoute-Topologie](media/log-analytics-network-performance-monitor-expressroute/expressroute-topology.png)
 
 ### <a name="detailed-topology-view-of-a-circuit"></a>Detaillierte Topologieansicht einer Verbindung 
 
 Diese Ansicht zeigt Verbindungen mit virtuellen Netzwerken an. 
 
-![ExpressRoute-Verbindungen mit virtuellen Netzwerken](media/log-analytics-network-performance-monitor/expressroute-vnet.png)
+![ExpressRoute-Verbindungen mit virtuellen Netzwerken](media/log-analytics-network-performance-monitor-expressroute/expressroute-vnet.png)
  
 
 ### <a name="diagnostics"></a>Diagnose 
@@ -119,7 +119,7 @@ Der Netzwerkleistungsmonitor unterstützt Sie beim Diagnostizieren mehrerer verb
 
 **Die Verbindung ist nicht verfügbar:** Der Netzwerkleistungsmonitor informiert Sie, sobald die Konnektivität zwischen Ihren lokalen Ressourcen und virtuellen Azure-Netzwerken verloren geht. Durch diese Benachrichtigung können Sie proaktive Maßnahmen ergreifen und Ausfallzeiten verringern, bevor Benutzer das Problem eskalieren.
 
-![ExpressRoute-Leitung nicht verfügbar](media/log-analytics-network-performance-monitor/expressroute-circuit-down.png)
+![ExpressRoute-Leitung nicht verfügbar](media/log-analytics-network-performance-monitor-expressroute/expressroute-circuit-down.png)
  
 
 **Datenverkehr wird nicht über die beabsichtigte Verbindung übertragen:** Der Netzwerkleistungsmonitor benachrichtigt Sie, wenn kein Datenverkehr durch die vorgesehene ExpressRoute-Leitung fließt. Dieses Problem kann auftreten, wenn die Verbindung nicht verfügbar ist und der Datenverkehr über die Ausweichroute übermittelt wird. Es kann auch auftreten, wenn ein Routingproblem vorliegt. Anhand dieser Informationen können Sie proaktiv mögliche Konfigurationsprobleme in Ihren Routingrichtlinien behandeln und sicherstellen, dass die beste und sicherste Route verwendet wird. 
@@ -129,12 +129,12 @@ Der Netzwerkleistungsmonitor unterstützt Sie beim Diagnostizieren mehrerer verb
 **Datenverkehr wird nicht über die primäre Verbindung übertragen:** Der Netzwerkleistungsmonitor benachrichtigt Sie, wenn der Datenverkehr über die sekundäre ExpressRoute-Leitung übertragen wird. In diesem Fall treten zwar keine Konnektivitätsprobleme auf, durch die proaktive Behandlung der Probleme mit der primären Verbindung sind Sie jedoch besser vorbereitet. 
 
  
-![ExpressRoute-Datenverkehrsfluss](media/log-analytics-network-performance-monitor/expressroute-traffic-flow.png)
+![ExpressRoute-Datenverkehrsfluss](media/log-analytics-network-performance-monitor-expressroute/expressroute-traffic-flow.png)
 
 
 **Leistungsminderung aufgrund von Auslastungsspitzen:** Sie können den Bandbreitennutzungstrend mit dem Wartezeitentrend korrelieren, um zu ermitteln, ob die Leistungsminderung bei der Azure-Workload auf eine Bandbreiten-Nutzungsspitze zurückzuführen ist. Anschließend können Sie entsprechende Maßnahmen ergreifen.
 
-![ExpressRoute-Bandbreitennutzung](media/log-analytics-network-performance-monitor/expressroute-peak-utilization.png)
+![ExpressRoute-Bandbreitennutzung](media/log-analytics-network-performance-monitor-expressroute/expressroute-peak-utilization.png)
 
  
 

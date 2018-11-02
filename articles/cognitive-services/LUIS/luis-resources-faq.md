@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen – Language Understanding (LUIS)
+title: FAQ – Häufig gestellte Fragen – Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Language Understanding (LUIS).
 author: diberry
@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 5910417696651cad06d6f21513e81728be4181cd
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432460"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649311"
 ---
 # <a name="language-understanding-faq"></a>Häufig gestellte Fragen zu Language Understanding
 
@@ -113,6 +113,10 @@ Informationen hierzu finden Sie im Tutorial [Batchtests](luis-tutorial-batch-tes
 
 Informationen hierzu finden Sie unter [Vorhersageunterschiede zwischen Kopien derselben App](luis-concept-prediction-score.md#differences-with-predictions).
 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Einige Äußerungen gehen in die falsche Richtung, nachdem Änderungen an meiner App vorgenommen wurden. Das Problem scheint willkürlich zu verschwinden. Wie behebe ich das Problem? 
+
+Weitere Informationen finden Sie unter [Trainieren mit allen Daten](luis-how-to-train.md#train-with-all-data).
+
 ## <a name="app-publishing"></a>Veröffentlichen von Apps
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Was ist die Mandanten-ID im Fenster „Add a key to your app“ (Schlüssel zur App hinzufügen)?
@@ -135,7 +139,7 @@ Wenn Ihre App bereits vor der allgemeinen Verfügbarkeit von LUIS bestand, wurde
 Wenn Sie eine LUIS-App an ein anderes Azure-Abonnement übertragen möchten, müssen Sie die App exportieren und mit einem neuen Konto importieren. Aktualisieren Sie die LUIS-App-ID in der Clientanwendung, die die ID aufruft. Die neue App gibt möglicherweise LUIS-Bewertungen zurück, die sich geringfügig von den Werten der ursprünglichen App unterscheiden.
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Wie lade ich ein Protokoll mit Benutzeräußerungen herunter?
-Ihrer LUIS-App protokolliert standardmäßig Äußerungen von Benutzern. Wechseln Sie zu **Meine Apps**, und klicken Sie auf die Auslassungspunkte (***...*** ) in der Liste für Ihre App, um ein Protokoll mit Äußerungen herunterzuladen, die Benutzer an Ihre LUIS-App senden. Klicken Sie anschließend auf **Export Endpoint Logs** (Exportieren von Endpunktprotokollen). Das Protokoll wird als durch Trennzeichen getrennte Datei (CSV) gespeichert.
+Ihrer LUIS-App protokolliert standardmäßig Äußerungen von Benutzern. Wechseln Sie zu **Meine Apps** und wählen Sie die App aus, um ein Protokoll mit Äußerungen herunterzuladen, die Benutzer an Ihre LUIS-App senden. Wählen Sie in der kontextbezogenen Symbolleiste **Endpunktprotokolle exportieren** aus. Das Protokoll wird als durch Trennzeichen getrennte Datei (CSV) gespeichert.
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Wie kann ich die Protokollierung von Äußerungen deaktivieren?
 Sie können die Protokollierung von Benutzeräußerungen deaktivieren, indem Sie in der Endpunkt-URL, die Ihre Clientanwendung zur Abfrage von LUIS verwendet, `log=false` festlegen. Durch das Deaktivieren der Protokollierung kann die LUIS-App jedoch nicht mehr Äußerungen vorschlagen oder die auf dem [aktiven Lernen](luis-concept-review-endpoint-utterances.md#what-is-active-learning) basierende Leistung verbessern. Wenn Sie `log=false` aus Datenschutzgründen festlegen, können Sie keinen Datensatz mit diesen Benutzeräußerungen von LUIS herunterladen oder diese Äußerungen zur Verbesserung Ihrer App verwenden.
@@ -153,11 +157,9 @@ Sie sollten keine Testäußerungen protokollieren, wenn Sie das Protokoll für d
 * Sie können Äußerungen aus der Liste der Benutzeräußerungen löschen, die LUIS auf der Seite **Review endpoint utterance** (Endpunktäußerungen überprüfen) vorschlägt. Das Löschen von Äußerungen aus dieser Liste verhindert, dass diese empfohlen werden. Sie werden aber nicht aus den Protokollen gelöscht.
 * Wenn Sie ein Konto löschen, werden alle Apps zusammen mit ihren Beispieläußerungen und Protokollen gelöscht. Die Daten werden 60 Tage lang auf den Servern gespeichert und erst danach dauerhaft gelöscht.
 
-### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Greift Microsoft für seine eigenen Zwecke auf meine LUIS-App-Daten zu, z.B. um LUIS oder Microsoft im Allgemeinen zu verbessern?
+### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Wie verwaltet Microsoft Daten, die ich an LUIS sende?
 
-Nein. Das Datenmodell der LUIS-App wird weder von LUIS verwendet, um LUIS als Plattform zu verbessern, noch in irgendeiner Weise von Microsoft. Die Daten jeder App sind separat und nur im Besitz des Benutzers und Mitwirkender.
-
-Erfahren Sie mehr über [Benutzerdatenschutz](luis-user-privacy.md), [zusätzliche Sicherheitskonformität](luis-concept-security.md#security-compliance) und [Datenspeicherung](luis-concept-data-storage.md).
+Im [Trust Center](https://www.microsoft.com/trustcenter) werden unsere Verpflichtungen sowie die Optionen für die Datenverwaltung und den Zugriff in Azure-Diensten erläutert.
 
 ## <a name="language-and-translation-support"></a>Sprach- und Übersetzungsunterstützung
 

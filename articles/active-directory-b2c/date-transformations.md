@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ff96b9a63e7340788ef2474ce9934145c184e1e1
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: ac7cc404998fed6897de1bed4b6bd31fca43e820
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542768"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405819"
 ---
 # <a name="date-claims-transformations"></a>Transformationen von Datumsansprüchen
 
@@ -25,12 +25,12 @@ In diesem Artikel werden Beispiele für die Verwendung von Transformationen von 
 
 ## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan 
 
-Überprüft, ob ein Datums- und Uhrzeitanspruch (Zeichenfolgen-Datentyp) größer als ein zweiter Datums- und Uhrzeitanspruch (Zeichenfolgen-Datentyp) ist, und löst eine Ausnahme aus.
+Überprüft, ob ein Datums- und Uhrzeitanspruch (Zeichenfolgen-Datentyp) nach einem zweiten Datums- und Uhrzeitanspruch (Zeichenfolgen-Datentyp) liegt, und löst eine Ausnahme aus.
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | leftOperand | Zeichenfolge | Typ des ersten Anspruchs, der größer als der zweite Anspruch sein sollte. |
-| inputClaim | rightOperand | Zeichenfolge | Typ des zweiten Anspruchs, der kleiner als der erste Anspruch sein sollte. |
+| inputClaim | leftOperand | Zeichenfolge | Typ des ersten Anspruchs, der nach dem zweiten Anspruch liegen sollte. |
+| inputClaim | rightOperand | Zeichenfolge | Typ des zweiten Anspruchs, der vor dem ersten Anspruch liegen sollte. |
 | InputParameter | AssertIfEqualTo | boolean | Gibt an, ob diese Assertion positiv ausfallen soll, wenn der linke Operand gleich dem rechten Operanden ist. |
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | Gibt an, ob diese Assertion positiv ausfallen soll, wenn der rechte Operanden fehlt. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Gibt die Anzahl der Millisekunden an, die zwischen den beiden Datum/Uhrzeit-Werten liegen darf, damit die Zeiten als gleich angesehen werden (z. B. Abweichungen durch Gangungenauigkeiten bei Uhren). |
@@ -39,7 +39,7 @@ Die Anspruchstransformation **AssertDateTimeIsGreaterThan** wird immer über ein
 
 ![Ausführung von AssertStringClaimsAreEqual](./media/date-transformations/assert-execution.png)
 
-Im folgenden Beispiel wird der `currentDateTime`-Anspruch mit dem `approvedDateTime`-Anspruch verglichen. Ein Fehler wird ausgelöst, wenn `currentDateTime` größer als `approvedDateTime` ist. Die Transformation behandelt Werte als gleich, wenn sie innerhalb eines Abstands von 5 Minuten (30.000 Millisekunden) liegen.
+Im folgenden Beispiel wird der `currentDateTime`-Anspruch mit dem `approvedDateTime`-Anspruch verglichen. Ein Fehler wird ausgelöst, wenn `currentDateTime` nach `approvedDateTime` liegt. Die Transformation behandelt Werte als gleich, wenn sie innerhalb eines Abstands von 5 Minuten (30.000 Millisekunden) liegen.
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -138,17 +138,17 @@ Ruft den aktuellen UTC-Datum/Uhrzeit-Wert ab und addiert den Wert zu einem Anspr
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Bestimmt, ob ein dateTime-Wert größer, kleiner oder gleich einem anderen ist. Das Ergebnis ist ein neuer boolescher Anspruchstyp mit einem Wert von „true“ oder „false“.
+Bestimmt, ob ein dateTime-Wert größer, kleiner oder gleich einem anderen ist. Das Ergebnis ist ein neuer boolescher Anspruchstyp mit einem Wert von `true` oder `false`.
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | firstDateTime | dateTime | Der erste Datum/Uhrzeit-Wert, der verglichen werden soll. Ein Null-Wert löst eine Ausnahme aus. |
-| InputClaim | secondDateTime | dateTime | Der zweite Datum/Uhrzeit-Wert, der verglichen werden soll. Bei einem Null-Wert wird er als aktuelles Datum/Uhrzeit behandelt. |
+| InputClaim | firstDateTime | dateTime | Der erste dateTime-Wert, für den überprüft werden soll, ob er vor oder nach einem zweiten dateTime-Wert liegt. Ein Null-Wert löst eine Ausnahme aus. |
+| InputClaim | secondDateTime | dateTime | Der zweite dateTime-Wert, für den überprüft werden soll, ob er vor oder nach dem ersten dateTime-Wert liegt. Ein NULL-Wert wird als dateTime-Wert der aktuellen Uhrzeit behandelt. |
 | InputParameter | operator | Zeichenfolge | Einer der folgenden Werte: identisch (same), später als (later than) oder früher als (earlier than). |
 | InputParameter | timeSpanInSeconds | int | Addiert den Zeitraum zum ersten Datum/Uhrzeit-Wert. |
 | OutputClaim | result | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
-Mit dieser Anspruchstransformation können Sie bestimmen, ob zwei Anspruchstypen gleich bzw. der eine größer oder kleiner als der andere ist. Sie können z. B. den letzten Zeitpunkt speichern, zu dem ein Benutzer Ihre Nutzungsbedingungen akzeptiert hat. Nach 3 Monaten können Sie den Benutzer auffordern, die Nutzungsbedingungen erneut zu akzeptieren.
+Mit dieser Anspruchstransformation können Sie bestimmen, ob zwei Anspruchstypen gleich sind oder der eine vor oder nach dem anderen liegt. Sie können z. B. den letzten Zeitpunkt speichern, zu dem ein Benutzer Ihre Nutzungsbedingungen akzeptiert hat. Nach 3 Monaten können Sie den Benutzer auffordern, die Nutzungsbedingungen erneut zu akzeptieren.
 Um die Anspruchstransformation auszuführen, müssen Sie zuerst den aktuellen Datum/Uhrzeit-Wert abrufen sowie den letzte Zeitpunkt, zu dem der Benutzer die Nutzungsbedingungen akzeptiert hat.
 
 ```XML
@@ -158,7 +158,7 @@ Um die Anspruchstransformation auszuführen, müssen Sie zuerst den aktuellen Da
     <InputClaim ClaimTypeReferenceId="extension_LastTOSAccepted" TransformationClaimType="secondDateTime" />
   </InputClaims>
   <InputParameters>
-    <InputParameter Id="operator" DataType="string" Value="greater than" />
+    <InputParameter Id="operator" DataType="string" Value="later than" />
     <InputParameter Id="timeSpanInSeconds" DataType="int" Value="7776000" />
   </InputParameters>
   <OutputClaims>
@@ -173,7 +173,7 @@ Um die Anspruchstransformation auszuführen, müssen Sie zuerst den aktuellen Da
     - **firstDateTime**: 2018-01-01T00:00:00.100000Z
     - **secondDateTime**: 2018-04-01T00:00:00.100000Z
 - Eingabeparameter:
-    - **operator**: greater than
+    - **operator:** später als
     - **timeSpanInSeconds**: 7776000 (90 days)
 - Ausgabeansprüche: 
     - **result**: true

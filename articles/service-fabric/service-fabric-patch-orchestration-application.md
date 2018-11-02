@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: f43715b9c419aab1f5b95e140eac72642ef74198
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a8b2070b6f5b10cb60c6658aefc8cc90331ecfd9
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746896"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409355"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -29,7 +29,9 @@ ms.locfileid: "42746896"
 >
 >
 
-Die Anwendung für die Patchorchestrierung ist eine Azure Service Fabric-Anwendung, mit der das Aufspielen von Betriebssystempatches in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann.
+[Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) ist die bewährte Methode, um Ihre Betriebssysteme in Azure gepatcht zu halten. Die Patch Orchestration Application (POA) ist ein Wrapper für den RepairManager-Systemdienst von Service Fabric, der Konfigurationen basierend auf Patchplänen für Betriebssysteme für nicht in Azure gehostete Cluster ermöglicht. POA ist für nicht in Azure gehostete Cluster nicht erforderlich, aber die Planung von Patchinstallationen durch Upgradedomänen ist erforderlich, um die Service Fabric-Clusterhosts ohne Ausfallzeiten zu patchen.
+
+POA ist eine Azure Service Fabric-Anwendung, mit der das Patchen von Betriebssystemen in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann.
 
 Die App für die Patchorchestrierung umfasst die folgenden Features:
 

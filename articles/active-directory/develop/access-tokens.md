@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f184c18e97144f7efb30d61ebd024344510f3f5c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 3a3768e796284895b25eb62d00a58b20ca811540
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078765"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958940"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory-Zugriffstoken
 
@@ -136,7 +136,7 @@ Microsoft-Identitäten können auf verschiedene Arten authentifiziert werden, di
 | Wert | BESCHREIBUNG |
 |-----|-------------|
 | `pwd` | Kennwortauthentifizierung, entweder das Microsoft-Kennwort eines Benutzers oder der geheime Clientschlüssel einer App. |
-| `rsa` | Die Authentifizierung wurde basierend auf der Prüfung eines RSA-Schlüssels vorgenommen, beispielsweise mit der [Microsoft Authenticator-App](https://aka.ms/AA2kvvu). Dies beinhaltet auch, ob die Authentifizierung von einem selbst signierten JWT mit einem X509-Zertifikat im Besitz eines Diensts durchgeführt wurde. |
+| `rsa` | Die Authentifizierung erfolgt basierend auf der Prüfung eines RSA-Schlüssels, beispielsweise mit der [Microsoft Authenticator-App](https://aka.ms/AA2kvvu). Dies beinhaltet auch, ob die Authentifizierung von einem selbst signierten JWT mit einem X509-Zertifikat im Besitz eines Diensts durchgeführt wurde. |
 | `otp` | Einmalkennung mit einer E-Mail oder SMS. |
 | `fed` | Eine Verbundauthentifizierungsassertion (z. B. JWT oder SAML) wurde verwendet. |
 | `wia` | Integrierte Windows-Authentifizierung |
@@ -179,7 +179,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> Fügen Sie diese URL in einen Browser ein.
+> Testen Sie diese [URL](https://login.microsoftonline.com/common/.well-known/openid-configuration) in einem Browser!
 
 Dieses Metadatendokument:
 
@@ -187,7 +187,7 @@ Dieses Metadatendokument:
 * Enthält einen `jwks_uri`, der den Speicherort des Satzes von öffentlichen Schlüsseln zum Signieren von Token angibt. Das JSON-Dokument unter `jwks_uri` enthält alle Informationen zu den zu diesem Zeitpunkt verwendeten öffentlichen Schlüsseln. Ihre App kann mit dem Anspruch `kid` im JWT-Header auswählen, welcher öffentliche Schlüssel in diesem Dokument zum Signieren eines bestimmten Tokens verwendet wurde. Sie kann anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus ausführen.
 
 > [!NOTE]
-> Der v1.0-Endpunkt gibt die Ansprüche `x5t` und `kid` zurück. Der Anspruch `x5t` fehlt in v2.0-Token. Der v2.0-Endpunkt antwortet mit dem Anspruch `kid`. Für das weitere Vorgehen wird empfohlen, Ihr Token mithilfe des Anspruchs `kid` zu überprüfen.
+> Der v1.0-Endpunkt gibt beide Ansprüche zurück, `x5t` und `kid`, der v2.0-Endpunkt dagegen antwortet nur mit Anspruch `kid`. Für das weitere Vorgehen wird empfohlen, Ihr Token mithilfe des Anspruchs `kid` zu überprüfen.
 
 Die Signaturüberprüfung wird in diesem Dokument nicht erläutert. Es stehen jedoch zahlreiche Open Source-Bibliotheken mit hilfreichen Informationen zur Verfügung.
 
@@ -202,7 +202,7 @@ Diesen Schritt bestimmt die Geschäftslogik Ihrer Anwendung. Im Folgenden finden
 * Stellen Sie sicher, dass der `tid`-Anspruch einem Mandanten entspricht, dem das Aufrufen Ihrer API erlaubt ist.
 * Verwenden Sie den `acr`-Anspruch, um zu überprüfen, ob der Benutzer die MFA ausgeführt hat. Die Ausführung der MFA sollte durch [bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) erzwungen werden.
 * Wenn Sie die `roles`- oder `groups`-Ansprüche im Zugriffstoken angefordert haben, stellen Sie sicher, dass der Benutzer der Gruppe angehört, der das Ausführen dieser Aktion erlaubt ist.
-  * Für Token, die mit dem impliziten Flow abgerufen werden, müssen Sie zum Ermitteln dieser Daten wahrscheinlich den [Graph](https://developer.microsoft.com/graph/) abfragen, weil sie oft zu groß für das Token sind. 
+  * Bei Token, die mit dem impliziten Flow abgerufen werden, müssen Sie wahrscheinlich den [Microsoft Graph](https://developer.microsoft.com/graph/) nach diesen Daten abfragen, weil sie oft zu groß für das Token sind. 
 
 ## <a name="user-and-application-tokens"></a>Benutzer- und Anwendungstoken
 

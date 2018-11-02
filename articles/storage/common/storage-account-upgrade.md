@@ -5,20 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/18/2018
 ms.author: tamram
-ms.openlocfilehash: 6e77c4836531a7efd0b52b9a411ac40ff6a613fa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 10dc25740eca43c7cbd39b8ec783084e048d2af2
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224493"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637600"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
 Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Storage-Features und umfassen die gesamte Funktionalität von Konten des Typs „Allgemein v1“ und Blob Storage-Konten. Konten vom Typ „Allgemein v2“ werden für die meisten Speicherszenarien empfohlen. Konten vom Typ „Allgemein v2“ bieten die niedrigsten Preise pro Gigabyte für Azure Storage sowie wettbewerbsfähige Transaktionspreise.
 
-Das Durchführen eines Upgrades zu einem Speicherkonto vom Typ „Allgemein v2“ von einem Speicherkonto vom Typ „Allgemein v1“ oder einem Blobspeicherkonto ist einfach. Sie können für das Upgrade das Azure-Portal, PowerShell oder die Azure CLI verwenden. Das Durchführen eines Upgrades für ein Konto kann nicht rückgängig gemacht werden und es können Gebühren anfallen.
+Das Durchführen eines Upgrades zu einem Speicherkonto vom Typ „Allgemein v2“ von einem Speicherkonto vom Typ „Allgemein v1“ oder einem Blobspeicherkonto ist einfach. Sie können für das Upgrade das Azure-Portal, PowerShell oder die Azure CLI verwenden. 
+
+> [!NOTE]
+> Die Änderung der Speicherebene kann mit zusätzlichen Kosten verbunden sein. Weitere Informationen finden Sie im Abschnitt [Preise und Abrechnung](#pricing-and-billing).
 
 ## <a name="upgrade-using-the-azure-portal"></a>Upgrade mithilfe des Azure-Portals
 
@@ -53,14 +56,33 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 Konten vom Typ „Allgemein v2“ unterstützen alle Azure Storage Services und -Datenobjekte, aber Zugriffsebenen sind nur für Blockblobs im Blobspeicher verfügbar. Wenn Sie ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ durchführen, können Sie eine Zugriffsebene für Ihre Blobdaten angeben. 
 
-Zugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend auf Ihren erwarteten Nutzungsmustern auszuwählen. Blockblobs können in einer heißen, kalten oder Archivebene gespeichert werden. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
+Zugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend auf Ihren erwarteten Nutzungsmustern auszuwählen. Blockblobs können auf der heißen, der kalten oder der Archivspeicherebene gespeichert werden. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
-Standardmäßig wird ein neues Speicherkonto auf der Zugriffsebene „Heiß“ (Hot) erstellt, und für ein Speicherkonto vom Typ „Allgemein v1“ wird ein Upgrade auf die Zugriffsebene „Heiß“ durchgeführt. Wenn Sie untersuchen, welche Zugriffsebene nach dem Upgrade Ihrer Daten verwendet werden soll, sollten Sie Ihr Szenario berücksichtigen. Es gibt zwei typische Benutzerszenarien für die Migration auf ein Konto vom Typ „Allgemein v2“:
+Standardmäßig wird ein neues Speicherkonto auf der Zugriffsebene „Heiß“ (Hot) erstellt, und für ein Speicherkonto vom Typ „Universell v1“ wird ein Upgrade auf die Zugriffsebene „Heiß“ durchgeführt. Wenn Sie untersuchen, welche Zugriffsebene nach dem Upgrade Ihrer Daten verwendet werden soll, sollten Sie Ihr Szenario berücksichtigen. Es gibt zwei typische Benutzerszenarien für die Migration auf ein Konto vom Typ „Allgemein v2“:
 
 * Sie verfügen über ein vorhandenes Speicherkonto vom Typ „Allgemein v1“ und möchten eine Umstellung auf ein Speicherkonto vom Typ „Allgemein v2“ mit der richtigen Speicherebene für Blobdaten evaluieren.
-* Sie haben sich für die Nutzung eines Speicherkontos vom Typ „Allgemein v2“ entschieden oder besitzen bereits ein Konto dieser Art und möchten evaluieren, ob Sie die Speicherebene „Heiß“ oder „Kalt“ für Blobdaten verwenden sollen.
+* Sie haben sich für die Nutzung eines Speicherkontos vom Typ „Universell v2“ entschieden oder besitzen bereits ein Konto dieser Art und möchten evaluieren, ob Sie die Speicherebene „Heiß“ oder „Kalt“ für Blobdaten verwenden sollen.
 
 In beiden Fällen sollten Sie zuerst die Kosten für Speicherung, Zugriff und Arbeiten mit Ihren Daten in einem Speicherkonto vom Typ „Allgemein v2“ schätzen und diesen Betrag mit Ihren derzeitigen Kosten vergleichen.
+
+
+## <a name="pricing-and-billing"></a>Preise und Abrechnung
+Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf der Ebene der einzelnen Blobs basiert. Bei Verwendung eines Speicherkontos sollten folgende Abrechnungsaspekte berücksichtigt werden:
+
+* **Speicherkosten**: Die Kosten für die Datenspeicherung hängen nicht nur von der gespeicherten Datenmenge ab, sondern auch von der Speicherebene. Je „cooler“ die Ebene, desto geringer die Kosten pro GB.
+
+* **Kosten für den Datenzugriff**: Je „cooler“ die Ebene, desto höher die Gebühren für den Datenzugriff. Bei den Speicherebenen „Cool“ und „Archiv“ fallen Zugriffsgebühren für Lesevorgänge pro Gigabyte an.
+
+* **Transaktionskosten**: Für alle Ebenen fällt eine Gebühr pro Transaktion an, die sich erhöht, je „cooler“ die Ebene ist.
+
+* **Datenübertragungskosten bei Georeplikation**: Diese Gebühr gilt nur für Konten mit konfigurierter Georeplikation, z.B. GRS und RA-GRS. Die Datenübertragung für die Georeplikation wird pro Gigabyte abgerechnet.
+
+* **Kosten für ausgehende Datenübertragungen**: Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genau wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
+
+* **Änderung der Speicherebene**: Bei einem Wechsel der Kontospeicherebene von „Cool“ zu „Hot“ fällt eine Gebühr an, die den Kosten entspricht, die durch das Lesen aller im Speicherkonto vorhandenen Daten entstehen. Beim Ändern der Kontospeicherebene von „Hot“ in „Cool“ fällt aber eine Gebühr an, die dem Schreiben aller Daten auf die Ebene „Cool“ entspricht (nur GPv2-Konten).
+
+> [!NOTE]
+> Weitere Informationen zum Preismodell für Speicherkonten finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Weitere Informationen zu den Kosten für ausgehende Datenübertragungen finden Sie auf der Seite [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 ### <a name="estimate-costs-for-your-current-usage-patterns"></a>Schätzen der Kosten für Ihr aktuelles Nutzungsmuster
 
@@ -73,17 +95,68 @@ Zur Ermittlung der Kosten für die Speicherung und den Zugriff auf Blobdaten in 
     - Wie viele Daten werden aus dem Speicherkonto gelesen und in das Speicherkonto geschrieben? 
     - Wie viele Lesevorgänge finden im Vergleich zu Schreibvorgängen für die Daten im Speicherkonto statt?
 
-Um die für Ihre Bedürfnisse am besten geeignete Zugriffsebene zu bestimmen, kann die Feststellung hilfreich sein, wie viel Kapazität Ihre Blobdaten derzeit nutzen und wie diese Daten verwendet werden. 
+Um die für Ihre Bedürfnisse am besten geeignete Zugriffsebene zu bestimmen, kann es hilfreich sein zu ermitteln, wie viel Kapazität Ihre Blobdaten nutzen und wie diese Daten verwendet werden. Dazu überprüfen Sie am besten die Überwachungsmetriken für Ihr Konto.
 
-Sie können das Speicherkonto mit [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) überwachen, um Nutzungsdaten für Ihr Speicherkonto vor der Migration zu erfassen. Azure Monitor führt die Protokollierung durch und liefert Metrikdaten für Azure-Dienste, einschließlich Azure Storage. 
+### <a name="monitoring-existing-storage-accounts"></a>Überwachen von vorhandenen Speicherkonten
 
-Aktivieren Sie die Kapazitätsmetriken in Azure Monitor, um die Verbrauchsdaten für Blobs in Ihrem Speicherkonto zu überwachen. Kapazitätsmetriken erfassen Daten darüber, wie viel Speicherplatz die Blobs in Ihrem Konto täglich verbrauchen. Mit Kapazitätsmetriken können die Kosten für die Speicherung von Daten auf dem Speicherkonto geschätzt werden. Weitere Informationen zur Preisgestaltung der Blobspeicherkapazität für die verschiedenen Kontoarten finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Um Ihre vorhandenen Speicherkonten zu überwachen und diese Daten zu sammeln, können Sie Azure Storage Analytics nutzen. Damit wird eine Protokollierung durchgeführt, und es werden Metrikdaten für ein Speicherkonto bereitgestellt. Von Storage Analytics können Metriken gespeichert werden, zu denen aggregierte Transaktionsstatistiken und Kapazitätsdaten für die an einen Speicherdienst für GPv1-, GPv2- und Blob-Speicherkonten gesendeten Anforderungen zählen. Diese Daten werden in bekannten Tabellen in demselben Speicherkonto gespeichert.
 
-Aktivieren Sie Transaktionsmetriken in Azure Monitor, um Datenzugriffsmuster für die Blobspeicherung zu überwachen. Sie können nach verschiedenen Azure Storage-Vorgängen filtern, um zu schätzen, wie häufig jeder Aufruf erfolgt. Informationen zur Preisgestaltung für verschiedene Arten von Transaktionen für Block- und Anfügeblobs für die einzelnen Kontoarten finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).  
+Weitere Informationen finden Sie unter [Informationen zu Metriken der Speicheranalyse](https://msdn.microsoft.com/library/azure/hh343258.aspx) und [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
-Weitere Informationen zum Sammeln von Metriken über Azure Monitor finden Sie unter [Azure Storage-Metriken in Azure Monitor](storage-metrics-in-azure-monitor.md).
+> [!NOTE]
+> Blob-Speicherkonten machen den Tabellenspeicherdienst-Endpunkt nur zum Speichern und Zugreifen auf die Metrikdaten für das Konto verfügbar. 
+
+Zur Überwachung des Speicherbedarfs für den Blobspeicher müssen Sie die Kapazitätsmetriken aktivieren.
+Wenn dies aktiviert ist, werden täglich Kapazitätsdaten für den Blob-Dienst eines Speicherkontos aufgezeichnet. Sie werden als Tabelleneintrag aufgezeichnet, der in die Tabelle *$MetricsCapacityBlob* desselben Speicherkontos geschrieben wird.
+
+Zum Überwachen des Datenzugriffsmusters für Blobspeicher müssen Sie die Stundentransaktionsmetriken über die API aktivieren. Wenn die Stundentransaktionsmetriken aktiviert sind, werden jede Stunde die Transaktionen pro API aggregiert und als Tabelleneintrag aufgezeichnet, der in die Tabelle *$MetricsHourPrimaryTransactionsBlob* desselben Speicherkontos geschrieben wird. In der Tabelle *$MetricsHourSecondaryTransactionsBlob* werden bei Verwendung von RA-GRS-Speicherkonten die Transaktionen für den sekundären Endpunkt aufgezeichnet.
+
+> [!NOTE]
+> Falls Sie über ein allgemeines Speicherkonto verfügen, in dem Sie neben Block- und Anfügeblob-Daten Seitenblobs und Datenträger virtueller Computer oder Warteschlangen, Dateien oder Tabellen gespeichert haben, ist dieser Schätzungsprozess nicht geeignet. Bei den Kapazitätsdaten wird nicht zwischen Blockblobs und anderen Typen unterschieden, und es werden keine Kapazitätsdaten für andere Datentypen bereitgestellt. Bei Verwendung dieser Typen besteht eine alternative Methode darin, sich die Mengen auf der letzten Rechnung anzusehen.
+
+Um eine gute Annäherung des Datenverbrauchs und der Zugriffsmuster zu erhalten, empfehlen wir Ihnen die Auswahl eines Aufbewahrungszeitraums für die Metriken, der für die reguläre Nutzung repräsentativ ist und den Sie dann extrapolieren können. Eine Option besteht darin, die Metrikdaten für sieben Tage aufzubewahren und die Daten jede Woche für die Analyse am Monatsende zu erfassen. Eine andere Möglichkeit ist die Aufbewahrung der Metrikdaten der letzten 30 Tage, um sie dann am Ende der 30 Tage zu erfassen und zu analysieren.
+
+Weitere Informationen zum Aktivieren, Erfassen und Anzeigen von Metrikdaten finden Sie unter [Aktivieren der Azure-Speichermetriken und Anzeigen von Metrikdaten](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+> [!NOTE]
+> Speicherung, Verwendung und Download von Analysedaten werden genau wie bei regulären Benutzerdaten in Rechnung gestellt.
+
+### <a name="utilizing-usage-metrics-to-estimate-costs"></a>Verwenden von Nutzungsmetriken zum Schätzen von Kosten
+
+#### <a name="capacity-costs"></a>Kapazitätskosten
+
+Der letzte Eintrag in der Kapazitätsmetrikentabelle *$MetricsCapacityBlob* mit dem Zeilenschlüssel *'data'* enthält die von den Benutzerdaten verbrauchte Speicherkapazität. Der letzte Eintrag in der Kapazitätsmetrikentabelle *$MetricsCapacityBlob* mit dem Zeilenschlüssel *'analytics'* enthält die von den Analyseprotokollen verbrauchte Speicherkapazität.
+
+Diese gesamte Kapazität, die von Benutzerdaten und Analyseprotokollen (falls aktiviert) verbraucht wird, kann dann verwendet werden, um die Kosten für das Speichern der Daten im Speicherkonto zu schätzen. Diese Vorgehensweise kann auch zum Schätzen von Speicherkosten in GPv1-Speicherkonten verwendet werden.
+
+#### <a name="transaction-costs"></a>Transaktionskosten
+
+Die Summe von *'TotalBillableRequests'* über alle Einträge für eine API in der Transaktionsmetrikentabelle hinweg gibt die Gesamtzahl der Transaktionen für die jeweilige API an. *Beispiel:* Die Gesamtanzahl von Transaktionen vom Typ *GetBlob* eines bestimmten Zeitraums kann anhand der Gesamtsumme von abrechenbaren Anforderungen für alle Einträge mit dem Zeilenschlüssel *user;GetBlob* berechnet werden.
+
+Zur Ermittlung der ungefähren Transaktionskosten für Blob-Speicherkonten müssen die Transaktionen in drei Gruppen unterteilt werden, da jeweils unterschiedliche Preise gelten.
+
+* Schreibtransaktionen wie *'PutBlob'*, *'PutBlock'*, *'PutBlockList'*, *'AppendBlock'*, *'ListBlobs'*, *'ListContainers'*, *'CreateContainer'*, *'SnapshotBlob'* und *'CopyBlob'*.
+* Löschtransaktionen wie *'DeleteBlob'* und *'DeleteContainer'*.
+* Alle anderen Transaktionen.
+
+Um die Transaktionskosten für GPv1-Speicherkonten zu schätzen, müssen Sie alle Transaktionen unabhängig vom Vorgang bzw. von der API aggregieren.
+
+#### <a name="data-access-and-geo-replication-data-transfer-costs"></a>Datenübertragungskosten für Datenzugriff und Georeplikation
+
+Die Speicheranalyse liefert zwar nicht die Menge der Daten, die aus einem Speicherkonto gelesen und in das Speicherkonto geschrieben wird, aber dieser Wert kann grob geschätzt werden, indem die Tabelle mit den Transaktionsmetriken verwendet wird. Die Summe von *'TotalIngress'* über alle Einträge für eine API in der Transaktionsmetrikentabelle hinweg gibt die Gesamtmenge der Eingangsdaten in Byte für die jeweilige API an. Analog dazu gibt die Summe von *'TotalEgress'* die Gesamtmenge der Ausgangsdaten in Byte an.
+
+Zur Ermittlung der ungefähren Datenzugriffskosten für Blob-Speicherkonten müssen die Transaktionen in zwei Gruppen unterteilt werden.
+
+* Die Menge der Daten, die aus dem Speicherkonto abgerufen werden, kann geschätzt werden, indem vor allem für die Vorgänge *'GetBlob'* und *'CopyBlob'* die Summe von *'TotalEgress'* geprüft wird.
+
+* Die Menge der Daten, die in das Speicherkonto geschrieben werden, kann anhand der Summe von *'TotalIngress'* für die Vorgänge *'PutBlob'*, *'PutBlock'*, *'CopyBlob'* und *'AppendBlock'* geschätzt werden.
+
+Bei Verwendung eines GRS- oder RA-GRS-Speicherkontos können die Datenübertragungskosten mit Georeplikation für Blob-Speicherkonten auch auf der Grundlage der Schätzung für die Menge an geschriebenen Daten berechnet werden.
+
+> [!NOTE]
+> Ein ausführlicheres Beispiel zur Berechnung der Kosten für die Verwendung der Speicherebene „Hot“ oder „Cool“ finden Sie unter *Was sind die Zugriffsebenen „Heiß“ und „Kalt“, und wie bestimme ich, welche Zugriffsebene ich wählen sollte?* im FAQ-Bereich mit dem Titel [Was sind die Zugriffsebenen „Heiß“ und „Kalt“, und wie bestimme ich, welche Zugriffsebene ich wählen sollte?](https://azure.microsoft.com/pricing/details/storage/)an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen Sie ein Speicherkonto](storage-quickstart-create-account.md)
+- [Erstellen eines Speicherkontos](storage-quickstart-create-account.md)
 - [Verwalten von Azure Storage-Konten](storage-account-manage.md)

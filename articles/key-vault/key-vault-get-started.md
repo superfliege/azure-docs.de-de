@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: af4ab892ab84ba2f1a19e72710f23ce5ba1232f9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d0be0cbd9ff16acc1ecb209997a0c87cd4e43b36
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163106"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955096"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Erste Schritte mit dem Azure-Schlüsseltresor
 Dieser Artikel hilft Ihnen bei den ersten Schritten mit Azure Key Vault mit PowerShell und führt Sie durch die folgenden Aktivitäten:
@@ -31,10 +31,10 @@ Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informati
 
 Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie in [diesem entsprechenden Tutorial](key-vault-manage-with-cli2.md).
 
-## <a name="requirements"></a>Anforderungen
-Vergewissern Sie sich vor der weiteren Lektüre des Artikels, dass Sie über Folgendes verfügen:
+## <a name="requirements"></a>Requirements (Anforderungen)
+Bevor Sie fortfahren, benötigen Sie Folgendes:
 
-- **Ein Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/en-us/free/)registrieren.
+- **Ein Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/)registrieren.
 - **Azure PowerShell**, **mindestens Version 1.1.0**. Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `(Get-Module azure -ListAvailable).Version` ein. Wenn Sie Azure PowerShell in den Versionen 0.9.1 bis 0.9.8 installiert haben, können Sie diese Tutorial mit einigen kleineren Änderungen verwenden. Sie müssen z. B. den Befehl `Switch-AzureMode AzureResourceManager` verwenden, und einige der Befehle des Azure-Schlüsseltresors wurden geändert. Eine Liste der Schlüsseltresor-Cmdlets für die Versionen 0.9.1 bis 0.9.8 finden Sie unter [Cmdlets für den Azure-Schlüsseltresor](/powershell/module/azurerm.keyvault/#key_vault).
 - **Eine Anwendung, die zur Verwendung von Key Vault konfiguriert werden kann**. Eine Beispielanwendung erhalten Sie im [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=45343). Anweisungen finden Sie in der zugehörigen **Infodatei**.
 
@@ -105,14 +105,14 @@ Angenommen, Sie verwenden folgende Werte:
 In diesem Fall geben Sie Folgendes ein:
 
 ```powershell
-New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
+New-AzureRmKeyVault -Name 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
 ```
 ![Ausgabe nach Abschluss des Befehls zur Erstellung des Schlüsseltresors](./media/key-vault-get-started/output-after-creating-keyvault.png)
 
 Die Ausgabe dieses Cmdlets zeigt die Eigenschaften des Schlüsseltresors, den Sie erstellt haben. Die zwei wichtigsten Eigenschaften sind diese:
 
-* **Tresorname**: In diesem Beispiel ist dies **ContosoKeyVault**. Sie verwenden diesen Namen für andere Schlüsseltresor-Cmdlets.
-* **Tresor-URI:** https://contosokeyvault.vault.azure.net/ in diesem Beispiel. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
+* **Tresorname**: In diesem Beispiel ist das **ContosoKeyVault**. Sie verwenden diesen Namen für andere Schlüsseltresor-Cmdlets.
+* **Tresor-URI**: In diesem Beispiel ist das https://contosokeyvault.vault.azure.net/. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
 
 Ihr Azure-Konto ist jetzt autorisiert, Vorgänge in diesem Schlüsseltresor durchzuführen. Bisher sind Sie der einzige Benutzer mit dieser Berechtigung.
 
@@ -140,7 +140,7 @@ Sie können anhand des URI auf einen Schlüssel verweisen, den Sie erstellt oder
 
 ### <a name="importing-an-existing-pfx-file-into-azure-key-vault"></a>Importieren einer vorhandenen PFX-Datei in Azure Key Vault
 
-Falls vorhandene Schlüssel in einer PFX-Datei gespeichert sind, die Sie in Azure Key Vault hochladen möchten, unterscheiden sich die Schritte. Beispiel: 
+Falls vorhandene Schlüssel in einer PFX-Datei gespeichert sind, die Sie in Azure Key Vault hochladen möchten, unterscheidet sich die Vorgehensweise. Beispiel: 
 - Sie haben einen vorhandenen softwaregeschützten Schlüssel in einer PFX-Datei.
 - Der Name der PFX-Datei lautet „softkey.pfx“. 
 - Die Datei ist auf dem Laufwerk C gespeichert.
@@ -167,9 +167,10 @@ Geben Sie Folgendes ein, um Ihren Schlüssel anzuzeigen:
 ```powershell
 Get-AzureKeyVaultKey –VaultName 'ContosoKeyVault'
 ```
-Wenn Sie die Eigenschaften der PFX-Datei im Portal anzeigen möchten, sieht die Anzeige in etwa wie in der folgenden Abbildung dargestellt aus.
+Die Anzeige der Eigenschaften der PFX-Datei im Portal sieht in etwa so aus:
 
 ![Anzeige eines Zertifikats im Portal](./media/key-vault-get-started/imported-pfx.png)
+
 ### <a name="to-add-a-secret-to-azure-key-vault"></a>So fügen Sie Azure Key Vault ein Geheimnis hinzu
 
 Um Azure Key Vault ein Geheimnis hinzuzufügen (ein Kennwort namens „SQLPassword“ mit dem Wert „Pa$$w0rd“), konvertieren Sie zunächst den Wert „Pa$$w0rd“ in eine sichere Zeichenfolge, indem Sie Folgendes eingeben:
@@ -200,27 +201,27 @@ Geben Sie Folgendes ein, um den Wert im Geheimnis als Nur-Text anzuzeigen:
 ```powershell
 (get-azurekeyvaultsecret -vaultName "Contosokeyvault" -name "SQLPassword").SecretValueText
 ```
-Jetzt sind Schlüsseltresor und Schlüssel oder geheimer Schlüssel bereit für die Verwendung durch die Anwendung. Sie müssen die Anwendungen zur Verwendung der Schlüssel bzw. geheimen Schlüssel autorisieren.  
+Jetzt können Ihr Schlüsseltresor und Schlüssel oder Geheimnis von Anwendungen verwendet werden. Nun autorisieren Sie die Anwendungen zur Verwendung.  
 
 ## <a id="register"></a>Registrieren einer Anwendung mit Azure Active Directory
-Dieser Schritt wird üblicherweise durch einen Entwickler auf einem separaten Computer durchgeführt. Dieser Schritt ist nicht auf Azure Key Vault beschränkt. Ausführliche Anweisungen zum Registrieren einer Anwendung in Azure Active Directory finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) oder [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+Dieser Schritt wird üblicherweise durch einen Entwickler auf einem separaten Computer durchgeführt. Dieser Schritt ist nicht auf Azure Key Vault beschränkt. Ausführliche Anweisungen zum Registrieren einer Anwendung in Azure Active Directory finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) oder [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 > [!IMPORTANT]
 > Zum Abschließen dieses Tutorials müssen sich Ihr Konto, der Schlüsseltresor und die in diesem Schritt registrierte Anwendung im selben Azure-Verzeichnis befinden.
 
 
-Anwendungen, die einen Schlüsseltresor verwenden, müssen sich mithilfe eines Azure Active Directory-Tokens authentifizieren. Hierzu muss der Besitzer der Anwendung die Anwendung zunächst in Azure Active Directory registrieren. Zum Abschluss der Registrierung erhält der Anwendungsbesitzer die folgenden Werte:
+Anwendungen, die einen Schlüsseltresor verwenden, müssen sich mithilfe eines Azure Active Directory-Tokens authentifizieren. Der Besitzer der Anwendung muss zunächst die Anwendung in Azure Active Directory registrieren. Zum Abschluss der Registrierung erhält der Anwendungsbesitzer die folgenden Werte:
 
 - Eine **Anwendungs-ID** 
 - Einen **Authentifizierungsschlüssel** (auch bezeichnet als gemeinsames Geheimnis) 
 
-Die Anwendung muss beide dieser Werte in Azure Active Directory vorlegen, um ein Token zu erhalten.  Wie die Anwendung konfiguriert wird, um dies zu erreichen, richtet sich nach der Anwendung. Bei der [Key Vault-Beispielanwendung](https://www.microsoft.com/download/details.aspx?id=45343) legt der Anwendungsbesitzer diese Werte in der Datei „app.config“ fest.
+Die Anwendung muss beide dieser Werte in Azure Active Directory vorlegen, um ein Token zu erhalten.  Die Anwendungskonfiguration hängt von der Anwendung ab. Bei der [Key Vault-Beispielanwendung](https://www.microsoft.com/download/details.aspx?id=45343) legt der Anwendungsbesitzer diese Werte in der Datei „app.config“ fest.
 
 
 So registrieren Sie die Anwendungen in Azure Active Directory
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im linken Bereich auf **App-Registrierungen**. Falls keine App-Registrierungen angezeigt werden, klicken Sie auf **Weitere Dienste**, und suchen Sie nach der Registrierung.  
+2. Klicken Sie im linken Bereich auf **App-Registrierungen**. Falls keine App-Registrierungen angezeigt werden, klicken Sie auf **Weitere Dienste**.  
 >[!NOTE]
 Sie müssen dasselbe Verzeichnis auswählen, in dem auch das Azure-Abonnement enthalten ist, mit dem Sie Ihren Schlüsseltresor erstellt haben. 
 3. Klicken Sie auf **Registrierung einer neuen Anwendung**.
@@ -231,7 +232,7 @@ Sie müssen dasselbe Verzeichnis auswählen, in dem auch das Azure-Abonnement en
     Vergewissern Sie sich, dass Sie **WEBANWENDUNG UND/ODER WEB-API** ausgewählt haben. Andernfalls wird die Option **Schlüssel** nicht unter „Einstellungen“ angezeigt.
 
 5. Klicken Sie auf die Schaltfläche **Erstellen** .
-6. Nach Abschluss der App-Registrierung können Sie die Liste der registrierten Apps anzeigen. Suchen Sie nach der App, die Sie gerade registriert haben, und klicken Sie darauf.
+6. Nach Abschluss der App-Registrierung wird die Liste der registrierten Apps angezeigt. Suchen Sie nach der App, die Sie registriert haben, und klicken Sie darauf.
 7. Klicken Sie auf das Blatt **Registrierte App**, und kopieren Sie die **Anwendungs-ID**.
 8. Klicken Sie auf **Alle Einstellungen**.
 9. Klicken Sie auf dem Blatt **Einstellungen** auf **Schlüssel**.
@@ -244,7 +245,7 @@ Die Anwendung kann auf zwei Arten für den Zugriff auf den Schlüssel oder das G
 ### <a name="using-powershell"></a>Verwenden von PowerShell
 Wenn Sie PowerShell verwenden möchten, verwenden Sie das Cmdlet [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy).
 
-Wenn Ihr Tresorname beispielsweise **ContosoKeyVault** lautet, die Anwendung, die Sie autorisieren möchten, über die Client-ID 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed verfügt und Sie die Anwendung zum Entschlüsseln und Anmelden mit Schlüsseln in Ihrem Tresor autorisieren möchten, führen Sie Folgendes aus:
+Wenn Ihr Tresorname beispielsweise **ContosoKeyVault** lautet, die Anwendung, die Sie autorisieren möchten, über die Client-ID 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed verfügt und Sie die Anwendung zum Entschlüsseln und Anmelden mit Schlüsseln in Ihrem Tresor autorisieren möchten, führen Sie das folgende Cmdlet aus:
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
@@ -271,7 +272,7 @@ Zum Erstellen dieser HSM-geschützten Schlüssel müssen Sie die [Azure Key Vaul
 Wenn Sie den Schlüsseltresor erstellen, fügen Sie den Parameter **-SKU** hinzu:
 
 ```powershell
-New-AzureRmKeyVault -VaultName 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US' -SKU 'Premium'
+New-AzureRmKeyVault -Name 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US' -SKU 'Premium'
 ```
 
 

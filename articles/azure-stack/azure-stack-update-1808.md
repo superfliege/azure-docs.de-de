@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 10/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7278f784316fdbd7170bb69b9414911b8f5b3823
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 1ca305ab88e30c911bbded1e5ff97162e12f7652
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452682"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429064"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack-Update 1808
 
@@ -39,46 +39,64 @@ Die Buildnummer des Azure Stack-Updates 1808 ist **1.1808.0.97**.
 
 Dieses Update enthält die folgenden Verbesserungen für Azure Stack.
 
-- <!--  2682594   | IS  -->  **Alle Azure Stack-Umgebungen verwenden nun das Zeitzonenformat Koordinierte Weltzeit (UTC).**  Alle Protokolldaten und zugehörigen Informationen werden nun im UTC-Format angezeigt. Wenn Sie ein Update aus einer früheren Version ausführen, die nicht mit UTC installiert wurde, wird Ihre Umgebung auf UTC aktualisiert. 
+<!--  2682594   | IS  --> 
+- **Alle Azure Stack-Umgebungen verwenden nun das Zeitzonenformat Koordinierte Weltzeit (UTC).**  Alle Protokolldaten und zugehörigen Informationen werden nun im UTC-Format angezeigt. Wenn Sie ein Update aus einer früheren Version ausführen, die nicht mit UTC installiert wurde, wird Ihre Umgebung auf UTC aktualisiert. 
 
-- <!-- 2437250  | IS  ASDK --> **Managed Disks werden unterstützt.** Sie können jetzt Managed Disks in virtuellen Azure Stack-Computern und VM-Skalierungsgruppen verwenden. Weitere Informationen finden Sie unter [Azure Stack Managed Disks: Unterschiede und Überlegungen](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
+<!-- 2437250  | IS  ASDK --> 
+- **Managed Disks werden unterstützt.** Sie können jetzt Managed Disks in virtuellen Azure Stack-Computern und VM-Skalierungsgruppen verwenden. Weitere Informationen finden Sie unter [Azure Stack Managed Disks: Unterschiede und Überlegungen](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
 
-- <!-- 2563799  | IS  ASDK -->  **Azure Monitor**. Wie in Azure stellt Azure Monitor in Azure Stack grundlegende Infrastrukturmetriken und Protokolle für die meisten Dienste bereit. Weitere Informationen finden Sie unter [Azure Monitor in Azure Stack](/azure/azure-stack/user/azure-stack-metrics-azure-data).
+<!-- 2563799  | IS  ASDK --> 
+- **Azure Monitor**: Wie in Azure stellt Azure Monitor in Azure Stack grundlegende Infrastrukturmetriken und Protokolle für die meisten Dienste bereit. Weitere Informationen finden Sie unter [Azure Monitor in Azure Stack](/azure/azure-stack/user/azure-stack-metrics-azure-data).
 
-- <!-- 2487932| IS -->  **Vorbereiten auf den Erweiterungshost**. Sie können Azure Stack mit dem Erweiterungshost sicherer machen, indem Sie die Anzahl der erforderlichen TCP/IP-Ports reduzieren. Mit dem Update 1808 können Sie sich vorbereiten und Azure Stack für den Erweiterungshost bereit machen. Weitere Informationen finden Sie unter [Vorbereiten auf den Erweiterungshost für Azure Stack](/azure/azure-stack/azure-stack-extension-host-prepare).
+<!-- 2487932| IS --> 
+- **Vorbereiten auf den Erweiterungshost**. Sie können Azure Stack mit dem Erweiterungshost sicherer machen, indem Sie die Anzahl der erforderlichen TCP/IP-Ports reduzieren. Mit dem Update 1808 können Sie sich vorbereiten und Azure Stack für den Erweiterungshost bereit machen. Weitere Informationen finden Sie unter [Vorbereiten auf den Erweiterungshost für Azure Stack](/azure/azure-stack/azure-stack-extension-host-prepare).
 
-- <!-- IS --> **Katalogelemente für Virtual Machine Scale Sets sind jetzt integriert**.  Das Virtual Machine Scale Set-Katalogelement steht jetzt in den Benutzer- und Administratorportalen zur Verfügung, ohne dass es heruntergeladen werden muss.  Wenn Sie ein Upgrade auf 1808 ausführen, steht es nach Abschluss des Upgrades zur Verfügung.  
+<!-- IS --> 
+- **Katalogelemente für Virtual Machine Scale Sets sind jetzt integriert**. Das Virtual Machine Scale Set-Katalogelement steht jetzt in den Benutzer- und Administratorportalen zur Verfügung, ohne dass es heruntergeladen werden muss.  Wenn Sie ein Upgrade auf 1808 ausführen, steht es nach Abschluss des Upgrades zur Verfügung.  
 
-- <!-- IS, ASDK --> **Virtual Machine Scale Set-Skalierung**.  Sie können das Portal verwenden, um eine [VMSS](azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (Virtual Machine Scale Set) zu skalieren.    
+<!-- IS, ASDK --> 
+- **Virtual Machine Scale Set-Skalierung**. Sie können das Portal verwenden, um eine [VMSS](azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (Virtual Machine Scale Set) zu skalieren.    
 
-- <!-- 2489570 | IS ASDK--> **Unterstützung für benutzerdefinierte IPSec-/IKE-Richtlinienkonfigurationen** für [VPN-Gateways in Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
+<!-- 2489570 | IS ASDK--> 
+- **Unterstützung für benutzerdefinierte IPsec-/IKE-Richtlinienkonfigurationen** für [VPN-Gateways in Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
 
-- <!-- | IS ASDK--> **Kubernetes-Marketplace-Element**. Sie können nun Kubernetes-Cluster mithilfe des [Kubernetes-Marketplace-Elements](azure-stack-solution-template-kubernetes-cluster-add.md) bereitstellen. Benutzer können das Kubernetes-Element auswählen und einige Parameter eingeben, um einen Kubernetes-Cluster in Azure Stack bereitzustellen. Der Zweck der Vorlagen ist es, es den Benutzern einfach zu machen, in wenigen Schritten dev/test-Kubernetes-Bereitstellungen einzurichten.
+<!-- | IS ASDK--> 
+- **Kubernetes-Marketplace-Element**. Sie können nun Kubernetes-Cluster mithilfe des [Kubernetes-Marketplace-Elements](azure-stack-solution-template-kubernetes-cluster-add.md) bereitstellen. Benutzer können das Kubernetes-Element auswählen und einige Parameter eingeben, um einen Kubernetes-Cluster in Azure Stack bereitzustellen. Mithilfe der Vorlagen wird es den Benutzern einfach gemacht, in wenigen Schritten Dev/Test-Kubernetes-Bereitstellungen einzurichten.
 
-- <!-- | IS ASDK--> **Blockchainvorlagen**. Sie können jetzt [Ethereum-Konsortiumbereitstellungen](azure-stack-ethereum.md) in Azure Stack ausführen. Sie finden drei neue Vorlagen in den [Azure Stack-Schnellstartvorlagen](https://github.com/Azure/AzureStack-QuickStart-Templates). Sie ermöglichen es dem Benutzer, ein Ethereum-Konsortiumnetzwerk mit mehreren Elementen mit minimalen Azure- und Ethereum-Kenntnissen bereitzustellen und zu konfigurieren. Der Zweck der Vorlagen ist es, es den Benutzern einfach zu machen, in wenigen Schritten dev/test-Blockchainbereitstellungen einzurichten.
+<!-- | IS ASDK--> 
+- **Blockchainvorlagen**. Sie können jetzt [Ethereum-Konsortiumbereitstellungen](azure-stack-ethereum.md) in Azure Stack ausführen. Sie finden drei neue Vorlagen in den [Azure Stack-Schnellstartvorlagen](https://github.com/Azure/AzureStack-QuickStart-Templates). Sie ermöglichen es dem Benutzer, ein Ethereum-Konsortiumnetzwerk mit mehreren Elementen mit minimalen Azure- und Ethereum-Kenntnissen bereitzustellen und zu konfigurieren. Mithilfe der Vorlagen wird es den Benutzern einfach gemacht, in wenigen Schritten Dev/Test-Blockchainbereitstellungen einzurichten.
 
-- <!-- | IS ASDK--> **Das API-Versionsprofil 2017-03-09-profile wurde in 2018-03-01-hybrid** aktualisiert. API-Profile geben den Azure-Ressourcenanbieter und die API-Version für Azure-REST-Endpunkte an. Weitere Informationen zu Profilen finden Sie unter [Verwalten von API-Versionsprofilen in Azure Stack](/azure/azure-stack/user/azure-stack-version-profiles).
+<!-- | IS ASDK--> 
+- **Das API-Versionsprofil 2017-03-09-profile wurde in 2018-03-01-hybrid aktualisiert**. API-Profile geben den Azure-Ressourcenanbieter und die API-Version für Azure-REST-Endpunkte an. Weitere Informationen zu Profilen finden Sie unter [Verwalten von API-Versionsprofilen in Azure Stack](/azure/azure-stack/user/azure-stack-version-profiles).
 
  ### <a name="fixed-issues"></a>Behobene Probleme
-- <!-- IS ASDK--> Wir haben das Problem bei der Erstellung einer Verfügbarkeitsgruppe im Portal behoben, das dazu führte, dass die Gruppe eine Fehlerdomäne und eine Updatedomäne von 1 hatte. 
+<!-- IS ASDK--> 
+- Wir haben das Problem bei der Erstellung einer Verfügbarkeitsgruppe im Portal behoben, das dazu führte, dass die Gruppe eine Fehlerdomäne und eine Updatedomäne von 1 hatte. 
 
-- <!-- IS ASDK --> Die Skalierungseinstellungen für Skalierungsgruppen für virtuelle Computer sind nun im Portal verfügbar.  
+<!-- IS ASDK --> 
+- Die Skalierungseinstellungen für Skalierungsgruppen für virtuelle Computer sind nun im Portal verfügbar.  
 
-- <!-- 2494144- IS, ASDK --> Das Problem, das verhindert hat, dass einige VM-Größen der F-Serie bei der Auswahl einer VM-Größe für die Bereitstellung nicht angezeigt wurden, ist nun behoben. 
+<!-- 2494144- IS, ASDK --> 
+- Das Problem, das verhindert hat, dass einige VM-Größen der F-Serie bei der Auswahl einer VM-Größe für die Bereitstellung nicht angezeigt wurden, ist nun behoben. 
 
-- <!-- IS, ASDK --> Verbesserungen für die Leistung beim Erstellen von virtuellen Computern und optimierte Verwendung des zugrunde liegenden Speichers.
+<!-- IS, ASDK --> 
+- Verbesserungen für die Leistung beim Erstellen von virtuellen Computern und optimierte Verwendung des zugrunde liegenden Speichers.
 
 - Es wurden **verschiedene Fehlerbehebungen** hinsichtlich der Leistung, Stabilität, Sicherheit und des von Azure Stack eingesetzten Betriebssystems vorgenommen.
 
 
 ### <a name="changes"></a>Änderungen
-- <!-- 1697698  | IS, ASDK --> *Schnellstarttutorials* im Benutzerportaldashboard weisen jetzt Links zu relevanten Artikeln in der Azure Stack-Dokumentation auf.
+<!-- 1697698  | IS, ASDK --> 
+- *Schnellstarttutorials* im Benutzerportaldashboard weisen jetzt Links zu relevanten Artikeln in der Azure Stack-Dokumentation auf.
 
-- <!-- 2515955   | IS ,ASDK--> *Alle Dienste* ersetzt *Weitere Dienste* in den Azure Stack-Administrator- und -Benutzerportalen. Sie können nun *Alle Dienste* als Alternative zum Navigieren in den Azure Stack-Portalen wie in den Azure-Portalen verwenden.
+<!-- 2515955   | IS ,ASDK--> 
+- *Alle Dienste* ersetzt *Weitere Dienste* in den Azure Stack-Administrator- und -Benutzerportalen. Sie können nun *Alle Dienste* als Alternative zum Navigieren in den Azure Stack-Portalen wie in den Azure-Portalen verwenden.
 
-- <!-- TBD | IS, ASDK --> *+ Ressource erstellen* ersetzt *+ Neu* in den Azure Stack Administrator- und Benutzerportalen.  Sie können nun *Ressource erstellen* als Alternative zum Navigieren in den Azure Stack-Portalen wie in den Azure-Portalen verwenden.  
+<!-- TBD | IS, ASDK --> 
+- *+ Ressource erstellen* ersetzt *+ Neu* in den Azure Stack Administrator- und Benutzerportalen.  Sie können nun *Ressource erstellen* als Alternative zum Navigieren in den Azure Stack-Portalen wie in den Azure-Portalen verwenden.  
 
-- <!--  TBD – IS, ASDK --> Die VM-Größen *Basic A* stehen für das [Erstellen von VM-Skalierungsgruppen](azure-stack-compute-add-scalesets.md) (VMSS) über das Portal nicht mehr zur Verfügung. Verwenden Sie PowerShell oder eine Vorlage, um eine VMSS mit dieser Größe zu erstellen.  
+<!--  TBD – IS, ASDK --> 
+- Die VM-Größen *Basic A* stehen für das [Erstellen von VM-Skalierungsgruppen](azure-stack-compute-add-scalesets.md) (VMSS) über das Portal nicht mehr zur Verfügung. Verwenden Sie PowerShell oder eine Vorlage, um eine VMSS mit dieser Größe zu erstellen.  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>Common Vulnerabilities and Exposures (CVE, allgemeine Sicherheitslücken und Schwachstellen)
 
@@ -129,15 +147,18 @@ Dieses Update enthält auch die Minderung des Sicherheitsrisikos für die spekul
 
 - Wenn Sie [Test-AzureStack](azure-stack-diagnostic-test.md) nach dem Update 1808 ausführen, wird eine Warnmeldung des Baseboard Management Controllers (BMC) angezeigt. Sie können diese Warnung problemlos ignorieren.
 
-- <!-- 2468613 - IS --> Während der Installation des Updates werden möglicherweise Warnungen mit folgender Meldung angezeigt: *Fehler: Die Vorlage für FaultType UserAccounts.New fehlt.*  Sie können diese Warnungen ignorieren. Diese Warnungen werden automatisch nach der Installation dieses Updates geschlossen.
+<!-- 2468613 - IS --> 
+- Während der Installation des Updates werden möglicherweise Warnungen mit folgender Meldung angezeigt: *Fehler: Die Vorlage für FaultType UserAccounts.New fehlt.*  Sie können diese Warnungen ignorieren. Diese Warnungen werden automatisch nach der Installation dieses Updates geschlossen.
 
-- <!-- 2489559 - IS --> Versuchen Sie nicht, während der Installation dieses Updates virtuelle Computer zu erstellen. Weitere Informationen zum Verwalten von Updates finden Sie unter [Übersicht zum Verwalten von Updates in Azure Stack](azure-stack-updates.md#plan-for-updates).
+<!-- 2489559 - IS --> 
+- Versuchen Sie nicht, während der Installation dieses Updates virtuelle Computer zu erstellen. Weitere Informationen zum Verwalten von Updates finden Sie unter [Übersicht zum Verwalten von Updates in Azure Stack](azure-stack-updates.md#plan-for-updates).
 
-- <!-- 2830461 - IS --> Wenn ein Update eine Aktion erfordert, wird die entsprechende Warnung unter bestimmten Umständen möglicherweise nicht generiert. Der genaue Status wird im Portal dennoch angegeben und nicht beeinträchtigt.
+<!-- 2830461 - IS --> 
+- Wenn ein Update eine Aktion erfordert, wird die entsprechende Warnung unter bestimmten Umständen möglicherweise nicht generiert. Der genaue Status wird im Portal dennoch angegeben und nicht beeinträchtigt.
 
 ### <a name="post-update-steps"></a>Schritte nach dem Update
 Installieren Sie nach der Installation dieses Updates alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md). 
-- [KB 4464226 – Azure Stack-Hotfix Azure Stack-Hotfix 1.1808.1.99]( https://support.microsoft.com/help/4464226)
+- [KB 4468920 – Azure Stack Hotfix Azure Stack Hotfix 1.1808.5.110](https://support.microsoft.com/help/4468920/)
 
 
 ## <a name="known-issues-post-installation"></a>Bekannte Probleme (nach der Installation)
@@ -146,35 +167,56 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
 ### <a name="portal"></a>Portal
 
-- Die technische Dokumentation für Azure Stack konzentriert sich auf die neueste Version. Aufgrund von Portaländerungen zwischen den Releases kann das, was bei der Verwendung der Azure Stack-Portale angezeigt wird, von dem abweichen, was in der Dokumentation angezeigt wird. 
+- Die technische Dokumentation für Azure Stack konzentriert sich auf das neueste Release von Azure Stack. Aufgrund von Portaländerungen zwischen den Releases kann das, was bei der Verwendung der Azure Stack-Portale angezeigt wird, von dem abweichen, was in der Dokumentation angezeigt wird. 
 
-- <!-- TBD - IS ASDK --> Es kann sein, dass im Portal ein leeres Dashboard angezeigt wird. Klicken Sie zum Wiederherstellen des Dashboards auf **Dashboard bearbeiten**, klicken Sie dann mit der rechten Maustaste, und wählen Sie **Auf Standardzustand zurücksetzen** aus.
+<!-- TBD - IS ASDK --> 
+- Es kann sein, dass im Portal ein leeres Dashboard angezeigt wird. Klicken Sie zum Wiederherstellen des Dashboards auf **Dashboard bearbeiten**, klicken Sie dann mit der rechten Maustaste, und wählen Sie **Auf Standardzustand zurücksetzen** aus.
 
-- <!-- 2930718 - IS ASDK --> Im Administratorportal wird beim Zugriff auf die Details eines Benutzerabonnements nach dem Schließen des Blatts und dem Klicken auf **Aktuell** der Name des Benutzerabonnements nicht angezeigt.
+<!-- 2930718 - IS ASDK --> 
+- Im Administratorportal wird beim Zugriff auf die Details eines Benutzerabonnements nach dem Schließen des Blatts und dem Klicken auf **Aktuell** der Name des Benutzerabonnements nicht angezeigt.
 
-- <!-- 3060156 - IS ASDK --> Sowohl im Administrator- als auch im Benutzerportal funktioniert das Klicken auf die Portaleinstellungen und das Auswählen von **Alle Einstellungen und private Dashboards löschen** nicht wie erwartet. Es wird eine Fehlerbenachrichtigung angezeigt. 
+<!-- 3060156 - IS ASDK --> 
+- Sowohl im Administrator- als auch im Benutzerportal funktioniert das Klicken auf die Portaleinstellungen und das Auswählen von **Alle Einstellungen und private Dashboards löschen** nicht wie erwartet. Es wird eine Fehlerbenachrichtigung angezeigt. 
 
-- <!-- 2930799 - IS ASDK --> In der Administrator- und Benutzerportalen wird unter **Alle Dienste** die Ressource **DDoS-Schutzpläne** nicht ordnungsgemäß aufgeführt. Sie ist in Azure Stack nicht verfügbar. Wenn Sie versuchen, sie zu erstellen, wird ein Fehler angezeigt, der besagt, dass das Portal das Marketplace-Element nicht erstellen konnte. 
+<!-- 2930799 - IS ASDK --> 
+- In den Administrator- und Benutzerportalen wird unter **Alle Dienste** die Ressource **DDoS Protection-Pläne** nicht ordnungsgemäß aufgeführt. Sie ist in Azure Stack nicht verfügbar. Wenn Sie versuchen, sie zu erstellen, wird ein Fehler angezeigt, der besagt, dass das Portal das Marketplace-Element nicht erstellen konnte. 
 
-- <!-- 2930820 - IS ASDK --> Wenn Sie sowohl im Administrator- als auch im Benutzerportal nach „Docker“ suchen, wird das Element nicht ordnungsgemäß zurückgegeben. Sie ist in Azure Stack nicht verfügbar. Wenn Sie versuchen, sie zu erstellen, wird ein Blatt mit einem Fehlerhinweis angezeigt. 
+<!-- 2930820 - IS ASDK --> 
+- Wenn Sie im Administrator- oder im Benutzerportal nach „Docker“ suchen, wird das Element nicht ordnungsgemäß zurückgegeben. Sie ist in Azure Stack nicht verfügbar. Wenn Sie versuchen, sie zu erstellen, wird ein Blatt mit einem Fehlerhinweis angezeigt. 
 
-- <!-- 2967387 – IS, ASDK --> Das Konto, mit dem Sie sich am Azure Stack-Administrator- oder -Benutzerportal anmelden, wird als **Unidentifizierter Benutzer** angezeigt. Dieses Verhalten tritt auf, wenn für das Konto kein *Vorname* oder *Nachname* angegeben wurde. Um dieses Problem zu umgehen, bearbeiten Sie das Benutzerkonto so, dass der Vor- oder Nachname angegeben wird. Sie müssen sich dann abmelden und erneut am Portal anmelden. 
+<!-- 2967387 – IS, ASDK --> 
+- Das Konto, mit dem Sie sich am Administrator- oder Benutzerportal von Azure Stack anmelden, wird als **Unbekannter Benutzer** angezeigt. Dieses Verhalten tritt auf, wenn für das Konto kein *Vorname* oder *Nachname* angegeben wurde. Um dieses Problem zu umgehen, bearbeiten Sie das Benutzerkonto so, dass der Vor- oder Nachname angegeben wird. Sie müssen sich dann abmelden und erneut am Portal anmelden. 
 
--  <!--  2873083 - IS ASDK --> Wenn Sie das Portal verwenden, um eine VM-Skalierungsgruppe (VMSS) zu erstellen, wird das Dropdownmenü *Instanzgröße* nicht ordnungsgemäß geladen, wenn Sie Internet Explorer verwenden. Um dieses Problem zu umgehen, nutzen Sie einen anderen Browser beim Verwenden des Portals zum Erstellen einer VMSS.  
+<!--  2873083 - IS ASDK --> 
+-  Wenn Sie das Portal verwenden, um eine VM-Skalierungsgruppe (VMSS) zu erstellen, wird das Dropdownmenü *Instanzgröße* nicht ordnungsgemäß geladen, wenn Sie Internet Explorer verwenden. Um dieses Problem zu umgehen, nutzen Sie einen anderen Browser beim Verwenden des Portals zum Erstellen einer VMSS.  
 
-- <!-- 2931230 – IS  ASDK --> Pläne, die einem Benutzerabonnement als Add-On-Plan hinzugefügt wurden, können nicht gelöscht werden, auch wenn Sie den Plan aus dem Benutzerabonnement entfernen. Der Plan ist so lange vorhanden, bis die Abonnements gelöscht werden, die auf den Add-On-Plan verweisen. 
+<!-- 2931230 – IS  ASDK --> 
+- Pläne, die einem Benutzerabonnement als Add-On-Plan hinzugefügt wurden, können nicht gelöscht werden, auch wenn Sie den Plan aus dem Benutzerabonnement entfernen. Der Plan ist so lange vorhanden, bis die Abonnements gelöscht werden, die auf den Add-On-Plan verweisen. 
 
-- <!--2760466 – IS  ASDK --> Bei der Installation einer neuen Azure Stack-Umgebung, die diese Version ausführt, wird die Warnung, dass eine *Aktivierung erforderlich* ist, möglicherweise nicht angezeigt. Die [Aktivierung](azure-stack-registration.md) ist erforderlich, damit Sie die Marketplace-Syndikation verwenden können.  
+<!--2760466 – IS  ASDK --> 
+- Bei der Installation einer neuen Azure Stack-Umgebung, die diese Version ausführt, wird die Warnung, dass eine *Aktivierung erforderlich* ist, möglicherweise nicht angezeigt. Die [Aktivierung](azure-stack-registration.md) ist erforderlich, damit Sie die Marketplace-Syndikation verwenden können.  
 
-- <!-- TBD - IS ASDK --> Die zwei administrativen Abonnementtypen, die [in Version 1804 eingeführt](azure-stack-update-1804.md#new-features) wurden, sollten nicht verwendet werden. Die Abonnementtypen sind **Messungsabonnement** und **Verbrauchsabonnement**. Diese Abonnementtypen sind in neuen Azure Stack-Umgebungen ab Version 1804 sichtbar, aber noch nicht zur Verwendung bereit. Sie sollten den Abonnementtyp **Standardanbieter** weiterhin verwenden.
+<!-- TBD - IS ASDK --> 
+- Die zwei administrativen Abonnementtypen, die in Version 1804 eingeführt wurden, sollten nicht verwendet werden. Die Abonnementtypen sind **Messungsabonnement** und **Verbrauchsabonnement**. Diese Abonnementtypen sind in neuen Azure Stack-Umgebungen ab Version 1804 sichtbar, aber noch nicht zur Verwendung bereit. Sie sollten den Abonnementtyp **Standardanbieter** weiterhin verwenden.
 
-- <!-- TBD - IS ASDK --> Das Löschen von Benutzerabonnements führt zu verwaisten Ressourcen. Eine Problemumgehung besteht darin, zuerst Benutzerressourcen oder die gesamte Ressourcengruppe zu löschen und anschließend Benutzerabonnements zu löschen.
+<!-- TBD - IS ASDK --> 
+- Das Löschen von Benutzerabonnements führt zu verwaisten Ressourcen. Eine Problemumgehung besteht darin, zuerst Benutzerressourcen oder die gesamte Ressourcengruppe zu löschen und anschließend Benutzerabonnements zu löschen.
 
-- <!-- TBD - IS ASDK --> Sie können mit den Azure Stack-Portalen keine Berechtigungen für Ihr Abonnement anzeigen. Verwenden Sie für die Problemumgehung PowerShell, um Berechtigungen zu überprüfen.
+<!-- TBD - IS ASDK --> 
+- Sie können mit den Azure Stack-Portalen keine Berechtigungen für Ihr Abonnement anzeigen. Verwenden Sie für die Problemumgehung PowerShell, um Berechtigungen zu überprüfen.
 
 
 ### <a name="health-and-monitoring"></a>Integrität und Überwachung
-- <!-- 1264761 - IS ASDK --> Möglicherweise werden Warnungen für die **Health Controller**-Komponente mit folgenden Details angezeigt:  
+
+<!-- TBD - IS -->
+- Die folgenden Warnungen werden in Ihrem Azure Stack-System möglicherweise wiederholt angezeigt und dann nicht mehr angezeigt:
+   - *Infrastrukturrolleninstanz nicht verfügbar*
+   - *Skalierungseinheitknoten ist offline*
+   
+  Führen Sie das Cmdlet [Test-AzureStack](azure-stack-diagnostic-test.md) aus, um die Integrität der Infrastrukturrolleninstanzen und Skalierungseinheitenknoten zu überprüfen. Wenn von [Test-AzureStack](azure-stack-diagnostic-test.md) keine Probleme gefunden werden, können Sie diese Warnungen ignorieren. Wenn ein Problem erkannt wird, können Sie versuchen, die Infrastrukturrolleninstanz oder den Knoten über das Verwaltungsportal oder PowerShell zu starten.
+
+<!-- 1264761 - IS ASDK --> 
+- Möglicherweise werden Warnungen für die **Health Controller**-Komponente mit folgenden Details angezeigt:  
 
    Warnung 1:
    - NAME: Infrastrukturrolle fehlerhaft
@@ -191,7 +233,8 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
   Beide Alarme können ignoriert werden und werden nach einer gewissen Zeit automatisch geschlossen.  
 
 
-- <!-- 2812138 | IS --> Möglicherweise wird eine Warnung für die **Storage**-Komponente mit den folgenden Details angezeigt:
+<!-- 2812138 | IS --> 
+- Möglicherweise wird eine Warnung für die **Storage**-Komponente mit den folgenden Details angezeigt:
 
    - NAME: Interner Kommunikationsfehler des Storage-Diensts  
    - SCHWEREGRAD: Kritisch  
@@ -200,44 +243,59 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
     Die Warnung kann ignoriert werden, Sie müssen sie jedoch manuell schließen.
 
-- <!-- 2368581 - IS. ASDK --> Wenn Sie als Azure Stack-Bediener eine Fehlermeldung über unzureichenden Speicher erhalten und virtuelle Computer der Mandanten nicht mit einem **Fabric-VM-Erstellungsfehler** bereitgestellt werden können, verfügt der Azure Stack-Stempel möglicherweise nicht über genügend Arbeitsspeicher. Mit dem [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) können Sie die verfügbare Kapazität für Ihre Workloads besser bestimmen.
+<!-- 2368581 - IS. ASDK --> 
+- Wenn Sie als Azure Stack-Operator eine Fehlermeldung über unzureichenden Speicher erhalten und virtuelle Computer der Mandanten nicht mit einem **Fabric-VM-Erstellungsfehler** bereitgestellt werden können, verfügt der Azure Stack-Stempel möglicherweise nicht über genügend Arbeitsspeicher. Mit dem [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) können Sie die verfügbare Kapazität für Ihre Workloads besser bestimmen.
 
 
 ### <a name="compute"></a>Compute
 
-- <!-- 3090289 – IS, ASDK --> Nach dem Anwenden des Updates 1808 können beim Bereitstellen von virtuellen Computern mit Managed Disks die folgenden Probleme auftreten:
+<!-- 3099544 – IS, ASDK --> 
+- Wenn Sie einen neuen virtuellen Computer (VM) über das Azure Stack-Portal erstellen und die VM-Größe auswählen, wird die Spalte „USD/Monat“ mit der Meldung **Nicht verfügbar** angezeigt. Diese Spalte sollte nicht angezeigt werden. Die Anzeige der VM-Preisspalte wird in Azure Stack nicht unterstützt.
+
+<!-- 3090289 – IS, ASDK --> 
+- Nach dem Anwenden des Updates 1808 können beim Bereitstellen von virtuellen Computern mit Managed Disks die folgenden Probleme auftreten:
 
    1. Wenn das Abonnement vor dem Update 1808 erstellt wurde, kann die Bereitstellung eines virtuellen Computers mit Managed Disks mit einer internen Fehlermeldung fehlschlagen. Um den Fehler zu beheben, führen Sie die folgenden Schritte für jedes Abonnement aus:
       1. Navigieren Sie im Mandantenportal zu **Abonnements**, und suchen Sie nach dem Abonnement. Klicken Sie auf **Ressourcenanbieter**, klicken Sie dann auf **Microsoft.Compute**, und klicken Sie anschließend auf **Erneut registrieren**.
       2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob **Azure Stack – Verwalteter Datenträger** aufgeführt wird.
    2. Wenn Sie eine Umgebung mit mehreren Mandanten konfiguriert haben, kann die Bereitstellung von virtuellen Computern in einem Abonnement, dem ein Gastverzeichnis zugeordnet ist, mit einer internen Fehlermeldung fehlschlagen. Gehen Sie folgendermaßen vor, um den Fehler zu beheben:
-      1. Wenden Sie den [Azure Stack-Hotfix 1808](https://support.microsoft.com/help/4465859) an.
+      1. Wenden Sie den [Azure Stack-Hotfix 1808](https://support.microsoft.com/help/4468920/) an.
       2. Führen Sie die in [diesem Artikel](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) beschriebenen Schritte aus, um alle Gastverzeichnisse neu zu konfigurieren.
+      
+<!-- 3179561 - IS --> 
+- Die Verwendung von Managed Disks wird in Stunden gemeldet, wie in den [häufig gestellte Fragen zur Azure Stack-Nutzung](azure-stack-usage-related-faq.md#managed-disks) beschrieben. Bei der Azure Stack-Abrechnung wird jedoch der monatliche Preis verwendet, sodass die Managed Disks-Nutzung bis zum 27. September eventuell nicht ordnungsgemäß in Rechnung gestellt werden kann. Wir haben die Gebühren für Managed Disks nach dem 27. September vorübergehend unterbrochen, bis auf das Abrechnungsproblem eingegangen werden kann. Wenn Ihnen Ihre Managed Disks-Nutzung nicht ordnungsgemäß berechnet wurde, wenden Sie sich an den Abrechnungssupport von Microsoft.
+Von den Azure Stack-Nutzungs-APIs erstellte Nutzungsberichte zeigen richtige Mengen an und können verwendet werden.
 
+<!-- 2869209 – IS, ASDK --> 
+- Bei Verwendung des [**Add-AzsPlatformImage**-Cmdlets](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) müssen Sie den **-OsUri**-Parameter als Speicherkonto-URI beim Hochladen des Datenträgers verwenden. Wenn Sie den lokalen Pfad des Datenträgers verwenden, schlägt das Cmdlet mit dem folgenden Fehler fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status „Fehler“*. 
 
-- <!-- 2869209 – IS, ASDK --> Bei Verwendung des [**Add-AzsPlatformImage**-Cmdlets](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) müssen Sie den **-OsUri**-Parameter als Speicherkonto-URI beim Hochladen des Datenträgers verwenden. Wenn Sie den lokalen Pfad des Datenträgers verwenden, schlägt das Cmdlet mit dem folgenden Fehler fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status „Fehler“*. 
-
-- <!--  2966665 – IS, ASDK --> Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern der Größe „Premium“ (DS, DSv2, Fs, Fs_V2) schlägt mit dem folgenden Fehler fehl: *Fehler beim Aktualisieren der Datenträger für den virtuellen Computer "vmname". Fehler: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp "Premium_LRS" für die VM-Größe "Standard_DS/Ds_V2/FS/Fs_v2" nicht unterstützt wird.*
+<!--  2966665 – IS, ASDK --> 
+- Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern der Größe „Premium“ (DS, DSv2, Fs, Fs_V2) schlägt mit dem folgenden Fehler fehl: *Fehler beim Aktualisieren der Datenträger für den virtuellen Computer "vmname". Fehler: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp "Premium_LRS" für die VM-Größe "Standard_DS/Ds_V2/FS/Fs_v2" nicht unterstützt wird.*
 
    Um dieses Problem zu umgehen, verwenden Sie Datenträger vom Typ *Standard_LRS* anstelle von *Premium_LRS*. Das Verwenden von Datenträgern des Typs *Standard_LRS* ändert IOPs oder die Abrechnungskosten nicht. 
 
-- <!--  2795678 – IS, ASDK --> Wenn Sie das Portal zum Erstellen virtueller Computer in einer Premium-VM-Größe (DS, Ds_v2, FS, FSv2) verwenden, wird der virtuelle Computer in einem Standardspeicherkonto erstellt. Die Erstellung in einem Standardspeicherkonto wirkt sich nicht auf die Funktionalität, IOPs oder die Abrechnung aus. 
+<!--  2795678 – IS, ASDK --> 
+- Wenn Sie das Portal zum Erstellen virtueller Computer in einer Premium-VM-Größe (DS, Ds_v2, FS, FSv2) verwenden, wird der virtuelle Computer in einem Standardspeicherkonto erstellt. Die Erstellung in einem Standardspeicherkonto wirkt sich nicht auf die Funktionalität, IOPs oder die Abrechnung aus. 
 
    Sie können die Warnung ignorieren, die folgendes besagt: *Sie haben sich dafür entschieden, einen Standarddatenträger mit einer Größe zu verwenden, die Premium-Datenträger unterstützt. Dies kann sich auf die Leistung des Betriebssystems auswirken und wird nicht empfohlen. Erwägen Sie stattdessen die Verwendung von Storage Premium (SSD).*
 
-- <!-- 2967447 - IS, ASDK --> Die Benutzeroberfläche zum Erstellen von VM-Skalierungsgruppen (VMSS) bietet als Option für die Bereitstellung eine CentOS 7.2-basierte Bereitstellung an. Da dieses Image in Azure Stack nicht verfügbar ist, wählen Sie entweder ein anderes Betriebssystem für Ihre Bereitstellung aus, oder verwenden Sie eine ARM-Vorlage mit einem anderen CentOS-Image, das vor der Bereitstellung aus Marketplace durch den Operator heruntergeladen wurde.  
+<!-- 2967447 - IS, ASDK --> 
+- Die Benutzeroberfläche zum Erstellen von VM-Skalierungsgruppen (VMSS) bietet als Option für die Bereitstellung eine CentOS 7.2-basierte Bereitstellung an. Da dieses Image in Azure Stack nicht verfügbar ist, wählen Sie entweder ein anderes Betriebssystem für Ihre Bereitstellung aus, oder verwenden Sie eine Azure Resource Manager-Vorlage mit einem anderen CentOS-Image, das vor der Bereitstellung vom Operator aus dem Marketplace heruntergeladen wurde.  
 
-- <!-- 2724873 - IS --> Wenn Sie die PowerShell-Cmdlets **Start-AzsScaleUnitNode** oder **Stop-AzsScaleunitNode** verwenden, um Skalierungseinheiten zu verwalten, tritt beim ersten Versuch, die Skalierungseinheit zu starten oder zu stoppen, möglicherweise ein Fehler auf. Wenn beim ersten Ausführen des Cmdlets ein Fehler auftritt, führen Sie das Cmdlet ein zweites Mal aus. Bei der zweiten Ausführung sollte der Vorgang erfolgreich sein. 
+<!-- 2724873 - IS --> 
+- Wenn Sie die PowerShell-Cmdlets **Start-AzsScaleUnitNode** oder **Stop-AzsScaleunitNode** verwenden, um Skalierungseinheiten zu verwalten, tritt beim ersten Versuch, die Skalierungseinheit zu starten oder zu stoppen, möglicherweise ein Fehler auf. Wenn beim ersten Ausführen des Cmdlets ein Fehler auftritt, führen Sie das Cmdlet ein zweites Mal aus. Bei der zweiten Ausführung sollte der Vorgang erfolgreich sein. 
 
-- <!-- TBD - IS ASDK --> Beim Erstellen von virtuellen Computern im Azure Stack-Benutzerportal zeigt das Portal eine falsche Anzahl von Datenträgern an, die an eine VM der Serie DS angefügt werden können. VMs der Serie DS können so viele Datenträger wie bei der Azure-Konfiguration aufnehmen.
+<!-- TBD - IS ASDK --> 
+- Beim Erstellen von virtuellen Computern im Azure Stack-Benutzerportal zeigt das Portal eine falsche Anzahl von Datenträgern an, die an eine VM der Serie DS angefügt werden können. VMs der Serie DS können so viele Datenträger wie bei der Azure-Konfiguration aufnehmen.
 
-- <!-- TBD - IS ASDK --> Wenn Sie eine Umgebung mit mehreren Mandanten verwenden, schlägt die Bereitstellung von virtuellen Computern mit verwalteten Datenträgern in einem Abonnement, das nicht zum Standardmandanten gehört, mit folgendem Fehler fehl: *Der Ressourcenvorgang wurde mit dem Terminalbereitstellungszustand "Fehler" abgeschlossen.*
+<!-- TBD - IS ASDK --> 
+- Wenn die Bereitstellung einer Erweiterung für eine VM-Bereitstellung zu lange dauert, sollten Benutzer eine Zeitüberschreitung der Bereitstellung zulassen und nicht versuchen, den Vorgang zum Aufheben der Zuordnung oder Löschen der VMs zu beenden.  
 
-- <!-- TBD - IS ASDK --> Wenn die Bereitstellung einer Erweiterung für eine VM-Bereitstellung zu lange dauert, sollten Benutzer eine Zeitüberschreitung der Bereitstellung zulassen und nicht versuchen, den Vorgang zum Aufheben der Zuordnung oder Löschen der VMs zu beenden.  
+<!-- 1662991 IS ASDK --> 
+- Die Linux-VM-Diagnose wird in Azure Stack nicht unterstützt. Wenn Sie eine Linux-VM mit aktivierter VM-Diagnose bereitstellen, schlägt die Bereitstellung fehl. Die Bereitstellung schlägt auch fehl, wenn Sie die grundlegenden Linux-VM-Metriken über die Diagnoseeinstellungen aktivieren.  
 
-- <!-- 1662991 IS ASDK --> Die Linux-VM-Diagnose wird in Azure Stack nicht unterstützt. Wenn Sie eine Linux-VM mit aktivierter VM-Diagnose bereitstellen, schlägt die Bereitstellung fehl. Die Bereitstellung schlägt auch fehl, wenn Sie die grundlegenden Linux-VM-Metriken über die Diagnoseeinstellungen aktivieren.  
-
-- <!-- 2724961- IS ASDK --> Wenn Sie den Ressourcenanbieter **Microsoft.Insight** in den Abonnementeinstellungen registrieren und eine Windows-VM mit aktivierter Gastbetriebssystemdiagnose erstellen, können im Diagramm „CPU-Prozentsatz“ auf der Übersichtsseite der VM keine Metrikdaten angezeigt werden.
+<!-- 2724961- IS ASDK --> 
+- Wenn Sie den Ressourcenanbieter **Microsoft.Insight** in den Abonnementeinstellungen registrieren und eine Windows-VM mit aktivierter Gastbetriebssystemdiagnose erstellen, können im Diagramm „CPU-Prozentsatz“ auf der Übersichtsseite der VM keine Metrikdaten angezeigt werden.
 
    Navigieren Sie zum Anzeigen des Diagramms „CPU-Prozentsatz“ für die VM zum Blatt **Metriken**, und zeigen Sie alle unterstützten Gastmetriken für Windows-VMs an.
 
@@ -245,17 +303,23 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
 ### <a name="networking"></a>Netzwerk  
 
-- <!-- 1766332 - IS ASDK --> Wenn Sie unter **Netzwerk** auf **VPN-Gateway erstellen** klicken, um eine VPN-Verbindung einzurichten, wird als VPN-Typ **Richtlinienbasiert** aufgeführt. Wählen Sie diese Option nicht aus. Nur die Option **Routenbasiert** wird in Azure Stack unterstützt.
+<!-- 1766332 - IS ASDK --> 
+- Wenn Sie unter **Netzwerk** auf **VPN Gateway erstellen** klicken, um eine VPN-Verbindung einzurichten, wird als VPN-Typ **Richtlinienbasiert** aufgeführt. Wählen Sie diese Option nicht aus. Nur die Option **Routenbasiert** wird in Azure Stack unterstützt.
 
-- <!-- 1902460 - IS ASDK -->Azure Stack unterstützt ein einzelnes *Gateway eines lokalen Netzwerks* pro IP-Adresse. Dies gilt für alle Mandantenabonnements. Nach der Herstellung der Verbindung mit dem ersten Gateway eines lokalen Netzwerks werden nachfolgende Versuche zum Erstellen einer Ressource für Gateways lokaler Netzwerke mit der gleichen IP-Adresse blockiert.
+<!-- 1902460 - IS ASDK --> 
+- Azure Stack unterstützt ein einzelnes *Gateway eines lokalen Netzwerks* pro IP-Adresse. Dies gilt für alle Mandantenabonnements. Nach der Herstellung der Verbindung mit dem ersten Gateway eines lokalen Netzwerks werden nachfolgende Versuche zum Erstellen einer Ressource für Gateways lokaler Netzwerke mit der gleichen IP-Adresse blockiert.
 
-- <!-- 16309153 - IS ASDK --> In einem virtuellen Netzwerk, das mit der DNS-Servereinstellung *Automatisch* erstellt wurde, tritt bei der Änderung eines benutzerdefinierten DNS-Servers ein Fehler auf. Die aktualisierten Einstellungen werden nicht per Pushvorgang auf VMs in diesem VNET übertragen.
+<!-- 16309153 - IS ASDK --> 
+- In einem virtuellen Netzwerk, das mit der DNS-Servereinstellung *Automatisch* erstellt wurde, tritt bei der Änderung eines benutzerdefinierten DNS-Servers ein Fehler auf. Die aktualisierten Einstellungen werden nicht per Pushvorgang auf VMs in diesem VNET übertragen.
 
-- <!-- 2702741 -  IS ASDK --> Öffentliche IP-Adressen, die mithilfe der dynamischen Zuordnungsmethode bereitgestellt wurden, werden nach der Ausgabe eines Befehls zum Beenden und Aufheben der Zuordnung nicht unbedingt beibehalten.
+<!-- 2702741 -  IS ASDK --> 
+- Öffentliche IP-Adressen, die mithilfe der dynamischen Zuordnungsmethode bereitgestellt wurden, werden nach der Ausgabe eines Befehls zum Beenden und Aufheben der Zuordnung nicht unbedingt beibehalten.
 
-- <!-- 2529607 - IS ASDK --> Während der *Geheimnisrotation* von Azure Stack sind öffentliche IP-Adressen für einen Zeitraum von zwei bis fünf Minuten nicht erreichbar.
+<!-- 2529607 - IS ASDK --> 
+- Während der *Geheimnisrotation* von Azure Stack sind öffentliche IP-Adressen für einen Zeitraum von zwei bis fünf Minuten nicht erreichbar.
 
--   <!-- 2664148 - IS ASDK --> In Szenarien, in denen der Mandant über einen S2S-VPN-Tunnel auf seine VMs zugreift, kann es passieren, dass bei Verbindungsversuchen Fehler auftreten, wenn das lokale Subnetz dem lokalen Netzwerkgateway erst nach der Erstellung des Gateways hinzugefügt wurde. 
+<!-- 2664148 - IS ASDK --> 
+- In Szenarien, in denen der Mandant über einen S2S-VPN-Tunnel auf seine VMs zugreift, kann es passieren, dass bei Verbindungsversuchen Fehler auftreten, wenn das lokale Subnetz dem lokalen Netzwerkgateway erst nach der Erstellung des Gateways hinzugefügt wurde. 
 
 
 <!-- ### SQL and MySQL-->
@@ -263,14 +327,17 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
 ### <a name="app-service"></a>App Service
 
-- <!-- 2352906 - IS ASDK --> Benutzer müssen den Speicherressourcenanbieter vor dem Erstellen seiner ersten Azure-Funktion im Abonnement registrieren.
+<!-- 2352906 - IS ASDK --> 
+- Benutzer müssen den Speicherressourcenanbieter vor dem Erstellen seiner ersten Azure-Funktion im Abonnement registrieren.
 
-- <!-- 2489178 - IS ASDK --> Um die Infrastruktur (Worker-, Verwaltungs-, Front-End-Rollen) horizontal hochzuskalieren, müssen Sie PowerShell verwenden, wie in den Anmerkungen zu dieser Version für die Berechnung beschrieben.
+<!-- 2489178 - IS ASDK --> 
+- Um die Infrastruktur (Worker-, Verwaltungs-, Front-End-Rollen) horizontal hochzuskalieren, müssen Sie PowerShell verwenden, wie in den Anmerkungen zu dieser Version für die Berechnung beschrieben.
 
 
 
 ### <a name="usage"></a>Verwendung  
-- <!-- TBD - IS ASDK --> Die Ansicht „Verwendung“ für die Nutzungsdaten öffentlicher IP-Adressen zeigt den gleichen *EventDateTime*-Wert für jeden Datensatz anstatt des *TimeDate*-Stempels, der anzeigt, wann dieser jeweils erstellt wurde. Derzeit können Sie diese Daten nicht nutzen, um eine genaue Buchhaltung über die Nutzung öffentlicher IP-Adressen durchzuführen.
+<!-- TBD - IS ASDK --> 
+- Die Ansicht „Verwendung“ für die Nutzungsdaten öffentlicher IP-Adressen zeigt den gleichen *EventDateTime*-Wert für jeden Datensatz anstatt des *TimeDate*-Stempels, der anzeigt, wann dieser jeweils erstellt wurde. Derzeit können Sie diese Daten nicht nutzen, um eine genaue Buchhaltung über die Nutzung öffentlicher IP-Adressen durchzuführen.
 
 
 <!-- #### Identity -->

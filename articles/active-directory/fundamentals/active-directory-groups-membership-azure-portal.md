@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 10/19/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: c28fe5ef226fac993fde221b16bfa875ba4845ca
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 09e023d1d562ea53d9927adf609335beac38a2d7
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579767"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468029"
 ---
 # <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Gewusst wie: Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory
 In diesem Artikel erfahren Sie mehr zum Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory.
@@ -25,10 +25,13 @@ In diesem Artikel erfahren Sie mehr zum Hinzufügen oder Entfernen einer Gruppe 
 >[!Note]
 >Wenn Sie die übergeordnete Gruppe löschen möchten, finden Sie Informationen dazu unter [Aktualisieren oder Löschen einer Gruppe und ihre Mitglieder](active-directory-groups-delete-group.md).
 
-## <a name="add-a-group-as-a-member-to-another-group"></a>Hinzufügen einer Gruppe als Mitglied zu einer anderen Gruppe
-Sie können eine bestehende Gruppe zu einer anderen bestehenden Gruppe hinzufügen, indem Sie eine Mitgliedergruppe (Untergruppe) und eine übergeordnete Gruppe erstellen. Die Mitgliedergruppe übernimmt die Attribute und Eigenschaften der übergeordneten Gruppe, wodurch Sie Zeit bei der Konfiguration sparen.
+## <a name="add-a-group-to-another-group"></a>Hinzufügen einer Gruppe zu einer anderen Gruppe
+Sie können eine bestehende Sicherheitsgruppe zu einer anderen bestehenden Sicherheitsgruppe hinzufügen (dieser Vorgang wird auch als Schachteln von Gruppen bezeichnet), indem Sie eine Mitgliedergruppe (Untergruppe) und eine übergeordnete Gruppe erstellen. Die Mitgliedergruppe übernimmt die Attribute und Eigenschaften der übergeordneten Gruppe, wodurch Sie Zeit bei der Konfiguration sparen.
 
-### <a name="to-add-a-group-as-a-member-to-another-group"></a>Hinzufügen einer Gruppe als Mitglied zu einer anderen Gruppe
+>[!Important]
+>Folgendes wird derzeit nicht unterstützt:<ul><li>Hinzufügen von Sicherheitsgruppen zu Office 365-Gruppen</li><li>Hinzufügen von Office 365-Gruppen zu Sicherheitsgruppen oder anderen Office 365-Gruppen</li><li>Zuweisen von Apps zu geschachtelten Gruppen</li><li>Anwenden von Lizenzen auf geschachtelte Gruppen</li></ul>
+
+### <a name="to-add-a-group-as-a-member-of-another-group"></a>So fügen Sie eine Gruppe als Mitglied zu einer anderen Gruppe hinzu
 
 1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -55,8 +58,8 @@ Sie können eine bestehende Gruppe zu einer anderen bestehenden Gruppe hinzufüg
 
     ![Seite „Gruppenmitgliedschaft“, die sowohl das Mitglied als auch die Gruppendetails anzeigt](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
 
-## <a name="remove-a-member-group-from-another-group"></a>Entfernen einer Mitgliedergruppe aus einer anderen Gruppe
-Sie können eine vorhandene Mitgliedergruppe aus einer anderen Gruppe entfernen. Das Entfernen der Mitgliedschaft entfernt jedoch auch alle übernommenen Attribute und Eigenschaften für Ihre Benutzer.
+## <a name="remove-a-group-from-another-group"></a>Entfernen einer Gruppe aus einer anderen Gruppe
+Sie können eine vorhandene Sicherheitsgruppe aus einer anderen Sicherheitsgruppe entfernen. Das Entfernen der Gruppe entfernt jedoch auch alle geerbten Attribute und Eigenschaften für die Mitglieder.
 
 ### <a name="to-remove-a-member-group-from-another-group"></a>Entfernen einer Mitgliedergruppe aus einer anderen Gruppe
 1. Suchen und wählen Sie auf der Seite **Gruppen – Alle Gruppen** die Gruppe aus, die als Mitglied einer anderen Gruppe entfernt werden soll. In dieser Übung verwenden wir wieder die Gruppe **MDM-Richtlinie – Westen**.
@@ -81,4 +84,6 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 - [Bearbeiten Ihrer Gruppeneinstellungen](active-directory-groups-settings-azure-portal.md)
 
-- [Zuweisen von Lizenzen zu Benutzern nach Gruppe](../users-groups-roles/licensing-groups-assign.md)
+- [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](../users-groups-roles/groups-saasapps.md)
+
+- [Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)

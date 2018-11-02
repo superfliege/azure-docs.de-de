@@ -1,22 +1,37 @@
 ---
-title: Dokumentation zum Cognitive Services Speech SDK | Microsoft-Dokumentation
+title: 'Spracherkennungsdienst-SDK: Dokumentation'
+titlesuffix: Azure Cognitive Services
 description: Versionshinweise – Änderungen in den neuesten Versionen
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
-ms.date: 09/24/2018
+ms.topic: conceptual
+ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: cfc8f973ac9bced9396a081f7fb2ab6a4a1b2f7f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b5e4d239121b2449a45dfce826c99765f1c3f4be
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963082"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471136"
 ---
 # <a name="release-notes"></a>Versionshinweise
+
+## <a name="speech-service-sdk-101"></a>Speech-Dienst-SDK 1.0.1
+
+Verbesserte Zuverlässigkeit und Fehlerbehebungen:
+
+* Ein potenziell schwerwiegender Fehler aufgrund einer Racebedingung bei der Löscherkennung wurde behoben.
+* Ein potenziell schwerwiegender Fehler bei einer nicht festgelegten Eigenschaft wurde behoben.
+* Zusätzliche Fehler- und Parameterüberprüfungen wurden hinzugefügt.
+* Objective-C: Ein potenziell schwerwiegender Fehler durch Namensüberschreibungen in NSString wurde behoben.
+* Objective-C: Sichtbarkeit der API wurde angepasst.
+* JavaScript: Korrektur in Bezug auf Ereignisse und deren Nutzlasten.
+* Verbesserungen bei der Dokumentation.
+
+Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispiel für JavaScript hinzugefügt.
 
 ## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services Speech SDK 1.0.0: 2018-September-Release
 

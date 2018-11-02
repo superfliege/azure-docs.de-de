@@ -1,24 +1,25 @@
 ---
-title: Referenz zum Speech-SDK
+title: API-Referenz zum Speech-SDK
+titleSuffix: Azure Cognitive Services
 description: Referenz zum Speech-SDK.
 services: cognitive-services
-titleSuffix: Microsoft Cognitive Services
-author: v-jerkin
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
-ms.date: 09/24/2018
-ms.author: v-jerkin
-ms.openlocfilehash: b3770187033ef30982c38d8892c5b014b5dcb7c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: wolfma
+ms.openlocfilehash: fb80a3462caa59af423ef4f2f80e43f5d75e89e2
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950980"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470896"
 ---
-# <a name="speech-sdk-reference"></a>Referenz zum Speech-SDK
+# <a name="speech-sdk-api-reference"></a>API-Referenz zum Speech-SDK
 
-Das Speech SDK (Software Development Kit) stellt Ihren Anwendungen Zugriff auf die Funktionen des Speech-Diensts bereit, wodurch die Entwicklung sprachaktivierter Software erleichtert wird. Derzeit stellen die SDKs den Zugriff auf die **Spracherkennung**, die **Sprachübersetzung** und die **Absichtserkennung** bereit.
+Das Speech-SDK (Software Development Kit) gewährt Ihren Anwendungen Zugriff auf die Funktionen des Speech-Diensts, sodass die Entwicklung sprachaktivierter Software erleichtert wird. Derzeit stellen die SDKs den Zugriff auf die **Spracherkennung**, die **Sprachübersetzung** und die **Absichtserkennung** bereit. Eine allgemeine Übersicht über die Funktionen und unterstützten Plattformen finden Sie auf der [Einstiegsseite](http://aka.ms/csspeech) der Dokumentation.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

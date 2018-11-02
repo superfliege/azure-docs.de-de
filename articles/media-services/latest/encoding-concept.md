@@ -4,19 +4,19 @@ description: In diesem Thema wird der Codierungsvorgang bei Verwendung von Azure
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 69c5516ee503d774b143bb2d83f09ea863a00b31
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: bee74f0399def142915aa26d15ecfa671925f405
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091548"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025581"
 ---
 # <a name="encoding-with-azure-media-services"></a>Codierung mit Azure Media Services
 
@@ -26,9 +26,7 @@ Um mit Media Services v3 codieren zu können, müssen Sie eine Transformation un
 
 Bei der Codierung mit Azure Media Services verwenden Sie Voreinstellungen, um dem Encoder mitzuteilen, wie die eingegebenen Mediendateien verarbeitet werden sollen. Beispielsweise können Sie die gewünschte Videoauflösung und/oder die Anzahl der Audiokanäle für den codierten Inhalt angeben. 
 
-Mit einer der empfohlenen integrierten Voreinstellungen basierend auf in der Branche bewährten Vorgehensweisen können Sie schnell einsteigen. Alternativ können Sie eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen erstellen. 
-
-Details zum Encoder finden Sie in der [OpenAPI-Spezifikation](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview). 
+Mit einer der empfohlenen integrierten Voreinstellungen basierend auf in der Branche bewährten Vorgehensweisen können Sie schnell einsteigen. Alternativ können Sie eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen erstellen. Weitere Informationen finden Sie unter [Codieren mit einer benutzerdefinierten Transformation](customize-encoder-presets-how-to.md). 
 
 ## <a name="built-in-presets"></a>Integrierte Voreinstellungen
 
@@ -63,13 +61,13 @@ Die folgenden Tutorials zeigen, wie Sie Ihre Inhalte mit Media Services codieren
 Die folgenden Codebeispiele enthalten Code, der das Codieren mit Media Services veranschaulicht:
 
 * [.NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore)
-* [Azure-CLI](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)
+* [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)
 
 ### <a name="sdks"></a>SDKs
 
 Zum Codieren Ihrer Inhalte können Sie die folgenden unterstützten SDKs von Media Services v3 verwenden.
 
-* [Azure-CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 * [REST](https://docs.microsoft.com/rest/api/media/transforms)
 * [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * [Java](https://docs.microsoft.com/java/api/overview/azure/mediaservices)

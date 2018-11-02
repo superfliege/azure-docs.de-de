@@ -1,6 +1,6 @@
 ---
-title: Erfassen der Linux-Anwendungsleistung in OMS Log Analytics | Microsoft-Dokumentation
-description: Dieser Artikel bietet Einzelheiten zum Konfigurieren des OMS-Agents für Linux, um Leistungsindikatoren für MySQL und Apache HTTP Server zu erfassen.
+title: Erfassen der Linux-Anwendungsleistung in Log Analytics | Microsoft-Dokumentation
+description: Dieser Artikel enthält Details zum Konfigurieren des Log Analytics-Agents für Linux, um Leistungsindikatoren für MySQL und Apache HTTP Server zu erfassen.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,26 +15,27 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5120fa869d9c3fe28630b189b84b9c3e3f5577e2
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: df5e55c2c03fec13ada258be91f0d98b7ce70d94
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044568"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406159"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Log Analytics 
-Dieser Artikel bietet Einzelheiten zum Konfigurieren des [OMS-Agents für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux), um Leistungsindikatoren für bestimmte Anwendungen zu erfassen.  Folgende Anwendungen sind in diesem Artikel enthalten:  
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+Dieser Artikel enthält Details zum Konfigurieren des [Log Analytics-Agents für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux), um Leistungsindikatoren für bestimmte Anwendungen zu erfassen.  Folgende Anwendungen sind in diesem Artikel enthalten:  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
-Falls MySQL-Server oder MariaDB-Server auf dem Computer erkannt wird, wenn das OMS Agent-Paket installiert wird, wird ein Leistungsüberwachungsanbieter für MySQL-Server automatisch installiert. Dieser Anbieter stellt eine Verbindung mit dem lokalen MySQL/MariaDB-Server her, um Leistungsstatistiken verfügbar zu machen. MySQL-Benutzeranmeldeinformationen müssen konfiguriert werden, damit der Anbieter auf den MySQL-Server zugreifen kann.
+Falls MySQL-Server oder MariaDB-Server auf dem Computer erkannt wird, wenn der Log Analytics-Agent installiert wird, wird automatisch ein Leistungsüberwachungsanbieter für MySQL-Server installiert. Dieser Anbieter stellt eine Verbindung mit dem lokalen MySQL/MariaDB-Server her, um Leistungsstatistiken verfügbar zu machen. MySQL-Benutzeranmeldeinformationen müssen konfiguriert werden, damit der Anbieter auf den MySQL-Server zugreifen kann.
 
 ### <a name="configure-mysql-credentials"></a>Konfigurieren von MySQL-Anmeldeinformationen
 Der MySQL-OMI-Anbieter erfordert einen vorkonfigurierten MySQL-Benutzer und installierte MySQL-Clientbibliotheken, um eine Abfrage der Leistungs- und Integritätsinformationen der MySQL-Instanz durchzuführen.  Diese Anmeldeinformationen werden in einer Authentifizierungsdatei gespeichert, die auf dem Linux-Agent gespeichert ist.  Die Authentifizierungsdatei gibt an, welche mit „bind-address“ festgelegte Adresse und welcher Port die MySQL-Instanz überwacht und welche Anmeldeinformationen verwendet werden müssen, um Metriken zu sammeln.  
 
-Während der Installation des OMS-Agents für Linux scannt der MySQL-OMI-Anbieter die „my.cnf“-Konfigurationsdateien von MySQL (Standardspeicherorte) für die mit „bind-address“ festgelegte Adresse sowie den Port und legt teilweise die MySQL-OMI-Authentifizierungsdatei fest.
+Während der Installation des Log Analytics-Agents für Linux scannt der MySQL-OMI-Anbieter die „my.cnf“-Konfigurationsdateien von MySQL (Standardspeicherorte) für die mit „bind-address“ festgelegte Adresse sowie den Port und legt teilweise die MySQL-OMI-Authentifizierungsdatei fest.
 
 Die MySQL-Authentifizierungsdatei befindet sich in `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
 
@@ -115,7 +116,7 @@ Diese Berechtigungen können durch Ausführen der folgenden „grant“-Befehle 
 
 ### <a name="define-performance-counters"></a>Definieren von Leistungsindikatoren
 
-Sobald Sie den OMS-Agent für Linux zum Senden von Daten mit Log Analytics konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsindikatoren in Log Analytics](log-analytics-data-sources-windows-events.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
+Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten mit Log Analytics konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsindikatoren in Log Analytics](log-analytics-data-sources-windows-events.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
 
 | Objektname | Name des Leistungsindikators |
 |:--|:--|
@@ -151,7 +152,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Definieren von Leistungsindikatoren
 
-Sobald Sie den OMS-Agent für Linux zum Senden von Daten mit Log Analytics konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsindikatoren in Log Analytics](log-analytics-data-sources-windows-events.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
+Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten mit Log Analytics konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsindikatoren in Log Analytics](log-analytics-data-sources-windows-events.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
 
 | Objektname | Name des Leistungsindikators |
 |:--|:--|

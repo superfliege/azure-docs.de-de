@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: cwatson
-ms.openlocfilehash: 623856f05eed44eca3752d56f047f9bb282bdc8e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 38cfd354f11ef3d888ad70e71549868d398495f5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392080"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429642"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure mithilfe der rollenbasierten Zugriffssteuerung
 
@@ -67,7 +67,7 @@ Die Rolle „Abrechnungsleser“ hat schreibgeschützten Zugriff auf Abrechnungs
     ![Screenshot: Inhalte, die der Abrechnungsleser im Azure-Portal sehen kann](./media/billing-manage-access/billing-reader-view.png)
 
 > [!NOTE]
-> Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstützt noch keine Enterprise-Abonnements (EA) und keine nicht globalen Clouds.
+> Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstützt noch keine nicht globalen Clouds. Enterprise-Abonnements können Kosten anzeigen, wenn der Unternehmensadministrator das Anzeigen von Gebühren aktiviert hat.
 
 ## <a name="adding-users-to-other-roles"></a>Hinzufügen von Benutzern zu anderen Rollen
 

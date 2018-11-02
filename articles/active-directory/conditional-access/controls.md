@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2018
+ms.date: 10/18/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 050ccff8501a22526e9382a620258b0f846efe5c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 065eee57b78ea10d5e8079de3a938dc00dd60ee2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128720"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406771"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory? 
 
@@ -105,7 +105,7 @@ Wenn Sie genehmigte Client-Apps verwenden, können Sie die Anforderung festlegen
 Sie können einen Benutzer in Ihrem Mandanten anfordern, den Nutzungsbedingungen zuzustimmen, bevor der Zugriff auf eine Ressource gewährt wird. Als Administrator können Sie Nutzungsbedingungen durch Hochladen eines PDF-Dokuments konfigurieren und anpassen. Fällt ein Benutzer in den Anwendungsbereich dieses Steuerelements, wird der Zugriff auf eine Anwendung nur gewährt, wenn die Nutzungsbedingungen akzeptiert wurden. 
 
 
-### <a name="custom-controls"></a>Benutzerdefinierte Steuerelemente 
+### <a name="custom-controls-preview"></a>Benutzerdefinierte Steuerelemente (Vorschau) 
 
 Sie können benutzerdefinierte Steuerelemente für den bedingten Zugriff erstellen, die Ihre Benutzer zu einem kompatiblen Dienst umleiten, um weiteren Anforderungen außerhalb von Azure Active Directory zu genügen. Dadurch können Sie bestimmte externe mehrstufige Authentifizierungs- und Überprüfungsanbieter verwenden, um Regeln für den bedingten Zugriff zu erzwingen, oder zur Erstellung Ihres eigenen benutzerdefinierten Diensts. Um die Bedingungen dieses Steuerelements zu erfüllen, wird der Browser eines Benutzers auf den externen Dienst umgeleitet, führt alle erforderlichen Authentifizierungs- oder Überprüfungsaktivitäten durch und wird dann wieder an Azure Active Directory umgeleitet. Wenn der Benutzer erfolgreich authentifiziert oder überprüft wurde, bleibt der Benutzer im Vorgangsfluss des bedingten Zugriffs. 
 
@@ -118,13 +118,10 @@ Diese Steuerelemente ermöglichen die Verwendung von bestimmten externen oder be
 Zu den Anbietern, die derzeit einen kompatiblen Dienst anbieten gehören:
 
 - [Duo Security](https://duo.com/docs/azure-ca)
-
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
-
+- [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
-
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
-
 
 Für weitere Informationen zu diesen Diensten wenden Sie sich direkt an die Anbieter.
 

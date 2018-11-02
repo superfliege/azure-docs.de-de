@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: Go für die QnA Maker-API (v4)'
+title: REST-API (Version 4) – Go – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Hier finden Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Microsoft-Textübersetzungs-API in Microsoft Cognitive Services in Azure loslegen können.
+description: Hier finden Sie Informationen und Codebeispiele zu REST, mit denen Sie schnell mit der Microsoft-Textübersetzungs-API in Microsoft Cognitive Services in Azure loslegen können.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: quickstart
-ms.date: 09/12/2018
+ms.topic: article
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 1628daa0ffef4c1fd9d8717abbdbdf7d0bbb65fd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1b4f4c50c8c3fbdc2cc556705bdd446cb360ef2c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390124"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650229"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>Schnellstart für die Microsoft QnA Maker-API mit Go 
+# <a name="qna-maker-rest-api-with-go"></a>QnA Maker-REST-API mit Go 
 <a name="HOLTop"></a>
 
 In diesem Artikel erfahren Sie, wie Sie die [Microsoft QnA Maker-API](../Overview/overview.md) mit Go verwenden können, um folgende Aktionen auszuführen.

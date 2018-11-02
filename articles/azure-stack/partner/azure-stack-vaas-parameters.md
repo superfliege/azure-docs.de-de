@@ -10,53 +10,82 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c50e4b5c9eb81c9386e2cb0db96a88de70dcb9e9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 25c93560b24b2915ef9a9077b5bca0d15286b0e3
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157802"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646778"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Allgemeine Workflowparameter für Validation-as-a-Service in Azure Stack
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Die allgemeinen Parameter umfassen Werte, wie z.B. Umgebungsvariablen und Benutzeranmeldeinformationen, die für sämtliche Tests in Validation-as-a-Service (VaaS) erforderlich sind. Sie definieren diese Werte auf Workflowebene. Sie speichern die Werte bei der Erstellung oder Änderung eines Workflows. Zur geplanten Zeit lädt der Workflow die Werte für den Test. 
+Die allgemeinen Parameter umfassen Werte wie z.B. Umgebungsvariablen und Benutzeranmeldeinformationen, die für sämtliche Tests bei Validation-as-a-Service (VaaS) erforderlich sind. Diese Werte werden auf Workflowebene definiert, wenn Sie einen Workflow erstellen oder ändern. Bei der Planung von Tests werden diese Werte an jeden Test im Workflow als Parameter übergeben.
+
+> [!NOTE]
+> Für jeden Test ist ein eigener Satz von Parametern definiert. Zum Planungszeitpunkt müssen Sie unter Umständen unabhängig von den allgemeinen Parametern einen Wert eingeben, oder Sie können den Wert des allgemeinen Parameters überschreiben.
 
 ## <a name="environment-parameters"></a>Umgebungsparameter
 
-Umgebungsparameter beschreiben die Azure Stack-Umgebung, die getestet wird. Diese Werte müssen durch Generieren und Hochladen Ihrer Konfigurationsdatei für den Stempel `&lt;link&gt;. [How to get the stamp info link].` bereitgestellt werden
+Umgebungsparameter beschreiben die Azure Stack-Umgebung, die getestet wird. Diese Werte müssen durch Generieren und Hochladen einer Azure Stack-Stempelinformationsdatei für die jeweilige Instanz, die Sie testen, angegeben werden.
 
-| Parametername | Erforderlich | Typ | BESCHREIBUNG |
-|----------------------------------|----------|------|---------------------------------------------------------------------------------------------------------------------------------|
-| Azure Stack-Build | Erforderlich |  | Buildnummer der Azure Stack-Bereitstellung (z.B. 1.0.170330.9) |
-| OEM-Version | JA |  | Die Versionsnummer des OEM-Pakets, die während der Azure Stack-Bereitstellung verwendet wird. |
-| OEM-Signatur | JA |  | Die Signatur des OEM-Pakets, die während der Azure Stack-Bereitstellung verwendet wird. |
-| ID des AAD-Mandanten | Erforderlich |  | Die Mandanten-GUID für Azure Active Directory, die während der Azure Stack-Bereitstellung angegeben wird.|
-| Region | Erforderlich |  | Die Region der Azure Stack-Bereitstellung. |
-| Resource Manager-Endpunkt des Mandanten | Erforderlich |  | Endpunkt für Azure Resource Manager-Vorgänge des Mandanten (z.B. https://management.<ExternalFqdn>) |
-| Resource Manager-Endpunkt des Administrators | JA |  | Endpunkt für Azure Resource Manager-Vorgänge des Mandanten (z.B. https://adminmanagement.<ExternalFqdn>) |
-| Externer FQDN | JA |  | Externer vollqualifizierter Domänenname, der als Suffix für Endpunkte verwendet wird (Beispiel: local.azurestack.external oder redmond.contoso.com.) |
-| Anzahl von Knoten | JA |  | Die Anzahl der Knoten für die Bereitstellung. |
+> [!NOTE]
+> In offiziellen Validierungsworkflows können Umgebungsparameter nach der Workflowerstellung nicht mehr geändert werden.
+
+### <a name="generate-the-stamp-information-file"></a>Generieren der Stempelinformationsdatei
+
+1. Melden Sie sich bei der DVM oder einem anderen Computer mit Zugriff auf die Azure Stack-Umgebung an.
+2. Führen Sie die folgenden Befehle in einem PowerShell-Fenster mit erhöhten Rechten aus:
+    ```PowerShell
+    $CloudAdminUser = "<cloud admin username>"
+    $stampInfoPass = ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force
+    $stampInfoCreds = New-Object System.Management.Automation.PSCredential($CloudAdminUser, $stampInfoPass)
+    $params = Invoke-RestMethod -Method Get -Uri 'https://ASAppGateway:4443/ServiceTypeId/4dde37cc-6ee0-4d75-9444-7061e156507f/CloudDefinition/GetStampInformation'
+    ConvertTo-Json $params > stampinfoproperties.json
+    ```
+
+### <a name="locate-values-in-the-ece-configuration-file"></a>Suchen von Werten in der ECE-Konfigurationsdatei
+
+Umgebungsparameterwerte können auch manuell in der **ECE-Konfigurationsdatei** gesucht werden, die sich unter `C:\EceStore\403314e1-d945-9558-fad2-42ba21985248\80e0921f-56b5-17d3-29f5-cd41bf862787` auf der DVM befindet.
 
 ## <a name="test-parameters"></a>Testparameter
 
-Allgemeine Testparameter umfassen vertrauliche Informationen, die nicht in Konfigurationsdateien gespeichert werden können und manuell bereitgestellt werden müssen.
+Allgemeine Testparameter umfassen vertrauliche Informationen, die nicht in Konfigurationsdateien gespeichert werden können. Diese müssen manuell bereitgestellt werden.
 
-| Parametername | Erforderlich | Typ | BESCHREIBUNG |
-|--------------------------------|------------------------------------------------------------------------------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Mandantenbenutzername | Erforderlich |  | Der Azure Active Directory-Mandantenadministrator, der entweder bereits bereitgestellt wurde oder im AAD-Verzeichnis vom Dienstadministrator bereitgestellt werden muss. Weitere Einzelheiten zur Bereitstellung eines Mandantenkontos finden Sie unter [Erste Schritte mit Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). Dieser Wert wird von dem Test zur Durchführung von Vorgängen auf Mandantenebene verwendet, wie z.B. zum Bereitstellen von Vorlagen für die Bereitstellung von Ressourcen (virtuelle Computer, Speicherkonten usw.) und die Ausführung von Workloads. Dieser Wert wird von dem Test zur Durchführung von Vorgängen auf Mandantenebene verwendet, wie z.B. zum Bereitstellen von Vorlagen für die Bereitstellung von Ressourcen (virtuelle Computer, Speicherkonten usw.) und die Ausführung von Workloads. |
-| Mandantenkennwort | Erforderlich |  | Das Kennwort für den Mandantenbenutzer. |
-| Benutzername des Dienstadministrators | Erforderlich: Lösungs- und Paketvalidierung<br>Nicht erforderlich: Testdurchlauf |  | Der Azure Active Directory-Administrator des Mandanten des AAD-Verzeichnisses, der während der Azure Stack-Bereitstellung angegeben wird. |
-| Kennwort des Dienstadministrators | Erforderlich: Lösungs- und Paketvalidierung<br>Nicht erforderlich: Testdurchlauf |  | Das Kennwort für den Dienstadministratorbenutzer. |
-| Benutzername des Cloudadministrators | Erforderlich |  | Das Azure Stack-Domänenadministratorkonto (z.B. „contoso\cloudadmin“). Suchen Sie in der Konfigurationsdatei nach Benutzerrolle = „CloudAdmin“, und wählen Sie in der Konfigurationsdatei den Wert in dem Tag „UserName“ aus. |
-| Kennwort des Cloudadministrators | Erforderlich |  | Das Kennwort für den Cloudadministratorbenutzer. |
-| Diagnoseverbindungszeichenfolge | Erforderlich |  | Ein SAS-URI zu einem Azure Storage-Konto, in das während der Testausführung Diagnoseprotokolle kopiert werden. Anweisungen zum Generieren des SAS-URIs finden Sie unter [Einrichten eines BLOB-Speicherkontos](azure-stack-vaas-set-up-account.md). |
+Parameter    | BESCHREIBUNG
+-------------|-----------------
+Mandantenadministratorbenutzer                            | Azure Active Directory-Mandantenadministrator, der vom Dienstadministrator im AAD-Verzeichnis bereitgestellt wurde. Dieser Benutzer führt auf Mandantenebene Aktionen wie das Bereitstellen von Vorlagen zum Einrichten von Ressourcen (VMs, Speicherkonten usw.) und Ausführen von Workloads aus. Weitere Informationen zum Bereitstellen von Mandantenkonten finden Sie unter [Hinzufügen eines neuen Azure Stack-Mandanten](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-new-user-aad).
+Dienstadministratorbenutzer             | Der Azure Active Directory-Administrator des Mandanten des AAD-Verzeichnisses, der während der Azure Stack-Bereitstellung angegeben wird. Suchen Sie in der ECE-Konfigurationsdatei nach `AADTenant`, und wählen Sie den Wert im `UniqueName`-Element aus.
+Cloudadministratorbenutzer               | Azure Stack-Domänenadministratorkonto (z.B. `contoso\cloudadmin`). Suchen Sie in der ECE-Konfigurationsdatei nach `User Role="CloudAdmin"`, und wählen Sie den Wert im `UserName`-Element aus.
+Diagnoseverbindungszeichenfolge          | Eine SAS-URL zu einem Azure Storage-Konto, in das während der Testausführung Diagnoseprotokolle kopiert werden. Anweisungen zum Generieren der SAS-URL finden Sie unter [Generieren der Diagnose-Verbindungszeichenfolge](#generate-the-diagnostics-connection-string). |
 
+> [!IMPORTANT]
+> Die **Diagnose-Verbindungszeichenfolge** muss vor dem Fortfahren gültig sein.
+
+### <a name="generate-the-diagnostics-connection-string"></a>Generieren der Diagnose-Verbindungszeichenfolge
+
+Die Diagnose-Verbindungszeichenfolge ist für das Speichern von Diagnoseprotokollen während der Testausführung erforderlich. Verwenden Sie das Azure Storage-Konto, das Sie während der Einrichtung erstellt haben (siehe [Einrichten Ihrer Validation-as-a-Service-Ressourcen](azure-stack-vaas-set-up-resources.md)), um eine SAS-URL (Shared Access Signature) zu erstellen, über die VaaS Zugriff auf Ihr Storage-Konto zum Hochladen von Protokollen erhält.
+
+1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+
+1. Aktivieren Sie die Option **Blob** unter **Zulässige Dienste**. Deaktivieren Sie alle verbleibenden Optionen.
+
+1. Aktivieren Sie unter **Zugelassene Ressourcentypen** die Optionen **Dienst**, **Container** und **Objekt**.
+
+1. Aktivieren Sie unter **Zugelassene Berechtigungen** die Optionen **Lesen**, **Schreiben**, **Auflisten**, **Hinzufügen** und **Erstellen**. Deaktivieren Sie alle verbleibenden Optionen.
+
+1. Legen Sie die **Startzeit** auf die aktuelle Zeit und die **Endzeit** auf drei Monate nach der aktuellen Zeit fest.
+
+1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
+
+> [!NOTE]  
+> Die SAS-URL läuft zu der beim Generieren der URL angegebenen Endzeit ab.  
+Stellen Sie bei der Planung von Tests sicher, dass die URL zusätzlich zu der für die Testausführung erforderlichen Zeit für mindestens 30 Tage gültig ist. (Drei Monate werden empfohlen.)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr zu [Validation-as-a-Service in Azure Stack](https://docs.microsoft.com/azure/azure-stack/partner).
+- Erfahren Sie mehr über [Wichtige Begriffe zu Validation-as-a-Service](azure-stack-vaas-key-concepts.md)

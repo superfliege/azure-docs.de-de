@@ -17,23 +17,25 @@ ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: da13b7b7b9bd39692db422a315383e0f12aae453
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: ad7bb3c3a7bd50521b968b7c1a4e21027fbe18f2
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344875"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986051"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0- und Im-Auftrag-von-Ablauf von OAuth2.0
+
+[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
+
 Der Im-Auftrag-von-Ablauf von OAuth2.0 wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum eine andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den nachgelagerten Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) gesichert werden.
 
 > [!NOTE]
 > Der v2.0-Endpunkt unterstützt nicht alle Szenarios und Funktionen von Azure Active Directory. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
 >
 
-
 > [!IMPORTANT]
-> Die [implizite Gewährung](v2-oauth2-implicit-grant-flow.md) kann nicht für den OBO-Fluss verwendet werden. SPAs müssen ihr Zugriffstoken (impliziter Fluss) an einen vertraulichen Client der mittleren Ebene übergeben, um OBO-Flüsse auszuführen. Unter [Einschränkungen](#client-limitations) finden Sie ausführliche Informationen dazu, welche Clients OBO-Aufrufe ausführen können.  
+> Seit Mai 2018 kann ein `id_token` nicht für den OBO-Fluss verwendet werden. SPAs müssen ein **Zugriffstoken** an einen vertraulichen Client der mittleren Ebene übergeben, um OBO-Flüsse auszuführen. Unter [Einschränkungen](#client-limitations) finden Sie ausführliche Informationen dazu, welche Clients OBO-Aufrufe ausführen können.
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 Es wird davon ausgegangen, dass der Benutzer in einer Anwendung authentifiziert wurde, die den [Autorisierungscode-Vergabefluss von OAuth 2.0](v2-oauth2-auth-code-flow.md) verwendet. In diesem Fall verfügt die Anwendung über ein Zugriffstoken *für API A* (Token A), das die Benutzeransprüche und die Genehmigung für den Zugriff auf die API der mittleren Ebene enthält (API A). API A muss nun eine authentifizierte Anfrage an die nachgelagerte Web-API stellen (API B).

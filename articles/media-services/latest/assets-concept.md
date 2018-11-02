@@ -4,19 +4,19 @@ description: In diesem Artikel wird erläutert, was Medienobjekte sind und wie s
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 61555eb6cca6995215ce43051abbda9aa43539ec
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 62cc4634a0f76b0562d5b3c1355a7442fc5cf989
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284837"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985232"
 ---
 # <a name="assets"></a>Objekte
 
@@ -59,18 +59,27 @@ Media Services unterstützt die folgenden OData-Abfrageoptionen für Medienobjek
 * $top 
 * $skiptoken 
 
+Operatorbeschreibung:
+
+* Eq = equal to (ist gleich)
+* Ne = not equal to (ist nicht gleich)
+* Ge = Greater than or equal to (ist größer als oder gleich)
+* Le = Less than or equal to (ist kleiner als oder gleich)
+* Gt = Greater than (größer als)
+* Lt = Less than (kleiner als)
+
 ### <a name="filteringordering"></a>Filterung/Sortierung
 
 Die folgende Tabelle zeigt, wie diese Optionen auf die Eigenschaften von Medienobjekten angewendet werden können: 
 
 |NAME|Filter|Reihenfolge|
 |---|---|---|
-|id|Unterstützt:<br/>Equals<br/>Größer als<br/>Kleiner als|Unterstützt:<br/>Aufsteigend<br/>Absteigend|
-|name|||
-|properties.alternateId |Unterstützt:<br/>Equals||
-|properties.assetId |Unterstützt:<br/>Equals||
+|id|||
+|name|Unterstützt: Eq, Gt, Lt|Unterstützt: Aufsteigend und absteigend|
+|properties.alternateId |Unterstützt: Eq||
+|properties.assetId |Unterstützt: Eq||
 |properties.container |||
-|properties.created|Unterstützt:<br/>Equals<br/>Größer als<br/>Kleiner als|Unterstützt:<br/>Aufsteigend<br/>Absteigend|
+|properties.created|Unterstützt: Eq, Gt, Lt| Unterstützt: Aufsteigend und absteigend|
 |properties.description |||
 |properties.lastModified |||
 |properties.storageAccountName |||
@@ -86,9 +95,12 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ### <a name="pagination"></a>Paginierung
 
-Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. 
+Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. Derzeit ist die Seitengröße 1000.
 
-Wenn eine Abfrageantwort viele (derzeit über 1.000) Elemente enthält, gibt der Dienst eine „\@odata.nextLink“-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Die Seitengröße ist nicht vom Benutzer konfigurierbar. 
+> [!TIP]
+> Sie sollten immer den Link „Weiter“ verwenden, um die Sammlung zu durchlaufen, und keine bestimmte Seitengröße als Referenz verwenden.
+
+Wenn eine Abfrageantwort viele Elemente enthält, gibt der Dienst eine \@odata.nextLink-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Sie können die Seitengröße nicht konfigurieren. 
 
 Wenn während der Paginierung der Sammlung Medienobjekte erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen übernommen (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde.) 
 
@@ -106,7 +118,6 @@ while (currentPage.NextPageLink != null)
 
 Beispiele zu REST finden Sie unter [Medienobjekte – Liste](https://docs.microsoft.com/rest/api/media/assets/list).
 
-
 ## <a name="storage-side-encryption"></a>Speicherseitige Verschlüsselung
 
 Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen durch die speicherseitige Verschlüsselung verschlüsselt werden. Die folgende Tabelle zeigt, wie die speicherseitige Verschlüsselung in Media Services funktioniert:
@@ -123,5 +134,4 @@ Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Streamen einer Datei](stream-files-dotnet-quickstart.md)
+[Streamen einer Datei](stream-files-dotnet-quickstart.md)

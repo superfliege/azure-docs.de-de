@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9cc8e1db577859ad7637902a5ccd5a044efcd033
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab4dd1186715fde51fbf188ace902c8092d192d0
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978521"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647186"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Verwenden von Visual Studio 2017 zum Entwickeln und Debuggen von C#-Modulen für Azure IoT Edge (Vorschauversion)
 
@@ -36,7 +36,7 @@ Weil in diesem Artikel Visual Studio 2017 als Hauptentwicklungstool verwendet wi
 
 Wenn Ihr Visual Studio 2017 bereit ist, ist noch Folgendes erforderlich:
 
-- Laden Sie die [Azure IoT Edge-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsc-iot.azureiotedgetools) vom Visual Studio Marketplace herunter und installieren Sie sie, um ein IoT Edge-Projekt in Visual Studio 2017 zu erstellen.
+- Laden Sie die [Azure IoT Edge-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) vom Visual Studio Marketplace herunter und installieren Sie sie, um ein IoT Edge-Projekt in Visual Studio 2017 zu erstellen.
 - Sie benötigen die [Docker Community Edition](https://docs.docker.com/install/) auf dem Entwicklungscomputer, um Ihre Modulimages erstellen und ausführen zu können. Sie müssen die Docker CE, die im Linux- oder im Windows-Containermodus ausgeführt wird, richtig einstellen.
 - Zum Einrichten der lokalen Entwicklungsumgebung, in der Sie Ihre IoT Edge-Lösung debuggen, ausführen und testen, benötigen Sie das [Entwicklertool für Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/). Installieren Sie [Python (2.7/3.6) und Pip](https://www.python.org/). Installieren Sie anschließend **iotedgehubdev**, indem Sie den folgenden Befehl in Ihrem Terminal ausführen. Stellen Sie sicher, dass Sie eine Version des Azure IoT EdgeHub-Entwicklertools von höher als 0.3.0 verwenden.
 
@@ -87,9 +87,24 @@ Das **IoTEdgeModule1**-Projekt ist eine .NET Core 2.1-Konsolenanwendung. Es enth
 
 ## <a name="develop-your-module"></a>Entwickeln Ihres Moduls
 
-Der in der Lösung enthaltene C#-Standardmodulcode befindet sich unter **IoTEdgeModule1** > **Program.cs**. Das Modul und die Datei „deployment.template.json“ werden so eingerichtet, dass Sie die Lösung erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es einfach eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende tempSensor-Modul) und IoT Hub übergibt. 
+Der in der Lösung enthaltene C#-Standardmodulcode befindet sich unter **IoTEdgeModule1** > **Program.cs**. Das Modul und die Datei „deployment.template.json“ werden so eingerichtet, dass Sie die Projektmappe erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es einfach eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende tempSensor-Modul) und IoT Hub übergibt. 
 
 Wenn Sie bereit sind, die C#-Vorlage mit Ihrem eigenen Code anzupassen, erstellen Sie mit den [Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md) Module, die die wesentlichen Anforderungen für IoT-Lösungen wie Sicherheit, Geräteverwaltung und Zuverlässigkeit berücksichtigen. 
+
+## <a name="initialize-iotegehubdev-with-iot-edge-device-connection-string"></a>Initialisieren von **iotegehubdev** mit der IoT Edge-Geräteverbindungszeichenfolge
+
+1. Um die Verbindungszeichenfolge eines IoT Edge-Geräts abzurufen, können Sie den Wert „Primäre Verbindungszeichenfolge“ im Cloud-Explorer in Visual Studio 2017 wie folgt kopieren. Kopieren Sie nicht die Verbindungszeichenfolge eines Nicht-Edge-Geräts, da sich das Symbol von IoT Edge-Geräten von dem von Nicht-Edge-Geräten unterscheidet.
+
+   ![Kopieren der Edge-Geräteverbindungszeichenfolge](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
+
+2. Klicken Sie mit der rechten Maustaste auf das Projekt **AzureIoTEdgeApp1**, um das Kontextmenü zu öffnen, und klicken Sie dann auf **Set Edge Device Connection String** (Edge-Geräteverbindungszeichenfolge festlegen). Das Setupfenster für Azure IoT Edge wird angezeigt.
+
+   ![Öffnen des Fensters „Set Edge Device Connection String“ (Edge-Geräteverbindungszeichenfolge festlegen)](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
+
+3. Geben Sie im Setupfenster die Verbindungszeichenfolge ein, die Sie im ersten Schritt abgerufen haben, und klicken Sie auf die Schaltfläche **OK**.
+
+>[!NOTE]
+>Dieser Vorgang muss auf einem Computer nur einmal ausgeführt werden. Alle späteren Azure IoT Edge-Lösungen erhalten die Zeichenfolge automatisch. Selbstverständlich können Sie diesen Schritt erneut ausführen, wenn die Verbindungszeichenfolge ungültig ist oder Sie eine andere Verbindungszeichenfolge verwenden müssen.
 
 ## <a name="build-and-debug-single-c-module"></a>Erstellen und Debuggen eines einzelnen C#-Moduls
 
@@ -190,7 +205,10 @@ Im Schnellstartartikel, anhand dessen Sie Ihr IoT Edge-Gerät eingerichtet haben
 
 2. Erweitern Sie in **Cloud-Explorer** Ihr Abonnement, suchen Sie Ihren Azure IoT Hub und das Azure IoT Edge-Gerät, das Sie bereitstellen möchten.
 
-3. Klicken Sie mit der rechten Maustaste auf das IoT Edge-Gerät, um die Bereitstellung dafür zu erstellen. Sie müssen unter `$AzureIoTEdgeApp1\config\Debug|Release\deployment.json` die Bereitstellungsmanifestdatei auswählen.
+3. Klicken Sie mit der rechten Maustaste auf das IoT Edge-Gerät, um die Bereitstellung dafür zu erstellen. Sie müssen unter `$AzureIoTEdgeAppSolutionDir\config\deployment.(amd64|amd64.debug|windows-amd64).json` die Bereitstellungsmanifestdatei auswählen.
+
+>>[!NOTE]
+>>Wählen Sie auf keinen Fall `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json` aus.
 
 4. Klicken Sie auf die Schaltfläche „Aktualisieren“. Nun sollte die neuen Module zusammen mit dem **TempSensor**-Modul sowie **$edgeAgent** und **$edgeHub** ausgeführt werden.
 

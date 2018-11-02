@@ -1,5 +1,5 @@
 ---
-title: Grenzwerte und Kontingente – Custom Vision Service
+title: Preise und Grenzwerte – Custom Vision Service
 titlesuffix: Azure Cognitive Services
 description: Erfahren Sie über Grenzwerte und Kontingente für Custom Vision Service.
 services: cognitive-services
@@ -8,22 +8,24 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 10/16/2018
 ms.author: anroth
-ms.openlocfilehash: ce06effbce12abb6271e050829d3218f4fbbfbf4
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d0a6b7be62afcd8e9f51b6a9387c9aa33f62d9a9
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902858"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430067"
 ---
-# <a name="limits-and-quotas"></a>Grenzen und Kontingente
+# <a name="pricing-and-limits"></a>Preise und Einschränkungen
 
-Es gibt drei Schlüsselebenen für Custom Vision Service. F0- und S0-Ressourcen können über das Azure-Portal abgerufen werden. Informationen zu den Preisen und Transaktionen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/).  Für F0-Projekte kann ein Upgrade auf S0-Projekte ausgeführt werden.
+Es gibt drei Schlüsselebenen für Custom Vision Service. Projektressourcen, die eingeschränkten Testabonnements entstammen, werden Ihren Anmeldeinformationen für Custom Vision (ein Azure Active Directory- oder MSA-Konto) hinzugefügt. Diese Ressourcen sollen nur für Testversionen des Diensts gültig sein, die nur von kurzer Dauer sind. Sie können sich über das Azure-Portal für ein F0- (kostenlos) oder S0-Abonnement (Standard) registrieren. Auf der entsprechenden [Cognitive Services-Preisseite](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) finden Sie Informationen zu Preisen und Transaktionen.
 
-Projektressourcen, die eingeschränkten Testabonnements entstammen, werden Ihren Anmeldeinformationen für Custom Vision (ein AAD- oder ein MSA-Konto) hinzugefügt. Diese Ressourcen sollen nur für Testversionen des Diensts gültig sein, die nur von kurzer Dauer sind.  Konten, die im Rahmen einer frühen kostenlosen Vorschauversion erstellt wurden, bevor die Azure-Vorschauversionen (1. März 2018) veröffentlicht wurden, behalten die Kontingente für eingeschränkte Testversionen. 
+Konten, die im Rahmen einer frühen kostenlosen Vorschauversion erstellt wurden, bevor die Azure-Vorschauversionen (1. März 2018) veröffentlicht wurden, behalten die Kontingente für eingeschränkte Testversionen. 
 
-||**Eingeschränkte Testversion**|**F0 (Azure)**|**S0 (Azure)**|
+Es wird erwartet, dass die Anzahl der Bilder pro Projekt und die Anzahl der Tags pro Projekt für S0-Projekte mit der Zeit ansteigen.
+
+||**Eingeschränkte Testversion**|**F0**|**S0**|
 |-----|-----|-----|-----|
 |Projekte|2|2|100|
 |Trainingsbilder pro Projekt, Klassifizierung|5.000|5.000|50.000|
@@ -41,4 +43,4 @@ Projektressourcen, die eingeschränkten Testabonnements entstammen, werden Ihren
 |Maximale Bildgröße (Upload des Trainingsbilds) |6 MB|6 MB|6 MB|
 |Maximale Bildgröße (Vorhersage)|4 MB|4 MB|4 MB|
 
-Es wird erwartet, dass die Beschränkungen der *Anzahl der Bilder pro Projekt* und der *Anzahl der Tags pro Projekt* für S0-Projekte mit der Zeit ansteigen. 
+

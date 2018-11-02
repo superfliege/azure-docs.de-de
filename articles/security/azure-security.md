@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 81eb23a0955bbc6a5f9dcd95c6874f0c5a8c286c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: ce2b4304ea53be7e9a7be42b8a7fb30f713d85f8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434033"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405207"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in Azure Security
 ## <a name="overview"></a>Übersicht
@@ -74,10 +74,10 @@ Die integrierten Funktionen sind in sechs (6) Funktionsbereiche unterteilt: Vorg
 ## <a name="operations"></a>Vorgänge
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features von Sicherheitsvorgängen und zusammenfassende Informationen zu diesen Funktionen.
 
-### <a name="operations-management-suite-security-and-audit-dashboard"></a>Sicherheits- und Überwachungsdashboard von Operations Management Suite
-Die [Sicherheits- und Überwachungslösung von OMS](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) ermöglicht mit [integrierten Suchabfragen](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/) für relevante Probleme, die Ihre Aufmerksamkeit erfordern, einen umfassenden Einblick in die Lage der IT-Sicherheit Ihres Unternehmens. Das Dashboard [Security and Audit](https://technet.microsoft.com/library/mt484091.aspx) (Sicherheit und Überwachung) ist die Startseite für alle Aspekte, die sich in OMS auf die Sicherheit beziehen. Hier erhalten Sie einen allgemeinen Überblick über den Sicherheitszustand Ihres Computers. Darüber hinaus können Sie alle Ereignisse der letzten 24 Stunden, sieben Tage oder eines anderen benutzerdefinierten Zeitraums anzeigen.
+### <a name="security-and-audit-dashboard"></a>Dashboard „Sicherheit und Überwachung“
+Die [Sicherheits- und Überwachungslösung](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) ermöglicht mit [integrierten Suchabfragen](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/) für relevante Probleme, die Ihre Aufmerksamkeit erfordern, einen umfassenden Einblick in die Lage der IT-Sicherheit Ihres Unternehmens. Das Dashboard [Sicherheit und Überwachung](https://technet.microsoft.com/library/mt484091.aspx) ist die Startseite für sämtliche Sicherheitsaspekte in Log Analytics. Hier erhalten Sie einen allgemeinen Überblick über den Sicherheitszustand Ihres Computers. Darüber hinaus können Sie alle Ereignisse der letzten 24 Stunden, sieben Tage oder eines anderen benutzerdefinierten Zeitraums anzeigen.
 
-Darüber hinaus können Sie die Sicherheit und Compliance von OMS konfigurieren, um [automatisch bestimmte Aktionen auszuführen](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/), wenn ein bestimmtes Ereignis erkannt wird.
+Darüber hinaus können Sie die Sicherheit und Compliance konfigurieren, um [automatisch bestimmte Aktionen auszuführen](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/), wenn ein bestimmtes Ereignis erkannt wird.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 Mit dem [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine [Azure Resource Manager-Vorlage](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können.
@@ -95,7 +95,7 @@ Im Falle von Abstürzen, Fehlern oder Leistungsproblemen können Sie die Telemet
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) bietet Visualisierung, Abfrage, Weiterleitung, Warnung, automatische Skalierung und Automatisierung für Daten sowohl aus der Azure-Infrastruktur ([Aktivitätsprotokoll](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)) als auch aus jeder einzelnen Azure-Ressource ([Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)). Mit Azure Monitor können Sie sich bei sicherheitsrelevanten Ereignissen warnen lassen, die in Azure-Protokollen generiert werden.
 
 ### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/), Teil der [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite): bietet eine IT-Verwaltungslösung für lokale und cloudbasierte Infrastrukturen (z. B. AWS) zusätzlich zu Azure-Ressourcen. Daten von Azure Monitor können direkt an Log Analytics weitergeleitet werden, sodass Sie die Metriken und Protokolle für Ihre gesamte Umgebung an einem Ort finden.
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) bietet eine IT-Verwaltungslösung für lokale und cloudbasierte Infrastrukturen (z.B. AWS) zusätzlich zu Azure-Ressourcen. Daten von Azure Monitor können direkt an Log Analytics weitergeleitet werden, sodass Sie die Metriken und Protokolle für Ihre gesamte Umgebung an einem Ort finden.
 
 Log Analytics kann ein hilfreiches Tool bei forensischen und anderen Sicherheitsanalysen sein, da Sie mit dem Tool schnell große Mengen von sicherheitsbezogenen Einträgen mit einem flexiblen Abfrageansatz durchsuchen können. Darüber hinaus können lokale [Firewall- und Proxyprotokolle in Azure exportiert und für die Analyse mit Log Analytics zur Verfügung gestellt werden.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 

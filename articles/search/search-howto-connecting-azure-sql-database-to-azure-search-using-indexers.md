@@ -1,20 +1,20 @@
 ---
 title: Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern | Microsoft Docs
 description: Erfahren Sie, wie Sie Daten aus SQL Azure-Datenbank mithilfe von Indexern in einen Azure Search-Index abrufen.
-author: chaosrealm
-manager: jlembicz
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
-ms.author: eugenesh
-ms.openlocfilehash: 5897740a1b5a183738c08b4dfde571be652aff3e
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1c498bb857b717682f943af96b222d9712b5d389
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092248"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409219"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern
 
@@ -277,7 +277,7 @@ Wenn Sie die Methode des "vorläufigen Löschens" verwenden, können Sie die Ric
         }
     }
 
-**softDeleteMarkerValue** muss eine Zeichenfolge sein. Verwenden Sie die Zeichenfolgendarstellung des tatsächlichen Werts. Wenn Sie z.B. über eine „integer“-Spalte verfügen, in der gelöschte Zeilen durch den Wert 1 gekennzeichnet sind, verwenden Sie `"1"`. Wenn Sie über eine „BIT“-Spalte verfügen, in der gelöschte Zeilen durch den booleschen Wert „TRUE“ markiert sind, verwenden Sie `"True"`.
+**softDeleteMarkerValue** muss eine Zeichenfolge sein. Verwenden Sie die Zeichenfolgendarstellung des tatsächlichen Werts. Wenn Sie z.B. über eine „integer“-Spalte verfügen, in der gelöschte Zeilen durch den Wert 1 gekennzeichnet sind, verwenden Sie `"1"`. Wenn Sie über eine BIT-Spalte verfügen, in der gelöschte Zeilen durch den booleschen Wert TRUE gekennzeichnet sind, verwenden Sie das Zeichenfolgenliteral `True` oder `true` (die Groß- und Kleinschreibung spielt keine Rolle).
 
 <a name="TypeMapping"></a>
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: d65b86cc63a4fd39824a6421afd5ce9abb7fd270
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 45efaebb9539c4c0e2542966df6ab890b64d12ee
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28200978"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023820"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testen der Bandbreite / des Durchsatzes (NTTTCP)
 
@@ -29,11 +29,10 @@ Kopieren Sie das Tool in zwei virtuelle Azure-Computer der selben Größe. Ein v
 
 #### <a name="deploying-vms-for-testing"></a>Bereitstellen von virtuellen Computern zu Testzwecken
 Im Rahmen dieser Test sollten sich die beiden virtuellen Computer entweder im selben Clouddienst oder in der gleichen Verfügbarkeitsgruppe befinden, sodass wir deren externe IPs verwenden und die Load Balancer aus dem Text ausschließen können. Es ist möglich, einen Test mit der VIP-Adresse durchzuführen, aber diese Art von Tests geht über den Rahmen dieses Dokuments hinaus.
- 
+ 
 Notieren Sie die IP-Adresse des EMPFÄNGERS. Nennen wir diese IP-Adresse „a.b.c.r“
 
-Notieren Sie die Anzahl der Kerne auf dem virtuellen Computer. Nennen wir diese „\#num\_cores“
- 
+Notieren Sie die Anzahl der Kerne auf dem virtuellen Computer. Nennen wir diese „\#num\_cores“  
 Führen Sie den NTTTCP-Test 300 Sekunden lang (oder 5 Minuten lang) auf der Sender-VM und der Empfänger-VM aus.
 
 Tipp: Wenn Sie diesen Test zum ersten Mal einrichten, möchten Sie womöglich eine kürzere Testperiode ausprobieren, um früher Feedback einzuholen. Nachdem das Tool wie erwartet funktioniert, erweitern Sie den Testzeitraum auf 300 Sekunden, um genaueste Ergebnisse zu erhalten.
@@ -54,9 +53,9 @@ Senderparameter: ntttcp -s10.27.33.7 -t 10 -n 1 -P 1
 
 #### <a name="get-ntttcp-onto-the-vms"></a>Rufen Sie NTTTCP auf den virtuellen Computern auf.
 
-Laden Sie die neueste Version herunter: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+Herunterladen der aktuellen Version: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
-Suchen Sie alternativ danach, wenn sie verschoben wurde. Die Adresse <https://www.bing.com/search?q=ntttcp+download>\< sollte der erste Treffer sein
+Falls sie verschoben wurde, suchen Sie nach ihr: <https://www.bing.com/search?q=ntttcp+download>\< – der erste Treffer sollte der richtige sein.
 
 Erwägen Sie, NTTTCP in separaten Ordnern zu speichern, z.B. C:\\Extras
 
@@ -67,7 +66,7 @@ Lassen Sie NTTTCP wie folgt auf der Windows-Firewall zu:
 
 netsh advfirewall firewall add rule program=\<PATH\>\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
-Angenommen, Sie haben ntttcp.exe in den Ordner „C:\\Extras“ kopiert, dann wäre dies der Befehl: 
+Angenommen, Sie haben „ntttcp.exe“ in den Ordner „C:\\tools“ kopiert, dann wäre dies der Befehl: 
 
 netsh advfirewall firewall add rule program=c:\\tools\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
@@ -84,32 +83,32 @@ ntttcp -r –m 8,\*,10.0.0.4 -t 300
 
 Starten Sie NTTTCP auf den SENDER (**Ausführen über CMD**und nicht über PowerShell):
 
-ntttcp -s –m 8,\*,10.0.0.4 -t 300 
+ntttcp -s –m 8,\*,10.0.0.4 -t 300 
 
 Warten Sie auf die Ergebnisse.
 
 
 ## <a name="testing-vms-running-linux"></a>Testen von VMs unter LINUX:
 
-Verwenden Sie nttcp-for-linux. Verfügbar unter <https://github.com/Microsoft/ntttcp-for-linux>
+Verwenden Sie nttcp-for-linux. Diese Option ist bei <https://github.com/Microsoft/ntttcp-for-linux> verfügbar.
 
-Führen Sie diese Befehle zum Vorbereiten von ntttcp-for-linux auf den Linux-VMs (jeweils SENDER und EMPFÄNGER) auf Ihren virtuellen Computern aus:
+Führen Sie diese Befehle zum Vorbereiten von ntttcp-for-linux auf Ihren virtuellen Computern (jeweils SENDER und EMPFÄNGER) auf den Linux-VMs aus:
 
 CentOS – Git installieren:
 ``` bash
-  yum install gcc -y  
-  yum install git -y
+  yum install gcc -y  
+  yum install git -y
 ```
 Ubuntu – Git installieren:
 ``` bash
- apt-get -y install build-essential  
- apt-get -y install git
+ apt-get -y install build-essential  
+ apt-get -y install git
 ```
 Auf beiden erstellen und installieren:
 ``` bash
- git clone https://github.com/Microsoft/ntttcp-for-linux
- cd ntttcp-for-linux/src
- make && make install
+ git clone https://github.com/Microsoft/ntttcp-for-linux
+ cd ntttcp-for-linux/src
+ make && make install
 ```
 
 Wie im Windows-Beispiel gehen wir davon aus, dass die IP des Linux-EMPFÄNGERS 10.0.0.4 ist
@@ -125,7 +124,7 @@ Führen Sie nun Folgendes auf dem SENDER aus:
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
- 
+ 
 Die Testlänge beträgt standardmäßig 60 Sekunden, wenn kein Zeitparameter angegeben ist
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>Vergleich der Tests zwischen virtuellen Computern unter Windows und Linux:
@@ -169,5 +168,5 @@ Sie müssen der Datei „ServiceDefinition.csdef“ den folgenden Abschnitt hinz
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](virtual-network-optimize-network-bandwidth.md) hilft Ihnen womöglich bei Ihrem Szenario, abhängig von den Ergebnissen.
-* Lesen Sie mehr über die [Zuweisung von Bandbreite zu virtuellen Computern] (virtual-machine-network-throughput.md).
+* Lesen Sie mehr über die [Zuweisung von Bandbreite zu virtuellen Computern](virtual-machine-network-throughput.md).
 * Weitere Informationen finden Sie unter [Azure Virtual Network – häufig gestellte Fragen (FAQs)](virtual-networks-faq.md).

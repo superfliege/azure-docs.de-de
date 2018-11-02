@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3429917fcee520ae932253f1fdfead4ffb6535e6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cf6e2fa296d3d9f152edf22685b930586b4de524
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806019"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024809"
 ---
 <a name="retrieve-offers"></a>Abrufen von Angeboten
 ===============
@@ -35,7 +35,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 | ** Name**        |  **Beschreibung**                         |  **Datentyp** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | Herausgeber-ID, z.B. `contoso` |   Zeichenfolge    |
-|  api-version     | Aktuelle Version der API                    |    Datum        |
+|  api-version     | Neueste Version der API                    |    Datum        |
 |  |  |
 
 
@@ -49,7 +49,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 |  |  |
 
 
-<a name="body-example"></a>Beispiel für den Text
+<a name="body-example"></a>Beispiel für Hauptteil
 ------------
 
 ### <a name="response"></a>response
@@ -71,7 +71,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
   ]
 ```
 
-### <a name="response-body-properties"></a>Eigenschaften des Antworttexts
+### <a name="response-body-properties"></a>Eigenschaften für Antworthauptteil
 
 |  **Name**       |       **Beschreibung**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
@@ -80,7 +80,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 |  status         | Status des Angebots. Die Liste der möglichen Werte finden Sie weiter unten unter [Angebotsstatus](#offer-status).                         |
 |  id             | GUID, die das Angebot im Herausgebernamespace eindeutig identifiziert.                                                    |
 |  Version        | Aktuelle Version des Angebots. Die version-Eigenschaft kann vom Client nicht geändert werden. Sie wird nach jeder Veröffentlichung inkrementiert. |
-|  Definition     | Enthält eine zusammengefasste Ansicht der tatsächlichen Definition der Workload. Für eine ausführliche Definition verwenden Sie die API zum [Abrufen eines bestimmten Angebots] (./cloud-partner-portal-api-retrieve-specific-offer.md). |
+|  Definition     | Enthält eine zusammengefasste Ansicht der tatsächlichen Definition der Workload. Für eine ausführliche Definition verwenden Sie die API zum [Abrufen eines bestimmten Angebots](./cloud-partner-portal-api-retrieve-specific-offer.md). |
 |  changedTime    | Uhrzeit (UTC), zu der das Angebot letztmalig geändert wurde                                                                              |
 |  |  |
 
@@ -90,8 +90,8 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 | **Code**  |  **Beschreibung**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK`: Die Anforderung wurde erfolgreich verarbeitet, und alle Angebote unter dem Herausgeber wurden an den Client zurückgegeben.  |
-|  400      | `Bad/Malformed request`: Der Fehlerantworttext enthält möglicherweise weitere Informationen.                                    |
-|  403      | `Forbidden`: Der Client hat keinen Zugriff auf den angegebenen Namespace.                                          |
+|  400      | `Bad/Malformed request` – der Fehlerantworttext enthält möglicherweise weitere Informationen.                                    |
+|  403      | `Forbidden` – der Client hat keinen Zugriff auf den angegebenen Namespace.                                          |
 |  404      | `Not found`: Die angegebene Entität ist nicht vorhanden.                                                                 |
 |  |  |
 

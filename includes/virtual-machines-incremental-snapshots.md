@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88a9348ea7d6282b7410d5a323fd482dc82416c6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979108"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49960308"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Sichern nicht verwalteter Azure-VM-Datenträger mithilfe inkrementeller Momentaufnahmen
 ## <a name="overview"></a>Übersicht
@@ -66,7 +66,7 @@ Wenn Sie über eine benutzerdefinierte Sicherungsstrategie mit Momentaufnahmen v
 Sie können mit den folgenden Schritten eine inkrementelle Momentaufnahmenkopie implementieren.
 
 * Erstellen Sie eine Momentaufnahme des Basisblobs mit [Snapshot Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob).
-* Kopieren Sie die Momentaufnahme mit [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob)in ein Zielspeicherkonto. Dies ist das Sicherungsseitenblob. Erstellen Sie eine Momentaufnahme des Sicherungsseitenblobs, und speichern Sie sie im Sicherungskonto.
+* Kopieren Sie die Momentaufnahme mit [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) in das Zielkonto des Sicherungsspeichers in derselben oder in einer anderen Azure-Region. Dies ist das Sicherungsseitenblob. Erstellen Sie eine Momentaufnahme des Sicherungsseitenblobs, und speichern Sie sie im Sicherungskonto.
 * Erstellen Sie eine weitere Momentaufnahme des Basisblobs mit „Snapshot Blob“.
 * Rufen Sie den Unterschied zwischen erster und zweiter Momentaufnahme des Basisblobs mit [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) ab. Verwenden Sie den neuen Parameter **prevsnapshot**, um den DateTime-Wert der Momentaufnahme anzugeben, zu der Sie den Unterschied abrufen möchten. Wenn dieser Parameter vorhanden ist, enthält die REST-Antwort nur die Seiten, die zwischen Zielmomentaufnahme und vorheriger Momentaufnahme geändert wurden, einschließlich gelöschter Seiten.
 * Übernehmen Sie diese Änderungen mit [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) in das Sicherungsseitenblob.

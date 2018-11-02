@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 033e5e5e054b0a29961ad60e72b1466b51d1df0c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9bbbb797cd7e7d1cea52f1d5b1b491998b595db7
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035197"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638082"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entitätsrollen in Mustern sind kontextabhängige Untertypen
 Rollen sind benannte, kontextabhängige Untertypen einer Entität, die nur in [Mustern](luis-concept-patterns.md) verwendet wird.
@@ -28,6 +28,8 @@ Rollen benennen diese Unterschiede:
 |--|--|--|
 |Standort|origin|Start des Flugs|
 |Standort|Ziel|Ziel des Flugs|
+|Vordefinierte datetimeV2|zu|Enddatum|
+|Vordefinierte datetimeV2|from|Startdatum|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Wie werden Rollen in Mustern verwendet?
 In der Äußerungsvorlage eines Musters werden Rollen innerhalb der Äußerung verwendet: 
@@ -47,6 +49,14 @@ Hierarchische Entitäten bieten die gleichen Kontextinformationen wie Rollen, ab
 |--|--|
 |hierarchische Entitäten|Absichten|
 |Rollen|Muster|
+
+## <a name="roles-with-prebuilt-entities"></a>Rollen mit vordefinierten Entitäten
+
+Verwenden Sie Rollen mit vordefinierten Entitäten, um verschiedenen Instanzen der vordefinierten Entität innerhalb einer Äußerung eine Bedeutung zuzuweisen. 
+
+### <a name="roles-with-datetimev2"></a>Rollen mit „datetimeV2“
+
+Die vordefinierte Entität „datetimeV2“ eignet sich hervorragend, um unterschiedlichste Datums- und Uhrzeitangaben in Äußerungen zu verstehen. Sie können zusätzlich zu den standardmäßig von der vordefinierten Entität verstandenen Datumsangaben und Datumsbereiche noch weitere hinzufügen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

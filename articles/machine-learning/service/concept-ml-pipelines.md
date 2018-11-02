@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: e1181d07ed51b1edf5da68d759d871703bd1540f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 45aa954d2f85267b2c7c9aa2a7ba04e436765433
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162779"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023925"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Pipelines und Azure Machine Learning
 
@@ -63,12 +63,12 @@ Mit deklarativen Datenabhängigkeiten können Sie Ihre Aufgaben optimieren. Das 
 
 Pipelines lassen sich als Vorlagen speichern und auf einem REST-Endpunkt bereitstellen, damit Sie Batchbewertungen und erneute Trainingsaufträge planen können.
 
-In den [Referenzdokumenten für das Python SDK für Pipelines](http://aka.ms/aml-sdk) und dem Notebook im nächsten Abschnitt erfahren Sie, wie Sie Ihre eigenen Pipelines erstellen.
+In den [Referenzdokumenten für das Python SDK für Pipelines](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) und dem Notebook im nächsten Abschnitt erfahren Sie, wie Sie Ihre eigenen Pipelines erstellen.
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
  
-Das folgende Notebook veranschaulicht die Verwendung von Pipelines mit Azure Machine Learning: `pipeline/pipeline-batch-scoring.ipynb`.
+Das folgende Notebook veranschaulicht die Verwendung von Pipelines mit Azure Machine Learning: [pipeline/pipeline-batch-scoring.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/pipeline-batch-scoring.ipynb).
  
-Rufen Sie diese Notebooks ab:
+Notebook abrufen:
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

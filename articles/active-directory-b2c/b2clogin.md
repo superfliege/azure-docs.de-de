@@ -1,33 +1,76 @@
 ---
-title: Verwenden von b2clogin.com | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Verwendung von b2clogin.com statt login.microsoftonline.com.
+title: Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C | Microsoft-Dokumentation
+description: Erfahren Sie mehr über das Verwenden von b2clogin.com in Umleitungs-URLs für Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/29/2018
+ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6ad0a5d59b28bf48742c9e1be89b51d2301dd582
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 36025bf8460d690aab3b3617ad3341dfe7005e9e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189289"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649274"
 ---
-# <a name="using-b2clogincom"></a>Verwenden von b2clogin.com
+# <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C
 
->[!IMPORTANT]
->Dieses Feature befindet sich in der Phase der öffentlichen Vorschau. 
->
+Wenn Sie einen Identitätsanbieter für die Registrierung und Anmeldung in Ihrer Azure Active Directory B2C-Anwendung (Azure AD) einrichten, müssen Sie eine Umleitungs-URL angeben. In der Vergangenheit wurde login.microsoftonline.com verwendet, nun sollten Sie allerdings b2clogin.com verwenden.
 
-Jetzt haben Sie die Möglichkeit, den Azure Active Directory B2C-Dienst mit `<YourTenantName>.b2clogin.com` statt `login.microsoftonline.com` zu verwenden.  Dies hat viele Vorteile:
-* Sie teilen das Größenlimit für Cookieheader nicht mehr mit anderen Microsoft-Produkten.
-* Sie können alle Verweise auf Microsoft in Ihrer URL entfernen (Sie können `<YourTenantName>.onmicrosoft.com` durch Ihre Mandanten-ID ersetzen). Beispiel: `https://<tenantname>.b2clogin.com/tfp/<tenantID>/<policyname>/v2.0/.well-known/openid-configuration`.
+Die Verwendung von b2clogin.com bietet zusätzliche Vorteile, z.B.:
 
- Um alle Vorteile von b2clogin.com nutzen zu können, sollten Sie folgendes festlegen:
+- Cookies werden nicht mehr mit anderen Microsoft-Diensten gemeinsam verwendet.
+- Ihre URLs enthalten keinen Verweis mehr auf Microsoft. Beispiel: `https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration`.
 
-1. Stellen Sie sicher, dass Sie `<YourTenantName>.b2clogin.com` statt `login.microsoftonline.com` für den **Endpunkt für sofortige Ausführung** verwenden.
-2. Wenn Sie MSAL verwenden, müssen Sie `validateauthority=false` festlegen.  Der Grund hierfür ist, dass der Tokenaussteller `<YourTenantName>.b2clogin.com` wird.
+Sehen Sie sich diese Einstellungen, die bei Verwendung von „b2clogin.com“ möglicherweise geändert werden müssen:
+
+- Legen Sie die Umleitungs-URLs in den Anwendungen Ihrer Identitätsanbieter für die Verwendung von „b2clogin.com“ fest. 
+- Legen Sie in Ihrer Azure AD B2C-Anwendung fest, dass für Richtlinienverweise und Tokenendpunkte „b2clogin.com“ verwendet werden soll. 
+- Wenn Sie MSAL verwenden, müssen Sie die **ValidateAuthority**-Eigenschaft auf `false` festlegen.
+- Stellen Sie sicher, dass Sie alle **zulässigen Ursprünge** ändern, die Sie in den CORS-Einstellungen zur [Anpassung der Benutzeroberfläche](active-directory-b2c-ui-customization-custom-dynamic.md) definiert haben.  
+
+## <a name="change-redirect-urls"></a>Ändern von Umleitungs-URLs
+
+Um b2clogin.com zu verwenden, suchen Sie in den Einstellungen Ihrer Identitätsanbieteranwendung nach der Liste vertrauenswürdiger URLs für Umleitungen zu Azure AD B2C, und ändern Sie sie.  Derzeit ist dort wahrscheinlich eine Umleitung an eine Website unter login.microsoftonline.com eingerichtet. 
+
+Sie müssen die Umleitungs-URL ändern, damit `your-tenant-name.b2clogin.com` autorisiert ist. Ersetzen Sie dabei unbedingt `your-tenant-name` durch den Namen Ihres Azure AD B2C-Mandanten, und entfernen Sie `/te` (sofern in der URL enthalten). Es gibt geringfügige Abweichungen von dieser URL für die einzelnen Identitätsanbieter. Die genaue URL finden Sie auf der entsprechenden Seite.
+
+Informationen zum Einrichten von Identitätsanbietern finden Sie in den folgenden Artikeln:
+
+- [Microsoft-Konto](active-directory-b2c-setup-msa-app.md)
+- [Facebook](active-directory-b2c-setup-fb-app.md)
+- [Google](active-directory-b2c-setup-goog-app.md)
+- [Amazon](active-directory-b2c-setup-amzn-app.md)
+- [LinkedIn](active-directory-b2c-setup-li-app.md)
+- [Twitter](active-directory-b2c-setup-twitter-app.md)
+- [GitHub](active-directory-b2c-setup-github-app.md)
+- [Weibo](active-directory-b2c-setup-weibo-app.md)
+- [QQ](active-directory-b2c-setup-qq-app.md)
+- [WeChat](active-directory-b2c-setup-wechat-app.md)
+- [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md)
+- [Benutzerdefiniertes OIDC](active-directory-b2c-setup-oidc-idp.md)
+
+## <a name="update-your-application"></a>Aktualisieren Ihrer Anwendung
+
+Die Azure AD B2C-Anwendung verweist wahrscheinlich an mehreren Stellen auf `login.microsoftonline.com`, z.B. in Ihren Richtlinienverweisen und den Tokenendpunkten.  Vergewissern Sie sich, dass Ihr Autorisierungsendpunkt, Ihr Tokenendpunkt und Ihr Aussteller aktualisiert wurden und `your-tenant-name.b2clogin.com` verwenden.  
+
+## <a name="set-the-validateauthority-property"></a>Festlegen der ValidateAuthority-Eigenschaft
+
+Wenn Sie MSAL verwenden, legen Sie **ValidateAuthority** auf `false` fest. Das folgende Beispiel zeigt eine Möglichkeit, wie Sie die Eigenschaft festlegen können:
+
+```
+this.clientApplication = new UserAgentApplication(
+  env.auth.clientId,
+  env.auth.loginAuthority,
+  this.authCallback.bind(this),
+  {
+    validateAuthority: false
+  }
+);
+```
+
+ Weitere Informationen finden Sie unter der [ClientApplicationBase-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase?view=azure-dotnet).

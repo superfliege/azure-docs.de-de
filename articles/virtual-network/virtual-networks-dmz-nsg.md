@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2f399b5084ab65736adfebb5cf0a77ccfbc972e8
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23126678"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457288"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Beispiel 1 – Erstellen einer einfachen DMZ unter Verwendung von NSGs mit einer Azure Resource Manager-Vorlage 
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
@@ -99,7 +99,7 @@ Jede Regel wird wie folgt ausführlicher erläutert:
     ``` 
 
 2. Die erste Regel in diesem Beispiel lässt DNS-Datenverkehr zwischen allen internen Netzwerken und dem DNS-Server im Back-End-Subnetz zu. Die Regel weist einige wichtige Parameter auf:
-  * „destinationAddressPrefix“ – Regeln können einen besonderen, „Standardtag“ genannten Adresspräfixtyp verwenden; diese Tags sind vom System bereitgestellte Bezeichner, mit denen auf einfache Weise eine größere Kategorie von Adresspräfixen adressiert werden kann. Diese Regel verwendet das Standardtag „Internet“, um alle Adressen außerhalb des VNets anzugeben. Andere Präfixbezeichnungen sind VirtualNetwork und AzureLoadBalancer.
+  * „destinationAddressPrefix„ – das Präfix der Zieladresse ist auf „10.0.2.4“ festgelegt, sodass DNS-Datenverkehr den DNS-Server erreichen darf.
   * „Direction“ gibt an, in welcher Datenverkehrsflussrichtung diese Regel wirksam wird. Die Richtung kann aus der Perspektive des Subnetzes oder virtuellen Computers bestimmt werden (je nachdem, wie diese NSG gebunden ist). Wenn die Richtung „eingehend“ lautet und Datenverkehr an das Subnetz gesendet wird, wird die Regel angewendet. Auf Datenverkehr, der das Subnetz verlässt, wirkt sich die Regel dagegen nicht aus.
   * Der Parameter „Priority“ legt die Reihenfolge fest, in der ein Datenverkehrsfluss ausgewertet wird. Je niedriger die Nummer ist, desto höher ist die Priorität. Wenn eine Regel auf einen bestimmten Datenverkehrsfluss angewendet wird, werden keine weiteren Regeln verarbeitet. Wenn daher eine Regel mit Priorität 1 Datenverkehr zulässt und eine Regel mit Priorität 2 Datenverkehr ablehnt und beide Regeln auf einen Datenverkehrsfluss zutreffen, wird dieser Datenverkehr zugelassen, da Regel 1 mit der höheren Priorität greift und keine weiteren Regeln angewendet werden.
   * Der Parameter „Access“ gibt an, ob Datenverkehr, auf den diese Regel zutrifft, blockiert („Deny“) oder zugelassen („Allow“) wird.
@@ -180,7 +180,7 @@ Jede Regel wird wie folgt ausführlicher erläutert:
     },
      ```
 
-6. Dies Regel lehnt Datenverkehr aus dem Internet an alle Server im Netzwerk ab. Mit den Regeln mit Priorität 110 und 120 wird nur eingehender Datenverkehr aus dem Internet an die Firewall- und RDP-Ports von Servern zugelassen, jeglicher anderer Datenverkehr wird blockiert. Diese Regel ist eine „Fail-safe“-Regel, die alle unerwarteten Datenflüsse blockiert.
+6. Regeln können einen besonderen, „Standardtag“ genannten, Adresspräfixtyp verwenden; diese Tags sind vom System bereitgestellte Bezeichner, mit denen auf einfache Weise eine größere Kategorie von Adresspräfixen adressiert werden kann. Diese Regel verwendet das Standardtag „VirtualNetwork“ für das Präfix der Zieladresse, um jede Adresse innerhalb des virtuellen Netzwerks zu bezeichnen. Andere Präfixbezeichnungen sind „Internet“ und „AzureLoadBalancer“. Dies Regel lehnt Datenverkehr aus dem Internet an alle Server im Netzwerk ab. Mit den Regeln mit Priorität 110 und 120 wird nur eingehender Datenverkehr aus dem Internet an die Firewall- und RDP-Ports von Servern zugelassen, jeglicher anderer Datenverkehr wird blockiert. Diese Regel ist eine „Fail-safe“-Regel, die alle unerwarteten Datenflüsse blockiert.
 
     ```JSON
     {

@@ -4,17 +4,17 @@ description: Liste der Dienste, die verwaltete Identitäten für Azure-Ressource
 services: active-directory
 author: daveba
 ms.author: daveba
-ms.date: 06/27/2018
+ms.date: 10/23/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: f09704a5befedb99625595e50587fa6bbd704899
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 25da856d8bd72f4e74718cf32f62bbb0a3eb5b88
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106394"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984688"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -29,12 +29,14 @@ Die folgenden Azure-Dienste unterstützen verwaltete Identitäten für Azure-Res
 
 | Dienst | Vom System zugewiesener Status | Vom Benutzer zugewiesener Status| Konfigurieren | Abrufen von Token |
 | ------- | ------ | ---- | --------- | ----------- |
-| Azure Virtual Machines | Vorschau | Vorschau | [Azure-Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure-CLI](qs-configure-cli-windows-vm.md)<br>[Azure-Ressourcen-Manager-Vorlagen](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
-| Virtual Machine Scale Sets | Vorschau | Vorschau | [Azure-Portal](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure-CLI](qs-configure-cli-windows-vmss.md)<br>[Azure-Ressourcen-Manager-Vorlagen](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
-| Azure App Service | Verfügbar | Nicht verfügbar | [Azure-Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure-CLI](/azure/app-service/app-service-managed-service-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/app-service-managed-service-identity#using-azure-powershell)<br>[Azure Resource Manager-Vorlage](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[JavaScript](/azure/app-service/app-service-managed-service-identity#token-js)<br>[PowerShell](/azure/app-service/app-service-managed-service-identity#token-powershell)  |
-| Azure-Funktionen | Verfügbar | Nicht verfügbar | [Azure-Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure-CLI](/azure/app-service/app-service-managed-service-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/app-service-managed-service-identity#using-azure-powershell)<br>[Azure Resource Manager-Vorlage](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[JavaScript](/azure/app-service/app-service-managed-service-identity#token-js)<br>[PowerShell](/azure/app-service/app-service-managed-service-identity#token-powershell) |
-| Azure Data Factory V2 | Vorschau | Nicht verfügbar | [Azure-Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
-| Azure API Management | Verfügbar | Nicht verfügbar | [Azure Resource Manager-Vorlage](/azure/api-management/api-management-howto-use-managed-service-identity) | 
+| Azure Virtual Machines | Verfügbar | Vorschau | [Azure-Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure-Befehlszeilenschnittstelle](qs-configure-cli-windows-vm.md)<br>[Azure-Ressourcen-Manager-Vorlagen](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
+| Virtual Machine Scale Sets | Verfügbar | Vorschau | [Azure-Portal](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure-Befehlszeilenschnittstelle](qs-configure-cli-windows-vmss.md)<br>[Azure-Ressourcen-Manager-Vorlagen](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
+| Azure App Service | Windows: verfügbar <br> Linux: in Kürze verfügbar | Nicht verfügbar | [Azure-Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure-Befehlszeilenschnittstelle](/azure/app-service/app-service-managed-service-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/app-service-managed-service-identity#using-azure-powershell)<br>[Azure Resource Manager-Vorlage](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[JavaScript](/azure/app-service/app-service-managed-service-identity#token-js)<br>[PowerShell](/azure/app-service/app-service-managed-service-identity#token-powershell)  |
+| Azure-Funktionen | Verfügbar | Nicht verfügbar | [Azure-Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure-Befehlszeilenschnittstelle](/azure/app-service/app-service-managed-service-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/app-service-managed-service-identity#using-azure-powershell)<br>[Azure Resource Manager-Vorlage](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[JavaScript](/azure/app-service/app-service-managed-service-identity#token-js)<br>[PowerShell](/azure/app-service/app-service-managed-service-identity#token-powershell) |
+| Azure Logic Apps | Verfügbar | Nicht verfügbar | [Azure-Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)<br>[Azure Resource Manager-Vorlage](/azure/app-service/app-service-managed-service-identity#deployment-template) |  |
+| Azure Data Factory V2 | Verfügbar | Nicht verfügbar | [Azure-Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
+| Azure API Management | Verfügbar | Nicht verfügbar | [Azure Resource Manager-Vorlage](/azure/api-management/api-management-howto-use-managed-service-identity) |
+| Azure Container Instances | Linux: Vorschau<br>Windows: Nicht verfügbar | Linux: Vorschau<br>Windows: Nicht verfügbar | [Azure-Befehlszeilenschnittstelle](~/articles/container-instances/container-instances-managed-identity.md)<br>[Azure Resource Manager-Vorlage](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)<br>[YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file) |  |
 
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-Dienste, die die Azure AD-Authentifizierung unterstützen
@@ -43,10 +45,10 @@ Die folgenden Dienste unterstützen die Azure AD-Authentifizierung und wurden mi
 
 | Dienst | Ressourcen-ID | Status | Datum | Zuweisen des Zugriffs |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://management.azure.com/ | Verfügbar | September 2017 | [Azure-Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure-CLI](howto-assign-access-CLI.md) |
-| Azure Key Vault | https://vault.azure.net | Verfügbar | September 2017 | |
-| Azure Data Lake | https://datalake.azure.net/ | Verfügbar | September 2017 | |
-| Azure SQL | https://database.windows.net/ | Verfügbar | Oktober 2017 | |
-| Azure Event Hubs | https://eventhubs.azure.net | Verfügbar | Dezember 2017 | |
-| Azure-Servicebus | https://servicebus.azure.net | Verfügbar | Dezember 2017 | |
-| Azure Storage | https://storage.azure.com/ | Vorschau | Mai 2018 | |
+| Azure Resource Manager | `https://management.azure.com/` | Verfügbar | September 2017 | [Azure-Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure-Befehlszeilenschnittstelle](howto-assign-access-CLI.md) |
+| Azure Key Vault | `https://vault.azure.net` | Verfügbar | September 2017 | |
+| Azure Data Lake | `https://datalake.azure.net/` | Verfügbar | September 2017 | |
+| Azure SQL | `https://database.windows.net/` | Verfügbar | Oktober 2017 | |
+| Azure Event Hubs | `https://eventhubs.azure.net` | Vorschau | Dezember 2017 | |
+| Azure-Servicebus | `https://servicebus.azure.net` | Vorschau | Dezember 2017 | |
+| Azure Storage | `https://storage.azure.com/` | Vorschau | Mai 2018 | |

@@ -2,20 +2,20 @@
 title: Installieren der Erweiterung Durable Functions und Beispiele – Azure
 description: Erfahren Sie, wie Sie die Erweiterung Durable Functions für Azure Functions, für die Portalentwicklung oder Visual Studio-Entwicklung installieren.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2eb838bcb9d3f64d0bbf4657c516adb50d103223
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 6bbf232fc17b9acfd4e8cd84a0cb1346ab8ea9b5
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585304"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986816"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Installieren der Erweiterung Durable Functions und Beispiele (Azure Functions)
 
@@ -45,7 +45,7 @@ Visual Studio bietet derzeit die beste Lösung für das Entwickeln von Apps, die
 Befolgen Sie die gleichen Anweisungen wie für den Start mit dem Beispiel, aber führen Sie die folgenden Schritte aus, statt die *ZIP*-Datei herunterzuladen:
 
 1. Erstellen Sie ein Funktionen-App-Projekt.
-2. Suchen Sie mit *NuGet-Pakete verwalten* nach der folgenden NuGet-Paketreferenz, und fügen Sie sie dem Projekt hinzu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.0
+2. Suchen Sie mit *NuGet-Pakete verwalten* nach der folgenden NuGet-Paketreferenz, und fügen Sie sie dem Projekt hinzu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.2.
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -75,12 +75,12 @@ Visual Studio Code bietet eine lokale Entwicklungsumgebung, die alle wichtigen P
 3. Installieren Sie Azure Functions Durable Extension, indem Sie die folgenden Schritte über eine Eingabeaufforderung bzw. in einem Terminalfenster ausführen:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.2
     ```
 4. Installieren Sie Azure Functions Twilio Extension, indem Sie die folgenden Schritte über eine Eingabeaufforderung bzw. in einem Terminalfenster ausführen:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta8
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0
     ```
 5. Führen Sie den Azure-Speicheremulator aus, oder aktualisieren Sie die Datei *local.settings.json* mit echten Azure Storage-Verbindungszeichenfolgen.
 6. Öffnen Sie das Projekt in Visual Studio Code. 
@@ -96,14 +96,14 @@ Visual Studio Code bietet eine lokale Entwicklungsumgebung, die alle wichtigen P
 2. Navigieren Sie auf dem Computer zum [Ordner mit den JavaScript-Beispielen](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript). 
 3. Installieren Sie Azure Functions Durable Extension, indem Sie die folgenden Schritte über eine Eingabeaufforderung bzw. in einem Terminalfenster ausführen.
 
-    ```
+    ```bash
     func extensions install
     ```
     > [!NOTE] 
     > Dies erfordert, dass [.NET Core SDK](https://www.microsoft.com/net/download) auf dem Computer installiert wird.
 4. Stellen Sie die npm-Pakete wieder her, indem Sie Folgendes über eine Eingabeaufforderung bzw. in einem Terminalfenster ausführen:
     
-    ```
+    ```bash
     npm install
     ``` 
 5. Aktualisieren Sie die Datei *local.appsettings.json* mit einer Verbindungszeichenfolge eines Azure-Speicherkontos für `AzureWebJobsStorage`.  Dieses Speicherkonto wird für den Status der langlebigen Funktion verwendet.
@@ -119,13 +119,13 @@ Visual Studio Code bietet eine lokale Entwicklungsumgebung, die alle wichtigen P
 1. Navigieren Sie über die Eingabeaufforderung bzw. das Terminalfenster zu dem Ordner, in dem sich Ihre Funktions-App befindet.
 3. Erstellen Sie ein Funktions-App-Projekt, indem Sie den folgenden Befehl ausführen:
 
-    ```
+    ```bash
     func init
     ``` 
 4. Führen Sie den Azure-Speicheremulator aus (nur Windows), oder aktualisieren Sie die Datei *local.settings.json* mit echten Azure Storage-Verbindungszeichenfolgen für `AzureWebJobsStorage`.
 5. Als nächstes erstellen Sie eine neue Funktion, indem Sie den folgenden Befehl ausführen und den Schritten des Assistenten folgen:
 
-    ```
+    ```bash
     func new
     ```
     >[!IMPORTANT]

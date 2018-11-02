@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9282d8af30cbfb3346394bcd71510faf8d8c8a21
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 243ee16f8de8add8283581c8c03a37594797864b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129385"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430033"
 ---
 # <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
@@ -95,8 +95,48 @@ Ein Kunde mit einer kostenlose Testversion des Abonnements erhält beispielsweis
 ```
 {
   "error": {
-    "code":403000,
-    "message":"The subscription has exceeded its free quota."
+    "code":403001,
+    "message":"The operation is not allowed because the subscription has exceeded its free quota."
     }
 }
 ```
+Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes sind:
+
+| Code | BESCHREIBUNG |
+|:----|:-----|
+| 400000| Eine der Anforderungseingaben ist ungültig.|
+| 400001| Der scope-Parameter ist ungültig.|
+| 400002| Der category-Parameter ist ungültig.|
+| 400003| Ein Sprachenspezifizierer fehlt oder ist ungültig.|
+| 400004| Ein Zielskriptspezifizierer („To script“) fehlt oder ist ungültig.|
+| 400005| Ein Eingabetext fehlt oder ist ungültig.|
+| 400006| Die Kombination von Sprache und Skript ist ungültig.|
+| 400018| Ein Quellskriptspezifizierer („From script“) fehlt oder ist ungültig.|
+| 400019| Eine der angegebenen Sprachen wird nicht unterstützt.|
+| 400020| Eines der Elemente im Array des Eingabetexts ist ungültig.|
+| 400021| Der API-Versionsparameter fehlt oder ist ungültig.|
+| 400023| Eines der angegebenen Sprachpaare wird nicht unterstützt.|
+| 400035| Die Ausgangssprache (Feld „From“) ist ungültig.|
+| 400036| Der Zielsprache (Feld „To“) fehlt oder ist ungültig.|
+| 400042| Eine der angegebenen Optionen (Feld „Optionen“) ist ungültig.|
+| 400043| Die Clientablaufverfolgungs-ID (Feld „ClientTraceId“ oder X-ClientTranceId-Header) fehlt oder ist ungültig.|
+| 400050| Der Eingabetext ist zu lang.|
+| 400064| Der translation-Parameter fehlt oder ist ungültig.|
+| 400070| Die Anzahl der Zielskripts (ToScript-Parameter) entspricht nicht der Anzahl von Zielsprachen (To-Parameter).|
+| 400071| Der Wert ist für TextType ungültig.|
+| 400072| Das Array mit dem Eingabetext enthält zu viele Elemente.|
+| 400073| Der script-Parameter ist ungültig.|
+| 400074| Der Anforderungstext ist kein gültiger JSON-Code.|
+| 400075| Die Kombination aus Sprachpaar und Kategorie ist ungültig.|
+| 400077| Die maximale Anforderungsgröße wurde überschritten.|
+| 400079| Das für die Übersetzung zwischen Ausgangs- und Zielsprache angeforderte benutzerdefinierte System ist nicht vorhanden.|
+| 401000| Die Anforderung wurde nicht autorisiert, da die Anmeldeinformationen fehlen oder ungültig sind.|
+| 401015| „Die angegebenen Anmeldeinformationen gelten für die SAPI. Diese Anforderung erfordert Anmeldeinformationen für die Text-API. Verwenden Sie ein Abonnement für die Textübersetzungs-API.“|
+| 403000| Der Vorgang ist nicht zulässig.|
+| 403001| Der Vorgang ist nicht zulässig, da das kostenlose Kontingent für das Abonnement überschritten wurde.|
+| 405000| Die Anforderungsmethode wird für die angeforderte Ressource nicht unterstützt.|
+| 415000| Der Content-Type-Header fehlt oder ist ungültig.|
+| 429000, 429001, 429002| Der Server hat die Anforderung abgelehnt, da der Client zu viele Anforderungen sendet. Reduzieren Sie die Häufigkeit der Anforderungen, um eine Drosselung zu vermeiden.|
+| 500000| Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie dabei Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Antwortheader X-RequestId und Clientbezeichner aus dem Anforderungsheader X-ClientTraceId.|
+| 503000| Service is temporarily unavailable. (Der Dienst ist vorübergehend nicht verfügbar.) Versuchen Sie es erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie dabei Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Antwortheader X-RequestId und Clientbezeichner aus dem Anforderungsheader X-ClientTraceId.|
+

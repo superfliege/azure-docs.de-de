@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 12f7e466bdfd6d9b6cf1c36df4daf1e76cc417f2
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 88285ea658b194daf69b12116649e2389374c349
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729823"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025530"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem Windows IoT Core-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -44,14 +44,14 @@ Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerät
 
 ### <a name="prepare-the-windows-iot-core-device"></a>Vorbereiten des Windows IoT Core-Geräts
 
-Befolgen Sie zum Einrichten eines Windows IoT Core-Geräts die Anweisungen im ausführlichen Leitfaden unter [Einrichten eines Windows IoT Core-Geräts] (https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
+Befolgen Sie zum Einrichten eines Windows IoT Core-Geräts die Anweisungen im ausführlichen Leitfaden unter [Einrichten eines Windows IoT Core-Geräts](https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
 
 ### <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
 Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerätevorlage **Windows IoT Core** hinzu, und notieren Sie sich die Verbindungsdetails des Geräts (**Bereichs-ID, Geräte-ID und Primärschlüssel**). Weitere Informationen finden Sie unter [Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-device.md).
 
  > [!NOTE]
-   > Azure IoT Central verwendet nun den Azure IoT Hub Device Provisioning-Dienst (Device Provisioning Service, DPS) für alle Geräteverbindungen. Führen Sie die Schritte zum [Abrufen der Verbindungszeichenfolge des Geräts](concepts-connectivity.md#getting-device-connection-string) aus, und fahren Sie anschließend mit dem Rest des Tutorials fort.
+   > Azure IoT Central verwendet nun Azure IoT Hub Device Provisioning Service für alle Geräteverbindungen. Führen Sie die Schritte zum [Abrufen der Verbindungszeichenfolge des Geräts](concepts-connectivity.md#getting-device-connection-string) aus, und fahren Sie dann mit dem Tutorial fort.
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>Vorbereiten des Windows 10 IoT Core-Geräts
 

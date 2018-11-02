@@ -1,26 +1,18 @@
 ---
 title: 'Erstellen eines routenbasierten VPN-Gateways: Azure-Portal | Microsoft-Dokumentation'
-description: Schnelles Erstellen eines routenbasierten VPN-Gateways mit dem Azure-Portal
+description: Erstellen eines routenbasierten VPN-Gateways mit dem Azure-Portal
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/04/2018
+ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: fe05ab36f971105cf72342b8df5e2a82de7fc2b8
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7139b2de79b4e092ca761a4e51061c233e6031b5
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391792"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470301"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Erstellen eines routenbasierten VPN-Gateways mit dem Azure-Portal
 
@@ -74,33 +66,19 @@ Das Gatewaysubnetz enthält die reservierten IP-Adressen, die von den Diensten d
   - **SKU**: VpnGw1
   - **Standort**: USA, Osten
   - **Virtuelles Netzwerk**: Klicken Sie auf **Virtuelles Netzwerk/Virtuelles Netzwerk auswählen**, um die Seite **Virtuelles Netzwerk auswählen** zu öffnen. Wählen Sie **VNet1** aus.
+  - **Öffentliche IP-Adresse**: Mit dieser Einstellung wird das Objekt für die öffentliche IP-Adresse angegeben, das dem VPN-Gateway zugeordnet wird. Die öffentliche IP-Adresse wird bei der Erstellung des VPN-Gateways diesem Objekt dynamisch zugewiesen. VPN Gateway unterstützt derzeit nur die *dynamische* Zuweisung öffentlicher IP-Adressen. Das bedeutet jedoch nicht, dass sich die IP-Adresse ändert, nachdem sie Ihrem VPN-Gateway zugewiesen wurde. Die öffentliche IP-Adresse ändert sich nur, wenn das Gateway gelöscht und neu erstellt wird. Sie ändert sich nicht, wenn die Größe geändert wird, das VPN-Gateway zurückgesetzt wird oder andere interne Wartungs-/Upgradevorgänge für das VPN-Gateway durchgeführt werden.
 
-  ![Gatewayeinstellungen konfigurieren](./media/create-routebased-vpn-gateway-portal/configure-gateway.png "Gatewayeinstellungen konfigurieren")
+    - Lassen Sie **Neu erstellen** aktiviert.
+    - Geben Sie im Textfeld **Name** einen Namen für die öffentliche IP-Adresse ein. Verwenden Sie für diese Übung **VNet1GWIP**.<br>
 
-## <a name="pip"></a>Erstellen einer öffentlichen IP-Adresse
-
-Ein VPN-Gateway muss über eine dynamisch zugewiesene öffentliche IP-Adresse verfügen. Wenn Sie eine Verbindung mit einem VPN-Gateway herstellen, stellt Ihr lokales Gerät eine Verbindung mit dieser IP-Adresse her.
-
-1. Wählen Sie **Erste IP-Konfiguration > Gateway-IP-Konfiguration erstellen**, um eine öffentliche IP-Adresse anzufordern.
-
-  ![Erste IP-Konfiguration](./media/create-routebased-vpn-gateway-portal/add-public-ip-address.png "Erste IP-Konfiguration")
-2. Klicken Sie auf der Seite **Öffentliche IP-Seite auswählen** auf **+ Neu erstellen**, um die Seite **Öffentliche IP-Adresse erstellen** zu öffnen.
-3. Konfigurieren Sie die Einstellungen mit den folgenden Werten:
-
-  - **Name**: **VNet1GWIP**
-  - **SKU**: **Basic**
-
-  ![Erstellen der öffentlichen IP-Adresse](./media/create-routebased-vpn-gateway-portal/public-ip-address-name.png "Erstellen der PIP")
-4. Klicken Sie unten auf der Seite auf **OK**, um die Änderungen zu speichern.
+    ![Gatewayeinstellungen konfigurieren](./media/create-routebased-vpn-gateway-portal/gw.png "Gatewayeinstellungen konfigurieren")
 
 ## <a name="creategw"></a>Erstellen des VPN-Gateways
 
 1. Überprüfen Sie die Einstellungen auf der Seite **Gateway für virtuelle Netzwerke erstellen**. Passen Sie ggf. die Werte an.
-
-  ![VPN-Gateway erstellen](./media/create-routebased-vpn-gateway-portal/create-vpn-gateway.png "VPN-Gateway erstellen")
 2. Klicken Sie am unteren Rand der Seite auf **Erstellen**.
 
-Nach dem Klicken auf **Erstellen** werden die Einstellungen überprüft, und auf dem Dashboard wird die Kachel **Gateway des virtuellen Netzwerks wird bereitgestellt** angezeigt. Die Erstellung eines VPN-Gateways kann bis zu 45 Minuten dauern. Unter Umständen müssen Sie die Portalseite aktualisieren, um den Status „Abgeschlossen“ anzuzeigen.
+  Nach dem Klicken auf **Erstellen** werden die Einstellungen überprüft, und auf dem Dashboard wird die Kachel **Gateway des virtuellen Netzwerks wird bereitgestellt** angezeigt. Die Erstellung eines VPN-Gateways kann bis zu 45 Minuten dauern. Unter Umständen müssen Sie die Portalseite aktualisieren, um den Status „Abgeschlossen“ anzuzeigen.
 
 ## <a name="viewgw"></a>Anzeigen des VPN-Gateways
 

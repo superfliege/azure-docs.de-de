@@ -10,12 +10,12 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 47ea4fadba50fdbbd6d83531bd4eb40fc581d2ad
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9594ccd0449cf68a63c770cfdee03f255aa2beae
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950198"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638374"
 ---
 # <a name="what-is-distributed-tracing"></a>Was ist die verteilte Ablaufverfolgung?
 
@@ -45,7 +45,7 @@ Die verteilte Ablaufverfolgung wird von den Application Insights SDKs für .NET,
 
 Wenn das richtige Application Insights SDK installiert und konfiguriert ist, werden Ablaufverfolgungsinformationen für gängige Frameworks, Bibliotheken und Technologien automatisch von der automatischen Erfassung (Auto-Collectors) für SDK-Abhängigkeiten gesammelt. Die vollständige Liste der unterstützten Technologien finden Sie unter [Automatisches Sammeln von Abhängigkeiten](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
 
- Darüber hinaus kann jede beliebige Technologie manuell durch einen Aufruf von [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) auf dem [TeleletryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) überwacht werden.
+ Darüber hinaus kann jede beliebige Technologie manuell durch einen Aufruf von [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) auf dem [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) überwacht werden.
 
 ## <a name="enable-via-opencensus"></a>Aktivieren über OpenCensus
 

@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: b2916e5c414562c55c35c9c5e7ab378963e004be
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 42e1704df315c754b2b506a0470d128b7666c280
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248070"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645796"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse (Vorschauversion)
 
@@ -28,12 +28,12 @@ Der Textanalyseendpunkt `entities` unterstützt sowohl die Erkennung benannter E
 ### <a name="entity-linking"></a>Entitätsverknüpfung
 Die Entitätsverknüpfung ist die Möglichkeit, die Identität einer im Text gefundenen Entität zu identifizieren und eindeutig zu machen (beispielsweise die Ermittlung, ob „Mars“ als Planet oder als römischer Kriegsgott verwendet wird). Für diesen Prozess ist das Vorhandensein einer Knowledge Base erforderlich, mit der erkannte Entitäten verknüpft sind. Wikipedia wird als Knowledge Base für den `entities`-Endpunkt der Textanalyse verwendet.
 
-In der Textanalyse [Version 2.1 Vorschau](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) ist nur die Entitätsverknüpfung verfügbar.
+In Textanalyse [Version 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) ist nur die Entitätsverknüpfung verfügbar.
 
 ### <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
 Die Erkennung benannter Entitäten (Named Entity Recognition, NER) ist die Möglichkeit, unterschiedliche Entitäten im Text zu identifizieren und sie in vordefinierte Klassen zu kategorisieren. Die unterstützten Klassen von Entitäten sind unten aufgeführt.
 
-In der Textanalyse Version 2.1 Vorschau (`https://[region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`) ist sowohl die Entitätsverknüpfung als auch die Erkennung benannter Entitäten (NER) verfügbar.
+In Textanalyse [Version 2.1 Vorschau](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) ist sowohl die Entitätsverknüpfung als auch die Erkennung benannter Entitäten (NER) verfügbar.
 
 ### <a name="language-support"></a>Sprachunterstützung
 

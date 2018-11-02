@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 4b13d2d277721d37a6b96f6640377c875f0b5c0f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b22d18408d040d564d6220e74e8b8a893fe41ae9
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161577"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646244"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Notfallwiederherstellung in Azure Service Fabric
 Zur Gewährleistung von hoher Verfügbarkeit muss unter anderem sichergestellt werden, dass Dienste verschiedenste Arten von Ausfällen überstehen können. Dies ist besonders wichtig bei Ausfällen, die überraschend auftreten oder sich Ihrer Kontrolle entziehen. In diesem Artikel werden einige allgemeine Ausfälle beschrieben, die sich als äußerst problematisch erweisen können, wenn sie nicht angemessen im Modell berücksichtigt und behandelt werden. Darüber hinaus enthält der Artikel Informationen zu Abhilfen und Maßnahmen, die Sie ergreifen können, wenn dennoch ein Notfall eintritt. Dadurch soll das Risiko von Ausfallzeiten oder Datenverlusten im Falle von geplanten oder anderweitigen Ausfällen möglichst gering gehalten oder ganz beseitigt werden.
@@ -133,7 +133,7 @@ Dem dauerhaften Ausfall eines einzelnen Datencenters oder einer einzelnen Region
 ### <a name="random-failures-leading-to-cluster-failures"></a>Clusterausfälle aufgrund von willkürlichen Ausfällen
 Bei Service Fabric kommt das Seedknoten-Konzept zur Anwendung. Hierbei handelt es sich um Knoten zur Aufrechterhaltung der Verfügbarkeit des zugrunde liegenden Clusters. Diese Knoten gewährleisten die Verfügbarkeit des Clusters durch die Einrichtung von Leases mit anderen Knoten. Darüber hinaus fungieren sie als entscheidendes Element bei bestimmten Arten von Netzwerkausfällen. Falls nach willkürlichen Ausfällen ein Großteil der Seedknoten im Cluster nicht mehr verfügbar ist und nicht wiederhergestellt wird, wird der Cluster automatisch heruntergefahren. Seedknoten werden in Azure automatisch verwaltet: Sie werden auf verfügbare Fehler- und Upgradedomänen verteilt, und wenn ein einzelner Seedknoten aus dem Cluster entfernt wird, wird an seiner Stelle ein neuer Seedknoten erstellt. 
 
-Sowohl in eigenständigen Service Fabric-Clustern als auch in Azure werden die Seeds vom primären Knotentyp ausgeführt. Wenn Sie einen primären Knotentyp definieren, verwendet Service Fabric automatisch die Anzahl bereitgestellter Knoten und erstellt bis zu neun Seedknoten und neun Replikate der einzelnen Systemdienste. Wenn die Mehrzahl dieser Systemdienstreplikate überraschend gleichzeitig ausfällt, tritt für die Systemdienste wie weiter oben beschrieben ein Quorumverlust ein. Geht die Mehrzahl der Seedknoten verloren, wird der Cluster kurz darauf heruntergefahren.
+Sowohl in eigenständigen Service Fabric-Clustern als auch in Azure werden die Seeds vom primären Knotentyp ausgeführt. Beim Definieren eines primären Knotentyps verwendet Service Fabric automatisch die Anzahl bereitgestellter Knoten und erstellt bis zu neun Seedknoten und sieben Replikate der einzelnen Systemdienste. Wenn die Mehrzahl dieser Systemdienstreplikate überraschend gleichzeitig ausfällt, tritt für die Systemdienste wie weiter oben beschrieben ein Quorumverlust ein. Geht die Mehrzahl der Seedknoten verloren, wird der Cluster kurz darauf heruntergefahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie verschiedene Ausfälle mit dem [Testability-Framework](service-fabric-testability-overview.md)

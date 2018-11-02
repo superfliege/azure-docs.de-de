@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: c33bec76fe17336221c873778c2993d75fec81e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ce4bc88f6b599bb3f5f760b2ba83c81f2b6acc5f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962231"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405177"
 ---
 # <a name="about-expressroute-direct-preview"></a>Informationen zu ExpressRoute Direct (Vorschau)
 
-ExpressRoute Direct bietet Kunden die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale 100-Gbit/s-Konnektivität, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt. 
+ExpressRoute Direct bietet Kunden die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt. 
 
 ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 
@@ -31,20 +31,20 @@ ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 
 ## <a name="enroll-in-the-preview"></a>Registrieren in der Vorschau
 
-Bevor Sie ExpressRoute Direct nutzen können, müssen Sie Ihr Abonnement zunächst für die Vorschauversion registrieren. Senden Sie für die Registrierung eine E-Mail mit Ihrer Abonnement-ID an <ExpressRouteDirect@microsoft.com>. ExpressRoute Direct ist für Großunternehmen konzipiert. Geben Sie zusätzliche Informationen an:
+Bevor Sie ExpressRoute Direct nutzen, müssen Sie Ihr Abonnement zunächst für die Vorschauversion registrieren. Senden Sie für die Registrierung eine E-Mail mit Ihrer Abonnement-ID an <ExpressRouteDirect@microsoft.com>. ExpressRoute Direct ist für Großunternehmen konzipiert. Geben Sie zusätzliche Informationen an:
 
-* Szenarien, für die Sie **ExpressRoute Direct** nutzen möchten
+* Szenarien, für die Sie **ExpressRoute Direct** nutzen können
 * Bevorzugte Standorte: Unter [Partner und Peeringstandorte](expressroute-locations-providers.md) finden Sie eine vollständige Liste aller Standorte.
 * Zeitrahmen für die Implementierung
-* Etwaige Fragen in Bezug auf die Dienste
+* Weitere Fragen
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>Vergleich von ExpressRoute mit Dienstanbieter und ExpressRoute Direct
 
 | **ExpressRoute mit Dienstanbieter** | **ExpressRoute Direct** | 
 | --- | --- | 
-| Nimmt den Dienstanbieter in Anspruch, um eine schnelle Integration und Konnektivität mit der bestehenden Infrastruktur zu ermöglichen | Erfordert eine Infrastruktur mit 100 Gbit/s und die vollständige Verwaltung aller Ebenen
+| Nimmt den Dienstanbieter in Anspruch, um eine schnelle Integration und Konnektivität mit der bestehenden Infrastruktur zu ermöglichen | Erfordert eine Infrastruktur mit 100 GBit/s und die vollständige Verwaltung aller Ebenen
 | Integration mit Hunderten von Dienstanbietern, einschließlich Ethernet und MPLS | Direkte/Dedizierte Kapazität für regulierte Branchen und Erfassung sehr umfangreicher Datenmengen | 
-| Leitungs-SKUs von 50 Mbit/s bis 10 Gbit/s | Leitungs-SKUs von 1 Gbit/s bis 100 Gbit/s
+| Leitungs-SKUs zwischen 50 MBit/s und 10 GBit/s | Leitungs-SKUs zwischen 5 GBit/s und 100 GBit/s (5 GBit/s, 10 GBit/s, 40 GBit/s, 100 GBit/s)
 | Für Einzelmandanten optimiert | Für Einzelmandanten/Cloud-Dienstanbieter /mehrere Unternehmensbereiche optimiert
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute Direct-Leitungen
@@ -57,7 +57,7 @@ Die Funktionalität ist in den meisten Szenarien vergleichbar mit der von Leitun
 
 ## <a name="circuit-skus"></a>Leitungs-SKUs
 
-ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmengen in Azure Storage und anderen Big Data-Diensten. ExpressRoute-Leitungen für ExpressRoute Direct unterstützen nun auch die Leitungs-SKUs **40G** und **100G**. 
+ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmengen in Azure Storage und anderen Big Data-Diensten. ExpressRoute-Leitungen für ExpressRoute Direct unterstützen nun auch die Leitungs-SKUs **40 GBit/s** und **100 GBit/s**. 
 
 ## <a name="vlan-tagging"></a>VLAN-Kennzeichnung
 

@@ -6,19 +6,19 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b577f697f4467656166b83ea78efdfe6d742941f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2b1a6e2921fdaf9ede1184cfc02c3f61f63c60ac
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032528"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393762"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
-Wenn Sie ein Runbook in Azure Automation starten, wird ein Auftrag erstellt. Ein Auftrag ist eine einzelne Ausführungsinstanz eines Runbooks. Für die Ausführung jedes Auftrags wird ein Azure Automation-Worker zugewiesen. Wenngleich Worker von mehreren Azure-Konten gemeinsam genutzt werden, sind die Aufträge von verschiedenen Automation-Konten voneinander isoliert. Sie können nicht steuern, welcher Worker die Anforderung für Ihren Auftrag verarbeitet. Für ein einzelnes Runbook können mehrere Aufträge gleichzeitig ausgeführt werden. Die Ausführungsumgebung für Aufträge aus dem gleichen Automation-Konto kann wiederverwendet werden. Wenn Sie die Liste der Runbooks im Azure-Portal anzeigen, wird der Status aller Aufträge aufgelistet, die für jedes Runbook gestartet wurden. Sie können die Liste der Aufträge für jedes Runbook anzeigen, um den Status der einzelnen Aufträge nachzuverfolgen. Eine Beschreibung der verschiedenen Auftragsstatusangaben finden Sie unter [Auftragsstatuswerte](#job-statuses).
+Wenn Sie ein Runbook in Azure Automation starten, wird ein Auftrag erstellt. Ein Auftrag ist eine einzelne Ausführungsinstanz eines Runbooks. Für die Ausführung jedes Auftrags wird ein Azure Automation-Worker zugewiesen. Wenngleich Worker von vielen Azure-Konten gemeinsam genutzt werden, sind die Aufträge von verschiedenen Automation-Konten voneinander isoliert. Sie können nicht steuern, welcher Worker die Anforderung für Ihren Auftrag verarbeitet. Für ein einzelnes Runbook können viele Aufträge gleichzeitig ausgeführt werden. Die Ausführungsumgebung für Aufträge aus dem gleichen Automation-Konto kann wiederverwendet werden. Wenn Sie die Liste der Runbooks im Azure-Portal anzeigen, wird der Status aller Aufträge aufgelistet, die für jedes Runbook gestartet wurden. Sie können die Liste der Aufträge für jedes Runbook anzeigen, um den Status der einzelnen Aufträge nachzuverfolgen. Eine Beschreibung der verschiedenen Auftragsstatusangaben finden Sie unter [Auftragsstatuswerte](#job-statuses).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -34,46 +34,46 @@ Ihre Aufträge können auf Ihre Azure-Ressourcen zugreifen, indem sie eine Verbi
 
 ## <a name="job-statuses"></a>Auftragsstatuswerte
 
-Die folgende Tabelle beschreibt die verschiedenen Status, die für einen Auftrag möglich sind.
+Die folgende Tabelle beschreibt die verschiedenen Status, die für einen Auftrag möglich sind. PowerShell unterscheidet zwei Arten von Fehlern: Fehler mit Abbruch und Fehler ohne Abbruch. Fehler mit Abbruch setzen den Runbookstatus auf **Fehler**, wenn sie auftreten. Fehler ohne Abbruch ermöglichen es dem Skript, auch nach ihrem Auftreten fortzufahren. Ein Beispiel für einen Fehler ohne Abbruch ist die Verwendung des Cmdlets `Get-ChildItem` mit einem Pfad, der nicht vorhanden ist. PowerShell erkennt, dass der Pfad nicht vorhanden ist, löst einen Fehler aus und fährt mit dem nächsten Ordner fort. Dieser Fehler würde den Runbookstatus nicht auf **Fehler** setzen und könnte als **Abgeschlossen** markiert werden. Um ein Runbook zu veranlassen, bei einem Fehler ohne Abbruch anzuhalten, können Sie `-ErrorAction Stop` für das Cmdlet verwenden.
 
 | Status | BESCHREIBUNG |
 |:--- |:--- |
 | Abgeschlossen |Der Auftrag wurde erfolgreich abgeschlossen. |
-| Fehler |Bei [grafischen und PowerShell-Workflow-Runbooks](automation-runbook-types.md)ist die Kompilierung des Runbooks fehlgeschlagen. Bei [PowerShell-Skript-Runbooks](automation-runbook-types.md)konnte das Runbook nicht gestartet werden, oder bei dem Auftrag ist eine Ausnahme aufgetreten. |
+| Fehler |Bei [grafischen und PowerShell-Workflow-Runbooks](automation-runbook-types.md)ist die Kompilierung des Runbooks fehlgeschlagen. Bei [PowerShell-Skript-Runbooks](automation-runbook-types.md) konnte das Runbook nicht gestartet werden, oder bei dem Auftrag ist eine Ausnahme aufgetreten. |
 | Fehler, auf Ressourcen wird gewartet |Beim Auftrag ist ein Fehler aufgetreten, da der Auftrag dreimal den Grenzwert für die [gleichmäßige Verteilung](#fair-share) erreicht hat und jedes Mal vom gleichen Prüfpunkt oder vom Anfang des Runbooks gestartet wurde. |
 | In Warteschlange |Der Auftrag wartet darauf, dass Ressourcen für einen Automation-Worker verfügbar werden, damit er gestartet werden kann. |
-| Wird gestartet |Der Auftrag wurde einem Worker zugewiesen, und das System ist in Begriff, ihn zu starten. |
-| Wird fortgesetzt |Das System ist in Begriff, den Auftrag fortzusetzen, nachdem er angehalten wurde. |
+| Wird gestartet |Der Auftrag wurde einem Worker zugewiesen, und das System startet ihn. |
+| Wird fortgesetzt |Das System setzt den Auftrag fort, nachdem er angehalten wurde. |
 | Wird ausgeführt |Der Auftrag wird ausgeführt. |
 | Wird ausgeführt, auf Ressourcen wird gewartet |Der Auftrag wurde entladen, da er den Grenzwert für die [gleichmäßige Verteilung](#fair-share) erreicht hat. Er wird in Kürze vom letzten Prüfpunkt wiederaufgenommen. |
 | Beendet |Der Auftrag wurde vom Benutzer beendet, bevor er abgeschlossen wurde. |
-| Wird beendet |Das System ist in Begriff, den Auftrag zu beenden. |
-| Ausgesetzt |Der Auftrag wurde vom Benutzer, vom System oder von einem Befehl im Runbook angehalten. Ein Auftrag, der angehalten wurde, kann erneut gestartet werden und wird vom letzten Prüfpunkt oder vom Anfang des Runbooks fortgesetzt, wenn er keine Prüfpunkte besitzt. Das Runbook wird nur vom System angehalten, wenn eine Ausnahme auftritt. Standardmäßig ist ErrorActionPreference auf **Continue** festgelegt. Dies bedeutet, dass der Auftrag bei einem Fehler weiterhin ausgeführt wird. Wenn diese Einstellungsvariable auf **Stop** festgelegt wird, wird der Auftrag bei einem Fehler angehalten. Gilt nur für [grafische und PowerShell-Workflow-Runbooks](automation-runbook-types.md) . |
+| Wird beendet |Das System beendet den Auftrag. |
+| Ausgesetzt |Der Auftrag wurde vom Benutzer, vom System oder von einem Befehl im Runbook angehalten. Wenn ein Runbook keinen Prüfpunkt aufweist, wird der Vorgang am Anfang des Runbooks gestartet. Wenn ein Prüfpunkt vorhanden ist, kann es erneut starten und den Vorgang bei seinem letzten Prüfpunkt fortsetzen. Das Runbook wird nur vom System angehalten, wenn eine Ausnahme auftritt. Standardmäßig ist ErrorActionPreference auf **Continue** festgelegt. Dies bedeutet, dass der Auftrag bei einem Fehler weiterhin ausgeführt wird. Wenn diese Einstellungsvariable auf **Stop** festgelegt wird, wird der Auftrag bei einem Fehler angehalten. Gilt nur für [grafische und PowerShell-Workflow-Runbooks](automation-runbook-types.md) . |
 | Wird angehalten |Das System versucht, den Auftrag auf Anforderung des Benutzers anzuhalten. Das Runbook muss den nächsten Prüfpunkt erreichen, bevor es angehalten werden kann. Wenn der letzte Prüfpunkt bereits verstrichen ist, wird das Runbook abgeschlossen, bevor es angehalten werden kann. Gilt nur für [grafische und PowerShell-Workflow-Runbooks](automation-runbook-types.md) . |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Anzeigen des Auftragsstatus im Azure-Portal
 
-Im Azure-Portal können Sie eine Statuszusammenfassung aller Runbookaufträge oder Details zu einem bestimmten Runbookauftrag anzeigen. Per Konfiguration können Sie zu diesem Zweck außerdem die Integration in Ihren Log Analytics-Arbeitsbereich herstellen und dann Statusinformationen zu Runbookaufträgen sowie Auftragsdatenströme weiterleiten. Weitere Informationen zur Integration in Log Analytics finden Sie unter [Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics (OMS)](automation-manage-send-joblogs-log-analytics.md).
+Sie können einen zusammengefassten Status aller Runbookaufträge anzeigen oder im Azure-Portal weitere Details zu einem bestimmten Runbookauftrag aufführen. Sie können auch die Integration mit Ihrem Log Analytics-Arbeitsbereich konfigurieren, um den Status von Runbookaufträgen und Auftragsdatenströmen weiterzuleiten. Weitere Informationen zur Integration in Log Analytics finden Sie unter [Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics (OMS)](automation-manage-send-joblogs-log-analytics.md).
 
 ### <a name="automation-runbook-jobs-summary"></a>Automation-Runbookaufträge als Zusammenfassung
 
-Rechts in Ihrem ausgewählten Automation-Konto sehen Sie auf der Kachel **Auftragsstatistik** die Zusammenfassung aller Runbookaufträge für das ausgewählte Automation-Konto.
+Rechts in Ihrem ausgewählten Automation-Konto sehen Sie auf der Kachel **Auftragsstatistik** die Zusammenfassung aller Runbookaufträge.
 
 ![Die Kachel „Auftragsstatistik“](./media/automation-runbook-execution/automation-account-job-status-summary.png)
 
 Auf dieser Kachel wird die Anzahl aller ausgeführten Jobs neben einer grafischen Darstellung des Auftragsstatus angezeigt.
 
-Durch Klicken auf die Kachel wird das Blatt **Aufträge** sichtbar, dem Sie eine zusammenfassende Liste aller ausgeführten Aufträge ebenso wie den Status, den Beginn der Ausführung und den Abschluss entnehmen können.
+Wenn Sie auf die Kachel klicken, wird die Seite **Aufträge** angezeigt, die eine zusammengefasste Liste aller ausgeführten Aufträge enthält. Auf dieser Seite werden Status, Start- und Abschlusszeiten angezeigt.
 
-![Das Blatt „Aufträge“ im Automation-Konto](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
+![Die Seite „Aufträge“ im Automation-Konto](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
 
-Sie können die Auftragsliste filtern, indem Sie die Option **Filteraufträge** auswählen. Aufträge lassen sich zum Durchsuchen nach bestimmten Runbooks, dem Auftragsstatus oder, über die Dropdownliste, nach dem Datums- und Uhrzeitbereich filtern.
+Sie können die Auftragsliste filtern, indem Sie die Option **Filteraufträge** auswählen. Aufträge lassen sich zum Durchsuchen nach bestimmten Runbooks, dem Auftragsstatus oder, über die Dropdownliste und den Uhrzeitbereich filtern.
 
 ![Status von Filteraufträgen](./media/automation-runbook-execution/automation-account-jobs-filter.png)
 
-Alternativ können Sie für ein bestimmtes Runbook eine Übersicht anzeigen, indem Sie in Ihrem Automation-Konto zuerst auf dem Blatt **Runbooks** das Runbook und dann die Kachel **Aufträge** auswählen. Dadurch rufen Sie das Blatt **Aufträge** auf. Wenn Sie dort auf einen Auftragsdatensatz klicken, werden Details und die Ausgabe angezeigt.
+Alternativ können Sie für ein bestimmtes Runbook eine Übersicht anzeigen, indem Sie in Ihrem Automation-Konto zuerst auf die Seite **Runbooks** das Runbook und dann die Kachel **Aufträge** auswählen. Diese Aktion stellt die Seite **Aufträge** dar. Wenn Sie dort auf einen Auftragsdatensatz klicken, werden Details und die Ausgabe angezeigt.
 
-![Das Blatt „Aufträge“ im Automation-Konto](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
+![Die Seite „Aufträge“ im Automation-Konto](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
 
 ### <a name="job-summary"></a>API-Zusammenfassung
 
@@ -82,9 +82,9 @@ Sie können eine Liste aller Aufträge, die für ein bestimmtes Runbook erstellt
 Zeigen Sie die Aufträge für ein Runbook mithilfe der folgenden Schritte an.
 
 1. Wählen Sie im Azure-Portal die Option **Automation** aus, und wählen Sie anschließend den Namen eines Automation-Kontos aus.
-2. Wählen Sie im Hub die Option **Runbooks** aus, und wählen Sie dann auf dem Blatt **Runbooks** ein Runbook in der Liste aus.
-3. Klicken Sie auf dem Blatt für das ausgewählte Runbook auf die Kachel **Aufträge**.
-4. Wenn Sie auf einen der Aufträge in der Liste klicken, können Sie auf dem Blatt für die Runbook-Auftragsdetails die Details und die Ausgabe anzeigen.
+2. Wählen Sie im Hub die Option **Runbooks** aus, und wählen Sie dann auf der Seite **Runbooks** ein Runbook in der Liste aus.
+3. Klicken Sie auf der Seite für das ausgewählte Runbook auf die Kachel **Aufträge**.
+4. Wenn Sie auf einen der Aufträge in der Liste klicken, können Sie auf der Seite für die Runbook-Auftragsdetails die Details und die Ausgabe anzeigen.
 
 ## <a name="retrieving-job-status-using-windows-powershell"></a>Abrufen des Auftragsstatus mithilfe von Windows PowerShell
 
@@ -101,7 +101,7 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
 ```
 
-Das folgende Beispiel ruft die Ausgabe für einen bestimmten Auftrag ab und gibt die einzelnen Datensätze zurück. Sollte für einen der Datensätze eine Ausnahme aufgetreten sein, wird anstelle des Werts die Ausnahme ausgegeben. Dies ist hilfreich, da Ausnahmen zusätzliche Informationen liefern können, die bei der Ausgabe normalerweise nicht protokolliert werden.
+Das folgende Beispiel ruft die Ausgabe für einen bestimmten Auftrag ab und gibt die einzelnen Datensätze zurück. Sollte für einen der Datensätze eine Ausnahme aufgetreten sein, wird anstelle des Werts die Ausnahme ausgegeben. Dieses Verhalten ist hilfreich, da Ausnahmen zusätzliche Informationen liefern können, die bei der Ausgabe normalerweise nicht protokolliert werden.
 
 ```azurepowershell-interactive
 $output = Get-AzureRmAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
@@ -135,20 +135,11 @@ Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
 
 ## <a name="fair-share"></a>gleichmäßige Verteilung
 
-Damit Ressourcen von allen Runbooks in der Cloud verwendet werden können, entlädt Azure Automation jeden Auftrag vorübergehend, nachdem er drei Stunden lang ausgeführt wurde. Während dieser Zeit werden Aufträge für [PowerShell-Runbooks](automation-runbook-types.md#powershell-runbooks) beendet und nicht neu gestartet. Als Auftragsstatus wird **Beendet** angezeigt. Diese Art Runbooks wird immer von Beginn an neu gestartet, da sie keine Prüfpunkte unterstützt.
+Damit Ressourcen von allen Runbooks in der Cloud verwendet werden können, beendet oder entlädt Azure Automation jeden Auftrag vorübergehend, der für mehr als drei Stunden ausgeführt wurde. Aufträge für [PowerShell-basierte Runbooks](automation-runbook-types.md#powershell-runbooks) und [Python-Runbooks](automation-runbook-types.md#python-runbooks) werden beendet und nicht neu gestartet, und der Auftragsstatus zeigt „Beendet“.
 
-[Auf PowerShell-Workflows basierende Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) werden ab ihrem letzten [Prüfpunkt](https://docs.microsoft.com/system-center/sma/overview-powershell-workflows#bk_Checkpoints) fortgesetzt. Nach einer Ausführungszeit von drei Stunden wird der Runbook-Auftrag vom Dienst angehalten und als Status **Wird ausgeführt, warten auf Ressourcen** angezeigt. Sobald eine Sandbox verfügbar ist, wird das Runbook vom Automation-Dienst automatisch neu gestartet und vom letzten Prüfpunkt aus fortgesetzt. Dies ist ein normales Verhalten des PowerShell-Workflows für Anhalten/Neustarten. Wenn das Runbook wieder drei Stunden Ausführungszeit überschreitet, wird der Vorgang bis zu dreimal wiederholt. Wenn das Runbook nach dem dritten Neustart nicht in drei Stunden abgeschlossen wird, wird ein Fehler für den Runbook-Auftrag ausgegeben, und als Auftragsstatus wird **Fehler, warten auf Ressourcen** angezeigt. In diesem Fall wird ein Ausnahmefehler mit der folgenden Meldung angezeigt.
+Für Aufgaben mit langer Ausführungszeit wird empfohlen, einen [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) zu verwenden. Hybrid Runbook Worker unterliegen nicht der gleichmäßigen Verteilung und keiner Einschränkung hinsichtlich der Ausführungszeit eines Runbooks. Die anderen [Grenzwerte](../azure-subscription-service-limits.md#automation-limits) für Aufträge gelten sowohl für Azure-Sandboxes als auch für Hybrid Runbook Workers. Während Hybrid Runbook Worker nicht durch die 3-stündige Begrenzung für die gleichmäßige Verteilung begrenzt sind, sollten Runbooks, die auf Hybrid Runbook Workers laufen, weiterhin entwickelt werden, um das Neustartverhalten bei unerwarteten lokalen Infrastrukturproblemen zu unterstützen.
 
-*Die Ausführung des Auftrags kann nicht fortgesetzt werden, da er wiederholt am selben Prüfpunkt entfernt wurde. Stellen Sie sicher, dass Ihr Runbook Vorgänge mit langer Ausführungsdauer nicht ausführt, ohne deren Zustand dauerhaft zu speichern.*
-
-Dieses Verhalten schützt den Dienst davor, dass Runbooks unbegrenzt ausgeführt werden, da der nächste Prüfpunkt nicht ohne Entladen erreicht werden kann.
-
-Wenn das Runbook keine Prüfpunkte enthält oder der Auftrag den ersten Prüfpunkt vor dem Entladen nicht erreicht hat, wird der Auftrag vom Anfang neu gestartet.
-
-Für Aufgaben mit langer Ausführungszeit wird empfohlen, einen [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) zu verwenden. Hybrid Runbook Worker unterliegen nicht der gleichmäßigen Verteilung und keiner Einschränkung hinsichtlich der Ausführungszeit eines Runbooks. Die anderen [Grenzwerte](../azure-subscription-service-limits.md#automation-limits) für Aufträge gelten sowohl für Azure-Sandboxes als auch für Hybrid Runbook Workers.
-
-
-Wenn Sie ein PowerShell Workflow-Runbook in Azure nutzen, sorgen Sie beim Erstellen des Runbooks dafür, dass die Zeit zum Ausführen von Aktivitäten zwischen zwei Prüfpunkten drei Stunden nicht überschreitet. Sie müssen Ihrem Runbook ggf. Prüfpunkte hinzufügen oder Vorgänge mit langen Ausführungszeiten aufteilen, um sicherzustellen, dass dieser Grenzwert von drei Stunden nicht erreicht wird. Angenommen, Ihr Runbook führt eine Neuindizierung für eine große SQL-Datenbank durch. Wenn dieser einzelne Vorgang nicht innerhalb des Grenzwerts für die gleichmäßige Verteilung abgeschlossen wird, wird der Auftrag entladen und vom Anfang neu gestartet. In diesem Fall sollten Sie den Neuindizierungsvorgang in mehrere Schritte unterteilen (z. B. nur jeweils eine Tabelle gleichzeitig neu indizieren) und dann einen Prüfpunkt nach jedem Vorgang einfügen, damit der Auftrag nach dem letzten Vorgang bis zum Abschluss fortgesetzt werden kann.
+Eine weitere Möglichkeit ist das Optimieren des Runbooks durch die Verwendung von untergeordneten Runbooks. Wenn Ihr Runbook für mehrere Ressourcen eine Schleife durch die gleiche Funktion durchführt, z. B. für einen Datenbankvorgang in mehreren Datenbanken, können Sie diese Funktion in ein [untergeordnetes Runbook](automation-child-runbooks.md) verschieben und mit dem Cmdlet [Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) aufrufen. Jedes dieser untergeordneten Runbooks wird parallel in separaten Prozessen ausgeführt, sodass die Gesamtdauer für die Ausführung des übergeordneten Runbooks verringert wird. Mit dem Cmdlet [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) in Ihrem Runbook können Sie den Auftragsstatus für jedes untergeordnete Element überprüfen, wenn Vorgänge vorhanden sind, die nach Abschluss des untergeordneten Runbooks durchgeführt werden müssen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

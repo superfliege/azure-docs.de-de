@@ -1,42 +1,44 @@
 ---
 title: Support- und Hilfeoptionen
-description: Hier erfahren Sie, wie Sie Hilfe und Support zu Problemen und Fragen beim Erstellen einer Anwendung erhalten, die in Microsoft Cognitive Services Speech integriert wird.
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie Hilfe und Support zu Fragen und Problemen beim Erstellen von Anwendungen, die in den Speech-Dienst integriert werden, erhalten.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: e24008a2208d8dcfbb7f86c66bb7de39f3c75790
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 58fb5d4be2137eed7d62e702f08bdd66c80be347
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528186"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468057"
 ---
 # <a name="support-and-help-options"></a>Support- und Hilfeoptionen
 
-Beginnen Sie erst damit, die Funktionalität des Speech-Diensts zu untersuchen? Implementieren Sie ein neues Feature in Ihre Anwendung? Hier finden Sie Hinweise, wo Sie als Entwickler Hilfe bekommen.
+Beginnen Sie erst damit, die Funktionalität des Speech-Diensts zu untersuchen? Implementieren Sie ein neues Feature in Ihre Anwendung? Hier finden Sie Vorschläge, wo Sie als Entwickler Hilfe bekommen.
 
 > [!div class="checklist"]
-> * Halten Sie sich über neue Entwicklungen für *Microsoft Cognitive Services* auf dem Laufenden, oder suchen Sie nach Neuigkeiten zum *Spracherkennungsdienst*.
-> * Versuchen Sie, über eine Suche herauszufinden, ob Ihr Problem noch nicht von der Community beantwortet wurde oder ob für das Feature, das Sie implementieren möchten, bereits eine Dokumentation vorhanden ist.
-> * Wenn Sie die gesuchte Antwort nicht finden können, sollten Sie auf *Stack Overflow* eine Frage stellen.
-> * Wenn Sie ein Problem mit einem der Beispiele auf GitHub feststellen, stellen Sie eine *GitHub*-Frage.
-> * Suchen Sie im *User Voice-Forum* nach einer Lösung.
+> * Halten Sie sich über neue Entwicklungen für *Azure Cognitive Services* auf dem Laufenden, oder suchen Sie nach Neuigkeiten zum *Speech-Dienst*.
+> * Suchen Sie in der Community, ob Ihr Problem bereits diskutiert wurde oder ob bereits eine Dokumentation für die Funktion, die Sie implementieren möchten, vorhanden ist.
+> * Wenn Sie keine zufriedenstellende Antwort finden, stellen Sie eine Frage bei *Stack Overflow*.
+> * Wenn Sie ein Problem mit einem der Beispiele auf GitHub feststellen, melden Sie in *GitHub* einen Fehler.
+> * Suchen Sie im *UserVoice-Forum* nach einer Lösung.
 
 ## <a name="stay-informed"></a>Immer auf dem neuesten Stand
 
-Neuigkeiten zu Microsoft Cognitive Services werden im [Cognitive Services-Blog](https://azure.microsoft.com/en-us/blog/topics/cognitive-services/) gesammelt. Verfolgen Sie das [Blog zum Spracherkennungsdienst](https://azure.microsoft.com/en-us/blog/tag/speech-service/), um die aktuellen Informationen zum Spracherkennungsdienst zu erhalten.
+Neuigkeiten zu Cognitive Services werden im [Cognitive Services-Blog](https://azure.microsoft.com/blog/topics/cognitive-services/) gesammelt. Verfolgen Sie das [Blog zum Speech-Dienst](https://azure.microsoft.com/blog/tag/speech-service/), um die aktuellsten Informationen zum Speech-Dienst zu erhalten.
 
 ## <a name="search"></a>Suchen,
 
-Möglicherweise finden Sie die benötigte Antwort in der Dokumentation, in unseren Beispielen oder in Antworten auf [Stack Overflow](https://www.stackoverflow.com)-Fragen.
+Möglicherweise finden Sie die benötigte Antwort in der Dokumentation, in den Beispielen oder in Antworten auf Fragen bei [Stack Overflow](https://www.stackoverflow.com).
 
 ### <a name="scoped-search"></a>Bereichsbezogene Suche
 
-Um schneller Ergebnisse zu erzielen, beschränken Sie Ihre Suche auf Stack Overflow, unsere Dokumentation und Codebeispiele, indem Sie in [Ihrer bevorzugten Suchmaschine](https://bing.com) die folgende Abfrage verwenden:
+Um schneller Ergebnisse zu erzielen, beschränken Sie Ihre Suche auf Stack Overflow, die Dokumentation und Codebeispiele, indem Sie in [Ihrer bevorzugten Suchmaschine](https://bing.com) die folgende Abfrage verwenden:
 
 ```
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples)
@@ -44,11 +46,18 @@ Um schneller Ergebnisse zu erzielen, beschränken Sie Ihre Suche auf Stack Overf
 
 Hierbei entspricht *{Your Search Terms}* Ihren Schlüsselwörtern für die Suche.
 
+## <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
+
+Azure-Kunden können Supportanfragen im Azure-Portal erstellen und verwalten.
+
+* [Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure-Portal für die US-Regierung](https://portal.azure.us)
+
 ## <a name="post-a-question-to-stack-overflow"></a>Richten einer Frage an Stack Overflow
 
-Stack Overflow ist der bevorzugte Kanal für Fragen im Zusammenhang mit der Entwicklung, wobei sowohl Mitglieder der Community als auch des Microsoft-Teams Ihnen direkt bei der Problemlösung helfen können.
+Stack Overflow ist der bevorzugte Kanal für entwicklungsbezogene Fragen. Dort sind Mitglieder der Community und Microsoft-Teammitglieder direkt an der Lösung Ihrer Probleme beteiligt.
 
-Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, senden Sie eine neue Frage an Stack Overflow. Verwenden Sie beim Formulieren der Frage eines der folgenden Tags:
+Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermitteln Sie eine neue Frage in Stack Overflow. Verwenden Sie beim Formulieren der Frage eines der folgenden Tags:
 
 |Komponente/Bereich  |Tags  |
 |---------|---------|
@@ -59,18 +68,51 @@ Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, senden S
 |Allgemeines Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
 
 > [!TIP]
-> Die folgenden Beiträge aus Stack Overflow enthalten Tipps zum Stellen von Fragen sowie zum Hinzufügen von Quellcode – Einhaltung dieser Richtlinien kann die Chancen erhöhen, dass Mitglieder der Community Ihre Frage schnell beantworten:  
+> Die folgenden Beiträge aus Stack Overflow enthalten Tipps zum Formulieren von Fragen und zum Hinzufügen von Quellcode. Das Befolgen dieser Hinweis kann dazu beitragen, dass Mitglieder der Community schneller auf Ihre Frage reagieren:  
 > * [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask) (Wie stelle ich meine Frage optimal?)
 > * [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve) (Erstellen eines minimalen, vollständigen und überprüfbaren Beispiels)
 
 ## <a name="create-a-github-issue"></a>Erstellen eines GitHub-Problems
 
-Beispiele werden häufig als Open Source-Dateien bereitgestellt. Erstellen Sie bei Fragen und Problemen ein *Problem* im entsprechenden GitHub-Repository. Sie können auch einen Pull Request übermitteln. Die folgende Liste enthält Links zu den Beispielrepositorys:
+Beispiele werden häufig als Open Source-Dateien bereitgestellt. Erstellen Sie bei Fragen und Problemen ein *Problem* im entsprechenden GitHub-Repository. Sie können einen Pull Request übermitteln. Die folgende Liste enthält Links zu den Beispielrepositorys:
 
-* [Speech SDK](https://aka.ms/csspeech/samples)
-* [Geräte-SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)
+* [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
+* [Geräte-SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
-## <a name="user-voice-forum"></a>User Voice-Forum
+Sie können einen Fehlerbericht oder eine Featureanforderung erstellen oder eine allgemeine Frage stellen, aber auch bewährte Methoden teilen. Befolgen Sie für das Melden von Fehlern die bereitgestellte Vorlage:
+
+**Beschreibung des Fehlers**
+
+Eine klare und präzise Beschreibung des Fehlers.
+
+**Schritte zum Reproduzieren**
+
+Die Schritte zum Reproduzieren des Verhaltens:
+1. ...
+2. ...
+
+**Erwartetes Verhalten**
+
+Eine klare und präzise Beschreibung dessen, was Sie erwartet haben.
+
+**Version des Cognitive Services Speech-SDK**
+
+Welche Version des SDK Sie verwenden.
+
+**Plattform, Betriebssysteme und Programmiersprache**
+
+ - Betriebssystem: [z.B. Windows, Linux, Android, iOS usw.] – seien Sie genau
+ - Hardware: x64, x86, ARM usw.
+ - Browser: [z.B. Chrome, Safari] (falls zutreffend) – seien Sie genau
+
+**Zusätzlicher Kontext**
+
+ - Fehlermeldungen, Protokollinformationen, Stapelüberwachung usw.
+ - Wenn Sie einen Fehler für eine bestimmte Dienstinteraktion melden, geben Sie die Sitzungs-ID und die Uhrzeit (einschließlich Zeitzone) der gemeldeten Vorfälle an. Die Sitzungs-ID wird in allen empfangenen Rückrufen/Ereignissen angegeben.
+ - Mögliche zusätzliche Informationen
+
+
+## <a name="uservoice-forum"></a>UserVoice-Forum
 
 Teilen Sie Ihre Ideen mit, damit Cognitive Services und die zugehörigen APIs besser für die Anwendungen funktionieren, die Sie entwickeln. Verwenden Sie unsere wachsende Knowledge Base, um Antworten auf häufig gestellte Fragen finden:
 

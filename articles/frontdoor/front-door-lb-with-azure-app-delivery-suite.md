@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 253ec8c0d1d6725e6ae5c47c79882284c633d6e9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984465"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026006"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Lastenausgleich mit der Azure-Suite für die Anwendungsbereitstellung
 
@@ -36,7 +36,7 @@ Indem Sie globale und regionale Dienste in Ihrer Anwendung kombinieren, erhalten
 - Leistungsorientiertes Routing, um den Anforderer im Hinblick auf die Wartezeit zum nächstgelegenen Back-End zu verweisen
 - Prioritätsorientiertes Routing, um den gesamten Datenverkehr zu einem Back-End zu leiten, wobei andere Back-Ends als Sicherung fungieren
 - Gewichtetes Roundrobinrouting, das den Datenverkehr basierend auf der Gewichtung verteilt, die jedem Back-End zugewiesen ist
-- Geografisches Routing, um sicherzustellen, dass Anforderer in bestimmten geografischen Regionen zu den Back-Ends geleitet werden, die diesen Regionen zugeordnet sind (z. B. sollten alle Anforderungen aus Spanien in die Azure-Region „USA, Osten“ geleitet werden)
+- Geografisches Routing, um sicherzustellen, dass Anforderer in bestimmten geografischen Regionen zu den Back-Ends geleitet werden, die diesen Regionen zugeordnet sind (z.B. sollten alle Anforderungen aus Spanien in die Azure-Region „Frankreich, Mitte“ geleitet werden)
 - Subnetzrouting, das Ihnen die Zuordnung von IP-Adressbereichen zu Back-Ends ermöglicht, damit Anforderungen von diesen Adressen zum angegebenen Back-End gesendet werden (z. B. sollten alle Benutzer, die über den IP-Adressbereich Ihrer Unternehmenszentrale eine Verbindung herstellen, andere Webinhalte erhalten als die allgemeinen Benutzer)
 
 Der Client stellt eine direkte Verbindung mit diesem Back-End her. Azure Traffic Manager erkennt, wenn ein Back-End fehlerhaft ist, und leitet die Clients dann an eine andere fehlerfreie Instanz weiter. Weitere Informationen zu diesem Dienst finden Sie in der Dokumentation zu [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
@@ -83,7 +83,7 @@ Das folgende Diagramm zeigt die Architektur dieses Szenarios:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie ein [Azure Front Door Service-Profil erstellen](quickstart-create-front-door.md).
+- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).
 
 <!--Image references-->

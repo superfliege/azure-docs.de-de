@@ -8,20 +8,20 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 9f6746f1bf8fb65e39933afa00b74a2b8266a1a9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2eb736891b12c07441bc8828ca07dd0b9fa13d98
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095435"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458121"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
-App-Einstellungen in einer Funktionen-App enthalten globale Konfigurationsoptionen, die sich auf alle Funktionen dieser Funktionen-App auswirken. Bei der lokalen Ausführung befinden sich diese Einstellungen in Umgebungsvariablen. In diesem Artikel werden die in Funktionen-Apps verfügbaren App-Einstellungen aufgelistet.
+App-Einstellungen in einer Funktionen-App enthalten globale Konfigurationsoptionen, die sich auf alle Funktionen dieser Funktionen-App auswirken. Bei der lokalen Ausführung befinden sich diese Einstellungen in [Umgebungsvariablen](functions-run-local.md#local-settings-file). In diesem Artikel werden die in Funktionen-Apps verfügbaren App-Einstellungen aufgelistet.
 
-[!INCLUDE [Funktionen-App-Einstellungen](../../includes/functions-app-settings.md]
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 Es gibt andere globale Konfigurationsoptionen in der Datei [host.json](functions-host-json.md) und in der Datei [local.settings.json](functions-run-local.md#local-settings-file).
 
@@ -40,6 +40,9 @@ Optionale Verbindungszeichenfolge für das Speicherkonto zum Speichern von Proto
 |Schlüssel|Beispielwert|
 |---|------------|
 |AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=[Name];AccountKey=[Schlüssel]|
+
+> [!TIP]
+> Um von mehr Leistung und Benutzerfreundlichkeit zu profitieren, empfiehlt es sich, APPINSIGHTS_INSTRUMENTATIONKEY und App Insights anstelle von AzureWebJobsDashboard für die Überwachung zu verwenden.
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -79,11 +82,11 @@ Der Pfad zum Stammverzeichnis, in dem sich die Datei *host.json* sowie Funktions
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-Gibt das Repository oder den Anbieter an, das bzw. der zum Speichern von Schlüsseln verwendet wird. Aktuell sind die unterstützten Repositorys „BLOB“ („Blob“) und „Dateiystem“ („deaktiviert“). Der Standardwert ist „Dateisystem“ („deaktiviert“).
+Gibt das Repository oder den Anbieter an, das bzw. der zum Speichern von Schlüsseln verwendet wird. Aktuell sind die unterstützten Repositorys der Blobspeicher („Blob“) und das lokale Dateisystem („Dateien“). In Version 1 ist der Blobspeicher die Standardeinstellung, in Version 2 das Dateisystem. Beachten Sie, dass in Version 1 das Dateisystem nur für Funktionen verwendet werden kann, die in einem App Service-Plan ausgeführt werden.
 
 |Schlüssel|Beispielwert|
 |---|------------|
-|AzureWebJobsSecretStorageType|deaktiviert|
+|AzureWebJobsSecretStorageType|Dateien|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -111,11 +114,19 @@ Gültige Werte sind „readwrite“ und „readonly“.
 
 ## <a name="functionsextensionversion"></a>FUNCTIONS\_EXTENSION\_VERSION
 
-Die in dieser Funktionen-App zu verwendende Version der Azure Functions-Laufzeit. Eine Tilde mit Hauptversion bedeutet, dass die neueste Version dieser Hauptversion (z. B. „~1“) verwendet wird. Wenn neue Versionen für dieselbe Hauptversion verfügbar sind, werden sie automatisch in der Funktionen-App installiert. Verwenden Sie die vollständige Versionsnummer (z. B. „1.0.12345“), um die App an eine bestimmte Version anzuheften. Der Standardwert ist „~1“.
+Die in dieser Funktionen-App zu verwendende Version der Functions-Runtime. Eine Tilde mit Hauptversion bedeutet, dass die neueste Version dieser Hauptversion verwendet wird (z.B. „~2“). Wenn neue Versionen für dieselbe Hauptversion verfügbar sind, werden sie automatisch in der Funktionen-App installiert. Verwenden Sie die vollständige Versionsnummer (z.B. „2.0.12345“), um die App an eine bestimmte Version anzuheften. Der Standardwert ist „~2“. Der Wert `~1` heftet Ihre App an Version 1.x der Runtime an.
 
 |Schlüssel|Beispielwert|
 |---|------------|
-|FUNCTIONS\_EXTENSION\_VERSION|~1|
+|FUNCTIONS\_EXTENSION\_VERSION|~2|
+
+## <a name="functionsworkerruntime"></a>FUNCTIONS\_WORKER\_RUNTIME
+
+Die Sprachworkerruntime, die in der Funktionen-App geladen werden soll.  Dies entspricht der Sprache, die in Ihrer Anwendung verwendet wird (z.B. „dotnet“). Bei Funktionen in mehreren Sprachen müssen Sie diese in verschiedenen Apps mit dem jeweils passenden Workerruntimewert veröffentlichen.  Gültige Werte sind `dotnet` (C#/F#), `node` (JavaScript) und `java` (Java).
+
+|Schlüssel|Beispielwert|
+|---|------------|
+|FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
 ## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
@@ -138,32 +149,29 @@ Nur für Verbrauchstarife. Der Dateipfad zum Code der Funktionen-App und zur Kon
 Die maximale Anzahl der Instanzen, auf denen die Funktionen-App horizontal hochskaliert werden kann. Dieser Wert ist standardmäßig unbegrenzt.
 
 > [!NOTE]
-> Diese Einstellung ist für ein Vorschaufeature.
+> Diese Einstellung ist ein Vorschaufeature und funktioniert nur dann zuverlässig, wenn sie auf einen Wert <= 5 festgelegt wird.
 
 |Schlüssel|Beispielwert|
 |---|------------|
-|WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|10|
+|WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|5|
 
 ## <a name="websitenodedefaultversion"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
-Der Standardwert ist „6.5.0“.
+Der Standardwert ist „8.11.1“.
 
 |Schlüssel|Beispielwert|
 |---|------------|
-|WEBSITE\_NODE\_DEFAULT_VERSION|6.5.0|
+|WEBSITE\_NODE\_DEFAULT_VERSION|8.11.1|
 
-## <a name="websiterunfromzip"></a>WEBSITE\_RUN\_FROM\_ZIP
+## <a name="websiterunfrompackage"></a>WEBSITE\_RUN\_FROM\_PACKAGE
 
 Ermöglicht es Ihrer Funktions-App, über eine bereitgestellte Paketdatei ausgeführt zu werden.
 
-> [!NOTE]
-> Diese Einstellung ist für ein Vorschaufeature.
-
 |Schlüssel|Beispielwert|
 |---|------------|
-|WEBSITE\_RUN\_FROM\_ZIP|1|
+|WEBSITE\_RUN\_FROM\_PACKAGE|1|
 
-Gültige Werte sind entweder eine URL, die in den Speicherort einer Bereitstellungspaketdatei aufgelöst werden kann, oder `1`. Bei einer Festlegung auf `1` muss sich das Paket im Ordner `d:\home\data\SitePackages` befinden. Wenn Sie die Zip-Bereitstellung mit dieser Einstellung verwenden, wird das Paket automatisch an diesen Speicherort hochgeladen.  Weitere Informationen finden Sie unter [Ausführen von Azure Functions über eine Paketdatei](run-functions-from-deployment-package.md).
+Gültige Werte sind entweder eine URL, die in den Speicherort einer Bereitstellungspaketdatei aufgelöst werden kann, oder `1`. Bei einer Festlegung auf `1` muss sich das Paket im Ordner `d:\home\data\SitePackages` befinden. Wenn Sie die Zip-Bereitstellung mit dieser Einstellung verwenden, wird das Paket automatisch an diesen Speicherort hochgeladen. In der Vorschau wurde diese Einstellung als `WEBSITE_RUN_FROM_ZIP` bezeichnet. Weitere Informationen finden Sie unter [Ausführen von Azure Functions über eine Paketdatei](run-functions-from-deployment-package.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

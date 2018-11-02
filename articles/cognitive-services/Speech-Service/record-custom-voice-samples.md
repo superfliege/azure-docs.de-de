@@ -1,20 +1,21 @@
 ---
 title: Aufzeichnen von Sprachbeispielen für das Erstellen einer benutzerdefinierten Stimme
-titleSuffix: Microsoft Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erstellen Sie eine benutzerdefinierte Stimme in Produktionsqualität, indem Sie ein überzeugendes Skript vorbereiten, einen guten Sprecher engagieren und professionell aufzeichnen.
 services: cognitive-services
-author: v-jerkin
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/5/2018
-ms.author: v-jerkin
-ms.openlocfilehash: b1bab65b68c5f37165fbc8414ac4300c924e53b9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.author: erhopf
+ms.openlocfilehash: b1b189db56eb3f70f23940a8612d310d2ba8566f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165175"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471185"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme
 
@@ -38,7 +39,7 @@ Tontechniker  |Überwacht die technischen Aspekte der Aufzeichnung und bedient d
 Regisseur            |Bereitet das Skript vor und weist den Sprecher ein.
 Editor              |Finalisiert die Audiodateien und bereitet sie für den Upload in das Portal für benutzerdefinierte Stimmen vor.
 
-Eine Person kann unter Umständen mehr als eine Rolle übernehmen. Für diese Anleitung wird davon ausgegangen, dass Sie in erster Linie als Regisseur agieren und einen Sprecher sowie einen Tontechniker engagieren. Wenn Sie die Aufzeichnungen selbst vornehmen möchten, enthält dieser Artikel einige Informationen zur Rolle des Tontechnikers. Die Editorrolle wird erst nach der Sitzung benötigt und kann daher vom verantwortlichen Tontechniker übernommen werden.
+Eine Person kann unter Umständen mehr als eine Rolle übernehmen. Für diese Anleitung wird davon ausgegangen, dass Sie in erster Linie als Regisseur agieren und einen Sprecher sowie einen Tontechniker engagieren. Wenn Sie die Aufzeichnungen selbst vornehmen möchten, enthält dieser Artikel einige Informationen zur Rolle des Tontechnikers. Die Editorrolle wird erst nach der Sitzung benötigt und kann daher vom Leiter oder Tontechniker übernommen werden.
 
 ## <a name="choose-your-voice-talent"></a>Auswählen des Sprechers
 

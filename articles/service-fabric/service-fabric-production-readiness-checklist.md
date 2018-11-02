@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: subramar
-ms.openlocfilehash: 6ebe83794f23ed3cf637f668d2810b9ba7521084
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7557e2b993a5059df8aea63c7394539acc28c110
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295869"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403523"
 ---
 # <a name="production-readiness-checklist"></a>Prüfliste für die Produktionsbereitschaft
 
@@ -36,7 +36,7 @@ Sind Ihre Anwendung und Ihr Cluster bereit für den Produktionsdatenverkehr? Das
 6. Machen Sie sich mit [Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) vertraut, und legen Sie eine für den Knotentyp fest. Die Zuverlässigkeitsstufe Silver oder höher wird empfohlen.
 7. Laden Sie Ihre Workloads, und unterziehen Sie sie Skalierungstests, um die [Kapazitätsanforderungen](service-fabric-cluster-capacity.md) für Ihren Cluster zu ermitteln. 
 8. Ihre Dienste und Anwendungen werden überwacht und Anwendungsprotokolle mit Warnhinweisen erstellt und gespeichert. Beispiele finden Sie unter [Hinzufügen von Protokollierung zur Service Fabric-Anwendung](service-fabric-how-to-diagnostics-log.md) und [Überwachen von Containern mit Log Analytics](service-fabric-diagnostics-oms-containers.md).
-9. Der Cluster wird mit Warnhinweisen (z.B. durch [OMS](service-fabric-diagnostics-event-analysis-oms.md)) überwacht. 
+9. Der Cluster wird mit Warnungen (z.B. durch [Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)) überwacht. 
 10. Die zugrunde liegende Infrastruktur von VM-Skalierungsgruppen wird mit Warnhinweisen überwacht (z.B. mit [Log Analytics](service-fabric-diagnostics-oms-agent.md)).
 11. Der Cluster verfügt stets über [primäre und sekundäre Zertifikate](service-fabric-cluster-security-update-certs-azure.md) (damit Sie nicht ausgesperrt werden).
 12. Für Entwicklung, Staging und Produktion werden getrennte Cluster verwaltet. 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: ffac9511ab93367cba3f006249bd92658a520e09
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 76a87b79ccc776e0facd57a1cff50fbbcb4f0b9e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386931"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414878"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von klassischen Metrikwarnungen mit Azure Monitor
 
@@ -24,11 +24,11 @@ Klassische Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrich
 
 2. Wählen Sie im Abschnitt **ÜBERWACHUNG** die Option **Warnungen (klassisch)** aus. Text und Symbol können je nach Ressource geringfügig variieren. Wenn Sie **Warnungen (klassisch)** hier nicht finden, befindet sich die Option möglicherweise unter **Warnungen** oder **Warnungsregeln**.
 
-    ![Überwachung](./media/alerts-metric-classic/AlertRulesButton.png)
+    ![Überwachung](media/alert-metric-classic/AlertRulesButton.png)
 
 3. Wählen Sie den Befehl **Metrikwarnung hinzufügen (klassisch)** aus, und füllen Sie die Felder aus.
 
-    ![Warnung hinzufügen](./media/alerts-metric-classic/AddAlertOnlyParamsPage.png)
+    ![Warnung hinzufügen](media/alert-metric-classic/AddAlertOnlyParamsPage.png)
 
 4. Geben Sie Ihrer Warnungsregel einen **Namen**. Wählen Sie dann eine **Beschreibung** aus, die auch in Benachrichtigungs-E-Mails angezeigt wird.
 

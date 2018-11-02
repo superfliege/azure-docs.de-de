@@ -1,23 +1,24 @@
 ---
-title: REST-APIs des Spracherkennungsdiensts
-description: Referenz für die REST-APIs des Spracherkennungsdiensts.
+title: REST-APIs des Speech-Diensts
+description: Referenz für die REST-APIs des Speech-Diensts.
 services: cognitive-services
-author: v-jerkin
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/09/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 6758cd658daf75beeea93bf9c719508cd271c8be
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: erhopf
+ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032426"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025836"
 ---
-# <a name="speech-service-rest-apis"></a>REST-APIs des Spracherkennungsdiensts
+# <a name="speech-service-rest-apis"></a>REST-APIs des Speech-Diensts
 
-Die REST-APIs des vereinheitlichten Spracherkennungsdiensts Azure Cognitive Services ähneln den APIs, die von der [Bing-Spracheingabe-API](https://docs.microsoft.com/azure/cognitive-services/Speech) zur Verfügung gestellt werden. Die Endpunkte unterscheiden sich von den Endpunkten, die vom Bing-Spracheingabedienst verwendet werden. Regionale Endpunkte sind verfügbar, und Sie müssen einen Abonnementschlüssel verwenden, der dem von Ihnen verwendeten Endpunkt entspricht.
+Die REST-APIs des Azure Cognitive Services Speech-Diensts ähneln den APIs, die von der [Bing-Spracheingabe-API](https://docs.microsoft.com/azure/cognitive-services/Speech) zur Verfügung gestellt werden. Die Endpunkte unterscheiden sich von den Endpunkten, die vom Bing-Spracheingabedienst verwendet werden. Regionale Endpunkte sind verfügbar, und Sie müssen einen Abonnementschlüssel verwenden, der dem von Ihnen verwendeten Endpunkt entspricht.
 
 ## <a name="speech-to-text"></a>Spracherkennung
 
@@ -30,13 +31,14 @@ Die Endpunkte für die Spracherkennungs-REST-API werden in der folgenden Tabelle
 
 Diese API unterstützt nur kurze Äußerungen. Anforderungen dürfen bis zu 10 Sekunden Audio enthalten und insgesamt maximal 14 Sekunden dauern. Die REST-API gibt nur Endergebnisse zurück, keine Teil- oder Zwischenergebnisse. Der Spracherkennungsdienst verfügt auch über eine [Batchtranskriptions](batch-transcription.md)-API, die längere Audioaufzeichnungen transkribieren kann.
 
+
 ### <a name="query-parameters"></a>Abfrageparameter
 
 Die folgenden Parameter können in der Abfragezeichenfolge der REST-Anforderung enthalten sein.
 
 |Parametername|Erforderlich/optional|Bedeutung|
 |-|-|-|
-|`language`|Erforderlich|Der Bezeichner der zu erkennenden Sprache. Siehe [Unterstützte Sprachen](supported-languages.md#speech-to-text).|
+|`language`|Erforderlich|Der Bezeichner der zu erkennenden Sprache. Siehe [Unterstützte Sprachen](language-support.md#speech-to-text).|
 |`format`|Optional<br>Standardwert: `simple`|Ergebnisformat, `simple` oder `detailed`. Einfache Ergebnisse enthalten `RecognitionStatus`, `DisplayText`, `Offset` und die Dauer. Detaillierte Ergebnisse enthalten mehrere Kandidaten mit Zuverlässigkeitswerten und vier unterschiedliche Darstellungen.|
 |`profanity`|Optional<br>Standardwert: `masked`|Umgang mit Obszönitäten in Erkennungsergebnissen. Kann `masked` (ersetzt Obszönitäten durch Sternchen), `removed` (entfernt alle Obszönitäten) oder `raw` (behält Obszönitäten bei) sein.
 
@@ -55,13 +57,19 @@ Die folgenden Felder werden im HTTP-Anforderungsheader gesendet.
 
 ### <a name="audio-format"></a>Audioformat
 
-Die Audiodaten werden im Textkörper der HTTP-`PUT`-Anforderung gesendet. Sie sollten im 16-Bit-WAV-Format mit einem PCM-Kanal (Mono) mit 16 KHz vorliegen.
+Die Audiodaten werden im Textkörper der HTTP-`POST`-Anforderung gesendet. Sie sollten im 16-Bit-WAV-Format mit einem PCM-Kanal (Mono) mit 16 kHz und in den folgenden Formaten/Codierungen vorliegen.
+
+* WAV-Format mit PCM-Codec
+* Ogg-Format mit OPUS-Codec
+
+>[!NOTE]
+>Die oben genannten Formate werden durch die REST-API und WebSocket im Speech-Dienst unterstützt. Das [Speech-SDK](/index.yml) unterstützt gegenwärtig nur das WAV-Format mit dem PCM-Codec.
 
 ### <a name="chunked-transfer"></a>Segmentierte Übertragung
 
 Segmentierte Übertragung (`Transfer-Encoding: chunked`) kann dazu beitragen, die Erkennungslatenz zu verringern, da sie es dem Spracherkennungsdienst ermöglicht, mit der Verarbeitung der Audiodatei zu beginnen, während sie übertragen wird. Der REST-API bietet keine Teil- oder Zwischenergebnisse. Diese Option dient ausschließlich zur Verbesserung der Reaktionsfähigkeit.
 
-Der folgende Code zeigt, wie Sie Audiodaten in Blöcken senden. `request` ist ein HTTPWebRequest-Objekt, das mit dem entsprechenden REST-Endpunkt verbunden ist. `audioFile` ist der Pfad zu einer Audiodatei auf dem Datenträger.
+Der folgende Code zeigt, wie Sie Audiodaten in Blöcken senden. Nur der erste Block sollte den Header der Audiodatei enthalten. `request` ist ein HTTPWebRequest-Objekt, das mit dem entsprechenden REST-Endpunkt verbunden ist. `audioFile` ist der Pfad zu einer Audiodatei auf dem Datenträger.
 
 ```csharp
 using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
@@ -137,7 +145,7 @@ Das `RecognitionStatus`-Feld kann die folgenden Werte enthalten.
 | `Error` | Der Erkennungsdienst hat einen internen Fehler erkannt und konnte nicht fortgesetzt werden. Versuchen Sie es noch mal, wenn möglich. |
 
 > [!NOTE]
-> Wenn die Audiodaten nur aus Obszönitäten bestehen und der `profanity`-Abfrageparameter auf `remove` festgelegt ist, gibt der Dienst kein Sprachergebnis zurück. 
+> Wenn die Audiodaten nur aus Obszönitäten bestehen und der `profanity`-Abfrageparameter auf `remove` festgelegt ist, gibt der Dienst kein Sprachergebnis zurück.
 
 
 Das `detailed`-Format enthält die gleichen Felder wie das `simple`-Format sowie ein `NBest`-Feld. Das `NBest`-Feld ist eine Liste von alternativen Interpretationen derselben Spracheingabe. Die Rangfolge beginnt mit der wahrscheinlichsten und endet mit der am wenigsten wahrscheinlichen Interpretation. Der erste Eintrag ist identisch mit den Haupterkennungsergebnis. Jeder Eintrag enthält die folgenden Felder:
@@ -195,17 +203,14 @@ Die folgende Aufstellung enthält die REST-Endpunkte für die Text-to-Speech-API
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-> [!NOTE]
-> Wenn Sie einen benutzerdefinierten Voicefont erstellt haben, verwenden Sie stattdessen den zugehörigen benutzerdefinierten Endpunkt.
-
 Der Spracherkennungsdienst unterstützt 24-KHz-Audioausgabe zusätzlich zu der 16-KHz-Ausgabe, die von der Bing-Spracheingabe unterstützt wird. Vier 24-KHz-Ausgabeformate stehen für die Verwendung im `X-Microsoft-OutputFormat`-HTTP-Header zur Verfügung sowie zwei 24-KHz-Stimmen: `Jessa24kRUS` und `Guy24kRUS`.
 
 Gebietsschema | Sprache   | Geschlecht | Dienstnamenzuordnung
 -------|------------|--------|------------
-en-US  | Englisch (USA) | Female | Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS) 
+en-US  | Englisch (USA) | Female | Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)
 en-US  | Englisch (USA) | Male   | Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)
 
-Eine vollständige Liste der verfügbaren Stimmen finden Sie unter [Unterstützte Sprachen](supported-languages.md#text-to-speech).
+Eine vollständige Liste der verfügbaren Stimmen finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
 
 ### <a name="request-headers"></a>Anforderungsheader
 
@@ -230,7 +235,7 @@ Die verfügbaren Audioausgabeformate (`X-Microsoft-OutputFormat`) beinhalten ein
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
 > [!NOTE]
-> Wenn die ausgewählte Stimme und das ausgewählte Ausgabeformat unterschiedliche Bitraten aufweisen, wird das Audio nach Bedarf neu gesampelt. 24-KHz-Stimmen unterstützen keine `audio-16khz-16kbps-mono-siren`- und `riff-16khz-16kbps-mono-siren`-Ausgabeformate. 
+> Wenn die ausgewählte Stimme und das ausgewählte Ausgabeformat unterschiedliche Bitraten aufweisen, wird das Audio nach Bedarf neu gesampelt. 24-KHz-Stimmen unterstützen keine `audio-16khz-16kbps-mono-siren`- und `riff-16khz-16kbps-mono-siren`-Ausgabeformate.
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -249,7 +254,7 @@ Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
-<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' 
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
     name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
@@ -265,7 +270,8 @@ HTTP-Code|Bedeutung|Mögliche Ursache
 400 |Ungültige Anforderung |Ein erforderlicher Parameter fehlt, ist leer oder Null. Oder der an einen erforderlichen oder optionalen Parameter übergebene Wert ist ungültig. Ein häufiges Problem sind zu lange Kopfzeilen.
 401|Nicht autorisiert |Die Anforderung ist nicht autorisiert. Stellen Sie sicher, dass Ihr Abonnementschlüssel oder -token gültig ist und sich in der richtigen Region befindet.
 413|Anforderungsentität zu groß|Die SSML-Eingabe umfasst mehr als 1024 Zeichen.
-|502|Ungültiges Gateway    | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen.
+429|Zu viele Anforderungen|Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist.
+502|Ungültiges Gateway | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen.
 
 Wenn der HTTP-Status `200 OK` ist, enthält der Text der Antwort eine Audiodatei im angeforderten Format. Diese Datei kann während ihrer Übertragung wiedergegeben oder in einem Puffer oder einer Datei für die spätere Wiedergabe oder anderweitige Verwendung gespeichert werden.
 
@@ -322,10 +328,10 @@ cURL ist ein Befehlszeilentool, das in Linux (und im Windows-Subsystem für Linu
 > Der Befehl wird zur besseren Lesbarkeit in mehreren Zeilen dargestellt, sollte aber an einer Shell-Eingabeaufforderung in einer Zeile eingegeben werden.
 
 ```
-curl -v -X POST 
- "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" 
- -H "Content-type: application/x-www-form-urlencoded" 
- -H "Content-Length: 0" 
+curl -v -X POST
+ "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+ -H "Content-type: application/x-www-form-urlencoded"
+ -H "Content-Length: 0"
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
@@ -405,7 +411,7 @@ Achten Sie wie auch in den anderen Beispielen darauf, dass der Wert von `FetchTo
     */
 public class Authentication
 {
-    public static readonly string FetchTokenUri = 
+    public static readonly string FetchTokenUri =
         "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
     private string subscriptionKey;
     private string token;
@@ -480,4 +486,3 @@ public class Authentication
 - [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
 - [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
-

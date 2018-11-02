@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: b9372c806eab1b0ca69ba078d972b076c8a7d6f6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ca63d67f6d7c19b4ca6928c4cc0f9ccb06eace2b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212717"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402980"
 ---
 # <a name="service-fabric-events"></a>Service Fabric-Ereignisse 
 
@@ -45,7 +45,7 @@ Nachfolgend sind Sie einige Beispiele für wichtige Szenarien aufgeführt, für 
 ## <a name="how-to-access-events"></a>Zugriff auf Ereignisse
 
 Für den Zugriff auf Service Fabric-Ereignisse gibt es einige unterschiedliche Möglichkeiten:
-* Über den Betriebskanal Diese Ereignisse können über die Azure-Diagnoseerweiterung erfasst und zur Nutzung oder Einspeisung in ein Tool wie OMS Log Analytics an eine Speichertabelle gesendet werden. Wenn für einen Cluster „Diagnose“ aktiviert ist, wird der Azure-Diagnose-Agent in Ihrem Cluster bereitgestellt und standardmäßig so konfiguriert, dass er Protokolle aus dem Betriebskanal einliest. Erfahren Sie mehr dazu, wie Sie den [Azure-Diagnose-Agent](service-fabric-diagnostics-event-aggregation-wad.md) so konfigurieren, dass er die Diagnosekonfiguration des Clusters ändert, um mehr Protokolle oder Leistungsindikatoren aufzunehmen. 
+* Über den Betriebskanal Diese Ereignisse können über die Azure-Diagnoseerweiterung erfasst und zur Nutzung oder Einspeisung in ein Tool wie Azure Log Analytics an eine Speichertabelle gesendet werden. Wenn für einen Cluster „Diagnose“ aktiviert ist, wird der Azure-Diagnose-Agent in Ihrem Cluster bereitgestellt und standardmäßig so konfiguriert, dass er Protokolle aus dem Betriebskanal einliest. Erfahren Sie mehr dazu, wie Sie den [Azure-Diagnose-Agent](service-fabric-diagnostics-event-aggregation-wad.md) so konfigurieren, dass er die Diagnosekonfiguration des Clusters ändert, um mehr Protokolle oder Leistungsindikatoren aufzunehmen. 
 * Über die REST-API des EventStore-Diensts, über die Sie den Cluster direkt abfragen können, oder über die Service Fabric-Clientbibliothek Lesen Sie hierzu [Abfragen von EventStore-APIs nach Clusterereignissen](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>Nächste Schritte

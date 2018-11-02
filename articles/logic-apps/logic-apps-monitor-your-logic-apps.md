@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: a08cd6289fc85b79ccec731126a33a9549d60546
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c2e487f421d2dfc875efde82c078f557f7bd03d2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123532"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405734"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 
@@ -90,7 +90,9 @@ Sie müssen über einen Log Analytics-Arbeitsbereich verfügen, bevor Sie beginn
 
    1. Wählen Sie **An Log Analytics senden** aus. 
    2. Wählen Sie unter **Log Analytics** die Option **Konfigurieren** aus. 
-   3. Wählen Sie unter **OMS-Arbeitsbereiche** den Log Analytics-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
+   3. Wählen Sie unter **OMS-Arbeitsbereiche** den Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
+   > [!NOTE]
+   > OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.
    4. Wählen Sie unter **Protokoll** die Kategorie **WorkflowRuntime** aus.
    5. Wählen Sie das Metrikintervall aus.
    6. Wenn Sie fertig sind, wählen Sie **Speichern** aus.

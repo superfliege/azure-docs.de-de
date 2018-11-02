@@ -1,20 +1,21 @@
 ---
 title: Informationen zur Spracherkennung
+titleSuffix: Azure Cognitive Services
 description: Übersicht zu den Funktionen der Spracherkennungs-API
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 7cb0257a7302221f80bb90c0a6c3446cde07290a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: erhopf
+ms.openlocfilehash: 041ec1c095ec604fed7906368ff266c1586df570
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434125"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471338"
 ---
 # <a name="about-the-speech-to-text-api"></a>Informationen zur Spracherkennungs-API
 
@@ -26,7 +27,7 @@ Die **Spracherkennungs**-API umfasst die folgenden Features:
 
 - Kontinuierliche Erkennung in Echtzeit. Mithilfe der **Spracherkennung** können Benutzer in Echtzeit Audiodatenströme in Text übertragen. Sie unterstützt auch den Empfang von Zwischenergebnissen der Wörter, die bis zum jeweiligen Zeitpunkt erkannt worden sind. Der Dienst erkennt automatisch, wenn nichts mehr gesagt wird. Benutzer können außerdem zusätzliche Formatierungsoptionen auswählen, einschließlich Großbuchstaben und Interpunktion, Filterung von anstößigen Ausdrücken und inverse Textnormalisierung.
 
-- Optimierte Ergebnisse für die **Spracherkennung** für interaktive Szenarios, Konversation und diktierte Texte Die erkannten Ergebnisse werden sowohl in lexikalischer als auch in Anzeigeform zurückgegeben (Details zu den lexikalischen Ergebnissen finden Sie unter „DetailedSpeechRecognitionResult“ in den Beispielen oder in der API).
+- Die Ergebnisse werden sowohl in lexikalischer als auch in Anzeigeform zurückgegeben (Details zu den lexikalischen Ergebnissen finden Sie unter „DetailedSpeechRecognitionResult“ in den Beispielen oder in der API).
 
 - Unterstützung vieler Sprachen und Dialekte. Eine Liste der unterstützten Sprachen für die einzelnen Erkennungsmodi finden Sie unter [Supported languages (Unterstützte Sprachen)](language-support.md#speech-to-text).
 
@@ -34,9 +35,11 @@ Die **Spracherkennungs**-API umfasst die folgenden Features:
 
 - Verständnis natürlicher Sprache. Sie können über die Integration von [Language Understanding Intelligent Service](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) Absichten und Entitäten aus dem Gesagten ableiten. Die Benutzer müssen die Terminologie Ihrer App nicht kennen und können ihre Wünsche in ihren eigenen Worten erklären.
 
+- Die Zuverlässigkeitsbewertung wird vom Dienst zurückgegeben, wenn Sie im Konfigurationsobjekt für die Spracherkennung (SpeechConfig.OutputFormat-Eigenschaft) eine ausführliche Ausgabe angegeben haben. Sie können dann die Best()-Methode auf das Ergebnis anwenden oder das Ergebnis direkt aus dem vom Dienst zurückgegebenen JSON-Code abrufen (etwa result.Properties.GetProperty(PropertyId.SpeechServiceResponse_JsonResult)).
+
 ## <a name="api-capabilities"></a>API-Funktionen
 
-Viele der Funktionen der **Spracherkennungs**-API (insbesondere im Bereich der Anpassung) sind über REST verfügbar. In der folgenden Tabelle werden die Funktionen der einzelnen Methoden für den Zugriff auf die API beschrieben. Eine vollständige Liste der Funktionen und API-Details finden Sie unter [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/).
+Einige der Funktionen der **Spracherkennungs**-API (insbesondere im Bereich der Anpassung) sind über REST verfügbar. In der folgenden Tabelle werden die Funktionen der einzelnen Methoden für den Zugriff auf die API beschrieben. Eine vollständige Liste der Funktionen und API-Details finden Sie in der [Swagger-Referenz](https://westus.cris.ai/swagger/ui/index).
 
 | Anwendungsfall | REST | SDKs |
 |-----|-----|-----|----|

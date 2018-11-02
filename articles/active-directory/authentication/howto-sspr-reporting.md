@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5931958d17ea119e58c066a78a44169be2b9f451
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 7d7de02c96b9a17144b446b9ed86ebcbacd51162
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627524"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025004"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -23,7 +23,7 @@ Nach einer Bereitstellung möchten viele Organisationen wissen, wie oder ob Self
 
 ![Berichterstellung][Reporting]
 
-Die folgenden Fragen können mit den Berichten beantwortet werden, die im [Azure-Portal] (https://portal.azure.com/): vorhanden sind:
+Die folgenden Fragen können mit den Berichten beantwortet werden, die im [Azure-Portal](https://portal.azure.com/) vorhanden sind:
 
 > [!NOTE]
 > Sie müssen [ein globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md) sein, und Sie müssen zustimmen, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden. Um zuzustimmen, müssen Sie die Registerkarte **Berichterstellung** oder die Überwachungsprotokolle mindestens ein Mal öffnen. Bis dahin werden keine Daten für Ihre Organisation erfasst.

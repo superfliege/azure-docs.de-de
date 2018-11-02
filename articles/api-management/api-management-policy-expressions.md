@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 5943357bc421bbae0caef7f0acd7aa3364813826
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 771ec7713c989025635e585b7bb511986e71cda9
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597517"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024760"
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
 Die in diesem Artikel erörterte Syntax für Richtlinienausdrücke entspricht C# 7. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.  
@@ -52,15 +52,15 @@ Weitere Informationen finden Sie unter:
   
 @(context.Variables.ContainsKey("maxAge") ? int.Parse((string)context.Variables["maxAge"]) : 3600)  
   
-@{   
-  string value;   
-  if (context.Request.Headers.TryGetValue("Authorization", out value))   
-  {   
-    return Encoding.UTF8.GetString(Convert.FromBase64String(value));  
-  }   
-  else   
-  {   
-    return null;  
+@{   
+  string value;   
+  if (context.Request.Headers.TryGetValue("Authorization", out value))   
+  {   
+    return Encoding.UTF8.GetString(Convert.FromBase64String(value));  
+  }   
+  else   
+  {   
+    return null;  
   }  
 }  
 ```  
@@ -74,18 +74,18 @@ Weitere Informationen finden Sie unter:
 ##  <a name="CLRTypes"></a> In Richtlinienausdrücken zulässige .NET Framework-Typen  
  Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitglieder, die in Richtlinienausdrücken zulässig sind.  
   
-|CLR-Typ|Unterstützte Methoden|  
+|CLR-Typ|Unterstützte Member|  
 |--------------|-----------------------|  
-|Newtonsoft.Json.Linq.Extensions|Alle Methoden werden unterstützt.|  
-|Newtonsoft.Json.Linq.JArray|Alle Methoden werden unterstützt.|  
-|Newtonsoft.Json.Linq.JConstructor|Alle Methoden werden unterstützt.|  
-|Newtonsoft.Json.Linq.JContainer|Alle Methoden werden unterstützt.|  
-|Newtonsoft.Json.Linq.JObject|Alle Methoden werden unterstützt.|  
-|Newtonsoft.Json.Linq.JProperty|Alle Methoden werden unterstützt.|  
-|Newtonsoft.Json.Linq.JRaw|Alle Methoden werden unterstützt.|  
-|Newtonsoft.Json.Linq.JToken|Alle Methoden werden unterstützt.|  
-|Newtonsoft.Json.Linq.JTokenType|Alle Methoden werden unterstützt.|  
-|Newtonsoft.Json.Linq.JValue|Alle Methoden werden unterstützt.|  
+|Newtonsoft.Json.Linq.Extensions|Alle|  
+|Newtonsoft.Json.Linq.JArray|Alle|  
+|Newtonsoft.Json.Linq.JConstructor|Alle|  
+|Newtonsoft.Json.Linq.JContainer|Alle|  
+|Newtonsoft.Json.Linq.JObject|Alle|  
+|Newtonsoft.Json.Linq.JProperty|Alle|  
+|Newtonsoft.Json.Linq.JRaw|Alle|  
+|Newtonsoft.Json.Linq.JToken|Alle|  
+|Newtonsoft.Json.Linq.JTokenType|Alle|  
+|Newtonsoft.Json.Linq.JValue|Alle|  
 |System.Collections.Generic.IReadOnlyCollection<T\>|Alle|  
 |System.Collections.Generic.IReadOnlyDictionary<TKey,  TValue>|Alle|  
 |System.Collections.Generic.ISet<TKey, TValue>|Alle|  
@@ -105,9 +105,10 @@ Weitere Informationen finden Sie unter:
 |System.Int16|Alle|  
 |System. Int32|Alle|  
 |System.Int64|Alle|  
-|System.Linq.Enumerable<T\>|Alle Methoden werden unterstützt.|  
+|System.Linq.Enumerable<T\>|Alle|  
 |System.Math|Alle|  
-|System.MidpointRounding|Alle|  
+|System.MidpointRounding|Alle|
+|System.Net.WebUtility|Alle|
 |System.Nullable<T\>|Alle|  
 |System.Random|Alle|  
 |System.SByte|Alle|  
@@ -146,23 +147,23 @@ Weitere Informationen finden Sie unter:
 |System.UInt32|Alle|  
 |System.UInt64|Alle|  
 |System.Uri|Alle|  
-|System.Xml.Linq.Extensions|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XAttribute|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XCData|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XComment|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XContainer|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XDeclaration|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XDocument|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XDocumentType|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XElement|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XName|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XNamespace|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XNode|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XNodeDocumentOrderComparer|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XNodeEqualityComparer|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XObject|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XProcessingInstruction|Alle Methoden werden unterstützt.|  
-|System.Xml.Linq.XText|Alle Methoden werden unterstützt.|  
+|System.Xml.Linq.Extensions|Alle|  
+|System.Xml.Linq.XAttribute|Alle|  
+|System.Xml.Linq.XCData|Alle|  
+|System.Xml.Linq.XComment|Alle|  
+|System.Xml.Linq.XContainer|Alle|  
+|System.Xml.Linq.XDeclaration|Alle|  
+|System.Xml.Linq.XDocument|Alle|  
+|System.Xml.Linq.XDocumentType|Alle|  
+|System.Xml.Linq.XElement|Alle|  
+|System.Xml.Linq.XName|Alle|  
+|System.Xml.Linq.XNamespace|Alle|  
+|System.Xml.Linq.XNode|Alle|  
+|System.Xml.Linq.XNodeDocumentOrderComparer|Alle|  
+|System.Xml.Linq.XNodeEqualityComparer|Alle|  
+|System.Xml.Linq.XObject|Alle|  
+|System.Xml.Linq.XProcessingInstruction|Alle|  
+|System.Xml.Linq.XText|Alle|  
 |System.Xml.XmlNodeType|Alle|  
   
 ##  <a name="ContextVariables"></a> Kontextvariable  

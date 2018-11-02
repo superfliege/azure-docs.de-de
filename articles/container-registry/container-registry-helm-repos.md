@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
-ms.openlocfilehash: f04b4015e201d272fa624b1de265792564ac14cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 140d663524696f19844fea8906b181f468b7d157
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046387"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647005"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Verwenden Sie Azure Container Registry als Helm-Repository für Ihre Anwendungsdiagramme
 
@@ -30,7 +30,7 @@ In diesem Artikel wird die Verwendung eines Helm-Repositorys für Diagramme erl�
 Für die Schritte in diesem Artikel müssen folgende Voraussetzungen erfüllt sein:
 
 - **Azure Container Registry**: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md).
-- **Helm-Client** für die Suche und Installation von Diagrammen. Darüber hinaus benötigen Sie einen Helm-Server (Tiller), der in einem Kubernetes-Cluster initialisiert wird. Bei Bedarf können Sie [einen Azure Kubernetes Service-Cluster erstellen][aks-quickstart]. Weitere Informationen zum Installieren und Verwenden von Helm finden Sie unter [Installieren von Helm][helm-install].
+- **Version 2.11.0 oder höher des Helm-Clients (keine RC-Version):** Führen Sie `helm version` aus, um Ihre aktuelle Version zu ermitteln. Darüber hinaus benötigen Sie einen Helm-Server (Tiller), der in einem Kubernetes-Cluster initialisiert wird. Bei Bedarf können Sie [einen Azure Kubernetes Service-Cluster erstellen][aks-quickstart]. Weitere Informationen zum Installieren und Aktualisieren von Helm finden Sie unter [Installieren von Helm][helm-install].
 - **Azure CLI-Version 2.0.46 oder höher** : Führen Sie `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
 
 ## <a name="add-a-repository-to-helm-client"></a>Hinzufügen eines Repositorys zum Helm-Client

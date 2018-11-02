@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 430ea5f0a6f737d7632a4352c24d893368b80558
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e470a44732b881311eacecfdf2bd2211598d880a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310379"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984859"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Warnung „Die Daten des Integritätsdiensts sind nicht aktuell“
 
@@ -33,6 +33,21 @@ ms.locfileid: "46310379"
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung 
 * Lesen Sie unbedingt den [Abschnitt „Anforderungen“](how-to-connect-health-agent-install.md#requirements), und stellen Sie sicher, dass Sie die Anforderungen erfüllen.
 * Verwenden Sie das [Tool zum Testen der Konnektivität](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service), um Konnektivitätsprobleme zu ermitteln.
+* Wenn Sie HTTP-Proxys besitzen, führen Sie [diese Konfigurationsschritte](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy) durch. 
+
+### <a name="connect-health-for-adfs"></a>Connect Health für AD FS
+Sie können zusätzliche Schritte zur Überprüfung von AD FS durchführen und den Workflow in der [AD FS-Hilfe](https://adfshelp.microsoft.com/TroubleshootingGuides/Workflow/3ef51c1f-499e-4e07-b3c4-60271640e282) ausführen.
+
+### <a name="data-collection-map-required-steps"></a>Für die Datensammlungszuordnung erforderliche Schritte
+| Service Name | Datenelemente | Schritte zur Problembehandlung |
+| --- | --- | --- | 
+| Connect Health für AD FS | PerfCounter, TestResult | - [Ausgehende Konnektivität mit dem Azure-Dienstendpunkt](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [SSL-Überprüfung für ausgehenden Datenverkehr ist gefiltert oder deaktiviert](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Firewallports auf dem Server mit dem Agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Zulassen der festgelegten Websites, wenn die verstärkte IE-Sicherheit aktiviert ist](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+|  | Adfs-UsageMetrics | Informationen zu ausgehender Konnektivität basierend auf IP-Adressen finden Sie unter [Azure-IP-Bereiche](https://www.microsoft.com/download/details.aspx?id=41653). | 
+| Connect Health für Synchronisierung | PerfCounter | - [Ausgehende Konnektivität mit dem Azure-Dienstendpunkt](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [SSL-Überprüfung für ausgehenden Datenverkehr ist gefiltert oder deaktiviert](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [Firewallports auf dem Server mit dem Agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Zulassen der festgelegten Websites, wenn die verstärkte IE-Sicherheit aktiviert ist](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+|  | AadSyncService-SynchronizationRules, <br /> AadSyncService-Connectors, <br /> AadSyncService-GlobalConfigurations, <br /> AadSyncService-RunProfileResults, <br /> AadSyncService-ServiceConfigurations, <br /> AadSyncService-ServiceStatus | – Informationen zu ausgehender Konnektivität basierend auf IP-Adressen finden Sie unter [Azure-IP-Bereiche](https://www.microsoft.com/download/details.aspx?id=41653). <br /> - [Ausgehende Konnektivität mit dem Azure-Dienstendpunkt](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [Firewallports auf dem Server mit dem Agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
+| Connect Health für AD DS  | PerfCounter, Adds-TopologyInfo-Json, Common-TestData-Json | - [Ausgehende Konnektivität mit dem Azure-Dienstendpunkt](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> - [SSL-Überprüfung für ausgehenden Datenverkehr ist gefiltert oder deaktiviert](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Firewallports auf dem Server mit dem Agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Zulassen der festgelegten Websites, wenn die verstärkte IE-Sicherheit aktiviert ist](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) <br />  – Informationen zu ausgehender Konnektivität basierend auf IP-Adressen finden Sie unter [Azure-IP-Bereiche](https://www.microsoft.com/download/details.aspx?id=41653).  |
+
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

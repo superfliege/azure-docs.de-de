@@ -1,34 +1,33 @@
 ---
 title: Verbindungsarchitektur von Azure SQL-Datenbank | Microsoft-Dokumentation
-description: In diesem Artikel wird die Verbindungsarchitektur von Azure-SQLDB aus Azure oder von außerhalb von Azure erläutert.
+description: In diesem Artikel wird die Verbindungsarchitektur von Azure-SQL-Datenbank von Azure aus oder von außerhalb von Azure erläutert.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: DhruvMsft
-ms.author: dhruv
+author: oslake
+ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/24/2018
-ms.openlocfilehash: 66f558db713ab951864fe694f27f2e60d52e875a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ca1ef9c402b370a8d1228e13d7fe3e13fd225f79
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064139"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986320"
 ---
-# <a name="azure-sql-database-connectivity-architecture"></a>Verbindungsarchitektur der Azure SQL-Datenbank 
+# <a name="azure-sql-database-connectivity-architecture"></a>Verbindungsarchitektur der Azure SQL-Datenbank
 
-In diesem Artikel wird die Verbindungsarchitektur der Azure SQL-Datenbank erläutert. Zudem wird dargelegt, wie die verschiedenen Komponenten Datenverkehr an Ihre Instanz von Azure SQL-Datenbank leiten. Diese Verbindungskomponenten von Azure SQL-Datenbank leiten Netzwerkdatenverkehr mithilfe von Clients, die von innerhalb und von außerhalb von Azure verbunden sind, an die Azure-Datenbank. Dieser Artikel bietet auch Skriptbeispiele zum Ändern der Verbindungsart und Überlegungen, die beim Ändern der Standardverbindungseinstellungen berücksichtigt werden können. 
+In diesem Artikel wird die Verbindungsarchitektur der Azure SQL-Datenbank erläutert. Zudem wird dargelegt, wie die verschiedenen Komponenten Datenverkehr an Ihre Instanz von Azure SQL-Datenbank leiten. Diese Verbindungskomponenten von Azure SQL-Datenbank leiten Netzwerkdatenverkehr mithilfe von Clients, die von innerhalb und von außerhalb von Azure verbunden sind, an die Azure-Datenbank. Dieser Artikel bietet auch Skriptbeispiele zum Ändern der Verbindungsart und Überlegungen, die beim Ändern der Standardverbindungseinstellungen berücksichtigt werden können.
 
 ## <a name="connectivity-architecture"></a>Verbindungsarchitektur
 
 Das folgende Diagramm bietet einen allgemeinen Überblick über die Verbindungsarchitektur von Azure SQL-Datenbank.
 
 ![Architekturübersicht](./media/sql-database-connectivity-architecture/architecture-overview.png)
-
 
 In den folgenden Schritte wird beschrieben, wie eine Verbindung zu einer Azure SQL-Datenbank mithilfe des Software Load Balancers (SLB) von Azure SQL-Datenbank und des Gateways von Azure SQL-Datenbank hergestellt wird.
 
@@ -39,7 +38,6 @@ In den folgenden Schritte wird beschrieben, wie eine Verbindung zu einer Azure S
 
 > [!IMPORTANT]
 > In jede dieser Komponenten ist Denial-of Service-Schutz (DDoS) auf Ebene des Netzwerks und der App integriert.
->
 
 ## <a name="connectivity-from-within-azure"></a>Verbindung aus Azure
 
@@ -54,7 +52,9 @@ Wenn Sie von außerhalb von Azure eine Verbindung herstellen, verfügen Ihre Ver
 ![Architekturübersicht](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Bei der Verwendung von Dienstendpunkten mit Azure SQL-Datenbank lautet die standardmäßige Richtlinie **Proxy**. Um die Konnektivität aus Ihrem VNET zu aktivieren, müssen Sie ausgehende Verbindungen zu den in der folgenden Liste angegebenen IP-Adressen für den Azure SQL-Datenbank-Gateway zulassen. Beim Verwenden von Dienstendpunkten empfehlen wir Ihnen dringend, Ihre Verbindungsrichtlinie in **Umleiten** zu ändern, um die Leistung zu verbessern. Wenn Sie Ihre Verbindungsrichtlinie in **Umleiten** ändern, reicht dies nicht aus, um ausgehende Verbindungen für Ihre NSG mit den unten aufgeführten Azure SQL-Datenbank-Gateway-IPs zuzulassen. Sie müssen ausgehende Verbindungen für alle Azure SQL-Datenbank-IPs zulassen. Dies ist mithilfe von Dienst-Tags für Netzwerksicherheitsgruppen (NSGs) möglich. Weitere Informationen finden Sie unter [Dienst-Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+> Bei der Verwendung von Dienstendpunkten mit Azure SQL-Datenbank lautet die standardmäßige Richtlinie **Proxy**. Um die Konnektivität aus Ihrem VNET zu aktivieren, müssen Sie ausgehende Verbindungen zu den in der folgenden Liste angegebenen IP-Adressen für den Azure SQL-Datenbank-Gateway zulassen.
+
+Beim Verwenden von Dienstendpunkten empfehlen wir Ihnen dringend, Ihre Verbindungsrichtlinie in **Umleiten** zu ändern, um die Leistung zu verbessern. Wenn Sie Ihre Verbindungsrichtlinie in **Umleiten** ändern, reicht dies nicht aus, um ausgehende Verbindungen für Ihre NSG mit den unten aufgeführten Azure SQL-Datenbank-Gateway-IPs zuzulassen. Sie müssen ausgehende Verbindungen für alle Azure SQL-Datenbank-IPs zulassen. Dies ist mithilfe von Dienst-Tags für Netzwerksicherheitsgruppen (NSGs) möglich. Weitere Informationen finden Sie unter [Dienst-Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP-Adressen vom Gateway von Azure SQL-Datenbank
 
@@ -73,11 +73,18 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | Kanada, Mitte | 40.85.224.249 | |
 | Kanada, Osten | 40.86.226.166 | |
 | USA (Mitte) | 23.99.160.139 | 13.67.215.62 |
+| China, Osten 1 | 139.219.130.35 | |
+| China, Osten 2 | 40.73.82.1 | |
+| China, Norden 1 | 139.219.15.17 | |
+| China, Norden 2 | 40.73.50.0 | |
 | Asien, Osten | 191.234.2.139 | 52.175.33.150 |
 | US, Osten 1 | 191.238.6.43 | 40.121.158.30 |
 | USA (Ost) 2 | 191.239.224.107 | 40.79.84.180 * |
-| Indien, Mitte | 104.211.96.159  | |
-| Indien, Süden | 104.211.224.146  | |
+| Frankreich, Mitte | 40.79.137.0 | 40.79.129.1 |
+| Deutschland, Mitte | 51.4.144.100 | |
+| Deutschland, Nordosten | 51.5.144.179 | |
+| Indien, Mitte | 104.211.96.159 | |
+| Indien, Süden | 104.211.224.146 | |
 | Indien, Westen | 104.211.160.80 | |
 | Japan, Osten | 191.237.240.43 | 13.78.61.196 |
 | Japan, Westen | 191.238.68.11 | 104.214.148.156 |
@@ -90,11 +97,11 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | Großbritannien, Norden | 13.87.97.210 | |
 | Vereinigtes Königreich, Süden 1 | 51.140.184.11 | |
 | Großbritannien, Süden 2 | 13.87.34.7 | |
-| UK, Westen | 51.141.8.11  | |
+| UK, Westen | 51.141.8.11 | |
 | USA, Westen-Mitte | 13.78.145.25 | |
 | Europa, Westen | 191.237.232.75 | 40.68.37.158 |
 | USA, Westen 1 | 23.99.34.75 | 104.42.238.205 |
-| USA, Westen 2 | 13.66.226.202  | |
+| USA, Westen 2 | 13.66.226.202 | |
 ||||
 
 \* **HINWEIS:** *USA (Ost) 2* verfügt auch über eine tertiäre IP-Adresse von `52.167.104.0`.
@@ -170,10 +177,10 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 
 > [!IMPORTANT]
 > Dieses Skript erfordert die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
->
 
 Das folgende Skript für die Befehlszeilenschnittstelle veranschaulicht, wie Sie die Verbindungsrichtlinie ändern.
 
+```azurecli-interactive
 <pre>
 # Get SQL Server ID
 sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
@@ -181,13 +188,14 @@ sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-grou
 # Set URI
 id="$sqlserverid/connectionPolicies/Default"
 
-# Get current connection policy 
+# Get current connection policy
 az resource show --ids $id
 
-# Update connection policy 
+# Update connection policy
 az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

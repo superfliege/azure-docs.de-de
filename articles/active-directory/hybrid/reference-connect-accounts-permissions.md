@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2018
+ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 96d8977a63d26576d4d783dd0661409fdcee90f8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 66585c495dfb46e51120ae3eef2685d634fd9606
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308859"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024969"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -82,11 +82,11 @@ Das [AD DS Connector-Konto](#active-directory-account) wird zum Erstellen von Le
 
 ![Expressinstallation](./media/reference-connect-accounts-permissions/express.png)
 
-Nachfolgend erhalten Sie einen Überblick über die Seiten des Assistenten für die Expressinstallation, die gesammelten Anmeldeinformationen und deren Verwendungszweck.
+Nachfolgend finden Sie eine Übersicht über die Seiten des Assistenten für die Expressinstallation, die gesammelten Anmeldeinformationen und deren Verwendungszweck.
 
 | Seite des Assistenten | Erfasste Anmeldeinformationen | Erforderliche Berechtigungen | Verwendung |
 | --- | --- | --- | --- |
-| N/V |Benutzer, der den Installations-Assistenten ausführt |Administrator des lokalen Servers |<li>Erstellt das [ADSync-Dienstkonto](#azure-ad-connect-sync-service-account),das zum Ausführen des Synchronisierungsdiensts verwendet wird. |
+| N/V |Benutzer, der den Installations-Assistenten ausführt |Administrator des lokalen Servers |<li>Erstellt das [ADSync-Dienstkonto](#azure-ad-connect-sync-service-account), das zum Ausführen des Synchronisierungsdiensts verwendet wird. |
 | Stellen Sie eine Verbindung mit Azure AD her. |Azure AD-Verzeichnisanmeldeinformationen |Globale Administratorrolle in Azure AD |<li>Aktivieren der Synchronisierung im Azure AD-Verzeichnis</li>  <li>Erstellen des [Azure AD Connector-Kontos](#azure-ad-service-account), das für fortlaufende Synchronisierungsvorgänge in Azure AD verwendet wird.</li> |
 | Herstellen einer Verbindung mit AD DS |Lokale Active Directory-Anmeldeinformationen |Mitglied der  Gruppe „Unternehmensadministratoren“ in Active Directory |<li>Erstellt ein [AD DS Connector-Konto](#active-directory-account) in Active Directory und gewährt Zugriff darauf. Dieses erstellte Konto dient zum Lesen und Schreiben von Verzeichnisinformationen während der Synchronisierung.</li> |
 
@@ -97,7 +97,7 @@ Mit den benutzerdefinierten Installationseinstellungen bietet der Assistent mehr
 
 ### <a name="custom-installation-wizard-summary"></a>Assistent für die benutzerdefinierte Installation – Zusammenfassung
 
-Nachfolgend erhalten Sie einen Überblick über die Seiten des Assistenten für die benutzerdefinierte Installation, die gesammelten Anmeldeinformationen und deren Verwendungszweck.
+Nachfolgend finden Sie eine Übersicht über die Seiten des Assistenten für die benutzerdefinierte Installation, die gesammelten Anmeldeinformationen und deren Verwendungszweck.
 
 ![Expressinstallation](./media/reference-connect-accounts-permissions/customize.png)
 
@@ -113,6 +113,12 @@ Nachfolgend erhalten Sie einen Überblick über die Seiten des Assistenten für 
 | Seite „AD FS-Dienstkonto“, Option „Domänenbenutzerkonto verwenden“ |Anmeldeinformationen für das Active Directory-Benutzerkonto |Domänenbenutzer |Das AD-Benutzerkonto, dessen Anmeldeinformationen bereitgestellt wurden, wird als das Anmeldekonto des AD FS-Diensts verwendet. |
 
 ### <a name="create-the-ad-ds-connector-account"></a>Erstellen des AD DS-Connector-Kontos
+
+>[!IMPORTANT]
+>Mit Build **1.1.880.0** (August 2018 veröffentlicht) wurde ein neues PowerShell-Modul namens „ADSyncConfig.psm1“ eingeführt, das eine Sammlung von Cmdlets enthält, die Ihnen bei der Konfiguration der richtigen Active Directory-Berechtigungen für Ihr Azure AD DS-Connector-Konto helfen sollen.
+>
+>Weitere Informationen finden Sie unter [Azure AD Connect: Konfigurieren von AD DS-Connector-Kontoberechtigungen](how-to-connect-configure-ad-ds-connector-account.md).
+
 Das Konto, das Sie auf der Seite **Verzeichnisse verbinden** angeben, muss vor der Installation bereits in Active Directory vorhanden sein.  In Azure AD Connect Version 1.1.524.0 und höher kann der Azure AD Connect-Assistent das **AD DS Connector-Konto** erstellen, das zum Herstellen der Verbindung mit Active Directory verwendet wird.  
 
 Es muss auch über die erforderlichen Berechtigungen verfügen. Der Installations-Assistent führt keine Überprüfung der Berechtigungen durch, mögliche Probleme werden erst während der Synchronisierung ermittelt.

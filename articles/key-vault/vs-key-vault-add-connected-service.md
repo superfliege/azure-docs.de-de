@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 9cf49ae97da3bf67300bdc222c86bb712aeaed37
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c90ef26c0170db67b1d422701b6969ca3f9c9e38
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465791"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958515"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
 
@@ -138,7 +138,29 @@ So greifen Sie auf Ihre Geheimnisse zu
       <h3>@ViewBag.Secret2</h3>
    ```
 
-Herzlichen Glückwunsch, Sie haben sichergestellt, dass Ihre Web-App Key Vault für den Zugriff auf sicher gespeicherte Geheimnisse verwenden kann.
+1. Führen Sie Ihre App lokal aus, um zu überprüfen, ob Sie anstelle des Dummywerts aus der Konfigurationsdatei den Geheimniswert, den Sie im Azure-Portal eingegeben haben, lesen können.
+
+Veröffentlichen Sie Ihre App anschließend in Azure.
+
+## <a name="publish-to-azure-app-service"></a>Veröffentlichen in Azure App Service
+
+1. Klicken Sie mit der rechten Maustaste auf den Projektknoten, und wählen Sie **Veröffentlichen** aus. Sie werden auf einem Bildschirm aufgefordert, ein **Veröffentlichungsziel auszuwählen**. Wählen Sie auf der linken Seite **App Service** aus, und klicken Sie dann auf **Neu erstellen**.
+
+   ![Veröffentlichen in App Service](media/vs-key-vault-add-connected-service/AppServicePublish1.PNG)
+
+1. Stellen Sie auf dem Bildschirm **App Service erstellen** sicher, dass das Abonnement und die Ressourcengruppe die gleichen Elemente sind, in denen Sie den Schlüsseltresor erstellt haben, und klicken Sie dann auf **Erstellen**.
+
+   ![Erstellen eines App Service](media/vs-key-vault-add-connected-service/AppServicePublish2.PNG)
+
+1. Nachdem Ihre Webanwendung erstellt wurde, wird der Bildschirm **Veröffentlichen** angezeigt. Notieren Sie sich die URL für Ihre veröffentlichte, in Azure gehostete Webanwendung. Wenn neben **Schlüsseltresor** der Wert **Kein** angezeigt wird, müssen Sie App Service noch mitteilen, mit welchem Schlüsseltresor eine Verbindung hergestellt werden soll. Klicken Sie auf den Link **Schlüsseltresor hinzufügen**, und wählen Sie den erstellten Schlüsseltresor aus.
+
+   ![Schlüsseltresor hinzufügen](media/vs-key-vault-add-connected-service/AppServicePublish3.PNG)
+
+   Wenn die Option **Schlüsseltresor verwalten** angezeigt wird, können Sie darauf klicken, um die aktuellen Einstellungen anzuzeigen, Berechtigungen zu bearbeiten oder Ihre Geheimnisse im Azure-Portal zu ändern.
+
+1. Wählen Sie als Nächstes den Link mit der Website-URL aus, um Ihre Webanwendung im Browser zu öffnen. Überprüfen Sie, ob Sie den richtigen Wert aus dem Schlüsseltresor sehen.
+
+Herzlichen Glückwunsch, Sie haben sichergestellt, dass Ihre Web-App Key Vault für den Zugriff auf sicher gespeicherte Geheimnisse verwenden kann, wenn sie in Azure ausgeführt wird.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

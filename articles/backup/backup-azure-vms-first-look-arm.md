@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
 keywords: Sicherungen; VM-Sicherungen
-ms.openlocfilehash: fee0e20e232621764ba10d714b7ddfe9c759dafc
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a30b4081bf01a76c6d89e7557fbb1b40baa86fbc
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717912"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985884"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Sichern virtueller Azure-Computer in Recovery Services-Tresor
 
@@ -96,11 +96,11 @@ Führen Sie die folgenden Schritte aus, um den Sicherungsauftrag über das Menü
 
   Bis zum Abschluss des ersten Sicherungsvorgangs wird **Status der letzten Sicherung** als **Warnung (anfängliche Sicherung steht aus)** angezeigt. Klicken Sie unter **Zusammenfassung** auf den Namen der Richtlinie, um anzuzeigen, wann der nächste geplante Sicherungsauftrag ansteht. Das Menü „Sicherungsrichtlinie“ wird geöffnet und zeigt den Zeitpunkt der geplanten Sicherung an.
 
-10. Um den virtuellen Computer zu schützen, klicken Sie auf **Jetzt sichern**. 
+10. Um den virtuellen Computer zu schützen, klicken Sie auf **Jetzt sichern**.
 
   ![Klicken Sie jetzt auf „Sichern“, um die erste Sicherung durchzuführen.](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
-  Das Menü „Jetzt sichern“ wird geöffnet. 
+  Das Menü „Jetzt sichern“ wird geöffnet.
 
   ![Blatt „Jetzt sichern“](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
 
@@ -185,7 +185,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
   ![Anzeigen der Speicherkonfiguration für den neuen Tresor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-update.png)
 
 2. Scrollen Sie im Menü „Verwaltung“ des neuen Tresors mithilfe des vertikalen Schiebereglers nach unten zum Verwaltungsabschnitt, und klicken Sie auf **Sicherungsinfrastruktur**, um das Menü „Sicherungsinfrastruktur“ zu öffnen.
- 
+
    ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/set-storage-config-bkup-infra.png)
 
 3. Klicken Sie im Menü „Sicherungsinfrastruktur“ auf **Sicherungskonfiguration**, um das Menü **Sicherungskonfiguration** zu öffnen.
@@ -291,6 +291,11 @@ So führen Sie den ersten Sicherungsauftrag aus:
   ![Festlegen des letzten Aufbewahrungstags für den Wiederherstellungspunkt für „Jetzt sichern“](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
   Anhand von Bereitstellungsbenachrichtigungen werden Sie darüber informiert, dass der Sicherungsauftrag ausgelöst wurde und dass Sie den Status des Auftrags auf der Seite „Sicherungsaufträge“ überwachen können. Je nach Größe Ihrer VM kann das Erstellen der ersten Sicherung einige Zeit dauern.
+
+  > [!NOTE]
+  > Alle von Azure Backup gesicherten Daten werden im Ruhezustand mit der [Speicherdienstverschlüsselung (Storage Service Encryption, SSE)](../storage/common/storage-service-encryption.md) verschlüsselt.
+  >
+  >
 
 6. Klicken Sie im Tresordashboard auf der Kachel **Sicherungsaufträge** auf **In Bearbeitung**, um den Status der ersten Sicherung anzuzeigen oder nachzuverfolgen.
 

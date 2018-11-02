@@ -4,22 +4,22 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Dire
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 10/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 307c3cf258a74d1ddfb409f0d5b22d9e1fd6bf4b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 74f38ef3043cfa0e6df40c264b72cc5eae38544e
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213820"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430288"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>Tutorial: Azure Active Directory-Integration in Adaptive Insights
 
@@ -29,7 +29,7 @@ Die Integration von Adaptive Insights in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Adaptive Insights hat.
 - Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Adaptive Insights anzumelden (einmaliges Anmelden, SSO).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
@@ -61,50 +61,55 @@ Zum Konfigurieren der Integration von Adaptive Insights in Azure AD müssen Sie 
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-    ![Active Directory][1]
+    ![image](./media/adaptivesuite-tutorial/selectazuread.png)
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![ANWENDUNGEN][2]
-
+    ![image](./media/adaptivesuite-tutorial/a_select_app.png)
+    
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![ANWENDUNGEN][3]
+    ![image](./media/adaptivesuite-tutorial/a_new_app.png)
 
 4. Geben Sie im Suchfeld **Adaptive Insights** ein, wählen Sie im Ergebnisbereich **Adaptive Insights** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_addfromgallery.png)
+     ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Adaptive Insights anhand einer Testbenutzerin namens Britta Simon.
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Adaptive Insights als Entsprechung für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Adaptive Insights-Benutzer muss eine Linkbeziehung eingerichtet werden.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Adaptive Insights zu konfigurieren und zu testen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Adaptive Insights-Testbenutzers](#creating-an-adaptive-insights-test-user)**, um eine Entsprechung für Britta Simon in Adaptive Insights zu haben, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Adaptive Insights-Testbenutzers](#create-an-adaptive-insights-test-user)**, um eine Entsprechung für Britta Simon in Adaptive Insights zu haben, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Adaptive Insights-Anwendung.
 
 **So konfigurieren Sie das einmalige Anmelden von Azure AD mit Adaptive Insights**
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Adaptive Insights** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Adaptive Insights** die Option **Einmaliges Anmelden** aus.
 
-    ![Configure Single Sign-On][4]
+    ![image](./media/adaptivesuite-tutorial/B1_B2_Select_SSO.png)
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML** aus, um einmaliges Anmelden zu aktivieren.
 
-    ![Configure Single Sign-On](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_samlbase.png)
+    ![image](./media/adaptivesuite-tutorial/b1_b2_saml_sso.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Adaptive Insights** die folgenden Schritte aus:
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    ![Configure Single Sign-On](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
+    ![image](./media/adaptivesuite-tutorial/b1-domains_and_urlsedit.png)
+
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+
+    ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL nach folgendem Muster ein: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
@@ -112,18 +117,22 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     >[!NOTE]
     > Sie finden die Werte für den Bezeichner (Entitäts-ID) und die Antwort-URL auf der Adaptive Insights-Seite **SAML SSO Settings** (SAML-SSO-Einstellungen).
+ 
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das **Zertifikat (Base64)** herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+    ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_certficate.png) 
 
-    ![Configure Single Sign-On](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_certificate.png)
+6. Kopieren Sie im Abschnitt **Adaptive Insights einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+    Beachten Sie, dass für die URL ggf. Folgendes angezeigt wird:
 
-    ![Configure Single Sign-On](./media/adaptivesuite-tutorial/tutorial_general_400.png)
+    a. Anmelde-URL
 
-6. Klicken Sie im Abschnitt **Adaptive Insights-Konfiguration** auf **Adaptive Insights konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
+    b. Azure AD-Bezeichner
 
-    ![Configure Single Sign-On](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_configure.png) 
+    c. Abmelde-URL
+
+    ![image](./media/adaptivesuite-tutorial/d1_samlsonfigure.png) 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster auf der Adaptive Insights-Unternehmenswebsite als Administrator an.
 
@@ -141,11 +150,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Geben Sie im Textfeld **Identity provider name** einen Namen für die Konfiguration ein.
 
-    b. Fügen Sie den Wert der **SAML-Entitäts-ID**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Identity Provider EntityDescriptor Entity ID** (EntityDescriptor-Entitäts-ID des Identitätsanbieters) ein.
+    b. Fügen Sie den Wert der **Azure AD-ID**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Identity provider Entity ID** (Entitäts-ID des Identitätsanbieters) ein.
 
-    c. Fügen Sie den Wert der **SAML-Dienst-URL für einmaliges Anmelden**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Identity provider SSO URL** (SSO-URL des Identitätsanbieters) ein.
+    c. Fügen Sie den Wert der **Anmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Identity Provider SSO URL** (SSO-URL des Identitätsanbieters) ein.
 
-    d. Fügen Sie den Wert der **SAML-Dienst-URL für einmaliges Anmelden**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Custom logout URL** (Benutzerdefinierte Abmelde-URL) ein.
+    d. Fügen Sie den Wert der **Abmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Custom logout URL** (Benutzerdefinierte Abmelde-URL) ein.
 
     e. Klicken Sie auf **Choose file**, um das heruntergeladene Zertifikat hochzuladen.
 
@@ -163,38 +172,32 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     h. Klicken Sie auf **Speichern**.
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![image](./media/adaptivesuite-tutorial/d_users_and_groups.png)
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/adaptivesuite-tutorial/create_aaduser_01.png) 
+    ![image](./media/adaptivesuite-tutorial/d_adduser.png)
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/adaptivesuite-tutorial/create_aaduser_02.png) 
+    ![image](./media/adaptivesuite-tutorial/d_userproperties.png)
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/adaptivesuite-tutorial/create_aaduser_03.png) 
+    c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/adaptivesuite-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
-
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
-
-    d. Klicken Sie auf **Create**.
-
-### <a name="creating-an-adaptive-insights-test-user"></a>Erstellen eines Adaptive Insights-Testbenutzers
+    d. Klicken Sie auf **Erstellen**.
+ 
+### <a name="create-an-adaptive-insights-test-user"></a>Erstellen eines Adaptive Insights-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Adaptive Insights anmelden können, müssen sie in Adaptive Insights bereitgestellt werden. Im Fall von Adaptive Insights muss die Bereitstellung manuell ausgeführt werden.
 
@@ -204,9 +207,11 @@ Damit sich Azure AD-Benutzer bei Adaptive Insights anmelden können, müssen sie
 2. Wechseln Sie zu **Administrator**.
 
    ![Admin](./media/adaptivesuite-tutorial/IC805644.png "Admin")
+
 3. Klicken Sie im Abschnitt **Benutzer und Rollen** auf **Benutzer hinzufügen**.
 
    ![Benutzer hinzufügen](./media/adaptivesuite-tutorial/IC805648.png "Benutzer hinzufügen")
+   
 4. Führen Sie im Abschnitt **Neuer Benutzer** die folgenden Schritte aus:
 
    ![Senden](./media/adaptivesuite-tutorial/IC805649.png "Senden")
@@ -221,57 +226,38 @@ Damit sich Azure AD-Benutzer bei Adaptive Insights anmelden können, müssen sie
 >Sie können AAD-Benutzerkonten auch mit anderen Tools zum Erstellen von Adaptive Insights-Benutzerkonten oder mit den von Adaptive Insights bereitgestellten APIs erstellen.
 >
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Adaptive Insights, damit sie das einmalige Anmelden von Azure verwenden kann.
 
-![Benutzer zuweisen][200]
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
-**So weisen Sie Britta Simon Adaptive Insights zu**
-
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
-
-    ![Benutzer zuweisen][201]
+    ![image](./media/adaptivesuite-tutorial/d_all_applications.png)
 
 2. Wählen Sie in der Anwendungsliste **Adaptive Insights** aus.
 
-    ![Configure Single Sign-On](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_app.png)
+    ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_app.png)
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][202]
+    ![image](./media/adaptivesuite-tutorial/d_leftpaneusers.png)
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Wählen Sie die Schaltfläche **Hinzufügen** und dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][203]
+    ![image](./media/adaptivesuite-tutorial/d_assign_user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+4. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
+    
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-
-In diesem Abschnitt wird die Microsoft Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Zugriffsbereichs getestet.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Adaptive Insights“ klicken, werden Sie automatisch bei Ihrer Adaptive Insights-Anwendung angemeldet.
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-<!--Image references-->
-
-[1]: ./media/adaptivesuite-tutorial/tutorial_general_01.png
-[2]: ./media/adaptivesuite-tutorial/tutorial_general_02.png
-[3]: ./media/adaptivesuite-tutorial/tutorial_general_03.png
-[4]: ./media/adaptivesuite-tutorial/tutorial_general_04.png
-
-[100]: ./media/adaptivesuite-tutorial/tutorial_general_100.png
-
-[200]: ./media/adaptivesuite-tutorial/tutorial_general_200.png
-[201]: ./media/adaptivesuite-tutorial/tutorial_general_201.png
-[202]: ./media/adaptivesuite-tutorial/tutorial_general_202.png
-[203]: ./media/adaptivesuite-tutorial/tutorial_general_203.png

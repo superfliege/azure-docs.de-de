@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 851530910c702d388cd4dc8607bf09ecb5fa44e0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198472"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959025"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Wichtige Features und Konzepte in Azure Stack
 Wenn Sie mit Microsoft Azure Stack noch nicht vertraut sind, können diese Begriffe und Featurebeschreibungen möglicherweise hilfreich sein.
@@ -155,14 +155,6 @@ Die rollenbasierte Zugriffssteuerung in Azure verfügt über drei grundlegende R
 ## <a name="usage-data"></a>Nutzungsdaten
 Microsoft Azure Stack erfasst und aggregiert Nutzungsdaten für sämtliche Ressourcenanbieter und übermittelt sie an Azure für die Verarbeitung durch Azure Commerce. Die in Azure Stack gesammelten Nutzungsdaten können über eine REST-API angezeigt werden. Es gibt eine mit Azure übereinstimmende Mandanten-API sowie APIs für Anbieter und delegierte Anbieter, mit denen die Nutzungsdaten für alle Mandantenabonnements abgerufen werden können. Diese Daten können in ein externes Tool oder einen Dienst integriert oder für die Abrechnung oder verbrauchsbasierte Kostenzuteilung verwendet werden. Sobald die Nutzungsdaten von Azure Commerce verarbeitet wurden, können sie im Azure-Abrechnungsportal angezeigt werden.
 
-## <a name="in-development-build-of-azure-stack-development-kit"></a>In der Entwicklung befindlicher Build des Azure Stack Development Kits
-Anhand von Builds, die sich noch in der Entwicklung befinden, können Erstanwender die neueste Version des Azure Stack Development Kits bewerten. Dabei handelt es sich um inkrementelle Builds, die auf der letzten Hauptversion basieren. Während Hauptversionen weiterhin alle paar Monate veröffentlicht werden, erfolgt die Veröffentlichung von Builds in der Entwicklung zeitweise zwischen den Hauptversionen.
-
-In der Entwicklung befindliche Builds bieten die folgenden Vorteile:
-- Fehlerbehebungen
-- Neue Funktionen
-- Weitere Verbesserungen
-
 ## <a name="next-steps"></a>Nächste Schritte
-[Bewerten des Azure Stack Development Kits](azure-stack-deploy-overview.md)
+[Verwaltungsgrundlagen](azure-stack-manage-basics.md)
 

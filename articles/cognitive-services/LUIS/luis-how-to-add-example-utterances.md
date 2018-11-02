@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6a3edfd426fcdce83bd60332ba2b1ff6224dae1a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888287"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645558"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Hinzufügen von Beispieläußerungen und -beschriftungen bei Entitäten
 
@@ -159,6 +159,36 @@ In der Äußerung `Book 2 tickets from Seattle to Cairo` ist Seattle der Abflug-
     >Die Namen untergeordneter Entitäten müssen für alle Entitäten einer einzelnen App eindeutig sein. Zwei unterschiedliche hierarchische Entitäten dürfen keine untergeordneten Elemente mit dem gleichen Namen enthalten. 
 
     Weitere Informationen dazu, wie Sie die hierarchische Entität aus der Antwort der JSON-Endpunktabfrage extrahieren, finden Sie unter [Datenextrahierung](luis-concept-data-extraction.md#hierarchical-entity-data). Probieren Sie den [Schnellstart](luis-quickstart-intent-and-hier-entity.md) für hierarchische Entitäten aus, um mehr über das Verwenden einer hierarchischen Entität zu erfahren.
+
+## <a name="entity-status-predictions"></a>Vorhersagen zum Entitätsstatus
+
+Wenn Sie im LUIS-Portal eine neue Äußerung eingeben, enthält diese Äußerung möglicherweise Vorhersagefehler für die Entität. Der Vorhersagefehler ist der Unterschied zwischen der Bezeichnung einer Entität und der Vorhersage zur Entität durch LUIS. 
+
+Dieser Unterschied wird im LUIS-Portal in der Äußerung rot unterstrichen. Die rote Unterstreichung kann in den Klammern der Entität oder außerhalb der Klammern angezeigt werden. 
+
+![Screenshot der Vorhersageabweichung für den Entitätsstatus](./media/luis-how-to-add-example-utterances/entity-prediction-error.png)
+
+Wählen Sie die rot unterstrichenen Wörter in der Äußerung aus. 
+
+Im Entitätsfeld wird der **Entitätsstatus** mit einem roten Ausrufezeichen angezeigt, wenn eine Abweichung zur Vorhersage vorliegt. Wählen Sie zum Anzeigen des Entitätsstatus mit Informationen zu den Unterschieden zwischen den bezeichneten und vorhergesagten Entitäten die Option **Entitätsstatus** und dann das Element auf der rechten Seite aus.
+
+![Screenshot der Vorhersageabweichung für den Entitätsstatus](./media/luis-how-to-add-example-utterances/entity-status.png)
+
+Die rote Linie kann in folgenden Situationen angezeigt werden:
+
+    * Wenn eine Äußerung eingegeben wird, bevor die Entität bezeichnet wurde
+    * Wenn die Entitätsbezeichnung angewandt wird
+    * Wenn die Entitätsbezeichnung entfernt wird
+    * Wenn für den Text mehrere Entitätsbezeichnungen vorhergesagt werden 
+
+Die folgenden Lösungen beheben Abweichungen bei Entitätsvorhersagen:
+
+|Entität|Visueller Indikator|Vorhersage|Lösung|
+|--|--|--|--|
+|Die Äußerung wurde eingegeben, aber die Entität wurde noch nicht bezeichnet.|rot unterstrichen|Die Vorhersage ist falsch.|Bezeichnen Sie die Entität mit dem vorhergesagten Wert.|
+|Nicht bezeichneter Text|rot unterstrichen|Falsche Vorhersage|Die aktuellen Äußerungen, die diese falsche Entität verwenden, müssen für alle Absichten überprüft werden. Die aktuellen Äußerungen haben LUIS fälschlicherweise trainiert, diesen Text als die vorhergesagte Entität anzusehen.
+|Richtig bezeichneter Text|blaue Entitätsmarkierung, rot unterstrichen|Falsche Vorhersage|Stellen Sie weitere Äußerungen mit der richtig bezeichneten Entität an verschiedenen Stellen und in unterschiedlichen Verwendungen bereit. Die aktuellen Äußerungen sind entweder nicht ausreichend, um LUIS für diese Entität zu trainieren, oder ähnliche Entitäten kommen im selben Kontext vor. Ähnliche Entitäten sollten in einer einzigen Entität zusammengefasst werden, damit LUIS nicht verwirrt wird. Eine weitere Lösung besteht darin, eine Ausdrucksliste hinzuzufügen, um die Wichtigkeit der Wörter zu steigern. |
+|Falsch bezeichneter Text|blaue Entitätsmarkierung, rot unterstrichen|Richtige Vorhersage| Stellen Sie weitere Äußerungen mit der richtig bezeichneten Entität an verschiedenen Stellen und in unterschiedlichen Verwendungen bereit. 
 
 
 ## <a name="remove-entity-labels-from-utterances"></a>Entfernen von Entitätsbeschriftungen aus Äußerungen

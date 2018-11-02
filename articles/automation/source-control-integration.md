@@ -9,26 +9,26 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9bbf3582da2664b6e6429677d47aad4d69a7c1bb
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785323"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023746"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 
-Mit der Quellcodeverwaltung halten Sie die Runbooks in Ihrem Automation-Konto auf demselben aktuellen Stand wie Ihre Skripts im GitHub- oder Azure DevOps-Repository für die Quellcodeverwaltung. Sie können mit der Quellcodeverwaltung einfach mit Ihrem Team zusammenarbeiten, Änderungen nachverfolgen und Ihre Runbooks auf frühere Versionen zurücksetzen. Mit der Quellcodeverwaltung können Sie beispielsweise verschiedene Verzweigungen in der Quellcodeverwaltung mit Ihren Automation-Entwicklungs- oder Testkonten synchronisieren. So ist es einfach, Code, der in Ihrer Entwicklungsumgebung getestet wurde, in Ihr Automation-Produktionskonto höher zu stufen.
+Mit der Quellcodeverwaltung halten Sie die Runbooks in Ihrem Automation-Konto auf demselben aktuellen Stand wie Ihre Skripts in der Quellcodeverwaltung Ihres GitHub- oder Azure DevOps-Repositorys. Sie können mit der Quellcodeverwaltung einfach mit Ihrem Team zusammenarbeiten, Änderungen nachverfolgen und Ihre Runbooks auf frühere Versionen zurücksetzen. Mit der Quellcodeverwaltung können Sie beispielsweise verschiedene Verzweigungen in der Quellcodeverwaltung mit Ihren Automation-Entwicklungs- oder Testkonten synchronisieren. So ist es einfach, Code, der in Ihrer Entwicklungsumgebung getestet wurde, in Ihr Automation-Produktionskonto höher zu stufen.
 
 Azure Automation unterstützt drei Arten von Quellcodeverwaltung:
 
 * GitHub
-* Visual Studio Team Services (Git)
-* Visual Studio Team Services (TFVC)
+* Azure DevOps (Git)
+* Azure DevOps (TFVC)
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 
-* Ein Repository für die Quellcodeverwaltung (GitHub oder Visual Studio Team Services)
+* Ein Quellcodeverwaltungsrepository (GitHub oder Azure DevOps)
 * Die richtigen [Berechtigungen](#personal-access-token-permissions) für das Repository für die Quellcodeverwaltung
 * Ein [ausführendes Konto und eine Verbindung](manage-runas-account.md)
 
@@ -50,7 +50,7 @@ Geben Sie auf der Seite **Quellcodeverwaltung – Übersicht** die Informationen
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Name der Quellcodeverwaltung     | Ein Anzeigename für die Quellcodeverwaltung        |
-|Typ der Quellcodeverwaltung     | Der Typ der Quelle für die Quellcodeverwaltung. Die verfügbaren Optionen lauten wie folgt:</br> Github</br>Visual Studio Team Services (Git)</br> Visual Studio Team Services (TFVC)        |
+|Typ der Quellcodeverwaltung     | Der Typ der Quelle für die Quellcodeverwaltung. Die verfügbaren Optionen lauten wie folgt:</br> Github</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |Repository     | Der Name des Repositorys oder Projekts. Dieser Wert wird aus dem Repository der Quellcodeverwaltung abgerufen. Beispiel: $/ContosoFinanceTFVCExample         |
 |Verzweigung     | Die Verzweigung, von der die Quelldateien abgerufen werden. Die Ausrichtung auf Verzweigungen ist für den TFVC-Quellcodeverwaltungstyp nicht verfügbar.          |
 |Ordnerpfad     | Der Ordner, der die Runbooks für die Synchronisierung enthält. Beispiel: /Runbooks         |

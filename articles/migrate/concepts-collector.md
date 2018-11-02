@@ -4,15 +4,15 @@ description: Informationen zur Collectorappliance in Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/24/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: b79045e54b9c2ee4846f2216704a419e0ff85501
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 006a246323e9f82ea9c9a6a2940ed624d7e44e13
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434431"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986779"
 ---
 # <a name="about-the-collector-appliance"></a>Informationen zur Collectorappliance
 
@@ -179,11 +179,11 @@ Der Collector kommuniziert einmalig mit vCenter Server, um Metadaten über die V
 - Für diese Ermittlungsmethode müssen Sie die Statistikeinstellungen in vCenter Server auf Ebene 3 festlegen.
 - Nachdem die Statistikeinstellungen auf Ebene 3 festgelegt wurden, dauert es bis zu einem Tag, bis die Leistungsindikatoren generiert werden. Daher wird empfohlen, die Ermittlung erst nach einem Tag durchzuführen.
 - Beim Sammeln von Leistungsdaten für eine VM verwendet die Appliance die in vCenter Server gespeicherten Verlaufsleistungsdaten. Sie erfasst den Leistungsverlauf des letzten Monats.
-- Azure Migrate erfasst für jede Metrik einen durchschnittlichen Leistungsindikator (im Vergleich zu einem Spitzenleistungsindikator).
+- Azure Migrate erfasst Durchschnittswerte der Leistungsindikatoren – keine Spitzenwerte – für jede Metrik, was zu Unterdimensionierung führen kann.
 
 ### <a name="continuous-discovery"></a>Kontinuierliche Ermittlung
 
-Die Collectorappliance ist kontinuierlich mit dem Azure Migrate-Projekt verbunden.
+Die Collectorappliance ist kontinuierlich mit dem Azure Migrate-Projekt verbunden und sammelt kontinuierlich Leistungsdaten von VMs.
 
 - Der Collector profiliert kontinuierlich die lokale Umgebung, um alle 20 Sekunden Echtzeit-Verwendungsdaten zu sammeln.
 - Dieses Modell ist für die Sammlung von Leistungsdaten nicht von den Statistikeinstellungen von vCenter Server abhängig.
@@ -191,8 +191,14 @@ Die Collectorappliance ist kontinuierlich mit dem Azure Migrate-Projekt verbunde
 - Zum Erstellen des Datenpunkts wählt die Appliance den Spitzenwert aus den 20-Sekunden-Stichproben aus und sendet diesen an Azure.
 - Sie können die kontinuierliche Profilerstellung jederzeit über den Collector beenden.
 
+Beachten Sie, dass die Appliance nur Leistungsdaten kontinuierlich erfasst. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (etwa hinzugefügte VMs, Löschvorgänge, hinzugefügte Datenträger etc.). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
+
+1. Hinzugefügte Elemente (VMs, Datenträger, Kerne und Ähnliches): Damit diese Änderungen im Azure-Portal berücksichtigt werden, können Sie die Ermittlung über die Appliance beenden und anschließend wieder starten. Dadurch wird sichergestellt, dass die Änderungen im Azure Migrate-Projekt aktualisiert werden.
+
+2. Gelöschte VMs: Das Löschen von VMs wird aufgrund des Entwurfs der Appliance auch dann nicht berücksichtigt, wenn Sie die Ermittlung beenden und wieder starten. Das liegt daran, dass Daten nachfolgender Ermittlungen älteren Ermittlungen angefügt und nicht überschrieben werden. In diesem Fall können Sie die VM im Portal einfach ignorieren, indem Sie sie aus Ihrer Gruppe entfernen und die Bewertung neu berechnen.
+
 > [!NOTE]
-> Die Funktionalität der kontinuierlichen Ermittlung ist in der Vorschau. Wenn die Statistikeinstellungen von vCenter Server nicht auf Ebene 3 festgelegt sind, wird empfohlen, diese Methode zu verwenden.
+> Die Funktionalität der kontinuierlichen Ermittlung ist in der Vorschau. Es empfiehlt sich, diese Methode zu verwenden, da sie präzise Leistungsdaten erfasst und zu einer korrekten Größe führt.
 
 
 ## <a name="discovery-process"></a>Ermittlungsprozess
@@ -241,8 +247,8 @@ virtualDisk.read.average | 2 | 2 | Berechnet die Datenträgergröße, Speicherko
 virtualDisk.write.average | 2 | 2  | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
 virtualDisk.numberReadAveraged.average | 1 | 3 |  Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
 virtualDisk.numberWriteAveraged.average | 1 | 3 |   Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
-net.received.average | 2 | 3 |  Berechnet die VM-Größe und Netzwerkkosten                        |
-net.transmitted.average | 2 | 3 | Berechnet die VM-Größe und Netzwerkkosten    
+net.received.average | 2 | 3 |  Berechnet die VM-Größe                          |
+net.transmitted.average | 2 | 3 | Berechnet die VM-Größe     
 
 ## <a name="next-steps"></a>Nächste Schritte
 

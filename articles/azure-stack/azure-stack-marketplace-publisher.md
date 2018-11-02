@@ -12,15 +12,15 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/26/2018
+ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 518384776f777c3ea7cbd636dd2a48d919952f28
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fabc72e6dc31bb7f244cda9634af3b2556ba23a9
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409115"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023792"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Hinzufügen von Marketplace-Elementen mithilfe des Veröffentlichungstools
 
@@ -28,7 +28,7 @@ Durch Hinzufügen Ihrer Inhalte zum [Azure Stack-Marketplace](azure-stack-market
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
- - Das Toolkit muss auf dem Azure Stack-Host ausgeführt werden oder auf dem Computer, auf dem es ausgeführt wird, über [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)-Konnektivität verfügen.
+ - Das Toolkit muss auf dem Azure Stack-Host ausgeführt werden oder auf dem Computer, auf dem es ausgeführt wird, über die Möglichkeit einer [VPN](.\asdk\asdk-connect.md#connect-to-azure-stack-with-vpn)-Verbindung mit dem ASDK-Host verfügen.
 
  - Laden Sie die [Azure Stack-Schnellstartvorlagen](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) herunter, und extrahieren Sie sie.
 

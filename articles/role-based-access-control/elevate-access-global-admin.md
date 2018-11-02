@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/15/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fb0fb4e0f23413cb56b1bb5ec419c44dfc52e7b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a2f66078a817f5e6ad7296df11634a1a6130a055
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996841"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321664"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory
 
@@ -31,29 +31,37 @@ Wenn Sie [globaler Administrator](../active-directory/users-groups-roles/directo
 - Anzeigen aller Azure-Abonnements in einer Organisation
 - Zulassen des Zugriffs auf alle Azure-Abonnements für eine Automation-App (etwa eine App für die Rechnungsstellung oder Überwachung)
 
-Azure AD-Administratorrollen und rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure erstrecken sich nicht standardmäßig auf Azure AD und Azure. Als globaler Administrator in Azure AD können Sie jedoch Ihre Zugriffsrechte für die Verwaltung von Azure-Abonnements und Verwaltungsgruppen erhöhen. Bei Erhöhung der Zugriffsrechte wird Ihnen die Rolle [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) (eine RBAC-Rolle) für alle Abonnements für einen bestimmten Mandanten zugewiesen. Die Rolle „Benutzerzugriffsadministrator“ ermöglicht es Ihnen, anderen Benutzern Zugriff auf Azure-Ressourcen im Stammbereich (`/`) zu erteilen.
-
-Die erhöhten Zugriffsrechte sollten nur vorübergehend und nur bei Bedarf zugewiesen werden.
+In diesem Artikel werden die verschiedenen Möglichkeiten beschrieben, wie Sie Ihre Zugriffsrechte in Azure AD erhöhen können.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
+
+## <a name="overview"></a>Übersicht
+
+Azure AD und Azure-Ressourcen werden unabhängig voneinander geschützt. Das bedeutet, dass Azure AD-Rollenzuweisungen keinen Zugriff auf Azure-Ressourcen gewähren und Azure-Rollenzuweisungen keinen Zugriff auf Azure AD. Wenn Sie jedoch globaler Administrator in Azure AD sind, können Sie sich selbst Zugriff auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zuweisen. Verwenden Sie diese Funktion, wenn Sie keinen Zugriff auf Azure-Abonnementressourcen wie virtuelle Computer oder Speicherkonten haben und Sie Ihre globalen Administratorrechte verwenden möchten, um Zugriff auf diese Ressourcen zu erhalten.
+
+Wenn Sie Ihre Zugriffsrechte erhöhen, wird Ihnen die Rolle [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) in Azure für den Stammbereich (`/`) zugewiesen. Auf diese Weise können Sie alle Ressourcen anzeigen und den Zugriff in jeder Abonnement- oder Verwaltungsgruppe im Verzeichnis zuweisen. Die Rollenzuweisung „Benutzerzugriffsadministrator“ kann mit PowerShell entfernt werden.
+
+Sie sollten dieses erhöhte Zugriffsrecht entfernen, sobald Sie die Änderungen vorgenommen haben, die im Stammbereich erforderlich sind.
+
+![Erhöhen von Zugriffsrechten](./media/elevate-access-global-admin/elevate-access.png)
 
 ## <a name="azure-portal"></a>Azure-Portal
 
 Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Administrator mit dem Azure-Portal zu erhöhen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure Active Directory Admin Center](https://aad.portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure Active Directory Admin Center](https://aad.portal.azure.com) als globaler Administrator an.
 
 1. Klicken Sie in der Navigationsliste auf **Azure Active Directory** und dann auf **Eigenschaften**.
 
    ![Azure AD-Eigenschaften: Screenshot](./media/elevate-access-global-admin/aad-properties.png)
 
-1. Legen Sie für **Der globale Administrator kann Azure-Abonnements und Verwaltungsgruppen verwalten.** die Option **Ja** fest.
+1. Legen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** den Schalter auf **Ja** fest.
 
-   ![Screenshot von „Der globale Administrator kann Azure-Abonnements und Verwaltungsgruppen verwalten.“](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
+   ![Zugriffsverwaltung für Azure-Ressourcen – Screenshot](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Wenn Sie **Ja** festlegen, wird das Konto des globalen Administrators (der derzeit angemeldete Benutzer) in der rollenbasierten Zugriffssteuerung von Azure zur Rolle „Benutzerzugriffsadministrator“ im Stammbereich (`/`) hinzugefügt. Dadurch erhalten Sie Zugriff, um alle mit Ihrem Azure AD-Mandanten verknüpften Azure-Abonnements anzuzeigen und Berichte für sie zu erstellen.
+   Wenn Sie den Schalter auf **Ja** festlegen, wird Ihnen in Azure RBAC im Stammbereich (/) die Rolle „Benutzerzugriffsadministrator“ zugewiesen. Dadurch erhalten Sie die Berechtigung, Rollen in allen Azure-Abonnements und Verwaltungsgruppen zuzuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Dieser Schalter ist nur für Benutzer verfügbar, denen in Azure AD die Rolle des globalen Administrators zugewiesen wurde.
 
-   Wenn Sie **Nein** festlegen, wird das Konto des globalen Administrators (der derzeit angemeldete Benutzer) in der rollenbasierten Zugriffssteuerung von Azure aus der Rolle „Benutzerzugriffsadministrator“ entfernt. Sie können nicht alle mit dem Azure AD-Mandanten verknüpften Azure-Abonnements anzeigen und können nur die Azure-Abonnements anzeigen und verwalten, auf die Sie Zugriff erhalten haben.
+   Wenn Sie den Schalter auf **Nein** festlegen, wird die Rolle „Benutzerzugriffsadministrator“ in Azure RBAC aus Ihrem Benutzerkonto entfernt. Sie können dann keine Rollen mehr in allen Azure-Abonnements und Verwaltungsgruppen zuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Sie können nur die Azure-Abonnements und Verwaltungsgruppen anzeigen und verwalten, für die Ihnen der Zugriff gewährt wurde.
 
 1. Klicken Sie auf **Speichern**, um Ihre Einstellung zu speichern.
 
@@ -190,16 +198,16 @@ Beim Aufruf von `elevateAccess` erstellen Sie eine Rollenzuweisung für sich sel
 
     Speichern Sie die ID aus dem `name`-Parameter (in diesem Fall `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`).
 
-2. Sie müssen auch die Rollenzuweisung für den Mandantenadministrator im Mandantenbereich auflisten. Listen Sie alle Zuweisungen im Mandantenbereich für `principalId` des Mandantenadministrators auf, der den Aufruf mit erhöhten Zugriffsrechten vorgenommen hat. Dadurch werden alle Zuweisungen im Mandanten für „objectid“ aufgelistet.
+2. Außerdem müssen Sie die Rollenzuweisung für den Verzeichnisadministrator im Verzeichnisbereich auflisten. Listen Sie alle Zuweisungen im Verzeichnisbereich für `principalId` des Verzeichnisadministrators auf, der den Aufruf mit erhöhten Zugriffsrechten vorgenommen hat. Dadurch werden alle Zuweisungen im Verzeichnis für „objectid“ aufgelistet.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
     
     >[!NOTE] 
-    >Ein Mandantenadministrator sollte nicht über zu viele Zuweisungen verfügen. Wenn die obige Abfrage zu viele Zuweisungen zurückgibt, können Sie auch Abfragen für alle Zuweisungen auf der Mandantenbereichsebene durchführen und dann die Ergebnisse filtern: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >Ein Verzeichnisadministrator sollte nicht über zu viele Zuweisungen verfügen. Wenn die obige Abfrage zu viele Zuweisungen zurückgibt, können Sie auch Abfragen für alle Zuweisungen auf der Verzeichnisbereichsebene durchführen und dann die Ergebnisse filtern: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-    2. Mit den oben aufgeführten Aufrufe wird eine Liste von Rollenzuweisungen zurückgegeben. Suchen Sie die Rollenzuweisung, bei der der Bereich `"/"` lautet und `roleDefinitionId` mit der Rollennamen-ID endet, die Sie in Schritt 1 ermittelt haben, und `principalId` der Objekt-ID des Mandantenadministrators entspricht. 
+    2. Mit den oben aufgeführten Aufrufe wird eine Liste von Rollenzuweisungen zurückgegeben. Suchen Sie die Rollenzuweisung, bei der der Bereich `"/"` lautet und `roleDefinitionId` mit der Rollennamen-ID endet, die Sie in Schritt 1 ermittelt haben, und `principalId` der Objekt-ID des Verzeichnisadministrators entspricht. 
     
     Beispielrollenzuweisung:
 
@@ -235,6 +243,5 @@ Beim Aufruf von `elevateAccess` erstellen Sie eine Rollenzuweisung für sich sel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Grundlegendes zu den verschiedenen Rollen](rbac-and-directory-admin-roles.md)
 - [Rollenbasierte Zugriffssteuerung mit REST](role-assignments-rest.md)
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit Privileged Identity Management](pim-azure-resource.md)
-- [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](conditional-access-azure-management.md)

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 66d04ca93a79f4d9cdd9f162c6cd3210ae35f4d2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e317a9c3cea800e05fbf3d2df73c124d2e7ffd23
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902704"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457662"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -211,6 +211,7 @@ Die Protokollebene `None` wird im nächsten Abschnitt beschrieben.
 
 Mit der Datei *host.json* wird konfiguriert, welcher Protokollierungsgrad von einer Funktionen-App an Application Insights gesendet wird. Für jede Kategorie geben Sie zu sendende Mindestprotokollebene an. Hier sehen Sie ein Beispiel:
 
+#### <a name="functions-version-1"></a>Functions-Version 1 
 ```json
 {
   "logger": {
@@ -226,6 +227,22 @@ Mit der Datei *host.json* wird konfiguriert, welcher Protokollierungsgrad von ei
 }
 ```
 
+#### <a name="functions-version-2"></a>Functions-Version 2 
+Functions v2 verwendet jetzt die [.NET Core-Protokollfilterhierarchie](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host.Results": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Trace"
+    }
+  }
+}
+```
+
 In diesem Beispiel werden die folgenden Regeln eingerichtet:
 
 1. Für Protokolle mit der Kategorie „Host.Results“ oder „Function“ soll nur die Ebene `Error` und höher an Application Insights gesendet werden. Protokolle für die Ebene `Warning` und niedriger werden ignoriert.
@@ -236,6 +253,7 @@ Der Kategoriewert in *host.json* steuert die Protokollierung für alle Kategorie
 
 Wenn *host.json* mehrere Kategorien enthält, die mit der gleichen Zeichenfolge beginnen, werden zuerst die längeren abgeglichen. Nehmen Sie Folgendes an: Sie möchten, dass für die Laufzeit alles mit Ausnahme von „Host.Aggregator“ auf der Ebene `Error` protokolliert wird, während „Host.Aggregator“ auf der Ebene `Information` protokolliert werden soll:
 
+#### <a name="functions-version-1"></a>Functions-Version 1 
 ```json
 {
   "logger": {
@@ -246,6 +264,21 @@ Wenn *host.json* mehrere Kategorien enthält, die mit der gleichen Zeichenfolge 
         "Function": "Error",
         "Host.Aggregator": "Information"
       }
+    }
+  }
+}
+```
+
+#### <a name="functions-version-2"></a>Functions-Version 2 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Information"
     }
   }
 }

@@ -1,5 +1,5 @@
 ---
-title: Berichterstellung per Collaborative Translation Framework (CTF) – Textübersetzung
+title: Erstellen von Berichten mit dem Collaborative Translation Framework (CTF) – Textübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Es wird beschrieben, wie Sie die CTF-Berichterstellung (Collaborative Translation Framework) verwenden.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9b3ac6e6d10fb0e70549cadfd7bf65220deb8f33
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: aa59ce89bf8c2c4b31d85c572dcdfb3645f06884
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126920"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646008"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Verwenden der CTF-Berichterstellung (Collaborative Translation Framework)
 
 > [!NOTE]
 > Diese Methode ist veraltet. Sie ist unter V3.0 der Textübersetzungs-API nicht verfügbar.
 
-> Das Collaborative Translation Framework (CTF), das für V2.0 der Textübersetzungs-API verfügbar war, gilt ab dem 1. Februar 2018 als veraltet. Mit den Funktionen AddTranslation und AddTranslationArray konnten Benutzer Korrekturen über das Collaborative Translation Framework aktivieren. Nach dem 31. Januar 2018 werden für diese beiden Funktionen keine neuen Satzübermittlungen mehr akzeptiert, und Benutzer erhalten eine Fehlermeldung. Diese Funktionen wurden eingestellt und werden nicht durch neue Funktionen ersetzt. 
+> Das Collaborative Translation Framework (CTF), das für V2.0 der Textübersetzungs-API verfügbar war, gilt ab dem 1. Februar 2018 als veraltet. Mit den Funktionen AddTranslation und AddTranslationArray konnten Benutzer Korrekturen über das Collaborative Translation Framework aktivieren. Nach dem 31. Januar 2018 werden für diese beiden Funktionen keine neuen Satzübermittlungen mehr akzeptiert, und Benutzer erhalten eine Fehlermeldung. Diese Funktionen wurden eingestellt und werden nicht durch neue Funktionen ersetzt.
 
 >Eine ähnliche Funktionalität ist über die Translator-Hub-API verfügbar. Sie ermöglicht die Erstellung eines benutzerdefinierten Übersetzungssystems mit Ihrer Terminologie und Ihrem Stil, und Sie können sie mit der Kategorie-ID in der Textübersetzungs-API aufrufen. Translator-Hub: [https://hub.microsofttranslator.com](https://hub.microsofttranslator.com). Translator-Hub-API: [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger).
 
@@ -33,7 +33,7 @@ Die Berichterstellungs-API für das Collaborative Translation Framework (CTF) gi
 
 ## <a name="endpoint"></a>Endpunkt
 Der Endpunkt der CTF-Berichterstellungs-API lautet http://api.microsofttranslator.com/v2/beta/ctfreporting.svc.
-                        
+
 
 ## <a name="methods"></a>Methoden
 | NAME |    BESCHREIBUNG|
@@ -64,7 +64,7 @@ UserTranslationCount[]GetUserTranslationCounts(
            string to,
            int? minRating,
            int? maxRating,
-           string user, 
+           string user,
            string category
            DateTime? minDateUtc,
            DateTime? maxDateUtc,
@@ -135,12 +135,12 @@ UserTranslation[] GetUserTranslations (
             string to,
             int? minRating,
             int? maxRating,
-            string user, 
+            string user,
             string category
             DateTime? minDateUtc,
             DateTime? maxDateUtc,
             int? skip,
-            int? take); 
+            int? take);
 ```
 
 **Parameter**
@@ -154,8 +154,8 @@ UserTranslation[] GetUserTranslations (
 | minRating| **Optional** Ein Integerwert, der für den niedrigsten Qualitätsgrad des übersetzten Texts steht. Die gültigen Werte reichen hierbei von -10 bis 10. Der Standardwert ist 1.|
 | maxRating| **Optional** Ein Integerwert, der für den höchsten Qualitätsgrad des übersetzten Texts steht. Die gültigen Werte reichen hierbei von -10 bis 10. Der Standardwert ist 1.|
 | user| **Optional. Eine Zeichenfolge, die zum Filtern des Ergebnisses basierend auf dem Absender der Übermittlung verwendet wird.**|
-| category| **Optional** Eine Zeichenfolge, die die Kategorie oder Domäne der Übersetzung enthält. Dieser Parameter unterstützt nur die allgemeine Standardoption.| 
-| minDateUtc| **Optional** Das Datum, ab dem Sie die Übersetzungen abrufen möchten. Das Datum muss im UTC-Format angegeben werden.| 
+| category| **Optional** Eine Zeichenfolge, die die Kategorie oder Domäne der Übersetzung enthält. Dieser Parameter unterstützt nur die allgemeine Standardoption.|
+| minDateUtc| **Optional** Das Datum, ab dem Sie die Übersetzungen abrufen möchten. Das Datum muss im UTC-Format angegeben werden.|
 | maxDateUtc| **Optional** Das Datum, bis zu dem Sie die Übersetzungen abrufen möchten. Das Datum muss im UTC-Format angegeben werden.|
 | skip| **Optional** Die Anzahl von Ergebnissen, um die Sie auf einer Seite weiterspringen möchten. Wenn Sie beispielsweise die ersten 20 Zeilen mit Ergebnissen überspringen und die Daten ab dem 21. Ergebniseintrag anzeigen möchten, geben Sie für diesen Parameter 20 an. Der Standardwert für diesen Parameter ist 0.|
 | take| **Optional** Die Anzahl von Ergebnissen, die Sie abrufen möchten. Die maximale Anzahl für eine Anforderung beträgt 100. Der Standardwert ist 50.|
@@ -192,21 +192,3 @@ Das Resultset enthält ein Array mit dem **UserTranslation**-Element. Jedes User
 **Anzeigen von Codebeispielen auf GitHub**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

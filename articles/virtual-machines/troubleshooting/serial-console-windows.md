@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/07/2018
+ms.date: 10/22/2018
 ms.author: harijay
-ms.openlocfilehash: e1884048d0f02de1b3a354bc4dac2b3e98dcccc9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: facd9be037894932e516e8294e36b6b0e55374c8
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412858"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024414"
 ---
 # <a name="virtual-machine-serial-console"></a>Serielle Konsole für virtuelle Computer
 
@@ -28,7 +28,7 @@ Die serielle Konsole für virtuelle Computer in Azure ermöglicht den Zugriff au
 
 Die Dokumentation zur seriellen Konsole für virtuelle Linux-Computer finden Sie [hier](serial-console-linux.md).
 
-> [!Note] 
+> [!NOTE] 
 > Die serielle Konsole für virtuelle Computer ist in globalen Azure-Regionen allgemein verfügbar. Zu diesem Zeitpunkt ist die serielle Konsole in den Clouds „Azure Government“ und „Azure China“ noch nicht verfügbar.
 
  
@@ -53,7 +53,6 @@ Auf die serielle Konsole für virtuelle Computer kann nur über das [Azure-Porta
   3. Klicken Sie in der Liste auf den virtuellen Computer. Die Übersichtsseite für den virtuellen Computer wird geöffnet.
   4. Scrollen Sie nach unten zum Abschnitt „Support und Problembehandlung“, und klicken Sie auf die Option „Serielle Konsole“. Ein neuer Bereich mit der seriellen Konsole wird geöffnet, und die Verbindung wird hergestellt.
 
-
 ## <a name="enable-serial-console-in-custom-or-older-images"></a>Aktivieren der seriellen Konsole in benutzerdefinierten oder älteren Images
 Für neuere Windows Server-Images in Azure ist [Spezielle Verwaltungskonsole](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (Special Administrative Console, SAC) standardmäßig aktiviert. SAC wird unter Serverversionen von Windows unterstützt, ist aber unter Clientversionen (wie Windows 10, Windows 8 oder Windows 7) nicht verfügbar. Gehen Sie zum Aktivieren der seriellen Konsole für virtuelle Windows-Computer, die vor Februar 2018 erstellt wurden, wie folgt vor: 
 
@@ -74,7 +73,7 @@ Bei Bedarf kann die SAC auch offline aktiviert werden:
 
 ### <a name="how-do-i-know-if-sac-is-enabled"></a>Wie kann ich feststellen, ob SAC aktiviert ist?
 
-Wenn [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nicht aktiviert ist, zeigt die serielle Konsole die SAC-Eingabeaufforderung nicht an. In einigen Fällen werden Integritätsinformationen zum virtuellen Computer angezeigt, in anderen Fällen ist sie leer. Wenn Sie ein Windows Server-Image verwenden, das vor Februar 2018 erstellt wurde, ist die SAC wahrscheinlich nicht aktiviert.
+Wenn [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nicht aktiviert ist, zeigt die serielle Konsole die SAC-Eingabeaufforderung nicht an. In einigen Fällen werden Integritätsinformationen zum virtuellen Computer angezeigt, in anderen Fällen ist sie leer. Wenn Sie ein Windows Server-Image verwenden, das vor Februar 2018 erstellt wurde, ist die SAC wahrscheinlich nicht aktiviert.
 
 ## <a name="enable-the-windows-boot-menu-in-serial-console"></a>Aktivieren des Windows-Startmenüs in der seriellen Konsole 
 
@@ -83,23 +82,41 @@ Wenn Sie Windows-Bootloader-Eingabeaufforderungen in der seriellen Konsole aktiv
 1. Verbinden Sie sich über Remotedesktop mit Ihrem virtuellen Windows-Computer.
 2. Führen Sie an einer Administratoreingabeaufforderung die folgenden Befehle aus: 
 * `bcdedit /set {bootmgr} displaybootmenu yes`
-* `bcdedit /set {bootmgr} timeout 5`
+* `bcdedit /set {bootmgr} timeout 10`
 * `bcdedit /set {bootmgr} bootems yes`
 3. Starten Sie das System neu, damit das Startmenü aktiviert wird.
+
+> [!NOTE] 
+> Das Timeout, das Sie für das Start-Manager-Menü festlegen, wirkt sich zukünftig auf die Startzeitpunkt Ihres Betriebssystems aus. In einigen Szenarien kann es akzeptabel sein, ein Timeout von 10 Sekunden hinzuzufügen, um sicherzustellen, dass der Start-Manager über die serielle Konsole angezeigt wird, in anderen ist jedoch ein kürzeres oder längeres Timeout besser geeignet. Legen Sie den Timeoutwert auf einen Wert fest, der Ihre Zwecke erfüllt.
 
 ## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Verwenden der seriellen Konsole für NMI-Aufrufe in virtuellen Windows-Computern
 Ein nicht maskierbarer Interrupt (NMI) dient dazu, ein Signal zu erstellen, das die Software auf einem virtuellen Computer nicht ignoriert. In der Vergangenheit wurden NMIs verwendet, um Hardwareprobleme auf Systemen zu überwachen, die bestimmte Antwortzeiten erforderten.  Heute verwenden Programmierer und Systemadministratoren NMIs häufig als Mechanismus zum Debuggen oder Beheben von Problemen in Systemen, die nicht mehr reagieren.
 
-Sie können mit der seriellen Konsole einen NMI an einen virtuellen Azure-Computer senden. Verwenden Sie dazu das Tastatursymbol in der unten gezeigten Befehlsleiste. Nach der Übermittlung des NMI bestimmt die Konfiguration des virtuellen Computers, wie das System reagiert. Windows kann so konfiguriert werden, dass beim Empfang eines NMI ein Absturz erfolgt und ein Speicherabbild erstellt wird.
+Sie können mit der seriellen Konsole einen NMI an einen virtuellen Azure-Computer senden. Verwenden Sie dazu das Tastatursymbol in der unten dargestellten Befehlsleiste. Nach der Übermittlung des NMI bestimmt die Konfiguration des virtuellen Computers, wie das System reagiert. Windows kann so konfiguriert werden, dass beim Empfang eines NMI ein Absturz erfolgt und ein Speicherabbild erstellt wird.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
 
 Weitere Informationen zum Konfigurieren von Windows zum Erstellen eines Absturzabbilds beim Empfang eines NMI finden Sie unter [How to generate a complete crash dump file or a kernel crash dump file by using an NMI on a Windows-based system](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file) (Erstellen einer vollständigen Absturzabbilddatei oder einer Kernel-Absturzabbilddatei mit einem NMI auf einem Windows-System).
 
+## <a name="open-cmd-or-powershell-in-serial-console"></a>Öffnen von CMD oder PowerShell in der seriellen Konsole
+
+1. Stellen Sie eine Verbindung mit der seriellen Konsole her. Wenn Sie eine Verbindung mit der seriellen Konsole herstellen, wird **SAC>** angezeigt, wie im nachstehenden Screenshot dargestellt:
+
+    ![Herstellen einer Verbindung mit SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
+
+3.  Geben Sie `cmd` ein, um einen Kanal zu erstellen, der über eine CMD-Instanz verfügt. 
+4.  Geben Sie `ch -si 1` ein, um zu dem Kanal zu wechseln, in dem die CMD-Instanz ausgeführt wird. 
+5.  Drücken Sie die EINGABETASTE, und geben Sie Ihre Anmeldeinformationen mit Administratorrechten ein.
+6.  Nachdem Sie gültige Anmeldeinformationen eingegeben haben, wird die CMD-Instanz geöffnet.
+7.  Geben Sie zum Starten einer PowerShell-Instanz `PowerShell` in der CMD-Instanz ein, und drücken Sie die EINGABETASTE. 
+
+    ![Öffnen einer PowerShell-Instanz](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+
+
 ## <a name="disable-serial-console"></a>Deaktivieren der seriellen Konsole
 Standardmäßig haben alle Abonnements Zugriff auf die serielle Konsole, die für alle virtuellen Computer aktiviert ist. Sie können die serielle Konsole auf Abonnement- oder VM-Ebene deaktivieren.
 
-> [!Note]       
+> [!NOTE]       
 > Um die serielle Konsole für ein Abonnement zu aktivieren oder zu deaktivieren, müssen Sie über Schreibberechtigungen für das Abonnement verfügen. Dies gilt u.a. für die Rollen „Administrator“ und „Besitzer“. Benutzerdefinierte Rollen können ebenfalls über Schreibberechtigungen verfügen.
 
 ### <a name="subscription-level-disable"></a>Deaktivieren auf Abonnementebene
@@ -107,7 +124,7 @@ Die serielle Konsole kann über den [REST-API-Aufruf zum Deaktivieren der Konsol
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
-Alternativ können Sie den Befehlssatz unten in Cloud Shell (es werden Bashbefehle gezeigt) verwenden, um die serielle Konsole für ein Abonnement zu deaktivieren oder zu aktivieren und den Deaktivierungsstatus der seriellen Konsole anzuzeigen. 
+Alternativ können Sie den unten angegebenen Befehlssatz (es werden Bashbefehle gezeigt) in Cloud Shell verwenden, um die serielle Konsole für ein Abonnement zu deaktivieren, zu aktivieren oder den Deaktivierungsstatus der seriellen Konsole anzuzeigen. 
 
 * So rufen Sie den Deaktivierungsstatus der seriellen Konsole für ein Abonnement ab
     ```azurecli-interactive
@@ -193,11 +210,11 @@ Uns sind einige Probleme mit der seriellen Konsole bekannt. Hier finden Sie eine
 
 Problem                             |   Lösung 
 :---------------------------------|:--------------------------------------------|
-Nach dem Drücken der EINGABETASTE nach dem Verbindungsbanner wird keine Anmeldeeingabeaufforderung angezeigt. | Informieren Sie sich auf dieser Seite: [Nach dem Drücken der EINGABETASTE geschieht nichts](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Dies kann passieren, wenn Sie einen benutzerdefinierten virtuellen Computer, eine Appliance mit verstärkter Sicherheit oder eine GRUB-Konfiguration ausführen, und Windows aufgrund dessen keine ordnungsgemäße Verbindung mit dem seriellen Port herstellen kann.
+Nach dem Drücken der EINGABETASTE nach dem Verbindungsbanner wird keine Anmeldeeingabeaufforderung angezeigt. | Informieren Sie sich auf dieser Seite: [Nach dem Drücken der EINGABETASTE geschieht nichts](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Dies kann passieren, wenn Sie einen benutzerdefinierten virtuellen Computer, eine Appliance mit verstärkter Sicherheit oder eine Startkonfiguration ausführen, und Windows aufgrund dessen keine ordnungsgemäße Verbindung mit dem seriellen Port herstellen kann. Es geschieht auch dann, wenn Sie eine Windows 10-Client-VM ausführen, da nur Windows Server-VMs für EMS konfiguriert sind.
 Bei aktiviertem Kerneldebugging ist an der SAC-Eingabeaufforderung keine Eingabe möglich. | Stellen Sie eine RDP-Verbindung mit dem virtuellen Computer her, und führen Sie `bcdedit /debug {current} off` an einer Eingabeaufforderung mit erhöhten Rechten aus. Falls Sie keine RDP-Verbindung herstellen können, fügen Sie stattdessen den Betriebssystemdatenträger an einen anderen virtuellen Azure-Computer an, bearbeiten Sie ihn mithilfe von `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, während er als Datenträger angefügt ist, und fügen Sie ihn anschließend wieder an den ursprünglichen virtuellen Computer an.
 Das Einfügen in PowerShell in SAC führt zu einem dritten Zeichen, wenn der ursprüngliche Inhalt ein sich wiederholendes Zeichen enthielt. | Eine Problemumgehung besteht darin, das PSReadLine-Modul aus der aktuellen Sitzung zu entladen. Führen Sie `Remove-Module PSReadLine` aus, um das PSReadLine-Modul aus der aktuellen Sitzung zu entladen. Das Modul wird dabei weder gelöscht noch deinstalliert.
 Einige Tastatureingaben erzeugen seltsame SAC-Ausgaben (z.B. `[A`, `[3~`) | [VT100](https://aka.ms/vtsequences)-Escapesequenzen werden von der SAC-Eingabeaufforderung nicht unterstützt.
-Das Einfügen sehr langer Zeichenfolgen funktioniert nicht | Die serielle Konsole begrenzt die Länge der Zeichenfolgen, die in das Terminal eingefügt werden können, auf 2048 Zeichen. Dies dient dazu, eine Überlastung der Bandbreite des seriellen Ports zu verhindern.
+Das Einfügen sehr langer Zeichenfolgen funktioniert nicht | Die serielle Konsole begrenzt die Länge der Zeichenfolgen, die in das Terminal eingefügt werden können, auf 2048 Zeichen. Dadurch soll eine Überlastung der Bandbreite des seriellen Ports verhindert werden.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen 
 
@@ -207,19 +224,19 @@ A. Stellen Sie Feedback als Problem bereit, indem Sie zu https://aka.ms/serialco
 
 **F: Unterstützt die serielle Konsole das Kopieren und Einfügen?**
 
-A. Ja. Verwenden Sie STRG+UMSCHALTTASTE+C und STRG+UMSCHALTTASTE+V zum Kopieren und Einfügen in das Terminal.
+A. Ja. Verwenden Sie STRG+UMSCHALT+C und STRG+UMSCHALT+V zum Kopieren und Einfügen in das Terminal.
 
 **F: Wer kann die serielle Konsole für mein Abonnement aktivieren oder deaktivieren?**
 
-A. Um die serielle Konsole auf Abonnementebene zu aktivieren oder zu deaktivieren, müssen Sie über Schreibberechtigungen für das Abonnement verfügen. Die Rollen „Administrator“ und „Besitzer“ verfügen beispielsweise über Schreibberechtigungen. Benutzerdefinierte Rollen können ebenfalls über Schreibberechtigungen verfügen.
+A. Um die serielle Konsole auf Abonnementebene aktivieren oder deaktivieren zu können, müssen Sie über Schreibberechtigungen für das Abonnement verfügen. Die Rollen „Administrator“ und „Besitzer“ verfügen beispielsweise über Schreibberechtigungen. Benutzerdefinierte Rollen können ebenfalls über Schreibberechtigungen verfügen.
 
 **F: Wer darf auf die serielle Konsole für meinen virtuellen Computer zugreifen?**
 
-A. Sie müssen auf der Ebene „Mitwirkender“ oder höher über Zugriff auf den virtuellen Computer verfügen, um auf die serielle Konsole des virtuellen Computers zuzugreifen. 
+A. Sie müssen auf der Ebene „Mitwirkender“ oder höher über Zugriff auf den virtuellen Computer verfügen, um auf die serielle Konsole des virtuellen Computers zugreifen zu können. 
 
 **F: Meine serielle Konsole zeigt nichts an. Was soll ich tun?**
 
-A. Ihr Image ist wahrscheinlich nicht richtig für den Zugriff auf die serielle Konsole konfiguriert. Genauere Informationen dazu, wie Sie Ihr Image für die Aktivierung der seriellen Konsole konfigurieren, finden Sie unter [Aktivieren der seriellen Konsole in benutzerdefinierten oder älteren Images](#Enable-Serial-Console-in-custom-or-older-images).
+A. Ihr Image ist wahrscheinlich nicht richtig für den Zugriff auf die serielle Konsole konfiguriert. Genauere Informationen dazu, wie Sie Ihr Image für die Aktivierung der seriellen Konsole konfigurieren, finden Sie unter [Aktivieren der seriellen Konsole in benutzerdefinierten oder älteren Images](#enable-serial-console-in-custom-or-older-images).
 
 **F: Ist die serielle Konsole für VM-Skalierungsgruppen verfügbar?**
 

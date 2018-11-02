@@ -3,7 +3,7 @@ title: Binden mit sicherem LDAP (LDAPS) an eine über Azure AD Domain Services v
 description: Binden an eine über Azure AD Domain Services verwaltete Domäne mithilfe von sicherem LDAP (LDAPS)
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: maheshu
-ms.openlocfilehash: 9728d42710ce44226363ea4954d83fcc3efbfb75
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: e421d3219f50c0dbb635dfe5b9cb3e9a24d4fa61
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502951"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158533"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Binden an eine über Azure AD Domain Services verwaltete Domäne mithilfe von sicherem LDAP (LDAPS)
 
@@ -38,8 +38,8 @@ Binden Sie im nächsten Schritt an die verwaltete Domäne. Klicken Sie auf **Ver
 Wählen Sie **Ansicht** aus, und wählen Sie dann im Menü **Baum** aus. Lassen Sie das Basis-DN-Feld leer, und klicken Sie auf „OK“. Navigieren Sie zu dem Container, den Sie durchsuchen möchten, klicken Sie mit der rechten Maustaste auf den Container, und wählen Sie „Suchen“ aus.
 
 > [!TIP]
-> - Benutzer und Gruppen, die aus Azure AD synchronisiert werden, werden im Container **AADDC-Benutzer** gespeichert. Der Suchpfad für diesen Container sieht wie folgt aus: ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```
-> - Computerkonten für Computer, die in die verwaltete Domäne eingebunden sind, werden im Container **AADDC-Computer** gespeichert. Der Suchpfad für diesen Container sieht wie folgt aus: ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```
+> - Benutzer und Gruppen, die aus Azure AD synchronisiert werden, werden in der Organisationseinheit **AADDC-Benutzer** gespeichert. Der Suchpfad für diese Organisationseinheit sieht wie folgt aus: ```OU=AADDC Users,DC=CONTOSO100,DC=COM```.
+> - Computerkonten für Computer, die in die verwaltete Domäne eingebunden sind, werden in der Organisationseinheit **AADDC-Computer** gespeichert. Der Suchpfad für diese Organisationseinheit sieht wie folgt aus: ```OU=AADDC Computers,DC=CONTOSO100,DC=COM```.
 >
 >
 
@@ -52,7 +52,7 @@ Weitere Informationen: [LDAP-Abfragegrundlagen](https://technet.microsoft.com/li
 >
 >
 
-Führen Sie vor dem Ausführen dieser Aufgabe die in [Aufgabe 3](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md) beschriebenen Schritte aus.
+Vor dem Ausführen dieser Aufgabe führen Sie die in [Aufgabe 3](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md) beschriebenen Schritte aus.
 
 Wenn Sie LDAPS-Zugriff über das Internet auf Ihre verwaltete Domäne zulassen, entsteht ein Sicherheitsrisiko. Die verwaltete Domäne ist aus dem Internet über den für das sichere LDAP verwendeten Port erreichbar (d.h. Port 636). Sie können sich entscheiden, den Zugriff auf die verwaltete Domäne auf bestimmte bekannte IP-Adressen zu beschränken. Erstellen Sie eine Netzwerksicherheitsgruppe (NSG), und ordnen Sie diese dem Subnetz zu, in dem Sie Azure AD Domain Services aktiviert haben.
 

@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: ''
 manager: craigg
-ms.date: 08/20/2018
-ms.openlocfilehash: 1d292007b06e12b6be28e053bc6def3b12c7befe
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/22/2018
+ms.openlocfilehash: 4bc655f1e9da00a42c60e1ab763c5503b393d4a1
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063648"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646301"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Bewährte Methoden für die SQL-Datensynchronisierung 
 
@@ -70,6 +70,10 @@ Sie müssen nicht alle Tabellen, die in einer Datenbank enthalten sind, in eine 
 Jede Tabelle in einer Synchronisierungsgruppe muss über einen Primärschlüssel verfügen. Tabellen ohne Primärschlüssel können vom SQL-Datensynchronisierungsdienst nicht synchronisiert werden.
 
 Testen Sie die anfängliche und fortlaufende Synchronisierungsleistung, bevor Sie die SQL-Datensynchronisierung in der Produktion verwenden.
+
+#### <a name="empty-tables-provide-the-best-performance"></a>Leere Tabellen bieten die beste Leistung
+
+Leere Tabellen bieten zum Zeitpunkt der Initialisierung die beste Leistung. Wenn die Zieltabelle leer ist, verwendet die Datensynchronisierung Masseneinfügevorgänge zum Laden der Daten. Andernfalls vergleicht die Datensynchronisierung die einzelnen Zeilen und fügt Zeilen einzeln ein, um Konflikte zu vermeiden. Wenn die Leistung keine primäre Rolle spielt, können Sie die Synchronisierung zwischen Tabellen einrichten, die bereits Daten enthalten.
 
 ### <a name="provisioning-destination-databases"></a> Bereitstellen von Zieldatenbanken
 

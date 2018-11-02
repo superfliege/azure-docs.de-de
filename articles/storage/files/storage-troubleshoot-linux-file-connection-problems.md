@@ -6,19 +6,19 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0f99913ab252b94d475f920bd734e68ff5f3b3d3
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2ae116649de02c5602aa50d706f6a88ac5872960
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525119"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025853"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
 
-Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Linux-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt.
+Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Linux-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) verwenden, um sicherzustellen, dass der Linux-Client die erforderlichen Voraussetzungen erfüllt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen. Sie erhalten diese Informationen auch unter [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Hier finden Sie Schritte zum Beheben von Problemen mit dem Verbinden, Zuordnen und Einbinden von Azure Files-Freigaben.
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>„[Zugriff verweigert] Datenträgerkontingent überschritten“, wenn Sie versuchen, eine Datei zu öffnen
@@ -82,7 +82,7 @@ Bei einigen Linux-Distributionen, die noch nicht die Verschlüsselungsfunktionen
 
 ### <a name="solution"></a>Lösung
 
-Die Verschlüsselungsfunktionen für SMB 3.0 für Linux wurden im Kernel 4.11 eingeführt. Dieses Feature ermöglicht das Einbinden einer Azure-Dateifreigabe aus einer lokalen oder anderen Azure-Region. Zum Zeitpunkt der Veröffentlichung wurden diese Funktionen zu Ubuntu 17.04 und Ubuntu 16.10 zurückportiert. Wenn Ihr Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einer Azure Linux-VM aus ein, die sich im gleichen Rechenzentrum wie das File Storage-Konto befindet.
+Die Verschlüsselungsfunktionen für SMB 3.0 für Linux wurden im Kernel 4.11 eingeführt. Dieses Feature ermöglicht das Einbinden einer Azure-Dateifreigabe aus einer lokalen oder anderen Azure-Region. Zum Zeitpunkt der Veröffentlichung wurden diese Funktionen zu Ubuntu 17.04 und Ubuntu 16.10 zurückportiert. Wenn Ihr Linux-SMB-Client keine Verschlüsselung unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einer Azure Linux-VM aus ein, die sich im selben Rechenzentrum wie die Dateifreigabe befindet, und überprüfen Sie, ob die Einstellung [Sichere Übertragung erforderlich]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto deaktiviert wurde. 
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Langsame Leistung in einer Azure-Dateifreigabe, die in einer Linux-VM bereit gestellt ist
@@ -150,6 +150,7 @@ Häufige Ursachen für dieses Problem sind:
 - SMB 3.0-Verschlüsselung wird auf dem Client nicht unterstützt. SMB 3.0-Verschlüsselung ist in Ubuntu ab Version 16.4 und SUSE ab Version 12.3 verfügbar. Andere Distributionen erfordern Kernel 4.11 oder eine höhere Version.
 - Sie versuchen, eine Verbindung mit einem Speicherkonto über TCP-Port 445 herstellen, der nicht unterstützt wird.
 - Sie versuchen, auf einem virtuellen Computer eine Verbindung mit der Azure-Dateifreigabe herzustellen, und der virtuelle Computer befindet sich nicht in derselben Region wie das Speicherkonto.
+- Ist für ein Speicherkonto die Einstellung [Sichere Übertragung erforderlich]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) aktiviert, lässt Azure Files nur Verbindungen über SMB 3.0 mit Verschlüsselung zu.
 
 ### <a name="solution"></a>Lösung
 
@@ -179,7 +180,7 @@ ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
 ### <a name="solution"></a>Lösung
-Der Linux-CIFS-Client unterstützt nicht die Erstellung von symbolischen Verknüpfungen im Windows-Stil über das SMB2/3-Protokoll. Derzeit unterstützt der Linux-Client einen anderen Stil von symbolischen Verknüpfungen namens [Mishall+Französische Symlinks] (https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) sowohl für die Erstellung als auch Vorgänge zur Verfolgung). Kunden, die symbolische Verknüpfungen benötigen, können die Bereitstellungsoption „mfsymlinks“ verwenden. „mfsymlinks“ werden in der Regel empfohlen, da dies auch das von Mac-Computern genutzte Format ist.
+Der Linux-CIFS-Client unterstützt nicht die Erstellung von symbolischen Verknüpfungen im Windows-Stil über das SMB2/3-Protokoll. Derzeit unterstützt der Linux-Client einen anderen Stil von symbolischen Verknüpfungen namens [Mishall+Französische Symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) sowohl für die Erstellung als auch Vorgänge zur Verfolgung. Kunden, die symbolische Verknüpfungen benötigen, können die Bereitstellungsoption „mfsymlinks“ verwenden. „mfsymlinks“ werden in der Regel empfohlen, da dies auch das von Mac-Computern genutzte Format ist.
 
 Um Symlinks verwenden zu können, fügen Sie Folgendes am Ende des CIFS-Bereitstellungsbefehls hinzu:
 
@@ -190,7 +191,7 @@ Um Symlinks verwenden zu können, fügen Sie Folgendes am Ende des CIFS-Bereitst
 Der Befehl sieht dann in etwa so aus:
 
 ```
-sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsynlinks
+sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsymlinks
 ```
 
 Nach dem Hinzufügen können Sie Symlinks erstellen, wie in dem [Wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers) vorgeschlagen.

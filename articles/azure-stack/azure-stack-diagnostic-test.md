@@ -2,7 +2,7 @@
 title: Ausführen eines Validierungstests in Azure Stack | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Protokolldateien für die Diagnose in Azure Stack sammeln.
 services: azure-stack
-author: mattbriggs
+author: jeffgilb
 manager: femila
 cloud: azure-stack
 ms.service: azure-stack
@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/15/2018
-ms.author: mabrigg
-ms.reviewer: hectorl
-ms.openlocfilehash: 3f4dc6e4136d8d2e3eb1ca5e822306aae2217e3b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 10/24/2018
+ms.author: jeffgilb
+ms.reviewer: adshar
+ms.openlocfilehash: 4f95fb5f2199e8c276b78a83391f3814303a9470
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340850"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024618"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Ausführen eines Validierungstests für Azure Stack
 
@@ -39,7 +39,7 @@ Wenn ein Problem vorliegt, wenden Sie sich an den Microsoft-Support, und führen
     3. Starten Sie PowerShell als Administrator.
     4. Führen Sie diesen Befehl aus: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. Führen Sie diesen Befehl aus: `Test-AzureStack`
-4. Wenn bei einem Test Fehler gemeldet werden, führen Sie `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` aus. Das Cmdlet sammelt die Protokolle von „Test-AzureStack“. Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Azure Stack-Diagnosetools](azure-stack-diagnostics.md).
+4. Wenn bei einem Test Fehler gemeldet werden, führen Sie `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` aus. Das Cmdlet sammelt die Protokolle von „Test-AzureStack“. Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Azure Stack-Diagnosetools](azure-stack-diagnostics.md). Sie sollten keine Protokolle sammeln und sich nicht an den Microsoft-Support wenden, wenn bei Tests Warnung gemeldet werden.
 5. Senden Sie die **SeedRing**-Protokolle an den Microsoft-Support. Der Microsoft-Support arbeitet mit Ihnen zusammen, um das Problem zu beheben.
 
 ## <a name="reference-for-test-azurestack"></a>Referenz für „Test-AzureStack“

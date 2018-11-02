@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 08/13/2018
-ms.openlocfilehash: 2f512c666555ca8bee58305b76573459f6e631e2
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/24/2018
+ms.openlocfilehash: fd63d0ce9ef335efdebf9759d52cf93312986d16
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166502"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025377"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server 
 
@@ -103,7 +103,7 @@ Siehe [CREATE CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/creat
 > ``` 
 CREATE CERTIFICATE  
  FROM BINARY = asn_encoded_certificate    
-WITH PRIVATE KEY ( <private_key_options> ) 
+WITH PRIVATE KEY (<private_key_options>) 
 >```   
  
 ### <a name="clr"></a>CLR 
@@ -333,21 +333,22 @@ Weitere Informationen zu Restore-Anweisungen finden Sie unter [RESTORE-Anweisung
  - `remote proc trans` 
 - `sp_execute_external_scripts` wird nicht unterstützt. Siehe [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` wird nicht unterstützt. Siehe [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures` werden nicht unterstützt, einschließlich `sp_addextendedproc` und `sp_dropextendedproc`. Siehe [Erweiterte gespeicherte Prozeduren](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
+- `Extended stored procedures` werden nicht unterstützt, einschließlich `sp_addextendedproc` und `sp_dropextendedproc`. Siehe [Erweiterte gespeicherte Prozeduren](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db` und `sp_detach_db` werden nicht unterstützt. Siehe [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) und [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 - `sp_renamedb` wird nicht unterstützt. Siehe [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
 ### <a name="sql-server-agent"></a>SQL Server-Agent
 
 - SQL-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in einer verwalteten Instanz nicht unterstützt.  
-- Aufträge: Derzeit werden T-SQL-Auftragsschritte unterstützt.
-- Andere Arten von Auftragsschritten werden zurzeit nicht unterstützt (der Public Preview werden weitere Schritttypen hinzugefügt).
-  - Nicht unterstützte Replikationsaufträge umfassen:
+- Aufträge
+ - T-SQL-Auftragsschritte werden unterstützt.
+ - Die folgenden Replikationsaufträge werden unterstützt:
     - Transaktionsprotokollleser  
     - Momentaufnahme
-    - Verteiler  
-    - Merge  
-  - SSIS wird noch nicht unterstützt. 
+    - Verteiler
+ - SSIS wird unterstützt. 
+- Andere Arten von Auftragsschritten werden derzeit nicht unterstützt, einschließlich:
+  - Der Auftragsschritt Mergereplikation wird nicht unterstützt.  
   - Der Warteschlangenleser wird nicht unterstützt.  
   - Die Befehlsshell wird noch nicht unterstützt. 
   - Eine verwaltete Instanz kann nicht auf externe Ressourcen zugreifen (z.B. Netzwerkfreigaben über Robocopy).  

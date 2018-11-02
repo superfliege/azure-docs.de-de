@@ -12,39 +12,39 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 10/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 0c2d4d1413b6cfd0b5e457e720b59c6c7b575092
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 62057d3041aa83e0097b688b48386b80f5c4f87e
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974543"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637288"
 ---
-# <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
+# <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 
-Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating system; OS) beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, aber möglicherweise möchten Sie auch einen vorhandenen Datenträger für Daten erweitern. Dieser Artikel erläutert, wie verwaltete Datenträger für eine Linux-VM mithilfe von Azure CLI erweitert werden können. 
+Dieser Artikel erläutert, wie verwaltete Datenträger für einen virtuellen Linux-Computer mit der Azure CLI erweitert werden können. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, und Sie können auch einen vorhandenen Datenträger für Daten erweitern. Die Standardgröße der virtuellen Festplatte für das Betriebssystem beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer in Azure. 
 
 > [!WARNING]
 > Stellen Sie immer sicher, dass Sie Ihre Daten sichern, bevor Sie Änderungen an der Größe von Datenträgern vornehmen. Weitere Informationen finden Sie unter [Sichern virtueller Linux-Computer in Azure](tutorial-backup-vms.md).
 
-## <a name="expand-azure-managed-disk"></a>Erweitern eines verwalteten Azure-Datenträgers
-Überprüfen Sie, ob Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az_login) in einem Azure-Konto angemeldet sind.
+## <a name="expand-an-azure-managed-disk"></a>Erweitern eines verwalteten Azure-Datenträgers
+Überprüfen Sie, ob Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az-login) bei einem Azure-Konto angemeldet sind.
 
 Für diesen Artikel ist ein vorhandener virtueller Computer in Azure mit mindestens einem angefügten und vorbereiteten Datenträger erforderlich. Wenn Sie noch nicht über einen virtuellen Computer verfügen, den Sie verwenden können, finden Sie entsprechende Informationen unter [Erstellen und Vorbereiten eines virtuellen Computers mit Datenträgern](tutorial-manage-disks.md#create-and-attach-disks).
 
-Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispiele für Parameternamen sind *myResourceGroup* und *myVM*.
+Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen wie *myResourceGroup* und *myVM* durch Ihre eigenen Werte.
 
-1. Vorgänge auf virtuellen Festplatten können nicht durchgeführt werden, wenn die VM ausgeführt wird. Heben Sie die Zuordnung der VM mit [az vm deallocate](/cli/azure/vm#az_vm_deallocate) auf. Im folgenden Beispiel wird die Zuordnung für die VM *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben:
+1. Vorgänge auf virtuellen Festplatten können nicht durchgeführt werden, wenn die VM ausgeführt wird. Heben Sie die Zuordnung der VM mit [az vm deallocate](/cli/azure/vm#az-vm-deallocate) auf. Im folgenden Beispiel wird die Zuordnung für die VM *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
     > [!NOTE]
-    > Die VM muss aufgehoben werden, um die virtuelle Festplatte zu erweitern. `az vm stop` gibt die Computerressourcen nicht frei. Verwenden Sie `az vm deallocate`, um Computerressourcen freizugeben.
+    > Die VM muss aufgehoben werden, um die virtuelle Festplatte zu erweitern. Durch Beenden der VM mit `az vm stop` werden die Computeressourcen nicht freigegeben. Verwenden Sie `az vm deallocate`, um Computeressourcen freizugeben.
 
-1. Sie überprüfen die Liste der verwalteten Datenträger in einer Ressourcengruppe mit [az disk list](/cli/azure/disk#az_disk_list). Im folgenden Beispiel wird eine Liste mit verwalteten Datenträgern in der Ressourcengruppe *myResourceGroup* aufgelistet:
+1. Sie überprüfen die Liste der verwalteten Datenträger in einer Ressourcengruppe mit [az disk list](/cli/azure/disk#az-disk-list). Im folgenden Beispiel wird eine Liste mit verwalteten Datenträgern in der Ressourcengruppe *myResourceGroup* aufgelistet:
 
     ```azurecli
     az disk list \
@@ -53,7 +53,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
         --output table
     ```
 
-    Sie erweitern den erforderlichen Datenträger mit [az disk update](/cli/azure/disk#az_disk_update). Im folgenden Beispiel wird der verwaltete Datenträger *myDataDisk* auf eine Größe von *200* GB erweitert:
+    Sie erweitern den erforderlichen Datenträger mit [az disk update](/cli/azure/disk#az-disk-update). Im folgenden Beispiel wird der verwaltete Datenträger *myDataDisk* auf *200* GB erweitert:
 
     ```azurecli
     az disk update \
@@ -63,25 +63,25 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
     ```
 
     > [!NOTE]
-    > Wenn Sie einen verwalteten Datenträger erweitern, wird die aktualisierte Größe der nächsten verwalteten Datenträgergröße zugeordnet. Eine Tabelle der verfügbaren verwalteten Datenträgergrößen und -ebenen finden Sie unter [Übersicht über Azure Managed Disks – Preise und Abrechnung](../windows/managed-disks-overview.md#pricing-and-billing).
+    > Wenn Sie einen verwalteten Datenträger erweitern, wird die aktualisierte Größe auf die nächste Größe für verwaltete Datenträger aufgerundet. Eine Tabelle der verfügbaren verwalteten Datenträgergrößen und -ebenen finden Sie unter [Übersicht über Azure Managed Disks – Preise und Abrechnung](../windows/managed-disks-overview.md#pricing-and-billing).
 
-1. Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm#az_vm_start). Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* gestartet:
+1. Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm#az-vm-start). Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* gestartet:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
 
-## <a name="expand-disk-partition-and-filesystem"></a>Erweitern der Datenträgerpartition und des Dateisystems
-Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende Partition und das Dateisystem erweitern.
+## <a name="expand-a-disk-partition-and-filesystem"></a>Erweitern einer Datenträgerpartition und des Dateisystems
+Um einen erweiterten Datenträger zu verwenden, erweitern Sie die zugrunde liegende Partition und das Dateisystem.
 
-1. SSH mit Ihrer VM mit den entsprechenden Anmeldeinformationen. Sie können die öffentliche IP-Adresse Ihres virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm#az_vm_show) abrufen:
+1. SSH mit Ihrer VM mit den entsprechenden Anmeldeinformationen. Sie können die öffentliche IP-Adresse Ihres virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm#az-vm-show) anzeigen:
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
     ```
 
-1. Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende Partition und das Dateisystem erweitern.
+1. Erweitern Sie die zugrunde liegende Partition und das Dateisystem.
 
     a. Wenn der Datenträger bereits eingebunden ist, heben Sie die Einbindung auf:
 
@@ -95,7 +95,7 @@ Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende 
     sudo parted /dev/sdc
     ```
 
-    Informationen zum vorhandenen Partitionslayout können Sie mit `print` anzeigen. Die Ausgabe ähnelt dem folgenden Beispiel, in dem angegeben wird, dass die Größe des zugrunde liegenden Datenträgers 215 GB beträgt:
+    Informationen zum vorhandenen Partitionslayout können Sie mit `print` anzeigen. Die Ausgabe ähnelt dem folgenden Beispiel, das zeigt, dass die Größe des zugrunde liegenden Datenträgers 215 GB beträgt:
 
     ```bash
     GNU Parted 3.2
@@ -128,7 +128,7 @@ Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende 
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. Ändern Sie nun die Größe des Dateisystems mit `resize2fs`:
+1. Ändern Sie die Größe des Dateisystems mit `resize2fs`:
 
     ```bash
     sudo resize2fs /dev/sdc1
@@ -140,7 +140,7 @@ Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende 
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Verwenden Sie `df -h`, um zu überprüfen, ob die Größe des Betriebssystemdatenträgers geändert wurde. In der folgenden Beispielausgabe ist zu sehen, dass der Datenträger für Daten */dev/sdc1* jetzt eine Größe von 200 GB hat:
+1. Verwenden Sie `df -h`, um zu überprüfen, ob die Größe des Betriebssystemdatenträgers geändert wurde. In der folgenden Beispielausgabe ist zu sehen, dass das Datenträgerlaufwerk für Daten, */dev/sdc1*, jetzt eine Größe von 200 GB aufweist:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on
@@ -148,4 +148,5 @@ Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende 
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie zusätzlichen Speicher benötigen, [fügen Sie Datenträger zu einer Linux-VM hinzu](add-disk.md). Weitere Informationen zur Datenträgerverschlüsselung finden Sie unter [Encrypt disks on a Linux VM using the Azure CLI (Verschlüsseln von Datenträgern auf einer Linux-VM mithilfe der Azure-Befehlszeilenschnittstelle)](encrypt-disks.md).
+* Wenn Sie zusätzlichen Speicher benötigen, können Sie auch [Datenträger zu einer Linux-VM hinzufügen](add-disk.md). 
+* Weitere Informationen zur Datenträgerverschlüsselung finden Sie unter [Encrypt disks on a Linux VM using the Azure CLI (Verschlüsseln von Datenträgern auf einer Linux-VM mithilfe der Azure-Befehlszeilenschnittstelle)](encrypt-disks.md).

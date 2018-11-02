@@ -1,6 +1,6 @@
 ---
 title: F#-Entwicklerreferenz zu Azure Functions | Microsoft Docs
-description: Es wird beschrieben, wie die Azure Functions-Entwicklung mit F# durchgeführt wird.
+description: Erfahren Sie, wie in Azure Functions mithilfe von F#-Skripts entwickelt wird.
 services: functions
 documentationcenter: fsharp
 author: sylvanc
@@ -10,18 +10,21 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: azure-functions
 ms.devlang: fsharp
 ms.topic: reference
-ms.date: 09/09/2016
+ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 5593f76511f43106d6743a158b051e118ef2a4a6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b7cb3a7094ef2c11df63c9e5595355d4076e2ccd
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125254"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025428"
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
 
-F# für Azure Functions ist eine Lösung, mit der Sie ganz einfach kleinere Codeelemente (Funktionen) in der Cloud ausführen können. Daten fließen über Funktionsargumente in Ihre F#-Funktion. Argumentnamen werden in `function.json`angegeben, und es gibt vordefinierte Namen für den Zugriff auf Elemente wie die Funktionsprotokollierung und Abbruchtoken.
+F# für Azure Functions ist eine Lösung, mit der Sie ganz einfach kleinere Codeelemente (Funktionen) in der Cloud ausführen können. Daten fließen über Funktionsargumente in Ihre F#-Funktion. Argumentnamen werden in `function.json`angegeben, und es gibt vordefinierte Namen für den Zugriff auf Elemente wie die Funktionsprotokollierung und Abbruchtoken. 
+
+>[!IMPORTANT]
+>F#-Skripts („.fsx“) werden nur von [Version 1.x](functions-versions.md#creating-1x-apps) der Azure Functions-Runtime unterstützt. Wenn Sie F# mit der Runtimeversion 2.x verwenden möchten, müssen Sie ein vorkompiliertes F#-Klassenbibliotheksprojekt („.fs“) verwenden. Sie erstellen, verwalten und veröffentlichen ein F#-Klassenbibliotheksprojekt mithilfe von Visual Studio wie ein [C#-Klassenbibliotheksprojekt](functions-dotnet-class-library.md). Weitere Informationen zu den Versionen von Functions finden Sie unter [Übersicht über die Runtimeversionen von Azure Functions](functions-versions.md).
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben.
 
@@ -49,7 +52,7 @@ FunctionsProject
  | - bin
 ```
 
-Die freigegebene Datei [host.json] (functions-host-json.md) kann zum Konfigurieren der Funktions-App verwendet werden. Jede Funktion verfügt über eine eigene Codedatei (FSX-Datei) sowie über eine eigene Bindungskonfigurationsdatei (function.json).
+Sie können die freigegebene Datei [host.json](functions-host-json.md) zum Konfigurieren der Funktions-App verwenden. Jede Funktion verfügt über eine eigene Codedatei (FSX-Datei) sowie über eine eigene Bindungskonfigurationsdatei (function.json).
 
 Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
@@ -143,7 +146,7 @@ Die folgenden Namespaces werden automatisch geöffnet:
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+* `Microsoft.Azure.WebJobs.Host`.
 
 ## <a name="referencing-external-assemblies"></a>Verweise auf externe Assemblys
 Auf ähnliche Weise werden Framework-Assemblyverweise mit der `#r "AssemblyName"`-Direktive hinzugefügt.
@@ -288,7 +291,7 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 * [F# Guide](/dotnet/articles/fsharp/index)
 * [Bewährte Methoden für Azure Functions](functions-best-practices.md)
-* [Azure Functions developer reference (Azure Functions-Entwicklerreferenz) (Azure Functions-Entwicklerreferenz)](functions-reference.md)
+* [Entwicklerreferenz zu Azure Functions](functions-reference.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 * [Azure Functions-Tests](functions-test-a-function.md)
 * [Azure Functions-Skalierung](functions-scale.md)

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 10/24/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 3c1c681e2c7ccd6b5fd3eaa3639853d99cb1e0b7
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 397aa000da7ea70c12883622b60c0e3e6dded811
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005210"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025301"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Anmeldeverfahren von Azure AD Identity Protection
 Azure Active Directory Identity Protection bietet folgende Möglichkeiten:
@@ -57,13 +57,18 @@ Administratoren können eine Richtlinie festlegen, die es für Benutzer erforder
 
 1. Im ersten Schritt wird der Benutzer davon in Kenntnis gesetzt, dass das Konto für die mehrstufige Authentifizierung eingerichtet werden muss. 
    
-    ![Wiederherstellung](./media/flows/140.png "Wiederherstellung")
+    ![Wiederherstellung](./media/flows/301.png "Wiederherstellung")
+
 2. Zur Einrichtung der mehrstufigen Authentifizierung müssen Sie dem System mitteilen, wie Sie kontaktiert werden möchten.
    
-    ![Wiederherstellung](./media/flows/141.png "Wiederherstellung")
-3. Das System sendet Ihnen eine Abfrage, auf die Sie reagieren müssen.
-   
-    ![Wiederherstellung](./media/flows/142.png "Wiederherstellung")
+    ![Wiederherstellung](./media/flows/302.png "Wiederherstellung")
+
+3. Geben Sie im System Ihre Telefonnummer und wie Sie kontaktiert werden möchten an.
+
+    ![Wiederherstellung](./media/flows/303.png "Wiederherstellung")
+
+Um die Registrierung abschließen zu können, müssen Sie entweder auf einen Anruf antworten oder einen Code eingeben. 
+
 
 ## <a name="risky-sign-in-recovery"></a>Wiederherstellung riskanter Anmeldungen
 Wenn ein Administrator eine Richtlinie für Anmelderisiken konfiguriert hat, werden die betroffenen Benutzer benachrichtigt, wenn sie versuchen, sich anzumelden. 

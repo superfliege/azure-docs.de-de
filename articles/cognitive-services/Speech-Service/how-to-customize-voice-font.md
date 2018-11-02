@@ -1,33 +1,33 @@
 ---
-title: Was ist Custom Voice? – Azure Cognitive Services
-description: Dieser Artikel gibt einen Überblick über die Sprachanpassung von Microsoft Text-to-Speech, mit der Sie eine erkennbare, unverwechselbare Stimme für Ihre Marke erstellen können.
+title: Erstellen einer benutzerdefinierten Voicefont
+titlesuffix: Azure Cognitive Services
+description: Dieser Artikel gibt eine Übersicht über die Sprachanpassung von Text-to-Speech, mit der Sie eine erkennbare, unverwechselbare Stimme für Ihre Marke erstellen können.
 services: cognitive-services
-author: noellelacharite
+author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: nolach
-ms.openlocfilehash: 5e99e7e376a020f845816fb38e31dd727d87a4cb
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.author: panosper
+ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423424"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467717"
 ---
 # <a name="creating-custom-voice-fonts"></a>Erstellen benutzerdefinierter Voicefonts
 
-Mit der Microsoft-Text-to-Speech-API erstellen Sie für Ihre Marke eine unverwechselbare Stimme, die als *Voicefont* bezeichnet wird. 
+Mit der Text-to-Speech-API (TTS) erstellen Sie für Ihre Marke eine unverwechselbare Stimme, die als *Voicefont* bezeichnet wird. 
 
 Zur Erstellung Ihres Voicefonts laden Sie eine Tonstudioaufnahme und die zugehörigen Skripts als Trainingsdaten hoch. Der Dienst erstellt daraufhin ein individuelles Stimmenmodell, das auf Ihre Aufnahme abgestimmt ist. Diesen Voicefont können Sie zum Synthetisieren von Sprache verwenden. 
 
 Zu Beginn sind für einen Proof of Concept nur wenige Daten erforderlich. Je mehr Daten Sie anschließend bereitstellen, desto natürlicher und professioneller klingt die Stimme.
 
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das **Text-to-Speech**-API-Feature zur Anpassung einer Stimme befindet sich aktuell in der privaten Vorschau. Wenn Sie das Feature nutzen möchten, ist es erforderlich, dass Sie [das Antragsformular ausfüllen](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u).
-
-Außerdem benötigen Sie ein Azure-Konto und ein Abonnement für den Speech-Dienst. Falls dies noch nicht geschehen ist, müssen Sie ein [Abonnement erstellen](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Stellen Sie zwischen Ihrem Abonnement und dem Custom Voice-Portal wie folgt eine Verbindung her:
+Sie benötigen ein Azure-Konto und ein Abonnement für den Speech-Dienst. Falls dies noch nicht geschehen ist, müssen Sie ein [Abonnement erstellen](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Stellen Sie zwischen Ihrem Abonnement und dem Custom Voice-Portal wie hier gezeigt eine Verbindung her.
 
 1. Melden Sie sich am [Custom Voice-Portal](https://customvoice.ai) mit dem gleichen Microsoft-Konto an, mit dem Sie Zugriff beantragt haben.
 
@@ -37,7 +37,6 @@ Außerdem benötigen Sie ein Azure-Konto und ein Abonnement für den Speech-Dien
 
 3. Wählen Sie auf der Seite „Abonnements“ die Option **Verbindung mit vorhandenem Abonnement herstellen** aus. Beachten Sie, dass die Sprachdienste verschiedene Regionen unterstützen. Überprüfen Sie die Region, in der Ihr Abonnementschlüssel erstellt wurde, und stellen Sie sicher, dass Sie Ihren Schlüssel mit dem richtigen Unterportal verbinden.  
 
-     
 4. Fügen Sie Ihren Abonnementschlüssel wie im folgenden Beispiel gezeigt in die Tabelle ein. Jedem Abonnement sind zwei Schlüssel zugeordnet. Sie können beide verwenden.
 
      ![Abonnement hinzufügen](media/custom-voice/add-subscription.png)
@@ -56,7 +55,7 @@ Wenn Sie eine Stimme für eine Produktionsumgebung erstellen möchten, werden ei
 
 ### <a name="audio-files"></a>Audiodateien
 
-Jede Audiodatei sollte genau eine Äußerung enthalten. Dies kann beispielsweise ein Satz oder aber ein Gesprächsbeitrag eines Sprachdialogsystems sein. Alle Dateien müssen in derselben Sprache vorliegen. (Mehrsprachige benutzerdefinierte Stimmen werden nicht unterstützt.) Zusätzlich müssen die Audiodateien über einen eindeutigen numerischen Dateinamen mit der Erweiterung `.wav` verfügen.
+Jede Audiodatei sollte genau eine Äußerung enthalten. Dies kann beispielsweise ein Satz oder aber ein Gesprächsbeitrag eines Sprachdialogsystems sein. Alle Dateien müssen in derselben Sprache vorliegen. (Mehrere benutzerdefinierte Stimmen werden nicht unterstützt.) Zusätzlich müssen die Audiodateien über einen eindeutigen numerischen Dateinamen mit der Erweiterung `.wav` verfügen.
 
 Die Audiodateien sollten so vorbereitet werden, dass sie die unten aufgeführten Bedingungen erfüllen. Andere Formate werden nicht unterstützt und abgelehnt.
 
@@ -75,7 +74,7 @@ Die Audiodateien sollten so vorbereitet werden, dass sie die unten aufgeführten
 
 ### <a name="transcripts"></a>Transkripte
 
-Die Transkriptionsdatei ist eine Nur-Text-Datei (ANSI, UTF-8, UTF-8-BOM, UTF-16-LE oder UTF-16-BE). In jeder Zeile der Transkriptionsdatei muss der Name einer Audiodatei vermerkt sein. Darauf folgen das Tabstoppzeichen (Codepunkt 9) und das Transkript. Leeren Zeilen sind nicht erlaubt.
+Die Transkriptionsdatei ist eine Textdatei (ANSI, UTF-8, UTF-8-BOM, UTF-16-LE oder UTF-16-BE). In jeder Zeile der Transkriptionsdatei muss der Name einer Audiodatei vermerkt sein. Darauf folgen das Tabstoppzeichen (Codepunkt 9) und das Transkript. Leeren Zeilen sind nicht erlaubt.
 
 Beispiel: 
 
