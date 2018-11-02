@@ -1,18 +1,19 @@
 ---
-title: Contoso – Einrichten einer Infrastruktur für die Migration | Microsoft Docs
+title: Contoso – Einrichten einer Infrastruktur für die Migration | Microsoft-Dokumentation
 description: Erfahren Sie, wie Contoso eine Azure-Infrastruktur für die Migration zu Azure einrichtet.
 services: azure-migrate
 author: rayne-wiselman
+manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: bf2562f4772d20f099faec94794e0e908e6636d5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2210aaa5d4d0ba9d730e5aee97972565ea0c1090
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227536"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092972"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso – Bereitstellen einer Migrationsinfrastruktur
 
@@ -36,9 +37,10 @@ Artikel 2: Bereitstellen einer Azure-Infrastruktur | Contoso bereitet seine loka
 [Artikel 8: Zuweisen eines neuen Hosts für eine Linux-App auf Azure-VMs und Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migriert seine Linux-App „osTicket“ mithilfe von Site Recovery zu Azure-VMs. Die App-Datenbank wird zu Azure Database for MySQL migriert, indem MySQL Workbench verwendet wird. | Verfügbar
 [Artikel 9: Umgestalten einer App in eine Azure-Web-App und in Azure SQL-Datenbank](contoso-migration-refactor-web-app-sql.md) | Contoso migriert die SmartHotel360-App zu einer Azure-Web-App und die App-Datenbank mithilfe des Datenbankmigrations-Assistenten zu einer Azure SQL Server-Instanz. | Verfügbar    
 [Artikel 10: Umgestalten einer Linux-App in eine Azure-Web-App und in Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migriert seine Linux-App „osTicket“ an mehreren Standorten zu einer Azure-Web-App. Die Web-App wird in GitHub integriert, um die kontinuierliche Bereitstellung (Continuous Delivery) zu ermöglichen. Das Unternehmen migriert die App-Datenbank zu einer Azure Database for MySQL-Instanz. | Verfügbar
-[Article 11: Refactor Team Foundation Server on Azure DevOps Services (Artikel 11: Umgestalten von Team Foundation Server in Azure DevOps Services)](contoso-migration-tfs-vsts.md) | Contoso migriert die lokale Team Foundation Server-Bereitstellung zu Azure DevOps Services in Azure. | Verfügbar
+[Artikel 11: Umgestalten von Team Foundation Server in Azure DevOps Services](contoso-migration-tfs-vsts.md) | Contoso migriert die lokale Team Foundation Server-Bereitstellung zu Azure DevOps Services in Azure. | Verfügbar
 [Artikel 12: Umstrukturieren einer App in einen Azure-Container und Azure SQL-Datenbank](contoso-migration-rearchitect-container-sql.md) | Contoso migriert die SmartHotel-App zu Azure. Anschließend wird die Webebene der App in einen Windows-Container umstrukturiert, der in Azure Service Fabric ausgeführt wird, und die App-Datenbank wird in eine Azure SQL-Datenbank umstrukturiert. | Verfügbar    
-[Artikel 13: Neuerstellen einer App in Azure](contoso-migration-rebuild.md) | Contoso erstellt die SmartHotel-App mit verschiedenen Azure-Funktionen und -Diensten neu – z.B. Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services und Azure Cosmos DB. | Verfügbar 
+[Artikel 13: Neuerstellen einer App in Azure](contoso-migration-rebuild.md) | Contoso erstellt die SmartHotel-App mit verschiedenen Azure-Funktionen und -Diensten neu – z.B. Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services und Azure Cosmos DB. | Verfügbar
+[Artikel 14: Migration zu Azure in großem Umfang](contoso-migration-scale.md) | Nachdem Contoso verschiedene Kombinationen für die Migration getestet hat, bereitet das Unternehmen sich jetzt auf eine vollständige Migration nach Azure in großem Umfang vor. | Verfügbar 
 
 In diesem Artikel richtet Contoso sämtliche Infrastrukturelemente ein, die für die Durchführung aller Migrationsszenarien erforderlich sind. 
 
@@ -114,12 +116,12 @@ Nach der Konfiguration der Abonnements kann sich Contoso mit der Microsoft-Lizen
 
 Bei der Bereitstellung von VMs in Azure beinhalten Standardimages eine Lizenz, die Contoso die verwendete Software pro Minute in Rechnung stellt. Contoso ist jedoch seit langem Microsoft-Kunde und hat EAs und Lizenzen im Open License-Programm mit Software Assurance (SA) unterhalten. 
 
-Der Azure-Hybridvorteil stellt eine kostengünstige Methode für die Migration von Contoso zur Verfügung und ermöglicht Einsparungen bei Workloads von Azure-VMs und SQL Server durch Umwandlung oder Wiederverwendung von Lizenzen der Windows Server Datacenter- und Standard-Editionen, die durch Software Assurance abgedeckt sind. Dadurch kann Contoso einen niedriger angesetzten Computesatz für VMs und SQL Server bezahlen. [Weitere Informationen](https://azure.microsoft.com/pricing/hybrid-benefit/)
+Der Azure-Hybridvorteil stellt eine kostengünstige Methode für die Migration von Contoso zur Verfügung und ermöglicht Einsparungen bei Workloads von Azure-VMs und SQL Server durch Umwandlung oder Wiederverwendung von Lizenzen der Windows Server Datacenter- und Standard-Editionen, die durch Software Assurance abgedeckt sind. Dadurch kann Contoso einen niedriger angesetzten Computesatz für VMs und SQL Server bezahlen. [Weitere Informationen](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 
 #### <a name="license-mobility"></a>Lizenzmobilität
 
-Lizenzmobilität durch SA bietet Microsoft-Volumenlizenz-Kunden wie Contoso die Flexibilität, berechtigte Serveranwendungen mit aktiver SA in Azure bereitzustellen. Hierdurch entfällt die Notwendigkeit zum Kauf neuer Lizenzen. Ohne anfallende Mobilitätsgebühren können die vorhandenen Lizenzen auf einfache Weise in Azure bereitgestellt werden. [Weitere Informationen](https://azure.microsoft.com/pricing/license-mobility/)
+Lizenzmobilität durch SA bietet Microsoft-Volumenlizenz-Kunden wie Contoso die Flexibilität, berechtigte Serveranwendungen mit aktiver SA in Azure bereitzustellen. Hierdurch entfällt die Notwendigkeit zum Kauf neuer Lizenzen. Ohne anfallende Mobilitätsgebühren können die vorhandenen Lizenzen auf einfache Weise in Azure bereitgestellt werden. [Weitere Informationen](https://azure.microsoft.com/pricing/license-mobility/).
 
 #### <a name="reserve-instances-for-predictable-workloads"></a>Reservieren von Instanzen für vorhersehbare Workloads
 
@@ -293,7 +295,7 @@ Verfügbarkeitszonen tragen dazu bei, Apps und Daten vor Datencenterausfällen z
 - In allen aktivierten Regionen sind mindestens drei separate Zonen vorhanden.
 - Die physische Trennung der Zonen innerhalb einer Region schützt Anwendungen und Daten vor Datencenterausfällen.
 
-Contoso stellt Verfügbarkeitszonen bereit, da Apps nach Skalierbarkeit, hoher Verfügbarkeit und Resilienz verlangen. [Weitere Informationen](https://docs.microsoft.com/azure/availability-zones/az-overview) 
+Contoso stellt Verfügbarkeitszonen bereit, da Apps nach Skalierbarkeit, hoher Verfügbarkeit und Resilienz verlangen. [Weitere Informationen](https://docs.microsoft.com/azure/availability-zones/az-overview). 
 
 
 ## <a name="step-4-design-a-network-infrastructure"></a>Schritt 4: Entwerfen einer Netzwerkinfrastruktur
@@ -580,7 +582,7 @@ Nach der Aktualisierung der Netzwerkeinstellungen sind die Administratoren von C
 1. Im Azure-Portal stellen sie eine neue Windows Server-VM im passenden VNet bereit.
 2. Sie erstellen an jedem Standort Verfügbarkeitsgruppen für die VM. Verfügbarkeitsgruppen haben diese Aufgaben:
     - Sie stellen sicher, dass die Azure-Gesamtstruktur die VMs in verschiedene Infrastrukturen in der Azure-Region aufteilt. 
-    -  Sie ermöglichen Contoso die Qualifikation für die 99,95 %-SLA für VMs in Azure.  [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)
+    -  Sie ermöglichen Contoso die Qualifikation für die 99,95 %-SLA für VMs in Azure.  [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
 
     ![Verfügbarkeitsgruppe](./media/contoso-migration-infrastructure/availability-group.png) 
 3. Nach der Bereitstellung des virtuellen Computers öffnen sie die Netzwerkschnittstelle für den virtuellen Computer. Sie legen die private IP-Adresse als statisch fest und geben eine gültige Adresse an.
@@ -726,9 +728,9 @@ Sicherheit ist in der Cloud entscheidend, und Azure bietet eine große Bandbreit
 
 Für Contoso ist eine Reihe von Hauptaspekten zu berücksichtigen:
 
-- **Azure Security Center**Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Mit Security Center können Sie Sicherheitsrichtlinien für Ihre Workloads anwenden, die Angriffsfläche für Bedrohungen verringern sowie Angriffe erkennen und darauf reagieren.  [Weitere Informationen](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- **Netzwerksicherheitsgruppen (NSGs)**: Eine NSG ist ein Filter (eine Firewall), der eine Liste mit Sicherheitsregeln enthält, deren Anwendung zur Zulassung oder Ablehnung von Netzwerkverkehr an mit Azure-VNets verbundene Ressourcen führt. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-network/security-overview)
-- **Datenverschlüsselung**: Azure Disk Encryption ist eine Funktion, mit der Sie die Datenträger von virtuellen Windows- und Linux-IaaS-Computern verschlüsseln können. [Weitere Informationen](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+- **Azure Security Center**Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Mit Security Center können Sie Sicherheitsrichtlinien für Ihre Workloads anwenden, die Angriffsfläche für Bedrohungen verringern sowie Angriffe erkennen und darauf reagieren.  [Weitere Informationen](https://docs.microsoft.com/azure/security-center/security-center-intro).
+- **Netzwerksicherheitsgruppen (NSGs)**: Eine NSG ist ein Filter (eine Firewall), der eine Liste mit Sicherheitsregeln enthält, deren Anwendung zur Zulassung oder Ablehnung von Netzwerkverkehr an mit Azure-VNets verbundene Ressourcen führt. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-network/security-overview).
+- **Datenverschlüsselung**: Azure Disk Encryption ist eine Funktion, mit der Sie die Datenträger von virtuellen Windows- und Linux-IaaS-Computern verschlüsseln können. [Weitere Informationen](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest).
 
 ### <a name="work-with-the-azure-security-center"></a>Arbeiten mit dem Azure Security Center
 

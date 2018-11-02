@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 56f1721240d4b685133149d50dd7c2a0e6b7e974
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: bc98fc2465c280c41a77823de239a5572c5d27e4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158840"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409576"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Salesforce mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,6 +35,8 @@ Dieser Salesforce-Connector unterstützt insbesondere Folgendes:
 
 - Salesforce Developer, Professional, Enterprise oder Unlimited Edition.
 - Datenkopiervorgänge aus der und in die Produktionsumgebung, den Sandkasten und die benutzerdefinierte Domäne von Salesforce.
+
+Der Salesforce-Connector basiert auf der Salesforce-REST-API, wobei [v39](https://developer.salesforce.com/docs/atlas.en-us.206.0.api_rest.meta/api_rest/resources_list.htm) für das Kopieren von Daten in ausgehender Richtung und [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) für das Kopieren in eingehender Richtung genutzt wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -184,7 +186,7 @@ Legen Sie zum Kopieren von Daten aus Salesforce den Quelltyp in der Kopieraktivi
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SalesforceSource** festgelegt werden. | JA |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. Sie können eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) oder eine SQL-92-Abfrage verwenden. Weitere Tipps finden Sie im Abschnitt [Tipps zu Abfragen](#query-tips). | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. Sie können eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) oder eine SQL-92-Abfrage verwenden. Weitere Tipps finden Sie im Abschnitt [Tipps zu Abfragen](#query-tips). Wenn die Abfrage nicht angegeben ist, werden alle Daten des Salesforce-Objekts abgerufen, die im Dataset unter „objectApiName“ angegeben sind. | Nein (wenn „objectApiName“ im Dataset angegeben ist) |
 | readBehavior | Gibt an, ob die vorhandenen Datensätze oder alle Datensätze (einschließlich gelöschter Datensätze) abgefragt werden sollen. Wird diese Option nicht angegeben, wird standardmäßig das erste Verhalten angewendet. <br>Zulässige Werte: **query** (Standard), **queryAll**  | Nein  |
 
 > [!IMPORTANT]

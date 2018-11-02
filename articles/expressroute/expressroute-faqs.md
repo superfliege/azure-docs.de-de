@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 101dec93713983e5f2082a59103288fcda346740
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 6b4cce641556a290111db530c0089e4da0a351c8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419303"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958424"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -246,7 +246,7 @@ Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der REST-API ode
 ExpressRoute Premium ist eine Sammlung der folgenden Features:
 
 * Erhöhung des Grenzwerts für Routingtabellen von 4.000 auf 10.000 Routen für privates Peering.
-* Größere Anzahl an VNets, die mit der ExpressRoute-Verbindung verbunden werden können. Weitere Informationen finden Sie in der Tabelle [ExpressRoute-Grenzwerte](#limits).
+* Erhöhung der Anzahl von VNETs und ExpressRoute Global Reach-Verbindungen, die für eine ExpressRoute-Verbindung aktiviert werden können (Standardwert: 10). Weitere Informationen finden Sie in der Tabelle [ExpressRoute-Grenzwerte](#limits).
 * Verbindung mit Office 365 und Dynamics 365
 * Globale Konnektivität über das Microsoft-Kernnetzwerk. Jetzt können Sie ein VNET in einer geopolitischen Region mit einer ExpressRoute-Verbindung in einer anderen Region verknüpfen.<br>
     **Beispiele:**
@@ -255,9 +255,9 @@ ExpressRoute Premium ist eine Sammlung der folgenden Features:
     *  Beim Microsoft-Peering werden Präfixe anderer geopolitischer Regionen so angekündigt, dass Sie sich z. B. über eine Verbindung im Silicon Valley mit SQL Azure in der Region „Europa, Westen“ verbinden können.
 
 
-### <a name="limits"></a>Wie viele VNETs kann ich mit einer ExpressRoute-Verbindung verknüpfen, wenn ich ExpressRoute Premium aktiviert habe?
+### <a name="limits"></a>Wie viele VNETs und ExpressRoute Global Reach-Verbindungen kann ich für eine ExpressRoute-Verbindung aktivieren, wenn ich über ExpressRoute Premium verfüge?
 
-Die folgenden Tabellen enthalten die ExpressRoute-Grenzwerte und die Anzahl von VNETs pro ExpressRoute-Verbindung:
+In den folgenden Tabellen sind die ExpressRoute-Grenzwerte und die Anzahl von VNETs und ExpressRoute Global Reach-Verbindungen pro ExpressRoute-Verbindung angegeben:
 
 [!INCLUDE [ExpressRoute limits](../../includes/expressroute-limits.md)]
 

@@ -11,20 +11,22 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: e40f2f3f0a6551fd9fc38ad138d92f694a09879f
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/15/2018
+ms.openlocfilehash: 32b60a53581a0f372a7d994cfa260ebd7bcb27b2
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803238"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467040"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL-Datenbank – Datenermittlung und -klassifizierung
+
 Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Schützen** sensibler Daten in Ihren Datenbanken.
 Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Finanz-/Gesundheitsdaten, persönlich identifizierbare Daten (PII) usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
-* Unterstützen der Einhaltung von Datenschutzstandards und gesetzlicher Bestimmungen
-* Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
-* Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken, die sensible Daten enthalten
+
+- Unterstützen der Einhaltung von Datenschutzstandards und gesetzlicher Bestimmungen
+- Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
+- Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken, die sensible Daten enthalten
 
 Datenermittlung und -klassifizierung ist Teil des Angebote [SQL Advanced Threat Protection (ATP)](sql-advanced-threat-protection.md). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf und die Verwaltung von Datenermittlung und -klassifizierung ist über das zentrale SQL-ATP-Portal möglich.
 
@@ -32,18 +34,33 @@ Datenermittlung und -klassifizierung ist Teil des Angebote [SQL Advanced Threat 
 > Dieses Dokument bezieht sich nur auf Azure SQL-Datenbank. Informationen zu SQL Server (lokal) finden Sie unter [SQL-Datenermittlung und -klassifizierung](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Was ist Datenermittlung und -klassifizierung?
+
 Datenermittlung und -klassifizierung führt eine Reihe von erweiterten Diensten und neuen SQL-Funktionen ein und bildet damit ein neues SQL Information Protection-Paradigma für den Schutz der Daten – nicht nur der Datenbank:
-* **Ermittlung und Empfehlungen:** Das Klassifizierungsmodul scannt Ihre Datenbank und identifiziert Spalten, die möglicherweise sensible Daten enthalten. Es bietet dann eine einfache Möglichkeit, diese zu überprüfen und die entsprechenden Klassifizierungsempfehlungen über das Azure Portal anzuwenden.
-* **Bezeichnung:** Mithilfe der neu im SQL-Modul eingeführten Metadatenattribute können sensible Daten dauerhaft mit Klassifizierungsbezeichnungen gekennzeichnet werden. Diese Metadaten können dann für erweiterte Überwachungs- und Schutzszenarien für sensible Daten genutzt werden.
-* **Vertraulichkeit von Abfrageergebnissen:** Die Vertraulichkeit von Abfrageergebnissen wird zu Überwachungszwecken in Echtzeit berechnet.
-* **Sichtbarkeit:** Der Klassifizierungsstatus der Datenbank kann in einem detaillierten Dashboard im Portal angezeigt werden. Darüber hinaus können Sie einen Bericht (im Excel-Format) herunterladen, der für Compliance- und Überwachungszwecke und für weitere Zwecke verwendet werden kann.
+
+- **Ermittlung und Empfehlungen**
+
+  Das Klassifizierungsmodul scannt Ihre Datenbank und identifiziert Spalten, die unter Umständen sensible Daten enthalten. Es bietet dann eine einfache Möglichkeit, diese zu überprüfen und die entsprechenden Klassifizierungsempfehlungen über das Azure Portal anzuwenden.
+
+- **Bezeichnung**
+
+  Mithilfe der neu im SQL-Modul eingeführten Metadatenattribute können sensible Daten dauerhaft mit Klassifizierungsbezeichnungen gekennzeichnet werden. Diese Metadaten können dann für erweiterte Überwachungs- und Schutzszenarien für sensible Daten genutzt werden.
+
+- **Vertraulichkeit von Abfrageergebnissen**
+
+  Die Vertraulichkeit von Abfrageergebnissen wird zu Überwachungszwecken in Echtzeit berechnet.
+
+- **Sichtbarkeit**
+
+  Der Klassifizierungsstatus der Datenbank kann in einem detaillierten Dashboard im Portal angezeigt werden. Darüber hinaus können Sie einen Bericht (im Excel-Format) herunterladen, der für Compliance- und Überwachungszwecke und für weitere Zwecke verwendet werden kann.
 
 ## <a id="subheading-2"></a>Ermitteln, Klassifizieren und Bezeichnen von vertraulichen Spalten
+
 Im folgenden Abschnitt werden die Schritte zum Ermitteln, Klassifizieren und Bezeichnen von Spalten mit sensiblen Daten in der Datenbank sowie das Anzeigen des aktuellen Klassifizierungsstatus der Datenbank und das Exportieren von Berichten beschrieben.
 
 Die Klassifizierung umfasst zwei Metadatenattribute:
-* Bezeichnungen – die wichtigsten Klassifizierungsattribute zum Definieren der Vertraulichkeitsstufe der in der Spalte gespeicherten Daten  
-* Informationstypen – bieten zusätzliche Granularität für den Typ der in der Spalte gespeicherten Daten
+
+- Bezeichnungen – die wichtigsten Klassifizierungsattribute zum Definieren der Vertraulichkeitsstufe der in der Spalte gespeicherten Daten  
+- Informationstypen – bieten zusätzliche Granularität für den Typ der in der Spalte gespeicherten Daten
 
 ## <a name="define-and-customize-your-classification-taxonomy"></a>Definieren und Anpassen der Klassifizierungstaxonomie
 
@@ -72,31 +89,31 @@ Sobald die mandantenweite Richtlinie definiert wurde, können Sie die Klassifizi
 
    ![Exportieren in Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
-5.  <a id="step-5"></a>Um die Klassifizierung Ihrer Daten zu starten, klicken Sie oben im Fenster auf die Registerkarte **Klassifikation**.
+5. <a id="step-5"></a>Um die Klassifizierung Ihrer Daten zu starten, klicken Sie oben im Fenster auf die Registerkarte **Klassifikation**.
 
     ![Klassifizieren von Daten](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
 6. Das Klassifizierungsmodul scannt Ihre Datenbank nach Spalten mit potenziell sensiblen Daten und stellt eine Liste der **empfohlenen Spaltenklassifizierungen** bereit. So zeigen Sie Klassifizierungsempfehlungen an und übernehmen sie
 
-    * Um die Liste der empfohlenen Spaltenklassifizierungen anzuzeigen, klicken Sie am unteren Rand des Fensters auf den Empfehlungsbereich:
+   - Um die Liste der empfohlenen Spaltenklassifizierungen anzuzeigen, klicken Sie am unteren Rand des Fensters auf den Empfehlungsbereich:
 
       ![Klassifizieren von Daten](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
 
-    * Überprüfen Sie die Liste der Empfehlungen. Um eine Empfehlung für eine bestimmte Spalte zu akzeptieren, aktivieren Sie das Kontrollkästchen in der linken Spalte der entsprechenden Zeile. Sie können auch *alle Empfehlungen* als akzeptiert markieren, indem Sie das Kontrollkästchen im Tabellenkopf der Empfehlungen aktivieren.
+   - Überprüfen Sie die Liste der Empfehlungen. Um eine Empfehlung für eine bestimmte Spalte zu akzeptieren, aktivieren Sie das Kontrollkästchen in der linken Spalte der entsprechenden Zeile. Sie können auch *alle Empfehlungen* als akzeptiert markieren, indem Sie das Kontrollkästchen im Tabellenkopf der Empfehlungen aktivieren.
 
        ![Überprüfen der Empfehlungsliste](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
 
-    * Um die ausgewählten Empfehlungen anzuwenden, klicken Sie auf die blaue Schaltfläche **Accept selected recommendations** (Ausgewählte Empfehlungen akzeptieren).
+   - Um die ausgewählten Empfehlungen anzuwenden, klicken Sie auf die blaue Schaltfläche **Accept selected recommendations** (Ausgewählte Empfehlungen akzeptieren).
 
       ![Anwenden von Empfehlungen](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
 
 7. Sie können Spalten auch **manuell klassifizieren** – entweder als Alternative zur empfehlungsbasierten Klassifizierung oder als Ergänzung:
 
-    * Klicken Sie im oberen Menü des Fensters auf **Klassifizierung hinzufügen**.
+   - Klicken Sie im oberen Menü des Fensters auf **Klassifizierung hinzufügen**.
 
       ![Manuelles Hinzufügen einer Klassifizierung](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
-    * Wählen Sie im daraufhin geöffneten Kontextfenster das Schema, die Tabelle und dann die Spalte, die Sie klassifizieren möchten, sowie die den Informationstyp und die Vertraulichkeitsbezeichnung aus. Klicken Sie dann am unteren Rand des Kontextfensters auf die blaue Schaltfläche **Klassifizierung hinzufügen**.
+   - Wählen Sie im daraufhin geöffneten Kontextfenster das Schema, die Tabelle und dann die Spalte, die Sie klassifizieren möchten, sowie die den Informationstyp und die Vertraulichkeitsbezeichnung aus. Klicken Sie dann am unteren Rand des Kontextfensters auf die blaue Schaltfläche **Klassifizierung hinzufügen**.
 
       ![Auswählen der klassifizierenden Spalte](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
@@ -117,16 +134,16 @@ Mit T-SQL können Sie Spaltenklassifizierungen hinzufügen/entfernen sowie alle 
 > [!NOTE]
 > Bei der Verwendung von T-SQL zur Verwaltung von Bezeichnungen gibt es keine Validierung, dass zu einer Spalte hinzugefügte Bezeichnungen in der Richtlinie zum Schutz von Organisationsinformationen (die in den Portalempfehlungen erscheinen) vorhanden sind. Aus diesem Grund müssen Sie dies überprüfen.
 
-* Hinzufügen/Aktualisieren der Klassifizierung einer oder mehrerer Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG HINZUFÜGEN](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-* Entfernen der Klassifizierung einer oder mehrerer Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG VERWERFEN](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-* Anzeigen aller Klassifizierungen in der Datenbank: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- Hinzufügen/Aktualisieren der Klassifizierung einer oder mehrerer Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG HINZUFÜGEN](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Entfernen der Klassifizierung einer oder mehrerer Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG VERWERFEN](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Anzeigen aller Klassifizierungen in der Datenbank: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 Sie können zudem REST-APIs verwenden, um Klassifizierungen programmgesteuert zu verwalten. Die veröffentlichten REST-APIs unterstützen die folgenden Vorgänge:
-* [Erstellen oder aktualisieren:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) erstellt oder aktualisiert die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
-* [Löschen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) löscht die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
-* [Abrufen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) ruft die Vertraulichkeitsbezeichnung einer bestimmten Spalte ab.
-* [Nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) listet die Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
 
+- [Erstellen oder aktualisieren:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) erstellt oder aktualisiert die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
+- [Löschen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) löscht die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
+- [Abrufen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) ruft die Vertraulichkeitsbezeichnung einer bestimmten Spalte ab.
+- [Nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) listet die Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
 
 ## <a id="subheading-5"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: ae7ac2726ccb97264b387eb9ae5476ae1946a783
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: dfa5929daffb27617d3d1047f044a5af037e42ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161980"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362236"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 
@@ -127,6 +127,8 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 
 -   Die Azure Active Directory-Authentifizierung wird nicht unterstützt.
 
+-   Tabellen mit demselben Namen, aber unterschiedlichem Schema (z.B. „dbo.customers“ und „sales.customers“) werden nicht unterstützt.
+
 #### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
 
 -   FileStream
@@ -150,7 +152,7 @@ Mit der Datensynchronisierung können keine schreibgeschützten oder vom System 
 | **Dimensionen**                                                      | **Begrenzung**              | **Problemumgehung**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Maximale Anzahl von Synchronisierungsgruppen, denen eine Datenbank angehören kann       | 5                      |                             |
-| Maximale Anzahl von Endpunkten einer einzelnen Synchronisierungsgruppe              | 30                     | Erstellen mehrerer Synchronisierungsgruppen |
+| Maximale Anzahl von Endpunkten einer einzelnen Synchronisierungsgruppe              | 30                     |                             |
 | Maximale Anzahl von lokalen Endpunkten in einer einzelnen Synchronisierungsgruppe | 5                      | Erstellen mehrerer Synchronisierungsgruppen |
 | Namen von Datenbanken, Tabellen, Schemas und Spalten                       | 50 Zeichen pro Name |                             |
 | Tabellen in einer Synchronisierungsgruppe                                          | 500                    | Erstellen mehrerer Synchronisierungsgruppen |
@@ -158,6 +160,8 @@ Mit der Datensynchronisierung können keine schreibgeschützten oder vom System 
 | Größe von Datenzeilen in einer Tabelle                                        | 24 Mb                  |                             |
 | Minimales Synchronisierungsintervall                                           | 5 Minuten              |                             |
 |||
+> [!NOTE]
+> Es können bis zu 30 Endpunkte in einer einzelnen Synchronisierungsgruppe vorhanden sein, wenn es nur eine Synchronisierungsgruppe gibt. Wenn mehr als eine Synchronisierungsgruppe vorhanden ist, darf die Gesamtanzahl der Endpunkte in allen Synchronisierungsgruppen 30 nicht überschreiten. Wenn eine Datenbank mehreren Synchronisierungsgruppen angehört, wird sie als mehrere Endpunkte und nicht als einer gezählt.
 
 ## <a name="faq-about-sql-data-sync"></a>Häufig gestellte Fragen zur SQL-Datensynchronisierung
 

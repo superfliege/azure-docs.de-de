@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 3c85398f140ccd61202c066f4394fa54358e0a1e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 6673fa9d377400d7e80fc95dc7d0ce12f4b2e60e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161569"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354171"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Limits des V-Kern-basierten Kaufmodells für Pools für elastische Datenbanken in Azure SQL-Datenbank
 
@@ -28,16 +28,15 @@ Informationen zu Einschränkungen bei DTU-basierten Kaufmodellen finden Sie unte
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Pool für elastische Datenbanken: Speicher- und Computegrößen
-
-Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für elastische SQL-Datenbank-Instanzen für alle Diensttarife und Computegrößen. Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), mit [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) oder [REST-API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) Diensttarif, Computegröße und Speichermenge festlegen.
+Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), mit [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) oder [REST-API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) Diensttarif, Computegröße und Speichermenge festlegen.
 
 > [!NOTE]
 > Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen den Grenzwerten einzelner Datenbanken außerhalb von Pools, welche die gleiche Computegröße aufweisen. Auf eine GP_Gen4_1-Datenbank können z.B. max. 200 Worker gleichzeitig zugreifen. Entsprechend können auch maximal 200 Worker auf eine Datenbank in einem GP_Gen4_1-Pool zugreifen. Beachten Sie, dass die Gesamtanzahl gleichzeitiger Worker in einem GP_Gen4_1-Pool 210 beträgt.
 
-### <a name="general-purpose-service-tier"></a>Universelle Dienstebene
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Diensttarif „Universell“: Speicher- und Computegrößen
 
-#### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+
 |Computegröße|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|4|4|4|4|4|4|
@@ -61,7 +60,8 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
-#### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+
 |Computegröße|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
@@ -85,9 +85,10 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
-### <a name="business-critical-service-tier"></a>Diensttarif „Unternehmenskritisch“
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Diensttarif „Unternehmenskritisch“: Speicher- und Computegrößen
 
-#### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+
 |Computegröße|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|4|4|4|4|4|4|
@@ -112,6 +113,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |||
 
 #### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+
 |Computegröße|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
@@ -137,7 +139,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 
 Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet werden, erhält jede Datenbank im Pool gleich viel Computeressourcen zum Verarbeiten von Abfragen. Der SQL-Datenbank-Dienst bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in Pools für elastische Datenbanken ergänzt die Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn die Mindestanzahl von virtuellen Kernen pro Datenbank auf einen Wert ungleich null festgelegt ist.
 
-### <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Datenbanken in einem Pool
+## <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Datenbanken in einem Pool
 
 Die folgende Tabelle beschreibt die Eigenschaften von Datenbanken in einem Pool.
 
@@ -147,9 +149,9 @@ Die folgende Tabelle beschreibt die Eigenschaften von Datenbanken in einem Pool.
 | Minimale Anzahl virtueller Kerne pro Datenbank |Die minimale Anzahl von virtuellen Kernen, die für jede Datenbank im Pool garantiert werden. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Die Mindestanzahl von virtuellen Kernen pro Datenbank kann auf 0 festgelegt werden. Dies ist auch der Standardwert. Diese Eigenschaft ist auf einen Wert zwischen 0 und der durchschnittlichen Nutzung der virtuellen Kerne pro Datenbank festgelegt. Das Produkt aus der Anzahl von Datenbanken im Pool und der Mindestzahl von virtuellen Kernen pro Datenbank darf die tatsächliche Anzahl der virtuellen Kerne pro Pool nicht übersteigen.|
 | Max. Speicherkapazität pro Datenbank |Die maximale Datenbankgröße, die vom Benutzer für eine Datenbank in einem Pool festgelegt wird. In einem Pool zusammengefasste Datenbanken nutzen den zugeordneten Poolspeicher gemeinsam, daher ist die Größe, die eine Datenbank erreichen kann, auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder der Datenbankgröße beschränkt. Die maximale Datenbankgröße bezieht sich auf die maximale Größe der Datendateien und umfasst nicht den von Protokolldateien belegten Speicherplatz. |
 |||
- 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Antworten auf häufig gestellte Fragen finden Sie unter [SQL-Datenbank – Häufig gestellte Fragen](sql-database-faq.md).
-- Informationen zu Grenzwerten auf dem Server und Abonnementebenen finden Sie unter [Übersicht zu Ressourcenlimits für Azure SQL-Datenbank](sql-database-resource-limits.md).
+- Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits auf einem logischen Server](sql-database-resource-limits-logical-server.md).
 - Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).

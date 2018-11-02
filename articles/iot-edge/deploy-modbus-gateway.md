@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: b5316479011a432f3822448f03b8ad6ecddd4fe1
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 031524f4ef00b57f598c1114d594fb70eeedd15b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590586"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393999"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Verbinden von ModBus-TCP-Geräten über ein IoT Edge-Gerätegateway
 
@@ -54,13 +54,12 @@ Falls Sie Ihr eigenes Modul erstellen und für Ihre Umgebung anpassen möchten, 
 
       ```JSON
       {  
-        "properties.desired":{  
+        "properties.desired":{
           "PublishInterval":"2000",
-          "SlaveConfigs":{  
-            "Slave01":{  
-              "SlaveConnection":"<IPV4 address>",
-              "HwId":"PowerMeter-0a:01:01:01:01:01",
-              "Operations":{  
+          "SlaveConfigs":{
+            "Slave01":{
+              "SlaveConnection":"<IPV4 address>","HwId":"PowerMeter-0a:01:01:01:01:01",
+              "Operations":{
                 "Op01":{  
                   "PollingInterval": "1000",
                   "UnitId":"1",
@@ -100,8 +99,5 @@ Die vom Gerät gesendeten Telemetriedaten können Sie auch mit der [Azure IoT-To
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur Nutzung von IoT Edge-Geräten als Gateways finden Sie unter [Erstellen eines IoT Edge-Geräts, das als transparentes Gateway fungiert][lnk-transparent-gateway-linux].
+- Weitere Informationen zur Nutzung von IoT Edge-Geräten als Gateways finden Sie unter [Erstellen eines IoT Edge-Geräts, das als transparentes Gateway fungiert](./how-to-create-transparent-gateway-linux.md).
 - Weitere Informationen zur Funktionsweise von IoT Edge-Modulen finden Sie unter [Grundlegendes zu Azure IoT Edge-Modulen](iot-edge-modules.md).
-
-<!-- Links -->
-[lnk-transparent-gateway-linux]: ./how-to-create-transparent-gateway-linux.md

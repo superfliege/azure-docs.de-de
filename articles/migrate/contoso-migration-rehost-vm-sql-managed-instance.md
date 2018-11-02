@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 12baa21c8661012cd7ef96217724150a3d8c56f3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 0e4576ad4f7eece543ef572073919bcf3ca3a4e9
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303427"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116141"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso-Migration: Zuweisen eines neuen Hosts für eine lokale App auf einer Azure-VM und einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -40,6 +40,7 @@ Artikel 4: Zuweisen eines neuen Hosts für eine App auf einer Azure-VM und einer
 [Artikel 11: Umgestalten von Team Foundation Server in Azure DevOps Services](contoso-migration-tfs-vsts.md) | Contoso migriert die lokale Team Foundation Server-Bereitstellung durch Migration zu Azure DevOps Services in Azure. | Verfügbar
 [Artikel 12: Umstrukturieren einer App in einen Azure-Container und Azure SQL-Datenbank](contoso-migration-rearchitect-container-sql.md) | Contoso migriert seine SmartHotel-App zu Azure und strukturiert die App anschließend um. Contoso strukturiert die App-Webschicht in einen Windows-Container und die App-Datenbank mithilfe von Azure SQL-Datenbank um. | Verfügbar
 [Artikel 13: Neuerstellen einer App in Azure](contoso-migration-rebuild.md) | Contoso erstellt seine SmartHotel-App neu, indem verschiedene Azure-Funktionen und -Dienste verwendet werden, z.B. Azure App Service, Azure Kubernetes Service, Azure Functions, Azure Cognitive Services und Azure Cosmos DB. | Verfügbar
+[Artikel 14: Migration zu Azure in großem Umfang](contoso-migration-scale.md) | Nachdem Contoso verschiedene Kombinationen für die Migration getestet hat, bereitet das Unternehmen sich jetzt auf eine vollständige Migration nach Azure in großem Umfang vor. | Verfügbar
 
 
 
@@ -116,7 +117,7 @@ Contoso bewertet den vorgeschlagen Entwurf anhand einer Liste mit Vor- und Nacht
 **Aspekt** | **Details**
 --- | ---
 **Vorteile** |  WEBVM wird ohne Änderungen nach Azure verlagert, was die Migration vereinfacht.<br/><br/> Die verwaltete SQL-Instanz unterstützt die technischen Anforderungen und Ziele von Contoso.<br/><br/> Eine verwaltete Instanz bietet 100% Kompatibilität mit der aktuellen Bereitstellung und ermöglicht gleichzeitig den Ausstieg aus SQL Server 2008 R2.<br/><br/>  Contoso kann seine Investition in Software Assurance mit dem Azure-Hybridvorteil für SQL Server und Windows Server nutzen.<br/><br/> Der Database Migration Service kann für zusätzliche Migrationen in der Zukunft genutzt werden.<br/><br/> Die verwaltete SQL-Instanz bietet integrierte Fehlertoleranz, die nicht von Contoso konfiguriert werden muss. Dadurch wird sichergestellt, dass die Datenschicht kein Single Point of Failover mehr ist.
-**Nachteile** | Auf der WEBVM wird Windows Server 2008 R2 ausgeführt.  Obwohl dieses Betriebssystem von Azure unterstützt wird, ist es kein weiterhin unterstütztes Betriebssystem. [Weitere Informationen](https://support.microsoft.com/en-us/help/956893)<br/><br/> Die Webschicht bleibt ein Single Point of Failure, weil nur die WEBVM Dienste bereitstellt.<br/><br/> Contoso muss die App-Webschicht weiterhin als virtuellen Computer unterstützen, anstatt auf einen verwalteten Dienst wie Azure App Service umzustellen.<br/><br/> Für die Datenschicht stellt die verwaltete Instanz möglicherweise nicht die beste Lösung dar, wenn Contoso das Betriebssystem oder den Datenbankserver anpassen oder Drittanbieter-Apps mit SQL Server ausführen möchte. Eine Ausführung von SQL Server auf einer IaaS-VM könnte diese Flexibilität bieten. 
+**Nachteile** | Auf der WEBVM wird Windows Server 2008 R2 ausgeführt.  Obwohl dieses Betriebssystem von Azure unterstützt wird, ist es kein weiterhin unterstütztes Betriebssystem. [Weitere Informationen](https://support.microsoft.com/en-us/help/956893).<br/><br/> Die Webschicht bleibt ein Single Point of Failure, weil nur die WEBVM Dienste bereitstellt.<br/><br/> Contoso muss die App-Webschicht weiterhin als virtuellen Computer unterstützen, anstatt auf einen verwalteten Dienst wie Azure App Service umzustellen.<br/><br/> Für die Datenschicht stellt die verwaltete Instanz möglicherweise nicht die beste Lösung dar, wenn Contoso das Betriebssystem oder den Datenbankserver anpassen oder Drittanbieter-Apps mit SQL Server ausführen möchte. Eine Ausführung von SQL Server auf einer IaaS-VM könnte diese Flexibilität bieten. 
 
 ### <a name="migration-process"></a>Migrationsprozess
 
@@ -142,7 +143,7 @@ Dienst | BESCHREIBUNG | Kosten
 
 Contoso und andere Benutzer müssen für dieses Szenario die folgenden Voraussetzungen erfüllen:
 
-Anforderungen | Details
+Requirements (Anforderungen) | Details
 --- | ---
 **Registrieren für die verwaltete Instanz (Vorschauversion)** | Sie müssen für die eingeschränkte öffentliche Vorschauversion der verwalteten SQL-Datenbank-Instanz registriert sein. Sie benötigen ein Azure-Abonnement, um sich [registrieren](https://portal.azure.com#create/Microsoft.SQLManagedInstance) zu können. Da sich die Registrierung über einige Tage erstrecken kann, sollten Sie diesen Vorgang durchführen, bevor Sie mit der Bereitstellung dieses Szenarios beginnen.
 **Azure-Abonnement** | Sie müssten bereits ein Abonnement erstellt haben, als Sie die Bewertung im ersten Artikel dieser Reihe durchgeführt haben. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.<br/><br/> Wenn Sie ein kostenloses Konto erstellen, sind Sie der Administrator Ihres Abonnements und können alle Aktionen durchführen.<br/><br/> Falls Sie ein vorhandenes Abonnement verwenden und nicht der Administrator sind, müssen Sie mit dem Administrator des Abonnements zusammenarbeiten, damit er Ihnen Berechtigungen vom Typ „Besitzer“ oder „Mitwirkender“ zuweist.<br/><br/> Falls Sie präzisere Berechtigungen benötigen, helfen Ihnen die Informationen unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Site Recovery-Zugriffs](../site-recovery/site-recovery-role-based-linked-access-control.md) weiter. 
@@ -615,7 +616,7 @@ Weitere Informationen zu den Sicherheitsmethoden für VMs finden Sie unter [Bew�
 Für die Geschäftskontinuität und Notfallwiederherstellung (Business Continuity & Disaster Recovery, BCDR) führt Contoso die folgenden Aktionen durch:
 
 - Schützen von Daten: Contoso sichert die Daten auf den virtuellen Computern mithilfe des Azure Backup-Diensts. [Weitere Informationen]https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- Apps betriebsbereit halten: Contoso repliziert die App-VMs mithilfe von Site Recovery in eine sekundäre Region. [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+- Apps betriebsbereit halten: Contoso repliziert die App-VMs mithilfe von Site Recovery in eine sekundäre Region. [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
 - Contoso ruft weitere Informationen zum Verwalten der verwalteten SQL-Instanz ab, einschließlich von [Datenbanksicherungen](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups).
 
 

@@ -2,22 +2,21 @@
 title: Grundlegendes zur Azure IoT Hub-Abfragesprache | Microsoft Docs
 description: 'Entwicklerhandbuch: Beschreibung der SQL-ähnlichen IoT Hub-Abfragesprache, die zum Abrufen von Informationen zu Geräte-/Modulzwillingen und Aufträgen von IoT Hub verwendet wird.'
 author: fsautomata
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f28a41f4a80806df14e314dae05405b7b45449b1
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952476"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318247"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
-IoT Hub bietet eine leistungsstarke, SQL-ähnliche Sprache zum Abrufen von Informationen zu [Gerätezwillingen][lnk-twins], [Aufträgen][lnk-jobs] und [Nachrichtenrouting][lnk-devguide-messaging-routes]. Dieser Artikel enthält Folgendes:
+IoT Hub bietet eine leistungsstarke, SQL-ähnliche Sprache zum Abrufen von Informationen zu [Gerätezwillingen](iot-hub-devguide-device-twins.md), [Aufträgen](iot-hub-devguide-jobs.md) und [Nachrichtenrouting](iot-hub-devguide-messages-d2c.md). Dieser Artikel enthält Folgendes:
 
 * Eine Einführung in die wichtigsten Features der IoT Hub-Abfragesprache
 * Eine ausführliche Beschreibung der Sprache Weitere Informationen zur Abfragesprache für das Nachrichtenrouting finden Sie unter [Abfragen im Nachrichtenrouting](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
@@ -25,7 +24,9 @@ IoT Hub bietet eine leistungsstarke, SQL-ähnliche Sprache zum Abrufen von Infor
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="device-and-module-twin-queries"></a>Abfragen von Geräte- und Modulzwillingen
-[Gerätezwillinge][lnk-twins] und Modulzwillinge können beliebige JSON-Objekte als Tags und Eigenschaften enthalten. In IoT Hub können Sie Geräte- und Modulzwillinge als einzelnes JSON-Dokument abfragen, das alle Informationen zum Zwilling enthält.
+
+[Gerätezwillinge](iot-hub-devguide-device-twins.md) und Modulzwillinge können beliebige JSON-Objekte als Tags und Eigenschaften enthalten. In IoT Hub können Sie Geräte- und Modulzwillinge als einzelnes JSON-Dokument abfragen, das alle Informationen zum Zwilling enthält.
+
 Angenommen, Ihre IoT Hub-Gerätezwillinge weisen die folgende Struktur auf (Modulzwillinge sehen ähnlich aus, enthalten aber zusätzlich eine Modul-ID):
 
 ```json
@@ -80,15 +81,14 @@ Angenommen, Ihre IoT Hub-Gerätezwillinge weisen die folgende Struktur auf (Modu
 
 ### <a name="device-twin-queries"></a>Gerätezwillingabfragen
 
-IoT Hub macht die Gerätezwillinge als eine Dokumentensammlung namens **Geräte** verfügbar.
-Die folgende Abfrage ruft also die gesamte Gruppe von Gerätezwillingen ab:
+IoT Hub macht die Gerätezwillinge als eine Dokumentensammlung namens **Geräte** verfügbar. Beispielsweise ruft die folgende Abfrage die gesamte Gruppe von Gerätezwillingen ab:
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Azure IoT SDKs][lnk-hub-sdks] unterstützen das Paging von umfangreichen Ergebnissen.
+> [Azure IoT SDKs](iot-hub-devguide-sdks.md) unterstützen die seitenweise Ausgabe von umfangreichen Ergebnissen.
 
 IoT Hub ermöglicht beim Abrufen von Gerätezwillingen das Filtern mit beliebigen Bedingungen. Verwenden Sie z. B. die folgende Abfrage, um Gerätezwillinge zu erhalten, bei denen das Tag **location.region** auf **US** festgelegt ist:
 
@@ -101,7 +101,7 @@ Boolesche Operatoren und arithmetische Vergleiche werden ebenfalls unterstützt.
 
 ```sql
 SELECT * FROM devices
-WHERE tags.location.region = 'US'
+  WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
@@ -109,25 +109,25 @@ Zur Vereinfachung können auch Arraykonstanten mit den Operatoren **IN** und **N
 
 ```sql
 SELECT * FROM devices
-WHERE properties.reported.connectivity IN ['wired', 'wifi']
+  WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
 Es ist häufig erforderlich, alle Gerätezwillinge zu ermitteln, die eine bestimmte Eigenschaft enthalten. IoT Hub unterstützt zu diesem Zweck die Funktion `is_defined()`. Verwenden Sie z. B. die folgende Abfrage, um Gerätezwillinge abzurufen, die die `connectivity`-Eigenschaft definieren:
 
 ```SQL
 SELECT * FROM devices
-WHERE is_defined(properties.reported.connectivity)
+  WHERE is_defined(properties.reported.connectivity)
 ```
 
-Die vollständige Referenz zu den Filtermöglichkeiten finden Sie im Abschnitt zur [WHERE-Klausel][lnk-query-where].
+Die vollständige Referenz zu den Filtermöglichkeiten finden Sie im Abschnitt zur [WHERE-Klausel](iot-hub-devguide-query-language.md#where-clause).
 
 Gruppierungen und Aggregationen werden ebenfalls unterstützt. Verwenden Sie z. B. die folgende Abfrage, um die Anzahl von Geräten mit dem jeweiligen Status für die Telemetriekonfiguration zu ermitteln:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
     COUNT() AS numberOfDevices
-FROM devices
-GROUP BY properties.reported.telemetryConfig.status
+  FROM devices
+  GROUP BY properties.reported.telemetryConfig.status
 ```
 
 Diese Gruppierungsabfrage würde ein ähnliches Ergebnis wie im folgenden Beispiel zurückgegeben:
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Modulzwillingsabfragen
 
-Das Abfragen von Modulzwillingen ähnelt dem Abfragen von Gerätezwillingen. Allerdings wird dabei eine andere Sammlung/ein anderer Namespace verwendet. Anstelle von „from devices“ können Sie folgende Abfrage verwenden:
+Das Abfragen von Modulzwillingen ähnelt dem Abfragen von Gerätezwillingen. Allerdings wird dabei eine andere Sammlung/ein anderer Namespace verwendet. Anstelle von „from devices“ können Sie „device.modules“ abfragen:
 
 ```sql
 SELECT * FROM devices.modules
@@ -171,14 +171,18 @@ Eine Verknüpfung zwischen den Sammlungen „devices“ und „devices.modules�
 Select * from devices.modules where properties.reported.status = 'scanning'
 ```
 
-Die folgende Abfrage gilt alle Modulzwillinge mit dem Status „scanning“ nur für die angegebene Teilmenge der Geräte zurück:
+Die folgende Abfrage gibt alle Modulzwillinge mit dem Status „scanning“ nur für die angegebene Teilmenge der Geräte zurück:
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning' and deviceId IN ('device1', 'device2')  
+Select * from devices.modules 
+  where properties.reported.status = 'scanning' 
+  and deviceId IN ['device1', 'device2']
 ```
 
 ### <a name="c-example"></a>C#-Beispiel
-Die Abfragefunktion wird durch das [C#-Dienst-SDK][lnk-hub-sdks] in der **RegistryManager**-Klasse verfügbar gemacht.
+
+Die Abfragefunktion wird durch das [C#-Dienst-SDK](iot-hub-devguide-sdks.md) in der **RegistryManager**-Klasse verfügbar gemacht.
+
 Es folgt ein Beispiel für eine einfache Abfrage:
 
 ```csharp
@@ -198,7 +202,9 @@ Das Objekt **query** wird mit einer Seitengröße (bis zu 100) instanziiert. Dan
 Das Abfrageobjekt macht mehrere **Next**-Werte verfügbar, abhängig von der Deserialisierungsoption, die von der Abfrage benötigt werden. Beispielsweise Gerätezwillings- bzw. Auftragsobjekte oder einfachen JSON-Text bei der Verwendung von Projektionen.
 
 ### <a name="nodejs-example"></a>Node.js-Beispiel
-Die Abfragefunktion wird durch das [Azure IoT-Dienst-SDK für Node.js][lnk-hub-sdks] im **Registry-Objekt** verfügbar gemacht.
+
+Die Abfragefunktion wird durch das [Azure IoT-Dienst-SDK für Node.js](iot-hub-devguide-sdks.md) im **Registry**-Objekt verfügbar gemacht.
+
 Es folgt ein Beispiel für eine einfache Abfrage:
 
 ```nodejs
@@ -233,8 +239,7 @@ Derzeit werden Vergleiche nur zwischen primitiven Typen (keine Objekte) unterst�
 
 ## <a name="get-started-with-jobs-queries"></a>Erste Schritte mit Auftragsabfragen
 
-[Aufträge][lnk-jobs] bieten eine Möglichkeit zum Ausführen von Vorgängen für Gerätegruppen. Jeder Gerätezwilling enthält die Informationen der auf ihn bezogenen Aufträge in einer Sammlung namens **jobs**.
-Die logische Struktur entspricht der folgenden:
+[Aufträge](iot-hub-devguide-jobs.md) bieten eine Möglichkeit zum Ausführen von Vorgängen für Gerätegruppen. Jeder Gerätezwilling enthält die Informationen der auf ihn bezogenen Aufträge in einer Sammlung namens **jobs**.
 
 ```json
 {
@@ -276,16 +281,18 @@ Um alle Aufträge (vergangene und geplante) abzurufen, die ein einzelnes Gerät 
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
 Beachten Sie, wie diese Abfrage den gerätespezifischen Status (und möglicherweise die direkte Antwortmethode) jedes zurückgegebenen Auftrags bereitstellt.
+
 Es ist auch möglich, mit beliebigen booleschen Bedingungen alle Objekteigenschaften in der Sammlung **devices.jobs** zu filtern.
+
 Verwenden Sie z. B. die folgende Abfrage, um alle abgeschlossenen Aktualisierungsaufträge von Gerätezwillingen abzurufen, die nach September 2016 für ein bestimmtes Gerät erstellt wurden:
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.jobType = 'scheduleTwinUpdate'
     AND devices.jobs.status = 'completed'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
@@ -295,10 +302,11 @@ Sie können auch die Ergebnisse pro Gerät eines einzelnen Auftrags abrufen.
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.jobId = 'myJobId'
+  WHERE devices.jobs.jobId = 'myJobId'
 ```
 
 ### <a name="limitations"></a>Einschränkungen
+
 Derzeit wird für Abfragen von **devices.jobs** Folgendes nicht unterstützt:
 
 * Projektionen, sodass nur `SELECT *` möglich ist.
@@ -306,24 +314,28 @@ Derzeit wird für Abfragen von **devices.jobs** Folgendes nicht unterstützt:
 * Durchführung von Aggregationen, z.B. Zählen, Durchschnittsbildung, Gruppieren.
 
 ## <a name="basics-of-an-iot-hub-query"></a>Grundlagen von IoT Hub-Abfragen
+
 Jede IoT Hub-Abfrage besteht aus einer SELECT- und einer FROM-Klausel mit optionalen WHERE- und GROUP BY-Klauseln. Jede Abfrage wird für eine Sammlung von JSON-Dokumenten ausgeführt, z.B. Gerätezwillinge. Die FROM-Klausel zeigt die Dokumentsammlung an, die durchlaufen werden soll (**devices** oder **devices.jobs**). Anschließend wird der Filter in der WHERE-Klausel angewendet. Mit Aggregationen werden die Ergebnisse dieses Schritts gruppiert, wie in der GROUP BY-Klausel angegeben. Für jede Gruppe wird eine Zeile generiert, wie in der SELECT-Klausel angegeben.
 
 ```sql
 SELECT <select_list>
-FROM <from_specification>
-[WHERE <filter_condition>]
-[GROUP BY <group_specification>]
+  FROM <from_specification>
+  [WHERE <filter_condition>]
+  [GROUP BY <group_specification>]
 ```
 
 ## <a name="from-clause"></a>Die FROM-Klausel
+
 Die **FROM <Spezifikation>**-Klausel kann nur zwei Werte annehmen: **FROM devices** zum Abfragen von Gerätezwillingen oder **FROM devices.jobs** zum Abfragen der Details pro Gerät für den Auftrag.
+
 
 ## <a name="where-clause"></a>WHERE-Klausel
 Die **WHERE <Filterbedingung>**-Klausel ist optional. Sie gibt eine oder mehrere Bedingungen an, die von den in der FROM-Sammlung enthaltenen JSON-Dokumenten erfüllt werden müssen, um als Teil des Ergebnisses zurückgegeben zu werden. Jedes JSON-Dokument muss die angegebenen Bedingungen erfüllen, um in das Ergebnis einbezogen zu werden.
 
-Die zulässigen Bedingungen werden im Abschnitt [Ausdrücke und Bedingungen][lnk-query-expressions] beschrieben.
+Die zulässigen Bedingungen werden im Abschnitt [Ausdrücke und Bedingungen](iot-hub-devguide-query-language.md#expressions-and-conditions) beschrieben.
 
 ## <a name="select-clause"></a>Die SELECT-Klausel
+
 Die **SELECT <Liste>**-Klausel ist obligatorisch und gibt an, welche Werte von der Abfrage abgerufen werden. Sie gibt die JSON-Werte an, mit denen die neuen JSON-Objekte erstellt werden sollen.
 Für jedes Element der gefilterten (und optional gruppierten) Teilmenge der FROM-Sammlung wird in der Projektionsphase ein neues JSON-Objekt generiert. Dieses Objekt wird mit den in der SELECT-Klausel angegebenen Werten erstellt.
 
@@ -349,7 +361,7 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** bezieht sich auf jede Eigenschaft des JSON-Dokuments in der FROM-Sammlung. Im Abschnitt [Erste Schritte mit Gerätezwillingsabfragen][lnk-query-getstarted] finden Sie einige Beispiele für SELECT-Klauseln.
+**Attribute_name** bezieht sich auf jede Eigenschaft des JSON-Dokuments in der FROM-Sammlung. Im Abschnitt [Erste Schritte mit Gerätezwillingsabfragen](iot-hub-devguide-query-language.md#get-started-with-device-twin-queries) finden Sie einige Beispiele für SELECT-Klauseln.
 
 Derzeit werden andere Auswahlklauseln als **SELECT*** nur in Aggregatabfragen für Gerätezwillinge unterstützt.
 
@@ -483,18 +495,5 @@ In Routenbedingungen werden die folgenden Zeichenfolgenfunktionen unterstützt:
 | CONTAINS(x,y) | Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck den zweiten enthält. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informieren Sie sich darüber, wie Sie Abfragen in Ihren Apps mit [Azure IoT SDKs][lnk-hub-sdks] ausführen.
 
-[lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
-[lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions
-[lnk-query-getstarted]: iot-hub-devguide-query-language.md#get-started-with-device-twin-queries
-
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-jobs]: iot-hub-devguide-jobs.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
-[lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
+Informieren Sie sich darüber, wie Sie Abfragen in Ihren Apps mit [Azure IoT SDKs](iot-hub-devguide-sdks.md) ausführen.

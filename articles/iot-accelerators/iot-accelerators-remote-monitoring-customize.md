@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7971a5aeadd2b2edaa43da8bacae9743937ce30e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 59f2860168782d96bf82d0a27f9bb9eeed0f1020
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127345"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167493"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Anpassen des Solution Accelerators für Remoteüberwachung
 
@@ -460,9 +460,15 @@ Um die Darstellungs- und Visualisierungsschicht in der Remoteüberwachungslösun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie die Webbenutzeroberfläche im Solution Accelerator für Remoteüberwachung anpassen können.
+In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie die Webbenutzeroberfläche im Solution Accelerator für Remoteüberwachung anpassen können. Weitere Informationen zum Anpassen der Benutzeroberfläche finden Sie in den folgenden Artikeln:
+
+* [Hinzufügen einer benutzerdefinierten Seite zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-page.md)
+* [Hinzufügen eines benutzerdefinierten Dienstes zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-service.md).
+* [Hinzufügen eines benutzerdefinierten Rasters zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-grid.md)
+* [Hinzufügen eines benutzerdefinierten Flyouts zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-flyout.md)
+* [Hinzufügen eines benutzerdefinierten Panels zum Dashboard zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-panel.md)
 
 Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
 
-Weitere Informationen zum Anpassen der Remoteüberwachungslösung finden Sie unter [Anpassen und erneutes Bereitstellen eines Microservice](iot-accelerators-microservices-example.md)
-<!-- Next tutorials in the sequence -->.
+Weitere Informationen zum Anpassen der Microservices der Remoteüberwachungslösung finden Sie unter [Anpassen und erneutes Bereitstellen eines Microservice](iot-accelerators-microservices-example.md).
+<!-- Next tutorials in the sequence -->

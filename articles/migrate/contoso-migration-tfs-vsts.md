@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: a304cb08ec001587af5e6ea740853bd8435824e7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 79c95a53ace4fd5ab638587d1b74980812fbc273
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297925"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116962"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-azure-devops-services"></a>Contoso-Migration: Umgestalten einer Team Foundation Server-Bereitstellung nach Azure DevOps Services in Azure
 
@@ -35,6 +35,7 @@ Dieses Dokument stammt aus einer Reihe von Artikeln, die zeigen, wie das fiktive
 Artikel 11: Umgestalten einer TFS-Bereitstellung in Azure DevOps Services | Migrieren des Entwicklungs-App-TFS zu Azure DevOps Services in Azure | Dieser Artikel
 [Artikel 12: Umstrukturieren einer App zu einem Azure-Container und einer Azure SQL-Datenbank-Instanz](contoso-migration-rearchitect-container-sql.md) | Zeigt, wie Contoso seine SmartHotel-App zu Azure migriert und in Azure umstrukturiert. Es strukturiert die App-Webebene in einen Windows-Container und die App-Datenbank in eine Azure SQL-Datenbank-Instanz um. | Verfügbar
 [Artikel 13: Neuerstellen einer App in Azure](contoso-migration-rebuild.md) | Zeigt, wie Contoso seine SmartHotel-App mit einer Reihe von Azure-Funktionen und -Diensten wie App Service, Azure Kubernetes, Azure Functions, Cognitive Services und Cosmos DB neu erstellt. | Verfügbar
+[Artikel 14: Migration zu Azure in großem Umfang](contoso-migration-scale.md) | Nachdem Contoso verschiedene Kombinationen für die Migration getestet hat, bereitet das Unternehmen sich jetzt auf eine vollständige Migration nach Azure in großem Umfang vor. | Verfügbar
 
 
 ## <a name="business-drivers"></a>Business-Treiber
@@ -139,7 +140,7 @@ Das Upgrade wird wie folgt durchgeführt:
      ![TFS](./media/contoso-migration-tfs-vsts/upgrade5.png) 
 
 > [!NOTE]
-> Einige TFS-Upgrades müssen den Featurekonfigurations-Assistenten ausführen, wenn das Upgrade abgeschlossen ist. [Weitere Informationen](https://docs.microsoft.com/azure/devops/reference/configure-features-after-upgrade?utm_source=ms&utm_medium=guide&utm_campaign=vstsdataimportguide&view=vsts)
+> Einige TFS-Upgrades müssen den Featurekonfigurations-Assistenten ausführen, wenn das Upgrade abgeschlossen ist. [Weitere Informationen](https://docs.microsoft.com/azure/devops/reference/configure-features-after-upgrade?utm_source=ms&utm_medium=guide&utm_campaign=vstsdataimportguide&view=vsts).
 
 **Benötigen Sie weitere Hilfe?**
 

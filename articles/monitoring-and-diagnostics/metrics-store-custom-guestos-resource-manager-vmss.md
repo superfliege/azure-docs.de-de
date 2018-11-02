@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: b9808233e08e545c31e171afe104173dccc6abed
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 7b600bd699ce7f9e4a6c7cba1a41b6bdece16bf0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434924"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343724"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 
@@ -81,7 +81,7 @@ Suchen Sie die Definition der VM-Skalierungsgruppe im Ressourcenbereich und füg
 Suchen Sie in der VM-Skalierungsgruppenressource den Abschnitt **virtualMachineProfile**. Fügen Sie ein neues Profil namens **extensionsProfile** hinzu, um Erweiterungen zu verwalten.  
 
 
-Fügen Sie in **extensionProfile** eine neue Erweiterung zur Vorlage hinzu, wie im Abschnitt zur **VMSS-WAD-Erweiterung** veranschaulicht.  Dieser Abschnitt ist die MSI-Erweiterung (verwaltete Dienstidentität), die sicherstellt, dass die ausgegebenen Metriken von Azure Monitor akzeptiert werden. Das Feld **Name** kann einen beliebigen Namen enthalten. 
+Fügen Sie in **extensionProfile** eine neue Erweiterung zur Vorlage hinzu, wie im Abschnitt zur **VMSS-WAD-Erweiterung** veranschaulicht.  Dieser Abschnitt ist die Erweiterung für verwaltete Identitäten für Azure-Ressourcen, die sicherstellt, dass die ausgegebenen Metriken von Azure Monitor akzeptiert werden. Das Feld **Name** kann einen beliebigen Namen enthalten. 
 
 Mit dem unten angegebenen Code aus der MSI-Erweiterung wird die Diagnoseerweiterung und -konfiguration der VM-Skalierungsgruppenressource auch als Erweiterungsressource hinzugefügt. Sie können Leistungsindikatoren nach Bedarf hinzufügen/entfernen. 
 
@@ -89,7 +89,7 @@ Mit dem unten angegebenen Code aus der MSI-Erweiterung wird die Diagnoseerweiter
           "extensionProfile": { 
             "extensions": [ 
             // BEGINNING of added code  
-            // Managed service identity   
+            // Managed identites for Azure resources   
                 { 
                  "name": "VMSS-WAD-extension", 
                  "properties": { 

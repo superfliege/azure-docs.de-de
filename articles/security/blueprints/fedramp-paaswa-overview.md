@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jomolesk
-ms.openlocfilehash: eb8db75a8ff5af11b98ee2c61628f923a8422153
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: bad808455ebb35523a04e07edd22f4e6ce9473e6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299932"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407298"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-fedramp"></a>Azure Blueprint Automation – PaaS-Webanwendung für FedRAMP
 
@@ -26,7 +26,7 @@ Diese Referenzarchitektur, die zugehörige Anleitung für die Implementierung vo
 - Der Kunde ist für die Durchführung einer angemessenen Sicherheits- und Konformitätsbewertung jeder Lösung verantwortlich, die mit dieser Architektur erstellt wurde, da die Anforderungen je nach den Besonderheiten der jeweiligen Implementierung des Kunden unterschiedlich sein können.
 
 ## <a name="architecture-diagram-and-components"></a>Architekturdiagramm und Komponenten
-Diese Lösung stellt eine Referenzarchitektur für eine PaaS-Webanwendung mit einem Azure SQL-Datenbank-Back-End bereit. Die Webanwendung wird in einer isolierten Azure App Service-Umgebung gehostet. Hierbei handelt es sich um eine private, dedizierte Umgebung in einem Azure-Datencenter. In der Umgebung wird ein Lastenausgleich für den Datenverkehr der Webanwendung für die VMs durchgeführt, die von Azure verwaltet werden. Diese Architektur umfasst auch Netzwerksicherheitsgruppen, ein Application Gateway, Azure DNS und einen Load Balancer. Darüber hinaus bietet Operations Management Suite Echtzeitanalyse von Systemintegrität und Sicherheit. **In Azure werden das Konfigurieren einer VPN- oder ExpressRoute-Verbindung für die Verwaltung und der Datenimport in das Subnetz der Referenzarchitektur empfohlen.**
+Diese Lösung stellt eine Referenzarchitektur für eine PaaS-Webanwendung mit einem Azure SQL-Datenbank-Back-End bereit. Die Webanwendung wird in einer isolierten Azure App Service-Umgebung gehostet. Hierbei handelt es sich um eine private, dedizierte Umgebung in einem Azure-Datencenter. In der Umgebung wird ein Lastenausgleich für den Datenverkehr der Webanwendung für die VMs durchgeführt, die von Azure verwaltet werden. Diese Architektur umfasst auch Netzwerksicherheitsgruppen, ein Application Gateway, Azure DNS und einen Load Balancer. Darüber hinaus bietet Azure Monitor Analysen der Systemintegrität in Echtzeit. **In Azure werden das Konfigurieren einer VPN- oder ExpressRoute-Verbindung für die Verwaltung und der Datenimport in das Subnetz der Referenzarchitektur empfohlen.**
 
 ![PaaS-Webanwendung für FedRAMP – Diagramm zur Referenzarchitektur](images/fedramp-paaswa-architecture.png?raw=true "PaaS-Webanwendung für FedRAMP – Diagramm zur Referenzarchitektur")
 
@@ -44,7 +44,6 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungs
 - Netzwerksicherheitsgruppen
 - Azure DNS
 - Azure Storage
-- Operations Management Suite
 - Azure Monitor
 - App Service-Umgebung v2
 - Azure Load Balancer
@@ -85,9 +84,9 @@ Die Architektur definiert ein privates virtuelles Netzwerk mit dem Adressraum 10
 
 Jede der NSGs verfügt über bestimmte offene Ports und Protokolle, damit die Lösung sicher und richtig ausgeführt werden kann. Darüber hinaus werden die folgenden Konfigurationen für jede NSG aktiviert:
   - [Diagnoseprotokolle und -ereignisse](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) werden aktiviert und in einem Speicherkonto gespeichert.
-  - OMS Log Analytics ist mit der [Diagnose der NSG](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json) verbunden.
+  - Log Analytics ist mit der [Diagnose der NSG](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json) verbunden
 
-**Subnetze**: Stellen Sie sicher, dass jedes Subnetz seiner entsprechenden NSG zugeordnet ist.
+**Subnetze:** Jedes Subnetz ist seiner entsprechenden NSG zugeordnet.
 
 **Azure DNS**: Das Domain Name System (DNS) ist für die Übersetzung (oder Auflösung) eines Website- oder Dienstnamens in die IP-Adresse verantwortlich. [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) ist ein Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe der Azure-Infrastruktur durchführt. Durch das Hosten von Domänen in Azure können Benutzer DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsschritte wie für die anderen Azure-Dienste verwalten. Azure DNS unterstützt auch private DNS-Domänen.
 
@@ -143,12 +142,12 @@ Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) und [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) bieten zusätzlichen Schutz und zusätzliche Benachrichtigungen. Azure Security Center stellt außerdem ein Reputationssystem bereit.
 
 ### <a name="logging-and-auditing"></a>Protokollierung und Überwachung
-Die Operations Management Suite bietet umfassende Protokollierung von System- und Benutzeraktivitäten sowie der Systemintegrität. Die Lösung [Log Analytics](https://azure.microsoft.com/services/log-analytics/) der Operations Management Suite erfasst und analysiert Daten, die von Ressourcen in Azure- und lokalen Umgebungen generiert werden.
+Azure Monitor ermöglicht eine umfassende Protokollierung von System- und Benutzeraktivitäten sowie der Systemintegrität. Es ist eine Lösung für die Erfassung und Analyse von Daten, die von Ressourcen in Azure und lokalen Umgebungen generiert werden.
 - **Aktivitätsprotokolle:** [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
 - **Diagnoseprotokolle:** [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von den einzelnen Ressourcen ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure Storage-Protokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle.
 - **Protokollarchivierung:** Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden. Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Log Analytics verbunden.
 
-Darüber hinaus sind in dieser Architektur die folgenden Operations Management Suite-Lösungen enthalten:
+Darüber hinaus sind in dieser Architektur die folgenden Überwachungslösungen enthalten:
 -   [Active Directory-Bewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment) Die Active Directory-Lösung zur Integritätsüberprüfung bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
 -   [Antischadsoftwarebewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware) Die Antischadsoftwarelösung meldet Schadsoftware, Bedrohungen und den Schutzstatus.
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Die Azure Automation-Lösung dient der Speicherung, Ausführung und Verwaltung von Runbooks. Bei dieser Lösung werden Protokolle über Runbooks für Application Insights und Azure SQL-Datenbank erfasst.

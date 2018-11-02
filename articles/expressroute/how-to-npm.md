@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 47f219b7319e4d2bbadf03954f7bd7f6f39da3b4
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: d334fdba48f248bb7989c2b549517413b1ef793c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128978"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404340"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
 
@@ -43,7 +43,7 @@ Ihre Möglichkeiten:
 
 Überwachungs-Agents werden auf mehreren Servern (lokal und in Azure) installiert. Die Agents kommunizieren miteinander, senden jedoch keine Daten, sondern TCP-Handshakepakete. Die Kommunikation zwischen den Agents ermöglicht es Azure, die Netzwerktopologie und den Pfad zuzuordnen, die der Datenverkehr nutzen kann.
 
-1. Erstellen Sie einen NPM-Arbeitsbereich. Dies ist identisch mit einem OMS-Arbeitsbereich.
+1. Erstellen Sie einen NPM-Arbeitsbereich. Dies entspricht einem Log Analytics-Arbeitsbereich.
 2. Installieren und konfigurieren Sie Software-Agents: 
     * Installieren Sie Überwachungs-Agents auf den lokalen Servern und den virtuellen Azure-Computern (für das private Peering).
     * Konfigurieren Sie die Einstellungen der Server der Überwachungs-Agents, um diesen die Kommunikation zu ermöglichen. (Öffnen Sie die Firewallports usw.)
@@ -63,10 +63,10 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
    >
 
    ![Portal](.\media\how-to-npm\3.png)<br><br>
-2. Klicken Sie im unteren Bereich der Hauptseite **Netzwerkleistungsmonitor** auf **Erstellen**, um die Seite **Network Performance Monitor – Create new solution** (Netzwerkleistungsmonitor – Neue Lösung erstellen) zu öffnen. Klicken Sie auf **OMS Workspace – select a workspace** (OMS-Arbeitsbereich – Arbeitsbereich auswählen), um die Seite „Arbeitsbereich“ zu öffnen. Klicken Sie auf **+ Neuen Arbeitsbereich erstellen**, um die Seite „Arbeitsbereich“ zu öffnen.
-3. Klicken Sie auf der Seite **OMS-Arbeitsbereich** auf **Neu erstellen**, und konfigurieren Sie folgende Einstellungen:
+2. Klicken Sie im unteren Bereich der Hauptseite **Netzwerkleistungsmonitor** auf **Erstellen**, um die Seite **Network Performance Monitor – Create new solution** (Netzwerkleistungsmonitor – Neue Lösung erstellen) zu öffnen. Klicken Sie auf **Log Analytics Workspace – select a workspace** (Log Analytics-Arbeitsbereich – Arbeitsbereich auswählen), um die Seite „Arbeitsbereich“ zu öffnen. Klicken Sie auf **+ Neuen Arbeitsbereich erstellen**, um die Seite „Arbeitsbereich“ zu öffnen.
+3. Klicken Sie auf der Seite **Log Analytics-Arbeitsbereich** auf **Neu erstellen**, und konfigurieren Sie die folgenden Einstellungen:
 
-  * OMS-Arbeitsbereich: Geben Sie einen Namen für Ihren Arbeitsbereich ein.
+  * Log Analytics-Arbeitsbereich: Geben Sie einen Namen für Ihren Arbeitsbereich ein.
   * Abonnement: Wenn Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, das Sie dem neuen Arbeitsbereich zuordnen möchten.
   * Ressourcengruppe: Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine vorhandene.
   * Speicherort: Wird verwendet, um den Speicherort des Speicherkontos für die Protokolle der Agent-Verbindung anzugeben.
@@ -86,9 +86,9 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
 
 ### <a name="download"></a>2.1: Herunterladen der Setup-Datei für den Agent
 
-1. Wechseln Sie zur Registerkarte **Allgemeine Einstellungen** auf der Seite **Konfiguration des Netzwerkleistungsmonitors** für Ihre Ressource. Klicken Sie auf den Agent, der dem Prozessor des Servers aus dem Abschnitt **Installieren der OMS-Agents** entspricht, und laden Sie die Setupdatei herunter.
+1. Wechseln Sie zur Registerkarte **Allgemeine Einstellungen** auf der Seite **Konfiguration des Netzwerkleistungsmonitors** für Ihre Ressource. Klicken Sie auf den Agent, der dem Prozessor des Servers aus dem Abschnitt **Installieren der Log Analytics-Agents** entspricht, und laden Sie die Setupdatei herunter.
 2. Kopieren Sie dann die **Arbeitsbereich-ID** und den **Primärschlüssel**, und fügen Sie diese in Editor ein.
-3. Laden Sie das PowerShell-Skript aus dem Abschnitt **Konfigurieren der OMS-Agents für die Überwachung per TCP-Protokoll** herunter. Das PowerShell-Skript unterstützt Sie beim Öffnen des relevanten Firewallports für die TCP-Transaktionen.
+3. Laden Sie das PowerShell-Skript aus dem Abschnitt **Konfigurieren der Log Analytics-Agents für die Überwachung per TCP-Protokoll** herunter. Das PowerShell-Skript unterstützt Sie beim Öffnen des relevanten Firewallports für die TCP-Transaktionen.
 
   ![PowerShell-Skript](.\media\how-to-npm\7.png)
 
@@ -117,7 +117,7 @@ Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Age
     ![Konto](.\media\how-to-npm\10.png)
 6. Überprüfen Sie Ihre Auswahl auf der Seite **Bereit zum Installieren**, und klicken Sie dann auf **Installieren**.
 7. Klicken Sie auf der Seite **Die Konfiguration wurde erfolgreich abgeschlossen** auf **Fertig stellen**.
-8. Nach Abschluss wird der Microsoft Monitoring Agent in der Systemsteuerung angezeigt. Dort können Sie Ihre Konfiguration überprüfen und sicherstellen, dass der Agent mit Azure Log Analytics (OMS) verbunden ist. Wenn die Verbindung hergestellt ist, zeigt der Agent folgende Meldung an: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Operations Management Suite service** (Für den Microsoft Monitoring Agent wurde die Verbindung mit dem Microsoft Operations Management Suite-Dienst erfolgreich hergestellt).
+8. Nach Abschluss wird der Microsoft Monitoring Agent in der Systemsteuerung angezeigt. Dort können Sie Ihre Konfiguration überprüfen und sicherstellen, dass der Agent mit Azure Log Analytics verbunden ist. Wenn die Verbindung hergestellt ist, zeigt der Agent folgende Meldung an: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Operations Management Suite service** (Für den Microsoft Monitoring Agent wurde die Verbindung mit dem Microsoft Operations Management Suite-Dienst erfolgreich hergestellt).
 
 9. Wiederholen Sie diese Schritte für jedes VNET, das Sie überwachen müssen.
 
@@ -199,7 +199,7 @@ Wenn die Ermittlung abgeschlossen ist, werden Regeln für eindeutige **Verbindun
 
 1. Aktivieren Sie das Kontrollkästchen **Dieses Peering überwachen**.
 2. Aktivieren Sie das Kontrollkästchen **Integritätsüberwachung für dieses Peering aktivieren**.
-3. Wählen Sie Überwachungsbedingungen aus. Sie können benutzerdefinierte Schwellenwerte für das Generieren von Integritätsereignissen festlegen, indem Sie Schwellenwerte eingeben. Sobald der Wert einer Bedingung den für Sie festgelegten Schwellenwert für das ausgewählte Netzwerk-/Subnetzwerkpaar überschreitet, wird ein Integritätsereignis generiert.
+3. Wählen Sie die Überwachungsbedingungen aus. Sie können benutzerdefinierte Schwellenwerte für das Generieren von Integritätsereignissen festlegen, indem Sie Schwellenwerte eingeben. Sobald der Wert einer Bedingung den für Sie festgelegten Schwellenwert für das ausgewählte Netzwerk-/Subnetzwerkpaar überschreitet, wird ein Integritätsereignis generiert.
 4. Klicken Sie auf die „Lokale Agents“-Schaltfläche **Agents hinzufügen** , um die lokalen Server hinzuzufügen, über die Sie die private Peeringverbindung überwachen möchten. Stellen Sie sicher, dass Sie nur Agents auswählen, die über Konnektivität mit dem Microsoft-Dienstendpunkt verfügen, den Sie im Abschnitt für Schritt2 angegeben. Die lokalen Agents müssen den Endpunkt mithilfe der ExpressRoute-Verbindung erreichen können.
 5. Speichern Sie die Einstellungen.
 6. Nach dem Aktivieren der Regeln und dem Auswählen der Werte und Agents, die Sie überwachen möchten, gibt es eine Wartezeit von etwa 30 bis 60 Minuten, bis die Werte aufgefüllt und die Kacheln **ExpressRoute-Überwachung** verfügbar sind.

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: a5792998654ed1d334e514591da3bef9805a5e79
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 712c729a214cdab66961fb399c9d797a758fcf7b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163357"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409678"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Überwachen der SQL-Datensynchronisierung mit Log Analytics 
 
@@ -97,7 +97,7 @@ Weitere Informationen zum Erstellen eines Runbooks finden Sie unter [Mein erstes
 
     2.  Informationen zur Synchronisierungsgruppe
 
-    3.  OMS-Informationen. Diese Informationen finden Sie unter „OMS-Portal“ > „Einstellungen“ > „Verbundene Quellen“. Weitere Informationen zum Senden von Daten an Log Analytics finden Sie unter [Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Vorschauversion)](../log-analytics/log-analytics-data-collector-api.md).
+    3.  Log Analytics-Informationen. Diese Informationen finden Sie im Azure-Portal unter „Einstellungen“ > „Verbundene Quellen“. Weitere Informationen zum Senden von Daten an Log Analytics finden Sie unter [Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Vorschauversion)](../log-analytics/log-analytics-data-collector-api.md).
 
 11. Führen Sie das Runbook im Testbereich aus. Vergewissern Sie sich, dass es erfolgreich ausgeführt wurde.
 
@@ -117,7 +117,7 @@ So planen Sie das Runbook:
 
 4.  Klicken Sie anschließend auf **Neuen Zeitplan erstellen**.
 
-5.  Legen Sie **Serie** auf „Serie“ fest, und geben Sie das gewünschte Intervall an. Verwenden Sie dieses Intervall hier, im Skript und in der OMS.
+5.  Legen Sie **Serie** auf „Serie“ fest, und geben Sie das gewünschte Intervall an. Verwenden Sie dieses Intervall hier, im Skript und in Log Analytics.
 
 6.  Klicken Sie auf **Erstellen**.
 
@@ -129,7 +129,7 @@ Um zu prüfen, ob die Automatisierung erwartungsgemäß funktioniert, suchen Sie
 
 Gehen Sie wie im Anschluss beschrieben vor, um eine auf Log Analytics basierende Warnung zu erstellen. Hierzu muss Log Analytics bereits mit einem Log Analytics-Arbeitsbereich verknüpft sein.
 
-1.  Klicken Sie im OMS-Portal auf **Protokollsuche**.
+1.  Wählen Sie im Azure-Portal die Option **Protokollsuche**.
 
 2.  Erstellen Sie eine Abfrage, um die Fehler und Warnungen innerhalb des gewählten Intervalls nach Synchronisierungsgruppe auszuwählen. Beispiel: 
 
@@ -147,9 +147,9 @@ Gehen Sie wie im Anschluss beschrieben vor, um eine auf Log Analytics basierende
 
 6.  Klicken Sie auf **Speichern**. Die angegebenen Empfänger werden nun per E-Mail benachrichtigt, wenn Fehler auftreten.
 
-## <a name="create-an-oms-view-for-monitoring"></a>Erstellen einer OMS-Ansicht für die Überwachung
+## <a name="create-a-log-analytics-view-for-monitoring"></a>Erstellen einer Log Analytics-Ansicht für die Überwachung
 
-In diesem Schritt wird eine OMS-Ansicht für die visuelle Überwachung aller angegebenen Synchronisierungsgruppen erstellt. Die Ansicht umfasst mehrere Komponenten:
+In diesem Schritt wird eine Log Analytics-Ansicht für die visuelle Überwachung aller angegebenen Synchronisierungsgruppen erstellt. Die Ansicht umfasst mehrere Komponenten:
 
 -   Eine Übersichtskachel mit der Anzahl von Fehlern, erfolgreichen Vorgängen und Warnungen aller Synchronisierungsgruppen.
 
@@ -157,9 +157,9 @@ In diesem Schritt wird eine OMS-Ansicht für die visuelle Überwachung aller ang
 
 -   Eine Kachel für jede Synchronisierungsgruppe mit der Anzahl von Fehlern, erfolgreichen Vorgängen und Warnungen sowie mit den neuesten Fehlermeldungen.
 
-Gehen Sie zum Konfigurieren der OMS-Ansicht wie folgt vor:
+Gehen Sie zum Konfigurieren der Log Analytics-Ansicht wie folgt vor:
 
-1.  Klicken Sie links auf der OMS-Startseite auf das Pluszeichen, um den **Ansicht-Designer** zu öffnen.
+1.  Klicken Sie links auf der Log Analytics-Startseite auf das Pluszeichen, um den **Ansicht-Designer** zu öffnen.
 
 2.  Klicken Sie auf der oberen Leiste des Ansicht-Designers auf **Importieren**. Wählen Sie die Beispieldatei „DataSyncLogOMSView“ aus.
 

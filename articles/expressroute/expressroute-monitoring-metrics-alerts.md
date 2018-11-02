@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: fc8abee93983ce4ea06d0b433eb35ed22e0f61b4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fcdaf10ad30cee0e7b79304ff21d67560522875c
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47218070"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377796"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute-Überwachung, Metriken und Warnungen
 
@@ -20,7 +20,7 @@ ms.locfileid: "47218070"
 
 ## <a name="circuit-metrics"></a>Metriken zu Leitungen
 
-Navigieren Sie zu **Metriken**, und klicken Sie auf die Seite „ExpressRoute“ für die Leitung, die Sie überwachen möchten. Auf der Kachel **Überwachung** können Sie die **Metriken** anzeigen.
+Navigieren Sie zu **Metriken**, und klicken Sie auf die Seite „ExpressRoute“ für die Leitung, die Sie überwachen möchten. Auf der Kachel **Überwachung** können Sie die **Metriken** anzeigen. Wählen Sie BitsInPerSecond oder BitsOutPerSecond und die Aggregation aus. Optional können Sie Teilung anwenden, wonach die Metriken pro Peeringtyp angezeigt werden.
 
 ![Metriken zu Leitungen](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 

@@ -2,25 +2,17 @@
 title: 'Herstellen einer Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk: Site-to-Site-VPN: CLI | Microsoft-Dokumentation'
 description: Schritte zum Erstellen einer IPsec-Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk über das öffentliche Internet. Anhand dieser Schritte können Sie mithilfe einer CLI eine standortübergreifende Site-to-Site-VPN Gateway-Verbindung erstellen.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: a4400338baa77f82bafc5b74561695f8e9a70b5f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73bf57721f670c06042b9b7a00f53126a6d1b145
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965805"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957070"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung per CLI
 
@@ -46,7 +38,9 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 * Achten Sie darauf, dass Sie ein kompatibles VPN-Gerät nutzen (und über eine Person verfügen, die es konfigurieren kann). Weitere Informationen zu kompatiblen VPN-Geräten und zur Gerätekonfiguration finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md).
 * Vergewissern Sie sich, dass Sie über eine externe öffentliche IPv4-Adresse für Ihr VPN-Gerät verfügen. Diese IP-Adresse darf sich nicht hinter einer NAT befinden.
 * Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, wenden Sie sich an eine Person, die Ihnen diese Informationen zur Verfügung stellen kann. Beim Erstellen dieser Konfiguration müssen Sie die Präfixe für die IP-Adressbereiche angeben, die Azure an Ihren lokalen Standort weiterleitet. Kein Subnetz Ihres lokalen Netzwerks darf sich mit den Subnetzen des virtuellen Netzwerks überschneiden, mit dem Sie eine Verbindung herstellen möchten.
-* Vergewissern Sie sich, dass Sie die aktuelle Version der CLI-Befehle (2.0 oder höher) installiert haben. Informationen zum Installieren der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) und [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
+* Sie können Azure Cloud Shell zum Ausführen Ihrer CLI-Befehle nutzen (siehe Anleitung unten). Falls Sie Ihre Befehle dagegen lokal ausführen möchten, sollten Sie sicherstellen, dass Sie die aktuelle Version der CLI-Befehle (2.0 oder höher) installiert haben. Informationen zum Installieren der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) und [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli). 
+ 
+  [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="example"></a>Beispielwerte
 
@@ -75,13 +69,15 @@ ConnectionName          = VNet1toSite2
 
 ## <a name="Login"></a>1. Verbinden mit Ihrem Abonnement
 
+Stellen Sie eine Verbindung mit Ihrem Abonnement her, wenn Sie die CLI lokal ausführen möchten. Wenn Sie Azure Cloud Shell im Browser verwenden, müssen Sie keine Verbindung mit Ihrem Abonnement herstellen. Die Verbindung wird in Azure Cloud Shell automatisch hergestellt. Vergewissern Sie sich nach der Verbindungsherstellung aber, dass Sie das richtige Abonnement nutzen.
+
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
 ## <a name="rg"></a>2. Erstellen einer Ressourcengruppe
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen „TestRG1“ am Standort „eastus“ erstellt. Falls Sie in dieser Region bereits über eine Ressourcengruppe verfügen, die Sie zum Erstellen des VNet nutzen möchten, können Sie sie verwenden.
 
-```azurecli
+```azurecli-interactive
 az group create --name TestRG1 --location eastus
 ```
 
@@ -96,7 +92,7 @@ Falls Sie noch kein virtuelles Netzwerk besitzen, erstellen Sie eins mit dem Bef
 
 Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen „TestVNet1“ und ein Subnetz mit dem Namen „Subnet1“ erstellt.
 
-```azurecli
+```azurecli-interactive
 az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefix 10.11.0.0/16 --location eastus --subnet-name Subnet1 --subnet-prefix 10.11.0.0/24
 ```
 
@@ -107,7 +103,7 @@ az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefi
 
 Erstellen Sie das Gatewaysubnetz mit dem Befehl [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create).
 
-```azurecli
+```azurecli-interactive
 az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubnet --resource-group TestRG1 --vnet-name TestVNet1
 ```
 
@@ -124,7 +120,7 @@ Verwenden Sie die folgenden Werte:
 
 Fügen Sie mit dem Befehl [az network local-gateway create](/cli/azure/network/local-gateway#az_network_local_gateway_create) ein Gateway des lokalen Netzwerks mit mehreren Adresspräfixen hinzu:
 
-```azurecli
+```azurecli-interactive
 az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 --resource-group TestRG1 --local-address-prefixes 10.0.0.0/24 20.0.0.0/24
 ```
 
@@ -134,7 +130,7 @@ Ein VPN-Gateway muss über eine öffentliche IP-Adresse verfügen. Sie fordern z
 
 Fordern Sie mit dem Befehl [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine dynamische öffentliche IP-Adresse an.
 
-```azurecli
+```azurecli-interactive
 az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocation-method Dynamic
 ```
 
@@ -150,7 +146,7 @@ Verwenden Sie die folgenden Werte:
 
 Erstellen Sie das VPN-Gateway mit dem Befehl [az network vnet-gateway create](/cli/azure/network/vnet-gateway#az_network_vnet_gateway_create). Wenn Sie diesen Befehl mit dem Parameter „--no-wait“ ausführen, wird kein Feedback bzw. keine Ausgabe angezeigt. Dieser Parameter ermöglicht die Erstellung des Gateways im Hintergrund. Die Erstellung eines Gateways dauert ca. 45 Minuten.
 
-```azurecli
+```azurecli-interactive
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
 ```
 
@@ -161,7 +157,7 @@ Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erf
 - Einen gemeinsam verwendeten Schlüssel. Dies ist derselbe gemeinsame Schlüssel, den Sie beim Erstellen Ihrer Site-to-Site-VPN-Verbindung angeben. In unseren Beispielen verwenden wir einen einfachen gemeinsamen Schlüssel. Es wird empfohlen, einen komplexeren Schlüssel zu generieren.
 - Die öffentliche IP-Adresse Ihres Gateways für virtuelle Netzwerke. Sie können die öffentliche IP-Adresse mit dem Azure-Portal, mit PowerShell oder mit der CLI anzeigen. Verwenden Sie den Befehl [az network public-ip list](/cli/azure/network/public-ip#az_network_public_ip_list), um die öffentliche IP-Adresse des Gateways des virtuellen Netzwerks zu ermitteln. Zur besseren Lesbarkeit wird die Ausgabe formatiert, damit die Liste mit den öffentlichen IP-Adressen in Tabellenform angezeigt wird.
 
-  ```azurecli
+  ```azurecli-interactive
   az network public-ip list --resource-group TestRG1 --output table
   ```
 
@@ -175,7 +171,7 @@ Erstellen Sie die Site-to-Site-VPN-Verbindung zwischen dem Gateway Ihres virtuel
 
 Erstellen Sie die Verbindung mit dem Befehl [az network vpn-connection create](/cli/azure/network/vpn-connection#az_network_vpn_connection_create).
 
-```azurecli
+```azurecli-interactive
 az network vpn-connection create --name VNet1toSite2 -resource-group TestRG1 --vnet-gateway1 VNet1GW -l eastus --shared-key abc123 --local-gateway2 Site2
 ```
 

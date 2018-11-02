@@ -1,21 +1,21 @@
 ---
 title: Authentifizieren mit Azure Active Directory für den Zugriff auf Blob- und Warteschlangendaten aus Ihren Anwendungen (Vorschauversion) | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Azure Active Directory zum Authentifizieren aus einer Anwendung verwenden und anschließend Anforderungen für Azure Storage-Ressourcen autorisieren (Vorschauversion).
+description: Es wird beschrieben, wie Sie Azure Active Directory zum Authentifizieren aus einer Anwendung verwenden und anschließend Anforderungen für Blobs und Warteschlangen autorisieren (Vorschauversion).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6a0b7139fd8d216397090154a4324c8e4305a939
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d249753dd954ba610a757a88060c6c0f7c58ad95
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816377"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427092"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Authentifizieren mit Azure Active Directory über eine Azure Storage-Anwendung (Vorschauversion)
+# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Authentifizieren mit Azure Active Directory aus einer Anwendung für den Zugriff auf Blobs und Warteschlangen (Vorschauversion)
 
 Ein wesentlicher Vorteil bei der Verwendung von Azure Active Directory (Azure AD) mit Azure Storage besteht darin, dass Ihre Anmeldeinformationen nicht mehr im Code gespeichert werden müssen. Stattdessen können Sie ein OAuth 2.0-Zugriffstoken von Azure AD anfordern. Azure AD übernimmt die Authentifizierung des Sicherheitsprinzipals (Benutzer, Gruppe oder Dienstprinzipal), der die Anwendung ausführt. Wenn die Authentifizierung erfolgreich ist, gibt Azure AD das Zugriffstoken an die Anwendung zurück, und die Anwendung kann dann das Zugriffstoken zum Autorisieren von Anforderungen an Azure Storage verwenden.
 
@@ -26,6 +26,10 @@ Damit Sie einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentif
 Eine Übersicht über den Datenfluss für OAuth 2.0-Codeberechtigungen finden Sie unter [Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes](../../active-directory/develop/v1-protocols-oauth-code.md).
 
 [!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
+
+## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>Zuweisen einer RBAC-Rolle zu einem Azure AD-Sicherheitsprinzipal
+
+Um einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren zu können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffskontrolle (Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal konfigurieren. Azure Storage definiert RBAC-Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die RBAC-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten von Azure mit RBAC (Vorschau)](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrieren der Anwendung bei einem Azure AD-Mandanten
 

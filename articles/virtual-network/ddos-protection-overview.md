@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 10/13/2018
 ms.author: jdial
-ms.openlocfilehash: f25da8c1eedc31209a67ae05aef9dded45b706e0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ae1a77921cdb3eba003ff6dc8b4885866f2fbe5e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962401"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310356"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Übersicht über Azure DDoS Protection Standard
 
@@ -29,7 +29,7 @@ DDoS-Angriffe (Distributed Denial of Service) stellen eines der größten Verfü
 Azure DDoS Protection in Kombination mit bewährten Anwendungsentwurfsmethoden stellt den bestmöglichen Schutz gegen DDoS-Angriffe dar. Azure DDoS Protection bietet die folgenden Dienstebenen:
 
 - **Basic**: Wird im Rahmen der Azure-Plattform automatisch aktiviert. Die stets verfügbare Überwachung des Datenverkehrs und die Abwehr von häufig vorkommenden Angriffen auf Netzwerkebene in Echtzeit bieten die gleichen Schutzmaßnahmen wie die Onlinedienste von Microsoft. Das gesamte weltweite Netzwerk von Azure steht für die Verteilung und Abwehr des regionsübergreifenden Angriffsdatenverkehrs zur Verfügung. Schutz wird für [öffentliche Azure-IP-Adressen](virtual-network-public-ip-address.md) mit IPv4 und IPv6 bereitgestellt.
-- **Standard**: Stellt zusätzliche Funktionen zur Angriffsabwehr über die Basic-Dienstebene bereit, die speziell für virtuelle Azure-Netzwerkressourcen optimiert sind. DDoS Protection Standard kann leicht aktiviert werden und erfordert keine Änderung der Anwendung. Schutzrichtlinien werden über dedizierte Datenverkehrsüberwachung und Machine Learning-Algorithmen optimiert. Richtlinien werden auf öffentliche IP-Adressen angewendet, die in virtuellen Netzwerken bereitgestellten Ressourcen wie Azure Load Balancer, Azure Application Gateway und Azure Service Fabric-Instanzen zugeordnet sind. Über Azure Monitor-Ansichten steht Echtzeittelemetrie während eines Angriffs und für den Verlauf zur Verfügung. In den Diagnoseeinstellungen sind umfassende Analysefunktionen zur Entschärfung von Angriffen verfügbar. Der Schutz auf der Anwendungsschicht kann über die [Azure Application Gateway Web Application Firewall](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder per Installation einer Drittanbieter-Firewall über Azure Marketplace hinzugefügt werden. Schutz wird für [öffentliche Azure-IP-Adressen](virtual-network-public-ip-address.md) mit IPv4 bereitgestellt.
+- **Standard**: Stellt zusätzliche Funktionen zur Angriffsabwehr über die Basic-Dienstebene bereit, die speziell für virtuelle Azure-Netzwerkressourcen optimiert sind. DDoS Protection Standard kann leicht aktiviert werden und erfordert keine Änderung der Anwendung. Schutzrichtlinien werden über dedizierte Datenverkehrsüberwachung und Machine Learning-Algorithmen optimiert. Richtlinien werden auf öffentliche IP-Adressen angewendet, die in virtuellen Netzwerken bereitgestellten Ressourcen wie Azure Load Balancer, Azure Application Gateway und Azure Service Fabric-Instanzen zugeordnet sind. Dieser Schutz wird jedoch nicht auf App Service-Umgebungen angewendet. Über Azure Monitor-Ansichten steht Echtzeittelemetrie während eines Angriffs und für den Verlauf zur Verfügung. In den Diagnoseeinstellungen sind umfassende Analysefunktionen zur Entschärfung von Angriffen verfügbar. Der Schutz auf der Anwendungsschicht kann über die [Azure Application Gateway Web Application Firewall](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder per Installation einer Drittanbieter-Firewall über Azure Marketplace hinzugefügt werden. Schutz wird für [öffentliche Azure-IP-Adressen](virtual-network-public-ip-address.md) mit IPv4 bereitgestellt.
 
 ![Vergleich: Azure DDoS Protection Basic und Standard](./media/ddos-protection-overview/ddoscomparison.png)
 

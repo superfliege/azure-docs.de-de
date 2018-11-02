@@ -7,13 +7,13 @@ ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/26/2018
-ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/08/2018
+ms.openlocfilehash: 5ee249aee5d95f22f2e1f52d6356f09ea41ccd68
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972180"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945755"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
 
@@ -173,7 +173,7 @@ Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Co
 
 ## <a name="directly-connect-to-hadoop-services"></a>Herstellen einer direkten Verbindung mit Hadoop-Diensten
 
-In der Dokumentation zu HDInsight wird in den meisten Fällen vorausgesetzt, dass Sie über das Internet auf den Cluster zugreifen können. Sie müssen z.B. unter https://CLUSTERNAME.azurehdinsight.net eine Verbindung mit dem Cluster herstellen können. Diese Adresse verwendet das öffentliche Gateway, das nicht verfügbar ist, wenn Sie über NSGs oder benutzerdefinierte Routen den Zugriff aus dem Internet beschränken.
+Sie können unter https://CLUSTERNAME.azurehdinsight.net eine Verbindung mit dem Cluster herstellen. Diese Adresse verwendet eine öffentliche IP-Adresse, auf die möglicherweise nicht zugegriffen werden kann, wenn Sie NSGs oder benutzerdefinierte Routen verwendet haben, um eingehenden Datenverkehr aus dem Internet einzuschränken. Darüber hinaus können Sie bei der Bereitstellung des Clusters in einem VNET mithilfe des privaten Endpunkts https://CLUSTERNAME-int.azurehdinsight.net darauf zugreifen. Dieser Endpunkt wird in eine private IP-Adresse innerhalb des VNET für den Clusterzugriff aufgelöst.
 
 Verwenden Sie die folgenden Schritte, um über das virtuelle Netzwerk eine Verbindung mit Ambari und anderen Webseiten herzustellen:
 
@@ -253,7 +253,7 @@ Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der f
 >
 > Wenn Sie zum Steuern des Datenverkehrs keine Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, können Sie diesen Abschnitt ignorieren.
 
-Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, müssen Sie Datenverkehr von den Integritäts- und Verwaltungsdiensten von Azure erlauben, HDInsight zu erreichen. Ermitteln Sie anhand der folgenden Schritte die IP-Adressen, die zugelassen werden müssen:
+Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, müssen Sie Datenverkehr von den Integritäts- und Verwaltungsdiensten von Azure erlauben, HDInsight zu erreichen. Sie müssen auch Datenverkehr zwischen VMs innerhalb des Subnetzes zulassen. Ermitteln Sie anhand der folgenden Schritte die IP-Adressen, die zugelassen werden müssen:
 
 1. Datenverkehr von den folgenden IP-Adressen muss immer zugelassen werden:
 
@@ -280,6 +280,7 @@ Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, m�
     | &nbsp; | Kanada, Mitte | 52.228.37.66</br>52.228.45.222 | 443 | Eingehend |
     | China | China, Norden | 42.159.96.170</br>139.217.2.219 | 443 | Eingehend |
     | &nbsp; | China, Osten | 42.159.198.178</br>42.159.234.157 | 443 | Eingehend |
+    | &nbsp; | China, Norden 2 | 40.73.37.141</br>40.73.38.172 | 443 | Eingehend |
     | Europa | Nordeuropa | 52.164.210.96</br>13.74.153.132 | 443 | Eingehend |
     | &nbsp; | Europa, Westen| 52.166.243.90</br>52.174.36.244 | 443 | Eingehend |
     | Deutschland | Deutschland, Mitte | 51.4.146.68</br>51.4.146.80 | 443 | Eingehend |
@@ -301,7 +302,7 @@ Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, m�
 
     Informationen zu den IP-Adressen, die für Azure Government verwendet werden, finden Sie im Dokument [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) (Azure Government – Daten und Analyse)
 
-3. Wenn Sie für Ihr virtuelles Netzwerk einen benutzerdefinierten DNS-Server verwenden, müssen Sie auch den Zugriff über __168.63.129.16__ zulassen. Diese Adresse ist der rekursive Resolver von Azure. Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+3. Sie müssen auch den Zugriff von __168.63.129.16__ zulassen. Diese Adresse ist der rekursive Resolver von Azure. Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 Weitere Informationen finden Sie im Abschnitt [Steuern des Netzwerkdatenverkehrs](#networktraffic).
 

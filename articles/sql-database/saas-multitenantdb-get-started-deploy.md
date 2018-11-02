@@ -12,14 +12,14 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 04/02/2018
-ms.openlocfilehash: b91960920f0181939e634a221080d493fb8cea63
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056657"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352210"
 ---
-# <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding, die Azure SQL-Datenbank verwendet
+# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding
 
 In diesem Tutorial wird beschrieben, wie Sie eine mehrinstanzenfähige SaaS-Beispielanwendung mit dem Namen Wingtip Tickets bereitstellen und untersuchen. Die Wingtip Tickets-App ist dafür ausgelegt, Features von Azure SQL-Datenbank zu veranschaulichen, mit denen die Implementierung von SaaS-Szenarien vereinfacht wird.
 
@@ -27,7 +27,7 @@ Bei dieser Implementierung der Wingtip Tickets-App wird ein mehrinstanzenfähige
 
 Diese Datenbankmuster ermöglichen Ihnen, in jedem Shard oder jeder Datenbank einen oder mehrere Mandanten zu speichern. Sie können die Optimierung nach den niedrigsten Kosten vornehmen, indem jede Datenbank von mehreren Mandanten gemeinsam genutzt wird. Oder Sie können die Optimierung im Hinblick auf Isolation vornehmen, indem Sie in jeder Datenbank nur einen einzigen Mandanten speichern. Ihre Wahl für die Optimierung kann für jeden einzelnen Mandanten unabhängig vorgenommen werden. Sie können Ihre Wahl treffen, wenn der Mandant zum ersten Mal gespeichert wird, oder Sie können Ihre Meinung später ändern. Die Anwendung ist so konzipiert, dass sie in beiden Fällen gut funktioniert.
 
-#### <a name="app-deploys-quickly"></a>App wird schnell bereitgestellt
+## <a name="app-deploys-quickly"></a>App wird schnell bereitgestellt
 
 Die App wird in der Azure-Cloud ausgeführt und verwendet Azure SQL-Datenbank. Der folgende Abschnitt zur Bereitstellung enthält die blaue Schaltfläche **Bereitstellung in Azure**. Wenn auf die Schaltfläche geklickt wird, wird die App innerhalb von fünf Minuten vollständig in Ihrem Azure-Abonnement bereitgestellt. Sie haben vollen Zugriff auf die einzelnen Anwendungskomponenten.
 
@@ -35,7 +35,7 @@ Die Anwendung wird mit Daten für drei Beispielmandanten bereitgestellt. Die Man
 
 Jeder kann den C#- und PowerShell-Quellcode für Wingtip Tickets aus [dem GitHub-Repository][link-github-wingtip-multitenantdb-55g] herunterladen.
 
-#### <a name="learn-in-this-tutorial"></a>In diesem Tutorial lernen Sie Folgendes kennen:
+## <a name="learn-in-this-tutorial"></a>In diesem Tutorial lernen Sie Folgendes kennen:
 
 > [!div class="checklist"]
 > - Bereitstellen der Wingtip Tickets SaaS-Anwendung
@@ -55,7 +55,7 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>Bereitstellen der Wingtip Tickets-App
 
-#### <a name="plan-the-names"></a>Planen von Namen
+### <a name="plan-the-names"></a>Planen von Namen
 
 In den Schritten in diesem Abschnitt geben Sie einen Wert für *Benutzer* an, mit dem sichergestellt wird, dass Ressourcennamen global eindeutig sind, sowie einen Namen für die *Ressourcengruppe*, die alle Ressourcen enthält, die durch eine Bereitstellung der App erstellt werden. Für eine Person mit dem Namen *Ann Finley* wird Folgendes empfohlen:
 - *Benutzer:* **af1** *(Die Initialen mit einer Ziffer. Verwenden Sie einen anderen Wert (z. B. „af2“), wenn Sie die App ein zweites Mal bereitstellen.)*
@@ -63,7 +63,7 @@ In den Schritten in diesem Abschnitt geben Sie einen Wert für *Benutzer* an, mi
 
 Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese. 
 
-#### <a name="steps"></a>Schritte
+### <a name="steps"></a>Schritte
 
 1. Klicken Sie auf die folgende blaue Schaltfläche **Bereitstellung in Azure**.
     - Das Azure-Portal mit der Vorlage für die Wingtip Tickets-SaaS-Bereitstellung wird geöffnet.
@@ -133,7 +133,7 @@ Auf der zentralen Webseite **Veranstaltungshub** wird eine Liste mit Links zu de
 
    ![Ereignisse](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
-#### <a name="azure-traffic-manager"></a>Azure Traffic Manager
+### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Zum Steuern der Verteilung eingehender Anforderungen nutzt die Wingtip-App den [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Die Veranstaltungsseite für die einzelnen Mandanten enthalten den Mandantennamen in der URL. Jede URL enthält auch den jeweiligen Benutzerwert. Bei jeder URL wird durch Ausführung der folgenden Schritte die Erfüllung des angezeigten Formats sichergestellt:
 
@@ -144,7 +144,7 @@ Zum Steuern der Verteilung eingehender Anforderungen nutzt die Wingtip-App den [
 3. Die App sucht nach dem Schlüssel im Katalog und ruft den entsprechenden Speicherort in der Datenbank für den Mandanten ab.
 4. Die App verwendet die Speicherortinformationen, um nach einer Datenbank mit allen Daten für den Mandanten zu suchen und auf diese zuzugreifen.
 
-#### <a name="events-hub"></a>Veranstaltungshub
+### <a name="events-hub"></a>Veranstaltungshub
 
 1. Im **Veranstaltungshub** werden alle im Katalog registrierten Mandanten sowie deren Veranstaltungen aufgelistet.
 2. Der **Ereignis-Hub** ruft mit erweiterten Metadaten im Katalog den Namen des Mandanten für die jeweilige Zuordnung ab, um die URL zu erstellen.
@@ -185,6 +185,7 @@ Aktualisieren Sie den **Veranstaltungshub**. Der neue Mandant wird jetzt in der 
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>Bereitstellen eines neuen Mandanten in der eigenen Datenbank
 
 Das mehrinstanzenfähige Modell mit Shards erlaubt zwei Optionen: Sie können einen neuen Mandanten in einer Datenbank, die andere Mandanten enthält, oder in einer eigenen Datenbank bereitstellen. Ein in einer eigenen Datenbank isolierter Mandant bietet folgende Vorteile:
+
 - Die Leistung der Mandantendatenbank kann gesteuert werden, ohne dass die Anforderungen anderer Mandanten zu kurz kommen.
 - Die Datenbank kann ggf. an einem früheren Zeitpunkt wiederhergestellt werden, da keine anderen Mandanten betroffen werden würden.
 
@@ -221,7 +222,6 @@ Betrachten wir nun einige der Ressourcen, die bereitgestellt wurden:
 
    ![Mandantenserver](./media/saas-multitenantdb-get-started-deploy/tenants-server.png)
 
-
 ## <a name="monitor-the-performance-of-the-database"></a>Überwachen der Leistung der Datenbank
 
 Wenn der Lastengenerator mehrere Minuten ausgeführt wurde, sollten genügend Telemetriedaten verfügbar sein, um einige der in das Azure-Portal integrierten Datenbanküberwachungsfunktionen zu betrachten.
@@ -238,7 +238,7 @@ Wenn der Lastengenerator mehrere Minuten ausgeführt wurde, sollten genügend Te
 
 Der Lastengenerator wendet eine ähnliche Last auf jeder Mandanten an, unabhängig davon, in welcher Datenbank sich der jeweilige Mandant befindet. Sie erkennen, dass die Datenbank **salixsalsa** mit nur einem Mandanten eine viel höhere Auslastung toleriert, als die Datenbank mit mehreren Mandanten. 
 
-#### <a name="resource-allocations-vary-by-workload"></a>Nach Workload variierende Ressourcenzuordnungen
+### <a name="resource-allocations-vary-by-workload"></a>Nach Workload variierende Ressourcenzuordnungen
 
 In einigen Fällen erfordert eine mehrinstanzenfähige Datenbank mehr Ressourcen, um eine gute Leistung zu erzielen, als eine Datenbank mit nur einem Mandanten. Dies ist jedoch nicht immer der Fall. Die optimale Zuordnung von Ressourcen hängt von den jeweiligen Workloadeigenschaften der Mandanten in Ihrem System ab.
 
@@ -249,8 +249,9 @@ Die vom Lastengeneratorskript generierten Workloads dienen lediglich zur Veransc
 - Weitere Informationen zu mehrinstanzenfähigen SaaS-Anwendungen finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen](saas-tenancy-app-design-patterns.md).
 
 - Weitere Informationen zu Pools für elastische Datenbanken finden Sie hier:
-    - [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md)
-    - [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
+
+  - [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md)
+  - [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

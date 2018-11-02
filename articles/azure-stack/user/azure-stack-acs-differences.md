@@ -36,7 +36,7 @@ Dieser Artikel fasst die bekannten Unterschiede des Azure Stack-Speichers im Ver
 |File Storage|Cloudbasierte SMB-Dateifreigaben unterstützt|Noch nicht unterstützt
 |Azure Storage Service Encryption für ruhende Daten|256-Bit-AES-Verschlüsselung|BitLocker-128-Bit-AES-Verschlüsselung
 |Speicherkontotyp|Allgemeine Speicherkonten und Azure Blob Storage-Konten|Nur allgemein.
-|Replikationsoptionen|Lokal redundanter Speicher, georedundanter Speicher, schreibgeschützter georedundanter Speicher und zonenredunanter Speicher|Lokal redundanter Speicher.
+|Replikationsoptionen|Lokal redundanter Speicher, georedundanter Speicher, schreibgeschützter georedundanter Speicher und zonenredundanter Speicher|Lokal redundanter Speicher.
 |Storage Premium|Vollständig unterstützt|Kann bereitgestellt werden, aber ohne Leistungsgrenzwerte oder Garantien.
 |Verwaltete Datenträger|Unterstützung für Premium und Standard|Unterstützt bei Verwendung von Version 1808 oder höher.
 |Blobname|1.024 Zeichen (2.048 Bytes)|880 Zeichen (1.760 Bytes)

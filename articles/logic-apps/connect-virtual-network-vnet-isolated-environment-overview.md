@@ -1,6 +1,6 @@
 ---
-title: Zugreifen auf virtuelle Azure-Netzwerke über Azure Logic Apps
-description: Diese Übersicht zeigt, wie isolierte Logik-Apps mit virtuellen Azure-Netzwerken aus Integrationsdienstumgebungen (Integration Service Environments, ISEs) verbunden werden können, die private und dedizierte Ressourcen nutzen.
+title: Zugreifen auf virtuelle Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)
+description: In dieser Übersicht wird beschrieben, wie Logik-Apps mit Integrationsdienstumgebungen (ISEs) auf virtuelle Azure-Netzwerke zugreifen können.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,19 +9,19 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 9546b8ca33ef7da2d570b547446858e2a4099234
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: f21af23cf0b7b121441b1433f382db60ef7f13fe
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393140"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408658"
 ---
-# <a name="access-to-azure-virtual-network-resources-from-isolated-azure-logic-apps"></a>Zugriff auf Azure Virtual Network-Ressourcen über isolierte Azure Logic Apps-Instanzen
+# <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)
 
 > [!NOTE]
 > Diese Funktion befindet sich in der *privaten Vorschau*. Um den Zugriff anzufordern, [erstellen Sie Ihre Beitrittsanforderung hier](https://aka.ms/iseprivatepreview).
 
-Manchmal benötigen Ihre Logik-Apps und Integrationskonten Zugriff auf gesicherte Ressourcen wie virtuelle Computer (VMs) und andere Systeme oder Dienste innerhalb eines [virtuellen Azure-Netzwerks](../virtual-network/virtual-networks-overview.md). Um diesen Zugriff zu ermöglichen, können Sie [eine *Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) als Speicherort für die Erstellung Ihrer Logik-Apps und Integrationskonten erstellen. 
+Manchmal benötigen Ihre Logik-Apps und Integrationskonten Zugriff auf gesicherte Ressourcen wie virtuelle Computer (VMs) und andere Systeme oder Dienste innerhalb eines [virtuellen Azure-Netzwerks](../virtual-network/virtual-networks-overview.md). Um diesen Zugriff einzurichten, können Sie [eine *Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) als Speicherort für Ihre Logik-Apps und Integrationskonten erstellen. 
 
 ![Auswählen der Integrationsdienstumgebung](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 

@@ -7,24 +7,24 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
-author: DhruvMsft
-ms.author: dmalik
+author: oslake
+ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: f21614757716b860c25436acfa7b6275cd848109
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b841f985c758cb1e354d3c3537c532a253e81d92
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868206"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945925"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Erstellen eines virtuellen Dienstendpunkts und einer VNet-Regel für SQL
 
 Sowohl [Azure SQL-Datenbank](sql-database-technical-overview.md) als auch [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unterstützen virtuelle Dienstendpunkte.
 
 > [!NOTE]
-> Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
+> Dieser Artikel gilt für den Azure SQL-Datenbankserver sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Datenbankserver erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind. Dieser Artikel gilt *nicht* für **verwaltete Azure-SQL-Datenbank-Instanzen**, da Sie keinen Dienstendpunkt besitzen, der einem Subnetz der verwalteten Instanz zugeordnet ist.
 
 Dieser Artikel stellt ein PowerShell-Skript bereit, das folgende Vorgänge ausführt, und erläutert dieses:
 

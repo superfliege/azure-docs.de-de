@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 628d407869d24f466b5a7c056d51d76217e29798
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 49414b06010cf83c10bbc9519f2bced2126661a4
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996654"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49322072"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 Während des Lebenszyklus von Anwendungen müssen Sie möglicherweise Ihre VM-Skalierungsgruppe ändern oder aktualisieren. Zu diesen Aktualisierungen können das Aktualisieren der Konfiguration der Skalierungsgruppe oder das Ändern der Anwendungskonfiguration zählen. Dieser Artikel beschreibt die Vorgehensweise zum Ändern einer vorhandenen Skalierungsgruppe mit den REST-APIs, Azure PowerShell oder der Azure CLI.
@@ -126,7 +126,7 @@ Diese Eigenschaften bieten eine Übersicht über den aktuellen Laufzeitstatus de
 
 
 ### <a name="the-scale-set-vm-model-view"></a>VM-Modellansicht der Skalierungsgruppe
-Nicht nur die Skalierungsgruppe verfügt über eine Modellansicht, sondern auch jeder darin enthaltene virtuelle Computer. Zum Abfragen der Modellansicht für eine Skalierungsgruppe können Sie Folgendes verwenden:
+Nicht nur die Skalierungsgruppe verfügt über eine Modellansicht, sondern auch jede in der Skalierungsgruppe enthaltene VM-Instanz. Zum Abfragen der Modellansicht für eine bestimmte VM-Instanz in einer Skalierungsgruppe können Sie Folgendes verwenden:
 
 - REST-API mit [compute/virtualmachinescalesetvms/get](/rest/api/compute/virtualmachinescalesetvms/get) wie folgt:
 
@@ -162,11 +162,11 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Diese Eigenschaften beschreiben die Konfiguration des virtuellen Computers selbst, nicht die Konfiguration der gesamten Skalierungsgruppe. Beispielsweise weist das Skalierungsgruppenmodell die Eigenschaft `overprovision` auf, das Modell für einen virtuellen Computer in einer Skalierungsgruppe jedoch nicht. Dieser Unterschied ist darauf zurückzuführen, dass die Überbereitstellung eine Eigenschaft für die Skalierungsgruppe als Ganzes und nicht für einzelne virtuelle Computer in der Skalierungsgruppe ist. (Weitere Informationen zur Überbereitstellung finden Sie unter [Überlegungen zum Entwurf von Skalierungsgruppen](virtual-machine-scale-sets-design-overview.md#overprovisioning).)
+Diese Eigenschaften beschreiben die Konfiguration der VM-Instanz, nicht die Konfiguration der Skalierungsgruppe als Ganzes. Beispielsweise weist das Skalierungsgruppenmodell die Eigenschaft `overprovision` auf, das Modell für eine VM-Instanz in einer Skalierungsgruppe besitzt diese Eigenschaft jedoch nicht. Dieser Unterschied ist darauf zurückzuführen, dass die Überbereitstellung eine Eigenschaft für die Skalierungsgruppe als Ganzes und nicht für einzelne VM-Instanzen in der Skalierungsgruppe ist. (Weitere Informationen zur Überbereitstellung finden Sie unter [Überlegungen zum Entwurf von Skalierungsgruppen](virtual-machine-scale-sets-design-overview.md#overprovisioning).)
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>VM-Instanzenansicht für die Skalierungsgruppe
-Nicht nur die Skalierungsgruppe verfügt über eine Instanzenansicht, sondern auch jeder darin enthaltene virtuelle Computer. Zum Abfragen der Instanzenansicht für eine Skalierungsgruppe können Sie Folgendes verwenden:
+Nicht nur die Skalierungsgruppe verfügt über eine Instanzenansicht, sondern auch jede in der Skalierungsgruppe enthaltene VM-Instanz. Zum Abfragen der Instanzenansicht für eine bestimmte VM-Instanz in einer Skalierungsgruppe können Sie Folgendes verwenden:
 
 - REST-API mit [compute/virtualmachinescalesetvms/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) wie folgt:
 
@@ -239,7 +239,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-Diese Eigenschaften beschreiben den aktuellen Laufzeitstatus des virtuellen Computers selbst, einschließlich aller auf die Skalierungsgruppe angewendeten Erweiterungen.
+Diese Eigenschaften beschreiben den aktuellen Laufzeitstatus der VM-Instanz, einschließlich aller auf die Skalierungsgruppe angewendeten Erweiterungen.
 
 
 ## <a name="how-to-update-global-scale-set-properties"></a>Aktualisieren von globalen Skalierungsgruppeneigenschaften

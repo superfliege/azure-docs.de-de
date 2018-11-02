@@ -4,7 +4,7 @@ description: Die Anomaly Detection-API ist ein mit Microsoft Azure Machine Learn
 services: machine-learning
 documentationcenter: ''
 author: alokkirpal
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok
-ms.openlocfilehash: 9f1f3c2c808558124548008927219191469a412b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0b99aeb2ffdb78e472cdc0e11d0efaf91feb3e4a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836465"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394492"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
 ## <a name="overview"></a>Übersicht
@@ -122,7 +122,7 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 
 | Eingabeparameter | BESCHREIBUNG | Standardeinstellung | Typ | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
-| detectors.historyWindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
+| detectors.historywindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
 | detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Beides |enumerated |Both, Spikes, Dips |Beides |
 | bileveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für bidirektionale Pegeländerungen. |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | trenddetector.sensitivity |Empfindlichkeit für Erkennungsmodul für positive Trends |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
@@ -161,7 +161,7 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | preprocess.aggregationInterval |Aggregationsintervall in Sekunden zum Aggregieren von Eingabezeitreihen |0 (keine Aggregation) |integer |0: Aggregation überspringen, andernfalls > 0 |5 Minuten bis 1 Tag, von Zeitreihe abhängig |
 | preprocess.aggregationFunc |Funktion zum Aggregieren von Daten im angegebenen AggregationInterval |mean |enumerated |mean, sum, length |N/V |
 | preprocess.replaceMissing |Werte zum Zuordnen fehlender Daten |lkv (last known value) |enumerated |zero, lkv, mean |N/V |
-| detectors.historyWindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
+| detectors.historywindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
 | detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Beides |enumerated |Both, Spikes, Dips |Beides |
 | bileveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für bidirektionale Pegeländerungen. |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | postrenddetector.sensitivity |Empfindlichkeit für Erkennungsmodul für positive Trends |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |

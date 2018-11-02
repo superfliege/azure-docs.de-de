@@ -13,20 +13,20 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: 53d94d8674a064960b3447374f68af0d3fdf6e0c
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: b951d0b8d91729340cf382e70f72511fb009053e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412565"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386551"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Behandeln von API-Drosselungsfehlern 
 
-Azure Compute-Anforderungen können in einem Abonnement und auf Basis der jeweiligen Region gedrosselt werden, um die Gesamtleistung des Diensts zu unterstützen. Wir stellen sicher, dass alle Aufrufe an den Azure Compute-Ressourcenanbieter (CRP), der Ressourcen unter dem Namespace „Microsoft.Compute“ verwaltet, die maximal zulässige API-Anforderungsrate nicht überschreiten. Dieses Dokument beschreibt die API-Drosselung, Details zur Behandlung von Drosselungsproblemen sowie bewährte Methoden zur Vermeidung von Drosselungen.  
+Azure Compute-Anforderungen können in einem Abonnement und auf Basis der jeweiligen Region gedrosselt werden, um die Gesamtleistung des Diensts zu unterstützen. Wir stellen sicher, dass die Aufrufe an den Azure Compute-Ressourcenanbieter (Compute Resource Provider, CRP), der Ressourcen unter dem Namespace „Microsoft.Compute“ verwaltet, die maximal zulässige API-Anforderungsrate nicht überschreiten. Dieses Dokument beschreibt die API-Drosselung, Details zur Behandlung von Drosselungsproblemen sowie bewährte Methoden zur Vermeidung von Drosselungen.  
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Vergleich der Drosselung durch Azure Resource Manager gegenüber Ressourcenanbietern  
 
-Als „Eingangstür“ zu Azure übernimmt Azure Resource Manager die Authentifizierung und Validierung erster Ordnung sowie die Drosselung aller eingehenden API-Anforderungen. Grenzwerte für Azure Resource Manager-Aufrufraten und HTTP-Kopfzeilen verwandter Diagnoseantworten werden [hier](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-request-limits) beschrieben.
+Als „Eingangstür“ zu Azure übernimmt Azure Resource Manager die Authentifizierung und Validierung erster Ordnung sowie die Drosselung aller eingehenden API-Anforderungen. Grenzwerte für Azure Resource Manager-Aufrufraten und HTTP-Kopfzeilen verwandter Diagnoseantworten werden [hier](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits) beschrieben.
  
 Wenn ein Azure-API-Client einen Drosselungsfehler erhält, ist der HTTP-Status „429: Zu viele Anforderungen“. Um herauszufinden, ob die Anforderungsdrosselung durch Azure Resource Manager oder einen zugrunde liegenden Ressourcenanbieter wie CRP erfolgt, untersuchen Sie die `x-ms-ratelimit-remaining-subscription-reads` auf GET-Anforderungen und die `x-ms-ratelimit-remaining-subscription-writes`-Antwortkopfzeilen auf Nicht-GET-Anforderungen. Wenn sich die Anzahl verbleibender Aufrufe 0 nähert, wurde das von Azure Resource Manager definierte allgemeine Aufruflimit des Abonnements erreicht. Die Aktivitäten von allen Abonnementclients werden zusammen gezählt. Andernfalls erfolgt die Drosselung durch den Zielressourcenanbieter (dem im Segment „`/providers/<RP>`“ der Anforderungs-URL adressierten). 
 
@@ -40,7 +40,7 @@ Wenn ein Azure-API-Client einen Drosselungsfehler erhält, ist der HTTP-Status �
 
 Beachten Sie, dass eine API-Anforderung mehreren Drosselungsrichtlinien unterliegen kann. Für jede Richtlinie gibt es dann eine gesonderte `x-ms-ratelimit-remaining-resource`-Kopfzeile. 
 
-Hier ist ein Beispiel für eine Antwort auf die Anforderung zum Löschen eines virtuellen Computers in einer VM-Skalierungsgruppe.
+Hier sehen Sie eine Beispielantwort auf die Anforderung zum Löschen der Skalierungsgruppe eines virtuellen Computers.
 
 ```
 x-ms-ratelimit-remaining-resource: Microsoft.Compute/DeleteVMScaleSet3Min;107 
@@ -49,7 +49,7 @@ x-ms-ratelimit-remaining-resource: Microsoft.Compute/VMScaleSetBatchedVMRequests
 x-ms-ratelimit-remaining-resource: Microsoft.Compute/VmssQueuedVMOperations;4720 
 ```
 
-##<a name="throttling-error-details"></a>Drosselungsfehlerdetails
+## <a name="throttling-error-details"></a>Drosselungsfehlerdetails
 
 Der HTTP-Statuscode 429 wird häufig verwendet, um eine Anforderung abzulehnen, weil ein Aufrufratenlimit erreicht wurde. Eine typische Drosselungsfehlerantwort des Compute-Ressourcenanbieters sieht wie im folgenden Beispiel aus (nur die relevanten Kopfzeilen werden angezeigt):
 
@@ -73,18 +73,19 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Die Richtlinie mit der Anzahl verbleibender Aufrufe von 0 ist diejenige, wegen der der Drosselungsfehler zurückgegeben wird. In diesem Fall ist dies `HighCostGet30Min`. Das generelle Format des Antworttexts ist das allgemeine Fehlerformat der Azure Resource Manager-API (konform mit OData). Der Hauptfehlercode `OperationNotAllowed` ist der, den der Compute-Ressourcenanbieter verwendet, um Drosselungsfehler zu melden (neben anderen Typen von Clientfehlern). 
+Die Richtlinie mit der Anzahl verbleibender Aufrufe von 0 ist diejenige, wegen der der Drosselungsfehler zurückgegeben wird. In diesem Fall ist dies `HighCostGet30Min`. Das generelle Format des Antworttexts ist das allgemeine Fehlerformat der Azure Resource Manager-API (konform mit OData). Der Hauptfehlercode `OperationNotAllowed` ist der, den der Compute-Ressourcenanbieter verwendet, um Drosselungsfehler zu melden (neben anderen Typen von Clientfehlern). Die Eigenschaft `message` der internen Fehler enthält eine serialisierte JSON-Struktur mit den Details der Drosselungsverletzung.
 
 Wie oben gezeigt, enthält jeder Drosselungsfehler die `Retry-After`-Kopfzeile, die die Mindestanzahl von Sekunden angibt, die der Client warten sollte, bevor ein Wiederholungsversuch der Anforderung gestartet wird. 
 
 ## <a name="best-practices"></a>Bewährte Methoden 
 
-- Führen Sie bei Azure-Dienst-API-Fehlern nicht vorbehaltlos Wiederholungsversuche durch. Bei Clientcode kommt es häufig vor, dass er in eine schnelle Wiederholungsschleife gerät, wenn ein Fehler auftritt, bei dem keine Wiederholungsversuche möglich sind. Wiederholungsversuche erschöpfen letztendlich das zulässige Aufruflimit für die Zielgruppe des Vorgangs und beeinträchtigen andere Clients des Abonnements. 
+- Führen Sie bei Azure-Dienst-API-Fehlern nicht vorbehaltlos und/oder sofort Wiederholungsversuche durch. Bei Clientcode kommt es häufig vor, dass er in eine schnelle Wiederholungsschleife gerät, wenn ein Fehler auftritt, bei dem keine Wiederholungsversuche möglich sind. Wiederholungsversuche erschöpfen letztendlich das zulässige Aufruflimit für die Zielgruppe des Vorgangs und beeinträchtigen andere Clients des Abonnements. 
 - Erwägen Sie bei API-Automatisierungsfällen mit hohem Volumen die Implementierung einer proaktiven, clientseitigen Selbstdrosselung, wenn die Anzahl verfügbarer Aufrufe für eine Vorgangszielgruppe unter einen niedrigen Schwellenwert fällt. 
 - Beachten Sie beim Nachverfolgen asynchroner Vorgänge die Hinweise in „Retry-After“-Kopfzeilen. 
-- Wenn der Clientcode Informationen zu einem bestimmten virtuellen Computer benötigt, sollte die VM direkt abgefragt werden, statt alle VMs in der diese enthaltenden Ressourcengruppe oder dem gesamten Abonnement aufzulisten und anschließen die benötigte VM auf der Clientseite auszuwählen. 
-- Wenn Clientcode VMs, Datenträger und Momentaufnahmen von einem bestimmten Azure-Ort benötigt, verwenden Sie die ortsbasierte Form der Abfrage, statt alle Abonnement-VMs abzufragen und diese dann nach dem Ort auf der Clientseite zu filtern: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30`- und `/subscriptions/<subId>/providers/Microsoft.Compute/virtualMachines`-Abfrage an regionale Compute-Ressourcenanbieter-Endpunkte. • Beim Erstellen oder Aktualisieren von insbesondere API-Ressourcen, virtuellen Computern und VM-Skalierungsgruppen ist es wesentlich effizienter, den zurückgegebenen asynchronen Vorgang bis zu dessen Abschluss nachzuverfolgen, als die Ressourcen-URL selbst abzurufen (basierend auf dem `provisioningState`).
+- Wenn der Clientcode Informationen zu einem bestimmten virtuellen Computer benötigt, fragen Sie diesen VM direkt ab, statt alle VMs in der entsprechenden Ressourcengruppe oder dem gesamten Abonnement aufzulisten und dann den erforderlichen VM auf der Clientseite auszuwählen. 
+- Wenn der Clientcode VMs, Datenträger und Momentaufnahmen von einem bestimmten Azure-Ort benötigt, verwenden Sie die ortsbasierte Form der Abfrage, statt alle Abonnement-VMs abzufragen und diese dann nach dem Ort auf der Clientseite zu filtern: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30`-Abfrage an regionale Compute-Ressourcenanbieter-Endpunkte. 
+-   Vor allem beim Erstellen oder Aktualisieren von API-Ressourcen sowie von virtuellen Computern und VM-Skalierungsgruppen ist es wesentlich effizienter, den zurückgegebenen asynchronen Vorgang bis zu dessen Abschluss nachzuverfolgen, als die Ressourcen-URL selbst abzurufen (basierend auf dem `provisioningState`).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Wiederholungsanleitung für andere Dienste in Azure finden Sie unter [Wiederholungsanleitung für bestimmte Dienste](https://docs.microsoft.com/en-us/azure/architecture/best-practices/retry-service-specific).
+Weitere Informationen zur Wiederholungsanleitung für andere Dienste in Azure finden Sie unter [Wiederholungsanleitung für bestimmte Dienste](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific).

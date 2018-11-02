@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: fb84b20630eb63cb53ccb1d13a383ed6287b802b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 76c8421286633dc3c81a073423a7d9f9ca1e1d85
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406618"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420845"
 ---
 # <a name="service-connectivity-monitor"></a>Dienstkonnektivitätsmonitor
 
@@ -35,13 +35,13 @@ Der Dienstkonnektivitätsmonitor ermöglicht Folgendes:
 - Erkennen von Hotspots im Netzwerk, die möglicherweise die Leistung der Anwendung beeinträchtigen, durch Betrachtung der Hop-spezifischen Wartezeiten auf einer Topologiekarte
 
 
-![Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfiguration 
 Öffnen Sie die [Netzwerkleistungsmonitor](log-analytics-network-performance-monitor.md)-Lösung, und wählen Sie die Schaltfläche **Konfigurieren** aus, um die Konfiguration für den Netzwerkleistungsmonitor zu öffnen.
 
-![Konfigurieren des Netzwerkleistungsmonitors](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![Konfigurieren des Netzwerkleistungsmonitors](media/log-analytics-network-performance-monitor-service-endpoint/npm-configure-button.png)
 
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurieren von Log Analytics-Agents für die Überwachung
@@ -79,7 +79,7 @@ Beginnen Sie mit der Erstellung Ihrer Tests zur Überwachung der Netzwerkkonnekt
 10. Wählen Sie Überwachungsbedingungen aus. Sie können benutzerdefinierte Schwellenwerte für das Generieren von Integritätsereignissen festlegen, indem Sie Schwellenwerte eingeben. Sobald der Wert einer Bedingung den festgelegten Schwellenwert für das ausgewählte Netzwerk- oder Subnetzpaar überschreitet, wird ein Integritätsereignis generiert. 
 11. Wählen Sie zum Speichern der Konfiguration **Speichern** aus. 
 
-    ![Testkonfigurationen für den Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
+    ![Testkonfigurationen für den Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
 
 
 
@@ -87,11 +87,11 @@ Beginnen Sie mit der Erstellung Ihrer Tests zur Überwachung der Netzwerkkonnekt
 
 Wechseln Sie zur Dashboardansicht des Netzwerkleistungsmonitors. Auf der Seite **Dienstkonnektivitätsmonitor** erhalten Sie eine Zusammenfassung der Integrität der verschiedenen erstellten Tests. 
 
-![Seite „Dienstkonnektivitätsmonitor“](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
+![Seite „Dienstkonnektivitätsmonitor“](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-blade.png)
 
 Wählen Sie die Kachel aus, um Details zu den Tests auf der Seite **Tests** anzuzeigen. Die linke Tabelle gibt Aufschluss über die Integrität und die Werte der Dienstreaktionszeit, der Netzwerkwartezeit und der Paketverluste für alle Tests zu einem bestimmten Zeitpunkt. Mit dem Steuerelement „Network State Recorder“ können Sie die Ansicht der Netzwerkmomentaufnahme für einen anderen Punkt in der Vergangenheit anzeigen. Wählen Sie in der Tabelle den Test aus, den Sie untersuchen möchten. Die Diagramme auf der rechten Seite geben Aufschluss über den historischen Trend von Verlusten, Wartezeiten und Antwortzeiten. Wählen Sie den Link **Testdetails** aus, um die Leistung für die einzelnen Knoten anzuzeigen.
 
-![Dienstkonnektivitätsmonitor-Tests](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
+![Dienstkonnektivitätsmonitor-Tests](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-tests.png)
 
 In der Ansicht **Testknoten** können Sie die Netzwerkkonnektivität der einzelnen Knoten beobachten. Wählen Sie den Knoten aus, dessen Leistung beeinträchtigt ist. Dies ist der Knoten, an dem eine nicht zufriedenstellende Anwendungsgeschwindigkeit festgestellt wurde.
 
@@ -99,15 +99,15 @@ Ermitteln Sie, ob die mangelhafte Anwendungsleistung auf das Netzwerk oder auf e
 
 * **Anwendungsproblem:** Eine Spitze bei der Antwortzeit bei konsistenter Netzwerkwartezeit deutet darauf hin, dass das Netzwerk einwandfrei funktioniert und möglicherweise ein Problem mit der Anwendung vorliegt. 
 
-    ![Anwendungsproblem beim Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
+    ![Anwendungsproblem beim Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
 
 * **Netzwerkproblem:** Eine Spitze bei der Antwortzeit in Verbindung mit einer entsprechenden Spitze bei der Netzwerkwartezeit deutet darauf hin, dass die längere Antwortzeit auf eine erhöhte Netzwerkwartezeit zurückzuführen ist. 
 
-    ![Netzwerkproblem beim Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
+    ![Netzwerkproblem beim Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 
 Nachdem Sie festgestellt haben, dass das Problem auf das Netzwerk zurückzuführen ist, wählen Sie den Ansichtslink **Topologie** aus, um den problematischen Hop auf der Topologiekarte zu ermitteln. In der folgenden Abbildung ist ein Beispiel angegeben. Von der Gesamtwartezeit von 105 ms zwischen Knoten und Anwendungsendpunkt entfallen 96 ms auf den rot markierten Hop. Nachdem Sie den problematischen Hop identifiziert haben, können Sie Korrekturmaßnahmen ergreifen. 
 
-![Dienstkonnektivitätsmonitor-Tests](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
+![Dienstkonnektivitätsmonitor-Tests](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnose 
 

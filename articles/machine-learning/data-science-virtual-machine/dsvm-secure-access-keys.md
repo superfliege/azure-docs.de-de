@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 30bf0de449596bb749e8f57c63ad056b85396a59
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 1bf3150fc79f86e196be120fef78b76be8e47f63
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307773"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344505"
 ---
 # <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>Sicheres Speichern von Anmeldeinformationen auf dem virtuellen Computer für Data Science
 
 Eine gängige Herausforderung beim Erstellen von Cloudanwendungen ist die Verwaltung der Anmeldeinformationen, die für die Authentifizierung bei Clouddiensten im Code enthalten sein müssen. Der Schutz dieser Anmeldeinformationen ist eine wichtige Aufgabe. Im Idealfall werden sie nie auf Entwicklerarbeitsstationen angezeigt oder in die Quellcodeverwaltung eingecheckt. 
 
-Mithilfe von [MSI (Managed Service Identity, verwaltete Dienstidentität)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
+Mithilfe der [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
-Eine Möglichkeit zum Schützen der Anmeldeinformationen ist, MSI in Kombination mit [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), einem verwalteten Azure-Dienst zum sicheren Speichern von Geheimnissen und kryptografischen Schlüsseln, zu verwenden. Sie können mit der verwalteten Dienstidentität auf einen Schlüsseltresor zugreifen und die autorisierten Geheimnisse und kryptografischen Schlüssel aus dem Schlüsseltresor abrufen. 
+Eine Möglichkeit zum Schützen der Anmeldeinformationen ist, MSI in Kombination mit [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), einem verwalteten Azure-Dienst zum sicheren Speichern von Geheimnissen und kryptografischen Schlüsseln, zu verwenden. Sie können mit der verwalteten Identität auf einen Schlüsseltresor zugreifen und die autorisierten Geheimnisse und kryptografischen Schlüssel aus dem Schlüsseltresor abrufen. 
 
-Die MSI- und Key Vault-Dokumentation ist eine umfassende Quelle für ausführliche Informationen zu diesen Diensten. Der Rest dieses Artikels beschreibt die grundlegende Verwendung von MSI und Key Vault auf dem virtuellen Computer für Data Science (Data Science Virtual Machine, DSVM) für den Zugriff auf Azure-Ressourcen. 
+Die Dokumentation zu den verwalteten Identitäten für Azure-Ressourcen und Key Vault ist eine umfassende Quelle für ausführliche Informationen zu diesen Diensten. Der Rest dieses Artikels beschreibt die grundlegende Verwendung von MSI und Key Vault auf dem virtuellen Computer für Data Science (Data Science Virtual Machine, DSVM) für den Zugriff auf Azure-Ressourcen. 
 
 ## <a name="create-a-managed-identity-on-the-dsvm"></a>Erstellen einer verwalteten Identität auf der DSVM 
 
@@ -106,7 +106,7 @@ print("My secret value is {}".format(secret.value))
 ## <a name="access-the-key-vault-from-azure-cli"></a>Zugreifen auf den Schlüsseltresor aus Azure CLI
 
 ```
-# With a Managed Service Identity set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. Here are commands to access the key vault from Azure CLI without having to log in to an Azure account. 
+# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. Here are commands to access the key vault from Azure CLI without having to log in to an Azure account. 
 # Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permission, like accessing storage account keys, reading specific secrets, and writing new secrets, is provided to the MSI. 
 
 # Authenticate to Azure CLI without requiring an Azure account. 

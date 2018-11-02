@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7208eb112b5f4a5b458c0374541dff113906aa0c
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: c0045af02b307bff686d47dd8fc4aabb290711a4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47185731"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400422"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -146,7 +146,7 @@ Standard-SSD-Datenträger sind Standarddatenträger mit Unterstützung durch SSD
 Alle Azure-Regionen unterstützen jetzt Standard-SSD-Datenträger.
 
 **Ist Azure Backup verfügbar, wenn Standard-SSDs verwendet werden?**
-Nein, Azure Backup ist noch nicht verfügbar.
+Ja, Azure Backup ist jetzt verfügbar.
 
 **Wie erstelle ich Standard-SSD-Datenträger?**
 Sie können Standard-SSD-Datenträger mithilfe von Azure Resource Manager-Vorlagen, SDKs, PowerShell oder CLI erstellen. Im Folgenden werden die in der Resource Manager-Vorlage zum Erstellen von Standard-SSD-Datenträgern erforderlichen Parameter aufgeführt:
@@ -171,7 +171,7 @@ Das folgende Beispiel zeigt den Abschnitt *properties.storageProfile.osDisk* fü
 Eine vollständige Beispielvorlage zum Erstellen eines Standard-SSD-Datenträgers mit einer Vorlage finden Sie unter [Create a Virtual Machine from a Windows Image with multiple empty Standard SSD Data Disks](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/) (Erstellen eines virtuellen Computers aus einem Windows-Image mit mehreren leeren Standard-SSD-Datenträgern).
 
 **Kann ich meine vorhandenen Laufwerke in Standard-SSD konvertieren?**
-Ja, das ist möglich. Allgemeine Richtlinien zum Konvertieren von verwalteten Datenträgern finden Sie unter [Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage). Verwenden Sie außerdem den folgenden Wert, um den Datenträgertyp auf Standard-SSD zu aktualisieren.
+Ja, das ist möglich. Allgemeine Richtlinien zum Konvertieren von verwalteten Datenträgern finden Sie unter [Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Verwenden Sie außerdem den folgenden Wert, um den Datenträgertyp auf Standard-SSD zu aktualisieren.
 -AccountType StandardSSD_LRS
 
 **Was ist der Vorteil der Verwendung von Standard-SSD-Datenträgern anstelle von HDD?**

@@ -5,15 +5,15 @@ author: msvijayn
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 2e2db54f4c356a754144e17b11cf25fdf3f12d9f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bcede1f985937058196b75a93f539cb34da73992
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994002"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365061"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokollwarnungen in Azure Monitor
 Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der [Azure-Warnungen](monitoring-overview-unified-alerts.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden.
@@ -106,11 +106,11 @@ Nehmen Sie jetzt an, es gibt eine Protokollwarnungsregel namens *Contoso-Log-Ale
 - Um 13:15 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis 2 Datensätze. Dadurch wurde der Schwellenwert überschritten und kurz danach die Warnung ausgelöst, indem die zugehörige [Aktionsgruppe](monitoring-action-groups.md) ausgelöst wurde.
 - Bei der nächsten Ausführung um 13:20 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis erneut 0 Datensätze. Dies liegt unterhalb des Schwellenwerts und daher wurde die Warnung nicht ausgelöst.
 
-Aber im oben genannten Fall kann Azure-Warnungen um 13:15 Uhr nicht feststellen, dass die zugrundeliegenden Probleme, die um 13:10 Uhr erkannt wurden, bestehen bleiben und ob neue Fehler auftreten. Da die vom Benutzer bereitgestellte Abfrage möglicherweise frühere Datensätze berücksichtigt – kann Azure-Warnungen sicher sein. Um also auf Nummer sicher zu gehen, wird „Contoso-Log-Alert“ um 13:15 Uhr über die konfigurierte [Aktionsgruppe](monitoring-action-groups.md) erneut ausgelöst. Wenn jetzt um 13:20 Uhr keine Datensätze mehr angezeigt werden, kann Azure-Warnungen sicher sein, dass die Ursache der Datensätze behoben wurde. Daher wechselt „Contoso-Log-Alert“ im Azure Alert-Dashboard nicht zu „Gelöst“ und/oder es werden Benachrichtigungen gesendet, um die Lösung einer Warnung anzuzeigen.
+Aber im oben genannten Fall kann Azure-Warnungen um 13:15 Uhr nicht feststellen, dass die zugrundeliegenden Probleme, die um 13:10 Uhr erkannt wurden, bestehen bleiben und ob neue Fehler auftreten. Da die vom Benutzer bereitgestellte Abfrage möglicherweise frühere Datensätze berücksichtigt, kann Azure-Warnungen nicht sicher sein. Um also auf Nummer sicher zu gehen, wird „Contoso-Log-Alert“ um 13:15 Uhr über die konfigurierte [Aktionsgruppe](monitoring-action-groups.md) erneut ausgelöst. Wenn jetzt um 13:20 Uhr keine Datensätze mehr angezeigt werden, kann Azure-Warnungen sicher sein, dass die Ursache der Datensätze behoben wurde. Daher wechselt „Contoso-Log-Alert“ im Azure Alert-Dashboard nicht zu „Gelöst“ und/oder es werden Benachrichtigungen gesendet, um die Lösung einer Warnung anzuzeigen.
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Preise und Abrechnung von Protokollwarnungen
-Preise für Protokollwarnungen sind auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/en-us/pricing/details/monitor/) aufgeführt. In Azure-Rechnungen sind Protokollwarnungen als Typ `microsoft.insights/scheduledqueryrules` wie folgt angegeben:
+Preise für Protokollwarnungen sind auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt. In Azure-Rechnungen sind Protokollwarnungen als Typ `microsoft.insights/scheduledqueryrules` wie folgt angegeben:
 - Protokollwarnungen für Application Insights werden mit dem genauen Namen der Warnung zusammen mit der Ressourcengruppe und Warnungseigenschaften angezeigt.
 - Protokollwarnungen für Log Analytics werden mit dem Namen der Warnung als `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` zusammen mit der Ressourcengruppe und Warnungseigenschaften angezeigt.
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/27/2018
+ms.date: 10/23/2018
 ms.author: victorh
-ms.openlocfilehash: 7e259936dce433683dd135171ee1c5626bf23739
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5ea022d38970122b88ae35c592af3e4a9351190b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154193"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945330"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurieren von End-to-End-SSL mit Application Gateway mithilfe von PowerShell
 
@@ -127,20 +127,20 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
 
 Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festgelegt. Die folgenden Schritten erstellen die Konfigurationselemente, die für eine Application Gateway-Ressource benötigt werden.
 
-   1. Erstellen einer IP-Konfiguration für das Anwendungsgateway Diese Einstellung konfiguriert, welches der Subnetze das Anwendungsgateway verwendet. Beim Starten des Anwendungsgateways wird eine IP-Adresse aus dem konfigurierten Subnetz ausgewählt, und der Netzwerkdatenverkehr wird an die IP-Adressen im Back-End-IP-Pool weitergeleitet. Beachten Sie, dass jede Instanz eine eigene IP-Adresse benötigt.
+1. Erstellen einer IP-Konfiguration für das Anwendungsgateway Diese Einstellung konfiguriert, welches der Subnetze das Anwendungsgateway verwendet. Beim Starten des Anwendungsgateways wird eine IP-Adresse aus dem konfigurierten Subnetz ausgewählt, und der Netzwerkdatenverkehr wird an die IP-Adressen im Back-End-IP-Pool weitergeleitet. Beachten Sie, dass jede Instanz eine eigene IP-Adresse benötigt.
 
    ```powershell
    $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
 
-   2. Erstellen Sie eine Front-End-IP-Konfiguration. Diese Einstellung ordnet dem Front-End des Anwendungsgateways eine private oder öffentliche IP-Adresse zu. Im folgenden Schritt wird die öffentliche IP-Adresse aus dem vorherigen Schritt der Front-End-IP-Konfiguration zugeordnet.
+2. Erstellen Sie eine Front-End-IP-Konfiguration. Diese Einstellung ordnet dem Front-End des Anwendungsgateways eine private oder öffentliche IP-Adresse zu. Im folgenden Schritt wird die öffentliche IP-Adresse aus dem vorherigen Schritt der Front-End-IP-Konfiguration zugeordnet.
 
    ```powershell
    $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
    ```
 
-   3. Konfigurieren Sie den Back-End-IP-Adresspool mit den IP-Adressen der Back-End-Webserver. Dies sind die IP-Adressen, die den Netzwerkdatenverkehr vom Front-End-IP-Endpunkt empfangen. Ersetzen Sie die IP-Adressen im Beispiel durch Ihre eigenen IP-Adressendpunkte der Anwendung.
+3. Konfigurieren Sie den Back-End-IP-Adresspool mit den IP-Adressen der Back-End-Webserver. Dies sind die IP-Adressen, die den Netzwerkdatenverkehr vom Front-End-IP-Endpunkt empfangen. Ersetzen Sie die IP-Adressen im Beispiel durch Ihre eigenen IP-Adressendpunkte der Anwendung.
 
    ```powershell
    $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
@@ -150,13 +150,13 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
    > Ein vollqualifizierter Domänenname (FQDN) ist ebenfalls ein gültiger Wert anstelle einer IP-Adresse für die Back-End-Server. Die Aktivierung erfolgt über den Schalter **-BackendFqdns**. 
 
 
-   4. Konfigurieren Sie den Front-End-IP-Port für den öffentlichen IP-Endpunkt. Dieser Port ist der Port, mit dem Endbenutzer eine Verbindung herstellen.
+4. Konfigurieren Sie den Front-End-IP-Port für den öffentlichen IP-Endpunkt. Dieser Port ist der Port, mit dem Endbenutzer eine Verbindung herstellen.
 
    ```powershell
    $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
    ```
 
-   5. Konfigurieren Sie das Zertifikat für das Anwendungsgateway. Dieses Zertifikat wird zum Entschlüsseln und erneuten Verschlüsseln des Datenverkehrs auf dem Anwendungsgateway verwendet.
+5. Konfigurieren Sie das Zertifikat für das Anwendungsgateway. Dieses Zertifikat wird zum Entschlüsseln und erneuten Verschlüsseln des Datenverkehrs auf dem Anwendungsgateway verwendet.
 
    ```powershell
    $passwd = ConvertTo-SecureString  <certificate file password> -AsPlainText -Force 
@@ -166,13 +166,13 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
    > [!NOTE]
    > In diesem Beispiel wird das Zertifikat für SSL-Verbindungen konfiguriert. Das Zertifikat muss im PFX-Format vorliegen, und das Kennwort muss zwischen 4 und 12 Zeichen umfassen.
 
-   6. Erstellen Sie den HTTP-Listener für das Anwendungsgateway. Weisen Sie die zu verwendende Front-End-IP-Konfiguration, den Port und das SSL-Zertifikat zu.
+6. Erstellen Sie den HTTP-Listener für das Anwendungsgateway. Weisen Sie die zu verwendende Front-End-IP-Konfiguration, den Port und das SSL-Zertifikat zu.
 
    ```powershell
    $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-   7. Laden Sie das Zertifikat hoch, das von den SSL-fähigen Ressourcen des Back-End-Pools verwendet werden soll.
+7. Laden Sie das Zertifikat hoch, das von den SSL-fähigen Ressourcen des Back-End-Pools verwendet werden soll.
 
    > [!NOTE]
    > Der Standardtest ruft den öffentlichen Schlüssel aus der *standardmäßigen* SSL-Bindung in der IP-Adresse des Back-Ends ab und vergleicht den Wert dieses öffentlichen Schlüssels mit dem Wert des öffentlichen Schlüssels, den Sie hier bereitstellen. 
@@ -186,27 +186,40 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
    > [!NOTE]
    > Das in diesem Schritt bereitgestellte Zertifikat sollte dem öffentlichen Schlüssel des PFX-Zertifikats entsprechen, das auf dem Back-End vorliegt. Exportieren Sie das auf dem Back-End-Server im CER-Format (Claim, Evidence, and Reasoning) installierte Zertifikat (nicht das Stammzertifikat), und verwenden Sie es für diesen Schritt. Durch diesen Schritt wird das Back-End beim Anwendungsgateway auf die Whitelist gesetzt.
 
-   8. Konfigurieren Sie die HTTP-Einstellungen für das Back-End des Anwendungsgateways. Weisen Sie den HTTP-Einstellungen das Zertifikat zu, das im vorherigen Schritt hochgeladen wurde.
+   Wenn Sie die Application Gateway v2-SKU verwenden, erstellen Sie anstelle eines Authentifizierungszertifikats ein vertrauenswürdiges Stammzertifikat. Weitere Informationen finden Sie unter [Übersicht über End-to-End-SSL mit Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
+
+   ```powershell
+   $trustedRootCert01 = New-AzureRmApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
+   ```
+
+8. Konfigurieren Sie die HTTP-Einstellungen für das Back-End des Anwendungsgateways. Weisen Sie den HTTP-Einstellungen das Zertifikat zu, das im vorherigen Schritt hochgeladen wurde.
 
    ```powershell
    $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
    ```
-   9. Erstellen Sie eine Routingregel für den Lastenausgleich, durch die das Verhalten des Lastenausgleichs konfiguriert wird. In diesem Beispiel wird eine Roundrobin-Basisregel erstellt.
+
+   Verwenden Sie den folgenden Befehl für die Application Gateway v2-SKU:
+
+   ```powershell
+   $poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+   ```
+
+9. Erstellen Sie eine Routingregel für den Lastenausgleich, durch die das Verhalten des Lastenausgleichs konfiguriert wird. In diesem Beispiel wird eine Roundrobin-Basisregel erstellt.
 
    ```powershell
    $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-   10. Konfigurieren Sie die Instanzgröße des Anwendungsgateways. Die verfügbaren Größen lauten **Standard\_Small**, **Standard\_Medium** und **Standard\_Large**.  Für die Kapazität stehen die Werte **1** bis **10** zur Verfügung.
+10. Konfigurieren Sie die Instanzgröße des Anwendungsgateways. Die verfügbaren Größen lauten **Standard\_Small**, **Standard\_Medium** und **Standard\_Large**.  Für die Kapazität stehen die Werte **1** bis **10** zur Verfügung.
 
-   ```powershell
-   $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
-   ```
+    ```powershell
+    $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+    ```
 
-   > [!NOTE]
-   > Zu Testzwecken kann für die Anzahl von Instanzen der Wert 1 ausgewählt werden. Beachten Sie, dass eine Anzahl von weniger als zwei Instanzen nicht durch die SLA abgedeckt ist und daher nicht empfohlen wird. Gateways mit niedriger Nutzungsdauer sind für Dev/Test-Umgebungen vorgesehen und sollten nicht zu Produktionszwecken verwendet werden.
+    > [!NOTE]
+    > Zu Testzwecken kann für die Anzahl von Instanzen der Wert 1 ausgewählt werden. Beachten Sie, dass eine Anzahl von weniger als zwei Instanzen nicht durch die SLA abgedeckt ist und daher nicht empfohlen wird. Gateways mit niedriger Nutzungsdauer sind für Dev/Test-Umgebungen vorgesehen und sollten nicht zu Produktionszwecken verwendet werden.
 
-   11. Konfigurieren Sie die SSL-Richtlinie, die auf dem Anwendungsgateway verwendet werden soll. Application Gateway ermöglicht das Festlegen einer SSL-Mindestprotokollversion.
+11. Konfigurieren Sie die SSL-Richtlinie, die auf dem Anwendungsgateway verwendet werden soll. Application Gateway ermöglicht das Festlegen einer SSL-Mindestprotokollversion.
 
    Die folgenden Werte sind eine Liste mit definierbaren Protokollversionen:
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 6760d2832b6c39759f9287797363fcd5a116ccfb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9a0c427b8beec3984a9fdd5d41ba3705fd21fd4c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883665"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364995"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Migrieren von lokalem SQL Server zur Azure SQL-Datenbank mithilfe von Azure PowerShell
 In diesem Artikel migrieren Sie die Datenbank **Adventureworks2012**, die in einer lokalen Instanz von SQL Server 2005 (oder höher) wiederhergestellt wurde, mithilfe von Microsoft Azure PowerShell zu einer Azure SQL-Datenbank. Mithilfe des Moduls `AzureRM.DataMigration` in Microsoft Azure PowerShell können Sie Datenbanken aus einer lokalen Instanz von SQL Server zur Azure SQL-Datenbank migrieren.
@@ -195,7 +195,7 @@ $selectedAgentJobs = @("agentJob1", "agentJob2")
 ### <a name="create-and-start-a-migration-task"></a>Erstellen und Starten einer Migrationsaufgabe
 
 Verwenden Sie das Cmdlet `New-AzureRmDataMigrationTask` zum Erstellen und Starten einer Migrationsaufgabe. Dieses Cmdlet erwartet die folgenden Parameter:
-- *TaskType*: Als Typ der Migrationsaufgabe, die für die Migration von SQL Server zur verwalteten Azure SQL-Datenbankinstanz zu erstellen ist, wird *MigrateSqlServerSqlDbMi* erwartet. 
+- *TaskType*: Als Typ der Migrationsaufgabe, die für die Migration von SQL Server zur verwalteten Azure SQL-Datenbank-Instanz zu erstellen ist, wird *MigrateSqlServerSqlDbMi* erwartet. 
 - *ResourceGroupName*: Name der Azure-Ressourcengruppe, in der die Aufgabe erstellt werden soll.
 - *ServiceName*: Instanz von Azure Database Migration Service, in der die Aufgabe erstellt werden soll.
 - *ProjectName*: Name des Azure Database Migration Service-Projekts, in dem die Aufgabe erstellt werden soll. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 308a447ff99cd11ad6a28df0bdb515764b0f546b
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 282620342d2348868ceab5257de7415a9cb2147c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063454"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388358"
 ---
 # <a name="azure-monitor-for-vms-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor for VMs
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für VMs in Microsoft Azure. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -76,7 +76,7 @@ Das Zuordnungsfeature von Azure Monitor for VMs basiert auf der Dienstzuordnung,
 Dies kann aus einer Reihe von Gründen passieren.  In Fällen, in denen eine Lücke in der Datensammlung besteht, stellen wir die Linien als gepunktet dar.  Wenn Sie die Erfassungshäufigkeit der Daten für die aktivierten Leistungsindikatoren geändert haben (in der Standardeinstellung werden Daten alle 60 Sekunden gesammelt), werden gepunktete Linien im Diagramm angezeigt, wenn Sie einen kleinen Zeitbereich für das Diagramm gewählt haben und Ihre Erfassungshäufigkeit geringer als die im Diagramm verwendete Bucketgröße ist (beispielsweise, wenn die Erfassungshäufigkeit 10 Minuten beträgt und die einzelnen Buckets im Diagramm 5 Minuten groß sind).  In diesem Fall sollte das Wählen eines größeren Zeitbereichs für die Darstellung bewirken, dass die Diagrammlinien als durchgezogene Linien statt als Punkte angezeigt werden.
 
 ## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Werden in Azure Monitor for VMs Gruppen unterstützt?
-Das Leistungsfeature unterstützt Gruppen, die auf den hervorgehobenen Ressourcen in einem bestimmten Arbeitsbereich basieren, sowie Gruppierung auf der Grundlage einer bestimmten Azure-VM-Skalierungsgruppe und eines Clouddiensts.
+Ja. Nachdem Sie den Dependency-Agent installiert haben, sammeln wir Informationen aus den VMs, um Gruppen auf der Grundlage von Abonnement, Ressourcengruppe, VM-Skalierungsgruppe und Clouddiensten anzuzeigen.  Wenn Sie die Dienstzuordnung verwendet und Computergruppen erstellt haben, werden diese ebenfalls angezeigt.  Computergruppen werden außerdem im Gruppenfilter angezeigt, wenn Sie sie für den angezeigten Arbeitsbereich erstellt haben. 
 
 ## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Wie kann ich anzeigen, welche Faktoren die Linie für das 95. Quantil in den Leistungsaggregatdiagrammen beeinflussen?
 Standardmäßig ist die Liste so sortiert, dass die VMs mit dem höchsten Wert für das 95. Quantil für die ausgewählte Metrik angezeigt werden, mit Ausnahme des Diagramms für den verfügbaren Arbeitsspeicher, das die Computer mit dem niedrigsten Wert für das 5. Quantil anzeigt.  Durch Klicken auf das Diagramm wird die **Top-N-Listenansicht** angezeigt; die entsprechende Metrik ist ausgewählt.

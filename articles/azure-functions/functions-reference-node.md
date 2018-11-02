@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 24f7faa0fb111e4e537a7db3f5e1eea709d1ca59
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb9387cec98621e27aff7dcb40b8897e326c6706
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957732"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353491"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 Dieses Handbuch enthält Informationen zu den Feinheiten des Schreibens von Azure Functions mit JavaScript.
@@ -66,6 +66,8 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
     context.done();
 };
+```
+```javascript
 // You can also use 'arguments' to dynamically handle inputs
 module.exports = async function(context) {
     context.log('Number of inputs: ' + arguments.length);
@@ -79,6 +81,37 @@ module.exports = async function(context) {
 Trigger und Eingabebindungen (Bindungen des Typs `direction === "in"`) können als Parameter an die Funktion übergeben werden. Sie werden in der Reihenfolge, in der sie in *function.json* definiert sind, an die Funktion übergeben. Sie können Eingaben mithilfe des JavaScript-Objekts [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) auch dynamisch behandeln. Wenn Sie also beispielsweise `function(context, a, b)` in `function(context, a)` ändern, können Sie dennoch den Wert von `b` im Funktionscode abrufen, indem Sie auf `arguments[2]` verweisen.
 
 Alle Bindungen werden unabhängig von der Richtung auch mit dem `context`-Objekt über die `context.bindings`-Eigenschaft übergeben.
+
+### <a name="exporting-an-async-function"></a>Exportieren einer Async-Funktion
+Bei der Verwendung der JavaScript-Deklaration [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) oder einfacher JavaScript-[Zusagen](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (in Functions v1.x nicht verfügbar), müssen Sie den [`context.done`](#contextdone-method)-Rückruf nicht explizit aufrufen, um zu signalisieren, dass Ihre Funktion abgeschlossen wurde. Ihre Funktion wird abgeschlossen, wenn die exportierte asynchrone Funktion/Zusage abgeschlossen wird.
+
+Als Beispiel verwenden wir diese einfache Funktion, die ihre Auslösung protokolliert und dann die Ausführung abschließt.
+``` javascript
+module.exports = async function (context) {
+    context.log('JavaScript trigger function processed a request.');
+};
+```
+
+Beim Exportieren einer asynchronen Funktion können Sie ferner Ausgabebindungen für die Annahme des `return`-Werts konfigurieren. Dies ist eine alternative Methode zum Zuweisen von Ausgaben mithilfe der [`context.bindings`](#contextbindings-property)-Eigenschaft.
+
+Um eine Ausgabe mithilfe von `return` zuzuweisen, ändern Sie die `name`-Eigenschaft in `function.json` in `$return`.
+```json
+{
+  "type": "http",
+  "direction": "out",
+  "name": "$return"
+}
+```
+Ihr JavaScript-Funktionscode könnte folgendermaßen aussehen:
+```javascript
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+    // You can call and await an async method here
+    return {
+        body: "Hello, world!"
+    };
+}
+```
 
 ## <a name="context-object"></a>context-Objekt
 Die Laufzeit verwendet ein `context`-Objekt, um Daten an Ihre und von Ihrer Funktion zu übergeben und Ihnen die Kommunikation mit der Laufzeit zu ermöglichen.
@@ -342,7 +375,10 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-Beachten Sie, dass Sie eine Datei `package.json` im Stammverzeichnis Ihrer Funktions-App definieren sollten. Wenn Sie die Datei definieren, nutzen alle Funktionen in der App gemeinsam die gleichen zwischengespeicherten Pakete, was die Leistung optimiert. Wenn ein Versionskonflikt auftritt, können Sie ihn beheben, indem Sie eine `package.json`-Datei im Ordner einer bestimmten Funktion hinzufügen.  
+> [!NOTE]
+> Sie sollten eine `package.json`-Datei im Stammverzeichnis Ihrer Funktions-App definieren. Wenn Sie die Datei definieren, nutzen alle Funktionen in der App gemeinsam die gleichen zwischengespeicherten Pakete, was die Leistung optimiert. Wenn ein Versionskonflikt auftritt, können Sie ihn beheben, indem Sie eine `package.json`-Datei im Ordner einer bestimmten Funktion hinzufügen.  
+
+Bei der Bereitstellung von Funktions-Apps aus der Quellcodeverwaltung lösen alle in Ihrem Repository vorhandenen `package.json`-Dateien während der Bereitstellung ein `npm install` im eigenen Ordner aus. Bei einer Bereitstellung über das Portal oder die CLI müssen Sie die Pakete jedoch manuell installieren.
 
 Es gibt zwei Möglichkeiten zum Installieren von Paketen für Ihre Funktions-App: 
 
@@ -465,6 +501,6 @@ Bei der Entwicklung von Azure Functions im serverlosen Hostingmodell sind Kaltst
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 * [Bewährte Methoden für Azure Functions](functions-best-practices.md)
-* [Azure Functions developer reference (Azure Functions-Entwicklerreferenz) (Azure Functions-Entwicklerreferenz)](functions-reference.md)
+* [Entwicklerreferenz zu Azure Functions](functions-reference.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 

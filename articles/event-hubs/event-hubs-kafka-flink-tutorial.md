@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: b724ddfc1214ac17c2138dc9875896cf3353f0c7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 0a00bc4a1baa413a21f8179ede6893b0fa4add9c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746625"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416493"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Verwenden von Apache Flink mit Azure Event Hubs für Apache Kafka
 Dieses Tutorial veranschaulicht, wie Sie Apache Flink mit Kafka-fähigen Event Hubs verbinden können, ohne Ihre Protokollclients ändern oder Ihre eigenen Cluster ausführen zu müssen. Azure Event Hubs unterstützt [Apache Kafka Version 1.0](https://kafka.apache.org/10/documentation.html).
@@ -29,13 +29,16 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Ausführen des Flink-Producers 
 > * Ausführen des Flink-Consumers
 
+> [!NOTE]
+> Dieses Beispiel ist auf [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) verfügbar.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * Lesen Sie den Artikel [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-* [Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
     * Führen Sie unter Ubuntu `apt-get install default-jdk` aus, um das JDK zu installieren.
     * Achten Sie darauf, dass die Umgebungsvariable „JAVA_HOME“ auf den Ordner verweist, in dem das JDK installiert ist.
 * Führen Sie den [Download](http://maven.apache.org/download.cgi) und die [Installation](http://maven.apache.org/install.html) eines binären Maven-Archivs durch.
@@ -49,11 +52,11 @@ Ein Event Hubs-Namespace ist erforderlich, um Nachrichten an einen Event Hubs-Di
 
 ## <a name="clone-the-example-project"></a>Klonen des Beispielprojekts
 
-Nachdem Sie nun über eine Kafka-fähige Event Hubs-Verbindungszeichenfolge verfügen, können Sie das Azure Event Hubs-Repository klonen und zum Unterordner `flink` navigieren:
+Nachdem Sie nun über eine Kafka-fähige Event Hubs-Verbindungszeichenfolge verfügen, können Sie das Azure Event Hubs für Kafka-Repository klonen und zum Unterordner `flink` navigieren:
 
 ```shell
-git clone https://github.com/Azure/azure-event-hubs.git
-cd azure-event-hubs/samples/kafka/flink
+git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
+cd azure-event-hubs-for-kafka/tutorials/flink
 ```
 
 ## <a name="run-flink-producer"></a>Ausführen des Flink-Producers
@@ -129,7 +132,10 @@ In diesem Tutorial haben Sie erfahren, wie Sie Apache Flink mit Kafka-fähigen E
 > * Ausführen des Flink-Producers 
 > * Ausführen des Flink-Consumers
 
-Fahren Sie mit dem nächsten Artikel fort, um mehr über Event Hubs für Apache Kafka zu erfahren:
+Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie unter folgendem Thema:  
 
-> [!div class="nextstepaction"]
-> [Verwenden von Akka Streams mit Azure Event Hubs für Kafka](event-hubs-kafka-akka-streams-tutorial.md)
+* [Informationen zu Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Informationen zu Event Hubs für Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+* [Weitere Beispiele zu Event Hubs für Kafka auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
+* Verwenden Sie [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) zum [Streamen von Ereignissen aus der lokalen Kafka-Instanz an Kafka-fähige Event Hubs in der Cloud](event-hubs-kafka-mirror-maker-tutorial.md).
+* Erfahren Sie, wie Sie [native Kafka-Anwendungen](event-hubs-quickstart-kafka-enabled-event-hubs.md) oder [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) zum Streamen an Kafka-fähige Event Hubs verwenden.

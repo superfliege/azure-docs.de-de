@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/11/2018
-ms.openlocfilehash: 1ae350e74a9b56aaaa72b38a9e3a43bddfbefefc
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 52f30adf1ea383b098d3f187a315257f101e8a9b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232272"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320433"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -332,7 +332,7 @@ Um die Aufrufe zu unterstützen, die [Connectors](../connectors/apis-list.md) du
 >
 > * Erstellen Sie eine [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), die eine Verbindung mit Ressourcen in einem virtuellen Azure-Netzwerk herstellen kann. 
 > 
-> * Wenn Sie API Management bereits verwenden, können Sie diesen Dienst für das Szenario nutzen. Weitere Informationen finden Sie unter [Einfache Unternehmensintegrationsarchitektur](https://aka.ms/aisarch).
+> * Wenn Sie API Management bereits verwenden, können Sie diesen Dienst für das Szenario nutzen. Weitere Informationen finden Sie unter [Einfache Unternehmensintegrationsarchitektur](http://aka.ms/aisarch).
 
 | Logic Apps-Bereich | Ausgehende IP-Adresse | 
 |-------------------|-------------|  

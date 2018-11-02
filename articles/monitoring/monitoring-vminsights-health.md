@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 5c9211486fa40e49afd91eba7c432990b0ee860b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 84314f64d8a96e65f63cb5c6051f7f5e902cd682
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160620"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387820"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>Verstehen Sie die Integrität Ihrer Azure-VMs mit Azure Monitor for VMs
 Azure beinhaltet mehrere Dienste, die einzeln eine bestimmte Rolle oder Aufgabe im Überwachungsbereich ausführen, aber ein tiefgreifender Blick auf die Integrität des auf Azure-VMs gehosteten Betriebssystems war bisher nicht verfügbar.  Zwar konnten Sie mithilfe von Log Analytics oder Azure Monitor verschiedene Bedingungen überwachen, diese waren aber nicht dafür ausgelegt, die Integrität von Kernkomponenten oder die Gesamtintegrität der VM zu modellieren und darzustellen.  Das Integritätsfeature von Azure Monitor for VMs überwacht proaktiv die Verfügbarkeit und Leistung des Windows- oder Linux-Gastbetriebssystems mit einem Modell, das Schlüsselkomponenten und ihre Beziehungen modelliert, und mit Kriterien, die angeben, wie die Integrität dieser Komponenten gemessen wird, und eine Warnung an Sie auslösen, wenn ein Zustand eingeschränkter Integrität erkannt wird.  
@@ -31,7 +31,7 @@ Dieser Artikel soll Ihr Verständnis dafür schärfen, wie Sie erkannte Integrit
 Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enable Azure Monitor for VMs](monitoring-vminsights-onboard.md) (Aktivieren von Azure Monitor for VMs).
 
 ## <a name="monitoring-configuration-details"></a>Details der Überwachungskonfiguration
-Dieser Abschnitt beschreibt im Umriss die definierten standardmäßigen Integritätskriterien für die Überwachung von Azure Windows- und Linux-VMs.
+Dieser Abschnitt beschreibt im Umriss die definierten standardmäßigen Integritätskriterien für die Überwachung von Azure Windows- und Linux-VMs. Alle Integritätskriterien sind so vorkonfiguriert, dass sie beim Eintreten der Fehlerbedingung eine Warnung ausgeben. 
 
 ### <a name="windows-vms"></a>Virtuelle Windows-Computer
 
@@ -110,7 +110,7 @@ Um die Integritätssammlung aller Ihrer virtuellen Computer in einer Ressourceng
 
 ![VM Insights-Überwachungsansicht in Azure Monitor](./media/monitoring-vminsights-health/vminsights-aggregate-health.png)
 
-Wählen Sie in den Dropdownlisten **Abonnement** und **Ressourcengruppe** die Einträge aus, die die Ziel-VMs enthalten, um deren Integritätsstatus anzuzeigen. 
+Wählen Sie in den Dropdownlisten **Abonnement** und **Ressourcengruppe** die passende Ressourcengruppe aus, die die zur Gruppe gehörenden VMs enthält, um ihren gemeldeten Integritätszustand anzuzeigen.  Ihre Auswahl gilt nur für das Integritätsfeature und nicht für die Leistung oder die Karte.
 
 Die Registerkarte **Integrität** stellt die folgenden Informationen dar:
 
@@ -253,21 +253,29 @@ Die Gesamtzahl der VM-Integritätswarnungen, nach Schweregrad kategorisiert, ste
 
 ![Beispiel für alle Warnungen mit Schweregrad 1](./media/monitoring-vminsights-health/vminsights-sev1-alerts-01.png)
 
+Die Warnungen auf der Seite **Warnungen** weisen nicht nur einen auf Ihre Auswahl eingeschränkten Bereich auf, sondern sind darüber hinaus nach **Ressourcentyp** gefiltert und zeigen nur Integritätswarnungen an, die von der VM-Ressource ausgelöst wurden.  Dies spiegelt sich in der Liste der Warnungen in der Spalte **Zielressource** wider, wo die Azure-VM angezeigt wird, für die die Warnung beim Erreichen der Fehlerbedingung für das einzelne Integritätskriterium ausgegeben wurde.  
+
+Warnungen von anderen Ressourcentypen oder Diensten sollen nicht in dieser Ansicht enthalten sein, also z. B. keine Protokollwarnungen, die auf Log Analytics-Abfragen basieren, oder Metrikwarnungen, die Sie normalerweise auf der Standardseite [Alle Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) im Azure Monitor anzeigen. 
+
 Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Rand der Seite auswählen.
 
 |Column |BESCHREIBUNG | 
 |-------|------------| 
 |Abonnement |Wählen Sie ein Azure-Abonnement aus. Nur Warnungen im ausgewählten Abonnement sind in der Ansicht enthalten. | 
 |Ressourcengruppe |Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. | 
-|Ressourcentyp |Wählen Sie mindestens einen Ressourcentyp aus. Nur Warnungen mit Zielen des ausgewählten Typs sind in der Ansicht enthalten. Diese Spalte ist nur verfügbar, nachdem eine Ressourcengruppe angegeben wurde. | 
+|Ressourcentyp |Wählen Sie mindestens einen Ressourcentyp aus. Standardmäßig sind in dieser Ansicht nur Warnungen mit dem Ziel **Virtuelle Computer** ausgewählt und enthalten. Diese Spalte ist nur verfügbar, nachdem eine Ressourcengruppe angegeben wurde. | 
 |Ressource |Wählen Sie eine Ressource aus. Nur Warnungen mit dieser Ressource als Ziel sind in der Ansicht enthalten. Diese Spalte ist nur verfügbar, nachdem ein Ressourcentyp angegeben wurde. | 
 |Severity |Wählen Sie einen Warnungsschweregrad oder *Alle* aus, um Warnungen aller Schweregrade einzuschließen. | 
 |Überwachungsbedingung |Wählen Sie eine Überwachungsbedingung aus, um Warnungen danach zu filtern, ob sie vom System *Ausgelöst* oder vom System *Gelöst* wurden, falls die Bedingung nicht mehr aktiv ist. Oder wählen Sie *Alle* aus, um Warnungen in allen Zuständen einzuschließen. | 
 |Warnungsstatus |Wählen Sie einen Warnungsstatus aus, *Neu*, *Bestätigt*, *Geschlossen*, oder wählen Sie *Alle* aus, um Warnungen mit jedem Status einzuschließen. | 
-|Überwachungsdienst |Wählen Sie einen Dienst oder *Alle* aus, um alle Dienste einzuschließen. Für dieses Feature werden nur Warnungen von Infrastructure Insights unterstützt. | 
+|Überwachungsdienst |Wählen Sie einen Dienst oder *Alle* aus, um alle Dienste einzuschließen. Für dieses Feature werden nur Warnungen von *VM Insights* unterstützt.| 
 |Zeitbereich| Nur Warnungen, die innerhalb des ausgewählten Zeitfensters ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. | 
 
-Die Seite **Warnungsdetail** wird angezeigt, wenn Sie eine Warnung auswählen, stellt Details zur Warnung zur Verfügung und erlaubt Ihnen, ihren Status zu ändern. Weitere Informationen zum Arbeiten mit Warnungsregeln und zum Verwalten von Warnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+Die Seite **Warnungsdetail** wird angezeigt, wenn Sie eine Warnung auswählen, stellt Details zur Warnung zur Verfügung und erlaubt Ihnen, ihren Status zu ändern. Weitere Informationen zum Verwalten von Warnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).  
+
+>[!NOTE]
+>Zurzeit wird das Erstellen neuer Warnungen auf der Grundlage von Integritätskriterien oder das Ändern vorhandener Integritätswarnungsregeln in Azure Monitor über das Portal nicht unterstützt.  
+>
 
 ![Bereich „Warnungsdetails“ für eine ausgewählte Warnung](./media/monitoring-vminsights-health/alert-details-pane-01.png)
 

@@ -9,12 +9,12 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 28aa2904f63a9802305d24fec1650f84e38601ab
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c6700dc4bc0cc458e34e129b2468daad88ecc8be
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258432"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393456"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals
 
@@ -39,11 +39,11 @@ Bevor Sie eine Bereitstellung erstellen können, müssen Sie angeben können, we
 }
 ```
 
-Weitere Informationen zu Gerätezwillingen und Tags finden Sie unter [Verstehen und Verwenden von Gerätezwillingen in IoT Hub][lnk-device-twin].
+Weitere Informationen zu Gerätezwillingen und Tags finden Sie unter [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Erstellen einer Bereitstellung
 
-1. Navigieren Sie im [Azure-Portal][lnk-portal] zu Ihrem IoT-Hub. 
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem IoT Hub. 
 1. Wählen Sie **IoT Edge** aus.
 1. Wählen Sie **IoT Edge-Bereitstellung hinzufügen** aus.
 
@@ -77,7 +77,7 @@ So fügen Sie benutzerdefinierten Code als Modul oder aber ein Azure-Dienstmodul
 1. Klicken Sie auf **IoT Edge-Modul**.
 1. Geben Sie dem Modul einen **Namen**.
 1. Geben Sie im Feld **Image-URI** das Containerimage für Ihr Modul ein. 
-1. Legen Sie alle **Optionen zur Containererstellung** fest, die an den Container übergeben werden sollen. Weitere Informationen finden Sie unter [docker create][lnk-docker-create].
+1. Legen Sie alle **Optionen zur Containererstellung** fest, die an den Container übergeben werden sollen. Weitere Informationen finden Sie unter [docker create](https://docs.docker.com/engine/reference/commandline/create/).
 1. Wählen Sie über das Dropdownmenü eine **Neustartrichtlinie** aus. Sie können zwischen folgenden Optionen wählen: 
    * **Immer**: Das Modul wird stets neu gestartet, wenn es aus irgendeinem Grund beendet wird.
    * **Nie**: Das Modul wird niemals neu gestartet, wenn es aus irgendeinem Grund beendet wird.
@@ -117,11 +117,11 @@ Da mehrere Bereitstellungen dasselbe Gerät als Ziel verwenden können, sollten 
 
 So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwachen die Geräte, die diese ausführen:
 
-1. Melden Sie sich beim [Azure-Portal][lnk-portal] an, und navigieren Sie zu Ihrem IoT Hub. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem IoT Hub. 
 1. Wählen Sie **IoT Edge** aus.
 1. Wählen Sie **IoT Edge-Bereitstellungen** aus. 
 
-   ![Anzeigen von IoT Edge-Bereitstellungen][1]
+   ![Anzeigen von IoT Edge-Bereitstellungen](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Prüfen Sie die Bereitstellungsliste. Für jede Bereitstellung können Sie die folgenden Details anzeigen:
    * **ID**: Name der Bereitstellung
@@ -144,11 +144,11 @@ Wenn Sie die Zielbedingung ändern, erfolgen die nachfolgend aufgeführten Anpas
 
 Gehen Sie wie folgt vor, um Änderungen an einer Bereitstellung vorzunehmen: 
 
-1. Melden Sie sich beim [Azure-Portal][lnk-portal] an, und navigieren Sie zu Ihrem IoT Hub. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem IoT Hub. 
 1. Wählen Sie **IoT Edge** aus.
 1. Wählen Sie **IoT Edge-Bereitstellungen** aus. 
 
-   ![Anzeigen von IoT Edge-Bereitstellungen][1]
+   ![Anzeigen von IoT Edge-Bereitstellungen](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Wählen Sie die Bereitstellung aus, die Sie ändern möchten. 
 1. Nehmen Sie die gewünschten Änderungen an den folgenden Feldern vor: 
@@ -156,17 +156,17 @@ Gehen Sie wie folgt vor, um Änderungen an einer Bereitstellung vorzunehmen:
    * Bezeichnungen 
    * Priorität 
 1. Wählen Sie **Speichern**aus.
-1. Führen Sie die unter [Überwachen eine Bereitstellung][anchor-monitor] beschriebenen Schritte durch, um den Rollout der Änderungen zu beobachten. 
+1. Führen Sie die unter [Überwachen eine Bereitstellung](#monitor-a-deployment) beschriebenen Schritte durch, um den Rollout der Änderungen zu beobachten. 
 
 ## <a name="delete-a-deployment"></a>Löschen einer Bereitstellung
 
 Wenn Sie eine Bereitstellung löschen, übernehmen alle Geräte die Bereitstellung mit der jeweils nächsthöheren Priorität. Wenn Ihre Geräte die Zielbedingung keiner anderen Bereitstellung erfüllen, werden die Module beim Löschen der Bereitstellung nicht entfernt. 
 
-1. Melden Sie sich beim [Azure-Portal][lnk-portal] an, und navigieren Sie zu Ihrem IoT Hub. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem IoT Hub. 
 1. Wählen Sie **IoT Edge** aus.
 1. Wählen Sie **IoT Edge-Bereitstellungen** aus. 
 
-   ![Anzeigen von IoT Edge-Bereitstellungen][1]
+   ![Anzeigen von IoT Edge-Bereitstellungen](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Wählen Sie die zu löschende Bereitstellung durch Aktivieren des zugehörigen Kontrollkästchens aus. 
 1. Klicken Sie auf **Löschen**.
@@ -174,16 +174,4 @@ Wenn Sie eine Bereitstellung löschen, übernehmen alle Geräte die Bereitstellu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen über das [Bereitstellen von Modulen auf Edge-Geräten][lnk-deployments]
-
-<!-- Images -->
-[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
-
-<!-- Links -->
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-portal]: https://portal.azure.com
-[lnk-docker-create]: https://docs.docker.com/engine/reference/commandline/create/
-[lnk-deployments]: module-deployment-monitoring.md
-
-<!-- Anchor links -->
-[anchor-monitor]: #monitor-a-deployment
+Weitere Informationen über das [Bereitstellen von Modulen auf Edge-Geräten](module-deployment-monitoring.md).

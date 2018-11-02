@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 60139915e8d8dca382f4ef62b5129f1a84e7e80d
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: b207af3bed40f6287f60b25638f3091fa187aa6f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056708"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405071"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Einrichten und Verwenden von Log Analytics mit einer mehrinstanzenfähigen SaaS-App für SQL-Datenbank
 
@@ -42,7 +42,7 @@ Bei Azure SQL-Datenbank stehen Überwachungs- und Warnungsfunktionen für Datenb
 
 Bei Szenarien mit hohem Volumen kann Log Analytics zur Überwachung und für Warnungen eingesetzt werden. Log Analytics ist ein separater Azure-Dienst, der die Analyse von Diagnoseprotokollen und Telemetriedaten ermöglicht, die in einem Arbeitsbereich von möglicherweise vielen Diensten gesammelt werden. Mit der integrierten Abfragesprache und den Tools zur Datenvisualisierung ermöglicht Log Analytics die Analyse operativer Daten. SQL-Analyse bietet mehrere vordefinierte Überwachungs- und Warnungsansichten und -abfragen für Datenbanken und für Pools für elastische Datenbanken. Log Analytics bietet außerdem einen Designer für benutzerdefinierte Ansichten.
 
-Sowohl Log Analytics-Arbeitsbereiche als auch Analyselösungen können im Azure-Portal und in Operations Management Suite geöffnet werden. Das Azure-Portal stellt den neueren Zugangspunkt dar, bleibt jedoch möglicherweise in einigen Bereichen hinter dem Portal von Operations Management Suite zurück.
+OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet. Log Analytics-Arbeitsbereiche und -Analyselösungen werden im Azure-Portal geöffnet. Das Azure-Portal stellt den neueren Zugangspunkt dar, entspricht aber unter Umständen in einigen Bereichen dem Portal von Operations Management Suite.
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Erstellen von Leistungsdiagnosedaten durch Simulieren einer Arbeitsauslastung für Ihre Mandanten 
 
@@ -70,12 +70,12 @@ Log Analytics ist ein separater Dienst, der konfiguriert werden muss. Log Analyt
 1. Öffnen Sie in der PowerShell ISE *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1*.
 1. Drücken Sie F5, um das Skript auszuführen.
 
-Jetzt können Sie Log Analytics im Azure-Portal oder im Portal der Operations Management Suite öffnen. Es dauert einige Minuten, bis Telemetriedaten im Log Analytics-Arbeitsbereich erfasst und angezeigt werden. Je länger Sie dem System Zeit zum Sammeln von Diagnosedaten lassen, desto interessanter wird das Ergebnis. 
+Sie können Log Analytics jetzt im Azure-Portal öffnen. Es dauert einige Minuten, bis Telemetriedaten im Log Analytics-Arbeitsbereich erfasst und angezeigt werden. Je länger Sie dem System Zeit zum Sammeln von Diagnosedaten lassen, desto interessanter wird das Ergebnis. 
 
 ## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Überwachen von Pools und Datenbanken mithilfe von Log Analytics und der SQL-Analyselösung
 
 
-Öffnen Sie in dieser Übung Log Analytics und das Operations Management Suite-Portal, um die Telemetriedaten zu untersuchen, die für die Datenbanken und Pools gesammelt werden.
+Öffnen Sie in dieser Übung Log Analytics im Azure-Portal, um die Telemetriedaten zu untersuchen, die für die Datenbanken und Pools gesammelt werden.
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Alle Dienste** aus, um Log Analytics zu öffnen. Suchen Sie dann nach „Log Analytics“.
 
@@ -127,9 +127,9 @@ Jetzt können Sie Log Analytics im Azure-Portal oder im Portal der Operations Ma
 
 1. Wechseln Sie zurück zum Log Analytics-Arbeitsbereich, und wählen Sie **OMS-Portal** aus, um den Arbeitsbereich dort zu öffnen.
 
-    ![Kachel des Operations Management Suite-Portals](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Log Analytics-Arbeitsbereich](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
-Im Operations Management Suite-Portal können Sie die Protokoll- und Metrikdaten im Arbeitsbereich weiter untersuchen. 
+Im Log Analytics-Arbeitsbereich können Sie die Protokoll- und Metrikdaten weiter untersuchen. 
 
 Überwachung und Warnung in Log Analytics beruhen – im Gegensatz zu den Warnungen, die im Azure-Portal für jede Ressource definiert werden – auf Abfragen der Daten im Arbeitsbereich. Da Warnungen auf Abfragen beruhen, können Sie statt einer Warnung pro Datenbank eine einzige Warnung definieren, die alle Datenbanken abdeckt. Abfragen sind nur durch die im Arbeitsbereich verfügbaren Daten beschränkt.
 

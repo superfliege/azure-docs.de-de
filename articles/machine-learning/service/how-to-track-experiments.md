@@ -9,30 +9,33 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: ced10a54d569531b06ee47b646130f43cedd2963
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 054cd54827dc11e57f249a270542ff81ff670912
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984601"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649991"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Nachverfolgen von Experimenten und Trainingsmetriken in Azure Machine Learning
 
 Mit dem Azure Machine Learning-Dienst können Sie Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern. In diesem Artikel erfahren Sie mehr über die verschiedenen Möglichkeiten, wie Sie die Protokollierung zu Ihrem Trainingsskript hinzufügen können, wie Sie das Experiment mit **start_logging** und **ScriptRunConfig** übermitteln, wie Sie den Fortschritt eines laufenden Auftrags überprüfen und wie Sie die Ergebnisse eines Durchlaufs anzeigen können. 
 
+>[!NOTE]
+> Der Code in diesem Artikel wurde mit Version 0.168 des Azure Machine Learning SDK getestet. 
+
 ## <a name="list-of-training-metrics"></a>Liste der Trainingsmetriken 
 
-Die folgenden Metriken können während des Trainings eines Experiments zu einem Durchlauf hinzugefügt werden. Ausführliche Informationen dazu, was Sie bei einer Ausführung nachverfolgen können, finden Sie in der [SDK-Referenzdokumentation](https://docs.microsoft.com/python/api/overview/azure/azure-ml-sdk-overview?view=azure-ml-py).
+Die folgenden Metriken können während des Trainings eines Experiments zu einem Durchlauf hinzugefügt werden. Ausführliche Informationen dazu, was Sie bei einer Ausführung nachverfolgen können, finden Sie in der [SDK-Referenzdokumentation](https://aka.ms/aml-sdk).
 
-|Typ| Python-Funktion | Notizen|
-|----|:----:|:----:|
-|Skalarwerte | `run.log(name, value, description='')`| Protokollieren Sie einen Metrikwert für die Ausführung mit dem angegebenen Namen. Wenn Sie eine Metrik für eine Ausführung protokollieren, wird diese Metrik in der Ausführungsaufzeichnung des Experiments gespeichert.  Sie können dieselbe Metrik innerhalb einer Ausführung mehrmals protokollieren, wobei das Ergebnis als Vektor dieser Metrik betrachtet wird.|
-|Listen| `run.log_list(name, value, description='')`|Protokollieren Sie einen metrischen Listenwert für die Ausführung mit dem angegebenen Namen.|
-|Zeile| `run.log_row(name, description=None, **kwargs)`|Mit *log_row* wird eine Tabellenmetrik mit Spalten erstellt, wie in kwargs beschrieben. Jeder benannte Parameter erzeugt eine Spalte mit dem angegebenen Wert.  *log_row* kann einmal aufgerufen werden, um ein beliebiges Tupel zu protokollieren, oder mehrmals in einer Schleife, um eine vollständige Tabelle zu erzeugen.|
-|Tabelle| `run.log_table(name, value, description='')`| Protokollieren Sie einen Tabellenmetrik für die Ausführung mit dem angegebenen Namen. |
-|Images| `run.log_image(name, path=None, plot=None)`|Protokollieren Sie eine Imagemetrik für die Ausführungsaufzeichnung. Verwenden Sie log_image, um eine Imagedatei oder einen Matplotlib-Plot für die Ausführung zu protokollieren.  Diese Images werden angezeigt und können mit der Ausführungsaufzeichnung verglichen werden.|
-|Ausführung kennzeichnen| `run.tag(key, value=None)`|Kennzeichnen Sie die Ausführung mit einem Zeichenfolgenschlüssel und einem optionalen Zeichenfolgenwert.|
-|Datei oder Verzeichnis hochladen|`run.upload_file(name, path_or_stream)`|Laden Sie eine Datei in die Ausführungsaufzeichnung hoch. Ausführungen erfassen die Datei im angegebenen Ausgabeverzeichnis. Die ist für die meisten Ausführungstypen standardmäßig „./outputs“.  Verwenden Sie upload_file nur, wenn zusätzliche Dateien hochgeladen werden müssen, oder kein Ausgabeverzeichnis angegeben ist. Wir empfehlen, `outputs` zum Namen hinzuzufügen, damit das Hochladen in das Ausgabeverzeichnis erfolgt. Sie können alle Dateien, die dieser Ausführungsaufzeichnung zugeordnet sind, mit `run.get_file_names()` auflisten.|
+|Typ| Python-Funktion | Beispiel | Notizen|
+|----|:----|:----|:----|
+|Skalarwerte | `run.log(name, value, description='')`| `run.log("accuracy", 0.95) ` |Protokollieren Sie einen Zahlen- oder Zeichenfolgenwert für die Ausführung unter dem jeweiligen Namen. Wenn Sie eine Metrik für eine Ausführung protokollieren, wird diese Metrik in der Ausführungsaufzeichnung des Experiments gespeichert.  Sie können dieselbe Metrik innerhalb einer Ausführung mehrmals protokollieren, wobei das Ergebnis als Vektor dieser Metrik betrachtet wird.|
+|Listen| `run.log_list(name, value, description='')`| `run.log_list("accuracies", [0.6, 0.7, 0.87])` | Protokollieren Sie eine Liste mit Werten für die Ausführung unter dem jeweiligen Namen.|
+|Zeile| `run.log_row(name, description=None, **kwargs)`| `run.log_row("Y over X", x=1, y=0.4)` | Mit *log_row* wird eine Metrik mit mehreren Spalten erstellt, wie in kwargs beschrieben. Jeder benannte Parameter erzeugt eine Spalte mit dem angegebenen Wert.  *log_row* kann einmal aufgerufen werden, um ein beliebiges Tupel zu protokollieren, oder mehrmals in einer Schleife, um eine vollständige Tabelle zu erzeugen.|
+|Table| `run.log_table(name, value, description='')`| `run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]})` | Protokollieren Sie ein Wörterbuchobjekt für die Ausführung unter dem jeweiligen Namen. |
+|Bilder| `run.log_image(name, path=None, plot=None)`| `run.log_image("ROC", plt)` | Protokollieren Sie ein Image für die Ausführungsaufzeichnung. Verwenden Sie log_image, um eine Imagedatei oder einen Matplotlib-Plot für die Ausführung zu protokollieren.  Diese Images werden angezeigt und können mit der Ausführungsaufzeichnung verglichen werden.|
+|Ausführung kennzeichnen| `run.tag(key, value=None)`| `run.tag("selected", "yes")` | Kennzeichnen Sie die Ausführung mit einem Zeichenfolgenschlüssel und einem optionalen Zeichenfolgenwert.|
+|Datei oder Verzeichnis hochladen|`run.upload_file(name, path_or_stream)`| run.upload_file("best_model.pkl", "./model.pkl") | Laden Sie eine Datei in die Ausführungsaufzeichnung hoch. Ausführungen erfassen die Datei im angegebenen Ausgabeverzeichnis. Die ist für die meisten Ausführungstypen standardmäßig „./outputs“.  Verwenden Sie upload_file nur, wenn zusätzliche Dateien hochgeladen werden müssen, oder kein Ausgabeverzeichnis angegeben ist. Wir empfehlen, `outputs` zum Namen hinzuzufügen, damit das Hochladen in das Ausgabeverzeichnis erfolgt. Sie können alle Dateien, die dieser Ausführungsaufzeichnung zugeordnet sind, mit `run.get_file_names()` auflisten.|
 
 > [!NOTE]
 > Metriken für Skalare, Listen, Zeilen und Tabellen können den Typ „float“, „integer“ oder „string“ haben.
@@ -141,14 +144,14 @@ Dieses Beispiel erweitert das grundlegende sklearn Ridge-Modell von oben. Es fü
 
   X, y = load_diabetes(return_X_y = True)
 
-  run = Run.get_submitted_run()
+  run = Run.get_context()
 
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
   data = {"train": {"X": X_train, "y": y_train},
           "test": {"X": X_test, "y": y_test}}
 
   # list of numbers from 0.0 to 1.0 with a 0.05 interval
-  alphas = np.arange(0.0, 1.0, 0.05)
+  alphas = mylib.get_alphas()
 
   for alpha in alphas:
       # Use Ridge algorithm to create a regression model
@@ -232,6 +235,7 @@ Modelltraining und -überwachung erfolgen im Hintergrund, sodass Sie währenddes
 
 Mit ```run.get_metrics()``` können Sie die Metriken eines trainierten Modells anzeigen. Sie können nun alle Metriken abrufen, die im obigen Beispiel protokolliert wurden, um das beste Modell zu ermitteln.
 
+<a name='view-the-experiment-in-the-web-portal'/>
 ## <a name="view-the-experiment-in-the-azure-portal"></a>Anzeigen des Experiments im Azure-Portal
 
 Wenn ein Experiment abgeschlossen ist, können Sie zu der aufgezeichneten Ausführungsaufzeichnung des Experiments navigieren. Hierzu stehen zwei Möglichkeiten zur Verfügung:
@@ -247,8 +251,8 @@ Sie können auch alle Ausgaben oder Protokolle für die Ausführung anzeigen ode
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
 Die folgenden Notebooks verdeutlichen die Konzepte in diesem Artikel:
-* `01.getting-started/01.train-within-notebook/01.train-within-notebook.ipynb`
-* `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
+* [01.getting-started/01.train-within-notebook/01.train-within-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
+* [01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
 
 Rufen Sie die Notebooks ab: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

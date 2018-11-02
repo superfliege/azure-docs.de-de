@@ -12,64 +12,67 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 09/20/2018
 ms.author: cynthn
-ms.openlocfilehash: 428003747b7c746a2849a042e54647e86361c562
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 905f00842c5ce74f681a6c5c09ff8bf6c7a9e162
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716559"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091248"
 ---
-# <a name="create-a-vm-from-a-vhd-using-the-azure-portal"></a>Erstellen einer VM aus einer VHD mithilfe des Azure-Portals
+# <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Erstellen eines virtuellen Computers anhand einer VHD mithilfe des Azure-Portals
 
+Es gibt mehrere Möglichkeiten zum Erstellen eines virtuellen Computers (Virtual Machine, VM) in Azure: 
 
-Es gibt mehrere Methoden zum Erstellen von VMs in Azure. Wenn Sie bereits über eine verwendbare VHD verfügen oder eine vorhandene VHD für die Verwendung kopieren möchten, können Sie eine neue VM erstellen, indem Sie die VHD als Betriebssystemdatenträger anfügen. In diesem Prozess wird die VHD einer neuen VM als Betriebssystemdatenträger *angefügt*.
+- Wenn Sie bereits über eine verwendbare virtuelle Festplatte (Virtual Hard Disk, VHD) verfügen oder die VHD von einem vorhandenen virtuellen Computer für die Verwendung kopieren möchten, können Sie einen neuen VM erstellen, indem Sie die VHD als Betriebssystemdatenträger an den neuen VM *anfügen*. 
 
-Sie können eine neue VM auch aus der VHD einer VM erstellen, die gelöscht wurde. Wenn Sie beispielsweise über eine Azure VM verfügen, die nicht ordnungsgemäß funktioniert, können Sie die VM löschen und die VHD verwenden, um eine neue VM zu erstellen. Sie können entweder die gleiche VHD verwenden oder eine Kopie von ihr erstellen, indem Sie eine Momentaufnahme und dann aus dieser einen neuen verwalteten Datenträger erstellen. Dies erfordert zwei weitere Schritte, ermöglicht Ihnen jedoch, die ursprüngliche VHD zu behalten, und gibt Ihnen außerdem eine Momentaufnahme an die Hand, auf die bei Bedarf zurückgegriffen werden kann.
+- Sie können einen neuen virtuellen Computer anhand der VHD eines virtuellen Computers erstellen, der gelöscht wurde. Wenn Sie beispielsweise über einen virtuellen Azure-Computer verfügen, der nicht ordnungsgemäß funktioniert, können Sie den VM löschen und dessen VHD verwenden, um einen neuen VM zu erstellen. Sie können entweder die gleiche VHD wiederverwenden oder eine Kopie der VHD erstellen, indem Sie eine Momentaufnahme und dann anhand dieser einen neuen verwalteten Datenträger erstellen. Beim Erstellen einer Momentaufnahme müssen zwar einige weitere Schritte ausgeführt werden, aber dafür bleibt die ursprüngliche VHD erhalten, und Sie können auf ein Fallback zurückgreifen.
+ 
+- Sie können einen virtuellen Azure-Computer anhand einer lokalen VHD erstellen, indem Sie die lokale VHD hochladen und an einen neuen virtuellen Computer anfügen. Verwenden Sie PowerShell oder ein anderes Tool, um die VHD in ein Speicherkonto hochzuladen, und erstellen Sie dann einen verwalteten Datenträger anhand der VHD. Weitere Informationen finden Sie unter [Hochladen einer speziellen VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
 
-Sie verfügen über eine lokale VM, die Sie verwenden möchten, um eine VM in Azure zu erstellen. Sie können die VHD hochladen und sie an die neue VM anfügen. Um eine VHD hochzuladen, müssen Sie PowerShell oder ein anderes Tool verwenden, um sie in ein Speicherkonto hochzuladen, und dann aus der VHD einen verwalteten Datenträger erstellen. Weitere Informationen finden Sie unter [Hochladen einer speziellen VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd)
-
-Wenn Sie eine VM oder VHD verwenden möchten, um mehrere VMs zu erstellen, sollten Sie dieses Verfahren nicht verwenden. Für größere Bereitstellungen sollten Sie [ein Image erstellen](capture-image-resource.md) und anschließend [das Image zum Erstellen mehrerer VMs verwenden](create-vm-generalized-managed.md).
+Verwenden Sie keinen speziellen Datenträger, wenn Sie mehrere VMs erstellen möchten. Für größere Bereitstellungen sollten Sie stattdessen [ein Image erstellen](capture-image-resource.md) und dann [dieses Image zum Erstellen mehrerer VMs verwenden](create-vm-generalized-managed.md).
 
 
 ## <a name="copy-a-disk"></a>Kopieren eines Datenträgers
 
-Erstellen Sie eine Momentaufnahme, und erstellen Sie dann einen Datenträger aus der Momentaufnahme. Dadurch können Sie die ursprüngliche VHD zum Rückgriff behalten.
+Erstellen Sie eine Momentaufnahme, und erstellen Sie dann einen Datenträger aus der Momentaufnahme. Bei dieser Strategie können Sie die ursprüngliche VHD als Fallback behalten:
 
-1. Klicken Sie im linken Menü auf **Alle Ressourcen**.
-2. Deaktivieren Sie im Dropdownfeld **Alle Typen** die Option **Alle auswählen**, scrollen Sie dann nach unten, und aktivieren Sie **Datenträger**, um die verfügbaren Datenträger zu finden.
-3. Klicken Sie auf den Datenträger, den Sie verwenden möchten. Die Seite **Übersicht** für den Datenträger wird geöffnet.
-4. Klicken Sie auf der Übersichtsseite im Menü am oberen Rand auf **+ Momentaufnahme erstellen**. 
-5. Geben Sie einen Namen für die Momentaufnahme ein.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü die Option **Alle Dienste** aus.
+2. Geben Sie im Suchfeld **Alle Dienste** den Begriff **Datenträger** ein, und wählen Sie dann **Datenträger** aus, um die Liste der verfügbaren Datenträger anzuzeigen.
+3. Wählen Sie den Datenträger aus, den Sie verwenden möchten. Die Seite **Datenträger** für diesen Datenträger wird angezeigt.
+4. Wählen Sie im oberen Menü die Option **Momentaufnahme erstellen** aus. 
+5. Geben Sie einen **Namen** für die Momentaufnahme ein.
 6. Wählen Sie eine **Ressourcengruppe** für die Momentaufnahme aus. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen.
-7. Wählen Sie, ob Sie Standardspeicher (HDD) oder Premium-Speicher (SDD) verwenden möchten.
-8. Wenn Sie fertig sind, klicken Sie auf **Erstellen**, um die Momentaufnahme zu erstellen.
-9. Sobald die Momentaufnahme erstellt wurde, klicken Sie im linken Menü auf **+ Ressource erstellen**.
-10. Geben Sie in der Suchleiste **verwalteter Datenträger** ein, und wählen Sie in der Liste **Verwaltete Datenträger** aus.
-11. Klicken Sie auf der Seite **Verwaltete Datenträger** auf **Erstellen**.
-12. Geben Sie einen Namen für den Datenträger ein.
-13. Wählen Sie eine **Ressourcengruppe** für den Datenträger aus. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. In dieser Ressourcengruppe werden Sie auch die VM aus dem Datenträger erstellen.
-14. Wählen Sie, ob Sie Standardspeicher (HDD) oder Premium-Speicher (SDD) verwenden möchten.
+7. Wählen Sie für **Kontotyp** entweder **Standard (HDD)** oder **Premium (SSD)** aus.
+8. Wählen Sie abschließend **Erstellen** aus, um die Momentaufnahme zu erstellen.
+9. Nachdem die Momentaufnahme erstellt wurde, wählen Sie im linken Menü die Option **Ressource erstellen** aus.
+10. Geben Sie im Suchfeld den Begriff **verwalteter Datenträger** ein, und wählen Sie dann in der Liste den Eintrag **Verwaltete Datenträger** aus.
+11. Wählen Sie auf der Seite **Verwaltete Datenträger** die Option **Erstellen** aus.
+12. Geben Sie einen **Namen** für den Datenträger ein.
+13. Wählen Sie eine **Ressourcengruppe** für den Datenträger aus. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Diese Auswahl wird auch als Ressourcengruppe verwendet, in der Sie den virtuellen Computer anhand des Datenträgers erstellen.
+14. Wählen Sie für **Kontotyp** entweder **Standard (HDD)** oder **Premium (SSD)** aus.
 15. Achten Sie unter **Quelltyp** darauf, dass **Momentaufnahme** ausgewählt ist.
 16. Wählen Sie im Dropdownfeld **Quellmomentaufnahme** die zu verwendende Momentaufnahme aus.
-17. Nehmen Sie alle weiteren Anpassungen nach Bedarf vor, und klicken Sie dann auf **Erstellen**, um den Datenträger zu erstellen.
+17. Nehmen Sie alle weiteren Anpassungen nach Bedarf vor, und wählen Sie dann **Erstellen** aus, um den Datenträger zu erstellen.
 
 ## <a name="create-a-vm-from-a-disk"></a>Erstellen einer VM aus einem Datenträger
 
-Sobald Sie über die verwaltete Datenträger-VHD verfügen, die Sie verwenden möchten, können Sie die VM im Portal erstellen.
+Wenn Sie über die verwaltete Datenträger-VHD verfügen, die Sie verwenden möchten, können Sie den virtuellen Computer im Portal erstellen:
 
-1. Klicken Sie im linken Menü auf **Alle Ressourcen**.
-2. Deaktivieren Sie im Dropdownfeld **Alle Typen** die Option **Alle auswählen**, scrollen Sie dann nach unten, und aktivieren Sie **Datenträger**, um die verfügbaren Datenträger zu finden.
-3. Klicken Sie auf den Datenträger, den Sie verwenden möchten. Die Seite **Übersicht** für den Datenträger wird geöffnet.
-Vergewissern Sie sich auf der Übersichtsseite, dass **DATENTRÄGERZUSTAND** als **Nicht angefügt** aufgelistet wird. Wenn dies nicht der Fall ist, müssen Sie möglicherweise entweder den Datenträger von der VM trennen oder die VM löschen, um den Datenträger freizugeben.
-4. Klicken Sie im Menü oben im Bereich auf **+ VM erstellen**.
-5. Geben Sie auf der Seite **Grundlagen** für die neue VM einen Namen ein, und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue.
-6. Wählen Sie auf der Seite **Größe** eine VM-Größe aus, und klicken Sie dann auf **Auswählen**.
-7. Auf der Seite **Einstellungen** können Sie entweder alle neuen Ressourcen vom Portal erstellen lassen oder ein vorhandenes **Virtuelles Netzwerk** und eine **Netzwerksicherheitsgruppe** auswählen. Das Portal erstellt immer eine neue NIC und eine öffentliche IP-Adresse für die neue VM. 
-8. Nehmen Sie ggf. Änderungen an den Überwachungsoptionen vor, und fügen Sie nach Bedarf Erweiterungen hinzu.
-9. Klicken Sie anschließend auf **OK**. 
-10. Wenn die Überprüfung der VM-Konfiguration erfolgreich war, klicken Sie auf **OK**, um die Bereitstellung zu starten.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü die Option **Alle Dienste** aus.
+2. Geben Sie im Suchfeld **Alle Dienste** den Begriff **Datenträger** ein, und wählen Sie dann **Datenträger** aus, um die Liste der verfügbaren Datenträger anzuzeigen.
+3. Wählen Sie den Datenträger aus, den Sie verwenden möchten. Die Seite **Datenträger** für diesen Datenträger wird geöffnet.
+4. Vergewissern Sie sich auf der Seite **Übersicht**, dass **DATENTRÄGERZUSTAND** als **Nicht angefügt** aufgelistet wird. Wenn dies nicht der Fall ist, müssen Sie möglicherweise entweder den Datenträger von der VM trennen oder die VM löschen, um den Datenträger freizugeben.
+4. Wählen Sie im Menü oben auf der Seite die Option **VM erstellen** aus.
+5. Geben Sie auf der Seite **Grundlagen** für den neuen VM einen **Namen des virtuellen Computers** ein, und wählen Sie entweder eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue.
+6. Wählen Sie für **Größe** die Option **Größe ändern** aus, um auf die Seite **Größe** zuzugreifen.
+7. Wählen Sie eine Zeile der VM-Größe aus, und wählen Sie dann **Auswählen** aus.
+8. Auf der Seite **Netzwerk** können Sie entweder alle neuen Ressourcen vom Portal erstellen lassen oder ein vorhandenes **Virtuelles Netzwerk** und eine **Netzwerksicherheitsgruppe** auswählen. Das Portal erstellt immer eine neue Netzwerkschnittstelle und eine öffentliche IP-Adresse für den neuen virtuellen Computer. 
+9. Nehmen Sie auf der Seite **Verwaltung** die gewünschten Änderungen an den Überwachungsoptionen vor.
+10. Fügen Sie auf der Seite **Gastkonfiguration** nach Bedarf Erweiterungen hinzu.
+11. Wählen Sie abschließend **Überprüfen + erstellen** aus. 
+12. Wählen Sie bei erfolgreicher Überprüfung der VM-Konfiguration die Option **Erstellen** aus, um die Bereitstellung zu starten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

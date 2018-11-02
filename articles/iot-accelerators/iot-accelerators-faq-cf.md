@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 737a76ba313dddaa58c302f1df501f16a5c4e9e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966555"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353740"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Häufig gestellte Fragen zum Solution Accelerator für Connected Factory
 
@@ -140,33 +140,21 @@ Wenn Sie feststellen, dass keine Daten an IoT Hub gesendet werden, liegt ein Pro
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Wie aktiviere ich in meiner Connected Factory-Lösung eine interaktive Karte?
 
-Um in Ihrer Connected Factory-Lösung eine interaktive Karte aktivieren zu können, müssen Sie über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen.
+Um in Ihrer Connected Factory-Lösung eine interaktive Karte aktivieren zu können, müssen Sie über ein Azure Maps-Konto verfügen.
 
-Bei der Bereitstellung über [www.azureiotsolutions.com](http://www.azureiotsolutions.com) wird während der Bereitstellung überprüft, ob Ihr Abonnement über einen aktivierten Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügt, und eine interaktive Karte wird automatisch in Connected Factory bereitgestellt. Ist dies nicht der Fall, können Sie folgendermaßen trotzdem eine interaktive Karte in Ihrer Bereitstellung aktivieren:
+Bei einer Bereitstellung aus [www.azureiotsolutions.com](http://www.azureiotsolutions.com) fügt der Bereitstellungsprozess der Ressourcengruppe, die die Solution Accelerator-Dienste enthält, ein Azure Maps-Konto hinzu.
 
-Wenn Sie die Bereitstellung mit dem Skript `build.ps1` im GitHub-Repository für Connected Factory durchführen und über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen, legen Sie die Umgebungsvariable `$env:MapApiQueryKey` im Buildfenster auf den Abfrageschlüssel Ihres Plans fest. Die interaktive Karte wird dann automatisch aktiviert.
+Wenn Sie eine Bereitstellung mithilfe des `build.ps1`-Skripts im Connected Factory GitHub-Repository durchführen, legen Sie die Umgebungsvariable `$env:MapApiQueryKey` im Buildfenster auf den [Schlüssel Ihres Azure Maps-Kontos](../azure-maps/how-to-manage-account-keys.md) fest. Die interaktive Karte wird dann automatisch aktiviert.
 
-Wenn Sie nicht über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen, stellen Sie die Connected Factory-Lösung über [www.azureiotsolutions.com](http://www.azureiotsolutions.com) oder mit dem Skript `build.ps1` bereit. Fügen Sie dann den Plan für die Bing Karten-API für Unternehmen Ihrem Abonnement wie unter [Wie erstelle ich ein Konto für die Bing Karten-API für Unternehmen?](#how-do-i-create-a-bing-maps-api-for-enterprise-account) beschrieben hinzu. Suchen Sie den Abfrageschlüssel für dieses Konto wie unter [Wie erhalte ich meinen Abfrageschlüssel für die Bing Karten-API für Unternehmen?](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) beschrieben hinzu, und speichern Sie diesen Schlüssel. Navigieren Sie zum Azure-Portal, und greifen Sie auf die App Service-Ressource in Ihrer Connected Factory-Bereitstellung zu. Navigieren Sie zu **Anwendungseinstellungen**. Hier finden Sie den Abschnitt **App-Einstellungen**. Legen Sie **MapApiQueryKey** auf den Abfrageschlüssel fest, den Sie abgerufen haben. Speichern Sie die Einstellungen, navigieren Sie zu **Übersicht**, und starten Sie App Service neu.
+Alternativ können Sie Ihrem Solution Accelerator nach der Bereitstellung einen Azure Maps-Kontoschlüssel hinzufügen. Navigieren Sie zum Azure-Portal, und greifen Sie auf die App Service-Ressource in Ihrer Connected Factory-Bereitstellung zu. Navigieren Sie zu **Anwendungseinstellungen**. Hier finden Sie den Abschnitt **Anwendungseinstellungen**. Legen Sie **MapApiQueryKey** auf den [Schlüssel Ihres Azure Maps-Kontos](../azure-maps/how-to-manage-account-keys.md) fest. Speichern Sie die Einstellungen, navigieren Sie zu **Übersicht**, und starten Sie App Service neu.
 
-### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Wie erstelle ich ein Konto für die Bing Karten-API für Unternehmen?
+### <a name="how-do-i-create-a-azure-maps-account"></a>Gewusst wie: Erstellen eines Azure Maps-Kontos
 
-Sie können kostenlos einen *Tarif vom Typ „Bing Karten für Unternehmen“ für die erste interne Transaktionsebene* erhalten. Einem Azure-Abonnement können allerdings maximal zwei dieser Tarife hinzugefügt werden. Falls Sie über kein Konto vom Typ „Bing Karten-API für Unternehmen“ verfügen, erstellen Sie eines, indem Sie im Azure-Portal auf **+ Ressource erstellen** klicken. Suchen Sie dann nach **Bing Karten-API für Unternehmen**, und befolgen Sie die Erstellungsanweisungen.
+Informationen dazu finden Sie unter [Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel](../azure-maps/how-to-manage-account-keys.md).
 
-![Bing-Schlüssel](./media/iot-accelerators-faq-cf/bing.png)
+### <a name="how-to-obtain-your-azure-maps-account-key"></a>So erhalten Sie Ihren Azure Maps-Kontoschlüssel
 
-### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Wie erhalte ich meinen Abfrageschlüssel für die Bing Karten-API für Unternehmen?
-
-Fügen Sie im Azure-Portal nach dem Erstellen Ihres Tarifs vom Typ „Bing Karten-API für Unternehmen“ der Ressourcengruppe Ihrer Connected Factory-Lösung eine Ressource vom Typ „Bing Karten für Unternehmen“ hinzu.
-
-1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe mit dem Tarif vom Typ „Bing Karten-API für Unternehmen“.
-
-1. Klicken Sie auf **Alle Einstellungen** und dann auf **Schlüsselverwaltung**.
-
-1. Dort befinden sich zwei Schlüssel: **MasterKey** und **QueryKey**. Kopieren Sie den Wert von **QueryKey**.
-
-1. Legen Sie die Umgebungsvariable `$env:MapApiQueryKey` in Ihrer PowerShell-Umgebung auf den Abfrageschlüssel (**QueryKey**) Ihres Tarifs fest, um den Schlüssel für das Skript `build.ps1` verfügbar zu machen. Das Buildskript fügt den Wert dann automatisch den App Service-Einstellungen hinzu.
-
-1. Führen Sie unter Verwendung des Skripts `build.ps1` eine lokale oder cloudbasierte Bereitstellung aus.
+Informationen dazu finden Sie unter [Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel](../azure-maps/how-to-manage-account-keys.md).
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Wie aktiviere ich die interaktive Karte während des lokalen Debuggens?
 

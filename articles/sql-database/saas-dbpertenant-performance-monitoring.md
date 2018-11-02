@@ -1,5 +1,5 @@
 ---
-title: Überwachen der Leistung vieler Azure SQL-Datenbanken in einer mehrinstanzenfähigen SaaS-App | Microsoft-Dokumentation
+title: 'SaaS-App: Überwachen der Leistung vieler Azure SQL-Datenbanken | Microsoft-Dokumentation'
 description: Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: b0e1cf976552754070b939a1463d033d66a0119c
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 86fdd7b0bd8ac76ddb2ac30ff324b80101c177e8
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830038"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353899"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 

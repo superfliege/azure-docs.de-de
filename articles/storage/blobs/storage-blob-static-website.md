@@ -1,51 +1,77 @@
 ---
-title: Hosten von statischen Websites in Azure Storage (Vorschauversion) | Microsoft-Dokumentation
-description: Azure Storage ermöglicht jetzt das Hosten von statischen Websites (Vorschauversion), und es wird eine kostengünstige, skalierbare Lösung zum Hosten von modernen Webanwendungen bereitgestellt.
+title: Hosten von statischen Websites in Azure Storage
+description: Das Hosten von statischen Websites in Azure Storage bietet eine kostengünstige, skalierbare Lösung zum Hosten von modernen Webanwendungen.
 services: storage
-author: MichaelHauss
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/17/18
-ms.author: mihauss
+ms.date: 10/19/18
+ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 65a1cd85baf18ac1f0d193e7e6d6c3139919fb59
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: ddc85cb7c9bd4488295b22e687d199a73d23922c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617396"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955625"
 ---
-# <a name="static-website-hosting-in-azure-storage-preview"></a>Hosten von statischen Websites in Azure Storage (Vorschauversion)
-Azure Storage ermöglicht jetzt das Hosten von statischen Websites (Vorschauversion), und Sie können moderne Webanwendungen kostengünstig und skalierbar in Azure bereitstellen. Auf einer statischen Website enthalten Webseiten statischen Inhalt und JavaScript oder anderen clientseitigen Code. Im Gegensatz dazu sind dynamische Websites von serverseitigem Code abhängig und können mit [Azure-Web-Apps](/azure/app-service/app-service-web-overview) gehostet werden.
+# <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
+Mit Azure Storage GPv2-Konten können Sie statische Inhalte (HTML-, CSS-, JavaScript- und Bilddateien) direkt über einen Speichercontainer mit dem Namen *$web* bereitstellen. Durch das Hosten in Azure Storage können Sie serverlose Architekturen, wie [Azure Functions](/azure/azure-functions/functions-overview) und andere PaaS-Dienste, verwenden.
 
-Da für Bereitstellungen immer häufiger elastische, kostengünstige Modelle verwendet werden, ist es wichtig, dass Webinhalte ohne Durchführung einer Serververwaltung bereitgestellt werden können. Die Einführung des Hostens von statischen Websites in Azure Storage macht dies möglich, indem über umfassende Back-End-Funktionen mit serverlosen Architekturen [Azure Functions](/azure/azure-functions/functions-overview) und andere PaaS-Dienste genutzt werden können.
+Im Unterschied zum Hosten statischer Websites werden dynamische Websites, die von serverseitigem Code abhängig sind, am besten mit [Azure-Web-Apps](/azure/app-service/app-service-web-overview) gehostet.
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
-Wenn Sie die Nutzung von statischen Websites unter Ihrem Speicherkonto aktivieren, wird ein neuer Webdienst-Endpunkt der Art `<account-name>.<zone-name>.web.core.windows.net` erstellt.
+Wenn Sie das Hosten statischer Websites in Ihrem Speicherkonto aktivieren, wählen Sie den Namen der Standarddatei aus und geben optional einen Pfad zu einer benutzerdefinierten 404-Seite an. Wenn das Feature aktiviert wird, wird ein Container namens *$web* erstellt, wenn er noch nicht vorhanden ist. 
 
-Der Webdienst-Endpunkt ermöglicht jederzeit den anonymen Lesezugriff, gibt als Antwort auf Dienstfehler formatierte HTML-Seiten zurück und lässt nur Objektlesevorgänge zu. Der Webdienst-Endpunkt gibt das Indexdokument im angeforderten Verzeichnis für das Stammverzeichnis und alle Unterverzeichnisse zurück. Wenn der Speicherdienst den Fehler 404 zurückgibt, gibt der Webendpunkt ein benutzerdefiniertes Fehlerdokument zurück, falls Sie dies konfiguriert haben.
+Für Dateien im Container *$web* gilt:
 
-Der Inhalt für Ihre statische Website wird in einem speziellen Container mit dem Namen „$web“ gehostet. Im Rahmen des Aktivierungsprozesses wird „$web“ für Sie erstellt, falls er nicht bereits vorhanden ist. Auf Inhalte in „$web“ kann über das Stammverzeichnis des Kontos zugegriffen werden, indem der Webendpunkt verwendet wird. `https://contoso.z4.web.core.windows.net/` gibt beispielsweise das Indexdokument zurück, das Sie für Ihre Website konfiguriert haben, wenn ein Dokument dieses Namens im Stammverzeichnis von „$web“ enthalten ist.
+- Sie werden über anonyme Zugriffsanforderungen bereitgestellt.
+- Sie sind nur über Objektlesevorgänge verfügbar.
+- Erfordert eine Beachtung der Groß-/Kleinschreibung.
+- Sie sind mit folgendem Muster im öffentlichen Web verfügbar: 
+    - `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
+- Sie sind mit folgendem Muster über einen Blob Storage-Endpunkt verfügbar: 
+    - `https://<ACCOUNT_NAME>.blob.core.windows.net/$web/<FILE_NAME>`
 
-Verwenden Sie den Blob Storage-Endpunkt, wenn Sie Inhalte auf Ihre Website hochladen. Verwenden Sie die folgende URL, um ein Blob mit dem Namen „image.jpg“ hochzuladen, auf das im Stammverzeichnis des Kontos zugegriffen werden kann: `https://contoso.blob.core.windows.net/$web/image.jpg`. Sie können das hochgeladene Bild in einem Webbrowser auf dem entsprechenden Webendpunkt anzeigen: `https://contoso.z4.web.core.windows.net/image.jpg`.
+Sie verwenden den Blob Storage-Endpunkt zum Hochladen von Dateien. Die Datei, die z.B. in diesen Speicherort hochgeladen wurde:
+
+```bash
+https://contoso.blob.core.windows.net/$web/image.png
+```
+
+steht im Browser an folgendem Speicherort zur Verfügung:
+
+```bash
+https://contoso.z4.web.core.windows.net/image.png
+```
+
+Der ausgewählte Standarddateiname wird im Stamm und in sämtlichen Unterverzeichnissen verwendet, wenn kein Dateiname angegeben wird. Wenn der Server 404 zurückgibt und Sie keinen Pfad zum Fehlerdokument angeben, wird eine 404-Standardseite an den Benutzer zurückgegeben.
+
+## <a name="cdn-and-ssl-support"></a>CDN- und SSL-Unterstützung
+
+Informationen dazu, wie Sie Ihre statischen Websitedateien über HTTPS verfügbar machen, finden Sie unter [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md). Im Rahmen dieses Prozesses müssen Sie *das CDN auf den Webendpunkt verweisen*, nicht auf den Blobendpunkt. Möglicherweise müssen Sie einige Minuten warten, bevor Ihre Inhalte angezeigt werden, da die CDN-Konfiguration nicht sofort ausgeführt wird.
 
 
 ## <a name="custom-domain-names"></a>Benutzerdefinierte Domänennamen
-Sie können eine benutzerdefinierte Domäne verwenden, um Ihre Webinhalte zu hosten. Befolgen Sie hierzu die Anleitung unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md). Informationen zum Zugreifen auf Ihre Website, die unter einem benutzerdefinierten Domänennamen gehostet wird, per HTTPS finden Sie unter [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md). Verweisen Sie Ihr CDN auf den Webendpunkt (nicht auf den Blobendpunkt), und denken Sie daran, dass die CDN-Konfiguration nicht sofort erfolgt, sodass Sie möglicherweise einige Minuten warten müssen, bis Ihr Inhalt sichtbar wird.
 
-## <a name="pricing-and-billing"></a>Preise und Abrechnung
+Sie können [einen benutzerdefinierten Domänennamen für Ihr Azure Storage-Konto konfigurieren](storage-custom-domain-name.md), um Ihre statische Website über eine benutzerdefinierte Domäne verfügbar zu machen. Einen detaillierten Einblick in das Hosten Ihrer Domäne in Azure finden Sie unter [Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
+
+## <a name="pricing"></a>Preise
 Für das Hosten von statischen Websites werden keine zusätzlichen Kosten berechnet. Weitere Informationen zu Preisen für Azure Blob Storage finden Sie auf der Seite [Preise für Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="quickstart"></a>Schnellstart
+
 ### <a name="azure-portal"></a>Azure-Portal
-Wenn noch nicht geschehen, erstellen Sie ein [GPv2-Speicherkonto](../common/storage-quickstart-create-account.md). Um das Hosting Ihrer Webanwendung zu starten, können Sie die Funktion über das Azure Portal konfigurieren und in der linken Navigationsleiste unter „Einstellungen“ auf „Statische Website (Vorschau)“ klicken. Klicken Sie auf „Aktiviert“, und geben Sie den Namen des Indexdokuments und (optional) den Pfad zum benutzerdefinierten Fehlerdokument ein.
+Öffnen Sie zuerst das Azure-Portal unter https://portal.azure.com, und führen Sie in Ihrem GPv2-Speicherkonto die folgenden Schritte aus:
+
+1. Klicken Sie auf **Einstellungen**.
+2. Klicken Sie auf **Statische Website**.
+3. Geben Sie einen *Namen für das Indexdokument* ein. (Ein gängiger Wert ist *index.html*.)
+4. Geben Sie optional für eine benutzerdefinierte 404-Seite einen *Pfad zum Fehlerdokument* ein. (Ein gängiger Wert ist *404.html*.)
 
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
 
-Laden Sie Ihre Webressourcen in den Container „$web“ hoch, der im Rahmen der Aktivierung von statischen Websites erstellt wurde. Sie können dies direkt im Azure-Portal durchführen oder den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) nutzen, um vollständige Verzeichnisstrukturen hochzuladen. Achten Sie darauf, ein Indexdokument mit dem konfigurierten Namen einzubinden. In diesem Beispiel hat das Dokument den Namen „index.html“.
-
-> [!NOTE]
-> Für den Dokumentnamen wird die Groß-/Kleinschreibung beachtet, deshalb muss er mit dem Namen der Datei im Speicher genau übereinstimmen.
+Laden Sie als Nächstes über das Azure-Portal oder mit dem [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) Ihre Ressourcen in den Container *$web* hoch, um vollständige Verzeichnisse hochzuladen. Stellen Sie sicher, dass Sie eine Datei aufnehmen, die dem *Namen für das Indexdokument* entspricht, den Sie beim Aktivieren des Features ausgewählt haben.
 
 Navigieren Sie abschließend zu Ihrem Webendpunkt, um Ihre Website zu testen.
 
@@ -55,36 +81,86 @@ Installieren Sie die Storage-Erweiterung (Vorschauversion):
 ```azurecli-interactive
 az extension add --name storage-preview
 ```
-Aktivieren Sie das Feature:
+Wenn Sie mehrere Abonnements verwenden, legen Sie die CLI auf das Abonnement des GPv2-Speicherkontos fest, das Sie aktivieren möchten:
 
 ```azurecli-interactive
-az storage blob service-properties update --account-name <account-name> --static-website --404-document <error-doc-name> --index-document <index-doc-name>
+az account set --subscription <SUBSCRIPTION_ID>
+```
+Aktivieren Sie das Feature. Stellen Sie sicher, dass Sie alle Platzhalterwerte durch Ihre eigenen Werte ersetzen, einschließlich der Klammern:
+
+```azurecli-interactive
+az storage blob service-properties update --account-name <ACCOUNT_NAME> --static-website --404-document <ERROR_DOCUMENT_NAME> --index-document <INDEX_DOCUMENT_NAME>
 ```
 Fragen Sie die Webendpunkt-URL ab:
 
 ```azurecli-interactive
-az storage account show -n <account-name> -g <resource-group> --query "primaryEndpoints.web" --output tsv
+az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEndpoints.web" --output tsv
 ```
 
-Laden Sie Objekte in den $web-Container hoch:
+Laden Sie Objekte aus einem Quellverzeichnis in den Container *$web* hoch:
 
 ```azurecli-interactive
-az storage blob upload-batch -s deploy -d $web --account-name <account-name>
+az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NAME>
 ```
 
+## <a name="deployment"></a>Bereitstellung
+
+Beispielsweise die folgenden Methoden können für die Bereitstellung von Inhalten in einem Speichercontainer verwendet werden:
+
+- [AzCopy](../common/storage-use-azcopy.md)
+- [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [Visual Studio Team System](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
+- [Visual Studio Code-Erweiterung](https://code.visualstudio.com/tutorials/static-website/getting-started)
+
+Stellen Sie in allen Fällen sicher, dass Sie Dateien in den Container *$web* kopieren.
+
+## <a name="metrics"></a>Metriken
+
+Um Metriken auf den Seiten Ihrer statischen Website zu aktivieren, klicken Sie auf **Einstellungen** > **Überwachung** > **Metriken**.
+
+Metrikdaten werden durch Einbinden verschiedener Metrik-APIs generiert. Das Portal zeigt nur die API-Elemente an, die innerhalb eines bestimmten Zeitrahmens verwendet werden. Dies ermöglicht eine Konzentration auf die Elemente, die Daten zurückgeben. Um sicherzustellen, dass Sie die erforderlichen API-Elemente auswählen können, müssen Sie zuerst den Zeitrahmen erweitern.
+
+Klicken Sie auf die Schaltfläche für den Zeitrahmen, und wählen Sie **Letzte 24 Stunden** aus. Klicken Sie dann auf **Übernehmen**. 
+
+![Metriken von statischen Websites in Azure Storage: Zeitbereich](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
+
+Wählen Sie als Nächstes **Blob** aus der Dropdownliste *Namespace* aus.
+
+![Metriken von statischen Websites in Azure Storage: Namespace](./media/storage-blob-static-website/storage-blob-static-website-metrics-namespace.png)
+
+Wählen Sie dann die Metrik **Ausgehend** aus.
+
+![Metriken von statischen Websites in Azure Storage: Metrik](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+
+Wählen Sie **Summe** aus dem Selektor *Aggregation* aus.
+
+![Metriken von statischen Websites in Azure Storage: Aggregation](./media/storage-blob-static-website/storage-blob-static-website-metrics-aggregation.png)
+
+Klicken Sie anschließend auf die Schaltfläche **Filter hinzufügen**, und wählen Sie **API-Name** aus dem Selektor *Eigenschaft* aus.
+
+![Metriken von statischen Websites in Azure Storage: API-Name](./media/storage-blob-static-website/storage-blob-static-website-metrics-api-name.png)
+
+Aktivieren Sie schließlich das Kontrollkästchen neben **GetWebContent** im Selektor *Werte*, um den Metrikbericht zu füllen.
+
+![Metriken von statischen Websites in Azure Storage: GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
+
+Nach der Aktivierung werden Datenverkehrsstatistiken zu Dateien im Container *$web* im Dashboard für Metriken gemeldet.
+
 ## <a name="faq"></a>Häufig gestellte Fragen
-**Sind statische Websites für alle Arten von Speicherkonten verfügbar?**  
+
+**Ist das Feature für statische Websites für alle Arten von Speicherkonten verfügbar?**  
 Nein. Das Hosten von statischen Websites ist nur für Standardspeicherkonten vom Typ GPv2 verfügbar.
 
 **Werden Storage-VNET- und Firewallregeln für den neuen Webendpunkt unterstützt?**  
 Ja. Für den neuen Webendpunkt werden die VNET- und Firewallregeln beachtet, die für das Speicherkonto konfiguriert werden.
 
-**Muss für den Webendpunkt zwischen Groß-/Kleinschreibung unterschieden werden?**  
-Ja, für den Webendpunkt muss ebenso wie für den Blobendpunkt zwischen Groß-/ Kleinschreibung unterschieden werden. 
+**Muss für den Webendpunkt die Groß-/Kleinschreibung beachtet werden?**  
+Ja, für den Webendpunkt muss ebenso wie für den Blobendpunkt zwischen Groß-/Kleinschreibung unterschieden werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md)
 * [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md)
 * [Azure-Funktionen](/azure/azure-functions/functions-overview)
 * [Azure-Web-Apps](/azure/app-service/app-service-web-overview)
-* [Build a serverless web app in Azure](https://aka.ms/static-serverless-webapp) (Erstellen einer serverlosen Web-App in Azure)
+* [Build a serverless web app in Azure](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database) (Erstellen einer serverlosen Web-App in Azure)
+* [Tutorial: Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

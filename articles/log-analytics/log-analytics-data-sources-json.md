@@ -1,6 +1,6 @@
 ---
-title: Erfassen benutzerdefinierter JSON-Daten in OMS Log Analytics | Microsoft-Dokumentation
-description: Benutzerdefinierte JSON-Datenquellen können in Log Analytics unter Verwendung des OMS-Agents für Linux erfasst werden.  Diese benutzerdefinierten Datenquellen können einfache Skripts sein, die JSON zurückgeben, z.B. Curl oder eines von mehr als 300 Plug-Ins von FluentD. Dieser Artikel beschreibt die Konfiguration, die für diese Datenerfassung erforderlich ist.
+title: Erfassen benutzerdefinierter JSON-Daten in Log Analytics | Microsoft-Dokumentation
+description: Benutzerdefinierte JSON-Datenquellen können in Log Analytics unter Verwendung des Log Analytics-Agents für Linux erfasst werden.  Diese benutzerdefinierten Datenquellen können einfache Skripts sein, die JSON zurückgeben, z.B. Curl oder eines von mehr als 300 Plug-Ins von FluentD. Dieser Artikel beschreibt die Konfiguration, die für diese Datenerfassung erforderlich ist.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,18 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9725a3df04ef28fc3a076c3c6ca6663e36b186a8
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 69338e438ced8871de1e994ee8b816f9dc40b13a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040267"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402351"
 ---
-# <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Erfassen benutzerdefinierter JSON-Datenquellen mit dem OMS-Agent für Linux in Log Analytics
-Benutzerdefinierte JSON-Datenquellen können in Log Analytics unter Verwendung des OMS-Agents für Linux erfasst werden.  Diese benutzerdefinierten Datenquellen können einfache Skripts sein, die JSON zurückgeben, wie z.B. [Curl](https://curl.haxx.se/) oder eines von mehr als [300 FluentD-Plug-Ins](http://www.fluentd.org/plugins/all). Dieser Artikel beschreibt die Konfiguration, die für diese Datenerfassung erforderlich ist.
+# <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-log-analytics"></a>Erfassen benutzerdefinierter JSON-Datenquellen mit dem Log Analytics-Agent für Linux in Log Analytics
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+Benutzerdefinierte JSON-Datenquellen können in Log Analytics unter Verwendung des Log Analytics-Agents für Linux erfasst werden.  Diese benutzerdefinierten Datenquellen können einfache Skripts sein, die JSON zurückgeben, wie z.B. [Curl](https://curl.haxx.se/) oder eines von mehr als [300 FluentD-Plug-Ins](http://www.fluentd.org/plugins/all). Dieser Artikel beschreibt die Konfiguration, die für diese Datenerfassung erforderlich ist.
 
 > [!NOTE]
-> Der OMS-Agent für Linux v1.1.0-217+ ist für benutzerdefinierte JSON-Daten erforderlich
+> Der Log Analytics-Agent für Linux v1.1.0-217+ ist für benutzerdefinierte JSON-Daten erforderlich.
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -80,8 +81,8 @@ Fügen Sie die folgende Konfiguration für das Ausgabe-Plug-In der Hauptkonfigur
 </match>
 ```
 
-### <a name="restart-oms-agent-for-linux"></a>Neustart von OMS Agent für Linux
-Starten Sie den OMS-Agent für den Linux-Dienst mit dem folgenden Befehl neu.
+### <a name="restart-log-analytics-agent-for-linux"></a>Neustarten des Log Analytics-Agents für Linux
+Starten Sie den Log Analytics-Agent für den Linux-Dienst mit dem folgenden Befehl neu.
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 

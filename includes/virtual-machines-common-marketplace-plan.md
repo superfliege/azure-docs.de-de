@@ -5,21 +5,21 @@ services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: f9974aae1e5996ffeaa6cde690a5e10ccba4cc32
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 4d2235eaea457c89d01a632afa5dd5a862bec344
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019011"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49437081"
 ---
 ## <a name="deploy-an-image-with-marketplace-terms"></a>Bereitstellen eines Images mit Marketplace-Nutzungsbedingungen
 
-Für bestimmte VM-Images im Azure Marketplace gelten zusätzliche Lizenz- und Kaufbedingungen, die Sie akzeptieren müssen, bevor Sie sie programmgesteuert bereitstellen können.  
+Für einige VM-Images im Azure Marketplace gelten zusätzliche Lizenz- und Kaufbedingungen, die Sie akzeptieren müssen, bevor Sie sie programmgesteuert bereitstellen können.  
 
-Um einen virtuellen Computer über ein solches Image bereitzustellen, müssen Sie die Bedingungen des Images akzeptieren und die programmgesteuerte Bereitstellung aktivieren. Dies müssen Sie in Ihrem Abonnement nur einmal durchführen. Dann müssen Sie jedes Mal, wenn Sie einen virtuellen Computer programmgesteuert über das Image bereitstellen, auch die Parameter des *Kaufplans* angeben.
+Um einen virtuellen Computer über ein solches Image bereitzustellen, müssen Sie die Bedingungen des Images akzeptieren und die programmgesteuerte Bereitstellung aktivieren. Diese Aktionen müssen Sie pro Abonnement nur einmal durchführen. Anschließend müssen Sie jedes Mal, wenn Sie eine VM programmgesteuert über das Image bereitstellen, auch die Parameter des *Kaufplans* angeben.
 
 In den folgenden Abschnitten werden diese Aktionen gezeigt:
 

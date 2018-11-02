@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: ea312002a9a1a39505cd4748864ca9dfc1da43dd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 97e4e670d5db646cea28cb30e9ca95633cea2a8a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060451"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49437027"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs
 
@@ -51,7 +51,7 @@ Hier sind einige Features von Storage Premium aufgeführt:
 
 * **Storage Premium-Datenträger**
 
-    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt eine Vielzahl von virtuellen Azure-Computern. Sie können aus acht allgemein verfügbaren Datenträgergrößen auswählen: P4 (32 GiB), P6 (64 GiB), P10 (128 GiB), P15 (256 GiB), P20 (512 GiB), P30 (1024 GiB), P40 (2048 GiB), P50 (4095 GiB). In der Vorschau stehen drei Datenträgergrößen zur Auswahl: P60 mit 8192 GiB (8 TiB), P70 mit 16348 GiB (16 TiB) und P80 mit 32767 GiB (32 TiB). Die Datenträgergrößen P4, P6, P60, P70 und P80 werden aktuell nur für verwaltete Datenträger unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
+    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt eine Vielzahl von virtuellen Azure-Computern. Sie können aus acht allgemein verfügbaren Datenträgergrößen auswählen: P4 (32 GiB), P6 (64 GiB), P10 (128 GiB), P15 (256 GiB), P20 (512 GiB), P30 (1024 GiB), P40 (2048 GiB), P50 (4095 GiB). In der Vorschau stehen drei Datenträgergrößen zur Auswahl: P60 mit 8192 GiB (8 TiB), P70 mit 16348 GiB (16 TiB) und P80 mit 32767 GiB (32 TiB). Die Datenträgergrößen P4, P6, P15, P60, P70 und P80 werden aktuell nur für Managed Disks unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
 
 * **Premium-Seitenblobs**
 
@@ -149,9 +149,13 @@ Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für
 Wenn Sie Storage Premium-Konten für nicht verwaltete Datenträger verwenden und Ihre Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreitet, sollten Sie die Migration zu verwalteten Datenträgern erwägen. Falls die Migration zu verwalteten Datenträgern für Sie keine Option ist, können Sie Ihre Anwendung für die Nutzung mehrerer Speicherkonten erstellen. Partitionieren Sie Ihre Daten dann basierend auf diesen Speicherkonten. Wenn Sie beispielsweise 51-TB-Datenträger an mehrere VMs anfügen möchten, können Sie sie auf zwei Speicherkonten verteilen. 35 TB ist der Grenzwert pro Storage Premium-Konto. Stellen Sie sicher, dass ein Storage Premium-Konto stets Datenträger mit einer Größe von maximal 35 TB enthält.
 
 ### <a name="premium-storage-disk-limits"></a>Grenzwerte für Storage Premium-Datenträger
-Wenn Sie einen Storage Premium-Datenträger bereitstellen, wird anhand der Größe des Datenträgers der maximale IOPS- und Durchsatzwert (Bandbreite) ermittelt. Azure bietet acht Typen von Storage Premium-Datenträgern: P4 (nur Managed Disks), P6 (nur Managed Disks), P10, P15, P20, P30, P40 und P50. Für jeden Typ von Storage Premium-Datenträger gelten für IOPS und den Durchsatz bestimmte Grenzwerte. Die Grenzwerte für die Datenträgertypen sind in der folgenden Tabelle beschrieben:
+Wenn Sie einen Storage Premium-Datenträger bereitstellen, wird anhand der Größe des Datenträgers der maximale IOPS- und Durchsatzwert (Bandbreite) ermittelt. Azure bietet acht GA-Typen von Storage Premium-Datenträgern: P4 (nur Managed Disks), P6 (nur Managed Disks), P10, P15 (nur Managed Disks), P20, P30, P40 und P50. Dazu kommen drei Datenträgergrößen in der Vorschauversion: P60, P70 und P80. Für jeden Typ von Storage Premium-Datenträger gelten für IOPS und den Durchsatz bestimmte Grenzwerte. Die Grenzwerte für die Datenträgertypen sind in der folgenden Tabelle beschrieben:
 
-| Premium-Datenträgertyp  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | P60   | P70   | P80   | |---------------------|-------|-------|-------|-------|-------|-------|-------|-------||-------||-------||-------| | Datenträgergröße           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16384 GiB (16 TiB)    | 32767 GiB (32 TiB)    | | IOPS pro Datenträger       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 12500              | 15000              | 20000              | | Durchsatz pro Datenträger | 25 MB pro Sekunde  | 50 MB pro Sekunde  | 100 MB pro Sekunde | 125 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde | 480 MB pro Sekunde | 750 MB pro Sekunde | 750 MB pro Sekunde |
+| Premium-Datenträgertyp  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60             | P70                | P80                |
+|---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
+| Datenträgergröße           | 32 GiB| 64 GiB| 128 GB| 256 GiB| 512 GB| 1.024 GiB (1 TiB) | 2.048 GiB (2 TiB)| 4.096 GiB (4 TiB)| 8192 GiB (8 TiB)| 16384 GiB (16 TiB)| 32767 GiB (32 TiB)|
+| IOPS pro Datenträger       | 120   | 240   | 500    | 1100   | 2.300   | 5.000             | 7.500            | 7.500            | 12.500          | 15.000             | 20.000             |
+| Durchsatz pro Datenträger | 25 MB pro Sekunde | 50 MB pro Sekunde | 100 MB pro Sekunde | 125 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde | 480 MB pro Sekunde | 750 MB pro Sekunde | 750 MB pro Sekunde |
 
 > [!NOTE]
 > Sorgen Sie dafür, dass auf Ihrer VM ausreichend Bandbreite für den Datenträger-Datenverkehr verfügbar ist. Dies ist unter [VMs mit Storage Premium-Unterstützung](#premium-storage-supported-vms) beschrieben. Andernfalls sind Ihr Datenträgerdurchsatz und die IOPS-Menge auf niedrigere Werte beschränkt. Der Höchstmengen für Durchsatz und IOPS basieren auf den VM-Grenzwerten, und nicht auf den Grenzwerten für Datenträger, die in der vorherigen Tabelle beschrieben sind.  
@@ -280,7 +284,7 @@ sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
 sudo yum install microsoft-hyper-v
 ```
 
-Starten Sie den Computer neu, um die neuen Treiber zu aktivieren.
+Starten Sie den virtuellen Computer neu, um die neuen Treiber zu aktivieren.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 

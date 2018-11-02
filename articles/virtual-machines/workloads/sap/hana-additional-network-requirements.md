@@ -14,76 +14,59 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ee89553846309bd96f3cad3648e337488cf07d3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2f4c74076f2763addc1f2b971d8ea0ca29ce6fd0
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44167599"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392997"
 ---
-# <a name="additional-network-requirements"></a>Zusätzliche Netzwerkanforderungen
+# <a name="additional-network-requirements-for-large-instances"></a>Zusätzliche Netzwerkanforderungen für große Instanzen
 
-Manchmal müssen im Rahmen der Bereitstellung von HANA (große Instanzen) zusätzliche Netzwerkanforderungen erfüllt werden. Dieser Artikel veranschaulicht die folgenden Netzwerkanforderungen:
-- [Hinzufügen weiterer IP-Adressen oder Subnetze](#adding-more-ip-addresses-or-subnets)
-- [Hinzufügen von virtuellen Netzwerken](#adding-vnets)
-- [Erhöhen der Bandbreite für die ExpressRoute-Verbindung](#increasing-expressroute-circuit-bandwidth)
-- [Hinzufügen einer zusätzlichen ExpressRoute-Verbindung](#adding-an-additional-expressroute-circuit)
-- [Löschen eines Subnetzes](#deleting-a-subnet)
-- [Löschen eines virtuellen Netzwerks](#deleting-a-vnet)
-- [Löschen einer ExpressRoute-Verbindung](#deleting-an-expressroute-circuit)
+Möglicherweise müssen im Rahmen einer Bereitstellung von großen SAP HANA-Instanzen in Azure zusätzliche Netzwerkanforderungen erfüllt werden.
 
+## <a name="add-more-ip-addresses-or-subnets"></a>Hinzufügen weiterer IP-Adressen oder Subnetze
 
-## <a name="adding-more-ip-addresses-or-subnets"></a>Hinzufügen weiterer IP-Adressen oder Subnetze
+Verwenden Sie zum Hinzufügen weiterer IP-Adressen oder Subnetze das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI).
 
-Verwenden Sie zum Hinzufügen weiterer IP-Adressen und Subnetze das Azure-Portal, PowerShell oder die CLI.
+Fügen Sie dem Adressraum des virtuellen Netzwerks den neuen IP-Adressbereich als neuen Bereich hinzu, statt einen neuen aggregierten Bereich zu erstellen. Übermitteln Sie diese Änderung an Microsoft. Dadurch können Sie über diesen neuen IP-Adressbereich eine Verbindung mit den großen HANA-Instanzeinheiten auf Ihrem Client herstellen. Sie können eine Azure-Supportanfrage öffnen, um den neuen Adressraum des virtuellen Netzwerks hinzufügen zu lassen. Führen Sie nach Erhalt einer Bestätigung die nächsten Schritte aus.
 
-In diesem Fall empfiehlt es sich, den neuen IP-Adressbereich dem VNet-Adressraum als neuen Bereich hinzuzufügen, anstatt einen neuen aggregierten Bereich zu erstellen. In beiden Fällen müssen Sie diese Änderung an Microsoft übermitteln, damit Verbindungen aus diesem neuen IP-Adressbereich mit den SAP HANA (große Instanzen)-Einheiten in Ihrem Client zugelassen werden. Sie können eine Azure-Supportanfrage öffnen, um den neuen VNet-Adressraum hinzufügen zu lassen. Führen Sie nach Erhalt einer Bestätigung die nächsten Schritte aus.
+Informationen zum Erstellen eines weiteren Subnetzes im Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). Informationen zur Erstellung mithilfe von PowerShell finden Sie unter [Erstellen eines virtuellen Netzwerks mithilfe von PowerShell](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
 
-Wenn Sie im Azure-Portal ein zusätzliches Subnetz erstellen möchten, lesen Sie den Artikel [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). Wie diese Schritte mit PowerShell erfolgen, finden Sie unter [Erstellen eines virtuellen Netzwerks mithilfe von PowerShell](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
+## <a name="add-virtual-networks"></a>Hinzufügen virtueller Netzwerke
 
-## <a name="adding-vnets"></a>Hinzufügen von VNets
+Nachdem Sie zunächst Verbindungen mit einem oder mehreren virtuellen Azure-Netzwerken hergestellt haben, möchten Sie möglicherweise weitere virtuelle Netzwerke verbinden, die auf SAP HANA in Azure (große Instanzen) zugreifen. Senden Sie zuerst eine Azure-Supportanfrage. Geben Sie in dieser Anfrage die spezifischen Informationen zur Identifizierung der jeweiligen Azure-Bereitstellung an. Geben Sie auch den IP-Adressbereich oder die Bereiche des Adressraums des virtuellen Azure-Netzwerks an. Das SAP HANA in Microsoft Azure-Dienstverwaltungsteam stellt dann die erforderlichen Informationen bereit, die Sie zum Herstellen der Verbindung mit den zusätzlichen virtuellen Netzwerken und Azure ExpressRoute benötigen. Für jedes virtuelle Netzwerk benötigen Sie einen eindeutigen Autorisierungsschlüssel, um eine Verbindung mit der ExpressRoute-Leitung für große HANA-Instanzen herzustellen.
 
-Nach dem anfänglichen Herstellen von Verbindungen mit einem oder mehreren Azure VNets möchten Sie ggf. weitere hinzufügen, die auf SAP HANA in Azure (große Instanzen) zugreifen. Senden Sie zunächst eine Azure-Supportanfrage, in der Sie sowohl die speziellen Informationen zur Bestimmung der jeweiligen Azure-Bereitstellung als auch die IP-Adressbereiche des Azure VNet-Adressraums angeben. Das SAP HANA in Azure-Dienstverwaltungsteam stellt Ihnen die erforderlichen Informationen bereit, die Sie zum Verbinden der zusätzlichen VNets und von ExpressRoute benötigen. Für jedes VNet benötigen Sie einen eindeutigen Autorisierungsschlüssel, um eine Verbindung mit der ExpressRoute-Leitung für SAP HANA (große Instanzen) herzustellen.
+## <a name="increase-expressroute-circuit-bandwidth"></a>Erhöhen der Bandbreite der ExpressRoute-Leitung
 
-Schritte zum Hinzufügen eines neuen Azure VNet:
+Wenden Sie sich an das SAP HANA in Microsoft Azure-Dienstverwaltungsteam. Wenn Ihnen geraten wird, die Bandbreite der ExpressRoute-Leitung für SAP HANA in Azure (große Instanzen) zu erhöhen, erstellen Sie eine Azure-Supportanfrage. (Sie können eine Erhöhung der Bandbreite einer einzelnen Verbindung um maximal 10 Gbit/s anfordern.) Sie erhalten dann nach Abschluss des Vorgangs eine Benachrichtigung. Sie müssen keine weiteren Aktionen ausführen, um diese höhere Geschwindigkeit in Azure zu aktivieren.
 
-1. Informationen zum ersten Schritt in diesem Prozess finden Sie im Abschnitt _Erstellen eines Azure VNet_.
-2. Informationen zum zweiten Schritt in diesem Prozess finden Sie im Abschnitt _Erstellen eines Gatewaysubnetzes_.
-3. Öffnen Sie eine Azure-Supportanfrage mit Informationen zum neuen VNet, und fordern Sie einen neuen Autorisierungsschlüssel zum Verknüpfen Ihrer zusätzlichen VNets mit der ExpressRoute-Verbindung von HANA (große Instanzen) an.
-4. Nach Erhalt einer Autorisierungsbestätigung verwenden Sie die von Microsoft bereitgestellten Autorisierungsinformationen zum Ausführen des dritten Schritts in diesem Prozess. Siehe dazu _Verknüpfen von VNets_.
+## <a name="add-an-additional-expressroute-circuit"></a>Hinzufügen einer zusätzlichen ExpressRoute-Leitung
 
-## <a name="increasing-expressroute-circuit-bandwidth"></a>Erhöhen der Bandbreite für die ExpressRoute-Verbindung
+Wenden Sie sich an das SAP HANA in Microsoft Azure-Dienstverwaltungsteam. Wenn Ihnen geraten wird, eine zusätzliche ExpressRoute-Leitung hinzuzufügen, erstellen Sie eine Azure-Supportanfrage (einschließlich einer Anfrage zum Erhalten der Autorisierungsinformationen zum Herstellen der Verbindung mit der neuen Leitung). Bevor Sie die Anfrage stellen, müssen Sie den für die virtuellen Netzwerke verwendeten Adressraum definieren. Das SAP HANA in Microsoft Azure-Dienstverwaltungsteam kann dann die Autorisierung bereitstellen.
 
-Besprechen Sie sich mit dem SAP HANA in Azure-Dienstverwaltungsteam. Falls Ihnen geraten wird, die Bandbreite der ExpressRoute-Verbindung für SAP HANA in Azure (große Instanzen) zu erhöhen, erstellen Sie eine Azure-Supportanforderung. (Sie können eine Erhöhung der Bandbreite einer einzelnen Verbindung um maximal 10 Gbit/s anfordern.) Sie erhalten eine Benachrichtigung, sobald der Vorgang abgeschlossen ist. Es sind keine weiteren Aktionen erforderlich, um diese höhere Geschwindigkeit in Azure zu aktivieren.
+Nachdem die neue Leitung erstellt wurde und die Konfiguration von SAP HANA in der Microsoft Azure-Dienstverwaltung abgeschlossen ist, erhalten Sie eine Benachrichtigung mit den Informationen, die Sie zum Fortsetzen des Vorgangs benötigen. Sie können die virtuellen Azure-Netzwerke nicht mit dieser zusätzlichen Leitung verbinden, wenn sie bereits mit einer anderen ExpressRoute-Leitung für SAP HANA in Azure (große Instanzen) in derselben Azure-Region verbunden sind.
 
-## <a name="adding-an-additional-expressroute-circuit"></a>Hinzufügen einer zusätzlichen ExpressRoute-Verbindung
+## <a name="delete-a-subnet"></a>Löschen eines Subnetzes
 
-Besprechen Sie sich mit dem SAP HANA in Azure-Dienstverwaltungsteam. Falls Ihnen gesagt wird, dass eine weitere ExpressRoute-Verbindung nötig sei, erstellen Sie eine Supportanforderung zum Erstellen einer weiteren ExpressRoute-Verbindung. Rufen Sie außerdem die entsprechenden Autorisierungsinformationen zum Herstellen einer Verbindung damit auf. Der Adressraum, der in den VNets verwendet wird, muss vor dem Übermitteln der Anforderung definiert werden, damit das SAP HANA in Azure-Dienstverwaltungsteam die Autorisierung erteilen kann.
+Zum Entfernen eines Subnetzes des virtuellen Netzwerks können Sie das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI) verwenden. Wenn der IP-Adressbereich oder der Adressraum Ihres virtuellen Azure-Netzwerks ein aggregierter Bereich ist, besteht keine Notwendigkeit zur Nachverfolgung bei Microsoft. (Beachten Sie jedoch, dass das virtuelle Netzwerk weiterhin den BGP-Routenadressraum weitergibt, der das gelöschte Subnetz umfasst.) Möglicherweise haben Sie den Adressbereich/Adressraum des virtuellen Azure-Netzwerks in Form von mehreren IP-Adressbereichen definiert, von denen ein Bereich dem gelöschten Subnetz zugewiesen war. Löschen Sie diesen unbedingt aus dem Adressraum des virtuellen Netzwerks. Informieren Sie dann das SAP HANA in Microsoft Azure-Dienstverwaltungsteam darüber, dass der Bereich aus den Bereichen entfernt werden muss, mit denen SAP HANA in Azure (große Instanzen) kommunizieren darf.
 
-Nachdem die neue Verbindung erstellt wurde und die SAP HANA in Azure-Dienstverwaltungskonfiguration abgeschlossen ist, erhalten Sie die Benachrichtigung mit den Informationen, die Sie zum Fortsetzen des Vorgangs benötigen. Führen Sie die zuvor beschriebenen Schritte zum Erstellen des neuen VNet und zum Herstellen einer Verknüpfung mit dieser zusätzlichen Verbindung durch. Sie können keine Azure-VNets mit dieser zusätzlichen Leitung verbinden, wenn die VNets bereits mit einer anderen ExpressRoute-Leitung von SAP HANA in Azure (große Instanzen) in derselben Azure-Region verbunden sind.
+Weitere Informationen finden Sie unter [Löschen eines Subnetzes](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet).
 
-## <a name="deleting-a-subnet"></a>Löschen eines Subnetzes
+## <a name="delete-a-virtual-network"></a>Löschen eines virtuellen Netzwerks
 
-Zum Entfernen eines VNet-Subnetzes kann das Azure-Portal, PowerShell oder die CLI verwendet werden. Für den Fall, dass Ihr Azure-VNet-IP-Adressbereich/Azure VNet-Adressraum ein aggregierter Bereich ist, besteht keine Notwendigkeit zur Nachsorge mit Microsoft. Die einzige Ausnahme ist, dass das VNet weiterhin BGP-Routenadressraum weitergibt, der das gelöschte Subnetz umfasst. Wenn Sie den Azure-VNet-IP-Adressbereich/Azure-VNet-Adressraum als mehrere IP-Adressbereiche definiert haben, von denen einer dem gelöschten Subnetz zugewiesen war, sollten Sie diesen aus Ihrem VNet-Adressraum löschen und dann die SAP HANA in Azure-Dienstverwaltung informieren, den Bereich aus den Bereichen zu entfernen, mit denen SAP HANA in Azure (große Instanzen) kommunizieren darf.
+Informationen hierzu finden Sie unter [Löschen eines virtuellen Netzwerks](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network).
 
-Wenn Sie ein Subnetz löschen möchten, finden Sie unter [Löschen eines Subnetzes](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet) weitere Informationen zum Erstellen von Subnetzen.
+Das SAP HANA in Microsoft Azure-Dienstverwaltungsteam entfernt die vorhandenen Autorisierungen für die ExpressRoute-Leitung für SAP HANA in Azure (große Instanzen). Außerdem wird auch der IP-Adressbereich oder der Adressraum des virtuellen Azure-Netzwerks für die Kommunikation mit großen HANA-Instanzen entfernt.
 
-## <a name="deleting-a-vnet"></a>Löschen eines VNet
+Öffnen Sie nach dem Entfernen des virtuellen Netzwerks eine Azure-Supportanfrage, in der Sie die zu entfernenden IP-Adressbereiche/Bereiche des Adressraums angeben.
 
-Informationen zum Löschen eines virtuellen Netzwerks finden Sie unter [Löschen eines virtuellen Netzwerks](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network). Das SAP HANA in Azure-Dienstverwaltungsteam entfernt die vorhandenen Autorisierungen für die ExpressRoute-Leitung von SAP HANA in Azure (große Instanzen) und den Azure-VNet-IP-Adressbereich/Azure-VNet-Adressraum für die Kommunikation mit SAP HANA (große Instanzen).
+Um sicherzustellen, dass Sie alles entfernen, löschen Sie die ExpressRoute-Verbindung, das Gateway des virtuellen Netzwerks, die öffentliche IP-Adresse des Gateways des virtuellen Netzwerks und das virtuelle Netzwerk.
 
-Nachdem das VNet entfernt wurde, beantragen Sie in einer Azure-Supportanfrage das Entfernen der IP-Adressbereiche.
+## <a name="delete-an-expressroute-circuit"></a>Löschen einer ExpressRoute-Leitung
 
-Um sicherzustellen, dass alles entfernt wurde, löschen Sie die folgenden Elemente:
+Um eine weitere ExpressRoute-Leitung für SAP HANA in Azure (große Instanzen) zu entfernen, öffnen Sie eine Azure-Supportanfrage beim SAP HANA in Microsoft Azure-Dienstverwaltungsteam. Bitten Sie um die Löschung der Leitung. Im Azure-Abonnement können Sie das virtuelle Netzwerk nach Bedarf löschen oder beibehalten. Sie müssen jedoch die Verbindung zwischen der ExpressRoute-Leitung für große HANA-Instanzen und dem verknüpften Gateway des virtuellen Netzwerks löschen.
 
-- Die ExpressRoute-Verbindung, das VNet-Gateway, die öffentliche IP-Adresse des VNet-Gateways und das VNet
+## <a name="next-steps"></a>Nächste Schritte
 
-## <a name="deleting-an-expressroute-circuit"></a>Löschen einer ExpressRoute-Verbindung
-
-Um eine weitere ExpressRoute-Verbindung für SAP HANA in Azure (große Instanzen) zu entfernen, bitten Sie das SAP HANA in Azure-Dienstverwaltungsteam in einer Azure-Supportanfrage, die Verbindung zu löschen. Im Azure-Abonnement können Sie das VNet je nach Anforderung löschen oder beibehalten. Allerdings müssen Sie die Verbindung zwischen der SAP HANA (große Instanzen)-ExpressRoute-Leitung und dem verknüpften VNet-Gateway löschen.
-
-Wenn Sie auch ein VNet entfernen möchten, befolgen Sie die Anleitung zum Löschen eines VNet im vorherigen Abschnitt.
-
-**Nächste Schritte**
-
-- Lesen Sie [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](hana-installation.md).
+- [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](hana-installation.md)

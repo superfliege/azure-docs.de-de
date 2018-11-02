@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 603a5dfcf2137c15ae19ea248f3e0f4f136c22f1
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 91263d7f6e8c0c2774df560a45eeff9efc672343
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140987"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408423"
 ---
 # <a name="azure-event-hubs-capture"></a>Azure Event Hubs Capture
 
@@ -104,6 +104,10 @@ Apache Avro bietet vollständige Anleitungen für die ersten Schritte mit [Java]
 ## <a name="how-event-hubs-capture-is-charged"></a>Berechnung der Gebühren für Event Hubs Capture
 
 Die Gebühren für Event Hubs Capture werden ähnlich wie für Durchsatzeinheiten auf Stundenbasis erhoben. Die Gebühr ist direkt proportional zur Anzahl der Durchsatzeinheiten, die für den Namespace erworben werden. Event Hubs Capture misst die Erhöhung und Verringerung der Durchsatzeinheiten, um eine entsprechende Leistung bereitstellen zu können. Die Verbrauchseinheiten treten zusammen auf. Informationen zu Preisen finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/). 
+
+## <a name="integration-with-event-grid"></a>Integration in Event Grid 
+Sie können ein Azure Event Grid-Abonnement mit einem Event Hubs-Namespace als Quelle erstellen. Im folgende Tutorial erfahren Sie, wie ein Event Grid-Abonnement mit einem Event Hub als Quelle und einer Azure Functions-App als Senke erstellt wird: [Verarbeiten und Migrieren erfasster Event Hubs-Daten in einer SQL Data Warehouse-Instanz mithilfe von Event Grid und Azure Functions](store-captured-data-data-warehouse.md).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

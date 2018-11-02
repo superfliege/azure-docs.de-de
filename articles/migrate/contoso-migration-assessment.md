@@ -3,16 +3,17 @@ title: Bewerten von lokalen Workloads für die Contoso-Migration zu Azure | Micr
 description: Es wird beschrieben, wie Contoso seine lokalen Computer in Bezug auf die Migration zu Azure bewertet, indem Azure Migrate und der Datenmigrations-Assistent verwendet werden.
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 3969286b4a748a9dde8c126f91a5b19ee14a7c0d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ea0987eaea8ee558df35ecce6afb5e7bab3ac4de
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303313"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087625"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso-Migration: Bewerten von lokalen Workloads für die Migration zu Azure
 
@@ -35,6 +36,7 @@ Artikel 3: Bewerten der lokalen Ressourcen für die Migration zu Azure | Contoso
 [Artikel 11: Umgestalten von Team Foundation Server in Azure DevOps Services](contoso-migration-tfs-vsts.md) | Contoso migriert die lokale Team Foundation Server-Bereitstellung zu Azure DevOps Services in Azure. | Verfügbar
 [Artikel 12: Umstrukturieren einer App in einen Azure-Container und Azure SQL-Datenbank](contoso-migration-rearchitect-container-sql.md) | Contoso migriert die SmartHotel-App zu Azure. Anschließend wird die App-Webschicht zu einem Windows-Container umstrukturiert, der in Azure Service Fabric ausgeführt wird, und die Datenbank wird zu einer Azure SQL-Datenbank umstrukturiert. | Verfügbar
 [Artikel 13: Neuerstellen einer App in Azure](contoso-migration-rebuild.md) | Contoso erstellt die SmartHotel-App mit verschiedenen Azure-Funktionen und -Diensten neu – z.B. Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services und Azure Cosmos DB. | Verfügbar
+[Artikel 14: Skalieren einer Migration zu Azure](contoso-migration-scale.md) | Nachdem Contoso verschiedene Kombinationen für die Migration getestet hat, bereitet das Unternehmen sich jetzt auf eine vollständige Migration nach Azure in großem Umfang vor. | Verfügbar
 
 
 ## <a name="overview"></a>Übersicht
@@ -230,7 +232,7 @@ Die Contoso-Bewertung verwendet Abhängigkeitszuordnung. Für die Abhängigkeits
 
 ### <a name="set-statistics-settings"></a>Festlegen der Statistikeinstellungen
 
-Bevor Contoso mit der Bereitstellung beginnt, muss das Unternehmen die Statistikeinstellungen für vCenter Server auf Ebene 3 festlegen. 
+Bevor Contoso mit der Bereitstellung beginnt, muss das Unternehmen die Statistikeinstellungen für vCenter Server auf Ebene 3 festlegen.
 
 > [!NOTE]
 > - Nach dem Festlegen der Ebene muss Contoso mindestens einen Tag warten, bevor die Bewertung durchgeführt wird. Andernfalls funktioniert die Bewertung ggf. nicht wie erwartet.
@@ -256,7 +258,7 @@ Zum Ermitteln von VMs erstellt Contoso ein Azure Migrate-Projekt. Contoso lädt 
 ### <a name="create-a-project"></a>Erstellen eines Projekts
 
 1. Im [Azure-Portal](https://portal.azure.com) sucht Contoso nach **Azure Migrate**. Anschließend erstellt Contoso ein Projekt.
-2. Contoso gibt einen Projektnamen (**ContosoMigration**) und das Azure-Abonnement an. Das Unternehmen erstellt eine neue Azure-Ressourcengruppe (**ContosoFailoverRG**). 
+2. Contoso gibt einen Projektnamen (**ContosoMigration**) und das Azure-Abonnement an. Das Unternehmen erstellt eine neue Azure-Ressourcengruppe (**ContosoFailoverRG**).
     > [!NOTE]
     > - Sie können ein Azure Migrate-Projekt nur in der Region „USA, Westen-Mitte“ oder „USA, Osten“ erstellen.
     > - Sie können eine Migration für einen beliebigen Zielstandort planen.
@@ -281,17 +283,17 @@ Vor der Bereitstellung der VM überprüft Contoso, ob die OVA-Datei sicher ist:
 2. Contoso führt den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    
-    **Beispiel** 
-    
+
+    **Beispiel**
+
     ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Der generierte Hash muss den folgenden Einstellungen entsprechen (Version 1.0.9.14):
+3. Der generierte Hash muss den folgenden Einstellungen entsprechen (Version 1.0.9.15):
 
     **Algorithmus** | **Hashwert**
     --- | ---
-    MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
-    SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
-    SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
+    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
 
 ### <a name="create-the-collector-appliance"></a>Erstellen der Collectorappliance
 
@@ -409,8 +411,8 @@ Contoso führt die Installation auf jeder VM durch.
 3. Contoso installiert den MMA:
     - Contoso gibt die Arbeitsbereichs-ID und den Schlüssel für den Befehl ein.
     - Die Befehle sind für 64-Bit.
-    - Die Arbeitsbereichs-ID und der Primärschlüssel sind im Portal der Microsoft Operations Management Suite (OMS) angegeben. Wählen Sie **Einstellungen** und dann die Registerkarte **Verbundene Quellen**.
-    - Führen Sie die folgenden Befehle aus, um den OMS-Agent herunterzuladen, die Prüfsumme zu überprüfen und den Agent anschließend zu installieren und das Onboarding dafür durchzuführen:
+    - Die Arbeitsbereichs-ID und der Primärschlüssel befinden sich im Log Analytics-Arbeitsbereich im Azure-Portal. Wählen Sie **Einstellungen** und dann die Registerkarte **Verbundene Quellen**.
+    - Führen Sie die folgenden Befehle aus, um den Log Analytics-Agent herunterzuladen, die Prüfsumme zu überprüfen und den Agent anschließend zu installieren und das Onboarding dafür durchzuführen:
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==

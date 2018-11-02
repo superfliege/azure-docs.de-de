@@ -11,31 +11,29 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 5f0e5de7503d06d1aff319434d763d3b034053b3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 12074ad28e27a249a6dc378986f014ede1cd2ab3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166361"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353579"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
 
 Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Einzeldatenbanken in Azure SQL-Datenbank, die das auf virtuellen Kernen basierende Kaufmodell verwenden.
 
-Informationen zu Einschränkungen bei DTU-basierten Einkaufsmodellen finden Sie unter [Einschränkungen des DTU-basierten Ressourcenmodells für Azure SQL-Datenbank](sql-database-dtu-resource-limits.md).
+Das DTU-basierte Kaufmodell weist Ressourcenlimits für Einzeldatenbanken auf einem logischen Server auf. Informationen dazu finden Sie unter [Übersicht über Ressourcenlimits auf einem logischen Server](sql-database-resource-limits-logical-server.md).
 
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
+Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases) oder [REST-API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) Diensttarif, Computegröße und Speichermenge für eine einzelne Datenbank festlegen.
 
-## <a name="single-database-storage-sizes-and-compute-sizes"></a>Einzeldatenbank: Speicher- und Computegrößen
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Diensttarif „Universell“: Speicher- und Computegrößen
 
-Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken für alle Diensttarife und Computegrößen. Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases) oder [REST-API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) Diensttarif, Computegröße und Speichermenge für eine einzelne Datenbank festlegen.
+### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
 
-### <a name="general-purpose-service-tier"></a>Universelle Dienstebene
-
-#### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
 |Computegröße|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|4|4|4|4|4|4|
@@ -57,7 +55,8 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
-#### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+
 |Computegröße|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
@@ -79,9 +78,10 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
-### <a name="business-critical-service-tier"></a>Diensttarif „Unternehmenskritisch“
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Diensttarif „Unternehmenskritisch“: Speicher- und Computegrößen
 
-#### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+
 |Computegröße|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|4|4|4|4|4|4|
@@ -103,7 +103,8 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
-#### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+
 |Computegröße|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
@@ -125,9 +126,10 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
-### <a name="hyperscale-service-tier-preview"></a>Diensttarif „Hyperscale“ (Vorschau)
+## <a name="hyperscale-service-tier-preview"></a>Diensttarif „Hyperscale“ (Vorschau)
 
-#### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>Computeplattform der 4. Generation: Speicher- und Computegrößen
+
 |Leistungsstufe|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|4|4|4|4|4|4|
@@ -148,7 +150,9 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|JA|
 |Enthaltener Sicherungsspeicher|7|7|7|7|7|7|
 |||
+
 ### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+
 |Leistungsstufe|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|5|

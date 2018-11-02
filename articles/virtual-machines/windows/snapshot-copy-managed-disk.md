@@ -12,38 +12,38 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7d45fd749fea4036d944d740541d8b8607553835
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 87d78178c32aea3ae601983ec14e9df0732b59e2
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658154"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091299"
 ---
 # <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
 
-Erstellen Sie eine Momentaufnahme eines Betriebssystem oder eines VHD-Datenträgers für die Sicherung oder zum Behandeln von VM-Problemen. Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. 
+Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer virtuellen Festplatte (Virtual Hard Drive, VHD). Sie können eine Momentaufnahme eines Betriebssystem- oder VHD-Datenträgers zur Verwendung als Sicherung oder zum Beheben von VM-Problemen erstellen. 
 
-## <a name="use-azure-portal-to-take-a-snapshot"></a>Erstellen einer Momentaufnahme im Azure-Portal 
+## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie zunächst links oben auf **Ressource erstellen**, und suchen Sie nach **Momentaufnahme**.
-3. Klicken Sie auf dem Blatt „Momentaufnahme“ auf **Erstellen**.
+2. Wählen Sie im linken Menü die Option **Ressource erstellen** aus, suchen Sie nach **Momentaufnahme**, und wählen Sie dann diese Option aus.
+3. Wählen Sie im Fenster **Momentaufnahme** die Option **Erstellen** aus. Das Fenster **Momentaufnahme erstellen** wird angezeigt.
 4. Geben Sie einen **Namen** für die Momentaufnahme ein.
-5. Wählen Sie eine vorhandene [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md#resource-groups) aus, oder geben Sie den Namen für eine neue Ressourcengruppe ein. 
-6. Wählen Sie den Standort eines Azure-Rechenzentrums aus.  
+5. Wählen Sie eine vorhandene [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md#resource-groups) aus, oder geben Sie den Namen einer neuen Ressourcengruppe ein. 
+6. Wählen Sie den **Standort** eines Azure-Datencenters aus.  
 7. Wählen Sie für **Quelldatenträger** den verwalteten Datenträger aus, für den eine Momentaufnahme erstellt werden soll.
-8. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wir empfehlen **Standard_LRS**, es sei denn, Sie benötigen eine Speicherung auf einem Hochleistungsdatenträger.
-9. Klicken Sie auf **Create**.
+8. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wählen Sie **Standard (HDD)** aus, sofern die Momentaufnahme nicht auf einem Hochleistungsdatenträger gespeichert werden muss.
+9. Klicken Sie auf **Erstellen**.
 
-## <a name="use-powershell-to-take-a-snapshot"></a>Erstellen einer Momentaufnahme mit PowerShell
+## <a name="use-powershell"></a>Verwenden von PowerShell
 
-Die folgenden Schritte veranschaulichen das Abrufen des zu kopierenden VHD-Datenträgers, das Erstellen der Momentaufnahmenkonfigurationen und das Erstellen einer Momentaufnahme des Datenträgers mithilfe des Cmdlets [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot). 
+In den folgenden Schritten wird das Kopieren des VHD-Datenträgers, das Erstellen der Momentaufnahmekonfiguration und das Erstellen einer Momentaufnahme des Datenträgers mithilfe des Cmdlets [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) beschrieben. 
 
-Stellen Sie vor Beginn sicher, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Für diesen Artikel ist mindestens Version 5.7.0 des AzureRM-Moduls erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Stellen Sie vor Beginn sicher, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden (Version 5.7.0 oder höher). Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Bei lokaler Ausführung von PowerShell müssen Sie [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) ausführen, um eine Verbindung mit Azure herzustellen.
 
-Legen Sie einige Parameter fest. 
+1. Legen Sie einige Parameter fest: 
 
  ```azurepowershell-interactive
 $resourceGroupName = 'myResourceGroup' 
@@ -52,39 +52,36 @@ $vmName = 'myVM'
 $snapshotName = 'mySnapshot'  
 ```
 
-Rufen Sie die VM ab.
+2. Rufen Sie den virtuellen Computer ab:
 
  ```azurepowershell-interactive
 $vm = get-azurermvm `
-   -ResourceGroupName $resourceGroupName `
+   -ResourceGroupName $resourceGroupName 
    -Name $vmName
 ```
 
-Erstellen Sie die Momentaufnahmekonfiguration. In diesem Beispiel wird eine Momentaufnahme des Betriebssystemdatenträgers erstellt.
+3. Erstellen Sie die Momentaufnahmekonfiguration. In diesem Beispiel wird die Momentaufnahme des Betriebssystemdatenträgers erstellt:
 
  ```azurepowershell-interactive
-$snapshot =  New-AzureRmSnapshotConfig `
-   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
-   -Location $location `
+$snapshot =  New-AzureRmSnapshotConfig 
+   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id 
+   -Location $location 
    -CreateOption copy
 ```
    
-> [!NOTE]
-> Wenn Sie die Momentaufnahme in Speicher mit Zonenresilienz speichern möchten, müssen Sie sie in einer Region erstellen, die [Verfügbarkeitszonen](../../availability-zones/az-overview.md) unterstützt, und den `-SkuName Standard_ZRS`-Parameter einbeziehen.   
-
+   > [!NOTE]
+   > Wenn Sie die Momentaufnahme in Speicher mit Zonenresilienz speichern möchten, erstellen Sie die Momentaufnahme in einer Region, die [Verfügbarkeitszonen](../../availability-zones/az-overview.md) unterstützt, und beziehen Sie den Parameter `-SkuName Standard_ZRS` ein.   
    
-Erstellen Sie die Momentaufnahme.
+4. Erstellen Sie die Momentaufnahme:
 
-```azurepowershell-interactive
-New-AzureRmSnapshot `
-   -Snapshot $snapshot `
-   -SnapshotName $snapshotName `
+ ```azurepowershell-interactive
+New-AzureRmSnapshot 
+   -Snapshot $snapshot 
+   -SnapshotName $snapshotName 
    -ResourceGroupName $resourceGroupName 
 ```
 
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erstellt einen virtuellen Computer aus einer Momentaufnahme, indem aus einer Momentaufnahme zuerst ein verwalteter Datenträger erstellt und dieser neue verwaltete Datenträger anschließend als Betriebssystemdatenträger angefügt wird. Weitere Informationen finden Sie im Beispiel [Erstellen eines virtuellen Computers aus einer Momentaufnahme](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+Erstellt einen virtuellen Computer aus einer Momentaufnahme, indem aus einer Momentaufnahme zuerst ein verwalteter Datenträger erstellt und dieser neue verwaltete Datenträger anschließend als Betriebssystemdatenträger angefügt wird. Weitere Informationen finden Sie im Beispiel unter [Erstellen eines virtuellen Computers aus einer Momentaufnahme mit PowerShell](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json).

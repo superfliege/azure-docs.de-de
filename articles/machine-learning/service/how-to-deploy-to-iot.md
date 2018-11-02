@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 03d692ddfd6f41fd559e9b921f0214a9cd2ada22
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7d706cf71761496fd740c729224ee4331eeb2911
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225224"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091622"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Vorbereiten der Bereitstellung von Modellen in IoT Edge
 
@@ -35,7 +35,7 @@ Befolgen Sie vor dem Bereitstellen eines Modells auf einem Edgegerät die in die
 
 * Ein [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) in Ihrem Azure-Abonnement. 
 
-* Ein trainiertes Modell. Ein Beispiel zum Trainieren eines Modells finden Sie in der Dokumentation [Train an image classification model with Azure Machine Learning (Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning)](tutorial-train-models-with-aml.md).
+* Ein trainiertes Modell. Ein Beispiel zum Trainieren eines Modells finden Sie in der Dokumentation [Train an image classification model with Azure Machine Learning (Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning)](tutorial-train-models-with-aml.md). Ein vortrainiertes Modell steht im [AI-Toolkit für Azure IoT Edge-GitHub-Repository](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial) zur Verfügung.
 
 ## <a name="prepare-the-iot-device"></a>Vorbereiten des IoT-Geräts
 
@@ -43,10 +43,7 @@ Führen Sie die Schritte in der Dokumentation [Schnellstart: Bereitstellen des e
 
 ## <a name="register-the-model"></a>Registrieren des Modells
 
-Azure IoT Edge-Module basieren auf Container-Images. Führen Sie zum Bereitstellen Ihres Modells auf einem IoT Edge-Gerät zunächst die folgenden Schritte aus, um Ihr Modell in einem Azure Machine Learning-Arbeitsbereich zu registrieren und ein Docker-Image zu erstellen. 
-
-> [!IMPORTANT]
-> Wenn Sie Azure Machine Learning zum Trainieren Ihres Modells verwendet haben, ist es möglicherweise schon in Ihrem Arbeitsbereich registriert. Überspringen Sie Schritt 3, wenn dies der Fall ist.
+Azure IoT Edge-Module basieren auf Container-Images. Führen Sie zum Bereitstellen Ihres Modells auf einem IoT Edge-Gerät zunächst die folgenden Schritte aus, um Ihr Modell in einem Arbeitsbereich des Azure Machine Learning-Diensts zu registrieren und ein Docker-Image zu erstellen. 
 
 1. Initialisieren Sie den Arbeitsbereich, und laden Sie die config.json-Datei:
 
@@ -58,6 +55,9 @@ Azure IoT Edge-Module basieren auf Container-Images. Führen Sie zum Bereitstell
     ```    
 
 1. Registrieren Sie das Modell in Ihrem Arbeitsbereich. Ersetzen Sie den Standardtext durch den Pfad, den Namen, die Tags und die Beschreibung Ihres Modells.
+
+    > [!IMPORTANT]
+    > Wenn Sie Azure Machine Learning zum Trainieren Ihres Modells verwendet haben, ist es möglicherweise schon in Ihrem Arbeitsbereich registriert. Wenn dies der Fall ist, überspringen Sie diesen Schritt. Verwenden Sie `Model.list(ws)`, um eine Liste der bei diesem Arbeitsbereich registrierten Modelle anzuzeigen.
 
     ```python
     from azureml.core.model import Model
@@ -122,7 +122,7 @@ Azure IoT benötigt die Anmeldeinformationen für die Containerregistrierung, in
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/signin/index) an.
 
-1. Wechseln Sie zu Ihrem Azure Machine Learning-Arbeitsbereich, und klicken Sie auf __Übersicht__. Klicken Sie auf den Link __Registrierung__, um zu den Einstellungen der Containerregistrierung zu wechseln.
+1. Wechseln Sie zum Arbeitsbereich Ihres Azure Machine Learning-Diensts, und klicken Sie auf __Übersicht__. Klicken Sie auf den Link __Registrierung__, um zu den Einstellungen der Containerregistrierung zu wechseln.
 
     ![Ein Bild des Containerregistrierungseintrags](./media/how-to-deploy-to-iot/findregisteredcontainer.png)
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: raynew
-ms.openlocfilehash: ac1cf5a30dee29f2737a05133aed774e86f78932
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: de093976a318b2658ff4009f4c5e314851f66b81
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163425"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403808"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gruppieren von Computern per Mapping von Computerabhängigkeiten
 
@@ -35,7 +35,7 @@ Sie müssen jedem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analyti
 > Den einem Migrationsprojekt zugeordneten Arbeitsbereich können Sie nicht ändern.
 
 ### <a name="download-and-install-the-vm-agents"></a>Herunterladen und Installieren der VM-Agents
-Beim Konfigurieren eines Arbeitsbereiches müssen Sie auf allen lokalen Computern, für die Sie eine Bewertung durchführen möchten, Agents herunterladen und installieren. Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) herunterzuladen und zu installieren.
+Beim Konfigurieren eines Arbeitsbereiches müssen Sie auf allen lokalen Computern, für die Sie eine Bewertung durchführen möchten, Agents herunterladen und installieren. Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das [Log Analytics-Gateway](../log-analytics/log-analytics-oms-gateway.md) herunterzuladen und zu installieren.
 
 1. Klicken Sie unter **Übersicht** auf **Verwalten** > **Computer**, und wählen Sie den gewünschten Computer aus.
 2. Klicken Sie in der Spalte **Abhängigkeiten** auf **Agents installieren**.

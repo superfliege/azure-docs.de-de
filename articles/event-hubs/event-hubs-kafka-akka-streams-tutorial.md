@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 063f8bc050064d191dd502b74156be85df4f0031
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 9cfaec69d3c9cea7f6f3860e8f07df6dc1638a9a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182207"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416068"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Verwenden von Akka Streams mit Event Hubs für Apache Kafka
 Dieses Tutorial veranschaulicht, wie Sie Akka Streams mit Kafka-fähigen Event Hubs verbinden können, ohne Ihre Protokollclients ändern oder Ihre eigenen Cluster ausführen zu müssen. Azure Event Hubs für Kafka unterstützt [Apache Kafka Version 1.0](https://kafka.apache.org/10/documentation.html).
@@ -30,13 +30,16 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Ausführen des Akka Streams-Producers 
 > * Ausführen des Akka Streams-Consumers
 
+> [!NOTE]
+> Dieses Beispiel ist auf [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) verfügbar.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * Lesen Sie den Artikel [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-* [Java Development Kit (JDK) 1.8 oder höher](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Java Development Kit (JDK) 1.8 oder höher](https://aka.ms/azure-jdks)
     * Führen Sie unter Ubuntu `apt-get install default-jdk` aus, um das JDK zu installieren.
     * Achten Sie darauf, dass die Umgebungsvariable „JAVA_HOME“ auf den Ordner verweist, in dem das JDK installiert ist.
 * Führen Sie den [Download](http://maven.apache.org/download.cgi) und die [Installation](http://maven.apache.org/install.html) eines binären Maven-Archivs durch.
@@ -50,11 +53,11 @@ Ein Event Hubs-Namespace ist erforderlich, um Nachrichten an einen Event Hubs-Di
 
 ## <a name="clone-the-example-project"></a>Klonen des Beispielprojekts
 
-Nachdem Sie nun über eine Kafka-fähige Event Hubs-Verbindungszeichenfolge verfügen, können Sie das Azure Event Hubs-Repository klonen und zum Unterordner `akka` navigieren:
+Nachdem Sie nun über eine Kafka-fähige Event Hubs-Verbindungszeichenfolge verfügen, können Sie das Azure Event Hubs für Kafka-Repository klonen und zum Unterordner `akka` navigieren:
 
 ```shell
-git clone https://github.com/Azure/azure-event-hubs.git
-cd azure-event-hubs/samples/kafka/akka
+git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
+cd azure-event-hubs-for-kafka/tutorials/akka/java
 ```
 
 ## <a name="run-akka-streams-producer"></a>Ausführen des Akka Streams-Producers
@@ -149,5 +152,6 @@ Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie unter f
 
 * [Informationen zu Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Informationen zu Event Hubs für Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+* [Weitere Beispiele zu Event Hubs für Kafka auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
 * Verwenden Sie [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) zum [Streamen von Ereignissen aus der lokalen Kafka-Instanz an Kafka-fähige Event Hubs in der Cloud](event-hubs-kafka-mirror-maker-tutorial.md).
 * Erfahren Sie, wie Sie [native Kafka-Anwendungen](event-hubs-quickstart-kafka-enabled-event-hubs.md) oder [Apache Flink](event-hubs-kafka-flink-tutorial.md) zum Streamen an Kafka-fähige Event Hubs verwenden.

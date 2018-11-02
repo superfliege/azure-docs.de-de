@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 10/17/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 23bf9d5fb26ee3a0f224f7a8acc2b0539a5c1607
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c9c21b9beb891a685d7e264ec55817c0045455bc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364609"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406276"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -79,7 +79,7 @@ Für Connectors findet innerhalb einer Connectorgruppe zwar ein automatischer La
 |4|16|320|1150|
 |8|32|270|1.190|
 |16|64|245|1200*|
-\* Bei diesem Computer galt ein Verbindungslimit von 800. Bei allen anderen Computern wurde das Standardlimit von 200 Verbindungen verwendet.
+\* Dieser Computer hat eine benutzerdefinierte Einstellung verwendet, um einige die Standardgrenzwerte für Verbindungen über die für .NET empfohlenen Einstellungen zu erhöhen. Es wird empfohlen, vor der Kontaktaufnahme mit dem Support einen Test mit den Standardeinstellungen durchzuführen, um diesen Grenzwert für Ihren Mandanten ändern zu lassen.
  
 >[!NOTE]
 >Bei Computern mit vier, acht und 16 Kernen ist der Unterschied beim TPS-Maximalwert minimal. Sie unterscheiden sich hauptsächlich bei der erwarteten Wartezeit.  

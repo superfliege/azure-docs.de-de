@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 0b2bf8cdb1af85e5ddbd3b18dd6dfa47bcb835b4
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: d7dbb808205c78b53277c6d916f5166a41c7e93d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432884"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638425"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
@@ -25,9 +25,9 @@ Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel
 
 Azure Storage bietet drei Typen von Speicherkonten. Jeder Typ unterstützt unterschiedliche Features und verfügt über ein eigenes Preismodell. Informieren Sie sich vor dem Erstellen eines Speicherkontos genau über diese Unterschiede, um den Kontotyp zu ermitteln, der sich für Ihre Anwendungen am besten eignet. Folgende Speicherkontotypen stehen zur Verfügung:
 
-* Konten vom Typ **Allgemein v2** (für die meisten Szenarien empfohlen)
-* Konten vom Typ **Allgemein v1**
-* Konten vom Typ **Blobspeicher**
+* **[Konten vom Typ Allgemein v2](#general-purpose-v2-accounts)** (für die meisten Szenarien empfohlen)
+* **[Konten vom Typ Allgemein v1](#general-purpose-v1-accounts)**
+* **[Blob-Speicherkonten](#blob-storage-accounts)** 
 
 Die folgende Tabelle beschreibt die Speicherkontotypen und ihre jeweiligen Funktionen:
 
@@ -41,25 +41,28 @@ Die folgende Tabelle beschreibt die Speicherkontotypen und ihre jeweiligen Funkt
 
 <sup>2</sup>Alle Speicherkonten sind per Storage Service Encryption (SSE) für ruhende Daten verschlüsselt. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md).
 
-<sup>3</sup>Die Archivebene ist nur auf Ebene der einzelnen Blobs verfügbar, nicht auf Ebene des Speicherkontos. Nur Blockblobs und Anfügeblobs können archiviert werden. Weitere Informationen finden Sie unter [Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
+<sup>3</sup>Die Ebene „Archiv“ ist nur auf Ebene der einzelnen Blobs verfügbar, nicht auf Ebene des Speicherkontos. Nur Blockblobs und Anfügeblobs können archiviert werden. Weitere Informationen finden Sie unter [Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
 <sup>4</sup>Zonenredundanter Speicher (ZRS) ist nur für Storage Standard-Konten des Typs „Allgemein v2“ verfügbar. Weitere Informationen zu ZRS finden Sie unter [Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen](storage-redundancy-zrs.md). Weitere Informationen zu weiteren Replikationsoptionen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
-### <a name="general-purpose-v2-accounts"></a>Konten vom Typ „Allgemein v2“
+### <a name="general-purpose-v2-accounts"></a>Allgemeines Konto vom Typ „General Purpose v2“
 
 Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Storage-Features und umfassen die gesamte Funktionalität von Konten des Typs „Allgemein v1“ und Blob Storage-Konten. Konten vom Typ „Allgemein v2“ bieten die niedrigsten Preise pro Gigabyte für Azure Storage sowie wettbewerbsfähige Transaktionspreise. Speicherkonten vom Typ „Allgemein v2“ unterstützen die folgenden Azure Storage-Dienste:
 
-- Blobs (alle Typen)
+- Blobs (alle Typen: Blockblob, Anfügeblob, Seitenblob)
 - Dateien
 - Datenträger
 - Warteschlangen
 - Tabellen
 
-Microsoft empfiehlt für die meisten Szenarien die Verwendung von Speicherkonten vom Typ „Allgemein v2“. Sie können ganz einfach ein Upgrade von einem Allgemein v1-Konto oder einem Blob Storage-Konto auf ein Allgemein v2-Konto durchführen. Dabei treten keine Ausfallzeiten auf, und Sie müssen weder Anwendungen neu schreiben noch Daten kopieren. Weitere Informationen zum Upgrade auf ein Allgemein v2-Konto finden Sie unter [Upgrade auf ein Allgemein v2-Speicherkonto](storage-account-upgrade.md). 
+> [!NOTE]
+> Microsoft empfiehlt für die meisten Szenarien die Verwendung von Speicherkonten vom Typ „Allgemein v2“. Sie können ganz einfach ein Upgrade von einem Allgemein v1-Konto oder einem Blob Storage-Konto auf ein Allgemein v2-Konto durchführen. Dabei treten keine Ausfallzeiten auf, und Sie müssen keine Daten kopieren.
+>
+> Weitere Informationen zum Upgrade auf ein Allgemein v2-Konto finden Sie unter [Upgrade auf ein Allgemein v2-Speicherkonto](storage-account-upgrade.md). 
 
 Allgemein v2-Speicherkonten bieten mehrere Zugriffsebenen zum Speichern von Daten basierend auf Ihren Nutzungsmustern. Weitere Informationen finden Sie unter [Zugriffsebenen für Blockblobdaten](#access-tiers-for-block-blob-data).
 
-### <a name="general-purpose-v1-accounts"></a>Konten vom Typ „Allgemein v1“
+### <a name="general-purpose-v1-accounts"></a>Allgemeines Konto vom Typ „General Purpose v1“
 
 Konten vom Typ „Allgemein v1“ ermöglichen Zugriff auf alle Azure Storage-Dienste, bieten aber möglicherweise nicht die neuesten Features oder die niedrigsten Preise pro Gigabyte. Speicherkonten vom Typ „Allgemein v1“ unterstützen die folgenden Azure Storage-Dienste:
 
@@ -103,19 +106,20 @@ Azure Storage bietet verschiedene Optionen für den Zugriff auf Blockblobdaten b
 
 Folgende Zugriffsebenen sind verfügbar:
 
-* Die Zugriffsebene **Heiß**, die für häufigen Zugriff auf Objekte im Speicherkonto optimiert ist. Der Zugriff auf Daten auf der heißen Zugriffsebene ist sehr kosteneffektiv, die Speicherkosten liegen allerdings etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
-* Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der kalten Ebene ist sehr kosteneffektiv, der Zugriff auf die Daten ist jedoch möglicherweise etwas kostenintensiver als der Zugriff auf Daten auf der heißen Ebene.
-* Die **Archivzugriffsebene**, die nur für einzelne Blockblobs verfügbar ist. Diese Ebene ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und mindestens 180 Tage lang auf der Archivebene verbleiben. Die Archivebene ist die kosteneffektivste Option für das Speichern von Daten, der Zugriff auf die Daten ist jedoch kostenintensiver als der Zugriff auf Daten auf der heißen oder kalten Ebene. 
-
 > [!NOTE]
 > Die [Premium-Zugriffsebene](../blobs/storage-blob-storage-tiers.md#premium-access-tier) ist als LRS-Konto (lokal redundanter Speicher) in den Regionen „Europa, Norden“, „USA, Osten 2“, „USA, Mitte“ und „USA, Westen“ in der eingeschränkten Vorschau verfügbar. Um zu erfahren, wie Sie sich für die Vorschau registrieren, lesen Sie den Artikel [Einführung in Azure Blob Storage Premium](http://aka.ms/premiumblob).
 
-Wenn sich das Nutzungsmusters Ihrer Daten ändern, können Sie jederzeit zwischen den Zugriffsebenen wechseln. 
+* Die Zugriffsebene **Heiß**, die für häufigen Zugriff auf Objekte im Speicherkonto optimiert ist. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist sehr kosteneffektiv, aber die Speicherkosten liegen etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
+* Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist sehr kosteneffektiv, aber der Zugriff auf die Daten ist unter Umständen etwas kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“.
+* Die Ebene **Archiv**, die nur für einzelne Blockblobs verfügbar ist. Diese Ebene ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Ebene „Archiv“ ist die kosteneffektivste Option für das Speichern von Daten, aber der Zugriff auf die Daten ist kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“ oder „Kalt“. 
+
+
+Wenn sich das Nutzungsmusters Ihrer Daten ändern, können Sie jederzeit zwischen den Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Premium-Speicherebenen (Vorschau) – „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
 > [!IMPORTANT]
-> Das Ändern der Zugriffsebene für ein vorhandenes Speicherkonto oder Blob zieht möglicherweise zusätzliche Gebühren nach sich.
+> Das Ändern der Zugriffsebene für ein vorhandenes Speicherkonto oder Blob zieht möglicherweise zusätzliche Gebühren nach sich. Weitere Informationen finden Sie im Abschnitt [Speicherkontoabrechnung](#storage-account-billing).
 
-Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Premium-Speicherebenen (Vorschau) – „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
+
 
 ## <a name="replication"></a>Replikation
 

@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: f74521f77420fcfc60e99dd3d70574d5e94cf084
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3ab32388e0a35f4abf3866aa0a84ee0628b0570c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967743"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318196"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Bereitstellen von Modellen des Azure Machine Learning-Diensts in Azure Kubernetes Service
 
@@ -27,7 +27,7 @@ Die Bereitstellung in AKS bietet automatische Skalierung, Protokollierung, Model
 
 - Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-- Ein Azure Machine Learning-Arbeitsbereich, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalten dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
+- Ein Arbeitsbereich des Azure Machine Learning Service, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalten dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
 
 - Ein trainiertes Modell für maschinelles Lernen. Wenn Sie keines besitzen, sehen Sie sich das Tutorial zum [Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md) an.
 
@@ -124,7 +124,7 @@ print(aks_target.provisioning_errors)
 Wenn Sie in Ihrem Azure-Abonnement über einen AKS-Cluster verfügen, können Sie diesen für die Bereitstellung Ihres Images verwenden. Der folgende Codeausschnitt veranschaulicht das Anfügen eines Clusters an Ihren Arbeitsbereich. 
 
 > [!IMPORTANT]
-> Es wird nur Version 1.8.7 von AKS unterstützt.
+> Es wird nur Version 1.11.2 von AKS unterstützt.
 
 ```python
 # Get the resource id from https://porta..azure.com -> Find your resource group -> click on the Kubernetes service -> Properties
@@ -137,7 +137,7 @@ cluster_name='my-existing-aks'
 aks_target = AksCompute.attach(workspace=ws, name=cluster_name, resource_id=resource_id)
 
 # Wait for the operation to complete
-aks_target.wait_for_provisioning(True)
+aks_target.wait_for_completion(True)
 ```
 
 ## <a name="deploy-your-web-service"></a>Bereitstellen des Webdiensts

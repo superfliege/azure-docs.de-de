@@ -4,14 +4,14 @@ description: Bietet eine Übersicht über bekannte Probleme im Azure Migrate-Die
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 906c6e56b670dfc26b5905a453fd43a3c72086c3
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433496"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945517"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
@@ -40,6 +40,14 @@ Zum Aktivieren der Erfassung von Datenträger- und Netzwerkleistungsdaten änder
 Sie können zum Abschnitt **Grundlagen** auf der Seite **Übersicht** des Projekts navigieren, um den exakten Speicherort der Metadaten zu ermitteln. Der Speicherort wird von Azure Migrate zufällig innerhalb der Geografie ausgewählt und kann nicht geändert werden. Wenn Sie ein Projekt nur in einer bestimmten Region erstellen möchten, können Sie das Migrationsprojekt mit den REST-APIs erstellen und die gewünschte Region übergeben.
 
    ![Projektspeicherort](./media/troubleshooting-general/geography-location.png)
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Ich verwende die OVA für die kontinuierliche Ermittlung, aber die VMs, die in meiner lokalen Umgebung gelöscht wurden, werden immer noch im Portal angezeigt.
+
+Die Appliance für die kontinuierliche Ermittlung sammelt nur kontinuierlich Leistungsdaten. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (etwa das Hinzufügen von VMs, Löschvorgänge, hinzugefügte Datenträger und Ähnliches). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
+
+1. Hinzugefügte Elemente (VMs, Datenträger, Kerne und Ähnliches): Damit diese Änderungen im Azure-Portal berücksichtigt werden, können Sie die Ermittlung über die Appliance beenden und anschließend wieder starten. Dadurch wird sichergestellt, dass die Änderungen im Azure Migrate-Projekt aktualisiert werden.
+
+2. Gelöschte VMs: Die Löschung von VMs wird aufgrund des Entwurfs der Appliance auch dann nicht berücksichtigt, wenn Sie die Ermittlung beenden und wieder starten. Der Grund: Die Daten nachfolgender Ermittlungen werden an ältere Ermittlungen angefügt und nicht überschrieben. In diesem Fall können Sie die VM im Portal einfach ignorieren, indem Sie sie aus Ihrer Gruppe entfernen und die Bewertung neu berechnen.
 
 ## <a name="collector-errors"></a>Collector-Fehler
 

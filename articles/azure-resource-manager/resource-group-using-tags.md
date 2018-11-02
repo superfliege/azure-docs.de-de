@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 82a48c902b72b5aca546c45032a13e831533f9ee
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b6386f4a23a0ca6d0134f8c4e298a3f7100cc1d6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393467"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466952"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen
 
@@ -31,7 +31,7 @@ Um Tags auf Ressourcen anwenden zu können, muss der Benutzer Schreibzugriff auf
 
 ## <a name="powershell"></a>PowerShell
 
-Die Beispiele in diesem Artikel erfordern Version 6.0 oder höher von Azure PowerShell. Wenn Sie keine Version 6.0 oder höher haben, [aktualisieren Sie Ihre Version](/powershell/azure/install-azurerm-ps).
+Die Beispiele in diesem Artikel erfordern Version 6.0 oder höher von Azure PowerShell. [Aktualisieren Sie Ihre Version](/powershell/azure/install-azurerm-ps), wenn Sie nicht über Version 6.0 oder höher verfügen.
 
 Verwenden Sie Folgendes, um die vorhandenen Tags für eine *Ressourcengruppe* anzuzeigen:
 
@@ -264,13 +264,11 @@ Das Azure-Portal und PowerShell verwenden im Hintergrund die [Resource Manager-R
 
 ## <a name="tags-and-billing"></a>Tags und Abrechnung
 
-Abrechnungsdaten können mithilfe von Tags gruppiert werden. Beispiel: Wenn Sie mehrere virtuelle Computer für verschiedene Organisationen betreiben, gruppieren Sie die Nutzung mithilfe von Tags nach Kostenstelle. Mit Tags können Sie auch Kosten nach Runtimeumgebung kategorisieren, beispielsweise zur Abrechnung der Nutzung virtueller Computer in der Produktionsumgebung.
+Abrechnungsdaten können mithilfe von Tags gruppiert werden. Wenn Sie beispielsweise mehrere virtuelle Computer für verschiedene Organisationen betreiben, können Sie die Nutzung mithilfe von Tags nach Kostenstelle organisieren. Mit Tags können Sie auch Kosten nach Runtimeumgebung kategorisieren, beispielsweise zur Abrechnung der Nutzung virtueller Computer in der Produktionsumgebung.
 
-Informationen zu Tags können Sie über die [Azure-Ressourcennutzungs- und RateCard-APIs](../billing/billing-usage-rate-card-overview.md) oder aus der Nutzungsdatei im CSV-Format abrufen. Sie laden die Nutzungsdatei aus dem [Azure-Kontoportal](https://account.windowsazure.com/) oder dem [EA-Portal](https://ea.azure.com) herunter. Weitere Informationen zum programmgesteuerten Zugriff auf Abrechnungsinformationen finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](../billing/billing-usage-rate-card-overview.md). Hinweise zu REST-API-Vorgängen finden Sie unter [Azure Billing REST API Reference (Preview)](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)(in englischer Sprache).
+Informationen zu Tags können Sie über die [Azure-Ressourcennutzungs- und RateCard-APIs](../billing/billing-usage-rate-card-overview.md) oder aus der Nutzungsdatei im CSV-Format abrufen. Sie laden die Nutzungsdatei aus dem [Azure-Kontocenter](https://account.azure.com/Subscriptions) oder dem Azure-Portal herunter. Weitere Informationen finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](../billing/billing-download-azure-invoice-daily-usage-date.md). Wählen Sie beim Herunterladen der Nutzungsdatei aus dem Azure-Kontocenter die Option **Version 2**. Für Dienste, die die Verwendung von Tags für die Abrechnung unterstützen, sind die Tags in der Spalte **Tags** enthalten.
 
-Wenn Sie die CSV-Nutzungsdatei für Dienste herunterladen, die die Verwendung von Tags für die Abrechnung unterstützen, sind die Tags in der Spalte **Tags** enthalten. Weitere Informationen finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](../billing/billing-understand-your-bill.md).
-
-![Anzeigen von Tags in der Abrechnung](./media/resource-group-using-tags/billing_csv.png)
+Hinweise zu REST-API-Vorgängen finden Sie unter [Azure Billing REST API Reference (Preview)](/rest/api/billing/)(in englischer Sprache).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

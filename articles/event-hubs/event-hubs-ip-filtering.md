@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs – IP-Verbindungsfilter | Microsoft-Dokumentation
+title: Azure Event Hubs – IP-Filter | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe der IP-Filterung Verbindungen von bestimmten IP-Adressen mit Azure Event Hubs blockieren.
 services: event-hubs
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: c229a6f84096ecca892b74f7ce65cb831fa50be3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d0114821b5239146f64dde0b01652dc320994585
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886176"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408148"
 ---
 # <a name="use-ip-filters"></a>Verwenden von IP-Filtern
 
-Für Szenarien, in denen nur von bestimmten bekannten Websites aus auf Azure Event Hubs zugegriffen werden kann, können Sie mithilfe des Features *IP-Filter* Regeln zum Ablehnen oder Akzeptieren von Datenverkehr konfigurieren, der von bestimmten IPv4-Adressen stammt. Bei diesen Adressen kann es sich beispielsweise um die Adressen eines unternehmenseigenen NAT-Gateways handeln.
+Für Szenarien, in denen nur von bestimmten bekannten Websites aus auf Azure Event Hubs zugegriffen werden soll, können Sie mithilfe des Features *IP-Filter* Regeln zum Ablehnen oder Akzeptieren von Datenverkehr konfigurieren, der von bestimmten IPv4-Adressen stammt. Bei diesen Adressen kann es sich beispielsweise um die Adressen eines unternehmenseigenen NAT-Gateways handeln.
 
 ## <a name="when-to-use"></a>Einsatzgebiete
 
-Das Blockieren bestimmter IP-Adressen für Event Hubs-Endpunkte ist in zwei wichtigen Anwendungsfällen hilfreich:
+Das Blockieren bestimmter IP-Adressen für Event Hubs ist in zwei wichtigen Anwendungsfällen hilfreich:
 
 - Ihre Event Hubs sollen nur Datenverkehr aus einem bestimmten IP-Adressbereich empfangen und jeglichen anderen Datenverkehr ablehnen. Ein Beispiel wäre etwa, wenn Sie Event Hubs mit [Azure Express Route][express-route] verwenden, um private Verbindungen mit Ihrer lokalen Infrastruktur zu erstellen. 
 - Sie müssen Datenverkehr von IP-Adressen ablehnen, die vom Event Hubs-Administrator als verdächtig eingestuft wurden.
@@ -47,12 +47,12 @@ Wenn Sie beispielsweise Adressen im Bereich 70.37.104.0/24 zulassen und alle and
 > [!NOTE]
 > Das Ablehnen von IP-Adressen kann andere Azure-Dienste (etwa Azure Stream Analytics, Azure Virtual Machines oder den Device Explorer im Portal) an der Interaktion mit Event Hubs hindern.
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNET-Regel mit Azure Resource Manager-Vorlagen
+### <a name="creating-an-ip-filter-rule-with-azure-resource-manager-templates"></a>Erstellen einer IP-Filterregel mit Azure Resource Manager-Vorlagen
 
 > [!IMPORTANT]
 > Virtuelle Netzwerke werden in den Tarifen **Standard** und **Dediziert** von Event Hubs unterstützt. Sie werden nicht im Basic-Tarif unterstützt. 
 
-Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Event Hubs-Namespace eine VNET-Regel hinzufügen.
+Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Event Hubs-Namespace eine IP-Filterregel hinzufügen.
 
 Vorlagenparameter:
 

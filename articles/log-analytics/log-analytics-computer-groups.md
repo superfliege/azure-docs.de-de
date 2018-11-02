@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044296"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408539"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Computergruppen in Log Analytics-Protokollsuchen
 
@@ -62,7 +62,7 @@ Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche im Azure-P
 
 
 ### <a name="active-directory"></a>Active Directory
-Wenn Sie Log Analytics für das Importieren von Active Directory-Gruppenmitgliedschaften konfigurieren, werden dabei die Gruppenmitgliedschaften von in eine Domäne eingebundenen Computern mit dem OMS-Agent analysiert.  Für jede Sicherheitsgruppe in Active Directory wird in Log Analytics eine Computergruppe erstellt, und jeder Computer wird der Computergruppe hinzugefügt, die den Sicherheitsgruppen entspricht, in denen er Mitglied ist.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert.  
+Wenn Sie Log Analytics für das Importieren von Active Directory-Gruppenmitgliedschaften konfigurieren, werden dabei die Gruppenmitgliedschaften von in eine Domäne eingebundenen Computern mit dem Log Analytics-Agent analysiert.  Für jede Sicherheitsgruppe in Active Directory wird in Log Analytics eine Computergruppe erstellt, und jeder Computer wird der Computergruppe hinzugefügt, die den Sicherheitsgruppen entspricht, in denen er Mitglied ist.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert.  
 
 Sie können Log Analytics zum Importieren von Active Directory-Sicherheitsgruppen in den **Erweiterten Einstellungen** von Log Analytics im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **Active Directory** und anschließend **Active Directory-Gruppenmitgliedschaften von Computern importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
 
@@ -71,7 +71,7 @@ Sie können Log Analytics zum Importieren von Active Directory-Sicherheitsgruppe
 Wenn Gruppen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-Wenn Sie Log Analytics für das Importieren von WSUS-Gruppenmitgliedschaften konfigurieren, werden dabei die Zielgruppenmitgliedschaften aller Computer mit dem OMS-Agent analysiert.  Bei Verwendung clientseitiger Zielgruppen wird die Gruppenmitgliedschaft aller Computer, die mit Log Analytics verbunden und Teil einer WSUS-Zielgruppe sind, in Log Analytics importiert. Bei Verwendung serverseitiger Zielgruppen sollte der OMS-Agent auf dem WSUS-Server installiert sein, damit die Informationen zur Gruppenmitgliedschaft in Log Analytics importiert werden können.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert. 
+Wenn Sie Log Analytics für das Importieren von WSUS-Gruppenmitgliedschaften konfigurieren, werden dabei die Zielgruppenmitgliedschaften aller Computer mit dem Log Analytics-Agent analysiert.  Bei Verwendung clientseitiger Zielgruppen wird die Gruppenmitgliedschaft aller Computer, die mit Log Analytics verbunden und Teil einer WSUS-Zielgruppe sind, in Log Analytics importiert. Bei Verwendung serverseitiger Zielgruppen sollte der Log Analytics-Agent auf dem WSUS-Server installiert sein, damit die Informationen zur Gruppenmitgliedschaft in Log Analytics importiert werden können.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert. 
 
 Sie können Log Analytics zum Importieren von WSUS-Gruppen in den **Erweiterten Einstellungen** von Log Analytics im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **WSUS** und anschließend **WSUS-Gruppenmitgliedschaften importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
 

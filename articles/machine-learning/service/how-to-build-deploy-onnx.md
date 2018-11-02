@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: d4ce2dc67b0d9229ac2605ab317594ea345c19b2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 190b7fff24c9d6b3dee86471b56ad68c962e51ce
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434074"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116877"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX und Azure Machine Learning: Erstellen und Bereitstellen von interoperablen KI-Modellen
 
@@ -28,7 +28,7 @@ ONNX wird für alle Microsoft-Produkte, einschließlich Azure und Windows, unter
 ## <a name="why-choose-onnx"></a>Was spricht für ONNX?
 Die durch ONNX erreichte Interoperabilität ermöglicht es, großartige Ideen schneller in die Produktionsumgebung zu übernehmen. Mit ONNX können Datenanalysten mit ihrem bevorzugten Framework arbeiten. Gleichermaßen können auch Entwickler davon profitieren, indem Sie weniger Zeit damit verbringen, Modelle für die Produktionsumgebung vorzubereiten oder diese in der Cloud und Edge-übergreifend bereitzustellen.  
 
-Sie können ONNX-Modelle aus vielen Frameworks exportieren, darunter PyTorch, Chainer, Microsoft Cognitive Toolkit (CNTK), MXNet und ML.Net. Für andere Frameworks gibt es Konverter wie z.B. TensorFlow, Keras oder SciKit-Learn.
+Sie können ONNX-Modelle aus vielen Frameworks erstellen, darunter PyTorch, Chainer, Microsoft Cognitive Toolkit (CNTK), MXNet, ML.Net, TensorFlow, Keras, SciKit-Learn und weitere.
 
 Darüber hinaus gibt es ein ganzes Ökosystem von Tools zur Visualisierung und Beschleunigung von ONNX-Modellen. Für gängige Szenarios stehen ebenfalls eine Reihe von vorab trainierten ONNX-Modellen zur Verfügung.
 
@@ -36,18 +36,17 @@ Mit Azure Machine Learning und der ONNX-Runtime können [ONNX-Modelle in der Clo
 
 [ ![ONNX-Flussdiagramm mit Training, Konvertern und Bereitstellung](media/concept-onnx/onnx.png) ] (./media/concept-onnx/onnx.png#lightbox)
 
-## <a name="create-onnx-models-in-azure"></a>Erstellen von ONNX-Modellen in Azure
+## <a name="get-onnx-models"></a>Abrufen von ONNX-Modellen
 
-Es gibt verschiedene Möglichkeiten, um ONNX-Modelle zu erstellen:
-+ Trainieren eines Modells im Azure Machine Learning-Dienst und Konvertieren bzw. Exportieren des Modells nach ONNX (siehe Beispiel am Ende dieses Artikels)
+Es gibt verschiedene Möglichkeiten, an ONNX-Modelle zu gelangen:
++ Rufen Sie ein vortrainiertes ONNX-Modell im [ONNX-Modellzoo](https://github.com/onnx/models) ab (siehe dazu das Beispiel am Ende dieses Artikels)
++ Generieren eines benutzerdefinierten ONNX-Modells über [Azure Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
++ Konvertieren eines vorhandenen Modells aus einem anderen Format nach ONNX (siehe dazu das Beispiel am Ende dieses Artikels) 
++ Trainieren eines neuen ONNX-Modells im Azure Machine Learning-Dienst (siehe dazu das Beispiel am Ende dieses Artikels)
 
-+ Herunterladen eines vorab trainierten ONNX-Modells aus dem [ONNX Modell Zoo](https://github.com/onnx/models)
+## <a name="saveconvert-your-models-to-onnx"></a>Speichern bzw. Konvertieren von Modellen nach ONNX
 
-+ Generieren eines benutzerdefinierten ONNX-Modells über [Azure Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)
-
-## <a name="exportconvert-your-models-to-onnx"></a>Exportieren bzw. Konvertieren von Modellen nach ONNX
-
-Vorhandene Modelle können Sie auch nach ONNX konvertieren.
+Sie können am Ende Ihrer Schulung vorhandene Modelle nach ONNX konvertieren oder sie als ONNX speichern.
 
 |Framework für Modell|Konvertierungsbeispiel oder -Tool|
 |-----|-------|
@@ -101,7 +100,7 @@ Die vollständige API-Referenz finden Sie im Dokument zur [Referenzdokumentation
 
 Hier sehen Sie ein Beispiel für die Bereitstellung eines ONNX-Modells:
 
-1. Initialisieren Sie Ihren Azure Machine Learning-Arbeitsbereich. Wenn Sie noch keinen haben, erfahren Sie [in diesem Schnellstart](quickstart-get-started.md), wie Sie einen Arbeitsbereich einrichten.
+1. Initialisieren Sie Ihren Azure Machine Learning-Dienstarbeitsbereich. Wenn Sie noch keinen haben, erfahren Sie [in diesem Schnellstart](quickstart-get-started.md), wie Sie einen Arbeitsbereich einrichten.
 
    ```python
    from azureml.core import Workspace
@@ -172,10 +171,11 @@ Hier sehen Sie ein Beispiel für die Bereitstellung eines ONNX-Modells:
 
    Die Datei `myenv.yml` beschreibt die für das Image benötigten Abhängigkeiten. In diesem [Tutorial](tutorial-deploy-models-with-aml.md#create-environment-file) finden Sie Anweisungen zum Erstellen einer Umgebungsdatei, ähnlich dieser Beispieldatei:
 
-   ```
+   ```python
    from azureml.core.conda_dependencies import CondaDependencies 
 
    myenv = CondaDependencies()
+   myenv.add_pip_package("numpy")
    myenv.add_pip_package("azureml-core")
    myenv.add_pip_package("onnxruntime")
 
@@ -191,12 +191,16 @@ Hier sehen Sie ein Beispiel für die Bereitstellung eines ONNX-Modells:
 
 ## <a name="examples"></a>Beispiele
  
-Die folgenden Notebooks veranschaulichen, wie Sie ONNX-Modelle mit Azure Machine Learning bereitstellen können: 
-+ `/onnx/onnx-inference-mnist.ipynb`
+Die folgenden Notebooks veranschaulichen, wie Sie ONNX-Modelle erstellen und mit Azure Machine Learning bereitstellen können: 
++ `/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb` 
++ `/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb`
++ `/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb`
+
+Die folgenden Notebooks veranschaulichen, wie Sie vorhandene ONNX-Modelle mit Azure Machine Learning bereitstellen können: 
++ [onnx/onnx-inference-mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist.ipynb) 
++ [onnx/onnx-inference-emotion-recognition.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-emotion-recognition.ipynb)
  
-+ `/onnx/onnx-inference-emotion-recognition.ipynb`
- 
-Notebook abrufen:
+Rufen Sie diese Notebooks ab:
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

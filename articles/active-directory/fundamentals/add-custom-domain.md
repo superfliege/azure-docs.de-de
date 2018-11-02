@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 30b4a038c2ad9bd86f2ba78d52ed3754acec07f0
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 59743df45cf2c7810404d9e6c636790c2855cf74
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785256"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023116"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal
 Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen im Format „*domänenname*.onmicrosoft.com“. Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können der Liste jedoch die Namen Ihrer Organisation hinzufügen. Durch das Hinzufügen von benutzerdefinierten Domänennamen können Sie Benutzernamen erstellen, die Ihren Benutzern vertraut sind, beispielsweise *alain@contoso.com*.
@@ -28,7 +28,7 @@ Bevor Sie einen benutzerdefinierten Domänennamen hinzufügen können, müssen S
 ## <a name="create-your-directory-in-azure-ad"></a>Erstellen Ihres Verzeichnisses in Azure AD
 Nachdem Sie Ihren Domänennamen erhalten haben, können Sie Ihr erstes Azure AD-Verzeichnis erstellen.
 
-1. Melden Sie sich mit dem Konto eines Abonnementbesitzers für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an, und wählen Sie dann **Azure Active Directory** aus.
+1. Melden Sie sich mit einem Konto mit der Rolle **Besitzer** für das Abonnement beim [Azure-Portal](https://portal.azure.com/) für Ihr Verzeichnis an, und wählen Sie dann **Azure Active Directory** aus. Weitere Informationen zu Abonnementrollen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
 
     ![Screenshot des Azure-Portals](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 

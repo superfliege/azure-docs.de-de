@@ -8,12 +8,12 @@ ms.date: 06/19/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 044cb56b8991a1eb2dd6a1d35be621f2ffab3250
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 40a1955e88b23ecfb86412b388413b920dd2eb1a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064316"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407604"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Beheben von Fehlern beim Integrieren von Lösungen
 
@@ -59,9 +59,11 @@ Lesen Sie die Benachrichtigungen in der oberen rechten Ecke des Azure-Portals, o
 
 ## <a name="mma-extension-failures"></a>MMA-Erweiterungsfehler
 
-Bei der Bereitstellung einer Lösung wird eine Vielzahl zugehöriger Ressourcen bereitgestellt. Eine dieser Ressourcen ist die Microsoft Monitoring Agent-Erweiterung oder der OMS-Agent für Linux. Dies sind VM-Erweiterungen, die vom Gast-Agent des virtuellen Computers installiert werden. Dieser ist zuständig für die Kommunikation mit dem konfigurierten OMS-Arbeitsbereich (Operations Management Suite) zum Zweck der späteren Koordination des Herunterladens von Binär- und anderen Dateien, von denen die Lösung, die Sie integrieren, abhängt, sobald ihre Ausführung beginnt.
-Auf Fehler bei der Installation von MMA oder des OMS-Agents für Linux werden Sie zumeist über eine Benachrichtigung im Notifications Hub aufmerksam. Wenn Sie auf diese Benachrichtigung klicken, erhalten Sie weitere Informationen zum jeweiligen Fehler. Durch Navigieren zur Ressource „Ressourcengruppen“ und dann zum darin enthaltenen Element „Bereitstellungen“ werden auch Details zu den aufgetretenen Bereitstellungsfehlern angezeigt.
-Die Installation des MMA oder OMS-Agents für Linux kann aus verschiedenen Gründen fehlschlagen, wobei die Schritte zur Behebung dieser Fehler je nach Problem unterschiedlich sind. Es folgen spezifische Schritte zur Problembehandlung.
+[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
+
+Bei der Bereitstellung einer Lösung wird eine Vielzahl zugehöriger Ressourcen bereitgestellt. Eine dieser Ressourcen ist die Microsoft Monitoring Agent-Erweiterung oder der Log Analytics-Agent für Linux. Dies sind VM-Erweiterungen, die vom Gast-Agent des virtuellen Computers installiert werden. Dieser ist zuständig für die Kommunikation mit dem konfigurierten Log Analytics-Arbeitsbereich zum Zweck der späteren Koordination des Herunterladens von Binär- und anderen Dateien, von denen die von Ihnen integrierte Lösung abhängt, sobald die Ausführung beginnt.
+Auf Fehler bei der Installation von MMA oder des Log Analytics-Agents für Linux werden Sie zumeist über eine Benachrichtigung im Notifications Hub aufmerksam. Wenn Sie auf diese Benachrichtigung klicken, erhalten Sie weitere Informationen zum jeweiligen Fehler. Durch Navigieren zur Ressource „Ressourcengruppen“ und dann zum darin enthaltenen Element „Bereitstellungen“ werden auch Details zu den aufgetretenen Bereitstellungsfehlern angezeigt.
+Die Installation von MMA oder des Log Analytics-Agents für Linux kann aus verschiedenen Gründen fehlschlagen, wobei die Schritte zur Behebung dieser Fehler je nach Problem unterschiedlich sind. Es folgen spezifische Schritte zur Problembehandlung.
 
 Im folgenden Abschnitt werden verschiedene Probleme beschrieben, die bei der Integration auftreten können und die einen Fehler bei der Bereitstellung der MMA-Erweiterung verursachen.
 

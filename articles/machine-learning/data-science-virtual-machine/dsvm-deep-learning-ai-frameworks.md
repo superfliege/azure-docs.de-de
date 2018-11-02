@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 891059a440189112c834f3402725781a6b4a3960
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 234e9233e69877c9afe79a5a053a4310d013a9ab
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952823"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646109"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Deep Learning- und KI-Frameworks
 Die [Data Science-VM](http://aka.ms/dsvm) (DSVM) und die [Deep Learning-VM](http://aka.ms/dsvm/deeplearning) unterstützen eine Reihe von Deep Learning-Frameworks zur Unterstützung bei der Erstellung von KI-Anwendungen mit Predictive Analytics und kognitiven Fähigkeiten wie Bild- und Sprachverständnis. 
@@ -174,7 +174,7 @@ Melden Sie sich mithilfe von X2Go bei dem virtuellen Computer an. Starten Sie de
 
     sudo systemctl start digits
 
-Das Starten des Diensts dauert ca. eine Minute. Starten Sie einen Webbrowser, und navigieren Sie zu `http://localhost:5000`.
+Das Starten des Diensts dauert ca. eine Minute. Starten Sie einen Webbrowser, und navigieren Sie zu `http://localhost:5000`. Beachten Sie, dass DIGITS keine sichere Anmeldung bereitstellt und daher nicht außerhalb der VM verfügbar gemacht werden sollte.
 
 
 

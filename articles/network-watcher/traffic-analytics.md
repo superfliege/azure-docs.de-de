@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: ad26772650cf052926a2534d343f64765f47b78f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2b057a94022077aa210b1e4ebb6122eaf350a40b
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333393"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457407"
 ---
 # <a name="traffic-analytics"></a>Datenverkehrsanalyse
 
@@ -53,7 +53,9 @@ Bei der Datenverkehrsanalyse werden die unformatierten NSG-Flussprotokolle unter
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Sie können die Datenverkehrsanalyse für Netzwerksicherheitsgruppen in einer der folgenden Regionen verwenden: „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Mitte“, „USA, Westen“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Australien, Osten“, „Australien, Südosten“ und „Asien, Südosten“. Der Log Analytics-Arbeitsbereich muss in einer der folgenden Regionen vorhanden sein: „USA, Westen-Mitte“; „USA, Osten“; „Europa, Westen“; „Vereinigtes Königreich, Süden“; „Australien, Südosten“ oder „Asien, Südosten“.
+Sie können Traffic Analytics für Netzwerksicherheitsgruppen in einer der folgenden Regionen verwenden: „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Mitte“, „USA, Westen“, „USA, Westen 2“, „Kanada, Mitte“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Japan, Osten“, „Indien, Mitte“, „Australien, Osten“, „Australien, Südosten“ und „Asien, Südosten“. 
+
+Der Log Analytics-Arbeitsbereich muss in einer der folgenden Regionen vorhanden sein: „USA, Westen-Mitte“, „USA, Osten“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Kanada, Mitte“, „Japan, Osten“, „Indien, Mitte“, „Australien, Südosten“ oder „Asien, Südosten“.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -135,7 +137,7 @@ Wählen Sie die folgenden Optionen aus, wie in der Abbildung dargestellt:
 2. Wählen Sie ein vorhandenes Speicherkonto zum Speichern der Flussprotokolle aus. Wenn Sie die Daten dauerhaft speichern möchten, legen Sie den Wert auf *0* fest. Ihnen werden die Azure Storage-Gebühren für das Speicherkonto berechnet.
 3. Legen Sie **Vermerkdauer** auf die Anzahl der Tage fest, die die Daten gespeichert werden sollen.
 4. Wählen Sie *Ein* als **Traffic Analytics-Status** aus.
-5. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich (OMS) aus, oder wählen Sie **Neuen Arbeitsbereich erstellen** aus, und erstellen Sie dann einen neuen Arbeitsbereich. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer [unterstützten Region](#traffic-analytics-supported-regions) befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+5. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus, oder wählen Sie **Neuen Arbeitsbereich erstellen**, und erstellen Sie dann einen neuen Arbeitsbereich. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer [unterstützten Region](#traffic-analytics-supported-regions) befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Der Log Analytics-Arbeitsbereich, der die Lösung für die Datenverkehrsanalyse hostet, und die Netzwerksicherheitsgruppen (NSGs) müssen sich nicht in derselben Region befinden. Sie können die Datenverkehrsanalyse beispielsweise in einem Arbeitsbereich in der Region „Europa, Westen“ mit Netzwerksicherheitsgruppen in den Regionen „USA, Osten“ und „USA, Westen“ verwenden. Es können mehrere NSGs im selben Arbeitsbereich konfiguriert werden.
 6. Wählen Sie **Speichern**aus.

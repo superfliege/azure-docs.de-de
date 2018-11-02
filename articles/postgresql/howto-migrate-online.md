@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: 9ab5d4615a8baf763d0b7ee47bf0890124f8665c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.date: 10/11/2018
+ms.openlocfilehash: 80e5d30677735b35d90fda6288d7bf6f2ea4aa1b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292541"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093832"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Migration zu Azure Database for PostgreSQL mit minimaler Ausfallzeit
 Mit der neu eingeführten **fortlaufenden Synchronisationsfunktion** für den [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) können Sie PostgreSQL-Migrationen zu Azure Database for PostgreSQL mit minimaler Ausfallzeit ausführen. Diese Funktion beschränkt die Ausfallzeit der Anwendung.
@@ -28,4 +28,4 @@ DMS-Migration von PostgreSQL-Quellen ist derzeit als Vorschau verfügbar. Wenn S
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Sehen Sie sich das Video [App Modernization with Microsoft Azure (App-Modernisierung mit Microsoft Azure)](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102) an, das eine Demo zum Migrieren von PostgreSQL-Apps zu Azure Database for PostgreSQL enthält.
-- Registrieren Sie sich für eine begrenzte Vorschau von Migrationen von PostgreSQL zu Azure Database for PostgreSQL mit minimaler Ausfallzeit über die Azure DMS-[Vorschauseite](https://aka.ms/dms-preview) an.
+- Sehen Sie sich das Tutorial [Migrieren von PostgreSQL zu Azure Database for PostgreSQL (online) mit DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online) an.

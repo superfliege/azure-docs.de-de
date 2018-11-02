@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 1ec60300d179edf69e32dc07653b6c69c7cc8e52
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: cf540caebd5f993cdba0d85f4109a6e78e201658
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42144877"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378753"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
 
@@ -93,7 +93,7 @@ Sie können ein virtuelles Netzwerk mittels VNET-Peering mit anderen virtuellen 
 
 ### <a name="peering"></a>Peering
 
-Bei Verwendung des [Peerings virtueller Netzwerke](virtual-network-peering-overview.md) können sich die virtuellen Netzwerke in derselben oder in unterschiedlichen unterstützten Azure-Regionen befinden. Die virtuellen Netzwerke können sich im selben oder in unterschiedlichen Azure-Abonnements befinden. Beide Abonnements müssen jedoch demselben Azure Active Directory-Mandanten zugewiesen sein. Es wird empfohlen, sich mit den [Peeringanforderungen und -einschränkungen](virtual-network-manage-peering.md#requirements-and-constraints) vertraut zu machen, bevor Sie ein Peering erstellen. Die Bandbreite zwischen Ressourcen in virtuellen Netzwerken, die mittels Peering in derselben Region miteinander verknüpft sind, ist dieselbe wie zwischen Ressourcen, die sich im selben virtuellen Netzwerk befinden.
+Bei Verwendung des [Peerings virtueller Netzwerke](virtual-network-peering-overview.md) können sich die virtuellen Netzwerke in derselben oder in unterschiedlichen unterstützten Azure-Regionen befinden. Die virtuellen Netzwerke können sich im selben oder in unterschiedlichen Azure-Abonnements befinden (auch in Abonnements, die zu verschiedenen Azure Active Directory-Mandanten gehören). Es wird empfohlen, sich mit den [Peeringanforderungen und -einschränkungen](virtual-network-manage-peering.md#requirements-and-constraints) vertraut zu machen, bevor Sie ein Peering erstellen. Die Bandbreite zwischen Ressourcen in virtuellen Netzwerken, die mittels Peering in derselben Region miteinander verknüpft sind, ist dieselbe wie zwischen Ressourcen, die sich im selben virtuellen Netzwerk befinden.
 
 ### <a name="vpn-gateway"></a>VPN-Gateway
 

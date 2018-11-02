@@ -1,19 +1,19 @@
 ---
 title: Grundlegendes zur Azure IoT Hub MQTT-Unterstützung | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Unterstützung für Geräte, die unter Verwendung des MQTT-Protokolls eine Verbindung mit einem geräteseitigen IoT Hub-Endpunkt herstellen. Enthält Informationen zur integrierten MQTT-Unterstützung der Azure IoT-Geräte-SDKs.'
-author: fsautomata
+author: rezasherafat
 manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/05/2018
-ms.author: elioda
-ms.openlocfilehash: 2e45422ca6a861894193600eff17f192bc20b357
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.date: 10/12/2018
+ms.author: rezas
+ms.openlocfilehash: 6e2ab773f865a8e52c7b04b94a188dd244540e0d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42145376"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344964"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -107,7 +107,7 @@ Führen Sie im Device Explorer folgende Schritte durch:
 
 Für die MQTT-Pakete CONNECT und DISCONNECT löst IoT Hub ein Ereignis im Kanal **Vorgangsüberwachung** aus. Dieses Ereignis weist zusätzliche Informationen auf, mit deren Hilfe Sie Konnektivitätsprobleme beheben können.
 
-Die Geräte-App kann eine **Will**-Nachricht im **CONNECT**-Paket angeben. Für die Geräte-App sollte `devices/{device_id}/messages/events/{property_bag}` oder `devices/{device_id}/messages/events/{property_bag}` als **Will**-Themenname verwendet werden, um festzulegen, dass **Will**-Nachrichten als Telemetrienachricht weitergeleitet werden sollen. Wenn die Netzwerkverbindung geschlossen ist, aber vorher kein **DISCONNECT**-Paket vom Gerät eingegangen ist, sendet IoT Hub in diesem Fall die im **CONNECT**-Paket bereitgestellte **Will**-Nachricht an den Telemetriekanal. Der Telemetriekanal kann entweder der Standardendpunkt **Ereignisse** oder ein benutzerdefinierter Endpunkt sein, der per IoT Hub-Routing definiert wird. Die Nachricht verfügt über die **iothub-MessageType**-Eigenschaft, der der Wert **Will** zugewiesen ist.
+Die Geräte-App kann eine **Will**-Nachricht im **CONNECT**-Paket angeben. Für die Geräte-App sollte `devices/{device_id}/messages/events/` oder `devices/{device_id}/messages/events/{property_bag}` als **Will**-Themenname verwendet werden, um festzulegen, dass **Will**-Nachrichten als Telemetrienachricht weitergeleitet werden sollen. Wenn die Netzwerkverbindung geschlossen ist, aber vorher kein **DISCONNECT**-Paket vom Gerät eingegangen ist, sendet IoT Hub in diesem Fall die im **CONNECT**-Paket bereitgestellte **Will**-Nachricht an den Telemetriekanal. Der Telemetriekanal kann entweder der Standardendpunkt **Ereignisse** oder ein benutzerdefinierter Endpunkt sein, der per IoT Hub-Routing definiert wird. Die Nachricht verfügt über die **iothub-MessageType**-Eigenschaft, der der Wert **Will** zugewiesen ist.
 
 ### <a name="tlsssl-configuration"></a>TLS/SSL-Konfiguration
 
@@ -228,6 +228,8 @@ Weitere Informationen finden Sie im [Entwicklerhandbuch zu Gerätezwillingen][ln
 
 ### <a name="update-device-twins-reported-properties"></a>Aktualisieren der gemeldeten Eigenschaften des Gerätezwillings
 
+Zum Aktualisieren der gemeldeten Eigenschaften gibt das Gerät eine Anforderung an den IoT Hub in Form einer Veröffentlichung über ein designiertes MQTT-Thema aus. Nach dem Verarbeiten dieser Anforderung antwortet IoT Hub mit dem Erfolgs- oder Fehlerstatus des Aktualisierungsvorgangs in Form einer Veröffentlichung unter einem anderen Thema. Dieses Thema kann vom Gerät abonniert werden, um es über das Ergebnis der Aktualisierungsanforderung seines Gerätezwillings zu benachrichtigen. Um diese Art von Anforderungs-/Antwortinteraktion in MQTT zu implementieren, nutzen wir das Konzept der Anforderungs-ID(`$rid`), die ursprünglich vom Gerät in seiner Aktualisierungsanforderung bereitgestellt wurde. Diese Anforderungs-ID ist ebenfalls in der Antwort von IoT Hub enthalten, um dem Gerät das Zuordnen der Antwort zu seiner einzelnen früheren Anforderung zu ermöglichen.
+
 Die folgende Sequenz beschreibt, wie ein Gerät die gemeldeten Eigenschaften in dem Gerätezwilling in IoT Hub aktualisiert:
 
 1. Ein Gerät muss zuerst das Thema `$iothub/twin/res/#` abonnieren, um die Antworten des Vorgangs von IoT Hub zu empfangen.
@@ -253,6 +255,20 @@ Die möglichen Statuscodes lauten:
 | 400 | Ungültige Anforderung; falsch formatierter JSON-Code |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung][lnk-quotas] |
 | 5** | Serverfehler |
+
+Der Python-Codeausschnitt unten veranschaulicht den Aktualisierungsvorgang der vom Gerätezwilling gemeldeten Eigenschaften über MQTT (mithilfe des Paho MQTT-Clients):
+```python
+from paho.mqtt import client as mqtt
+
+# authenticate the client with IoT Hub (not shown here)
+
+client.subscribe("$iothub/twin/res/#")
+rid = "1"
+twin_reported_property_patch = "{\"firmware_version\": \"v1.1\"}"
+client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" + rid, twin_reported_property_patch, qos=0)
+```
+
+Bei erfolgreichem Abschluss des Aktualisierungsvorgangs der vom Gerätezwilling gemeldeten Eigenschaften oben weist die Veröffentlichungsnachricht von IoT Hub das folgende Thema auf: `$iothub/twin/res/204/?$rid=1&$version=6`, wobei `204` der Statuscode ist, der den Erfolg angibt, `$rid=1` der vom Gerät im Code übergebenen Anforderungs-ID und `$version` der Version des Abschnitts der gemeldeten Eigenschaften der Gerätezwillinge nach der Aktualisierung entspricht.
 
 Weitere Informationen finden Sie im [Entwicklerhandbuch zu Gerätezwillingen][lnk-devguide-twin].
 

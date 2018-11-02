@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 30a1f2be1917ba6ea404a2862daaf5f51f35ac3f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452301"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394883"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Auswählen und Verwenden eines Computeziels zum Trainieren Ihres Modells
 
@@ -25,9 +25,12 @@ Ein Computeziel ist die Ressource, die Ihr Trainingsskript ausführt oder Ihr Mo
 
 Sie können mit lokalen Ausführungen auf Ihrem Computer beginnen und dann für andere Umgebungen hoch- und herunterskalieren, wie z.B. Data Science-Remote-VMs mit GPU oder Azure Batch AI. 
 
+>[!NOTE]
+> Der Code in diesem Artikel wurde mit der Azure Machine Learning SDK-Version 0.168 getestet. 
+
 ## <a name="supported-compute-targets"></a>Unterstützte Computeziele
 
-Azure Machine Learning unterstützt die folgenden Computeziele:
+Der Azure Machine Learning Service unterstützt die folgenden Computeziele:
 
 |Computeziel| GPU-Beschleunigung | Automatisierte Hyperparameteroptimierung | Automatisierte Modellauswahl | Kann in Pipelines verwendet werden|
 |----|:----:|:----:|:----:|:----:|
@@ -41,8 +44,8 @@ __[Azure Container Instances (ACI)](#aci)__  kann ebenfalls zum Trainieren von M
 Die wichtigsten Unterscheidungsmerkmale zwischen den Computezielen sind:
 * __GPU-Beschleunigung__: GPUs sind mit Data Science Virtual Machine und Azure Batch AI verfügbar. Sie haben möglicherweise Zugriff auf eine GPU auf Ihrem lokalen Computer, abhängig von der Hardware, den Treibern und den installierten Frameworks.
 * __Automatisierte Hyperparameteroptimierung__: Die automatisierte Hyperparameteroptimierung von Azure Machine Learning hilft Ihnen dabei, die besten Hyperparameter für Ihr Modell zu finden.
-* __Automatisierte Modellauswahl__: Azure Machine Learning kann beim Erstellen eines Modells intelligente Empfehlungen für die Algorithmus- und Hyperparameterauswahl bereitstellen. Die automatisierte Modellauswahl hilft Ihnen beim schnelleren Konvergieren zu einem Modell mit hoher Qualität als beim manuellen Testen unterschiedlicher Kombinationen. Weitere Informationen finden Sie im Dokument [Tutorial: Train a classification model with automated machine learning in Azure Machine Learning](tutorial-auto-train-models.md) (Tutorial: Automatisches Trainieren eines Klassifizierungsmodells mit automatisiertem Machine Learning in Azure Machine Learning).
-* __Pipelines__: Mit Azure Machine Learning haben Sie die Möglichkeit, verschiedene Aufgaben wie das Training und die Bereitstellung in einer Pipeline zu kombinieren. Pipelines können gleichzeitig oder nacheinander ausgeführt werden und stellen einen zuverlässigen Automatisierungsmechanismus bereit. Weitere Informationen finden Sie im Dokument [Pipelines and Azure Machine Learning](concept-ml-pipelines.md) (Pipelines und Azure Machine Learning).
+* __Automatisierte Modellauswahl__: Azure Machine Learning Service kann beim Erstellen eines Modells intelligente Empfehlungen für die Algorithmus- und Hyperparameterauswahl bereitstellen. Die automatisierte Modellauswahl hilft Ihnen beim schnelleren Konvergieren zu einem Modell mit hoher Qualität als beim manuellen Testen unterschiedlicher Kombinationen. Weitere Informationen finden Sie im Dokument [Tutorial: Train a classification model with automated machine learning in Azure Machine Learning](tutorial-auto-train-models.md) (Tutorial: Automatisches Trainieren eines Klassifizierungsmodells mit automatisiertem Machine Learning in Azure Machine Learning).
+* __Pipelines__: Mit dem Azure Machine Learning Service haben Sie die Möglichkeit, verschiedene Aufgaben wie das Training und die Bereitstellung in einer Pipeline zu kombinieren. Pipelines können gleichzeitig oder nacheinander ausgeführt werden und stellen einen zuverlässigen Automatisierungsmechanismus bereit. Weitere Informationen finden Sie im Dokument [Pipelines and Azure Machine Learning](concept-ml-pipelines.md) (Pipelines und Azure Machine Learning).
 
 Sie können das Azure Machine Learning-SDK, die Azure-CLI oder das Azure-Portal verwenden, um Computeziele zu erstellen. Sie können vorhandene Computeziele auch verwenden, indem Sie sie zu Ihrem Arbeitsbereich hinzufügen (anfügen).
 
@@ -106,7 +109,7 @@ from azureml.core.conda_dependencies import CondaDependencies
 run_config_system_managed = RunConfiguration()
 
 run_config_system_managed.environment.python.user_managed_dependencies = False
-run_config_system_managed.prepare_environment = True
+run_config_system_managed.auto_prepare_environment = True
 
 # Specify conda dependencies with scikit-learn
 
@@ -174,7 +177,7 @@ Die folgenden Schritte verwenden das SDK zum Konfigurieren einer Data Science Vi
     # Use Docker in the remote VM
     run_config.environment.docker.enabled = True
 
-    # Use CPU base image from DockerHub
+    # Use CPU base image
     run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
     print('Base Docker image is:', run_config.environment.docker.base_image)
 
@@ -206,30 +209,30 @@ Im folgenden Beispiel wird nach einem vorhandenen Batch AI-Cluster anhand des Na
 ```python
 from azureml.core.compute import BatchAiCompute
 from azureml.core.compute import ComputeTarget
+import os
 
 # choose a name for your cluster
-batchai_cluster_name = ws.name + "cpu"
+batchai_cluster_name = os.environ.get("BATCHAI_CLUSTER_NAME", ws.name + "gpu")
+cluster_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 1)
+cluster_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 3)
+vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_NC6")
+autoscale_enabled = os.environ.get("BATCHAI_CLUSTER_AUTOSCALE_ENABLED", True)
 
-found = False
-# see if this compute target already exists in the workspace
-for ct in ws.compute_targets():
-    print(ct.name, ct.type)
-    if (ct.name == batchai_cluster_name and ct.type == 'BatchAI'):
-        found = True
-        print('found compute target. just use it.')
-        compute_target = ct
-        break
-        
-if not found:
+
+if batchai_cluster_name in ws.compute_targets():
+    compute_target = ws.compute_targets()[batchai_cluster_name]
+    if compute_target and type(compute_target) is BatchAiCompute:
+        print('found compute target. just use it. ' + batchai_cluster_name)
+else:
     print('creating a new compute target...')
-    provisioning_config = BatchAiCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2", # for GPU, use "STANDARD_NC6"
-                                                                #vm_priority = 'lowpriority', # optional
-                                                                autoscale_enabled = True,
-                                                                cluster_min_nodes = 1, 
-                                                                cluster_max_nodes = 4)
+    provisioning_config = BatchAiCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
+                                                                vm_priority = 'lowpriority', # optional
+                                                                autoscale_enabled = autoscale_enabled,
+                                                                cluster_min_nodes = cluster_min_nodes, 
+                                                                cluster_max_nodes = cluster_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws,batchai_cluster_name, provisioning_config)
+    compute_target = ComputeTarget.create(ws, batchai_cluster_name, provisioning_config)
     
     # can poll for a minimum number of nodes and for a specific timeout. 
     # if no min node count is provided it will use the scale settings for the cluster
@@ -372,7 +375,7 @@ Sie können anzeigen, welche Computeziele Ihrem Arbeitsbereich aus dem Azure-Por
 1. Besuchen Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zu Ihrem Arbeitsbereich.
 2. Klicken Sie auf den Link __Compute__im Abschnitt __Anwendungen__.
 
-    ![Registerkarte „Computer“ anzeigen](./media/how-to-set-up-training-targets/compute_tab.png)
+    ![Registerkarte „Computer“ anzeigen](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
 
 ### <a name="create-a-compute-target"></a>Erstellen eines Computeziels
 
@@ -380,7 +383,7 @@ Führen Sie die oben genannten Schritte aus, um eine Liste von Computezielen anz
 
 1. Klicken Sie auf das Symbol __+__, um ein Computeziel hinzuzufügen.
 
-    ![Compute hinzufügen ](./media/how-to-set-up-training-targets/add_compute.png)
+    ![Compute hinzufügen ](./media/how-to-set-up-training-targets/add-compute-target.png)
 
 1. Geben Sie einen Namen für das Computeziel ein.
 1. Wählen Sie den Computetyp aus, der für das __Training__ angefügt werden soll. 
@@ -414,11 +417,11 @@ Führen Sie die oben genannten Schritte aus, um eine Liste von Computezielen anz
 
 ## <a name="examples"></a>Beispiele
 Die folgenden Notebooks verdeutlichen die Konzepte in diesem Artikel:
-* `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
-* `01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb`
-* `01.getting-started/03.train-on-aci/03.train-on-aci.ipynb`
-* `01.getting-started/05.train-in-spark/05.train-in-spark.ipynb`
-* `01.getting-started/07.hyperdrive-with-sklearn/07.hyperdrive-with-sklearn.ipynb`
+* [01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
+* [01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm)
+* [01.getting-started/03.train-on-aci/03.train-on-aci.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci)
+* [01.getting-started/05.train-in-spark/05.train-in-spark.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark)
+* [tutorials/01.train-models.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)
 
 Rufen Sie die Notebooks ab: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

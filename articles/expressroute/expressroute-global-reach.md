@@ -6,14 +6,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: c96841274f73be766b0157f036746599cc836dd3
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 324225600ed52c523228f54c540c810a15ffd5d7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068042"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023235"
 ---
 # <a name="expressroute-global-reach-preview"></a>ExpressRoute Global Reach (Vorschau)
 ExpressRoute ist eine private und zuverlässige Möglichkeit, Ihre lokalen Netzwerke mit der Microsoft Cloud zu verbinden. Sie können aus Ihrem privaten Rechenzentrum oder Ihrem Unternehmensnetzwerk auf viele Microsoft-Clouddienste wie beispielsweise Azure, Office 365 und Dynamics 365 zugreifen. Angenommen, Sie haben eine Niederlassung in San Francisco mit einer ExpressRoute-Leitung im Silicon Valley und eine weitere Niederlassung in London mit einer ExpressRoute-Leitung in derselben Stadt. Beide Niederlassungen erhalten Highspeedkonnektivität mit Azure-Ressourcen in den Regionen „USA, Westen“ und „Vereinigtes Königreich, Süden“. Allerdings können die Niederlassungen nicht direkt Daten miteinander austauschen. Anders ausgedrückt: 10.0.1.0/24 kann Daten an 10.0.3.0/24 und 10.0.4.0/24 senden, jedoch NICHT an 10.0.2.0/24.
@@ -32,13 +32,14 @@ ExpressRoute Global Reach dient zur Ergänzung der WAN-Implementierung des Diens
 ## <a name="availability"></a>Verfügbarkeit 
 ExpressRoute Global Reach wird derzeit in den folgenden Ländern unterstützt:
 
-* USA
-* Vereinigtes Königreich 
-* Irland
-* Niederlande
 * Australien
-* Hongkong 
+* Frankreich
+* Hongkong
+* Irland
 * Japan
+* Niederlande
+* Vereinigtes Königreich
+* USA
 
 Ihre ExpressRoute-Leitungen müssen an den [ExpressRoute-Peeringstandorten](expressroute-locations.md) in den oben aufgeführten Ländern oder Regionen eingerichtet werden. Um ExpressRoute Global Reach zwischen [verschiedenen geopolitischen Regionen](expressroute-locations.md) zu erstellen, ist für Ihre Leitungen die SKU „Premium“ erforderlich.
 

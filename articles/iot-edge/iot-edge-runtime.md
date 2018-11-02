@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c9c04a8310a46605cf5733131db1418b7cb7f7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 97a2180aaf236d3541cff30d2151f26ce70b14af
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47218783"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393473"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur
 
@@ -23,13 +23,13 @@ Die IoT Edge-Laufzeit führt auf IoT Edge-Geräten die folgenden Funktionen aus:
 
 * Installieren und Aktualisieren von Workloads auf dem Gerät
 * Aufrechterhalten von Azure IoT Edge-Sicherheitsstandards auf dem Gerät
-* Sicherstellen, dass die [IoT Edge-Module][Ink-Module] immer ausgeführt werden
+* Sicherstellen, dass die [IoT Edge-Module](iot-edge-modules.md) immer ausgeführt werden
 * Melden der Modulintegrität an die Cloud für die Remoteüberwachung
 * Ermöglichen der Kommunikation zwischen nachgeschalteten Blattknotengeräten und IoT Edge-Geräten
 * Ermöglichen der Kommunikation zwischen Modulen auf dem IoT Edge-Gerät
 * Ermöglichen der Kommunikation zwischen dem IoT Edge-Gerät und der Cloud
 
-![Die IoT Edge-Laufzeit übermittelt an IoT Hub Einblicke und Informationen zur Modulintegrität][1]
+![Die IoT Edge-Laufzeit übermittelt an IoT Hub Einblicke und Informationen zur Modulintegrität](./media/iot-edge-runtime/Pipeline.png)
 
 Die Aufgaben der IoT Edge-Laufzeit fallen in zwei Kategorien: Kommunikation und Modulverwaltung. Diese beiden Rollen werden von zwei Komponenten ausgeführt, aus denen die IoT Edge-Laufzeit besteht. Der IoT Edge-Hub ist für die Kommunikation verantwortlich, während der IoT Edge-Agent für die Bereitstellung und Überwachung der Module zuständig ist. 
 
@@ -49,7 +49,7 @@ Der Edge-Hub ist keine vollständige Version des lokal ausgeführten IoT Hub. Ei
 
 Der Edge-Hub optimiert die Anzahl der tatsächlich hergestellten Verbindungen mit der Cloud, um die von der IoT Edge-Lösung genutzte Bandbreite zu reduzieren. Der Edge-Hub fasst logische Verbindungen von Clients, z.B. Modulen oder Blattknotengeräten, zu einer einzelnen physischen Verbindung mit der Cloud zusammen. Die Details dieses Vorgangs sind für den Rest der Lösung transparent. Clients können nicht erkennen, dass statt einer eigenen Verbindung mit der Cloud für alle Clients eine gemeinsame Verbindung verwendet wird. 
 
-![Der Edge-Hub fungiert als Gateway zwischen mehreren physischen Geräten und der Cloud.][2]
+![Der Edge-Hub fungiert als Gateway zwischen mehreren physischen Geräten und der Cloud.](./media/iot-edge-runtime/Gateway.png)
 
 Der Edge-Hub kann bestimmen, ob er mit IoT Hub verbunden ist. Wenn die Verbindung unterbrochen wird, speichert der Edge-Hub Nachrichten oder Zwillingsaktualisierungen lokal. Sobald eine Verbindung wieder hergestellt wurde, werden alle Daten synchronisiert. Der Speicherort für diesen temporären Cache wird durch eine Eigenschaft des Modulzwillings des Edge-Hubs bestimmt. Die Größe des Caches wird nicht begrenzt, solange die Speicherkapazität des Geräts ausreicht. 
 
@@ -57,7 +57,7 @@ Der Edge-Hub kann bestimmen, ob er mit IoT Hub verbunden ist. Wenn die Verbindun
 
 Der Edge-Hub ermöglicht die Kommunikation zwischen Modulen. Die Verwendung des Edge-Hubs als Nachrichtenbroker sorgt dafür, dass die Module unabhängig voneinander bleiben. Module müssen nur die Eingänge, an denen sie Nachrichten akzeptieren, und die Ausgänge, an die sie Nachrichten schreiben, angeben. Anschließend fügt ein Lösungsentwickler diese Eingänge und Ausgänge zusammen, damit die Module Daten in der speziellen Reihenfolge für die Lösung verarbeiten. 
 
-![Der Edge-Hub ermöglicht die Kommunikation zwischen Modulen][3]
+![Der Edge-Hub ermöglicht die Kommunikation zwischen Modulen](./media/iot-edge-runtime/ModuleEndpoints.png)
 
 Ein Modul ruft zum Senden von Daten an den Edge-Hub die SendEventAsync-Methode auf. Das erste Argument gibt an, an welchen Ausgang die Nachricht gesendet werden soll. Mit dem folgenden Pseudocode wird eine Nachricht an output1 gesendet:
 
@@ -77,7 +77,7 @@ Der Lösungsentwickler muss die Regeln angeben, die bestimmen, wie Nachrichten v
 
 <!--- For more info on how to declare routes between modules, see []. --->   
 
-![Routing zwischen Modulen][4]
+![Routing zwischen Modulen](./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png)
 
 ## <a name="iot-edge-agent"></a>IoT Edge-Agent
 
@@ -117,13 +117,4 @@ Weitere Informationen zum Azure IoT Edge-Sicherheitsframework finden Sie in der 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Grundlegendes zu Azure IoT Edge-Zertifikaten][lnk-certs]
-
-<!-- Images -->
-[1]: ./media/iot-edge-runtime/Pipeline.png
-[2]: ./media/iot-edge-runtime/Gateway.png
-[3]: ./media/iot-edge-runtime/ModuleEndpoints.png
-[4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
-
-<!-- Links -->
-[lnk-certs]: iot-edge-certs.md
+[Grundlegendes zu Azure IoT Edge-Zertifikaten](iot-edge-certs.md)

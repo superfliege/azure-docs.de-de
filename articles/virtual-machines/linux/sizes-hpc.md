@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 748cb4612b2b5aed26ba8197cfad0782f2645e1e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 70dca655d5300fcd34b4198093e136f6a971963b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37902128"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344488"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>High Performance Computing-VM-Größen
 
@@ -56,9 +56,21 @@ Stellen Sie eine computeintensive VM über eines der Images im Azure Marketplace
   > Bei den CentOS-basierten HPC-Images sind Kernel-Updates in der **yum** -Konfigurationsdatei deaktiviert. Der Grund: Die Linux RDMA-Treiber werden als RPM-Paket verteilt, und Treiberupdates funktionieren möglicherweise nicht, wenn der Kernel aktualisiert wird.
   > 
  
-### <a name="cluster-configuration"></a>Clusterkonfiguration 
-    
-Wenn Sie MPI-Aufträge auf gruppierten virtuellen Computer ausführen möchten, sind zusätzliche Konfigurationsschritte erforderlich. So müssen Sie in einem Cluster mit virtuellen Computern beispielsweise die Vertrauensstellung zwischen den Computeknoten einrichten. Informationen zu typischen Einstellungen finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+### <a name="cluster-configuration-options"></a>Konfigurationsoptionen für Cluster
+
+Azure bietet mehrere Optionen zum Erstellen von Clustern von Linux-HPC-VMs, die über das RDMA-Netzwerk kommunizieren können, einschließlich der folgenden: 
+
+* **Virtuelle Computer**: Stellen Sie die RDMA-fähigen HPC-VMs in der gleichen Verfügbarkeitsgruppe bereit (wenn Sie das Azure Resource Manager-Bereitstellungsmodell verwenden). Stellen Sie die VMs bei Verwendung des klassischen Bereitstellungsmodells im gleichen Clouddienst bereit. 
+
+* **VM-Skalierungsgruppen**: Stellen Sie bei Verwendung einer VM-Skalierungsgruppe sicher, dass Sie die Bereitstellung auf eine einzelne Platzierungsgruppe beschränken. Legen Sie z. B. in einer Resource Manager-Vorlage die Eigenschaft `singlePlacementGroup` auf `true` fest. 
+
+* **Azure CycleCloud**: Erstellen Sie in [Azure CycleCloud](/azure/cyclecloud/) einen HPC-Cluster zum Ausführen von MPI-Aufträgen auf Linux-Knoten.
+
+* **Azure Batch**: Erstellen Sie einen [Azure Batch](/azure/batch/)-Pool zum Ausführen von MPI-Workloads auf Linux-Computeknoten. Weitere Informationen finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](../../batch/batch-pool-compute-intensive-sizes.md). Informationen zum Ausführen containerbasierter Workloads in Batch finden Sie im Projekt [Batch Shipyard](https://github.com/Azure/batch-shipyard).
+
+* **Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) unterstützt das Ausführen von mehreren Linux-Distributionen auf Computeknoten, die auf RDMA-fähigen virtuellen Azure-Computern bereitgestellt und von einem Windows Server-Hauptknoten verwaltet werden. Eine Beispielbereitstellung finden Sie unter [Erstellen eines HPC Pack Linux RDMA-Clusters in Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+
+Abhängig von dem von Ihnen ausgewählten Clusterverwaltungstool sind für die Ausführung von MPI-Aufträgen möglicherweise zusätzliche Systemkonfigurationsschritte erforderlich. Beispielsweise müssen Sie in einem Cluster von virtuellen Computern möglicherweise eine Vertrauensstellung zwischen den Clusterknoten herstellen, indem Sie SSH-Schlüssel generieren oder eine SSH-Vertrauensstellung ohne Kennwort einrichten.
 
 ### <a name="network-topology-considerations"></a>Überlegungen zur Netzwerktopologie
 * Auf RDMA-fähigen virtuellen Linux-Computern in Azure ist „Eth1“ für RDMA-Netzwerkdatenverkehr reserviert. Ändern Sie keine Eth1-Einstellungen oder anderen Informationen in der Konfigurationsdatei, die sich auf dieses Netzwerk beziehen. „Eth0“ ist für den regulären Azure-Netzwerkverkehr reserviert.
@@ -66,8 +78,7 @@ Wenn Sie MPI-Aufträge auf gruppierten virtuellen Computer ausführen möchten, 
 * Das RDMA-Netzwerk in Azure reserviert sich den Adressbereich 172.16.0.0/16. 
 
 
-## <a name="using-hpc-pack"></a>Verwenden von HPC Pack
-[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx)ist eine kostenlose HPC-Cluster- und Auftragsverwaltungslösung von Microsoft und bietet eine Option für die Verwendung der rechenintensiven Instanzen mit Linux. Die neuesten Versionen von HPC Pack unterstützen das Ausführen von mehreren Linux-Distributionen auf Serverknoten, die auf virtuellen Azure-Computern bereitgestellt wurden und von einem Windows Server-Hauptknoten verwaltet werden. Mit RDMA-fähigen Linux-Computeknoten, auf denen Intel MPI ausgeführt wird, kann HPC Pack Linux-basierte MPI-Anwendungen mit Zugriff auf das RDMA-Netzwerk planen und ausführen. Informationen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+
 
 ## <a name="other-sizes"></a>Andere Größen
 - [Allgemeiner Zweck](sizes-general.md)
@@ -78,8 +89,6 @@ Wenn Sie MPI-Aufträge auf gruppierten virtuellen Computer ausführen möchten, 
 - [Vorherige Generationen](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Informationen zu ersten Schritten bei der Bereitstellung und Verwendung rechenintensiver Größen mit RDMA unter Linux finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 - Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.
 

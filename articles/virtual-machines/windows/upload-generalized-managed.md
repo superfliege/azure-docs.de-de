@@ -13,54 +13,54 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 8fd88a0e3c5b387ce3ea586f6f23b3643a03e58d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 22e28e208d46a23a2dd7e36e1c3ba4be13be928a
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618166"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091951"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure
 
-In diesem Thema wird die Verwendung von PowerShell erläutert, um eine VHD einer generalisierten VM in Azure hochzuladen, ein Image über die VHD zu erstellen und eine neue VM über dieses Image zu erstellen. Sie können eine VHD hochladen, die aus einem lokalen Virtualisierungstool oder aus einer anderen Cloud exportiert wurde. Durch Verwenden des Features [Managed Disks](managed-disks-overview.md) (verwaltete Datenträger) für die neue VM wird die Verwaltung virtueller Computer vereinfacht. Außerdem steigt die Verfügbarkeit, wenn die VM in einer Verfügbarkeitsgruppe platziert wird. 
+In diesem Artikel wird erläutert, wie Sie mithilfe von PowerShell eine VHD eines generalisierten virtuellen Computers in Azure hochladen, ein Image anhand der VHD erstellen und einen neuen virtuellen Computer anhand dieses Images erstellen. Sie können eine VHD hochladen, die aus einem lokalen Virtualisierungstool oder aus einer anderen Cloud exportiert wurde. Durch Verwenden von [Managed Disks](managed-disks-overview.md) für den neuen virtuellen Computer wird die VM-Verwaltung vereinfacht. Außerdem steigt die Verfügbarkeit, wenn der virtuelle Computer in einer Verfügbarkeitsgruppe platziert wird. 
 
-Wenn Sie ein Beispielskript verwenden möchten, lesen Sie [Beispielskript zum Hochladen einer VHD in Azure und Erstellen einer neuen VM](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
+Ein Beispielskript finden Sie unter [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 - Bevor Sie eine VHD in Azure hochladen, befolgen Sie die Anweisungen unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Lesen Sie [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) vor dem Starten der Migration zu [Managed Disks](managed-disks-overview.md).
-- Für diesen Artikel ist mindestens Version 5.6 des AzureRM-Moduls erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM.Compute` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+- Für die Ausführung der Schritte in diesem Artikel ist mindestens Version 5.6 des AzureRM-Moduls erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM.Compute` aus, um Ihre Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
 
-## <a name="generalize-the-source-vm-using-sysprep"></a>Generalisieren des virtuellen Quellcomputers mithilfe von Sysprep
+## <a name="generalize-the-source-vm-by-using-sysprep"></a>Generalisieren des virtuellen Quellcomputers mithilfe von Sysprep
 
 Sysprep entfernt unter anderem alle persönlichen Kontoinformationen, und bereitet den Computer darauf vor, als Image verwendet zu werden. Ausführliche Informationen zu Sysprep finden Sie unter [Sysprep (Systemvorbereitung) – Übersicht](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)(Sysprep-Unterstützung für Serverrollen).
 
 > [!IMPORTANT]
-> Wenn Sie Sysprep vor dem Hochladen der virtuellen Festplatte in Azure zum ersten Mal ausführen, stellen Sie sicher, dass Sie vor dem Ausführen von Sysprep [Ihren virtuellen Computer vorbereitet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) haben. 
+> Wenn Sie Sysprep vor dem Hochladen der VHD in Azure zum ersten Mal ausführen möchten, stellen Sie sicher, dass Sie [Ihren virtuellen Computer vorbereitet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) haben. 
 > 
 > 
 
 1. Melden Sie sich bei dem virtuellen Windows-Computer an.
-2. Öffnen Sie das Eingabeaufforderungsfenster als Administrator. Wechseln Sie in das Verzeichnis **%windir%\system32\sysprep**, und führen Sie anschließend `sysprep.exe` aus.
-3. Wählen Sie unter **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und vergewissern Sie sich, dass das Kontrollkästchen **Verallgemeinern** aktiviert ist.
+2. Öffnen Sie das Eingabeaufforderungsfenster als Administrator. Wechseln Sie in das Verzeichnis „%windir%\system32\sysprep“, und führen Sie anschließend `sysprep.exe` aus.
+3. Wählen Sie im Dialogfeld **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren** aus, und vergewissern Sie sich, dass das Kontrollkästchen **Verallgemeinern** aktiviert ist.
 4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
 5. Klicken Sie auf **OK**.
    
     ![Starten von Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Nach Abschluss von Sysprep wird die virtuelle Maschine heruntergefahren. Starten Sie den virtuellen Computer nicht neu.
+6. Nach Abschluss von Sysprep wird der virtuelle Computer heruntergefahren. Starten Sie den virtuellen Computer nicht neu.
 
 
-## <a name="get-the-storage-account"></a>Abrufen des Speicherkontos
+## <a name="get-a-storage-account"></a>Erhalten eines Speicherkontos
 
 Sie benötigen ein Speicherkonto in Azure, in dem das hochgeladene VM-Image gespeichert wird. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. 
 
-Wenn Sie die VHD zum Erstellen eines verwalteten Datenträgers für einen virtuellen Computer verwenden, muss der Standort des Speicherkontos dem Standort entsprechen, an dem Sie den virtuellen Computer erstellen.
+Wenn Sie die VHD zum Erstellen eines verwalteten Datenträgers für einen virtuellen Computer verwenden, muss der Speicherort des Speicherkontos dem Speicherort entsprechen, an dem Sie den virtuellen Computer erstellen.
 
 Geben Sie zum Anzeigen der verfügbaren Speicherkonten Folgendes ein:
 
@@ -70,7 +70,7 @@ Get-AzureRmStorageAccount | Format-Table
 
 ## <a name="upload-the-vhd-to-your-storage-account"></a>Hochladen der VHD in Ihr Speicherkonto
 
-Verwenden Sie das Cmdlet [Add-AzureRmVhd](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd), um die VHD in einen Container in Ihrem Speicherkonto hochzuladen. In diesem Beispiel wird die Datei *myVHD.vhd* aus *"C:\Users\Public\Documents\Virtual hard disks\"* in das Speicherkonto *mystorageaccount* in der Ressourcengruppe *myResourceGroup* hochgeladen. Die Datei wird im Container *mycontainer* abgelegt. Der neue Dateiname lautet *myUploadedVHD.vhd*.
+Verwenden Sie das Cmdlet [Add-AzureRmVhd](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd), um die VHD in einen Container in Ihrem Speicherkonto hochzuladen. In diesem Beispiel wird die Datei *myVHD.vhd* aus *C:\Users\Public\Documents\Virtual hard disks\\* in das Speicherkonto *mystorageaccount* in der Ressourcengruppe *myResourceGroup* hochgeladen. Die Datei wird im Container *mycontainer* abgelegt. Der neue Dateiname lautet *myUploadedVHD.vhd*.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -94,7 +94,7 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-Abhängig von Ihrer Netzwerkverbindung und der Größe Ihrer VHD-Datei kann die Ausführung dieses Befehls einige Zeit in Anspruch nehmen.
+Abhängig von Ihrer Netzwerkverbindung und der Größe der VHD-Datei kann die Ausführung dieses Befehls einige Zeit in Anspruch nehmen.
 
 ### <a name="other-options-for-uploading-a-vhd"></a>Weitere Optionen zum Hochladen einer virtuellen Festplatte
  
@@ -105,10 +105,10 @@ Sie können eine VHD zudem mit den folgenden Tools in ein Speicherkonto hochlade
 - [Azure Storage-Explorer: Hochladen von Blobs](https://azurestorageexplorer.codeplex.com/)
 - [Speicher-Import/Export Service REST-API-Referenz](https://msdn.microsoft.com/library/dn529096.aspx)
 -   Wir empfehlen das Verwenden des Import/Export-Diensts, wenn die geschätzte Hochladedauer sieben Tage überschreitet. Sie können mithilfe von [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) die Dauer anhand der Datengröße und Übertragungseinheit schätzen. 
-    Der Import/Export-Dienst kann zum Kopieren in oder aus dem Standardspeicherkonto verwendet werden. Sie benötigen ein Tool wie AzCopy zum Kopieren zwischen Standardspeicherkonto und Premium-Speicherkonto.
+    Der Import/Export-Dienst kann zum Kopieren in oder aus dem Standardspeicherkonto verwendet werden. Sie benötigen ein Tool wie AzCopy zum Kopieren zwischen dem Storage Standard- und dem Storage Premium-Konto.
 
 > [!IMPORTANT]
-> Wenn Sie Ihre VHD mithilfe von AzCopy zu Azure hochladen, stellen Sie vor dem Ausführen des Uploadskripts sicher, dass [/BlobType:page](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) festgelegt ist. Wenn das Ziel ein Blob ist und diese Option nicht angegeben wurde, erstellt AzCopy standardmäßig ein Blockblob.
+> Wenn Sie Ihre VHD mithilfe von AzCopy in Azure hochladen, stellen Sie vor dem Ausführen des Uploadskripts sicher, dass [**/BlobType:page**](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) festgelegt ist. Wenn das Ziel ein Blob ist und diese Option nicht angegeben wurde, erstellt AzCopy standardmäßig ein Blockblob.
 > 
 > 
 
@@ -116,10 +116,10 @@ Sie können eine VHD zudem mit den folgenden Tools in ein Speicherkonto hochlade
 
 ## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Erstellen eines verwalteten Images anhand der hochgeladenen VHD 
 
-Erstellen Sie ein verwaltetes Image mithilfe Ihrer generalisierten Betriebssystem-VHD. Ersetzen Sie die Werte durch Ihre eigenen Informationen.
+Erstellen Sie ein verwaltetes Image anhand Ihrer generalisierten Betriebssystem-VHD. Ersetzen Sie die folgenden Werte durch Ihre eigenen Informationen.
 
 
-Legen Sie zunächst einige Parameter fest:
+Legen Sie zuerst einige Parameter fest:
 
 ```powershell
 $location = "East US" 
@@ -146,7 +146,7 @@ New-AzureRmImage `
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
-Nachdem Sie ein Image erstellt haben, können Sie anhand des Images eine oder mehrere neue VMs erstellen. Dieses Beispiel erstellt auf der Grundlage von *myImage* einen virtuellen Computer namens *myVM* in *myResourceGroup*.
+Nachdem Sie ein Image erstellt haben, können Sie anhand des Images eine oder mehrere neue VMs erstellen. In diesem Beispiel wird ein virtueller Computer namens *myVM* anhand von *myImage* in *myResourceGroup* erstellt.
 
 
 ```powershell

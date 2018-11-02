@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ca9823a76064e504ee04bf5896f1362b5187bc34
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8d573b5a0dafaab5eea98f05163ff99e7ccd3760
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042035"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409083"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Azure CLI-Beispiele für Linux-VMs
 
@@ -49,7 +49,7 @@ Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI 
 |**Sichern von virtuellen Computern**||
 | [Verschlüsseln eines virtuellen Computers und der Datenträger](./../scripts/virtual-machines-linux-cli-sample-encrypt-vm.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt einen Azure Key Vault, Verschlüsselungsschlüssel und Dienstprinzipal und verschlüsselt dann einen virtuellen Computer. |
 |**Überwachen virtueller Computer**||
-| [Überwachen einer VM mit der Operations Management Suite](./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt einen virtuellen Computer, installiert den OMS-Agent (Operations Management Suite) und registriert die VM in einem OMS-Arbeitsbereich.  |
+| [Überwachen einer VM mit Azure Log Analytics](./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt einen virtuellen Computer, installiert den Log Analytics-Agent und registriert den virtuellen Computer in einem Log Analytics-Arbeitsbereich.  |
 |**Problembehandlung bei virtuellen Computern**||
 | [Problembehandlung bei einem Betriebssystem-Datenträger eines virtuellen Computers](./../scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fcli%2fazure%2ftoc.json) | Bindet einen Betriebssystem-Datenträger eines virtuellen Computers als Datenträger für Daten auf einem zweiten virtuellen Computer ein. |
 | | |

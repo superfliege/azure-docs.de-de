@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: e3d904358282f303a2d1ab35cf4fdc8026d7db55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060476"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312505"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Kostengünstiger Standardspeicher und verwaltete/nicht verwaltete Azure-VM-Datenträger
 
@@ -25,7 +25,7 @@ Dieser Artikel beschäftigt sich hauptsächlich mit der Verwendung von Standard-
 
 Standarddatenträger für virtuelle Azure-Computer können in zwei Varianten erstellt werden:
 
-**Nicht verwaltete Datenträger:** Bei diesem Datenträgertyp verwalten Sie die Speicherkonten, die zum Speichern der VHD-Dateien für die VM-Datenträger verwendet werden. VHD-Dateien werden als Seitenblobs in Speicherkonten gespeichert. Nicht verwaltete Datenträger können an jede beliebige Azure-VM-Größe angefügt werden – auch an virtuelle Computer, die in erster Linie Storage Premium verwenden (wie etwa die DSv2- und die GS-Serie). Virtuelle Azure-Computer unterstützen das Anfügen mehrerer Standarddatenträger. Dadurch kann pro virtuellem Computer eine Speicherkapazität von bis zu 256 PiB erreicht werden. Wenn Sie die Datenträgergrößen der Vorschau verwenden, können Sie pro virtuellem Computer bis zu 2 PiB Speicher verwenden. 
+**Nicht verwaltete Datenträger:** Bei diesem Datenträgertyp verwalten Sie die Speicherkonten, die zum Speichern der VHD-Dateien für die VM-Datenträger verwendet werden. VHD-Dateien werden als Seitenblobs in Speicherkonten gespeichert. Nicht verwaltete Datenträger können an jede beliebige Azure-VM-Größe angefügt werden – auch an virtuelle Computer, die in erster Linie Storage Premium verwenden (wie etwa die DSv2- und die GS-Serie). Virtuelle Azure-Computer unterstützen das Anfügen mehrerer Standarddatenträger. Dadurch kann pro VM eine Speicherkapazität von bis zu 256 TiB erreicht werden. Wenn Sie die Datenträgergrößen der Vorschau verwenden, können Sie pro virtuellem Computer bis zu 2 PiB Speicher verwenden.
 
 [**Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Dieses Feature nimmt Ihnen die Verwaltung der Speicherkonten ab, die für die VM-Datenträger verwendet werden. Sie geben die Art (Premium-SSD, Standard-SSD oder Standard-HDD) und die benötigte Größe des Datenträgers an, und Azure erstellt und verwaltet ihn für Sie. Sie müssen die Datenträger nicht selbst auf mehrere Speicherkonten verteilen, um sicherzustellen, dass Sie die Skalierbarkeitsgrenzwerte für die Speicherkonten einhalten. Dies erledigt Azure für Sie.
 
@@ -82,7 +82,7 @@ Im Gegensatz zu Premium-Datenträgern werden für Standarddatenträger keine E/A
 | **VM-Tarif**            | **Virtueller Computer – Basic-Tarif** | **Virtueller Computer – Standard-Tarif** |
 |------------------------|-------------------|----------------------|
 | Maximale Datenträgergröße          | 32767 GiB           | 32767 GiB        |
-| Max. 8 KB an IOPS pro Datenträger | Bis zu 2000         | Bis zu 2000        |
+| Max. 8 KB an IOPS pro Datenträger | Bis zu 2.000         | Bis zu 2.000        |
 | Max. Bandbreite pro Datenträger | Bis zu 500 MB/s     | Bis zu 500 MB/s      |
 
 Wenn Ihre Workload Datenträgerunterstützung für hohe Leistung und geringe Latenz erfordert, empfiehlt sich unter Umständen die Verwendung von Storage Premium. Weitere Informationen zu den Vorteilen von Storage Premium finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md).
@@ -148,7 +148,7 @@ Der Azure Backup-Dienst kann auch in Kombination mit Managed Disks verwendet wer
 
 * [Einführung in Azure Storage](../articles/storage/common/storage-introduction.md)
 
-* [Erstellen Sie ein Speicherkonto](../articles/storage/common/storage-quickstart-create-account.md)
+* [Erstellen eines Speicherkontos](../articles/storage/common/storage-quickstart-create-account.md)
 
 * [Managed Disks Overview](../articles/virtual-machines/linux/managed-disks-overview.md) (Übersicht über Azure Managed Disks)
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d1ad629ff5c6909256baa94573d045a8c2c09fb5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fc9ed37ef24e776336124bf097def2f6a00ee83e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223830"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419791"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer
 Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren.  Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden.
@@ -32,7 +32,7 @@ Nein. Es werden keine Änderungen an Log Analytics selbst vorgenommen, sodass ni
 ## <a name="where-do-i-find-log-analytics-in-azure"></a>Wo finde ich Log Analytics in Azure?
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.  Klicken Sie auf **Alle Dienste**, und geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Wählen Sie **Log Analytics**, und wählen Sie dann Ihren Arbeitsbereich aus. Die Seite mit der Zusammenfassung für den Arbeitsbereich wird angezeigt.
 
-![Log Analytics-Arbeitsbereich](media/log-analytics-new-portal/log-analytics.png)
+![Log Analytics-Arbeitsbereich](media/log-analytics-oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Wie verwalte ich Berechtigungen?
 Wenn Sie keinen Zugriff auf Ihren Log Analytics-Arbeitsbereich im Azure-Portal haben, müssen Sie Ihre Berechtigungen über den [rollenbasierten Zugriff von Azure](../active-directory/role-based-access-control-configure.md) konfigurieren. Weitere Informationen zum Verwalten von Berechtigungen für den Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). Informationen zur Verwaltung von Berechtigungen für Warnungen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
@@ -40,12 +40,12 @@ Wenn Sie keinen Zugriff auf Ihren Log Analytics-Arbeitsbereich im Azure-Portal h
 ## <a name="how-do-i-create-a-new-workspace"></a>Wie erstelle ich einen neuen Arbeitsbereich? 
 Klicken Sie im Azure-Portal in der Liste der Arbeitsbereiche auf **Hinzufügen**.  Sämtliche Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../log-analytics/log-analytics-quick-create-workspace.md).
 
-![Seite „Übersicht“](media/log-analytics-new-portal/new-workspace.png)
+![Seite „Übersicht“](media/log-analytics-oms-portal-faq/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>Wo befindet sich meine Seite „Übersicht“?
 Der Hauptbildschirm im OMS-Portal zeigt die Kacheln für alle in Ihrem Arbeitsbereich installierten Verwaltungslösungen und alle benutzerdefinierten Ansichten, die Sie erstellt haben. Die gleiche Ansicht steht im Azure-Portal zur Verfügung. Wählen Sie in Ihrem Arbeitsbereich die Option **Arbeitsbereichzusammenfassung** aus.
 
-![Seite „Übersicht“](media/log-analytics-new-portal/overview.png)
+![Seite „Übersicht“](media/log-analytics-oms-portal-faq/overview.png)
 
 ## <a name="how-do-i-open-log-search-and-view-designer"></a>Wie öffne ich die Protokollsuche und den Ansicht-Designer?
 Sowohl die **Protokollsuche** als auch der **Ansicht-Designer** sind auf der Hauptseite und im linken Menü Ihres Arbeitsbereichs im Azure-Portal, direkt neben **Übersicht**, verfügbar.
@@ -53,7 +53,7 @@ Sowohl die **Protokollsuche** als auch der **Ansicht-Designer** sind auf der Hau
 ## <a name="where-do-i-find-settings"></a>Wo finde ich die Einstellungen?
 Viele der Einstellungen im Abschnitt **Einstellungen** des OMS-Portals stehen im Azure-Portal im Menü **Erweiterte Einstellungen** für den Arbeitsbereich zur Verfügung.
 
-![Erweiterte Einstellungen](media/log-analytics-new-portal/advanced-settings.png)
+![Erweiterte Einstellungen](media/log-analytics-oms-portal-faq/advanced-settings.png)
 
 Die folgenden Abschnitte enthalten eine vollständige Liste, wie Sie auf Einstellungen zugreifen können, die zuvor im Abschnitt **Einstellungen** des OMS-Portals verfügbar waren.
 
@@ -113,12 +113,12 @@ Im OMS-Portal installierten Sie Verwaltungslösungen aus dem Lösungskatalog und
 Warnungsregeln basierend auf Log Analytics-Abfragen werden jetzt über die [vereinheitlichte Oberfläche für Warnungen](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) verwaltet. Weitere Informationen zur Konfiguration und Verwendung von Warnungen im Azure-Portal finden Sie unter [Gewusst wie: Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md).
 
 ## <a name="how-do-i-access-my-dashboards"></a>Wie kann ich auf meine Dashboards zugreifen?
-[Dashboards](../log-analytics/log-analytics-dashboards.md) in Log Analytics ist überholt.  In Log Analytics können Sie Daten mit dem [Ansicht-Designer](../log-analytics/log-analytics-view-designer.md) visualisieren, der zusätzliche Funktionen bietet sowie Abfragen und Ansichten an Azure-Dashboards heftet.
+Das Feature [Mein Dashboard](../log-analytics/log-analytics-dashboards.md) in Log Analytics ist veraltet. Mit diesem Feature konnten Sie eine private Sammlung von Ansicht-Designer-Komponenten erstellen. Es wurde durch die integrierte Azure-Dashboard-Funktion ersetzt. Sie können weiterhin Daten in Log Analytics mit dem [Ansicht-Designer](../log-analytics/log-analytics-view-designer.md) für freigegebene Ansichten visualisieren. Sie können auch Visualisierungen aus diesen Ansichten oder für [einzelne Abfragen](../log-analytics/log-analytics-tutorial-dashboards.md) an Azure-Dashboards anheften.
 
 ## <a name="how-do-i-check-my-usage"></a>Wie überprüfe ich meine Nutzung?
 Die Nutzung und Kosten von Log Analytics können Sie nun einfach einsehen und verwalten, indem Sie in Ihrem Arbeitsbereich **Nutzung und geschätzte Kosten** auswählen.
 
-![Nutzung und geschätzte Kosten](media/log-analytics-new-portal/usage.png)
+![Nutzung und geschätzte Kosten](media/log-analytics-oms-portal-faq/usage.png)
 
 
 ## <a name="can-i-still-use-the-classic-portal"></a>Kann ich das klassische Portal weiterhin nutzen?

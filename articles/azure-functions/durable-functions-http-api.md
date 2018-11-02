@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c6d7268a8501c602354d21edc5a0feaae9b1a0b2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4c5f99ed9d20076e3e25ebca261253e576572786
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575473"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354256"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP-APIs in Durable Functions (Azure Functions)
 
@@ -92,6 +92,9 @@ Alle HTTP-APIs, die von der Erweiterung implementiert werden, verwenden die folg
 | systemKey  | Abfragezeichenfolge    | Der Autorisierungsschlüssel, der zum Aufrufen der API erforderlich ist. |
 | showHistory| Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn diese Option auf `true` gesetzt ist, wird der Ausführungsverlauf der Orchestrierung in die Antwortnutzlast aufgenommen.| 
 | showHistoryOutput| Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn diese Option auf `true` gesetzt ist, wird die Aktivitätsausgabe in den Ausführungsverlauf der Orchestrierung aufgenommen.| 
+| createdTimeFrom  | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen-Instanzen, die am oder nach dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
+| createdTimeTo    | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen-Instanzen, die am oder vor dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
+| runtimeStatus    | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Thema [Abfragen von Instanzen](durable-functions-instance-management.md). |
 
 `systemKey` ist ein Autorisierungsschlüssel, der vom Azure Functions-Host automatisch generiert wird. Er gewährt spezifischen Zugriff auf die APIs der Erweiterung „Durable Task“ und kann genauso wie [andere Autorisierungsschlüssel](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API) verwaltet werden. Die einfachste Methode zum Ermitteln des `systemKey`-Werts ist die Verwendung der oben erwähnten `CreateCheckStatusResponse`-API.
 
@@ -194,9 +197,13 @@ Hier sehen Sie ein Beispiel für eine Antwortnutzlast mit dem Ausführungsverlau
 
 Die Antwort **HTTP 202** enthält auch den Antwortheader **Location**, in dem auf die gleiche URL wie im oben erwähnten Feld `statusQueryGetUri` verwiesen wird.
 
+
 ### <a name="get-all-instances-status"></a>Abrufen aller Instanzstatus
 
 Sie können auch alle Instanzstatus abrufen. Entfernen Sie `instanceId` aus der Anforderung „Get instance status“ (Abrufen des Instanzstatus). Die Parameter sind mit „Get instance status“ identisch. 
+
+Beachten Sie jedoch, dass `connection` und `code` optional sind. Wenn Sie für die Funktion anonyme Authentifizierung verwenden, ist kein Code erforderlich.
+Wenn Sie keine andere Verbindungszeichenfolge für den Blob-Speicher als die in der AzureWebJobsStorage-App-Einstellung definierte verwenden möchten, können Sie den Verbindungszeichenfolgen-Parameter unbesorgt ignorieren.
 
 #### <a name="request"></a>Anforderung
 
@@ -210,6 +217,22 @@ Das Functions 2.0-Format verfügt über die gleichen Parameter, aber es gibt ein
 
 ```http
 GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+#### <a name="request-with-filters"></a>Anforderung mit Filtern
+
+Sie können die Anforderung filtern.
+
+Für Functions 1.0 lautet das Anforderungsformat wie folgt:
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}
+```
+
+Das Functions 2.0-Format verfügt über die gleichen Parameter, aber es gibt eine leichte Abweichung beim URL-Präfix: 
+
+```http
+GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}
 ```
 
 #### <a name="response"></a>response
@@ -268,6 +291,7 @@ Hier ist ein Beispiel für Antwortnutzlasten einschließlich des Orchestrierungs
 > [!NOTE]
 > Dieser Vorgang kann in Bezug auf Azure Storage-E/A-Vorgänge sehr teuer sein, wenn die Instanztabelle viele Zeilen umfasst. Weitere Informationen zur Instanztabelle finden Sie in der Dokumentation [Leistung und Skalierbarkeit in Durable Functions (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table).
 > 
+
 
 ### <a name="raise-event"></a>Auslösen eines Ereignisses (Raise event)
 

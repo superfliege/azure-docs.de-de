@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 8/21/2018
+ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 06d9fda01a89340eb019b4900c02e321e0b73cf5
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818963"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116192"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
@@ -53,13 +53,14 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 | Anwendungsgateways |[Diagnoseprotokollierung für Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
 | Azure-Automatisierung |[Protokollanalysen für Azure Automation](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Diagnoseprotokolle für Azure Batch](../batch/batch-diagnostics.md) |
+| Azure Database for MySQL | [Azure Database for MySQL-Diagnoseprotokolle](../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL-Diagnoseprotokolle](../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Cognitive Services | Schema nicht verfügbar. |
 | Content Delivery Network | [Azure-Diagnoseprotokolle für CDN](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB-Protokollierung](../cosmos-db/logging.md) |
 | Data Factory | [Überwachen von Data Factorys mit Azure Monitor](../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| Datenbank für PostgreSQL |  Schema nicht verfügbar. |
 | Event Hubs |[Azure Event Hubs-Diagnoseprotokolle](../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schema nicht verfügbar. |
 | Azure Firewall | Schema nicht verfügbar. |
@@ -104,6 +105,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.DataLakeAnalytics/accounts|Requests|Anforderungsprotokolle|
 |Microsoft.DataLakeStore/accounts|Audit|Überwachungsprotokolle|
 |Microsoft.DataLakeStore/accounts|Requests|Anforderungsprotokolle|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL-Protokolle für langsame Abfragen|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL-Serverprotokolle|
 |Microsoft.Devices/IotHubs|Verbindungen|Verbindungen|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Gerätetelemetrie|

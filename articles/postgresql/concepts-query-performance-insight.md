@@ -7,19 +7,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: cc041104169ca8c4344b9d3de597283d122e63db
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 38cfac8932859db7daa76e831372c97d97f0b24c
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394759"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376310"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
 **Gilt für:** Azure Database for PostgreSQL 9.6 und 10
 
 > [!IMPORTANT]
-> Das Feature Query Performance Insight befindet sich in der öffentlichen Vorschau für eine begrenzte Anzahl von Regionen. 
+> Das Feature Query Performance Insight befindet sich in der öffentlichen Vorschau. 
 
 Mithilfe von Query Performance Insight können Sie schnell die Abfragen mit den längsten Ausführungszeiten identifizieren, wie sie sich im Laufe der Zeit ändern und welche Wartezeiten sie beeinflussen.
 

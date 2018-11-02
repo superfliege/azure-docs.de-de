@@ -16,12 +16,12 @@ ms.workload: Identity
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f85726f7058c783b6e369126532e40ceecc3c846
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bf5384333504df023e98650934c77192f23f9f71
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308179"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945993"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Designkonzepte
 Hier erfahren Sie, welche Aspekte bei der Planung der Implementierung von Azure AD Connect berücksichtigt werden müssen. Dieses Dokument enthält ausführliche Informationen zu bestimmten Aspekten, und diese Konzepte werden auch in anderen Dokumenten kurz beschrieben.
@@ -102,7 +102,7 @@ Bei der Installation von Azure AD Connect mit dem Express-Modus legt der Azure A
 * Zunächst fragt der Azure AD Connect-Assistent Ihren Azure AD-Mandanten ab, um das AD-Attribut abzurufen, das in der vorherigen Installation von Azure AD Connect (sofern vorhanden) als „sourceAnchor“-Attribut verwendet wurde. Sind diese Informationen verfügbar, verwendet Azure AD Connect dasselbe AD-Attribut.
 
   >[!NOTE]
-  > Nur bei neueren Versionen von Azure AD Connect (1.1.524.0 und höher) werden Informationen über das verwendete „sourceAnchor“-Attribut in Ihrem Azure AD-Mandanten gespeichert. Bei älteren Versionen von Azure AD Connect ist dies nicht der Fall.
+  > Nur bei neueren Versionen von Azure AD Connect (1.1.524.0 und höher) werden Informationen über das verwendete sourceAnchor-Attribut in Ihrem Azure AD-Mandanten gespeichert. Bei älteren Versionen von Azure AD Connect ist dies nicht der Fall.
 
 * Wenn keine Information zum verwendeten „sourceAnchor“-Attribut verfügbar ist, prüft der Assistent den Status des Attributs „ms-DS-ConsistencyGuid“ in Ihrem lokalen Active Directory. Wenn das Attribut in keinem Objekt im Verzeichnis konfiguriert ist, verwendet der Assistent „ms-DS-ConsistencyGuid“ als „sourceAnchor“-Attribut. Wenn das Attribut in einem oder in mehreren Objekten im Verzeichnis konfiguriert ist, folgert der Assistent daraus, dass das Attribut von anderen Anwendungen verwendet wird und nicht als „sourceAnchor“-Attribut infrage kommt.
 
@@ -128,7 +128,7 @@ Wenn Sie Azure AD Connect mit benutzerdefiniertem Modus installieren, bietet der
 Haben Sie eine vorhandene Bereitstellung von Azure AD Connect, die „objectGUID“ als das „SourceAnchor“-Attribut verwendet, können Sie auf „ConsistencyGuid“ als „SourceAnchor“-Attribut wechseln.
 
 >[!NOTE]
-> Nur neuere Versionen von Azure AD Connect (1.1.552.0 und höher) unterstützen den Wechsel von „objectGUID“ zu „ConsistencyGuid“ als „SourceAnchor“-Attribut.
+> Nur neuere Versionen von Azure AD Connect (1.1.552.0 und höher) unterstützen den Wechsel von „ObjectGuid“ zu „ConsistencyGuid“ als sourceAnchor-Attribut.
 
 Von „objectGUID“ zu „ConsistencyGuid“ als „SourceAnchor“-Attribut wechseln:
 

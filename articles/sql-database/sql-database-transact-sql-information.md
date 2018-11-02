@@ -11,34 +11,38 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: dfff51d7541ffdc2d279b238a6d993d5e29515f0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 89466d8774698028c8574e90f5a58e1678c9b938
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160706"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343553"
 ---
-# <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank   
+# <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank
+
 Beim [Migrieren der Datenbank](sql-database-cloud-migrate.md) von SQL Server zu Azure SQL-Server stellen Sie möglicherweise fest, dass die Datenbank einige Umstrukturierungen erfordert, bevor SQL Server migriert werden kann. Dieser Artikel enthält Anleitungen, die Ihnen sowohl bei der Durchführung dieser Umstrukturierung als auch beim Verstehen der Gründe helfen, warum diese Umstrukturierung notwendig ist. Verwenden Sie zum Erkennen von Kompatibilitätsproblemen den [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
 
 ## <a name="overview"></a>Übersicht
+
 Die meisten Transact-SQL-Funktionen, die von Anwendungen verwendet werden, werden in Microsoft SQL Server und in der Azure SQL-Datenbank unterstützt. Die zentralen SQL-Komponenten wie z.B. Datentypen, Operatoren, Zeichenfolgen-, Arithmetik-, logische und Cursorfunktionen funktionieren in SQL Server und in der SQL-Datenbank gleich. Es gibt jedoch einige T-SQL-Unterschiede zwischen Elementen der Datendefinitionssprache (Data Definition Language, DDL) und der Datenbearbeitungssprache (Data Manipulation Language, DML), die dazu führen, dass T-SQL-Anweisungen und -Abfragen nur teilweise unterstützt werden (mehr dazu weiter unten in diesem Artikel).
 
-Darüber hinaus werden einige Features und Syntax überhaupt nicht unterstützt, da die Azure SQL-Datenbank entwickelt wurde, um Features von Abhängigkeiten auf Masterdatenbank und Betriebssystem zu isolieren. An sich sind die meisten Aktivitäten auf Serverebene für die SQL-Datenbank nicht geeignet. T-SQL-Anweisungen und -Optionen sind nicht verfügbar, wenn sie Optionen auf Serverebene, Betriebssystemkomponenten oder bestimmte Dateisystemkonfigurationen konfigurieren. Wenn solche Funktionen erforderlich sind, dann ist häufig eine andere geeignete Alternative von der SQL-Datenbank oder aus einem anderen Azure-Feature oder -Dienst verfügbar. 
+Darüber hinaus werden einige Features und Syntax überhaupt nicht unterstützt, da die Azure SQL-Datenbank entwickelt wurde, um Features von Abhängigkeiten auf Masterdatenbank und Betriebssystem zu isolieren. An sich sind die meisten Aktivitäten auf Serverebene für die SQL-Datenbank nicht geeignet. T-SQL-Anweisungen und -Optionen sind nicht verfügbar, wenn sie Optionen auf Serverebene, Betriebssystemkomponenten oder bestimmte Dateisystemkonfigurationen konfigurieren. Wenn solche Funktionen erforderlich sind, dann ist häufig eine andere geeignete Alternative von der SQL-Datenbank oder aus einem anderen Azure-Feature oder -Dienst verfügbar.
 
-Zum Beispiel ist Hochverfügbarkeit in Azure integriert, sodass Konfigurieren von Always On nicht erforderlich ist (obwohl es sinnvoll sein kann, aktive Georeplikation für schnellere Wiederherstellung im Notfall zu konfigurieren). Deshalb werden alle T-SQL-Anweisungen, die sich auf Verfügbarkeitsgruppen beziehen, nicht von der SQL-Datenbank unterstützt, und die dynamischen Verwaltungssichten, die sich auf Always On beziehen, werden auch nicht unterstützt.
+Beispielsweise ist Hochverfügbarkeit in Azure SQL-Datenbank anhand einer ähnlichen Technologie wie [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) integriert. T-SQL-Anweisungen, die sich auf Verfügbarkeitsgruppen beziehen, werden nicht von der SQL-Datenbank unterstützt, und die dynamischen Verwaltungssichten, die sich auf AlwaysOn-Verfügbarkeitsgruppen beziehen, werden auch nicht unterstützt.
 
 Eine Liste der Funktionen, die von der SQL-Datenbank unterstützt bzw. nicht unterstützt werden, finden Sie unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md). Die Liste auf dieser Seite ergänzt diesen Artikel zu Richtlinien und Funktionen und konzentriert sich auf Transact-SQL-Anweisungen.
 
 ## <a name="transact-sql-syntax-statements-with-partial-differences"></a>Transact-SQL-Syntaxanweisungen mit partiellen Unterschieden
-Die zentralen DDL-Anweisungen sind verfügbar, aber einige DDL-Anweisungen haben Erweiterungen im Zusammenhang mit Datenträger-Platzierung und nicht unterstützten Funktionen. 
+
+Die zentralen DDL-Anweisungen sind verfügbar, aber einige DDL-Anweisungen haben Erweiterungen im Zusammenhang mit Datenträger-Platzierung und nicht unterstützten Funktionen.
 
 - CREATE- und ALTER DATABASE-Anweisungen haben mehr als drei Dutzend Optionen. Die Anweisungen enthalten Ablage von Dateien, FILESTREAM und Service Broker-Optionen, die nur für SQL Server gelten. Dies ist möglicherweise unwichtig, wenn Sie Datenbanken erstellen, bevor Sie migrieren, aber wenn Sie T-SQL-Code migrieren, der Datenbanken erstellt, sollten Sie [CREATE DATABASE (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn268335.aspx) mit der SQL Server-Syntax in [CREATE DATABASE (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) vergleichen, um sicherzustellen, dass alle Optionen, die Sie verwenden, unterstützt werden. CREATE DATABASE für Azure SQL-Datenbank verfügt auch über Optionen für Dienstziel und elastische Skalierung, die nur für SQL-Datenbank gelten.
 - Die CREATE- und ALTER TABLE-Anweisungen verfügen über FileTable-Optionen, die nicht auf der SQL-Datenbank verwendet werden können, weil FILESTREAM nicht unterstützt wird.
 - CREATE- und ALTER LOGIN-Anweisungen werden unterstützt, aber die SQL-Datenbank bietet nicht alle Optionen. Um die Portabilität der Datenbank zu verbessern, unterstützt die SQL-Datenbank nach Möglichkeit die Verwendung von eigenständigen Datenbankbenutzern anstelle von Anmeldungen. Weitere Informationen finden Sie unter [CREATE/ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx) und [Steuern und Gewähren von Datenbankzugriff](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 
-## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Transact-SQL-Syntax, die nicht in Azure SQL-Datenbank unterstützt wird   
+## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Transact-SQL-Syntax, die nicht in Azure SQL-Datenbank unterstützt wird
+
 Zusätzlich zu Transact-SQL-Anweisungen, die sich auf die nicht unterstützen Features beziehen, die unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md) beschrieben sind, werden die folgenden Anweisungen und Gruppen von Anweisungen nicht unterstützt. Wenn die zu migrierende Datenbank eine der folgenden Funktionen verwendet, müssen Sie deshalb T-SQL so umstrukturieren, dass diese T-SQL-Funktionen und -Anweisungen beseitigt werden.
 
 - Sortierung von Systemobjekten
@@ -74,9 +78,11 @@ Zusätzlich zu Transact-SQL-Anweisungen, die sich auf die nicht unterstützen Fe
 - `USE`-Anweisung: Sie müssen eine neue Verbindung mit der neuen Datenbank herstellen, um den Datenbankkontext in eine andere Datenbank zu ändern.
 
 ## <a name="full-transact-sql-reference"></a>Vollständige Transact-SQL-Referenz
-Weitere Informationen zu Transact-SQL-Grammatik und -Syntax sowie Beispiele finden Sie unter [Transact-SQL-Referenz (Datenbank-Engine)](https://msdn.microsoft.com/library/bb510741.aspx) in der SQL Server-Onlinedokumentation. 
+
+Weitere Informationen zu Transact-SQL-Grammatik und -Syntax sowie Beispiele finden Sie unter [Transact-SQL-Referenz (Datenbank-Engine)](https://msdn.microsoft.com/library/bb510741.aspx) in der SQL Server-Onlinedokumentation.
 
 ### <a name="about-the-applies-to-tags"></a>Informationen zu Tags vom Typ "Gilt für"
+
 Die Transact-SQL-Referenz umfasst Artikel zu SQL Server-Versionen ab 2008. Unter der Artikelüberschrift befindet sich ein Symbol, in dem die vier SQL Server-Plattformen aufgelistet sind und die Anwendbarkeit angezeigt wird. Beispielsweise wurden Verfügbarkeitsgruppen in SQL Server 2012 eingeführt. Der Artikel [CREATE AVAILABILTY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) gibt an, dass die Anweisung für **SQL Server gilt (beginnend mit 2012)**. Die Anweisung gilt nicht für SQL Server 2008, SQL Server 2008 R2, Azure SQL-Datenbank, Azure SQL Data Warehouse oder Parallel Data Warehouse.
 
 In einigen Fällen kann der allgemeine Gegenstand eines Artikels in einem Produkt verwendet werden, es liegen jedoch kleine Unterschiede im Hinblick auf die verschiedenen Produkte vor. Die Unterschiede werden dann im Artikel entsprechend angegeben. In einigen Fällen kann der allgemeine Gegenstand eines Artikels in einem Produkt verwendet werden, es liegen jedoch kleine Unterschiede im Hinblick auf die verschiedenen Produkte vor. Die Unterschiede werden dann im Artikel entsprechend angegeben. Der Artikel CREATE TRIGGER ist zum Beispiel in SQL-Datenbank verfügbar. Aber die Option **ALL SERVER** für Trigger auf Serverebene gibt an, dass Trigger auf Serverebene in der SQL-Datenbank nicht verwendet werden können. Verwenden Sie stattdessen Trigger auf Datenbankebene.
@@ -84,4 +90,3 @@ In einigen Fällen kann der allgemeine Gegenstand eines Artikels in einem Produk
 ## <a name="next-steps"></a>Nächste Schritte
 
 Eine Liste der Funktionen, die von der SQL-Datenbank unterstützt bzw. nicht unterstützt werden, finden Sie unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md). Die Liste auf dieser Seite ergänzt diesen Artikel zu Richtlinien und Funktionen und konzentriert sich auf Transact-SQL-Anweisungen.
-

@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: e796feaf8ef25eaa91b7db810a11a67da13e9df1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237176"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429458"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Bereitstellen von Webdiensten in Azure Container Instances 
 
@@ -82,7 +82,7 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1,
 
 > Überspringen Sie diese Voraussetzung, wenn Sie die [ Bereitstellung mithilfe einer Modelldatei](#deploy-from-model-file) (`Webservice.deploy()`) durchführen.
 
-Registrieren Sie ein Modell für die Verwendung von [`Webservice.deploy_from_model`](#deploy-from-registered-model) oder [`Webservice.deploy_from_image`](#deploy-from-image). Wenn Sie bereits über ein registriertes Modell verfügen, rufen Sie es jetzt ab.
+Registrieren Sie ein Modell für [Webservice.deploy_from_model](#deploy-from-registered-model) oder [Webservice.deploy_from_image](#deploy-from-image). Wenn Sie bereits über ein registriertes Modell verfügen, rufen Sie es jetzt ab.
 
 ### <a name="retrieve-a-registered-model"></a>Abrufen eines registrierten Modells
 Wenn Sie Azure Machine Learning zum Trainieren Ihres Modells verwenden, ist das Modell möglicherweise schon in Ihrem Arbeitsbereich registriert.  Im letzten Schritt des Tutorials [Trainieren eines Modells](tutorial-train-models-with-aml.md) beispielsweise wurde das Modell registriert.  Rufen Sie das registrierte Modell ab, das für die Bereitstellung verwendet werden soll.
@@ -109,7 +109,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
                         workspace = ws)
 ```
 
-
+<a name='deploy-from-model-file'/>
 ## <a name="option-1-deploy-from-model-file"></a>Option 1: Bereitstellen aus einer Modelldatei
 
 Die Option der Bereitstellung aus einer Modelldatei erfordert die geringste Codemenge, bietet aber auch die geringste Kontrolle über die Benennung der Komponenten. Diese Option beginnt mit einer Modelldatei und registriert diese für Sie im Arbeitsbereich.  Sie können das Modell jedoch nicht benennen und ihm auch weder Tags noch eine Beschreibung hinzufügen.  
@@ -148,6 +148,7 @@ Diese Option verwendet die SDK-Methode „Webservice.deploy()“.
 
 1. Jetzt können Sie den [Webdienst testen](#test-web-service).
 
+<a name='deploy-from-registered-model'/>
 ## <a name="option-2-deploy-from-registered-model"></a>Option 2: Bereitstellen aus einem registrierten Modell
 
 Die Option der Bereitstellung einer registrierten Modelldatei benötigt einige Codezeilen mehr und gestattet ein gewisses Maß an Kontrolle über die Benennung der Ausgaben. Diese Option ist eine praktische Möglichkeit, ein bereits vorhandenes registriertes Modell bereitzustellen.  Sie können das Docker-Image jedoch nicht benennen.  
@@ -173,6 +174,7 @@ Diese Option verwendet die SDK-Methode „Webservice.deploy_from_model()“.
 
 1. Jetzt können Sie den [Webdienst testen](#test-web-service).
 
+<a name='deploy-from-image'/>
 ## <a name="option-3-deploy-from-image"></a>Option 3: Bereitstellen aus einem Image
 
 Stellen Sie mithilfe von `Webservice.deploy_from_image()` ein registriertes Modell (`model`) bereit. Mit dieser Methode können Sie das Docker-Image separat erstellen und die Bereitstellung dann aus diesem Image durchführen.
@@ -215,6 +217,7 @@ Mit dieser Option haben Sie die größtmögliche Kontrolle über die Erstellung 
 
 Jetzt können Sie den Webdienst testen.
 
+<a name='test-web-service'/>
 ## <a name="test-the-web-service"></a>Testen des Webdiensts
 
 Der Webdienst ist unabhängig von der verwendeten Methode immer der gleiche.  Um Vorhersagen zu erhalten, verwenden Sie die `run`-Methode des Diensts.  

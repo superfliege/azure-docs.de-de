@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von Anwendungsabhängigkeiten mit Azure Monitor for VMs | Microsoft-Dokumentation
-description: Zuordnung ist ein Feature von Azure Monitor for VMs, das Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Details zu seiner Verwendung in einer Reihe von Szenarien.
+title: Anzeigen von Anwendungsabhängigkeiten mit Azure Monitor für VMs | Microsoft-Dokumentation
+description: Zuordnung ist ein Feature von Azure Monitor für VMs, das Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Details zu seiner Verwendung in einer Reihe von Szenarien.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: magoedte
-ms.openlocfilehash: e75409e791c00dc0a5bec591aecfbaa019df8f81
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 8641b6cfb14bceb248cc587095a9d3469ce2c9e0
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225161"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402148"
 ---
-# <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>Verwenden der Zuordnung in Azure Monitor for VMs zum Verstehen von Anwendungskomponenten
-Das Anzeigen der ermittelten Anwendungskomponenten auf virtuellen Windows- und Linux-Computern, die in Ihrer Azure-Umgebung ausgeführt werden, kann mit Azure Monitor für VMs auf zwei Arten erfolgen – direkt auf einem virtuellen Computer oder übergreifend für eine Gruppe von virtuellen Computern in Azure Monitor. 
+# <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>Verwenden der Zuordnung in Azure Monitor für VMs zum Verstehen von Anwendungskomponenten
+Das Anzeigen der ermittelten Anwendungskomponenten auf virtuellen Windows- und Linux-Computern, die in Ihrer Azure-Umgebung ausgeführt werden, kann mit Azure Monitor für VMs auf zwei Arten erfolgen: direkt in einem virtuellen Computer oder übergreifend für eine Gruppe von VMs in Azure Monitor. 
 
-Dieser Artikel soll Ihnen die unterschiedliche Benutzererfahrung der beiden Perspektiven und die Verwendung des Zuordnungsfeatures nahebringen. Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enable Azure Monitor for VMs](monitoring-vminsights-onboard.md) (Aktivieren von Azure Monitor for VMs).
+Dieser Artikel soll Ihnen die unterschiedliche Benutzererfahrung der beiden Perspektiven und die Verwendung des Zuordnungsfeatures nahebringen. Informationen zum Konfigurieren von Azure Monitor für VMs finden Sie unter [Enable Azure Monitor for VMs](monitoring-vminsights-onboard.md) (Aktivieren von Azure Monitor für VMs).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
@@ -88,7 +88,7 @@ Wenn die Gruppen überwachte und nicht überwachte Server beinhalten, können Si
 
 ## <a name="view-map-directly-from-a-virtual-machine"></a>Direktes Anzeigen der Zuordnung in einer VM 
 
-Führen Sie die folgenden Schritte aus, um direkt aus einer VM auf Azure Monitor for VMs zuzugreifen.
+Führen Sie die folgenden Schritte aus, um direkt aus einer VM auf Azure Monitor für VMs zuzugreifen.
 
 1. Wählen Sie im Azure-Portal die Option **Virtual Machines** aus. 
 2. Wählen Sie in der Liste eine VM und im Abschnitt **Überwachung** **Insights (Vorschau)** aus.  
@@ -107,7 +107,9 @@ In Azure Monitor stellt das Zuordnungsfeature eine globale Sicht Ihrer virtuelle
 
 ![Übersicht einer Multi-VM-Zuordnung in Azure Monitor](./media/monitoring-vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Wählen Sie mit dem **Arbeitsbereich**-Selektor oben auf der Seite – falls Sie über mehrere Log Analytics-Arbeitsbereiche verfügen – den Arbeitsbereich aus, der in die Lösung integriert ist und VMs aufweist, die an ihn berichten.  Wählen Sie dann mithilfe des Selektors **Gruppe** ein Abonnement oder eine Ressourcengruppe aus, um einen Satz VMs, der der Gruppe entspricht, mit ihren Abhängigkeiten über einen bestimmten Zeitraum anzuzeigen.  Standardmäßig zeigt die Zuordnung die letzten 30 Minuten.  Mithilfe des **TimeRange**-Selektors können Sie nach historischen Zeiträumen (maximal eine Stunde) abfragen, um anzuzeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung.   
+Wählen Sie mit dem Selektor **Arbeitsbereich** oben auf der Seite – falls Sie über mehrere Log Analytics-Arbeitsbereiche verfügen – den Arbeitsbereich aus, der für die Lösung aktiviert ist und VMs aufweist, die an ihn berichten. Mit dem Selektor **Gruppe** werden Abonnements, Ressourcengruppen, [Computergruppen](../log-analytics/log-analytics-computer-groups.md) und VM-Skalierungsgruppen mit Computern zurückgegeben, die sich auf den ausgewählten Arbeitsbereich beziehen. Ihre Auswahl gilt nur für das Kartenfeature und nicht für die Integrität oder Leistung.
+
+Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Mithilfe des **TimeRange**-Selektors können Sie nach historischen Zeiträumen (maximal eine Stunde) abfragen, um anzuzeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung.   
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Verwenden des Integritätsfeatures finden Sie unter [View Azure VM Health](monitoring-vminsights-health.md) (Anzeigen der Integrität von Azure-VMs); Informationen zum Erkennen von Engpässen und der Gesamtnutzung mit Ihrer VM-Leistung finden Sie unter [View Azure Monitor for VMs Performance](monitoring-vminsights-performance.md) (Anzeigen der Leistung von Azure Monitor for VMs). 
+Informationen zum Verwenden des Integritätsfeatures finden Sie unter [View Azure VM Health](monitoring-vminsights-health.md) (Anzeigen der Integrität von Azure-VMs); Informationen zum Erkennen von Engpässen und der Gesamtnutzung mit Ihrer VM-Leistung finden Sie unter [View Azure Monitor for VMs Performance](monitoring-vminsights-performance.md) (Anzeigen der Leistung von Azure Monitor für VMs). 

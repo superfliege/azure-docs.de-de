@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/04/2018
+ms.date: 10/22/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: c2dc0f2dea752dd44ab2805a0d6fc0e5517f5c6c
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b7682b83ca415ebff2be1c9dbb5581e8da1bb7fb
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48831703"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49805061"
 ---
 [Azure Files](../articles/storage/files/storage-files-introduction.md) unterstützt identitätsbasierte Authentifizierung über SMB (Server Message Block) (Vorschau) über [Azure Active Directory (Azure AD) Domain Services](../articles/active-directory-domain-services/active-directory-ds-overview.md). Ihre in die Domäne eingebundenen virtuellen Windows-Computer (VMs) können mit [Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md)-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen. 
 
@@ -22,8 +22,6 @@ Azure AD authentifiziert, eine Identität, z. B. einen Benutzer, eine Gruppe ode
 Als Teil der Preview unterstützt Azure Files auch die Beibehaltung, Vererbung und Durchsetzung von [NTFS DACLs](https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx) für alle Dateien und Verzeichnisse in einer Dateifreigabe. Wenn Sie Daten von einer Dateifreigabe in Azure Files kopieren, oder umgekehrt, können Sie angeben, dass NTFS DACLs beibehalten werden sollen. Auf diese Weise können Sie Sicherungsszenarien unter Verwendung von Azure Files implementieren, wobei Ihre NTFS DACLS zwischen Ihrer lokalen Dateifreigabe und Ihrer Clouddateifreigabe erhalten bleiben. 
 
 > [!NOTE]
-> Azure AD-Authentifizierung über SMB wird in der Preview-Version nicht für Linux-VMs unterstützt. Nur Windows Server-VMs werden unterstützt.
-
-> Azure AD-Authentifizierung über SMB wird nicht für lokale Computer unterstützt, die auf Azure Files mit AD- oder AAD-Anmeldeinformationen zugreifen.
-
-> Azure AD-Authentifizierung ist nur für Speicherkonten verfügbar, die nach dem 24. September 2018 erstellt wurden.
+> - Azure AD-Authentifizierung über SMB wird in der Preview-Version nicht für Linux-VMs unterstützt. Nur Windows Server-VMs werden unterstützt.
+> - Azure AD-Authentifizierung über SMB wird nicht für lokale Computer unterstützt, die auf Azure Files zugreifen.
+> - Azure AD-Authentifizierung ist nur für Speicherkonten verfügbar, die nach dem 24. September 2018 erstellt wurden.

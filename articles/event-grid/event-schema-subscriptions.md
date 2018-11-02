@@ -5,24 +5,24 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 18f2a64a4354fbd99f1a471c21cc35cbf5df6619
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: ae6513c503b930d9c953f5245a9c98ea096109bb
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140985"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310233"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid-Ereignisschema für Abonnements
 
 In diesem Artikel werden die Eigenschaften und das Schema für Azure-Abonnementereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
-Azure-Abonnements und Ressourcengruppen geben die gleichen Ereignistypen aus. Die Ereignistypen beziehen sich auf Änderungen in den Ressourcen. Der Hauptunterschied besteht darin, dass Ressourcengruppen Ereignisse für Ressourcen innerhalb der Ressourcengruppe und Azure-Abonnements Ereignisse für Ressourcen im gesamten Abonnement ausgeben.
+Azure-Abonnements und Ressourcengruppen geben die gleichen Ereignistypen aus. Die Ereignistypen beziehen sich auf Ressourcenänderungen oder -aktionen. Der Hauptunterschied besteht darin, dass Ressourcengruppen Ereignisse für Ressourcen innerhalb der Ressourcengruppe und Azure-Abonnements Ereignisse für Ressourcen im gesamten Abonnement ausgeben.
 
-Ressourcenereignisse werden für PUT-, PATCH- und DELETE-Vorgänge erstellt, die an `management.azure.com` gesendet werden. Bei POST- und GET-Vorgängen werden keine Ereignisse erstellt. Bei Vorgängen, die an die Datenebene gesendet werden (z.B. `myaccount.blob.core.windows.net`), werden keine Ereignisse erstellt.
+Ressourcenereignisse werden für PUT-, PATCH-, POST- und DELETE-Vorgänge erstellt, die an `management.azure.com` gesendet werden. Für GET-Vorgänge werden keine Ereignisse erstellt. Für Vorgänge, die an die Datenebene gesendet werden (etwa `myaccount.blob.core.windows.net`), werden keine Ereignisse erstellt. Die Aktionsereignisse stellen Ereignisdaten für Vorgänge wie das Auflisten der Schlüssel für eine Ressource bereit.
 
-Wenn Sie Ereignisse für ein Azure-Abonnement abonnieren, erhält Ihr Endpunkt alle Ereignisse für dieses Abonnement. Hierzu können Ereignisse gehören, die für Ihre Zwecke angezeigt werden sollen, z.B. zur Aktualisierung eines virtuellen Computers. Es können aber auch Ereignisse vorhanden sein, die für Sie ggf. weniger wichtig sind, z.B. das Schreiben eines neuen Eintrags im Bereitstellungsverlauf. Sie können alle Ereignisse an Ihrem Endpunkt empfangen und Code schreiben, mit dem die gewünschten Ereignisse verarbeitet werden. Beim Erstellen des Ereignisabonnements können Sie aber auch einen Filter festlegen.
+Wenn Sie Ereignisse für ein Azure-Abonnement abonnieren, erhält Ihr Endpunkt alle Ereignisse für dieses Abonnement. Hierzu können Ereignisse gehören, die für Ihre Zwecke angezeigt werden sollen, z.B. zur Aktualisierung eines virtuellen Computers. Es können aber auch Ereignisse vorhanden sein, die für Sie ggf. weniger wichtig sind, z.B. das Schreiben eines neuen Eintrags im Bereitstellungsverlauf. Sie können alle Ereignisse an einem Endpunkt empfangen und Code schreiben, in dem die Ereignisse verarbeitet werden, die Sie behandeln möchten. Sie können aber auch einen Filter festlegen, wenn Sie das Ereignisabonnement erstellen.
 
 Zur programmgesteuerten Verarbeitung von Ereignissen können Sie Ereignisse sortieren, indem Sie sich den Wert für `operationName` ansehen. Beispielsweise werden für Ihren Endpunkt ggf. nur Ereignisse für Vorgänge verarbeitet, die `Microsoft.Compute/virtualMachines/write` oder `Microsoft.Storage/storageAccounts/write` entsprechen.
 
@@ -36,12 +36,15 @@ Azure-Abonnements geben Verwaltungsereignisse von Azure Resource Manager aus, be
 
 | Ereignistypen | BESCHREIBUNG |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceWriteSuccess | Wird ausgelöst, wenn ein Vorgang zum Erstellen oder Aktualisieren einer Ressource erfolgreich ist. |
-| Microsoft.Resources.ResourceWriteFailure | Wird ausgelöst, wenn ein Vorgang zum Erstellen oder Aktualisieren einer Ressource fehlschlägt. |
-| Microsoft.Resources.ResourceWriteCancel | Wird ausgelöst, wenn ein Vorgang zum Erstellen oder Aktualisieren einer Ressource abgebrochen wird. |
-| Microsoft.Resources.ResourceDeleteSuccess | Wird ausgelöst, wenn ein Vorgang zum Löschen einer Ressource erfolgreich ist. |
-| Microsoft.Resources.ResourceDeleteFailure | Wird ausgelöst, wenn ein Vorgang zum Löschen einer Ressource fehlschlägt. |
-| Microsoft.Resources.ResourceDeleteCancel | Wird ausgelöst, wenn ein Vorgang zum Löschen einer Ressource abgebrochen wird. Dieses Ereignis tritt ein, wenn eine Vorlagenbereitstellung abgebrochen wird. |
+| Microsoft.Resources.ResourceActionCancel | Wird ausgelöst, wenn eine Aktion für eine Ressource abgebrochen wird. |
+| Microsoft.Resources.ResourceActionFailure | Wird ausgelöst, wenn eine Aktion für eine Ressource fehlschlägt. |
+| Microsoft.Resources.ResourceActionSuccess | Wird ausgelöst, wenn eine Aktion für eine Ressource erfolgreich ausgeführt wurde. |
+| Microsoft.Resources.ResourceDeleteCancel | Wird ausgelöst, wenn ein Löschvorgang abgebrochen wird. Dieses Ereignis tritt ein, wenn eine Vorlagenbereitstellung abgebrochen wird. |
+| Microsoft.Resources.ResourceDeleteFailure | Wird ausgelöst, wenn ein Löschvorgang fehlschlägt. |
+| Microsoft.Resources.ResourceDeleteSuccess | Wird ausgelöst, wenn ein Löschvorgang erfolgreich ausgeführt wurde. |
+| Microsoft.Resources.ResourceWriteCancel | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang abgebrochen wird. |
+| Microsoft.Resources.ResourceWriteFailure | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang fehlschlägt. |
+| Microsoft.Resources.ResourceWriteSuccess | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang erfolgreich ausgeführt wurde. |
 
 ## <a name="example-event"></a>Beispielereignis
 
@@ -171,6 +174,62 @@ Im folgenden Beispiel wird das Schema für das Ereignis **ResourceDeleteSuccess*
 }]
 ```
 
+Im folgenden Beispiel wird das Schema für ein **ResourceActionSuccess**-Ereignis veranschaulicht. Das gleiche Schema wird für **ResourceActionFailure**- und **ResourceActionCancel**-Ereignisse verwendet, nur mit anderen Werten für `eventType`.
+
+```json
+[{   
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+  "eventType": "Microsoft.Resources.ResourceActionSuccess",
+  "eventTime": "2018-10-08T22:46:22.6022559Z",
+  "id": "{ID}",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+      "action": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+      "evidence": {
+        "role": "Contributor",
+        "roleAssignmentScope": "/subscriptions/{subscription-id}",
+        "roleAssignmentId": "{ID}",
+        "roleDefinitionId": "{ID}",
+        "principalId": "{ID}",
+        "principalType": "ServicePrincipal"
+      }     
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "aio": "{token}",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/identity/claims/identityprovider": "{URL}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",       "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "POST",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey/listKeys?api-version=2017-04-01"
+    },
+    "resourceProvider": "Microsoft.EventHub",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+    "operationName": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}" 
+}]
+```
+
 ## <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
@@ -194,9 +253,9 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | claims | object | Die Eigenschaften der Ansprüche. Weitere Informationen finden Sie auf der Seite zur [JWT-Spezifikation](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | Zeichenfolge | Eine Vorgangs-ID für die Problembehandlung. |
 | httpRequest | object | Die Details des Vorgangs. Dieses Objekt ist nur enthalten, wenn eine vorhandene Ressource aktualisiert oder eine Ressource gelöscht wird. |
-| resourceProvider | Zeichenfolge | Der Ressourcenanbieter, der den Vorgang ausführt. |
+| resourceProvider | Zeichenfolge | Der Ressourcenanbieter für den Vorgang. |
 | resourceUri | Zeichenfolge | Der URI der Ressource im Vorgang. |
-| operationName | Zeichenfolge | Der Vorgang, der ausgeführt wurde. |
+| operationName | Zeichenfolge | Der Vorgang, der übernommen wurde. |
 | status | Zeichenfolge | Der Status des Vorgangs. |
 | subscriptionId | Zeichenfolge | Die Abonnement-ID der Ressource. |
 | tenantId | Zeichenfolge | Die Mandanten-ID der Ressource. |

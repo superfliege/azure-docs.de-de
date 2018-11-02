@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c136772e27dab014c22234f1ef1d2baddd2ffe58
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1bdf1e1f5e58ecb0939d5876e0cef349e32de517
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978079"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344749"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Benutzerdefinierte Metriken in Azure Monitor
 
@@ -31,7 +31,7 @@ Wenn Sie benutzerdefinierte Metriken an Azure Monitor senden, muss jeder gemelde
 
 ### <a name="authentication"></a>Authentifizierung
 Zum Übermitteln von benutzerdefinierter Metriken an Azure Monitor muss die Entität über ein gültiges Azure Active Directory-Token im „Bearer“-Header der Anforderung verfügen. Es gibt einige unterstützte Möglichkeiten, einen gültigen Bearertoken zu erhalten:
-1. [MSI (verwaltete Dienstidentität)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview): Gibt einer Azure-Ressource (z. B. einer VM) eine Identität. MSI wurde entwickelt, um Ressourcenberechtigungen für bestimmte Vorgänge zu erteilen, damit z. B. eine Ressource Metriken über sich selbst ausgeben kann. Eine Ressource (oder ihre MSI) kann die Berechtigung „Herausgeber von Überwachungsmetriken“ für eine andere Ressource erhalten, sodass die verwaltete Dienstidentität auch für andere Ressourcen Metriken ausgeben kann.
+1. [Verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview): Gibt einer Azure-Ressource selbst (etwa einer VM) eine Identität. MSI wurde entwickelt, um Ressourcenberechtigungen für bestimmte Vorgänge zu erteilen, damit z. B. eine Ressource Metriken über sich selbst ausgeben kann. Eine Ressource (oder ihre MSI) kann die Berechtigung „Herausgeber von Überwachungsmetriken“ für eine andere Ressource erhalten, sodass die verwaltete Dienstidentität auch für andere Ressourcen Metriken ausgeben kann.
 2. [AAD-Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals): Das Szenario hier ist, dass eine AAD-Anwendung (Dienst) mit Berechtigungen versehen werden kann, um Metriken zu einer Azure-Ressource auszugeben.
 Azure Monitor überprüft das Anwendungstoken mithilfe von öffentlichen AAD-Schlüsseln, um die Anforderung zu authentifizieren. Die vorhandene Rolle „Herausgeber von Überwachungsmetriken“ verfügt bereits über diese Berechtigung, die im Azure-Portal verfügbar ist. Dem Dienstprinzipal kann die Rolle „Herausgeber von Überwachungsmetriken“ im erforderlichen Gültigkeitsbereich (Abonnement, Ressourcengruppe oder bestimmte Ressource) erteilt werden, je nachdem, für welche Ressourcen er benutzerdefinierte Metriken ausgibt.
 

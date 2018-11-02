@@ -4,7 +4,7 @@ description: Advanced Analytics Process and Technology in Aktion
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 6066b083-262c-4453-a712-a5c05acc3df8
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 6e9813d989a54dbb1609a58dd502a7493d973faa
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 23766598b1af4e05b007e5ba844190f1fe03a660
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433717"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394373"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
@@ -70,7 +70,7 @@ In diesem Tutorial wird der parallele Massenimport von Daten in SQL Server gezei
 
 So richten Sie Ihre Azure Data Science-Umgebung ein:
 
-1. [Erstellen Sie ein Speicherkonto](../../storage/common/storage-quickstart-create-account.md)
+1. [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md)
 2. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md)
 3. [Stellen Sie einen virtuellen Computer für Data Science bereit](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), der als Server für SQL Server und ein IPython Notebook fungiert.
    
@@ -220,7 +220,7 @@ In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmte
     GROUP BY tip_class
 
 #### <a name="exploration-compute-and-compare-trip-distance"></a>Durchsuchen: Berechnen und Vergleichen der Fahrtlängen
-In diesem Beispiel werden die Werte von "longitude" und "latitude" für Start- und Zielort in SQL-Geografiepunkte konvertiert. Anschließend werden anhand dieser SQL-Geografiepunkte die Fahrtentfernung berechnet und eine zufällige Stichprobe der Ergebnisse für den Vergleich ausgegeben. Im Beispiel werden die Ergebnisse anhand der zuvor durchgeführten Bewertung der Datenqualität auf gültige Koordinaten begrenzt.
+In diesem Beispiel werden die Werte von „longitude“ und „latitude“ für Start- und Zielort in SQL-Geografiepunkte konvertiert. Anschließend werden anhand dieser SQL-Geografiepunkte die Fahrtentfernung berechnet und eine zufällige Stichprobe der Ergebnisse für den Vergleich ausgegeben. Im Beispiel werden die Ergebnisse anhand der zuvor durchgeführten Bewertung der Datenqualität auf gültige Koordinaten begrenzt.
 
     SELECT
     pickup_location=geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326)

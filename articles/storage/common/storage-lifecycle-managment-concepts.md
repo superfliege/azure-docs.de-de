@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: 25e6fba6ac8aa34c0c30fd61f5fe297b94720439
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05e7a7e3c2824a9b47ff723e91103611871d7ed2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983666"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429557"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Verwalten des Azure Blob Storage-Lebenszyklus (Vorschau)
 
@@ -37,7 +37,7 @@ Richtlinien zur Lebenszyklusverwaltung sind sowohl für das GPv2-Konto (General 
 Die Funktion zur Lebenszyklusverwaltung ist in der Vorschau kostenlos. Kunden werden die gewöhnlichen Betriebskosten für die API-Aufrufe [Blobs auflisten](https://docs.microsoft.com/rest/api/storageservices/list-blobs) und [Blobtarif festlegen](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) in Rechnung gestellt. Weitere Informationen zu Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="register-for-preview"></a>Registrieren für die Vorschau 
-Um sich für die öffentliche Vorschau zu registrieren, müssen Sie eine Anforderung einreichen, diese Funktion für Ihr Abonnement zu registrieren. Nachdem Ihre Anforderung genehmigt wurde (innerhalb einiger Tage), wird die Funktion für alle vorhandenen und neuen GPv2- oder Blob Storage-Konten in „USA, Westen 2“ und „Europa, Westen“ aktiviert. Während der Vorschau wird nur Blockblob unterstützt. Wie bei den meisten Vorschauversionen sollte diese Funktion bis zum Erreichen der allgemeinen Verfügbarkeit nicht für Produktionsworkloads verwendet werden.
+Um sich für die öffentliche Vorschau zu registrieren, müssen Sie eine Anforderung einreichen, diese Funktion für Ihr Abonnement zu registrieren. Nachdem Ihre Anforderung genehmigt wurde (innerhalb einiger Tage), wird die Funktion für alle vorhandenen und neuen GPv2- oder Blob Storage-Konten in „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Osten 2“ und „Europa, Westen“ aktiviert. Während der Vorschau wird nur Blockblob unterstützt. Wie bei den meisten Vorschauversionen sollte diese Funktion bis zum Erreichen der allgemeinen Verfügbarkeit nicht für Produktionsworkloads verwendet werden.
 
 Um eine Anforderung zu senden, führen Sie die folgenden PowerShell- oder CLI-Befehle aus.
 
@@ -69,7 +69,7 @@ Wenn die Funktion genehmigt und ordnungsgemäß registriert wurde, sollte der St
 
 ## <a name="add-or-remove-policies"></a>Hinzufügen oder Entfernen von Richtlinien 
 
-Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [REST-APIs](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies) oder Clienttools in den folgenden Sprachen hinzufügen, bearbeiten oder entfernen: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0) und [Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [REST-APIs](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/managementpolicies_createorupdate) oder Clienttools in den folgenden Sprachen hinzufügen, bearbeiten oder entfernen: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0) und [Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -316,6 +316,10 @@ Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer reg
   ]
 }
 ```
+## <a name="faq"></a>Häufig gestellte Fragen
+### <a name="i-created-a-new-policy-why-are-the-actions-specified-not-executed-immediately"></a>Ich habe eine neue Richtlinie erstellt. Warum werden die angegebenen Aktionen nicht sofort ausgeführt? 
+
+Die Lebenszyklusrichtlinie wird von der Plattform einmal pro Tag ausgeführt. Nachdem eine neue Richtlinie festgelegt wurde, kann es bis zu 24 Stunden dauern, bis Aktionen wie das Tiering oder Löschen initiiert und ausgeführt werden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

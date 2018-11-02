@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: 49d9b5306a0fcf51cc0de036c725fca8345cd0ec
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 6dee895ba9fc024baac0500619b7d6cc62167b6d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302181"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404476"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Ereignisanalyse und -visualisierung mit Log Analytics
 Log Analytics sammelt und analysiert Telemetriedaten von Anwendungen und Diensten, die in der Cloud gehostet werden, und bietet Analysetools, um deren Verfügbarkeit und Leistung zu maximieren. In diesem Artikel wird beschrieben, wie Sie Abfragen in Log Analytics ausführen, um einen Einblick in den Cluster zu erhalten und Probleme zu beheben. Folgende allgemeine Fragen werden berücksichtigt:
@@ -105,7 +105,7 @@ Die Abfragesprache Kusto ist leistungsstark. Eine weitere nützliche Abfrage ist
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Um die Infrastrukturüberwachung, d.h. Leistungsindikatoren, zu aktivieren, wechseln Sie zu [Hinzufügen des Log Analytics-Agents](service-fabric-diagnostics-oms-agent.md). Der Agent sammelt Leistungsindikatoren und fügt sie dem vorhandenen Arbeitsbereich zu.
-* Für lokale Cluster bietet Log Analytics ein Gateway (HTTP-Weiterleitungsproxy), über das Daten an Log Analytics gesendet werden können. Weitere Informationen dazu finden Sie unter [Verbinden von Computern ohne Internetzugriff mit Log Analytics über das OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md).
-* Konfigurieren von [automatisierten Warnungen](../log-analytics/log-analytics-alerts.md) für die Erkennung und Diagnose
+* Für lokale Cluster bietet Log Analytics ein Gateway (HTTP-Weiterleitungsproxy), über das Daten an Log Analytics gesendet werden können. Weitere Informationen dazu finden Sie unter [Verbinden von Computern ohne Internetzugriff mit Log Analytics über das Log Analytics-Gateway](../log-analytics/log-analytics-oms-gateway.md).
+* Konfigurieren Sie [automatisierte Warnungen](../log-analytics/log-analytics-alerts.md) für die Erkennung und Diagnose.
 * Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Log Analytics vertraut.
-* Eine ausführlichere Übersicht über Log Analytics und die zugehörigen Optionen finden Sie unter [Was ist Log Analytics?](../operations-management-suite/operations-management-suite-overview.md)
+* Eine ausführlichere Übersicht über Log Analytics und die zugehörigen Optionen finden Sie unter [Was ist Log Analytics?](../operations-management-suite/operations-management-suite-overview.md).

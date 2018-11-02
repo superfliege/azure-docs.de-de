@@ -13,22 +13,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 09/27/2018
 ms.author: szark
-ms.openlocfilehash: 9a22426d0422585714cb78d541a84d55d2fce6e0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 81ee7957c0b26440c064b7f39bc4cfb32b2abd15
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30912228"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648332"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure
-In diesem Dokument wird das Konfigurieren von Logical Volume Manager (LVM) auf Ihrem virtuellen Azure-Computer erläutert. Es zwar möglich, LVM auf einem beliebigen, mit dem virtuellen Computer verbundenen Datenträger zu konfigurieren, bei den meisten Cloudimages wird LVM jedoch nicht auf dem Betriebssystemdatenträger konfiguriert. So werden Probleme mit doppelten Volumegruppen vermieden, wenn der Betriebssystemdatenträger einmal an einen anderen virtuellen Computer mit der gleichen Distribution und dem gleichen Typ angeschlossen wird, z.B. in einem Wiederherstellungsszenario. Es wird daher empfohlen, LVM nur auf den Datenträgern zu verwenden.
+In diesem Dokument wird das Konfigurieren von Logical Volume Manager (LVM) auf Ihrem virtuellen Azure-Computer erläutert. Der LVM kann auf dem Betriebssystemdatenträger oder den Datenträgern von Azure-VMs verwendet werden, aber für die meisten Cloudimages ist der LVM auf dem Betriebssystemdatenträger nicht konfiguriert. In den Schritten unten geht es um das Konfigurieren des LVM für Ihre Datenträger.
 
 ## <a name="linear-vs-striped-logical-volumes"></a>Lineare Volumes im Vergleich zu logischen Stripesetvolumes
-LVM kann verwendet werden, um physische Datenträger in einem einzelnen Speichervolume zusammenzufassen. Standardmäßig erstellt LVM normalerweise lineare logische Volumes, d.h., der physische Speicher wird verkettet. In diesem Fall werden Lese-/Schreibvorgänge in der Regel nur an einen einzelnen Datenträger gesendet. Im Gegensatz dazu können auch logische Stripesetvolumes erstellt werden, bei denen Lese- und Schreibvorgänge auf mehrere Datenträger in der Volumegruppe verteilt werden (ähnlich wie bei RAID0). Aus Leistungsgründen ist es wahrscheinlich, dass die logischen Volumes als Stripesetvolumes eingerichtet werden sollen, damit für Lese- und Schreibvorgänge alle angeschlossenen Datenträger genutzt werden.
+LVM kann verwendet werden, um physische Datenträger in einem einzelnen Speichervolume zusammenzufassen. Standardmäßig erstellt LVM normalerweise lineare logische Volumes, d.h., der physische Speicher wird verkettet. In diesem Fall werden Lese-/Schreibvorgänge in der Regel nur an einen einzelnen Datenträger gesendet. Im Gegensatz dazu können auch logische Stripesetvolumes erstellt werden, bei denen Lese- und Schreibvorgänge auf mehrere Datenträger in der Volumegruppe verteilt werden (ähnlich wie bei RAID0). Aus Leistungsgründen ist die Wahrscheinlichkeit hoch, dass die logischen Volumes als Stripesetvolumes eingerichtet werden sollen, damit für Lese- und Schreibvorgänge alle angeschlossenen Datenträger genutzt werden.
 
-In diesem Dokument wird erläutert, wie Sie mehrere Datenträger in einer einzelnen Volumegruppe kombinieren und dann ein logisches Stripesetvolume erstellen. Die folgenden Schritte wurden etwas verallgemeinert, damit sie für die meisten Distributionen verwendet werden können. In den meisten Fällen weichen die Dienstprogramme und Workflows für die Verwaltung von LVM in Azure nicht von anderen Umgebungen ab. Wenden Sie sich wie immer auch an Ihren Linux-Hersteller, um Dokumentation und Informationen zu bewährten Vorgehensweisen zur Verwendung von LVM mit Ihrer Distribution zu erhalten.
+In diesem Dokument wird erläutert, wie Sie mehrere Datenträger in einer einzelnen Volumegruppe kombinieren und dann ein logisches Stripesetvolume erstellen. Die folgenden Schritte wurden verallgemeinert, damit sie für die meisten Distributionen verwendet werden können. In den meisten Fällen weichen die Dienstprogramme und Workflows für die Verwaltung von LVM in Azure nicht von anderen Umgebungen ab. Wenden Sie sich wie immer auch an Ihren Linux-Anbieter, um Dokumentation und Informationen zu bewährten Vorgehensweisen zur Verwendung von LVM mit Ihrer Distribution zu erhalten.
 
 ## <a name="attaching-data-disks"></a>Anfügen von Datenträgern
 Bei der Verwendung von LVM beginnen Sie normalerweise mit zwei oder mehr zusätzlichen leeren Datenträgern. Basierend auf Ihren E/A-Anforderungen können Sie wählen, in unserem Standardspeicher gespeicherte Datenträger mit bis zu 500 IOPS und Datenträger anzufügen oder in unserem Premiumspeicher gespeicherte Datenträger mit bis zu 5000 IOPS und Datenträger anzufügen. In diesem Artikel wird nicht erläutert, wie Sie Datenträger an einen virtuellen Linux-Computer bereitstellen und anfügen. Eine ausführliche Anleitung, wie Sie einen leeren Datenträger an einen virtuellen Linux-Computer in Azure anfügen, finden Sie im Microsoft Azure-Artikel [Anfügen eines Datenträgers](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
@@ -66,7 +66,7 @@ Bei der Verwendung von LVM beginnen Sie normalerweise mit zwei oder mehr zusätz
     ```
 
 ## <a name="configure-lvm"></a>Konfigurieren von LVM
-In diesem Handbuch wird davon ausgegangen, dass Sie über drei angefügte Datenträger verfügen, die als `/dev/sdc`, `/dev/sdd` und `/dev/sde` bezeichnet werden. Beachten Sie, dass diese möglicherweise nicht immer die gleichen Pfadnamen auf Ihrem virtuellen Computer aufweisen. Sie können „`sudo fdisk -l`“ oder einen ähnlichen Befehl zum Auflisten der verfügbaren Datenträger verwenden.
+In diesem Handbuch wird davon ausgegangen, dass Sie über drei angefügte Datenträger verfügen, die als `/dev/sdc`, `/dev/sdd` und `/dev/sde` bezeichnet werden. Diese Pfade stimmen ggf. nicht mit den Datenträgerpfad-Namen auf Ihrer VM überein. Sie können „`sudo fdisk -l`“ oder einen ähnlichen Befehl zum Auflisten der verfügbaren Datenträger verwenden.
 
 1. Vorbereiten der physischen Volumes:
 
@@ -102,7 +102,7 @@ In diesem Handbuch wird davon ausgegangen, dass Sie über drei angefügte Datent
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Hinzufügen des neuen Laufwerks zu "/etc/fstab"
 > [!IMPORTANT]
-> Eine fehlerhafte Bearbeitung der Datei `/etc/fstab` könnte zu einem nicht startfähigen System führen. Wenn Sie sich nicht sicher sind, finden Sie in der Dokumentation der Verteilung Informationen zur korrekten Bearbeitung dieser Datei. Außerdem wird empfohlen, ein Backup der Datei `/etc/fstab` zu erstellen, bevor Sie sie bearbeiten.
+> Eine fehlerhafte Bearbeitung der Datei `/etc/fstab` könnte zu einem nicht startfähigen System führen. Wenn Sie sich nicht sicher sind, helfen Ihnen die Informationen zur richtigen Bearbeitung dieser Datei in der Dokumentation weiter. Außerdem wird empfohlen, ein Backup der Datei `/etc/fstab` zu erstellen, bevor Sie sie bearbeiten.
 
 1. Erstellen Sie den gewünschten Bereitstellungspunkt für das neue Dateisystem, zum Beispiel:
 
@@ -132,7 +132,7 @@ In diesem Handbuch wird davon ausgegangen, dass Sie über drei angefügte Datent
     sudo mount -a
     ```
 
-    Wenn dieser Befehl zu einer Fehlermeldung führt, überprüfen Sie die Syntax in der Datei `/etc/fstab`.
+    Wenn dieser Befehl zu einer Fehlermeldung führt, sollten Sie die Syntax in der Datei `/etc/fstab` überprüfen.
    
     Führen Sie nun den Befehl `mount` aus, um sicherzustellen, dass das Dateisystem eingebunden wurde:
 

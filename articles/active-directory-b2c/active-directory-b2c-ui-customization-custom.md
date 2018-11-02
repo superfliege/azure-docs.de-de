@@ -1,23 +1,23 @@
 ---
-title: Anpassen einer Benutzeroberfläche mit benutzerdefinierten Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie eine Benutzeroberfläche (UI) anpassen, während Sie benutzerdefinierte Richtlinien in Azure AD B2C verwenden.
+title: Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C | Microsoft-Dokumentation
+description: Erfahren Sie, wie eine Benutzeroberfläche mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angepasst werden kann.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/04/2017
+ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9908a7cf96c56e414e0a8d7faea0352b60214ea4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446162"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945059"
 ---
-# <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberflächenanpassung in einer benutzerdefinierten Richtlinie
+# <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,7 +25,7 @@ Nach dem Durcharbeiten dieses Artikels haben Sie eine benutzerdefinierte Registr
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Arbeiten Sie zunächst [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) durch. Sie sollten eine funktionierende benutzerdefinierte Richtlinie für die Registrierung und Anmeldung bei lokalen Konten besitzen.
+Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) aus. Sie sollten eine funktionierende benutzerdefinierte Richtlinie für die Registrierung und Anmeldung bei lokalen Konten besitzen.
 
 ## <a name="page-ui-customization"></a>Seite für die Benutzeroberflächenanpassung
 
@@ -119,27 +119,44 @@ Konfigurieren Sie den Blob-Speicher für die Ressourcenfreigabe zwischen verschi
 2. Klicken Sie auf **Anforderung senden**.  
     Wenn ein Fehler ausgegeben wird, sollten Sie sich vergewissern, dass Ihre [CORS-Einstellungen](#configure-cors) richtig sind. Außerdem müssen Sie unter Umständen Ihren Browsercache löschen oder eine InPrivate-Browsersitzung öffnen, indem Sie STRG+UMSCHALT+P drücken.
 
-## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtlinien
+## <a name="modify-the-extensions-file"></a>Ändern der Erweiterungsdatei
 
-Unter dem *\<TrustFrameworkPolicy\>*-Tag der obersten Ebene sollte sich das *\<BuildingBlocks\>*-Tag befinden. Fügen Sie in den *\<BuildingBlocks\>*-Tags ein *\<ContentDefinitions\>*-Tag hinzu, indem Sie das folgende Beispiel kopieren. Ersetzen Sie *your_storage_account* durch den Namen Ihres Speicherkontos.
+Um die Anpassung der Benutzeroberfläche zu konfigurieren, kopieren Sie die **ContentDefinition** und ihre untergeordneten Elemente in der Basisdatei, und fügen Sie sie in die Erweiterungsdatei ein.
 
-  ```xml
-  <BuildingBlocks>
-    <ContentDefinitions>
-      <ContentDefinition Id="api.idpselections">
-        <LoadUri>https://{your_storage_account}.blob.core.windows.net/customize-ui.html</LoadUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
-  </BuildingBlocks>
-  ```
+1. Öffnen Sie die Basisdatei Ihrer Richtlinie. Öffnen Sie z.B. *TrustFrameworkBase.xml*.
+2. Suchen Sie nach dem Element **ContentDefinitions**, und kopieren Sie den gesamten Inhalt.
+3. Öffnen Sie die Erweiterungsdatei. Beispiel: *TrustFrameworkExtensions.xml*. Suchen Sie nach dem Element **BuildingBlocks**. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
+4. Fügen Sie den gesamten Inhalt des **ContentDefinitions**-Elements ein, das Sie als untergeordnetes Element des **BuildingBlocks**-Elements kopiert haben. 
+5. Suchen Sie dem **ContentDefinition**-Element, das `Id="api.signuporsignin"` in der kopierten XML-Datei enthält.
+6. Ändern Sie den Wert von **LoadUri** in die URL der HTML-Datei, die Sie in den Speicher hochgeladen haben. Beispiel: https://mystore1.azurewebsites.net/b2c/customize-ui.html.
+    
+    Ihre benutzerdefinierte Richtlinie sollte wie folgt aussehen:
+
+    ```xml
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsignin">
+          <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
+          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
+          <Metadata>
+            <Item Key="DisplayName">Signin and Signup</Item>
+          </Metadata>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>
+    ```
+
+7. Speichern Sie die Erweiterungsdatei.
 
 ## <a name="upload-your-updated-custom-policy"></a>Hochladen der aktualisierten benutzerdefinierten Richtlinie
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) [in den Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und öffnen Sie dann das Blatt **Azure AD B2C**.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+4. Wählen Sie **Framework für die Identitätsfunktion** aus.
 2. Klicken Sie auf **Alle Richtlinien**.
 3. Klicken Sie auf **Richtlinie hochladen**.
-4. Laden Sie `SignUpOrSignin.xml` mit dem zuvor hinzugefügten *\<ContentDefinitions\>*-Tag hoch.
+4. Laden Sie die zuvor geänderte Erweiterungsdatei hoch.
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Testen der benutzerdefinierten Richtlinie mit **Jetzt ausführen**
 

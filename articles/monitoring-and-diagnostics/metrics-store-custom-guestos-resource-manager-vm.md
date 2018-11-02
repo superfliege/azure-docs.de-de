@@ -8,18 +8,18 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 4ed911766a14dd35ea662326a5d50df11cf81698
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f3076054eb6e18eb5143a34ba558c1f9e43ea4a5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984069"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345185"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für einen virtuellen Windows-Computer
 
 Die [Windows Azure-Diagnoseerweiterung](azure-diagnostics.md) (WAD) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird.  Die Erweiterung kann Telemetriedaten an viele verschiedene Standorte senden, die im zuvor verlinkten Artikel aufgeführt sind.  
 
-In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer an den Azure Monitor-Datenspeicher beschrieben. Ab WAD Version 1.11 können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. Wenn Sie sie an dieser Position speichern, können Sie auf die gleichen Aktionen zugreifen, die auch für Plattformmetriken verfügbar sind.  Aktionen sind nahezu in Echtzeit Warnungen, Diagramme, routing, REST-API und vieles mehr zugreifen.  In der Vergangenheit hat die WAD-Erweiterung in Azure Storage geschrieben, aber nicht der Azure Monitor-Datenspeicher.   
+In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer an den Azure Monitor-Datenspeicher beschrieben. Ab WAD Version 1.11 können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. Wenn Sie sie an dieser Position speichern, können Sie auf die gleichen Aktionen zugreifen, die auch für Plattformmetriken verfügbar sind.  Zu den Maßnahmen gehören zeitnahe Benachrichtigung, Diagrammerstellung, Routing, Zugriff über die REST-API und vieles mehr.  In der Vergangenheit hat die WAD-Erweiterung in Azure Storage geschrieben, aber nicht der Azure Monitor-Datenspeicher.   
 
 Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, erfahren Sie mehr über [Vorlagenbereitstellungen](../azure-resource-manager/resource-group-overview.md) sowie deren Struktur und Syntax.  
 
@@ -64,7 +64,7 @@ Fügen Sie dem Abschnitt **Variablen** der Vorlage nach dem Eintrag für **stora
     "accountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]", 
 ```
 
-Fügen Sie diese MSI-Erweiterung (verwaltete Dienstidentität) der Vorlage oben im Abschnitt „resources“ hinzu.  Die Erweiterung stellt sicher, dass Azure Monitor die ausgegebenen Metriken akzeptiert.  
+Fügen Sie diese Erweiterung für verwaltete Identitäten für Azure-Ressourcen der Vorlage oben im Abschnitt „resources“ hinzu.  Die Erweiterung stellt sicher, dass Azure Monitor die ausgegebenen Metriken akzeptiert.  
 
 ```json
 //Find this code 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/08/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ac2cf4d688b1bdc54ed2d7341f0e195d3b2fe42d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 91a4a9ae1d3d84f1396adad07d1cda73ee3747c9
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236468"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312482"
 ---
 ## <a name="what-happens-to-my-app-during-deployment"></a>Was geschieht während der Bereitstellung mit meiner App?
 
@@ -21,4 +21,4 @@ Alle offiziell unterstützten Bereitstellungsmethoden haben eines gemeinsam: Sie
 
 - Beenden Sie die App, oder aktivieren Sie den Offlinemodus für die App während der Bereitstellung. Weitere Informationen finden Sie unter [Dealing with locked files during deployment](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment) (Umgang mit gesperrten Dateien während der Bereitstellung).
 - Stellen Sie einen [Stagingslot](../articles/app-service/web-sites-staged-publishing.md) bereit, bei dem [Automatisch tauschen](../articles/app-service/web-sites-staged-publishing.md#configure-auto-swap) aktiviert ist. 
-- Verwenden Sie stattdessen [Run-From-Zip](https://github.com/Azure/app-service-announcements/issues/84).
+- Verwenden Sie stattdessen [Aus Paket ausführen](https://github.com/Azure/app-service-announcements/issues/84).

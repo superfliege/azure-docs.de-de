@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 09-05-2018
-ms.openlocfilehash: 065ac0855fc47b23b434287f9f4406bd641f01ae
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 4b51631e8b7d3f53edd1afdba76de3031b112254
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47454437"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49805080"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances
 
@@ -35,7 +35,7 @@ Reservierte VM-Instanzen sind für die meisten VM-Größen bis auf einige Ausnah
   - Eingeschränkte vCPU-Größen
   - VM-Serien: A-Serie, Av2-Serie oder G-Serie
   - Virtuelle Computer in Vorschauversionen: jede VM-Serie oder -Größe in Vorschauversionen
-- Clouds: Reservierungen sind in den Regionen „Azure US-Regierung“, „Deutschland“ und „China“ nicht zum Kauf verfügbar.
+- Clouds: Reservierungen sind in den Regionen „Deutschland“ und „China“ nicht zum Kauf verfügbar.
 - Nicht genügend Kontingent: Für eine Reservierung, die einem einzelnen Abonnement zugeordnet ist, muss im Abonnement vCPU-Kontingent für die neue RI verfügbar sein. Beispiel: Wenn für das Zielabonnement eine Kontingentgrenze von zehn vCPUs für die D-Serie gilt, können Sie keine Reservierung für elf Standard_D1-Instanzen erwerben. Bei der Kontingentüberprüfung für Reservierungen werden die im Abonnement bereits bereitgestellten virtuellen Computer berücksichtigt. Beispiel: Wenn im Abonnement ein Kontingent von zehn vCPUs für die D-Serie enthalten ist und zwei Standard_D1-Instanzen bereitgestellt sind, können Sie eine Reservierung für zehn Standard_D1-Instanzen in diesem Abonnement erwerben. 
 - Kapazitätseinschränkungen: In seltenen Fällen beschränkt Azure den Kauf neuer Reservierungen für eine Teilmenge der VM-Größen aufgrund geringer Kapazität in einer Region.
 
@@ -69,7 +69,7 @@ Reservierte VM-Instanzen sind für die meisten VM-Größen bis auf einige Ausnah
 
 Wenn Sie Ihre Reservierung stornieren möchten, wird unter Umständen eine Gebühr für die vorzeitige Kündigung in Höhe von 12% berechnet. Rückerstattungen basieren auf dem niedrigsten Preis (entweder Ihrem Kaufpreis oder dem aktuellen Preis für die Reservierung). Rückerstattungen sind auf 50.000 US-Dollar pro Jahr beschränkt. Die Rückerstattung, die Sie erhalten, umfasst den verbleibenden anteiligen Saldo abzüglich der Gebühr für die vorzeitige Kündigung in Höhe von 12%. Navigieren Sie zum Anfordern einer Stornierung im Azure-Portal zu der Reservierung, und wählen Sie **Erstattung** aus, um eine Supportanfrage zu erstellen.
 
-Wenn Sie Ihre Reservierung der reservierten VM-Instanzen in eine andere Region, eine andere VM-Größengruppe oder einen anderen Zeitraum ändern müssen, können Sie sie gegen eine andere Reservierung austauschen, die den gleichen oder einen höheren Wert hat. Das Startdatum des Zeitraums für die neue Reservierung wird nicht aus der umgetauschten Reservierung übernommen. Der Zeitraum von einem oder drei Jahren beginnt ab der Erstellung der neuen Reservierung. Navigieren Sie zum Anfordern eines Umtauschs im Azure-Portal zu der Reservierung, und wählen Sie **Umtausch** aus, um eine Supportanfrage zu erstellen.
+Wenn Sie Ihre Reservierung der reservierten VM-Instanzen in eine andere Region, eine andere VM-Größengruppe oder einen anderen Zeitraum ändern müssen, können Sie sie gegen eine andere Reservierung austauschen, die den gleichen oder einen höheren Wert hat. Das Startdatum des Zeitraums für die neue Reservierung wird nicht aus der umgetauschten Reservierung übernommen. Die Laufzeit von einem oder drei Jahren beginnt ab der Erstellung der neuen Reservierung. Navigieren Sie zum Anfordern eines Umtauschs im Azure-Portal zu der Reservierung, und wählen Sie **Umtausch** aus, um eine Supportanfrage zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

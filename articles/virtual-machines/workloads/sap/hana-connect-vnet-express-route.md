@@ -14,25 +14,25 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5efdda485e4e1f5013948c6636b267f0d388f4d5
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: a64a60603cd9898386a975313afc676e3b253326
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44167602"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353596"
 ---
-# <a name="connecting-a-vnet-to-hana-large-instance-expressroute"></a>Verbinden eines VNets mit HANA (große Instanzen)-ExpressRoute
+# <a name="connect-a-virtual-network-to-hana-large-instances"></a>Verbinden eines virtuellen Netzwerks mit großen HANA-Instanzen
 
-Sobald Sie alle IP-Adressbereiche definiert und die entsprechenden Daten von Microsoft erhalten haben, können Sie beginnen, das von Ihnen zuvor erstellte VNet mit SAP HANA (große Instanzen) zu verbinden. Nachdem das Azure-VNet erstellt wurde, muss ein ExpressRoute-Gateway für das VNet erstellt werden, um es mit der ExpressRoute-Verbindung zu verknüpfen, die sich mit dem Kundenmandanten im „Große Instanz“-Stapel verbindet.
+Nachdem Sie ein virtuelles Azure-Netzwerk erstellt haben, können Sie dieses Netzwerk mit großen SAP HANA-Instanzen in Azure verbinden. Erstellen Sie ein Azure ExpressRoute-Gateway im virtuellen Netzwerk. Mit diesem Gateway können Sie das virtuelle Netzwerk mit der ExpressRoute-Leitung verknüpfen, die eine Verbindung mit dem Kundenmandanten auf dem großen Instanzstempel herstellt.
 
 > [!NOTE] 
-> Dieser Schritt kann bis zu 30 Minuten dauern, da das neue Gateway im vorgesehenen Azure-Abonnement erstellt und anschließend mit dem angegebenen Azure-VNet verbunden wird.
+> Die vollständige Ausführung dieses Schritts kann bis zu 30 Minuten dauern. Das neue Gateway wird im vorgesehenen Azure-Abonnement erstellt und dann mit dem angegebenen virtuellen Azure-Netzwerk verbunden.
 
-Wenn bereits ein Gateway vorhanden ist, prüfen Sie, ob es ein ExpressRoute-Gateway ist. Falls nicht, muss das Gateway gelöscht und als ExpressRoute-Gateway neu erstellt werden. Wenn bereits ein ExpressRoute-Gateway eingerichtet ist und weil das Azure-VNet für lokale Konnektivität bereits mit der ExpressRoute-Verbindung verknüpft ist, fahren Sie mit dem folgenden Abschnitt „Verknüpfen von VNets“ fort.
+Wenn bereits ein Gateway vorhanden ist, überprüfen Sie, ob es sich dabei um ein ExpressRoute-Gateway handelt. Wenn dies nicht der Fall ist, löschen Sie das Gateway, und erstellen Sie ein ExpressRoute-Gateway neu. Wenn bereits ein ExpressRoute-Gateway eingerichtet ist, lesen Sie den Abschnitt „Verknüpfen virtueller Netzwerke“ in diesem Artikel. 
 
-- Verwenden Sie entweder das (neue) [Azure-Portal](https://portal.azure.com/) oder PowerShell zum Erstellen eines ExpressRoute-VPN-Gateways, das mit Ihrem VNet verbunden ist.
+- Verwenden Sie entweder das [Azure-Portal](https://portal.azure.com/) oder PowerShell, um ein mit Ihrem virtuellen Netzwerk verbundenes ExpressRoute-VPN-Gateway zu erstellen.
   - Wenn Sie das Azure-Portal verwenden, fügen Sie ein neues **virtuelles Netzwerkgateway** hinzu, und wählen Sie dann **ExpressRoute** als Gatewaytyp aus.
-  - Wenn Sie PowerShell verwenden, laden Sie zunächst das neueste [Azure PowerShell SDK](https://azure.microsoft.com/downloads/) herunter, um eine optimale Leistung sicherzustellen. Über die folgenden Befehle erstellen Sie ein ExpressRoute-Gateway. Die Texte, denen _$_ vorangestellt ist, bestehen aus benutzerdefinierten Variablen, die mit Ihren jeweiligen Informationen aktualisiert werden müssen.
+  - Bei Verwendung von PowerShell laden Sie zuerst das aktuelle [Azure PowerShell SDK](https://azure.microsoft.com/downloads/) herunter, und verwenden Sie dieses. Über die folgenden Befehle erstellen Sie ein ExpressRoute-Gateway. Die Texte, denen _$_ vorangestellt ist, sind benutzerdefinierte Variablen, die mit Ihren spezifischen Informationen aktualisiert werden müssen.
 
 ```PowerShell
 # These Values should already exist, update to match your environment
@@ -44,7 +44,7 @@ $myVNetName = "VNet01"
 $myGWName = "VNet01GW"
 $myGWConfig = "VNet01GWConfig"
 $myGWPIPName = "VNet01GWPIP"
-$myGWSku = "HighPerformance" # Supported values for HANA Large Instances are: HighPerformance or UltraPerformance
+$myGWSku = "HighPerformance" # Supported values for HANA large instances are: HighPerformance or UltraPerformance
 
 # These Commands create the Public IP and ExpressRoute Gateway
 $vnet = Get-AzureRmVirtualNetwork -Name $myVNetName -ResourceGroupName $myGroupName
@@ -63,20 +63,20 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 In diesem Beispiel wurde die Gateway-SKU „HighPerformance“ verwendet. Ihre Optionen sind „HighPerformance“ oder „UltraPerformance“ als einzige Gateway-SKUs, die für SAP HANA in Azure (große Instanzen) unterstützt werden.
 
 > [!IMPORTANT]
-> Für HANA (große Instanzen) mit SKUs von Typ II-Klasse ist die Verwendung der UltraPerformance-Gateway-SKU erforderlich.
+> Für große HANA-Instanzen von Typ-II-SKUs müssen Sie die UltraPerformance-Gateway-SKU verwenden.
 
-**Verknüpfen von VNETs**
+## <a name="link-virtual-networks"></a>Verknüpfen virtueller Netzwerke
 
-Nun da das Azure-VNet ein ExpressRoute-Gateway hat, verwenden Sie die von Microsoft bereitgestellten Autorisierungsinformationen zum Verknüpfen des ExpressRoute-Gateways mit der ExpressRoute-Verbindung von SAP HANA in Azure (große Instanzen), die für diesen Zweck erstellt wurde. Dieser Schritt kann über das Azure-Portal oder mit PowerShell ausgeführt werden. Die Verwendung des Portals wird empfohlen, aber hier ist der Vollständigkeit halber auch die PowerShell-Anleitung angegeben. 
+Das virtuelle Azure-Netzwerk verfügt jetzt über ein ExpressRoute-Gateway. Verwenden Sie die von Microsoft bereitgestellten Autorisierungsinformationen, um das ExpressRoute-Gateway mit der ExpressRoute-Leitung von SAP HANA in Azure (große Instanzen) zu verbinden. Sie können die Verbindung im Azure-Portal oder mit PowerShell herstellen. Die Verwendung des Portals wird empfohlen, aber wenn Sie PowerShell verwenden möchten, folgen Sie den nachstehenden Anweisungen. 
 
-- Sie führen die folgenden Befehle für jedes VNet-Gateway aus, wobei Sie für jede Verbindung eine andere AuthGUID verwenden. Die ersten beiden unten im Skript gezeigten Einträge stammen aus den Informationen, die von Microsoft bereitgestellt werden. Zudem ist die AuthGUID spezifisch für jedes VNet und sein Gateway. Dies bedeutet Folgendes: Sie benötigen eine weitere AuthID für Ihre ExpressRoute-Leitung, die SAP HANA (große Instanzen) mit Azure verbindet, wenn Sie ein weiteres Azure-VNet hinzufügen möchten. 
+Führen Sie die folgenden Befehle für jedes virtuelle Netzwerkgateway aus, und verwenden Sie dabei für jede Verbindung eine andere AuthGUID. Die ersten beiden Einträge im folgenden Skript stammen aus den von Microsoft bereitgestellten Informationen. Darüber hinaus ist die AuthGUID spezifisch für jedes virtuelle Netzwerk und das zugehörige Gateway. Wenn Sie ein weiteres virtuelles Azure-Netzwerk hinzufügen möchten, müssen Sie eine weitere AuthID für Ihre ExpressRoute-Leitung abrufen, die große SAP HANA-Instanzen in Azure verbindet. 
 
 ```PowerShell
 # Populate with information provided by Microsoft Onboarding team
 $PeerID = "/subscriptions/9cb43037-9195-4420-a798-f87681a0e380/resourceGroups/Customer-USE-Circuits/providers/Microsoft.Network/expressRouteCircuits/Customer-USE01"
 $AuthGUID = "76d40466-c458-4d14-adcf-3d1b56d1cd61"
 
-# Your ExpressRoute Gateway Information
+# Your ExpressRoute Gateway information
 $myGroupName = "SAP-East-Coast"
 $myGWName = "VNet01GW"
 $myGWLocation = "East US"
@@ -92,8 +92,8 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID
 ```
 
-Sie müssen diesen Schritt unter Umständen mehrmals ausführen, wenn Sie das Gateway mit mehreren ExpressRoute-Leitungen verbinden möchten, die Ihrem Abonnement zugeordnet sind. Beispielsweise ist die Wahrscheinlichkeit hoch, dass Sie das VNet-Gateway, über das das VNet mit Ihrem lokalen Netzwerk verbunden wird, mit der ExpressRoute-Leitung verbinden.
+Wenn Sie das Gateway mit mehreren ExpressRoute-Leitungen verbinden möchten, die Ihrem Abonnement zugeordnet sind, müssen Sie diesen Schritt unter Umständen mehrmals ausführen. Beispielsweise ist die Wahrscheinlichkeit hoch, dass Sie das virtuelle Netzwerkgateway, das das virtuelle Netzwerk mit Ihrem lokalen Netzwerk verbindet, mit der ExpressRoute-Leitung verbinden.
 
-**Nächste Schritte**
+## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie [Zusätzliche Netzwerkanforderungen für HLI](hana-additional-network-requirements.md).
+- [Zusätzliche Netzwerkanforderungen für HLI](hana-additional-network-requirements.md)

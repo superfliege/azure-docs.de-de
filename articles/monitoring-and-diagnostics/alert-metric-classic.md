@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: e0c9cc342bb4b06053f53abc891ee1c415327998
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ffac9511ab93367cba3f006249bd92658a520e09
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409999"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386931"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von klassischen Metrikwarnungen mit Azure Monitor
 
@@ -36,7 +36,7 @@ Klassische Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrich
 
 6. Wählen Sie **E-Mail-Besitzer...** aus, wenn Sie möchten, dass Administratoren und Co-Administratoren E-Mail-Benachrichtigungen empfangen, wenn die Warnung ausgelöst wird.
 
-7. Wenn Sie möchten, dass bei Auslösen der Warnung Benachrichtigungen an weitere E-Mail-Adressen gesendet werden, fügen Sie diese dem Feld **Weitere Administrator-E-Mail(s)** hinzu. Trennen Sie mehrere E-Mail-Nachrichten in folgendem Format durch Semikolons: *email@contoso.com; email2@contoso.com*
+7. Wenn Sie möchten, dass bei Auslösen der Warnung Benachrichtigungen an weitere E-Mail-Adressen gesendet werden, fügen Sie diese dem Feld **Weitere Administrator-E-Mail(s)** hinzu. Trennen Sie mehrere E-Mail-Nachrichten in folgendem Format durch Semikolons: *email@contoso.com;email2@contoso.com*
 
 8. Fügen Sie einen gültigen URI in das Feld **Webhook** ein, wenn dieser bei Auslösen der Warnung aufgerufen werden soll.
 
@@ -54,7 +54,7 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und eine der
 
 ## <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
 
-In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest).
+In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
 
 ### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Abrufen aller klassischen Metrikwarnungsregeln in einer Ressourcengruppe
 

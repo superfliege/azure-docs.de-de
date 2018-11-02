@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 09/24/2018
-ms.openlocfilehash: 412871c0c692f60e690f61fa4e6f67f836cd3ef7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 70c023fc8fe996060d3eff3d5a700b5f910097b4
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158206"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113630"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
 
@@ -50,7 +50,7 @@ Der Pfad zu den Ausgabedaten im Blob folgt dieser Syntax:
 
 - Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-- Ein Azure Machine Learning-Arbeitsbereich, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalt dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
+- Ein Arbeitsbereich des Azure Machine Learning Service, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalten dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
 
 - Ein trainiertes Machine Learning-Modell, das im Azure Kubernetes Service (AKS) bereitgestellt werden soll. Wenn Sie keines besitzen, sehen Sie sich das Tutorial zum [Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md) an.
 
@@ -161,7 +161,7 @@ Sie können die Datensammeln jederzeit beenden. Deaktivieren Sie die Datensammlu
 
 ## <a name="example-notebook"></a>Notebook mit Beispielen
 
-Das Notebook `00.Getting Started/12.enable-data-collection-for-models-in-aks.ipynb` veranschaulicht die Konzepte in diesem Artikel.  
+Im Notebook [00.Getting Started/12.enable-data-collection-for-models-in-aks.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/12.enable-data-collection-for-models-in-aks) werden die in diesem Artikel behandelten Konzepte veranschaulicht.  
 
 Notebook abrufen:
  

@@ -11,17 +11,20 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: a257948c97437d6045f705acb02054928d22ff89
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 024958d8a548313b53fc24ade5805de036a89afb
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092868"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351914"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 In diesem Thema wird gezeigt, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, der Zeilen in einer Tabelle in einer Azure SQL-Datenbank-Instanz bereinigt. Die neue C#-Skriptfunktion wird basierend auf einer vordefinierten Vorlage für einen Timertrigger im Azure-Portal erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
 
 Damit Ihre Funktion einzelne Vorgänge wie das Erstellen, Lesen, Aktualisieren und Löschen in einer Mobile Apps-Tabelle verarbeiten kann, sollten Sie stattdessen die [Mobile Apps-Bindungen](functions-bindings-mobile-apps.md) verwenden.
+
+> [!IMPORTANT]
+> Die Beispiele in diesem Dokument beziehen sich auf die 1.x-Runtime. Informationen zum Erstellen einer 1.x-Funktions-App [finden Sie hier](./functions-versions.md#creating-1x-apps).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -121,7 +124,7 @@ Informieren Sie sich als Nächstes darüber, wie Sie Functions mit Logic Apps f�
 
 Weitere Informationen zu Functions finden Sie in den folgenden Themen:
 
-* [Azure Functions developer reference (Azure Functions-Entwicklerreferenz) (Azure Functions-Entwicklerreferenz)](functions-reference.md)  
+* [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
 * [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  

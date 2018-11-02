@@ -12,19 +12,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 09/04/2018
+ms.date: 10/19/2018
 ms.author: rolyon
-ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393982"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944142"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
-Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Azure AD-Nutzungsbedingungen.
+Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Nutzungsbedingungen.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+## <a name="overview-videos"></a>Übersichtsvideos
+
+Das folgende Video enthält eine kurze Übersicht über die Nutzungsbedingungen.
+
+>[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
+
+Weitere Videos finden Sie unter:
+- [How to deploy Terms of use in Azure Active Directory](https://www.youtube.com/embed/N4vgqHO2tgY) (Gewusst wie: Bereitstellen der Nutzungsbedingungen in Azure Active Directory)
+- [How to roll out Terms of use in Azure Active Directory](https://www.youtube.com/embed/t_hA4y9luCY) (Gewusst wie: Durchführen des Rollouts für die Nutzungsbedingungen in Azure Active Directory)
 
 ## <a name="what-can-i-do-with-terms-of-use"></a>Welche Möglichkeiten bieten die Nutzungsbedingungen?
 Die Azure AD-Nutzungsbedingungen ermöglichen Folgendes:
@@ -33,8 +43,9 @@ Die Azure AD-Nutzungsbedingungen ermöglichen Folgendes:
 - Anzeigen spezifischer Nutzungsbedingungen auf der Grundlage von Benutzerattributen (beispielsweise Ärzte/Pflegepersonal oder Mitarbeiter im Inland/Ausland unter Verwendung [dynamischer Gruppen](../users-groups-roles/groups-dynamic-membership.md))
 - Anzeigen spezifischer Nutzungsbedingungen beim Zugriff auf besonders geschäftsrelevante Anwendungen (beispielsweise Salesforce)
 - Anzeigen von Nutzungsbedingungen in verschiedenen Sprachen
+- Leisten eines Beitrags zur Erfüllung von Datenschutzbestimmungen
 - Auflisten, wer den Nutzungsbedingungen bereits (oder noch nicht) zugestimmt hat
-- Anzeigen eines Überwachungsprotokolls mit Aktivitäten für die Nutzungsbedingungen
+- Anzeigen eines Protokolls zur Aktivität der Nutzungsbedingungen in Bezug auf Compliance und Überwachung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Nutzungsbedingungen verwenden und konfigurieren zu können, benötigen Sie Folgendes:

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1ddcbba4eacad040420efaf087f170e6c06ab2a0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 5f6ce3564cf4056dc9295e1885be425bbe3d7701
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182398"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165299"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Google-Konto mithilfe von Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Um ein Google-Konto als Identitätsanbieter in Azure Active Directory (Azure AD)
 3. Geben Sie einen **Projektnamen** ein, klicken Sie auf **Erstellen**, und stellen Sie sicher, dass Sie das neue Projekt verwenden.
 3. Wählen Sie im linken Menü die Option **Credentials** (Anmeldeinformationen) und anschließend **Create credentials** > **Oauth client ID** (Anmeldeinformationen erstellen > OAuth-Client-ID) aus.
 4. Wählen Sie **Configure consent screen** (Genehmigungsbildschirm konfigurieren) aus.
-5. Wählen Sie unter **Email address** (E-Mail-Adresse) eine gültige Adresse aus, oder geben Sie sie an, geben Sie einen Wert unter **Product name shown to users** (Für Benutzer angezeigter Produktname) ein, und klicken Sie auf **Save** (Speichern).
+5. Wählen Sie unter **Email address** (E-Mail-Adresse) eine gültige Adresse aus, oder geben Sie eine an, geben Sie einen Wert unter **Product name shown to users** (Für Benutzer angezeigter Produktname) ein, fügen Sie zu **Authorized Domains** (Autorisierte Domänen) `b2clogin.com` hinzu, und klicken Sie auf **Save** (Speichern).
 6. Wählen Sie unter **Anwendungstyp** die Option **Webanwendung** aus.
 7. Geben Sie einen **Namen** für die Anwendung an, und geben Sie `https://your-tenant-name.b2clogin.com` unter **Authorized JavaScript origins** (Autorisierte JavaScript-Quellen) und `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält.
 8. Klicken Sie auf **Create**.

@@ -2,19 +2,19 @@
 title: Azure IoT Edge-Sicherheits-Manager | Microsoft-Dokumentation
 description: Verwaltet das Sicherheitsniveau für IoT Edge-Gerät und die Integrität von Sicherheitsdiensten.
 services: iot-edge
-keywords: Sicherheit, Element, Enclave, IoT Edge
+keywords: Sicherheit, sicheres Element, Enclave, TEE, IoT Edge
 author: eustacea
 manager: timlt
 ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4594685291396b8b80e62abe57be109f0abbd81d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f0e548cdd1c59dc894899ddbac127dd76db7db26
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126342"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321182"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge-Sicherheits-Manager
 
@@ -113,7 +113,7 @@ Die HSM-PAL abstrahiert alle Hardware-Vertrauensanker, damit Entwickler oder Ben
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>Sicherer Hardware-Vertrauensanker
 
-Sichere Hardware ist erforderlich, um innerhalb der IoT Edge-Geräthardware einen Vertrauensanker zu schaffen.  Es gibt verschiedene Arten von Sicherheitshardware, z.B. Trusted Platform Module (TPM), eingebettete Secure Elements (eSM), ARM Trustzone, Intel SGX oder benutzerdefinierte sichere Hardwaretechnologien.  Die Verwendung von sicherer Vertrauensanker in Geräten wird aufgrund der Bedrohungen durch den physischen Zugriff auf IoT-Geräte dringend empfohlen.
+Sichere Hardware ist erforderlich, um innerhalb der IoT Edge-Geräthardware einen Vertrauensanker zu schaffen.  Es gibt verschiedene Arten von Sicherheitshardware, z.B. Trusted Platform Module (TPM), eingebettete Secure Elements (eSE), ARM TrustZone, Intel SGX oder benutzerdefinierte sichere Hardwaretechnologien.  Die Verwendung von sicherer Vertrauensanker in Geräten wird aufgrund der Bedrohungen durch den physischen Zugriff auf IoT-Geräte dringend empfohlen.
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge-Sicherheits-Manager – Integration und Wartung
 

@@ -3,18 +3,18 @@ title: Azure HDInsight-Architektur mit dem Enterprise-Sicherheitspaket
 description: Erfahren Sie, wie Sie HDInsight-Sicherheitsmaßnahmen mit dem Enterprise-Sicherheitspaket planen können.
 services: hdinsight
 ms.service: hdinsight
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 975a4f7b15d1e1c13767cd7026e961e9d4227603
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8d344adc367eb9b93e52d9423a2ab4dda657b298
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998923"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115538"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Verwendung des Enterprise-Sicherheitspakets in HDInsight
 
@@ -26,26 +26,20 @@ HDInsight basiert auf einem häufig verwendeten Identitätsanbieter – Active D
 
 Die virtuellen Computer (VMs) in HDInsight werden in Ihre bereitgestellte Domäne eingebunden. Alle Dienste, die unter HDInsight ausgeführt werden (Ambari, Hive-Server, Ranger, Spark Thrift-Server usw.), funktionieren daher für den authentifizierten Benutzer nahtlos. Administratoren können dann mithilfe von Apache Ranger starke Autorisierungsrichtlinien erstellen, um eine rollenbasierte Zugriffssteuerung für Ressourcen im Cluster zu ermöglichen.
 
-
 ## <a name="integrate-hdinsight-with-active-directory"></a>Integrieren von HDInsight in Active Directory
 
 Open-Source-Hadoop basiert auf Kerberos für die Bereitstellung von Authentifizierung und Sicherheit. Daher sind HDInsight-Clusterknoten mit dem Enterprise-Sicherheitspaket (ESP) in eine mit den Azure AD DS verwaltete Domäne eingebunden. Die Kerberos-Sicherheit ist für die Hadoop-Komponenten auf dem Cluster konfiguriert. 
 
-Für jede Hadoop-Komponente wird automatisch ein Dienstprinzipal erstellt. Zudem wird ein entsprechender Computerprinzipal für jeden Computer erstellt, die in die Domäne eingebunden ist. Um diese Dienst- und Computerprinzipale zu speichern, muss eine Organisationseinheit (OE) in dem Domänencontroller (Azure AD DS) bereitgestellt werden, in dem diese Prinzipale platziert werden. 
+Folgendes wird automatisch erstellt:
+- ein Dienstprinzipal für jede Hadoop-Komponente 
+- ein Computerprinzipal für jeden Computer, der in die Domäne eingebunden ist
+- eine Organisationseinheit für jeden Cluster zum Speichern dieser Dienst- und Computerprinzipale 
 
 Zusammengefasst benötigen Sie zum Einrichten einer Umgebung Folgendes:
 
 - Eine (von Azure AD DS verwaltete) Active Directory-Domäne.
 - In Azure AD DS aktiviertes sicheres LDAP (LDAPS).
 - Ordnungsgemäße Konnektivität vom virtuellen HDInsight-Netzwerk zum virtuellen Azure AD DS-Netzwerk, wenn Sie separate virtuelle Netzwerke für sie wählen. Eine VM innerhalb des virtuellen HDInsight-Netzwerks sollte durch das Peering virtueller Netzwerke uneingeschränkten Zugriff auf Azure AD DS haben. Wenn HDInsight und Azure AD DS im gleichen virtuellen Netzwerk bereitgestellt sind, wird die Konnektivität automatisch bereitgestellt, und es ist keine weitere Aktion erforderlich.
-- Eine [auf Azure AD DS erstellte](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md) OE.
-- Ein Dienstkonto, dem folgende Berechtigungen zugewiesen sind:
-    - Erstellen von Dienstprinzipalen in der OE.
-    - Hinzufügen von Computern zur Domäne und Erstellen von Computerprinzipalen in der OE.
-
-Der folgende Screenshot zeigt eine in contoso.com erstellte OE. Er zeigt auch einige der Dienst- und Computerprinzipale.
-
-![Organisationseinheit für HDInsight-Cluster mit dem ESP](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
 ## <a name="set-up-different-domain-controllers"></a>Einrichten anderer Domänencontroller
 HDInsight unterstützt derzeit nur Azure AD DS als Hauptdomänencontroller, den der Cluster für die Kerberos-Kommunikation verwendet. Aber auch andere komplexe Active Directory-Setups sind möglich, sofern ein solches Setup dazu führt, dass Azure AD DS für den HDInsight-Zugriff freigegeben wird.

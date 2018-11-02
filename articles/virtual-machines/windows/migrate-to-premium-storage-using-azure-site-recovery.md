@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.component: disks
-ms.openlocfilehash: 5d3c2f09a6e4c45aa477cd85911147eab6de7a2c
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 7378331e5f7540d807c76511226fcd2ed99883fa
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714705"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404136"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrieren zu Storage Premium mithilfe von Azure Site Recovery
 
@@ -77,8 +77,10 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 ### <a name="step-1-create-a-recovery-services-vault"></a>Schritt 1: Erstellen eines Recovery Services-Tresors
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Wählen Sie **Ressource erstellen** > **Verwaltung** > **Backup & Site Recovery (OMS)** aus. Alternativ können Sie auch **Durchsuchen** > **Recovery Services-Tresor** > **Hinzufügen** auswählen. 
-3. Geben Sie eine Region für die Replikation virtueller Computer an. Wählen Sie für eine Migration in derselben Region die Region aus, in der sich Ihre Quell-VMs und Quellspeicherkonten befinden. 
+2. Wählen Sie **Ressource erstellen** > **Verwaltung** > **Backup & Site Recovery (OMS)** aus. Alternativ können Sie auch **Durchsuchen** > **Recovery Services-Tresor** > **Hinzufügen** auswählen.
+   >[!NOTE]
+   >Backup und Site Recovery waren früher Teil der ![OMS-Suite](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand).
+1. Geben Sie eine Region für die Replikation virtueller Computer an. Wählen Sie für eine Migration in derselben Region die Region aus, in der sich Ihre Quell-VMs und Quellspeicherkonten befinden. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Schritt 2: Auswählen der Schutzziele 
 
@@ -213,12 +215,12 @@ Site Recovery erstellt eine VM-Instanz, deren Typ einem Storage Premium-fähigen
 Informationen zu bestimmten Migrationsszenarien für virtuelle Computer finden Sie in den folgenden Ressourcen:
 
 * [Migrate Azure Virtual Machines between Storage Accounts (in englischer Sprache)](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Erstellen und Hochladen einer Windows Server-VHD nach Azure](upload-generalized-managed.md)
+* [Erstellen und Hochladen einer Windows Server-VHD in Azure](upload-generalized-managed.md)
 * [Migrating Virtual Machines from Amazon AWS to Microsoft Azure (in englischer Sprache)](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Storage und Azure Virtual Machines zu erfahren:
 
-* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/documentation/services/storage/)
 * [Dokumentation zu virtuellen Computern](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](premium-storage.md)
 

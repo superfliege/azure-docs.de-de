@@ -1,5 +1,5 @@
 ---
-title: Informationen zur Azure IoT Hub-Identitätsregistrierung | Microsoft-Dokumentation
+title: Informationen zur Azure IoT Hub-Identitätsregistrierung | Microsoft Docs
 description: 'Entwicklerhandbuch: Beschreibung der Identitätsregistrierung von IoT Hub und Anleitung zum Verwalten von Geräten mithilfe der Identitätsregistrierung. Enthält Informationen zum Importieren und Exportieren von Geräteidentitäten in einem Massenvorgang.'
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 041eed3a65faeb4e6c19cd9220a9e6393e18532a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 6291350cab41c123b41f7fee811bf72a21d9ff35
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452206"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319131"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz
 
@@ -29,7 +29,9 @@ Verwenden Sie die Identitätsregistrierung für Folgendes:
 * Steuern des geräte-/modulspezifischen Zugriffs auf die geräte-/modulseitigen Endpunkte Ihres Hubs
 
 > [!NOTE]
-> Die Identitätsregistrierung enthält keine anwendungsspezifischen Metadaten.
+> * Die Identitätsregistrierung enthält keine anwendungsspezifischen Metadaten.
+> * Die Modulidentität und der Modulzwilling befinden sich in der Public Preview. Das nachstehende Feature wird für die Modulidentität unterstützt, sobald es allgemein verfügbar ist.
+>
 
 ## <a name="identity-registry-operations"></a>Identitätsregistrierungsvorgänge
 
@@ -40,7 +42,6 @@ Die IoT Hub-Identitätsregistrierung ermöglicht folgende Vorgänge:
 * Abrufen der Identität des Geräts oder Moduls nach ID
 * Löschen der Identität des Geräts oder Moduls
 * Auflisten von bis zu 1.000 Identitäten
-> Die Modulidentität und der Modulzwilling befinden sich in der Public Preview. Das nachstehende Feature wird für die Modulidentität unterstützt, sobald es allgemein verfügbar ist.
 * Exportieren von Geräteidentitäten in Azure Blob Storage
 * Importieren von Geräteidentitäten aus Azure Blob Storage
 
@@ -197,6 +198,9 @@ Geräteidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften da
 > [!NOTE]
 > Der Verbindungsstatus kann nur den Status der Verbindung aus Sicht von IoT Hub widerspiegeln. Aktualisierungen dieser Statusanzeige können sich je nach Netzwerkbedingungen und -konfigurationen verzögern.
 
+> [!NOTE]
+> Aktuell unterstützen die Geräte-SDKs die Verwendung der Zeichen `+` und `#` in der **Geräte-ID** nicht.
+
 ## <a name="module-identity-properties"></a>Modulidentitätseigenschaften
 
 Modulidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften dargestellt:
@@ -215,6 +219,9 @@ Modulidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften darg
 | connectionState |schreibgeschützt |Ein Feld, das den Verbindungsstatus anzeigt: entweder **Verbunden** oder **Getrennt**. Dieses Feld stellt den Geräteverbindungsstatus aus IoT Hub-Sicht dar. **Wichtig**: Dieses Feld darf nur für Entwicklungs-/Debuggingzwecke verwendet werden. Der Verbindungszustand wird nur für Geräte aktualisiert, die MQTT oder AMQP verwenden. Er basiert außerdem auf Pings auf Protokollebene (MQTT- oder AMQP-Pings) und kann eine Verzögerung von maximal 5 Minuten haben. Aus diesen Gründen sind falsch positive Rückmeldungen möglich, z.B. als verbunden gemeldete Geräte, die jedoch getrennt sind. |
 | connectionStateUpdatedTime |schreibgeschützt |Eine temporale Anzeige, die Datum und Uhrzeit der letzten Aktualisierung des Verbindungsstatus angezeigt. |
 | lastActivityTime |schreibgeschützt |Eine temporale Anzeige, die anzeigt, an welchem Datum und zu welcher Uhrzeit das Gerät sich zuletzt verbunden und eine Nachricht empfangen oder gesendet hat. |
+
+> [!NOTE]
+> Aktuell unterstützen die Geräte-SDKs die Verwendung der Zeichen `+` und `#` in der **Geräte-ID** und **Modul-ID** nicht.
 
 ## <a name="additional-reference-material"></a>Weiteres Referenzmaterial
 

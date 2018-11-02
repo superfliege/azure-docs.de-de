@@ -7,14 +7,14 @@ manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 6f19a536861d236a82cc77a17570d8e3004a2ba1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9152733e189aec25a5c024de7f9a3582c29218a3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888270"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406533"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Upgrade auf Azure VM-Sicherungsstapel V2
 
@@ -28,8 +28,8 @@ Das Resource Manager-Bereitstellungsmodell für das Upgrade auf den VM-Sicherung
 
 * Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten einer nicht verwalteten VM bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
     > [!NOTE]
-    > Diese Funktion entspricht nicht dem Überschreiben der ursprünglichen VM.
-    >
+    > Diese Funktion ist nicht identisch mit dem Ersetzen der VM-Datenträger mit Daten des Wiederherstellungspunkts. 
+    
 
 ## <a name="whats-changing-in-the-new-stack"></a>Was ändert sich im neuen Stapel?
 Der Sicherungsauftrag besteht derzeit aus zwei Phasen:

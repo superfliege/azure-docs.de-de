@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 8d3e0874637bc3f13905c6038349b34c18b5fe56
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: a810de5c3c70322560bb45bcc2aee5cf0798cea9
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637796"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248709"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Von Azure Monitor gesammelte Überwachungsdaten
 [Azure Monitor](../azure-monitor/overview.md) ist ein Dienst, der Sie bei der Überwachung Ihrer Anwendungen und der Ressourcen, auf denen sie aufbauen, unterstützt. Im Zentrum dieser Funktionalität steht die Speicherung von Telemetriedaten und weiteren Daten aus überwachten Ressourcen. Dieser Artikel enthält eine vollständige Beschreibung der Weise, in der diese Daten von Azure Monitor gespeichert und verwendet werden.
 
 Alle von Azure Monitor gesammelten Daten gehören einem von zwei Grundtypen an, [Metriken](#metrics) und [Protokollen](#logs). Metriken sind numerische Werte, die einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. Sie sind einfach strukturiert und in der Lage, Szenarien nahezu in Echtzeit zu unterstützen. Protokolle enthalten verschiedene Arten von Daten, die in Datensätzen mit unterschiedlichen Eigenschaften für jeden Typ organisiert sind. Telemetriedaten wie etwa Ereignisse und Ablaufverfolgungen werden als Protokolle zusätzlich zu Leistungsdaten gespeichert, die alle zur Analyse kombiniert werden können.
 
-![Azure Monitor – Übersicht](../azure-monitor/media/overview/overview.png)
+![Azure Monitor – Übersicht](media/monitoring-data-collection/overview.png)
 
 ## <a name="metrics"></a>Metriken
 Metriken sind numerische Werte, die einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. Sie sind einfach strukturiert und in der Lage, Szenarien nahezu in Echtzeit zu unterstützen. Metriken werden in regelmäßigen Abständen gesammelt, unabhängig davon, ob sich der Wert ändert oder nicht. Sie sind für Warnmeldungen gut geeignet, da sie häufig abgetastet werden können und eine Warnung mit relativ einfacher Logik schnell ausgelöst werden kann. 

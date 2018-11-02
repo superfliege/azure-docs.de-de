@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627439"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406142"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrieren von Cloud Foundry in Azure
 
@@ -70,9 +70,9 @@ Der Service Broker von Azure bietet konsistente Schnittstellen, um den Zugriff v
 
 ## <a name="6-metrics-and-logging"></a>6. Metriken und Protokollierung
 Azure Log Analytics Nozzle ist eine Cloud Foundry-Komponente, die Metriken aus der [Firehose-Komponente von Cloud Foundry Loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) an [Azure Log Analytics weiterleitet](https://azure.microsoft.com/services/log-analytics/). Mithilfe der Nozzle-Komponente können Sie Integritäts- und Leistungsmetriken für Ihr CF-System über mehrere Bereitstellungen hinweg sammeln, anzeigen und analysieren.
-[Hier](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) erfahren Sie, wie Sie Azure Log Analytics Nozzle für Open Source- und Pivotal Cloud Foundry-Umgebungen bereitstellen und dann über die OMS-Konsole von Azure Log Analytics auf die Daten zugreifen. 
+[Hier](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) erfahren Sie, wie Sie Azure Log Analytics Nozzle für Open Source- und Pivotal Cloud Foundry-Umgebungen bereitstellen und dann über die Azure Log Analytics-Konsole auf die Daten zugreifen. 
 > [!NOTE]
-> Von PCF 2.0 aus werden Bosh-Integritätsmetriken für VMs standardmäßig an Loggregator Firehose weitergeleitet und dann in die OMS-Konsole von Azure Log Analytics integriert.
+> Von PCF 2.0 aus werden Bosh-Integritätsmetriken für VMs standardmäßig an Loggregator Firehose weitergeleitet und dann in die Azure Log Analytics-Konsole integriert.
 
 ## <a name="7-cost-saving"></a>7. Kosteneinsparungen
 ### <a name="cost-saving-for-devtest-environments"></a>Kosteneinsparungen für Dev/Test-Umgebungen

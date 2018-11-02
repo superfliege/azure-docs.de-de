@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 9ec049ebbfaa8e6ee5dbf585488d5c2e8ff25802
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8ce8d0cda6f81aca0e5ea89dd813b371f61e8404
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949705"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407366"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -387,7 +387,7 @@ VM-Skalierungsgruppen sind hinsichtlich der Konformität ein grundlegender Besta
 
 Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PCI).
 
-### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Funktioniert die [verwaltete Azure-Dienstidentität](https://docs.microsoft.com/azure/active-directory/msi-overview) mit Skalierungsgruppen für virtuelle Computer?
+### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Können [verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/msi-overview) zusammen mit einer VM-Skalierungsgruppe verwendet werden?
 
 Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen. Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux) Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows)
 
@@ -705,7 +705,7 @@ Ja, Sie können dazu die Log Analytics-Erweiterung auf den virtuellen Computern 
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
-Die erforderlichen „workspaceId“ und „workspaceKey“ finden Sie im OMS-Portal. Klicken Sie auf der Übersichtsseite auf die Kachel „Einstellungen“. Klicken Sie oben auf die Registerkarte „Verbundene Datenquellen“.
+Die erforderlichen Werte für „workspaceId“ und „workspaceKey“ finden Sie im Log Analytics-Arbeitsbereich im Azure-Portal. Klicken Sie auf der Übersichtsseite auf die Kachel „Einstellungen“. Klicken Sie oben auf die Registerkarte „Verbundene Datenquellen“.
 
 Hinweis: Wenn die Skalierungsgruppe _upgradePolicy_ auf „Manual“ festgelegt ist, müssen Sie die Erweiterung auf alle virtuellen Computer in der Gruppe anwenden, indem Sie für diese ein Upgrade durchführen. Für die Befehlszeilenschnittstelle wäre dies _az vmss update-instances_.
 

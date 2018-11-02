@@ -9,20 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 9b076709ee24c61b2699672d28bd61204c88a744
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8e32939f3e253bfdd6f8d989f616f30e1b9f27eb
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048040"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364862"
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Verwenden von Zeppelin Notebooks mit Apache Spark-Cluster unter Azure HDInsight
 
 HDInsight Spark-Cluster enthalten Zeppelin Notebooks, die Sie zum Ausführen von Spark-Aufträgen verwenden können. In diesem Artikel wird beschrieben, wie Sie das Zeppelin Notebook in einem HDInsight-Cluster verwenden.
-
-> [!NOTE]
-> Zeppelin Notebooks sind nur für Spark 1.6.3 auf HDInsight 3.5 und Spark 2.1.0 auf HDInsight 3.6 verfügbar.
->
 
 **Voraussetzungen:**
 
@@ -50,7 +46,7 @@ HDInsight Spark-Cluster enthalten Zeppelin Notebooks, die Sie zum Ausführen von
    
     Fügen Sie in den leeren Absatz, der im neuen Notebook standardmäßig erstellt wird, den folgenden Codeausschnitt ein.
    
-        %livy.spark
+        %livy2.spark
         //The above magic instructs Zeppelin to use the Livy Scala interpreter
    
         // Create an RDD using the default Spark context, sc
@@ -77,6 +73,11 @@ HDInsight Spark-Cluster enthalten Zeppelin Notebooks, die Sie zum Ausführen von
     ![Erstellen einer temporären Tabelle auf der Grundlage von Rohdaten](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Erstellen einer temporären Tabelle auf der Grundlage von Rohdaten")
    
     Sie können auch einen Titel für jeden Absatz angeben. Klicken Sie in der rechten Ecke auf das Symbol **Einstellungen** und dann auf **Titel anzeigen**.
+
+> [!NOTE]
+> Der %spark2-Interpreter wird in Zeppelin-Notebooks bei keiner HDInsight-Version unterstützt, und der %sh-Interpreter wird ab HDInsight 4.0 nicht unterstützt.
+>
+
 1. Sie können jetzt Spark-SQL-Anweisungen für die **hvac** -Tabelle ausführen. Fügen Sie die folgende Abfrage in einen neuen Absatz ein. Mit der Abfrage werden die Gebäude-ID und der Unterschied zwischen den Ziel- und Ist-Temperaturen für jedes Gebäude an einem bestimmten Datum abgerufen. Drücken Sie **UMSCHALT+EINGABETASTE**.
    
         %sql
