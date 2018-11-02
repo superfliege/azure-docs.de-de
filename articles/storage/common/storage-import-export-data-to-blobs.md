@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 10/15/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 39287e4d90e4f6f42dd1f79d5457853e253bd736
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 3a647d9f821007dc0f2b48864b937aee84924d8f
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737055"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353170"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
@@ -96,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
     - Wählen Sie **Import in Azure** aus.
     - Geben Sie einen aussagekräftigen Namen für den Importauftrag ein. Verwenden Sie den Namen, um den Fortschritt Ihrer Aufträge zu verfolgen.
-        - Der Name darf nur Kleinbuchstaben, Zahlen, Bindestriche und Unterstriche enthalten.
+        - Der Name darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.
         - Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
     - Wählen Sie ein Abonnement aus.
     - Wählen Sie eine Ressourcengruppe aus, oder geben Sie eine Gruppe ein.  
@@ -107,7 +107,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
     - Laden Sie die Laufwerkjournaldateien hoch, die Sie während der Vorbereitung des Laufwerks erhalten haben. Bei Verwendung von `waimportexport.exe version1` müssen Sie pro vorbereitetem Laufwerk eine Datei hochladen. Wenn die Größe der Journaldatei 2 MB überschreitet, können Sie die `<Journal file name>_DriveInfo_<Drive serial ID>.xml`-Datei verwenden, die zusammen mit der Journaldatei erstellt wurde. 
     - Wählen Sie das Zielspeicherkonto aus, in dem Daten gespeichert werden sollen. 
-    - Der Abgabeort wird automatisch basierend auf der Region des ausgewählten Speicherkontos aufgefüllt.
+    - Der Ablageort wird automatisch basierend auf der Region des ausgewählten Speicherkontos mit Daten aufgefüllt.
    
    ![Importauftrag erstellen – Schritt 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 

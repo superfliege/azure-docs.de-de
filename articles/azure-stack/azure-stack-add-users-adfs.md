@@ -3,7 +3,7 @@ title: Hinzufügen von Benutzern für ADFS-Bereitstellungen von Azure Stack | Mi
 description: Hier erfahren Sie, wie Sie Benutzer für ADFS-Bereitstellungen von Azure Stack hinzufügen.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: patricka
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,22 +11,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
-ms.author: jeffgilb
+ms.date: 10/15/2018
+ms.author: patricka
 ms.reviewer: unknown
-ms.openlocfilehash: 5774750edc5b7380275d4f20aee3be47f2f62b4d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f8abacbcb05d1346931b5c2e1097660cfbd8e594
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29554577"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344165"
 ---
-# <a name="add-users-in-the-azure-stack-development-kit"></a>Hinzufügen von Benutzern im Azure Stack Development Kit
+# <a name="add-azure-stack-users-in-ad-fs"></a>Hinzufügen von Azure Stack-Benutzern in AD FS
+Sie können das Snap-In **Active Directory-Benutzer und -Computer** zum Hinzufügen weiterer Benutzer zu einer Azure Stack-Umgebung verwenden und dabei AD FS als Identitätsanbieter nutzen.
 
-*Gilt für: Azure Stack Development Kit*
+## <a name="add-windows-server-active-directory-users"></a>Hinzufügen von Windows Server Active Directory-Benutzern
+> [!TIP]
+> In diesem Beispiel wird das standardmäßige ASDK-Active Directory „azurestack.local“ verwendet. 
 
-Damit Sie zusätzliche Benutzer zur Development Kit-Bereitstellung hinzufügen können, müssen Sie sie mithilfe der Microsoft Management Console auf dem Azure Stack-Hostcomputer zum Azure Stack Development Kit-Verzeichnis hinzufügen.
-1.  Öffnen Sie auf dem Azure Stack-Hostcomputer die Microsoft Management Console.
+1.  Melden Sie sich bei einem Computer mit einem Konto an, das Zugriff auf die Windows-Verwaltungstools bietet, und öffnen Sie eine neue Microsoft Management Console (MMC).
 2.  Klicken Sie auf **Datei > Snap-Ins hinzufügen bzw. entfernen**.
 3.  Klicken Sie auf **Active Directory-Benutzer und -Computer** > **AzureStack.local** > **Benutzer**.
 4.  Klicken Sie auf **Aktion** > **Neu** > **Benutzer**.
@@ -34,3 +36,5 @@ Damit Sie zusätzliche Benutzer zur Development Kit-Bereitstellung hinzufügen k
 6.  Klicken Sie auf **Weiter**, um die Eingabe von Werten abzuschließen, und dann auf „Fertig stellen“, um den Benutzer zu erstellen.
 
 
+## <a name="next-steps"></a>Nächste Schritte
+[Erstellen von Dienstprinzipalen](azure-stack-create-service-principals.md)

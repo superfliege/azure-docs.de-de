@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 8fc24e58af51a249e3305dbe1496c499387be6b1
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: a0a482e44617732c9dc6cd6609672e8204001dbc
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407908"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362057"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Hinzufügen von Hostservern für den SQL-Ressourcenanbieter
 
@@ -173,23 +173,24 @@ Verwenden Sie diese Befehle, um die Serveroption für die Authentifizierung der 
    > Sie können in derselben SKU nicht eigenständige Server mit AlwaysOn-Instanzen kombinieren. Der Versuch, nach dem Hinzufügen des ersten Hostservers Typen zu kombinieren, führt zu einem Fehler.
 
 ## <a name="sku-notes"></a>Hinweise zu SKUs
-
-Mithilfe von SKUs können Sie Dienstangebote unterscheiden. Beispielsweise können Sie über eine SQL Enterprise-Instanz verfügen, die folgende Merkmale aufweist:
+Verwenden Sie einen SKU-Namen, der die Funktionen der Server in der SKU beschreibt, z.B. Kapazität und Leistung. Der Name soll Benutzer dabei unterstützen, ihre Datenbanken für die entsprechende SKU bereitzustellen. Beispielsweise können Sie SKU-Namen verwenden, um Dienstangebote anhand der folgenden Merkmale zu unterscheiden:
   
 * Hohe Kapazität
 * Hohe Leistung
 * Hochverfügbarkeit
 
-SKUs können in diesem Release nicht bestimmten Benutzern oder Gruppen zugeordnet werden.
-
- Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Benutzer können erst eine Datenbank erstellen, wenn die SKU vollständig erstellt wurde.
-
->[!TIP]
->Verwenden Sie einen SKU-Namen, der die Funktionen der Server in der SKU beschreibt, wie z. B. Kapazität und Leistung. Der Name soll Benutzer dabei unterstützen, ihre Datenbanken für die entsprechende SKU bereitzustellen.
-
 Als Best Practice sollten alle Hostserver in einer SKU die gleichen Ressourcen- und Leistungsmerkmale aufweisen.
 
-## <a name="make-the-sql-databases-available-to-users"></a>Verfügbarmachen von SQL-Datenbanken für Benutzer
+SKUs können nicht bestimmten Benutzern oder Gruppen zugeordnet werden.
+
+Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Benutzer können erst eine Datenbank erstellen, wenn die SKU vollständig erstellt wurde.
+
+Um eine SKU zu bearbeiten, navigieren Sie zu **Alle Dienste** > **SQL-Adapter** > **SKUs**. Wählen Sie die zu ändernde SKU aus, nehmen Sie alle notwendigen Änderungen vor, und klicken Sie dann auf **Speichern**, um die Änderungen zu speichern. Um eine nicht mehr benötigte SKU zu löschen, navigieren Sie zu **Alle Dienste** > **SQL-Adapter** > **SKUs**. Klicken Sie mit der rechten Maustaste auf den Namen der SKU, und wählen Sie dann **Löschen** aus, um sie zu löschen.
+
+> [!TIP]
+> Sie können Kontingente von SQL-Ressourcenanbietern am selben Ort bearbeiten oder löschen.
+
+## <a name="make-sql-databases-available-to-users"></a>Verfügbarmachen von SQL-Datenbanken für Benutzer
 
 Erstellen Sie Pläne und Angebote, um SQL-Datenbanken für Benutzer zur Verfügung zu stellen. Fügen Sie dem Plan den Dienst **Microsoft.SqlAdapter** hinzu. Außerdem müssen Sie ein neues Kontingent erstellen.
 

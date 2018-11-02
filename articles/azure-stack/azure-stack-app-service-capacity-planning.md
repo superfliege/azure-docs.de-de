@@ -12,15 +12,15 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 7cdcd8b7e9814c206255077fae0af2029fab6583
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a769bb4cce84fe78f442cce8440e6e828ed7f76d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078112"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354137"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack
 
@@ -30,7 +30,7 @@ Um eine produktionsfertige Bereitstellung von Azure App Service in Azure Stack e
 
 Dieser Artikel enthält Informationen zu der Mindestanzahl von Computeinstanzen und Compute-SKUs, die Sie für jede Produktionsbereitstellung verwenden sollten.
 
-Sie können Ihre Strategie für die App Service-Kapazität mithilfe dieser Richtlinien planen. Zukünftige Versionen von Azure Stack bieten Optionen für Hochverfügbarkeit für App Service.
+Sie können Ihre Strategie für die App Service-Kapazität mithilfe dieser Richtlinien planen.
 
 | App Service-Serverrolle | Empfohlene Mindestanzahl von Instanzen | Empfohlene Compute-SKUs|
 | --- | --- | --- |
@@ -51,7 +51,7 @@ Der Azure App Service-Controller verbraucht in der Regel nur wenig CPU-, Arbeits
 
 **Empfohlene Mindestanzahl:** zwei Instanzen von A1 Standard
 
-Das Front-End leitet Anforderungen abhängig von der Verfügbarkeit der Webworker an Webworker weiter. Für Hochverfügbarkeit sollten Sie über mehrere Front-Ends verfügen, auch mehr als zwei sind möglich. Beachten Sie bei der Kapazitätsplanung, dass jeder Kern ungefähr 100 Anforderungen pro Sekunde verarbeiten kann.
+Das Front-End leitet Anforderungen abhängig von der Verfügbarkeit der Webworker an Webworker weiter. Für Hochverfügbarkeit sollten Sie über mehr als ein Front-End verfügen, auch mehr als zwei Front-Ends sind möglich. Beachten Sie bei der Kapazitätsplanung, dass jeder Kern ungefähr 100 Anforderungen pro Sekunde verarbeiten kann.
 
 ## <a name="management-role"></a>Verwaltungsrolle
 
@@ -63,13 +63,13 @@ Die Azure App Service-Verwaltungsrolle ist für die Azure Resource Manager- und 
 
 **Empfohlene Mindestanzahl:** zwei Instanzen von A1 Standard
 
-Wenn viele Benutzer gleichzeitig veröffentlichen, kann die Herausgeberrolle eine hohe CPU-Auslastung verursachen. Für Hochverfügbarkeit stellen Sie mehr als eine Herausgeberrolle zur Verfügung.  Der Herausgeber verarbeitet nur FTP/FTPS-Datenverkehr.
+Wenn viele Benutzer gleichzeitig veröffentlichen, kann die Herausgeberrolle eine hohe CPU-Auslastung verursachen. Für Hochverfügbarkeit stellen Sie sicher, dass mehrere Herausgeberrollen verfügbar sind. Der Herausgeber verarbeitet nur FTP-/FTPS-Datenverkehr.
 
 ## <a name="web-worker-role"></a>Webworkerrolle
 
 **Empfohlene Mindestanzahl:** zwei Instanzen von A1 Standard
 
-Für Hochverfügbarkeit sollten Sie über mindestens vier Webworkerrollen verfügen – zwei für den Websitemodus „Shared“ und zwei für jede dedizierte Workerebene, die Sie anbieten möchten. Die freigegebenen und dedizierten Computemodi stellen Mandanten verschiedene Dienstebenen bereit. In folgenden Fällen benötigen Sie eventuell zusätzliche Webworker:
+Für Hochverfügbarkeit sollten Sie über mindestens vier Webworkerrollen verfügen: zwei für den Websitemodus „Shared“ und zwei für jede dedizierte Workerebene, die Sie anbieten möchten. Die freigegebenen und dedizierten Computemodi stellen Mandanten verschiedene Dienstebenen bereit. In folgenden Fällen benötigen Sie ggf. zusätzliche Webworker:
 
 - Wenn viele Ihrer Kunden dedizierte Workerebenen im Computemodus (die sehr ressourcenintensiv sind) verwenden.
 - Wenn viele Ihrer Kunden im freigegebenen Computemodus arbeiten.
@@ -81,32 +81,33 @@ Für die Bereitstellung von Azure Functions für Benutzer im Verbrauchsplanmodel
 Beachten Sie bei der Entscheidung über die Anzahl der zu verwendenden freigegebenen Webworkerrollen folgende Überlegungen:
 
 - **Arbeitsspeicher:** Arbeitsspeicher ist die wichtigste Ressource für eine Webworkerrolle. Unzureichender Arbeitsspeicher wirkt sich auf die Websiteleistung aus, wenn virtueller Arbeitsspeicher vom Datenträger ausgelagert wird. Jeder Server benötigt ungefähr 1,2 GB Arbeitsspeicher für das Betriebssystem. Arbeitsspeicher oberhalb dieses Schwellenwerts kann für das Ausführen von Websites verwendet werden.
-- **Prozentsatz der aktiven Websites:** Normalerweise sind bei einer Azure Stack-Bereitstellung ungefähr 5 % der Anwendungen in Azure App Service aktiv. Der Prozentsatz der Anwendungen, die in einem gegebenen Moment aktiv sind, kann jedoch höher oder niedriger sein. Bei einer aktiven Anwendungsrate von 5 % sollte die maximale Anzahl von Anwendungen in Azure App Service bei einer Azure Stack-Bereitstellung kleiner sein als:
-  - 20-mal die Anzahl der aktiven Websites (5 x 20 = 100).
-- **Durchschnittliche Arbeitsspeicheranforderung:** Die in Produktionsumgebungen ermittelte durchschnittliche Arbeitsspeicheranforderung für Anwendungen beträgt ungefähr 70 MB. Bei Verwendung dieser Arbeitsspeicheranforderung kann der allen Computern oder VMs der Webworkerrolle zugewiesene Arbeitsspeicher wie folgt berechnet werden:
+- **Prozentsatz der aktiven Websites:** Normalerweise sind bei einer Azure Stack-Bereitstellung ungefähr 5 % der Anwendungen in Azure App Service aktiv. Der Prozentsatz der Anwendungen, die in einem gegebenen Moment aktiv sind, kann jedoch höher oder niedriger sein. Bei einer aktiven Anwendungsrate von 5 % sollte die maximale Anzahl von Anwendungen in Azure App Service bei einer Azure Stack-Bereitstellung kleiner als das 20-fache der Anzahl der aktiven Websites (5 x 20 = 100) sein.
+- **Durchschnittliche Arbeitsspeicheranforderung:** Die in Produktionsumgebungen ermittelte durchschnittliche Arbeitsspeicheranforderung für Anwendungen beträgt ungefähr 70 MB. Bei Verwendung dieser Arbeitsspeicheranforderung kann der allen Computern oder virtuellen Computern der Webworkerrolle zugewiesene Arbeitsspeicher wie folgt berechnet werden:
 
-    *Anzahl der bereitgestellten Anwendungen * 70 MB * 5 % – (Anzahl der Webworkerrollen * 1.044 MB)*
+   `Number of provisioned applications * 70 MB * 5% - (number of web worker roles * 1044 MB)`
 
-   Wenn beispielsweise 5.000 Anwendungen in einer Umgebung mit 10 Webworkerrollen ausgeführt werden, sollte jeder VM für eine Webworkerrolle ein Arbeitsspeicher von 7.060 MB zur Verfügung stehen:
+   Wenn beispielsweise 5.000 Anwendungen in einer Umgebung mit 10 Webworkerrollen ausgeführt werden, sollte jedem virtuellen Computer für eine Webworkerrolle ein Arbeitsspeicher von 7.060 MB zur Verfügung stehen:
 
-   5.000 * 70 * 0,05 – (10 * 1.044) = 7.060 MB (= ca. 7 GB)
+   `5,000 * 70 * 0.05 – (10 * 1044) = 7060 (= about 7 GB)`
 
    Weitere Informationen zum Hinzufügen weiterer Workerinstanzen finden Sie unter [Hinzufügen weiterer Workerrollen](azure-stack-app-service-add-worker-roles.md).
 
 ## <a name="file-server-role"></a>Dateiserverrolle
 
-Für die Rolle „Dateiserver“ können Sie einen eigenständigen Dateiserver für Entwicklung und Tests verwenden, z.B. können Sie bei der Bereitstellung von Azure App Service auf dem Azure Stack Development Kit die Vorlage <https://aka.ms/appsvconmasdkfstemplate> verwenden. Für den Produktionseinsatz sollten Sie einen vorkonfigurierten Windows-Dateiserver oder einen vorkonfigurierten Nicht-Windows-Dateiserver verwenden.
+Für die Rolle „Dateiserver“ können Sie einen eigenständigen Dateiserver für Entwicklung und Tests verwenden, z.B. können Sie bei der Bereitstellung von Azure App Service auf dem Azure Stack Development Kit (ASDK) die folgende Vorlage verwenden: https://aka.ms/appsvconmasdkfstemplate. Für Produktionszwecke sollten Sie einen vorkonfigurierten Windows-Dateiserver oder einen vorkonfigurierten Nicht-Windows-Dateiserver verwenden.
 
-In Produktionsumgebungen verursacht die Dateiserverrolle hohe Datenträger-E/A-Lasten. Da sie alle Inhalts- und Anwendungsdateien für Benutzerwebsites enthält, sollten Sie eine der folgenden Komponenten für diese Rolle vorkonfigurieren:
+In Produktionsumgebungen verursacht die Dateiserverrolle hohe Datenträger-E/A-Lasten. Da sie alle Inhalts- und Anwendungsdateien für Benutzerwebsites enthält, sollten Sie eine der folgenden Ressourcen für diese Rolle vorkonfigurieren:
 
-- einen Windows-Dateiserver
-- einen Windows-Dateiservercluster
-- einen Nicht-Windows-Dateiserver
-- einen Nicht-Windows-Dateiservercluster
-- ein NAS-Gerät (Network Attached Storage)
+- Windows-Dateiserver
+- Windows-Dateiservercluster
+- Nicht-Windows-Dateiserver
+- Nicht-Windows-Dateiservercluster
+- NAS-Gerät (Network Attached Storage)
 
 Weitere Informationen finden Sie unter [Bereitstellen eines Dateiservers](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen finden Sie im folgenden Artikel:
 
 [Vor den ersten Schritten mit App Service in Azure Stack](azure-stack-app-service-before-you-get-started.md)

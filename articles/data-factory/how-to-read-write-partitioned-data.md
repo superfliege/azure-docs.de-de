@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 24464d110b00508cfb3fde4ab1a050773511e255
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053709"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091048"
 ---
 # <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Lesen oder Schreiben partitionierter Daten in Azure Data Factory
-In Version 1 unterstützte Azure Data Factory das Lesen oder Schreiben von partitionierten Daten mithilfe der Systemvariablen SliceStart/SliceEnd/WindowStart/WindowEnd. In der aktuellen Version von Data Factory können Sie dieses Verhalten mithilfe eines Pipelineparameters und der Anfangszeit/geplanten Zeit eines Triggers als Wert des Parameters erreichen. 
+
+In Azure Data Factory Version 1 konnten Sie partitionierte Daten mit den Systemvariablen **SliceStart**, **SliceEnd**, **WindowStart** und **WindowEnd** lesen oder schreiben. In der aktuellen Version von Data Factory können Sie dieses Verhalten erreichen, indem Sie einen Pipelineparameter und die Startzeit oder geplante Zeit eines Triggers als Wert des Parameters verwenden. 
 
 ## <a name="use-a-pipeline-parameter"></a>Verwenden eines Pipelineparameters 
-In Version 1 konnten Sie die partitionedBy-Eigenschaft und die SliceStart-Systemvariable wie im folgenden Beispiel dargestellt verwenden: 
+
+In Data Factory Version 1 konnten Sie die **partitionedBy**-Eigenschaft und die **SliceStart**-Systemvariable wie im folgenden Beispiel dargestellt verwenden: 
 
 ```json
 "folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/{Year}/{Month}/{Day}/",
@@ -35,13 +37,13 @@ In Version 1 konnten Sie die partitionedBy-Eigenschaft und die SliceStart-System
 ],
 ```
 
-Weitere Informationen über die partitonedBy-Eigenschaft finden Sie im Artikel [Azure-Blob-Connector, Version 1](v1/data-factory-azure-blob-connector.md#dataset-properties). 
+Weitere Informationen zur Eigenschaft **partitonedBy** finden Sie unter [Kopieren von Daten mithilfe von Azure Data Factory in oder aus Azure Blob Storage](v1/data-factory-azure-blob-connector.md#dataset-properties). 
 
-In der aktuellen Version von Data Factory besteht eine Möglichkeit zum Erreichen dieses Verhaltens im Ausführen der folgenden Aktionen: 
+Um dieses Verhalten in der aktuellen Version von Data Factory zu erreichen, gehen Sie folgendermaßen vor: 
 
-1. Definieren Sie einen **Pipelineparameter** vom Typ Zeichenfolge. Im folgenden Beispiel lautet der Name des Pipelineparameters **windowStartTime**. 
+1. Definieren Sie einen *Pipelineparameter* vom Typ **Zeichenfolge**. Im folgenden Beispiel lautet der Name des Pipelineparameters **windowStartTime**. 
 2. Legen Sie in der Datasetdefinition **folderPath** als Verweis auf den Wert des Pipelineparameters fest. 
-3. Übergeben Sie den eigentlichen Wert für den Parameter beim Aufrufen der Pipeline auf Anforderung, oder übergeben Sie die Startzeit bzw. die geplante Zeit eines Triggers dynamisch zur Laufzeit. 
+3. Übergeben Sie den tatsächlichen Wert für den Parameter, wenn Sie die Pipeline bei Bedarf aufrufen. Sie können auch die Anfangszeit oder geplante Zeit eines Triggers dynamisch zur Laufzeit übergeben. 
 
 ```json
 "folderPath": {
@@ -50,7 +52,8 @@ In der aktuellen Version von Data Factory besteht eine Möglichkeit zum Erreiche
 },
 ```
 
-## <a name="pass-in-value-from-a-trigger"></a>Übergeben eines Werts aus einem Trigger
+## <a name="pass-in-a-value-from-a-trigger"></a>Übergeben eines Werts aus einem Trigger
+
 In der folgenden Triggerdefinition mit rollierendem Fenster wird das Startzeitfenster des Triggers als Wert für den Pipelineparameter **windowStartTime** übergeben: 
 
 ```json
@@ -176,4 +179,6 @@ Pipelinedefinition:
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Eine ausführliche exemplarische Vorgehensweise zum Erstellen einer Data Factory mit einer Pipeline finden Sie unter [Schnellstart: Erstellen einer Data Factory](quickstart-create-data-factory-powershell.md). 
+

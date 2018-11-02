@@ -1,21 +1,20 @@
 ---
-title: Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht | Microsoft-Dokumentation
-description: Dieser Artikel bietet Informationen zur Azure Cosmos DB-BulkExecutor-Bibliothek, ihren Vorteilen und ihrer Architektur.
-keywords: Java-BulkExecutor
+title: Massenimport und Aktualisieren von Daten in Azure Cosmos DB unter Verwendung der BulkExecutor-Bibliothek | Microsoft-Dokumentation
+description: Ausführen von Massenvorgängen in Azure Cosmos DB über Massenimport- und Massenaktualisierungs-APIs, die von der BulkExecutor-Bibliothek zur Verfügung gestellt werden.
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 7c490aa958cf9e78c260dd0fbcf7952b55d8d88c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a760de998c78ce2afdd24a15d9dd6e5d0cf44dc1
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096174"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363542"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht
  
@@ -24,10 +23,10 @@ Azure Cosmos DB ist ein schneller, flexibler und global verteilter Datenbankdien
 * Hohe Durchsätze für Lese- und Schreibvorgänge (Millionen von Vorgängen pro Sekunde).  
 * Speichern großer Mengen von Transaktions- und Vorgangsdaten (Hunderte von Terabytes oder sogar noch mehr) mit vorhersagbarer Latenz im Millisekundenbereich.  
 
-Mit der BulkExecutor-Bibliothek können Sie diese riesigen Durchsatz- und Speichermengen optimal nutzen und über APIs für Massenimport und Massenaktualisierung die entsprechenden Massenvorgänge in Azure Cosmos DB ausführen. In den folgenden Abschnitten erfahren Sie mehr über die Funktionen der BulkExecutor-Bibliothek. 
+Die BulkExecutor-Bibliothek hilft Ihnen, diesen massiven Durchsatz und Speicherplatz zu nutzen. Die BulkExecutor -Bibliothek ermöglicht es Ihnen, Massenvorgänge in Azure Cosmos DB durch Massenimport- und Massenaktualisierungs-APIs durchzuführen. In den folgenden Abschnitten erfahren Sie mehr über die Funktionen der BulkExecutor-Bibliothek. 
 
 > [!NOTE] 
-> Zurzeit unterstützt die BulkExecutor-Bibliothek Import- und Updatevorgänge, und die Bibliothek wird nur von Azure Cosmos DB-SQL API-Konten unterstützt. Informationen zu Updates für die Bibliothek finden Sie in den Versionsanmerkungen für [.NET](sql-api-sdk-bulk-executor-dot-net.md) und [Java](sql-api-sdk-bulk-executor-java.md).
+> Zurzeit unterstützt die BulkExecutor-Bibliothek Import- und Updatevorgänge, und die Bibliothek wird nur von Azure Cosmos DB-SQL API- und Gremlin API-Konten unterstützt.
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>Wichtigste Funktionen der BulkExecutor-Bibliothek  
  

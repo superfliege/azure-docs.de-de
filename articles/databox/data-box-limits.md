@@ -2,32 +2,25 @@
 title: Für Azure Data Box geltende Einschränkungen | Microsoft-Dokumentation
 description: Beschreibt für das System geltende Einschränkungen und empfohlene Größen für Microsoft Azure Data Box-Komponenten und -Verbindungen.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 09/05/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: fe42380288c0f139a2bae80a12f0ebc428a4c286
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: de47cae219aa457343df292bb91b6af06c4b1186
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993081"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091928"
 ---
 # <a name="azure-data-box-limits"></a>Für Azure Data Box geltende Einschränkungen
 
 Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betreiben Ihrer Microsoft Azure Data Box. In der folgenden Tabelle werden die für die Data Box geltenden Einschränkungen beschrieben.
 
 
-## <a name="data-box-service-limits"></a>Für den Data Box-Dienst geltende Einschränkungen
+## <a name="data-box-service-limits"></a>Data Box-Diensteinschränkungen
 
  - Der Data Box-Dienst ist nur in den USA in allen [Azure-Regionen für die öffentliche Azure-Cloud](https://azure.microsoft.com/regions/) verfügbar.
  - Wenn Sie mehrere Speicherkonten mit dem Data Box-Dienst nutzen, müssen alle Speicherkonten zur gleichen Azure-Region gehören.
@@ -35,11 +28,11 @@ Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betre
 
 ## <a name="data-box-limits"></a>Für Data Box geltende Einschränkungen
 
-- In Data Box können maximal 5 Mio. Dateien gespeichert werden.
+- In Data Box können maximal 500 Millionen Dateien gespeichert werden.
 
 ## <a name="azure-storage-limits"></a>Speichergrenzwerte für Azure
 
-In diesem Abschnitt werden die geltenden Einschränkungen für den Azure Storage-Dienst und die Benennungskonventionen für Azure Files, Azure-Blockblobs und Azure-Seitenblobs beschrieben, sofern für den Data Box-Dienst zutreffend. Machen Sie sich sorgfältig mit den Speichergrenzwerten vertraut, und beachten Sie alle Empfehlungen.
+In diesem Abschnitt werden die Grenzwerte für den Azure Storage-Dienst und die erforderlichen Benennungskonventionen für Azure Files, Azure-Blockblobs und Azure-Seitenblobs beschrieben, sofern mit dem Data Box-Dienst verfügbar. Machen Sie sich sorgfältig mit den Speichergrenzwerten vertraut, und beachten Sie alle Empfehlungen.
 
 Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährte Vorgehensweisen für die Benennung von Freigaben, Containern und Dateien finden Sie hier:
 
@@ -70,7 +63,7 @@ Dies sind die Grenzwerte für die Größe der Daten, die in das Speicherkonto ko
 | Blockblob und Seitenblob                                            | 500 TiB pro Speicherkonto. <br> Dies schließt Daten aus allen Quellen einschließlich Data Box ein.|
 | Azure File                                                          | 5 TiB pro Freigabe.<br> Alle Ordner unter *StorageAccount_AzureFiles* müssen diese Beschränkung einhalten.       |
 
-## <a name="azure-object-size-limits"></a>Größenbeschränkungen für Azure-Objekte
+## <a name="azure-object-size-limits"></a>Größenbeschränkungen für das Azure-Objekt
 
 Hier sind die Größen der Azure-Objekte, die geschrieben werden können. Stellen Sie sicher, dass alle Dateien, die hochgeladen werden, diesen Einschränkungen entsprechen.
 

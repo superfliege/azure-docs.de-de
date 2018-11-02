@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: b8c00795c7777e5485f4725e1da63fc764973f43
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 209152b157ef2cfae872490bcff4f2a7100c3a4d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628929"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339337"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Verwalten von Nutzung und Abrechnung für Azure Stack als Cloud-Dienstanbieter 
 
@@ -33,9 +33,9 @@ Das folgende Diagramm zeigt die Schritte, die Sie ausführen müssen, um Ihr Kon
 
 **Schritte zum Hinzufügen von Nutzungsnachverfolgung als CSP**
 
-![Verfahren zum Aktivieren der Nutzung und Verwaltung als Cloud-Dienstanbieter.](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png)
+[ ![Prozess zur Aktivierung der Nutzung und Verwaltung als Cloudanbieter](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png "Prozess zur Aktivierung der Nutzung und Verwaltung als Cloudanbieter") ](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png#lightbox)
 
-## <a name="create-a-csp-or-cspss-subscription"></a>Erstellen eines CSP- oder CSPSS-Abonnements
+## <a name="create-a-csp-or-apss-subscription"></a>Erstellen eines CSP- oder APSS-Abonnements
 
 ### <a name="cloud-service-provider-subscription-types"></a>Abonnementtypen für Cloud-Dienstanbieter
 
@@ -44,13 +44,13 @@ Sie müssen den Typ des Kontos für gemeinsame Dienste auswählen, das Sie für 
  - Cloud-Dienstanbieter 
  - Partner Shared Services-Abonnement 
 
-#### <a name="csp-shared-services"></a>CSP Shared Services
+#### <a name="azure-partner-shared-services"></a>Azure Partner Shared Services
 
-Cloud Service Provider Shared Services-Abonnements (CSPSS) sind die bevorzugte Option für die Registrierung, wenn ein direkter CSP oder ein CSP-Verteiler die Azure Stack-Instanz betreibt.
+Azure Partner Shared Services-Abonnements (APSS) sind die bevorzugte Option für die Registrierung, wenn ein direkter CSP oder ein CSP-Verteiler die Azure Stack-Instanz betreibt.
 
-CSPSS-Abonnements sind einem Mandanten für gemeinsame Dienste zugeordnet. Wenn Sie Azure Stack registrieren, müssen Sie Anmeldeinformationen für ein Konto angeben, das Besitzer des Abonnements ist. Das Konto, das Sie verwenden, um Azure Stack zu registrieren, kann sich von dem Administratorkonto unterscheiden, das Sie für die Bereitstellung verwenden. Außerdem müssen die beiden Konten *nicht* zur selben Domäne gehören. D.h., Sie können zur Bereitstellung den Mandanten wählen, den Sie bereits verwenden. Sie können z.B. ContosoCSP.onmicrosoft.com verwenden und anschließend einen anderen Mandanten zur Registrierung wählen, z.B. IURContosoCSP.onmicrosoft.com. Wenn Sie Day-to-Day-Azure Stack-Verwaltung praktizieren, müssen Sie daran denken, sich mit ContosoCSP.onmicrosoft.com anzumelden. Für Registrierungsvorgänge müssen Sie sich mit IURContosoCSP.onmicrosoft.com bei Azure anmelden.
+APSS-Abonnements sind einem Mandanten für gemeinsame Dienste zugeordnet. Wenn Sie Azure Stack registrieren, müssen Sie Anmeldeinformationen für ein Konto angeben, das Besitzer des Abonnements ist. Das Konto, das Sie verwenden, um Azure Stack zu registrieren, kann sich von dem Administratorkonto unterscheiden, das Sie für die Bereitstellung verwenden. Außerdem müssen die beiden Konten *nicht* zur selben Domäne gehören. D.h., Sie können zur Bereitstellung den Mandanten wählen, den Sie bereits verwenden. Sie können z.B. ContosoCSP.onmicrosoft.com verwenden und anschließend einen anderen Mandanten zur Registrierung wählen, z.B. IURContosoCSP.onmicrosoft.com. Wenn Sie Day-to-Day-Azure Stack-Verwaltung praktizieren, müssen Sie daran denken, sich mit ContosoCSP.onmicrosoft.com anzumelden. Für Registrierungsvorgänge müssen Sie sich mit IURContosoCSP.onmicrosoft.com bei Azure anmelden.
 
-Im Folgenden finden Sie eine Beschreibung der CSPSS-Abonnements und Anweisungen zum Erstellen von Abonnements: [Hinzufügen von Azure Partner Shared Services](https://msdn.microsoft.com/partner-center/shared-services).
+Im Folgenden finden Sie eine Beschreibung der APSS-Abonnements und Anweisungen zum Erstellen von Abonnements: [Hinzufügen von Azure Partner Shared Services](https://msdn.microsoft.com/partner-center/shared-services).
 
 #### <a name="csp-subscriptions"></a>CSP-Abonnements
 
@@ -58,7 +58,7 @@ Cloud-Dienstanbieter-Abonnements (Cloud Service Provider, CSP) sind die bevorzug
 
 ## <a name="register-azure-stack"></a>Registrieren von Azure Stack
 
-Verwenden Sie das CSPSS-Abonnement, das Sie anhand der Informationen im vorherigen Abschnitt erstellt haben, um Azure Stack in Azure zu registrieren. Weitere Informationen finden Sie unter [Registrieren von Azure Stack in Ihrem Azure-Abonnement](azure-stack-registration.md).
+Verwenden Sie das APSS-Abonnement, das Sie anhand der Informationen im vorherigen Abschnitt erstellt haben, um Azure Stack in Azure zu registrieren. Weitere Informationen finden Sie unter [Registrieren von Azure Stack in Ihrem Azure-Abonnement](azure-stack-registration.md).
 
 ## <a name="add-end-customer"></a>Hinzufügen eines Endkunden
 
@@ -72,7 +72,7 @@ Mithilfe der Registrierung kann Azure Stack:
  - Azure Stack-Nutzungsdaten an Azure Commerce weiterleiten und einem Azure-Abonnement in Rechnung stellen.
  - Mit einer mehrinstanzenfähigen Azure Stack-Bereitstellung die Nutzung jedes Kunden einem anderen Abonnement berichten. Mehrinstanzenfähigkeit ermöglicht Azure Stack die Unterstützung verschiedener Organisationen in der gleichen Azure Stack-Instanz.
 
-Für jede Azure Stack-Instanz sind ein Standardabonnement und zahlreiche Mandantenabonnements vorhanden. Das Standardabonnement ist ein Azure-Abonnement, mit dem abgerechnet wird, wenn kein mandantenspezifisches Abonnement vorhanden ist. Es muss als erstes registriert werden. Damit die mehrinstanzenfähige Nutzungsberichterstattung funktioniert, muss das Abonnement ein CSP- oder CSPSS-Abonnement sein.
+Für jede Azure Stack-Instanz sind ein Standardabonnement und zahlreiche Mandantenabonnements vorhanden. Das Standardabonnement ist ein Azure-Abonnement, mit dem abgerechnet wird, wenn kein mandantenspezifisches Abonnement vorhanden ist. Es muss als erstes registriert werden. Damit die mehrinstanzenfähige Nutzungsberichterstattung funktioniert, muss das Abonnement ein CSP- oder APSS-Abonnement sein.
 
 Dann wird die Registrierung für jeden Mandanten mit einem Azure-Abonnement aktualisiert, das Azure Stack verwenden soll. Mandantenabonnements müssen vom CSP-Typ sein und zu dem Partner gehören, der das Standardabonnement besitzt. Anders gesagt, Sie können nicht die Kunden anderer registrieren.
 

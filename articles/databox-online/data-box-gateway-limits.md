@@ -1,26 +1,19 @@
 ---
 title: Für Azure Data Box Gateway geltende Einschränkungen | Microsoft-Dokumentation
 description: Beschreibt für das System geltende Einschränkungen und empfohlene Größen für Microsoft Azure Data Box Gateway.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: edb4995b626055be830a7accb74d99f1db3ef8d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 60078845c98f2e241b00e184303dce0c860629e9
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962198"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49164432"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Für Azure Data Box Gateway geltende Einschränkungen (Vorschauversion)
 
@@ -40,11 +33,11 @@ Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betre
 
 In der folgenden Tabelle werden die für das Data Box Gateway-Gerät geltenden Einschränkungen beschrieben.
 
-| Beschreibung | Wert |
+| BESCHREIBUNG | Wert |
 |---|---|
-|Anzahl der Dateien pro Gerät |100 Mio. <br> Der Grenzwert liegt bei ca. 25 Mio. Dateien pro 2 TB Datenträgerkapazität mit einer Obergrenze von 100 Mio. |
-|Anzahl der Freigaben pro Gerät |24 |
-|Maximale in eine Freigabe geschriebene Dateigröße|5 TB |
+|Nein. der Dateien pro Gerät |100 Mio. <br> Der Grenzwert liegt bei ca. 25 Mio. Dateien pro 2 TB Datenträgerkapazität mit einer Obergrenze von 100 Mio. |
+|Nein. der Freigaben pro Gerät |24 |
+|Maximale in eine Freigabe geschriebene Dateigröße|Für ein virtuelles Gerät mit 2 TB beträgt die maximale Dateigröße 500 GB. <br> Die maximale Dateigröße steigt mit der Größe des Datenträgers im vorhergehenden Verhältnis an, bis ein Maximum von 5 TB erreicht wird. |
 
 ## <a name="azure-storage-limits"></a>Speichergrenzwerte für Azure
 

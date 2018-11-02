@@ -1,6 +1,6 @@
 ---
-title: Kopieren von Daten in bzw. aus Oracle per Data Factory | Microsoft-Dokumentation
-description: Informationen zum Kopieren von Daten in und aus einer Oracle-Datenbank, die lokal oder mithilfe von Azure Data Factory gehostet wird.
+title: Kopieren von Daten in bzw. aus Oracle mit Data Factory | Microsoft-Dokumentation
+description: Informationen zum Kopieren von Daten in eine und aus einer lokalen Oracle-Datenbank mit Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -14,98 +14,104 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 10535e75a32a9f95e759340cf14d693f43639473
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 848616bb69aa0eae384b9c4e7ea1c2ac3da3c04e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856840"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167119"
 ---
-# <a name="copy-data-to-or-from-on-premises-oracle-using-azure-data-factory"></a>Kopieren von Daten in bzw. aus einer lokalen Oracle-Umgebung per Azure Data Factory
+# <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-onprem-oracle-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-oracle.md)
 
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Oracle-Connector in V2](../connector-oracle.md).
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory. Wenn Sie die aktuelle Version des Azure Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Oracle-Connector in V2](../connector-oracle.md).
 
 
-Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in und aus einer lokalen Oracle-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
+Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in eine und aus einer lokalen Oracle-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
-Sie können Daten **aus Oracle-Datenbank** in die folgenden Datenspeicher kopieren:
+
+Sie können Daten *aus Oracle-Datenbank* in die folgenden Datenspeicher kopieren:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-Sie können Daten aus den folgenden Datenspeichern **in Oracle-Datenbank** kopieren:
+Sie können Daten aus den folgenden Datenspeichern *in Oracle-Datenbank* kopieren:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Data Factory unterstützt das Herstellen einer Verbindung mit lokalen Oracle-Datenquellen mithilfe des Datenverwaltungsgateways. Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) erfahren Sie etwas über das Datenverwaltungsgateway, und unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) finden Sie schrittweise Anleitungen für das Einrichten des Gateways für eine Datenpipeline zum Verschieben von Daten.
 
-Das Gateway ist auch erforderlich, wenn Oracle auf einem virtuellen Azure IaaS-Computer gehostet wird. Sie können das Gateway auf dem gleichen virtuellen IaaS-Computer installieren wie den Datenspeicher oder auch auf einem anderen virtuellen Computer, solange das Gateway eine Verbindung mit der Datenbank herstellen kann.
+Data Factory unterstützt das Herstellen einer Verbindung mit lokalen Oracle-Datenquellen mithilfe des Datenverwaltungsgateways. Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway. Eine schrittweise Anleitung zum Einrichten des Gateways in einer Datenpipeline zum Verschieben von Daten finden Sie unter [Verschieben von Daten zwischen lokalen Standorten und der Cloud](data-factory-move-data-between-onprem-and-cloud.md).
+
+Das Gateway ist auch dann erforderlich, wenn Oracle in einer Azure IaaS-VM (Infrastructure-as-a-Service) gehostet wird. Sie können das Gateway auf dem gleichen virtuellen IaaS-Computer installieren wie den Datenspeicher oder auch auf einem anderen virtuellen Computer, solange das Gateway eine Verbindung mit der Datenbank herstellen kann.
 
 > [!NOTE]
-> Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
+> Unter [Behandlung von Gatewayproblemen](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Problemen, die sich auf die Verbindung und das Gateway beziehen.
 
 ## <a name="supported-versions-and-installation"></a>Unterstützte Versionen und Installation
+
 Dieser Connector für Oracle unterstützt zwei Treiberversionen:
 
-- **Microsoft-Treiber für Oracle (empfohlen)**: Ab Datenverwaltungsgateway, Version 2.7, wird zusammen mit dem Gateway automatisch ein Microsoft-Treiber für Oracle installiert. Sie müssen also nicht zusätzlich den Treiber behandeln, um eine Verbindung mit Oracle herzustellen, und Sie erhalten mit diesem Treiber eine bessere Kopierleistung. Folgende Versionen von Oracle-Datenbanken werden unterstützt:
+- **Microsoft-Treiber für Oracle (empfohlen)**: Ab dem Datenverwaltungsgateway Version 2.7 wird ein Microsoft-Treiber für Oracle automatisch mit dem Gateway installiert. Sie müssen den Treiber nicht installieren oder aktualisieren, um eine Verbindung mit Oracle herzustellen. Sie können auch eine bessere Kopierleistung erzielen, wenn Sie diesen Treiber verwenden. Die folgenden Versionen von Oracle-Datenbanken werden unterstützt:
     - Oracle 12c R1 (12.1)
     - Oracle 11g R1, R2 (11.1, 11.2)
     - Oracle 10g R1, R2 (10.1, 10.2)
     - Oracle 9i R1, R2 (9.0.1, 9.2)
     - Oracle 8i R3 (8.1.7)
 
-> [!NOTE]
-> Der Oracle-Proxyserver wird nicht unterstützt.
+    > [!NOTE]
+    > Der Oracle-Proxyserver wird nicht unterstützt.
 
-> [!IMPORTANT]
-> Derzeit unterstützt der Microsoft-Treiber für Oracle nur das Kopieren von Daten aus Oracle, nicht jedoch das Schreiben in Oracle. Beachten Sie, dass die Funktion zum Testen der Verbindung auf der Registerkarte für die Datenverwaltungsgateway-Diagnose diesen Treiber nicht unterstützt. Alternativ können Sie den Assistenten zum Kopieren verwenden, um die Konnektivität zu überprüfen.
->
+    > [!IMPORTANT]
+    > Der Microsoft-Treiber für Oracle unterstützt zurzeit nur das Kopieren von Daten aus Oracle. Der Treiber unterstützt nicht das Schreiben in Oracle. Die Testverbindungsfunktion auf der Registerkarte **Diagnose** des Datenverwaltungsgateways unterstützt diesen Treiber nicht. Alternativ können Sie den Assistenten zum Kopieren verwenden, um die Konnektivität zu überprüfen.
+    >
 
-- **Oracle Data Provider für .NET:** Sie können auch Oracle Data Provider zum Kopieren von Daten aus/in Oracle verwenden. Diese Komponente ist in [Oracle Data Access Components (ODAC) für Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/)enthalten. Installieren Sie die geeignete Version (32/64 Bit) auf dem Computer, auf dem das Gateway installiert ist. [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
+- **Oracle-Datenanbieter für .NET:** Sie können auch den Oracle-Datenanbieter zum Kopieren von Daten aus/in Oracle verwenden. Diese Komponente ist in [Oracle Data Access Components (ODAC) für Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/)enthalten. Installieren Sie die entsprechende Version (32-Bit oder 64-Bit) auf dem Computer, auf dem das Gateway installiert ist. Der [Oracle-Datenanbieter .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
 
-    Wenn Sie „XCopy Installation“ auswählen, führen Sie die Schritte in der Datei „Readme.htm“ aus. Es wird empfohlen, das Installationsprogramm mit Benutzeroberfläche (also nicht die XCopy-Variante) auszuwählen.
+    Wenn Sie **XCopy-Installation** auswählen, führen Sie die in der Datei „readme.htm“ beschriebenen Schritte aus. Es wird empfohlen, den Installer mit der Benutzeroberfläche auszuwählen (nicht den XCopy-Installer).
 
-    Starten Sie nach der Installation des Anbieters den Hostdienst des Datenverwaltungsgateways auf Ihrem Computer mithilfe des Applets „Dienste“ oder Datenverwaltungsgateway-Konfigurations-Managers **neu**.  
+    Starten Sie nach der Installation des Anbieters den Hostdienst des Datenverwaltungsgateways auf Ihrem Computer mithilfe des Applets „Dienste“ oder des Datenverwaltungsgateway-Konfigurations-Managers neu.  
 
-Wenn Sie zum Kopieren der Pipeline den Kopier-Assistenten verwenden, wird der Treibertyp automatisch bestimmt. Standardmäßig wird der Microsoft-Treiber verwendet, sofern die Gatewayversion nicht niedriger als 2.7 ist oder Sie Oracle als Senke wählen.
+Wenn Sie zum Kopieren der Pipeline den Kopier-Assistenten verwenden, wird der Treibertyp automatisch bestimmt. Der Microsoft-Treiber wird standardmäßig verwendet, es sei denn, Ihre Gatewayversion ist älter als Version 2.7, oder Sie wählen Oracle als Senke aus.
 
-## <a name="getting-started"></a>Erste Schritte
-Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs in und aus einer lokalen Oracle-Datenbank verschiebt.
+## <a name="get-started"></a>Erste Schritte
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Sie können eine Pipeline erstellen, die eine Kopieraktivität aufweist. Die Pipeline verschiebt Daten in eine oder aus einer lokalen Oracle-Datenbank mithilfe verschiedener Tools oder APIs.
 
-Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten. Unter [Tutorial: Erstellen einer Pipeline mithilfe des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
+Sie können auch eines der folgenden Tools zum Erstellen einer Pipeline verwenden: das **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen** sowie die **.NET-API** und die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
-1. Eine **Data Factory**. Eine Data Factory kann eine oder mehrere Pipelines enthalten. 
-2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus Oracle-Datenbank in Azure Blob Storage kopieren, erstellen Sie zwei verknüpfte Dienste, um Oracle-Datenbank und Ihr Azure Storage-Konto mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Oracle sind, finden Sie im Abschnitt [Eigenschaften von verknüpften Diensten](#linked-service-properties).
-3. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um die Tabelle mit den Eingabedaten in Oracle-Datenbank anzugeben. Außerdem erstellen Sie ein weiteres Dataset zum Angeben eines Blobcontainers und des Ordners, in dem die aus Oracle-Datenbank kopierten Daten enthalten sind. Informationen zu Dataseteigenschaften, die spezifisch für Oracle sind, finden Sie im Abschnitt [Dataseteigenschaften](#dataset-properties).
-4. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im oben erwähnten Beispiel verwenden Sie „OracleSource“ als Quelle und „BlobSink“ als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang von Azure Blob Storage zu Oracle-Datenbank durchführen, verwenden Sie entsprechend „BlobSource“ und „OracleSink“ in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für Oracle-Datenbank sind, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). Ausführliche Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke erhalten Sie, indem Sie im vorherigen Abschnitt auf den Link für Ihren Datenspeicher klicken. 
+Führen Sie unabhängig davon, ob Sie Tools oder APIs verwenden, die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Beispiele mit JSON-Definitionen für Data Factory-Entitäten für das Kopieren von Daten in und aus einer lokalen Oracle-Datenbank finden Sie in diesem Artikel im Abschnitt [JSON-Beispiele](#json-examples-for-copying-data-to-and-from-oracle-database).
+1. Erstellen Sie eine **Data Factory**. Eine Data Factory kann mindestens eine Pipeline enthalten. 
+2. Erstellen Sie **verknüpfte Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus einer Oracle-Datenbank in Azure Blob Storage kopieren, erstellen Sie zwei verknüpfte Dienste, um die Oracle-Datenbank und Ihr Azure Storage-Konto mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Oracle sind, finden Sie unter [Eigenschaften von verknüpften Diensten](#linked-service-properties).
+3. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im vorherigen Schritt erwähnt wurde, erstellen Sie ein Dataset, um die Tabelle mit den Eingabedaten in Ihrer Oracle-Datenbank anzugeben. Sie erstellen ein weiteres Dataset zum Angeben eines Blobcontainers und des Ordners, in dem die aus der Oracle-Datenbank kopierten Daten enthalten sind. Informationen zu Dataseteigenschaften, die spezifisch für Oracle sind, finden Sie unter [Dataseteigenschaften](#dataset-properties).
+4. Erstellen Sie eine **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im vorherigen Beispiel verwenden Sie **OracleSource** als Quelle und **BlobSink** als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang von Azure Blob Storage in eine Oracle-Datenbank durchführen, verwenden Sie entsprechend **BlobSource** und **OracleSink** in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für eine Oracle-Datenbank sind, finden Sie unter [Eigenschaften der Kopieraktivität](#copy-activity-properties). Weitere Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke finden Sie im vorherigen Abschnitt unter dem Link zu Ihrem Datenspeicher. 
 
-Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten verwendet werden:
+Wenn Sie den Assistenten verwenden, werden JSON-Definitionen für diese Data Factory-Entitäten automatisch für Sie erstellt: verknüpfte Dienste, Datasets und die Pipeline. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Beispiele mit JSON-Definitionen für Data Factory-Entitäten, mit denen Sie Daten in eine oder aus einer lokalen Oracle-Datenbank kopieren, finden Sie unter [JSON-Beispiele](#json-examples-for-copying-data-to-and-from-oracle-database).
+
+Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
-Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Oracle verknüpften Dienst spezifisch sind.
+
+In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verknüpften Oracle-Dienst spezifisch sind:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die "type"-Eigenschaft muss auf **OnPremisesOracle** |Ja |
-| driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus/in Oracle Database verwendet wird. Zulässige Werte sind **Microsoft** oder **ODP** (Standard). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein  |
-| connectionString | Geben Sie Informationen, die zur Verbindung mit der Oracle Databaseinstanz erforderlich sind, für die Eigenschaft "connectionString" an. | Ja |
-| gatewayName | Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird |Ja |
+| type |Die Eigenschaft **type** muss auf **OnPremisesOracle** festgelegt sein. |JA |
+| driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus einer bzw. in eine Oracle-Datenbank verwendet wird. Zulässige Werte sind **Microsoft** und **ODP** (Standardwert). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein  |
+| connectionString | Geben Sie Informationen, die für die Verbindung mit der Oracle-Datenbankinstanz erforderlich sind, für die Eigenschaft **connectionString** an. | JA |
+| gatewayName | Der Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird. |JA |
 
 **Beispiel: Verwenden des Microsoft-Treibers**
 
->[!TIP]
->Wenn der Fehler „ORA-01025: UPI parameter out of range“ angezeigt wird und Sie die Oracle-Version 8i nutzen, können Sie Ihrer Verbindungszeichenfolge den Zusatz `WireProtocolMode=1` hinzufügen und den Vorgang wiederholen.
+> [!TIP]
+> Wenn der Fehler „ORA-01025: UPI parameter out of range“ angezeigt wird und Sie die Oracle-Version 8i nutzen, können Sie Ihrer Verbindungszeichenfolge den Zusatz `WireProtocolMode=1` hinzufügen und den Vorgang wiederholen:
 
 ```json
 {
@@ -114,7 +120,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
         "type": "OnPremisesOracle",
         "typeProperties": {
             "driverType": "Microsoft",
-            "connectionString":"Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;",
+            "connectionString":"Host=<host>;Port=<port>;Sid=<service ID>;User Id=<user name>;Password=<password>;",
             "gatewayName": "<gateway name>"
         }
     }
@@ -123,7 +129,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 **Beispiel: Verwendung des ODP-Treibers**
 
-Weitere zulässige Formate finden Sie auf [dieser Website](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
+Weitere Informationen zu zulässigen Formaten finden Sie unter [Oracle-Datenanbieter für .NET ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
 
 ```json
 {
@@ -131,8 +137,8 @@ Weitere zulässige Formate finden Sie auf [dieser Website](https://www.connectio
     "properties": {
         "type": "OnPremisesOracle",
         "typeProperties": {
-            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<hostname>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<SID>)));
-User Id=<username>;Password=<password>;",
+            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<host name>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<service ID>)));
+User Id=<user name>;Password=<password>;",
             "gatewayName": "<gateway name>"
         }
     }
@@ -140,55 +146,64 @@ User Id=<username>;Password=<password>;",
 ```
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie Struktur, Verfügbarkeit und Richtlinie einer Dataset-JSON sind bei allen Dataset-Typen (Oracle, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ „OracleTable“ hat die folgenden Eigenschaften:
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Erstellen von Datasets](data-factory-create-datasets.md). 
+
+Die Abschnitte einer JSON-Datasetdatei (z.B. „structure“, „availability“ und „policy“) sind für alle Datasettypen (z.B. Oracle, Azure Blob Storage und Azure Table Storage) ähnlich.
+
+Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset vom Typ **OracleTable** weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| tableName |Name der Tabelle in der Oracle Database, auf die der verknüpfte Dienst verweist. |Nein (wenn **oracleReaderQuery** von **OracleSource** angegeben ist) |
+| tableName |Der Name der Tabelle in der Oracle-Datenbank, auf die der verknüpfte Dienst verweist. |Nein (wenn **oracleReaderQuery** oder **OracleSource** angegeben ist) |
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
+
+Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Erstellen von Pipelines](data-factory-create-pipelines.md). 
+
+Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
 
 > [!NOTE]
-> Die Kopieraktivität verwendet nur eine Eingabe und erzeugt nur eine Ausgabe.
+> Die Kopieraktivität verwendet nur eine Eingabe und generiert nur eine Ausgabe.
 
-Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
+Eigenschaften, die im Abschnitt **typeProperties** der Aktivität verfügbar sind, können dagegen je nach Aktivitätstyp variieren. Die Eigenschaften für die Kopieraktivität variieren je nach Art der Quelle und der Senke.
 
 ### <a name="oraclesource"></a>OracleSource
+
 Wenn bei der Kopieraktivität eine Quelle vom Typ **OracleSource** verwendet wird, sind im Abschnitt **typeProperties** folgende Eigenschaften verfügbar:
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable <br/><br/>Falls nicht angegeben, wird folgende SQL-Anweisung ausgeführt: select * from MyTable. |Nein (wenn **tableName** von **Dataset** angegeben ist) |
+| oracleReaderQuery |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |Eine SQL-Abfragezeichenfolge. Beispiel: „select \* from **MyTable**“. <br/><br/>Falls nicht angegeben, wird folgende SQL-Anweisung ausgeführt: „select \* from **MyTable**“. |Nein <br />(wenn **tableName** von **dataset** angegeben ist) |
 
 ### <a name="oraclesink"></a>OracleSink
+
 **OracleSink** unterstützt die folgenden Eigenschaften:
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. |Zeitraum<br/><br/> Beispiel: 00:30:00 (30 Minuten) |Nein  |
-| writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht. |Integer (Gesamtanzahl von Zeilen) |Nein (Standard = 100) |
-| sqlWriterCleanupScript |Geben Sie eine Abfrage für die Kopieraktivität an, bei deren Ausführung die Daten eines bestimmten Slice bereinigt werden. |Eine Abfrageanweisung. |Nein  |
-| sliceIdentifierColumnName |Geben Sie einen Spaltennamen an, den die Kopieraktivität mit einem automatisch generierten Slicebezeichner füllen soll, der bei erneuter Ausführung zum Bereinigen der Daten eines bestimmten Slices verwendet wird. |Spaltenname einer Spalte mit binärem Datentyp (32). |Nein  |
+| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bevor ein Timeout auftritt. |**timespan**<br/><br/> Beispiel: „00:30:00“ (30 Minuten) |Nein  |
+| writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße den Wert von **writeBatchSize** erreicht. |Integer (Gesamtanzahl von Zeilen) |Nein (Standard = 100) |
+| sqlWriterCleanupScript |Gibt eine Abfrage für die auszuführende Kopieraktivität an, damit die Daten eines bestimmten Slice bereinigt werden. |Eine Abfrageanweisung. |Nein  |
+| sliceIdentifierColumnName |Gibt den Spaltennamen der Spalte an, die die Kopieraktivität mit einem automatisch generierten Slicebezeichner auffüllen soll.  Der Wert für **sliceIdentifierColumnName** wird verwendet, um Daten eines bestimmten Slice bei erneuter Ausführung zu bereinigen. |Der Spaltenname einer Spalte, die den Datentyp **binary(32)** aufweist. |Nein  |
 
-## <a name="json-examples-for-copying-data-to-and-from-oracle-database"></a>JSON-Beispiele zum Kopieren von Daten in bzw. aus Oracle-Datenbank
-Das folgende Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer Oracle-Datenbank in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.   
+## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-Beispiele zum Kopieren von Daten in die bzw. aus der Oracle-Datenbank
 
-## <a name="example-copy-data-from-oracle-to-azure-blob"></a>Beispiel: Kopieren von Daten aus Oracle in ein Azure-Blob
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Die Beispiele zeigen, wie Daten aus einer oder in eine Oracle-Datenbank und in oder aus Azure Blob Storage kopiert werden. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory in jede der unter [Unterstützte Datenspeicher und Formate](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.   
+
+**Beispiel: Kopieren von Daten aus Oracle in Azure Blob Storage**
 
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
-1. Einen verknüpften Dienst des Typs [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)
-2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
-3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties)
-4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) als Quelle und [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) als Senke verwendet
+* Einen verknüpften Dienst des Typs [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)
+* Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+* Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties)
+* Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
+* Eine [Pipeline](data-factory-create-pipelines.md) mit einer Kopieraktivität, die [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) als Quelle und [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) als Senke verwendet.
 
-Das Beispiel kopiert Daten stündlich aus einer Tabelle einer lokalen Oracle-Datenbank in ein Blob. Weitere Informationen zu den verschiedenen Eigenschaften, die in dem Beispiel verwendet werden, finden Sie in den Dokumentationsabschnitten nach den Beispielen.
+Das Beispiel kopiert Daten stündlich aus einer Tabelle einer lokalen Oracle-Datenbank in ein Blob. Weitere Informationen zu den verschiedenen Eigenschaften, die im Beispiel verwendet werden, finden Sie in den Abschnitten, die auf die Beispiele folgen.
 
-**Mit Oracle verknüpfter Dienst:**
+**Mit Oracle verknüpfter Dienst**
 
 ```json
 {
@@ -197,14 +212,14 @@ Das Beispiel kopiert Daten stündlich aus einer Tabelle einer lokalen Oracle-Dat
         "type": "OnPremisesOracle",
         "typeProperties": {
             "driverType": "Microsoft",
-            "connectionString":"Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;",
+            "connectionString":"Host=<host>;Port=<port>;Sid=<service ID>;User Id=<username>;Password=<password>;",
             "gatewayName": "<gateway name>"
         }
     }
 }
 ```
 
-**Mit Azure Blob Storage verknüpfter Dienst:**
+**Mit Azure Blob Storage verknüpfter Dienst**
 
 ```json
 {
@@ -212,17 +227,17 @@ Das Beispiel kopiert Daten stündlich aus einer Tabelle einer lokalen Oracle-Dat
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<Account key>"
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
         }
     }
 }
 ```
 
-**Oracle-Eingabedataset:**
+**Oracle-Eingabedataset**
 
-Im Beispiel wird vorausgesetzt, dass Sie die Tabelle "MyTable" in Oracle erstellt haben, die für Zeitreihendaten eine Spalte namens "timestampcolumn" enthält.
+Im Beispiel wird davon ausgegangen, dass Sie eine Tabelle namens **MyTable** in Oracle erstellt haben. Sie enthält eine Spalte namens **timestampcolumn** für Zeitreihendaten.
 
-Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+Durch Festlegen von **external**: **true** wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory generiert wird.
 
 ```json
 {
@@ -251,9 +266,9 @@ Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst m
 }
 ```
 
-**Azure-Blob-Ausgabedataset:**
+**Azure-Blob-Ausgabedataset**
 
-Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "interval": 1). Ordnerpfad und Dateiname des Blobs werden basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
+Daten werden stündlich in ein neues Blob geschrieben (**frequency**: **hour**, **interval**: **1**). Ordnerpfad und Dateiname des Blobs werden basierend auf der Startzeit des Slice, der verarbeitet wird, dynamisch ausgewertet. Der Ordnerpfad verwendet den Jahres-, Monats-, Tages- und Stundenanteil der Startzeit.
 
 ```json
 {
@@ -311,9 +326,9 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 }
 ```
 
-**Pipeline mit Kopieraktivität:**
+**Pipeline mit Kopieraktivität**
 
-Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **OracleSource** und der Typ **sink** auf **BlobSink** festgelegt.  Die für die **oracleReaderQuery** -Eigenschaft angegebene SQL-Abfrage wählt die aus der letzten Stunde zu kopierenden Daten aus.
+Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **OracleSource** und der Typ **sink** auf **BlobSink** festgelegt.  Die SQL-Abfrage, die Sie mit der Eigenschaft **oracleReaderQuery** angeben, wählt die Daten der vergangenen Stunde zum Kopieren aus.
 
 ```json
 {  
@@ -321,7 +336,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
     "properties":{  
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
-        "description":"pipeline for copy activity",
+        "description":"pipeline for a copy activity",
         "activities":[  
             {
                 "name": "OracletoBlob",
@@ -362,27 +377,29 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 }
 ```
 
-## <a name="example-copy-data-from-azure-blob-to-oracle"></a>Beispiel: Kopieren von Daten aus einem Azure-Blob in Oracle
-In diesem Beispiel wird gezeigt, wie Sie Daten aus Azure Blob Storage in eine lokale Oracle-Datenbank kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus den [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Quellen kopiert werden.  
+**Beispiel: Kopieren von Daten aus Azure Blob Storage in Oracle**
+
+In diesem Beispiel wird gezeigt, wie Sie Daten aus einem Azure Blob Storage-Konto in eine lokale Oracle-Datenbank kopieren. Sie können jedoch Daten *direkt* aus einer der unter [Unterstützte Datenspeicher und Formate](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Quellen kopieren, indem Sie die Kopieraktivität in Azure Data Factory verwenden.  
 
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
-1. Einen verknüpften Dienst des Typs [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)
-2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
-3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties)
-5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) als Quelle und [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) als Senke verwendet
+* Einen verknüpften Dienst des Typs [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)
+* Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+* Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
+* Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties)
+* Eine [Pipeline](data-factory-create-pipelines.md) mit einer Kopieraktivität, die [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) als Quelle und [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) als Senke verwendet.
 
-Das Beispiel kopiert Daten stündlich aus einem Blob in eine Tabelle in einer lokalen Oracle-Datenbank. Weitere Informationen zu den verschiedenen Eigenschaften, die in dem Beispiel verwendet werden, finden Sie in den Dokumentationsabschnitten nach den Beispielen.
+Das Beispiel kopiert Daten stündlich aus einem Blob in eine Tabelle in einer lokalen Oracle-Datenbank. Weitere Informationen zu den verschiedenen Eigenschaften, die im Beispiel verwendet werden, finden Sie in den Abschnitten, die auf die Beispiele folgen.
 
-**Mit Oracle verknüpfter Dienst:**
+**Mit Oracle verknüpfter Dienst**
+
 ```json
 {
     "name": "OnPremisesOracleLinkedService",
     "properties": {
         "type": "OnPremisesOracle",
         "typeProperties": {
-            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<hostname>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<SID>)));
+            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<host name>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<service ID>)));
             User Id=<username>;Password=<password>;",
             "gatewayName": "<gateway name>"
         }
@@ -390,14 +407,15 @@ Das Beispiel kopiert Daten stündlich aus einem Blob in eine Tabelle in einer lo
 }
 ```
 
-**Mit Azure Blob Storage verknüpfter Dienst:**
+**Mit Azure Blob Storage verknüpfter Dienst**
+
 ```json
 {
     "name": "StorageLinkedService",
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<Account key>"
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
         }
     }
 }
@@ -405,7 +423,7 @@ Das Beispiel kopiert Daten stündlich aus einem Blob in eine Tabelle in einer lo
 
 **Azure-Blob-Eingabedataset**
 
-Daten werden stündlich aus einem neuen Blob übernommen ("frequency": "hour", "interval": 1). Ordnerpfad und Dateiname des Blobs werden basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Der Ordnerpfad enthält das Jahr, den Monat und den Tag der Startzeit, der Dateiname enthält die Stunde der Startzeit. Die Festlegung von „external“ auf „true“ teilt dem Data Factory-Dienst mit, dass diese Tabelle für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+Daten werden stündlich aus einem neuen Blob übernommen (**frequency**: **hour**, **interval**: **1**). Ordnerpfad und Dateiname des Blobs werden basierend auf der Startzeit des Slice, der verarbeitet wird, dynamisch ausgewertet. Der Ordnerpfad verwendet den Jahres-, Monats- und Tagesanteil der Startzeit. Im Dateinamen wird der Stundenanteil der Startzeit verwendet. Durch Festlegen der Einstellung **external**: **true** wird der Data Factory-Dienst informiert, dass die Tabelle für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory generiert wird.
 
 ```json
 {
@@ -463,9 +481,9 @@ Daten werden stündlich aus einem neuen Blob übernommen ("frequency": "hour", "
 }
 ```
 
-**Oracle-Ausgabedataset:**
+**Oracle-Ausgabedataset**
 
-Im Beispiel wird davon ausgegangen, dass Sie die Tabelle „MyTable“ in Oracle erstellt haben. Erstellen Sie die Tabelle in Oracle mit der gleichen Anzahl von Spalten, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
+Im Beispiel wird davon ausgegangen, dass Sie eine Tabelle namens **MyTable** in Oracle erstellt haben. Erstellen Sie die Tabelle in Oracle mit der gleichen Anzahl von Spalten, die Sie in der CSV-Blobdatei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
 
 ```json
 {
@@ -484,7 +502,7 @@ Im Beispiel wird davon ausgegangen, dass Sie die Tabelle „MyTable“ in Oracle
 }
 ```
 
-**Pipeline mit Kopieraktivität:**
+**Pipeline mit Kopieraktivität**
 
 Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **BlobSource** und der Typ **sink** auf **OracleSink** festgelegt.  
 
@@ -494,7 +512,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
     "properties":{  
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-05T19:00:00",
-        "description":"pipeline with copy activity",
+        "description":"pipeline with a copy activity",
         "activities":[  
             {
                 "name": "AzureBlobtoOracle",
@@ -536,51 +554,53 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 
 
 ## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
+
 ### <a name="problem-1-net-framework-data-provider"></a>Problem 1: .NET Framework-Datenanbieter
 
-Folgende **Fehlermeldung** wird angezeigt:
+**Fehlermeldung**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed”.  
+    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.  
 
-**Mögliche Ursachen:**
+**Mögliche Ursachen**
 
-1. Der .NET Framework-Datenanbieter für Oracle wurde nicht installiert.
-2. Der .NET Framework-Datenanbieter für Oracle wurde für .NET Framework 2.0 installiert und in den Ordnern für .NET Framework 4.0 nicht gefunden.
+* Der .NET Framework-Datenanbieter für Oracle wurde nicht installiert.
+* Der .NET Framework-Datenanbieter für Oracle wurde für .NET Framework 2.0 installiert und in den Ordnern für .NET Framework 4.0 nicht gefunden.
 
-**Lösung/Problemumgehung:**
+**Lösung**
 
-1. Falls Sie den .NET Framework-Datenanbieter für Oracle nicht installiert haben, [installieren Sie ihn](http://www.oracle.com/technetwork/topics/dotnet/downloads/) , und wiederholen Sie anschließend das Szenario.
-2. Falls Sie die Fehlermeldung auch nach der Installation des Anbieters erhalten, führen Sie folgende Schritte aus:
-   1. Öffnen Sie die Computerkonfiguration von .NET 2.0 im folgenden Ordner: <system disk>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-   2. Wenn Sie nach **Oracle Data Provider für .NET** suchen, sollten Sie unter **system.data** -> **DbProviderFactories** einen Eintrag wie im folgenden Beispiel finden: „<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider für .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />”
-3. Kopieren Sie diesen Eintrag in die Datei „machine.config“ im v4.0-Ordner „<system disk>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config“, und ändern Sie die Version in „4.xxx.x.x“.
-4. Führen Sie `gacutil /i [provider path]` aus, um „<ODP.NET-Installationspfad>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll“ im globalen Assemblycache (GAC) zu installieren.## Tipps zur Problembehandlung
+* Falls Sie den .NET Framework-Datenanbieter für Oracle nicht installiert haben, [installieren Sie ihn](http://www.oracle.com/technetwork/topics/dotnet/downloads/), und wiederholen Sie anschließend das Szenario.
+* Falls Sie die Fehlermeldung auch nach der Installation des Anbieters erhalten, führen Sie die folgenden Schritte aus:
+   1. Öffnen Sie die Computerkonfigurationsdatei für .NET 2.0 aus dem Ordner <Systemdatenträger\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+   2. Suchen Sie nach **Oracle-Datenanbieter für .NET**. Es sollte ein Eintrag vorhanden sein, wie im folgenden Beispiel unter **system.data** > **DbProviderFactories** gezeigt: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* Kopieren Sie diesen Eintrag in die Datei „machine.config“ im folgenden .NET 4.0-Ordner: <Systemdatenträger\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ändern Sie die Version dann in „4.xxx.x.x“.
+* Führen Sie **gacutil /i [Anbieterpfad]** aus, um „<ODP.NET-Installationspfad\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll“ im globalen Assemblycache (GAC) zu installieren.
 
-### <a name="problem-2-datetime-formatting"></a>Problem 2: DateTime-Formatierung
+### <a name="problem-2-datetime-formatting"></a>Problem 2: Datums-/Uhrzeitformat
 
-Folgende **Fehlermeldung** wird angezeigt:
+**Fehlermeldung**
 
     Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-**Lösung/Problemumgehung:**
+**Lösung**
 
-Möglicherweise müssen Sie die Abfragezeichenfolge in Ihrer Kopieraktivität basierend darauf anpassen, wie Daten in Ihrer Oracle-Datenbank konfiguriert sind. Siehe folgendes Beispiel (mithilfe der to_date-Funktion):
+Möglicherweise müssen Sie die Abfragezeichenfolge in Ihrer Kopieraktivität entsprechend der Konfiguration von Datumsangaben in Ihrer Oracle-Datenbank anpassen. Dies ist ein Beispiel (mit der Funktion **to_date**):
 
     "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\')  AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
 
 ## <a name="type-mapping-for-oracle"></a>Typzuordnung für Oracle
-Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität mithilfe der folgenden beiden Schritte automatische Typkonvertierungen von Quelltypen in Senkentypen durch:
 
-1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
-2. Konvertieren vom .NET-Typ in systemeigenen Senkentyp
+Wie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
 
-Beim Verschieben von Daten aus Oracle werden die folgenden Zuordnungen zwischen dem Datentyp „Oracle“ und dem Typ „.NET“ verwendet (und umgekehrt):
+1. Konvertieren aus nativen Quelltypen in den .NET-Typ.
+2. Konvertieren aus dem .NET-Typ in den nativen Senkentyp.
+
+Wenn Sie Daten aus Oracle verschieben, werden die folgenden Zuordnungen zwischen dem Oracle-Datentyp und dem .NET-Typ verwendet (und umgekehrt):
 
 | Datentyp "Oracle" | Datentyp ".NET Framework" |
 | --- | --- |
 | BFILE |Byte[] |
-| BLOB |Byte[]<br/>(nur für Oracle 10g und höher bei Verwendung eines Microsoft-Treibers unterstützt) |
+| BLOB |Byte[]<br/>(nur unterstützt für Oracle 10g oder höher bei Verwendung eines Microsoft-Treibers) |
 | CHAR |Zeichenfolge |
 | CLOB |Zeichenfolge |
 | DATE |Datetime |
@@ -604,13 +624,16 @@ Beim Verschieben von Daten aus Oracle werden die folgenden Zuordnungen zwischen 
 | XML |Zeichenfolge |
 
 > [!NOTE]
-> Die Datentypen **INTERVAL YEAR TO MONTH** und **INTERVAL DAY TO SECOND** werden bei Verwendung des Microsoft-Treibers nicht unterstützt.
+> Die Datentypen **INTERVAL YEAR TO MONTH** und **INTERVAL DAY TO SECOND** werden bei Verwendung eines Microsoft-Treibers nicht unterstützt.
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
-Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
+
+Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Data Factory](data-factory-map-columns.md).
 
 ## <a name="repeatable-read-from-relational-sources"></a>Wiederholbare Lesevorgänge aus relationalen Quellen
-Beim Kopieren von Daten aus relationalen Datenspeichern müssen Sie die Wiederholbarkeit berücksichtigen, um unbeabsichtigte Ergebnisse zu vermeiden. Sie können einen Slice in Azure Data Factory manuell erneut ausführen. Sie können auch eine Wiederholungsrichtlinie für ein Dataset konfigurieren, sodass ein Slice erneut ausgeführt wird, wenn ein Fehler auftritt. Wenn ein Slice erneut ausgeführt wird, müssen Sie sicherstellen, dass dieselben Daten gelesen werden – egal wie oft ein Slice ausgeführt wird. Weitere Informationen finden Sie unter [Wiederholbare Lesevorgänge aus relationalen Quellen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+
+Beim Kopieren von Daten aus relationalen Datenspeichern müssen Sie die Wiederholbarkeit berücksichtigen, um unbeabsichtigte Ergebnisse zu vermeiden. Sie können einen Slice in Azure Data Factory manuell erneut ausführen. Sie können auch eine Wiederholungsrichtlinie für ein Dataset konfigurieren, sodass ein Slice erneut ausgeführt wird, wenn ein Fehler auftritt. Wenn ein Slice erneut ausgeführt wird (entweder manuell oder durch eine Wiederholungsrichtlinie), stellen Sie sicher, dass die gleichen Daten unabhängig davon gelesen werden, wie oft ein Slice ausgeführt wird. Weitere Informationen finden Sie unter [Wiederholbare Lesevorgänge aus relationalen Quellen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
-Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+
+Das [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken. Sie können sich auch über verschiedene Möglichkeiten zur Leistungsoptimierung informieren.

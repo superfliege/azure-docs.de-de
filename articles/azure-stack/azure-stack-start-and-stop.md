@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dd1e64d5ad6982c85a8205e3036d30a2ede92f7c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930289"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344012"
 ---
 # <a name="start-and-stop-azure-stack"></a>Starten und Beenden von Azure Stack
 Sie sollten die Verfahren in diesem Artikel befolgen, um Azure Stack-Dienste ordnungsgemäß herunterzufahren und neu zu starten. Durch das Herunterfahren wird die gesamte Azure Stack-Umgebung physisch ausgeschaltet. Beim Starten werden alle Infrastrukturrollen eingeschaltet, und die Mandantenressourcen werden wieder in den Betriebszustand versetzt, in dem Sie sich vor dem Herunterfahren befunden haben.
@@ -90,4 +90,4 @@ Führen Sie die folgenden Schritte aus, wenn die Infrastruktur- und Mandantendie
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-Weitere Informationen zu Azure Stack-Diagnosetools und zur Protokollierung von Problemen finden Sie unter [Azure Stack-Diagnosetools](azure-stack-diagnostics.md).
+Weitere Informationen zu [Azure Stack-Diagnosetools](azure-stack-diagnostics.md)

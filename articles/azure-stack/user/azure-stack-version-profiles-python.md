@@ -14,12 +14,12 @@ ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: c55dcf0736642690f245f680db5cb1620c2175e7
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c4600eda74fbc0ae53f30dac00e0127a984a4fff
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390961"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093414"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Python in Azure Stack
 
@@ -129,7 +129,7 @@ Die Beispiele befinden sich nicht unbedingt in der Reihenfolge, die in der obige
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  Zum Ausführen dieses Beispiels müssen Ubuntu 16.04 LTS- und Windows Server 2012 R2 Datacenter-Images im Azure Stack-Marketplace vorhanden sein. Diese können entweder [aus Azure heruntergeladen](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) oder [dem Plattform Image Repository hinzugefügt](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image) werden.
+7.  Zum Ausführen dieses Beispiels müssen Ubuntu 16.04 LTS- und Windows Server 2012 R2 Datacenter-Images in Azure Stack Marketplace vorhanden sein. Diese können entweder [aus Azure heruntergeladen](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) oder [dem Plattform Image Repository hinzugefügt](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image) werden.
 
 8. Führen Sie das Beispiel aus.
 

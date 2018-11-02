@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 9d980c800f930c00b2b0140314f78ff3f043aa58
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: d50131a9c9e7572f7696a936cbfec3a8568eda2e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604215"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343651"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack-Firewallintegration
 Es empfiehlt sich, Azure Stack mit einem Firewallgerät zu schützen. Firewalls können zwar bei verteilten Denial-of-Service-Angriffen (DDoS), bei der Angriffserkennung und bei der Inhaltsuntersuchung hilfreich sein, andererseits können sie sich aber auch als Engpass für den Durchsatz von Azure-Speicherdiensten wie Blobs, Tabellen und Warteschlangen erweisen.
@@ -34,7 +34,7 @@ Bei einem Unternehmen kann das Unternehmensnetzwerk als externes Netzwerk fungie
 ### <a name="network-address-translation"></a>Netzwerkadressenübersetzung
 Die Netzwerkadressenübersetzung (Network Address Translation, NAT) stellt die empfohlene Methode dar, um virtuellen Bereitstellungscomputern (Deployment Virtual Machine, DVM) bei der Bereitstellung sowie ERCS-VMs (Emergency Recovery Console) oder privilegierten Endpunkten (PEP) bei der Registrierung und Problembehandlung Zugriff auf externe Ressourcen und das Internet zu ermöglichen.
 
-Die NAT kann auch alternativ zu öffentlichen IP-Adressen im externen Netzwerk oder öffentlichen VIPs verwendet werden. Hiervon wird jedoch abgeraten, da diese die Benutzerfreundlichkeit des Mandanten verringert und die Komplexität erhöht. Zu den beiden Optionen zählen Folgende: Die 1:1-NAT, für die nach wie vor eine öffentliche IP pro Benutzer-IP für den Pool erforderlich ist, oder die n:1-NAT, die eine NAT-Regel pro Benutzer-VIP mit Zuordnungen zu allen Ports erfordert, die ein Benutzer verwenden könnte.
+Die NAT kann auch alternativ zu öffentlichen IP-Adressen im externen Netzwerk oder öffentlichen VIPs verwendet werden. Hiervon wird jedoch abgeraten, da diese die Benutzerfreundlichkeit des Mandanten verringert und die Komplexität erhöht. Die folgenden beiden Optionen sind möglich: 1:1-NAT, bei der nach wie vor eine öffentliche IP-Adresse pro Benutzer-IP für den Pool erforderlich ist, oder n:1-NAT, die eine NAT-Regel pro Benutzer-VIP mit Zuordnungen zu allen Ports erfordert, die ein Benutzer verwenden könnte.
 
 Die Verwendung der NAT für öffentliche VIPs hat folgende Nachteile:
 - Durch die NAT erhöht sich der Verwaltungsaufwand für Firewallregeln, da Benutzer ihre eigenen Endpunkte und ihre eigenen Veröffentlichungsregeln im SDN-Stapel (Software Defined Networking) steuern. Benutzer müssen sich zur Veröffentlichung ihrer VIPs sowie zur Aktualisierung der Portliste an den Azure Stack-Betreiber wenden.

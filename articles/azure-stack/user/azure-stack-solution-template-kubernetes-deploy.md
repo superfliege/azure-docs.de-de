@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 10/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 82d99f575837b47a29bd6d8330ee58f442b6110a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 62eb28c6cdb2dd6c1ddff1487826c01ef3bf6e3e
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409353"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091588"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Bereitstellen von Kubernetes in Azure Stack
 
@@ -39,6 +39,8 @@ Sie können Kubernetes für Folgendes verwenden:
 - Entwickeln hochgradig skalierbarer, aktualisierbarer Anwendungen, die in wenigen Sekunden bereitgestellt werden können 
 - Vereinfachen des Entwurfs Ihrer Anwendung und Verbessern ihrer Zuverlässigkeit durch verschiedene Helm-Anwendungen. [Helm](https://github.com/kubernetes/helm) ist ein Open Source-Verpackungstool, das Ihnen dabei hilft, Kubernetes-Anwendungen zu installieren und ihren Lebenszyklus zu verwalten.
 - Einfaches Überwachen und Diagnostizieren der Integrität Ihrer Anwendungen mit Skalierungs- und Upgradefunktionen
+
+Ihnen werden lediglich die Kosten für die Computenutzung in Rechnung gestellt, die von den Knoten benötigt wird, die Ihren Cluster unterstützen. Weitere Informationen finden Sie unter [Verbrauch und Abrechnung in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback).
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
@@ -165,6 +167,9 @@ Erteilen Sie dem Dienstprinzipal Zugriff auf Ihr Abonnement, sodass er Ressource
 2. Überprüfen Sie Ihre Einstellungen.
 
 3. Wählen Sie **OK**, um Ihren Cluster bereitzustellen.
+
+> [!TIP]  
+>  Wenn Sie Fragen zu Ihrer Bereitstellung haben, können Sie Ihre Frage im [Azure Stack-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) stellen bzw. ermitteln, ob jemand die Frage dort bereits beantwortet hat. 
 
 ## <a name="connect-to-your-cluster"></a>Herstellen einer Clusterverbindung
 

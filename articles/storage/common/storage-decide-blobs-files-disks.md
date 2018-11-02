@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 3f2609ea57ea5a5a0cce2544a1031c55199d137b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bc6d615409f3c2d0f46286d2ad2ba20c32574afd
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529502"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091713"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger
 
@@ -64,8 +64,8 @@ In der folgenden Tabelle wird Azure Files mit Azure-Datenträger verglichen.
 |Cleanup|Automatisch|Manuell|  
 |Zugriff mithilfe von REST|Auf Dateien auf dem virtuellen Datenträger kann nicht zugegriffen werden.|Auf Dateien, die in einer Freigabe gespeicherte sind, kann zugegriffen werden.|  
 |Max. Größe|4-TiB-Datenträger|5-TiB-Dateifreigabe und eine 1-TiB-Datei innerhalb der Freigabe|  
-|Max. 8 KB IOPS|500 IOPS|1.000 IOPS|  
-|Throughput|Bis zu 60 MiB/s pro Datenträger|Bis zu 60 MiB/s pro Dateifreigabe|  
+|Max. IOPS|500 IOPS|1.000 IOPS|  
+|Throughput|Bis zu 60 MiB/s pro Datenträger|Ziel ist 60 MiB/s pro Dateifreigabe (kann für höhere E/A-Größen höher sein)|  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: ad899739dab1dc51d64368d2136ab87f73f6f3a0
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.reviewer: quying
+ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "36300909"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364093"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>Wartungsvorgänge von SQL-Ressourcenanbietern
 
@@ -53,9 +53,9 @@ Um die Einstellungen zu ändern, wählen Sie **Durchsuchen** &gt; **VERWALTUNGSR
 
 ## <a name="secrets-rotation"></a>Geheimnisrotation
 
-*Diese Anweisungen gelten nur für integrierte Azure Stack-Systeme ab Version 1804. Versuchen Sie nicht, die Geheimnisrotation mit älteren Azure Stack-Versionen (vor 1804) zu verwenden.*
+*Diese Anweisungen gelten nur für integrierte Azure Stack-Systeme.*
 
-Bei Verwendung der Ressourcenanbieter SQL und MySQL mit integrierten Azure Stack-Systemen können Sie folgende Infrastrukturgeheimnisse (Bereitstellungsgeheimnisse) rotieren:
+Bei Verwendung der SQL- und MySQL-Ressourcenanbieter mit integrierten Azure Stack-Systemen ist der Azure Stack-Operator dafür verantwortlich, die folgenden Geheimnisse der Ressourcenanbieterinfrastruktur zu rotieren, um sicherzustellen, dass sie nicht ablaufen:
 
 - Das [während der Bereitstellung angegebene](azure-stack-pki-certs.md) externe SSL-Zertifikat
 - Das während der Bereitstellung angegebene Kennwort des lokalen Administratorkontos für den virtuellen Computer des Ressourcenanbieters

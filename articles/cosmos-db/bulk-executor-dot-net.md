@@ -1,25 +1,26 @@
 ---
-title: Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB | Microsoft-Dokumentation
-description: Verwenden Sie die BulkExecutor-.NET-Bibliothek von Azure Cosmos DB, um Dokumente in Azure Cosmos DB-Containern per Massenvorgang zu importieren und zu aktualisieren.
-keywords: .NET-BulkExecutor
+title: Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenimport- und -aktualisierungsvorgängen in Azure Cosmos DB | Microsoft-Dokumentation
+description: Massenimport und -aktualisierung von Azure Cosmos DB-Dokumenten mithilfe der BulkExecutor-.NET-Bibliothek.
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: cc0faa44501ea130309a02bb48d02f9c5b33febd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 04894fdd0ffff38ad129097ce839259f2993332c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053379"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363397"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
-Dieses Tutorial enthält Anleitungen zum Verwenden der BulkExecutor-.NET-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Dokumenten in Azure Cosmos DB-Containern. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial werden Sie durch eine .NET-Beispielanwendung geführt, die zufällig generierte Dokumente per Massenvorgang in einen Azure Cosmos DB-Container importiert. Nach dem Import wird erläutert, wie Sie die importierten Daten per Massenvorgang aktualisieren, indem Sie Patches als Vorgänge angeben, die für bestimmte Dokumentfelder ausgeführt werden sollen.
+Dieses Tutorial enthält Anleitungen zum Verwenden der BulkExecutor-.NET-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Dokumenten in Azure Cosmos DB-Containern. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial wird eine .NET-Beispielanwendung vorgestellt, die zufällig generierte Dokumente in einen Azure Cosmos DB-Container massenimportiert. Nach dem Import wird erläutert, wie Sie die importierten Daten per Massenvorgang aktualisieren, indem Sie Patches als Vorgänge angeben, die für bestimmte Dokumentfelder ausgeführt werden sollen. 
+
+Zurzeit wird die BulkExecutor-Bibliothek nur von Azure Cosmos DB SQL-API- und Gremlin-API-Konten unterstützt. Dieser Artikel beschreibt, wie Sie die BulkExecutor-.NET-Bibliothek mit SQL-API-Konten verwenden. Weitere Informationen zum Verwenden der BulkExecutor-.NET-Bibliothek mit der Gremlin-API finden Sie unter [Ausführen von Massenvorgängen in der Azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

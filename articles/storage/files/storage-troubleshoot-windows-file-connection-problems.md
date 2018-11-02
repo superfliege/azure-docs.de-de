@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 935d4a3ba3fc3199177be5bd4e70f82239c3c971
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 59eb0ddad72f5e54a23a97a260477f84019eb62c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529684"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386340"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -32,16 +32,17 @@ Wenn Sie versuchen, eine Dateifreigabe aus einem lokalen oder einem anderen Date
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Ursache 1: Unverschlüsselter Kommunikationskanal
 
-Aus Sicherheitsgründen werden Verbindungen mit Azure-Dateifreigaben blockiert, wenn der Kommunikationskanal nicht verschlüsselt ist und der Verbindungsversuch nicht von dem gleichen Datencenter aus erfolgt, in dem sich die Azure-Dateifreigaben befinden. Die Verschlüsselung des Kommunikationskanals ist nur verfügbar, wenn das Clientbetriebssystem des Benutzers die SMB-Verschlüsselung unterstützt.
+Aus Sicherheitsgründen werden Verbindungen mit Azure-Dateifreigaben blockiert, wenn der Kommunikationskanal nicht verschlüsselt ist und der Verbindungsversuch nicht von dem gleichen Datencenter aus erfolgt, in dem sich die Azure-Dateifreigaben befinden. Unverschlüsselte Verbindungen innerhalb desselben Datencenters können auch blockiert werden, wenn die Einstellung [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto aktiviert ist. Die Verschlüsselung des Kommunikationskanals ist nur verfügbar, wenn das Clientbetriebssystem des Benutzers die SMB-Verschlüsselung unterstützt.
 
 Windows 8, Windows Server 2012 und höhere Versionen jedes Systems handeln Anforderung aus, die SMB 3.0 umfassen, wodurch die Verschlüsselung unterstützt wird.
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
 
-Stellen Sie eine Verbindung von einem Client her, der einen der folgenden Punkte erfüllt:
+1. Vergewissern Sie sich, dass die Einstellung [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto deaktiviert ist.
+2. Stellen Sie eine Verbindung von einem Client her, der einen der folgenden Punkte erfüllt:
 
-- Erfüllt die Anforderungen von Windows 8 und Windows Server 2012 oder höher
-- Stellt eine Verbindung von einem virtuellen Computer im selben Datencenter wie das Azure-Speicherkonto her, das für die Azure-Dateifreigabe verwendet wird
+    - Erfüllt die Anforderungen von Windows 8 und Windows Server 2012 oder höher
+    - Stellt eine Verbindung von einem virtuellen Computer im selben Datencenter wie das Azure-Speicherkonto her, das für die Azure-Dateifreigabe verwendet wird
 
 ### <a name="cause-2-port-445-is-blocked"></a>Ursache 2: Port 445 ist gesperrt
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: cbfe3022c4ffd03e4ab93682eb14a5a588aa0013
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: d240bafa543633999a74ef66efcfd7130a4a7b7a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409472"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389274"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -131,10 +131,25 @@ Dieses Problem kann auftreten, wenn der Überwachungsprozess für die Speichersy
 
 Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
-1. Öffnen Sie den Task-Manager auf dem Server und überprüfen Sie, ob der Überwachungsprozess für die Speichersynchronisierung (AzureStorageSyncMonitor.exe) ausgeführt wird. Wenn der Prozess nicht ausgeführt wird, versuchen Sie zunächst, den Server neu zu starten. Wenn der Neustart des Servers das Problem nicht behebt, deinstallieren und installieren Sie den Agent für die Azure-Dateisynchronisierung neu (Hinweis: Die Servereinstellungen bleiben bei der Deinstallation und Neuinstallation des Agents erhalten).
+1. Öffnen Sie den Task-Manager auf dem Server und überprüfen Sie, ob der Überwachungsprozess für die Speichersynchronisierung (AzureStorageSyncMonitor.exe) ausgeführt wird. Wenn der Prozess nicht ausgeführt wird, versuchen Sie zunächst, den Server neu zu starten. Wenn der Neustart des Servers das Problem nicht behebt, führen Sie ein Upgrade des Azure-Dateisynchronisierungs-Agents auf Version [3.3.0.0.0]( https://support.microsoft.com/help/4457484/update-rollup-for-azure-file-sync-agent-september-2018) durch, wenn diese nicht aktuell installiert ist.
 2. Überprüfen Sie, ob Firewall- und Proxy-Einstellungen ordnungsgemäß konfiguriert sind:
-    - Wenn sich der Server hinter einer Firewall befindet, überprüfen Sie, ob Port 443 für ausgehenden Datenverkehr zulässig ist. Wenn die Firewall den Datenverkehr auf bestimmte Domänen einschränkt, bestätigen Sie, dass die in der Firewall-[Dokumentation](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) aufgeführten Domänen zugänglich sind.
-    - Wenn sich der Server hinter einem Proxy befindet, konfigurieren Sie die computerweiten oder App-spezifischen Proxyeinstellungen, indem Sie den Schritten in der Proxy-[Dokumentation](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy) folgen.
+    - Wenn sich der Server hinter einer Firewall befindet, überprüfen Sie, ob Port 443 für ausgehenden Datenverkehr zulässig ist. Wenn die Firewall den Datenverkehr auf bestimmte Domänen einschränkt, bestätigen Sie, dass die in der Firewall-[Dokumentation](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) aufgeführten Domänen zugänglich sind.
+    - Wenn sich der Server hinter einem Proxy befindet, konfigurieren Sie die computerweiten oder App-spezifischen Proxyeinstellungen, indem Sie den Schritten in der Proxy-[Dokumentation](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy) folgen.
+
+<a id="endpoint-noactivity-sync"></a>**Serverendpunkt hat den Integritätsstatus „Keine Aktivität“, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Online“**  
+
+Ein Integritätsstatus „Keine Aktivität“ des Serverendpunkts bedeutet, dass der Serverendpunkt innerhalb der letzten zwei Stunden keine Synchronisierungsaktivität protokolliert hat.
+
+Ein Serverendpunkt protokolliert die Synchronisierungsaktivität aus den folgenden Gründen möglicherweise nicht:
+
+- Der Server hat die maximale Anzahl gleichzeitiger Synchronisierungssitzungen erreicht. Die Azure-Dateisynchronisierung unterstützt zurzeit 2 aktive Synchronisierungssitzungen pro Prozessor oder maximal 8 aktive Synchronisierungssitzungen pro Server.
+
+- Der Server verfügt über eine aktive VSS-Synchronisationssitzung (SnapshotSync). Wenn eine VSS-Synchronisierungssitzung für einen Serverendpunkt aktiv ist, können andere Serverendpunkte auf dem Server eine Synchronisierungssitzung erst starten, nachdem die VSS-Synchronisierungssitzung abgeschlossen wurde.
+
+Um die aktuelle Synchronisierungsaktivität auf einem Server zu überprüfen, lesen Sie [Wie überwache ich den Fortschritt einer aktuellen Synchronisierungssitzung?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+
+> [!Note]  
+> Wenn der Serverstatus auf dem Blatt mit den registrierten Servern „Als Offline angezeigt" lautet, führen Sie die im Abschnitt S[erverendpunkt weist einen Integritätsstatus „Keine Aktivität“ oder „Ausstehend“ auf, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Als Offline angezeigt“](#server-endpoint-noactivity) aufgeführten Schritte aus.
 
 ## <a name="sync"></a>Synchronisierung
 <a id="afs-change-detection"></a>**Wie lange dauert es, bis eine Datei auf Servern in der Synchronisierungsgruppe synchronisiert wird, wenn ich die Datei direkt auf meiner Azure-Dateifreigabe mithilfe von SMB oder über das Portal erstellt habe?**  
@@ -236,7 +251,7 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Eine Datei wurde während der Synchronisierung geändert, deshalb muss sie erneut synchronisiert werden. | Keine weiteren Maßnahmen erforderlich. |
 
 #### <a name="handling-unsupported-characters"></a>Behandlung von nicht unterstützten Zeichen
-Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercodes 0x7b und 0x8007007b) anzeigt, sollten Sie die jeweiligen Zeichen aus den entsprechenden Dateien entfernen oder ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-tool) können Sie nicht unterstützte Zeichen identifizieren.
+Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercodes 0x7b und 0x8007007b) anzeigt, sollten Sie die jeweiligen Zeichen aus den entsprechenden Dateinamen entfernen oder ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-tool) können Sie nicht unterstützte Zeichen identifizieren.
 
 Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchronisierung noch nicht unterstützt.
 
@@ -319,6 +334,16 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die
 | **Korrektur erforderlich** | JA |
 
 Dieser Fehler tritt auf, wenn ein Problem mit der internen Datenbank besteht, die von der Azure-Dateisynchronisierung verwendet wird. Wenn dieses Problem auftritt, erstellen Sie eine Supportanfrage, und wir kontaktieren Sie, um Sie bei der Problemlösung zu unterstützen.
+
+<a id="-2134364053"></a>**Die auf dem Server installierte Version des Azure-Dateisynchronisierungs-Agents wird nicht unterstützt.**  
+| | |
+|-|-|
+| **HRESULT** | 0x80C8306B |
+| **HRESULT (dezimal)** | -2134364053 |
+| **Fehlerzeichenfolge** | ECS_E_AGENT_VERSION_BLOCKED |
+| **Korrektur erforderlich** | JA |
+
+Dieser Fehler tritt auf, wenn die auf dem Server installierte Version des Azure-Dateisynchronisierungs-Agents nicht unterstützt wird. Um dieses Problem zu beheben, führen Sie ein [Upgrade]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) auf eine [unterstützte Agent-Version]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions) aus.
 
 <a id="-2134351810"></a>**Sie haben das Speicherlimit für die Azure-Dateifreigabe erreicht.**  
 | | |
