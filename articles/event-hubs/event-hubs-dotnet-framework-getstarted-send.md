@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: ae5d89aab4ce1bd599ed9a50dc46336f8a96a2f5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9d7792c8eb33e6ceca5ba794f56c5a4c99d59554
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456223"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084406"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Framework
-Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und unter [Event Hubs-Features im Überblick](event-hubs-features.md).
+Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
 
 In diesem Tutorial erfahren Sie auch, wie Sie mithilfe von .NET Framework Ereignisse über eine in C# geschriebene Konsolenanwendung an einen Event Hub senden. 
 
@@ -53,16 +53,16 @@ Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung**
 
 1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
    
-      ```csharp
-      using System.Threading;
-      using Microsoft.ServiceBus.Messaging;
-      ```
+    ```csharp
+    using System.Threading;
+    using Microsoft.ServiceBus.Messaging;
+    ```
 2. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu, und ersetzen Sie dabei die Platzhalterwerte durch den Namen des im vorigen Abschnitt erstellten Event Hubs und die zuvor gespeicherte Verbindungszeichenfolge auf Namespace-Ebene.
    
-        ```csharp
-        static string eventHubName = "Your Event Hub name";
-        static string connectionString = "namespace connection string";
-        ```
+    ```csharp
+    static string eventHubName = "Your Event Hub name";
+    static string connectionString = "namespace connection string";
+    ```
 3. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
    
       ```csharp

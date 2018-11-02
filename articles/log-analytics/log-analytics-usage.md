@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d3714f7226de2a457f37e6ea4afa2b066ee460d1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c14013121517267445e89f43e228b03ba184f013
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409134"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415255"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
 
@@ -49,12 +49,12 @@ Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen an
     - Zeit zum Erfassen und Indizieren von Daten  
 - Liste der Abfragen
 
-![Dashboard für Nutzung und geschätzte Kosten](./media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+![Dashboard für Nutzung und geschätzte Kosten](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
 )
 
 ### <a name="to-work-with-usage-data"></a>So arbeiten Sie mit Nutzungsdaten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.<br><br> ![Azure-Portal](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.<br><br> ![Azure-Portal](media/log-analytics-usage/azure-portal-01.png)<br><br>  
 3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche einen Arbeitsbereich aus.
 4. Wählen Sie in der Liste im linken Bereich die Option **Nutzung und geschätzte Kosten** aus.
 5. Auf dem Dashboard für **Nutzung und geschätzte Kosten** können Sie den Zeitraum anpassen. Klicken Sie dazu auf **Zeit: Letzte 24 Stunden**, und ändern Sie das Zeitintervall.<br><br> ![Zeitintervall](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>

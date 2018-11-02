@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 62cc4634a0f76b0562d5b3c1355a7442fc5cf989
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e7abdb568b11870fb467ee6d3759881ca337d3cc
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985232"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085805"
 ---
 # <a name="assets"></a>Objekte
 
@@ -34,19 +34,19 @@ Weitere Informationen finden Sie auch unter [Speicherkonten in Media Services](s
 
 Die folgende Tabelle enthält die Eigenschaften eines Medienobjekts und die jeweiligen Definitionen.
 
-|NAME|Typ|BESCHREIBUNG|
-|---|---|---|
-|id|Zeichenfolge|Vollqualifizierte Ressourcen-ID für die Ressource.|
-|name|Zeichenfolge|Der Name der Ressource.|
-|properties.alternateId |Zeichenfolge|Die alternative ID des Medienobjekts.|
-|properties.assetId |Zeichenfolge|Die Medienobjekt-ID.|
-|properties.container |Zeichenfolge|Der Name des Medienobjekt-Blobcontainers.|
-|properties.created |Zeichenfolge|Das Erstellungsdatum des Medienobjekts.|
-|properties.description |Zeichenfolge|Die Medienobjektbeschreibung.|
-|properties.lastModified |Zeichenfolge|Das Datum der letzten Änderung des Medienobjekts.|
-|properties.storageAccountName |Zeichenfolge|Der Name des Speicherkontos.|
-|properties.storageEncryptionFormat |AssetStorageEncryptionFormat |Das Verschlüsselungsformat des Medienobjekts. None oder MediaStorageEncryption.|
-|type|Zeichenfolge|Der Typ der Ressource.|
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Vollqualifizierte Ressourcen-ID für die Ressource.|
+|name|Der Name der Ressource.|
+|properties.alternateId |Die alternative ID des Medienobjekts.|
+|properties.assetId |Die Medienobjekt-ID.|
+|properties.container |Der Name des Medienobjekt-Blobcontainers.|
+|properties.created |Das Erstellungsdatum des Medienobjekts.|
+|properties.description|Die Medienobjektbeschreibung.|
+|properties.lastModified |Das Datum der letzten Änderung des Medienobjekts.|
+|properties.storageAccountName |Der Name des Speicherkontos.|
+|properties.storageEncryptionFormat |Das Verschlüsselungsformat des Medienobjekts. None oder MediaStorageEncryption.|
+|type|Der Typ der Ressource.|
 
 Die vollständige Definition finden Sie unter [Medienobjekte](https://docs.microsoft.com/rest/api/media/assets).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4461b98c56bcf99fc11aa9d89e6c6dc5961c86ac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405513"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419519"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurieren von Service Map in Azure
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -146,7 +146,7 @@ In diesem Artikel werden alle Agents (ob unter Linux oder Windows, ob mit einer 
 
 Der Service Map-Agent selbst überträgt keine Daten und erfordert keine Änderungen an Firewalls oder Ports. Die Daten in der Dienstzuordnung werden immer vom Log Analytics-Agent an den Log Analytics-Dienst übermittelt, entweder direkt oder über das Log Analytics-Gateway.
 
-![Service Map-Agents](media/monitoring-service-map/agents.png)
+![Service Map-Agents](media/monitoring-service-map-configure/agents.png)
 
 Wenn Sie ein System Center Operations Manager-Kunde mit einer Verwaltungsgruppe sind, die mit Log Analytics verbunden ist:
 
@@ -172,7 +172,7 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 
 ## <a name="installation"></a>Installation
 
-## <a name="azure-vm-extension"></a>Azure-VM-Erweiterung
+### <a name="azure-vm-extension"></a>Azure-VM-Erweiterung
 Es ist eine Erweiterung für Windows (DependencyAgentWindows) und Linux (DependencyAgentLinux) verfügbar, und Sie können den Dependency-Agent ganz einfach mithilfe einer [Azure-VM-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features) auf Ihren Azure-VMs bereitstellen.  Mit der Azure-VM-Erweiterung können Sie den Dependency-Agent mithilfe eines PowerShell-Skripts oder direkt in der VM anhand einer Azure Resource Manager-Vorlage auf Ihren Windows- und Linux-VMs bereitstellen.  Wenn Sie den Agent mit der Azure-VM-Erweiterung bereitstellen, werden Ihre Agents automatisch auf die neueste Version aktualisiert.
 
 Zum Bereitstellen der Azure-VM-Erweiterung über PowerShell können Sie das folgende Beispiel verwenden:

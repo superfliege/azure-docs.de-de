@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 9a5ef8df9b1ca87430fb5e8d1da94f1899c4a856
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 24597c36ab6569abb53c7be331631556e2abfe66
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985861"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085955"
 ---
 # <a name="content-key-policies"></a>Richtlinien für Inhaltsschlüssel
 
@@ -28,16 +28,16 @@ In Azure Media Services v3 können Sie mithilfe von Richtlinien für Inhaltsschl
 
 Die folgende Tabelle enthält die Eigenschaften von ContentKeyPolicy und die jeweiligen Definitionen.
 
-|NAME|Typ|BESCHREIBUNG|
-|---|---|---|
-|id|Zeichenfolge|Vollqualifizierte Ressourcen-ID für die Ressource.|
-|name|Zeichenfolge|Der Name der Ressource.|
-|properties.created |Zeichenfolge|Das Erstellungsdatum der Richtlinie.|
-|properties.description |Zeichenfolge|Eine Beschreibung der Richtlinie.|
-|properties.lastModified    |Zeichenfolge|Das Datum der letzten Änderung der Richtlinie.|
-|properties.options |ContentKeyPolicyOption[]|Die Optionen für die Schlüsselrichtlinie.|
-|properties.policyId    |Zeichenfolge|Die ID der Legacyrichtlinie.|
-|type   |Zeichenfolge|Der Typ der Ressource.|
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Vollqualifizierte Ressourcen-ID für die Ressource.|
+|name|Der Name der Ressource.|
+|properties.created |Das Erstellungsdatum der Richtlinie.|
+|properties.description |Eine Beschreibung der Richtlinie.|
+|properties.lastModified|Das Datum der letzten Änderung der Richtlinie.|
+|properties.options |Die Optionen für die Schlüsselrichtlinie.|
+|properties.policyId    |Die ID der Legacyrichtlinie.|
+|type   |Der Typ der Ressource.|
 
 Die vollständige Definition finden Sie unter [Richtlinien für Inhaltsschlüssel](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
 

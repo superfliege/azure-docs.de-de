@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: ac184ce790a0700fcacc63f70c2bb321142d7224
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: aac59e087ba106bc20d94fea85cb8a3cd9273482
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320542"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233071"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus mit Bereichen in Azure Logic Apps
 
@@ -389,7 +389,7 @@ Wenn Sie in der Codeansicht arbeiten, können Sie stattdessen in der JSON-Defini
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Featurevorschläge übermitteln oder darüber abstimmen möchten, besuchen Sie die [Website für Azure Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Featurevorschläge übermitteln oder darüber abstimmen möchten, besuchen Sie die [Website für Azure Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

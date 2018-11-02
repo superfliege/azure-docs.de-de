@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 56e9a0b4eec347d2367c38ab00c6c9d9dca60752
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: cb34855fc9451679c885eebb0ef5a2fab0be8c57
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986895"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086844"
 ---
 # <a name="streaming-locators"></a>Streaminglocators
 
@@ -26,20 +26,20 @@ Um Ihren Clients eine URL bereitzustellen, mit der sie codierte Video- oder Audi
 
 Die folgende Tabelle enthält die Eigenschaften von Streaminglocators und die jeweiligen Definitionen.
 
-|NAME|Typ|BESCHREIBUNG|
-|---|---|---|
-|id |Zeichenfolge|Vollqualifizierte Ressourcen-ID für die Ressource.|
-|name   |Zeichenfolge|Der Name der Ressource.|
-|properties.alternativeMediaId  |Zeichenfolge|Alternative Medien-ID dieses Streaminglocators.|
-|properties.assetName   |Zeichenfolge|Ressourcenname.|
-|properties.contentKeys |StreamingLocatorContentKey[]|Die von diesem Streaminglocator verwendeten Inhaltsschlüssel.|
-|properties.created |Zeichenfolge|Die Erstellungszeit des Streaminglocators.|
-|properties.defaultContentKeyPolicyName |Zeichenfolge|Der Name der Standardrichtlinie des Inhaltsschlüssels, die dieser Streaminglocator verwendet.|
-|properties.endTime |Zeichenfolge|Die Endzeit des Streaminglocators.|
-|properties.startTime   |Zeichenfolge|Die Startzeit des Streaminglocators.|
-|properties.streamingLocatorId  |Zeichenfolge|Die ID des Streaminglocators.|
-|properties.streamingPolicyName |Zeichenfolge|Der Name der Streamingrichtlinie, die dieser Streaminglocator verwendet. Geben Sie entweder den Namen der von Ihnen erstellten Streamingrichtlinie an, oder verwenden Sie eine vordefinierte Streamingrichtlinie. Die folgenden vordefinierten Streamingrichtlinien sind verfügbar: „Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“.|
-|type   |Zeichenfolge|Der Typ der Ressource.|
+|NAME|BESCHREIBUNG|
+|---|---|
+|id |Vollqualifizierte Ressourcen-ID für die Ressource.|
+|name   |Der Name der Ressource.|
+|properties.alternativeMediaId|Alternative Medien-ID dieses Streaminglocators.|
+|properties.assetName   |Ressourcenname.|
+|properties.contentKeys |Die von diesem Streaminglocator verwendeten Inhaltsschlüssel.|
+|properties.created |Die Erstellungszeit des Streaminglocators.|
+|properties.defaultContentKeyPolicyName|Der Name der Standardrichtlinie des Inhaltsschlüssels, die dieser Streaminglocator verwendet.|
+|properties.endTime |Die Endzeit des Streaminglocators.|
+|properties.startTime|Die Startzeit des Streaminglocators.|
+|properties.streamingLocatorId|Die ID des Streaminglocators.|
+|properties.streamingPolicyName |Der Name der Streamingrichtlinie, die dieser Streaminglocator verwendet. Geben Sie entweder den Namen der von Ihnen erstellten Streamingrichtlinie an, oder verwenden Sie eine vordefinierte Streamingrichtlinie. Die folgenden vordefinierten Streamingrichtlinien sind verfügbar: „Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“.|
+|type|Der Typ der Ressource.|
 
 Die vollständige Definition finden Sie unter [Streaminglocators](https://docs.microsoft.com/rest/api/media/streaminglocators).
 

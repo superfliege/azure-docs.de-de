@@ -1,26 +1,26 @@
 ---
-title: Grundlegendes zum Vorhersageergebnis von LUIS
+title: Vorhersageergebnis – Absichten, Entitäten – LUIS
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, was das Vorhersageergebnis in LUIS bedeutet.
+description: Ein Vorhersageergebnis gibt den Grad der Zuverlässigkeit an, den LUIS in die Ergebnisse von Vorhersagen hat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
-ms.date: 09/10/2018
+ms.topic: conceptual
+ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: dc19151e82f44159533050e60ba2f1c6d65466fe
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7cc3b6fd5865689df57258dcb2088bbef47b9a90
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032228"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637959"
 ---
 # <a name="prediction-score"></a>Vorhersageergebnis
 Ein Vorhersageergebnis gibt den Grad der Zuverlässigkeit an, den LUIS in die Ergebnisse von Vorhersagen hat. 
 
-Ein Vorhersageergebnis liegt in der Regel zwischen 0 (null) und 1 (eins). Ein Beispiel für eine hohe Zuverlässigkeitsbewertung von LUIS ist der Wert 0,99. Ein Beispiel für eine Bewertung mit niedriger Zuverlässigkeit ist 0,01. 
+Ein Vorhersageergebnis liegt zwischen 0 (null) und 1 (eins). Ein Beispiel für eine hohe Zuverlässigkeitsbewertung von LUIS ist der Wert 0,99. Ein Beispiel für eine Bewertung mit niedriger Zuverlässigkeit ist 0,01. 
 
 |Ergebniswert|Zuverlässigkeit|
 |--|--|
