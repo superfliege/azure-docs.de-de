@@ -114,7 +114,7 @@ Wenn Sie keine Tools verwenden können, kann Ihnen die folgende Anleitung dabei 
 1. Schätzen Sie die für den Pool benötigten eDTUs oder V-Kerne nach der folgenden Methode:
 
    Für DTU-basiertes Kaufmodell: MAX(<*Gesamtanzahl Datenbanken* x *durchschnittliche DTU-Nutzung pro Datenbank* >,<br>
-   <*Anzahl gleichzeitiger Datenbanken mit Spitzenauslastung* X *DTU-Spitzenauslastung pro Datenbank*)
+   < *Anzahl gleichzeitiger Datenbanken mit Spitzenauslastung* X *DTU-Spitzenauslastung pro Datenbank* )
 
    Für V-Kern-basiertes Kaufmodell: MAX(< *Gesamtanzahl Datenbanken* x *durchschnittliche V-Kern-Nutzung pro Datenbank* >,<br>
    <*Anzahl gleichzeitiger Datenbanken mit Spitzenauslastung* X *V-Kern-Spitzenauslastung pro Datenbank*)
