@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/30/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e418316a74ccf27ec730261957a8b6c64de5d063
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: be880b937f254cbf8115d1a5129069069a0c7eea
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040600"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249665"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Erstellen einer dynamischen Gruppe und Überprüfen des Status
 
@@ -39,8 +39,9 @@ In diesem Artikel wird beschrieben, wie Sie im Azure-Portal eine Regel für die 
 
    ![Hinzufügen einer Regel für eine dynamische Mitgliedschaft](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. Wählen Sie nach der Erstellung der Regel unten auf dem Blatt **Abfrage hinzufügen**.
-6. Wählen Sie **Erstellen** on the **Erstellen** aus, um die Gruppe zu erstellen.
+5. Um die vollständige Liste der Eigenschaften der benutzerdefinierten Erweiterung anzuzeigen, die Sie Ihrer Mitgliedschaftsabfrage hinzufügen können, wählen Sie **Benutzerdefinierte Erweiterungseigenschaften abrufen** aus, geben Sie die Anwendungs-ID ein, und wählen Sie dann **Eigenschaften aktualisieren** aus. Die vollständige Liste der Eigenschaften steht nun zur Auswahl zur Verfügung.
+6. Wählen Sie nach der Erstellung der Regel unten auf dem Blatt **Abfrage hinzufügen**.
+7. Wählen Sie **Erstellen** on the **Erstellen** aus, um die Gruppe zu erstellen.
 
 > [!TIP]
 > Die Gruppenerstellung misslingt, wenn die von Ihnen eingegebene Regel falsch gebildet wurde oder nicht gültig ist. Rechts oben im Portal wird eine Benachrichtigung angezeigt, die erläutert, warum die Regel nicht verarbeitet werden konnte. Lesen Sie sie sorgfältig, um zu erfahren, wie die Regel angepasst werden muss, damit sie gültig ist.

@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 725f32fd-d0ad-49c7-b137-1cc246bf85d7
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 907cec2784b4ad22555f6b29efb6d670ce7d48d0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0437bd46537d8b7024618706aba12660abca5512
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443646"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414691"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>Tutorial: Azure Active Directory-Integration mit LINE WORKS
 
@@ -53,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von LINE WORKS aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-line-works-from-the-gallery"></a>Hinzufügen von LINE WORKS aus dem Katalog
 Zum Konfigurieren der Integration von LINE WORKS in Azure AD müssen Sie LINE WORKS aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -62,19 +61,19 @@ Zum Konfigurieren der Integration von LINE WORKS in Azure AD müssen Sie LINE WO
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![image](./media/worksmobile-tutorial/selectazuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Blatt „Unternehmensanwendungen“][2]
+    ![image](./media/worksmobile-tutorial/a_select_app.png)
     
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Schaltfläche „Neue Anwendung“][3]
+    ![image](./media/worksmobile-tutorial/a_new_app.png)
 
-1. Geben Sie im Suchfeld **LINE WORKS** ein, wählen Sie im Ergebnisbereich **LINE WORKS** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **LINE WORKS** ein, wählen Sie im Ergebnisbereich **LINE WORKS** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![LINE WORKS in der Ergebnisliste](./media/worksmobile-tutorial/tutorial_lineworks_addfromgallery.png)
+     ![image](./media/worksmobile-tutorial/tutorial_lineworks_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -82,15 +81,13 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden bei LINE
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in LINE WORKS als Pendant zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in LINE WORKS muss eine Linkbeziehung eingerichtet werden.
 
-Weisen Sie in LINE WORKS den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
-
 Zum Konfigurieren und Testen des einmaligen Anmeldens mit Azure AD bei LINE WORKS müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines LINE WORKS-Testbenutzers](#create-a-line-works-test-user)**, um ein Pendant von Britta Simon in LINE WORKS zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines LINE WORKS-Testbenutzers](#create-a-line-works-test-user)**, um ein Pendant von Britta Simon in LINE WORKS zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -98,132 +95,109 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei LINE WORKS die folgenden Schritte aus:**
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **LINE WORKS** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **LINE WORKS** die Option **Einmaliges Anmelden** aus.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![image](./media/worksmobile-tutorial/b1_b2_select_sso.png)
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/worksmobile-tutorial/tutorial_lineworks_samlbase.png)
+2. Klicken Sie im Dialogfeld **SSO-Methode auswählen** für den Modus **SAML** auf **Auswählen**, um einmaliges Anmelden zu aktivieren.
 
-1. Führen Sie im Abschnitt **Domäne und URLs für LINE WORKS** die folgenden Schritte aus:
+    ![image](./media/worksmobile-tutorial/b1_b2_saml_sso.png)
 
-    ![SSO-Informationen zur Domäne und den URLs für LINE WORKS](./media/worksmobile-tutorial/tutorial_lineworks_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://auth.worksmobile.com/d/login/{domain}/?userId={ID@domain}`.
+    ![image](./media/worksmobile-tutorial/b1-domains_and_urlsedit.png)
 
-    b. Geben Sie im Textfeld **Bezeichner** den Wert `worksmobile.com` ein.
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Clientsupportteam für LINE WORKS](mailto:dl_ssoinfo@worksmobile.com), um diesen Wert zu erhalten.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://auth.worksmobile.com/d/login/<domain>/?userId=<ID@domain>`
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Rohdaten)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+    b. Geben Sie im Textfeld **Bezeichner** eine URL ein: `worksmobile.com`
 
-    ![Downloadlink für das Zertifikat](./media/worksmobile-tutorial/tutorial_lineworks_certificate.png) 
+    ![image](./media/worksmobile-tutorial/tutorial_lineworks_url.png)
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das **Zertifikat (Raw)** herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/worksmobile-tutorial/tutorial_general_400.png)
+    ![image](./media/worksmobile-tutorial/tutorial_lineworks_certficate.png)
 
-1. Klicken Sie im Abschnitt **LINE WORKS-Konfiguration** auf **LINE WORKS konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+6. Kopieren Sie im Abschnitt **LINE WORKS einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-    ![LINE WORKS-Konfiguration](./media/worksmobile-tutorial/tutorial_lineworks_configure.png) 
+    a. Anmelde-URL
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **LINE WORKS** müssen Sie die heruntergeladene **Zertifikatdatei, Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [LINE WORKS-Supportteam](mailto:dl_ssoinfo@worksmobile.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+    b. Azure AD-Bezeichner
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+    c. Abmelde-URL
+
+    ![image](./media/worksmobile-tutorial/d1_samlsonfigure.png) 
+
+7. Informationen zum Konfigurieren des einmaligen Anmeldens für **LINE WORKS** finden Sie in der [LINE WORKS SSO-Dokumentation](https://developers.worksmobile.com/jp/document/1001080101) und „Konfigurieren einer LINE WORKS-Einstellung“.
+
+> [!NOTE]
+> Sie müssen die heruntergeladene Zertifikatdatei von CERT in PEM konvertieren.
+
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![image](./media/worksmobile-tutorial/d_users_and_groups.png)
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Schaltfläche „Azure Active Directory“](./media/worksmobile-tutorial/create_aaduser_01.png)
+    ![image](./media/worksmobile-tutorial/d_adduser.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/worksmobile-tutorial/create_aaduser_02.png)
+    ![image](./media/worksmobile-tutorial/d_userproperties.png)
 
-1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Schaltfläche „Hinzufügen“](./media/worksmobile-tutorial/create_aaduser_03.png)
+    c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/worksmobile-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
-
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="create-a-line-works-test-user"></a>Erstellen einen LINE WORKS-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in LINE WORKS eine Benutzerin namens Britta Simon. Wenden Sie sich an das [Supportteam von LINE WORKS](mailto:dl_ssoinfo@worksmobile.com), um die Benutzer auf der LINE WORKS-Plattform hinzufügen zu lassen.
+In diesem Abschnitt erstellen Sie in LINE WORKS eine Benutzerin namens Britta Simon. Greifen Sie auf die Seite [LINE WORKS Admin](https://admin.worksmobile.com) zu, und fügen Sie die Benutzer auf der LINE WORKS-Plattform hinzu.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf LINE WORKS erteilen.
 
-![Zuweisen der Benutzerrolle][200] 
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
-**Um Britta Simon LINE WORKS zuzuweisen, führen Sie die folgenden Schritte aus:**
+    ![image](./media/worksmobile-tutorial/d_all_applications.png)
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+2. Wählen Sie in der Anwendungsliste **LINE WORKS**aus.
 
-    ![Benutzer zuweisen][201] 
+    ![image](./media/worksmobile-tutorial/tutorial_lineworks_app.png)
 
-1. Wählen Sie in der Anwendungsliste **LINE WORKS**aus.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![LINE WORKS-Link in der Anwendungsliste](./media/worksmobile-tutorial/tutorial_lineworks_app.png)  
+    ![image](./media/worksmobile-tutorial/d_leftpaneusers.png)
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+4. Wählen Sie die Schaltfläche **Hinzufügen** und dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Link „Benutzer und Gruppen“][202]
+    ![image](./media/worksmobile-tutorial/d_assign_user.png)
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
-
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
-
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
-
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+5. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „LINE WORKS“ klicken, sollten Sie automatisch bei Ihrer LINE WORKS-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-<!--Image references-->
-
-[1]: ./media/lineworks-tutorial/tutorial_general_01.png
-[2]: ./media/lineworks-tutorial/tutorial_general_02.png
-[3]: ./media/lineworks-tutorial/tutorial_general_03.png
-[4]: ./media/lineworks-tutorial/tutorial_general_04.png
-
-[100]: ./media/lineworks-tutorial/tutorial_general_100.png
-
-[200]: ./media/lineworks-tutorial/tutorial_general_200.png
-[201]: ./media/lineworks-tutorial/tutorial_general_201.png
-[202]: ./media/lineworks-tutorial/tutorial_general_202.png
-[203]: ./media/lineworks-tutorial/tutorial_general_203.png
 

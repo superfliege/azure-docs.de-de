@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 9332bcb5849deacde13d67e4a18ea19af8af2977
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/29/2018
+ms.openlocfilehash: 3495a923683d78446e61ff0545c7d86023c14bc0
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471474"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233853"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Übersicht: Aktive Georeplikation und Gruppen für automatisches Failover
 
@@ -281,18 +281,18 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 | --- | --- |
 | [Create or Update Database (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her. |
 | [Get Create or Update Database Status](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Ruft den Status während eines Erstellungsvorgangs ab. |
-| [Set Secondary Database as Primary (Planned Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failover) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. |
-| [Set Secondary Database as Primary (Unplanned Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failoverallowdataloss) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. Bei diesem Vorgang können Daten verloren gehen. |
-| [Get Replication Link](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_get) |Ruft eine spezifische Replikationsverknüpfung für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
-| [Replication Links - List By Database](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_listbydatabase) | Ruft alle Replikationsverknüpfungen für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
-| [Delete Replication Link](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_delete) | Löscht einen Datenbankreplikationslink. Kann nicht während eines Failovers verwendet werden. |
-| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_createorupdate) | Erstellt oder aktualisiert eine Failovergruppe. |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_delete) | Entfernt die Failovergruppe vom Server |
-| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_failover) | Führt ein Failover vom aktuellen primären Server auf diesen Server durch. |
-| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_forcefailoverallowdataloss) |Führt ein Failover vom aktuellen primären Server auf diesen Server durch. Bei diesem Vorgang können Daten verloren gehen. |
-| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_get) | Ruft eine Failovergruppe ab. |
-| [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_listbyserver) | Listet die Failovergruppen eines Servers auf. |
-| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_update) | Aktualisiert eine Failovergruppe. |
+| [Set Secondary Database as Primary (Planned Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. |
+| [Set Secondary Database as Primary (Unplanned Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. Bei diesem Vorgang können Daten verloren gehen. |
+| [Get Replication Link](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Ruft eine spezifische Replikationsverknüpfung für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
+| [Replication Links - List By Database](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Ruft alle Replikationsverknüpfungen für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
+| [Delete Replication Link](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Löscht einen Datenbankreplikationslink. Kann nicht während eines Failovers verwendet werden. |
+| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Erstellt oder aktualisiert eine Failovergruppe. |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Entfernt die Failovergruppe vom Server |
+| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Führt ein Failover vom aktuellen primären Server auf diesen Server durch. |
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |Führt ein Failover vom aktuellen primären Server auf diesen Server durch. Bei diesem Vorgang können Daten verloren gehen. |
+| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Ruft eine Failovergruppe ab. |
+| [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Listet die Failovergruppen eines Servers auf. |
+| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualisiert eine Failovergruppe. |
 |  | |
 
 ## <a name="next-steps"></a>Nächste Schritte

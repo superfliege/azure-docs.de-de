@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 1eea6380d4276644db0c7681f23a4b0c5e79ff09
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6832f6f9d09cbbfea6ccaa69160ad93209c7ac8c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187348"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741180"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Vorschau: Überwachung, Berichterstellung und Problembehandlung beim Azure AD-Kennwortschutz
 
 |     |
 | --- |
-| Azure AD-Kennwortschutz und die benutzerdefinierte Liste der gesperrten Kennwörter sind in der öffentlichen Vorschau befindliche Features von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Azure AD-Kennwortschutz ist eine öffentliche Vorschaufunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 Nach der Bereitstellung von Azure AD-Kennwortschutz sind Überwachung und Berichterstattung wichtige Aufgaben. Dieser Artikel geht ins Detail, damit Sie verstehen, wo jeder Dienst Informationen protokolliert, und wie über die Verwendung von Azure AD-Kennwortschutz berichtet wird.
@@ -88,7 +88,7 @@ Einige andere wichtige, zu berücksichtigende Ereignisprotokollmeldungen sind:
 
 Das Kennwort für den angegebenen Benutzer wurde angenommen, da eine Azure-Kennwortrichtlinie noch nicht verfügbar ist.
 
-UserName: <user> FullName: <user>
+UserName: SomeUser FullName: Some User
 
 Für diese Bedingung kommen eine oder mehrere der folgenden Ursachen infrage:%n.
 
@@ -195,8 +195,8 @@ Wenn die Software der öffentlichen Vorschau deinstalliert und jeder zugehörige
 2. Deinstallieren Sie die DC-Agent-Software von allen Domänencontrollern. Dieser Schritt **erfordert** einen Neustart.
 3. Entfernen Sie manuell alle Proxydienst-Verbindungspunkte in jedem Domänennamenkontext. Der Speicherort dieser Objekte kann möglicherweise mit dem folgenden Active Directory-Powershell-Befehl erkannt werden:
    ```
-   $scp = “serviceConnectionPoint”
-   $keywords = “{EBEFB703-6113-413D-9167-9F8DD4D24468}*”
+   $scp = "serviceConnectionPoint"
+   $keywords = "{EBEFB703-6113-413D-9167-9F8DD4D24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
@@ -207,8 +207,8 @@ Wenn die Software der öffentlichen Vorschau deinstalliert und jeder zugehörige
 4. Entfernen Sie manuell alle DC-Agent-Verbindungspunkte in jedem Domänennamenkontext. Es gibt möglicherweise eines dieser Objekte pro Domänencontroller in der Gesamtstruktur, je nachdem, wie umfassend die Software der öffentlichen Vorschau bereitgestellt wurde. Der Speicherort dieser Objekte kann möglicherweise mit dem folgenden Active Directory-Powershell-Befehl erkannt werden:
 
    ```
-   $scp = “serviceConnectionPoint”
-   $keywords = “{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*”
+   $scp = "serviceConnectionPoint"
+   $keywords = "{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
