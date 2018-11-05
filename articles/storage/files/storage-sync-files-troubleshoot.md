@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: d240bafa543633999a74ef66efcfd7130a4a7b7a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1a135b0e17889c544a99ad677e9fa42ad6de994c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389274"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231881"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -74,9 +74,9 @@ Dieses Problem tritt auf, wenn die Azure-Dateifreigabe bereits von einem anderen
 Wenn diese Nachricht erscheint und die Azure-Dateifreigabe derzeit von keinem Cloudendpunkt verwendet wird, sollten Sie die folgenden Schritte ausführen, um die Metadaten der Azure-Dateisynchronisierung auf der Azure-Dateifreigabe zu löschen:
 
 > [!Warning]  
-> Wenn die Metadaten auf einer Azure-Dateifreigabe gelöscht werden, die derzeit von einem Cloudendpunkt verwendet wird, treten bei Vorgängen der Azure-Dateisynchronisierung Fehler auf. 
+> Wenn die Metadaten auf einer Azure-Dateifreigabe gelöscht werden, die derzeit von einem Cloudendpunkt verwendet wird, treten bei Vorgängen der Azure-Dateisynchronisierung Fehler auf. 
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure-Dateifreigabe.  
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure-Dateifreigabe.  
 2. Klicken Sie mit der rechten Maustaste auf die Azure-Dateifreigabe, und wählen Sie dann **Metadaten bearbeiten** aus.
 3. Klicken Sie mit der rechten Maustaste auf **SyncService**, und wählen Sie dann **Löschen** aus.
 
@@ -519,7 +519,7 @@ Dieser Fehler tritt auf, weil direkt Änderungen an der Azure-Dateifreigabe vorg
 | | |
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (dezimal)** | -2134375908 |
-| **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_KNOWLEGE_LIMIT_REACHED |
+| **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Korrektur erforderlich** | JA |
 | | |
 | **HRESULT** | 0x80c80253 |

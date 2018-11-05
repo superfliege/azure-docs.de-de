@@ -13,16 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/02/2018
 ms.author: spelluru
-ms.openlocfilehash: d2e95e7ed35ef002c116b0edd41fb2ddd4ba2522
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 523394010058ace7f61da2196a110fd3e6db610c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854506"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739856"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Nachrichtensitzungen: FIFO (First In, First Out) 
 
 Microsoft Azure Service Bus-Sitzungen ermöglichen die gemeinsame und geordnete Verarbeitung unbegrenzter Sequenzen zusammengehöriger Nachrichten. Um eine FIFO-Garantie in Service Bus umzusetzen, müssen Sie Sitzungen verwenden. Service Bus macht keine Vorgaben zur Art der Beziehung zwischen den Nachrichten und definiert auch kein bestimmtes Modell zur Bestimmung, wo eine Nachrichtensequenz beginnt oder endet.
+
+> [!NOTE]
+> Der Basic-Tarif von Service Bus unterstützt keine Sitzungen. Die Standard- und Premium-Tarife unterstützen Sitzungen. Weitere Informationen finden Sie unter [Service Bus – Preise](/pricing/details/service-bus/).
 
 Jeder Absender kann eine Sitzung erstellen, wenn er Nachrichten an ein Thema oder eine Warteschlange sendet, indem er die Eigenschaft [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) auf einen von der Anwendung definierten Bezeichner festlegt, der für die Sitzung eindeutig ist. Auf der AMQP 1.0-Protokollebene ist dieser Wert der *group-id*-Eigenschaft zugeordnet.
 

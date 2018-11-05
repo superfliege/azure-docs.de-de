@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: efbc020f482a46621eb5c3e3cd6137d1114da6de
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 02d21db5c5fadb65ec63e41cbd9e2db8869ed2e7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129606"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415830"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopieren von Daten aus Marketo mithilfe von Azure Data Factory (Vorschau)
 
@@ -32,6 +32,9 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 Sie können Daten aus Marketo in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Konnektivität. Daher müssen Sie mit diesem Connector keinen Treiber manuell installieren.
+
+>[!NOTE]
+>Dieser Marketo-Connector basiert auf der Marketo-REST-API. Beachten Sie, dass Marketo auf der Dienstseite ein [Limit für gleichzeitige Anforderungen](http://developers.marketo.com/rest-api/) verwendet. Wenn Fehler vom Typ „Error while attempting to use REST API: Max rate limit '100' exceeded with in '20' secs (606)“ oder „Error while attempting to use REST API: Concurrent access limit '10' reached (615) auftreten, ziehen Sie in Betracht, die gleichzeitigen Kopieraktivitäten zu verringern, um die Anzahl der Anforderungen an den Dienst zu verringern.
 
 ## <a name="getting-started"></a>Erste Schritte
 

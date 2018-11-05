@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: ac30718a92d76dedcb5b0ef3bdd2f282dd117720
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 41af53dbfbb5c863007a332445a2f184fcbcbf81
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853520"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741061"
 ---
 # <a name="topic-filters-and-actions"></a>Themenfilter und -aktionen
 
@@ -40,7 +40,7 @@ Komplexe Filterregeln erfordern Verarbeitungskapazitäten. Insbesondere führt d
 
 ## <a name="actions"></a>Aktionen
 
-Mit SQL-Filterbedingungen können Sie eine Aktion definieren, die die Nachricht durch Hinzufügen, Entfernen oder Ersetzen von Eigenschaften und deren Werten kommentieren kann. Die Aktion [verwendet einen SQL-ähnlichen Ausdruck](service-bus-messaging-sql-filter.md), der grob an die Syntax der SQL UPDATE-Anweisung angelehnt ist. Die Aktion wird auf die Nachricht angewendet, nachdem für diese eine Übereinstimmung gefunden wurde und bevor die Nachricht für das Thema ausgewählt wird. Die Änderungen an den Nachrichteneigenschaften sind innerhalb der in das Abonnement kopierten Nachricht privat.
+Mit SQL-Filterbedingungen können Sie eine Aktion definieren, die die Nachricht durch Hinzufügen, Entfernen oder Ersetzen von Eigenschaften und deren Werten kommentieren kann. Die Aktion [verwendet einen SQL-ähnlichen Ausdruck](service-bus-messaging-sql-filter.md), der grob an die Syntax der SQL UPDATE-Anweisung angelehnt ist. Die Aktion wird auf die Nachricht angewendet, nachdem für diese eine Übereinstimmung gefunden wurde und bevor die Nachricht für das Abonnement ausgewählt wird. Die Änderungen an den Nachrichteneigenschaften sind innerhalb der in das Abonnement kopierten Nachricht privat.
 
 ## <a name="usage-patterns"></a>Verwendungsmuster
 

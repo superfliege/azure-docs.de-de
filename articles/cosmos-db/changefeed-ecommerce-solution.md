@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: d2c4c890e1a1599e68fba1a0728061ec244f382f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 241cd2fddf31373ed9ca208efb0612dd4332131c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145838"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740976"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds zum Visualisieren von Echtzeit-Datenanalysen
 
@@ -207,7 +207,7 @@ Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Ver
    * Behalten Sie für **Ereignisserialisierungsformat** **JSON** bei.  
    * Behalten Sie für **Verschlüsselungsfeld** **UTF-8** bei.  
    * Behalten Sie für **Typ der Ereigniskomprimierung** **None** bei.  
-   * Klicken Sie auf die Schaltfläche **Save** .
+   * Wählen Sie die Schaltfläche **Speichern** aus.
 
 5. Navigieren Sie zurück zur Stream Analytics-Auftragsseite, und wählen **Ausgaben**.  
 
@@ -219,10 +219,10 @@ Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Ver
    * Behalten Sie im Feld **Gruppenarbeitsbereich** **Verbindung zum Laden von Arbeitsbereichen autorisieren** bei.  
    * Geben Sie im Feld **Datasetname** **averagePrice** ein.  
    * Geben Sie im Feld **Tabellenname** **averagePrice** ein.  
-   * Klicken Sie auf die Schaltfläche **Autorisieren**, und befolgen Sie die Anweisungen, um die Verbindung mit Power BI zu autorisieren.  
-   * Klicken Sie auf die Schaltfläche **Save** .  
+   * Wählen Sie die Schaltfläche **Autorisieren** aus, und befolgen Sie die Anweisungen, um die Verbindung mit Power BI zu autorisieren.  
+   * Wählen Sie die Schaltfläche **Speichern** aus.  
 
-8. Rufen Sie anschließend wieder **streamjob1** auf, und klicken Sie auf **Abfrage bearbeiten**.
+8. Rufen Sie anschließend wieder **streamjob1** auf, und wählen Sie **Abfrage bearbeiten** aus.
 
    ![Abfrage bearbeiten](./media/changefeed-ecommerce-solution/edit-query.png)
  
@@ -235,9 +235,9 @@ Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Ver
     FROM input  
     GROUP BY Action, TumblingWindow(second,5) 
    ```
-10. Klicken Sie dann oben links auf **Speichern**.  
+10. Wählen Sie dann oben links die Option **Speichern** aus.  
 
-11. Rufen Sie jetzt wieder **streamjob1** auf, und klicken Sie oben auf der Seite auf **Start**. Es kann einige Minuten dauern, bis Azure Stream Analytics gestartet wird. Anschließend wechselt die Anzeige von „Wird gestartet“ zu „Wird ausgeführt“.
+11. Rufen Sie jetzt wieder **streamjob1** auf, und wählen Sie oben auf der Seite **Start** aus. Es kann einige Minuten dauern, bis Azure Stream Analytics gestartet wird. Anschließend wechselt die Anzeige von „Wird gestartet“ zu „Wird ausgeführt“.
 
 ## <a name="connect-to-power-bi"></a>Verbinden mit Power BI
 
@@ -249,9 +249,9 @@ Power BI ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten u
 
 3. Wählen Sie **+ Kachel hinzufügen** in der oberen rechten Ecke aus.  
 
-4. Wählen Sie **Benutzerdefinierte Streamingdaten** aus, und klicken Sie dann auf die Schaltfläche **Weiter**.  
+4. Wählen Sie **Benutzerdefinierte Streamingdaten** aus, und wählen Sie dann die Schaltfläche **Weiter** aus.  
  
-5. Wählen Sie **averagePrice** aus **IHRE DATASETS** aus, und klicken Sie dann auf **Weiter**.  
+5. Wählen Sie **averagePrice** aus **IHRE DATASETS** aus, und wählen Sie dann **Weiter** aus.  
 
 6. Wählen Sie im Feld **Visualisierungstyp** die Option **Balkendiagramm (gruppiert)** aus dem Dropdownmenü. Fügen Sie unter **Achse** eine Aktion hinzu. Überspringen Sie **Legende**,ohne etwas hinzuzufügen. Fügen Sie dann im nächsten Abschnitt **Wert** **Avg** hinzu. Wählen Sie **Weiter**, benennen Sie das Diagramm, und wählen **Übernehmen**. Das neue Diagramm sollte jetzt auf dem Dashboard angezeigt werden.  
 
@@ -261,7 +261,7 @@ Power BI ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten u
    b. **Ausgabealias:** top5Output, Datasetname: top5, Tabellenname: top5  
    c. **Ausgabealias:** uniqueVisitorCountOutput, Datasetname: uniqueVisitorCount, Tabellenname: uniqueVisitorCount
 
-   Klicken Sie dann auf **Abfrage bearbeiten**, und fügen Sie die folgenden Abfragen **über** der ein, die Sie bereits geschrieben haben.
+   Wählen Sie dann **Abfrage bearbeiten** aus, und fügen Sie die folgenden Abfragen **über** der Abfrage ein, die Sie bereits geschrieben haben.
 
    ```sql
     /*TOP 5*/
@@ -329,7 +329,7 @@ Sie werden nun sehen, wie Sie Ihr neues Datenanalyse-Tool nutzen können, um sic
 
    Fügen Sie unter **changefeedlabdatabase** eine weitere Sammlung mit dem Namen **topItems** mit **Unbegrenzter** Speicherkapazität hinzu. Geben Sie **/Item** als Partitionsschlüssel ein.
 
-2. Klicken Sie auf die Sammlung **topItems**, und legen Sie unter **Skalierung und Einstellungen** die **Gültigkeitsdauer** auf **30 Sekunden** fest, sodass „topItems“ alle 30 Sekunden aktualisiert wird.
+2. Wählen Sie die Sammlung **topItems** aus, und legen Sie unter **Skalierung und Einstellungen** die **Gültigkeitsdauer** auf **30 Sekunden** fest, sodass „topItems“ alle 30 Sekunden aktualisiert wird.
 
    ![Gültigkeitsdauer](./media/changefeed-ecommerce-solution/time-to-live.png)
 

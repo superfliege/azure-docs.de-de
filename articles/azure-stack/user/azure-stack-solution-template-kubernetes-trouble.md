@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: fbb51d8dc3b1ea4c6b34120e8fe35474ae949cf2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 7071e22d703ab7ec3a51eff02d1694fc04cb3417
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116911"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231235"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Problembehandlung der Bereitstellung von Kubernetes in Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "49116911"
 > [!Note]  
 > Kubernetes in Azure Stack befindet sich in der Vorschauphase.
 
-Der folgende Artikel beschäftigt sich mit der Problembehandlung Ihres Kubernetes-Clusters. Sie können die Bereitstellungswarnung untersuchen und den Status Ihrer Bereitstellung anhand der für die Bereitstellung erforderlichen Elemente überprüfen. Sie müssen möglicherweise die Bereitstellungsprotokolle von Azure Stack oder den Linux-VMs erfassen, die Kubernetes hosten. Darüber hinaus müssen Sie möglicherweise mit Ihrem Azure Stack-Administrator zusammenarbeiten, um Protokolle von einem Verwaltungsendpunkt abzurufen.
+Der folgende Artikel beschäftigt sich mit der Problembehandlung Ihres Kubernetes-Clusters. Sie können die Bereitstellungswarnung untersuchen und den Status Ihrer Bereitstellung überprüfen, indem Sie die für die Bereitstellung erforderlichen Elemente untersuchen. Sie müssen möglicherweise die Bereitstellungsprotokolle von Azure Stack oder den Linux-VMs erfassen, die Kubernetes hosten. Darüber hinaus müssen Sie möglicherweise mit Ihrem Azure Stack-Administrator zusammenarbeiten, um Protokolle von einem Verwaltungsendpunkt abzurufen.
 
 ## <a name="overview-of-deployment"></a>Übersicht über die Bereitstellung
 
@@ -47,13 +47,13 @@ Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clust
     Geben Sie die Werte ein, die Sie für die Einrichtung des Kubernetes-Clusters benötigen, einschließlich:
     -  **Benutzername**: Hierbei handelt es sich um den Benutzernamen für die virtuellen Linux-Computer, die Teil des Kubernetes-Clusters und der DVM (Deployment Virtual Machine, virtueller Computer für die Bereitstellung) sind.
     -  **Öffentlicher SSH-Schlüssel**: Der Schlüssel, der für die Autorisierung bei allen Linux-Computern verwendet wird, die als Teil des Kubernetes-Clusters und der DVM erstellt werden.
-    -  **Dienstprinzipal**: Die ID, die vom Kubernetes Azure-Cloudanbieter verwendet wird. Die als Anwendungs-ID identifizierte Client-ID, wenn Sie Ihren Dienstprinzipal erstellen. 
+    -  **Dienstprinzipal**: Die ID, die vom Kubernetes Azure-Cloudanbieter verwendet wird. Die Client-ID wurde als Anwendungs-ID identifiziert, als Sie Ihren Dienstprinzipal erstellt haben. 
     -  **Clientgeheimnis**: Der Schlüssel, den Sie beim Erstellen Ihres Dienstprinzipals erstellt haben.
 
 2. Erstellen der Bereitstellungs-VM und der benutzerdefinierten Skripterweiterung.
     -  Erstellen der Linux-Bereitstellungs-VM mit dem Marketplace-Linux-Image **Ubuntu Server 16.04-LTS**.
     -  Herunterladen der benutzerdefinierten Skripterweiterung aus Marketplace und Ausführen der Skripterweiterung. Das Skript ist das **Benutzerdefinierte Skript für Linux 2.0**.
-    -  Ausführen des benutzerdefinierten DVM-Skripts. Das Skript:
+    -  Ausführen des benutzerdefinierten DVM-Skripts. Mit dem Skript wird Folgendes durchgeführt:
         1. Ruft den Katalogendpunkt aus dem Azure Resource Manager-Metadatenendpunkt ab.
         2. Ruft die Active Directory-Ressourcen-ID aus dem Azure Resource Manager-Metadatenendpunkt ab.
         3. Lädt das API-Modell für die ACS-Engine.
@@ -64,7 +64,7 @@ Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clust
 
 4. Führt das Masterskript aus.
 
-    Das Skript:
+    Mit dem Skript wird Folgendes durchgeführt:
     - Installiert etcd, Docker und Kubernetes-Ressourcen wie Kubelet. etcd ist ein verteilter Schlüsselwertspeicher, der eine Möglichkeit zum Speichern von Daten in einem Cluster aus Computern bereitstellt. Docker unterstützt reine Virtualisierungen auf Betriebssystemebene, die als Container bezeichnet werden. Kubelet ist der Knoten-Agent, der auf jedem Kubernetes-Knoten ausgeführt wird.
     - Richtet den etcd-Dienst ein.
     - Richtet den Kubelet-Dienst ein.

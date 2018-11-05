@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: 5811cb1e08ed5d02038da2a4460ae4b63580833b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ff432de59e5a5fdfeaad4c3a5361554ee32e21b0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696138"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740007"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Eindeutige Schlüssel in Azure Cosmos DB
 
@@ -130,7 +130,7 @@ JSON-Beispieldokument.
 Im folgenden Befehlsbeispiel wird die Erstellung eines eindeutigen Index für die Felder „firstName“, „lastName“ und „email“ der Auflistung des Benutzers für die MongoDB-API veranschaulicht. Dadurch wird die Eindeutigkeit für eine Kombination aus allen drei Feldern für alle Dokumente in der Auflistung sichergestellt. Für MongoDB-API-Auflistungen wird der eindeutige Index nach dem Erstellen, aber vor dem Auffüllen der Auflistung erstellt.
 
 > [!NOTE]
-> Das eindeutige Schlüsselformat für MongoDB-API-Konten unterscheidet sich von dem der SQL-API-Konten, für die der umgekehrte Schrägstrich (/) vor dem Feldnamen nicht angegeben werden muss. 
+> Das eindeutige Schlüsselformat für MongoDB-API-Konten unterscheidet sich von dem der SQL-API-Konten, für die der Schrägstrich (/) vor dem Feldnamen nicht angegeben werden muss. 
 
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )

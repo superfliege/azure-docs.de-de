@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/11/2018
 ms.author: trinadhk
-ms.openlocfilehash: 855b75652fca421df12766f7711152d1e3ca2aeb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f293f642db2bd526e761ff570ce97a33845808b7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012058"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412804"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten
 Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
@@ -34,24 +34,34 @@ Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Zuordnen der integrierten Backup-Rollen zu Aktionen der Sicherungsverwaltung
 In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die entsprechende minimale RBAC-Rolle aufgeführt, die zum Ausführen des jeweiligen Vorgangs erforderlich ist.
 
-| Verwaltungsvorgang | Minimal erforderliche RBAC-Rolle |
-| --- | --- |
-| Erstellen eines Recovery Services-Tresors | Mitwirkender der Ressourcengruppe des Tresors |
-| Aktivieren der Sicherung von virtuellen Azure-Computern | Sicherungsoperator, der für die Ressourcengruppe definiert ist, die den Tresor enthält, Mitwirkender für virtuelle Computer auf VMs |
-| Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator |
-| Wiederherstellen eines virtuellen Computers | Sicherungsoperator, Mitwirkender der Ressourcengruppe, in der die VM bereitgestellt werden soll. Bitte machen Sie sich mit VNET und Joins im Subnetz vertraut. |
-| Wiederherstellen von Datenträgern, einzelnen Dateien aus VM-Sicherungen | Sicherungsoperator, Mitwirkender für virtuelle Computer auf virtuellen Computern |
-| Erstellen einer Sicherungsrichtlinie für Azure-VM-Sicherungen | Mitwirkender für Sicherungen |
-| Ändern der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen |
-| Löschen der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen |
-| Beenden der Sicherung (mit Beibehaltung oder Löschung von Daten) für VM-Sicherungen | Mitwirkender für Sicherungen |
-| Registrieren einer lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Sicherungsoperator |
-| Löschen der registrierten lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Mitwirkender für Sicherungen |
+| Verwaltungsvorgang | Minimal erforderliche RBAC-Rolle | Bereich erforderlich |
+| --- | --- | --- |
+| Erstellen eines Recovery Services-Tresors | Mitwirkender | Ressourcengruppe mit dem Tresor |
+| Aktivieren der Sicherung von virtuellen Azure-Computern | Sicherungsoperator | Ressourcengruppe mit dem Tresor |
+| | Mitwirkender von virtuellen Computern | VM-Ressource |
+| Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator | Wiederherstellungstresorressource |
+| Wiederherstellen eines virtuellen Computers | Sicherungsoperator | Ressourcengruppe, in der der virtuelle Computer bereitgestellt wird. |
+| | Mitwirkender von virtuellen Computern | Ressourcengruppe, in der der virtuelle Computer bereitgestellt wird. |
+| Wiederherstellen von VM-Sicherung nicht verwalteter Datenträger | Sicherungsoperator | Wiederherstellungstresorressource |
+| | Mitwirkender von virtuellen Computern | VM-Ressource |
+| | Mitwirkender von Speicherkonto | Speicherkontoressource |
+| Wiederherstellen von verwalteten Datenträgern aus VM-Sicherung | Sicherungsoperator | Wiederherstellungstresorressource |
+| | Mitwirkender von virtuellen Computern | VM-Ressource |
+| | Mitwirkender von Speicherkonto | Speicherkontoressource |
+| | Mitwirkender | Die Ressourcengruppe, in der der verwaltete Datenträger wiederhergestellt wird. |
+| Wiederherstellen von einzelnen Dateien aus VM-Sicherungen | Sicherungsoperator | Wiederherstellungstresorressource |
+| | Mitwirkender von virtuellen Computern | VM-Ressource |
+| Erstellen einer Sicherungsrichtlinie für Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
+| Ändern der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
+| Löschen der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
+| Beenden der Sicherung (mit Beibehaltung oder Löschung von Daten) für VM-Sicherungen | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
+| Registrieren einer lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Sicherungsoperator | Wiederherstellungstresorressource |
+| Löschen der registrierten lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal.
 * Informationen zur Zugriffsverwaltung mit:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
-  * [Azure-CLI](../role-based-access-control/role-assignments-cli.md)
+  * [Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md)
   * [REST-API](../role-based-access-control/role-assignments-rest.md)
 * [Problembehandlung bei rollenbasierter Zugriffssteuerung:](../role-based-access-control/troubleshooting.md)Sehen Sie sich Vorschläge zur Behebung häufig auftretender Probleme an.

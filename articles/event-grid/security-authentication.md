@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/31/2018
 ms.author: babanisa
-ms.openlocfilehash: 2fd8712cbe5d34baed158a56e6f06b6235f5d4b2
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: a9bffe148339bfac89796405b771e9c2816eb0de
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068191"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741520"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid – Sicherheit und Authentifizierung 
 
@@ -37,7 +37,7 @@ Falls Sie einen anderen Typ von Endpunkt nutzen, z.B. eine auf einem HTTP-Trigge
 
 1. **ValidationCode-basierter Handshake**: Zum Zeitpunkt der Erstellung eines Ereignisabonnements sendet EventGrid per POST-Vorgang ein „Abonnementüberprüfungsereignis“ an Ihren Endpunkt. Das Schema dieses Ereignisses ähnelt den anderen Ereignissen vom Typ EventGridEvent, und der Datenteil dieses Ereignisses enthält eine `validationCode`-Eigenschaft. Nachdem Ihre Anwendung bestätigt hat, dass die Überprüfungsanforderung für ein erwartetes Ereignisabonnement bestimmt ist, muss Ihr Anwendungscode antworten, indem ein „Echo“ des Überprüfungscodes zurück an EventGrid gesendet wird. Dieser Handshakemechanismus wird in allen EventGrid-Versionen unterstützt.
 
-2. **ValidationURL-basierter Handshake (Manueller Handshake)**: In bestimmten Fällen können Sie ggf. nicht den Quellcode des Endpunkts steuern, um den ValidationCode-basierten Handshake implementieren zu können. Wenn Sie beispielsweise einen Drittanbieterdienst nutzen (z.B. [Zapier](https://zapier.com) oder [IFTTT](https://ifttt.com/)), können Sie unter Umständen nicht programmgesteuert mit dem Überprüfungscode antworten. Ab Version 2018-05-01-preview unterstützt EventGrid jetzt einen manuellen Überprüfungshandshake. Wenn Sie ein Ereignisabonnement per SDK bzw. mit Tools erstellen, für die diese neue API-Version (2018-05-01-preview) verwendet wird, sendet EventGrid im Datenteil des Abonnementüberprüfungsereignisses eine `validationUrl`-Eigenschaft. Senden Sie zum Durchführen des Handshakes einfach eine GET-Anforderung für diese URL, und zwar entweder über einen REST-Client oder Ihren Webbrowser. Die für die Überprüfung angegebene URL gilt nur für ungefähr 10 Minuten. Während dieser Zeit lautet der Bereitstellungsstatus des Ereignisabonnements `AwaitingManualAction`. Wenn Sie die manuelle Überprüfung nicht innerhalb von 10 Minuten abschließen, wird der Bereitstellungsstatus auf `Failed` eingestellt. Sie müssen das Ereignisabonnement erneut erstellen, bevor Sie versuchen, die manuelle Überprüfung durchzuführen.
+2. **ValidationURL-basierter Handshake (manueller Handshake)**: In bestimmten Fällen können Sie ggf. nicht den Quellcode des Endpunkts steuern, um den ValidationCode-basierten Handshake zu implementieren. Wenn Sie beispielsweise einen Drittanbieterdienst nutzen (z.B. [Zapier](https://zapier.com) oder [IFTTT](https://ifttt.com/)), können Sie unter Umständen nicht programmgesteuert mit dem Überprüfungscode antworten. Ab Version 2018-05-01-preview unterstützt EventGrid jetzt einen manuellen Überprüfungshandshake. Wenn Sie ein Ereignisabonnement mit einem SDK oder Tool erstellen, für die diese neue API-Version (2018-05-01-preview oder höher) verwendet wird, sendet EventGrid im Datenteil des Abonnementüberprüfungsereignisses eine `validationUrl`-Eigenschaft. Senden Sie zum Durchführen des Handshakes einfach eine GET-Anforderung für diese URL, und zwar entweder über einen REST-Client oder Ihren Webbrowser. Die für die Überprüfung angegebene URL gilt nur für ungefähr 10 Minuten. Während dieser Zeit lautet der Bereitstellungsstatus des Ereignisabonnements `AwaitingManualAction`. Wenn Sie die manuelle Überprüfung nicht innerhalb von 10 Minuten abschließen, wird der Bereitstellungsstatus auf `Failed` eingestellt. Sie müssen das Ereignisabonnement erneut erstellen, bevor Sie mit der manuellen Überprüfung beginnen.
 
 Dieser Mechanismus der manuellen Überprüfung befindet sich in der Vorschauphase. Sie müssen die [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list) für die [Azure CLI](/cli/azure/install-azure-cli) installieren, um es zu verwenden. Diese können Sie mit `az extension add --name eventgrid` installieren. Stellen Sie bei Verwendung der REST-API sicher, dass Sie `api-version=2018-05-01-preview` verwenden.
 
@@ -93,7 +93,7 @@ Wenn während der Erstellung des Ereignisabonnements eine Fehlermeldung der Art 
 
 ### <a name="event-delivery-security"></a>Sicherheit für die Ereignisbereitstellung
 
-Sie können Ihren Webhookendpunkt sichern, indem Sie der Webhook-URL beim Erstellen eines Ereignisabonnements Abfrageparameter hinzufügen. Legen Sie einen dieser Abfrageparameter als Geheimnis fest, z.B. ein [Zugriffstoken](https://en.wikipedia.org/wiki/Access_token), das der Webhook verwenden kann, um zu ermitteln, ob das Ereignis aus Event Grid stammt und gültige Berechtigungen aufweist. Event Grid nimmt diese Abfrageparameter in jede Ereignisbereitstellung an den Webhook auf.
+Sie können Ihren Webhookendpunkt sichern, indem Sie der Webhook-URL beim Erstellen eines Ereignisabonnements Abfrageparameter hinzufügen. Legen Sie einen dieser Abfrageparameter als Geheimnis fest, z. B. als ein [Zugriffstoken](https://en.wikipedia.org/wiki/Access_token). Der Webhook kann es verwenden, um zu erkennen, dass das Ereignis von Event Grid stammt und gültige Berechtigungen aufweist. Event Grid nimmt diese Abfrageparameter in jede Ereignisbereitstellung an den Webhook auf.
 
 Wenn Sie das Ereignisabonnement bearbeiten, werden die Abfrageparameter nur angezeigt und zurückgegeben, wenn der Parameter [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) in Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) verwendet wird.
 
@@ -174,11 +174,11 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ## <a name="management-access-control"></a>Verwaltungszugriffssteuerung
 
-Azure Event Grid bietet die Möglichkeit, den Umfang zu steuern, in dem unterschiedliche Benutzer Zugriff auf verschiedene Verwaltungsvorgänge erhalten, z.B. Auflisten und Erstellen von Ereignisabonnements und Generieren von Schlüsseln. Event Grid nutzt die rollenbasierte Zugriffsüberprüfung (Role Based Access Check, RBAC) von Azure.
+Azure Event Grid bietet die Möglichkeit, den Umfang zu steuern, in dem unterschiedliche Benutzer Zugriff auf verschiedene Verwaltungsvorgänge erhalten, z.B. Auflisten und Erstellen von Ereignisabonnements und Generieren von Schlüsseln. Event Grid nutzt die rollenbasierte Zugriffsüberprüfung (Role Based Access Control, RBAC) von Azure.
 
 ### <a name="operation-types"></a>Vorgangstypen
 
-Azure Event Grid unterstützt die folgenden Aktionen:
+Event Grid unterstützt die folgenden Aktionen:
 
 * Microsoft.EventGrid/*/read
 * Microsoft.EventGrid/*/write
@@ -187,13 +187,17 @@ Azure Event Grid unterstützt die folgenden Aktionen:
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-Die letzten drei Vorgänge geben potenziell geheime Informationen zurück, die aus normalen Lesevorgängen herausgefiltert werden. Es empfiehlt sich, den Zugriff auf diese Vorgänge einzuschränken. Benutzerdefinierte Rollen können mit [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md), der [Azure-Befehlszeilenschnittstelle (CLI)](../role-based-access-control/role-assignments-cli.md) und der [REST-API](../role-based-access-control/role-assignments-rest.md) erstellt werden.
+Die letzten drei Vorgänge geben potenziell geheime Informationen zurück, die aus normalen Lesevorgängen herausgefiltert werden. Es empfiehlt sich, den Zugriff auf diese Vorgänge einzuschränken. 
 
-### <a name="enforcing-role-based-access-check-rbac"></a>Erzwingen der rollenbasierten Zugriffsüberprüfung (Role Based Access Check, RBAC)
+### <a name="built-in-roles"></a>Integrierte Rollen
 
-Gehen Sie folgendermaßen vor, um RBAC für verschiedene Benutzer zu erzwingen:
+Event Grid stellt zwei integrierte Rollen zum Verwalten von Ereignisabonnements bereit. Diese Rollen sind `EventSubscription Contributor (Preview)` und `EventSubscription Reader (Preview)`. Sie sind bei der Implementierung von Ereignisdomänen wichtig. Weitere Informationen zu den zulässigen Aktionen finden Sie unter [Ereignisdomäne: Zugriffsverwaltung](event-domains.md#access-management).
 
-#### <a name="create-a-custom-role-definition-file-json"></a>Erstellen einer benutzerdefinierten Rollendefinitionsdatei (JSON)
+Sie können [diese Rollen einem Benutzer oder Gruppen zuweisen](../role-based-access-control/quickstart-assign-role-user-portal.md).
+
+### <a name="custom-roles"></a>Benutzerdefinierte Rollen
+
+Wenn Sie Berechtigungen angeben müssen, die sich von den integrierten Rollen unterscheiden, können Sie benutzerdefinierte Rollen erstellen.
 
 Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutzern das Durchführen unterschiedlicher Aktionen ermöglichen.
 
@@ -201,18 +205,18 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
 
 ```json
 {
-  "Name": "Event grid read only role",
-  "Id": "7C0B6B59-A278-4B62-BA19-411B70753856",
-  "IsCustom": true,
-  "Description": "Event grid read only role",
-  "Actions": [
-    "Microsoft.EventGrid/*/read"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription Id>"
-  ]
+  "Name": "Event grid read only role",
+  "Id": "7C0B6B59-A278-4B62-BA19-411B70753856",
+  "IsCustom": true,
+  "Description": "Event grid read only role",
+  "Actions": [
+    "Microsoft.EventGrid/*/read"
+  ],
+  "NotActions": [
+  ],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription Id>"
+  ]
 }
 ```
 
@@ -220,22 +224,22 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
 
 ```json
 {
-  "Name": "Event grid No Delete Listkeys role",
-  "Id": "B9170838-5F9D-4103-A1DE-60496F7C9174",
-  "IsCustom": true,
-  "Description": "Event grid No Delete Listkeys role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action"
-  ],
-  "NotActions": [
-    "Microsoft.EventGrid/*/delete"
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
+  "Name": "Event grid No Delete Listkeys role",
+  "Id": "B9170838-5F9D-4103-A1DE-60496F7C9174",
+  "IsCustom": true,
+  "Description": "Event grid No Delete Listkeys role",
+  "Actions": [
+    "Microsoft.EventGrid/*/write",
+    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
+    "Microsoft.EventGrid/topics/listkeys/action",
+    "Microsoft.EventGrid/topics/regenerateKey/action"
+  ],
+  "NotActions": [
+    "Microsoft.EventGrid/*/delete"
+  ],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription id>"
+  ]
 }
 ```
 
@@ -243,37 +247,25 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
 
 ```json
 {
-  "Name": "Event grid contributor role",
-  "Id": "4BA6FB33-2955-491B-A74F-53C9126C9514",
-  "IsCustom": true,
-  "Description": "Event grid contributor role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/*/delete",
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-  ],
-  "NotActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
+  "Name": "Event grid contributor role",
+  "Id": "4BA6FB33-2955-491B-A74F-53C9126C9514",
+  "IsCustom": true,
+  "Description": "Event grid contributor role",
+  "Actions": [
+    "Microsoft.EventGrid/*/write",
+    "Microsoft.EventGrid/*/delete",
+    "Microsoft.EventGrid/topics/listkeys/action",
+    "Microsoft.EventGrid/topics/regenerateKey/action",
+    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription id>"
+  ]
 }
 ```
 
-#### <a name="create-and-assign-custom-role-with-azure-cli"></a>Erstellen und Zuweisen einer benutzerdefinierten Rolle mit Azure CLI
-
-So erstellen Sie eine benutzerdefinierte Rolle:
-
-```azurecli
-az role definition create --role-definition @<file path>
-```
-
-Verwenden Sie Folgendes zum Zuweisen der Rolle zu einem Benutzer:
-
-```azurecli
-az role assignment create --assignee <user name> --role "<name of role>"
-```
+Benutzerdefinierte Rollen können mit [PowerShell](../role-based-access-control/custom-roles-powershell.md), der [Azure CLI](../role-based-access-control/custom-roles-cli.md) oder der [REST-API](../role-based-access-control/custom-roles-rest.md) erstellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

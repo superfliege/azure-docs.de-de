@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: 1775e1810a164bfbdd1cddea9360674592cf446c
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/24/2018
+ms.openlocfilehash: b4736f47d066d1e2b8e5c7115cb14abeb1cc566a
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857532"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137224"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank
 
@@ -172,6 +172,9 @@ Dieses Beispiel zeigt, wie Sie eine LTR-Sicherung aus der Liste der Sicherungen 
 $ltrBackup = $ltrBackups[0]
 Remove-AzureRmSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
+> [!IMPORTANT]
+> Das Löschen der LTR-Sicherung kann nicht rückgängig gemacht werden. Sie können Benachrichtigungen zu jedem Löschvorgang in Azure Monitor einrichten, indem Sie nach dem Vorgang „Löscht eine Sicherung zur langfristigen Aufbewahrung“ filtern. Das Aktivitätsprotokoll enthält Informationen dazu, wer die Anforderung vorgenommen hat und wann sie erfolgt ist. Ausführliche Anweisungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-create-activity-log-alerts-with-resource-manager-template.md).
+>
 
 ### <a name="restore-from-ltr-backups"></a>Wiederherstellen von LTR-Sicherungen
 Dieses Beispiel zeigt, wie Sie eine LTR-Sicherung wiederherstellen. Beachten Sie, dass sich diese Schnittstelle nicht geändert hat, der Parameter für die Ressourcen-ID jetzt jedoch die Ressourcen-ID der LTR-Sicherung erfordert. 

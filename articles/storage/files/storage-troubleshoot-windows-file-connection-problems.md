@@ -6,19 +6,19 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/30/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 59eb0ddad72f5e54a23a97a260477f84019eb62c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5e730e52d55f6c8c2dd02f69e3efa67017af152b
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386340"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242975"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
-Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) verwenden, um sicherzustellen, dass die Windows-Clientumgebung über richtige erforderliche Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen. Sie erhalten diese Informationen auch unter [Problembehandlung für Azure-Dateifreigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Hier finden Sie Schritte zum Beheben von Problemen mit dem Verbinden, Zuordnen und Einbinden von Azure-Dateifreigaben.
+Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)  verwenden, um sicherzustellen, dass die Windows-Clientumgebung über die richtigen erforderlichen Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen. Sie erhalten diese Informationen auch unter [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Hier finden Sie Schritte zum Beheben von Problemen mit dem Verbinden, Zuordnen und Einbinden von Azure Files-Freigaben.
 
 
 <a id="error53-67-87"></a>
@@ -189,6 +189,24 @@ Um eine Datei über das Netzwerk zu kopieren, müssen Sie sie zunächst entschl�
   - Value = 1
 
 Beachten Sie jedoch, dass sich das Festlegen des Registrierungsschlüssels auf alle Kopiervorgänge von Netzwerkfreigaben auswirkt.
+
+## <a name="slow-enumeration-of-files-and-folders"></a>Langsame Enumeration von Dateien und Ordnern
+
+### <a name="cause"></a>Ursache
+
+Dieses Problem kann auftreten, wenn auf dem Clientcomputer nicht ausreichend Cache für große Verzeichnisse vorhanden ist.
+
+### <a name="solution"></a>Lösung
+
+Um dieses Problem zu beheben, passen Sie den Registrierungswert **DirectoryCacheEntrySizeMax** an, um das Zwischenspeichern größerer Verzeichnisauflistungen auf dem Clientcomputer zu ermöglichen:
+
+- Speicherort: HKLM\System\CCS\Services\Lanmanworkstation\Parameters
+- Wert: DirectoryCacheEntrySizeMax 
+- Werttyp: DWORD
+ 
+ 
+Sie können den Wert beispielsweise auf 0x100000 festlegen und überprüfen, ob sich die Leistung verbessert.
+
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

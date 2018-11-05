@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: fb42f9920ce173b25cbc16725cf1f9dfd96fcc9e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 5241020b1db3797891ae13da54cc9225bbd4619b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853452"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741266"
 ---
 # <a name="duplicate-detection"></a>Duplikaterkennung
 
@@ -41,6 +41,9 @@ Die *MessageId* kann immer auch eine GUID sein, aber das Verankern des Bezeichne
 Im Portal wird das Feature während der Erstellung der Entität mit dem Kontrollkästchen **Duplikaterkennung aktivieren** aktiviert, das standardmäßig deaktiviert ist. Die Einstellung für das Erstellen neuer Themen funktioniert genauso.
 
 ![][1]
+
+> [!IMPORTANT]
+> Sie können die Duplikaterkennung nach der Erstellung der Warteschlange nicht aktivieren/deaktivieren. Dies ist nur zum Zeitpunkt der Erstellung der Warteschlange möglich. 
 
 Programmgesteuert legen Sie das Flag mit der [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection)-Eigenschaft im vollständigen Framework der .NET-API fest. Mit der Azure Resource Manager-API wird der Wert mit der [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values)-Eigenschaft festgelegt.
 

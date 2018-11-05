@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 9250e38eadb9d9b1e8bf0c09fa1a9a165e5e69f1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 5a3d63637d7b680a012057b92546ccde87ac73de
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886261"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233360"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Hinzufügen von Kubernetes zum Azure Stack-Marketplace
 
@@ -72,9 +72,10 @@ Fügen Sie dem Marketplace das folgende Ubuntu-Serverimage hinzu:
 
 1. Geben Sie `UbuntuServer` ein.
 
-1. Wählen Sie die neueste Version des Servers mit dem folgenden Profil aus:
+1. Wählen Sie die neueste Version des Servers aus. Überprüfen Sie die vollständige Version, und stellen Sie sicher, dass Sie über die neueste Version verfügen:
     - **Herausgeber:** Canonical
     - **Angebot:** UbuntuServer
+    - **Version**: 16.04.201806120
     - **SKU:** 16.04-LTS
 
 1. Wählen Sie **Herunterladen** aus.

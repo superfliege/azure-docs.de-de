@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 5ebddbf1fea49fbf868d15a544a18e5a8c6369fd
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: ec4d8ef43510c07e73ab18de227176d3c282b8e1
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078306"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740840"
 ---
 # <a name="azure-stack-capacity-planner"></a>Azure Stack Capacity Planner
 Der Azure Stack-Kapazitätsplaner ist eine Kalkulationstabelle, die für die Ressourcenplanung von Azure Stack verwendet wird. Der Kapazitätsplaner bietet Ihnen die Möglichkeit, verschiedene Zuordnungen von Computeressourcen zu entwerfen und herauszufinden, wie diese für eine Auswahl von Hardwareangeboten passen würden. Detaillierte Anweisungen für die Verwendung der Azure Stack-Berechnung finden Sie unten.
@@ -56,7 +56,7 @@ Dieses Tool bietet zwei Methoden für die Zuordnung von VM-Ressourcen: entweder 
 ## <a name="definebyvmfootprint-instructions"></a>DefineByVMFootprint-Anweisungen
 Um ein Modell mit einer einzigen Sammlung von VMs unterschiedlicher Größe und Anzahl zu erstellen, wählen Sie die Registerkarte „DefineByVMFootprint“ aus und befolgen dann die aufgeführten Schritte.
 
-1. Verwenden Sie in der oberen rechten Ecke dieses Arbeitsblatts die bereitgestellten Pulldown-Listenfeldsteuerelemente, um eine anfängliche Anzahl von Servern (zwischen 4 und 12) auszuwählen, die Sie in jedem Hardwaresystem (SKU) installieren möchten. Diese Anzahl von Servern kann während des Modellierungsprozesses jederzeit geändert werden, um zu sehen, wie sich dies auf die insgesamt verfügbaren Ressourcen für Ihr Ressourcenzuordnungsmodell auswirkt.
+1. Verwenden Sie in der oberen rechten Ecke dieses Arbeitsblatts die bereitgestellten Pulldown-Listenfeldsteuerelemente, um eine anfängliche Anzahl von Servern (zwischen 4 und 16) auszuwählen, die Sie in jedem Hardwaresystem (SKU) installieren möchten. Diese Anzahl von Servern kann während des Modellierungsprozesses jederzeit geändert werden, um zu sehen, wie sich dies auf die insgesamt verfügbaren Ressourcen für Ihr Ressourcenzuordnungsmodell auswirkt.
 2. Wenn Sie verschiedene VM-Ressourcenzuordnungen für eine bestimmte Hardwarekonfiguration modellieren möchten, finden Sie das blaue Pulldownlistenfeld direkt unter der Bezeichnung „Current SKU“ (Aktuelle SKU) in der oberen rechten Ecke der Seite. Öffnen Sie dieses Listenfeld, und wählen Sie die gewünschte Hardware-SKU aus.
 3. Sie können nun damit beginnen, Ihrem Modell virtuelle Computer mit verschiedener Größe hinzuzufügen. Um einen bestimmten VM-Typ einzuschließen, geben Sie einen Mengenwert in das blau umrandete Feld links neben diesem VM-Eintrag ein.
 
@@ -73,7 +73,7 @@ Um ein Modell mit einer Sammlung von Azure Stack-Workloads zu erstellen, wählen
 > [!TIP]
 > Um die Größe des bereitgestellten Speichers für eine Azure Stack-VM zu ändern, beachten Sie den Hinweis aus Schritt 3 im vorherigen Abschnitt.
 
-1. Verwenden Sie in der oberen rechten Ecke dieser Seite die bereitgestellten Pulldown-Listenfeldsteuerelemente, um eine anfängliche Anzahl von Servern (zwischen 4 und 12) auszuwählen, die Sie in jedem Hardwaresystem (SKU) installieren möchten.
+1. Verwenden Sie in der oberen rechten Ecke dieser Seite die bereitgestellten Pulldown-Listenfeldsteuerelemente, um eine anfängliche Anzahl von Servern (zwischen 4 und 16) auszuwählen, die Sie in jedem Hardwaresystem (SKU) installieren möchten.
 2. Wenn Sie verschiedene VM-Ressourcenzuordnungen für eine bestimmte Hardwarekonfiguration modellieren möchten, finden Sie das blaue Pulldownlistenfeld direkt unter der Bezeichnung „Current SKU“ (Aktuelle SKU) in der oberen rechten Ecke der Seite. Öffnen Sie dieses Listenfeld, und wählen Sie die gewünschte Hardware-SKU aus.
 3. Wählen Sie auf der Seite „DefineByVMFootprint“ die passende Speichergröße für jede Ihrer gewünschten Azure Stack-VMs aus, wie oben in Schritt drei der Anweisungen für „DefineByVMFootprint“ beschrieben. Die Speichergröße pro virtuellem Computer wird auf dem Blatt „DefineByVMFootprint“ definiert.
 4. Beginnen Sie oben links auf der Seite „DefineByWorkloadFootprint“, und erstellen Sie Konfigurationen für bis zu sechs verschiedene Workloadtypen, indem Sie die Menge jedes VM-Typs eingeben, der in dieser Workload enthalten ist. Dies erfolgt durch Platzieren von numerischen Werten in der Spalte direkt unterhalb des Namens der Workload. Die Workloadnamen können geändert werden, um die Art der Workloads widerzuspiegeln, die von dieser speziellen Konfiguration unterstützt werden.

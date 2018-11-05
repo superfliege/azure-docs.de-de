@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 251d1a187c2a6742c361349274fd1e0bb1e41525
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 2dc81a96f1e83c3a6b1ddee92f57b2f0bae4196d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817148"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248914"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -146,6 +146,8 @@ Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schü
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>Freigeben der selbstgehosteten Integration Runtime für mehrere Data Factorys
 
 Sie können eine vorhandene selbstgehostete Integration Runtime-Infrastruktur wiederverwenden, die Sie bereits in einer Data Factory eingerichtet haben. Dies ermöglicht Ihnen das Erstellen einer *verknüpften selbstgehosteten Integration Runtime* in einer anderen Factory durch Verweisen auf eine vorhandene selbstgehostete IR (freigegeben).
+
+Informationen zum Freigeben einer selbstgehosteten Integration Runtime mit PowerShell finden Sie unter [Erstellen einer freigegebenen selbstgehosteten Integration Runtime in Azure Data Factory mit PowerShell](create-shared-self-hosted-integration-runtime-powershell.md).
 
 ### <a name="terminology"></a>Begriff
 

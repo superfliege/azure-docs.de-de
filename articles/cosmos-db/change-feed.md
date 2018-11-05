@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: b6d05c5e9bc59df9df7ef8840b70ab027b6e2f74
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 09f827e8784fe2a97c587524d70baf76ae4458ba
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269495"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741860"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
 
@@ -77,7 +77,7 @@ Die folgende Abbildung zeigt, wie Lambda-Pipelines, die sowohl aufnehmen als auc
 In Ihren [serverlosen](http://azure.com/serverless) Web- und mobilen Apps können Sie auch Ereignisse wie Änderungen am Profil, an den Voreinstellungen oder am Speicherort des Kunden nachverfolgen, um bestimmte Aktionen wie das Senden von Pushbenachrichtigungen an deren Geräte mit [Azure Functions](#azure-functions) auszulösen. Wenn Sie Azure Cosmos DB zum Erstellen eines Spiels verwenden, können Sie den Änderungsfeed beispielsweise verwenden, um in Echtzeit Bestenlisten anhand der Ergebnisse von abgeschlossenen Spiele zu implementieren.
 
 <a id="azure-functions"></a>
-## <a name="using-azure-functions"></a>Verwenden von Azure Functions 
+## <a name="using-azure-functions"></a>Verwenden von Azure Functions 
 
 Wenn Sie Azure Functions verwenden, ist die einfachste Möglichkeit zum Herstellen einer Verbindung mit einem Azure Cosmos DB-Änderungsfeed das Hinzufügen eines Azure Cosmos DB-Triggers zu Ihrer Azure Functions-App. Wenn Sie einen Azure Cosmos DB-Trigger in einer Azure Functions-App erstellen, wählen Sie die Azure Cosmos DB-Sammlung aus, mit der eine Verbindung hergestellt werden soll, und die Funktion wird immer dann ausgelöst, wenn eine Änderung der Sammlung erfolgt ist. 
 
@@ -114,9 +114,9 @@ Dieser Abschnitt führt Sie durch das Arbeiten mit einem Änderungsfeed mithilfe
     ```csharp
     FeedResponse pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
         collectionUri,
-        new FeedOptions
-            {RequestContinuation = pkRangesResponseContinuation });
-     
+        new FeedOptions
+            {RequestContinuation = pkRangesResponseContinuation });
+     
     partitionKeyRanges.AddRange(pkRangesResponse);
     pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     ```
@@ -125,29 +125,29 @@ Dieser Abschnitt führt Sie durch das Arbeiten mit einem Änderungsfeed mithilfe
 
     ```csharp
     foreach (PartitionKeyRange pkRange in partitionKeyRanges){
-        string continuation = null;
-        checkpoints.TryGetValue(pkRange.Id, out continuation);
-        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
-            collectionUri,
-            new ChangeFeedOptions
-            {
-                PartitionKeyRangeId = pkRange.Id,
-                StartFromBeginning = true,
-                RequestContinuation = continuation,
-                MaxItemCount = -1,
-                // Set reading time: only show change feed results modified since StartTime
-                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
-            });
-        while (query.HasMoreResults)
-            {
-                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
+        string continuation = null;
+        checkpoints.TryGetValue(pkRange.Id, out continuation);
+        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
+            collectionUri,
+            new ChangeFeedOptions
+            {
+                PartitionKeyRangeId = pkRange.Id,
+                StartFromBeginning = true,
+                RequestContinuation = continuation,
+                MaxItemCount = -1,
+                // Set reading time: only show change feed results modified since StartTime
+                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
+            });
+        while (query.HasMoreResults)
+            {
+                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
     
-                foreach (dynamic changedDocument in readChangesResponse)
-                    {
-                         Console.WriteLine("document: {0}", changedDocument);
-                    }
-                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
-            }
+                foreach (dynamic changedDocument in readChangesResponse)
+                    {
+                         Console.WriteLine("document: {0}", changedDocument);
+                    }
+                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
+            }
     }
     ```
 
@@ -165,13 +165,13 @@ Im Code von Schritt 4 oben enthält **ResponseContinuation** in der letzten Zeil
 So verwaltet Ihr Prüfpunktarray die LSN für jede Partition. Aber wenn Sie nicht mit Partitionen, Prüfpunkten, LSN, Startzeit usw. arbeiten möchten, steht Ihnen als einfachere Option die Verwendung der Change Feed Processor-Bibliothek zur Verfügung.
 
 <a id="change-feed-processor"></a>
-## <a name="using-the-change-feed-processor-library"></a>Verwenden der Change Feed Processor-Bibliothek 
+## <a name="using-the-change-feed-processor-library"></a>Verwenden der Change Feed Processor-Bibliothek 
 
 Mit der [Change Feed Processor-Bibliothek von Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) können Sie die Ereignisverarbeitung mühelos auf mehrere Consumer verteilen. Diese Bibliothek vereinfacht das Partitionen übergreifende Lesen von Änderungen und die Parallelverarbeitung mehrerer Threads.
 
 Der wichtigste Vorteil der Change Feed Processor-Bibliothek ist, dass Sie nicht jede Partition und jedes Fortsetzungstoken verwalten und nicht jede Sammlung manuell abrufen müssen.
 
-Die Change Feed Processor-Bibliothek vereinfacht das Partitionen übergreifende Lesen von Änderungen und die Parallelverarbeitung mehrerer Threads.  Sie verwaltet automatisch das Partitionen übergreifende Lesen von Änderungen mit einem Leasemechanismus. Wenn Sie zwei Clients starten, die die Change Feed Processor-Bibliothek verwenden, teilen sie die Arbeit untereinander auf, wie die folgende Abbildung zeigt. Wenn Sie die Zahl der Clients erhöhen, teilen sie weiterhin die Arbeit untereinander auf.
+Die Change Feed Processor-Bibliothek vereinfacht das Partitionen übergreifende Lesen von Änderungen und die Parallelverarbeitung mehrerer Threads.  Sie verwaltet automatisch das Partitionen übergreifende Lesen von Änderungen mit einem Leasemechanismus. Wenn Sie zwei Clients starten, die die Change Feed Processor-Bibliothek verwenden, teilen sie die Arbeit untereinander auf, wie die folgende Abbildung zeigt. Wenn Sie die Zahl der Clients erhöhen, teilen sie weiterhin die Arbeit untereinander auf.
 
 ![Verteilte Verarbeitung des Azure Cosmos DB-Änderungsfeeds](./media/change-feed/change-feed-output.png)
 
@@ -433,7 +433,7 @@ Wenn Sie mehrere Azure-Funktionen zum Lesen des gleichen Änderungsfeeds erstell
 
 ### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>Mein Dokument wird jede Sekunde aktualisiert, ich erhalte aber beim Lauschen am Änderungsfeed nicht alle Änderungen in Azure Functions.
 
-Azure Functions fragt den Änderungsfeed alle 5 Sekunden ab, daher gehen alle Änderungen verloren, die zwischen den 5-Sekunden-Intervallen liegen. Azure Cosmos DB speichert alle 5 Sekunden nur eine Version, Sie erhalten also die fünfte Änderung am Dokument. Wenn Sie allerdings unter 5 Sekunden bleiben und den Änderungsfeed jede Sekunde abfragen möchten, können Sie die Abrufzeit „feedPollTime“ konfigurieren. Weitere Informationen dazu finden Sie unter [Azure Cosmos DB-Bindungen](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Sie ist in Millisekunden mit dem Standardwert 5000 definiert. Intervalle unterhalb einer Sekunde sind möglich, aber nicht ratsam, da die CPU-Belastung dadurch deutlich ansteigt.
+Azure Functions fragt den Änderungsfeed alle 5 Sekunden ab, daher gehen alle Änderungen verloren, die zwischen den 5-Sekunden-Intervallen liegen. Azure Cosmos DB speichert alle 5 Sekunden nur eine Version, Sie erhalten also die fünfte Änderung am Dokument. Wenn Sie allerdings unter 5 Sekunden bleiben und den Änderungsfeed jede Sekunde abfragen möchten, können Sie die Abrufzeit „feedPollDelay“ konfigurieren. Weitere Informationen dazu finden Sie unter [Azure Cosmos DB-Bindungen](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Sie ist in Millisekunden mit dem Standardwert 5000 definiert. Intervalle unterhalb einer Sekunde sind möglich, aber nicht ratsam, da die CPU-Belastung dadurch deutlich ansteigt.
 
 ### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Ich habe ein Dokument in die Mongo-API-Sammlung eingefügt, aber wenn ich das Dokument im Änderungsfeed abrufe, hat es einen anderen ID-Wert. Was ist hier schiefgelaufen?
 
