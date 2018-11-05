@@ -143,7 +143,7 @@ Wenn die Workerrolle nicht online geschaltet wird, während der Vorgang bei der 
    ```
 
 * Stellen Sie sicher, dass der Servername nicht mit **https://** beginnt.
-* Achten Sie darauf, dass Ihr Azure SQL-Datenbankserver Verbindungen mit Azure-Diensten zulässt. Öffnen Sie dazu Ihre Datenbak im Portal, und stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** auf **Ein**** festgelegt ist.
+* Achten Sie darauf, dass Ihr Azure SQL-Datenbankserver Verbindungen mit Azure-Diensten zulässt. Öffnen Sie dazu Ihre Datenbak im Portal, und stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** auf **Ein** ** festgelegt ist.
 
 ## <a name="test-the-service-deployment"></a>Testen der Dienstbereitstellung
 ### <a name="connect-with-a-web-browser"></a>Herstellen einer Verbindung mit einem Webbrowser
