@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8852fc75658298a2c6887d8fef154d5a0b59affd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 482faaea7089e095da13a2bae5f5937e20d50616
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159906"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246751"
 ---
 # <a name="extended-events-in-sql-database"></a>Erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -32,15 +32,15 @@ In diesem Thema wird erläutert, wie sich die Implementierung erweiterter Ereign
 
 Weitere Informationen zu erweiterten Ereignissen für Azure SQL-Datenbank und Microsoft SQL Server finden Sie unter:
 
-- [Schnellstart: Erweiterte Ereignisse in Microsoft SQL Server](http://msdn.microsoft.com/library/mt733217.aspx)
-- [Erweiterte Ereignisse](http://msdn.microsoft.com/library/bb630282.aspx)
+- [Schnellstart: Erweiterte Ereignisse in Microsoft SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Erweiterte Ereignisse](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Dieses Thema setzt voraus, dass Sie mit Folgendem grundlegend vertraut sind:
 
 - [Azure SQL-Datenbankdienst](https://azure.microsoft.com/services/sql-database/).
-- [Erweiterte Ereignisse](http://msdn.microsoft.com/library/bb630282.aspx) in Microsoft SQL Server.
+- [Erweiterte Ereignisse](https://msdn.microsoft.com/library/bb630282.aspx) in Microsoft SQL Server.
 
 - Der größte Teil unserer Dokumentation zu erweiterten Ereignissen gilt für SQL Server und SQL-Datenbank.
 
@@ -69,10 +69,10 @@ In verwandten Themen werden zwei Codebeispiele geboten:
 ## <a name="transact-sql-differences"></a>Transact-SQL-Unterschiede
 
 
-- Beim Ausführen des [CREATE EVENT SESSION](http://msdn.microsoft.com/library/bb677289.aspx) -Befehls für SQL Server verwenden Sie die **ON SERVER** -Klausel. Doch bei SQL-Datenbank verwenden Sie stattdessen die **ON DATABASE** -Klausel.
+- Beim Ausführen des [CREATE EVENT SESSION](https://msdn.microsoft.com/library/bb677289.aspx) -Befehls für SQL Server verwenden Sie die **ON SERVER** -Klausel. Doch bei SQL-Datenbank verwenden Sie stattdessen die **ON DATABASE** -Klausel.
 
 
-- Die **ON DATABASE**-Klausel gilt auch für die Transact-SQL-Befehle [ALTER EVENT SESSION](http://msdn.microsoft.com/library/bb630368.aspx) und [DROP EVENT SESSION](http://msdn.microsoft.com/library/bb630257.aspx).
+- Die **ON DATABASE**-Klausel gilt auch für die Transact-SQL-Befehle [ALTER EVENT SESSION](https://msdn.microsoft.com/library/bb630368.aspx) und [DROP EVENT SESSION](https://msdn.microsoft.com/library/bb630257.aspx).
 
 
 - Eine bewährte Methode ist das Einschließen der Ereignissitzungsoption von **STARTUP_STATE = ON** in Ihre Anweisungen **CREATE EVENT SESSION** oder **ALTER EVENT SESSION**.
@@ -80,7 +80,7 @@ In verwandten Themen werden zwei Codebeispiele geboten:
 
 ## <a name="new-catalog-views"></a>Neue Katalogsichten
 
-Das Feature "Erweiterte Ereignisse" wird von mehreren [Katalogsichten](http://msdn.microsoft.com/library/ms174365.aspx)unterstützt. Katalogsichten informieren Sie über *Metadaten oder Definitionen* von vom Benutzer erstellten Ereignissitzungen in der aktuellen Datenbank. Die Sichten geben keine Informationen zu Instanzen aktiver Ereignissitzungen zurück.
+Das Feature "Erweiterte Ereignisse" wird von mehreren [Katalogsichten](https://msdn.microsoft.com/library/ms174365.aspx)unterstützt. Katalogsichten informieren Sie über *Metadaten oder Definitionen* von vom Benutzer erstellten Ereignissitzungen in der aktuellen Datenbank. Die Sichten geben keine Informationen zu Instanzen aktiver Ereignissitzungen zurück.
 
 | Name der<br/>Katalogsicht | BESCHREIBUNG |
 |:--- |:--- |
@@ -92,9 +92,9 @@ Das Feature "Erweiterte Ereignisse" wird von mehreren [Katalogsichten](http://ms
 
 In Microsoft SQL Server haben ähnliche Katalogsichten Namen, die *.server\_* anstelle von *.database\_* enthalten. Das Namensmuster entspricht **sys.server_event_%**.
 
-## <a name="new-dynamic-management-views-dmvshttpmsdnmicrosoftcomlibraryms188754aspx"></a>Neue dynamische Verwaltungssichten [(DMVs)](http://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Neue dynamische Verwaltungssichten [(DMVs)](https://msdn.microsoft.com/library/ms188754.aspx)
 
-Azure SQL-Datenbank hat [dynamische Verwaltungsansichten (DMVs)](http://msdn.microsoft.com/library/bb677293.aspx) , die erweiterte Ereignisse unterstützen. DMVs informieren Sie über *aktive* Ereignissitzungen.
+Azure SQL-Datenbank hat [dynamische Verwaltungsansichten (DMVs)](https://msdn.microsoft.com/library/bb677293.aspx) , die erweiterte Ereignisse unterstützen. DMVs informieren Sie über *aktive* Ereignissitzungen.
 
 | DMV-Name | BESCHREIBUNG |
 |:--- |:--- |
@@ -149,11 +149,11 @@ SELECT
 
 Es folgen Ziele, die Ergebnisse aus Ihren Ereignissitzungen für SQL-Datenbank erfassen können:
 
-- [Ringpuffer](http://msdn.microsoft.com/library/ff878182.aspx) : Enthält für kurze Zeit Ereignisdaten im Arbeitsspeicher.
-- [Ereigniszähler](http://msdn.microsoft.com/library/ff878025.aspx) : Zählt alle Ereignisse, die während einer Sitzung mit erweiterter Ereignissen auftreten.
-- [Ereignisdatei](http://msdn.microsoft.com/library/ff878115.aspx) : Schreibt vollständige Puffer in einen Azure Storage-Container.
+- [Ringpuffer](https://msdn.microsoft.com/library/ff878182.aspx) : Enthält für kurze Zeit Ereignisdaten im Arbeitsspeicher.
+- [Ereigniszähler](https://msdn.microsoft.com/library/ff878025.aspx) : Zählt alle Ereignisse, die während einer Sitzung mit erweiterter Ereignissen auftreten.
+- [Ereignisdatei](https://msdn.microsoft.com/library/ff878115.aspx) : Schreibt vollständige Puffer in einen Azure Storage-Container.
 
-Die [ETW](http://msdn.microsoft.com/library/ms751538.aspx) -API (Event Tracing for Windows) ist für erweiterte Ereignisse in SQL-Datenbank nicht verfügbar.
+Die [ETW](https://msdn.microsoft.com/library/ms751538.aspx) -API (Event Tracing for Windows) ist für erweiterte Ereignisse in SQL-Datenbank nicht verfügbar.
 
 ## <a name="restrictions"></a>Einschränkungen
 
@@ -195,8 +195,8 @@ Beim Ziel **Ereignisdatei** können Netzwerklatenz oder -fehler auftreten, währ
 - [Azure Storage-Cmdlets](https://docs.microsoft.com/powershell/module/Azure.Storage)
 - [Verwenden von Azure PowerShell mit Azure Storage](../storage/common/storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
 - [Verwenden des Blob-Speichers mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-- [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
-- [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
+- [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias' Blogbeiträge zu erweiterten Ereignissen in Microsoft SQL Server](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
@@ -209,6 +209,6 @@ Weitere Themen mit Codebeispielen für erweiterte Ereignisse finden Sie unter de
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
 -->

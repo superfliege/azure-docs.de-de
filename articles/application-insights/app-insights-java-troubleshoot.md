@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 26899ea62b8caa872b6c99b94976c87f84ba7176
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b74f40c093ca4cc62330de321ea2b53315b903db
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091122"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247363"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für Java
 Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights in Java][java]? Hier sind einige Tipps.
@@ -43,7 +43,7 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 * Stellen Sie sicher, dass Sie dieselbe Version von Application Insights-Kern, Web-, Agent- und Protokollierungsappender verwenden, um Versionskonflikte zu vermeiden.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Zuvor wurden Daten angezeigt, jetzt jedoch nicht mehr.
-* Überprüfen Sie den [Statusblog](http://blogs.msdn.com/b/applicationinsights-status/).
+* Überprüfen Sie den [Statusblog](https://blogs.msdn.com/b/applicationinsights-status/).
 * Ist Ihr monatliches Kontingent an Datenpunkten erreicht? Öffnen Sie "Einstellungen – Kontingente und Preisübersicht", um es herauszufinden. Sie können in diesem Fall Ihren Plan aktualisieren oder zusätzliche Kapazität erwerben. Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/application-insights/).
 * Haben Sie Ihr SDK vor Kurzem aktualisiert? Stellen Sie sicher, dass nur eindeutige SDK-JARs im Projektverzeichnis vorhanden sind. Es dürfen keine zwei unterschiedlichen SDK-Versionen vorhanden sein.
 * Sehen Sie die richtige AI-Ressource? Stimmen Sie den iKey Ihrer Anwendung mit der Ressource ab, wo Sie Telemetriedaten erwarten. Sie sollten identisch sein.
@@ -157,7 +157,7 @@ Application Insights verwendet `org.apache.http`. Dies wird innerhalb der Kern-J
 * [Erfassen von Diagnoseprotokollen][javalogs]
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-* [Stapelüberlauf](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Problem in GitHub melden](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->

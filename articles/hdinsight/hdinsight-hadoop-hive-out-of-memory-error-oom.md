@@ -3,19 +3,19 @@ title: Beheben eines Fehlers vom Typ „Nicht genügend Hive-Arbeitsspeicher“ 
 description: Beheben Sie einen Fehler vom Typ „Nicht genügend Hive-Arbeitsspeicher“ in HDInsight. Das Kundenszenario ist eine viele große Tabellen übergreifende Abfrage.
 keywords: Fehler „Nicht genügend Arbeitsspeicher“, OOM, Hive-Einstellungen
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 1ef4d8fa85a983c736fad73b652d8614c9a96ae5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 90bf59dd7733864c345bbbb59b6236ae7b9a9c36
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109850"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248305"
 ---
 # <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Beheben eines Fehlers vom Typ „Nicht genügend Hive-Arbeitsspeicher“ in Azure HDInsight
 
@@ -99,7 +99,7 @@ In der Datei „hive-site.xml“ war **hive.auto.convert.join.noconditionaltask*
         </description>
       </property>
 
-Wahrscheinlich war „Map Join“ die Ursache für den Java-Heapspeicher-OOM-Fehler. Wie im Blogbeitrag [Hadoop Yarn memory settings in HDInsight](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx) (Hadoop Yarn-Arbeitsspeichereinstellungen in HDInsight) erläutert, gehört der bei Einsatz der Tez-Ausführungs-Engine verwendete Heapspeicher tatsächlich zum Tez-Container. In der folgenden Abbildung ist der Tez-Containerspeicher dargestellt.
+Wahrscheinlich war „Map Join“ die Ursache für den Java-Heapspeicher-OOM-Fehler. Wie im Blogbeitrag [Hadoop Yarn memory settings in HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx) (Hadoop Yarn-Arbeitsspeichereinstellungen in HDInsight) erläutert, gehört der bei Einsatz der Tez-Ausführungs-Engine verwendete Heapspeicher tatsächlich zum Tez-Container. In der folgenden Abbildung ist der Tez-Containerspeicher dargestellt.
 
 ![Diagramm des Tez-Containerspeichers: Fehler vom Typ „Nicht genügend Hive-Arbeitsspeicher“](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 

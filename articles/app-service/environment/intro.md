@@ -14,15 +14,15 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 34c041bf96ecc8ce7f4440d7afaa64de775baef7
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: ee0b9fad15653c9315a8bdaad9a76d8355912863
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576935"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248842"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
- 
+ 
 ## <a name="overview"></a>Übersicht ##
 
 Die Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps mit umfangreicher Skalierung bereitstellt. Über diese Funktion können folgende Elemente gehostet werden:
@@ -73,7 +73,7 @@ Eine ASE kann entweder für Internetzugriff mit einer öffentlichen IP-Adresse o
 
 Mithilfe von [Netzwerksicherheitsgruppen][NSGs] können Sie die eingehende Netzwerkkommunikation mit dem Subnetz einschränken, das eine ASE enthält. Durch NSGs können Sie Apps hinter Upstreamgeräten und -diensten ausführen, wie WAFs und Netzwerk-SaaS-Anbietern.
 
-Apps müssen häufig auch auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen. Wenn Sie die ASE in einem virtuellen Netzwerk bereitstellen, das über eine VPN-Verbindung mit dem lokalen Netzwerk verfügt, können die Apps in der ASE auf die lokalen Ressourcen zugreifen. Diese Funktion besteht unabhängig davon, ob es sich um ein [Site-to-Site-VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site) oder ein [Azure ExpressRoute-VPN](http://azure.microsoft.com/services/expressroute/) handelt.
+Apps müssen häufig auch auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen. Wenn Sie die ASE in einem virtuellen Netzwerk bereitstellen, das über eine VPN-Verbindung mit dem lokalen Netzwerk verfügt, können die Apps in der ASE auf die lokalen Ressourcen zugreifen. Diese Funktion besteht unabhängig davon, ob es sich um ein [Site-to-Site-VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site) oder ein [Azure ExpressRoute-VPN](https://azure.microsoft.com/services/expressroute/) handelt.
 
 Weitere Informationen zur Funktionsweise von ASEs mit virtuellen Netzwerken und lokalen Netzwerken finden Sie unter [Überlegungen zu Netzwerken mit einer App Service-Umgebung][ASENetwork].
 

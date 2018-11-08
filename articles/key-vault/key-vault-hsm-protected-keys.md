@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 31998c3b9cc151e96d0b2e0b85895603698f493b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f027ced7d6e317bfdf101cb792d9f2f2b7612242
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303217"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247743"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Gewusst wie: Generieren und Übertragen von HSM-geschützten Schlüsseln für den Azure-Schlüsseltresor
 
@@ -61,7 +61,7 @@ Die folgende Tabelle enthält eine Liste mit Voraussetzungen, die beim Azure-Sch
 | Azure-Abonnement |Um einen Azure-Schlüsseltresor erstellen zu können, benötigen Sie ein Azure-Abonnement: [Registrieren Sie sich für die kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) |
 | Azure Key Vault-Tarif „Premium“ zur Unterstützung von HSM-geschützten Schlüsseln |Weitere Informationen zu den Dienstebenen und Funktionen für den Azure-Schlüsseltresor finden Sie auf der Website [Azure-Schlüsseltresor – Preise](https://azure.microsoft.com/pricing/details/key-vault/) . |
 | Thales-HSM, Smartcards und Supportsoftware |Sie benötigen Zugriff auf ein Thales-Hardwaresicherheitsmodul sowie grundlegende Kenntnisse zum Betrieb von Thales-HSMs. Eine Liste mit kompatiblen Modellen bzw. Informationen zum Kauf eines HSM, für den Fall, dass Sie noch keins besitzen, finden Sie unter [Thales-Hardwaresicherheitsmodul](https://www.thales-esecurity.com/msrms/buy). |
-| Folgende Hardware und Software:<ol><li>Eine x64-Arbeitsstation im Offlinemodus mit einem Windows-Betriebssystem der Mindestversion Windows 7 und Thales nShield-Software der Mindestversion 11.50.<br/><br/>Wenn auf dieser Arbeitsstation Windows 7 ausgeführt wird, müssen Sie [Microsoft .NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) installieren.</li><li>Eine Arbeitsstation, die mit dem Internet verbunden ist und über ein Windows-Betriebssystem der Mindestversion Windows 7 verfügt und auf der [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) (**Mindestversion 1.1.0**) installiert ist.</li><li>Ein USB-Laufwerk oder ein anderes tragbares Speichergerät mit mindestens 16 MB freiem Speicherplatz.</li></ol> |Aus Sicherheitsgründen wird empfohlen, die erste Arbeitsstation nicht mit einem Netzwerk zu verbinden. Diese Empfehlung wird jedoch nicht programmgesteuert erzwungen.<br/><br/>Beachten Sie, dass diese Arbeitsstation in den folgenden Anleitungen als nicht verbundene Arbeitsstation bezeichnet wird.</p></blockquote><br/>Falls Ihr Mandantenschlüssel für ein Produktionsnetzwerk gilt, empfehlen wir außerdem, eine zweite separate Arbeitsstation zu verwenden, um das Toolset herunterzuladen und den Mandantenschlüssel hochzuladen. Zu Testzwecken können Sie aber auch ein und dieselbe Arbeitsstation verwenden.<br/><br/>Beachten Sie, dass die zweite Arbeitsstation in den folgenden Anleitungen als Arbeitsstation mit Internetverbindung bezeichnet wird.</p></blockquote><br/> |
+| Folgende Hardware und Software:<ol><li>Eine x64-Arbeitsstation im Offlinemodus mit einem Windows-Betriebssystem der Mindestversion Windows 7 und Thales nShield-Software der Mindestversion 11.50.<br/><br/>Wenn auf dieser Arbeitsstation Windows 7 ausgeführt wird, müssen Sie [Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) installieren.</li><li>Eine Arbeitsstation, die mit dem Internet verbunden ist und über ein Windows-Betriebssystem der Mindestversion Windows 7 verfügt und auf der [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) (**Mindestversion 1.1.0**) installiert ist.</li><li>Ein USB-Laufwerk oder ein anderes tragbares Speichergerät mit mindestens 16 MB freiem Speicherplatz.</li></ol> |Aus Sicherheitsgründen wird empfohlen, die erste Arbeitsstation nicht mit einem Netzwerk zu verbinden. Diese Empfehlung wird jedoch nicht programmgesteuert erzwungen.<br/><br/>Beachten Sie, dass diese Arbeitsstation in den folgenden Anleitungen als nicht verbundene Arbeitsstation bezeichnet wird.</p></blockquote><br/>Falls Ihr Mandantenschlüssel für ein Produktionsnetzwerk gilt, empfehlen wir außerdem, eine zweite separate Arbeitsstation zu verwenden, um das Toolset herunterzuladen und den Mandantenschlüssel hochzuladen. Zu Testzwecken können Sie aber auch ein und dieselbe Arbeitsstation verwenden.<br/><br/>Beachten Sie, dass die zweite Arbeitsstation in den folgenden Anleitungen als Arbeitsstation mit Internetverbindung bezeichnet wird.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generieren und Übertragen des Schlüssels an das HSM des Azure-Schlüsseltresors
 
@@ -101,7 +101,7 @@ Lassen Sie das Azure PowerShell-Fenster geöffnet.
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>Schritt 1.3: Herunterladen des BYOK-Toolsets für den Azure-Schlüsseltresor
 
-Wechseln Sie zum Microsoft Download Center, und [laden Sie das Azure-Schlüsseltresor-BYOK-Toolset für Ihre geografische Region oder Instanz von Azure herunter](http://www.microsoft.com/download/details.aspx?id=45345) . Ermitteln Sie anhand der folgenden Informationen den Namen des herunterzuladenden Pakets und seinen entsprechenden SHA-256-Pakethash:
+Wechseln Sie zum Microsoft Download Center, und [laden Sie das Azure-Schlüsseltresor-BYOK-Toolset für Ihre geografische Region oder Instanz von Azure herunter](https://www.microsoft.com/download/details.aspx?id=45345) . Ermitteln Sie anhand der folgenden Informationen den Namen des herunterzuladenden Pakets und seinen entsprechenden SHA-256-Pakethash:
 
 - - -
 **USA:**

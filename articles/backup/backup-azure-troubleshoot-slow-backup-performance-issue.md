@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ab338964a67991c0e97bf218f8aa004e0e5dfe38
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f24a60ab9bdcf1231085de4edeeb89ce1edf4e80
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418244"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248468"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 Dieser Artikel enthält Informationen zu Problembehandlungsschritten, mit denen Sie eine niedrige Geschwindigkeit beim Sichern von Dateien und Ordnern mit Azure Backup diagnostizieren können. Wenn Sie den Azure Backup-Agent zum Sichern von Dateien verwenden, kann der Sicherungsprozess länger als erwartet dauern. Diese Verzögerung kann eine oder mehrere der folgenden Ursachen haben:
@@ -23,7 +23,7 @@ Dieser Artikel enthält Informationen zu Problembehandlungsschritten, mit denen 
 * [Der Backup-Agent wird auf einem virtuellen Azure-Computer (VM) ausgeführt.](#cause3)  
 * [Sie sichern eine große Zahl von Dateien (mehrere Millionen).](#cause4)
 
-Bevor Sie mit der Problembehandlung beginnen, empfehlen wir Ihnen, den [aktuellen Azure Backup-Agent](http://aka.ms/azurebackup_agent)herunterzuladen und zu installieren. Wir stellen häufig Updates für den Backup-Agent zur Verfügung, um verschiedene Probleme zu beheben, Funktionen hinzuzufügen und die Leistung zu verbessern.
+Bevor Sie mit der Problembehandlung beginnen, empfehlen wir Ihnen, den [aktuellen Azure Backup-Agent](https://aka.ms/azurebackup_agent)herunterzuladen und zu installieren. Wir stellen häufig Updates für den Backup-Agent zur Verfügung, um verschiedene Probleme zu beheben, Funktionen hinzuzufügen und die Leistung zu verbessern.
 
 Wir empfehlen Ihnen auch dringend den Artikel [Azure Backup-Dienst – FAQ](backup-azure-backup-faq.md) , damit Sie häufig auftretende Konfigurationsprobleme vermeiden können.
 
