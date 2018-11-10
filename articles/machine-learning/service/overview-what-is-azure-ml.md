@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 4a867692d3ce509443e5aa94536075fdcd4bab84
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1dac11b8ad71a936b33742b52c95ac998176baf7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945959"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244939"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Was ist der Azure Machine Learning-Dienst (Vorschauversion)?
 
@@ -48,7 +48,7 @@ Sie können die bereitgestellten Modelle verwalten und mehrere Ausführungen nac
 Der Azure Machine Learning-Dienst kann automatisch ein Modell generieren und optimieren.
 Ein Beispiel finden Sie unter [Tutorial: Automatically train a classification model with Azure Automated Machine Learning (Tutorial: Automatisches Trainieren eines Klassifizierungsmodells mithilfe von Azure Automated Machine Learning)](tutorial-auto-train-models.md).
 
-Stattdessen können Sie aber auch selbst mit dem Azure Machine Learning <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> für Python und mit Open Source-Paketen für Python sehr genaue Machine Learning- und Deep Learning-Modelle in einem Arbeitsbereich für den Azure Machine Learning-Dienst erstellen und trainieren.
+Stattdessen können Sie aber auch selbst mit dem Azure Machine Learning <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> für Python und mit Open Source-Paketen für Python sehr genaue Machine Learning- und Deep Learning-Modelle in einem Arbeitsbereich für den Azure Machine Learning-Dienst erstellen und trainieren.
 Sie können aus mehreren Komponenten für maschinelles Lernen auswählen, die in Open Source-Paketen für Python wie den folgenden enthalten sind:
 
 - <a href="http://scikit-learn.org/stable/" target="_blank">scikit-learn</a>
@@ -59,7 +59,7 @@ Sie können aus mehreren Komponenten für maschinelles Lernen auswählen, die in
 
 Sobald Sie über ein Modell verfügen, können Sie es verwenden, um einen Container (z.B. Docker) zu erstellen, der zuerst auf lokaler Ebene zu Testzwecken und anschließend als Produktionswebdienst in [Azure Container Instances](how-to-deploy-to-aci.md) oder [Azure Kubernetes Service](how-to-deploy-to-aks.md) bereitgestellt werden kann.
 
-Die bereitgestellten Modelle lassen sich dann über das [Azure-Portal](https://portal.azure.com/) oder die [Azure Machine Learning-CLI-Erweiterung](https://review.docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli) verwalten.
+Die bereitgestellten Modelle lassen sich dann über das [Azure-Portal](https://portal.azure.com/) oder die [Azure Machine Learning-CLI-Erweiterung](reference-azure-machine-learning-cli.md) verwalten.
 Sie können Modellmetriken bewerten, neue Versionen des Modells erneut trainieren und bereitstellen und gleichzeitig die Modellexperimente nachverfolgen.
 
 Nachfolgend finden Sie in den [nächsten Schritten](#next-steps) Informationen zur Einführung in den Azure Machine Learning-Dienst.
@@ -85,6 +85,8 @@ Wenn Sie kein Abonnent sind, können Sie [ein kostenloses Azure-Konto eröffnen]
 - Befolgen Sie die in dem Tutorial [Train an image classification model with Azure Machine Learning (Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning)](tutorial-train-models-with-aml.md) beschriebenen Schritte, um Modelle mit dem Azure Machine Learning-Dienst zu trainieren und bereitzustellen.
 
 - Weitere Informationen dazu, wie Sie Azure Machine Learning gestatten, Ihr Modell automatisch zu generieren und zu optimieren finden Sie in dem Tutorial [Automatically train a classification model with Azure Automated Machine Learning (Automatisches Trainieren eines Klassifizierungsmodells mithilfe von Azure Automated Machine Learning)](tutorial-auto-train-models.md).
+
+- Erfahren Sie mehr über [Machine Learning-Pipelines](/azure/machine-learning/service/concept-ml-pipelines) zum Erstellen, Optimieren und Verwalten Ihrer Machine Learning-Szenarien.
 
 - Eine ausführlichere Beschreibung mit dem Fokus auf die betreffende Technik finden Sie unter [Azure Machine Learning service architecture and concepts (Architektur und Konzepte des Azure Machine Learning-Diensts)](concept-azure-machine-learning-architecture.md).
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 418b23f0783341ff7e5aaf7e2bbb2e869eb7dc45
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 5d2f4fc77d5849dc2be80ada9610098c9a381f92
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466153"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244099"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Rotieren von Geheimnissen in Azure Stack
 
@@ -92,7 +92,7 @@ Diese Warnungen können durch Ausführen der Geheimnisrotation behandelt werden.
 5.  Speichern Sie eine Sicherung der für die Rotation verwendeten Zertifikate an einem sicheren Sicherungsspeicherort. Sollte die Rotation nicht erfolgreich sein, ersetzen Sie die Zertifikate in der Dateifreigabe durch die Sicherungskopien, und wiederholen Sie dann die Rotation. Hinweis: Bewahren Sie Sicherungskopien am sicheren Sicherungsspeicherort auf.
 6.  Erstellen Sie eine Dateifreigabe, auf die Sie über die virtuellen ERCS-Computer zugreifen können. Die Identität **CloudAdmin** muss über Lese- und Schreibzugriff für die Dateifreigabe verfügen.
 7.  Öffnen Sie eine PowerShell ISE-Konsole auf einem Computer, auf dem Sie Zugriff auf die Dateifreigabe haben. Navigieren Sie zu Ihrer Dateifreigabe. 
-8.  Führen Sie **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** aus, um die erforderlichen Verzeichnisse für Ihre externen Zertifikate zu erstellen.
+8.  Führen Sie **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** aus, um die erforderlichen Verzeichnisse für Ihre externen Zertifikate zu erstellen.
 
 ## <a name="rotating-external-and-internal-secrets"></a>Rotieren externer und interner Geheimnisse
 

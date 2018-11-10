@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: eee9183321f21676271c8a9c7e023c80c4daf554
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7d42c026975a18c7574e4bc64ec28ab3ed0082bc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915106"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248451"
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Hinzufügen von bedarfsgesteuerten „Burstknoten“ zu einem HPC Pack-Cluster in Azure
 Wenn Sie einen [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029)-Cluster in Azure einrichten, benötigen Sie wahrscheinlich eine Möglichkeit, die Clusterkapazität schnell hoch- oder herunterzuskalieren, ohne einen Satz vorkonfigurierter Computeknoten-VMs vorhalten zu müssen. In diesem Artikel wird erläutert, wie Sie bedarfsgesteuerte Burstknoten (Workerrolleninstanzen, die in einem Clouddienst ausgeführt werden) als Computeressourcen zu einem Hauptknoten in Azure hinzufügen. 
@@ -68,7 +68,7 @@ In diesem Szenario können Sie das **Zertifikat "Default HPC Azure Management"**
 
 2. Klicken Sie dann auf **Verwaltungszertifikate** > **Hochladen**.
 
-Zusätzliche Optionen zum Konfigurieren des Verwaltungszertifikats finden Sie unter [Options to Configure the Azure Management Certificate for Azure Burst Deployments](http://technet.microsoft.com/library/gg481759.aspx)(in englischer Sprache).
+Zusätzliche Optionen zum Konfigurieren des Verwaltungszertifikats finden Sie unter [Options to Configure the Azure Management Certificate for Azure Burst Deployments](https://technet.microsoft.com/library/gg481759.aspx)(in englischer Sprache).
 
 ## <a name="step-3-deploy-azure-nodes-to-the-cluster"></a>Schritt 3: Bereitstellen von Azure-Knoten auf dem Cluster
 Die Schritte zum Hinzufügen und Starten von Azure-Knoten in diesem Szenario entsprechen im Allgemeinen der Vorgehensweise bei lokalen Hauptknoten. Weitere Informationen finden Sie in den folgenden Abschnitten unter [Steps to Deploy Azure Nodes with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481758.aspx)(in englischer Sprache):
@@ -79,7 +79,7 @@ Die Schritte zum Hinzufügen und Starten von Azure-Knoten in diesem Szenario ent
 
 Nachdem Sie die Knoten hinzugefügt und gestartet haben, können Sie sie zum Ausführen von Clusteraufträgen verwenden.
 
-Wenn bei der Bereitstellung von Azure-Knoten Probleme auftreten, finden Sie weitere Informationen unter [Troubleshoot Deployments of Azure Nodes with Microsoft HPC Pack](http://technet.microsoft.com/library/jj159097.aspx)(Anweisungen zur Problembehandlung bei der Bereitstellung von Azure-Knoten mit Microsoft HPC Pack).
+Wenn bei der Bereitstellung von Azure-Knoten Probleme auftreten, finden Sie weitere Informationen unter [Troubleshoot Deployments of Azure Nodes with Microsoft HPC Pack](https://technet.microsoft.com/library/jj159097.aspx)(Anweisungen zur Problembehandlung bei der Bereitstellung von Azure-Knoten mit Microsoft HPC Pack).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Überlegungen zur Verwendung einer rechenintensiven Instanzengröße für die Burstknoten finden Sie unter [Größen von virtuellen HPC-Computern (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

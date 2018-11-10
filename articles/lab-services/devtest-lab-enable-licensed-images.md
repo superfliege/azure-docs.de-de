@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0e5de93f8a10d27c28b3f07567f9b6fa7e41d482
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 42f3378196b4e3e1dfe1234e801e87875f9c61fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781839"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247652"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Aktivieren eines lizenzierten Image im Lab in Azure DevTest Labs
 
@@ -28,7 +28,7 @@ Ein lizenziertes Image in Azure DevTest Labs beinhaltet Geschäftsbedingungen (i
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Bestimmen der Verfügbarkeit eines lizenzierten Image für Benutzer
 Der erste Schritt, um Benutzern die Erstellung von VMs anhand eines lizenzierten Image zu ermöglichen, besteht darin, sicherzustellen, dass die Geschäftsbedingungen für das lizenzierte Image akzeptiert wurden. Die folgenden Schritte zeigen, wie Sie den Angebotsstatus eines lizenzierten Image einsehen und ggf. die Geschäftsbedingungen akzeptieren können.
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 
@@ -54,7 +54,7 @@ Um sicherzustellen, dass ein lizenziertes Image für Labbenutzer verfügbar ist,
 
 Sie können die programmgesteuerte Bereitstellung für ein lizenziertes Image anhand der folgenden Schritte aktivieren:
 
-1. Navigieren Sie im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) zur Liste **Marketplace-Images**.
+1. Navigieren Sie im [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) zur Liste **Marketplace-Images**.
 
 1. Ermitteln Sie ein lizenziertes Image, auf das Benutzer Zugriff haben sollen, deren Bedingungen jedoch nicht akzeptiert wurden. In diesem Fall wird beispielsweise eventuell eine Data Science Virtual Machine (DSVM) mit dem Status **Bedingungen akzeptiert** oder **Überprüfung der Nutzungsbedingungen erforderlich** angezeigt.
 

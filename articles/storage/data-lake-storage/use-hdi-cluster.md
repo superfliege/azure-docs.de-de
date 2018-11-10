@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 3869d83ada1cbe0b234694b6acae88b6f68fc2dd
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 04e2e32de90283da2563395f8b24dbb4b1dab888
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782276"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241758"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 Preview mit Azure HDInsight-Clustern
 
@@ -49,13 +49,13 @@ Es folgen einige Aspekte beim Verwenden eines Azure Storage-Kontos mit HDInsight
 * **Öffentliche Dateien in Speicherkonten, die NICHT mit einem Cluster verbunden sind,** machen nur Leseberechtigungen für die Dateien im Dateisystem verfügbar.
   
   > [!NOTE]
-  > Öffentliche Dateisysteme ermöglichen Ihnen, eine Liste aller im Dateisystem verfügbaren Dateien abzurufen und auf Metadaten zuzugreifen. Öffentliche Dateisysteme erlauben den Zugriff auf Dateien nur, wenn Sie die genaue URL kennen. Weitere Informationen finden Sie unter [Einschränken des Zugriffs auf Container und Blobs](http://msdn.microsoft.com/library/windowsazure/dd179354.aspx) (die Regeln für Container und Blobs gelten auch für Dateien und das Dateisystem).
+  > Öffentliche Dateisysteme ermöglichen Ihnen, eine Liste aller im Dateisystem verfügbaren Dateien abzurufen und auf Metadaten zuzugreifen. Öffentliche Dateisysteme erlauben den Zugriff auf Dateien nur, wenn Sie die genaue URL kennen. Weitere Informationen finden Sie unter [Einschränken des Zugriffs auf Container und Blobs](https://msdn.microsoft.com/library/windowsazure/dd179354.aspx) (die Regeln für Container und Blobs gelten auch für Dateien und das Dateisystem).
  
 * **Private Dateisysteme in Speicherkonten, die NICHT mit einem Cluster verbunden sind**, erlauben nicht den Zugriff auf Dateien im Dateisystem, es sei denn, Sie legen das Speicherkonto fest, wenn Sie die WebHCat-Aufträge senden. Gründe für diese Einschränkung werden weiter unten in diesem Artikel erläutert.
 
 Die bei der Erstellung definierten Speicherkonten und ihre Schlüssel werden in der Datei *%HADOOP_HOME%/conf/core-site.xml* auf den Clusterknoten gespeichert. Standardmäßig verwendet HDInsight die in der Datei *core-site.xml* definierten Speicherkonten. Sie können diese Einstellung mit [Ambari](../../hdinsight/hdinsight-hadoop-manage-ambari.md) ändern.
 
-Verschiedene WebHCat-Aufträge, darunter Hive, MapReduce, Hadoop Streaming und Pig, können eine Beschreibung von Speicherkonten und Metadaten enthalten. (Dieser Ansatz funktioniert momentan nur für Pig und Speicherkonten, aber nicht für Metadaten.) Weitere Informationen finden Sie unter [Verwenden eines HDInsight-Clusters mit alternativen Speicherkonten und Metastores](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
+Verschiedene WebHCat-Aufträge, darunter Hive, MapReduce, Hadoop Streaming und Pig, können eine Beschreibung von Speicherkonten und Metadaten enthalten. (Dieser Ansatz funktioniert momentan nur für Pig und Speicherkonten, aber nicht für Metadaten.) Weitere Informationen finden Sie unter [Verwenden eines HDInsight-Clusters mit alternativen Speicherkonten und Metastores](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
 
 ## <a id="benefits"></a>Vorteile von Azure Storage
 

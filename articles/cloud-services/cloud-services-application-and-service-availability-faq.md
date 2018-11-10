@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 617a6f4873c49877cbef48a7df3f2ab2c625445e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 68f3fe0dbd16d3d71dc66af05de6f90156d67dfa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412515"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246360"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Anwendung und Dienstverfügbarkeit von Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -33,7 +33,7 @@ Ungefähr einmal im Monat gibt Microsoft eine neue Version des Gastbetriebssyste
 
 Ausführliche Informationen zu den neuesten Updates für Gastbetriebssysteme finden Sie unter [Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).
 
-Hilfreiche Informationen zu Neustarts und Verweise auf technische Details zu Gast- und Hostbetriebssystemupdates finden Sie im MSDN-Blogbeitrag [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx) (Neustarts von Rolleninstanzen aufgrund von Betriebssystemupgrades).
+Hilfreiche Informationen zu Neustarts und Verweise auf technische Details zu Gast- und Hostbetriebssystemupdates finden Sie im MSDN-Blogbeitrag [Role Instance Restarts Due to OS Upgrades](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx) (Neustarts von Rolleninstanzen aufgrund von Betriebssystemupgrades).
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Warum dauert die erste Anforderung an meinen Clouddienst länger als üblich, nachdem der Dienst für einige Zeit im Leerlauf war?
 Wenn der Webserver die erste Anforderung erhält, kompiliert er zuerst den Code neu und verarbeitet anschließend die Anforderung. Deshalb dauert die erste Anforderung länger als die anderen. Standardmäßig wird der Anwendungspool bei Benutzerinaktivität heruntergefahren. Zudem wird der Anwendungspool standardmäßig nach 1740 Minuten (29 Stunden) wiederverwendet.

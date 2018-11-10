@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f50be01d067032b1143a80e56ccb5d49d899d4d6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c1f48e3273ac0a237c72565acf25049b763dba8a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415966"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246666"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Informationen zum Systemneustart für virtuelle Azure-Computer
 
@@ -108,7 +108,7 @@ Das Herunterfahren kann lediglich fünf Minuten dauern, aber auch deutlich läng
 
 **Überschreiten der E/A-Grenzwerte**
 
-Virtuelle Computer werden ggf. vorübergehend heruntergefahren, wenn E/A-Anforderungen dauerhaft aufgrund einer großen Menge von E/A-Vorgängen pro Sekunde (IOPS), die die E/A-Grenzwerte für den Datenträger überschreiten, gedrosselt sind. (Der Standard-Datenträgerspeicher ist auf 500 IOPS beschränkt.) Verwenden Sie zum Umgehen dieses Problems abhängig von der Workload das Datenträgerstriping, oder konfigurieren Sie den Speicherplatz auf der Gast-VM. Weitere Informationen finden Sie unter [Configuring Azure VMs for Optimal Storage Performance](http://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx) (Konfigurieren von virtuellen Azure-Computern für optimale Speicherleistung).
+Virtuelle Computer werden ggf. vorübergehend heruntergefahren, wenn E/A-Anforderungen dauerhaft aufgrund einer großen Menge von E/A-Vorgängen pro Sekunde (IOPS), die die E/A-Grenzwerte für den Datenträger überschreiten, gedrosselt sind. (Der Standard-Datenträgerspeicher ist auf 500 IOPS beschränkt.) Verwenden Sie zum Umgehen dieses Problems abhängig von der Workload das Datenträgerstriping, oder konfigurieren Sie den Speicherplatz auf der Gast-VM. Weitere Informationen finden Sie unter [Configuring Azure VMs for Optimal Storage Performance](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx) (Konfigurieren von virtuellen Azure-Computern für optimale Speicherleistung).
 
 Höhere IOPS-Grenzwerte von bis zu 80.000 IOPS stehen bei Azure Storage Premium zur Verfügung. Weitere Informationen finden Sie unter [Premium-Hochleistungsspeicher](../windows/premium-storage.md).
 

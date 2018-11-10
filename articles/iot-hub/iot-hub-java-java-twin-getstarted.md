@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: 98ef140635da1d773da86bbbe41e5494453d6287
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 489db1e7ef2e746ea1f17deab7856d5b9ef18286
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418040"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248944"
 ---
 # <a name="get-started-with-device-twins-java"></a>Erste Schritte mit Gerätezwillingen (Java)
 
@@ -33,7 +33,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Maven 3](https://maven.apache.org/install.html)
 
-* Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](http://azure.microsoft.com/pricing/free-trial/) erstellen.)
+* Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 

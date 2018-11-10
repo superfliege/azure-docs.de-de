@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 932e7447c59c7e9d8322a0e85b0843b0e836b840
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 262d2511879047d1723d3b15c4c107b80ba1c297
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095510"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250338"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Erstellen von Application Insights-Ressourcen mithilfe von PowerShell
 Dieser Artikel beschreibt, wie Sie die Erstellung und Aktualisierung von [Application Insights](app-insights-overview.md)-Ressourcen mit der Azure-Ressourcenverwaltung automatisieren können. Dies kann z. B. als Teil eines Buildvorgangs erfolgen. Zusammen mit der grundlegenden Application Insights-Ressource können Sie [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) erstellen, [Warnungen](app-insights-alerts.md) einrichten, das [Preisschema](app-insights-pricing.md) festlegen und andere Azure-Ressourcen erstellen.
@@ -30,7 +30,7 @@ Wenn Sie PowerShell noch nicht mit Ihrem Azure-Abonnement verwendet haben:
 
 Installieren Sie das Azure PowerShell-Modul auf dem Computer, auf dem die Skripts ausgeführt werden sollen:
 
-1. Installieren Sie [Microsoft-Webplattform-Installer (Version 5 oder höher)](http://www.microsoft.com/web/downloads/platform.aspx).
+1. Installieren Sie [Microsoft-Webplattform-Installer (Version 5 oder höher)](https://www.microsoft.com/web/downloads/platform.aspx).
 2. Installieren Sie hiermit Microsoft Azure PowerShell.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Erstellen einer Azure Resource Manager-Vorlage
@@ -448,6 +448,6 @@ Andere Artikel zu Automation:
 * [Einrichten von Warnungen](app-insights-powershell-alerts.md)
 * [Erstellen von Webtests](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Senden von Azure-Diagnosedaten an Application Insights](app-insights-powershell-azure-diagnostics.md)
-* [Bereitstellen in Azure aus GitHub](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
+* [Bereitstellen in Azure aus GitHub](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [Erstellen von Versionsanmerkungen](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

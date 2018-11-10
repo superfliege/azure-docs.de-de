@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
 ms.component: files
-ms.openlocfilehash: 37c42c5a680b8768d0882ad97fb3f3f2ed4ab821
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: a376e4f5d8d74731f30da47a696656e79ae55ac7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42141358"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245680"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Entwickeln für Azure Files mit Python
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -178,5 +178,5 @@ file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 Nachdem Sie sich mit dem Bearbeiten von Azure Files mit Python vertraut gemacht haben, folgen Sie diesen Links, um mehr zu erfahren.
 
 * [Python Developer Center](https://azure.microsoft.com/develop/python/)
-* [REST-API für Azure-Speicherdienste](http://msdn.microsoft.com/library/azure/dd179355)
+* [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355)
 * [Microsoft Azure Storage-SDK für Python](https://github.com/Azure/azure-storage-python)

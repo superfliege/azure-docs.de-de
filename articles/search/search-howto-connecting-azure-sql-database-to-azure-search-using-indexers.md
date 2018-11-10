@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 1c498bb857b717682f943af96b222d9712b5d389
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409219"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245646"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern
 
@@ -140,7 +140,7 @@ Die Antwort sollte etwa wie folgt aussehen:
     }
 
 Der Ausführungsverlauf enthält bis zu 50 der zuletzt abgeschlossenen Ausführungen. Diese sind in umgekehrter chronologischer Reihenfolge sortiert (somit wird die neueste Ausführung als Erstes in der Antwort aufgelistet).
-Weitere Informationen zur Antwort finden Sie unter [Abrufen des Indexerstatus](http://go.microsoft.com/fwlink/p/?LinkId=528198).
+Weitere Informationen zur Antwort finden Sie unter [Abrufen des Indexerstatus](https://go.microsoft.com/fwlink/p/?LinkId=528198).
 
 ## <a name="run-indexers-on-a-schedule"></a>Ausführen von Indexern nach einem Zeitplan
 Sie können den Indexer auch so konfigurieren, dass er regelmäßig nach einem Zeitplan ausgeführt wird. Dazu fügen Sie die **schedule**-Eigenschaft beim Erstellen oder Aktualisieren des Indexers hinzu. Das folgende Beispiel zeigt eine PUT-Anforderung den Indexer, um den zu aktualisieren:

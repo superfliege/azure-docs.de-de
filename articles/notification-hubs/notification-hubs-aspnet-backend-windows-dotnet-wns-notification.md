@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
 ms.author: dimazaid
-ms.openlocfilehash: ee0e78402515a733731e6faf21b09886674cda51
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d2d0e878aed5b200852e56a29ce0430305d4efc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452412"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251541"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Tutorial: Senden von Benachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
@@ -222,7 +222,7 @@ In diesem Abschnitt aktualisieren Sie den Code im Projekt, den Sie im [Tutorial:
     ```
 1. Klicken Sie mit der rechten Maustaste auf das Projekt **WindowsApp**, klicken Sie auf **Hinzufügen** und dann auf **Klasse**. Nennen Sie die Klasse **RegisterClient.cs**, und klicken Sie dann auf **OK**, um die Klasse zu generieren.
    
-   Diese Klasse umschließt die REST-Aufrufe, die für das Kontaktieren des App-Back-Ends erforderlich sind, um sich für Pushbenachrichtigungen zu registrieren. Außerdem werden die vom Notification Hub erstellten *registrationIds* lokal gespeichert, wie unter [Registrierung vom App-Back-End aus](http://msdn.microsoft.com/library/dn743807.aspx)beschrieben. Wenn Sie auf die Schaltfläche **Log in and register** klicken, wird ein Authentifizierungstoken aus dem lokalen Speicher verwendet.
+   Diese Klasse umschließt die REST-Aufrufe, die für das Kontaktieren des App-Back-Ends erforderlich sind, um sich für Pushbenachrichtigungen zu registrieren. Außerdem werden die vom Notification Hub erstellten *registrationIds* lokal gespeichert, wie unter [Registrierung vom App-Back-End aus](https://msdn.microsoft.com/library/dn743807.aspx)beschrieben. Wenn Sie auf die Schaltfläche **Log in and register** klicken, wird ein Authentifizierungstoken aus dem lokalen Speicher verwendet.
 2. Fügen Sie die folgenden `using` -Anweisungen am Anfang der Datei "RegisterClient.cs" hinzu:
 
     ```csharp   

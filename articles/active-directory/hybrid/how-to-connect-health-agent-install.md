@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: c57e6d3e35994bea99e15f37ed0fb6aa2d108f74
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 337537e5f34eb823f7ca92a2b1f200c9c0c10428
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303926"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247465"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Installieren des Azure AD Connect Health-Agents
 In diesem Dokument werden Sie durch die Installation und Konfiguration der Azure AD Connect Health-Agents geleitet. Sie können die Agents [hier](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)herunterladen.
@@ -37,7 +37,7 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
 | Die SSL-Überprüfung für ausgehenden Datenverkehr ist gefiltert oder deaktiviert. | Beim Agent-Registrierungsschritt oder bei Datenuploads tritt unter Umständen ein Fehler auf, wenn auf der Netzwerkebene eine SSL-Überprüfung oder Beendigung für ausgehenden Datenverkehr erfolgt. Weitere Informationen zum [Einrichten der SSL-Überprüfung](https://technet.microsoft.com/library/ee796230.aspx) |
 | Firewall-Ports auf dem Server mit dem Agent |Für den Agent müssen die folgenden Firewallports geöffnet sein, damit er mit den Azure AD Health-Dienstendpunkten kommunizieren kann:</br></br><li>TCP-Port 443</li><li>TCP-Port 5671</li> </br>Weitere Informationen zum [Aktivieren von Firewallports](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 | Zulassen der folgenden Websites, wenn die verstärkte IE-Sicherheit aktiviert ist |Wenn die verstärkte IE-Sicherheit aktiviert ist, müssen die folgenden Websites auf dem Server zugelassen werden, auf dem der Agent installiert werden soll:</br></br><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>Der Verbundserver für Ihre Organisation, dem Azure Active Directory vertraut. Beispiel: https:\//sts.contoso.com</li> Weitere Informationen zum [Konfigurieren von IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
-| Sicherstellen, dass mindestens PowerShell 4. 0 installiert ist | <li>Windows Server 2008 R2 verfügt standardmäßig über PowerShell 2.0. Diese Version ist für den Agent jedoch nicht ausreichend.  Aktualisieren Sie PowerShell, wie unter [Installation des Agents auf Windows Server 2008 R2-Servern](#agent-installation-on-windows-server-2008-r2-servers) beschrieben.</li><li>Windows Server 2012 verfügt standardmäßig über PowerShell 3.0. Diese Version ist für den Agent jedoch nicht ausreichend.  [Aktualisieren](http://www.microsoft.com/download/details.aspx?id=40855) Sie Windows Management Framework.</li><li>Windows Server 2012 R2 und höhere Versionen verfügen standardmäßig über eine geeignete PowerShell-Version.</li>|
+| Sicherstellen, dass mindestens PowerShell 4. 0 installiert ist | <li>Windows Server 2008 R2 verfügt standardmäßig über PowerShell 2.0. Diese Version ist für den Agent jedoch nicht ausreichend.  Aktualisieren Sie PowerShell, wie unter [Installation des Agents auf Windows Server 2008 R2-Servern](#agent-installation-on-windows-server-2008-r2-servers) beschrieben.</li><li>Windows Server 2012 verfügt standardmäßig über PowerShell 3.0. Diese Version ist für den Agent jedoch nicht ausreichend.  [Aktualisieren](https://www.microsoft.com/download/details.aspx?id=40855) Sie Windows Management Framework.</li><li>Windows Server 2012 R2 und höhere Versionen verfügen standardmäßig über eine geeignete PowerShell-Version.</li>|
 |Deaktivieren von FIPS|FIPS wird von Azure AD Connect Health-Agents nicht unterstützt.|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Ausgehende Verbindungen zu den Azure-Dienstendpunkten
@@ -53,12 +53,12 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Herunterladen und Installieren des Azure AD Connect Health-Agents
 * Vergewissern Sie sich, dass Sie [die Anforderungen für Azure AD Connect Health erfüllen](how-to-connect-health-agent-install.md#requirements).
 * Erste Schritte mit Azure AD Connect Health für AD FS
-    * [Laden Sie den Azure AD Connect Health-Agent für AD FS herunter.](http://go.microsoft.com/fwlink/?LinkID=518973)
+    * [Laden Sie den Azure AD Connect Health-Agent für AD FS herunter.](https://go.microsoft.com/fwlink/?LinkID=518973)
     * [Zeigen Sie die Installationsanweisungen an](#installing-the-azure-ad-connect-health-agent-for-ad-fs).
 * Erste Schritte mit Azure AD Connect Health für die Sychronisierung
-    * [Laden Sie die aktuelle Version von Azure AD Connect herunter, und installieren Sie sie](http://go.microsoft.com/fwlink/?linkid=615771). Der Health-Agent für die Synchronisierung wird im Rahmen der Installation von Azure AD Connect installiert (Version 1.0.9125.0 oder höher).
+    * [Laden Sie die aktuelle Version von Azure AD Connect herunter, und installieren Sie sie](https://go.microsoft.com/fwlink/?linkid=615771). Der Health-Agent für die Synchronisierung wird im Rahmen der Installation von Azure AD Connect installiert (Version 1.0.9125.0 oder höher).
 * Erste Schritte mit Azure AD Connect Health für AD DS
-    * [Laden Sie den Azure AD Connect Health-Agent für AD DS herunter](http://go.microsoft.com/fwlink/?LinkID=820540).
+    * [Laden Sie den Azure AD Connect Health-Agent für AD DS herunter](https://go.microsoft.com/fwlink/?LinkID=820540).
     * [Zeigen Sie die Installationsanweisungen an](#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Installieren des Azure AD Connect Health-Agents für AD FS
@@ -105,7 +105,7 @@ Schritte für Windows Server 2008 R2-Server:
    * Installieren Sie PowerShell ISE (über "Windows-Features").
    * Installieren Sie [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)
    * Installieren Sie Internet Explorer 10 oder höher auf dem Server. (Dies ist erforderlich, damit der Health-Dienst mit den Azure-Administratoranmeldeinformationen die Authentifizierung durchführen kann.)
-4. Weitere Informationen zum Installieren von Windows PowerShell 4.0 unter Windows Server 2008 R2 finden Sie in [diesem Wiki-Artikel](http://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx).
+4. Weitere Informationen zum Installieren von Windows PowerShell 4.0 unter Windows Server 2008 R2 finden Sie in [diesem Wiki-Artikel](https://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx).
 
 ### <a name="enable-auditing-for-ad-fs"></a>Aktivieren der Überwachung für AD FS
 > [!NOTE]
@@ -175,7 +175,7 @@ Standardmäßig ist die Überwachungsebene „basic“ aktiviert. Weitere Inform
 > Der Synchronisierungsserver sollte sich vom AD FS-Server unterscheiden. Installieren Sie den Synchronisierungs-Agent nicht auf Ihrem AD FS-Server.
 >
 
-Der Azure AD Connect Health-Agent für die Synchronisierung wird im neuesten Build von Azure AD Connect automatisch installiert. Damit Sie Azure AD Connect für die Synchronisierung verwenden können, müssen Sie die neueste Version von Azure AD Connect herunterladen und installieren. Sie können die neueste Version [hier](http://www.microsoft.com/download/details.aspx?id=47594)herunterladen.
+Der Azure AD Connect Health-Agent für die Synchronisierung wird im neuesten Build von Azure AD Connect automatisch installiert. Damit Sie Azure AD Connect für die Synchronisierung verwenden können, müssen Sie die neueste Version von Azure AD Connect herunterladen und installieren. Sie können die neueste Version [hier](https://www.microsoft.com/download/details.aspx?id=47594)herunterladen.
 
 Suchen Sie auf dem Server nach den unten angegebenen Diensten, um sicherzustellen, dass der Agent installiert wurde. Wenn Sie die Konfiguration durchgeführt haben, sollten sie bereits ausgeführt werden. Andernfalls werden die Dienste beendet, bis die Konfiguration abgeschlossen wurde.
 

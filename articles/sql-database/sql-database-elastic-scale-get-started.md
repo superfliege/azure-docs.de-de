@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: ''
 manager: craigg
 ms.date: 08/27/2018
-ms.openlocfilehash: 74bbaeeee390952bf42407a53684bc33a7cfc543
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ad07b0a9ae2d0c90f63d4f3a842a5d386ac4c59b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242772"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249862"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Erste Schritte mit Tools für elastische Datenbanken
 Dieses Dokument enthält eine Einführung in die Entwickleroberfläche für die [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md), die anhand einer Beispiel-App vorgestellt wird. Mit der Beispiel-App wird eine einfache Shardinganwendung erstellt, und es werden die wichtigsten Funktionen des Features „Tools für elastische Datenbanken“ von Azure SQL-Datenbank erläutert. Dabei stehen die Anwendungsfälle für [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md), [datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md) und [Abfragen mehrerer Shards](sql-database-elastic-scale-multishard-querying.md) im Mittelpunkt. Die Clientbibliothek ist sowohl für .NET als auch für Java verfügbar. 
@@ -67,7 +67,7 @@ Um die Clientbibliothek Ihrem eigenen Maven-Projekt hinzuzufügen, fügen Sie di
 
 ## <a name="elastic-database-tools-for-net"></a>Tools für elastische Datenbanken für .NET 
 ### <a name="prerequisites"></a>Voraussetzungen
-* Visual Studio 2012 oder eine neuere Version mit C#. Laden Sie eine kostenlose Version unter [Visual Studio-Downloads](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)herunter.
+* Visual Studio 2012 oder eine neuere Version mit C#. Laden Sie eine kostenlose Version unter [Visual Studio-Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)herunter.
 * NuGet 2.7 oder eine neuere Version. Die aktuelle Version finden Sie unter [Installing NuGet](http://docs.nuget.org/docs/start-here/installing-nuget) (Installieren von NuGet).
 
 ### <a name="download-and-run-the-sample-app"></a>Herunterladen und Ausführen der Beispiel-App
@@ -95,13 +95,13 @@ Glückwunsch! Sie haben mit den Tools für elastische Datenbanken in SQL-Datenba
 > 
 
 ## <a name="key-pieces-of-the-code-sample"></a>Zentrale Elemente des Codebeispiels
-* **Verwalten von Shards und Shardzuordnungen:** Der Code in der Datei *ShardManagementUtils.cs* veranschaulicht die Arbeit mit Shards, Bereichen und Zuordnungen. Weitere Informationen finden Sie unter [Horizontales Hochskalieren von Datenbanken mit dem Shardzuordnungs-Manager](http://go.microsoft.com/?linkid=9862595).  
+* **Verwalten von Shards und Shardzuordnungen:** Der Code in der Datei *ShardManagementUtils.cs* veranschaulicht die Arbeit mit Shards, Bereichen und Zuordnungen. Weitere Informationen finden Sie unter [Horizontales Hochskalieren von Datenbanken mit dem Shardzuordnungs-Manager](https://go.microsoft.com/?linkid=9862595).  
 
-* **Datenabhängiges Routing:** Das Routing von Transaktionen zum richtigen Shard wird in der Datei *DataDependentRoutingSample.cs* dargestellt. Weitere Informationen finden Sie unter [Datenabhängiges Routing](http://go.microsoft.com/?linkid=9862596). 
+* **Datenabhängiges Routing:** Das Routing von Transaktionen zum richtigen Shard wird in der Datei *DataDependentRoutingSample.cs* dargestellt. Weitere Informationen finden Sie unter [Datenabhängiges Routing](https://go.microsoft.com/?linkid=9862596). 
 
-* **Abfragen mehrerer Shards:** Shardübergreifende Abfragen werden in der Datei *MultiShardQuerySample.cs* veranschaulicht. Weitere Informationen finden Sie unter [Abfragen mehrerer Shards](http://go.microsoft.com/?linkid=9862597).
+* **Abfragen mehrerer Shards:** Shardübergreifende Abfragen werden in der Datei *MultiShardQuerySample.cs* veranschaulicht. Weitere Informationen finden Sie unter [Abfragen mehrerer Shards](https://go.microsoft.com/?linkid=9862597).
 
-* **Hinzufügen leerer Shards:** Das iterative Hinzufügen neuer leerer Shards wird mit dem Code in der Datei *CreateShardSample.cs* durchgeführt. Weitere Informationen finden Sie unter [Horizontales Hochskalieren von Datenbanken mit dem Shardzuordnungs-Manager](http://go.microsoft.com/?linkid=9862595).
+* **Hinzufügen leerer Shards:** Das iterative Hinzufügen neuer leerer Shards wird mit dem Code in der Datei *CreateShardSample.cs* durchgeführt. Weitere Informationen finden Sie unter [Horizontales Hochskalieren von Datenbanken mit dem Shardzuordnungs-Manager](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Weitere Elastic Scale-Operationen
 * **Aufteilen eines vorhandenen Shards:** Die Möglichkeit zum Aufteilen von Shards wird durch das Split-Merge-Tool bereitgestellt. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken](sql-database-elastic-scale-overview-split-and-merge.md).
@@ -119,12 +119,12 @@ Preisinformationen finden Sie unter [SQL-Datenbank – Preisdetails](https://azu
 Weitere Informationen zu den Tools für elastische Datenbanken finden Sie in den folgenden Artikeln:
 
 * Codebeispiele: 
-  * Tools für elastische Datenbanken ([.NET](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
-  * [Tools für elastische Datenbanken für Azure SQL – Entity Framework-Integration](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
+  * Tools für elastische Datenbanken ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * [Tools für elastische Datenbanken für Azure SQL – Entity Framework-Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Shard-Elastizität im Script Center](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [Ankündigung zur elastischen Skalierung](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 * Channel 9: [Elastische Skalierung – Übersichtsvideo](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Diskussionsforum: [Azure SQL-Datenbank – Forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* Diskussionsforum: [Azure SQL-Datenbank – Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * So messen Sie die Leistung: [Leistungsindikatoren für den Shardzuordnungs-Manager](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->

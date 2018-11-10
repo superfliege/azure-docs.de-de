@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: b0aa61c86b08a4fe2eddb5eb1fb5b33c4cb901a0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 68754f85347fe6bc075af513580697d1e7a83c18
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386586"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247414"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Verwenden von Notofication Hubs mit Python
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Sie können von einem Java-/PHP-/Python-/Ruby-Back-End aus über die REST-Schnittstelle für Notification Hubs, die im MSDN-Artikel [REST-APIs für Benachrichtigungshubs](http://msdn.microsoft.com/library/dn223264.aspx) beschrieben ist, auf alle Notification Hub-Funktionen zugreifen.
+Sie können von einem Java-/PHP-/Python-/Ruby-Back-End aus über die REST-Schnittstelle für Notification Hubs, die im MSDN-Artikel [REST-APIs für Benachrichtigungshubs](https://msdn.microsoft.com/library/dn223264.aspx) beschrieben ist, auf alle Notification Hub-Funktionen zugreifen.
 
 > [!NOTE]
 > Dies ist eine beispielhafte Referenzimplementierung für die Implementierung der Benachrichtigungsübermittlung in Python und nicht der offiziell unterstützte Notification Hub Python SDK.
@@ -47,7 +47,7 @@ Führen Sie die Schritte im Lernprogramm [Erste Schritte mit Notification Hubs](
 > 
 
 ## <a name="client-interface"></a>Clientschnittstelle
-Über die Hauptclientschnittstelle können dieselben Methoden bereitgestellt werden, die im [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx)verfügbar sind. Mithilfe dieser Schnittstelle können Sie alle Tutorials und Beispiele, die derzeit auf dieser Website verfügbar sind und die von der Community im Internet beigesteuert werden, direkt umsetzen.
+Über die Hauptclientschnittstelle können dieselben Methoden bereitgestellt werden, die im [.NET Notification Hubs SDK](https://msdn.microsoft.com/library/jj933431.aspx)verfügbar sind. Mithilfe dieser Schnittstelle können Sie alle Tutorials und Beispiele, die derzeit auf dieser Website verfügbar sind und die von der Community im Internet beigesteuert werden, direkt umsetzen.
 
 Den gesamten verfügbaren Code finden Sie im [Beispiel für Python-REST-Wrapper].
 
@@ -64,7 +64,7 @@ So senden Sie eine Windows-Popupbenachrichtigung
 ## <a name="implementation"></a>Implementierung
 Führen Sie, sofern nicht bereits geschehen, das Tutorial [Erste Schritte mit Notification Hubs] bis zum letzten Abschnitt aus, in dem Sie das Back-End implementieren müssen.
 
-Alle Details für das Implementieren eines vollständigen REST-Wrappers finden sich auf [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). In diesem Abschnitt wird die Python-Implementierung mit den Hauptschritten beschrieben, die für den Zugriff auf REST-Endpunkte von Notification Hubs und für das Senden von Benachrichtigungen erforderlich sind.
+Alle Details für das Implementieren eines vollständigen REST-Wrappers finden sich auf [MSDN](https://msdn.microsoft.com/library/dn530746.aspx). In diesem Abschnitt wird die Python-Implementierung mit den Hauptschritten beschrieben, die für den Zugriff auf REST-Endpunkte von Notification Hubs und für das Senden von Benachrichtigungen erforderlich sind.
 
 1. Analysieren der Verbindungszeichenfolge
 2. Generieren des Authentifizierungstokens
@@ -96,7 +96,7 @@ Dies hier ist die Hauptklasse, die den Client implementiert, dessen Konstruktor 
 
 
 ### <a name="create-security-token"></a>Erstellen des Sicherheitstokens
-Einzelheiten zum Erstellen des Sicherheitstokens finden Sie [hier](http://msdn.microsoft.com/library/dn495627.aspx).
+Einzelheiten zum Erstellen des Sicherheitstokens finden Sie [hier](https://msdn.microsoft.com/library/dn495627.aspx).
 Fügen Sie der **NotificationHub**-Klasse die folgenden Methoden hinzu, um das Token basierend auf dem URI der aktuellen Anforderung und den Anmeldeinformationen, die aus der Verbindungszeichenfolge extrahiert wurden, zu erstellen.
 
     @staticmethod
@@ -148,7 +148,7 @@ Lassen Sie uns zuerst eine Klasse definieren, die eine Benachrichtigung darstell
 
 Diese Klasse ist ein Container für einen nativen Benachrichtigungstext oder einen Satz von Eigenschaften einer Benachrichtigungsvorlage sowie ein Satz von Headern, der ein Format (native Plattform oder Vorlage) und plattformspezifische Eigenschaften (wie die Apple-Ablaufeigenschaft und WNS-Header) enthält.
 
-Alle verfügbaren Optionen finden Sie in der Dokumentation der [REST-APIs für Notification Hubs](http://msdn.microsoft.com/library/dn495827.aspx) und unter den Formaten der einzelnen Benachrichtigungsplattformen.
+Alle verfügbaren Optionen finden Sie in der Dokumentation der [REST-APIs für Notification Hubs](https://msdn.microsoft.com/library/dn495827.aspx) und unter den Formaten der einzelnen Benachrichtigungsplattformen.
 
 Mit dieser Klasse können Sie jetzt die Methoden zum Senden von Benachrichtigungen in der **NotificationHub**-Klasse schreiben.
 

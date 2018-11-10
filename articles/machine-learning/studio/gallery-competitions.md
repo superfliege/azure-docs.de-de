@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 54ca22d9a3e685f6ae1e1454569bab9d058ce4fe
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 08434007c7ef66349cae2a368d3be94ee522bab1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834490"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242347"
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>Entdecken von Wettbewerben im Azure AI-Katalog
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -31,7 +31,7 @@ Unter **[Competitions (Wettbewerbe)](https://gallery.cortanaintelligence.com/com
 Antworten auf häufig gestellte Fragen zu Wettbewerben finden Sie unter [Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen](competition-faq.md).
 
 ## <a name="discover"></a>Entdecken
-Die Seite **[Competitions](https://gallery.cortanaintelligence.com/competitions)** (Wettbewerbe) ([aka.ms/CIComp](http://aka.ms/CIComp)) zeigt eine Liste der am häufigsten verwendeten Wettbewerbe an.
+Die Seite **[Competitions](https://gallery.cortanaintelligence.com/competitions)** (Wettbewerbe) ([aka.ms/CIComp](https://aka.ms/CIComp)) zeigt eine Liste der am häufigsten verwendeten Wettbewerbe an.
 
 ![Wählen Sie Competitions auf der Startseite des Katalogs aus](./media/gallery-competitions/select-competitions-in-gallery.png)
 

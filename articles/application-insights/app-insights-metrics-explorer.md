@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4c35f4366b2290164036316be8de730e20aa99bf
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: cc9b3bd1d038bd8aa9c01e806e5448824011bc93
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092661"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240748"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Untersuchen von Metriken in Application Insights
 Metriken in [Application Insights][start] sind gemessene Werte und Anzahlen von Ereignissen, die als Telemetriedaten aus Ihrer Anwendung gesendet werden. Sie dienen zum Erkennen von Leistungsproblemen und Überwachen von Trends bei der Nutzung Ihrer Anwendung. Es gibt eine Vielzahl von Standardmetriken, doch Sie können auch eigene benutzerdefinierte Metriken und Ereignisse erstellen.
@@ -180,7 +180,7 @@ Fügen Sie eine Benachrichtigung hinzu, wenn Sie per E-Mail über ungewöhnliche
 Wenn Sie Daten zur externen Verarbeitung fortlaufend exportieren möchten, sollten Sie die Funktion [Fortlaufender Export](app-insights-export-telemetry.md)verwenden.
 
 ### <a name="power-bi"></a>Power BI
-Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Power BI exportieren](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
+Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Power BI exportieren](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Analytics
 [Analytics](app-insights-analytics.md) bietet eine vielseitigere Möglichkeit zum Analysieren Ihrer Telemetriedaten mit einer leistungsfähigen Abfragesprache. Verwenden Sie sie, wenn Sie Ergebnisse von Metriken kombinieren oder berechnen oder eine eingehende Untersuchung der kürzlich erreichten Leistung Ihrer App durchführen möchten. 
@@ -194,14 +194,14 @@ In einem Metrikdiagramm können Sie auf das Symbol „Analyse“ klicken, um dir
 
     Wenn Sie verschiedene Filter für verschiedene Diagramme festlegen möchten, sollten Sie diese in unterschiedlichen Blättern erstellen und als separate Favoriten speichern. Sie können sie auch im Dashboard anheften, damit sie nebeneinander angezeigt werden.
 * Wenn Sie ein Diagramm nach einer Eigenschaft gruppieren, die nicht in der Metrik definiert ist, sind im Diagramm keine Daten enthalten. Versuchen Sie, die Einstellungen für „Gruppieren nach“ zu löschen, oder wählen Sie eine andere Gruppierungseigenschaft aus.
-* Leistungsdaten (CPU, E/A-Rate usw.) sind für Java-Webdienste, Windows-Desktop-Apps, [IIS-Web-Apps und -Dienste bei Installation des Statusmonitors](app-insights-monitor-performance-live-website-now.md) und [Azure Cloud Services](app-insights-azure.md) verfügbar. Für Azure-Websites sind sie dagegen nicht verfügbar.
+* Leistungsdaten (CPU, E/A-Rate usw.) sind für Java-Webdienste, Windows-Desktop-Apps, [IIS-Web-Apps und -Dienste bei Installation des Statusmonitors](app-insights-monitor-performance-live-website-now.md) und [Azure Cloud Services](app-insights-overview.md) verfügbar. Für Azure-Websites sind sie dagegen nicht verfügbar.
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überwachen der Verwendung mit Application Insights](app-insights-web-track-usage.md)
+* [Überwachen der Verwendung mit Application Insights](app-insights-usage-overview.md)
 * [Verwenden der Diagnosesuche](app-insights-diagnostic-search.md)
 
 <!--Link references-->

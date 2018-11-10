@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1aeaff486ed9f7cb99ea0b95451fc765344847a1
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 85873dc023e63b7cc9f5ba3ff87214c49ac16e34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086674"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246734"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -30,7 +30,7 @@ Azure Migrate bietet Folgendes:
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
 - Es können nur lokale virtuelle VMware-Computer (Virtual Machines, VMs) für die Migration zu virtuellen Azure-Computern bewertet werden. Die virtuellen VMware-Computer müssen mit vCenter Server (Version 5.5, 6.0 oder 6.5) verwaltet werden.
-- Wenn Sie virtuelle Hyper-Computer und physische Server bewerten möchten, verwenden Sie den [Azure Site Recovery-Bereitstellungsplaner](http://aka.ms/asr-dp-hyperv-doc) für Hyper-V und unsere [Partnertools](https://azure.microsoft.com/migration/partners/) für physische Computer.
+- Wenn Sie virtuelle Hyper-Computer und physische Server bewerten möchten, verwenden Sie den [Azure Site Recovery-Bereitstellungsplaner](https://aka.ms/asr-dp-hyperv-doc) für Hyper-V und unsere [Partnertools](https://azure.microsoft.com/migration/partners/) für physische Computer.
 - Sie können in einer einzigen Ermittlung bis zu 1.500 und in einem einzelnen Projekt bis zu 1.500 virtuelle Computer ermitteln. Außerdem können Sie in einem einzelnen Assessment bis zu 1.500 virtuelle Computer bewerten.
 - Wenn Sie eine Ermittlung für eine größere Umgebung durchführen möchten, können Sie die Ermittlung aufteilen und mehrere Projekte erstellen. [Weitere Informationen](how-to-scale-assessment.md). Azure Migrate unterstützt bis zu 20 Projekte pro Abonnement.
 - Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
