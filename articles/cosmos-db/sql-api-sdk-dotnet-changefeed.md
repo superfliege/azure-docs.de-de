@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: f09430aeb38e6762729167494a23096c7bc5ca85
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: eb50673b4f618caadfa1abfb654d7e3f15e51713
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023950"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740959"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zur Version
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ ms.locfileid: "50023950"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="v2-builds"></a>V2-Builds
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+* Ein Problem wurde behoben, das während der Verarbeitung von Aufteilungen auftreten konnte, wenn die Leasesammlung partitioniert ist. Das Problem kann dazu führen, dass Leases für nicht mehr vorhandene Partitionen nicht aus der Leasesammlung gelöscht werden. Dieses Problem wurde in diesem Release behoben.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * Die Berechnung der Schätzung für Multimasterkonten wurde korrigiert und ein neues Sitzungstokenformat eingeführt.

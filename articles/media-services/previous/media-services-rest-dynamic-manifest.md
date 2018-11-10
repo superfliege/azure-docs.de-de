@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 396abe0801d76af3820d302d40d2fc076754741b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 50becbe517e98802c9a3af91b86f845df05378a7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785729"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227517"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Erstellen von Filtern mit der Azure Media Services-REST-API
 > [!div class="op_single_selector"]
@@ -195,7 +195,7 @@ Verwenden Sie zum Auflisten von Filtern die folgenden HTTP-Anforderungen:
 
 
 ## <a name="update-filters"></a>Aktualisieren von Filtern
-Verwenden Sie PATCH, PUT oder MERGE, um einen Filter mit neuen Eigenschaftswerten zu aktualisieren.  Weitere Informationen zu diesen Vorgängen finden Sie unter [PATCH, PUT, MERGE](http://msdn.microsoft.com/library/dd541276.aspx).
+Verwenden Sie PATCH, PUT oder MERGE, um einen Filter mit neuen Eigenschaftswerten zu aktualisieren.  Weitere Informationen zu diesen Vorgängen finden Sie unter [PATCH, PUT, MERGE](https://msdn.microsoft.com/library/dd541276.aspx).
 
 Beim Aktualisieren eines Filters kann es bis zu zwei Minuten dauern, bis die Regeln am Streamingendpunkt aktualisiert wurden. Wenn der Inhalt mit diesem Filter verarbeitet (und in Proxys und CDN-Caches zwischengespeichert) wurde, können durch Aktualisieren des Filters Player-Fehler auftreten. Leeren Sie den Cache nach dem Aktualisieren des Filters. Wenn dies nicht möglich ist, empfiehlt sich die Verwendung eines anderen Filters.  
 

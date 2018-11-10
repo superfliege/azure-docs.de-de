@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c14013121517267445e89f43e228b03ba184f013
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ad3deaad8c069cfb11bb0eb997d886807ecdb0f8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415255"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006497"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
 
@@ -58,7 +58,7 @@ Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen an
 3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche einen Arbeitsbereich aus.
 4. Wählen Sie in der Liste im linken Bereich die Option **Nutzung und geschätzte Kosten** aus.
 5. Auf dem Dashboard für **Nutzung und geschätzte Kosten** können Sie den Zeitraum anpassen. Klicken Sie dazu auf **Zeit: Letzte 24 Stunden**, und ändern Sie das Zeitintervall.<br><br> ![Zeitintervall](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
-6. Zeigen Sie die Blätter mit der Nutzungskategorie an, auf denen die für Sie interessanten Bereiche enthalten sind. Wählen Sie ein Blatt aus, und klicken Sie darin dann auf ein Element, um für die [Protokollsuche](log-analytics-log-searches.md) mehr Details anzuzeigen.<br><br> ![Beispiel-KPI für die Datennutzung](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+6. Zeigen Sie die Blätter mit der Nutzungskategorie an, auf denen die für Sie interessanten Bereiche enthalten sind. Wählen Sie ein Blatt aus, und klicken Sie darin dann auf ein Element, um für die [Protokollsuche](log-analytics-queries.md) mehr Details anzuzeigen.<br><br> ![Beispiel-KPI für die Datennutzung](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
 7. Überprüfen Sie im Dashboard „Protokollsuche“ die Ergebnisse, die für die Suche ausgegeben werden.<br><br> ![Beispiel zur Nutzung für die Protokollsuche](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Erstellen einer Warnung für den Fall, dass die Datensammlung höher als erwartet ist
@@ -78,7 +78,7 @@ Für die folgende Abfrage wird eine einfache Formel verwendet, um vorherzusagen,
 
 Wenn die Warnung für ein anderes Datenvolumen gelten soll, ändern Sie den Wert 100 in den Abfragen einfach in den gewünschten GB-Wert.
 
-Führen Sie die Schritte unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung höher als erwartet ausfällt.
+Führen Sie die Schritte unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/alert-metric.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung höher als erwartet ausfällt.
 
 Legen Sie beim Erstellen der Warnung für die erste Abfrage Folgendes fest, wenn mehr als 100 GB an Daten innerhalb von 24 Stunden anfallen:  
 
@@ -163,19 +163,19 @@ Führen Sie die folgenden Schritte aus, um das Volumen der erfassten Protokolle 
 | Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](log-analytics-data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
 | syslog                     | Ändern Sie die [syslog-Konfiguration](log-analytics-data-sources-syslog.md) in: <br> - Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Informationen* und *Debuggen*. |
 | AzureDiagnostics           | Ändern Sie die Ressourcenprotokollsammlung, um Folgendes zu erreichen: <br> - Verringern der Anzahl von Ressourcen, die Protokolle an Log Analytics senden <br> - Ausschließliches Erfassen von erforderlichen Protokollen |
-| Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
+| Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../monitoring/monitoring-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Überprüfen, ob mehr Knoten als erwartet vorhanden sind
 Wenn Sie den Tarif *Pro Knoten (Log Analytics)* nutzen, werden Ihre Gebühren basierend auf der Anzahl von genutzten Knoten und Lösungen berechnet. Sie können im Dashboard „Nutzung“ im Abschnitt mit den *Angeboten* anzeigen, wie viele Knoten eines Angebots jeweils verwendet werden.<br><br> ![Dashboard „Nutzung“](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 Klicken Sie auf **Alle anzeigen...**, um die vollständige Liste mit Computern anzuzeigen, von denen für das ausgewählte Angebot Daten gesendet werden.
 
-Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
+Verwenden Sie die [Zielgruppenadressierung für Lösungen](../monitoring/monitoring-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen dazu, wie Sie die Suchsprache verwenden, finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-log-searches.md). Sie können Suchabfragen verwenden, um für die Nutzungsdaten eine zusätzliche Analyse durchzuführen.
-* Führen Sie die unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) beschriebenen Schritte aus, um benachrichtigt zu werden, wenn ein Suchkriterium erfüllt ist.
-* Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
+* Informationen dazu, wie Sie die Suchsprache verwenden, finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-queries.md). Sie können Suchabfragen verwenden, um für die Nutzungsdaten eine zusätzliche Analyse durchzuführen.
+* Führen Sie die unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/alert-metric.md) beschriebenen Schritte aus, um benachrichtigt zu werden, wenn ein Suchkriterium erfüllt ist.
+* Verwenden Sie die [Zielgruppenadressierung für Lösungen](../monitoring/monitoring-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
 * Lesen Sie zum Konfigurieren einer effektiven Richtlinie zur Erfassung von Sicherheitsereignissen die Informationen unter [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md).
 * Ändern Sie die [Leistungsindikatorenkonfiguration](log-analytics-data-sources-performance-counters.md).
 * Informationen zum Ändern der Einstellungen für die Ereigniserfassung finden Sie unter [Datenquellen für Windows-Ereignisprotokolle in Log Analytics](log-analytics-data-sources-windows-events.md).

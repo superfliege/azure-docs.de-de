@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 2edfa84530c147e1f716aef10c967ac36eadc922
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 2d17f4471383be623cb40276ec1e51257bf3fbce
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250763"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740373"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Governance der Azure DevTest Labs-Infrastruktur – Ressourcen
 Dieser Artikel behandelt die Ausrichtung und die Verwaltung von Ressourcen für DevTest Labs in Ihrer Organisation. 
@@ -67,7 +67,7 @@ Wir empfehlen, dass Geschäftseinheiten und Entwicklungsgruppen, die dem gleiche
 
 Ggf. müssen auch geografische Grenzen berücksichtigt werden. Beispielsweise benutzen Entwickler im Nordosten der USA möglicherweise ein Lab, das in USA Osten 2 bereitgestellt ist. Demgegenüber sind Entwickler in Dallas, Texas, und Denver, Colorado, gehalten, eine Ressource in USA Süden-Mitte zu verwenden. Wenn es zur einer Zusammenarbeit mit einem externen Drittanbieter kommt, werden beide möglicherweise einem Lab zugewiesen, das nicht von internen Entwicklern verwendet wird. 
 
-Sie können auch ein Lab für ein bestimmtes Projekt innerhalb eines Visual Studio Team Services-Teamprojekts nutzen. Anschließend wenden Sie Sicherheit in Form einer angegebenen Azure Active Directory-Gruppe an, was den Zugriff auf beide Ressourcensätze ermöglicht. Das dem Lab zugewiesene virtuelle Netzwerk kann eine weitere Grenze zur Konsolidierung der Benutzer bilden.
+Sie können auch ein Lab für ein bestimmtes Projekt in Azure DevOps Projects verwenden. Anschließend wenden Sie Sicherheit in Form einer angegebenen Azure Active Directory-Gruppe an, was den Zugriff auf beide Ressourcensätze ermöglicht. Das dem Lab zugewiesene virtuelle Netzwerk kann eine weitere Grenze zur Konsolidierung der Benutzer bilden.
 
 ## <a name="deletion-of-resources"></a>Löschen von Ressourcen
 

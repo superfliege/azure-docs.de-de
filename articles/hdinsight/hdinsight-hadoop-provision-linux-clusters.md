@@ -3,19 +3,19 @@ title: Einrichten von Clustern für Hadoop, Spark, Kafka, HBase oder R Server �
 description: Richten Sie Hadoop-, Kafka-, Spark-, HBase-, R Server- oder Storm-Cluster für HDInsight über einen Browser, die klassische Azure-Befehlszeilenschnittstelle, Azure PowerShell, REST oder ein SDK ein.
 keywords: Hadoop-Cluster einrichten, Kafka-Cluster einrichten, Spark-Cluster einrichten, was ist ein Hadoop-Cluster?
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: 9eb99c26510475a5db51fa30f1634813b2c377f8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ca3a4b4ffc8639b2636b917e656255c2c1b10d33
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992846"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005477"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.
 
@@ -60,7 +60,7 @@ Befolgen Sie die Anweisungen auf dem Bildschirm, um eine grundlegenden Clusterei
 
 ## <a name="resource-group-name"></a>Ressourcengruppenname 
 
-Mit [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten. Dies wird als „Azure-Ressourcengruppe“ bezeichnet. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen.
+[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten, bezeichnet als „Azure-Ressourcengruppe“. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen.
 
 ## <a name="cluster-types"></a> Clustertypen und Konfiguration
 Azure HDInsight bietet derzeit die folgenden Typen von Clustern mit je einer Reihe von Komponenten, um bestimmte Funktionen bereitzustellen.

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: df5e55c2c03fec13ada258be91f0d98b7ce70d94
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 21f030f692065357f5ab8d23aa6940fecfdeefc1
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406159"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004865"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Log Analytics 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
@@ -170,4 +170,4 @@ Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten mit Log Anal
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erfassen von Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) von Linux-Agents
-* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 

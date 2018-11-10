@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5638b71147592ae71c741ca86da68ddfec668af5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: acb010b0169fd876bf540f7a4115dbabfeda923a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299065"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227194"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>Verbinden von Microsoft Azure Application Gateway mit Azure Security Center
 Dieses Dokument unterstützt Sie dabei, die Integration in Application Gateway Web Application Firewall (WAF) und Security Center zu konfigurieren.
@@ -61,4 +61,4 @@ In diesem Artikel haben Sie erfahren, wie Sie Application Gateway WAF in Securit
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md):
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md):
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md):
-* [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/):
+* [Azure Security-Blog](https://blogs.msdn.com/b/azuresecurity/):

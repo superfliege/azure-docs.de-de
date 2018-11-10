@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 36c42830738f160b24f65e86576ba93aac1ea737
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412738"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005597"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Behandeln von Problemen mit einem virtuellen Azure-Computer unter Verwendung der geschachtelten Virtualisierung in Azure
 
@@ -101,7 +101,7 @@ Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtue
 
 11. Wählen Sie **Virtuelle Festplatte später zuordnen** aus.
 
-    ![Abbildung mit der Option „Virtuelle Festplatte später zuordnen“](/media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
+    ![Abbildung mit der Option „Virtuelle Festplatte später zuordnen“](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
 12. Klicken Sie auf **Fertig stellen**, wenn der virtuelle Computer erstellt wurde.
 
@@ -109,11 +109,11 @@ Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtue
 
 14. Klicken Sie auf **IDE-Controller 0** > **Festplatte** > **Hinzufügen**.
 
-    ![Abbildung zum Hinzufügen der neuen Festplatte](/media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
+    ![Abbildung zum Hinzufügen der neuen Festplatte](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
 15. Wählen Sie unter **Physische Festplatte** den Datenträger des virtuellen Computers mit dem Problem aus, den Sie an den virtuellen Azure-Computer angefügt haben. Sollten keine Datenträger aufgeführt werden, überprüfen Sie mithilfe der Datenträgerverwaltung, ob der Datenträger auf „Offline“ festgelegt ist.
 
-    ![Abbildung zum Einbinden des Datenträgers](/media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
+    ![Abbildung zum Einbinden des Datenträgers](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
 17. Klicken Sie auf **Apply** (Anwenden) und dann auf **OK**.
@@ -130,11 +130,11 @@ Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtue
 
 3.  Navigieren Sie zu **Alle Ressourcen**, suchen Sie nach dem Namen des Datenträgers, und wählen Sie den Datenträger aus.
 
-     ![Abbildung zur Suche nach dem Datenträger](/media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
+     ![Abbildung zur Suche nach dem Datenträger](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
 
 4. Klicken Sie auf **Virtuellen Computer erstellen**.
 
-     ![Abbildung zur Erstellung des virtuellen Computers auf der Grundlage des Datenträgers](./media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
+     ![Abbildung zur Erstellung des virtuellen Computers auf der Grundlage des Datenträgers](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
 
 Der virtuelle Computer kann auch mithilfe von Azure PowerShell auf der Grundlage des Datenträgers erstellt werden. Weitere Informationen finden Sie unter [Erstellen des neuen virtuellen Computers](../windows/create-vm-specialized.md#create-the-new-vm). 
 

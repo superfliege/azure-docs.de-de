@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 72eaa6f085581f34b696a946e2168eceaa21a849
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 56e6a26803ed5257f1cc303b293615a5ea85a866
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987712"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740041"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -24,7 +24,7 @@ ms.locfileid: "46987712"
 
 Cloudyn zeigt die Nutzung und Kosten an, damit Sie Trends nachverfolgen, Ineffizienzen erkennen und Warnungen erstellen können. Alle Nutzungs- und Kostendaten werden in Cloudyn-Dashboards und -Berichten angezeigt. In den Beispielen dieses Tutorials erhalten Sie schrittweise Anleitungen zum Überprüfen von Nutzung und Kosten anhand von Dashboards und Berichten.
 
-Azure Cost Management bietet ähnliche Funktionen wie Cloudyn. Azure Cost Management ist eine native Azure-Kostenverwaltungslösung. Die Lösung unterstützt Sie beim Analysieren von Kosten, Erstellen und Verwalten von Budgets, Exportieren von Daten sowie beim Prüfen von und Reagieren auf Optimierungsempfehlungen, um Geld zu sparen. Weitere Informationen finden Sie unter [Was ist Azure-Kostenverwaltung?](overview-cost-mgt.md).
+Azure Cost Management bietet ähnliche Funktionen wie Cloudyn. Azure Cost Management ist eine native Azure-Kostenverwaltungslösung. Die Lösung unterstützt Sie beim Analysieren von Kosten, beim Erstellen und Verwalten von Budgets, beim Exportieren von Daten sowie beim Prüfen von Optimierungsempfehlungen und beim Reagieren auf diese – und damit beim Sparen von Geld. Weitere Informationen finden Sie unter [Azure Cost Management](overview-cost-mgt.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -57,11 +57,11 @@ Im Bericht werden alle Ausgaben in den letzten 30 Tagen aufgeführt. Wenn nur di
 
 ![Gefilterte Dienste](./media/tutorial-review-usage/actual-cost02.png)
 
-Im vorherigen Beispiel fielen ab dem 31.8.2017 geringere Ausgaben als davor an. Dieser Kostentrend setzt sich für die verschiedenen Dienste über etwa neun Tage fort. Anschließend fallen wie zuvor zusätzliche Ausgaben an. Eine zu große Anzahl von Spalten kann jedoch einen offensichtlichen Trend verdecken. Sie können die Berichtsanzeige in ein Linien- oder Flächendiagramm ändern, um die Daten in anderen Darstellungen zu untersuchen. In der folgenden Abbildung ist der Trend deutlicher erkennbar.
+Im vorherigen Beispiel fielen ab dem 29.10.2018 geringere Ausgaben an. Eine zu große Anzahl von Spalten kann aber einen offensichtlichen Trend verdecken. Sie können die Berichtsanzeige in ein Linien- oder Flächendiagramm ändern, um die Daten in anderen Darstellungen zu untersuchen. In der folgenden Abbildung ist der Trend deutlicher erkennbar.
 
 ![Trend im Bericht](./media/tutorial-review-usage/actual-cost03.png)
 
-Im Beispiel wird klar ersichtlich, dass die Kosten für Azure Storage ab dem 31.08.2017 abfielen, während die Ausgaben für andere Azure-Dienste unverändert blieben. Wodurch wurde diese Kostensenkung verursacht? In diesem Beispiel waren einige Mitarbeiter im Urlaub und somit nicht am Arbeitsplatz, sodass sie den Storage-Dienst nicht nutzten.
+Wenn Sie mit dem Beispiel fortfahren, sehen Sie, dass die Kosten für die Azure-VM gefallen sind. Die Kosten für die anderen Azure-Dienste sind ab diesem Tag ebenfalls gefallen. Wodurch wurde diese Kostensenkung verursacht? In diesem Beispiel wurde ein großes Projekt abgeschlossen, sodass auch der Verbrauch für viele Azure-Dienste gefallen ist.
 
 Ein Videotutorial zur Nachverfolgung von Nutzungs- und Kostentrends finden Sie unter [Analyzing your cloud billing data vs. time with Cloudyn](https://youtu.be/7LsVPHglM0g) (Analysieren Ihrer Cloudabrechnungsdaten im Vergleich zur Abrechnung anhand von Zeitintervallen mit Cloudyn).
 
@@ -75,11 +75,11 @@ Das Problem liegt darin, dass die vorhandene Infrastruktur bereits bezahlt wurde
 
 Im Bericht mit Empfehlungen zu kostengünstigen Größenanpassungen werden potenzielle jährliche Einsparungen ausgewiesen. Dabei wird die Kapazität des jeweiligen VM-Instanztyps mit den historischen Daten zu CPU- und Speichernutzung verglichen.  
 
-Klicken Sie im Menü oben im Portal auf **Optimizer** (Optimierung) > **Sizing Optimization** (Größenoptimierung) > **Cost Effective Sizing Recommendations** (Empfehlungen zu kostengünstigen Größenanpassungen). Geben Sie im Filter Azure als Anbieter an, um ausschließlich Azure-VMs zu betrachten. In der folgenden Abbildung finden Sie ein Beispiel.
+Klicken Sie im Menü oben im Portal auf **Optimizer** (Optimierung) > **Sizing Optimization** (Größenoptimierung) > **Cost Effective Sizing Recommendations** (Empfehlungen zu kostengünstigen Größenanpassungen). Wenden Sie einen Filter an, um die Ergebnisse zu reduzieren, falls dies hilfreich ist. In der folgenden Abbildung finden Sie ein Beispiel.
 
 ![Virtuelle Azure-Computer](./media/tutorial-review-usage/sizing01.png)
 
-In diesem Beispiel können 3.114 USD eingespart werden, wenn die Empfehlungen hinsichtlich der Änderung der VM-Instanztypen befolgt werden. Klicken Sie auf das Pluszeichen (+) unter **Details**, um die erste Empfehlung aufzurufen. Dies sind die Details der Empfehlung.
+In diesem Beispiel können 2.382 USD eingespart werden, wenn die Empfehlungen hinsichtlich der Änderung der VM-Instanztypen befolgt werden. Klicken Sie auf das Pluszeichen (+) unter **Details**, um die erste Empfehlung aufzurufen. Dies sind die Details der Empfehlung.
 
 ![Empfehlungsdetails](./media/tutorial-review-usage/sizing02.png)
 
@@ -89,13 +89,15 @@ Zeigen Sie die IDs der VM-Instanz an, indem Sie auf das Pluszeichen neben **List
 
 Ein Videotutorial zum Ermitteln von Ineffizienzen bei der Nutzung finden Sie unter [Optimizing VM Size in Cloudyn](https://youtu.be/1xaZBNmV704) (Optimieren der VM-Größe in Cloudyn).
 
+In Azure Cost Management werden auch Empfehlungen zur Kosteneinsparung für Azure-Dienste bereitgestellt. Weitere Informationen finden Sie unter [Tutorial: Optimieren von Kosten mithilfe von Empfehlungen](tutorial-acm-opt-recommendations.md).
+
 ## <a name="create-alerts-for-unusual-spending"></a>Erstellen von Warnungen für ungewöhnliche Ausgaben
 
 Sie können Beteiligte automatisch über Anomalien bei den Ausgaben und Risiken der Budgetüberschreitung benachrichtigen. Sie können schnell und einfach Warnungen auf der Grundlage von Berichten erstellen, die Warnungen anhand von Budget- und Kostenschwellenwerten ausgeben.
 
 Für Ausgaben erstellen Sie eine Warnung anhand eines Kostenberichts. In diesem Beispiel wird mithilfe des Berichts über die tatsächlichen Kosten im Zeitverlauf eine Benachrichtigung an Sie ausgegeben, wenn sich die Azure VM-Ausgaben Ihrem Gesamtbudget nähern. Zum Erstellen der Warnung sind folgende Schritte erforderlich: Klicken Sie im Menü oben im Portal auf **Cost** (Kosten) > **Cost Analysis** (Kostenanalyse) > **Actual Cost Over Time** (Tatsächliche Kosten im Zeitverlauf). Legen Sie **Groups** (Gruppen) auf **Service** (Dienst) und **Filter on the service** (Filtern nach Dienst) auf **Azure/VM** fest. Klicken Sie in der oberen rechten Ecke des Berichts auf **Actions** (Aktionen), und wählen Sie anschließend **Schedule report** (Bericht planen) aus.
 
-Verwenden Sie im Feld „Save or Schedule this report“ (Diesen Bericht speichern oder planen) die Registerkarte **Scheduling** (Planung), um sich den Bericht in den gewünschten Intervallen per E-Mail zusenden zu lassen. Achten Sie darauf, dass Sie **Send via email** (Per E-Mail senden) auswählen. Sämtliche verwendeten Tags, Gruppierungen und Filter sind in dem per E-Mail versendeten Bericht enthalten. Klicken Sie auf die Registerkarte **Threshold** (Schwellenwert), und wählen Sie **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. Wenn Sie über ein Gesamtbudget von 500.000 USD verfügen und eine Benachrichtigung wünschen, wenn sich die Kosten der Hälfte des Budgetbetrags annähern, erstellen Sie eine **rote Warnung** bei 250.000 USD und eine **gelbe Warnung** bei 240.000 USD. Verwenden Sie keine Kommas in eingegebenen Werten. Wählen Sie anschließend die Anzahl der aufeinanderfolgenden Warnungen aus. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr versendet. Speichern Sie den geplanten Bericht.
+Verwenden Sie im Feld „Save or Schedule this report“ (Diesen Bericht speichern oder planen) die Registerkarte **Scheduling** (Planung), um sich den Bericht in den gewünschten Intervallen per E-Mail zusenden zu lassen. Achten Sie darauf, dass Sie **Send via email** (Per E-Mail senden) auswählen. Sämtliche verwendeten Tags, Gruppierungen und Filter sind in dem per E-Mail versendeten Bericht enthalten. Klicken Sie auf die Registerkarte **Threshold** (Schwellenwert), und wählen Sie **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. Wenn Sie über ein Gesamtbudget von 20.000 USD verfügen und eine Benachrichtigung wünschen, wenn sich die Kosten der Hälfte des Budgetbetrags nähern, sollten Sie eine **rote Warnung** bei 10.000 USD und eine **gelbe Warnung** bei 9.000 USD erstellen. Verwenden Sie keine Kommas in eingegebenen Werten. Wählen Sie anschließend die Anzahl der aufeinanderfolgenden Warnungen aus. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr versendet. Speichern Sie den geplanten Bericht.
 
 ![Beispielbericht](./media/tutorial-review-usage/schedule-alert01.png)
 

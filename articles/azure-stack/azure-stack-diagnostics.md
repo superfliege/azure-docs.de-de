@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/02/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 3dd3e3391cc2536f56a5e42610c09c85b4068234
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 6e15fee02fd001bddd25a19b8a9420eb899d4f85
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740552"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978671"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-Diagnosetools
 
@@ -112,11 +112,11 @@ if($s)
 - Wenn die Parameter **FromDate** und **ToDate** nicht angegeben sind, werden standardmäßig Protokolle für die letzten vier Stunden gesammelt.
 - Verwenden Sie den Parameter **FilterByNode**, um Protokolle nach Computername zu filtern. Beispiel: 
 ```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred ` -FilterByNode azs-xrp01
+Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByNode azs-xrp01
 ```
 - Verwenden Sie den Parameter **FilterByLogType**, um Protokolle nach Typ zu filtern. Sie können nach Datei (File), Freigabe (Share) oder Windows-Ereignis (WindowsEvent) filtern. Beispiel: 
 ```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred ` -FilterByLogType File
+Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByLogType File
 ```
 - Sie können den **TimeOutInMinutes**-Parameter verwenden, um das Timeout für die Sammlung von Protokollen festzulegen. Es ist standardmäßig auf 150 (2,5 Stunden) festgelegt.
 - Ab Version 1805 ist die Protokollsammlung von Dumpdateien standardmäßig deaktiviert. Sie können sie mithilfe des Switch-Parameters **IncludeDumpFile** aktivieren. 
@@ -124,30 +124,25 @@ Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred ` -
 
  |   |   |   |    |
  | - | - | - | -  |   
- |ACS|Compute|InfraServiceController|QueryServiceCoordinator|
- |ACSBlob|CPI|Infrastruktur|QueryServiceWorker|
- |ACSDownloadService|CRP|KeyVaultAdminResourceProvider|SeedRing|
- |ACSFabric|DatacenterIntegration|KeyVaultControlPlane|SeedRingServices|
- |ACSFrontEnd|DeploymentMachine|KeyVaultDataPlane|SLB|
- |ACSMetrics|DiskRP|KeyVaultInternalControlPlane|SlbVips|
- |ACSMigrationService|Domäne|KeyVaultInternalDataPlane|SQL|
- |ACSMonitoringService|ECE|KeyVaultNamingService|SRP|
- |ACSSettingsService|EventAdminRP|MDM|Speicher|
- |ACSTableMaster|EventRP|MetricsAdminRP|Speicherkonten|
- |ACSTableServer|ExternalDNS|MetricsRP|StorageController|
- |ACSWac|Fabric|MetricsServer|Tenant|
- |ADFS|FabricRing|MetricsStoreService|TraceCollector|
- |ApplicationController|FabricRingServices|MonAdminRP|URP|
- |ASAppGateway|FirstTierAggregationService|MonitoringAgent|Verwendung|
- |AzureBridge|FRP|MonRP|UsageBridge|
- |AzureMonitor|Gallery|NC|VirtualMachines|
- |AzureStackBitlocker|Gateway|Netzwerk|WAS|
- |BareMetal|HealthMonitoring|NonPrivilegedAppGateway|WASBootstrap|
- |BRP|HintingServiceV2|NRP|WASPUBLIC|
- |CA|HRP|OboService|WindowsDefender|
- |CacheService|IBC|OEM|     |
- |Cloud|IdentityProvider|OnboardRP|     |   
- |Cluster|iDns|PXE|     |
+ |ACS                   |CacheService                   |IBC                            |OEM|
+ |ACSDownloadService    |Compute                        |InfraServiceController         |OnboardRP|
+ |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE|
+ |ACSFrontEnd           |CRP                            |KeyVaultControlPlane           |QueryServiceCoordinator|
+ |ACSMetrics            |DeploymentMachine              |KeyVaultDataPlane              |QueryServiceWorker|
+ |ACSMigrationService   |DiskRP                         |KeyVaultInternalControlPlane   |SeedRing|
+ |ACSMonitoringService  |Domäne                         |KeyVaultInternalDataPlane      |SeedRingServices|
+ |ACSSettingsService    |ECE                            |KeyVaultNamingService          |SLB|
+ |ACSTableMaster        |EventAdminRP                   |MDM                            |SQL|
+ |ACSTableServer        |EventRP                        |MetricsAdminRP                 |SRP   |
+ |ACSWac                |ExternalDNS                    |MetricsRP                      |Speicher|
+ |ADFS                  |FabricRing                     |MetricsServer                  |StorageController   |
+ |ApplicationController |FabricRingServices             |MetricsStoreService            |URP   |
+ |ASAppGateway          |FirstTierAggregationService    |MonAdminRP                     |UsageBridge|
+ |AzureBridge           |FRP                            |MonRP                          |VirtualMachines   |
+ |AzureMonitor          |Gateway                        |NC                             |WAS|
+ |BareMetal             |HealthMonitoring               |NonPrivilegedAppGateway        |WASPUBLIC|
+ |BRP                   |HintingServiceV2               |NRP                            |   |
+ |CA                    |HRP                            |OboService                     |   |
  |   |   |   |    |
 
 ### <a name="additional-considerations"></a>Zusätzliche Überlegungen

@@ -8,12 +8,12 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dbbd07e93602855afb0c9755e8872e0b46557611
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: d4253942ea5cd998bfd3806978e108413949f886
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030018"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741427"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>Grundlegendes zu den Anforderungen und Tools für die Entwicklung von IoT Edge-Modulen
 
@@ -28,27 +28,25 @@ Der IoT Edge-Hub bietet zwei Hauptfunktionalitäten: Proxy für IoT Hub und loka
 ### <a name="iot-hub-primitives"></a>IoT Hub-Primitive
 IoT Hub behandelt eine Modulinstanz analog zu einem Gerät. Dies bedeutet Folgendes:
 
-* Die Modulinstanz hat einen Modulzwilling, der vom [Gerätezwilling][lnk-devicetwin] und den anderen Modulzwillingen des Geräts getrennt und isoliert ist.
-* Sie kann [D2C-Nachrichten senden][lnk-iothub-messaging].
-* Sie kann [direkte Methoden][lnk-methods] empfangen, die speziell an ihre Identität gerichtet sind.
+* Die Modulinstanz hat einen Modulzwilling, der vom [Gerätezwilling](../iot-hub/iot-hub-devguide-device-twins.md) und den anderen Modulzwillingen des Geräts getrennt und isoliert ist.
+* Sie kann [Gerät-zu-Cloud-Nachrichten](../iot-hub/iot-hub-devguide-messaging.md) senden.
+* Sie kann [direkte Methoden](../iot-hub/iot-hub-devguide-direct-methods.md) empfangen, die speziell an ihre Identität gerichtet sind.
 
 Derzeit kann ein Modul keine C2D-Nachrichten empfangen und keine Dateien hochladen.
 
-Wenn Sie ein Modul schreiben, können Sie einfach das [Azure-IoT-Geräte-SDK][lnk-devicesdk] verwenden, um eine Verbindung mit dem IoT Edge-Hub herzustellen, und die oben beschriebene Funktionalität auf die gleiche Weise verwenden, wie IoT Hub für eine Geräteanwendung verwendet wird. Der einzige Unterschied ist, dass Sie vom Anwendungs-Back-End auf die Modulidentität statt auf die Geräteidentität verweisen müssen.
+Wenn Sie ein Modul schreiben, können Sie das [Azure IoT-Geräte-SDK](../iot-hub/iot-hub-devguide-sdks.md) verwenden, um eine Verbindung mit dem IoT Edge-Hub herzustellen, und die oben beschriebene Funktionalität auf die gleiche Weise verwenden, wie IoT Hub für eine Geräteanwendung verwendet wird. Der einzige Unterschied ist, dass Sie vom Anwendungs-Back-End auf die Modulidentität statt auf die Geräteidentität verweisen müssen.
 
-Ein Beispiel für eine Modulanwendung, die D2C-Nachrichten sendet und den Modulzwilling verwendet, finden Sie unter [Entwickeln und Bereitstellen eines IoT Edge-Moduls auf einem simulierten Gerät][lnk-tutorial2]
+Ein Beispiel für eine Modulanwendung, die Gerät-zu-Cloud-Nachrichten sendet und den Modulzwilling verwendet, finden Sie unter [Entwickeln und Bereitstellen eines IoT Edge-Moduls auf einem simulierten Gerät](tutorial-csharp-module.md).
 
 ### <a name="device-to-cloud-messages"></a>D2C-Nachrichten
-Um die komplexe Verarbeitung von D2C-Nachrichten zu ermöglichen, stellt der IoT Edge-Hub deklaratives Routing von Nachrichten zwischen Modulen und zwischen Modulen und IoT Hub bereit.
-So können Module Nachrichten abfangen und verarbeiten, die von anderen Modulen gesendet wurden, und in komplexen Pipelines verteilen.
-Im Artikel [Grundlegendes zur Verwendung, Konfiguration und Wiederverwendung von IoT Edge-Modulen – Vorschau][lnk-module-comp] wird erläutert, wie Module mithilfe von Routen zu komplexen Pipelines kombiniert werden.
+Um die komplexe Verarbeitung von D2C-Nachrichten zu ermöglichen, stellt der IoT Edge-Hub deklaratives Routing von Nachrichten zwischen Modulen und zwischen Modulen und IoT Hub bereit. Durch deklaratives Routing können Module Nachrichten abfangen und verarbeiten, die von anderen Modulen gesendet wurden, und in komplexen Pipelines verteilen. Im Artikel [Modulzusammensetzung](module-composition.md) wird erläutert, wie Module mithilfe von Routen in komplexen Pipelines kombiniert werden.
 
 Ein IoT Edge-Modul kann im Gegensatz zu einer normalen IoT Hub-Geräteanwendung D2C-Nachrichten empfangen, für deren Übertragung der lokale IoT Edge-Hub als Proxy fungiert, um sie zu verarbeiten.
 
-Der IoT Edge-Hub verteilt die Nachrichten auf der Grundlage deklarativer Routen, die im Artikel [Grundlegendes zur Verwendung, Konfiguration und Wiederverwendung von IoT Edge-Modulen – Vorschau][lnk-module-comp] beschrieben werden. Wenn Sie ein IoT Edge-Modul entwickeln, können Sie diese Nachrichten empfangen, indem Sie Meldungshandler festlegen, wie im Tutorial [Entwickeln und Bereitstellen eines IoT Edge-Moduls auf einem simulierten Gerät][lnk-tutorial2] gezeigt.
+Der IoT Edge-Hub verteilt die Nachrichten an Ihr Modul auf der Grundlage deklarativer Routen, die im Artikel [Modulzusammensetzung](module-composition.md) beschrieben werden. Beim Entwickeln eines IoT Edge-Moduls können Sie diese Nachrichten empfangen, indem Sie Meldungshandler festlegen.
 
 Um die Erstellung von Routen zu vereinfachen, wird in IoT Edge das Konzept von *Eingangs*- und *Ausgangs*-Modulendpunkten eingeführt. Ein Modul kann alle an es weitergeleiteten D2C-Nachrichten empfangen, ohne einen Eingang anzugeben, und D2C-Nachrichten senden, ohne einen Ausgang anzugeben.
-Die Verwendung expliziter Eingänge und Ausgänge erleichtert jedoch das Verständnis der Routingregeln. Unter [Grundlegendes zur Verwendung, Konfiguration und Wiederverwendung von IoT Edge-Modulen – Vorschau][lnk-module-comp] finden Sie weitere Informationen zu Routingregeln sowie Eingangs- und Ausgangsendpunkten für Module.
+Die Verwendung expliziter Eingänge und Ausgänge erleichtert jedoch das Verständnis der Routingregeln. Weitere Informationen zu Routingregeln und Eingangs- und Ausgangsendpunkten für Module finden Sie unter [Modulzusammensetzung](module-composition.md).
 
 Schließlich werden vom Edge-Hub behandelte D2C-Nachrichten mit den folgenden Eigenschaften gekennzeichnet:
 
@@ -66,20 +64,7 @@ Die zu verwendende Verbindungszeichenfolge wird von der IoT Edge-Laufzeit in der
 
 Analog dazu wird das zum Überprüfen der Verbindung mit dem IoT Edge-Hub zu verwendende Zertifikat von der IoT Edge-Laufzeit in eine Datei eingefügt, deren Pfad in der Umgebungsvariablen `EdgeModuleCACertificateFile` verfügbar ist.
 
-Im Tutorial [Entwickeln und Bereitstellen eines IoT Edge-Moduls auf einem simulierten Gerät][lnk-tutorial2] wird gezeigt, wie Sie sicherstellen, dass sich das Zertifikat im Computerspeicher oder in der Modulanwendung befindet. Selbstverständlich eignet sich hierzu auch jede andere Methode zum Vertrauen von Verbindungen, die dieses Zertifikat verwenden.
-
-## <a name="packaging-as-an-image"></a>Verpacken als Image
-IoT Edge-Module werden als Docker-Images verpackt.
-Sie können direkt die Docker-Toolkette oder Visual Studio Code verwenden, wie im Tutorial [Entwickeln und Bereitstellen eines IoT Edge-Moduls auf einem simulierten Gerät][lnk-tutorial2] gezeigt.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie ein Modul entwickelt haben, informieren Sie sich im Artikel [Bereitstellen und Überwachen von IoT Edge-Modulen in großem Maßstab][lnk-howto-deploy] ,wie Sie zahlreiche IoT Edge-Module gemeinsam bereitstellen und überwachen.
+Nachdem Sie ein Modul entwickelt haben, informieren Sie sich darüber, wie Sie [IoT Edge-Module bedarfsgerecht bereitstellen und überwachen](how-to-deploy-monitor.md).
 
-[lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
-[lnk-devicetwin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-iothub-messaging]: ../iot-hub/iot-hub-devguide-messaging.md
-[lnk-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-tutorial2]: tutorial-csharp-module.md
-[lnk-module-comp]: module-composition.md
-[lnk-howto-deploy]: how-to-deploy-monitor.md

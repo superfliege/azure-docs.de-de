@@ -11,12 +11,12 @@ ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: erhopf
-ms.openlocfilehash: 4aa3509fcdfc6fd1bccb4db95a8c916a42ce23d2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e98407dface348dfdbc99a1146d50c46f3bb03a7
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125271"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739242"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Durchblättern der Suchergebnisse der Bing-Websuche-API
 
@@ -61,4 +61,7 @@ Host: api.cognitive.microsoft.com
 
 Die Websuche-API gibt Ergebnisse mit Webseiten und ggf. auch Bildern, Videos und Nachrichten zurück. Wenn Sie die Suchergebnisse durchblättern, blättern Sie die [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer)-Antwort und nicht die anderen Antworten wie Bilder oder Nachrichten durch. Wenn Sie `count` z.B. auf 50 festlegen, erhalten Sie als Ergebnis 50 Webseiten, die Antwort kann aber auch Ergebnisse für die anderen Antworten enthalten. Die Antwort kann beispielsweise auch 15 Bilder und 4 Nachrichtenartikeln enthalten. Es ist auch möglich, dass die Ergebnisse Nachrichten auf der ersten Seite enthalten, aber nicht auf der zweiten Seite oder umgekehrt.   
 
-Wenn Sie den `responseFilter`-Abfrageparameter angeben, aber Webseiten nicht in die Filterliste aufnehmen, verwenden Sie nicht die Parameter `count` und `offset`.  
+Wenn Sie den `responseFilter`-Abfrageparameter angeben, aber Webseiten nicht in die Filterliste aufnehmen, verwenden Sie nicht die Parameter `count` und `offset`. 
+
+> [!NOTE]
+> Das Feld `TotalEstimatedAnswers` gibt eine Schätzung der Gesamtzahl der Suchergebnisse an, die Sie für die aktuelle Abfrage abrufen können.  Wenn Sie die Parameter `count` und `offset` festlegen, kann sich der Wert von `TotalEstimatedAnswers` ändern. 

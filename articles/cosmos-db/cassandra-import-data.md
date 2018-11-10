@@ -9,14 +9,14 @@ ms.author: govindk
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: f73a201a25bb2f975e8a261a6c21aa7b066c3a7c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 56fc07c6d775ee8015ce244acb7782607bda802a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247849"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739786"
 ---
-# <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die Cassandra-API
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Tutorial: Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die Cassandra-API
 
 Dieses Tutorial enthält Anweisungen zum Migrieren von Apache Cassandra-Daten zur Azure Cosmos DB-Cassandra-API. 
 
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um mit Spark Daten zur Azure Cosmos DB-C
 
 - Verschieben von Daten zum Cassandra-API-Zielendpunkt mit [Kopiervorgängen für Tabellen](cassandra-spark-table-copy-ops.md) 
 
-Das Migrieren von Daten mithilfe von Spark-Aufträgen ist eine empfohlene Option, wenn sich Ihre Daten in einem vorhandenen Cluster auf virtuellen Azure-Computern oder in einer anderen Cloud befinden. Hierfür muss Spark für die einmalige oder regelmäßige Erfassung zwischengeschaltet werden. Sie können diese Migration mithilfe von ExpressRoute-Verbindungen zwischen dem lokalen Standort und Azure beschleunigen. 
+Das Migrieren von Daten mithilfe von Spark-Aufträgen ist eine empfohlene Option, wenn sich Ihre Daten in einem vorhandenen Cluster auf virtuellen Azure-Computern oder in einer anderen Cloud befinden. Bei dieser Option muss Spark für die einmalige oder regelmäßige Erfassung zwischengeschaltet werden. Sie können diese Migration mithilfe von ExpressRoute-Verbindungen zwischen dem lokalen Standort und Azure beschleunigen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

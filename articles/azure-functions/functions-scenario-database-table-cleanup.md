@@ -9,122 +9,136 @@ ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 05/22/2017
+ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: 024958d8a548313b53fc24ade5805de036a89afb
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e59c0b6994a64972b1458c0f295f24d0a615d871
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351914"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740109"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
-In diesem Thema wird gezeigt, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, der Zeilen in einer Tabelle in einer Azure SQL-Datenbank-Instanz bereinigt. Die neue C#-Skriptfunktion wird basierend auf einer vordefinierten Vorlage für einen Timertrigger im Azure-Portal erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
 
-Damit Ihre Funktion einzelne Vorgänge wie das Erstellen, Lesen, Aktualisieren und Löschen in einer Mobile Apps-Tabelle verarbeiten kann, sollten Sie stattdessen die [Mobile Apps-Bindungen](functions-bindings-mobile-apps.md) verwenden.
+In diesem Artikel wird erläutert, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, über den eine Verbindung mit einer Azure SQL-Datenbank-Instanz hergestellt wird. Der Funktionscode bereinigt die Zeilen in einer Tabelle in der Datenbank. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Zeitgebertrigger in Visual Studio 2017 erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
 
-> [!IMPORTANT]
-> Die Beispiele in diesem Dokument beziehen sich auf die 1.x-Runtime. Informationen zum Erstellen einer 1.x-Funktions-App [finden Sie hier](./functions-versions.md#creating-1x-apps).
+Wenn Sie C#-Funktionen zum ersten Mal verwenden, sollten Sie die [C#-Entwicklerreferenz zu Azure Functions](functions-dotnet-class-library.md) lesen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ In diesem Thema wird eine Funktion mit Auslösung per Timer verwendet. Führen Sie die Schritte im Thema [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](functions-create-scheduled-function.md) durch, um eine C#-Version dieser Funktion zu erstellen.   
++ Führen Sie die Schritte im Artikel [Erstellen Ihrer ersten Funktion mit Visual Studio](functions-create-your-first-function-visual-studio.md) aus, um eine lokale Funktions-App für Version 2.x der Runtime zu erstellen. Zudem müssen Sie Ihr Projekt in einer Funktions-App in Azure veröffentlicht haben.
 
-+ In diesem Thema wird ein Transact-SQL-Befehl veranschaulicht, der einen Massenbereinigungsvorgang in der Tabelle **SalesOrderHeader** in der Beispieldatenbank „AdventureWorksLT“ ausführt. Um die Beispieldatenbank „AdventureWorksLT“ zu erstellen, führen Sie die Schritte im Thema [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../sql-database/sql-database-get-started-portal.md) aus. 
++ In diesem Artikel wird ein Transact-SQL-Befehl veranschaulicht, der einen Massenbereinigungsvorgang in der Tabelle **SalesOrderHeader** in der Beispieldatenbank „AdventureWorksLT“ ausführt. Um die Beispieldatenbank „AdventureWorksLT“ zu erstellen, führen Sie die Schritte im Artikel [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../sql-database/sql-database-get-started-portal.md) aus.
+
++ Sie müssen eine [Firewallregel auf Serverebene](../sql-database/sql-database-get-started-portal-firewall.md) für die öffentliche IP-Adresse des Computers hinzufügen, den Sie für diesen Schnellstart verwenden. Diese Regel ist erforderlich, damit über den lokalen Computer auf die SQL-Datenbank-Instanz zugegriffen werden kann.  
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
 Sie müssen die Verbindungszeichenfolge für die Datenbank abrufen, die Sie in [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../sql-database/sql-database-get-started-portal.md) erstellt haben.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
- 
-3. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-4. Wählen Sie **Datenbank-Verbindungszeichenfolgen anzeigen** aus, und kopieren Sie die vollständige **ADO.NET**-Verbindungszeichenfolge. 
+1. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
+
+1. Wählen Sie unter **Einstellungen** die Option **Verbindungszeichenfolgen** aus, und kopieren Sie die vollständige **ADO.NET**-Verbindungszeichenfolge.
 
     ![Kopieren Sie die ADO.NET-Verbindungszeichenfolge.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
-## <a name="set-the-connection-string"></a>Festlegen der Verbindungszeichenfolge 
+## <a name="set-the-connection-string"></a>Festlegen der Verbindungszeichenfolge
 
-Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Es ist eine bewährte Methode, Verbindungszeichenfolgen und andere geheime Schlüssel in den Einstellungen Ihrer Funktionen-App zu speichern. Die Verwendung von Anwendungseinstellungen verhindert eine versehentliche Offenlegung der Verbindungszeichenfolge mit dem Code. 
+Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Als bewährte Sicherheitsmethode empfiehlt es sich, Verbindungszeichenfolgen und andere Geheimnisse in den Einstellungen Ihrer Funktions-App zu speichern. Die Verwendung von Anwendungseinstellungen verhindert eine versehentliche Offenlegung der Verbindungszeichenfolge mit dem Code. Auf die App-Einstellungen für Ihre Funktions-App können Sie direkt in Visual Studio zugreifen.
 
-1. Navigieren Sie zu Ihrer Funktions-App, die Sie in [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](functions-create-scheduled-function.md) erstellt haben.
+Zuvor müssen Sie Ihre App in Azure veröffentlicht haben. Wenn dies noch nicht erfolgt ist, [veröffentlichen Sie die Funktions-App in Azure](functions-develop-vs.md#publish-to-azure).
 
-2. Wählen Sie **Plattformfeatures** > **Anwendungseinstellungen** aus.
-   
-    ![Anwendungseinstellungen für Funktions-App](./media/functions-scenario-database-table-cleanup/functions-app-service-settings.png)
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Funktions-App-Projekt, und wählen Sie **Veröffentlichen** > **Anwendungseinstellungen verwalten** aus. Wählen Sie **Einstellung hinzufügen** aus, geben Sie in **Name der neuen App-Einstellung** den Namen `sqldb_connection` ein, und wählen Sie **OK** aus.
 
-2. Scrollen Sie nach unten bis zu **Verbindungszeichenfolgen**, und fügen Sie eine Verbindungszeichenfolge mit den Einstellungen in der Tabelle hinzu.
-   
-    ![Fügen Sie den Funktions-App-Einstellungen eine Verbindungszeichenfolge hinzu.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-strings.png)
+    ![Anwendungseinstellungen für Funktions-App](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-    | Einstellung       | Empfohlener Wert | Beschreibung             | 
-    | ------------ | ------------------ | --------------------- | 
-    | **Name**  |  sqldb_connection  | Wird verwendet, um auf die gespeicherte Verbindungszeichenfolge im Funktionscode zuzugreifen    |
-    | **Wert** | Kopierte Zeichenfolge  | Fügen Sie die Verbindungszeichenfolge, die Sie im vorherigen Abschnitt kopiert haben, ein, und ersetzen Sie die Platzhalter `{your_username}` und `{your_password}` durch die tatsächlichen Werte. |
-    | **Typ** | SQL-Datenbank | Verwenden Sie die Standardverbindung mit SQL-Datenbank. |   
+1. Fügen Sie in der neuen Einstellung **sqldb_connection** die Verbindungszeichenfolge, die Sie im vorherigen Abschnitt kopiert haben, im Feld **Lokal** ein, und ersetzen Sie die Platzhalter `{your_username}` und `{your_password}` durch die tatsächlichen Werte. Wählen Sie **Wert aus lokaler Quelle einfügen** aus, um den aktualisierten Wert in das Feld **Remote** zu kopieren, und wählen Sie dann **OK** aus.
 
-3. Klicken Sie auf **Speichern**.
+    ![Einstellung „SQL-Verbindungszeichenfolge hinzufügen“](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
+
+    Die Verbindungszeichenfolgen werden verschlüsselt in Azure gespeichert (**Remote**). Um zu verhindern, dass Geheimnisse offengelegt werden, sollte die Projektdatei „local.settings.json“ (**Lokal**) von der Quellcodeverwaltung ausgeschlossen werden, z.B. durch Verwendung einer GITIGNORE-Datei.
+
+## <a name="add-the-sqlclient-package-to-the-project"></a>Hinzufügen des SqlClient-Pakets zum Projekt
+
+Sie müssen das NuGet-Paket hinzufügen, das die SqlClient-Bibliothek enthält. Diese Datenzugriffsbibliothek wird zum Herstellen einer Verbindung mit einer SQL-Datenbank benötigt.
+
+1. Öffnen Sie das lokale Funktions-App-Projekt in Visual Studio 2017.
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Funktions-App-Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
+
+1. Suchen Sie auf der Registerkarte **Durchsuchen** nach ```System.Data.SqlClient```, und wählen Sie das Element aus.
+
+1. Klicken Sie auf der Seite **System.Data.SqlClient** auf **Installieren**.
+
+1. Überprüfen Sie nach Abschluss der Installation die Änderungen, und klicken Sie anschließend auf **OK**, um das **Vorschaufenster** zu schließen.
+
+1. Sollte das Fenster **Zustimmung zur Lizenz** angezeigt werden, klicken Sie auf **Ich stimme zu**.
 
 Nun können Sie den C#-Funktionscode hinzufügen, der eine Verbindung mit Ihrer SQL-Datenbank herstellt.
 
-## <a name="update-your-function-code"></a>Aktualisieren Ihres Funktionscodes
+## <a name="add-a-timer-triggered-function"></a>Hinzufügen einer Funktion mit Auslösung per Timer
 
-1. Wählen Sie im Portal in Ihrer Funktions-App die Funktion mit Timertrigger aus.
- 
-3. Fügen Sie am Anfang des vorhandenen C#-Skriptfunktionscodes die folgenden Assemblyverweise hinzu:
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Funktions-App-Projekt, und wählen Sie **Hinzufügen** > **Neue Azure-Funktion** aus.
+
+1. Wählen Sie die Vorlage **Azure Functions** aus, geben Sie dem neuen Element den Namen `DatabaseCleanup.cs`, und wählen Sie **Hinzufügen** aus.
+
+1. Wählen Sie im Dialogfeld **Neue Azure-Funktion** die Option **Zeitgebertrigger** und dann **OK** aus. In diesem Dialogfeld wird eine Codedatei für die Funktion mit Auslösung per Zeitgeber erstellt.
+
+1. Öffnen Sie die neue Codedatei, und fügen Sie am Anfang der Datei die folgenden using-Anweisungen ein:
 
     ```cs
-    #r "System.Configuration"
-    #r "System.Data"
-    ```
-    >[!NOTE]
-    >Beim Code in diesen Beispielen handelt es sich um C#-Skripts aus dem Portal. Wenn Sie eine vorkompilierte C#-Funktion lokal entwickeln, müssen Sie stattdessen Verweise auf diese Assemblys in Ihrem lokalen Projekt hinzufügen.  
-
-3. Fügen Sie der Funktion die folgenden `using` -Anweisungen hinzu:
-    ```cs
-    using System.Configuration;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
     ```
 
-4. Ersetzen Sie die vorhandene `Run`-Funktion durch den folgenden Code:
+1. Ersetzen Sie die vorhandene `Run`-Funktion durch den folgenden Code:
+
     ```cs
-    public static async Task Run(TimerInfo myTimer, TraceWriter log)
+    [FunctionName("DatabaseCleanup")]
+    public static async Task Run([TimerTrigger("*/15 * * * * *")]TimerInfo myTimer, ILogger log)
     {
-        var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
+        // Get the connection string from app settings and use it to create a connection.
+        var str = Environment.GetEnvironmentVariable("sqldb_connection");
         using (SqlConnection conn = new SqlConnection(str))
         {
             conn.Open();
-            var text = "UPDATE SalesLT.SalesOrderHeader " + 
+            var text = "UPDATE SalesLT.SalesOrderHeader " +
                     "SET [Status] = 5  WHERE ShipDate < GetDate();";
 
             using (SqlCommand cmd = new SqlCommand(text, conn))
             {
                 // Execute the command and log the # rows affected.
                 var rows = await cmd.ExecuteNonQueryAsync();
-                log.Info($"{rows} rows were updated");
+                log.LogInformation($"{rows} rows were updated");
             }
         }
     }
     ```
 
-    Dieser Beispielbefehl aktualisiert die `Status`-Spalte basierend auf dem Versanddatum. Es sollten 32 Zeilen mit Daten aktualisiert werden.
+    Diese Funktion wird alle 15 Sekunden ausgeführt, um die Spalte `Status` basierend auf dem Lieferdatum zu aktualisieren. Weitere Informationen zum Zeitgebertrigger finden Sie unter [Trigger mit Timer für Azure Functions](functions-bindings-timer.md).
 
-5. Klicken Sie auf **Speichern**, überwachen Sie das Fenster **Protokolle** auf die nächste Funktionsausführung, und beachten Sie die Anzahl der Zeilen, die in der Tabelle **SalesOrderHeader** aktualisiert wurden.
+1. Drücken Sie **F5**, um die Funktions-App zu starten. Das Ausführungsfenster [Azure Functions Core Tools](functions-develop-local.md) wird im Hintergrund von Visual Studio geöffnet.
 
-    ![Zeigen Sie die Funktionsprotokolle an.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
+1. Die Funktion wird 15 Sekunden nach dem Start ausgeführt. Sehen Sie sich die Ausgabe an, und beachten Sie die Anzahl der in der Tabelle **SalesOrderHeader** aktualisierten Zeilen.
+
+    ![Zeigen Sie die Funktionsprotokolle an.](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
+
+    Bei der ersten Ausführung sollten 32 Datenzeilen aktualisiert werden. In nachfolgenden Ausführungen werden keine Datenzeilen aktualisiert, es sei denn, Sie nehmen Änderungen an den Daten der Tabelle „SalesOrderHeader“ vor, sodass mit der `UPDATE`-Anweisung weitere Zeilen ausgewählt werden.
+
+Wenn Sie [die Funktion veröffentlichen](functions-develop-vs.md#publish-to-azure) möchten, vergessen Sie nicht, das Attribut `TimerTrigger` in einen geeigneteren [CRON-Zeitplan](functions-bindings-timer.md#cron-expressions) als alle 15 Sekunden zu ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich als Nächstes darüber, wie Sie Functions mit Logic Apps für die Integration in andere Dienste verwenden.
+Als Nächstes erfahren Sie, wie Sie Functions mit Logic Apps für die Integration in andere Dienste verwenden.
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Erstellen einer Funktion, die in Logic Apps integriert ist](functions-twitter-email.md)
 
-Weitere Informationen zu Functions finden Sie in den folgenden Themen:
+Weitere Informationen zu Functions finden Sie in den folgenden Artikeln:
 
-* [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
++ [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
-* [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
++ [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  

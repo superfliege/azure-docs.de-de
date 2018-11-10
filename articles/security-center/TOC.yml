@@ -40,6 +40,8 @@ items:
     href: security-center-onboarding.md
   - name: Serverschutz mit Windows Defender ATP
     href: security-center-wdatp.md
+  - name: Schützen von App Service
+    href: security-center-app-services.md
   - name: Festlegen von Sicherheitsrichtlinien
     href: security-center-azure-policy.md
   - name: Anpassen der Information Protection-Richtlinie
@@ -61,43 +63,35 @@ items:
       href: security-center-management-groups.md
   - name: Implementieren von Sicherheitsempfehlungen
     href: security-center-recommendations.md
-  - name: Überwachen der Sicherheitsintegrität
-    href: security-center-monitoring.md
     items:
-    - name: Compute- und App-Sicherheit
+    - name: Stärken des Sicherheitsstatus
+      href: security-center-monitoring.md
+    - name: Schützen Ihrer Computer und Apps
       href: security-center-virtual-machine-protection.md
       items:
-      - name: Empfehlungen für virtuelle und physische Computer
-        href: security-center-virtual-machine-recommendations.md
-        items:
-        - name: Anwenden der Datenträgerverschlüsselung
-          href: security-center-apply-disk-encryption.md
-        - name: Systemupdates anwenden
-          href: security-center-apply-system-updates.md
-        - name: Aktivieren der Verschlüsselung für das Speicherkonto
-          href: security-center-enable-encryption-for-storage-account.md
-        - name: VM-Agent aktivieren
-          href: security-center-enable-vm-agent.md
-        - name: Endpoint Protection installieren
-          href: security-center-install-endpoint-protection.md
-        - name: Neustart nach Systemupdates
-          href: security-center-apply-system-updates.md#reboot-after-system-updates
-        - name: Optimieren von Sicherheitskonfigurationen
-          href: security-center-remediate-os-vulnerabilities.md
-        - name: Betriebssystemversion aktualisieren
-          href: security-center-update-os-version.md
-        - name: Keine Sicherheitsrisikobewertung installiert
-          href: security-center-vulnerability-assessment-recommendations.md
-      - name: App-Empfehlungen
+      - name: Anwenden der Datenträgerverschlüsselung
+        href: security-center-apply-disk-encryption.md
+      - name: Systemupdates anwenden
+        href: security-center-apply-system-updates.md
+      - name: Aktivieren der Verschlüsselung für das Speicherkonto
+        href: security-center-enable-encryption-for-storage-account.md
+      - name: VM-Agent aktivieren
+        href: security-center-enable-vm-agent.md
+      - name: Endpoint Protection installieren
+        href: security-center-install-endpoint-protection.md
+      - name: Neustart nach Systemupdates
+        href: security-center-apply-system-updates.md#reboot-after-system-updates
+      - name: Optimieren von Sicherheitskonfigurationen
+        href: security-center-remediate-os-vulnerabilities.md
+      - name: Betriebssystemversion aktualisieren
+        href: security-center-update-os-version.md
+      - name: Keine Sicherheitsrisikobewertung installiert
+        href: security-center-vulnerability-assessment-recommendations.md
+      - name: Web Application Firewall hinzufügen
         href: security-center-add-web-application-firewall.md
-        items:
-        - name: Web Application Firewall hinzufügen
-          href: security-center-add-web-application-firewall.md
-        - name: Finalize application protection (Anwendungsschutz abschließen)
-          href: security-center-add-web-application-firewall.md#finalize-application-protection
-      - name: Containerempfehlungen
-        href: security-center-container-recommendations.md
-    - name: Netzwerksicherheit
+      - name: Finalize application protection (Anwendungsschutz abschließen)
+        href: security-center-add-web-application-firewall.md#finalize-application-protection
+    - name: Schützen von Netzwerkressourcen
       href: security-center-network-recommendations.md
       items:
       - name: Hinzufügen einer Firewall der nächsten Generation
@@ -108,7 +102,7 @@ items:
         href: security-center-restrict-access-through-internet-facing-endpoints.md
       - name: Datenverkehr nur durch Firewall der nächsten Generation leiten
         href: security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only
-    - name: Daten- und Speichersicherheit
+    - name: Schützen des SQL-Diensts und Ihrer Daten
       href: security-center-sql-service-recommendations.md
       items:
       - name: Aktivieren der Überwachung und Bedrohungserkennung in SQL-Datenbanken
@@ -225,9 +219,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: Regionale Verfügbarkeit
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 60bb35519dec1dc08dd9ed82633c594c56fdd893
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 09d1086de03ddab3cf2aca54f201c86632ab4c83
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318077"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219442"

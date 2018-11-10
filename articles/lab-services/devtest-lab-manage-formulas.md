@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b7a68f545f60829e5da83f0734c57a4d210cb843
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 47699925f057aab25fe6f7c1c7d0b0620e7e4dbe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001480"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227993"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Verwalten von Azure DevTest Labs-Formeln
 
@@ -38,7 +38,7 @@ Weitere Informationen zum Hinzufügen von Benutzern und Berechtigungen finden Si
 ### <a name="create-a-formula-from-a-base"></a>Erstellen einer Formel anhand einer Basis
 In den folgenden Schritten wird beschrieben, wie Sie eine Formel auf der Basis eines benutzerdefinierten Images, eines Marketplace-Images oder auf Grundlage einer anderen Formel erstellen.
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 
@@ -61,7 +61,7 @@ In den folgenden Schritten wird beschrieben, wie Sie eine Formel auf der Basis e
     * **Formelname**: Geben Sie einen Namen für die Formel ein. Dieser Wert wird in der Liste der Basisimages angezeigt, wenn Sie einen virtuellen Computer erstellen. Der Name wird während der Eingabe überprüft. Falls er nicht gültig ist, werden Sie in einer Meldung über die Anforderungen für einen gültigen Namen informiert.
     * **Beschreibung** : Geben Sie eine aussagekräftige Beschreibung für Ihre Formel ein. Dieser Wert steht über das Kontextmenü der Formel zur Verfügung, wenn Sie einen virtuellen Computer erstellen.
     * **Benutzername**: Geben Sie einen Benutzernamen ein, dem Administratorrechte erteilt wurden.
-    * **Kennwort**: Geben Sie einen Wert ein, der dem geheimen Schlüssel bzw. dem Kennwort zugeordnet ist, das für den angegebenen Benutzer verwendet werden soll, oder wählen Sie diesen Wert aus der Dropdownliste aus. Informationen zum Speichern von Geheimnissen in einem Schlüsseltresor und deren Verwendung beim Erstellen von Lab-Ressourcen finden Sie unter [Speichern von Geheimnissen in Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).
+    * **Kennwort**: Geben Sie einen Wert ein, der dem geheimen Schlüssel bzw. dem Kennwort zugeordnet ist, das für den angegebenen Benutzer verwendet werden soll, oder wählen Sie diesen Wert aus der Dropdownliste aus. Informationen zum Speichern von Geheimnissen in einem Schlüsseltresor und deren Verwendung beim Erstellen von Lab-Ressourcen finden Sie unter [Speichern von Geheimnissen in Azure DevTest Labs](devtest-lab-store-secrets-in-key-vault.md).
     * **Datenträgertyp des virtuellen Computers**: Geben Sie entweder HDD (Festplattenlaufwerk) oder SSD (Solid-State Drive) als den Speichertyp an, der für die mit diesem Basisimage bereitgestellten virtuellen Computer zulässig ist.
     * ** Größe des virtuellen Computers**: Wählen Sie eines der vordefinierten Elemente aus, die die Prozessorkerne, die RAM-Größe und die Größe der Festplatte für den zu erstellenden virtuellen Computer angeben. 
     * **Artefakte**: Wählen Sie diese Option aus, um das Blatt **Artefakte hinzufügen** zu öffnen, auf dem Sie die Artefakte auswählen und konfigurieren, die Sie dem Basisimage hinzufügen möchten. Weitere Informationen zu Artefakten finden Sie unter [Erstellen benutzerdefinierter Artefakte für Ihren virtuellen DevTest Labs-Computer](devtest-lab-artifact-author.md).
@@ -86,7 +86,7 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 > 
 > 
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 4. Wählen Sie auf dem Blatt **Übersicht** des Labs den virtuellen Computer aus, aus dem Sie die Formel erstellen möchten.
@@ -103,7 +103,7 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 ## <a name="modify-a-formula"></a>Ändern einer Formel
 Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 4. Wählen Sie auf dem Blatt für das Lab die Option **Formulas (reusable bases)**(Formeln (wiederverwendbare Basis)) aus.
@@ -115,7 +115,7 @@ Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
 ## <a name="delete-a-formula"></a>Löschen einer Formel
 Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 4. Wählen Sie auf dem Blatt **Einstellungen** für das Lab **Formeln**.

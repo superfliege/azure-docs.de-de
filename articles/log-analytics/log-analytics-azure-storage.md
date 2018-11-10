@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 297b3f4c9ef110f8adc9dcb5cd9eac9e30729a5d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: f9cc3033c476afe389cb52d3468facb9168fb920
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180124"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006531"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics
 
@@ -51,7 +51,7 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 | Recovery-Tresore         | Microsoft.RecoveryServices/vaults       |             |             | [Azure Recovery Services Analytics (Vorschau)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Suchdienste         | Microsoft.Search/searchServices         | Diagnose | Diagnose | |
 | Service Bus-Namespace   | Microsoft.ServiceBus/namespaces         | Diagnose | Diagnose | [Service Bus Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-| Service Fabric          |                                         | Speicher     |             | [Service Fabric-Analysen (Vorschau)](log-analytics-service-fabric.md) |
+| Service Fabric          |                                         | Speicher     |             | [Service Fabric-Analysen (Vorschau)](../service-fabric/service-fabric-diagnostics-oms-setup.md) |
 | SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnose | [Azure SQL Analytics (Vorschau)](log-analytics-azure-sql.md) |
 | Speicher                 |                                         |             | Skript      | [Azure Storage Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Virtual Machines        | Microsoft.Compute/virtualMachines       | Durchwahl   | Durchwahl <br> Diagnose  | |
@@ -61,14 +61,14 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 
 
 > [!NOTE]
-> Für die Überwachung von virtuellen Azure-Computern (Linux und Windows) empfehlen wir die Installation der [Log Analytics-VM-Erweiterung](log-analytics-azure-vm-extension.md). Der Agent liefert Erkenntnisse, die aus Ihren virtuellen Computern zusammengetragen wurden. Die Erweiterung kann auch für VM-Skalierungsgruppen verwendet werden.
+> Für die Überwachung von virtuellen Azure-Computern (Linux und Windows) empfehlen wir die Installation der [Log Analytics-VM-Erweiterung](log-analytics-quick-collect-azurevm.md). Der Agent liefert Erkenntnisse, die aus Ihren virtuellen Computern zusammengetragen wurden. Die Erweiterung kann auch für VM-Skalierungsgruppen verwendet werden.
 >
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>Azure-Diagnosen direkt an Log Analytics
 Viele Azure-Ressourcen können Diagnoseprotokolle und Metriken direkt in Log Analytics schreiben. Dies ist die bevorzugte Datensammlungsmethode für die Analyse. Bei Verwendung von Azure-Diagnosen werden Daten unmittelbar in Log Analytics geschrieben und müssen nicht zuerst in den Speicher geschrieben werden.
 
-Azure-Ressourcen, die [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) unterstützen, können ihre Protokolle und Metriken direkt an Log Analytics senden.
+Azure-Ressourcen, die [Azure Monitor](../azure-monitor/overview.md) unterstützen, können ihre Protokolle und Metriken direkt an Log Analytics senden.
 
 > [!NOTE]
 > Das Senden mehrdimensionaler Metriken an Log Analytics über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
@@ -158,5 +158,5 @@ Der Azure-Vorlagenkatalog enthält [Beispiele für die Verwendung von Azure Auto
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwenden von Blob Storage für IIS und Table Storage für Ereignisse](log-analytics-azure-storage-iis-table.md) enthält Informationen zum Lesen der Protokolle für Azure-Dienste, die Diagnosedaten in Table Storage schreiben, oder der IIS-Protokolle, die in Blob Storage geschrieben werden.
-* [Aktivieren Sie Lösungen](log-analytics-add-solutions.md) , um Einblick in die Daten bereitzustellen.
-* [Erstellen Sie Suchabfragen](log-analytics-log-searches.md) , um die Daten zu analysieren.
+* [Aktivieren Sie Lösungen](../monitoring/monitoring-solutions.md) , um Einblick in die Daten bereitzustellen.
+* [Erstellen Sie Suchabfragen](log-analytics-queries.md) , um die Daten zu analysieren.

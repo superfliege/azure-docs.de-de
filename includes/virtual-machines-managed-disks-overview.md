@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 617f60345fb2a349eddb0db697604ba383794591
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3e660dbcbfecd57c43ecec6006581364660adb44
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060488"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50737232"
 ---
 # <a name="azure-managed-disks-overview"></a>Azure Managed Disks – Übersicht
 
@@ -69,7 +69,7 @@ Die einzelnen Optionen werden nun genauer betrachtet.
 
 Hier sind die Datenträgergrößen aufgeführt, die für einen verwalteten Premium-Datenträger verfügbar sind:
 
-| **Verwalteter HDD Premium-<br>Datenträgertyp** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
+| **Verwalteter SSD Premium-<br>Datenträgertyp** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Datenträgergröße        | 32 GiB  | 64 GiB  | 128 GB | 256 GiB | 512 GB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 GiB (16 TiB) | 32767 GiB (TiB) |
 

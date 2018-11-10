@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 44e71c8e9256bdfd3a55cdd21a6658bccfd5daad
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4fec410db81077fd454f29d3359dc3728aad4bff
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987530"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739616"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Auffächerungsszenario (nach innen und außen) in Durable Functions – Beispiel der Cloudsicherung
 
@@ -131,7 +131,7 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> Die Funktion `HttpStart`, die Sie aufrufen, kann nur mit JSON-formatiertem Inhalt verwendet werden. Aus diesem Grund ist der Header `Content-Type: application/json` erforderlich und der Verzeichnispfad als JSON-Zeichenfolge codiert.
+> Die Funktion `HttpStart`, die Sie aufrufen, kann nur mit JSON-formatiertem Inhalt verwendet werden. Aus diesem Grund ist der Header `Content-Type: application/json` erforderlich und der Verzeichnispfad als JSON-Zeichenfolge codiert. Darüber hinaus wird im HTTP-Ausschnitt davon ausgegangen, dass ein Eintrag in der Datei `host.json` vorhanden ist, der das Standardpräfix `api/` aus den URLs aller HTTP-Triggerfunktionen entfernt. Sie finden das Markup für diese Konfiguration in der Datei `host.json` in den Beispielen.
 
 Diese HTTP-Anforderung löst den Orchestrator `E2_BackupSiteContent` aus und übergibt die Zeichenfolge `D:\home\LogFiles` als Parameter. Die Antwort enthält einen Link, über den der Status des Sicherungsvorgangs abgerufen werden kann:
 

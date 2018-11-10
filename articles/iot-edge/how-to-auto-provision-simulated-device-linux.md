@@ -4,16 +4,16 @@ description: Verwenden eines simulierten TPM auf einem virtuellen Linux-Computer
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9609aab6c70bc0c2755de142023bd26e7417987a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 6d0d2adfb4a727ec93db6d44e6a3e8f923760b91
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347703"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739667"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Erstellen und Bereitstellen eines Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer
 
@@ -63,7 +63,7 @@ Wenn beim Erstellen des neuen Switches Fehler angezeigt werden, stellen Sie sich
 
    1. **Generation angeben**: Klicken Sie auf **Generation 2**.
    2. **Konfigurieren der Netzwerkeinstellungen**: Legen Sie den Wert der **Verbindung** auf den virtuellen Switch fest, den Sie im vorherigen Abschnitt erstellt haben. 
-   3. **Installationsoptionen**: Klicken Sie auf **Betriebssystem von einer startbaren Imagedatei installieren**, und navigieren Sie zu der Datenträger-Imagedatei, die Sie lokal gespeichert haben.
+   3. **Installationsoptionen**: Wählen Sie **Betriebssystem von einer startbaren Imagedatei installieren** aus, und navigieren Sie zu der Datenträger-Imagedatei, die Sie lokal gespeichert haben.
 
 Die Erstellung des neuen virtuellen Computers kann einige Minuten dauern. 
 
@@ -180,7 +180,7 @@ Erteilen Sie den TPM-Zugriff anhand der folgenden Schritte. Alternativ können S
    Die erfolgreiche Ausgabe sieht wie folgt aus:
 
    ```output
-   crw------- 1 root root 10, 224 Jun 28 22:34 /dev/tpm0
+   crw------- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
 
 8. Öffnen Sie die IoT Edge-Runtime-Außerkraftsetzungsdatei. 
@@ -212,7 +212,7 @@ Erteilen Sie den TPM-Zugriff anhand der folgenden Schritte. Alternativ können S
 
 ## <a name="restart-the-iot-edge-runtime"></a>Neustart der IoT Edge-Runtime
 
-Starten Sie die IoT Edge-Runtime erneut, damit alle am Gerät vorgenommenen Konfigurationsänderungen erfasst werden. 
+Starten Sie die IoT Edge-Runtime neu, damit alle am Gerät vorgenommenen Konfigurationsänderungen erfasst werden. 
 
    ```bash
    sudo systemctl restart iotedge
@@ -257,4 +257,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Der Registrierungsprozess des Device Provisioning-Diensts ermöglicht Ihnen, die Geräte-ID und die Tags von Gerätezwillingen beim Bereitstellen des neuen Geräts zu sehen. Sie können diese Werte verwenden, um einzelne Geräte oder Gruppen von Geräten über die automatische Geräteverwaltung als Ziel festzulegen. Weitere Informationen finden Sie in [Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals](how-to-deploy-monitor.md) oder [Verwenden der Azure-Befehlszeilenschnittstelle](how-to-deploy-monitor-cli.md)
+Der Registrierungsprozess des Device Provisioning-Diensts ermöglicht Ihnen, die Geräte-ID und die Tags von Gerätezwillingen beim Bereitstellen des neuen Geräts zu sehen. Sie können diese Werte verwenden, um einzelne Geräte oder Gruppen von Geräten über die automatische Geräteverwaltung als Ziel festzulegen. Weitere Informationen finden Sie unter [Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals](how-to-deploy-monitor.md) oder [Verwenden der Azure-Befehlszeilenschnittstelle](how-to-deploy-monitor-cli.md)

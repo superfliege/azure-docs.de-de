@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7fa581610e007c583dfbad512f74ad335dc21a1e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3364df360926f2065af8650076e129de75934c1a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974441"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741011"
 ---
 # <a name="tutorial-create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Tutorial: Erstellen eines Anwendungsgateways mit SSL-Beendigung mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -155,15 +155,17 @@ az vmss extension set \
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) verwenden. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste Ihres Browsers ein.
+Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) verwenden.
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
   --query [ipAddress] \
   --output tsv
 ```
+
+Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. In diesem Beispiel lautet die URL **https://52.170.203.149**.
 
 ![Sicherheitswarnung](./media/tutorial-ssl-cli/application-gateway-secure.png)
 
@@ -180,14 +182,6 @@ az group delete --name myResourceGroupAG --location eastus
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen eines selbstsignierten Zertifikats
-> * Einrichten eines Netzwerks
-> * Erstellen eines Anwendungsgateways mit dem Zertifikat
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
 > [!div class="nextstepaction"]
 > [Erstellen eines Anwendungsgateways als Host für mehrere Websites](./tutorial-multiple-sites-cli.md)

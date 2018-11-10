@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: b951d0b8d91729340cf382e70f72511fb009053e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 15a4ff73476ce54f0617a88e040ac64d7288e9a8
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386551"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741112"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Behandeln von API-Drosselungsfehlern 
 
@@ -76,6 +76,18 @@ Content-Type: application/json; charset=utf-8
 Die Richtlinie mit der Anzahl verbleibender Aufrufe von 0 ist diejenige, wegen der der Drosselungsfehler zurückgegeben wird. In diesem Fall ist dies `HighCostGet30Min`. Das generelle Format des Antworttexts ist das allgemeine Fehlerformat der Azure Resource Manager-API (konform mit OData). Der Hauptfehlercode `OperationNotAllowed` ist der, den der Compute-Ressourcenanbieter verwendet, um Drosselungsfehler zu melden (neben anderen Typen von Clientfehlern). Die Eigenschaft `message` der internen Fehler enthält eine serialisierte JSON-Struktur mit den Details der Drosselungsverletzung.
 
 Wie oben gezeigt, enthält jeder Drosselungsfehler die `Retry-After`-Kopfzeile, die die Mindestanzahl von Sekunden angibt, die der Client warten sollte, bevor ein Wiederholungsversuch der Anforderung gestartet wird. 
+
+## <a name="api-call-rate-and-throttling-error-analyzer"></a>Analysetool für API-Aufrufrate und Drosselungsfehler
+Für die API des Computeressourcenanbieters steht die Vorschauversion eines Features zur Problembehandlung zur Verfügung. Diese PowerShell-Cmdlets liefern Statistiken über die API-Anforderungsrate pro Zeitintervall pro Vorgang und die Drosselungsverletzungen pro Vorgangsgruppe (Richtlinie):
+-   [Export-AzureRmLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticrequestratebyinterval)
+-   [Export-AzureRmLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticthrottledrequests)
+
+Die Statistiken über die API-Aufrufe ermöglichen umfassende Einblicke in das Verhalten der Clients eines Abonnements sowie die einfache Identifizierung von Aufrufmustern, die zu einer Drosselung führen.
+
+Eine Einschränkung des Analysetools besteht vorerst darin, dass Anforderungen für Ressourcentypen von Datenträgern und Momentaufnahmen (zur Unterstützung von verwalteten Datenträgern) nicht einbezogen werden. Da die Daten von der Telemetrie des Computeressourcenanbieters erfasst werden, können zudem keine Drosselungsfehler in ARM identifiziert werden. Diese können jedoch wie oben erörtert basierend auf den eindeutigen ARM-Antwortkopfzeilen einfach identifiziert werden.
+
+Die PowerShell-Cmdlets verwenden eine Dienst-REST-API, die auf einfache Weise direkt von Clients aufgerufen werden kann (wenn auch derzeit noch ohne formale Unterstützung). Um das Format der HTTP-Anforderungen anzuzeigen, führen Sie die Cmdlets mit dem Schalter „-Debug“ aus, oder überwachen Sie ihre Ausführung mit Fiddler.
+
 
 ## <a name="best-practices"></a>Bewährte Methoden 
 

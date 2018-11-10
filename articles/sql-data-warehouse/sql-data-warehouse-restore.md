@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6eba50fbe7c2a7a40b08e37a96adac66583b8251
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 112b9bac5d99556201b2038cf150293c9f2ed86d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781859"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005800"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Wiederherstellen von Azure SQL Data Warehouse 
 In diesem Artikel erfahren Sie, wie Sie die folgenden Aufgaben im Azure-Portal und mithilfe von PowerShell ausführen:
@@ -25,10 +25,6 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Aufgaben im Azure-Portal u
 - Wiederherstellung anhand einer gelöschten Datenbank
 - Wiederherstellung anhand einer Geosicherung
 - Erstellen einer Kopie Ihrer Data Warehouse-Instanz mithilfe eines benutzerdefinierten Wiederherstellungspunkts
-
-> [!NOTE]
-> Am 27.08. wurde die serverübergreifende Wiederherstellung aufgrund einer bekannten Regression deaktiviert. Wir arbeiten mit höchster Priorität aktiv an der Lösung dieses Problems. Wir entschuldigen uns für die Unannehmlichkeiten. In der Zwischenzeit können Sie die [Geosicherung](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region) zur serverübergreifenden Wiederherstellung nutzen.  
->
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 **Überprüfen Sie Ihre DTU-Kapazität.** Jedes SQL Data Warehouse wird von einer SQL Server-Instanz gehostet (z.B. myserver.database.windows.net), die über ein Standard-DTU-Kontingent verfügt.  Bevor Sie eine SQL Data Warehouse-Instanz wiederherstellen können, überprüfen Sie, ob Ihre SQL Server-Instanz über ein ausreichendes DTU-Kontingent für die Datenbankwiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Anfordern einer DTU-Kontingentänderung][Request a DTU quota change].

@@ -3,7 +3,7 @@ title: Ändern einer Azure-VM-Skalierungsgruppe | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Azure-VM-Skalierungsgruppe mit den REST-APIs, Azure PowerShell und der Azure CLI ändern und aktualisieren.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: negat
-ms.openlocfilehash: 49414b06010cf83c10bbc9519f2bced2126661a4
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: manayar
+ms.openlocfilehash: c3c01d7013749ca5cbd95224c230932a20a8146b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322072"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740586"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 Während des Lebenszyklus von Anwendungen müssen Sie möglicherweise Ihre VM-Skalierungsgruppe ändern oder aktualisieren. Zu diesen Aktualisierungen können das Aktualisieren der Konfiguration der Skalierungsgruppe oder das Ändern der Anwendungskonfiguration zählen. Dieser Artikel beschreibt die Vorgehensweise zum Ändern einer vorhandenen Skalierungsgruppe mit den REST-APIs, Azure PowerShell oder der Azure CLI.
@@ -162,7 +162,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Diese Eigenschaften beschreiben die Konfiguration der VM-Instanz, nicht die Konfiguration der Skalierungsgruppe als Ganzes. Beispielsweise weist das Skalierungsgruppenmodell die Eigenschaft `overprovision` auf, das Modell für eine VM-Instanz in einer Skalierungsgruppe besitzt diese Eigenschaft jedoch nicht. Dieser Unterschied ist darauf zurückzuführen, dass die Überbereitstellung eine Eigenschaft für die Skalierungsgruppe als Ganzes und nicht für einzelne VM-Instanzen in der Skalierungsgruppe ist. (Weitere Informationen zur Überbereitstellung finden Sie unter [Überlegungen zum Entwurf von Skalierungsgruppen](virtual-machine-scale-sets-design-overview.md#overprovisioning).)
+Diese Eigenschaften beschreiben die Konfiguration einer VM-Instanz in einer Skalierungsgruppe, nicht die Konfiguration der Skalierungsgruppe als Ganzes. Beispielsweise weist das Skalierungsgruppenmodell die Eigenschaft `overprovision` auf, das Modell für eine VM-Instanz in einer Skalierungsgruppe besitzt diese Eigenschaft jedoch nicht. Dieser Unterschied ist darauf zurückzuführen, dass die Überbereitstellung eine Eigenschaft für die Skalierungsgruppe als Ganzes und nicht für einzelne VM-Instanzen in der Skalierungsgruppe ist. (Weitere Informationen zur Überbereitstellung finden Sie unter [Überlegungen zum Entwurf von Skalierungsgruppen](virtual-machine-scale-sets-design-overview.md#overprovisioning).)
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>VM-Instanzenansicht für die Skalierungsgruppe
@@ -239,7 +239,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-Diese Eigenschaften beschreiben den aktuellen Laufzeitstatus der VM-Instanz, einschließlich aller auf die Skalierungsgruppe angewendeten Erweiterungen.
+Diese Eigenschaften beschreiben den aktuellen Laufzeitstatus einer VM-Instanz in einer Skalierungsgruppe, einschließlich aller auf die Skalierungsgruppe angewandten Erweiterungen.
 
 
 ## <a name="how-to-update-global-scale-set-properties"></a>Aktualisieren von globalen Skalierungsgruppeneigenschaften

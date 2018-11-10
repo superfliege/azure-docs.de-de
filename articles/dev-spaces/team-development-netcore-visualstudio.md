@@ -6,19 +6,18 @@ ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-manager: douge
-ms.openlocfilehash: 2a04b80e728ecf0af39cb46041a005a86ea1abec
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8bed7801e76e19a391b5b0685c090ca1b2336410
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406106"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979062"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Teamentwicklung mit Azure Dev Spaces
 

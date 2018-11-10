@@ -2,19 +2,19 @@
 title: Entwickeln von Skriptaktionen mit Linux-basiertem HDInsight – Azure
 description: Erfahren Sie, wie Sie Bash-Skripts verwenden, um Linux-basierte HDInsight-Cluster anzupassen. Das HDInsight-Feature „Skriptaktionen“ ermöglicht es Ihnen, Skripts während oder nach der Clustererstellung auszuführen. Skripts können verwendet werden, um die Konfigurationseinstellungen von Clustern zu ändern oder um zusätzliche Software zu installieren.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: jasonh
-ms.openlocfilehash: 9a10620e3a388fa47076afd54e1789607e5ca47e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 90bba26bf1fd941085568cacd4d005f10eaed1b8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986250"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005392"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 
@@ -33,7 +33,7 @@ Skriptaktionen können mithilfe der folgenden Methoden angewendet werden:
 | --- |:---:|:---:|
 | Azure-Portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
-| Klassische Azure CLI |&nbsp; |✓ |
+| Die klassische Azure CLI |&nbsp; |✓ |
 | HDInsight .NET-SDK |✓ |✓ |
 | Azure Resource Manager-Vorlage |✓ |&nbsp; |
 

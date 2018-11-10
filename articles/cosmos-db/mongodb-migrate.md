@@ -4,93 +4,39 @@ description: Erfahren Sie, wie Sie „mongoimport“ und „mongorestore“ zum 
 keywords: mongoimport, mongorestore
 services: cosmos-db
 author: SnehaGunda
-manager: slyons
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.author: sclyon
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 56d885fa4a52c907ef2b7eab10899191a1ac3acd
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: d3a7ddcd4a95660264bdf9609f54af39a05c97b3
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248522"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741027"
 ---
-# <a name="migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die MongoDB-API
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Tutorial: Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die MongoDB-API
 
-Sie müssen wie folgt vorgehen, um Daten von MongoDB in ein Azure Cosmos DB-Konto für die Verwendung mit der API für MongoDB zu migrieren:
-
-* Laden Sie aus dem [MongoDB-Downloadcenter](https://www.mongodb.com/download-center) den Communityserver herunter, und installieren Sie ihn.
-* Verwenden Sie die Datei „mongoimport.exe“ oder „mongorestore.exe“, die im Verzeichnis „installation folder/bin“ installiert wird. 
-* Rufen Sie Ihre [API für die MongoDB-Verbindungszeichenfolge](connect-mongodb-account.md) ab.
-
-Wenn Sie Daten aus MongoDB importieren und diese mit der SQL-API von Azure Cosmos DB verwenden möchten, sollten Sie die Daten mithilfe des [Datenmigrationstools](import-data.md) importieren.
+Dieses Tutorial enthält Anweisungen zum Migrieren von in MongoDB gespeicherten Daten zum Azure Cosmos DB-Konto für die MongoDB-API. Wenn Sie Daten aus MongoDB importieren und diese mit der SQL-API von Azure Cosmos DB verwenden möchten, sollten Sie die Daten mithilfe des [Datenmigrationstools](import-data.md) importieren.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!div class="checklist"]
-> * Abrufen der Verbindungszeichenfolge
-> * Importieren von MongoDB-Daten mithilfe von „mongoimport“
-> * Importieren von MongoDB-Daten mithilfe von „mongorestore“
+> * Planen der Migration
+> * Voraussetzungen für die Migration
+> * Migrieren von Daten mithilfe von „mongoimport“
+> * Migrieren von Daten mithilfe von „mongorestore“
 
-## <a name="prerequisites"></a>Voraussetzungen
+Vergewissern Sie sich vor dem Migrieren von Daten zum MongoDB-API-Konto, dass MongoDB-Beispieldaten vorhanden sind. Besitzen Sie keine MongoDB-Beispieldatenbank, können Sie [MongoDB Community Server](https://www.mongodb.com/download-center) herunterladen und installieren, eine Beispieldatenbank erstellen und mithilfe von „mongoimport.exe“ bzw. „mongorestore.exe“ Beispieldaten hochladen. 
 
-* **Erhöhung des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für eine einzelne Sammlung oder eine Gruppe von Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im [Azure-Portal](https://portal.azure.com) finden Sie unter [Leistungsstufen und Tarife in Azure Cosmos DB](performance-levels.md).
-
-* **Aktivieren von SSL:** Für Azure Cosmos DB gelten strenge Sicherheitsanforderungen und -standards. Achten Sie darauf, SSL für die Interaktion mit Ihrem Konto zu aktivieren. Die Verfahren im restlichen Artikel verdeutlichen, wie Sie SSL für „mongoimport“ und „mongorestore“ aktivieren.
-
-* **Erstellen von Azure Cosmos DB-Ressourcen:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie vorab all Ihre Sammlungen im Azure-Portal. Wenn Sie als Migrationsziel ein Azure Cosmos DB-Konto mit Durchsatz auf Datenbankebene verwenden, geben Sie beim Erstellen der Azure Cosmos DB-Sammlungen einen Partitionsschlüssel an.
-
-## <a name="get-your-connection-string"></a>Abrufen Ihrer Verbindungszeichenfolge 
-
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf der linken Seite auf den Eintrag **Azure Cosmos DB**.
-1. Wählen Sie unter **Abonnements** den Namen Ihres Kontos aus.
-1. Klicken Sie auf dem Blatt **Verbindungszeichenfolge** auf **Verbindungszeichenfolge**.
-
-   Der rechte Bereich enthält alle Informationen, die Sie zum erfolgreichen Verbinden des Kontos benötigen.
-
-   ![Blatt „Verbindungszeichenfolge“](./media/mongodb-migrate/ConnectionStringBlade.png)
-
-## <a name="migrate-data-by-using-mongoimport"></a>Migrieren von Daten mithilfe von „mongoimport“
-
-Verwenden Sie zum Importieren von Daten in Ihr Azure Cosmos DB-Konto die folgende Vorlage. Geben Sie für *host*, *username* und *password* die Werte ein, die für Ihr Konto gelten.  
-
-Vorlage:
-
-```bash
-    mongoimport.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates --type json --file "C:\sample.json"
-```
-
-Beispiel:  
-
-```bash
-    mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file "C:\Users\admin\Desktop\*.json"
-```
-
-## <a name="migrate-data-by-using-mongorestore"></a>Migrieren von Daten mithilfe von „mongorestore“
-
-Verwenden Sie zum Wiederherstellen von Daten für Ihre API für das MongoDB-Konto die folgende Vorlage, um den Importvorgang durchzuführen. Geben Sie für *host*, *username* und *password* die Werte ein, die für Ihr Konto gelten.
-
-Vorlage:
-
-```bash
-    mongorestore.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates <path_to_backup>
-```
-
-Beispiel:
-
-```bash
-    mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
-```
-    
-## <a name="steps-for-a-successful-migration"></a>Schritte für eine erfolgreiche Migration
+## <a name="plan-for-migration"></a>Planen der Migration
 
 1. Erstellen und skalieren Sie Ihre Sammlungen im Voraus:
         
-    * Standardmäßig stellt Azure Cosmos DB eine neue MongoDB-Sammlung mit 1.000 Anforderungseinheiten pro Sekunde (RU/s) bereit. Erstellen Sie vorab alle Ihre Sammlungen über das [Azure-Portal](https://portal.azure.com) oder über MongoDB-Treiber und -Tools, bevor Sie mit der Migration mithilfe von „mongoimport“ oder „mongorestore“ beginnen. Wenn die Größe Ihrer Daten 10 GB übersteigt, müssen Sie eine [Shard-Sammlung/partitionierte Sammlung](partition-data.md) mit einem entsprechenden Shard-Schlüssel erstellen.
+    * Standardmäßig stellt Azure Cosmos DB eine neue MongoDB-Sammlung mit 1.000 Anforderungseinheiten pro Sekunde (RU/s) bereit. Erstellen Sie vorab alle Ihre Sammlungen über das [Azure-Portal](https://portal.azure.com) oder über MongoDB-Treiber und -Tools, bevor Sie mit der Migration mithilfe von „mongoimport“ oder „mongorestore“ beginnen. Wenn die Größe Ihrer Daten 10 GB übersteigt, müssen Sie eine [partitionierte Sammlung](partition-data.md) mit einem entsprechenden Shard-Schlüssel erstellen.
 
     * Über das [Azure-Portal](https://portal.azure.com) können Sie den Durchsatz Ihrer Sammlungen von 1.000 RUs pro Sekunde für eine einzelne partitionierte Sammlung und 2.500 RUs pro Sekunde für eine Shard-Sammlung speziell für die Migration erhöhen. Mit dem höheren Durchsatz können Sie eine Ratenbegrenzung vermeiden und Migrationen in kürzerer Zeit durchführen. Sie können den Durchsatz sofort nach der Migration verringern, um Kosten zu sparen.
 
@@ -143,9 +89,9 @@ Beispiel:
     
     b. Führen Sie eine einfache Abfrage für die Datenbank aus: ```db.coll.find().limit(1)```. Sie erhalten eine Antwort ähnlich der folgenden:
 
-        ```
-        Fetched 1 record(s) in 100(ms)
-        ```
+       ```bash
+       Fetched 1 record(s) in 100(ms)
+       ```
         
 1. Entfernen Sie das eingefügte Dokument vor der Migration, damit keine doppelten Dokumente vorhanden sind. Mit diesem Befehl können Sie Dokumente entfernen: ```db.coll.remove({})```
 
@@ -169,16 +115,66 @@ Beispiel:
     
     *numInsertionWorkers = (10.000 RUs x 0,1 s) / (24 x 10 RUs) = 4,1666*
 
-1. Führen Sie den endgültigen Migrationsbefehl aus:
+1. Führen Sie den Migrationsbefehl aus. Die Optionen zum Migrieren von Daten werden in den nächsten Abschnitten beschrieben.
 
    ```bash
-   mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
+   mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
    ```
-   Oder verwenden Sie „mongorestore“ (wobei der Durchsatz für alle Sammlungen mindestens der RU-Menge aus den vorherigen Berechnungen entsprechen muss):
+   Oder verwenden Sie „mongorestore“ (wobei der Durchsatz für alle Sammlungen mindestens der RU-Anzahl aus den vorherigen Berechnungen entsprechen muss):
    
    ```bash
-   mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07 --numInsertionWorkersPerCollection 4 --batchSize 24
+   mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07 --numInsertionWorkersPerCollection 4 --batchSize 24
    ```
+
+## <a name="prerequisites-for-migration"></a>Voraussetzungen für die Migration
+
+* **Erhöhung des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für eine einzelne Sammlung oder eine Gruppe von Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im [Azure-Portal](https://portal.azure.com) finden Sie unter [Leistungsstufen und Tarife in Azure Cosmos DB](performance-levels.md).
+
+* **Aktivieren von SSL:** Für Azure Cosmos DB gelten strenge Sicherheitsanforderungen und -standards. Achten Sie darauf, SSL für die Interaktion mit Ihrem Konto zu aktivieren. Die Verfahren im restlichen Artikel verdeutlichen, wie Sie SSL für „mongoimport“ und „mongorestore“ aktivieren.
+
+* **Erstellen von Azure Cosmos DB-Ressourcen:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie Ihre gesamten Sammlungen vorab im Azure-Portal. Wenn Sie eine Migration zu einem Azure Cosmos DB-Konto durchführen, das über Durchsatz auf Datenbankebene verfügt, sollten Sie beim Erstellen der Azure Cosmos DB-Sammlungen unbedingt einen Partitionsschlüssel angeben.
+
+## <a name="get-your-connection-string"></a>Abrufen Ihrer Verbindungszeichenfolge 
+
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf der linken Seite auf den Eintrag **Azure Cosmos DB**.
+1. Wählen Sie unter **Abonnements** den Namen Ihres Kontos aus.
+1. Klicken Sie auf dem Blatt **Verbindungszeichenfolge** auf **Verbindungszeichenfolge**.
+
+   Der rechte Bereich enthält alle Informationen, die Sie zum erfolgreichen Verbinden des Kontos benötigen.
+
+   ![Blatt „Verbindungszeichenfolge“](./media/mongodb-migrate/ConnectionStringBlade.png)
+
+## <a name="migrate-data-by-using-mongoimport"></a>Migrieren von Daten mithilfe von „mongoimport“
+
+Verwenden Sie zum Importieren von Daten in Ihr Azure Cosmos DB-Konto die folgende Vorlage. Geben Sie für *host*, *username* und *password* die Werte ein, die für Ihr Konto gelten.  
+
+Vorlage:
+
+```bash
+mongoimport.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates --type json --file "C:\sample.json"
+```
+
+Beispiel:  
+
+```bash
+mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file "C:\Users\admin\Desktop\*.json"
+```
+
+## <a name="migrate-data-by-using-mongorestore"></a>Migrieren von Daten mithilfe von „mongorestore“
+
+Verwenden Sie zum Wiederherstellen von Daten für Ihre API für das MongoDB-Konto die folgende Vorlage, um den Importvorgang durchzuführen. Geben Sie für *host*, *username* und *password* die Werte ein, die für Ihr Konto gelten.
+
+Vorlage:
+
+```bash
+mongorestore.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates <path_to_backup>
+```
+
+Beispiel:
+
+```bash
+mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/17/2018
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: a1705913e1656901d0a87a3cebb2eb69a6c7ad63
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 667c1fbce398e06f9f2a6edca21935ae1062a737
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698586"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740569"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-post-put-and-delete-functions-to-the-app"></a>Erstellen einer MongoDB-App mit Angular und Azure Cosmos DB – Teil 6: Hinzufügen von Post-, Put- und Delete-Funktionen zur App
 
@@ -88,13 +88,13 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     });
     ```
 
-5. Führen Sie die App aus, um sich zu vergewissern, dass alles geklappt hat. Speichern Sie alle Ihre Änderungen in Visual Studio Code. Klicken Sie im linken Bereich auf die Schaltfläche **Debuggen** ![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) und anschließend auf die Schaltfläche **Debugging starten** ![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
+5. Führen Sie die App aus, um sich zu vergewissern, dass alles geklappt hat. Speichern Sie alle Ihre Änderungen in Visual Studio Code. Wählen Sie im linken Bereich die Schaltfläche **Debuggen** ![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) und anschließend die Schaltfläche **Debugging starten** ![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
 
 6. Wechseln Sie nun wieder zu Ihrem Internetbrowser, drücken Sie F12 (auf den meisten Computern), um die Entwicklungstools zu öffnen, und navigieren Sie zur Registerkarte „Netzwerk“. Navigieren Sie zu [http://localhost:3000](http://localhost:3000), um sich die über das Netzwerk abgewickelten Aufrufe anzusehen.
 
     ![Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 
-7. Fügen Sie einen neuen Helden hinzu, indem Sie auf die Schaltfläche **Add New Hero** (Neuen Helden hinzufügen) klicken. Geben Sie die ID „999“, den Namen „Fred“ und den Spruch „Hello“ ein, und klicken Sie auf **Speichern**. Auf der Registerkarte sehen Sie, dass Sie eine POST-Anforderung für einen neuen Helden gesendet haben. 
+7. Fügen Sie einen neuen Helden hinzu, indem Sie die Schaltfläche **Add New Hero** (Neuen Helden hinzufügen) wählen. Geben Sie die ID „999“, den Namen „Fred“ und den Spruch „Hello“ ein, und wählen Sie anschließend **Speichern**. Auf der Registerkarte sehen Sie, dass Sie eine POST-Anforderung für einen neuen Helden gesendet haben. 
 
     ![Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität für Get- und Post-Funktionen](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
 
@@ -173,17 +173,17 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     };
     ```
 
-4. Klicken Sie nach der Aktualisierung des Codes in Visual Studio Code auf die Schaltfläche **Neu starten** ![Schaltfläche „Neu starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png).
+4. Wählen Sie nach der Aktualisierung des Codes in Visual Studio Code die Schaltfläche **Neu starten** ![Schaltfläche „Neu starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png).
 
-5. Aktualisieren Sie die Seite in Ihrem Internetbrowser, und klicken Sie auf die Schaltfläche **Add New Hero** (Neuen Helden hinzufügen). Fügen Sie einen neuen Helden mit der ID „9“, dem Namen „Starlord“ und dem Spruch „Hi“ hinzu. Klicken Sie auf die Schaltfläche **Save** (Speichern), um den neuen Helden zu speichern.
+5. Aktualisieren Sie die Seite in Ihrem Internetbrowser, und wählen Sie die Schaltfläche **Add New Hero** (Neuen Helden hinzufügen). Fügen Sie einen neuen Helden mit der ID „9“, dem Namen „Starlord“ und dem Spruch „Hi“ hinzu. Wählen Sie die Schaltfläche **Save** (Speichern), um den neuen Helden zu speichern.
 
-6. Wählen Sie als Nächstes den Helden **Starlord** aus, ändern Sie den Spruch von „Hi“ in „Bye“, und klicken Sie anschließend auf die Schaltfläche **Save** (Speichern). 
+6. Wählen Sie als Nächstes den Helden **Starlord** aus, ändern Sie den Spruch von „Hi“ in „Bye“, und wählen Sie anschließend die Schaltfläche **Save** (Speichern). 
 
     Nun können Sie die ID auf der Registerkarte „Netzwerk“ auswählen, um die Nutzlast anzuzeigen. In der Nutzlast sehen Sie, dass der Spruch jetzt „Bye“ lautet.
 
     ![Heroes-App und Registerkarte „Netzwerk“ mit der Nutzlast](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
 
-    Sie können auch einen der Helden über die Benutzeroberfläche löschen und sich ansehen, wie lange die Ausführung des Löschvorgangs dauert. Klicken Sie hierzu für den Helden „Fred“ auf die Schaltfläche „Delete“ (Löschen).
+    Sie können auch einen der Helden über die Benutzeroberfläche löschen und sich ansehen, wie lange die Ausführung des Löschvorgangs dauert. Wählen Sie hierzu für den Helden „Fred“ die Schaltfläche „Delete“ (Löschen).
 
     ![Heroes-App und die Registerkarte „Netzwerk“ mit der Ausführungsdauer der Funktionen](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
 

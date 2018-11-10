@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0fd843b150148057399a4e05f5e25a728cd4ae56
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7cf3db5020d6a100ca6afdd5a1dccd522189720d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298509"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978501"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Tutorial: Verwenden von Azure Security Center zum Überwachen virtueller Windows-Computer
 
@@ -133,7 +133,7 @@ In diesem Tutorial richten Sie Azure Security Center ein und überprüfen dann V
 > * Anzeigen und Beheben von Integritätsproblemen bei der Konfiguration
 > * Überprüfen erkannter Bedrohungen
 
-Im nächsten Tutorial erfahren Sie, wie sie eine CI/CD-Pipeline mit Azure DevOps Services und Windows-VMs mit IIS erstellen.
+Wechseln Sie zum nächsten Tutorial, um zu erfahren, wie Sie einen SQL&#92;IIS&#92;.NET-Stapel auf einem Paar von Windows-VMs installieren.
 
 > [!div class="nextstepaction"]
-> [Azure Pipelines(./tutorial-vsts-iis-cicd.md)
+> [Install a SQL\IIS\.NET stack in Azure](tutorial-iis-sql.md) (Installieren eines SQL\IIS\.NET-Stapels in Azure)
