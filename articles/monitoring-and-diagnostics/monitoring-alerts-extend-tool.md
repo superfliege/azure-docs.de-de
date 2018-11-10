@@ -1,5 +1,5 @@
 ---
-title: Erweitern von Warnungen aus Log Analytics auf Azure
+title: Erweitern von Warnungen von Log Analytics auf Azure
 description: Dieser Artikel beschreibt die Tools und die API zum Erweitern von Warnungen aus Log Analytics auf Azure-Warnungen.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a470299df86f6b8f7fd61279af0334d01ef94f8d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415700"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957420"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Erweitern von Warnungen aus Log Analytics in Azure-Warnungen
 Die Warnfunktion in Azure Log Analytics wird durch Azure-Warnungen ersetzt. Im Rahmen dieses Übergangs werden Warnungen, die Sie ursprünglich in Log Analytics konfiguriert haben, auf Azure erweitert. Wenn Sie nicht warten möchten, bis diese automatisch in Azure verschoben werden, können Sie den Prozess auslösen:
@@ -470,7 +470,7 @@ Hier werden die Wiederherstellungsschritte für die einzelnen Fehler aufgeführt
 
 - **Error: Policy is present at subscription/resource group level** (Fehler: Richtlinie auf Abonnement-/Ressourcengruppenebene):   ![Screenshot der Seite „Warnungseinstellungen“ im Operations Management Suite-Portal mit hervorgehobener Fehlermeldung zu Richtlinien](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
-    Wenn [Azure Policy](../azure-policy/azure-policy-introduction.md) angewendet wird, werden neue Ressourcen in einem Abonnement oder in einer Ressourcengruppe eingeschränkt, das bzw. die den Log Analytics-Arbeitsbereich (Operations Management Suite) enthält. Das System kann Warnungen nicht auf Azure erweitern und nicht die erforderlichen Aktionsgruppen erstellen.
+    Wenn [Azure Policy](../governance/policy/overview.md) angewendet wird, werden neue Ressourcen in einem Abonnement oder in einer Ressourcengruppe eingeschränkt, das bzw. die den Log Analytics-Arbeitsbereich (Operations Management Suite) enthält. Das System kann Warnungen nicht auf Azure erweitern und nicht die erforderlichen Aktionsgruppen erstellen.
     
     Beheben Sie das Problem durch Bearbeiten der Richtlinie, die den Fehler *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* verursacht. Dieser Fehler verhindert die Erstellung neuer Ressourcen für das Abonnement oder die Ressourcengruppe, das bzw. die den Arbeitsbereich enthält. Verwenden Sie hierzu das Azure-Portal, PowerShell, die Azure CLI oder die API. Sie können Aktionen überwachen, um die entsprechende Richtlinie zu finden, die den Fehler verursacht. Weitere Informationen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/resource-group-audit.md). 
     

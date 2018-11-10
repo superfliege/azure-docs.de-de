@@ -15,17 +15,17 @@ ms.topic: get-started-article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7d11d238b921c63d1d2317371da07d8e49e8ac9d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 41bbc2fd57617bb4bafb121f9c766b1f673dd075
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46301971"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228622"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Upgrade von DirSync
 Azure AD Connect ist der Nachfolger von DirSync. Dieses Thema beschreibt die Möglichkeiten, die Sie beim Upgrade von DirSync haben. Die Schritte funktionieren nicht für ein Upgrade von einer anderen Version von Azure AD Connect oder von Azure AD Sync.
 
-Vor dem Installieren von Azure AD Connect müssen Sie [Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) herunterladen und die unter [Azure AD Connect: Hardware und Voraussetzungen](how-to-connect-install-prerequisites.md) beschriebenen Schritte zur Vorbereitung ausführen. Informieren Sie sich insbesondere über Folgendes, da sich diese Bereiche von DirSync unterscheiden:
+Vor dem Installieren von Azure AD Connect müssen Sie [Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) herunterladen und die unter [Azure AD Connect: Hardware und Voraussetzungen](how-to-connect-install-prerequisites.md) beschriebenen Schritte zur Vorbereitung ausführen. Informieren Sie sich insbesondere über Folgendes, da sich diese Bereiche von DirSync unterscheiden:
 
 * Die erforderliche Version von .Net und PowerShell. Im Vergleich zu DirSync müssen sich neuere Versionen auf dem Server befinden.
 * Die Konfiguration des Proxyservers. Wenn Sie einen Proxyserver verwenden, um eine Verbindung mit dem Internet herzustellen, muss diese Einstellung vor dem Upgrade konfiguriert werden. DirSync hat immer den Proxyserver verwendet, der für den installierenden Benutzer konfiguriert ist, Azure AD Connect verwendet hingegen die Einstellungen für den Computer.

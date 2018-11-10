@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 01b8ccc9fe6b5469408131bce68a903f15382998
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 04ee2daaf7b06f8e7bdd8de144a039474551ea11
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222527"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227041"
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Versionshinweise zu Azure SDK für .NET 2.9
 
@@ -80,7 +80,7 @@ Dieses Update umfasst Folgendes:
 
 * **Azure Data Lake Tools** für Visual Studio ist jetzt im Azure SDK für .NET enthalten. Das Tool wird beim Installieren von Azure SDK automatisch installiert. 
   
-    Das Tool wird regelmäßig aktualisiert, rufen Sie die Updates daher [hier](http://aka.ms/datalaketool) ab.
+    Das Tool wird regelmäßig aktualisiert, rufen Sie die Updates daher [hier](https://aka.ms/datalaketool) ab.
 * **Server-Explorer** können Sie nun alle U-SQL-Metadatenentitäten anzeigen und einige U-SQL-Metadatenentitäten erstellen. Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/documentation/services/data-lake-analytics/) Blog.
 
 ## <a name="hdinsight-tools"></a>HDInsight-Tools

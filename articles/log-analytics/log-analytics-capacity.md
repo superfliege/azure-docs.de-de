@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0244673d50e22124e8a0678e202004f06b0bca00
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: e1f33551c02562bbd8b7cc6a4187f7135a06c60f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182619"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961941"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (Vorschau)
 
@@ -50,8 +50,8 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | Verbundene Quelle | Support | BESCHREIBUNG |
 |---|---|---|
-| [Windows-Agents](log-analytics-windows-agent.md) | JA | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
-| [Linux-Agents](log-analytics-linux-agents.md) | Nein     | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
+| [Windows-Agents](log-analytics-agent-windows.md) | JA | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
+| [Linux-Agents](log-analytics-quick-collect-linux-computer.md) | Nein     | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
 | [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | JA |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
 | [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
 
@@ -64,7 +64,7 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 Führen Sie den folgenden Schritt aus, um die Lösung „Kapazität und Leistung“ Ihrem Arbeitsbereich hinzuzufügen.
 
-- Fügen Sie die Lösung „Kapazitäts- und Leistungsdiagnose“ mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Verfahrens Ihrem Log Analytics-Arbeitsbereich hinzu.
+- Fügen Sie die Lösung „Kapazitäts- und Leistungsdiagnose“ mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../monitoring/monitoring-solutions.md) beschriebenen Verfahrens Ihrem Log Analytics-Arbeitsbereich hinzu.
 
 ## <a name="management-packs"></a>Management Packs
 
@@ -97,7 +97,7 @@ Klicken Sie auf die Kachel „Kapazität und Leistung“, um das Dashboard „Ka
 - **Hosts**
     - **Host-CPU-Auslastung** Zeigt für den gewählten Zeitraum einen grafischen Trend der CPU-Auslastung von Hostcomputern und eine Liste mit Hosts an. Zeigen Sie auf das Liniendiagramm, um Details für einen bestimmten Zeitpunkt anzuzeigen. Klicken Sie auf das Diagramm, um weitere Details für die Protokollsuche anzuzeigen. Klicken Sie auf einen beliebigen Hostnamen, um die Protokollsuche zu öffnen und für gehostete VMs Details zum CPU-Leistungsindikator anzuzeigen.
     - **Hostspeicherauslastung** Zeigt für den gewählten Zeitraum einen grafischen Trend für die Arbeitsspeicherauslastung von Hostcomputern und eine Liste mit Hosts an. Zeigen Sie auf das Liniendiagramm, um Details für einen bestimmten Zeitpunkt anzuzeigen. Klicken Sie auf das Diagramm, um weitere Details für die Protokollsuche anzuzeigen. Klicken Sie auf einen beliebigen Hostnamen, um die Protokollsuche zu öffnen und für gehostete VMs Details zum Arbeitsspeicher-Leistungsindikator anzuzeigen.
-- **Virtual Machines**
+- **Virtuelle Computer**
     - **VM-CPU-Auslastung** Zeigt für den gewählten Zeitraum einen grafischen Trend für die CPU-Auslastung von virtuellen Computern und eine Liste mit virtuellen Computern an. Zeigen Sie auf das Liniendiagramm, um für die drei obersten VMs Details zu einem bestimmten Zeitpunkt anzuzeigen. Klicken Sie auf das Diagramm, um weitere Details für die Protokollsuche anzuzeigen. Klicken Sie auf einen beliebigen VM-Namen, um die Protokollsuche zu öffnen und für die VM aggregierte Details zum CPU-Leistungsindikator anzuzeigen.
     - **VM-Speicherauslastung** Zeigt für den gewählten Zeitraum einen grafischen Trend für die Arbeitsspeicherauslastung von virtuellen Computern und eine Liste mit virtuellen Computern an. Zeigen Sie auf das Liniendiagramm, um für die drei obersten VMs Details zu einem bestimmten Zeitpunkt anzuzeigen. Klicken Sie auf das Diagramm, um weitere Details für die Protokollsuche anzuzeigen. Klicken Sie auf einen beliebigen VM-Namen, um die Protokollsuche zu öffnen und für die VM aggregierte Details zum Arbeitsspeicher-Leistungsindikator anzuzeigen.
     - **IOPS gesamt für VM-Datenträger** Zeigt für den gewählten Zeitraum einen grafischen Trend für den IOPS-Gesamtwert für virtuelle Computer und eine Liste mit virtuellen Computern und dem zugehörigen IOPS-Wert an. Zeigen Sie auf das Liniendiagramm, um für die drei obersten VMs Details zu einem bestimmten Zeitpunkt anzuzeigen. Klicken Sie auf das Diagramm, um weitere Details für die Protokollsuche anzuzeigen. Klicken Sie auf einen beliebigen VM-Namen, um die Protokollsuche zu öffnen und für die VM aggregierte Details zum IOPS-Leistungsindikator des Datenträgers anzuzeigen.
@@ -138,4 +138,4 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Daten zur Kapa
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-search.md), um ausführliche Daten zur Kapazität und Leistung anzuzeigen.
+* Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-queries.md), um ausführliche Daten zur Kapazität und Leistung anzuzeigen.

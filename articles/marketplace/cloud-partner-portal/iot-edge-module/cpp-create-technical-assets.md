@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d7f9dfee447cddc771e0e88ca5be04018b51dba2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: a4117b41700446770e10ef799967ae4a43db342d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432930"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227755"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Vorbereiten der technischen Ressourcen für das IoT Edge-Modul
 
@@ -45,7 +45,7 @@ Ihr IoT Edge-Modul muss eine der folgenden Plattformoptionen unterstützen.
 Bieten Sie Unterstützung für alle Plattformen der Ebene 1, die von IoT Edge unterstützt werden (wie unter [Azure IoT Edge-Support](https://docs.microsoft.com/azure/iot-edge/support) dargestellt). Diese Option wird empfohlen, da so die Benutzerfreundlichkeit verbessert wird. Module, die diese Kriterien erfüllen, werden vorgestellt. Für ein Modul mit dieser Plattformoption muss Folgendes gelten:
 
 - Es muss ein `latest`-Tag und ein Versionstag (z.B. `1.0.1`) bereitstellen, bei denen es sich um Manifesttags handelt, die mit dem [Manifesttool](https://github.com/estesp/manifest-tool) von GitHub erstellt wurden.
-- Es muss die [Registerkarte „Marketplace“](./cpp-marketplace-tab.md) verwenden, um einen Link zu [kompatiblen, für IoT Edge zertifizierten Geräten](http://aka.ms/iot-edge-certified) hinzuzufügen. Dieser Link wird in `http://aka.ms/iot-edge-certified` aufgelöst. Dies ist eine Website, auf der Kunden nach zertifizierten Geräten suchen können. Diese Website wird auch als [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/)-Gerätekatalog bezeichnet.
+- Es muss die [Registerkarte „Marketplace“](./cpp-marketplace-tab.md) verwenden, um einen Link zu [kompatiblen, für IoT Edge zertifizierten Geräten](https://aka.ms/iot-edge-certified) hinzuzufügen. Dieser Link wird in `http://aka.ms/iot-edge-certified` aufgelöst. Dies ist eine Website, auf der Kunden nach zertifizierten Geräten suchen können. Diese Website wird auch als [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/)-Gerätekatalog bezeichnet.
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Eine Teilmenge der von IoT Edge unterstützten Plattformen der Ebene 1
   

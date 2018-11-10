@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 15cac40e743f44ea7e0954c94683674ad9372a7a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f6140b582b2412a164593bd2aa99bfbde5fb688
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962946"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964185"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Die unten angegebene Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken abzufragen und darauf zuzugreifen.
@@ -533,7 +533,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |serverlog_storage_percent|Serverprotokollspeicher in Prozent|Prozent|Durchschnitt|Serverprotokollspeicher in Prozent|Keine Dimensionen|
 |serverlog_storage_usage|Verwendeter Serverprotokollspeicher|Byte|Durchschnitt|Verwendeter Serverprotokollspeicher|Keine Dimensionen|
 |serverlog_storage_limit|Begrenzung des Serverprotokollspeichers|Byte|Durchschnitt|Begrenzung des Serverprotokollspeichers|Keine Dimensionen|
-|active_connections|Aktive Verbindungen|Count|Durchschnitt|Aktive Verbindungen|Keine Dimensionen|
+|active_connections|Die aktiven Verbindungen.|Count|Durchschnitt|Die aktiven Verbindungen.|Keine Dimensionen|
 |connections_failed|Verbindungsfehler|Count|Gesamt|Verbindungsfehler|Keine Dimensionen|
 |network_bytes_egress|Netzwerk ausgehend|Byte|Gesamt|Ausgehender Netzwerkdatenverkehr über aktive Verbindungen|Keine Dimensionen|
 |network_bytes_ingress|Netzwerk eingehend|Byte|Gesamt|Eingehender Netzwerkdatenverkehr über aktive Verbindungen|Keine Dimensionen|
@@ -551,7 +551,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |serverlog_storage_percent|Serverprotokollspeicher in Prozent|Prozent|Durchschnitt|Serverprotokollspeicher in Prozent|Keine Dimensionen|
 |serverlog_storage_usage|Verwendeter Serverprotokollspeicher|Byte|Durchschnitt|Verwendeter Serverprotokollspeicher|Keine Dimensionen|
 |serverlog_storage_limit|Begrenzung des Serverprotokollspeichers|Byte|Durchschnitt|Begrenzung des Serverprotokollspeichers|Keine Dimensionen|
-|active_connections|Aktive Verbindungen|Count|Durchschnitt|Aktive Verbindungen|Keine Dimensionen|
+|active_connections|Die aktiven Verbindungen.|Count|Durchschnitt|Die aktiven Verbindungen.|Keine Dimensionen|
 |connections_failed|Verbindungsfehler|Count|Gesamt|Verbindungsfehler|Keine Dimensionen|
 |seconds_behind_master|Replikationsverzögerung in Sekunden|Count|Durchschnitt|Replikationsverzögerung in Sekunden|Keine Dimensionen|
 |network_bytes_egress|Netzwerk ausgehend|Byte|Gesamt|Ausgehender Netzwerkdatenverkehr über aktive Verbindungen|Keine Dimensionen|
@@ -570,7 +570,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |serverlog_storage_percent|Serverprotokollspeicher in Prozent|Prozent|Durchschnitt|Serverprotokollspeicher in Prozent|Keine Dimensionen|
 |serverlog_storage_usage|Verwendeter Serverprotokollspeicher|Byte|Durchschnitt|Verwendeter Serverprotokollspeicher|Keine Dimensionen|
 |serverlog_storage_limit|Begrenzung des Serverprotokollspeichers|Byte|Durchschnitt|Begrenzung des Serverprotokollspeichers|Keine Dimensionen|
-|active_connections|Aktive Verbindungen|Count|Durchschnitt|Aktive Verbindungen|Keine Dimensionen|
+|active_connections|Die aktiven Verbindungen.|Count|Durchschnitt|Die aktiven Verbindungen.|Keine Dimensionen|
 |connections_failed|Verbindungsfehler|Count|Gesamt|Verbindungsfehler|Keine Dimensionen|
 |network_bytes_egress|Netzwerk ausgehend|Byte|Gesamt|Ausgehender Netzwerkdatenverkehr über aktive Verbindungen|Keine Dimensionen|
 |network_bytes_ingress|Netzwerk eingehend|Byte|Gesamt|Eingehender Netzwerkdatenverkehr über aktive Verbindungen|Keine Dimensionen|
@@ -587,8 +587,8 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |devices.totalDevices|Geräte gesamt (veraltet)|Count|Gesamt|Die Anzahl von Geräten, die beim IoT Hub registriert sind|Keine Dimensionen|
 |devices.connectedDevices.allProtocol|Verbundene Geräte (veraltet) |Count|Gesamt|Die Anzahl von Geräten, die mit dem IoT Hub verbunden sind|Keine Dimensionen|
 |d2c.telemetry.egress.success|Routing: Übermittelte Telemetrienachrichten|Count|Gesamt|Die Anzahl der erfolgreichen Nachrichtenübermittlungen an alle Endpunkte über das IoT Hub-Routing Wenn eine Nachricht an mehrere Endpunkte weitergeleitet wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins Wenn eine Nachricht mehrmals an denselben Endpunkt übermittelt wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins|Keine Dimensionen|
-|d2c.telemetry.egress.dropped|Routing: Verworfene Telemetrienachrichten |Count|Gesamt|Die Anzahl der Nachrichten, die vom IoT Hub-Routing aufgrund von inaktiven Endpunkten gelöscht wurden. Dieser Wert zählt nicht die Nachrichten, die an die Fallbackroute übermittelt werden, da gelöschte Nachrichten dort nicht übermittelt werden.|Keine Dimensionen|
-|d2c.telemetry.egress.orphaned|Routing: Verwaiste Telemetrienachrichten |Count|Gesamt|Die Häufigkeit, mit der Nachrichten durch das IoT Hub-Routing verwaist wurden, da sie mit keinen Routingregeln (einschließlich der Fallbackregel) übereinstimmten. |Keine Dimensionen|
+|d2c.telemetry.egress.dropped|Routing: Verworfene Telemetrienachrichten |Count|Gesamt|Die Anzahl der Nachrichten, die vom IoT Hub-Routing aufgrund von inaktiven Endpunkten gelöscht wurden. Dieser Wert zählt nicht die Nachrichten, die an die Fallbackroute übermittelt werden, da gelöschte Nachrichten dort nicht übermittelt werden.|Keine Dimensionen|
+|d2c.telemetry.egress.orphaned|Routing: Verwaiste Telemetrienachrichten |Count|Gesamt|Die Häufigkeit, mit der Nachrichten durch das IoT Hub-Routing verwaist wurden, da sie mit keinen Routingregeln (einschließlich der Fallbackregel) übereinstimmten. |Keine Dimensionen|
 |d2c.telemetry.egress.invalid|Routing: Nicht kompatible Telemetrienachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Nachrichten aufgrund einer Inkompatibilität mit dem Endpunkt nicht übermitteln konnte. Dieser Wert umfasst keine Wiederholungen.|Keine Dimensionen|
 |d2c.telemetry.egress.fallback|Routing: An den Fallback übermittelte Nachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Nachrichten an den mit der Fallbackroute verbundenen Endpunkt übermittelt hat.|Keine Dimensionen|
 |d2c.endpoints.egress.eventHubs|Routing: An Event Hub übermittelte Nachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Event Hub-Endpunkte übermittelt hat.|Keine Dimensionen|
@@ -1038,10 +1038,10 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |RequestSize|Anforderungsgröße|Byte|Gesamt|Die Anzahl der von Clients als Anforderungen an den HTTP/S-Proxy gesendeten Bytes|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |ResponseSize|Antwortgröße|Byte|Gesamt|Die Anzahl der vom HTTP/S-Proxy als Antworten an Clients gesendeten Bytes|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |BackendRequestCount|Back-End-Anforderungsanzahl|Count|Gesamt|Die Anzahl der vom HTTP/S-Proxy an Back-Ends gesendeten Anforderungen|HttpStatus, HttpStatusGroup, Backend|
-|BackendRequestLatency|Wartezeit der Back-End-Anforderung|Millisekunden|Durchschnitt|Die Zeitspanne zwischen dem Senden der Anforderung durch den HTTP/S-Proxy an das Back-End und dem Empfangen des letzten Antwortbytes durch den HTTP/S-Proxy vom Back-End|Back-End|
-|TotalLatency|Gesamtwartezeit|Millisekunden|Durchschnitt|Die Zeitspanne zwischen dem Empfang der Clientanforderung durch den HTTP/S-Proxy und der Bestätigung des letzten Antwortbytes vom HTTP/S-Proxy durch den Client|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
+|BackendRequestLatency|Latenz der Back-End-Anforderung|Millisekunden|Durchschnitt|Die Zeitspanne zwischen dem Senden der Anforderung durch den HTTP/S-Proxy an das Back-End und dem Empfangen des letzten Antwortbytes durch den HTTP/S-Proxy vom Back-End|Back-End|
+|TotalLatency|Gesamtlatenz|Millisekunden|Durchschnitt|Die Zeitspanne zwischen dem Empfang der Clientanforderung durch den HTTP/S-Proxy und der Bestätigung des letzten Antwortbytes vom HTTP/S-Proxy durch den Client|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |BackendHealthPercentage|Prozentsatz der Back-End-Integrität|Prozent|Durchschnitt|Der Prozentsatz der erfolgreichen Integritätstests vom HTTP/S-Proxy zu Back-Ends|Backend, BackendPool|
-|WebApplicationFirewallRequestCount|Anforderungsanzahl für Web Application Firewall|Count|Gesamt|Die Anzahl der von der Web Application Firewall verarbeiteten Clientanforderungen|PolicyName, RuleName, Action|
+|WebApplicationFirewallRequestCount|Anforderungsanzahl für die Web Application Firewall|Count|Gesamt|Die Anzahl der von der Web Application Firewall verarbeiteten Clientanforderungen|PolicyName, RuleName, Action|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
@@ -1570,6 +1570,6 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |MemoryPercentage|Arbeitsspeicherprozentsatz|Prozent|Durchschnitt|Arbeitsspeicherprozentsatz|Instanz|
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Informationen zu Metriken in Azure Monitor](monitoring-overview-metrics.md)
-* [Erstellen von Warnungen zu Metriken](insights-receive-alert-notifications.md)
+* [Informationen zu Metriken in Azure Monitor](../monitoring/monitoring-data-collection.md)
+* [Erstellen von Warnungen zu Metriken](monitoring-overview-alerts.md)
 * [Exportieren von Metriken in Storage, Event Hub oder Log Analytics](monitoring-overview-of-diagnostic-logs.md)

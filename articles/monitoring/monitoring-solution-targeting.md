@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: 65585e6c09def23101d9735c8b9c719d213938ac
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 1aaa753c91a324621dc66fab23e5fed3a9d11d01
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887400"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912764"
 ---
 # <a name="targeting-management-solutions-in-azure-preview"></a>Zielgruppenadressierung von Verwaltungslösungen in Azure (Vorschau)
 Wenn Sie eine Verwaltungslösung zu Ihrem Abonnement hinzufügen, wird sie automatisch standardmäßig für alle mit Ihrem Log Analytics-Arbeitsbereich verbundenen Windows- und Linux-Agents bereitgestellt.  Möglicherweise möchten Sie Ihre Kosten verwalten und den Umfang der für eine Lösung gesammelten Daten begrenzen, indem Sie sie auf einen bestimmten Satz von Agents beschränken.  Dieser Artikel beschreibt, wie Sie das Feature der **Zielgruppenadressierung für eine Lösung** verwenden, um einen Geltungsbereich auf Ihre Lösungen anzuwenden.
@@ -74,5 +74,5 @@ Zielgruppenadressierung für Lösung kann auch dann nicht mit den folgenden Lös
 - Bewertung der Agent-Integrität
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zu Verwaltungslösungen, inklusive der Lösungen, die zur Installation in Ihrer Umgebung verfügbar sind, finden Sie unter [Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich](../log-analytics/log-analytics-add-solutions.md).
+- Weitere Informationen zu Verwaltungslösungen, inklusive der Lösungen, die zur Installation in Ihrer Umgebung verfügbar sind, finden Sie unter [Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich](monitoring-solutions.md).
 - Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Log Analytics-Protokollsuchen](../log-analytics/log-analytics-computer-groups.md).

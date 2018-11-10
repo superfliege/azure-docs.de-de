@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6d826702d8302246a225ebfcdf0a5987cf9d2045
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 46939e15100468eab0d5575546eb6bd58df4aacd
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167051"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961074"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 Informieren Sie sich über die Leistung und Nutzung Ihrer Webseite oder App. Wenn Sie [Application Insights](app-insights-overview.md) Ihrem Seitenskript hinzufügen, erhalten Sie Zeitangaben zu Seitenladevorgängen und AJAX-Aufrufen, Anzahl und Details von Browserausnahmen und AJAX-Fehlern sowie die Anzahl von Benutzern und Sitzungen. Diese Informationen können jeweils nach Seite, Clientbetriebssystem und Browserversion, geografischer Position und anderen Dimensionen segmentiert werden. Sie können Warnungen für die Fehleranzahl oder das langsame Laden von Seiten festlegen. Und indem Sie Ablaufverfolgungsaufrufe in JavaScript-Code einfügen, können Sie nachverfolgen, wie die verschiedenen Funktionen Ihre Webseitenanwendung genutzt werden.
@@ -230,7 +230,7 @@ Der Seitenname kann die gleichen Zeichen wie eine URL enthalten, aber alles nach
 ## <a name="usage-tracking"></a>Nutzungsverfolgung
 Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 
-* [Informationen zu den Analysetools für Benutzerverhalten](app-insights-web-track-usage.md)
+* [Informationen zu den Analysetools für Benutzerverhalten](app-insights-usage-overview.md)
 * [Informationen zur API für benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md).
 
 ## <a name="video"></a> Video
@@ -241,7 +241,7 @@ Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 
 
 ## <a name="next"></a> Nächste Schritte
-* [Nutzung nachverfolgen](app-insights-web-track-usage.md)
+* [Nutzung nachverfolgen](app-insights-usage-overview.md)
 * [Benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md)
-* [Erstellen-Messen-Lernen](app-insights-web-track-usage.md)
+* [Erstellen-Messen-Lernen](app-insights-usage-overview.md)
 

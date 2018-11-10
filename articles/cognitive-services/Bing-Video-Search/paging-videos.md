@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 9b030312c562d1c0a6cbacfc7f424289dee2e8de
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: cd5d6ef6a75088d02bc34558f66ed520c230e06b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225564"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741888"
 ---
 # <a name="paging-videos"></a>Durchblättern von Videos
 
@@ -65,3 +65,6 @@ Wenn Sie beispielsweise 30 Videos gleichzeitig durchblättern möchten, setzen S
 
 > [!NOTE]
 > Das Durchblättern gilt nur für die Videosuche (/videos/search) und nicht Videoeinblicke (/videos/details) oder beliebte Videos (/videos/trending).
+
+> [!NOTE]
+> Das Feld `TotalEstimatedAnswers` gibt eine Schätzung der Gesamtzahl der Suchergebnisse an, die Sie für die aktuelle Abfrage abrufen können.  Wenn Sie die Parameter `count` und `offset` festlegen, kann sich der Wert von `TotalEstimatedAnswers` ändern. 

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: e77389411e52853efb52252a17c8612f0480fa61
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ae033b944e93fe90392af9b17de883d791d3e4dc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298641"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958594"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Eingehende Diagnose für Web-Apps und Dienste mit Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Wofür benötigen Sie Application Insights?
@@ -172,7 +172,7 @@ Wenn eine Warnung ausgelöst wird, kann Application Insights automatisch ein Arb
 ## <a name="next-steps"></a>Nächste Schritte
 Die ersten Schritte mit Application Insights sind ganz einfach. Dies sind die wichtigsten Optionen:
 
-* Instrumentieren Sie eine Web-App, die bereits ausgeführt wird. Dadurch können Sie die gesamte integrierte Leistungstelemetrie nutzen. Diese ist für [Java](app-insights-java-live.md)- und [IIS-Server](app-insights-monitor-performance-live-website-now.md)-Apps sowie für [Azure-Web-Apps](app-insights-azure.md) verfügbar.
+* Instrumentieren Sie eine Web-App, die bereits ausgeführt wird. Dadurch können Sie die gesamte integrierte Leistungstelemetrie nutzen. Diese ist für [Java](app-insights-java-live.md)- und [IIS-Server](app-insights-monitor-performance-live-website-now.md)-Apps sowie für [Azure-Web-Apps](app-insights-overview.md) verfügbar.
 * Instrumentieren Sie Ihr Projekt während der Entwicklung. Dies ist für [ASP.NET](app-insights-asp-net.md)- oder [Java](app-insights-java-get-started.md)-Apps sowie für [Node.js](app-insights-nodejs.md) und eine Vielzahl [weiterer Sprachen und Plattformen](app-insights-platforms.md) möglich. 
 * Instrumentieren Sie [beliebige Webseiten](app-insights-javascript.md) durch Hinzufügen eines kurzen Codeausschnitts.
 

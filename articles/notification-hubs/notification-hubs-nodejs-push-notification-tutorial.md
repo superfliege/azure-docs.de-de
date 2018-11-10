@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 49ee6b7fabe78c2328a2a772347c612ad38cfe7a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 8e4c97a710cc9e6d3af4ebdd7dc97bda9f8d02ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091726"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228435"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -43,7 +43,7 @@ Die behandelten Szenarios umfassen das Senden von Pushbenachrichtigungen an Anwe
 Weitere Informationen zu Notification Hubs finden Sie im Abschnitt [Nächste Schritte](#next) .
 
 ## <a name="what-are-notification-hubs"></a>Was sind Notification Hubs?
-Azure Notification Hubs bieten eine einfache, plattformübergreifende und skalierbare Infrastruktur für den Versand von Pushbenachrichtigungen an mobile Geräte. Ausführliche Informationen zur Dienstinfrastruktur finden Sie auf der Seite [Übersicht über Benachrichtigungshubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) .
+Azure Notification Hubs bieten eine einfache, plattformübergreifende und skalierbare Infrastruktur für den Versand von Pushbenachrichtigungen an mobile Geräte. Ausführliche Informationen zur Dienstinfrastruktur finden Sie auf der Seite [Übersicht über Benachrichtigungshubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) .
 
 ## <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
 Der erste Schritt in diesem Tutorial besteht im Erstellen einer neuen leeren Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][nodejswebsite], [Node.js-Clouddienst][Node.js Cloud Service] mithilfe von Windows PowerShell oder [Website mit WebMatrix][webmatrix].
@@ -141,11 +141,11 @@ Das **MpnsService**-Objekt enthält eine **send**-Methode, mit der Pushbenachric
 * **Tags:** die Tag-ID. Falls kein Tag angegeben ist, wird die Benachrichtigung an alle Clients gesendet.
 * **Payload:** die Nutzlast der Nachricht als XML.
 * **TargetName** - `toast` für Popupbenachrichtigungen. `token` für Kachelbenachrichtigungen.
-* **NotificationClass:** die Priorität der Benachrichtigung. Eine Liste der gültigen Werte finden Sie im Abschnitt **HTTP Header Elements** (HTTP-Headerelemente) im Dokument [Push notifications from a server](http://msdn.microsoft.com/library/hh221551.aspx) (Pushbenachrichtigungen von einem Server).
+* **NotificationClass:** die Priorität der Benachrichtigung. Eine Liste der gültigen Werte finden Sie im Abschnitt **HTTP Header Elements** (HTTP-Headerelemente) im Dokument [Push notifications from a server](https://msdn.microsoft.com/library/hh221551.aspx) (Pushbenachrichtigungen von einem Server).
 * **Options:** optionale Anforderungsheader.
 * **Callback:** die Rückruffunktion.
 
-Eine Liste der gültigen Optionen für **TargetName**, **NotificationClass** und Header finden Sie auf der Seite [Push notifications from a server](http://msdn.microsoft.com/library/hh221551.aspx) (Pushbenachrichtigungen von einem Server).
+Eine Liste der gültigen Optionen für **TargetName**, **NotificationClass** und Header finden Sie auf der Seite [Push notifications from a server](https://msdn.microsoft.com/library/hh221551.aspx) (Pushbenachrichtigungen von einem Server).
 
 Der folgende Beispielcode verwendet die **MpnsService**-Instanz, die vom **NotificationHubService** verfügbar gemacht wurde, um eine Popuppushbenachrichtigung zu senden:
 
@@ -165,7 +165,7 @@ Das **WnsService**-Objekt enthält eine **send**-Methode, mit der Pushbenachrich
 * **Options:** optionale Anforderungsheader.
 * **Callback:** die Rückruffunktion.
 
-Eine Liste der gültigen Typen und Anforderungsheader finden Sie unter [Anforderungs- und Antwortheader des Pushbenachrichtigungsdiensts (Windows-Runtime-Apps)](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
+Eine Liste der gültigen Typen und Anforderungsheader finden Sie unter [Anforderungs- und Antwortheader des Pushbenachrichtigungsdiensts (Windows-Runtime-Apps)](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
 
 Der folgende Code verwendet die **WnsService**-Instanz, die vom **NotificationHubService** verfügbar gemacht wurde, um eine Popuppushbenachrichtigung an eine UWP-App zu senden:
 

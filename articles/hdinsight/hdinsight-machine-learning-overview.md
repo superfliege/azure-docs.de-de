@@ -2,19 +2,19 @@
 title: Übersicht über Machine Learning – Azure HDInsight
 description: In diesem Artikel werden die Optionen für das maschinelle Lernen in HDInsight beschrieben.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: jasonh
-ms.openlocfilehash: 10d4056ea9d78bd56710b7b5d67297b90232cf0b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 2ac108d65b42221189e50987238ad3d7edad1e30
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107730"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005333"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning in HDInsight
 

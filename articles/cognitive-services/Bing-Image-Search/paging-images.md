@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 019d91f6a86bab5c4f446085e0244f9b5323f1fb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 0db8c62bbb4da1a6fa1230b439c5074325bbe9c3
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294406"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739365"
 ---
 # <a name="paging-results"></a>Auslagerungsergebnisse
 
@@ -61,3 +61,6 @@ Um doppelte Ergebnisse zu eliminieren, verwenden Sie das [nextOffset](https://do
 
 > [!NOTE]
 > Das Durchblättern gilt nur für die Bildsuche (/images/search) und nicht für Bildeinblicke oder beliebte Bilder (/images/trending).
+
+> [!NOTE]
+> Das Feld `TotalEstimatedAnswers` gibt eine Schätzung der Gesamtzahl der Suchergebnisse an, die Sie für die aktuelle Abfrage abrufen können.  Wenn Sie die Parameter `count` und `offset` festlegen, kann sich der Wert von `TotalEstimatedAnswers` ändern. 

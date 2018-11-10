@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 995e93290e7c305e217c1f44609d383f69d83a9a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 49012c69a6dacaf76c95ea4c760e5951ecb6a9fb
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420556"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958839"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets
 Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
 
 > [!NOTE]
-> Während diese exemplarische Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, gelten dieselben Informationen auch für die automatische Skalierung von [Clouddiensten](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Diensten](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Informationen zu einer einfachen Einstellung zum horizontalen Herunterskalieren bzw. Hochskalieren für eine VM-Skalierungsgruppe, die auf einer einfachen Leistungsmetrik wie „CPU“ basiert, finden Sie in den [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md)- und [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)-Dokumenten.
+> Während diese exemplarische Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, gelten dieselben Informationen auch für die automatische Skalierung von [Clouddiensten](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Diensten](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Informationen zu einer einfachen Einstellung zum horizontalen Herunterskalieren bzw. Hochskalieren für eine VM-Skalierungsgruppe, die auf einer einfachen Leistungsmetrik wie „CPU“ basiert, finden Sie in den [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md)- und [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-powershell.md)-Dokumenten.
 >
 >
 

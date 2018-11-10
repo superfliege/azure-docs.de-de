@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 9edd7261ca62f505ffb4854e3132fae916768f67
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e762141e089b11dd0fb129f3bf758874d4ad4da8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26626587"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227636"
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>Aufgabenliste für Verwaltung und Entwicklung in BizTalk Services
 
@@ -30,7 +30,7 @@ ms.locfileid: "26626587"
 ## <a name="getting-started"></a>Erste Schritte
 Bei der Arbeit mit Microsoft Azure BizTalk Services sind verschiedene lokale und cloudbasierte Komponenten zu berücksichtigen. Betrachten Sie zunächst den folgenden Prozessablauf:  
 
-| Schritt | Wer ist verantwortlich? | Task | Verwandte Links |
+| Schritt | Wer ist verantwortlich? | Aufgabe | Verwandte Links |
 | --- | --- | --- | --- |
 | 1. |Administrator |Erstellen Sie das Microsoft Azure-Abonnement über ein Microsoft-Konto oder ein Organisationskonto. |[Azure-Portal](https://portal.azure.com) |
 | 2. |Administrator |Erstellen Sie einen BizTalk Service, oder stellen Sie ihn bereit. |[Erstellen eines BizTalk Service](https://msdn.microsoft.com/library/azure/dn232347.aspx) |
@@ -39,7 +39,7 @@ Bei der Arbeit mit Microsoft Azure BizTalk Services sind verschiedene lokale und
 | 5. |Developer |Installieren Sie das SDK, und erstellen Sie das BizTalk Service-Projekt in Visual Studio. |[Installieren des Azure BizTalk Services-SDK](https://msdn.microsoft.com/library/azure/hh689760.aspx) und [Erstellen von formatierten Messagingendpunkten in Azure](https://msdn.microsoft.com/library/azure/hh689766.aspx) |
 | 6. |Developer |Stellen Sie Ihr BizTalk Service-Projekt in Ihrem bei Azure gehosteten BizTalk Service bereit. |[Bereitstellen und Aktualisieren des BizTalk Services-Projekts](https://msdn.microsoft.com/library/azure/hh689881.aspx) |
 | 7. |Administrator |Gilt, wenn Sie EDI verwenden.  Sie können im Microsoft Azure BizTalk Services-Portal Partner hinzufügen und Vereinbarungen erstellen. Wenn Sie eine Vereinbarung erstellen, können Sie die vom Entwickler in den Vereinbarungseinstellungen erstellten Brücken oder Transformationen hinzufügen. |[Konfigurieren von EDI, AS2 und EDIFACT im BizTalk Services-Portal](https://msdn.microsoft.com/library/azure/hh689853.aspx) |
-| 8. |Administrator |Überwachen Sie mithilfe von [REST](https://msdn.microsoft.com/library/azure/dn232347.aspx) die Integrität Ihres BizTalk Service, einschließlich Leistungsmetriken. |[BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](http://go.microsoft.com/fwlink/p/?LinkID=302281) |
+| 8. |Administrator |Überwachen Sie mithilfe von [REST](https://msdn.microsoft.com/library/azure/dn232347.aspx) die Integrität Ihres BizTalk Service, einschließlich Leistungsmetriken. |[BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](https://go.microsoft.com/fwlink/p/?LinkID=302281) |
 | 9. |Administrator |Verwalten Sie über das Microsoft Azure BizTalk Services-Portal die von BizTalk Services verwendeten Artefakte, und verfolgen Sie Nachrichten nach, während sie von den Brückendateien verarbeitet werden. |[Verwenden des BizTalk Services-Portals](https://msdn.microsoft.com/library/azure/dn874043.aspx) |
 | 10. |Administrator |Erstellen Sie einen Sicherungsplan zum Sichern des BizTalk Service. |[Geschäftskontinuität und Notfallwiederherstellung in BizTalk Services](https://msdn.microsoft.com/library/azure/dn509557.aspx) |
 
@@ -58,5 +58,5 @@ Bei der Arbeit mit Microsoft Azure BizTalk Services sind verschiedene lokale und
 [Quelle, Ziel und Bridge-Messagingendpunkte](https://msdn.microsoft.com/library/azure/hh689877.aspx)  
 [Erlernen und Erstellen von Nachrichtenzuordnungen und -transformationen](https://msdn.microsoft.com/library/azure/hh689905.aspx)  
 [Verwenden des BizTalk Adapter Service](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
-[BizTalk Services-Dokumentation](http://go.microsoft.com/fwlink/p/?LinkID=303664)
+[BizTalk Services-Dokumentation](https://go.microsoft.com/fwlink/p/?LinkID=303664)
 

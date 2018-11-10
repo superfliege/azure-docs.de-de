@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: magoedte
-ms.openlocfilehash: a399c3968e5ee1e2d1f6d623a68dbb1e15cef212
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 62edeb36fcd56733630edc6fa27c9963f20b0186
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088415"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913545"
 ---
 # <a name="overview-of-the-azure-agents-to-monitor-azure-virtual-machines"></a>Übersicht über die Azure-Agents zur Überwachung von virtuellen Azure-Computern
 Microsoft Azure bietet mehrere Möglichkeiten zum Erfassen unterschiedlicher Arten von Daten von virtuellen Computern, die in Azure oder anderen Cloudanbietern gehostet werden und auf denen Microsoft Windows und Linux ausgeführt werden.  In diesem Artikel werden die Unterschiede und die mit jedem Agent verfügbaren Funktionen beschrieben, damit Sie ermitteln können, welcher Agent Ihre Dienstverwaltung oder Ihre allgemeinen Überwachungsanforderungen unterstützt.  
@@ -38,7 +38,7 @@ Sie können auswählen, dass Folgendes gesammelt wird:
 * Sammeln von Protokollereignissen aus Syslog  
 * Absturzabbilder 
 
-Daten können alternativ auch an [Application Insights](../application-insights/app-insights-cloudservices.md), [Log Analytics](../log-analytics/log-analytics-overview.md) oder über [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) an Nicht-Azure-Dienste weitergeleitet werden. 
+Daten können alternativ auch an [Application Insights](../application-insights/app-insights-cloudservices.md), [Log Analytics](../log-analytics/log-analytics-overview.md) oder über [Event Hub](../event-hubs/event-hubs-about.md) an Nicht-Azure-Dienste weitergeleitet werden. 
 
 Für die erweiterte Überwachung, bei der nicht nur Metriken und eine Teilmenge von Protokollen gesammelt werden sollen, ist der Log Analytics-Agent für Windows und Linux erforderlich.  Mit diesem Agent können Sie Azure-Dienste wie Automation und Log Analytics, einschließlich aller angebotenen Features, nutzen, um eine umfassende Verwaltung Ihrer virtuellen Azure-Computer während des gesamten Lebenszyklus sicherzustellen. Dies umfasst:
 

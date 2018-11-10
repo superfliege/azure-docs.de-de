@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
-ms.openlocfilehash: e10bd04f37951f93db8af083692b7a2fe25ac9b7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 9d1229084410b6fe7c500a22f8e1e1aed1b8107d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347954"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227347"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Installieren von Update 1.1 für Ihr StorSimple Virtual Array
 
@@ -66,7 +66,7 @@ Führen Sie die folgenden Schritte aus, um Update 1.1 aus dem Microsoft Update-K
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>So laden sie das Update oder den Hotfix herunter
 
-1. Starten Sie Internet Explorer, und navigieren Sie zu [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+1. Starten Sie Internet Explorer, und navigieren Sie zu [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
 
 2. Falls Sie den Microsoft Update-Katalog zum ersten Mal auf diesem Computer verwenden, klicken Sie auf **Installieren**, wenn Sie zum Installieren des Add-Ons für den Microsoft Update-Katalog aufgefordert werden.
 
@@ -85,7 +85,7 @@ Führen Sie die folgenden Schritte aus, um Update 1.1 aus dem Microsoft Update-K
     ![Dateien im Paket](./media/storsimple-virtual-array-install-update-11/update01folder.png)
 
     Zwei Dateien werden angezeigt:
-    -  Eine eigenständige Paketdatei von Microsoft Update: `WindowsTH-KB3011067-x64`. Diese Datei wird verwendet, um die Gerätesoftware zu aktualisieren.
+    -  Eine eigenständige Paketdatei von Microsoft Update (`WindowsTH-KB3011067-x64`). Diese Datei wird verwendet, um die Gerätesoftware zu aktualisieren.
     - Eine Datei mit kumulativen Updates für Juni: `Windows8.1-KB4284815-x64`. Weitere Informationen zu den Inhalten dieses Rollups finden Sie im [monatlichen Sicherheitsrollup für Juni](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815).
 
 ### <a name="install-the-update-or-the-hotfix"></a>Installieren des Updates oder Hotfixes

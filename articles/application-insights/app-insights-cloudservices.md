@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3b06ec3b10edc39d770e5a724125e70afd5e5477
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 46c05c7c6568a967aae8e50a5da9ae70779a6060
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783517"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959017"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Microsoft Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) können mit [Application Insights][start] auf Verfügbarkeit, Leistung, Fehler und Verwendung überwacht werden. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
@@ -96,7 +96,7 @@ Wenn Sie sich entschieden haben, eine separate Application Insights-Ressource f�
 
 Dadurch werden die Application Insights-Instrumentierungsschlüssel in die Dateien mit dem Namen `ServiceConfiguration.*.cscfg` eingefügt. ([Beispielcode](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)).
 
-Wenn Sie festlegen möchten, welche Diagnosedaten an Application Insights gesendet werden, können Sie dies [direkt durch Bearbeiten der `.cscfg`-Dateien erledigen](app-insights-azure-diagnostics.md).
+Wenn Sie festlegen möchten, welche Diagnosedaten an Application Insights gesendet werden, können Sie dies [direkt durch Bearbeiten der `.cscfg`-Dateien erledigen](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
 
 ## <a name="sdk"></a>Installieren des SDK in den einzelnen Projekten
 Hierdurch haben Sie die Möglichkeit, allen Rollen benutzerdefinierte Geschäftstelemetriedaten hinzuzufügen. Dies ermöglicht eine genauere Analyse, wie die Anwendung verwendet und ausgeführt wird.
@@ -151,7 +151,7 @@ Um Leistungsindikatoren und Angaben zur Anzahl von Ereignissen anzuzeigen, öffn
 
 ![Azure-Diagnosedaten](./media/app-insights-cloudservices/23-wad.png)
 
-Verwenden Sie die [Suche](app-insights-diagnostic-search.md) oder eine [Analytics-Abfrage](app-insights-analytics-tour.md), um die verschiedenen Ablaufverfolgungsprotokolle zu durchsuchen, die von der Azure-Diagnose gesendet werden. Angenommen, es liegt eine nicht behandelte Ausnahme vor, die das Abstürzen und Wiederverwenden einer Rolle verursacht hat. Diese Informationen werden im Kanal „Anwendung“ des Windows-Ereignisprotokolls angezeigt. Sie können das Windows-Ereignisprotokoll mithilfe der Suchfunktion untersuchen und die vollständige Stapelüberwachung für die Ausnahme abrufen. So können Sie die Ursache des Problems ermitteln.
+Verwenden Sie die [Suche](app-insights-diagnostic-search.md) oder eine [Analytics-Abfrage](../log-analytics/query-language/get-started-analytics-portal.md), um die verschiedenen Ablaufverfolgungsprotokolle zu durchsuchen, die von der Azure-Diagnose gesendet werden. Angenommen, es liegt eine nicht behandelte Ausnahme vor, die das Abstürzen und Wiederverwenden einer Rolle verursacht hat. Diese Informationen werden im Kanal „Anwendung“ des Windows-Ereignisprotokolls angezeigt. Sie können das Windows-Ereignisprotokoll mithilfe der Suchfunktion untersuchen und die vollständige Stapelüberwachung für die Ausnahme abrufen. So können Sie die Ursache des Problems ermitteln.
 
 ![Durchsuchen der Azure-Diagnosedaten](./media/app-insights-cloudservices/25-wad.png)
 
@@ -231,7 +231,7 @@ Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Ser
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Konfigurieren der Azure-Diagnose zum Protokollieren in Application Insights](app-insights-azure-diagnostics.md)
+* [Konfigurieren der Azure-Diagnose zum Protokollieren in Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Automatisierung der Erstellung von Application Insights-Ressourcen](app-insights-powershell.md)
 * [Automatisierung von Azure-Diagnose](app-insights-powershell-azure-diagnostics.md)
 * [Azure-Funktionen](https://github.com/christopheranderson/azure-functions-app-insights-sample)

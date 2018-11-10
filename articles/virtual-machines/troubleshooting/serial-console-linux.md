@@ -12,96 +12,94 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/11/2018
+ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: bccf53ed5554579f4ff0a864c38562b7b7f0d3ca
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 22128f027f0a218756e413653aa92ee097064587
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885288"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741707"
 ---
-# <a name="virtual-machine-serial-console"></a>Serielle Konsole für virtuelle Computer
+# <a name="virtual-machine-serial-console-for-linux"></a>Serielle Konsole für virtuelle Computer für Linux
 
+Die serielle Konsole für virtuelle Computer (VMs) im Azure-Portal ermöglicht den Zugriff auf eine textbasierte Konsole für virtuelle Linux-Computer. Diese serielle Verbindung erfolgt über den seriellen COM1-Port des virtuellen Computers und ermöglicht Zugriff auf diesen, unabhängig vom Zustand des Netzwerks oder Betriebssystems des virtuellen Computers. Der Zugriff auf die serielle Konsole für einen virtuellen Computer kann nur über das Azure-Portal erfolgen. Er ist nur für Benutzer zulässig, die über eine Zugriffsrolle als Mitwirkender für virtuelle Computer oder höher für den virtuellen Computer verfügen. 
 
-Die serielle Konsole für virtuelle Computer in Azure ermöglicht den Zugriff auf eine textbasierte Konsole für virtuelle Linux-Computer. Diese serielle Verbindung erfolgt mit dem seriellen COM1-Port des virtuellen Computers und ermöglicht einen Zugriff auf den virtuellen Computer, der nicht vom Zustand des Netzwerks oder Betriebssystems des virtuellen Computers abhängt. Der Zugriff auf die serielle Konsole für einen virtuellen Computer kann zurzeit nur über das Azure-Portal erfolgen und ist nur für Benutzer mit der Zugriffsberechtigung „VM-Mitwirkender“ oder höher für den virtuellen Computer möglich. 
+Die Dokumentation zur seriellen Konsole für Windows-VMs finden Sie unter [Serielle Konsole für virtuelle Computer für Windows](../windows/serial-console.md).
 
-[Klicken Sie hier](../windows/serial-console.md), um die Dokumentation zur seriellen Konsole für virtuelle Windows-Computer anzuzeigen.
-
-> [!Note] 
-> Die serielle Konsole für virtuelle Computer ist in globalen Azure-Regionen allgemein verfügbar. Zu diesem Zeitpunkt ist die serielle Konsole in den Clouds „Azure Government“ und „Azure China“ noch nicht verfügbar.
+> [!NOTE] 
+> Die serielle Konsole für virtuelle Computer ist in globalen Azure-Regionen allgemein verfügbar. Sie ist noch nicht in den Clouds „Azure Government“ und „Azure China“ verfügbar.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-* Sie müssen das Resource Manager-Bereitstellungsmodell verwenden. Klassische Bereitstellungen werden nicht unterstützt. 
-* Für Ihren virtuellen Computer MUSS die [Startdiagnose](boot-diagnostics.md) aktiviert sein – siehe Screenshot.
+* Der virtuelle Computer, in dem Sie auf eine serielle Konsole zugreifen, muss das Ressourcenverwaltungs-Bereitstellungsmodell verwenden. Klassische Bereitstellungen werden nicht unterstützt. 
 
-    ![](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+* Auf dem virtuellen Computer, auf dem Sie auf eine serielle Konsole zugreifen, muss [Startdiagnose](boot-diagnostics.md) aktiviert sein. Wählen Sie im Abschnitt **Support + Problembehandlung** **Startdiagnose** aus.
 
-* Das Azure-Konto, das die serielle Konsole verwendet, muss die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md) für den virtuellen Computer und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen. 
-* Auf dem virtuellen Computer, für den Sie auf die serielle Konsole zugreifen, muss auch ein kennwortbasiertes Konto vorhanden sein. Mit der Funktionalität [Kennwort zurücksetzen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) der Erweiterungen für den Zugriff auf virtuelle Computer können Sie eines erstellen – siehe Screenshot unten.
+    ![Einstellungen der Startdiagnose](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-    ![](./media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
+Ein Konto, das eine serielle Konsole verwendet, muss die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) für die VM und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen: 
 
-* Spezifische Einstellungen für Linux-Distributionen finden Sie unter [Verfügbarkeit der Linux-Distribution der seriellen Konsole](#serial-console-linux-distro-availability).
+* Der virtuelle Computer, auf dem Sie auf eine serielle Konsole zugreifen, muss über ein kennwortbasiertes Konto verfügen. Mit der Funktion [Kennwort zurücksetzen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) der Erweiterungen für den Zugriff auf virtuelle Computer können Sie eines erstellen. Wählen Sie im Abschnitt **Support + Problembehandlung** **Kennwort zurücksetzen** aus. 
+
+* Spezifische Einstellungen für Linux-Distributionen finden Sie unter [Verfügbarkeit der seriellen Konsole in Linux-Distributionen](#serial-console-linux-distribution-availability).
 
 
 
-## <a name="get-started-with-serial-console"></a>Erste Schritte mit der seriellen Konsole
-Auf die serielle Konsole für virtuelle Computer kann nur über das [Azure-Portal](https://portal.azure.com) zugegriffen werden. Stellen Sie sicher, dass die zuvor aufgeführten [Voraussetzungen](#prerequisites) erfüllt sind. Im Folgenden werden die Schritte für den Zugriff auf die serielle Konsole für virtuelle Computer über das Portal beschrieben:
+## <a name="get-started-with-the-serial-console"></a>Erste Schritte mit der seriellen Konsole
+Auf die serielle Konsole für virtuelle Computer kann nur über das Azure-Portal zugegriffen werden:
 
-  1. Öffnen Sie das Azure-Portal.
-  1. (Überspringen Sie diesen Abschnitt, wenn für Ihren virtuellen Computer ein Benutzer vorhanden ist, der die Kennwortauthentifizierung verwendet) Fügen Sie einen Benutzer mit Benutzername-/Kennwortauthentifizierung hinzu, indem Sie auf das Blatt „Kennwort zurücksetzen“ klicken.
-  1. Wählen Sie im Menü auf der linken Seite die Option „Virtuelle Computer“ aus.
-  1. Klicken Sie in der Liste auf den virtuellen Computer. Die Übersichtsseite für den virtuellen Computer wird geöffnet.
-  1. Scrollen Sie nach unten zum Abschnitt „Support und Problembehandlung“, und klicken Sie auf die Option „Serielle Konsole“. Ein neuer Bereich mit der seriellen Konsole wird geöffnet, und die Verbindung wird hergestellt.
+  1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+  1. Wählen Sie im linken Menü **Virtual Machines** (Virtuelle Computer) aus.
+  1. Wählen Sie in der Liste eine VM aus. Die Übersichtsseite für die VM wird geöffnet.
+  1. Scrollen Sie nach unten zum Abschnitt **Support + Problembehandlung**, und wählen Sie **Serielle Konsole** aus. Ein neuer Bereich mit der seriellen Konsole wird geöffnet, und die Verbindung wird hergestellt.
 
-![](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
+   ![Fenster der seriellen Konsole unter Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
-### 
+
 
 > [!NOTE] 
-> Für die serielle Konsole ist ein konfigurierter lokaler Benutzer mit einem Kennwort erforderlich. Derzeit können nur mit einem öffentlichen SSH-Schlüssel konfigurierte virtuelle Computer sich nicht bei der seriellen Konsole anmelden. Wenn Sie einen lokalen Benutzer mit Kennwort erstellen möchten, verwenden Sie die [Erweiterung für VM-Zugriff](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension) (im Portal durch Klicken auf „Kennwort zurücksetzen“ verfügbar), und erstellen Sie einen lokalen Benutzer mit einem Kennwort.
-> Sie können auch das Administratorkennwort in Ihrem Konto zurücksetzen, indem Sie [GRUB verwenden, um in den Einzelbenutzermodus zu wechseln](./serial-console-grub-single-user-mode.md).
+> Die serielle Konsole erfordert einen lokalen Benutzer mit konfiguriertem Kennwort. VMs, die nur mit einem öffentlichen SSH-Schlüssel konfiguriert sind, können sich nicht bei der seriellen Konsole anmelden. Wenn Sie einen lokalen Benutzer mit Kennwort erstellen möchten, verwenden Sie die [Erweiterung für VM-Zugriff](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension), die im Azure-Portal durch Auswählen von **Kennwort zurücksetzen** verfügbar ist, und erstellen Sie einen lokalen Benutzer mit einem Kennwort.
+> Sie können auch das Administratorkennwort in Ihrem Konto zurücksetzen, indem Sie [GRUB verwenden, um im Einzelbenutzermodus zu starten](./serial-console-grub-single-user-mode.md).
 
-## <a name="serial-console-linux-distro-availability"></a>Verfügbarkeit der Linux-Distribution der seriellen Konsole
-Damit die serielle Konsole ordnungsgemäß ausgeführt wird, muss das Gastbetriebssystem so konfiguriert werden, dass Konsolenmeldungen über den seriellen Anschluss gelesen und geschrieben werden. In den meisten [von Azure unterstützten Linux-Distributionen](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) ist die serielle Konsole standardmäßig konfiguriert. Sie müssen einfach nur im Azure-Portal auf den Abschnitt „Serielle Konsole“ klicken, um Zugriff auf die Konsole zu erhalten. 
+## <a name="serial-console-linux-distribution-availability"></a>Verfügbarkeit der seriellen Konsole in Linux-Distributionen
+Damit die serielle Konsole ordnungsgemäß ausgeführt wird, muss das Gastbetriebssystem so konfiguriert werden, dass Konsolenmeldungen über den seriellen Anschluss gelesen und geschrieben werden. In den meisten [von Azure unterstützten Linux-Distributionen](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) ist die serielle Konsole standardmäßig konfiguriert. Zugriff auf die serielle Konsole erhalten Sie, indem Sie im Azure-Portal im Bereich **Support + Problembehandlung****Serielle Konsole** auswählen. 
 
 Distribution      | Zugriff auf die serielle Konsole
 :-----------|:---------------------
-Red Hat Enterprise Linux    | Für in Azure verfügbare Red Hat Enterprise Linux-Images ist der Zugriff auf die Konsole standardmäßig aktiviert. 
-CentOS      | Für in Azure verfügbare CentOS-Images ist der Zugriff auf die Konsole standardmäßig aktiviert. 
-Ubuntu      | Für in Azure verfügbare Ubuntu-Images ist der Zugriff auf die Konsole standardmäßig aktiviert.
-CoreOS      | Für in Azure verfügbare CoreOS-Images ist der Zugriff auf die Konsole standardmäßig aktiviert.
-SUSE        | Für in Azure verfügbare neuere SLES-Images ist der Zugriff auf die Konsole standardmäßig aktiviert. Wenn Sie in Azure ältere Versionen von SLES (10 oder niedriger) verwenden, befolgen Sie die Anweisungen in [diesem KB-Artikel](https://www.novell.com/support/kb/doc.php?id=3456486), um die serielle Konsole zu aktivieren. 
-Oracle Linux        | Für in Azure verfügbare Oracle Linux-Images ist der Zugriff auf die Konsole standardmäßig aktiviert.
-Benutzerdefinierte Linux-Images     | Um die serielle Konsole für Ihr benutzerdefiniertes Linux-VM-Image zu aktivieren, aktivieren Sie den Konsolenzugriff in `/etc/inittab`, um ein Terminal auf `ttyS0` auszuführen. Es folgt ein Beispiel, um dies in der Datei „inittab“ hinzuzufügen: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Weitere Informationen zur ordnungsgemäßen Erstellung von benutzerdefinierten Images finden Sie unter [Erstellen und Hochladen einer Linux-VHD in Azure](https://aka.ms/createuploadvhd). Wenn Sie einen benutzerdefinierten Kernel erstellen, sind `CONFIG_SERIAL_8250=y` und `CONFIG_MAGIC_SYSRQ_SERIAL=y` einige der Kernelflags, die Sie berücksichtigen sollten. Die Konfigurationsdatei zur genaueren Untersuchung befindet sich häufig unter „/boot/“.
+Red Hat Enterprise Linux    | Der Zugriff auf die serielle Konsole ist standardmäßig aktiviert. 
+CentOS      | Der Zugriff auf die serielle Konsole ist standardmäßig aktiviert. 
+Ubuntu      | Der Zugriff auf die serielle Konsole ist standardmäßig aktiviert.
+CoreOS      | Der Zugriff auf die serielle Konsole ist standardmäßig aktiviert.
+SUSE        | Für die neueren SLES-Images, die auf Azure verfügbar sind, ist der Zugriff auf die serielle Konsole standardmäßig aktiviert. Wenn Sie in Azure ältere Versionen von SLES (10 oder niedriger) verwenden, lesen Sie die Anweisungen in [diesem KB-Artikel](https://www.novell.com/support/kb/doc.php?id=3456486), um die serielle Konsole zu aktivieren. 
+Oracle Linux        | Der Zugriff auf die serielle Konsole ist standardmäßig aktiviert.
+Benutzerdefinierte Linux-Images     | Um die serielle Konsole für Ihr benutzerdefiniertes Linux-VM-Image zu aktivieren, aktivieren Sie den Konsolenzugriff in der Datei */etc/inittab*, um ein Terminal auf `ttyS0` auszuführen. Beispiel: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Weitere Informationen zur ordnungsgemäßen Erstellung von benutzerdefinierten Images finden Sie unter [Erstellen und Hochladen einer Linux-VHD in Azure](https://aka.ms/createuploadvhd). Wenn Sie einen benutzerdefinierten Kernel erstellen, sollten Sie die Aktivierung dieser Kernelflags in Erwägung ziehen: `CONFIG_SERIAL_8250=y` und `CONFIG_MAGIC_SYSRQ_SERIAL=y`. Die Konfigurationsdatei befindet sich normalerweise im Pfad */boot/*.
 
-## <a name="common-scenarios-for-accessing-serial-console"></a>Gängige Szenarien für den Zugriff auf die serielle Konsole 
+## <a name="common-scenarios-for-accessing-the-serial-console"></a>Häufige Szenarien für den Zugriff auf die serielle Konsole 
 Szenario          | Aktionen in der seriellen Konsole                
 :------------------|:-----------------------------------------
-Fehlerhafte fstab-Datei | Drücken Sie die EINGABETASTE (`Enter`), um fortzufahren, und korrigieren Sie die FSTAB-Datei in einem Text-Editor. Dazu müssen Sie sich möglicherweise im Einzelbenutzermodus befinden. Informationen für den Einstieg finden Sie unter [Beheben von FSTAB-Fehlern](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) und [Verwenden der serielle Konsole zum Zugreifen auf GRUB und den Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
+Fehlerhafte *FSTAB*-Datei | Drücken Sie die **EINGABETASTE**, um fortzufahren, und verwenden Sie einen Text-Editor, um die Datei *FSTAB* zu korrigieren. Dazu müssen Sie sich möglicherweise im Einzelbenutzermodus befinden. Weitere Informationen finden Sie unter [Beheben von FSTAB-Fehlern](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) und [Verwenden der seriellen Konsole zum Zugreifen auf GRUB und den Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
 Falsche Firewallregeln | Greifen Sie auf die serielle Konsole zu, und korrigieren Sie iptables. 
-Dateisystembeschädigung/-überprüfung | Zugreifen auf die serielle Konsole und Wiederherstellen des Dateisystems 
-SSH/RDP-Konfigurationsprobleme | Zugreifen auf die serielle Konsole und Ändern von Einstellungen 
-Netzwerksperrsystem| Zugreifen auf die serielle Konsole über das Portal zum Verwalten des Systems 
-Interaktion mit Bootloader | Greifen Sie über die serielle Konsole auf GRUB zu. Informationen für den Einstieg finden Sie unter [Verwenden der serielle Konsole zum Zugreifen auf GRUB und den Einzelbenutzermodus](serial-console-grub-single-user-mode.md). 
+Dateisystembeschädigung/-überprüfung | Greifen Sie auf die serielle Konsole zu, und stellen Sie das Dateisystem wieder her. 
+SSH/RDP-Konfigurationsprobleme | Greifen Sie auf die serielle Konsole zu, und ändern Sie die Einstellungen. 
+Netzwerksperrsystem| Greifen Sie aus dem Azure-Portal auf die serielle Konsole zu, um das System zu verwalten. 
+Interaktion mit Bootloader | Greifen Sie aus der seriellen Konsole auf GRUB zu. Weitere Informationen finden Sie unter [Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus](serial-console-grub-single-user-mode.md). 
 
-## <a name="disable-serial-console"></a>Deaktivieren der seriellen Konsole
+## <a name="disable-the-serial-console"></a>Deaktivieren der seriellen Konsole
 Standardmäßig haben alle Abonnements Zugriff auf die serielle Konsole, die für alle virtuellen Computer aktiviert ist. Sie können die serielle Konsole auf Abonnement- oder VM-Ebene deaktivieren.
 
-> [!Note] 
-> Um die serielle Konsole für ein Abonnement zu aktivieren oder zu deaktivieren, müssen Sie über Schreibberechtigungen für das Abonnement verfügen. Dies gilt u.a. für die Rollen „Administrator“ und „Besitzer“. Benutzerdefinierte Rollen können ebenfalls über Schreibberechtigungen verfügen.
+> [!NOTE] 
+> Um die serielle Konsole für ein Abonnement zu aktivieren oder zu deaktivieren, müssen Sie über Schreibberechtigungen für das Abonnement verfügen. Diese Berechtigungen schließen Administrator- oder Besitzerrollen ein. Benutzerdefinierte Rollen können ebenfalls über Schreibberechtigungen verfügen.
 
 ### <a name="subscription-level-disable"></a>Deaktivieren auf Abonnementebene
-Die serielle Konsole kann über den [REST-API-Aufruf zum Deaktivieren der Konsole](https://aka.ms/disableserialconsoleapi) für ein gesamtes Abonnement deaktiviert werden. Sie können die auf der Seite der API-Dokumentation verfügbare Funktion „Jetzt testen“ verwenden, um die serielle Konsole für ein Abonnement zu deaktivieren und zu aktivieren. Geben Sie Ihre `subscriptionId` und im Feld `default` das Wort „default“ ein, und klicken Sie auf „Ausführen“. Azure CLI-Befehle sind noch nicht verfügbar, werden aber zu einem späteren Zeitpunkt hinzugefügt. [Testen Sie den REST-API-Aufruf hier](https://aka.ms/disableserialconsoleapi).
+Die serielle Konsole kann über den [REST-API-Aufruf zum Deaktivieren der Konsole](https://docs.microsoft.com/rest/api/serialconsole/console/console_disableconsole) für ein gesamtes Abonnement deaktiviert werden. Sie können die auf der Seite der API-Dokumentation verfügbare Funktion **Jetzt testen** verwenden, um die serielle Konsole für ein Abonnement zu deaktivieren und zu aktivieren. Geben Sie unter **subscriptionId** Ihre Abonnement-ID ein, geben Sie unter **default** **default** ein, und wählen Sie dann **Ausführen** aus. Azure CLI-Befehle sind noch nicht verfügbar.
 
-![](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
+![REST-API testen](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
-Alternativ können Sie den Befehlssatz unten in Cloud Shell (es werden Bashbefehle gezeigt) verwenden, um die serielle Konsole für ein Abonnement zu deaktivieren oder zu aktivieren und den Deaktivierungsstatus der seriellen Konsole anzuzeigen. 
+Alternativ können Sie den folgenden Satz von Bash-Befehlen in Cloud Shell verwenden, um die serielle Konsole für ein Abonnement zu deaktivieren, zu aktivieren oder den Deaktivierungsstatus der seriellen Konsole anzuzeigen: 
 
-* So rufen Sie den Deaktivierungsstatus der seriellen Konsole für ein Abonnement ab
+* So rufen Sie den Deaktivierungsstatus der seriellen Konsole für ein Abonnement ab:
     ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
@@ -109,7 +107,7 @@ Alternativ können Sie den Befehlssatz unten in Cloud Shell (es werden Bashbefeh
 
     $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
     ```
-* Deaktivieren der seriellen Konsole für ein Abonnement:
+* So deaktivieren Sie die serielle Konsole für ein Abonnement:
     ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
@@ -117,7 +115,7 @@ Alternativ können Sie den Befehlssatz unten in Cloud Shell (es werden Bashbefeh
 
     $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
     ```
-* Aktivieren der seriellen Konsole für ein Abonnement:
+* So aktivieren Sie die serielle Konsole für ein Abonnement:
     ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
@@ -127,12 +125,12 @@ Alternativ können Sie den Befehlssatz unten in Cloud Shell (es werden Bashbefeh
     ```
 
 ### <a name="vm-level-disable"></a>Deaktivieren auf VM-Ebene
-Die serielle Konsole kann für bestimmte virtuelle Computer deaktiviert werden, indem die Startdiagnoseeinstellung des jeweiligen virtuellen Computers deaktiviert wird. Deaktivieren Sie einfach die Startdiagnose im Azure-Portal, und die serielle Konsole wird für den virtuellen Computer deaktiviert.
+Die serielle Konsole kann für bestimmte virtuelle Computer deaktiviert werden, indem die Startdiagnoseeinstellung des jeweiligen virtuellen Computers deaktiviert wird. Deaktivieren Sie die Startdiagnose im Azure-Portal, um die serielle Konsole für die VM zu deaktivieren.
 
 ## <a name="serial-console-security"></a>Sicherheit der seriellen Konsole 
 
 ### <a name="access-security"></a>Zugriffssicherheit 
-Der Zugriff auf die serielle Konsole ist auf Benutzer eingeschränkt, die über die Zugriffsberechtigung [VM-Mitwirkende](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) oder höher für den virtuellen Computer verfügen. Wenn Ihr AAD-Mandant mehrstufige Authentifizierung erfordert, ist auch für den Zugriff auf die serielle Konsole mehrstufige Authentifizierung erforderlich, da der Zugriff über das [Azure-Portal](https://portal.azure.com) erfolgt.
+Der Zugriff auf die serielle Konsole ist auf Benutzer eingeschränkt, die über eine Zugriffsrolle als [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) oder höher für den virtuellen Computer verfügen. Wenn für Ihren Azure Active Directory-Mandanten mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erforderlich ist, ist MFA auch für den Zugriff auf die serielle Konsole erforderlich, weil der Zugriff auf die serielle Konsole über das [Azure-Portal](https://portal.azure.com) erfolgt.
 
 ### <a name="channel-security"></a>Kanalsicherheit
 Alle gesendeten Daten werden bei der Übertragung verschlüsselt.
@@ -141,33 +139,33 @@ Alle gesendeten Daten werden bei der Übertragung verschlüsselt.
 Alle Zugriffe auf die serielle Konsole werden zurzeit in den Protokollen [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) des virtuellen Computers protokolliert. Der Zugriff auf diese Protokolle wird durch den Administrator des virtuellen Azure-Computers (der auch Besitzer dieser Protokolle ist) gesteuert.  
 
 >[!CAUTION] 
-Es werden keine Zugriffskennwörter für die Konsole protokolliert. Wenn jedoch Befehle, die innerhalb der Konsole ausgeführt werden, Kennwörter, Geheimnisse, Benutzernamen oder eine andere Form von persönlich identifizierbaren Informationen (PII) enthalten oder ausgeben, werden diese zusammen mit dem anderen sichtbaren Text als Teil der Implementierung der Scrollbackfunktionalität der seriellen Konsole in die Startdiagnoseprotokolle des virtuellen Computers geschrieben. Diese Protokolle sind zirkulär, und nur Personen mit Leseberechtigungen für das Diagnosespeicherkonto haben Zugriff auf sie. Es wird jedoch empfohlen, bewährte Methoden bei der Verwendung der SSH-Konsole für alle Aspekte zu befolgen, die Geheimnisse und/oder PII beinhalten können. 
+Zugriffskennwörter für die Konsole werden nicht protokolliert. Wenn jedoch innerhalb der Konsole Befehle ausgeführt werden, die Kennwörter, Geheimnisse, Benutzernamen oder personenbezogene Informationen anderer Art enthalten oder ausgeben, werden diese in den Protokollen der VM-Startdiagnose erfasst. Diese werden gemeinsam mit dem gesamten anderen sichtbaren Text als Teil der Implementierung der Scrollbackfunktion der seriellen Konsole geschrieben. Diese Protokolle sind zirkulär, und nur Personen mit Leseberechtigungen für das Speicherkonto der Diagnose haben auf sie Zugriff. Allerdings empfehlen wir die bewährte Methode, für alles, das Geheimnisse und oder personenbezogene Informationen beinhalten kann, den Remotedesktop zu verwenden. 
 
 ### <a name="concurrent-usage"></a>Parallele Verwendung
-Wenn ein Benutzer mit der seriellen Konsole verbunden ist und ein anderer Benutzer erfolgreich den Zugriff auf denselben virtuellen Computer anfordert, wird der erste Benutzer getrennt und der zweite Benutzer in einer Art und Weise verbunden, als würde der erste Benutzer aufstehen und die physische Konsole verlassen und ein neuer Benutzer dessen Platz einnehmen.
+Wenn ein Benutzer mit der seriellen Konsole verbunden ist und ein anderer Benutzer erfolgreich den Zugriff auf denselben virtuellen Computer anfordert, wird der erste Benutzer getrennt und der zweite Benutzer mit der gleichen Sitzung verbunden.
 
 >[!CAUTION] 
-Dies bedeutet, dass der Benutzer, der getrennt wird, nicht abgemeldet wird! Die Möglichkeit, eine Abmeldung beim Trennen der Verbindung (über SIGHUP oder einen ähnlichen Mechanismus) zu erzwingen, ist noch in der Planung begriffen. Für Windows ist ein automatisches Timeout in SAC aktiviert, für Linux können Sie jedoch die Terminaltimeouteinstellung konfigurieren. Fügen Sie dazu einfach `export TMOUT=600` in der Datei „.bash_profile“ oder „.profile“ für den Benutzer ein, mit dem Sie sich an der Konsole anmelden, sodass das Timeout für die Sitzung nach 10 Minuten erfolgt.
+Dies bedeutet, dass ein Benutzer, der getrennt wird, nicht abgemeldet wird. Die Möglichkeit, bei der Trennung eine Abmeldung zu erzwingen (mithilfe von SIGHUP oder einem ähnlichen Mechanismus), ist noch nicht implementiert. Für Windows ist in SAC (Special Administrative Console, spezielle Verwaltungskonsole) ein automatisches Timeout aktiviert. Für Linux können Sie die Timeouteinstellung für das Terminal konfigurieren. Fügen Sie zu diesem Zweck Ihrer *.bash_profile*- oder *.profile*-Datei für den Benutzer, den Sie für die Anmeldung bei der Konsole verwenden, `export TMOUT=600` hinzu. Durch diese Einstellung erfolgt nach 10 Minuten ein Timeout der Sitzung.
 
 ## <a name="accessibility"></a>Barrierefreiheit
-Die Barrierefreiheit ist ein wichtiger Aspekt bei der seriellen Konsole in Azure. Zu diesem Zweck haben wir sichergestellt, dass auch Personen mit Seh- und Hörbehinderung sowie Personen, die möglicherweise keine Maus nutzen können, auf die serielle Konsole zugreifen können.
+Die Barrierefreiheit ist ein wichtiger Aspekt bei der seriellen Konsole in Azure. Daher haben wir sichergestellt, dass die serielle Konsole vollständig barrierefrei ist.
 
 ### <a name="keyboard-navigation"></a>Tastaturnavigation
-Verwenden Sie die `tab`-Taste auf der Tastatur, um im Azure-Portal in der seriellen Konsolenschnittstelle zu navigieren. Auf dem Bildschirm wird hervorgehoben, wo Sie sich gerade befinden. Um den Fokus vom seriellen Konsolenbereich zu entfernen, drücken Sie `Ctrl + F6` auf der Tastatur.
+Verwenden Sie die **TAB**-Taste auf der Tastatur, um im Azure-Portal in der seriellen Konsolenschnittstelle zu navigieren. Auf dem Bildschirm wird hervorgehoben, wo Sie sich gerade befinden. Um den Fokus vom seriellen Konsolenbereich zu entfernen, drücken Sie **STRG**+**F6** auf der Tastatur.
 
-### <a name="use-serial-console-with-a-screen-reader"></a>Verwenden der seriellen Konsole mit einer Sprachausgabe
-Die serielle Konsole ist mit einer Unterstützung für die Sprachausgabe versehen. Beim Navigieren mit aktivierter Sprachausgabe kann der Alternativtext für die aktuell ausgewählte Schaltfläche von der Sprachausgabe vorgelesen werden.
+### <a name="use-the-serial-console-with-a-screen-reader"></a>Verwenden der seriellen Konsole mit einer Sprachausgabe
+Die serielle Konsole bietet integrierte Unterstützung für die Sprachausgabe. Beim Navigieren mit aktivierter Sprachausgabe kann der Alternativtext für die aktuell ausgewählte Schaltfläche von der Sprachausgabe vorgelesen werden.
 
-## <a name="errors"></a>Errors
-Die meisten Fehler sind vorübergehender Natur und können oft durch einen erneuten Versuch der Verbindungsherstellung mit der seriellen Konsole behoben werden. Die folgende Tabelle zeigt eine Liste von Fehlern und deren Behebung.
+## <a name="errors"></a>Fehler
+Da die meisten Fehler vorübergehend sind, können sie oftmals durch Wiederherstellen der Verbindung behoben werden. Die folgende Tabelle zeigt eine Liste von Fehlern und deren Behebung.
 
-Error                            |   Lösung 
+Fehler                            |   Lösung 
 :---------------------------------|:--------------------------------------------|
-Startdiagnoseeinstellungen für „<VMNAME>“ können nicht abgerufen werden. Damit Sie die serielle Konsole verwenden können, stellen Sie sicher, dass die Startdiagnose für diesen virtuellen Computer aktiviert ist. | Stellen Sie sicher, dass für den virtuellen Computer [Startdiagnose](boot-diagnostics.md) aktiviert ist. 
-Der virtuelle Computer befindet sich in einem beendeten Zustand mit aufgehobener Zuordnung. Starten Sie den virtuellen Computer neu, und wiederholen Sie die Verbindung mit der seriellen Konsole. | Der virtuelle Computer muss den Zustand „Gestartet“ aufweisen, um auf die serielle Konsole zugreifen zu können.
-Sie verfügen nicht über die erforderlichen Berechtigungen zum Verwenden der seriellen Konsole dieses virtuellen Computers. Stellen Sie sicher, dass Sie mindestens über Berechtigungen der Rolle „VM-Mitwirkender“ verfügen.| Für den Zugriff auf die serielle Konsole sind bestimmte Berechtigungen erforderlich. Details finden Sie unter [Zugriffsanforderungen](#prerequisites).
-Die Ressourcengruppe für das Startdiagnose-Speicherkonto „<STORAGEACCOUNTNAME>“ kann nicht ermittelt werden. Stellen Sie sicher, dass die Startdiagnose für diesen virtuellen Computer aktiviert ist und Sie über Zugriff auf dieses Speicherkonto verfügen. | Für den Zugriff auf die serielle Konsole sind bestimmte Berechtigungen erforderlich. Details finden Sie unter [Zugriffsanforderungen](#prerequisites).
-Das Websocket ist geschlossen oder konnte nicht geöffnet werden. | Möglicherweise müssen Sie der Whitelist den Eintrag `*.console.azure.com` hinzufügen. Ein detaillierterer, aber längerer Ansatz besteht darin, der Whitelist die [IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/en-us/download/details.aspx?id=41653) hinzuzufügen, die sich jedoch relativ regelmäßig ändern.
+Die Startdiagnoseeinstellungen für *&lt;VMNAME&gt;* können nicht abgerufen werden. Damit Sie die serielle Konsole verwenden können, stellen Sie sicher, dass die Startdiagnose für diesen virtuellen Computer aktiviert ist. | Stellen Sie sicher, dass für den virtuellen Computer [Startdiagnose](boot-diagnostics.md) aktiviert ist. 
+Der virtuelle Computer befindet sich in einem beendeten Zustand mit aufgehobener Zuordnung. Starten Sie den virtuellen Computer neu, und wiederholen Sie die Verbindung mit der seriellen Konsole. | Die VM muss sich im gestarteten Zustand befinden, um auf die serielle Konsole zugreifen zu können.
+Sie verfügen nicht über die erforderlichen Berechtigungen, um diese VM mit der seriellen Konsole zu verwenden. Achten Sie darauf, dass Sie mindestens über die Berechtigungen der Rolle „Mitwirkender für virtuelle Computer“ verfügen.| Für den Zugriff auf die serielle Konsole sind bestimmte Berechtigungen erforderlich. Weitere Informationen finden Sie unter [Voraussetzungen](#prerequisites).
+Die Ressourcengruppe für das Startdiagnose-Speicherkonto *&lt;STORAGEACCOUNTNAME&gt;* kann nicht ermittelt werden. Stellen Sie sicher, dass die Startdiagnose für diesen virtuellen Computer aktiviert ist und Sie über Zugriff auf dieses Speicherkonto verfügen. | Für den Zugriff auf die serielle Konsole sind bestimmte Berechtigungen erforderlich. Weitere Informationen finden Sie unter [Voraussetzungen](#prerequisites).
+Das Websocket ist geschlossen oder konnte nicht geöffnet werden. | Möglicherweise müssen Sie der Whitelist den Eintrag `*.console.azure.com` hinzufügen. Ein detaillierterer, aber längerer Ansatz besteht darin, der Whitelist die [IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) hinzuzufügen, die sich jedoch relativ regelmäßig ändern.
 Beim Zugriff auf das Speicherkonto für die Startdiagnose dieses virtuellen Computers wurde eine „Forbidden“-Antwort empfangen. | Stellen Sie sicher, dass die Startdiagnose nicht über eine Kontofirewall verfügt. Damit die serielle Konsole funktioniert, ist Zugriff auf ein Startdiagnose-Speicherkonto erforderlich.
 
 ## <a name="known-issues"></a>Bekannte Probleme 
@@ -175,47 +173,52 @@ Uns sind einige Probleme mit der seriellen Konsole bekannt. Hier finden Sie eine
 
 Problem                           |   Lösung 
 :---------------------------------|:--------------------------------------------|
-Nach dem Drücken der EINGABETASTE nach dem Verbindungsbanner wird keine Anmeldeeingabeaufforderung angezeigt. | Informieren Sie sich auf dieser Seite: [Nach dem Drücken der EINGABETASTE geschieht nichts](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Dies kann passieren, wenn Sie einen benutzerdefinierten virtuellen Computer, eine Appliance mit verstärkter Sicherheit oder eine GRUB-Konfiguration ausführen, und Linux aufgrund dessen keine ordnungsgemäße Verbindung mit dem seriellen Port herstellen kann.
-Der Text in der seriellen Konsole nimmt nur einen Teil der Größe des Bildschirms in Anspruch (häufig nach Verwendung eines Text-Editors) | Serielle Konsolen unterstützen keine Aushandlung der Fenstergröße ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)). Daher wird kein SIGWINCH-Signal gesendet, um die Bildschirmgröße zu aktualisieren, und der virtuelle Computer erhält keine Informationen über die Größe Ihres Terminals. Es empfiehlt sich, xterm oder ein ähnliches Hilfsprogramm zu installieren, das es Ihnen ermöglicht, den Befehl „Größe ändern“ zu verwenden. Durch Ausführen des Befehls „Größe ändern“ wird dieses Problem behoben.
-Das Einfügen sehr langer Zeichenfolgen funktioniert nicht | Die serielle Konsole begrenzt die Länge der Zeichenfolgen, die in das Terminal eingefügt werden können, auf 2048 Zeichen. Dies dient dazu, eine Überlastung der Bandbreite des seriellen Ports zu verhindern.
+Das Drücken der **EINGABETASTE** nach dem Verbindungsbanner führt nicht zur Anzeige einer Anmeldeaufforderung. | Weitere Informationen finden Sie unter [Hitting enter does nothing](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md) (Das Drücken der Eingabetaste bewirkt nichts). Dieses Problem kann auftreten, wenn Sie einen benutzerdefinierten virtuellen Computer, eine Appliance mit verstärkter Sicherheit oder eine GRUB-Konfiguration ausführen, und Linux aufgrund dessen keine ordnungsgemäße Verbindung mit dem seriellen Port herstellen kann.
+Der Text in der seriellen Konsole nimmt nur einen Teil der Größe des Bildschirms in Anspruch (häufig nach Verwendung eines Text-Editors). | Serielle Konsolen unterstützen keine Aushandlung der Fenstergröße ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)). Daher wird kein SIGWINCH-Signal gesendet, um die Bildschirmgröße zu aktualisieren, und der virtuelle Computer erhält keine Informationen über die Größe Ihres Terminals. Installieren Sie xterm oder ein ähnliches Hilfsprogramm, das über einen `resize`-Befehl verfügt, und führen Sie dann `resize` aus.
+Das Einfügen von langen Zeichenfolgen funktioniert nicht. | Die serielle Konsole begrenzt die Länge der Zeichenfolgen, die in das Terminal eingefügt werden können, auf 2048 Zeichen, um die Bandbreite am seriellen Port nicht zu überlasten.
 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen 
+
 **F: Wie kann ich Feedback senden?**
 
-A. Stellen Sie Feedback als Problem bereit, indem Sie zu https://aka.ms/serialconsolefeedback navigieren. Alternativ dazu können Sie Feedback über azserialhelp@microsoft.com oder in der Kategorie „Virtuelle Computer“ von http://feedback.azure.com senden (dies sind die weniger bevorzugten Methoden).
+A. Geben Sie Feedback, indem Sie ein GitHub-Problem unter https://aka.ms/serialconsolefeedback erstellen. Alternativ dazu können Sie Feedback über azserialhelp@microsoft.com oder in der Kategorie „Virtuelle Computer“ von http://feedback.azure.com senden (dies sind die weniger bevorzugten Methoden).
 
 **F: Unterstützt die serielle Konsole das Kopieren und Einfügen?**
 
-A. Ja. Verwenden Sie STRG+UMSCHALTTASTE+C und STRG+UMSCHALTTASTE+V zum Kopieren und Einfügen in das Terminal.
+A. Ja. Verwenden Sie **STRG**+**UMSCHALT**+**C** und **STRG**+**UMSCHALT**+**V** zum Kopieren und Einfügen in das Terminal.
 
 **F: Kann ich die serielle Konsole anstelle einer SSH-Verbindung verwenden?**
 
-A. Dies mag technisch möglich sein, doch ist die serielle Konsole in erster Linie als ein Tool zur Problembehandlung in Situationen gedacht, in denen keine Verbindung über SSH möglich ist. Aus zweierlei Gründen wird abgeraten, die serielle Konsole als SSH-Ersatz zu verwenden:
+A. Diese Nutzung mag technisch möglich sein, doch ist die serielle Konsole in erster Linie als ein Tool zur Problembehandlung in Situationen gedacht, in denen keine Verbindung über SSH möglich ist. Aus den folgenden Gründen raten wir davon ab, die serielle Konsole als SSH-Ersatz zu verwenden:
 
-1. Die serielle Konsole verfügt über weniger Bandbreite als SSH und ist eine Nur-Text-Verbindung. Das erschwert GUI-intensivere Interaktionen in der seriellen Konsole.
-1. Der Zugriff auf die serielle Konsole erfolgt derzeit nur über Benutzername und Kennwort. SSH-Schlüssel sind weitaus sicherer als Benutzername/Kennwort-Kombinationen. Daher ist aus Gründen der Sicherheit SSH der seriellen Konsole vorzuziehen.
+- Die serielle Konsole hat nicht so viel Bandbreite wie SSH. Da es sich um eine reine Textverbindung handelt, sind eher GUI-lastige Interaktionen schwierig.
+- Der Zugriff auf die serielle Konsole ist derzeit nur über Benutzername und Kennwort möglich. SSH-Schlüssel sind weitaus sicherer als Benutzername/Kennwort-Kombinationen. Daher ist aus Gründen der Anmeldesicherheit SSH der seriellen Konsole vorzuziehen.
 
 **F: Wer kann die serielle Konsole für mein Abonnement aktivieren oder deaktivieren?**
 
-A. Um die serielle Konsole auf Abonnementebene zu aktivieren oder zu deaktivieren, müssen Sie über Schreibberechtigungen für das Abonnement verfügen. Die Rollen „Administrator“ und „Besitzer“ verfügen beispielsweise über Schreibberechtigungen. Benutzerdefinierte Rollen können ebenfalls über Schreibberechtigungen verfügen.
+A. Um die serielle Konsole auf Abonnementebene aktivieren oder deaktivieren zu können, müssen Sie über Schreibberechtigungen für das Abonnement verfügen. Die Rollen „Administrator“ und „Besitzer“ verfügen beispielsweise über Schreibberechtigungen. Benutzerdefinierte Rollen können ebenfalls über Schreibberechtigungen verfügen.
 
-**F: Wer darf auf die serielle Konsole für meinen virtuellen Computer zugreifen?**
+**F: Wer kann auf die serielle Konsole für meinen virtuellen Computer zugreifen?**
 
-A. Sie müssen auf der Ebene „Mitwirkender“ oder höher über Zugriff auf den virtuellen Computer verfügen, um auf die serielle Konsole des virtuellen Computers zuzugreifen. 
+A. Sie müssen mindestens der Rolle „Mitwirkender für virtuelle Computer“ einer VM angehören, um auf die serielle Konsole der VM zuzugreifen. 
 
-**F: Meine serielle Konsole zeigt nichts an. Was soll ich tun?**
+**F: Meine serielle Konsole zeigt nichts an, was muss ich tun?**
 
-A. Ihr Image ist wahrscheinlich nicht richtig für den Zugriff auf die serielle Konsole konfiguriert. Genauere Informationen dazu, wie Sie Ihr Image für die Aktivierung der seriellen Konsole konfigurieren, finden Sie unter [Verfügbarkeit der Linux-Distribution der seriellen Konsole](#serial-console-linux-distro-availability).
+A. Ihr Image ist wahrscheinlich nicht richtig für den Zugriff auf die serielle Konsole konfiguriert. Informationen zum Konfigurieren Ihres Images für die Aktivierung der seriellen Konsole finden Sie unter [Verfügbarkeit der seriellen Konsole in Linux-Distributionen](#serial-console-linux-distribution-availability).
 
 **F: Ist die serielle Konsole für VM-Skalierungsgruppen verfügbar?**
 
-A. Derzeit wird der Zugriff auf die serielle Konsole für VM-Skalierungsgruppeninstanzen nicht unterstützt.
+A. Derzeit wird der Zugriff auf die serielle Konsole für Instanzen von VM-Skalierungsgruppen nicht unterstützt.
 
-**F: Ich habe meinen virtuellen Computer nur mit SSH-Schlüsselauthentifizierung eingerichtet. Kann ich trotzdem die serielle Konsole verwenden, um eine Verbindung mit meinem virtuellen Computer herzustellen?** A: Ja. Die serielle Konsole erfordert keine SSH-Schlüssel, Sie müssen also nur eine Kombination aus Benutzername und Kennwort einrichten. Verwenden Sie dazu das Blatt „Kennwort zurücksetzen“ im Portal. Verwenden Sie dann diese Anmeldeinformationen, um sich bei der seriellen Konsole anzumelden.
+**F: Ich habe meinen virtuellen Computer nur mit SSH-Schlüsselauthentifizierung eingerichtet. Kann ich trotzdem die serielle Konsole verwenden, um eine Verbindung mit meinem virtuellen Computer herzustellen?**
+
+A. Ja. Da die serielle Konsole keine SSH-Schlüssel erfordert, brauchen Sie nur eine Kombination aus Benutzername und Kennwort einzurichten. Dazu können Sie im Azure-Portal **Kennwort zurücksetzen** auswählen und diese Anmeldeinformationen für die Anmeldung bei der seriellen Konsole verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden der seriellen Konsole zum [Starten in GRUB und zum Wechseln in den Einzelbenutzermodus](serial-console-grub-single-user-mode.md)
-* Verwenden der seriellen Konsole für [NMI- und SysRq-Aufrufe](serial-console-nmi-sysrq.md)
-* Die serielle Konsole ist auch für [Windows](../windows/serial-console.md)-VMs verfügbar.
-* Erfahren Sie mehr über die [Startdiagnose](boot-diagnostics.md).
+* Verwenden der seriellen Konsole zum [Zugreifen auf GRUB und den Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
+* Verwenden der seriellen Konsole für [NMI- und SysRq-Aufrufe](serial-console-nmi-sysrq.md).
+* Erfahren Sie, wie Sie die serielle Konsole zum [Aktivieren von GRUB in verschiedenen Distributionen](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) verwenden.
+* Die serielle Konsole ist auch für [virtuelle Windows-Computer](../windows/serial-console.md) verfügbar.
+* Erfahren Sie mehr zur [Startdiagnose](boot-diagnostics.md).
+

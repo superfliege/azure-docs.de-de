@@ -13,14 +13,14 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 06fe9f1fd65f70e41d528a513e44e61edb4a7e4f
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 00563b93a3601ba6299c479c49375fd252841f79
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307907"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748118"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
 
@@ -34,11 +34,11 @@ Mehrere Faktoren können für eine langsame App-Leistung verantwortlich sein. Au
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Wie behebe ich das Problem einer hohen CPU-Auslastung?
 
-In einigen Szenarien mit hoher CPU-Auslastung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf einen höheren Diensttarif, damit die Anwendung alle Ressourcen erhält, die sie benötigt. In einigen Fällen wird eine hohe CPU-Auslastung möglicherweise durch eine fehlerhafte Schleife oder einen fehlerhaften Programmierstil verursacht. Das Gewinnen von Einblicken, wodurch die gestiegene CPU-Auslastung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for high CPU consumption for Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/) (Erfassen und Analysieren einer Speicherabbilddatei bei hohe CPU-Nutzung durch Web-Apps).
+In einigen Szenarien mit hoher CPU-Auslastung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf einen höheren Diensttarif, damit die Anwendung alle Ressourcen erhält, die sie benötigt. In einigen Fällen wird eine hohe CPU-Auslastung möglicherweise durch eine fehlerhafte Schleife oder einen fehlerhaften Programmierstil verursacht. Das Gewinnen von Einblicken, wodurch die gestiegene CPU-Auslastung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for high CPU consumption for Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/) (Erfassen und Analysieren einer Speicherabbilddatei bei hohe CPU-Nutzung durch Web-Apps).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Wie behebe ich das Problem einer hohen Arbeitsspeicherbelegung?
 
-In einigen Szenarien mit hoher Arbeitsspeicherbelegung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf einen höheren Diensttarif, damit die Anwendung alle Ressourcen erhält, die sie benötigt. Mitunter kann ein Fehler im Code einen Arbeitsspeicherverlust verursachen. Ein bestimmter Programmierstil kann auch die Arbeitsspeichernutzung erhöhen. Das Gewinnen von Einblicken, wodurch die gestiegene Arbeitsspeichernutzung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Mit dem Tool Crash Diagnoser im Katalog mit den Azure-Websiteerweiterungen können Sie diese beiden Schritte effizient ausführen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for intermittent high memory for Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/) (Erfassen und Analysieren einer Speicherabbilddatei bei zeitweiliger hoher Arbeitsspeichernutzung durch Web-Apps).
+In einigen Szenarien mit hoher Arbeitsspeicherbelegung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf einen höheren Diensttarif, damit die Anwendung alle Ressourcen erhält, die sie benötigt. Mitunter kann ein Fehler im Code einen Arbeitsspeicherverlust verursachen. Ein bestimmter Programmierstil kann auch die Arbeitsspeichernutzung erhöhen. Das Gewinnen von Einblicken, wodurch die gestiegene Arbeitsspeichernutzung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Mit dem Tool Crash Diagnoser im Katalog mit den Azure-Websiteerweiterungen können Sie diese beiden Schritte effizient ausführen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for intermittent high memory for Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/) (Erfassen und Analysieren einer Speicherabbilddatei bei zeitweiliger hoher Arbeitsspeichernutzung durch Web-Apps).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Wie automatisiere ich App Service-Web-Apps mithilfe von PowerShell?
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f5f8ed885791a648f30790434be56d966bbf2e47
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8201e1569bd3030a205ab0ec5adb8a1f39a0ecc3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989293"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960734"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Protokollwarnung in Azure erstellt](alert-log.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -201,4 +201,4 @@ Im Folgenden sehen Sie eine Beispielnutzlast für eine benutzerdefinierte Webhoo
 - Grundlegendes zur [Verwaltung von Protokollwarnungen in Azure](alert-log.md)
 - Erstellen und Verwalten von [Aktionsgruppen in Azure](monitoring-action-groups.md)
 - Weitere Informationen zu [Application Insights](../application-insights/app-insights-analytics.md)
-- Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md). 
+- Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-queries.md). 

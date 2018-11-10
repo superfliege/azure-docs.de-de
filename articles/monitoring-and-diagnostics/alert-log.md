@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 43ff945747915edb76da8b593b232e86778374ce
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419366"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958507"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor  
 
@@ -57,7 +57,7 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
 
    > [!NOTE]
 
-   > Über die Listen von „Warnungen“ kann eine Analyseabfrage als Signaltyp **Protokoll (gespeicherte Abfrage)** importiert werden. Dies ist in der obigen Abbildung dargestellt. Benutzer können Ihre Abfrage so in Analytics verfeinern und zur zukünftigen Nutzung in Warnungen speichern. Weitere Informationen zum Speichern von Abfragen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md) oder [Was ist Log Analytics?](../log-analytics/log-analytics-overview.md). 
+   > Über die Listen von „Warnungen“ kann eine Analyseabfrage als Signaltyp **Protokoll (gespeicherte Abfrage)** importiert werden. Dies ist in der obigen Abbildung dargestellt. Benutzer können Ihre Abfrage so in Analytics verfeinern und zur zukünftigen Nutzung in Warnungen speichern. Weitere Informationen zum Speichern von Abfragen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md) oder [Was ist Log Analytics?](../log-analytics/log-analytics-queries.md). 
 
 1.  *Protokollwarnungen*: Wenn Sie diese Option ausgewählt haben, können im Feld **Suchabfrage** Abfragen für Warnungen angegeben werden. Ist die Abfragesyntax falsch, wird eine Fehlermeldung in ROT angezeigt. Wenn die Abfragesyntax korrekt ist, werden für die angegebene Abfrage Referenzverlaufsdaten als Diagramm angezeigt. Dabei besteht die Möglichkeit, das Zeitfenster von den letzten sechs Stunden bis zur letzten Woche anzupassen.
 
@@ -132,7 +132,7 @@ Daher finden Sie im folgenden Abschnitt Details zur Verwendung der Ressourcenvor
 ### <a name="azure-resource-template-for-log-analytics"></a>Azure-Ressourcenvorlage für Log Analytics
 Protokollwarnungen für Log Analytics werden anhand von Warnungsregeln erstellt, die in regelmäßigen Abständen eine gespeicherte Suche ausführen. Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion ausgeführt. 
 
-Die Ressourcenvorlagen für die gespeicherte Suche von Log Analytics und Log Analytics-Warnungen stehen im Log Analytics-Abschnitt der Dokumentation zur Verfügung. Erfahren Sie mehr unter [Hinzufügen gespeicherter Suchen und Warnungen von Log Analytics](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md). Hier finden Sie anschauliche Beispiele sowie die Schemadetails.
+Die Ressourcenvorlagen für die gespeicherte Suche von Log Analytics und Log Analytics-Warnungen stehen im Log Analytics-Abschnitt der Dokumentation zur Verfügung. Erfahren Sie mehr unter [Hinzufügen gespeicherter Suchen und Warnungen von Log Analytics](../monitoring/monitoring-solutions-resources-searches-alerts.md). Hier finden Sie anschauliche Beispiele sowie die Schemadetails.
 
 ### <a name="azure-resource-template-for-application-insights"></a>Azure-Ressourcenvorlage für Application Insights
 Protokollwarnungen für Application Insights-Ressourcen sind vom Typ `Microsoft.Insights/scheduledQueryRules/`. Weitere Informationen zu diesem Ressourcentyp finden Sie unter [Azure Monitor: Referenz für die Scheduled Query Rules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
@@ -246,5 +246,5 @@ Bei erfolgreicher Ausführung wird 201 zurückgegeben, wenn eine neue Warnungsre
 * Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](monitor-alerts-unified-log.md).
 * Machen Sie sich mit [Webhookaktionen für Protokollwarnungen](monitor-alerts-unified-log-webhook.md) vertraut.
 * Weitere Informationen zu [Application Insights](../application-insights/app-insights-analytics.md)
-* Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md). 
+* Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-queries.md). 
 
