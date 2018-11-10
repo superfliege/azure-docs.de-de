@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: 1326e4a84938c46a9e7acc10dd8ed94db708f62a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 0f9f300f589a4818afb0c0de5ede94e5c4fab15e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113084"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248727"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als Sicherungsziel mit Backup Exec
 
@@ -480,9 +480,9 @@ Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folg
 Folgende Dokumente haben als Referenz für diesen Artikel gedient:
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md) (StorSimple: Einrichten von Multipfad-E/A)
-- [Storage scenarios: Thin provisioning](http://msdn.microsoft.com/library/windows/hardware/dn265487.aspx) (Speicherszenarien: schlanke Speicherzuweisung)
-- [Using GPT drives](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD) (Verwenden von GPT-Laufwerken)
-- [Einrichten von Schattenkopien für freigegebene Ordner](http://technet.microsoft.com/library/cc771893.aspx)
+- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx) (Speicherszenarien: schlanke Speicherzuweisung)
+- [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD) (Verwenden von GPT-Laufwerken)
+- [Einrichten von Schattenkopien für freigegebene Ordner](https://technet.microsoft.com/library/cc771893.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

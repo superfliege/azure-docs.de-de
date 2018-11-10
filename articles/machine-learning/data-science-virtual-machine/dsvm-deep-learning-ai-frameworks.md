@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 234e9233e69877c9afe79a5a053a4310d013a9ab
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fbe3aeac3918142388edfa8cd053badd362d7fd7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646109"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241921"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Deep Learning- und KI-Frameworks
-Die [Data Science-VM](http://aka.ms/dsvm) (DSVM) und die [Deep Learning-VM](http://aka.ms/dsvm/deeplearning) unterstützen eine Reihe von Deep Learning-Frameworks zur Unterstützung bei der Erstellung von KI-Anwendungen mit Predictive Analytics und kognitiven Fähigkeiten wie Bild- und Sprachverständnis. 
+Die [Data Science-VM](https://aka.ms/dsvm) (DSVM) und die [Deep Learning-VM](https://aka.ms/dsvm/deeplearning) unterstützen eine Reihe von Deep Learning-Frameworks zur Unterstützung bei der Erstellung von KI-Anwendungen mit Predictive Analytics und kognitiven Fähigkeiten wie Bild- und Sprachverständnis. 
 
 Hier finden Sie Details zu allen auf der DSVM verfügbaren Deep Learning-Frameworks.
 

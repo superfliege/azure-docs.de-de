@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.component: common
-ms.openlocfilehash: 91eb9c12a8913c0a96ee7c3133dc5f982c42cad7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 25de4f28d7516f5c7830b24e4c999ceb855a7759
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025302"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242975"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Verwalten von Nebenläufigkeit Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -45,7 +45,7 @@ Dieser Prozess ist folgendermaßen gegliedert:
 4. Wenn der aktuelle ETag-Wert des Blob eine andere Version hat als das ETag im bedingten **If-Match** -Header in der Anforderung, gibt der Dienst einen 412-Fehler an den Client zurück. Dadurch wird dem Client mitgeteilt, dass das Blob von einem anderen Prozess aktualisiert wurde, seitdem es vom Client abgerufen wurde.
 5. Wenn der aktuelle ETag-Wert des Blob dieselbe Version hat wie der des ETag im bedingten **If-Match** -Header in der Anforderung, führt der Dienst die angeforderte Operation aus und aktualisiert den aktuellen ETag-Wert des Blobs, um anzuzeigen, dass eine neue Version erstellt wurde.  
 
-Der folgende C#-Codeausschnitt (der Client Storage Library 4.2.0 verwendet) zeigt ein einfaches Beispiel zur Konstruktion eines **If-Match AccessCondition** -Objekts, das auf dem ETag-Wert beruht, auf den über die Eigenschaften eines Blob zugegriffen wird, das zuvor abgerufen oder eingefügt wurde. Beim Aktualisieren des Blobs wird dann das **AccessCondition**-Objekt verwendet: Das **AccessCondition**-Objekt fügt der Anforderung den **If-Match**-Header hinzu. Falls das Blob von einem anderen Prozess aktualisiert wurde, gibt der Blob-Dienst eine HTTP 412-Statusmeldung (Vorbedingungsfehler) zurück. Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).  
+Der folgende C#-Codeausschnitt (der Client Storage Library 4.2.0 verwendet) zeigt ein einfaches Beispiel zur Konstruktion eines **If-Match AccessCondition** -Objekts, das auf dem ETag-Wert beruht, auf den über die Eigenschaften eines Blob zugegriffen wird, das zuvor abgerufen oder eingefügt wurde. Beim Aktualisieren des Blobs wird dann das **AccessCondition**-Objekt verwendet: Das **AccessCondition**-Objekt fügt der Anforderung den **If-Match**-Header hinzu. Falls das Blob von einem anderen Prozess aktualisiert wurde, gibt der Blob-Dienst eine HTTP 412-Statusmeldung (Vorbedingungsfehler) zurück. Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -80,7 +80,7 @@ catch (StorageException ex)
 }  
 ```
 
-Der Speicherdienst unterstützt auch weitere bedingte Header wie **If-Modified-Since**, **If-Unmodified-Since** und **If-None-Match** sowie Kombinationen dieser Header. Weitere Informationen finden Sie unter [Specifying Conditional Headers for Blob Service Operations](http://msdn.microsoft.com/library/azure/dd179371.aspx) (Angeben von bedingten Headern für Vorgänge des Blob-Diensts) auf MSDN.  
+Der Speicherdienst unterstützt auch weitere bedingte Header wie **If-Modified-Since**, **If-Unmodified-Since** und **If-None-Match** sowie Kombinationen dieser Header. Weitere Informationen finden Sie unter [Specifying Conditional Headers for Blob Service Operations](https://msdn.microsoft.com/library/azure/dd179371.aspx) (Angeben von bedingten Headern für Vorgänge des Blob-Diensts) auf MSDN.  
 
 Die folgende Tabelle gibt eine Übersicht über die Containervorgänge, die bedingte Header wie **If-Match** in der Anforderung akzeptieren und in der Antwort einen ETag-Wert zurückgeben.  
 
@@ -122,11 +122,11 @@ Die folgende Tabelle gibt einen Überblick über die Blob-Vorgänge, die bedingt
 (*) "Lease Blob" ändert das ETag eines Blob nicht.  
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>Pessimistische Nebenläufigkeit für Blobs
-Um ein Blob für die exklusive Verwendung zu sperren, können Sie dafür eine [Lease](http://msdn.microsoft.com/library/azure/ee691972.aspx) abrufen. Wenn Sie eine Lease erwerben, geben Sie an, wie lange Sie die Lease benötigen: Das kann zwischen 15 und 60 Sekunden oder unendlich sein, was zu einer exklusiven Sperre führt. Sie können eine begrenzte Lease erneuern, um sie zu verlängern, und Sie können eine Lease freigeben, wenn sie nicht mehr benötigt wird. Der Blob-Dienst gibt begrenzte Leases automatisch frei, wenn sie abgelaufen sind.  
+Um ein Blob für die exklusive Verwendung zu sperren, können Sie dafür eine [Lease](https://msdn.microsoft.com/library/azure/ee691972.aspx) abrufen. Wenn Sie eine Lease erwerben, geben Sie an, wie lange Sie die Lease benötigen: Das kann zwischen 15 und 60 Sekunden oder unendlich sein, was zu einer exklusiven Sperre führt. Sie können eine begrenzte Lease erneuern, um sie zu verlängern, und Sie können eine Lease freigeben, wenn sie nicht mehr benötigt wird. Der Blob-Dienst gibt begrenzte Leases automatisch frei, wenn sie abgelaufen sind.  
 
 Leases ermöglichen die Unterstützung verschiedener Synchronisierungsstrategien, einschließlich exklusiver Schreib-/gemeinsamer Lesezugriff, exklusiver Schreib-/exklusiver Lesezugriff und gemeinsamer Schreib-/exklusiver Lesezugriff. Ist eine Lease vorhanden, erzwingt der Speicherdienst exklusive Schreibzugriffe (put-, set- und delete-Vorgänge). Um Exklusivität von Lesevorgängen sicherzustellen, muss der Entwickler jedoch dafür sorgen, dass alle Clientanwendungen eine Lease-ID verwenden und dass jeweils nur ein Client über eine gültige Lease-ID verfügt. Lesevorgänge, die keine Lease-ID enthalten, führen zu gemeinsamen Lesevorgängen.  
 
-Der folgende C#-Codeausschnitt zeigt an einem Beispiel, wie eine exklusive Lease von 30 Sekunden für ein Blob abgerufen, der Inhalt des Blob aktualisiert und die Lease anschließend freigegeben wird. Wenn beim Abrufen einer neuen Lease für das Blob bereits eine Lease wirksam ist, gibt der Blob-Dienst die Statusmeldung „HTTP (409) Conflict“ zurück. Im folgenden Codeausschnitt wird ein **AccessCondition**-Objekt verwendet, um die Lease-Informationen zu kapseln, wenn die Anforderung zum Aktualisieren des Blob im Speicherdienst ausgeführt wird.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
+Der folgende C#-Codeausschnitt zeigt an einem Beispiel, wie eine exklusive Lease von 30 Sekunden für ein Blob abgerufen, der Inhalt des Blob aktualisiert und die Lease anschließend freigegeben wird. Wenn beim Abrufen einer neuen Lease für das Blob bereits eine Lease wirksam ist, gibt der Blob-Dienst die Statusmeldung „HTTP (409) Conflict“ zurück. Im folgenden Codeausschnitt wird ein **AccessCondition**-Objekt verwendet, um die Lease-Informationen zu kapseln, wenn die Anforderung zum Aktualisieren des Blob im Speicherdienst ausgeführt wird.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -155,7 +155,7 @@ catch (StorageException ex)
 }  
 ```
 
-Wenn Sie an einem Blob mit Lease einen Schreibvorgang versuchen, ohne die Lease-ID zu übergeben, erzeugt die Anforderung einen 412-Fehler. Wenn die Lease abläuft, bevor die **UploadText**-Methode aufgerufen wird, die Lease-ID aber dennoch übergeben wird, erzeugt die Anforderung ebenfalls einen **412**-Fehler. Weitere Informationen zum Verwalten von Lease-Ablaufzeiten und Lease-IDs finden Sie in der REST-Dokumentation zum [Leasen eines Blob](http://msdn.microsoft.com/library/azure/ee691972.aspx).  
+Wenn Sie an einem Blob mit Lease einen Schreibvorgang versuchen, ohne die Lease-ID zu übergeben, erzeugt die Anforderung einen 412-Fehler. Wenn die Lease abläuft, bevor die **UploadText**-Methode aufgerufen wird, die Lease-ID aber dennoch übergeben wird, erzeugt die Anforderung ebenfalls einen **412**-Fehler. Weitere Informationen zum Verwalten von Lease-Ablaufzeiten und Lease-IDs finden Sie in der REST-Dokumentation zum [Leasen eines Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx).  
 
 Zur Verwaltung der pessimistischen Nebenläufigkeit können die folgenden Blob-Vorgänge Leases verwenden:  
 
@@ -191,9 +191,9 @@ Zur Verwaltung der pessimistischen Nebenläufigkeit können die folgenden Contai
 
 Weitere Informationen finden Sie unter  
 
-* [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](http://msdn.microsoft.com/library/azure/dd179371.aspx)
-* [Lease Container](http://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Lease Blob ](http://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Lease Container](https://msdn.microsoft.com/library/azure/jj159103.aspx)
+* [Lease Blob ](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>Verwalten der Nebenläufigkeit im Tabellendienst
 Wenn Sie mit Entitäten arbeiten, verwendet der Tabellendienst standardmäßig optimistische Nebenläufigkeitsprüfungen. Darin unterscheidet er sich vom Blob-Dienst, wo die Durchführung optimistischer Nebenläufigkeitsprüfungen explizit gewählt werden muss. Ein weiterer Unterschied zwischen Tabellendienst und Blob-Dienst besteht darin, dass Sie mit dem Tabellendienst nur das Nebenläufigkeitsverhalten von Entitäten verwalten können, während Sie mit dem Blob-Dienst die Nebenläufigkeit sowohl von Containern als auch von Blobs verwalten können.  
@@ -208,7 +208,7 @@ Um die optimistische Nebenläufigkeit zu verwenden und zu prüfen, ob eine Entit
 
 Im Unterschied zum Blob-Dienst verlangt der Tabellendienst vom Client, in Aktualisierungsanforderungen einen **If-Match** -Header hinzuzufügen. Es ist jedoch möglich, eine unbedingte Aktualisierung zu erzwingen (Strategie "Letzter Schreiber gewinnt") und Nebenläufigkeitsprüfungen zu umgehen, wenn der Client den **If-Match** -Header in der Anforderung auf das Platzhalterzeichen (*) festlegt.  
 
-Der folgende C#-Codeausschnitt zeigt, wie für eine Kundenentität, die zuvor erstellt oder abgerufen wurde, die E-Mail-Adresse aktualisiert wird. Mit dem anfänglichen Einfüge- oder Abrufvorgang wird der ETag-Wert im Kundenobjekt gespeichert. Da im Beispiel beim Ausführen des Ersetzenvorgangs dieselbe Objektinstanz verwendet wird, wird der ETag-Wert automatisch an den Tabellendienst zurückgesendet, sodass der Dienst auf Verletzungen der Nebenläufigkeit prüfen kann. Falls die Entität im Tabellenspeicher von einem anderen Prozess aktualisiert wurde, gibt der Dienst eine HTTP 412-Statusmeldung (Vorbedingungsfehler) zurück.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
+Der folgende C#-Codeausschnitt zeigt, wie für eine Kundenentität, die zuvor erstellt oder abgerufen wurde, die E-Mail-Adresse aktualisiert wird. Mit dem anfänglichen Einfüge- oder Abrufvorgang wird der ETag-Wert im Kundenobjekt gespeichert. Da im Beispiel beim Ausführen des Ersetzenvorgangs dieselbe Objektinstanz verwendet wird, wird der ETag-Wert automatisch an den Tabellendienst zurückgesendet, sodass der Dienst auf Verletzungen der Nebenläufigkeit prüfen kann. Falls die Entität im Tabellenspeicher von einem anderen Prozess aktualisiert wurde, gibt der Dienst eine HTTP 412-Statusmeldung (Vorbedingungsfehler) zurück.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
 
 ```csharp
 try
@@ -251,7 +251,7 @@ Bei der Entwicklung skalierbarer Anwendung sollten Entwickler grundsätzlich auf
 
 Weitere Informationen finden Sie unter  
 
-* [Vorgänge für Entitäten](http://msdn.microsoft.com/library/azure/dd179375.aspx)  
+* [Vorgänge für Entitäten](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>Verwalten der Nebenläufigkeit im Warteschlangendienst
 Ein Szenario, in dem Nebenläufigkeit ein Problem im Warteschlangendienst darstellt, ist der Abruf von Nachrichten aus einer Warteschlange durch mehrere Clients. Wenn eine Nachricht aus der Warteschlange abgerufen wird, enthält die Antwort die Nachricht und einen Pop-Belegwert, der zum Löschen der Nachricht erforderlich ist. Die Nachricht wird nicht automatisch aus der Warteschlange gelöscht, sondern erst, nachdem sie abgerufen wurde. Für das mit dem Parameter visibilitytimeout angegebene Zeitintervall ist die Nachricht für andere Clients nicht sichtbar. Es wird erwartet, dass die Nachricht vom abrufenden Client gelöscht wird, nachdem sie verarbeitet wurde und bevor die vom Element TimeNextVisible der Antwort angegebene Zeit verstrichen ist. Diese Zeit wird anhand des Werts des Parameters visibilitytimeout berechnet. Der Wert von visibilitytimeout wird zu der Zeit addiert, zu der die Nachricht abgerufen wird, um den Wert von TimeNextVisible zu ermitteln.  
@@ -260,8 +260,8 @@ Der Warteschlangendienst unterstützt weder die optimistische noch die pessimist
 
 Weitere Informationen finden Sie unter  
 
-* [REST-API des Warteschlangendiensts](http://msdn.microsoft.com/library/azure/dd179363.aspx)
-* [Get Messages](http://msdn.microsoft.com/library/azure/dd179474.aspx)  
+* [REST-API des Warteschlangendiensts](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Get Messages](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-the-file-service"></a>Verwalten der Nebenläufigkeit im Dateidienst
 Der Zugriff auf den Dateidienst kann unter Verwendung zweier unterschiedlicher Protokollendpunkte – SMB und REST – erfolgen. Der REST-Dienst unterstützt weder die optimistische noch die pessimistische Sperrung, und alle Aktualisierungen folgen der Strategie "Letzter Schreiber gewinnt". SMB-Clients, die Dateifreigaben einbinden, können Dateisystem-Sperrmechanismen verwenden, um den Zugriff auf freigegebene Dateien zu verwalten – einschließlich der Möglichkeit, eine pessimistische Sperrung durchzuführen. Wenn ein SMB-Client eine Datei öffnet, gibt er sowohl den Dateizugriffs- als auch den Freigabemodus an. Wird für den Dateizugriff die Option "Schreiben" oder "Lesen/Schreiben" zusammen mit dem Dateifreigabemodus "Kein" festgelegt, wird die Datei von einem SMB-Client gesperrt, bis die Datei geschlossen wird. Wenn ein REST-Vorgang an einer Datei versucht wird, die von einem SMB-Client gesperrt wurde, gibt der REST-Dienst den Statuscode 409 (Konflikt) mit dem Fehlercode SharingViolation zurück.  
@@ -270,19 +270,19 @@ Wenn ein SMB-Client eine Datei zum Löschen öffnet, markiert er die Datei als z
 
 Weitere Informationen finden Sie unter  
 
-* [Verwalten von Dateisperren](http://msdn.microsoft.com/library/azure/dn194265.aspx)  
+* [Verwalten von Dateisperren](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
 ## <a name="summary-and-next-steps"></a>Zusammenfassung und nächste Schritte
 Der Microsoft Azure-Speicherdienst ist auf die Anforderungen äußerst komplexer Online-Anwendungen zugeschnitten, zwingt Entwickler jedoch nicht zur Einschränkung oder Neukonzeption wichtiger Entwurfsvoraussetzungen wie Nebenläufigkeit und Datenkonsistenz, die sie inzwischen für selbstverständlich halten.  
 
 Informationen zur vollständigen Beispielanwendung, auf die in diesem Blog verwiesen wird:  
 
-* [Verwalten von Nebenläufigkeit mit Azure Storage - Beispielanwendung](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
+* [Verwalten von Nebenläufigkeit mit Azure Storage - Beispielanwendung](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
 
 Weitere Informationen zu Azure Storage finden Sie unter:  
 
 * [Microsoft Azure Storage-Startseite](https://azure.microsoft.com/services/storage/)
 * [Einführung in Azure Storage](storage-introduction.md)
 * Storage – erste Schritte mit [Blobs](../blobs/storage-dotnet-how-to-use-blobs.md), [Tabellen](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Warteschlangen](../storage-dotnet-how-to-use-queues.md) und [Dateien](../storage-dotnet-how-to-use-files.md)
-* Speicherarchitektur – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (Azure Storage: Ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)
+* Speicherarchitektur – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (Azure Storage: Ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)
 

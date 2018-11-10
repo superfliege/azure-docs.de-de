@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: dobett
-ms.openlocfilehash: bca25f5e7a6fd7685d20236033a5a225c5183a2d
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fd26fb9e45f8790342472fa0bae92f74bea2fc70
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225343"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242465"
 ---
 # <a name="get-started-with-device-management-netnet"></a>Erste Schritte mit der Geräteverwaltung (.NET/.NET)
 
@@ -38,7 +38,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Visual Studio 2017.
 
-* Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](http://azure.microsoft.com/pricing/free-trial/) erstellen.)
+* Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
