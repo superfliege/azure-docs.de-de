@@ -1,21 +1,20 @@
 ---
 title: Bereitstellen des Konfigurationsservers für die VMware-Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie einen Konfigurationsserver für die VMware-Notfallwiederherstellung in Azure Site Recovery bereitstellen.
-services: site-recovery
+description: In diesem Artikel wird beschrieben, wie Sie einen Konfigurationsserver für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery bereitstellen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 516edd922d6ead9a71f81c3b9b777b15f1fb28ae
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025275"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233156"
 ---
-# <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
+# <a name="deploy-a-configuration-server-for-vmware-disaster-recovery-to-azure"></a>Bereitstellen eines Konfigurationsservers für die VMware-Notfallwiederherstellung in Azure
 
 Sie stellen einen lokalen Konfigurationsserver bereit, wenn Sie [Azure Site Recovery](site-recovery-overview.md) für die Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure verwenden. Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen VMware-Umgebung und Azure. Darüber hinaus verwaltet er die Datenreplikation. In diesem Artikel werden die erforderlichen Schritte zum Bereitstellen des Konfigurationsservers beim Replizieren virtueller VMware-Computer in Azure beschrieben. Befolgen Sie die Schritte in [diesem Artikel](physical-azure-set-up-source.md), wenn Sie einen Konfigurationsserver für die Replikation physischer Server einrichten müssen.
 
@@ -117,6 +116,14 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 8. Klicken Sie auf **Konfiguration abschließen**, um die Registrierung abzuschließen.
 9. Nachdem die Registrierung abgeschlossen ist, öffnen Sie das Azure-Portal, und stellen Sie sicher, dass der Konfigurationsserver und der VMware-Server unter **Recovery Services-Tresor** > **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver** aufgeführt sind.
 
+## <a name="upgrade-the-configuration-server"></a>Aktualisieren Sie den Konfigurationsserver
+
+Um den Konfigurationsserver auf die neueste Version zu aktualisieren, befolgen Sie [diese Schritte](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+
+## <a name="manage-the-configuration-server"></a>Verwalten des Konfigurationsservers
+
+Um Unterbrechungen bei der laufenden Replikation zu vermeiden, stellen Sie sicher, dass sich die IP-Adresse des Konfigurationsservers nicht ändert, nachdem der Konfigurationsserver bei einem Tresor registriert wurde. Weitere Informationen zu allgemeinen Aufgaben für die Verwaltung des Konfigurationsservers finden Sie [hier](vmware-azure-manage-configuration-server.md).
+
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 1. Kann ich die VM, auf der der Konfigurationsserver installiert ist, für andere Zwecke einsetzen?
@@ -140,14 +147,6 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 7. Wo kann ich die Tresorregistrierungsschlüssel herunterladen?
 
     Im **Recovery Services-Tresor**, **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Klicken Sie unter „Server“ auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
-
-## <a name="upgrade-the-configuration-server"></a>Aktualisieren Sie den Konfigurationsserver
-
-Um den Konfigurationsserver auf die neueste Version zu aktualisieren, befolgen Sie [diese Schritte](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
-
-## <a name="manage-the-configuration-server"></a>Verwalten des Konfigurationsservers
-
-Um Unterbrechungen bei der laufenden Replikation zu vermeiden, stellen Sie sicher, dass sich die IP-Adresse des Konfigurationsservers nicht ändert, nachdem der Konfigurationsserver bei einem Tresor registriert wurde. Weitere Informationen zu allgemeinen Aufgaben für die Verwaltung des Konfigurationsservers finden Sie [hier](vmware-azure-manage-configuration-server.md).
 
 ## <a name="troubleshoot-deployment-issues"></a>Problembehandlung bei Bereitstellungsproblemen
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cynthn
-ms.openlocfilehash: bbe8059b3a239570c2c9b25586dae9adbe25312d
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e91f75299dddf0ac173499a531ea959292082a9f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931377"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246547"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>Zurücksetzen des Remotedesktopdiensts oder dessen Anmeldekennworts in einer Windows-VM, die mit dem klassischen Bereitstellungsmodell erstellt wurde
 > [!IMPORTANT]
@@ -59,7 +59,7 @@ $vm = Get-AzureVM -ServiceName "myCloudService" -Name "myVM"
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-Der Befehl **write-host** zeigt **True** an, wenn der VM-Agent installiert ist. Wenn **False**angezeigt wird, nutzen Sie die Anweisungen und den Link zum Download im Azure-Blogbeitrag VM [Agent and Extensions – Part 2](http://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) (in englischer Sprache).
+Der Befehl **write-host** zeigt **True** an, wenn der VM-Agent installiert ist. Wenn **False**angezeigt wird, nutzen Sie die Anweisungen und den Link zum Download im Azure-Blogbeitrag VM [Agent and Extensions – Part 2](https://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) (in englischer Sprache).
 
 Wenn Sie den virtuellen Computer über das Portal erstellt haben, überprüfen Sie, ob `$vm.GetInstance().ProvisionGuestAgent` den Wert **True**zurückgibt. Wenn dies nicht der Fall ist, können Sie es mit diesem Befehl festlegen:
 
@@ -108,7 +108,7 @@ Falls die Erweiterung für den Zugriff auf virtuelle Computer nicht reagiert und
 
 [Azure-VM-Erweiterungen und Features](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Herstellen einer Verbindung mit einem virtuellen Azure-Computer über RDP oder SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx)
+[Herstellen einer Verbindung mit einem virtuellen Azure-Computer über RDP oder SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx)
 
 [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

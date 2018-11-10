@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/30/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 36db41308678f3f1bd713561f9a844288f5db401
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bbf8dc4ccbd16f2157e65773b01fb42587fbfe9d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306299"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417479"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Installieren von Azure AD Connect mithilfe einer vorhandenen ADSync-Datenbank
 Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Daten. Sie können entweder die mit Azure AD Connect installierte SQL Server 2012 Express LocalDB-Standardinstanz oder Ihre eigene vollständige Version von SQL Server verwenden. Bei der Installation von Azure AD Connect wurde bisher immer eine neue Datenbank mit dem Namen ADSync erstellt. Ab Azure AD Connect Version 1.1.613.0 können Sie Azure AD Connect optional mit einem Verweis auf eine vorhandene ADSync-Datenbank installieren.
@@ -86,6 +86,17 @@ Bevor Sie fortfahren, beachten Sie die folgenden wichtigen Hinweise:
  
 11. Nachdem die Installation abgeschlossen ist, wird die Azure AD Connect-Serverinstanz automatisch für den Stagingmodus aktiviert. Sie sollten die Serverkonfiguration und ausstehenden Exporte vor dem Deaktivieren des Stagingmodus auf unerwartete Änderungen überprüfen. 
 
+## <a name="post-installation-tasks"></a>Aufgaben nach der Installation
+Bei der Wiederherstellung einer Datenbanksicherung, die mit einer Version von Azure AD Connect vor 1.2.65.0 erstellt wurde, wählt der Stagingserver automatisch die Anmeldemethode **Nicht konfigurieren**. Während die Einstellungen für die Kennworthashsynchronisierung und die Kennwortrückschreibung wiederhergestellt werden, müssen Sie die Anmeldemethode anschließend so ändern, dass sie mit den anderen für Ihren aktiven Synchronisationsserver geltenden Richtlinien übereinstimmt.  Wenn diese Schritte nicht ausgeführt werden, kann es vorkommen, dass sich Benutzer nicht anmelden können, wenn dieser Server aktiv wird.  
+
+Anhand der folgenden Tabelle können Sie überprüfen, ob zusätzliche Schritte erforderlich sind.
+
+|Feature|Schritte|
+|-----|-----|
+|Kennworthashsynchronisierung| Die Kennworthashsynchronisierung und die Kennwortrückschreibung werden für Versionen von Azure AD Connect ab 1.2.65.0 vollständig wiederhergestellt.  Wenn Sie die Wiederherstellung mit einer älteren Version von Azure AD Connect durchführen, überprüfen Sie die Einstellungen der Synchronisierungsoptionen für diese Funktionen, um sicherzustellen, dass sie mit Ihrem aktiven Synchronisierungsserver übereinstimmen.  Es sollten keine anderen Konfigurationsschritte erforderlich sein.|
+|Verbund mit AD FS|Azure-Authentifizierungen verwenden weiterhin die für Ihren aktiven Synchronisationsserver konfigurierte AD FS-Richtlinie.  Wenn Sie Azure AD Connect verwenden, um Ihre AD FS-Farm zu verwalten, können Sie optional die Anmeldemethode für den AD FS-Verbund ändern, damit Ihr Standbyserver zur aktiven Synchronisationsinstanz wird.   Wenn auf dem aktiven Synchronisationsserver Geräteoptionen aktiviert sind, konfigurieren Sie diese Optionen auf diesem Server, indem Sie die Aufgabe „Geräteoptionen konfigurieren“ ausführen.|
+|Pass-Through-Authentifizierung und einmaliges Anmelden beim Desktop|Aktualisieren Sie die Anmeldemethode, um die Konfiguration auf Ihrem aktiven Synchronisationsserver anzupassen.  Wenn diese nicht erfolgt, bevor der Server zum primären Server hochgestuft wird, wird die Pass-Through-Authentifizierung zusammen mit der nahtlosen einmaligen Anmeldung deaktiviert und Ihr Mandant wird möglicherweise gesperrt, wenn Sie keine Option zur Kennworthashsynchronisierung als Sicherungsanmeldung haben. Beachten Sie auch, dass, wenn Sie die Pass-Through-Authentifizierung im Stagingmodus aktivieren, ein neuer Authentifizierungs-Agent installiert, registriert und als hochverfügbarer Agent ausgeführt wird, der Anmeldeanforderungen akzeptiert.|
+|Verbund mit PingFederate|Azure-Authentifizierungen verwenden weiterhin die für Ihren aktiven Synchronisationsserver konfigurierte PingFederate-Richtlinie.  Sie können optional die Anmeldemethode für die PingFederate-Vorbereitung ändern, damit Ihr Standbyserver zur aktiven Synchronisationsinstanz wird.  Dieser Schritt kann verschoben werden, bis Sie zusätzliche Domänen mit PingFederate verbinden müssen.|
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Nachdem Sie Azure AD Connect installiert haben, können Sie [die Installation überprüfen und Lizenzen zuweisen](how-to-connect-post-installation.md).

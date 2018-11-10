@@ -8,18 +8,18 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b0fb2cd79c0ee685ad2000c5444a84d53e462f24
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 287b95b59b0ec2b308d3e455c4f6ffce4baf4ff7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868274"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212878"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Verwalten der Berechtigungen für Datenbanken in Azure-Daten-Explorer
 
 Der Azure-Daten-Explorer ermöglicht Ihnen über das Modell für die *rollenbasierte Zugriffssteuerung* die Steuerung des Zugriffs auf Datenbanken und Tabellen. Bei diesem Modell werden *Prinzipale* (Benutzer, Gruppen und Apps) *Rollen* zugewiesen. Prinzipale können gemäß den zugewiesenen Rollen auf Ressourcen zugreifen.
 
-Dieser Artikel beschreibt die verfügbaren Rollen sowie die Vorgehensweise zum Zuweisen von Prinzipalen zu diesen Rollen.
+Dieser Artikel beschreibt die verfügbaren Rollen und erläutert, wie diesen Rollen über das Azure-Portal und Verwaltungsbefehle des Azure-Daten-Explorers Prinzipale zugewiesen werden.
 
 ## <a name="roles-and-permissions"></a>Rollen und Berechtigungen
 

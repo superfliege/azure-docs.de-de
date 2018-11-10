@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 02b4ad8aea3904ba0e99a5ea4d4d035f970e171a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5ad106d45c8bae2d41e0bde74b27f80f4d8ab79b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806617"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241275"
 ---
 <a name="delete-an-offersku-from-azure-marketplace"></a>Löschen eines Angebots oder einer SKU im Azure Marketplace 
 ==========================================
 
 Möglicherweise möchten Sie aus unterschiedlichen Gründen Ihr Angebot aus dem Marketplace entfernen. Ihr Angebot kann nicht mehr durch neue Kunden erworben oder bereitgestellt werden kann. Dies wirkt sich jedoch nicht auf bestehende Kunden aus.
-Durch Beenden des Angebots wird der Dienst und/oder der Lizenzvertrag zwischen Ihnen und Ihren bestehenden Kunden beendet. Die Richtlinien für die Entfernung und Kündigung von Angeboten werden durch den [Microsoft Marketplace-Herausgebervertrag](http://go.microsoft.com/fwlink/?LinkID=699560) (siehe Abschnitt
+Durch Beenden des Angebots wird der Dienst und/oder der Lizenzvertrag zwischen Ihnen und Ihren bestehenden Kunden beendet. Die Richtlinien für die Entfernung und Kündigung von Angeboten werden durch den [Microsoft Marketplace-Herausgebervertrag](https://go.microsoft.com/fwlink/?LinkID=699560) (siehe Abschnitt
 7) und die [Teilnahmerichtlinien](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (siehe Abschnitt 6.2) geregelt. Es werden die unterschiedlichen unterstützten Szenarien zum Löschen und die dazu ausgeführten Schritte beschrieben.
 
 <a name="delete-a-live-sku-from-azure-marketplace"></a>Löschen einer Live-SKU im Azure Marketplace 

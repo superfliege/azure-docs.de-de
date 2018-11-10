@@ -7,101 +7,77 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 2/13/2018
+ms.date: 10/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e52674014a888913e288f7b0749d9b2e05bedf45
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: c4fa3f9cbba558cd743f85119dd9e91bd73ce062
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292785"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250596"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine ASP.NET-Anwendung unter Verwendung von Azure Active Directory B2C
 
-Azure Active Directory (Azure AD) B2C ermöglicht die Cloudidentitätsverwaltung zum Schützen Ihrer Anwendung, Ihres Unternehmens und Ihrer Kunden. Mit Azure AD B2C können sich Ihre Apps über offene Standardprotokolle bei Konten für soziale Netzwerke und bei Unternehmenskonten authentifizieren.
-
-In diesem Schnellstart verwenden Sie eine Azure AD B2C-fähige ASP.NET-App, indem Sie ein soziales Netzwerk als Identitätsanbieter verwenden und eine per Azure AD B2C geschützte Web-API aufrufen.
+Azure Active Directory (Azure AD) B2C ermöglicht die Cloudidentitätsverwaltung zum Schützen Ihrer Anwendung, Ihres Unternehmens und Ihrer Kunden. Mit Azure AD B2C können sich Ihre Anwendungen über offene Standardprotokolle bei Konten für soziale Netzwerke und bei Unternehmenskonten authentifizieren. In dieser Schnellstartanleitung verwenden Sie eine ASP.NET-Anwendung und ein soziales Netzwerk als Identitätsanbieter, um sich anzumelden und eine durch Azure AD B2C geschützte Web-API aufzurufen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET und Webentwicklung** 
-* Sie besitzen ein Konto bei einem sozialen Netzwerk, d.h. bei Facebook, Google, Microsoft oder Twitter.
+- [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET und Webentwicklung** 
+- Sie besitzen ein Konto bei einem sozialen Netzwerk, d.h. bei Facebook, Google, Microsoft oder Twitter.
+- [Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), oder klonen Sie die Beispielwebanwendung von GitHub.
 
-## <a name="download-the-sample"></a>Herunterladen des Beispiels
+    ```
+    git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
+    ```
 
-[Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), oder klonen Sie die Beispiel-Web-App aus GitHub.
+    Die Beispielprojektmappe enthält zwei Projekte:
 
-```
-git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
-```
+    - **TaskWebApp**: Eine Webanwendung zum Erstellen und Bearbeiten einer Aufgabenliste. Die Webanwendung verwendet die **Registrierungs- oder Anmelderichtlinie** für die Registrierung oder Anmeldung von Benutzern.
+    - **TaskService**: Eine Web-API, die die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste unterstützt. Die Web-API wird durch Azure AD B2C geschützt und von der Webanwendung aufgerufen.
 
-## <a name="run-the-app-in-visual-studio"></a>Ausführen der App in Visual Studio
+## <a name="run-the-application-in-visual-studio"></a>Ausführen der Anwendung in Visual Studio
 
-Öffnen Sie in Visual Studio im Projektordner der Beispielanwendung die Projektmappe `B2C-WebAPI-DotNet.sln`.
+1. Öffnen Sie in Visual Studio die Projektmappe **B2C-WebAPI-DotNet.sln** aus dem Projektordner der Beispielanwendung.
+2. Führen Sie für diese Schnellstartanleitung die Projekte **TaskWebApp** und **TaskService** gleichzeitig aus. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe **B2C-WebAPI-DotNet**, und wählen Sie **Startprojekte festlegen** aus. 
+3. Wählen Sie **Mehrere Startprojekte** aus, und ändern Sie die **Aktion** für beide Projekte in **Starten**. 
+4. Klicken Sie auf **OK**.
+5. Drücken Sie **F5**, um beide Anwendungen zu debuggen. Jede Anwendung wird in einer eigenen Browserregisterkarte geöffnet:
 
-Die Beispielprojektmappe enthält zwei Projekte:
+    - `https://localhost:44316/`: Die ASP.NET-Webanwendung. Im Rahmen des Schnellstarts interagieren Sie direkt mit dieser Anwendung.
+    - `https://localhost:44332/`: Die Web-API, die von der ASP.NET-Webanwendung aufgerufen wird.
 
-**Web-App-Beispiel-App (TaskWebApp):** Web-App zum Erstellen und Bearbeiten einer Aufgabenliste. Die Web-App verwendet die **Registrierungs- oder Anmelderichtlinie** für die Registrierung oder Anmeldung von Benutzern.
+## <a name="sign-in-using-your-account"></a>Registrieren mithilfe Ihres Kontos
 
-**Web-API-Beispiel-App (TaskService):** Web-API, die die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste unterstützt. Die Web-API wird per Azure AD B2C geschützt und von der Web-App aufgerufen.
+1. Klicken Sie in der ASP.NET-Webanwendung auf **Registrieren/Anmelden**, um den Workflow zu starten.
 
-Für diesen Schnellstart führen Sie die Projekte `TaskWebApp` und `TaskService` gleichzeitig aus. 
+    ![ASP.NET-Web-App – Beispiel](media/active-directory-b2c-quickstarts-web-app/web-app-sign-in.png)
 
-1. Wählen Sie im Projektmappen-Explorer die Projektmappe `B2C-WebAPI-DotNet` aus.
-2. Wählen Sie im Visual Studio-Menü die Option **Projekt > Startprojekte festlegen...**. 
-3. Aktivieren Sie das Optionsfeld **Mehrere Startprojekte**.
-4. Ändern Sie die **Aktion** für beide Projekte in **Start**. Klicken Sie auf **OK**.
+    In der Beispielanwendung werden mehrere Registrierungsoptionen unterstützt, z.B. die Nutzung eines sozialen Netzwerks als Identitätsanbieter oder die Erstellung eines lokalen Kontos per E-Mail-Adresse. Verwenden Sie für diese Schnellstartanleitung ein Konto bei einem sozialen Netzwerk als Identitätsanbieter (etwa Facebook, Google, Microsoft oder Twitter).
 
-Drücken Sie **F5**, um beide Anwendungen zu debuggen. Jede Anwendung wird in einer eigenen Browserregisterkarte geöffnet:
-
-`https://localhost:44316/` – Dies ist die Seite der ASP.NET-Webanwendung. Im Rahmen des Schnellstarts interagieren Sie direkt mit dieser Anwendung.
-`https://localhost:44332/` – Dies ist die Seite der Web-API, die von der ASP.NET-Webanwendung aufgerufen wird.
-
-## <a name="create-an-account"></a>Erstellen eines Kontos
-
-Klicken Sie in der ASP.NET-Webanwendung auf den Link **Registrieren/Anmelden**, um den Workflow **Registrieren oder anmelden** basierend auf einer Azure AD B2C-Richtlinie zu starten.
-
-![ASP.NET-Web-App – Beispiel](media/active-directory-b2c-quickstarts-web-app/web-app-sign-in.png)
-
-In der Beispielanwendung werden mehrere Registrierungsoptionen unterstützt, z.B. die Nutzung eines sozialen Netzwerks als Identitätsanbieter oder die Erstellung eines lokalen Kontos per E-Mail-Adresse. Verwenden Sie für diese Schnellstartanleitung ein Konto bei einem sozialen Netzwerk als Identitätsanbieter (etwa Facebook, Google, Microsoft oder Twitter). 
-
-### <a name="sign-up-using-a-social-identity-provider"></a>Registrieren mit einem sozialen Netzwerk als Identitätsanbieter
-
-Azure AD B2C zeigt für die Beispiel-Web-App eine benutzerdefinierte Anmeldeseite für die fiktive Marke „Wingtip Toys“ an. 
-
-1. Um sich mit einem Social Media-Konto als Identitätsanbieter zu registrieren, klicken Sie auf die Schaltfläche des Identitätsanbieters, den Sie verwenden möchten.
+2. Azure AD B2C zeigt für die Beispielwebanwendung eine benutzerdefinierte Anmeldeseite für die fiktive Marke „Wingtip Toys“ an. Um sich mit einem Social Media-Konto als Identitätsanbieter zu registrieren, klicken Sie auf die Schaltfläche des Identitätsanbieters, den Sie verwenden möchten.
 
     ![Anbieter für Registrierung oder Anmeldung](media/active-directory-b2c-quickstarts-web-app/sign-in-or-sign-up-web.png)
 
     Sie authentifizieren sich mit den Anmeldeinformationen Ihres Social Media-Kontos und autorisieren die Anwendung dazu, Informationen von Ihrem Social Media-Konto zu lesen. Wenn Sie der Anwendung Zugriff auf diese gewähren, kann die Anwendung Profilinformationen aus dem Social Media-Konto abrufen, z.B. Ihren Namen und Ihre Stadt. 
 
-2. Schließen Sie den Anmeldevorgang für den Identitätsanbieter ab. Beispiel: Wenn Sie Twitter ausgewählt haben, geben Sie Ihre Twitter-Anmeldeinformationen ein, und klicken Sie auf **Anmelden**.
-
-    ![Authentifizierung und Autorisierung mit einem Social Media-Konto](media/active-directory-b2c-quickstarts-web-app/twitter-authenticate-authorize-web.png)
-
-    Die Profildetails für Ihr neues Azure AD B2C-Konto werden mit Informationen aus Ihrem Social Media-Konto aufgefüllt.
-
-3. Aktualisieren Sie die Felder „Anzeigename“, „Position“ und „Stadt“, und klicken Sie auf **Fortfahren**.  Die von Ihnen eingegebenen Werte werden für das Profil Ihres Azure AD B2C-Benutzerkontos verwendet.
-
-    ![Profildetails für das neue Konto beim Registrieren](media/active-directory-b2c-quickstarts-web-app/new-account-sign-up-profile-details-web.png)
-
-    Sie haben erfolgreich die Beispiel-Web-App verwendet, für die eine Azure AD B2C-Richtlinie zum Authentifizieren per Identitätsanbieter genutzt wird, und ein Azure AD B2C-Benutzerkonto erstellt. 
+3. Schließen Sie den Anmeldevorgang für den Identitätsanbieter ab.
 
 ## <a name="edit-your-profile"></a>Bearbeiten des Profils
 
 Azure Active Directory B2C bietet Funktionen, mit denen Benutzer ihre Profile aktualisieren können. Die Beispiel-Web-App nutzt eine Azure AD B2C-Bearbeitungsprofilrichtlinie für den Workflow. 
 
-1. Klicken Sie in der Menüleiste der Webanwendung auf Ihren Profilnamen, und wählen Sie **Profil bearbeiten** aus, um das von Ihnen erstellte Profil zu bearbeiten.
+1. Klicken Sie auf der Menüleiste der Anwendung auf Ihren Profilnamen, und wählen Sie **Profil bearbeiten** aus, um das von Ihnen erstellte Profil zu bearbeiten.
 
     ![Bearbeiten eines Profils](media/active-directory-b2c-quickstarts-web-app/edit-profile-web.png)
 
-2. Ändern Sie Ihren **Anzeigenamen** und Ihre **Stadt**.  
-3. Klicken Sie auf **Fortfahren**, um Ihr Profil zu aktualisieren. Der neue Anzeigename wird oben rechts auf der Startseite der Web-App angezeigt.
+2. Ändern Sie den Wert für **Anzeigename** oder **Ort**, und klicken Sie dann auf **Weiter**, um Ihr Profil zu aktualisieren. 
 
-## <a name="access-a-protected-web-api-resource"></a>Zugreifen auf eine geschützte Web-API-Ressource
+    Die Änderung wird rechts oben auf der Startseite der Webanwendung angezeigt.
+
+## <a name="access-a-protected-api-resource"></a>Zugreifen auf eine geschützte API-Ressource
 
 1. Klicken Sie auf **Aufgabenliste**, um Ihre Aufgabenlistenelemente einzugeben und zu ändern. 
 
@@ -119,9 +95,9 @@ Sie können Ihren Azure AD B2C-Mandanten für weitere Azure AD B2C-Schnellstarts
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie eine Azure AD B2C-fähige ASP.NET-Beispiel-App verwendet, um sich über eine benutzerdefinierte Anmeldeseite anzumelden, sich mit einem sozialen Netzwerk als Identitätsanbieter anzumelden, ein Azure AD B2C-Konto zu erstellen und eine per Azure AD B2C geschützte Web-API aufzurufen. 
+In dieser Schnellstartanleitung haben Sie eine ASP.NET-Beispielanwendung verwendet, um sich über eine benutzerdefinierte Anmeldeseite anzumelden, sich mit einem sozialen Netzwerk als Identitätsanbieter anzumelden, ein Azure AD B2C-Konto zu erstellen und eine durch Azure AD B2C geschützte Web-API aufzurufen. 
 
-Fahren Sie mit dem Tutorial fort, um zu erfahren, wie Sie die ASP.NET-Beispiel-App so konfigurieren, dass Ihr eigener Azure AD B2C-Mandant verwendet wird.
+Machen Sie sich als Nächstes mit der Erstellung Ihres eigenen Azure AD B2C-Mandanten vertraut.
 
 > [!div class="nextstepaction"]
 > [Erstellen eines Azure Active Directory B2C-Mandanten im Azure-Portal](tutorial-create-tenant.md)

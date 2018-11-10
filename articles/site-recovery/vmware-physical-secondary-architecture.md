@@ -1,21 +1,22 @@
 ---
-title: Architektur für die Replikation von VMware und physischen Servern in Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel bietet eine Übersicht über die Komponenten und die Architektur, die beim Replizieren von lokalen VMware-VMs oder physischen Servern unter Windows oder Linux an einen sekundären VMware-Standort mit Azure Site Recovery verwendet werden.
+title: Architektur der Notfallwiederherstellung für VMware- und physische Server in Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Übersicht über die Komponenten und die Architektur, die bei der Notfallwiederherstellung für lokale VMware-VMs oder physische Server unter Windows oder Linux an einen sekundären VMware-Standort mit Azure Site Recovery verwendet werden.
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 04591c57f90e3c540963d77c2213498bf0ad2577
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 16e8a9719280b55e86d1d4622a32470b37287dd4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922698"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215122"
 ---
-# <a name="vmware-vmphysical-server-to-vmware-replication-architecture"></a>Architektur für die Replikation von VMware-VMs/physischen Servern zu VMware
+# <a name="vmware-vmphysical-server-to-vmware-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung für VMware-VMs/physische Server zu VMware
 
-Dieser Artikel beschreibt die Architektur und Prozesse, die bei der Replikation, der Ausführung eines Failovers und dem Wiederherstellen von lokalen virtuellen VMware-Computern (VMs) oder physischen Windows-/Linux-Servern an einen sekundären VMware-Standort mithilfe von [Azure Site Recovery](site-recovery-overview.md) verwendet werden.
+Dieser Artikel beschreibt die Architektur und Prozesse, die beim Einrichten der Replikation, der Ausführung eines Failovers und dem Wiederherstellen von lokalen virtuellen VMware-Computern (VMs) oder physischen Windows-/Linux-Servern für die Notfallwiederherstellung an einem sekundären VMware-Standort mithilfe von [Azure Site Recovery](site-recovery-overview.md) verwendet werden.
 
 
 ## <a name="architectural-components"></a>Komponenten der Architektur

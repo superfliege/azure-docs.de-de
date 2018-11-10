@@ -4,24 +4,36 @@ description: Informationen zu Upgrades für den Azure Migrate-Collector
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/29/2018
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: 6080096194ec5b11f1d5593fcbb6732d1551667f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: cd48b824845a0195fc78814a88dd449507c99394
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431391"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241462"
 ---
 # <a name="collector-update-release-history"></a>Updatereleases für den Collector
 
 In diesem Artikel werden Informationen zu Upgrades für den [Azure Migrate-Collector](migrate-overview.md) zusammengefasst.
 
-Der Azure Migrate-Collector ist eine einfache Appliance, die zum Entdecken einer lokalen vCenter-Umgebung verwendet wird, damit vor der Migration zu Azure eine Überprüfung durchgeführt werden kann. [Weitere Informationen](concepts-collector.md)
+Der Azure Migrate-Collector ist eine einfache Appliance, die zum Entdecken einer lokalen vCenter-Umgebung verwendet wird, damit vor der Migration zu Azure eine Überprüfung durchgeführt werden kann. [Weitere Informationen](concepts-collector.md).
 
 
 ## <a name="one-time-discovery-upgrade-versions"></a>Einmalige Ermittlung: Upgradeversionen
+
+### <a name="version-10916-released-on-10292018"></a>Version 1.0.9.16 (Release: 29.10.2018)
+
+Enthält Korrekturen für PowerCLI-Probleme, die beim Einrichten der Appliance auftreten. 
+
+Hashwerte für das [Upgradepaket 1.0.9.16](https://aka.ms/migrate/col/upgrade_9_16)
+
+**Algorithmus** | **Hashwert**
+--- | ---
+MD5 | d2c53f683b0ec7aaf5ba3d532a7382e1
+SHA1 | e5f922a725d81026fa113b0c27da185911942a01
+SHA256 | a159063ff508e86b4b3b7b9a42d724262ec0f2315bdba8418bce95d973f80cfc
 
 ### <a name="version-10914"></a>Version 1.0.9.14
 

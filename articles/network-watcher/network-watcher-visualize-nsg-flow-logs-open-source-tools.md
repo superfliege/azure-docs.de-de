@@ -1,5 +1,5 @@
 ---
-title: Visualisieren von Azure Network Watcher-NSG-Datenflussprotokollen mit Open-Source-Tools | Microsoft-Dokumentation
+title: Visualisieren von Azure Network Watcher-NSG-Datenflussprotokollen mit Open-Source-Tools | Microsoft Docs
 description: Auf dieser Seite werden die Open-Source-Tools zum Visualisieren von NSG-Datenflussprotokollen beschrieben.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: aa83ba1f428e70cd78cba2af6d39989179d5b30f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 61354803f4fced7cd8fee31f10b5f72401f267da
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143482"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414946"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Visualisieren von Azure Network Watcher-NSG-Datenflussprotokollen mit Open-Source-Tools
 
@@ -43,7 +43,7 @@ Durch das Verbinden von NSG-Datenflussprotokollen mit dem Elastic Stack können 
 
 #### <a name="install-elasticsearch"></a>Installieren von Elasticsearch
 
-1. Elastic Stack ab Version 5.0 erfordert Java 8. Führen Sie den Befehl `java -version` aus, um Ihre Version zu überprüfen. Wenn Java nicht installiert ist, sehen Sie in der Dokumentation auf der [Oracle-Website](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) nach.
+1. Elastic Stack ab Version 5.0 erfordert Java 8. Führen Sie den Befehl `java -version` aus, um Ihre Version zu überprüfen. Wenn Java nicht installiert ist, lesen Sie die Dokumentation zu den [von Azure unterstützten JDKs](https://aka.ms/azure-jdks).
 2. Laden Sie das richtige Binärpaket für Ihr System herunter:
 
    ```bash

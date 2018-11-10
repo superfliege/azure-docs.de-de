@@ -6,20 +6,20 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: c917fab84448684cf29af162ec0781d764605f71
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c09ee84cda5f0a9747d3ee1f8f1b37d1323f2cc2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323851"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212249"
 ---
 # <a name="egress-and-endpoints"></a>Ausgang und Endpunkte
 
 Azure Digital Twins unterstützt das Konzept von _Endpunkten_, wobei jeder Endpunkt einem Nachrichten-/Ereignisbroker im Azure-Abonnement des Benutzers entspricht. Ereignisse und Meldungen können an **Event Hub**, **Event Grid**, und **Service Bus-Themen** an gesendet werden.
 
-Ereignisse werden entsprechend den vordefinierten Routingeinstellungen an die Endpunkte gesendet: Der Benutzer kann angeben, welcher Endpunkt jedes der folgenden Ereignisse empfangen soll:`TopologyOperation`, `UdfCustom`, `SensorChange`, `SpaceChange` oder `DeviceMessage`.
+Ereignisse werden entsprechend den vordefinierten Routingeinstellungen an die Endpunkte gesendet: Der Benutzer kann angeben, welcher Endpunkt jedes der folgenden Ereignisse empfangen soll: **TopologyOperation**, **UdfCustom**, **SensorChange**, **SpaceChange** oder **DeviceMessage**.
 
 Grundlegende Informationen zur Weiterleitung von Ereignissen und zu Ereignistypen finden Sie unter [Weiterleiten von Ereignissen und Nachrichten](concepts-events-routing.md).
 
@@ -27,9 +27,9 @@ Grundlegende Informationen zur Weiterleitung von Ereignissen und zu Ereignistype
 
 Die Ereignisformate für jeden der Ereignistypen sehen wie folgt aus:
 
-- `TopologyOperation`
+- **TopologyOperation**
 
-  Gilt für Graphänderungen. Die Eigenschaft `subject` gibt den Typ des betroffenen Objekts an. Jedes Objekt, das einen folgenden Typen hat, kann dieses Ereignis auslösen: `Device, DeviceBlobMetadata`, `DeviceExtendedProperty`, `ExtendedPropertyKey`, `ExtendedType`, `KeyStore`, `Report`, `RoleDefinition`, `Sensor`, `SensorBlobMetadata`, `SensorExtendedProperty`, `Space`, `SpaceBlobMetadata`, `SpaceExtendedProperty`, `SpaceResource`, `SpaceRoleAssignment`, `System`, `User`, `UserBlobMetadata`, `UserExtendedProperty`.
+  Gilt für Graphänderungen. Die *subject*-Eigenschaft gibt den Typ des betroffenen Objekts an. Typen von Objekten, die dieses Ereignis auslösen können: **Device**, **DeviceBlobMetadata**, **DeviceExtendedProperty**, **ExtendedPropertyKey**, **ExtendedType**, **KeyStore**, **Report**, **RoleDefinition**, **Sensor**, **SensorBlobMetadata**, **SensorExtendedProperty**, **Space**,  **SpaceBlobMetadata**, **SpaceExtendedProperty**, **SpaceResource**, **SpaceRoleAssignment**, **System**, **User**, **UserBlobMetadata**, **UserExtendedProperty**.
 
   Beispiel:
 
@@ -55,11 +55,14 @@ Die Ereignisformate für jeden der Ereignistypen sehen wie folgt aus:
 
     | Name des benutzerdefinierten Attributs | Ersetzen durch |
     | --- | --- |
-    | `yourTopicName` | Den Namen Ihres angepassten Themas |
+    | *yourTopicName* | Den Namen Ihres angepassten Themas |
 
-- `UdfCustom`
+- **UdfCustom**
 
-  Ein Ereignis, das von einer benutzerdefinierten Funktion gesendet wurde. Beachten Sie, dass dieses Ereignis explizit von der benutzerdefinierten Funktion selbst gesendet werden muss.
+  Ein Ereignis, das von einer benutzerdefinierten Funktion gesendet wurde. 
+  
+  > [!IMPORTANT]
+  > Dieses Ereignis muss explizit von der benutzerdefinierten Funktion selbst gesendet werden.
 
   Beispiel:
 
@@ -83,9 +86,9 @@ Die Ereignisformate für jeden der Ereignistypen sehen wie folgt aus:
 
     | Name des benutzerdefinierten Attributs | Ersetzen durch |
     | --- | --- |
-    | `yourTopicName` | Den Namen Ihres angepassten Themas |
+    | *yourTopicName* | Den Namen Ihres angepassten Themas |
 
-- `SensorChange`
+- **SensorChange**
 
   Eine Aktualisierung des Zustands eines Sensors anhand von Telemetriedatenänderungen.
 
@@ -118,9 +121,9 @@ Die Ereignisformate für jeden der Ereignistypen sehen wie folgt aus:
 
     | Name des benutzerdefinierten Attributs | Ersetzen durch |
     | --- | --- |
-    | `yourTopicName` | Den Namen Ihres angepassten Themas |
+    | *yourTopicName* | Den Namen Ihres angepassten Themas |
 
-- `SpaceChange`
+- **SpaceChange**
 
   Eine Aktualisierung des Zustands eines Raums anhand von Telemetriedatenänderungen.
 
@@ -153,15 +156,15 @@ Die Ereignisformate für jeden der Ereignistypen sehen wie folgt aus:
 
     | Name des benutzerdefinierten Attributs | Ersetzen durch |
     | --- | --- |
-    | `yourTopicName` | Den Namen Ihres angepassten Themas |
+    | *yourTopicName* | Den Namen Ihres angepassten Themas |
 
-- `DeviceMessage`
+- **DeviceMessage**
 
-  Ermöglicht Ihnen die Angabe einer `EventHub`-Verbindung, an die Telemetrierohdatenereignisse direkt oder aus Azure Digital Twins weitergeleitet werden können.
+  Ermöglicht Ihnen die Angabe einer **EventHub**-Verbindung, an die Telemetrierohdatenereignisse direkt oder aus Azure Digital Twins weitergeleitet werden können.
 
 > [!NOTE]
-> - `DeviceMessage` kann nur mit `EventHub` kombiniert werden. Es ist nicht möglich,`DeviceMessage` mit irgendeinem der anderen Ereignistypen zu kombinieren.
-> - Sie können nur ein einzigen Endpunkt der Kombination des Typs `EventHub`/`DeviceMessage` angeben.
+> - **DeviceMessage** kann nur mit **EventHub** kombiniert werden. Es ist nicht möglich, **DeviceMessage** mit irgendeinem der anderen Ereignistypen zu kombinieren.
+> - Sie können nur einen einzigen Endpunkt der Kombination der Typen **EventHub** oder **DeviceMessage** angeben.
 
 ## <a name="configuring-endpoints"></a>Konfigurieren von Endpunkten
 
@@ -171,7 +174,7 @@ Endpunktverwaltung erfolgt über die Endpunkte-API. Es folgen einige Beispiele, 
 POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 ```
 
-- Ereignistypen für Weiterleiten an **Service Bus**: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Ereignistypen für das Weiterleiten an **Service Bus**: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -189,12 +192,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Name des benutzerdefinierten Attributs | Ersetzen durch |
     | --- | --- |
-    | `yourNamespace` | Der Namespace Ihres Endpunkts |
-    | `yourPrimaryKey` | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
-    | `yourSecondaryKey` | Die sekundäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
-    | `yourTopicName` | Den Namen Ihres angepassten Themas |
+    | *yourNamespace* | Der Namespace Ihres Endpunkts |
+    | *yourPrimaryKey* | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
+    | *yourSecondaryKey* | Die sekundäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
+    | *yourTopicName* | Den Namen Ihres angepassten Themas |
 
-- Ereignistypen für Weiterleiten an **Event Grid**: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Ereignistypen für das Weiterleiten an **Event Grid**: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -212,11 +215,11 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Name des benutzerdefinierten Attributs | Ersetzen durch |
     | --- | --- |
-    | `yourPrimaryKey` | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird|
-    | `yourSecondaryKey` | Die sekundäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
-    | `yourTopicName` | Den Namen Ihres angepassten Themas |
+    | *yourPrimaryKey* | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird|
+    | *yourSecondaryKey* | Die sekundäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
+    | *yourTopicName* | Den Namen Ihres angepassten Themas |
 
-- Ereignistypen für Weiterleiten an **Event Hub**: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Ereignistypen für das Weiterleiten an **Event Hub**: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -234,12 +237,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Name des benutzerdefinierten Attributs | Ersetzen durch |
     | --- | --- |
-    | `yourNamespace` | Der Namespace Ihres Endpunkts |
-    | `yourPrimaryKey` | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
-    | `yourSecondaryKey` | Die sekundäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
-    | `yourEventHubName` | Der Name Ihres Event Hubs |
+    | *yourNamespace* | Der Namespace Ihres Endpunkts |
+    | *yourPrimaryKey* | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
+    | *yourSecondaryKey* | Die sekundäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
+    | *yourEventHubName* | Der Name Ihres **Event Hubs** |
 
-- Ereignistypen für Weiterleiten an **Event Hub**: `DeviceMessage`. Beachten Sie die Einfügung von _EntityPath_ in die `connectionString`. Diese Einfügung ist obligatorisch.
+- Ereignistyp für das Weiterleiten an **Event Hub**: **DeviceMessage**. `EntityPath` muss in **connectionString** enthalten sein.
 
   ```JSON
   {
@@ -255,13 +258,13 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Name des benutzerdefinierten Attributs | Ersetzen durch |
     | --- | --- |
-    | `yourNamespace` | Der Namespace Ihres Endpunkts |
-    | `yourPrimaryKey` | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
-    | `yourSecondaryKey` | Die sekundäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
-    | `yourEventHubName` | Der Name Ihres Event Hubs |
+    | *yourNamespace* | Der Namespace Ihres Endpunkts |
+    | *yourPrimaryKey* | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
+    | *yourSecondaryKey* | Die sekundäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
+    | *yourEventHubName* | Der Name Ihres **Event Hubs** |
 
 > [!NOTE]
-> Bei der Erstellung eines neuen Endpunkts kann es 5 bis 10 Minuten dauern, bis erstmals Ereignisse am Endpunkt empfangen werden.
+> Nach dem Erstellen eines neuen Endpunkts kann es 5 bis 10 Minuten dauern, bis erstmals Ereignisse am Endpunkt empfangen werden.
 
 ## <a name="primary-and-secondary-connection-keys"></a>Primärer und sekundärer Verbindungsschlüssel
 

@@ -1,27 +1,20 @@
 ---
-title: Replizieren einer SharePoint-Anwendung mit mehreren Ebenen mit Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie eine SharePoint-Anwendung mit mehreren Ebenen mithilfe von Azure Site Recovery-Funktionen replizieren.
-services: site-recovery
-documentationcenter: ''
+title: Einrichten der Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Site Recovery-Funktionen die Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen einrichten.
 author: sujayt
 manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: eb5801988b6fa966a0326c39be4a267ea08500a8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 5e3ebd7d3aa5555fbe5ea77dece6eb3177809de7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916784"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215072"
 ---
-# <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Replizieren einer SharePoint-Anwendung mit mehreren Ebenen für die Notfallwiederherstellung mithilfe von Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Einrichten der Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen mithilfe von Azure Site Recovery
 
 In diesem Artikel wird ausführlich beschrieben, wie Sie eine SharePoint-Anwendung mithilfe von [Azure Site Recovery](site-recovery-overview.md) schützen können.
 
@@ -69,10 +62,10 @@ Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Windows
 
 **Szenario** | **Am sekundären Standort** | **In Azure**
 --- | --- | ---
-**Hyper-V** | Ja | Ja
-**VMware** | Ja | Ja
-**Physischer Server** | Ja | Ja
-**Azure** | Nicht verfügbar | Ja
+**Hyper-V** | JA | JA
+**VMware** | JA | JA
+**Physischer Server** | JA | JA
+**Azure** | Nicht verfügbar | JA
 
 ### <a name="sharepoint-versions"></a>SharePoint-Versionen
 Die folgenden SharePoint-Server-Versionen werden unterstützt:
@@ -150,7 +143,7 @@ Ein Wiederherstellungsplan ermöglicht die Sequenzierung des Failovers verschied
 
 Sie können die am häufigsten verwendeten Azure Site Recovery-Skripts in Ihrem Automation-Konto bereitstellen, indem Sie auf die Schaltfläche „In Azure bereitstellen“ klicken. Wenn Sie ein beliebiges veröffentlichtes Skript verwenden, vergewissern Sie sich, dass Sie die Anleitung im Skript befolgen.
 
-[![Bereitstellen in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![In Azure bereitstellen](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. Fügen Sie der „Gruppe 1“ ein Skript als vorausgehende Aktion hinzu, um für die SQL-Verfügbarkeitsgruppe ein Failover durchzuführen. Verwenden Sie das Skript „ASR-SQL-FailoverAG“ aus den Beispielskripts. Befolgen Sie die Anleitung im Skript genau, und nehmen Sie die erforderlichen Änderungen im Skript vor.
 

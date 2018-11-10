@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 10/16/2018
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 44e195055c74babd903cf4fb830167ab92951d4a
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 8124b399b859f812ec3bf9f7ea64b6643446a1b5
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376787"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249295"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid-Schemas für Media Services-Ereignisse
 
@@ -116,9 +116,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 Dabei kann der Auftragsstatus einer der folgenden Werte sein: *Queued* (In der Warteschlange), *Scheduled* (Geplant), *Processing* (Verarbeitung), *Finished* (Abgeschlossen), *Error* (Fehler), *Canceled* (Abgebrochen), *Canceling* (Wird abgebrochen).
 
-### <a name="jobscheduled"></a>JobScheduled
-### <a name="jobprocessing"></a>JobProcessing
-### <a name="jobcanceling"></a>JobCanceling
+### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled, JobProcessing, JobCanceling
 
 Für jede nicht abschließende Auftragszustandsänderung (z. B. JobScheduled, JobProcessing, JobCanceling) sieht das Beispielschema etwa wie folgt aus:
 
@@ -142,9 +140,7 @@ Für jede nicht abschließende Auftragszustandsänderung (z. B. JobScheduled, Jo
 }]
 ```
 
-### <a name="jobfinished"></a>JobFinished
-### <a name="jobcanceled"></a>JobCanceled
-### <a name="joberrored"></a>JobErrored
+### <a name="jobfinished-jobcanceled-joberrored"></a>JobFinished, JobCanceled, JobErrored
 
 Für jede abschließende Auftragszustandsänderung (z. B. JobFinished, JobCanceled, JobErrored) sieht das Beispielschema etwa wie folgt aus:
 
@@ -215,12 +211,7 @@ Das folgende Beispiel zeigt das Schema des **JobOutputStateChange**-Ereignisses:
 }]
 ```
 
-### <a name="joboutputscheduled"></a>JobOutputScheduled
-### <a name="joboutputprocessing"></a>JobOutputProcessing
-### <a name="joboutputfinished"></a>JobOutputFinished
-### <a name="joboutputcanceling"></a>JobOutputCanceling
-### <a name="joboutputcanceled"></a>JobOutputCanceled
-### <a name="joboutputerrored"></a>JobOutputErrored
+### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>JobOutputScheduled, JobOutputProcessing, JobOutputFinished, JobOutputCanceling, JobOutputCanceled, JobOutputErrored
 
 Für jede Zustandsänderung von „JobOutput“ sieht das Beispielschema etwa wie folgt aus:
 
@@ -642,3 +633,8 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Registrieren für Statusänderungsereignisse von Aufträgen](job-state-events-cli-how-to.md)
+
+## <a name="see-also"></a>Weitere Informationen
+
+- [EventGrid .NET SDK mit Media Services-Ereignissen](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [Definitionen von Media Services-Ereignissen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)

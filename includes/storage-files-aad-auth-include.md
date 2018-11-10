@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/22/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b7682b83ca415ebff2be1c9dbb5581e8da1bb7fb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 64751e0fcbf9a2255964d0de673e2cc2020ceb9a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49805061"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254527"
 ---
 [Azure Files](../articles/storage/files/storage-files-introduction.md) unterstützt identitätsbasierte Authentifizierung über SMB (Server Message Block) (Vorschau) über [Azure Active Directory (Azure AD) Domain Services](../articles/active-directory-domain-services/active-directory-ds-overview.md). Ihre in die Domäne eingebundenen virtuellen Windows-Computer (VMs) können mit [Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md)-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen. 
 
@@ -25,3 +25,4 @@ Als Teil der Preview unterstützt Azure Files auch die Beibehaltung, Vererbung u
 > - Azure AD-Authentifizierung über SMB wird in der Preview-Version nicht für Linux-VMs unterstützt. Nur Windows Server-VMs werden unterstützt.
 > - Azure AD-Authentifizierung über SMB wird nicht für lokale Computer unterstützt, die auf Azure Files zugreifen.
 > - Azure AD-Authentifizierung ist nur für Speicherkonten verfügbar, die nach dem 24. September 2018 erstellt wurden.
+> - Azure AD-Authentifizierung über SMB und persistente NTFS-Zugriffssteuerungsliste wird auf Azure-Dateifreigaben, die vom Azure-Dateisynchronisierungsdienst verwaltet werden, nicht unterstützt. 

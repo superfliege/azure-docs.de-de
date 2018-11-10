@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: e3de78bdf38a326498b984dc2a9f8eaa42233d22
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5a12a65e03e7ac104eb7b09b116f7c463bbb5b98
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091282"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240714"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 
@@ -159,7 +159,7 @@ Die Cassandra-API für Azure Cosmos DB ermöglicht die Wahl der Konsistenz bei L
 
 ## <a name="permission-and-role-management"></a>Berechtigungs- und Rollenverwaltung
 
-Azure Cosmos DB unterstützt die rollenbasierte Zugriffssteuerung (RBAC) sowie Lese-/Schreibkennwörter/-schlüssel und Schreibschutzkennwörter/-schlüssel, die über das [Azure-Portal] abgerufen werden können(https://portal.azure.com. Azure Cosmos DB unterstützt noch keine Benutzer und Rollen für Aktivitäten auf Datenebene. 
+Azure Cosmos DB unterstützt die rollenbasierte Zugriffssteuerung (RBAC) sowie Lese-/Schreibkennwörter bzw. Lese-/Schreibschlüssel und Schreibschutzkennwörter/-schlüssel, die über das [Azure-Portal](https://portal.azure.com) abgerufen werden können. Azure Cosmos DB unterstützt noch keine Benutzer und Rollen für Aktivitäten auf Datenebene. 
 
 ## <a name="planned-support"></a>Geplante Unterstützung 
 * Gemeinsame Verwendung von Zeitstempel und TTL  

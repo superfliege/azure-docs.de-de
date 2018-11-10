@@ -7,24 +7,24 @@ ms.subservice: scenario
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: tmullaney
-ms.author: thmullan
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 94430d3b72bb5b8e8bde0e9e2e9fb2eb2b0c3632
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: d669e7beb2d0e41ff26408d4f71c3e1648c41e3a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056283"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242567"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
 
 [Elastische Datenbanktools](sql-database-elastic-scale-get-started.md) und die [zeilenbasierte Sicherheit (RLS)][rls] ermöglichen die Skalierung der Datenschicht einer mehrinstanzenfähigen Anwendung mit Azure SQL-Datenbank. Durch die Kombination dieser Technologien können Sie eine Anwendung erstellen, die über eine hochgradig skalierbare Datenschicht verfügt. Die Datenschicht unterstützt mehrinstanzenfähige Shards und verwendet **ADO.NET SqlClient** oder **Entity Framework**. Weitere Informationen finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](saas-tenancy-app-design-patterns.md).
 
 - **Elastische Datenbanktools** ermöglichen Entwicklern eine Skalierung der Datenschicht über Sharding-Standardmethoden, indem .NET-Bibliotheken und Azure-Dienstvorlagen verwendet werden. Die Verwaltung von Shards mit der [elastischen Datenbank-Clientbibliothek][s-d-elastic-database-client-library] hilft bei der Automatisierung und Optimierung zahlreicher infrastruktureller Aufgaben, die i. d. R. Sharding zugeordnet werden.
-- Mithilfe der **Sicherheit auf Zeilenebene** können Entwickler Daten für mehrere Mandanten in derselben Datenbank sicher speichern. Sicherheitsrichtlinien für die Sicherheit auf Zeilenebene filtern Zeilen heraus, die nicht dem Mandanten gehören, der eine Abfrage ausführt. Die Zentralisierung der Filterlogik in der Datenbank vereinfacht die Wartung und reduziert das Risiko eines Sicherheitsfehlers. Die Alternative, sich auf den gesamten Clientcode zu verlassen, um die Sicherheit zu erreichen, ist riskant.
+- Mithilfe der **Sicherheit auf Zeilenebene** können Entwickler Daten für mehrere Mandanten in derselben Datenbank sicher speichern. Sicherheitsrichtlinien für die Sicherheit auf Zeilenebene filtern Zeilen heraus, die nicht dem Mandanten gehören, der eine Abfrage ausführt. Die Zentralisierung der Filterlogik in der Datenbank vereinfacht die Wartung und reduziert das Risiko eines Sicherheitsfehlers. Die Alternative, sich auf den gesamten Clientcode zu verlassen, um Sicherheit zu erzwingen, ist riskant.
 
 Durch die gemeinsame Nutzung dieser Features kann eine Anwendung Daten für mehrere Mandanten in derselben Sharddatenbank speichern. Es ist kostengünstiger pro Mandant, wenn sich die Mandanten eine Datenbank teilen. Die gleiche Anwendung kann aber auch seinen Premium-Mandanten die Möglichkeit bieten, für ihren eigenen, dedizierten Shard für einen einzelnen Mandanten zu bezahlen. Ein Vorteil der Einzelmandantenisolierung ist, dass die Leistungsgarantien strenger sind. In einer Datenbank mit nur einem Mandanten gibt es keinen anderen Mandanten, der um Ressourcen wetteifert.
 
@@ -39,8 +39,8 @@ Das Ziel ist die Verwendung der APIs der elastischen Datenbank-Clientbibliothek 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Visual Studio (2012 oder neuere Version) 
-- Erstellen von drei Azure SQL-Datenbanken 
+- Visual Studio (2012 oder neuere Version)
+- Erstellen von drei Azure SQL-Datenbanken
 - Folgendes Beispielprojekt: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](http://go.microsoft.com/?linkid=9888163)
   - Geben Sie die Informationen für Ihre Datenbanken am Anfang der Datei **Program.cs** 
 

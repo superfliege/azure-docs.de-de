@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: d70eecb6a5d6bafbfa6507dbe8b1bcb1cad67191
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990245"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415700"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Erweitern von Warnungen aus Log Analytics in Azure-Warnungen
 Die Warnfunktion in Azure Log Analytics wird durch Azure-Warnungen ersetzt. Im Rahmen dieses Übergangs werden Warnungen, die Sie ursprünglich in Log Analytics konfiguriert haben, auf Azure erweitert. Wenn Sie nicht warten möchten, bis diese automatisch in Azure verschoben werden, können Sie den Prozess auslösen:
@@ -22,31 +22,31 @@ Die Warnfunktion in Azure Log Analytics wird durch Azure-Warnungen ersetzt. Im R
 - Programmgesteuert mithilfe der AlertsVersion-API  
 
 > [!NOTE]
-> Ab dem 14. Mai 2018 erweitert Microsoft in Public Cloud-Instanzen von Log Analytics erstellte Warnungen automatisch in einer wiederholten Serie bis zum vollständigen Abschluss auf Azure-Warnungen. Wenn beim Erstellen von [Aktionsgruppen](monitoring-action-groups.md) irgendwelche Probleme auftreten, verwenden Sie [diese Wartungsschritte](monitoring-alerts-extend-tool.md#troubleshooting), um Aktionsgruppen automatisch erstellen zu lassen. Sie können diese Schritte bis zum 5. Juli 2018 verwenden. *Gilt nicht für Azure Goverment und Soveriegn-Cloudbenutzer von Log Analytics*. 
+> Ab dem 14. Mai 2018 erweitert Microsoft in Public Cloud-Instanzen von Log Analytics erstellte Warnungen automatisch in einer wiederholten Serie bis zum vollständigen Abschluss auf Azure-Warnungen. Wenn beim Erstellen von [Aktionsgruppen](monitoring-action-groups.md) irgendwelche Probleme auftreten, verwenden Sie [diese Wartungsschritte](monitoring-alerts-extend-tool.md#troubleshooting), um Aktionsgruppen automatisch erstellen zu lassen. Sie können diese Schritte bis zum 5. Juli 2018 verwenden. *Gilt nicht für Azure Government- und Sovereign Cloud-Benutzer von Log Analytics*. 
 
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Option 1: Starten über das Operations Management Suite-Portal
 Die folgenden Schritte beschreiben, wie Sie Warnungen für den Arbeitsbereich über das Operations Management Suite-Portal erweitern.  
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 2. Wählen Sie im Log Analytics-Abonnementbereich einen Arbeitsbereich aus, und wählen Sie dann die Kachel **OMS-Portal** aus.
-![Screenshot des Log Analytics-Abonnementbereichs mit hervorgehobener Kachel für das OMS-Portal](./media/monitor-alerts-extend/azure-portal-01.png) 
+![Screenshot des Log Analytics-Abonnementbereichs mit hervorgehobener Kachel für das OMS-Portal](media/monitoring-alerts-extend-tool/azure-portal-01.png) 
 3. Nachdem Sie zum Operations Management Suite-Portal weitergeleitet wurden, klicken Sie auf das Symbol **Einstellungen**.
-![Screenshot des Operations Management Suite-Portals mit hervorgehobenem Symbol „Einstellungen“](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
+![Screenshot des Operations Management Suite-Portals mit hervorgehobenem Symbol „Einstellungen“](media/monitoring-alerts-extend-tool/oms-portal-settings-option.png) 
 4. Klicken Sie auf der Seite **Einstellungen** auf **Warnungen**.  
 5. Wählen Sie **Auf Azure erweitern**.
-![Screenshot der Seite „Einstellungen“ im Operations Management Suite-Portal mit hervorgehobener Option „Auf Azure erweitern“](./media/monitor-alerts-extend/ExtendInto.png)
+![Screenshot der Seite „Einstellungen“ im Operations Management Suite-Portal mit hervorgehobener Option „Auf Azure erweitern“](media/monitoring-alerts-extend-tool/ExtendInto.png)
 6. Ein Assistent mit drei Schritten wird im Bereich **Warnungen** angezeigt. Lesen Sie die Übersicht, und wählen Sie **Weiter**.
-![Screenshot von Schritt 1 des Assistenten](./media/monitor-alerts-extend/ExtendStep1.png)  
+![Screenshot von Schritt 1 des Assistenten](media/monitoring-alerts-extend-tool/ExtendStep1.png)  
 7. Im zweiten Schritt wird eine Zusammenfassung der vorgeschlagenen Änderungen mit den entsprechenden [Aktionsgruppen](monitoring-action-groups.md) für die Warnungen angezeigt. Wenn für mehrere Warnungen ähnliche Aktionen angezeigt werden, schlägt der Assistent vor, allen eine einzige Aktionsgruppe zuzuordnen.  Die Namenskonvention lautet folgendermaßen: *Arbeitsbereichsname_AG_#Nummer*. Zum Fortsetzen des Vorgangs klicken Sie auf **Weiter**.
-![Screenshot von Schritt 2 des Assistenten](./media/monitor-alerts-extend/ExtendStep2.png)  
+![Screenshot von Schritt 2 des Assistenten](media/monitoring-alerts-extend-tool/ExtendStep2.png)  
 8. Wählen Sie im letzten Schritt des Assistenten **Fertig stellen**, und bestätigen Sie bei Aufforderung den Start des Vorgangs. Optional können Sie eine E-Mail-Adresse angeben, damit Sie benachrichtigt werden, wenn der Prozess abgeschlossen ist und alle Warnungen erfolgreich in Azure-Warnungen verschoben wurden.
-![Screenshot von Schritt 3 des Assistenten](./media/monitor-alerts-extend/ExtendStep3.png)
+![Screenshot von Schritt 3 des Assistenten](media/monitoring-alerts-extend-tool/ExtendStep3.png)
 
 Wenn der Assistent beendet ist, wird die Option zum Erweitern von Warnungen auf Azure auf der Seite **Warnungseinstellungen** nicht mehr angezeigt. Im Hintergrund werden Ihre Warnungen in Azure verschoben, und dieser Vorgang kann eine Weile dauern. Während des Vorgangs können Sie über das Operations Management Suite-Portal keine Änderungen an Warnungen vornehmen. Den aktuellen Status können Sie dem Banner am oberen Rand des Portals entnehmen. Wenn Sie zuvor eine E-Mail-Adresse angegeben haben, erhalten eine E-Mail, wenn der Vorgang erfolgreich abgeschlossen wurde.  
 
 
 Warnungen werden weiterhin im Operations Management Suite-Portal aufgeführt, auch nachdem sie erfolgreich in Azure verschoben wurden.
-![Screenshot der Seite mit Warnungseinstellungen im Operations Management Suite-Portal](./media/monitor-alerts-extend/PostExtendList.png)
+![Screenshot der Seite mit Warnungseinstellungen im Operations Management Suite-Portal](media/monitoring-alerts-extend-tool/PostExtendList.png)
 
 
 ## <a name="option-2-use-the-alertsversion-api"></a>Option 2: Verwenden der AlertsVersion-API
@@ -460,7 +460,7 @@ Bei der Erweiterung von Warnungen können Probleme verhindern, dass das System d
 > Wenn die auf der Azure Public Cloud basierenden Log Analytics-Benutzer die folgenden Wiederherstellungsschritte nicht vor dem 5. Juli 2018 durchführen, werden Warnungen in Azure ausgeführt, lösen aber keine Aktion oder Benachrichtigung aus. Um Benachrichtigungen für Warnungen zu erhalten, müssen Sie [Aktionsgruppen](monitoring-action-groups.md) manuell bearbeiten und hinzufügen oder das oben beschriebene [benutzerdefinierte PowerShell-Skript](#option-3---using-custom-powershell-script) verwenden.
 
 Hier werden die Wiederherstellungsschritte für die einzelnen Fehler aufgeführt:
-- **Error: Scope Lock is present at subscription/resource group level for write operations** (Fehler: Bereichssperre auf Abonnement-/Ressourcengruppenebene für Schreibvorgänge):   ![Screenshot der Seite „Warnungseinstellungen“ im Operations Management Suite-Portal mit hervorgehobener Fehlermeldung zur Bereichssperre](./media/monitor-alerts-extend/ErrorScopeLock.png)
+- **Error: Scope Lock is present at subscription/resource group level for write operations** (Fehler: Bereichssperre auf Abonnement-/Ressourcengruppenebene für Schreibvorgänge):   ![Screenshot der Seite „Warnungseinstellungen“ im Operations Management Suite-Portal mit hervorgehobener Fehlermeldung zur Bereichssperre](media/monitoring-alerts-extend-tool/ErrorScopeLock.png)
 
     Wenn die Bereichssperre aktiviert ist, schränkt dieses Feature neue Änderungen in dem Abonnement bzw. in der Ressourcengruppe ein, das bzw. die den Log Analytics-Arbeitsbereich (Operations Management Suite) enthält. Das System kann Warnungen nicht auf Azure erweitern und nicht die erforderlichen Aktionsgruppen erstellen.
     
@@ -468,7 +468,7 @@ Hier werden die Wiederherstellungsschritte für die einzelnen Fehler aufgeführt
     
     Wenn Sie den Fehler mithilfe der in diesem Artikel beschriebenen Schritte beheben, erweitert Operations Management Suite Ihre Warnungen während der für den nächsten Tag geplanten Ausführung auf Azure. Sie müssen keine weiteren Aktionen durchführen oder starten.
 
-- **Error: Policy is present at subscription/resource group level** (Fehler: Richtlinie auf Abonnement-/Ressourcengruppenebene):   ![Screenshot der Seite „Warnungseinstellungen“ im Operations Management Suite-Portal mit hervorgehobener Fehlermeldung zu Richtlinien](./media/monitor-alerts-extend/ErrorPolicy.png)
+- **Error: Policy is present at subscription/resource group level** (Fehler: Richtlinie auf Abonnement-/Ressourcengruppenebene):   ![Screenshot der Seite „Warnungseinstellungen“ im Operations Management Suite-Portal mit hervorgehobener Fehlermeldung zu Richtlinien](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
     Wenn [Azure Policy](../azure-policy/azure-policy-introduction.md) angewendet wird, werden neue Ressourcen in einem Abonnement oder in einer Ressourcengruppe eingeschränkt, das bzw. die den Log Analytics-Arbeitsbereich (Operations Management Suite) enthält. Das System kann Warnungen nicht auf Azure erweitern und nicht die erforderlichen Aktionsgruppen erstellen.
     

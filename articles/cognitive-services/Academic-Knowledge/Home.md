@@ -10,12 +10,12 @@ ms.component: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: aa945eb8f0b79a6b0760650bd34dba55d80ef3a4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 02675b8cdc8c509764b20893bde54b50bec74a50
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240357"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242143"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge-API
 
@@ -23,7 +23,7 @@ Willkommen bei der Academic Knowledge-API. Mit diesem Dienst können Sie Benutze
 
 Die MAG-Daten stammen aus dem Bing-Webindex sowie aus einer internen Wissensdatenbank von Bing. Dank der kontinuierlichen Bing-Indizierung enthält diese API immer aktuelle Informationen aus dem Web, die von Bing ermittelt und indiziert wurden. Auf der Grundlage dieses Datasets ermöglichen Academic Knowledge-APIs einen wissensbasierten, interaktiven Dialog, der die reaktive Suche nahtlos mit proaktiven Vorschlägen, umfangreichen Graphsuchergebnissen für Forschungsarbeiten sowie mit Histogrammverteilungen der Attributwerte für eine Gruppe von Dokumenten und den dazugehörigen Entitäten kombiniert.
 
-Weitere Informationen zu Microsoft Academic Graph finden Sie unter [http://aka.ms/academicgraph](http://aka.ms/academicgraph).
+Weitere Informationen zu Microsoft Academic Graph finden Sie unter [http://aka.ms/academicgraph](https://aka.ms/academicgraph).
 
 Die Academic Knowledge-API wurde von Cognitive Services Preview in Cognitive Services Labs verschoben. Die neue Homepage für das Projekt finden Sie hier: [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge). Ihr vorhandener API-Schlüssel kann noch bis zum 24. Mai 2018 verwendet werden. Danach muss ein neuer API-Schlüssel generiert werden. Die kostenpflichtige Vorschau ist nach Ablauf Ihres vorhandenen Schlüssels nicht mehr verfügbar. Sollte die kostenlose Version der API für Ihre Zwecke nicht ausreichend sein, wenden Sie sich an unser Team. 
 

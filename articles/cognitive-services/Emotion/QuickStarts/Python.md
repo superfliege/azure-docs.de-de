@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 02/05/2018
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: c7611628918cf40800d173dc9404b0948b9a68a4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: f0bcc88b60e0a9b93856aa32a10b9c0ad898ce95
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236566"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240697"
 ---
 # <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Schnellstart: Erstellen einer App zur Erkennung von Emotionen auf Gesichtern in einem Bild
 
@@ -46,7 +46,7 @@ Stellen Sie als Nächstes sicher, dass die Dienst-URL der Region entspricht, üb
 emotion_recognition_url = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize"
 ```
 
-Diese exemplarische Vorgehensweise verwendet Bilder, die auf dem Datenträger gespeichert werden. Sie können auch Bilder, die über eine öffentlich zugängliche URL verfügbar sind. Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa).
+Diese exemplarische Vorgehensweise verwendet Bilder, die auf dem Datenträger gespeichert werden. Sie können auch Bilder verwenden, die über eine öffentlich zugängliche URL verfügbar sind. Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa).
 
 Da die Bilddaten als Teil des Anforderungstexts übergeben werden, denken Sie daran, dass Sie den `Content-Type`-Header auf `application/octet-stream` festlegen müssen. Wenn Sie ein Bild über eine URL übergeben, müssen Sie den Header auf Folgendes festlegen:
 ```python

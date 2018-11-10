@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b4c885758f572851f058edb6e7851d650faed9f9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 683b77e47857e4efbe2c24425953e9a3d83177f9
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972997"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418842"
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -36,11 +36,10 @@ In diesem Tutorial lernen Sie Folgendes:
 Im folgenden Video wird die Überwachung von API Management mithilfe von Azure Monitor veranschaulicht. 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
->
->
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
++ Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
 + Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
 + Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
@@ -55,17 +54,16 @@ Von API Management werden jede Minute Metriken ausgegeben, sodass Sie einen Übe
 * Nicht autorisierte Gatewayanforderungen: Anzahl der API-Anforderungen, die HTTP-Antwortcodes einschließlich 401, 403 und 429 erhalten haben.
 * Andere Gateway-Anforderungen: Anzahl der API-Anforderungen, die HTTP-Antwortcodes erhalten haben, die keiner der oben genannten Kategorien angehören (z.B. 418).
 
+![Metrikdiagramm](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+
 So greifen Sie auf Metriken zu:
 
 1. Klicken Sie im Menü am unteren Seitenrand auf **Metriken**.
 
     ![Metriken](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. Wählen Sie im Dropdownmenü die gewünschten Metriken aus (Sie können mehrere Metriken hinzufügen).  
-    Wählen Sie in der Liste der verfügbaren Metriken beispielsweise **Gatewayanforderungen gesamt** und **Fehlerhafte Gatewayanforderungen** aus.
-3. Im Diagramm ist die Gesamtanzahl von API-Aufrufen gezeigt. Es enthält außerdem die Anzahl fehlerhafter API-Aufrufe.
-
-    ![Metrikdiagramm](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+2. Wählen Sie im Dropdownmenü die gewünschten Metriken aus. Beispiel: **Successful Gateway Requests** (Erfolgreiche Gatewayanforderungen). Sie können auch weitere Metriken zum Diagramm hinzufügen.
+3. Im Diagramm ist die Gesamtanzahl erfolgreicher API-Aufrufe gezeigt.
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Einrichten einer Warnungsregel für nicht autorisierte Anforderungen
 
@@ -102,6 +100,8 @@ Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre API Managem
 
 Sie können in Ihrem API Management-Dienst auf Aktivitätsprotokolle oder in Azure Monitor auf Protokolle all Ihrer Azure-Ressourcen zugreifen. 
 
+![Aktivitätsprotokolle](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+
 So zeigen Sie Aktivitätsprotokolle an:
 
 1. Wählen Sie Ihre APIM-Dienstinstanz aus.
@@ -111,8 +111,6 @@ So zeigen Sie Aktivitätsprotokolle an:
 
 3. Wählen Sie den gewünschten Filterungsbereich, und klicken Sie auf **Anwenden**.
 
-    ![Aktivitätsprotokolle](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
-
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
 Diagnoseprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, die zur Überwachung und Problembehandlung relevant sind. Diagnoseprotokolle unterscheiden sich von Aktivitätsprotokollen. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure-Ressourcen ausgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
@@ -120,7 +118,7 @@ Diagnoseprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, di
 So konfigurieren Sie Diagnoseprotokolle:
 
 1. Wählen Sie Ihre APIM-Dienstinstanz aus.
-2. Klicken Sie auf **Diagnoseprotokolle**.
+2. Klicken Sie auf **Diagnoseeinstellungen**.
 
     ![Diagnoseprotokolle](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 

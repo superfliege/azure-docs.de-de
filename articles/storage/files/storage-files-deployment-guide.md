@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d2e09c837597dfd15e6258cbd0100762b098eedf
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b9a98cea8ee19846afc30b322c3fdacb21f2bf44
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523484"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242453"
 ---
 # <a name="how-to-deploy-azure-files"></a>Bereitstellen von Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. In diesem Artikel erfahren Sie, wie Sie Azure Files praktisch in Ihrer Organisation bereitstellen.
@@ -30,9 +30,9 @@ In diesem Artikel wird davon ausgegangen, dass Sie die folgenden Schritte bereit
 Sobald Sie eine neue Azure-Dateifreigabe erstellt haben, können Sie vorhandene Dateien, die z.B. lokal gespeichert sind, in diese übertragen. In diesem Abschnitt erfahren Sie, wie Sie Daten mithilfe verschiedener gängiger Methoden, die im [Planungshandbuch](storage-files-planning.md#data-transfer-method) ausgeführt sind, in eine Azure-Dateifreigabe übertragen.
 
 ### <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
-Mit Azure File Sync können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
+Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
-Sie können Azure File Sync verwenden, um Daten in eine Azure-Dateifreigabe zu übertragen, auch wenn Sie diesen Synchronisierungsmechanismus nicht langfristig einsetzen möchten. Weitere Informationen zur Verwendung von Azure File Sync für die Datenübertragung in eine Azure-Dateifreigabe finden Sie unter [Planung für eine Azure File Sync-Bereitstellung](storage-sync-files-planning.md) und [Bereitstellen von Azure File Sync](storage-sync-files-deployment-guide.md).
+Sie können die Azure-Dateisynchronisierung verwenden, um Daten in eine Azure-Dateifreigabe zu übertragen, auch wenn Sie diesen Synchronisierungsmechanismus nicht langfristig einsetzen möchten. Weitere Informationen zur Verwendung der Azure-Dateisynchronisierung für die Datenübertragung in eine Azure-Dateifreigabe finden Sie unter [Planung für eine Azure-Dateisynchronisierungsbereitstellung](storage-sync-files-planning.md) und [Bereitstellen der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md).
 
 ### <a name="azure-importexport"></a>Azure Import/Export
 Mit dem Azure Import/Export-Dienst können Sie große Datenmengen auf sichere Weise in eine Azure-Dateifreigabe übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Einen ausführlichen Überblick über diesen Dienst finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Azure Storage](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
@@ -108,7 +108,7 @@ Robocopy ist ein bekanntes Kopiertool, das in Windows und Windows Server enthalt
 ### <a name="azcopy"></a>AzCopy
 AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten in und aus Azure Files sowie Azure Blob Storage entwickelt wurde, wobei durch einfache Befehle eine optimale Leistung erzielt wird. Die Verwendung von AzCopy ist ganz einfach:
 
-1. Laden Sie die [neueste Version von AzCopy für Windows](http://aka.ms/downloadazcopy) oder [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy) herunter.
+1. Laden Sie die [neueste Version von AzCopy für Windows](https://aka.ms/downloadazcopy) oder [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy) herunter.
 2. Verwenden Sie `azcopy` in der Befehlszeile, um Daten in die Azure-Dateifreigabe zu verschieben. Die Syntax für Windows lautet wie folgt: 
 
     ```

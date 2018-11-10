@@ -1,6 +1,6 @@
 
 # Resilienz mit Azure
-## [Featureseite für Resilienz mit Azure](http://azure.microsoft.com/features/resiliency)
+## [Featureseite für Resilienz mit Azure](https://azure.microsoft.com/features/resiliency)
 ## [Entwickeln robuster Anwendungen für Azure](https://docs.microsoft.com/azure/architecture/resiliency/)
 
 # Hochverfügbarkeit

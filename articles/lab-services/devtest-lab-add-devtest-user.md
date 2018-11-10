@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38573399"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243708"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -41,19 +41,19 @@ Die folgende Tabelle zeigt die Aktionen, die von Benutzern in jeder dieser Rolle
 | --- | --- | --- | --- |
 | **Lab-Aufgaben** | | | |
 | Benutzer zu einem Lab hinzufügen |Nein  |Ja |Nein  |
-| Kosteneinstellungen aktualisieren |Nein  |Ja |Ja |
+| Kosteneinstellungen aktualisieren |Nein  |Ja |JA |
 | **Grundlegende Aufgaben für virtuelle Computer** | | | |
-| Benutzerdefinierte Images hinzufügen und entfernen |Nein  |Ja |Ja |
-| Formeln hinzufügen, aktualisieren und löschen |Ja |Ja |Ja |
-| Azure Marketplace-Images in eine Positivliste aufnehmen |Nein  |Ja |Ja |
+| Benutzerdefinierte Images hinzufügen und entfernen |Nein  |Ja |JA |
+| Formeln hinzufügen, aktualisieren und löschen |JA |Ja |JA |
+| Azure Marketplace-Images in eine Positivliste aufnehmen |Nein  |Ja |JA |
 | **Aufgaben für virtuelle Computer** | | | |
-| Virtuelle Computer erstellen |Ja |Ja |Ja |
-| Virtuelle Computer starten, beenden und löschen |Nur vom Benutzer erstellte virtuelle Computer |Ja |Ja |
-| VM-Richtlinien aktualisieren |Nein  |Ja |Ja |
-| Datenträgern zu virtuellen Computern hinzufügen bzw. davon entfernen |Nur vom Benutzer erstellte virtuelle Computer |Ja |Ja |
+| Virtuelle Computer erstellen |JA |Ja |JA |
+| Virtuelle Computer starten, beenden und löschen |Nur vom Benutzer erstellte virtuelle Computer |JA |JA |
+| VM-Richtlinien aktualisieren |Nein  |Ja |JA |
+| Datenträgern zu virtuellen Computern hinzufügen bzw. davon entfernen |Nur vom Benutzer erstellte virtuelle Computer |JA |JA |
 | **Artefakt-Aufgaben** | | | |
-| Artefaktrepositorys hinzufügen und entfernen |Nein  |Ja |Ja |
-| Artefakte anwenden |Ja |Ja |Ja |
+| Artefaktrepositorys hinzufügen und entfernen |Nein  |Ja |JA |
+| Artefakte anwenden |JA |Ja |JA |
 
 > [!NOTE]
 > Wenn ein Benutzer einen virtuellen Computer erstellt, wird diesem Benutzer automatisch die **Besitzer** -Rolle des virtuellen Computers zugewiesen.
@@ -64,7 +64,7 @@ Die folgende Tabelle zeigt die Aktionen, die von Benutzern in jeder dieser Rolle
 Besitzer und Benutzer können über das Azure-Portal auf der Lab-Ebene hinzugefügt werden. Bei einem Benutzer kann es sich um einen externen Benutzer mit gültigem [Microsoft-Konto (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account) handeln.
 Die folgenden Schritte führen Sie durch den Prozess des Hinzufügens eines Besitzers oder Benutzers zu einem Lab in Azure DevTest Labs:
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 4. Wählen Sie auf dem Blatt des Labs die Option **Konfiguration und Richtlinien** aus. 
@@ -116,11 +116,11 @@ Sie können die Werte `subscriptionId`, `labResourceGroup` und `labName` aus dem
 ## <a name="add-an-owner-or-user-at-the-subscription-level"></a>Hinzufügen eines Besitzers oder Benutzers auf der Abonnementebene
 Azure-Berechtigungen werden vom übergeordneten Bereich an den untergeordneten Bereich in Azure weitergegeben. Daher sind Besitzer eines Azure-Abonnements, das Labs enthält, automatisch Besitzer dieser Labs. Sie besitzen auch die virtuellen Computer und andere Ressourcen, die von den Lab-Benutzern und dem Azure DevTest Labs-Dienst erstellt werden. 
 
-Sie können einem Lab über das entsprechende Blatt im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)zusätzliche Besitzer hinzufügen. Der Verwaltungsbereich des hinzugefügten Besitzers ist jedoch weniger umfangreich als der Bereich des Abonnementbesitzers. Beispielsweise erhalten die hinzugefügten Besitzer keinen vollständigen Zugriff auf einige der Ressourcen, die vom DevTest Labs-Dienst im Abonnement erstellt werden. 
+Sie können einem Lab über das entsprechende Blatt im [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)zusätzliche Besitzer hinzufügen. Der Verwaltungsbereich des hinzugefügten Besitzers ist jedoch weniger umfangreich als der Bereich des Abonnementbesitzers. Beispielsweise erhalten die hinzugefügten Besitzer keinen vollständigen Zugriff auf einige der Ressourcen, die vom DevTest Labs-Dienst im Abonnement erstellt werden. 
 
 Um einen Besitzer zu einem Azure-Abonnement hinzuzufügen, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 2. Wählen Sie **Alle Dienste** und dann **Abonnements** aus der Liste aus.
 3. Wählen Sie das gewünschte Abonnement aus.
 4. Wählen Sie das Symbol **Zugriff** aus. 

@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8c683e86cd78f4c4ebe7a537c469c875b8ca07fe
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159838"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228044"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Verwenden von In-Memory-OLTP zur Verbesserung der Anwendungsleistung in SQL-Datenbank
 [In-Memory-OLTP](sql-database-in-memory.md) kann verwendet werden, um die Leistung der Transaktionsverarbeitung, der Datenerfassung und der vorübergehenden Datenszenarien in Datenbanken des Tarifs [„Premium“ und „Unternehmenskritisch“](sql-database-service-tiers-vcore.md) zu verbessern, ohne den Tarif zu erhöhen. 
@@ -47,7 +47,7 @@ So generieren Sie den Bericht in SSMS
 * Klicken Sie im **Objekt-Explorer**mit der rechten Maustaste auf den Datenbankknoten.
 * Klicken Sie auf **Berichte** > **Standardberichte** > **Übersicht der Transaktionsleistungsanalyse**.
 
-Weitere Informationen finden Sie unter [Bestimmen, ob eine Tabelle oder eine gespeicherte Prozedur zu In-Memory OLTP portiert werden soll](http://msdn.microsoft.com/library/dn205133.aspx).
+Weitere Informationen finden Sie unter [Bestimmen, ob eine Tabelle oder eine gespeicherte Prozedur zu In-Memory OLTP portiert werden soll](https://msdn.microsoft.com/library/dn205133.aspx).
 
 ## <a name="step-3-create-a-comparable-test-database"></a>Schritt 3: Erstellen einer vergleichbaren Testdatenbank
 Nehmen Sie an, der Bericht zeigt, dass die Datenbank über eine Tabelle verfügt, für die eine Umwandlung in eine speicheroptimierte Tabelle von Vorteil wäre. Sie sollten diese Angabe zunächst zur Bestätigung testen.
@@ -80,9 +80,9 @@ So verwenden Sie diese Migrationsoption:
    * Der Assistent für den **Ratgeber für die Tabellenspeicheroptimierung** wird angezeigt.
 3. Klicken Sie im Assistenten auf **Migrationsüberprüfung** (oder die Schaltfläche **Weiter**), um zu überprüfen, ob die Tabelle nicht unterstützte Features enthält, die in den speicheroptimierten Tabellen nicht unterstützt werden. Weitere Informationen finden Sie unter
    
-   * Die *Prüfliste für die Speicheroptimierung* im [Advisor für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx).
-   * [Von In-Memory OLTP nicht unterstützte Transact-SQL-Konstrukte](http://msdn.microsoft.com/library/dn246937.aspx).
-   * [Migrieren zu In-Memory OLTP](http://msdn.microsoft.com/library/dn247639.aspx).
+   * Die *Prüfliste für die Speicheroptimierung* im [Advisor für die Speicheroptimierung](https://msdn.microsoft.com/library/dn284308.aspx).
+   * [Von In-Memory OLTP nicht unterstützte Transact-SQL-Konstrukte](https://msdn.microsoft.com/library/dn246937.aspx).
+   * [Migrieren zu In-Memory OLTP](https://msdn.microsoft.com/library/dn247639.aspx).
 4. Wenn die Tabelle nicht unterstützte Features enthält, kann der Ratgeber das aktuelle Schema und die Datenmigration für Sie ausführen.
 
 #### <a name="manual-t-sql"></a>Manuelles T-SQL
@@ -114,7 +114,7 @@ Für die T-SQL-WITH-Klausel einer systemeigen kompilierten gespeicherten Prozedu
 * NATIVE_COMPILATION
 * SCHEMABINDING: Bezieht sich auf Tabellen, deren Spaltendefinitionen nicht in einer Weise geändert werden dürfen, die sich auf die gespeicherte Prozedur auswirkt, sofern Sie die gespeicherte Prozedur nicht löschen.
 
-Ein systemeigenes Modul muss einen großen [ATOMIC-Block](http://msdn.microsoft.com/library/dn452281.aspx) zum Verwalten von Transaktionen verwenden. Es gibt keine Rolle für ein explizites BEGIN TRANSACTION oder ROLLBACK TRANSACTION. Wenn Ihr Code einen Verstoß gegen eine Geschäftsregel erkennt, kann er den atomischen Block mit einer [Throw](http://msdn.microsoft.com/library/ee677615.aspx) -Anweisung beenden.
+Ein systemeigenes Modul muss einen großen [ATOMIC-Block](https://msdn.microsoft.com/library/dn452281.aspx) zum Verwalten von Transaktionen verwenden. Es gibt keine Rolle für ein explizites BEGIN TRANSACTION oder ROLLBACK TRANSACTION. Wenn Ihr Code einen Verstoß gegen eine Geschäftsregel erkennt, kann er den atomischen Block mit einer [Throw](https://msdn.microsoft.com/library/ee677615.aspx) -Anweisung beenden.
 
 ### <a name="typical-create-procedure-for-natively-compiled"></a>In der Regel CREATE PROCEDURE für systemeigen kompilierte gespeicherte Prozeduren verwenden
 In der Regel entspricht der T-SQL-Code zum Erstellen einer systemeigen kompilierten gespeicherten Prozedur folgender Vorlage:
@@ -145,7 +145,7 @@ Die Migrationsschritte sind wie folgt:
 2. Schreiben Sie ihren Header entsprechend der vorherigen Vorlage neu.
 3. Prüfen Sie, ob der T-SQL-Code der gespeicherten Prozedur Features verwendet, die für systemeigen kompilierte gespeicherte Prozeduren nicht unterstützt werden. Implementieren Sie ggf. Problemumgehungen.
    
-   * Weitere Informationen finden Sie unter [Migrationsprobleme bei systemeigen kompilierten gespeicherten Prozeduren](http://msdn.microsoft.com/library/dn296678.aspx).
+   * Weitere Informationen finden Sie unter [Migrationsprobleme bei systemeigen kompilierten gespeicherten Prozeduren](https://msdn.microsoft.com/library/dn296678.aspx).
 4. Benennen Sie die alte gespeicherte Prozedur mithilfe von SP_RENAME um. Oder löschen Sie sie einfach (DROP).
 5. Führen Sie das bearbeitete CREATE PROCEDURE T-SQL-Skript aus.
 
@@ -168,7 +168,7 @@ Sie sollten die Leistungseffekte Ihrer In-Memory-Implementierungen in der Produk
 * [Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten](sql-database-monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>Verwandte Links
-* [In-Memory OLTP (In-Memory Optimization)](http://msdn.microsoft.com/library/dn133186.aspx)
-* [Einführung zu systemeigen kompilierten gespeicherten Prozeduren](http://msdn.microsoft.com/library/dn133184.aspx)
-* [Advisor für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx)
+* [In-Memory OLTP (In-Memory Optimization)](https://msdn.microsoft.com/library/dn133186.aspx)
+* [Einführung zu systemeigen kompilierten gespeicherten Prozeduren](https://msdn.microsoft.com/library/dn133184.aspx)
+* [Advisor für die Speicheroptimierung](https://msdn.microsoft.com/library/dn284308.aspx)
 

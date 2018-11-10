@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: wesmc
-ms.openlocfilehash: b0f1ba7f0799fb9f8f58370a39758416eab43dc7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c2dffc178a017d8b16ea7a36407d8bbf62c6d642
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195803"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242142"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Tutorial: Erstellen einer cachefremden Bestenliste in ASP.NET
 
@@ -150,7 +150,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
     }
     ```
 
-1. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **web.config**, um sie zu öffnen.
+1. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Web.config**, um sie zu öffnen.
 
     ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
@@ -709,7 +709,7 @@ In diesem Schritt des Tutorials veröffentlichen Sie die Anwendungsaktualisierun
 
     In der folgenden Tabelle werden die einzelnen Aktionslinks aus der Beispielanwendung beschrieben:
 
-    | anzuzeigen. | BESCHREIBUNG |
+    | Aktion | BESCHREIBUNG |
     | --- | --- |
     | Create New |Erstellt ein neues Team. |
     | Play Season |Spielt eine Spielesaison durch, aktualisiert die Teamstatistik und entfernt veraltete Teamdaten aus dem Cache. |
@@ -728,7 +728,7 @@ Klicken Sie auf einige der Aktionen, und experimentieren Sie mit dem Abrufen der
 Wenn Sie die Beispielanwendung des Tutorials nicht mehr benötigen, können Sie die Azure-Ressourcen löschen, um Kosten und Ressourcen zu sparen. Alle Ihre Ressourcen müssen sich in der gleichen Ressourcengruppe befinden, sodass Sie sie durch Löschen der Ressourcengruppe alle in einem Vorgang löschen können. In den Anweisungen zu diesem Thema wurde eine Ressourcengruppe namens *TestResources* verwendet.
 
 > [!IMPORTANT]
-> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also unwiederbringlich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen.
+> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen.
 >
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: juliako
-ms.openlocfilehash: 1d1506e26beec3cc48a904ddeb9bbb4e7656a08e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ae0ff36c7e83120a9571e0f87788c25193027616
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783749"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240136"
 ---
 # <a name="deliver-content-to-customers"></a>Übermitteln von Inhalten an Kunden
 Bei der Übermittlung Ihrer Streaming- oder Video-on-Demand-Inhalte an Kunden möchten Sie qualitativ hochwertige Videos unter verschiedenen Netzwerkbedingungen an unterschiedliche Geräte senden.
@@ -70,9 +70,9 @@ Locator verfügen über ein Ablaufdatum. Im Azure-Portal wird ein Ablaufdatum vo
 > 
 > 
 
-Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)- oder [.NET](http://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
+Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)- oder [.NET](https://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
 
-Locator sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzipiert. Mit den Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM) können Sie einzelnen Benutzern verschiedene Zugriffsrechte erteilen. Weitere Informationen finden Sie unter [Sichern von Medien](http://msdn.microsoft.com/library/azure/dn282272.aspx).
+Locator sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzipiert. Mit den Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM) können Sie einzelnen Benutzern verschiedene Zugriffsrechte erteilen. Weitere Informationen finden Sie unter [Sichern von Medien](https://msdn.microsoft.com/library/azure/dn282272.aspx).
 
 Beim Erstellen eines Locators tritt möglicherweise eine Verzögerung von 30 Sekunden auf, die durch die erforderlichen Speicher- und Weitergabeprozesse in Azure Storage verursacht wird.
 

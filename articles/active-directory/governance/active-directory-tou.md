@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 10/19/2018
+ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 87b08ce138cde5cc70c5a80cc414c68dd7aea743
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944142"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249800"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Nutzungsbedingungen.
@@ -46,6 +46,7 @@ Die Azure AD-Nutzungsbedingungen ermöglichen Folgendes:
 - Leisten eines Beitrags zur Erfüllung von Datenschutzbestimmungen
 - Auflisten, wer den Nutzungsbedingungen bereits (oder noch nicht) zugestimmt hat
 - Anzeigen eines Protokolls zur Aktivität der Nutzungsbedingungen in Bezug auf Compliance und Überwachung
+- Erstellen und Verwalten von Nutzungsbedingungen für die Verwendung von [Microsoft Graph-APIs](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (derzeit in der Vorschau)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Nutzungsbedingungen verwenden und konfigurieren zu können, benötigen Sie Folgendes:

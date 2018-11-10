@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 31f61a1d6dee19ada60a1024a235f6329d7d5ca0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377813"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242159"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
@@ -253,7 +253,7 @@ Ja. Für andere Datenquellen als SQL Server ist eine logische Migration erforder
 
 ### <a name="what-slas-are-provided-for-a-hyperscale-database"></a>Welche SLAs werden für eine Hyperscale-Datenbank bereitgestellt?
 
-In der Regel wird eine SLA nicht in der öffentlichen Vorschau bereitgestellt. Hyperscale bietet jedoch die gleiche Ebene von Hochverfügbarkeit mit aktuellen SQL-Datenbank-Angeboten. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](http://azure.microsoft.com/support/legal/sla/).
+In der Regel wird eine SLA nicht in der öffentlichen Vorschau bereitgestellt. Hyperscale bietet jedoch die gleiche Ebene von Hochverfügbarkeit mit aktuellen SQL-Datenbank-Angeboten. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Werden Datenbanksicherungen vom Azure SQL-Datenbank-Dienst verwaltet?
 

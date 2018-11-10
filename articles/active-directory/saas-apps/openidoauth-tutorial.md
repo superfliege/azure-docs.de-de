@@ -1,5 +1,5 @@
 ---
-title: Schritte zum Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog | Microsoft-Dokumentation
+title: Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog | Microsoft-Dokumentation
 description: Schritte zum Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog
 services: active-directory
 documentationCenter: na
@@ -14,95 +14,124 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 69e9d66458409bbc744416a58ceb508349418a76
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 420ec288b81e0bb12ae9f61a5eaf03880205cc55
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019552"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247979"
 ---
-# <a name="steps-to-configure-an-openidoauth-application-from-azure-ad-app-gallery"></a>Schritte zum Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog
+# <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog
 
-## <a name="process-of-open-id-application-addition-from-gallery"></a>Hinzufügen einer OpenID-Anwendung aus dem Katalog
+## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>Hinzufügen einer OpenID-Anwendung aus dem Katalog
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Wählen Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) die Option **Azure Active Directory** aus. 
 
-    ![Schaltfläche „Azure Active Directory“](./media/openidoauth-tutorial/tutorial_general_01.png)
+    ![Azure Active Directory-Schaltfläche](./media/openidoauth-tutorial/tutorial_general_01.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](./media/openidoauth-tutorial/tutorial_general_02.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Wählen Sie oben im Dialogfeld **Neue Anwendung** aus.
 
     ![Schaltfläche „Neue Anwendung“](./media/openidoauth-tutorial/tutorial_general_03.png)
 
-4. Geben Sie im Suchfeld den **Anwendungsnamen** ein, wählen Sie im Ergebnisbereich die **gewünschte Anwendung** aus, und melden Sie sich bei der Anwendung an.
+4. Geben Sie in das Suchfeld den Namen der Anwendung ein. Wählen Sie im Ergebnisbereich die gewünschte Anwendung aus, und melden Sie sich bei der Anwendung an.
 
     ![Hinzufügen der Anwendung](./media/openidoauth-tutorial/addfromgallery.png)
 
     > [!NOTE]
-    > Für OpenID Connect- und OAuth-Anwendungen ist die Schaltfläche „Hinzufügen“ standardmäßig deaktiviert. Hier muss der Mandantenadministrator auf die Schaltfläche **für die Registrierung** klicken und die Anwendung zulassen. So wird die Anwendung dem Kundenmandanten hinzugefügt. Ein explizites Hinzufügen und Konfigurieren ist nicht erforderlich.
+    > Für OpenID Connect- und OAuth-Apps ist die Schaltfläche **Hinzufügen** standardmäßig deaktiviert. Hier muss der Mandantenadministrator die Schaltfläche zum Registrieren auswählen und die Anwendung zulassen. Die Anwendung wird dann dem Kundenmandanten hinzugefügt. Dort können Sie die Konfigurationen vornehmen. Die Anwendung muss nicht explizit hinzugefügt werden.
 
     ![Schaltfläche „Hinzufügen“](./media/openidoauth-tutorial/addbutton.png)
 
-5. Wenn Sie auf den Link zur Registrierung klicken, werden Sie auf die Azure AD-Seite mit den Anmeldeinformationen umgeleitet.
+5. Wenn Sie den Link zur Registrierung auswählen, werden Sie auf die Seite von Azure Active Directory (Azure AD) zum Eingeben der Anmeldeinformationen weitergeleitet.
 
-6. Nach der erfolgreicher Authentifizierung muss der Benutzer auf der Zustimmungsseite seine Erlaubnis erteilen. Danach wird die Startseite der Anwendung angezeigt.
+6. Geben Sie nach der erfolgreichen Authentifizierung auf der Zustimmungsseite Ihre Einwilligung. Daraufhin wird die Startseite der Anwendung angezeigt.
 
     > [!NOTE]
-    > Kunden dürfen nur eine Instanz der Anwendung hinzufügen. Wenn Sie bereits eine Instanz hinzugefügt haben und danach noch einmal versuchen, Ihre Zustimmung zu erteilen, wird die Anwendung dem Mandanten nicht erneut hinzugefügt. Das heißt, Sie können im Mandanten nur eine Anwendungsinstanz verwenden.
+    > Sie können nur eine Instanz der Anwendung hinzufügen. Wenn Sie bereits eine Instanz hinzugefügt haben und danach noch einmal versuchen, Ihre Einwilligung zu erteilen, wird die Anwendung dem Mandanten nicht erneut hinzugefügt. Das heißt, Sie können im Mandanten nur eine App-Instanz verwenden.
 
 ## <a name="authentication-flow-using-openid-connect"></a>Authentifizierungsfluss bei OpenID Connect
 
-Der grundlegende Anmeldevorgang umfasst die folgenden Schritte – sie werden unten jeweils im Detail beschrieben.
+Der grundlegende Anmeldevorgang umfasst die folgenden Schritte:
 
 ![Authentifizierungsfluss bei OpenID Connect](./media/openidoauth-tutorial/authenticationflow.png)
 
-* **Mehrinstanzenfähige Anwendung**: Eine mehrinstanzenfähige Anwendung ist für die Verwendung in mehreren Organisationen vorgesehen. Hierbei handelt es sich in der Regel um SaaS-Anwendungen (Software as a Service), die von einem unabhängigen Softwarehersteller (Independent Software Vendor, ISV) geschrieben wurden. Mehrinstanzenfähige Anwendungen müssen in jedem Verzeichnis bereitgestellt werden, in dem sie verwendet werden. Für die Registrierung ist also jeweils die Zustimmung des Benutzers oder Administrators erforderlich. Dieser Zustimmungsprozess beginnt, wenn eine Anwendung im Verzeichnis registriert wurde und Zugriff auf die Graph-API (oder ggf. eine andere Web-API) erhält. Wenn sich ein Benutzer oder Administrator aus einer anderen Organisation für die Anwendung registriert, erscheint ein Dialogfeld mit den erforderlichen Berechtigungen für die Anwendung. Stimmt der Benutzer oder Administrator der Anwendung zu, erhält die Anwendung Zugriff auf die angegebenen Daten und wird schließlich im Verzeichnis des Benutzers oder Administrators registriert.
+### <a name="multitenant-application"></a>Mehrinstanzenfähige Anwendungen 
+Eine mehrinstanzenfähige Anwendung ist für die Verwendung in mehreren Organisationen vorgesehen. Hierbei handelt es sich in der Regel um SaaS-Anwendungen (Software as a Service), die von einem unabhängigen Softwarehersteller (Independent Software Vendor, ISV) geschrieben wurden. 
 
-    > [!NOTE]
-    > Wenn Sie Ihre Anwendung Benutzern in mehreren Verzeichnissen bereitstellen, müssen Sie ermitteln, in welchem Mandaten sie sich befinden. Eine Einzelinstanzanwendung muss nur im eigenen Verzeichnis nach einem Benutzer suchen. Eine mehrinstanzenfähige Anwendung muss dagegen einen bestimmten Benutzer in sämtlichen Verzeichnissen in Azure AD identifizieren. Für diese Aufgabe bietet Azure AD anstelle eines mandantenspezifischen Endpunkts einen gemeinsamen Authentifizierungsendpunkt, an den jede mehrinstanzenfähige Anwendung Anmeldeanforderungen richten kann. Dieser Endpunkt lautet für alle Verzeichnisse in Azure AD [https://login.microsoftonline.com/common](https://login.microsoftonline.com/common). Im Gegensatz dazu sieht ein mandantenspezifischer Endpunkt beispielsweise wie folgt aus: [https://login.microsoftonline.com/contoso.onmicrosoft.com](https://login.microsoftonline.com/contoso.onmicrosoft.com). Der gemeinsame Endpunkt muss insbesondere bei der Anwendungsentwicklung berücksichtigt werden, da Sie die Logik implementieren müssen, die die Verarbeitung mehrerer Mandanten bei der Anmeldung, Abmeldung und Tokenüberprüfung ermöglicht.
+Mehrinstanzenfähige Anwendungen müssen in jedem Verzeichnis bereitgestellt werden, in dem sie verwendet werden. Für die Registrierung benötigen sie die Einwilligung des Benutzers oder Administrators. Dieser Zustimmungsprozess beginnt, wenn eine Anwendung im Verzeichnis registriert wurde und Zugriff auf die Graph-API (oder ggf. eine andere Web-API) erhält. Wenn sich ein Benutzer oder Administrator aus einer anderen Organisation für die Verwendung der Anwendung registriert, erscheint ein Dialogfeld mit den für die Anwendung erforderlichen Berechtigungen. 
 
-Das Azure AD-Team empfiehlt standardmäßig mehrinstanzenfähige Anwendungen, da auf diese problemlos über verschiedene Organisationen zugegriffen werden kann und sie nach der Zustimmung einfach zu bedienen sind.
+Der Benutzer bzw. Administrator kann dann seine Einwilligung für die Anwendung erteilen. Das bedeutet konkret, dass er der Anwendung Zugriff auf die angegebenen Daten gewährt und die Anwendung schließlich im Verzeichnis registriert.
 
-## <a name="what-is-consent-framework"></a>Was ist ein Zustimmungsframework?
+> [!NOTE]
+> Wenn Sie Ihre Anwendung Benutzern in mehreren Verzeichnissen bereitstellen, müssen Sie ermitteln, in welchem Mandaten sie sich befinden. Eine Anwendung mit einem einzelnen Mandanten muss nur in ihrem eigenen Verzeichnis nach einem Benutzer suchen. Eine mehrinstanzenfähige Anwendung muss einen bestimmten Benutzer in allen Verzeichnissen in Azure AD identifizieren.
+> 
+> Für diese Aufgabe bietet Azure AD anstelle eines mandantenspezifischen Endpunkts einen allgemeinen Authentifizierungsendpunkt, an den jede mehrinstanzenfähige Anwendung Anmeldeanforderungen richten kann. Dieser Endpunkt lautet [https://login.microsoftonline.com/common](https://login.microsoftonline.com/common) für alle Verzeichnisse in Azure AD. Ein mandantenspezifischer Endpunkt wäre beispielsweise [https://login.microsoftonline.com/contoso.onmicrosoft.com](https://login.microsoftonline.com/contoso.onmicrosoft.com). 
+>
+> Der allgemeine Endpunkt ist wichtig für die Entwicklung Ihrer Anwendung. Sie benötigen die notwendige Logik, um mehrere Mandanten bei der Anmelde-, Abmelde- und Tokenüberprüfung zu verwalten.
 
-Das Azure AD-Zustimmungs-Framework vereinfacht die Entwicklung von mehrinstanzenfähigen Webanwendungen und nativen Clientanwendungen. Diese Anwendungen ermöglichen die Anmeldung mit Benutzerkonten über einen Azure AD-Mandanten, der sich von dem Mandanten unterscheidet, unter dem die Anwendung registriert ist. Außerdem kann der Zugriff auf Web-APIs, z.B. die Microsoft Graph-API (zum Zugreifen auf Azure Active Directory, Intune und Office 365-Dienste), und andere APIs von Microsoft-Diensten zusätzlich zu Ihren eigenen Web-APIs erforderlich sein. Das Framework basiert darauf, dass Benutzer oder Administratoren ihre Zustimmung zur Registrierung einer Anwendung in ihrem Verzeichnis erteilen. Diese Zustimmung kann auch den Zugriff auf Verzeichnisdaten umfassen. Nach der Zustimmungserteilung kann die Clientanwendung die Microsoft Graph-API im Namen des Benutzers aufrufen und die Informationen nach Bedarf verwenden.
+Standardmäßig unterstützt Azure AD mehrinstanzenfähige Anwendungen. Sie sind organisationsübergreifend leicht zugänglich und einfach zu bedienen, nachdem die Einwilligung erteilt wurde.
 
-Die [Microsoft Graph-API](https://graph.microsoft.io/) ermöglicht den Zugriff auf Daten in Office 365 (z.B. Kalender und Nachrichten aus Exchange, Websites und Listen aus SharePoint, Dokumente aus OneDrive, OneNote-Notizbücher, Aufgaben aus dem Planer, Arbeitsmappen aus Excel usw.) sowie auf Benutzer und Gruppen von Azure AD und andere Datenobjekte aus weiteren Microsoft Cloud Services.
+## <a name="consent-framework"></a>Zustimmungsframework
 
-Die folgenden Schritte zeigen, wie das Zustimmungs-Framework in der Benutzeroberfläche für den Anwendungsentwickler und für den Benutzer umgesetzt wird.
+Sie können das Zustimmungsframework von Azure AD verwenden, um mehrinstanzenfähige Web- und native Clientanwendungen zu entwickeln. Diese Anwendungen ermöglichen die Anmeldung mit Benutzerkonten über einen Azure AD-Mandanten, der sich von dem Mandanten unterscheidet, unter dem die Anwendung registriert ist. Möglicherweise benötigen sie auch Zugriff auf Web-APIs wie:
+- Die Microsoft Graph-API für den Zugriff auf Azure AD, Intune und Office 365-Dienste 
+- APIs anderer Microsoft-Dienste
+- Ihre eigenen Web-APIs 
+
+Das Framework basiert darauf, dass Benutzer oder Administratoren ihre Einwilligung zur Registrierung einer Anwendung in ihrem Verzeichnis erteilen. Die Registrierung kann den Zugriff auf Verzeichnisdaten umfassen. Nach dem Einwilligen kann die Clientanwendung die Microsoft Graph-API im Namen des Benutzers aufrufen und die Informationen nach Bedarf verwenden.
+
+Die [Microsoft Graph-API](https://graph.microsoft.io/) ermöglicht den Zugriff auf Daten in Office 365 wie:
+
+- Kalender und Nachrichten in Exchange
+- Websites und Listen in SharePoint
+- Dokumente in OneDrive
+- Notizbücher in OneNote
+- Aufgaben in Planner
+- Arbeitsmappen in Excel
+
+Die Graph-API bietet auch Zugriff auf Benutzer und Gruppen in Azure AD und andere Datenobjekte in weiteren Microsoft Cloud Services.
+
+Die folgenden Schritte beschreiben den Einwilligungsprozess für Anwendungsentwickler und Benutzer:
 
 1. Angenommen, Sie verfügen über eine Webclientanwendung, die für den Zugriff auf eine Ressource oder API bestimmte Berechtigungen anfordern muss. Das Azure-Portal wird verwendet, um zur Konfigurationszeit Berechtigungsanforderungen zu deklarieren. Wie andere Konfigurationseinstellungen auch, werden diese Teil der Azure AD-Registrierung der Anwendung:
 
     ![Graph-API](./media/openidoauth-tutorial/graphapi.png)
 
-2. Angenommen, die Berechtigungen für Ihre Anwendung wurden aktualisiert, die Anwendung wird ausgeführt, und ein Benutzer möchte die Anwendung zum ersten Mal verwenden. Zuerst muss die Anwendung einen Autorisierungscode vom Azure AD-Endpunkt „/authorize“ anfordern. Der Autorisierungscode kann dann genutzt werden, um ein neues Zugriffs- und Aktualisierungstoken zu beschaffen.
+2. Beachten Sie, dass die Berechtigungen Ihrer Anwendung aktualisiert wurden. Die Anwendung wird ausgeführt, und ein Benutzer ist im Begriff, sie zum ersten Mal zu verwenden. Zuerst muss die Anwendung einen Autorisierungscode vom Azure AD-/Authorisierungsendpunkt erhalten. Der Autorisierungscode kann dann genutzt werden, um ein neues Zugriffs- und Aktualisierungstoken zu beschaffen.
 
-3. Wenn der Benutzer noch nicht authentifiziert ist, wird er vom Azure AD-Endpunkt „/authorize“ zur Anmeldung aufgefordert.
+3. Wenn der Benutzer noch nicht authentifiziert ist, wird er vom Azure AD-/Authorisierungsendpunkt zum Anmelden aufgefordert.
 
     ![Authentifizierung](./media/openidoauth-tutorial/authentication.png)
 
-4. Nachdem der Benutzer sich angemeldet hat, ermittelt Azure AD, ob für den Benutzer eine Seite für die Zustimmungserteilung angezeigt werden muss. Das Ergebnis dieser Ermittlung ist davon abhängig, ob der Benutzer (oder der Administrator seiner Organisation) die Anwendungszustimmung bereits erteilt hat. Wenn die Zustimmung noch nicht erteilt wurde, fordert Azure AD den Benutzer zur Zustimmung auf und zeigt an, welche Berechtigungen für die Funktionalität benötigt werden. Der Berechtigungssatz, der im Dialogfeld für die Zustimmung angezeigt wird, ist identisch mit der Auswahl im Azure-Portal unter „Delegierte Berechtigungen“.
+4. Nachdem der Benutzer sich angemeldet hat, ermittelt Azure AD, ob ihm eine Seite zum Einwilligen angezeigt wird. Das Ergebnis dieser Ermittlung ist davon abhängig, ob der Benutzer (oder der Administrator seiner Organisation) die Anwendungszustimmung bereits erteilt hat.
+
+   Wenn die Einwilligung nicht erteilt wurde, fordert Azure AD den Benutzer dazu auf und zeigt an, welche Berechtigungen für die Funktionalität benötigt werden. Die Berechtigungen, die im Dialogfeld für die Einwilligung angezeigt werden, entsprechen den ausgewählten delegierten Berechtigungen im Azure-Portal.
 
     ![Zustimmungsseite](./media/openidoauth-tutorial/consentpage.png)
 
-Einigen Berechtigungen kann ein regulärer Benutzer zustimmen, während andere die Zustimmung eines Mandantenadministrators erfordern.
+Ein normaler Benutzer kann einigen Berechtigungen zustimmen. Andere Berechtigungen bedürfen der Einwilligung eines Mandantenadministrators.
 
-## <a name="whats-the-difference-between-admin-consent-and-user-consent"></a>Was ist der Unterschied zwischen einer Zustimmung durch den Administrator und einer Zustimmung durch den Benutzer?
+## <a name="difference-between-admin-consent-and-user-consent"></a>Unterschied: Administratoreinwilligung vs. Benutzereinwilligung
 
-Als Administrator können Sie auch für alle Benutzer in Ihrem Mandanten den delegierten Berechtigungen einer Anwendung zustimmen. Durch die Administratorzustimmung wird verhindert, dass das Zustimmungsdialogfeld für jeden Benutzer im Mandanten angezeigt wird. Dies kann im Azure-Portal von Benutzern durchgeführt werden, die über die Administratorrolle verfügen. Klicken Sie auf der Seite „Einstellungen“ für Ihre Anwendung auf „Erforderliche Berechtigungen“ und dann auf die Schaltfläche „Berechtigungen erteilen“.
+Als Administrator können Sie auch für alle Benutzer in Ihrem Mandanten den delegierten Berechtigungen einer Anwendung zustimmen. Die Administratoreinwilligung verhindert, dass das Dialogfeld für die Einwilligung jedem Benutzer im Mandanten angezeigt wird. Benutzer mit der Administratorrolle können im Azure-Portal ihre Einwilligung erteilen. Wählen Sie auf der Seite **Einstellungen** für Ihre Anwendung **Erforderliche Berechtigungen** > **Berechtigungen erteilen** aus.
 
-![Berechtigung erteilen](./media/openidoauth-tutorial/grantpermission.png)
+![Schaltfläche „Berechtigungen erteilen“](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> Das explizite Gewähren der Zustimmung über die Schaltfläche „Berechtigungen erteilen“ ist derzeit für Single-Page-Webanwendungen (SPA) erforderlich, die „ADAL.js“ nutzen. Andernfalls tritt für die Anwendung ein Fehler auf, wenn das Zugriffstoken angefordert wird.
+> Das explizite Einwilligen über die Schaltfläche **Berechtigungen erteilen** ist nun für Single-Page-Webanwendungen (SPAs) erforderlich, die „ADAL.js“ nutzen. Andernfalls tritt für die Anwendung ein Fehler auf, wenn das Zugriffstoken angefordert wird.
 
-Nur für die App geltende Berechtigungen erfordern immer die Zustimmung eines Mandantenadministrators. Wenn die Anwendung eine nur für die App geltende Berechtigung anfordert und ein Benutzer versucht, sich bei der Anwendung anzumelden, wird eine Fehlermeldung angezeigt, die besagt, dass der Benutzer nicht zustimmen kann.
+Nur für die App geltende Berechtigungen erfordern immer die Zustimmung eines Mandantenadministrators. Wenn die Anwendung eine nur für die App geltende Berechtigung anfordert und ein Benutzer versucht, sich bei der Anwendung anzumelden, wird eine Fehlermeldung angezeigt. Die Meldung besagt, dass der Benutzer nicht einwilligen kann.
 
-Wenn Ihre Anwendung Berechtigungen nutzt, die die Zustimmung des Administrators erfordern, müssen Sie z.B. eine Schaltfläche oder einen Link implementieren, damit der Administrator die Aktion initiieren kann. Die Anforderung, die die Anwendung für diese Aktion sendet, ist die reguläre Autorisierungsanforderung für OAuth2/OpenID Connect, die zusätzlich den Parameter der Abfragezeichenfolge „prompt=admin_consent“ enthält. Nachdem der Administrator zugestimmt hat und der Dienstprinzipal im Mandanten des Kunden erstellt wurde, ist für nachfolgende Anmeldeanforderungen der Parameter „prompt=admin_consent“ nicht mehr erforderlich. Da der Administrator entschieden hat, dass die angeforderten Berechtigungen zulässig sind, werden von diesem Zeitpunkt an keine anderen Benutzer im Mandanten zur Zustimmung aufgefordert. Ein Mandantenadministrator kann die Funktion deaktivieren, dass reguläre Benutzer Anwendungen zustimmen. Wenn diese Funktion deaktiviert ist, ist die Zustimmung des Administrators immer erforderlich, damit die Anwendung im Mandanten verwendet werden kann. Wenn Sie Ihre Anwendung mit deaktivierter Endbenutzerzustimmung testen möchten, können Sie die Konfiguration im [Azure-Portal](https://portal.azure.com/) im Abschnitt [Benutzereinstellungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) unter **Unternehmensanwendungen** ändern.
+Wenn Ihre Anwendung Berechtigungen nutzt, die die Einwilligung des Administrators erfordern, müssen Sie z.B. eine Schaltfläche oder einen Link implementieren, damit der Administrator die Aktion starten kann. Die Anforderung, die Ihre Anwendung für diese Aktion sendet, ist die reguläre OAuth2/OpenID Connect-Autorisierungsanforderung. Diese Anforderung enthält den Abfragezeichenfolgen-Parameter *prompt=admin_consent*. 
 
-Der Parameter „prompt=admin_consent“ kann auch von Anwendungen verwendet werden, die Berechtigungen anfordern, die keine Administratorzustimmung erfordern. Ein Beispiel für einen Anwendungsfall lautet wie folgt: Für die Anwendung ist ein Vorgang erforderlich, bei dem sich der Administrator des Mandanten einmal registriert, und danach werden keine anderen Benutzer mehr zur Zustimmung aufgefordert.
+Nachdem der Administrator seine Einwilligung erteilt hat und der Dienstprinzipal im Kundenmandanten erstellt wurde, ist für nachfolgende Anmeldeanforderungen der Parameter *prompt=admin_consent* nicht mehr erforderlich. Da der Administrator festgelegt hat, dass die angeforderten Berechtigungen zulässig sind, werden ab diesem Zeitpunkt keine weiteren Benutzer im Mandanten zum Einwilligen aufgefordert.
 
-Wenn für eine Anwendung die Zustimmung des Administrators erforderlich ist und sich ein Administrator anmeldet, ohne dass der Parameter „prompt=admin_consent“ gesendet wird, gilt die erfolgreiche Zustimmung des Administrators nur für das jeweilige Benutzerkonto. Reguläre Benutzer können sich weiterhin nicht anmelden und der Anwendung nicht zustimmen. Diese Funktion ist sinnvoll, wenn Sie dem Mandantenadministrator die Möglichkeit geben möchten, Ihre Anwendung zu untersuchen, bevor Sie anderen Benutzern Zugriff gewähren.
+Ein Mandantenadministrator kann die Funktion deaktivieren, dass reguläre Benutzer Anwendungen zustimmen. Wenn diese Funktion deaktiviert ist, ist die Zustimmung des Administrators immer erforderlich, damit die Anwendung im Mandanten verwendet werden kann. Wenn Sie Ihre Anwendung mit deaktivierter Endbenutzereinwilligung testen möchten, können Sie die Konfiguration im [Azure-Portal](https://portal.azure.com/) ändern. Navigieren Sie dazu zum Abschnitt [Benutzereinstellungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) und dann zu **Unternehmensanwendungen**.
+
+Der Parameter *prompt=admin_consent* kann auch von Anwendungen verwendet werden, die Berechtigungen anfordern, die keine Administratoreinwilligung erfordern. Ein Beispiel ist eine Anwendung, die erfordert, dass sich der Administrator des Mandanten einmal „registriert“ und danach keine anderen Benutzer zur Einwilligung aufgefordert werden.
+
+Angenommen, eine Anwendung erfordert die Einwilligung des Administrators und ein Administrator meldet sich an, ohne dass der Parameter *prompt=admin_conent* gesendet wird. Wenn der Administrator der Anwendung erfolgreich seine Einwilligung erteilt, gilt das nur für sein Benutzerkonto. Normale Benutzer können sich weiterhin nicht anmelden und nicht ihre Einwilligung für die Anwendung geben. Diese Funktion ist sinnvoll, wenn Sie dem Mandantenadministrator die Möglichkeit geben möchten, Ihre Anwendung zu untersuchen, bevor Sie anderen Benutzern Zugriff gewähren.

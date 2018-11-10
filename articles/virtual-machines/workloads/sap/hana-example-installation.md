@@ -1,6 +1,6 @@
 ---
 title: Installieren von HANA unter SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
-description: Installieren von HANA unter SAP HANA in Azure (große Instanzen)
+description: Hier erfahren Sie, wie Sie HANA unter SAP HANA in Azure (große Instanzen) installieren.
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -14,122 +14,124 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 76a7ce99799b85d81aa6e127ebe1e57e2df3e59a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f4629894933507bda7359fb034c4079d38100029
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44167609"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231405"
 ---
-# <a name="example-of-an-sap-hana-installation-on-hana-large-instances"></a>Beispiel für eine SAP HANA-Installation für HANA (große Instanzen)
+# <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>Installieren von HANA unter SAP HANA in Azure (große Instanzen)
 
-In diesem Abschnitt wird veranschaulicht, wie Sie SAP HANA auf einer Einheit von HANA (große Instanzen) installieren. Wir verfügen über den folgenden Anfangszustand:
+Um HANA unter SAP HANA in Azure (große Instanzen) zu installieren, müssen Sie zunächst folgende Aktionen ausführen:
+- Sie liefern alle Daten an Microsoft, die auf einer großen SAP HANA-Instanz bereitgestellt werden sollen.
+- Sie erhalten die große SAP HANA-Instanz von Microsoft.
+- Sie erstellen ein virtuelles Azure-Netzwerk, das mit Ihrem lokalen Netzwerk verbunden ist.
+- Sie stellen die ExpressRoute-Verbindung für HANA (große Instanzen) mit demselben virtuellen Azure-Netzwerk her.
+- Sie installieren eine Azure-VM, die Sie als Jumpbox für HANA (große Instanzen) verwenden.
+- Sie stellen sicher, dass Sie eine Verbindung von der Jumpbox mit der HANA-Einheit (große Instanzen) und umgekehrt herstellen können.
+- Sie überprüfen, ob alle erforderlichen Pakete und Patches installiert sind.
+- Sie lesen die SAP-Hinweise und die Dokumentation zur HANA-Installation für das von Ihnen verwendete Betriebssystem. Stellen Sie sicher, dass das ausgewählte HANA-Release für Ihre Betriebssystemversion unterstützt wird.
 
-- Sie haben Microsoft alle Daten geliefert, die auf einer Einheit von SAP HANA (große Instanzen) bereitgestellt werden sollen.
-- Sie haben von Microsoft die Einheit von SAP HANA (große Instanzen) erhalten.
-- Sie haben ein Azure VNet erstellt, das mit Ihrem lokalen Netzwerk verbunden ist.
-- Sie haben die ExpressRoute-Verbindung für HANA (große Instanzen) mit demselben Azure VNet hergestellt.
-- Sie haben eine Azure-VM installiert, die Sie als Jumpbox für HANA (große Instanzen) verwenden.
-- Sie haben sichergestellt, dass Sie eine Verbindung von der Jumpbox zur Einheit von HANA (große Instanzen) und umgekehrt herstellen können.
-- Sie haben überprüft, ob alle erforderlichen Pakete und Patches installiert sind.
-- Sie haben die SAP-Hinweise und die Dokumentation zur HANA-Installation auf dem von Ihnen verwendeten Betriebssystem gelesen und sich vergewissert, dass das gewünschte HANA-Release für die Betriebssystemversion unterstützt wird.
+Im nächsten Abschnitt finden Sie ein Beispiel für das Herunterladen der HANA-Installationspakete auf die VM, die als Jumpbox fungiert. In diesem Fall ist das Betriebssystem Windows.
 
-In den nächsten Sequenzen wird das Herunterladen der HANA-Installationspakete auf die Jumpbox-VM (hier unter einem Windows-Betriebssystem), das Kopieren der Pakete auf die Einheit von HANA (große Instanzen) und die Setup-Sequenz veranschaulicht.
+## <a name="download-the-sap-hana-installation-bits"></a>Herunterladen der SAP HANA-Installationsdaten
+Die HANA-Einheiten (große Instanzen) sind nicht direkt mit dem Internet verbunden. Sie können die Installationspakete nicht direkt von SAP auf die HANA-VM (große Instanzen) herunterladen. Stattdessen laden Sie die Pakete auf die Jumpbox-VM herunter.
 
-## <a name="download-of-the-sap-hana-installation-bits"></a>Herunterladen der Daten für die SAP HANA-Installation
-Da für die Einheiten von HANA (große Instanzen) keine direkte Verbindung mit dem Internet besteht, können Sie die Installationspakete nicht direkt von SAP auf die VM mit HANA (große Instanzen) herunterladen. Sie benötigen die Jumpbox, um das Fehlen der direkten Internetverbindung auszugleichen. Sie laden die Pakete auf die Jumpbox-VM herunter.
+Sie benötigen einen SAP S-Benutzer oder einen anderen Benutzer, mit dem Sie auf den SAP Marketplace zugreifen können.
 
-Zum Herunterladen der HANA-Installationspakete benötigen Sie einen SAP S-Benutzer oder einen anderen Benutzer, mit dem Sie auf den SAP Marketplace zugreifen können. Durchlaufen Sie nach dem Anmelden die folgende Bildschirmsequenz:
+1. Melden Sie sich an, und wechseln Sie zum [SAP Service Marketplace](https://support.sap.com/en/index.html). Wählen Sie **Download Software** > **Installations and Upgrade** > **By Alphabetical Index** aus (Software herunterladen -> Installationen und Upgrades -> Nach alphabetischem Index). Wählen Sie dann unter H **SAP HANA Platform Edition** > **SAP HANA Platform Edition 2.0** > **Installation** aus. Laden Sie die im folgenden Screenshot gezeigten Dateien herunter.
 
-Navigieren Sie zu [SAP Service Marketplace](https://support.sap.com/en/index.html). Klicken Sie auf „Download Software“ > „Installations and Upgrade“ > „By Alphabetical Index“ > „Under H – SAP HANA Platform Edition“ > „SAP HANA Platform Edition 2.0“ > „Installation“, und laden Sie die folgenden Dateien herunter:
+   ![Screenshot der herunterzuladenden Dateien](./media/hana-installation/image16_download_hana.PNG)
 
-![Herunterladen der HANA-Installation](./media/hana-installation/image16_download_hana.PNG)
+2. In diesem Beispiel haben wir SAP HANA 2.0-Installationspakete heruntergeladen. Auf der Azure-Jumpbox-VM erweitern Sie die selbstextrahierenden Archive in das Verzeichnis, wie unten gezeigt.
 
-Für die Demonstration haben wir SAP HANA 2.0-Installationspakete heruntergeladen. Auf der Azure-Jumpbox-VM erweitern Sie die selbstextrahierenden Archive wie unten gezeigt in das Verzeichnis.
+   ![Screenshot eines selbstextrahierenden Archivs](./media/hana-installation/image17_extract_hana.PNG)
 
-![Extrahieren der HANA-Installation](./media/hana-installation/image17_extract_hana.PNG)
+3. Wenn die Archive extrahiert wurden, kopieren Sie das durch die Extraktion erstellte Verzeichnis (in diesem Fall „51052030“). Kopieren Sie das Verzeichnis aus dem Volume „/hana/shared“ der HANA-Einheit (große Instanzen) in das erstellte Verzeichnis.
 
-Kopieren Sie nach dem Extrahieren der Archive das Verzeichnis, das bei der Extraktion extrahiert wurde (im obigen Fall „51052030“), auf die Einheit von HANA (große Instanzen) im Volume „/hana/shared“ des von Ihnen erstellten Verzeichnisses.
-
-> [!Important]
-> Kopieren Sie die Installationspakete NICHT in die Stamm- oder Start-LUN, da der Speicherplatz begrenzt ist und auch von anderen Prozessen genutzt werden muss.
+   > [!Important]
+   > Kopieren Sie die Installationspakete nicht in die Stamm- oder Start-LUN, da der Speicherplatz begrenzt ist und auch von anderen Prozessen genutzt werden muss.
 
 
 ## <a name="install-sap-hana-on-the-hana-large-instance-unit"></a>Installieren von SAP HANA auf der Einheit von HANA (große Instanzen)
-Für die Installation von SAP HANA müssen Sie sich als Stammbenutzer (root) anmelden. Nur der Stammbenutzer verfügt über ausreichende Berechtigungen zum Installieren von SAP HANA.
-Als Erstes müssen Sie Berechtigungen für das Verzeichnis festlegen, das Sie in „/hana/shared“ kopiert haben. Legen Sie die Berechtigungen wie folgt fest:
+Für die Installation von SAP HANA müssen Sie sich als Stammbenutzer (root) anmelden. Nur der Stammbenutzer verfügt über ausreichende Berechtigungen zum Installieren von SAP HANA. Legen Sie Berechtigungen für das Verzeichnis fest, das Sie in „/hana/shared“ kopiert haben.
 
 ```
 chmod –R 744 <Installation bits folder>
 ```
 
-Wenn Sie SAP HANA per grafischem Setup installieren möchten, muss das Paket gtk2 auf der Einheit von HANA (große Instanzen) installiert werden. Überprüfen Sie mit dem folgenden Befehl, ob es installiert ist:
+Wenn Sie SAP HANA über die grafische Benutzeroberfläche installieren möchten, muss das Paket „gtk2“ auf der HANA-Einheit (große Instanzen) installiert werden. Um zu überprüfen, ob das Paket installiert ist, führen Sie den folgenden Befehl aus:
 
 ```
 rpm –qa | grep gtk2
 ```
 
-In den weiteren Schritten wird das SAP HANA-Setup mit der grafischen Benutzeroberfläche veranschaulicht. Im nächsten Schritt navigieren Sie zum Installationsverzeichnis und dann in das Unterverzeichnis „HDB_LCM_LINUX_X86_64“. Starten Sie
+(In späteren Schritten zeigen wir Ihnen das SAP HANA-Setup mit der grafischen Benutzeroberfläche.)
+
+Wechseln Sie zum Installationsverzeichnis und dann in das Unterverzeichnis „HDB_LCM_LINUX_X86_64“. 
+
+Starten Sie in diesem Verzeichnis folgende Elemente:
 
 ```
 ./hdblcmgui 
 ```
-in diesem Verzeichnis. Sie werden nun durch eine Bildschirmsequenz geführt, in der Sie die Daten für die Installation angeben müssen. Im demonstrierten Fall installieren wir den SAP HANA-Datenbankserver und die SAP HANA-Clientkomponenten. Daher wählen wir „SAP HANA Database“ aus, wie unten gezeigt.
+Nun wird eine Reihe von Bildschirmen angezeigt, in denen Sie Daten für die Installation angeben müssen. In diesem Beispiel installieren wir den SAP HANA-Datenbankserver und die SAP HANA-Clientkomponenten. Daher wählen wir **SAP HANA Database** aus.
 
-![Auswählen von HANA bei der Installation](./media/hana-installation/image18_hana_selection.PNG)
+![Screenshot des Bildschirms „SAP HANA Lifecycle Management“ mit ausgewählter Option „SAP HANA Database“](./media/hana-installation/image18_hana_selection.PNG)
 
-Wählen Sie auf dem nächsten Bildschirm die Option „Install New System“.
+Wählen Sie auf dem nächsten Bildschirm die Option **Install New System** (Neues System installieren) aus.
 
-![Auswählen der neuen HANA-Installation](./media/hana-installation/image19_select_new.PNG)
+![Screenshot des Bildschirms „SAP HANA Lifecycle Management“ mit ausgewählter Option „Install New System“](./media/hana-installation/image19_select_new.PNG)
 
-Nach diesem Schritt müssen Sie zwischen mehreren weiteren Komponenten wählen, die zusätzlich zum SAP HANA-Datenbankserver installiert werden können.
+Wählen Sie als Nächstes zusätzliche Komponenten aus, die Sie installieren möchten.
 
-![Auswählen zusätzlicher HANA-Komponenten](./media/hana-installation/image20_select_components.PNG)
+![Screenshot des Bildschirms „SAP HANA Lifecycle Management“ mit einer Liste zusätzlicher Komponenten](./media/hana-installation/image20_select_components.PNG)
 
-Im Rahmen dieser Dokumentation haben wir den SAP HANA-Client und SAP HANA Studio ausgewählt. Außerdem haben wir eine Instanz für das zentrale Hochskalieren installiert. Wählen Sie im nächsten Bildschirmfenster also „Single-Host System“. 
+Hier wählen wir den SAP HANA-Client und SAP HANA Studio aus. Außerdem installieren wir eine Instanz zum zentralen Hochskalieren. Wählen Sie jetzt **Single-Host System** (Einzelhostsystem) aus. 
 
-![Auswählen der Installation für zentrales Hochskalieren](./media/hana-installation/image21_single_host.PNG)
+![Screenshot des Bildschirms „SAP HANA Lifecycle Management“ mit ausgewählter Option „Single-Host System“](./media/hana-installation/image21_single_host.PNG)
 
-Im nächsten Bildschirmfenster müssen Sie einige Daten angeben.
+Geben Sie als nächstes einige Daten an.
 
-![Bereitstellen der SAP HANA-SID](./media/hana-installation/image22_provide_sid.PNG)
+![Screenshot des Bildschirms „SAP HANA Lifecycle Management“ mit zu definierenden Systemeigenschaftenfeldern](./media/hana-installation/image22_provide_sid.PNG)
 
 > [!Important]
-> Als HANA-SID (System-ID) müssen Sie die gleiche SID angeben, die Sie für Microsoft bereitgestellt haben, als Sie die Bereitstellung von HANA (große Instanzen) bestellt haben. Wenn Sie eine andere SID wählen, tritt für die Installation ein Fehler auf, da sich für die verschiedenen Volumes Probleme mit der Zugriffsberechtigung ergeben.
+> Als HANA-SID (System-ID) müssen Sie die gleiche SID angeben, die Sie für Microsoft bereitgestellt haben, als Sie die HANA-Bereitstellung (große Instanzen) bestellt haben. Wenn Sie eine andere SID wählen, kann die Installation nicht erfolgreich durchgeführt werden, da sich für die verschiedenen Volumes Probleme mit der Zugriffsberechtigung ergeben.
 
-Als Installationsverzeichnis verwenden Sie das Verzeichnis „/hana/shared“. Im nächsten Schritt geben Sie die Speicherorte für die HANA-Datendateien und die HANA-Protokolldateien an.
+Als Installationspfad verwenden Sie das Verzeichnis „/hana/shared“. Im nächsten Schritt geben Sie die Speicherorte für die HANA-Datendateien und die HANA-Protokolldateien an.
 
 
-![Angeben des HANA-Protokollspeicherorts](./media/hana-installation/image23_provide_log.PNG)
+![Screenshot des Bildschirms „SAP HANA Lifecycle Management“ mit Feldern für Daten und Protokollbereich](./media/hana-installation/image23_provide_log.PNG)
 
 > [!Note]
-> Für die Daten- und Protokolldateien sollten Sie die Volumes angeben, die bereits Teil der Bereitstellungspunkte waren. Diese enthalten die SID, die Sie im Bildschirmfenster weiter oben ausgewählt haben. Falls die SID nicht mit der oben eingegebenen SID übereinstimmt, können Sie zurückgehen und die SID an den Wert anpassen, der in den Bereitstellungspunkten verwendet wird.
+> Die SID, die Sie während der Definition der Systemeigenschaften (zwei Bildschirme vorher) angegeben haben, sollte der SID der Mountpunkte entsprechen. Wenn diese Werte nicht übereinstimmen, gehen Sie zwei Bildschirme zurück, und legen Sie die SID auf denselben Wert wie für die Mountpunkte fest.
 
 Überprüfen Sie im nächsten Schritt den Hostnamen, und korrigieren Sie ihn bei Bedarf. 
 
-![Überprüfen des Hostnamens](./media/hana-installation/image24_review_host_name.PNG)
+![Screenshot des Bildschirms „SAP HANA Lifecycle Management“ mit dem Hostnamen](./media/hana-installation/image24_review_host_name.PNG)
 
 Im nächsten Schritt müssen Sie auch Daten abrufen, die Sie für Microsoft bereitgestellt haben, als Sie die Bereitstellung von HANA (große Instanzen) bestellt haben. 
 
-![Angeben von UID und GID für Systembenutzer](./media/hana-installation/image25_provide_guid.PNG)
+![Screenshot des Bildschirms „SAP HANA Lifecycle Management“ mit zu definierenden Systemadministratorfeldern](./media/hana-installation/image25_provide_guid.PNG)
 
 > [!Important]
-> Sie müssen die gleiche Systembenutzer-ID und Benutzergruppen-ID angeben, die Sie gegenüber Microsoft beim Bestellen der Einheitenbereitstellung angegeben haben. Wenn die IDs nicht identisch sind, tritt für die Installation von SAP HANA auf der Einheit von HANA (große Instanzen) ein Fehler auf.
+> Geben Sie die gleiche **System Administrator User ID** (Benutzer-ID für den Systemadministrator) und **ID of User Group** (Benutzergruppen-ID) an, die Sie beim Bestellen der Einheitenbereitstellung bei Microsoft angegeben haben. Andernfalls kann die Installation von SAP HANA auf der HANA-Einheit (große Instanzen) nicht erfolgreich durchgeführt werden.
 
-In den nächsten beiden Bildschirmfenstern, die wir in dieser Dokumentation nicht aufführen, müssen Sie das Kennwort für den SYSTEM-Benutzer der SAP HANA-Datenbank und das Kennwort für den Benutzer „sapadm“ angeben. Das zweite Kennwort wird für den SAP-Host-Agent verwendet, der im Rahmen der SAP HANA-Datenbankinstanz installiert wird.
+Die beiden nächsten Bildschirme werden hier nicht gezeigt. Dort können Sie das Kennwort für den SYSTEM-Benutzer der SAP HANA-Datenbank und das Kennwort für den sapadm-Benutzer angeben. Letzteres wird für den SAP-Host-Agent verwendet, der als Teil der SAP HANA-Datenbankinstanz installiert wird.
 
-Nach dem Definieren des Kennworts wird ein Bestätigungsfenster angezeigt. Überprüfen Sie alle aufgeführten Daten, und fahren Sie mit der Installation fort. Sie gelangen zu einem Statusfenster, auf dem der Installationsstatus angezeigt wird (siehe unten).
+Nach dem Definieren des Kennworts wird ein Bestätigungsfenster angezeigt. Überprüfen Sie alle aufgeführten Daten, und fahren Sie mit der Installation fort. Sie gelangen zu einem Statusfenster, auf dem der Installationsfortschritt angezeigt wird:
 
-![Überprüfen des Installationsstatus](./media/hana-installation/image27_show_progress.PNG)
+![Screenshot des Bildschirms „SAP HANA Lifecycle Management“ mit Anzeige des Installationsfortschritts](./media/hana-installation/image27_show_progress.PNG)
 
-Nach Abschluss der Installation sollte etwa Folgendes angezeigt werden:
+Wenn die Installation abgeschlossen ist, sollte ein Bildschirm wie dieser angezeigt werden:
 
-![Abgeschlossene Installation](./media/hana-installation/image28_install_finished.PNG)
+![Screenshot des Bildschirms „SAP HANA Lifecycle Management“, der auf den Abschluss der Installation hinweist](./media/hana-installation/image28_install_finished.PNG)
 
-Die SAP HANA-Instanz sollte jetzt ausgeführt werden und betriebsbereit sein. Sie sollten von SAP HANA Studio aus eine Verbindung damit herstellen können. Stellen Sie auch sicher, dass Sie eine Prüfung auf die neuesten Patches von SAP HANA durchführen und diese dann anwenden.
+Die SAP HANA-Instanz sollte jetzt ausgeführt werden und betriebsbereit sein. Sie sollten von SAP HANA Studio aus eine Verbindung damit herstellen können. Stellen Sie auch sicher, dass Sie nach den neuesten Updates suchen und diese anwenden.
 
 
-**Nächste Schritte**
+## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
+- [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md)
 

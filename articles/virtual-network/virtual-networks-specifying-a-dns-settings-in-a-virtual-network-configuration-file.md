@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: ed7f02d3e389db3bc772c4fcb00a7b3877d60173
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 36f7ed9b02b66718327c1a05a6cf29eedf39e7a5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794523"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248384"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Angeben von DNS-Einstellungen in der Konfigurationsdatei eines virtuellen Netzwerks
 Eine Netzwerk-Konfigurationsdatei besteht aus zwei Elementen, mit denen Sie DNS-Einstellungen (Domain Name System) angeben können: **DnsServers** und **DnsServerRef**. Sie können eine Liste von DNS-Servern hinzufügen, indem Sie ihre IP-Adressen und Referenznamen für das **DnsServers** -Element angeben. Anschließend können Sie mit dem **DnsServerRef** -Element angeben, welche DNS-Servereinträge aus dem DnsServers-Element für verschiedene Netzwerkstandorte innerhalb des virtuellen Netzwerks verwendet werden.
@@ -36,7 +36,7 @@ Die Netzwerkkonfigurationsdatei kann die folgenden Elemente enthalten. Der Titel
 > 
 > 
 
-[Dns-Element](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Dns-Element](https://go.microsoft.com/fwlink/?LinkId=248093)
 
     <Dns>
       <DnsServers>
@@ -51,7 +51,7 @@ Die Netzwerkkonfigurationsdatei kann die folgenden Elemente enthalten. Der Titel
 > 
 > 
 
-[VirtualNetworkSites-Element](http://go.microsoft.com/fwlink/?LinkId=248093)
+[VirtualNetworkSites-Element](https://go.microsoft.com/fwlink/?LinkId=248093)
 
     <DnsServersRef>
       <DnsServerRef name="ID1" />
@@ -65,7 +65,7 @@ Die Netzwerkkonfigurationsdatei kann die folgenden Elemente enthalten. Der Titel
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum [Konfigurationsschema für Azure Virtual Network](http://go.microsoft.com/fwlink/?LinkId=248093)
+* Informationen zum [Konfigurationsschema für Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093)
 * Informationen zu [Azure-Dienstkonfigurationsschemas](https://msdn.microsoft.com/library/windowsazure/ee758710)
 * [Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md)
 

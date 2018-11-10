@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: b8b0b8934b51080c3583281673183c1498c26417
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2f642a91bd656cb74cdce2a98c44372a64f23cb9
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408308"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50237876"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Entwicklungstools auf der Data Science-VM
 
@@ -77,7 +77,7 @@ Die Data Science-VM (DSVM) bündelt mehrere beliebte Tools und IDEs zu einer pro
 | ------------- | ------------- |
 | Was ist das?   | Client-IDE für Python    |
 | Unterstützte DSVM-Versionen      | Linux      |
-| Typische Verwendung      |  R-Entwicklung     |
+| Typische Verwendung      |  Python-Entwicklung     |
 | Verwendung/Ausführung      | Desktopverknüpfung (`/usr/bin/pycharm`) unter Linux      |
 | Verwandte Tools auf der DSVM      |   Visual Studio 2017, Visual Studio Code, RStudio      |
 

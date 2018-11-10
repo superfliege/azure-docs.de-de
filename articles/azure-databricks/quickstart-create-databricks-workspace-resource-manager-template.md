@@ -1,25 +1,21 @@
 ---
-title: 'Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mithilfe der Resource Manager-Vorlage | Microsoft-Dokumentation'
+title: 'Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mithilfe der Resource Manager-Vorlage '
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure Resource Manager-Vorlage einen Azure Databricks-Arbeitsbereich und anschließend einen Apache Spark-Cluster erstellen und einen Spark-Auftrag ausführen.
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/23/2018
-ms.author: nitinme
+ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 225571379cc1dd3d747219db7613fbf4a53bac9a
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 9d6863c805d73451a591c87f9d731cd3f02deebc
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024102"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417735"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mithilfe der Azure Resource Manager-Vorlage
 

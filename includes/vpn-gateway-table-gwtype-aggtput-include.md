@@ -5,28 +5,28 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 08/02/2018
+ms.date: 10/29/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4cbbb64489acf23c1248e35269e1441dd2a6878e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 03af5efcd4a37203a82db503f8bc602b33de734d
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39514068"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227133"
 ---
-|**SKU**   | **S2S/VNet-zu-VNet-<br>Tunnels** | **P2S-<br>Verbindungen** | **Benchmark für<br>aggregierten Durchsatz** |
-|---       | ---                             | ---                    | ---                         |
-|**VpnGw1**| Maximal 30*                         | Maximal 128\*\*             | 650 MBit/s                    |
-|**VpnGw2**| Maximal 30*                         | Maximal 128\*\*             | 1 GBit/s                      |
-|**VpnGw3**| Maximal 30*                         | Maximal 128\*\*             | 1,25 GBit/s                   |
-|**Basic** | Maximal 10                         | Maximal 128               | 100 MBit/s                    | 
+|**SKU**   | **S2S/VNet-zu-VNet-<br>Tunnels** | **P2S<br> SSTP-Verbindungen** | **P2S<br> IKEv2-Verbindungen** | **Benchmark für<br>aggregierten Durchsatz** |
+|---       | ---        | ---       | ---            | ---       |
+|**VpnGw1**| Maximal 30*   | Maximal 128  | Maximal 250       | 650 MBit/s  |
+|**VpnGw2**| Maximal 30*   | Maximal 128  | Maximal 500       | 1 GBit/s    |
+|**VpnGw3**| Maximal 30*   | Maximal 128  | Maximal 1000      | 1,25 GBit/s |
+|**Basic** | Maximal 10    | Maximal 128  | Nicht unterstützt  | 100 MBit/s  | 
 
-* (\*) Verwenden Sie [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md), wenn Sie mehr als 30 S2S-VPN-Tunnel benötigen.
+(\*) Verwenden Sie [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md), wenn Sie mehr als 30 S2S-VPN-Tunnel benötigen.
 
-* (\*\*) Wenden Sie sich an den Support, wenn zusätzliche Verbindungen erforderlich sind. Dies gilt nur für IKEv2. Die Anzahl von Verbindungen für SSTP kann nicht erhöht werden.
+* Der Benchmark für den aggregierten Durchsatz für ein VPN-Gateway besteht aus einer Kombination aus S2S und P2S. **Bei zahlreichen P2S-Verbindungen kann eine S2S-Verbindung aufgrund von Durchsatzeinschränkungen beeinträchtigt sein.** Der Benchmark für den aggregierten Durchsatz basiert auf Messungen von mehreren, durch ein Gateway aggregierten Tunneln. Aufgrund der Bedingungen für den Internetdatenverkehr und dem Verhalten Ihrer Anwendung kann der Durchsatz nicht garantiert werden.
 
-* Der Benchmark für den aggregierten Durchsatz basiert auf Messungen von mehreren, durch ein Gateway aggregierten Tunneln. Aufgrund der Bedingungen für den Internetdatenverkehr und dem Verhalten Ihrer Anwendung kann der Durchsatz nicht garantiert werden.
+* Diese Verbindungsgrenzwerte sind voneinander getrennt. Sie können beispielsweise 128 SSTP-Verbindungen und 250 IKEv2-Verbindungen in der SKU „VpnGw1“ nutzen.
 
 * Informationen zu den Preisen finden Sie auf der Seite [Preise](https://azure.microsoft.com/pricing/details/vpn-gateway) .
 

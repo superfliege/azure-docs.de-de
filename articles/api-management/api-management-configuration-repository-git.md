@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d359ad0e619e4d7784d763e70599ce784aa852cd
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 97ca4f69f4bf2aa814d51cc17970c1aead8399e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945812"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414402"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
 
@@ -190,7 +190,8 @@ Der Stammordner `api-management` enthält eine Datei `configuration.json`, die I
     "DelegationEnabled": "False",
     "DelegationUrl": "",
     "DelegatedSubscriptionEnabled": "False",
-    "DelegationValidationKey": ""
+    "DelegationValidationKey": "",
+    "RequireUserSigninEnabled": "false"
   },
   "$ref-policy": "api-management/policies/global.xml"
 }
@@ -200,10 +201,11 @@ Die ersten vier Einstellungen (`RegistrationEnabled`, `UserRegistrationTerms`, `
 
 | Identitätseinstellung | Entsprechung |
 | --- | --- |
-| RegistrationEnabled |**Anonyme Benutzer zur Anmeldeseite umleiten** |
+| RegistrationEnabled |Vorhandensein von **Benutzername und Kennwort** für Identitätsanbieter |
 | UserRegistrationTerms |**Nutzungsbedingungen für die Benutzerregistrierung** |
 | UserRegistrationTermsEnabled |**Nutzungsbedingungen auf der Registrierungsseite anzeigen** |
 | UserRegistrationTermsConsentRequired |**Zustimmung anfordern** |
+| RequireUserSigninEnabled |**Anonyme Benutzer zur Anmeldeseite umleiten** |
 
 Die nächsten vier Einstellungen (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled` und `DelegationValidationKey`) entsprechen den folgenden Einstellungen auf der Registerkarte **Delegierung** im Abschnitt **Sicherheit**.
 

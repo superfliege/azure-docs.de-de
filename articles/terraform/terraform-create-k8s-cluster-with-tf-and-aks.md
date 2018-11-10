@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/08/2018
-ms.openlocfilehash: f261c59193349d55d407e6079002b75884273e84
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fb4eabb247e6a4fe5550b2b23d34862c789bfaa1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960242"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232323"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und Terraform
 [Azure Kubernetes Service (AKS)](/azure/aks/) verwaltet Ihre gehostete Kubernetes-Umgebung und ermöglicht so die schnelle und einfache Bereitstellung und Verwaltung von Containeranwendungen – ganz ohne Kenntnisse im Zusammenhang mit Containerorchestrierung. Darüber hinaus übernimmt die Lösung die Betreuung laufender Vorgänge und Wartungsaufgaben für Sie, indem sie Ressourcen ganz nach Bedarf bereitstellt, aktualisiert und skaliert, ohne Ihre Anwendungen offline zu schalten.
@@ -372,6 +372,6 @@ Die Kubernetes-Tools können verwendet werden, um den neu erstellten Cluster zu 
 In diesem Artikel haben Sie gelernt, wie Sie Terraform und AKS zum Erstellen eines Kubernetes-Clusters verwenden. In folgenden zusätzlichen Ressourcen können Sie mehr über Terraform in Azure erfahren: 
 
  [Dokumentation zu Terraform in Azure](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure Provider Documentation](http://aka.ms/terraform) (Dokumentation zum Azure-Anbieter für Terraform)  
- [Terraform Azure Provider Source](http://aka.ms/tfgit) (Referenz zum Azure-Anbieter für Terraform)  
- [Terraform Azure Modules](http://aka.ms/tfmodules) (Azure-Module für Terraform)
+ [Terraform Azure Provider Documentation](https://aka.ms/terraform) (Dokumentation zum Azure-Anbieter für Terraform)  
+ [Terraform Azure Provider Source](https://aka.ms/tfgit) (Referenz zum Azure-Anbieter für Terraform)  
+ [Terraform Azure Modules](https://aka.ms/tfmodules) (Azure-Module für Terraform)

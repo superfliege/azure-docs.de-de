@@ -10,22 +10,22 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
-ms.openlocfilehash: 656a5df21d1f7dd2e7662dc3a0415581eae02b00
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7cb8c992b4c131b7f28eca6c2f35ee9facdf8d4e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471236"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416102"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrieren vom Custom Speech Service zum Speech-Dienst
 
-Verwenden Sie diesen Artikel, um Ihre Anwendungen vom Custom Speech Service zum Speech-Dienst zu migrieren.
+Verwenden Sie die Informationen in diesem Artikel, um Ihre Anwendungen vom Custom Speech Service zum Speech-Dienst zu migrieren.
 
 Der Custom Speech Service ist nun Teil des Speech-Diensts. Wechseln Sie zum Speech-Dienst, um von den neuesten Updates zu Qualität und Features zu profitieren.
  
 ## <a name="migration-for-new-customers"></a>Migration für Neukunden
 
-Das Preismodell ist einfacher, da Sie zu einem stundenbasierten Preismodell für den Speech-Dienst wechseln.   
+Das Preismodell ist einfacher, da für den Speech-Dienst ein stundenbasiertes Preismodell verwendet wird.   
 
 1. Erstellen Sie eine Azure-Ressource in jeder Region, in der Ihre Anwendung verfügbar ist. Der Name der Azure-Ressource lautet **Speech**. Sie können eine einzelne Azure-Ressource für die folgenden Dienste in der gleichen Region verwenden, anstatt separate Ressourcen zu erstellen:
 
@@ -41,14 +41,14 @@ Das Preismodell ist einfacher, da Sie zu einem stundenbasierten Preismodell für
 4. Aktualisieren Sie die Clientanwendung, um den Speech-Dienst und die APIs zu verwenden. 
 
 > [!NOTE]
-> * LUIS: Wenn Sie Speech in Language Understanding (LUIS) aktiviert haben, funktioniert eine einzelne LUIS-Ressource in derselben Region für LUIS und den Speech-Dienst. Lesen Sie die Dokumentation zur [Absichtserkennung anhand von Sprache](how-to-recognize-intents-from-speech-csharp.md).
-> * Die Textübersetzung ist nicht Teil des Speech-Diensts. Dafür benötigen Sie ein eigenes Azure-Ressourcenabonnement.
+> * Wenn Sie Speech in Language Understanding (LUIS) aktiviert haben, funktioniert eine einzelne LUIS-Ressource in derselben Region für LUIS und den Speech-Dienst. Weitere Informationen finden Sie unter [Erkennen von Absichten anhand von gesprochener Sprache](how-to-recognize-intents-from-speech-csharp.md).
+> * Die Textübersetzung ist nicht Teil des Speech-Diensts. Diese Funktionalität erfordert ein eigenes Azure-Ressourcenabonnement.
   
 
 
 ## <a name="migration-for-existing-customers"></a>Migration für Bestandskunden
 
-Bestandskunden müssen ihre vorhandenen Ressourcenschlüssel im Speech-Dienst-Portal zum Speech-Dienst migrieren. Führen Sie die folgenden Schritte aus: 
+Migrieren Sie Ihre vorhandenen Ressourcenschlüssel im Speech-Dienst-Portal zum Speech-Dienst. Führen Sie die folgenden Schritte aus: 
 
 > [!NOTE] 
 > Ressourcenschlüssel können nur innerhalb derselben Region migriert werden. 
@@ -61,10 +61,10 @@ Bestandskunden müssen ihre vorhandenen Ressourcenschlüssel im Speech-Dienst-Po
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Kostenloses Testen des Spracherkennungsdiensts](get-started.md)
+* [Testen Sie den Speech-Dienst kostenlos](get-started.md).
 * Lernen Sie die Konzepte der [Spracherkennung](./speech-to-text.md) kennen.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Worum handelt es sich beim Spracherkennungsdienst?](overview.md)
+* [Worum handelt es sich beim Speech-Dienst?](overview.md)
 * [Spracherkennungsdienst und SDK: Dokumentation](speech-sdk.md#get-the-sdk)

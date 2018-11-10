@@ -2,24 +2,23 @@
 title: Media Encoder Standard-Schema | Microsoft Docs
 description: Dieser Artikel enthält eine Übersicht über das Media Encoder Standard-Schema.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
-ms.assetid: 4c060062-8ef2-41d9-834e-e81e8eafcf2e
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 346d7aecb6a4295f8ceb64bc1b5c6494b7b41bfd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 95f7d5cafa39daccccbd35c44510038d28601aed
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783889"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241751"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-Schema
 In diesem Artikel werden einige Elemente und Typen des XML-Schemas beschrieben, auf dem [Media Encoder Standard-Voreinstellungen](media-services-mes-presets-overview.md) basieren. Der Artikel enthält eine Beschreibung der Elemente und der dazugehörigen gültigen Werte.  
@@ -32,6 +31,7 @@ Dient zum Definieren einer Voreinstellung für die Codierung.
 | --- | --- | --- |
 | **Codieren** |[Codieren](media-services-mes-schema.md#Encoding) |Stammelement, mit dem angegeben wird, dass die Eingabequellen codiert werden sollen. |
 | **Ausgaben** |[Ausgaben](media-services-mes-schema.md#Output) |Auflistung der gewünschten Ausgabedateien. |
+| **StretchMode**<br/>minOccurs="0"<br/>default="AutoSize|xs:string|Festlegen der Größe des Ausgabevideoframes, des Abstands, der Pixel oder des Anzeigeseitenverhältnisses. **StretchMode** kann einen der folgenden Werte aufweisen: **None**, **AutoSize** (Standard) oder **AutoFit**.<br/><br/>**None**: Befolgen Sie strikt die Ausgabeauflösung (z.B. die **Breite** und **Höhe** in der Voreinstellung), ohne das Pixelseitenverhältnis oder das Anzeigeseitenverhältnis des Eingabevideos zu berücksichtigen. Empfohlen wird die Verwendung beispielsweise für [Zuschnitte](media-services-crop-video.md), in denen das Ausgabevideo ein anderes Seitenverhältnis aufweist als das Eingabevideo. <br/><br/>**AutoSize**: Die Ausgabeauflösung passt in das Fenster (Breite * Höhe), das durch die Voreinstellung festgelegt wurde. Der Encoder erzeugt jedoch ein Ausgabevideo mit einem quadratischen Pixelseitenverhältnis (1:1). Daher kann entweder die Ausgabebreite oder -höhe überschrieben werden, um das Anzeigeseitenverhältnis der Eingabe ohne Abstand anzupassen. Wenn die Eingabe beispielsweise 1920x1080 ausweist und die Codierungsvoreinstellung 1280x1280 erfordert, wird der Höhenwert in der Voreinstellung überschrieben, und die Ausgabe erfolgt im Format 1280x720, sodass das Eingabeseitenverhältnis von 16:9 beibehalten wird. <br/><br/>**AutoFit**: Passen Sie bei Bedarf den Abstand des Ausgabevideos an (im Letterbox- oder Pillarboxformat), um die gewünschte Ausgabeauflösung zu erzielen. Achten Sie dabei darauf, dass der aktive Videobereich in der Ausgabe das gleiche Seitenverhältnis wie in der Eingabe aufweist. Angenommen, die Eingabe ist 1920x1080 und die Codierungsvoreinstellung fordert 1280x1280. Dann hat das Ausgabevideo das Format 1280x1280, doch es enthält ein inneres Rechteck mit dem aktiven Video (1280x720) mit einem Seitenverhältnis von 16:9 und mit 280 Pixel hohen Bereichen oben und unten im Letterboxformat. Ein weiteres Beispiel: Wenn die Eingabe 1440x1080 beträgt und die Codierungsvoreinstellung 1280x720 verlangt, liegt die Ausgabe bei 1280x720, was ein inneres Rechteck von 960x720 im Seitenverhältnis 4:3 und 160 Pixel breiten Bereichen links und rechts im Pillarboxformat enthält. 
 
 ### <a name="attributes"></a>Attribute
 | NAME | Typ | BESCHREIBUNG |
@@ -131,11 +131,10 @@ Ausführliche Informationen dazu, welche Werte für die einzelnen Profile gelten
 ### <a name="audio-codec-details"></a>Audiocodec-Details
 Audiocodec|Details  
 -----------------|---  
-**AACLC**|1:<br/><br/> - 11025 : 8 &lt;= Bitrate &lt; 16<br/><br/> - 12000 : 8 &lt;= Bitrate &lt; 16<br/><br/> - 16000 : 8 &lt;= Bitrate &lt;32<br/><br/>- 22050 : 24 &lt;= Bitrate &lt; 32<br/><br/> - 24000 : 24 &lt;= Bitrate &lt; 32<br/><br/> - 32000 : 32 &lt;= Bitrate &lt;= 192<br/><br/> - 44100 : 56 &lt;= Bitrate &lt;= 288<br/><br/> - 48000 : 56 &lt;= Bitrate &lt;= 288<br/><br/> - 88200 : 128 &lt;= Bitrate &lt;= 288<br/><br/> - 96000 : 128 &lt;= Bitrate &lt;= 288<br/><br/> 2:<br/><br/> - 11025 : 16 &lt;= Bitrate &lt; 24<br/><br/> - 12000 : 16 &lt;= Bitrate &lt; 24<br/><br/> - 16000 : 16 &lt;= Bitrate &lt; 40<br/><br/> - 22050 : 32 &lt;= Bitrate &lt; 40<br/><br/> - 24000 : 32 &lt;= Bitrate &lt; 40<br/><br/> - 32000 :  40 &lt;= Bitrate &lt;= 384<br/><br/> - 44100 : 96 &lt;= Bitrate &lt;= 576<br/><br/> - 48000 : 96 &lt;= Bitrate &lt;= 576<br/><br/> - 88200 : 256 &lt;= Bitrate &lt;= 576<br/><br/> - 96000 : 256 &lt;= Bitrate &lt;= 576<br/><br/> 5/6:<br/><br/> - 32000 : 160 &lt;= Bitrate &lt;= 896<br/><br/> - 44100 : 240 &lt;= Bitrate &lt;= 1024<br/><br/> - 48000 : 240 &lt;= Bitrate &lt;= 1024<br/><br/> - 88200 : 640 &lt;= Bitrate &lt;= 1024<br/><br/> - 96000 : 640 &lt;= Bitrate &lt;= 1024<br/><br/> 8:<br/><br/> - 32000 : 224 &lt;= Bitrate &lt;= 1024<br/><br/> - 44100 : 384 &lt;= Bitrate &lt;= 1024<br/><br/> - 48000 : 384 &lt;= Bitrate &lt;= 1024<br/><br/> - 88200 : 896 &lt;= Bitrate &lt;= 1024<br/><br/> - 96000 : 896 &lt;= Bitrate &lt;= 1024  
-**HEAACV1**|1:<br/><br/> - 22050 : Bitrate = 8<br/><br/> - 24000 : 8 &lt;= Bitrate &lt; 10<br/><br/> - 32000 : 12 &lt;= Bitrate &lt;= 64<br/><br/> - 44100 : 20 &lt;= Bitrate &lt;= 64<br/><br/> - 48000 : 20 &lt;= Bitrate &lt;= 64<br/><br/> - 88200 : Bitrate = 64<br/><br/> 2:<br/><br/> - 32000 : 16 &lt;= Bitrate &lt;= 128<br/><br/> - 44100 : 16 &lt;= Bitrate &lt;= 128<br/><br/> - 48000 : 16 &lt;= Bitrate &lt;= 128<br/><br/> - 88200 : 96 &lt;= Bitrate &lt;= 128<br/><br/> - 96000 : 96 &lt;= Bitrate &lt;= 128<br/><br/> 5/6:<br/><br/> - 32000 : 64 &lt;= Bitrate &lt;= 320<br/><br/> - 44100 : 64 &lt;= Bitrate &lt;= 320<br/><br/> - 48000 : 64 &lt;= Bitrate &lt;= 320<br/><br/> - 88200 : 256 &lt;= Bitrate &lt;= 320<br/><br/> - 96000 : 256 &lt;= Bitrate &lt;= 320<br/><br/> 8:<br/><br/> - 32000 : 96 &lt;= Bitrate &lt;= 448<br/><br/> - 44100 : 96 &lt;= Bitrate &lt;= 448<br/><br/> - 48000 : 96 &lt;= Bitrate &lt;= 448<br/><br/> - 88200 : 384 &lt;= Bitrate &lt;= 448<br/><br/> - 96000 : 384 &lt;= Bitrate &lt;= 448  
-**HEAACV2**|2:<br/><br/> - 22050 : 8 &lt;= Bitrate &lt;= 10<br/><br/> - 24000 : 8 &lt;= Bitrate &lt; 10<br/><br/> - 32000 : 12 &lt;= Bitrate &lt;= 64<br/><br/> - 44100 : 20 &lt;= Bitrate &lt;= 64<br/><br/> - 48000 : 20 &lt;= Bitrate &lt;= 64<br/><br/> - 88200 : 64 &lt;= Bitrate &lt;= 64  
+**AACLC**|1:<br/><br/> - 11025 : 8 &lt;= Bitrate &lt; 16<br/><br/> - 12000 : 8 &lt;= Bitrate &lt; 16<br/><br/> - 16000 : 8 &lt;= Bitrate &lt;32<br/><br/>- 22050 : 24 &lt;= Bitrate &lt; 32<br/><br/> - 24000 : 24 &lt;= Bitrate &lt; 32<br/><br/> - 32000 : 32 &lt;= Bitrate &lt;= 192<br/><br/> - 44100 : 56 &lt;= Bitrate &lt;= 288<br/><br/> - 48000 : 56 &lt;= Bitrate &lt;= 288<br/><br/> - 88200 : 128 &lt;= Bitrate &lt;= 288<br/><br/> - 96000 : 128 &lt;= Bitrate &lt;= 288<br/><br/> 2:<br/><br/> - 11025 : 16 &lt;= Bitrate &lt; 24<br/><br/> - 12000 : 16 &lt;= Bitrate &lt; 24<br/><br/> - 16000 : 16 &lt;= Bitrate &lt; 40<br/><br/> - 22050 : 32 &lt;= Bitrate &lt; 40<br/><br/> - 24000 : 32 &lt;= Bitrate &lt; 40<br/><br/> - 32000 : 40 &lt;= Bitrate &lt;= 384<br/><br/> - 44100 : 96 &lt;= Bitrate &lt;= 576<br/><br/> - 48000 : 96 &lt;= Bitrate &lt;= 576<br/><br/> - 88200 : 256 &lt;= Bitrate &lt;= 576<br/><br/> - 96000 : 256 &lt;= Bitrate &lt;= 576<br/><br/> 5/6:<br/><br/> - 32000 : 160 &lt;= Bitrate &lt;= 896<br/><br/> - 44100 : 240 &lt;= Bitrate &lt;= 1024<br/><br/> - 48000 : 240 &lt;= Bitrate &lt;= 1024<br/><br/> - 88200 : 640 &lt;= Bitrate &lt;= 1024<br/><br/> - 96000 : 640 &lt;= Bitrate &lt;= 1024<br/><br/> 8:<br/><br/> - 32000 : 224 &lt;= Bitrate &lt;= 1024<br/><br/> - 44100 : 384 &lt;= Bitrate &lt;= 1024<br/><br/> - 48000 : 384 &lt;= Bitrate &lt;= 1024<br/><br/> - 88200 : 896 &lt;= Bitrate &lt;= 1024<br/><br/> - 96000 : 896 &lt;= Bitrate &lt;= 1024  
+**HEAACV1**|1:<br/><br/> - 22050: Bitrate = 8<br/><br/> - 24000 : 8 &lt;= Bitrate &lt;= 10<br/><br/> - 32000 : 12 &lt;= Bitrate &lt;= 64<br/><br/> - 44100 : 20 &lt;= Bitrate &lt;= 64<br/><br/> - 48000 : 20 &lt;= Bitrate &lt;= 64<br/><br/> - 88200: Bitrate = 64<br/><br/> 2:<br/><br/> - 32000 : 16 &lt;= Bitrate &lt;= 128<br/><br/> - 44100 : 16 &lt;= Bitrate &lt;= 128<br/><br/> - 48000 : 16 &lt;= Bitrate &lt;= 128<br/><br/> - 88200 : 96 &lt;= Bitrate &lt;= 128<br/><br/> - 96000 : 96 &lt;= Bitrate &lt;= 128<br/><br/> 5/6:<br/><br/> - 32000 : 64 &lt;= Bitrate &lt;= 320<br/><br/> - 44100 : 64 &lt;= Bitrate &lt;= 320<br/><br/> - 48000 : 64 &lt;= Bitrate &lt;= 320<br/><br/> - 88200 : 256 &lt;= Bitrate &lt;= 320<br/><br/> - 96000 : 256 &lt;= Bitrate &lt;= 320<br/><br/> 8:<br/><br/> - 32000 : 96 &lt;= Bitrate &lt;= 448<br/><br/> - 44100 : 96 &lt;= Bitrate &lt;= 448<br/><br/> - 48000 : 96 &lt;= Bitrate &lt;= 448<br/><br/> - 88200 : 384 &lt;= Bitrate &lt;= 448<br/><br/> - 96000 : 384 &lt;= Bitrate &lt;= 448  
+**HEAACV2**|2:<br/><br/> - 22050 : 8 &lt;= Bitrate &lt;= 10<br/><br/> - 24000 : 8 &lt;= Bitrate &lt;= 10<br/><br/> - 32000 : 12 &lt;= Bitrate &lt;= 64<br/><br/> - 44100 : 20 &lt;= Bitrate &lt;= 64<br/><br/> - 48000 : 20 &lt;= Bitrate &lt;= 64<br/><br/> - 88200 : 64 &lt;= Bitrate &lt;= 64  
   
-
 ## <a name="Clip"></a> Clip
 ### <a name="attributes"></a>Attribute
 | NAME | Typ | BESCHREIBUNG |
@@ -152,7 +151,7 @@ Audiocodec|Details
 ### <a name="macros"></a>Makros
 | Makro | BESCHREIBUNG |
 | --- | --- |
-| **{Basename}** |Wenn Sie die VoD-Codierung durchführen, umfasst {Basename} die ersten 32 Zeichen der AssetFile.Name-Eigenschaft für die primäre Datei im Eingabeasset.<br/><br/> Wenn das Eingabeasset ein Live-Archiv ist, wird {Basename} aus den trackName-Attributen im Servermanifest abgeleitet. Wenn Sie einen Subclipauftrag mit TopBitrate verwenden, z.B. „<VideoStream\>TopBitrate</VideoStream\>“, und die Ausgabedatei Videodaten enthält, umfasst {Basename} die ersten 32 Zeichen des trackName-Elements der Videoebene mit der höchsten Bitrate.<br/><br/> Falls Sie stattdessen zum Übermitteln eines Subclipauftrags alle Eingabebitraten verwenden, z.B. „<VideoStream\>*</VideoStream\>“, und die Ausgabedatei Videodaten enthält, umfasst {Basename} die ersten 32 Zeichen des trackName-Elements der entsprechenden Videoebene. |
+| **{Basename}** |Wenn Sie die VoD-Codierung durchführen, umfasst {Basename} die ersten 32 Zeichen der AssetFile.Name-Eigenschaft für die primäre Datei im Eingabeasset.<br/><br/> Wenn das Eingabeasset ein Live-Archiv ist, wird {Basename} aus den trackName-Attributen im Servermanifest abgeleitet. Wenn Sie einen Subclipauftrag mit TopBitrate übermitteln, z.B. „<VideoStream\>TopBitrate</VideoStream\>“, und die Ausgabedatei Videodaten enthält, umfasst {Basename} die ersten 32 Zeichen des trackName-Elements der Videoebene mit der höchsten Bitrate.<br/><br/> Falls Sie stattdessen zum Übermitteln eines Subclipauftrags alle Eingabebitraten verwenden, z.B. „<VideoStream\>*</VideoStream\>“, und die Ausgabedatei Videodaten enthält, umfasst {Basename} die ersten 32 Zeichen des trackName-Elements der entsprechenden Videoebene. |
 | **{Codec}** |Wird „H264“ für Videodaten und „AAC“ für Audiodaten zugeordnet. |
 | **{Bitrate}** |Gibt die Ziel-Videobitrate an, wenn die Ausgabedatei Video- und Audiodaten enthält, bzw. die Ziel-Audiobitrate, wenn die Ausgabedatei nur Audiodaten enthält. Als Wert wird die Bitrate in KBit/s verwendet. |
 | **{Channel}** |Audiokanalanzahl, wenn die Datei Audiodaten enthält. |
@@ -177,11 +176,11 @@ Standardmäßig sind die Einstellungen für die Codierungsauflösung (Width, Hei
 
 ![MESRoation1](./media/media-services-shemas/media-services-mes-roation1.png) 
 
-Wenn das Eingangsvideo mit einer Drehung ungleich Null aufgenommen wurde (z. B. mit einem vertikal gehaltenen Smartphone oder Tablet), bedeutet dies aber Folgendes: MES wendet standardmäßig die Einstellungen für die Codierauflösung („Width“, „Height“) auf die Eingangsvideodaten an und gleicht anschließend die Drehung aus. Betrachten Sie z. B. die folgende Abbildung. Für die Voreinstellung wird Width = „100%“, Height = „100%“ verwendet. Dies wird von MES so interpretiert, dass die Ausgabe 1.280 Pixel breit und 720 Pixel hoch ist. Nach der Drehung des Videos wird das Bild dann so verkleinert, dass es in das Fenster passt, sodass sich links und rechts leere Bereiche ergeben.  
+Wenn das Eingangsvideo mit einer Drehung ungleich Null aufgenommen wurde (z. B. mit einem vertikal gehaltenen Smartphone oder Tablet), bedeutet dies aber Folgendes: MES wendet standardmäßig die Einstellungen für die Codierauflösung („Width“, „Height“) auf die Eingangsvideodaten an und gleicht anschließend die Drehung aus. Betrachten Sie z. B. die folgende Abbildung. Für die Voreinstellung wird Breite = „100%“ und Höhe = „100%“ verwendet. Das interpretiert MES so, dass die Ausgabe 1280 Pixel breit und 720 Pixel hoch ist. Nach der Drehung des Videos wird das Bild dann so verkleinert, dass es in das Fenster passt, sodass sich links und rechts leere Bereiche ergeben.  
 
 ![MESRoation2](./media/media-services-shemas/media-services-mes-roation2.png) 
 
-Alternativ können Sie das **PreserveResolutionAfterRotation**-Flag verwenden und auf „true“ festlegen (Standardeinstellung ist „false“). Wenn also Width = „100%“, Height = „100%“ voreingestellt und „PreserveResolutionAfterRotation“ auf „true“ festgelegt ist, wird für Eingangsvideodaten mit einer Breite von 1280 Pixel und einer Höhe von 720 Pixel mit einer Drehung von 90 Grad eine Ausgabe mit 0 Grad Drehung und einer Breite von 720 Pixel und einer Höhe von 1280 Pixel erzeugt. Sehen Sie sich die folgende Abbildung an:  
+Alternativ können Sie das **PreserveResolutionAfterRotation**-Flag verwenden und auf TRUE festlegen (Standardeinstellung ist FALSE). Wenn also Breite = „100%“ und Höhe = „100%“ voreingestellt und „PreserveResolutionAfterRotation“ auf TRUE festgelegt ist, wird für Eingabevideodaten mit einer Breite von 1280 Pixeln und einer Höhe von 720 Pixeln mit einer Drehung von 90 Grad eine Ausgabe mit 0 Grad Drehung und einer Breite von 720 Pixeln und einer Höhe von 1280 Pixeln erzeugt. Sehen Sie sich die folgende Abbildung an:  
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 

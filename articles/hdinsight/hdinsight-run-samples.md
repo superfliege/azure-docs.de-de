@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 59e6fd0a05374329efb20201c8d904cbbdc72b1a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 84c28eebc2bcf1bfdfcb0995f1caa05ed19629e2
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110998"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250834"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Ausführen von Hadoop MapReduce-Beispielen in Windows-basiertem HDInsight
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -24,7 +24,7 @@ Wir haben verschiedene Beispiele bereitgestellt, um Ihnen die ersten Schritte be
 * [**Wortzählung:**][hdinsight-sample-wordcount] Zählt die Vorkommen von Wörtern in einer Textdatei.
 * [**Wortzählung – C#-Streaming:**][hdinsight-sample-csharp-streaming] Zählt die Vorkommen von Wörtern in einer Textdatei mithilfe der Hadoop-Streamingschnittstelle.
 * [**Pi-Schätzung:**][hdinsight-sample-pi-estimator] Verwendet eine statistische (Monte Carlo-ähnliche) Methode, um den Wert von Pi zu schätzen.
-* [**10-GB-Graysort:**][hdinsight-sample-10gb-graysort] Führt einen allgemeinen GraySort-Vorgang für eine 10-GB-Datei mithilfe von HDInsight aus. Drei Aufträge müssen ausgeführt werden: Teragen zum Generieren der Daten, Terasort zum Sortieren der Daten und Teravalidate zur Überprüfung der richtigen Sortierung der Daten.
+* [**10-GB-Graysort**][hdinsight-sample-10gb-graysort]: Führt einen allgemeinen GraySort-Vorgang für eine 10-GB-Datei mithilfe von HDInsight aus. Drei Aufträge müssen ausgeführt werden: Teragen zum Generieren der Daten, Terasort zum Sortieren der Daten und Teravalidate zur Überprüfung der richtigen Sortierung der Daten.
 
 > [!NOTE]
 > Den Quellcode finden Sie im Anhang.
@@ -167,7 +167,7 @@ Das Skript in diesem Beispiel übermittelt einen Hadoop JAR-Auftrag und wird mit
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>10-GB-Graysort
-Dieses Beispiel verwendet bescheidene 10 GB an Daten, um eine zügige Ausführung zu ermöglichen. Die Anwendung verwendet die MapReduce-Anwendungen von Owen O'Malley und Arun Murthy, die im Jahr 2009 den jährlichen allgemeinen ("daytona") Terabyte-Sortier-Benchmark mit einem Durchsatz von 0,578 TB/Min (100 TB in 173 Minuten) gewonnen haben. Weitere Informationen zu diesem und anderen Sortier-Benchmarks finden Sie unter [Sortbenchmark](http://sortbenchmark.org/) .
+Dieses Beispiel verwendet bescheidene 10GB an Daten, um eine zügige Ausführung zu ermöglichen. Die Anwendung verwendet die MapReduce-Anwendungen von Owen O'Malley und Arun Murthy, die im Jahr 2009 den jährlichen allgemeinen („daytona“) Terabyte-Sortier-Benchmark mit einem Durchsatz von 0,578 TB/Min (100 TB in 173 Minuten) gewonnen haben. Weitere Informationen zu diesem und anderen Sortier-Benchmarks finden Sie unter [Sortbenchmark](http://sortbenchmark.org/) .
 
 Dieses Beispiel verwendet drei Sätze von MapReduce-Programmen:
 
@@ -211,7 +211,6 @@ In diesem Artikel und den Artikeln zu den einzelnen Beispielen haben Sie gelernt
 * [Verwenden von Pig mit Hadoop in HDInsight][hdinsight-use-pig]
 * [Verwenden von Hive mit Hadoop in HDInsight][hdinsight-use-hive]
 * [Übermitteln von Hadoop-Aufträgen in HDInsight][hdinsight-submit-jobs]
-* [Dokumentation zum HDInsight SDK][hdinsight-sdk-documentation]
 
 ## <a name="appendix-a---the-word-count-source-code"></a>Anhang A – Quellcode für die Wortzählung
 
@@ -977,8 +976,6 @@ public class TeraSort extends Configured implements Tool {
     }
 }
 ```
-
-[hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 
 [hdinsight-submit-jobs]: hadoop/submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:hadoop/apache-hadoop-introduction.md
