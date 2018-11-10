@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: mamit
 ms.component: alerts
-ms.openlocfilehash: c4c8279a1d4638a1c5d889b53e2d9e89e458cc37
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 30b2d60868702c6113612668b8e4cf9975aa2c40
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117170"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962196"
 ---
 # <a name="unified-alerts-in-azure-monitor"></a>Einheitliche Oberfläche für Warnungen in Azure Monitor
 
@@ -23,7 +23,7 @@ ms.locfileid: "39117170"
 >  Eine neue einheitliche Oberfläche für Warnungen, über die Sie Warnungen aus mehreren Abonnements verwalten können und auf der Warnungsstatus und intelligente Gruppen eingeführt werden, ist derzeit in Public Preview verfügbar. Eine Beschreibung dieser verbesserten Oberfläche und ihrer Aktivierung finden Sie im letzten Abschnitt dieses Artikels.
 
 
-Dieser Artikel beschreibt die einheitliche Oberfläche für Warnungen in Azure Monitor. Die [bisherige Oberfläche für Warnungen](monitoring-overview-alerts.md) steht über die Option **Warnungen (klassisch)** im Azure Monitor-Menü zur Verfügung. 
+Dieser Artikel beschreibt die einheitliche Oberfläche für Warnungen in Azure Monitor. Die [bisherige Warnungenoberfläche](monitoring-overview-alerts.md) steht über die Option **Warnungen (klassisch)** im Azure Monitor-Menü zur Verfügung. 
 
 ## <a name="features-of-the-unified-alert-experience"></a>Features der einheitlichen Oberfläche für Warnungen
 
@@ -82,13 +82,13 @@ Sie erstellen eine neue Warnungsregel anhand der folgenden drei Schritte:
  
 Bei dieser vereinfachten Erstellung müssen Sie nicht mehr die Überwachungsquelle oder -signale kennen, die unterstützt werden, bevor eine Azure-Ressource ausgewählt wird. Die Liste verfügbarer Signale wird automatisch auf Grundlage der ausgewählten Zielressource gefiltert und führt Sie durch die Festlegung der Logik für die Warnungsregel.
 
-Weitere Informationen zum Erstellen von Warnungsregeln finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](monitor-alerts-unified-usage.md).
+Weitere Informationen zum Erstellen von Warnungsregeln finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](alert-metric.md).
 
-Warnungen sind übergreifend für mehrere Azure-Überwachungsdienste verfügbar. Informationen dazu, wie und wann Sie die jeweiligen Dienste verwenden, finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](./monitoring-overview.md). Die folgende Tabelle enthält eine Liste der in Azure verfügbaren Warnungsregeltypen. Sie gibt an, was derzeit von der einheitlichen Oberfläche für Warnungen unterstützt wird.
+Warnungen sind übergreifend für mehrere Azure-Überwachungsdienste verfügbar. Informationen dazu, wie und wann Sie die jeweiligen Dienste verwenden, finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../azure-monitor/overview.md). Die folgende Tabelle enthält eine Liste der in Azure verfügbaren Warnungsregeltypen. Sie gibt an, was derzeit von der einheitlichen Oberfläche für Warnungen unterstützt wird.
 
 | **Überwachungsquelle** | **Signaltyp**  | **Beschreibung** | 
 |-------------|----------------|-------------|
-| Azure Monitor | Metrik  | Die auch als [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md) bezeichneten Metrikwarnungen unterstützen das Auswerten von Metrikbedingungen in Intervallen von bis zu einer Minute und ermöglichen Regeln mit mehreren Metriken sowie mehrdimensionale Metrikregeln. Eine Liste der unterstützten Ressourcentypen finden Sie unter [Neuere Metrikwarnungen für Azure-Dienste im Azure-Portal](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).<br>[Klassische Metrikwarnungen](monitoring-overview-alerts.md) werden von der neuen Oberfläche für Warnungen nicht unterstützt. Sie finden diese im Azure-Portal unter „Warnungen (Klassisch)“. Die klassischen Warnungen unterstützen einige Metriktypen, die noch nicht zu den neueren Warnungen verschoben wurden. Eine vollständige Liste finden Sie unter [Unterstützte Metriken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics). |
+| Azure Monitor | Metrik  | Die auch als [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md) bezeichneten Metrikwarnungen unterstützen das Auswerten von Metrikbedingungen in Intervallen von bis zu einer Minute und ermöglichen Regeln mit mehreren Metriken sowie mehrdimensionale Metrikregeln. Eine Liste der unterstützten Ressourcentypen finden Sie unter [Neuere Metrikwarnungen für Azure-Dienste im Azure-Portal](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).<br>[Klassische Metrikwarnungen](monitoring-overview-alerts.md) werden von der neuen Warnungenoberfläche nicht unterstützt. Sie finden diese im Azure-Portal unter „Warnungen (Klassisch)“. Die klassischen Warnungen unterstützen einige Metriktypen, die noch nicht zu den neueren Warnungen verschoben wurden. Eine vollständige Liste finden Sie unter [Unterstützte Metriken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics). |
 | Log Analytics | Protokolle  | Empfangen Sie Benachrichtigungen, oder führen Sie automatisierte Aktionen aus, wenn eine Protokollsuchabfrage bestimmte Kriterien erfüllt. Warnungen in Log Analytics [werden in die neue Oberfläche kopiert](monitoring-alerts-extend.md). Es ist eine [Vorschau von *Log Analytics-Protokollen als Metriken*](monitoring-alerts-extend-tool.md) verfügbar. In der Vorschau können Sie einige Arten von Protokollen in Metriken konvertieren, zu denen Sie dann Warnungen auf der neuen Oberfläche für Warnungen erstellen können. Die Vorschauversion ist nützlich, wenn Sie Nicht-Azure-Protokolle parallel zu nativen Azure Monitor-Metriken abrufen möchten. |
 | Aktivitätsprotokolle | Aktivitätsprotokoll | Enthält die Datensätze für alle Erstellungs-, Aktualisierungs- und Löschaktionen, die vom ausgewählten Ziel erstellt werden. |
 | Dienstintegrität | Aktivitätsprotokoll  | Wird von der einheitlichen Oberfläche für Warnungen nicht unterstützt. Siehe [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](monitoring-activity-log-alerts-on-service-notifications.md).  |
@@ -135,7 +135,7 @@ Mit der verbesserten einheitlichen Oberfläche für Warnungen wird das Konzept d
 
 Die folgenden Warnungsstatus werden unterstützt.
 
-| State (Zustand) | BESCHREIBUNG |
+| Zustand | BESCHREIBUNG |
 |:---|:---|
 | Neu | Das Problem wurde gerade erkannt und noch nicht überprüft. |
 | Bestätigt | Ein Administrator hat die Warnung überprüft und mit deren Bearbeitung begonnen. |
@@ -159,7 +159,7 @@ Die Standardseite „Warnungen“ enthält eine Zusammenfassung der Warnungen, d
 
 Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Rand der Seite auswählen.
 
-| Spalte | Beschreibung |
+| Column | BESCHREIBUNG |
 |:---|:---|
 | Abonnement | Wählen Sie bis zu fünf Azure-Abonnements aus. Nur Warnungen in den ausgewählten Abonnements sind in der Ansicht enthalten. |
 | Ressourcengruppe | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
@@ -181,13 +181,13 @@ Auf der Seite „Alle Warnungen“ können Sie eine Liste der Warnungen anzeigen
 
 Zum Filtern der Ansicht können Sie die folgenden Werte in den Dropdownmenüs am oberen Rand der Seite auswählen.
 
-| Spalte | BESCHREIBUNG |
+| Column | BESCHREIBUNG |
 |:---|:---|
 | Abonnement | Wählen Sie bis zu fünf Azure-Abonnements aus. Nur Warnungen in den ausgewählten Abonnements sind in der Ansicht enthalten. |
 | Ressourcengruppe | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
 | Ressourcentyp | Wählen Sie mindestens einen Ressourcentyp aus. Nur Warnungen mit Zielen des ausgewählten Typs sind in der Ansicht enthalten. Diese Spalte ist nur verfügbar, nachdem eine Ressourcengruppe angegeben wurde. |
 | Ressource | Wählen Sie eine Ressource aus. Nur Warnungen mit dieser Ressource als Ziel sind in der Ansicht enthalten. Diese Spalte ist nur verfügbar, nachdem ein Ressourcentyp angegeben wurde. |
-| Schweregrad | Wählen Sie einen Warnungsschweregrad oder *Alle* aus, um Warnungen aller Schweregrade einzuschließen. |
+| Severity | Wählen Sie einen Warnungsschweregrad oder *Alle* aus, um Warnungen aller Schweregrade einzuschließen. |
 | Überwachungsbedingung | Wählen Sie eine Überwachungsbedingung oder *Alle* aus, um Warnungen aller Bedingungen einzuschließen. |
 | Warnungsstatus | Wählen Sie einen Warnungsstatus oder *Alle* aus, um Warnungen aller Statusarten einzuschließen. |
 | Überwachungsdienst | Wählen Sie einen Dienst oder *Alle* aus, um alle Dienste einzuschließen. Nur Warnungen, die anhand von Regeln erstellt wurden, die diesen Dienst als Ziel verwenden, sind enthalten. |
@@ -224,7 +224,7 @@ Die Detailseite für die intelligente Gruppe enthält die folgenden Abschnitte.
 | Verlauf | Listet die einzelnen Aktionen, die von der intelligenten Gruppe ausgeführt wurden, und alle daran vorgenommenen Änderungen auf. Dies ist derzeit auf Statusänderungen und Änderungen der Warnungsmitgliedschaft beschränkt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erfahren Sie mehr über das Erstellen, Anzeigen und Verwalten von Warnungen mithilfe der neuen Oberfläche „Warnungen“.](monitor-alerts-unified-usage.md)
+- [Erfahren Sie mehr über das Erstellen, Anzeigen und Verwalten von Warnungen mithilfe der neuen Oberfläche „Warnungen“.](alert-metric.md)
 - [Erfahren Sie mehr über Protokollwarnungen auf der Oberfläche „Warnungen“.](monitor-alerts-unified-log.md)
 - [Erfahren Sie mehr über Metrikwarnungen auf der Oberfläche „Warnungen“.](monitoring-near-real-time-metric-alerts.md)
-- [Erfahren Sie mehr über Aktivitätsprotokollwarnungen auf der Oberfläche „Warnungen“.](monitoring-activity-log-alerts-new-experience.md)
+- [Erfahren Sie mehr über Aktivitätsprotokollwarnungen auf der Oberfläche „Warnungen“.](alert-activity-log.md)

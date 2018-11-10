@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 55dc43f238b487392be48047b3d608f84e1e3ee2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f5d1968503c7aa82ba58c80eec886b19fc44b4f5
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579309"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913592"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Nutzen der Überwachungsdaten von Azure
 
@@ -24,17 +24,17 @@ Wir bringen mit der Azure Monitor-Pipeline die Überwachungsdaten von der gesamt
 | Datentyp | Category (Kategorie) | Unterstützte Dienste | Zugriffsmethoden |
 | --- | --- | --- | --- |
 | Azure Monitor-Metriken auf Plattformebene | Metriken | [Siehe Liste hier](monitoring-supported-metrics.md) | <ul><li>**REST-API:**[Azure Monitor-Metrik-API](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Speicher-Blob oder Event Hub:**[Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)</li></ul> |
-| Compute-Metriken für Gastbetriebssysteme (z.B. Leistungsindikatoren) | Metriken | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:**[Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:**[Windows Azure-Diagnose](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
+| Compute-Metriken für Gastbetriebssysteme (z.B. Leistungsindikatoren) | Metriken | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:**[Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:**[Windows Azure-Diagnose](azure-diagnostics-streaming-event-hubs.md)</li></ul> |
 | Benutzerdefinierte oder Anwendungsmetriken | Metriken | Alle mit Application Insights instrumentierten Anwendungen | <ul><li>**REST-API:**[Application Insights-REST-API](https://dev.applicationinsights.io/reference)</li></ul> |
 | Speichermetrik | Metriken | Azure Storage | <ul><li>**Speichertabelle:**[Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Abrechnungsdaten | Metriken | Alle Azure-Dienste | <ul><li>**REST-API:**[Azure-APIs zur Ressourcennutzung und Gebührenkarte](../billing/billing-usage-rate-card-overview.md)</li></ul> |
 | Aktivitätsprotokoll | Ereignisse | Alle Azure-Dienste | <ul><li>**REST-API:**[Azure Monitor-Ereignis-API](https://docs.microsoft.com/rest/api/monitor/eventcategories)</li><li>**Speicherblob oder Event Hub:**[Protokollprofil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
 | Azure Monitor-Diagnoseprotokolle | Ereignisse | [Siehe Liste hier](monitoring-diagnostic-logs-schema.md) | <ul><li>**Speicher-Blob oder Event Hub:**[Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)</li></ul> |
-| Compute-Protokolle für Gastbetriebssysteme (z.B. IIS, ETW, syslogs) | Ereignisse | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:**[Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:**[Windows Azure-Diagnose](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
+| Compute-Protokolle für Gastbetriebssysteme (z.B. IIS, ETW, syslogs) | Ereignisse | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:**[Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:**[Windows Azure-Diagnose](azure-diagnostics-streaming-event-hubs.md)</li></ul> |
 | App Service-Protokolle | Ereignisse | App Services | <ul><li>**File, Table oder Blob Storage:**[Web-App-Diagnose](../app-service/web-sites-enable-diagnostic-log.md)</li></ul> |
 | Speicherprotokolle | Ereignisse | Azure Storage | <ul><li>**Speichertabelle:**[Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Security Center-Warnungen | Ereignisse | Azure Security Center | <ul><li>**REST-API:**[Sicherheitswarnungen](https://msdn.microsoft.com/library/mt704050.aspx)</li></ul> |
-| Active Directory-Berichte | Ereignisse | Azure Active Directory | <ul><li>**REST-API:**[Azure Active Directory-Graph-API](../active-directory/active-directory-reporting-api-getting-started.md)</li></ul> |
+| Active Directory-Berichte | Ereignisse | Azure Active Directory | <ul><li>**REST-API:**[Azure Active Directory-Graph-API](../active-directory/active-directory-reporting-api-getting-started-azure-portal.md)</li></ul> |
 | Security Center-Ressourcenstatus | Status | [Alle unterstützten Ressourcen](https://msdn.microsoft.com/library/mt704041.aspx#Anchor_1) | <ul><li>**REST-API:**[Sicherheitsstatus](https://msdn.microsoft.com/library/mt704041.aspx)</li></ul> |
 | Resource Health | Status | Unterstützte Dienste | <ul><li>**REST-API:**[Ressourcenintegritäts-REST-API](https://azure.microsoft.com/blog/reduce-troubleshooting-time-with-azure-resource-health/)</li></ul> |
 | Azure Monitor-Metrikwarnungen | Benachrichtigungen | [Siehe Liste hier](monitoring-supported-metrics.md) | <ul><li>**Webhook:**[Azure-Metrikwarnungen](insights-webhooks-alerts.md)</li></ul> |
@@ -46,6 +46,6 @@ Wir bringen mit der Azure Monitor-Pipeline die Überwachungsdaten von der gesamt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr zu [Azure Monitor-Metriken](monitoring-overview-metrics.md).
+- Erfahren Sie mehr zu [Azure Monitor-Metriken](../monitoring/monitoring-data-collection.md).
 - Erfahren Sie mehr zum [Azure-Aktivitätsprotokoll](monitoring-overview-activity-logs.md).
 - Erfahren Sie mehr zu [Azure-Diagnoseprotokollen](monitoring-overview-of-diagnostic-logs.md).

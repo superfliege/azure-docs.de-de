@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 057ce4b93be27c27e27d49e61a89a7c2b9e46dc8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e9f082b795325349001b5231304588e5297a1443
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421066"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960717"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Streamen von Azure-Diagnoseprotokollen an Log Analytics
 
@@ -96,7 +96,7 @@ Das Argument `--resource-group` ist nur erforderlich, wenn `--workspace` keine O
 
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>Wie frage ich die Daten in Log Analytics ab?
 
-Auf dem Blatt „Protokollsuche“ im Portal oder auf der Advanced Analytics-Oberfläche als Teil von Log Analytics können Sie Diagnoseprotokolle im Rahmen der Protokollverwaltungslösung unter der AzureDiagnostics-Tabelle abfragen. Es gibt auch [verschiedene Lösungen für Azure-Ressourcen](../log-analytics/log-analytics-add-solutions.md), die Sie installieren können, um sofort Informationen zu den an Log Analytics gesendeten Protokolldaten zu erhalten.
+Auf dem Blatt „Protokollsuche“ im Portal oder auf der Advanced Analytics-Oberfläche als Teil von Log Analytics können Sie Diagnoseprotokolle im Rahmen der Protokollverwaltungslösung unter der AzureDiagnostics-Tabelle abfragen. Es gibt auch [verschiedene Lösungen für Azure-Ressourcen](../monitoring/monitoring-solutions.md), die Sie installieren können, um sofort Informationen zu den an Log Analytics gesendeten Protokolldaten zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,19 +3,19 @@ title: Verbinden von Excel über den Hive ODBC-Treiber mit Hadoop – Azure HDIn
 description: Erfahren Sie, wie Sie den Microsoft Hive ODBC-Treiber für Excel einrichten und zum Abfragen von Daten in HDInsight-Clustern von Microsoft Excel verwenden können.
 keywords: Hadoop, Excel, Hive Excel, Hive ODBC
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: b21863d7a91c14f9795d72a13575e33485ba7d2b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: ecdde9b5ac4c6c303edf553af3eb33986d4fb199
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041823"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005086"
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Verbinden von Excel mit Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers
 
@@ -59,7 +59,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Hive-ODBC-Datenquelle erstelle
    |  Datenbank |Verwenden Sie <strong>Standard</strong>. |
    |  Mechanismus |Wählen Sie <strong>Azure HDInsight Service</strong> aus. |
    |  Benutzername |Geben Sie Ihren HTTP-Benutzernamen für den HDInsight-Cluster an. Der Standard-Benutzername lautet <strong>admin</strong>. |
-   |  Password |Geben Sie Ihr Benutzerkennwort für den HDInsight-Cluster an. |
+   |  Kennwort |Geben Sie Ihr Benutzerkennwort für den HDInsight-Cluster an. |
    
     </table>
    

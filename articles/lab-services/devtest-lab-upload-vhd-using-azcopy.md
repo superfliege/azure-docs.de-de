@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: e35686e7ba7c2e88d62930082d39856673a661b6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 482bfe41ebfec7353466f7e243e9e767caee7828
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782449"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228282"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>Hochladen von VHD-Dateien in das Lab-Speicherkonto mit AzCopy
 
@@ -33,11 +33,11 @@ In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefiniert
 
 ## <a name="step-by-step-instructions"></a>Schrittweise Anweisungen
 
-Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei nach Azure DevTest Labs mit [AzCopy](http://aka.ms/downloadazcopy). 
+Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei nach Azure DevTest Labs mit [AzCopy](https://aka.ms/downloadazcopy). 
 
 1. Rufen Sie den Namen des Lab-Speicherkontos im Azure-Portal ab:
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 
@@ -65,7 +65,7 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei nach Azur
 
 1. Laden Sie die VHD-Datei mit AzCopy hoch:
  
-1. [Laden Sie die aktuelle Version von AzCopy herunter, und installieren Sie sie](http://aka.ms/downloadazcopy).
+1. [Laden Sie die aktuelle Version von AzCopy herunter, und installieren Sie sie](https://aka.ms/downloadazcopy).
 
 1. Öffnen Sie ein Befehlsfenster, und navigieren Sie zum Installationsverzeichnis von AzCopy. Sie können den Speicherort für die AzCopy-Installation auch dem Systempfad hinzufügen. AzCopy wird standardmäßig im folgenden Verzeichnis installiert:
 

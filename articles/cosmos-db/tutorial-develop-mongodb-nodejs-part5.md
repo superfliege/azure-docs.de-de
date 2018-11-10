@@ -12,27 +12,29 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 5bb1aeadeb31728dcc2d9ac5fa0aeade31857169
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e9a1b7951d111606d84e235864e3649a742e874e
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41920297"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741503"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>Erstellen einer MongoDB-App mit Angular und Azure Cosmos DB – Teil 5: Herstellen einer Verbindung mit Azure Cosmos DB mithilfe von Mongoose
 
-In diesem mehrteiligen Tutorial erfahren Sie, wie Sie eine neue, in Node.js geschriebene [MongoDB-API](mongodb-introduction.md)-App mit Express, Angular Ihrer Azure Cosmos DB-Datenbank erstellen.
+In diesem mehrteiligen Tutorial erfahren Sie, wie Sie eine Node.js-App mit Express oder Angular erstellen und mit Ihrem Konto für die [Azure Cosmos DB-MongoDB-API](mongodb-introduction.md) verbinden.
 
 Teil 5 des Tutorials baut auf [Teil 4](tutorial-develop-mongodb-nodejs-part4.md) auf und umfasst folgende Aufgaben:
 
 > [!div class="checklist"]
 > * Herstellen einer Verbindung mit Azure Cosmos DB mithilfe von Mongoose
-> * Abrufen von Informationen zur Verbindungszeichenfolge aus Azure Cosmos DB
+> * Abrufen der Informationen zur Cosmos DB-Verbindungszeichenfolge
 > * Erstellen des hero-Modells
 > * Erstellen des hero-Diensts zum Abrufen von Heldendaten
 > * Lokales Ausführen der App
 
 ## <a name="video-walkthrough"></a>Exemplarische Vorgehensweise per Video
+
+Anhand des folgenden Videos können Sie sich schnell mit den in diesem Dokument beschriebenen Schritten vertraut machen: 
 
 > [!VIDEO https://www.youtube.com/embed/sI5hw6KPPXI]
 
@@ -46,19 +48,24 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
 ## <a name="use-mongoose-to-connect-to-azure-cosmos-db"></a>Herstellen einer Verbindung mit Azure Cosmos DB mithilfe von Mongoose
 
-1. Installieren Sie das Mongoose-npm-Modul (eine API, die normalerweise für die Kommunikation mit MongoDB verwendet wird).
+1. Installieren Sie das Mongoose-npm-Modul (eine API, die für die Kommunikation mit MongoDB verwendet wird).
 
     ```bash
     npm i mongoose --save
     ```
 
-2. Erstellen Sie als Nächstes im Ordner **server** eine neue Datei namens **mongo.js**. Dieser Datei fügen Sie alle Ihre Verbindungsinformationen für die Azure Cosmos DB-Datenbank hinzu.
+2. Erstellen Sie als Nächstes im Ordner **server** eine neue Datei namens **mongo.js**. Dieser Datei fügen Sie die Verbindungsdetails Ihres Cosmos DB-Kontos hinzu.
 
 3. Kopieren Sie den unten angegebenen Code in **mongo.js**. Für diesen Code gilt Folgendes:
+
     * Er erfordert Mongoose.
-    * Er setzt die MongoDB-Zusage außer Kraft, um die grundlegende Zusage zu verwenden, die in ES6/ES2015 und höhere Versionen integriert ist.
-    * Er ruft eine env-Datei auf, mit der Sie bestimmte Aspekte abhängig von der aktuellen Phase (Staging, Produktion oder Entwicklung) einrichten können. Diese Datei erstellen wir in Kürze.
-    * Er enthält unsere MongoDB-Verbindungszeichenfolge, die in der env-Datei festgelegt wird.
+
+    * Er setzt die Mongo-Zusage außer Kraft, um die grundlegende Zusage zu verwenden, die in ES6/ES2015 und höhere Versionen integriert ist.
+
+    * Er ruft eine env-Datei auf, mit der Sie bestimmte Aspekte abhängig von der aktuellen Phase (Staging, Produktion oder Entwicklung) einrichten können. Sie erstellen diese Datei im nächsten Abschnitt.
+
+    * Er enthält die MongoDB-Verbindungszeichenfolge, die in der ENV-Datei festgelegt wird.
+
     * Er erstellt eine connect-Funktion, die Mongoose aufruft.
 
     ```javascript
@@ -123,9 +130,10 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
 ## <a name="create-a-hero-model"></a>Erstellen eines hero-Modells
 
-1.  Erstellen Sie im Explorer-Bereich unter dem Ordner **server** die Datei **hero.model.js**.
+1. Erstellen Sie im Explorer-Bereich unter dem Ordner **server** die Datei **hero.model.js**.
 
-2. Kopieren Sie den unten angegebenen Code in **hero.model.js**. Für diesen Code gilt Folgendes:
+2. Kopieren Sie den unten angegebenen Code in **hero.model.js**. Dieser Code bietet die folgenden Funktionen:
+
    * Er erfordert Mongoose.
    * Er erstellt ein neues Schema mit einer ID, einem Namen und einem Spruch.
    * Er erstellt ein Modell mit dem Schema.
@@ -155,15 +163,16 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
 ## <a name="create-a-hero-service"></a>Erstellen eines hero-Diensts
 
-1.  Erstellen Sie im Explorer-Bereich unter dem Ordner **server** die Datei **hero.service.js**.
+1. Erstellen Sie im Explorer-Bereich unter dem Ordner **server** die Datei **hero.service.js**.
 
 2. Kopieren Sie den unten angegebenen Code in **hero.service.js**. Für diesen Code gilt Folgendes:
+
    * Er ruft das Modell ab, das Sie gerade erstellt haben.
    * Er stellt die Verbindung mit der Datenbank her.
    * Er erstellt eine docquery-Variable, die mithilfe der hero.find-Methode eine Abfrage definiert, die alle Helden zurückgibt.
    * Er führt eine Abfrage mit „docquery.exec“ und einer Zusage zum Abrufen einer Liste mit allen Helden ab, wobei der Antwortstatus 200 lauten muss. 
    * Lautet der Status 500, wird die entsprechende Fehlermeldung zurückgegeben.
-   * Da wir Module verwenden, ruft er die Helden ab. 
+   * Da wir Module verwenden, ruft er die hero-Elemente ab. 
 
    ```javascript
    const Hero = require('./hero.model');
@@ -213,7 +222,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     function getHeroes(req, res) {
     ```
 
-    An dieser Stelle sollten wir uns kurz die Aufrufkette genauer ansehen. Zuerst wird durch `index.js` der Knotenserver eingerichtet. (Das bedeutet, dass unsere Routen eingerichtet und definiert werden.) Anschließend kommuniziert die Datei „routes.js“ mit dem hero-Dienst und weist ihn an, unsere Funktionen wie „getHeroes“ abzurufen und die Anforderung und Antwort zu übergeben. Hier ruft „hero.service.js“ das Modell ab und stellt eine Verbindung mit Mongo her. Anschließend wird „getHeroes“ ausgeführt, wenn wir die Funktion aufrufen, und die Antwort „200“ zurückgegeben. Danach verlässt er die Kette wieder. 
+    An dieser Stelle sollten wir uns kurz die Aufrufkette genauer ansehen. Zuerst wird durch `index.js` der Knotenserver eingerichtet. (Das bedeutet, dass unsere Routen eingerichtet und definiert werden.) Anschließend kommuniziert die Datei „routes.js“ mit dem hero-Dienst und weist ihn an, Ihre Funktionen wie „getHeroes“ abzurufen und die Anforderung und Antwort zu übergeben. Hier ruft „hero.service.js“ das Modell ab und stellt eine Verbindung mit Mongo her. Anschließend wird „getHeroes“ ausgeführt, wenn wir die Funktion aufrufen, und die Antwort „200“ zurückgegeben. Danach verlässt er die Kette wieder. 
 
 ## <a name="run-the-app"></a>Ausführen der App
 

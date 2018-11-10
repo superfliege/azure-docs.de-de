@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: b0fba3cee298e55702629815da4649d9af315b25
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1f21065414fec6bbe943014e954ecb45af2bb6b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43283025"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227874"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Einführung in Azure Cosmos DB: MongoDB-API
 
@@ -66,5 +66,4 @@ Informationen zur MongoDB-API für Azure Cosmos DB sind in die Azure Cosmos DB-D
 * Im Tutorial [Verwenden von Azure Cosmos DB mit MongoChef: API für MongoDB-Konto](mongodb-mongochef.md) erfahren Sie, wie Sie eine Verbindung zwischen Ihrer Azure Cosmos DB-Datenbank und einer MongoDB-App in Studio 3T erstellen.
 * Arbeiten Sie das Tutorial [Migrieren von Daten zu Azure Cosmos DB mit Protokollunterstützung für MongoDB](mongodb-migrate.md) durch, um Ihre Daten in eine API für MongoDB-Datenbank zu importieren.
 * Stellen Sie mithilfe von [Robomongo](mongodb-robomongo.md) eine Verbindung mit einem API für MongoDB-Konto her.
-* Finden Sie mit dem [GetLastRequestStatistics-Befehl und den Metriken im Azure-Portal](set-throughput.md#GetLastRequestStatistics) heraus, wie viele RUs von Ihren Vorgängen verwendet werden.
 * Erfahren Sie, wie Sie [Lesevoreinstellungen für global verteilte Apps konfigurieren](../cosmos-db/tutorial-global-distribution-mongodb.md).

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 38537f3e2884160a99d333f1414d3f45755cd4f9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fe2407f67e2ef7a2eb14105db0fef10917f34ba9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404612"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005222"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware-Überwachungslösung (Vorschau) in Log Analytics
 
@@ -42,7 +42,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 vSphere ESXi-Host 5.5, 6.0 und 6.5
 
 #### <a name="prepare-a-linux-server"></a>Vorbereiten eines Linux-Servers
-Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESXi-Hosts zu empfangen. Vom [Log Analytics-Linux-Agent](log-analytics-linux-agents.md) werden alle Syslog-Daten von ESXi-Hosts gesammelt. Sie können mehrere ESXi-Hosts verwenden, um die Protokolle an einen Linux-Server weiterzuleiten, wie im folgenden Beispiel veranschaulicht.
+Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESXi-Hosts zu empfangen. Vom [Log Analytics-Linux-Agent](log-analytics-quick-collect-linux-computer.md) werden alle Syslog-Daten von ESXi-Hosts gesammelt. Sie können mehrere ESXi-Hosts verwenden, um die Protokolle an einen Linux-Server weiterzuleiten, wie im folgenden Beispiel veranschaulicht.
 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]  
 
@@ -131,7 +131,7 @@ In der **VMware**-Dashboardansicht sind die Blätter nach Folgendem angeordnet:
 
 Klicken Sie auf ein Blatt, um den Log Analytics-Suchbereich zu öffnen, der detaillierte Informationen für das Blatt enthält.
 
-Hier können Sie die Suchabfrage bearbeiten, um nach etwas Bestimmtem zu suchen. Einzelheiten zum Erstellen von Protokollsuchen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](log-analytics-log-searches.md).
+Hier können Sie die Suchabfrage bearbeiten, um nach etwas Bestimmtem zu suchen. Einzelheiten zum Erstellen von Protokollsuchen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](log-analytics-queries.md).
 
 #### <a name="find-esxi-host-events"></a>Suchen von ESXi-Hostereignissen
 Ein einzelner ESXi-Host generiert basierend auf seinen Prozessen mehrere Protokolle. Die VMware-Überwachungslösung zentralisiert sie und fasst die auftretenden Ereignisse zusammen. Mit dieser zentralisierten Ansicht können Sie erkennen, auf welchem ESXi-Host eine große Anzahl von Ereignissen auftritt und welche Ereignisse in Ihrer Umgebung am häufigsten vorkommen.
@@ -165,7 +165,7 @@ Das Speichern von Suchabfragen ist ein Standardfeature in Log Analytics und hilf
 ![Docker-Dashboardansicht](./media/log-analytics-vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Erstellen von Warnungen aus Abfragen
-Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](log-analytics-alerts.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
+Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Was muss ich bei den ESXi-Hosteinstellungen beachten? Wie wirken diese sich auf meine aktuelle Umgebung aus?
@@ -206,6 +206,6 @@ Dafür kann es mehrere Gründe geben:
     d. Wenn die Datei nicht vorhanden oder die Benutzer- und Gruppeneinstellung nicht richtig ist, beheben Sie das Problem durch [Vorbereiten eines Linux-Servers](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollsuchvorgänge](log-analytics-log-searches.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
+* Verwenden Sie [Protokollsuchvorgänge](log-analytics-queries.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
 * [Erstellen Sie eigene Dashboards](log-analytics-dashboards.md), die VMware-Hostdaten anzeigen.
-* [Erstellen Sie Warnungen](log-analytics-alerts.md) für das Auftreten bestimmter VMware-Hostereignisse.
+* [Erstellen Sie Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) für das Auftreten bestimmter VMware-Hostereignisse.
