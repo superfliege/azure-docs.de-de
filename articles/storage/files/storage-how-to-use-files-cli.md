@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: aab248ac7c9adf7d996406ec35e0317594ce0b68
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: cc94e309db3fd0e97e06b5be5884a0b6e7337cea
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945017"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158974"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit der Azure CLI
 In dieser Anleitung werden die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit der Azure CLI Schritt für Schritt beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
@@ -93,7 +93,7 @@ Die meisten Benutzer werden ihre Azure-Dateifreigabe in Azure Files wahrscheinli
 
 - Sie durchsuchen Ihre Dateifreigabe über Bash in Azure Cloud Shell. (In diesem Fall können Dateifreigaben nicht über SMB eingebunden werden.)
 - Sie müssen ein Skript oder eine Anwendung über einen Client ausführen, der keine SMB-Freigaben einbinden kann (beispielsweise ein lokaler Client, für den die Blockierung von Port 445 nicht aufgehoben wurde).
-- Sie nutzen serverlose Ressourcen, etwa [Azure Functions](../../azure-functions/functions-overview.md). 
+- Sie nutzen serverlose Ressourcen (beispielsweise [Azure Functions](../../azure-functions/functions-overview.md)). 
 
 Die folgenden Beispiele zeigen, wie Sie mit dem AzureRM PowerShell-Modul Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. 
 
@@ -185,6 +185,80 @@ az storage file list \
 ```
 
 Der Befehl `az storage file copy start` ist für Dateiverschiebungen zwischen Azure-Dateifreigaben und Azure-Blobspeichercontainern zwar gut geeignet, aber wir empfehlen Ihnen, für größere Verschiebungen AzCopy zu verwenden. (Mit „größer“ ist hier die Anzahl oder Größe von zu verschiebenden Dateien gemeint.) Informieren Sie sich über [AzCopy für Linux](../common/storage-use-azcopy-linux.md) und [AzCopy für Windows](../common/storage-use-azcopy.md). AzCopy muss lokal installiert sein. AzCopy ist in Cloud Shell nicht verfügbar. 
+
+## <a name="create-and-manage-share-snapshots"></a>Erstellen und Verwalten von Freigabemomentaufnahmen
+Eine weitere nützliche Aufgabe, die Sie mit einer Azure-Dateifreigabe durchführen können, ist die Erstellung von Freigabemomentaufnahmen. Mit einer Momentaufnahme wird eine Kopie einer Azure-Dateifreigabe für einen bestimmten Zeitpunkt erstellt. Freigabemomentaufnahmen ähneln einigen Betriebssystemtechnologien, mit denen Sie unter Umständen bereits vertraut sind:
+
+- Momentaufnahmen vom Typ [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) für Linux-Systeme
+- Momentaufnahmen vom Typ [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) für macOS
+- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme, etwa NTFS und ReFS. Mit dem Befehl [`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot) können Sie eine Freigabemomentaufnahme erstellen:
+
+```azurecli-interactive
+SNAPSHOT=$(az storage share snapshot \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --name "myshare" \
+    --query "snapshot" | tr -d '"')
+```
+
+### <a name="browse-share-snapshot-contents"></a>Durchsuchen des Inhalts einer Freigabemomentaufnahme
+Sie können den Inhalt einer Freigabemomentaufnahme durchsuchen, indem Sie den Zeitstempel der Freigabemomentaufnahme, die Sie mit der Variablen `$SNAPSHOT` erfasst haben, an den Befehl `az storage file list` übergeben:
+
+```azurecli-interactive
+az storage file list \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --share-name "myshare" \
+    --snapshot $SNAPSHOT \
+    --output table
+```
+
+### <a name="list-share-snapshots"></a>Auflisten von Freigabemomentaufnahmen
+Verwenden Sie den folgenden Befehl, um eine Liste mit den Momentaufnahmen anzuzeigen, die Sie für Ihre Freigabe erstellt haben:
+
+```azurecli-interactive
+az storage share list \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --include-snapshot \
+    --query "[? name=='myshare' && snapshot!=null]" | tr -d '"'
+```
+
+### <a name="restore-from-a-share-snapshot"></a>Wiederherstellen von einer Freigabemomentaufnahme
+Sie können eine Datei mit dem zuvor verwendeten Befehl `az storage file copy start` wiederherstellen. Löschen Sie zuerst die Datei „SampleUpload.txt“, die Sie hochgeladen haben, damit Sie sie aus der Momentaufnahme wiederherstellen können:
+
+```azurecli-interactive
+# Delete SampleUpload.txt
+az storage file delete \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --share-name "myshare" \
+    --path "myDirectory/SampleUpload.txt"
+ # Build the source URI for a snapshot restore
+URI=$(az storage account show \
+    --resource-group "myResourceGroup" \
+    --name $STORAGEACCT \
+    --query "primaryEndpoints.file" | tr -d '"')
+ URI=$URI"myshare/myDirectory/SampleUpload.txt?sharesnapshot="$SNAPSHOT
+ # Restore SampleUpload.txt from the share snapshot
+az storage file copy start \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --source-uri $URI \
+    --destination-share "myshare" \
+    --destination-path "myDirectory/SampleUpload.txt"
+```
+
+### <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
+Mit dem Befehl [`az storage share delete`](/cli/azure/storage/share#az_storage_share_delete) können Sie eine Freigabemomentaufnahme löschen. Verwenden Sie die Variable, die den `$SNAPSHOT`-Verweis auf den Parameter `--snapshot` enthält:
+
+```azurecli-interactive
+az storage share delete \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --name "myshare" \
+    --snapshot $SNAPSHOT
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie den Vorgang abgeschlossen haben, können Sie den Befehl [`az group delete`](/cli/azure/group#delete) verwenden, um die Ressourcengruppe und alle dazugehörigen Ressourcen zu entfernen: 

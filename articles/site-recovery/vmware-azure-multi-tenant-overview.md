@@ -1,22 +1,20 @@
 ---
-title: Übersicht über die Unterstützung mehrerer Mandanten für die VMware-VM-Replikation in Azure (CSP) mit Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Übersicht über die Azure Site Recovery-Unterstützung für Mandantenabonnements in einer Umgebung mit mehreren Mandanten über das CSP-Programm.
-services: site-recovery
+title: Übersicht über die Unterstützung mehrerer Mandanten für die Notfallwiederherstellung von VMware-VMs in Azure (CSP) mit Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Übersicht über die Azure Site Recovery-Unterstützung für die VMware-Notfallwiederherstellung in Azure in einer Umgebung mit mehreren Mandanten über das CSP-Programm.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 4cd0c3baf385a864e2173de9bbce897bb5066dae
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 89e731d6c255092b087f0615bad49185c7181f1f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352870"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210755"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>Übersicht über die Unterstützung mehrerer Mandanten für die VMware-Replikation nach Azure mit CSP
+# <a name="overview-of-multi-tenant-support-for-vmware-fisaster-recovery-to-azure-with-csp"></a>Übersicht über die Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung in Azure mit CSP
 
 [Azure Site Recovery](site-recovery-overview.md) unterstützt für Mandantenabonnements Umgebungen mit mehreren Mandanten. Unterstützt wird außerdem die Mehrmandantenfähigkeit für Mandantenabonnements, die über das Microsoft Cloud Solution Provider-Programm (CSP) erstellt und verwaltet werden.
 

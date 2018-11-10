@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: d82d52e05d85fbd5197f84f032a55dd9c74f9d1f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c41cb48e61b4c2bd1dc81e508c8218fad688bbaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714427"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241718"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Karte mit Sicherheitswarnungen und Informationen zu Bedrohungen
 In diesem Artikel erfahren Sie, wie Sie sicherheitsbezogene Probleme mithilfe der Karte mit Sicherheitswarnungen und der auf Sicherheitsereignissen basierenden Informationen zu Bedrohungen in Azure Security Center lösen.
@@ -57,7 +57,7 @@ Um die Karte mit Informationen zu Bedrohungen basierend auf Rohereignissen für 
 1. Öffnen Sie das Dashboard **Security Center**.
 
 1. Wählen Sie im linken Bereich unter **Bedrohungsschutz** die Option **Sicherheitshinweise zuordnen** aus. Die Karte wird geöffnet.
-2. Klicken Sie in der oberen rechten Ecke auf****  die entsprechende Option für das Wechseln zur Karte mit Sicherheitsereignissen.
+2. Klicken Sie in der oberen rechten Ecke auf **die entsprechende Option für das Wechseln zur Karte** mit Sicherheitsereignissen.
 3. Wählen Sie den Arbeitsbereich aus, für den Sie das Dashboard anzeigen möchten.
 4. Wählen Sie am oberen Rand der Karte **Klassische Threat Intelligence-Benutzeroberfläche** aus. Das Dashboard **Informationen zu Bedrohungen** wird geöffnet.
 
@@ -106,4 +106,4 @@ In diesem Artikel wurde beschrieben, wie Sie Informationen zu Bedrohungen in Sec
 * [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
 * [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
+* [Azure Security-Blog](https://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.

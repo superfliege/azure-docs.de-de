@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: de67d71a209ea0889b4dc5c87fed254700cb9916
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395135"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251089"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
@@ -53,11 +53,11 @@ Es gibt keine Beschränkung in Bezug auf die Gesamtmenge der Daten, die von eine
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Wo liegen die Durchsatzgrenzwerte von Azure Cosmos DB?
 Es gibt keine Beschränkung in Bezug auf den Durchsatz, der von einem Container in Azure Cosmos DB unterstützt werden kann. Der wichtigste Punkt hierbei ist, dass Ihre Workload zu ungefähr gleichen Teilen auf eine ausreichend große Anzahl von Partitionsschlüsseln verteilt wird.
 
-### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>Sind die Konnektivitätsmodi „Direkt“ und „Gateway“ verschlüsselt? 
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted"></a>Sind die Konnektivitätsmodi „Direkt“ und „Gateway“ verschlüsselt? 
 Ja, beide Modi sind immer vollständig verschlüsselt. 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Wie viel kostet Azure Cosmos DB?
-Ausführliche Informationen hierzu finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Die Nutzungsgebühren für Azure Cosmos DB werden von der Anzahl von bereitgestellten Containern, der Anzahl der Stunden, die die Container online waren, und dem bereitgestellten Durchsatz für jeden Container bestimmt. Der Begriff *Container* bezieht sich hier auf die SQL-API-Sammlung, die Gremlin-API (Graphen), die MongoDB-API-Sammlung und die Tabellen-API-Tabellen. 
+Ausführliche Informationen hierzu finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Die Nutzungsgebühren für Azure Cosmos DB werden von der Anzahl von bereitgestellten Containern, der Anzahl der Stunden, die die Container online waren, und dem bereitgestellten Durchsatz für jeden Container bestimmt. Der Begriff „Container“ bezieht sich hier auf die SQL-API-Sammlung, die Gremlin-API (Graphen), die MongoDB-API-Sammlung und die Tabellen-API-Tabellen. 
 
 ### <a name="is-a-free-account-available"></a>Ist ein kostenloses Konto verfügbar?
 Ja. Sie können sich für ein zeitlich begrenztes Konto registrieren – kostenlos und ohne Verpflichtung. Informationen zum Registrieren finden Sie unter [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/), oder informieren Sie sich unter [Azure Cosmos DB testen – häufig gestellte Fragen](#try-cosmos-db).
@@ -230,7 +230,7 @@ Nein. Vorhandene Storage SDKs sollten auch weiterhin funktionieren. Es empfiehlt
 ### <a name="where-is-table-api-not-identical-with-azure-table-storage-behavior"></a>Inwiefern unterscheidet sich das Verhalten von Azure Table Storage von der Table-API?
 Benutzer, die mit Azure Table Storage vertraut sind und Tabellen mit der Table-API von Azure Cosmos DB erstellen möchten, müssen sich auf einige Unterschiede beim Verhalten einstellen:
 
-* Die Table-API von Azure Cosmos DB verwendet zur Gewährleistung der garantierten Leistung ein Modell mit reservierter Kapazität. Das bedeutet allerdings, dass für die Kapazität Kosten anfallen, sobald die Tabelle erstellt wird, auch wenn die Kapazität gar nicht genutzt wird. Bei Azure Table Storage wird dagegen nur die tatsächlich genutzte Kapazität in Rechnung gestellt. Das erklärt, warum bei der Table-API eine SLA mit einer Lesegeschwindigkeit von 10 ms und einer Schreibgeschwindigkeit von 15 ms im 99. Perzentil möglich ist, während Azure Table Storage nur eine SLA mit 10 Sekunden bietet. Bei Table-API-Tabellen fallen dafür jedoch auch Kosten für leere Tabellen ohne jegliche Anforderungen an, um sicherzustellen, dass gemäß der SLA von Azure Cosmos DB die erforderliche Kapazität für mögliche Anforderungen an die Tabellen zur Verfügung steht.
+* Die Table-API von Azure Cosmos DB verwendet zur Gewährleistung der garantierten Leistung ein Modell mit reservierter Kapazität. Das bedeutet allerdings, dass für die Kapazität Kosten anfallen, sobald die Tabelle erstellt wird, auch wenn die Kapazität gar nicht genutzt wird. Bei Azure Table Storage wird dagegen nur die genutzte Kapazität in Rechnung gestellt. Das erklärt, warum bei der Tabellen-API eine SLA mit einer Lesegeschwindigkeit von 10 ms und einer Schreibgeschwindigkeit von 15 ms im 99. Perzentil möglich ist, während Azure Table Storage nur eine SLA mit 10 Sekunden bietet. Bei Table-API-Tabellen fallen dafür jedoch auch Kosten für leere Tabellen ohne jegliche Anforderungen an, um sicherzustellen, dass gemäß der SLA von Azure Cosmos DB die erforderliche Kapazität für mögliche Anforderungen an die Tabellen zur Verfügung steht.
 * Von der Table-API zurückgegebene Abfrageergebnisse werden nicht wie bei Azure Table Storage nach Partitionsschlüssel/Zeilenschlüssel sortiert.
 * Die Größe von Zeilenschlüsseln ist auf 255 Bytes begrenzt.
 * Batches können nur bis zu 2 MB enthalten.
@@ -260,7 +260,7 @@ Beim .NET SDK werden einige Klassen und Methoden derzeit nicht von Azure Cosmos 
 |                  | \*ServiceStats* |
 | CloudTable | SetPermissions* |
 |            | GetPermissions* |
-| TableServiceContext | * (Diese Klasse ist eigentlich veraltet.) |
+| TableServiceContext | * (Diese Klasse ist veraltet.) |
 | TableServiceEntity | „ “ |
 | TableServiceExtensions | „ “ |
 | TableServiceQuery | „ “ |
@@ -270,7 +270,7 @@ Falls einer dieser Unterschiede ein Problem für Ihr Projekt darstellt, teilen S
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>Wie kann ich Feedback zum SDK und zu Bugs geben?
 Sie können Ihr Feedback wie folgt mitteilen:
 
-* [UserVoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
+* [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow eignet sich am besten für Fragen zur Programmierung. Vergewissern Sie sich, dass Ihre Frage [themenbezogen](https://stackoverflow.com/help/on-topic) ist und [so viele Details wie möglich enthält, damit sie klar und beantwortbar ist](https://stackoverflow.com/help/how-to-ask).
 
@@ -329,7 +329,7 @@ Nein. Sie können den vorhandenen Azure Table Storage-Bestand ohne irgendwelche 
 Sie können die [globalen Replikationseinstellungen](tutorial-global-distribution-sql-api.md#portal) im Azure Cosmos DB-Portal verwenden, um Regionen hinzuzufügen, die sich für Ihre Anwendung eignen. Beim Entwickeln einer global verteilten Anwendung sollten Sie Ihre Anwendung darüber hinaus mit einem auf die lokale Region festgelegten Wert von PreferredLocation hinzufügen, um für eine niedrige Leselatenz zu sorgen. 
 
 ### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api"></a>Wie ändere ich die primäre Schreibregion für das Konto in der Table-API?
-Sie können den Portalbereich für globale Azure Cosmos DB-Replikation verwenden, um eine Region hinzuzufügen, und dann ein Failover in die benötigte Region durchführen. Anweisungen finden Sie unter [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](regional-failover.md). 
+Sie können den Portalbereich für globale Azure Cosmos DB-Replikation verwenden, um eine Region hinzuzufügen, und dann ein Failover in die benötigte Region durchführen. Anweisungen finden Sie unter [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](high-availability.md). 
 
 ### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>Wie lassen sich beim Verteilen meiner Daten meine bevorzugten Leseregionen konfigurieren, um niedrige Latenz zu erreichen? 
 Verwenden Sie den Schlüssel PreferredLocation in der Datei „app.config“, um das Lesen vom lokalen Standort zu unterstützen. Bei bereits vorhandenen Anwendungen gibt die Table-API einen Fehler aus, wenn „LocationMode“ festgelegt ist. Entfernen Sie diesen Code, da die Table-API diese Angabe aus der Datei „app.config“ abruft. Weitere Informationen finden Sie unter [Azure Cosmos DB-Funktionen](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities).
@@ -351,7 +351,7 @@ Azure Cosmos DB führt für die Daten dauerhaft einen Commit in der lokalen Regi
 Mit Azure Cosmos DB können Sie die Konsistenzebene auf Containerebene (in der Tabelle) festlegen. Mit dem .NET SDK können Sie die Ebene ändern, indem Sie den Wert für den TableConsistencyLevel-Schlüssel in der Datei „app.config“ angeben. Mögliche Werte sind: „Strong“ (Sicher), „Bounded Staleness“ (Begrenzte Veraltung), „Session“ (Sitzung), „Consistent Prefix“ (Präfixkonsistenz) und „Eventual“ (Letztlich). Weitere Informationen finden Sie unter [Einstellbare Datenkonsistenzebenen in Azure Cosmos DB](consistency-levels.md). Der Hauptaspekt hierbei ist, dass Sie die Konsistenzebene für Anforderungen nicht auf einen höheren Wert als für die Einstellung für die Tabelle festlegen können. Beispielsweise ist es nicht möglich, die Konsistenzebene für die Tabelle auf „Letztlich“ und die Konsistenzebene für die Anforderung auf „Sicher“ festzulegen. 
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Wie läuft mit der Table-API das Failover bei einem Ausfall einer Region ab? 
-Die Table-API nutzt die global verteilte Plattform von Azure Cosmos DB. Um sicherzustellen, dass Ihre Anwendung Ausfallzeiten des Datencenters tolerieren kann, sollten Sie für das Konto mindestens eine weitere Region im Azure Cosmos DB-Portal aktivieren: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](regional-failover.md). Sie können die Priorität der Region mithilfe des Portals festlegen: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](regional-failover.md). 
+Die Table-API nutzt die global verteilte Plattform von Azure Cosmos DB. Um sicherzustellen, dass Ihre Anwendung Ausfallzeiten des Datencenters tolerieren kann, sollten Sie für das Konto mindestens eine weitere Region im Azure Cosmos DB-Portal aktivieren: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](high-availability.md). Sie können die Priorität der Region mithilfe des Portals festlegen: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](high-availability.md). 
 
 Sie können für das Konto beliebig viele Regionen hinzufügen und steuern, wohin das Failover erfolgen kann, indem Sie eine Failoverpriorität festlegen. Für die Verwendung der Datenbank müssen Sie natürlich auch dafür eine Anwendung bereitstellen. Wenn Sie so vorgehen, treten für Ihre Kunden keine Ausfallzeiten auf. Das [neueste .NET-Client-SDK](table-sdk-dotnet.md) verfügt über Auto-Homing, die anderen SDKs dagegen nicht. Es kann also die ausgefallene Region erkennen und automatisch das Failover in die neue Region durchführen.
 
@@ -431,7 +431,7 @@ Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Bet
 
 Mithilfe der Durchsatzspezifikation können Sie dies flexibel ändern, um von der Saisonalität Ihrer Anwendung zu profitieren, die Durchsatzanforderungen zu erfüllen und Kosten zu sparen.
 
-### <a name="azure-table-storage-has-been-very-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>Azure Table Storage war für mich sehr kostengünstig, da ich nur für die Speicherung der Daten zahle und nur selten Abfragen durchführe. Beim Table-API-Angebot von Azure Cosmos DB fallen für mich aber offenbar auch Kosten an, wenn ich keine einzige Transaktion durchgeführt und nichts gespeichert habe. Können Sie mir erklären, warum dies so ist?
+### <a name="azure-table-storage-has-been-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>Azure Table Storage war für mich kostengünstig, da ich nur für die Speicherung der Daten zahle und nur selten Abfragen durchführe. Beim Table-API-Angebot von Azure Cosmos DB fallen für mich aber offenbar auch Kosten an, wenn ich keine einzige Transaktion durchgeführt und nichts gespeichert habe. Können Sie mir erklären, warum dies so ist?
 
 Azure Cosmos DB wurde als global verteiltes, SLA-basiertes System mit Garantien für Verfügbarkeit, Wartezeit und Durchsatz entwickelt. Wenn Sie den Durchsatz in Azure Cosmos DB reservieren, ist er – im Gegensatz zum Durchsatz anderer Systeme – garantiert. Mit Azure Cosmos DB werden zusätzliche Funktionen bereitgestellt, die von Kunden gefordert wurden, z.B. sekundäre Indizes und globale Verteilung.  
 
@@ -501,7 +501,7 @@ Eine Gremlin-Verbindung wird über eine WebSocket-Verbindung hergestellt. WebSoc
 
 ### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>Warum kann ich keine Fluent-API-Aufrufe in den nativen Gremlin-Treibern verwenden?
 
-Fluent-API-Aufrufe werden von der Azure Cosmos DB-Gremlin-API noch nicht unterstützt. Fluent-API-Aufrufe erordern ein internes Formatierungsfeature namens Bytecode-Unterstützung, das von der Azure Cosmos DB-Gremlin-API derzeit nicht unterstützt wird. Aus demselben Grund wird auch der aktuelle Gremlin-JavaScript-Treiber derzeit nicht unterstützt. 
+Fluent-API-Aufrufe werden von der Azure Cosmos DB-Gremlin-API noch nicht unterstützt. Fluent-API-Aufrufe erfordern ein internes Formatierungsfeature namens Bytecode-Unterstützung, das von der Azure Cosmos DB-Gremlin-API derzeit nicht unterstützt wird. Aus demselben Grund wird auch der aktuelle Gremlin-JavaScript-Treiber derzeit nicht unterstützt. 
 
 ### <a name="how-can-i-evaluate-the-efficiency-of-my-gremlin-queries"></a>Wie kann ich die Effizienz meiner Gremlin-Abfragen auswerten?
 
@@ -579,7 +579,7 @@ Die Ausgabe des Profils oben zeigt, wie viel Zeit zum Abrufen der Scheitelpunkt-
 ## <a id="cassandra"></a>Cassandra-API
 
 ### <a name="what-is-the-protocol-version-supported-in-the-private-preview-is-there-a-plan-to-support-other-protocols"></a>Welche Protokollversion wird in der privaten Vorschauversion unterstützt? Ist eine Unterstützung weiterer Protokolle geplant?
-Die Apache Cassandra-API für Azure Cosmos DB unterstützt derzeit die CQL-Version 4. Wenn Sie Feedback zur Unterstützung anderer Protokolle haben, informieren Sie uns per [UserVoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db), oder senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com). 
+Die Apache Cassandra-API für Azure Cosmos DB unterstützt derzeit die CQL-Version 4. Wenn Sie Feedback zur Unterstützung anderer Protokolle haben, informieren Sie uns per [Uservoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db), oder senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com). 
 
 ### <a name="why-is-choosing-a-throughput-for-a-table-a-requirement"></a>Warum muss ein Durchsatz für eine Tabelle ausgewählt werden?
 Azure Cosmos DB legt den Standarddurchsatz für Ihren Container abhängig davon fest, ob Sie die Tabelle über das Portal oder über CQL erstellt haben. Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Betrieb. Diese Garantie ist möglich, wenn die Engine die Kontrolle für die Vorgänge des Mandanten erzwingen kann. Durch Festlegen des Durchsatzes wird sichergestellt, dass Sie den garantierten Durchsatz und die garantierte Wartezeit erhalten. Hierzu wird die entsprechende Kapazität von der Plattform reserviert, um den Erfolg des Vorgangs zu gewährleisten. Sie können den Durchsatz flexibel anpassen, um von Schwankungen bei der Nutzung Ihrer Anwendung zu profitieren und Kosten zu sparen.
@@ -614,7 +614,7 @@ Diagnoseprotokolle werden im Artikel [Diagnoseprotokollierung für Azure Cosmos 
 Ja. Der Partitionsschlüssel wird verwendet, um die Entität am richtigen Speicherort zu platzieren. In Azure Cosmos DB wird er zum Suchen der richtigen logischen Partition auf einer physischen Partition verwendet. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md) sehr gut erläutert. Die wesentliche Lektion ist hierbei, dass eine logische Partition derzeit die 10-GB-Grenze nicht überschreiten sollte. 
 
 ### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Was passiert, wenn ich die Benachrichtigung „Kontingent erschöpft“ als Hinweis darauf erhalte, dass eine Partition voll ist?
-Azure Cosmos DB ist ein SLA-basiertes System, das unbeschränkte Skalierung mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz bietet. Die zugehörige Cassandra-API ermöglicht ebenfalls die unbegrenzte Speicherung von Daten. Diese unbegrenzte Speicherung basiert auf einer horizontalen Skalierung der Daten mit der Partitionierung als grundlegendem Konzept. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md) sehr gut erläutert.
+Azure Cosmos DB ist ein SLA-basiertes System, das unbeschränkte Skalierung mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz bietet. Diese unbegrenzte Speicherung basiert auf einer horizontalen Skalierung der Daten mit der Partitionierung als grundlegendem Konzept. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md) sehr gut erläutert.
 
 Das Limit von 10 GB für die Anzahl von Entitäten oder Elementen pro logischer Partition sollte eingehalten werden. Um sicherzustellen, dass Ihre Anwendung gut skaliert werden kann, sollten Sie *keine* Hot Partition erstellen, indem Sie alle Informationen in einer Partition speichern und abfragen. Dieser Fehler kann nur bei einer Datenscherung auftreten – wenn Sie also über viele Daten für einen Partitionsschlüssel (mehr als 10 GB) verfügen. Sie ermitteln die Verteilung der Daten mithilfe des Storage-Portals. Zum Beheben dieses Fehlers erstellen Sie die Tabelle neu und wählen einen präzisen primären Partitionsschlüssel aus, der eine bessere Verteilung der Daten ermöglicht.
 
@@ -627,11 +627,11 @@ Ja. Sie können mit der Apache Cassandra-API mehrere Tabellen erstellen. Jede di
 ### <a name="is-it-possible-to-create-multiple-tables-in-succession"></a>Ist es möglich, mehrere Tabellen nacheinander zu erstellen?
 Azure Cosmos DB ist ein ressourcengesteuertes System für Aktivitäten auf Daten- und Steuerungsebene. Container (beispielsweise Sammlungen und Tabellen) sind Laufzeitentitäten, die für eine bestimmte Durchsatzkapazität bereitgestellt werden. Die Erstellung dieser Container in schneller Folge ist eine unerwartete Aktivität und wird gedrosselt. Wenn Sie Tests durchführen, bei denen Tabellen sofort abgelegt/erstellt werden, sollten Sie diese Vorgänge voneinander trennen.
 
-### <a name="what-is-maximum-number-of-tables-which-can-be-created"></a>Wie viele Tabellen können maximal erstellt werden?
-Es gibt kein physisches Limit für die Anzahl von Tabellen. Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), wenn Sie über sehr viele Tabellen verfügen (wenn die Größe dauerhaft über 10 TB liegt), die mit anderen Geschwindigkeiten als den üblichen 10 s oder 100 s erstellt werden müssen. 
+### <a name="what-is-maximum-number-of-tables-that-can-be-created"></a>Wie viele Tabellen können maximal erstellt werden?
+Es gibt kein physisches Limit für die Anzahl von Tabellen. Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), wenn Sie über viele Tabellen verfügen (wenn die Größe dauerhaft über 10 TB liegt), die mit anderen Geschwindigkeiten als den üblichen 10 s oder 100 s erstellt werden müssen. 
 
-### <a name="what-is-the-maximum--of-keyspace-which-we-can-create"></a>Wie viele Keyspaces können wir maximal erstellen? 
-Es gibt keine physische Obergrenze für die Anzahl von Keyspaces, da sie lediglich Metadatencontainer sind. Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), wenn Sie über eine sehr große Anzahl von Keyspaces verfügen. 
+### <a name="what-is-the-maximum--of-keyspace-that-we-can-create"></a>Wie viele Keyspaces können wir maximal erstellen? 
+Es gibt keine physische Obergrenze für die Anzahl von Keyspaces, da sie lediglich Metadatencontainer sind. Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), wenn Sie über eine große Anzahl von Keyspaces verfügen. 
 
 ### <a name="is-it-possible-to-bring-in-lot-of-data-after-starting-from-normal-table"></a>Ist es möglich, mit einer normalen Tabelle zu beginnen und später eine große Datenmenge hinzuzufügen? 
 Die Speicherkapazität wird automatisch verwaltet und erhöht sich, wenn weitere Daten hinzukommen. Daher können Sie problemlos so viele Daten wie nötig importieren, ohne Knoten verwalten und bereitstellen zu müssen. 
@@ -661,7 +661,7 @@ In der privaten Vorschauversion wurden für Clientprogramme die Clienttreiber de
 ### <a name="is-composite-partition-key-supported"></a>Wird ein zusammengesetzter Partitionsschlüssel unterstützt?
 Ja. Sie können unter Verwendung der regulären Syntax einen zusammengesetzten Partitionsschlüssel erstellen. 
 
-### <a name="can-i-use-sstable-loader-for-data-loading"></a>Kann ich Daten mithilfe von „sstable loader“ laden?
+### <a name="can-i-use-stable-loader-for-data-loading"></a>Kann ich Daten mithilfe von „sstable loader“ laden?
 Nein. In der Vorschauversion wird das sstable-Ladeprogramm nicht unterstützt. 
 
 ### <a name="can-an-on-premises-cassandra-cluster-be-paired-with-azure-cosmos-dbs-apache-cassandra-api"></a>Kann ein lokaler Cassandra-Cluster mit der Apache Cassandra-API von Azure Cosmos DB gekoppelt werden?
@@ -671,7 +671,7 @@ Derzeit ist Azure Cosmos DB für Cloudumgebungen optimiert und kann ohne zusätz
 Azure Cosmos DB bietet zwei kostenlose vollständige Sicherungen, die zurzeit alle vier Stunden über alle APIs hinweg erstellt werden. Dadurch müssen Sie keinen Sicherungszeitplan o.Ä. einrichten. Wenn Sie Aufbewahrungsdauer und Häufigkeit ändern möchten, senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), oder lösen Sie eine Supportanfrage aus. Informationen zu Sicherungsfunktion finden Sie im Artikel [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](online-backup-and-restore.md). 
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Wie läuft mit dem Cassandra-API-Konto das Failover bei einem Ausfall einer Region ab? 
-Die Cassandra-API von Azure Cosmos DB nutzt Teile der global verteilten Plattform von Azure Cosmos DB. Um sicherzustellen, dass Ihre Anwendung Ausfallzeiten des Datencenters tolerieren kann, sollten Sie für das Konto mindestens eine weitere Region im Azure Cosmos DB-Portal aktivieren: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](regional-failover.md). Sie können die Priorität der Region mithilfe des Portals festlegen: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](regional-failover.md). 
+Die Cassandra-API von Azure Cosmos DB nutzt Teile der global verteilten Plattform von Azure Cosmos DB. Um sicherzustellen, dass Ihre Anwendung Ausfallzeiten des Datencenters tolerieren kann, sollten Sie für das Konto mindestens eine weitere Region im Azure Cosmos DB-Portal aktivieren: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](high-availability.md). Sie können die Priorität der Region mithilfe des Portals festlegen: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](high-availability.md). 
 
 Sie können für das Konto beliebig viele Regionen hinzufügen und steuern, wohin das Failover erfolgen kann, indem Sie eine Failoverpriorität festlegen. Für die Verwendung der Datenbank müssen Sie dafür eine Anwendung bereitstellen. Wenn Sie so vorgehen, treten für Ihre Kunden keine Ausfallzeiten auf. 
 
@@ -688,7 +688,7 @@ Wir planen die Unterstützung dieser Funktion in der Zukunft.
 Die Apache Cassandra-API bietet die gleiche CQL-Funktionalität wie Apache Cassandra. Wir werden die Durchführbarkeit einer Unterstützung der verschiedenen Funktionen untersuchen.
 
 ### <a name="feature-x-of-regular-cassandra-api-is-not-working-as-today-where-can-the-feedback-be-provided"></a>Feature X der regulären Cassandra-API funktioniert im Moment nicht, wo kann ich Feedback geben?
-Übermitteln Sie Ihr Feedback über [UserVoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db).
+Übermitteln Sie Ihr Feedback über [Uservoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 [azure-portal]: https://portal.azure.com
 [query]: sql-api-sql-query.md

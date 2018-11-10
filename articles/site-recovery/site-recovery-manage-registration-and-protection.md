@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 06169ff8e084882eb9a2dbe71c89c3b2a40b384b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4dac0ed85500e4339f6389f05113dfd68b72c5ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214085"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244337"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Entfernen von Servern und Deaktivieren des Schutzes
 
@@ -34,7 +34,7 @@ Wenn Sie VMware-VMs oder physische Windows-/Linux-Server in Azure replizieren, k
 3. Notieren Sie die ID des VMM-Servers.
 4. Heben Sie die Zuordnung zwischen Replikationsrichtlinien und Clouds auf dem VMM-Server auf, den Sie entfernen möchten.  Doppelklicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** >  **Replikationsrichtlinien** auf die zugehörige Richtlinie. Klicken Sie mit der rechten Maustaste auf die Cloud, und klicken Sie dann auf **Zuordnung aufheben**.
 5. Löschen Sie den VMM-Server oder den aktiven Knoten. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** > **VMM-Server** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
-6. Wenn Ihr VMM-Server nicht verbunden war, laden Sie das [Bereinigungsskript](http://aka.ms/asr-cleanup-script-vmm) auf den VMM-Server herunter und führen es aus. Öffnen Sie PowerShell mit der Option **Als Administrator ausführen**, um die Ausführungsrichtlinie für den Standardbereich (LocalMachine) zu ändern. Geben Sie im Skript die ID des VMM-Servers an, den Sie entfernen möchten. Das Skript entfernt die Informationen zu Registrierung und Cloudkopplung vom Server.
+6. Wenn Ihr VMM-Server nicht verbunden war, laden Sie das [Bereinigungsskript](https://aka.ms/asr-cleanup-script-vmm) auf den VMM-Server herunter und führen es aus. Öffnen Sie PowerShell mit der Option **Als Administrator ausführen**, um die Ausführungsrichtlinie für den Standardbereich (LocalMachine) zu ändern. Geben Sie im Skript die ID des VMM-Servers an, den Sie entfernen möchten. Das Skript entfernt die Informationen zu Registrierung und Cloudkopplung vom Server.
 5. Führen Sie das Bereinigungsskript auf einem beliebigen sekundären VMM-Server aus.
 6. Führen Sie das Bereinigungsskript auf allen anderen passiven VMM-Clusterknoten aus, auf denen der Anbieter installiert ist.
 7. Deinstallieren Sie manuell den Anbieter auf dem VMM-Server. Wenn Sie einen Cluster verwenden, entfernen Sie ihn von allen Knoten.

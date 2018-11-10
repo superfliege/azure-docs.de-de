@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: spelluru
-ms.openlocfilehash: 1ed401f6175d7ebea83a888898221d345791bc34
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2e6119ae4565e0474da12d67c7a7b594cda68977
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697957"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248655"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Erste Schritte mit WebSockets von Relay Hybrid Connections in .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -38,7 +38,7 @@ Für Hybrid Connections ist sowohl eine Client- als auch eine Serverkomponente e
 
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
-* [Visual Studio 2015 oder eine höhere Version.](http://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
+* [Visual Studio 2015 oder eine höhere Version.](https://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
 * Ein Azure-Abonnement.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: b1002d046014abd15452489e343ecf7c30b00d73
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 64d940552f2790c08e8087f279990d0a6c595bac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311336"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245726"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
-Die Identität wird häufig als neue Grenzschicht für die Sicherheit angesehen, indem diese Rolle vom herkömmlichen netzwerkzentrierten Ansatz übernommen wird. Die Weiterentwicklung dieses Dreh- und Angelpunkts für die Bereiche Sicherheit und Investitionen basiert darauf, dass Umkreisnetzwerke immer durchlässiger geworden sind und die Verteidigung des Umkreisnetzwerks nicht mehr so effektiv wie vor der immensen Nutzung von [BYOD](http://aka.ms/byodcg)-Geräten und Cloudanwendungen sein kann.
+Die Identität wird häufig als neue Grenzschicht für die Sicherheit angesehen, indem diese Rolle vom herkömmlichen netzwerkzentrierten Ansatz übernommen wird. Die Weiterentwicklung dieses Dreh- und Angelpunkts für die Bereiche Sicherheit und Investitionen basiert darauf, dass Umkreisnetzwerke immer durchlässiger geworden sind und die Verteidigung des Umkreisnetzwerks nicht mehr so effektiv wie vor der immensen Nutzung von [BYOD](https://aka.ms/byodcg)-Geräten und Cloudanwendungen sein kann.
 
 In diesem Artikel werden bewährte Methoden für die Azure-Identitätsverwaltung und die Sicherheit der Zugriffssteuerung beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
@@ -51,7 +51,7 @@ Der Artikel enthält bewährte Methoden zur Azure-Identitätsverwaltung und Sich
 
 ## <a name="treat-identity-as-the-primary-security-perimeter"></a>Behandeln von Identität als primären Sicherheitsbereich
 
-Viele betrachten Identität als primären Sicherheitsbereich. Dies ist eine Abkehr vom traditionellen Schwerpunkt der Netzwerksicherheit. Netzwerkumkreise werden immer durchlässiger, und die Verteidigung des Umkreises kann nicht so effektiv sein wie vor der explosionsartigen Verbreitung von [BYOD](http://aka.ms/byodcg)-Geräten und Cloudanwendungen.
+Viele betrachten Identität als primären Sicherheitsbereich. Dies ist eine Abkehr vom traditionellen Schwerpunkt der Netzwerksicherheit. Netzwerkumkreise werden immer durchlässiger, und die Verteidigung des Umkreises kann nicht so effektiv sein wie vor der explosionsartigen Verbreitung von [BYOD](https://aka.ms/byodcg)-Geräten und Cloudanwendungen.
 [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) ist die Lösung für Identitäts- und Zugriffsverwaltung von Azure. Azure AD ist ein mehrinstanzenfähiger, cloudbasierter Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Azure AD kombiniert grundlegende Verwaltungsdienste, Zugriffsverwaltung für Anwendungen und Identitätsgovernance in einer einzigen Lösung.
 
 In den folgenden Abschnitten werden die Best Practices für die Identitäts- und Zugriffssicherheit mit Azure AD aufgeführt.

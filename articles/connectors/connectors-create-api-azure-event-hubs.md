@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 86fc1c3542bea1be840041bb73df15631c066c7e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a91daf08a56470e4d1e112e37b51150c2c5f00ef
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294971"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230317"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Überwachen, Erhalten und Senden von Ereignissen mit Azure Event Hubs und Azure Logic Apps 
 
@@ -52,7 +52,7 @@ Damit Ihre Logik-App auf Ihren Event Hub zugreifen kann, überprüfen Sie Ihre B
       ![Kopieren der Verbindungszeichenfolge für Event Hub-Namespaces](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
 
       > [!TIP]
-      > Um zu überprüfen, ob Ihre Verbindungszeichenfolge Ihrem Event Hubs-Namespace oder einem bestimmten Event Hub zugeordnet ist, stellen Sie sicher, dass die Verbindungszeichenfolge nicht den Parameter `EntityPath` aufweist. Wenn Sie diesen Parameter gefunden haben, gilt die Verbindungszeichenfolge für eine bestimmte Event Hub-Entität und stellt nicht die richtige Zeichenfolge für die Verwendung mit Ihrer Logik-App dar.
+      > Um zu überprüfen, ob Ihre Verbindungszeichenfolge Ihrem Event Hubs-Namespace oder einem bestimmten Event Hub zugeordnet ist, stellen Sie sicher, dass die Verbindungszeichenfolge nicht den Parameter `EntityPath` enthält. Wenn Sie diesen Parameter gefunden haben, gilt die Verbindungszeichenfolge für eine bestimmte Event Hub-Entität und stellt nicht die richtige Zeichenfolge für die Verwendung mit Ihrer Logik-App dar.
 
 4. Fahren Sie jetzt mit [Hinzufügen eines Event Hubs-Triggers](#add-trigger) oder [Hinzufügen einer Event Hubs-Aktion](#add-action) fort.
 
@@ -68,7 +68,8 @@ Dieses Beispiel zeigt, wie Sie einen Logik-App-Workflow starten können, wenn ne
 
 2. Geben Sie im Suchfeld „Event Hubs“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus. 
 
-   Dieses Beispiel verwendet diesen Trigger: **Event Hubs – Wenn Ereignisse im Event Hub verfügbar sind**.
+   Dieses Beispiel verwendet diesen Trigger:  
+   **Event Hubs – Wenn Ereignisse im Event Hub verfügbar sind**.
 
    ![Trigger auswählen](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
 
@@ -111,7 +112,7 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
 
 1. Öffnen Sie im Azure-Portal oder in Visual Studio Ihre Logik-App im Logic Apps-Designer. In diesem Beispiel wird das Azure-Portal verwendet.
 
-2. Wählen Sie unter dem Trigger oder der Aktion **Neuer Schritt** > **Aktion hinzufügen** aus.
+2. Wählen Sie unter dem Trigger oder der Aktion **Neuer Schritt** > **Aktion hinzufügen** aus.
 
    Um eine Aktion zwischen vorhandenen Schritten hinzuzufügen, bewegen Sie den Mauszeiger über den Verbindungspfeil. 
    Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) aus, und wählen Sie dann **Aktion hinzufügen** aus.
@@ -127,7 +128,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
    | Eigenschaft | Erforderlich | BESCHREIBUNG | 
    |----------|----------|-------------|
-   | Event Hub-Name | Ja | Wählen Sie den Event Hub aus, an den das Ereignis gesendet werden soll. | 
+   | Event Hub-Name | JA | Wählen Sie den Event Hub aus, an den das Ereignis gesendet werden soll. | 
    | Ereignisinhalt | Nein  | Der Inhalt für das Ereignis, das Sie senden möchten | 
    | Eigenschaften | Nein  | Die App-Eigenschaften und Werte, die gesendet werden sollen | 
    |||| 
@@ -148,8 +149,8 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
    | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
    |----------|----------|-------|-------------|
-   | Verbindungsname | Ja | <*verbindungsname*> | Der Name, der für Ihre Verbindung erstellt werden soll |
-   | Event Hubs-Namespace | Ja | <*event-hubs-namespace*> | Wählen Sie den Event Hubs-Namespace, den Sie verwenden möchten. | 
+   | Verbindungsname | JA | <*verbindungsname*> | Der Name, der für Ihre Verbindung erstellt werden soll |
+   | Event Hubs-Namespace | JA | <*event-hubs-namespace*> | Wählen Sie den Event Hubs-Namespace, den Sie verwenden möchten. | 
    |||||  
 
    Beispiel: 
@@ -172,7 +173,7 @@ Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagge
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,20 +1,20 @@
 ---
-title: Architektur der Replikation vom physischen Server nach Azure in Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die beim Replizieren von lokalen physischen Servern in Azure mit dem Azure Site Recovery-Dienst verwendet werden.
+title: Architektur für die Notfallwiederherstellung physischer Server in Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die bei der Notfallwiederherstellung von lokalen physischen Servern in Azure mit dem Azure Site Recovery-Dienst verwendet werden.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 15e8e9ce7b12585f7ea89a0440fdb93cfb171feb
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9dd60e31867e874ba59a6e2084714a22b661afdd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077038"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213048"
 ---
-# <a name="physical-server-to-azure-replication-architecture"></a>Physische Server in der Architektur für die Azure-Replikation
+# <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung physischer Server in Azure
 
 Dieser Artikel beschreibt die Architektur und Prozesse, die mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md) bei der Replikation, bei der Ausführung eines Failovers und beim Wiederherstellen von physischen Windows- und Linux-Servern zwischen einem lokalen Standort und Azure verwendet werden.
 

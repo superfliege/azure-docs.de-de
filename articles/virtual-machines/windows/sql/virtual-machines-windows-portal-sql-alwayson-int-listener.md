@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: e87b58ecd72291365f9eba70c807e3018c02ae07
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 5e665cd0bcfdea436c2f493187c5bbea756f8f09
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382738"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248304"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurieren eines Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure
 In diesem Artikel erfahren Sie, wie Sie einen Load Balancer für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, auf denen Azure Resource Manager ausgeführt wird. Eine Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
@@ -120,7 +120,7 @@ Mit dem Test wird definiert, wie Azure überprüft, welche SQL Server-Instanz ge
 4.  Klicken Sie auf **OK**. 
 
 > [!NOTE]
-> Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server-Instanzen geöffnet ist. Beide Instanzen benötigen eine eingehende Regel für den verwendeten TCP-Port. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](http://technet.microsoft.com/library/cc753558.aspx). 
+> Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server-Instanzen geöffnet ist. Beide Instanzen benötigen eine eingehende Regel für den verwendeten TCP-Port. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](https://technet.microsoft.com/library/cc753558.aspx). 
 > 
 > 
 
@@ -276,7 +276,7 @@ Konfigurieren Sie nach der Konfiguration der Verfügbarkeitsgruppe für die Verw
 Wenn eine Verfügbarkeitsgruppe an einer verteilten Verfügbarkeitsgruppe beteiligt ist, benötigt der Lastenausgleich eine zusätzliche Regel. In dieser Regel wird der vom Listener der verteilten Verfügbarkeitsgruppe verwendete Port gespeichert.
 
 >[!IMPORTANT]
->Dieser Schritt ist nur erforderlich, wenn die Verfügbarkeitsgruppe an einer [verteilten Verfügbarkeitsgruppe](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups) beteiligt ist. 
+>Dieser Schritt ist nur erforderlich, wenn die Verfügbarkeitsgruppe an einer [verteilten Verfügbarkeitsgruppe](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups) beteiligt ist. 
 
 1. Erstellen Sie auf jedem Server, der an der verteilten Verfügbarkeitsgruppe beteiligt ist, eine eingehende Regel für den Listener-TCP-Port der verteilten Verfügbarkeitsgruppe. In vielen Beispielen in der Dokumentation wird 5022 verwendet. 
 
@@ -289,7 +289,7 @@ Wenn eine Verfügbarkeitsgruppe an einer verteilten Verfügbarkeitsgruppe beteil
    |**Name** |Name zum Identifizieren der Lastenausgleichsregel für die verteilte Verfügbarkeitsgruppe 
    |**Frontend IP address** (Front-End-IP-Adresse) |Verwenden Sie dieselbe Front-End-IP-Adresse wie die Verfügbarkeitsgruppe.
    |**Protokoll** |TCP
-   |**Port** |5022 – der Port für den [Endpunktlistener der verteilten Verfügbarkeitsgruppe](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Es kann sich um einen beliebigen verfügbaren Port handeln.  
+   |**Port** |5022 – der Port für den [Endpunktlistener der verteilten Verfügbarkeitsgruppe](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Es kann sich um einen beliebigen verfügbaren Port handeln.  
    |**Back-End-Port** | 5022 – verwenden Sie denselben Wert wie bei **Port**.
    |**Back-End-Pool** |Der Pool, der die virtuellen Computer mit den SQL Server-Instanzen enthält. 
    |**Integritätstest** |Wählen Sie den Test aus, den Sie erstellt haben.

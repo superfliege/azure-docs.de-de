@@ -6,22 +6,29 @@ author: adiganmsft
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 10/29/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c1d7a404ffd9b4da4868f56a5e17300495b57db
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 493a8881975e6b7568a7823bfc86fc97b4389378
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269359"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418278"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 Dieser Artikel erläutert die Schritte zum Konfigurieren von Berichten für Azure Backup mit dem Recovery Services-Tresor. Außerdem erfahren Sie, wie Sie mit Power BI auf Berichte zugreifen. Nachdem Sie diese Schritte abgeschlossen haben, können Sie direkt Power BI aufrufen, um Berichte anzuzeigen, anzupassen und zu erstellen.
 
+> [!IMPORTANT]
+> Ab dem 1. November 2018 kann es bei einigen Kunden in Power BI zu Problemen beim Laden der Daten in die Azure Backup-App mit folgendem Fehler kommen: „Am Ende der JSON-Eingabe wurden überzählige Zeichen ermittelt. Die Ausnahme wurde von der IDataReader-Schnittstelle ausgelöst.“
+Dies liegt an einer Änderung des Formats, in dem Daten in das Speicherkonto geladen werden.
+Laden Sie die aktuelle App (Version 1.8) herunter, um dieses Problem zu vermeiden.
+>
+>
+
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 - Azure Backup-Berichte werden für die Sicherung von Azure-VMs und Dateien/Ordnern in der Cloud mit dem Azure Recovery Services-Agent unterstützt.
-- Berichte für die Azure SQL-Datenbank, Data Protection Manager und Azure Backup Server werden derzeit nicht unterstützt.
+- Berichte für Azure SQL-Datenbank, Azure-Dateifreigaben, Data Protection Manager und Azure Backup Server werden aktuell nicht unterstützt.
 - Sie können die Berichte für verschiedene Tresore und Abonnements anzeigen, sofern für alle Tresore dasselbe Speicherkonto konfiguriert ist. Das ausgewählte Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
 - Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. Sie können Berichte in Power BI auch ad hoc aktualisieren. In diesem Fall werden die neuesten Daten im Kundenspeicherkonto zum Rendern von Berichten verwendet.
 
@@ -67,23 +74,24 @@ Diese Schritte zeigen, wie Sie das Speicherkonto für einen Recovery Services-Tr
       ![Schritt 9: Anzeigen der Diagnoseeinstellung](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> Nachdem Sie die Berichte durch Speichern des Speicherkontos konfiguriert haben, warten Sie *24 Stunden*, bis der erste Datenpush abgeschlossen ist. Importieren Sie das Azure Backup-Inhaltspaket erst danach in Power BI. Weitere Informationen finden Sie im Bereich [Häufig gestellte Fragen](#frequently-asked-questions). 
+> Nachdem Sie die Berichte durch Speichern des Speicherkontos konfiguriert haben, warten Sie *24 Stunden*, bis der erste Datenpush abgeschlossen ist. Importieren Sie die Azure Backup-App erst danach in Power BI. Weitere Informationen finden Sie im Bereich [Häufig gestellte Fragen](#frequently-asked-questions). 
 >
 >
 
 ## <a name="view-reports-in-power-bi"></a>Anzeigen von Berichten in Power BI 
 Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfiguriert wurde, dauert es etwa 24 Stunden, bis die ersten Daten an das Speicherkonto übermittelt werden. 24 Stunden nach Einrichten des Speicherkontos können Sie anhand der folgenden Schritte Berichte in Power BI anzeigen.
-1. Melden Sie sich bei Power BI [an](https://powerbi.microsoft.com/landing/signin/).
-2. Wählen Sie **Daten abrufen** aus. Wählen Sie in der **Inhaltspaketbibliothek** unter **Dienste** **Abrufen** aus. Befolgen Sie die Schritte in der [Power BI-Dokumentation für den Zugriff auf das Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
+Wenn Sie den Bericht anpassen und freigeben möchten, erstellen Sie einen Arbeitsbereich, und führen Sie die folgenden Schritte aus.
 
-     ![Importieren eines Inhaltspakets](./media/backup-azure-configure-reports/content-pack-import.png)
+1. Melden Sie sich bei Power BI [an](https://powerbi.microsoft.com/landing/signin/).
+2. Wählen Sie **Daten abrufen** aus. Wählen Sie unter **Weitere Möglichkeiten zum Erstellen eigener Inhalte** die Option **Dienstinhaltspakete** aus. Befolgen Sie die Schritte in der [Power BI-Dokumentation zur Verbindungsherstellung mit einem Dienst](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
+
 3. Geben Sie in der Leiste **Suche** **Azure Backup** ein, und wählen Sie **Jetzt holen** aus.
 
       ![Abrufen eines Inhaltspakets](./media/backup-azure-configure-reports/content-pack-get.png)
 4. Geben Sie den Namen des Speicherkonto ein, das in Schritt 5 konfiguriert wurde, und wählen Sie **Weiter** aus.
 
     ![Den Namen des Speicherkontos erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Geben Sie den Speicherkontoschlüssel für dieses Speicherkonto ein. Zum [Anzeigen und Kopieren der Speicherzugriffsschlüssel](../storage/common/storage-account-manage.md#access-keys) navigieren Sie im Azure-Portal zu Ihrem Speicherkonto. 
+5. Geben Sie bei Verwendung der Authentifizierungsmethode „Schlüssel“ den Speicherkontoschlüssel für dieses Speicherkonto ein. Zum [Anzeigen und Kopieren der Speicherzugriffsschlüssel](../storage/common/storage-account-manage.md#access-keys) navigieren Sie im Azure-Portal zu Ihrem Speicherkonto. 
 
      ![Speicherkonto erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      
@@ -95,9 +103,7 @@ Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfigu
     
     ![Erfolgreicher Import des Inhaltspakets](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
     
-7. Wenn die Daten erfolgreich importiert wurden, wird das **Azure Backup**-Inhaltspaket im Navigationsbereich in **Apps** angezeigt. Unter **Dashboards**, **Berichte** und **Datasets** zeigt die Liste nun „Azure Backup“ mit einem gelben Stern an, der auf neu importierte Berichte hinweist.
-
-     ![Azure Backup-Inhaltspaket](./media/backup-azure-configure-reports/content-pack-azure-backup.png) <br/>
+7. Wenn die Daten erfolgreich importiert wurden, wird das **Azure Backup**-Inhaltspaket im Navigationsbereich in **Apps** angezeigt. Unter **Dashboards**, **Berichte** und **Datasets** wird jetzt Azure Backup in der Liste angezeigt.
      
 8. Wählen Sie unter **Dashboards** **Azure Backup** aus. Daraufhin wird eine Reihe angehefteter Schlüsselberichte angezeigt.
 

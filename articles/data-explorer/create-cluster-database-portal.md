@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 6aff31c662a845028a02cecd7a99837f92bc87e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394220"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214816"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Schnellstart: Erstellen eines Azure-Daten-Explorer-Clusters und einer Datenbank
 
@@ -31,11 +31,11 @@ Sie erstellen einen Azure-Daten-Explorer-Cluster in einer Azure-Ressourcengruppe
 
 1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+).
 
-1. Suchen Sie nach *Azure-Daten-Explorer*, und wählen Sie dann **Azure-Daten-Explorer** aus.
+1. Suchen Sie nach *Azure Data Explorer*.
 
    ![Durchsuchen von Ressourcen](media/create-cluster-database-portal/search-resources.png)
 
-1. Wählen Sie in der rechten unteren Ecke **Erstellen** aus.
+1. Wählen Sie unter **Azure Data Explorer** unten auf dem Bildschirm **Erstellen** aus.
 
 1. Geben Sie einen eindeutigen Namen für den Cluster ein, wählen Sie Ihr Abonnement aus, und erstellen Sie die Ressourcengruppe *test-resource-group*.
 
@@ -51,10 +51,12 @@ Sie erstellen einen Azure-Daten-Explorer-Cluster in einer Azure-Ressourcengruppe
     | Abonnement | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Cluster verwenden möchten.|
     | Ressourcengruppe | *test-resource-group* | Erstellen Sie eine neue Ressourcengruppe. |
     | Standort | *USA, Westen* | Wählen Sie für diesen Schnellstart die Option *USA, Westen* aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt.
-    | Computespezifikation | *D13_v2* | Wählen Sie für diesen Schnellstart die Spezifikation mit dem niedrigsten Preis aus. Wählen Sie für ein Produktionssystem die Spezifikation aus, die Ihre Anforderungen am besten erfüllt.
+    | Computespezifikationen | *D13_v2* | Wählen Sie für diesen Schnellstart die Spezifikation mit dem niedrigsten Preis aus. Wählen Sie für ein Produktionssystem die Spezifikation aus, die Ihre Anforderungen am besten erfüllt.
     | | |
 
-1. Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Die Bereitstellung dauert in der Regel etwa zehn Minuten. Wählen Sie auf der Symbolleiste die Option **Benachrichtigungen** (das Glockensymbol) aus, um den Bereitstellungsvorgang zu überwachen.
+1. Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Die Bereitstellung dauert in der Regel etwa zehn Minuten. Wählen Sie auf der Symbolleiste die Option **Benachrichtigungen** aus, um den Bereitstellungsvorgang zu überwachen.
+
+    ![Benachrichtigungen](media/create-cluster-database-portal/notifications.png)
 
 1. Wenn der Prozess abgeschlossen ist, wählen Sie **Benachrichtigungen** und dann **Zu Ressource wechseln** aus.
 
